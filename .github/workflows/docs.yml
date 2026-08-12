@@ -1,0 +1,47 @@
+name: docs
+
+on:
+  push:
+    branches: [main]
+    tags: ['*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+  statuses: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1'
+
+      - uses: julia-actions/cache@v2
+
+      - name: Instantiate documentation environment
+        run: julia --project=docs -e 'using Pkg; Pkg.instantiate()'
+
+      - name: Build HTML and PDF
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DOCUMENTER_SKIP_DEPLOY: '1'
+        run: julia --project=docs docs/make.jl --pdf
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: graph-models-for-power-systems-pdf
+          path: docs/latex_build/GraphModelsForPowerSystems.pdf
+
+      - name: Deploy documentation
+        if: ${{ success() && github.event_name != 'pull_request' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: julia --project=docs -e 'using Documenter; deploydocs(repo="github.com/frederikgeth/multi-graph-book.git", devbranch="main", push_preview=false)'
+
