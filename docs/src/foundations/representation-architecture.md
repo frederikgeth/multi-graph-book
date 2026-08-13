@@ -1,5 +1,7 @@
 # Representation architecture
 
+**Page status:** proposed architecture; adequacy remains an open research question.
+
 ## Two proposed, linked structures
 
 The working reference architecture links an asset/property model to an electrical port--factor

@@ -5,6 +5,14 @@ start value can remove the best decision. This case takes the next step: the
 tap-dependent 11-terminal transformer factor is stamped into nonlinear network
 voltage and power-balance equations and solved with JuMP and Ipopt.
 
+Its result is deliberately different from the preceding fixed-boundary witness:
+that witness minimises a transformer-local leakage-current metric at a prescribed
+boundary voltage and selects ``1.05``. Here the tap is embedded in a network
+decision that maximises served load subject to AC voltage, KCL, and recovered
+leakage-current constraints, and the boundary voltages are variables. The
+network objective therefore selects ``0.95``. The examples are complementary
+objective/boundary-condition cases, not contradictory tap recommendations.
+
 The example deliberately retains the running transformer's WYE/WYE/DELTA
 structure. It is not a balanced positive-sequence transformer surrogate.
 

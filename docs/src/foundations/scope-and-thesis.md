@@ -116,7 +116,7 @@ declared transformation. The order can change when ``Q`` changes from power flow
 asset management, fault location, optimal switching, or expansion planning.
 
 This produces a **partial order of representations relative to preservation contracts**. The
-[Representation taxonomy](@ref) makes the independent comparison axes explicit.
+[Representation taxonomy](@ref representation-taxonomy) makes the independent comparison axes explicit.
 
 ## Decision preservation
 
@@ -151,6 +151,24 @@ The first edition concentrates on:
 EMT, harmonics, thermal dynamics, communications, markets, protection logic, geographic asset
 systems, and graph learning initially appear as boundary cases. Later editions can develop them
 where the core language proves useful.
+
+### Study-family coverage boundary
+
+The vocabulary is broader than the executable evidence. The current status is:
+
+| Study or exchange family | Current treatment | Explicitly not claimed yet |
+| --- | --- | --- |
+| steady-state PF and OPF | executable multiconductor fixtures, decision cases, and compiled views | global optimality or universal solver performance |
+| topology processing and switching | formal node--breaker/state-resolved quotient definitions | an executable mixed-integer switching study on the running fixture |
+| state estimation | observation-map and preservation vocabulary; measurement fields in the source model | a solved estimator, bad-data detector, or covariance-preserving reduction |
+| fault and grounding studies | grounding taxonomy, terminal-current relations, and selected reduction guards | a complete short-circuit/protection calculation across all fault classes |
+| contingency and maintenance | semantic asset/state/provenance requirements and parallel-member counterexamples | a validated N-1/N-k engine or maintenance scheduler |
+| protection | protection boundaries and relay/limit ownership are retained as dependencies | relay coordination, zone reach, or protection-operation equivalence |
+| data exchange | CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER crosswalk with adapter obligations | conformance to every profile, round-trip guarantee, or standards certification |
+
+This table is a scope contract for the first edition. A future executable claim in one of these
+families must add a versioned fixture or source-backed result rather than silently upgrading a
+conceptual crosswalk into an implementation claim.
 
 ## Intended contribution
 

@@ -1,5 +1,7 @@
 # The running multiconductor network
 
+**Page status:** semantic specification; numerical realization is versioned separately.
+
 The book uses one synthetic reference network to compare representations and transformations. The
 network is deliberately small enough to draw and solve repeatedly, but it contains the features
 that disappear in a conventional balanced bus--branch diagram.

@@ -1,5 +1,7 @@
 # [Maps between representation frameworks](@id representation-maps)
 
+**Page status:** formal vocabulary and scoped map definitions.
+
 ## Why the arrows need types
 
 The book uses several mathematical structures, so an arrow between two models

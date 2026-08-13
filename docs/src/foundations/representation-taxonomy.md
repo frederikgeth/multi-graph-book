@@ -1,4 +1,6 @@
-# Representation taxonomy
+# [Representation taxonomy](@id representation-taxonomy)
+
+**Page status:** foundational taxonomy; categories are analytical, not a standards claim.
 
 The phrase *power-network graph* covers several mathematical and data structures that retain
 different facts. This taxonomy prevents a physical asset graph, an equation graph, and a solver
@@ -41,6 +43,28 @@ is normally a coordinate choice rather than a physical transfer direction. A
 simple graph additionally forgets parallel identity.
 
 These are different representations, not interchangeable names for resolution levels.
+
+## Four principal levels and the orthogonal companions
+
+For the main argument, the families above are organized into four principal
+levels. The word *level* refers to the dominant electrical or identity query,
+not to a universal refinement order:
+
+| Principal level | What it answers | What it forgets or delegates |
+| --- | --- | --- |
+| Simple graph | connectivity, islands, sparsity-free partitioning | parallel identity, terminal coordinates, device relations |
+| Directed/oriented attributed multigraph | conventional bus--branch PF/OPF with each two-terminal asset retained | arbitrary-port behaviour and most internal conductor structure |
+| Hierarchical port--factor incidence graph | multiconductor, multi-terminal, coupled, controlled, and ideal equipment | asset-lifecycle relations unless linked |
+| Asset/dependency relation graph | ownership, protection, maintenance, failure, and shared-structure queries | electrical behaviour unless linked to factors and terminals |
+
+The first two rows are derived electrical views; the third is the canonical
+electrical source formalism adopted for this book; and the fourth is an
+orthogonal companion rather than a more detailed circuit graph. Terminal,
+node--breaker, bus--branch, equation, and sparsity views are named
+specializations or computational projections around these four levels. They
+should not be counted as additional rungs in a single ladder. The rigorous
+objects and maps are specified in [Formal representation frameworks](@ref
+formal-representation-frameworks).
 
 ### Port, factor, and hypergraph models
 

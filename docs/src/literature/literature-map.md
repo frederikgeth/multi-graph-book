@@ -1,5 +1,7 @@
 # Literature map
 
+**Page status:** research record; coverage is provisional and not an exhaustive systematic review.
+
 The relevant work is substantial but fragmented across communities. No single
 literature currently supplies the full combination of typed physical assets,
 multiconductor terminal structure, exact/approximate behavioral maps,

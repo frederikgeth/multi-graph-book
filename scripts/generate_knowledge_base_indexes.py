@@ -16,6 +16,39 @@ DOCS = ROOT / "docs/src"
 GENERATED = ROOT / "experiments/generated"
 INDEX = DOCS / "reference/knowledge-base-index.md"
 STATUS = DOCS / "reference/chapter-status.md"
+PAGE_STATUS = re.compile(r"^\*\*Page status:\*\*\s*(.+?)\s*$", re.MULTILINE)
+
+
+def facets_for_claim(claim: dict) -> set[str]:
+    """Return provisional retrieval facets until facets become explicit claim fields.
+
+    The ledger keeps the claim schema deliberately small for now. These facets are
+    therefore derived from stable claim IDs and chapter paths, rather than presented
+    as additional scientific metadata. The mapping is deterministic and only supports
+    HTML navigation while the schema is being normalised.
+    """
+    claim_id = claim["claim_id"]
+    chapter = claim["chapter"]
+    facets: set[str] = set()
+    if chapter.startswith("docs/src/foundations/") or claim_id.startswith(("ARCH-", "THESIS-")):
+        facets.add("representation")
+    if "cycles" in chapter or "five-bus" in chapter or claim_id.startswith(("GRAPH-", "TR-PAR-")):
+        facets.add("graph-and-topology")
+    if chapter.startswith("docs/src/transformations/") or claim_id.startswith("TR-"):
+        facets.add("transformations")
+    if chapter.startswith("docs/src/cases/") or "decision" in chapter or claim_id.startswith(("TR-PAR-", "TR-XFMR-")):
+        facets.add("decision-cases")
+    if any(token in chapter for token in ("earth-ground", "rating", "orientation", "translation", "cycles")):
+        facets.add("physical-modelling")
+    if claim_id.startswith(("NUMERICAL-", "FIXTURE-")) or "executable" in chapter:
+        facets.add("numerical-evidence")
+    if claim_id.startswith("LIT-") or chapter.startswith("docs/src/literature/"):
+        facets.add("study-and-literature")
+    if claim_id.startswith(("FIXTURE-", "DATA-", "ARCH-")) or "executable" in chapter or "crosswalk" in chapter:
+        facets.add("software-and-data")
+    if not facets:
+        facets.add("general")
+    return facets
 
 
 def title_for(path: Path) -> str:
@@ -26,6 +59,11 @@ def title_for(path: Path) -> str:
             value = re.sub(r"^\[([^]]+)\]\(@id\s+[^)]+\)$", r"\1", value)
             return value
     return path.stem.replace("-", " ").title()
+
+
+def page_status_for(path: Path) -> str:
+    match = PAGE_STATUS.search(path.read_text())
+    return match.group(1) if match else "not stated"
 
 
 def rel(path: Path) -> str:
@@ -59,9 +97,12 @@ def artifact_summary(path: Path) -> str:
 def generate_index(claims: list[dict]) -> None:
     by_type: dict[str, list[dict]] = defaultdict(list)
     by_verification: dict[str, list[dict]] = defaultdict(list)
+    by_facet: dict[str, list[dict]] = defaultdict(list)
     for claim in claims:
         by_type[claim["claim_type"]].append(claim)
         by_verification[claim["verification"]].append(claim)
+        for facet in facets_for_claim(claim):
+            by_facet[facet].append(claim)
 
     lines = [
         "# Knowledge-base indexes",
@@ -91,6 +132,21 @@ def generate_index(claims: list[dict]) -> None:
         issue = claim.get("unresolved_issue", "").strip()
         if issue:
             lines.append(f"| `{claim['claim_id']}` | {issue} |")
+    lines += [
+        "",
+        "## Facet indexes",
+        "",
+        "These retrieval facets are provisional and path-derived. They are navigation aids, not",
+        "additional verification labels; explicit facet fields can replace them when the claims",
+        "schema is normalised.",
+    ]
+    for facet in sorted(by_facet):
+        lines += ["", f"### `{facet}` ({len(by_facet[facet])})", "", "| Claim | Chapter | Type |", "| --- | --- | --- |"]
+        for claim in sorted(by_facet[facet], key=lambda item: item["claim_id"]):
+            lines.append(
+                f"| `{claim['claim_id']}` — {claim['claim_text']} | "
+                f"{link_to_chapter(claim['chapter'])} | `{claim['claim_type']}` |"
+            )
     lines += ["", "## Generated artifacts", "", "| Artifact | Evidence summary |", "| --- | --- |"]
     for path in sorted(GENERATED.glob("*.json")):
         lines.append(f"| `{path.name}` | {artifact_summary(path)} |")
@@ -111,8 +167,8 @@ def generate_status(claims: list[dict]) -> None:
         "requiring readers to inspect TOML or generated JSON files. A chapter with no claim entry is",
         "not automatically unscientific; it is marked as needing explicit scope/status metadata.",
         "",
-        "| Chapter | Claims | Claim types | Verification | Open issue |",
-        "| --- | ---: | --- | --- | --- |",
+        "| Chapter | Page status | Claims | Claim types | Verification | Open issue |",
+        "| --- | --- | ---: | --- | --- | --- |",
     ]
     for path in chapter_paths:
         if path in (INDEX, STATUS):
@@ -126,7 +182,10 @@ def generate_status(claims: list[dict]) -> None:
             issue = issues if issues else "—"
         else:
             types, verification, issue = "—", "untracked", "Add chapter-level scope/status metadata"
-        lines.append(f"| [{title_for(path)}](../{path.relative_to(DOCS).as_posix()}) | {len(records)} | {types} | `{verification}` | {issue} |")
+        lines.append(
+            f"| [{title_for(path)}](../{path.relative_to(DOCS).as_posix()}) | "
+            f"{page_status_for(path)} | {len(records)} | {types} | `{verification}` | {issue} |"
+        )
     lines += ["", "_This file is regenerated during the documentation build._", ""]
     STATUS.write_text("\n".join(lines))
 

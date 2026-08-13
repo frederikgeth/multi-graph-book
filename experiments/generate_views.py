@@ -97,6 +97,9 @@ def physical(draw, x0, y0, compact=False):
     draw.text((x0+300,y0+300),"l2",fill=LINE,font=SMALL)
     draw.text((x0+460,y0+225),"l3",fill=LINE,font=SMALL)
     draw.text((x0+620,y0+225),"l4",fill=LINE,font=SMALL)
+    if compact:
+        box(draw,(x0+435,y0+435),(112,48),"x1*",fill="#f8e1c4",font=TINY)
+        draw.text((x0+300,y0+620),"x1* = compiled star view; not a physical line",fill=INK,font=TINY)
     if not compact:
         box(draw,(x0+143,y0+245),(58,34),"w0",fill="#eadff4",font=TINY)
         box(draw,(x0+340,y0+625),(62,36),"d3",fill="#f1eafa",font=TINY)
@@ -315,7 +318,7 @@ def main():
     definitions=[
         (0,0,"1. Asset/property","Objects answer identity questions",asset),
         (1,0,"2. Terminal connectivity","Ordered conductor attachment maps",terminal),
-        (2,0,"3. Bus-branch multigraph","Study topology with parallel members",lambda d,x,y:physical(d,x,y,True)),
+        (2,0,"3. Bus-branch multigraph","Study topology; x1 shown as compiled star",lambda d,x,y:physical(d,x,y,True)),
         (0,1,"4. Port-factor","Arbitrary-arity behavioral relations",factor),
         (1,1,"5. OPF/equation","Variables, constraints and decisions",opf),
         (2,1,"6. Sparsity","Numerical dependency structure",sparsity),

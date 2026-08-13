@@ -1,5 +1,7 @@
 # [Orientation, terminal quantities, and power transfer](@id orientation-terminal-power)
 
+**Page status:** foundational definitions and terminology.
+
 ## Why an arrow is ambiguous
 
 Power-system diagrams, data formats, and optimization models use arrows for

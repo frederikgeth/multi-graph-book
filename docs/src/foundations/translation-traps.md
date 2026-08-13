@@ -1,5 +1,7 @@
 # [Translation traps: graphs, circuits, and power-system language](@id translation-traps)
 
+**Page status:** reviewed explanatory synthesis and controlled vocabulary.
+
 ## Why familiar words become dangerous
 
 Graph theory, circuit theory, and power-system practice each have internally

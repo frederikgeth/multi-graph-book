@@ -1,5 +1,7 @@
 # Guarded normalization rules
 
+**Page status:** candidate rule catalogue; individual rules require explicit certificates.
+
 This chapter begins a catalogue of candidate rules. Each rule distinguishes
 physical normalization from more general behavioral reduction.
 
@@ -188,4 +190,3 @@ distinct critical networks with the same boundary response. The inverse-network
 literature provides the appropriate caution [CurtisMorrow2000](@cite), while
 algebraic graph transformation provides tools for typed rules, critical pairs
 and confluence [Ehrig2006](@cite).
-

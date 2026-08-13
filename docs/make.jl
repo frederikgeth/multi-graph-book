@@ -1,5 +1,6 @@
 using Documenter
 using DocumenterCitations
+const USER_FONTCONFIG_FILE = get(ENV, "FONTCONFIG_FILE", nothing)
 import tectonic_jll
 
 # Documenter maps navigation depth to the PDF chapter hierarchy and then emits each page's H1
@@ -65,6 +66,9 @@ const PDF_NAME = "GraphModelsForPowerSystems.pdf"
 const GENERATED_PDF_NAME = "Structure-PreservingGraphModelsforPowerNetworks.pdf"
 const PDF_PATH = joinpath(@__DIR__, "latex_build", PDF_NAME)
 const GENERATED_PDF_PATH = joinpath(@__DIR__, "latex_build", GENERATED_PDF_NAME)
+# Prefer a working system Tectonic binary when supplied. This is useful on macOS
+# when the Julia artifact cache is incomplete or mismatched with the host runtime.
+const TECTONIC = get(ENV, "DOCUMENTER_TECTONIC", tectonic_jll.tectonic())
 
 # Documenter normally derives source links from the current Git commit. A freshly initialized
 # repository has no commit yet, so disable those links only until HEAD exists.
@@ -198,20 +202,65 @@ function make_html()
 end
 
 function make_latex()
-    makedocs(
-        sitename = SITENAME,
-        authors = AUTHORS,
-        format = Documenter.LaTeX(
-            platform = "tectonic",
-            version = VERSION,
-            tectonic = tectonic_jll.tectonic(),
-        ),
-        build = joinpath(@__DIR__, "latex_build"),
-        plugins = [bibliography()],
-        remotes = REMOTES,
-        pages = PAGES_PDF,
-        warnonly = false,
-    )
+    build = function ()
+        makedocs(
+            sitename = SITENAME,
+            authors = AUTHORS,
+            format = Documenter.LaTeX(
+                platform = "tectonic",
+                version = VERSION,
+                tectonic = TECTONIC,
+            ),
+            build = joinpath(@__DIR__, "latex_build"),
+            plugins = [bibliography()],
+            remotes = REMOTES,
+            pages = PAGES_PDF,
+            warnonly = false,
+        )
+    end
+
+    # Documenter's LaTeX preamble uses DejaVu Sans. On macOS, Fontconfig may
+    # know about the per-user font directory but have no writable cache path,
+    # so XeTeX/Tectonic can still fail to resolve the font. Supply a temporary,
+    # self-contained config when the caller has not provided one explicitly.
+    if Sys.isapple() && USER_FONTCONFIG_FILE === nothing
+        user_fonts = joinpath(homedir(), "Library", "Fonts")
+        if isdir(user_fonts)
+            # Tectonic's macOS sandbox can reject Fontconfig files under the
+            # per-process Julia temp directory, so keep this generated config
+            # in the conventional writable temporary directory instead.
+            config_dir = Sys.isapple() ? "/private/tmp" : tempdir()
+            cache_dir = joinpath(config_dir, "cache")
+            mkpath(cache_dir)
+            config_path = joinpath(config_dir, "multi-graph-book-fontconfig.conf")
+            write(
+                config_path,
+                """<?xml version=\"1.0\"?>
+<!DOCTYPE fontconfig SYSTEM \"fonts.dtd\">
+<fontconfig>
+  <dir>$(user_fonts)</dir>
+  <cachedir>$(cache_dir)</cachedir>
+  <config>
+    <rescan><int>30</int></rescan>
+  </config>
+</fontconfig>
+""",
+            )
+            # Populate the writable cache before XeTeX starts. Tectonic does
+            # not necessarily trigger a cache rebuild when it invokes XeTeX.
+            if Sys.which("fc-cache") !== nothing
+                withenv("FONTCONFIG_FILE" => config_path, "FONTCONFIG_PATH" => config_dir) do
+                    run(`fc-cache -f`)
+                end
+            end
+            withenv("FONTCONFIG_FILE" => config_path, "FONTCONFIG_PATH" => config_dir) do
+                build()
+            end
+            return
+        end
+    end
+
+    build()
 end
 
 run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_knowledge_base_indexes.py"))`)

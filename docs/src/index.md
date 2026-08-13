@@ -1,5 +1,7 @@
 # Structure-Preserving Graph Models for Power Networks
 
+**Page status:** reader-facing overview and navigation map.
+
 Power-network studies routinely speak of *the network graph*. In fact, several different
 structures are being conflated:
 
@@ -49,7 +51,7 @@ opening route.
 Then read:
 
 1. [Scope and thesis](@ref) for the scientific boundary and decision focus;
-2. [Representation taxonomy](@ref) for the model families and comparison axes;
+2. [Representation taxonomy](@ref representation-taxonomy) for the model families and comparison axes;
 3. [Formal representation frameworks](@ref formal-representation-frameworks) for mathematical definitions of the source and derived graph families;
 4. [Translation traps: graphs, circuits, and power-system language](@ref translation-traps) for precise replacements for familiar but underspecified phrases;
 5. [Orientation, terminal quantities, and power transfer](@ref orientation-terminal-power) for the distinction between topology, reference arrows, terminal signs, operating flow, and loss;

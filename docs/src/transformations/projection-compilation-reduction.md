@@ -1,5 +1,7 @@
 # Projection, compilation, and reduction
 
+**Page status:** foundational transformation definitions and scope boundaries.
+
 Transformations that all produce a different graph can have fundamentally
 different meanings. The following vocabulary is adopted throughout this book.
 

@@ -1,5 +1,7 @@
 # Terminology
 
+**Page status:** maintained glossary and translation aid.
+
 | Term | Meaning in this book |
 | --- | --- |
 | Asset | A physical or organizational entity with stable identity and lifecycle facts |

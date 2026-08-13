@@ -1,5 +1,7 @@
 # Research agenda
 
+**Page status:** proposal and open-work register.
+
 ## Research objective
 
 Develop a theory, reference architecture, and executable toolkit for

@@ -14,9 +14,34 @@ The roadmap separates **publication infrastructure**, **knowledge synthesis**,
 **formal results**, and **software/experiments** so that progress in one does
 not masquerade as completion of the others.
 
+## Current status and active plan (2026-08-13)
+
+The review-response foundation pass is substantially complete. The HTML-first
+knowledge base, curated PDF route, claims ledger, generated indexes, running
+fixture, graph-invariant witnesses, multiconductor parallel cases, transformer
+compilers, and positive-sequence collapse witness are implemented and locally
+validated. The native Tectonic fallback and PDF-safe diagram assets are also in
+place.
+
+The checklists below preserve the scientific record of that pass. They are not
+the active task queue. The active queue is the four milestones at the end of
+this file, ordered by dependency:
+
+1. integrity and reproducibility release;
+2. reduction evidence;
+3. graph architecture and topology;
+4. external validation and dissemination.
+
+The first two milestones are the publication gate for stronger decision-case
+claims. General formalization, broad adapters, and paper extraction remain
+deliberate follow-on work rather than prerequisites for the knowledge base.
+
 ## Phase 0 — Repository and editorial foundation
 
 **Target:** first two weeks.
+
+**Status:** local infrastructure, claims, generated indexes, HTML, and PDF
+are in place; CI/release verification remains in M1.
 
 - Choose the final title, repository name, license and citation metadata.
 - Establish Documenter HTML and PDF builds in CI.
@@ -32,6 +57,9 @@ either cited, labeled as a proposal, or entered as unresolved.
 ## Phase 1 — Systematic scoping review
 
 **Target:** months 1--2.
+
+**Status:** protocol, search strings, audit schema, and seed bibliography are
+versioned; executing and double-coding the searches remains in M4.
 
 Run reproducible searches across:
 
@@ -56,6 +84,10 @@ and a gap analysis stronger than the current provisional assessment.
 
 **Target:** months 2--4.
 
+**Status:** the core representation and translation foundations are drafted;
+independent review, checked composition, and broader topology witnesses remain
+in M1--M3.
+
 - Define asset graph and hierarchical port--factor semantics.
 - Separate undirected physical incidence, reference orientation, terminal-arc
   signs, operating-point power transfer, and genuinely directed relations.
@@ -71,10 +103,12 @@ and a gap analysis stronger than the current provisional assessment.
 **Exit criterion:** internally consistent Part I draft reviewed by experts from
 at least graph/formal methods and power-system modeling.
 
-## Current foundation refactor
+## Review-response foundation pass
 
-The next reader-facing milestone is a rigorous separation of representation
-frameworks and network-equivalent families.
+This completed pass established a rigorous separation of representation
+frameworks and network-equivalent families. Its unchecked boxes record open
+scientific boundaries, not a replacement task queue; use the active milestones
+below for prioritization.
 
 ### Stage A — first formal definitions
 
@@ -173,10 +207,15 @@ recorded in [`review/expert-review-response-2026-08-13.md`](review/expert-review
   realization proposition to its actual stamping claim;
 - [x] split claim **type** from verification **status**, render both in the
   book, and revise the README's independent-reproduction wording;
-- [ ] fix the six-versus-eight-variable count, running-fixture/spec drift,
-  tap-witness explanation, running-example policy, chapter-count statement,
-  taxonomy duplication, and monochrome figure violations;
-- [ ] remove reader-facing drafting-process notes from chapters and move them
+- [x] fix the six-versus-eight-variable count, running-fixture/spec drift,
+  tap-witness explanation, running-example policy, and chapter-count statement;
+- [x] make the compiled-star convention explicit in the generated multiview
+  figure and its caption text; remaining figure-family audits stay open;
+- [x] reconcile the taxonomy tables by making the four principal levels and
+  their orthogonal companions explicit; the formal-framework chapter now owns
+  the rigorous definitions while the taxonomy chapter owns the reader-facing map;
+- [ ] complete the remaining figure-family monochrome audit;
+- [x] remove reader-facing drafting-process notes from chapters and move them
   to the roadmap/contributing material.
 
 #### F1 — make the mathematical and numerical evidence auditable
@@ -196,7 +235,7 @@ recorded in [`review/expert-review-response-2026-08-13.md`](review/expert-review
   grounding, symmetry, and decision assumptions;
 - [x] add the earth/ground model taxonomy (ideal reference, reduced earth
   return, explicit earth conductor) and scope every result accordingly;
-- [ ] state explicitly which state-estimation, protection, contingency, and
+- [x] state explicitly which state-estimation, protection, contingency, and
   data-exchange promises are current content and which remain future work.
 
 #### F3 — connect the framework to practice
@@ -227,9 +266,14 @@ recorded in [`review/expert-review-response-2026-08-13.md`](review/expert-review
 #### F5 — publication and figure track
 
 - [ ] add the figure set prioritised in the response document (map of maps,
-  earth-return ladder, transformer anatomy, feasible-set geometry,
-  preservation-contract card, Kron fill-in, provenance lineage, and active
-  radiality panels);
+  Kron fill-in, provenance lineage, and active radiality panels);
+- [x] add a generated preservation-contract card with monochrome-safe labels;
+- [x] add a generated earth/neutral model-class ladder with explicit study
+  boundaries and monochrome-safe labels;
+- [x] add a generated three-winding transformer anatomy card with explicit
+  port bundles, auxiliary factors, recovery, and grounding scope;
+- [x] add a generated scalar parallel feasible-set geometry card showing the
+  outer aggregate relaxation and exact lifted interval;
 - [ ] prepare the three paper-sized extraction tracks, beginning with the
   multiconductor parallel-limit result; these are parallel dissemination
   work, not a prerequisite for the book's integrity fixes.
@@ -242,10 +286,11 @@ recorded in [`review/expert-review-response-2026-08-13.md`](review/expert-review
   status indexes from `claims/claims.toml` and `experiments/generated/`;
 - [x] move drafting-order language in the reviewed foundations into reader-
   facing scope/open-boundary language;
-- [ ] add chapter-level status metadata to every untracked explanatory page,
-  not only the generated status index;
-- [ ] generate representation/transformation/study/software facet indexes once
-  those fields are normalized in the claims schema;
+- [x] add chapter-level status metadata to every untracked explanatory page,
+  and render it in the generated status index;
+- [x] generate provisional representation/transformation/study/software facet
+  indexes from stable claim IDs and chapter paths; replace these with explicit
+  claim facets when the schema is normalized;
 - [ ] promote `experiments/transformations/` to a standalone package after
   its public API boundary is agreed;
 - [ ] review the stale `power-network-graph-models/` snapshot and remove it or
@@ -314,7 +359,7 @@ results.
 - Establish a versioned transformation registry and community review process.
 - Publish tagged book editions with archived source, PDF and bibliography.
 
-## Immediate next sprint
+## Completed baseline (archived vertical slice)
 
 The first executable vertical slice is complete:
 
@@ -424,38 +469,95 @@ The first executable vertical slice is complete:
     the ten highest-priority misconceptions to their rigorous foundation and
     decision consequences.
 
-The next sprint should:
+The numbered record above documents the completed first vertical slice. New
+work should be added to the active milestones below, not appended to this
+archive.
 
-1. implement a typed multiconductor Kron fixture that tests coordinate
-   covariance, internal-state recovery, original limits, and direct
-   line--shunt realizability;
-2. define hierarchy, open-system boundary gluing, and refinement maps, then
-   test them on the running network's grounding, switch, and transformer;
-3. compare exact Kron, an operating-point Ward equivalent, and an
-   Opti-KRON-style scenario approximation on common voltage, current,
-   constraint, and decision observations;
-4. execute and archive the first database searches, then populate the evidence
-   matrix with double-coded seed results;
-5. obtain independent reviews of the parallel, coordinate, series, and winding
-   transformation claims, prioritizing `TR-PAR-004` and `TR-XFMR-001`;
-6. extend the retained transformer-control domain to phase-angle,
-   independent-phase, mechanically coupled, automatic, and tap-dependent-loss
-   controls, and reproduce a case with an independently assembled primitive;
-7. extend the completed nominal-pi case to singular shunted maps, limits
-   implied by several retained members, and state-conditioned topology and
-   controls; add a global bound where required;
-8. replace prose interface entries with checked state-space and unit objects,
-   then strengthen composition beyond its current identity meeting check;
-9. add scheduled external-link checking without making ordinary builds depend
-   on publisher availability.
-10. lift the five-bus incidence and cycle-space objects to conductor-terminal
-   connectivity, compiled multi-terminal factors, and state-conditioned
-   radial-topology decisions.
-11. lift the active-state radiality certificate to the running network and
-    its switch/outage variants, reporting both adjacency-radial and
-    member-radial status.
-12. audit the remaining draft for the controlled shorthand vocabulary and add
-    executable counterexamples for connectivity versus energization, matrix
-    symmetry, and terminal-rating semantics.
-13. add typed four-wire phase-to-neutral and three-wire phase-to-phase
-    certificates, with explicit shunt, grounding, mesh, and recovery guards.
+## Active milestones
+
+### M1 — Integrity and reproducibility release
+
+**Priority:** immediate publication gate.
+
+- [ ] add or normalize page-status metadata for every reader-facing page and
+  make the generated chapter-status index agree with it;
+- [ ] complete the monochrome and print audit for the remaining figure family;
+- [ ] verify the HTML and PDF workflows in CI, including DejaVu font
+  availability and the native-Tectonic fallback documentation;
+- [ ] obtain independent reviews of the highest-risk claims, prioritizing
+  `TR-KRON-001`, `TR-PAR-004`, `TR-SER-001`, and `TR-XFMR-001`;
+- [ ] make claim type, verification state, artifact, and unresolved issue
+  cross-checks fail closed in the local and CI checks.
+
+**Exit criterion:** a clean release candidate whose claims, chapter statuses,
+figures, HTML, PDF, and generated artifacts agree and whose core theorem
+claims have an independent review record.
+
+### M2 — Reduction evidence
+
+**Priority:** next scientific tranche.
+
+- [ ] implement a typed multiconductor Kron fixture covering coordinate
+  covariance, internal-state recovery, original limits, and direct
+  line--shunt realizability;
+- [ ] compare exact Kron, an operating-point Ward equivalent, and an
+  Opti-KRON-style scenario approximation on common voltage, current,
+  constraint, and decision observations;
+- [ ] extend the nominal-``\pi`` and parallel-limit cases to singular maps,
+  jointly implied limits, and state/control-dependent models, adding global
+  bounds where required;
+- [ ] connect the numerical witnesses to BMOPFTools solver-exported
+  Jacobian/KKT and ordering-dependent factorization diagnostics;
+- [ ] extend transformer-control evidence to phase-angle, independent-phase,
+  mechanically coupled, automatic, and tap-dependent-loss controls.
+
+**Exit criterion:** a reproducible comparison showing when each reduction is
+exact, conservative, relaxed, or scenario-approximate for declared decision
+observations.
+
+### M3 — Graph architecture and topology
+
+**Priority:** after the first reduction comparison, with selected items able
+to proceed in parallel.
+
+- [ ] formalize hierarchy, refinement, open-system composition, and boundary
+  gluing, replacing prose interfaces with checked state-space and unit objects;
+- [ ] add a generated node--breaker fixture with open, closed, and unknown
+  switch states;
+- [ ] lift the five-bus cycle and radiality witnesses to conductor-terminal
+  connectivity, compiled multi-terminal factors, and state-conditioned
+  topology decisions;
+- [ ] lift active-state radiality to the running network and switch/outage
+  variants, reporting adjacency-radial and member-radial status;
+- [ ] agree the public API boundary before promoting
+  `experiments/transformations/` to a standalone package.
+
+**Exit criterion:** the proposed representation architecture has checked maps
+and topology witnesses on the running network, not only prose definitions.
+
+### M4 — External validation and dissemination
+
+**Priority:** parallel track; not a gate on M1--M3 unless a result is used to
+support a stronger claim.
+
+- [ ] execute and archive the planned database searches and populate the
+  evidence matrix with double-coded seed results;
+- [ ] add scheduled external-link checking without making ordinary builds
+  depend on publisher availability;
+- [ ] add selected version-pinned CIM/CGMES, OpenDSS, and
+  PowerModelsDistribution crosswalk tests;
+- [ ] complete the map-of-maps, Kron fill-in, provenance-lineage, and active
+  radiality figure set;
+- [ ] prepare the three paper-sized extraction tracks after M1 corrections;
+- [ ] review the stale `power-network-graph-models/` snapshot and remove or
+  archive it once its historical status is confirmed.
+
+**Exit criterion:** external sources, adapters, figures, and paper extracts
+are traceable to the same claims and artifacts as the book.
+
+## Deliberately deferred
+
+Lean formalization, broad category-theoretic claims, a full explicit-earth and
+protection implementation, and a general optimizer-independent release remain
+Phase 5--6 work. They should not expand the M1--M4 scope until the reduction
+evidence and independent review gates are met.

@@ -64,3 +64,9 @@ An adapter should publish:
 The crosswalk is therefore a starting vocabulary, not a certification that a
 file imported successfully is semantically equivalent to the source model.
 
+The same boundary applies to study semantics: an exchange adapter can preserve
+identifiers and terminal maps while still omitting estimator covariances,
+protection-zone logic, contingency state, or profile-specific validity rules.
+Those omissions must be reported as unsupported fields in the adapter record;
+successful parsing is not evidence that a PF, OPF, state-estimation, fault, or
+protection study has been preserved.

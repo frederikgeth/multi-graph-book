@@ -27,8 +27,13 @@ YBUS_JACOBIAN_WITNESS = GENERATED / "ybus-jacobian-witness.json"
 YBUS_JACOBIAN_FIGURE = ROOT / "docs/src/assets/ybus-jacobian-witness.svg"
 NONLINEAR_KKT_WITNESS = GENERATED / "nonlinear-kkt-witness.json"
 NONLINEAR_KKT_FIGURE = ROOT / "docs/src/assets/nonlinear-kkt-witness.svg"
+PRESERVATION_CONTRACT_CARD = ROOT / "docs/src/assets/preservation-contract-card.svg"
+EARTH_RETURN_LADDER = ROOT / "docs/src/assets/earth-return-ladder.svg"
+TRANSFORMER_ANATOMY = ROOT / "docs/src/assets/transformer-anatomy.svg"
+PARALLEL_FEASIBLE_SET_CARD = ROOT / "docs/src/assets/parallel-feasible-set-card.svg"
 KNOWLEDGE_BASE_INDEX = ROOT / "docs/src/reference/knowledge-base-index.md"
 CHAPTER_STATUS = ROOT / "docs/src/reference/chapter-status.md"
+PAGE_STATUS = re.compile(r"^\*\*Page status:\*\*\s*(.+?)\s*$", re.MULTILINE)
 FIVE_BUS_FIGURES = {
     "cycle_basis": ROOT / "docs/src/assets/five-bus-cycle-basis.png",
     "transformation_map": ROOT / "docs/src/assets/five-bus-transformation-map.png",
@@ -294,6 +299,10 @@ def main() -> int:
         YBUS_JACOBIAN_FIGURE,
         NONLINEAR_KKT_WITNESS,
         NONLINEAR_KKT_FIGURE,
+        PRESERVATION_CONTRACT_CARD,
+        EARTH_RETURN_LADDER,
+        TRANSFORMER_ANATOMY,
+        PARALLEL_FEASIBLE_SET_CARD,
         KNOWLEDGE_BASE_INDEX,
         CHAPTER_STATUS,
         FIVE_BUS_FIGURE_MANIFEST,
@@ -331,6 +340,14 @@ def main() -> int:
         stamp = next((line for line in first_lines if "generated-from claims/claims.toml sha256:" in line), "")
         if not stamp.endswith(claims_hash + " -->"):
             errors.append(f"{generated_page.relative_to(ROOT)} is stale relative to claims/claims.toml")
+
+    tracked_chapters = {claim["chapter"] for claim in claims}
+    for chapter_path in sorted((ROOT / "docs/src").rglob("*.md")):
+        if chapter_path in (KNOWLEDGE_BASE_INDEX, CHAPTER_STATUS):
+            continue
+        chapter = chapter_path.relative_to(ROOT).as_posix()
+        if chapter not in tracked_chapters and PAGE_STATUS.search(chapter_path.read_text()) is None:
+            errors.append(f"untracked explanatory page lacks Page status metadata: {chapter}")
 
     architecture = load_json(PORT_FACTOR_ARCHITECTURE)
     if architecture.get("claim_id") not in claim_ids:

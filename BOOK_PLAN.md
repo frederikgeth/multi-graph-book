@@ -280,7 +280,7 @@ BMOPFTools fixtures will be added only after its semantic contract is reviewed.
 
 ## First drafting cycle
 
-The first complete internal milestone is not all 51 planned chapters. It is a coherent vertical slice:
+The first complete internal milestone is not the full planned book. It is a coherent vertical slice:
 
 1. one network, many graphs;
 2. notation and representation taxonomy;

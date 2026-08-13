@@ -119,7 +119,7 @@ and ``r`` are parallel. Eliminating ``j`` then adds the ``i``--``l`` fill edge
 to the projected pattern. The lower panel is a declared equation-variable
 dependency pattern, not a claim about numerical derivative values:
 
-![Structural incidence, fill-in, and Jacobian dependency witness.](../assets/numerical-structure-witness.svg)
+![Structural incidence, fill-in, and Jacobian dependency witness.](../assets/numerical-structure-witness.png)
 
 The data and checks are recorded in
 `experiments/generated/numerical-structure-witness.json`; the renderer is
@@ -145,7 +145,7 @@ the complex current relation gives a 40-by-40 real matrix with 664 nonzeros:
 \begin{bmatrix}\Re V\\ \Im V\end{bmatrix}.
 ```
 
-![Generated passive Ybus and realified current-Jacobian patterns.](../assets/ybus-jacobian-witness.svg)
+![Generated passive Ybus and realified current-Jacobian patterns.](../assets/ybus-jacobian-witness.png)
 
 The condition estimate for the unscaled passive matrix is approximately
 ``2.49\times10^{17}`` in the reported 2-norm, while simple row/column
@@ -180,7 +180,13 @@ vectors. The aggregate formulation replaces them by one summed current law.
 At the recorded operating point both residuals are exactly zero, but their
 finite-difference Jacobians and KKT patterns differ:
 
-![Nonlinear source and aggregate KKT sparsity and fill witness.](../assets/nonlinear-kkt-witness.svg)
+For avoidance of a common counting error, the source witness has four complex
+member-current coordinates, represented as eight real variables, in addition to
+the five retained real coordinates. It therefore has 13 real source variables;
+the aggregate witness has five real variables. The reduction removes eight real
+variables (four complex currents), not six.
+
+![Nonlinear source and aggregate KKT sparsity and fill witness.](../assets/nonlinear-kkt-witness.png)
 
 | formulation | residual Jacobian | KKT dimension | natural fill | constraints-first fill |
 | --- | ---: | ---: | ---: | ---: |
@@ -200,6 +206,23 @@ The complete finite-difference and symbolic-fill artifact is
 nonlinear decision witness rather than a solver-internal Ipopt KKT export. A
 future tranche should connect the same reporting schema to BMOPFTools' checked
 KKT/DiffOpt path and compare actual factorization diagnostics.
+
+### Numerical evidence boundary
+
+The three numerical artifacts answer different questions and should not be
+collapsed into one solver claim:
+
+| Artifact | What is measured | What it does not establish |
+| --- | --- | --- |
+| structural witness | incidence, dependency, and symbolic fill edges | numerical derivative values or solver performance |
+| `Ybus`/Jacobian witness | pinned passive and constant-``Z`` matrix patterns, rank, and conditioning diagnostics | nonlinear OPF sensitivities, active-set stability, or factorization timings |
+| nonlinear KKT witness | finite-difference residual structure and symbolic fill under two declared orders | Ipopt's internal derivative graph, linear-solver pivoting, or global optimality |
+
+An actual solver diagnostic would need to bind the exported derivative rows and
+columns to the source/target variable order, record scaling and tolerances,
+identify the linear solver and ordering, and retain the factorization or
+inertia report. Until that export exists, the chapter's KKT language is a
+symbolic comparison, not an implementation claim about a production solver.
 
 ## Elimination and fill-in
 

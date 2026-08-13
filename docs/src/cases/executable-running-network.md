@@ -41,7 +41,9 @@ definitions:
 1. the asset/property view retains stable physical identity;
 2. the terminal view exposes ordered conductor mappings and grounding;
 3. the bus--branch multigraph supports conventional network algorithms while
-   retaining ``\ell_1`` and ``\ell_2`` separately;
+   retaining ``\ell_1`` and ``\ell_2`` separately. In the figure, ``x_1^*`` is
+   an explicitly labelled compiled star used to draw the multi-terminal device;
+   it is not a claim that the transformer is physically three two-terminal lines;
 4. the port--factor view represents ``x_1`` as one factor of arity three;
 5. the OPF graph makes variables, constraints, limits, and decisions explicit;
 6. the sparsity graph records numerical coupling but does not claim that a
@@ -105,6 +107,16 @@ PF, and OPF outputs are retained under
 `experiments/generated/clean-reproduction`. This establishes a pinned local
 reproduction at that commit; it is not a tagged BMOPFTools release, a guarantee
 of bit-identical nonlinear solver iterates, or an independent-solver result.
+
+### Version 0.1.0 realization boundary
+
+The versioned fixture is the current numerical contract, not a silent completion
+of every object in the semantic specification. It includes the declared ``d_4``
+delta demand and ``h_{\mathrm{ref}}`` tertiary reference shunt, and it retains
+``w_0`` as a fixed closed switch. It does not add an undeclared ``g_2`` generator
+or any other convenience object merely to make a continuous solve look more
+complete. Future fixture versions may promote semantic-only controls, but must
+change the version, source hashes, and provenance together.
 
 ## What remains semantic-only
 

@@ -61,6 +61,18 @@ installation is not required:
 julia --project=docs docs/make.jl --pdf
 ```
 
+On macOS, if the bundled Julia artifact is unavailable or mismatched, install a native Tectonic
+binary with Homebrew and point Documenter at it:
+
+```bash
+brew install tectonic font-dejavu
+DOCUMENTER_TECTONIC="$(command -v tectonic)" julia --project=docs docs/make.jl --pdf
+```
+
+The override is optional and affects only the PDF compiler; HTML uses no TeX installation.
+The build script supplies a temporary Fontconfig path for the per-user Homebrew font
+installation, so no global font-cache configuration is required.
+
 Outputs are written to `docs/build/` and `docs/latex_build/`.
 
 ## Run the executable slice

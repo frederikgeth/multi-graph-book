@@ -1,5 +1,7 @@
 # One network, many graphs
 
+**Page status:** explanatory synthesis introducing the representation landscape.
+
 Calling something *the network graph* hides the modelling decision that produced it. The same
 physical power network can yield several non-isomorphic structures, each correct for some questions
 and inadequate for others.
@@ -122,7 +124,7 @@ certificate.
 
 ## The route through the book
 
-The [Representation taxonomy](@ref) separates the major model families. [Notation and modelling
+The [Representation taxonomy](@ref representation-taxonomy) separates the major model families. [Notation and modelling
 conventions](@ref) fixes the element, arc, terminal, and winding indices. [Representation
 architecture](@ref) presents the proposed linked reference architecture. The transformation parts
 then ask which views can be derived, under what guards, and with what consequences for feasible

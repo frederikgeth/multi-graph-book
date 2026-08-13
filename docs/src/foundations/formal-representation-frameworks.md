@@ -11,6 +11,12 @@ The frameworks are not one chain from detailed to simple. Three describe
 different electrical resolutions, one records orthogonal physical and
 organizational relations, and another family is compiled for computation.
 
+The companion [representation taxonomy](@ref representation-taxonomy) is the
+reader-facing level map; this chapter is its normative mathematical
+specification. In particular, equation and sparsity graphs are computational
+projections, not a fifth semantic level, and the asset/dependency model is
+linked to—but not nested inside—the electrical port--factor model.
+
 | Framework | Primary purpose | Status |
 |:--|:--|:--|
 | simple topology graph | connectivity, islands, partitioning, and algorithms that cannot use parallel edges | derived quotient |

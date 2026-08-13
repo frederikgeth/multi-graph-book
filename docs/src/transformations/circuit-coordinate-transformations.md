@@ -1,5 +1,7 @@
 # [Circuit coordinate transformations: phase-to-neutral and phase-to-phase](@id circuit-coordinate-transformations)
 
+**Page status:** guarded transformation definitions with executable witnesses.
+
 ## Why these are transformations, not graph deletions
 
 The attached four-wire and three-wire manuscripts make an important distinction

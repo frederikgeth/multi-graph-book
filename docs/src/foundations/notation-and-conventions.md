@@ -1,5 +1,7 @@
 # Notation and modelling conventions
 
+**Page status:** maintained modelling convention; not a standalone empirical claim.
+
 This page fixes the index discipline and physical conventions used throughout the book. The
 starting point is the notation of the BMOPFTools model specification, generalized only where the
 book must discuss representations that BMOPFTools does not directly implement.
@@ -211,6 +213,13 @@ The mathematical prose distinguishes:
 The HTML may use colour to distinguish real and complex quantities or parameters and variables,
 following BMOPFTools. No definition may depend on colour: typography, prose, and context must remain
 complete in monochrome PDF output.
+
+The same rule applies to generated figures. Titles, labels, line styles, panel
+placement, and captions carry the interpretation; colour only provides a
+secondary visual cue. In matrix-pattern figures, filled cells mean nonzeros
+and the panel title identifies the matrix or formulation. In the running
+network multiview, ``x_1^*`` is labelled as a compiled star so its orange
+styling is not the sole indication of compilation.
 
 ## Units and coordinate systems
 
