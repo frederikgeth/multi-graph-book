@@ -1,5 +1,7 @@
 # Scope and thesis
 
+**Page status:** reader-facing scope contract and methodological thesis.
+
 ## The problem
 
 Much power-system analysis starts from a bus--branch graph

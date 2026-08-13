@@ -1,5 +1,8 @@
 # [Certificate schema and composition](@id certificate-schema-composition)
 
+**Page status:** versioned certificate schema and composition contract;
+associativity and richer interface compatibility remain open.
+
 A transformation result is useful only if downstream work can determine what
 it means. Version 1.1.0 of the book's transformation-certificate interface is
 defined by `schemas/transformation-certificate.schema.json`.

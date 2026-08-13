@@ -28,6 +28,10 @@ julia --project=experiments experiments/run_pi_four_wire_parallel_ac.jl
 julia --project=experiments experiments/run_five_bus_cycle_space.jl
 julia --project=experiments experiments/run_translation_traps.jl
 julia --project=experiments experiments/run_active_radiality.jl
+julia --project=experiments experiments/test/typed_kron.jl
+julia --project=experiments experiments/run_typed_kron.jl
+julia --project=experiments experiments/test/kron_ward_scenario.jl
+julia --project=experiments experiments/run_kron_ward_scenario.jl
 python3 experiments/generate_five_bus_cycle_figure.py
 python3 experiments/generate_numerical_structure_views.py
 julia --project=experiments experiments/run_ybus_jacobian_witness.jl
@@ -133,8 +137,17 @@ that passes at `ij` but fails at `ji`.
 - `experiments/generated/nonlinear-kkt-witness.json`: a finite-difference
   nonlinear parallel-member/aggregate decision Jacobian and symbolic KKT
   fill comparison under two elimination orders.
+- `experiments/generated/typed-kron-witness.json`: a package-independent
+  multiconductor Kron fixture covering coordinate covariance, affine boundary
+  recovery, source-current limits, and positive/negative line--shunt library
+  realizability cases.
+- `experiments/generated/typed-kron-certificate.json`: the version 1.1.0
+  preservation certificate for that typed Kron fixture.
+- `experiments/generated/kron-ward-scenario-comparison.json`: a shared
+  observation comparison of exact Kron, a base-state Ward-style equivalent,
+  and a sparsity-penalized scenario-selected target.
 
-All fifteen transformation artifacts conform to version 1.1.0 of
+All sixteen transformation artifacts conform to version 1.1.0 of
 `schemas/transformation-certificate.schema.json`. The checker enforces the
 common required fields, six typed interfaces, classifications, identifiers,
 and claim registration.

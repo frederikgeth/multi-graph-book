@@ -1,5 +1,8 @@
 # [Formal representation frameworks](@id formal-representation-frameworks)
 
+**Page status:** formal framework definitions with a checked structural
+architecture witness; evaluated-factor coverage remains open.
+
 ## Purpose and status
 
 This chapter gives a first mathematical specification of the principal

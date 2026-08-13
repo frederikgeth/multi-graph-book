@@ -1,5 +1,8 @@
 # [Conductor-coordinate normalization](@id conductor-coordinate-normalization)
 
+**Page status:** guarded exact coordinate transformation with an executable
+certificate; independent mathematical review remains open.
+
 Conductor order is representation, not physics. It is nevertheless part of
 the meaning of every vector, matrix, and componentwise constraint. A rewrite
 that changes an order without changing all dependent objects is therefore a

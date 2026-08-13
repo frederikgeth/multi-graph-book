@@ -1,5 +1,8 @@
 # [Multiwinding leakage reference compilation](@id multiwinding-leakage-reference-compilation)
 
+**Page status:** exact reference-compilation construction with executable
+round-trip evidence; independent transformer review remains open.
+
 Pairwise short-circuit data are a compact source description of transformer
 leakage, but they are not yet the matrix relation required by a
 multiconductor network model. This chapter gives an exact compilation for an

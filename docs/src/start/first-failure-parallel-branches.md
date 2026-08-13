@@ -1,5 +1,8 @@
 # [A first failure: heterogeneous parallel branches](@id first-failure-parallel-branches)
 
+**Page status:** introductory counterexample with executable scalar and
+multiconductor evidence; independent mathematical review remains open.
+
 ## The tempting replacement
 
 Consider two scalar resistive branches ``\ell_1 i j`` and ``\ell_2 i j`` with

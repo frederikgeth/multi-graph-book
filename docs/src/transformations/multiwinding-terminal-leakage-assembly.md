@@ -1,5 +1,8 @@
 # [Multiwinding terminal leakage assembly](@id multiwinding-terminal-leakage-assembly)
 
+**Page status:** guarded exact terminal assembly with executable certificates;
+tap-dependent and excitation extensions remain open.
+
 The pairwise-leakage compilation produces a relation among winding coil
 coordinates. A network model, however, connects transformer terminals to
 buses. This chapter composes the leakage relation with the winding connection

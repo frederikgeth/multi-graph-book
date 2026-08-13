@@ -1,5 +1,8 @@
 # [Cycles, parallelism, and radial structure](@id cycles-parallelism-radiality)
 
+**Page status:** representation-scoped graph definitions with executable
+invariant witnesses; conductor-terminal and state-conditioned lifts remain open.
+
 ## Why these words need a representation
 
 Power-system discussions often say that a network has a cycle, a parallel line,

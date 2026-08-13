@@ -1,5 +1,8 @@
 # [Parameterized transformer tap decisions](@id parameterized-transformer-tap-decisions)
 
+**Page status:** exact parameterized tap-factor construction with solver-backed
+evidence; broader control domains remain open.
+
 A fixed transformer primitive is a snapshot, not a decision model. If a tap is
 continuous or discrete, substituting its start value before optimization
 removes feasible operating points, the decision identity, and any objective or

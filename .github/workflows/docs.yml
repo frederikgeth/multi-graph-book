@@ -24,6 +24,12 @@ jobs:
 
       - uses: julia-actions/cache@v2
 
+      - name: Install PDF font dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fontconfig fonts-dejavu-core
+          fc-cache -f
+
       - name: Instantiate documentation environment
         run: julia --project=docs -e 'using Pkg; Pkg.instantiate()'
 
@@ -36,6 +42,9 @@ jobs:
       - name: Check generated artifacts and local links
         run: python3 scripts/check_artifacts.py
 
+      - name: Check figure accessibility and monochrome audit
+        run: python3 scripts/check_figures.py
+
       - name: Test package-independent transformations
         run: |
           julia experiments/test/series_elimination.jl
@@ -44,12 +53,17 @@ jobs:
           julia experiments/test/multiwinding_leakage_compilation.jl
           julia experiments/test/multiwinding_terminal_assembly.jl
           julia experiments/test/transformer_factor_completion_core.jl
+          julia --project=experiments experiments/test/typed_kron.jl
+          julia --project=experiments experiments/test/kron_ward_scenario.jl
 
       - name: Build HTML and PDF
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DOCUMENTER_SKIP_DEPLOY: '1'
         run: julia --project=docs docs/make.jl --pdf
+
+      - name: Check generated indexes are committed
+        run: git diff --exit-code -- docs/src/reference/knowledge-base-index.md docs/src/reference/chapter-status.md
 
       - name: Upload PDF
         uses: actions/upload-artifact@v4

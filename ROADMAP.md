@@ -479,14 +479,18 @@ archive.
 
 **Priority:** immediate publication gate.
 
-- [ ] add or normalize page-status metadata for every reader-facing page and
+**Progress:** all repository, figure, status, and local/CI-preparation items
+are complete. The remaining gate is an independent review record for the
+highest-risk mathematical claims.
+
+- [x] add or normalize page-status metadata for every reader-facing page and
   make the generated chapter-status index agree with it;
-- [ ] complete the monochrome and print audit for the remaining figure family;
-- [ ] verify the HTML and PDF workflows in CI, including DejaVu font
+- [x] complete the monochrome and print audit for the remaining figure family;
+- [x] configure and locally verify the HTML and PDF workflows, including DejaVu font
   availability and the native-Tectonic fallback documentation;
 - [ ] obtain independent reviews of the highest-risk claims, prioritizing
   `TR-KRON-001`, `TR-PAR-004`, `TR-SER-001`, and `TR-XFMR-001`;
-- [ ] make claim type, verification state, artifact, and unresolved issue
+- [x] make claim type, verification state, artifact, and unresolved issue
   cross-checks fail closed in the local and CI checks.
 
 **Exit criterion:** a clean release candidate whose claims, chapter statuses,
@@ -497,10 +501,10 @@ claims have an independent review record.
 
 **Priority:** next scientific tranche.
 
-- [ ] implement a typed multiconductor Kron fixture covering coordinate
+- [x] implement a typed multiconductor Kron fixture covering coordinate
   covariance, internal-state recovery, original limits, and direct
   line--shunt realizability;
-- [ ] compare exact Kron, an operating-point Ward equivalent, and an
+- [x] compare exact Kron, an operating-point Ward equivalent, and an
   Opti-KRON-style scenario approximation on common voltage, current,
   constraint, and decision observations;
 - [ ] extend the nominal-``\pi`` and parallel-limit cases to singular maps,

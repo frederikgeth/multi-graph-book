@@ -19,7 +19,9 @@ TRANSFORMER_CONTRACTS = (TRANSFORMER_CONTRACT, TRANSFORMER_TAP_CONTRACT)
 GENERATED = ROOT / "experiments/generated"
 PORT_FACTOR_ARCHITECTURE = GENERATED / "port-factor-architecture.json"
 POSITIVE_SEQUENCE_WITNESS = GENERATED / "positive-sequence-collapse-witness.json"
+KRON_WARD_SCENARIO = GENERATED / "kron-ward-scenario-comparison.json"
 FIGURE = ROOT / "docs/src/assets/running-network-views.png"
+FIGURE_AUDIT = ROOT / "docs/src/assets/figure-audit.json"
 FIVE_BUS_ANALYSIS = GENERATED / "five-bus-cycle-space-analysis.json"
 NUMERICAL_STRUCTURE_WITNESS = GENERATED / "numerical-structure-witness.json"
 NUMERICAL_STRUCTURE_FIGURE = ROOT / "docs/src/assets/numerical-structure-witness.svg"
@@ -59,6 +61,7 @@ CERTIFICATES = (
     "multiconductor-parallel-ac-certificate.json",
     "four-wire-parallel-ac-certificate.json",
     "pi-four-wire-parallel-ac-certificate.json",
+    "typed-kron-certificate.json",
 )
 EXPECTED_VIEWS = {
     "asset_property",
@@ -290,6 +293,7 @@ def main() -> int:
         FIXTURE,
         *TRANSFORMER_CONTRACTS,
         FIGURE,
+        FIGURE_AUDIT,
         *FIVE_BUS_FIGURES.values(),
         GENERATED / "summary.json",
         FIVE_BUS_ANALYSIS,
@@ -311,6 +315,8 @@ def main() -> int:
         GENERATED / "provenance.json",
         PORT_FACTOR_ARCHITECTURE,
         POSITIVE_SEQUENCE_WITNESS,
+        KRON_WARD_SCENARIO,
+        GENERATED / "typed-kron-witness.json",
         SOURCE_MAP,
         CLEAN_REPRODUCTION / "v0.1.0.json",
         CLEAN_REPRODUCTION / "summary.json",
@@ -341,13 +347,12 @@ def main() -> int:
         if not stamp.endswith(claims_hash + " -->"):
             errors.append(f"{generated_page.relative_to(ROOT)} is stale relative to claims/claims.toml")
 
-    tracked_chapters = {claim["chapter"] for claim in claims}
     for chapter_path in sorted((ROOT / "docs/src").rglob("*.md")):
         if chapter_path in (KNOWLEDGE_BASE_INDEX, CHAPTER_STATUS):
             continue
         chapter = chapter_path.relative_to(ROOT).as_posix()
-        if chapter not in tracked_chapters and PAGE_STATUS.search(chapter_path.read_text()) is None:
-            errors.append(f"untracked explanatory page lacks Page status metadata: {chapter}")
+        if PAGE_STATUS.search(chapter_path.read_text()) is None:
+            errors.append(f"reader-facing page lacks Page status metadata: {chapter}")
 
     architecture = load_json(PORT_FACTOR_ARCHITECTURE)
     if architecture.get("claim_id") not in claim_ids:
@@ -376,6 +381,20 @@ def main() -> int:
         errors.append("positive-sequence circulant witness does not preserve the positive subspace")
     if rejected_sequence.get("sequence_diagonal_residual", 0.0) <= 1.0e-3:
         errors.append("positive-sequence negative witness no longer mixes sequences")
+
+    kron_ward = load_json(KRON_WARD_SCENARIO)
+    if kron_ward.get("claim_id") not in claim_ids or kron_ward.get("witness_id") != "TR-KRON-002":
+        errors.append("Kron/Ward/scenario comparison uses an invalid claim or witness ID")
+    if kron_ward.get("selected_candidate") == "full_kron" or kron_ward.get("selected_is_exact") is not False:
+        errors.append("scenario comparison no longer demonstrates a non-exact structural selection")
+    checks = kron_ward.get("checks", {})
+    for name in ("exact_kron_base_relation", "ward_is_operating_point_only", "scenario_selection_is_structural", "all_candidate_observations_reported"):
+        if checks.get(name) is not True:
+            errors.append(f"Kron/Ward/scenario comparison check failed: {name}")
+    if not any(row.get("base_exact") and row.get("current_error_norm", 1.0) <= 1e-12 for row in kron_ward.get("ward_rows", [])):
+        errors.append("Ward comparison lost its exact base operating-point row")
+    if not any((not row.get("base_exact")) and row.get("current_error_norm", 0.0) > 1e-4 for row in kron_ward.get("ward_rows", [])):
+        errors.append("Ward comparison no longer exposes off-base error")
 
     cycle_analysis = load_json(FIVE_BUS_ANALYSIS)
     if cycle_analysis.get("analysis_id") not in claim_ids:

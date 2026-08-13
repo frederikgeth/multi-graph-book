@@ -1,5 +1,8 @@
 # [Fixed-linear transformer factor completion](@id fixed-linear-transformer-factor-completion)
 
+**Page status:** guarded fixed-linear transformer completion with an executable
+anatomy witness; broader rating and control models remain open.
+
 The leakage factor is only one part of a transformer model. A linear phasor
 model may also contain fixed ideal voltage transfers, a no-load excitation
 branch, and transformer-internal neutral grounding. These components can be

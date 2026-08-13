@@ -1,5 +1,8 @@
 # [Transformer tap AC decision case](@id transformer-tap-ac-decision-case)
 
+**Page status:** solver-backed transformer-control case with independent local
+reproduction; broader control and global-optimality claims remain open.
+
 The fixed-voltage witness in the previous chapter proves that evaluating a tap
 start value can remove the best decision. This case takes the next step: the
 tap-dependent 11-terminal transformer factor is stamped into nonlinear network

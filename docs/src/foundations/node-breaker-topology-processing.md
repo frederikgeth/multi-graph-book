@@ -1,5 +1,8 @@
 # [Node--breaker, bus--breaker, and topology processing](@id node-breaker-topology)
 
+**Page status:** scoped topology-processing definitions; generated switch-state
+fixture coverage remains future work.
+
 Topology processing is a state-conditioned compilation. It is not the same as
 deleting switches from a graph or replacing every closed switch by a zero
 impedance line without recording the state that justified the replacement.
@@ -122,4 +125,3 @@ the discrete extension must retain ``w_0`` as an asset and state variable. The
 parallel lines ``\ell_1`` and ``\ell_2`` remain separate identified factors
 after topology processing; their common endpoint pair does not authorize
 aggregation.
-

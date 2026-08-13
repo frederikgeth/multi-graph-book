@@ -1,5 +1,8 @@
 # [When the general model collapses](@id positive-sequence-collapse)
 
+**Page status:** controlled positive-sequence specialization with an executable
+witness; a complete balanced transmission fixture remains open.
+
 The general multiconductor, multi-terminal model is a baseline for preserving
 meaning. It is not a claim that every study needs all of that structure. This
 chapter gives a positive derivation of the familiar balanced positive-sequence

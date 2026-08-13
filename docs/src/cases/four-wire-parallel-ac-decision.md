@@ -1,5 +1,8 @@
 # [Non-proportional three-phase four-wire parallel case](@id four-wire-parallel-ac-case)
 
+**Page status:** guarded AC decision case with self-checked and independently
+reproduced numerical evidence; broader global claims remain open.
+
 This case reuses the canonical member-versus-aggregate distinction from
 [the first scalar counterexample](@ref first-failure-parallel-branches); its
 new content is the non-proportional four-wire current map and joint quadratic

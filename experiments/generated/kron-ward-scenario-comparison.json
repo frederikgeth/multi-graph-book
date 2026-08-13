@@ -1,0 +1,180 @@
+{
+    "checks": {
+        "all_candidate_observations_reported": true,
+        "ward_is_operating_point_only": true,
+        "scenario_selection_is_structural": true,
+        "exact_kron_base_relation": true
+    },
+    "claim_id": "TR-KRON-002",
+    "source_fixture": "kron_ward_scenario_fixture_v0.1.0",
+    "ward_rows": [
+        {
+            "scenario": "base",
+            "relative_current_error": 0,
+            "base_exact": true,
+            "current_error_norm": 0
+        },
+        {
+            "scenario": "high_load",
+            "relative_current_error": 0.016760029614449605,
+            "base_exact": false,
+            "current_error_norm": 0.03429543446559884
+        },
+        {
+            "scenario": "low_voltage",
+            "relative_current_error": 0.01507949509360481,
+            "base_exact": false,
+            "current_error_norm": 0.03027748428986435
+        },
+        {
+            "scenario": "internal_outage_proxy",
+            "relative_current_error": 0.0333999798699107,
+            "base_exact": false,
+            "current_error_norm": 0.07497621860069878
+        }
+    ],
+    "witness_id": "TR-KRON-002",
+    "selected_candidate": "banded_structural",
+    "scenario_objective": {
+        "full_kron": 0.3504059621050664,
+        "diagonal_structural": 1.3583230675275795,
+        "banded_structural": 0.32771661172139444
+    },
+    "candidate_rows": {
+        "base": [
+            {
+                "structural_nnz": 9,
+                "relative_current_error": 0,
+                "predicted_limit_satisfied": false,
+                "current_error_norm": 0,
+                "candidate": "full_kron"
+            },
+            {
+                "structural_nnz": 3,
+                "relative_current_error": 1.1342919701867553,
+                "predicted_limit_satisfied": false,
+                "current_error_norm": 2.490169336650066,
+                "candidate": "diagonal_structural"
+            },
+            {
+                "structural_nnz": 7,
+                "relative_current_error": 0.24273736888923103,
+                "predicted_limit_satisfied": false,
+                "current_error_norm": 0.5328937952082637,
+                "candidate": "banded_structural"
+            }
+        ],
+        "low_voltage": [
+            {
+                "structural_nnz": 9,
+                "relative_current_error": 0.01507949509360481,
+                "predicted_limit_satisfied": true,
+                "current_error_norm": 0.03027748428986435,
+                "candidate": "full_kron"
+            },
+            {
+                "structural_nnz": 3,
+                "relative_current_error": 1.101967337816751,
+                "predicted_limit_satisfied": false,
+                "current_error_norm": 2.212593893335346,
+                "candidate": "diagonal_structural"
+            },
+            {
+                "structural_nnz": 7,
+                "relative_current_error": 0.22861041007782823,
+                "predicted_limit_satisfied": false,
+                "current_error_norm": 0.4590172321198204,
+                "candidate": "banded_structural"
+            }
+        ],
+        "high_load": [
+            {
+                "structural_nnz": 9,
+                "relative_current_error": 0.016760029614449605,
+                "predicted_limit_satisfied": true,
+                "current_error_norm": 0.03429543446559884,
+                "candidate": "full_kron"
+            },
+            {
+                "structural_nnz": 3,
+                "relative_current_error": 1.162089589773562,
+                "predicted_limit_satisfied": false,
+                "current_error_norm": 2.3779413453347074,
+                "candidate": "diagonal_structural"
+            },
+            {
+                "structural_nnz": 7,
+                "relative_current_error": 0.2573177330020946,
+                "predicted_limit_satisfied": false,
+                "current_error_norm": 0.526539848199403,
+                "candidate": "banded_structural"
+            }
+        ],
+        "internal_outage_proxy": [
+            {
+                "structural_nnz": 9,
+                "relative_current_error": 0.0333999798699107,
+                "predicted_limit_satisfied": false,
+                "current_error_norm": 0.07497621860069878,
+                "candidate": "full_kron"
+            },
+            {
+                "structural_nnz": 3,
+                "relative_current_error": 1.0560412404534578,
+                "predicted_limit_satisfied": false,
+                "current_error_norm": 2.370599599280634,
+                "candidate": "diagonal_structural"
+            },
+            {
+                "structural_nnz": 7,
+                "relative_current_error": 0.2111421142930331,
+                "predicted_limit_satisfied": false,
+                "current_error_norm": 0.4739714628184445,
+                "candidate": "banded_structural"
+            }
+        ]
+    },
+    "interpretation": "Kron is exact for the declared linear relation; Ward is base-state calibrated; the scenario-selected target trades structural complexity against scenario current error and does not establish decision equivalence.",
+    "comparison_contract": {
+        "exact_kron": "exact affine boundary relation for each fixed internal injection",
+        "observations": [
+            "boundary current",
+            "internal voltage recovery",
+            "source current limit",
+            "scenario objective"
+        ],
+        "ward_operating_point": "exact reduced admittance plus fixed base-scenario boundary injection",
+        "opti_kron_style": "scenario-selected structural target among full, banded, and diagonal retained couplings"
+    },
+    "exact_rows": [
+        {
+            "scenario": "base",
+            "exact_limit_satisfied": false,
+            "exact_current_norm": 2.1953512870588976,
+            "internal_voltage_norm": 0.7428630355713081,
+            "source_limit": 2.1
+        },
+        {
+            "scenario": "high_load",
+            "exact_limit_satisfied": true,
+            "exact_current_norm": 2.046263357197838,
+            "internal_voltage_norm": 0.7454094488604022,
+            "source_limit": 2.1
+        },
+        {
+            "scenario": "low_voltage",
+            "exact_limit_satisfied": true,
+            "exact_current_norm": 2.007857962214198,
+            "internal_voltage_norm": 0.6370681244915134,
+            "source_limit": 2.1
+        },
+        {
+            "scenario": "internal_outage_proxy",
+            "exact_limit_satisfied": false,
+            "exact_current_norm": 2.2447983170266275,
+            "internal_voltage_norm": 0.6386143780916816,
+            "source_limit": 2.1
+        }
+    ],
+    "selected_is_exact": false
+}

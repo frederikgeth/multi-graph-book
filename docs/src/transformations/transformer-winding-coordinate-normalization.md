@@ -1,5 +1,8 @@
 # [Transformer-winding coordinate normalization](@id transformer-winding-normalization)
 
+**Page status:** guarded exact winding-coordinate normalization with executable
+round trips; compact serialization closure remains open.
+
 A winding is a port of a multiwinding device, not an independent two-terminal
 transformer. Its terminal coordinates may nevertheless need normalization
 before factor assembly, comparison, or compilation. This chapter applies the

@@ -1,5 +1,8 @@
 # [A five-bus multigraph: identities, cycles, and tree coordinates](@id five-bus-cycle-spaces)
 
+**Page status:** generated worked graph example with hash-bound figures and
+BMOPFTools cross-checks; conductor-terminal lifts remain open.
+
 ## Purpose and status
 
 This worked example separates four operations that are often drawn as if they

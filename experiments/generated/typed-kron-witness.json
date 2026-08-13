@@ -1,0 +1,72 @@
+{
+    "checks": {
+        "internal_recovery": true,
+        "restricted_library_boundary_exposed": true,
+        "affine_covariance": true,
+        "source_limits_recovered": true,
+        "coordinate_covariance": true,
+        "line_shunt_stamping_exact": true
+    },
+    "coordinate_action": {
+        "recovery_covariance_residual": 6.283435673255384e-17,
+        "retained_action": "complex block-diagonal invertible T_B",
+        "current_action": "conjugate-transpose power dual",
+        "reduced_covariance_residual": 1.777587628338693e-15,
+        "internal_action": "complex block-diagonal invertible T_I",
+        "affine_covariance_residual": 4.84869951806108e-18
+    },
+    "source_limit_recovery": {
+        "source_current": [
+            {
+                "real": 0.9783830453529888,
+                "imag": 0.13835931376932994
+            },
+            {
+                "real": 0.8006658408136827,
+                "imag": 0.11323515514123211
+            }
+        ],
+        "declared_limits": [
+            1.3881177476095186,
+            1.158633408291879
+        ],
+        "reduced_view_limits_satisfied_after_recovery": true,
+        "recovered_current_residual": 0,
+        "source_limits_satisfied": true
+    },
+    "line_shunt_realizability": {
+        "general_reduced_multiport_block_symmetric": false,
+        "shunt_block_count": 3,
+        "general_multiport_stamping_residual": 0.0040723518143269185,
+        "general_reduced_multiport_direct_realization": false,
+        "reciprocal": true,
+        "library_witness_block_symmetric": true,
+        "series_block_count": 3,
+        "library_witness_stamping_residual": 7.033485482605096e-16,
+        "interpretation": "exact complete-graph stamping identity; not closure of a restricted physical line library",
+        "restricted_diagonal_line_library_rejected": true,
+        "target_library": "full_matrix_reciprocal_line_shunt"
+    },
+    "witness_id": "TR-KRON-001",
+    "claim_id": "TR-KRON-001",
+    "source_fixture": "typed_multiconductor_kron_fixture_v0.1.0",
+    "dimensions": {
+        "conductor_count": 2,
+        "internal_coordinates": 2,
+        "retained_coordinates": 6
+    },
+    "boundary_relation": {
+        "boundary_residual": 0,
+        "internal_injection": [
+            {
+                "real": 0.2,
+                "imag": 0.08
+            },
+            {
+                "real": -0.14,
+                "imag": 0.05
+            }
+        ],
+        "internal_block_condition_number": 1.2215104984701914
+    }
+}

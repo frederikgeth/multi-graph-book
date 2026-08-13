@@ -1,5 +1,8 @@
 # [Numerical consequences of representation and reduction](@id numerical-consequences)
 
+**Page status:** generated structural, linearized, and symbolic KKT witnesses;
+solver-exported nonlinear diagnostics remain future work.
+
 ## A graph choice is also a numerical choice
 
 Two representations can describe the same declared electrical behaviour while

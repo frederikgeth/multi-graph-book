@@ -1,5 +1,8 @@
 # Executable running network
 
+**Page status:** executable fixture and local solver evidence; claims are
+versioned and verification-scoped.
+
 ## Status and purpose
 
 **Empirical artifact, version 0.1.0.** The semantic specification now has a

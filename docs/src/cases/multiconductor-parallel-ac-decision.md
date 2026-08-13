@@ -1,5 +1,8 @@
 # [Multiconductor parallel AC decision case](@id multiconductor-parallel-ac-case)
 
+**Page status:** guarded multiconductor decision case with executable
+redundancy certificates; general state-dependent classification remains open.
+
 This is the multiconductor specialization of the canonical parallel-member
 failure in [the first scalar counterexample](@ref first-failure-parallel-branches).
 That chapter owns the general warning: an aggregate terminal relation does not

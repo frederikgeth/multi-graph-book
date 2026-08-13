@@ -1,5 +1,9 @@
 # [Kron, Ward, and optimized network equivalents](@id kron-ward-opti-kron)
 
+**Page status:** scoped reduction definitions, audited literature synthesis,
+and a package-independent Kron/Ward/scenario comparison; independent
+mathematical review and source-faithful Opti-KRON implementation remain open.
+
 ## Three different questions
 
 Kron reduction, Ward equivalents, and Opti-KRON are related, but they do not
@@ -204,6 +208,27 @@ explicit compatibility conditions), but not for an arbitrary complex ``T``.
 Hermitian structure and complex symmetry are therefore distinct properties;
 the certificate must record which one is required and which coordinate action
 is being used.
+
+### Executable typed fixture
+
+The first package-independent witness is recorded in
+`experiments/generated/typed-kron-witness.json` and certified by
+`experiments/generated/typed-kron-certificate.json`. It has three retained
+two-conductor ports and one eliminated two-conductor port. The fixture checks
+the reduced covariance residual, affine-injection covariance, internal-voltage
+recovery, and source-current limit evaluation after applying complex
+block-diagonal power-dual coordinate actions. The reported residuals are below
+``2\times 10^{-15}`` for the boundary identity and below ``7\times10^{-17}``
+for internal-state recovery.
+
+The same artifact records two target-library outcomes. The general reduced
+multiport is reciprocal but its off-diagonal conductor blocks are not all
+individually symmetric, so the direct line--shunt construction is rejected for
+that restricted library. A separate admissible full-matrix, block-symmetric
+line--shunt witness is stamped exactly, with residual below ``10^{-15}``, while
+a diagonal-only line library is rejected. This is deliberately a positive and
+negative realizability test, not a claim that every Kron-reduced multiport is a
+physical bus--branch network.
 
 ## Realizability is a second theorem
 
@@ -422,6 +447,26 @@ This separation prevents every operation involving a smaller network from
 being called Kron reduction.
 
 ## Open research boundary
+
+### Executable comparison: exact, operating-point, and scenario-selected
+
+The comparison artifact
+`experiments/generated/kron-ward-scenario-comparison.json` uses four declared
+scenarios and the same boundary-current, internal-voltage, source-limit, and
+scenario-objective observations for three targets:
+
+| Target | Construction | Result in the fixture |
+| --- | --- | --- |
+| exact Kron | recompute the affine boundary relation for each fixed internal injection | exact for every declared scenario |
+| operating-point Ward | retain the exact reduced admittance but freeze the boundary injection at the base scenario | exact at the base point; relative current errors of about 1.5--3.3% off base |
+| Opti-KRON-style target | select full, banded, or diagonal retained couplings using an explicit scenario error plus sparsity penalty | selects the banded target; this is scenario approximation, not decision equivalence |
+
+The selection is intentionally small and transparent. It demonstrates the
+classification boundary rather than reproducing a particular published
+Opti-KRON implementation: the target candidates and penalty are declared in
+the artifact, and the selected target is judged on the same observation family
+as the alternatives. The result is claim `TR-KRON-002` and does not establish
+global AC feasibility, objective, or control preservation.
 
 The current evidence leaves four implementation questions open:
 

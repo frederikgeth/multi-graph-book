@@ -62,8 +62,19 @@ def title_for(path: Path) -> str:
 
 
 def page_status_for(path: Path) -> str:
-    match = PAGE_STATUS.search(path.read_text())
-    return match.group(1) if match else "not stated"
+    text = path.read_text()
+    match = PAGE_STATUS.search(text)
+    if match is None:
+        raise ValueError(f"reader-facing page lacks Page status metadata: {rel(path)}")
+    # Permit a readable wrapped metadata paragraph in Markdown, while keeping
+    # the generated table one-line and stable.
+    lines = [match.group(1).strip()]
+    remainder = text[match.end():].lstrip("\r\n")
+    for line in remainder.splitlines():
+        if not line.strip():
+            break
+        lines.append(line.strip())
+    return " ".join(lines)
 
 
 def rel(path: Path) -> str:
@@ -112,7 +123,7 @@ def generate_index(claims: list[dict]) -> None:
         "`experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated",
         "PDF route does not attempt to reproduce these indexes as a linear chapter sequence.",
         "",
-        f"**Indexed claims:** {len(claims)}  ",
+        f"**Indexed claims:** {len(claims)}",
         f"**Indexed chapters:** {len({claim['chapter'] for claim in claims})}",
         "",
         "## Claims by type",
@@ -164,8 +175,9 @@ def generate_status(claims: list[dict]) -> None:
         "",
         f"<!-- generated-from claims/claims.toml sha256:{source_stamp()} -->",
         "This page is generated from the claims ledger. It makes the evidence state visible without",
-        "requiring readers to inspect TOML or generated JSON files. A chapter with no claim entry is",
-        "not automatically unscientific; it is marked as needing explicit scope/status metadata.",
+        "requiring readers to inspect TOML or generated JSON files. Claim absence means the page is",
+        "tracked as explanatory, definitional, or proposed material rather than silently treated as a",
+        "verified empirical result.",
         "",
         "| Chapter | Page status | Claims | Claim types | Verification | Open issue |",
         "| --- | --- | ---: | --- | --- | --- |",
@@ -181,7 +193,7 @@ def generate_status(claims: list[dict]) -> None:
             issues = "; ".join(record.get("unresolved_issue", "").strip() for record in records if record.get("unresolved_issue", "").strip())
             issue = issues if issues else "—"
         else:
-            types, verification, issue = "—", "untracked", "Add chapter-level scope/status metadata"
+            types, verification, issue = "—", "untracked", "—"
         lines.append(
             f"| [{title_for(path)}](../{path.relative_to(DOCS).as_posix()}) | "
             f"{page_status_for(path)} | {len(records)} | {types} | `{verification}` | {issue} |"

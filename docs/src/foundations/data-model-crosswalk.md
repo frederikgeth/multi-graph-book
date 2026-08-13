@@ -1,5 +1,8 @@
 # [Data-model crosswalk](@id data-model-crosswalk)
 
+**Page status:** versioned practice crosswalk; adapter and round-trip tests
+remain future implementation work.
+
 The book's objects are semantic categories, not a claim that every software or
 standard uses the same schema. This crosswalk records where common ecosystems
 provide a direct correspondence, where an adapter is needed, and what meaning

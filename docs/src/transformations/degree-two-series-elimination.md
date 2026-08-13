@@ -1,5 +1,8 @@
 # [Degree-two series elimination](@id degree-two-series-rule)
 
+**Page status:** guarded exact series transformation with positive and negative
+tests; physical line-class closure remains open.
+
 This chapter gives the first executable guarded rewrite. It deliberately
 separates an exact terminal-behaviour result from the stronger claim that two
 source assets form one longer homogeneous physical line.

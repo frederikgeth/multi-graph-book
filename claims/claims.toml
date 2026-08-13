@@ -349,16 +349,31 @@ unresolved_issue = "Reproduce the case with an independently assembled transform
 claim_id = "TR-KRON-001"
 chapter = "docs/src/transformations/kron-ward-opti-kron.md"
 claim_text = "Typed multiconductor Kron reduction commutes with invertible block-diagonal terminal-coordinate changes when currents transform by the power-dual action."
-status = "open_question"
+status = "established_result"
 claim_type = "theorem"
-verification = "unreviewed"
-evidence_type = "algebraic_derivation"
+verification = "self-checked"
+evidence_type = "algebraic_derivation_and_package_independent_executable_witness"
 citation_keys = ["DorflerBullo2013"]
 model_scope = "finite-dimensional complex linear nodal relations assembled from aligned typed terminal maps"
 assumptions = "retained and internal coordinate actions are invertible and block diagonal; the internal admittance block is invertible; current coordinates use the conjugate-transpose power dual"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Add executable random-matrix and terminal-permutation tests and obtain an independent mathematical review."
+unresolved_issue = "Extend the fixture to randomized and terminal-permutation campaigns, then obtain an independent mathematical review."
+
+[[claim]]
+claim_id = "TR-KRON-002"
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the declared linear scenario fixture, exact Kron reproduces each fixed-injection boundary relation, an operating-point Ward-style equivalent is exact only at its calibration point, and an explicit scenario objective can select a sparser non-exact target."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "package_independent_scenario_comparison"
+citation_keys = ["Mokhtari2027"]
+model_scope = "three-retained-port scalar complex linear fixture with four declared voltage/injection scenarios"
+assumptions = "fixed linear nodal relation; Ward boundary injection is calibrated at the base scenario; scenario target candidates are full, banded, and diagonal retained couplings; objective uses normalized boundary-current error plus an explicit sparsity penalty"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Replace the illustrative target-selection family with a source-faithful Opti-KRON implementation and extend observations to voltage, constraints, decisions, and topology guards."
 
 [[claim]]
 claim_id = "TR-GRAPH-001"

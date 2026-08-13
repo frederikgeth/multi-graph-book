@@ -1,4 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520">
+<title>Physical incidence and one elimination fill edge</title>
+<desc>A structural graph and equation-dependency witness showing the fill edge created when node j is eliminated.</desc>
 <rect width="1100" height="520" fill="white"/>
 <style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:22px;font-weight:bold}.small{font-size:14px}.edge{stroke:#3d78b5;stroke-width:4}.fill{stroke:#d8892b;stroke-width:4;stroke-dasharray:8 6}.grid{stroke:#dce2e8;stroke-width:1}</style>
 <text x="35" y="38" class="title">Physical incidence and one elimination fill edge</text>

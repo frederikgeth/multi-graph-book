@@ -1,5 +1,8 @@
 # [Four-wire nominal-pi parallel case](@id pi-four-wire-parallel-ac-case)
 
+**Page status:** guarded nominal-``\pi`` decision case with executable
+certificates; singular and state-dependent extensions remain open.
+
 This is the nominal-``\pi`` extension of the canonical parallel-member failure
 in [the first scalar counterexample](@ref first-failure-parallel-branches).
 Only the additional shunt-current observations and both-end limit contract are

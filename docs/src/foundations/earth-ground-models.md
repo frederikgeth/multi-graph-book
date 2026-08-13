@@ -1,5 +1,8 @@
 # [Earth, neutral, and reference model classes](@id earth-ground-models)
 
+**Page status:** scoped model-class taxonomy; explicit-earth and protection
+fixtures remain future work.
+
 “Ground” is used for several different objects in power-system models. This
 book distinguishes a mathematical voltage reference, a neutral conductor, an
 earth-return path, and a physical grounding asset. A representation must state

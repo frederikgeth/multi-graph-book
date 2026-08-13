@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "review_date": "2026-08-13",
+  "principle": "Colour may reinforce a distinction, but no reader-critical distinction is encoded by colour alone.",
+  "figures": {
+    "earth-return-ladder": {
+      "svg": "docs/src/assets/earth-return-ladder.svg",
+      "png": "docs/src/assets/earth-return-ladder.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["ordered labelled stages", "box boundaries", "explicit captions"]
+    },
+    "nonlinear-kkt-witness": {
+      "svg": "docs/src/assets/nonlinear-kkt-witness.svg",
+      "png": "docs/src/assets/nonlinear-kkt-witness.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["source/aggregate panel labels", "matrix boundaries", "numeric captions"]
+    },
+    "numerical-structure-witness": {
+      "svg": "docs/src/assets/numerical-structure-witness.svg",
+      "png": "docs/src/assets/numerical-structure-witness.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["solid/dashed edge styles", "node and panel labels", "explicit legend"]
+    },
+    "parallel-feasible-set-card": {
+      "svg": "docs/src/assets/parallel-feasible-set-card.svg",
+      "png": "docs/src/assets/parallel-feasible-set-card.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["three labelled rows", "interval position", "witness annotation"]
+    },
+    "preservation-contract-card": {
+      "svg": "docs/src/assets/preservation-contract-card.svg",
+      "png": "docs/src/assets/preservation-contract-card.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["labelled cards", "box boundaries", "explicit scope text"]
+    },
+    "transformer-anatomy": {
+      "svg": "docs/src/assets/transformer-anatomy.svg",
+      "png": "docs/src/assets/transformer-anatomy.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["port/factor labels", "arrows and boundaries", "typed interface text"]
+    },
+    "ybus-jacobian-witness": {
+      "svg": "docs/src/assets/ybus-jacobian-witness.svg",
+      "png": "docs/src/assets/ybus-jacobian-witness.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["separate titled panels", "matrix grids", "numeric captions"]
+    }
+  }
+}

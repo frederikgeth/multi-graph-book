@@ -1,5 +1,8 @@
 # [Rating and limit semantics](@id rating-semantics)
 
+**Page status:** normative rating and limit vocabulary; utility-field mappings
+remain future implementation work.
+
 A rating is not a scalar decoration on an edge. It is a constraint attached to
 an object, a quantity, an operating domain, and often an ambient or protection
 assumption. A transformation can preserve the circuit equations while changing
@@ -69,4 +72,3 @@ remove only limits proved redundant under their declared nominal domains.
     “The line is rated at 200 A” is incomplete. Identify the member, terminal,
     conductor set, duration, ambient condition, measured quantity, and owner of
     the limit before comparing it with a transformed constraint.
-

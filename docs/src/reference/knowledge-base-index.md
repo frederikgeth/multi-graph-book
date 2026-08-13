@@ -1,11 +1,11 @@
 # Knowledge-base indexes
 
-<!-- generated-from claims/claims.toml sha256:3f411f2c1e058141824abb668afa7561c84ee94c2976c8f79a43ec3fd3526eff -->
+<!-- generated-from claims/claims.toml sha256:7c082ad9cae0dd625b8b8b578a29ec8415e87360006ef4cf02aae3fba90d9f4a -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 
-**Indexed claims:** 36  
+**Indexed claims:** 37
 **Indexed chapters:** 25
 
 ## Claims by type
@@ -20,7 +20,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `THESIS-001` — Representation adequacy is evaluated relative to declared observations, constraints, and decisions. | [Scope and thesis](../foundations/scope-and-thesis.md) | `self-checked` |
 | `TOPOLOGY-001` — For a fixed switch state, topological nodes are the connected components of the closed-switch connectivity graph; compiling them into bus--branch buses is a state-conditioned quotient that requires provenance and does not preserve switching decisions by itself. | [Node--breaker, bus--breaker, and topology processing](../foundations/node-breaker-topology-processing.md) | `self-checked` |
 
-### `empirical` (9)
+### `empirical` (10)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -30,6 +30,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `FIXTURE-002` — The v0.1.0 continuous PF and OPF instances terminate locally solved in the recorded environment. | [Executable running network](../cases/executable-running-network.md) | `self-checked` |
 | `NUMERICAL-002` — For the pinned running-network fixture, BMOPFTools exports a 20-by-20 passive Ybus with 166 nonzeros; the constant-Z linearized Ybus agrees with it, and realification produces a 40-by-40 current-voltage matrix with 664 nonzeros. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
 | `NUMERICAL-003` — In the pinned nonlinear two-bus parallel-member witness, retaining two explicit member-current laws produces a 6-by-7 residual Jacobian and 13-by-13 KKT pattern, while the summed-current aggregate produces a 4-by-5 Jacobian and 9-by-9 KKT pattern; symbolic fill changes with elimination order in both formulations. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
+| `TR-KRON-002` — In the declared linear scenario fixture, exact Kron reproduces each fixed-injection boundary relation, an operating-point Ward-style equivalent is exact only at its calibration point, and an explicit scenario objective can select a sparser non-exact target. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
 | `TR-PAR-003` — In the recorded two-bus maximum-served-load problem, the naive summed-rating aggregate serves 200 MW while the source and exact lifted formulations each serve 110 MW. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `self-checked` |
 | `TR-PAR-004` — In the recorded two-conductor AC maximum-served-load case, the source, exact lifted, and certified exact-pruned formulations have objective 0.6138908, while a summed-limit aggregate has objective 1.0630833 and violates a 0.6 p.u. member limit. | [Multiconductor parallel AC decision case](../cases/multiconductor-parallel-ac-decision.md) | `self-checked` |
 | `TR-XFMR-007` — A separate damped finite-difference Newton, continuation, and bisection implementation reproduces all three TR-XFMR-006 tap-conditioned high-voltage branch boundaries without an external optimizer; its largest served-fraction difference from JuMP/Ipopt is 3.14e-10, and both methods select tap 0.95. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `independently-implemented` |
@@ -51,7 +52,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `TR-COORD-001` — A simultaneous permutation of conductor coordinates, terminal pairing, element matrices, and componentwise limits is an exact normalization with an inverse permutation. | [Conductor-coordinate normalization](../transformations/conductor-coordinate-normalization.md) | `self-checked` |
 | `TR-GRAPH-001` — For a loopless identified multigraph and its simple endpoint projection, the multigraph cycle rank exceeds the simple-graph cycle rank by the sum over edge fibres of fibre size minus one; the lost dimensions are line-identity cycles supported on parallel fibres. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `self-checked` |
 | `TR-GRAPH-002` — An identified line is a multigraph bridge exactly when its simple endpoint edge is a bridge and its parallel fibre is a singleton; consequently the identified multigraph is a forest exactly when its simple projection is a forest and every edge fibre is a singleton. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `self-checked` |
-| `TR-KRON-001` — Typed multiconductor Kron reduction commutes with invertible block-diagonal terminal-coordinate changes when currents transform by the power-dual action. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `unreviewed` |
+| `TR-KRON-001` — Typed multiconductor Kron reduction commutes with invertible block-diagonal terminal-coordinate changes when currents transform by the power-dual action. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
 | `TR-PAR-001` — Summed admittance preserves the unconstrained terminal relation of parallel linear branches. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `self-checked` |
 | `TR-PAR-002` — Using the sum of member current ratings can create an outer relaxation of the member-constrained feasible set. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `self-checked` |
 | `TR-PAR-005` — For fixed linear complex terminal-current maps with centered Euclidean norm limits, one normalized constraint implies another if and only if the retained normalized real quadratic form minus the candidate form is positive semidefinite; applying this pairwise test to every aligned conductor and both terminal ends certifies exact candidate-limit pruning while retaining both member models. | [Multiconductor parallel AC decision case](../cases/multiconductor-parallel-ac-decision.md) | `self-checked` |
@@ -71,8 +72,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | Verification | Claims |
 | --- | ---: |
 | `independently-implemented` | 1 |
-| `self-checked` | 34 |
-| `unreviewed` | 1 |
+| `self-checked` | 36 |
 
 ## Unresolved issues
 
@@ -96,7 +96,8 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `TR-COORD-001` | Add an independent mathematical reviewer and extend coordinate actions to general input/output tensors. |
 | `TR-GRAPH-001` | Extend the executable invariant checks to conductor-terminal incidence and state-indexed multi-terminal factors. |
 | `TR-GRAPH-002` | Add active-state radiality certificates with open/closed switches, outages, and multi-terminal compilation choices. |
-| `TR-KRON-001` | Add executable random-matrix and terminal-permutation tests and obtain an independent mathematical review. |
+| `TR-KRON-001` | Extend the fixture to randomized and terminal-permutation campaigns, then obtain an independent mathematical review. |
+| `TR-KRON-002` | Replace the illustrative target-selection family with a source-faithful Opti-KRON implementation and extend observations to voltage, constraints, decisions, and topology guards. |
 | `TR-PAR-001` | Add an independent mathematical reviewer. |
 | `TR-PAR-002` | Molzahn2018 gives an exact scalar AC constraint-pruning test without asset aggregation; a general multiconductor classification remains open. |
 | `TR-PAR-003` | The multiconductor mechanism is exercised in TR-PAR-004; add an independent reviewer for this linear case. |
@@ -208,7 +209,7 @@ schema is normalised.
 | --- | --- | --- |
 | `LIT-PAR-001` — For fixed scalar AC pi-line models on common endpoints, a parallel member's current- or apparent-power limit at one terminal is redundant when its normalized terminal-voltage quadratic feasible set contains that of another member; applying the test at both terminals certifies removal of both directional limits without aggregating the line models. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 
-### `transformations` (21)
+### `transformations` (22)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -217,6 +218,7 @@ schema is normalised.
 | `TR-GRAPH-001` — For a loopless identified multigraph and its simple endpoint projection, the multigraph cycle rank exceeds the simple-graph cycle rank by the sum over edge fibres of fibre size minus one; the lost dimensions are line-identity cycles supported on parallel fibres. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
 | `TR-GRAPH-002` — An identified line is a multigraph bridge exactly when its simple endpoint edge is a bridge and its parallel fibre is a singleton; consequently the identified multigraph is a forest exactly when its simple projection is a forest and every edge fibre is a singleton. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
 | `TR-KRON-001` — Typed multiconductor Kron reduction commutes with invertible block-diagonal terminal-coordinate changes when currents transform by the power-dual action. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `theorem` |
+| `TR-KRON-002` — In the declared linear scenario fixture, exact Kron reproduces each fixed-injection boundary relation, an operating-point Ward-style equivalent is exact only at its calibration point, and an explicit scenario objective can select a sparser non-exact target. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
 | `TR-PAR-001` — Summed admittance preserves the unconstrained terminal relation of parallel linear branches. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 | `TR-PAR-002` — Using the sum of member current ratings can create an outer relaxation of the member-constrained feasible set. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 | `TR-PAR-003` — In the recorded two-bus maximum-served-load problem, the naive summed-rating aggregate serves 200 MW while the source and exact lifted formulations each serve 110 MW. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `empirical` |
@@ -245,6 +247,7 @@ schema is normalised.
 | `five-bus-cycle-space-analysis.json` | `GRAPH-CYCLE-001` — connected loopless scalar series bus-branch multigraph |
 | `five-bus-figure-manifest.json` | generated evidence |
 | `four-wire-parallel-ac-certificate.json` | `TR-PAR-006` — generated evidence |
+| `kron-ward-scenario-comparison.json` | `TR-KRON-002` — kron_ward_scenario_fixture_v0.1.0 |
 | `multiconductor-parallel-ac-certificate.json` | `TR-PAR-004` — generated evidence |
 | `multiwinding-leakage-compilation-certificate.json` | `TR-XFMR-002` — generated evidence |
 | `multiwinding-terminal-assembly-certificate.json` | `TR-XFMR-003` — generated evidence |
@@ -263,6 +266,8 @@ schema is normalised.
 | `transformer-tap-decision-certificate.json` | `TR-XFMR-005` — generated evidence |
 | `transformer-winding-normalization-certificate.json` | `TR-XFMR-001` — generated evidence |
 | `translation-trap-witnesses.json` | generated evidence |
+| `typed-kron-certificate.json` | `TR-KRON-001` — generated evidence |
+| `typed-kron-witness.json` | `TR-KRON-001` — typed_multiconductor_kron_fixture_v0.1.0 |
 | `view-source-maps.json` | generated evidence |
 | `ybus-jacobian-witness.json` | `NUMERICAL-002` — BMOPFTools passive and constant-Z linearized Ybus for running-network fixture v0.1.0 |
 

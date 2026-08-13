@@ -1,0 +1,119 @@
+{
+    "interfaces": {
+        "units": {
+            "source": [
+                "complex-voltage",
+                "complex-current",
+                "siemens"
+            ],
+            "relation": "typed coordinate units are unchanged",
+            "target": [
+                "complex-voltage",
+                "complex-current",
+                "siemens"
+            ]
+        },
+        "decisions": {
+            "source": [
+            ],
+            "relation": "no discrete decisions in the fixture",
+            "target": [
+            ]
+        },
+        "constraints": {
+            "source": [
+                "member-current-limits"
+            ],
+            "relation": "evaluate source limits through the recovery map",
+            "target": [
+                "recovered-member-current-limits"
+            ]
+        },
+        "boundary_quantities": {
+            "source": [
+                "i_B",
+                "v_B"
+            ],
+            "relation": "the affine boundary relation is exact",
+            "target": [
+                "i_B",
+                "v_B"
+            ]
+        },
+        "objectives": {
+            "source": [
+            ],
+            "relation": "no objective is claimed",
+            "target": [
+            ]
+        },
+        "state_variables": {
+            "source": [
+                "v_B",
+                "v_I",
+                "i_I"
+            ],
+            "relation": "v_I is recovered from the affine internal solve",
+            "target": [
+                "v_B",
+                "i_I"
+            ]
+        }
+    },
+    "preconditions": [
+        "Y_II is invertible",
+        "T_B and T_I are invertible block-diagonal coordinate actions",
+        "internal injection model is fixed"
+    ],
+    "rule_id": "typed_multiconductor_kron_reduction",
+    "provenance": {
+        "fixture": "experiments/transformations/TypedKronReduction.jl",
+        "witness": "experiments/generated/typed-kron-witness.json"
+    },
+    "classification": "exact_behavioral_reduction",
+    "target": {
+        "object_ids": [
+            "typed-kron-fixture-v0.1.0/boundary-multiport"
+        ],
+        "model_category": "typed_affine_boundary_multiport"
+    },
+    "certificate_id": "TR-KRON-001",
+    "preserves": [
+        "affine boundary relation",
+        "power-dual coordinate covariance",
+        "internal-voltage recovery",
+        "source-current limit evaluation"
+    ],
+    "constraint_map": {
+        "member-current-limits": "apply each source limit to the recovered source current"
+    },
+    "source": {
+        "object_ids": [
+            "typed-kron-fixture-v0.1.0",
+            "retained-ports-B",
+            "internal-port-I"
+        ],
+        "model_category": "typed_multiconductor_nodal_relation"
+    },
+    "forgets": [
+        "internal asset identity",
+        "restricted physical line-library closure",
+        "nonlinear voltage-dependent injections"
+    ],
+    "recovery_map": {
+        "source_current": "I_l = A_lB v_B + A_lI v_I",
+        "internal_voltage": "v_I = Y_II^-1 (i_I - Y_IB v_B)"
+    },
+    "evidence": {
+        "checks": {
+            "internal_recovery": true,
+            "restricted_library_boundary_exposed": true,
+            "affine_covariance": true,
+            "source_limits_recovered": true,
+            "coordinate_covariance": true,
+            "line_shunt_stamping_exact": true
+        },
+        "realizability_boundary": "the general reduced multiport is not required to be block-symmetric; an admissible full-matrix line-shunt witness is stamped separately"
+    },
+    "schema_version": "1.1.0"
+}
