@@ -86,6 +86,41 @@ observation or decision set. Choosing a tighter equivalent limit can reproduce
 this one scalar voltage-drop bound, but it still does not recreate independent
 member states or arbitrary member-wise constraints.
 
+## Certified redundancy is different from aggregation
+
+Some member limits can be removed exactly without replacing the physical
+members. For a fixed scalar AC ``\pi``-line, write the endpoint-voltage state as
+
+```math
+x=
+\begin{bmatrix}
+\Re(U_i)&\Re(U_j)&\Im(U_i)&\Im(U_j)
+\end{bmatrix}^{\mathsf T}.
+```
+
+After normalization by the applicable current or apparent-power rating, a flow
+limit at the ``ij`` end has a positive-semidefinite quadratic feasible set
+
+```math
+\mathcal E_{\ell i j}=\{x:x^{\mathsf T}M_{\ell i j}x\le1\}.
+```
+
+If ``\mathcal E_{\ell_k i j}\subseteq\mathcal E_{\ell_r i j}``, satisfying
+member ``\ell_k``'s limit implies member ``\ell_r``'s limit at that end.
+Molzahn gives an eigenvalue-based containment test that also handles singular
+quadratic forms, whose feasible sets are cylinders rather than bounded
+ellipsoids [Molzahn2018](@cite). A complete line-limit removal requires the
+implication at both ``ij`` and ``ji`` ends.
+
+This is exact constraint pruning, not asset aggregation: both line laws,
+parameters, identities, and recovered flows remain in the model. Failure to
+identify redundancy is also not proof that a limit is essential; the test is a
+sufficient certificate. Its stated scope is fixed scalar AC transmission
+``\pi``-models, including fixed complex transformer ratios and shunts. It does
+not by itself cover arbitrary multiconductor constraint sets, switching,
+outages, investment states, or other state-dependent parameters. Claim
+`LIT-PAR-001` records that boundary.
+
 ## Multiconductor form
 
 For multiconductor branches,
@@ -133,7 +168,8 @@ both member laws and both limits. The naïve target uses
 | naïve aggregate | 200 MW | ``2/11`` rad | summed 200 MW rating |
 | aggregate relation with exact lifted member constraints | 110 MW | 0.1 rad | recovered ``F_{\ell_1 i j}\le100`` MW |
 
-The exact lifted formulation retains
+The displayed exact lifted formulation retains every member law and both
+member limits:
 
 ```math
 F_{\ell i j}=b_\ell\delta_{ij},\qquad
@@ -146,6 +182,11 @@ exact. This computed comparison is claim `TR-PAR-003`. JuMP and Ipopt produce
 the machine-readable result in
 `experiments/generated/parallel-opf-comparison.json`; the analytic values above
 also provide a solver-independent check.
+
+Here ``b_{\ell_2}=0.1b_{\ell_1}`` and the ratings are equal, so the
+``\ell_2`` limit is actually implied by the ``\ell_1`` limit and can be
+certifiably pruned. Keeping both in the table isolates the lifting argument
+from presolve; the next case implements the pruned formulation explicitly.
 
 The [Multiconductor parallel AC decision case](@ref multiconductor-parallel-ac-case)
 extends this comparison to coupled complex conductor equations, phase-to-neutral

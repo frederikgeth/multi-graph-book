@@ -71,7 +71,9 @@ not required to build the book unless that figure is being regenerated.
   of all tap-conditioned boundaries and the selected tap, including explicit
   failed-bracket guards;
 - `experiments/generated/multiconductor-parallel-ac-certificate.json`: source,
-  naïve aggregate, and exact lifted results for the coupled phase-neutral AC case.
+  naïve aggregate, exact lifted, and certified exact-pruned results for the
+  coupled phase-neutral AC case, including the proportional member-current
+  redundancy certificate.
 
 All thirteen transformation artifacts conform to version 1.1.0 of
 `schemas/transformation-certificate.schema.json`. The checker enforces the

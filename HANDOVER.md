@@ -115,6 +115,12 @@ contingencies or investments.
   1.0630833, and 0.6138908 for source, naïve, and exact lifted formulations.
   A closed-form loop-impedance derivation independently checks the numerical
   source and naïve optima.
+- Molzahn's parallel-line result is now coded in the literature evidence
+  matrix as exact scalar AC constraint pruning rather than asset aggregation.
+  In the proportional phase-neutral case, the member-2 current map is exactly
+  0.1 times member 1, so an exact-pruned formulation drops only the implied
+  member-2 limits and reproduces the 0.6138908 source optimum with 5 variables
+  and 9 constraints.
 - An initial representation taxonomy separates physical, connectivity, behavioural, study, and
   computational graphs.
 - A preservation-contract schema is proposed.
@@ -166,6 +172,9 @@ permutation, switch, and multiwinding variants before making them more abstract.
 Extend the retained transformer-control domain to phase-angle,
 independent-phase, mechanically coupled, automatic, and tap-dependent-loss
 controls, and reproduce a case with an independently assembled primitive.
+Extend the scalar parallel-line quadratic containment result to coupled
+multiconductor terminal constraints, with state-conditioned certificates for
+switching, outage, tap, and investment decisions.
 Replace the certificate's prose interface
 entries with checked state-space and unit objects, then test critical pairs
 with switch and grounding rules.

@@ -76,7 +76,8 @@ correctly map:
 - eliminated quantities and source provenance.
 
 Heterogeneous parallel lines provide the first counterexample: aggregate admittance can preserve
-terminal current while changing the OPF feasible set.
+terminal current while changing the OPF feasible set, unless every discarded
+constraint is separately proved redundant for the declared model and state.
 
 ## Status labels
 

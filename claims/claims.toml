@@ -37,7 +37,20 @@ model_scope = "two scalar resistive parallel branches"
 assumptions = "z=[0.1,1.0] ohm; member limits=[100,100] A; aggregate limit=200 A"
 reviewer = ""
 review_date = ""
-unresolved_issue = "General multiconductor classification remains open."
+unresolved_issue = "Molzahn2018 gives an exact scalar AC constraint-pruning test without asset aggregation; a general multiconductor classification remains open."
+
+[[claim]]
+claim_id = "LIT-PAR-001"
+chapter = "docs/src/start/first-failure-parallel-branches.md"
+claim_text = "For fixed scalar AC pi-line models on common endpoints, a parallel member's current- or apparent-power limit at one terminal is redundant when its normalized terminal-voltage quadratic feasible set contains that of another member; applying the test at both terminals certifies removal of both directional limits without aggregating the line models."
+status = "established_result"
+evidence_type = "peer_reviewed_result_and_algorithm"
+citation_keys = ["Molzahn2018"]
+model_scope = "parallel two-terminal scalar AC pi-line models with fixed complex transformer ratios, shunts, and current-magnitude or apparent-power limits"
+assumptions = "members share both endpoint voltages; normalized quadratic forms are positive semidefinite; each proposed removal is certified at both line terminals"
+reviewer = ""
+review_date = "2026-08-13"
+unresolved_issue = "Establish necessary and sufficient redundancy tests for arbitrary multiconductor limits and for state- or decision-dependent line models."
 
 [[claim]]
 claim_id = "FIXTURE-001"
@@ -146,15 +159,15 @@ unresolved_issue = "Prove which normalized factors can be serialized back into c
 [[claim]]
 claim_id = "TR-PAR-004"
 chapter = "docs/src/cases/multiconductor-parallel-ac-decision.md"
-claim_text = "In the recorded two-conductor AC maximum-served-load case, the source and exact lifted formulations have objective 0.6138908 while a summed-limit aggregate has objective 1.0630833 and violates a 0.6 p.u. member limit."
+claim_text = "In the recorded two-conductor AC maximum-served-load case, the source, exact lifted, and certified exact-pruned formulations have objective 0.6138908, while a summed-limit aggregate has objective 1.0630833 and violates a 0.6 p.u. member limit."
 status = "empirical_result"
-evidence_type = "JuMP_Ipopt_execution_recovery_check_and_closed_form_verification"
-citation_keys = []
+evidence_type = "JuMP_Ipopt_execution_recovery_check_proportional_redundancy_certificate_and_closed_form_verification"
+citation_keys = ["Molzahn2018"]
 model_scope = "two-bus phase-neutral AC model with two coupled proportional parallel impedance matrices"
 assumptions = "fixed sending voltage; scalable constant-power direction 1+j0.2; receiving voltage magnitude in [0.70,1.05] p.u.; member current limits 0.6 p.u."
 reviewer = ""
 review_date = ""
-unresolved_issue = "Extend to non-proportional three-phase four-wire members and reproduce with an independent numerical solver."
+unresolved_issue = "Extend the scalar quadratic-containment idea to non-proportional three-phase four-wire members and reproduce with an independent numerical solver."
 
 [[claim]]
 claim_id = "TR-XFMR-002"

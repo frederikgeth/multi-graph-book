@@ -51,15 +51,22 @@ and thermally coupled line models.
 edge with conventional scalar or per-conductor limits can exactly represent
 the feasible set of general heterogeneous parallel branches.
 
+**Candidate result B4.** Necessary and sufficient redundancy certificates for
+multiconductor parallel-member constraint sets, extending scalar quadratic
+containment to coupled phase, neutral, ground, and terminal-direction models,
+with explicit guards for topology and control states.
+
 ## Workstream C: decision-preserving reduction
 
 1. Treat equations and feasible sets together.
 2. Develop recovery maps for internal voltages, currents, losses and thermal
    states.
 3. Classify exact, inner, outer and scenario-approximate constraint maps.
-4. Study preservation for OPF, security-constrained OPF, reconfiguration,
+4. Treat certified removal of implied constraints as exact presolve, retaining
+   the asset laws, identities, recovery maps, and all nonredundant constraints.
+5. Study preservation for OPF, security-constrained OPF, reconfiguration,
    expansion planning, dynamic operating envelopes and state estimation.
-5. Quantify when reduced models change optimal decisions rather than merely
+6. Quantify when reduced models change optimal decisions rather than merely
    state-variable errors.
 
 **Candidate result C1.** A general lifting theorem: if eliminated variables are

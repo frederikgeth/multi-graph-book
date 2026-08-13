@@ -185,6 +185,10 @@ The first executable vertical slice is complete:
    engine reproduces all three tap-conditioned high-voltage branch boundaries
    to within 3.14e-10 served fraction of JuMP/Ipopt and selects the same tap;
    truncated and infeasible searches return structured rejections.
+19. Molzahn's scalar AC parallel-line redundancy certificate is now separated
+   explicitly from asset aggregation. The proportional multiconductor case
+   includes an exact-pruned formulation that removes only the implied
+   member-2 current limits and retains the source optimum of 0.6138908.
 
 The next sprint should:
 
@@ -196,7 +200,9 @@ The next sprint should:
    independent-phase, mechanically coupled, automatic, and tap-dependent-loss
    controls, and reproduce a case with an independently assembled primitive;
 4. extend the AC comparison to non-proportional three-phase four-wire members
-   and reproduce it with an independent numerical solver;
+   and reproduce it with an independent numerical solver; develop a
+   multiconductor redundancy checker that certifies both line terminals and
+   conditions its result on topology and control state;
 5. replace prose interface entries with checked state-space and unit objects,
    then strengthen composition beyond its current identity meeting check;
 6. add scheduled external-link checking without making ordinary builds depend

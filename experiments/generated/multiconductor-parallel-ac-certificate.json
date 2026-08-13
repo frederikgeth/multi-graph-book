@@ -80,7 +80,8 @@
   ],
   "constraint_map": {
     "naive_aggregate": "abs(sum_l I_lij,c) <= sum_l I_max_l,c for each conductor c",
-    "exact_lifted": "recover every I_lij and retain abs(I_lij,c) <= I_max_l,c"
+    "exact_lifted": "recover every I_lij and retain abs(I_lij,c) <= I_max_l,c",
+    "exact_pruned": "after proving I_l2ij=0.1*I_l1ij with equal limits, retain only member-1 current circles while keeping both recovery maps"
   },
   "provenance": {
     "solver": "Ipopt through JuMP",
@@ -204,103 +205,166 @@
     "model_category": "naive_multiconductor_ac_parallel_aggregate_opf"
   },
   "evidence": {
-    "exact_lifted_served_fraction_gap": -2.7755575615628914e-15,
-    "closed_form_current_limited_check": {
-      "naive_aggregate": {
-        "total_current_limit_pu": 1.2,
-        "load_voltage_magnitude_pu": 0.9034471168884869,
-        "served_fraction_derivative_at_limit": 0.7846146271424123,
-        "objective_served_fraction": 1.0630833411954312
+    "exact_pruned_served_fraction_gap": -1.554312234475219e-14,
+    "certified_redundancy": {
+      "minimum_limit_ratio": 1,
+      "current_map_ratio": {
+        "real": 0.09999999999999999,
+        "imag": -1.9592171022796884e-18
       },
-      "member_current_fractions": [
-        0.9090909090909091,
-        0.09090909090909091
-      ],
-      "source": {
-        "total_current_limit_pu": 0.66,
-        "load_voltage_magnitude_pu": 0.9485579228757193,
-        "served_fraction_derivative_at_limit": 0.8777088814324491,
-        "objective_served_fraction": 0.6138907955039961
-      },
-      "equivalent_loop_impedance_pu": {
-        "re": 0.05454545454545455,
-        "im": 0.1090909090909091
-      }
+      "retained_member": 1,
+      "redundant_member": 2,
+      "implication": "abs(I_l1ij,c)<=Imax_l1,c implies abs(I_l2ij,c)<=Imax_l2,c for every conductor c",
+      "maximum_proportionality_residual": 3.1031676915590914e-16
     },
-    "naive_solver_minus_closed_form": 1.4509216050839768e-10,
     "source_solver_minus_closed_form": 6.227480753295822e-10,
-    "source_solution": {
-      "current_balance_residual_pu": 5.828670879282072e-16,
+    "exact_pruned_solution": {
+      "current_balance_residual_pu": 9.50197851991224e-16,
       "termination_status": "LOCALLY_SOLVED",
-      "load_voltage_magnitude_pu": 0.9485579228182409,
-      "served_active_power_pu": 0.613890796126744,
+      "load_voltage_magnitude_pu": 0.9485579228182422,
+      "served_active_power_pu": 0.6138907961267288,
       "receiving_voltage": [
         {
-          "re": 0.9733205332318309,
+          "re": 0.9733205332318317,
           "terminal": "a",
-          "im": -0.030136457264403796
+          "im": -0.030136457264403057
         },
         {
-          "re": 0.026679466768169072,
+          "re": 0.026679466768168427,
           "terminal": "n",
-          "im": 0.03013645726440382
+          "im": 0.03013645726440301
         }
       ],
       "member_currents": [
         [
           {
-            "re": 0.5796825419798447,
-            "magnitude_pu": 0.6000000006450141,
+            "re": 0.5796825419798297,
+            "magnitude_pu": 0.6000000006449984,
             "terminal": "a",
-            "im": -0.15481650847956283,
+            "im": -0.15481650847955786,
             "limit_pu": 0.6
           },
           {
-            "re": -0.5796825419798447,
-            "magnitude_pu": 0.600000000645014,
+            "re": -0.5796825419798296,
+            "magnitude_pu": 0.6000000006449985,
             "terminal": "n",
-            "im": 0.1548165084795623,
+            "im": 0.1548165084795587,
             "limit_pu": 0.6
           }
         ],
         [
           {
-            "re": 0.05796825419798448,
-            "magnitude_pu": 0.06000000006450142,
+            "re": 0.05796825419798297,
+            "magnitude_pu": 0.060000000064499834,
             "terminal": "a",
-            "im": -0.015481650847956288,
+            "im": -0.015481650847955788,
             "limit_pu": 0.6
           },
           {
-            "re": -0.05796825419798447,
-            "magnitude_pu": 0.0600000000645014,
+            "re": -0.05796825419798296,
+            "magnitude_pu": 0.06000000006449985,
             "terminal": "n",
-            "im": 0.015481650847956238,
+            "im": 0.015481650847955872,
             "limit_pu": 0.6
           }
         ]
       ],
       "total_current": [
         {
-          "re": 0.6376507961778292,
-          "magnitude_pu": 0.6600000007095156,
+          "re": 0.6376507961778127,
+          "magnitude_pu": 0.6600000007094983,
           "terminal": "a",
-          "im": -0.17029815932751913
+          "im": -0.17029815932751363
         },
         {
-          "re": -0.6376507961778292,
-          "magnitude_pu": 0.6600000007095154,
+          "re": -0.6376507961778126,
+          "magnitude_pu": 0.6600000007094984,
           "terminal": "n",
-          "im": 0.17029815932751854
+          "im": 0.17029815932751458
         }
       ],
-      "served_reactive_power_pu": 0.12277815922534888,
+      "served_reactive_power_pu": 0.12277815922534589,
       "model_size": {
-        "variables": 13,
-        "constraints": 19
+        "variables": 5,
+        "constraints": 9
       },
-      "objective_served_fraction": 0.6138907961267441,
-      "formulation": "source"
+      "objective_served_fraction": 0.6138907961267286,
+      "formulation": "exact_pruned"
+    },
+    "naive_solver_minus_closed_form": 1.4509216050839768e-10,
+    "naive_served_fraction_gap": 0.44919254521377927,
+    "naive_aggregate_solution": {
+      "current_balance_residual_pu": 1.1443916996305594e-15,
+      "termination_status": "LOCALLY_SOLVED",
+      "load_voltage_magnitude_pu": 0.9034471168725695,
+      "served_active_power_pu": 1.063083341340523,
+      "receiving_voltage": [
+        {
+          "re": 0.9486988013438625,
+          "terminal": "a",
+          "im": -0.052187727665807516
+        },
+        {
+          "re": 0.05130119865613736,
+          "terminal": "n",
+          "im": 0.052187727665807544
+        }
+      ],
+      "member_currents": [
+        [
+          {
+            "re": 1.03784435991835,
+            "magnitude_pu": 1.0909090910772,
+            "terminal": "a",
+            "im": -0.33609779764311576,
+            "limit_pu": 0.6
+          },
+          {
+            "re": -1.0378443599183496,
+            "magnitude_pu": 1.0909090910771992,
+            "terminal": "n",
+            "im": 0.33609779764311476,
+            "limit_pu": 0.6
+          }
+        ],
+        [
+          {
+            "re": 0.103784435991835,
+            "magnitude_pu": 0.10909090910771999,
+            "terminal": "a",
+            "im": -0.03360977976431158,
+            "limit_pu": 0.6
+          },
+          {
+            "re": -0.10378443599183497,
+            "magnitude_pu": 0.10909090910771993,
+            "terminal": "n",
+            "im": 0.03360977976431149,
+            "limit_pu": 0.6
+          }
+        ]
+      ],
+      "total_current": [
+        {
+          "re": 1.141628795910185,
+          "magnitude_pu": 1.2000000001849198,
+          "terminal": "a",
+          "im": -0.3697075774074273
+        },
+        {
+          "re": -1.1416287959101845,
+          "magnitude_pu": 1.2000000001849191,
+          "terminal": "n",
+          "im": 0.36970757740742627
+        }
+      ],
+      "served_reactive_power_pu": 0.21261666826810288,
+      "model_size": {
+        "variables": 5,
+        "constraints": 9
+      },
+      "objective_served_fraction": 1.0630833413405234,
+      "formulation": "naive_aggregate"
     },
     "exact_lifted_solution": {
       "current_balance_residual_pu": 3.8559277963506344e-16,
@@ -375,79 +439,101 @@
       "objective_served_fraction": 0.6138907961267414,
       "formulation": "exact_lifted"
     },
-    "naive_served_fraction_gap": 0.44919254521377927,
-    "naive_aggregate_solution": {
-      "current_balance_residual_pu": 1.1443916996305594e-15,
+    "source_solution": {
+      "current_balance_residual_pu": 5.828670879282072e-16,
       "termination_status": "LOCALLY_SOLVED",
-      "load_voltage_magnitude_pu": 0.9034471168725695,
-      "served_active_power_pu": 1.063083341340523,
+      "load_voltage_magnitude_pu": 0.9485579228182409,
+      "served_active_power_pu": 0.613890796126744,
       "receiving_voltage": [
         {
-          "re": 0.9486988013438625,
+          "re": 0.9733205332318309,
           "terminal": "a",
-          "im": -0.052187727665807516
+          "im": -0.030136457264403796
         },
         {
-          "re": 0.05130119865613736,
+          "re": 0.026679466768169072,
           "terminal": "n",
-          "im": 0.052187727665807544
+          "im": 0.03013645726440382
         }
       ],
       "member_currents": [
         [
           {
-            "re": 1.03784435991835,
-            "magnitude_pu": 1.0909090910772,
+            "re": 0.5796825419798447,
+            "magnitude_pu": 0.6000000006450141,
             "terminal": "a",
-            "im": -0.33609779764311576,
+            "im": -0.15481650847956283,
             "limit_pu": 0.6
           },
           {
-            "re": -1.0378443599183496,
-            "magnitude_pu": 1.0909090910771992,
+            "re": -0.5796825419798447,
+            "magnitude_pu": 0.600000000645014,
             "terminal": "n",
-            "im": 0.33609779764311476,
+            "im": 0.1548165084795623,
             "limit_pu": 0.6
           }
         ],
         [
           {
-            "re": 0.103784435991835,
-            "magnitude_pu": 0.10909090910771999,
+            "re": 0.05796825419798448,
+            "magnitude_pu": 0.06000000006450142,
             "terminal": "a",
-            "im": -0.03360977976431158,
+            "im": -0.015481650847956288,
             "limit_pu": 0.6
           },
           {
-            "re": -0.10378443599183497,
-            "magnitude_pu": 0.10909090910771993,
+            "re": -0.05796825419798447,
+            "magnitude_pu": 0.0600000000645014,
             "terminal": "n",
-            "im": 0.03360977976431149,
+            "im": 0.015481650847956238,
             "limit_pu": 0.6
           }
         ]
       ],
       "total_current": [
         {
-          "re": 1.141628795910185,
-          "magnitude_pu": 1.2000000001849198,
+          "re": 0.6376507961778292,
+          "magnitude_pu": 0.6600000007095156,
           "terminal": "a",
-          "im": -0.3697075774074273
+          "im": -0.17029815932751913
         },
         {
-          "re": -1.1416287959101845,
-          "magnitude_pu": 1.2000000001849191,
+          "re": -0.6376507961778292,
+          "magnitude_pu": 0.6600000007095154,
           "terminal": "n",
-          "im": 0.36970757740742627
+          "im": 0.17029815932751854
         }
       ],
-      "served_reactive_power_pu": 0.21261666826810288,
+      "served_reactive_power_pu": 0.12277815922534888,
       "model_size": {
-        "variables": 5,
-        "constraints": 9
+        "variables": 13,
+        "constraints": 19
       },
-      "objective_served_fraction": 1.0630833413405234,
-      "formulation": "naive_aggregate"
+      "objective_served_fraction": 0.6138907961267441,
+      "formulation": "source"
+    },
+    "exact_lifted_served_fraction_gap": -2.7755575615628914e-15,
+    "closed_form_current_limited_check": {
+      "naive_aggregate": {
+        "total_current_limit_pu": 1.2,
+        "load_voltage_magnitude_pu": 0.9034471168884869,
+        "served_fraction_derivative_at_limit": 0.7846146271424123,
+        "objective_served_fraction": 1.0630833411954312
+      },
+      "member_current_fractions": [
+        0.9090909090909091,
+        0.09090909090909091
+      ],
+      "source": {
+        "total_current_limit_pu": 0.66,
+        "load_voltage_magnitude_pu": 0.9485579228757193,
+        "served_fraction_derivative_at_limit": 0.8777088814324491,
+        "objective_served_fraction": 0.6138907955039961
+      },
+      "equivalent_loop_impedance_pu": {
+        "re": 0.05454545454545455,
+        "im": 0.1090909090909091
+      }
     }
   },
   "schema_version": "1.1.0",

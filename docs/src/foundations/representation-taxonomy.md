@@ -115,8 +115,9 @@ bus--branch model appears when additional conditions justify several collapses, 
 - neutral and grounding behaviour is absent, externally fixed, or validly reduced;
 - equipment can be represented as identified two-terminal branches;
 - per-conductor and device-internal constraints do not affect the decisions of interest;
-- parallel aggregation retains all relevant member states and limits, or those distinctions are
-  outside the contract.
+- parallel aggregation retains all relevant member states and all nonredundant
+  limits, with any removed constraint certified as implied, or those
+  distinctions are outside the contract.
 
 This explains why many transmission studies can use compact graphs successfully without treating
 their assumptions as universal power-network semantics.
@@ -150,4 +151,3 @@ Every representation chapter and knowledge-base entry should record:
 | Recovery | Can source quantities or objects be reconstructed? |
 | Provenance | How are generated objects related to source objects? |
 | Evidence | Is the mapping proved, tested, standardized, observed in practice, or proposed? |
-

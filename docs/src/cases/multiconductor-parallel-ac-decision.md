@@ -55,7 +55,7 @@ S_j=\alpha(1+0.2\mathrm j)
 The phase-to-neutral voltage magnitude is restricted to ``[0.70,1.05]`` p.u.,
 and the objective maximizes ``\alpha``.
 
-## Three formulations
+## Four formulations
 
 The **source** formulation retains each ``\mathbf I_{\ell i j}`` as a variable
 and enforces every member limit. The **naive aggregate** uses
@@ -75,19 +75,38 @@ recovers
 
 inside the target model and applies the original ``0.6`` p.u. limits.
 
+The **exact pruned aggregate** first observes that
+``\mathbf Z_{\ell_2}=10\mathbf Z_{\ell_1}``, and hence
+
+```math
+\mathbf Y_{\ell_2}=0.1\mathbf Y_{\ell_1},\qquad
+\mathbf I_{\ell_2 i j}=0.1\mathbf I_{\ell_1 i j}.
+```
+
+Because the members have equal componentwise limits, every ``\ell_2`` current
+circle is implied by the corresponding ``\ell_1`` circle. The formulation
+therefore keeps both recovery maps but enforces only the certified
+nonredundant ``\ell_1`` limits. This is the multiconductor proportional special
+case of the constraint-pruning idea; it does not assume that the general
+scalar quadratic test in [Molzahn2018](@cite) automatically extends to
+arbitrary matrix-valued conductor models.
+
 ## Results
 
 | Formulation | Served fraction | Receiving voltage magnitude | Largest recovered member current | Variables / constraints |
 |:--|--:|--:|--:|--:|
 | source members | 0.6138908 | 0.9485579 | 0.6000000 | 13 / 19 |
 | naive aggregate | 1.0630833 | 0.9034471 | 1.0909091 | 5 / 9 |
-| exact lifted aggregate | 0.6138908 | 0.9485579 | 0.6000000 | 5 / 11 |
+| exact lifted | 0.6138908 | 0.9485579 | 0.6000000 | 5 / 11 |
+| exact pruned | 0.6138908 | 0.9485579 | 0.6000000 | 5 / 9 |
 
 The naive target serves about 73% more load than the source by violating the
 stronger member's current limit. The exact lifted formulation reproduces the
 source optimum while using the aggregate current relation and six fewer
 explicit current variables in this implementation. This is claim
-`TR-PAR-004`.
+`TR-PAR-004`. The exact pruned formulation has the same variable and constraint
+counts as the naive target but the source optimum: model size alone therefore
+does not establish fidelity.
 
 ## Solver-independent check
 
@@ -119,8 +138,10 @@ roots reproduce both Ipopt objectives to better than ``10^{-7}``.
 This is a deliberately minimal nonlinear AC case, not a three-phase benchmark.
 It includes conductor coupling and an explicit return path, but uses
 proportional member matrices and one scalable load direction so that a closed
-form check remains possible. The next extension should break that
-proportionality, add three phases plus neutral, and compare active constraints
+form check remains possible. Its proportional current map supplies a complete
+redundancy proof for this example. The next extension should break that
+proportionality, formulate multiconductor quadratic or conic containment at
+both terminals, add three phases plus neutral, and compare active constraints
 and decisions in a larger BMOPFTools case.
 
 Run:
@@ -130,5 +151,6 @@ julia --project=experiments experiments/run_multiconductor_parallel_ac.jl
 julia --project=experiments experiments/test/multiconductor_parallel_ac.jl
 ```
 
-The generated AC certificate contains all three solutions, recovered member
-currents, model sizes, residuals, and closed-form differences.
+The generated AC certificate contains all four solutions, the proportional
+redundancy certificate, recovered member currents, model sizes, residuals, and
+closed-form differences.

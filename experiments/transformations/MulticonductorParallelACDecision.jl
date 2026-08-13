@@ -7,6 +7,7 @@ using LinearAlgebra
 export default_ac_parallel_data,
        closed_form_current_limited_optima,
        multiconductor_ac_certificate,
+       proportional_parallel_redundancy,
        solve_multiconductor_ac_formulation
 
 function default_ac_parallel_data()
@@ -22,6 +23,33 @@ function default_ac_parallel_data()
         "current_limit_pu" => [[0.60, 0.60], [0.60, 0.60]],
         "load_direction_pu" => 1.0+0.20im,
         "voltage_magnitude_bounds_pu" => [0.70, 1.05],
+    )
+end
+
+"Certified current-limit redundancy for the recorded proportional pair."
+function proportional_parallel_redundancy(; data=default_ac_parallel_data(), tolerance=1.0e-10)
+    length(data["admittance_pu"]) == 2 ||
+        throw(ArgumentError("the proportional redundancy check requires two members"))
+    stronger = data["admittance_pu"][1]
+    weaker = data["admittance_pu"][2]
+    ratio = dot(vec(stronger), vec(weaker)) / dot(vec(stronger), vec(stronger))
+    residual = opnorm(weaker - ratio * stronger, Inf)
+    residual <= tolerance || throw(ArgumentError("member admittances are not proportional"))
+    limit_ratio = minimum(
+        data["current_limit_pu"][2][conductor] /
+        data["current_limit_pu"][1][conductor]
+        for conductor in eachindex(data["terminals"])
+    )
+    abs(ratio) <= limit_ratio + tolerance ||
+        throw(ArgumentError("member 2 limits are not implied by member 1 limits"))
+    Dict{String,Any}(
+        "retained_member" => 1,
+        "redundant_member" => 2,
+        "current_map_ratio" => Dict("real" => real(ratio), "imag" => imag(ratio)),
+        "maximum_proportionality_residual" => residual,
+        "minimum_limit_ratio" => limit_ratio,
+        "implication" =>
+            "abs(I_l1ij,c)<=Imax_l1,c implies abs(I_l2ij,c)<=Imax_l2,c for every conductor c",
     )
 end
 
@@ -151,10 +179,12 @@ Solve a two-bus, two-conductor AC maximum-served-load problem.
 
 `source` retains member-current variables; `naive_aggregate` uses summed
 admittance and summed componentwise limits; `exact_lifted` uses the aggregate
-terminal relation but recovers each member current for its original limit.
+terminal relation but recovers each member current for its original limit;
+`exact_pruned` additionally removes only member-2 limits proved redundant by
+the proportional current map.
 """
 function solve_multiconductor_ac_formulation(kind::Symbol; data=default_ac_parallel_data())
-    kind in (:source, :naive_aggregate, :exact_lifted) ||
+    kind in (:source, :naive_aggregate, :exact_lifted, :exact_pruned) ||
         throw(ArgumentError("unknown formulation $kind"))
     terminals = data["terminals"]
     n = length(terminals)
@@ -204,7 +234,7 @@ function solve_multiconductor_ac_formulation(kind::Symbol; data=default_ac_paral
             model, aggregate_admittance, voltage_real, voltage_imag,
             data["slack_voltage_pu"],
         )
-        if kind == :exact_lifted
+        if kind in (:exact_lifted, :exact_pruned)
             for admittance in data["admittance_pu"]
                 expression_real, expression_imag = branch_current_expressions(
                     model, admittance, voltage_real, voltage_imag,
@@ -233,8 +263,9 @@ function solve_multiconductor_ac_formulation(kind::Symbol; data=default_ac_paral
     @constraint(model, load_voltage_real^2 + load_voltage_imag^2 >= voltage_min^2)
     @constraint(model, load_voltage_real^2 + load_voltage_imag^2 <= voltage_max^2)
 
-    if kind in (:source, :exact_lifted)
-        for line in eachindex(member_real), conductor in 1:n
+    if kind in (:source, :exact_lifted, :exact_pruned)
+        limited_lines = kind == :exact_pruned ? (1:1) : eachindex(member_real)
+        for line in limited_lines, conductor in 1:n
             limit = data["current_limit_pu"][line][conductor]
             @constraint(model,
                 member_real[line][conductor]^2 + member_imag[line][conductor]^2 <= limit^2
@@ -263,7 +294,9 @@ function multiconductor_ac_certificate(; certificate_id="TR-PAR-004")
     source = solve_multiconductor_ac_formulation(:source; data)
     naive = solve_multiconductor_ac_formulation(:naive_aggregate; data)
     exact = solve_multiconductor_ac_formulation(:exact_lifted; data)
+    pruned = solve_multiconductor_ac_formulation(:exact_pruned; data)
     closed_form = closed_form_current_limited_optima(; data)
+    redundancy = proportional_parallel_redundancy(; data)
     Dict{String,Any}(
         "schema_version" => "1.1.0",
         "certificate_id" => String(certificate_id),
@@ -334,6 +367,7 @@ function multiconductor_ac_certificate(; certificate_id="TR-PAR-004")
         "constraint_map" => Dict(
             "naive_aggregate" => "abs(sum_l I_lij,c) <= sum_l I_max_l,c for each conductor c",
             "exact_lifted" => "recover every I_lij and retain abs(I_lij,c) <= I_max_l,c",
+            "exact_pruned" => "after proving I_l2ij=0.1*I_l1ij with equal limits, retain only member-1 current circles while keeping both recovery maps",
         ),
         "provenance" => Dict(
             "solver" => "Ipopt through JuMP",
@@ -344,10 +378,14 @@ function multiconductor_ac_certificate(; certificate_id="TR-PAR-004")
             "source_solution" => source,
             "naive_aggregate_solution" => naive,
             "exact_lifted_solution" => exact,
+            "exact_pruned_solution" => pruned,
+            "certified_redundancy" => redundancy,
             "naive_served_fraction_gap" =>
                 naive["objective_served_fraction"] - source["objective_served_fraction"],
             "exact_lifted_served_fraction_gap" =>
                 exact["objective_served_fraction"] - source["objective_served_fraction"],
+            "exact_pruned_served_fraction_gap" =>
+                pruned["objective_served_fraction"] - source["objective_served_fraction"],
             "closed_form_current_limited_check" => closed_form,
             "source_solver_minus_closed_form" => source["objective_served_fraction"] -
                 closed_form["source"]["objective_served_fraction"],

@@ -51,6 +51,18 @@ constraints require special treatment beyond ordinary network equivalencing
 [Jang2013](@cite). This should be regarded as a prototype of a broader theory
 of decision-set preservation.
 
+Molzahn studies a complementary operation for parallel scalar AC lines:
+delete a flow-limit constraint only after a positive-semidefinite quadratic
+containment test proves that another parallel member implies it at both line
+ends [Molzahn2018](@cite). This is especially important for the book's
+taxonomy. It is exact presolve on an unchanged physical model, not parallel
+asset aggregation. The result gives a concrete decision-feasible-set
+certificate and a useful transmission special case, while leaving open the
+multiconductor, state-dependent, and asset-decision generalizations.
+In the reported PEGASE cases, the method identified between 203 and 650
+redundant parallel-line limits, with MIPS OPF runtime reductions of 2.0% to
+5.7%; these are useful presolve results, not evidence for replacing the lines.
+
 ## Distribution feeder reduction
 
 Pecenak and coauthors address multiphase unbalance, mutual coupling and spatial
@@ -101,7 +113,7 @@ network equivalents.
 | Thermal-limit preservation | Specialized | not generalized to arbitrary decision constraints |
 | Typed equipment-class closure | Low | few formal rewrite guards |
 | Explicit neutral/grounding preservation | Low | often eliminated or treated as an implementation detail |
-| Parallel-asset decision preservation | Low | aggregate admittance commonly dominates |
+| Parallel-asset decision preservation | Low | exact scalar constraint pruning exists, but aggregation and multiconductor/state-dependent cases remain open |
 | Provenance and reversible compilation | Low | implemented inconsistently, weakly theorized |
 | Unified certified normalization | Very low | central research gap |
 
