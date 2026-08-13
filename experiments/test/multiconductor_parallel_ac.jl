@@ -41,6 +41,12 @@ using .MulticonductorParallelACDecision
     @test redundancy["current_map_ratio"]["imag"] ≈ 0.0 atol=1.0e-12
     @test redundancy["maximum_proportionality_residual"] <= 1.0e-12
 
+    quadratic_redundancy = multiconductor_parallel_redundancy()
+    @test quadratic_redundancy["certified"]
+    @test quadratic_redundancy["required_terminal_ends"] == ["ij", "ji"]
+    @test length(quadratic_redundancy["checks"]) == 4
+    @test all(check["certified"] for check in quadratic_redundancy["checks"])
+
     certificate = multiconductor_ac_certificate()
     @test certificate["classification"] == "outer_relaxation"
     @test certificate["evidence"]["naive_served_fraction_gap"] > 0.25
@@ -48,4 +54,5 @@ using .MulticonductorParallelACDecision
     @test abs(certificate["evidence"]["exact_pruned_served_fraction_gap"]) <= 1.0e-7
     @test abs(certificate["evidence"]["source_solver_minus_closed_form"]) <= 1.0e-7
     @test abs(certificate["evidence"]["naive_solver_minus_closed_form"]) <= 1.0e-7
+    @test certificate["evidence"]["certified_redundancy"]["certified"]
 end

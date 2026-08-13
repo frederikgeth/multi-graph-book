@@ -56,6 +56,17 @@ multiconductor parallel-member constraint sets, extending scalar quadratic
 containment to coupled phase, neutral, ground, and terminal-direction models,
 with explicit guards for topology and control states.
 
+**Current partial result.** Claim `TR-PAR-005` gives a necessary-and-sufficient
+PSD test for each individual centered linear-current norm implication and a
+two-end componentwise certificate. Claim `TR-PAR-006` adds an exact complex
+polydisc row-norm test when all component limits of one nonsingular series
+member jointly imply another member's limits, and exercises it in a reciprocal
+non-proportional four-wire AC decision case. Claim `TR-PAR-007` generalizes the
+same support-function argument to an invertible stacked terminal-current map
+and exercises distinct from/to shunts in a nominal-``\pi`` case. Singular
+shunted maps, implication by several different members, non-Euclidean regions,
+and state-conditioned models remain open parts of B4.
+
 ## Workstream C: decision-preserving reduction
 
 1. Treat equations and feasible sets together.

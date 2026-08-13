@@ -4,9 +4,13 @@ using Ipopt
 using JuMP
 using LinearAlgebra
 
+include(joinpath(@__DIR__, "MulticonductorFlowLimitRedundancy.jl"))
+using .MulticonductorFlowLimitRedundancy
+
 export default_ac_parallel_data,
        closed_form_current_limited_optima,
        multiconductor_ac_certificate,
+       multiconductor_parallel_redundancy,
        proportional_parallel_redundancy,
        solve_multiconductor_ac_formulation
 
@@ -23,6 +27,30 @@ function default_ac_parallel_data()
         "current_limit_pu" => [[0.60, 0.60], [0.60, 0.60]],
         "load_direction_pu" => 1.0+0.20im,
         "voltage_magnitude_bounds_pu" => [0.70, 1.05],
+    )
+end
+
+"Quadratic-containment certificate for both ends of the recorded member pair."
+function multiconductor_parallel_redundancy(; data=default_ac_parallel_data(), tolerance=1.0e-10)
+    length(data["admittance_pu"]) == 2 ||
+        throw(ArgumentError("the redundancy check requires two members"))
+    retained_maps = series_terminal_current_maps(data["admittance_pu"][1])
+    candidate_maps = series_terminal_current_maps(data["admittance_pu"][2])
+    retained_limits = Dict(
+        terminal_end => data["current_limit_pu"][1] for terminal_end in ("ij", "ji")
+    )
+    candidate_limits = Dict(
+        terminal_end => data["current_limit_pu"][2] for terminal_end in ("ij", "ji")
+    )
+    certify_componentwise_parallel_redundancy(
+        retained_maps,
+        retained_limits,
+        candidate_maps,
+        candidate_limits;
+        conductor_names=data["terminals"],
+        retained_member="l1",
+        candidate_member="l2",
+        tolerance,
     )
 end
 
@@ -191,6 +219,11 @@ function solve_multiconductor_ac_formulation(kind::Symbol; data=default_ac_paral
     length(data["slack_voltage_pu"]) == n || throw(ArgumentError("slack arity mismatch"))
     all(size(admittance) == (n, n) for admittance in data["admittance_pu"]) ||
         throw(ArgumentError("admittance arity mismatch"))
+    if kind == :exact_pruned
+        redundancy = multiconductor_parallel_redundancy(; data)
+        redundancy["certified"] ||
+            throw(ArgumentError("member-2 limits are not certified redundant at every conductor and terminal end"))
+    end
 
     model = Model(Ipopt.Optimizer)
     set_silent(model)
@@ -296,7 +329,8 @@ function multiconductor_ac_certificate(; certificate_id="TR-PAR-004")
     exact = solve_multiconductor_ac_formulation(:exact_lifted; data)
     pruned = solve_multiconductor_ac_formulation(:exact_pruned; data)
     closed_form = closed_form_current_limited_optima(; data)
-    redundancy = proportional_parallel_redundancy(; data)
+    redundancy = multiconductor_parallel_redundancy(; data)
+    proportional_cross_check = proportional_parallel_redundancy(; data)
     Dict{String,Any}(
         "schema_version" => "1.1.0",
         "certificate_id" => String(certificate_id),
@@ -380,6 +414,7 @@ function multiconductor_ac_certificate(; certificate_id="TR-PAR-004")
             "exact_lifted_solution" => exact,
             "exact_pruned_solution" => pruned,
             "certified_redundancy" => redundancy,
+            "proportional_cross_check" => proportional_cross_check,
             "naive_served_fraction_gap" =>
                 naive["objective_served_fraction"] - source["objective_served_fraction"],
             "exact_lifted_served_fraction_gap" =>

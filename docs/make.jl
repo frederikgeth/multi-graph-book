@@ -29,6 +29,32 @@ function Documenter.LaTeXWriter.latex(
     return
 end
 
+# The worked five-bus figures form part of the argument and must not float ahead
+# of the definitions and witness that introduce them. Keep other book images on
+# Documenter's default float policy, but pin this generated figure family to its
+# source position in the PDF. HTML remains unchanged.
+function Documenter.LaTeXWriter.latex(
+    io::Documenter.LaTeXWriter.Context,
+    node::Documenter.MarkdownAST.Node,
+    image::Documenter.LocalImage,
+)
+    writer = Documenter.LaTeXWriter
+    fixed_position = startswith(basename(image.path), "five-bus-")
+    writer._println(io, fixed_position ? "\\begin{figure}[H]" : "\\begin{figure}")
+    writer._println(io, "\\centering")
+    writer._println(
+        io,
+        "\\includegraphics[max width=\\linewidth]{",
+        replace(image.path, "\\" => "/"),
+        "}",
+    )
+    writer._print(io, "\\caption{")
+    writer.latex(io, node.children)
+    writer._println(io, "}")
+    writer._println(io, "\\end{figure}")
+    return
+end
+
 # This is a documentation-only project: all reader-facing source lives under docs/src.
 # Both formats use the same navigation tree so the website and book remain synchronized.
 const SITENAME = "Structure-Preserving Graph Models for Power Networks"
@@ -57,8 +83,11 @@ const PAGES = [
     "Start here" => [
         "Home" => "index.md",
         "One network, many graphs" => "start/one-network-many-graphs.md",
+        "A five-bus multigraph: identities, cycles, and tree coordinates" => "start/five-bus-cycle-spaces.md",
         "A first failure: heterogeneous parallel branches" => "start/first-failure-parallel-branches.md",
         "Multiconductor parallel AC decision case" => "cases/multiconductor-parallel-ac-decision.md",
+        "Non-proportional three-phase four-wire parallel case" => "cases/four-wire-parallel-ac-decision.md",
+        "Four-wire nominal-pi parallel case" => "cases/pi-four-wire-parallel-ac-decision.md",
         "Transformer tap AC decision case" => "cases/transformer-tap-ac-decision.md",
         "Scope and thesis" => "foundations/scope-and-thesis.md",
         "The running multiconductor network" => "cases/running-network.md",

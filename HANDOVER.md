@@ -121,6 +121,35 @@ contingencies or investments.
   0.1 times member 1, so an exact-pruned formulation drops only the implied
   member-2 limits and reproduces the 0.6138908 source optimum with 5 variables
   and 9 constraints.
+- A package-independent containment kernel now converts arbitrary fixed linear
+  complex current maps into normalized real quadratic forms. A candidate limit
+  is pairwise implied exactly when the retained form minus the candidate form
+  is PSD. The member checker requires every aligned conductor at both ends;
+  tests include singular cylinders, a non-proportional positive case, and
+  reverse and one-end-only failures.
+- A solved reciprocal non-proportional three-phase four-wire parallel case now
+  uses the exact complex-polydisc row norm to prove all member-2 component
+  limits jointly implied by member 1. The exact-pruned and source objectives
+  agree at 1.1274329 with explicit neutral voltage, while a same-size naive
+  aggregate reaches 1.8058181 and loads the binding member conductor to 168%.
+  A LinearAlgebra-only Newton continuation reproduces the boundary to 1.4e-8,
+  and BMOPFTools `line_yprim` independently reconstructs both line primitives.
+- The joint-disc theorem now acts on a general invertible terminal-current map.
+  A second four-wire case stacks the full nominal-pi ij/ji primitive with
+  unequal end shunts, certifies and removes all eight member-2 terminal limits,
+  and preserves the 1.1286205 source objective. The same-size naive target
+  reaches 1.8077114; BMOPFTools reconstructs both full primitives and an
+  independent Newton continuation reproduces the source boundary to 1.4e-8.
+- The supplied five-bus graph notes have been corrected and exposed as a
+  worked line-identity cycle-space chapter. The package-independent prototype
+  constructs the 5-by-7 incidence matrix, a three-column fundamental basis,
+  bridge set, simple projection, and equal scalar source/projected nodal
+  admittances. It records the lost parallel two-cycle under projection, retains
+  every chord in spanning-tree coordinates, reproduces the parallel-limit
+  counterexample, and cross-checks cycle rank three with BMOPFTools. Three
+  generated pedagogical figures replace the former monolithic sketch; their
+  manifest binds the cycle-basis, typed-transformation, and feasible-set views
+  to the current executable analysis by SHA-256.
 - An initial representation taxonomy separates physical, connectivity, behavioural, study, and
   computational graphs.
 - A preservation-contract schema is proposed.
@@ -172,9 +201,16 @@ permutation, switch, and multiwinding variants before making them more abstract.
 Extend the retained transformer-control domain to phase-angle,
 independent-phase, mechanically coupled, automatic, and tap-dependent-loss
 controls, and reproduce a case with an independently assembled primitive.
-Extend the scalar parallel-line quadratic containment result to coupled
-multiconductor terminal constraints, with state-conditioned certificates for
-switching, outage, tap, and investment decisions.
+Extend the parallel-line containment results beyond the completed pairwise,
+series, and nonsingular nominal-pi tests: handle singular shunted maps, limits
+implied by several different retained members, and state-conditioned
+certificates for switching, outage, tap, and investment decisions. Add a
+global bound where conclusions require more than the traced high-voltage AC
+branch.
+Lift the five-bus incidence and fundamental-cycle implementation from scalar
+bus--branch edges to conductor-terminal graphs and compiled multi-terminal
+factors. Use the identified-line cycle space, rather than deduplicated
+adjacency, when formulating state-conditioned radiality decisions.
 Replace the certificate's prose interface
 entries with checked state-space and unit objects, then test critical pairs
 with switch and grounding rules.

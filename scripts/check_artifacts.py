@@ -18,6 +18,13 @@ TRANSFORMER_TAP_CONTRACT = ROOT / "data/transformer-contracts/x1-discrete-tap-v0
 TRANSFORMER_CONTRACTS = (TRANSFORMER_CONTRACT, TRANSFORMER_TAP_CONTRACT)
 GENERATED = ROOT / "experiments/generated"
 FIGURE = ROOT / "docs/src/assets/running-network-views.png"
+FIVE_BUS_ANALYSIS = GENERATED / "five-bus-cycle-space-analysis.json"
+FIVE_BUS_FIGURES = {
+    "cycle_basis": ROOT / "docs/src/assets/five-bus-cycle-basis.png",
+    "transformation_map": ROOT / "docs/src/assets/five-bus-transformation-map.png",
+    "feasible_sets": ROOT / "docs/src/assets/five-bus-feasible-sets.png",
+}
+FIVE_BUS_FIGURE_MANIFEST = GENERATED / "five-bus-figure-manifest.json"
 SOURCE_MAP = GENERATED / "view-source-maps.json"
 CLEAN_REPRODUCTION = GENERATED / "clean-reproduction"
 CERTIFICATE_SCHEMA = ROOT / "schemas/transformation-certificate.schema.json"
@@ -35,6 +42,8 @@ CERTIFICATES = (
     "transformer-tap-ac-decision-certificate.json",
     "transformer-tap-ac-independent-certificate.json",
     "multiconductor-parallel-ac-certificate.json",
+    "four-wire-parallel-ac-certificate.json",
+    "pi-four-wire-parallel-ac-certificate.json",
 )
 EXPECTED_VIEWS = {
     "asset_property",
@@ -265,7 +274,10 @@ def main() -> int:
         FIXTURE,
         *TRANSFORMER_CONTRACTS,
         FIGURE,
+        *FIVE_BUS_FIGURES.values(),
         GENERATED / "summary.json",
+        FIVE_BUS_ANALYSIS,
+        FIVE_BUS_FIGURE_MANIFEST,
         CERTIFICATE_SCHEMA,
         *(GENERATED / artifact for artifact in CERTIFICATES),
         GENERATED / "provenance.json",
@@ -292,6 +304,53 @@ def main() -> int:
 
     claims = tomllib.loads((ROOT / "claims/claims.toml").read_text()).get("claim", [])
     claim_ids = {claim["claim_id"] for claim in claims}
+
+    cycle_analysis = load_json(FIVE_BUS_ANALYSIS)
+    if cycle_analysis.get("analysis_id") not in claim_ids:
+        errors.append("five-bus cycle analysis uses an unregistered claim ID")
+    source_cycle = cycle_analysis.get("cycle_space", {})
+    simple_cycle = cycle_analysis.get("simple_projection", {})
+    electrical = cycle_analysis.get("electrical_check", {})
+    witness = electrical.get("parallel_decision_witness", {})
+    bmopf = cycle_analysis.get("bmopftools_cross_check", {})
+    if source_cycle.get("cycle_rank") != 3 or source_cycle.get("incidence_rank") != 4:
+        errors.append("five-bus source cycle-space invariants changed")
+    if source_cycle.get("incidence_cycle_residual") != 0:
+        errors.append("five-bus fundamental cycles are not in the incidence nullspace")
+    if source_cycle.get("bridges") != ["x"]:
+        errors.append("five-bus bridge set changed")
+    if simple_cycle.get("cycle_rank") != 2 or simple_cycle.get("lost_cycle_dimension") != 1:
+        errors.append("five-bus simple-projection cycle-space invariants changed")
+    if electrical.get("maximum_ybus_difference", float("inf")) > 1.0e-12:
+        errors.append("five-bus source and aggregated nodal admittances differ")
+    if witness.get("aggregate_feasible") is not True or witness.get("source_feasible") is not False:
+        errors.append("five-bus parallel decision witness no longer exposes the relaxation")
+    if witness.get("source_voltage_limit_V") != 10.0:
+        errors.append("five-bus source feasible-voltage boundary changed")
+    if abs(witness.get("aggregate_voltage_limit_V", float("inf")) - 200 / 11) > 1.0e-12:
+        errors.append("five-bus naive-aggregate feasible-voltage boundary changed")
+    if bmopf.get("n_extra_edges") != 3 or bmopf.get("expected") != 3:
+        errors.append("BMOPFTools five-bus cycle-rank cross-check changed")
+
+    figure_manifest = load_json(FIVE_BUS_FIGURE_MANIFEST)
+    if figure_manifest.get("schema_version") != "1.0.0":
+        errors.append("five-bus figure manifest has an unsupported schema version")
+    if figure_manifest.get("generator") != "experiments/generate_five_bus_cycle_figure.py":
+        errors.append("five-bus figure manifest names an unexpected generator")
+    if figure_manifest.get("source_analysis") != "experiments/generated/five-bus-cycle-space-analysis.json":
+        errors.append("five-bus figure manifest names an unexpected analysis source")
+    if figure_manifest.get("source_analysis_sha256") != sha256(FIVE_BUS_ANALYSIS):
+        errors.append("five-bus figures were not generated from the current analysis")
+    recorded_figures = figure_manifest.get("figures", {})
+    if set(recorded_figures) != set(FIVE_BUS_FIGURES):
+        errors.append("five-bus figure manifest does not list the expected figure set")
+    for name, path in FIVE_BUS_FIGURES.items():
+        record = recorded_figures.get(name, {})
+        if record.get("path") != str(path.relative_to(ROOT)):
+            errors.append(f"five-bus figure {name} has an unexpected manifest path")
+        if record.get("sha256") != sha256(path):
+            errors.append(f"five-bus figure {name} does not match its manifest hash")
+
     certificate_schema = load_json(CERTIFICATE_SCHEMA)
     for artifact in CERTIFICATES:
         certificate = load_json(GENERATED / artifact)

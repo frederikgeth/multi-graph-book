@@ -40,6 +40,19 @@ review_date = ""
 unresolved_issue = "Molzahn2018 gives an exact scalar AC constraint-pruning test without asset aggregation; a general multiconductor classification remains open."
 
 [[claim]]
+claim_id = "GRAPH-CYCLE-001"
+chapter = "docs/src/start/five-bus-cycle-spaces.md"
+claim_text = "The recorded connected five-bus bus--branch multigraph has seven identified lines, incidence rank four, and cycle-space dimension three; collapsing its parallel q/r pair to a simple edge reduces the cycle-space dimension to two, whereas the spanning-tree-plus-chords representation retains all three source dimensions."
+status = "established_result"
+evidence_type = "incidence_nullity_derivation_executable_fundamental_cycle_basis_and_BMOPFTools_parallel_aware_cross_check"
+citation_keys = ["Kavitha2008"]
+model_scope = "connected loopless scalar series bus--branch multigraph with buses i,j,k,l,m and identified lines q,r,s,t,v,w,x"
+assumptions = "line identity is retained in the source incidence matrix; the simple projection canonicalizes unordered endpoint pairs; the spanning set r,s,w,x is fixed; BMOPFTools counts physical branch records rather than deduplicated adjacencies"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Lift the executable incidence and cycle objects to conductor-terminal graphs, state-conditioned topology decisions, and compiled multi-terminal factors."
+
+[[claim]]
 claim_id = "LIT-PAR-001"
 chapter = "docs/src/start/first-failure-parallel-branches.md"
 claim_text = "For fixed scalar AC pi-line models on common endpoints, a parallel member's current- or apparent-power limit at one terminal is redundant when its normalized terminal-voltage quadratic feasible set contains that of another member; applying the test at both terminals certifies removal of both directional limits without aggregating the line models."
@@ -168,6 +181,45 @@ assumptions = "fixed sending voltage; scalable constant-power direction 1+j0.2; 
 reviewer = ""
 review_date = ""
 unresolved_issue = "Extend the scalar quadratic-containment idea to non-proportional three-phase four-wire members and reproduce with an independent numerical solver."
+
+[[claim]]
+claim_id = "TR-PAR-005"
+chapter = "docs/src/cases/multiconductor-parallel-ac-decision.md"
+claim_text = "For fixed linear complex terminal-current maps with centered Euclidean norm limits, one normalized constraint implies another if and only if the retained normalized real quadratic form minus the candidate form is positive semidefinite; applying this pairwise test to every aligned conductor and both terminal ends certifies exact candidate-limit pruning while retaining both member models."
+status = "established_result"
+evidence_type = "algebraic_derivation_executable_quadratic_containment_certificate_and_positive_negative_guard_tests"
+citation_keys = ["Molzahn2018"]
+model_scope = "fixed linear complex multiconductor terminal-current maps with centered scalar or grouped Euclidean current-magnitude constraints"
+assumptions = "source and candidate maps act on the same stacked voltage state; conductor coordinates are aligned; limits are positive and finite; every removed componentwise constraint passes at every required terminal end"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend from pairwise implications to constraints jointly implied by multiple retained limits, then condition certificates on topology, controls, outages, investments, and non-Euclidean thermal regions."
+
+[[claim]]
+claim_id = "TR-PAR-006"
+chapter = "docs/src/cases/four-wire-parallel-ac-decision.md"
+claim_text = "For nonsingular fixed series admittances on common multiconductor endpoint coordinates, candidate component currents recover as I_l2=(Y_l2/Y_l1)I_l1, and the exact maximum of candidate component c over all retained component-current discs is sum_k abs(K_ck) Imax_l1k; in the recorded reciprocal non-proportional three-phase four-wire AC case this certifies all l2 limits redundant, the exact-pruned and source objectives agree at 1.1274329, and a summed-limit aggregate reaches 1.8058181 by violating an l1 limit."
+status = "established_result"
+evidence_type = "algebraic_complex_polydisc_support_function_JuMP_Ipopt_execution_independent_Newton_continuation_bisection_and_BMOPFTools_line_primitive_cross_check"
+citation_keys = ["Molzahn2018"]
+model_scope = "two fixed reciprocal series-only parallel members with full ordered (a,b,c,n) impedance matrices, componentwise current limits, explicit neutral KCL, unbalanced wye constant-power directions, and phase-to-neutral voltage bounds"
+assumptions = "retained series admittance is nonsingular; both members share endpoint voltage coordinates; component current limits are centered complex discs; reverse-end series current differs only by sign; the relevant high-voltage power-flow branch is traced continuously"
+reviewer = ""
+review_date = ""
+unresolved_issue = "TR-PAR-007 covers nonsingular nominal-pi primitives; extend to singular maps, several retained members, state-dependent topology and controls, and obtain an independent global optimality bound where required."
+
+[[claim]]
+claim_id = "TR-PAR-007"
+chapter = "docs/src/cases/pi-four-wire-parallel-ac-decision.md"
+claim_text = "For fixed nominal-pi multiconductor members whose retained full two-end terminal-current primitive Ar is nonsingular, all candidate terminal currents recover as Ac*inv(Ar) times the retained terminal-current vector, so exact complex-polydisc row norms certify joint implication across both line ends; in the recorded non-proportional four-wire case, pruning eight member-2 limits preserves the 1.1286205 source objective while a same-size summed-limit model reaches 1.8077114 by violating member 1."
+status = "established_result"
+evidence_type = "algebraic_full_terminal_primitive_recovery_complex_polydisc_support_function_JuMP_Ipopt_execution_independent_Newton_continuation_bisection_and_BMOPFTools_nominal_pi_primitive_cross_check"
+citation_keys = ["Molzahn2018"]
+model_scope = "two fixed reciprocal non-proportional nominal-pi parallel members with full ordered (a,b,c,n) series impedance and unequal diagonal from/to shunt blocks, both-end component current limits, explicit neutral KCL, unbalanced wye constant-power loading, and phase-to-neutral voltage bounds"
+assumptions = "the retained stacked ij/ji terminal-current primitive is numerically nonsingular; endpoint voltage coordinates align; limits are centered complex discs; all candidate rows pass the exact recovery-map row norm; the relevant high-voltage branch is traced continuously"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to singular shunted primitives, voltage-dependent shunts, several retained members, topology and control states, and global AC optimality bounds where required."
 
 [[claim]]
 claim_id = "TR-XFMR-002"

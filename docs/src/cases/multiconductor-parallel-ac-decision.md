@@ -91,6 +91,56 @@ case of the constraint-pruning idea; it does not assume that the general
 scalar quadratic test in [Molzahn2018](@cite) automatically extends to
 arbitrary matrix-valued conductor models.
 
+## General linear-current containment test
+
+The proportional proof is now implemented as a special case of a reusable
+linear-current certificate. Let ``A_r`` map the stacked complex endpoint
+voltages to a retained current group, and let ``A_c`` define a candidate
+constraint. For any complex matrix ``A``, define its realification
+
+```math
+\mathcal R(A)=
+\begin{bmatrix}
+\Re(A)&-\Im(A)\\
+\Im(A)& \Re(A)
+\end{bmatrix}
+```
+
+and the normalized quadratic form
+
+```math
+Q(A,I^{\max})=
+\frac{\mathcal R(A)^{\mathsf T}\mathcal R(A)}{(I^{\max})^2}.
+```
+
+The retained constraint implies the candidate constraint exactly when
+
+```math
+Q(A_r,I_r^{\max})-Q(A_c,I_c^{\max})\succeq0.
+```
+
+To see this, write the constraints as ``x^{\mathsf T}Q_rx\le1`` and
+``x^{\mathsf T}Q_cx\le1``. Positive-semidefinite dominance gives the forward
+implication immediately. Conversely, homogeneity lets any ``x`` with
+``x^{\mathsf T}Q_rx>0`` be scaled to the retained boundary; directions in the
+nullspace can be scaled without bound and therefore must also lie in the
+candidate nullspace. Thus implication requires ``x^{\mathsf T}Q_cx\le
+x^{\mathsf T}Q_rx`` for every ``x``. The argument includes singular cylinders,
+not only bounded ellipsoids.
+
+For componentwise multiconductor limits, the implementation applies this test
+to every aligned conductor at both terminal ends. A non-proportional test uses
+different row factors, ``0.2`` and ``0.4``, so the member admittance matrices
+are not scalar multiples even though every candidate current circle is
+certifiably implied. A second test is safe at ``ij`` and unsafe at ``ji`` and
+is correctly rejected. This establishes claim `TR-PAR-005`.
+
+The test is necessary and sufficient for each individual centered Euclidean
+norm implication. The current member-level algorithm is only a pairwise
+certificate: it does not yet detect a constraint implied jointly by several
+other limits, nor does it cover affine offsets, non-Euclidean thermal regions,
+or decision-dependent line, tap, outage, and switching states.
+
 ## Results
 
 | Formulation | Served fraction | Receiving voltage magnitude | Largest recovered member current | Variables / constraints |
@@ -139,10 +189,11 @@ This is a deliberately minimal nonlinear AC case, not a three-phase benchmark.
 It includes conductor coupling and an explicit return path, but uses
 proportional member matrices and one scalable load direction so that a closed
 form check remains possible. Its proportional current map supplies a complete
-redundancy proof for this example. The next extension should break that
-proportionality, formulate multiconductor quadratic or conic containment at
-both terminals, add three phases plus neutral, and compare active constraints
-and decisions in a larger BMOPFTools case.
+redundancy proof for this example. The [non-proportional three-phase four-wire
+case](@ref four-wire-parallel-ac-case) is the next extension: it breaks
+proportionality inside the solved decision problem, adds all three phases plus
+neutral, certifies joint componentwise implication, and cross-checks the line
+primitives with BMOPFTools.
 
 Run:
 
@@ -152,5 +203,7 @@ julia --project=experiments experiments/test/multiconductor_parallel_ac.jl
 ```
 
 The generated AC certificate contains all four solutions, the proportional
-redundancy certificate, recovered member currents, model sizes, residuals, and
-closed-form differences.
+cross-check, the two-end quadratic-containment certificate, recovered member
+currents, model sizes, residuals, and closed-form differences. The generic
+checker is in
+`experiments/transformations/MulticonductorFlowLimitRedundancy.jl`.

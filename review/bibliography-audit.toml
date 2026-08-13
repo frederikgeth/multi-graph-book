@@ -125,3 +125,10 @@ status = "corrected"
 verification_source = "https://opendss.epri.com/CircuitReductionforVersion85.html"
 verified_on = "2026-08-13"
 note = "Official EPRI documentation title verified; unsupported publication year replaced by n.d."
+
+[[entry]]
+key = "Kavitha2008"
+status = "verified"
+verification_source = "https://link.springer.com/article/10.1007/s00453-007-9064-z"
+verified_on = "2026-08-13"
+note = "The publisher record confirms the title, authors, journal, volume, issue, pages, year, and DOI."

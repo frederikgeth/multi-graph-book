@@ -189,6 +189,30 @@ The first executable vertical slice is complete:
    explicitly from asset aggregation. The proportional multiconductor case
    includes an exact-pruned formulation that removes only the implied
    member-2 current limits and retains the source optimum of 0.6138908.
+20. a package-independent multiconductor checker now realifies fixed complex
+   terminal-current maps and certifies pairwise limit implication by a PSD
+   difference test. It checks every aligned conductor at both ends and has
+   non-proportional positive, reverse-implication, singular, and one-end-only
+   negative tests.
+21. a reciprocal non-proportional three-phase four-wire AC case now certifies
+   candidate limits jointly from all component discs of a nonsingular retained
+   member. Source and exact-pruned objectives agree at 1.1274329, while a
+   same-size summed-limit target reaches 1.8058181 by violating a member limit;
+   an independent Newton continuation reproduces the boundary and BMOPFTools
+   cross-checks both line primitives.
+22. the joint-disc kernel now accepts any invertible fixed terminal-current
+   map. A non-proportional four-wire nominal-pi case stacks all ij/ji currents,
+   includes distinct end shunts, prunes eight certified limits, and preserves
+   the 1.1286205 source objective; independent continuation and BMOPFTools
+   primitive reconstruction cross-check the result.
+23. a corrected five-bus worked example now separates line-identity cycle
+   space, simple-graph projection, electrical aggregation, guarded reduction,
+   and spanning-tree coordinates. The seven-line source multigraph has cycle
+   rank three, its simple projection has rank two, and the executable
+   line-indexed basis agrees with BMOPFTools' parallel-aware extra-edge count.
+   Three generated small-multiple figures expose the lost parallel cycle,
+   typed transformation semantics, and equal-`Ybus`/unequal-feasible-set
+   counterexample; a hash manifest binds them to the analysis artifact.
 
 The next sprint should:
 
@@ -199,11 +223,13 @@ The next sprint should:
 3. extend the retained transformer-control domain to phase-angle,
    independent-phase, mechanically coupled, automatic, and tap-dependent-loss
    controls, and reproduce a case with an independently assembled primitive;
-4. extend the AC comparison to non-proportional three-phase four-wire members
-   and reproduce it with an independent numerical solver; develop a
-   multiconductor redundancy checker that certifies both line terminals and
-   conditions its result on topology and control state;
+4. extend the completed nominal-pi case to singular shunted maps, limits
+   implied by several retained members, and state-conditioned topology and
+   controls; add a global bound where required;
 5. replace prose interface entries with checked state-space and unit objects,
    then strengthen composition beyond its current identity meeting check;
 6. add scheduled external-link checking without making ordinary builds depend
    on publisher availability.
+7. lift the five-bus incidence and cycle-space objects to conductor-terminal
+   connectivity, compiled multi-terminal factors, and state-conditioned
+   radial-topology decisions.

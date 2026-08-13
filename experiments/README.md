@@ -23,11 +23,17 @@ julia --project=experiments experiments/run_transformer_tap_decision_compilation
 julia --project=experiments experiments/run_transformer_tap_ac_decision.jl
 julia --project=experiments experiments/run_transformer_tap_ac_independent_reproduction.jl
 julia --project=experiments experiments/run_multiconductor_parallel_ac.jl
+julia --project=experiments experiments/run_four_wire_parallel_ac.jl
+julia --project=experiments experiments/run_pi_four_wire_parallel_ac.jl
+julia --project=experiments experiments/run_five_bus_cycle_space.jl
+python3 experiments/generate_five_bus_cycle_figure.py
 python3 scripts/check_artifacts.py
 ```
 
-The view renderer requires Pillow. The generated PNG is committed, so Pillow is
-not required to build the book unless that figure is being regenerated.
+The figure renderers require Pillow. Their generated PNGs are committed, so
+Pillow is not required to build the book unless the figures are being
+regenerated. The five-bus renderer reads the Julia-generated analysis rather
+than duplicating graph or witness data in the drawing code.
 
 `run_vertical_slice.jl` writes:
 
@@ -73,9 +79,33 @@ not required to build the book unless that figure is being regenerated.
 - `experiments/generated/multiconductor-parallel-ac-certificate.json`: source,
   naïve aggregate, exact lifted, and certified exact-pruned results for the
   coupled phase-neutral AC case, including the proportional member-current
-  redundancy certificate.
+  cross-check and a general two-end quadratic-containment certificate.
 
-All thirteen transformation artifacts conform to version 1.1.0 of
+`experiments/transformations/MulticonductorFlowLimitRedundancy.jl` implements
+the package-independent containment kernel for fixed linear complex current
+maps. Its tests include singular quadratic forms, a non-proportional
+multiconductor positive case, reverse implication failure, and a candidate
+that passes at `ij` but fails at `ji`.
+
+- `experiments/generated/four-wire-parallel-ac-certificate.json`: a reciprocal,
+  non-proportional three-phase four-wire AC decision case. It contains the
+  exact joint component-disc certificate, source/lifted/pruned/naive solutions,
+  and an independent finite-difference Newton continuation and bisection
+  reproduction; tests also cross-check both line primitives with BMOPFTools.
+- `experiments/generated/pi-four-wire-parallel-ac-certificate.json`: the full
+  nominal-pi extension with distinct from/to shunts, eight both-end current
+  limits, exact joint-disc pruning, source/lifted/pruned/naive AC solutions,
+  independent continuation, and BMOPFTools primitive cross-checks.
+- `experiments/generated/five-bus-cycle-space-analysis.json`: a line-identity
+  incidence and cycle-space analysis of the five-bus multigraph. It records a
+  three-dimensional source cycle space, the two-dimensional simple projection,
+  an exact scalar `Ybus` aggregation check, the parallel-limit decision
+  witness, and BMOPFTools' parallel-aware extra-edge count.
+- `experiments/generated/five-bus-figure-manifest.json`: hashes binding the
+  verified five-bus analysis to the generated cycle-basis, transformation-map,
+  and feasible-set figures used in the chapter.
+
+All fifteen transformation artifacts conform to version 1.1.0 of
 `schemas/transformation-certificate.schema.json`. The checker enforces the
 common required fields, six typed interfaces, classifications, identifiers,
 and claim registration.

@@ -207,15 +207,121 @@
   "evidence": {
     "exact_pruned_served_fraction_gap": -1.554312234475219e-14,
     "certified_redundancy": {
-      "minimum_limit_ratio": 1,
-      "current_map_ratio": {
-        "real": 0.09999999999999999,
-        "imag": -1.9592171022796884e-18
-      },
-      "retained_member": 1,
-      "redundant_member": 2,
-      "implication": "abs(I_l1ij,c)<=Imax_l1,c implies abs(I_l2ij,c)<=Imax_l2,c for every conductor c",
-      "maximum_proportionality_residual": 3.1031676915590914e-16
+      "checks": [
+        {
+          "retained_limit": 0.6,
+          "criterion": "Q_retained - Q_candidate is positive semidefinite",
+          "voltage_state_complex_dimension": 4,
+          "difference_eigenvalues": [
+            -1.0452732219217487e-13,
+            -1.115378049216369e-14,
+            -3.346247294322945e-47,
+            1.261830834532822e-64,
+            3.9653226903044985e-30,
+            1.7768797100272297e-14,
+            831.1111111111107,
+            831.1111111111107
+          ],
+          "certified": true,
+          "retained_current_group_dimension": 1,
+          "candidate_limit": 0.6,
+          "terminal_end": "ij",
+          "conductor": "a",
+          "minimum_psd_margin": -1.0452732219217487e-13,
+          "scaled_tolerance": 8.395061728395061e-8,
+          "candidate_current_group_dimension": 1
+        },
+        {
+          "retained_limit": 0.6,
+          "criterion": "Q_retained - Q_candidate is positive semidefinite",
+          "voltage_state_complex_dimension": 4,
+          "difference_eigenvalues": [
+            -8.519818809136508e-14,
+            -1.3898725686393445e-14,
+            -3.456356630663037e-65,
+            1.2290901382158922e-47,
+            1.0132790924098765e-31,
+            2.0305256990109946e-14,
+            831.1111111111109,
+            831.111111111111
+          ],
+          "certified": true,
+          "retained_current_group_dimension": 1,
+          "candidate_limit": 0.6,
+          "terminal_end": "ij",
+          "conductor": "n",
+          "minimum_psd_margin": -8.519818809136508e-14,
+          "scaled_tolerance": 8.395061728395059e-8,
+          "candidate_current_group_dimension": 1
+        },
+        {
+          "retained_limit": 0.6,
+          "criterion": "Q_retained - Q_candidate is positive semidefinite",
+          "voltage_state_complex_dimension": 4,
+          "difference_eigenvalues": [
+            -1.0452732219217487e-13,
+            -1.115378049216369e-14,
+            -3.346247294322945e-47,
+            1.261830834532822e-64,
+            3.9653226903044985e-30,
+            1.7768797100272297e-14,
+            831.1111111111107,
+            831.1111111111107
+          ],
+          "certified": true,
+          "retained_current_group_dimension": 1,
+          "candidate_limit": 0.6,
+          "terminal_end": "ji",
+          "conductor": "a",
+          "minimum_psd_margin": -1.0452732219217487e-13,
+          "scaled_tolerance": 8.395061728395061e-8,
+          "candidate_current_group_dimension": 1
+        },
+        {
+          "retained_limit": 0.6,
+          "criterion": "Q_retained - Q_candidate is positive semidefinite",
+          "voltage_state_complex_dimension": 4,
+          "difference_eigenvalues": [
+            -8.519818809136508e-14,
+            -1.3898725686393445e-14,
+            -3.456356630663037e-65,
+            1.2290901382158922e-47,
+            1.0132790924098765e-31,
+            2.0305256990109946e-14,
+            831.1111111111109,
+            831.111111111111
+          ],
+          "certified": true,
+          "retained_current_group_dimension": 1,
+          "candidate_limit": 0.6,
+          "terminal_end": "ji",
+          "conductor": "n",
+          "minimum_psd_margin": -8.519818809136508e-14,
+          "scaled_tolerance": 8.395061728395059e-8,
+          "candidate_current_group_dimension": 1
+        }
+      ],
+      "classification": "exact_constraint_pruning",
+      "required_terminal_ends": [
+        "ij",
+        "ji"
+      ],
+      "forgets": [
+        "only candidate limits proved implied"
+      ],
+      "criterion": "corresponding normalized quadratic containment at every conductor and terminal end",
+      "retained_member": "l1",
+      "certified": true,
+      "preserves": [
+        "candidate member law and identity",
+        "feasible set of the retained voltage variables",
+        "all objectives and constraints on unchanged variables"
+      ],
+      "candidate_member": "l2",
+      "conductor_order": [
+        "a",
+        "n"
+      ]
     },
     "source_solver_minus_closed_form": 6.227480753295822e-10,
     "exact_pruned_solution": {
@@ -291,7 +397,6 @@
       "objective_served_fraction": 0.6138907961267286,
       "formulation": "exact_pruned"
     },
-    "naive_solver_minus_closed_form": 1.4509216050839768e-10,
     "naive_served_fraction_gap": 0.44919254521377927,
     "naive_aggregate_solution": {
       "current_balance_residual_pu": 1.1443916996305594e-15,
@@ -366,6 +471,18 @@
       "objective_served_fraction": 1.0630833413405234,
       "formulation": "naive_aggregate"
     },
+    "proportional_cross_check": {
+      "minimum_limit_ratio": 1,
+      "current_map_ratio": {
+        "real": 0.09999999999999999,
+        "imag": -1.9592171022796884e-18
+      },
+      "retained_member": 1,
+      "redundant_member": 2,
+      "implication": "abs(I_l1ij,c)<=Imax_l1,c implies abs(I_l2ij,c)<=Imax_l2,c for every conductor c",
+      "maximum_proportionality_residual": 3.1031676915590914e-16
+    },
+    "naive_solver_minus_closed_form": 1.4509216050839768e-10,
     "exact_lifted_solution": {
       "current_balance_residual_pu": 3.8559277963506344e-16,
       "termination_status": "LOCALLY_SOLVED",

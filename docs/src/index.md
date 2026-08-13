@@ -29,10 +29,18 @@ model.
 ## Start with one network
 
 [One network, many graphs](@ref) shows why the same physical system produces different asset,
-connectivity, bus--branch, factor, optimization, and sparsity graphs. [A first failure:
+connectivity, bus--branch, factor, optimization, and sparsity graphs. The
+[five-bus multigraph chapter](@ref five-bus-cycle-spaces) then distinguishes a
+line-identity cycle basis, simple projection, electrical aggregation, and
+spanning-tree coordinates. [A first failure:
 heterogeneous parallel branches](@ref) then gives the first complete decision-preservation
 counterexample. The [Multiconductor parallel AC decision case](@ref multiconductor-parallel-ac-case)
 then retains complex conductor voltages, coupling, voltage bounds, and AC power balance.
+The [non-proportional three-phase four-wire case](@ref four-wire-parallel-ac-case)
+then certifies jointly implied member limits without proportional matrices or
+balanced-network assumptions.
+The [four-wire nominal-pi case](@ref pi-four-wire-parallel-ac-case) extends the
+certificate to distinct shunt currents and all eight member-end limits.
 [The transformer tap AC decision case](@ref transformer-tap-ac-decision-case) embeds the full
 11-terminal WYE/WYE/DELTA factor into voltage, neutral-KCL, power-balance, and recovered-current
 constraints while retaining its finite tap choice.
