@@ -189,6 +189,11 @@ def source_maps(network):
         for family, devices in sorted(network["transformer"].items())
         for identifier in sorted(devices)
     ]
+    simple_edge_sources = {}
+    for family in ("line", "switch"):
+        for identifier, device in sorted(network.get(family, {}).items()):
+            endpoints = tuple(sorted((device["bus_from"], device["bus_to"])))
+            simple_edge_sources.setdefault(endpoints, []).append(f"{family}/{identifier}")
     device_objects = [source for source in objects if not source.startswith("bus/")]
     terminal_objects = [
         {
@@ -254,6 +259,24 @@ def source_maps(network):
             ],
             "retains": ["parallel member identity", "bus incidence", "multi-terminal device identity"],
             "omits": ["ordered conductor coordinates", "constitutive equations"],
+        },
+        "simple_topology": {
+            "generated_objects": [
+                {"generated_id": f"vertex::{source}", "sources": [source]} for source in buses
+            ] + [
+                {
+                    "generated_id": f"edge::{endpoint_a}--{endpoint_b}",
+                    "sources": sources,
+                }
+                for (endpoint_a, endpoint_b), sources in sorted(simple_edge_sources.items())
+            ],
+            "retains": ["bus adjacency", "connected components of the two-terminal subnetwork"],
+            "omits": [
+                "parallel member identity",
+                "ordered conductor coordinates",
+                "multi-terminal devices pending compilation",
+                "constitutive equations",
+            ],
         },
         "port_factor": {
             "generated_objects": [

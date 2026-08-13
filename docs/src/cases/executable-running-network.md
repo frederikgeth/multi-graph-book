@@ -47,7 +47,8 @@ The panels are not levels in a single hierarchy:
 
 Every generated view must retain a source map. A label such as `Phi_x1` is a
 generated factor identity with `source = x1`; it is not a replacement asset ID.
-The complete maps for all six views are generated in
+The complete maps for the six illustrated views, together with the derived
+simple-topology quotient, are generated in
 `experiments/generated/view-source-maps.json`. Automated checks require every
 generated object to identify an existing fixture source and bind the map to the
 exact fixture and figure hashes.

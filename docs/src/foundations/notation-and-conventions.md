@@ -26,15 +26,17 @@ mathematical model uses the corresponding symbols.
 
 ## Oriented element triples
 
-A two-terminal branch is identified independently of its orientation. For a line ``\ell`` whose
-declared forward direction is from bus ``i`` to bus ``j``, write
+A two-terminal branch is identified independently of its orientation. Its
+physical incidence is the unordered endpoint pair ``\partial\ell=\{i,j\}``.
+For a line ``\ell`` whose stored reference orientation is from bus ``i`` to
+bus ``j``, write
 
 ```math
 \ell ij \in \mathcal T^{L\rightarrow}
 \subseteq \mathcal L\times\mathcal B\times\mathcal B.
 ```
 
-The reverse orientation and the bidirectional topology set are
+The opposite terminal arc and the bidirected terminal-arc set are
 
 ```math
 \mathcal T^{L\leftarrow}
@@ -43,7 +45,9 @@ The reverse orientation and the bidirectional topology set are
 \mathcal T^L=\mathcal T^{L\rightarrow}\cup\mathcal T^{L\leftarrow}.
 ```
 
-The triple retains the identity of parallel branches. Transformer and switch topology sets
+The triple retains the identity of parallel branches. The arrow is a coordinate
+and terminal-order convention; it does not assert the operating direction of
+current or active power. Transformer and switch topology sets
 ``\mathcal T^X`` and ``\mathcal T^W`` use the same pattern when the device is genuinely
 two-terminal.
 
@@ -57,8 +61,12 @@ Quantities belonging to an oriented terminal or arc use the triple index:
 \mathbf Y^{\mathrm{sh}}_{\ell ij}.
 ```
 
-The forward and reverse quantities need not be equal: terminal currents include local shunts, and
-the two shunt half-sections may be asymmetric.
+The two terminal quantities need not be negatives: terminal currents can
+include local shunts, and the two shunt half-sections may be asymmetric. A
+stored-orientation reversal swaps endpoint records; only a declared internal
+series-current coordinate has the simple antisymmetry relation. The full
+distinction is developed in
+[Orientation, terminal quantities, and power transfer](@ref orientation-terminal-power).
 
 ## Element-intrinsic quantities
 
@@ -128,6 +136,14 @@ terminal is
 ```
 
 where ``\circ`` is the Hadamard product and ``(\cdot)^*`` is element-wise conjugation.
+
+The pair ``(\mathbf S_{\ell ij},\mathbf S_{\ell ji})`` consists of terminal
+complex-power injections into the element. It is not generally one conserved
+edge flow: a series impedance absorbs power even when its end currents are
+opposite, and internal nominal-``\pi`` shunts also make the terminal currents
+non-antisymmetric. An unqualified phrase such as *power from ``i`` to ``j``*
+must therefore identify both the terminal sign convention and the operating
+quantity being reported.
 
 ## Multi-terminal and multiwinding devices
 
@@ -224,4 +240,3 @@ constraints, and optimal decisions.
 A chapter may introduce specialized notation when that notation makes a derivation substantially
 clearer. It must provide a local symbol table and an explicit map to this contract. Silent changes
 of current direction, terminal order, impedance base, or winding meaning are not permitted.
-

@@ -95,11 +95,15 @@ const PAGES = [
     ],
     "Part I — Representation landscape" => [
         "Representation taxonomy" => "foundations/representation-taxonomy.md",
+        "Formal representation frameworks" => "foundations/formal-representation-frameworks.md",
+        "Maps between representation frameworks" => "foundations/representation-maps.md",
+        "Orientation, terminal quantities, and power transfer" => "foundations/orientation-terminal-power.md",
         "Representation architecture" => "foundations/representation-architecture.md",
     ],
     "Part II — Transformation language" => [
         "Preservation contracts" => "foundations/preservation-contracts.md",
         "Projection, compilation, and reduction" => "transformations/projection-compilation-reduction.md",
+        "Kron, Ward, and optimized network equivalents" => "transformations/kron-ward-opti-kron.md",
     ],
     "Part III — Guarded transformation patterns" => [
         "Conductor-coordinate normalization" => "transformations/conductor-coordinate-normalization.md",

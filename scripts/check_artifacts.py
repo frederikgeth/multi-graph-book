@@ -49,6 +49,7 @@ EXPECTED_VIEWS = {
     "asset_property",
     "terminal_connectivity",
     "bus_branch_multigraph",
+    "simple_topology",
     "port_factor",
     "opf_equation",
     "sparsity",
@@ -382,7 +383,7 @@ def main() -> int:
 
     maps = load_json(SOURCE_MAP)
     if set(maps.get("views", {})) != EXPECTED_VIEWS:
-        errors.append("view source-map set does not match the six required views")
+        errors.append("view source-map set does not match the required generated views")
     if maps.get("fixture_sha256") != sha256(FIXTURE):
         errors.append("view source map was not generated from the current fixture")
     if maps.get("figure_sha256") != sha256(FIGURE):

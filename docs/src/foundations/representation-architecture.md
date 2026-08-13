@@ -79,11 +79,13 @@ The linked source structures should generate, at minimum:
 | --- | --- | --- |
 | Connectivity-node graph | switchgear and topology processing | constitutive behavior |
 | Conductor-resolved factor graph | full multiphase equations | some asset semantics unless linked |
-| Bus--branch multigraph | conventional power-flow algorithms | terminal internals and some coupling |
-| Simple weighted graph | graph algorithms and visualization | parallel identity and constraints |
+| Oriented bus--branch multigraph | conventional power-flow algorithms | terminal internals and some coupling |
+| Simple topology or weighted graph | connectivity algorithms and visualization | parallel identity and constraints |
 | Sparsity/incidence graph | numerical ordering and decomposition | most physical interpretation |
 
 These are purpose-specific products, not a ladder ordered only by graph size.
+Their mathematical definitions and the maps among them are collected in
+[Formal representation frameworks](@ref formal-representation-frameworks).
 
 ## Evidence from current software practice
 

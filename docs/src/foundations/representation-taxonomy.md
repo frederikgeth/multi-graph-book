@@ -35,8 +35,10 @@ explicit phases, neutrals, grounding, phase discontinuities, and switchgear.
 ### Node--breaker and bus--branch models
 
 A node--breaker model retains switching equipment and detailed connectivity. A state-resolved bus
-model quotients nodes connected by closed ideal switches. A bus--branch multigraph adds identified
-two-terminal branches; a simple graph additionally forgets parallel identity.
+model quotients nodes connected by closed ideal switches. An oriented
+bus--branch multigraph adds identified two-terminal branches, where orientation
+is normally a coordinate choice rather than a physical transfer direction. A
+simple graph additionally forgets parallel identity.
 
 These are different representations, not interchangeable names for resolution levels.
 
@@ -67,12 +69,17 @@ nothing reliable about physical or decision expressiveness.
 | Asset/property | equipment, owners, locations, records | identity and lifecycle | electrical state equations |
 | Terminal connectivity | terminals, junctions, switches | conductor-aware interconnection | device behaviour unless linked |
 | Bus--branch multigraph | buses and identified branches | conventional network algorithms | internal device and conductor structure |
-| Simple weighted graph | vertices and aggregated edges | visualization and generic graph methods | parallel identity, controls, limits |
+| Simple topology or weighted graph | vertices and quotient edges | connectivity, visualization, and generic graph methods | parallel identity, controls, limits |
 | Port--factor/hypergraph | ports and behavioural relations | multi-terminal composition | asset meaning unless linked |
 | Equation/sparsity graph | variables, equations, nonzeros | numerical solution and decomposition | most physical identity |
 
 No row is globally maximal. An asset graph and a compiled equation graph may retain incomparable
 information.
+
+A simple topology graph must not be identified with a sparsity graph merely
+because both are simple graphs. Their vertices and adjacency rules differ: one
+records a quotient of physical incidence, while the other records nonzero
+algebraic dependence in a declared matrix or equation system.
 
 ## Comparison by decision support
 

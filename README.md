@@ -18,11 +18,11 @@ The current drafting foundation includes:
 - the [reader-facing book plan](BOOK_PLAN.md);
 - the scope, representation taxonomy, proposed architecture, and preservation contracts;
 - a BMOPFTools-aligned notation contract and a common multiconductor running case;
-- a schema-valid numerical running fixture, six generated representation views, and PF/OPF checks;
+- a schema-valid numerical running fixture, six illustrated representation views, a simple-topology quotient map, and PF/OPF checks;
 - executable parallel-branch, conductor-, transformer-winding-, reference-invariant multiwinding-leakage-, terminal-assembly-, fixed-linear transformer-completion-, parameterized tap-decision-, solver-backed and independently reproduced transformer-network-, degree-two-series, and composed preservation certificates;
 - a typed version 1.1 transformation-certificate JSON schema and validated composition law;
 - solved source/naïve/exact-lifted linear and multiconductor AC parallel decision comparisons;
-- complete source maps for the six generated views and a claims ledger;
+- complete source maps for all generated views and a claims ledger;
 - a systematic scoping-review protocol and evidence-matrix schema;
 - projection, compilation, reduction, and guarded normalization;
 - a literature map, research agenda, terminology, and seed bibliography.

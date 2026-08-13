@@ -39,6 +39,16 @@ The mainstream power-system literature emphasizes external-system equivalents,
 Kron/Ward/REI methods, coherency, and dynamic model reduction. "Structure
 preserving" has several meanings.
 
+Ward's original construction treats suppressed loads and generation as
+approximately constant current, retains tie terminals, and realizes the
+external network as a boundary mesh with equivalent terminal injections
+[Ward1949](@cite). The operating-state extended Ward construction addresses
+boundary-bus designation, external shunts, and contingency use from a single
+estimated state [Monticelli1979](@cite). Ward--PV instead retains external
+generator buses after load-node elimination and may then aggregate coherent
+generator groups [Machowski1988](@cite). These sources support a family
+taxonomy, not one universal `Ward` operator.
+
 Grudzien and coauthors use topology-guided reductions of lines, trees and
 triangular subgraphs while preserving power-flow behavior for their model class
 [Grudzien2018](@cite). Sistermanns and coauthors seek to avoid artificial

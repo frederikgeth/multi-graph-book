@@ -52,22 +52,27 @@ Then read:
 
 1. [Scope and thesis](@ref) for the scientific boundary and decision focus;
 2. [Representation taxonomy](@ref) for the model families and comparison axes;
-3. [Representation architecture](@ref) for the proposed linked source structures;
-4. [Preservation contracts](@ref) for exact, conservative, relaxed, and approximate maps;
-5. [Projection, compilation, and reduction](@ref) for the transformation vocabulary;
-6. [Conductor-coordinate normalization](@ref conductor-coordinate-normalization) for an exact coordinate rewrite;
-7. [Transformer-winding coordinate normalization](@ref transformer-winding-normalization) for a delta-safe typed-factor application;
-8. [Multiwinding leakage reference compilation](@ref multiwinding-leakage-reference-compilation) for exact pairwise-test compilation;
-9. [Multiwinding terminal leakage assembly](@ref multiwinding-terminal-leakage-assembly) for connection-factor composition with recoverable winding limits;
-10. [Fixed-linear transformer factor completion](@ref fixed-linear-transformer-factor-completion) for explicit tap/phase operators, excitation, grounding, and the adjustable-control boundary;
-11. [Parameterized transformer tap decisions](@ref parameterized-transformer-tap-decisions) for exact continuous/discrete decision retention and the frozen-tap counterexample;
-12. [Transformer tap AC decision case](@ref transformer-tap-ac-decision-case) for the first solver-backed network embedding of the retained tap factor;
-13. [Degree-two series elimination](@ref degree-two-series-rule) for the first executable guarded reduction;
-14. [Certificate schema and composition](@ref certificate-schema-composition) for the shared contract and sequential composition law;
-15. [Guarded normalization rules](@ref) for the wider candidate rewrite catalogue.
+3. [Formal representation frameworks](@ref formal-representation-frameworks) for mathematical definitions of the source and derived graph families;
+4. [Orientation, terminal quantities, and power transfer](@ref orientation-terminal-power) for the distinction between topology, reference arrows, terminal signs, operating flow, and loss;
+5. [Representation architecture](@ref) for the proposed linked source structures;
+6. [Preservation contracts](@ref) for exact, conservative, relaxed, and approximate maps;
+7. [Projection, compilation, and reduction](@ref) for the transformation vocabulary;
+8. [Maps between representation frameworks](@ref representation-maps) for morphisms, quotients, compilers, and query-relative expressiveness;
+9. [Kron, Ward, and optimized network equivalents](@ref kron-ward-opti-kron) for boundary elimination, external-system realization, and optimized structural selection;
+10. [Conductor-coordinate normalization](@ref conductor-coordinate-normalization) for an exact coordinate rewrite;
+11. [Transformer-winding coordinate normalization](@ref transformer-winding-normalization) for a delta-safe typed-factor application;
+12. [Multiwinding leakage reference compilation](@ref multiwinding-leakage-reference-compilation) for exact pairwise-test compilation;
+13. [Multiwinding terminal leakage assembly](@ref multiwinding-terminal-leakage-assembly) for connection-factor composition with recoverable winding limits;
+14. [Fixed-linear transformer factor completion](@ref fixed-linear-transformer-factor-completion) for explicit tap/phase operators, excitation, grounding, and the adjustable-control boundary;
+15. [Parameterized transformer tap decisions](@ref parameterized-transformer-tap-decisions) for exact continuous/discrete decision retention and the frozen-tap counterexample;
+16. [Transformer tap AC decision case](@ref transformer-tap-ac-decision-case) for the first solver-backed network embedding of the retained tap factor;
+17. [Degree-two series elimination](@ref degree-two-series-rule) for the first executable guarded reduction;
+18. [Certificate schema and composition](@ref certificate-schema-composition) for the shared contract and sequential composition law;
+19. [Guarded normalization rules](@ref) for the wider candidate rewrite catalogue.
 
 The [Notation and modelling conventions](@ref) follows the BMOPFTools index discipline:
-``\ell ij`` denotes line ``\ell`` oriented from bus ``i`` to bus ``j``, while an
+``\ell ij`` denotes the stored reference orientation and terminal order for
+line ``\ell``; it does not assert the operating direction of power. An
 element-intrinsic impedance is ``\mathbf Z_\ell``. Multiwinding devices retain device and winding
 indices until an explicit compilation creates two-terminal arcs.
 

@@ -1,6 +1,27 @@
 schema_version = 1
 
 [[entry]]
+key = "Ward1949"
+status = "verified"
+verification_source = "https://doi.org/10.1109/T-AIEE.1949.5059947"
+verified_on = "2026-08-13"
+note = "DOI registration and the indexed Transactions record confirm the author, title, volume, pages, year, and DOI; the paper states the constant-current approximation, retained tie terminals, boundary mesh, and equivalent terminal injections."
+
+[[entry]]
+key = "Monticelli1979"
+status = "verified"
+verification_source = "https://doi.org/10.1109/TPAS.1979.319387"
+verified_on = "2026-08-13"
+note = "The IEEE article record and author-hosted copy confirm authors, title, journal, issue, pages, year, and DOI; the text identifies its construction as an extended Ward method based on a single state estimate."
+
+[[entry]]
+key = "Machowski1988"
+status = "verified"
+verification_source = "https://doi.org/10.1109/59.192953"
+verified_on = "2026-08-13"
+note = "The IEEE record and author-hosted copy confirm article metadata and distinguish Ward-PV load-node elimination from subsequent coherent generator aggregation."
+
+[[entry]]
 key = "DorflerBullo2013"
 status = "verified"
 verification_source = "https://api.crossref.org/works/10.1109%2FTCSI.2012.2215780"

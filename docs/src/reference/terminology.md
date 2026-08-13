@@ -15,6 +15,9 @@
 | Preservation contract | Precise statement of retained observations, constraints, assumptions and recovery |
 | Recovery map | Map from retained/reduced variables to eliminated source quantities |
 | Provenance | Traceable correspondence among source, generated and reduced objects |
+| Morphism | A map preserving the declared structure within one representation framework |
+| Isomorphism | A reversible morphism; a change of names or coordinates rather than a quotient or compilation |
+| Query factorization | Evidence that a source query can be answered from a target because it factors through the declared transformation |
 | Physical merge | Rewrite asserting that source assets are subdivisions or representations of one target asset |
 | Composite equivalent | Behavioral object representing several source components without claiming homogeneous physical identity |
 | Closure | Property that a model class remains in the same class under a transformation |
@@ -52,4 +55,3 @@ Distinguish:
 - model section introduced by discretization;
 - mathematical two-port branch;
 - behavioral equivalent with no single physical counterpart.
-

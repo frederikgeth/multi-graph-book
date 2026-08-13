@@ -53,7 +53,8 @@ contingencies or investments.
 - Fixture version 0.1.0 realizes that network in BMOPF, passes schema/conformance checks, and
   solves continuous PF and OPF cases. Its normal provenance records the dirty local BMOPFTools
   state, while a separate isolated run establishes a clean pinned reproduction.
-- Six representation views are generated from the fixture, and the scalar parallel-line failure
+- Six illustrated representation views and a seventh simple-topology quotient
+  map are generated from the fixture, and the scalar parallel-line failure
   has an executable machine-readable certificate.
 - The initial claims ledger and CI checker are present.
 - Every bibliography entry has a dated audit record; the Sistermanns final
@@ -63,7 +64,10 @@ contingencies or investments.
   searching and screening have not yet begun.
 - Fixture version 0.1.0 also passes in an isolated clean clone of BMOPFTools commit
   `b7aa9a1bb48bcc8b790d3bcf5417d6a32036352a`; its fixture is byte-identical to the canonical one.
-- The six generated views now have complete source maps bound to fixture and figure hashes.
+- The generated views now have complete source maps bound to fixture and
+  figure hashes. The simple edge `i1--i2` retains a provenance fibre to both
+  parallel source lines; the multiwinding transformer is explicitly outside
+  that quotient until compilation.
 - Degree-two series elimination is an executable package-independent rule with conductor
   permutation, constraint/recovery maps, structured rejections, and adversarial tests.
 - Conductor-coordinate normalization is now its own exact, invertible rule;
@@ -150,6 +154,28 @@ contingencies or investments.
   generated pedagogical figures replace the former monolithic sketch; their
   manifest binds the cycle-basis, typed-transformation, and feasible-set views
   to the current executable analysis by SHA-256.
+- The representation landscape now has a first rigorous definition pass for
+  the simple topology quotient, oriented attributed multigraph, hierarchical
+  port--factor incidence model, typed asset/dependency relations, and compiled
+  equation/sparsity graphs. These are linked by typed maps rather than treated
+  as one detail ladder.
+- A dedicated direction chapter separates undirected physical incidence,
+  arbitrary reference orientation, terminal-current signs, operating-point
+  power transfer, and genuinely directed causal or admissible relations. It
+  derives the two-end loss balance and explains why nominal-pi terminal
+  currents cease to be negatives when shunts remain internal to the line
+  factor.
+- A first network-equivalent chapter states exact linear/affine Kron
+  elimination and recovery, proves typed multiconductor coordinate covariance,
+  distinguishes reduced multiport behavior from line--shunt realization and
+  passivity, and classifies Opti-KRON as optimized structural selection with a
+  scenario-defined observation metric.
+- Ward's original construction, the operating-state extended Ward method, and
+  Ward--PV now have audited primary sources and distinct source/target
+  interpretations rather than being treated as one fixed reduction.
+- A dedicated maps chapter defines within-framework morphisms and
+  isomorphisms, orientation reversal, the principal cross-framework maps, and
+  query factorization as a precise fit-for-purpose test.
 - An initial representation taxonomy separates physical, connectivity, behavioural, study, and
   computational graphs.
 - A preservation-contract schema is proposed.
@@ -191,10 +217,12 @@ BMOPFTools commit should be replaced by a tagged release once available.
 
 ### 4. Formal definitions
 
-Define the port--factor object, morphisms, hierarchy, boundary/interface,
-asset linkage, observation functor, and transformation certificate. Test the
-definitions on the specified running network and its parallel-line, grounding,
-permutation, switch, and multiwinding variants before making them more abstract.
+Build on the first morphisms and coordinate actions by defining hierarchy,
+boundary/interface composition, refinement, observation functors, and
+machine-checkable data correspondence. Test every map on the specified running
+network and its grounding, permutation, switch, and multiwinding variants.
+Add executable Kron realizability and recovery tests before extending the
+network-equivalent comparison to nonlinear and decision observations.
 
 ### 5. Extend executable rules
 

@@ -298,3 +298,16 @@ assumptions = "both paths share the certified transformer matrices and case asse
 reviewer = ""
 review_date = ""
 unresolved_issue = "Reproduce the case with an independently assembled transformer primitive or external power-system tool and establish global or branch-completeness guarantees where required."
+
+[[claim]]
+claim_id = "TR-KRON-001"
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "Typed multiconductor Kron reduction commutes with invertible block-diagonal terminal-coordinate changes when currents transform by the power-dual action."
+status = "established_result"
+evidence_type = "algebraic_derivation"
+citation_keys = ["DorflerBullo2013"]
+model_scope = "finite-dimensional complex linear nodal relations assembled from aligned typed terminal maps"
+assumptions = "retained and internal coordinate actions are invertible and block diagonal; the internal admittance block is invertible; current coordinates use the conjugate-transpose power dual"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add executable random-matrix and terminal-permutation tests and obtain an independent mathematical review."

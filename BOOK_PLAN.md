@@ -92,49 +92,66 @@ ecosystem, and epistemic status.
 
 ### Part I — Representation landscape
 
-5. **Physical assets and property graphs**
-6. **Terminals, conductors, connectivity, and ground**
-7. **Node--breaker, bus--breaker, and bus--branch models**
-8. **Multi-terminal and multiwinding devices**
-9. **Port, factor, and hypergraph models**
-10. **Circuit matrices, equation graphs, and sparsity graphs**
-11. **Hierarchy, zones, and subsystem boundaries**
-12. **Study-specific and algorithmic graphs**
-13. **Comparing representation families**
-14. **When the general model collapses**
+5. **Formal representation frameworks**
+   - Simple topology quotient, oriented attributed multigraph, hierarchical
+     port--factor incidence model, asset/dependency relation model, and
+     equation/sparsity graphs.
+6. **Maps between representation frameworks**
+   - Morphisms and isomorphisms within each framework; typed quotients,
+     compilers, reductions, provenance relations, and query factorization
+     between frameworks.
+7. **Physical assets and dependency relations**
+8. **Terminals, conductors, connectivity, and ground**
+9. **Orientation, terminal signs, and operating-point power transfer**
+   - Undirected physical incidence, the terminal-arc double cover, arbitrary
+     reference orientation, two-end current and power observations, losses,
+     nominal-``\pi`` shunts, and genuinely directed relations.
+10. **Node--breaker, bus--breaker, and oriented bus--branch models**
+11. **Simple topology quotients and weighted graphs**
+12. **Multi-terminal and multiwinding devices**
+13. **Port, factor, and hypergraph models**
+14. **Circuit matrices, equation graphs, and sparsity graphs**
+15. **Hierarchy, zones, and subsystem boundaries**
+16. **Study-specific and algorithmic graphs**
+17. **Comparing representation families**
+18. **When the general model collapses**
     - Balanced operation, transposition, sequence decoupling, neutral elimination, identical
       terminal sets, two-terminal equipment, and transmission-style models.
 
 ### Part II — A common language for transformations
 
-15. **Source, target, and observation contracts**
-16. **Projection and forgetting**
-17. **Compilation and realization**
-18. **Normalization within a model family**
-19. **Exact behavioural reduction**
-20. **Approximate but certified reduction**
-21. **Transformation certificates and recovery maps**
-22. **Composition, critical pairs, and purpose-specific normal forms**
+19. **Source, target, and observation contracts**
+20. **Projection and forgetting**
+21. **Compilation and realization**
+22. **Normalization within a model family**
+23. **Exact behavioural reduction and linear Kron elimination**
+24. **Ward and extended-Ward external-system equivalents**
+25. **Structure-constrained and optimized reduction**
+    - Opti-KRON, voltage-observation metrics, phase/connectivity guards, and
+      radiality restoration.
+26. **Approximate but certified reduction**
+27. **Transformation certificates and recovery maps**
+28. **Composition, critical pairs, and purpose-specific normal forms**
 
 ### Part III — Guarded transformation patterns
 
-23. **Conductor coordinates, terminal maps, and orientation**
-24. **Switch contraction and state-resolved topology**
-25. **Series elimination and physical line concatenation**
-26. **Parallel recognition, aggregation, and constraint lifting**
-27. **Grounding and explicit neutrals**
-28. **Multiwinding transformer compilation**
-29. **Star--mesh and related circuit transformations**
-30. **Constraint and decision recovery**
+29. **Conductor coordinates, terminal maps, and orientation**
+30. **Switch contraction and state-resolved topology**
+31. **Series elimination and physical line concatenation**
+32. **Parallel recognition, aggregation, and constraint lifting**
+33. **Grounding and explicit neutrals**
+34. **Multiwinding transformer compilation**
+35. **Star--mesh and related circuit transformations**
+36. **Constraint and decision recovery**
 
 ### Part IV — Consequences for decisions
 
-31. **Power flow and optimal power flow**
-32. **Topology processing and switching**
-33. **State estimation and measurement structure**
-34. **Fault, grounding, and protection boundaries**
-35. **Planning, contingencies, and reliability**
-36. **Feeder reduction and operating envelopes**
+37. **Power flow and optimal power flow**
+38. **Topology processing and switching**
+39. **State estimation and measurement structure**
+40. **Fault, grounding, and protection boundaries**
+41. **Planning, contingencies, and reliability**
+42. **Feeder reduction and operating envelopes**
 
 These chapters evaluate more than state error. Their comparison criteria include feasibility,
 active limits, continuous and discrete controls, objective value, optimal decisions, contingency
@@ -142,12 +159,12 @@ outcomes, and recoverability of source quantities.
 
 ### Part V — Worked cases
 
-37. **The running multiconductor network, end to end**
-38. **Heterogeneous parallel-line OPF**
-39. **Four-wire grounding-aware estimation**
-40. **Multiwinding transformer realization**
-41. **Distribution-model cleaning**
-42. **Certified feeder reduction**
+43. **The running multiconductor network, end to end**
+44. **Heterogeneous parallel-line OPF**
+45. **Four-wire grounding-aware estimation**
+46. **Multiwinding transformer realization**
+47. **Distribution-model cleaning**
+48. **Certified feeder reduction**
 
 ### Reference
 
@@ -203,6 +220,8 @@ characteristic losses, recovery, citations, implementation status, and related e
 - The notation in the BMOPFTools model specification is the house style and the initial source for
   the notation contract.
 - An oriented two-terminal attachment uses an element--bus--bus triple such as `\ell i j`.
+- The orientation in `\ell i j` is a reference and terminal-order convention,
+  not an assertion of physical power-transfer direction.
 - Element-intrinsic symmetric data use only the element index, for example `\mathbf Z_\ell`.
 - End-specific quantities retain the oriented index, for example
   `\mathbf I_{\ell ij}` or `\mathbf Y^{\mathrm{sh}}_{\ell ij}`.
@@ -247,4 +266,3 @@ The first complete internal milestone is not all 42 chapters. It is a coherent v
 7. audited sources for every claim in that slice.
 
 This milestone should be reviewable as a short monograph while later chapters remain planned.
-

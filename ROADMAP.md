@@ -57,6 +57,10 @@ and a gap analysis stronger than the current provisional assessment.
 **Target:** months 2--4.
 
 - Define asset graph and hierarchical port--factor semantics.
+- Separate undirected physical incidence, reference orientation, terminal-arc
+  signs, operating-point power transfer, and genuinely directed relations.
+- Define simple topology, oriented multigraph, port--factor, asset/dependency,
+  and equation/sparsity frameworks as distinct mathematical objects.
 - Define relative expressiveness by query families.
 - Formalize projection, compilation, normalization, exact behavioral reduction
   and approximation.
@@ -66,6 +70,52 @@ and a gap analysis stronger than the current provisional assessment.
 
 **Exit criterion:** internally consistent Part I draft reviewed by experts from
 at least graph/formal methods and power-system modeling.
+
+## Current foundation refactor
+
+The next reader-facing milestone is a rigorous separation of representation
+frameworks and network-equivalent families.
+
+### Stage A — first formal definitions
+
+- [x] define the simple topology quotient and its lost parallel-cycle rank;
+- [x] define the oriented attributed multigraph and incidence convention;
+- [x] define a first hierarchical port--factor incidence object and external
+  behaviour;
+- [x] define the typed asset/dependency relation model and its nonfunctional
+  link to electrical objects;
+- [x] distinguish topology graphs from equation and matrix-sparsity graphs;
+- [x] separate physical incidence, reference orientation, terminal signs,
+  operating-point transfer, and causal direction;
+- [x] state series and nominal-``\pi`` two-end current and power balances.
+
+### Stage B — network equivalents
+
+- [x] state linear and affine Kron elimination with recovery;
+- [x] separate the Ward realization question from the Schur complement;
+- [x] classify Opti-KRON as optimized structural selection plus a Kron-based
+  relation and scenario observation metric;
+- [x] audit primary sources for conventional, extended, and operating-point
+  Ward formulations;
+- [x] prove a typed multiconductor Kron result with terminal maps;
+- [ ] characterize realizability of reduced multiports in selected line,
+  shunt, transformer, and general-factor libraries;
+  - an initial exact full-matrix reciprocal line--shunt construction and its
+    passivity boundary are now stated; restricted line and transformer
+    libraries still require executable tests;
+- [ ] build an executable Kron--Ward--scenario comparison with voltage,
+  internal-current, constraint, and decision observations.
+
+### Stage C — stronger mathematical structure
+
+- [x] define first morphisms, isomorphisms, and coordinate actions for every
+  representation framework;
+- [ ] formalize hierarchy, open-system composition, and boundary gluing;
+- [ ] replace prose state-space and unit interfaces with checked objects;
+- [ ] test every map on the running multiconductor network, its five-bus
+  line-identity example, and the multiwinding transformer;
+- [ ] obtain independent review from both graph/formal-methods and
+  power-system-modeling perspectives.
 
 ## Phase 3 — Verified local transformations
 
@@ -140,7 +190,8 @@ The first executable vertical slice is complete:
    schema are versioned;
 3. fixture version 0.1.0 has been reproduced at a clean pinned BMOPFTools
    commit without changing the user's development checkout;
-4. all six generated views have complete, hash-bound source maps;
+4. all six illustrated views have complete, hash-bound source maps; a later
+   foundation pass added the seventh simple-topology quotient map;
 5. the degree-two rewrite returns a certified exact behavioural composite or a
    structured guard rejection, with positive and adversarial tests;
 6. CI checks claims, bibliography coverage, local links, generated artifacts,
@@ -213,23 +264,47 @@ The first executable vertical slice is complete:
    Three generated small-multiple figures expose the lost parallel cycle,
    typed transformation semantics, and equal-`Ybus`/unequal-feasible-set
    counterexample; a hash manifest binds them to the analysis artifact.
+24. the five principal representation frameworks now have explicit
+    within-framework morphisms and isomorphisms, while quotients, compilers,
+    sparsity extraction, behavioural reduction, and the asset/electrical link
+    remain separately typed cross-framework maps. Query factorization gives a
+    precise, purpose-relative expressiveness test;
+25. the running-network provenance artifact includes a checked simple-topology
+    quotient: the `i1--i2` adjacency maps to both `l1` and `l2`, while the
+    three-winding transformer is explicitly outside the quotient until a
+    compilation is selected;
+26. Ward's original constant-current boundary construction, the 1979
+    operating-state extended Ward method, and the Ward--PV construction now
+    have audited primary sources and distinct model contracts;
+27. typed multiconductor Kron reduction is proved coordinate covariant under
+    power-dual terminal actions. A first realizability proposition separates
+    an exact general multiport from direct reciprocal line--shunt realization,
+    passivity, and recovery of original constraints.
 
 The next sprint should:
 
-1. execute and archive the first database searches, then populate the evidence
+1. implement a typed multiconductor Kron fixture that tests coordinate
+   covariance, internal-state recovery, original limits, and direct
+   line--shunt realizability;
+2. define hierarchy, open-system boundary gluing, and refinement maps, then
+   test them on the running network's grounding, switch, and transformer;
+3. compare exact Kron, an operating-point Ward equivalent, and an
+   Opti-KRON-style scenario approximation on common voltage, current,
+   constraint, and decision observations;
+4. execute and archive the first database searches, then populate the evidence
    matrix with double-coded seed results;
-2. obtain independent reviews of the parallel, coordinate, series, and winding
+5. obtain independent reviews of the parallel, coordinate, series, and winding
    transformation claims, prioritizing `TR-PAR-004` and `TR-XFMR-001`;
-3. extend the retained transformer-control domain to phase-angle,
+6. extend the retained transformer-control domain to phase-angle,
    independent-phase, mechanically coupled, automatic, and tap-dependent-loss
    controls, and reproduce a case with an independently assembled primitive;
-4. extend the completed nominal-pi case to singular shunted maps, limits
+7. extend the completed nominal-pi case to singular shunted maps, limits
    implied by several retained members, and state-conditioned topology and
    controls; add a global bound where required;
-5. replace prose interface entries with checked state-space and unit objects,
+8. replace prose interface entries with checked state-space and unit objects,
    then strengthen composition beyond its current identity meeting check;
-6. add scheduled external-link checking without making ordinary builds depend
+9. add scheduled external-link checking without making ordinary builds depend
    on publisher availability.
-7. lift the five-bus incidence and cycle-space objects to conductor-terminal
+10. lift the five-bus incidence and cycle-space objects to conductor-terminal
    connectivity, compiled multi-terminal factors, and state-conditioned
    radial-topology decisions.

@@ -530,6 +530,87 @@
         "typed attachment"
       ]
     },
+    "simple_topology": {
+      "generated_objects": [
+        {
+          "generated_id": "vertex::bus/i0",
+          "sources": [
+            "bus/i0"
+          ]
+        },
+        {
+          "generated_id": "vertex::bus/i1",
+          "sources": [
+            "bus/i1"
+          ]
+        },
+        {
+          "generated_id": "vertex::bus/i2",
+          "sources": [
+            "bus/i2"
+          ]
+        },
+        {
+          "generated_id": "vertex::bus/i3",
+          "sources": [
+            "bus/i3"
+          ]
+        },
+        {
+          "generated_id": "vertex::bus/i4",
+          "sources": [
+            "bus/i4"
+          ]
+        },
+        {
+          "generated_id": "vertex::bus/i5",
+          "sources": [
+            "bus/i5"
+          ]
+        },
+        {
+          "generated_id": "vertex::bus/i6",
+          "sources": [
+            "bus/i6"
+          ]
+        },
+        {
+          "generated_id": "edge::i0--i1",
+          "sources": [
+            "switch/w0"
+          ]
+        },
+        {
+          "generated_id": "edge::i1--i2",
+          "sources": [
+            "line/l1",
+            "line/l2"
+          ]
+        },
+        {
+          "generated_id": "edge::i2--i3",
+          "sources": [
+            "line/l3"
+          ]
+        },
+        {
+          "generated_id": "edge::i3--i4",
+          "sources": [
+            "line/l4"
+          ]
+        }
+      ],
+      "omits": [
+        "parallel member identity",
+        "ordered conductor coordinates",
+        "multi-terminal devices pending compilation",
+        "constitutive equations"
+      ],
+      "retains": [
+        "bus adjacency",
+        "connected components of the two-terminal subnetwork"
+      ]
+    },
     "sparsity": {
       "generated_objects": [
         {
