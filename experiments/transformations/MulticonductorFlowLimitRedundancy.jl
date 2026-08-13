@@ -40,10 +40,12 @@ function quadratic_limit_implication(
     candidate_map::AbstractMatrix,
     candidate_limit::Real;
     tolerance=1.0e-10,
+    minimum_relative_margin=1.0e-8,
 )
     size(retained_map, 2) == size(candidate_map, 2) ||
         throw(ArgumentError("current maps must act on the same voltage state"))
     tolerance >= 0 || throw(ArgumentError("tolerance must be nonnegative"))
+    minimum_relative_margin >= 0 || throw(ArgumentError("minimum_relative_margin must be nonnegative"))
     retained_quadratic = normalized_current_quadratic(retained_map, retained_limit)
     candidate_quadratic = normalized_current_quadratic(candidate_map, candidate_limit)
     difference = Symmetric(retained_quadratic - candidate_quadratic)
@@ -51,10 +53,19 @@ function quadratic_limit_implication(
     scale = max(opnorm(retained_quadratic, 2), opnorm(candidate_quadratic, 2), 1.0)
     scaled_tolerance = tolerance * scale
     minimum_margin = minimum(difference_eigenvalues)
+    relative_margin = minimum_margin / scale
+    # A centered quadratic implication may have exact zero eigenvalues because
+    # the current map is a singular cylinder. Treat only a negative margin
+    # beyond the numerical tolerance as ambiguous; a zero eigenvalue is not a
+    # near-limit physical rating.
+    numerically_ambiguous = minimum_margin < -scaled_tolerance
     Dict{String,Any}(
         "certified" => minimum_margin >= -scaled_tolerance,
         "criterion" => "Q_retained - Q_candidate is positive semidefinite",
         "minimum_psd_margin" => minimum_margin,
+        "relative_margin" => relative_margin,
+        "minimum_relative_margin" => minimum_relative_margin,
+        "numerically_ambiguous" => numerically_ambiguous,
         "scaled_tolerance" => scaled_tolerance,
         "difference_eigenvalues" => collect(difference_eigenvalues),
         "retained_limit" => retained_limit,
@@ -101,6 +112,8 @@ function certify_joint_componentwise_linear_redundancy(
     retained_member="retained_member",
     candidate_member="candidate_member",
     tolerance=1.0e-10,
+    minimum_relative_margin=1.0e-8,
+    maximum_condition_number=1.0e8,
     scope="fixed linear terminal-current maps with an invertible retained map",
 )
     size(retained_map, 1) == size(retained_map, 2) ||
@@ -120,16 +133,22 @@ function certify_joint_componentwise_linear_redundancy(
     all(isfinite(limit) && limit > 0 for limit in candidate_limits) ||
         throw(ArgumentError("candidate limits must be positive and finite"))
     tolerance >= 0 || throw(ArgumentError("tolerance must be nonnegative"))
+    minimum_relative_margin >= 0 || throw(ArgumentError("minimum_relative_margin must be nonnegative"))
+    maximum_condition_number >= 1 || throw(ArgumentError("maximum_condition_number must be at least one"))
 
     retained = ComplexF64.(retained_map)
     candidate = ComplexF64.(candidate_map)
     singular_values = svdvals(retained)
+    condition_number = maximum(singular_values) / minimum(singular_values)
     minimum(singular_values) > tolerance * max(maximum(singular_values), 1.0) ||
         throw(ArgumentError("retained current map must be numerically nonsingular"))
+    condition_number <= maximum_condition_number ||
+        throw(ArgumentError("retained current map condition number exceeds the certification limit"))
     recovery = candidate / retained
     residual = opnorm(candidate - recovery * retained, Inf)
     residual_scale = max(opnorm(candidate, Inf), 1.0)
-    residual <= tolerance * residual_scale ||
+    backward_error = residual / residual_scale
+    backward_error <= tolerance ||
         throw(ArgumentError("candidate current recovery map is numerically inconsistent"))
 
     checks = Dict{String,Any}[]
@@ -137,12 +156,17 @@ function certify_joint_componentwise_linear_redundancy(
         contributions = abs.(recovery[component, :]) .* retained_limits
         worst_case = sum(contributions)
         margin = candidate_limits[component] - worst_case
+        relative_margin = margin / max(candidate_limits[component], 1.0)
+        numerically_ambiguous = relative_margin < minimum_relative_margin
         push!(checks, Dict{String,Any}(
             "component" => names[component],
-            "certified" => margin >= -tolerance * max(candidate_limits[component], 1.0),
+            "certified" => !numerically_ambiguous &&
+                margin >= -tolerance * max(candidate_limits[component], 1.0),
             "candidate_limit" => candidate_limits[component],
             "exact_worst_case_magnitude" => worst_case,
             "margin" => margin,
+            "relative_margin" => relative_margin,
+            "numerically_ambiguous" => numerically_ambiguous,
             "retained_limit_contributions" => collect(contributions),
         ))
     end
@@ -159,7 +183,12 @@ function certify_joint_componentwise_linear_redundancy(
             for row in axes(recovery, 1)
         ],
         "current_map_residual" => residual,
-        "retained_map_condition_number" => maximum(singular_values) / minimum(singular_values),
+        "backward_error" => backward_error,
+        "backward_error_tolerance" => tolerance,
+        "retained_map_condition_number" => condition_number,
+        "maximum_condition_number" => maximum_condition_number,
+        "minimum_relative_margin" => minimum_relative_margin,
+        "numerically_ambiguous" => any(check["numerically_ambiguous"] for check in checks),
         "checks" => checks,
         "preserves" => [
             "candidate member law and identity",
@@ -240,6 +269,7 @@ function certify_componentwise_parallel_redundancy(
     retained_member="retained_member",
     candidate_member="candidate_member",
     tolerance=1.0e-10,
+    minimum_relative_margin=1.0e-8,
 )
     conductors = String.(conductor_names)
     isempty(conductors) && throw(ArgumentError("at least one conductor is required"))
@@ -273,6 +303,7 @@ function certify_componentwise_parallel_redundancy(
                 candidate_map[conductor:conductor, :],
                 candidate_limits[terminal_end][conductor];
                 tolerance,
+                minimum_relative_margin,
             )
             implication["terminal_end"] = terminal_end
             implication["conductor"] = conductors[conductor]
@@ -289,6 +320,8 @@ function certify_componentwise_parallel_redundancy(
         "required_terminal_ends" => ends,
         "conductor_order" => conductors,
         "criterion" => "corresponding normalized quadratic containment at every conductor and terminal end",
+        "minimum_relative_margin" => minimum_relative_margin,
+        "numerically_ambiguous" => any(check["numerically_ambiguous"] for check in checks),
         "preserves" => [
             "candidate member law and identity",
             "feasible set of the retained voltage variables",

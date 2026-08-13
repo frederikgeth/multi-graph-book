@@ -25,6 +25,12 @@ include(joinpath(@__DIR__, "..", "running_network.jl"))
     @test isempty(filter(finding -> finding.severity == ERROR, spec_findings))
 
     @test Set(keys(net["line"])) == Set(["l1", "l2", "l3", "l4"])
+    @test Set(keys(net["generator"])) == Set(["g1"])
+    @test Set(keys(net["load"])) == Set(["d1", "d2a", "d2c", "d3", "d4"])
+    @test haskey(net["shunt"], "href")
+    semantic_spec = read(joinpath(@__DIR__, "..", "..", "docs", "src", "cases", "running-network.md"), String)
+    @test occursin("d_4", semantic_spec)
+    @test !occursin("g_2", semantic_spec)
     @test net["line"]["l1"]["bus_from"] == net["line"]["l2"]["bus_from"]
     @test net["line"]["l1"]["bus_to"] == net["line"]["l2"]["bus_to"]
     @test net["line"]["l1"]["i_max"] != net["line"]["l2"]["i_max"]
@@ -74,3 +80,5 @@ include(joinpath(@__DIR__, "pi_four_wire_parallel_ac.jl"))
 include(joinpath(@__DIR__, "multigraph_cycle_space.jl"))
 include(joinpath(@__DIR__, "translation_traps.jl"))
 include(joinpath(@__DIR__, "active_radiality.jl"))
+include(joinpath(@__DIR__, "port_factor_architecture.jl"))
+include(joinpath(@__DIR__, "positive_sequence_collapse.jl"))

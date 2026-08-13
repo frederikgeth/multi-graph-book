@@ -56,7 +56,8 @@ function Documenter.LaTeXWriter.latex(
 end
 
 # This is a documentation-only project: all reader-facing source lives under docs/src.
-# Both formats use the same navigation tree so the website and book remain synchronized.
+# HTML is the primary knowledge-base product. The PDF has a deliberately shorter
+# argument-shaped route while reusing the same Markdown sources.
 const SITENAME = "Structure-Preserving Graph Models for Power Networks"
 const AUTHORS = "Frederik Geth and contributors"
 const VERSION = "Draft"
@@ -79,19 +80,22 @@ function bibliography()
     )
 end
 
-const PAGES = [
+const PAGES_HTML = [
     "Start here" => [
         "Home" => "index.md",
         "One network, many graphs" => "start/one-network-many-graphs.md",
         "A five-bus multigraph: identities, cycles, and tree coordinates" => "start/five-bus-cycle-spaces.md",
         "A first failure: heterogeneous parallel branches" => "start/first-failure-parallel-branches.md",
+        "Scope and thesis" => "foundations/scope-and-thesis.md",
+        "The running multiconductor network" => "cases/running-network.md",
+        "Executable running network" => "cases/executable-running-network.md",
+        "When the general model collapses" => "foundations/when-general-model-collapses.md",
+    ],
+    "Worked decision cases" => [
         "Multiconductor parallel AC decision case" => "cases/multiconductor-parallel-ac-decision.md",
         "Non-proportional three-phase four-wire parallel case" => "cases/four-wire-parallel-ac-decision.md",
         "Four-wire nominal-pi parallel case" => "cases/pi-four-wire-parallel-ac-decision.md",
         "Transformer tap AC decision case" => "cases/transformer-tap-ac-decision.md",
-        "Scope and thesis" => "foundations/scope-and-thesis.md",
-        "The running multiconductor network" => "cases/running-network.md",
-        "Executable running network" => "cases/executable-running-network.md",
     ],
     "Part I — Representation landscape" => [
         "Representation taxonomy" => "foundations/representation-taxonomy.md",
@@ -100,6 +104,11 @@ const PAGES = [
         "Translation traps: graphs, circuits, and power-system language" => "foundations/translation-traps.md",
         "Cycles, parallelism, and radial structure" => "foundations/cycles-parallelism-radiality.md",
         "Orientation, terminal quantities, and power transfer" => "foundations/orientation-terminal-power.md",
+        "Earth, neutral, and reference model classes" => "foundations/earth-ground-models.md",
+        "Node--breaker, bus--breaker, and topology processing" => "foundations/node-breaker-topology-processing.md",
+        "Rating and limit semantics" => "foundations/rating-semantics.md",
+        "Data-model crosswalk" => "foundations/data-model-crosswalk.md",
+        "Numerical consequences of representation and reduction" => "foundations/numerical-consequences.md",
         "Representation architecture" => "foundations/representation-architecture.md",
     ],
     "Part II — Transformation language" => [
@@ -126,6 +135,40 @@ const PAGES = [
     "Reference" => [
         "Notation and modelling conventions" => "foundations/notation-and-conventions.md",
         "Terminology" => "reference/terminology.md",
+        "Knowledge-base indexes" => "reference/knowledge-base-index.md",
+        "Chapter status" => "reference/chapter-status.md",
+        "References" => "reference/references.md",
+    ],
+]
+
+const PAGES_PDF = [
+    "Start here" => [
+        "Home" => "index.md",
+        "One network, many graphs" => "start/one-network-many-graphs.md",
+        "A first failure: heterogeneous parallel branches" => "start/first-failure-parallel-branches.md",
+        "Scope and thesis" => "foundations/scope-and-thesis.md",
+        "The running multiconductor network" => "cases/running-network.md",
+        "When the general model collapses" => "foundations/when-general-model-collapses.md",
+    ],
+    "Core representation and transformation language" => [
+        "Representation frameworks" => "foundations/formal-representation-frameworks.md",
+        "Orientation, terminal quantities, and power transfer" => "foundations/orientation-terminal-power.md",
+        "Cycles, parallelism, and radial structure" => "foundations/cycles-parallelism-radiality.md",
+        "Preservation contracts" => "foundations/preservation-contracts.md",
+        "Projection, compilation, and reduction" => "transformations/projection-compilation-reduction.md",
+        "Circuit coordinate transformations" => "transformations/circuit-coordinate-transformations.md",
+        "Kron, Ward, and optimized network equivalents" => "transformations/kron-ward-opti-kron.md",
+    ],
+    "Guarded cases and computational consequences" => [
+        "Earth, neutral, and reference model classes" => "foundations/earth-ground-models.md",
+        "Conductor-coordinate normalization" => "transformations/conductor-coordinate-normalization.md",
+        "Multiwinding terminal leakage assembly" => "transformations/multiwinding-terminal-leakage-assembly.md",
+        "Transformer tap AC decision case" => "cases/transformer-tap-ac-decision.md",
+        "Numerical consequences of representation and reduction" => "foundations/numerical-consequences.md",
+    ],
+    "Reference" => [
+        "Notation and modelling conventions" => "foundations/notation-and-conventions.md",
+        "Terminology" => "reference/terminology.md",
         "References" => "reference/references.md",
     ],
 ]
@@ -148,7 +191,7 @@ function make_html()
         ),
         plugins = [bibliography()],
         remotes = REMOTES,
-        pages = PAGES,
+        pages = PAGES_HTML,
         pagesonly = true,
         warnonly = false,
     )
@@ -166,11 +209,12 @@ function make_latex()
         build = joinpath(@__DIR__, "latex_build"),
         plugins = [bibliography()],
         remotes = REMOTES,
-        pages = PAGES,
+        pages = PAGES_PDF,
         warnonly = false,
     )
 end
 
+run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_knowledge_base_indexes.py"))`)
 make_html()
 
 if BUILD_PDF

@@ -29,6 +29,12 @@ julia --project=experiments experiments/run_five_bus_cycle_space.jl
 julia --project=experiments experiments/run_translation_traps.jl
 julia --project=experiments experiments/run_active_radiality.jl
 python3 experiments/generate_five_bus_cycle_figure.py
+python3 experiments/generate_numerical_structure_views.py
+julia --project=experiments experiments/run_ybus_jacobian_witness.jl
+python3 experiments/render_ybus_jacobian_view.py
+julia --project=experiments experiments/run_nonlinear_kkt_witness.jl
+python3 experiments/render_nonlinear_kkt_view.py
+python3 scripts/generate_knowledge_base_indexes.py
 python3 scripts/check_artifacts.py
 ```
 
@@ -47,6 +53,10 @@ than duplicating graph or witness data in the drawing code.
   BMOPFTools repository state used for generation.
 - `experiments/generated/view-source-maps.json`: complete source maps for the
   six rendered representations, bound to fixture and figure hashes;
+- `experiments/generated/port-factor-architecture.json`: the checked minimal
+  ``(𝔓, Λ)`` structural witness for the running network;
+- `experiments/generated/positive-sequence-collapse-witness.json`: the
+  positive-sequence diagonalization witness and non-circulant rejection;
 - `experiments/generated/degree-two-series-certificate.json`: the first
   executable guarded series-elimination rule.
 - `experiments/generated/coordinate-normalization-certificate.json`: an exact,
@@ -113,6 +123,16 @@ that passes at `ij` but fails at `ji`.
 - `experiments/generated/active-radiality-witness.json`: an inventory-versus-
   active-state certificate reporting simple-projection and identified-member
   radiality, including a hidden parallel-member cycle.
+- `experiments/generated/numerical-structure-witness.json`: a structural
+  five-bus witness separating member edges, simple-projection edges, one
+  Schur-elimination fill edge, and a declared equation-variable dependency
+  pattern. Its companion SVG is generated from the same artifact source.
+- `experiments/generated/ybus-jacobian-witness.json`: a pinned BMOPFTools
+  passive/constant-Z linearized Ybus export for the running fixture, together
+  with its realified current-voltage matrix, condition estimates, and checks.
+- `experiments/generated/nonlinear-kkt-witness.json`: a finite-difference
+  nonlinear parallel-member/aggregate decision Jacobian and symbolic KKT
+  fill comparison under two elimination orders.
 
 All fifteen transformation artifacts conform to version 1.1.0 of
 `schemas/transformation-certificate.schema.json`. The checker enforces the

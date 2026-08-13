@@ -18,6 +18,45 @@ separate statement of exactness, recovery, and what is no longer observable.
     a phase-to-phase quotient of a three-wire factor, or a Kron-reduced
     boundary relation. The target type and discarded mode must be named.
 
+## Two reductions that are often conflated
+
+For a phase/neutral partition of a nodal impedance or admittance relation,
+neutral elimination and a phase-to-neutral coordinate map are different
+operations. Writing the impedance in blocks,
+
+```math
+\mathbf Z_{abc,n}=
+\begin{bmatrix}
+\mathbf Z_{pp}&\mathbf Z_{pn}\\
+\mathbf Z_{np}&\mathbf Z_{nn}
+\end{bmatrix},
+```
+
+the Schur-complement reduction is
+
+```math
+\boxed{\mathbf Z_{abc}^{\mathrm{Kron}}
+ =\mathbf Z_{pp}-\mathbf Z_{pn}\mathbf Z_{nn}^{-1}\mathbf Z_{np}}.
+```
+
+It eliminates a declared neutral variable and requires ``\mathbf Z_{nn}`` to
+be invertible. By contrast, the phase-to-neutral map changes the voltage
+coordinates and lifts currents on a declared zero-sum subspace:
+
+```math
+\boxed{\mathbf Z^{\mathrm{pn}}
+ =\mathbf T\mathbf Z_{abc,n}\mathbf T^{\mathsf T}},
+\qquad
+\mathbf T=\begin{bmatrix}1&0&0&-1\\0&1&0&-1\\0&0&1&-1\end{bmatrix}.
+```
+
+The latter does not assert that the neutral voltage is zero or that a physical
+neutral conductor has been removed. The two expressions agree only under
+additional grounding, shunt, and current-subspace assumptions, together with
+a declared recovery map. A numerical example should therefore report which
+formula was evaluated, the grounding convention, the invertibility condition,
+and the residual of the discarded mode.
+
 ## Four-wire phase-to-neutral transformation
 
 Let the phase-to-ground voltage vector at bus ``i`` be

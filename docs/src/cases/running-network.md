@@ -93,7 +93,9 @@ I_{h_n}=y_{h_n}U_{i_2,n}.
 ```
 
 The source establishes the network voltage reference through a separately declared grounding
-condition at ``i_0``. This distinction makes the neutral-grounding counterexample observable:
+condition at ``i_0``. The fixture also contains a small reference shunt ``h_{\mathrm{ref}}`` on
+tertiary terminal ``a`` at ``i_6``; it is retained as an explicit object rather than folded into
+the transformer. These distinctions make the neutral-grounding counterexample observable:
 eliminating ``i_2`` as a zero-injection degree-two junction is invalid if the grounding relation is
 forgotten.
 
@@ -143,9 +145,9 @@ The case includes:
 - a voltage source ``s_0`` at ``i_0``;
 - an unbalanced controllable generator ``g_1`` at ``i_3``;
 - an unbalanced four-wire demand ``d_1`` at ``i_3``;
-- a phase-discontinuous demand ``d_2`` at ``i_4``;
+- phase-discontinuous demands ``d_{2a}`` and ``d_{2c}`` at ``i_4``;
 - a secondary demand ``d_3`` at ``i_5``;
-- a controllable tertiary injection ``g_2`` at ``i_6``;
+- a delta demand ``d_4`` at ``i_6``;
 - voltage and current measurements at selected terminals;
 - conductor-current limits on every line and winding.
 
@@ -160,7 +162,7 @@ The first executable problem is a fixed-topology multiconductor AC OPF:
 
 ```math
 \min_{z\in\mathcal F_{M^{\mathrm R}}}
-c_0(P_{s_0})+c_1(\mathbf P_{g_1})+c_2(\mathbf P_{g_2})
+c_0(P_{s_0})+c_1(\mathbf P_{g_1})
 +c_{\mathrm loss}P_{\mathrm loss}
 +c_{\mathrm shed}P_{\mathrm shed}.
 ```

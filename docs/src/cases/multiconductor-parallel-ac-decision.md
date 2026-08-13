@@ -1,5 +1,12 @@
 # [Multiconductor parallel AC decision case](@id multiconductor-parallel-ac-case)
 
+This is the multiconductor specialization of the canonical parallel-member
+failure in [the first scalar counterexample](@ref first-failure-parallel-branches).
+That chapter owns the general warning: an aggregate terminal relation does not
+automatically preserve member-constrained decisions. The present chapter adds
+coupling, complex voltages, and AC power balance without restating that warning
+as a separate modelling claim.
+
 The scalar parallel example shows the feasible-set mechanism with almost no
 algebra. This case retains complex conductor voltages, mutual impedance,
 phase-to-neutral power, voltage bounds, and nonlinear AC power balance. Its
@@ -152,8 +159,9 @@ or decision-dependent line, tap, outage, and switching states.
 
 The naive target serves about 73% more load than the source by violating the
 stronger member's current limit. The exact lifted formulation reproduces the
-source optimum while using the aggregate current relation and six fewer
-explicit current variables in this implementation. This is claim
+source optimum while using the aggregate current relation and eight fewer
+real current variables in this implementation (four fewer complex member
+currents). This is claim
 `TR-PAR-004`. The exact pruned formulation has the same variable and constraint
 counts as the naive target but the source optimum: model size alone therefore
 does not establish fidelity.

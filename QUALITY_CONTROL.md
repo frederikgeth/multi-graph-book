@@ -53,8 +53,15 @@ The machine-readable ledger at `claims/claims.toml` uses the fields:
 
 ```text
 claim_id, chapter, claim_text, status, evidence_type, citation_keys,
-model_scope, assumptions, reviewer, review_date, unresolved_issue
+claim_type, verification, model_scope, assumptions, reviewer, review_date,
+unresolved_issue
 ```
+
+`status` is retained as a legacy compatibility field while downstream
+certificate tools migrate to the orthogonal `claim_type` and `verification`
+fields. Claim type identifies the statement (definition, theorem, empirical,
+practice, proposal, or open); verification identifies the evidence state
+(unreviewed, self-checked, independently implemented, or externally reviewed).
 
 High-consequence claims—especially exactness, non-existence, standards
 interpretation, and industry-practice prevalence—must have entries.

@@ -186,11 +186,24 @@ in the transformed Schur complement cancels the internal coordinate maps and
 leaves ``\mathbf T_B^{\mathsf H}\mathbf Y_{\mathrm K}\mathbf T_B``. The same
 substitution proves the affine and recovery identities.
 
-The proposition covers phase permutations, compatible sequence-coordinate
-changes, and other invertible port-coordinate actions. It does not justify
-dropping a conductor, identifying a neutral with earth, or aggregating phases:
-those maps are not invertible coordinate changes and require separate
-preservation claims.
+The proposition covers phase permutations and other invertible port-coordinate
+actions. A sequence-coordinate statement needs its transform convention
+declared: with the usual non-unitary Fortescue matrix ``A``, applying the same
+voltage and current coordinates gives the similarity action
+``A^{-1}\mathbf Y A``; the power-dual convention above gives the congruence
+action ``A^{\mathsf H}\mathbf Y A``. These coincide only under additional
+normalization assumptions. Neither convention justifies dropping a conductor,
+identifying a neutral with earth, or aggregating phases: those maps are not
+invertible coordinate changes and require separate preservation claims.
+
+**Corollary (reciprocity is convention-relative).** If a nodal matrix is
+complex symmetric in physical coordinates, a real coordinate congruence
+``T^{\mathsf T}\mathbf YT`` preserves complex symmetry. The power-dual action
+``T^{\mathsf H}\mathbf YT`` preserves it when ``T`` is real (or under other
+explicit compatibility conditions), but not for an arbitrary complex ``T``.
+Hermitian structure and complex symmetry are therefore distinct properties;
+the certificate must record which one is required and which coordinate action
+is being used.
 
 ## Realizability is a second theorem
 
@@ -237,7 +250,11 @@ then the reduced relation has the exact complete-graph realization
 ``-\mathbf Y^{\mathrm s}_{pq}`` to both off-diagonal blocks and
 ``\mathbf Y^{\mathrm s}_{pq}`` to both corresponding diagonal blocks.
 Summing all pairwise stamps reproduces every off-diagonal block. The residual
-shunt definition then reproduces each diagonal block.
+shunt definition then reproduces each diagonal block. Thus the proposition is
+an exact stamping identity in a library that permits full ``c\times c``
+reciprocal blocks; it is not a claim that a smaller physical line library is
+closed under Kron reduction. For ``N`` retained junctions the construction
+uses ``N(N-1)/2`` pairwise series blocks plus ``N`` shunts.
 
 This is an algebraic realization, not yet a physical line realization. A
 passive line--shunt library imposes additional conditions such as
@@ -404,9 +421,9 @@ is exact presolve on the constraints while the physical members remain.
 This separation prevents every operation involving a smaller network from
 being called Kron reduction.
 
-## Required next results
+## Open research boundary
 
-The book should next provide:
+The current evidence leaves four implementation questions open:
 
 1. executable realizability tests for selected line, shunt, transformer, and
    general-factor libraries;

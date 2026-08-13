@@ -604,9 +604,11 @@
           ],
           "candidate_limit": 0.72,
           "exact_worst_case_magnitude": 0.17792605385282,
+          "numerically_ambiguous": false,
           "component": "ij-a",
           "certified": true,
-          "margin": 0.54207394614718
+          "margin": 0.54207394614718,
+          "relative_margin": 0.54207394614718
         },
         {
           "retained_limit_contributions": [
@@ -621,9 +623,11 @@
           ],
           "candidate_limit": 0.72,
           "exact_worst_case_magnitude": 0.17418538426703895,
+          "numerically_ambiguous": false,
           "component": "ij-b",
           "certified": true,
-          "margin": 0.5458146157329611
+          "margin": 0.5458146157329611,
+          "relative_margin": 0.5458146157329611
         },
         {
           "retained_limit_contributions": [
@@ -638,9 +642,11 @@
           ],
           "candidate_limit": 0.72,
           "exact_worst_case_magnitude": 0.17078693578774856,
+          "numerically_ambiguous": false,
           "component": "ij-c",
           "certified": true,
-          "margin": 0.5492130642122515
+          "margin": 0.5492130642122515,
+          "relative_margin": 0.5492130642122515
         },
         {
           "retained_limit_contributions": [
@@ -655,9 +661,11 @@
           ],
           "candidate_limit": 0.72,
           "exact_worst_case_magnitude": 0.16475780832388218,
+          "numerically_ambiguous": false,
           "component": "ij-n",
           "certified": true,
-          "margin": 0.5552421916761178
+          "margin": 0.5552421916761178,
+          "relative_margin": 0.5552421916761178
         },
         {
           "retained_limit_contributions": [
@@ -672,9 +680,11 @@
           ],
           "candidate_limit": 0.72,
           "exact_worst_case_magnitude": 0.17783976475835303,
+          "numerically_ambiguous": false,
           "component": "ji-a",
           "certified": true,
-          "margin": 0.5421602352416469
+          "margin": 0.5421602352416469,
+          "relative_margin": 0.5421602352416469
         },
         {
           "retained_limit_contributions": [
@@ -689,9 +699,11 @@
           ],
           "candidate_limit": 0.72,
           "exact_worst_case_magnitude": 0.17366089400953175,
+          "numerically_ambiguous": false,
           "component": "ji-b",
           "certified": true,
-          "margin": 0.5463391059904682
+          "margin": 0.5463391059904682,
+          "relative_margin": 0.5463391059904682
         },
         {
           "retained_limit_contributions": [
@@ -706,9 +718,11 @@
           ],
           "candidate_limit": 0.72,
           "exact_worst_case_magnitude": 0.17002690870483905,
+          "numerically_ambiguous": false,
           "component": "ji-c",
           "certified": true,
-          "margin": 0.5499730912951609
+          "margin": 0.5499730912951609,
+          "relative_margin": 0.5499730912951609
         },
         {
           "retained_limit_contributions": [
@@ -723,9 +737,11 @@
           ],
           "candidate_limit": 0.72,
           "exact_worst_case_magnitude": 0.16464232063848588,
+          "numerically_ambiguous": false,
           "component": "ji-n",
           "certified": true,
-          "margin": 0.555357679361514
+          "margin": 0.555357679361514,
+          "relative_margin": 0.555357679361514
         }
       ],
       "component_order": [
@@ -742,11 +758,8 @@
       "retained_map_condition_number": 2922.8559992087935,
       "criterion": "exact complex-polydisc row norm of candidate-to-retained current recovery map",
       "retained_member": "l1",
-      "preserves": [
-        "candidate member law and identity",
-        "feasible set of the retained voltage variables",
-        "all objectives and constraints on unchanged variables"
-      ],
+      "backward_error": 2.565996132190903e-16,
+      "backward_error_tolerance": 1.0e-10,
       "candidate_member": "l2",
       "candidate_from_retained_current_map": [
         [
@@ -1022,22 +1035,30 @@
           }
         ]
       ],
+      "preserves": [
+        "candidate member law and identity",
+        "feasible set of the retained voltage variables",
+        "all objectives and constraints on unchanged variables"
+      ],
       "classification": "exact_constraint_pruning",
+      "minimum_relative_margin": 1.0e-8,
+      "required_terminal_ends": [
+        "ij",
+        "ji"
+      ],
+      "numerically_ambiguous": false,
+      "forgets": [
+        "only candidate limits proved jointly implied"
+      ],
+      "current_map_residual": 1.5416490818128602e-15,
       "terminal_order": [
         "a",
         "b",
         "c",
         "n"
       ],
-      "required_terminal_ends": [
-        "ij",
-        "ji"
-      ],
-      "forgets": [
-        "only candidate limits proved jointly implied"
-      ],
-      "current_map_residual": 1.5416490818128602e-15,
-      "certified": true
+      "certified": true,
+      "maximum_condition_number": 100000000
     },
     "source_solution": {
       "phase_power_pu": [

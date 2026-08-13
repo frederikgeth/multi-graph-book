@@ -191,6 +191,26 @@ group, converter, grounding relation, or shared control can retain its natural
 port arity. Hierarchy determines ownership of internal variables and the
 boundary across which behavioural reduction is defined.
 
+### Minimal executable witness
+
+The first executable architecture slice is recorded in
+`experiments/generated/port-factor-architecture.json`. It instantiates
+``\mathfrak P`` for the two heterogeneous parallel lines, the three-port
+transformer ``x_1``, and the neutral grounding factor ``h_n``. The validator
+checks that every port has a declared junction and owning factor, that the
+three winding ports remain one factor of arity three, and that the relation
+
+```math
+\Lambda\subseteq
+(\mathcal V_A\cup\mathcal R_A)\times(\mathcal Q\cup\mathcal J\cup\Phi)
+```
+
+contains both one-to-one realizations and the four relations from asset
+``x_1`` to its transformer factor and winding ports. This is a structural data
+witness, not yet a numerical factor evaluator: the relation signatures are
+declared strings and the electrical equations are tested by the existing
+transformation artifacts.
+
 ## Asset and dependency relation model
 
 **Definition.** An asset/dependency relation model is a typed attributed

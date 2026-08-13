@@ -5,13 +5,19 @@ const LEDGER = joinpath(ROOT, "claims", "claims.toml")
 const BIBLIOGRAPHY = joinpath(ROOT, "docs", "src", "references.bib")
 const REQUIRED = Set([
     "claim_id", "chapter", "claim_text", "status", "evidence_type",
-    "citation_keys", "model_scope", "assumptions", "reviewer",
+    "claim_type", "verification", "citation_keys", "model_scope", "assumptions", "reviewer",
     "review_date", "unresolved_issue",
 ])
 const STATUSES = Set([
     "definition", "established_result", "empirical_result",
     "engineering_practice", "interpretation", "proposal",
     "conjecture", "open_question",
+])
+const CLAIM_TYPES = Set([
+    "definition", "theorem", "empirical", "practice", "proposal", "open",
+])
+const VERIFICATIONS = Set([
+    "unreviewed", "self-checked", "independently-implemented", "externally-reviewed",
 ])
 
 ledger = TOML.parsefile(LEDGER)
@@ -29,6 +35,8 @@ for claim in claims
     id in ids && error("duplicate claim_id: $id")
     push!(ids, id)
     claim["status"] in STATUSES || error("$id has unknown status $(claim["status"])")
+    claim["claim_type"] in CLAIM_TYPES || error("$id has unknown claim_type $(claim["claim_type"])")
+    claim["verification"] in VERIFICATIONS || error("$id has unknown verification $(claim["verification"])")
     isfile(joinpath(ROOT, claim["chapter"])) || error("$id chapter does not exist: $(claim["chapter"])")
     for key in claim["citation_keys"]
         key in bibkeys || error("$id cites missing BibTeX key: $key")

@@ -72,9 +72,10 @@ After reading the core route, a reader should be able to:
 
 ## Linear book structure
 
-The PDF follows a deliberate argument. The HTML knowledge base will additionally provide indexes
-by representation, transformation, physical feature, study type, preserved property, software
-ecosystem, and epistemic status.
+The HTML knowledge base is the primary product and provides generated indexes by claim type,
+verification state, chapter, artifact, and unresolved issue. The PDF is a secondary, curated
+serialization with a shorter argument-shaped route; it reuses the same Markdown sources but does
+not attempt to reproduce the knowledge-base indexes as a linear chapter sequence.
 
 ### Start here — one network, many graphs
 
@@ -109,51 +110,62 @@ ecosystem, and epistemic status.
      factor incidence.
 9. **Physical assets and dependency relations**
 10. **Terminals, conductors, connectivity, and ground**
+   - Reference, neutral, earth-return, and asset-aware grounding classes;
+     scope contracts for neutral and earth reductions.
 11. **Orientation, terminal signs, and operating-point power transfer**
    - Undirected physical incidence, the terminal-arc double cover, arbitrary
      reference orientation, two-end current and power observations, losses,
      nominal-``\pi`` shunts, and genuinely directed relations.
 12. **Node--breaker, bus--breaker, and oriented bus--branch models**
+   - State-conditioned connectivity, switch contraction, topological nodes,
+     and recovery of switching/protection identity.
 13. **Simple topology quotients and weighted graphs**
 14. **Multi-terminal and multiwinding devices**
 15. **Port, factor, and hypergraph models**
 16. **Circuit matrices, equation graphs, and sparsity graphs**
 17. **Hierarchy, zones, and subsystem boundaries**
-18. **Study-specific and algorithmic graphs**
-19. **Comparing representation families**
-20. **When the general model collapses**
+18. **Numerical consequences of representation and reduction**
+   - Per-unit and coordinate scaling, conditioning, residual/backward-error
+     reporting, Jacobian dependency structure, Schur-complement fill-in,
+     ordering, recovery cost, and decision margins.
+19. **Study-specific and algorithmic graphs**
+20. **Comparing representation families**
+   - Crosswalks to CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER.
+21. **When the general model collapses**
     - Balanced operation, transposition, sequence decoupling, neutral elimination, identical
       terminal sets, two-terminal equipment, and transmission-style models.
 
 ### Part II — A common language for transformations
 
-21. **Source, target, and observation contracts**
-22. **Projection and forgetting**
-23. **Compilation and realization**
-24. **Normalization within a model family**
-25. **Circuit coordinate transformations**
+22. **Source, target, and observation contracts**
+23. **Projection and forgetting**
+24. **Compilation and realization**
+25. **Normalization within a model family**
+26. **Circuit coordinate transformations**
     - Phase-to-neutral and phase-to-phase maps, common-mode quotients,
       neutral recovery, grounding and shunt guards, and active-member
       radiality conditions.
-26. **Exact behavioural reduction and linear Kron elimination**
-27. **Ward and extended-Ward external-system equivalents**
-28. **Structure-constrained and optimized reduction**
+27. **Exact behavioural reduction and linear Kron elimination**
+28. **Ward and extended-Ward external-system equivalents**
+29. **Structure-constrained and optimized reduction**
     - Opti-KRON, voltage-observation metrics, phase/connectivity guards, and
       radiality restoration.
-29. **Approximate but certified reduction**
-30. **Transformation certificates and recovery maps**
-31. **Composition, critical pairs, and purpose-specific normal forms**
+30. **Approximate but certified reduction**
+31. **Transformation certificates and recovery maps**
+32. **Composition, critical pairs, and purpose-specific normal forms**
 
 ### Part III — Guarded transformation patterns
 
-32. **Conductor coordinates, terminal maps, and orientation**
-33. **Switch contraction and state-resolved topology**
-34. **Series elimination and physical line concatenation**
-35. **Parallel recognition, aggregation, and constraint lifting**
-36. **Grounding and explicit neutrals**
-37. **Multiwinding transformer compilation**
-38. **Star--mesh and related circuit transformations**
-39. **Constraint and decision recovery**
+33. **Conductor coordinates, terminal maps, and orientation**
+34. **Switch contraction and state-resolved topology**
+35. **Series elimination and physical line concatenation**
+36. **Parallel recognition, aggregation, and constraint lifting**
+37. **Grounding and explicit neutrals**
+38. **Multiwinding transformer compilation**
+39. **Star--mesh and related circuit transformations**
+40. **Constraint and decision recovery**
+   - Rating and limit semantics: duration, ambient, quantity, ownership, and
+     uncertainty domains.
 
 ### Part IV — Consequences for decisions
 
@@ -249,8 +261,10 @@ characteristic losses, recovery, citations, implementation status, and related e
 
 The book uses one synthetic, engine-neutral reference network with ordered bus terminals, explicit
 grounding, heterogeneous parallel branches, a genuinely multiwinding transformer, operational
-limits, continuous controls, and discrete states. Each derived view must provide a stable mapping
-back to source identities. Small variants of the network serve as minimal counterexamples.
+limits, continuous controls, and discrete states for representation comparisons and end-to-end
+case studies. Each derived view must provide a stable mapping back to source identities. Isolated
+minimal or analytic cases may use smaller bespoke fixtures when that makes one guard or
+counterexample independently checkable; they are not presented as additional running networks.
 
 The specification is maintained in `docs/src/cases/running-network.md`. Numerical data and
 BMOPFTools fixtures will be added only after its semantic contract is reviewed.
@@ -260,13 +274,13 @@ BMOPFTools fixtures will be added only after its semantic contract is reviewed.
 - `BOOK_PLAN.md` defines the reader-facing architecture and editorial contract.
 - `ROADMAP.md` tracks the scientific and implementation programme.
 - `QUALITY_CONTROL.md` defines evidence and review policy.
-- A future claims ledger will record claim-level evidence and verification state.
+- `claims/claims.toml` records claim-level type, legacy status, evidence, and verification state.
 - A future software roadmap will track executable transformations without controlling the order of
   the book.
 
 ## First drafting cycle
 
-The first complete internal milestone is not all 42 chapters. It is a coherent vertical slice:
+The first complete internal milestone is not all 51 planned chapters. It is a coherent vertical slice:
 
 1. one network, many graphs;
 2. notation and representation taxonomy;

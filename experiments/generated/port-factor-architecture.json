@@ -1,0 +1,246 @@
+{
+  "model": {
+    "junctions": [
+      {
+        "id": "i1",
+        "relation": "voltage compatibility plus signed KCL"
+      },
+      {
+        "id": "i2",
+        "relation": "voltage compatibility plus signed KCL"
+      },
+      {
+        "id": "i5",
+        "relation": "voltage compatibility plus signed KCL"
+      },
+      {
+        "id": "i6",
+        "relation": "voltage compatibility plus signed KCL"
+      }
+    ],
+    "hierarchy": [
+      {
+        "child": "parallel-corridor",
+        "parent": "running-network"
+      },
+      {
+        "child": "transformer-bay",
+        "parent": "running-network"
+      },
+      {
+        "child": "line/l1",
+        "parent": "parallel-corridor"
+      },
+      {
+        "child": "line/l2",
+        "parent": "parallel-corridor"
+      },
+      {
+        "child": "transformer/x1",
+        "parent": "transformer-bay"
+      },
+      {
+        "child": "shunt/hn",
+        "parent": "running-network"
+      }
+    ],
+    "notation": "𝔓=(Q,J,Φ,j,f,H,X,R)",
+    "boundary_ports": [
+      "line/l1/port/i1",
+      "line/l1/port/i2",
+      "line/l2/port/i1",
+      "line/l2/port/i2",
+      "transformer/x1/port/w2",
+      "transformer/x1/port/w3"
+    ],
+    "factors": [
+      {
+        "id": "line/l1",
+        "factor_type": "multiconductor_series_line",
+        "ports": [
+          "line/l1/port/i1",
+          "line/l1/port/i2"
+        ],
+        "relation": "I_l1ij = Y_l1 (U_i1 − U_i2)",
+        "source_assets": [
+          "line/l1"
+        ]
+      },
+      {
+        "id": "line/l2",
+        "factor_type": "multiconductor_series_line",
+        "ports": [
+          "line/l2/port/i1",
+          "line/l2/port/i2"
+        ],
+        "relation": "I_l2ij = Y_l2 (U_i1 − U_i2)",
+        "source_assets": [
+          "line/l2"
+        ]
+      },
+      {
+        "id": "transformer/x1",
+        "factor_type": "multiwinding_transformer",
+        "ports": [
+          "transformer/x1/port/w1",
+          "transformer/x1/port/w2",
+          "transformer/x1/port/w3"
+        ],
+        "relation": "R_x1(V_w1,V_w2,V_w3,I_w1,I_w2,I_w3)=0",
+        "source_assets": [
+          "transformer/x1"
+        ]
+      },
+      {
+        "id": "shunt/hn",
+        "factor_type": "grounding_shunt",
+        "ports": [
+          "shunt/hn/port/n"
+        ],
+        "relation": "I_hn = y_hn U_i2,n",
+        "source_assets": [
+          "shunt/hn"
+        ]
+      }
+    ],
+    "ports": [
+      {
+        "junction": "i1",
+        "id": "line/l1/port/i1",
+        "factor": "line/l1",
+        "source_assets": [
+          "line/l1"
+        ],
+        "terminal": "[a,b,c,n]",
+        "variable_space": "V₄×I₄"
+      },
+      {
+        "junction": "i2",
+        "id": "line/l1/port/i2",
+        "factor": "line/l1",
+        "source_assets": [
+          "line/l1"
+        ],
+        "terminal": "[a,b,c,n]",
+        "variable_space": "V₄×I₄"
+      },
+      {
+        "junction": "i1",
+        "id": "line/l2/port/i1",
+        "factor": "line/l2",
+        "source_assets": [
+          "line/l2"
+        ],
+        "terminal": "[a,b,c,n]",
+        "variable_space": "V₄×I₄"
+      },
+      {
+        "junction": "i2",
+        "id": "line/l2/port/i2",
+        "factor": "line/l2",
+        "source_assets": [
+          "line/l2"
+        ],
+        "terminal": "[a,b,c,n]",
+        "variable_space": "V₄×I₄"
+      },
+      {
+        "junction": "i1",
+        "id": "transformer/x1/port/w1",
+        "factor": "transformer/x1",
+        "source_assets": [
+          "transformer/x1"
+        ],
+        "terminal": "winding-1:[a,b,c,n]",
+        "variable_space": "V₄×I₄"
+      },
+      {
+        "junction": "i5",
+        "id": "transformer/x1/port/w2",
+        "factor": "transformer/x1",
+        "source_assets": [
+          "transformer/x1"
+        ],
+        "terminal": "winding-2:[a,b,c,n]",
+        "variable_space": "V₄×I₄"
+      },
+      {
+        "junction": "i6",
+        "id": "transformer/x1/port/w3",
+        "factor": "transformer/x1",
+        "source_assets": [
+          "transformer/x1"
+        ],
+        "terminal": "winding-3:[a,b,c]",
+        "variable_space": "V₃×I₃"
+      },
+      {
+        "junction": "i2",
+        "id": "shunt/hn/port/n",
+        "factor": "shunt/hn",
+        "source_assets": [
+          "shunt/hn"
+        ],
+        "terminal": "[n]→earth",
+        "variable_space": "V₁×I₁"
+      }
+    ],
+    "object_type": "hierarchical_port_factor_model"
+  },
+  "claim_id": "ARCH-PORT-001",
+  "source_fixture": "data/running-network/v0.1.0.json",
+  "lambda": [
+    {
+      "electrical": "line/l1",
+      "scope": "series relation and limits",
+      "asset": "line/l1",
+      "relation_type": "realizes"
+    },
+    {
+      "electrical": "line/l2",
+      "scope": "series relation and limits",
+      "asset": "line/l2",
+      "relation_type": "realizes"
+    },
+    {
+      "electrical": "transformer/x1",
+      "scope": "three winding ports and leakage",
+      "asset": "transformer/x1",
+      "relation_type": "realizes"
+    },
+    {
+      "electrical": "transformer/x1/port/w1",
+      "scope": "primary winding identity",
+      "asset": "transformer/x1",
+      "relation_type": "owns_port"
+    },
+    {
+      "electrical": "transformer/x1/port/w2",
+      "scope": "secondary winding identity",
+      "asset": "transformer/x1",
+      "relation_type": "owns_port"
+    },
+    {
+      "electrical": "transformer/x1/port/w3",
+      "scope": "tertiary winding identity",
+      "asset": "transformer/x1",
+      "relation_type": "owns_port"
+    },
+    {
+      "electrical": "shunt/hn",
+      "scope": "neutral-to-earth admittance",
+      "asset": "shunt/hn",
+      "relation_type": "realizes"
+    }
+  ],
+  "validation": {
+    "errors": [
+    ],
+    "valid": true,
+    "multi_asset_or_factor_link": true,
+    "n_junctions": 4,
+    "n_lambda_relations": 7,
+    "n_factors": 4,
+    "n_ports": 8
+  }
+}

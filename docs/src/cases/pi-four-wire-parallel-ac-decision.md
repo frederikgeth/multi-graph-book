@@ -1,5 +1,10 @@
 # [Four-wire nominal-pi parallel case](@id pi-four-wire-parallel-ac-case)
 
+This is the nominal-``\pi`` extension of the canonical parallel-member failure
+in [the first scalar counterexample](@ref first-failure-parallel-branches).
+Only the additional shunt-current observations and both-end limit contract are
+new here.
+
 The series-only four-wire case uses the same current magnitude at opposite
 member ends. A nominal-``\pi`` line removes that shortcut: shunt current depends
 on the local terminal voltage, and ``\mathbf I_{\ell i j}`` is generally not
@@ -57,6 +62,13 @@ because a common endpoint-voltage shift produces no series current; that case
 uses the reduced voltage-drop coordinate of `TR-PAR-006`. Nominal-``\pi``
 shunts make absolute terminal voltage observable, so silently applying the
 series recovery would omit charging current.
+
+The certificate records the retained-map condition number, a normalized
+backward error for the recovery solve, and a relative margin for every deleted
+limit. It rejects a map that is too ill-conditioned or a limit whose margin is
+numerically ambiguous. The result is exact for the nominal matrices and
+centered complex discs; uncertainty in those matrices requires a separate
+robustness analysis.
 
 ## AC decision comparison
 

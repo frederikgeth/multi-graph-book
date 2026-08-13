@@ -1,4 +1,4 @@
-# Preservation contracts
+# [Preservation contracts](@id preservation-contracts)
 
 ## Observation precedes equivalence
 
@@ -6,15 +6,16 @@ Two models are not simply "equivalent." They are equivalent with respect to a
 chosen observation map and admissible input set.
 
 Let model ``M`` define feasible internal and boundary variables
-``(x,z)\in\mathcal F_M``, with observation map ``h_M``. A reduction from ``M``
-to ``\widehat M`` is exact for observation family ``H`` if, for every admissible
-input or decision ``u``, the observable feasible sets agree:
+``(x,z)\in\mathcal F_M`` and let ``H`` be a declared family of observation
+maps. A reduction from ``M`` to ``\widehat M`` is exact for ``H`` if, for every
+admissible input or decision ``u\in\mathcal U`` and every observation
+``h\in H``, the observable feasible sets agree:
 
 ```math
 \left\{h(x,z,u):(x,z,u)\in\mathcal F_M\right\}
-=
-\left\{\widehat h(\widehat x,u):(\widehat x,u)\in
-\mathcal F_{\widehat M}\right\}.
+=\left\{\widehat h(\widehat x,u):(\widehat x,u)\in
+\mathcal F_{\widehat M}\right\},
+\qquad h\in H,\ u\in\mathcal U.
 ```
 
 This definition deliberately includes feasible sets, not only an unconstrained

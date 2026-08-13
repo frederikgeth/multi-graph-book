@@ -116,8 +116,8 @@ sum of terminal series currents, but the source feasible voltage differences sat
 
 A single conventional edge limit need not reproduce this intersection. The transformation can be
 exact for one observation and wrong for a decision problem. This is why the book asks for a
-[Preservation contracts](@ref) rather than calling a smaller graph simply *equivalent*. [A first
-failure: heterogeneous parallel branches](@ref) gives an analytic witness and executable
+[Preservation contracts](@ref preservation-contracts) rather than calling a smaller graph simply *equivalent*. [A first
+failure: heterogeneous parallel branches](@ref first-failure-parallel-branches) gives an analytic witness and executable
 certificate.
 
 ## The route through the book

@@ -1,4 +1,4 @@
-# A first failure: heterogeneous parallel branches
+# [A first failure: heterogeneous parallel branches](@id first-failure-parallel-branches)
 
 ## The tempting replacement
 

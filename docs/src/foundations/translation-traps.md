@@ -276,9 +276,9 @@ Later chapters use four controlled callout labels:
 These callouts do not replace definitions or proofs. Each should give a
 precise replacement statement and link to the chapter that establishes it.
 
-## Priority for the next drafting passes
+## Scope and controlled vocabulary
 
-The first pass through the book will enforce ten translations:
+The current controlled vocabulary makes these ten translations explicit:
 
 1. one physical system can have several legitimate graphs;
 2. a branch arrow does not determine operating flow direction;
@@ -294,10 +294,10 @@ The first pass through the book will enforce ten translations:
    equivalence;
 10. a reduced equivalent factor is not automatically a physical asset.
 
-The later pass will extend the same treatment to connectivity versus
-energization, symmetry versus Hermitian structure, neutral elimination,
-per-unit coordinates, rating semantics, ideal transformations, and cycles
-created by multi-terminal compilation.
+Further scope questions remain for connectivity versus energization,
+neutral elimination, per-unit coordinates, ideal transformations, and cycles
+created by multi-terminal compilation; the enacted definitions and witnesses
+in the current sections delimit what is established so far.
 
 ## First executable witnesses
 

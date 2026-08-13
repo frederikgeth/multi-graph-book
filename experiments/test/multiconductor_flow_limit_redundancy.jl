@@ -23,7 +23,9 @@ end
 @testset "centered quadratic limit implication" begin
     retained = ComplexF64[1+0.2im -0.3+0.1im]
     weaker = (0.4-0.1im) .* retained
-    certified = quadratic_limit_implication(retained, 1.0, weaker, 1.0)
+    certified = quadratic_limit_implication(
+        retained, 1.0, weaker, 1.0; minimum_relative_margin=0.0
+    )
     @test certified["certified"]
     @test certified["minimum_psd_margin"] >= -certified["scaled_tolerance"]
 
@@ -107,6 +109,20 @@ end
     @test certificate["certified"]
     @test certificate["checks"][1]["exact_worst_case_magnitude"] ≈ 0.364 atol=1.0e-12
     @test certificate["checks"][2]["exact_worst_case_magnitude"] ≈ 0.24 atol=1.0e-12
+    @test certificate["backward_error"] <= certificate["backward_error_tolerance"]
+    @test certificate["retained_map_condition_number"] <= certificate["maximum_condition_number"]
+    @test all(haskey(check, "relative_margin") for check in certificate["checks"])
+    @test !certificate["numerically_ambiguous"]
+
+    tight = certify_joint_componentwise_series_redundancy(
+        retained,
+        retained_limits,
+        candidate,
+        [0.3640000001, 0.25];
+        conductor_names=["a", "n"],
+    )
+    @test !tight["certified"]
+    @test tight["checks"][1]["numerically_ambiguous"]
 
     rejected = certify_joint_componentwise_series_redundancy(
         retained,

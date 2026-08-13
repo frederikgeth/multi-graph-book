@@ -1,5 +1,10 @@
 # [Non-proportional three-phase four-wire parallel case](@id four-wire-parallel-ac-case)
 
+This case reuses the canonical member-versus-aggregate distinction from
+[the first scalar counterexample](@ref first-failure-parallel-branches); its
+new content is the non-proportional four-wire current map and joint quadratic
+containment certificate.
+
 The preceding phase--neutral example deliberately used proportional member
 matrices. This case removes that simplification while retaining the book's
 general baseline: ordered ``(a,b,c,n)`` conductors, full mutual coupling, an

@@ -17,8 +17,18 @@ TRANSFORMER_CONTRACT = ROOT / "data/transformer-contracts/x1-fixed-linear-v0.1.0
 TRANSFORMER_TAP_CONTRACT = ROOT / "data/transformer-contracts/x1-discrete-tap-v0.1.0.json"
 TRANSFORMER_CONTRACTS = (TRANSFORMER_CONTRACT, TRANSFORMER_TAP_CONTRACT)
 GENERATED = ROOT / "experiments/generated"
+PORT_FACTOR_ARCHITECTURE = GENERATED / "port-factor-architecture.json"
+POSITIVE_SEQUENCE_WITNESS = GENERATED / "positive-sequence-collapse-witness.json"
 FIGURE = ROOT / "docs/src/assets/running-network-views.png"
 FIVE_BUS_ANALYSIS = GENERATED / "five-bus-cycle-space-analysis.json"
+NUMERICAL_STRUCTURE_WITNESS = GENERATED / "numerical-structure-witness.json"
+NUMERICAL_STRUCTURE_FIGURE = ROOT / "docs/src/assets/numerical-structure-witness.svg"
+YBUS_JACOBIAN_WITNESS = GENERATED / "ybus-jacobian-witness.json"
+YBUS_JACOBIAN_FIGURE = ROOT / "docs/src/assets/ybus-jacobian-witness.svg"
+NONLINEAR_KKT_WITNESS = GENERATED / "nonlinear-kkt-witness.json"
+NONLINEAR_KKT_FIGURE = ROOT / "docs/src/assets/nonlinear-kkt-witness.svg"
+KNOWLEDGE_BASE_INDEX = ROOT / "docs/src/reference/knowledge-base-index.md"
+CHAPTER_STATUS = ROOT / "docs/src/reference/chapter-status.md"
 FIVE_BUS_FIGURES = {
     "cycle_basis": ROOT / "docs/src/assets/five-bus-cycle-basis.png",
     "transformation_map": ROOT / "docs/src/assets/five-bus-transformation-map.png",
@@ -278,10 +288,20 @@ def main() -> int:
         *FIVE_BUS_FIGURES.values(),
         GENERATED / "summary.json",
         FIVE_BUS_ANALYSIS,
+        NUMERICAL_STRUCTURE_WITNESS,
+        NUMERICAL_STRUCTURE_FIGURE,
+        YBUS_JACOBIAN_WITNESS,
+        YBUS_JACOBIAN_FIGURE,
+        NONLINEAR_KKT_WITNESS,
+        NONLINEAR_KKT_FIGURE,
+        KNOWLEDGE_BASE_INDEX,
+        CHAPTER_STATUS,
         FIVE_BUS_FIGURE_MANIFEST,
         CERTIFICATE_SCHEMA,
         *(GENERATED / artifact for artifact in CERTIFICATES),
         GENERATED / "provenance.json",
+        PORT_FACTOR_ARCHITECTURE,
+        POSITIVE_SEQUENCE_WITNESS,
         SOURCE_MAP,
         CLEAN_REPRODUCTION / "v0.1.0.json",
         CLEAN_REPRODUCTION / "summary.json",
@@ -305,6 +325,40 @@ def main() -> int:
 
     claims = tomllib.loads((ROOT / "claims/claims.toml").read_text()).get("claim", [])
     claim_ids = {claim["claim_id"] for claim in claims}
+    claims_hash = sha256(ROOT / "claims/claims.toml")
+    for generated_page in (KNOWLEDGE_BASE_INDEX, CHAPTER_STATUS):
+        first_lines = generated_page.read_text().splitlines()[:4]
+        stamp = next((line for line in first_lines if "generated-from claims/claims.toml sha256:" in line), "")
+        if not stamp.endswith(claims_hash + " -->"):
+            errors.append(f"{generated_page.relative_to(ROOT)} is stale relative to claims/claims.toml")
+
+    architecture = load_json(PORT_FACTOR_ARCHITECTURE)
+    if architecture.get("claim_id") not in claim_ids:
+        errors.append("port-factor architecture uses an unregistered claim ID")
+    if architecture.get("source_fixture") != "data/running-network/v0.1.0.json":
+        errors.append("port-factor architecture names an unexpected source fixture")
+    model = architecture.get("model", {})
+    if model.get("object_type") != "hierarchical_port_factor_model":
+        errors.append("port-factor architecture has an unexpected object type")
+    if model.get("notation") != "𝔓=(Q,J,Φ,j,f,H,X,R)":
+        errors.append("port-factor architecture notation contract changed")
+    validation = architecture.get("validation", {})
+    if validation.get("valid") is not True or validation.get("n_ports") != 8:
+        errors.append("port-factor architecture validation failed")
+    if validation.get("n_factors") != 4 or validation.get("n_lambda_relations") != 7:
+        errors.append("port-factor architecture cardinalities changed")
+
+    sequence_witness = load_json(POSITIVE_SEQUENCE_WITNESS)
+    if sequence_witness.get("claim_id") not in claim_ids:
+        errors.append("positive-sequence witness uses an unregistered claim ID")
+    circulant = sequence_witness.get("circulant", {})
+    rejected_sequence = sequence_witness.get("non_circulant_rejection", {})
+    if circulant.get("sequence_diagonal_residual", float("inf")) > 1.0e-12:
+        errors.append("positive-sequence circulant witness is not diagonal in sequence coordinates")
+    if circulant.get("positive_subspace_residual", float("inf")) > 1.0e-12:
+        errors.append("positive-sequence circulant witness does not preserve the positive subspace")
+    if rejected_sequence.get("sequence_diagonal_residual", 0.0) <= 1.0e-3:
+        errors.append("positive-sequence negative witness no longer mixes sequences")
 
     cycle_analysis = load_json(FIVE_BUS_ANALYSIS)
     if cycle_analysis.get("analysis_id") not in claim_ids:
@@ -332,6 +386,62 @@ def main() -> int:
         errors.append("five-bus naive-aggregate feasible-voltage boundary changed")
     if bmopf.get("n_extra_edges") != 3 or bmopf.get("expected") != 3:
         errors.append("BMOPFTools five-bus cycle-rank cross-check changed")
+
+    numerical = load_json(NUMERICAL_STRUCTURE_WITNESS)
+    if numerical.get("witness_id") != "NUM-STRUCT-001":
+        errors.append("numerical structure witness ID changed")
+    physical = numerical.get("physical_incidence", {})
+    if physical.get("member_edge_count") != 7 or physical.get("simple_projection_edge_count") != 6:
+        errors.append("numerical structure witness lost the five-bus parallel-member distinction")
+    elimination = numerical.get("elimination", {})
+    if elimination.get("eliminated_node") != "j":
+        errors.append("numerical structure witness elimination node changed")
+    if elimination.get("fill_edges") != [["i", "l"]]:
+        errors.append("numerical structure witness fill edge changed")
+    dependency = numerical.get("jacobian_dependency", {})
+    if dependency.get("nonzero_dependencies") != 30:
+        errors.append("numerical structure witness dependency count changed")
+    checks = numerical.get("checks", {})
+    for name in ("neighbour_clique_verified", "fill_is_not_a_source_asset", "physical_and_jacobian_graphs_are_distinct"):
+        if checks.get(name) is not True:
+            errors.append(f"numerical structure witness check failed: {name}")
+
+    ybus = load_json(YBUS_JACOBIAN_WITNESS)
+    if ybus.get("claim_id") not in claim_ids or ybus.get("witness_id") != "NUM-YBUS-001":
+        errors.append("Ybus/Jacobian witness uses an invalid claim or witness ID")
+    if ybus.get("source_fixture") != "data/running-network/v0.1.0.json":
+        errors.append("Ybus/Jacobian witness names an unexpected source fixture")
+    passive = ybus.get("passive_ybus", {})
+    linearized = ybus.get("linearized_ybus", {})
+    realified = ybus.get("realified_current_jacobian", {})
+    if passive.get("rows") != 20 or passive.get("cols") != 20 or passive.get("nnz_atol") != 166:
+        errors.append("running-network passive Ybus dimensions or sparsity changed")
+    if linearized.get("rows") != 20 or linearized.get("nnz_atol") != 166:
+        errors.append("running-network linearized Ybus dimensions or sparsity changed")
+    if realified.get("rows") != 40 or realified.get("cols") != 40 or realified.get("nnz_atol") != 664:
+        errors.append("running-network realified current Jacobian dimensions or sparsity changed")
+    ybus_checks = ybus.get("checks", {})
+    for name in ("linearized_matches_passive_at_constant_z", "reciprocal_complex_symmetry", "realification_is_real", "realification_dimension_doubles"):
+        if ybus_checks.get(name) is not True:
+            errors.append(f"Ybus/Jacobian witness check failed: {name}")
+
+    kkt = load_json(NONLINEAR_KKT_WITNESS)
+    if kkt.get("claim_id") not in claim_ids or kkt.get("witness_id") != "NUM-KKT-001":
+        errors.append("nonlinear KKT witness uses an invalid claim or witness ID")
+    source_kkt = kkt.get("source", {})
+    aggregate_kkt = kkt.get("aggregate", {})
+    if source_kkt.get("jacobian", {}).get("nnz_atol") != 26 or source_kkt.get("kkt", {}).get("dimension") != 13:
+        errors.append("nonlinear source Jacobian/KKT dimensions changed")
+    if aggregate_kkt.get("jacobian", {}).get("nnz_atol") != 16 or aggregate_kkt.get("kkt", {}).get("dimension") != 9:
+        errors.append("nonlinear aggregate Jacobian/KKT dimensions changed")
+    if source_kkt.get("kkt", {}).get("orders", {}).get("natural", {}).get("fill_edges") != 15:
+        errors.append("nonlinear source natural-order fill count changed")
+    if aggregate_kkt.get("kkt", {}).get("orders", {}).get("natural", {}).get("fill_edges") != 6:
+        errors.append("nonlinear aggregate natural-order fill count changed")
+    kkt_checks = kkt.get("checks", {})
+    for name in ("source_operating_point_is_exact", "aggregate_operating_point_is_exact", "source_retains_more_current_variables", "ordering_changes_fill"):
+        if kkt_checks.get(name) is not True:
+            errors.append(f"nonlinear KKT witness check failed: {name}")
 
     figure_manifest = load_json(FIVE_BUS_FIGURE_MANIFEST)
     if figure_manifest.get("schema_version") != "1.0.0":

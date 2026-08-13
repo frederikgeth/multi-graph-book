@@ -33,20 +33,18 @@ connectivity, bus--branch, factor, optimization, and sparsity graphs. The
 [five-bus multigraph chapter](@ref five-bus-cycle-spaces) then distinguishes a
 line-identity cycle basis, simple projection, electrical aggregation, and
 spanning-tree coordinates. [A first failure:
-heterogeneous parallel branches](@ref) then gives the first complete decision-preservation
+heterogeneous parallel branches](@ref first-failure-parallel-branches) then gives the first complete decision-preservation
 counterexample. The [Multiconductor parallel AC decision case](@ref multiconductor-parallel-ac-case)
-then retains complex conductor voltages, coupling, voltage bounds, and AC power balance.
-The [non-proportional three-phase four-wire case](@ref four-wire-parallel-ac-case)
-then certifies jointly implied member limits without proportional matrices or
-balanced-network assumptions.
-The [four-wire nominal-pi case](@ref pi-four-wire-parallel-ac-case) extends the
-certificate to distinct shunt currents and all eight member-end limits.
-[The transformer tap AC decision case](@ref transformer-tap-ac-decision-case) embeds the full
-11-terminal WYE/WYE/DELTA factor into voltage, neutral-KCL, power-balance, and recovered-current
-constraints while retaining its finite tap choice.
+and the further four-wire, nominal-``\pi``, and transformer-tap cases are collected as
+solver-backed worked cases after the opening route.
 [The running multiconductor network](@ref) specifies the common example used
 throughout the book, while the [Executable running network](@ref) provides its versioned BMOPF
-realization and six illustrated views plus a checked simple-topology quotient.
+realization and six illustrated views plus a checked simple-topology quotient. The
+[first positive-sequence collapse](@ref positive-sequence-collapse) then marks the boundary
+between the general multiconductor model and a guarded transmission specialization.
+
+The longer solver-backed examples are collected under **Worked decision cases** after this
+opening route.
 
 Then read:
 
@@ -56,22 +54,28 @@ Then read:
 4. [Translation traps: graphs, circuits, and power-system language](@ref translation-traps) for precise replacements for familiar but underspecified phrases;
 5. [Orientation, terminal quantities, and power transfer](@ref orientation-terminal-power) for the distinction between topology, reference arrows, terminal signs, operating flow, and loss;
 6. [Representation architecture](@ref) for the proposed linked source structures;
-7. [Preservation contracts](@ref) for exact, conservative, relaxed, and approximate maps;
+7. [Preservation contracts](@ref preservation-contracts) for exact, conservative, relaxed, and approximate maps;
 8. [Projection, compilation, and reduction](@ref) for the transformation vocabulary;
 9. [Maps between representation frameworks](@ref representation-maps) for morphisms, quotients, compilers, and query-relative expressiveness;
 10. [Cycles, parallelism, and radial structure](@ref cycles-parallelism-radiality) for representation-specific cycle spaces, parallel fibres, bridges, leaves, and radiality;
-11. [Circuit coordinate transformations](@ref circuit-coordinate-transformations) for phase-to-neutral and phase-to-phase reductions, their grounding and radiality guards, and their recovery maps;
-12. [Kron, Ward, and optimized network equivalents](@ref kron-ward-opti-kron) for boundary elimination, external-system realization, and optimized structural selection;
-13. [Conductor-coordinate normalization](@ref conductor-coordinate-normalization) for an exact coordinate rewrite;
-14. [Transformer-winding coordinate normalization](@ref transformer-winding-normalization) for a delta-safe typed-factor application;
-15. [Multiwinding leakage reference compilation](@ref multiwinding-leakage-reference-compilation) for exact pairwise-test compilation;
-16. [Multiwinding terminal leakage assembly](@ref multiwinding-terminal-leakage-assembly) for connection-factor composition with recoverable winding limits;
-17. [Fixed-linear transformer factor completion](@ref fixed-linear-transformer-factor-completion) for explicit tap/phase operators, excitation, grounding, and the adjustable-control boundary;
-18. [Parameterized transformer tap decisions](@ref parameterized-transformer-tap-decisions) for exact continuous/discrete decision retention and the frozen-tap counterexample;
-19. [Transformer tap AC decision case](@ref transformer-tap-ac-decision-case) for the first solver-backed network embedding of the retained tap factor;
-20. [Degree-two series elimination](@ref degree-two-series-rule) for the first executable guarded reduction;
-21. [Certificate schema and composition](@ref certificate-schema-composition) for the shared contract and sequential composition law;
-22. [Guarded normalization rules](@ref) for the wider candidate rewrite catalogue.
+11. [Earth, neutral, and reference model classes](@ref earth-ground-models) for the grounding scope of each reduction;
+12. [When the general model collapses](@ref positive-sequence-collapse) for a guarded derivation of the balanced positive-sequence transmission case;
+13. [Node--breaker, bus--breaker, and topology processing](@ref node-breaker-topology) for state-conditioned connectivity and switch contraction;
+14. [Rating and limit semantics](@ref rating-semantics) for typed quantities, durations, ambient conditions, and preservation obligations;
+15. [Data-model crosswalk](@ref data-model-crosswalk) for CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER mappings;
+16. [Numerical consequences of representation and reduction](@ref numerical-consequences) for scaling, conditioning, Jacobian structure, fill-in, solver behaviour, and decision margins;
+17. [Circuit coordinate transformations](@ref circuit-coordinate-transformations) for phase-to-neutral and phase-to-phase reductions, their grounding and radiality guards, and their recovery maps;
+18. [Kron, Ward, and optimized network equivalents](@ref kron-ward-opti-kron) for boundary elimination, external-system realization, and optimized structural selection;
+19. [Conductor-coordinate normalization](@ref conductor-coordinate-normalization) for an exact coordinate rewrite;
+20. [Transformer-winding coordinate normalization](@ref transformer-winding-normalization) for a delta-safe typed-factor application;
+21. [Multiwinding leakage reference compilation](@ref multiwinding-leakage-reference-compilation) for exact pairwise-test compilation;
+22. [Multiwinding terminal leakage assembly](@ref multiwinding-terminal-leakage-assembly) for connection-factor composition with recoverable winding limits;
+23. [Fixed-linear transformer factor completion](@ref fixed-linear-transformer-factor-completion) for explicit tap/phase operators, excitation, grounding, and the adjustable-control boundary;
+24. [Parameterized transformer tap decisions](@ref parameterized-transformer-tap-decisions) for exact continuous/discrete decision retention and the frozen-tap counterexample;
+25. [Transformer tap AC decision case](@ref transformer-tap-ac-decision-case) for the first solver-backed network embedding of the retained tap factor;
+26. [Degree-two series elimination](@ref degree-two-series-rule) for the first executable guarded reduction;
+27. [Certificate schema and composition](@ref certificate-schema-composition) for the shared contract and sequential composition law;
+28. [Guarded normalization rules](@ref) for the wider candidate rewrite catalogue.
 
 The [Notation and modelling conventions](@ref) follows the BMOPFTools index discipline:
 ``\ell ij`` denotes the stored reference orientation and terminal order for
@@ -95,16 +99,29 @@ Heterogeneous parallel lines provide the first counterexample: aggregate admitta
 terminal current while changing the OPF feasible set, unless every discarded
 constraint is separately proved redundant for the declared model and state.
 
-## Status labels
+## Claim types and verification
 
-The text uses five epistemic labels:
+The claims ledger records two separate dimensions. `claim_type` describes what
+kind of statement is being made, while `verification` records how far the
+current evidence has been checked. The legacy `status` field remains in the
+ledger during this migration for compatibility with older certificate tools.
+
+Claim types are:
 
 - **Definition:** terminology adopted consistently in this book.
-- **Established result:** supported by a proof or authoritative primary source.
-- **Engineering practice:** implemented or standardized practice, not necessarily accompanied by a
+- **Theorem:** supported by a derivation or authoritative primary source.
+- **Empirical:** supported by a recorded computation, experiment, or numerical witness.
+- **Practice:** implemented or standardized practice, not necessarily accompanied by a
   general preservation theorem.
 - **Proposal:** a design choice advanced and tested by this book.
-- **Open question:** an unresolved claim, boundary, or research opportunity.
+- **Open:** an unresolved claim, boundary, or research opportunity.
+
+Verification levels are:
+
+- **Unreviewed:** entered for tracking but not yet independently checked;
+- **Self-checked:** checked by the repository's derivation, test, or source audit;
+- **Independently implemented:** reproduced by a separate implementation path;
+- **Externally reviewed:** checked by a reviewer outside the implementing pass.
 
 The current text is an early research draft. The repository quality-control policy separates
 verified claims, proposed definitions, implementation evidence, and unresolved work.

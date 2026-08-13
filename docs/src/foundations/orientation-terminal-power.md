@@ -236,9 +236,9 @@ edge. A controllable converter can have oriented information flow, terminal
 power variables at several ports, losses, and bidirectional feasible operating
 regions at the same time.
 
-## Editorial rule
+## Direction contract used here
 
-Every chapter using an arrow must say which of the five direction concepts it
-denotes. Unqualified phrases such as *directed line*, *power on the edge*, and
-*reverse current* should be replaced by the physical incidence, stored
-orientation, terminal quantity, or operating-point statement actually meant.
+An arrow in this book is interpreted through the five direction concepts above.
+Unqualified phrases such as *directed line*, *power on the edge*, and *reverse
+current* are therefore replaced by the physical incidence, stored orientation,
+terminal quantity, or operating-point statement actually meant.

@@ -19,7 +19,7 @@ The current drafting foundation includes:
 - the scope, representation taxonomy, proposed architecture, and preservation contracts;
 - a BMOPFTools-aligned notation contract and a common multiconductor running case;
 - a schema-valid numerical running fixture, six illustrated representation views, a simple-topology quotient map, and PF/OPF checks;
-- executable parallel-branch, conductor-, transformer-winding-, reference-invariant multiwinding-leakage-, terminal-assembly-, fixed-linear transformer-completion-, parameterized tap-decision-, solver-backed and independently reproduced transformer-network-, degree-two-series, and composed preservation certificates;
+- executable parallel-branch, conductor-, transformer-winding-, reference-invariant multiwinding-leakage-, terminal-assembly-, fixed-linear transformer-completion-, parameterized tap-decision-, solver-backed and separately reimplemented transformer-network-, degree-two-series, and composed preservation certificates;
 - a typed version 1.1 transformation-certificate JSON schema and validated composition law;
 - solved source/naïve/exact-lifted linear and multiconductor AC parallel decision comparisons;
 - complete source maps for all generated views and a claims ledger;
@@ -29,6 +29,16 @@ The current drafting foundation includes:
 
 See [ROADMAP.md](ROADMAP.md) for the proposed work plan and
 [QUALITY_CONTROL.md](QUALITY_CONTROL.md) for the evidence and review policy.
+
+The HTML knowledge base is the primary product. Its generated [knowledge-base indexes](docs/src/reference/knowledge-base-index.md)
+and [chapter-status page](docs/src/reference/chapter-status.md) provide retrieval and evidence
+state directly from the claims ledger and generated artifacts. The PDF is a secondary curated
+serialization of the same Markdown sources.
+
+The separately reimplemented transformer-network check shares the certified
+transformer matrices and case assembly with the primary experiment. It is
+independent as a numerical solution path, not yet an independent nameplate or
+model-construction reproduction.
 
 ## Build locally
 

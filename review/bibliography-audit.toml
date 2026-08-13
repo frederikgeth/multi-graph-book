@@ -160,3 +160,24 @@ status = "verified"
 verification_source = "https://link.springer.com/article/10.1007/s00453-007-9064-z"
 verified_on = "2026-08-13"
 note = "The publisher record confirms the title, authors, journal, volume, issue, pages, year, and DOI."
+
+[[entry]]
+key = "CGMESLibrary"
+status = "verified"
+verification_source = "https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/"
+verified_on = "2026-08-13"
+note = "Official ENTSO-E CGMES library verified as the source for current CIM/CGMES exchange profiles and versioned releases."
+
+[[entry]]
+key = "MATPOWERCaseFormat"
+status = "verified"
+verification_source = "https://matpower.org/docs/ref/matpower6.0/caseformat.html"
+verified_on = "2026-08-13"
+note = "Official MATPOWER case-format documentation verified for the version-2 mpc fields and matrix-based bus, branch, generator, and cost representation."
+
+[[entry]]
+key = "MATPOWERDataModel"
+status = "verified"
+verification_source = "https://matpower.org/documentation/dev-manual/data-model.html"
+verified_on = "2026-08-13"
+note = "Official MATPOWER developer documentation verified for data-model elements and port/node connection semantics."

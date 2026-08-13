@@ -208,7 +208,7 @@ passes.
 The weighted simple graph can still be used exactly if the member recovery
 maps and nonredundant source constraints remain lifted. This is the same
 decision-preservation mechanism developed in
-[A first failure: heterogeneous parallel branches](@ref).
+[A first failure: heterogeneous parallel branches](@ref first-failure-parallel-branches).
 
 ## A spanning tree is a coordinate choice
 

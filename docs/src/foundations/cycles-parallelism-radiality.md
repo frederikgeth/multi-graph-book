@@ -155,11 +155,13 @@ of connected components. A simple edge ``e`` represents a parallel fibre
 projection and ``|\pi^{-1}(\pi(\ell))|=1``.
 
 **Proof.** If another line shares the same endpoint pair, deleting ``\ell``
-leaves that pair connected, so ``\ell`` cannot be a bridge. If the fibre is a
-singleton, every multigraph path between the two sides projects to a simple
-path using the corresponding simple edge; if the simple edge is a bridge,
-there is no alternative path after that edge is removed. The converse follows
-by projecting any alternative multigraph path to an alternative simple path.
+leaves that pair connected, so ``\ell`` cannot be a bridge. Conversely, suppose
+the fibre of ``e=\pi(\ell)`` is a singleton but ``\ell`` is not a bridge. Then
+there is a multigraph path between the two sides after deleting ``\ell``.
+Projecting that path and removing repeated vertices gives a walk, hence a path,
+in the simple graph with ``e`` deleted. This contradicts that ``e`` is a
+simple-graph bridge. Therefore a singleton fibre over a simple bridge is a
+multigraph bridge, and the two conditions are equivalent.
 
 **Corollary.** The identified multigraph is a forest if and only if its simple
 projection is a forest and every nonempty edge fibre is a singleton.
@@ -234,7 +236,7 @@ at least:
 4. the boundary quantities and source constraints that must be recovered;
 5. the provenance fibre for every quotient edge or compiled factor.
 
-The editorial rule is simple:
+The scope rule is simple:
 
 > A cycle, parallel relation, bridge, leaf, or radiality claim must name its
 > representation. None of these graph properties, alone, authorizes an

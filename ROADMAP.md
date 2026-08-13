@@ -158,6 +158,99 @@ frameworks and network-equivalent families.
 - [ ] make the controlled callout vocabulary machine-checkable without
   requiring every chapter to contain a callout.
 
+### Stage F — expert-review response (2026-08-13)
+
+The external review is accepted as the governing integrity pass for the next
+milestone.  The response, including qualifications and acceptance criteria, is
+recorded in [`review/expert-review-response-2026-08-13.md`](review/expert-review-response-2026-08-13.md).
+
+#### F0 — repair claims, contracts, and internal consistency first
+
+- [x] correct the typed-Kron covariance and reciprocity statements before
+  treating `TR-KRON-001` as established;
+- [x] repair the defective bridge proof, quantify preservation contracts over
+  all admissible observations and inputs, and weaken the line--shunt
+  realization proposition to its actual stamping claim;
+- [x] split claim **type** from verification **status**, render both in the
+  book, and revise the README's independent-reproduction wording;
+- [ ] fix the six-versus-eight-variable count, running-fixture/spec drift,
+  tap-witness explanation, running-example policy, chapter-count statement,
+  taxonomy duplication, and monochrome figure violations;
+- [ ] remove reader-facing drafting-process notes from chapters and move them
+  to the roadmap/contributing material.
+
+#### F1 — make the mathematical and numerical evidence auditable
+
+- [x] add the side-by-side Schur-complement versus phase-to-neutral reduction
+  witness, with explicit grounding and invertibility assumptions;
+- [x] add condition numbers, backward-error estimates, and decision margins to
+  redundancy certificates; reject numerically ambiguous certificates;
+- [x] instantiate a minimal executable `𝔓` and `Λ` port--factor case on the
+  running network; the structural witness validates typed incidence, a
+  three-port transformer, grounding, and many-to-many asset linkage.
+
+#### F2 — add the missing positive theory and physical scope
+
+- [x] add **When the general model collapses**, deriving a balanced,
+  positive-sequence transmission-style model from declared transposition,
+  grounding, symmetry, and decision assumptions;
+- [x] add the earth/ground model taxonomy (ideal reference, reduced earth
+  return, explicit earth conductor) and scope every result accordingly;
+- [ ] state explicitly which state-estimation, protection, contingency, and
+  data-exchange promises are current content and which remain future work.
+
+#### F3 — connect the framework to practice
+
+- [x] add the node--breaker/topology-processing crosswalk;
+- [x] add a data-model crosswalk for CIM/CGMES, PowerModelsDistribution,
+  OpenDSS, and MATPOWER, with versioned source references;
+- [x] define rating semantics (continuous/emergency, ambient adjustment,
+  conductor/terminal equipment, current/apparent-power/thermal/CT/relay
+  limits) before extending decision-preservation claims.
+
+#### F4 — expose computational consequences and communication quality
+
+- [x] add conditioning, per-unit scaling, Jacobian structure, fill-in, and
+  solver-behaviour consequences to the transformation chapters;
+- [x] restructure **Start here** around one running network, the five-bus
+  failure, the first positive collapse, and scope; move longer worked cases
+  out of the orientation path;
+- [x] consolidate repeated parallel-flow messaging and add a generated
+  structural constraint-variable/Jacobian/fill-in witness.
+- [x] extend the witness to a pinned solver-exported passive/linearized
+  `Ybus` and realified current-Jacobian view.
+- [x] add a finite-difference nonlinear source/aggregate decision Jacobian and
+  symbolic KKT fill comparison under explicit orderings.
+- [ ] connect it to nonlinear OPF KKT/Jacobian exports and actual
+  ordering-dependent factorization diagnostics across reduced views.
+
+#### F5 — publication and figure track
+
+- [ ] add the figure set prioritised in the response document (map of maps,
+  earth-return ladder, transformer anatomy, feasible-set geometry,
+  preservation-contract card, Kron fill-in, provenance lineage, and active
+  radiality panels);
+- [ ] prepare the three paper-sized extraction tracks, beginning with the
+  multiconductor parallel-limit result; these are parallel dissemination
+  work, not a prerequisite for the book's integrity fixes.
+
+#### F6 — HTML-first knowledge-base structure
+
+- [x] make the HTML site the primary product and give the PDF a separate,
+  curated navigation route over the same Markdown sources;
+- [x] generate claim, verification, artifact, unresolved-issue, and chapter
+  status indexes from `claims/claims.toml` and `experiments/generated/`;
+- [x] move drafting-order language in the reviewed foundations into reader-
+  facing scope/open-boundary language;
+- [ ] add chapter-level status metadata to every untracked explanatory page,
+  not only the generated status index;
+- [ ] generate representation/transformation/study/software facet indexes once
+  those fields are normalized in the claims schema;
+- [ ] promote `experiments/transformations/` to a standalone package after
+  its public API boundary is agreed;
+- [ ] review the stale `power-network-graph-models/` snapshot and remove it or
+  archive it after confirming it is not an intentional historical artifact.
+
 ## Phase 3 — Verified local transformations
 
 **Target:** months 4--8.
