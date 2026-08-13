@@ -26,10 +26,14 @@ optimization equivalence.
 A transformation certificate should identify which dimensions it preserves:
 
 ```math
-\Sigma=\{\text{connectivity},\text{terminal behavior},
-\text{phase/neutral behavior},\text{asset identity},
-\text{limits},\text{switching states},\text{measurements},
-\text{protection},\text{spatial provenance},\text{dynamics}\}.
+\begin{aligned}
+\Sigma=\{\,&\text{connectivity},\ \text{terminal behavior},\
+             \ \text{phase/neutral behavior},\\
+           &\text{asset identity},\ \text{limits},\
+             \ \text{switching states},\ \text{measurements},\\
+           &\text{protection},\ \text{spatial provenance},\
+             \ \text{dynamics}\}.
+\end{aligned}
 ```
 
 This is not a binary checklist. Each item needs a precise scope. For example,
@@ -116,4 +120,3 @@ current--potential relations [BaezFong2018](@cite).
 For power systems, the open problem is to extend this idea to typed conductors,
 nonlinear devices, discrete controls, limits, uncertainty, and decision
 variables without losing useful computational structure.
-

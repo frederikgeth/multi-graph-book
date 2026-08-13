@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/frederikgeth/multi-graph-book/schemas/transformation-certificate.schema.json",
+  "title": "Power-network transformation certificate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "certificate_id",
+    "rule_id",
+    "classification",
+    "source",
+    "target",
+    "preconditions",
+    "preserves",
+    "forgets",
+    "recovery_map",
+    "constraint_map",
+    "provenance",
+    "evidence"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "certificate_id": {"type": "string", "pattern": "^TR-[A-Z]+-[0-9]{3}$"},
+    "rule_id": {"type": "string", "minLength": 1},
+    "classification": {
+      "enum": [
+        "exact_normalization",
+        "exact_behavioral_reduction",
+        "inner_restriction",
+        "outer_relaxation",
+        "scenario_approximate",
+        "mixed"
+      ]
+    },
+    "source": {"$ref": "#/$defs/modelReference"},
+    "target": {"$ref": "#/$defs/modelReference"},
+    "preconditions": {"$ref": "#/$defs/uniqueStrings"},
+    "preserves": {"$ref": "#/$defs/uniqueStrings"},
+    "forgets": {"$ref": "#/$defs/uniqueStrings"},
+    "recovery_map": {"type": "object", "additionalProperties": {"type": "string"}},
+    "constraint_map": {"type": "object", "additionalProperties": {"type": "string"}},
+    "provenance": {"type": "object"},
+    "evidence": {"type": "object"}
+  },
+  "$defs": {
+    "uniqueStrings": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "modelReference": {
+      "type": "object",
+      "required": ["model_category", "object_ids"],
+      "properties": {
+        "model_category": {"type": "string", "minLength": 1},
+        "object_ids": {"$ref": "#/$defs/uniqueStrings"},
+        "detail": {"type": "object"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

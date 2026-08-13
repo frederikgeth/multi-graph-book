@@ -1,5 +1,9 @@
 # Work plan and roadmap
 
+This file tracks the scientific and implementation programme. The reader-facing argument, target
+table of contents, chapter forms, and first drafting milestone are maintained separately in
+[`BOOK_PLAN.md`](BOOK_PLAN.md).
+
 ## Guiding outcome
 
 Produce a citable, open scientific book and executable knowledge base that
@@ -128,18 +132,37 @@ results.
 
 ## Immediate next sprint
 
-The next Codex session should:
+The first executable vertical slice is complete:
 
-1. validate and correct every seed BibTeX entry;
-2. establish the systematic-review protocol and evidence matrix schema;
-3. expand the representation chapter into formal definitions and worked
-   examples;
-4. specify the degree-two rewrite as an executable certificate;
-5. design the adversarial micro-network corpus;
-6. add CI for HTML, PDF, citations and internal links.
+1. every seed BibTeX record has a dated audit entry, with final publications
+   substituted where found;
+2. the systematic scoping-review protocol, search strings, and evidence-matrix
+   schema are versioned;
+3. fixture version 0.1.0 has been reproduced at a clean pinned BMOPFTools
+   commit without changing the user's development checkout;
+4. all six generated views have complete, hash-bound source maps;
+5. the degree-two rewrite returns a certified exact behavioural composite or a
+   structured guard rejection, with positive and adversarial tests;
+6. CI checks claims, bibliography coverage, local links, generated artifacts,
+   source maps, and the package-independent series rule.
+7. conductor-coordinate normalization is an independently certified exact
+   rule and composes explicitly with series elimination;
+8. the two-bus parallel decision case compares source, naïve aggregate, and
+   exact lifted formulations, with respective optima 110, 200, and 110 MW;
+9. all transformation artifacts use the version 1.0.0 JSON certificate schema
+   and repository checks validate structure and claim registration.
 
-The most valuable first theoretical target is the distinction between
-behavioral series equivalence and closure within a physical line class. The
-most valuable first decision counterexample is heterogeneous parallel branches
-with individual current or power limits.
+The next sprint should:
 
+1. execute and archive the first database searches, then populate the evidence
+   matrix with double-coded seed results;
+2. obtain independent reviews of `TR-PAR-001`, `TR-PAR-002`, `TR-SER-001`, and
+   `TR-SER-002`;
+3. generalize coordinate normalization from series elements to typed
+   multiconductor factors and transformer windings;
+4. extend the two-bus decision comparison to a multiconductor AC OPF case with
+   an independent solver reproduction;
+5. specify typed state, objective, unit, and decision interfaces for
+   transformation-certificate composition;
+6. add scheduled external-link checking without making ordinary builds depend
+   on publisher availability.

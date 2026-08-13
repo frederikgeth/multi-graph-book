@@ -27,6 +27,20 @@ jobs:
       - name: Instantiate documentation environment
         run: julia --project=docs -e 'using Pkg; Pkg.instantiate()'
 
+      - name: Check claims ledger
+        run: julia scripts/check_claims.jl
+
+      - name: Check bibliography audit coverage
+        run: julia scripts/check_bibliography.jl
+
+      - name: Check generated artifacts and local links
+        run: python3 scripts/check_artifacts.py
+
+      - name: Test package-independent transformations
+        run: |
+          julia experiments/test/series_elimination.jl
+          julia experiments/test/coordinate_normalization.jl
+
       - name: Build HTML and PDF
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -44,4 +58,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: julia --project=docs -e 'using Documenter; deploydocs(repo="github.com/frederikgeth/multi-graph-book.git", devbranch="main", push_preview=false)'
-

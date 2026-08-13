@@ -54,21 +54,34 @@ function bibliography()
 end
 
 const PAGES = [
-    "Home" => "index.md",
-    "Foundations" => [
+    "Start here" => [
+        "Home" => "index.md",
+        "One network, many graphs" => "start/one-network-many-graphs.md",
+        "A first failure: heterogeneous parallel branches" => "start/first-failure-parallel-branches.md",
         "Scope and thesis" => "foundations/scope-and-thesis.md",
-        "Representation architecture" => "foundations/representation-architecture.md",
-        "Preservation contracts" => "foundations/preservation-contracts.md",
+        "The running multiconductor network" => "cases/running-network.md",
+        "Executable running network" => "cases/executable-running-network.md",
     ],
-    "Transformations" => [
+    "Part I — Representation landscape" => [
+        "Representation taxonomy" => "foundations/representation-taxonomy.md",
+        "Representation architecture" => "foundations/representation-architecture.md",
+    ],
+    "Part II — Transformation language" => [
+        "Preservation contracts" => "foundations/preservation-contracts.md",
         "Projection, compilation, and reduction" => "transformations/projection-compilation-reduction.md",
+    ],
+    "Part III — Guarded transformation patterns" => [
+        "Conductor-coordinate normalization" => "transformations/conductor-coordinate-normalization.md",
+        "Degree-two series elimination" => "transformations/degree-two-series-elimination.md",
+        "Certificate schema and composition" => "transformations/certificate-schema-and-composition.md",
         "Guarded normalization rules" => "transformations/guarded-normalization.md",
     ],
-    "State of knowledge" => [
+    "Research record" => [
         "Literature map" => "literature/literature-map.md",
         "Research agenda" => "literature/research-agenda.md",
     ],
     "Reference" => [
+        "Notation and modelling conventions" => "foundations/notation-and-conventions.md",
         "Terminology" => "reference/terminology.md",
         "References" => "reference/references.md",
     ],

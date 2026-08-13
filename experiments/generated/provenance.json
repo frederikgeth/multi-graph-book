@@ -1,0 +1,27 @@
+{
+  "bmopftools_repository": {
+    "untracked_files": [
+      {
+        "sha256": "03f57e38c4614f22efe25322b12a59aadad1456f7eb45604b49be93448c246fc",
+        "path": "test/scaling_policy_tests.jl"
+      },
+      {
+        "sha256": "97e2d20c8e410cd57ed1ddb483ccd4f8b6cc846f559b0bcf00815421bb957c4d",
+        "path": "test/semantic_block_tests.jl"
+      }
+    ],
+    "commit": "b7aa9a1bb48bcc8b790d3bcf5417d6a32036352a",
+    "path_expectation": "../BMOPFTools.jl",
+    "dirty": true,
+    "path": "/Users/uqfgeth/Documents/GitHub/BMOPFTools.jl",
+    "tracked_diff_sha256": "710a4caaee8b0b4180c17cf28af790ddf19e98221929ed6e0deea3620a3984cf"
+  },
+  "julia_version": "1.12.6",
+  "packages": {
+    "JSON3": "1.14.3",
+    "Ipopt": "1.15.0",
+    "BMOPFTools": "0.1.0",
+    "JuMP": "1.31.1"
+  },
+  "generated_at": "2026-08-13"
+}

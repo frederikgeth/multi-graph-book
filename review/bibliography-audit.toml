@@ -1,0 +1,120 @@
+schema_version = 1
+
+[[entry]]
+key = "DorflerBullo2013"
+status = "verified"
+verification_source = "https://api.crossref.org/works/10.1109%2FTCSI.2012.2215780"
+verified_on = "2026-08-13"
+note = "Title, authors, journal, volume, issue, pages, year, and DOI agree with DOI registration."
+
+[[entry]]
+key = "CaliskanTabuada2014"
+status = "verified"
+verification_source = "https://www.sciencedirect.com/science/article/pii/S0005109814003331"
+verified_on = "2026-08-13"
+note = "Title, authors, journal, volume, issue, pages, year, and DOI verified from publisher and DOI registration."
+
+[[entry]]
+key = "BaezFong2018"
+status = "verified"
+verification_source = "https://www.tac.mta.ca/tac/volumes/33/38/33-38abs.html"
+verified_on = "2026-08-13"
+note = "Official journal record confirms authors, title, volume, number, pages, and publication date."
+
+[[entry]]
+key = "vanderSchaftMaschke2013"
+status = "verified"
+verification_source = "https://api.crossref.org/works/10.1137%2F110840091"
+verified_on = "2026-08-13"
+note = "DOI registration confirms article metadata."
+
+[[entry]]
+key = "CurtisMorrow2000"
+status = "verified"
+verification_source = "https://api.crossref.org/works/10.1142%2F4306"
+verified_on = "2026-08-13"
+note = "DOI registration confirms title, authors, and publication year."
+
+[[entry]]
+key = "Ehrig2006"
+status = "verified"
+verification_source = "https://api.crossref.org/works/10.1007%2F3-540-31188-2"
+verified_on = "2026-08-13"
+note = "DOI registration confirms the book title, series, and year; author list retained from the publisher record."
+
+[[entry]]
+key = "Grudzien2018"
+status = "verified"
+verification_source = "https://epubs.siam.org/doi/10.1137/17M1138054"
+verified_on = "2026-08-13"
+note = "Publisher record confirms authors, title, journal, volume, issue, pages, year, and DOI."
+
+[[entry]]
+key = "Sistermanns2019"
+status = "corrected"
+verification_source = "https://api.crossref.org/works/10.1109%2FPTC.2019.8810704"
+verified_on = "2026-08-13"
+note = "Replaced the preprint-only entry with the final IEEE Milan PowerTech conference record and DOI."
+
+[[entry]]
+key = "Pecenak2018"
+status = "verified"
+verification_source = "https://api.crossref.org/works/10.1109%2FTPWRS.2017.2726502"
+verified_on = "2026-08-13"
+note = "DOI registration confirms article metadata."
+
+[[entry]]
+key = "Mokhtari2027"
+status = "corrected"
+verification_source = "https://api.crossref.org/works/10.1016%2Fj.epsr.2026.113615"
+verified_on = "2026-08-13"
+note = "Replaced the inaccurately titled preprint entry with the registered Electric Power Systems Research article; retained the arXiv identifier."
+
+[[entry]]
+key = "MokhtariRadial2025"
+status = "verified"
+verification_source = "https://arxiv.org/abs/2508.15006"
+verified_on = "2026-08-13"
+note = "Added the distinct radiality-preservation preprint so its result is not attributed to the three-phase Opti-KRON article."
+
+[[entry]]
+key = "Jang2013"
+status = "verified"
+verification_source = "https://api.crossref.org/works/10.1109%2FPECI.2013.6506059"
+verified_on = "2026-08-13"
+note = "DOI registration confirms conference title, paper title, pages, year, and DOI; author-copy URL retained."
+
+[[entry]]
+key = "CIMTopologicalNode"
+status = "corrected"
+verification_source = "https://zepben.github.io/evolve/docs/cim/cim100/TC57CIM/IEC61970/Base/Topology/TopologicalNode/"
+verified_on = "2026-08-13"
+note = "Corrected attribution from IEC to the Zepben-generated CIM100 documentation and removed an unsupported publication year."
+
+[[entry]]
+key = "PowsyblTopology"
+status = "corrected"
+verification_source = "https://powsybl.readthedocs.io/projects/powsybl-tutorials/en/latest/topology.html"
+verified_on = "2026-08-13"
+note = "Official documentation title verified; unsupported publication year replaced by n.d."
+
+[[entry]]
+key = "PMDEngineering"
+status = "corrected"
+verification_source = "https://lanl-ansi.github.io/PowerModelsDistribution.jl/stable/manual/eng-data-model.html"
+verified_on = "2026-08-13"
+note = "Official documentation title verified; unsupported publication year replaced by n.d."
+
+[[entry]]
+key = "PMDConversion"
+status = "corrected"
+verification_source = "https://lanl-ansi.github.io/PowerModelsDistribution.jl/v0.9/eng2math/"
+verified_on = "2026-08-13"
+note = "Corrected the title to the title displayed by the versioned official documentation."
+
+[[entry]]
+key = "OpenDSSReduction"
+status = "corrected"
+verification_source = "https://opendss.epri.com/CircuitReductionforVersion85.html"
+verified_on = "2026-08-13"
+note = "Official EPRI documentation title verified; unsupported publication year replaced by n.d."

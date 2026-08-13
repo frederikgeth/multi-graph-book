@@ -1,0 +1,1049 @@
+{
+  "figure": "docs/src/assets/running-network-views.png",
+  "figure_sha256": "d2fddbce3f2aee0384c2cd009db46d418cc9864a7659d3106d50ac9276be0092",
+  "fixture": "data/running-network/v0.1.0.json",
+  "fixture_sha256": "80aa8704cf813f4e98b9df4037c062e7016f651307855115db85df441c28a021",
+  "schema_version": 1,
+  "views": {
+    "asset_property": {
+      "generated_objects": [
+        {
+          "generated_id": "asset::bus/i0",
+          "sources": [
+            "bus/i0"
+          ]
+        },
+        {
+          "generated_id": "asset::bus/i1",
+          "sources": [
+            "bus/i1"
+          ]
+        },
+        {
+          "generated_id": "asset::bus/i2",
+          "sources": [
+            "bus/i2"
+          ]
+        },
+        {
+          "generated_id": "asset::bus/i3",
+          "sources": [
+            "bus/i3"
+          ]
+        },
+        {
+          "generated_id": "asset::bus/i4",
+          "sources": [
+            "bus/i4"
+          ]
+        },
+        {
+          "generated_id": "asset::bus/i5",
+          "sources": [
+            "bus/i5"
+          ]
+        },
+        {
+          "generated_id": "asset::bus/i6",
+          "sources": [
+            "bus/i6"
+          ]
+        },
+        {
+          "generated_id": "asset::line/l1",
+          "sources": [
+            "line/l1"
+          ]
+        },
+        {
+          "generated_id": "asset::line/l2",
+          "sources": [
+            "line/l2"
+          ]
+        },
+        {
+          "generated_id": "asset::line/l3",
+          "sources": [
+            "line/l3"
+          ]
+        },
+        {
+          "generated_id": "asset::line/l4",
+          "sources": [
+            "line/l4"
+          ]
+        },
+        {
+          "generated_id": "asset::switch/w0",
+          "sources": [
+            "switch/w0"
+          ]
+        },
+        {
+          "generated_id": "asset::shunt/hn",
+          "sources": [
+            "shunt/hn"
+          ]
+        },
+        {
+          "generated_id": "asset::shunt/href",
+          "sources": [
+            "shunt/href"
+          ]
+        },
+        {
+          "generated_id": "asset::load/d1",
+          "sources": [
+            "load/d1"
+          ]
+        },
+        {
+          "generated_id": "asset::load/d2a",
+          "sources": [
+            "load/d2a"
+          ]
+        },
+        {
+          "generated_id": "asset::load/d2c",
+          "sources": [
+            "load/d2c"
+          ]
+        },
+        {
+          "generated_id": "asset::load/d3",
+          "sources": [
+            "load/d3"
+          ]
+        },
+        {
+          "generated_id": "asset::load/d4",
+          "sources": [
+            "load/d4"
+          ]
+        },
+        {
+          "generated_id": "asset::generator/g1",
+          "sources": [
+            "generator/g1"
+          ]
+        },
+        {
+          "generated_id": "asset::voltage_source/s0",
+          "sources": [
+            "voltage_source/s0"
+          ]
+        },
+        {
+          "generated_id": "asset::transformer/n_winding/x1",
+          "sources": [
+            "transformer/n_winding/x1"
+          ]
+        }
+      ],
+      "omits": [
+        "equations",
+        "numerical sparsity"
+      ],
+      "retains": [
+        "stable source identity",
+        "device family",
+        "asset membership"
+      ]
+    },
+    "bus_branch_multigraph": {
+      "generated_objects": [
+        {
+          "generated_id": "vertex::bus/i0",
+          "sources": [
+            "bus/i0"
+          ]
+        },
+        {
+          "generated_id": "vertex::bus/i1",
+          "sources": [
+            "bus/i1"
+          ]
+        },
+        {
+          "generated_id": "vertex::bus/i2",
+          "sources": [
+            "bus/i2"
+          ]
+        },
+        {
+          "generated_id": "vertex::bus/i3",
+          "sources": [
+            "bus/i3"
+          ]
+        },
+        {
+          "generated_id": "vertex::bus/i4",
+          "sources": [
+            "bus/i4"
+          ]
+        },
+        {
+          "generated_id": "vertex::bus/i5",
+          "sources": [
+            "bus/i5"
+          ]
+        },
+        {
+          "generated_id": "vertex::bus/i6",
+          "sources": [
+            "bus/i6"
+          ]
+        },
+        {
+          "generated_id": "edge::line/l1",
+          "sources": [
+            "line/l1"
+          ]
+        },
+        {
+          "generated_id": "edge::line/l2",
+          "sources": [
+            "line/l2"
+          ]
+        },
+        {
+          "generated_id": "edge::line/l3",
+          "sources": [
+            "line/l3"
+          ]
+        },
+        {
+          "generated_id": "edge::line/l4",
+          "sources": [
+            "line/l4"
+          ]
+        },
+        {
+          "generated_id": "edge::switch/w0",
+          "sources": [
+            "switch/w0"
+          ]
+        },
+        {
+          "generated_id": "multiterminal::transformer/n_winding/x1",
+          "sources": [
+            "transformer/n_winding/x1"
+          ]
+        }
+      ],
+      "omits": [
+        "ordered conductor coordinates",
+        "constitutive equations"
+      ],
+      "retains": [
+        "parallel member identity",
+        "bus incidence",
+        "multi-terminal device identity"
+      ]
+    },
+    "opf_equation": {
+      "generated_objects": [
+        {
+          "generated_id": "equation-block::bus/i0",
+          "sources": [
+            "bus/i0"
+          ]
+        },
+        {
+          "generated_id": "equation-block::bus/i1",
+          "sources": [
+            "bus/i1"
+          ]
+        },
+        {
+          "generated_id": "equation-block::bus/i2",
+          "sources": [
+            "bus/i2"
+          ]
+        },
+        {
+          "generated_id": "equation-block::bus/i3",
+          "sources": [
+            "bus/i3"
+          ]
+        },
+        {
+          "generated_id": "equation-block::bus/i4",
+          "sources": [
+            "bus/i4"
+          ]
+        },
+        {
+          "generated_id": "equation-block::bus/i5",
+          "sources": [
+            "bus/i5"
+          ]
+        },
+        {
+          "generated_id": "equation-block::bus/i6",
+          "sources": [
+            "bus/i6"
+          ]
+        },
+        {
+          "generated_id": "equation-block::line/l1",
+          "sources": [
+            "line/l1"
+          ]
+        },
+        {
+          "generated_id": "equation-block::line/l2",
+          "sources": [
+            "line/l2"
+          ]
+        },
+        {
+          "generated_id": "equation-block::line/l3",
+          "sources": [
+            "line/l3"
+          ]
+        },
+        {
+          "generated_id": "equation-block::line/l4",
+          "sources": [
+            "line/l4"
+          ]
+        },
+        {
+          "generated_id": "equation-block::switch/w0",
+          "sources": [
+            "switch/w0"
+          ]
+        },
+        {
+          "generated_id": "equation-block::shunt/hn",
+          "sources": [
+            "shunt/hn"
+          ]
+        },
+        {
+          "generated_id": "equation-block::shunt/href",
+          "sources": [
+            "shunt/href"
+          ]
+        },
+        {
+          "generated_id": "equation-block::load/d1",
+          "sources": [
+            "load/d1"
+          ]
+        },
+        {
+          "generated_id": "equation-block::load/d2a",
+          "sources": [
+            "load/d2a"
+          ]
+        },
+        {
+          "generated_id": "equation-block::load/d2c",
+          "sources": [
+            "load/d2c"
+          ]
+        },
+        {
+          "generated_id": "equation-block::load/d3",
+          "sources": [
+            "load/d3"
+          ]
+        },
+        {
+          "generated_id": "equation-block::load/d4",
+          "sources": [
+            "load/d4"
+          ]
+        },
+        {
+          "generated_id": "equation-block::generator/g1",
+          "sources": [
+            "generator/g1"
+          ]
+        },
+        {
+          "generated_id": "equation-block::voltage_source/s0",
+          "sources": [
+            "voltage_source/s0"
+          ]
+        },
+        {
+          "generated_id": "equation-block::transformer/n_winding/x1",
+          "sources": [
+            "transformer/n_winding/x1"
+          ]
+        }
+      ],
+      "omits": [
+        "asset lifecycle facts not consumed by the formulation"
+      ],
+      "retains": [
+        "variables",
+        "constraints",
+        "limits",
+        "objective participation"
+      ]
+    },
+    "port_factor": {
+      "generated_objects": [
+        {
+          "generated_id": "junction::bus/i0",
+          "sources": [
+            "bus/i0"
+          ]
+        },
+        {
+          "generated_id": "junction::bus/i1",
+          "sources": [
+            "bus/i1"
+          ]
+        },
+        {
+          "generated_id": "junction::bus/i2",
+          "sources": [
+            "bus/i2"
+          ]
+        },
+        {
+          "generated_id": "junction::bus/i3",
+          "sources": [
+            "bus/i3"
+          ]
+        },
+        {
+          "generated_id": "junction::bus/i4",
+          "sources": [
+            "bus/i4"
+          ]
+        },
+        {
+          "generated_id": "junction::bus/i5",
+          "sources": [
+            "bus/i5"
+          ]
+        },
+        {
+          "generated_id": "junction::bus/i6",
+          "sources": [
+            "bus/i6"
+          ]
+        },
+        {
+          "generated_id": "factor::line/l1",
+          "sources": [
+            "line/l1"
+          ]
+        },
+        {
+          "generated_id": "factor::line/l2",
+          "sources": [
+            "line/l2"
+          ]
+        },
+        {
+          "generated_id": "factor::line/l3",
+          "sources": [
+            "line/l3"
+          ]
+        },
+        {
+          "generated_id": "factor::line/l4",
+          "sources": [
+            "line/l4"
+          ]
+        },
+        {
+          "generated_id": "factor::switch/w0",
+          "sources": [
+            "switch/w0"
+          ]
+        },
+        {
+          "generated_id": "factor::shunt/hn",
+          "sources": [
+            "shunt/hn"
+          ]
+        },
+        {
+          "generated_id": "factor::shunt/href",
+          "sources": [
+            "shunt/href"
+          ]
+        },
+        {
+          "generated_id": "factor::load/d1",
+          "sources": [
+            "load/d1"
+          ]
+        },
+        {
+          "generated_id": "factor::load/d2a",
+          "sources": [
+            "load/d2a"
+          ]
+        },
+        {
+          "generated_id": "factor::load/d2c",
+          "sources": [
+            "load/d2c"
+          ]
+        },
+        {
+          "generated_id": "factor::load/d3",
+          "sources": [
+            "load/d3"
+          ]
+        },
+        {
+          "generated_id": "factor::load/d4",
+          "sources": [
+            "load/d4"
+          ]
+        },
+        {
+          "generated_id": "factor::generator/g1",
+          "sources": [
+            "generator/g1"
+          ]
+        },
+        {
+          "generated_id": "factor::voltage_source/s0",
+          "sources": [
+            "voltage_source/s0"
+          ]
+        },
+        {
+          "generated_id": "factor::transformer/n_winding/x1",
+          "sources": [
+            "transformer/n_winding/x1"
+          ]
+        }
+      ],
+      "omits": [
+        "solver-specific variable ordering"
+      ],
+      "retains": [
+        "factor arity",
+        "device identity",
+        "typed attachment"
+      ]
+    },
+    "sparsity": {
+      "generated_objects": [
+        {
+          "generated_id": "nonzero-block::bus/i0",
+          "sources": [
+            "bus/i0"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::bus/i1",
+          "sources": [
+            "bus/i1"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::bus/i2",
+          "sources": [
+            "bus/i2"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::bus/i3",
+          "sources": [
+            "bus/i3"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::bus/i4",
+          "sources": [
+            "bus/i4"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::bus/i5",
+          "sources": [
+            "bus/i5"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::bus/i6",
+          "sources": [
+            "bus/i6"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::line/l1",
+          "sources": [
+            "line/l1"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::line/l2",
+          "sources": [
+            "line/l2"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::line/l3",
+          "sources": [
+            "line/l3"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::line/l4",
+          "sources": [
+            "line/l4"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::switch/w0",
+          "sources": [
+            "switch/w0"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::shunt/hn",
+          "sources": [
+            "shunt/hn"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::shunt/href",
+          "sources": [
+            "shunt/href"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::load/d1",
+          "sources": [
+            "load/d1"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::load/d2a",
+          "sources": [
+            "load/d2a"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::load/d2c",
+          "sources": [
+            "load/d2c"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::load/d3",
+          "sources": [
+            "load/d3"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::load/d4",
+          "sources": [
+            "load/d4"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::generator/g1",
+          "sources": [
+            "generator/g1"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::voltage_source/s0",
+          "sources": [
+            "voltage_source/s0"
+          ]
+        },
+        {
+          "generated_id": "nonzero-block::transformer/n_winding/x1",
+          "sources": [
+            "transformer/n_winding/x1"
+          ]
+        }
+      ],
+      "omits": [
+        "physical edge meaning",
+        "most stable asset identity in a solver matrix"
+      ],
+      "retains": [
+        "numerical dependency blocks",
+        "variable ordering groups"
+      ]
+    },
+    "terminal_connectivity": {
+      "generated_objects": [
+        {
+          "generated_id": "terminal::i0::a",
+          "source_field": "bus/i0/terminal_names/0",
+          "sources": [
+            "bus/i0"
+          ]
+        },
+        {
+          "generated_id": "terminal::i0::b",
+          "source_field": "bus/i0/terminal_names/1",
+          "sources": [
+            "bus/i0"
+          ]
+        },
+        {
+          "generated_id": "terminal::i0::c",
+          "source_field": "bus/i0/terminal_names/2",
+          "sources": [
+            "bus/i0"
+          ]
+        },
+        {
+          "generated_id": "terminal::i0::n",
+          "source_field": "bus/i0/terminal_names/3",
+          "sources": [
+            "bus/i0"
+          ]
+        },
+        {
+          "generated_id": "terminal::i1::a",
+          "source_field": "bus/i1/terminal_names/0",
+          "sources": [
+            "bus/i1"
+          ]
+        },
+        {
+          "generated_id": "terminal::i1::b",
+          "source_field": "bus/i1/terminal_names/1",
+          "sources": [
+            "bus/i1"
+          ]
+        },
+        {
+          "generated_id": "terminal::i1::c",
+          "source_field": "bus/i1/terminal_names/2",
+          "sources": [
+            "bus/i1"
+          ]
+        },
+        {
+          "generated_id": "terminal::i1::n",
+          "source_field": "bus/i1/terminal_names/3",
+          "sources": [
+            "bus/i1"
+          ]
+        },
+        {
+          "generated_id": "terminal::i2::a",
+          "source_field": "bus/i2/terminal_names/0",
+          "sources": [
+            "bus/i2"
+          ]
+        },
+        {
+          "generated_id": "terminal::i2::b",
+          "source_field": "bus/i2/terminal_names/1",
+          "sources": [
+            "bus/i2"
+          ]
+        },
+        {
+          "generated_id": "terminal::i2::c",
+          "source_field": "bus/i2/terminal_names/2",
+          "sources": [
+            "bus/i2"
+          ]
+        },
+        {
+          "generated_id": "terminal::i2::n",
+          "source_field": "bus/i2/terminal_names/3",
+          "sources": [
+            "bus/i2"
+          ]
+        },
+        {
+          "generated_id": "terminal::i3::a",
+          "source_field": "bus/i3/terminal_names/0",
+          "sources": [
+            "bus/i3"
+          ]
+        },
+        {
+          "generated_id": "terminal::i3::b",
+          "source_field": "bus/i3/terminal_names/1",
+          "sources": [
+            "bus/i3"
+          ]
+        },
+        {
+          "generated_id": "terminal::i3::c",
+          "source_field": "bus/i3/terminal_names/2",
+          "sources": [
+            "bus/i3"
+          ]
+        },
+        {
+          "generated_id": "terminal::i3::n",
+          "source_field": "bus/i3/terminal_names/3",
+          "sources": [
+            "bus/i3"
+          ]
+        },
+        {
+          "generated_id": "terminal::i4::a",
+          "source_field": "bus/i4/terminal_names/0",
+          "sources": [
+            "bus/i4"
+          ]
+        },
+        {
+          "generated_id": "terminal::i4::c",
+          "source_field": "bus/i4/terminal_names/1",
+          "sources": [
+            "bus/i4"
+          ]
+        },
+        {
+          "generated_id": "terminal::i4::n",
+          "source_field": "bus/i4/terminal_names/2",
+          "sources": [
+            "bus/i4"
+          ]
+        },
+        {
+          "generated_id": "terminal::i5::a",
+          "source_field": "bus/i5/terminal_names/0",
+          "sources": [
+            "bus/i5"
+          ]
+        },
+        {
+          "generated_id": "terminal::i5::b",
+          "source_field": "bus/i5/terminal_names/1",
+          "sources": [
+            "bus/i5"
+          ]
+        },
+        {
+          "generated_id": "terminal::i5::c",
+          "source_field": "bus/i5/terminal_names/2",
+          "sources": [
+            "bus/i5"
+          ]
+        },
+        {
+          "generated_id": "terminal::i5::n",
+          "source_field": "bus/i5/terminal_names/3",
+          "sources": [
+            "bus/i5"
+          ]
+        },
+        {
+          "generated_id": "terminal::i6::a",
+          "source_field": "bus/i6/terminal_names/0",
+          "sources": [
+            "bus/i6"
+          ]
+        },
+        {
+          "generated_id": "terminal::i6::b",
+          "source_field": "bus/i6/terminal_names/1",
+          "sources": [
+            "bus/i6"
+          ]
+        },
+        {
+          "generated_id": "terminal::i6::c",
+          "source_field": "bus/i6/terminal_names/2",
+          "sources": [
+            "bus/i6"
+          ]
+        },
+        {
+          "generated_id": "attachment::line/l1::from",
+          "source_field": "line/l1/terminal_map_from",
+          "sources": [
+            "line/l1",
+            "bus/i1"
+          ]
+        },
+        {
+          "generated_id": "attachment::line/l1::to",
+          "source_field": "line/l1/terminal_map_to",
+          "sources": [
+            "line/l1",
+            "bus/i2"
+          ]
+        },
+        {
+          "generated_id": "attachment::line/l2::from",
+          "source_field": "line/l2/terminal_map_from",
+          "sources": [
+            "line/l2",
+            "bus/i1"
+          ]
+        },
+        {
+          "generated_id": "attachment::line/l2::to",
+          "source_field": "line/l2/terminal_map_to",
+          "sources": [
+            "line/l2",
+            "bus/i2"
+          ]
+        },
+        {
+          "generated_id": "attachment::line/l3::from",
+          "source_field": "line/l3/terminal_map_from",
+          "sources": [
+            "line/l3",
+            "bus/i2"
+          ]
+        },
+        {
+          "generated_id": "attachment::line/l3::to",
+          "source_field": "line/l3/terminal_map_to",
+          "sources": [
+            "line/l3",
+            "bus/i3"
+          ]
+        },
+        {
+          "generated_id": "attachment::line/l4::from",
+          "source_field": "line/l4/terminal_map_from",
+          "sources": [
+            "line/l4",
+            "bus/i3"
+          ]
+        },
+        {
+          "generated_id": "attachment::line/l4::to",
+          "source_field": "line/l4/terminal_map_to",
+          "sources": [
+            "line/l4",
+            "bus/i4"
+          ]
+        },
+        {
+          "generated_id": "attachment::switch/w0::from",
+          "source_field": "switch/w0/terminal_map_from",
+          "sources": [
+            "switch/w0",
+            "bus/i0"
+          ]
+        },
+        {
+          "generated_id": "attachment::switch/w0::to",
+          "source_field": "switch/w0/terminal_map_to",
+          "sources": [
+            "switch/w0",
+            "bus/i1"
+          ]
+        },
+        {
+          "generated_id": "attachment::shunt/hn",
+          "source_field": "shunt/hn/terminal_map",
+          "sources": [
+            "shunt/hn",
+            "bus/i2"
+          ]
+        },
+        {
+          "generated_id": "attachment::shunt/href",
+          "source_field": "shunt/href/terminal_map",
+          "sources": [
+            "shunt/href",
+            "bus/i6"
+          ]
+        },
+        {
+          "generated_id": "attachment::load/d1",
+          "source_field": "load/d1/terminal_map",
+          "sources": [
+            "load/d1",
+            "bus/i3"
+          ]
+        },
+        {
+          "generated_id": "attachment::load/d2a",
+          "source_field": "load/d2a/terminal_map",
+          "sources": [
+            "load/d2a",
+            "bus/i4"
+          ]
+        },
+        {
+          "generated_id": "attachment::load/d2c",
+          "source_field": "load/d2c/terminal_map",
+          "sources": [
+            "load/d2c",
+            "bus/i4"
+          ]
+        },
+        {
+          "generated_id": "attachment::load/d3",
+          "source_field": "load/d3/terminal_map",
+          "sources": [
+            "load/d3",
+            "bus/i5"
+          ]
+        },
+        {
+          "generated_id": "attachment::load/d4",
+          "source_field": "load/d4/terminal_map",
+          "sources": [
+            "load/d4",
+            "bus/i6"
+          ]
+        },
+        {
+          "generated_id": "attachment::generator/g1",
+          "source_field": "generator/g1/terminal_map",
+          "sources": [
+            "generator/g1",
+            "bus/i3"
+          ]
+        },
+        {
+          "generated_id": "attachment::voltage_source/s0",
+          "source_field": "voltage_source/s0/terminal_map",
+          "sources": [
+            "voltage_source/s0",
+            "bus/i0"
+          ]
+        },
+        {
+          "generated_id": "attachment::transformer/n_winding/x1::winding-1",
+          "source_field": "transformer/n_winding/x1/windings/1/terminal_map",
+          "sources": [
+            "transformer/n_winding/x1",
+            "bus/i1"
+          ]
+        },
+        {
+          "generated_id": "attachment::transformer/n_winding/x1::winding-2",
+          "source_field": "transformer/n_winding/x1/windings/2/terminal_map",
+          "sources": [
+            "transformer/n_winding/x1",
+            "bus/i5"
+          ]
+        },
+        {
+          "generated_id": "attachment::transformer/n_winding/x1::winding-3",
+          "source_field": "transformer/n_winding/x1/windings/3/terminal_map",
+          "sources": [
+            "transformer/n_winding/x1",
+            "bus/i6"
+          ]
+        }
+      ],
+      "omits": [
+        "constitutive equations",
+        "objective"
+      ],
+      "retains": [
+        "ordered terminal identity",
+        "attachment map",
+        "grounding attachment"
+      ]
+    }
+  }
+}

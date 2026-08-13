@@ -49,7 +49,7 @@ the claims ledger rather than silently completed from memory.
 
 ## 4. Claims ledger
 
-Add a machine-readable ledger in the next phase with fields:
+The machine-readable ledger at `claims/claims.toml` uses the fields:
 
 ```text
 claim_id, chapter, claim_text, status, evidence_type, citation_keys,
@@ -108,13 +108,21 @@ No chapter should be called authoritative merely because the site renders.
 
 ## 9. Automated checks
 
-The planned CI should fail on:
+The current CI fails on:
 
 - unresolved Documenter cross-references;
 - missing BibTeX keys;
 - malformed equations;
 - broken internal links;
 - duplicate claim identifiers;
+- incomplete bibliography-audit coverage;
+- generated view maps that reference unknown source objects or stale figure and fixture hashes;
+- clean-reproduction artifacts that disagree with the canonical fixture or recorded commit;
+- transformation certificates that violate the versioned common schema or use an unregistered claim ID;
+- the package-independent degree-two and conductor-normalization/composition tests;
+
+Planned extensions include:
+
 - unclassified normative words such as "always," "exact," or "preserves" in
   designated scientific sections unless accompanied by a claim record;
 - transformation examples that fail source-model recovery tests.

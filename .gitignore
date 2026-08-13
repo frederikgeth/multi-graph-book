@@ -16,6 +16,7 @@ tmp/
 *.jl.cov
 *.jl.*.cov
 *.jl.mem
+experiments/Manifest.toml
 
 # OS and editors
 .DS_Store

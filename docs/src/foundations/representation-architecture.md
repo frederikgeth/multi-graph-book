@@ -1,6 +1,11 @@
 # Representation architecture
 
-## Two canonical, linked structures
+## Two proposed, linked structures
+
+The working reference architecture links an asset/property model to an electrical port--factor
+model. It is intended to generate useful views without requiring every view to share one graph
+class. Its adequacy is a hypothesis to test, particularly for multiconductor networks,
+multiwinding devices, and decision constraints.
 
 ### Asset/property model
 
@@ -16,16 +21,18 @@ outages, construction, geography, and provenance.
 
 ### Electrical port--factor model
 
-Let ``P`` be a set of typed ports, ``N`` a set of connectivity objects, and
-``F`` a set of behavioral factors. Incidence maps connect ports to connectivity
-objects and to factors. A factor ``f\in F`` carries a relation
+Let ``\mathcal Q`` be a set of typed ports, ``\mathcal J`` a set of junctions, and
+``\Phi`` a set of behavioural factors. Incidence maps connect ports to junctions
+and factors. A factor ``\phi\in\Phi`` carries a relation
 
 ```math
-\mathcal R_f(x_{P_f},u_f,\theta_f)=0,
+\mathcal R_\phi(z_{\mathcal Q_\phi},u_\phi,\theta_\phi)=0,
 ```
 
 possibly together with inequalities, discrete states, dynamics, or stochastic
-parameters. Here ``P_f`` is the ordered set of ports belonging to the factor.
+parameters. Here ``\mathcal Q_\phi`` is the ordered set of ports belonging to the factor. These
+symbols avoid conflicting with the phase, terminal, and configuration sets in the book's
+[Notation and modelling conventions](@ref).
 
 This subsumes ordinary edges: a two-port line is a factor of arity two. It also
 supports:
@@ -66,7 +73,7 @@ Hierarchy is not merely visual grouping. It establishes:
 
 ## Required derived views
 
-The canonical structures should generate, at minimum:
+The linked source structures should generate, at minimum:
 
 | View | Purpose | Characteristic loss |
 | --- | --- | --- |
@@ -76,7 +83,7 @@ The canonical structures should generate, at minimum:
 | Simple weighted graph | graph algorithms and visualization | parallel identity and constraints |
 | Sparsity/incidence graph | numerical ordering and decomposition | most physical interpretation |
 
-These are products, not competing canonical schemas.
+These are purpose-specific products, not a ladder ordered only by graph size.
 
 ## Evidence from current software practice
 
@@ -115,4 +122,3 @@ Lines, transformers, switches, loads, generators and converters need not be
 kernel graph categories. They are typed factor schemas built on the kernel.
 This avoids continually expanding the graph formalism whenever a new physical
 device appears.
-

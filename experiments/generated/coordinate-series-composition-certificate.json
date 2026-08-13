@@ -1,0 +1,115 @@
+{
+  "preconditions": [
+    "requested and source conductor labels are unique",
+    "requested and source conductor sets are equal",
+    "each from-terminal label remains paired with its original to-terminal label",
+    "the first element ends at the eliminated junction",
+    "the second element starts at the eliminated junction",
+    "junction conductor sets agree up to permutation",
+    "the junction has no injection, shunt, grounding, measurement, control, or protection boundary",
+    "neither source element has an external mutual coupling"
+  ],
+  "rule_id": "sequential_composition",
+  "preserves": [
+    "external_terminal_voltage_current_relation",
+    "ordered_conductor_identity",
+    "source_current_limits_via_intersection",
+    "source_to_target_provenance"
+  ],
+  "constraint_map": {
+    "forward_step_2.componentwise_current_limit": "i_max_equivalent = min(i_max_l5, P' * i_max_normalized__l6__a_n)",
+    "forward_step_2.current_feasible_set": "C_equivalent = C_l5 intersect P' * C_normalized__l6__a_n",
+    "forward_step_1.target_componentwise_limit": "i_max_target = P * i_max_source",
+    "forward_step_1.target_impedance": "Z_target = P * Z_source * P'",
+    "forward_step_1.target_coordinates": "x_target = P * x_source"
+  },
+  "provenance": {
+    "component_certificates": [
+      "TR-COORD-001",
+      "TR-SER-001"
+    ],
+    "intermediate_object_ids": [
+      "normalized__l6__a_n"
+    ],
+    "execution_order": [
+      "conductor_coordinate_normalization",
+      "degree_two_series_elimination"
+    ]
+  },
+  "classification": "exact_behavioral_reduction",
+  "source": {
+    "object_ids": [
+      "ib",
+      "l5",
+      "l6"
+    ],
+    "detail": {
+      "component_model_categories": [
+        "ordered_multiconductor_series_element",
+        "ordered_multiconductor_series_chain"
+      ]
+    },
+    "model_category": "composed_source_models"
+  },
+  "forgets": [
+    "independent_visibility_of_the_internal_junction"
+  ],
+  "recovery_map": {
+    "reverse_step_1.junction_voltage": "u_ib = u_i7 - Z_l5 * i_equivalent",
+    "reverse_step_1.source_current_l5": "i_l5 = i_equivalent",
+    "reverse_step_2.source_impedance": "Z_source = P' * Z_target * P",
+    "reverse_step_2.source_coordinates": "x_source = P' * x_target",
+    "reverse_step_1.source_current_normalized__l6__a_n": "i_normalized__l6__a_n = P * i_equivalent"
+  },
+  "target": {
+    "object_ids": [
+      "generated_series__l5__normalized__l6__a_n"
+    ],
+    "detail": {
+      "bus_from": "i7",
+      "bus_to": "i8",
+      "terminal_map_from": [
+        "a",
+        "n"
+      ],
+      "terminal_map_to": [
+        "a",
+        "n"
+      ],
+      "impedance_ohm": [
+        [
+          {
+            "re": 0.30000000000000004,
+            "im": 0.5
+          },
+          {
+            "re": 0.05,
+            "im": 0.09
+          }
+        ],
+        [
+          {
+            "re": 0.05,
+            "im": 0.09
+          },
+          {
+            "re": 0.7,
+            "im": 0.4
+          }
+        ]
+      ],
+      "current_limit_A": [
+        110,
+        80
+      ],
+      "physical_classification": "exact_behavioral_composite_not_a_homogeneous_physical_line"
+    },
+    "model_category": "ordered_multiconductor_series_element"
+  },
+  "evidence": {
+    "recovery_order": "apply the second recovery map, then the first recovery map",
+    "composition_check": "the first target is consumed by the second rule"
+  },
+  "schema_version": "1.0.0",
+  "certificate_id": "TR-COMP-001"
+}

@@ -11,22 +11,39 @@
 6. Preserve uncertainty rather than converting incomplete evidence into
    confident prose.
 
-## Proposed chapter template
+## Chapter forms
 
-Each technical chapter should contain:
+Use the chapter form that matches the work. The complete editorial contract is in
+[`BOOK_PLAN.md`](BOOK_PLAN.md).
 
-1. problem and motivating decision context;
-2. source and target model categories;
-3. variable, port and orientation definitions;
-4. transformation or projection;
-5. preservation contract;
-6. assumptions and negative application conditions;
-7. proof, derivation, or error definition;
-8. recovery and constraint maps;
-9. counterexamples and failure modes;
-10. implementation practice;
-11. literature comparison;
-12. unresolved questions.
+**Representation chapters** define their objects and relations, the questions they answer, their
+characteristic omissions, maps to neighbouring representations, the running example in that view,
+and known failure modes.
+
+**Transformation chapters** contain a motivating decision context, source and target categories,
+the rule, preconditions and negative application conditions, preservation contract, proof or error
+definition, recovery and provenance maps, a positive example, a minimal counterexample, and
+executable tests where possible.
+
+**Application chapters** begin with the analysis or decision task, derive its representation
+obligations, compare candidate views, and measure consequences in feasibility, active limits,
+objective value, and decisions—not state error alone.
+
+**Reference entries** are compact cards recording definition, aliases, source and target types,
+preserved properties, characteristic losses, recovery, evidence, and related entries.
+
+## Mathematical notation
+
+Follow [`docs/src/foundations/notation-and-conventions.md`](docs/src/foundations/notation-and-conventions.md),
+which is based on the BMOPFTools model specification.
+
+- Use ``\ell ij`` for line ``\ell`` oriented from bus ``i`` to bus ``j``.
+- Use only the element index for element-intrinsic data, such as ``\mathbf Z_\ell``.
+- Use an oriented triple for terminal quantities, such as ``\mathbf I_{\ell ij}``.
+- Preserve device and winding indices for multiwinding transformers until an explicit compilation
+  creates two-terminal elements.
+- Declare terminal ordering, current direction, units, and base transformations.
+- Do not make colour the only carrier of mathematical meaning.
 
 ## Citation syntax
 
@@ -39,7 +56,44 @@ Kron reduction is analyzed in detail by Dörfler and Bullo
 
 Add the corresponding checked entry to `docs/src/references.bib`. Use stable,
 descriptive keys. Do not add a citation that has only been seen in another
-paper's reference list.
+paper's reference list. Record the publisher, DOI-registration, standard-body,
+or official-project verification in `review/bibliography-audit.toml`, then run:
+
+```sh
+julia scripts/check_bibliography.jl
+```
+
+## Claims ledger
+
+High-consequence definitions, exactness statements, counterexamples, and
+computational results belong in `claims/claims.toml`. Keep the chapter path,
+scope, assumptions, evidence type, and unresolved review work explicit. Run
+
+```sh
+julia scripts/check_claims.jl
+```
+
+before submitting a change. The checker rejects duplicate identifiers, unknown
+statuses, missing chapter paths, and missing BibTeX keys.
+
+Generated fixtures, certificates, view source maps, and local Markdown links
+are checked with:
+
+```sh
+python3 scripts/check_artifacts.py
+```
+
+The package-independent degree-two and coordinate/composition rules can be tested without BMOPFTools:
+
+```sh
+julia experiments/test/series_elimination.jl
+julia experiments/test/coordinate_normalization.jl
+```
+
+New machine-readable transformation results must conform to
+`schemas/transformation-certificate.schema.json`. Register their certificate
+ID in the claims ledger and include positive, rejection, and recovery tests as
+appropriate.
 
 ## Changes to definitions
 
@@ -62,4 +116,3 @@ As the project grows, seek distinct reviewers for:
 - optimization and decision equivalence;
 - protection and utility asset practice;
 - software/data interoperability.
-

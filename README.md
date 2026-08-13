@@ -8,9 +8,22 @@ representation is adequate only relative to the physical, operational, and decis
 must support. The project develops typed physical and electrical representations, traceable derived
 views, and explicit preservation contracts for transformations between them.
 
-The initial notes cover:
+The general baseline is a multiconductor network with arbitrary ordered terminals, explicit neutral
+and grounding semantics, full conductor coupling, multi-terminal and multiwinding devices, and
+continuous or discrete decision variables. Balanced transmission models are treated as important
+derived cases rather than the universal source representation.
 
-- the scope, thesis, representation architecture, and preservation contracts;
+The current drafting foundation includes:
+
+- the [reader-facing book plan](BOOK_PLAN.md);
+- the scope, representation taxonomy, proposed architecture, and preservation contracts;
+- a BMOPFTools-aligned notation contract and a common multiconductor running case;
+- a schema-valid numerical running fixture, six generated representation views, and PF/OPF checks;
+- executable parallel-branch, conductor-normalization, degree-two-series, and composed preservation certificates;
+- a common transformation-certificate JSON schema and validated composition law;
+- a solved source/naïve/exact-lifted two-bus parallel decision comparison;
+- complete source maps for the six generated views and a claims ledger;
+- a systematic scoping-review protocol and evidence-matrix schema;
 - projection, compilation, reduction, and guarded normalization;
 - a literature map, research agenda, terminology, and seed bibliography.
 
@@ -40,9 +53,29 @@ julia --project=docs docs/make.jl --pdf
 
 Outputs are written to `docs/build/` and `docs/latex_build/`.
 
+## Run the executable slice
+
+With the local `BMOPFTools.jl` repository beside this one:
+
+```bash
+julia --project=experiments -e 'using Pkg; Pkg.instantiate()'
+julia --project=experiments experiments/run_vertical_slice.jl
+julia --project=experiments experiments/run_series_elimination.jl
+julia --project=experiments experiments/run_coordinate_series_composition.jl
+julia --project=experiments experiments/run_parallel_decision_comparison.jl
+julia --project=experiments experiments/test/runtests.jl
+julia scripts/check_claims.jl
+python3 scripts/check_artifacts.py
+bash scripts/reproduce_clean_fixture.sh
+```
+
+The generated provenance states whether the BMOPFTools checkout was clean. The
+isolated reproduction script has verified fixture version 0.1.0 against clean
+BMOPFTools commit `b7aa9a1bb48bcc8b790d3bcf5417d6a32036352a`; dirty development
+runs remain recorded separately.
+
 ## Write content
 
 Add Markdown pages under `docs/src/` and register them in the `PAGES` list in `docs/make.jl`.
 Static assets belong under `docs/src/assets/`. Citations use DocumenterCitations syntax and the
 BibTeX database at `docs/src/references.bib`; see [CONTRIBUTING.md](CONTRIBUTING.md).
-

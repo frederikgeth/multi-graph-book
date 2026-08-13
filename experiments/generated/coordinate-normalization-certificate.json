@@ -1,0 +1,101 @@
+{
+  "preconditions": [
+    "requested and source conductor labels are unique",
+    "requested and source conductor sets are equal",
+    "each from-terminal label remains paired with its original to-terminal label"
+  ],
+  "rule_id": "conductor_coordinate_normalization",
+  "preserves": [
+    "all_declared_source_semantics",
+    "external_terminal_voltage_current_relation",
+    "conductor_identity",
+    "componentwise_current_limits",
+    "source_to_target_provenance"
+  ],
+  "constraint_map": {
+    "target_componentwise_limit": "i_max_target = P * i_max_source",
+    "target_impedance": "Z_target = P * Z_source * P'",
+    "target_coordinates": "x_target = P * x_source"
+  },
+  "provenance": {
+    "generated_object": "normalized__l6__a_n",
+    "source_element": "l6"
+  },
+  "classification": "exact_normalization",
+  "source": {
+    "object_ids": [
+      "l6"
+    ],
+    "model_category": "ordered_multiconductor_series_element"
+  },
+  "forgets": [
+  ],
+  "recovery_map": {
+    "source_coordinates": "x_source = P' * x_target",
+    "source_impedance": "Z_source = P' * Z_target * P"
+  },
+  "target": {
+    "object_ids": [
+      "normalized__l6__a_n"
+    ],
+    "detail": {
+      "terminal_map_from": [
+        "a",
+        "n"
+      ],
+      "impedance_ohm": [
+        [
+          {
+            "re": 0.2,
+            "im": 0.3
+          },
+          {
+            "re": 0.03,
+            "im": 0.05
+          }
+        ],
+        [
+          {
+            "re": 0.03,
+            "im": 0.05
+          },
+          {
+            "re": 0.4,
+            "im": 0.25
+          }
+        ]
+      ],
+      "terminal_map_to": [
+        "a",
+        "n"
+      ],
+      "current_limit_A": [
+        110,
+        80
+      ]
+    },
+    "model_category": "ordered_multiconductor_series_element"
+  },
+  "evidence": {
+    "permutation_matrix": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "source_order": [
+      "n",
+      "a"
+    ],
+    "target_order": [
+      "a",
+      "n"
+    ]
+  },
+  "schema_version": "1.0.0",
+  "certificate_id": "TR-COORD-001"
+}

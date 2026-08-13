@@ -56,7 +56,8 @@ of decision-set preservation.
 Pecenak and coauthors address multiphase unbalance, mutual coupling and spatial
 variation while targeting accuracy at selected critical buses
 [Pecenak2018](@cite). Opti-KRON work targets voltage reproduction, phase
-connectivity and restored radiality [Mokhtari2026](@cite). This literature is
+connectivity [Mokhtari2027](@cite) and restored radiality
+[MokhtariRadial2025](@cite). This literature is
 more sensitive than classical transmission equivalents to phase availability
 and feeder topology, but explicit neutral grounding, physical line codes,
 parallel-asset decisions, protection and provenance remain underdeveloped.
@@ -106,4 +107,3 @@ network equivalents.
 
 This table is a provisional assessment to be replaced by a systematic review
 with a reproducible search protocol and coded evidence matrix.
-

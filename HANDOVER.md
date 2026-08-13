@@ -9,8 +9,8 @@ power networks.
 ## Core decisions already made
 
 1. Do not search for one universally correct graph class.
-2. Use a linked asset/property model and typed hierarchical port--factor
-   electrical model as the canonical architecture.
+2. Test a linked asset/property model and typed hierarchical port--factor electrical model as a
+   proposed reference architecture.
 3. Treat bus--branch multigraphs, simple graphs and sparsity graphs as derived
    views.
 4. Define expressiveness relative to supported queries or observations, giving
@@ -41,13 +41,48 @@ contingencies or investments.
 
 ## Current state of files
 
-- The initial thesis and architecture are drafted.
+- The reader-facing architecture and target contents are fixed in `BOOK_PLAN.md`.
+- The thesis now starts from general multiconductor, multi-terminal networks and treats balanced
+  transmission graphs as derived cases.
+- The proposed port--factor model is explicitly a reference-architecture hypothesis, not an assumed
+  canonical truth.
+- A BMOPFTools-aligned notation contract fixes element, oriented-arc, terminal-map, and winding
+  indices.
+- A semantic running network with explicit neutral grounding, heterogeneous parallel branches,
+  phase discontinuity, switchgear, and a three-winding transformer is specified.
+- Fixture version 0.1.0 realizes that network in BMOPF, passes schema/conformance checks, and
+  solves continuous PF and OPF cases. Its normal provenance records the dirty local BMOPFTools
+  state, while a separate isolated run establishes a clean pinned reproduction.
+- Six representation views are generated from the fixture, and the scalar parallel-line failure
+  has an executable machine-readable certificate.
+- The initial claims ledger and CI checker are present.
+- Every bibliography entry has a dated audit record; the Sistermanns final
+  conference paper and the final Opti-KRON journal article replace inaccurate
+  preprint-only metadata.
+- A versioned scoping-review protocol, search strategy, and evidence schema are present; systematic
+  searching and screening have not yet begun.
+- Fixture version 0.1.0 also passes in an isolated clean clone of BMOPFTools commit
+  `b7aa9a1bb48bcc8b790d3bcf5417d6a32036352a`; its fixture is byte-identical to the canonical one.
+- The six generated views now have complete source maps bound to fixture and figure hashes.
+- Degree-two series elimination is an executable package-independent rule with conductor
+  permutation, constraint/recovery maps, structured rejections, and adversarial tests.
+- Conductor-coordinate normalization is now its own exact, invertible rule;
+  its certificate composes explicitly with degree-two series elimination.
+- Five transformation artifacts share the version 1.0.0 JSON certificate
+  schema and are validated against registered claim IDs.
+- A solved two-bus maximum-served-load comparison records 110 MW for the
+  source, 200 MW for the naïve summed-rating aggregate, and 110 MW for the
+  exact lifted formulation.
+- An initial representation taxonomy separates physical, connectivity, behavioural, study, and
+  computational graphs.
 - A preservation-contract schema is proposed.
 - Transformation categories are separated.
 - Candidate guarded rules are drafted.
 - A provisional literature map and research agenda are included.
 - DocumenterCitations and HTML/PDF build scaffolding are present.
-- The bibliography is a seed and must be independently checked.
+- The bibliography is still a seed for literature coverage. Its metadata has a
+  dated first-party/DOI audit, but the nearby technical claims still require
+  source-by-source review.
 
 ## Do not assume
 
@@ -57,40 +92,49 @@ contingencies or investments.
 - that an exact boundary equivalent preserves optimization constraints;
 - that software practice constitutes a theorem;
 - that the initial factor-graph vocabulary is final;
-- that all BibTeX metadata are correct.
+- that an audit date makes living documentation metadata permanently current or
+  proves that a source supports every nearby interpretation.
 
 ## Recommended next actions
 
-### 1. Bibliographic audit
+### 1. Execute the scoping review
 
-Verify each entry from the publisher, DOI registration, standard body, or
-official project. Check whether the Sistermanns and Mokhtari preprints have
-final publications and cite both only when useful.
+Run and archive the first database searches under `review/protocol.md`, then
+populate the evidence matrix. Double-code the most consequential sources first.
 
-### 2. Systematic review protocol
+### 2. Independent claim review
 
-Create `review/protocol.md`, `review/search-strings.md`, and a CSV/JSON evidence
-matrix. Include backward and forward citation chasing. Record exclusion reasons.
+Obtain independent reviews for the parallel and series claims before promoting
+the vertical slice beyond an internal research draft.
 
-### 3. Formal definitions
+### 3. Extend executable reproducibility
+
+Add a second solver reproduction where practical and decide whether the pinned
+BMOPFTools commit should be replaced by a tagged release once available.
+
+### 4. Formal definitions
 
 Define the port--factor object, morphisms, hierarchy, boundary/interface,
 asset linkage, observation functor, and transformation certificate. Test the
-definitions on parallel lines, four-wire grounding and a three-winding
-transformer before making them more abstract.
+definitions on the specified running network and its parallel-line, grounding,
+permutation, switch, and multiwinding variants before making them more abstract.
 
-### 4. First executable rules
+### 5. Extend executable rules
 
-Implement pure Julia prototypes for conductor permutation and degree-two
-series elimination. The prototype should return either a transformed model plus
-certificate or a structured rejection with failed guards.
+Generalize conductor-coordinate normalization to typed factors and transformer
+windings. Enrich certificate composition with typed state, unit, objective,
+and decision interfaces, then test critical pairs with switch and grounding
+rules.
 
-### 5. First counterexample paper
+Use BMOPFTools where its model fits, but keep the book-level transformation contracts independent
+of its schema. Record the exact BMOPFTools commit for every executable result.
 
-Build the smallest parallel-line OPF examples demonstrating that an aggregate
-edge with a conventional rating changes the feasible region or optimum. Then
-identify the exact lifted constraint representation and its computational
-cost.
+### 6. First counterexample paper
+
+Extend the solved two-bus linear decision example to the smallest credible
+multiconductor AC OPF instance. Compare the source and lifted formulations'
+size and solution behaviour, and reproduce the result with an independent
+solver.
 
 ## Questions to keep open
 

@@ -76,7 +76,8 @@ a stated error over a stated operating domain.
 Distribution-feeder reduction methods have addressed unbalanced phase models,
 mutual coupling, spatial variation of load and generation, and critical-bus
 voltage error [Pecenak2018](@cite). Recent Opti-KRON work adds radiality and
-phase-connectivity objectives [Mokhtari2026](@cite). These are valuable, but
+phase-connectivity objectives [Mokhtari2027](@cite), while a separate extension
+targets radiality recovery [MokhtariRadial2025](@cite). These are valuable, but
 their use of "structure preserving" should not be confused with preservation
 of construction codes, asset identity, neutral grounding, protection, or
 individual decision constraints.
@@ -103,4 +104,3 @@ PowsyblTopology](@cite).
 
 The resulting mathematical object is better viewed as a graph of model spaces
 and typed transformations than as a linear ladder.
-

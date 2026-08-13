@@ -1,0 +1,131 @@
+schema_version = 1
+
+[[claim]]
+claim_id = "THESIS-001"
+chapter = "docs/src/foundations/scope-and-thesis.md"
+claim_text = "Representation adequacy is evaluated relative to declared observations, constraints, and decisions."
+status = "definition"
+evidence_type = "book_contract"
+citation_keys = []
+model_scope = "power-network representations"
+assumptions = "none; this is the methodological convention adopted by the book"
+reviewer = ""
+review_date = ""
+unresolved_issue = ""
+
+[[claim]]
+claim_id = "TR-PAR-001"
+chapter = "docs/src/start/first-failure-parallel-branches.md"
+claim_text = "Summed admittance preserves the unconstrained terminal relation of parallel linear branches."
+status = "established_result"
+evidence_type = "algebraic_derivation_and_executable_witness"
+citation_keys = []
+model_scope = "linear parallel branches in common voltage coordinates"
+assumptions = "common endpoints; branch currents are Y_l times the common voltage drop"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add an independent mathematical reviewer."
+
+[[claim]]
+claim_id = "TR-PAR-002"
+chapter = "docs/src/start/first-failure-parallel-branches.md"
+claim_text = "Using the sum of member current ratings can create an outer relaxation of the member-constrained feasible set."
+status = "established_result"
+evidence_type = "analytic_counterexample_and_executable_witness"
+citation_keys = []
+model_scope = "two scalar resistive parallel branches"
+assumptions = "z=[0.1,1.0] ohm; member limits=[100,100] A; aggregate limit=200 A"
+reviewer = ""
+review_date = ""
+unresolved_issue = "General multiconductor classification remains open."
+
+[[claim]]
+claim_id = "FIXTURE-001"
+chapter = "docs/src/cases/executable-running-network.md"
+claim_text = "Running-network fixture v0.1.0 passes the current BMOPFTools JSON schema and conformance checks without errors or warnings."
+status = "empirical_result"
+evidence_type = "automated_validation"
+citation_keys = []
+model_scope = "data/running-network/v0.1.0.json"
+assumptions = "local BMOPFTools state recorded in experiments/generated/provenance.json"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add an independent fixture reviewer."
+
+[[claim]]
+claim_id = "FIXTURE-002"
+chapter = "docs/src/cases/executable-running-network.md"
+claim_text = "The v0.1.0 continuous PF and OPF instances terminate locally solved in the recorded environment."
+status = "empirical_result"
+evidence_type = "BMOPFTools_Ipopt_execution"
+citation_keys = []
+model_scope = "running-network fixture v0.1.0; fixed closed switch"
+assumptions = "per-unit solve; Ipopt local nonlinear solution; clean BMOPFTools commit b7aa9a1bb48bcc8b790d3bcf5417d6a32036352a; no claim of global optimality"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Re-run with an independent solver where possible."
+
+[[claim]]
+claim_id = "TR-SER-001"
+chapter = "docs/src/transformations/degree-two-series-elimination.md"
+claim_text = "A zero-injection degree-two junction between coordinate-aligned series elements has equivalent impedance Z_l1 + P' Z_l2 P."
+status = "established_result"
+evidence_type = "algebraic_derivation_and_executable_certificate"
+citation_keys = []
+model_scope = "linear multiconductor series elements with ordered terminal maps"
+assumptions = "matching conductor sets; no injection, shunt, grounding, observation boundary, control, protection boundary, or omitted external mutual coupling at the eliminated junction"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add an independent mathematical reviewer."
+
+[[claim]]
+claim_id = "TR-SER-002"
+chapter = "docs/src/transformations/degree-two-series-elimination.md"
+claim_text = "Exact terminal-behaviour closure under degree-two elimination does not by itself establish closure within a homogeneous physical line class."
+status = "established_result"
+evidence_type = "definition_boundary_and_constructive_counterexample"
+citation_keys = []
+model_scope = "series elements with distinct construction or lifecycle facts"
+assumptions = "behavioural equivalence is evaluated only at the declared external terminals"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Formalize sufficient physical line-merge guards for selected line models."
+
+[[claim]]
+claim_id = "TR-COORD-001"
+chapter = "docs/src/transformations/conductor-coordinate-normalization.md"
+claim_text = "A simultaneous permutation of conductor coordinates, terminal pairing, element matrices, and componentwise limits is an exact normalization with an inverse permutation."
+status = "established_result"
+evidence_type = "algebraic_derivation_and_executable_certificate"
+citation_keys = []
+model_scope = "ordered multiconductor two-terminal series elements"
+assumptions = "unique conductor labels; source and target label sets agree; all indexed data are permuted consistently"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add an independent mathematical reviewer and extend the implementation to general typed factors."
+
+[[claim]]
+claim_id = "TR-COMP-001"
+chapter = "docs/src/transformations/certificate-schema-and-composition.md"
+claim_text = "Two exact certified transformations compose when the first target is consumed by the second source; constraint maps apply forward and recovery maps apply in reverse order."
+status = "established_result"
+evidence_type = "definition_algebra_and_executable_composition"
+citation_keys = []
+model_scope = "the version 1.0.0 transformation-certificate interface"
+assumptions = "both component certificates validate and are exact; target/source object identities meet"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Formalize richer typed interfaces and prove associativity modulo certificate serialization."
+
+[[claim]]
+claim_id = "TR-PAR-003"
+chapter = "docs/src/start/first-failure-parallel-branches.md"
+claim_text = "In the recorded two-bus maximum-served-load problem, the naive summed-rating aggregate serves 200 MW while the source and exact lifted formulations each serve 110 MW."
+status = "empirical_result"
+evidence_type = "JuMP_Ipopt_execution_and_analytic_check"
+citation_keys = []
+model_scope = "two linear parallel branches with b=[1000,100] MW/rad and limits=[100,100] MW"
+assumptions = "nonnegative angle difference and served load; local solver results checked against the analytic optima"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to a multiconductor AC OPF case and reproduce with an independent solver."

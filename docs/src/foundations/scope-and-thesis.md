@@ -2,122 +2,165 @@
 
 ## The problem
 
-Much of power-system analysis starts from a bus--branch graph
+Much power-system analysis starts from a bus--branch graph
 
 ```math
 G=(V,E),
 ```
 
-where buses are vertices and lines or transformers are edges. This is useful,
-but it is not a universal physical data model.
+where buses are vertices and lines or transformers are edges. This is useful, especially when the
+network and study satisfy the assumptions of a balanced transmission model. It is not a universal
+physical or decision model.
 
-A simple graph cannot distinguish parallel circuits. A scalar-weighted graph
-cannot retain per-conductor coupling. An ordinary edge cannot directly express
-a three-winding transformer, a coupled multi-circuit corridor, or a device with
-several electrical and control ports. A topology graph alone does not state
-which variables and constitutive relations are attached to its incidence
-structure.
+A simple graph cannot distinguish parallel circuits. A scalar-weighted edge cannot retain full
+conductor coupling. An ordinary edge cannot directly express a three-winding transformer, a
+coupled multi-circuit corridor, or a device with several electrical and control ports. A topology
+graph alone does not state which variables, limits, decisions, and constitutive relations are
+attached to its incidence structure.
 
-The limitations become consequential in decision problems. Suppose parallel
-branches ``e`` have terminal relation
-
-```math
-i_e = Y_e(v_a-v_b)
-```
-
-and individual feasible current sets ``\mathcal C_e``. Their aggregate
-admittance
+The limitations become consequential in decision problems. Suppose parallel branches ``\ell``
+have terminal relation
 
 ```math
-Y_{\mathrm{eq}}=\sum_e Y_e
+\mathbf I^{\mathrm s}_{\ell ij}
+=\mathbf Y_\ell\Delta\mathbf U
 ```
 
-preserves aggregate terminal current, but the original feasible voltage set is
+and individual feasible current sets ``\mathcal C_\ell``. Their aggregate admittance
 
 ```math
-\left\{\Delta v:\;Y_e\Delta v\in\mathcal C_e\quad\forall e\right\}.
+\mathbf Y_{\mathrm{eq}}=\sum_\ell\mathbf Y_\ell
 ```
 
-There need not be a single scalar rating on an equivalent edge that reproduces
-this set. Independent switching, contingency, maintenance, and investment
-variables make the loss still more apparent. Line-limit-preserving equivalents
-have been studied precisely because conventional equivalents do not
+preserves aggregate terminal current, but the original feasible voltage-difference set is
+
+```math
+\left\{\Delta\mathbf U:\
+\mathbf Y_\ell\Delta\mathbf U\in\mathcal C_\ell
+\quad\forall\ell\right\}.
+```
+
+There need not be one conventional edge rating that reproduces this set. Independent switching,
+contingency, maintenance, and investment variables make the loss still more apparent.
+Line-limit-preserving equivalents have been studied precisely because ordinary equivalents do not
 automatically retain these decision constraints [Jang2013](@cite).
 
-## The central thesis
+## The general baseline
 
-**Proposal.** The canonical electrical model should be a typed, hierarchical
-port--factor incidence structure. Physical asset facts should remain in a
-linked typed property graph. Bus--branch multigraphs and simple graphs should be
-treated as generated views rather than the primary source of truth.
+The book treats the general steady-state network as multiconductor and multi-terminal. A source
+model may contain:
 
-This proposal separates three layers:
+- buses with different ordered terminal sets;
+- explicit phases, neutrals, voltage references, and grounding impedances;
+- full series and shunt coupling matrices;
+- conductor permutations and phase discontinuities;
+- parallel assets with separate identity, state, and limits;
+- multiwinding transformers and other arbitrary-port devices;
+- continuous controls and discrete switch, tap, outage, or investment decisions;
+- measurements, protection boundaries, hierarchy, and provenance.
 
-1. **Identity:** what physical or logical objects exist?
-2. **Interconnection:** which typed terminals share effort variables or obey
-   conservation relations?
-3. **Behavior:** which constitutive, control, limit, and decision relations
-   connect the port variables?
+This is not synonymous with a distribution feeder. It is a modelling baseline that does not assume
+away distinctions before the study question is known.
 
-It permits a line, transformer, converter, grounding device, measurement, or
-protection element to be represented by a factor with an arbitrary but typed
-set of ports. Familiar graph models then arise by restricting factor arity,
-discarding hierarchy, aggregating conductors, or forgetting parallel identity.
+## When transmission models are sufficient
+
+Much of the complexity collapses under conditions common in transmission studies: compatible phase
+sets, approximate balance, transposition or sequence symmetry, negligible or externally resolved
+neutral behaviour, predominantly two-terminal equipment, and study questions insensitive to
+per-conductor or internal-device constraints.
+
+Under a declared contract, a positive-sequence bus--branch model may then be exactly the right
+representation. The methodological error is not using such a model; it is treating its assumptions
+as universal power-network semantics. A central task of this book is to state the map from the
+general model to the simpler one and identify what makes the map admissible.
+
+## Central thesis
+
+**Proposal.** A graph transformation for a power network is meaningful only relative to declared
+observations, constraints, and decisions. No representation is universally correct or universally
+minimal. Source data should retain typed physical and terminal structure, and simpler graphs should
+be generated as traceable, purpose-specific views.
+
+The book investigates a linked reference architecture with three semantic layers:
+
+1. **Identity:** what physical, logical, and generated objects exist?
+2. **Interconnection:** which ordered terminals share variables or obey conservation relations?
+3. **Behaviour and decisions:** which constitutive, limit, control, measurement, objective, and
+   discrete-state relations connect the terminal variables?
+
+A typed asset/property model records the first layer. A typed hierarchical port--factor incidence
+model is the principal candidate for the second and third. This architecture is a research proposal
+to be tested against actual representation families, software mappings, counterexamples, and
+decision problems—not an assumed canonical truth.
 
 ## Not one hierarchy
 
-There is no single total order from "most expressive" to "least expressive."
-The asset and electrical views can be incomparable: an asset graph can retain
-ownership and construction history while omitting virtual electrical nodes; a
-compiled electrical graph can contain virtual transformer buses that have no
-physical asset identity.
+There is no single total order from *most expressive* to *least expressive*. The asset and
+electrical views can be incomparable: an asset graph can retain ownership and construction history
+while omitting virtual electrical nodes; a compiled electrical graph can contain virtual
+transformer buses that have no physical asset identity.
 
-The meaningful order is relative to a query or observation family ``Q``.
-Write
+The meaningful order is relative to a query or observation family ``Q``. Write
 
 ```math
-M_1 \succeq_Q M_2
+M_1\succeq_Q M_2
 ```
 
-when every question in ``Q`` answerable from ``M_2`` can also be answered from
-``M_1`` through a declared transformation. The order can change when ``Q``
-changes from power flow to protection, asset management, fault location,
-optimal switching, or expansion planning.
+when every question in ``Q`` answerable from ``M_2`` can also be answered from ``M_1`` through a
+declared transformation. The order can change when ``Q`` changes from power flow to protection,
+asset management, fault location, optimal switching, or expansion planning.
 
-This turns the apparent hierarchy into a **partial order of representations
-relative to preservation contracts**.
+This produces a **partial order of representations relative to preservation contracts**. The
+[Representation taxonomy](@ref) makes the independent comparison axes explicit.
 
-## Boundaries of the initial book
+## Decision preservation
 
-The first edition should concentrate on:
+A transformation can preserve selected voltages while changing the feasible set or optimum. The
+book therefore evaluates, where relevant:
+
+- equality and inequality feasibility;
+- per-conductor, per-asset, and per-winding limits;
+- continuous controls;
+- discrete switching, tap, outage, contingency, and investment choices;
+- objective values and active constraints;
+- optimal or admissible decisions;
+- recovery of eliminated source quantities;
+- source-to-target provenance.
+
+Claims such as *equivalent*, *limit preserving*, or *decision preserving* are incomplete unless the
+interface, operating domain, observation map, and recovery obligations are stated.
+
+## Boundaries of the first edition
+
+The first edition concentrates on:
 
 - steady-state and quasi-steady electrical networks;
-- multiphase and explicit-neutral distribution models;
+- arbitrary multiconductor and explicit-neutral models;
 - transmission and distribution topology processing;
 - multi-terminal and multiwinding devices;
-- projections used in power flow, OPF, state estimation, short-circuit and
-  related studies;
+- projections used in power flow, OPF, state estimation, selected fault studies, and planning;
 - exact and approximate reductions;
-- preservation of operational and decision constraints;
+- preservation of operational constraints and decisions;
 - typed normalization rules, provenance, and recoverability.
 
-EMT, harmonics, thermal dynamics, communications, protection logic, and
-geospatial asset systems should initially appear as boundary cases that test the
-architecture. Later editions can develop them fully.
+EMT, harmonics, thermal dynamics, communications, markets, protection logic, geographic asset
+systems, and graph learning initially appear as boundary cases. Later editions can develop them
+where the core language proves useful.
 
 ## Intended contribution
 
-The proposed contribution is not another isolated reduction algorithm. It is a
-common language for stating:
+The proposed contribution is not another isolated reduction algorithm. It is a common language for
+stating:
 
-- the source and target model categories;
-- whether a transformation is a projection, compilation, normalization,
-  exact behavioral quotient, or approximation;
-- what is preserved;
-- what assumptions make the transformation valid;
-- how original quantities and constraints are recovered;
+- source and target model categories;
+- whether a transformation is a projection, compilation, normalization, exact behavioural
+  reduction, or approximation;
+- what is preserved and what is forgotten;
+- which assumptions make the transformation valid;
+- how original quantities, limits, objectives, and decisions are recovered;
 - which questions become unanswerable afterward.
 
-That language can support both a scientific theory and an implementable model
-transformation system.
+That language should support both scientific results and an implementable transformation system.
+The [Notation and modelling conventions](@ref) and [The running multiconductor network](@ref)
+provide the common vocabulary and adversarial case on which the proposal will first be tested.
 

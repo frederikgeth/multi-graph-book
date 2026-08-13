@@ -94,8 +94,8 @@ Develop a Julia reference implementation with:
 - property-based tests and adversarial counterexamples.
 
 Graph representation should be independent of any one solver. Mathematical
-models should consume generated views and expose the mapping back to canonical
-entities.
+models should consume generated views and expose the mapping back to stable
+source entities.
 
 ## Workstream F: empirical corpus
 
@@ -138,4 +138,3 @@ proofs in Lean. The initial targets should be finite-dimensional linear
 relations, incidence conservation, conductor permutations, series composition,
 parallel feasible sets, and Schur-complement recovery. This should follow a
 stable mathematical specification rather than precede it.
-
