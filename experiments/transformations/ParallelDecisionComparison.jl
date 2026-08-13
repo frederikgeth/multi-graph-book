@@ -59,7 +59,7 @@ function parallel_decision_certificate(; certificate_id="TR-PAR-003")
     naive = solve_parallel_formulation(:naive_aggregate; susceptance, limit)
     exact = solve_parallel_formulation(:exact_lifted; susceptance, limit)
     Dict{String,Any}(
-        "schema_version" => "1.0.0",
+        "schema_version" => "1.1.0",
         "certificate_id" => String(certificate_id),
         "rule_id" => "parallel_admittance_with_summed_rating",
         "classification" => "outer_relaxation",
@@ -77,6 +77,34 @@ function parallel_decision_certificate(; certificate_id="TR-PAR-003")
             "detail" => Dict(
                 "susceptance_MW_per_rad" => sum(susceptance),
                 "flow_limit_MW" => sum(limit),
+            ),
+        ),
+        "interfaces" => Dict(
+            "state_variables" => Dict(
+                "source" => ["delta_ij", "f_l1ij", "f_l2ij"],
+                "target" => ["delta_ij", "f_eqij"],
+                "relation" => "aggregate flow is the sum of member flows; member flows recover from delta_ij",
+            ),
+            "constraints" => Dict(
+                "source" => ["member flow limits"], "target" => ["summed aggregate flow limit"],
+                "relation" => "the naive target drops member limits; the exact lift retains them",
+            ),
+            "decisions" => Dict(
+                "source" => ["served power"], "target" => ["served power"],
+                "relation" => "the same served-power decision is optimized in all formulations",
+            ),
+            "objectives" => Dict(
+                "source" => ["maximize served power"], "target" => ["maximize served power"],
+                "relation" => "objective expression is identical but feasible sets differ",
+            ),
+            "units" => Dict(
+                "source" => ["MW", "rad"], "target" => ["MW", "rad"],
+                "relation" => "units and bases are unchanged",
+            ),
+            "boundary_quantities" => Dict(
+                "source" => ["delta_ij", "sum of member terminal flows"],
+                "target" => ["delta_ij", "aggregate terminal flow"],
+                "relation" => "the unconstrained terminal power-angle relation is equal",
             ),
         ),
         "preconditions" => [

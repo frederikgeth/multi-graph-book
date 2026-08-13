@@ -4,6 +4,9 @@ using Test
 if !isdefined(@__MODULE__, :SeriesElimination)
     include(joinpath(@__DIR__, "..", "transformations", "SeriesElimination.jl"))
 end
+if !isdefined(@__MODULE__, :CoordinateActions)
+    include(joinpath(@__DIR__, "..", "transformations", "CoordinateActions.jl"))
+end
 if !isdefined(@__MODULE__, :ConductorNormalization)
     include(joinpath(@__DIR__, "..", "transformations", "ConductorNormalization.jl"))
 end
@@ -11,10 +14,17 @@ if !isdefined(@__MODULE__, :TransformationContracts)
     include(joinpath(@__DIR__, "..", "transformations", "TransformationContracts.jl"))
 end
 using .SeriesElimination
+using .CoordinateActions
 using .ConductorNormalization
 using .TransformationContracts
 
 @testset "conductor-coordinate normalization and composition" begin
+    action = coordinate_action(["n", "a"], ["a", "n"])
+    @test action isa CoordinateAction
+    @test pushforward_vector(action, [80.0, 110.0]) == [110.0, 80.0]
+    @test pullback_vector(action, pushforward_vector(action, [2.0, 5.0])) == [2.0, 5.0]
+    @test coordinate_action(["a", "n"], ["a", "b"]) isa CoordinateActionRejection
+
     source = SeriesElement(
         "l6", "ib", "i8", ["n", "a"], ["n", "a"],
         ComplexF64[4+2im 0.3+0.5im; 0.3+0.5im 2+3im];
@@ -34,7 +44,7 @@ using .TransformationContracts
 
     rejected = normalize_conductor_coordinates(source, ["a", "b"])
     @test rejected isa NormalizationRejection
-    @test "requested_coordinate_set_differs_from_source" in rejected.failed_guards
+    @test "coordinate_sets_differ" in rejected.failed_guards
 
     first = SeriesElement(
         "l5", "i7", "ib", ["a", "n"], ["a", "n"],

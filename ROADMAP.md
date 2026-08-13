@@ -149,20 +149,55 @@ The first executable vertical slice is complete:
    rule and composes explicitly with series elimination;
 8. the two-bus parallel decision case compares source, naïve aggregate, and
    exact lifted formulations, with respective optima 110, 200, and 110 MW;
-9. all transformation artifacts use the version 1.0.0 JSON certificate schema
-   and repository checks validate structure and claim registration.
+9. all transformation artifacts use the version 1.1.0 JSON certificate schema,
+   including six typed interfaces, and repository checks validate structure
+   and claim registration.
+10. the coordinate action now applies to typed grounded-wye and delta winding
+    factors while preserving stable coil coordinates and limits;
+11. a coupled two-conductor AC decision case gives source, naïve, and exact
+    lifted optima of 0.6138908, 1.0630833, and 0.6138908 p.u., with an
+    independent closed-form check.
+12. complete pairwise multiwinding short-circuit data compile into a full
+    reference impedance matrix with an exact recovery map; the three-winding
+    star/T form is treated as a special case and a non-diagonal four-winding
+    round trip is tested.
+13. the multiwinding compiler accepts any declared winding reference, rebases
+    source short-circuit data explicitly, and verifies that all reference
+    choices give the same external winding admittance.
+14. labelled winding connection factors compose with the leakage relation into
+    an exact 11-terminal factor for the running WYE/WYE/DELTA transformer,
+    retaining a lifted coil-current map and the original winding limits.
+15. a versioned transformer-completion contract now composes fixed power-dual
+    voltage transfers, a labelled excitation shunt, and transformer-internal
+    grounding with that leakage factor; adjustable transfers are rejected by
+    the static compiler and retain their decision identities for a later
+    parameterized target.
+16. positive scalar winding taps now compile into exact parameterized
+   continuous or discrete decision factors. A discrete witness retains the
+   same feasible positions and 1.05 optimum as direct source evaluation,
+   while freezing the 1.00 start value worsens the current-stress objective by
+   671.060 A.
+17. the retained discrete tap factor is now embedded in a solver-backed,
+   full 11-terminal WYE/WYE/DELTA AC network case. Direct source and
+   parameterized target formulations agree at all positions and select 0.95
+   with served fraction 1.2305865; freezing 1.00 loses 0.090169 MW.
+18. a separate LinearAlgebra-only damped Newton, continuation, and bisection
+   engine reproduces all three tap-conditioned high-voltage branch boundaries
+   to within 3.14e-10 served fraction of JuMP/Ipopt and selects the same tap;
+   truncated and infeasible searches return structured rejections.
 
 The next sprint should:
 
 1. execute and archive the first database searches, then populate the evidence
    matrix with double-coded seed results;
-2. obtain independent reviews of `TR-PAR-001`, `TR-PAR-002`, `TR-SER-001`, and
-   `TR-SER-002`;
-3. generalize coordinate normalization from series elements to typed
-   multiconductor factors and transformer windings;
-4. extend the two-bus decision comparison to a multiconductor AC OPF case with
-   an independent solver reproduction;
-5. specify typed state, objective, unit, and decision interfaces for
-   transformation-certificate composition;
+2. obtain independent reviews of the parallel, coordinate, series, and winding
+   transformation claims, prioritizing `TR-PAR-004` and `TR-XFMR-001`;
+3. extend the retained transformer-control domain to phase-angle,
+   independent-phase, mechanically coupled, automatic, and tap-dependent-loss
+   controls, and reproduce a case with an independently assembled primitive;
+4. extend the AC comparison to non-proportional three-phase four-wire members
+   and reproduce it with an independent numerical solver;
+5. replace prose interface entries with checked state-space and unit objects,
+   then strengthen composition beyond its current identity meeting check;
 6. add scheduled external-link checking without making ordinary builds depend
    on publisher availability.

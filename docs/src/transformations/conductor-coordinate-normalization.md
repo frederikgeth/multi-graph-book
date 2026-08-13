@@ -87,4 +87,6 @@ julia --project=experiments experiments/run_coordinate_series_composition.jl
 
 The machine-readable result is
 `experiments/generated/coordinate-normalization-certificate.json`. The next
-chapter composes this normalization with degree-two series elimination.
+transformer chapter applies the shared coordinate action to a winding's full
+terminal-to-coil relation. The series chapter then composes line-coordinate
+normalization with degree-two elimination.

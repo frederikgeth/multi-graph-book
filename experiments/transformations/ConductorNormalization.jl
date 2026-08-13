@@ -1,6 +1,10 @@
 module ConductorNormalization
 
 using ..SeriesElimination: SeriesElement
+using ..CoordinateActions: CoordinateActionRejection,
+                           coordinate_action,
+                           pushforward_bilinear,
+                           pushforward_vector
 
 export NormalizationRejection,
        NormalizationResult,
@@ -16,17 +20,6 @@ struct NormalizationRejection
     source_id::String
     requested_order::Vector{String}
     failed_guards::Vector{String}
-end
-
-function permutation_matrix(source_labels, target_labels)
-    Set(source_labels) == Set(target_labels) || return nothing
-    P = zeros(Float64, length(source_labels), length(source_labels))
-    for (row, label) in enumerate(target_labels)
-        column = findfirst(==(label), source_labels)
-        column === nothing && return nothing
-        P[row, column] = 1.0
-    end
-    P
 end
 
 function complex_matrix_rows(matrix)
@@ -46,25 +39,19 @@ function normalize_conductor_coordinates(
     certificate_id="TR-COORD-001",
 )
     order = String.(requested_order)
-    failed_guards = String[]
-    length(order) == length(source.terminals_from) ||
-        push!(failed_guards, "requested_coordinate_arity_mismatch")
-    length(unique(order)) == length(order) ||
-        push!(failed_guards, "requested_coordinate_labels_not_unique")
-    Set(order) == Set(source.terminals_from) ||
-        push!(failed_guards, "requested_coordinate_set_differs_from_source")
-    isempty(failed_guards) || return NormalizationRejection(
+    action = coordinate_action(source.terminals_from, order)
+    action isa CoordinateActionRejection && return NormalizationRejection(
         "conductor_coordinate_normalization",
         source.id,
         order,
-        unique(failed_guards),
+        action.failed_guards,
     )
 
-    P = permutation_matrix(source.terminals_from, order)
-    P === nothing && error("internal error: normalization guards passed without a permutation")
+    P = action.permutation
     target_to = [source.terminals_to[findfirst(==(label), source.terminals_from)] for label in order]
-    impedance = P * source.impedance * transpose(P)
-    current_limit = source.current_limit === nothing ? nothing : P * source.current_limit
+    impedance = pushforward_bilinear(action, source.impedance)
+    current_limit = source.current_limit === nothing ? nothing :
+        pushforward_vector(action, source.current_limit)
     target_id = "normalized__$(source.id)__$(join(order, "_"))"
     target = SeriesElement(
         target_id,
@@ -78,7 +65,7 @@ function normalize_conductor_coordinates(
     )
 
     certificate = Dict{String,Any}(
-        "schema_version" => "1.0.0",
+        "schema_version" => "1.1.0",
         "certificate_id" => String(certificate_id),
         "rule_id" => "conductor_coordinate_normalization",
         "classification" => "exact_normalization",
@@ -94,6 +81,35 @@ function normalize_conductor_coordinates(
                 "terminal_map_to" => target.terminals_to,
                 "impedance_ohm" => complex_matrix_rows(target.impedance),
                 "current_limit_A" => target.current_limit,
+            ),
+        ),
+        "interfaces" => Dict(
+            "state_variables" => Dict(
+                "source" => ["ordered conductor state x_source"],
+                "target" => ["ordered conductor state x_target"],
+                "relation" => "x_target = P * x_source",
+            ),
+            "constraints" => Dict(
+                "source" => ["source-coordinate componentwise current limits"],
+                "target" => ["target-coordinate componentwise current limits"],
+                "relation" => "constraint coordinates are permuted by P",
+            ),
+            "decisions" => Dict(
+                "source" => String[], "target" => String[],
+                "relation" => "any conductor-indexed decisions must follow the same permutation; none occur in this example",
+            ),
+            "objectives" => Dict(
+                "source" => String[], "target" => String[],
+                "relation" => "the rule declares no objective term",
+            ),
+            "units" => Dict(
+                "source" => ["V", "A", "ohm"], "target" => ["V", "A", "ohm"],
+                "relation" => "permutation changes order but not units",
+            ),
+            "boundary_quantities" => Dict(
+                "source" => ["source-order terminal voltage and current vectors"],
+                "target" => ["target-order terminal voltage and current vectors"],
+                "relation" => "boundary vectors map bijectively by P and P'",
             ),
         ),
         "preconditions" => [

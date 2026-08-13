@@ -15,6 +15,14 @@ python3 experiments/generate_views.py
 julia --project=experiments experiments/run_series_elimination.jl
 julia --project=experiments experiments/run_coordinate_series_composition.jl
 julia --project=experiments experiments/run_parallel_decision_comparison.jl
+julia --project=experiments experiments/run_transformer_winding_normalization.jl
+julia --project=experiments experiments/run_multiwinding_leakage_compilation.jl
+julia --project=experiments experiments/run_multiwinding_terminal_assembly.jl
+julia --project=experiments experiments/run_transformer_factor_completion.jl
+julia --project=experiments experiments/run_transformer_tap_decision_compilation.jl
+julia --project=experiments experiments/run_transformer_tap_ac_decision.jl
+julia --project=experiments experiments/run_transformer_tap_ac_independent_reproduction.jl
+julia --project=experiments experiments/run_multiconductor_parallel_ac.jl
 python3 scripts/check_artifacts.py
 ```
 
@@ -39,10 +47,36 @@ not required to build the book unless that figure is being regenerated.
   explicit normalization-then-elimination composition trace;
 - `experiments/generated/parallel-opf-comparison.json`: source, naïve aggregate,
   and exact lifted solutions for the two-bus decision example.
+- `experiments/generated/transformer-winding-normalization-certificate.json`:
+  an exact delta-winding terminal-coordinate action derived from fixture `x1`;
+- `experiments/generated/multiwinding-leakage-compilation-certificate.json`:
+  an exact pairwise-test to full reference-impedance compilation for fixture
+  `x1`, including invariance across all three winding-reference choices;
+- `experiments/generated/multiwinding-terminal-assembly-certificate.json`:
+  exact WYE/WYE/DELTA connection-factor assembly with a terminal admittance
+  and retained coil-current constraint map;
+- `experiments/generated/transformer-factor-completion-certificate.json`:
+  exact fixed-linear composition of leakage, typed voltage transfers,
+  winding-2 excitation, and transformer-internal grounding, with component
+  recovery maps and an independent BMOPFTools primitive cross-check;
+- `experiments/generated/transformer-tap-decision-certificate.json`: exact
+  continuous/discrete tap-domain retention plus a discrete decision witness
+  showing why freezing the start value is not decision preserving;
+- `experiments/generated/transformer-tap-ac-decision-certificate.json`: the
+  full 11-terminal transformer factor embedded in nonlinear voltage, KCL,
+  power-balance, voltage-limit, and recovered-current constraints, with exact
+  finite tap enumeration;
+- `experiments/generated/transformer-tap-ac-independent-certificate.json`: a
+  separate finite-difference Newton, continuation, and bisection reproduction
+  of all tap-conditioned boundaries and the selected tap, including explicit
+  failed-bracket guards;
+- `experiments/generated/multiconductor-parallel-ac-certificate.json`: source,
+  naïve aggregate, and exact lifted results for the coupled phase-neutral AC case.
 
-All five transformation artifacts conform to
+All thirteen transformation artifacts conform to version 1.1.0 of
 `schemas/transformation-certificate.schema.json`. The checker enforces the
-common required fields, classifications, identifiers, and claim registration.
+common required fields, six typed interfaces, classifications, identifiers,
+and claim registration.
 
 The fixture is synthetic and released with the book. It is not derived from a
 utility model. The numerical values are intended to expose representational

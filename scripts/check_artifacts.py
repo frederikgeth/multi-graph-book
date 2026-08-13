@@ -13,6 +13,9 @@ from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE = ROOT / "data/running-network/v0.1.0.json"
+TRANSFORMER_CONTRACT = ROOT / "data/transformer-contracts/x1-fixed-linear-v0.1.0.json"
+TRANSFORMER_TAP_CONTRACT = ROOT / "data/transformer-contracts/x1-discrete-tap-v0.1.0.json"
+TRANSFORMER_CONTRACTS = (TRANSFORMER_CONTRACT, TRANSFORMER_TAP_CONTRACT)
 GENERATED = ROOT / "experiments/generated"
 FIGURE = ROOT / "docs/src/assets/running-network-views.png"
 SOURCE_MAP = GENERATED / "view-source-maps.json"
@@ -24,6 +27,14 @@ CERTIFICATES = (
     "coordinate-normalization-certificate.json",
     "coordinate-series-composition-certificate.json",
     "parallel-opf-comparison.json",
+    "transformer-winding-normalization-certificate.json",
+    "multiwinding-leakage-compilation-certificate.json",
+    "multiwinding-terminal-assembly-certificate.json",
+    "transformer-factor-completion-certificate.json",
+    "transformer-tap-decision-certificate.json",
+    "transformer-tap-ac-decision-certificate.json",
+    "transformer-tap-ac-independent-certificate.json",
+    "multiconductor-parallel-ac-certificate.json",
 )
 EXPECTED_VIEWS = {
     "asset_property",
@@ -63,7 +74,7 @@ def validate_certificate(certificate: dict, schema: dict, artifact: str) -> list
         errors.append(f"{artifact} is missing schema fields {sorted(missing)}")
     if extra:
         errors.append(f"{artifact} has undeclared schema fields {sorted(extra)}")
-    if certificate.get("schema_version") != "1.0.0":
+    if certificate.get("schema_version") != "1.1.0":
         errors.append(f"{artifact} has unsupported schema version")
     if not re.fullmatch(r"TR-[A-Z]+-[0-9]{3}", certificate.get("certificate_id", "")):
         errors.append(f"{artifact} has an invalid certificate ID")
@@ -102,6 +113,124 @@ def validate_certificate(certificate: dict, schema: dict, artifact: str) -> list
     for field in ("provenance", "evidence"):
         if not isinstance(certificate.get(field), dict):
             errors.append(f"{artifact} {field} must be an object")
+    interfaces = certificate.get("interfaces")
+    interface_fields = (
+        "state_variables", "constraints", "decisions", "objectives", "units", "boundary_quantities"
+    )
+    if not isinstance(interfaces, dict) or set(interfaces) != set(interface_fields):
+        errors.append(f"{artifact} interfaces must contain the six typed interface fields")
+    else:
+        for name in interface_fields:
+            mapping = interfaces[name]
+            if not isinstance(mapping, dict) or set(mapping) != {"source", "target", "relation"}:
+                errors.append(f"{artifact} interfaces.{name} has an invalid shape")
+                continue
+            for side in ("source", "target"):
+                values = mapping[side]
+                if not isinstance(values, list) or not all(isinstance(value, str) for value in values):
+                    errors.append(f"{artifact} interfaces.{name}.{side} must be a string array")
+            if not isinstance(mapping["relation"], str) or not mapping["relation"]:
+                errors.append(f"{artifact} interfaces.{name}.relation must be a nonempty string")
+    return errors
+
+
+def is_complex_value(value) -> bool:
+    return (
+        isinstance(value, dict)
+        and set(value) == {"real", "imag"}
+        and all(isinstance(value[key], (int, float)) for key in ("real", "imag"))
+    )
+
+
+def validate_transformer_contract(contract: dict, network: dict, contract_path: Path) -> list[str]:
+    errors: list[str] = []
+    prefix = contract_path.relative_to(ROOT)
+    if contract.get("schema_version") != "0.1.0":
+        errors.append(f"{prefix} has an unsupported schema version")
+    if contract.get("voltage_transfer_convention") != (
+        "v_leakage_xkc = coefficient_xkc * v_connected_coil_xkc"
+    ):
+        errors.append(f"{prefix} has an unsupported voltage-transfer convention")
+    transformer_id = contract.get("transformer_id")
+    source = network.get("transformer", {}).get("n_winding", {}).get(transformer_id)
+    if source is None:
+        return errors + [f"{prefix} references an unknown n-winding transformer"]
+    source_windings = source.get("windings", [])
+    transfers = contract.get("winding_transfers")
+    if not isinstance(transfers, list) or len(transfers) != len(source_windings):
+        return errors + [f"{prefix} must contain one transfer per source winding"]
+    for position, (transfer, winding) in enumerate(zip(transfers, source_windings), start=1):
+        expected_terminals = winding.get("terminal_map", [])
+        expected_coils = (
+            [label for label in expected_terminals if label != "n"]
+            if winding.get("configuration") == "WYE"
+            else expected_terminals
+        )
+        if transfer.get("winding_position") != position:
+            errors.append(f"{prefix} transfer {position} has the wrong winding position")
+        if transfer.get("winding_id") != f"{transformer_id}/winding/{position}":
+            errors.append(f"{prefix} transfer {position} has the wrong winding identity")
+        if transfer.get("terminal_order") != expected_terminals:
+            errors.append(f"{prefix} transfer {position} does not retain terminal order")
+        if set(transfer.get("coil_order", [])) != set(expected_coils):
+            errors.append(f"{prefix} transfer {position} does not retain coil identities")
+        coefficients = transfer.get("coefficient")
+        if (
+            not isinstance(coefficients, list)
+            or len(coefficients) != len(expected_coils)
+            or not all(is_complex_value(value) for value in coefficients)
+        ):
+            errors.append(f"{prefix} transfer {position} has invalid coefficients")
+        mode = transfer.get("control_mode")
+        if mode not in {"fixed", "continuous", "discrete"}:
+            errors.append(f"{prefix} transfer {position} has an invalid control mode")
+        if mode != "fixed" and not transfer.get("decision_id"):
+            errors.append(f"{prefix} adjustable transfer {position} lacks a decision identity")
+        if mode != "fixed":
+            attributes = transfer.get("attributes", {})
+            if attributes.get("coefficient_parameterization") != (
+                "coefficient_xkc(tap) = tap * base_coefficient_xkc"
+            ):
+                errors.append(f"{prefix} adjustable transfer {position} has an invalid parameterization")
+            start = attributes.get("tap_start")
+            if not isinstance(start, (int, float)) or start <= 0:
+                errors.append(f"{prefix} adjustable transfer {position} has an invalid start")
+            if mode == "continuous":
+                lower, upper = attributes.get("tap_min"), attributes.get("tap_max")
+                if not all(isinstance(value, (int, float)) for value in (lower, upper)) or not 0 < lower < upper:
+                    errors.append(f"{prefix} continuous transfer {position} has invalid bounds")
+            elif mode == "discrete":
+                positions = attributes.get("tap_positions")
+                if (
+                    not isinstance(positions, list)
+                    or not positions
+                    or not all(isinstance(value, (int, float)) and value > 0 for value in positions)
+                    or positions != sorted(set(positions))
+                    or start not in positions
+                ):
+                    errors.append(f"{prefix} discrete transfer {position} has invalid positions")
+    shunt = contract.get("excitation_shunt")
+    if shunt is not None:
+        coil_order = shunt.get("coil_order", [])
+        rows = shunt.get("admittance_S")
+        if (
+            not isinstance(rows, list)
+            or len(rows) != len(coil_order)
+            or not all(isinstance(row, list) and len(row) == len(coil_order) for row in rows)
+            or not all(is_complex_value(value) for row in rows for value in row)
+        ):
+            errors.append(f"{prefix} has an invalid excitation admittance matrix")
+    for grounding in contract.get("internal_groundings", []):
+        position = grounding.get("winding_position")
+        if grounding.get("scope") != "transformer_internal":
+            errors.append(f"{prefix} contains non-internal grounding")
+        if not isinstance(position, int) or not 1 <= position <= len(source_windings):
+            errors.append(f"{prefix} contains grounding with an invalid winding position")
+            continue
+        if grounding.get("terminal") not in source_windings[position - 1].get("terminal_map", []):
+            errors.append(f"{prefix} grounding references an unknown terminal")
+        if not is_complex_value(grounding.get("admittance_S")):
+            errors.append(f"{prefix} grounding has an invalid admittance")
     return errors
 
 
@@ -134,6 +263,7 @@ def main() -> int:
     errors: list[str] = []
     required = [
         FIXTURE,
+        *TRANSFORMER_CONTRACTS,
         FIGURE,
         GENERATED / "summary.json",
         CERTIFICATE_SCHEMA,
@@ -152,6 +282,8 @@ def main() -> int:
         return 1
 
     network = load_json(FIXTURE)
+    for contract_path in TRANSFORMER_CONTRACTS:
+        errors.extend(validate_transformer_contract(load_json(contract_path), network, contract_path))
     sources = source_ids(network)
     summary = load_json(GENERATED / "summary.json")
     fixture_version = network.get("meta", {}).get("version")
@@ -221,6 +353,7 @@ def main() -> int:
         return 1
     print(
         f"artifacts: {len(required)} required files, {len(CERTIFICATES)} certificates, "
+        f"{len(TRANSFORMER_CONTRACTS)} transformer contracts, "
         f"{len(sources)} source objects, {len(EXPECTED_VIEWS)} view maps, "
         f"and {checked_links} local links valid"
     )

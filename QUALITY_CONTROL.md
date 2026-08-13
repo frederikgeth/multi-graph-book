@@ -119,7 +119,11 @@ The current CI fails on:
 - generated view maps that reference unknown source objects or stale figure and fixture hashes;
 - clean-reproduction artifacts that disagree with the canonical fixture or recorded commit;
 - transformation certificates that violate the versioned common schema or use an unregistered claim ID;
-- the package-independent degree-two and conductor-normalization/composition tests;
+- the package-independent degree-two, conductor, transformer-winding, multiwinding-leakage, terminal-assembly, fixed-linear transformer-completion, parameterized tap-decision, and composition tests;
+- local source/reduced/recovered feasibility checks for both parallel decision cases and the
+  solver-backed transformer tap network case;
+- an optimizer-independent continuation/Newton reproduction of the transformer tap network case,
+  including explicit infeasible and unbracketed-search rejections;
 
 Planned extensions include:
 

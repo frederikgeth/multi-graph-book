@@ -68,11 +68,53 @@ contingencies or investments.
   permutation, constraint/recovery maps, structured rejections, and adversarial tests.
 - Conductor-coordinate normalization is now its own exact, invertible rule;
   its certificate composes explicitly with degree-two series elimination.
-- Five transformation artifacts share the version 1.0.0 JSON certificate
-  schema and are validated against registered claim IDs.
+- Thirteen transformation artifacts share the version 1.1.0 JSON certificate
+  schema, declare six typed interfaces, and are validated against registered
+  claim IDs.
 - A solved two-bus maximum-served-load comparison records 110 MW for the
   source, 200 MW for the naïve summed-rating aggregate, and 110 MW for the
   exact lifted formulation.
+- The common coordinate action now normalizes a full transformer-winding
+  terminal-to-coil relation; delta and grounded-wye round trips are tested.
+- Complete pairwise multiwinding leakage data now compile exactly to the full
+  reference-coordinate impedance matrix and external winding admittance. The
+  tests cover the fixture, an admissible negative three-winding arm, a non-PSD
+  rejection, incomplete data, and a non-diagonal four-winding round trip.
+- The leakage compiler now distinguishes the source short-circuit-impedance
+  base from the selected internal reference. All winding-reference choices are
+  tested, and the running transformer preserves its external admittance to a
+  maximum entrywise difference of `2.84e-14` S.
+- The running transformer's WYE/WYE/DELTA connection-incidence factors now
+  compose with the leakage factor into an exact 11-terminal admittance plus a
+  retained 9-by-11 coil-current map. Terminal permutations, coil-row
+  permutations, leakage-reference changes, complex-power consistency, and
+  inconsistent-limit rejections are tested.
+- A versioned compact completion contract composes that leakage block with
+  fixed power-dual voltage transfers, a labelled winding-2 excitation shunt,
+  and transformer-internal neutral grounding. Component-current and power
+  identities are tested, and the result matches BMOPFTools' independent
+  n-winding primitive to `2.96e-17` S after removing the separately retained
+  grounding contribution. Static compilation rejects adjustable transfers
+  rather than freezing their decision values.
+- Continuous and discrete scalar winding taps now compile into a parameterized
+  factor with identity decision recovery and pointwise fixed-linear evaluation.
+  The discrete witness retains feasible taps 1.00 and 1.05 and selects 1.05;
+  the frozen 1.00 snapshot increases the winding-current objective from
+  1232.656 A to 1903.716 A.
+- The full 11-terminal WYE/WYE/DELTA factor now participates in a solver-backed
+  AC network decision with winding-2 phase power balance, explicit neutral KCL,
+  open-delta tertiary KCL and gauge separation, voltage bounds, and all nine
+  recovered leakage-current limits. Exact finite enumeration selects tap 0.95
+  with served fraction 1.2305865; freezing 1.00 loses 0.090169 MW.
+- A separate LinearAlgebra-only finite-difference Newton, continuation, and
+  bisection engine reproduces the three tap-conditioned high-voltage branch
+  boundaries to within 3.14e-10 served fraction of JuMP/Ipopt and selects the
+  same tap. It shares the certified factor matrices but no optimization engine;
+  missing brackets and infeasible scans are structured rejections.
+- A coupled phase-neutral AC decision case records objectives 0.6138908,
+  1.0630833, and 0.6138908 for source, naïve, and exact lifted formulations.
+  A closed-form loop-impedance derivation independently checks the numerical
+  source and naïve optima.
 - An initial representation taxonomy separates physical, connectivity, behavioural, study, and
   computational graphs.
 - A preservation-contract schema is proposed.
@@ -121,20 +163,21 @@ permutation, switch, and multiwinding variants before making them more abstract.
 
 ### 5. Extend executable rules
 
-Generalize conductor-coordinate normalization to typed factors and transformer
-windings. Enrich certificate composition with typed state, unit, objective,
-and decision interfaces, then test critical pairs with switch and grounding
-rules.
+Extend the retained transformer-control domain to phase-angle,
+independent-phase, mechanically coupled, automatic, and tap-dependent-loss
+controls, and reproduce a case with an independently assembled primitive.
+Replace the certificate's prose interface
+entries with checked state-space and unit objects, then test critical pairs
+with switch and grounding rules.
 
 Use BMOPFTools where its model fits, but keep the book-level transformation contracts independent
 of its schema. Record the exact BMOPFTools commit for every executable result.
 
 ### 6. First counterexample paper
 
-Extend the solved two-bus linear decision example to the smallest credible
-multiconductor AC OPF instance. Compare the source and lifted formulations'
-size and solution behaviour, and reproduce the result with an independent
-solver.
+Extend the coupled two-conductor AC case to non-proportional three-phase
+four-wire members. Compare active constraints and decision recovery in a
+larger BMOPFTools case and reproduce it with an independent numerical solver.
 
 ## Questions to keep open
 

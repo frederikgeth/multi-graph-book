@@ -1,4 +1,65 @@
 {
+  "interfaces": {
+    "units": {
+      "source": [
+        "V",
+        "A",
+        "ohm"
+      ],
+      "relation": "units are unchanged",
+      "target": [
+        "V",
+        "A",
+        "ohm"
+      ]
+    },
+    "decisions": {
+      "source": [
+      ],
+      "relation": "the scalar witness declares no optimization decision",
+      "target": [
+      ]
+    },
+    "constraints": {
+      "source": [
+        "member current limits"
+      ],
+      "relation": "the summed limit is an outer relaxation of the member limits",
+      "target": [
+        "summed aggregate current limit"
+      ]
+    },
+    "boundary_quantities": {
+      "source": [
+        "delta_u_ij",
+        "sum of member currents"
+      ],
+      "relation": "unconstrained terminal current-voltage relation is equal",
+      "target": [
+        "delta_u_ij",
+        "aggregate current"
+      ]
+    },
+    "objectives": {
+      "source": [
+      ],
+      "relation": "the scalar witness declares no objective",
+      "target": [
+      ]
+    },
+    "state_variables": {
+      "source": [
+        "delta_u_ij",
+        "i_l1ij",
+        "i_l2ij"
+      ],
+      "relation": "aggregate current is the sum and member currents recover from delta_u_ij",
+      "target": [
+        "delta_u_ij",
+        "i_eqij"
+      ]
+    }
+  },
   "preconditions": [
     "parallel members have common endpoint voltage coordinates",
     "member currents are linear in the common voltage drop",
@@ -70,6 +131,6 @@
       "voltage_drop_V": 15
     }
   },
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "certificate_id": "TR-PAR-001"
 }

@@ -1,4 +1,71 @@
 {
+  "interfaces": {
+    "units": {
+      "source": [
+        "V",
+        "A",
+        "ohm"
+      ],
+      "relation": "physical units are unchanged",
+      "target": [
+        "V",
+        "A",
+        "ohm"
+      ]
+    },
+    "decisions": {
+      "source": [
+      ],
+      "relation": "no decision variables are introduced or removed by this fixed-state rule",
+      "target": [
+      ]
+    },
+    "constraints": {
+      "source": [
+        "member current-feasible sets",
+        "zero-injection junction equations"
+      ],
+      "relation": "member constraints map by intersection after conductor alignment",
+      "target": [
+        "coordinate-aligned intersection current-feasible set"
+      ]
+    },
+    "boundary_quantities": {
+      "source": [
+        "U_i",
+        "U_j",
+        "terminal currents"
+      ],
+      "relation": "external terminal voltage-current behaviour is equal",
+      "target": [
+        "U_i",
+        "U_j",
+        "equivalent terminal current"
+      ]
+    },
+    "objectives": {
+      "source": [
+      ],
+      "relation": "no objective term is declared by the local element rule",
+      "target": [
+      ]
+    },
+    "state_variables": {
+      "source": [
+        "U_i",
+        "U_b",
+        "U_j",
+        "I_l1ib",
+        "I_l2bj"
+      ],
+      "relation": "source currents and the eliminated junction voltage recover from the equivalent current",
+      "target": [
+        "U_i",
+        "U_j",
+        "I_leqij"
+      ]
+    }
+  },
   "preconditions": [
     "the first element ends at the eliminated junction",
     "the second element starts at the eliminated junction",
@@ -101,6 +168,6 @@
       ]
     ]
   },
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "certificate_id": "TR-SER-001"
 }

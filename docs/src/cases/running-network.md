@@ -119,6 +119,22 @@ may silently replace the transformer by three independent two-winding devices.
 A compiled loss network may introduce an internal virtual bus and two-terminal branches. Its
 certificate must map every generated object to ``x_1`` and the relevant winding, preserve the
 terminal relation, state how winding limits are enforced, and provide a round-trip test.
+The first exact compilation of the fixture's pairwise leakage data is developed in
+[Multiwinding leakage reference compilation](@ref multiwinding-leakage-reference-compilation).
+Its connection to all eleven external winding terminals is developed in
+[Multiwinding terminal leakage assembly](@ref multiwinding-terminal-leakage-assembly).
+An explicitly marked illustrative extension then exercises excitation,
+transformer-internal grounding, and fixed transfer serialization in
+[Fixed-linear transformer factor completion](@ref
+fixed-linear-transformer-factor-completion) without changing the canonical
+BMOPFTools fixture.
+The associated [parameterized transformer tap decision](@ref
+parameterized-transformer-tap-decisions) case then adds an explicitly
+illustrative discrete winding control and tests decision recovery without
+altering the fixture.
+The [transformer tap AC decision case](@ref transformer-tap-ac-decision-case)
+then embeds that factor in explicit network voltage, neutral-KCL,
+power-balance, and recovered-current constraints.
 
 ## Nodal elements and controls
 

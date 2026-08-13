@@ -6,6 +6,7 @@ export CERTIFICATE_CLASSIFICATIONS,
 
 const CERTIFICATE_CLASSIFICATIONS = Set([
     "exact_normalization",
+    "exact_compilation",
     "exact_behavioral_reduction",
     "inner_restriction",
     "outer_relaxation",
@@ -20,6 +21,7 @@ const REQUIRED_FIELDS = Set([
     "classification",
     "source",
     "target",
+    "interfaces",
     "preconditions",
     "preserves",
     "forgets",
@@ -34,7 +36,7 @@ function validate_certificate(certificate::AbstractDict)
     errors = String[]
     missing = setdiff(REQUIRED_FIELDS, Set(String.(keys(certificate))))
     isempty(missing) || push!(errors, "missing fields: $(join(sort!(collect(missing)), ", "))")
-    get(certificate, "schema_version", nothing) == "1.0.0" ||
+    get(certificate, "schema_version", nothing) == "1.1.0" ||
         push!(errors, "unsupported schema_version")
     get(certificate, "classification", nothing) in CERTIFICATE_CLASSIFICATIONS ||
         push!(errors, "unknown classification")
@@ -54,11 +56,37 @@ function validate_certificate(certificate::AbstractDict)
     for field in ("recovery_map", "constraint_map", "provenance", "evidence")
         get(certificate, field, nothing) isa AbstractDict || push!(errors, "$field must be an object")
     end
+    interfaces = get(certificate, "interfaces", nothing)
+    if !(interfaces isa AbstractDict)
+        push!(errors, "interfaces must be an object")
+    else
+        for name in ("state_variables", "constraints", "decisions", "objectives", "units", "boundary_quantities")
+            mapping = get(interfaces, name, nothing)
+            if !(mapping isa AbstractDict)
+                push!(errors, "interfaces.$name must be an object")
+                continue
+            end
+            get(mapping, "source", nothing) isa AbstractVector ||
+                push!(errors, "interfaces.$name.source must be an array")
+            get(mapping, "target", nothing) isa AbstractVector ||
+                push!(errors, "interfaces.$name.target must be an array")
+            get(mapping, "relation", nothing) isa AbstractString ||
+                push!(errors, "interfaces.$name.relation must be a string")
+        end
+    end
     errors
 end
 
 function prefixed_map(prefix, mapping)
     Dict("$prefix.$key" => value for (key, value) in mapping)
+end
+
+function composed_interfaces(first, second)
+    Dict(name => Dict(
+        "source" => String.(first["interfaces"][name]["source"]),
+        "target" => String.(second["interfaces"][name]["target"]),
+        "relation" => "first: $(first["interfaces"][name]["relation"]); second: $(second["interfaces"][name]["relation"])",
+    ) for name in ("state_variables", "constraints", "decisions", "objectives", "units", "boundary_quantities"))
 end
 
 """
@@ -95,7 +123,7 @@ function compose_certificates(
         collect(intersect(Set(String.(first["preserves"])), Set(String.(second["preserves"]))))
 
     result = Dict{String,Any}(
-        "schema_version" => "1.0.0",
+        "schema_version" => "1.1.0",
         "certificate_id" => String(certificate_id),
         "rule_id" => "sequential_composition",
         "classification" => second["classification"],
@@ -110,6 +138,7 @@ function compose_certificates(
             ),
         ),
         "target" => deepcopy(second["target"]),
+        "interfaces" => composed_interfaces(first, second),
         "preconditions" => unique(vcat(String.(first["preconditions"]), String.(second["preconditions"]))),
         "preserves" => unique(preserved),
         "forgets" => unique(vcat(String.(first["forgets"]), String.(second["forgets"]))),

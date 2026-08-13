@@ -93,7 +93,7 @@ function parallel_branch_certificate()
     aggregate_current = (y1 + y2) * witness_voltage_drop
     aggregate_limit = i1_max + i2_max
     Dict{String,Any}(
-        "schema_version" => "1.0.0",
+        "schema_version" => "1.1.0",
         "certificate_id" => "TR-PAR-001",
         "rule_id" => "parallel_admittance_with_summed_current_rating",
         "classification" => "outer_relaxation",
@@ -113,6 +113,34 @@ function parallel_branch_certificate()
                 "z_equivalent_ohm" => inv(y1 + y2),
                 "i_max_A" => aggregate_limit,
                 "maximum_admissible_voltage_drop_V" => aggregate_limit / (y1 + y2),
+            ),
+        ),
+        "interfaces" => Dict(
+            "state_variables" => Dict(
+                "source" => ["delta_u_ij", "i_l1ij", "i_l2ij"],
+                "target" => ["delta_u_ij", "i_eqij"],
+                "relation" => "aggregate current is the sum and member currents recover from delta_u_ij",
+            ),
+            "constraints" => Dict(
+                "source" => ["member current limits"], "target" => ["summed aggregate current limit"],
+                "relation" => "the summed limit is an outer relaxation of the member limits",
+            ),
+            "decisions" => Dict(
+                "source" => String[], "target" => String[],
+                "relation" => "the scalar witness declares no optimization decision",
+            ),
+            "objectives" => Dict(
+                "source" => String[], "target" => String[],
+                "relation" => "the scalar witness declares no objective",
+            ),
+            "units" => Dict(
+                "source" => ["V", "A", "ohm"], "target" => ["V", "A", "ohm"],
+                "relation" => "units are unchanged",
+            ),
+            "boundary_quantities" => Dict(
+                "source" => ["delta_u_ij", "sum of member currents"],
+                "target" => ["delta_u_ij", "aggregate current"],
+                "relation" => "unconstrained terminal current-voltage relation is equal",
             ),
         ),
         "preconditions" => [

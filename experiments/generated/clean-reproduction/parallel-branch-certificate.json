@@ -1,39 +1,75 @@
 {
-  "classification": "outer_relaxation_for_member_current_limits",
-  "source": {
-    "maximum_admissible_voltage_drop_V": 10,
-    "i_max_A": [
-      100,
-      100
+  "preconditions": [
+    "parallel members have common endpoint voltage coordinates",
+    "member currents are linear in the common voltage drop",
+    "member admittances are retained for recovery"
+  ],
+  "rule_id": "parallel_admittance_with_summed_current_rating",
+  "preserves": [
+    "unconstrained_terminal_current_voltage_relation"
+  ],
+  "constraint_map": {
+    "naive_aggregate": "magnitude(sum_l i_lij) <= sum_l i_max_l",
+    "exact_lifted": "retain i_lij = y_l * delta_u_ij and magnitude(i_lij) <= i_max_l for every l"
+  },
+  "provenance": {
+    "fixture_members": [
+      "l1",
+      "l2"
     ],
-    "z_ohm": [
-      0.1,
-      1.0
-    ]
+    "implementation": "experiments/run_vertical_slice.jl"
+  },
+  "classification": "outer_relaxation",
+  "source": {
+    "object_ids": [
+      "parallel_member_l1",
+      "parallel_member_l2"
+    ],
+    "detail": {
+      "maximum_admissible_voltage_drop_V": 10,
+      "i_max_A": [
+        100,
+        100
+      ],
+      "z_ohm": [
+        0.1,
+        1.0
+      ]
+    },
+    "model_category": "scalar_parallel_member_model"
   },
   "forgets": [
     "member_current_limits",
     "member_identity",
     "independent_member_state"
   ],
-  "recovery_map": "i_k = y_k * delta_u, provided member admittances are retained",
+  "recovery_map": {
+    "member_currents": "i_lij = y_l * delta_u_ij"
+  },
   "target": {
-    "z_equivalent_ohm": 0.09090909090909091,
-    "maximum_admissible_voltage_drop_V": 18.181818181818183,
-    "i_max_A": 200
-  },
-  "witness": {
-    "source_feasible": false,
-    "aggregate_current_A": 165,
-    "target_feasible": true,
-    "member_currents_A": [
-      150,
-      15
+    "object_ids": [
+      "naive_parallel_aggregate_l"
     ],
-    "voltage_drop_V": 15
+    "detail": {
+      "z_equivalent_ohm": 0.09090909090909091,
+      "maximum_admissible_voltage_drop_V": 18.181818181818183,
+      "i_max_A": 200
+    },
+    "model_category": "scalar_naive_parallel_aggregate_model"
   },
-  "preserves": [
-    "unconstrained_terminal_current_voltage_relation"
-  ],
+  "evidence": {
+    "classification_reason": "the target admits a voltage drop that violates one source member limit",
+    "witness": {
+      "source_feasible": false,
+      "aggregate_current_A": 165,
+      "target_feasible": true,
+      "member_currents_A": [
+        150,
+        15
+      ],
+      "voltage_drop_V": 15
+    }
+  },
+  "schema_version": "1.0.0",
   "certificate_id": "TR-PAR-001"
 }

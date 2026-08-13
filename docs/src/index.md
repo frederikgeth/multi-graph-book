@@ -31,7 +31,12 @@ model.
 [One network, many graphs](@ref) shows why the same physical system produces different asset,
 connectivity, bus--branch, factor, optimization, and sparsity graphs. [A first failure:
 heterogeneous parallel branches](@ref) then gives the first complete decision-preservation
-counterexample. [The running multiconductor network](@ref) specifies the common example used
+counterexample. The [Multiconductor parallel AC decision case](@ref multiconductor-parallel-ac-case)
+then retains complex conductor voltages, coupling, voltage bounds, and AC power balance.
+[The transformer tap AC decision case](@ref transformer-tap-ac-decision-case) embeds the full
+11-terminal WYE/WYE/DELTA factor into voltage, neutral-KCL, power-balance, and recovered-current
+constraints while retaining its finite tap choice.
+[The running multiconductor network](@ref) specifies the common example used
 throughout the book, while the [Executable running network](@ref) provides its versioned BMOPF
 realization and six generated views.
 
@@ -43,9 +48,15 @@ Then read:
 4. [Preservation contracts](@ref) for exact, conservative, relaxed, and approximate maps;
 5. [Projection, compilation, and reduction](@ref) for the transformation vocabulary;
 6. [Conductor-coordinate normalization](@ref conductor-coordinate-normalization) for an exact coordinate rewrite;
-7. [Degree-two series elimination](@ref degree-two-series-rule) for the first executable guarded reduction;
-8. [Certificate schema and composition](@ref certificate-schema-composition) for the shared contract and sequential composition law;
-9. [Guarded normalization rules](@ref) for the wider candidate rewrite catalogue.
+7. [Transformer-winding coordinate normalization](@ref transformer-winding-normalization) for a delta-safe typed-factor application;
+8. [Multiwinding leakage reference compilation](@ref multiwinding-leakage-reference-compilation) for exact pairwise-test compilation;
+9. [Multiwinding terminal leakage assembly](@ref multiwinding-terminal-leakage-assembly) for connection-factor composition with recoverable winding limits;
+10. [Fixed-linear transformer factor completion](@ref fixed-linear-transformer-factor-completion) for explicit tap/phase operators, excitation, grounding, and the adjustable-control boundary;
+11. [Parameterized transformer tap decisions](@ref parameterized-transformer-tap-decisions) for exact continuous/discrete decision retention and the frozen-tap counterexample;
+12. [Transformer tap AC decision case](@ref transformer-tap-ac-decision-case) for the first solver-backed network embedding of the retained tap factor;
+13. [Degree-two series elimination](@ref degree-two-series-rule) for the first executable guarded reduction;
+14. [Certificate schema and composition](@ref certificate-schema-composition) for the shared contract and sequential composition law;
+15. [Guarded normalization rules](@ref) for the wider candidate rewrite catalogue.
 
 The [Notation and modelling conventions](@ref) follows the BMOPFTools index discipline:
 ``\ell ij`` denotes line ``\ell`` oriented from bus ``i`` to bus ``j``, while an

@@ -146,3 +146,7 @@ exact. This computed comparison is claim `TR-PAR-003`. JuMP and Ipopt produce
 the machine-readable result in
 `experiments/generated/parallel-opf-comparison.json`; the analytic values above
 also provide a solver-independent check.
+
+The [Multiconductor parallel AC decision case](@ref multiconductor-parallel-ac-case)
+extends this comparison to coupled complex conductor equations, phase-to-neutral
+constant power, and voltage-magnitude constraints.

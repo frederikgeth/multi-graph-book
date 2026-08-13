@@ -223,7 +223,7 @@ function certificate_dict(result::TransformationResult)
     target = result.target
     certificate = result.certificate
     Dict{String,Any}(
-        "schema_version" => "1.0.0",
+        "schema_version" => "1.1.0",
         "certificate_id" => certificate.certificate_id,
         "rule_id" => "degree_two_series_elimination",
         "classification" => certificate.classification,
@@ -242,6 +242,35 @@ function certificate_dict(result::TransformationResult)
                 "impedance_ohm" => complex_matrix_rows(target.impedance),
                 "current_limit_A" => target.current_limit,
                 "physical_classification" => certificate.physical_classification,
+            ),
+        ),
+        "interfaces" => Dict(
+            "state_variables" => Dict(
+                "source" => ["U_i", "U_b", "U_j", "I_l1ib", "I_l2bj"],
+                "target" => ["U_i", "U_j", "I_leqij"],
+                "relation" => "source currents and the eliminated junction voltage recover from the equivalent current",
+            ),
+            "constraints" => Dict(
+                "source" => ["member current-feasible sets", "zero-injection junction equations"],
+                "target" => ["coordinate-aligned intersection current-feasible set"],
+                "relation" => "member constraints map by intersection after conductor alignment",
+            ),
+            "decisions" => Dict(
+                "source" => String[], "target" => String[],
+                "relation" => "no decision variables are introduced or removed by this fixed-state rule",
+            ),
+            "objectives" => Dict(
+                "source" => String[], "target" => String[],
+                "relation" => "no objective term is declared by the local element rule",
+            ),
+            "units" => Dict(
+                "source" => ["V", "A", "ohm"], "target" => ["V", "A", "ohm"],
+                "relation" => "physical units are unchanged",
+            ),
+            "boundary_quantities" => Dict(
+                "source" => ["U_i", "U_j", "terminal currents"],
+                "target" => ["U_i", "U_j", "equivalent terminal current"],
+                "relation" => "external terminal voltage-current behaviour is equal",
             ),
         ),
         "preconditions" => [

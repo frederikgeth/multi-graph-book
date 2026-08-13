@@ -1,6 +1,7 @@
 using JSON3
 
 include(joinpath(@__DIR__, "transformations", "SeriesElimination.jl"))
+include(joinpath(@__DIR__, "transformations", "CoordinateActions.jl"))
 include(joinpath(@__DIR__, "transformations", "ConductorNormalization.jl"))
 include(joinpath(@__DIR__, "transformations", "TransformationContracts.jl"))
 using .SeriesElimination

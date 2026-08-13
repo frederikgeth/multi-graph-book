@@ -59,4 +59,12 @@ end
 
 include(joinpath(@__DIR__, "series_elimination.jl"))
 include(joinpath(@__DIR__, "coordinate_normalization.jl"))
+include(joinpath(@__DIR__, "transformer_winding_normalization.jl"))
+include(joinpath(@__DIR__, "multiwinding_leakage_compilation.jl"))
+include(joinpath(@__DIR__, "multiwinding_terminal_assembly.jl"))
+include(joinpath(@__DIR__, "transformer_factor_completion.jl"))
+include(joinpath(@__DIR__, "transformer_tap_decision_compilation.jl"))
+include(joinpath(@__DIR__, "transformer_tap_ac_decision.jl"))
+include(joinpath(@__DIR__, "transformer_tap_ac_independent_reproduction.jl"))
 include(joinpath(@__DIR__, "parallel_decision_comparison.jl"))
+include(joinpath(@__DIR__, "multiconductor_parallel_ac.jl"))

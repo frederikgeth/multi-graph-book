@@ -88,7 +88,11 @@ The package-independent degree-two and coordinate/composition rules can be teste
 ```sh
 julia experiments/test/series_elimination.jl
 julia experiments/test/coordinate_normalization.jl
+julia experiments/test/transformer_winding_normalization.jl
 ```
+
+The multiconductor nonlinear decision cases require the experiments
+environment and run as part of `experiments/test/runtests.jl`.
 
 New machine-readable transformation results must conform to
 `schemas/transformation-certificate.schema.json`. Register their certificate

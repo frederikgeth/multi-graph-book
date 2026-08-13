@@ -19,9 +19,9 @@ The current drafting foundation includes:
 - the scope, representation taxonomy, proposed architecture, and preservation contracts;
 - a BMOPFTools-aligned notation contract and a common multiconductor running case;
 - a schema-valid numerical running fixture, six generated representation views, and PF/OPF checks;
-- executable parallel-branch, conductor-normalization, degree-two-series, and composed preservation certificates;
-- a common transformation-certificate JSON schema and validated composition law;
-- a solved source/naïve/exact-lifted two-bus parallel decision comparison;
+- executable parallel-branch, conductor-, transformer-winding-, reference-invariant multiwinding-leakage-, terminal-assembly-, fixed-linear transformer-completion-, parameterized tap-decision-, solver-backed and independently reproduced transformer-network-, degree-two-series, and composed preservation certificates;
+- a typed version 1.1 transformation-certificate JSON schema and validated composition law;
+- solved source/naïve/exact-lifted linear and multiconductor AC parallel decision comparisons;
 - complete source maps for the six generated views and a claims ledger;
 - a systematic scoping-review protocol and evidence-matrix schema;
 - projection, compilation, reduction, and guarded normalization;
@@ -63,6 +63,14 @@ julia --project=experiments experiments/run_vertical_slice.jl
 julia --project=experiments experiments/run_series_elimination.jl
 julia --project=experiments experiments/run_coordinate_series_composition.jl
 julia --project=experiments experiments/run_parallel_decision_comparison.jl
+julia --project=experiments experiments/run_transformer_winding_normalization.jl
+julia --project=experiments experiments/run_multiwinding_leakage_compilation.jl
+julia --project=experiments experiments/run_multiwinding_terminal_assembly.jl
+julia --project=experiments experiments/run_transformer_factor_completion.jl
+julia --project=experiments experiments/run_transformer_tap_decision_compilation.jl
+julia --project=experiments experiments/run_transformer_tap_ac_decision.jl
+julia --project=experiments experiments/run_transformer_tap_ac_independent_reproduction.jl
+julia --project=experiments experiments/run_multiconductor_parallel_ac.jl
 julia --project=experiments experiments/test/runtests.jl
 julia scripts/check_claims.jl
 python3 scripts/check_artifacts.py

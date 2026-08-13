@@ -1,0 +1,1305 @@
+{
+  "interfaces": {
+    "units": {
+      "source": [
+        "dimensionless tap",
+        "V",
+        "A",
+        "MVA",
+        "per-unit voltage"
+      ],
+      "relation": "physical transformer matrices use V, A, and S while normalized voltage variables improve numerical scaling only",
+      "target": [
+        "dimensionless tap",
+        "V",
+        "A",
+        "MVA",
+        "per-unit voltage"
+      ]
+    },
+    "decisions": {
+      "source": [
+        "tap/x1/winding/2",
+        "served-load fraction alpha"
+      ],
+      "relation": "tap identity and finite domain are unchanged; each tap-conditioned continuous optimum is compared before exact selection",
+      "target": [
+        "tap/x1/winding/2",
+        "served-load fraction alpha"
+      ]
+    },
+    "constraints": {
+      "source": [
+        "phase power balance",
+        "neutral KCL",
+        "open-tertiary KCL",
+        "voltage bounds",
+        "nine leakage-current limits"
+      ],
+      "relation": "all nonlinear network constraints are unchanged after pointwise factor evaluation",
+      "target": [
+        "the identical network and recovered transformer constraints"
+      ]
+    },
+    "boundary_quantities": {
+      "source": [
+        "all winding terminal voltage and current phasors"
+      ],
+      "relation": "the parameterized factor is pointwise identical at every retained tap position",
+      "target": [
+        "the same winding terminal phasors"
+      ]
+    },
+    "objectives": {
+      "source": [
+        "maximize served-load fraction alpha"
+      ],
+      "relation": "the objective is evaluated on the same recovered network state",
+      "target": [
+        "maximize served-load fraction alpha"
+      ]
+    },
+    "state_variables": {
+      "source": [
+        "11 complex transformer terminal voltages",
+        "terminal and leakage currents"
+      ],
+      "relation": "for each tap, source and target stamp the same complex terminal and lifted leakage-current maps into the network equations",
+      "target": [
+        "the same 11 complex voltages",
+        "currents recovered from the evaluated parameterized factor"
+      ]
+    }
+  },
+  "preconditions": [
+    "TR-XFMR-005 applies to the retained finite scalar tap domain",
+    "the source and target use identical slack, load, voltage, KCL, current-limit, and objective equations",
+    "the open delta tertiary has zero terminal injections and an explicit common-mode voltage gauge",
+    "each finite tap-conditioned continuous subproblem is solved to the recorded local optimum"
+  ],
+  "rule_id": "parameterized_transformer_tap_network_decision_embedding",
+  "preserves": [
+    "tap_decision_identity_and_domain",
+    "network_voltage_and_power_balance_feasible_set_at_each_tap",
+    "all_transformer_leakage_current_limits",
+    "served_load_objective",
+    "source_optimal_tap_and_continuous_state"
+  ],
+  "constraint_map": {
+    "network_embedding": "evaluate Y_complete(tap) and M_leakage(tap), then stamp unchanged phase-power, KCL, voltage, and current-limit constraints",
+    "discrete_selection": "solve every declared tap-conditioned continuous subproblem and select the maximum served-load objective",
+    "frozen_start": "tap=tap_start is a feasible-set restriction, not an exact replacement for the retained decision"
+  },
+  "provenance": {
+    "source_factor_certificate": "TR-XFMR-005",
+    "source_contract": "x1/discrete-tap/v0.1.0",
+    "solver": "Ipopt through JuMP",
+    "implementation": "experiments/transformations/TransformerTapACDecision.jl",
+    "coordinate_system": "rectangular complex conductor voltages with physical transformer matrices and normalized voltage variables"
+  },
+  "classification": "exact_compilation",
+  "source": {
+    "object_ids": [
+      "x1",
+      "tap/x1/winding/2",
+      "network/slack/winding/1",
+      "network/load/winding/2",
+      "network/open-delta/winding/3"
+    ],
+    "detail": {
+      "load_direction_MVA_per_phase": {
+        "real": 0.5,
+        "imag": 0.1
+      },
+      "secondary_voltage_bounds_pu": [
+        0.9,
+        1.05
+      ],
+      "terminal_count": 11,
+      "tap_positions": [
+        0.95,
+        1.0,
+        1.05
+      ]
+    },
+    "model_category": "direct_multiwinding_transformer_discrete_tap_ac_network_opf"
+  },
+  "forgets": [
+  ],
+  "recovery_map": {
+    "leakage_current": "I_leakage = M_leakage(tap)*U",
+    "terminal_voltage": "U_source = U_target in the same qualified terminal order",
+    "tap": "tap_source = tap_target",
+    "terminal_current": "I_terminal = Y_complete(tap)*U"
+  },
+  "target": {
+    "object_ids": [
+      "generated_parameterized_transformer_factor__x1",
+      "generated_network_tap_subproblems__x1"
+    ],
+    "detail": {
+      "continuous_subproblem_count": 3,
+      "source_parameterized_factor_certificate": "TR-XFMR-005",
+      "selection_method": "exact enumeration of the finite declared tap domain"
+    },
+    "model_category": "parameterized_transformer_factor_embedded_in_discrete_tap_ac_network_opf"
+  },
+  "evidence": {
+    "parameterized_target_subproblems": [
+      {
+        "secondary_neutral_kcl_residual_A": 3.135841685019324e-12,
+        "leakage_current_limit_A": [
+          180,
+          180,
+          180,
+          2200,
+          2200,
+          2200,
+          280,
+          280,
+          280
+        ],
+        "termination_status": "LOCALLY_SOLVED",
+        "leakage_current_magnitude_A": [
+          89.14025241954099,
+          89.14025241954106,
+          89.14025241954053,
+          2200.0000006001824,
+          2200.0000006001883,
+          2200.0000006001846,
+          7.486488968846934e-13,
+          5.400832073359266e-13,
+          3.27826635353894e-13
+        ],
+        "tertiary_kcl_residual_A": 1.3839437004843516e-12,
+        "tap_value": 0.95,
+        "secondary_phase_to_neutral_voltage_pu": [
+          1.0291923105734202,
+          1.0291923105734202,
+          1.0291923105734202
+        ],
+        "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
+        "terminal_voltage": [
+          {
+            "real": 7199.557856794634,
+            "magnitude_pu": 1,
+            "terminal": "x1/winding/1/terminal/a",
+            "imag": 0,
+            "magnitude": 7199.557856794634
+          },
+          {
+            "real": -3599.778928397315,
+            "magnitude_pu": 0.9999999999999999,
+            "terminal": "x1/winding/1/terminal/b",
+            "imag": -6235.000000000001,
+            "magnitude": 7199.557856794633
+          },
+          {
+            "real": -3599.778928397315,
+            "magnitude_pu": 0.9999999999999999,
+            "terminal": "x1/winding/1/terminal/c",
+            "imag": 6235.000000000001,
+            "magnitude": 7199.557856794633
+          },
+          {
+            "real": 0,
+            "magnitude_pu": 0,
+            "terminal": "x1/winding/1/terminal/n",
+            "imag": 0,
+            "magnitude": 0
+          },
+          {
+            "real": 284.7903444234743,
+            "magnitude_pu": 1.0291923105734202,
+            "terminal": "x1/winding/2/terminal/a",
+            "imag": -15.615597836018582,
+            "magnitude": 285.21813962757943
+          },
+          {
+            "real": -155.9186766330105,
+            "magnitude_pu": 1.0291923105734202,
+            "terminal": "x1/winding/2/terminal/b",
+            "imag": -238.82787410523943,
+            "magnitude": 285.21813962757943
+          },
+          {
+            "real": -128.87166779046373,
+            "magnitude_pu": 1.0291923105734202,
+            "terminal": "x1/winding/2/terminal/c",
+            "imag": 254.44347194125803,
+            "magnitude": 285.21813962757943
+          },
+          {
+            "real": 6.748374831918207e-34,
+            "magnitude_pu": 2.435110016125295e-36,
+            "terminal": "x1/winding/2/terminal/n",
+            "imag": 0,
+            "magnitude": 6.748374831918207e-34
+          },
+          {
+            "real": 2093.657680455595,
+            "magnitude_pu": 0.9863915036581254,
+            "terminal": "x1/winding/3/terminal/a",
+            "imag": 1108.6915722264778,
+            "magnitude": 2369.0925446796546
+          },
+          {
+            "real": -86.67377371795823,
+            "magnitude_pu": 0.9863915036581257,
+            "terminal": "x1/winding/3/terminal/b",
+            "imag": -2367.5065242161872,
+            "magnitude": 2369.092544679655
+          },
+          {
+            "real": -2006.9839067376367,
+            "magnitude_pu": 0.9863915036581254,
+            "terminal": "x1/winding/3/terminal/c",
+            "imag": 1258.8149519897097,
+            "magnitude": 2369.0925446796546
+          }
+        ],
+        "model_size": {
+          "variables": 15,
+          "constraints": 30
+        },
+        "phase_power_balance_residual_MVA": 7.947987303456224e-16,
+        "maximum_leakage_current_loading": 1.0000000002728129,
+        "objective_served_fraction": 1.2305865271124383,
+        "formulation": "parameterized",
+        "served_load_MVA": {
+          "active": 1.8458797906686575,
+          "reactive": 0.36917595813373155
+        }
+      },
+      {
+        "secondary_neutral_kcl_residual_A": 7.895696929033911e-12,
+        "leakage_current_limit_A": [
+          180,
+          180,
+          180,
+          2200,
+          2200,
+          2200,
+          280,
+          280,
+          280
+        ],
+        "termination_status": "LOCALLY_SOLVED",
+        "leakage_current_magnitude_A": [
+          84.6832397976007,
+          84.68323979760085,
+          84.68323979760049,
+          2200.000000575162,
+          2200.0000005751626,
+          2200.0000005751613,
+          6.504450502991726e-13,
+          6.009029314926467e-13,
+          3.260960140267743e-13
+        ],
+        "tertiary_kcl_residual_A": 1.3008901005983452e-12,
+        "tap_value": 1,
+        "secondary_phase_to_neutral_voltage_pu": [
+          0.9789174161063198,
+          0.9789174161063198,
+          0.9789174161063198
+        ],
+        "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
+        "terminal_voltage": [
+          {
+            "real": 7199.557856794634,
+            "magnitude_pu": 1,
+            "terminal": "x1/winding/1/terminal/a",
+            "imag": 0,
+            "magnitude": 7199.557856794634
+          },
+          {
+            "real": -3599.778928397315,
+            "magnitude_pu": 0.9999999999999999,
+            "terminal": "x1/winding/1/terminal/b",
+            "imag": -6235.000000000001,
+            "magnitude": 7199.557856794633
+          },
+          {
+            "real": -3599.778928397315,
+            "magnitude_pu": 0.9999999999999999,
+            "terminal": "x1/winding/1/terminal/c",
+            "imag": 6235.000000000001,
+            "magnitude": 7199.557856794633
+          },
+          {
+            "real": 0,
+            "magnitude_pu": 0,
+            "terminal": "x1/winding/1/terminal/n",
+            "imag": 0,
+            "magnitude": 0
+          },
+          {
+            "real": 279.5786076950059,
+            "magnitude_pu": 1.0101264253633584,
+            "terminal": "x1/winding/2/terminal/a",
+            "imag": -14.110154925264407,
+            "magnitude": 279.93444652756295
+          },
+          {
+            "real": -139.01867540734943,
+            "magnitude_pu": 0.9622630710163886,
+            "terminal": "x1/winding/2/terminal/b",
+            "imag": -227.5670991559265,
+            "magnitude": 266.67016467962304
+          },
+          {
+            "real": -114.57917017412325,
+            "magnitude_pu": 0.9651227886178901,
+            "terminal": "x1/winding/2/terminal/c",
+            "imag": 241.6772540811909,
+            "magnitude": 267.462672868599
+          },
+          {
+            "real": 8.660254037844387,
+            "magnitude_pu": 0.03125,
+            "terminal": "x1/winding/2/terminal/n",
+            "imag": 0,
+            "magnitude": 8.660254037844387
+          },
+          {
+            "real": 2093.214878377934,
+            "magnitude_pu": 0.9871354224317309,
+            "terminal": "x1/winding/3/terminal/a",
+            "imag": 1113.3373227560828,
+            "magnitude": 2370.8792717691113
+          },
+          {
+            "real": -82.42903470084467,
+            "magnitude_pu": 0.9871354224317311,
+            "terminal": "x1/winding/3/terminal/b",
+            "imag": -2369.445921632887,
+            "magnitude": 2370.8792717691117
+          },
+          {
+            "real": -2010.785843677089,
+            "magnitude_pu": 0.9871354224317307,
+            "terminal": "x1/winding/3/terminal/c",
+            "imag": 1256.1085988768039,
+            "magnitude": 2370.879271769111
+          }
+        ],
+        "model_size": {
+          "variables": 15,
+          "constraints": 30
+        },
+        "phase_power_balance_residual_MVA": 3.2652638748082423e-15,
+        "maximum_leakage_current_loading": 1.0000000002614375,
+        "objective_served_fraction": 1.1704738810068813,
+        "formulation": "parameterized",
+        "served_load_MVA": {
+          "active": 1.755710821510322,
+          "reactive": 0.35114216430206446
+        }
+      },
+      {
+        "secondary_neutral_kcl_residual_A": 4.955895238830895e-13,
+        "leakage_current_limit_A": [
+          180,
+          180,
+          180,
+          2200,
+          2200,
+          2200,
+          280,
+          280,
+          280
+        ],
+        "termination_status": "LOCALLY_SOLVED",
+        "leakage_current_magnitude_A": [
+          80.6507045682322,
+          80.65070456823237,
+          80.65070456823186,
+          2200.0000005503002,
+          2200.0000005503043,
+          2200.0000005502984,
+          5.841115365556814e-13,
+          3.7287420024414693e-13,
+          1.1710782467545813e-13
+        ],
+        "tertiary_kcl_residual_A": 6.67389084595788e-13,
+        "tap_value": 1.05,
+        "secondary_phase_to_neutral_voltage_pu": [
+          0.9333169732377591,
+          0.9333169732377591,
+          0.9333169732377591
+        ],
+        "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
+        "terminal_voltage": [
+          {
+            "real": 7199.557856794634,
+            "magnitude_pu": 1,
+            "terminal": "x1/winding/1/terminal/a",
+            "imag": 0,
+            "magnitude": 7199.557856794634
+          },
+          {
+            "real": -3599.778928397315,
+            "magnitude_pu": 0.9999999999999999,
+            "terminal": "x1/winding/1/terminal/b",
+            "imag": -6235.000000000001,
+            "magnitude": 7199.557856794633
+          },
+          {
+            "real": -3599.778928397315,
+            "magnitude_pu": 0.9999999999999999,
+            "terminal": "x1/winding/1/terminal/c",
+            "imag": 6235.000000000001,
+            "magnitude": 7199.557856794633
+          },
+          {
+            "real": 0,
+            "magnitude_pu": 0,
+            "terminal": "x1/winding/1/terminal/n",
+            "imag": 0,
+            "magnitude": 0
+          },
+          {
+            "real": 250.180034264552,
+            "magnitude_pu": 0.9035962616093166,
+            "terminal": "x1/winding/2/terminal/a",
+            "imag": -10.774549742440978,
+            "magnitude": 250.41194154186167
+          },
+          {
+            "real": -148.4119978005257,
+            "magnitude_pu": 0.9435252009425722,
+            "terminal": "x1/winding/2/terminal/b",
+            "imag": -215.27725360230366,
+            "magnitude": 261.4773738006671
+          },
+          {
+            "real": -126.22051845323391,
+            "magnitude_pu": 0.9535581061132029,
+            "terminal": "x1/winding/2/terminal/c",
+            "imag": 232.1649238420466,
+            "magnitude": 264.2577740411556
+          },
+          {
+            "real": -8.150827329735893,
+            "magnitude_pu": 0.03031695312954162,
+            "terminal": "x1/winding/2/terminal/n",
+            "imag": 2.0377068324339733,
+            "magnitude": 8.40168050416806
+          },
+          {
+            "real": 2092.792362242803,
+            "magnitude_pu": 0.987802730833731,
+            "terminal": "x1/winding/3/terminal/a",
+            "imag": 1117.5379002622062,
+            "magnitude": 2372.481997820905
+          },
+          {
+            "real": -78.5799698024107,
+            "magnitude_pu": 0.9878027308337313,
+            "terminal": "x1/winding/3/terminal/b",
+            "imag": -2371.180300679416,
+            "magnitude": 2372.4819978209052
+          },
+          {
+            "real": -2014.212392440392,
+            "magnitude_pu": 0.987802730833731,
+            "terminal": "x1/winding/3/terminal/c",
+            "imag": 1253.6424004172097,
+            "magnitude": 2372.481997820905
+          }
+        ],
+        "model_size": {
+          "variables": 15,
+          "constraints": 30
+        },
+        "phase_power_balance_residual_MVA": 3.1168226180653363e-15,
+        "maximum_leakage_current_loading": 1.0000000002501384,
+        "objective_served_fraction": 1.1159503678736664,
+        "formulation": "parameterized",
+        "served_load_MVA": {
+          "active": 1.6739255518104996,
+          "reactive": 0.33478511036209996
+        }
+      }
+    ],
+    "source_target_objective_gap": 0,
+    "decision_id": "tap/x1/winding/2",
+    "pointwise_factor_differences": [
+      {
+        "maximum_terminal_admittance_difference_S": 0,
+        "maximum_leakage_current_map_difference_S": 0,
+        "tap_value": 0.95
+      },
+      {
+        "maximum_terminal_admittance_difference_S": 0,
+        "maximum_leakage_current_map_difference_S": 0,
+        "tap_value": 1
+      },
+      {
+        "maximum_terminal_admittance_difference_S": 0,
+        "maximum_leakage_current_map_difference_S": 0,
+        "tap_value": 1.05
+      }
+    ],
+    "frozen_start_objective_gap": 0.060112646105557,
+    "frozen_start_solution": {
+      "secondary_neutral_kcl_residual_A": 7.895696929033911e-12,
+      "leakage_current_limit_A": [
+        180,
+        180,
+        180,
+        2200,
+        2200,
+        2200,
+        280,
+        280,
+        280
+      ],
+      "termination_status": "LOCALLY_SOLVED",
+      "leakage_current_magnitude_A": [
+        84.6832397976007,
+        84.68323979760085,
+        84.68323979760049,
+        2200.000000575162,
+        2200.0000005751626,
+        2200.0000005751613,
+        6.504450502991726e-13,
+        6.009029314926467e-13,
+        3.260960140267743e-13
+      ],
+      "tertiary_kcl_residual_A": 1.3008901005983452e-12,
+      "tap_value": 1,
+      "secondary_phase_to_neutral_voltage_pu": [
+        0.9789174161063198,
+        0.9789174161063198,
+        0.9789174161063198
+      ],
+      "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
+      "terminal_voltage": [
+        {
+          "real": 7199.557856794634,
+          "magnitude_pu": 1,
+          "terminal": "x1/winding/1/terminal/a",
+          "imag": 0,
+          "magnitude": 7199.557856794634
+        },
+        {
+          "real": -3599.778928397315,
+          "magnitude_pu": 0.9999999999999999,
+          "terminal": "x1/winding/1/terminal/b",
+          "imag": -6235.000000000001,
+          "magnitude": 7199.557856794633
+        },
+        {
+          "real": -3599.778928397315,
+          "magnitude_pu": 0.9999999999999999,
+          "terminal": "x1/winding/1/terminal/c",
+          "imag": 6235.000000000001,
+          "magnitude": 7199.557856794633
+        },
+        {
+          "real": 0,
+          "magnitude_pu": 0,
+          "terminal": "x1/winding/1/terminal/n",
+          "imag": 0,
+          "magnitude": 0
+        },
+        {
+          "real": 279.5786076950059,
+          "magnitude_pu": 1.0101264253633584,
+          "terminal": "x1/winding/2/terminal/a",
+          "imag": -14.110154925264407,
+          "magnitude": 279.93444652756295
+        },
+        {
+          "real": -139.01867540734943,
+          "magnitude_pu": 0.9622630710163886,
+          "terminal": "x1/winding/2/terminal/b",
+          "imag": -227.5670991559265,
+          "magnitude": 266.67016467962304
+        },
+        {
+          "real": -114.57917017412325,
+          "magnitude_pu": 0.9651227886178901,
+          "terminal": "x1/winding/2/terminal/c",
+          "imag": 241.6772540811909,
+          "magnitude": 267.462672868599
+        },
+        {
+          "real": 8.660254037844387,
+          "magnitude_pu": 0.03125,
+          "terminal": "x1/winding/2/terminal/n",
+          "imag": 0,
+          "magnitude": 8.660254037844387
+        },
+        {
+          "real": 2093.214878377934,
+          "magnitude_pu": 0.9871354224317309,
+          "terminal": "x1/winding/3/terminal/a",
+          "imag": 1113.3373227560828,
+          "magnitude": 2370.8792717691113
+        },
+        {
+          "real": -82.42903470084467,
+          "magnitude_pu": 0.9871354224317311,
+          "terminal": "x1/winding/3/terminal/b",
+          "imag": -2369.445921632887,
+          "magnitude": 2370.8792717691117
+        },
+        {
+          "real": -2010.785843677089,
+          "magnitude_pu": 0.9871354224317307,
+          "terminal": "x1/winding/3/terminal/c",
+          "imag": 1256.1085988768039,
+          "magnitude": 2370.879271769111
+        }
+      ],
+      "model_size": {
+        "variables": 15,
+        "constraints": 30
+      },
+      "phase_power_balance_residual_MVA": 3.2652638748082423e-15,
+      "maximum_leakage_current_loading": 1.0000000002614375,
+      "objective_served_fraction": 1.1704738810068813,
+      "formulation": "parameterized",
+      "served_load_MVA": {
+        "active": 1.755710821510322,
+        "reactive": 0.35114216430206446
+      }
+    },
+    "source_optimum": {
+      "secondary_neutral_kcl_residual_A": 3.135841685019324e-12,
+      "leakage_current_limit_A": [
+        180,
+        180,
+        180,
+        2200,
+        2200,
+        2200,
+        280,
+        280,
+        280
+      ],
+      "termination_status": "LOCALLY_SOLVED",
+      "leakage_current_magnitude_A": [
+        89.14025241954099,
+        89.14025241954106,
+        89.14025241954053,
+        2200.0000006001824,
+        2200.0000006001883,
+        2200.0000006001846,
+        7.486488968846934e-13,
+        5.400832073359266e-13,
+        3.27826635353894e-13
+      ],
+      "tertiary_kcl_residual_A": 1.3839437004843516e-12,
+      "tap_value": 0.95,
+      "secondary_phase_to_neutral_voltage_pu": [
+        1.0291923105734202,
+        1.0291923105734202,
+        1.0291923105734202
+      ],
+      "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
+      "terminal_voltage": [
+        {
+          "real": 7199.557856794634,
+          "magnitude_pu": 1,
+          "terminal": "x1/winding/1/terminal/a",
+          "imag": 0,
+          "magnitude": 7199.557856794634
+        },
+        {
+          "real": -3599.778928397315,
+          "magnitude_pu": 0.9999999999999999,
+          "terminal": "x1/winding/1/terminal/b",
+          "imag": -6235.000000000001,
+          "magnitude": 7199.557856794633
+        },
+        {
+          "real": -3599.778928397315,
+          "magnitude_pu": 0.9999999999999999,
+          "terminal": "x1/winding/1/terminal/c",
+          "imag": 6235.000000000001,
+          "magnitude": 7199.557856794633
+        },
+        {
+          "real": 0,
+          "magnitude_pu": 0,
+          "terminal": "x1/winding/1/terminal/n",
+          "imag": 0,
+          "magnitude": 0
+        },
+        {
+          "real": 284.7903444234743,
+          "magnitude_pu": 1.0291923105734202,
+          "terminal": "x1/winding/2/terminal/a",
+          "imag": -15.615597836018582,
+          "magnitude": 285.21813962757943
+        },
+        {
+          "real": -155.9186766330105,
+          "magnitude_pu": 1.0291923105734202,
+          "terminal": "x1/winding/2/terminal/b",
+          "imag": -238.82787410523943,
+          "magnitude": 285.21813962757943
+        },
+        {
+          "real": -128.87166779046373,
+          "magnitude_pu": 1.0291923105734202,
+          "terminal": "x1/winding/2/terminal/c",
+          "imag": 254.44347194125803,
+          "magnitude": 285.21813962757943
+        },
+        {
+          "real": 6.748374831918207e-34,
+          "magnitude_pu": 2.435110016125295e-36,
+          "terminal": "x1/winding/2/terminal/n",
+          "imag": 0,
+          "magnitude": 6.748374831918207e-34
+        },
+        {
+          "real": 2093.657680455595,
+          "magnitude_pu": 0.9863915036581254,
+          "terminal": "x1/winding/3/terminal/a",
+          "imag": 1108.6915722264778,
+          "magnitude": 2369.0925446796546
+        },
+        {
+          "real": -86.67377371795823,
+          "magnitude_pu": 0.9863915036581257,
+          "terminal": "x1/winding/3/terminal/b",
+          "imag": -2367.5065242161872,
+          "magnitude": 2369.092544679655
+        },
+        {
+          "real": -2006.9839067376367,
+          "magnitude_pu": 0.9863915036581254,
+          "terminal": "x1/winding/3/terminal/c",
+          "imag": 1258.8149519897097,
+          "magnitude": 2369.0925446796546
+        }
+      ],
+      "model_size": {
+        "variables": 15,
+        "constraints": 30
+      },
+      "phase_power_balance_residual_MVA": 7.947987303456224e-16,
+      "maximum_leakage_current_loading": 1.0000000002728129,
+      "objective_served_fraction": 1.2305865271124383,
+      "formulation": "source",
+      "served_load_MVA": {
+        "active": 1.8458797906686575,
+        "reactive": 0.36917595813373155
+      }
+    },
+    "parameterized_target_optimum": {
+      "secondary_neutral_kcl_residual_A": 3.135841685019324e-12,
+      "leakage_current_limit_A": [
+        180,
+        180,
+        180,
+        2200,
+        2200,
+        2200,
+        280,
+        280,
+        280
+      ],
+      "termination_status": "LOCALLY_SOLVED",
+      "leakage_current_magnitude_A": [
+        89.14025241954099,
+        89.14025241954106,
+        89.14025241954053,
+        2200.0000006001824,
+        2200.0000006001883,
+        2200.0000006001846,
+        7.486488968846934e-13,
+        5.400832073359266e-13,
+        3.27826635353894e-13
+      ],
+      "tertiary_kcl_residual_A": 1.3839437004843516e-12,
+      "tap_value": 0.95,
+      "secondary_phase_to_neutral_voltage_pu": [
+        1.0291923105734202,
+        1.0291923105734202,
+        1.0291923105734202
+      ],
+      "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
+      "terminal_voltage": [
+        {
+          "real": 7199.557856794634,
+          "magnitude_pu": 1,
+          "terminal": "x1/winding/1/terminal/a",
+          "imag": 0,
+          "magnitude": 7199.557856794634
+        },
+        {
+          "real": -3599.778928397315,
+          "magnitude_pu": 0.9999999999999999,
+          "terminal": "x1/winding/1/terminal/b",
+          "imag": -6235.000000000001,
+          "magnitude": 7199.557856794633
+        },
+        {
+          "real": -3599.778928397315,
+          "magnitude_pu": 0.9999999999999999,
+          "terminal": "x1/winding/1/terminal/c",
+          "imag": 6235.000000000001,
+          "magnitude": 7199.557856794633
+        },
+        {
+          "real": 0,
+          "magnitude_pu": 0,
+          "terminal": "x1/winding/1/terminal/n",
+          "imag": 0,
+          "magnitude": 0
+        },
+        {
+          "real": 284.7903444234743,
+          "magnitude_pu": 1.0291923105734202,
+          "terminal": "x1/winding/2/terminal/a",
+          "imag": -15.615597836018582,
+          "magnitude": 285.21813962757943
+        },
+        {
+          "real": -155.9186766330105,
+          "magnitude_pu": 1.0291923105734202,
+          "terminal": "x1/winding/2/terminal/b",
+          "imag": -238.82787410523943,
+          "magnitude": 285.21813962757943
+        },
+        {
+          "real": -128.87166779046373,
+          "magnitude_pu": 1.0291923105734202,
+          "terminal": "x1/winding/2/terminal/c",
+          "imag": 254.44347194125803,
+          "magnitude": 285.21813962757943
+        },
+        {
+          "real": 6.748374831918207e-34,
+          "magnitude_pu": 2.435110016125295e-36,
+          "terminal": "x1/winding/2/terminal/n",
+          "imag": 0,
+          "magnitude": 6.748374831918207e-34
+        },
+        {
+          "real": 2093.657680455595,
+          "magnitude_pu": 0.9863915036581254,
+          "terminal": "x1/winding/3/terminal/a",
+          "imag": 1108.6915722264778,
+          "magnitude": 2369.0925446796546
+        },
+        {
+          "real": -86.67377371795823,
+          "magnitude_pu": 0.9863915036581257,
+          "terminal": "x1/winding/3/terminal/b",
+          "imag": -2367.5065242161872,
+          "magnitude": 2369.092544679655
+        },
+        {
+          "real": -2006.9839067376367,
+          "magnitude_pu": 0.9863915036581254,
+          "terminal": "x1/winding/3/terminal/c",
+          "imag": 1258.8149519897097,
+          "magnitude": 2369.0925446796546
+        }
+      ],
+      "model_size": {
+        "variables": 15,
+        "constraints": 30
+      },
+      "phase_power_balance_residual_MVA": 7.947987303456224e-16,
+      "maximum_leakage_current_loading": 1.0000000002728129,
+      "objective_served_fraction": 1.2305865271124383,
+      "formulation": "parameterized",
+      "served_load_MVA": {
+        "active": 1.8458797906686575,
+        "reactive": 0.36917595813373155
+      }
+    },
+    "positions": [
+      0.95,
+      1.0,
+      1.05
+    ],
+    "source_subproblems": [
+      {
+        "secondary_neutral_kcl_residual_A": 3.135841685019324e-12,
+        "leakage_current_limit_A": [
+          180,
+          180,
+          180,
+          2200,
+          2200,
+          2200,
+          280,
+          280,
+          280
+        ],
+        "termination_status": "LOCALLY_SOLVED",
+        "leakage_current_magnitude_A": [
+          89.14025241954099,
+          89.14025241954106,
+          89.14025241954053,
+          2200.0000006001824,
+          2200.0000006001883,
+          2200.0000006001846,
+          7.486488968846934e-13,
+          5.400832073359266e-13,
+          3.27826635353894e-13
+        ],
+        "tertiary_kcl_residual_A": 1.3839437004843516e-12,
+        "tap_value": 0.95,
+        "secondary_phase_to_neutral_voltage_pu": [
+          1.0291923105734202,
+          1.0291923105734202,
+          1.0291923105734202
+        ],
+        "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
+        "terminal_voltage": [
+          {
+            "real": 7199.557856794634,
+            "magnitude_pu": 1,
+            "terminal": "x1/winding/1/terminal/a",
+            "imag": 0,
+            "magnitude": 7199.557856794634
+          },
+          {
+            "real": -3599.778928397315,
+            "magnitude_pu": 0.9999999999999999,
+            "terminal": "x1/winding/1/terminal/b",
+            "imag": -6235.000000000001,
+            "magnitude": 7199.557856794633
+          },
+          {
+            "real": -3599.778928397315,
+            "magnitude_pu": 0.9999999999999999,
+            "terminal": "x1/winding/1/terminal/c",
+            "imag": 6235.000000000001,
+            "magnitude": 7199.557856794633
+          },
+          {
+            "real": 0,
+            "magnitude_pu": 0,
+            "terminal": "x1/winding/1/terminal/n",
+            "imag": 0,
+            "magnitude": 0
+          },
+          {
+            "real": 284.7903444234743,
+            "magnitude_pu": 1.0291923105734202,
+            "terminal": "x1/winding/2/terminal/a",
+            "imag": -15.615597836018582,
+            "magnitude": 285.21813962757943
+          },
+          {
+            "real": -155.9186766330105,
+            "magnitude_pu": 1.0291923105734202,
+            "terminal": "x1/winding/2/terminal/b",
+            "imag": -238.82787410523943,
+            "magnitude": 285.21813962757943
+          },
+          {
+            "real": -128.87166779046373,
+            "magnitude_pu": 1.0291923105734202,
+            "terminal": "x1/winding/2/terminal/c",
+            "imag": 254.44347194125803,
+            "magnitude": 285.21813962757943
+          },
+          {
+            "real": 6.748374831918207e-34,
+            "magnitude_pu": 2.435110016125295e-36,
+            "terminal": "x1/winding/2/terminal/n",
+            "imag": 0,
+            "magnitude": 6.748374831918207e-34
+          },
+          {
+            "real": 2093.657680455595,
+            "magnitude_pu": 0.9863915036581254,
+            "terminal": "x1/winding/3/terminal/a",
+            "imag": 1108.6915722264778,
+            "magnitude": 2369.0925446796546
+          },
+          {
+            "real": -86.67377371795823,
+            "magnitude_pu": 0.9863915036581257,
+            "terminal": "x1/winding/3/terminal/b",
+            "imag": -2367.5065242161872,
+            "magnitude": 2369.092544679655
+          },
+          {
+            "real": -2006.9839067376367,
+            "magnitude_pu": 0.9863915036581254,
+            "terminal": "x1/winding/3/terminal/c",
+            "imag": 1258.8149519897097,
+            "magnitude": 2369.0925446796546
+          }
+        ],
+        "model_size": {
+          "variables": 15,
+          "constraints": 30
+        },
+        "phase_power_balance_residual_MVA": 7.947987303456224e-16,
+        "maximum_leakage_current_loading": 1.0000000002728129,
+        "objective_served_fraction": 1.2305865271124383,
+        "formulation": "source",
+        "served_load_MVA": {
+          "active": 1.8458797906686575,
+          "reactive": 0.36917595813373155
+        }
+      },
+      {
+        "secondary_neutral_kcl_residual_A": 7.895696929033911e-12,
+        "leakage_current_limit_A": [
+          180,
+          180,
+          180,
+          2200,
+          2200,
+          2200,
+          280,
+          280,
+          280
+        ],
+        "termination_status": "LOCALLY_SOLVED",
+        "leakage_current_magnitude_A": [
+          84.6832397976007,
+          84.68323979760085,
+          84.68323979760049,
+          2200.000000575162,
+          2200.0000005751626,
+          2200.0000005751613,
+          6.504450502991726e-13,
+          6.009029314926467e-13,
+          3.260960140267743e-13
+        ],
+        "tertiary_kcl_residual_A": 1.3008901005983452e-12,
+        "tap_value": 1,
+        "secondary_phase_to_neutral_voltage_pu": [
+          0.9789174161063198,
+          0.9789174161063198,
+          0.9789174161063198
+        ],
+        "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
+        "terminal_voltage": [
+          {
+            "real": 7199.557856794634,
+            "magnitude_pu": 1,
+            "terminal": "x1/winding/1/terminal/a",
+            "imag": 0,
+            "magnitude": 7199.557856794634
+          },
+          {
+            "real": -3599.778928397315,
+            "magnitude_pu": 0.9999999999999999,
+            "terminal": "x1/winding/1/terminal/b",
+            "imag": -6235.000000000001,
+            "magnitude": 7199.557856794633
+          },
+          {
+            "real": -3599.778928397315,
+            "magnitude_pu": 0.9999999999999999,
+            "terminal": "x1/winding/1/terminal/c",
+            "imag": 6235.000000000001,
+            "magnitude": 7199.557856794633
+          },
+          {
+            "real": 0,
+            "magnitude_pu": 0,
+            "terminal": "x1/winding/1/terminal/n",
+            "imag": 0,
+            "magnitude": 0
+          },
+          {
+            "real": 279.5786076950059,
+            "magnitude_pu": 1.0101264253633584,
+            "terminal": "x1/winding/2/terminal/a",
+            "imag": -14.110154925264407,
+            "magnitude": 279.93444652756295
+          },
+          {
+            "real": -139.01867540734943,
+            "magnitude_pu": 0.9622630710163886,
+            "terminal": "x1/winding/2/terminal/b",
+            "imag": -227.5670991559265,
+            "magnitude": 266.67016467962304
+          },
+          {
+            "real": -114.57917017412325,
+            "magnitude_pu": 0.9651227886178901,
+            "terminal": "x1/winding/2/terminal/c",
+            "imag": 241.6772540811909,
+            "magnitude": 267.462672868599
+          },
+          {
+            "real": 8.660254037844387,
+            "magnitude_pu": 0.03125,
+            "terminal": "x1/winding/2/terminal/n",
+            "imag": 0,
+            "magnitude": 8.660254037844387
+          },
+          {
+            "real": 2093.214878377934,
+            "magnitude_pu": 0.9871354224317309,
+            "terminal": "x1/winding/3/terminal/a",
+            "imag": 1113.3373227560828,
+            "magnitude": 2370.8792717691113
+          },
+          {
+            "real": -82.42903470084467,
+            "magnitude_pu": 0.9871354224317311,
+            "terminal": "x1/winding/3/terminal/b",
+            "imag": -2369.445921632887,
+            "magnitude": 2370.8792717691117
+          },
+          {
+            "real": -2010.785843677089,
+            "magnitude_pu": 0.9871354224317307,
+            "terminal": "x1/winding/3/terminal/c",
+            "imag": 1256.1085988768039,
+            "magnitude": 2370.879271769111
+          }
+        ],
+        "model_size": {
+          "variables": 15,
+          "constraints": 30
+        },
+        "phase_power_balance_residual_MVA": 3.2652638748082423e-15,
+        "maximum_leakage_current_loading": 1.0000000002614375,
+        "objective_served_fraction": 1.1704738810068813,
+        "formulation": "source",
+        "served_load_MVA": {
+          "active": 1.755710821510322,
+          "reactive": 0.35114216430206446
+        }
+      },
+      {
+        "secondary_neutral_kcl_residual_A": 4.955895238830895e-13,
+        "leakage_current_limit_A": [
+          180,
+          180,
+          180,
+          2200,
+          2200,
+          2200,
+          280,
+          280,
+          280
+        ],
+        "termination_status": "LOCALLY_SOLVED",
+        "leakage_current_magnitude_A": [
+          80.6507045682322,
+          80.65070456823237,
+          80.65070456823186,
+          2200.0000005503002,
+          2200.0000005503043,
+          2200.0000005502984,
+          5.841115365556814e-13,
+          3.7287420024414693e-13,
+          1.1710782467545813e-13
+        ],
+        "tertiary_kcl_residual_A": 6.67389084595788e-13,
+        "tap_value": 1.05,
+        "secondary_phase_to_neutral_voltage_pu": [
+          0.9333169732377591,
+          0.9333169732377591,
+          0.9333169732377591
+        ],
+        "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
+        "terminal_voltage": [
+          {
+            "real": 7199.557856794634,
+            "magnitude_pu": 1,
+            "terminal": "x1/winding/1/terminal/a",
+            "imag": 0,
+            "magnitude": 7199.557856794634
+          },
+          {
+            "real": -3599.778928397315,
+            "magnitude_pu": 0.9999999999999999,
+            "terminal": "x1/winding/1/terminal/b",
+            "imag": -6235.000000000001,
+            "magnitude": 7199.557856794633
+          },
+          {
+            "real": -3599.778928397315,
+            "magnitude_pu": 0.9999999999999999,
+            "terminal": "x1/winding/1/terminal/c",
+            "imag": 6235.000000000001,
+            "magnitude": 7199.557856794633
+          },
+          {
+            "real": 0,
+            "magnitude_pu": 0,
+            "terminal": "x1/winding/1/terminal/n",
+            "imag": 0,
+            "magnitude": 0
+          },
+          {
+            "real": 250.180034264552,
+            "magnitude_pu": 0.9035962616093166,
+            "terminal": "x1/winding/2/terminal/a",
+            "imag": -10.774549742440978,
+            "magnitude": 250.41194154186167
+          },
+          {
+            "real": -148.4119978005257,
+            "magnitude_pu": 0.9435252009425722,
+            "terminal": "x1/winding/2/terminal/b",
+            "imag": -215.27725360230366,
+            "magnitude": 261.4773738006671
+          },
+          {
+            "real": -126.22051845323391,
+            "magnitude_pu": 0.9535581061132029,
+            "terminal": "x1/winding/2/terminal/c",
+            "imag": 232.1649238420466,
+            "magnitude": 264.2577740411556
+          },
+          {
+            "real": -8.150827329735893,
+            "magnitude_pu": 0.03031695312954162,
+            "terminal": "x1/winding/2/terminal/n",
+            "imag": 2.0377068324339733,
+            "magnitude": 8.40168050416806
+          },
+          {
+            "real": 2092.792362242803,
+            "magnitude_pu": 0.987802730833731,
+            "terminal": "x1/winding/3/terminal/a",
+            "imag": 1117.5379002622062,
+            "magnitude": 2372.481997820905
+          },
+          {
+            "real": -78.5799698024107,
+            "magnitude_pu": 0.9878027308337313,
+            "terminal": "x1/winding/3/terminal/b",
+            "imag": -2371.180300679416,
+            "magnitude": 2372.4819978209052
+          },
+          {
+            "real": -2014.212392440392,
+            "magnitude_pu": 0.987802730833731,
+            "terminal": "x1/winding/3/terminal/c",
+            "imag": 1253.6424004172097,
+            "magnitude": 2372.481997820905
+          }
+        ],
+        "model_size": {
+          "variables": 15,
+          "constraints": 30
+        },
+        "phase_power_balance_residual_MVA": 3.1168226180653363e-15,
+        "maximum_leakage_current_loading": 1.0000000002501384,
+        "objective_served_fraction": 1.1159503678736664,
+        "formulation": "source",
+        "served_load_MVA": {
+          "active": 1.6739255518104996,
+          "reactive": 0.33478511036209996
+        }
+      }
+    ]
+  },
+  "schema_version": "1.1.0",
+  "certificate_id": "TR-XFMR-006"
+}

@@ -11,6 +11,7 @@
     "classification",
     "source",
     "target",
+    "interfaces",
     "preconditions",
     "preserves",
     "forgets",
@@ -20,12 +21,13 @@
     "evidence"
   ],
   "properties": {
-    "schema_version": {"const": "1.0.0"},
+    "schema_version": {"const": "1.1.0"},
     "certificate_id": {"type": "string", "pattern": "^TR-[A-Z]+-[0-9]{3}$"},
     "rule_id": {"type": "string", "minLength": 1},
     "classification": {
       "enum": [
         "exact_normalization",
+        "exact_compilation",
         "exact_behavioral_reduction",
         "inner_restriction",
         "outer_relaxation",
@@ -35,6 +37,7 @@
     },
     "source": {"$ref": "#/$defs/modelReference"},
     "target": {"$ref": "#/$defs/modelReference"},
+    "interfaces": {"$ref": "#/$defs/interfaceContract"},
     "preconditions": {"$ref": "#/$defs/uniqueStrings"},
     "preserves": {"$ref": "#/$defs/uniqueStrings"},
     "forgets": {"$ref": "#/$defs/uniqueStrings"},
@@ -48,6 +51,36 @@
       "type": "array",
       "items": {"type": "string"},
       "uniqueItems": true
+    },
+    "interfaceMapping": {
+      "type": "object",
+      "required": ["source", "target", "relation"],
+      "properties": {
+        "source": {"$ref": "#/$defs/uniqueStrings"},
+        "target": {"$ref": "#/$defs/uniqueStrings"},
+        "relation": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "interfaceContract": {
+      "type": "object",
+      "required": [
+        "state_variables",
+        "constraints",
+        "decisions",
+        "objectives",
+        "units",
+        "boundary_quantities"
+      ],
+      "properties": {
+        "state_variables": {"$ref": "#/$defs/interfaceMapping"},
+        "constraints": {"$ref": "#/$defs/interfaceMapping"},
+        "decisions": {"$ref": "#/$defs/interfaceMapping"},
+        "objectives": {"$ref": "#/$defs/interfaceMapping"},
+        "units": {"$ref": "#/$defs/interfaceMapping"},
+        "boundary_quantities": {"$ref": "#/$defs/interfaceMapping"}
+      },
+      "additionalProperties": false
     },
     "modelReference": {
       "type": "object",

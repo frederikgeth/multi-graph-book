@@ -102,7 +102,7 @@ model_scope = "ordered multiconductor two-terminal series elements"
 assumptions = "unique conductor labels; source and target label sets agree; all indexed data are permuted consistently"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Add an independent mathematical reviewer and extend the implementation to general typed factors."
+unresolved_issue = "Add an independent mathematical reviewer and extend coordinate actions to general input/output tensors."
 
 [[claim]]
 claim_id = "TR-COMP-001"
@@ -111,11 +111,11 @@ claim_text = "Two exact certified transformations compose when the first target 
 status = "established_result"
 evidence_type = "definition_algebra_and_executable_composition"
 citation_keys = []
-model_scope = "the version 1.0.0 transformation-certificate interface"
+model_scope = "the version 1.1.0 transformation-certificate interface"
 assumptions = "both component certificates validate and are exact; target/source object identities meet"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Formalize richer typed interfaces and prove associativity modulo certificate serialization."
+unresolved_issue = "Prove associativity modulo certificate serialization and strengthen compatibility checks beyond object identity."
 
 [[claim]]
 claim_id = "TR-PAR-003"
@@ -128,4 +128,108 @@ model_scope = "two linear parallel branches with b=[1000,100] MW/rad and limits=
 assumptions = "nonnegative angle difference and served load; local solver results checked against the analytic optima"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Extend to a multiconductor AC OPF case and reproduce with an independent solver."
+unresolved_issue = "The multiconductor mechanism is exercised in TR-PAR-004; add an independent reviewer for this linear case."
+
+[[claim]]
+claim_id = "TR-XFMR-001"
+chapter = "docs/src/transformations/transformer-winding-coordinate-normalization.md"
+claim_text = "A transformer winding terminal permutation is an exact typed-factor normalization when its complete terminal-to-coil incidence relation is right-multiplied by the inverse permutation and coil coordinates remain fixed."
+status = "established_result"
+evidence_type = "algebraic_derivation_executable_certificate_and_complex_voltage_round_trip"
+citation_keys = []
+model_scope = "individual grounded-wye or delta winding ports of a typed multiwinding transformer factor"
+assumptions = "unique equal terminal-label sets; explicit terminal-to-coil incidence; stable coil coordinates and winding identity"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Prove which normalized factors can be serialized back into compact vector-group and delta-roll fields without loss."
+
+[[claim]]
+claim_id = "TR-PAR-004"
+chapter = "docs/src/cases/multiconductor-parallel-ac-decision.md"
+claim_text = "In the recorded two-conductor AC maximum-served-load case, the source and exact lifted formulations have objective 0.6138908 while a summed-limit aggregate has objective 1.0630833 and violates a 0.6 p.u. member limit."
+status = "empirical_result"
+evidence_type = "JuMP_Ipopt_execution_recovery_check_and_closed_form_verification"
+citation_keys = []
+model_scope = "two-bus phase-neutral AC model with two coupled proportional parallel impedance matrices"
+assumptions = "fixed sending voltage; scalable constant-power direction 1+j0.2; receiving voltage magnitude in [0.70,1.05] p.u.; member current limits 0.6 p.u."
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to non-proportional three-phase four-wire members and reproduce with an independent numerical solver."
+
+[[claim]]
+claim_id = "TR-XFMR-002"
+chapter = "docs/src/transformations/multiwinding-leakage-reference-compilation.md"
+claim_text = "Complete pairwise multiwinding short-circuit impedances compile exactly into a reference-coordinate impedance matrix ZB, from which every pairwise impedance is recoverable; changing the selected reference winding leaves the external winding admittance invariant, and the classical star/T representation is the three-winding special case."
+status = "established_result"
+evidence_type = "algebraic_derivation_executable_certificate_round_trip_and_guard_tests"
+citation_keys = []
+model_scope = "linear n-winding leakage data with fixed nominal turns ratios, per-winding resistances, and a nonsingular reference impedance matrix"
+assumptions = "all unordered winding-pair tests are present on a declared winding voltage base; imag(ZB) is positive semidefinite within tolerance; the compilation reference is any declared winding"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add an independent transformer-model review and establish compact serialization contracts that preserve the declared source and compilation references."
+
+[[claim]]
+claim_id = "TR-XFMR-003"
+chapter = "docs/src/transformations/multiwinding-terminal-leakage-assembly.md"
+claim_text = "Aligned winding connection-incidence factors compose exactly with a multiwinding leakage admittance as Yterminal=A'*(Yw kron I)*A; retaining the coil-current map preserves per-coil winding limits and makes terminal-coordinate and leakage-reference changes explicit coordinate actions."
+status = "established_result"
+evidence_type = "algebraic_derivation_executable_certificate_power_identity_coordinate_round_trips_and_guard_tests"
+citation_keys = []
+model_scope = "fixed linear multiwinding leakage relation with equal labelled coil-coordinate sets and explicit grounded-wye or delta terminal-to-coil incidence factors"
+assumptions = "winding order matches the leakage factor; coil labels align by permutations; the winding leakage admittance repeats independently on each common coil coordinate; connection factors are fixed; winding and leakage current limits agree; no magnetizing branch or adjustable tap is compiled"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independently review the fixed and parameterized completions and test tap-dependent leakage or excitation models."
+
+[[claim]]
+claim_id = "TR-XFMR-004"
+chapter = "docs/src/transformations/fixed-linear-transformer-factor-completion.md"
+claim_text = "A fixed linear transformer completion with declared voltage transfer T, leakage map B=T*A, excitation placement S, and transformer-internal grounding has terminal admittance Ycomplete=B^H*Ycoil*B+S^T*Y0*S+Yground; the power-dual and component-current recovery maps preserve the declared leakage-path limits, while adjustable transfers must remain parameterized decision factors."
+status = "established_result"
+evidence_type = "algebraic_derivation_executable_certificate_power_identity_guard_tests_and_independent_BMOPFTools_primitive_cross_check"
+citation_keys = []
+model_scope = "fixed linear phasor multiwinding transformer factors with labelled coil coordinates, nonzero finite per-coil voltage transfers, a reciprocal passive excitation shunt, and passive transformer-internal terminal grounding"
+assumptions = "the terminal leakage factor is exact; voltage transfers follow the declared connected-coil-to-leakage convention; all transfer modes are fixed; excitation placement is explicit; external bus grounding is not absorbed; limits apply to the declared leakage-path winding currents"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independently review the completion and test phase-angle controls, tap-dependent leakage, and total-current or apparent-power ratings."
+
+[[claim]]
+claim_id = "TR-XFMR-005"
+chapter = "docs/src/transformations/parameterized-transformer-tap-decisions.md"
+claim_text = "A continuous or discrete scalar winding tap compiles exactly as a retained parameterized transformer factor when coefficient_xkc(tap)=tap*base_coefficient_xkc and the decision identity and domain are mapped identically; freezing the tap at its start value is generally only an inner restriction, and in the recorded discrete witness it loses the 1.05 optimum and increases the winding-current objective by 671.060 A."
+status = "established_result"
+evidence_type = "pointwise_algebraic_compilation_executable_domain_and_power_tests_source_target_round_trip_and_discrete_decision_counterexample"
+citation_keys = []
+model_scope = "fixed-frequency linear multiwinding transformer factor with one or more positive scalar ganged winding taps over declared continuous intervals or finite discrete position sets"
+assumptions = "base transfer coefficients and labelled coordinates are fixed; each tap has a unique decision identity; excitation and internal grounding are tap independent; pointwise fixed snapshots satisfy TR-XFMR-004; the witness holds boundary voltages fixed and minimizes winding-2 leakage-current stress subject to its 2200 A limit"
+reviewer = ""
+review_date = ""
+unresolved_issue = "The first solver-backed network embedding is TR-XFMR-006; extend the contract to phase-angle, independent per-phase, mechanically coupled, and tap-dependent-loss controls."
+
+[[claim]]
+claim_id = "TR-XFMR-006"
+chapter = "docs/src/cases/transformer-tap-ac-decision.md"
+claim_text = "A retained finite scalar transformer tap factor embeds exactly into unchanged multiconductor AC voltage, KCL, power-balance, voltage-limit, and recovered leakage-current constraints by pointwise evaluation; in the recorded 11-terminal WYE/WYE/DELTA case, direct source and parameterized target subproblems agree at all three taps, select 0.95 with served fraction 1.2305865, and freezing the 1.00 start loses 0.0601126 served fraction (0.090169 MW)."
+status = "established_result"
+evidence_type = "pointwise_algebraic_network_embedding_JuMP_Ipopt_finite_domain_enumeration_source_target_state_constraint_and_objective_comparison"
+citation_keys = []
+model_scope = "11-terminal three-winding WYE/WYE/DELTA fixed-frequency phasor factor with one finite ganged magnitude tap, a balanced four-wire constant-power load, an open delta tertiary, and recovered per-coil leakage-current limits"
+assumptions = "TR-XFMR-005 applies pointwise; source and target use identical network equations; winding 1 is a fixed balanced slack; winding 2 voltage is bounded in [0.90,1.05] p.u.; the open delta common mode is fixed only by a gauge; each finite tap-conditioned nonconvex subproblem is compared on the locally solved branch returned by Ipopt"
+reviewer = ""
+review_date = ""
+unresolved_issue = "TR-XFMR-007 independently reproduces the numerical branch search; extend to unbalanced downstream networks, phase-angle controls, independent-phase taps, mechanical coupling, automatic logic, switching costs, and tap-dependent loss parameters."
+
+[[claim]]
+claim_id = "TR-XFMR-007"
+chapter = "docs/src/cases/transformer-tap-ac-decision.md"
+claim_text = "A separate damped finite-difference Newton, continuation, and bisection implementation reproduces all three TR-XFMR-006 tap-conditioned high-voltage branch boundaries without an external optimizer; its largest served-fraction difference from JuMP/Ipopt is 3.14e-10, and both methods select tap 0.95."
+status = "empirical_result"
+evidence_type = "independent_numerical_engine_finite_difference_Newton_continuation_bisection_pointwise_state_constraint_and_decision_comparison_with_structured_bracketing_guard_tests"
+citation_keys = []
+model_scope = "the recorded 11-terminal WYE/WYE/DELTA transformer tap AC case and its finite tap domain"
+assumptions = "both paths share the certified transformer matrices and case assembly; the direct no-load solution initializes the high-voltage branch; Newton converges throughout continuation; a feasible point and subsequent converged infeasible point bracket the first upper boundary; this boundary is the relevant branch maximum"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Reproduce the case with an independently assembled transformer primitive or external power-system tool and establish global or branch-completeness guarantees where required."

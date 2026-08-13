@@ -1,4 +1,64 @@
 {
+  "interfaces": {
+    "units": {
+      "source": [
+        "V",
+        "A",
+        "ohm"
+      ],
+      "relation": "first: permutation changes order but not units; second: physical units are unchanged",
+      "target": [
+        "V",
+        "A",
+        "ohm"
+      ]
+    },
+    "decisions": {
+      "source": [
+      ],
+      "relation": "first: any conductor-indexed decisions must follow the same permutation; none occur in this example; second: no decision variables are introduced or removed by this fixed-state rule",
+      "target": [
+      ]
+    },
+    "constraints": {
+      "source": [
+        "source-coordinate componentwise current limits"
+      ],
+      "relation": "first: constraint coordinates are permuted by P; second: member constraints map by intersection after conductor alignment",
+      "target": [
+        "coordinate-aligned intersection current-feasible set"
+      ]
+    },
+    "boundary_quantities": {
+      "source": [
+        "source-order terminal voltage and current vectors"
+      ],
+      "relation": "first: boundary vectors map bijectively by P and P'; second: external terminal voltage-current behaviour is equal",
+      "target": [
+        "U_i",
+        "U_j",
+        "equivalent terminal current"
+      ]
+    },
+    "objectives": {
+      "source": [
+      ],
+      "relation": "first: the rule declares no objective term; second: no objective term is declared by the local element rule",
+      "target": [
+      ]
+    },
+    "state_variables": {
+      "source": [
+        "ordered conductor state x_source"
+      ],
+      "relation": "first: x_target = P * x_source; second: source currents and the eliminated junction voltage recover from the equivalent current",
+      "target": [
+        "U_i",
+        "U_j",
+        "I_leqij"
+      ]
+    }
+  },
   "preconditions": [
     "requested and source conductor labels are unique",
     "requested and source conductor sets are equal",
@@ -110,6 +170,6 @@
     "recovery_order": "apply the second recovery map, then the first recovery map",
     "composition_check": "the first target is consumed by the second rule"
   },
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "certificate_id": "TR-COMP-001"
 }

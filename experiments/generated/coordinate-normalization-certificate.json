@@ -1,4 +1,60 @@
 {
+  "interfaces": {
+    "units": {
+      "source": [
+        "V",
+        "A",
+        "ohm"
+      ],
+      "relation": "permutation changes order but not units",
+      "target": [
+        "V",
+        "A",
+        "ohm"
+      ]
+    },
+    "decisions": {
+      "source": [
+      ],
+      "relation": "any conductor-indexed decisions must follow the same permutation; none occur in this example",
+      "target": [
+      ]
+    },
+    "constraints": {
+      "source": [
+        "source-coordinate componentwise current limits"
+      ],
+      "relation": "constraint coordinates are permuted by P",
+      "target": [
+        "target-coordinate componentwise current limits"
+      ]
+    },
+    "boundary_quantities": {
+      "source": [
+        "source-order terminal voltage and current vectors"
+      ],
+      "relation": "boundary vectors map bijectively by P and P'",
+      "target": [
+        "target-order terminal voltage and current vectors"
+      ]
+    },
+    "objectives": {
+      "source": [
+      ],
+      "relation": "the rule declares no objective term",
+      "target": [
+      ]
+    },
+    "state_variables": {
+      "source": [
+        "ordered conductor state x_source"
+      ],
+      "relation": "x_target = P * x_source",
+      "target": [
+        "ordered conductor state x_target"
+      ]
+    }
+  },
   "preconditions": [
     "requested and source conductor labels are unique",
     "requested and source conductor sets are equal",
@@ -96,6 +152,6 @@
       "n"
     ]
   },
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "certificate_id": "TR-COORD-001"
 }

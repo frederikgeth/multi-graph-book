@@ -1,7 +1,7 @@
 # [Certificate schema and composition](@id certificate-schema-composition)
 
 A transformation result is useful only if downstream work can determine what
-it means. Version 1.0.0 of the book's transformation-certificate interface is
+it means. Version 1.1.0 of the book's transformation-certificate interface is
 defined by `schemas/transformation-certificate.schema.json`.
 
 ## Common interface
@@ -9,8 +9,9 @@ defined by `schemas/transformation-certificate.schema.json`.
 | Field | Role |
 |:--|:--|
 | `certificate_id`, `rule_id` | stable claim identity and applied rule |
-| `classification` | exact normalization, exact behavioural reduction, inner restriction, outer relaxation, scenario approximation, or mixed |
+| `classification` | exact normalization, exact compilation, exact behavioural reduction, inner restriction, outer relaxation, scenario approximation, or mixed |
 | `source`, `target` | model categories and object identities |
+| `interfaces` | typed source/target contracts for states, constraints, decisions, objectives, units, and boundary quantities |
 | `preconditions` | conditions under which the classification holds |
 | `preserves`, `forgets` | the semantic contract |
 | `constraint_map` | forward transport of declared constraints |
@@ -51,6 +52,11 @@ identity. Non-exact component rules are rejected for now because composing
 inner, outer, and mixed approximations requires a more explicit order-theoretic
 calculus.
 
+Composition also carries the six interface contracts from the first source to
+the second target. This is a trace, not yet a proof of compatibility: the
+current rule records both component relations but still uses generated/source
+object identity as its executable meeting check.
+
 ## Normalization followed by elimination
 
 The executable example first normalizes ``\ell_2 b j`` from ``(n,a)`` to
@@ -66,10 +72,16 @@ This is claim `TR-COMP-001`. The `experiments/generated` directory contains
 both the composed normalization/series certificate and the standalone series
 certificate.
 
-## Current boundary
+## Version 1.1 boundary
 
-The schema is deliberately small. It does not yet type individual state
-spaces, objectives, uncertainty sets, discrete decisions, or units. Nor does
-it establish associativity modulo serialization. Those extensions should be
-driven by the next transformer, grounding, and OPF case studies rather than by
-an abstract schema that has not been exercised.
+Version 1.1 makes six interface categories mandatory. Each category records a
+source list, a target list, and the relation between them. Empty lists are
+allowed and meaningful: for example, a fixed-parameter leakage compilation
+declares that it introduces no tap or investment decision. The fields are
+typed by role but their individual entries are still prose rather than a
+formal state-space or unit algebra.
+
+The schema does not yet type uncertainty sets or prove that composed interface
+relations are compatible. Nor does it establish associativity modulo
+serialization. Those extensions should be driven by the grounding, switch,
+and larger OPF case studies.
