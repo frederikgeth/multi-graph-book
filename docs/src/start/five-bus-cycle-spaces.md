@@ -7,6 +7,11 @@ formed one reduction chain: forgetting parallel identity, constructing an
 electrical aggregate, eliminating internal variables, and selecting a spanning
 tree. They do not have the same source, target, or preservation contract.
 
+The general definitions of simple cycles, line-identity cycles, parallel
+fibres, bridges, leaves, and adjacency- versus member-radiality are given in
+[Cycles, parallelism, and radial structure](@ref cycles-parallelism-radiality).
+This chapter supplies the running numerical witness for those definitions.
+
 The graph identities below are standard finite-dimensional results. The
 line-indexed calculations, nodal-admittance comparison, decision witness, and
 BMOPFTools topology cross-check are executable. The figures are generated from

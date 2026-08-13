@@ -26,6 +26,8 @@ julia --project=experiments experiments/run_multiconductor_parallel_ac.jl
 julia --project=experiments experiments/run_four_wire_parallel_ac.jl
 julia --project=experiments experiments/run_pi_four_wire_parallel_ac.jl
 julia --project=experiments experiments/run_five_bus_cycle_space.jl
+julia --project=experiments experiments/run_translation_traps.jl
+julia --project=experiments experiments/run_active_radiality.jl
 python3 experiments/generate_five_bus_cycle_figure.py
 python3 scripts/check_artifacts.py
 ```
@@ -104,6 +106,13 @@ that passes at `ij` but fails at `ji`.
 - `experiments/generated/five-bus-figure-manifest.json`: hashes binding the
   verified five-bus analysis to the generated cycle-basis, transformation-map,
   and feasible-set figures used in the chapter.
+- `experiments/generated/translation-trap-witnesses.json`: three small
+  package-independent witnesses for connectivity versus energization, complex
+  symmetry versus Hermitian structure, and terminal-specific nominal-pi
+  currents and ratings.
+- `experiments/generated/active-radiality-witness.json`: an inventory-versus-
+  active-state certificate reporting simple-projection and identified-member
+  radiality, including a hidden parallel-member cycle.
 
 All fifteen transformation artifacts conform to version 1.1.0 of
 `schemas/transformation-certificate.schema.json`. The checker enforces the

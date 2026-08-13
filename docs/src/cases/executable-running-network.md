@@ -34,7 +34,9 @@ is recorded explicitly rather than silently redefining a partial-wye object.
 
 ![Six non-isomorphic views of the running network.](../assets/running-network-views.png)
 
-The panels are not levels in a single hierarchy:
+The panels are not levels in a single hierarchy. The provenance artifact also
+contains a non-visual simple-topology quotient used by the cycle and radiality
+definitions:
 
 1. the asset/property view retains stable physical identity;
 2. the terminal view exposes ordered conductor mappings and grounding;

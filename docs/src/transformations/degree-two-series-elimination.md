@@ -104,6 +104,12 @@ and geometry, frequency basis, line model, rating semantics, splices,
 maintenance boundaries, ownership, thermal state, outage state, and other
 physical facts may still differ.
 
+!!! warning "Graph-theory trap"
+    Degree two is only a structural candidate for elimination. A valid rule
+    must also inspect terminal coordinates, injections, shunts and grounding,
+    observations, constraints, decisions, and the intended target equipment
+    class.
+
 This distinction is claim `TR-SER-002`: closure under behavioural elimination
 and closure within an equipment class are different questions.
 

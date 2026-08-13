@@ -32,6 +32,25 @@ objective value, and decisions—not state error alone.
 **Reference entries** are compact cards recording definition, aliases, source and target types,
 preserved properties, characteristic losses, recovery, evidence, and related entries.
 
+## Translation-trap callouts
+
+Use the controlled callouts introduced in
+[`docs/src/foundations/translation-traps.md`](docs/src/foundations/translation-traps.md):
+
+- **Graph-theory trap** when a graph concept is applied to an unnamed or
+  inappropriate representation;
+- **Circuit-theory trap** when a conservation or device claim exceeds its
+  factorization or constitutive assumptions;
+- **Power-system shorthand** when a familiar phrase is useful but becomes
+  ambiguous outside its conventional context;
+- **Decision-model consequence** when a representation choice changes what can
+  be constrained, chosen, observed, or recovered.
+
+Write each callout as a Documenter admonition, give a precise replacement
+statement, and link to the definition or result that supports it. A callout is
+not a substitute for a definition, derivation, counterexample, or claim-ledger
+entry.
+
 ## Mathematical notation
 
 Follow [`docs/src/foundations/notation-and-conventions.md`](docs/src/foundations/notation-and-conventions.md),

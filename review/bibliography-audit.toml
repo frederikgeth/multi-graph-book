@@ -113,6 +113,13 @@ verified_on = "2026-08-13"
 note = "The supplied final IEEE paper and author-hosted copy confirm the author, title, journal, volume, issue, pages, date, and DOI."
 
 [[entry]]
+key = "GethHeidariKoirala2022"
+status = "verified"
+verification_source = "https://doi.org/10.1145/3538637.3538844"
+verified_on = "2026-08-13"
+note = "The supplied ACM e-Energy paper and DOI record confirm the authors, title, venue, year, pages, and DOI; its phase-to-neutral transformation, grounding assumptions, neutral recovery algorithm, and comparison with neutral Kron reduction are used in the circuit-coordinate chapter."
+
+[[entry]]
 key = "CIMTopologicalNode"
 status = "corrected"
 verification_source = "https://zepben.github.io/evolve/docs/cim/cim100/TC57CIM/IEC61970/Base/Topology/TopologicalNode/"

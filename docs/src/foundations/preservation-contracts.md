@@ -21,6 +21,12 @@ This definition deliberately includes feasible sets, not only an unconstrained
 terminal map. It can therefore distinguish electrical equivalence from
 optimization equivalence.
 
+!!! warning "Decision-model consequence"
+    Equality of a nodal admittance, a boundary voltage relation, or a sampled
+    state trajectory does not establish equality of constrained feasible sets.
+    Limits, controls, discrete states, objectives, and recovery are separate
+    observation families.
+
 ## Preservation dimensions
 
 A transformation certificate should identify which dimensions it preserves:

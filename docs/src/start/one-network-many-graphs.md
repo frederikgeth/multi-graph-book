@@ -4,14 +4,24 @@ Calling something *the network graph* hides the modelling decision that produced
 physical power network can yield several non-isomorphic structures, each correct for some questions
 and inadequate for others.
 
+!!! warning "Power-system shorthand"
+    Treat *the network graph* as an omitted noun phrase. Ask whether the
+    sentence means an asset graph, active topology, terminal-connectivity
+    graph, bus--branch multigraph, factor incidence graph, or equation/sparsity
+    graph.
+
 ## A deliberately difficult network
 
 The running network for this book contains ordered conductor terminals, an explicit neutral and
 grounding impedance, heterogeneous parallel lines, switchgear, and a genuinely multiwinding
 transformer. It also contains limits and controls used in a decision problem. Its complete semantic
 specification is given in [The running multiconductor network](@ref).
-Its first numerical realization and the six views described below are given in
+Its first numerical realization and the six illustrated views described below are given in
 the [Executable running network](@ref).
+
+The representation-scoped meanings of cycles, parallelism, bridges, leaves,
+and radial ends are developed in
+[Cycles, parallelism, and radial structure](@ref cycles-parallelism-radiality).
 
 Nothing exotic is required to create representational disagreement. Parallel lines already show
 the issue. If two branches ``\ell_1`` and ``\ell_2`` connect buses ``i`` and ``j``, a multigraph

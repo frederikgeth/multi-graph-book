@@ -97,12 +97,15 @@ const PAGES = [
         "Representation taxonomy" => "foundations/representation-taxonomy.md",
         "Formal representation frameworks" => "foundations/formal-representation-frameworks.md",
         "Maps between representation frameworks" => "foundations/representation-maps.md",
+        "Translation traps: graphs, circuits, and power-system language" => "foundations/translation-traps.md",
+        "Cycles, parallelism, and radial structure" => "foundations/cycles-parallelism-radiality.md",
         "Orientation, terminal quantities, and power transfer" => "foundations/orientation-terminal-power.md",
         "Representation architecture" => "foundations/representation-architecture.md",
     ],
     "Part II — Transformation language" => [
         "Preservation contracts" => "foundations/preservation-contracts.md",
         "Projection, compilation, and reduction" => "transformations/projection-compilation-reduction.md",
+        "Circuit coordinate transformations" => "transformations/circuit-coordinate-transformations.md",
         "Kron, Ward, and optimized network equivalents" => "transformations/kron-ward-opti-kron.md",
     ],
     "Part III — Guarded transformation patterns" => [

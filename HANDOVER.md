@@ -165,6 +165,12 @@ contingencies or investments.
   derives the two-end loss balance and explains why nominal-pi terminal
   currents cease to be negatives when shunts remain internal to the line
   factor.
+- A dedicated graph-invariants chapter now defines simple cycles,
+  line-identity cycles, topological/terminal/electrical/operational/homogeneous
+  parallelism, simple versus multigraph degree, bridges, leaves, radial tails,
+  and adjacency- versus member-radiality. It also explains why
+  multi-terminal factor incidence and clique/star compilation can create
+  different apparent cycles.
 - A first network-equivalent chapter states exact linear/affine Kron
   elimination and recovery, proves typed multiconductor coordinate covariance,
   distinguishes reduced multiport behavior from line--shunt realization and
@@ -224,7 +230,31 @@ network and its grounding, permutation, switch, and multiwinding variants.
 Add executable Kron realizability and recovery tests before extending the
 network-equivalent comparison to nonlinear and decision observations.
 
-### 5. Extend executable rules
+### 5. Graph invariants and active topology
+
+The representation-scoped definitions are now written. Add executable
+certificates for active-state adjacency-radiality and member-radiality, then
+lift the incidence and cycle objects to conductor-terminal connectivity and
+state-conditioned topology decisions.
+
+### 6. Translation traps and community language
+
+The early synthesis chapter and controlled callout vocabulary are in place.
+The first terminology audit has been applied to the foundations, starting
+chapters, and transformation chapters. Three package-independent executable
+witnesses now cover connectivity versus energization, complex symmetry versus
+Hermitian structure, and terminal-specific nominal-pi ratings. Continue the
+style sweep in later case and reference chapters, preserving useful
+power-system shorthand while pairing consequential uses with their precise
+representation, terminal quantity, active state, and decision meaning.
+
+An active-state radiality witness now reports simple-projection and
+identified-member forests separately. The circuit-coordinate chapter
+synthesizes the attached four-wire phase-to-neutral and three-wire
+phase-to-phase reductions, including their grounding, shunt, mesh, and
+recovery guards.
+
+### 7. Extend executable rules
 
 Extend the retained transformer-control domain to phase-angle,
 independent-phase, mechanically coupled, automatic, and tap-dependent-loss
@@ -246,7 +276,7 @@ with switch and grounding rules.
 Use BMOPFTools where its model fits, but keep the book-level transformation contracts independent
 of its schema. Record the exact BMOPFTools commit for every executable result.
 
-### 6. First counterexample paper
+### 8. First counterexample paper
 
 Extend the coupled two-conductor AC case to non-proportional three-phase
 four-wire members. Compare active constraints and decision recovery in a

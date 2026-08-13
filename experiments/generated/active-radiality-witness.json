@@ -1,0 +1,35 @@
+{
+  "inventory_members": [
+    "s",
+    "l1",
+    "l2",
+    "d"
+  ],
+  "inventory_member_radial": false,
+  "active_state_is_tree": true,
+  "inventory_adjacency_radial": true,
+  "hidden_inventory_parallel_cycle": true,
+  "active_adjacency_radial": true,
+  "source": "experiments/transformations/ActiveRadiality.jl",
+  "all_checks_pass": true,
+  "active_member_cycle_rank": 0,
+  "open_members": [
+    "l2"
+  ],
+  "vertices": [
+    "source",
+    "a",
+    "b",
+    "load"
+  ],
+  "inventory_member_cycle_rank": 1,
+  "active_adjacency_cycle_rank": 0,
+  "active_member_radial": true,
+  "active_members": [
+    "s",
+    "l1",
+    "d"
+  ],
+  "schema_version": "0.1.0",
+  "inventory_adjacency_cycle_rank": 0
+}

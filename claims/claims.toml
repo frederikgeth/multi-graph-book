@@ -311,3 +311,29 @@ assumptions = "retained and internal coordinate actions are invertible and block
 reviewer = ""
 review_date = ""
 unresolved_issue = "Add executable random-matrix and terminal-permutation tests and obtain an independent mathematical review."
+
+[[claim]]
+claim_id = "TR-GRAPH-001"
+chapter = "docs/src/foundations/cycles-parallelism-radiality.md"
+claim_text = "For a loopless identified multigraph and its simple endpoint projection, the multigraph cycle rank exceeds the simple-graph cycle rank by the sum over edge fibres of fibre size minus one; the lost dimensions are line-identity cycles supported on parallel fibres."
+status = "established_result"
+evidence_type = "incidence_nullity_derivation"
+citation_keys = []
+model_scope = "finite loopless undirected bus--branch multigraphs with identified line members and a simple endpoint projection"
+assumptions = "cycle rank is the dimension of the real incidence nullspace; connected components are unchanged by the endpoint projection; self-loops are excluded"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the executable invariant checks to conductor-terminal incidence and state-indexed multi-terminal factors."
+
+[[claim]]
+claim_id = "TR-GRAPH-002"
+chapter = "docs/src/foundations/cycles-parallelism-radiality.md"
+claim_text = "An identified line is a multigraph bridge exactly when its simple endpoint edge is a bridge and its parallel fibre is a singleton; consequently the identified multigraph is a forest exactly when its simple projection is a forest and every edge fibre is a singleton."
+status = "established_result"
+evidence_type = "graph-connectivity_proof"
+citation_keys = []
+model_scope = "finite loopless undirected bus--branch multigraphs with identified line members and a simple endpoint projection"
+assumptions = "bridge means deletion of one identified edge increases connected-component count; the projection retains all bus vertices and unordered endpoint pairs"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add active-state radiality certificates with open/closed switches, outages, and multi-terminal compilation choices."

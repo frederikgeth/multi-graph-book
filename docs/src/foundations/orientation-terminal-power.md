@@ -20,6 +20,11 @@ from one another.
 A conventional passive AC line is therefore an undirected physical connection
 with an orientation, not intrinsically a directed physical edge.
 
+!!! warning "Power-system shorthand"
+    An arrow on a passive branch normally fixes storage order, terminal names,
+    or a positive reference. It does not predict the sign of current or active
+    power at a solution.
+
 ## The terminal-arc double cover
 
 For every two-terminal element ``\ell`` with
@@ -129,6 +134,12 @@ useful shorthand only after its terminal sign convention is fixed.
 The familiar single-flow picture is recovered in a declared lossless
 approximation, where ``P_{\ell ij}=-P_{\ell ji}``. It should be presented as a
 special collapse rather than the semantics of a general edge.
+
+!!! warning "Circuit-theory trap"
+    Opposite series currents do not imply opposite terminal powers. Voltage
+    differs across the impedance, so the two terminal powers sum to the
+    element's complex absorption. A nominal-``\pi`` factor can additionally
+    have terminal currents that are not negatives because it contains shunts.
 
 ## Nominal-pi elements
 

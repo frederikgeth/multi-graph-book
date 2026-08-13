@@ -46,29 +46,32 @@ certificate to distinct shunt currents and all eight member-end limits.
 constraints while retaining its finite tap choice.
 [The running multiconductor network](@ref) specifies the common example used
 throughout the book, while the [Executable running network](@ref) provides its versioned BMOPF
-realization and six generated views.
+realization and six illustrated views plus a checked simple-topology quotient.
 
 Then read:
 
 1. [Scope and thesis](@ref) for the scientific boundary and decision focus;
 2. [Representation taxonomy](@ref) for the model families and comparison axes;
 3. [Formal representation frameworks](@ref formal-representation-frameworks) for mathematical definitions of the source and derived graph families;
-4. [Orientation, terminal quantities, and power transfer](@ref orientation-terminal-power) for the distinction between topology, reference arrows, terminal signs, operating flow, and loss;
-5. [Representation architecture](@ref) for the proposed linked source structures;
-6. [Preservation contracts](@ref) for exact, conservative, relaxed, and approximate maps;
-7. [Projection, compilation, and reduction](@ref) for the transformation vocabulary;
-8. [Maps between representation frameworks](@ref representation-maps) for morphisms, quotients, compilers, and query-relative expressiveness;
-9. [Kron, Ward, and optimized network equivalents](@ref kron-ward-opti-kron) for boundary elimination, external-system realization, and optimized structural selection;
-10. [Conductor-coordinate normalization](@ref conductor-coordinate-normalization) for an exact coordinate rewrite;
-11. [Transformer-winding coordinate normalization](@ref transformer-winding-normalization) for a delta-safe typed-factor application;
-12. [Multiwinding leakage reference compilation](@ref multiwinding-leakage-reference-compilation) for exact pairwise-test compilation;
-13. [Multiwinding terminal leakage assembly](@ref multiwinding-terminal-leakage-assembly) for connection-factor composition with recoverable winding limits;
-14. [Fixed-linear transformer factor completion](@ref fixed-linear-transformer-factor-completion) for explicit tap/phase operators, excitation, grounding, and the adjustable-control boundary;
-15. [Parameterized transformer tap decisions](@ref parameterized-transformer-tap-decisions) for exact continuous/discrete decision retention and the frozen-tap counterexample;
-16. [Transformer tap AC decision case](@ref transformer-tap-ac-decision-case) for the first solver-backed network embedding of the retained tap factor;
-17. [Degree-two series elimination](@ref degree-two-series-rule) for the first executable guarded reduction;
-18. [Certificate schema and composition](@ref certificate-schema-composition) for the shared contract and sequential composition law;
-19. [Guarded normalization rules](@ref) for the wider candidate rewrite catalogue.
+4. [Translation traps: graphs, circuits, and power-system language](@ref translation-traps) for precise replacements for familiar but underspecified phrases;
+5. [Orientation, terminal quantities, and power transfer](@ref orientation-terminal-power) for the distinction between topology, reference arrows, terminal signs, operating flow, and loss;
+6. [Representation architecture](@ref) for the proposed linked source structures;
+7. [Preservation contracts](@ref) for exact, conservative, relaxed, and approximate maps;
+8. [Projection, compilation, and reduction](@ref) for the transformation vocabulary;
+9. [Maps between representation frameworks](@ref representation-maps) for morphisms, quotients, compilers, and query-relative expressiveness;
+10. [Cycles, parallelism, and radial structure](@ref cycles-parallelism-radiality) for representation-specific cycle spaces, parallel fibres, bridges, leaves, and radiality;
+11. [Circuit coordinate transformations](@ref circuit-coordinate-transformations) for phase-to-neutral and phase-to-phase reductions, their grounding and radiality guards, and their recovery maps;
+12. [Kron, Ward, and optimized network equivalents](@ref kron-ward-opti-kron) for boundary elimination, external-system realization, and optimized structural selection;
+13. [Conductor-coordinate normalization](@ref conductor-coordinate-normalization) for an exact coordinate rewrite;
+14. [Transformer-winding coordinate normalization](@ref transformer-winding-normalization) for a delta-safe typed-factor application;
+15. [Multiwinding leakage reference compilation](@ref multiwinding-leakage-reference-compilation) for exact pairwise-test compilation;
+16. [Multiwinding terminal leakage assembly](@ref multiwinding-terminal-leakage-assembly) for connection-factor composition with recoverable winding limits;
+17. [Fixed-linear transformer factor completion](@ref fixed-linear-transformer-factor-completion) for explicit tap/phase operators, excitation, grounding, and the adjustable-control boundary;
+18. [Parameterized transformer tap decisions](@ref parameterized-transformer-tap-decisions) for exact continuous/discrete decision retention and the frozen-tap counterexample;
+19. [Transformer tap AC decision case](@ref transformer-tap-ac-decision-case) for the first solver-backed network embedding of the retained tap factor;
+20. [Degree-two series elimination](@ref degree-two-series-rule) for the first executable guarded reduction;
+21. [Certificate schema and composition](@ref certificate-schema-composition) for the shared contract and sequential composition law;
+22. [Guarded normalization rules](@ref) for the wider candidate rewrite catalogue.
 
 The [Notation and modelling conventions](@ref) follows the BMOPFTools index discipline:
 ``\ell ij`` denotes the stored reference orientation and terminal order for

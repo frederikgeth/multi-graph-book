@@ -117,6 +117,47 @@ frameworks and network-equivalent families.
 - [ ] obtain independent review from both graph/formal-methods and
   power-system-modeling perspectives.
 
+### Stage D — graph invariants with representation scope
+
+- [x] define simple cycles and line-identity cycles through simple cycles and
+  incidence-nullspace circuits;
+- [x] define topological, terminal, electrical, operational, and homogeneous
+  parallelism as distinct predicates;
+- [x] distinguish simple and multigraph degree, leaves, pendant lines, bridges,
+  radial tails, and pendant subnetworks;
+- [x] state bridge and forest characterizations for simple projections and
+  identified parallel fibres;
+- [x] distinguish adjacency-radial from member-radial active states;
+- [x] explain why multi-terminal factor incidence and clique/star compilation
+  can create different apparent cycles;
+- [ ] lift these invariants to conductor-terminal incidence and
+  state-conditioned topology decisions;
+- [ ] lift the active-state radiality witness to the running network and its
+  switch/outage variants.
+
+### Stage E — translation traps and controlled shorthand
+
+- [x] add an early synthesis chapter separating graph-theory, circuit-theory,
+  power-system-practice, and decision-model statements;
+- [x] define the four recurring callouts: graph-theory trap, circuit-theory
+  trap, power-system shorthand, and decision-model consequence;
+- [x] prioritize arrows versus operating flow, terminal power pairs, KCL,
+  cycles versus loop flow, parallelism, radiality, bus meanings, and
+  decision-relative equivalence;
+- [x] seed callouts in the formal-framework, orientation, cycle, preservation,
+  Kron/Ward, and series-elimination chapters;
+- [x] complete the first terminology audit of the foundations, starting
+  chapters, and transformation chapters; the remaining pass is a style and
+  consistency sweep rather than an unscoped search-and-replace;
+- [x] add minimal executable witnesses for connectivity versus energization,
+  complex symmetry versus Hermitian structure, and terminal-specific ratings;
+- [x] add an active-state radiality witness that reports simple-projection and
+  identified-member forests separately;
+- [x] add a circuit-coordinate transformation chapter synthesizing the
+  phase-to-neutral and phase-to-phase reductions and their exactness guards;
+- [ ] make the controlled callout vocabulary machine-checkable without
+  requiring every chapter to contain a callout.
+
 ## Phase 3 — Verified local transformations
 
 **Target:** months 4--8.
@@ -280,6 +321,15 @@ The first executable vertical slice is complete:
     power-dual terminal actions. A first realizability proposition separates
     an exact general multiport from direct reciprocal line--shunt realization,
     passivity, and recovery of original constraints.
+28. cycles, parallelism, bridges, leaves, and radiality now have
+    representation-scoped definitions. The chapter distinguishes simple cycle
+    rank from line-identity cycle rank, records the levels of parallelism, and
+    proves the bridge and forest conditions for simple projections with
+    parallel fibres.
+29. an early translation-traps chapter now distinguishes mathematical errors
+    from context-dependent engineering shorthand. Controlled callouts connect
+    the ten highest-priority misconceptions to their rigorous foundation and
+    decision consequences.
 
 The next sprint should:
 
@@ -308,3 +358,11 @@ The next sprint should:
 10. lift the five-bus incidence and cycle-space objects to conductor-terminal
    connectivity, compiled multi-terminal factors, and state-conditioned
    radial-topology decisions.
+11. lift the active-state radiality certificate to the running network and
+    its switch/outage variants, reporting both adjacency-radial and
+    member-radial status.
+12. audit the remaining draft for the controlled shorthand vocabulary and add
+    executable counterexamples for connectivity versus energization, matrix
+    symmetry, and terminal-rating semantics.
+13. add typed four-wire phase-to-neutral and three-wire phase-to-phase
+    certificates, with explicit shunt, grounding, mesh, and recovery guards.

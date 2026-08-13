@@ -18,6 +18,11 @@ coupled multi-circuit corridor, or a device with several electrical and control 
 graph alone does not state which variables, limits, decisions, and constitutive relations are
 attached to its incidence structure.
 
+!!! warning "Power-system shorthand"
+    In this book, *the graph* is never a complete model by itself. The intended
+    graph, active state, terminal quantities, and retained constraints must be
+    named before a connectivity or reduction claim is interpreted.
+
 The limitations become consequential in decision problems. Suppose parallel branches ``\ell``
 have terminal relation
 
@@ -163,4 +168,3 @@ stating:
 That language should support both scientific results and an implementable transformation system.
 The [Notation and modelling conventions](@ref) and [The running multiconductor network](@ref)
 provide the common vocabulary and adversarial case on which the proposal will first be tested.
-

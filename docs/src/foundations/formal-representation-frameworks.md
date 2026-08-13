@@ -19,6 +19,12 @@ organizational relations, and another family is compiled for computation.
 | asset/dependency relation model | structures, ownership, protection, failures, maintenance, and provenance | orthogonal companion source model |
 | equation and sparsity graphs | algebraic coupling, ordering, decomposition, and solver structure | compiled computational views |
 
+!!! warning "Power-system shorthand"
+    There is no context-free *network graph*. Each row above defines a
+    different object with different admissible queries. The
+    [translation-traps chapter](@ref translation-traps) gives controlled
+    replacements for this and other familiar shorthand.
+
 Here *canonical* means the selected source formalism for this book. It does not
 mean that adequacy or uniqueness has already been established.
 

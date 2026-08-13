@@ -100,58 +100,69 @@ ecosystem, and epistemic status.
    - Morphisms and isomorphisms within each framework; typed quotients,
      compilers, reductions, provenance relations, and query factorization
      between frameworks.
-7. **Physical assets and dependency relations**
-8. **Terminals, conductors, connectivity, and ground**
-9. **Orientation, terminal signs, and operating-point power transfer**
+7. **Translation traps: graphs, circuits, and power-system language**
+   - Controlled replacements for ambiguous arrows, flows, conservation,
+     cycles, parallelism, radiality, buses, equivalents, and matrix language.
+8. **Cycles, parallelism, and radial structure**
+   - Simple cycles, line-identity cycles, parallel fibres, graph degrees,
+     bridges, leaves, radial tails, active-state forests, and multi-terminal
+     factor incidence.
+9. **Physical assets and dependency relations**
+10. **Terminals, conductors, connectivity, and ground**
+11. **Orientation, terminal signs, and operating-point power transfer**
    - Undirected physical incidence, the terminal-arc double cover, arbitrary
      reference orientation, two-end current and power observations, losses,
      nominal-``\pi`` shunts, and genuinely directed relations.
-10. **Node--breaker, bus--breaker, and oriented bus--branch models**
-11. **Simple topology quotients and weighted graphs**
-12. **Multi-terminal and multiwinding devices**
-13. **Port, factor, and hypergraph models**
-14. **Circuit matrices, equation graphs, and sparsity graphs**
-15. **Hierarchy, zones, and subsystem boundaries**
-16. **Study-specific and algorithmic graphs**
-17. **Comparing representation families**
-18. **When the general model collapses**
+12. **Node--breaker, bus--breaker, and oriented bus--branch models**
+13. **Simple topology quotients and weighted graphs**
+14. **Multi-terminal and multiwinding devices**
+15. **Port, factor, and hypergraph models**
+16. **Circuit matrices, equation graphs, and sparsity graphs**
+17. **Hierarchy, zones, and subsystem boundaries**
+18. **Study-specific and algorithmic graphs**
+19. **Comparing representation families**
+20. **When the general model collapses**
     - Balanced operation, transposition, sequence decoupling, neutral elimination, identical
       terminal sets, two-terminal equipment, and transmission-style models.
 
 ### Part II — A common language for transformations
 
-19. **Source, target, and observation contracts**
-20. **Projection and forgetting**
-21. **Compilation and realization**
-22. **Normalization within a model family**
-23. **Exact behavioural reduction and linear Kron elimination**
-24. **Ward and extended-Ward external-system equivalents**
-25. **Structure-constrained and optimized reduction**
+21. **Source, target, and observation contracts**
+22. **Projection and forgetting**
+23. **Compilation and realization**
+24. **Normalization within a model family**
+25. **Circuit coordinate transformations**
+    - Phase-to-neutral and phase-to-phase maps, common-mode quotients,
+      neutral recovery, grounding and shunt guards, and active-member
+      radiality conditions.
+26. **Exact behavioural reduction and linear Kron elimination**
+27. **Ward and extended-Ward external-system equivalents**
+28. **Structure-constrained and optimized reduction**
     - Opti-KRON, voltage-observation metrics, phase/connectivity guards, and
       radiality restoration.
-26. **Approximate but certified reduction**
-27. **Transformation certificates and recovery maps**
-28. **Composition, critical pairs, and purpose-specific normal forms**
+29. **Approximate but certified reduction**
+30. **Transformation certificates and recovery maps**
+31. **Composition, critical pairs, and purpose-specific normal forms**
 
 ### Part III — Guarded transformation patterns
 
-29. **Conductor coordinates, terminal maps, and orientation**
-30. **Switch contraction and state-resolved topology**
-31. **Series elimination and physical line concatenation**
-32. **Parallel recognition, aggregation, and constraint lifting**
-33. **Grounding and explicit neutrals**
-34. **Multiwinding transformer compilation**
-35. **Star--mesh and related circuit transformations**
-36. **Constraint and decision recovery**
+32. **Conductor coordinates, terminal maps, and orientation**
+33. **Switch contraction and state-resolved topology**
+34. **Series elimination and physical line concatenation**
+35. **Parallel recognition, aggregation, and constraint lifting**
+36. **Grounding and explicit neutrals**
+37. **Multiwinding transformer compilation**
+38. **Star--mesh and related circuit transformations**
+39. **Constraint and decision recovery**
 
 ### Part IV — Consequences for decisions
 
-37. **Power flow and optimal power flow**
-38. **Topology processing and switching**
-39. **State estimation and measurement structure**
-40. **Fault, grounding, and protection boundaries**
-41. **Planning, contingencies, and reliability**
-42. **Feeder reduction and operating envelopes**
+40. **Power flow and optimal power flow**
+41. **Topology processing and switching**
+42. **State estimation and measurement structure**
+43. **Fault, grounding, and protection boundaries**
+44. **Planning, contingencies, and reliability**
+45. **Feeder reduction and operating envelopes**
 
 These chapters evaluate more than state error. Their comparison criteria include feasibility,
 active limits, continuous and discrete controls, objective value, optimal decisions, contingency
@@ -159,12 +170,12 @@ outcomes, and recoverability of source quantities.
 
 ### Part V — Worked cases
 
-43. **The running multiconductor network, end to end**
-44. **Heterogeneous parallel-line OPF**
-45. **Four-wire grounding-aware estimation**
-46. **Multiwinding transformer realization**
-47. **Distribution-model cleaning**
-48. **Certified feeder reduction**
+46. **The running multiconductor network, end to end**
+47. **Heterogeneous parallel-line OPF**
+48. **Four-wire grounding-aware estimation**
+49. **Multiwinding transformer realization**
+50. **Distribution-model cleaning**
+51. **Certified feeder reduction**
 
 ### Reference
 

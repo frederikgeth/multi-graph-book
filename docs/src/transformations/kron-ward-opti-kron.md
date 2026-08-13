@@ -198,6 +198,12 @@ The reduced matrix always defines a general linear factor on the retained
 ports. It need not define a conventional collection of lines. Realizability is
 therefore relative to a target device library.
 
+!!! warning "Power-system shorthand"
+    A nonzero off-diagonal block in a reduced admittance is a boundary coupling,
+    not automatically a physical line. Any line--shunt realization is a second
+    construction whose asset meaning, limits, states, and provenance must be
+    declared separately.
+
 For a useful baseline, suppose all retained junctions use the same ordered
 ``c``-conductor coordinates and the target library permits:
 
@@ -354,6 +360,11 @@ approximate. The combined method is therefore not classified simply as
 Low voltage error over a scenario set does not alone prove equality of AC OPF
 feasible sets, active limits, discrete decisions, or objective values. Those
 are additional observation families requiring their own evidence.
+
+!!! warning "Decision-model consequence"
+    Scenario voltage accuracy answers one observation question. It is not a
+    surrogate theorem for feasibility, active-limit, objective, or discrete
+    decision accuracy.
 
 ## Classification in the book's transformation language
 
