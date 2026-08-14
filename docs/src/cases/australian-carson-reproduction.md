@@ -27,6 +27,23 @@ construct the model.  Each OpenDSS load explicitly sets `vminpu=0` and
 `vmaxpu=2`, so the reproduction does not inherit a hidden load-model voltage
 clamp.
 
+The companion register
+`experiments/data/australian_source_audit.toml` keeps provenance judgements
+separate from those inputs.  Each case records whether a field is lifted,
+derived, inferred, or unresolved, together with machine-readable finding
+codes.  In particular, the overhead 60 Hz/order alignment is an inference
+from the probe, not a statement found in the source file; the underground
+`CS1035` mapping remains unresolved.
+
+The generated artifact also carries the versioned
+`power-network-impedance` contract from
+`experiments/data/impedance_contract_schema.toml`.  It requires ordered
+terminals, series and shunt blocks, units, ampacity limits, grounding
+assumptions, source lineage, named derived views, and findings.  The validator
+is deliberately small: it checks that a record is structurally safe to
+exchange, while the audit register carries the domain-specific judgements that
+no generic schema can infer.
+
 ## What is compared, but not used
 
 The files under `data/opendss/Australian_overhead` and
@@ -56,6 +73,12 @@ slightly), so frequency is not a sufficient explanation.  We therefore label
 the UGHV construction as an explicit fixture, keep the CS1035 matrix
 independent, and leave the mapping as an open data task.
 
+The source `StandardLinecodes.dss` also warns that the underground geometry's
+negative physical heights cannot be passed directly to OpenDSS; the
+reproduction uses the documented positive reference-plane convention and
+records that choice in the construction code rather than silently treating it
+as a measured cable depth.
+
 ## Reproduce
 
 From the repository root:
@@ -66,11 +89,23 @@ julia --project=experiments experiments/run_australian_carson_reproduction.jl
 
 The JSON records the construction inputs, generated series and capacitance
 matrices, OpenDSS commands, convergence diagnostics, bus voltages, losses,
-and the independent-reference comparison.  The embedded OpenDSS engine is
+the independent-reference comparison, and a status for each cross-check.  A
+second LinearAlgebra-only constant-power solve agrees with OpenDSS on all
+rows when voltage and line losses are compared (the voltage error is below
+``10^{-6}`` V and the line-loss error below ``10^{-3}`` VA in the current
+fixture).  OpenDSS `Circuit.Losses()` reports the line-element loss but not the
+separately modelled grounding-reactor loss; the artifact therefore keeps both
+line-loss and total-loss comparisons.  The embedded OpenDSS engine is
 left at its stable 60 Hz default; the Carson primitive follows the 50 Hz
 source-library setting.  This distinction is explicit in the artifact rather
 than hidden behind a text-level `set frequency` command, which is unstable in
 the current OpenDSSDirect release.
+
+The underground fixture also includes low and high grounding-impedance rows.
+They keep the construction and load row fixed while changing only the
+grounding factor, making the neutral-voltage and grounding-loss sensitivity
+observable rather than an implicit assumption.  Both rows remain within the
+same independent line-loss cross-check contract.
 
 The result is therefore useful in two ways: it verifies that the available
 construction data can be regenerated end to end, and it identifies exactly

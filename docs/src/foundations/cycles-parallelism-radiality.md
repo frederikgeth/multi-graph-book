@@ -17,6 +17,11 @@ This chapter fixes the book's terminology. The electrical and decision meaning
 of a topological statement is a second question: constitutive equations,
 limits, states, and observations must still be attached.
 
+The preceding [two-level topology chapter](@ref two-level-topology-and-nodal-projection)
+explains why asset, conductor/port--factor, and nodal-operator support graphs
+can have different edges and cycles. Here those distinctions become explicit
+cycle, parallelism, bridge, leaf, and radiality definitions.
+
 ## Simple cycles and line-identity cycles
 
 Let ``G_{\mathrm s}=(\mathcal B,E)`` be a loopless undirected simple graph.

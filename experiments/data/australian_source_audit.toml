@@ -1,0 +1,24 @@
+# Machine-readable provenance status for the Australian reproduction.
+# This file is deliberately separate from australian_source_inputs.toml:
+# inferred alignment hypotheses are not construction inputs.
+
+[schema]
+version = "0.1.0"
+purpose = "field-level provenance and unresolved-mapping register"
+
+[case.overhead]
+construction_status = "lifted"
+reference_matrix_status = "derived_reference"
+reference_frequency_status = "inferred_from_probe"
+reference_frequency_hz = 60.0
+reference_conductor_order_status = "inferred_from_probe"
+reference_conductor_order = [4, 1, 2, 3]
+mapping_status = "near_exact_after_frequency_and_order_alignment"
+finding_codes = ["SRC-FREQ-INFERRED", "SRC-ORDER-INFERRED"]
+
+[case.underground]
+construction_status = "lifted_fixture"
+reference_matrix_status = "derived_reference"
+reference_frequency_status = "not_explanatory"
+mapping_status = "unresolved"
+finding_codes = ["SRC-CS1035-MAPPING-UNRESOLVED", "SRC-FREQ-NOT-EXPLANATORY"]

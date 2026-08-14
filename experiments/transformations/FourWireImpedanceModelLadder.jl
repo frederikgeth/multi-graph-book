@@ -2,7 +2,7 @@ module FourWireImpedanceModelLadder
 
 using LinearAlgebra
 
-export four_wire_impedance_ladder
+export four_wire_impedance_ladder, compose_path
 
 function encode_matrix(matrix)
     [[Dict("re" => real(matrix[row, column]), "im" => imag(matrix[row, column]))
@@ -59,6 +59,48 @@ function path_rule(name, source, target, exactness, guards, preserves, forgets, 
     )
 end
 
+const EXACTNESS_RANK = Dict(
+    "exact-coordinate" => 1,
+    "guarded-exact" => 2,
+    "approximate" => 3,
+    "restricted-approximation" => 4,
+)
+
+const PRESERVATION_STATUS = Dict(
+    "exact-coordinate" => "exact",
+    "guarded-exact" => "guarded",
+    "approximate" => "not-preserved",
+    "restricted-approximation" => "not-preserved",
+)
+
+"Compose a compatible transformation path without upgrading its guarantees."
+function compose_path(path; discharged_guards=String[])
+    isempty(path) && throw(ArgumentError("cannot compose an empty transformation path"))
+    findings = String[]
+    for index in 1:(length(path) - 1)
+        path[index]["target"] == path[index + 1]["source"] ||
+            push!(findings, "IMP-PATH-MISMATCH:$index")
+    end
+    ranks = [get(EXACTNESS_RANK, rule["exactness"], typemax(Int)) for rule in path]
+    maximum(ranks) == typemax(Int) && push!(findings, "IMP-UNKNOWN-EXACTNESS")
+    all_rules = unique(vcat((rule["guards"] for rule in path)...))
+    unresolved = setdiff(all_rules, discharged_guards)
+    Dict{String,Any}(
+        "component_rules" => [rule["rule"] for rule in path],
+        "source" => first(path)["source"],
+        "target" => last(path)["target"],
+        "weakest_exactness" => path[argmax(ranks)]["exactness"],
+        "preservation_status" => PRESERVATION_STATUS[path[argmax(ranks)]["exactness"]],
+        "guards" => all_rules,
+        "unresolved_guards" => unresolved,
+        "risk_tags" => unique(vcat((rule["risk_tags"] for rule in path)...)),
+        "forgets" => unique(vcat((rule["forgets"] for rule in path)...)),
+        "discharged_guards" => unique(discharged_guards),
+        "findings" => findings,
+        "composable" => isempty(findings),
+    )
+end
+
 "Deterministic four-wire impedance ladder and preservation-risk witness."
 function four_wire_impedance_ladder()
     data = source_data()
@@ -100,14 +142,14 @@ function four_wire_impedance_ladder()
 
     chain = [
         path_rule(
-            "K_g", "circuit_primitive", "conductor_primitive", "guarded-exact",
+            "K_g", "circuit_primitive", "four-wire-conductor-primitive", "guarded-exact",
             ["earth reference and earth-return convention declared"],
             ["ordered conductor relation under the declared ground model"],
             ["explicit earth asset and alternative ground-potential observations"],
             ["earth-return", "reference-potential", "provenance"],
         ),
         path_rule(
-            "K_n", "four-wire-conductor-primitive", "Kron-reduced-phase-primitive", "guarded-exact",
+            "K_n", "four-wire-conductor-primitive", "phase-primitive", "guarded-exact",
             ["neutral block invertible", "neutral voltage/grounding assumption declared", "neutral limits recovered"],
             ["declared phase boundary relation"],
             ["neutral voltage and separate neutral identity unless recovered"],
@@ -135,14 +177,14 @@ function four_wire_impedance_ladder()
             ["ordering", "coordinate-convention"],
         ),
         path_rule(
-            "D", "full-sequence-primitive", "diagonal-sequence-primitive", "approximate",
+            "D", "sequence-primitive", "diagonal-sequence-primitive", "approximate",
             ["sequence coupling is negligible or excluded by the study"],
             ["diagonal sequence relation only"],
             ["sequence coupling and cross-channel constraints"],
             ["sequence-mixing", "unbalance", "decision-domain"],
         ),
         path_rule(
-            "F_1", "sequence-primitive", "positive-sequence-primitive", "restricted-approximation",
+            "F_1", "diagonal-sequence-primitive", "positive-sequence-primitive", "restricted-approximation",
             ["balanced boundary data", "sequence-compatible factors and decisions", "positive-sequence observations"],
             ["positive-sequence subspace under the declared closure"],
             ["zero/negative sequence, phase-specific and neutral observations"],
@@ -162,7 +204,16 @@ function four_wire_impedance_ladder()
         "positive_sequence_guard_is_required" => opnorm(z_seq - z_seq_diag, Inf) > 1.0e-3,
         "shunt_deletion_changes_declared_factor" => opnorm(y, Inf) > 1.0e-6,
         "every_path_rule_has_risk_tags" => all(!isempty(rule["risk_tags"]) for rule in chain),
+        "main_path_composes" => begin
+            result = compose_path(chain[[1, 2, 5, 6, 7]])
+            result["composable"] && result["preservation_status"] == "not-preserved" &&
+                !isempty(result["unresolved_guards"])
+        end,
+        "phase_to_neutral_branch_composes" => compose_path(chain[[1, 3]])["composable"],
     )
+
+    main_composition = compose_path(chain[[1, 2, 5, 6, 7]])
+    phase_neutral_composition = compose_path(chain[[1, 3]])
 
     Dict{String,Any}(
         "witness_id" => "IMPEDANCE-LADDER-001",
@@ -206,6 +257,10 @@ function four_wire_impedance_ladder()
             "phase_to_neutral_drop" => [Dict("re" => real(value), "im" => imag(value)) for value in phase_neutral_drop],
         ),
         "transformation_path" => chain,
+        "path_compositions" => Dict(
+            "main" => main_composition,
+            "phase_to_neutral" => phase_neutral_composition,
+        ),
         "checks" => checks,
         "all_checks_pass" => all(values(checks)),
         "scope" => "The fixture separates exact coordinate changes and guarded reductions from shunt deletion, sequence decoupling, balancing, and positive-sequence decision restrictions. It is not a geometry-identification or global power-flow accuracy claim.",

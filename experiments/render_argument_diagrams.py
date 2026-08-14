@@ -624,10 +624,10 @@ def map_of_maps() -> str:
         txt(200, 335, "hierarchical source", "head", "middle"), txt(200, 365, "assets · ports · factors", "body", "middle"), txt(200, 392, "states · limits · provenance", "small", "middle"),
     ]
     views = [
-        (470, 145, "bus–branch multigraph", "C_m", "PF/OPF incidence", "parallel identity retained"),
-        (840, 145, "simple topology", "Pi_s", "islands/partitioning", "parallel fibre forgotten"),
-        (470, 430, "port–factor", "C_p", "multiconductor equations", "terminal maps retained"),
-        (840, 430, "OPF equation view", "C_o", "decisions and limits", "constraint rows explicit"),
+        (470, 145, "bus–branch multigraph", "Cₘ", "PF/OPF incidence", "parallel identity retained"),
+        (840, 145, "simple topology", "πₛ", "islands/partitioning", "parallel fibre forgotten"),
+        (470, 430, "port–factor", "Cₚ", "multiconductor equations", "terminal maps retained"),
+        (840, 430, "OPF equation view", "Cₒ", "decisions and limits", "constraint rows explicit"),
         (470, 650, "sparsity/Jacobian", "δ", "ordering and fill", "dependency graph"),
     ]
     for x, y, title, mapname, query, detail in views:
@@ -726,6 +726,112 @@ def active_radiality() -> str:
     return "\n".join(lines) + "\n"
 
 
+def topology_projection_layers() -> str:
+    lines = [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="790" viewBox="0 0 1400 790">',
+        '<title>Two topology levels and one nodal-admittance projection</title>',
+        '<desc>Three panels trace two parallel multiconductor line assets from an identified bus-level multigraph, through conductor-terminal junctions and separate factors, into one block edge in the support graph of the assembled nodal admittance matrix.</desc>',
+        '<rect width="1400" height="790" fill="white"/>',
+        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#5f6b76}.bus{fill:#d9eef8;stroke:#245b7a;stroke-width:3}.factor{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.algebra{fill:#eee8f8;stroke:#7856a8;stroke-width:2}.physical{stroke:#245b7a;stroke-width:5;fill:none}.wire{stroke:#8a4f13;stroke-width:2.5;fill:none}.support{stroke:#7856a8;stroke-width:6;fill:none}.arrow{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.lost{stroke:#5f6b76;stroke-width:2;stroke-dasharray:8 6;fill:none}</style>',
+        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
+        txt(40, 44, "One network, two topology levels, one algebraic projection", "title"),
+        txt(40, 72, "Asset identity and conductor incidence are source structure; matrix support is a derived computational view.", "sub"),
+        '<rect x="35" y="110" width="405" height="590" rx="14" class="panel"/>',
+        '<rect x="495" y="110" width="405" height="590" rx="14" class="panel"/>',
+        '<rect x="955" y="110" width="405" height="590" rx="14" class="panel"/>',
+        txt(60, 150, "1  identified asset topology", "head"),
+        txt(520, 150, "2  conductor / port–factor topology", "head"),
+        txt(980, 150, "3  block support of Yᴺ", "head"),
+        # High-level identified multigraph.
+        '<circle cx="125" cy="350" r="34" class="bus"/><circle cx="350" cy="350" r="34" class="bus"/>',
+        txt(125, 357, "i", "head", "middle"), txt(350, 357, "j", "head", "middle"),
+        '<path d="M157 335 C210 275 270 275 318 335" class="physical"/>',
+        '<path d="M157 365 C210 425 270 425 318 365" class="physical"/>',
+        txt(238, 272, "ℓ₁", "body", "middle"), txt(238, 454, "ℓ₂", "body", "middle"),
+        txt(237, 525, "same buses; distinct assets", "body", "middle"),
+        txt(237, 552, "ratings, states, owners retained", "small", "middle"),
+        txt(237, 620, "parallel fibre {ℓ₁, ℓ₂}", "small", "middle"),
+        # Low-level terminal junctions and line factors. Two factors attach to the same junctions.
+        '<circle cx="555" cy="260" r="20" class="bus"/><circle cx="555" cy="445" r="20" class="bus"/>',
+        '<circle cx="840" cy="260" r="20" class="bus"/><circle cx="840" cy="445" r="20" class="bus"/>',
+        txt(555, 266, "i/a", "small", "middle"), txt(555, 451, "i/n", "small", "middle"),
+        txt(840, 266, "j/a", "small", "middle"), txt(840, 451, "j/n", "small", "middle"),
+        '<rect x="650" y="215" width="95" height="90" rx="12" class="factor"/>',
+        '<rect x="650" y="400" width="95" height="90" rx="12" class="factor"/>',
+        txt(697, 252, "factor ℓ₁", "body", "middle"), txt(697, 276, "full Y(ℓ₁)", "small", "middle"),
+        txt(697, 437, "factor ℓ₂", "body", "middle"), txt(697, 461, "full Y(ℓ₂)", "small", "middle"),
+        '<path d="M575 260 L650 235 M575 445 L650 285 M745 235 L820 260 M745 285 L820 445" class="wire"/>',
+        '<path d="M575 260 L650 420 M575 445 L650 470 M745 420 L820 260 M745 470 L820 445" class="wire"/>',
+        txt(697, 545, "ports may share a junction", "body", "middle"),
+        txt(697, 570, "factor decomposition remains explicit", "small", "middle"),
+        txt(697, 620, "shared attachment is not aggregation", "small", "middle"),
+        # Algebraic block support and summed off-diagonal block.
+        '<rect x="1010" y="235" width="120" height="120" rx="12" class="algebra"/>',
+        '<rect x="1185" y="235" width="120" height="120" rx="12" class="algebra"/>',
+        txt(1070, 282, "node block i", "body", "middle"), txt(1070, 312, "[a,n]", "small", "middle"),
+        txt(1245, 282, "node block j", "body", "middle"), txt(1245, 312, "[a,n]", "small", "middle"),
+        '<path d="M1132 295 L1183 295" class="support"/>',
+        txt(1157, 215, "one support edge", "small", "middle"),
+        '<rect x="1015" y="420" width="285" height="90" rx="12" class="algebra"/>',
+        txt(1157, 455, "Yᴺ[i,j] = Y(ℓ₁)[i,j] + Y(ℓ₂)[i,j]", "body", "middle"),
+        txt(1157, 482, "a dense conductor block is possible", "small", "middle"),
+        '<path d="M1015 565 L1300 565" class="lost"/>',
+        txt(1157, 603, "support retains coupling", "body", "middle"),
+        txt(1157, 630, "but not the decomposition into ℓ₁ and ℓ₂", "small", "middle"),
+        # Cross-panel maps.
+        '<path d="M442 390 L482 390" class="arrow"/>', txt(462, 370, "lift", "small", "middle"),
+        '<path d="M902 390 L942 390" class="arrow"/>', txt(922, 370, "stamp", "small", "middle"),
+        txt(40, 755, "The last map is many-to-one: different asset/factor decompositions can assemble to the same nodal operator.", "small"),
+        '</svg>',
+    ]
+    return "\n".join(lines) + "\n"
+
+
+def radial_clique_projection() -> str:
+    lines = [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">',
+        '<title>A radial asset graph can have a cyclic conductor-expanded support graph</title>',
+        '<desc>The left panel is a three-bus tree with two multiconductor lines. The right panel expands each bus into two conductor nodes and shows the clique support induced by dense line stamps. Cycles on the right are algebraic coupling cycles, not additional physical line routes.</desc>',
+        '<rect width="1400" height="760" fill="white"/>',
+        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:20px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#5f6b76}.bus{fill:#d9eef8;stroke:#245b7a;stroke-width:3}.macro{stroke:#245b7a;stroke-width:6;fill:none}.scalar{stroke:#7856a8;stroke-width:2.5;fill:none}.shared{stroke:#8a4f13;stroke-width:4;fill:none}.arrow{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.note{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}</style>',
+        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
+        txt(40, 44, "Radial at the macro level can be cyclic after conductor expansion", "title"),
+        txt(40, 72, "With dense multiconductor stamps, each physical line can induce a clique in scalar matrix support.", "sub"),
+        '<rect x="40" y="115" width="500" height="535" rx="14" class="panel"/>',
+        '<rect x="650" y="115" width="710" height="535" rx="14" class="panel"/>',
+        txt(70, 155, "asset / bus-level topology", "head"), txt(680, 155, "conductor-expanded matrix support", "head"),
+        # Macro tree.
+        '<circle cx="145" cy="370" r="35" class="bus"/><circle cx="290" cy="270" r="35" class="bus"/><circle cx="435" cy="370" r="35" class="bus"/>',
+        '<line x1="174" y1="350" x2="261" y2="290" class="macro"/><line x1="319" y1="290" x2="406" y2="350" class="macro"/>',
+        txt(145, 377, "i", "head", "middle"), txt(290, 277, "j", "head", "middle"), txt(435, 377, "k", "head", "middle"),
+        txt(215, 300, "ℓ₁", "body", "middle"), txt(365, 300, "ℓ₂", "body", "middle"),
+        txt(290, 455, "tree: μ = 0", "body", "middle"),
+        txt(290, 490, "one path between each bus pair", "small", "middle"),
+        # Expanded two-conductor nodes, laid out as bus columns.
+        '<circle cx="750" cy="280" r="24" class="bus"/><circle cx="750" cy="465" r="24" class="bus"/>',
+        '<circle cx="1005" cy="280" r="24" class="bus"/><circle cx="1005" cy="465" r="24" class="bus"/>',
+        '<circle cx="1260" cy="280" r="24" class="bus"/><circle cx="1260" cy="465" r="24" class="bus"/>',
+        txt(750, 286, "i/a", "small", "middle"), txt(750, 471, "i/n", "small", "middle"),
+        txt(1005, 286, "j/a", "small", "middle"), txt(1005, 471, "j/n", "small", "middle"),
+        txt(1260, 286, "k/a", "small", "middle"), txt(1260, 471, "k/n", "small", "middle"),
+        # K4 support for each dense two-conductor line stamp. Shared j-column edge is highlighted.
+        '<line x1="774" y1="280" x2="981" y2="280" class="scalar"/><line x1="774" y1="465" x2="981" y2="465" class="scalar"/>',
+        '<line x1="770" y1="299" x2="985" y2="446" class="scalar"/><line x1="770" y1="446" x2="985" y2="299" class="scalar"/>',
+        '<line x1="750" y1="304" x2="750" y2="441" class="scalar"/><line x1="1005" y1="304" x2="1005" y2="441" class="shared"/>',
+        '<line x1="1029" y1="280" x2="1236" y2="280" class="scalar"/><line x1="1029" y1="465" x2="1236" y2="465" class="scalar"/>',
+        '<line x1="1025" y1="299" x2="1240" y2="446" class="scalar"/><line x1="1025" y1="446" x2="1240" y2="299" class="scalar"/>',
+        '<line x1="1260" y1="304" x2="1260" y2="441" class="scalar"/>',
+        txt(878, 225, "clique from ℓ₁", "small", "middle"), txt(1132, 225, "clique from ℓ₂", "small", "middle"),
+        '<rect x="775" y="535" width="460" height="70" rx="12" class="note"/>',
+        txt(1005, 565, "matrix cycles ≠ additional physical routes", "body", "middle"),
+        txt(1005, 588, "shared support also sums contributions from adjacent stamps", "small", "middle"),
+        '<path d="M542 370 L635 370" class="arrow"/>', txt(589, 345, "expand + stamp", "small", "middle"),
+        txt(40, 710, "The clique claim is conditional on the nonzero pattern of the primitive stamp; absent coupling removes scalar support edges.", "small"),
+        '</svg>',
+    ]
+    return "\n".join(lines) + "\n"
+
+
 def main() -> None:
     outputs = {
         "exactness-classes": exactness_classes(),
@@ -745,6 +851,8 @@ def main() -> None:
         "kron-fill-in": kron_fill_in(),
         "provenance-lineage": provenance_lineage(),
         "active-radiality": active_radiality(),
+        "topology-projection-layers": topology_projection_layers(),
+        "radial-clique-projection": radial_clique_projection(),
     }
     for stem, content in outputs.items():
         (ASSETS / f"{stem}.svg").write_text(content)

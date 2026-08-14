@@ -115,6 +115,7 @@ const PAGES_HTML = [
     ],
     "Part I — Physical and computational reference" => [
         "Translation traps: graphs, circuits, and power-system language" => "foundations/translation-traps.md",
+        "Two topology levels and the nodal projection" => "foundations/two-level-topology-and-nodal-projection.md",
         "Cycles, parallelism, and radial structure" => "foundations/cycles-parallelism-radiality.md",
         "Orientation, terminal quantities, and power transfer" => "foundations/orientation-terminal-power.md",
         "Earth, neutral, and reference model classes" => "foundations/earth-ground-models.md",
@@ -170,6 +171,7 @@ const PAGES_PDF = [
     "Core representation and transformation language" => [
         "Representation frameworks" => "foundations/formal-representation-frameworks.md",
         "Translation traps: graphs, circuits, and power-system language" => "foundations/translation-traps.md",
+        "Two topology levels and the nodal projection" => "foundations/two-level-topology-and-nodal-projection.md",
         "Orientation, terminal quantities, and power transfer" => "foundations/orientation-terminal-power.md",
         "Cycles, parallelism, and radial structure" => "foundations/cycles-parallelism-radiality.md",
         "Preservation contracts" => "foundations/preservation-contracts.md",

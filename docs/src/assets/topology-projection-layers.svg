@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="790" viewBox="0 0 1400 790">
+<title>Two topology levels and one nodal-admittance projection</title>
+<desc>Three panels trace two parallel multiconductor line assets from an identified bus-level multigraph, through conductor-terminal junctions and separate factors, into one block edge in the support graph of the assembled nodal admittance matrix.</desc>
+<rect width="1400" height="790" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#5f6b76}.bus{fill:#d9eef8;stroke:#245b7a;stroke-width:3}.factor{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.algebra{fill:#eee8f8;stroke:#7856a8;stroke-width:2}.physical{stroke:#245b7a;stroke-width:5;fill:none}.wire{stroke:#8a4f13;stroke-width:2.5;fill:none}.support{stroke:#7856a8;stroke-width:6;fill:none}.arrow{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.lost{stroke:#5f6b76;stroke-width:2;stroke-dasharray:8 6;fill:none}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>
+<text x="40" y="44" class="title" text-anchor="start">One network, two topology levels, one algebraic projection</text>
+<text x="40" y="72" class="sub" text-anchor="start">Asset identity and conductor incidence are source structure; matrix support is a derived computational view.</text>
+<rect x="35" y="110" width="405" height="590" rx="14" class="panel"/>
+<rect x="495" y="110" width="405" height="590" rx="14" class="panel"/>
+<rect x="955" y="110" width="405" height="590" rx="14" class="panel"/>
+<text x="60" y="150" class="head" text-anchor="start">1  identified asset topology</text>
+<text x="520" y="150" class="head" text-anchor="start">2  conductor / port–factor topology</text>
+<text x="980" y="150" class="head" text-anchor="start">3  block support of Yᴺ</text>
+<circle cx="125" cy="350" r="34" class="bus"/><circle cx="350" cy="350" r="34" class="bus"/>
+<text x="125" y="357" class="head" text-anchor="middle">i</text>
+<text x="350" y="357" class="head" text-anchor="middle">j</text>
+<path d="M157 335 C210 275 270 275 318 335" class="physical"/>
+<path d="M157 365 C210 425 270 425 318 365" class="physical"/>
+<text x="238" y="272" class="body" text-anchor="middle">ℓ₁</text>
+<text x="238" y="454" class="body" text-anchor="middle">ℓ₂</text>
+<text x="237" y="525" class="body" text-anchor="middle">same buses; distinct assets</text>
+<text x="237" y="552" class="small" text-anchor="middle">ratings, states, owners retained</text>
+<text x="237" y="620" class="small" text-anchor="middle">parallel fibre {ℓ₁, ℓ₂}</text>
+<circle cx="555" cy="260" r="20" class="bus"/><circle cx="555" cy="445" r="20" class="bus"/>
+<circle cx="840" cy="260" r="20" class="bus"/><circle cx="840" cy="445" r="20" class="bus"/>
+<text x="555" y="266" class="small" text-anchor="middle">i/a</text>
+<text x="555" y="451" class="small" text-anchor="middle">i/n</text>
+<text x="840" y="266" class="small" text-anchor="middle">j/a</text>
+<text x="840" y="451" class="small" text-anchor="middle">j/n</text>
+<rect x="650" y="215" width="95" height="90" rx="12" class="factor"/>
+<rect x="650" y="400" width="95" height="90" rx="12" class="factor"/>
+<text x="697" y="252" class="body" text-anchor="middle">factor ℓ₁</text>
+<text x="697" y="276" class="small" text-anchor="middle">full Y(ℓ₁)</text>
+<text x="697" y="437" class="body" text-anchor="middle">factor ℓ₂</text>
+<text x="697" y="461" class="small" text-anchor="middle">full Y(ℓ₂)</text>
+<path d="M575 260 L650 235 M575 445 L650 285 M745 235 L820 260 M745 285 L820 445" class="wire"/>
+<path d="M575 260 L650 420 M575 445 L650 470 M745 420 L820 260 M745 470 L820 445" class="wire"/>
+<text x="697" y="545" class="body" text-anchor="middle">ports may share a junction</text>
+<text x="697" y="570" class="small" text-anchor="middle">factor decomposition remains explicit</text>
+<text x="697" y="620" class="small" text-anchor="middle">shared attachment is not aggregation</text>
+<rect x="1010" y="235" width="120" height="120" rx="12" class="algebra"/>
+<rect x="1185" y="235" width="120" height="120" rx="12" class="algebra"/>
+<text x="1070" y="282" class="body" text-anchor="middle">node block i</text>
+<text x="1070" y="312" class="small" text-anchor="middle">[a,n]</text>
+<text x="1245" y="282" class="body" text-anchor="middle">node block j</text>
+<text x="1245" y="312" class="small" text-anchor="middle">[a,n]</text>
+<path d="M1132 295 L1183 295" class="support"/>
+<text x="1157" y="215" class="small" text-anchor="middle">one support edge</text>
+<rect x="1015" y="420" width="285" height="90" rx="12" class="algebra"/>
+<text x="1157" y="455" class="body" text-anchor="middle">Yᴺ[i,j] = Y(ℓ₁)[i,j] + Y(ℓ₂)[i,j]</text>
+<text x="1157" y="482" class="small" text-anchor="middle">a dense conductor block is possible</text>
+<path d="M1015 565 L1300 565" class="lost"/>
+<text x="1157" y="603" class="body" text-anchor="middle">support retains coupling</text>
+<text x="1157" y="630" class="small" text-anchor="middle">but not the decomposition into ℓ₁ and ℓ₂</text>
+<path d="M442 390 L482 390" class="arrow"/>
+<text x="462" y="370" class="small" text-anchor="middle">lift</text>
+<path d="M902 390 L942 390" class="arrow"/>
+<text x="922" y="370" class="small" text-anchor="middle">stamp</text>
+<text x="40" y="755" class="small" text-anchor="start">The last map is many-to-one: different asset/factor decompositions can assemble to the same nodal operator.</text>
+</svg>

@@ -14,7 +14,7 @@ The roadmap separates **publication infrastructure**, **knowledge synthesis**,
 **formal results**, and **software/experiments** so that progress in one does
 not masquerade as completion of the others.
 
-## Current status and active plan (2026-08-14)
+## Current status and active plan (2026-08-15)
 
 The review-response foundation pass is implemented and retained as an internal
 archival record. The HTML-first knowledge base, curated PDF route, claims
@@ -89,16 +89,16 @@ taxonomy to implementable data and transformation workflows:
 - [x] add a deterministic package-independent four-wire ladder fixture with
   neutral-current and phase-to-neutral recovery checks, visible sequence
   mixing, and explicit per-edge risk tags;
-- [ ] promote the reader-facing impedance contract to a versioned interchange
+- [x] promote the reader-facing impedance contract to a versioned interchange
   schema with machine-readable finding codes and source/derived/inferred field
-  status;
+  status, limits, and grounding assumptions;
 - [ ] reproduce the authored overhead-line and underground-cable cases with
   balanced/unbalanced load rows, grounding variants, voltage/loss observations,
   and geometry or linecode provenance;
-- [ ] cross-check the authored cases against OpenDSS, BMOPFTools, or another
-  independently assembled network engine while retaining the package-
-  independent reference implementation;
-- [ ] add path-level composition checks that carry the weakest preservation
+- [x] cross-check the authored cases against OpenDSS, BMOPFTools, and a
+  separately assembled LinearAlgebra reference solve, with explicit line-loss
+  versus grounding-reactor-loss accounting;
+- [x] add path-level composition checks that carry the weakest preservation
   status and the union of unresolved guards through a sequence of maps.
 
 The available Australian source data is now audited and reproduced as a
@@ -116,10 +116,37 @@ bounded case study:
 - [x] separate the Australian overhead mismatch into frequency and conductor
   ordering: a 60 Hz probe with source order `[4,1,2,3]` reproduces the stored
   matrix to approximately `4.3e-5 Ohm/km`;
+- [x] add a machine-readable source-audit register that distinguishes lifted
+  construction, derived reference, inferred alignment, and unresolved mapping
+  status (including the OpenDSS underground-height caveat);
+- [x] bind the generated neutral conductor to the explicit grounding terminal
+  and decompose OpenDSS line losses from separately modelled grounding losses;
+- [x] add low- and high-grounding-impedance rows with independent voltage and
+  line-loss cross-checks;
 - [ ] recover an explicit source declaration for the overhead reference
   frequency/order, and the raw cable construction mapping for CS1035;
 - [ ] only claim a faithful reproduction of those reference cases after the
   preceding provenance mappings are available.
+
+The two-level topology and nodal-projection tranche is now part of the active
+graph-architecture work:
+
+- [x] distinguish identified asset/terminal topology, conductor/port--factor
+  topology, and block/scalar nodal-operator support;
+- [x] define the factor-stamping map and explain why a nodal operator is not a
+  unique factorization or an asset multigraph;
+- [x] separate asset, conductor-incidence, and matrix-support cycles, including
+  the radial-macro/clique-support example from the multiphase OPF literature;
+- [x] add audited diagrams for the two-level projection and the radial-to-
+  cyclic-support apparent paradox;
+- [x] state a source-retention and assembly round-trip contract, including the
+  non-injective conductor-to-terminal case outside narrower adapters;
+- [ ] add a generated factor-stamp witness that computes block/scalar support,
+  parallel-stamp aggregation, and decomposition provenance on the running
+  multiconductor fixture;
+- [ ] investigate source recovery as a separately scoped inverse problem with
+  explicit identifiability classes; do not present ``\mathbf Y^{\mathrm N}``
+  inversion as a canonical import path.
 
 ## Phase 0 — Repository and editorial foundation
 
@@ -827,6 +854,10 @@ to proceed in parallel.
 - [x] bind the conductor-terminal, running-network radiality, and hierarchy
   boundary witnesses to the aggregate experiment test suite and documentation
   CI, alongside the dependency-light package test.
+- [x] add the two-level topology/nodal-projection chapter, support-graph
+  definitions, and radial-macro versus clique-support diagrams;
+- [ ] add the generated factor-stamp and support-graph witness described in the
+  topology-projection tranche;
 - [ ] optionally publish/tag the standalone package after API and
   compatibility-policy review.
 

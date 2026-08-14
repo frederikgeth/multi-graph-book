@@ -79,7 +79,31 @@ Carson primitives and OpenDSSDirect solves are written to
 `Zabcn` and underground `CS1035` matrices are loaded only as independent
 reference outputs.  The source repository does not identify a raw cable
 construction that maps to `CS1035`, so the artifact records that gap rather
-than silently using the published matrix as an input.
+than silently using the published matrix as an input.  The separate
+`data/australian_source_audit.toml` file is a small machine-readable register
+of provenance status: `lifted` and `derived_reference` describe source-backed
+fields, while `inferred_from_probe` and `unresolved` identify hypotheses and
+open mappings.  It records the overhead 60 Hz/conductor-order explanation as
+an inference, and the underground negative-height/OpenDSS reference-plane
+workaround as a modelling caveat.
+
+The generated record additionally validates against the v0.1
+`power-network-impedance` interchange contract in
+`data/impedance_contract_schema.toml`.  Its required fields keep ordered
+terminals, series/shunt blocks, units, lineage, views, and findings together;
+ampacity limits and grounding assumptions are included as first-class fields;
+the contract does not upgrade an inferred or unresolved field into a source
+fact.
+
+Each generated load row also carries a package-independent
+`LinearAlgebra`-only constant-power reference solve.  Voltage and line losses
+agree across balanced and unbalanced rows.  The artifact separates those
+line losses from total losses because OpenDSS `Circuit.Losses()` excludes the
+separately modelled grounding-reactor loss.
+
+The underground fixture includes `balanced_low_grounding` and
+`balanced_high_grounding` rows, so neutral-voltage sensitivity to the grounding
+factor is recorded alongside the balanced and unbalanced load rows.
 
 The explicit-earth Kron probe can be regenerated independently with:
 

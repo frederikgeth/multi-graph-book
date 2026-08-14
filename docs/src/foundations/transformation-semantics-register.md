@@ -138,7 +138,13 @@ This makes transformation sequences auditable. A later rule may not silently
 upgrade an earlier `not-preserved` layer to `exact`; composition must carry the
 weakest status and the union of unresolved guards. The generated
 `experiments/generated/four-wire-impedance-model-ladder.json` artifact records
-this path and checks that every edge has explicit risk tags.
+this path and checks that every edge has explicit risk tags.  It also composes
+the main ``K_g\to K_n\to F\to D\to F_1`` route and the phase-to-neutral
+branch.  The composition record carries the weakest exactness label, the
+union of guards that have not been discharged, and the union of forgotten
+observations and risk tags.  A deliberately mismatched source/target pair is
+rejected by the same executable helper, so a visually plausible chain cannot
+silently become a proof.
 
 ## Anti-patterns worth showing explicitly
 

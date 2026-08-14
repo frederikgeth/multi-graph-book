@@ -96,101 +96,107 @@ not attempt to reproduce the knowledge-base indexes as a linear chapter sequence
 
 ### Part I — Representation landscape
 
-5. **Formal representation frameworks**
+6. **Formal representation frameworks**
    - Simple topology quotient, oriented attributed multigraph, hierarchical
      port--factor incidence model, asset/dependency relation model, and
      equation/sparsity graphs.
-6. **Maps between representation frameworks**
+7. **Maps between representation frameworks**
    - Morphisms and isomorphisms within each framework; typed quotients,
      compilers, reductions, provenance relations, and query factorization
      between frameworks.
-7. **Translation traps: graphs, circuits, and power-system language**
+8. **Translation traps: graphs, circuits, and power-system language**
    - Controlled replacements for ambiguous arrows, flows, conservation,
      cycles, parallelism, radiality, buses, equivalents, and matrix language.
-8. **Cycles, parallelism, and radial structure**
+9. **Two topology levels and the nodal projection**
+   - Identified asset/terminal topology, conductor/port--factor topology, and
+     block/scalar nodal-operator support.
+   - Parallelism and cycles at each level; factor-stamp assembly,
+     non-identifiability, source retention, and radial macro-topology with
+     cyclic conductor-expanded support.
+10. **Cycles, parallelism, and radial structure**
    - Simple cycles, line-identity cycles, parallel fibres, graph degrees,
      bridges, leaves, radial tails, active-state forests, and multi-terminal
      factor incidence.
-9. **Physical assets and dependency relations**
-10. **Terminals, conductors, connectivity, and ground**
+11. **Physical assets and dependency relations**
+12. **Terminals, conductors, connectivity, and ground**
    - Reference, neutral, earth-return, and asset-aware grounding classes;
      scope contracts for neutral and earth reductions.
-11. **Orientation, terminal signs, and operating-point power transfer**
+13. **Orientation, terminal signs, and operating-point power transfer**
    - Undirected physical incidence, the terminal-arc double cover, arbitrary
      reference orientation, two-end current and power observations, losses,
      nominal-``\pi`` shunts, and genuinely directed relations.
    - Rooted active-tree views, parent/child labels, source-relative distance,
      meshed chords, and switching-state recomputation.
-12. **Node--breaker, bus--breaker, and oriented bus--branch models**
+14. **Node--breaker, bus--breaker, and oriented bus--branch models**
    - State-conditioned connectivity, switch contraction, topological nodes,
      and recovery of switching/protection identity.
-13. **Simple topology quotients and weighted graphs**
-14. **Multi-terminal and multiwinding devices**
-15. **Port, factor, and hypergraph models**
-16. **Circuit matrices, equation graphs, and sparsity graphs**
-17. **Hierarchy, zones, and subsystem boundaries**
-18. **Numerical consequences of representation and reduction**
+15. **Simple topology quotients and weighted graphs**
+16. **Multi-terminal and multiwinding devices**
+17. **Port, factor, and hypergraph models**
+18. **Circuit matrices, equation graphs, and sparsity graphs**
+19. **Hierarchy, zones, and subsystem boundaries**
+20. **Numerical consequences of representation and reduction**
    - Per-unit and coordinate scaling, conditioning, residual/backward-error
      reporting, Jacobian dependency structure, Schur-complement fill-in,
      ordering, recovery cost, and decision margins.
-19. **Study-specific and algorithmic graphs**
-20. **Comparing representation families**
+21. **Study-specific and algorithmic graphs**
+22. **Comparing representation families**
    - Crosswalks to CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER.
-21. **When the general model collapses**
+23. **When the general model collapses**
     - Balanced operation, transposition, sequence decoupling, neutral elimination, identical
       terminal sets, two-terminal equipment, and transmission-style models.
-22. **Load models and decision dependence**
+24. **Load models and decision dependence**
     - Constant-power, current, impedance, ZIP, and exponential laws as constitutive relations
       that change feasible sets without changing topology.
-23. **From conductor geometry to impedance fidelity**
+25. **From conductor geometry to impedance fidelity**
     - Geometry, earth return, mutual matrices, conditioning, sequence coordinates, and the
       physical provenance of scalar transmission edges.
 
-24. **Transformation semantics, closure, and anti-patterns**
+26. **Transformation semantics, closure, and anti-patterns**
     - Structure, behaviour, decisions and provenance; target-library closure;
       typed composition; and warnings for line/transformer, grounding/
       transformer and unguarded series merges.
 
 ### Part II — A common language for transformations
 
-22. **Source, target, and observation contracts**
-23. **Projection and forgetting**
-24. **Compilation and realization**
-25. **Normalization within a model family**
-26. **Circuit coordinate transformations**
+27. **Source, target, and observation contracts**
+28. **Projection and forgetting**
+29. **Compilation and realization**
+30. **Normalization within a model family**
+31. **Circuit coordinate transformations**
     - Phase-to-neutral and phase-to-phase maps, common-mode quotients,
       neutral recovery, grounding and shunt guards, and active-member
       radiality conditions.
-27. **Exact behavioural reduction and linear Kron elimination**
-28. **Ward and extended-Ward external-system equivalents**
-29. **Structure-constrained and optimized reduction**
+32. **Exact behavioural reduction and linear Kron elimination**
+33. **Ward and extended-Ward external-system equivalents**
+34. **Structure-constrained and optimized reduction**
     - Opti-KRON, voltage-observation metrics, phase/connectivity guards, and
       radiality restoration.
-30. **Approximate but certified reduction**
-31. **Transformation certificates and recovery maps**
-32. **Composition, critical pairs, and purpose-specific normal forms**
+35. **Approximate but certified reduction**
+36. **Transformation certificates and recovery maps**
+37. **Composition, critical pairs, and purpose-specific normal forms**
 
 ### Part III — Guarded transformation patterns
 
-33. **Conductor coordinates, terminal maps, and orientation**
-34. **Switch contraction and state-resolved topology**
-35. **Series elimination and physical line concatenation**
-36. **Parallel recognition, aggregation, and constraint lifting**
-37. **Grounding and explicit neutrals**
-38. **Multiwinding transformer compilation**
-39. **Star--mesh and related circuit transformations**
-40. **Constraint and decision recovery**
+38. **Conductor coordinates, terminal maps, and orientation**
+39. **Switch contraction and state-resolved topology**
+40. **Series elimination and physical line concatenation**
+41. **Parallel recognition, aggregation, and constraint lifting**
+42. **Grounding and explicit neutrals**
+43. **Multiwinding transformer compilation**
+44. **Star--mesh and related circuit transformations**
+45. **Constraint and decision recovery**
    - Rating and limit semantics: duration, ambient, quantity, ownership, and
      uncertainty domains.
 
 ### Part IV — Consequences for decisions
 
-40. **Power flow and optimal power flow**
-41. **Topology processing and switching**
-42. **State estimation and measurement structure**
-43. **Fault, grounding, and protection boundaries**
-44. **Planning, contingencies, and reliability**
-45. **Feeder reduction and operating envelopes**
+46. **Power flow and optimal power flow**
+47. **Topology processing and switching**
+48. **State estimation and measurement structure**
+49. **Fault, grounding, and protection boundaries**
+50. **Planning, contingencies, and reliability**
+51. **Feeder reduction and operating envelopes**
 
 These chapters evaluate more than state error. Their comparison criteria include feasibility,
 active limits, continuous and discrete controls, objective value, optimal decisions, contingency
@@ -198,12 +204,12 @@ outcomes, and recoverability of source quantities.
 
 ### Part V — Worked cases
 
-46. **The running multiconductor network, end to end**
-47. **Heterogeneous parallel-line OPF**
-48. **Four-wire grounding-aware estimation**
-49. **Multiwinding transformer realization**
-50. **Distribution-model cleaning**
-51. **Certified feeder reduction**
+52. **The running multiconductor network, end to end**
+53. **Heterogeneous parallel-line OPF**
+54. **Four-wire grounding-aware estimation**
+55. **Multiwinding transformer realization**
+56. **Distribution-model cleaning**
+57. **Certified feeder reduction**
 
 ### Reference
 

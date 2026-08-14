@@ -7,9 +7,11 @@
     "fortescue_transform_is_invertible": true,
     "every_path_rule_has_risk_tags": true,
     "positive_sequence_guard_is_required": true,
+    "phase_to_neutral_branch_composes": true,
     "sequence_mixing_is_visible": true,
     "source_matrix_is_complex_symmetric": true,
     "phase_neutral_drop_is_recovered": true,
+    "main_path_composes": true,
     "neutral_block_is_invertible": true
   },
   "scope": "The fixture separates exact coordinate changes and guarded reductions from shunt deletion, sequence decoupling, balancing, and positive-sequence decision restrictions. It is not a geometry-identification or global power-flow accuracy claim.",
@@ -1308,7 +1310,7 @@
       "guards": [
         "earth reference and earth-return convention declared"
       ],
-      "target": "conductor_primitive",
+      "target": "four-wire-conductor-primitive",
       "rule": "K_g",
       "preserves": [
         "ordered conductor relation under the declared ground model"
@@ -1330,7 +1332,7 @@
         "neutral voltage/grounding assumption declared",
         "neutral limits recovered"
       ],
-      "target": "Kron-reduced-phase-primitive",
+      "target": "phase-primitive",
       "rule": "K_n",
       "preserves": [
         "declared phase boundary relation"
@@ -1402,7 +1404,7 @@
         "unbalance",
         "decision-domain"
       ],
-      "source": "full-sequence-primitive",
+      "source": "sequence-primitive",
       "forgets": [
         "sequence coupling and cross-channel constraints"
       ],
@@ -1423,7 +1425,7 @@
         "neutral",
         "decision-domain"
       ],
-      "source": "sequence-primitive",
+      "source": "diagonal-sequence-primitive",
       "forgets": [
         "zero/negative sequence, phase-specific and neutral observations"
       ],
@@ -1440,6 +1442,107 @@
       ]
     }
   ],
+  "path_compositions": {
+    "phase_to_neutral": {
+      "component_rules": [
+        "K_g",
+        "P_n"
+      ],
+      "discharged_guards": [
+      ],
+      "risk_tags": [
+        "earth-return",
+        "reference-potential",
+        "provenance",
+        "shunt",
+        "common-mode",
+        "decision-domain"
+      ],
+      "composable": true,
+      "weakest_exactness": "guarded-exact",
+      "guards": [
+        "earth reference and earth-return convention declared",
+        "zero local ground current",
+        "shunt-to-ground effects excluded or mapped"
+      ],
+      "findings": [
+      ],
+      "preservation_status": "guarded",
+      "source": "circuit_primitive",
+      "unresolved_guards": [
+        "earth reference and earth-return convention declared",
+        "zero local ground current",
+        "shunt-to-ground effects excluded or mapped"
+      ],
+      "forgets": [
+        "explicit earth asset and alternative ground-potential observations",
+        "common-mode voltage"
+      ],
+      "target": "phase-to-neutral-primitive"
+    },
+    "main": {
+      "component_rules": [
+        "K_g",
+        "K_n",
+        "F",
+        "D",
+        "F_1"
+      ],
+      "discharged_guards": [
+      ],
+      "risk_tags": [
+        "earth-return",
+        "reference-potential",
+        "provenance",
+        "neutral-shift",
+        "neutral-limit",
+        "grounding",
+        "ordering",
+        "coordinate-convention",
+        "sequence-mixing",
+        "unbalance",
+        "decision-domain",
+        "phase-limits",
+        "neutral"
+      ],
+      "composable": true,
+      "weakest_exactness": "restricted-approximation",
+      "guards": [
+        "earth reference and earth-return convention declared",
+        "neutral block invertible",
+        "neutral voltage/grounding assumption declared",
+        "neutral limits recovered",
+        "phase order and Fortescue convention declared",
+        "sequence coupling is negligible or excluded by the study",
+        "balanced boundary data",
+        "sequence-compatible factors and decisions",
+        "positive-sequence observations"
+      ],
+      "findings": [
+      ],
+      "preservation_status": "not-preserved",
+      "source": "circuit_primitive",
+      "unresolved_guards": [
+        "earth reference and earth-return convention declared",
+        "neutral block invertible",
+        "neutral voltage/grounding assumption declared",
+        "neutral limits recovered",
+        "phase order and Fortescue convention declared",
+        "sequence coupling is negligible or excluded by the study",
+        "balanced boundary data",
+        "sequence-compatible factors and decisions",
+        "positive-sequence observations"
+      ],
+      "forgets": [
+        "explicit earth asset and alternative ground-potential observations",
+        "neutral voltage and separate neutral identity unless recovered",
+        "natural phase labels as the working coordinates",
+        "sequence coupling and cross-channel constraints",
+        "zero/negative sequence, phase-specific and neutral observations"
+      ],
+      "target": "positive-sequence-primitive"
+    }
+  },
   "all_checks_pass": true,
   "schema_version": "0.1.0"
 }

@@ -36,6 +36,34 @@ verified_on = "2026-08-13"
 note = "Title, authors, journal, volume, issue, pages, year, and DOI verified from publisher and DOI registration."
 
 [[entry]]
+key = "GanLowChordal2014"
+status = "verified"
+verification_source = "https://authors.library.caltech.edu/records/szyhw-g8827"
+verified_on = "2026-08-15"
+note = "The CaltechAUTHORS record confirms authors, title, conference, pages, year, and DOI; its abstract states the radial macro-level and per-line clique result."
+
+[[entry]]
+key = "GanLowMultiphase2014"
+status = "verified"
+verification_source = "https://authors.library.caltech.edu/records/1fcqw-beg37"
+verified_on = "2026-08-15"
+note = "The CaltechAUTHORS record and attached author manuscript confirm authors, title, PSCC venue, pages, year, and DOI."
+
+[[entry]]
+key = "KettnerPaolone2019"
+status = "verified"
+verification_source = "https://api.crossref.org/works/10.1109%2FTPWRS.2018.2863671"
+verified_on = "2026-08-15"
+note = "DOI registration and the author manuscript confirm title, authors, journal, volume, issue, pages, and the compound-incidence assembly setting."
+
+[[entry]]
+key = "Coppo2017"
+status = "verified"
+verification_source = "https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/iet-gtd.2016.2080"
+verified_on = "2026-08-15"
+note = "The publisher record confirms authors, title, journal, volume, issue, pages, year, DOI, and the nested incidence-matrix construction for general multiphase transformers."
+
+[[entry]]
 key = "BaezFong2018"
 status = "verified"
 verification_source = "https://www.tac.mta.ca/tac/volumes/33/38/33-38abs.html"

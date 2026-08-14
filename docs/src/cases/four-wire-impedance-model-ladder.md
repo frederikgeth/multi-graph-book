@@ -61,6 +61,11 @@ The generated
 - every path edge carries explicit guards, preserved layers, forgotten facts,
   and risk tags.
 
+The witness additionally composes the main path and the phase-to-neutral
+branch.  Composition is accepted only when adjacent target and source types
+match; its result retains the weakest exactness label and the union of
+undischarged guards.  The test suite includes a mismatched-path negative case.
+
 The fixture therefore does not claim that a positive-sequence model is always
 wrong. It shows the narrower and more useful result: sequence coordinates are
 available by an invertible change of basis, while sequence decoupling and

@@ -35,6 +35,26 @@ systems similarly emphasize energy, ports, interconnection and passivity
 multiport composition but do not by themselves encode utility asset semantics
 or OPF decision constraints.
 
+### Multiphase topology and nodal assembly
+
+Gan and Low make an important distinction between macro- and scalar-level
+topology: a radial multiphase feeder has an equivalent scalar support graph
+with a clique associated with each densely coupled line
+[GanLowChordal2014](@cite). Their BIM/BFM treatment likewise identifies each
+bus--phase pair with a scalar coordinate while continuing to exploit radiality
+at the bus level [GanLowMultiphase2014](@cite). This is direct precedent for
+keeping bus-level radiality separate from conductor-expanded matrix cycles.
+
+Kettner and Paolone assemble the compound nodal admittance matrix from a
+polyphase branch incidence matrix and block-diagonal primitive admittances,
+then derive rank conditions relevant to Kron reduction
+[KettnerPaolone2019](@cite). Coppo, Bignucolo and Turri expose nested primitive,
+winding, and connection maps for general multiphase transformers
+[Coppo2017](@cite). Together these works support the book's factor-stamping
+view. They do not make the inverse decomposition unique: asset identity,
+limits, states, and primitive lineage still have to be retained outside the
+assembled nodal operator.
+
 ## Power-system network reduction
 
 The mainstream power-system literature emphasizes external-system equivalents,

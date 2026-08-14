@@ -20,6 +20,11 @@
 | Morphism | A map preserving the declared structure within one representation framework |
 | Isomorphism | A reversible morphism; a change of names or coordinates rather than a quotient or compilation |
 | Query factorization | Evidence that a source query can be answered from a target because it factors through the declared transformation |
+| Asset/terminal topology | Identified high-level equipment and its port or bus attachments; a multigraph only for the genuinely two-terminal subset |
+| Conductor/port--factor topology | Electrical conductor junctions, typed ports, and constitutive factors, with terminal maps and coupling retained |
+| Block-support graph | Simple graph with one vertex per retained nodal block and an edge for each nonzero off-diagonal block of an assembled operator |
+| Scalar-support graph | Simple graph on retained scalar coordinates, with edges determined by nonzero matrix entries rather than asset identity |
+| Stamp multigraph | Derived decomposition that retains one identified member for each separate factor stamp contributing to an assembled matrix |
 | Simple cycle | A closed cycle of at least three distinct vertices in a loopless simple graph |
 | Line-identity cycle | A minimal-support nonzero vector in the incidence nullspace of an identified multigraph |
 | Parallel fibre | The set of identified elements mapped to one unordered endpoint pair by the simple quotient |
@@ -67,6 +72,13 @@ Distinguish at least:
 - state-dependent topological node;
 - mathematical nodal variable group;
 - reporting or planning bus.
+
+### Nodal-admittance graph
+
+State whether this means block support, scalar conductor-coordinate support,
+or a retained stamp decomposition. The first two are simple support graphs of
+an operator. They do not recover the identified asset multigraph that was
+assembled into that operator.
 
 ### Line
 
