@@ -1,11 +1,11 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:8c1d84e95c86b6a70a94a87412978927c3e74285c7131da5ca871c72ea57deef -->
+<!-- generated-from claims/claims.toml sha256:76da411ed313e8d0c67c4fbb9692282957ec250cdfa84c373e55baca739682d7 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 
-**Indexed claims:** 68
+**Indexed claims:** 73
 **Indexed chapters:** 29
 
 ## Claims by type
@@ -20,7 +20,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `THESIS-001` — Representation adequacy is evaluated relative to declared observations, constraints, and decisions. | [Scope and thesis](../foundations/scope-and-thesis.md) | `self-checked` |
 | `TOPOLOGY-001` — For a fixed switch state, topological nodes are the connected components of the closed-switch connectivity graph; compiling them into bus--branch buses is a state-conditioned quotient that requires provenance and does not preserve switching decisions by itself. | [Node--breaker, bus--breaker, and topology processing](../foundations/node-breaker-topology-processing.md) | `self-checked` |
 
-### `empirical` (37)
+### `empirical` (38)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -51,6 +51,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `TR-KRON-NEUTRAL-005` — In the recorded local state-dependent grounding probe, shifting an endpoint state changes the nonlinear neutral-earth bond map; reusing the nominal bond map leaves a nonzero shifted-state residual, while recomputation restores the relation and preserves explicit neutral-limit evaluation. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
 | `TR-KRON-NEUTRAL-006` — In the recorded two-point state-dependent grounding chain, shifting the endpoint state changes both nonlinear neutral-earth bond maps; freezing both nominal maps leaves a nonzero chain residual and changes recovered segment-neutral currents, while recomputation restores the local relation. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
 | `TR-KRON-NEUTRAL-007` — In the recorded finite endpoint-state continuation of the two-point nonlinear grounding chain, recomputing the bond maps at five declared states preserves small nonlinear residuals and records changing neutral-limit margins, while the frozen nominal map fails away from the base state. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
+| `TR-KRON-NEUTRAL-008` — In the recorded local nonlinear grounding derivative probe, the analytic real Jacobian at the base state gives a smaller shifted-state linearisation error than the frozen nominal bond coefficient, and the Jacobian error decreases over the declared smaller step scales. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `self-checked` |
 | `TR-PAR-003` — In the recorded two-bus maximum-served-load problem, the naive summed-rating aggregate serves 200 MW while the source and exact lifted formulations each serve 110 MW. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `self-checked` |
 | `TR-PAR-004` — In the recorded two-conductor AC maximum-served-load case, the source, exact lifted, and certified exact-pruned formulations have objective 0.6138908, while a summed-limit aggregate has objective 1.0630833 and violates a 0.6 p.u. member limit. | [Multiconductor parallel AC decision case](../cases/multiconductor-parallel-ac-decision.md) | `self-checked` |
@@ -68,12 +69,16 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | --- | --- | --- |
 | `DATA-XWALK-001` — CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER provide distinct partial correspondences to the book's asset, terminal, topology, factor, state, and rating objects; successful import is not by itself semantic or decision equivalence. | [Data-model crosswalk](../foundations/data-model-crosswalk.md) | `self-checked` |
 
-### `theorem` (25)
+### `theorem` (29)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
 | `ARCH-CHORDAL-001` — For a simple bus-level tree with a common m-coordinate block at every bus and a structurally dense two-terminal stamp on every tree edge, the scalar structural-support graph is chordal and leaf-bus block elimination is a zero-fill perfect elimination ordering. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `self-checked` |
 | `ARCH-NODAL-001` — Assembly of typed linear factor stamps into a compound nodal operator is not generally injective: distinct admissible parallel-factor decompositions can produce an identical nodal operator and identical normalized assembly residuals. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `self-checked` |
+| `ARCH-RECOVERY-001` — Source recovery from a compound nodal operator is class-dependent: support-separated single-factor classes can be identifiable, over-parameterized classes can be set-identifiable at the terminal-primitive level, and parallel multiplicity or eliminated internal coordinates can be non-identifiable; a recovery interface must report the status and ambiguity rather than infer asset identity. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `self-checked` |
+| `ARCH-RECOVERY-002` — Auxiliary observations and declarations lift source-recovery ambiguity only through their joint observation map: catalog bounds may produce a compact but non-singleton feasible set, whereas member-current measurements, explicit grounding attribution, or a declared transformer state can make the restricted map injective in a scoped model class. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `self-checked` |
+| `ARCH-RECOVERY-003` — For a matrix-valued multiconductor factor observed through member-current snapshots, full primitive recovery requires voltage snapshots spanning the retained conductor space and coverage of every current coordinate; single-snapshot or phase-selective observations retain reciprocal ambiguity even when the assembled nodal operator is known. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `self-checked` |
+| `ARCH-RECOVERY-004` — For noisy full-rank multiconductor voltage/current snapshots, the pseudoinverse source estimate has a deterministic Frobenius error bound proportional to the noise radius and the voltage-snapshot pseudoinverse norm; nearly dependent excitation therefore enlarges the certified uncertainty set even when the observation map is full rank. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `self-checked` |
 | `ARCH-SUPPORT-001` — Block and scalar nonzero-support graphs of a declared compound nodal operator are simple graphs by construction, while the identified factor-stamp decomposition is separate data and may be a multigraph. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `self-checked` |
 | `COLLAPSE-001` — Under compatible three-phase terminals, cyclic (circulant) series and shunt matrices, balanced boundary data, sequence-compatible grounding, two-terminal factor closure, phase-symmetric decisions, and positive-sequence observations, the general phase-domain relation restricts exactly to the positive-sequence scalar network. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `self-checked` |
 | `GRAPH-CYCLE-001` — The recorded connected five-bus bus--branch multigraph has seven identified lines, incidence rank four, and cycle-space dimension three; collapsing its parallel q/r pair to a simple edge reduces the cycle-space dimension to two, whereas the spanning-tree-plus-chords representation retains all three source dimensions. | [A five-bus multigraph: identities, cycles, and tree coordinates](../start/five-bus-cycle-spaces.md) | `self-checked` |
@@ -103,7 +108,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | Verification | Claims |
 | --- | ---: |
 | `independently-implemented` | 4 |
-| `self-checked` | 64 |
+| `self-checked` | 69 |
 
 ## Unresolved issues
 
@@ -114,6 +119,10 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `ARCH-NODAL-001` | Classify identifiable and bounded ambiguity families under realistic line, transformer, shunt, catalog, measurement, and state constraints. |
 | `ARCH-PORT-001` | Lift the data witness to evaluated factor relations and independently review the architecture against a non-synthetic asset model. |
 | `ARCH-PORT-002` | Extend the lift to evaluated factor relations and compare its boundary semantics with the simple quotient and line-identity cycle basis. |
+| `ARCH-RECOVERY-001` | Classify realistic catalog, measurement, grounding, transformer, and state-dependent recovery classes beyond the four finite witnesses. |
+| `ARCH-RECOVERY-002` | Extend the augmented-observation criterion to multiconductor current measurements, nonlinear grounding, transformer controls, and partial observability. |
+| `ARCH-RECOVERY-003` | Extend the rank and partial-observation criterion to noisy measurements, nonlinear operating-point data, coupled transformer ports, and experimental design. |
+| `ARCH-RECOVERY-004` | Extend deterministic bounds to noisy partial observations, structured/passive uncertainty sets, nonlinear operating points, and experiment design. |
 | `ARCH-SUPPORT-001` | Extend the support/stamp distinction to frequency-coupled, rectangular realified, Jacobian, and multi-terminal compiled operator families. |
 | `COLLAPSE-001` | Extend the network witness to controls, phase-specific limits, contingencies, and an independent mathematical review before making a global decision-equivalence claim. |
 | `COLLAPSE-002` | Extend the witness to controls, phase-specific limits, contingencies, and independent mathematical review. |
@@ -152,6 +161,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `TR-KRON-NEUTRAL-005` | Extend to global continuation, multiple nonlinear grounding points, uncertainty sets, protection observations, and physical-model review. |
 | `TR-KRON-NEUTRAL-006` | Extend to global continuation, more nonlinear grounding points, uncertainty sets, protection observations, and physical-model review. |
 | `TR-KRON-NEUTRAL-007` | Extend to adaptive continuation, global branch tracking, uncertainty sets, protection observations, and physical-model review. |
+| `TR-KRON-NEUTRAL-008` | Extend local derivative bounds to adaptive/global continuation, nonlinear multi-point grounding, noisy observations, and physical-model review. |
 | `TR-NEG-001` | Extend the negative cases to nominal-pi cascades, protection boundaries, nonlinear formulations, and independent reproduction. |
 | `TR-PAR-001` | Add an independent mathematical reviewer. |
 | `TR-PAR-002` | Molzahn2018 gives an exact scalar AC constraint-pruning test without asset aggregation; a general multiconductor classification remains open. |
@@ -259,7 +269,7 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `representation` (26)
+### `representation` (30)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -268,6 +278,10 @@ schema is normalised.
 | `ARCH-NODAL-001` — Assembly of typed linear factor stamps into a compound nodal operator is not generally injective: distinct admissible parallel-factor decompositions can produce an identical nodal operator and identical normalized assembly residuals. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-PORT-001` — A minimal executable port--factor bundle instantiated from the running network validates typed port-to-junction and port-to-factor incidence, a three-port multiwinding factor, grounding as an explicit factor, and a many-to-many asset/electrical relation Λ. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
 | `ARCH-PORT-002` — The five-bus identified scalar multigraph has a direct structural port--factor lift with five bus junctions, seven two-port scalar line factors, fourteen endpoint ports, and one asset-to-factor relation per identified line; parallel members q and r remain distinct factors despite sharing the same bus pair. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
+| `ARCH-RECOVERY-001` — Source recovery from a compound nodal operator is class-dependent: support-separated single-factor classes can be identifiable, over-parameterized classes can be set-identifiable at the terminal-primitive level, and parallel multiplicity or eliminated internal coordinates can be non-identifiable; a recovery interface must report the status and ambiguity rather than infer asset identity. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
+| `ARCH-RECOVERY-002` — Auxiliary observations and declarations lift source-recovery ambiguity only through their joint observation map: catalog bounds may produce a compact but non-singleton feasible set, whereas member-current measurements, explicit grounding attribution, or a declared transformer state can make the restricted map injective in a scoped model class. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
+| `ARCH-RECOVERY-003` — For a matrix-valued multiconductor factor observed through member-current snapshots, full primitive recovery requires voltage snapshots spanning the retained conductor space and coverage of every current coordinate; single-snapshot or phase-selective observations retain reciprocal ambiguity even when the assembled nodal operator is known. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
+| `ARCH-RECOVERY-004` — For noisy full-rank multiconductor voltage/current snapshots, the pseudoinverse source estimate has a deterministic Frobenius error bound proportional to the noise radius and the voltage-snapshot pseudoinverse norm; nearly dependent excitation therefore enlarges the certified uncertainty set even when the observation map is full rank. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-SUPPORT-001` — Block and scalar nonzero-support graphs of a declared compound nodal operator are simple graphs by construction, while the identified factor-stamp decomposition is separate data and may be a multigraph. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `COLLAPSE-001` — Under compatible three-phase terminals, cyclic (circulant) series and shunt matrices, balanced boundary data, sequence-compatible grounding, two-terminal factor closure, phase-symmetric decisions, and positive-sequence observations, the general phase-domain relation restricts exactly to the positive-sequence scalar network. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `theorem` |
 | `COLLAPSE-002` — The generated Fortescue witness diagonalizes a circulant three-phase impedance matrix and preserves the positive-sequence subspace, while a non-circulant perturbation produces sequence mixing and a positive-subspace residual. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `empirical` |
@@ -290,7 +304,7 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `software-and-data` (9)
+### `software-and-data` (13)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -299,6 +313,10 @@ schema is normalised.
 | `ARCH-NODAL-001` — Assembly of typed linear factor stamps into a compound nodal operator is not generally injective: distinct admissible parallel-factor decompositions can produce an identical nodal operator and identical normalized assembly residuals. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-PORT-001` — A minimal executable port--factor bundle instantiated from the running network validates typed port-to-junction and port-to-factor incidence, a three-port multiwinding factor, grounding as an explicit factor, and a many-to-many asset/electrical relation Λ. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
 | `ARCH-PORT-002` — The five-bus identified scalar multigraph has a direct structural port--factor lift with five bus junctions, seven two-port scalar line factors, fourteen endpoint ports, and one asset-to-factor relation per identified line; parallel members q and r remain distinct factors despite sharing the same bus pair. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
+| `ARCH-RECOVERY-001` — Source recovery from a compound nodal operator is class-dependent: support-separated single-factor classes can be identifiable, over-parameterized classes can be set-identifiable at the terminal-primitive level, and parallel multiplicity or eliminated internal coordinates can be non-identifiable; a recovery interface must report the status and ambiguity rather than infer asset identity. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
+| `ARCH-RECOVERY-002` — Auxiliary observations and declarations lift source-recovery ambiguity only through their joint observation map: catalog bounds may produce a compact but non-singleton feasible set, whereas member-current measurements, explicit grounding attribution, or a declared transformer state can make the restricted map injective in a scoped model class. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
+| `ARCH-RECOVERY-003` — For a matrix-valued multiconductor factor observed through member-current snapshots, full primitive recovery requires voltage snapshots spanning the retained conductor space and coverage of every current coordinate; single-snapshot or phase-selective observations retain reciprocal ambiguity even when the assembled nodal operator is known. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
+| `ARCH-RECOVERY-004` — For noisy full-rank multiconductor voltage/current snapshots, the pseudoinverse source estimate has a deterministic Frobenius error bound proportional to the noise radius and the voltage-snapshot pseudoinverse norm; nearly dependent excitation therefore enlarges the certified uncertainty set even when the observation map is full rank. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-SUPPORT-001` — Block and scalar nonzero-support graphs of a declared compound nodal operator are simple graphs by construction, while the identified factor-stamp decomposition is separate data and may be a multigraph. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `DATA-XWALK-001` — CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER provide distinct partial correspondences to the book's asset, terminal, topology, factor, state, and rating objects; successful import is not by itself semantic or decision equivalence. | [Data-model crosswalk](../foundations/data-model-crosswalk.md) | `practice` |
 | `FIXTURE-001` — Running-network fixture v0.1.0 passes the current BMOPFTools JSON schema and conformance checks without errors or warnings. | [Executable running network](../cases/executable-running-network.md) | `empirical` |
@@ -310,7 +328,7 @@ schema is normalised.
 | --- | --- | --- |
 | `LIT-PAR-001` — For fixed scalar AC pi-line models on common endpoints, a parallel member's current- or apparent-power limit at one terminal is redundant when its normalized terminal-voltage quadratic feasible set contains that of another member; applying the test at both terminals certifies removal of both directional limits without aggregating the line models. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 
-### `transformations` (41)
+### `transformations` (42)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -331,6 +349,7 @@ schema is normalised.
 | `TR-KRON-NEUTRAL-005` — In the recorded local state-dependent grounding probe, shifting an endpoint state changes the nonlinear neutral-earth bond map; reusing the nominal bond map leaves a nonzero shifted-state residual, while recomputation restores the relation and preserves explicit neutral-limit evaluation. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
 | `TR-KRON-NEUTRAL-006` — In the recorded two-point state-dependent grounding chain, shifting the endpoint state changes both nonlinear neutral-earth bond maps; freezing both nominal maps leaves a nonzero chain residual and changes recovered segment-neutral currents, while recomputation restores the local relation. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
 | `TR-KRON-NEUTRAL-007` — In the recorded finite endpoint-state continuation of the two-point nonlinear grounding chain, recomputing the bond maps at five declared states preserves small nonlinear residuals and records changing neutral-limit margins, while the frozen nominal map fails away from the base state. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
+| `TR-KRON-NEUTRAL-008` — In the recorded local nonlinear grounding derivative probe, the analytic real Jacobian at the base state gives a smaller shifted-state linearisation error than the frozen nominal bond coefficient, and the Jacobian error decreases over the declared smaller step scales. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 | `TR-PAR-001` — Summed admittance preserves the unconstrained terminal relation of parallel linear branches. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 | `TR-PAR-002` — Using the sum of member current ratings can create an outer relaxation of the member-constrained feasible set. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
@@ -393,12 +412,17 @@ schema is normalised.
 | `load-grounding-witnesses.json` | generated evidence |
 | `load-model-independent-reproduction.json` | `LOAD-DECISION-001` — generated evidence |
 | `multiconductor-parallel-ac-certificate.json` | `TR-PAR-004` — generated evidence |
+| `multiconductor-recovery-witness.json` | `ARCH-RECOVERY-MULTI-001` — two reciprocal two-conductor parallel factors with linear voltage/current observations |
 | `multiwinding-leakage-compilation-certificate.json` | `TR-XFMR-002` — generated evidence |
 | `multiwinding-terminal-assembly-certificate.json` | `TR-XFMR-003` — generated evidence |
 | `multiwinding-terminal-lift-witness.json` | `ARCH-CONDUCTOR-MULTI-001` — serialized three-winding fixed-linear transformer contract lifted to ordered terminal ports |
 | `multiwinding-typed-kron-witness.json` | `TR-KRON-MULTI-001` — serialized three-winding terminal admittance with DELTA terminal block eliminated |
 | `neutral-kron-independent-reproduction.json` | `TR-KRON-NEUTRAL-001` — data/running-network/v0.1.0.json |
+| `nodal-recovery-guards-witness.json` | `ARCH-RECOVERY-GUARDS-001` — finite nodal operators with declared catalog bounds, member observations, grounding metadata, and scalar state maps |
+| `nodal-source-recovery-witness.json` | `ARCH-RECOVERY-001` — finite compound nodal operators with declared support, elimination, and parameter classes |
 | `node-breaker-state-witness.json` | `TOPO-NB-001` — four-connectivity-node node-breaker fixture with two switch assets and state-conditioned bus compilation |
+| `noisy-multiconductor-recovery-witness.json` | `ARCH-RECOVERY-NOISE-001` — two-conductor matrix primitive observed through noisy full-rank voltage/current snapshots |
+| `nonlinear-grounding-local-bound-witness.json` | `TR-KRON-NEUTRAL-008` — illustrative voltage-dependent scalar neutral-earth bond law |
 | `nonlinear-grounding-probe-independent-reproduction.json` | `TR-KRON-NEUTRAL-005` — generated evidence |
 | `nonlinear-grounding-probe-witness.json` | `TR-KRON-NEUTRAL-005` — generated evidence |
 | `nonlinear-kkt-witness.json` | `NUMERICAL-003` — finite-difference nonlinear AC decision Jacobians and symbolic KKT sparsity for a two-bus parallel-member witness |

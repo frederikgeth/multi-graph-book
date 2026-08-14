@@ -1,0 +1,275 @@
+{
+  "checks": {
+    "over_parameterized_restricted_map_is_not_injective": true,
+    "identifiable_class_is_recovered": true,
+    "parallel_class_reports_non_identifiable": true,
+    "eliminated_coordinate_restricted_map_is_not_injective": true,
+    "parallel_multiplicity_restricted_map_is_not_injective": true,
+    "elimination_class_reports_non_identifiable": true,
+    "parallel_multiplicity_candidate_operators_are_identical": true,
+    "over_parameterized_parameter_vectors_are_distinct": true,
+    "support_separated_restricted_map_is_injective": true,
+    "eliminated_coordinate_hidden_topology_is_not_recovered": true,
+    "parallel_multiplicity_candidate_members_are_distinct": true,
+    "over_parameterized_terminal_primitives_are_identical": true,
+    "eliminated_coordinate_boundary_operator_matches_direct_factor": true,
+    "support_separated_off_diagonal_recovers_unique_factor": true,
+    "eliminated_coordinate_hidden_internal_coordinate_is_eliminated": true,
+    "support_separated_diagonal_residual_recovers_declared_shunts": true,
+    "parallel_multiplicity_parallel_support_is_shared": true,
+    "over_parameterized_class_reports_set_identifiable": true
+  },
+  "claim_ids": [
+    "ARCH-RECOVERY-001"
+  ],
+  "classes": {
+    "support_separated": {
+      "checks": {
+        "restricted_map_is_injective": true,
+        "off_diagonal_recovers_unique_factor": true,
+        "diagonal_residual_recovers_declared_shunts": true
+      },
+      "recovered_factor": {
+        "series_admittance": {
+          "re": 2,
+          "im": 0.5
+        }
+      },
+      "observed_operator": [
+        [
+          {
+            "re": 2.1,
+            "im": 0.52
+          },
+          {
+            "re": -2,
+            "im": -0.5
+          }
+        ],
+        [
+          {
+            "re": -2,
+            "im": -0.5
+          },
+          {
+            "re": 2.2,
+            "im": 0.53
+          }
+        ]
+      ],
+      "status": "identifiable",
+      "recovered_shunts": [
+        {
+          "re": 0.10000000000000009,
+          "im": 0.020000000000000018
+        },
+        {
+          "re": 0.20000000000000018,
+          "im": 0.030000000000000027
+        }
+      ],
+      "model_class": "known topology, one scalar two-terminal factor, declared diagonal shunts"
+    },
+    "over_parameterized": {
+      "checks": {
+        "terminal_primitives_are_identical": true,
+        "restricted_map_is_not_injective": true,
+        "parameter_vectors_are_distinct": true
+      },
+      "terminal_primitive": {
+        "re": 3,
+        "im": 0.30000000000000004
+      },
+      "status": "set-identifiable",
+      "parameterization_b": [
+        [
+          {
+            "re": 1.5,
+            "im": 0.15
+          },
+          {
+            "re": 1.5,
+            "im": 0.15
+          }
+        ]
+      ],
+      "parameterization_a": [
+        [
+          {
+            "re": 1,
+            "im": 0.1
+          },
+          {
+            "re": 2,
+            "im": 0.2
+          }
+        ]
+      ],
+      "model_class": "two-parameter local construction whose terminal stamp depends only on the sum"
+    },
+    "parallel_multiplicity": {
+      "checks": {
+        "candidate_operators_are_identical": true,
+        "candidate_members_are_distinct": true,
+        "restricted_map_is_not_injective": true,
+        "parallel_support_is_shared": true
+      },
+      "observed_operator": [
+        [
+          {
+            "re": 2.25,
+            "im": 0.30000000000000004
+          },
+          {
+            "re": -2.25,
+            "im": -0.30000000000000004
+          }
+        ],
+        [
+          {
+            "re": -2.25,
+            "im": -0.30000000000000004
+          },
+          {
+            "re": 2.25,
+            "im": 0.30000000000000004
+          }
+        ]
+      ],
+      "ambiguity_direction": {
+        "re": 0.25,
+        "im": 0.05
+      },
+      "status": "non-identifiable",
+      "candidate_a": [
+        {
+          "re": 1.5,
+          "im": 0.2
+        },
+        {
+          "re": 0.75,
+          "im": 0.1
+        }
+      ],
+      "model_class": "two aligned parallel scalar factors with unconstrained split",
+      "candidate_b": [
+        {
+          "re": 1.75,
+          "im": 0.25
+        },
+        {
+          "re": 0.5,
+          "im": 0.05
+        }
+      ]
+    },
+    "eliminated_coordinate": {
+      "checks": {
+        "boundary_operator_matches_direct_factor": true,
+        "restricted_map_is_not_injective": true,
+        "hidden_topology_is_not_recovered": true,
+        "hidden_internal_coordinate_is_eliminated": true
+      },
+      "boundary_operator": [
+        [
+          {
+            "re": 1.2004889975550124,
+            "im": 0.16992665036674814
+          },
+          {
+            "re": -1.2004889975550121,
+            "im": -0.16992665036674817
+          }
+        ],
+        [
+          {
+            "re": -1.2004889975550121,
+            "im": -0.16992665036674817
+          },
+          {
+            "re": 1.2004889975550121,
+            "im": 0.16992665036674814
+          }
+        ]
+      ],
+      "status": "non-identifiable",
+      "model_class": "boundary operator after elimination of an internal scalar coordinate",
+      "hidden_operator": [
+        [
+          {
+            "re": 2,
+            "im": 0.25
+          },
+          {
+            "re": -2,
+            "im": -0.25
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": -2,
+            "im": -0.25
+          },
+          {
+            "re": 5,
+            "im": 0.75
+          },
+          {
+            "re": -3,
+            "im": -0.5
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": -3,
+            "im": -0.5
+          },
+          {
+            "re": 3,
+            "im": 0.5
+          }
+        ]
+      ],
+      "direct_boundary_factor": [
+        [
+          {
+            "re": 1.2004889975550124,
+            "im": 0.16992665036674817
+          },
+          {
+            "re": -1.2004889975550124,
+            "im": -0.16992665036674817
+          }
+        ],
+        [
+          {
+            "re": -1.2004889975550124,
+            "im": -0.16992665036674817
+          },
+          {
+            "re": 1.2004889975550124,
+            "im": 0.16992665036674817
+          }
+        ]
+      ],
+      "hidden_internal_coordinate": "x"
+    }
+  },
+  "all_checks_pass": true,
+  "witness_id": "ARCH-RECOVERY-001",
+  "recovery_contract": {
+    "output": "status, recovered representative when unique, and ambiguity witness otherwise",
+    "forbidden_fallback": "do not infer asset identity from an assembled or reduced operator alone",
+    "input": "typed nodal operator plus declared admissible model class"
+  },
+  "schema_version": "0.1.0",
+  "model_scope": "finite compound nodal operators with declared support, elimination, and parameter classes"
+}

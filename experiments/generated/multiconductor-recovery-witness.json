@@ -1,0 +1,192 @@
+{
+  "checks": {
+    "full_rank_voltage_sweep_all_member_current_coordinates_are_observed": true,
+    "single_snapshot_assembled_operator_is_unchanged": true,
+    "full_rank_voltage_sweep_recovered_factors_are_reciprocal": true,
+    "phase_selective_observation_is_non_identifiable": true,
+    "full_rank_voltage_sweep_factor_two_is_recovered": true,
+    "single_snapshot_member_currents_are_unchanged": true,
+    "phase_selective_unobserved_phase_currents_change": true,
+    "full_rank_complete_observation_is_identifiable": true,
+    "phase_selective_only_one_current_coordinate_is_observed": true,
+    "phase_selective_observed_phase_currents_are_unchanged": true,
+    "phase_selective_voltage_snapshots_are_full_rank": true,
+    "single_snapshot_nonzero_reciprocal_ambiguity_annihilates_snapshot": true,
+    "phase_selective_unobserved_reciprocal_direction_is_nonzero": true,
+    "single_snapshot_single_snapshot_does_not_span_factor_space": true,
+    "phase_selective_restricted_map_is_not_injective": true,
+    "full_rank_voltage_sweep_factor_one_is_recovered": true,
+    "single_snapshot_restricted_map_is_not_injective": true,
+    "single_snapshot_is_non_identifiable": true,
+    "full_rank_voltage_sweep_voltage_snapshots_span_conductor_space": true,
+    "phase_selective_assembled_operator_is_unchanged": true
+  },
+  "claim_ids": [
+    "ARCH-RECOVERY-003"
+  ],
+  "all_checks_pass": true,
+  "witness_id": "ARCH-RECOVERY-MULTI-001",
+  "rank_statement": "full matrix recovery requires voltage snapshots spanning the retained conductor space and observations covering all member-current coordinates",
+  "schema_version": "0.1.0",
+  "model_scope": "two reciprocal two-conductor parallel factors with linear voltage/current observations",
+  "cases": {
+    "full_rank_voltage_sweep": {
+      "voltage_snapshots": [
+        [
+          {
+            "re": 1,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 1,
+            "im": 0
+          }
+        ]
+      ],
+      "recovered_factor_one": [
+        [
+          {
+            "re": 2,
+            "im": 1
+          },
+          {
+            "re": 0.2,
+            "im": 0.1
+          }
+        ],
+        [
+          {
+            "re": 0.2,
+            "im": 0.1
+          },
+          {
+            "re": 1.5,
+            "im": 0.5
+          }
+        ]
+      ],
+      "checks": {
+        "recovered_factors_are_reciprocal": true,
+        "voltage_snapshots_span_conductor_space": true,
+        "factor_two_is_recovered": true,
+        "factor_one_is_recovered": true,
+        "all_member_current_coordinates_are_observed": true
+      },
+      "recovered_factor_two": [
+        [
+          {
+            "re": 1,
+            "im": 0.5
+          },
+          {
+            "re": 0.1,
+            "im": 0.05
+          }
+        ],
+        [
+          {
+            "re": 0.1,
+            "im": 0.05
+          },
+          {
+            "re": 0.8,
+            "im": 0.3
+          }
+        ]
+      ],
+      "status": "identifiable",
+      "model_class": "two reciprocal two-conductor parallel factors with full-rank voltage snapshots and complete member currents"
+    },
+    "single_snapshot": {
+      "checks": {
+        "nonzero_reciprocal_ambiguity_annihilates_snapshot": true,
+        "single_snapshot_does_not_span_factor_space": true,
+        "assembled_operator_is_unchanged": true,
+        "member_currents_are_unchanged": true,
+        "restricted_map_is_not_injective": true
+      },
+      "ambiguity_direction": [
+        [
+          {
+            "re": 4,
+            "im": 0
+          },
+          {
+            "re": -2,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": -2,
+            "im": 0
+          },
+          {
+            "re": 1,
+            "im": 0
+          }
+        ]
+      ],
+      "status": "non-identifiable",
+      "voltage_snapshot": [
+        {
+          "re": 1,
+          "im": 0
+        },
+        {
+          "re": 2,
+          "im": 0
+        }
+      ],
+      "model_class": "two reciprocal two-conductor factors with one complete member-current snapshot"
+    },
+    "phase_selective": {
+      "checks": {
+        "voltage_snapshots_are_full_rank": true,
+        "unobserved_reciprocal_direction_is_nonzero": true,
+        "observed_phase_currents_are_unchanged": true,
+        "assembled_operator_is_unchanged": true,
+        "restricted_map_is_not_injective": true,
+        "unobserved_phase_currents_change": true,
+        "only_one_current_coordinate_is_observed": true
+      },
+      "ambiguity_direction": [
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 1,
+            "im": 0
+          }
+        ]
+      ],
+      "status": "non-identifiable",
+      "model_class": "two reciprocal two-conductor factors with full-rank voltage snapshots but phase-selective member-current observations",
+      "observed_current_rows": [
+        1
+      ]
+    }
+  }
+}

@@ -106,6 +106,66 @@ review_date = ""
 unresolved_issue = "Characterize chordality and minimal fill under missing phases, sparse coupling blocks, parallel factors, multi-terminal devices, and meshed bus graphs."
 
 [[claim]]
+claim_id = "ARCH-RECOVERY-001"
+chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"
+claim_text = "Source recovery from a compound nodal operator is class-dependent: support-separated single-factor classes can be identifiable, over-parameterized classes can be set-identifiable at the terminal-primitive level, and parallel multiplicity or eliminated internal coordinates can be non-identifiable; a recovery interface must report the status and ambiguity rather than infer asset identity."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "restricted-injectivity-classification_and_executable_recovery-witness"
+citation_keys = []
+model_scope = "finite compound nodal operators with declared support, elimination, and local parameter classes"
+assumptions = "the observed coordinates, assembly maps, and admissible model class are explicitly declared; status is relative to that class"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Classify realistic catalog, measurement, grounding, transformer, and state-dependent recovery classes beyond the four finite witnesses."
+
+[[claim]]
+claim_id = "ARCH-RECOVERY-002"
+chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"
+claim_text = "Auxiliary observations and declarations lift source-recovery ambiguity only through their joint observation map: catalog bounds may produce a compact but non-singleton feasible set, whereas member-current measurements, explicit grounding attribution, or a declared transformer state can make the restricted map injective in a scoped model class."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "augmented-kernel-criterion_and_executable_guarded-recovery-witness"
+citation_keys = []
+model_scope = "finite scalar parallel, diagonal-residual, and state-conditioned primitive cases"
+assumptions = "auxiliary observations share the declared coordinate system; member-current case has nonzero voltage drop; declarations are treated as model data rather than inferred facts"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the augmented-observation criterion to multiconductor current measurements, nonlinear grounding, transformer controls, and partial observability."
+
+[[claim]]
+claim_id = "ARCH-RECOVERY-003"
+chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"
+claim_text = "For a matrix-valued multiconductor factor observed through member-current snapshots, full primitive recovery requires voltage snapshots spanning the retained conductor space and coverage of every current coordinate; single-snapshot or phase-selective observations retain reciprocal ambiguity even when the assembled nodal operator is known."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "matrix-observation-rank-derivation_and_executable_multiconductor-witness"
+citation_keys = []
+model_scope = "two reciprocal two-conductor parallel factors with linear voltage/current snapshots"
+assumptions = "fixed linear factors; member-current observations use common conductor coordinates; no noise or nonlinear estimator is claimed"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the rank and partial-observation criterion to noisy measurements, nonlinear operating-point data, coupled transformer ports, and experimental design."
+
+[[claim]]
+claim_id = "ARCH-RECOVERY-004"
+chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"
+claim_text = "For noisy full-rank multiconductor voltage/current snapshots, the pseudoinverse source estimate has a deterministic Frobenius error bound proportional to the noise radius and the voltage-snapshot pseudoinverse norm; nearly dependent excitation therefore enlarges the certified uncertainty set even when the observation map is full rank."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "normwise-error-derivation_and_executable_conditioning-witness"
+citation_keys = []
+model_scope = "fixed two-conductor matrix primitive with additive bounded current-snapshot noise"
+assumptions = "linear observation I=YV+E; full row rank of V; Frobenius noise bound; no statistical or nonlinear estimator claim"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend deterministic bounds to noisy partial observations, structured/passive uncertainty sets, nonlinear operating points, and experiment design."
+
+[[claim]]
 claim_id = "LIT-PAR-001"
 chapter = "docs/src/start/first-failure-parallel-branches.md"
 claim_text = "For fixed scalar AC pi-line models on common endpoints, a parallel member's current- or apparent-power limit at one terminal is redundant when its normalized terminal-voltage quadratic feasible set contains that of another member; applying the test at both terminals certifies removal of both directional limits without aggregating the line models."
@@ -659,6 +719,21 @@ assumptions = "the continuation points and nonlinear bond laws are illustrative 
 reviewer = ""
 review_date = ""
 unresolved_issue = "Extend to adaptive continuation, global branch tracking, uncertainty sets, protection observations, and physical-model review."
+
+[[claim]]
+claim_id = "TR-KRON-NEUTRAL-008"
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the recorded local nonlinear grounding derivative probe, the analytic real Jacobian at the base state gives a smaller shifted-state linearisation error than the frozen nominal bond coefficient, and the Jacobian error decreases over the declared smaller step scales."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "analytic_real_jacobian_and_generated_local_grounding_bound_witness"
+citation_keys = []
+model_scope = "illustrative voltage-dependent scalar neutral-earth bond law at one base state and three finite perturbation scales"
+assumptions = "the constitutive law is illustrative; the Jacobian certificate is local; no global continuation, protection, standards, or uncertainty claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend local derivative bounds to adaptive/global continuation, nonlinear multi-point grounding, noisy observations, and physical-model review."
 
 [[claim]]
 claim_id = "TR-GRAPH-001"

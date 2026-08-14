@@ -20,6 +20,11 @@ GENERATED = ROOT / "experiments/generated"
 PORT_FACTOR_ARCHITECTURE = GENERATED / "port-factor-architecture.json"
 FIVE_BUS_PORT_FACTOR = GENERATED / "five-bus-port-factor-witness.json"
 TOPOLOGY_PROJECTION_WITNESS = GENERATED / "topology-projection-witness.json"
+NODAL_SOURCE_RECOVERY_WITNESS = GENERATED / "nodal-source-recovery-witness.json"
+NODAL_RECOVERY_GUARDS_WITNESS = GENERATED / "nodal-recovery-guards-witness.json"
+MULTICONDUCTOR_RECOVERY_WITNESS = GENERATED / "multiconductor-recovery-witness.json"
+NOISY_MULTICONDUCTOR_RECOVERY_WITNESS = GENERATED / "noisy-multiconductor-recovery-witness.json"
+NONLINEAR_GROUNDING_LOCAL_BOUND = GENERATED / "nonlinear-grounding-local-bound-witness.json"
 POSITIVE_SEQUENCE_WITNESS = GENERATED / "positive-sequence-collapse-witness.json"
 FOUR_WIRE_IMPEDANCE_LADDER = GENERATED / "four-wire-impedance-model-ladder.json"
 BALANCED_TRANSMISSION_WITNESS = GENERATED / "balanced-transmission-witness.json"
@@ -406,6 +411,11 @@ def main() -> int:
         PORT_FACTOR_ARCHITECTURE,
         FIVE_BUS_PORT_FACTOR,
         TOPOLOGY_PROJECTION_WITNESS,
+        NODAL_SOURCE_RECOVERY_WITNESS,
+        NODAL_RECOVERY_GUARDS_WITNESS,
+        MULTICONDUCTOR_RECOVERY_WITNESS,
+        NOISY_MULTICONDUCTOR_RECOVERY_WITNESS,
+        NONLINEAR_GROUNDING_LOCAL_BOUND,
         POSITIVE_SEQUENCE_WITNESS,
         FOUR_WIRE_IMPEDANCE_LADDER,
         BALANCED_TRANSMISSION_WITNESS,
@@ -634,6 +644,96 @@ def main() -> int:
     ):
         if chordal_projection.get("checks", {}).get(name) is not True:
             errors.append(f"topology radial-clique check failed: {name}")
+
+    source_recovery = load_json(NODAL_SOURCE_RECOVERY_WITNESS)
+    if source_recovery.get("witness_id") != "ARCH-RECOVERY-001":
+        errors.append("nodal source recovery witness has an invalid witness ID")
+    if source_recovery.get("claim_ids") != ["ARCH-RECOVERY-001"]:
+        errors.append("nodal source recovery witness has an unexpected claim set")
+    if source_recovery.get("all_checks_pass") is not True:
+        errors.append("nodal source recovery witness failed its checks")
+    expected_statuses = {
+        "support_separated": "identifiable",
+        "parallel_multiplicity": "non-identifiable",
+        "eliminated_coordinate": "non-identifiable",
+        "over_parameterized": "set-identifiable",
+    }
+    for class_name, status in expected_statuses.items():
+        class_record = source_recovery.get("classes", {}).get(class_name, {})
+        if class_record.get("status") != status:
+            errors.append(f"nodal source recovery class {class_name} has an unexpected status")
+        for check_name, check_value in class_record.get("checks", {}).items():
+            if check_value is not True:
+                errors.append(f"nodal source recovery class {class_name} failed check: {check_name}")
+
+    recovery_guards = load_json(NODAL_RECOVERY_GUARDS_WITNESS)
+    if recovery_guards.get("witness_id") != "ARCH-RECOVERY-GUARDS-001":
+        errors.append("nodal recovery guards witness has an invalid witness ID")
+    if recovery_guards.get("claim_ids") != ["ARCH-RECOVERY-002"]:
+        errors.append("nodal recovery guards witness has an unexpected claim set")
+    if recovery_guards.get("all_checks_pass") is not True:
+        errors.append("nodal recovery guards witness failed its checks")
+    expected_guard_statuses = {
+        "catalog_bounds": "bounded-non-identifiable",
+        "member_current_measurement": "identifiable",
+        "grounding_declaration": "identifiable-with-declaration",
+        "transformer_state_declaration": "identifiable-with-state",
+    }
+    for case_name, status in expected_guard_statuses.items():
+        case_record = recovery_guards.get("cases", {}).get(case_name, {})
+        if case_record.get("status") != status:
+            errors.append(f"nodal recovery guard {case_name} has an unexpected status")
+        for check_name, check_value in case_record.get("checks", {}).items():
+            if check_value is not True:
+                errors.append(f"nodal recovery guard {case_name} failed check: {check_name}")
+
+    multiconductor_recovery = load_json(MULTICONDUCTOR_RECOVERY_WITNESS)
+    if multiconductor_recovery.get("witness_id") != "ARCH-RECOVERY-MULTI-001":
+        errors.append("multiconductor recovery witness has an invalid witness ID")
+    if multiconductor_recovery.get("claim_ids") != ["ARCH-RECOVERY-003"]:
+        errors.append("multiconductor recovery witness has an unexpected claim set")
+    if multiconductor_recovery.get("all_checks_pass") is not True:
+        errors.append("multiconductor recovery witness failed its checks")
+    expected_multiconductor_statuses = {
+        "full_rank_voltage_sweep": "identifiable",
+        "single_snapshot": "non-identifiable",
+        "phase_selective": "non-identifiable",
+    }
+    for case_name, status in expected_multiconductor_statuses.items():
+        case_record = multiconductor_recovery.get("cases", {}).get(case_name, {})
+        if case_record.get("status") != status:
+            errors.append(f"multiconductor recovery case {case_name} has an unexpected status")
+        for check_name, check_value in case_record.get("checks", {}).items():
+            if check_value is not True:
+                errors.append(f"multiconductor recovery case {case_name} failed check: {check_name}")
+
+    noisy_multiconductor = load_json(NOISY_MULTICONDUCTOR_RECOVERY_WITNESS)
+    if noisy_multiconductor.get("witness_id") != "ARCH-RECOVERY-NOISE-001":
+        errors.append("noisy multiconductor recovery witness has an invalid witness ID")
+    if noisy_multiconductor.get("claim_ids") != ["ARCH-RECOVERY-004"]:
+        errors.append("noisy multiconductor recovery witness has an unexpected claim set")
+    if noisy_multiconductor.get("all_checks_pass") is not True:
+        errors.append("noisy multiconductor recovery witness failed its checks")
+    for case_name in ("well_conditioned", "ill_conditioned"):
+        case_record = noisy_multiconductor.get(case_name, {})
+        if case_record.get("status") != "bounded-uncertain":
+            errors.append(f"noisy multiconductor case {case_name} has an unexpected status")
+        for check_name, check_value in case_record.get("checks", {}).items():
+            if check_value is not True:
+                errors.append(f"noisy multiconductor case {case_name} failed check: {check_name}")
+    if not noisy_multiconductor.get("checks", {}).get("ill_conditioning_amplifies_uncertainty"):
+        errors.append("noisy multiconductor witness lost its conditioning comparison")
+
+    nonlinear_grounding = load_json(NONLINEAR_GROUNDING_LOCAL_BOUND)
+    if nonlinear_grounding.get("witness_id") != "TR-KRON-NEUTRAL-008":
+        errors.append("local nonlinear grounding bound has an invalid witness ID")
+    if nonlinear_grounding.get("claim_ids") != ["TR-KRON-NEUTRAL-008"]:
+        errors.append("local nonlinear grounding bound has an unexpected claim set")
+    if nonlinear_grounding.get("all_checks_pass") is not True:
+        errors.append("local nonlinear grounding bound failed its checks")
+    for check_name, check_value in nonlinear_grounding.get("checks", {}).items():
+        if check_value is not True:
+            errors.append(f"local nonlinear grounding bound failed check: {check_name}")
 
     five_bus_kron = load_json(FIVE_BUS_TYPED_KRON)
     if five_bus_kron.get("witness_id") != "TR-KRON-FIVE-001":

@@ -1,8 +1,8 @@
 # [Two topology levels and the nodal projection](@id two-level-topology-and-nodal-projection)
 
-**Page status:** literature-backed definitions with two executable structural
-witnesses; inverse recovery is scoped by an explicit injectivity criterion and
-remains non-identifiable without additional structure.
+**Page status:** literature-backed definitions with executable structural and
+recovery witnesses; inverse recovery is reported by explicit identifiability
+status and remains non-canonical without additional structure.
 
 ## The missing middle between a one-line diagram and ``\mathbf Y^{\mathrm N}``
 
@@ -244,6 +244,165 @@ boundary response can nevertheless hold for restricted classes; circular
 planar critical resistor networks are a major positive theory
 [CurtisMorrow2000](@cite). The model class and injectivity proof are therefore
 part of any recovery claim.
+
+### A scoped recovery vocabulary
+
+The inverse question should return a status, not just a matrix. For an
+observed operator ``\mathbf Y^{\mathrm N}`` and declared model class ``\Theta``,
+classify the preimage of the restricted assembly map as follows:
+
+The three statuses are:
+
+- **identifiable** — one admissible source primitive and declared residual
+  decomposition are recovered. A typical case has known support, one
+  two-terminal factor per block pair, and a unique local stamp map.
+- **set-identifiable** — the terminal primitive is fixed, but internal
+  parameters or construction records remain an equivalence class. This is the
+  expected result for an over-parameterized local construction with the same
+  terminal stamp.
+- **non-identifiable** — distinct source primitives or topologies remain
+  observationally indistinguishable. Parallel multiplicity and eliminated
+  internal coordinates are the basic examples.
+
+This vocabulary is deliberately relative to ``\Theta``. Tightening the class
+with catalog bounds, switch state, measurements, construction metadata, or
+grounding declarations can turn a non-identifiable class into an identifiable
+one; silently assuming those facts does not. Conversely, a numerically unique
+optimizer solution is not evidence that the source map is injective.
+
+The recovery contract is therefore:
+
+1. validate the coordinate order, factor class, active state, and admissible
+   parameter domain before attempting inversion;
+2. return a unique recovered primitive only for the identifiable class;
+3. return a representative together with an explicit equivalence or affine
+   ambiguity for set-identifiable and non-identifiable classes; and
+4. retain the source/provenance record as the authority for asset identity.
+
+The generated
+`experiments/generated/nodal-source-recovery-witness.json` exercises all four
+statuses. Its support-separated scalar case recovers a series primitive and
+declared diagonal shunts. Its parallel case exhibits two distinct member
+splits with the same operator; its elimination case matches a hidden
+three-node chain to a direct two-node boundary factor; and its
+over-parameterized case fixes the terminal primitive while leaving two local
+parameter vectors indistinguishable. These are deliberately finite witnesses,
+not a claim that every practical line or transformer belongs to one class.
+
+This scoped classification is registered as `ARCH-RECOVERY-001`. It turns the
+warning “do not invert ``\mathbf Y^{\mathrm N}`` canonically” into a usable
+engineering interface: declare the model class, report the recovery status,
+and preserve the ambiguity whenever the data do not identify the source.
+
+### Which guards actually lift the ambiguity?
+
+Extra information should be treated as an additional observation map, not as
+an informal reason to choose one reconstruction. If ``\mathcal M`` records
+member currents, grounding metadata, state observations, or another declared
+measurement, define the augmented map
+
+```math
+\mathcal F(\theta)=\bigl(\mathcal S(\theta),\mathcal M(\theta)\bigr).
+```
+
+The same restricted-kernel test applies:
+
+```math
+\mathcal F\vert_\Theta\text{ is injective}
+\quad\Longleftrightarrow\quad
+\ker\mathcal F\cap(\Theta-\Theta)=\{0\}.
+```
+
+Four small cases make the distinction operational:
+
+- **Catalog bounds** can make a parallel-split ambiguity compact without making
+  it unique. A bounded interval is still a set of admissible source models.
+- **Member-current observations** can lift parallel ambiguity when the voltage
+  drop is nonzero and each member current is observed in the same coordinates.
+  The total nodal operator and the member observations then jointly determine
+  the scalar member admittances in that restricted class.
+- **Grounding declarations** can resolve a diagonal residual only when the
+  declaration identifies the grounding contribution and its terminal. A
+  finite grounding impedance and an unspecified local shunt otherwise remain
+  an attribution ambiguity.
+- **Transformer or switch states** must be part of the declared state space.
+  A known tap lets a state-conditioned primitive be recovered; an unknown tap
+  can trade off against the primitive parameter and produce multiple
+  state--parameter pairs with the same effective terminal relation.
+
+The generated
+`experiments/generated/nodal-recovery-guards-witness.json` records these four
+outcomes. Its statuses are deliberately more informative than a binary
+“recoverable” flag: `bounded-non-identifiable`, `identifiable`,
+`identifiable-with-declaration`, and `identifiable-with-state`. The witness is
+scalar and finite; it establishes the guard logic, not a general theorem for
+all multiconductor transformers, nonlinear grounding, or state-dependent AC
+models. This extension is registered as `ARCH-RECOVERY-002`.
+
+### Matrix-valued observations need excitation rank
+
+The scalar member-current example does not generalise automatically to a
+multiconductor factor. For a factor ``\ell`` with an ``m\times m`` primitive,
+voltage snapshots ``V\in\mathbb C^{m\times r}``, and member-current snapshots
+``I_\ell``, the observation equation is
+
+```math
+I_\ell=Y_\ell V.
+```
+
+Full primitive recovery from this relation requires ``\operatorname{rank}(V)=m``
+and observation of every row of ``I_\ell``. In the square full-rank case,
+``Y_\ell=I_\ell V^{-1}``; more generally the declared experiment must span the
+retained conductor space. If ``r<m``, any nonzero admissible ``\Delta`` with
+``\Delta V=0`` gives the same member currents. If only selected current rows
+are observed, a nonzero ``\Delta`` can instead satisfy ``P\Delta V=0`` for the
+row-selection map ``P``. Reciprocal symmetry does not remove these directions
+by itself.
+
+The generated
+`experiments/generated/multiconductor-recovery-witness.json` makes all three
+cases explicit: two independent voltage snapshots with complete current
+vectors recover two reciprocal two-conductor factors; one complete snapshot
+leaves a nonzero reciprocal ambiguity; and full-rank snapshots with only one
+measured current phase still leave the unmeasured phase ambiguous. This is a
+linear identifiability witness, not a claim about nonlinear measurement
+design, noise, or estimator consistency. It is registered as
+`ARCH-RECOVERY-003`.
+
+### Noise changes recovery into a certified uncertainty set
+
+With noisy current snapshots
+
+```math
+I_\ell=Y_\ell V+E,
+\qquad \|E\|_{\mathrm F}\le\varepsilon,
+```
+
+the full-rank pseudoinverse estimate ``\widehat Y_\ell=I_\ell V^\dagger`` is
+an estimator, not an exact source recovery. For square invertible ``V`` (and,
+with the corresponding qualification, for a full-row-rank snapshot matrix),
+
+```math
+\|\widehat Y_\ell-Y_\ell\|_{\mathrm F}
+\le
+\varepsilon\,\|V^\dagger\|_2.
+```
+
+Thus experiment conditioning is part of the recovery certificate. The same
+noise radius can produce a tight uncertainty set for well-conditioned voltage
+snapshots and a much larger set for nearly dependent snapshots. Physical
+symmetry or passivity constraints may intersect that set, but they should be
+reported as additional guards rather than used to hide the measurement
+uncertainty.
+
+The generated
+`experiments/generated/noisy-multiconductor-recovery-witness.json` compares
+well-conditioned and nearly collinear two-conductor voltage snapshots under
+the same Frobenius noise radius. Both estimates satisfy the deterministic
+bound; the ill-conditioned experiment amplifies the bound by more than two
+orders of magnitude. This is a finite error certificate, not a statistical
+consistency or estimator-optimality result. It is registered as
+`ARCH-RECOVERY-004`.
 
 ## Rank, reference, and grounding
 

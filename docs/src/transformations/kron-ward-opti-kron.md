@@ -357,6 +357,17 @@ reproduction checks every continuation row. This is a finite local path, not
 adaptive/global continuation, uncertainty quantification, or a protection
 study.
 
+`TR-KRON-NEUTRAL-008` adds a local derivative certificate for the same
+illustrative voltage-dependent neutral--earth bond law. At a declared base
+state, the analytic real Jacobian is compared with the frozen nominal
+coefficient after a state shift. The frozen map leaves a nonzero residual,
+whereas the recomputed Jacobian gives the smaller local linearisation error;
+the error decreases as the declared step is reduced. The generated
+`experiments/generated/nonlinear-grounding-local-bound-witness.json` records
+the Jacobian, residuals, step scales, and interpretation. This is a local
+Taylor/conditioning check, not a global continuation theorem, a protection
+model, or a standards-aligned grounding result.
+
 The five-bus companion
 `experiments/generated/five-bus-typed-kron-witness.json` covers the scalar
 pendant case directly. Eliminating bus ``m`` through its sole incident line

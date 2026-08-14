@@ -144,9 +144,25 @@ graph-architecture work:
 - [x] add a generated factor-stamp witness that computes block/scalar support,
   parallel-stamp aggregation, and decomposition provenance on the running
   multiconductor fixture;
-- [ ] investigate source recovery as a separately scoped inverse problem with
-  explicit identifiability classes; do not present ``\mathbf Y^{\mathrm N}``
-  inversion as a canonical import path.
+- [x] investigate source recovery as a separately scoped inverse problem with
+  explicit identifiable, set-identifiable, and non-identifiable classes; add
+  a recovery contract and finite executable witnesses without presenting
+  ``\mathbf Y^{\mathrm N}`` inversion as a canonical import path;
+- [x] add a guarded-observation tranche showing bounded catalog ambiguity,
+  member-current lifting, grounding declarations, and state-conditioned
+  transformer recovery;
+- [x] add the scoped multiconductor observation-rank witness: full-rank
+  voltage excitation with complete currents, single-snapshot ambiguity, and
+  phase-selective partial-observation ambiguity;
+- [x] add a deterministic noisy-multiconductor recovery bound and a
+  conditioning witness contrasting well-conditioned and nearly dependent
+  voltage snapshots;
+- [x] add a local nonlinear-grounding derivative certificate comparing the
+  frozen nominal bond coefficient with the recomputed real Jacobian;
+- [ ] extend the guarded classification to noisy partial observations,
+  global nonlinear grounding, full transformer controls, and experimental
+  design, with independent evidence before treating those extensions as
+  general results.
 
 The 2026-08-15 technical review of that tranche adds the following ordered
 repair plan. Two reviewer formulations are deliberately qualified: passivity
@@ -458,6 +474,8 @@ requirements for the current knowledge-base release.
 - [x] add a finite five-state endpoint continuation of the two-point nonlinear
   grounding chain, with per-state neutral-limit margins and independent row
   reproduction; keep adaptive/global continuation explicitly open;
+- [x] add a local real-Jacobian grounding certificate that quantifies frozen
+  map error versus recomputed-map linearisation error;
 - [x] extend the three-member four-wire AC joint-pruning witness to a finite
   four-state admittance envelope, including a phase-selective unbalanced state,
   rebuilding source/pruned formulations and independent boundaries at each
@@ -892,6 +910,17 @@ to proceed in parallel.
   definitions, and radial-macro versus clique-support diagrams;
 - [x] add the generated factor-stamp and support-graph witness described in the
   topology-projection tranche;
+- [x] add the scoped source-recovery vocabulary and executable witnesses for
+  support-separated, multiplicity, elimination, and over-parameterized
+  classes;
+- [x] add guarded-recovery witnesses for catalog bounds, member-current
+  observations, grounding declarations, and declared transformer state;
+- [x] add the multiconductor observation-rank and phase-selective
+  partial-observation witness;
+- [x] add the bounded-noise multiconductor recovery and conditioning witness;
+- [ ] extend guarded recovery to noisy partial observations, nonlinear
+  grounding, full transformer controls, and experimental design before
+  claiming general inverse-import guarantees;
 - [ ] optionally publish/tag the standalone package after API and
   compatibility-policy review.
 

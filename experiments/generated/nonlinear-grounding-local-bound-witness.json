@@ -1,0 +1,73 @@
+{
+  "frozen_errors": [
+    0.0002345948398366869,
+    0.0004800340074633159,
+    0.0010045085782911572
+  ],
+  "checks": {
+    "frozen_error_is_not_a_global_bound": true,
+    "local_error_decreases_with_step": true,
+    "bond_map_changes_with_state": true,
+    "recomputed_jacobian_is_more_accurate_locally": true,
+    "frozen_map_has_nonzero_shifted_residual": true
+  },
+  "frozen_error": 0.0010045085782911572,
+  "local_errors": [
+    6.1191566428923745e-6,
+    2.465951178184545e-5,
+    0.00010010921566211853
+  ],
+  "shift": [
+    0.01,
+    0.008
+  ],
+  "y0": {
+    "re": 0.8,
+    "im": 0.3
+  },
+  "local_jacobian": [
+    [
+      1.0320000000000003,
+      -0.406
+    ],
+    [
+      0.31400000000000006,
+      0.8880000000000001
+    ]
+  ],
+  "all_checks_pass": true,
+  "bond_law": "i(v)=y0*(1+alpha*||v||^2)*v",
+  "scales": [
+    0.25,
+    0.5,
+    1.0
+  ],
+  "model_scope": "illustrative voltage-dependent scalar neutral-earth bond law",
+  "base_state": [
+    0.2,
+    -0.1
+  ],
+  "claim_ids": [
+    "TR-KRON-NEUTRAL-008"
+  ],
+  "witness_id": "TR-KRON-NEUTRAL-008",
+  "alpha": 2,
+  "evidence_type": "analytic_real_jacobian_and_finite_local_state_probe",
+  "interpretation": "local derivative certificate only; not a global continuation, protection, or standards-aligned grounding theorem",
+  "shifted_state": [
+    0.21000000000000002,
+    -0.092
+  ],
+  "frozen_coefficient": [
+    [
+      0.8800000000000001,
+      -0.33
+    ],
+    [
+      0.33,
+      0.8800000000000001
+    ]
+  ],
+  "linearized_error": 0.00010010921566211853,
+  "schema_version": "0.1.0"
+}
