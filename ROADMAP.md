@@ -972,6 +972,35 @@ n-port, grounding, switch, or asset semantics.
   classes; broad category-theoretic or optimizer-independent guarantees stay
   deferred until independent evidence exists.
 
+The 2026-08-15 expert review of this tranche adds the following repair plan.
+The review's central corrections are accepted: realizability conditions must be
+carried with any n-port-to-edge lowering, direct factor stamping is the default
+path, duplicate ideal switches are an asset-attribution ambiguity rather than
+an electrical degeneracy, and unknown-state families need a scalable summary.
+
+- [x] repair the chapter's Markdown math fences and inline math delimiters;
+- [x] reconcile the chapter's shorthand source tuple with the canonical
+  ``\mathfrak P`` notation and make direct stamping versus optional lowering
+  explicit;
+- [x] condition edge-only three-port realization on
+  ``\mathbf Y_\phi\mathbf 1=0`` and point to the line--shunt realizability
+  proposition when residual shunts are required;
+- [x] classify duplicate ideal switches as asset-attribution ambiguity and
+  retain the well-defined electrical quotient;
+- [x] state the ``2^n`` enumeration bound and add a three-valued
+  certainly-connected/certainly-separated/undetermined summary;
+- [x] cite the typed graph-transformation, CIM/PowSyBl, and nanopass compiler
+  precedents, while explicitly scoping the book's DPO relationship as a
+  vocabulary/roadmap rather than a completed rewrite calculus;
+- [x] reconcile the compact figure with the six-entry registry, repair its
+  arrow routing, and correct the six-case description;
+- [x] reclassify normative architecture statements as ``proposal`` claims;
+- [ ] make the node--breaker, representation-taxonomy, and compiled-views
+  chapters defer to one authoritative definition each, retaining only
+  cross-links and application-specific qualifications;
+- [ ] add independent review or executable evidence for the full
+  n-port-to-edge realizability conditions beyond the scoped witness.
+
 **Exit criterion:** the proposed representation architecture has checked maps
 and topology witnesses on the running network, not only prose definitions.
 

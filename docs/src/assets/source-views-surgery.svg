@@ -32,7 +32,7 @@
 <text x="1197" y="220" class="head" text-anchor="middle">nodal support</text>
 <text x="1197" y="247" class="small" text-anchor="middle">many-to-one</text>
 <text x="1197" y="270" class="small" text-anchor="middle">no identity recovery</text>
-<path d="M392 245 L482 235" class="arrow"/><path d="M392 260 L692 235" class="arrow"/><path d="M392 275 L902 235" class="arrow"/><path d="M392 290 L1112 235" class="arrow"/>
+<path d="M392 220 L440 160 L575 160 L575 180" class="arrow"/><path d="M392 240 L460 170 L785 170 L785 180" class="arrow"/><path d="M392 260 L480 180 L995 180" class="arrow"/><path d="M392 280 L450 200 L1197 200 L1197 180" class="arrow"/>
 <path d="M660 335 L450 335" class="dashed"/><path d="M870 335 L450 350" class="dashed"/><path d="M1080 335 L450 365" class="dashed"/>
 <text x="535" y="382" class="small" text-anchor="middle">reverse maps only where declared</text>
 <rect x="40" y="455" width="1280" height="315" rx="14" class="panel"/>

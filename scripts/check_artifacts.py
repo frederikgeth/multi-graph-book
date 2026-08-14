@@ -1229,6 +1229,8 @@ def main() -> int:
         case = compiled_views.get("cases", {}).get(case_name, {})
         if not case.get("checks") or not all(value is True for value in case["checks"].values()):
             errors.append(f"compiled views/surgery case failed checks: {case_name}")
+    if compiled_views.get("cases", {}).get("parallel_ideal_switches", {}).get("diagnostic") != "asset_attribution_ambiguity_for_duplicate_ideal_switches":
+        errors.append("duplicate ideal-switch witness must classify asset attribution, not electrical degeneracy")
 
     load_grounding = load_json(LOAD_GROUNDING_WITNESS)
     if load_grounding.get("all_witnesses_pass") is not True:

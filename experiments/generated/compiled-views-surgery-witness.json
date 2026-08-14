@@ -252,6 +252,8 @@
         },
         "zone_surgery": {
             "checks": {
+                "unknown_state_has_three_valued_summary": true,
+                "certain_pairs_are_invariant_across_completions": true,
                 "closed_switch_returns_one_zone": true,
                 "open_all_returns_two_zones": true,
                 "unknown_state_returns_family": true,
@@ -275,7 +277,21 @@
                         }
                     ],
                     "diagnostic": "resolved_state",
-                    "realization_count": 1
+                    "realization_count": 1,
+                    "connectivity_summary": {
+                        "certainly_separated": [
+                        ],
+                        "certainly_connected": [
+                            "A-B",
+                            "A-C",
+                            "A-D",
+                            "B-C",
+                            "B-D",
+                            "C-D"
+                        ],
+                        "undetermined": [
+                        ]
+                    }
                 },
                 {
                     "scenario": "open_all",
@@ -296,7 +312,21 @@
                         }
                     ],
                     "diagnostic": "resolved_state",
-                    "realization_count": 1
+                    "realization_count": 1,
+                    "connectivity_summary": {
+                        "certainly_separated": [
+                            "A-C",
+                            "A-D",
+                            "B-C",
+                            "B-D"
+                        ],
+                        "certainly_connected": [
+                            "A-B",
+                            "C-D"
+                        ],
+                        "undetermined": [
+                        ]
+                    }
                 },
                 {
                     "scenario": "unknown",
@@ -329,7 +359,21 @@
                         }
                     ],
                     "diagnostic": "state_family_returned",
-                    "realization_count": 2
+                    "realization_count": 2,
+                    "connectivity_summary": {
+                        "certainly_separated": [
+                        ],
+                        "certainly_connected": [
+                            "A-B",
+                            "C-D"
+                        ],
+                        "undetermined": [
+                            "A-C",
+                            "A-D",
+                            "B-C",
+                            "B-D"
+                        ]
+                    }
                 }
             ],
             "switch": {
@@ -396,8 +440,8 @@
                 "diagnostic_is_not_silent_rejection": true,
                 "identities_are_distinct": true
             },
-            "interpretation": "The quotient records connectivity but cannot decide which identified switch carries the physical intent.",
-            "diagnostic": "under_determined_duplicate_ideal_switches",
+            "interpretation": "The electrical quotient is well-defined; the orthogonal asset model cannot decide which identified switch owns protection, maintenance, or failure semantics.",
+            "diagnostic": "asset_attribution_ambiguity_for_duplicate_ideal_switches",
             "switches": [
                 {
                     "id": "sw_1",

@@ -136,8 +136,8 @@ function _parallel_ideal_switches()
     Dict(
         "switches" => switches,
         "quotient_view" => quotient,
-        "diagnostic" => "under_determined_duplicate_ideal_switches",
-        "interpretation" => "The quotient records connectivity but cannot decide which identified switch carries the physical intent.",
+        "diagnostic" => "asset_attribution_ambiguity_for_duplicate_ideal_switches",
+        "interpretation" => "The electrical quotient is well-defined; the orthogonal asset model cannot decide which identified switch owns protection, maintenance, or failure semantics.",
         "checks" => checks,
     )
 end
@@ -167,6 +167,15 @@ function _components(state::String)
     [["A", "B"], ["C", "D"]]
 end
 
+function _connectivity_summary(state::String)
+    state == "closed" && return Dict("certainly_connected" => ["A-B", "A-C", "A-D", "B-C", "B-D", "C-D"], "certainly_separated" => String[], "undetermined" => String[])
+    Dict("certainly_connected" => ["A-B", "C-D"], "certainly_separated" => ["A-C", "A-D", "B-C", "B-D"], "undetermined" => String[])
+end
+
+function _unknown_connectivity_summary()
+    Dict("certainly_connected" => ["A-B", "C-D"], "certainly_separated" => String[], "undetermined" => ["A-C", "A-D", "B-C", "B-D"])
+end
+
 function _zone_surgery()
     states = Dict("open_all" => "open", "closed" => "closed", "unknown" => "unknown")
     rows = Dict{String,Any}[]
@@ -177,6 +186,7 @@ function _zone_surgery()
             "scenario" => name,
             "realization_count" => length(analyses),
             "family" => analyses,
+            "connectivity_summary" => state == "unknown" ? _unknown_connectivity_summary() : _connectivity_summary(state),
             "diagnostic" => length(analyses) > 1 ? "state_family_returned" : "resolved_state",
         ))
     end
@@ -186,6 +196,8 @@ function _zone_surgery()
         "closed_switch_returns_one_zone" => by_name["closed"]["family"][1]["zone_count"] == 1,
         "unknown_state_returns_family" => by_name["unknown"]["realization_count"] == 2,
         "surgery_does_not_choose_unknown_state" => by_name["unknown"]["diagnostic"] == "state_family_returned",
+        "unknown_state_has_three_valued_summary" => length(by_name["unknown"]["connectivity_summary"]["certainly_connected"]) == 2 && length(by_name["unknown"]["connectivity_summary"]["undetermined"]) == 4,
+        "certain_pairs_are_invariant_across_completions" => by_name["unknown"]["connectivity_summary"]["certainly_connected"] == ["A-B", "C-D"],
     )
     Dict("switch" => Dict("id" => "s_BC", "from" => "B", "to" => "C", "state_domain" => ["open", "closed", "unknown"]), "rows" => rows, "checks" => checks)
 end

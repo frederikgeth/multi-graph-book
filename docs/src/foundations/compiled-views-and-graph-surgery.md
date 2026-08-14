@@ -19,46 +19,63 @@ register](@ref transformation-semantics-register).
 
 ## 1. Identity-bearing source graphs
 
-Let `\mathcal E` be the set of identified equipment or factor objects and let
-`P_e` be the ordered port set of `e\in\mathcal E`. A canonical electrical
-source is written
+The canonical electrical source is the hierarchical port--factor model
+``\mathfrak P`` defined in [Formal representation frameworks](@ref
+formal-representation-frameworks). For this chapter only, use the following
+view-level shorthand: ``\mathcal E`` names identified factors,
+``P_e= f^{-1}(e)`` their ordered port sets, ``\iota`` is the canonical
+attachment map ``j``, and ``\mathcal R`` collects the canonical containment,
+coordinate, state, and factor relations. Thus the shorthand
 
-~~~math
-\mathcal M=(\mathcal J,\mathcal E,\{P_e\}_{e\in\mathcal E},\iota,\sigma,\mathcal R),
-~~~
+```math
+\mathcal M_{\mathrm{view}}
+ =(\mathcal J,\mathcal E,\{P_e\}_{e\in\mathcal E},\iota,\sigma,\mathcal R)
+```
 
-where `\mathcal J` is the set of junctions or terminals, `\iota` attaches
-ports to junctions, `\sigma` contains declared device states, and
-`\mathcal R` contains factor relations, limits, grounding declarations, and
-provenance. A two-terminal line has `|P_e|=2`. A three-winding transformer
-has `|P_e|=3` (or more when conductor ports are explicit). Its identity is
-not recovered by looking at three pairwise edges after the fact.
+is a notation convenience, not a second canonical tuple. A two-terminal line
+has ``|P_e|=2``. A three-winding transformer has ``|P_e|=3`` (or more when
+conductor ports are explicit). Its identity is not recovered by looking at
+three pairwise edges after the fact.
 
 An **identity fibre** is a set of source objects that a later view represents
-by one object. For a view `v` write
+by one object. For a view ``v`` write
 
-~~~math
+```math
 q_v:\mathcal M\longrightarrow \mathcal V_v,\qquad
 \operatorname{fib}_v(x)=q_v^{-1}(x).
-~~~
+```
 
 The fibre may be a singleton, a parallel family, or a mixed family of ports
 and factors. The quotient is useful only when the query is invariant over the
 fibre, or when the omitted distinctions are carried as guards and provenance.
 
-This is why the book's `\ell i j` notation retains line identity: `\ell`
-labels the physical member while `i` and `j` describe its endpoints. A
-quotient may forget `\ell`; it must not pretend that the member never existed.
+This is why the book's ``\ell i j`` notation retains line identity: ``\ell``
+labels the physical member while ``i`` and ``j`` describe its endpoints. A
+quotient may forget ``\ell``; it must not pretend that the member never existed.
 
 ## 2. A visualisation registry
 
-The six initial view classes are recorded in
-experiments/generated/compiled-views-surgery-witness.json:
+The six initial view classes are recorded in the artifact
+`experiments/generated/compiled-views-surgery-witness.json`.
 
 The same artifact carries four explicit source-to-view map records. These are
 small contracts, not inferred drawing relationships: each names its source
 and target object IDs, map kind, preserved and forgotten semantics, and
 reverse-map status.
+
+This registry is the book's scoped application of typed algebraic graph
+transformation: maps have declared matching conditions, omitted structure, and
+negative conditions such as “do not contract an unknown switch.” The broader
+double-pushout theory, rewrite composition, and confluence vocabulary are
+available in [Ehrig2006](@cite); this chapter does not claim to implement that
+entire calculus.
+
+Two views are equal only up to the equivalence declared for their framework:
+an isomorphism may rename objects and coordinates, while a quotient or lowering
+is equal only when its preservation contract and source fibres agree. This uses
+the morphism/isomorphism distinction in [Maps between representation
+frameworks](@ref representation-maps), rather than treating two drawings that
+look alike as the same view.
 
 | View | Typical purpose | What it can forget |
 | --- | --- | --- |
@@ -82,30 +99,43 @@ nonzero block. A reduced circuit can preserve a retained-port relation while
 leaving no source-level current limit for an eliminated neutral. This is a
 semantic limitation, not a rendering defect.
 
-![One source graph, four typed views, and three state-conditioned surgeries.](../assets/source-views-surgery.png)
+The industrial node--breaker, bus--breaker, and bus--branch progression in CIM
+and PowSyBl is a useful precedent for this registry [CIMTopologicalNode,
+PowsyblTopology](@cite). The present registry extends that idea to
+multiconductor ports, n-terminal factors, grounding, and reduction provenance.
 
-The upper row is a view family: the arrows may be quotient, refinement,
-lowering, or many-to-one assembly maps. The lower row is a surgery family: the
-same source can produce different active graphs, and an unknown state produces
-a family rather than a silently selected result.
+![One source graph, four representative typed views, and three state-conditioned surgeries.](../assets/source-views-surgery.png)
+
+The upper row is a representative subset of the six-entry registry: the arrows
+may be quotient, refinement, lowering, or many-to-one assembly maps. The
+node--breaker and reduced/Kron entries are omitted from this compact figure.
+The lower row is a surgery family: the same source can produce different
+active graphs, and an unknown state produces a family rather than a silently
+selected result.
 
 ## 3. Lowering as a typed compilation boundary
 
-For a declared algorithm, use the following pipeline:
+For a declared algorithm, use the following typed pipeline. Direct stamping is
+the default; ordinary-edge lowering is an optional branch only when the target
+algorithm requires it:
 
-~~~math
+```math
 \mathcal M
   \xrightarrow{\;C\;}
 \mathcal M_{\mathrm{port}}
+  \xrightarrow{\;A\;}
+\mathbf Y,\mathbf J,\text{ or another numeric operator},
+\qquad
+\mathcal M_{\mathrm{port}}
   \xrightarrow{\;L\;}
 \mathcal G_{\mathrm{edge}}
-  \xrightarrow{\;A\;}
-\mathbf Y,\mathbf J,\text{ or another numeric operator}.
-~~~
+  \xrightarrow{\;A_{\mathrm{edge}}\;}
+\text{target algorithm}.
+```
 
-`C` completes the canonical port--factor representation. `L` lowers a
+``C`` completes the canonical port--factor representation. ``L`` lowers a
 factor to the ordinary-edge or incidence objects expected by a graph
-algorithm. `A` assembles equations or sparsity. Every arrow must record:
+algorithm. ``A`` assembles equations or sparsity. Every arrow must record:
 
 1. the source object and coordinate order;
 2. the target object IDs and source fibres;
@@ -114,26 +144,47 @@ algorithm. `A` assembles equations or sparsity. Every arrow must record:
 5. whether a reverse map is total, partial, or unavailable.
 
 For a three-port transformer, a lowerer may introduce three ordinary edges in
-an incidence graph. That can be an exact equation expansion for a declared
-factor model, but the ordinary-edge graph is not then the canonical equipment
-graph. Removing the provenance fibre would make later operations unable to
-distinguish a transformer from three unrelated lines.
+an incidence graph, but this is exact only under a declared realizability
+condition. For a reciprocal terminal admittance ``\mathbf Y_\phi`` with
+terminal-space all-ones vector ``\mathbf 1``, an edge-only realization requires
+the floating/no-ground-path condition
+``\mathbf Y_\phi\mathbf 1=0`` (together with the target library's reciprocity
+and coordinate assumptions). Otherwise the exact complete-graph construction
+needs the pairwise series blocks and residual shunts
+
+```math
+\mathbf Y^{\mathrm s}_{pq}=-\mathbf Y^{\mathrm K}_{pq},
+\qquad
+\mathbf Y^{\mathrm{sh}}_p
+ =\mathbf Y^{\mathrm K}_{pp}
+  -\sum_{q\ne p}\mathbf Y^{\mathrm s}_{pq}.
+```
+
+This is the realizability proposition in [Kron, Ward, and optimized network
+equivalents](@ref kron-ward-opti-kron), not an automatic transformer-to-three-
+lines rule. Magnetizing, grounding, or other retained shunt current must not
+be silently dropped. Even when the expansion is exact, the ordinary-edge graph
+is not the canonical equipment graph: removing its provenance fibre would make
+later operations unable to distinguish a transformer from three unrelated
+lines.
 
 The analogy with compiler lowering is useful because it sets the right
-expectation: lowering changes the representation so an algorithm can run. It
-does not grant permission to infer source semantics from the lowered code.
+expectation: lowering changes the representation so an algorithm can run. A
+nanopass compiler similarly uses many small, typed intermediate passes rather
+than one opaque rewrite [Nanopass2005](@cite). The analogy does not grant
+permission to infer source semantics from the lowered code.
 
 ## 4. State-conditioned graph surgery
 
 Graph surgery is a family of queries and transformations indexed by a declared
-state `\sigma`. For a surgery operation `S` write
+state ``\sigma``. For a surgery operation ``S`` write
 
-~~~math
+```math
 S(\mathcal M,\sigma)=(\mathcal V_\sigma,\mathcal D_\sigma,\operatorname{prov}_\sigma),
-~~~
+```
 
-where `\mathcal V_\sigma` may be one graph or a finite family of graphs,
-`\mathcal D_\sigma` contains diagnostics, and `\operatorname{prov}_\sigma`
+where ``\mathcal V_\sigma`` may be one graph or a finite family of graphs,
+``\mathcal D_\sigma`` contains diagnostics, and ``\operatorname{prov}_\sigma``
 maps each output node, edge, port, and zone to its source objects.
 
 Useful operations include:
@@ -143,7 +194,11 @@ Useful operations include:
 - galvanic_zones, which computes connected components using only the declared
   zero-impedance or closed-switch relation;
 - energized_subgraphs, which additionally uses sources and a declared
-  energization rule;
+  energization rule. The term is intentionally inherited from the book's
+  [terminology](../reference/terminology.md) and [translation-traps](@ref
+  translation-traps) chapters; in a multiconductor model the query is
+  port-indexed, so one phase may be energized while the neutral remains
+  floating;
 - active_radiality, which reports member, endpoint, conductor, and compiled
   bus predicates separately; and
 - eliminate_switches, which is a lowering operation only after its state and
@@ -156,6 +211,20 @@ opening the neutral or earth path. Consequently, a bus-level tree can coexist
 with a disconnected phase-terminal graph, or with a neutral path that remains
 connected.
 
+For ``n`` binary unknown switches, explicit completion enumeration can contain
+up to ``2^n`` active graphs. Enumeration is appropriate for small certificates,
+but it is not the default representation for a large substation. The default
+summary is three-valued for each queried pair or port set:
+
+- **certainly connected** in every admissible completion;
+- **certainly separated** in every admissible completion; or
+- **undetermined**, connected in some completions and separated in others.
+
+This summary is the intersection/union view of the state-conditioned quotient
+``\pi_\sigma`` from [node--breaker topology processing](@ref
+node-breaker-topology). A caller can request explicit completions when the
+summary is insufficient.
+
 For an n-terminal factor, the surgery result should name the active and
 isolated port sets. Opening the ``lv`` port of a three-winding transformer is
 not the same operation as deleting one of three pairwise lines: the factor
@@ -167,10 +236,12 @@ sets.
 
 Some modelling problems cannot be resolved from the graph alone. In the
 generated witness, two identified ideal switches have identical terminals and
-the same state domain. Their quotient has one closed connection, but it cannot
-say which device is intended to carry protection, maintenance, or failure
-semantics. The correct result is an **under-determination diagnostic** with
-the two source identities retained.
+the same state domain. Electrically, their parallel closed quotient is perfectly
+well-defined. The ambiguity is in the orthogonal asset/dependency model: the
+quotient cannot say which device owns protection, maintenance, or failure
+semantics. The correct result is therefore an **asset-attribution diagnostic**
+with both source identities retained, not a claim that the electrical model is
+ill-posed.
 
 The same rule applies to duplicate factor/terminal sets, missing grounding or
 reference declarations, and singular active-state maps. These are not
@@ -187,7 +258,7 @@ well-scoped operation possible; the default result is a diagnostic.
 ## 6. Executable scope
 
 The package-independent witness
-experiments/generated/compiled-views-surgery-witness.json checks four small
+`experiments/generated/compiled-views-surgery-witness.json` checks six small
 cases:
 
 1. a three-port transformer lowered to ordinary edges with a retained source
