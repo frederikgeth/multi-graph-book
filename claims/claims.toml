@@ -91,6 +91,66 @@ review_date = ""
 unresolved_issue = "Extend the support/stamp distinction to frequency-coupled, rectangular realified, Jacobian, and multi-terminal compiled operator families."
 
 [[claim]]
+claim_id = "ARCH-VIEW-001"
+chapter = "docs/src/foundations/compiled-views-and-graph-surgery.md"
+claim_text = "A power-network visualisation should declare its object level, preserved and forgotten semantics, identity fibres, and reverse-map status; single-line, multi-line, port-factor, node-breaker, nodal-support, and reduced views are distinct typed projections."
+status = "proposed_result"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "typed_view_registry_and_executable_witness"
+citation_keys = []
+model_scope = "six declared view classes for the book's canonical power-network architecture"
+assumptions = "view metadata is declared by the model author; absence of a reverse map is not treated as recoverability"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Compare the registry with external single-line, node-breaker, CIM/CGMES, and multi-line visual languages."
+
+[[claim]]
+claim_id = "ARCH-LOWER-001"
+chapter = "docs/src/foundations/compiled-views-and-graph-surgery.md"
+claim_text = "A typed lowering from an identity-bearing n-port source graph to ordinary-edge incidence objects may preserve a declared equation relation while forgetting factor identity unless source fibres and provenance are retained."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "definition_level_contract_and_executable_multiwinding_lowering_witness"
+citation_keys = []
+model_scope = "finite three-port transformer factor lowered to an ordinary-edge incidence view"
+assumptions = "the lowerer declares the expansion and retains a source-fibre map; no source identity is inferred from the target edges"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add a full evaluated multiwinding factor lowerer and independently review equation-preservation conditions."
+
+[[claim]]
+claim_id = "ARCH-SURGERY-001"
+chapter = "docs/src/foundations/compiled-views-and-graph-surgery.md"
+claim_text = "State-conditioned graph surgery should return state-indexed graphs or graph families with diagnostics and provenance; unknown switch states must not be silently collapsed to one active graph."
+status = "established_result"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "state-enumeration_and_galvanic-zone_executable_witness"
+citation_keys = []
+model_scope = "finite switch state domain with open, closed, and unknown states"
+assumptions = "the surgery query declares its zero-impedance relation and returns all admissible realizations for unknown states"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the surgery contract to energized islands, protection states, n-terminal factors, and optimization decisions."
+
+[[claim]]
+claim_id = "ARCH-DEGENERACY-001"
+chapter = "docs/src/foundations/compiled-views-and-graph-surgery.md"
+claim_text = "Duplicate ideal switches with identical terminal sets and state domains are semantically under-determined by a connectivity quotient; the model should retain both identities and emit a diagnostic rather than invent physical intent."
+status = "established_result"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "duplicate-ideal-switch_executable_diagnostic_witness"
+citation_keys = []
+model_scope = "two identified ideal switches in parallel between the same terminal pair"
+assumptions = "no additional protection, maintenance, failure, or measurement declaration distinguishes the devices"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Specify utility-data remediation policies for duplicate or indistinguishable switch assets."
+
+[[claim]]
 claim_id = "ARCH-CHORDAL-001"
 chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"
 claim_text = "For a simple bus-level tree with a common m-coordinate block at every bus and a structurally dense two-terminal stamp on every tree edge, the scalar structural-support graph is chordal and leaf-bus block elimination is a zero-fill perfect elimination ordering."

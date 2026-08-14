@@ -837,6 +837,47 @@ def radial_clique_projection() -> str:
     return "\n".join(lines) + "\n"
 
 
+def source_views_surgery() -> str:
+    lines = [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">',
+        '<title>One source graph, four views, and three state-conditioned surgeries</title>',
+        '<desc>A canonical source graph with identified equipment and ports maps to single-line, port-factor, lowered-edge, and nodal-support views. Three surgery outputs show open-switch zones, a phase-only state, and an unknown-state family.</desc>',
+        '<rect width="1400" height="820" fill="white"/>',
+        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:18px;font-weight:bold}.body{font-size:14px}.small{font-size:13px;fill:#5f6b76}.source{fill:#d9eef8;stroke:#245b7a;stroke-width:3}.view{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.lower{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.surgery{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.arrow{stroke:#17212b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dashed{stroke:#8a3232;stroke-width:2.5;stroke-dasharray:8 6;fill:none;marker-end:url(#arrow)}.edge{stroke:#245b7a;stroke-width:4}.thin{stroke:#477a55;stroke-width:2}</style>',
+        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
+        txt(40, 42, "One source graph, four views, and three surgeries", "title"),
+        txt(40, 70, "Each arrow is typed: it records what survives, what is forgotten, and which state selects the output.", "sub"),
+        '<rect x="40" y="105" width="350" height="300" rx="14" class="panel"/>',
+        txt(65, 140, "canonical source", "head"),
+        '<circle cx="120" cy="240" r="30" class="source"/><circle cx="250" cy="180" r="30" class="source"/><circle cx="250" cy="300" r="30" class="source"/>',
+        '<line x1="145" y1="225" x2="225" y2="195" class="edge"/><line x1="145" y1="255" x2="225" y2="285" class="edge"/>',
+        txt(120, 246, "A", "head", "middle"), txt(250, 186, "B", "head", "middle"), txt(250, 306, "C", "head", "middle"),
+        txt(185, 202, "xfmr₃w", "small", "middle"), txt(185, 288, "switches", "small", "middle"),
+        txt(65, 352, "identities + ordered ports + states", "body"),
+        txt(65, 376, "source fibres remain available", "small"),
+        '<rect x="450" y="105" width="870" height="300" rx="14" class="panel"/>',
+        txt(475, 140, "typed views", "head"),
+        '<rect x="490" y="185" width="170" height="100" rx="12" class="view"/><rect x="700" y="185" width="170" height="100" rx="12" class="view"/><rect x="910" y="185" width="170" height="100" rx="12" class="lower"/><rect x="1120" y="185" width="155" height="100" rx="12" class="view"/>',
+        txt(575, 220, "single-line", "head", "middle"), txt(575, 247, "quotient", "small", "middle"), txt(575, 270, "partial reverse map", "small", "middle"),
+        txt(785, 220, "port–factor", "head", "middle"), txt(785, 247, "canonical", "small", "middle"), txt(785, 270, "identity retained", "small", "middle"),
+        txt(995, 220, "lowered edges", "head", "middle"), txt(995, 247, "algorithm target", "small", "middle"), txt(995, 270, "fibre required", "small", "middle"),
+        txt(1197, 220, "nodal support", "head", "middle"), txt(1197, 247, "many-to-one", "small", "middle"), txt(1197, 270, "no identity recovery", "small", "middle"),
+        '<path d="M392 245 L482 235" class="arrow"/><path d="M392 260 L692 235" class="arrow"/><path d="M392 275 L902 235" class="arrow"/><path d="M392 290 L1112 235" class="arrow"/>',
+        '<path d="M660 335 L450 335" class="dashed"/><path d="M870 335 L450 350" class="dashed"/><path d="M1080 335 L450 365" class="dashed"/>',
+        txt(535, 382, "reverse maps only where declared", "small", "middle"),
+        '<rect x="40" y="455" width="1280" height="315" rx="14" class="panel"/>',
+        txt(65, 490, "state-conditioned surgery outputs", "head"),
+        '<rect x="90" y="535" width="330" height="170" rx="12" class="surgery"/><rect x="535" y="535" width="330" height="170" rx="12" class="surgery"/><rect x="980" y="535" width="290" height="170" rx="12" class="surgery"/>',
+        txt(255, 570, "open_all_switches", "head", "middle"), txt(255, 600, "galvanic zones", "body", "middle"), txt(255, 628, "two components", "small", "middle"), txt(255, 665, "state σ = open", "small", "middle"),
+        txt(700, 570, "phase-only switch", "head", "middle"), txt(700, 600, "coordinate query", "body", "middle"), txt(700, 628, "phase changes; neutral stays", "small", "middle"), txt(700, 665, "member radiality ≠ bus radiality", "small", "middle"),
+        txt(1125, 570, "unknown switch", "head", "middle"), txt(1125, 600, "family return", "body", "middle"), txt(1125, 628, "open and closed cases", "small", "middle"), txt(1125, 665, "diagnostic, not a guess", "small", "middle"),
+        '<path d="M210 405 L210 525" class="arrow"/><path d="M700 405 L700 525" class="arrow"/><path d="M1170 405 L1170 525" class="arrow"/>',
+        txt(40, 805, "The source object is the semantic anchor; views and surgeries are typed, state-indexed projections with provenance.", "small"),
+        '</svg>',
+    ]
+    return "\n".join(lines) + "\n"
+
+
 def main() -> None:
     outputs = {
         "exactness-classes": exactness_classes(),
@@ -858,6 +899,7 @@ def main() -> None:
         "active-radiality": active_radiality(),
         "topology-projection-layers": topology_projection_layers(),
         "radial-clique-projection": radial_clique_projection(),
+        "source-views-surgery": source_views_surgery(),
     }
     for stem, content in outputs.items():
         (ASSETS / f"{stem}.svg").write_text(content)

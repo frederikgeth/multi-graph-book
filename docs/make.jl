@@ -120,6 +120,7 @@ const PAGES_HTML = [
         "Orientation, terminal quantities, and power transfer" => "foundations/orientation-terminal-power.md",
         "Earth, neutral, and reference model classes" => "foundations/earth-ground-models.md",
         "Node--breaker, bus--breaker, and topology processing" => "foundations/node-breaker-topology-processing.md",
+        "From source graphs to views and graph surgery" => "foundations/compiled-views-and-graph-surgery.md",
         "Rating and limit semantics" => "foundations/rating-semantics.md",
         "Data-model crosswalk" => "foundations/data-model-crosswalk.md",
         "Numerical consequences of representation and reduction" => "foundations/numerical-consequences.md",
@@ -182,6 +183,7 @@ const PAGES_PDF = [
     ],
     "Guarded cases and computational consequences" => [
         "Earth, neutral, and reference model classes" => "foundations/earth-ground-models.md",
+        "From source graphs to views and graph surgery" => "foundations/compiled-views-and-graph-surgery.md",
         "Four-wire impedance-model ladder" => "cases/four-wire-impedance-model-ladder.md",
         "Conductor-coordinate normalization" => "transformations/conductor-coordinate-normalization.md",
         "Multiwinding terminal leakage assembly" => "transformations/multiwinding-terminal-leakage-assembly.md",

@@ -168,6 +168,12 @@
       "monochrome_safe": true,
       "distinguishing_channels": ["macro and expanded panel labels", "bus/conductor coordinate labels", "separator and perfect-elimination-order annotations", "explicit nonphysical-cycle warning"]
     },
+    "source-views-surgery": {
+      "svg": "docs/src/assets/source-views-surgery.svg",
+      "png": "docs/src/assets/source-views-surgery.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["source/view/surgery panel boundaries", "typed map arrows", "explicit state and reverse-map labels"]
+    },
     "ybus-jacobian-witness": {
       "svg": "docs/src/assets/ybus-jacobian-witness.svg",
       "png": "docs/src/assets/ybus-jacobian-witness.png",

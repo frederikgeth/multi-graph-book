@@ -1,0 +1,418 @@
+{
+    "checks": {
+        "zone_surgery": true,
+        "nport_lowering": true,
+        "parallel_switch_diagnostic": true,
+        "phase_only_switching": true
+    },
+    "view_maps": [
+        {
+            "map_kind": "quotient_with_identity_fibres",
+            "source_view": "canonical_source",
+            "forgets": [
+                "individual_conductor_coordinates",
+                "internal_factor_equations"
+            ],
+            "map_id": "M-single-line",
+            "source_objects": [
+                "xfmr_3w",
+                "sw_1",
+                "sw_2",
+                "phase_switch"
+            ],
+            "target_objects": [
+                "xfmr_3w",
+                "sw_1|sw_2",
+                "phase_switch"
+            ],
+            "preserves": [
+                "equipment_role",
+                "n_port_cardinality_as_annotation"
+            ],
+            "target_view": "single_line",
+            "reverse_status": "partial"
+        },
+        {
+            "map_kind": "typed_refinement",
+            "source_view": "canonical_source",
+            "forgets": [
+                "none_declared"
+            ],
+            "map_id": "M-port-factor",
+            "source_objects": [
+                "xfmr_3w",
+                "sw_1",
+                "sw_2",
+                "phase_switch"
+            ],
+            "target_objects": [
+                "xfmr_3w",
+                "sw_1",
+                "sw_2",
+                "phase_switch"
+            ],
+            "preserves": [
+                "factor_identity",
+                "port_sets",
+                "state_domains"
+            ],
+            "target_view": "port_factor",
+            "reverse_status": "identity_on_declared_subset"
+        },
+        {
+            "map_kind": "many_to_one_assembly_projection",
+            "source_view": "canonical_source",
+            "forgets": [
+                "factor_identity",
+                "parallel_multiplicity",
+                "switch_decisions"
+            ],
+            "map_id": "M-nodal-support",
+            "source_objects": [
+                "xfmr_3w",
+                "sw_1",
+                "sw_2",
+                "phase_switch"
+            ],
+            "target_objects": [
+                "support(p_a,p_b)",
+                "support(hv,mv)",
+                "support(mv,lv)"
+            ],
+            "preserves": [
+                "ordered_coordinate_support"
+            ],
+            "target_view": "nodal_support",
+            "reverse_status": "none_without_provenance"
+        },
+        {
+            "map_kind": "declared_lowering",
+            "source_view": "port_factor",
+            "forgets": [
+                "native_n_port_factor_identity_if_fibre_removed"
+            ],
+            "map_id": "M-lowered-edge",
+            "source_objects": [
+                "xfmr_3w"
+            ],
+            "target_objects": [
+                "xfmr_3w/hv-mv",
+                "xfmr_3w/mv-lv",
+                "xfmr_3w/lv-hv"
+            ],
+            "preserves": [
+                "declared_port_relation",
+                "source_fibre_provenance"
+            ],
+            "target_view": "ordinary_edge_incidence",
+            "reverse_status": "partial_with_fibre"
+        }
+    ],
+    "all_checks_pass": true,
+    "model_scope": "finite typed source graph with one three-port factor, duplicate ideal switches, four-wire phase-only switching, and one state-conditioned zone surgery",
+    "claim_ids": [
+        "ARCH-VIEW-001",
+        "ARCH-LOWER-001",
+        "ARCH-SURGERY-001",
+        "ARCH-DEGENERACY-001"
+    ],
+    "witness_id": "ARCH-VIEWS-SURGERY-001",
+    "evidence_type": "compiled_views_and_state_conditioned_surgery_witness",
+    "view_registry": [
+        {
+            "forgets": [
+                "individual_conductor_coordinates",
+                "internal_factor_equations"
+            ],
+            "view_id": "single_line",
+            "preserves": [
+                "equipment_identity",
+                "terminal_roles",
+                "n_port_cardinality"
+            ],
+            "object_level": "identified_equipment",
+            "reverse_map": "partial_with_source_fibres"
+        },
+        {
+            "forgets": [
+                "none_declared_for_the_view"
+            ],
+            "view_id": "multi_line",
+            "preserves": [
+                "equipment_identity",
+                "terminal_roles",
+                "conductor_coordinates",
+                "switch_state"
+            ],
+            "object_level": "identified_equipment_and_conductors",
+            "reverse_map": "identity"
+        },
+        {
+            "forgets": [
+                "asset_ownership_if_not_attached"
+            ],
+            "view_id": "port_factor",
+            "preserves": [
+                "factor_identity",
+                "port_sets",
+                "grounding_factors",
+                "n_port_cardinality"
+            ],
+            "object_level": "canonical_electrical_source",
+            "reverse_map": "identity_on_declared_source"
+        },
+        {
+            "forgets": [
+                "compiled_bus_equations"
+            ],
+            "view_id": "node_breaker",
+            "preserves": [
+                "switch_identity",
+                "state_domain",
+                "connectivity_nodes",
+                "terminal_membership"
+            ],
+            "object_level": "identified_connectivity_and_switch_state",
+            "reverse_map": "identity_on_declared_source"
+        },
+        {
+            "forgets": [
+                "factor_identity",
+                "parallel_multiplicity",
+                "switch_decisions"
+            ],
+            "view_id": "nodal_support",
+            "preserves": [
+                "ordered_coordinates",
+                "nonzero_support"
+            ],
+            "object_level": "matrix_support_quotient",
+            "reverse_map": "none_without_provenance"
+        },
+        {
+            "forgets": [
+                "eliminated_coordinates",
+                "internal_asset_identity",
+                "member_limits_unless_mapped"
+            ],
+            "view_id": "reduced_kron",
+            "preserves": [
+                "declared_retained_port_relation"
+            ],
+            "object_level": "eliminated_operator",
+            "reverse_map": "partial_if_elimination_map_retained"
+        }
+    ],
+    "interpretation": "Source identities and port sets are retained at the canonical boundary; quotient and lowered views are typed projections with provenance, while surgery returns state-resolved graph families and diagnostics.",
+    "source": "experiments/transformations/CompiledViewsSurgeryWitness.jl",
+    "cases": {
+        "zone_surgery": {
+            "checks": {
+                "closed_switch_returns_one_zone": true,
+                "open_all_returns_two_zones": true,
+                "unknown_state_returns_family": true,
+                "surgery_does_not_choose_unknown_state": true
+            },
+            "rows": [
+                {
+                    "scenario": "closed",
+                    "family": [
+                        {
+                            "switch_state": "closed",
+                            "zone_count": 1,
+                            "galvanic_zones": [
+                                [
+                                    "A",
+                                    "B",
+                                    "C",
+                                    "D"
+                                ]
+                            ]
+                        }
+                    ],
+                    "diagnostic": "resolved_state",
+                    "realization_count": 1
+                },
+                {
+                    "scenario": "open_all",
+                    "family": [
+                        {
+                            "switch_state": "open",
+                            "zone_count": 2,
+                            "galvanic_zones": [
+                                [
+                                    "A",
+                                    "B"
+                                ],
+                                [
+                                    "C",
+                                    "D"
+                                ]
+                            ]
+                        }
+                    ],
+                    "diagnostic": "resolved_state",
+                    "realization_count": 1
+                },
+                {
+                    "scenario": "unknown",
+                    "family": [
+                        {
+                            "switch_state": "open",
+                            "zone_count": 2,
+                            "galvanic_zones": [
+                                [
+                                    "A",
+                                    "B"
+                                ],
+                                [
+                                    "C",
+                                    "D"
+                                ]
+                            ]
+                        },
+                        {
+                            "switch_state": "closed",
+                            "zone_count": 1,
+                            "galvanic_zones": [
+                                [
+                                    "A",
+                                    "B",
+                                    "C",
+                                    "D"
+                                ]
+                            ]
+                        }
+                    ],
+                    "diagnostic": "state_family_returned",
+                    "realization_count": 2
+                }
+            ],
+            "switch": {
+                "state_domain": [
+                    "open",
+                    "closed",
+                    "unknown"
+                ],
+                "id": "s_BC",
+                "to": "C",
+                "from": "B"
+            }
+        },
+        "nport_lowering": {
+            "lowered_edges": [
+                {
+                    "edge_id": "xfmr_3w/hv-mv",
+                    "to": "mv",
+                    "from": "hv"
+                },
+                {
+                    "edge_id": "xfmr_3w/mv-lv",
+                    "to": "lv",
+                    "from": "mv"
+                },
+                {
+                    "edge_id": "xfmr_3w/lv-hv",
+                    "to": "hv",
+                    "from": "lv"
+                }
+            ],
+            "relation_status": "equation-preserving only under a declared factor expansion",
+            "checks": {
+                "factor_identity_is_not_inferred_from_edges": true,
+                "lowering_is_not_declared_as_source_identity": true,
+                "all_lowered_edges_have_source_fibre": true,
+                "port_set_is_retained": true
+            },
+            "source_factor": {
+                "factor_id": "xfmr_3w",
+                "factor_type": "multiwinding_transformer",
+                "ports": [
+                    "hv",
+                    "mv",
+                    "lv"
+                ]
+            },
+            "provenance_fibres": {
+                "xfmr_3w/hv-mv": [
+                    "xfmr_3w"
+                ],
+                "xfmr_3w/lv-hv": [
+                    "xfmr_3w"
+                ],
+                "xfmr_3w/mv-lv": [
+                    "xfmr_3w"
+                ]
+            }
+        },
+        "parallel_ideal_switches": {
+            "checks": {
+                "quotient_cannot_select_device_intent": true,
+                "terminal_sets_are_equal": true,
+                "diagnostic_is_not_silent_rejection": true,
+                "identities_are_distinct": true
+            },
+            "interpretation": "The quotient records connectivity but cannot decide which identified switch carries the physical intent.",
+            "diagnostic": "under_determined_duplicate_ideal_switches",
+            "switches": [
+                {
+                    "id": "sw_1",
+                    "to": "p_b",
+                    "from": "p_a",
+                    "state": "closed"
+                },
+                {
+                    "id": "sw_2",
+                    "to": "p_b",
+                    "from": "p_a",
+                    "state": "closed"
+                }
+            ],
+            "quotient_view": {
+                "closed_connectivity": true,
+                "endpoints": [
+                    "p_a",
+                    "p_b"
+                ]
+            }
+        },
+        "phase_only_switching": {
+            "checks": {
+                "four_wire_coordinates_are_explicit": true,
+                "phase_connectivity_changes": true,
+                "bus_and_member_queries_can_disagree": true,
+                "neutral_connectivity_is_unchanged": true
+            },
+            "coordinates": [
+                "a",
+                "b",
+                "c",
+                "n"
+            ],
+            "query_status": {
+                "neutral_terminal_connectivity": "fixed",
+                "bus_level_radiality": "insufficient_without_coordinate_query",
+                "phase_terminal_connectivity": "state-dependent"
+            },
+            "states": {
+                "open": {
+                    "neutral_edges": [
+                        "n_A-n_B"
+                    ],
+                    "phase_edges": [
+                    ]
+                },
+                "closed": {
+                    "neutral_edges": [
+                        "n_A-n_B"
+                    ],
+                    "phase_edges": [
+                        "a_A-a_B",
+                        "b_A-b_B",
+                        "c_A-c_B"
+                    ]
+                }
+            }
+        }
+    }
+}

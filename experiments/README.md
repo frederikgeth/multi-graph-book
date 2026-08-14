@@ -40,6 +40,7 @@ julia --project=experiments experiments/run_nodal_recovery_guards_witness.jl
 julia --project=experiments experiments/run_multiconductor_recovery_witness.jl
 julia --project=experiments experiments/run_noisy_multiconductor_recovery_witness.jl
 julia --project=experiments experiments/run_nonlinear_grounding_local_bound_witness.jl
+julia --project=experiments experiments/run_compiled_views_surgery_witness.jl
 julia --project=experiments experiments/run_australian_carson_reproduction.jl
 julia --project=experiments experiments/test/typed_kron.jl
 julia --project=experiments experiments/run_typed_kron.jl

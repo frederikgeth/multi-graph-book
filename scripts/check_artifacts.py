@@ -42,6 +42,7 @@ TRANSFORMER_CONTROL_FAMILY = GENERATED / "transformer-control-family-witness.jso
 TRANSFORMER_TAP_AC = GENERATED / "transformer-tap-ac-decision-certificate.json"
 TRANSFORMER_TAP_THREE_SCENARIO_REPRO = GENERATED / "transformer-tap-three-scenario-independent-certificate.json"
 NODE_BREAKER_STATE = GENERATED / "node-breaker-state-witness.json"
+COMPILED_VIEWS_SURGERY = GENERATED / "compiled-views-surgery-witness.json"
 LOAD_GROUNDING_WITNESS = GENERATED / "load-grounding-witnesses.json"
 LOAD_MODEL_REPRODUCTION = GENERATED / "load-model-independent-reproduction.json"
 CONNECTION_MAP_REPRODUCTION = GENERATED / "connection-map-independent-reproduction.json"
@@ -432,6 +433,7 @@ def main() -> int:
         TRANSFORMER_CONTROL_FAMILY,
         TRANSFORMER_TAP_THREE_SCENARIO_REPRO,
         NODE_BREAKER_STATE,
+        COMPILED_VIEWS_SURGERY,
         LOAD_GROUNDING_WITNESS,
         LOAD_MODEL_REPRODUCTION,
         CONNECTION_MAP_REPRODUCTION,
@@ -1206,6 +1208,27 @@ def main() -> int:
     ):
         if node_checks.get(name) is not True:
             errors.append(f"node-breaker state witness check failed: {name}")
+
+    compiled_views = load_json(COMPILED_VIEWS_SURGERY)
+    if compiled_views.get("witness_id") != "ARCH-VIEWS-SURGERY-001":
+        errors.append("compiled views/surgery witness has an invalid witness ID")
+    if compiled_views.get("claim_ids") != ["ARCH-VIEW-001", "ARCH-LOWER-001", "ARCH-SURGERY-001", "ARCH-DEGENERACY-001"]:
+        errors.append("compiled views/surgery witness has an unexpected claim set")
+    if compiled_views.get("evidence_type") != "compiled_views_and_state_conditioned_surgery_witness":
+        errors.append("compiled views/surgery witness has an invalid evidence type")
+    if compiled_views.get("all_checks_pass") is not True:
+        errors.append("compiled views/surgery witness failed its aggregate checks")
+    if len(compiled_views.get("view_registry", [])) != 6:
+        errors.append("compiled views/surgery witness must contain six registered views")
+    view_map_ids = [entry.get("map_id") for entry in compiled_views.get("view_maps", [])]
+    if view_map_ids != ["M-single-line", "M-port-factor", "M-nodal-support", "M-lowered-edge"]:
+        errors.append("compiled views/surgery witness has an unexpected source-to-view map registry")
+    if any(entry.get("reverse_status") in (None, "") for entry in compiled_views.get("view_maps", [])):
+        errors.append("compiled views/surgery source-to-view maps must declare reverse status")
+    for case_name in ("nport_lowering", "parallel_ideal_switches", "phase_only_switching", "zone_surgery"):
+        case = compiled_views.get("cases", {}).get(case_name, {})
+        if not case.get("checks") or not all(value is True for value in case["checks"].values()):
+            errors.append(f"compiled views/surgery case failed checks: {case_name}")
 
     load_grounding = load_json(LOAD_GROUNDING_WITNESS)
     if load_grounding.get("all_witnesses_pass") is not True:

@@ -924,6 +924,52 @@ to proceed in parallel.
 - [ ] optionally publish/tag the standalone package after API and
   compatibility-policy review.
 
+The next graph-architecture tranche is now scoped around **identity,
+visualisation, lowering, and surgery**. The existing chapters already define
+identified equipment, port--factor structure, state-conditioned topology, and
+provenance; this tranche makes their relationship explicit and adds the
+diagnostics needed when a power-system drawing or algorithm silently changes
+the object set. The identity-agnostic high-level graph is treated as a
+quotient view with source fibres, not as a competing canonical model. Likewise,
+ordinary-edge expansion is a lowering target, not permission to discard
+n-port, grounding, switch, or asset semantics.
+
+- [x] define an identity-bearing source graph contract with equipment/factor
+  identities, terminal and port sets, n-port objects (including multiwinding
+  transformers), and explicit quotient maps to identity-agnostic views;
+- [x] define a typed visualisation registry for single-line, multi-line,
+  port--factor, node--breaker, nodal-support, and reduced/Kron views, recording
+  preserved and forgotten semantics, port multiplicity, grounding, switch
+  state, identity fibres, and whether a reverse map is available;
+- [x] add explicit source-to-view map records with reverse-map status and a
+  reader-facing “one source, four views, three surgeries” diagram;
+- [x] specify a compiler-like lowering contract from the typed source graph
+  through canonical port--factor form and ordinary-edge incidence form to
+  numeric operators/Jacobians, with provenance and omitted-semantics records
+  at every boundary;
+- [x] add state-conditioned graph-surgery semantics for galvanic zones,
+  open-all-switches, energized subgraphs, active radiality, switch elimination,
+  and component families, returning state-indexed graphs plus diagnostics
+  rather than one silently selected graph;
+- [x] define separate two-terminal and n-terminal surgery rules while
+  preserving phase, neutral, earth, and grounding-coordinate identity;
+- [x] add degeneracy and under-determination diagnostics for duplicate ideal
+  switches in parallel, duplicate factor/terminal sets, phase-only switching
+  in multi-grounded neutral networks, missing references/grounding, and
+  singular active-state maps; these are model-quality findings, not reasons
+  for an algorithm to invent physical intent;
+- [x] add executable witnesses for (i) a multiwinding transformer lowered to
+  ordinary edges with a retained factor/provenance fibre, (ii) parallel ideal
+  switches with an ambiguity certificate, (iii) phase-only switching whose
+  phase and neutral connectivity/radiality queries disagree, and (iv)
+  open-switch/galvanic-zone surgery that returns a family of active graphs;
+- [x] add reader-facing claims and a compact “source graph to views and
+  surgery” chapter, then cross-link it to the formal-representation,
+  node--breaker, cycles/radiality, and transformation-register chapters;
+- [x] keep the lowering/surgery claims scoped to declared state and model
+  classes; broad category-theoretic or optimizer-independent guarantees stay
+  deferred until independent evidence exists.
+
 **Exit criterion:** the proposed representation architecture has checked maps
 and topology witnesses on the running network, not only prose definitions.
 
@@ -965,6 +1011,14 @@ share a documented visual grammar, remain legible in monochrome, and be linked
 from the chapter that uses them. Every generated figure needs a source fixture
 or deterministic generator, an SVG/PNG pair when the PDF route needs it, alt
 text/caption prose, and a figure-audit entry.
+
+The new identity/lowering tranche adds a semantic requirement to this visual
+grammar: every diagram must declare whether it is an identified source view,
+a quotient, a lowered algorithmic view, or a lossy reduced view. The registry
+should make the forward map and any recoverable source fibre visible in the
+caption or companion metadata; a visually neat single-line diagram is not
+evidence that n-port, grounding, switch-state, or member-identity semantics
+survived.
 
 **First argument batch (highest leverage):**
 
