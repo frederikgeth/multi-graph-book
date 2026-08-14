@@ -62,7 +62,9 @@ to the same preservation-contract and evidence language.
   the parallel-line decision cases.
 - **Can I reduce or compile a model?** Read [Preservation contracts](@ref
   preservation-contracts), [Projection, compilation, and reduction](@ref), and
-[Kron, Ward, and optimized network equivalents](@ref kron-ward-opti-kron).
+[Kron, Ward, and optimized network equivalents](@ref kron-ward-opti-kron),
+  then follow the [four-wire impedance-model ladder](@ref
+  four-wire-impedance-model-ladder).
 - **What does a transformation preserve, and what does it erase?** Read
   [Transformation semantics and register](@ref
   transformation-semantics-register), then [Degree-two series elimination](@ref

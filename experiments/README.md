@@ -32,7 +32,9 @@ julia --project=experiments experiments/run_running_network_cycle_space.jl
 julia --project=experiments experiments/run_translation_traps.jl
 julia --project=experiments experiments/run_load_grounding_witnesses.jl
 julia --project=experiments experiments/run_balanced_transmission_witness.jl
+julia --project=experiments experiments/run_four_wire_impedance_model_ladder.jl
 julia --project=experiments experiments/run_active_radiality.jl
+julia --project=experiments experiments/run_australian_carson_reproduction.jl
 julia --project=experiments experiments/test/typed_kron.jl
 julia --project=experiments experiments/run_typed_kron.jl
 julia --project=experiments experiments/test/public_api.jl
@@ -63,6 +65,21 @@ python3 scripts/reproduce_load_continuation.py
 python3 scripts/reproduce_neutral_kron.py
 python3 scripts/check_artifacts.py
 ```
+
+The Australian source-backed reproduction is regenerated with:
+
+```bash
+julia --project=experiments experiments/run_australian_carson_reproduction.jl
+```
+
+`data/australian_source_inputs.toml` contains only construction-level inputs
+lifted from the `ImpedanceModels.jl` line-library history.  The generated
+Carson primitives and OpenDSSDirect solves are written to
+`generated/australian-carson-reproduction.json`.  The Australian overhead
+`Zabcn` and underground `CS1035` matrices are loaded only as independent
+reference outputs.  The source repository does not identify a raw cable
+construction that maps to `CS1035`, so the artifact records that gap rather
+than silently using the published matrix as an input.
 
 The explicit-earth Kron probe can be regenerated independently with:
 
@@ -99,6 +116,10 @@ than duplicating graph or witness data in the drawing code.
   identity without claiming a numerical factor evaluator;
 - `experiments/generated/positive-sequence-collapse-witness.json`: the
   positive-sequence diagonalization witness and non-circulant rejection;
+- `experiments/generated/four-wire-impedance-model-ladder.json`: a deterministic
+  four-wire impedance-model path from a coupled conductor primitive through
+  neutral/phase reduction and sequence views, with preservation layers and
+  explicit risk tags for each transformation;
 - `experiments/generated/balanced-transmission-witness.json`: a balanced
   three-bus nominal-``\pi`` network solved in phase coordinates and in its
   positive-sequence scalar image, with voltage, nodal-residual, and branch-

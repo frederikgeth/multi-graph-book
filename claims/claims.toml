@@ -959,3 +959,18 @@ assumptions = "the relay curve and saturation cap are declared illustrative func
 reviewer = ""
 review_date = ""
 unresolved_issue = "Replace the illustrative functions with standards-aligned relay/CT models and quantify uncertainty and coordination margins."
+
+[[claim]]
+claim_id = "IMPEDANCE-LADDER-001"
+chapter = "docs/src/cases/four-wire-impedance-model-ladder.md"
+claim_text = "In the deterministic four-wire impedance ladder fixture, phase-to-neutral current and voltage recovery are exact under the declared zero-ground-current map, while the deliberately non-circulant reduced matrix has visible sequence mixing; shunt deletion and positive-sequence use therefore require explicit decision-domain guards."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_four_wire_impedance_model_ladder_witness"
+citation_keys = []
+model_scope = "deterministic coupled four-wire series and shunt matrix fixture with ordered a,b,c,n terminals"
+assumptions = "the neutral block is invertible; the phase-to-neutral current lift imposes zero current into local ground; the sequence and positive-sequence views are evaluated under their declared coordinate conventions"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Reproduce authored overhead-line and underground-cable cases with geometry or linecode provenance, balanced and unbalanced load rows, grounding variants, and an external solver cross-check."

@@ -1,0 +1,34 @@
+# Construction-level inputs lifted from the source line-library files in
+# ImpedanceModels.jl commit 31dcf7a3 (not from the derived CS1035 matrices).
+
+[provenance]
+source_repository = "https://github.com/hei06j/ImpedanceModels.jl"
+source_commit = "31dcf7a3aeccc86cf00035f4a714d3e543ba1cc1"
+source_overhead_file = "data/opendss/private_jordans_linecodelibrary/simple.dss"
+source_wire_file = "data/opendss/private_jordans_linecodelibrary/StandardLinecodes.dss"
+earth_model = "modified_carson"
+earth_resistivity_ohm_m = 100.0
+frequency_hz = 50.0
+
+[overhead]
+name = "Australian LV overhead / Pluto"
+diameter_mm = 18.8
+rac_ohm_per_km = 0.168
+normal_ampacity_a = 400.0
+x_cm = [-45.0, 45.0, 110.0, -110.0]
+y_cm = [580.0, 580.0, 580.0, 580.0]
+length_km = 0.2
+reference_case = "data/opendss/Australian_overhead/AusOverhead_nr_Zabcn_veryunbalanced.dss"
+
+[underground_fixture]
+# This is the explicitly available 4-wire construction fixture.  The source
+# library does not identify it as the CS1035 case; that mapping remains open.
+name = "UGHV 185 Al PILC 4-wire construction fixture"
+diameter_mm = 16.6
+rac_ohm_per_km = 0.198
+normal_ampacity_a = 400.0
+x_mm = [0.0, -32.0, -32.0, 0.0]
+y_mm = [1032.0, 1032.0, 1000.0, 1000.0]
+length_km = 0.1
+reference_case = "data/opendss/Australian_underground/CS1035_nr_Zabcn_balanced.dss"
+mapping_status = "construction fixture available; CS1035 case mapping not present in source repository"

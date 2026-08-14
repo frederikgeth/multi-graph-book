@@ -39,6 +39,42 @@ connection factors, ratings, and state ownership determine how it enters the
 network. This is why the book indexes intrinsic impedance by ``\ell`` and
 terminal quantities by ``\ell ij``.
 
+## A canonical impedance-data contract
+
+Standardisation should make the source model richer than any one solver input.
+For each oriented branch ``\ell i j``, the canonical record should retain:
+
+- the asset identity, ordered conductor set, and endpoint terminal maps;
+- geometry, conductor material, length, temperature, frequency, and earth
+  model;
+- the derivation method (for example Carson, Pollaczek, finite element, or a
+  fitted matrix) and its source version;
+- the series matrix ``\mathbf Z_\ell`` and endpoint shunt blocks
+  ``\mathbf Y^{\mathrm{sh}}_{\ell i j}`` and
+  ``\mathbf Y^{\mathrm{sh}}_{\ell j i}`` separately;
+- units, base values, matrix ordering, coordinate convention, and reference
+  ground semantics; and
+- current, voltage, power, neutral, protection, and control observations that
+  use the resulting coordinates.
+
+The canonical record is therefore a source of derived views, not merely a
+serialization of the values most convenient for one engine. A positive-
+sequence scalar or a phase-only matrix can be exported, but it must retain a
+pointer to the full record and the transformation path that produced it.
+
+The first executable version of this contract is the generated
+`experiments/generated/four-wire-impedance-model-ladder.json` fixture. It is a
+small deterministic matrix example rather than a geometry-identification
+claim. Its purpose is to make ordering, units, ground assumptions, shunts,
+recovery maps, and risk tags testable before importing larger authored case
+studies.
+
+The source-backed follow-on is the [Australian Carson reproduction](@ref
+australian-carson-reproduction). It lifts the construction fields that are
+actually present in the `ImpedanceModels.jl` history, regenerates the primitive
+and OpenDSS solve, and keeps the published Australian matrices in a separate
+comparison channel until their original construction mappings are recovered.
+
 ## Symmetry and sequence coordinates
 
 For three phase conductors, a perfectly transposed idealisation often has a
@@ -102,6 +138,35 @@ This ledger connects the physical model to the graph model. It prevents a
 sequence or scalar edge from being mistaken for a primitive fact about the
 asset, and it gives a principled place to report uncertainty before an OPF
 comparison is made.
+
+## The model ladder is a transformation path
+
+The common path is not a list of interchangeable names:
+
+```math
+\text{circuit primitive}
+\xrightarrow{K_g}
+\text{conductor primitive}
+\xrightarrow{K_n\ \text{or}\ P_n}
+\text{phase view}
+\xrightarrow{F}
+\text{sequence coordinates}
+\xrightarrow{D\ \text{or}\ F_1}
+\text{restricted scalar view}.
+```
+
+``K_g`` and ``K_n`` require declared grounding and invertibility assumptions;
+``P_n`` can recover neutral current under its zero-ground-current guard but loses
+common-mode voltage; ``F`` is an invertible coordinate change; ``D`` deletes
+sequence coupling; and ``F_1`` retains only a positive-sequence subspace. The
+last two are therefore not harmless formatting operations. Their admissibility
+depends on the factor, boundary data, limits, controls, and observations.
+
+The companion [transformation register](@ref
+transformation-semantics-register) records these distinctions as typed edges.
+The four-wire ladder fixture checks the exact current-recovery relation, exposes
+nonzero sequence mixing for a non-circulant matrix, and keeps shunt deletion and
+positive-sequence use visibly guarded.
 
 ## Relation to the running network
 

@@ -20,6 +20,7 @@ GENERATED = ROOT / "experiments/generated"
 PORT_FACTOR_ARCHITECTURE = GENERATED / "port-factor-architecture.json"
 FIVE_BUS_PORT_FACTOR = GENERATED / "five-bus-port-factor-witness.json"
 POSITIVE_SEQUENCE_WITNESS = GENERATED / "positive-sequence-collapse-witness.json"
+FOUR_WIRE_IMPEDANCE_LADDER = GENERATED / "four-wire-impedance-model-ladder.json"
 BALANCED_TRANSMISSION_WITNESS = GENERATED / "balanced-transmission-witness.json"
 BALANCED_TRANSMISSION_REPRODUCTION = GENERATED / "balanced-transmission-independent-reproduction.json"
 KRON_WARD_SCENARIO = GENERATED / "kron-ward-scenario-comparison.json"
@@ -404,6 +405,7 @@ def main() -> int:
         PORT_FACTOR_ARCHITECTURE,
         FIVE_BUS_PORT_FACTOR,
         POSITIVE_SEQUENCE_WITNESS,
+        FOUR_WIRE_IMPEDANCE_LADDER,
         BALANCED_TRANSMISSION_WITNESS,
         BALANCED_TRANSMISSION_REPRODUCTION,
         KRON_WARD_SCENARIO,
@@ -644,6 +646,33 @@ def main() -> int:
         errors.append("positive-sequence circulant witness does not preserve the positive subspace")
     if rejected_sequence.get("sequence_diagonal_residual", 0.0) <= 1.0e-3:
         errors.append("positive-sequence negative witness no longer mixes sequences")
+
+    impedance_ladder = load_json(FOUR_WIRE_IMPEDANCE_LADDER)
+    if impedance_ladder.get("witness_id") != "IMPEDANCE-LADDER-001":
+        errors.append("four-wire impedance ladder has an invalid witness ID")
+    if impedance_ladder.get("claim_id") not in claim_ids:
+        errors.append("four-wire impedance ladder uses an unregistered claim ID")
+    if impedance_ladder.get("all_checks_pass") is not True:
+        errors.append("four-wire impedance ladder witness failed its checks")
+    impedance_checks = impedance_ladder.get("checks", {})
+    for name in (
+        "source_matrix_is_complex_symmetric",
+        "source_matrix_is_not_hermitian",
+        "neutral_block_is_invertible",
+        "kron_phase_relation_is_defined",
+        "phase_neutral_current_is_recoverable",
+        "phase_neutral_drop_is_recovered",
+        "fortescue_transform_is_invertible",
+        "sequence_mixing_is_visible",
+        "positive_sequence_guard_is_required",
+        "shunt_deletion_changes_declared_factor",
+        "every_path_rule_has_risk_tags",
+    ):
+        if impedance_checks.get(name) is not True:
+            errors.append(f"four-wire impedance ladder check failed: {name}")
+    path = impedance_ladder.get("transformation_path", [])
+    if len(path) != 7 or any(not row.get("risk_tags") for row in path):
+        errors.append("four-wire impedance ladder transformation path lost risk metadata")
 
     balanced_transmission = load_json(BALANCED_TRANSMISSION_WITNESS)
     if balanced_transmission.get("witness_id") != "COLLAPSE-NETWORK-001":

@@ -76,6 +76,51 @@ The next editorial tranche is now explicit:
 - [x] add executable negative witnesses for the anti-patterns and formulation
   changes, then bind them to the certificate/evidence matrix.
 
+The impedance-standardisation tranche is now added as a bridge from the book's
+taxonomy to implementable data and transformation workflows:
+
+- [x] define a canonical impedance-data contract that retains geometry or
+  linecode provenance, ordered ``\ell i j`` terminals, series/shunt blocks,
+  units, grounding assumptions, limits, and derived-view lineage;
+- [x] represent the four-wire impedance ladder as a risk-aware transformation
+  path, separating guarded neutral/phase reductions and exact coordinate maps
+  from shunt deletion, sequence decoupling, balancing, and positive-sequence
+  approximations;
+- [x] add a deterministic package-independent four-wire ladder fixture with
+  neutral-current and phase-to-neutral recovery checks, visible sequence
+  mixing, and explicit per-edge risk tags;
+- [ ] promote the reader-facing impedance contract to a versioned interchange
+  schema with machine-readable finding codes and source/derived/inferred field
+  status;
+- [ ] reproduce the authored overhead-line and underground-cable cases with
+  balanced/unbalanced load rows, grounding variants, voltage/loss observations,
+  and geometry or linecode provenance;
+- [ ] cross-check the authored cases against OpenDSS, BMOPFTools, or another
+  independently assembled network engine while retaining the package-
+  independent reference implementation;
+- [ ] add path-level composition checks that carry the weakest preservation
+  status and the union of unresolved guards through a sequence of maps.
+
+The available Australian source data is now audited and reproduced as a
+bounded case study:
+
+- [x] lift the Pluto overhead and UGHV 185 Al PILC construction fields from
+  the `ImpedanceModels.jl` line-library history into a project-local input
+  record;
+- [x] regenerate Carson series/capacitance primitives with BMOPFTools and
+  solve the resulting four-wire cases through OpenDSSDirect with
+  `vminpu=0`, `vmaxpu=2`;
+- [x] compare the regenerated matrices against the Australian overhead and
+  CS1035 files without using those matrices as model inputs, and record solve
+  diagnostics and provenance in a generated artifact;
+- [x] separate the Australian overhead mismatch into frequency and conductor
+  ordering: a 60 Hz probe with source order `[4,1,2,3]` reproduces the stored
+  matrix to approximately `4.3e-5 Ohm/km`;
+- [ ] recover an explicit source declaration for the overhead reference
+  frequency/order, and the raw cable construction mapping for CS1035;
+- [ ] only claim a faithful reproduction of those reference cases after the
+  preceding provenance mappings are available.
+
 ## Phase 0 — Repository and editorial foundation
 
 **Target:** first two weeks.

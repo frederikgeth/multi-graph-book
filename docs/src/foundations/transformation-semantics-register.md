@@ -103,6 +103,43 @@ Every row should eventually be backed by a certificate with `preconditions`,
 `evidence`. The register is therefore a navigation layer over the existing
 certificate system, not a competing schema.
 
+## Risk-aware impedance paths
+
+The four-wire impedance ladder provides a compact example of how the register
+should be used. Starting from a coupled conductor primitive, a path may contain
+the following edges:
+
+```math
+\hat{\mathbf Z}^{\mathrm{circ}}_{\ell}
+\xrightarrow{K_g}
+\bar{\mathbf Z}^{\mathrm{cond}}_{\ell}
+\xrightarrow{K_n\ \text{or}\ P_n}
+\mathbf Z^{\mathrm{phase}}_{\ell}
+\xrightarrow{F}
+\mathbf Z^{012}_{\ell}
+\xrightarrow{D\ \text{or}\ F_1}
+\mathbf Z^{\mathrm{restricted}}_{\ell}.
+```
+
+The path should carry a *risk vector*, not a single score. For each of the four
+preservation layers, record one of `exact`, `guarded`, `bounded`,
+`not-preserved`, or `unknown`. For example:
+
+| Edge | Typical structural status | Typical decision risk |
+| --- | --- | --- |
+| ``K_g`` | guarded compilation | earth-return and ground-potential observations may be lost |
+| ``K_n`` | guarded reduction | neutral voltage and neutral-current limits need recovery constraints |
+| ``P_n`` | guarded coordinate/recovery map | common-mode voltage and shunt-to-ground effects are out of scope |
+| ``F`` | exact coordinate change | phase-specific constraints need a mapped coordinate contract |
+| ``D`` | structure-changing approximation | sequence coupling and cross-channel limits are dropped |
+| ``F_1`` | restricted approximation | unbalance, neutral and phase-specific decisions are not represented |
+
+This makes transformation sequences auditable. A later rule may not silently
+upgrade an earlier `not-preserved` layer to `exact`; composition must carry the
+weakest status and the union of unresolved guards. The generated
+`experiments/generated/four-wire-impedance-model-ladder.json` artifact records
+this path and checks that every edge has explicit risk tags.
+
 ## Anti-patterns worth showing explicitly
 
 ### Adding different lines in series

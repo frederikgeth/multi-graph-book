@@ -1,0 +1,754 @@
+{
+  "source_inputs": {
+    "provenance": {
+      "source_repository": "https://github.com/hei06j/ImpedanceModels.jl",
+      "source_commit": "31dcf7a3aeccc86cf00035f4a714d3e543ba1cc1",
+      "frequency_hz": 50,
+      "source_overhead_file": "data/opendss/private_jordans_linecodelibrary/simple.dss",
+      "earth_resistivity_ohm_m": 100,
+      "earth_model": "modified_carson",
+      "source_wire_file": "data/opendss/private_jordans_linecodelibrary/StandardLinecodes.dss"
+    },
+    "sha256": "75c629c02854ac828df6c11a5f063ec21c80aca8a2e223e2d4a24da85faf177b",
+    "path": "experiments/data/australian_source_inputs.toml"
+  },
+  "scope": "Carson-generated matrices and OpenDSS solves are regenerated from construction inputs. The CS1035 files are read only as independent reference outputs; the source repository does not provide their raw cable construction mapping.",
+  "artifact_id": "AUSTRALIAN-CARSON-001",
+  "schema_version": "0.1.0",
+  "open_dss_settings": {
+    "frequency_note": "OpenDSSDirect's embedded engine is left at its stable 60 Hz default; the Carson primitive is regenerated at the 50 Hz source-library frequency.",
+    "matrix_inputs_reused": false,
+    "primitive_frequency_hz": 50,
+    "vmaxpu": 2,
+    "solve_frequency_hz": 60,
+    "vminpu": 0,
+    "engine": "OpenDSSDirect.jl"
+  },
+  "cases": {
+    "overhead": {
+      "label": "Australian_overhead",
+      "reference_case": {
+        "max_series_error_ohm_per_km": 0.16132432786456946,
+        "comparison_note": "The 60 Hz probe with source conductor order [4,1,2,3] nearly reproduces this reference; the 50 Hz/source-order comparison above is retained because the lifted primitive is source-backed at 50 Hz.",
+        "frequency_probe": [
+          {
+            "source_order_max_series_error_ohm_per_km": 0.16132432786456946,
+            "frequency_hz": 50,
+            "permutation": [
+              4,
+              1,
+              2,
+              3
+            ],
+            "permuted_max_series_error_ohm_per_km": 0.14113656105325006
+          },
+          {
+            "source_order_max_series_error_ohm_per_km": 0.09197110958181196,
+            "frequency_hz": 60,
+            "permutation": [
+              4,
+              1,
+              2,
+              3
+            ],
+            "permuted_max_series_error_ohm_per_km": 4.257997357010564e-5
+          }
+        ],
+        "matrix_used_as_input": false,
+        "path": "data/opendss/Australian_overhead/AusOverhead_nr_Zabcn_veryunbalanced.dss",
+        "series_reference_ohm_per_km": [
+          [
+            {
+              "re": 0.227217624,
+              "im": 0.879326005
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.541069709
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.475545802
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.449141163
+            }
+          ],
+          [
+            {
+              "re": 0.059217624,
+              "im": 0.541069709
+            },
+            {
+              "re": 0.227217624,
+              "im": 0.879326005
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.516533439
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.475545802
+            }
+          ],
+          [
+            {
+              "re": 0.059217624,
+              "im": 0.475545802
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.516533439
+            },
+            {
+              "re": 0.227217624,
+              "im": 0.879326005
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.541069709
+            }
+          ],
+          [
+            {
+              "re": 0.059217624,
+              "im": 0.449141163
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.475545802
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.541069709
+            },
+            {
+              "re": 0.227217624,
+              "im": 0.879326005
+            }
+          ]
+        ]
+      },
+      "construction_input": {
+        "name": "Australian LV overhead / Pluto",
+        "diameter_mm": 18.8,
+        "rac_ohm_per_km": 0.168,
+        "gmr_m": 0.007320720000000001,
+        "radius_m": 0.0094,
+        "frequency_hz": 50,
+        "length_km": 0.2,
+        "earth_resistivity_ohm_m": 100,
+        "coordinates_m": {
+          "x": [
+            -0.45,
+            0.45,
+            1.1,
+            -1.1
+          ],
+          "y": [
+            5.8,
+            5.8,
+            5.8,
+            5.8
+          ]
+        },
+        "earth_model": "modified_carson"
+      },
+      "generated_primitive": {
+        "series_ohm_per_km": [
+          [
+            {
+              "re": 0.2173480220054468,
+              "im": 0.7385349547787345
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.4362078020019465
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.4020514361343089
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.45665469445232615
+            }
+          ],
+          [
+            {
+              "re": 0.04934802200544679,
+              "im": 0.4362078020019465
+            },
+            {
+              "re": 0.2173480220054468,
+              "im": 0.7385349547787345
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.45665469445232615
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.4020514361343089
+            }
+          ],
+          [
+            {
+              "re": 0.04934802200544679,
+              "im": 0.4020514361343089
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.45665469445232615
+            },
+            {
+              "re": 0.2173480220054468,
+              "im": 0.7385349547787345
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.38004756854278143
+            }
+          ],
+          [
+            {
+              "re": 0.04934802200544679,
+              "im": 0.45665469445232615
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.4020514361343089
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.38004756854278143
+            },
+            {
+              "re": 0.2173480220054468,
+              "im": 0.7385349547787345
+            }
+          ]
+        ],
+        "capacitance_nF_per_km": [
+          10.296657942054626,
+          -2.2838527490465284,
+          -1.236689489646048,
+          -3.230376768745721,
+          -2.2838527490465284,
+          10.296657942054622,
+          -3.23037676874572,
+          -1.2366894896460483,
+          -1.236689489646048,
+          -3.23037676874572,
+          9.68002673238575,
+          -0.8665573040341256,
+          -3.230376768745721,
+          -1.2366894896460483,
+          -0.8665573040341256,
+          9.680026732385752
+        ]
+      },
+      "cases": {
+        "source_veryunbalanced": {
+          "loads_kva": [
+            40,
+            3,
+            20
+          ],
+          "voltage_nodes_v": [
+            {
+              "re": 219.42396552210195,
+              "im": -6.15679066167046
+            },
+            {
+              "re": -115.23438696842315,
+              "im": -200.081214064355
+            },
+            {
+              "re": -109.23974035338115,
+              "im": 196.98357711179665
+            },
+            {
+              "re": 3.9466862193236816,
+              "im": 7.559336651207701
+            }
+          ],
+          "voltage_magnitudes_v": [
+            219.51032485214952,
+            230.89273735103612,
+            225.2461997997597,
+            8.527596538303833
+          ],
+          "circuit_losses_va": {
+            "re": 2123.5827531744912,
+            "im": 3691.201674895652
+          },
+          "model_source": "BMOPFTools Carson primitive; line code generated in memory",
+          "vminpu": 0,
+          "scenario": "source_veryunbalanced",
+          "opendss_frequency_hz": 60,
+          "commands": [
+            "clear",
+            "new circuit.Australian_LV_overhead___Pluto_source_veryunbalanced phases=3 basekv=0.4 bus1=B1 mvasc1=1e8 mvasc3=1e8",
+            "new linecode.CarsonGenerated nphases=4 units=km",
+            "~ rmatrix=(0.217348022005 | 0.0493480220054 0.217348022005 | 0.0493480220054 0.0493480220054 0.217348022005 | 0.0493480220054 0.0493480220054 0.0493480220054 0.217348022005)",
+            "~ xmatrix=(0.738534954779 | 0.436207802002 0.738534954779 | 0.402051436134 0.456654694452 0.738534954779 | 0.456654694452 0.402051436134 0.380047568543 0.738534954779)",
+            "~ cmatrix=(10.2966579421 | -2.28385274905 10.2966579421 | -1.23668948965 -3.23037676875 9.68002673239 | -3.23037676875 -1.23668948965 -0.866557304034 9.68002673239)",
+            "new line.Line1 bus1=B1.1.2.3.0 bus2=B2.1.2.3.4 linecode=CarsonGenerated length=0.2 units=km",
+            "new reactor.grounding phases=1 bus1=B1.4 bus2=B1.0 R=0.1 X=0.01",
+            "new load.LoadP1 phases=1 bus1=B2.1.4 kv=0.23 model=1 conn=wye kVA=40.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP2 phases=1 bus1=B2.2.4 kv=0.23 model=1 conn=wye kVA=3.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP3 phases=1 bus1=B2.3.4 kv=0.23 model=1 conn=wye kVA=20.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "set voltagebases=[0.4]",
+            "set tolerance=0.00000001",
+            "calcvoltagebases",
+            "solve mode=Snap Clear"
+          ],
+          "solve": {
+            "iterations": 9,
+            "error_number": 1,
+            "bus_names": [
+              "b1",
+              "b2"
+            ],
+            "converged": true,
+            "error_description": ""
+          },
+          "vmaxpu": 2
+        }
+      }
+    },
+    "underground": {
+      "label": "Australian_underground_construction_fixture",
+      "reference_case": {
+        "max_series_error_ohm_per_km": 0.5252356027854029,
+        "comparison_note": "The 50-to-60 Hz probe does not explain the CS1035 mismatch, and the raw construction mapping remains unavailable.",
+        "frequency_probe": [
+          {
+            "source_order_max_series_error_ohm_per_km": 0.5252356027854029,
+            "frequency_hz": 50,
+            "permutation": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "permuted_max_series_error_ohm_per_km": 0.5252356027854029
+          },
+          {
+            "source_order_max_series_error_ohm_per_km": 0.5447763465132962,
+            "frequency_hz": 60,
+            "permutation": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "permuted_max_series_error_ohm_per_km": 0.5447763465132962
+          }
+        ],
+        "matrix_used_as_input": false,
+        "path": "data/opendss/Australian_underground/CS1035_nr_Zabcn_balanced.dss",
+        "series_reference_ohm_per_km": [
+          [
+            {
+              "re": 0.7710898110209621,
+              "im": 0.7078895114426766
+            },
+            {
+              "re": 0.2465698110209621,
+              "im": 0.6383435114426766
+            },
+            {
+              "re": 0.2460118110209621,
+              "im": 0.6141895114426766
+            },
+            {
+              "re": 0.24656681102096212,
+              "im": 0.6383375114426767
+            }
+          ],
+          [
+            {
+              "re": 0.2465698110209621,
+              "im": 0.6383435114426766
+            },
+            {
+              "re": 0.7711468110209622,
+              "im": 0.7080435114426766
+            },
+            {
+              "re": 0.2466218110209621,
+              "im": 0.6384825114426766
+            },
+            {
+              "re": 0.24601281102096212,
+              "im": 0.6141955114426767
+            }
+          ],
+          [
+            {
+              "re": 0.2460118110209621,
+              "im": 0.6141895114426766
+            },
+            {
+              "re": 0.2466218110209621,
+              "im": 0.6384825114426766
+            },
+            {
+              "re": 0.7711938110209621,
+              "im": 0.7081705114426766
+            },
+            {
+              "re": 0.24661881102096211,
+              "im": 0.6384705114426766
+            }
+          ],
+          [
+            {
+              "re": 0.24656681102096212,
+              "im": 0.6383375114426767
+            },
+            {
+              "re": 0.24601281102096212,
+              "im": 0.6141955114426767
+            },
+            {
+              "re": 0.24661881102096211,
+              "im": 0.6384705114426766
+            },
+            {
+              "re": 0.7711408110209621,
+              "im": 0.7080275114426766
+            }
+          ]
+        ]
+      },
+      "construction_input": {
+        "name": "UGHV 185 Al PILC 4-wire construction fixture",
+        "diameter_mm": 16.6,
+        "rac_ohm_per_km": 0.198,
+        "gmr_m": 0.006464040000000001,
+        "radius_m": 0.0083,
+        "frequency_hz": 50,
+        "length_km": 0.1,
+        "earth_resistivity_ohm_m": 100,
+        "coordinates_m": {
+          "x": [
+            0,
+            -0.032,
+            -0.032,
+            0
+          ],
+          "y": [
+            1.032,
+            1.032,
+            1.0,
+            1.0
+          ]
+        },
+        "earth_model": "modified_carson"
+      },
+      "generated_primitive": {
+        "series_ohm_per_km": [
+          [
+            {
+              "re": 0.24734802200544684,
+              "im": 0.7463546411834191
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6458562612771329
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6240804003740968
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6458562612771329
+            }
+          ],
+          [
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6458562612771329
+            },
+            {
+              "re": 0.24734802200544684,
+              "im": 0.7463546411834191
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6458562612771329
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6240804003740968
+            }
+          ],
+          [
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6240804003740968
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6458562612771329
+            },
+            {
+              "re": 0.24734802200544684,
+              "im": 0.7463546411834191
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6458562612771329
+            }
+          ],
+          [
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6458562612771329
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6240804003740968
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6458562612771329
+            },
+            {
+              "re": 0.24734802200544684,
+              "im": 0.7463546411834191
+            }
+          ]
+        ],
+        "capacitance_nF_per_km": [
+          31.031594340367352,
+          -13.106878660431558,
+          -1.7454810485099912,
+          -13.078144409622348,
+          -13.106878660431558,
+          31.031594340367352,
+          -13.078144409622348,
+          -1.7454810485099868,
+          -1.7454810485099912,
+          -13.078144409622348,
+          31.090405915217968,
+          -13.04832265471536,
+          -13.078144409622348,
+          -1.7454810485099868,
+          -13.04832265471536,
+          31.090405915217968
+        ]
+      },
+      "cases": {
+        "unbalanced": {
+          "loads_kva": [
+            40,
+            30,
+            20
+          ],
+          "voltage_nodes_v": [
+            {
+              "re": 226.8080979552263,
+              "im": -0.10424202190425111
+            },
+            {
+              "re": -114.17205164363023,
+              "im": -197.55346913272788
+            },
+            {
+              "re": -114.30663953521353,
+              "im": 198.70449669806462
+            },
+            {
+              "re": 1.6705930784322796,
+              "im": -1.0467854133427954
+            }
+          ],
+          "voltage_magnitudes_v": [
+            226.80812191027607,
+            228.17237024427703,
+            229.2367441093692,
+            1.9714565517132472
+          ],
+          "circuit_losses_va": {
+            "re": 1233.961948586059,
+            "im": 658.4582894763583
+          },
+          "model_source": "BMOPFTools Carson primitive; line code generated in memory",
+          "vminpu": 0,
+          "scenario": "unbalanced",
+          "opendss_frequency_hz": 60,
+          "commands": [
+            "clear",
+            "new circuit.UGHV_185_Al_PILC_4_wire_construction_fixture_unbalanced phases=3 basekv=0.4 bus1=B1 mvasc1=1e8 mvasc3=1e8",
+            "new linecode.CarsonGenerated nphases=4 units=km",
+            "~ rmatrix=(0.247348022005 | 0.0493480220054 0.247348022005 | 0.0493480220054 0.0493480220054 0.247348022005 | 0.0493480220054 0.0493480220054 0.0493480220054 0.247348022005)",
+            "~ xmatrix=(0.746354641183 | 0.645856261277 0.746354641183 | 0.624080400374 0.645856261277 0.746354641183 | 0.645856261277 0.624080400374 0.645856261277 0.746354641183)",
+            "~ cmatrix=(31.0315943404 | -13.1068786604 31.0315943404 | -1.74548104851 -13.0781444096 31.0904059152 | -13.0781444096 -1.74548104851 -13.0483226547 31.0904059152)",
+            "new line.Line1 bus1=B1.1.2.3.0 bus2=B2.1.2.3.4 linecode=CarsonGenerated length=0.1 units=km",
+            "new reactor.grounding phases=1 bus1=B1.4 bus2=B1.0 R=0.1 X=0.01",
+            "new load.LoadP1 phases=1 bus1=B2.1.4 kv=0.23 model=1 conn=wye kVA=40.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP2 phases=1 bus1=B2.2.4 kv=0.23 model=1 conn=wye kVA=30.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP3 phases=1 bus1=B2.3.4 kv=0.23 model=1 conn=wye kVA=20.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "set voltagebases=[0.4]",
+            "set tolerance=0.00000001",
+            "calcvoltagebases",
+            "solve mode=Snap Clear"
+          ],
+          "solve": {
+            "iterations": 6,
+            "error_number": 1,
+            "bus_names": [
+              "b1",
+              "b2"
+            ],
+            "converged": true,
+            "error_description": ""
+          },
+          "vmaxpu": 2
+        },
+        "veryunbalanced": {
+          "loads_kva": [
+            40,
+            3,
+            20
+          ],
+          "voltage_nodes_v": [
+            {
+              "re": 226.7855909912926,
+              "im": -0.06373862654587159
+            },
+            {
+              "re": -115.3286370656888,
+              "im": -200.06091905204744
+            },
+            {
+              "re": -114.27928372448481,
+              "im": 198.70304609699303
+            },
+            {
+              "re": 2.8223297024400247,
+              "im": 1.4216115316106732
+            }
+          ],
+          "voltage_magnitudes_v": [
+            226.78559994823826,
+            230.92220737594565,
+            229.22184716297232,
+            3.160146245996163
+          ],
+          "circuit_losses_va": {
+            "re": 1185.5104002568924,
+            "im": 629.8464612090249
+          },
+          "model_source": "BMOPFTools Carson primitive; line code generated in memory",
+          "vminpu": 0,
+          "scenario": "veryunbalanced",
+          "opendss_frequency_hz": 60,
+          "commands": [
+            "clear",
+            "new circuit.UGHV_185_Al_PILC_4_wire_construction_fixture_veryunbalanced phases=3 basekv=0.4 bus1=B1 mvasc1=1e8 mvasc3=1e8",
+            "new linecode.CarsonGenerated nphases=4 units=km",
+            "~ rmatrix=(0.247348022005 | 0.0493480220054 0.247348022005 | 0.0493480220054 0.0493480220054 0.247348022005 | 0.0493480220054 0.0493480220054 0.0493480220054 0.247348022005)",
+            "~ xmatrix=(0.746354641183 | 0.645856261277 0.746354641183 | 0.624080400374 0.645856261277 0.746354641183 | 0.645856261277 0.624080400374 0.645856261277 0.746354641183)",
+            "~ cmatrix=(31.0315943404 | -13.1068786604 31.0315943404 | -1.74548104851 -13.0781444096 31.0904059152 | -13.0781444096 -1.74548104851 -13.0483226547 31.0904059152)",
+            "new line.Line1 bus1=B1.1.2.3.0 bus2=B2.1.2.3.4 linecode=CarsonGenerated length=0.1 units=km",
+            "new reactor.grounding phases=1 bus1=B1.4 bus2=B1.0 R=0.1 X=0.01",
+            "new load.LoadP1 phases=1 bus1=B2.1.4 kv=0.23 model=1 conn=wye kVA=40.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP2 phases=1 bus1=B2.2.4 kv=0.23 model=1 conn=wye kVA=3.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP3 phases=1 bus1=B2.3.4 kv=0.23 model=1 conn=wye kVA=20.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "set voltagebases=[0.4]",
+            "set tolerance=0.00000001",
+            "calcvoltagebases",
+            "solve mode=Snap Clear"
+          ],
+          "solve": {
+            "iterations": 6,
+            "error_number": 1,
+            "bus_names": [
+              "b1",
+              "b2"
+            ],
+            "converged": true,
+            "error_description": ""
+          },
+          "vmaxpu": 2
+        },
+        "balanced": {
+          "loads_kva": [
+            30,
+            30,
+            30
+          ],
+          "voltage_nodes_v": [
+            {
+              "re": 227.72817112508483,
+              "im": -0.07708721383761628
+            },
+            {
+              "re": -114.05289243109304,
+              "im": -197.44439315929867
+            },
+            {
+              "re": -113.84333900122837,
+              "im": 197.75943396460477
+            },
+            {
+              "re": 0.1680602796903503,
+              "im": -0.23795342651395893
+            }
+          ],
+          "voltage_magnitudes_v": [
+            227.72818417230323,
+            228.0183121197554,
+            228.1865455213113,
+            0.2913178518377012
+          ],
+          "circuit_losses_va": {
+            "re": 1028.603601918523,
+            "im": 559.337796151193
+          },
+          "model_source": "BMOPFTools Carson primitive; line code generated in memory",
+          "vminpu": 0,
+          "scenario": "balanced",
+          "opendss_frequency_hz": 60,
+          "commands": [
+            "clear",
+            "new circuit.UGHV_185_Al_PILC_4_wire_construction_fixture_balanced phases=3 basekv=0.4 bus1=B1 mvasc1=1e8 mvasc3=1e8",
+            "new linecode.CarsonGenerated nphases=4 units=km",
+            "~ rmatrix=(0.247348022005 | 0.0493480220054 0.247348022005 | 0.0493480220054 0.0493480220054 0.247348022005 | 0.0493480220054 0.0493480220054 0.0493480220054 0.247348022005)",
+            "~ xmatrix=(0.746354641183 | 0.645856261277 0.746354641183 | 0.624080400374 0.645856261277 0.746354641183 | 0.645856261277 0.624080400374 0.645856261277 0.746354641183)",
+            "~ cmatrix=(31.0315943404 | -13.1068786604 31.0315943404 | -1.74548104851 -13.0781444096 31.0904059152 | -13.0781444096 -1.74548104851 -13.0483226547 31.0904059152)",
+            "new line.Line1 bus1=B1.1.2.3.0 bus2=B2.1.2.3.4 linecode=CarsonGenerated length=0.1 units=km",
+            "new reactor.grounding phases=1 bus1=B1.4 bus2=B1.0 R=0.1 X=0.01",
+            "new load.LoadP1 phases=1 bus1=B2.1.4 kv=0.23 model=1 conn=wye kVA=30.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP2 phases=1 bus1=B2.2.4 kv=0.23 model=1 conn=wye kVA=30.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP3 phases=1 bus1=B2.3.4 kv=0.23 model=1 conn=wye kVA=30.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "set voltagebases=[0.4]",
+            "set tolerance=0.00000001",
+            "calcvoltagebases",
+            "solve mode=Snap Clear"
+          ],
+          "solve": {
+            "iterations": 5,
+            "error_number": 1,
+            "bus_names": [
+              "b1",
+              "b2"
+            ],
+            "converged": true,
+            "error_description": ""
+          },
+          "vmaxpu": 2
+        }
+      }
+    }
+  },
+  "underground_mapping_note": "construction fixture available; CS1035 case mapping not present in source repository"
+}

@@ -102,8 +102,10 @@ const PAGES_HTML = [
         "Multiconductor parallel AC decision case" => "cases/multiconductor-parallel-ac-decision.md",
         "Non-proportional three-phase four-wire parallel case" => "cases/four-wire-parallel-ac-decision.md",
         "Four-wire nominal-pi parallel case" => "cases/pi-four-wire-parallel-ac-decision.md",
+        "Four-wire impedance-model ladder" => "cases/four-wire-impedance-model-ladder.md",
         "Transformer tap AC decision case" => "cases/transformer-tap-ac-decision.md",
         "BIM/BFM parallel lines: an expressiveness audit" => "cases/bim-bfm-parallel-lines.md",
+        "Australian Carson reproduction" => "cases/australian-carson-reproduction.md",
     ],
     "Part I — Representation landscape" => [
         "Representation frameworks" => "foundations/formal-representation-frameworks.md",
@@ -178,10 +180,12 @@ const PAGES_PDF = [
     ],
     "Guarded cases and computational consequences" => [
         "Earth, neutral, and reference model classes" => "foundations/earth-ground-models.md",
+        "Four-wire impedance-model ladder" => "cases/four-wire-impedance-model-ladder.md",
         "Conductor-coordinate normalization" => "transformations/conductor-coordinate-normalization.md",
         "Multiwinding terminal leakage assembly" => "transformations/multiwinding-terminal-leakage-assembly.md",
         "Transformer tap AC decision case" => "cases/transformer-tap-ac-decision.md",
         "BIM/BFM parallel lines: an expressiveness audit" => "cases/bim-bfm-parallel-lines.md",
+        "Australian Carson reproduction" => "cases/australian-carson-reproduction.md",
         "Numerical consequences of representation and reduction" => "foundations/numerical-consequences.md",
     ],
     "Reference" => [

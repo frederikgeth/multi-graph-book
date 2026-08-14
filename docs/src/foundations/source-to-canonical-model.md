@@ -99,6 +99,15 @@ same preservation-contract language used later for Kron, aggregation, and
 positive-sequence maps, but the source and target are data models rather than
 electrical equations.
 
+Impedance data need one additional discipline: the canonical record should
+retain the full derivation context even when an adapter exports only a solver-
+friendly matrix. Geometry or linecode provenance, frequency, earth model,
+ordered conductors, series/shunt blocks, and matrix diagnostics belong to the
+source record; Kron, phase-to-neutral, sequence, and positive-sequence matrices
+are derived views with their own guards. The [four-wire impedance-model ladder](@ref
+four-wire-impedance-model-ladder) is the first executable example of this
+source-to-view contract.
+
 ## Consequences for the graph views
 
 The canonical model is not itself a single graph. It is the source from which
