@@ -34,6 +34,7 @@ julia --project=experiments experiments/run_load_grounding_witnesses.jl
 julia --project=experiments experiments/run_balanced_transmission_witness.jl
 julia --project=experiments experiments/run_four_wire_impedance_model_ladder.jl
 julia --project=experiments experiments/run_active_radiality.jl
+julia --project=experiments experiments/run_topology_projection_witness.jl
 julia --project=experiments experiments/run_australian_carson_reproduction.jl
 julia --project=experiments experiments/test/typed_kron.jl
 julia --project=experiments experiments/run_typed_kron.jl

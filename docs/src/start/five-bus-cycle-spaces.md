@@ -179,13 +179,13 @@ not ``Z_q+Z_r``. With the oriented incidence matrix and diagonal series
 admittance matrix,
 
 ```math
-\mathbf Y_{\mathrm{bus}}
+\mathbf Y^{\mathrm N}
 =\mathbf A\operatorname{diag}(Y_\ell)\mathbf A^{\mathsf T}.
 ```
 
 The executable example verifies that stamping the seven source members and
 stamping the six-edge weighted projection produce identical
-``\mathbf Y_{\mathrm{bus}}``. In an explicitly expanded scalar matrix, the
+``\mathbf Y^{\mathrm N}``. In an explicitly expanded scalar matrix, the
 ``m,m`` entry is ``+Y_x``; the off-diagonal ``l,m`` entries are ``-Y_x``.
 
 That equality is only a terminal-current statement. In the recorded witness,
@@ -322,8 +322,8 @@ also give
 ```math
 \|\mathbf A\mathbf C\|_\infty=0,
 \qquad
-\|\mathbf Y_{\mathrm{bus}}^{\mathrm{source}}
--\mathbf Y_{\mathrm{bus}}^{\mathrm{projected}}\|_\infty=0.
+\|\mathbf Y_{\mathrm{source}}^{\mathrm N}
+-\mathbf Y_{\mathrm{projected}}^{\mathrm N}\|_\infty=0.
 ```
 
 BMOPFTools reports three extra physical edges, and the independently computed

@@ -184,6 +184,23 @@ hi\in\mathcal C^H.
 Its ordered terminal or connection map is recorded separately. A load attached at bus ``i`` is not
 therefore assumed to be three-phase, wye-connected, or phase-to-neutral.
 
+## Compound nodal operator
+
+The assembled linear current--voltage operator on a declared ordered set of
+retained junction coordinates is
+
+```math
+\mathbf I=\mathbf Y^{\mathrm N}\mathbf U.
+```
+
+The superscript ``\mathrm N`` means *nodal* and does not imply a scalar,
+positive-sequence, or simple-graph model. Conventional ``\mathbf
+Y_{\mathrm{bus}}`` and `Ybus` are retained as aliases when reproducing software
+interfaces or established scalar bus-matrix language, but every use must state
+the coordinate order and model class. A reduced image is distinguished as
+``\widehat{\mathbf Y}`` or ``\mathbf Y_{\mathrm K}``; it is not silently
+overwritten onto the source operator.
+
 ## Ground, neutral, and reference
 
 The following are distinct:

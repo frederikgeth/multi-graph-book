@@ -134,6 +134,15 @@ The data and checks are recorded in
 intentional: both structural views can be checked without pretending that
 either is a solver-exported Jacobian.
 
+Fill is not inevitable. The
+[two-level topology chapter](@ref two-level-topology-and-nodal-projection)
+proves a positive structural case: dense two-terminal conductor stamps over a
+bus-level tree form a chordal scalar-support graph, and eliminating leaf-bus
+coordinate blocks inward is a perfect elimination order with zero symbolic
+fill. The warning here concerns arbitrary orderings, meshes, reductions, and
+factor libraries; it should not hide structure that a declared model makes
+exploitable.
+
 The numerical witness now carries a crosswalk to
 `experiments/generated/five-bus-typed-kron-witness.json`. That crosswalk uses
 the non-pendant ``\ell`` elimination, whose fill edges are ``j-m`` and

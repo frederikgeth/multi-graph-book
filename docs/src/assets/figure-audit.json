@@ -160,13 +160,13 @@
       "svg": "docs/src/assets/topology-projection-layers.svg",
       "png": "docs/src/assets/topology-projection-layers.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["three numbered panels", "identified factor and terminal labels", "lift/stamp arrows", "lost-decomposition annotation"]
+      "distinguishing_channels": ["three numbered panels", "separate junction circles and factor-boundary port nodes", "lift/stamp arrows", "lost-decomposition annotation"]
     },
     "radial-clique-projection": {
       "svg": "docs/src/assets/radial-clique-projection.svg",
       "png": "docs/src/assets/radial-clique-projection.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["macro and expanded panel labels", "bus/conductor coordinate labels", "clique geometry", "explicit nonphysical-cycle warning"]
+      "distinguishing_channels": ["macro and expanded panel labels", "bus/conductor coordinate labels", "separator and perfect-elimination-order annotations", "explicit nonphysical-cycle warning"]
     },
     "ybus-jacobian-witness": {
       "svg": "docs/src/assets/ybus-jacobian-witness.svg",

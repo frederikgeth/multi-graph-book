@@ -1,6 +1,6 @@
 # [Chapter status](@id chapter-status)
 
-<!-- generated-from claims/claims.toml sha256:9e20195fe6b0fa0e8ab6aad2b2718d5b23c59188d23899e12cdfad4f2308ba61 -->
+<!-- generated-from claims/claims.toml sha256:8c1d84e95c86b6a70a94a87412978927c3e74285c7131da5ca871c72ea57deef -->
 This page is generated from the claims ledger. It makes the evidence state visible without
 requiring readers to inspect TOML or generated JSON files. Claim absence means the page is
 tracked as explanatory, definitional, or proposed material rather than silently treated as a
@@ -36,7 +36,7 @@ verified empirical result.
 | [From source data to a canonical network model](../foundations/source-to-canonical-model.md) | semantic-projection and validation contract for entering a network into the book's representation architecture. | 0 | — | `untracked` | — |
 | [Transformation semantics and register](../foundations/transformation-semantics-register.md) | normative vocabulary and first reader-facing transformation register. | 0 | — | `untracked` | — |
 | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | reviewed explanatory synthesis and controlled vocabulary. | 1 | empirical | `self-checked` | Extend the negative cases to nominal-pi cascades, protection boundaries, nonlinear formulations, and independent reproduction. |
-| [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | literature-backed definitional synthesis and proposed source- retention contract; general inverse recovery from a nodal operator is intentionally rejected. | 0 | — | `untracked` | — |
+| [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | literature-backed definitions with two executable structural witnesses; inverse recovery is scoped by an explicit injectivity criterion and remains non-identifiable without additional structure. | 3 | theorem | `self-checked` | Classify identifiable and bounded ambiguity families under realistic line, transformer, shunt, catalog, measurement, and state constraints.; Extend the support/stamp distinction to frequency-coupled, rectangular realified, Jacobian, and multi-terminal compiled operator families.; Characterize chordality and minimal fill under missing phases, sparse coupling blocks, parallel factors, multi-terminal devices, and meshed bus graphs. |
 | [When the general model collapses](../foundations/when-general-model-collapses.md) | controlled positive-sequence specialization with factor- and network-level executable witnesses; global decision equivalence and external review remain open. | 2 | empirical, theorem | `self-checked` | Extend the network witness to controls, phase-specific limits, contingencies, and an independent mathematical review before making a global decision-equivalence claim.; Extend the witness to controls, phase-specific limits, contingencies, and independent mathematical review. |
 | [Structure-Preserving Graph Models for Power Networks](../index.md) | reader-facing overview and navigation map. | 0 | — | `untracked` | — |
 | [Literature map](../literature/literature-map.md) | research record; coverage is provisional and not an exhaustive systematic review. The current evidence matrix contains four single-coded seed records. | 0 | — | `untracked` | — |

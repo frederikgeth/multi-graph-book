@@ -1,8 +1,8 @@
 # [Two topology levels and the nodal projection](@id two-level-topology-and-nodal-projection)
 
-**Page status:** literature-backed definitional synthesis and proposed source-
-retention contract; general inverse recovery from a nodal operator is
-intentionally rejected.
+**Page status:** literature-backed definitions with two executable structural
+witnesses; inverse recovery is scoped by an explicit injectivity criterion and
+remains non-identifiable without additional structure.
 
 ## The missing middle between a one-line diagram and ``\mathbf Y^{\mathrm N}``
 
@@ -12,7 +12,7 @@ related, but they do not have the same vertices, edges, or cycles. Calling all
 three *the network graph* hides two distinct topology levels and a many-to-one
 algebraic projection:
 
-1. the **asset/terminal topology** records identified equipment and its
+1. the **equipment/terminal topology** records identified equipment and its
    high-level attachments;
 2. the **conductor/port--factor topology** records the electrical terminals,
    junctions, conductor coordinates, and constitutive factors;
@@ -32,12 +32,12 @@ their matrix contributions occupy the same nodal block. The assembly preserves
 their combined linear boundary relation but forgets how that contribution was
 split between assets.
 
-## Level 1: identified assets and high-level attachments
+## Level 1: identified equipment and high-level attachments
 
 For the two-terminal subset of a network, let
 
 ```math
-G_{\mathrm A}=(\mathcal B,\mathcal L,\partial),
+G_{\mathrm M}=(\mathcal B,\mathcal L,\partial),
 \qquad
 \partial(\ell)=\{i,j\}.
 ```
@@ -52,9 +52,11 @@ index ``\mathbf Z_\ell`` or ``\mathbf Y_\ell``; terminal observations use
 The multigraph is only a high-level skeleton. A transformer ``x`` with winding
 set ``\mathcal K_x`` is naturally multi-terminal, and a jointly coupled line
 group may own more than two port bundles. Such objects belong in an
-asset--port incidence structure or hypergraph, not in ``G_{\mathrm A}`` unless
-an explicit two-terminal compilation has been selected. Consequently,
-*radial at asset level* must name both the selected object class and any
+port--factor incidence structure, not in ``G_{\mathrm M}`` unless an explicit
+two-terminal compilation has been selected. The orthogonal asset/dependency
+model links equipment records to this electrical structure through
+``\Lambda``; it is not this multigraph. Consequently, *radial at equipment
+level* must name both the selected object class and any
 multi-terminal compilation used to obtain an ordinary graph.
 
 At this level, parallelism means repeated high-level attachment. It says
@@ -80,16 +82,26 @@ coordinate such as ``i/a`` or a typed bundle such as ``i/[a,b,c,n]``. The
 factor relation retains the full conductor coupling, terminal maps, internal
 variables, limits, state, and decisions.
 
-Two distinct ports may attach to the same junction; indeed, that is how KCL
-composes several devices. More generally, a source construction may contain
-several physical conductors or sub-conductors connected to one electrical
-terminal. The attachment relation must therefore not be assumed injective.
-An importer or line-constant tool may choose a narrower schema. For example,
-the current BMOPFTools line-geometry compiler checks one geometry conductor
-per terminal label. That is a useful implementation guard for its present
-primitive, not a theorem that the general electrical model forbids bundled or
-multiply attached conductor structure. Such a source must remain expanded or
-pass through a declared bundle-compilation rule before entering that adapter.
+Two distinct ports may attach to the same junction; indeed, the map ``j`` is
+deliberately many-to-one because that is how KCL composes devices. A different
+relation is needed for construction detail. Let
+
+```math
+c:\mathcal C_{\mathrm{phys}}\rightarrow\mathcal Q
+```
+
+map physical conductors or sub-conductors to their electrical ports. This map
+need not be injective: bundled conductors, paralleled cables landing on one
+terminal, and other construction-level multiplicities can share a port. The
+distinction is therefore precise: ``j`` composes electrical ports at a
+junction; ``c`` realizes a port from physical conductor objects.
+
+**Implementation note.** A particular importer or line-constant tool may use
+a narrower source schema. The current BMOPFTools line-geometry compiler, for
+example, checks one geometry conductor per terminal label. That is a boundary
+of that adapter's present primitive, not a definition of ``c``. A richer
+source must remain expanded or pass through a declared bundle-compilation rule
+before entering the adapter.
 
 This level has its own notions of parallelism:
 
@@ -108,9 +120,16 @@ lineage/refinement relation, not by an assumed one-edge-to-one-wire rule.
 
 ## From factors to a compound nodal operator
 
-Stack the retained junction-voltage coordinates into ``\mathbf U``. For each
-linear factor ``\phi``, let ``\mathbf A_\phi`` select, permute, and sign its
-ordered terminal voltages, so
+Stack the retained junction-voltage coordinates into ``\mathbf U``. Let
+``\Phi_{\mathrm{lin}}`` be the declared subset of fixed linear unconstrained
+electrical factors. Loads with nonlinear constitutive laws, generators,
+limits, controls, objectives, and discrete states do not enter this set merely
+because they attach to the same network. The nodal operator is therefore
+exactly the part of the model from which most decision semantics have already
+been omitted.
+
+For each ``\phi\in\Phi_{\mathrm{lin}}``, let ``\mathbf A_\phi`` be a real
+select/permute/sign matrix for its ordered terminal voltages, so
 
 ```math
 \mathbf u_\phi=\mathbf A_\phi\mathbf U,
@@ -137,6 +156,13 @@ assembly of compound polyphase networks is developed by Kettner and Paolone
 general multiphase transformers provide a particularly clear device-level
 example [Coppo2017](@cite).
 
+The transpose in this assembly is intentional. Because ``\mathbf A_\phi`` is
+real, the power-dual current map is
+``\mathbf A_\phi^{\mathrm H}=\mathbf A_\phi^{\mathsf T}``. If a voltage map
+contains complex ratios or phase actions outside ``\mathbf Y_\phi``, its
+current map uses the conjugate transpose instead. This is the same distinction
+used for transformer maps elsewhere in the book.
+
 The equation is an **assembly identity**, not a unique factorization of
 ``\mathbf Y^{\mathrm N}``. For two electrically aligned parallel factors
 ``\ell_1ij`` and ``\ell_2ij``, the same off-diagonal nodal block contains
@@ -153,10 +179,97 @@ The equation is an **assembly identity**, not a unique factorization of
 ```
 
 Even when the last sum is empty, ``\mathbf Y^{\mathrm N}_{ij}`` does not
-identify its two summands. In the scalar case, every decomposition
-``y_{ij}=y_1+y_2`` produces the same nodal coefficient. Ratings, outage states,
-investment variables, owners, and the two-edge line-identity cycle are absent
-unless they are retained separately.
+identify its two summands. Let ``\mathcal D`` be the linear difference space
+admitted by the declared aligned factor class. Every admissible ``\Delta``
+gives the same assembled block through
+
+```math
+(\mathbf Y_1,\mathbf Y_2)
+\longmapsto
+(\mathbf Y_1+\Delta,\mathbf Y_2-\Delta).
+```
+
+For reciprocal factors, ``\mathcal D`` may require
+``\Delta^{\mathsf T}=\Delta``. Adding passivity constraints such as
+``\operatorname{He}(\mathbf Y_k)\succeq0`` intersects the affine family with a
+convex feasible set, but does not generally make it bounded: reactive or other
+unconstrained parameter directions can remain unbounded. Bounded ambiguity
+needs catalog limits, sign restrictions, measurements, or another coercive
+guard. Ratings, outage states, investment variables, owners, and the two-edge
+line-identity cycle are absent unless retained separately.
+
+This is the central many-to-one result registered as `ARCH-NODAL-001`. The
+companion executable witness constructs two distinct passive reciprocal
+parallel splits with an identical assembled operator.
+
+### When is assembly injective?
+
+Let ``\Theta`` be the admissible family of typed factor collections and define
+
+```math
+\mathcal S(\{\mathbf Y_\phi\})
+=
+\sum_\phi
+\mathbf A_\phi^{\mathsf T}\mathbf Y_\phi\mathbf A_\phi.
+```
+
+The exact criterion is
+
+```math
+\mathcal S\vert_\Theta\text{ is injective}
+\quad\Longleftrightarrow\quad
+\ker\mathcal S\cap(\Theta-\Theta)=\{0\}.
+```
+
+This criterion matters more than a blanket claim that nodal data are or are
+not recoverable. A practical sufficient special case is available when:
+
+1. topology, factor types, terminal coordinates, and active state are known;
+2. at most one two-terminal factor occupies each unordered junction-block
+   pair;
+3. that factor's off-diagonal block uniquely determines its complete local
+   stamp within the declared class; and
+4. after subtracting those stamps, the remaining diagonal residual has a
+   unique decomposition among the declared shunt and grounding classes.
+
+Then the source primitives are recoverable from ``\mathbf Y^{\mathrm N}``
+within that model class. Familiar line-impedance extraction is an instance of
+this support-separated case, not a contradiction of `ARCH-NODAL-001`.
+
+The principal failures are now named: **multiplicity**, when parallel or
+overlapping stamps share support; **elimination**, when internal coordinates
+have already been removed; and **over-parameterization**, when different
+factor parameters produce the same terminal stamp. Recoverability from a
+boundary response can nevertheless hold for restricted classes; circular
+planar critical resistor networks are a major positive theory
+[CurtisMorrow2000](@cite). The model class and injectivity proof are therefore
+part of any recovery claim.
+
+## Rank, reference, and grounding
+
+The nodal operator is not automatically invertible. Under the connectivity,
+common polyphase-coordinate, and passive-component hypotheses of Kettner and
+Paolone, a connected shunt-free compound network has the common-mode nullspace
+and rank
+
+```math
+\operatorname{rank}(\mathbf Y^{\mathrm N})
+=(|\mathcal B|-1)m.
+```
+
+Under their corresponding grounded/shunted hypotheses, an effective nonzero
+shunt removes that gauge freedom and the compound nodal operator is full rank
+[KettnerPaolone2019](@cite). For several galvanic components, absent references
+can contribute separate nullspaces. Ideal devices, singular terminal maps,
+missing phases, and more general factors require their own rank analysis.
+
+This is why *choose a voltage reference* and *model physical grounding* must
+remain distinct instructions. Deleting a coordinate to fix a numerical gauge
+does not add a grounding asset; conversely, a finite grounding impedance is a
+physical factor. The running-network numerical export illustrates the
+conditional case: its passive ``20\times20`` operator has reported numerical
+rank 18 at the declared tolerance, not because every nodal operator must be
+singular but because reference and grounding structure remain in that model.
 
 ## Is nodal admittance a simple-graph concept?
 
@@ -193,6 +306,7 @@ encoded in matrix support. If an algorithm needs the decomposition, it can use
 a **stamp multigraph** whose identified members are the separate
 ``\mathbf A_\phi^{\mathsf T}\mathbf Y_\phi\mathbf A_\phi`` contributions.
 That multigraph is extra data; it cannot generally be recovered from the sum.
+This separation is registered as `ARCH-SUPPORT-001`.
 
 The support relation also requires qualifications:
 
@@ -231,16 +345,45 @@ meshed. If some primitive entries are structurally zero, the clique loses the
 corresponding support edges; the matrix pattern, not the word
 *multiconductor*, decides the scalar support.
 
+There is also a constructive counterpart. Let the simple bus-level graph be a
+tree, give every bus the same ``m`` retained coordinates, and suppose each
+tree edge has one structurally dense two-terminal stamp whose support is the
+clique on its two endpoint blocks. Assume the assembled nonzeros do not cancel.
+
+**Proposition (tree of dense stamps).** The resulting scalar support graph is
+chordal. Eliminating all coordinates of a leaf-bus block and proceeding inward
+is a perfect elimination ordering and creates zero structural fill.
+
+**Proof.** At a leaf bus ``i`` with parent ``j``, every later neighbour of a
+coordinate ``(i,p)`` lies in
+``(\{i\}\times\mathcal P)\cup(\{j\}\times\mathcal P)``. The dense edge stamp
+makes that set a clique, so ``(i,p)`` is simplicial. Eliminating the entire leaf
+block removes one leaf from the bus tree and leaves the same construction on a
+smaller tree. Induction gives a perfect elimination ordering. A perfect
+elimination ordering adds no fill.
+
+The line-stamp cliques meet on bus-coordinate separators. Their clique tree is
+inherited from the bus tree, but is not literally isomorphic to it in general:
+a tree with ``n`` buses has ``n-1`` line cliques before any maximal-clique
+coalescence. The two-line figure, for example, has two cliques joined through
+the separator ``\{j/a,j/n\}``.
+
+This result, registered as `ARCH-CHORDAL-001`, explains why the cycles are
+benign for the declared sparse computation and why Gan and Low can exploit
+chordal structure in multiphase radial OPF. It is conditional: multi-terminal
+factors, missing coupling entries, cancellation, or a meshed bus graph can
+change the support and its elimination properties.
+
 This produces several useful apparent paradoxes:
 
 | Statement | Resolution |
 |:--|:--|
-| a radial feeder has cycles | asset topology can be a tree while conductor-expanded matrix support contains cliques |
+| a radial feeder has cycles | equipment topology can be a tree while conductor-expanded matrix support contains cliques |
 | two parallel lines become one edge | their stamps add in one block-support edge; asset identity has been projected away |
 | one line becomes many edges | one dense multiconductor factor produces many scalar nonzeros |
 | a transformer creates a triangle | a clique compilation of one multi-terminal factor creates a support cycle, not three transformer assets |
 | a new edge appears after reduction | Kron fill-in is an equivalent boundary coefficient, not a discovered line |
-| no matrix edge means no physical relation | cancellation, coordinate choice, or eliminated variables can hide the relation |
+| a physical relation has no matrix edge | cancellation, coordinate choice, or eliminated variables can hide the relation |
 
 These are not contradictions. Each sentence changes the graph without saying
 so.
@@ -252,7 +395,7 @@ the corresponding graph objects in detail. The practical crosswalk is:
 
 | Cycle question | Graph or incidence object | What it can support |
 |:--|:--|:--|
-| Is there an alternative route through identified two-terminal members? | asset/bus multigraph | switching, outages, member radiality, line-identity cycle bases |
+| Is there an alternative route through identified two-terminal members? | equipment/bus multigraph | switching, outages, member radiality, line-identity cycle bases |
 | Is there repeated incidence through conductor junctions and factors? | conductor/port--factor graph or a declared compilation | terminal connectivity, factor decomposition, conductor-resolved equations |
 | Does the assembled or reduced operator have cyclic sparsity? | block or scalar matrix-support graph | chordal decomposition, ordering, fill, sparse numerical algorithms |
 
@@ -260,6 +403,29 @@ A cycle basis computed in one row is not automatically a basis for another.
 In particular, a parallel pair gives a two-member cycle in the identified
 multigraph but one edge in block support, while a dense line stamp can give
 many scalar-support cycles without any asset-level cycle.
+
+## Executable projection and elimination witness
+
+The generated
+`experiments/generated/topology-projection-witness.json` checks the two central
+mechanisms without relying on a power-flow solver.
+
+- Two distinct reciprocal passive two-conductor splits assemble to a
+  byte-identical ``4\times4`` nodal operator. Both have zero normalized
+  Frobenius assembly error, so the consistency certificate cannot identify the
+  source attribution. The small negative minimum passivity eigenvalues
+  (approximately ``-1.4\times10^{-16}`` at worst) are recorded as floating-
+  point roundoff against a ``10^{-12}`` tolerance.
+- A three-bus two-conductor bus-level tree has macro cycle rank zero and scalar
+  structural-support cycle rank six. The declared leaf-block perfect order
+  produces zero fill, while eliminating the separator block first produces
+  four fill edges.
+
+The source is
+`experiments/transformations/TopologyProjectionWitness.jl`; the focused test is
+`experiments/test/topology_projection_witness.jl`. These finite witnesses test
+`ARCH-NODAL-001`, `ARCH-SUPPORT-001`, and `ARCH-CHORDAL-001`; they do not claim
+that every factor library is passive, identifiable, or chordal.
 
 ## Kron reduction adds a fourth source of apparent adjacency
 
@@ -302,28 +468,41 @@ The canonical record should retain at least:
 - recovery maps for eliminated quantities that remain observable or
   constrained.
 
-For a supplied nodal operator and claimed source decomposition, the basic
-round-trip certificate is
+For a supplied nodal operator and claimed source decomposition, define each
+assembled stamp
+``\mathbf S_\phi=\mathbf A_\phi^{\mathsf T}\mathbf Y_\phi\mathbf A_\phi``
+and the Frobenius-norm assembly backward error
 
 ```math
-\left\|
-\mathbf Y^{\mathrm N}
--
-\sum_{\phi}
-\mathbf A_\phi^{\mathsf T}\mathbf Y_\phi\mathbf A_\phi
-\right\|
-\le \varepsilon_{\mathrm{asm}},
+\eta_{\mathrm{asm}}
+=
+\frac{
+\left\|\mathbf Y^{\mathrm N}-\sum_\phi\mathbf S_\phi\right\|_{\mathrm F}
+}{
+\left\|\mathbf Y^{\mathrm N}\right\|_{\mathrm F}
++\sum_\phi\left\|\mathbf S_\phi\right\|_{\mathrm F}
+}
+\le \tau_{\mathrm{asm}}.
 ```
 
-together with checks of coordinate order, units, states, and factor types.
-This verifies a proposed decomposition. It does **not** prove that the
-decomposition is unique.
+The denominator makes the test dimensionless and remains informative when
+large stamps nearly cancel; the all-zero case is handled separately. The
+certificate must also record the coordinate order, units, states, factor
+types, norm, and threshold.
 
-Recovery from ``\mathbf Y^{\mathrm N}`` alone is an inverse problem and is
-generally non-identifiable. Additional catalog constraints, construction
-priors, measurements, switch states, or asset records can narrow the candidate
-set, but an estimator must report ambiguity rather than inventing line
-identity. The safe engineering objective is therefore:
+This test verifies **assembly consistency**, not **source attribution**. It is
+invariant under every admissible regrouping in ``\ker\mathcal S`` and is
+therefore structurally blind to the parallel-split ambiguity established
+above. Two decompositions can both achieve zero backward error while assigning
+different primitives, ratings, or identities to the members. Attribution
+requires provenance or independent identifying information.
+
+Recovery from ``\mathbf Y^{\mathrm N}`` alone is an inverse problem. It is
+non-identifiable whenever the restricted assembly criterion above fails.
+Additional catalog constraints, construction priors, measurements, switch
+states, or asset records can narrow the candidate set, but an estimator must
+report the remaining affine or constrained ambiguity rather than inventing
+line identity. The safe engineering objective is therefore:
 
 > preserve the two-level source structure through compilation, and validate
 > every derived nodal operator against it; attempt recovery only as a

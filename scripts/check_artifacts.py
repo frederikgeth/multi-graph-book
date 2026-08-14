@@ -19,6 +19,7 @@ TRANSFORMER_CONTRACTS = (TRANSFORMER_CONTRACT, TRANSFORMER_TAP_CONTRACT)
 GENERATED = ROOT / "experiments/generated"
 PORT_FACTOR_ARCHITECTURE = GENERATED / "port-factor-architecture.json"
 FIVE_BUS_PORT_FACTOR = GENERATED / "five-bus-port-factor-witness.json"
+TOPOLOGY_PROJECTION_WITNESS = GENERATED / "topology-projection-witness.json"
 POSITIVE_SEQUENCE_WITNESS = GENERATED / "positive-sequence-collapse-witness.json"
 FOUR_WIRE_IMPEDANCE_LADDER = GENERATED / "four-wire-impedance-model-ladder.json"
 BALANCED_TRANSMISSION_WITNESS = GENERATED / "balanced-transmission-witness.json"
@@ -404,6 +405,7 @@ def main() -> int:
         GENERATED / "provenance.json",
         PORT_FACTOR_ARCHITECTURE,
         FIVE_BUS_PORT_FACTOR,
+        TOPOLOGY_PROJECTION_WITNESS,
         POSITIVE_SEQUENCE_WITNESS,
         FOUR_WIRE_IMPEDANCE_LADDER,
         BALANCED_TRANSMISSION_WITNESS,
@@ -598,6 +600,40 @@ def main() -> int:
     ):
         if active_checks.get(name) is not True:
             errors.append(f"five-bus active radiality check failed: {name}")
+
+    topology_projection = load_json(TOPOLOGY_PROJECTION_WITNESS)
+    if topology_projection.get("witness_id") != "ARCH-TOPOLOGY-001":
+        errors.append("topology projection witness has an invalid witness ID")
+    if set(topology_projection.get("claim_ids", [])) != {
+        "ARCH-NODAL-001", "ARCH-SUPPORT-001", "ARCH-CHORDAL-001"
+    }:
+        errors.append("topology projection witness has an unexpected claim set")
+    if topology_projection.get("all_checks_pass") is not True:
+        errors.append("topology projection witness failed its checks")
+    parallel_projection = topology_projection.get("parallel_split", {})
+    for name in (
+        "splits_are_distinct",
+        "assembled_operators_are_bit_identical",
+        "base_round_trip_passes",
+        "alternate_round_trip_passes",
+        "base_split_is_passive",
+        "alternate_split_is_passive",
+        "all_primitives_are_reciprocal",
+        "consistency_test_is_attribution_blind",
+    ):
+        if parallel_projection.get("checks", {}).get(name) is not True:
+            errors.append(f"topology parallel-split check failed: {name}")
+    chordal_projection = topology_projection.get("radial_clique_support", {})
+    for name in (
+        "macro_graph_is_tree",
+        "scalar_support_contains_cycles",
+        "line_cliques_share_declared_separator",
+        "leaf_block_order_is_perfect",
+        "leaf_block_order_has_zero_fill",
+        "bad_order_has_positive_fill",
+    ):
+        if chordal_projection.get("checks", {}).get(name) is not True:
+            errors.append(f"topology radial-clique check failed: {name}")
 
     five_bus_kron = load_json(FIVE_BUS_TYPED_KRON)
     if five_bus_kron.get("witness_id") != "TR-KRON-FIVE-001":

@@ -79,6 +79,11 @@ nonzero structure. Their vertices may represent variables, equations, blocks, or
 than physical objects. They are indispensable for analysis and computation, but their edges do not
 automatically carry physical meaning.
 
+The block- and scalar-support graphs of the compound nodal operator are
+defined once in [Two topology levels and the nodal projection](@ref two-level-topology-and-nodal-projection).
+This taxonomy records their role without introducing a competing support
+definition.
+
 ### Study-specific compiled models
 
 A power-flow, OPF, state-estimation, fault, or decomposition model selects variables and relations

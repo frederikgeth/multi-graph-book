@@ -61,6 +61,51 @@ review_date = ""
 unresolved_issue = "Lift the executable incidence and cycle objects to conductor-terminal graphs, state-conditioned topology decisions, and compiled multi-terminal factors."
 
 [[claim]]
+claim_id = "ARCH-NODAL-001"
+chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"
+claim_text = "Assembly of typed linear factor stamps into a compound nodal operator is not generally injective: distinct admissible parallel-factor decompositions can produce an identical nodal operator and identical normalized assembly residuals."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "algebraic_kernel_criterion_and_executable_passive_reciprocal_parallel_split_witness"
+citation_keys = []
+model_scope = "finite-dimensional fixed linear factor collections with declared real terminal assembly maps; executable case uses two aligned passive reciprocal two-conductor series factors"
+assumptions = "factor types, coordinates, and assembly maps are fixed; admissible ambiguity directions remain inside the declared factor class; decisions and limits are outside the nodal assembly"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Classify identifiable and bounded ambiguity families under realistic line, transformer, shunt, catalog, measurement, and state constraints."
+
+[[claim]]
+claim_id = "ARCH-SUPPORT-001"
+chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"
+claim_text = "Block and scalar nonzero-support graphs of a declared compound nodal operator are simple graphs by construction, while the identified factor-stamp decomposition is separate data and may be a multigraph."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "definition_level_derivation_and_parallel_stamp_projection_witness"
+citation_keys = ["KettnerPaolone2019"]
+model_scope = "finite ordered compound nodal matrices and their declared block/scalar partitions"
+assumptions = "support adjacency records nonzero matrix positions only; stamp identity and provenance are not inferred from the assembled sum"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the support/stamp distinction to frequency-coupled, rectangular realified, Jacobian, and multi-terminal compiled operator families."
+
+[[claim]]
+claim_id = "ARCH-CHORDAL-001"
+chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"
+claim_text = "For a simple bus-level tree with a common m-coordinate block at every bus and a structurally dense two-terminal stamp on every tree edge, the scalar structural-support graph is chordal and leaf-bus block elimination is a zero-fill perfect elimination ordering."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "inductive_proof_and_executable_three_bus_two_conductor_symbolic_elimination_witness"
+citation_keys = ["GanLowChordal2014"]
+model_scope = "simple bus trees with equal retained coordinate blocks and clique support on each two-terminal edge stamp"
+assumptions = "the support is structural; each endpoint-union stamp is dense; assembled entries do not cancel; no multi-terminal factor adds non-tree support"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Characterize chordality and minimal fill under missing phases, sparse coupling blocks, parallel factors, multi-terminal devices, and meshed bus graphs."
+
+[[claim]]
 claim_id = "LIT-PAR-001"
 chapter = "docs/src/start/first-failure-parallel-branches.md"
 claim_text = "For fixed scalar AC pi-line models on common endpoints, a parallel member's current- or apparent-power limit at one terminal is redundant when its normalized terminal-voltage quadratic feasible set contains that of another member; applying the test at both terminals certifies removal of both directional limits without aggregating the line models."

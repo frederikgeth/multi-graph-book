@@ -1,12 +1,12 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:9e20195fe6b0fa0e8ab6aad2b2718d5b23c59188d23899e12cdfad4f2308ba61 -->
+<!-- generated-from claims/claims.toml sha256:8c1d84e95c86b6a70a94a87412978927c3e74285c7131da5ca871c72ea57deef -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 
-**Indexed claims:** 65
-**Indexed chapters:** 28
+**Indexed claims:** 68
+**Indexed chapters:** 29
 
 ## Claims by type
 
@@ -68,10 +68,13 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | --- | --- | --- |
 | `DATA-XWALK-001` — CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER provide distinct partial correspondences to the book's asset, terminal, topology, factor, state, and rating objects; successful import is not by itself semantic or decision equivalence. | [Data-model crosswalk](../foundations/data-model-crosswalk.md) | `self-checked` |
 
-### `theorem` (22)
+### `theorem` (25)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
+| `ARCH-CHORDAL-001` — For a simple bus-level tree with a common m-coordinate block at every bus and a structurally dense two-terminal stamp on every tree edge, the scalar structural-support graph is chordal and leaf-bus block elimination is a zero-fill perfect elimination ordering. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `self-checked` |
+| `ARCH-NODAL-001` — Assembly of typed linear factor stamps into a compound nodal operator is not generally injective: distinct admissible parallel-factor decompositions can produce an identical nodal operator and identical normalized assembly residuals. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `self-checked` |
+| `ARCH-SUPPORT-001` — Block and scalar nonzero-support graphs of a declared compound nodal operator are simple graphs by construction, while the identified factor-stamp decomposition is separate data and may be a multigraph. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `self-checked` |
 | `COLLAPSE-001` — Under compatible three-phase terminals, cyclic (circulant) series and shunt matrices, balanced boundary data, sequence-compatible grounding, two-terminal factor closure, phase-symmetric decisions, and positive-sequence observations, the general phase-domain relation restricts exactly to the positive-sequence scalar network. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `self-checked` |
 | `GRAPH-CYCLE-001` — The recorded connected five-bus bus--branch multigraph has seven identified lines, incidence rank four, and cycle-space dimension three; collapsing its parallel q/r pair to a simple edge reduces the cycle-space dimension to two, whereas the spanning-tree-plus-chords representation retains all three source dimensions. | [A five-bus multigraph: identities, cycles, and tree coordinates](../start/five-bus-cycle-spaces.md) | `self-checked` |
 | `LIT-PAR-001` — For fixed scalar AC pi-line models on common endpoints, a parallel member's current- or apparent-power limit at one terminal is redundant when its normalized terminal-voltage quadratic feasible set contains that of another member; applying the test at both terminals certifies removal of both directional limits without aggregating the line models. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `self-checked` |
@@ -100,15 +103,18 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | Verification | Claims |
 | --- | ---: |
 | `independently-implemented` | 4 |
-| `self-checked` | 61 |
+| `self-checked` | 64 |
 
 ## Unresolved issues
 
 | Claim | Issue |
 | --- | --- |
+| `ARCH-CHORDAL-001` | Characterize chordality and minimal fill under missing phases, sparse coupling blocks, parallel factors, multi-terminal devices, and meshed bus graphs. |
 | `ARCH-CONDUCTOR-002` | Compare the scalar terminal lift with a full conductor-terminal factor evaluator and state-conditioned topology maps. |
+| `ARCH-NODAL-001` | Classify identifiable and bounded ambiguity families under realistic line, transformer, shunt, catalog, measurement, and state constraints. |
 | `ARCH-PORT-001` | Lift the data witness to evaluated factor relations and independently review the architecture against a non-synthetic asset model. |
 | `ARCH-PORT-002` | Extend the lift to evaluated factor relations and compare its boundary semantics with the simple quotient and line-identity cycle basis. |
+| `ARCH-SUPPORT-001` | Extend the support/stamp distinction to frequency-coupled, rectangular realified, Jacobian, and multi-terminal compiled operator families. |
 | `COLLAPSE-001` | Extend the network witness to controls, phase-specific limits, contingencies, and an independent mathematical review before making a global decision-equivalence claim. |
 | `COLLAPSE-002` | Extend the witness to controls, phase-specific limits, contingencies, and independent mathematical review. |
 | `DATA-XWALK-001` | The running-fixture contract is checked against pinned documentation profiles; external package imports and file-level round-trip provenance/rating checks remain open. |
@@ -253,13 +259,16 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `representation` (23)
+### `representation` (26)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
+| `ARCH-CHORDAL-001` — For a simple bus-level tree with a common m-coordinate block at every bus and a structurally dense two-terminal stamp on every tree edge, the scalar structural-support graph is chordal and leaf-bus block elimination is a zero-fill perfect elimination ordering. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-CONDUCTOR-002` — The five-bus scalar line-identity fixture lifts to fourteen scalar endpoint ports, five terminal junctions, and seven two-port line factors; the lift retains the q/r parallel fibre and its extra cycle dimension while adding no multiconductor, switch, or transformer semantics. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
+| `ARCH-NODAL-001` — Assembly of typed linear factor stamps into a compound nodal operator is not generally injective: distinct admissible parallel-factor decompositions can produce an identical nodal operator and identical normalized assembly residuals. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-PORT-001` — A minimal executable port--factor bundle instantiated from the running network validates typed port-to-junction and port-to-factor incidence, a three-port multiwinding factor, grounding as an explicit factor, and a many-to-many asset/electrical relation Λ. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
 | `ARCH-PORT-002` — The five-bus identified scalar multigraph has a direct structural port--factor lift with five bus junctions, seven two-port scalar line factors, fourteen endpoint ports, and one asset-to-factor relation per identified line; parallel members q and r remain distinct factors despite sharing the same bus pair. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
+| `ARCH-SUPPORT-001` — Block and scalar nonzero-support graphs of a declared compound nodal operator are simple graphs by construction, while the identified factor-stamp decomposition is separate data and may be a multigraph. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `COLLAPSE-001` — Under compatible three-phase terminals, cyclic (circulant) series and shunt matrices, balanced boundary data, sequence-compatible grounding, two-terminal factor closure, phase-symmetric decisions, and positive-sequence observations, the general phase-domain relation restricts exactly to the positive-sequence scalar network. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `theorem` |
 | `COLLAPSE-002` — The generated Fortescue witness diagonalizes a circulant three-phase impedance matrix and preserves the positive-sequence subspace, while a non-circulant perturbation produces sequence mixing and a positive-subspace residual. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `empirical` |
 | `DATA-XWALK-001` — CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER provide distinct partial correspondences to the book's asset, terminal, topology, factor, state, and rating objects; successful import is not by itself semantic or decision equivalence. | [Data-model crosswalk](../foundations/data-model-crosswalk.md) | `practice` |
@@ -281,13 +290,16 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `software-and-data` (6)
+### `software-and-data` (9)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
+| `ARCH-CHORDAL-001` — For a simple bus-level tree with a common m-coordinate block at every bus and a structurally dense two-terminal stamp on every tree edge, the scalar structural-support graph is chordal and leaf-bus block elimination is a zero-fill perfect elimination ordering. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-CONDUCTOR-002` — The five-bus scalar line-identity fixture lifts to fourteen scalar endpoint ports, five terminal junctions, and seven two-port line factors; the lift retains the q/r parallel fibre and its extra cycle dimension while adding no multiconductor, switch, or transformer semantics. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
+| `ARCH-NODAL-001` — Assembly of typed linear factor stamps into a compound nodal operator is not generally injective: distinct admissible parallel-factor decompositions can produce an identical nodal operator and identical normalized assembly residuals. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-PORT-001` — A minimal executable port--factor bundle instantiated from the running network validates typed port-to-junction and port-to-factor incidence, a three-port multiwinding factor, grounding as an explicit factor, and a many-to-many asset/electrical relation Λ. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
 | `ARCH-PORT-002` — The five-bus identified scalar multigraph has a direct structural port--factor lift with five bus junctions, seven two-port scalar line factors, fourteen endpoint ports, and one asset-to-factor relation per identified line; parallel members q and r remain distinct factors despite sharing the same bus pair. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
+| `ARCH-SUPPORT-001` — Block and scalar nonzero-support graphs of a declared compound nodal operator are simple graphs by construction, while the identified factor-stamp decomposition is separate data and may be a multigraph. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `DATA-XWALK-001` — CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER provide distinct partial correspondences to the book's asset, terminal, topology, factor, state, and rating objects; successful import is not by itself semantic or decision equivalence. | [Data-model crosswalk](../foundations/data-model-crosswalk.md) | `practice` |
 | `FIXTURE-001` — Running-network fixture v0.1.0 passes the current BMOPFTools JSON schema and conformance checks without errors or warnings. | [Executable running network](../cases/executable-running-network.md) | `empirical` |
 | `FIXTURE-002` — The v0.1.0 continuous PF and OPF instances terminate locally solved in the recorded environment. | [Executable running network](../cases/executable-running-network.md) | `empirical` |
@@ -412,6 +424,7 @@ schema is normalised.
 | `summary.json` | generated evidence |
 | `three-member-four-wire-parallel-ac-certificate.json` | generated evidence |
 | `three-member-state-envelope-independent-reproduction.json` | `TR-PAR-STATE-001` — generated evidence |
+| `topology-projection-witness.json` | `ARCH-TOPOLOGY-001` — two aligned passive reciprocal two-conductor factors and a three-bus two-conductor tree with structurally dense line stamps |
 | `transformer-control-family-witness.json` | `TR-XFMR-CONTROL-001` — pointwise transformer control compilation with phase, mechanical, automatic, and tap-dependent-loss families |
 | `transformer-factor-completion-certificate.json` | `TR-XFMR-004` — generated evidence |
 | `transformer-tap-ac-decision-certificate.json` | `TR-XFMR-006` — generated evidence |

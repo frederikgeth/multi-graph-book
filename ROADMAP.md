@@ -141,12 +141,46 @@ graph-architecture work:
   cyclic-support apparent paradox;
 - [x] state a source-retention and assembly round-trip contract, including the
   non-injective conductor-to-terminal case outside narrower adapters;
-- [ ] add a generated factor-stamp witness that computes block/scalar support,
+- [x] add a generated factor-stamp witness that computes block/scalar support,
   parallel-stamp aggregation, and decomposition provenance on the running
   multiconductor fixture;
 - [ ] investigate source recovery as a separately scoped inverse problem with
   explicit identifiability classes; do not present ``\mathbf Y^{\mathrm N}``
   inversion as a canonical import path.
+
+The 2026-08-15 technical review of that tranche adds the following ordered
+repair plan. Two reviewer formulations are deliberately qualified: passivity
+alone gives a convex, not necessarily bounded, parallel-split ambiguity set;
+and nodal-operator singularity is conditional on connectivity, grounding,
+shunts, and component hypotheses rather than universal.
+
+- [x] state and illustrate the positive chordal counterpart to conductor
+  expansion: under dense two-terminal ``m``-conductor stamps on a bus-level
+  tree, leaf-block elimination is a perfect elimination order with zero fill;
+- [x] define injectivity of the restricted assembly map by its kernel on the
+  admissible model class, then give a support-separated two-terminal
+  sufficient condition and the three principal failure mechanisms;
+- [x] characterize the aligned parallel-factor ambiguity as an affine family,
+  intersect it with passivity and parameter guards without claiming
+  boundedness absent coercive bounds, and cite recoverable-network theory;
+- [x] state the conditional rank/nullspace alternatives for an unreferenced
+  versus sufficiently grounded compound nodal operator;
+- [x] say explicitly that the nodal operator assembles only the declared
+  linear unconstrained factor subset and therefore omits loads, controls,
+  limits, objectives, and discrete decision semantics;
+- [x] replace the absolute assembly residual with a named normwise backward
+  error and distinguish consistency from source attribution;
+- [x] separate the always-many-to-one port attachment ``j`` from a possibly
+  non-injective physical-conductor realization map ``c`` and move the
+  BMOPFTools restriction into an implementation note;
+- [x] make ``\mathbf Y^{\mathrm N}`` the typed compound-nodal notation, retain
+  ``\mathbf Y_{\mathrm{bus}}``/`Ybus` as a declared conventional alias, and
+  explain why the transpose is correct only for real assembly maps;
+- [x] register the chapter's claim-shaped results and add executable witnesses
+  for parallel-split non-identifiability/certificate blindness and the
+  radial-clique perfect elimination order;
+- [x] make this chapter the single source of the block/scalar support-graph
+  definitions and reduce neighbouring chapters to linked summaries.
 
 ## Phase 0 — Repository and editorial foundation
 
@@ -856,7 +890,7 @@ to proceed in parallel.
   CI, alongside the dependency-light package test.
 - [x] add the two-level topology/nodal-projection chapter, support-graph
   definitions, and radial-macro versus clique-support diagrams;
-- [ ] add the generated factor-stamp and support-graph witness described in the
+- [x] add the generated factor-stamp and support-graph witness described in the
   topology-projection tranche;
 - [ ] optionally publish/tag the standalone package after API and
   compatibility-policy review.

@@ -1,0 +1,623 @@
+{
+  "checks": {
+    "parallel_nonzero_kernel_direction": true,
+    "parallel_all_primitives_are_reciprocal": true,
+    "parallel_alternate_round_trip_passes": true,
+    "parallel_consistency_test_is_attribution_blind": true,
+    "parallel_base_split_is_passive": true,
+    "parallel_splits_are_distinct": true,
+    "chordal_each_line_stamp_has_four_coordinate_clique": true,
+    "chordal_macro_graph_is_tree": true,
+    "chordal_scalar_support_contains_cycles": true,
+    "chordal_leaf_block_order_has_zero_fill": true,
+    "parallel_assembled_operators_are_bit_identical": true,
+    "parallel_base_round_trip_passes": true,
+    "chordal_leaf_block_order_is_perfect": true,
+    "chordal_bad_order_has_positive_fill": true,
+    "chordal_line_cliques_share_declared_separator": true,
+    "parallel_alternate_split_is_passive": true
+  },
+  "claim_ids": [
+    "ARCH-NODAL-001",
+    "ARCH-SUPPORT-001",
+    "ARCH-CHORDAL-001"
+  ],
+  "parallel_split": {
+    "checks": {
+      "nonzero_kernel_direction": true,
+      "base_round_trip_passes": true,
+      "alternate_round_trip_passes": true,
+      "consistency_test_is_attribution_blind": true,
+      "base_split_is_passive": true,
+      "alternate_split_is_passive": true,
+      "all_primitives_are_reciprocal": true,
+      "assembled_operators_are_bit_identical": true,
+      "splits_are_distinct": true
+    },
+    "ambiguity_direction": [
+      [
+        {
+          "re": 0.5,
+          "im": 0.25
+        },
+        {
+          "re": 0.125,
+          "im": 0.0625
+        }
+      ],
+      [
+        {
+          "re": 0.125,
+          "im": 0.0625
+        },
+        {
+          "re": 0.25,
+          "im": 0.125
+        }
+      ]
+    ],
+    "base_normalized_frobenius_error": 0,
+    "alternate_minimum_passivity_eigenvalues": [
+      -1.4022332763258985e-16,
+      -6.198555371339349e-17
+    ],
+    "factor_class": "reciprocal_passive_two_conductor_series_stamp",
+    "base_primitives": [
+      [
+        [
+          {
+            "re": 4,
+            "im": 2
+          },
+          {
+            "re": 0.5,
+            "im": 0.25
+          },
+          {
+            "re": -4,
+            "im": -2
+          },
+          {
+            "re": -0.5,
+            "im": -0.25
+          }
+        ],
+        [
+          {
+            "re": 0.5,
+            "im": 0.25
+          },
+          {
+            "re": 3,
+            "im": 1
+          },
+          {
+            "re": -0.5,
+            "im": -0.25
+          },
+          {
+            "re": -3,
+            "im": -1
+          }
+        ],
+        [
+          {
+            "re": -4,
+            "im": -2
+          },
+          {
+            "re": -0.5,
+            "im": -0.25
+          },
+          {
+            "re": 4,
+            "im": 2
+          },
+          {
+            "re": 0.5,
+            "im": 0.25
+          }
+        ],
+        [
+          {
+            "re": -0.5,
+            "im": -0.25
+          },
+          {
+            "re": -3,
+            "im": -1
+          },
+          {
+            "re": 0.5,
+            "im": 0.25
+          },
+          {
+            "re": 3,
+            "im": 1
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "re": 2,
+            "im": 1
+          },
+          {
+            "re": 0.25,
+            "im": 0.125
+          },
+          {
+            "re": -2,
+            "im": -1
+          },
+          {
+            "re": -0.25,
+            "im": -0.125
+          }
+        ],
+        [
+          {
+            "re": 0.25,
+            "im": 0.125
+          },
+          {
+            "re": 1.5,
+            "im": 0.5
+          },
+          {
+            "re": -0.25,
+            "im": -0.125
+          },
+          {
+            "re": -1.5,
+            "im": -0.5
+          }
+        ],
+        [
+          {
+            "re": -2,
+            "im": -1
+          },
+          {
+            "re": -0.25,
+            "im": -0.125
+          },
+          {
+            "re": 2,
+            "im": 1
+          },
+          {
+            "re": 0.25,
+            "im": 0.125
+          }
+        ],
+        [
+          {
+            "re": -0.25,
+            "im": -0.125
+          },
+          {
+            "re": -1.5,
+            "im": -0.5
+          },
+          {
+            "re": 0.25,
+            "im": 0.125
+          },
+          {
+            "re": 1.5,
+            "im": 0.5
+          }
+        ]
+      ]
+    ],
+    "base_minimum_passivity_eigenvalues": [
+      -1.1151893596361527e-16,
+      -5.575946798180763e-17
+    ],
+    "alternate_primitives": [
+      [
+        [
+          {
+            "re": 4.5,
+            "im": 2.25
+          },
+          {
+            "re": 0.625,
+            "im": 0.3125
+          },
+          {
+            "re": -4.5,
+            "im": -2.25
+          },
+          {
+            "re": -0.625,
+            "im": -0.3125
+          }
+        ],
+        [
+          {
+            "re": 0.625,
+            "im": 0.3125
+          },
+          {
+            "re": 3.25,
+            "im": 1.125
+          },
+          {
+            "re": -0.625,
+            "im": -0.3125
+          },
+          {
+            "re": -3.25,
+            "im": -1.125
+          }
+        ],
+        [
+          {
+            "re": -4.5,
+            "im": -2.25
+          },
+          {
+            "re": -0.625,
+            "im": -0.3125
+          },
+          {
+            "re": 4.5,
+            "im": 2.25
+          },
+          {
+            "re": 0.625,
+            "im": 0.3125
+          }
+        ],
+        [
+          {
+            "re": -0.625,
+            "im": -0.3125
+          },
+          {
+            "re": -3.25,
+            "im": -1.125
+          },
+          {
+            "re": 0.625,
+            "im": 0.3125
+          },
+          {
+            "re": 3.25,
+            "im": 1.125
+          }
+        ]
+      ],
+      [
+        [
+          {
+            "re": 1.5,
+            "im": 0.75
+          },
+          {
+            "re": 0.125,
+            "im": 0.0625
+          },
+          {
+            "re": -1.5,
+            "im": -0.75
+          },
+          {
+            "re": -0.125,
+            "im": -0.0625
+          }
+        ],
+        [
+          {
+            "re": 0.125,
+            "im": 0.0625
+          },
+          {
+            "re": 1.25,
+            "im": 0.375
+          },
+          {
+            "re": -0.125,
+            "im": -0.0625
+          },
+          {
+            "re": -1.25,
+            "im": -0.375
+          }
+        ],
+        [
+          {
+            "re": -1.5,
+            "im": -0.75
+          },
+          {
+            "re": -0.125,
+            "im": -0.0625
+          },
+          {
+            "re": 1.5,
+            "im": 0.75
+          },
+          {
+            "re": 0.125,
+            "im": 0.0625
+          }
+        ],
+        [
+          {
+            "re": -0.125,
+            "im": -0.0625
+          },
+          {
+            "re": -1.25,
+            "im": -0.375
+          },
+          {
+            "re": 0.125,
+            "im": 0.0625
+          },
+          {
+            "re": 1.25,
+            "im": 0.375
+          }
+        ]
+      ]
+    ],
+    "coordinate_order": [
+      "i/a",
+      "i/n",
+      "j/a",
+      "j/n"
+    ],
+    "alternate_normalized_frobenius_error": 0,
+    "assembled_operator": [
+      [
+        {
+          "re": 6,
+          "im": 3
+        },
+        {
+          "re": 0.75,
+          "im": 0.375
+        },
+        {
+          "re": -6,
+          "im": -3
+        },
+        {
+          "re": -0.75,
+          "im": -0.375
+        }
+      ],
+      [
+        {
+          "re": 0.75,
+          "im": 0.375
+        },
+        {
+          "re": 4.5,
+          "im": 1.5
+        },
+        {
+          "re": -0.75,
+          "im": -0.375
+        },
+        {
+          "re": -4.5,
+          "im": -1.5
+        }
+      ],
+      [
+        {
+          "re": -6,
+          "im": -3
+        },
+        {
+          "re": -0.75,
+          "im": -0.375
+        },
+        {
+          "re": 6,
+          "im": 3
+        },
+        {
+          "re": 0.75,
+          "im": 0.375
+        }
+      ],
+      [
+        {
+          "re": -0.75,
+          "im": -0.375
+        },
+        {
+          "re": -4.5,
+          "im": -1.5
+        },
+        {
+          "re": 0.75,
+          "im": 0.375
+        },
+        {
+          "re": 4.5,
+          "im": 1.5
+        }
+      ]
+    ],
+    "affine_direction_real_dimension": 6,
+    "tolerance": 1.0e-12
+  },
+  "witness_id": "ARCH-TOPOLOGY-001",
+  "radial_clique_support": {
+    "checks": {
+      "leaf_block_order_is_perfect": true,
+      "leaf_block_order_has_zero_fill": true,
+      "each_line_stamp_has_four_coordinate_clique": true,
+      "bad_order_has_positive_fill": true,
+      "macro_graph_is_tree": true,
+      "scalar_support_contains_cycles": true,
+      "line_cliques_share_declared_separator": true
+    },
+    "bus_graph": {
+      "cycle_rank": 0,
+      "vertices": [
+        "i",
+        "j",
+        "k"
+      ],
+      "edges": [
+        [
+          "i",
+          "j"
+        ],
+        [
+          "j",
+          "k"
+        ]
+      ]
+    },
+    "structural_support_cycle_rank": 6,
+    "structural_support_edges": [
+      [
+        "i/a",
+        "i/n"
+      ],
+      [
+        "i/a",
+        "j/a"
+      ],
+      [
+        "i/a",
+        "j/n"
+      ],
+      [
+        "i/n",
+        "j/a"
+      ],
+      [
+        "i/n",
+        "j/n"
+      ],
+      [
+        "j/a",
+        "j/n"
+      ],
+      [
+        "j/a",
+        "k/a"
+      ],
+      [
+        "j/a",
+        "k/n"
+      ],
+      [
+        "j/n",
+        "k/a"
+      ],
+      [
+        "j/n",
+        "k/n"
+      ],
+      [
+        "k/a",
+        "k/n"
+      ]
+    ],
+    "scalar_coordinates": [
+      "i/a",
+      "i/n",
+      "j/a",
+      "j/n",
+      "k/a",
+      "k/n"
+    ],
+    "separator": [
+      "j/a",
+      "j/n"
+    ],
+    "conductors": [
+      "a",
+      "n"
+    ],
+    "line_cliques": [
+      [
+        "i/a",
+        "i/n",
+        "j/a",
+        "j/n"
+      ],
+      [
+        "j/a",
+        "j/n",
+        "k/a",
+        "k/n"
+      ]
+    ],
+    "bad_elimination": {
+      "fill_count": 4,
+      "fill_edges": [
+        [
+          "i/a",
+          "k/a"
+        ],
+        [
+          "i/a",
+          "k/n"
+        ],
+        [
+          "i/n",
+          "k/a"
+        ],
+        [
+          "i/n",
+          "k/n"
+        ]
+      ],
+      "order": [
+        "j/a",
+        "j/n",
+        "i/a",
+        "i/n",
+        "k/a",
+        "k/n"
+      ],
+      "is_perfect_elimination_order": false,
+      "simplicial_at_elimination": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    "perfect_elimination": {
+      "fill_count": 0,
+      "fill_edges": [
+      ],
+      "order": [
+        "i/a",
+        "i/n",
+        "k/a",
+        "k/n",
+        "j/a",
+        "j/n"
+      ],
+      "is_perfect_elimination_order": true,
+      "simplicial_at_elimination": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  },
+  "all_checks_pass": true,
+  "schema_version": "0.1.0",
+  "model_scope": "two aligned passive reciprocal two-conductor factors and a three-bus two-conductor tree with structurally dense line stamps"
+}

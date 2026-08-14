@@ -293,8 +293,11 @@ For an equation system ``F(x)=0`` and inequalities ``g(x)\le0``, a
 variable--relation incidence graph has one vertex class for variables, another
 for relations, and an edge whenever a relation depends on a variable. A matrix
 sparsity graph instead follows the nonzero pattern of a declared matrix such
-as ``\mathbf Y_{\mathrm{bus}}``, a Jacobian, or a KKT matrix.
+as the compound nodal operator ``\mathbf Y^{\mathrm N}``, a Jacobian, or a KKT
+matrix.
 
+The normative block- and scalar-support definitions are in
+[Two topology levels and the nodal projection](@ref two-level-topology-and-nodal-projection).
 These graphs need separate definitions because their vertices may be buses,
 terminals, scalar variables, vector blocks, equations, or constraints. Schur
 elimination can remove variables while adding fill edges. A nonzero-pattern
