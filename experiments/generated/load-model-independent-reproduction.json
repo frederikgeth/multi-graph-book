@@ -1,0 +1,54 @@
+{
+  "witness_id": "LOAD-DECISION-001-REPRO",
+  "claim_id": "LOAD-DECISION-001",
+  "method": "independent pure-Python damped fixed-point iteration",
+  "source_witness": "experiments/generated/load-grounding-witnesses.json",
+  "rows": [
+    {
+      "family": "CP",
+      "voltage_magnitude_pu": 0.8591723331509427,
+      "current_magnitude_pu": 1.0871824528937295,
+      "residual_pu": 1.0134205016943587e-13,
+      "voltage_limit_satisfied": false,
+      "current_limit_satisfied": false,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "voltage_magnitude_pu": 0.8802822179199393,
+      "current_magnitude_pu": 0.9340770846134704,
+      "residual_pu": 5.737725509657602e-14,
+      "voltage_limit_satisfied": true,
+      "current_limit_satisfied": true,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "voltage_magnitude_pu": 0.8937410612375952,
+      "current_magnitude_pu": 0.834823044880162,
+      "residual_pu": 4.786506151305663e-14,
+      "voltage_limit_satisfied": true,
+      "current_limit_satisfied": true,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "voltage_magnitude_pu": 0.8792499191273718,
+      "current_magnitude_pu": 0.9309817770821173,
+      "residual_pu": 7.574112254093347e-14,
+      "voltage_limit_satisfied": true,
+      "current_limit_satisfied": true,
+      "matches_julia": true
+    }
+  ],
+  "checks": {
+    "all_rows_match_julia": true,
+    "independent_iteration_used": true,
+    "same_graph_and_limits_reused": true,
+    "zip_coefficients_reconstructed": true,
+    "zip_reactive_coefficients_reconstructed": true,
+    "no_numpy_or_julia_import": true
+  },
+  "all_checks_pass": true,
+  "interpretation": "Independent reproduction of the declared CP/CI/CZ scalar fixture and its decision margins; not a global load-flow solvability or load-model ranking result."
+}

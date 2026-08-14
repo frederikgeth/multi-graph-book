@@ -116,6 +116,33 @@ physical facts may still differ.
 This distinction is claim `TR-SER-002`: closure under behavioural elimination
 and closure within an equipment class are different questions.
 
+## Anti-patterns: algebra is not a type checker
+
+Three tempting rewrites should be shown as refusals or as explicitly typed
+compositions:
+
+| Rewrite | What can be true | Why the physical merge is unsafe |
+| --- | --- | --- |
+| different line constructions ``\ell_1`` and ``\ell_2`` → one line | the pure-series terminal impedance can still be ``Z_1+P^{\mathsf T}Z_2P`` | the target may falsely claim one construction, one owner, one thermal state or one rating basis |
+| line + transformer → line | a fixed cascade can have a generic two-port relation | turns ratio, vector group, galvanic boundary, winding limits and controls disappear |
+| external ground + transformer → transformer-only | a fixed nodal admittance can sometimes absorb the branch | neutral-current ownership, earth return, protection and topology dependence disappear |
+
+The safe target for the first row is usually a `CompositeSeriesBranch`; for the
+second and third rows it is a typed multiport retaining the transformer and
+ground ports. If the target library has no such factor, the transformation is
+ill-typed even when a matrix calculation can be performed.
+
+This is also why a nominal-``\pi`` series merge needs more than the displayed
+``Z`` matrices. Shunt currents make the two segment currents different at the
+intermediate bus, and cascading the sections generally produces a general
+two-port rather than a nominal-``\pi`` section with naively summed parameters.
+
+!!! warning "Power-system shorthand"
+    Rejecting every heterogeneous series pair would be too strong. The error is
+    silently asserting membership in a narrower physical line class, or
+    dropping a junction constraint, shunt, grounding branch, control, rating or
+    provenance boundary without recording it.
+
 ## Grounding counterexample
 
 If a grounding or shunt admittance ``\mathbf Y_g`` is attached at ``b``, then

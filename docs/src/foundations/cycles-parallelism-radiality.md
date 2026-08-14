@@ -216,6 +216,49 @@ state, and object being tested: for example, “the ``m`` end is a pendant
 bridge in the active identified multigraph” or “the simple bus projection has
 a leaf at ``m``.”
 
+## Upstream and downstream are state-conditioned hierarchy labels
+
+For a resolved radial state ``\sigma``, choose a source root ``r`` and orient
+the active tree away from ``r``. The resulting rooted forest is a useful
+derived view:
+
+```math
+\mathcal R(\sigma,r)=
+\bigl(G_M^\sigma, r, \operatorname{par}_{\sigma,r},
+      \operatorname{depth}_{\sigma,r}\bigr).
+```
+
+It supports parent/child, ancestor/descendant, feeder-head and downstream
+subtree queries. It is not a fifth canonical electrical graph: it is a
+state-specific algorithmic view over the identified graph.
+
+The labels become non-unique or undefined when:
+
+- a component has more than one source or no designated root;
+- the active graph contains a cycle;
+- a switch state is unknown;
+- a tie closes or a parent branch opens;
+- a topology decision changes the energized component.
+
+For a meshed state, a selected spanning forest may still provide a convenient
+parent map, but the omitted chords remain cycle edges. Their directions are
+bookkeeping choices and their equations must remain in the model. Calling all
+mesh branches upstream or downstream silently replaces the source graph by an
+unstated tree projection.
+
+Switching therefore requires recomputing the hierarchy for every resolved
+state. A transformation or recursion that uses parent/child structure must
+carry ``\sigma``, the root choice, the tree or forest identity, and a recovery
+map to the stable ``\ell ij`` reference orientation. It is valid for that
+declared state domain, not automatically for the inventory or for every future
+switching action.
+
+!!! warning "Power-system shorthand"
+    In a technical statement, write “downstream in the active identified tree
+    rooted at ``r`` under ``\sigma``,” or use “parent edge,” “source-distance,”
+    and “operating transfer direction.” Unqualified upstream/downstream labels
+    are not stable semantics on a meshed or reconfigurable network.
+
 ## Multi-terminal factors change the question
 
 A multiwinding transformer represented as one factor is not an ordinary graph

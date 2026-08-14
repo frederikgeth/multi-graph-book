@@ -1,0 +1,17 @@
+{
+  "witness_id": "LOAD-CONNECTION-001-REPRO",
+  "claim_id": "LOAD-CONNECTION-001",
+  "method": "independent pure-Python complex terminal-map evaluation",
+  "source_witness": "experiments/generated/load-grounding-witnesses.json",
+  "wye_inf_norm": 1.1102230246251565e-16,
+  "delta_inf_norm": 2.220446049250313e-16,
+  "checks": {
+    "wye_matches_julia": true,
+    "delta_matches_julia": true,
+    "wye_magnitudes_are_one": true,
+    "delta_magnitudes_are_sqrt_three": true,
+    "no_numpy_or_julia_import": true
+  },
+  "all_checks_pass": true,
+  "interpretation": "Independent reproduction of the declared linear wye/delta terminal maps; not a multiconductor load-flow or rating validation."
+}

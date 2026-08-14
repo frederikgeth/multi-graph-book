@@ -1,0 +1,169 @@
+{
+  "witness_id": "TR-KRON-NEUTRAL-002-REPRO",
+  "claim_id": "TR-KRON-NEUTRAL-002",
+  "method": "independent pure-Python complex Gaussian elimination",
+  "source_witness": "experiments/generated/explicit-earth-kron-witness.json",
+  "recovered_midpoint_voltage": [
+    {
+      "real": 0.9850000000000002,
+      "imag": 5.1336972867188635e-17
+    },
+    {
+      "real": 0.9750000000000001,
+      "imag": 3.7377869896437765e-17
+    },
+    {
+      "real": 0.9649999999999999,
+      "imag": 2.756584023544395e-17
+    },
+    {
+      "real": 0.01591850177669269,
+      "imag": 0.0002592520969808428
+    },
+    {
+      "real": 0.018306763518576716,
+      "imag": -0.00032330972467306253
+    }
+  ],
+  "recovered_left_current": [
+    {
+      "real": 0.21728623521961699,
+      "imag": -0.02963201763554248
+    },
+    {
+      "real": -0.03278074466414557,
+      "imag": -0.14850971147069367
+    },
+    {
+      "real": 0.11946157895123044,
+      "imag": -0.05950531454656915
+    },
+    {
+      "real": 0.0008294142789215442,
+      "imag": -0.013881303828577227
+    },
+    {
+      "real": -0.042280835559643994,
+      "imag": 0.04909662377157234
+    }
+  ],
+  "recovered_right_current": [
+    {
+      "real": 0.21728623521961957,
+      "imag": -0.029632017635545682
+    },
+    {
+      "real": -0.03278074466414425,
+      "imag": -0.14850971147069497
+    },
+    {
+      "real": 0.11946157895122976,
+      "imag": -0.05950531454656715
+    },
+    {
+      "real": 0.0092173376031498,
+      "imag": -0.02098807459896068
+    },
+    {
+      "real": -0.05066875888387233,
+      "imag": 0.056203394541955984
+    }
+  ],
+  "recovered_bond_current": {
+    "real": -0.008387923324228292,
+    "imag": 0.007106770770383673
+  },
+  "multiple_grounding": {
+    "recovered_midpoint_voltages": [
+      [
+        {
+          "real": 0.9899999999999999,
+          "imag": 0.006666666666666661
+        },
+        {
+          "real": 0.9799999999999999,
+          "imag": -0.003333333333333381
+        },
+        {
+          "real": 0.97,
+          "imag": 0.003333333333333247
+        },
+        {
+          "real": 0.016602306739642483,
+          "imag": -4.127703155984495e-05
+        },
+        {
+          "real": 0.013455582671192314,
+          "imag": 6.424219339692862e-05
+        }
+      ],
+      [
+        {
+          "real": 0.9799999999999999,
+          "imag": -0.006666666666666632
+        },
+        {
+          "real": 0.97,
+          "imag": 0.003333333333333254
+        },
+        {
+          "real": 0.9599999999999999,
+          "imag": -0.0033333333333333813
+        },
+        {
+          "real": 0.014649609355422146,
+          "imag": 0.0006712576689317724
+        },
+        {
+          "real": 0.02419341060887312,
+          "imag": -0.0010026828644015872
+        }
+      ]
+    ],
+    "segment_neutral_currents": [
+      {
+        "real": 0.005629785236074393,
+        "imag": -0.017696621081251616
+      },
+      {
+        "real": -0.006746072587812556,
+        "imag": -0.0109810960445244
+      },
+      {
+        "real": 0.01618641517484517,
+        "imag": -0.023626350515530845
+      }
+    ],
+    "bond_currents": [
+      {
+        "real": 0.01237585782388713,
+        "imag": -0.006715525036727433
+      },
+      {
+        "real": -0.022932487762657692,
+        "imag": 0.012645254471006524
+      }
+    ],
+    "checks": {
+      "all_values_match_julia": true,
+      "first_bond_kcl_is_exact": true,
+      "second_bond_kcl_is_exact": true,
+      "no_numpy_or_julia_import": true
+    }
+  },
+  "residuals": {
+    "neutral_kcl": 2.241572193932746e-16,
+    "earth_kcl": 5.34184991038509e-17
+  },
+  "checks": {
+    "all_values_match_julia": true,
+    "neutral_kcl_is_exact": true,
+    "earth_kcl_is_exact": true,
+    "earth_port_retained": true,
+    "no_numpy_or_julia_import": true,
+    "multiple_grounding_values_match_julia": true,
+    "multiple_grounding_kcl_is_exact": true
+  },
+  "all_checks_pass": true,
+  "interpretation": "Independent reproduction of the synthetic five-conductor linear Kron recovery; not an independent grounding or protection model."
+}

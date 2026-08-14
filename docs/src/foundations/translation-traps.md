@@ -333,6 +333,24 @@ rating between them. One terminal therefore violates the rating while the
 other does not. This is not a proposed rating rule; it is a guard against
 silently replacing terminal-specific limits with one edge scalar.
 
+## Executable anti-pattern witnesses
+
+The same distinctions can be tested rather than left as warnings. The extended
+translation-trap witness records four negative cases in
+`experiments/generated/translation-trap-witnesses.json`:
+
+| Anti-pattern | Executable observation | Correct interpretation |
+| --- | --- | --- |
+| heterogeneous series merge | pure-series elimination succeeds, but the target is marked outside the homogeneous physical-line class | keep the generic two-port composite and its source identities, or prove stronger line-class guards |
+| external grounding absorption | the transformer compiler rejects a grounding object whose scope is `external_bus` | retain the grounding relation as a separate bus/grounding object |
+| line--transformer flattening | a three-port factor is projected to two line endpoints | the two-terminal view loses winding incidence and cannot stand in for the transformer factor |
+| BIM/BFM index loss | aggregate branch balance holds while the member consistency residual is nonzero | branch identities or the common-voltage-drop relation must remain in the formulation |
+
+These are deliberately *negative* witnesses: they do not show that every
+composition is impossible. They show that a tempting shorthand fails a named
+guard, or changes the model class, even when a smaller behavioural statement
+still looks plausible.
+
 Run the witness and its tests from the repository root:
 
 ```sh
@@ -342,4 +360,5 @@ julia --project=experiments experiments/test/runtests.jl
 
 The generated result is
 `experiments/generated/translation-trap-witnesses.json`. The source module is
-`experiments/transformations/TranslationTraps.jl`.
+`experiments/transformations/TranslationTraps.jl`; the anti-pattern extensions
+are implemented in `experiments/transformations/AntiPatternWitnesses.jl`.

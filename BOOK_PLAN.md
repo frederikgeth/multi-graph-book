@@ -119,6 +119,8 @@ not attempt to reproduce the knowledge-base indexes as a linear chapter sequence
    - Undirected physical incidence, the terminal-arc double cover, arbitrary
      reference orientation, two-end current and power observations, losses,
      nominal-``\pi`` shunts, and genuinely directed relations.
+   - Rooted active-tree views, parent/child labels, source-relative distance,
+     meshed chords, and switching-state recomputation.
 12. **Node--breaker, bus--breaker, and oriented bus--branch models**
    - State-conditioned connectivity, switch contraction, topological nodes,
      and recovery of switching/protection identity.
@@ -143,6 +145,11 @@ not attempt to reproduce the knowledge-base indexes as a linear chapter sequence
 23. **From conductor geometry to impedance fidelity**
     - Geometry, earth return, mutual matrices, conditioning, sequence coordinates, and the
       physical provenance of scalar transmission edges.
+
+24. **Transformation semantics, closure, and anti-patterns**
+    - Structure, behaviour, decisions and provenance; target-library closure;
+      typed composition; and warnings for line/transformer, grounding/
+      transformer and unguarded series merges.
 
 ### Part II — A common language for transformations
 

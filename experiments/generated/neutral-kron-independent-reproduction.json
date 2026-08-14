@@ -1,0 +1,29 @@
+{
+  "witness_id": "TR-KRON-NEUTRAL-001-REPRO",
+  "claim_id": "TR-KRON-NEUTRAL-001",
+  "method": "independent pure-Python complex Gaussian elimination",
+  "source_fixture": "data/running-network/v0.1.0.json",
+  "source_witness": "experiments/generated/running-network-typed-kron-witness.json",
+  "recovered_left_neutral": {
+    "real": -0.04302521623124433,
+    "imag": 0.019776048159194405
+  },
+  "recovered_right_neutral": {
+    "real": -0.043025216231244334,
+    "imag": 0.01977604815919441
+  },
+  "declared_current_limit": 0.04261726954131959,
+  "checks": {
+    "left_current_matches_julia": true,
+    "right_current_matches_julia": true,
+    "recovery_is_exact": true,
+    "limit_violation_is_retained": true,
+    "shunt_left_current_matches_julia": true,
+    "shunt_right_current_matches_julia": true,
+    "shunt_kcl_is_exact": true,
+    "shunt_limit_violation_is_retained": true,
+    "no_numpy_or_julia_import": true
+  },
+  "all_checks_pass": true,
+  "interpretation": "Independent reproduction of the declared linear midpoint recovery and neutral-current limit observation; shunt, nonlinear, and explicit-earth reductions remain outside this witness."
+}

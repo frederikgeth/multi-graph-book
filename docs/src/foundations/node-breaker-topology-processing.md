@@ -81,6 +81,29 @@ electrical connectivity relation. It does not preserve a switching decision,
 protection boundary, maintenance identity, or an open-state contingency unless
 those are carried by ``\operatorname{prov}_\sigma`` and the surrounding model.
 
+### Rooted feeder view after topology processing
+
+After compiling a resolved state, a radiality check may construct a rooted
+feeder hierarchy. This is a derived map, not a replacement for the
+node--breaker model:
+
+```math
+H_\sigma=\bigl(\mathcal N_\sigma,E_\sigma,r_\sigma,
+                \operatorname{par}_\sigma\bigr).
+```
+
+The root ``r_\sigma`` is a declared source topological node and
+``\operatorname{par}_\sigma`` is defined only when each active component is a
+tree with one root. If a switching candidate closes a tie, opens a parent
+branch, creates an island, or introduces multiple sources, the hierarchy must
+be recomputed or reported as undefined. A frozen parent map must not be used to
+interpret the new state.
+
+In a meshed candidate, retain a spanning forest and mark the remaining active
+members as chords. The chords preserve cycle constraints and outage choices;
+they are not downstream branches merely because an algorithm has assigned them
+an orientation.
+
 ## Node--breaker and bus--branch are not competing truths
 
 The node--breaker view is the natural source for topology decisions because it

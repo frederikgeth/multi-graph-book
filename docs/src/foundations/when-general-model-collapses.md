@@ -1,7 +1,8 @@
 # [When the general model collapses](@id positive-sequence-collapse)
 
-**Page status:** controlled positive-sequence specialization with an executable
-witness; a complete balanced transmission fixture remains open.
+**Page status:** controlled positive-sequence specialization with factor- and
+network-level executable witnesses; global decision equivalence and external
+review remain open.
 
 The general multiconductor, multi-terminal model is a baseline for preserving
 meaning. It is not a claim that every study needs all of that structure. This
@@ -74,9 +75,22 @@ restriction.
 The generated witness
 `experiments/generated/positive-sequence-collapse-witness.json` diagonalizes
 one circulant impedance matrix to numerical precision and records a
-non-circulant perturbation that mixes sequences. It is a factor-level witness,
-not yet a complete balanced transmission network or a global decision
-equivalence test.
+non-circulant perturbation that mixes sequences. The companion
+`experiments/generated/balanced-transmission-witness.json` assembles a
+three-bus, two-arc nominal-``\pi`` network with the same cyclic series and
+shunt factors. It solves the reduced phase-domain equations and the scalar
+positive-sequence equations independently, embeds the scalar voltages and
+branch currents, and checks their residuals. The result is a network-level
+positive example for the declared balanced observation family, not a global
+decision-equivalence theorem.
+
+The generated comparison
+`experiments/generated/balanced-transmission-independent-reproduction.json`
+repeats the phase-domain and scalar solves with a separate standard-library
+complex Gaussian-elimination implementation. It matches the Julia voltages,
+residuals, and branch-current checks row-for-row. This is independent numerical
+reproduction of the declared fixture, not independent review of the modelling
+assumptions or a standards-aligned transmission validation.
 
 ![Positive-sequence invariant subspace and sequence mixing.](../assets/sequence-subspace.png)
 

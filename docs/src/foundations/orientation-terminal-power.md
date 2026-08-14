@@ -92,6 +92,38 @@ Reversing the stored orientation swaps end-specific records:
 It does not blindly negate both terminal currents. Antisymmetry belongs to a
 particular internal series-current coordinate, not to every terminal quantity.
 
+## Rooted-tree orientation is a derived view
+
+When an active network is radial, practitioners often orient every branch from
+the feeder source toward the leaves and call the resulting arcs *upstream* and
+*downstream*. This is useful, but it is not the stored orientation ``\ell ij``
+and it is not an intrinsic direction of a passive line.
+
+For an active identified graph ``G_M^\sigma`` and a selected source root ``r``
+in each component, a rooted-tree view adds a parent map
+
+```math
+\operatorname{par}_{\sigma,r}:V\setminus\{r\}\longrightarrow V
+```
+
+defined by the unique root-to-node path. The resulting parent-to-child arcs,
+depths, ancestors and descendants are a **state- and root-dependent
+algorithmic view**. They are appropriate for feeder recursions, backward/
+forward sweeps and radial branch-flow notation, but they are not new asset
+attributes.
+
+!!! warning "Graph-theory trap"
+    A parent-to-child arc is not an operating power-flow direction. Closing a
+    tie can create a chord, reverse power can change the sign of ``P_{\ell ij}``,
+    and a different source or spanning tree can change the parent map without
+    changing any line asset.
+
+If ``G_M^\sigma`` is meshed, choose a spanning forest only if an algorithm
+needs one. Tree edges then receive parent-child roles, while chords retain
+their cycle equations and must not be called upstream or downstream without a
+separate convention. A spanning-tree orientation is therefore a coordinate or
+algorithmic choice, not a claim that the physical network is radial.
+
 ![Stored orientation and operating-point power transfer are separate records.](../assets/orientation-power-transfer.png)
 
 The figure makes the sign discipline explicit: reversing ``\ell_{ij}`` changes the coordinate convention, while changing the operating point can reverse ``P_{\ell ij}`` without changing the stored asset orientation.

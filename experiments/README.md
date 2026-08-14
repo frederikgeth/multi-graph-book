@@ -30,6 +30,8 @@ julia --project=experiments experiments/run_pi_four_wire_parallel_ac.jl
 julia --project=experiments experiments/run_five_bus_cycle_space.jl
 julia --project=experiments experiments/run_running_network_cycle_space.jl
 julia --project=experiments experiments/run_translation_traps.jl
+julia --project=experiments experiments/run_load_grounding_witnesses.jl
+julia --project=experiments experiments/run_balanced_transmission_witness.jl
 julia --project=experiments experiments/run_active_radiality.jl
 julia --project=experiments experiments/test/typed_kron.jl
 julia --project=experiments experiments/run_typed_kron.jl
@@ -53,7 +55,21 @@ python3 scripts/attach_typed_certificate_interfaces.py
 python3 scripts/generate_semantic_evaluator_matrix.py
 python3 scripts/generate_knowledge_base_indexes.py
 bash scripts/reproduce_clean_package_matrix.sh
+python3 scripts/reproduce_explicit_earth.py
+python3 scripts/reproduce_balanced_transmission.py
+python3 scripts/reproduce_load_models.py
+python3 scripts/reproduce_connection_maps.py
+python3 scripts/reproduce_load_continuation.py
+python3 scripts/reproduce_neutral_kron.py
 python3 scripts/check_artifacts.py
+```
+
+The explicit-earth Kron probe can be regenerated independently with:
+
+```bash
+julia --project=experiments experiments/run_explicit_earth_kron.jl
+python3 scripts/reproduce_explicit_earth_kron.py
+python3 scripts/reproduce_grounding_impedance_sweep.py
 ```
 
 The figure renderers require Pillow. Their generated PNGs are committed, so
@@ -79,6 +95,38 @@ than duplicating graph or witness data in the drawing code.
   identity without claiming a numerical factor evaluator;
 - `experiments/generated/positive-sequence-collapse-witness.json`: the
   positive-sequence diagonalization witness and non-circulant rejection;
+- `experiments/generated/balanced-transmission-witness.json`: a balanced
+  three-bus nominal-``\pi`` network solved in phase coordinates and in its
+  positive-sequence scalar image, with voltage, nodal-residual, and branch-
+  current recovery checks;
+- `experiments/generated/balanced-transmission-independent-reproduction.json`:
+  an independent standard-library complex solve of that same network, with
+  phase/scalar values compared against the Julia witness;
+- `experiments/generated/load-model-independent-reproduction.json`: an
+  independent damped fixed-point reproduction of the CP/CI/CZ/ZIP load rows,
+  including the separate active/reactive ZIP coefficient maps and their
+  voltage/current decision margins;
+- `experiments/generated/connection-map-independent-reproduction.json`: an
+  independent evaluation of the recorded wye and delta terminal maps;
+- `experiments/generated/load-continuation-independent-reproduction.json`: an
+  independent continuation reproduction that compares converged rows and
+  failure scale while avoiding false precision for divergent iterates;
+- `experiments/generated/neutral-kron-independent-reproduction.json`: an
+  independent reproduction of the four-conductor midpoint neutral-current
+  recovery and retained limit violation, including the linear midpoint shunt
+  probe and its KCL/current-limit checks;
+- `experiments/generated/explicit-earth-kron-witness.json` and
+  `experiments/generated/explicit-earth-kron-independent-reproduction.json`:
+  a synthetic five-conductor ``(a,b,c,n,e)`` midpoint with an explicit
+  neutral--earth bond, separate neutral and earth KCL recovery, and a retained
+  neutral-current limit, together with a standard-library reproduction. The
+  same artifact includes a three-segment extension with two explicit grounding
+  points and separately recovered bond currents;
+- `experiments/generated/grounding-impedance-sweep-witness.json` and
+  `experiments/generated/grounding-impedance-sweep-independent-reproduction.json`:
+  a finite four-case sweep of the two grounding impedances under one fixed
+  neutral limit, showing that recovered currents and feasibility can change
+  while the structural reduction remains fixed;
 - `experiments/generated/certified-approximation-witness.json`: a declared
   residual-to-state-to-constraint-to-decision margin chain for the Ward
   scenario fixture, including feasible, ambiguous, and violated cases;
@@ -153,10 +201,25 @@ that passes at `ij` but fails at `ji`.
 - `experiments/generated/five-bus-figure-manifest.json`: hashes binding the
   verified five-bus analysis to the generated cycle-basis, transformation-map,
   and feasible-set figures used in the chapter.
-- `experiments/generated/translation-trap-witnesses.json`: three small
-  package-independent witnesses for connectivity versus energization, complex
-  symmetry versus Hermitian structure, and terminal-specific nominal-pi
-  currents and ratings.
+- `experiments/generated/translation-trap-witnesses.json`: package-independent
+  witnesses for connectivity versus energization, complex symmetry versus
+  Hermitian structure, terminal-specific nominal-pi currents and ratings, and
+  four negative anti-patterns: heterogeneous series merging, external-ground
+  absorption, line--transformer flattening, and BIM/BFM branch-index loss.
+- `experiments/generated/load-grounding-witnesses.json`: scoped numerical
+  comparisons that hold the bus--branch graph fixed while changing (i)
+  CP/CI/CZ/ZIP load laws, (ii) explicit wye/delta connection maps, and (iii)
+  floating, impedance-grounded, and ideal-grounded neutral relations. It also
+  contains a scoped E₂ explicit-earth-conductor case with
+  an earth-conductor outage and a phase-to-earth protection threshold. The
+  artifact also records maintenance state, two fault classes, an illustrative
+  inverse-time relay curve, and a CT-saturation sensitivity probe. It reports
+  voltage, current, residual, decision margins, and a scalar continuation probe
+  rather than claiming a general load-flow or grounding theorem.
+- `experiments/generated/explicit-earth-independent-reproduction.json`: a
+  standard-library Python Gaussian-elimination reproduction of the explicit
+  earth, CT, and illustrative relay calculations, compared row-by-row with
+  the Julia witness.
 - `experiments/generated/active-radiality-witness.json`: an inventory-versus-
   active-state certificate reporting simple-projection and identified-member
   radiality, including a hidden parallel-member cycle.

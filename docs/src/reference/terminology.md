@@ -34,6 +34,16 @@
 | Composite equivalent | Behavioral object representing several source components without claiming homogeneous physical identity |
 | Closure | Property that a model class remains in the same class under a transformation |
 | Confluence | Property that different valid rewrite orders reach equivalent normal forms |
+| Structure-preserving transformation | A typed bijective map or coordinate action that commutes with the declared incidence and relation structure |
+| Decision-preserving transformation | A transformation whose mapped feasible decisions, objective and declared source constraints agree under the stated contract |
+| Composite factor | A target factor that preserves a declared relation for several source assets without claiming they are one homogeneous physical asset |
+| Type-safe composition | Composition accepted only when ports, factor classes, units, states and constraint ownership satisfy a declared rule |
+| Anti-pattern | A tempting rewrite that is algebraically suggestive but violates a type, preservation or observation precondition |
+| Rooted active-tree view | A state- and root-dependent parent/child orientation of a radial active graph used by an algorithm or feeder recursion |
+| Parent edge | The unique active-tree edge connecting a non-root node to its predecessor on the selected root path |
+| Chord | An active member omitted from a selected spanning forest; it closes a cycle and is not intrinsically upstream or downstream |
+| Upstream/downstream | A qualified hierarchy label relative to a declared root, active state and tree; never an unqualified property of a passive asset |
+| Source-distance | A graph metric or path relation from a designated source, which may remain meaningful in a mesh even when parenthood is not unique |
 
 ## Terms to use carefully
 

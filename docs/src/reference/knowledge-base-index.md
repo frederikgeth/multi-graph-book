@@ -1,12 +1,12 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:6c19ad73243e584f597ee6cc83ce38c16a287cfdb008ed7e616186d3219552a5 -->
+<!-- generated-from claims/claims.toml sha256:da45ce60d5637f4c4b540f9f5c1f64bdad2b51431540a25e9affd50a180b06a1 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 
-**Indexed claims:** 47
-**Indexed chapters:** 25
+**Indexed claims:** 57
+**Indexed chapters:** 27
 
 ## Claims by type
 
@@ -20,7 +20,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `THESIS-001` — Representation adequacy is evaluated relative to declared observations, constraints, and decisions. | [Scope and thesis](../foundations/scope-and-thesis.md) | `self-checked` |
 | `TOPOLOGY-001` — For a fixed switch state, topological nodes are the connected components of the closed-switch connectivity graph; compiling them into bus--branch buses is a state-conditioned quotient that requires provenance and does not preserve switching decisions by itself. | [Node--breaker, bus--breaker, and topology processing](../foundations/node-breaker-topology-processing.md) | `self-checked` |
 
-### `empirical` (19)
+### `empirical` (29)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -30,6 +30,12 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `COLLAPSE-002` — The generated Fortescue witness diagonalizes a circulant three-phase impedance matrix and preserves the positive-sequence subspace, while a non-circulant perturbation produces sequence mixing and a positive-subspace residual. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `self-checked` |
 | `FIXTURE-001` — Running-network fixture v0.1.0 passes the current BMOPFTools JSON schema and conformance checks without errors or warnings. | [Executable running network](../cases/executable-running-network.md) | `self-checked` |
 | `FIXTURE-002` — The v0.1.0 continuous PF and OPF instances terminate locally solved in the recorded environment. | [Executable running network](../cases/executable-running-network.md) | `self-checked` |
+| `GROUND-SCOPE-002` — On the recorded two-conductor fixture, floating, finite-impedance, and ideal customer-end grounding relations share the same simple bus--branch graph but change neutral voltage, ground-current allocation, and the associated observations. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `self-checked` |
+| `GROUND-SCOPE-003` — In the scoped E₂ witness, an explicit earth conductor with a finite neutral-to-earth bond has distinct in-service, earth-conductor-outage, and phase-to-earth-fault states; the outage changes earth-current availability and the fault crosses the declared protection-current threshold while the simple bus graph remains fixed. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `self-checked` |
+| `GROUND-SCOPE-004` — In the explicit-earth witness, a declared inverse-time relay curve maps the CT-scaled phase-earth fault current to a 0.2466 s operation, while the neutral-earth fault remains below pickup; a separate declared CT-saturation cap changes the phase-fault trip decision. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `self-checked` |
+| `LOAD-CONNECTION-001` — On the recorded balanced three-phase terminal fixture, explicit wye phase-to-neutral and delta phase-to-phase connection maps share the same bus and graph but produce different load-voltage observations: unit-magnitude wye voltages and sqrt(3)-magnitude delta voltages. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `self-checked` |
+| `LOAD-CONTINUATION-001` — On the recorded scalar two-bus continuation probe, the damped CP branch first fails to converge at demand scale 1.8 after a converged scale 1.7, while CI, CZ, and the declared ZIP branch remain converged through scale 3.0; this is an iteration-scoped branch diagnostic, not a global collapse theorem. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `self-checked` |
+| `LOAD-DECISION-001` — On the recorded two-bus fixture, CP, CI, CZ, and a normalized ZIP load law share the same bus--branch graph but produce distinct high-voltage solutions and decision margins: CP violates both the declared voltage and current limits, while CI, CZ, and ZIP satisfy both. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `self-checked` |
 | `NUMERICAL-002` — For the pinned running-network fixture, BMOPFTools exports a 20-by-20 passive Ybus with 166 nonzeros; the constant-Z linearized Ybus agrees with it, and realification produces a 40-by-40 current-voltage matrix with 664 nonzeros. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
 | `NUMERICAL-003` — In the pinned nonlinear two-bus parallel-member witness, retaining two explicit member-current laws produces a 6-by-7 residual Jacobian and 13-by-13 KKT pattern, while the summed-current aggregate produces a 4-by-5 Jacobian and 9-by-9 KKT pattern; symbolic fill changes with elimination order in both formulations. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `self-checked` |
@@ -38,6 +44,10 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `TR-KRON-FIVE-001` — In the five-bus scalar fixture, eliminating the pendant bus m through line x by typed Kron reduction reproduces the retained boundary Y-bus obtained by direct deletion of the leaf line, with exact boundary-current recovery for the recorded voltage state. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
 | `TR-KRON-FIVE-002` — In the same five-bus fixture, eliminating the non-pendant bus l by typed Kron reduction preserves the recorded boundary current relation, creates Schur-complement fill edges j-m and k-m among the retained buses, and exactly recovers the x-branch current whose deliberately tight declared limit is violated by the recorded state. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
 | `TR-KRON-NEUTRAL-001` — In the running four-conductor midpoint Kron fixture, the eliminated neutral half-section current is exactly recoverable from the retained boundary solution and midpoint recovery; a neutral-current limit must therefore remain in the reduced feasible set, and dropping it admits the recorded boundary point that the source model rejects. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
+| `TR-KRON-NEUTRAL-002` — In the recorded five-conductor midpoint probe, retaining an explicit earth terminal and a midpoint neutral-earth bond yields separately recoverable neutral and earth KCL currents and a neutral-current limit; collapsing earth return into neutral would lose an observed factor relation. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
+| `TR-KRON-NEUTRAL-003` — In the recorded three-segment five-conductor probe with two explicit neutral-earth bonds, each grounding point has separately recoverable neutral and earth KCL currents and bond-current observations; a single collapsed neutral constraint cannot represent both points. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
+| `TR-KRON-NEUTRAL-004` — In the recorded finite grounding-impedance sweep, changing the two explicit neutral-earth impedances changes recovered neutral current and the feasibility classification under one fixed neutral limit, even though the structural reduction and KCL contracts remain unchanged. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
+| `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `self-checked` |
 | `TR-PAR-003` — In the recorded two-bus maximum-served-load problem, the naive summed-rating aggregate serves 200 MW while the source and exact lifted formulations each serve 110 MW. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `self-checked` |
 | `TR-PAR-004` — In the recorded two-conductor AC maximum-served-load case, the source, exact lifted, and certified exact-pruned formulations have objective 0.6138908, while a summed-limit aggregate has objective 1.0630833 and violates a 0.6 p.u. member limit. | [Multiconductor parallel AC decision case](../cases/multiconductor-parallel-ac-decision.md) | `self-checked` |
 | `TR-PAR-AC-JOINT-001` — In the recorded three-member four-wire AC case, member 3 has the fixed recovery I_l3=0.10 I_l1+0.10 I_l2 and a 0.15 p.u. component limit; the joint support bound is 0.144 p.u., so deleting member-3 limits preserves the locally solved source objective 1.2401762 to 7e-14. An independent damped-Newton continuation and bisection reproduces the source boundary within 1.3e-8 served-fraction units. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `self-checked` |
@@ -82,7 +92,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | Verification | Claims |
 | --- | ---: |
 | `independently-implemented` | 1 |
-| `self-checked` | 46 |
+| `self-checked` | 56 |
 
 ## Unresolved issues
 
@@ -91,14 +101,20 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `ARCH-CONDUCTOR-002` | Compare the scalar terminal lift with a full conductor-terminal factor evaluator and state-conditioned topology maps. |
 | `ARCH-PORT-001` | Lift the data witness to evaluated factor relations and independently review the architecture against a non-synthetic asset model. |
 | `ARCH-PORT-002` | Extend the lift to evaluated factor relations and compare its boundary semantics with the simple quotient and line-identity cycle basis. |
-| `COLLAPSE-001` | Add a generated balanced transmission fixture, residual calculation, and independent mathematical review. |
-| `COLLAPSE-002` | Extend the witness to nominal-pi shunts, network assembly, and an independently implemented balanced transmission fixture. |
+| `COLLAPSE-001` | Extend the network witness to controls, phase-specific limits, contingencies, and an independent mathematical review before making a global decision-equivalence claim. |
+| `COLLAPSE-002` | Extend the witness to controls, phase-specific limits, contingencies, and independent mathematical review. |
 | `DATA-XWALK-001` | The running-fixture contract is checked against pinned documentation profiles; external package imports and file-level round-trip provenance/rating checks remain open. |
 | `FIXTURE-001` | Add an independent fixture reviewer. |
 | `FIXTURE-002` | Re-run with an independent solver where possible. |
 | `GRAPH-CYCLE-001` | Lift the executable incidence and cycle objects to conductor-terminal graphs, state-conditioned topology decisions, and compiled multi-terminal factors. |
-| `GROUND-SCOPE-001` | Add an explicit-earth-conductor fixture and a protection/grounding-asset case. |
+| `GROUND-SCOPE-001` | Extend the explicit-earth witness to relay curves, CT saturation, richer maintenance decisions, and independent reproduction. |
+| `GROUND-SCOPE-002` | Extend the explicit-earth comparison to relay curves, CT saturation, richer maintenance decisions, and independent reproduction. |
+| `GROUND-SCOPE-003` | Extend to relay curves, CT saturation, richer maintenance decisions, and independent reproduction. |
+| `GROUND-SCOPE-004` | Replace the illustrative functions with standards-aligned relay/CT models and quantify uncertainty and coordination margins. |
 | `LIT-PAR-001` | Establish necessary and sufficient redundancy tests for arbitrary multiconductor limits and for state- or decision-dependent line models. |
+| `LOAD-CONNECTION-001` | Extend connection-map evidence to unbalanced multiconductor loads, explicit grounding, phase-specific ratings, and network-level decision solves. |
+| `LOAD-CONTINUATION-001` | Replace the iteration-failure boundary with a mathematically continued nose curve, add independent solver continuation, and extend to multiconductor/network-level decisions. |
+| `LOAD-DECISION-001` | Add multiconductor connection maps and continuation to collapse points; the declared scalar CP/CI/CZ/ZIP fixture now has separately varying reactive coefficients and an independent reproduction. |
 | `NUMERICAL-001` | Extend the current five-bus structural witness to a pinned running-network benchmark with solver-exported Ybus/Jacobian sparsity, ordering-dependent fill, and recovered decision-margin checks. |
 | `NUMERICAL-002` | Add an independent KKT/Jacobian export and compare ordering-dependent fill and decision margins across source and reduced views. |
 | `NUMERICAL-003` | The public BMOPFTools checked-KKT callback now runs through DiffOpt on a minimal parameterized OPF and agrees with finite difference; a native JuMP/MOI Jacobian structure is now recorded, while solver-private KKT rows, ordering, and factorization statistics remain outside the public boundary. |
@@ -114,7 +130,11 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `TR-KRON-003` | Extend the chain to a nonlinear AC decision model, parameter uncertainty, and independent error analysis before treating it as a general certification theorem. |
 | `TR-KRON-FIVE-001` | Extend the direct fixture check to non-pendant eliminations, retained branch limits, shunts, and multiconductor internal states. |
 | `TR-KRON-FIVE-002` | Extend the fill-in witness to multiconductor blocks, retained branch limits, shunts, and ordering-dependent numerical factorization diagnostics. |
-| `TR-KRON-NEUTRAL-001` | Extend the neutral-current recovery contract to shunts, nonlinear loads, explicit earth-return factors, and general neutral/grounding reductions. |
+| `TR-KRON-NEUTRAL-001` | Extend the neutral-current recovery contract from the linear shunt probe to nonlinear loads, explicit earth-return factors, and general neutral/grounding reductions; the series and shunt probes have independent reproductions. |
+| `TR-KRON-NEUTRAL-002` | Extend to nonlinear earth-return factors, multiple grounding points, protection observations, and independent physical-model review. |
+| `TR-KRON-NEUTRAL-003` | Extend to nonlinear and state-dependent grounding, grounding impedance uncertainty, protection observations, and physical-model review. |
+| `TR-KRON-NEUTRAL-004` | Extend to uncertainty sets, nonlinear/state-dependent grounding, protection observations, and physical-model review. |
+| `TR-NEG-001` | Extend the negative cases to nominal-pi cascades, protection boundaries, nonlinear formulations, and independent reproduction. |
 | `TR-PAR-001` | Add an independent mathematical reviewer. |
 | `TR-PAR-002` | Molzahn2018 gives an exact scalar AC constraint-pruning test without asset aggregation; a general multiconductor classification remains open. |
 | `TR-PAR-003` | The multiconductor mechanism is exercised in TR-PAR-004; add an independent reviewer for this linear case. |
@@ -141,12 +161,15 @@ These retrieval facets are provisional and path-derived. They are navigation aid
 additional verification labels; explicit facet fields can replace them when the claims
 schema is normalised.
 
-### `decision-cases` (19)
+### `decision-cases` (22)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
 | `FIXTURE-001` — Running-network fixture v0.1.0 passes the current BMOPFTools JSON schema and conformance checks without errors or warnings. | [Executable running network](../cases/executable-running-network.md) | `empirical` |
 | `FIXTURE-002` — The v0.1.0 continuous PF and OPF instances terminate locally solved in the recorded environment. | [Executable running network](../cases/executable-running-network.md) | `empirical` |
+| `LOAD-CONNECTION-001` — On the recorded balanced three-phase terminal fixture, explicit wye phase-to-neutral and delta phase-to-phase connection maps share the same bus and graph but produce different load-voltage observations: unit-magnitude wye voltages and sqrt(3)-magnitude delta voltages. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
+| `LOAD-CONTINUATION-001` — On the recorded scalar two-bus continuation probe, the damped CP branch first fails to converge at demand scale 1.8 after a converged scale 1.7, while CI, CZ, and the declared ZIP branch remain converged through scale 3.0; this is an iteration-scoped branch diagnostic, not a global collapse theorem. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
+| `LOAD-DECISION-001` — On the recorded two-bus fixture, CP, CI, CZ, and a normalized ZIP load law share the same bus--branch graph but produce distinct high-voltage solutions and decision margins: CP violates both the declared voltage and current limits, while CI, CZ, and ZIP satisfy both. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
 | `TR-PAR-001` — Summed admittance preserves the unconstrained terminal relation of parallel linear branches. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 | `TR-PAR-002` — Using the sum of member current ratings can create an outer relaxation of the member-constrained feasible set. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 | `TR-PAR-003` — In the recorded two-bus maximum-served-load problem, the naive summed-rating aggregate serves 200 MW while the source and exact lifted formulations each serve 110 MW. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `empirical` |
@@ -194,17 +217,21 @@ schema is normalised.
 | `NUMERICAL-002` — For the pinned running-network fixture, BMOPFTools exports a 20-by-20 passive Ybus with 166 nonzeros; the constant-Z linearized Ybus agrees with it, and realification produces a 40-by-40 current-voltage matrix with 664 nonzeros. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `empirical` |
 | `NUMERICAL-003` — In the pinned nonlinear two-bus parallel-member witness, retaining two explicit member-current laws produces a 6-by-7 residual Jacobian and 13-by-13 KKT pattern, while the summed-current aggregate produces a 4-by-5 Jacobian and 9-by-9 KKT pattern; symbolic fill changes with elimination order in both formulations. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `empirical` |
 
-### `physical-modelling` (5)
+### `physical-modelling` (9)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
 | `GROUND-SCOPE-001` — Reference, neutral, earth-return, and grounding-asset semantics are distinct model objects; reductions involving them must declare an earth-return class, grounding points, retained observations, and recovery data. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `definition` |
+| `GROUND-SCOPE-002` — On the recorded two-conductor fixture, floating, finite-impedance, and ideal customer-end grounding relations share the same simple bus--branch graph but change neutral voltage, ground-current allocation, and the associated observations. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `empirical` |
+| `GROUND-SCOPE-003` — In the scoped E₂ witness, an explicit earth conductor with a finite neutral-to-earth bond has distinct in-service, earth-conductor-outage, and phase-to-earth-fault states; the outage changes earth-current availability and the fault crosses the declared protection-current threshold while the simple bus graph remains fixed. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `empirical` |
+| `GROUND-SCOPE-004` — In the explicit-earth witness, a declared inverse-time relay curve maps the CT-scaled phase-earth fault current to a 0.2466 s operation, while the neutral-earth fault remains below pickup; a separate declared CT-saturation cap changes the phase-fault trip decision. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `empirical` |
 | `RATING-001` — A power-network rating must identify its constrained asset or terminal, measured quantity and feasible region, duration, ambient/scenario validity, and ownership/provenance before a transformation can claim to preserve it. | [Rating and limit semantics](../foundations/rating-semantics.md) | `definition` |
 | `TR-GRAPH-001` — For a loopless identified multigraph and its simple endpoint projection, the multigraph cycle rank exceeds the simple-graph cycle rank by the sum over edge fibres of fibre size minus one; the lost dimensions are line-identity cycles supported on parallel fibres. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
 | `TR-GRAPH-002` — An identified line is a multigraph bridge exactly when its simple endpoint edge is a bridge and its parallel fibre is a singleton; consequently the identified multigraph is a forest exactly when its simple projection is a forest and every edge fibre is a singleton. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
+| `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `representation` (16)
+### `representation` (23)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -215,6 +242,12 @@ schema is normalised.
 | `COLLAPSE-002` — The generated Fortescue witness diagonalizes a circulant three-phase impedance matrix and preserves the positive-sequence subspace, while a non-circulant perturbation produces sequence mixing and a positive-subspace residual. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `empirical` |
 | `DATA-XWALK-001` — CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER provide distinct partial correspondences to the book's asset, terminal, topology, factor, state, and rating objects; successful import is not by itself semantic or decision equivalence. | [Data-model crosswalk](../foundations/data-model-crosswalk.md) | `practice` |
 | `GROUND-SCOPE-001` — Reference, neutral, earth-return, and grounding-asset semantics are distinct model objects; reductions involving them must declare an earth-return class, grounding points, retained observations, and recovery data. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `definition` |
+| `GROUND-SCOPE-002` — On the recorded two-conductor fixture, floating, finite-impedance, and ideal customer-end grounding relations share the same simple bus--branch graph but change neutral voltage, ground-current allocation, and the associated observations. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `empirical` |
+| `GROUND-SCOPE-003` — In the scoped E₂ witness, an explicit earth conductor with a finite neutral-to-earth bond has distinct in-service, earth-conductor-outage, and phase-to-earth-fault states; the outage changes earth-current availability and the fault crosses the declared protection-current threshold while the simple bus graph remains fixed. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `empirical` |
+| `GROUND-SCOPE-004` — In the explicit-earth witness, a declared inverse-time relay curve maps the CT-scaled phase-earth fault current to a 0.2466 s operation, while the neutral-earth fault remains below pickup; a separate declared CT-saturation cap changes the phase-fault trip decision. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `empirical` |
+| `LOAD-CONNECTION-001` — On the recorded balanced three-phase terminal fixture, explicit wye phase-to-neutral and delta phase-to-phase connection maps share the same bus and graph but produce different load-voltage observations: unit-magnitude wye voltages and sqrt(3)-magnitude delta voltages. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
+| `LOAD-CONTINUATION-001` — On the recorded scalar two-bus continuation probe, the damped CP branch first fails to converge at demand scale 1.8 after a converged scale 1.7, while CI, CZ, and the declared ZIP branch remain converged through scale 3.0; this is an iteration-scoped branch diagnostic, not a global collapse theorem. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
+| `LOAD-DECISION-001` — On the recorded two-bus fixture, CP, CI, CZ, and a normalized ZIP load law share the same bus--branch graph but produce distinct high-voltage solutions and decision margins: CP violates both the declared voltage and current limits, while CI, CZ, and ZIP satisfy both. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
 | `NUMERICAL-001` — Representation and reduction choices have numerical consequences that must be reported separately from electrical preservation: coordinate scaling changes conditioning without changing an invertible solution set, Jacobian dependency graphs need not equal physical graphs, Schur elimination can create fill-in, and decision certificates require residual/error estimates and margins. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `definition` |
 | `NUMERICAL-002` — For the pinned running-network fixture, BMOPFTools exports a 20-by-20 passive Ybus with 166 nonzeros; the constant-Z linearized Ybus agrees with it, and realification produces a 40-by-40 current-voltage matrix with 664 nonzeros. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `empirical` |
 | `NUMERICAL-003` — In the pinned nonlinear two-bus parallel-member witness, retaining two explicit member-current laws produces a 6-by-7 residual Jacobian and 13-by-13 KKT pattern, while the summed-current aggregate produces a 4-by-5 Jacobian and 9-by-9 KKT pattern; symbolic fill changes with elimination order in both formulations. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `empirical` |
@@ -224,6 +257,7 @@ schema is normalised.
 | `TR-GRAPH-001` — For a loopless identified multigraph and its simple endpoint projection, the multigraph cycle rank exceeds the simple-graph cycle rank by the sum over edge fibres of fibre size minus one; the lost dimensions are line-identity cycles supported on parallel fibres. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
 | `TR-GRAPH-002` — An identified line is a multigraph bridge exactly when its simple endpoint edge is a bridge and its parallel fibre is a singleton; consequently the identified multigraph is a forest exactly when its simple projection is a forest and every edge fibre is a singleton. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
+| `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
 ### `software-and-data` (6)
 
@@ -242,7 +276,7 @@ schema is normalised.
 | --- | --- | --- |
 | `LIT-PAR-001` — For fixed scalar AC pi-line models on common endpoints, a parallel member's current- or apparent-power limit at one terminal is redundant when its normalized terminal-voltage quadratic feasible set contains that of another member; applying the test at both terminals certifies removal of both directional limits without aggregating the line models. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 
-### `transformations` (30)
+### `transformations` (34)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -257,6 +291,10 @@ schema is normalised.
 | `TR-KRON-FIVE-001` — In the five-bus scalar fixture, eliminating the pendant bus m through line x by typed Kron reduction reproduces the retained boundary Y-bus obtained by direct deletion of the leaf line, with exact boundary-current recovery for the recorded voltage state. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
 | `TR-KRON-FIVE-002` — In the same five-bus fixture, eliminating the non-pendant bus l by typed Kron reduction preserves the recorded boundary current relation, creates Schur-complement fill edges j-m and k-m among the retained buses, and exactly recovers the x-branch current whose deliberately tight declared limit is violated by the recorded state. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
 | `TR-KRON-NEUTRAL-001` — In the running four-conductor midpoint Kron fixture, the eliminated neutral half-section current is exactly recoverable from the retained boundary solution and midpoint recovery; a neutral-current limit must therefore remain in the reduced feasible set, and dropping it admits the recorded boundary point that the source model rejects. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
+| `TR-KRON-NEUTRAL-002` — In the recorded five-conductor midpoint probe, retaining an explicit earth terminal and a midpoint neutral-earth bond yields separately recoverable neutral and earth KCL currents and a neutral-current limit; collapsing earth return into neutral would lose an observed factor relation. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
+| `TR-KRON-NEUTRAL-003` — In the recorded three-segment five-conductor probe with two explicit neutral-earth bonds, each grounding point has separately recoverable neutral and earth KCL currents and bond-current observations; a single collapsed neutral constraint cannot represent both points. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
+| `TR-KRON-NEUTRAL-004` — In the recorded finite grounding-impedance sweep, changing the two explicit neutral-earth impedances changes recovered neutral current and the feasibility classification under one fixed neutral limit, even though the structural reduction and KCL contracts remain unchanged. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
+| `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 | `TR-PAR-001` — Summed admittance preserves the unconstrained terminal relation of parallel linear branches. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 | `TR-PAR-002` — Using the sum of member current ratings can create an outer relaxation of the member-constrained feasible set. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 | `TR-PAR-003` — In the recorded two-bus maximum-served-load problem, the naive summed-rating aggregate serves 200 MW while the source and exact lifted formulations each serve 110 MW. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `empirical` |
@@ -282,13 +320,19 @@ schema is normalised.
 | Artifact | Evidence summary |
 | --- | --- |
 | `active-radiality-witness.json` | generated evidence |
+| `balanced-transmission-independent-reproduction.json` | `COLLAPSE-001` — generated evidence |
+| `balanced-transmission-witness.json` | `COLLAPSE-001` — generated evidence |
 | `certified-approximation-witness.json` | `TR-KRON-003` — kron_ward_scenario_fixture_v0.1.0 |
 | `clean-package-matrix.json` | `PKG-CLEAN-001` — generated evidence |
 | `conductor-terminal-lift-witness.json` | `ARCH-CONDUCTOR-001` — running-network v0.1.0 conductor-terminal incidence with line, switch, and three-winding factor compilation |
+| `connection-map-independent-reproduction.json` | `LOAD-CONNECTION-001` — generated evidence |
 | `coordinate-normalization-certificate.json` | `TR-COORD-001` — generated evidence |
 | `coordinate-series-composition-certificate.json` | `TR-COMP-001` — generated evidence |
 | `data-model-crosswalk-witness.json` | `DATA-XWALK-001` — data/running-network/v0.1.0.json |
 | `degree-two-series-certificate.json` | `TR-SER-001` — generated evidence |
+| `explicit-earth-independent-reproduction.json` | `GROUND-SCOPE-004` — generated evidence |
+| `explicit-earth-kron-independent-reproduction.json` | `TR-KRON-NEUTRAL-002` — generated evidence |
+| `explicit-earth-kron-witness.json` | `TR-KRON-NEUTRAL-002` — synthetic five-conductor linear series midpoint with ordered (a,b,c,n,e) terminals and a fixed midpoint neutral-earth bond |
 | `five-bus-active-radiality-witness.json` | `TR-GRAPH-ACTIVE-001` — experiments/generated/five-bus-cycle-space-analysis.json |
 | `five-bus-conductor-terminal-lift-witness.json` | `ARCH-CONDUCTOR-002` — five-bus cycle-space scalar line identities lifted to scalar terminal junctions and two-port factors |
 | `five-bus-cycle-space-analysis.json` | `GRAPH-CYCLE-001` — connected loopless scalar series bus-branch multigraph |
@@ -297,14 +341,20 @@ schema is normalised.
 | `five-bus-typed-kron-witness.json` | `TR-KRON-FIVE-001` — experiments/generated/five-bus-cycle-space-analysis.json |
 | `fixture-coverage-matrix.json` | `PKG-FIXTURE-001` — generated evidence |
 | `four-wire-parallel-ac-certificate.json` | `TR-PAR-006` — generated evidence |
+| `grounding-impedance-sweep-independent-reproduction.json` | `TR-KRON-NEUTRAL-004` — generated evidence |
+| `grounding-impedance-sweep-witness.json` | `TR-KRON-NEUTRAL-004` — generated evidence |
 | `guarded-parallel-reduction-witness.json` | `TR-PAR-GUARDED-001` — series-only singular terminal map, jointly retained current discs, and state-dependent admittance maps |
 | `hierarchy-boundary-witness.json` | `ARCH-BOUNDARY-001` — running-network hierarchy, typed boundary refinement, open-system gluing, and state-conditioned switch maps |
 | `kron-ward-scenario-comparison.json` | `TR-KRON-002` — kron_ward_scenario_fixture_v0.1.0 |
+| `load-continuation-independent-reproduction.json` | `LOAD-CONTINUATION-001` — generated evidence |
+| `load-grounding-witnesses.json` | generated evidence |
+| `load-model-independent-reproduction.json` | `LOAD-DECISION-001` — generated evidence |
 | `multiconductor-parallel-ac-certificate.json` | `TR-PAR-004` — generated evidence |
 | `multiwinding-leakage-compilation-certificate.json` | `TR-XFMR-002` — generated evidence |
 | `multiwinding-terminal-assembly-certificate.json` | `TR-XFMR-003` — generated evidence |
 | `multiwinding-terminal-lift-witness.json` | `ARCH-CONDUCTOR-MULTI-001` — serialized three-winding fixed-linear transformer contract lifted to ordered terminal ports |
 | `multiwinding-typed-kron-witness.json` | `TR-KRON-MULTI-001` — serialized three-winding terminal admittance with DELTA terminal block eliminated |
+| `neutral-kron-independent-reproduction.json` | `TR-KRON-NEUTRAL-001` — data/running-network/v0.1.0.json |
 | `node-breaker-state-witness.json` | `TOPO-NB-001` — four-connectivity-node node-breaker fixture with two switch assets and state-conditioned bus compilation |
 | `nonlinear-kkt-witness.json` | `NUMERICAL-003` — finite-difference nonlinear AC decision Jacobians and symbolic KKT sparsity for a two-bus parallel-member witness |
 | `nonlinear-ward-witness.json` | `nonlinear_ward_probe_v0.1.0` — scalar constant-power internal state with a base-state Ward approximation |

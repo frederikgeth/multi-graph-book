@@ -1,0 +1,2902 @@
+{
+  "connection_maps": {
+    "checks": {
+      "same_bus_branch_graph": true,
+      "wye_and_delta_observations_differ": true,
+      "wye_phase_to_neutral_map_is_explicit": true,
+      "delta_magnitudes_are_sqrt_three": true,
+      "terminal_order_retained": true,
+      "delta_phase_to_phase_map_is_explicit": true,
+      "wye_magnitudes_are_one": true
+    },
+    "witness_id": "LOAD-CONNECTION-001",
+    "delta_map": [
+      [
+        1,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        -1,
+        0
+      ],
+      [
+        -1,
+        0,
+        1,
+        0
+      ]
+    ],
+    "delta_voltage": [
+      {
+        "real": 1.5000000000000004,
+        "imag": 0.8660254037844384
+      },
+      {
+        "real": -5.551115123125783e-16,
+        "imag": -1.7320508075688772
+      },
+      {
+        "real": -1.4999999999999998,
+        "imag": 0.8660254037844387
+      }
+    ],
+    "terminal_order": [
+      "a",
+      "b",
+      "c",
+      "n"
+    ],
+    "wye_map": [
+      [
+        1,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        1,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        1,
+        -1
+      ]
+    ],
+    "interpretation": "A connection map is part of the constitutive factor semantics: wye and delta loads can share the same bus and graph while observing different terminal-voltage coordinates.",
+    "claim_id": "LOAD-CONNECTION-001",
+    "wye_voltage": [
+      {
+        "real": 1,
+        "imag": 0
+      },
+      {
+        "real": -0.5000000000000003,
+        "imag": -0.8660254037844384
+      },
+      {
+        "real": -0.4999999999999998,
+        "imag": 0.8660254037844387
+      }
+    ],
+    "phase_voltage": [
+      {
+        "real": 1,
+        "imag": 0
+      },
+      {
+        "real": -0.5000000000000003,
+        "imag": -0.8660254037844384
+      },
+      {
+        "real": -0.4999999999999998,
+        "imag": 0.8660254037844387
+      }
+    ],
+    "model_scope": "one balanced three-phase bus with explicit phase and neutral terminals and fixed wye/delta connection maps"
+  },
+  "all_witnesses_pass": true,
+  "load_models": {
+    "series_impedance_pu": {
+      "real": 0.08,
+      "imag": 0.16
+    },
+    "checks": {
+      "same_bus_branch_graph": true,
+      "zip_reactive_coefficients_are_distinct": true,
+      "families_produce_distinct_voltages": true,
+      "decision_margin_changes": true,
+      "constant_power_fails_both_limits": true,
+      "zip_coefficients_are_normalized": true,
+      "all_residuals_small": true,
+      "constant_impedance_satisfies_both_limits": true
+    },
+    "witness_id": "LOAD-DECISION-001",
+    "current_limit_pu": 1,
+    "nominal_load_pu": {
+      "real": 0.9,
+      "imag": 0.25
+    },
+    "voltage_limit_pu": 0.87,
+    "interpretation": "The graph is fixed, but the constitutive load relation changes voltages, currents, and the decision-feasible set.",
+    "rows": [
+      {
+        "residual_pu": 1.0134205016943587e-13,
+        "family": "CP",
+        "current_magnitude_pu": 1.0871824528937295,
+        "current_limit_satisfied": false,
+        "voltage_magnitude_pu": 0.8591723331509425,
+        "scale": 1,
+        "delivered_power_pu": {
+          "real": 0.9,
+          "imag": 0.25
+        },
+        "current_pu": {
+          "real": 0.9945572548703171,
+          "imag": -0.4391145097407342
+        },
+        "voltage_limit_satisfied": false,
+        "iterations": 57,
+        "converged": true,
+        "voltage_pu": {
+          "real": 0.8501770980519547,
+          "imag": -0.12399999999996468
+        }
+      },
+      {
+        "residual_pu": 5.722042643982585e-14,
+        "family": "CI",
+        "current_magnitude_pu": 0.9340770846134702,
+        "current_limit_satisfied": true,
+        "voltage_magnitude_pu": 0.8802822179199391,
+        "scale": 1,
+        "delivered_power_pu": {
+          "real": 0.7922539961279452,
+          "imag": 0.22007055447998478
+        },
+        "current_pu": {
+          "real": 0.8620539961278937,
+          "imag": -0.3596705544799704
+        },
+        "voltage_limit_satisfied": true,
+        "iterations": 42,
+        "converged": true,
+        "voltage_pu": {
+          "real": 0.87348839159303,
+          "imag": -0.10915499502207238
+        }
+      },
+      {
+        "residual_pu": 4.7853268708712995e-14,
+        "family": "CZ",
+        "current_magnitude_pu": 0.834823044880162,
+        "current_limit_satisfied": true,
+        "voltage_magnitude_pu": 0.8937410612375952,
+        "scale": 1,
+        "delivered_power_pu": {
+          "real": 0.7188957760878927,
+          "imag": 0.19969327113552574
+        },
+        "current_pu": {
+          "real": 0.7746501373889637,
+          "imag": -0.31120199373757973
+        },
+        "voltage_limit_satisfied": true,
+        "iterations": 36,
+        "converged": true,
+        "voltage_pu": {
+          "real": 0.8882356700108449,
+          "imag": -0.09904786248318716
+        }
+      },
+      {
+        "residual_pu": 7.571117157304254e-14,
+        "family": "ZIP",
+        "current_magnitude_pu": 0.9309817770821173,
+        "current_limit_satisfied": true,
+        "voltage_magnitude_pu": 0.8792499191273717,
+        "scale": 1,
+        "delivered_power_pu": {
+          "real": 0.7857064294671667,
+          "imag": 0.22959776494882736
+        },
+        "current_pu": {
+          "real": 0.8550445950078159,
+          "imag": -0.36827409603024913
+        },
+        "voltage_limit_satisfied": true,
+        "iterations": 42,
+        "converged": true,
+        "voltage_pu": {
+          "real": 0.8726725770346091,
+          "imag": -0.10734520751884558
+        }
+      }
+    ],
+    "source_voltage_pu": {
+      "real": 1,
+      "imag": 0
+    },
+    "zip_coefficients": {
+      "reactive_power": {
+        "alpha_I": 0.3,
+        "alpha_Z": 0.2,
+        "alpha_P": 0.5
+      },
+      "active_power": {
+        "alpha_I": 0.3,
+        "alpha_Z": 0.4,
+        "alpha_P": 0.3
+      }
+    },
+    "model_scope": "two-bus scalar AC load models with fixed source, series impedance, and nominal demand"
+  },
+  "load_continuation": {
+    "scale_grid": [
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0,
+      1.1,
+      1.2,
+      1.3,
+      1.4,
+      1.5,
+      1.6,
+      1.7,
+      1.8,
+      1.9,
+      2.0,
+      2.1,
+      2.2,
+      2.3,
+      2.4,
+      2.5,
+      2.6,
+      2.7,
+      2.8,
+      2.9,
+      3.0
+    ],
+    "checks": {
+      "same_bus_branch_graph": true,
+      "base_scale_converges_for_all_families": true,
+      "constant_power_failure_is_observed": true,
+      "continuation_scales_are_ordered": true,
+      "constant_power_fails_before_voltage_dependent_families": true,
+      "continuation_is_not_global_certificate": true,
+      "converged_rows_have_small_residuals": true
+    },
+    "interpretation": "The continuation probe records a branch-tracking and iteration-failure boundary for one scalar fixture; it is not a global voltage-collapse theorem or a ranking of load models.",
+    "witness_id": "LOAD-CONTINUATION-001",
+    "claim_id": "LOAD-CONTINUATION-001",
+    "rows": [
+      {
+        "residual_pu": 5.624615352282025e-14,
+        "family": "CP",
+        "iterations": 41,
+        "voltage_pu": {
+          "real": 0.9764293861634175,
+          "imag": -0.024799999999976344
+        },
+        "current_magnitude_pu": 0.19126338487767347,
+        "delivered_power_pu": {
+          "real": 0.18000000000000002,
+          "imag": 0.05
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9767442787974071,
+        "scale": 0.2,
+        "current_pu": {
+          "real": 0.18292653459158112,
+          "imag": -0.05585306918317135
+        }
+      },
+      {
+        "residual_pu": 6.075562087960744e-14,
+        "family": "CP",
+        "iterations": 41,
+        "voltage_pu": {
+          "real": 0.9636983502235642,
+          "imag": -0.03719999999997592
+        },
+        "current_magnitude_pu": 0.29056248125914086,
+        "delivered_power_pu": {
+          "real": 0.27,
+          "imag": 0.075
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9644160669667514,
+        "scale": 0.3,
+        "current_pu": {
+          "real": 0.27675412444122394,
+          "imag": -0.08850824888246368
+        }
+      },
+      {
+        "residual_pu": 7.112019264497321e-14,
+        "family": "CP",
+        "iterations": 42,
+        "voltage_pu": {
+          "real": 0.9502664100286236,
+          "imag": -0.04959999999997248
+        },
+        "current_magnitude_pu": 0.3926508456730117,
+        "delivered_power_pu": {
+          "real": 0.36000000000000004,
+          "imag": 0.1
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9515599876143833,
+        "scale": 0.4,
+        "current_pu": {
+          "real": 0.372333974928597,
+          "imag": -0.12466794985721923
+        }
+      },
+      {
+        "residual_pu": 8.929722091811603e-14,
+        "family": "CP",
+        "iterations": 43,
+        "voltage_pu": {
+          "real": 0.9360688019109837,
+          "imag": -0.061999999999965985
+        },
+        "current_magnitude_pu": 0.497845297541922,
+        "delivered_power_pu": {
+          "real": 0.45,
+          "imag": 0.125
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9381198227897438,
+        "scale": 0.5,
+        "current_pu": {
+          "real": 0.4698279952227341,
+          "imag": -0.16465599044550852
+        }
+      },
+      {
+        "residual_pu": 6.764022530645833e-14,
+        "family": "CP",
+        "iterations": 45,
+        "voltage_pu": {
+          "real": 0.9210280750734574,
+          "imag": -0.07439999999997463
+        },
+        "current_magnitude_pu": 0.606525064574136,
+        "delivered_power_pu": {
+          "real": 0.54,
+          "imag": 0.15
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9240281787226592,
+        "scale": 0.6,
+        "current_pu": {
+          "real": 0.5694298123165011,
+          "imag": -0.2088596246330395
+        }
+      },
+      {
+        "residual_pu": 1.0210824448166381e-13,
+        "family": "CP",
+        "iterations": 46,
+        "voltage_pu": {
+          "real": 0.9050503178619804,
+          "imag": -0.0867999999999623
+        },
+        "current_magnitude_pu": 0.7191505870236866,
+        "delivered_power_pu": {
+          "real": 0.63,
+          "imag": 0.175
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9092031224440803,
+        "scale": 0.7,
+        "current_pu": {
+          "real": 0.6713742053452644,
+          "imag": -0.2577484106905954
+        }
+      },
+      {
+        "residual_pu": 9.911708516851918e-14,
+        "family": "CP",
+        "iterations": 48,
+        "voltage_pu": {
+          "real": 0.8880197933096816,
+          "imag": -0.09919999999996404
+        },
+        "current_magnitude_pu": 0.8362902959354633,
+        "delivered_power_pu": {
+          "real": 0.7200000000000001,
+          "imag": 0.2
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8935433919568554,
+        "scale": 0.8,
+        "current_pu": {
+          "real": 0.7759505167260021,
+          "imag": -0.31190103345207926
+        }
+      },
+      {
+        "residual_pu": 1.1269924452167828e-13,
+        "family": "CP",
+        "iterations": 50,
+        "voltage_pu": {
+          "real": 0.8697910761498975,
+          "imag": -0.11159999999995984
+        },
+        "current_magnitude_pu": 0.9586599346585994,
+        "delivered_power_pu": {
+          "real": 0.81,
+          "imag": 0.225
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8769213625804698,
+        "scale": 0.9,
+        "current_pu": {
+          "real": 0.8835223096254871,
+          "imag": -0.3720446192510721
+        }
+      },
+      {
+        "residual_pu": 9.420096797337752e-14,
+        "family": "CP",
+        "iterations": 53,
+        "voltage_pu": {
+          "real": 0.8501770980519459,
+          "imag": -0.12399999999996714
+        },
+        "current_magnitude_pu": 1.08718245289374,
+        "delivered_power_pu": {
+          "real": 0.9,
+          "imag": 0.25
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8591723331509342,
+        "scale": 1,
+        "current_pu": {
+          "real": 0.9945572548703249,
+          "imag": -0.43911450974074273
+        }
+      },
+      {
+        "residual_pu": 1.0228694464649693e-13,
+        "family": "CP",
+        "iterations": 56,
+        "voltage_pu": {
+          "real": 0.8289301445597348,
+          "imag": -0.1363999999999651
+        },
+        "current_magnitude_pu": 1.2230833914791008,
+        "delivered_power_pu": {
+          "real": 0.9900000000000001,
+          "imag": 0.275
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8400774634281134,
+        "scale": 1.1,
+        "current_pu": {
+          "real": 1.1096746386008651,
+          "imag": -0.5143492772018436
+        }
+      },
+      {
+        "residual_pu": 9.862382477492426e-14,
+        "family": "CP",
+        "iterations": 60,
+        "voltage_pu": {
+          "real": 0.8057099278729488,
+          "imag": -0.1487999999999672
+        },
+        "current_magnitude_pu": 1.3680514441986582,
+        "delivered_power_pu": {
+          "real": 1.08,
+          "imag": 0.3
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8193350522667895,
+        "scale": 1.2,
+        "current_pu": {
+          "real": 1.2297251803178189,
+          "imag": -0.5994503606357597
+        }
+      },
+      {
+        "residual_pu": 9.931168362646701e-14,
+        "family": "CP",
+        "iterations": 65,
+        "voltage_pu": {
+          "real": 0.7800259987931167,
+          "imag": -0.1611999999999679
+        },
+        "current_magnitude_pu": 1.5245286280417654,
+        "delivered_power_pu": {
+          "real": 1.1700000000000002,
+          "imag": 0.325
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7965086307085373,
+        "scale": 1.3,
+        "current_pu": {
+          "real": 1.355935003017396,
+          "imag": -0.6968700060349289
+        }
+      },
+      {
+        "residual_pu": 1.3128984907002963e-13,
+        "family": "CP",
+        "iterations": 71,
+        "voltage_pu": {
+          "real": 0.7511235552474255,
+          "imag": -0.1735999999999589
+        },
+        "current_magnitude_pu": 1.6962867972495452,
+        "delivered_power_pu": {
+          "real": 1.26,
+          "imag": 0.35
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7709238323255534,
+        "scale": 1.4,
+        "current_pu": {
+          "real": 1.4901911118816777,
+          "imag": -0.8103822237635575
+        }
+      },
+      {
+        "residual_pu": 1.233376459587271e-13,
+        "family": "CP",
+        "iterations": 81,
+        "voltage_pu": {
+          "real": 0.717724596681444,
+          "imag": -0.18599999999996286
+        },
+        "current_magnitude_pu": 1.8897371123280273,
+        "delivered_power_pu": {
+          "real": 1.35,
+          "imag": 0.375
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7414341485806596,
+        "scale": 1.5,
+        "current_pu": {
+          "real": 1.6356885082966095,
+          "imag": -0.9463770165934312
+        }
+      },
+      {
+        "residual_pu": 1.427034505064447e-13,
+        "family": "CP",
+        "iterations": 97,
+        "voltage_pu": {
+          "real": 0.6773060630664056,
+          "imag": -0.19839999999995916
+        },
+        "current_magnitude_pu": 2.117589556354296,
+        "delivered_power_pu": {
+          "real": 1.4400000000000002,
+          "imag": 0.4
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.705766294935156,
+        "scale": 1.6,
+        "current_pu": {
+          "real": 1.7987348423342298,
+          "imag": -1.1174696846687338
+        }
+      },
+      {
+        "residual_pu": 1.4405050958232438e-13,
+        "family": "CP",
+        "iterations": 135,
+        "voltage_pu": {
+          "real": 0.6231395955820174,
+          "imag": -0.21079999999996152
+        },
+        "current_magnitude_pu": 2.4138947031857487,
+        "delivered_power_pu": {
+          "real": 1.53,
+          "imag": 0.425
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.6578294578248256,
+        "scale": 1.7,
+        "current_pu": {
+          "real": 1.9961510110451888,
+          "imag": -1.3573020220906933
+        }
+      },
+      {
+        "residual_pu": 0.004425641558787737,
+        "family": "CP",
+        "iterations": 2000,
+        "voltage_pu": {
+          "real": 0.46702093630834307,
+          "imag": -0.2222690662577122
+        },
+        "current_magnitude_pu": 3.2507495677613707,
+        "delivered_power_pu": {
+          "real": 1.62,
+          "imag": 0.45
+        },
+        "converged": false,
+        "voltage_magnitude_pu": 0.5172157120248734,
+        "scale": 1.8,
+        "current_pu": {
+          "real": 2.4542921787813547,
+          "imag": -2.1316244166065954
+        }
+      },
+      {
+        "residual_pu": 7.252774295903581e-14,
+        "family": "CI",
+        "iterations": 39,
+        "voltage_pu": {
+          "real": 0.9769918495075646,
+          "imag": -0.024236852330972683
+        },
+        "current_magnitude_pu": 0.18681541692269407,
+        "delivered_power_pu": {
+          "real": 0.17591263788622483,
+          "imag": 0.048864621635062444
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9772924327012489,
+        "scale": 0.2,
+        "current_pu": {
+          "real": 0.17870463788621316,
+          "imag": -0.05444862163505557
+        }
+      },
+      {
+        "residual_pu": 7.838132352782916e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.9650394165607035,
+          "imag": -0.035924331665013534
+        },
+        "current_magnitude_pu": 0.2802231253840411,
+        "delivered_power_pu": {
+          "real": 0.2607411169235687,
+          "imag": 0.07242808803432463
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9657078404576618,
+        "scale": 0.3,
+        "current_pu": {
+          "real": 0.2670231169235487,
+          "imag": -0.0849920880343156
+        }
+      },
+      {
+        "residual_pu": 8.296893791937132e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.9527949815192075,
+          "imag": -0.047316870460966706
+        },
+        "current_magnitude_pu": 0.37363083384538803,
+        "delivered_power_pu": {
+          "real": 0.3434288985070673,
+          "imag": 0.09539691625196314
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9539691625196314,
+        "scale": 0.4,
+        "current_pu": {
+          "real": 0.35459689850703824,
+          "imag": -0.11773291625195222
+        }
+      },
+      {
+        "residual_pu": 8.603277899772282e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.940263735633718,
+          "imag": -0.058408721262766014
+        },
+        "current_magnitude_pu": 0.46703854230673514,
+        "delivered_power_pu": {
+          "real": 0.42393426722978383,
+          "imag": 0.11775951867493994
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9420761493995196,
+        "scale": 0.5,
+        "current_pu": {
+          "real": 0.4413842672297457,
+          "imag": -0.1526595186749272
+        }
+      },
+      {
+        "residual_pu": 8.783586178884576e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.927450886188668,
+          "imag": -0.06919411886264759
+        },
+        "current_magnitude_pu": 0.5604462507680822,
+        "delivered_power_pu": {
+          "real": 0.5022153788418149,
+          "imag": 0.13950427190050413
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9300284793366942,
+        "scale": 0.6,
+        "current_pu": {
+          "real": 0.5273433788417679,
+          "imag": -0.18976027190048952
+        }
+      },
+      {
+        "residual_pu": 8.914496460495172e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.914361660608408,
+          "imag": -0.07966727575508184
+        },
+        "current_magnitude_pu": 0.6538539592294291,
+        "delivered_power_pu": {
+          "real": 0.5782302272546366,
+          "imag": 0.16061950757073234
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9178257575470421,
+        "scale": 0.7,
+        "current_pu": {
+          "real": 0.6124322272545806,
+          "imag": -0.22902350757071577
+        }
+      },
+      {
+        "residual_pu": 8.995335413539853e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.901001310629449,
+          "imag": -0.08982237751750316
+        },
+        "current_magnitude_pu": 0.7472616676907763,
+        "delivered_power_pu": {
+          "real": 0.6519366110141417,
+          "imag": 0.1810935030594838
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.905467515297419,
+        "scale": 0.8,
+        "current_pu": {
+          "real": 0.6966086110140772,
+          "imag": -0.2704375030594652
+        }
+      },
+      {
+        "residual_pu": 9.02294500351017e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.8873751165530648,
+          "imag": -0.09965357810207301
+        },
+        "current_magnitude_pu": 0.8406693761521233,
+        "delivered_power_pu": {
+          "real": 0.7232920991279523,
+          "imag": 0.20091447197998674
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8929532087999411,
+        "scale": 0.9,
+        "current_pu": {
+          "real": 0.7798300991278795,
+          "imag": -0.3139904719799661
+        }
+      },
+      {
+        "residual_pu": 9.056466649376507e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.8734883915930631,
+          "imag": -0.10915499502207636
+        },
+        "current_magnitude_pu": 0.9340770846134704,
+        "delivered_power_pu": {
+          "real": 0.7922539961279753,
+          "imag": 0.22007055447999313
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8802822179199725,
+        "scale": 1,
+        "current_pu": {
+          "real": 0.8620539961278939,
+          "imag": -0.3596705544799703
+        }
+      },
+      {
+        "residual_pu": 9.075725638363871e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.8593464863342246,
+          "imag": -0.1183207044157917
+        },
+        "current_magnitude_pu": 1.0274847930748174,
+        "delivered_power_pu": {
+          "real": 0.8587793062436503,
+          "imag": 0.23854980728990285
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8674538446905558,
+        "scale": 1.1,
+        "current_pu": {
+          "real": 0.9432373062435606,
+          "imag": -0.4074658072898779
+        }
+      },
+      {
+        "residual_pu": 9.076120758670423e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.8449547933177207,
+          "imag": -0.1271447359697792
+        },
+        "current_magnitude_pu": 1.120892501536164,
+        "delivered_power_pu": {
+          "real": 0.9228246965548497,
+          "imag": 0.25634019348745823
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8544673116248608,
+        "scale": 1.2,
+        "current_pu": {
+          "real": 1.0233366965547515,
+          "imag": -0.4573641934874308
+        }
+      },
+      {
+        "residual_pu": 9.094551766626961e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.8303187517707555,
+          "imag": -0.13562106768249182
+        },
+        "current_magnitude_pu": 1.2143002099975113,
+        "delivered_power_pu": {
+          "real": 0.984346458985828,
+          "imag": 0.27342957194050777
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8413217598169469,
+        "scale": 1.3,
+        "current_pu": {
+          "real": 1.1023084589857215,
+          "imag": -0.5093535719404781
+        }
+      },
+      {
+        "residual_pu": 9.086210657476334e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.8154438524987637,
+          "imag": -0.14374362044791217
+        },
+        "current_magnitude_pu": 1.3077079184588583,
+        "delivered_power_pu": {
+          "real": 1.0433004709929108,
+          "imag": 0.2898056863869196
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8280162468197704,
+        "scale": 1.4,
+        "current_pu": {
+          "real": 1.1801084709927963,
+          "imag": -0.5634216863868878
+        }
+      },
+      {
+        "residual_pu": 9.101190370603701e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.8003356429597408,
+          "imag": -0.15150625243754573
+        },
+        "current_magnitude_pu": 1.4011156269202056,
+        "delivered_power_pu": {
+          "real": 1.0996421547886384,
+          "imag": 0.30545615410795507
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8145497442878802,
+        "scale": 1.5,
+        "current_pu": {
+          "real": 1.2566921547885157,
+          "imag": -0.6195561541079211
+        }
+      },
+      {
+        "residual_pu": 9.094705508488816e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.7849997325416916,
+          "imag": -0.1589027532575295
+        },
+        "current_magnitude_pu": 1.4945233353815528,
+        "delivered_power_pu": {
+          "real": 1.153326434933682,
+          "imag": 0.320368454148245
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8009211353706124,
+        "scale": 1.6,
+        "current_pu": {
+          "real": 1.3320144349335512,
+          "imag": -0.6777444541482087
+        }
+      },
+      {
+        "residual_pu": 9.101610201057221e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.7694417980658047,
+          "imag": -0.16592683785583387
+        },
+        "current_magnitude_pu": 1.5879310438428997,
+        "delivered_power_pu": {
+          "real": 1.2043076941149233,
+          "imag": 0.3345299150319231
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7871292118398191,
+        "scale": 1.7,
+        "current_pu": {
+          "real": 1.4060296941147843,
+          "imag": -0.7379739150318845
+        }
+      },
+      {
+        "residual_pu": 9.111197971078587e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.7536675895397741,
+          "imag": -0.17257214015251154
+        },
+        "current_magnitude_pu": 1.6813387523042467,
+        "delivered_power_pu": {
+          "real": 1.2525397269133902,
+          "imag": 0.34792770192038613
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7731726709341914,
+        "scale": 1.8,
+        "current_pu": {
+          "real": 1.478691726913243,
+          "imag": -0.8002317019203454
+        }
+      },
+      {
+        "residual_pu": 9.104221433309721e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.7376829361877731,
+          "imag": -0.1788322063636563
+        },
+        "current_magnitude_pu": 1.7747464607655936,
+        "delivered_power_pu": {
+          "real": 1.2979756913491183,
+          "imag": 0.36054880315253285
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7590501119000692,
+        "scale": 1.9,
+        "current_pu": {
+          "real": 1.5499536913489627,
+          "imag": -0.8645048031524897
+        }
+      },
+      {
+        "residual_pu": 9.099404181841154e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.7214937527859177,
+          "imag": -0.18470048798713998
+        },
+        "current_magnitude_pu": 1.86815416922694,
+        "delivered_power_pu": {
+          "real": 1.3405680579711774,
+          "imag": 0.37238001610310484
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7447600322062097,
+        "scale": 2,
+        "current_pu": {
+          "real": 1.6197680579710132,
+          "imag": -0.930780016103059
+        }
+      },
+      {
+        "residual_pu": 9.101489586427722e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.7051060463347121,
+          "imag": -0.19017033441526116
+        },
+        "current_magnitude_pu": 1.9615618776882877,
+        "delivered_power_pu": {
+          "real": 1.3802685562397985,
+          "imag": 0.3834079322888329
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7303008234073007,
+        "scale": 2.1,
+        "current_pu": {
+          "real": 1.6880865562396266,
+          "imag": -0.9990439322887853
+        }
+      },
+      {
+        "residual_pu": 9.111179369572106e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.6885259231029724,
+          "imag": -0.19523498513611665
+        },
+        "current_magnitude_pu": 2.054969586149635,
+        "delivered_power_pu": {
+          "real": 1.4170281179234274,
+          "imag": 0.39361892164539647
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7156707666279936,
+        "scale": 2.2,
+        "current_pu": {
+          "real": 1.754860117923247,
+          "imag": -1.0692829216453466
+        }
+      },
+      {
+        "residual_pu": 9.104066159775958e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.6717595960811134,
+          "imag": -0.1998875614817471
+        },
+        "current_magnitude_pu": 2.1483772946109814,
+        "delivered_power_pu": {
+          "real": 1.4507968172062289,
+          "imag": 0.40299911589061915
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7008680276358594,
+        "scale": 2.3,
+        "current_pu": {
+          "real": 1.8200388172060404,
+          "imag": -1.1414831158905667
+        }
+      },
+      {
+        "residual_pu": 9.115951947451481e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.6548133928855441,
+          "imag": -0.20412105787684245
+        },
+        "current_magnitude_pu": 2.2417850030723288,
+        "delivered_power_pu": {
+          "real": 1.481523807170631,
+          "imag": 0.4115343908807308
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.6858906514678846,
+        "scale": 2.4,
+        "current_pu": {
+          "real": 1.8835718071704342,
+          "imag": -1.2156303908806763
+        }
+      },
+      {
+        "residual_pu": 9.103764489999528e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.6376937641602776,
+          "imag": -0.20792833253695964
+        },
+        "current_magnitude_pu": 2.3351927115336752,
+        "delivered_power_pu": {
+          "real": 1.5091572522843841,
+          "imag": 0.41921034785677336
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.6707365565708374,
+        "scale": 2.5,
+        "current_pu": {
+          "real": 1.9454072522841792,
+          "imag": -1.2917103478567165
+        }
+      },
+      {
+        "residual_pu": 9.113447205153651e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.6204072925268268,
+          "imag": -0.21130209755970944
+        },
+        "current_magnitude_pu": 2.428600419995023,
+        "delivered_power_pu": {
+          "real": 1.5336442564817618,
+          "imag": 0.426012293467156
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.6554035284110092,
+        "scale": 2.6,
+        "current_pu": {
+          "real": 2.0054922564815487,
+          "imag": -1.3697082934670972
+        }
+      },
+      {
+        "residual_pu": 9.127073615131289e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.6029607021391024,
+          "imag": -0.2142349083461195
+        },
+        "current_magnitude_pu": 2.52200812845637,
+        "delivered_power_pu": {
+          "real": 1.5549307863831257,
+          "imag": 0.4319252184397571
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.6398892125033439,
+        "scale": 2.7,
+        "current_pu": {
+          "real": 2.0637727863829043,
+          "imag": -1.4496092184396958
+        }
+      },
+      {
+        "residual_pu": 9.117427339864445e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.5853608689064633,
+          "imag": -0.2167191522822562
+        },
+        "current_magnitude_pu": 2.6154158369177165,
+        "delivered_power_pu": {
+          "real": 1.5729615891454078,
+          "imag": 0.43693377476261325
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.6241911068037332,
+        "scale": 2.8,
+        "current_pu": {
+          "real": 2.120193589145178,
+          "imag": -1.5313977747625496
+        }
+      },
+      {
+        "residual_pu": 9.121347461913896e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.5676148314554217,
+          "imag": -0.21874703660305297
+        },
+        "current_magnitude_pu": 2.7088235453790634,
+        "delivered_power_pu": {
+          "real": 1.5876801043769972,
+          "imag": 0.44102225121583255
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.6083065534011484,
+        "scale": 2.9,
+        "current_pu": {
+          "real": 2.174698104376759,
+          "imag": -1.6150582512157665
+        }
+      },
+      {
+        "residual_pu": 9.124785526855503e-14,
+        "family": "CI",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.549729802908902,
+          "imag": -0.2203105753509861
+        },
+        "current_magnitude_pu": 2.802231253840411,
+        "delivered_power_pu": {
+          "real": 1.5990283694829637,
+          "imag": 0.444174547078601
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.5922327294381347,
+        "scale": 3,
+        "current_pu": {
+          "real": 2.2272283694827175,
+          "imag": -1.7005745470785327
+        }
+      },
+      {
+        "residual_pu": 5.2079020415148165e-14,
+        "family": "CZ",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.9775156111844199,
+          "imag": -0.023711255044385992
+        },
+        "current_magnitude_pu": 0.18266870252181558,
+        "delivered_power_pu": {
+          "real": 0.17209781887050538,
+          "imag": 0.04780494968625149
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9778031467146288,
+        "scale": 0.2,
+        "current_pu": {
+          "real": 0.1747672472609763,
+          "imag": -0.05314380646721048
+        }
+      },
+      {
+        "residual_pu": 7.125228875067656e-14,
+        "family": "CZ",
+        "iterations": 36,
+        "voltage_pu": {
+          "real": 0.9662406582402869,
+          "imag": -0.03477568932524899
+        },
+        "current_magnitude_pu": 0.2709382842604966,
+        "delivered_power_pu": {
+          "real": 0.2524041967152607,
+          "imag": 0.0701122768653502
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9668662566273938,
+        "scale": 0.3,
+        "current_pu": {
+          "real": 0.25827680102548384,
+          "imag": -0.08185748548583875
+        }
+      },
+      {
+        "residual_pu": 4.738546209896873e-14,
+        "family": "CZ",
+        "iterations": 36,
+        "voltage_pu": {
+          "real": 0.9549687624307006,
+          "imag": -0.04533542363763808
+        },
+        "current_magnitude_pu": 0.3572076161625533,
+        "delivered_power_pu": {
+          "real": 0.32904742962773814,
+          "imag": 0.09140206378548281
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9560442656356598,
+        "scale": 0.4,
+        "current_pu": {
+          "real": 0.33925521211128845,
+          "imag": -0.11181762875261977
+        }
+      },
+      {
+        "residual_pu": 6.669676370810818e-14,
+        "family": "CZ",
+        "iterations": 35,
+        "voltage_pu": {
+          "real": 0.9437165990455597,
+          "imag": -0.05540760335311673
+        },
+        "current_magnitude_pu": 0.4415110322916529,
+        "delivered_power_pu": {
+          "real": 0.40215195982055435,
+          "imag": 0.11170887772793177
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9453417486938013,
+        "scale": 0.5,
+        "current_pu": {
+          "real": 0.41774651915136235,
+          "imag": -0.14289799638959752
+        }
+      },
+      {
+        "residual_pu": 4.505927930099805e-14,
+        "family": "CZ",
+        "iterations": 35,
+        "voltage_pu": {
+          "real": 0.9324993499067296,
+          "imag": -0.06500932499353586
+        },
+        "current_magnitude_pu": 0.5238842339654287,
+        "delivered_power_pu": {
+          "real": 0.4718418749527978,
+          "imag": 0.13106718748688825
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9347626703675048,
+        "scale": 0.6,
+        "current_pu": {
+          "real": 0.49379825020060364,
+          "imag": -0.1749799379825188
+        }
+      },
+      {
+        "residual_pu": 6.582177993543178e-14,
+        "family": "CZ",
+        "iterations": 34,
+        "voltage_pu": {
+          "real": 0.9213307898770682,
+          "imag": -0.07415755986774174
+        },
+        "current_magnitude_pu": 0.6043640331706513,
+        "delivered_power_pu": {
+          "real": 0.5382403538784553,
+          "imag": 0.149511209410682
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9243104284065176,
+        "scale": 0.7,
+        "current_pu": {
+          "real": 0.5674608246456981,
+          "imag": -0.20795215094516417
+        }
+      },
+      {
+        "residual_pu": 4.50702285065081e-14,
+        "family": "CZ",
+        "iterations": 34,
+        "voltage_pu": {
+          "real": 0.9102233722906745,
+          "imag": -0.08286908822617861
+        },
+        "current_magnitude_pu": 0.6829881190924816,
+        "delivered_power_pu": {
+          "real": 0.6014691887383052,
+          "imag": 0.16707477464952922
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9139878955695453,
+        "scale": 0.8,
+        "current_pu": {
+          "real": 0.6387870104040501,
+          "imag": -0.24171041798098356
+        }
+      },
+      {
+        "residual_pu": 6.861331131408765e-14,
+        "family": "CZ",
+        "iterations": 33,
+        "voltage_pu": {
+          "real": 0.8991883126430118,
+          "imag": -0.09116044303320067
+        },
+        "current_magnitude_pu": 0.7597948465244029,
+        "delivered_power_pu": {
+          "real": 0.6616483768539149,
+          "imag": 0.18379121579275415
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9037974595935729,
+        "scale": 0.9,
+        "current_pu": {
+          "real": 0.7078314335583695,
+          "imag": -0.2761573292015702
+        }
+      },
+      {
+        "residual_pu": 4.7976666578315206e-14,
+        "family": "CZ",
+        "iterations": 33,
+        "voltage_pu": {
+          "real": 0.8882356700108338,
+          "imag": -0.09904786248319464
+        },
+        "current_magnitude_pu": 0.8348230448801526,
+        "delivered_power_pu": {
+          "real": 0.7188957760878762,
+          "imag": 0.19969327113552118
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.893741061237585,
+        "scale": 1,
+        "current_pu": {
+          "real": 0.7746501373889519,
+          "imag": -0.31120199373758367
+        }
+      },
+      {
+        "residual_pu": 7.588281228115722e-14,
+        "family": "CZ",
+        "iterations": 32,
+        "voltage_pu": {
+          "real": 0.8773744257852847,
+          "imag": -0.10654725042472064
+        },
+        "current_magnitude_pu": 0.9081118465076671,
+        "delivered_power_pu": {
+          "real": 0.773326817599175,
+          "imag": 0.21481300488865973
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8838202303608614,
+        "scale": 1.1,
+        "current_pu": {
+          "real": 0.8393001876606337,
+          "imag": -0.3467597450114268
+        }
+      },
+      {
+        "residual_pu": 5.4051508968626037e-14,
+        "family": "CZ",
+        "iterations": 32,
+        "voltage_pu": {
+          "real": 0.8666125594039146,
+          "imag": -0.11367414389919644
+        },
+        "current_magnitude_pu": 0.9797005330074406,
+        "delivered_power_pu": {
+          "real": 0.8250542702364441,
+          "imag": 0.22918174173234554
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8740361200246924,
+        "scale": 1.2,
+        "current_pu": {
+          "real": 0.9018393209864688,
+          "imag": -0.3827518432323065
+        }
+      },
+      {
+        "residual_pu": 3.876044272052129e-14,
+        "family": "CZ",
+        "iterations": 32,
+        "voltage_pu": {
+          "real": 0.8559571208519616,
+          "imag": -0.12044368704722697
+        },
+        "current_magnitude_pu": 1.049628398273654,
+        "delivered_power_pu": {
+          "real": 0.8741880511494509,
+          "imag": 0.24283001420818076
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8643895386263707,
+        "scale": 1.3,
+        "current_pu": {
+          "real": 0.9623256331064466,
+          "imag": -0.4191051781221431
+        }
+      },
+      {
+        "residual_pu": 6.472027124587438e-14,
+        "family": "CZ",
+        "iterations": 31,
+        "voltage_pu": {
+          "real": 0.8454142997795149,
+          "imag": -0.12687061068610206
+        },
+        "current_magnitude_pu": 1.1179346270096149,
+        "delivered_power_pu": {
+          "real": 0.9208350775607155,
+          "imag": 0.2557875215446432
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8548809800946281,
+        "scale": 1.4,
+        "current_pu": {
+          "real": 1.0208173039820532,
+          "imag": -0.45575197438731885
+        }
+      },
+      {
+        "residual_pu": 4.722250468926847e-14,
+        "family": "CZ",
+        "iterations": 31,
+        "voltage_pu": {
+          "real": 0.8349894911425744,
+          "imag": -0.13296921691139701
+        },
+        "current_magnitude_pu": 1.1846581875090858,
+        "delivered_power_pu": {
+          "real": 0.9650991550021634,
+          "imag": 0.26808309861171203
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8455106521887027,
+        "scale": 1.5,
+        "current_pu": {
+          "real": 1.0773723567007014,
+          "imag": -0.4926295020088513
+        }
+      },
+      {
+        "residual_pu": 8.240826715586804e-14,
+        "family": "CZ",
+        "iterations": 30,
+        "voltage_pu": {
+          "real": 0.8246873573302715,
+          "imag": -0.13875336812613512
+        },
+        "current_magnitude_pu": 1.2498377375460548,
+        "delivered_power_pu": {
+          "real": 1.0070808976896968,
+          "imag": 0.2797446938026935
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8362785029562423,
+        "scale": 1.6,
+        "current_pu": {
+          "real": 1.132048447305137,
+          "imag": -0.5296797930337432
+        }
+      },
+      {
+        "residual_pu": 6.168750205872776e-14,
+        "family": "CZ",
+        "iterations": 30,
+        "voltage_pu": {
+          "real": 0.8145118867828809,
+          "imag": -0.14423647995116806
+        },
+        "current_magnitude_pu": 1.313511542268911,
+        "delivered_power_pu": {
+          "real": 1.0468776770647479,
+          "imag": 0.29079935474020774
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8271842454129021,
+        "scale": 1.7,
+        "current_pu": {
+          "real": 1.1849026827985616,
+          "imag": -0.5668493662080115
+        }
+      },
+      {
+        "residual_pu": 4.6416617624241256e-14,
+        "family": "CZ",
+        "iterations": 30,
+        "voltage_pu": {
+          "real": 0.8044664491429436,
+          "imag": -0.1494315175172677
+        },
+        "current_magnitude_pu": 1.3757174030559858,
+        "delivered_power_pu": {
+          "real": 1.0845835948831553,
+          "imag": 0.3012732208008765
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8182273805148358,
+        "scale": 1.8,
+        "current_pu": {
+          "real": 1.2359914647287982,
+          "imag": -0.6040889604922983
+        }
+      },
+      {
+        "residual_pu": 3.5141989642129834e-14,
+        "family": "CZ",
+        "iterations": 30,
+        "voltage_pu": {
+          "real": 0.7945538470085407,
+          "imag": -0.15435099468605418
+        },
+        "current_magnitude_pu": 1.4364925963474233,
+        "delivered_power_pu": {
+          "real": 1.1202894775598642,
+          "imag": 0.3111915215444067
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8094072184979856,
+        "scale": 1.9,
+        "current_pu": {
+          "real": 1.2853703559087288,
+          "imag": -0.6413532782422094
+        }
+      },
+      {
+        "residual_pu": 6.598833671109976e-14,
+        "family": "CZ",
+        "iterations": 29,
+        "voltage_pu": {
+          "real": 0.7847763643824045,
+          "imag": -0.159006975789947
+        },
+        "current_magnitude_pu": 1.4958738215325924,
+        "delivered_power_pu": {
+          "real": 1.1540828887976329,
+          "imag": 0.32057858022156466
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8007228986629078,
+        "scale": 2,
+        "current_pu": {
+          "real": 1.333093967993355,
+          "imag": -0.6786007386131068
+        }
+      },
+      {
+        "residual_pu": 5.1303987384179383e-14,
+        "family": "CZ",
+        "iterations": 29,
+        "voltage_pu": {
+          "real": 0.7751358119271129,
+          "imag": -0.1634110795222205
+        },
+        "current_magnitude_pu": 1.5538971570323978,
+        "delivered_power_pu": {
+          "real": 1.1860481578223667,
+          "imag": 0.3294578216173241
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7921734076845309,
+        "scale": 2.1,
+        "current_pu": {
+          "real": 1.3792158677930777,
+          "imag": -0.7157932415587311
+        }
+      },
+      {
+        "residual_pu": 4.019758672951845e-14,
+        "family": "CZ",
+        "iterations": 29,
+        "voltage_pu": {
+          "real": 0.7656335691497524,
+          "imag": -0.1675744846470248
+        },
+        "current_magnitude_pu": 1.610598023776623,
+        "delivered_power_pu": {
+          "real": 1.2162664208251353,
+          "imag": 0.33785178356253753
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7837575965269521,
+        "scale": 2.2,
+        "current_pu": {
+          "real": 1.4237885003606463,
+          "imag": -0.7528959426334729
+        }
+      },
+      {
+        "residual_pu": 3.1823737386674555e-14,
+        "family": "CZ",
+        "iterations": 29,
+        "voltage_pu": {
+          "real": 0.7562706236490273,
+          "imag": -0.17150793723336902
+        },
+        "current_magnitude_pu": 1.6660111553354817,
+        "delivered_power_pu": {
+          "real": 1.2448156734680653,
+          "imag": 0.345782131518907
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7754741960429979,
+        "scale": 2.3,
+        "current_pu": {
+          "real": 1.4668631270442993,
+          "imag": -0.7898770386712645
+        }
+      },
+      {
+        "residual_pu": 6.435419158463558e-14,
+        "family": "CZ",
+        "iterations": 28,
+        "voltage_pu": {
+          "real": 0.7470476075635248,
+          "imag": -0.1752217591510557
+        },
+        "current_magnitude_pu": 1.7201705740212951,
+        "delivered_power_pu": {
+          "real": 1.271770832548174,
+          "imag": 0.3532696757078261
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.767321831337006,
+        "scale": 2.4,
+        "current_pu": {
+          "real": 1.5084897768465804,
+          "imag": -0.8267075643043953
+        }
+      },
+      {
+        "residual_pu": 5.2310711797794924e-14,
+        "family": "CZ",
+        "iterations": 28,
+        "voltage_pu": {
+          "real": 0.7379648313635061,
+          "imag": -0.17872585759580922
+        },
+        "current_magnitude_pu": 1.773109572330888,
+        "delivered_power_pu": {
+          "real": 1.297203805131132,
+          "imag": 0.3603343903142034
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7592990349675979,
+        "scale": 2.5,
+        "current_pu": {
+          "real": 1.548717209570508,
+          "imag": -0.8633611991927621
+        }
+      },
+      {
+        "residual_pu": 4.2841843598900826e-14,
+        "family": "CZ",
+        "iterations": 28,
+        "voltage_pu": {
+          "real": 0.7290223151291735,
+          "imag": -0.18202973543804635
+        },
+        "current_magnitude_pu": 1.824860699149568,
+        "delivered_power_pu": {
+          "real": 1.3211835636634717,
+          "imag": 0.3669954343509643
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7514042590642837,
+        "scale": 2.6,
+        "current_pu": {
+          "real": 1.587592889367536,
+          "imag": -0.8998140857589911
+        }
+      },
+      {
+        "residual_pu": 3.553147333202946e-14,
+        "family": "CZ",
+        "iterations": 28,
+        "voltage_pu": {
+          "real": 0.7202198174588077,
+          "imag": -0.18514250221528555
+        },
+        "current_magnitude_pu": 1.8754557501890017,
+        "delivered_power_pu": {
+          "real": 1.3437762257562527,
+          "imag": 0.3732711738211813
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7436358864302712,
+        "scale": 2.7,
+        "current_pu": {
+          "real": 1.6251629674295849,
+          "imag": -0.9360446571678391
+        }
+      },
+      {
+        "residual_pu": 2.97757308252692e-14,
+        "family": "CZ",
+        "iterations": 28,
+        "voltage_pu": {
+          "real": 0.7115568621469297,
+          "imag": -0.18807288561008897
+        },
+        "current_magnitude_pu": 1.9249257621744185,
+        "delivered_power_pu": {
+          "real": 1.3650451374926276,
+          "imag": 0.3791792048590632
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7359922406996492,
+        "scale": 2.8,
+        "current_pu": {
+          "real": 1.6614722726832005,
+          "imag": -0.9720334752402751
+        }
+      },
+      {
+        "residual_pu": 6.632188840335535e-14,
+        "family": "CZ",
+        "iterations": 27,
+        "voltage_pu": {
+          "real": 0.7030327627702154,
+          "imag": -0.19082924327609752
+        },
+        "current_magnitude_pu": 1.9733010103413702,
+        "delivered_power_pu": {
+          "real": 1.3850509592620666,
+          "imag": 0.38473637757279633
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7284715956148531,
+        "scale": 2.9,
+        "current_pu": {
+          "real": 1.6965643094550917,
+          "imag": -1.007763077959021
+        }
+      },
+      {
+        "residual_pu": 5.709494614875929e-14,
+        "family": "CZ",
+        "iterations": 27,
+        "voltage_pu": {
+          "real": 0.6946466453142797,
+          "imag": -0.19341957489292413
+        },
+        "current_magnitude_pu": 2.0206110088411156,
+        "delivered_power_pu": {
+          "real": 1.403851753254984,
+          "imag": 0.3899588203486066
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7210721834866064,
+        "scale": 3,
+        "current_pu": {
+          "real": 1.730481261178862,
+          "imag": -1.043217836196605
+        }
+      },
+      {
+        "residual_pu": 7.126014754840673e-14,
+        "family": "ZIP",
+        "iterations": 39,
+        "voltage_pu": {
+          "real": 0.9769700045952063,
+          "imag": -0.024149051285231794
+        },
+        "current_magnitude_pu": 0.18654401008251992,
+        "delivered_power_pu": {
+          "real": 0.1755363515225734,
+          "imag": 0.049209561979591934
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9772684209349723,
+        "scale": 0.2,
+        "current_pu": {
+          "real": 0.17832024493837487,
+          "imag": -0.05477734881121286
+        }
+      },
+      {
+        "residual_pu": 7.713001703300724e-14,
+        "family": "ZIP",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.9649891973492779,
+          "imag": -0.03573095146893818
+        },
+        "current_magnitude_pu": 0.27964582483523454,
+        "delivered_power_pu": {
+          "real": 0.2599256209838936,
+          "imag": 0.07321434860600969
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9656504812268667,
+        "scale": 0.3,
+        "current_pu": {
+          "real": 0.26618176397169546,
+          "imag": -0.08572663458164732
+        }
+      },
+      {
+        "residual_pu": 8.17293381985733e-14,
+        "family": "ZIP",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.9527029281020444,
+          "imag": -0.04698063081240769
+        },
+        "current_magnitude_pu": 0.37266744062481977,
+        "delivered_power_pu": {
+          "real": 0.34203535210298414,
+          "imag": 0.09681281905089188
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9538606024392353,
+        "scale": 0.4,
+        "current_pu": {
+          "real": 0.35314583380710296,
+          "imag": -0.11903378245918075
+        }
+      },
+      {
+        "residual_pu": 8.54356363559296e-14,
+        "family": "ZIP",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.9401141138207528,
+          "imag": -0.05789530909018079
+        },
+        "current_magnitude_pu": 0.4656375393657289,
+        "delivered_power_pu": {
+          "real": 0.4218457954538948,
+          "imag": 0.12000022728059119
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9418951182693469,
+        "scale": 0.5,
+        "current_pu": {
+          "real": 0.4391912608991816,
+          "imag": -0.15469115817123397
+        }
+      },
+      {
+        "residual_pu": 8.895245100151055e-14,
+        "family": "ZIP",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.9272248707150021,
+          "imag": -0.06847222262318046
+        },
+        "current_magnitude_pu": 0.5585881956274183,
+        "delivered_power_pu": {
+          "real": 0.4993372745450528,
+          "imag": 0.14277176630043453
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9297496470251606,
+        "scale": 0.6,
+        "current_pu": {
+          "real": 0.5242989363285476,
+          "imag": -0.19269508986751202
+        }
+      },
+      {
+        "residual_pu": 9.323854507134042e-14,
+        "family": "ZIP",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.9140364271567958,
+          "imag": -0.07870858523803076
+        },
+        "current_magnitude_pu": 0.6515552846400116,
+        "delivered_power_pu": {
+          "real": 0.5744899151829859,
+          "imag": 0.1651225148906832
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9174190054493818,
+        "scale": 0.7,
+        "current_pu": {
+          "real": 0.6084518582983123,
+          "imag": -0.23304640112144395
+        }
+      },
+      {
+        "residual_pu": 9.905121501990478e-14,
+        "family": "ZIP",
+        "iterations": 38,
+        "voltage_pu": {
+          "real": 0.9005490214486254,
+          "imag": -0.0886015445127375
+        },
+        "current_magnitude_pu": 0.7445789671201072,
+        "delivered_power_pu": {
+          "real": 0.6472833418801357,
+          "imag": 0.18704737735115293
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.9048971067044691,
+        "scale": 0.8,
+        "current_pu": {
+          "real": 0.691635168942275,
+          "imag": -0.2757510314755622
+        }
+      },
+      {
+        "residual_pu": 5.3733771110311846e-14,
+        "family": "ZIP",
+        "iterations": 39,
+        "voltage_pu": {
+          "real": 0.886761780823527,
+          "imag": -0.09814813221338353
+        },
+        "current_magnitude_pu": 0.8377042687317494,
+        "delivered_power_pu": {
+          "real": 0.7176963336601123,
+          "imag": 0.20854101465298155
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.892176838853312,
+        "scale": 0.9,
+        "current_pu": {
+          "real": 0.7738362090081797,
+          "imag": -0.32082076534919596
+        }
+      },
+      {
+        "residual_pu": 5.973771258716717e-14,
+        "family": "ZIP",
+        "iterations": 39,
+        "voltage_pu": {
+          "real": 0.8726725770345933,
+          "imag": -0.10734520751884237
+        },
+        "current_magnitude_pu": 0.9309817770821176,
+        "delivered_power_pu": {
+          "real": 0.7857064294671523,
+          "imag": 0.22959776494882475
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8792499191273557,
+        "scale": 1,
+        "current_pu": {
+          "real": 0.855044595007816,
+          "imag": -0.3682740960302497
+        }
+      },
+      {
+        "residual_pu": 6.830565532765403e-14,
+        "family": "ZIP",
+        "iterations": 39,
+        "voltage_pu": {
+          "real": 0.8582778525104942,
+          "imag": -0.11618939121920356
+        },
+        "current_magnitude_pu": 1.0244684859864868,
+        "delivered_power_pu": {
+          "real": 0.8512894705175948,
+          "imag": 0.25021155079519325
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8661067178713687,
+        "scale": 1.1,
+        "current_pu": {
+          "real": 0.9352523248198821,
+          "imag": -0.418137259399889
+        }
+      },
+      {
+        "residual_pu": 8.032746025226298e-14,
+        "family": "ZIP",
+        "iterations": 39,
+        "voltage_pu": {
+          "real": 0.843572409178319,
+          "imag": -0.12467698851792314
+        },
+        "current_magnitude_pu": 1.1182288260374391,
+        "delivered_power_pu": {
+          "real": 0.9144190630535366,
+          "imag": 0.27037576963308035
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8527360441501295,
+        "scale": 1.2,
+        "current_pu": {
+          "real": 1.0144539196439348,
+          "imag": -0.47044548281403076
+        }
+      },
+      {
+        "residual_pu": 9.771895853596247e-14,
+        "family": "ZIP",
+        "iterations": 39,
+        "voltage_pu": {
+          "real": 0.8285491494660089,
+          "imag": -0.13280389730523348
+        },
+        "current_magnitude_pu": 1.2123359333369044,
+        "delivered_power_pu": {
+          "real": 0.9750659396406128,
+          "imag": 0.2900831629658503
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8391248823746712,
+        "scale": 1.3,
+        "current_pu": {
+          "real": 1.092646612861287,
+          "imag": -0.5252445094073994
+        }
+      },
+      {
+        "residual_pu": 6.329004651123459e-14,
+        "family": "ZIP",
+        "iterations": 40,
+        "voltage_pu": {
+          "real": 0.8131987553793911,
+          "imag": -0.14056549771061047
+        },
+        "current_magnitude_pu": 1.3068732261879377,
+        "delivered_power_pu": {
+          "real": 1.0331971897585965,
+          "imag": 0.30932565813458235
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8252580656359697,
+        "scale": 1.4,
+        "current_pu": {
+          "real": 1.169830600104666,
+          "imag": -0.58259247882686
+        }
+      },
+      {
+        "residual_pu": 8.325127480938864e-14,
+        "family": "ZIP",
+        "iterations": 40,
+        "voltage_pu": {
+          "real": 0.7975092864083256,
+          "imag": -0.14795651724449585
+        },
+        "current_magnitude_pu": 1.4019363850360502,
+        "delivered_power_pu": {
+          "real": 1.0887753199868617,
+          "imag": 0.3280941744175416
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.8111178662208333,
+        "scale": 1.5,
+        "current_pu": {
+          "real": 1.2460093702017851,
+          "imag": -0.6425622748475819
+        }
+      },
+      {
+        "residual_pu": 5.9475347920438e-14,
+        "family": "ZIP",
+        "iterations": 41,
+        "voltage_pu": {
+          "real": 0.781465669583687,
+          "imag": -0.15497086368600355
+        },
+        "current_magnitude_pu": 1.4976358678150234,
+        "delivered_power_pu": {
+          "real": 1.1417570890656863,
+          "imag": 0.3463783820563333
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7966834762498003,
+        "scale": 1.6,
+        "current_pu": {
+          "real": 1.3211901444708853,
+          "imag": -0.7052444928668775
+        }
+      },
+      {
+        "residual_pu": 8.612106075108986e-14,
+        "family": "ZIP",
+        "iterations": 41,
+        "voltage_pu": {
+          "real": 0.765049044056686,
+          "imag": -0.1616014147177978
+        },
+        "current_magnitude_pu": 1.594100147198106,
+        "delivered_power_pu": {
+          "real": 1.1920920411037665,
+          "imag": 0.3641663982350579
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7819303402802852,
+        "scale": 1.7,
+        "current_pu": {
+          "real": 1.3953844634473973,
+          "imag": -0.7707512429225412
+        }
+      },
+      {
+        "residual_pu": 6.969888719946146e-14,
+        "family": "ZIP",
+        "iterations": 42,
+        "voltage_pu": {
+          "real": 0.7482359060784798,
+          "imag": -0.16783974858296963
+        },
+        "current_magnitude_pu": 1.691479938106606,
+        "delivered_power_pu": {
+          "real": 1.2397206272374899,
+          "imag": 0.3814443971878497
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7668292850103458,
+        "scale": 1.8,
+        "current_pu": {
+          "real": 1.4686089777187479,
+          "imag": -0.8392210981505538
+        }
+      },
+      {
+        "residual_pu": 6.085890830931512e-14,
+        "family": "ZIP",
+        "iterations": 43,
+        "voltage_pu": {
+          "real": 0.7309969748297348,
+          "imag": -0.1736757927916759
+        },
+        "current_magnitude_pu": 1.7899538100936359,
+        "delivered_power_pu": {
+          "real": 1.284571755502734,
+          "imag": 0.39819610110950443
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.751345365469197,
+        "scale": 1.9,
+        "current_pu": {
+          "real": 1.5408865268841287,
+          "imag": -0.9108256438724653
+        }
+      },
+      {
+        "residual_pu": 1.0598776827416646e-13,
+        "family": "ZIP",
+        "iterations": 43,
+        "voltage_pu": {
+          "real": 0.7132956592535586,
+          "imag": -0.1790973564853955
+        },
+        "current_magnitude_pu": 1.8897357793399319,
+        "delivered_power_pu": {
+          "real": 1.3265595290360193,
+          "imag": 0.41440210200455835
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7354363062903718,
+        "scale": 2,
+        "current_pu": {
+          "real": 1.6122476342932304,
+          "imag": -0.9857783125192914
+        }
+      },
+      {
+        "residual_pu": 1.0987618758088096e-13,
+        "family": "ZIP",
+        "iterations": 44,
+        "voltage_pu": {
+          "real": 0.695085940214903,
+          "imag": -0.18408949351478698
+        },
+        "current_magnitude_pu": 1.991085802059532,
+        "delivered_power_pu": {
+          "real": 1.3655788033439926,
+          "imag": 0.4300389377530998
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.7190503500499575,
+        "scale": 2.1,
+        "current_pu": {
+          "real": 1.6827326170368315,
+          "imag": -1.064346565139112
+        }
+      },
+      {
+        "residual_pu": 7.144085135049721e-14,
+        "family": "ZIP",
+        "iterations": 46,
+        "voltage_pu": {
+          "real": 0.676309370894842,
+          "imag": -0.18863361206767368
+        },
+        "current_magnitude_pu": 2.094324644815648,
+        "delivered_power_pu": {
+          "real": 1.4014989756709268,
+          "imag": 0.4450778004958958
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.702123211952058,
+        "scale": 2.2,
+        "current_pu": {
+          "real": 1.7523946331013625,
+          "imag": -1.1468691153569925
+        }
+      },
+      {
+        "residual_pu": 9.547687250423027e-14,
+        "family": "ZIP",
+        "iterations": 47,
+        "voltage_pu": {
+          "real": 0.6568907019006631,
+          "imag": -0.19270619195975414
+        },
+        "current_magnitude_pu": 2.19985558376784,
+        "delivered_power_pu": {
+          "real": 1.4341550378926764,
+          "imag": 0.45948267628836714
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.6845736415194318,
+        "scale": 2.3,
+        "current_pu": {
+          "real": 1.821304205047245,
+          "imag": -1.2337810105978162
+        }
+      },
+      {
+        "residual_pu": 8.693223519677513e-14,
+        "family": "ZIP",
+        "iterations": 49,
+        "voltage_pu": {
+          "real": 0.6367312742237685,
+          "imag": -0.19627687006409522
+        },
+        "current_magnitude_pu": 2.3081971918665425,
+        "delivered_power_pu": {
+          "real": 1.4633342226381116,
+          "imag": 0.4732075694749727
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.6662967246631051,
+        "scale": 2.4,
+        "current_pu": {
+          "real": 1.8895561647611743,
+          "imag": -1.3256514537213901
+        }
+      },
+      {
+        "residual_pu": 9.881716204741309e-14,
+        "family": "ZIP",
+        "iterations": 51,
+        "voltage_pu": {
+          "real": 0.6156986113633429,
+          "imag": -0.19930545837509062
+        },
+        "current_magnitude_pu": 2.4200350142497524,
+        "delivered_power_pu": {
+          "real": 1.4887552058518656,
+          "imag": 0.48619218201502257
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.6471533402315511,
+        "scale": 2.5,
+        "current_pu": {
+          "real": 1.9572807634672302,
+          "imag": -1.4232432972460949
+        }
+      },
+      {
+        "residual_pu": 9.103828801926284e-14,
+        "family": "ZIP",
+        "iterations": 54,
+        "voltage_pu": {
+          "real": 0.5936091465301383,
+          "imag": -0.20173704997088618
+        },
+        "current_magnitude_pu": 2.536307374381742,
+        "delivered_power_pu": {
+          "real": 1.5100339757419614,
+          "imag": 0.49835482684776944
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.6269526745897134,
+        "scale": 2.6,
+        "current_pu": {
+          "real": 2.0246623835292072,
+          "imag": -1.5276116424225872
+        }
+      },
+      {
+        "residual_pu": 1.2434820034559687e-13,
+        "family": "ZIP",
+        "iterations": 57,
+        "voltage_pu": {
+          "real": 0.5701975927702885,
+          "imag": -0.20349343581465362
+        },
+        "current_magnitude_pu": 2.6583576207888697,
+        "delivered_power_pu": {
+          "real": 1.5266239779475101,
+          "imag": 0.5095800082117383
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.6054212361824487,
+        "scale": 2.7,
+        "current_pu": {
+          "real": 2.091973197147712,
+          "imag": -1.6402784466125988
+        }
+      },
+      {
+        "residual_pu": 1.2276046356325774e-13,
+        "family": "ZIP",
+        "iterations": 62,
+        "voltage_pu": {
+          "real": 0.5450576674849947,
+          "imag": -0.20445667823097258
+        },
+        "current_magnitude_pu": 2.7882289360112553,
+        "delivered_power_pu": {
+          "real": 1.5377015744740075,
+          "imag": 0.5196946710607402
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.5821429327557164,
+        "scale": 2.8,
+        "current_pu": {
+          "real": 2.159639222442537,
+          "imag": -1.7635699669982619
+        }
+      },
+      {
+        "residual_pu": 1.349016831048035e-13,
+        "family": "ZIP",
+        "iterations": 69,
+        "voltage_pu": {
+          "real": 0.5175125860845163,
+          "imag": -0.204433627482429
+        },
+        "current_magnitude_pu": 2.929308859572244,
+        "delivered_power_pu": {
+          "real": 1.5419186406199055,
+          "imag": 0.5284169377093105
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.5564282386808819,
+        "scale": 2.9,
+        "current_pu": {
+          "real": 2.22838667220103,
+          "imag": -1.9013530008720791
+        }
+      },
+      {
+        "residual_pu": 1.2915134304545843e-13,
+        "family": "ZIP",
+        "iterations": 81,
+        "voltage_pu": {
+          "real": 0.48627546827787943,
+          "imag": -0.20306397130361659
+        },
+        "current_magnitude_pu": 3.0880205580133833,
+        "delivered_power_pu": {
+          "real": 1.5367615084868373,
+          "imag": 0.5352233756783291
+        },
+        "converged": true,
+        "voltage_magnitude_pu": 0.5269713535767072,
+        "scale": 3,
+        "current_pu": {
+          "real": 2.2996311858235496,
+          "imag": -2.0609627303522644
+        }
+      }
+    ],
+    "last_converged_scale": {
+      "CP": 1.7,
+      "CZ": 3,
+      "ZIP": 3,
+      "CI": 3
+    },
+    "model_scope": "two-bus scalar AC continuation probe using damped fixed-point branch tracking and demand scale",
+    "first_failed_scale": {
+      "CP": 1.8
+    }
+  },
+  "explicit_earth": {
+    "checks": {
+      "asset_identity_retained": true,
+      "maintenance_changes_availability": true,
+      "touch_voltage_observation_changes": true,
+      "fault_increases_fault_current": true,
+      "multiple_fault_classes_retained": true,
+      "fault_crosses_protection_threshold": true,
+      "relay_curve_observation_retained": true,
+      "outage_changes_earth_current": true,
+      "same_bus_branch_graph": true,
+      "relay_time_limit_is_evaluated": true,
+      "ct_measurement_map_retained": true,
+      "ct_saturation_can_change_trip_decision": true,
+      "outage_does_not_equal_ideal_reference": true,
+      "earth_port_retained": true
+    },
+    "relay_time_constant_s": 0.1,
+    "asset_ids": [
+      "asset/earth-conductor/e1",
+      "asset/neutral-bond/b1",
+      "asset/protection-zone/z1"
+    ],
+    "ct_pickup_secondary_pu": 0.2,
+    "witness_id": "GROUND-SCOPE-003",
+    "ct_ratio": 10,
+    "neutral_impedance_pu": {
+      "real": 0.08,
+      "imag": 0.16
+    },
+    "ct_saturation_probe": {
+      "fault_class": "phase_earth",
+      "interpretation": "A declared saturation cap can change the relay decision; it is a sensitivity probe, not a CT electromagnetic model.",
+      "saturated_trip": false,
+      "ideal_secondary_current_pu": 0.2811142138964221,
+      "ideal_trip": true,
+      "saturated_secondary_current_pu": 0.18
+    },
+    "same_bus_branch_graph": true,
+    "earth_bond_admittance_pu": {
+      "real": 2.3076923076923075,
+      "imag": -1.5384615384615385
+    },
+    "relay_curve_id": "illustrative_inverse_time_v0.1",
+    "ct_saturation_cap_secondary": 0.18,
+    "phase_impedance_pu": {
+      "real": 0.05,
+      "imag": 0.1
+    },
+    "earth_conductor_is_explicit_port": true,
+    "rows": [
+      {
+        "phase_voltage_pu": {
+          "real": 0.9292084732854764,
+          "imag": -0.056381871439880604
+        },
+        "maintenance_decision": 0,
+        "ct_pickup_secondary_pu": 0.2,
+        "state": "earth_in_service",
+        "relay_curve_id": "illustrative_inverse_time_v0.1",
+        "touch_voltage_limit_pu": 0.1,
+        "neutral_current_pu": {
+          "real": 0.552647606321558,
+          "imag": -0.30333855009758603
+        },
+        "neutral_fault_current_pu": {
+          "real": 0,
+          "imag": 0
+        },
+        "protection_trip_observed": false,
+        "earth_conductor_current_magnitude_pu": 0.18539859826246466,
+        "earth_voltage_magnitude_pu": 0.04974766423776545,
+        "fault_current_pu": {
+          "real": 0,
+          "imag": 0
+        },
+        "fault_class": "none",
+        "earth_voltage_pu": {
+          "real": 0.03078069933284852,
+          "imag": 0.039081691950249874
+        },
+        "maintenance_cost": 0,
+        "earth_conductor_current_pu": {
+          "real": 0.18157347205558044,
+          "imag": -0.03746617785907862
+        },
+        "bond_current_pu": {
+          "real": 0.1815734720555805,
+          "imag": -0.03746617785907865
+        },
+        "relay_operation_observed": false,
+        "phase_fault_current_pu": {
+          "real": 0,
+          "imag": 0
+        },
+        "touch_voltage_pu": 0.04974766423776545,
+        "touch_voltage_limit_satisfied": true,
+        "relay_trip_time_s": null,
+        "neutral_voltage_pu": {
+          "real": 0.0927459765213384,
+          "imag": 0.06415653300364238
+        },
+        "ct_ratio": 10,
+        "asset_state": "e1=in_service; b1=in_service",
+        "fault_current_limit_pu": 0.5,
+        "ct_measured_current_magnitude_pu": 0,
+        "fault_current_magnitude_pu": 0,
+        "load_current_pu": {
+          "real": 0.7342210783771386,
+          "imag": -0.3408047279566645
+        }
+      },
+      {
+        "phase_voltage_pu": {
+          "real": 0.929267527595838,
+          "imag": -0.0534423152551583
+        },
+        "maintenance_decision": 1,
+        "ct_pickup_secondary_pu": 0.2,
+        "state": "earth_conductor_maintenance_outage",
+        "relay_curve_id": "illustrative_inverse_time_v0.1",
+        "touch_voltage_limit_pu": 0.1,
+        "neutral_current_pu": {
+          "real": 0.71046829848597,
+          "imag": -0.35209060372029505
+        },
+        "neutral_fault_current_pu": {
+          "real": 0,
+          "imag": 0
+        },
+        "protection_trip_observed": false,
+        "earth_conductor_current_magnitude_pu": 1.4184302525166531e-7,
+        "earth_voltage_magnitude_pu": 0.14184302525166534,
+        "fault_current_pu": {
+          "real": 0,
+          "imag": 0
+        },
+        "fault_class": "none",
+        "earth_voltage_pu": {
+          "real": 0.11317194362406793,
+          "imag": 0.0855076311734535
+        },
+        "maintenance_cost": 1,
+        "earth_conductor_current_pu": {
+          "real": 1.1317194362406793e-7,
+          "imag": 8.55076311734535e-8
+        },
+        "bond_current_pu": {
+          "real": 1.1317194371811385e-7,
+          "imag": 8.550763118931624e-8
+        },
+        "relay_operation_observed": false,
+        "phase_fault_current_pu": {
+          "real": 0,
+          "imag": 0
+        },
+        "touch_voltage_pu": 0.14184302525166534,
+        "touch_voltage_limit_satisfied": false,
+        "relay_trip_time_s": null,
+        "neutral_voltage_pu": {
+          "real": 0.11317196047412481,
+          "imag": 0.0855076794601316
+        },
+        "ct_ratio": 10,
+        "asset_state": "e1=outage; b1=in_service",
+        "fault_current_limit_pu": 0.5,
+        "ct_measured_current_magnitude_pu": 0,
+        "fault_current_magnitude_pu": 0,
+        "load_current_pu": {
+          "real": 0.7104684116579139,
+          "imag": -0.352090518212664
+        }
+      },
+      {
+        "phase_voltage_pu": {
+          "real": 0.6464041838412735,
+          "imag": -0.030775882848784047
+        },
+        "maintenance_decision": 0,
+        "ct_pickup_secondary_pu": 0.2,
+        "state": "phase_to_earth_fault",
+        "relay_curve_id": "illustrative_inverse_time_v0.1",
+        "touch_voltage_limit_pu": 0.1,
+        "neutral_current_pu": {
+          "real": 0.901862292706251,
+          "imag": -0.915438230377898
+        },
+        "neutral_fault_current_pu": {
+          "real": 0,
+          "imag": 0
+        },
+        "protection_trip_observed": true,
+        "earth_conductor_current_magnitude_pu": 1.944369550478343,
+        "earth_voltage_magnitude_pu": 0.521729098590034,
+        "fault_current_pu": {
+          "real": 1.2961559731234877,
+          "imag": -2.494493900332619
+        },
+        "fault_class": "phase_earth",
+        "earth_voltage_pu": {
+          "real": 0.520701308365499,
+          "imag": -0.03273224376707118
+        },
+        "maintenance_cost": 0,
+        "earth_conductor_current_pu": {
+          "real": 0.7587280347189278,
+          "imag": -1.790224767496782
+        },
+        "bond_current_pu": {
+          "real": -0.537427938404559,
+          "imag": 0.7042691328358377
+        },
+        "relay_operation_observed": true,
+        "phase_fault_current_pu": {
+          "real": 1.2961559731234877,
+          "imag": -2.494493900332619
+        },
+        "touch_voltage_pu": 0.521729098590034,
+        "touch_voltage_limit_satisfied": false,
+        "relay_trip_time_s": 0.24656591045237503,
+        "neutral_voltage_pu": {
+          "real": 0.21861910027696374,
+          "imag": 0.07106290840276831
+        },
+        "ct_ratio": 10,
+        "asset_state": "e1=in_service; b1=in_service; fault=applied",
+        "fault_current_limit_pu": 0.5,
+        "ct_measured_current_magnitude_pu": 0.2811142138964221,
+        "fault_current_magnitude_pu": 2.8111421389642213,
+        "load_current_pu": {
+          "real": 0.3644343543016918,
+          "imag": -0.21116909754205987
+        }
+      },
+      {
+        "phase_voltage_pu": {
+          "real": 0.9281837938014492,
+          "imag": -0.05795421245755794
+        },
+        "maintenance_decision": 0,
+        "ct_pickup_secondary_pu": 0.2,
+        "state": "neutral_to_earth_fault",
+        "relay_curve_id": "illustrative_inverse_time_v0.1",
+        "touch_voltage_limit_pu": 0.1,
+        "neutral_current_pu": {
+          "real": 0.48362372336940734,
+          "imag": -0.22363457218612398
+        },
+        "neutral_fault_current_pu": {
+          "real": 0.22056405797738982,
+          "imag": -0.12004594887480138
+        },
+        "protection_trip_observed": false,
+        "earth_conductor_current_magnitude_pu": 0.2926011681057761,
+        "earth_voltage_magnitude_pu": 0.07851313226164304,
+        "fault_current_pu": {
+          "real": 0.22056405797738982,
+          "imag": -0.12004594887480138
+        },
+        "fault_class": "neutral_earth",
+        "earth_voltage_pu": {
+          "real": 0.060651750747522645,
+          "imag": 0.04985656495181591
+        },
+        "maintenance_cost": 0,
+        "earth_conductor_current_pu": {
+          "real": 0.2672748010852575,
+          "imag": -0.11907822757204896
+        },
+        "bond_current_pu": {
+          "real": 0.04671074310786771,
+          "imag": 0.0009677213027526783
+        },
+        "relay_operation_observed": false,
+        "phase_fault_current_pu": {
+          "real": 0,
+          "imag": 0
+        },
+        "touch_voltage_pu": 0.07851313226164304,
+        "touch_voltage_limit_satisfied": true,
+        "relay_trip_time_s": null,
+        "neutral_voltage_pu": {
+          "real": 0.07447142941933242,
+          "imag": 0.059489029964215255
+        },
+        "ct_ratio": 10,
+        "asset_state": "e1=in_service; b1=in_service; fault=applied",
+        "fault_current_limit_pu": 0.5,
+        "ct_measured_current_magnitude_pu": 0.025111657355241374,
+        "fault_current_magnitude_pu": 0.25111657355241374,
+        "load_current_pu": {
+          "real": 0.750898524454665,
+          "imag": -0.3427127997581727
+        }
+      }
+    ],
+    "interpretation": "An explicit earth conductor and its outage/fault observations are not recoverable from a simple graph or an ideal reference alone; this is a scoped E_2 witness, not a complete protection model.",
+    "touch_voltage_limit_pu": 0.1,
+    "model_scope": "one-phase explicit-earth-conductor fixture with a finite neutral bond, maintenance outage, two fault classes, and CT-scaled protection observation",
+    "relay_time_limit_s": 0.3
+  },
+  "source": "experiments/transformations/LoadGroundingWitness.jl",
+  "schema_version": "0.1.0",
+  "grounding_models": {
+    "checks": {
+      "same_bus_branch_graph": true,
+      "ideal_grounding_neutral_voltage_small": true,
+      "grounding_changes_current_allocation": true,
+      "floating_ground_current_zero": true,
+      "impedance_grounding_changes_neutral_voltage": true
+    },
+    "phase_impedance_pu": {
+      "real": 0.05,
+      "imag": 0.1
+    },
+    "load_admittance_pu": {
+      "real": 0.9174311926605504,
+      "imag": -0.2752293577981651
+    },
+    "witness_id": "GROUND-SCOPE-002",
+    "rows": [
+      {
+        "neutral_current_pu": {
+          "real": 0.7104684061615841,
+          "imag": -0.35209053756680286
+        },
+        "ground_current_pu": {
+          "real": 0,
+          "imag": 0
+        },
+        "phase_voltage_pu": {
+          "real": 0.9292675259352404,
+          "imag": -0.053442313737818326
+        },
+        "neutral_current_magnitude_pu": 0.7929269214737648,
+        "state": "floating",
+        "neutral_voltage_pu": {
+          "real": 0.1131719585036152,
+          "imag": 0.08550770198050923
+        },
+        "ground_current_magnitude_pu": 0,
+        "load_voltage_pu": {
+          "real": 0.8160955674316253,
+          "imag": -0.13895001571832755
+        },
+        "neutral_voltage_magnitude_pu": 0.14184307980839805,
+        "load_current_pu": {
+          "real": 0.7104684061615844,
+          "imag": -0.3520905375668028
+        }
+      },
+      {
+        "neutral_current_pu": {
+          "real": 0.4661165412171222,
+          "imag": -0.31122763353429417
+        },
+        "ground_current_pu": {
+          "real": 0.27739854293274047,
+          "imag": -0.019330908915173584
+        },
+        "phase_voltage_pu": {
+          "real": 0.9297683915475599,
+          "imag": -0.057823581292512916
+        },
+        "neutral_current_magnitude_pu": 0.5604705789526959,
+        "state": "impedance_grounded",
+        "neutral_voltage_pu": {
+          "real": 0.08708574466285685,
+          "imag": 0.049680435911996015
+        },
+        "ground_current_magnitude_pu": 0.27807127802183057,
+        "load_voltage_pu": {
+          "real": 0.8426826468847031,
+          "imag": -0.10750401720450893
+        },
+        "neutral_voltage_magnitude_pu": 0.10026002511415127,
+        "load_current_pu": {
+          "real": 0.7435150841498627,
+          "imag": -0.3305585424494677
+        }
+      },
+      {
+        "neutral_current_pu": {
+          "real": 4.950741763674328e-7,
+          "imag": -4.9504759238615726e-6
+        },
+        "ground_current_pu": {
+          "real": 0.8316820819272461,
+          "imag": -0.31682620569013653
+        },
+        "phase_voltage_pu": {
+          "real": 0.9267327555333227,
+          "imag": -0.06732669989183931
+        },
+        "neutral_current_magnitude_pu": 4.975169375291557e-6,
+        "state": "perfectly_grounded",
+        "neutral_voltage_pu": {
+          "real": 8.316820819272461e-7,
+          "imag": -3.168262056901365e-7
+        },
+        "ground_current_magnitude_pu": 0.8899853538181667,
+        "load_voltage_pu": {
+          "real": 0.9267319238512407,
+          "imag": -0.06732638306563363
+        },
+        "neutral_voltage_magnitude_pu": 8.899853538181667e-7,
+        "load_current_pu": {
+          "real": 0.8316825770014226,
+          "imag": -0.31683115616606033
+        }
+      }
+    ],
+    "same_connectivity_graph": true,
+    "interpretation": "Changing the grounding relation leaves simple connectivity unchanged but changes neutral voltage, return-current allocation, and grounding observations.",
+    "model_scope": "one-phase two-conductor load with explicit neutral return and three customer-end grounding relations",
+    "neutral_impedance_pu": {
+      "real": 0.08,
+      "imag": 0.16
+    }
+  }
+}

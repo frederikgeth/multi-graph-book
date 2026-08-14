@@ -463,7 +463,52 @@ model_scope = "running-network v0.1.0 four-conductor line l1 split into two equa
 assumptions = "linear series relation; invertible internal block; neutral current is an observed branch quantity; the declared current limit is part of the decision observation set"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Extend the neutral-current recovery contract to shunts, nonlinear loads, explicit earth-return factors, and general neutral/grounding reductions."
+unresolved_issue = "Extend the neutral-current recovery contract from the linear shunt probe to nonlinear loads, explicit earth-return factors, and general neutral/grounding reductions; the series and shunt probes have independent reproductions."
+
+[[claim]]
+claim_id = "TR-KRON-NEUTRAL-002"
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the recorded five-conductor midpoint probe, retaining an explicit earth terminal and a midpoint neutral-earth bond yields separately recoverable neutral and earth KCL currents and a neutral-current limit; collapsing earth return into neutral would lose an observed factor relation."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_explicit_earth_kron_recovery_witness"
+citation_keys = []
+model_scope = "synthetic five-conductor linear series midpoint with ordered (a,b,c,n,e) terminals and a fixed midpoint neutral-earth bond"
+assumptions = "the earth terminal and bond are explicit; the probe is linear and synthetic; no standards-aligned grounding or protection claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to nonlinear earth-return factors, multiple grounding points, protection observations, and independent physical-model review."
+
+[[claim]]
+claim_id = "TR-KRON-NEUTRAL-003"
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the recorded three-segment five-conductor probe with two explicit neutral-earth bonds, each grounding point has separately recoverable neutral and earth KCL currents and bond-current observations; a single collapsed neutral constraint cannot represent both points."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_multiple_grounding_kron_recovery_witness"
+citation_keys = []
+model_scope = "synthetic five-conductor linear three-segment series chain with ordered (a,b,c,n,e) terminals and two fixed internal neutral-earth bonds"
+assumptions = "both internal grounding points and the earth conductor are explicit; the probe is linear and synthetic; no standards-aligned grounding or protection claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to nonlinear and state-dependent grounding, grounding impedance uncertainty, protection observations, and physical-model review."
+
+[[claim]]
+claim_id = "TR-KRON-NEUTRAL-004"
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the recorded finite grounding-impedance sweep, changing the two explicit neutral-earth impedances changes recovered neutral current and the feasibility classification under one fixed neutral limit, even though the structural reduction and KCL contracts remain unchanged."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_grounding_impedance_sweep_kron_witness"
+citation_keys = []
+model_scope = "synthetic five-conductor linear three-segment series chain with two explicit grounding points and four declared impedance pairs"
+assumptions = "the topology, terminal order, and reduction map are fixed across cases; only the two grounding impedances vary; no uncertainty or standards-aligned grounding claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to uncertainty sets, nonlinear/state-dependent grounding, protection observations, and physical-model review."
 
 [[claim]]
 claim_id = "TR-GRAPH-001"
@@ -568,7 +613,7 @@ model_scope = "linear balanced three-phase series and nominal-pi factors with de
 assumptions = "all seven guards stated in docs/src/foundations/when-general-model-collapses.md"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Add a generated balanced transmission fixture, residual calculation, and independent mathematical review."
+unresolved_issue = "Extend the network witness to controls, phase-specific limits, contingencies, and an independent mathematical review before making a global decision-equivalence claim."
 
 [[claim]]
 claim_id = "GROUND-SCOPE-001"
@@ -583,7 +628,7 @@ model_scope = "steady-state multiconductor power-network reductions"
 assumptions = "the four earth/ground meanings and E_0--E_3 model classes are book conventions"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Add an explicit-earth-conductor fixture and a protection/grounding-asset case."
+unresolved_issue = "Extend the explicit-earth witness to relay curves, CT saturation, richer maintenance decisions, and independent reproduction."
 
 [[claim]]
 claim_id = "TOPOLOGY-001"
@@ -643,7 +688,7 @@ model_scope = "one fixed three-phase linear series primitive in declared a,b,c o
 assumptions = "Fortescue matrix and phase-domain matrix are exactly those recorded in the generated witness"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Extend the witness to nominal-pi shunts, network assembly, and an independently implemented balanced transmission fixture."
+unresolved_issue = "Extend the witness to controls, phase-specific limits, contingencies, and independent mathematical review."
 
 [[claim]]
 claim_id = "NUMERICAL-001"
@@ -704,3 +749,108 @@ assumptions = "Euclidean norm; one eliminated state; fixed internal injection mi
 reviewer = ""
 review_date = ""
 unresolved_issue = "Extend the chain to a nonlinear AC decision model, parameter uncertainty, and independent error analysis before treating it as a general certification theorem."
+
+[[claim]]
+claim_id = "TR-NEG-001"
+chapter = "docs/src/foundations/translation-traps.md"
+claim_text = "The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_negative_transformation_and_formulation_witness"
+citation_keys = []
+model_scope = "small package-independent series, transformer-scope, multi-terminal-incidence, and two-member BIM/BFM fixtures"
+assumptions = "the named compiler guards and branch consistency relation are the declared semantics; the witnesses are counterexamples to the shorthand, not universal impossibility theorems"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the negative cases to nominal-pi cascades, protection boundaries, nonlinear formulations, and independent reproduction."
+
+[[claim]]
+claim_id = "LOAD-DECISION-001"
+chapter = "docs/src/foundations/load-models-and-decision-dependence.md"
+claim_text = "On the recorded two-bus fixture, CP, CI, CZ, and a normalized ZIP load law share the same bus--branch graph but produce distinct high-voltage solutions and decision margins: CP violates both the declared voltage and current limits, while CI, CZ, and ZIP satisfy both."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_fixed_point_load_model_decision_witness"
+citation_keys = []
+model_scope = "two-bus scalar AC fixture with fixed source voltage, series impedance, nominal demand, separately normalized active- and reactive-power ZIP coefficients, and declared voltage/current limits"
+assumptions = "damped fixed-point iteration selects the recorded high-voltage branch; CP, CI, and CZ use the stated nominal anchor and scalar demand; this is not a global solvability or model-ranking theorem"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add multiconductor connection maps and continuation to collapse points; the declared scalar CP/CI/CZ/ZIP fixture now has separately varying reactive coefficients and an independent reproduction."
+
+[[claim]]
+claim_id = "LOAD-CONNECTION-001"
+chapter = "docs/src/foundations/load-models-and-decision-dependence.md"
+claim_text = "On the recorded balanced three-phase terminal fixture, explicit wye phase-to-neutral and delta phase-to-phase connection maps share the same bus and graph but produce different load-voltage observations: unit-magnitude wye voltages and sqrt(3)-magnitude delta voltages."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_terminal_connection_map_witness"
+citation_keys = []
+model_scope = "one balanced three-phase bus with ordered (a,b,c,n) terminals and fixed linear wye/delta voltage maps"
+assumptions = "phase voltages are balanced positive sequence; the neutral is the reference; the maps are fixed and linear; no load power-flow or rating claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend connection-map evidence to unbalanced multiconductor loads, explicit grounding, phase-specific ratings, and network-level decision solves."
+
+[[claim]]
+claim_id = "LOAD-CONTINUATION-001"
+chapter = "docs/src/foundations/load-models-and-decision-dependence.md"
+claim_text = "On the recorded scalar two-bus continuation probe, the damped CP branch first fails to converge at demand scale 1.8 after a converged scale 1.7, while CI, CZ, and the declared ZIP branch remain converged through scale 3.0; this is an iteration-scoped branch diagnostic, not a global collapse theorem."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_scalar_load_continuation_probe"
+citation_keys = []
+model_scope = "two-bus scalar AC fixture with fixed series impedance, demand scale grid 0.2:0.1:3.0, damped fixed-point continuation, and CP/CI/CZ/ZIP laws"
+assumptions = "the continuation starts from the previous converged voltage, uses a 2000-iteration cap and 0.5 damping, and classifies failure by residual and convergence flag"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Replace the iteration-failure boundary with a mathematically continued nose curve, add independent solver continuation, and extend to multiconductor/network-level decisions."
+
+[[claim]]
+claim_id = "GROUND-SCOPE-002"
+chapter = "docs/src/foundations/earth-ground-models.md"
+claim_text = "On the recorded two-conductor fixture, floating, finite-impedance, and ideal customer-end grounding relations share the same simple bus--branch graph but change neutral voltage, ground-current allocation, and the associated observations."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_linear_neutral_grounding_comparison"
+citation_keys = []
+model_scope = "one-phase two-conductor linear load with explicit neutral return and three customer-end grounding relations"
+assumptions = "the source neutral is the reference through a finite neutral impedance; ideal grounding is represented by a 1e6 S shunt; this is not an explicit-earth-conductor or protection certificate"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the explicit-earth comparison to relay curves, CT saturation, richer maintenance decisions, and independent reproduction."
+
+[[claim]]
+claim_id = "GROUND-SCOPE-003"
+chapter = "docs/src/foundations/earth-ground-models.md"
+claim_text = "In the scoped E₂ witness, an explicit earth conductor with a finite neutral-to-earth bond has distinct in-service, earth-conductor-outage, and phase-to-earth-fault states; the outage changes earth-current availability and the fault crosses the declared protection-current threshold while the simple bus graph remains fixed."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_explicit_earth_conductor_and_protection_threshold_witness"
+citation_keys = []
+model_scope = "one-phase three-node linear phase/neutral/earth fixture with a finite bond and three declared states"
+assumptions = "the earth conductor is represented by a finite series impedance, the outage by a 1e6 ohm impedance, the fault by a fixed phase-to-earth admittance, and protection is the declared 0.50 pu current threshold"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to relay curves, CT saturation, richer maintenance decisions, and independent reproduction."
+
+[[claim]]
+claim_id = "GROUND-SCOPE-004"
+chapter = "docs/src/foundations/earth-ground-models.md"
+claim_text = "In the explicit-earth witness, a declared inverse-time relay curve maps the CT-scaled phase-earth fault current to a 0.2466 s operation, while the neutral-earth fault remains below pickup; a separate declared CT-saturation cap changes the phase-fault trip decision."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_illustrative_relay_curve_and_ct_saturation_probe"
+citation_keys = []
+model_scope = "the GROUND-SCOPE-003 three-node fixture with CT ratio 10, 0.20 pu secondary pickup, a 0.10 s inverse-time constant, and a 0.18 pu saturation sensitivity cap"
+assumptions = "the relay curve and saturation cap are declared illustrative functions, not standards, calibrated relay models, or electromagnetic CT simulations"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Replace the illustrative functions with standards-aligned relay/CT models and quantify uncertainty and coordination margins."

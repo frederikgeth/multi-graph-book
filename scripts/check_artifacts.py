@@ -20,6 +20,8 @@ GENERATED = ROOT / "experiments/generated"
 PORT_FACTOR_ARCHITECTURE = GENERATED / "port-factor-architecture.json"
 FIVE_BUS_PORT_FACTOR = GENERATED / "five-bus-port-factor-witness.json"
 POSITIVE_SEQUENCE_WITNESS = GENERATED / "positive-sequence-collapse-witness.json"
+BALANCED_TRANSMISSION_WITNESS = GENERATED / "balanced-transmission-witness.json"
+BALANCED_TRANSMISSION_REPRODUCTION = GENERATED / "balanced-transmission-independent-reproduction.json"
 KRON_WARD_SCENARIO = GENERATED / "kron-ward-scenario-comparison.json"
 CERTIFIED_APPROXIMATION = GENERATED / "certified-approximation-witness.json"
 NONLINEAR_WARD_WITNESS = GENERATED / "nonlinear-ward-witness.json"
@@ -31,6 +33,16 @@ THREE_MEMBER_FOUR_WIRE_PARALLEL_AC = GENERATED / "three-member-four-wire-paralle
 TRANSFORMER_CONTROL_FAMILY = GENERATED / "transformer-control-family-witness.json"
 TRANSFORMER_TAP_AC = GENERATED / "transformer-tap-ac-decision-certificate.json"
 NODE_BREAKER_STATE = GENERATED / "node-breaker-state-witness.json"
+LOAD_GROUNDING_WITNESS = GENERATED / "load-grounding-witnesses.json"
+LOAD_MODEL_REPRODUCTION = GENERATED / "load-model-independent-reproduction.json"
+CONNECTION_MAP_REPRODUCTION = GENERATED / "connection-map-independent-reproduction.json"
+LOAD_CONTINUATION_REPRODUCTION = GENERATED / "load-continuation-independent-reproduction.json"
+NEUTRAL_KRON_REPRODUCTION = GENERATED / "neutral-kron-independent-reproduction.json"
+EXPLICIT_EARTH_KRON_WITNESS = GENERATED / "explicit-earth-kron-witness.json"
+EXPLICIT_EARTH_KRON_REPRODUCTION = GENERATED / "explicit-earth-kron-independent-reproduction.json"
+GROUNDING_IMPEDANCE_SWEEP = GENERATED / "grounding-impedance-sweep-witness.json"
+GROUNDING_IMPEDANCE_REPRODUCTION = GENERATED / "grounding-impedance-sweep-independent-reproduction.json"
+EXPLICIT_EARTH_REPRODUCTION = GENERATED / "explicit-earth-independent-reproduction.json"
 RUNNING_NETWORK_RADIALITY = GENERATED / "running-network-radiality-witness.json"
 FIVE_BUS_ACTIVE_RADIALITY = GENERATED / "five-bus-active-radiality-witness.json"
 FIVE_BUS_TYPED_KRON = GENERATED / "five-bus-typed-kron-witness.json"
@@ -384,6 +396,8 @@ def main() -> int:
         PORT_FACTOR_ARCHITECTURE,
         FIVE_BUS_PORT_FACTOR,
         POSITIVE_SEQUENCE_WITNESS,
+        BALANCED_TRANSMISSION_WITNESS,
+        BALANCED_TRANSMISSION_REPRODUCTION,
         KRON_WARD_SCENARIO,
         CERTIFIED_APPROXIMATION,
         NONLINEAR_WARD_WITNESS,
@@ -394,6 +408,16 @@ def main() -> int:
         THREE_MEMBER_FOUR_WIRE_PARALLEL_AC,
         TRANSFORMER_CONTROL_FAMILY,
         NODE_BREAKER_STATE,
+        LOAD_GROUNDING_WITNESS,
+        LOAD_MODEL_REPRODUCTION,
+        CONNECTION_MAP_REPRODUCTION,
+        LOAD_CONTINUATION_REPRODUCTION,
+        NEUTRAL_KRON_REPRODUCTION,
+        EXPLICIT_EARTH_KRON_WITNESS,
+        EXPLICIT_EARTH_KRON_REPRODUCTION,
+        GROUNDING_IMPEDANCE_SWEEP,
+        GROUNDING_IMPEDANCE_REPRODUCTION,
+        EXPLICIT_EARTH_REPRODUCTION,
         RUNNING_NETWORK_RADIALITY,
         FIVE_BUS_ACTIVE_RADIALITY,
         FIVE_BUS_TYPED_KRON,
@@ -603,6 +627,39 @@ def main() -> int:
     if rejected_sequence.get("sequence_diagonal_residual", 0.0) <= 1.0e-3:
         errors.append("positive-sequence negative witness no longer mixes sequences")
 
+    balanced_transmission = load_json(BALANCED_TRANSMISSION_WITNESS)
+    if balanced_transmission.get("witness_id") != "COLLAPSE-NETWORK-001":
+        errors.append("balanced transmission witness has an invalid witness ID")
+    if balanced_transmission.get("claim_id") not in claim_ids:
+        errors.append("balanced transmission witness uses an unregistered claim ID")
+    if balanced_transmission.get("all_checks_pass") is not True:
+        errors.append("balanced transmission witness failed its checks")
+    for name in (
+        "circulant_series_and_shunt",
+        "nominal_pi_shunts_included",
+        "phase_solution_matches_embedded_scalar",
+        "phase_nodal_residual_is_small",
+        "phase_solution_stays_positive_sequence",
+        "branch_currents_match_embedded_scalar",
+        "balanced_transmission_fixture_has_two_arcs",
+    ):
+        if balanced_transmission.get("checks", {}).get(name) is not True:
+            errors.append(f"balanced transmission witness check failed: {name}")
+
+    balanced_reproduction = load_json(BALANCED_TRANSMISSION_REPRODUCTION)
+    if balanced_reproduction.get("claim_id") != "COLLAPSE-001":
+        errors.append("balanced transmission independent reproduction has an invalid claim ID")
+    if balanced_reproduction.get("all_checks_pass") is not True:
+        errors.append("balanced transmission independent reproduction failed")
+    for name in (
+        "all_values_match_julia",
+        "independent_solver_used",
+        "nominal_pi_shunts_reconstructed",
+        "no_numpy_or_julia_import",
+    ):
+        if balanced_reproduction.get("checks", {}).get(name) is not True:
+            errors.append(f"balanced transmission independent reproduction check failed: {name}")
+
     kron_ward = load_json(KRON_WARD_SCENARIO)
     if kron_ward.get("claim_id") not in claim_ids or kron_ward.get("witness_id") != "TR-KRON-002":
         errors.append("Kron/Ward/scenario comparison uses an invalid claim or witness ID")
@@ -772,6 +829,12 @@ def main() -> int:
         "boundary_relation_is_satisfied",
         "terminal_order_is_preserved",
         "source_identity_is_retained",
+        "neutral_current_recovery_is_exact",
+        "neutral_limit_is_not_silently_dropped",
+        "shunt_internal_block_is_invertible",
+        "neutral_shunt_recovery_kcl_is_exact",
+        "neutral_shunt_changes_recovered_current",
+        "neutral_shunt_limit_is_evaluated",
     ):
         if running_kron_checks.get(name) is not True:
             errors.append(f"running-network typed Kron check failed: {name}")
@@ -886,6 +949,220 @@ def main() -> int:
     ):
         if node_checks.get(name) is not True:
             errors.append(f"node-breaker state witness check failed: {name}")
+
+    load_grounding = load_json(LOAD_GROUNDING_WITNESS)
+    if load_grounding.get("all_witnesses_pass") is not True:
+        errors.append("load/grounding witness aggregate check failed")
+    for family, names in {
+        "load_models": (
+            "same_bus_branch_graph",
+            "all_residuals_small",
+            "families_produce_distinct_voltages",
+            "decision_margin_changes",
+            "zip_coefficients_are_normalized",
+            "zip_reactive_coefficients_are_distinct",
+        ),
+        "grounding_models": (
+            "same_bus_branch_graph",
+            "floating_ground_current_zero",
+            "impedance_grounding_changes_neutral_voltage",
+            "ideal_grounding_neutral_voltage_small",
+            "grounding_changes_current_allocation",
+        ),
+        "connection_maps": (
+            "same_bus_branch_graph",
+            "terminal_order_retained",
+            "wye_phase_to_neutral_map_is_explicit",
+            "delta_phase_to_phase_map_is_explicit",
+            "wye_and_delta_observations_differ",
+            "wye_magnitudes_are_one",
+            "delta_magnitudes_are_sqrt_three",
+        ),
+        "load_continuation": (
+            "same_bus_branch_graph",
+            "base_scale_converges_for_all_families",
+            "continuation_scales_are_ordered",
+            "converged_rows_have_small_residuals",
+            "constant_power_failure_is_observed",
+            "constant_power_fails_before_voltage_dependent_families",
+            "continuation_is_not_global_certificate",
+        ),
+        "explicit_earth": (
+            "same_bus_branch_graph",
+            "earth_port_retained",
+            "outage_changes_earth_current",
+            "fault_increases_fault_current",
+            "fault_crosses_protection_threshold",
+            "outage_does_not_equal_ideal_reference",
+            "asset_identity_retained",
+            "touch_voltage_observation_changes",
+            "maintenance_changes_availability",
+            "multiple_fault_classes_retained",
+            "ct_measurement_map_retained",
+            "relay_curve_observation_retained",
+            "relay_time_limit_is_evaluated",
+            "ct_saturation_can_change_trip_decision",
+        ),
+    }.items():
+        checks = load_grounding.get(family, {}).get("checks", {})
+        for name in names:
+            if checks.get(name) is not True:
+                errors.append(f"load/grounding witness check failed: {family}.{name}")
+
+    load_reproduction = load_json(LOAD_MODEL_REPRODUCTION)
+    if load_reproduction.get("claim_id") != "LOAD-DECISION-001":
+        errors.append("load-model independent reproduction has an invalid claim ID")
+    if load_reproduction.get("all_checks_pass") is not True:
+        errors.append("load-model independent reproduction failed")
+    for name in (
+        "all_rows_match_julia",
+        "independent_iteration_used",
+        "same_graph_and_limits_reused",
+        "zip_coefficients_reconstructed",
+        "zip_reactive_coefficients_reconstructed",
+        "no_numpy_or_julia_import",
+    ):
+        if load_reproduction.get("checks", {}).get(name) is not True:
+            errors.append(f"load-model independent reproduction check failed: {name}")
+
+    connection_reproduction = load_json(CONNECTION_MAP_REPRODUCTION)
+    if connection_reproduction.get("claim_id") != "LOAD-CONNECTION-001":
+        errors.append("connection-map independent reproduction has an invalid claim ID")
+    if connection_reproduction.get("all_checks_pass") is not True:
+        errors.append("connection-map independent reproduction failed")
+    for name in (
+        "wye_matches_julia",
+        "delta_matches_julia",
+        "wye_magnitudes_are_one",
+        "delta_magnitudes_are_sqrt_three",
+        "no_numpy_or_julia_import",
+    ):
+        if connection_reproduction.get("checks", {}).get(name) is not True:
+            errors.append(f"connection-map independent reproduction check failed: {name}")
+
+    continuation_reproduction = load_json(LOAD_CONTINUATION_REPRODUCTION)
+    if continuation_reproduction.get("claim_id") != "LOAD-CONTINUATION-001":
+        errors.append("load continuation independent reproduction has an invalid claim ID")
+    if continuation_reproduction.get("all_checks_pass") is not True:
+        errors.append("load continuation independent reproduction failed")
+    for name in (
+        "all_rows_match_julia",
+        "independent_iteration_used",
+        "cp_first_failure_is_scale_1_8",
+        "no_numpy_or_julia_import",
+    ):
+        if continuation_reproduction.get("checks", {}).get(name) is not True:
+            errors.append(f"load continuation independent reproduction check failed: {name}")
+
+    neutral_reproduction = load_json(NEUTRAL_KRON_REPRODUCTION)
+    if neutral_reproduction.get("claim_id") != "TR-KRON-NEUTRAL-001":
+        errors.append("neutral Kron independent reproduction has an invalid claim ID")
+    if neutral_reproduction.get("all_checks_pass") is not True:
+        errors.append("neutral Kron independent reproduction failed")
+    for name in (
+        "left_current_matches_julia",
+        "right_current_matches_julia",
+        "recovery_is_exact",
+        "limit_violation_is_retained",
+        "shunt_left_current_matches_julia",
+        "shunt_right_current_matches_julia",
+        "shunt_kcl_is_exact",
+        "shunt_limit_violation_is_retained",
+        "no_numpy_or_julia_import",
+    ):
+        if neutral_reproduction.get("checks", {}).get(name) is not True:
+            errors.append(f"neutral Kron independent reproduction check failed: {name}")
+
+    explicit_earth_kron = load_json(EXPLICIT_EARTH_KRON_WITNESS)
+    if explicit_earth_kron.get("witness_id") != "TR-KRON-NEUTRAL-002" or explicit_earth_kron.get("claim_id") not in claim_ids:
+        errors.append("explicit-earth Kron witness has an invalid witness or claim ID")
+    if explicit_earth_kron.get("all_checks_pass") is not True:
+        errors.append("explicit-earth Kron witness failed")
+    for name in (
+        "internal_block_is_invertible",
+        "terminal_order_retains_earth",
+        "earth_port_is_explicit",
+        "neutral_kcl_recovery_is_exact",
+        "earth_kcl_recovery_is_exact",
+        "bond_current_is_observed",
+        "neutral_limit_is_evaluated",
+        "earth_return_is_not_collapsed_to_neutral",
+    ):
+        if explicit_earth_kron.get("checks", {}).get(name) is not True:
+            errors.append(f"explicit-earth Kron check failed: {name}")
+    if explicit_earth_kron.get("terminal_order") != ["a", "b", "c", "n", "e"]:
+        errors.append("explicit-earth Kron witness lost its declared terminal order")
+    multiple_grounding = explicit_earth_kron.get("multiple_grounding_witness", {})
+    for name in (
+        "two_internal_blocks_are_invertible",
+        "multiple_grounding_points_are_explicit",
+        "first_bond_kcl_is_exact",
+        "second_bond_kcl_is_exact",
+        "both_bonds_are_observed",
+        "neutral_limit_is_evaluated_at_each_segment",
+    ):
+        if multiple_grounding.get("checks", {}).get(name) is not True:
+            errors.append(f"multiple-grounding Kron check failed: {name}")
+    if multiple_grounding.get("all_checks_pass") is not True:
+        errors.append("multiple-grounding Kron witness failed")
+
+    explicit_earth_kron_reproduction = load_json(EXPLICIT_EARTH_KRON_REPRODUCTION)
+    if explicit_earth_kron_reproduction.get("claim_id") != "TR-KRON-NEUTRAL-002":
+        errors.append("explicit-earth Kron independent reproduction has an invalid claim ID")
+    if explicit_earth_kron_reproduction.get("all_checks_pass") is not True:
+        errors.append("explicit-earth Kron independent reproduction failed")
+    for name in (
+        "all_values_match_julia",
+        "neutral_kcl_is_exact",
+        "earth_kcl_is_exact",
+        "earth_port_retained",
+        "no_numpy_or_julia_import",
+        "multiple_grounding_values_match_julia",
+        "multiple_grounding_kcl_is_exact",
+    ):
+        if explicit_earth_kron_reproduction.get("checks", {}).get(name) is not True:
+            errors.append(f"explicit-earth Kron independent reproduction check failed: {name}")
+
+    grounding_sweep = load_json(GROUNDING_IMPEDANCE_SWEEP)
+    if grounding_sweep.get("witness_id") != "TR-KRON-NEUTRAL-004" or grounding_sweep.get("claim_id") not in claim_ids:
+        errors.append("grounding impedance sweep has an invalid witness or claim ID")
+    if grounding_sweep.get("all_checks_pass") is not True:
+        errors.append("grounding impedance sweep failed")
+    for name in (
+        "all_internal_blocks_are_invertible",
+        "all_grounding_kcl_residuals_are_small",
+        "impedance_changes_recovered_neutral_current",
+        "feasibility_classification_changes",
+        "limit_margin_is_recorded_per_case",
+    ):
+        if grounding_sweep.get("checks", {}).get(name) is not True:
+            errors.append(f"grounding impedance sweep check failed: {name}")
+    if len(grounding_sweep.get("rows", [])) != 4:
+        errors.append("grounding impedance sweep must contain four declared cases")
+
+    grounding_reproduction = load_json(GROUNDING_IMPEDANCE_REPRODUCTION)
+    if grounding_reproduction.get("claim_id") != "TR-KRON-NEUTRAL-004":
+        errors.append("grounding impedance independent reproduction has an invalid claim ID")
+    if grounding_reproduction.get("all_checks_pass") is not True:
+        errors.append("grounding impedance independent reproduction failed")
+    for name in (
+        "all_rows_match_julia",
+        "feasibility_classification_changes",
+        "all_kcl_residuals_are_small",
+        "independent_solver_used",
+        "no_numpy_or_julia_import",
+    ):
+        if grounding_reproduction.get("checks", {}).get(name) is not True:
+            errors.append(f"grounding impedance independent reproduction check failed: {name}")
+
+    reproduction = load_json(EXPLICIT_EARTH_REPRODUCTION)
+    if reproduction.get("claim_id") != "GROUND-SCOPE-004":
+        errors.append("explicit-earth independent reproduction has an invalid claim ID")
+    if reproduction.get("all_checks_pass") is not True:
+        errors.append("explicit-earth independent reproduction failed")
+    for name in ("all_rows_match_julia", "independent_solver_used", "no_numpy_or_julia_import"):
+        if reproduction.get("checks", {}).get(name) is not True:
+            errors.append(f"explicit-earth independent reproduction check failed: {name}")
 
     running_radiality = load_json(RUNNING_NETWORK_RADIALITY)
     if running_radiality.get("witness_id") != "TOPO-RUNNING-001":

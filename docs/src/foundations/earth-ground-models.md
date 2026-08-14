@@ -1,7 +1,8 @@
 # [Earth, neutral, and reference model classes](@id earth-ground-models)
 
-**Page status:** scoped model-class taxonomy; explicit-earth and protection
-fixtures remain future work.
+**Page status:** scoped model-class taxonomy with a numerical E₂
+explicit-earth/protection witness; asset-aware protection studies remain future
+work.
 
 “Ground” is used for several different objects in power-system models. This
 book distinguishes a mathematical voltage reference, a neutral conductor, an
@@ -74,7 +75,9 @@ source reference is declared separately. The fixture does not claim a detailed
 soil or electrode model, so grounding-asset decisions remain outside its
 current numerical scope. Future explicit-earth cases should add a physical
 earth conductor or grounding-grid factor and test recovery of ground currents,
-neutral voltages, and protection observations.
+neutral voltages, and protection observations. The separate E₂ witness below
+provides that minimal explicit-earth check without changing the classification
+of the running fixture.
 
 ## A useful comparative case
 
@@ -93,6 +96,43 @@ This is not four different graphs in the simple-topology sense. It is one
 asset/connectivity view with four electrical and decision models. A study that
 only asks whether buses are connected sees no change; a study that asks for
 neutral limits, touch voltage, fault current, or electrode maintenance does.
-The comparison is therefore a natural future executable case for the
-``E_0``--``E_3`` classes, not a reason to promote “grounded” to a single graph
-attribute.
+The comparison is now instantiated in the scoped artifact
+`experiments/generated/load-grounding-witnesses.json`. It keeps the same
+two-conductor bus--branch graph and varies only the customer-end relation. The
+recorded neutral-voltage magnitudes are approximately 0.14184 (floating),
+0.10026 (finite impedance), and 0.00000 (ideal grounding); the corresponding
+ground-current magnitudes are 0, 0.27807, and 0.88999 per unit. These values
+make the decision point concrete without claiming that the three-state scalar
+fixture represents an explicit-earth-conductor or protection study.
+
+The comparison is therefore evidence for the ``E_0``--``E_3`` scope contract,
+not a reason to promote “grounded” to a single graph attribute.
+
+## Explicit earth conductor and a protection observation
+
+The same generated artifact contains a three-node linear fixture with phase,
+neutral, and earth conductor voltages. A finite neutral-to-earth bond is
+retained as a separate relation. Three resolved states are compared:
+
+| State | Earth voltage magnitude | Earth-conductor current | Fault current | Protection observation |
+| --- | ---: | ---: | ---: | --- |
+| earth in service | 0.04975 | 0.18540 | 0 | no trip |
+| earth conductor maintenance outage | 0.14184 | 0 | 0 | no trip |
+| phase-to-earth fault | 0.52173 | 1.94437 | 2.81114 | trip |
+| neutral-to-earth fault | 0.07851 | 0.29260 | 0.25112 | no trip |
+
+The outage and fault rows show why an explicit earth port cannot be replaced
+by an ideal reference: the earth conductor has its own current, availability,
+protection observation, and asset identity. The witness also records earth-node
+voltage as a touch-voltage observation: the declared 0.10 pu limit passes in
+service (0.04975 pu) and fails for both the maintenance outage (0.14184 pu)
+and the faults (0.52173 pu and 0.07851 pu). The earth-conductor maintenance
+decision is retained with its asset state and cost. Protection uses a CT ratio
+of 10 and a 0.20 pu secondary pickup: the phase fault measures 0.28111 pu,
+trips after 0.2466 s under the declared inverse-time curve, while the neutral
+fault measures 0.02511 pu and does not trip. A separate saturation probe caps
+the phase-fault secondary current at 0.18 pu and changes that trip decision.
+These are declared sensitivity models, not relay or CT standards. This is a
+deliberately small E₂/E₃ boundary witness and does not model relay curves
+beyond the illustrative curve, CT electromagnetic behaviour, or a complete
+fault-class enumeration.

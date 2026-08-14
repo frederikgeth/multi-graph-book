@@ -15,4 +15,7 @@ using .RunningNetworkTypedKronWitness
     @test result.checks["neutral_current_recovery_is_exact"]
     @test result.checks["neutral_limit_is_not_silently_dropped"]
     @test result.neutral_limit_witness["reduced_limit_constraint_evaluated"]
+    @test result.checks["shunt_internal_block_is_invertible"]
+    @test result.checks["neutral_shunt_recovery_kcl_is_exact"]
+    @test result.checks["neutral_shunt_limit_is_evaluated"]
 end

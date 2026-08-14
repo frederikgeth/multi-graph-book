@@ -103,6 +103,7 @@ const PAGES_HTML = [
         "Non-proportional three-phase four-wire parallel case" => "cases/four-wire-parallel-ac-decision.md",
         "Four-wire nominal-pi parallel case" => "cases/pi-four-wire-parallel-ac-decision.md",
         "Transformer tap AC decision case" => "cases/transformer-tap-ac-decision.md",
+        "BIM/BFM parallel lines: an expressiveness audit" => "cases/bim-bfm-parallel-lines.md",
     ],
     "Part I — Representation landscape" => [
         "Representation frameworks" => "foundations/formal-representation-frameworks.md",
@@ -122,6 +123,7 @@ const PAGES_HTML = [
     ],
     "Part II — Transformation language" => [
         "Preservation contracts" => "foundations/preservation-contracts.md",
+        "Transformation semantics and register" => "foundations/transformation-semantics-register.md",
         "Projection, compilation, and reduction" => "transformations/projection-compilation-reduction.md",
         "Circuit coordinate transformations" => "transformations/circuit-coordinate-transformations.md",
         "Kron, Ward, and optimized network equivalents" => "transformations/kron-ward-opti-kron.md",
@@ -169,6 +171,7 @@ const PAGES_PDF = [
         "Orientation, terminal quantities, and power transfer" => "foundations/orientation-terminal-power.md",
         "Cycles, parallelism, and radial structure" => "foundations/cycles-parallelism-radiality.md",
         "Preservation contracts" => "foundations/preservation-contracts.md",
+        "Transformation semantics and register" => "foundations/transformation-semantics-register.md",
         "Projection, compilation, and reduction" => "transformations/projection-compilation-reduction.md",
         "Circuit coordinate transformations" => "transformations/circuit-coordinate-transformations.md",
         "Kron, Ward, and optimized network equivalents" => "transformations/kron-ward-opti-kron.md",
@@ -178,6 +181,7 @@ const PAGES_PDF = [
         "Conductor-coordinate normalization" => "transformations/conductor-coordinate-normalization.md",
         "Multiwinding terminal leakage assembly" => "transformations/multiwinding-terminal-leakage-assembly.md",
         "Transformer tap AC decision case" => "cases/transformer-tap-ac-decision.md",
+        "BIM/BFM parallel lines: an expressiveness audit" => "cases/bim-bfm-parallel-lines.md",
         "Numerical consequences of representation and reduction" => "foundations/numerical-consequences.md",
     ],
     "Reference" => [

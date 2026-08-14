@@ -25,7 +25,9 @@ terminal equation while changing a decision-feasible set. Continue through
 [Formal representation frameworks](@ref formal-representation-frameworks),
 [Translation traps: graphs, circuits, and power-system language](@ref
 translation-traps), and [Preservation contracts](@ref preservation-contracts)
-before reading the guarded transformations and worked cases.
+and [Transformation semantics and register](@ref
+transformation-semantics-register) before reading the guarded transformations
+and worked cases.
 
 For the complete retrieval surface, use the generated [knowledge-base index](@ref
 knowledge-base-index), which lists claims, artifacts, chapters, open items, and
@@ -61,6 +63,11 @@ to the same preservation-contract and evidence language.
 - **Can I reduce or compile a model?** Read [Preservation contracts](@ref
   preservation-contracts), [Projection, compilation, and reduction](@ref), and
 [Kron, Ward, and optimized network equivalents](@ref kron-ward-opti-kron).
+- **What does a transformation preserve, and what does it erase?** Read
+  [Transformation semantics and register](@ref
+  transformation-semantics-register), then [Degree-two series elimination](@ref
+  degree-two-series-rule) and [BIM/BFM parallel lines: an expressiveness audit](@ref
+  bim-bfm-parallel-lines).
 - **What survives a decision problem?** Read the parallel-line cases, the
   transformer-tap case, [Certificate schema and composition](@ref
   certificate-schema-composition), and [Guarded normalization rules](@ref).

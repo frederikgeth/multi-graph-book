@@ -60,8 +60,21 @@ than copied as package tutorials.
 - [x] add the load-model decision-dependence chapter;
 - [x] add the conductor-geometry-to-impedance fidelity ladder;
 - [x] extend the grounding taxonomy with a study-specific comparative case;
-- [ ] add executable numerical witnesses for the load-model and grounding
+- [x] add executable numerical witnesses for the load-model and grounding
   comparisons before treating them as empirical claims.
+
+The next editorial tranche is now explicit:
+
+- [x] define the four preservation layers (structure, behaviour, decision,
+  provenance) and a first reader-facing transformation register;
+- [x] add anti-patterns for heterogeneous series merges, line--transformer
+  flattening, and absorption of external grounding;
+- [x] add a BIM/BFM parallel-line expressiveness case using ``\ell i j``
+  branch identity and total-terminal-current semantics;
+- [x] define rooted active-tree views separately from stored orientation,
+  operating transfer direction, and meshed graph structure;
+- [x] add executable negative witnesses for the anti-patterns and formulation
+  changes, then bind them to the certificate/evidence matrix.
 
 ## Phase 0 — Repository and editorial foundation
 
@@ -295,6 +308,31 @@ requirements for the current knowledge-base release.
   grounding, symmetry, and decision assumptions;
 - [x] add the earth/ground model taxonomy (ideal reference, reduced earth
   return, explicit earth conductor) and scope every result accordingly;
+- [x] add a balanced three-bus nominal-``\pi`` transmission witness that
+  solves the phase-domain and positive-sequence network views independently,
+  checks voltage and branch-current recovery, and keeps the decision-equivalence
+  boundary explicit;
+- [x] reproduce that balanced witness with an independent standard-library
+  complex solver and bind the comparison to the artifact checks;
+- [x] independently reproduce the CP/CI/CZ load-model decision witness with a
+  separate damped fixed-point implementation and retain its scope boundary;
+- [x] extend that scalar witness with a normalized active-power ZIP row while
+  keeping multiconductor connection maps explicitly out of scope;
+- [x] give the ZIP row separate normalized active- and reactive-power
+  coefficients, and reproduce both coefficient maps independently;
+- [x] independently reproduce the running four-conductor Kron neutral-current
+  recovery and retained limit violation;
+- [x] add a linear midpoint neutral-to-reference shunt probe with retained KCL,
+  neutral-current recovery, and an independently reproduced limit check;
+- [x] add an explicit-earth five-conductor Kron probe with separate neutral and
+  earth KCL recovery, a retained neutral-current limit, and an independent
+  standard-library reproduction; keep standards-aligned grounding, protection,
+  and nonlinear earth-return extensions explicitly open;
+- [x] extend that probe to a three-segment chain with two explicit grounding
+  points, separately recovered bond currents, and independent KCL checks;
+- [x] add a finite grounding-impedance sweep with a fixed neutral limit and an
+  independent reproduction, separating structural/KCL preservation from
+  parameter-dependent feasible-set preservation;
 - [x] state explicitly which state-estimation, protection, contingency, and
   data-exchange promises are current content and which remain future work.
 

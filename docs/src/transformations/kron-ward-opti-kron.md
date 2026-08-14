@@ -280,6 +280,53 @@ constraint would accept a point the source model rejects. This is claim
 `TR-KRON-NEUTRAL-001`: a decision-preservation witness, not a claim about the
 fixture's physical rating.
 
+The companion
+`experiments/generated/neutral-kron-independent-reproduction.json` reconstructs
+the four-conductor impedance and midpoint recovery with a separate
+standard-library complex solver. It matches both half-section neutral currents,
+reproduces the exact recovery identity, and retains the deliberately violated
+limit. The reproduction is still scoped to the linear series fixture; shunts,
+nonlinear loads, and explicit earth-return factors require separate contracts.
+
+The same witness now includes a midpoint neutral-to-reference shunt probe. The
+shunt changes the recovered neutral current from the series-only value, adds a
+reference-current term to the midpoint KCL, and retains a separate neutral
+limit evaluation. Its KCL residual is below ``10^{-11}``, and the independent
+reproduction checks the shunted currents as well as the series case. This is a
+linear shunt-aware probe; nonlinear loads and explicit earth-return factors are
+still outside the contract.
+
+The next probe makes the earth-return coordinate explicit rather than treating
+it as an unnamed reference. In `TR-KRON-NEUTRAL-002`, a synthetic five-conductor
+``(a,b,c,n,e)`` series midpoint retains an earth terminal ``e`` and stamps a
+midpoint neutral--earth bond. Kron recovery reports separate neutral and earth
+currents, verifies their KCL equations with opposite bond-current signs, and
+evaluates the neutral current limit on the recovered half-section. The companion
+`experiments/generated/explicit-earth-kron-independent-reproduction.json` uses a
+separate standard-library complex solver. This is deliberately a linear
+structure-and-decision witness, not a standards-aligned grounding, protection,
+or nonlinear earth-return model; collapsing ``e`` into ``n`` would erase the
+observed bond-current relation.
+
+The same artifact adds a two-grounding-point extension, `TR-KRON-NEUTRAL-003`.
+A three-segment five-conductor chain has explicit internal points ``m_1`` and
+``m_2``, each with its own neutral--earth bond. The recovered segment currents
+verify separate neutral and earth KCL at both points, and both bond currents
+remain observable after the two internal blocks are eliminated. This is the
+smallest useful warning against replacing a distributed grounding structure by
+one aggregate neutral constraint. The probe and its independent reproduction
+remain synthetic linear evidence; nonlinear grounding, uncertain impedances,
+and protection studies are outside scope.
+
+Finally, `TR-KRON-NEUTRAL-004` holds the topology and terminal order fixed while
+sweeping four declared pairs of grounding impedances. The recovered neutral
+current changes across the cases, and a fixed ``0.028`` p.u. neutral limit
+changes feasibility classification: the structural Kron and KCL checks remain
+valid, but the decision observation does not. The generated sweep and its
+standard-library reproduction therefore separate structure preservation from
+parameter-dependent feasible-set preservation. This is a finite sensitivity
+probe, not an uncertainty quantification or standards-aligned grounding study.
+
 The five-bus companion
 `experiments/generated/five-bus-typed-kron-witness.json` covers the scalar
 pendant case directly. Eliminating bus ``m`` through its sole incident line

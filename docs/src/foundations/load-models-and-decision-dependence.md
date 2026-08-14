@@ -1,7 +1,9 @@
 # [Load models and decision dependence](@id load-models-and-decision-dependence)
 
-**Page status:** constitutive-model reference chapter; load-model-specific
-numerical certificates remain future work.
+**Page status:** constitutive-model reference chapter with scoped numerical
+load-model, connection-map, and continuation witnesses plus independent
+reproduction; broader nonlinear and network-level certificates remain future
+work.
 
 Two networks can have identical buses, edges, terminals, and ratings while
 defining different decision problems because their loads obey different
@@ -87,6 +89,23 @@ phase-specific ``P_p`` and ``Q_p`` values. A balanced positive-sequence view
 preserves it only when the load relation, grounding, limits, controls, and
 observations close under the same phase symmetry.
 
+### Executable connection-map probe (LOAD-CONNECTION-001)
+
+The generated `connection_maps` witness in
+`experiments/generated/load-grounding-witnesses.json` uses ordered terminals
+``(a,b,c,n)`` and applies two explicit linear maps to the same balanced bus:
+
+```math
+T_Y\mathbf v = (V_a-V_n,V_b-V_n,V_c-V_n),
+\qquad
+T_\Delta\mathbf v = (V_a-V_b,V_b-V_c,V_c-V_a).
+```
+
+The wye observations have unit magnitude, while the delta observations have
+magnitude ``\sqrt{3}`` for the recorded positive-sequence voltage. The bus and
+graph are unchanged; only the factor's terminal map changes. This is a small
+structural witness, not a complete unbalanced load-flow or rating model.
+
 ## Modelling checklist
 
 Before comparing two graph views or deleting a factor, record:
@@ -101,6 +120,47 @@ Before comparing two graph views or deleting a factor, record:
   voltage regulation, or a different decision.
 
 The book's existing parallel-line and transformer cases preserve their load
-equations explicitly. This chapter makes the reason general: constitutive
+ equations explicitly. This chapter makes the reason general: constitutive
 models are part of the representation contract, even when they are invisible
 in a simple graph drawing.
+
+## Scoped numerical witness
+
+The generated artifact `experiments/generated/load-grounding-witnesses.json`
+solves one fixed two-bus network under three load laws. With the same source,
+series impedance, nominal demand, voltage limit ``|U_r|\ge0.87`` and current
+limit ``|I|\le1.00``, the recorded high-voltage solutions are:
+
+| Load law | ``\lvert U_r\rvert`` | ``\lvert I\rvert`` | Voltage limit | Current limit |
+| --- | ---: | ---: |:---:|:---:|
+| CP | 0.8592 | 1.0872 | fail | fail |
+| CI | 0.8803 | 0.9341 | pass | pass |
+| CZ | 0.8937 | 0.8348 | pass | pass |
+| ZIP (active ``(0.4,0.3,0.3)``, reactive ``(0.2,0.3,0.5)``) | 0.8792 | 0.9310 | pass | pass |
+
+This is a decision witness, not a universal ranking of load models. It shows
+that a graph-preserving change of constitutive law can change both feasibility
+and the active constraint set.
+
+The artifact
+`experiments/generated/load-model-independent-reproduction.json` repeats the
+same damped fixed-point calculation with a separate standard-library Python
+implementation. It reproduces all four recorded rows and their voltage/current
+limit decisions. This supports reproducibility of the declared scalar fixture;
+it does not establish global solvability, a universal ranking of load laws, or
+the adequacy of CP/CI/CZ/ZIP for a particular utility study. The ZIP row uses
+nonnegative active and reactive coefficients that each sum to one; the two
+coefficient triples are deliberately distinct to expose that reactive demand
+need not follow the active-power law.
+
+### Continuation probe (LOAD-CONTINUATION-001)
+
+The same scalar fixture also includes a demand-scale continuation in
+`load_continuation`. It tracks the previous high-voltage iterate over scales
+``0.2,0.3,\ldots,3.0`` with damping 0.5. The recorded CP branch converges
+through scale 1.7 and fails the declared iteration/residual test at scale 1.8;
+CI, CZ, and the ZIP branch remain converged through scale 3.0. This is useful
+as a warning that a load-model change can move a numerical branch boundary, but
+the boundary is solver- and continuation-specific. It is not a global voltage-
+collapse theorem, and the artifact does not claim that the first failed iterate
+is the exact saddle-node point.

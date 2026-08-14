@@ -696,20 +696,50 @@
             "imag": 0.019776048159194405
         }
     },
+    "neutral_shunt_witness": {
+        "recovered_right_neutral_current": {
+            "real": -0.09152433865606027,
+            "imag": 0.03832731720568846
+        },
+        "shunt_admittance": {
+            "real": 0.75,
+            "imag": 0.2
+        },
+        "recovered_midpoint_neutral_voltage": {
+            "real": 0.014441113585787445,
+            "imag": -0.0005848859890097702
+        },
+        "neutral_kcl_residual": 8.609892407323099e-16,
+        "declared_current_limit": 0.08127617994188283,
+        "interpretation": "a midpoint neutral-to-reference shunt changes the recovered neutral current and adds a retained reference-current observation; the shunt is not silently absorbed into a line rating",
+        "limit_would_be_violated_without_recovery_constraint": true,
+        "recovered_left_neutral_current": {
+            "real": -0.08057652626891706,
+            "imag": 0.04077687543108916
+        },
+        "recovered_reference_current": {
+            "real": 0.010947812387142538,
+            "imag": 0.0024495582254001613
+        }
+    },
     "residuals": {
         "midpoint": 2.6730084920855165e-16,
         "primitive": 1.1322097734007351e-15,
         "boundary": 0
     },
     "checks": {
-        "boundary_relation_is_satisfied": true,
-        "neutral_current_recovery_is_exact": true,
-        "internal_block_is_invertible": true,
+        "shunt_internal_block_is_invertible": true,
         "reduced_matches_direct_line_primitive": true,
         "terminal_order_is_preserved": true,
         "source_identity_is_retained": true,
+        "boundary_relation_is_satisfied": true,
+        "neutral_current_recovery_is_exact": true,
+        "internal_block_is_invertible": true,
+        "neutral_shunt_recovery_kcl_is_exact": true,
+        "neutral_shunt_changes_recovered_current": true,
         "neutral_limit_is_not_silently_dropped": true,
+        "neutral_shunt_limit_is_evaluated": true,
         "midpoint_recovery_is_exact_for_equal_halves": true
     },
-    "interpretation": "Direct running-fixture witness: a four-conductor line is split into two equal series sections, the midpoint is eliminated by typed Kron reduction, and the original line primitive and internal midpoint recovery are restored. This is a linear series fixture, not a claim about shunts or nonlinear load elimination."
+    "interpretation": "Direct running-fixture witness: a four-conductor line is split into two equal series sections, the midpoint is eliminated by typed Kron reduction, and the original line primitive and internal midpoint recovery are restored. A separate midpoint neutral-to-reference shunt probe retains neutral KCL and reference-current recovery; nonlinear load elimination and explicit earth remain outside scope."
 }
