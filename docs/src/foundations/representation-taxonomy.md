@@ -2,6 +2,12 @@
 
 **Page status:** foundational taxonomy; categories are analytical, not a standards claim.
 
+This page is a classification card, not a second transformation specification. The
+authoritative registry of typed views, lowering maps, state-conditioned surgery, and
+diagnostics is [From source graphs to views and graph surgery](@ref
+compiled-views-and-graph-surgery). The taxonomy below names the families and their
+typical losses; it does not redefine their object maps or preservation contracts.
+
 The phrase *power-network graph* covers several mathematical and data structures that retain
 different facts. This taxonomy prevents a physical asset graph, an equation graph, and a solver
 sparsity graph from being treated as interchangeable merely because all have vertices and edges.
@@ -43,6 +49,9 @@ is normally a coordinate choice rather than a physical transfer direction. A
 simple graph additionally forgets parallel identity.
 
 These are different representations, not interchangeable names for resolution levels.
+The node--breaker row is specialized in [Node--breaker, bus--breaker, and topology
+processing](@ref node-breaker-topology); its state-resolved quotient is one concrete
+instance of the general view/surgery contract.
 
 ## Four principal levels and the orthogonal companions
 
@@ -82,7 +91,9 @@ automatically carry physical meaning.
 The block- and scalar-support graphs of the compound nodal operator are
 defined once in [Two topology levels and the nodal projection](@ref two-level-topology-and-nodal-projection).
 This taxonomy records their role without introducing a competing support
-definition.
+definition. Likewise, a reduced/Kron row in this table names a view family; its
+elimination and recovery conditions belong to the compiled-view and reduction
+chapters.
 
 ### Study-specific compiled models
 

@@ -995,7 +995,7 @@ an electrical degeneracy, and unknown-state families need a scalable summary.
 - [x] reconcile the compact figure with the six-entry registry, repair its
   arrow routing, and correct the six-case description;
 - [x] reclassify normative architecture statements as ``proposal`` claims;
-- [ ] make the node--breaker, representation-taxonomy, and compiled-views
+- [x] make the node--breaker, representation-taxonomy, and compiled-views
   chapters defer to one authoritative definition each, retaining only
   cross-links and application-specific qualifications;
 - [ ] add independent review or executable evidence for the full

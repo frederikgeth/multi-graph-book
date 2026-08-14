@@ -4,6 +4,14 @@
 node--breaker switch-state and radiality witness; larger running-network
 topology lifts remain future work.
 
+This chapter specializes the general view and surgery contract in [From source
+graphs to views and graph surgery](@ref compiled-views-and-graph-surgery). It is
+authoritative for the node--breaker state processor and its concrete
+``\kappa``/``\pi_\sigma`` quotient, while the general view registry, lowering
+boundary, unknown-state family semantics, and degeneracy diagnostics are defined
+there. The examples below therefore explain this specialization rather than
+introducing a competing transformation vocabulary.
+
 Topology processing is a state-conditioned compilation. It is not the same as
 deleting switches from a graph or replacing every closed switch by a zero
 impedance line without recording the state that justified the replacement.
@@ -34,10 +42,12 @@ The **topological nodes** are the connected components of
 \pi_\sigma:\mathcal C\longrightarrow\mathcal N_\sigma
 ```
 
-for the component quotient. A bus--branch view is then compiled by attaching
-each terminal to ``\pi_\sigma(\kappa(t))`` and retaining the conducting
-equipment whose terminals are connected to distinct or equal topological
-nodes.
+for the component quotient. A node--breaker bus--branch view is then compiled
+by attaching each terminal to ``\pi_\sigma(\kappa(t))`` and retaining the
+conducting equipment whose terminals are connected to distinct or equal
+topological nodes. In the general registry this is a state-conditioned quotient
+with provenance; here the notation makes the switch-connectivity relation
+explicit.
 
 This gives the state-resolved distinction:
 
@@ -80,6 +90,9 @@ For a fixed state, contracting closed ideal switches can preserve the declared
 electrical connectivity relation. It does not preserve a switching decision,
 protection boundary, maintenance identity, or an open-state contingency unless
 those are carried by ``\operatorname{prov}_\sigma`` and the surrounding model.
+The general surgery result may be a graph or a family with three-valued
+connectivity summaries; the present compiler assumes a declared resolved state
+when it constructs ``G_{\mathrm{bus}}(\sigma)``.
 
 ### Rooted feeder view after topology processing
 
