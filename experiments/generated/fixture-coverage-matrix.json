@@ -72,7 +72,7 @@
     {
       "map_family": "active_radiality",
       "fixture": "multiwinding_transformer",
-      "status": "not_applicable",
+      "status": "not_yet_tested",
       "evidence_artifact": null,
       "evidence_exists": false
     },
@@ -93,9 +93,9 @@
     {
       "map_family": "five_bus_cycle_space",
       "fixture": "multiwinding_transformer",
-      "status": "not_yet_tested",
-      "evidence_artifact": null,
-      "evidence_exists": false
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/multiwinding-terminal-lift-witness.json",
+      "evidence_exists": true
     },
     {
       "map_family": "multiwinding_compilation",
@@ -138,6 +138,69 @@
       "status": "direct",
       "evidence_artifact": "experiments/generated/multiwinding-typed-kron-witness.json",
       "evidence_exists": true
+    },
+    {
+      "map_family": "typed_state_space_units",
+      "fixture": "running_network",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/state-space-unit-witness.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "typed_state_space_units",
+      "fixture": "five_bus_cycle_space",
+      "status": "not_applicable",
+      "evidence_artifact": null,
+      "evidence_exists": false
+    },
+    {
+      "map_family": "typed_state_space_units",
+      "fixture": "multiwinding_transformer",
+      "status": "related",
+      "evidence_artifact": null,
+      "evidence_exists": false
+    },
+    {
+      "map_family": "transformer_winding_normalization",
+      "fixture": "running_network",
+      "status": "related",
+      "evidence_artifact": null,
+      "evidence_exists": false
+    },
+    {
+      "map_family": "transformer_winding_normalization",
+      "fixture": "five_bus_cycle_space",
+      "status": "not_applicable",
+      "evidence_artifact": null,
+      "evidence_exists": false
+    },
+    {
+      "map_family": "transformer_winding_normalization",
+      "fixture": "multiwinding_transformer",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/transformer-winding-normalization-certificate.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "parameterized_transformer_control",
+      "fixture": "running_network",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/transformer-tap-ac-decision-certificate.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "parameterized_transformer_control",
+      "fixture": "five_bus_cycle_space",
+      "status": "not_applicable",
+      "evidence_artifact": null,
+      "evidence_exists": false
+    },
+    {
+      "map_family": "parameterized_transformer_control",
+      "fixture": "multiwinding_transformer",
+      "status": "related",
+      "evidence_artifact": null,
+      "evidence_exists": false
     }
   ],
   "checks": {

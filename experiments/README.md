@@ -70,6 +70,10 @@ The explicit-earth Kron probe can be regenerated independently with:
 julia --project=experiments experiments/run_explicit_earth_kron.jl
 python3 scripts/reproduce_explicit_earth_kron.py
 python3 scripts/reproduce_grounding_impedance_sweep.py
+python3 scripts/reproduce_nonlinear_grounding_probe.py
+python3 scripts/reproduce_nonlinear_two_point_grounding.py
+python3 scripts/reproduce_nonlinear_two_point_continuation.py
+python3 scripts/reproduce_three_member_state_envelope.py
 ```
 
 The figure renderers require Pillow. Their generated PNGs are committed, so
@@ -127,6 +131,21 @@ than duplicating graph or witness data in the drawing code.
   a finite four-case sweep of the two grounding impedances under one fixed
   neutral limit, showing that recovered currents and feasibility can change
   while the structural reduction remains fixed;
+- `experiments/generated/nonlinear-grounding-probe-witness.json` and
+  `experiments/generated/nonlinear-grounding-probe-independent-reproduction.json`:
+  a local state-dependent neutral--earth bond probe showing why the reduced map
+  must be recomputed after an endpoint state shift;
+- `experiments/generated/nonlinear-two-point-grounding-witness.json` and
+  `experiments/generated/nonlinear-two-point-grounding-independent-reproduction.json`:
+  a distributed two-bond state-dependent grounding probe with frozen-map failure
+  and recomputed-chain recovery;
+- `experiments/generated/nonlinear-two-point-grounding-continuation.json` and
+  `experiments/generated/nonlinear-two-point-grounding-continuation-independent-reproduction.json`:
+  a finite five-state endpoint continuation with recomputed nonlinear bonds,
+  frozen-map residuals, and neutral-limit margins;
+- `experiments/generated/three-member-state-envelope-independent-reproduction.json`:
+  an independent standard-library Newton/bisection reproduction of all four
+  three-member AC state-envelope boundaries;
 - `experiments/generated/certified-approximation-witness.json`: a declared
   residual-to-state-to-constraint-to-decision margin chain for the Ward
   scenario fixture, including feasible, ambiguous, and violated cases;
@@ -156,11 +175,16 @@ than duplicating graph or witness data in the drawing code.
 - `experiments/generated/transformer-tap-ac-decision-certificate.json`: the
   full 11-terminal transformer factor embedded in nonlinear voltage, KCL,
   power-balance, voltage-limit, and recovered-current constraints, with exact
-  finite tap enumeration;
+  finite tap enumeration, including a phase-selective unbalanced two-scenario
+  tap-pair ledger;
 - `experiments/generated/transformer-tap-ac-independent-certificate.json`: a
   separate finite-difference Newton, continuation, and bisection reproduction
   of all tap-conditioned boundaries and the selected tap, including explicit
   failed-bracket guards;
+- `experiments/generated/transformer-tap-three-scenario-independent-certificate.json`:
+  an independent reproduction of the nine phase-selective scenario/tap
+  boundaries and the complete 27-branch tap-path ledger, including the
+  independently checked 15-branch at-most-one-movement policy;
 - `experiments/generated/multiconductor-parallel-ac-certificate.json`: source,
   naïve aggregate, exact lifted, and certified exact-pruned results for the
   coupled phase-neutral AC case, including the proportional member-current

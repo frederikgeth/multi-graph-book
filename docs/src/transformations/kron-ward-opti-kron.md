@@ -327,6 +327,36 @@ standard-library reproduction therefore separate structure preservation from
 parameter-dependent feasible-set preservation. This is a finite sensitivity
 probe, not an uncertainty quantification or standards-aligned grounding study.
 
+The next boundary is local state dependence. In `TR-KRON-NEUTRAL-005`, the
+neutral--earth bond current is defined by an illustrative voltage-dependent law
+``i_{ne}=y_0(1+\alpha|V_n-V_e|^2)(V_n-V_e)``. After an endpoint state shift, the
+nominal bond map leaves a nonzero nonlinear residual and a different recovered
+neutral current; a local Newton solve with the bond recomputed at the shifted
+state restores the relation and re-evaluates the neutral limit. The independent
+reproduction uses a separate finite-difference Newton implementation. This is
+local synthetic evidence for state-conditioned recomputation, not a global
+nonlinear grounding theorem, continuation result, uncertainty set, or
+standards-aligned protection model.
+
+The distributed version is also exercised locally in `TR-KRON-NEUTRAL-006`.
+The three-segment chain has two voltage-dependent neutral--earth bonds. After
+the same endpoint shift, freezing both nominal bond maps leaves a nonzero chain
+residual and changes the recovered neutral currents on the three segments; a
+two-point Newton solve with both maps recomputed restores the local relation.
+The companion standard-library reproduction checks the midpoint values and
+residuals. This remains local synthetic evidence: global continuation,
+uncertainty sets, and standards-aligned grounding or protection models remain
+open.
+
+`TR-KRON-NEUTRAL-007` records a finite endpoint-state continuation of that
+two-point chain at ``\lambda\in\{0,0.25,0.5,0.75,1\}``. Each state is solved
+with both nonlinear bond maps recomputed; the five nonlinear residuals remain
+small and the fixed ``0.05`` p.u. neutral limit changes classification along the
+path. Reusing the nominal map fails away from ``\lambda=0``. The independent
+reproduction checks every continuation row. This is a finite local path, not
+adaptive/global continuation, uncertainty quantification, or a protection
+study.
+
 The five-bus companion
 `experiments/generated/five-bus-typed-kron-witness.json` covers the scalar
 pendant case directly. Eliminating bus ``m`` through its sole incident line

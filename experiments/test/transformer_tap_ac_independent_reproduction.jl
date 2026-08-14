@@ -90,4 +90,23 @@ using .TransformationContracts
     @test comparison["maximum_absolute_served_fraction_difference"] <= 1.0e-9
     @test comparison["maximum_secondary_voltage_difference_pu"] <= 1.0e-9
     @test comparison["maximum_leakage_current_difference_A"] <= 1.0e-5
+
+    three_scenario = reproduce_transformer_tap_three_scenario_decision(case)
+    @test three_scenario.branch_count == 27
+    @test three_scenario.branch_completeness
+    @test length(three_scenario.scenario_results) == 3
+    @test all(length(result["tap_results"]) == 3 for result in three_scenario.scenario_results)
+    @test three_scenario.selected_branch["scenario_taps"] == [0.95, 0.95, 0.95]
+
+    three_certificate = independent_transformer_tap_three_scenario_certificate(case)
+    @test three_certificate["certificate_id"] == "TR-XFMR-009-REPRO"
+    @test three_certificate["classification"] == "mixed"
+    @test isempty(three_certificate["forgets"])
+    @test isempty(validate_certificate(three_certificate))
+    @test three_certificate["evidence"]["ipopt_branch_count"] == 27
+    @test three_certificate["evidence"]["selected_path_matches"]
+    @test three_certificate["evidence"]["maximum_absolute_net_objective_difference"] <= 1.0e-8
+    @test three_certificate["evidence"]["operation_limited_selected_path_matches"]
+    @test three_certificate["evidence"]["operation_limited_ipopt_branch_count"] == 15
+    @test three_certificate["evidence"]["operation_limited_maximum_absolute_net_objective_difference"] <= 1.0e-8
 end

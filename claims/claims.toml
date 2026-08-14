@@ -286,6 +286,21 @@ review_date = ""
 unresolved_issue = "Extend beyond this fixed linear member relation to voltage-dependent shunts, topology/control states, several independently varying retained members, and global nonlinear AC optimality guarantees."
 
 [[claim]]
+claim_id = "TR-PAR-STATE-001"
+chapter = "docs/src/cases/pi-four-wire-parallel-ac-decision.md"
+claim_text = "In the recorded finite four-state four-wire AC envelope, rebuilding the member maps and source/pruned formulations at each declared scalar or phase-selective admittance state preserves exact joint limit pruning locally while changing the optimal served value across states."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "independently-implemented"
+evidence_type = "generated_three_member_state_dependent_ac_envelope"
+citation_keys = []
+model_scope = "four declared scalar or phase-selective admittance states of the fixed three-member four-conductor AC decision fixture"
+assumptions = "each state rebuilds all member maps and solves the same local high-voltage branch; the joint recovery relation and component discs remain declared for each state"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend from the finite scalar and phase-selective envelope to topology/control states, independently varying recovery maps, global nonlinear optimality, and external physical-model review."
+
+[[claim]]
 claim_id = "TR-PAR-SINGULAR-001"
 chapter = "docs/src/cases/pi-four-wire-parallel-ac-decision.md"
 claim_text = "For the declared series-only singular four-wire fixture, the full two-end terminal-current map is rank deficient, but the endpoint-voltage-drop coordinate recovers member-2 currents exactly from member-1 currents through the declared diagonal map, with the zero-neutral rows retained as an explicit invariant; this is a guarded reduced-coordinate result, not a pseudoinverse or singular-shunt theorem."
@@ -389,6 +404,51 @@ assumptions = "both paths share the certified transformer matrices and case asse
 reviewer = ""
 review_date = ""
 unresolved_issue = "The finite tap-pair ledger is branch-complete for its declared domain, but the continuous subproblems remain local Ipopt solutions; reproduce the case with an independently assembled transformer primitive or external power-system tool and establish global guarantees where required."
+
+[[claim]]
+claim_id = "TR-XFMR-008"
+chapter = "docs/src/cases/transformer-tap-ac-decision.md"
+claim_text = "In the recorded 11-terminal WYE/WYE/DELTA tap case, a phase-selective unbalanced second scenario can be handled without collapsing the transformer or its phase identities: exact enumeration of the nine ordered tap pairs preserves branch completeness and exposes the per-phase scenario directions explicitly."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "solver_backed_unbalanced_multiphase_scenario_ledger_with_finite_tap_pair_enumeration_and_branch_completeness_checks"
+citation_keys = []
+model_scope = "the recorded 11-terminal three-winding WYE/WYE/DELTA AC tap case with a finite three-position scalar tap and a phase-selective second-scenario constant-power direction"
+assumptions = "the transformer factor, terminal ordering, voltage bounds, KCL equations, and recovered leakage-current limits are unchanged; the phase multipliers and tap-pair domain are declared explicitly; each continuous subproblem is a local Ipopt result"
+reviewer = ""
+review_date = ""
+unresolved_issue = "This is a finite local witness, not a global unbalanced OPF guarantee; extend the contract to richer multiwinding controls, topology decisions, and independently assembled physical models."
+
+[[claim]]
+claim_id = "TR-XFMR-009"
+chapter = "docs/src/cases/transformer-tap-ac-decision.md"
+claim_text = "For the recorded 11-terminal WYE/WYE/DELTA case, a three-scenario phase-selective tap path can be enumerated exactly over the 3^3 ordered tap triples, with consecutive tap movement charged explicitly and each scenario retaining its own phase directions."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "independently-implemented"
+evidence_type = "solver_backed_three_scenario_unbalanced_multiphase_tap_path_ledger_with_independent_finite_difference_reproduction_and_branch_completeness_checks"
+citation_keys = []
+model_scope = "the recorded 11-terminal three-winding WYE/WYE/DELTA AC tap case with three finite-position scalar taps across three phase-selective constant-power scenarios"
+assumptions = "the transformer factor and terminal ordering remain fixed; the three scenario phase scales and consecutive movement cost are declared; every continuous scenario/tap subproblem is a local Ipopt result"
+reviewer = ""
+review_date = ""
+unresolved_issue = "This remains a finite local path witness, not a global unbalanced multi-period OPF guarantee; extend to richer controls, topology decisions, switching operation limits, and independently assembled physical models."
+
+[[claim]]
+claim_id = "TR-XFMR-010"
+chapter = "docs/src/cases/transformer-tap-ac-decision.md"
+claim_text = "In the recorded three-scenario tap path, enumerating all 27 ordered tap triples and then applying an explicit at-most-one-movement policy leaves 15 admissible branches; the policy is a decision constraint and must not be inferred from the unconstrained best path."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "independently-implemented"
+evidence_type = "solver_backed_and_independent_finite_difference_operation_limited_tap_path_ledger"
+citation_keys = []
+model_scope = "the recorded 11-terminal three-winding WYE/WYE/DELTA AC tap path with three phase-selective scenarios, three finite tap positions, and an at-most-one consecutive tap-movement constraint"
+assumptions = "all 27 ordered tap triples are enumerated before filtering; operation count means the number of consecutive scenario tap changes; continuous scenario values are local high-voltage branch solutions"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend operation-count, dwell-time, deadband, and switching-cost semantics to richer multiwinding controls and globally certified multi-period OPF models."
 
 [[claim]]
 claim_id = "TR-KRON-001"
@@ -509,6 +569,51 @@ assumptions = "the topology, terminal order, and reduction map are fixed across 
 reviewer = ""
 review_date = ""
 unresolved_issue = "Extend to uncertainty sets, nonlinear/state-dependent grounding, protection observations, and physical-model review."
+
+[[claim]]
+claim_id = "TR-KRON-NEUTRAL-005"
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the recorded local state-dependent grounding probe, shifting an endpoint state changes the nonlinear neutral-earth bond map; reusing the nominal bond map leaves a nonzero shifted-state residual, while recomputation restores the relation and preserves explicit neutral-limit evaluation."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_state_dependent_grounding_probe"
+citation_keys = []
+model_scope = "synthetic five-conductor linear series midpoint with a voltage-dependent neutral-earth bond and two declared endpoint states"
+assumptions = "the nonlinear bond law is an illustrative local constitutive relation; Newton convergence is local; no global nonlinear grounding, protection, or uncertainty claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to global continuation, multiple nonlinear grounding points, uncertainty sets, protection observations, and physical-model review."
+
+[[claim]]
+claim_id = "TR-KRON-NEUTRAL-006"
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the recorded two-point state-dependent grounding chain, shifting the endpoint state changes both nonlinear neutral-earth bond maps; freezing both nominal maps leaves a nonzero chain residual and changes recovered segment-neutral currents, while recomputation restores the local relation."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_two_point_state_dependent_grounding_probe"
+citation_keys = []
+model_scope = "synthetic five-conductor three-segment series chain with two voltage-dependent neutral-earth bonds and two declared endpoint states"
+assumptions = "the nonlinear bond laws are illustrative local constitutive relations; Newton convergence is local; no global nonlinear grounding, protection, or uncertainty claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to global continuation, more nonlinear grounding points, uncertainty sets, protection observations, and physical-model review."
+
+[[claim]]
+claim_id = "TR-KRON-NEUTRAL-007"
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the recorded finite endpoint-state continuation of the two-point nonlinear grounding chain, recomputing the bond maps at five declared states preserves small nonlinear residuals and records changing neutral-limit margins, while the frozen nominal map fails away from the base state."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_two_point_nonlinear_grounding_continuation"
+citation_keys = []
+model_scope = "synthetic five-conductor three-segment chain with two voltage-dependent neutral-earth bonds and five endpoint-state continuation points"
+assumptions = "the continuation points and nonlinear bond laws are illustrative and local; each state is solved independently; no global continuation, uncertainty, or protection claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to adaptive continuation, global branch tracking, uncertainty sets, protection observations, and physical-model review."
 
 [[claim]]
 claim_id = "TR-GRAPH-001"

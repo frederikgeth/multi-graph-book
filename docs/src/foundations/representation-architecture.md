@@ -143,6 +143,34 @@ the running network, five-bus cycle-space example, and multiwinding transformer.
 This prevents a certificate tested on a synthetic fixture from being silently
 read as validation on a canonical network fixture.
 
+The multiwinding fixture now also records two explicit cycle views. Its native
+factor--port incidence is a star and therefore has cycle rank zero. A derived
+clique compilation of the three winding ports has cycle rank one. The latter
+is a view choice, not a new electrical loop: it illustrates why a
+multi-terminal factor must not be assigned a cycle count without naming the
+incidence or compilation graph. Active radiality for the isolated transformer
+contract remains ``not_yet_tested`` because no switching or energized-state
+domain is declared there.
+
+The matrix also records two additional typed map families. The running-network
+state-space/unit witness is direct evidence for the declaration and conversion
+contract; the multiwinding entry is only related evidence because it is not a
+separate state-space instantiation. Conversely, winding-terminal normalization
+is direct for the serialized ``x1`` transformer contract, but only related to
+the running network as a whole. These distinctions are intentional: a source
+fixture reference in a certificate does not automatically make every map
+family direct for every larger fixture.
+
+Parameterized transformer control is tracked as a separate map family rather
+than being folded into fixed transformer compilation. It has direct evidence on
+the running network through the retained-tap AC decision certificate. The
+five-bus cycle-space fixture is marked ``not_applicable`` because it contains no
+transformer-control decision, while the fixed ``x1`` multiwinding contract is
+only ``related``: its factor anatomy is the same equipment family, but it does
+not instantiate the tap-enabled network embedding. This distinction prevents a
+fixed-factor certificate from being read as evidence that control variables,
+domains, movement policies, or tap-dependent limits have been preserved.
+
 The first typed layer is now explicit. A `UnitSpec` names a unit family and
 scale, while a `UnitSystem` records the bases used for per-unit conversion. A
 `VariableSpec` carries an identifier, role (`state`, `decision`, `parameter`, or

@@ -26,4 +26,9 @@ using .ThreeMemberFourWireParallelACDecision
     @test independent["power_flow_residual"] ≤ 1.0e-9
     @test independent["bracket_width"] ≤ 1.0e-8
     @test abs(result["independent_source_objective_gap"]) ≤ 3.0e-8
+    envelope = result["finite_state_envelope"]
+    @test envelope["all_checks_pass"]
+    @test length(envelope["states"]) == 4
+    @test envelope["checks"]["pruned_matches_source_in_each_state"]
+    @test envelope["checks"]["state_changes_decision_value"]
 end

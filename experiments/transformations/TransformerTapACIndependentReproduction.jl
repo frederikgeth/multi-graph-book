@@ -4,12 +4,15 @@ using LinearAlgebra
 
 using ..TransformerFactorCompletion: TransformerCompletionResult
 using ..TransformerTapACDecision: TransformerTapACCase,
-                                         solve_transformer_tap_ac_decision
+                                         solve_transformer_tap_ac_decision,
+                                         solve_transformer_tap_ac_three_scenario_decision
 using ..TransformerTapDecisionCompilation: evaluate_parameterized_transformer
 
 export IndependentReproductionRejection,
        independent_transformer_tap_certificate,
+       independent_transformer_tap_three_scenario_certificate,
        reproduce_transformer_tap_decision,
+       reproduce_transformer_tap_three_scenario_decision,
        solve_independent_tap_boundary,
        solve_independent_transformer_power_flow
 
@@ -57,7 +60,7 @@ function power_flow_residual(state, snapshot, case, served_fraction)
     for phase in 5:7
         phase_voltage = voltage[phase] - voltage[8]
         load_power = -phase_voltage * conj(current[phase]) / 1.0e6
-        mismatch = load_power - served_fraction * case.load_direction_MVA_per_phase
+        mismatch = load_power - served_fraction * case.load_direction_MVA_per_phase[phase - 4]
         push!(residual, real(mismatch), imag(mismatch))
     end
     neutral_mismatch = sum(current[5:8]) / maximum(snapshot.leakage_current_limit[4:6])
@@ -467,6 +470,152 @@ function independent_transformer_tap_certificate(
         "evidence" => Dict(
             "independent_reproduction" => independent,
             "ipopt_comparison" => comparison,
+        ),
+    )
+end
+
+function _phase_scaled_case(case::TransformerTapACCase, scale)
+    TransformerTapACCase(
+        case.factor,
+        case.source_completion,
+        case.terminal_voltage_base_V,
+        case.slack_voltage_V,
+        case.load_direction_MVA_per_phase .* ComplexF64.(scale),
+        case.secondary_voltage_bounds_pu,
+    )
+end
+
+"Independently reproduce every tap boundary in the three declared scenarios."
+function reproduce_transformer_tap_three_scenario_decision(
+    case::TransformerTapACCase;
+    scenario_phase_scales=[[1.00, 1.00, 1.00], [1.02, 0.98, 1.01], [0.99, 1.03, 0.98]],
+    switching_cost=0.02,
+    max_tap_operations=nothing,
+)
+    scenario_cases = [_phase_scaled_case(case, scale) for scale in scenario_phase_scales]
+    scenario_results = [reproduce_transformer_tap_decision(scenario) for scenario in scenario_cases]
+    any(result -> result isa IndependentReproductionRejection, scenario_results) &&
+        return only(result for result in scenario_results if result isa IndependentReproductionRejection)
+    positions = only(case.factor.decisions).positions
+    branches = Dict{String,Any}[]
+    for i in eachindex(positions), j in eachindex(positions), k in eachindex(positions)
+        taps = (positions[i], positions[j], positions[k])
+        served = (
+            scenario_results[1]["tap_results"][i]["served_fraction"],
+            scenario_results[2]["tap_results"][j]["served_fraction"],
+            scenario_results[3]["tap_results"][k]["served_fraction"],
+        )
+        movement = abs(taps[2] - taps[1]) + abs(taps[3] - taps[2])
+        operations = Int(taps[2] != taps[1]) + Int(taps[3] != taps[2])
+        push!(branches, Dict(
+            "scenario_taps" => collect(taps),
+            "scenario_served_fractions" => collect(served),
+            "tap_movement" => movement,
+            "tap_operations" => operations,
+            "admissible" => max_tap_operations === nothing || operations <= max_tap_operations,
+            "net_objective" => sum(served) - switching_cost * movement,
+        ))
+    end
+    admissible = [branch for branch in branches if branch["admissible"]]
+    isempty(admissible) && throw(ArgumentError("operation-count limit leaves no admissible tap path"))
+    best = admissible[argmax(branch["net_objective"] for branch in admissible)]
+    (; scenario_phase_scales = [Float64.(scale) for scale in scenario_phase_scales],
+       positions,
+       switching_cost,
+       max_tap_operations,
+       scenario_results,
+       branches,
+       admissible_branch_count = length(admissible),
+       selected_branch = best,
+       branch_count = length(branches),
+       branch_completeness = length(branches) == length(positions)^3)
+end
+
+"Certificate comparing the independent three-scenario path with the Ipopt ledger."
+function independent_transformer_tap_three_scenario_certificate(
+    case::TransformerTapACCase;
+    certificate_id="TR-XFMR-009-REPRO",
+)
+    independent = reproduce_transformer_tap_three_scenario_decision(case)
+    independent isa IndependentReproductionRejection &&
+        error("independent three-scenario reproduction failed guard $(independent.failed_guard)")
+    ipopt = solve_transformer_tap_ac_three_scenario_decision(case)
+    operation_limited_independent = reproduce_transformer_tap_three_scenario_decision(
+        case; max_tap_operations=1,
+    )
+    operation_limited_ipopt = solve_transformer_tap_ac_three_scenario_decision(
+        case; max_tap_operations=1,
+    )
+    ipopt_by_taps = Dict(
+        Tuple(branch["scenario_taps"]) => branch
+        for branch in ipopt.branches
+    )
+    comparisons = [begin
+        reference = ipopt_by_taps[Tuple(branch["scenario_taps"])]
+        Dict(
+            "scenario_taps" => branch["scenario_taps"],
+            "net_objective_difference" => branch["net_objective"] - reference["net_objective"],
+            "tap_movement_difference" => branch["tap_movement"] - reference["tap_movement"],
+        )
+    end for branch in independent.branches]
+    max_difference = maximum(abs(row["net_objective_difference"]) for row in comparisons)
+    limited_ipopt_by_taps = Dict(
+        Tuple(branch["scenario_taps"]) => branch
+        for branch in operation_limited_ipopt.branches
+        if branch["admissible"]
+    )
+    limited_differences = [
+        independent_branch["net_objective"] - limited_ipopt_by_taps[Tuple(independent_branch["scenario_taps"])]["net_objective"]
+        for independent_branch in operation_limited_independent.branches
+        if independent_branch["admissible"]
+    ]
+    Dict{String,Any}(
+        "schema_version" => "1.1.0",
+        "certificate_id" => String(certificate_id),
+        "rule_id" => "independent_three_scenario_transformer_tap_path_reproduction",
+        "classification" => "mixed",
+        "source" => Dict(
+            "model_category" => "jump_ipopt_three_scenario_unbalanced_transformer_tap_path",
+            "object_ids" => ["TR-XFMR-009", TAP_DECISION_ID],
+            "detail" => Dict("solver" => "Ipopt through JuMP", "branch_count" => ipopt.branch_count),
+        ),
+        "target" => Dict(
+            "model_category" => "independent_rectangular_residual_three_scenario_boundary_search",
+            "object_ids" => ["generated_independent_three_scenario_boundaries__x1"],
+            "detail" => Dict(
+                "nonlinear_solver" => "damped finite-difference Newton",
+                "decision_search" => "independent tap enumeration in each scenario and 27-path enumeration",
+                "external_optimizer_packages" => String[],
+            ),
+        ),
+        "interfaces" => Dict(
+            "state_variables" => Dict("source" => ["scenario-specific rectangular voltage states"], "target" => ["independently recovered rectangular voltage states"], "relation" => "same seven unknown complex terminal voltages are recovered per scenario and tap"),
+            "constraints" => Dict("source" => ["phase-power, KCL, voltage, and leakage-current constraints"], "target" => ["finite-difference residual equations and independently evaluated inequalities"], "relation" => "complex equalities are split into scaled real residuals and constraints are checked after physical recovery"),
+            "decisions" => Dict("source" => [TAP_DECISION_ID, "three scenario tap path"], "target" => [TAP_DECISION_ID, "three scenario tap path"], "relation" => "the same finite tap triples are enumerated"),
+            "objectives" => Dict("source" => ["sum of served fractions minus movement cost"], "target" => ["same branch objective reconstructed from independent boundaries"], "relation" => "branch objectives use identical declared movement costs"),
+            "units" => Dict("source" => ["V", "A", "MVA"], "target" => ["V", "A", "MVA"], "relation" => "physical quantities are recovered in the same units"),
+            "boundary_quantities" => Dict("source" => ["nine scenario/tap boundary served fractions"], "target" => ["nine independently reproduced boundary served fractions"], "relation" => "each scenario/tap boundary is compared before path selection"),
+        ),
+        "preconditions" => [
+            "TR-XFMR-009 supplies the same finite scenario scales and tap domain",
+            "the independent high-voltage branch is traced with a feasible/infeasible bracket",
+            "the first upper feasibility boundary is the relevant branch maximum",
+        ],
+        "preserves" => ["nine scenario/tap boundary values", "27-branch path domain", "phase-selective scenario identity", "selected path objective"],
+        "forgets" => String[],
+        "recovery_map" => Dict("boundary_state" => "recover physical terminal voltages and currents from normalized rectangular coordinates"),
+        "constraint_map" => Dict("path_enumeration" => "enumerate every ordered tap triple and apply consecutive movement cost"),
+        "provenance" => Dict("reference_certificate" => "TR-XFMR-009", "implementation" => "experiments/transformations/TransformerTapACIndependentReproduction.jl", "independent_numerical_engine" => "LinearAlgebra-only damped Newton, continuation, and bisection"),
+        "evidence" => Dict(
+            "independent_reproduction" => independent,
+            "operation_limited_independent_reproduction" => operation_limited_independent,
+            "ipopt_branch_count" => ipopt.branch_count,
+            "operation_limited_ipopt_branch_count" => operation_limited_ipopt.admissible_branch_count,
+            "maximum_absolute_net_objective_difference" => max_difference,
+            "selected_path_matches" => independent.selected_branch["scenario_taps"] == ipopt.selected_branch["scenario_taps"],
+            "operation_limited_selected_path_matches" => operation_limited_independent.selected_branch["scenario_taps"] == operation_limited_ipopt.selected_branch["scenario_taps"],
+            "operation_limited_maximum_absolute_net_objective_difference" => maximum(abs.(limited_differences)),
+            "comparisons" => comparisons,
         ),
     )
 end

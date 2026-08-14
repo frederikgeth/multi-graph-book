@@ -1,0 +1,40 @@
+{
+  "witness_id": "TR-PAR-STATE-001-REPRO",
+  "claim_id": "TR-PAR-STATE-001",
+  "method": "independent pure-Python finite-difference Newton continuation and bisection",
+  "source_witness": "experiments/generated/three-member-four-wire-parallel-ac-certificate.json",
+  "rows": [
+    {
+      "state": "base",
+      "boundary_served_fraction": 1.2401762068271642,
+      "power_flow_residual": 9.159339953157541e-16,
+      "matches_julia": true
+    },
+    {
+      "state": "higher_admittance",
+      "boundary_served_fraction": 1.2463007032871252,
+      "power_flow_residual": 5.551115123125783e-16,
+      "matches_julia": true
+    },
+    {
+      "state": "lower_admittance",
+      "boundary_served_fraction": 1.232935959100724,
+      "power_flow_residual": 1.1102230246251565e-15,
+      "matches_julia": true
+    },
+    {
+      "state": "phase_selective",
+      "boundary_served_fraction": 1.231944209337235,
+      "power_flow_residual": 1.0824674490095276e-15,
+      "matches_julia": true
+    }
+  ],
+  "checks": {
+    "all_state_boundaries_match_julia": true,
+    "all_boundaries_converged": true,
+    "independent_solver_used": true,
+    "no_numpy_or_julia_import": true
+  },
+  "all_checks_pass": true,
+  "interpretation": "Independent reproduction of all four local state-envelope boundaries; not a global AC optimality proof."
+}

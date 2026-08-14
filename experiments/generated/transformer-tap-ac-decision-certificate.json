@@ -120,10 +120,20 @@
       "network/open-delta/winding/3"
     ],
     "detail": {
-      "load_direction_MVA_per_phase": {
-        "real": 0.5,
-        "imag": 0.1
-      },
+      "load_direction_MVA_per_phase": [
+        {
+          "real": 0.5,
+          "imag": 0.1
+        },
+        {
+          "real": 0.5,
+          "imag": 0.1
+        },
+        {
+          "real": 0.5,
+          "imag": 0.1
+        }
+      ],
       "secondary_voltage_bounds_pu": [
         0.9,
         1.05
@@ -577,11 +587,1135 @@
     ],
     "source_target_objective_gap": 0,
     "decision_id": "tap/x1/winding/2",
+    "three_scenario_decision": {
+      "decision_id": "tap/x1/winding/2",
+      "positions": [
+        0.95,
+        1.0,
+        1.05
+      ],
+      "scenario_phase_scales": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1.02,
+          0.98,
+          1.01
+        ],
+        [
+          0.99,
+          1.03,
+          0.98
+        ]
+      ],
+      "switching_cost": 0.02,
+      "max_tap_operations": null,
+      "branch_count": 27,
+      "admissible_branch_count": 27,
+      "branches": [
+        {
+          "switching_cost": 0,
+          "net_objective": 3.6317521047967563,
+          "tap_movement": 0,
+          "scenario_taps": [
+            0.95,
+            0.95,
+            0.95
+          ],
+          "tap_operations": 0,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.2063312138052678,
+            1.1948343638790502
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "net_objective": 3.572379461376841,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            0.95,
+            0.95,
+            1.0
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.2063312138052678,
+            1.1364617204591347
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.518434952203468,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            0.95,
+            0.95,
+            1.05
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.2063312138052678,
+            1.0835172112857616
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.5708291291717567,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            0.95,
+            1.0,
+            0.95
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.1474082381802682,
+            1.1948343638790502
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "net_objective": 3.5134564857518416,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            0.95,
+            1.0,
+            1.0
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.1474082381802682,
+            1.1364617204591347
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.4595119765784688,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            0.95,
+            1.0,
+            1.05
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.1474082381802682,
+            1.0835172112857616
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0040000000000000036,
+          "net_objective": 3.515384340946424,
+          "tap_movement": 0.20000000000000018,
+          "scenario_taps": [
+            0.95,
+            1.05,
+            0.95
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.0939634499549356,
+            1.1948343638790502
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0030000000000000027,
+          "net_objective": 3.4580116975265085,
+          "tap_movement": 0.15000000000000013,
+          "scenario_taps": [
+            0.95,
+            1.05,
+            1.0
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.0939634499549356,
+            1.1364617204591347
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.406067188353136,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            0.95,
+            1.05,
+            1.05
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.0939634499549356,
+            1.0835172112857616
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "net_objective": 3.5706394586911996,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1,
+            0.95,
+            0.95
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.2063312138052678,
+            1.1948343638790502
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.5112668152712843,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1,
+            0.95,
+            1
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.2063312138052678,
+            1.1364617204591347
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0030000000000000027,
+          "net_objective": 3.457322306097911,
+          "tap_movement": 0.15000000000000013,
+          "scenario_taps": [
+            1,
+            0.95,
+            1.05
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.2063312138052678,
+            1.0835172112857616
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "net_objective": 3.5117164830661998,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1,
+            1,
+            0.95
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.1474082381802682,
+            1.1948343638790502
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0,
+          "net_objective": 3.454343839646284,
+          "tap_movement": 0,
+          "scenario_taps": [
+            1,
+            1,
+            1
+          ],
+          "tap_operations": 0,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.1474082381802682,
+            1.1364617204591347
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "net_objective": 3.400399330472911,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1,
+            1,
+            1.05
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.1474082381802682,
+            1.0835172112857616
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0030000000000000027,
+          "net_objective": 3.456271694840867,
+          "tap_movement": 0.15000000000000013,
+          "scenario_taps": [
+            1,
+            1.05,
+            0.95
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.0939634499549356,
+            1.1948343638790502
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.398899051420952,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1,
+            1.05,
+            1
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.0939634499549356,
+            1.1364617204591347
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "net_objective": 3.346954542247579,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1,
+            1.05,
+            1.05
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.0939634499549356,
+            1.0835172112857616
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.5151159455579846,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1.05,
+            0.95,
+            0.95
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.2063312138052678,
+            1.1948343638790502
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0030000000000000027,
+          "net_objective": 3.455743302138069,
+          "tap_movement": 0.15000000000000013,
+          "scenario_taps": [
+            1.05,
+            0.95,
+            1.0
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.2063312138052678,
+            1.1364617204591347
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0040000000000000036,
+          "net_objective": 3.4017987929646956,
+          "tap_movement": 0.20000000000000018,
+          "scenario_taps": [
+            1.05,
+            0.95,
+            1.05
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.2063312138052678,
+            1.0835172112857616
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.4561929699329843,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1.05,
+            1.0,
+            0.95
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.1474082381802682,
+            1.1948343638790502
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "net_objective": 3.398820326513069,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1.05,
+            1.0,
+            1.0
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.1474082381802682,
+            1.1364617204591347
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.3448758173396964,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1.05,
+            1.0,
+            1.05
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.1474082381802682,
+            1.0835172112857616
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.4027481817076524,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1.05,
+            1.05,
+            0.95
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.0939634499549356,
+            1.1948343638790502
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "net_objective": 3.345375538287737,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1.05,
+            1.05,
+            1.0
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.0939634499549356,
+            1.1364617204591347
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0,
+          "net_objective": 3.2934310291143634,
+          "tap_movement": 0,
+          "scenario_taps": [
+            1.05,
+            1.05,
+            1.05
+          ],
+          "tap_operations": 0,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.0939634499549356,
+            1.0835172112857616
+          ],
+          "admissible": true
+        }
+      ],
+      "selected_branch": {
+        "switching_cost": 0,
+        "net_objective": 3.6317521047967563,
+        "tap_movement": 0,
+        "scenario_taps": [
+          0.95,
+          0.95,
+          0.95
+        ],
+        "tap_operations": 0,
+        "scenario_served_fractions": [
+          1.2305865271124383,
+          1.2063312138052678,
+          1.1948343638790502
+        ],
+        "admissible": true
+      },
+      "cost_sweep": [
+        {
+          "switching_cost": 0,
+          "selected_net_objective": 3.6317521047967563,
+          "selected_scenario_taps": [
+            0.95,
+            0.95,
+            0.95
+          ],
+          "branch_count": 27
+        },
+        {
+          "switching_cost": 0.5,
+          "selected_net_objective": 3.6317521047967563,
+          "selected_scenario_taps": [
+            0.95,
+            0.95,
+            0.95
+          ],
+          "branch_count": 27
+        },
+        {
+          "switching_cost": 1,
+          "selected_net_objective": 3.6317521047967563,
+          "selected_scenario_taps": [
+            0.95,
+            0.95,
+            0.95
+          ],
+          "branch_count": 27
+        },
+        {
+          "switching_cost": 1.1,
+          "selected_net_objective": 3.6317521047967563,
+          "selected_scenario_taps": [
+            0.95,
+            0.95,
+            0.95
+          ],
+          "branch_count": 27
+        },
+        {
+          "switching_cost": 2,
+          "selected_net_objective": 3.6317521047967563,
+          "selected_scenario_taps": [
+            0.95,
+            0.95,
+            0.95
+          ],
+          "branch_count": 27
+        }
+      ],
+      "cost_sweep_branch_complete": true,
+      "branch_completeness": true,
+      "interpretation": "Exact enumeration of the declared three-scenario phase-selective tap-path domain; continuous scenario values are locally solved Ipopt results."
+    },
     "positions": [
       0.95,
       1.0,
       1.05
     ],
+    "operation_limited_three_scenario_decision": {
+      "decision_id": "tap/x1/winding/2",
+      "positions": [
+        0.95,
+        1.0,
+        1.05
+      ],
+      "scenario_phase_scales": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1.02,
+          0.98,
+          1.01
+        ],
+        [
+          0.99,
+          1.03,
+          0.98
+        ]
+      ],
+      "switching_cost": 0.02,
+      "max_tap_operations": 1,
+      "branch_count": 27,
+      "admissible_branch_count": 15,
+      "branches": [
+        {
+          "switching_cost": 0,
+          "net_objective": 3.6317521047967563,
+          "tap_movement": 0,
+          "scenario_taps": [
+            0.95,
+            0.95,
+            0.95
+          ],
+          "tap_operations": 0,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.2063312138052678,
+            1.1948343638790502
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "net_objective": 3.572379461376841,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            0.95,
+            0.95,
+            1.0
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.2063312138052678,
+            1.1364617204591347
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.518434952203468,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            0.95,
+            0.95,
+            1.05
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.2063312138052678,
+            1.0835172112857616
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.5708291291717567,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            0.95,
+            1.0,
+            0.95
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.1474082381802682,
+            1.1948343638790502
+          ],
+          "admissible": false
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "net_objective": 3.5134564857518416,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            0.95,
+            1.0,
+            1.0
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.1474082381802682,
+            1.1364617204591347
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.4595119765784688,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            0.95,
+            1.0,
+            1.05
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.1474082381802682,
+            1.0835172112857616
+          ],
+          "admissible": false
+        },
+        {
+          "switching_cost": 0.0040000000000000036,
+          "net_objective": 3.515384340946424,
+          "tap_movement": 0.20000000000000018,
+          "scenario_taps": [
+            0.95,
+            1.05,
+            0.95
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.0939634499549356,
+            1.1948343638790502
+          ],
+          "admissible": false
+        },
+        {
+          "switching_cost": 0.0030000000000000027,
+          "net_objective": 3.4580116975265085,
+          "tap_movement": 0.15000000000000013,
+          "scenario_taps": [
+            0.95,
+            1.05,
+            1.0
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.0939634499549356,
+            1.1364617204591347
+          ],
+          "admissible": false
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.406067188353136,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            0.95,
+            1.05,
+            1.05
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.2305865271124383,
+            1.0939634499549356,
+            1.0835172112857616
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "net_objective": 3.5706394586911996,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1,
+            0.95,
+            0.95
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.2063312138052678,
+            1.1948343638790502
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.5112668152712843,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1,
+            0.95,
+            1
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.2063312138052678,
+            1.1364617204591347
+          ],
+          "admissible": false
+        },
+        {
+          "switching_cost": 0.0030000000000000027,
+          "net_objective": 3.457322306097911,
+          "tap_movement": 0.15000000000000013,
+          "scenario_taps": [
+            1,
+            0.95,
+            1.05
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.2063312138052678,
+            1.0835172112857616
+          ],
+          "admissible": false
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "net_objective": 3.5117164830661998,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1,
+            1,
+            0.95
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.1474082381802682,
+            1.1948343638790502
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0,
+          "net_objective": 3.454343839646284,
+          "tap_movement": 0,
+          "scenario_taps": [
+            1,
+            1,
+            1
+          ],
+          "tap_operations": 0,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.1474082381802682,
+            1.1364617204591347
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "net_objective": 3.400399330472911,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1,
+            1,
+            1.05
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.1474082381802682,
+            1.0835172112857616
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0030000000000000027,
+          "net_objective": 3.456271694840867,
+          "tap_movement": 0.15000000000000013,
+          "scenario_taps": [
+            1,
+            1.05,
+            0.95
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.0939634499549356,
+            1.1948343638790502
+          ],
+          "admissible": false
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.398899051420952,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1,
+            1.05,
+            1
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.0939634499549356,
+            1.1364617204591347
+          ],
+          "admissible": false
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "net_objective": 3.346954542247579,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1,
+            1.05,
+            1.05
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.1704738810068813,
+            1.0939634499549356,
+            1.0835172112857616
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.5151159455579846,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1.05,
+            0.95,
+            0.95
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.2063312138052678,
+            1.1948343638790502
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0030000000000000027,
+          "net_objective": 3.455743302138069,
+          "tap_movement": 0.15000000000000013,
+          "scenario_taps": [
+            1.05,
+            0.95,
+            1.0
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.2063312138052678,
+            1.1364617204591347
+          ],
+          "admissible": false
+        },
+        {
+          "switching_cost": 0.0040000000000000036,
+          "net_objective": 3.4017987929646956,
+          "tap_movement": 0.20000000000000018,
+          "scenario_taps": [
+            1.05,
+            0.95,
+            1.05
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.2063312138052678,
+            1.0835172112857616
+          ],
+          "admissible": false
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.4561929699329843,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1.05,
+            1.0,
+            0.95
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.1474082381802682,
+            1.1948343638790502
+          ],
+          "admissible": false
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "net_objective": 3.398820326513069,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1.05,
+            1.0,
+            1.0
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.1474082381802682,
+            1.1364617204591347
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.3448758173396964,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1.05,
+            1.0,
+            1.05
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.1474082381802682,
+            1.0835172112857616
+          ],
+          "admissible": false
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "net_objective": 3.4027481817076524,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1.05,
+            1.05,
+            0.95
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.0939634499549356,
+            1.1948343638790502
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "net_objective": 3.345375538287737,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1.05,
+            1.05,
+            1.0
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.0939634499549356,
+            1.1364617204591347
+          ],
+          "admissible": true
+        },
+        {
+          "switching_cost": 0,
+          "net_objective": 3.2934310291143634,
+          "tap_movement": 0,
+          "scenario_taps": [
+            1.05,
+            1.05,
+            1.05
+          ],
+          "tap_operations": 0,
+          "scenario_served_fractions": [
+            1.1159503678736664,
+            1.0939634499549356,
+            1.0835172112857616
+          ],
+          "admissible": true
+        }
+      ],
+      "selected_branch": {
+        "switching_cost": 0,
+        "net_objective": 3.6317521047967563,
+        "tap_movement": 0,
+        "scenario_taps": [
+          0.95,
+          0.95,
+          0.95
+        ],
+        "tap_operations": 0,
+        "scenario_served_fractions": [
+          1.2305865271124383,
+          1.2063312138052678,
+          1.1948343638790502
+        ],
+        "admissible": true
+      },
+      "cost_sweep": [
+        {
+          "switching_cost": 0,
+          "selected_net_objective": 3.6317521047967563,
+          "selected_scenario_taps": [
+            0.95,
+            0.95,
+            0.95
+          ],
+          "branch_count": 15
+        },
+        {
+          "switching_cost": 0.5,
+          "selected_net_objective": 3.6317521047967563,
+          "selected_scenario_taps": [
+            0.95,
+            0.95,
+            0.95
+          ],
+          "branch_count": 15
+        },
+        {
+          "switching_cost": 1,
+          "selected_net_objective": 3.6317521047967563,
+          "selected_scenario_taps": [
+            0.95,
+            0.95,
+            0.95
+          ],
+          "branch_count": 15
+        },
+        {
+          "switching_cost": 1.1,
+          "selected_net_objective": 3.6317521047967563,
+          "selected_scenario_taps": [
+            0.95,
+            0.95,
+            0.95
+          ],
+          "branch_count": 15
+        },
+        {
+          "switching_cost": 2,
+          "selected_net_objective": 3.6317521047967563,
+          "selected_scenario_taps": [
+            0.95,
+            0.95,
+            0.95
+          ],
+          "branch_count": 15
+        }
+      ],
+      "cost_sweep_branch_complete": true,
+      "branch_completeness": true,
+      "interpretation": "Exact enumeration of the declared three-scenario phase-selective tap-path domain; continuous scenario values are locally solved Ipopt results."
+    },
     "frozen_start_objective_gap": 0.060112646105557,
     "frozen_start_solution": {
       "leakage_current_limit_A": [
@@ -707,6 +1841,171 @@
       },
       "maximum_leakage_current_loading": 1.0000000002614375,
       "objective_served_fraction": 1.1704738810068813
+    },
+    "unbalanced_switching_decision": {
+      "decision_id": "tap/x1/winding/2",
+      "positions": [
+        0.95,
+        1.0,
+        1.05
+      ],
+      "scenario_phase_scale": [
+        1.08,
+        0.91,
+        1.04
+      ],
+      "switching_cost": 0.02,
+      "branch_count": 9,
+      "branches": [
+        {
+          "switching_cost": 0,
+          "scenario_1_served_fraction": 1.2305865271124383,
+          "net_objective": 2.3695156669940847,
+          "scenario_1_tap": 0.95,
+          "scenario_2_tap": 0.95,
+          "scenario_2_served_fraction": 1.1389291398816466
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "scenario_1_served_fraction": 1.2305865271124383,
+          "net_objective": 2.3129001240502407,
+          "scenario_1_tap": 0.95,
+          "scenario_2_tap": 1,
+          "scenario_2_served_fraction": 1.0833135969378023
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "scenario_1_served_fraction": 1.2305865271124383,
+          "net_objective": 2.2614541632776266,
+          "scenario_1_tap": 0.95,
+          "scenario_2_tap": 1.05,
+          "scenario_2_served_fraction": 1.0328676361651878
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "scenario_1_served_fraction": 1.1704738810068813,
+          "net_objective": 2.308403020888528,
+          "scenario_1_tap": 1,
+          "scenario_2_tap": 0.95,
+          "scenario_2_served_fraction": 1.1389291398816466
+        },
+        {
+          "switching_cost": 0,
+          "scenario_1_served_fraction": 1.1704738810068813,
+          "net_objective": 2.253787477944684,
+          "scenario_1_tap": 1,
+          "scenario_2_tap": 1,
+          "scenario_2_served_fraction": 1.0833135969378023
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "scenario_1_served_fraction": 1.1704738810068813,
+          "net_objective": 2.2023415171720693,
+          "scenario_1_tap": 1,
+          "scenario_2_tap": 1.05,
+          "scenario_2_served_fraction": 1.0328676361651878
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "scenario_1_served_fraction": 1.1159503678736664,
+          "net_objective": 2.2528795077553134,
+          "scenario_1_tap": 1.05,
+          "scenario_2_tap": 0.95,
+          "scenario_2_served_fraction": 1.1389291398816466
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "scenario_1_served_fraction": 1.1159503678736664,
+          "net_objective": 2.198263964811469,
+          "scenario_1_tap": 1.05,
+          "scenario_2_tap": 1,
+          "scenario_2_served_fraction": 1.0833135969378023
+        },
+        {
+          "switching_cost": 0,
+          "scenario_1_served_fraction": 1.1159503678736664,
+          "net_objective": 2.148818004038854,
+          "scenario_1_tap": 1.05,
+          "scenario_2_tap": 1.05,
+          "scenario_2_served_fraction": 1.0328676361651878
+        }
+      ],
+      "selected_branch": {
+        "switching_cost": 0,
+        "scenario_1_served_fraction": 1.2305865271124383,
+        "net_objective": 2.3695156669940847,
+        "scenario_1_tap": 0.95,
+        "scenario_2_tap": 0.95,
+        "scenario_2_served_fraction": 1.1389291398816466
+      },
+      "cost_sweep": [
+        {
+          "switching_cost": 0,
+          "selected_scenario_2_tap": 0.95,
+          "selected_net_objective": 2.3695156669940847,
+          "selected_scenario_1_tap": 0.95,
+          "branch_count": 9
+        },
+        {
+          "switching_cost": 0.5,
+          "selected_scenario_2_tap": 0.95,
+          "selected_net_objective": 2.3695156669940847,
+          "selected_scenario_1_tap": 0.95,
+          "branch_count": 9
+        },
+        {
+          "switching_cost": 1,
+          "selected_scenario_2_tap": 0.95,
+          "selected_net_objective": 2.3695156669940847,
+          "selected_scenario_1_tap": 0.95,
+          "branch_count": 9
+        },
+        {
+          "switching_cost": 1.1,
+          "selected_scenario_2_tap": 0.95,
+          "selected_net_objective": 2.3695156669940847,
+          "selected_scenario_1_tap": 0.95,
+          "branch_count": 9
+        },
+        {
+          "switching_cost": 2,
+          "selected_scenario_2_tap": 0.95,
+          "selected_net_objective": 2.3695156669940847,
+          "selected_scenario_1_tap": 0.95,
+          "branch_count": 9
+        }
+      ],
+      "cost_sweep_branch_complete": true,
+      "branch_completeness": true,
+      "scenario_1_phase_directions": [
+        {
+          "re": 0.5,
+          "im": 0.1
+        },
+        {
+          "re": 0.5,
+          "im": 0.1
+        },
+        {
+          "re": 0.5,
+          "im": 0.1
+        }
+      ],
+      "scenario_2_phase_directions": [
+        {
+          "re": 0.54,
+          "im": 0.10800000000000001
+        },
+        {
+          "re": 0.455,
+          "im": 0.09100000000000001
+        },
+        {
+          "re": 0.52,
+          "im": 0.10400000000000001
+        }
+      ],
+      "interpretation": "Exact enumeration of the declared unbalanced two-scenario tap-pair domain; continuous values are locally solved Ipopt results."
     },
     "pointwise_factor_differences": [
       {

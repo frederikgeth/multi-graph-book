@@ -345,5 +345,91 @@
     "objective_served_fraction": 1.240176194172674,
     "formulation": "exact_pruned"
   },
-  "objective_gap": -6.550315845288424e-14
+  "objective_gap": -6.550315845288424e-14,
+  "finite_state_envelope": {
+    "checks": {
+      "pruned_matches_source_in_each_state": true,
+      "state_changes_decision_value": true,
+      "all_states_certify_joint_pruning": true,
+      "independent_boundary_matches_source_in_each_state": true,
+      "all_source_and_pruned_solves_terminate": true,
+      "state_rows_are_explicit": true
+    },
+    "interpretation": "A finite three-state unbalanced four-wire AC envelope rebuilds the member maps and source/pruned formulations at each declared admittance state. Joint limit pruning remains exact in each local state, but the optimal served value changes across states. This is finite local evidence, not a global state/control-dependent AC theorem.",
+    "all_checks_pass": true,
+    "witness_id": "TR-PAR-STATE-001",
+    "claim_id": "TR-PAR-STATE-001",
+    "evidence_type": "generated_three_member_state_dependent_ac_envelope",
+    "states": [
+      {
+        "pruned_termination_status": "LOCALLY_SOLVED",
+        "source_current_margin": -6.379486938712375e-10,
+        "admittance_scale": 1,
+        "independent_boundary_gap": 1.265442461928501e-8,
+        "state": "base",
+        "independent_boundary": 1.2401762068271642,
+        "source_objective": 1.2401761941727396,
+        "pruned_current_margin": -6.379098360653757e-10,
+        "certificate_certified": true,
+        "source_termination_status": "LOCALLY_SOLVED",
+        "pruned_objective": 1.240176194172674,
+        "objective_gap": -6.550315845288424e-14
+      },
+      {
+        "pruned_termination_status": "LOCALLY_SOLVED",
+        "source_current_margin": -6.384731632280705e-10,
+        "admittance_scale": 1.08,
+        "independent_boundary_gap": 1.1001066502203116e-8,
+        "state": "higher_admittance",
+        "independent_boundary": 1.2463007032871252,
+        "source_objective": 1.2463006922860587,
+        "pruned_current_margin": -6.384853756813413e-10,
+        "certificate_certified": true,
+        "source_termination_status": "LOCALLY_SOLVED",
+        "pruned_objective": 1.2463006922860804,
+        "objective_gap": 2.1760371282653068e-14
+      },
+      {
+        "pruned_termination_status": "LOCALLY_SOLVED",
+        "source_current_margin": -6.372189442771514e-10,
+        "admittance_scale": 0.92,
+        "independent_boundary_gap": 1.4461629671558285e-8,
+        "state": "lower_admittance",
+        "independent_boundary": 1.232935959100724,
+        "source_objective": 1.2329359446390944,
+        "pruned_current_margin": -6.372280481059533e-10,
+        "certificate_certified": true,
+        "source_termination_status": "LOCALLY_SOLVED",
+        "pruned_objective": 1.232935944639111,
+        "objective_gap": 1.6653345369377348e-14
+      },
+      {
+        "pruned_termination_status": "LOCALLY_SOLVED",
+        "source_current_margin": -6.376653649553532e-10,
+        "admittance_scale": [
+          [
+            1.03,
+            0.97,
+            1.02,
+            1.0
+          ],
+          [
+            0.98,
+            1.04,
+            0.96,
+            1.0
+          ]
+        ],
+        "independent_boundary_gap": 1.1244713160607489e-8,
+        "state": "phase_selective",
+        "independent_boundary": 1.231944209337235,
+        "source_objective": 1.2319441980925219,
+        "pruned_current_margin": -6.376701389143591e-10,
+        "certificate_certified": true,
+        "source_termination_status": "LOCALLY_SOLVED",
+        "pruned_objective": 1.231944198092527,
+        "objective_gap": 5.10702591327572e-15
+      }
+    ]
+  }
 }

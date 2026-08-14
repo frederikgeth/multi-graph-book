@@ -6,7 +6,7 @@ using LinearAlgebra
 include(joinpath(@__DIR__, "TypedKronReduction.jl"))
 using .TypedKronReduction
 
-export evaluate_explicit_earth_kron, evaluate_grounding_impedance_sweep
+export evaluate_explicit_earth_kron, evaluate_grounding_impedance_sweep, evaluate_nonlinear_grounding_probe, evaluate_nonlinear_two_point_grounding_probe, evaluate_nonlinear_two_point_continuation
 
 function _z5()
     diagonal = ComplexF64[
@@ -131,6 +131,261 @@ function evaluate_grounding_impedance_sweep()
        checks,
        all_checks_pass = all(values(checks)),
        interpretation = "A finite sweep of grounding impedances on the explicit two-point earth-return chain changes recovered neutral currents and the feasible-set classification under one fixed neutral limit. This is a synthetic linear sensitivity probe, not an uncertainty quantification or standards-aligned grounding study.")
+end
+
+function _bond_current(v, y0, alpha)
+    delta = v[4] - v[5]
+    y0 * (1 + alpha * abs2(delta)) * delta
+end
+
+function _grounding_residual(v, vi, vj, Yhalf, y0, alpha)
+    residual = Yhalf * (v - vi) + Yhalf * (v - vj)
+    bond = _bond_current(v, y0, alpha)
+    residual[4] += bond
+    residual[5] -= bond
+    residual
+end
+
+function _real_coordinates(v)
+    vcat(real.(v), imag.(v))
+end
+
+function _complex_coordinates(x)
+    c = length(x) ÷ 2
+    ComplexF64[x[k] + im * x[c + k] for k in 1:c]
+end
+
+function _nonlinear_grounding_solve(vi, vj, Yhalf, y0, alpha)
+    v = 0.5 .* (vi + vj)
+    for iteration in 1:30
+        residual = _grounding_residual(v, vi, vj, Yhalf, y0, alpha)
+        norm_residual = norm(residual)
+        norm_residual ≤ 1.0e-12 && return (; voltage = v, iterations = iteration, residual = norm_residual)
+        x = _real_coordinates(v)
+        r = _real_coordinates(residual)
+        jacobian = zeros(Float64, length(x), length(x))
+        for column in eachindex(x)
+            perturbed = copy(x)
+            perturbed[column] += 1.0e-7
+            jacobian[:, column] = (_real_coordinates(_grounding_residual(_complex_coordinates(perturbed), vi, vj, Yhalf, y0, alpha)) - r) ./ 1.0e-7
+        end
+        step = jacobian \ (-r)
+        accepted = false
+        for damping in (1.0, 0.5, 0.25, 0.125, 0.0625)
+            candidate = _complex_coordinates(x .+ damping .* step)
+            candidate_residual = norm(_grounding_residual(candidate, vi, vj, Yhalf, y0, alpha))
+            if candidate_residual < norm_residual
+                v = candidate
+                accepted = true
+                break
+            end
+        end
+        accepted || error("nonlinear grounding Newton step was not accepted")
+    end
+    error("nonlinear grounding solve did not converge")
+end
+
+function evaluate_nonlinear_grounding_probe()
+    terminal_order = ["a", "b", "c", "n", "e"]
+    Z = _z5()
+    Yhalf = inv(0.5 .* Z)
+    y0 = inv(0.20 + 0.10im)
+    alpha = 5.0
+    vi = ComplexF64[1.00 + 0.02im, 0.99 - 0.01im, 0.98 + 0.01im, 0.02 + 0.00im, 0.00 + 0.00im]
+    vj_base = ComplexF64[0.97 - 0.02im, 0.96 + 0.01im, 0.95 - 0.01im, 0.01 + 0.00im, 0.04 + 0.00im]
+    vj_shifted = copy(vj_base)
+    vj_shifted[4] = 0.10 + 0.00im
+    vj_shifted[5] = -0.02 + 0.00im
+    base = _nonlinear_grounding_solve(vi, vj_base, Yhalf, y0, alpha)
+    shifted = _nonlinear_grounding_solve(vi, vj_shifted, Yhalf, y0, alpha)
+    y_base = y0 * (1 + alpha * abs2(base.voltage[4] - base.voltage[5]))
+    frozen_bond = zeros(ComplexF64, 5, 5)
+    frozen_bond[4, 4] += y_base
+    frozen_bond[4, 5] -= y_base
+    frozen_bond[5, 4] -= y_base
+    frozen_bond[5, 5] += y_base
+    frozen_voltage = (2 .* Yhalf + frozen_bond) \ (Yhalf * (vi + vj_shifted))
+    shifted_bond = _bond_current(shifted.voltage, y0, alpha)
+    frozen_bond_current = y_base * (frozen_voltage[4] - frozen_voltage[5])
+    shifted_current = Yhalf * (vi - shifted.voltage)
+    frozen_current = Yhalf * (vi - frozen_voltage)
+    declared_limit = 0.025
+    checks = Dict(
+        "base_nonlinear_solve_converged" => base.residual ≤ 1.0e-11,
+        "shifted_nonlinear_solve_converged" => shifted.residual ≤ 1.0e-11,
+        "state_changes_bond_admittance" => abs(y_base - y0 * (1 + alpha * abs2(shifted.voltage[4] - shifted.voltage[5]))) > 1.0e-5,
+        "frozen_map_is_not_exact_at_shifted_state" => norm(_grounding_residual(frozen_voltage, vi, vj_shifted, Yhalf, y0, alpha)) > 1.0e-5,
+        "recomputed_map_is_exact_at_shifted_state" => norm(_grounding_residual(shifted.voltage, vi, vj_shifted, Yhalf, y0, alpha)) ≤ 1.0e-11,
+        "bond_current_changes_after_recompute" => abs(frozen_bond_current - shifted_bond) > 1.0e-5,
+        "neutral_limit_is_evaluated_after_recompute" => abs(shifted_current[4]) > declared_limit,
+    )
+    (; witness_id = "TR-KRON-NEUTRAL-005",
+       claim_id = "TR-KRON-NEUTRAL-005",
+       evidence_type = "generated_state_dependent_grounding_probe",
+       terminal_order,
+       alpha,
+       declared_neutral_limit = declared_limit,
+       base = Dict("endpoint_earth_voltage" => complex_pair(vj_base[5]), "midpoint_voltage" => complex_pair.(base.voltage), "bond_admittance" => complex_pair(y_base), "bond_current" => complex_pair(_bond_current(base.voltage, y0, alpha)), "residual" => base.residual, "iterations" => base.iterations),
+       shifted = Dict("endpoint_earth_voltage" => complex_pair(vj_shifted[5]), "midpoint_voltage" => complex_pair.(shifted.voltage), "bond_admittance" => complex_pair(y0 * (1 + alpha * abs2(shifted.voltage[4] - shifted.voltage[5]))), "bond_current" => complex_pair(shifted_bond), "neutral_current" => complex_pair(shifted_current[4]), "residual" => shifted.residual, "iterations" => shifted.iterations),
+       frozen_shifted = Dict("midpoint_voltage" => complex_pair.(frozen_voltage), "bond_current" => complex_pair(frozen_bond_current), "nonlinear_residual" => norm(_grounding_residual(frozen_voltage, vi, vj_shifted, Yhalf, y0, alpha)), "neutral_current" => complex_pair(frozen_current[4])),
+       checks,
+       all_checks_pass = all(values(checks)),
+       interpretation = "A voltage-dependent neutral-earth bond changes after an endpoint state shift. Reusing the nominal linearized bond map leaves a nonzero nonlinear residual and a different recovered neutral current; recomputation restores the shifted-state relation. This is a local synthetic probe, not a global nonlinear grounding theorem or standards-aligned protection model.")
+end
+
+function _nonlinear_chain_residual(v, vi, vj, Ythird, y0s, alphas)
+    c = length(vi)
+    m1 = v[1:c]
+    m2 = v[c + 1:2c]
+    current_1 = Ythird * (m1 - vi) + Ythird * (m1 - m2)
+    current_2 = Ythird * (m2 - m1) + Ythird * (m2 - vj)
+    bond_1 = _bond_current(m1, y0s[1], alphas[1])
+    bond_2 = _bond_current(m2, y0s[2], alphas[2])
+    current_1[4] += bond_1
+    current_1[5] -= bond_1
+    current_2[4] += bond_2
+    current_2[5] -= bond_2
+    vcat(current_1, current_2)
+end
+
+function _nonlinear_chain_solve(vi, vj, Ythird, y0s, alphas)
+    v = vcat(0.5 .* (vi + vj), 0.5 .* (vi + vj))
+    for iteration in 1:35
+        residual = _nonlinear_chain_residual(v, vi, vj, Ythird, y0s, alphas)
+        norm_residual = norm(residual)
+        norm_residual ≤ 1.0e-12 && return (; voltage = v, iterations = iteration, residual = norm_residual)
+        x = _real_coordinates(v)
+        r = _real_coordinates(residual)
+        jacobian = zeros(Float64, length(x), length(x))
+        for column in eachindex(x)
+            perturbed = copy(x)
+            perturbed[column] += 1.0e-7
+            jacobian[:, column] = (_real_coordinates(_nonlinear_chain_residual(_complex_coordinates(perturbed), vi, vj, Ythird, y0s, alphas)) - r) ./ 1.0e-7
+        end
+        step = jacobian \ (-r)
+        accepted = false
+        for damping in (1.0, 0.5, 0.25, 0.125, 0.0625)
+            candidate = _complex_coordinates(x .+ damping .* step)
+            candidate_residual = norm(_nonlinear_chain_residual(candidate, vi, vj, Ythird, y0s, alphas))
+            if candidate_residual < norm_residual
+                v = candidate
+                accepted = true
+                break
+            end
+        end
+        accepted || error("nonlinear grounding chain Newton step was not accepted")
+    end
+    error("nonlinear grounding chain solve did not converge")
+end
+
+function _linear_chain_matrix(Ythird, bond_admittances)
+    c = size(Ythird, 1)
+    matrix = zeros(ComplexF64, 2c, 2c)
+    for (offset, admittance) in ((0, bond_admittances[1]), (c, bond_admittances[2]))
+        matrix[offset + 1:offset + c, offset + 1:offset + c] .= 2 .* Ythird
+        matrix[offset + 4, offset + 4] += admittance
+        matrix[offset + 4, offset + 5] -= admittance
+        matrix[offset + 5, offset + 4] -= admittance
+        matrix[offset + 5, offset + 5] += admittance
+    end
+    matrix[1:c, c + 1:2c] .= -Ythird
+    matrix[c + 1:2c, 1:c] .= -Ythird
+    matrix
+end
+
+function evaluate_nonlinear_two_point_grounding_probe()
+    terminal_order = ["a", "b", "c", "n", "e"]
+    Z = _z5()
+    Ythird = inv((1 / 3) .* Z)
+    y0s = ComplexF64[inv(0.20 + 0.10im), inv(0.35 + 0.12im)]
+    alphas = [4.0, 6.0]
+    vi = ComplexF64[1.00 + 0.02im, 0.99 - 0.01im, 0.98 + 0.01im, 0.02 + 0.00im, 0.00 + 0.00im]
+    vj_base = ComplexF64[0.97 - 0.02im, 0.96 + 0.01im, 0.95 - 0.01im, 0.01 + 0.00im, 0.04 + 0.00im]
+    vj_shifted = copy(vj_base)
+    vj_shifted[4] = 0.10 + 0.00im
+    vj_shifted[5] = -0.02 + 0.00im
+    base = _nonlinear_chain_solve(vi, vj_base, Ythird, y0s, alphas)
+    shifted = _nonlinear_chain_solve(vi, vj_shifted, Ythird, y0s, alphas)
+    base_midpoints = [base.voltage[1:5], base.voltage[6:10]]
+    shifted_midpoints = [shifted.voltage[1:5], shifted.voltage[6:10]]
+    frozen_admittances = [y0s[k] * (1 + alphas[k] * abs2(base_midpoints[k][4] - base_midpoints[k][5])) for k in 1:2]
+    frozen = _linear_chain_matrix(Ythird, frozen_admittances) \ vcat(Ythird * vi, Ythird * vj_shifted)
+    shifted_currents = [Ythird * (vi - shifted_midpoints[1]), Ythird * (shifted_midpoints[1] - shifted_midpoints[2]), Ythird * (shifted_midpoints[2] - vj_shifted)]
+    frozen_currents = [Ythird * (vi - frozen[1:5]), Ythird * (frozen[1:5] - frozen[6:10]), Ythird * (frozen[6:10] - vj_shifted)]
+    declared_limit = 0.025
+    checks = Dict(
+        "base_nonlinear_chain_converged" => base.residual ≤ 1.0e-11,
+        "shifted_nonlinear_chain_converged" => shifted.residual ≤ 1.0e-11,
+        "both_bond_maps_change_with_state" => all(abs.(frozen_admittances .- [y0s[k] * (1 + alphas[k] * abs2(shifted_midpoints[k][4] - shifted_midpoints[k][5])) for k in 1:2]) .> 1.0e-5),
+        "frozen_chain_map_is_not_exact" => norm(_nonlinear_chain_residual(frozen, vi, vj_shifted, Ythird, y0s, alphas)) > 1.0e-5,
+        "recomputed_chain_map_is_exact" => shifted.residual ≤ 1.0e-11,
+        "neutral_limit_is_evaluated_on_recomputed_chain" => maximum(abs.([current[4] for current in shifted_currents])) > declared_limit,
+        "frozen_and_recomputed_neutral_currents_differ" => maximum(abs.([frozen_currents[k][4] - shifted_currents[k][4] for k in 1:3])) > 1.0e-5,
+    )
+    (; witness_id = "TR-KRON-NEUTRAL-006",
+       claim_id = "TR-KRON-NEUTRAL-006",
+       evidence_type = "generated_two_point_state_dependent_grounding_probe",
+       terminal_order,
+       alphas,
+       declared_neutral_limit = declared_limit,
+       base = Dict("midpoint_voltages" => complex_pair.(base.voltage), "residual" => base.residual, "iterations" => base.iterations),
+       shifted = Dict("midpoint_voltages" => complex_pair.(shifted.voltage), "residual" => shifted.residual, "iterations" => shifted.iterations, "neutral_currents" => complex_pair.([current[4] for current in shifted_currents])),
+       frozen_shifted = Dict("midpoint_voltages" => complex_pair.(frozen), "nonlinear_residual" => norm(_nonlinear_chain_residual(frozen, vi, vj_shifted, Ythird, y0s, alphas)), "neutral_currents" => complex_pair.([current[4] for current in frozen_currents])),
+       checks,
+       all_checks_pass = all(values(checks)),
+       interpretation = "A two-point state-dependent grounding chain requires both nonlinear bond maps to be recomputed after an endpoint state shift. Freezing both nominal maps changes the recovered segment-neutral currents and leaves a nonzero chain residual. This is a local synthetic probe, not a global nonlinear grounding or protection theorem.")
+end
+
+function evaluate_nonlinear_two_point_continuation()
+    terminal_order = ["a", "b", "c", "n", "e"]
+    Z = _z5()
+    Ythird = inv((1 / 3) .* Z)
+    y0s = ComplexF64[inv(0.20 + 0.10im), inv(0.35 + 0.12im)]
+    alphas = [4.0, 6.0]
+    vi = ComplexF64[1.00 + 0.02im, 0.99 - 0.01im, 0.98 + 0.01im, 0.02 + 0.00im, 0.00 + 0.00im]
+    vj_base = ComplexF64[0.97 - 0.02im, 0.96 + 0.01im, 0.95 - 0.01im, 0.01 + 0.00im, 0.04 + 0.00im]
+    vj_delta = ComplexF64[0.00 + 0.00im, 0.00 + 0.00im, 0.00 + 0.00im, 0.09 + 0.00im, -0.06 + 0.00im]
+    lambdas = [0.0, 0.25, 0.5, 0.75, 1.0]
+    base = _nonlinear_chain_solve(vi, vj_base, Ythird, y0s, alphas)
+    base_midpoints = [base.voltage[1:5], base.voltage[6:10]]
+    frozen_admittances = [y0s[k] * (1 + alphas[k] * abs2(base_midpoints[k][4] - base_midpoints[k][5])) for k in 1:2]
+    rows = Dict[]
+    for λ in lambdas
+        vj = vj_base .+ λ .* vj_delta
+        solved = _nonlinear_chain_solve(vi, vj, Ythird, y0s, alphas)
+        midpoints = [solved.voltage[1:5], solved.voltage[6:10]]
+        currents = [Ythird * (vi - midpoints[1]), Ythird * (midpoints[1] - midpoints[2]), Ythird * (midpoints[2] - vj)]
+        frozen = _linear_chain_matrix(Ythird, frozen_admittances) \ vcat(Ythird * vi, Ythird * vj)
+        frozen_residual = norm(_nonlinear_chain_residual(frozen, vi, vj, Ythird, y0s, alphas))
+        maximum_neutral_current = maximum(abs.([current[4] for current in currents]))
+        push!(rows, Dict(
+            "lambda" => λ,
+            "endpoint_neutral_voltage" => complex_pair(vj[4]),
+            "endpoint_earth_voltage" => complex_pair(vj[5]),
+            "nonlinear_residual" => solved.residual,
+            "frozen_nominal_residual" => frozen_residual,
+            "maximum_neutral_current" => maximum_neutral_current,
+            "declared_neutral_limit" => 0.05,
+            "limit_satisfied" => maximum_neutral_current ≤ 0.05,
+            "limit_margin" => 0.05 - maximum_neutral_current,
+        ))
+    end
+    checks = Dict(
+        "all_continuation_points_converged" => all(row["nonlinear_residual"] ≤ 1.0e-11 for row in rows),
+        "all_limit_margins_recorded" => all(haskey(row, "limit_margin") for row in rows),
+        "frozen_nominal_map_fails_off_base" => rows[1]["frozen_nominal_residual"] ≤ 1.0e-11 && maximum(row["frozen_nominal_residual"] for row in rows[2:end]) > 1.0e-5,
+        "recomputed_path_has_multiple_states" => length(unique(row["limit_satisfied"] for row in rows)) == 2,
+        "endpoint_state_path_is_explicit" => lambdas == [row["lambda"] for row in rows],
+    )
+    (; witness_id = "TR-KRON-NEUTRAL-007",
+       claim_id = "TR-KRON-NEUTRAL-007",
+       evidence_type = "generated_two_point_nonlinear_grounding_continuation",
+       terminal_order,
+       lambdas,
+       rows,
+       checks,
+       all_checks_pass = all(values(checks)),
+       interpretation = "A finite endpoint-state continuation of the two-point nonlinear grounding chain keeps the structural map fixed but recomputes the nonlinear bond relation at each state. The frozen nominal map fails away from the base point, while the recomputed path records state-dependent neutral-limit margins. This is a local finite continuation probe, not a global continuation or uncertainty theorem.")
 end
 
 function evaluate_explicit_earth_kron()

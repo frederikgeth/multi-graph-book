@@ -233,3 +233,33 @@ reported stability result—not an assumption that the policy is cost-invariant
 in other scenarios. It also records the positive intersections of the affine
 branch objectives, so potential policy changes can be inspected analytically
 before choosing a cost sweep.
+
+The companion `TR-XFMR-008` ledger keeps the same 11-terminal transformer but
+changes the second scenario by phase: its three constant-power directions are
+multiplied by the explicitly recorded vector ``(1.08,0.91,1.04)``. All nine
+ordered tap pairs are still enumerated, and the scenario directions remain
+attached to their phase identities. This is the useful distinction between a
+phase-selective unbalanced scenario and a scalar stress factor: the former
+cannot be represented faithfully by silently rescaling one aggregate load.
+The result is finite, local solver-backed evidence; it does not claim global
+optimality or a general unbalanced multiwinding theorem.
+
+The finite path extension `TR-XFMR-009` evaluates three phase-selective
+scenarios, using the explicitly recorded scales ``(1,1,1)``,
+``(1.02,0.98,1.01)``, and ``(0.99,1.03,0.98)``, and enumerates all
+``3^3=27`` ordered tap triples. Its objective is
+the sum of the three locally solved served fractions minus a declared cost on
+tap movement between consecutive scenarios. This makes the temporal/control
+semantics explicit without pretending that a two-scenario ledger is a general
+multi-period OPF. The branch ledger is complete for this finite path domain;
+continuous global optimality, operation-count limits, and richer topology
+decisions remain open.
+The separate finite-difference reproduction also traces the nine
+scenario/tap boundaries and selects the same 27-branch path, with a recorded
+maximum net-objective difference below ``10^{-8}``.
+
+`TR-XFMR-010` adds an explicit operation policy: at most one tap movement is
+allowed across the two scenario transitions. The ledger still enumerates all
+27 triples before filtering, leaving 15 admissible branches. This ordering
+matters—filtering first would hide the distinction between the full decision
+domain and the policy-constrained feasible set.

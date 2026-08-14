@@ -106,6 +106,18 @@ residual below ``1.1\times10^{-15}``; its boundary differs from the Ipopt
 source solve by about ``1.3\times10^{-8}``. This is an independent numerical
 reproduction of the declared branch, not a proof of global AC optimality.
 
+The same three-member certificate now includes `TR-PAR-STATE-001`, a finite
+four-state admittance envelope. At the base, higher-admittance,
+lower-admittance, and phase-selective unbalanced states, the member maps, joint
+support certificate, and source and exact-pruned AC formulations are rebuilt.
+Pruning remains exact in all four local solves, while the optimal served value
+changes across states. The state rows also carry independent boundary checks.
+This is finite state-dependent evidence, not a global control-policy or
+nonlinear optimality guarantee.
+The companion `three-member-state-envelope-independent-reproduction.json`
+reconstructs all four state boundaries with a separate standard-library
+Newton/bisection implementation.
+
 This does not certify a singular shunted primitive or arbitrary AC control
 policy. It records the guard and the correct next representation, rather than
 treating a pseudoinverse or a frozen nominal map as an exact rewrite.

@@ -11,7 +11,8 @@ export three_member_data,
        three_member_joint_certificate,
        independently_reproduce_three_member_boundary,
        solve_three_member_formulation,
-       three_member_certificate
+       three_member_certificate,
+       finite_state_three_member_envelope
 
 function three_member_data()
     data = default_four_wire_parallel_data()
@@ -199,18 +200,78 @@ function independently_reproduce_three_member_boundary(
     )
 end
 
+"Evaluate the exact joint-pruning rule across a finite family of rebuilt AC states."
+function finite_state_three_member_envelope(; base_data=three_member_data())
+    declared_states = [
+        ("base", 1.00),
+        ("higher_admittance", 1.08),
+        ("lower_admittance", 0.92),
+        ("phase_selective", ([1.03, 0.97, 1.02, 1.00], [0.98, 1.04, 0.96, 1.00])),
+    ]
+    rows = Dict{String,Any}[]
+    for (name, scale) in declared_states
+        data = deepcopy(base_data)
+        if scale isa Number
+            data["admittance_pu"] = [scale .* y for y in base_data["admittance_pu"]]
+        else
+            scale_1, scale_2 = scale
+            y1 = Diagonal(scale_1) * base_data["admittance_pu"][1]
+            y2 = Diagonal(scale_2) * base_data["admittance_pu"][2]
+            data["admittance_pu"] = [y1, y2, 0.10 .* (y1 + y2)]
+        end
+        data["impedance_pu"] = [inv(y) for y in data["admittance_pu"]]
+        certificate = three_member_joint_certificate(; data)
+        source = solve_three_member_formulation(:source; data)
+        pruned = solve_three_member_formulation(:exact_pruned; data)
+        independent = independently_reproduce_three_member_boundary(; data)
+        push!(rows, Dict(
+            "state" => name,
+            "admittance_scale" => scale,
+            "certificate_certified" => certificate["certified"],
+            "source_termination_status" => source["termination_status"],
+            "pruned_termination_status" => pruned["termination_status"],
+            "source_objective" => source["objective_served_fraction"],
+            "pruned_objective" => pruned["objective_served_fraction"],
+            "objective_gap" => pruned["objective_served_fraction"] - source["objective_served_fraction"],
+            "independent_boundary" => independent["boundary_served_fraction"],
+            "independent_boundary_gap" => independent["boundary_served_fraction"] - source["objective_served_fraction"],
+            "source_current_margin" => minimum(data["current_limit_pu"][line][conductor] - source["member_current_magnitude_pu"][line][conductor] for line in 1:3, conductor in 1:4),
+            "pruned_current_margin" => minimum(data["current_limit_pu"][line][conductor] - pruned["member_current_magnitude_pu"][line][conductor] for line in 1:3, conductor in 1:4),
+        ))
+    end
+    checks = Dict(
+        "all_states_certify_joint_pruning" => all(row["certificate_certified"] for row in rows),
+        "all_source_and_pruned_solves_terminate" => all(row["source_termination_status"] in ("LOCALLY_SOLVED", "OPTIMAL") && row["pruned_termination_status"] in ("LOCALLY_SOLVED", "OPTIMAL") for row in rows),
+        "pruned_matches_source_in_each_state" => all(abs(row["objective_gap"]) ≤ 1.0e-7 for row in rows),
+        "independent_boundary_matches_source_in_each_state" => all(abs(row["independent_boundary_gap"]) ≤ 3.0e-8 for row in rows),
+        "state_changes_decision_value" => maximum(row["source_objective"] for row in rows) - minimum(row["source_objective"] for row in rows) > 1.0e-6,
+        "state_rows_are_explicit" => [row["state"] for row in rows] == ["base", "higher_admittance", "lower_admittance", "phase_selective"],
+    )
+    Dict{String,Any}(
+        "witness_id" => "TR-PAR-STATE-001",
+        "claim_id" => "TR-PAR-STATE-001",
+        "evidence_type" => "generated_three_member_state_dependent_ac_envelope",
+        "states" => rows,
+        "checks" => checks,
+        "all_checks_pass" => all(values(checks)),
+        "interpretation" => "A finite three-state unbalanced four-wire AC envelope rebuilds the member maps and source/pruned formulations at each declared admittance state. Joint limit pruning remains exact in each local state, but the optimal served value changes across states. This is finite local evidence, not a global state/control-dependent AC theorem.",
+    )
+end
+
 function three_member_certificate()
     data = three_member_data()
     certificate = three_member_joint_certificate(; data)
     source = solve_three_member_formulation(:source; data)
     pruned = solve_three_member_formulation(:exact_pruned; data)
     independent = independently_reproduce_three_member_boundary(; data)
+    state_envelope = finite_state_three_member_envelope(; base_data=data)
     merge(certificate, Dict(
         "source_solution" => source,
         "exact_pruned_solution" => pruned,
         "independent_source_boundary" => independent,
         "objective_gap" => pruned["objective_served_fraction"] - source["objective_served_fraction"],
         "independent_source_objective_gap" => independent["boundary_served_fraction"] - source["objective_served_fraction"],
+        "finite_state_envelope" => state_envelope,
         "classification" => "exact nonlinear AC constraint pruning under a fixed linear joint recovery map",
     ))
 end

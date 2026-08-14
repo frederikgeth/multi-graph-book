@@ -92,6 +92,21 @@ using .TransformationContracts
     @test length(switching.positive_breakpoints) == switching.positive_breakpoint_count
     @test issorted([row["switching_cost"] for row in switching.positive_breakpoints])
 
+    unbalanced = solve_transformer_tap_ac_unbalanced_switching_decision(case)
+    @test unbalanced.branch_count == 9
+    @test unbalanced.branch_completeness
+    @test unbalanced.cost_sweep_branch_complete
+    @test length(unbalanced.scenario_phase_scale) == 3
+    @test length(unbalanced.scenario_1_phase_directions) == 3
+    @test length(unbalanced.scenario_2_phase_directions) == 3
+    @test any(
+        abs(unbalanced.scenario_1_phase_directions[i] -
+            unbalanced.scenario_2_phase_directions[i]) > 1.0e-12
+        for i in 1:3
+    )
+    @test unbalanced.selected_branch["scenario_1_tap"] in unbalanced.positions
+    @test unbalanced.selected_branch["scenario_2_tap"] in unbalanced.positions
+
     certificate = transformer_tap_ac_certificate()
     @test certificate["certificate_id"] == "TR-XFMR-006"
     @test certificate["classification"] == "exact_compilation"
@@ -102,4 +117,24 @@ using .TransformationContracts
     @test certificate["evidence"]["switching_decision"].branch_completeness
     @test certificate["evidence"]["switching_decision"].cost_sweep_branch_complete
     @test certificate["evidence"]["switching_decision"].positive_breakpoint_count > 0
+    @test certificate["evidence"]["unbalanced_switching_decision"].branch_completeness
+    @test certificate["evidence"]["unbalanced_switching_decision"].cost_sweep_branch_complete
+
+    three_scenario = solve_transformer_tap_ac_three_scenario_decision(case)
+    @test three_scenario.branch_count == 27
+    @test three_scenario.branch_completeness
+    @test three_scenario.cost_sweep_branch_complete
+    @test length(three_scenario.scenario_phase_scales) == 3
+    @test length(three_scenario.selected_branch["scenario_taps"]) == 3
+    @test three_scenario.selected_branch["net_objective"] ≈
+          maximum(branch["net_objective"] for branch in three_scenario.branches)
+    @test certificate["evidence"]["three_scenario_decision"].branch_completeness
+    @test certificate["evidence"]["three_scenario_decision"].branch_count == 27
+    limited = certificate["evidence"]["operation_limited_three_scenario_decision"]
+    @test limited.max_tap_operations == 1
+    @test limited.branch_count == 27
+    @test limited.admissible_branch_count == 15
+    @test limited.branch_completeness
+    @test limited.cost_sweep_branch_complete
+    @test limited.selected_branch["tap_operations"] <= 1
 end

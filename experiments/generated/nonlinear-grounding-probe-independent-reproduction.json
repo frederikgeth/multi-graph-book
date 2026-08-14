@@ -1,0 +1,109 @@
+{
+  "witness_id": "TR-KRON-NEUTRAL-005-REPRO",
+  "claim_id": "TR-KRON-NEUTRAL-005",
+  "method": "independent pure-Python finite-difference Newton solve",
+  "source_witness": "experiments/generated/nonlinear-grounding-probe-witness.json",
+  "base_midpoint_voltage": [
+    {
+      "real": 0.985,
+      "imag": -1.3141056500111959e-18
+    },
+    {
+      "real": 0.975,
+      "imag": -2.3897258236414626e-19
+    },
+    {
+      "real": 0.965,
+      "imag": 1.185530453354755e-18
+    },
+    {
+      "real": 0.015918515945165797,
+      "imag": 0.00025925260500338476
+    },
+    {
+      "real": 0.01830673794363793,
+      "imag": -0.0003233084297936445
+    }
+  ],
+  "shifted_midpoint_voltage": [
+    {
+      "real": 0.985,
+      "imag": 1.758875960791225e-18
+    },
+    {
+      "real": 0.975,
+      "imag": 6.812247485644108e-19
+    },
+    {
+      "real": 0.965,
+      "imag": -1.1075000246307902e-18
+    },
+    {
+      "real": 0.047102450515577765,
+      "imag": -0.0036308844539100034
+    },
+    {
+      "real": 0.013774845868829363,
+      "imag": 0.004522768108328533
+    }
+  ],
+  "frozen_shifted_midpoint_voltage": [
+    {
+      "real": 0.985,
+      "imag": 2.7538735181131813e-17
+    },
+    {
+      "real": 0.975,
+      "imag": 6.559423143537302e-18
+    },
+    {
+      "real": 0.9649999999999997,
+      "imag": 7.32920668600201e-17
+    },
+    {
+      "real": 0.04714077676767408,
+      "imag": -0.0036295364700492296
+    },
+    {
+      "real": 0.013705668789077802,
+      "imag": 0.004526318017113619
+    }
+  ],
+  "bond_currents": [
+    {
+      "real": 0.11769180038826599,
+      "imag": -0.09985412729988763
+    },
+    {
+      "real": 0.11743227103816262,
+      "imag": -0.09949664009687544
+    }
+  ],
+  "neutral_currents": [
+    {
+      "real": -0.0777903860485773,
+      "imag": 0.14356283464598382
+    },
+    {
+      "real": -0.07792015072362438,
+      "imag": 0.1437415782474891
+    }
+  ],
+  "residuals": {
+    "base": 1.2081640529833447e-14,
+    "shifted": 1.3477797597892028e-14,
+    "frozen_nonlinear": 0.0012824474039818312
+  },
+  "checks": {
+    "base_values_match_julia": true,
+    "shifted_values_match_julia": true,
+    "frozen_values_match_julia": true,
+    "base_solve_is_exact": true,
+    "shifted_solve_is_exact": true,
+    "frozen_map_is_not_exact": true,
+    "neutral_limit_is_evaluated": true,
+    "no_numpy_or_julia_import": true
+  },
+  "all_checks_pass": true,
+  "interpretation": "Independent reproduction of the local state-dependent grounding probe; not a global nonlinear grounding theorem or standards-aligned protection model."
+}

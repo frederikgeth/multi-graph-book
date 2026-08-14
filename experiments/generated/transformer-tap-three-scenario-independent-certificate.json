@@ -1,0 +1,3207 @@
+{
+  "interfaces": {
+    "units": {
+      "source": [
+        "V",
+        "A",
+        "MVA"
+      ],
+      "relation": "physical quantities are recovered in the same units",
+      "target": [
+        "V",
+        "A",
+        "MVA"
+      ]
+    },
+    "decisions": {
+      "source": [
+        "tap/x1/winding/2",
+        "three scenario tap path"
+      ],
+      "relation": "the same finite tap triples are enumerated",
+      "target": [
+        "tap/x1/winding/2",
+        "three scenario tap path"
+      ]
+    },
+    "constraints": {
+      "source": [
+        "phase-power, KCL, voltage, and leakage-current constraints"
+      ],
+      "relation": "complex equalities are split into scaled real residuals and constraints are checked after physical recovery",
+      "target": [
+        "finite-difference residual equations and independently evaluated inequalities"
+      ]
+    },
+    "boundary_quantities": {
+      "source": [
+        "nine scenario/tap boundary served fractions"
+      ],
+      "relation": "each scenario/tap boundary is compared before path selection",
+      "target": [
+        "nine independently reproduced boundary served fractions"
+      ]
+    },
+    "objectives": {
+      "source": [
+        "sum of served fractions minus movement cost"
+      ],
+      "relation": "branch objectives use identical declared movement costs",
+      "target": [
+        "same branch objective reconstructed from independent boundaries"
+      ]
+    },
+    "state_variables": {
+      "source": [
+        "scenario-specific rectangular voltage states"
+      ],
+      "relation": "same seven unknown complex terminal voltages are recovered per scenario and tap",
+      "target": [
+        "independently recovered rectangular voltage states"
+      ]
+    }
+  },
+  "preconditions": [
+    "TR-XFMR-009 supplies the same finite scenario scales and tap domain",
+    "the independent high-voltage branch is traced with a feasible/infeasible bracket",
+    "the first upper feasibility boundary is the relevant branch maximum"
+  ],
+  "rule_id": "independent_three_scenario_transformer_tap_path_reproduction",
+  "provenance": {
+    "independent_numerical_engine": "LinearAlgebra-only damped Newton, continuation, and bisection",
+    "implementation": "experiments/transformations/TransformerTapACIndependentReproduction.jl",
+    "reference_certificate": "TR-XFMR-009"
+  },
+  "classification": "mixed",
+  "target": {
+    "object_ids": [
+      "generated_independent_three_scenario_boundaries__x1"
+    ],
+    "detail": {
+      "external_optimizer_packages": [
+      ],
+      "nonlinear_solver": "damped finite-difference Newton",
+      "decision_search": "independent tap enumeration in each scenario and 27-path enumeration"
+    },
+    "model_category": "independent_rectangular_residual_three_scenario_boundary_search"
+  },
+  "certificate_id": "TR-XFMR-009-REPRO",
+  "preserves": [
+    "nine scenario/tap boundary values",
+    "27-branch path domain",
+    "phase-selective scenario identity",
+    "selected path objective"
+  ],
+  "constraint_map": {
+    "path_enumeration": "enumerate every ordered tap triple and apply consecutive movement cost"
+  },
+  "source": {
+    "object_ids": [
+      "TR-XFMR-009",
+      "tap/x1/winding/2"
+    ],
+    "detail": {
+      "solver": "Ipopt through JuMP",
+      "branch_count": 27
+    },
+    "model_category": "jump_ipopt_three_scenario_unbalanced_transformer_tap_path"
+  },
+  "forgets": [
+  ],
+  "recovery_map": {
+    "boundary_state": "recover physical terminal voltages and currents from normalized rectangular coordinates"
+  },
+  "typed_interfaces": {
+    "target_unit_families": [
+      "current",
+      "power",
+      "voltage"
+    ],
+    "unresolved_unit_labels": [
+    ],
+    "target_boundary_labels": [
+      "nine independently reproduced boundary served fractions"
+    ],
+    "source_unit_families": [
+      "current",
+      "power",
+      "voltage"
+    ],
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "state_domain_ids": [
+    ],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+    "unit_family_map": {
+      "A": [
+        "current"
+      ],
+      "V": [
+        "voltage"
+      ],
+      "MVA": [
+        "power"
+      ]
+    },
+    "source_boundary_labels": [
+      "nine scenario/tap boundary served fractions"
+    ],
+    "source_variable_labels": [
+      "scenario-specific rectangular voltage states"
+    ],
+    "target_variable_labels": [
+      "independently recovered rectangular voltage states"
+    ]
+  },
+  "evidence": {
+    "operation_limited_ipopt_branch_count": 15,
+    "operation_limited_independent_reproduction": {
+      "scenario_phase_scales": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1.02,
+          0.98,
+          1.01
+        ],
+        [
+          0.99,
+          1.03,
+          0.98
+        ]
+      ],
+      "positions": [
+        0.95,
+        1.0,
+        1.05
+      ],
+      "switching_cost": 0.02,
+      "max_tap_operations": 1,
+      "scenario_results": [
+        {
+          "tap_results": [
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.2305865268222993,
+              "leakage_current_magnitude_A": [
+                89.14025240041161,
+                89.14025240040918,
+                89.14025240040931,
+                2200.0000001281005,
+                2200.0000001279855,
+                2200.000000127995,
+                3.1010015870826348e-12,
+                2.575740643864051e-12,
+                9.780491870603244e-13
+              ],
+              "upper_infeasible_served_fraction": 1.2305865269154315,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                -675.0760970362388,
+                -898.2883733116234,
+                -405.01702726384366,
+                -659.4604992039018,
+                1108.6915722456122,
+                -2367.506524219403,
+                1258.8149519737915
+              ],
+              "tertiary_kcl_residual_A": 2.290231099463643e-12,
+              "bisection_iterations": 29,
+              "tap_value": 0.95,
+              "scanned_points": 26,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 4.002966042486721e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                973.9804412013668,
+                533.2714201469606,
+                560.3184289831298,
+                689.1900967771525,
+                2093.6576804482606,
+                -86.6737736977196,
+                -2006.9839067505402
+              ],
+              "maximum_constraint_violation": 5.822742288330574e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 4.223331692306133e-11,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 84,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                1.0291923105753593,
+                1.0291923105753602,
+                1.0291923105753602
+              ],
+              "total_residual_evaluations": 2575,
+              "maximum_leakage_current_loading": 1.0000000000582274,
+              "maximum_scaled_equality_residual": 4.023482935711087e-11
+            },
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.170473880693316,
+              "leakage_current_magnitude_A": [
+                84.68323977767577,
+                84.68323977767551,
+                84.68323977767497,
+                2200.0000000575324,
+                2200.000000057519,
+                2200.0000000575146,
+                4.665309315781765e-13,
+                3.31468299831578e-13,
+                7.855025001690952e-13
+              ],
+              "upper_infeasible_served_fraction": 1.170473880786448,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                -54.40166541618727,
+                -267.8586096528795,
+                201.38574358495808,
+                -40.29151049470287,
+                1113.3373227757036,
+                -2369.4459216343876,
+                1256.1085988586838
+              ],
+              "tertiary_kcl_residual_A": 1.6134857489108457e-12,
+              "bisection_iterations": 29,
+              "tap_value": 1,
+              "scanned_points": 25,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                290.7480776894357,
+                -127.84920541026972,
+                -103.40970018359074,
+                19.829724031858447,
+                2093.2148783683388,
+                -82.42903467905467,
+                -2010.7858436892839
+              ],
+              "maximum_constraint_violation": 2.6151081300440637e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 5.18471115143764e-12,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 81,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                0.9789174161071084,
+                0.9789174161071088,
+                0.9789174161071086
+              ],
+              "total_residual_evaluations": 2484,
+              "maximum_leakage_current_loading": 1.000000000026151,
+              "maximum_scaled_equality_residual": 5.545983117194453e-11
+            },
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.115950367599726,
+              "leakage_current_magnitude_A": [
+                80.65070455117286,
+                80.65070455117784,
+                80.65070455116135,
+                2200.0000000850423,
+                2200.000000085243,
+                2200.000000084493,
+                9.851389587874932e-12,
+                1.831188479718456e-11,
+                1.7880331011863283e-11
+              ],
+              "upper_infeasible_served_fraction": 1.1159503676928582,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                444.51606705063426,
+                240.01336318589054,
+                687.4555406305677,
+                457.32832362236377,
+                1117.5379002788409,
+                -2371.1803006797736,
+                1253.642400400933
+              ],
+              "tertiary_kcl_residual_A": 1.7510541278078026e-11,
+              "bisection_iterations": 29,
+              "tap_value": 1.05,
+              "scanned_points": 24,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 2.482534153247273e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                1120.5510591509412,
+                721.9590270883037,
+                744.1505064301464,
+                862.2201975564651,
+                2092.7923622336175,
+                -78.57996978340412,
+                -2014.212392450213
+              ],
+              "maximum_constraint_violation": 3.8746783559417963e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 3.323804981018772e-11,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 78,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                0.9333169732378752,
+                0.9333169732378777,
+                0.933316973237883
+              ],
+              "total_residual_evaluations": 2393,
+              "maximum_leakage_current_loading": 1.0000000000387468,
+              "maximum_scaled_equality_residual": 5.4019025363949424e-11
+            }
+          ],
+          "decision_id": "tap/x1/winding/2",
+          "optimum": {
+            "scan_maximum": 1.6,
+            "leakage_current_limit_A": [
+              180,
+              180,
+              180,
+              2200,
+              2200,
+              2200,
+              280,
+              280,
+              280
+            ],
+            "served_fraction": 1.2305865268222993,
+            "leakage_current_magnitude_A": [
+              89.14025240041161,
+              89.14025240040918,
+              89.14025240040931,
+              2200.0000001281005,
+              2200.0000001279855,
+              2200.000000127995,
+              3.1010015870826348e-12,
+              2.575740643864051e-12,
+              9.780491870603244e-13
+            ],
+            "upper_infeasible_served_fraction": 1.2305865269154315,
+            "terminal_voltage_imag_V": [
+              0,
+              -6235.000000000001,
+              6235.000000000001,
+              0,
+              -675.0760970362388,
+              -898.2883733116234,
+              -405.01702726384366,
+              -659.4604992039018,
+              1108.6915722456122,
+              -2367.506524219403,
+              1258.8149519737915
+            ],
+            "tertiary_kcl_residual_A": 2.290231099463643e-12,
+            "bisection_iterations": 29,
+            "tap_value": 0.95,
+            "scanned_points": 26,
+            "residual_evaluations": 1,
+            "delta_common_mode_voltage_pu": 4.002966042486721e-16,
+            "terminal_voltage_real_V": [
+              7199.557856794634,
+              -3599.778928397315,
+              -3599.778928397315,
+              0.0,
+              973.9804412013668,
+              533.2714201469606,
+              560.3184289831298,
+              689.1900967771525,
+              2093.6576804482606,
+              -86.6737736977196,
+              -2006.9839067505402
+            ],
+            "maximum_constraint_violation": 5.822742288330574e-11,
+            "scan_step": 0.05,
+            "newton_iterations": 0,
+            "secondary_neutral_kcl_residual_A": 4.223331692306133e-11,
+            "algorithm": "damped finite-difference Newton continuation and bisection",
+            "total_newton_iterations": 84,
+            "converged": true,
+            "secondary_phase_to_neutral_voltage_pu": [
+              1.0291923105753593,
+              1.0291923105753602,
+              1.0291923105753602
+            ],
+            "total_residual_evaluations": 2575,
+            "maximum_leakage_current_loading": 1.0000000000582274,
+            "maximum_scaled_equality_residual": 4.023482935711087e-11
+          },
+          "positions": [
+            0.95,
+            1.0,
+            1.05
+          ]
+        },
+        {
+          "tap_results": [
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.2063312133774156,
+              "leakage_current_magnitude_A": [
+                88.70087180947343,
+                86.15587501354995,
+                88.06410750878322,
+                2200.0000001833614,
+                2111.802948948617,
+                2177.0622735588818,
+                1.0607190841702296,
+                1.0607190841700505,
+                1.0607190841671539
+              ],
+              "upper_infeasible_served_fraction": 1.206331213470548,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                7.954523295887413,
+                -215.828596130446,
+                278.00563348761483,
+                23.49988178407309,
+                1110.4403825450936,
+                -2369.206918642892,
+                1258.7665360977983
+              ],
+              "tertiary_kcl_residual_A": 3.1629030067378828e-12,
+              "bisection_iterations": 29,
+              "tap_value": 0.95,
+              "scanned_points": 26,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 2.482534153247273e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                170.10564812675403,
+                -270.22994813251256,
+                -243.73820950842145,
+                -114.65866766110108,
+                2092.4089506653686,
+                -84.85369001376364,
+                -2007.5552606516055
+              ],
+              "maximum_constraint_violation": 8.334599677084498e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 5.5047575950330166e-12,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 84,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                1.0290846820203376,
+                1.030021639945076,
+                1.029731873561449
+              ],
+              "total_residual_evaluations": 2575,
+              "maximum_leakage_current_loading": 1.000000000083346,
+              "maximum_scaled_equality_residual": 3.568652318097776e-11
+            },
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.1474082376807928,
+              "leakage_current_magnitude_A": [
+                84.26747287548744,
+                81.85190043950745,
+                83.66238081829472,
+                2200.000000039206,
+                2111.910426064441,
+                2177.135175329671,
+                1.0063249504518308,
+                1.006324950452481,
+                1.0063249504530982
+              ],
+              "upper_infeasible_served_fraction": 1.147408237773925,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                -14.392703177029398,
+                -228.36248656617113,
+                241.38661496708815,
+                -0.3457941190974547,
+                1114.9905982875732,
+                -2371.050297904916,
+                1256.0596996173424
+              ],
+              "tertiary_kcl_residual_A": 1.8752996119091257e-12,
+              "bisection_iterations": 29,
+              "tap_value": 1,
+              "scanned_points": 24,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 2.220446049250313e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                267.2206634111458,
+                -151.0372468991987,
+                -127.1004751077987,
+                -3.67371180486427,
+                2092.021093376407,
+                -80.69508717726725,
+                -2011.3260061991396
+              ],
+              "maximum_constraint_violation": 1.7820855902073163e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 8.161498127501962e-12,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 78,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                0.9788191638088767,
+                0.9796604927829967,
+                0.9794019453725848
+              ],
+              "total_residual_evaluations": 2393,
+              "maximum_leakage_current_loading": 1.0000000000178209,
+              "maximum_scaled_equality_residual": 6.298722654562994e-11
+            },
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.0939634495414796,
+              "leakage_current_magnitude_A": [
+                80.25614558822258,
+                77.95744696060676,
+                79.67971805794818,
+                2200.000000125008,
+                2112.006568403147,
+                2177.20069481545,
+                0.9572523717356418,
+                0.9572523717365226,
+                0.9572523717373687
+              ],
+              "upper_infeasible_served_fraction": 1.0939634496346118,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                -36.46089122082803,
+                -241.42683015525782,
+                206.47050389900522,
+                -23.705880252883585,
+                1119.1054773808328,
+                -2372.698821159078,
+                1253.5933437782455
+              ],
+              "tertiary_kcl_residual_A": 2.5929300471702692e-12,
+              "bisection_iterations": 29,
+              "tap_value": 1.05,
+              "scanned_points": 23,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 2.482534153247273e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                327.907636454644,
+                -70.37464825354274,
+                -48.640470568347226,
+                69.59892276862942,
+                2091.6489963011236,
+                -76.9244205470496,
+                -2014.724575754074
+              ],
+              "maximum_constraint_violation": 5.682165848952536e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 2.2023644327185358e-11,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 75,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                0.9332269415104147,
+                0.9339865595251269,
+                0.9337544759342616
+              ],
+              "total_residual_evaluations": 2302,
+              "maximum_leakage_current_loading": 1.0000000000568217,
+              "maximum_scaled_equality_residual": 3.816064131356711e-11
+            }
+          ],
+          "decision_id": "tap/x1/winding/2",
+          "optimum": {
+            "scan_maximum": 1.6,
+            "leakage_current_limit_A": [
+              180,
+              180,
+              180,
+              2200,
+              2200,
+              2200,
+              280,
+              280,
+              280
+            ],
+            "served_fraction": 1.2063312133774156,
+            "leakage_current_magnitude_A": [
+              88.70087180947343,
+              86.15587501354995,
+              88.06410750878322,
+              2200.0000001833614,
+              2111.802948948617,
+              2177.0622735588818,
+              1.0607190841702296,
+              1.0607190841700505,
+              1.0607190841671539
+            ],
+            "upper_infeasible_served_fraction": 1.206331213470548,
+            "terminal_voltage_imag_V": [
+              0,
+              -6235.000000000001,
+              6235.000000000001,
+              0,
+              7.954523295887413,
+              -215.828596130446,
+              278.00563348761483,
+              23.49988178407309,
+              1110.4403825450936,
+              -2369.206918642892,
+              1258.7665360977983
+            ],
+            "tertiary_kcl_residual_A": 3.1629030067378828e-12,
+            "bisection_iterations": 29,
+            "tap_value": 0.95,
+            "scanned_points": 26,
+            "residual_evaluations": 1,
+            "delta_common_mode_voltage_pu": 2.482534153247273e-16,
+            "terminal_voltage_real_V": [
+              7199.557856794634,
+              -3599.778928397315,
+              -3599.778928397315,
+              0.0,
+              170.10564812675403,
+              -270.22994813251256,
+              -243.73820950842145,
+              -114.65866766110108,
+              2092.4089506653686,
+              -84.85369001376364,
+              -2007.5552606516055
+            ],
+            "maximum_constraint_violation": 8.334599677084498e-11,
+            "scan_step": 0.05,
+            "newton_iterations": 0,
+            "secondary_neutral_kcl_residual_A": 5.5047575950330166e-12,
+            "algorithm": "damped finite-difference Newton continuation and bisection",
+            "total_newton_iterations": 84,
+            "converged": true,
+            "secondary_phase_to_neutral_voltage_pu": [
+              1.0290846820203376,
+              1.030021639945076,
+              1.029731873561449
+            ],
+            "total_residual_evaluations": 2575,
+            "maximum_leakage_current_loading": 1.000000000083346,
+            "maximum_scaled_equality_residual": 3.568652318097776e-11
+          },
+          "positions": [
+            0.95,
+            1.0,
+            1.05
+          ]
+        },
+        {
+          "tap_results": [
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.194834363460541,
+              "leakage_current_magnitude_A": [
+                85.86245390125565,
+                88.37823406037259,
+                85.23110081930639,
+                2112.143313184223,
+                2200.0000001746084,
+                2091.5500537300554,
+                1.3349743841000155,
+                1.3349743840999295,
+                1.3349743840992405
+              ],
+              "upper_infeasible_served_fraction": 1.1948343635536731,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                -34.57255048885515,
+                -258.3986736110266,
+                234.82844026141754,
+                -19.50107514134862,
+                1110.6636309210492,
+                -2367.2597378232194,
+                1256.5961069021707
+              ],
+              "tertiary_kcl_residual_A": 1.7716407340453867e-12,
+              "bisection_iterations": 29,
+              "tap_value": 0.95,
+              "scanned_points": 25,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                300.2746151471512,
+                -140.74509120435786,
+                -114.53530783869235,
+                15.106130618330427,
+                2094.5567302376458,
+                -84.04420610451078,
+                -2010.5125241331348
+              ],
+              "maximum_constraint_violation": 7.936740153979827e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 1.1988911169415e-11,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 81,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                1.030449272071504,
+                1.0292699798317582,
+                1.0300839681224863
+              ],
+              "total_residual_evaluations": 2484,
+              "maximum_leakage_current_loading": 1.0000000000793674,
+              "maximum_scaled_equality_residual": 2.4136359577653366e-11
+            },
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.1364617200568319,
+              "leakage_current_magnitude_A": [
+                81.57224072004936,
+                83.96059842154347,
+                80.97415225295232,
+                2112.2763469650477,
+                2200.0000002153656,
+                2091.64546839646,
+                1.26651999876009,
+                1.2665199987606817,
+                1.2665199987615043
+              ],
+              "upper_infeasible_served_fraction": 1.1364617201499643,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                -23.21698409783079,
+                -237.2282843666821,
+                231.97206732062176,
+                -9.598830981069774,
+                1115.2114986947818,
+                -2369.1980556343187,
+                1253.986556939536
+              ],
+              "tertiary_kcl_residual_A": 3.3343473214714615e-12,
+              "bisection_iterations": 29,
+              "tap_value": 1,
+              "scanned_points": 24,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 3.510833468576701e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                276.78486665881655,
+                -142.08933359423963,
+                -118.40464161488045,
+                5.528267331986141,
+                2094.057409100284,
+                -79.93409091959435,
+                -2014.12331818069
+              ],
+              "maximum_constraint_violation": 9.789347110711333e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 5.173629459978548e-12,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 78,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                0.98004568327746,
+                0.9789857378398534,
+                0.9797152596168043
+              ],
+              "total_residual_evaluations": 2393,
+              "maximum_leakage_current_loading": 1.0000000000978935,
+              "maximum_scaled_equality_residual": 5.996655949580543e-11
+            },
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.0835172108374538,
+              "leakage_current_magnitude_A": [
+                77.69032019452294,
+                79.96356471979513,
+                77.12216621187216,
+                2112.395540522172,
+                2200.000000050789,
+                2091.730570447585,
+                1.2047624321774477,
+                1.2047624321748058,
+                1.2047624321746002
+              ],
+              "upper_infeasible_served_fraction": 1.0835172109305862,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                -27.089265262862853,
+                -232.0950753906647,
+                215.30384857736507,
+                -14.72402740821755,
+                1119.3234310003745,
+                -2370.93270048527,
+                1251.6092694848967
+              ],
+              "tertiary_kcl_residual_A": 2.0904165104503465e-12,
+              "bisection_iterations": 29,
+              "tap_value": 1.05,
+              "scanned_points": 23,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 5.661048867003676e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                350.21069061612616,
+                -48.629667379867314,
+                -27.12217855506739,
+                91.57550867165499,
+                2093.584830089925,
+                -76.20655961221372,
+                -2017.3782704777113
+              ],
+              "maximum_constraint_violation": 2.3085977574055505e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 1.4782808745672324e-11,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 75,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                0.9343353283568897,
+                0.9333774907659621,
+                0.934035018159697
+              ],
+              "total_residual_evaluations": 2302,
+              "maximum_leakage_current_loading": 1.000000000023086,
+              "maximum_scaled_equality_residual": 4.348647830720864e-11
+            }
+          ],
+          "decision_id": "tap/x1/winding/2",
+          "optimum": {
+            "scan_maximum": 1.6,
+            "leakage_current_limit_A": [
+              180,
+              180,
+              180,
+              2200,
+              2200,
+              2200,
+              280,
+              280,
+              280
+            ],
+            "served_fraction": 1.194834363460541,
+            "leakage_current_magnitude_A": [
+              85.86245390125565,
+              88.37823406037259,
+              85.23110081930639,
+              2112.143313184223,
+              2200.0000001746084,
+              2091.5500537300554,
+              1.3349743841000155,
+              1.3349743840999295,
+              1.3349743840992405
+            ],
+            "upper_infeasible_served_fraction": 1.1948343635536731,
+            "terminal_voltage_imag_V": [
+              0,
+              -6235.000000000001,
+              6235.000000000001,
+              0,
+              -34.57255048885515,
+              -258.3986736110266,
+              234.82844026141754,
+              -19.50107514134862,
+              1110.6636309210492,
+              -2367.2597378232194,
+              1256.5961069021707
+            ],
+            "tertiary_kcl_residual_A": 1.7716407340453867e-12,
+            "bisection_iterations": 29,
+            "tap_value": 0.95,
+            "scanned_points": 25,
+            "residual_evaluations": 1,
+            "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
+            "terminal_voltage_real_V": [
+              7199.557856794634,
+              -3599.778928397315,
+              -3599.778928397315,
+              0.0,
+              300.2746151471512,
+              -140.74509120435786,
+              -114.53530783869235,
+              15.106130618330427,
+              2094.5567302376458,
+              -84.04420610451078,
+              -2010.5125241331348
+            ],
+            "maximum_constraint_violation": 7.936740153979827e-11,
+            "scan_step": 0.05,
+            "newton_iterations": 0,
+            "secondary_neutral_kcl_residual_A": 1.1988911169415e-11,
+            "algorithm": "damped finite-difference Newton continuation and bisection",
+            "total_newton_iterations": 81,
+            "converged": true,
+            "secondary_phase_to_neutral_voltage_pu": [
+              1.030449272071504,
+              1.0292699798317582,
+              1.0300839681224863
+            ],
+            "total_residual_evaluations": 2484,
+            "maximum_leakage_current_loading": 1.0000000000793674,
+            "maximum_scaled_equality_residual": 2.4136359577653366e-11
+          },
+          "positions": [
+            0.95,
+            1.0,
+            1.05
+          ]
+        }
+      ],
+      "branches": [
+        {
+          "net_objective": 3.631752103660256,
+          "tap_movement": 0,
+          "scenario_taps": [
+            0.95,
+            0.95,
+            0.95
+          ],
+          "tap_operations": 0,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.2063312133774156,
+            1.194834363460541
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.572379460256547,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            0.95,
+            0.95,
+            1.0
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.2063312133774156,
+            1.1364617200568319
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.518434951037169,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            0.95,
+            0.95,
+            1.05
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.2063312133774156,
+            1.0835172108374538
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.5708291279636333,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            0.95,
+            1.0,
+            0.95
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.1474082376807928,
+            1.194834363460541
+          ],
+          "admissible": false
+        },
+        {
+          "net_objective": 3.513456484559924,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            0.95,
+            1.0,
+            1.0
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.1474082376807928,
+            1.1364617200568319
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.459511975340546,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            0.95,
+            1.0,
+            1.05
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.1474082376807928,
+            1.0835172108374538
+          ],
+          "admissible": false
+        },
+        {
+          "net_objective": 3.51538433982432,
+          "tap_movement": 0.20000000000000018,
+          "scenario_taps": [
+            0.95,
+            1.05,
+            0.95
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.0939634495414796,
+            1.194834363460541
+          ],
+          "admissible": false
+        },
+        {
+          "net_objective": 3.458011696420611,
+          "tap_movement": 0.15000000000000013,
+          "scenario_taps": [
+            0.95,
+            1.05,
+            1.0
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.0939634495414796,
+            1.1364617200568319
+          ],
+          "admissible": false
+        },
+        {
+          "net_objective": 3.4060671872012325,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            0.95,
+            1.05,
+            1.05
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.0939634495414796,
+            1.0835172108374538
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.5706394575312728,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1,
+            0.95,
+            0.95
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.2063312133774156,
+            1.194834363460541
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.5112668141275636,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1,
+            0.95,
+            1
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.2063312133774156,
+            1.1364617200568319
+          ],
+          "admissible": false
+        },
+        {
+          "net_objective": 3.4573223049081854,
+          "tap_movement": 0.15000000000000013,
+          "scenario_taps": [
+            1,
+            0.95,
+            1.05
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.2063312133774156,
+            1.0835172108374538
+          ],
+          "admissible": false
+        },
+        {
+          "net_objective": 3.51171648183465,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1,
+            1,
+            0.95
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.1474082376807928,
+            1.194834363460541
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.4543438384309404,
+          "tap_movement": 0,
+          "scenario_taps": [
+            1,
+            1,
+            1
+          ],
+          "tap_operations": 0,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.1474082376807928,
+            1.1364617200568319
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.4003993292115626,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1,
+            1,
+            1.05
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.1474082376807928,
+            1.0835172108374538
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.4562716936953364,
+          "tap_movement": 0.15000000000000013,
+          "scenario_taps": [
+            1,
+            1.05,
+            0.95
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.0939634495414796,
+            1.194834363460541
+          ],
+          "admissible": false
+        },
+        {
+          "net_objective": 3.398899050291628,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1,
+            1.05,
+            1
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.0939634495414796,
+            1.1364617200568319
+          ],
+          "admissible": false
+        },
+        {
+          "net_objective": 3.3469545410722494,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1,
+            1.05,
+            1.05
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.0939634495414796,
+            1.0835172108374538
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.5151159444376825,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1.05,
+            0.95,
+            0.95
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.2063312133774156,
+            1.194834363460541
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.455743301033973,
+          "tap_movement": 0.15000000000000013,
+          "scenario_taps": [
+            1.05,
+            0.95,
+            1.0
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.2063312133774156,
+            1.1364617200568319
+          ],
+          "admissible": false
+        },
+        {
+          "net_objective": 3.401798791814595,
+          "tap_movement": 0.20000000000000018,
+          "scenario_taps": [
+            1.05,
+            0.95,
+            1.05
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.2063312133774156,
+            1.0835172108374538
+          ],
+          "admissible": false
+        },
+        {
+          "net_objective": 3.4561929687410595,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1.05,
+            1.0,
+            0.95
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.1474082376807928,
+            1.194834363460541
+          ],
+          "admissible": false
+        },
+        {
+          "net_objective": 3.398820325337351,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1.05,
+            1.0,
+            1.0
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.1474082376807928,
+            1.1364617200568319
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.3448758161179724,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1.05,
+            1.0,
+            1.05
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.1474082376807928,
+            1.0835172108374538
+          ],
+          "admissible": false
+        },
+        {
+          "net_objective": 3.4027481806017468,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1.05,
+            1.05,
+            0.95
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.0939634495414796,
+            1.194834363460541
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.3453755371980374,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1.05,
+            1.05,
+            1.0
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.0939634495414796,
+            1.1364617200568319
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.2934310279786594,
+          "tap_movement": 0,
+          "scenario_taps": [
+            1.05,
+            1.05,
+            1.05
+          ],
+          "tap_operations": 0,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.0939634495414796,
+            1.0835172108374538
+          ],
+          "admissible": true
+        }
+      ],
+      "admissible_branch_count": 15,
+      "selected_branch": {
+        "net_objective": 3.631752103660256,
+        "tap_movement": 0,
+        "scenario_taps": [
+          0.95,
+          0.95,
+          0.95
+        ],
+        "tap_operations": 0,
+        "scenario_served_fractions": [
+          1.2305865268222993,
+          1.2063312133774156,
+          1.194834363460541
+        ],
+        "admissible": true
+      },
+      "branch_count": 27,
+      "branch_completeness": true
+    },
+    "operation_limited_maximum_absolute_net_objective_difference": 1.2613483590939722e-9,
+    "maximum_absolute_net_objective_difference": 1.2613483590939722e-9,
+    "independent_reproduction": {
+      "scenario_phase_scales": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1.02,
+          0.98,
+          1.01
+        ],
+        [
+          0.99,
+          1.03,
+          0.98
+        ]
+      ],
+      "positions": [
+        0.95,
+        1.0,
+        1.05
+      ],
+      "switching_cost": 0.02,
+      "max_tap_operations": null,
+      "scenario_results": [
+        {
+          "tap_results": [
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.2305865268222993,
+              "leakage_current_magnitude_A": [
+                89.14025240041161,
+                89.14025240040918,
+                89.14025240040931,
+                2200.0000001281005,
+                2200.0000001279855,
+                2200.000000127995,
+                3.1010015870826348e-12,
+                2.575740643864051e-12,
+                9.780491870603244e-13
+              ],
+              "upper_infeasible_served_fraction": 1.2305865269154315,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                -675.0760970362388,
+                -898.2883733116234,
+                -405.01702726384366,
+                -659.4604992039018,
+                1108.6915722456122,
+                -2367.506524219403,
+                1258.8149519737915
+              ],
+              "tertiary_kcl_residual_A": 2.290231099463643e-12,
+              "bisection_iterations": 29,
+              "tap_value": 0.95,
+              "scanned_points": 26,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 4.002966042486721e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                973.9804412013668,
+                533.2714201469606,
+                560.3184289831298,
+                689.1900967771525,
+                2093.6576804482606,
+                -86.6737736977196,
+                -2006.9839067505402
+              ],
+              "maximum_constraint_violation": 5.822742288330574e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 4.223331692306133e-11,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 84,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                1.0291923105753593,
+                1.0291923105753602,
+                1.0291923105753602
+              ],
+              "total_residual_evaluations": 2575,
+              "maximum_leakage_current_loading": 1.0000000000582274,
+              "maximum_scaled_equality_residual": 4.023482935711087e-11
+            },
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.170473880693316,
+              "leakage_current_magnitude_A": [
+                84.68323977767577,
+                84.68323977767551,
+                84.68323977767497,
+                2200.0000000575324,
+                2200.000000057519,
+                2200.0000000575146,
+                4.665309315781765e-13,
+                3.31468299831578e-13,
+                7.855025001690952e-13
+              ],
+              "upper_infeasible_served_fraction": 1.170473880786448,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                -54.40166541618727,
+                -267.8586096528795,
+                201.38574358495808,
+                -40.29151049470287,
+                1113.3373227757036,
+                -2369.4459216343876,
+                1256.1085988586838
+              ],
+              "tertiary_kcl_residual_A": 1.6134857489108457e-12,
+              "bisection_iterations": 29,
+              "tap_value": 1,
+              "scanned_points": 25,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                290.7480776894357,
+                -127.84920541026972,
+                -103.40970018359074,
+                19.829724031858447,
+                2093.2148783683388,
+                -82.42903467905467,
+                -2010.7858436892839
+              ],
+              "maximum_constraint_violation": 2.6151081300440637e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 5.18471115143764e-12,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 81,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                0.9789174161071084,
+                0.9789174161071088,
+                0.9789174161071086
+              ],
+              "total_residual_evaluations": 2484,
+              "maximum_leakage_current_loading": 1.000000000026151,
+              "maximum_scaled_equality_residual": 5.545983117194453e-11
+            },
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.115950367599726,
+              "leakage_current_magnitude_A": [
+                80.65070455117286,
+                80.65070455117784,
+                80.65070455116135,
+                2200.0000000850423,
+                2200.000000085243,
+                2200.000000084493,
+                9.851389587874932e-12,
+                1.831188479718456e-11,
+                1.7880331011863283e-11
+              ],
+              "upper_infeasible_served_fraction": 1.1159503676928582,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                444.51606705063426,
+                240.01336318589054,
+                687.4555406305677,
+                457.32832362236377,
+                1117.5379002788409,
+                -2371.1803006797736,
+                1253.642400400933
+              ],
+              "tertiary_kcl_residual_A": 1.7510541278078026e-11,
+              "bisection_iterations": 29,
+              "tap_value": 1.05,
+              "scanned_points": 24,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 2.482534153247273e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                1120.5510591509412,
+                721.9590270883037,
+                744.1505064301464,
+                862.2201975564651,
+                2092.7923622336175,
+                -78.57996978340412,
+                -2014.212392450213
+              ],
+              "maximum_constraint_violation": 3.8746783559417963e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 3.323804981018772e-11,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 78,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                0.9333169732378752,
+                0.9333169732378777,
+                0.933316973237883
+              ],
+              "total_residual_evaluations": 2393,
+              "maximum_leakage_current_loading": 1.0000000000387468,
+              "maximum_scaled_equality_residual": 5.4019025363949424e-11
+            }
+          ],
+          "decision_id": "tap/x1/winding/2",
+          "optimum": {
+            "scan_maximum": 1.6,
+            "leakage_current_limit_A": [
+              180,
+              180,
+              180,
+              2200,
+              2200,
+              2200,
+              280,
+              280,
+              280
+            ],
+            "served_fraction": 1.2305865268222993,
+            "leakage_current_magnitude_A": [
+              89.14025240041161,
+              89.14025240040918,
+              89.14025240040931,
+              2200.0000001281005,
+              2200.0000001279855,
+              2200.000000127995,
+              3.1010015870826348e-12,
+              2.575740643864051e-12,
+              9.780491870603244e-13
+            ],
+            "upper_infeasible_served_fraction": 1.2305865269154315,
+            "terminal_voltage_imag_V": [
+              0,
+              -6235.000000000001,
+              6235.000000000001,
+              0,
+              -675.0760970362388,
+              -898.2883733116234,
+              -405.01702726384366,
+              -659.4604992039018,
+              1108.6915722456122,
+              -2367.506524219403,
+              1258.8149519737915
+            ],
+            "tertiary_kcl_residual_A": 2.290231099463643e-12,
+            "bisection_iterations": 29,
+            "tap_value": 0.95,
+            "scanned_points": 26,
+            "residual_evaluations": 1,
+            "delta_common_mode_voltage_pu": 4.002966042486721e-16,
+            "terminal_voltage_real_V": [
+              7199.557856794634,
+              -3599.778928397315,
+              -3599.778928397315,
+              0.0,
+              973.9804412013668,
+              533.2714201469606,
+              560.3184289831298,
+              689.1900967771525,
+              2093.6576804482606,
+              -86.6737736977196,
+              -2006.9839067505402
+            ],
+            "maximum_constraint_violation": 5.822742288330574e-11,
+            "scan_step": 0.05,
+            "newton_iterations": 0,
+            "secondary_neutral_kcl_residual_A": 4.223331692306133e-11,
+            "algorithm": "damped finite-difference Newton continuation and bisection",
+            "total_newton_iterations": 84,
+            "converged": true,
+            "secondary_phase_to_neutral_voltage_pu": [
+              1.0291923105753593,
+              1.0291923105753602,
+              1.0291923105753602
+            ],
+            "total_residual_evaluations": 2575,
+            "maximum_leakage_current_loading": 1.0000000000582274,
+            "maximum_scaled_equality_residual": 4.023482935711087e-11
+          },
+          "positions": [
+            0.95,
+            1.0,
+            1.05
+          ]
+        },
+        {
+          "tap_results": [
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.2063312133774156,
+              "leakage_current_magnitude_A": [
+                88.70087180947343,
+                86.15587501354995,
+                88.06410750878322,
+                2200.0000001833614,
+                2111.802948948617,
+                2177.0622735588818,
+                1.0607190841702296,
+                1.0607190841700505,
+                1.0607190841671539
+              ],
+              "upper_infeasible_served_fraction": 1.206331213470548,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                7.954523295887413,
+                -215.828596130446,
+                278.00563348761483,
+                23.49988178407309,
+                1110.4403825450936,
+                -2369.206918642892,
+                1258.7665360977983
+              ],
+              "tertiary_kcl_residual_A": 3.1629030067378828e-12,
+              "bisection_iterations": 29,
+              "tap_value": 0.95,
+              "scanned_points": 26,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 2.482534153247273e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                170.10564812675403,
+                -270.22994813251256,
+                -243.73820950842145,
+                -114.65866766110108,
+                2092.4089506653686,
+                -84.85369001376364,
+                -2007.5552606516055
+              ],
+              "maximum_constraint_violation": 8.334599677084498e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 5.5047575950330166e-12,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 84,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                1.0290846820203376,
+                1.030021639945076,
+                1.029731873561449
+              ],
+              "total_residual_evaluations": 2575,
+              "maximum_leakage_current_loading": 1.000000000083346,
+              "maximum_scaled_equality_residual": 3.568652318097776e-11
+            },
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.1474082376807928,
+              "leakage_current_magnitude_A": [
+                84.26747287548744,
+                81.85190043950745,
+                83.66238081829472,
+                2200.000000039206,
+                2111.910426064441,
+                2177.135175329671,
+                1.0063249504518308,
+                1.006324950452481,
+                1.0063249504530982
+              ],
+              "upper_infeasible_served_fraction": 1.147408237773925,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                -14.392703177029398,
+                -228.36248656617113,
+                241.38661496708815,
+                -0.3457941190974547,
+                1114.9905982875732,
+                -2371.050297904916,
+                1256.0596996173424
+              ],
+              "tertiary_kcl_residual_A": 1.8752996119091257e-12,
+              "bisection_iterations": 29,
+              "tap_value": 1,
+              "scanned_points": 24,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 2.220446049250313e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                267.2206634111458,
+                -151.0372468991987,
+                -127.1004751077987,
+                -3.67371180486427,
+                2092.021093376407,
+                -80.69508717726725,
+                -2011.3260061991396
+              ],
+              "maximum_constraint_violation": 1.7820855902073163e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 8.161498127501962e-12,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 78,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                0.9788191638088767,
+                0.9796604927829967,
+                0.9794019453725848
+              ],
+              "total_residual_evaluations": 2393,
+              "maximum_leakage_current_loading": 1.0000000000178209,
+              "maximum_scaled_equality_residual": 6.298722654562994e-11
+            },
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.0939634495414796,
+              "leakage_current_magnitude_A": [
+                80.25614558822258,
+                77.95744696060676,
+                79.67971805794818,
+                2200.000000125008,
+                2112.006568403147,
+                2177.20069481545,
+                0.9572523717356418,
+                0.9572523717365226,
+                0.9572523717373687
+              ],
+              "upper_infeasible_served_fraction": 1.0939634496346118,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                -36.46089122082803,
+                -241.42683015525782,
+                206.47050389900522,
+                -23.705880252883585,
+                1119.1054773808328,
+                -2372.698821159078,
+                1253.5933437782455
+              ],
+              "tertiary_kcl_residual_A": 2.5929300471702692e-12,
+              "bisection_iterations": 29,
+              "tap_value": 1.05,
+              "scanned_points": 23,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 2.482534153247273e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                327.907636454644,
+                -70.37464825354274,
+                -48.640470568347226,
+                69.59892276862942,
+                2091.6489963011236,
+                -76.9244205470496,
+                -2014.724575754074
+              ],
+              "maximum_constraint_violation": 5.682165848952536e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 2.2023644327185358e-11,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 75,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                0.9332269415104147,
+                0.9339865595251269,
+                0.9337544759342616
+              ],
+              "total_residual_evaluations": 2302,
+              "maximum_leakage_current_loading": 1.0000000000568217,
+              "maximum_scaled_equality_residual": 3.816064131356711e-11
+            }
+          ],
+          "decision_id": "tap/x1/winding/2",
+          "optimum": {
+            "scan_maximum": 1.6,
+            "leakage_current_limit_A": [
+              180,
+              180,
+              180,
+              2200,
+              2200,
+              2200,
+              280,
+              280,
+              280
+            ],
+            "served_fraction": 1.2063312133774156,
+            "leakage_current_magnitude_A": [
+              88.70087180947343,
+              86.15587501354995,
+              88.06410750878322,
+              2200.0000001833614,
+              2111.802948948617,
+              2177.0622735588818,
+              1.0607190841702296,
+              1.0607190841700505,
+              1.0607190841671539
+            ],
+            "upper_infeasible_served_fraction": 1.206331213470548,
+            "terminal_voltage_imag_V": [
+              0,
+              -6235.000000000001,
+              6235.000000000001,
+              0,
+              7.954523295887413,
+              -215.828596130446,
+              278.00563348761483,
+              23.49988178407309,
+              1110.4403825450936,
+              -2369.206918642892,
+              1258.7665360977983
+            ],
+            "tertiary_kcl_residual_A": 3.1629030067378828e-12,
+            "bisection_iterations": 29,
+            "tap_value": 0.95,
+            "scanned_points": 26,
+            "residual_evaluations": 1,
+            "delta_common_mode_voltage_pu": 2.482534153247273e-16,
+            "terminal_voltage_real_V": [
+              7199.557856794634,
+              -3599.778928397315,
+              -3599.778928397315,
+              0.0,
+              170.10564812675403,
+              -270.22994813251256,
+              -243.73820950842145,
+              -114.65866766110108,
+              2092.4089506653686,
+              -84.85369001376364,
+              -2007.5552606516055
+            ],
+            "maximum_constraint_violation": 8.334599677084498e-11,
+            "scan_step": 0.05,
+            "newton_iterations": 0,
+            "secondary_neutral_kcl_residual_A": 5.5047575950330166e-12,
+            "algorithm": "damped finite-difference Newton continuation and bisection",
+            "total_newton_iterations": 84,
+            "converged": true,
+            "secondary_phase_to_neutral_voltage_pu": [
+              1.0290846820203376,
+              1.030021639945076,
+              1.029731873561449
+            ],
+            "total_residual_evaluations": 2575,
+            "maximum_leakage_current_loading": 1.000000000083346,
+            "maximum_scaled_equality_residual": 3.568652318097776e-11
+          },
+          "positions": [
+            0.95,
+            1.0,
+            1.05
+          ]
+        },
+        {
+          "tap_results": [
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.194834363460541,
+              "leakage_current_magnitude_A": [
+                85.86245390125565,
+                88.37823406037259,
+                85.23110081930639,
+                2112.143313184223,
+                2200.0000001746084,
+                2091.5500537300554,
+                1.3349743841000155,
+                1.3349743840999295,
+                1.3349743840992405
+              ],
+              "upper_infeasible_served_fraction": 1.1948343635536731,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                -34.57255048885515,
+                -258.3986736110266,
+                234.82844026141754,
+                -19.50107514134862,
+                1110.6636309210492,
+                -2367.2597378232194,
+                1256.5961069021707
+              ],
+              "tertiary_kcl_residual_A": 1.7716407340453867e-12,
+              "bisection_iterations": 29,
+              "tap_value": 0.95,
+              "scanned_points": 25,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                300.2746151471512,
+                -140.74509120435786,
+                -114.53530783869235,
+                15.106130618330427,
+                2094.5567302376458,
+                -84.04420610451078,
+                -2010.5125241331348
+              ],
+              "maximum_constraint_violation": 7.936740153979827e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 1.1988911169415e-11,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 81,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                1.030449272071504,
+                1.0292699798317582,
+                1.0300839681224863
+              ],
+              "total_residual_evaluations": 2484,
+              "maximum_leakage_current_loading": 1.0000000000793674,
+              "maximum_scaled_equality_residual": 2.4136359577653366e-11
+            },
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.1364617200568319,
+              "leakage_current_magnitude_A": [
+                81.57224072004936,
+                83.96059842154347,
+                80.97415225295232,
+                2112.2763469650477,
+                2200.0000002153656,
+                2091.64546839646,
+                1.26651999876009,
+                1.2665199987606817,
+                1.2665199987615043
+              ],
+              "upper_infeasible_served_fraction": 1.1364617201499643,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                -23.21698409783079,
+                -237.2282843666821,
+                231.97206732062176,
+                -9.598830981069774,
+                1115.2114986947818,
+                -2369.1980556343187,
+                1253.986556939536
+              ],
+              "tertiary_kcl_residual_A": 3.3343473214714615e-12,
+              "bisection_iterations": 29,
+              "tap_value": 1,
+              "scanned_points": 24,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 3.510833468576701e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                276.78486665881655,
+                -142.08933359423963,
+                -118.40464161488045,
+                5.528267331986141,
+                2094.057409100284,
+                -79.93409091959435,
+                -2014.12331818069
+              ],
+              "maximum_constraint_violation": 9.789347110711333e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 5.173629459978548e-12,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 78,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                0.98004568327746,
+                0.9789857378398534,
+                0.9797152596168043
+              ],
+              "total_residual_evaluations": 2393,
+              "maximum_leakage_current_loading": 1.0000000000978935,
+              "maximum_scaled_equality_residual": 5.996655949580543e-11
+            },
+            {
+              "scan_maximum": 1.6,
+              "leakage_current_limit_A": [
+                180,
+                180,
+                180,
+                2200,
+                2200,
+                2200,
+                280,
+                280,
+                280
+              ],
+              "served_fraction": 1.0835172108374538,
+              "leakage_current_magnitude_A": [
+                77.69032019452294,
+                79.96356471979513,
+                77.12216621187216,
+                2112.395540522172,
+                2200.000000050789,
+                2091.730570447585,
+                1.2047624321774477,
+                1.2047624321748058,
+                1.2047624321746002
+              ],
+              "upper_infeasible_served_fraction": 1.0835172109305862,
+              "terminal_voltage_imag_V": [
+                0,
+                -6235.000000000001,
+                6235.000000000001,
+                0,
+                -27.089265262862853,
+                -232.0950753906647,
+                215.30384857736507,
+                -14.72402740821755,
+                1119.3234310003745,
+                -2370.93270048527,
+                1251.6092694848967
+              ],
+              "tertiary_kcl_residual_A": 2.0904165104503465e-12,
+              "bisection_iterations": 29,
+              "tap_value": 1.05,
+              "scanned_points": 23,
+              "residual_evaluations": 1,
+              "delta_common_mode_voltage_pu": 5.661048867003676e-16,
+              "terminal_voltage_real_V": [
+                7199.557856794634,
+                -3599.778928397315,
+                -3599.778928397315,
+                0.0,
+                350.21069061612616,
+                -48.629667379867314,
+                -27.12217855506739,
+                91.57550867165499,
+                2093.584830089925,
+                -76.20655961221372,
+                -2017.3782704777113
+              ],
+              "maximum_constraint_violation": 2.3085977574055505e-11,
+              "scan_step": 0.05,
+              "newton_iterations": 0,
+              "secondary_neutral_kcl_residual_A": 1.4782808745672324e-11,
+              "algorithm": "damped finite-difference Newton continuation and bisection",
+              "total_newton_iterations": 75,
+              "converged": true,
+              "secondary_phase_to_neutral_voltage_pu": [
+                0.9343353283568897,
+                0.9333774907659621,
+                0.934035018159697
+              ],
+              "total_residual_evaluations": 2302,
+              "maximum_leakage_current_loading": 1.000000000023086,
+              "maximum_scaled_equality_residual": 4.348647830720864e-11
+            }
+          ],
+          "decision_id": "tap/x1/winding/2",
+          "optimum": {
+            "scan_maximum": 1.6,
+            "leakage_current_limit_A": [
+              180,
+              180,
+              180,
+              2200,
+              2200,
+              2200,
+              280,
+              280,
+              280
+            ],
+            "served_fraction": 1.194834363460541,
+            "leakage_current_magnitude_A": [
+              85.86245390125565,
+              88.37823406037259,
+              85.23110081930639,
+              2112.143313184223,
+              2200.0000001746084,
+              2091.5500537300554,
+              1.3349743841000155,
+              1.3349743840999295,
+              1.3349743840992405
+            ],
+            "upper_infeasible_served_fraction": 1.1948343635536731,
+            "terminal_voltage_imag_V": [
+              0,
+              -6235.000000000001,
+              6235.000000000001,
+              0,
+              -34.57255048885515,
+              -258.3986736110266,
+              234.82844026141754,
+              -19.50107514134862,
+              1110.6636309210492,
+              -2367.2597378232194,
+              1256.5961069021707
+            ],
+            "tertiary_kcl_residual_A": 1.7716407340453867e-12,
+            "bisection_iterations": 29,
+            "tap_value": 0.95,
+            "scanned_points": 25,
+            "residual_evaluations": 1,
+            "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
+            "terminal_voltage_real_V": [
+              7199.557856794634,
+              -3599.778928397315,
+              -3599.778928397315,
+              0.0,
+              300.2746151471512,
+              -140.74509120435786,
+              -114.53530783869235,
+              15.106130618330427,
+              2094.5567302376458,
+              -84.04420610451078,
+              -2010.5125241331348
+            ],
+            "maximum_constraint_violation": 7.936740153979827e-11,
+            "scan_step": 0.05,
+            "newton_iterations": 0,
+            "secondary_neutral_kcl_residual_A": 1.1988911169415e-11,
+            "algorithm": "damped finite-difference Newton continuation and bisection",
+            "total_newton_iterations": 81,
+            "converged": true,
+            "secondary_phase_to_neutral_voltage_pu": [
+              1.030449272071504,
+              1.0292699798317582,
+              1.0300839681224863
+            ],
+            "total_residual_evaluations": 2484,
+            "maximum_leakage_current_loading": 1.0000000000793674,
+            "maximum_scaled_equality_residual": 2.4136359577653366e-11
+          },
+          "positions": [
+            0.95,
+            1.0,
+            1.05
+          ]
+        }
+      ],
+      "branches": [
+        {
+          "net_objective": 3.631752103660256,
+          "tap_movement": 0,
+          "scenario_taps": [
+            0.95,
+            0.95,
+            0.95
+          ],
+          "tap_operations": 0,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.2063312133774156,
+            1.194834363460541
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.572379460256547,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            0.95,
+            0.95,
+            1.0
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.2063312133774156,
+            1.1364617200568319
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.518434951037169,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            0.95,
+            0.95,
+            1.05
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.2063312133774156,
+            1.0835172108374538
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.5708291279636333,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            0.95,
+            1.0,
+            0.95
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.1474082376807928,
+            1.194834363460541
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.513456484559924,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            0.95,
+            1.0,
+            1.0
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.1474082376807928,
+            1.1364617200568319
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.459511975340546,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            0.95,
+            1.0,
+            1.05
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.1474082376807928,
+            1.0835172108374538
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.51538433982432,
+          "tap_movement": 0.20000000000000018,
+          "scenario_taps": [
+            0.95,
+            1.05,
+            0.95
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.0939634495414796,
+            1.194834363460541
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.458011696420611,
+          "tap_movement": 0.15000000000000013,
+          "scenario_taps": [
+            0.95,
+            1.05,
+            1.0
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.0939634495414796,
+            1.1364617200568319
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.4060671872012325,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            0.95,
+            1.05,
+            1.05
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.2305865268222993,
+            1.0939634495414796,
+            1.0835172108374538
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.5706394575312728,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1,
+            0.95,
+            0.95
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.2063312133774156,
+            1.194834363460541
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.5112668141275636,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1,
+            0.95,
+            1
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.2063312133774156,
+            1.1364617200568319
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.4573223049081854,
+          "tap_movement": 0.15000000000000013,
+          "scenario_taps": [
+            1,
+            0.95,
+            1.05
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.2063312133774156,
+            1.0835172108374538
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.51171648183465,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1,
+            1,
+            0.95
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.1474082376807928,
+            1.194834363460541
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.4543438384309404,
+          "tap_movement": 0,
+          "scenario_taps": [
+            1,
+            1,
+            1
+          ],
+          "tap_operations": 0,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.1474082376807928,
+            1.1364617200568319
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.4003993292115626,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1,
+            1,
+            1.05
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.1474082376807928,
+            1.0835172108374538
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.4562716936953364,
+          "tap_movement": 0.15000000000000013,
+          "scenario_taps": [
+            1,
+            1.05,
+            0.95
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.0939634495414796,
+            1.194834363460541
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.398899050291628,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1,
+            1.05,
+            1
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.0939634495414796,
+            1.1364617200568319
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.3469545410722494,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1,
+            1.05,
+            1.05
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.170473880693316,
+            1.0939634495414796,
+            1.0835172108374538
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.5151159444376825,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1.05,
+            0.95,
+            0.95
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.2063312133774156,
+            1.194834363460541
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.455743301033973,
+          "tap_movement": 0.15000000000000013,
+          "scenario_taps": [
+            1.05,
+            0.95,
+            1.0
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.2063312133774156,
+            1.1364617200568319
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.401798791814595,
+          "tap_movement": 0.20000000000000018,
+          "scenario_taps": [
+            1.05,
+            0.95,
+            1.05
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.2063312133774156,
+            1.0835172108374538
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.4561929687410595,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1.05,
+            1.0,
+            0.95
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.1474082376807928,
+            1.194834363460541
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.398820325337351,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1.05,
+            1.0,
+            1.0
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.1474082376807928,
+            1.1364617200568319
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.3448758161179724,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1.05,
+            1.0,
+            1.05
+          ],
+          "tap_operations": 2,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.1474082376807928,
+            1.0835172108374538
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.4027481806017468,
+          "tap_movement": 0.10000000000000009,
+          "scenario_taps": [
+            1.05,
+            1.05,
+            0.95
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.0939634495414796,
+            1.194834363460541
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.3453755371980374,
+          "tap_movement": 0.050000000000000044,
+          "scenario_taps": [
+            1.05,
+            1.05,
+            1.0
+          ],
+          "tap_operations": 1,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.0939634495414796,
+            1.1364617200568319
+          ],
+          "admissible": true
+        },
+        {
+          "net_objective": 3.2934310279786594,
+          "tap_movement": 0,
+          "scenario_taps": [
+            1.05,
+            1.05,
+            1.05
+          ],
+          "tap_operations": 0,
+          "scenario_served_fractions": [
+            1.115950367599726,
+            1.0939634495414796,
+            1.0835172108374538
+          ],
+          "admissible": true
+        }
+      ],
+      "admissible_branch_count": 27,
+      "selected_branch": {
+        "net_objective": 3.631752103660256,
+        "tap_movement": 0,
+        "scenario_taps": [
+          0.95,
+          0.95,
+          0.95
+        ],
+        "tap_operations": 0,
+        "scenario_served_fractions": [
+          1.2305865268222993,
+          1.2063312133774156,
+          1.194834363460541
+        ],
+        "admissible": true
+      },
+      "branch_count": 27,
+      "branch_completeness": true
+    },
+    "comparisons": [
+      {
+        "net_objective_difference": -1.1365002272611946e-9,
+        "scenario_taps": [
+          0.95,
+          0.95,
+          0.95
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.1202940797261363e-9,
+        "scenario_taps": [
+          0.95,
+          0.95,
+          1.0
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.1662990573313436e-9,
+        "scenario_taps": [
+          0.95,
+          0.95,
+          1.05
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.2081233791150225e-9,
+        "scenario_taps": [
+          0.95,
+          1.0,
+          0.95
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.191917675669174e-9,
+        "scenario_taps": [
+          0.95,
+          1.0,
+          1.0
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.2379226532743814e-9,
+        "scenario_taps": [
+          0.95,
+          1.0,
+          1.05
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.1221041873454851e-9,
+        "scenario_taps": [
+          0.95,
+          1.05,
+          0.95
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.105897595721217e-9,
+        "scenario_taps": [
+          0.95,
+          1.05,
+          1.0
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.151903461504844e-9,
+        "scenario_taps": [
+          0.95,
+          1.05,
+          1.05
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.159926821259205e-9,
+        "scenario_taps": [
+          1,
+          0.95,
+          0.95
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.1437206737241468e-9,
+        "scenario_taps": [
+          1,
+          0.95,
+          1
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.1897256513293542e-9,
+        "scenario_taps": [
+          1,
+          0.95,
+          1.05
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.231549973113033e-9,
+        "scenario_taps": [
+          1,
+          1,
+          0.95
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.2153438255779747e-9,
+        "scenario_taps": [
+          1,
+          1,
+          1
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.2613483590939722e-9,
+        "scenario_taps": [
+          1,
+          1,
+          1.05
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.1455307813434956e-9,
+        "scenario_taps": [
+          1,
+          1.05,
+          0.95
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.1293241897192274e-9,
+        "scenario_taps": [
+          1,
+          1.05,
+          1
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.1753296114136447e-9,
+        "scenario_taps": [
+          1,
+          1.05,
+          1.05
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.1203020733319136e-9,
+        "scenario_taps": [
+          1.05,
+          0.95,
+          0.95
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.1040959257968552e-9,
+        "scenario_taps": [
+          1.05,
+          0.95,
+          1.0
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.1501004593128528e-9,
+        "scenario_taps": [
+          1.05,
+          0.95,
+          1.05
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.1919247810965317e-9,
+        "scenario_taps": [
+          1.05,
+          1.0,
+          0.95
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.1757181894722635e-9,
+        "scenario_taps": [
+          1.05,
+          1.0,
+          1.0
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.2217240552558906e-9,
+        "scenario_taps": [
+          1.05,
+          1.0,
+          1.05
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.1059055893269942e-9,
+        "scenario_taps": [
+          1.05,
+          1.05,
+          0.95
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.089699441791936e-9,
+        "scenario_taps": [
+          1.05,
+          1.05,
+          1.0
+        ],
+        "tap_movement_difference": 0
+      },
+      {
+        "net_objective_difference": -1.1357039753079334e-9,
+        "scenario_taps": [
+          1.05,
+          1.05,
+          1.05
+        ],
+        "tap_movement_difference": 0
+      }
+    ],
+    "selected_path_matches": true,
+    "operation_limited_selected_path_matches": true,
+    "ipopt_branch_count": 27
+  },
+  "schema_version": "1.1.0"
+}

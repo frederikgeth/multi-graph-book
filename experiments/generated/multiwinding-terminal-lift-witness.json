@@ -85,14 +85,69 @@
       "arity": 3
     }
   ],
+  "cycle_views": {
+    "factor_incidence": {
+      "cycle_rank": 0,
+      "vertices": [
+        "transformer/x1",
+        "transformer/x1/port/1",
+        "transformer/x1/port/2",
+        "transformer/x1/port/3"
+      ],
+      "edges": [
+        {
+          "id": "incidence/transformer/x1/port/1",
+          "to": "transformer/x1/port/1",
+          "from": "transformer/x1"
+        },
+        {
+          "id": "incidence/transformer/x1/port/2",
+          "to": "transformer/x1/port/2",
+          "from": "transformer/x1"
+        },
+        {
+          "id": "incidence/transformer/x1/port/3",
+          "to": "transformer/x1/port/3",
+          "from": "transformer/x1"
+        }
+      ]
+    },
+    "clique_compilation": {
+      "cycle_rank": 1,
+      "vertices": [
+        "transformer/x1/port/1",
+        "transformer/x1/port/2",
+        "transformer/x1/port/3"
+      ],
+      "edges": [
+        {
+          "id": "compiled/transformer/x1/port/1/transformer/x1/port/2",
+          "to": "transformer/x1/port/2",
+          "from": "transformer/x1/port/1"
+        },
+        {
+          "id": "compiled/transformer/x1/port/1/transformer/x1/port/3",
+          "to": "transformer/x1/port/3",
+          "from": "transformer/x1/port/1"
+        },
+        {
+          "id": "compiled/transformer/x1/port/2/transformer/x1/port/3",
+          "to": "transformer/x1/port/3",
+          "from": "transformer/x1/port/2"
+        }
+      ]
+    }
+  },
   "observations": {
     "excitation_shunt": "x1/excitation/winding/2",
     "internal_groundings": 1
   },
   "checks": {
     "winding_identity_preserved": true,
+    "factor_incidence_is_acyclic": true,
     "delta_winding_has_no_neutral_terminal": true,
     "wye_neutral_terminal_retained": true,
+    "clique_compilation_adds_cycle": true,
     "excitation_shunt_is_separate_observation": true,
     "multiwinding_factor_has_three_ports": true,
     "all_transfer_ports_resolve": true,

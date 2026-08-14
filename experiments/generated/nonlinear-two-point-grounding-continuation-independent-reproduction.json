@@ -1,0 +1,58 @@
+{
+  "witness_id": "TR-KRON-NEUTRAL-007-REPRO",
+  "claim_id": "TR-KRON-NEUTRAL-007",
+  "method": "independent pure-Python finite-difference Newton continuation",
+  "source_witness": "experiments/generated/nonlinear-two-point-grounding-continuation.json",
+  "rows": [
+    {
+      "lambda": 0.0,
+      "maximum_neutral_current": 0.02864487458629319,
+      "frozen_nominal_residual": 7.089226110969887e-15,
+      "limit_satisfied": true,
+      "nonlinear_residual": 7.39651590160867e-17,
+      "matches_julia": true
+    },
+    {
+      "lambda": 0.25,
+      "maximum_neutral_current": 0.06714576045057612,
+      "frozen_nominal_residual": 1.1835815819500021e-05,
+      "limit_satisfied": false,
+      "nonlinear_residual": 4.706186817419514e-17,
+      "matches_julia": true
+    },
+    {
+      "lambda": 0.5,
+      "maximum_neutral_current": 0.1626628032056331,
+      "frozen_nominal_residual": 0.00015504239074894607,
+      "limit_satisfied": false,
+      "nonlinear_residual": 5.4966376997738136e-17,
+      "matches_julia": true
+    },
+    {
+      "lambda": 0.75,
+      "maximum_neutral_current": 0.2583949618343865,
+      "frozen_nominal_residual": 0.000945588342696283,
+      "limit_satisfied": false,
+      "nonlinear_residual": 5.942181259260735e-16,
+      "matches_julia": true
+    },
+    {
+      "lambda": 1.0,
+      "maximum_neutral_current": 0.3544396624939587,
+      "frozen_nominal_residual": 0.00283598415738776,
+      "limit_satisfied": false,
+      "nonlinear_residual": 1.0896423281403746e-14,
+      "matches_julia": true
+    }
+  ],
+  "checks": {
+    "all_rows_match_julia": true,
+    "all_continuation_points_converged": true,
+    "frozen_nominal_map_fails_off_base": true,
+    "recomputed_path_has_multiple_states": true,
+    "independent_solver_used": true,
+    "no_numpy_or_julia_import": true
+  },
+  "all_checks_pass": true,
+  "interpretation": "Independent reproduction of the finite local continuation; not a global continuation or uncertainty theorem."
+}

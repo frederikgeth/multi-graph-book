@@ -1,11 +1,11 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:da45ce60d5637f4c4b540f9f5c1f64bdad2b51431540a25e9affd50a180b06a1 -->
+<!-- generated-from claims/claims.toml sha256:dd765ad1e04e449583801b81970da10e6e492ec0c0574718b7849f10f388bed0 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 
-**Indexed claims:** 57
+**Indexed claims:** 64
 **Indexed chapters:** 27
 
 ## Claims by type
@@ -20,7 +20,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `THESIS-001` — Representation adequacy is evaluated relative to declared observations, constraints, and decisions. | [Scope and thesis](../foundations/scope-and-thesis.md) | `self-checked` |
 | `TOPOLOGY-001` — For a fixed switch state, topological nodes are the connected components of the closed-switch connectivity graph; compiling them into bus--branch buses is a state-conditioned quotient that requires provenance and does not preserve switching decisions by itself. | [Node--breaker, bus--breaker, and topology processing](../foundations/node-breaker-topology-processing.md) | `self-checked` |
 
-### `empirical` (29)
+### `empirical` (36)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -47,12 +47,19 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `TR-KRON-NEUTRAL-002` — In the recorded five-conductor midpoint probe, retaining an explicit earth terminal and a midpoint neutral-earth bond yields separately recoverable neutral and earth KCL currents and a neutral-current limit; collapsing earth return into neutral would lose an observed factor relation. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
 | `TR-KRON-NEUTRAL-003` — In the recorded three-segment five-conductor probe with two explicit neutral-earth bonds, each grounding point has separately recoverable neutral and earth KCL currents and bond-current observations; a single collapsed neutral constraint cannot represent both points. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
 | `TR-KRON-NEUTRAL-004` — In the recorded finite grounding-impedance sweep, changing the two explicit neutral-earth impedances changes recovered neutral current and the feasibility classification under one fixed neutral limit, even though the structural reduction and KCL contracts remain unchanged. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
+| `TR-KRON-NEUTRAL-005` — In the recorded local state-dependent grounding probe, shifting an endpoint state changes the nonlinear neutral-earth bond map; reusing the nominal bond map leaves a nonzero shifted-state residual, while recomputation restores the relation and preserves explicit neutral-limit evaluation. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
+| `TR-KRON-NEUTRAL-006` — In the recorded two-point state-dependent grounding chain, shifting the endpoint state changes both nonlinear neutral-earth bond maps; freezing both nominal maps leaves a nonzero chain residual and changes recovered segment-neutral currents, while recomputation restores the local relation. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
+| `TR-KRON-NEUTRAL-007` — In the recorded finite endpoint-state continuation of the two-point nonlinear grounding chain, recomputing the bond maps at five declared states preserves small nonlinear residuals and records changing neutral-limit margins, while the frozen nominal map fails away from the base state. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `self-checked` |
 | `TR-PAR-003` — In the recorded two-bus maximum-served-load problem, the naive summed-rating aggregate serves 200 MW while the source and exact lifted formulations each serve 110 MW. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `self-checked` |
 | `TR-PAR-004` — In the recorded two-conductor AC maximum-served-load case, the source, exact lifted, and certified exact-pruned formulations have objective 0.6138908, while a summed-limit aggregate has objective 1.0630833 and violates a 0.6 p.u. member limit. | [Multiconductor parallel AC decision case](../cases/multiconductor-parallel-ac-decision.md) | `self-checked` |
 | `TR-PAR-AC-JOINT-001` — In the recorded three-member four-wire AC case, member 3 has the fixed recovery I_l3=0.10 I_l1+0.10 I_l2 and a 0.15 p.u. component limit; the joint support bound is 0.144 p.u., so deleting member-3 limits preserves the locally solved source objective 1.2401762 to 7e-14. An independent damped-Newton continuation and bisection reproduces the source boundary within 1.3e-8 served-fraction units. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `self-checked` |
 | `TR-PAR-SINGULAR-001` — For the declared series-only singular four-wire fixture, the full two-end terminal-current map is rank deficient, but the endpoint-voltage-drop coordinate recovers member-2 currents exactly from member-1 currents through the declared diagonal map, with the zero-neutral rows retained as an explicit invariant; this is a guarded reduced-coordinate result, not a pseudoinverse or singular-shunt theorem. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `self-checked` |
+| `TR-PAR-STATE-001` — In the recorded finite four-state four-wire AC envelope, rebuilding the member maps and source/pruned formulations at each declared scalar or phase-selective admittance state preserves exact joint limit pruning locally while changing the optimal served value across states. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `independently-implemented` |
 | `TR-XFMR-007` — A separate damped finite-difference Newton, continuation, and bisection implementation reproduces all three TR-XFMR-006 tap-conditioned high-voltage branch boundaries without an external optimizer; its largest served-fraction difference from JuMP/Ipopt is 3.14e-10, and both methods select tap 0.95. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `independently-implemented` |
+| `TR-XFMR-008` — In the recorded 11-terminal WYE/WYE/DELTA tap case, a phase-selective unbalanced second scenario can be handled without collapsing the transformer or its phase identities: exact enumeration of the nine ordered tap pairs preserves branch completeness and exposes the per-phase scenario directions explicitly. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `self-checked` |
+| `TR-XFMR-009` — For the recorded 11-terminal WYE/WYE/DELTA case, a three-scenario phase-selective tap path can be enumerated exactly over the 3^3 ordered tap triples, with consecutive tap movement charged explicitly and each scenario retaining its own phase directions. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `independently-implemented` |
+| `TR-XFMR-010` — In the recorded three-scenario tap path, enumerating all 27 ordered tap triples and then applying an explicit at-most-one-movement policy leaves 15 admissible branches; the policy is a decision constraint and must not be inferred from the unconstrained best path. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `independently-implemented` |
 
 ### `practice` (1)
 
@@ -91,8 +98,8 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 
 | Verification | Claims |
 | --- | ---: |
-| `independently-implemented` | 1 |
-| `self-checked` | 56 |
+| `independently-implemented` | 4 |
+| `self-checked` | 60 |
 
 ## Unresolved issues
 
@@ -134,6 +141,9 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `TR-KRON-NEUTRAL-002` | Extend to nonlinear earth-return factors, multiple grounding points, protection observations, and independent physical-model review. |
 | `TR-KRON-NEUTRAL-003` | Extend to nonlinear and state-dependent grounding, grounding impedance uncertainty, protection observations, and physical-model review. |
 | `TR-KRON-NEUTRAL-004` | Extend to uncertainty sets, nonlinear/state-dependent grounding, protection observations, and physical-model review. |
+| `TR-KRON-NEUTRAL-005` | Extend to global continuation, multiple nonlinear grounding points, uncertainty sets, protection observations, and physical-model review. |
+| `TR-KRON-NEUTRAL-006` | Extend to global continuation, more nonlinear grounding points, uncertainty sets, protection observations, and physical-model review. |
+| `TR-KRON-NEUTRAL-007` | Extend to adaptive continuation, global branch tracking, uncertainty sets, protection observations, and physical-model review. |
 | `TR-NEG-001` | Extend the negative cases to nominal-pi cascades, protection boundaries, nonlinear formulations, and independent reproduction. |
 | `TR-PAR-001` | Add an independent mathematical reviewer. |
 | `TR-PAR-002` | Molzahn2018 gives an exact scalar AC constraint-pruning test without asset aggregation; a general multiconductor classification remains open. |
@@ -145,6 +155,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `TR-PAR-AC-JOINT-001` | Extend beyond this fixed linear member relation to voltage-dependent shunts, topology/control states, several independently varying retained members, and global nonlinear AC optimality guarantees. |
 | `TR-PAR-JOINT-001` | Extend the joint-support certificate to full nonlinear AC cases with several retained members, state-dependent maps, topology decisions, and global optimality bounds. |
 | `TR-PAR-SINGULAR-001` | Extend the reduced-coordinate treatment to singular shunted primitives, coupled conductor models, and global nonlinear AC decision bounds. |
+| `TR-PAR-STATE-001` | Extend from the finite scalar and phase-selective envelope to topology/control states, independently varying recovery maps, global nonlinear optimality, and external physical-model review. |
 | `TR-SER-001` | Add an independent mathematical reviewer. |
 | `TR-SER-002` | Formalize sufficient physical line-merge guards for selected line models. |
 | `TR-XFMR-001` | Prove which normalized factors can be serialized back into compact vector-group and delta-roll fields without loss. |
@@ -154,6 +165,9 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `TR-XFMR-005` | The first solver-backed network embedding is TR-XFMR-006; extend the contract to phase-angle, independent per-phase, mechanically coupled, and tap-dependent-loss controls. |
 | `TR-XFMR-006` | TR-XFMR-007 independently reproduces the numerical branch search, and the certificate now includes a finite two-scenario tap-pair switching-cost ledger; extend the network-level contract to unbalanced downstream controls and richer multiwinding decisions. |
 | `TR-XFMR-007` | The finite tap-pair ledger is branch-complete for its declared domain, but the continuous subproblems remain local Ipopt solutions; reproduce the case with an independently assembled transformer primitive or external power-system tool and establish global guarantees where required. |
+| `TR-XFMR-008` | This is a finite local witness, not a global unbalanced OPF guarantee; extend the contract to richer multiwinding controls, topology decisions, and independently assembled physical models. |
+| `TR-XFMR-009` | This remains a finite local path witness, not a global unbalanced multi-period OPF guarantee; extend to richer controls, topology decisions, switching operation limits, and independently assembled physical models. |
+| `TR-XFMR-010` | Extend operation-count, dwell-time, deadband, and switching-cost semantics to richer multiwinding controls and globally certified multi-period OPF models. |
 
 ## Facet indexes
 
@@ -161,7 +175,7 @@ These retrieval facets are provisional and path-derived. They are navigation aid
 additional verification labels; explicit facet fields can replace them when the claims
 schema is normalised.
 
-### `decision-cases` (22)
+### `decision-cases` (26)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -180,6 +194,7 @@ schema is normalised.
 | `TR-PAR-AC-JOINT-001` — In the recorded three-member four-wire AC case, member 3 has the fixed recovery I_l3=0.10 I_l1+0.10 I_l2 and a 0.15 p.u. component limit; the joint support bound is 0.144 p.u., so deleting member-3 limits preserves the locally solved source objective 1.2401762 to 7e-14. An independent damped-Newton continuation and bisection reproduces the source boundary within 1.3e-8 served-fraction units. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
 | `TR-PAR-JOINT-001` — For fixed series current maps in common endpoint-voltage-drop coordinates, a candidate component-current limit is implied by several retained member limits when its exact recovery row has support bound sum_k abs(K_ck) Ibar_k no larger than the candidate rating; the guarded witness certifies this joint implication for three retained discs. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `theorem` |
 | `TR-PAR-SINGULAR-001` — For the declared series-only singular four-wire fixture, the full two-end terminal-current map is rank deficient, but the endpoint-voltage-drop coordinate recovers member-2 currents exactly from member-1 currents through the declared diagonal map, with the zero-neutral rows retained as an explicit invariant; this is a guarded reduced-coordinate result, not a pseudoinverse or singular-shunt theorem. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
+| `TR-PAR-STATE-001` — In the recorded finite four-state four-wire AC envelope, rebuilding the member maps and source/pruned formulations at each declared scalar or phase-selective admittance state preserves exact joint limit pruning locally while changing the optimal served value across states. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
 | `TR-XFMR-001` — A transformer winding terminal permutation is an exact typed-factor normalization when its complete terminal-to-coil incidence relation is right-multiplied by the inverse permutation and coil coordinates remain fixed. | [Transformer-winding coordinate normalization](../transformations/transformer-winding-coordinate-normalization.md) | `theorem` |
 | `TR-XFMR-002` — Complete pairwise multiwinding short-circuit impedances compile exactly into a reference-coordinate impedance matrix ZB, from which every pairwise impedance is recoverable; changing the selected reference winding leaves the external winding admittance invariant, and the classical star/T representation is the three-winding special case. | [Multiwinding leakage reference compilation](../transformations/multiwinding-leakage-reference-compilation.md) | `theorem` |
 | `TR-XFMR-003` — Aligned winding connection-incidence factors compose exactly with a multiwinding leakage admittance as Yterminal=A'*(Yw kron I)*A; retaining the coil-current map preserves per-coil winding limits and makes terminal-coordinate and leakage-reference changes explicit coordinate actions. | [Multiwinding terminal leakage assembly](../transformations/multiwinding-terminal-leakage-assembly.md) | `theorem` |
@@ -187,8 +202,11 @@ schema is normalised.
 | `TR-XFMR-005` — A continuous or discrete scalar winding tap compiles exactly as a retained parameterized transformer factor when coefficient_xkc(tap)=tap*base_coefficient_xkc and the decision identity and domain are mapped identically; freezing the tap at its start value is generally only an inner restriction, and in the recorded discrete witness it loses the 1.05 optimum and increases the winding-current objective by 671.060 A. | [Parameterized transformer tap decisions](../transformations/parameterized-transformer-tap-decisions.md) | `theorem` |
 | `TR-XFMR-006` — A retained finite scalar transformer tap factor embeds exactly into unchanged multiconductor AC voltage, KCL, power-balance, voltage-limit, and recovered leakage-current constraints by pointwise evaluation; in the recorded 11-terminal WYE/WYE/DELTA case, direct source and parameterized target subproblems agree at all three taps, select 0.95 with served fraction 1.2305865, and freezing the 1.00 start loses 0.0601126 served fraction (0.090169 MW). | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `theorem` |
 | `TR-XFMR-007` — A separate damped finite-difference Newton, continuation, and bisection implementation reproduces all three TR-XFMR-006 tap-conditioned high-voltage branch boundaries without an external optimizer; its largest served-fraction difference from JuMP/Ipopt is 3.14e-10, and both methods select tap 0.95. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
+| `TR-XFMR-008` — In the recorded 11-terminal WYE/WYE/DELTA tap case, a phase-selective unbalanced second scenario can be handled without collapsing the transformer or its phase identities: exact enumeration of the nine ordered tap pairs preserves branch completeness and exposes the per-phase scenario directions explicitly. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
+| `TR-XFMR-009` — For the recorded 11-terminal WYE/WYE/DELTA case, a three-scenario phase-selective tap path can be enumerated exactly over the 3^3 ordered tap triples, with consecutive tap movement charged explicitly and each scenario retaining its own phase directions. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
+| `TR-XFMR-010` — In the recorded three-scenario tap path, enumerating all 27 ordered tap triples and then applying an explicit at-most-one-movement policy leaves 15 admissible branches; the policy is a decision constraint and must not be inferred from the unconstrained best path. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
 
-### `graph-and-topology` (14)
+### `graph-and-topology` (15)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -206,6 +224,7 @@ schema is normalised.
 | `TR-PAR-AC-JOINT-001` — In the recorded three-member four-wire AC case, member 3 has the fixed recovery I_l3=0.10 I_l1+0.10 I_l2 and a 0.15 p.u. component limit; the joint support bound is 0.144 p.u., so deleting member-3 limits preserves the locally solved source objective 1.2401762 to 7e-14. An independent damped-Newton continuation and bisection reproduces the source boundary within 1.3e-8 served-fraction units. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
 | `TR-PAR-JOINT-001` — For fixed series current maps in common endpoint-voltage-drop coordinates, a candidate component-current limit is implied by several retained member limits when its exact recovery row has support bound sum_k abs(K_ck) Ibar_k no larger than the candidate rating; the guarded witness certifies this joint implication for three retained discs. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `theorem` |
 | `TR-PAR-SINGULAR-001` — For the declared series-only singular four-wire fixture, the full two-end terminal-current map is rank deficient, but the endpoint-voltage-drop coordinate recovers member-2 currents exactly from member-1 currents through the declared diagonal map, with the zero-neutral rows retained as an explicit invariant; this is a guarded reduced-coordinate result, not a pseudoinverse or singular-shunt theorem. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
+| `TR-PAR-STATE-001` — In the recorded finite four-state four-wire AC envelope, rebuilding the member maps and source/pruned formulations at each declared scalar or phase-selective admittance state preserves exact joint limit pruning locally while changing the optimal served value across states. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
 
 ### `numerical-evidence` (5)
 
@@ -276,7 +295,7 @@ schema is normalised.
 | --- | --- | --- |
 | `LIT-PAR-001` — For fixed scalar AC pi-line models on common endpoints, a parallel member's current- or apparent-power limit at one terminal is redundant when its normalized terminal-voltage quadratic feasible set contains that of another member; applying the test at both terminals certifies removal of both directional limits without aggregating the line models. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 
-### `transformations` (34)
+### `transformations` (41)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -294,6 +313,9 @@ schema is normalised.
 | `TR-KRON-NEUTRAL-002` — In the recorded five-conductor midpoint probe, retaining an explicit earth terminal and a midpoint neutral-earth bond yields separately recoverable neutral and earth KCL currents and a neutral-current limit; collapsing earth return into neutral would lose an observed factor relation. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
 | `TR-KRON-NEUTRAL-003` — In the recorded three-segment five-conductor probe with two explicit neutral-earth bonds, each grounding point has separately recoverable neutral and earth KCL currents and bond-current observations; a single collapsed neutral constraint cannot represent both points. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
 | `TR-KRON-NEUTRAL-004` — In the recorded finite grounding-impedance sweep, changing the two explicit neutral-earth impedances changes recovered neutral current and the feasibility classification under one fixed neutral limit, even though the structural reduction and KCL contracts remain unchanged. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
+| `TR-KRON-NEUTRAL-005` — In the recorded local state-dependent grounding probe, shifting an endpoint state changes the nonlinear neutral-earth bond map; reusing the nominal bond map leaves a nonzero shifted-state residual, while recomputation restores the relation and preserves explicit neutral-limit evaluation. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
+| `TR-KRON-NEUTRAL-006` — In the recorded two-point state-dependent grounding chain, shifting the endpoint state changes both nonlinear neutral-earth bond maps; freezing both nominal maps leaves a nonzero chain residual and changes recovered segment-neutral currents, while recomputation restores the local relation. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
+| `TR-KRON-NEUTRAL-007` — In the recorded finite endpoint-state continuation of the two-point nonlinear grounding chain, recomputing the bond maps at five declared states preserves small nonlinear residuals and records changing neutral-limit margins, while the frozen nominal map fails away from the base state. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 | `TR-PAR-001` — Summed admittance preserves the unconstrained terminal relation of parallel linear branches. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 | `TR-PAR-002` — Using the sum of member current ratings can create an outer relaxation of the member-constrained feasible set. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
@@ -305,6 +327,7 @@ schema is normalised.
 | `TR-PAR-AC-JOINT-001` — In the recorded three-member four-wire AC case, member 3 has the fixed recovery I_l3=0.10 I_l1+0.10 I_l2 and a 0.15 p.u. component limit; the joint support bound is 0.144 p.u., so deleting member-3 limits preserves the locally solved source objective 1.2401762 to 7e-14. An independent damped-Newton continuation and bisection reproduces the source boundary within 1.3e-8 served-fraction units. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
 | `TR-PAR-JOINT-001` — For fixed series current maps in common endpoint-voltage-drop coordinates, a candidate component-current limit is implied by several retained member limits when its exact recovery row has support bound sum_k abs(K_ck) Ibar_k no larger than the candidate rating; the guarded witness certifies this joint implication for three retained discs. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `theorem` |
 | `TR-PAR-SINGULAR-001` — For the declared series-only singular four-wire fixture, the full two-end terminal-current map is rank deficient, but the endpoint-voltage-drop coordinate recovers member-2 currents exactly from member-1 currents through the declared diagonal map, with the zero-neutral rows retained as an explicit invariant; this is a guarded reduced-coordinate result, not a pseudoinverse or singular-shunt theorem. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
+| `TR-PAR-STATE-001` — In the recorded finite four-state four-wire AC envelope, rebuilding the member maps and source/pruned formulations at each declared scalar or phase-selective admittance state preserves exact joint limit pruning locally while changing the optimal served value across states. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
 | `TR-SER-001` — A zero-injection degree-two junction between coordinate-aligned series elements has equivalent impedance Z_l1 + P' Z_l2 P. | [Degree-two series elimination](../transformations/degree-two-series-elimination.md) | `theorem` |
 | `TR-SER-002` — Exact terminal-behaviour closure under degree-two elimination does not by itself establish closure within a homogeneous physical line class. | [Degree-two series elimination](../transformations/degree-two-series-elimination.md) | `theorem` |
 | `TR-XFMR-001` — A transformer winding terminal permutation is an exact typed-factor normalization when its complete terminal-to-coil incidence relation is right-multiplied by the inverse permutation and coil coordinates remain fixed. | [Transformer-winding coordinate normalization](../transformations/transformer-winding-coordinate-normalization.md) | `theorem` |
@@ -314,6 +337,9 @@ schema is normalised.
 | `TR-XFMR-005` — A continuous or discrete scalar winding tap compiles exactly as a retained parameterized transformer factor when coefficient_xkc(tap)=tap*base_coefficient_xkc and the decision identity and domain are mapped identically; freezing the tap at its start value is generally only an inner restriction, and in the recorded discrete witness it loses the 1.05 optimum and increases the winding-current objective by 671.060 A. | [Parameterized transformer tap decisions](../transformations/parameterized-transformer-tap-decisions.md) | `theorem` |
 | `TR-XFMR-006` — A retained finite scalar transformer tap factor embeds exactly into unchanged multiconductor AC voltage, KCL, power-balance, voltage-limit, and recovered leakage-current constraints by pointwise evaluation; in the recorded 11-terminal WYE/WYE/DELTA case, direct source and parameterized target subproblems agree at all three taps, select 0.95 with served fraction 1.2305865, and freezing the 1.00 start loses 0.0601126 served fraction (0.090169 MW). | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `theorem` |
 | `TR-XFMR-007` — A separate damped finite-difference Newton, continuation, and bisection implementation reproduces all three TR-XFMR-006 tap-conditioned high-voltage branch boundaries without an external optimizer; its largest served-fraction difference from JuMP/Ipopt is 3.14e-10, and both methods select tap 0.95. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
+| `TR-XFMR-008` — In the recorded 11-terminal WYE/WYE/DELTA tap case, a phase-selective unbalanced second scenario can be handled without collapsing the transformer or its phase identities: exact enumeration of the nine ordered tap pairs preserves branch completeness and exposes the per-phase scenario directions explicitly. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
+| `TR-XFMR-009` — For the recorded 11-terminal WYE/WYE/DELTA case, a three-scenario phase-selective tap path can be enumerated exactly over the 3^3 ordered tap triples, with consecutive tap movement charged explicitly and each scenario retaining its own phase directions. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
+| `TR-XFMR-010` — In the recorded three-scenario tap path, enumerating all 27 ordered tap triples and then applying an explicit at-most-one-movement policy leaves 15 admissible branches; the policy is a decision constraint and must not be inferred from the unconstrained best path. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
 
 ## Generated artifacts
 
@@ -356,7 +382,13 @@ schema is normalised.
 | `multiwinding-typed-kron-witness.json` | `TR-KRON-MULTI-001` — serialized three-winding terminal admittance with DELTA terminal block eliminated |
 | `neutral-kron-independent-reproduction.json` | `TR-KRON-NEUTRAL-001` — data/running-network/v0.1.0.json |
 | `node-breaker-state-witness.json` | `TOPO-NB-001` — four-connectivity-node node-breaker fixture with two switch assets and state-conditioned bus compilation |
+| `nonlinear-grounding-probe-independent-reproduction.json` | `TR-KRON-NEUTRAL-005` — generated evidence |
+| `nonlinear-grounding-probe-witness.json` | `TR-KRON-NEUTRAL-005` — generated evidence |
 | `nonlinear-kkt-witness.json` | `NUMERICAL-003` — finite-difference nonlinear AC decision Jacobians and symbolic KKT sparsity for a two-bus parallel-member witness |
+| `nonlinear-two-point-grounding-continuation-independent-reproduction.json` | `TR-KRON-NEUTRAL-007` — generated evidence |
+| `nonlinear-two-point-grounding-continuation.json` | `TR-KRON-NEUTRAL-007` — generated evidence |
+| `nonlinear-two-point-grounding-independent-reproduction.json` | `TR-KRON-NEUTRAL-006` — generated evidence |
+| `nonlinear-two-point-grounding-witness.json` | `TR-KRON-NEUTRAL-006` — generated evidence |
 | `nonlinear-ward-witness.json` | `nonlinear_ward_probe_v0.1.0` — scalar constant-power internal state with a base-state Ward approximation |
 | `numerical-structure-witness.json` | `NUM-STRUCT-001` — five-bus source topology; structural dependency patterns, not numerical Jacobian entries |
 | `parallel-branch-certificate.json` | `TR-PAR-001` — generated evidence |
@@ -374,11 +406,13 @@ schema is normalised.
 | `state-space-unit-witness.json` | `ARCH-STATE-UNIT-001` — data/running-network/v0.1.0.json |
 | `summary.json` | generated evidence |
 | `three-member-four-wire-parallel-ac-certificate.json` | generated evidence |
+| `three-member-state-envelope-independent-reproduction.json` | `TR-PAR-STATE-001` — generated evidence |
 | `transformer-control-family-witness.json` | `TR-XFMR-CONTROL-001` — pointwise transformer control compilation with phase, mechanical, automatic, and tap-dependent-loss families |
 | `transformer-factor-completion-certificate.json` | `TR-XFMR-004` — generated evidence |
 | `transformer-tap-ac-decision-certificate.json` | `TR-XFMR-006` — generated evidence |
 | `transformer-tap-ac-independent-certificate.json` | `TR-XFMR-007` — generated evidence |
 | `transformer-tap-decision-certificate.json` | `TR-XFMR-005` — generated evidence |
+| `transformer-tap-three-scenario-independent-certificate.json` | `TR-XFMR-009-REPRO` — generated evidence |
 | `transformer-winding-normalization-certificate.json` | `TR-XFMR-001` — generated evidence |
 | `translation-trap-witnesses.json` | generated evidence |
 | `typed-kron-certificate.json` | `TR-KRON-001` — generated evidence |

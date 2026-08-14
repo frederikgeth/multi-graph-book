@@ -30,8 +30,10 @@ DATA_MODEL_CROSSWALK = GENERATED / "data-model-crosswalk-witness.json"
 RUNNING_NETWORK_TYPED_KRON = GENERATED / "running-network-typed-kron-witness.json"
 GUARDED_PARALLEL_REDUCTION = GENERATED / "guarded-parallel-reduction-witness.json"
 THREE_MEMBER_FOUR_WIRE_PARALLEL_AC = GENERATED / "three-member-four-wire-parallel-ac-certificate.json"
+THREE_MEMBER_STATE_REPRODUCTION = GENERATED / "three-member-state-envelope-independent-reproduction.json"
 TRANSFORMER_CONTROL_FAMILY = GENERATED / "transformer-control-family-witness.json"
 TRANSFORMER_TAP_AC = GENERATED / "transformer-tap-ac-decision-certificate.json"
+TRANSFORMER_TAP_THREE_SCENARIO_REPRO = GENERATED / "transformer-tap-three-scenario-independent-certificate.json"
 NODE_BREAKER_STATE = GENERATED / "node-breaker-state-witness.json"
 LOAD_GROUNDING_WITNESS = GENERATED / "load-grounding-witnesses.json"
 LOAD_MODEL_REPRODUCTION = GENERATED / "load-model-independent-reproduction.json"
@@ -42,6 +44,12 @@ EXPLICIT_EARTH_KRON_WITNESS = GENERATED / "explicit-earth-kron-witness.json"
 EXPLICIT_EARTH_KRON_REPRODUCTION = GENERATED / "explicit-earth-kron-independent-reproduction.json"
 GROUNDING_IMPEDANCE_SWEEP = GENERATED / "grounding-impedance-sweep-witness.json"
 GROUNDING_IMPEDANCE_REPRODUCTION = GENERATED / "grounding-impedance-sweep-independent-reproduction.json"
+NONLINEAR_GROUNDING_PROBE = GENERATED / "nonlinear-grounding-probe-witness.json"
+NONLINEAR_GROUNDING_REPRODUCTION = GENERATED / "nonlinear-grounding-probe-independent-reproduction.json"
+NONLINEAR_TWO_POINT_GROUNDING = GENERATED / "nonlinear-two-point-grounding-witness.json"
+NONLINEAR_TWO_POINT_REPRODUCTION = GENERATED / "nonlinear-two-point-grounding-independent-reproduction.json"
+NONLINEAR_TWO_POINT_CONTINUATION = GENERATED / "nonlinear-two-point-grounding-continuation.json"
+NONLINEAR_TWO_POINT_CONTINUATION_REPRODUCTION = GENERATED / "nonlinear-two-point-grounding-continuation-independent-reproduction.json"
 EXPLICIT_EARTH_REPRODUCTION = GENERATED / "explicit-earth-independent-reproduction.json"
 RUNNING_NETWORK_RADIALITY = GENERATED / "running-network-radiality-witness.json"
 FIVE_BUS_ACTIVE_RADIALITY = GENERATED / "five-bus-active-radiality-witness.json"
@@ -406,7 +414,9 @@ def main() -> int:
         RUNNING_NETWORK_TYPED_KRON,
         GUARDED_PARALLEL_REDUCTION,
         THREE_MEMBER_FOUR_WIRE_PARALLEL_AC,
+        THREE_MEMBER_STATE_REPRODUCTION,
         TRANSFORMER_CONTROL_FAMILY,
+        TRANSFORMER_TAP_THREE_SCENARIO_REPRO,
         NODE_BREAKER_STATE,
         LOAD_GROUNDING_WITNESS,
         LOAD_MODEL_REPRODUCTION,
@@ -417,6 +427,12 @@ def main() -> int:
         EXPLICIT_EARTH_KRON_REPRODUCTION,
         GROUNDING_IMPEDANCE_SWEEP,
         GROUNDING_IMPEDANCE_REPRODUCTION,
+        NONLINEAR_GROUNDING_PROBE,
+        NONLINEAR_GROUNDING_REPRODUCTION,
+        NONLINEAR_TWO_POINT_GROUNDING,
+        NONLINEAR_TWO_POINT_REPRODUCTION,
+        NONLINEAR_TWO_POINT_CONTINUATION,
+        NONLINEAR_TWO_POINT_CONTINUATION_REPRODUCTION,
         EXPLICIT_EARTH_REPRODUCTION,
         RUNNING_NETWORK_RADIALITY,
         FIVE_BUS_ACTIVE_RADIALITY,
@@ -535,6 +551,8 @@ def main() -> int:
         "delta_winding_has_no_neutral_terminal",
         "internal_grounding_is_separate_observation",
         "excitation_shunt_is_separate_observation",
+        "factor_incidence_is_acyclic",
+        "clique_compilation_adds_cycle",
     ):
         if multiwinding_terminal_lift.get("checks", {}).get(name) is not True:
             errors.append(f"multiwinding conductor-terminal lift check failed: {name}")
@@ -874,6 +892,38 @@ def main() -> int:
         errors.append("three-member AC independent boundary reproduction is too loose")
     if abs(three_member.get("independent_source_objective_gap", 1.0)) > 3.0e-8:
         errors.append("three-member AC independent boundary differs too far from the source solve")
+    three_member_envelope = three_member.get("finite_state_envelope", {})
+    if three_member_envelope.get("witness_id") != "TR-PAR-STATE-001" or three_member_envelope.get("claim_id") not in claim_ids:
+        errors.append("three-member state envelope has an invalid witness or claim ID")
+    if three_member_envelope.get("all_checks_pass") is not True:
+        errors.append("three-member state envelope failed")
+    for name in (
+        "all_states_certify_joint_pruning",
+        "all_source_and_pruned_solves_terminate",
+        "pruned_matches_source_in_each_state",
+        "independent_boundary_matches_source_in_each_state",
+        "state_changes_decision_value",
+        "state_rows_are_explicit",
+    ):
+        if three_member_envelope.get("checks", {}).get(name) is not True:
+            errors.append(f"three-member state envelope check failed: {name}")
+    if len(three_member_envelope.get("states", [])) != 4:
+        errors.append("three-member state envelope must contain four states")
+    state_reproduction = load_json(THREE_MEMBER_STATE_REPRODUCTION)
+    if state_reproduction.get("claim_id") != "TR-PAR-STATE-001":
+        errors.append("three-member state envelope reproduction has an invalid claim ID")
+    if state_reproduction.get("all_checks_pass") is not True:
+        errors.append("three-member state envelope reproduction failed")
+    for name in (
+        "all_state_boundaries_match_julia",
+        "all_boundaries_converged",
+        "independent_solver_used",
+        "no_numpy_or_julia_import",
+    ):
+        if state_reproduction.get("checks", {}).get(name) is not True:
+            errors.append(f"three-member state envelope reproduction check failed: {name}")
+    if len(state_reproduction.get("rows", [])) != 4:
+        errors.append("three-member state envelope reproduction must contain four rows")
 
     pi_certificate = load_json(GENERATED / "pi-four-wire-parallel-ac-certificate.json")
     envelope = pi_certificate.get("evidence", {}).get("finite_state_decision_envelope", {})
@@ -933,6 +983,48 @@ def main() -> int:
         errors.append("transformer tap switching ledger lost positive breakpoints")
     if len(switching.get("positive_breakpoints", [])) != switching.get("positive_breakpoint_count"):
         errors.append("transformer tap switching breakpoint count disagrees with ledger")
+    unbalanced_switching = transformer_tap.get("evidence", {}).get("unbalanced_switching_decision", {})
+    if unbalanced_switching.get("branch_completeness") is not True:
+        errors.append("unbalanced transformer tap switching ledger is not branch-complete")
+    if unbalanced_switching.get("cost_sweep_branch_complete") is not True:
+        errors.append("unbalanced transformer tap switching-cost sweep is not branch-complete")
+    if unbalanced_switching.get("branch_count") != 9:
+        errors.append("unbalanced transformer tap switching ledger must enumerate nine tap pairs")
+    if len(unbalanced_switching.get("scenario_phase_scale", [])) != 3:
+        errors.append("unbalanced transformer tap witness lost its three phase-selective scales")
+    if unbalanced_switching.get("scenario_1_phase_directions") == unbalanced_switching.get("scenario_2_phase_directions"):
+        errors.append("unbalanced transformer tap witness collapsed the two phase-selective scenarios")
+    three_scenario = transformer_tap.get("evidence", {}).get("three_scenario_decision", {})
+    if three_scenario.get("branch_completeness") is not True:
+        errors.append("three-scenario transformer tap ledger is not branch-complete")
+    if three_scenario.get("cost_sweep_branch_complete") is not True:
+        errors.append("three-scenario transformer tap cost sweep is not branch-complete")
+    if three_scenario.get("branch_count") != 27:
+        errors.append("three-scenario transformer tap ledger must enumerate 27 tap triples")
+    if len(three_scenario.get("scenario_phase_scales", [])) != 3:
+        errors.append("three-scenario transformer tap witness lost its three phase-selective scenarios")
+    operation_limited = transformer_tap.get("evidence", {}).get("operation_limited_three_scenario_decision", {})
+    if operation_limited.get("max_tap_operations") != 1:
+        errors.append("operation-limited tap witness lost its one-operation policy")
+    if operation_limited.get("branch_count") != 27 or operation_limited.get("admissible_branch_count") != 15:
+        errors.append("operation-limited tap witness has an unexpected admissible branch count")
+    if operation_limited.get("branch_completeness") is not True or operation_limited.get("cost_sweep_branch_complete") is not True:
+        errors.append("operation-limited tap witness is not branch-complete")
+    three_reproduction = load_json(TRANSFORMER_TAP_THREE_SCENARIO_REPRO)
+    if three_reproduction.get("certificate_id") != "TR-XFMR-009-REPRO":
+        errors.append("three-scenario transformer tap reproduction has an invalid certificate ID")
+    if three_reproduction.get("evidence", {}).get("ipopt_branch_count") != 27:
+        errors.append("three-scenario transformer tap reproduction lost its 27-branch reference")
+    if three_reproduction.get("evidence", {}).get("selected_path_matches") is not True:
+        errors.append("three-scenario transformer tap reproduction selected a different path")
+    if three_reproduction.get("evidence", {}).get("operation_limited_selected_path_matches") is not True:
+        errors.append("operation-limited transformer tap reproduction selected a different path")
+    if three_reproduction.get("evidence", {}).get("operation_limited_ipopt_branch_count") != 15:
+        errors.append("operation-limited transformer tap reproduction lost its 15 admissible branches")
+    if three_reproduction.get("evidence", {}).get("maximum_absolute_net_objective_difference", 1.0) > 1.0e-8:
+        errors.append("three-scenario transformer tap reproduction has a large objective gap")
+    if three_reproduction.get("evidence", {}).get("operation_limited_maximum_absolute_net_objective_difference", 1.0) > 1.0e-8:
+        errors.append("operation-limited transformer tap reproduction has a large objective gap")
 
     node_breaker = load_json(NODE_BREAKER_STATE)
     if node_breaker.get("witness_id") != "TOPO-NB-001":
@@ -1155,6 +1247,109 @@ def main() -> int:
         if grounding_reproduction.get("checks", {}).get(name) is not True:
             errors.append(f"grounding impedance independent reproduction check failed: {name}")
 
+    nonlinear_grounding = load_json(NONLINEAR_GROUNDING_PROBE)
+    if nonlinear_grounding.get("witness_id") != "TR-KRON-NEUTRAL-005" or nonlinear_grounding.get("claim_id") not in claim_ids:
+        errors.append("nonlinear grounding probe has an invalid witness or claim ID")
+    if nonlinear_grounding.get("all_checks_pass") is not True:
+        errors.append("nonlinear grounding probe failed")
+    for name in (
+        "base_nonlinear_solve_converged",
+        "shifted_nonlinear_solve_converged",
+        "state_changes_bond_admittance",
+        "frozen_map_is_not_exact_at_shifted_state",
+        "recomputed_map_is_exact_at_shifted_state",
+        "bond_current_changes_after_recompute",
+        "neutral_limit_is_evaluated_after_recompute",
+    ):
+        if nonlinear_grounding.get("checks", {}).get(name) is not True:
+            errors.append(f"nonlinear grounding probe check failed: {name}")
+
+    nonlinear_reproduction = load_json(NONLINEAR_GROUNDING_REPRODUCTION)
+    if nonlinear_reproduction.get("claim_id") != "TR-KRON-NEUTRAL-005":
+        errors.append("nonlinear grounding independent reproduction has an invalid claim ID")
+    if nonlinear_reproduction.get("all_checks_pass") is not True:
+        errors.append("nonlinear grounding independent reproduction failed")
+    for name in (
+        "base_values_match_julia",
+        "shifted_values_match_julia",
+        "frozen_values_match_julia",
+        "base_solve_is_exact",
+        "shifted_solve_is_exact",
+        "frozen_map_is_not_exact",
+        "neutral_limit_is_evaluated",
+        "no_numpy_or_julia_import",
+    ):
+        if nonlinear_reproduction.get("checks", {}).get(name) is not True:
+            errors.append(f"nonlinear grounding independent reproduction check failed: {name}")
+
+    nonlinear_two_point = load_json(NONLINEAR_TWO_POINT_GROUNDING)
+    if nonlinear_two_point.get("witness_id") != "TR-KRON-NEUTRAL-006" or nonlinear_two_point.get("claim_id") not in claim_ids:
+        errors.append("nonlinear two-point grounding probe has an invalid witness or claim ID")
+    if nonlinear_two_point.get("all_checks_pass") is not True:
+        errors.append("nonlinear two-point grounding probe failed")
+    for name in (
+        "base_nonlinear_chain_converged",
+        "shifted_nonlinear_chain_converged",
+        "both_bond_maps_change_with_state",
+        "frozen_chain_map_is_not_exact",
+        "recomputed_chain_map_is_exact",
+        "neutral_limit_is_evaluated_on_recomputed_chain",
+        "frozen_and_recomputed_neutral_currents_differ",
+    ):
+        if nonlinear_two_point.get("checks", {}).get(name) is not True:
+            errors.append(f"nonlinear two-point grounding check failed: {name}")
+
+    nonlinear_two_point_reproduction = load_json(NONLINEAR_TWO_POINT_REPRODUCTION)
+    if nonlinear_two_point_reproduction.get("claim_id") != "TR-KRON-NEUTRAL-006":
+        errors.append("nonlinear two-point grounding independent reproduction has an invalid claim ID")
+    if nonlinear_two_point_reproduction.get("all_checks_pass") is not True:
+        errors.append("nonlinear two-point grounding independent reproduction failed")
+    for name in (
+        "base_values_match_julia",
+        "shifted_values_match_julia",
+        "frozen_values_match_julia",
+        "base_solve_is_exact",
+        "shifted_solve_is_exact",
+        "frozen_chain_map_is_not_exact",
+        "neutral_limit_is_evaluated",
+        "no_numpy_or_julia_import",
+    ):
+        if nonlinear_two_point_reproduction.get("checks", {}).get(name) is not True:
+            errors.append(f"nonlinear two-point grounding independent reproduction check failed: {name}")
+
+    continuation = load_json(NONLINEAR_TWO_POINT_CONTINUATION)
+    if continuation.get("witness_id") != "TR-KRON-NEUTRAL-007" or continuation.get("claim_id") not in claim_ids:
+        errors.append("nonlinear grounding continuation has an invalid witness or claim ID")
+    if continuation.get("all_checks_pass") is not True:
+        errors.append("nonlinear grounding continuation failed")
+    for name in (
+        "all_continuation_points_converged",
+        "all_limit_margins_recorded",
+        "frozen_nominal_map_fails_off_base",
+        "recomputed_path_has_multiple_states",
+        "endpoint_state_path_is_explicit",
+    ):
+        if continuation.get("checks", {}).get(name) is not True:
+            errors.append(f"nonlinear grounding continuation check failed: {name}")
+    if len(continuation.get("rows", [])) != 5:
+        errors.append("nonlinear grounding continuation must contain five state points")
+
+    continuation_reproduction = load_json(NONLINEAR_TWO_POINT_CONTINUATION_REPRODUCTION)
+    if continuation_reproduction.get("claim_id") != "TR-KRON-NEUTRAL-007":
+        errors.append("nonlinear grounding continuation independent reproduction has an invalid claim ID")
+    if continuation_reproduction.get("all_checks_pass") is not True:
+        errors.append("nonlinear grounding continuation independent reproduction failed")
+    for name in (
+        "all_rows_match_julia",
+        "all_continuation_points_converged",
+        "frozen_nominal_map_fails_off_base",
+        "recomputed_path_has_multiple_states",
+        "independent_solver_used",
+        "no_numpy_or_julia_import",
+    ):
+        if continuation_reproduction.get("checks", {}).get(name) is not True:
+            errors.append(f"nonlinear grounding continuation independent reproduction check failed: {name}")
+
     reproduction = load_json(EXPLICIT_EARTH_REPRODUCTION)
     if reproduction.get("claim_id") != "GROUND-SCOPE-004":
         errors.append("explicit-earth independent reproduction has an invalid claim ID")
@@ -1321,7 +1516,7 @@ def main() -> int:
         if fixture_checks.get(name) is not True:
             errors.append(f"fixture coverage matrix check failed: {name}")
     fixture_rows = fixture_matrix.get("rows", [])
-    if len(fixture_rows) != 18:
+    if len(fixture_rows) != 27:
         errors.append("fixture coverage matrix row count changed")
     valid_statuses = set(fixture_matrix.get("status_vocabulary", []))
     for row in fixture_rows:

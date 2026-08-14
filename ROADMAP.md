@@ -217,6 +217,16 @@ below for prioritization.
   - the same contract now has direct typed-Kron precondition evidence: its
     ungrounded DELTA terminal block is singular, so elimination is refused
     without a pseudoinverse and the winding-limit observation stays explicit;
+  - the same contract now has direct cycle-view evidence: native factor--port
+    incidence is acyclic while a named three-port clique compilation has rank
+    one; active radiality remains explicitly open for the isolated contract;
+  - the fixture matrix now also records direct running-network typed
+    state-space/unit evidence and direct ``x1`` winding-normalization evidence,
+    while related and not-applicable combinations remain explicit;
+  - parameterized transformer control is now a separate fixture family in the
+    matrix: direct on the running network through the retained-tap AC decision
+    certificate, not applicable to the five-bus cycle-space fixture, and related
+    (rather than direct) to the fixed ``x1`` multiwinding contract;
 - [ ] obtain independent review from both graph/formal-methods and
   power-system-modeling perspectives.
 
@@ -333,6 +343,21 @@ requirements for the current knowledge-base release.
 - [x] add a finite grounding-impedance sweep with a fixed neutral limit and an
   independent reproduction, separating structural/KCL preservation from
   parameter-dependent feasible-set preservation;
+- [x] add a local state-dependent neutral--earth bond probe with shifted-state
+  recomputation, a frozen-map failure residual, and an independent Newton
+  reproduction; retain global nonlinear grounding and continuation as open;
+- [x] extend the local state-dependent probe to two interacting grounding
+  points, checking frozen-map failure and recomputed-chain recovery with an
+  independent Newton reproduction;
+- [x] add a finite five-state endpoint continuation of the two-point nonlinear
+  grounding chain, with per-state neutral-limit margins and independent row
+  reproduction; keep adaptive/global continuation explicitly open;
+- [x] extend the three-member four-wire AC joint-pruning witness to a finite
+  four-state admittance envelope, including a phase-selective unbalanced state,
+  rebuilding source/pruned formulations and independent boundaries at each
+  state;
+- [x] independently reproduce all four three-member state-envelope boundaries
+  with a separate standard-library Newton/bisection implementation;
 - [x] state explicitly which state-estimation, protection, contingency, and
   data-exchange promises are current content and which remain future work.
 
@@ -712,6 +737,13 @@ review remains useful future validation but is not required for this release.
   selected-pair stability region alongside the complete branch ledger;
 - [x] record positive affine branch-objective intersections so switching-cost
   policy breakpoints are explicit rather than inferred from sampled costs;
+- [x] extend the finite tap-pair ledger to a phase-selective unbalanced
+  second scenario on the 11-terminal WYE/WYE/DELTA case, retaining explicit
+  phase directions and nine-pair branch completeness;
+- [x] extend the finite phase-selective tap ledger to a three-scenario,
+  27-branch tap path with consecutive movement cost and explicit phase scales;
+- [x] add an explicit at-most-one tap-movement policy over that full 27-branch
+  domain, retaining 15 admissible branches and an independent reproduction;
 - [ ] extend the switching-cost and branch-completeness contract to richer
   unbalanced multiwinding network decisions and continuous/global guarantees.
 

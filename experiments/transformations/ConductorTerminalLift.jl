@@ -237,6 +237,18 @@ function evaluate_multiwinding_terminal_lift(root=normpath(joinpath(@__DIR__, ".
     factor_ports = [port["id"] for port in ports]
     push!(factors, Dict("id" => "transformer/x1", "type" => "multiwinding_transformer", "ports" => factor_ports, "arity" => length(factor_ports), "source_asset" => "x1"))
     grounding = contract["internal_groundings"]
+    incidence_vertices = vcat(["transformer/x1"], factor_ports)
+    incidence_edges = [
+        IdentifiedEdge("incidence/$port", "transformer/x1", port, 1.0)
+        for port in factor_ports
+    ]
+    compiled_edges = IdentifiedEdge[
+        IdentifiedEdge("compiled/$left/$right", left, right, 1.0)
+        for (index, left) in enumerate(factor_ports)
+        for right in factor_ports[index + 1:end]
+    ]
+    incidence_cycle_rank = cycle_rank(incidence_vertices, incidence_edges)
+    compiled_cycle_rank = cycle_rank(factor_ports, compiled_edges)
     checks = Dict(
         "all_transfer_ports_resolve" => isempty(errors),
         "multiwinding_factor_has_three_ports" => length(factor_ports) == 3,
@@ -245,12 +257,26 @@ function evaluate_multiwinding_terminal_lift(root=normpath(joinpath(@__DIR__, ".
         "delta_winding_has_no_neutral_terminal" => !("n" in String.(transfers[3]["terminal_order"])),
         "internal_grounding_is_separate_observation" => length(grounding) == 1 && String(grounding[1]["scope"]) == "transformer_internal",
         "excitation_shunt_is_separate_observation" => haskey(contract, "excitation_shunt"),
+        "factor_incidence_is_acyclic" => incidence_cycle_rank == 0,
+        "clique_compilation_adds_cycle" => compiled_cycle_rank == 1,
     )
     (; witness_id = "ARCH-CONDUCTOR-MULTI-001",
        evidence_type = "multiwinding_contract_terminal_port_lift",
        source_fixture = "data/transformer-contracts/x1-fixed-linear-v0.1.0.json",
        model_scope = "serialized three-winding fixed-linear transformer contract lifted to ordered terminal ports",
        ports, factors,
+       cycle_views = Dict(
+           "factor_incidence" => Dict(
+               "vertices" => incidence_vertices,
+               "edges" => [Dict("id" => edge.id, "from" => edge.bus_from, "to" => edge.bus_to) for edge in incidence_edges],
+               "cycle_rank" => incidence_cycle_rank,
+           ),
+           "clique_compilation" => Dict(
+               "vertices" => factor_ports,
+               "edges" => [Dict("id" => edge.id, "from" => edge.bus_from, "to" => edge.bus_to) for edge in compiled_edges],
+               "cycle_rank" => compiled_cycle_rank,
+           ),
+       ),
        observations = Dict("internal_groundings" => length(grounding), "excitation_shunt" => String(contract["excitation_shunt"]["id"])),
        checks,
        interpretation = "The lift preserves winding identity, terminal order, WYE neutral presence, DELTA terminal arity, and separate internal observations; it is structural evidence, not a full electrical equivalence certificate.")

@@ -24,6 +24,8 @@ export TransformerTapACCase,
        load_transformer_tap_ac_case,
        solve_transformer_tap_ac_decision,
        solve_transformer_tap_ac_switching_decision,
+       solve_transformer_tap_ac_unbalanced_switching_decision,
+       solve_transformer_tap_ac_three_scenario_decision,
        solve_transformer_tap_ac_snapshot,
        transformer_tap_ac_certificate
 
@@ -34,9 +36,25 @@ struct TransformerTapACCase
     source_completion::TransformerCompletionData
     terminal_voltage_base_V::Vector{Float64}
     slack_voltage_V::Vector{ComplexF64}
-    load_direction_MVA_per_phase::ComplexF64
+    load_direction_MVA_per_phase::Vector{ComplexF64}
     secondary_voltage_bounds_pu::Tuple{Float64,Float64}
 end
+
+TransformerTapACCase(
+    factor,
+    source_completion,
+    terminal_voltage_base_V,
+    slack_voltage_V,
+    load_direction_MVA_per_phase::Complex,
+    secondary_voltage_bounds_pu,
+) = TransformerTapACCase(
+    factor,
+    source_completion,
+    terminal_voltage_base_V,
+    slack_voltage_V,
+    fill(ComplexF64(load_direction_MVA_per_phase), 3),
+    secondary_voltage_bounds_pu,
+)
 
 function transfer_copy(
     source::WindingTransfer;
@@ -243,9 +261,10 @@ function solve_transformer_tap_ac_snapshot(
         for d in 1:11
     ))
 
-    p_direction = real(case.load_direction_MVA_per_phase)
-    q_direction = imag(case.load_direction_MVA_per_phase)
     for phase in 5:7
+        phase_direction = case.load_direction_MVA_per_phase[phase - 4]
+        p_direction = real(phase_direction)
+        q_direction = imag(phase_direction)
         v_real = voltage_real[phase] - voltage_real[8]
         v_imag = voltage_imag[phase] - voltage_imag[8]
         @constraint(model,
@@ -304,7 +323,7 @@ function solve_transformer_tap_ac_snapshot(
     tertiary_kcl_residual = maximum(abs.(terminal_current[9:11]))
     secondary_kcl_residual = abs(sum(terminal_current[5:8]))
     power_balance_residual = maximum(abs.(
-        load_power .- value(served_fraction) .* case.load_direction_MVA_per_phase
+            load_power .- value(served_fraction) .* case.load_direction_MVA_per_phase
     ))
     Dict{String,Any}(
         "formulation" => String(formulation),
@@ -312,8 +331,8 @@ function solve_transformer_tap_ac_snapshot(
         "termination_status" => string(termination_status(model)),
         "objective_served_fraction" => objective_value(model),
         "served_load_MVA" => Dict(
-            "active" => 3 * real(case.load_direction_MVA_per_phase) * value(served_fraction),
-            "reactive" => 3 * imag(case.load_direction_MVA_per_phase) * value(served_fraction),
+            "active" => sum(real.(case.load_direction_MVA_per_phase)) * value(served_fraction),
+            "reactive" => sum(imag.(case.load_direction_MVA_per_phase)) * value(served_fraction),
         ),
         "secondary_phase_to_neutral_voltage_pu" =>
             abs.(secondary_voltage) ./ case.terminal_voltage_base_V[5:7],
@@ -404,7 +423,7 @@ function solve_transformer_tap_ac_switching_decision(
         case.source_completion,
         case.terminal_voltage_base_V,
         case.slack_voltage_V,
-        case.load_direction_MVA_per_phase * scenario_scale,
+        case.load_direction_MVA_per_phase .* scenario_scale,
         case.secondary_voltage_bounds_pu,
     )
     scenario_1 = solve_transformer_tap_ac_decision(case)["parameterized_target_subproblems"]
@@ -484,10 +503,178 @@ function solve_transformer_tap_ac_switching_decision(
        interpretation = "Exact enumeration of the declared two-scenario tap-pair domain; each continuous scenario value is the locally solved Ipopt result for that tap.")
 end
 
+"""Enumerate a phase-selective two-scenario tap decision on the 11-terminal case.
+
+The transformer remains the same three-winding WYE/WYE/DELTA factor, but the
+second scenario applies a declared per-phase load multiplier.  This is a
+finite, unbalanced network witness: the tap-pair ledger is exact for the
+declared domain while each continuous AC value remains a local Ipopt result.
+"""
+function solve_transformer_tap_ac_unbalanced_switching_decision(
+    case::TransformerTapACCase;
+    switching_cost::Real=0.02,
+    scenario_phase_scale::AbstractVector=[1.08, 0.91, 1.04],
+)
+    length(scenario_phase_scale) == 3 ||
+        throw(ArgumentError("scenario_phase_scale must have three entries"))
+    domain = only(case.factor.decisions)
+    domain.control_mode == "discrete" ||
+        throw(ArgumentError("the recorded network case requires a finite discrete tap domain"))
+    stressed = TransformerTapACCase(
+        case.factor,
+        case.source_completion,
+        case.terminal_voltage_base_V,
+        case.slack_voltage_V,
+        case.load_direction_MVA_per_phase .* ComplexF64.(scenario_phase_scale),
+        case.secondary_voltage_bounds_pu,
+    )
+    scenario_1 = solve_transformer_tap_ac_decision(case)["parameterized_target_subproblems"]
+    scenario_2 = solve_transformer_tap_ac_decision(stressed)["parameterized_target_subproblems"]
+    branches = Dict{String,Any}[]
+    for (i, tap_1) in enumerate(domain.positions)
+        for (j, tap_2) in enumerate(domain.positions)
+            served_1 = scenario_1[i]["objective_served_fraction"]
+            served_2 = scenario_2[j]["objective_served_fraction"]
+            push!(branches, Dict(
+                "scenario_1_tap" => tap_1,
+                "scenario_2_tap" => tap_2,
+                "scenario_1_served_fraction" => served_1,
+                "scenario_2_served_fraction" => served_2,
+                "switching_cost" => switching_cost * abs(tap_2 - tap_1),
+                "net_objective" => served_1 + served_2 - switching_cost * abs(tap_2 - tap_1),
+            ))
+        end
+    end
+    best = branches[argmax(branch["net_objective"] for branch in branches)]
+    cost_sweep = Dict{String,Any}[]
+    for sweep_cost in [0.0, 0.5, 1.0, 1.1, 2.0]
+        candidates = [merge(branch, Dict(
+            "sweep_switching_cost" => sweep_cost,
+            "sweep_net_objective" => branch["scenario_1_served_fraction"] +
+                branch["scenario_2_served_fraction"] -
+                sweep_cost * abs(branch["scenario_2_tap"] - branch["scenario_1_tap"]),
+        )) for branch in branches]
+        selected = candidates[argmax(candidate["sweep_net_objective"] for candidate in candidates)]
+        push!(cost_sweep, Dict(
+            "switching_cost" => sweep_cost,
+            "selected_scenario_1_tap" => selected["scenario_1_tap"],
+            "selected_scenario_2_tap" => selected["scenario_2_tap"],
+            "selected_net_objective" => selected["sweep_net_objective"],
+            "branch_count" => length(candidates),
+        ))
+    end
+    (; decision_id = domain.decision_id,
+       positions = domain.positions,
+       scenario_phase_scale = Float64.(scenario_phase_scale),
+       switching_cost,
+       branch_count = length(branches),
+       branches,
+       selected_branch = best,
+       cost_sweep,
+       cost_sweep_branch_complete = all(row["branch_count"] == length(domain.positions)^2
+                                         for row in cost_sweep),
+       branch_completeness = length(branches) == length(domain.positions)^2,
+       scenario_1_phase_directions = case.load_direction_MVA_per_phase,
+       scenario_2_phase_directions = stressed.load_direction_MVA_per_phase,
+       interpretation = "Exact enumeration of the declared unbalanced two-scenario tap-pair domain; continuous values are locally solved Ipopt results.")
+end
+
+"""Enumerate a three-scenario phase-selective tap path.
+
+The ordered tap triple is branch-complete for the declared finite domain. The
+objective charges movement between consecutive scenarios, while each scenario
+retains its own three-phase constant-power direction.
+"""
+function solve_transformer_tap_ac_three_scenario_decision(
+    case::TransformerTapACCase;
+    switching_cost::Real=0.02,
+    max_tap_operations::Union{Nothing,Integer}=nothing,
+    scenario_phase_scales::AbstractVector=[
+        [1.00, 1.00, 1.00],
+        [1.02, 0.98, 1.01],
+        [0.99, 1.03, 0.98],
+    ],
+)
+    length(scenario_phase_scales) == 3 ||
+        throw(ArgumentError("three scenario phase scales are required"))
+    all(length(scale) == 3 for scale in scenario_phase_scales) ||
+        throw(ArgumentError("each scenario phase scale must have three entries"))
+    max_tap_operations === nothing || max_tap_operations >= 0 ||
+        throw(ArgumentError("max_tap_operations must be nonnegative"))
+    domain = only(case.factor.decisions)
+    domain.control_mode == "discrete" ||
+        throw(ArgumentError("the recorded network case requires a finite discrete tap domain"))
+    scenarios = [TransformerTapACCase(
+        case.factor,
+        case.source_completion,
+        case.terminal_voltage_base_V,
+        case.slack_voltage_V,
+        case.load_direction_MVA_per_phase .* ComplexF64.(scale),
+        case.secondary_voltage_bounds_pu,
+    ) for scale in scenario_phase_scales]
+    tables = [solve_transformer_tap_ac_decision(scenario)["parameterized_target_subproblems"]
+              for scenario in scenarios]
+    branches = Dict{String,Any}[]
+    for i in eachindex(domain.positions), j in eachindex(domain.positions), k in eachindex(domain.positions)
+        taps = (domain.positions[i], domain.positions[j], domain.positions[k])
+        served = (tables[1][i]["objective_served_fraction"],
+                  tables[2][j]["objective_served_fraction"],
+                  tables[3][k]["objective_served_fraction"])
+        movement = abs(taps[2] - taps[1]) + abs(taps[3] - taps[2])
+        operations = Int(taps[2] != taps[1]) + Int(taps[3] != taps[2])
+        push!(branches, Dict(
+            "scenario_taps" => collect(taps),
+            "scenario_served_fractions" => collect(served),
+            "tap_movement" => movement,
+            "tap_operations" => operations,
+            "admissible" => max_tap_operations === nothing || operations <= max_tap_operations,
+            "switching_cost" => switching_cost * movement,
+            "net_objective" => sum(served) - switching_cost * movement,
+        ))
+    end
+    admissible = [branch for branch in branches if branch["admissible"]]
+    isempty(admissible) && throw(ArgumentError("operation-count limit leaves no admissible tap path"))
+    best = admissible[argmax(branch["net_objective"] for branch in admissible)]
+    cost_sweep = Dict{String,Any}[]
+    for sweep_cost in [0.0, 0.5, 1.0, 1.1, 2.0]
+        candidates = [merge(branch, Dict(
+            "sweep_switching_cost" => sweep_cost,
+            "sweep_net_objective" => sum(branch["scenario_served_fractions"]) -
+                sweep_cost * branch["tap_movement"],
+        )) for branch in admissible]
+        selected = candidates[argmax(candidate["sweep_net_objective"] for candidate in candidates)]
+        push!(cost_sweep, Dict(
+            "switching_cost" => sweep_cost,
+            "selected_scenario_taps" => selected["scenario_taps"],
+            "selected_net_objective" => selected["sweep_net_objective"],
+            "branch_count" => length(candidates),
+        ))
+    end
+    (; decision_id = domain.decision_id,
+       positions = domain.positions,
+       scenario_phase_scales = [Float64.(scale) for scale in scenario_phase_scales],
+       switching_cost,
+       max_tap_operations,
+       branch_count = length(branches),
+       admissible_branch_count = length(admissible),
+       branches,
+       selected_branch = best,
+       cost_sweep,
+       cost_sweep_branch_complete = all(row["branch_count"] == length(admissible)
+                                         for row in cost_sweep),
+       branch_completeness = length(branches) == length(domain.positions)^3,
+       interpretation = "Exact enumeration of the declared three-scenario phase-selective tap-path domain; continuous scenario values are locally solved Ipopt results.")
+end
+
 function transformer_tap_ac_certificate(; certificate_id="TR-XFMR-006")
     case = load_transformer_tap_ac_case()
     comparison = solve_transformer_tap_ac_decision(case)
     switching = solve_transformer_tap_ac_switching_decision(case)
+    unbalanced_switching = solve_transformer_tap_ac_unbalanced_switching_decision(case)
+    three_scenario = solve_transformer_tap_ac_three_scenario_decision(case)
+    operation_limited = solve_transformer_tap_ac_three_scenario_decision(
+        case; max_tap_operations=1,
+    )
     domain = only(case.factor.decisions)
     Dict{String,Any}(
         "schema_version" => "1.1.0",
@@ -506,10 +693,10 @@ function transformer_tap_ac_certificate(; certificate_id="TR-XFMR-006")
             "detail" => Dict(
                 "terminal_count" => 11,
                 "tap_positions" => domain.positions,
-                "load_direction_MVA_per_phase" => Dict(
-                    "real" => real(case.load_direction_MVA_per_phase),
-                    "imag" => imag(case.load_direction_MVA_per_phase),
-                ),
+                "load_direction_MVA_per_phase" => [Dict(
+                    "real" => real(direction),
+                    "imag" => imag(direction),
+                ) for direction in case.load_direction_MVA_per_phase],
                 "secondary_voltage_bounds_pu" => collect(case.secondary_voltage_bounds_pu),
             ),
         ),
@@ -590,7 +777,12 @@ function transformer_tap_ac_certificate(; certificate_id="TR-XFMR-006")
             "source_factor_certificate" => case.factor.certificate["certificate_id"],
             "coordinate_system" => "rectangular complex conductor voltages with physical transformer matrices and normalized voltage variables",
         ),
-        "evidence" => merge(comparison, Dict("switching_decision" => switching)),
+        "evidence" => merge(comparison, Dict(
+            "switching_decision" => switching,
+            "unbalanced_switching_decision" => unbalanced_switching,
+            "three_scenario_decision" => three_scenario,
+            "operation_limited_three_scenario_decision" => operation_limited,
+        )),
     )
 end
 
