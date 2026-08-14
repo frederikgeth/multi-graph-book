@@ -2,6 +2,10 @@
 
 **Page status:** proposal and open-work register.
 
+The current paper-sized dissemination cuts are recorded in the repository's
+review track. They reuse this agenda's claim and evidence boundaries rather than
+creating a second roadmap.
+
 ## Research objective
 
 Develop a theory, reference architecture, and executable toolkit for

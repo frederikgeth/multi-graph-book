@@ -7,11 +7,13 @@ include(joinpath(@__DIR__, "transformations", "MultiwindingLeakageCompilation.jl
 include(joinpath(@__DIR__, "transformations", "MultiwindingTerminalAssembly.jl"))
 include(joinpath(@__DIR__, "transformations", "TransformerFactorCompletion.jl"))
 include(joinpath(@__DIR__, "transformations", "TransformerTapDecisionCompilation.jl"))
+include(joinpath(@__DIR__, "transformations", "TransformationContracts.jl"))
 using .TransformerWindingNormalization
 using .MultiwindingLeakageCompilation
 using .MultiwindingTerminalAssembly
 using .TransformerFactorCompletion
 using .TransformerTapDecisionCompilation
+using .TransformationContracts
 
 const ROOT = normpath(joinpath(@__DIR__, ".."))
 const FIXTURE = joinpath(ROOT, "data", "running-network", "v0.1.0.json")
@@ -153,7 +155,7 @@ factor.certificate["evidence"]["maximum_complex_power_balance_residual_VA"] =
 
 mkpath(dirname(OUTPUT))
 open(OUTPUT, "w") do io
-    JSON3.pretty(io, factor.certificate, JSON3.AlignmentContext(; indent=UInt16(2)))
+    JSON3.pretty(io, attach_typed_interfaces(factor.certificate), JSON3.AlignmentContext(; indent=UInt16(2)))
     write(io, '\n')
 end
 println(relpath(OUTPUT, ROOT))

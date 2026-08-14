@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="540" viewBox="0 0 1400 540">
+<title>Provenance lineage survives compilation</title>
+<desc>A transformer asset is mapped to typed ports, one factor, compiled virtual star objects, and a target view. Each arrow records a map while the source asset identity remains recoverable.</desc>
+<rect width="1400" height="540" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.node{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.virtual{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.source{fill:#eee8f8;stroke:#7856a8;stroke-width:3}.contract{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.head{font-size:18px;font-weight:bold}.small{font-size:14px;fill:#5f6b76}.arrow{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.lineage{stroke:#7856a8;stroke-width:3;stroke-dasharray:8 6;fill:none;marker-end:url(#arrow)}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>
+<text x="40" y="46" class="title" text-anchor="start">Compilation changes objects, not provenance</text>
+<text x="40" y="76" class="sub" text-anchor="start">Virtual objects can support a target view while every target quantity remains traceable to source asset x₁.</text>
+<rect x="60" y="190" width="190" height="95" rx="12" class="source"/>
+<text x="155" y="228" class="head" text-anchor="middle">asset x₁</text>
+<text x="155" y="255" class="small" text-anchor="middle">stable identity</text>
+<path d="M260 237 L320 237" class="arrow"/>
+<rect x="330" y="190" width="190" height="95" rx="12" class="node"/>
+<text x="425" y="228" class="head" text-anchor="middle">ports q₁…q₃</text>
+<text x="425" y="255" class="small" text-anchor="middle">typed terminals</text>
+<path d="M530 237 L590 237" class="arrow"/>
+<rect x="600" y="190" width="190" height="95" rx="12" class="node"/>
+<text x="695" y="228" class="head" text-anchor="middle">factor Φₓ₁</text>
+<text x="695" y="255" class="small" text-anchor="middle">multi-terminal law</text>
+<path d="M800 237 L860 237" class="arrow"/>
+<rect x="870" y="190" width="190" height="95" rx="12" class="virtual"/>
+<text x="965" y="228" class="head" text-anchor="middle">compiled star</text>
+<text x="965" y="255" class="small" text-anchor="middle">virtual objects</text>
+<path d="M1070 237 L1130 237" class="arrow"/>
+<rect x="1140" y="190" width="190" height="95" rx="12" class="node"/>
+<text x="1235" y="228" class="head" text-anchor="middle">view object</text>
+<text x="1235" y="255" class="small" text-anchor="middle">query target</text>
+<path d="M155 300 C155 390 1040 390 1235 300" class="lineage"/>
+<rect x="420" y="370" width="560" height="75" rx="12" class="contract"/>
+<text x="700" y="402" class="head" text-anchor="middle">provenance: source = x₁; map = Cₓ₁; recovery = Rₓ₁</text>
+<text x="700" y="427" class="small" text-anchor="middle">compiled star is not a replacement asset identity</text>
+<text x="40" y="500" class="small" text-anchor="start">The dashed return path is the recovery/provenance obligation used by decisions, outages, maintenance, and limit checks.</text>
+</svg>

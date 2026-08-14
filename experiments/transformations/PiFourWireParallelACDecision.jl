@@ -12,6 +12,13 @@ export default_pi_four_wire_data,
        independently_reproduce_pi_boundary,
        pi_four_wire_certificate,
        pi_four_wire_redundancy,
+       singular_pi_guard,
+       singular_shunted_pi_guard,
+       series_reduced_coordinate_guard,
+       state_conditioned_pi_guard,
+       voltage_dependent_pi_guard,
+       state_conditioned_pi_decision_probe,
+       finite_state_pi_decision_envelope,
        solve_pi_four_wire_formulation
 
 function default_pi_four_wire_data()
@@ -50,6 +57,207 @@ function pi_four_wire_redundancy(; data=default_pi_four_wire_data())
     certificate["required_terminal_ends"] = ["ij", "ji"]
     certificate["terminal_order"] = terminals
     certificate
+end
+
+"Refuse a rank-deficient nominal-pi terminal-current recovery map."
+function singular_pi_guard(; data=default_pi_four_wire_data())
+    singular = deepcopy(data)
+    singular["admittance_pu"][1] = Diagonal(ComplexF64[1.0, 1.0, 1.0, 0.0])
+    singular["shunt_from_pu"][1] = zeros(ComplexF64, 4, 4)
+    singular["shunt_to_pu"][1] = zeros(ComplexF64, 4, 4)
+    primitive = member_primitive(singular, 1)
+    realified = complex_realification(primitive)
+    realified_rank = rank(realified; atol=1.0e-10)
+    rejected = try
+        certify_joint_componentwise_linear_redundancy(
+            primitive, fill(1.0, 8), member_primitive(data, 2),
+            vcat(data["current_limit_pu"][2], data["current_limit_pu"][2]);
+            component_names=vcat(["ij-$terminal" for terminal in data["terminals"]], ["ji-$terminal" for terminal in data["terminals"]]),
+        )
+        false
+    catch error
+        occursin("numerically nonsingular", sprint(showerror, error))
+    end
+    Dict(
+        "realified_rank" => realified_rank,
+        "realified_dimension" => size(realified, 1),
+        "rejected_by_recovery_guard" => rejected,
+        "classification" => "refuse singular nominal-pi map; retain endpoint-voltage or factor coordinates",
+    )
+end
+
+"Refuse a rank-deficient nominal-pi recovery map even when shunt entries remain."
+function singular_shunted_pi_guard(; data=default_pi_four_wire_data())
+    singular = deepcopy(data)
+    # The neutral series channel is absent.  A from-end shunt is retained, but
+    # the to-end neutral shunt is zero, so the full two-end current map still
+    # has an unobservable terminal-current row.
+    singular["admittance_pu"][1] = Diagonal(ComplexF64[1.0, 1.0, 1.0, 0.0])
+    singular["shunt_from_pu"][1] = Diagonal(im .* [0.020, 0.018, 0.016, 0.004])
+    singular["shunt_to_pu"][1] = Diagonal(im .* [0.017, 0.015, 0.014, 0.0])
+    primitive = member_primitive(singular, 1)
+    realified = complex_realification(primitive)
+    realified_rank = rank(realified; atol=1.0e-10)
+    rejected = try
+        certify_joint_componentwise_linear_redundancy(
+            primitive, fill(1.0, 8), member_primitive(data, 2),
+            vcat(data["current_limit_pu"][2], data["current_limit_pu"][2]);
+            component_names=vcat(["ij-$terminal" for terminal in data["terminals"]], ["ji-$terminal" for terminal in data["terminals"]]),
+        )
+        false
+    catch error
+        occursin("numerically nonsingular", sprint(showerror, error))
+    end
+    Dict(
+        "realified_rank" => realified_rank,
+        "realified_dimension" => size(realified, 1),
+        "retained_from_end_shunt_neutral" => singular["shunt_from_pu"][1][4, 4],
+        "retained_to_end_shunt_neutral" => singular["shunt_to_pu"][1][4, 4],
+        "rejected_by_recovery_guard" => rejected,
+        "classification" => "refuse singular shunted nominal-pi map; retain endpoint-voltage or factor coordinates",
+    )
+end
+
+"Use the endpoint-voltage-drop coordinate for a singular series-only map."
+function series_reduced_coordinate_guard(; data=default_pi_four_wire_data())
+    singular = deepcopy(data)
+    y1 = Diagonal(ComplexF64[1.0, 1.0, 1.0, 0.0])
+    y2 = Diagonal(ComplexF64[0.50, 0.40, 0.30, 0.0])
+    singular["admittance_pu"] = [y1, y2]
+    singular["impedance_pu"] = [Diagonal(ComplexF64[1.0, 1.0, 1.0, 1.0]), Diagonal(ComplexF64[2.0, 2.5, 10 / 3, 1.0])]
+    singular["shunt_from_pu"] = [zeros(ComplexF64, 4, 4), zeros(ComplexF64, 4, 4)]
+    singular["shunt_to_pu"] = [zeros(ComplexF64, 4, 4), zeros(ComplexF64, 4, 4)]
+    primitive = member_primitive(singular, 1)
+    realified_rank = rank(complex_realification(primitive); atol=1.0e-10)
+    delta_u = ComplexF64[0.08 + 0.02im, -0.04 + 0.03im, 0.02 - 0.01im, 0.15 + 0.04im]
+    current_1 = y1 * delta_u
+    current_2 = y2 * delta_u
+    recovery = Diagonal(ComplexF64[0.50, 0.40, 0.30, 0.0])
+    Dict(
+        "full_terminal_map_rank" => realified_rank,
+        "full_terminal_map_dimension" => size(primitive, 1) * 2,
+        "endpoint_voltage_drop_coordinate" => [Dict("re" => real(value), "im" => imag(value)) for value in delta_u],
+        "reduced_recovery_map" => matrix_records(recovery),
+        "reduced_coordinate_recovery_residual" => norm(current_2 - recovery * current_1),
+        "neutral_current_retained_as_zero" => abs(current_1[4]) ≤ 1.0e-12 && abs(current_2[4]) ≤ 1.0e-12,
+        "classification" => "guarded exact series-only reduction in endpoint-voltage-drop coordinates; full two-end map remains singular",
+    )
+end
+
+"Show that a state-dependent nominal-pi map must be recomputed off-state."
+function state_conditioned_pi_guard(; data=default_pi_four_wire_data())
+    base = deepcopy(data)
+    shifted = deepcopy(data)
+    shifted["shunt_from_pu"][1] = 1.35 .* shifted["shunt_from_pu"][1]
+    shifted["shunt_to_pu"][1] = 0.70 .* shifted["shunt_to_pu"][1]
+    base_map = member_primitive(base, 1)
+    shifted_map = member_primitive(shifted, 1)
+    frozen_map_residual = opnorm(shifted_map - base_map, Inf)
+    recomputed_map_residual = opnorm(member_primitive(shifted, 1) - shifted_map, Inf)
+    Dict(
+        "state_values" => ["base", "shifted_shunt"],
+        "frozen_map_off_state_residual" => frozen_map_residual,
+        "recomputed_map_residual" => recomputed_map_residual,
+        "frozen_map_rejected_off_state" => frozen_map_residual > 1.0e-8,
+        "recomputed_map_consistent" => recomputed_map_residual ≤ 1.0e-12,
+        "classification" => "decision-conditioned map required",
+    )
+end
+
+"Show that a voltage-dependent nominal-pi shunt requires a voltage-indexed map."
+function voltage_dependent_pi_guard(; data=default_pi_four_wire_data())
+    base_voltage = ComplexF64[1.0, 1.0, 1.0, 1.0]
+    shifted_voltage = ComplexF64[1.03 + 0.01im, 0.98 - 0.02im, 1.01 + 0.015im, 0.94 - 0.01im]
+    y_from = data["shunt_from_pu"][1]
+    y_to = data["shunt_to_pu"][1]
+    scale_shunt(y0, voltage, gamma) = Diagonal([
+        y0[index, index] * (1 + gamma * (abs2(voltage[index]) - 1))
+        for index in axes(y0, 1)
+    ])
+    map_at(voltage) = pi_terminal_current_map(
+        data["admittance_pu"][1],
+        scale_shunt(y_from, voltage, 0.45),
+        scale_shunt(y_to, voltage, -0.30),
+    )
+    base_map = map_at(base_voltage)
+    shifted_map = map_at(shifted_voltage)
+    frozen_map_residual = opnorm(shifted_map - base_map, Inf)
+    recomputed_map_residual = opnorm(map_at(shifted_voltage) - shifted_map, Inf)
+    Dict(
+        "state_values" => ["unit_voltage", "shifted_voltage"],
+        "voltage_dependent_from_gain" => 0.45,
+        "voltage_dependent_to_gain" => -0.30,
+        "frozen_map_off_state_residual" => frozen_map_residual,
+        "recomputed_map_residual" => recomputed_map_residual,
+        "frozen_map_rejected_off_state" => frozen_map_residual > 1.0e-8,
+        "recomputed_map_consistent" => recomputed_map_residual ≤ 1.0e-12,
+        "classification" => "voltage-conditioned map required; no frozen-map exactness claim",
+    )
+end
+
+"Solve two declared shunt states with their own nominal-π maps and limits."
+function state_conditioned_pi_decision_probe(; data=default_pi_four_wire_data())
+    base = deepcopy(data)
+    shifted = deepcopy(data)
+    shifted["shunt_from_pu"][1] = 1.35 .* shifted["shunt_from_pu"][1]
+    shifted["shunt_to_pu"][1] = 0.70 .* shifted["shunt_to_pu"][1]
+    base_redundancy = pi_four_wire_redundancy(; data=base)
+    shifted_redundancy = pi_four_wire_redundancy(; data=shifted)
+    base_source = solve_pi_four_wire_formulation(:source; data=base)
+    shifted_source = solve_pi_four_wire_formulation(:source; data=shifted)
+    shifted_pruned = solve_pi_four_wire_formulation(:exact_pruned; data=shifted)
+    objective_gap = shifted_source["objective_served_fraction"] - base_source["objective_served_fraction"]
+    Dict(
+        "states" => ["base", "shifted_shunt"],
+        "base_solution" => base_source,
+        "shifted_solution" => shifted_source,
+        "shifted_pruned_solution" => shifted_pruned,
+        "base_map_redundancy_certified" => base_redundancy["certified"],
+        "shifted_map_redundancy_certified" => shifted_redundancy["certified"],
+        "shifted_pruned_objective_gap" => shifted_pruned["objective_served_fraction"] - shifted_source["objective_served_fraction"],
+        "state_objective_delta" => objective_gap,
+        "state_changes_decision" => abs(objective_gap) > 1.0e-8,
+        "shifted_pruning_remains_exact" => abs(shifted_pruned["objective_served_fraction"] - shifted_source["objective_served_fraction"]) ≤ 1.0e-7,
+        "classification" => "state-conditioned full-AC probe; each state requires its own primitive and redundancy certificate",
+    )
+end
+
+"Evaluate a finite declared shunt-state family, rebuilding each primitive and decision model."
+function finite_state_pi_decision_envelope(; data=default_pi_four_wire_data())
+    declared_states = [
+        ("base", 1.00, 1.00),
+        ("shifted_shunt", 1.35, 0.70),
+        ("reverse_shift", 0.75, 1.25),
+    ]
+    records = Dict{String,Any}[]
+    for (name, from_scale, to_scale) in declared_states
+        state = deepcopy(data)
+        state["shunt_from_pu"][1] = from_scale .* state["shunt_from_pu"][1]
+        state["shunt_to_pu"][1] = to_scale .* state["shunt_to_pu"][1]
+        redundancy = pi_four_wire_redundancy(; data=state)
+        source = solve_pi_four_wire_formulation(:source; data=state)
+        pruned = solve_pi_four_wire_formulation(:exact_pruned; data=state)
+        push!(records, Dict(
+            "state" => name,
+            "from_shunt_scale" => from_scale,
+            "to_shunt_scale" => to_scale,
+            "map_certified" => redundancy["certified"],
+            "minimum_relative_margin" => redundancy["minimum_relative_margin"],
+            "source_served_fraction" => source["objective_served_fraction"],
+            "pruned_served_fraction" => pruned["objective_served_fraction"],
+            "pruned_objective_gap" => pruned["objective_served_fraction"] - source["objective_served_fraction"],
+            "source_status" => source["termination_status"],
+            "pruned_status" => pruned["termination_status"],
+        ))
+    end
+    Dict(
+        "declared_state_count" => length(records),
+        "states" => records,
+        "all_maps_certified" => all(record["map_certified"] for record in records),
+        "maximum_absolute_pruned_objective_gap" => maximum(abs(record["pruned_objective_gap"]) for record in records),
+        "minimum_relative_margin" => minimum(record["minimum_relative_margin"] for record in records),
+        "classification" => "finite declared state envelope; each state rebuilds its nominal-pi map and AC decision model",
+    )
 end
 
 function member_currents(data, line, voltage_i, voltage_j)
@@ -312,6 +520,13 @@ function pi_four_wire_certificate(; certificate_id="TR-PAR-007")
             "source_solution" => source, "exact_lifted_solution" => lifted,
             "exact_pruned_solution" => pruned, "naive_aggregate_solution" => naive,
             "independent_source_boundary" => independent,
+            "singular_map_guard" => singular_pi_guard(; data),
+            "singular_shunted_map_guard" => singular_shunted_pi_guard(; data),
+            "series_reduced_coordinate_guard" => series_reduced_coordinate_guard(; data),
+            "state_conditioned_map_guard" => state_conditioned_pi_guard(; data),
+            "voltage_dependent_map_guard" => voltage_dependent_pi_guard(; data),
+            "state_conditioned_decision_probe" => state_conditioned_pi_decision_probe(; data),
+            "finite_state_decision_envelope" => finite_state_pi_decision_envelope(; data),
             "lifted_objective_gap" => lifted["objective_served_fraction"] - source["objective_served_fraction"],
             "pruned_objective_gap" => pruned["objective_served_fraction"] - source["objective_served_fraction"],
             "naive_objective_gap" => naive["objective_served_fraction"] - source["objective_served_fraction"],

@@ -121,6 +121,51 @@
     "reverse_step_2.source_coordinates": "x_source = P' * x_target",
     "reverse_step_1.source_current_normalized__l6__a_n": "i_normalized__l6__a_n = P * i_equivalent"
   },
+  "typed_interfaces": {
+    "target_unit_families": [
+      "current",
+      "impedance",
+      "voltage"
+    ],
+    "source_unit_families": [
+      "current",
+      "impedance",
+      "voltage"
+    ],
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "state_domain_ids": [
+    ],
+    "source_boundary_labels": [
+      "source-order terminal voltage and current vectors"
+    ],
+    "source_variable_labels": [
+      "ordered conductor state x_source"
+    ],
+    "target_variable_labels": [
+      "U_i",
+      "U_j",
+      "I_leqij"
+    ],
+    "unresolved_unit_labels": [
+    ],
+    "target_boundary_labels": [
+      "U_i",
+      "U_j",
+      "equivalent terminal current"
+    ],
+    "attachment_rule": "sequential composition carries the typed source attachment from step one and target attachment from step two",
+    "unit_family_map": {
+      "A": [
+        "current"
+      ],
+      "V": [
+        "voltage"
+      ],
+      "ohm": [
+        "impedance"
+      ]
+    }
+  },
   "target": {
     "object_ids": [
       "generated_series__l5__normalized__l6__a_n"

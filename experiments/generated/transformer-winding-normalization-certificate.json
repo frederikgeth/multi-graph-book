@@ -12,11 +12,9 @@
       ]
     },
     "decisions": {
-      "source": [
-      ],
+      "source": [],
       "relation": "no tap, switching, or investment decision is changed",
-      "target": [
-      ]
+      "target": []
     },
     "constraints": {
       "source": [
@@ -39,11 +37,9 @@
       ]
     },
     "objectives": {
-      "source": [
-      ],
+      "source": [],
       "relation": "no winding-local objective term is declared",
-      "target": [
-      ]
+      "target": []
     },
     "state_variables": {
       "source": [
@@ -98,8 +94,7 @@
     },
     "model_category": "typed_multiwinding_transformer_winding_factor"
   },
-  "forgets": [
-  ],
+  "forgets": [],
   "recovery_map": {
     "source_connection": "A_source = A_target * P",
     "source_terminal_voltage": "u_source = P' * u_target"
@@ -208,5 +203,43 @@
     ]
   },
   "schema_version": "1.1.0",
-  "certificate_id": "TR-XFMR-001"
+  "certificate_id": "TR-XFMR-001",
+  "typed_interfaces": {
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "source_variable_labels": [
+      "source-order winding terminal voltages",
+      "stable coil voltages"
+    ],
+    "target_variable_labels": [
+      "target-order winding terminal voltages",
+      "stable coil voltages"
+    ],
+    "source_unit_families": [
+      "current",
+      "voltage"
+    ],
+    "target_unit_families": [
+      "current",
+      "voltage"
+    ],
+    "source_boundary_labels": [
+      "winding terminal voltages",
+      "coil voltages"
+    ],
+    "target_boundary_labels": [
+      "winding terminal voltages",
+      "coil voltages"
+    ],
+    "state_domain_ids": [],
+    "unit_family_map": {
+      "A": [
+        "current"
+      ],
+      "V": [
+        "voltage"
+      ]
+    },
+    "unresolved_unit_labels": [],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed"
+  }
 }

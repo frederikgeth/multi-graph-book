@@ -1,0 +1,368 @@
+{
+    "junctions": [
+        {
+            "id": "i/scalar",
+            "bus": "i",
+            "terminal": "scalar"
+        },
+        {
+            "id": "j/scalar",
+            "bus": "j",
+            "terminal": "scalar"
+        },
+        {
+            "id": "k/scalar",
+            "bus": "k",
+            "terminal": "scalar"
+        },
+        {
+            "id": "l/scalar",
+            "bus": "l",
+            "terminal": "scalar"
+        },
+        {
+            "id": "m/scalar",
+            "bus": "m",
+            "terminal": "scalar"
+        }
+    ],
+    "checks": {
+        "parallel_fibre_retained": true,
+        "terminal_junctions_preserved": true,
+        "all_factor_ports_resolve": true,
+        "line_identity_preserved": true,
+        "scalar_line_factors_are_two_port": true
+    },
+    "terminal_members": [
+        {
+            "id": "line/q",
+            "to": "i/scalar",
+            "from": "j/scalar"
+        },
+        {
+            "id": "line/r",
+            "to": "j/scalar",
+            "from": "i/scalar"
+        },
+        {
+            "id": "line/s",
+            "to": "k/scalar",
+            "from": "j/scalar"
+        },
+        {
+            "id": "line/t",
+            "to": "i/scalar",
+            "from": "k/scalar"
+        },
+        {
+            "id": "line/v",
+            "to": "j/scalar",
+            "from": "l/scalar"
+        },
+        {
+            "id": "line/w",
+            "to": "l/scalar",
+            "from": "k/scalar"
+        },
+        {
+            "id": "line/x",
+            "to": "m/scalar",
+            "from": "l/scalar"
+        }
+    ],
+    "source_fixture": "experiments/generated/five-bus-cycle-space-analysis.json",
+    "model_scope": "five-bus cycle-space scalar line identities lifted to scalar terminal junctions and two-port factors",
+    "witness_id": "ARCH-CONDUCTOR-002",
+    "evidence_type": "scalar_conductor_terminal_incidence_witness",
+    "interpretation": "The scalar lift is the two-terminal special case of conductor-terminal incidence. It preserves line identity and the parallel fibre but adds no multiconductor, switch, or transformer semantics.",
+    "source": "experiments/transformations/ConductorTerminalLift.jl",
+    "factors": [
+        {
+            "source_asset": "line/q",
+            "id": "line/q",
+            "ports": [
+                "line/q/port/from",
+                "line/q/port/to"
+            ],
+            "type": "scalar_series_line",
+            "arity": 2
+        },
+        {
+            "source_asset": "line/r",
+            "id": "line/r",
+            "ports": [
+                "line/r/port/from",
+                "line/r/port/to"
+            ],
+            "type": "scalar_series_line",
+            "arity": 2
+        },
+        {
+            "source_asset": "line/s",
+            "id": "line/s",
+            "ports": [
+                "line/s/port/from",
+                "line/s/port/to"
+            ],
+            "type": "scalar_series_line",
+            "arity": 2
+        },
+        {
+            "source_asset": "line/t",
+            "id": "line/t",
+            "ports": [
+                "line/t/port/from",
+                "line/t/port/to"
+            ],
+            "type": "scalar_series_line",
+            "arity": 2
+        },
+        {
+            "source_asset": "line/v",
+            "id": "line/v",
+            "ports": [
+                "line/v/port/from",
+                "line/v/port/to"
+            ],
+            "type": "scalar_series_line",
+            "arity": 2
+        },
+        {
+            "source_asset": "line/w",
+            "id": "line/w",
+            "ports": [
+                "line/w/port/from",
+                "line/w/port/to"
+            ],
+            "type": "scalar_series_line",
+            "arity": 2
+        },
+        {
+            "source_asset": "line/x",
+            "id": "line/x",
+            "ports": [
+                "line/x/port/from",
+                "line/x/port/to"
+            ],
+            "type": "scalar_series_line",
+            "arity": 2
+        }
+    ],
+    "simple_projection": {
+        "membership": {
+            "e_j/scalark/scalar": [
+                "line/s"
+            ],
+            "e_j/scalarl/scalar": [
+                "line/v"
+            ],
+            "e_l/scalarm/scalar": [
+                "line/x"
+            ],
+            "e_i/scalarj/scalar": [
+                "line/q",
+                "line/r"
+            ],
+            "e_i/scalark/scalar": [
+                "line/t"
+            ],
+            "e_k/scalarl/scalar": [
+                "line/w"
+            ]
+        },
+        "cycle_rank": 2
+    },
+    "ports": [
+        {
+            "junctions": [
+                "j/scalar"
+            ],
+            "terminal_order": [
+                "scalar"
+            ],
+            "id": "line/q/port/from",
+            "factor": "line/q",
+            "variable_space": "V₁×I₁"
+        },
+        {
+            "junctions": [
+                "i/scalar"
+            ],
+            "terminal_order": [
+                "scalar"
+            ],
+            "id": "line/q/port/to",
+            "factor": "line/q",
+            "variable_space": "V₁×I₁"
+        },
+        {
+            "junctions": [
+                "i/scalar"
+            ],
+            "terminal_order": [
+                "scalar"
+            ],
+            "id": "line/r/port/from",
+            "factor": "line/r",
+            "variable_space": "V₁×I₁"
+        },
+        {
+            "junctions": [
+                "j/scalar"
+            ],
+            "terminal_order": [
+                "scalar"
+            ],
+            "id": "line/r/port/to",
+            "factor": "line/r",
+            "variable_space": "V₁×I₁"
+        },
+        {
+            "junctions": [
+                "j/scalar"
+            ],
+            "terminal_order": [
+                "scalar"
+            ],
+            "id": "line/s/port/from",
+            "factor": "line/s",
+            "variable_space": "V₁×I₁"
+        },
+        {
+            "junctions": [
+                "k/scalar"
+            ],
+            "terminal_order": [
+                "scalar"
+            ],
+            "id": "line/s/port/to",
+            "factor": "line/s",
+            "variable_space": "V₁×I₁"
+        },
+        {
+            "junctions": [
+                "k/scalar"
+            ],
+            "terminal_order": [
+                "scalar"
+            ],
+            "id": "line/t/port/from",
+            "factor": "line/t",
+            "variable_space": "V₁×I₁"
+        },
+        {
+            "junctions": [
+                "i/scalar"
+            ],
+            "terminal_order": [
+                "scalar"
+            ],
+            "id": "line/t/port/to",
+            "factor": "line/t",
+            "variable_space": "V₁×I₁"
+        },
+        {
+            "junctions": [
+                "l/scalar"
+            ],
+            "terminal_order": [
+                "scalar"
+            ],
+            "id": "line/v/port/from",
+            "factor": "line/v",
+            "variable_space": "V₁×I₁"
+        },
+        {
+            "junctions": [
+                "j/scalar"
+            ],
+            "terminal_order": [
+                "scalar"
+            ],
+            "id": "line/v/port/to",
+            "factor": "line/v",
+            "variable_space": "V₁×I₁"
+        },
+        {
+            "junctions": [
+                "k/scalar"
+            ],
+            "terminal_order": [
+                "scalar"
+            ],
+            "id": "line/w/port/from",
+            "factor": "line/w",
+            "variable_space": "V₁×I₁"
+        },
+        {
+            "junctions": [
+                "l/scalar"
+            ],
+            "terminal_order": [
+                "scalar"
+            ],
+            "id": "line/w/port/to",
+            "factor": "line/w",
+            "variable_space": "V₁×I₁"
+        },
+        {
+            "junctions": [
+                "l/scalar"
+            ],
+            "terminal_order": [
+                "scalar"
+            ],
+            "id": "line/x/port/from",
+            "factor": "line/x",
+            "variable_space": "V₁×I₁"
+        },
+        {
+            "junctions": [
+                "m/scalar"
+            ],
+            "terminal_order": [
+                "scalar"
+            ],
+            "id": "line/x/port/to",
+            "factor": "line/x",
+            "variable_space": "V₁×I₁"
+        }
+    ],
+    "relations": [
+        {
+            "electrical": "line/q",
+            "asset": "line/q",
+            "relation": "realizes oriented scalar line relation"
+        },
+        {
+            "electrical": "line/r",
+            "asset": "line/r",
+            "relation": "realizes oriented scalar line relation"
+        },
+        {
+            "electrical": "line/s",
+            "asset": "line/s",
+            "relation": "realizes oriented scalar line relation"
+        },
+        {
+            "electrical": "line/t",
+            "asset": "line/t",
+            "relation": "realizes oriented scalar line relation"
+        },
+        {
+            "electrical": "line/v",
+            "asset": "line/v",
+            "relation": "realizes oriented scalar line relation"
+        },
+        {
+            "electrical": "line/w",
+            "asset": "line/w",
+            "relation": "realizes oriented scalar line relation"
+        },
+        {
+            "electrical": "line/x",
+            "asset": "line/x",
+            "relation": "realizes oriented scalar line relation"
+        }
+    ]
+}

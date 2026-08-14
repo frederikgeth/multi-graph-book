@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">
+<title>Guarded transformation rule as a gate</title>
+<desc>An input candidate passes a sequence of structural, physical, state, and observation guards, producing either a certificate-backed rewrite or a structured rejection naming the failed guard.</desc>
+<rect width="1400" height="820" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.input{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.guard{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.pass{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.reject{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.arrow{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.rejectline{stroke:#8a3232;stroke-width:3;stroke-dasharray:9 6;fill:none;marker-end:url(#arrow)}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>
+<text x="40" y="46" class="title" text-anchor="start">A rule is a gate, not a guess</text>
+<text x="40" y="76" class="sub" text-anchor="start">The normalizer returns a certificate-backed target or a structured rejection naming the failed condition.</text>
+<rect x="55" y="170" width="220" height="100" rx="12" class="input"/>
+<text x="165" y="212" class="head" text-anchor="middle">candidate match</text>
+<text x="165" y="240" class="small" text-anchor="middle">e.g. degree-two series</text>
+<path d="M285 220 L385 220" class="arrow"/>
+<rect x="400" y="170" width="165" height="100" rx="12" class="guard"/>
+<text x="482" y="208" class="head" text-anchor="middle">identity</text>
+<text x="482" y="238" class="small" text-anchor="middle">same coordinate/type</text>
+<path d="M570 220 L585 220" class="arrow"/>
+<rect x="590" y="170" width="165" height="100" rx="12" class="guard"/>
+<text x="672" y="208" class="head" text-anchor="middle">state</text>
+<text x="672" y="238" class="small" text-anchor="middle">fixed admissible state</text>
+<path d="M760 220 L775 220" class="arrow"/>
+<rect x="780" y="170" width="165" height="100" rx="12" class="guard"/>
+<text x="862" y="208" class="head" text-anchor="middle">physics</text>
+<text x="862" y="238" class="small" text-anchor="middle">no shunt/ground/control</text>
+<path d="M950 220 L965 220" class="arrow"/>
+<rect x="970" y="170" width="165" height="100" rx="12" class="guard"/>
+<text x="1052" y="208" class="head" text-anchor="middle">observation</text>
+<text x="1052" y="238" class="small" text-anchor="middle">recovery + limits</text>
+<path d="M1135 220 L1220 220" class="arrow"/>
+<rect x="1215" y="160" width="145" height="120" rx="12" class="pass"/>
+<text x="1287" y="205" class="head" text-anchor="middle">target +</text>
+<text x="1287" y="230" class="head" text-anchor="middle">certificate</text>
+<text x="1287" y="255" class="small" text-anchor="middle">rewrite</text>
+<path d="M675 275 L675 425" class="rejectline"/>
+<rect x="490" y="440" width="370" height="110" rx="12" class="reject"/>
+<text x="675" y="480" class="head" text-anchor="middle">structured rejection</text>
+<text x="675" y="510" class="small" text-anchor="middle">junction_has_shunt_or_grounding</text>
+<text x="675" y="590" class="body" text-anchor="middle">Failed guards remain data, not silent approximations.</text>
+<text x="40" y="720" class="small" text-anchor="start">A later rule may choose a different target class, but it must declare a new contract rather than passing an inapplicable rewrite.</text>
+</svg>

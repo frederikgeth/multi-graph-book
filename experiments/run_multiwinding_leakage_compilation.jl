@@ -1,7 +1,9 @@
 using JSON3
 
 include(joinpath(@__DIR__, "transformations", "MultiwindingLeakageCompilation.jl"))
+include(joinpath(@__DIR__, "transformations", "TransformationContracts.jl"))
 using .MultiwindingLeakageCompilation
+using .TransformationContracts
 
 const ROOT = normpath(joinpath(@__DIR__, ".."))
 const FIXTURE = joinpath(ROOT, "data", "running-network", "v0.1.0.json")
@@ -33,7 +35,7 @@ result.certificate["provenance"]["source_short_circuit_reference_convention"] =
 
 mkpath(dirname(OUTPUT))
 open(OUTPUT, "w") do io
-    JSON3.pretty(io, result.certificate, JSON3.AlignmentContext(; indent=UInt16(2)))
+    JSON3.pretty(io, attach_typed_interfaces(result.certificate), JSON3.AlignmentContext(; indent=UInt16(2)))
     write(io, '\n')
 end
 println(relpath(OUTPUT, ROOT))

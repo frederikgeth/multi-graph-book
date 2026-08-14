@@ -201,7 +201,35 @@ julia --project=experiments experiments/test/transformer_tap_ac_independent_repr
 This first solver-backed case uses one ganged scalar magnitude tap, a finite
 domain, a balanced load direction, and tap-independent leakage, excitation,
 and internal grounding. It does not yet cover phase-angle regulation,
-independent phase taps, mechanically coupled tap decisions, switching costs,
-automatic deadbands, tap-dependent loss parameters, or unbalanced downstream
-networks. Those extensions require richer typed control domains without
-changing the identity and recovery discipline demonstrated here.
+independent phase taps, mechanically coupled tap decisions, automatic
+deadbands, or tap-dependent loss parameters in this full 11-terminal network.
+
+The scoped companion artifact
+`experiments/generated/transformer-control-family-witness.json` now checks the
+control-domain boundary without overstating solver evidence. It shows that
+scalar magnitude, phase-angle, independent-phase, mechanically coupled, and
+automatic-deadband controls can all compile pointwise when the same typed
+control map is retained. It also shows that a tap-dependent loss parameter
+must be evaluated at the retained tap: freezing it at the base tap leaves a
+nonzero off-tap residual. Each declared map also has a small JuMP/Ipopt
+feasibility probe, establishing executable solver-backed control-domain
+evidence. The phase-angle and tap-dependent-loss maps additionally run through
+a two-bus AC served-current network probe, while independent-phase and
+mechanically coupled maps run through a three-phase uncoupled probe. The report
+therefore crosses the control/network boundary without presenting these
+fixtures as a full neutral-coupled unbalanced network OPF. Richer multiwinding
+domains remain open; the four-wire probe now records mutual impedance, neutral
+displacement, and return-current KCL explicitly, but does not replace a full
+multiwinding network case.
+
+The same certificate now includes a two-scenario switching-cost ledger. It
+enumerates all (3^2=9) ordered tap pairs, evaluates the two locally solved
+AC scenario objectives, subtracts the declared switching cost, and records the
+selected pair. This is branch-complete for the declared finite pair domain;
+it is not a global certificate for the continuous nonconvex subproblems.
+The certificate also sweeps five switching-cost values. For this fixture the
+selected pair remains ((0.95,0.95)) throughout the tested range, which is a
+reported stability result—not an assumption that the policy is cost-invariant
+in other scenarios. It also records the positive intersections of the affine
+branch objectives, so potential policy changes can be inspected analytically
+before choosing a cost sweep.

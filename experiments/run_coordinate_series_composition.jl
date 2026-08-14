@@ -40,12 +40,13 @@ series = eliminate_degree_two(
     first, normalization.target, JunctionContext(id="ib"); certificate_id="TR-SER-001",
 )
 series isa TransformationResult || error("expected series elimination to apply")
-series_certificate = certificate_dict(series)
+normalization_certificate = attach_typed_interfaces(normalization.certificate)
+series_certificate = attach_typed_interfaces(certificate_dict(series))
 composition = compose_certificates(
-    normalization.certificate,
+    normalization_certificate,
     series_certificate;
     certificate_id="TR-COMP-001",
 )
 
-write_json("coordinate-normalization-certificate.json", normalization.certificate)
+write_json("coordinate-normalization-certificate.json", normalization_certificate)
 write_json("coordinate-series-composition-certificate.json", composition)

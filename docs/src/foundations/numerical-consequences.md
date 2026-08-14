@@ -1,7 +1,8 @@
 # [Numerical consequences of representation and reduction](@id numerical-consequences)
 
-**Page status:** generated structural, linearized, and symbolic KKT witnesses;
-solver-exported nonlinear diagnostics remain future work.
+**Page status:** generated structural, linearized, symbolic KKT, and
+package-level solver-diagnostics crosswalk witnesses; solver-internal
+nonlinear exports remain future work.
 
 ## A graph choice is also a numerical choice
 
@@ -119,16 +120,27 @@ provenance: it explains why a fill-in or a dense block exists.
 The five-bus structural witness makes the distinction concrete. Its source has
 seven line identities but only six edges after simple projection because ``q``
 and ``r`` are parallel. Eliminating ``j`` then adds the ``i``--``l`` fill edge
-to the projected pattern. The lower panel is a declared equation-variable
-dependency pattern, not a claim about numerical derivative values:
+to the projected pattern. The fill argument and the dependency argument are
+shown separately so that a reader does not confuse a Schur-complement edge
+with a numerical derivative:
 
-![Structural incidence, fill-in, and Jacobian dependency witness.](../assets/numerical-structure-witness.png)
+![Schur elimination creates structural fill-in.](../assets/numerical-fill-in.png)
+
+![Jacobian dependency is a separate graph from physical incidence.](../assets/numerical-jacobian-dependency.png)
 
 The data and checks are recorded in
 `experiments/generated/numerical-structure-witness.json`; the renderer is
 `experiments/generate_numerical_structure_views.py`. This separation is
-intentional: a structural view can be checked without pretending that it is a
-solver-exported Jacobian.
+intentional: both structural views can be checked without pretending that
+either is a solver-exported Jacobian.
+
+The numerical witness now carries a crosswalk to
+`experiments/generated/five-bus-typed-kron-witness.json`. That crosswalk uses
+the non-pendant ``\ell`` elimination, whose fill edges are ``j-m`` and
+``k-m``, and records the small boundary residual together with the recovered
+``x``-branch limit observation. This ties the Schur-complement example to the
+numerical-structure discussion without conflating fill edges with physical
+assets or solver-private factorization output.
 
 ## A pinned numerical export
 
@@ -207,8 +219,59 @@ The complete finite-difference and symbolic-fill artifact is
 `experiments/run_nonlinear_kkt_witness.jl` and
 `experiments/render_nonlinear_kkt_view.py`. It is deliberately labelled a
 nonlinear decision witness rather than a solver-internal Ipopt KKT export. A
-future tranche should connect the same reporting schema to BMOPFTools' checked
-KKT/DiffOpt path and compare actual factorization diagnostics.
+package-level crosswalk now binds it to the BMOPFTools Ybus witness, while
+actual solver-internal factorization diagnostics remain a separate boundary.
+
+### Package-level diagnostics crosswalk
+
+The generated `solver-diagnostics-crosswalk.json` composes the two witnesses
+without pretending that either is a production solver export. It retains the
+physical node/terminal order, the BMOPFTools passive and constant-``Z`` Ybus,
+the realified current Jacobian, the finite-difference nonlinear residual
+Jacobian, and the symbolic KKT graph under two declared orders. In the source
+formulation, for example, the natural and constraints-first orders produce
+different fill counts, so the crosswalk records ordering as part of the
+diagnostic identity.
+
+The crosswalk also exercises the public
+`BMOPFTools.opf_checked_kkt_factorization` callback on a staged OPF context. The
+probe accepts a regular matrix and rejects a near-singular one. This is a
+checked callback boundary. A minimal parameterized OPF now passes that callback
+through DiffOpt: the forward sensitivity agrees with a central finite
+difference to the recorded tolerance, and the KKT diagnostic is accepted. The
+adapter also captures the matrix passed to the callback, recording its
+dimension and nonzero count, alongside the JuMP variable and constraint order
+used to account for its rows and columns. Four additional callback rows remain
+outside that declared JuMP block, so they are retained as an explicit
+DiffOpt/solver-internal boundary rather than silently assigned a physical
+label. The crosswalk still records
+`solver_internal_kkt_export = false` because solver-provided row labels,
+scaling, linear-solver choice, pivot or inertia data, and factorization
+statistics are not yet exported as a source/target comparison.
+
+The same witness records BMOPFTools' differentiability report: inequality
+counts, active, near-active, weakly-active, and violated labels, minimum
+inactive slack, and qualifications. In this deliberately unconstrained
+fixture the inequality count is zero. The report's `ready` flag is state
+provenance for the selected local solve, not a proof of LICQ, strict
+complementarity, second-order sufficiency, global optimality, or branch
+stability.
+
+The crosswalk now also builds a regular JuMP mirror and records its native
+affine/quadratic variable-support count alongside a separate
+`JuMP.NLPEvaluator` view. This gives an executable constraint-row/nonzero
+summary for the model-level derivative graph (23 supported variable entries in
+the current 19-row fixture), while leaving
+`native_nlp_export_is_solver_internal = false`: it is not Ipopt's private KKT
+ordering, pivoting, inertia, or factorization export.
+
+For a deliberately narrow parallel-line fixture, the crosswalk also compares a
+two-member source against a single 0.25 Ω equivalent member. The tested voltage
+sensitivity is preserved, while the captured KKT matrix grows for the explicit
+source. The native JuMP support count changes as well, so the distinction is
+visible before any solver-private factorization. This is evidence that an exact
+electrical scalar equivalent can still change solver structure; it is not a
+general AC or multiconductor reduction certificate.
 
 ### Numerical evidence boundary
 
@@ -220,6 +283,7 @@ collapsed into one solver claim:
 | structural witness | incidence, dependency, and symbolic fill edges | numerical derivative values or solver performance |
 | `Ybus`/Jacobian witness | pinned passive and constant-``Z`` matrix patterns, rank, and conditioning diagnostics | nonlinear OPF sensitivities, active-set stability, or factorization timings |
 | nonlinear KKT witness | finite-difference residual structure and symbolic fill under two declared orders | Ipopt's internal derivative graph, linear-solver pivoting, or global optimality |
+| solver-diagnostics crosswalk | shared node/order provenance, a checked-KKT callback probe, a DiffOpt sensitivity cross-check, and JuMP ordering metadata | an exported source/target solver KKT comparison, solver-native row labels, or ordering/factorization metadata |
 
 An actual solver diagnostic would need to bind the exported derivative rows and
 columns to the source/target variable order, record scaling and tolerances,

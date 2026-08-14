@@ -238,7 +238,7 @@ model_scope = "two fixed reciprocal series-only parallel members with full order
 assumptions = "retained series admittance is nonsingular; both members share endpoint voltage coordinates; component current limits are centered complex discs; reverse-end series current differs only by sign; the relevant high-voltage power-flow branch is traced continuously"
 reviewer = ""
 review_date = ""
-unresolved_issue = "TR-PAR-007 covers nonsingular nominal-pi primitives; extend to singular maps, several retained members, state-dependent topology and controls, and obtain an independent global optimality bound where required."
+unresolved_issue = "TR-PAR-007 covers nonsingular nominal-pi primitives; the companion certificate now refuses singular and singular-shunted recovery maps. Extend from that refusal boundary to exact singular reductions, several retained members, state-dependent topology and controls, and obtain an independent global optimality bound where required."
 
 [[claim]]
 claim_id = "TR-PAR-007"
@@ -253,7 +253,52 @@ model_scope = "two fixed reciprocal non-proportional nominal-pi parallel members
 assumptions = "the retained stacked ij/ji terminal-current primitive is numerically nonsingular; endpoint voltage coordinates align; limits are centered complex discs; all candidate rows pass the exact recovery-map row norm; the relevant high-voltage branch is traced continuously"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Extend to singular shunted primitives, voltage-dependent shunts, several retained members, topology and control states, and global AC optimality bounds where required."
+unresolved_issue = "The certificate now includes singular-shunted refusal and voltage-dependent recomputation probes. Extend from these guards to exact singular reductions, voltage-dependent nonlinear decision models, several retained members, topology and control states, and global AC optimality bounds where required."
+
+[[claim]]
+claim_id = "TR-PAR-JOINT-001"
+chapter = "docs/src/cases/pi-four-wire-parallel-ac-decision.md"
+claim_text = "For fixed series current maps in common endpoint-voltage-drop coordinates, a candidate component-current limit is implied by several retained member limits when its exact recovery row has support bound sum_k abs(K_ck) Ibar_k no larger than the candidate rating; the guarded witness certifies this joint implication for three retained discs."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "exact_complex_polydisc_support_bound_and_guarded_executable_witness"
+citation_keys = []
+model_scope = "fixed linear series-only multiconductor member maps with common endpoint voltage-drop coordinates and centered component-current discs"
+assumptions = "all retained member limits are simultaneously imposed; the candidate current is a fixed linear recovery of retained currents; the declared support bound is evaluated componentwise"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the joint-support certificate to full nonlinear AC cases with several retained members, state-dependent maps, topology decisions, and global optimality bounds."
+
+[[claim]]
+claim_id = "TR-PAR-AC-JOINT-001"
+chapter = "docs/src/cases/pi-four-wire-parallel-ac-decision.md"
+claim_text = "In the recorded three-member four-wire AC case, member 3 has the fixed recovery I_l3=0.10 I_l1+0.10 I_l2 and a 0.15 p.u. component limit; the joint support bound is 0.144 p.u., so deleting member-3 limits preserves the locally solved source objective 1.2401762 to 7e-14. An independent damped-Newton continuation and bisection reproduces the source boundary within 1.3e-8 served-fraction units."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "joint_linear_recovery_certificate_JuMP_Ipopt_source_vs_pruned_AC_comparison_plus_independent_finite_difference_boundary"
+citation_keys = []
+model_scope = "three fixed four-conductor series-only parallel members with unbalanced wye constant-power loading, explicit neutral KCL, and component-current discs"
+assumptions = "member 3 is exactly the declared linear combination of members 1 and 2; the support bound is evaluated componentwise; both formulations use the same locally solved high-voltage AC branch"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend beyond this fixed linear member relation to voltage-dependent shunts, topology/control states, several independently varying retained members, and global nonlinear AC optimality guarantees."
+
+[[claim]]
+claim_id = "TR-PAR-SINGULAR-001"
+chapter = "docs/src/cases/pi-four-wire-parallel-ac-decision.md"
+claim_text = "For the declared series-only singular four-wire fixture, the full two-end terminal-current map is rank deficient, but the endpoint-voltage-drop coordinate recovers member-2 currents exactly from member-1 currents through the declared diagonal map, with the zero-neutral rows retained as an explicit invariant; this is a guarded reduced-coordinate result, not a pseudoinverse or singular-shunt theorem."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "series_only_singular_endpoint_drop_recovery_witness"
+citation_keys = []
+model_scope = "fixed series-only four-wire members with a singular neutral channel and common endpoint-voltage-drop coordinates"
+assumptions = "the declared series admittances are diagonal with zero neutral entries; both members use the same endpoint-voltage-drop coordinate; neutral current is explicitly retained as zero"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the reduced-coordinate treatment to singular shunted primitives, coupled conductor models, and global nonlinear AC decision bounds."
 
 [[claim]]
 claim_id = "TR-XFMR-002"
@@ -328,7 +373,7 @@ model_scope = "11-terminal three-winding WYE/WYE/DELTA fixed-frequency phasor fa
 assumptions = "TR-XFMR-005 applies pointwise; source and target use identical network equations; winding 1 is a fixed balanced slack; winding 2 voltage is bounded in [0.90,1.05] p.u.; the open delta common mode is fixed only by a gauge; each finite tap-conditioned nonconvex subproblem is compared on the locally solved branch returned by Ipopt"
 reviewer = ""
 review_date = ""
-unresolved_issue = "TR-XFMR-007 independently reproduces the numerical branch search; extend to unbalanced downstream networks, phase-angle controls, independent-phase taps, mechanical coupling, automatic logic, switching costs, and tap-dependent loss parameters."
+unresolved_issue = "TR-XFMR-007 independently reproduces the numerical branch search, and the certificate now includes a finite two-scenario tap-pair switching-cost ledger; extend the network-level contract to unbalanced downstream controls and richer multiwinding decisions."
 
 [[claim]]
 claim_id = "TR-XFMR-007"
@@ -343,7 +388,7 @@ model_scope = "the recorded 11-terminal WYE/WYE/DELTA transformer tap AC case an
 assumptions = "both paths share the certified transformer matrices and case assembly; the direct no-load solution initializes the high-voltage branch; Newton converges throughout continuation; a feasible point and subsequent converged infeasible point bracket the first upper boundary; this boundary is the relevant branch maximum"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Reproduce the case with an independently assembled transformer primitive or external power-system tool and establish global or branch-completeness guarantees where required."
+unresolved_issue = "The finite tap-pair ledger is branch-complete for its declared domain, but the continuous subproblems remain local Ipopt solutions; reproduce the case with an independently assembled transformer primitive or external power-system tool and establish global guarantees where required."
 
 [[claim]]
 claim_id = "TR-KRON-001"
@@ -376,6 +421,51 @@ review_date = ""
 unresolved_issue = "Replace the illustrative target-selection family with a source-faithful Opti-KRON implementation and extend observations to voltage, constraints, decisions, and topology guards."
 
 [[claim]]
+claim_id = "TR-KRON-FIVE-001"
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the five-bus scalar fixture, eliminating the pendant bus m through line x by typed Kron reduction reproduces the retained boundary Y-bus obtained by direct deletion of the leaf line, with exact boundary-current recovery for the recorded voltage state."
+status = "established_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "direct_five_bus_scalar_typed_kron_witness"
+citation_keys = []
+model_scope = "five-bus line-identity scalar series-admittance multigraph with pendant bus m and line x"
+assumptions = "line x is the sole incident member of m; the eliminated block is invertible; no independent internal injection is present"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the direct fixture check to non-pendant eliminations, retained branch limits, shunts, and multiconductor internal states."
+
+[[claim]]
+claim_id = "TR-KRON-FIVE-002"
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the same five-bus fixture, eliminating the non-pendant bus l by typed Kron reduction preserves the recorded boundary current relation, creates Schur-complement fill edges j-m and k-m among the retained buses, and exactly recovers the x-branch current whose deliberately tight declared limit is violated by the recorded state."
+status = "established_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "direct_five_bus_non_pendant_typed_kron_witness"
+citation_keys = []
+model_scope = "five-bus line-identity scalar series-admittance multigraph with bus l eliminated and buses i,j,k,m retained"
+assumptions = "the eliminated scalar block is invertible; no independent internal injection is present; fill is interpreted in the retained Y-bus support"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the fill-in witness to multiconductor blocks, retained branch limits, shunts, and ordering-dependent numerical factorization diagnostics."
+
+[[claim]]
+claim_id = "TR-KRON-NEUTRAL-001"
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the running four-conductor midpoint Kron fixture, the eliminated neutral half-section current is exactly recoverable from the retained boundary solution and midpoint recovery; a neutral-current limit must therefore remain in the reduced feasible set, and dropping it admits the recorded boundary point that the source model rejects."
+status = "established_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "executable_typed_kron_recovery_and_neutral_limit_guard"
+citation_keys = []
+model_scope = "running-network v0.1.0 four-conductor line l1 split into two equal linear series sections"
+assumptions = "linear series relation; invertible internal block; neutral current is an observed branch quantity; the declared current limit is part of the decision observation set"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the neutral-current recovery contract to shunts, nonlinear loads, explicit earth-return factors, and general neutral/grounding reductions."
+
+[[claim]]
 claim_id = "TR-GRAPH-001"
 chapter = "docs/src/foundations/cycles-parallelism-radiality.md"
 claim_text = "For a loopless identified multigraph and its simple endpoint projection, the multigraph cycle rank exceeds the simple-graph cycle rank by the sum over edge fibres of fibre size minus one; the lost dimensions are line-identity cycles supported on parallel fibres."
@@ -389,6 +479,21 @@ assumptions = "cycle rank is the dimension of the real incidence nullspace; conn
 reviewer = ""
 review_date = ""
 unresolved_issue = "Extend the executable invariant checks to conductor-terminal incidence and state-indexed multi-terminal factors."
+
+[[claim]]
+claim_id = "TR-GRAPH-ACTIVE-001"
+chapter = "docs/src/foundations/cycles-parallelism-radiality.md"
+claim_text = "For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "executable_five_bus_inventory_and_active_state_witness"
+citation_keys = []
+model_scope = "five-bus line-identity multigraph and its simple endpoint projection"
+assumptions = "the declared active state is the spanning tree {r,s,w,x}; radiality is evaluated by incidence cycle rank at both member and quotient levels"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the active-state witness to switching, outages, and energized-state uncertainty on the canonical multiconductor fixture."
 
 [[claim]]
 claim_id = "TR-GRAPH-002"
@@ -419,6 +524,36 @@ assumptions = "data-level validation of identities and incidence; factor equatio
 reviewer = ""
 review_date = ""
 unresolved_issue = "Lift the data witness to evaluated factor relations and independently review the architecture against a non-synthetic asset model."
+
+[[claim]]
+claim_id = "ARCH-PORT-002"
+chapter = "docs/src/foundations/formal-representation-frameworks.md"
+claim_text = "The five-bus identified scalar multigraph has a direct structural port--factor lift with five bus junctions, seven two-port scalar line factors, fourteen endpoint ports, and one asset-to-factor relation per identified line; parallel members q and r remain distinct factors despite sharing the same bus pair."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "executable_fixture_lift_and_structural_validator"
+citation_keys = []
+model_scope = "experiments/generated/five-bus-port-factor-witness.json derived from experiments/generated/five-bus-cycle-space-analysis.json"
+assumptions = "structural incidence only; scalar line relations are declared signatures and no numerical factor evaluator or AC feasibility claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the lift to evaluated factor relations and compare its boundary semantics with the simple quotient and line-identity cycle basis."
+
+[[claim]]
+claim_id = "ARCH-CONDUCTOR-002"
+chapter = "docs/src/foundations/formal-representation-frameworks.md"
+claim_text = "The five-bus scalar line-identity fixture lifts to fourteen scalar endpoint ports, five terminal junctions, and seven two-port line factors; the lift retains the q/r parallel fibre and its extra cycle dimension while adding no multiconductor, switch, or transformer semantics."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "executable_scalar_terminal_incidence_lift"
+citation_keys = []
+model_scope = "experiments/generated/five-bus-conductor-terminal-lift-witness.json derived from experiments/generated/five-bus-cycle-space-analysis.json"
+assumptions = "each scalar line has one terminal coordinate at each endpoint; incidence and cycle-rank checks are structural; no numerical factor evaluation is claimed"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Compare the scalar terminal lift with a full conductor-terminal factor evaluator and state-conditioned topology maps."
 
 [[claim]]
 claim_id = "COLLAPSE-001"
@@ -493,7 +628,7 @@ model_scope = "documented schemas and data-model APIs accessed 2026-08-13"
 assumptions = "crosswalk records semantic correspondences and losses, not complete adapters"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Implement and test version-pinned adapters with round-trip provenance and rating checks."
+unresolved_issue = "The running-fixture contract is checked against pinned documentation profiles; external package imports and file-level round-trip provenance/rating checks remain open."
 
 [[claim]]
 claim_id = "COLLAPSE-002"
@@ -553,4 +688,19 @@ model_scope = "two-bus scalar AC decision witness with fixed complex endpoint vo
 assumptions = "finite-difference step 1e-7; 1e-8 diagonal KKT regularization; nonzero threshold 1e-10; fill is symbolic graph fill, not numeric factorization time"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Connect the same source/aggregate comparison to BMOPFTools checked KKT/DiffOpt diagnostics and solver-exported active-set rows."
+unresolved_issue = "The public BMOPFTools checked-KKT callback now runs through DiffOpt on a minimal parameterized OPF and agrees with finite difference; a native JuMP/MOI Jacobian structure is now recorded, while solver-private KKT rows, ordering, and factorization statistics remain outside the public boundary."
+
+[[claim]]
+claim_id = "TR-KRON-003"
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the declared one-state linear Ward scenario fixture, an internal-injection residual propagates through a recovered-state bound and a boundary-current bound to classify the approximate source-limit decision as certified feasible, ambiguous, or certified violated; the bound is exact for this fixture but is not a general nonlinear error theorem."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_certified_approximation_chain"
+citation_keys = []
+model_scope = "one-state linear Kron/Ward scenario fixture with a fixed boundary-current limit"
+assumptions = "Euclidean norm; one eliminated state; fixed internal injection mismatch; exact linear recovery and boundary-current maps; no parameter uncertainty or nonlinear residual term"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the chain to a nonlinear AC decision model, parameter uncertainty, and independent error analysis before treating it as a general certification theorem."

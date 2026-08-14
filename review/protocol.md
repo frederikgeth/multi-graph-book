@@ -4,6 +4,9 @@
 
 **Protocol version 0.1.0; drafted before systematic screening.** The current
 bibliography is a seed set and is not evidence that the search is complete.
+The matrix schema and controlled fields are checked by
+`scripts/check_evidence_matrix.py`; this does not promote single-coded seed
+rows to double-coded evidence.
 This protocol governs the first reproducible scoping review of graph
 representations and transformations for decision-focused power-network models.
 

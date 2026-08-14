@@ -3,7 +3,8 @@ module ActiveRadiality
 include(joinpath(@__DIR__, "MultigraphCycleSpace.jl"))
 using .MultigraphCycleSpace
 
-export active_radiality_witness
+export active_radiality_witness,
+       five_bus_active_radiality_witness
 
 function _edges(ids, edges)
     selected = Set(String.(ids))
@@ -39,6 +40,48 @@ function active_radiality_witness()
         "hidden_inventory_parallel_cycle" => cycle_rank(vertices, edges) > cycle_rank(vertices, inventory_simple.edges),
         "active_state_is_tree" => length(active) == length(vertices) - 1 &&
             cycle_rank(vertices, active) == 0,
+    )
+end
+
+"Record inventory and declared spanning-tree radiality for the five-bus multigraph."
+function five_bus_active_radiality_witness()
+    analysis = five_bus_analysis()
+    vertices = analysis["vertices"]
+    edges = analysis["edges"]
+    inventory_ids = [edge.id for edge in edges]
+    tree_ids = analysis["tree_ids"]
+    states = Dict{String,Any}[]
+    for (state, ids) in (("inventory", inventory_ids), ("declared_spanning_tree", tree_ids))
+        active = _edges(ids, edges)
+        simple = simple_projection(vertices, active)
+        push!(states, Dict(
+            "state" => state,
+            "active_members" => ids,
+            "member_cycle_rank" => cycle_rank(vertices, active),
+            "adjacency_cycle_rank" => cycle_rank(vertices, simple.edges),
+            "member_radial" => cycle_rank(vertices, active) == 0,
+            "adjacency_radial" => cycle_rank(vertices, simple.edges) == 0,
+            "active_member_count" => length(active),
+        ))
+    end
+    inventory, tree = states
+    checks = Dict(
+        "inventory_member_cycle_rank_is_three" => inventory["member_cycle_rank"] == 3,
+        "inventory_adjacency_cycle_rank_is_two" => inventory["adjacency_cycle_rank"] == 2,
+        "inventory_is_not_radial" => !inventory["member_radial"] && !inventory["adjacency_radial"],
+        "declared_tree_is_member_radial" => tree["member_radial"],
+        "declared_tree_is_adjacency_radial" => tree["adjacency_radial"],
+        "declared_tree_has_five_bus_tree_size" => tree["active_member_count"] == length(vertices) - 1,
+    )
+    Dict(
+        "witness_id" => "TR-GRAPH-ACTIVE-001",
+        "evidence_type" => "five_bus_inventory_and_active_radiality_witness",
+        "source_fixture" => "experiments/generated/five-bus-cycle-space-analysis.json",
+        "vertices" => vertices,
+        "states" => states,
+        "checks" => checks,
+        "all_checks_pass" => all(values(checks)),
+        "interpretation" => "Inventory and active-state radiality are evaluated separately on the identified multigraph and its simple endpoint projection; the declared spanning tree is radial at both levels.",
     )
 end
 

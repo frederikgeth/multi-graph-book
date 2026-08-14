@@ -1,0 +1,105 @@
+{
+    "checks": {
+        "state_space_valid": true,
+        "boundary_projection_is_typed": true,
+        "unit_conversion_is_family_checked": true,
+        "switch_state_domain_is_explicit": true
+    },
+    "witness_id": "ARCH-STATE-UNIT-001",
+    "source_fixture": "data/running-network/v0.1.0.json",
+    "evidence_type": "typed_state_space_unit_witness",
+    "space": {
+        "variables": [
+            {
+                "role": "state",
+                "domain": "continuous",
+                "id": "v_i1_a",
+                "unit": {
+                    "name": "V",
+                    "family": "voltage",
+                    "scale": 1
+                },
+                "owner": "bus_i1"
+            },
+            {
+                "role": "state",
+                "domain": "continuous",
+                "id": "i_l1_ij_a",
+                "unit": {
+                    "name": "A",
+                    "family": "current",
+                    "scale": 1
+                },
+                "owner": "line_l1"
+            },
+            {
+                "role": "parameter",
+                "domain": "fixed",
+                "id": "p_d1_a",
+                "unit": {
+                    "name": "kW",
+                    "family": "power",
+                    "scale": 1000
+                },
+                "owner": "load_d1"
+            },
+            {
+                "role": "decision",
+                "domain": "discrete",
+                "id": "tap_x1_w2",
+                "unit": {
+                    "name": "pu",
+                    "family": "dimensionless",
+                    "scale": 1
+                },
+                "owner": "transformer_x1"
+            }
+        ],
+        "unit_system": {
+            "name": "running_network_bases",
+            "bases": {
+                "current": 100,
+                "dimensionless": 1,
+                "power": 1000,
+                "voltage": 10000
+            }
+        },
+        "validation": {
+            "errors": [
+            ],
+            "n_state_domains": 1,
+            "valid": true,
+            "n_state_variables": 2,
+            "n_boundaries": 2,
+            "n_variables": 4
+        },
+        "id": "running_network_typed_state_space",
+        "boundaries": [
+            {
+                "state_domain": null,
+                "id": "line_l1_i1",
+                "variable_ids": [
+                    "v_i1_a",
+                    "i_l1_ij_a"
+                ]
+            },
+            {
+                "state_domain": "switch_state",
+                "id": "switch_w0",
+                "variable_ids": [
+                    "v_i1_a"
+                ]
+            }
+        ],
+        "state_domains": [
+            {
+                "values": [
+                    "open",
+                    "closed",
+                    "unknown"
+                ],
+                "id": "switch_state"
+            }
+        ]
+    }
+}

@@ -90,6 +90,9 @@ not attempt to reproduce the knowledge-base indexes as a linear chapter sequence
 4. **Reading paths and scope**
    - Routes for power engineers, optimization researchers, software/data practitioners, and
      graph/formal-methods readers.
+5. **From source data to a canonical network model**
+   - Semantic projection, validation gates, inference, unsupported fields, and provenance before
+     any graph view is derived.
 
 ### Part I — Representation landscape
 
@@ -134,6 +137,12 @@ not attempt to reproduce the knowledge-base indexes as a linear chapter sequence
 21. **When the general model collapses**
     - Balanced operation, transposition, sequence decoupling, neutral elimination, identical
       terminal sets, two-terminal equipment, and transmission-style models.
+22. **Load models and decision dependence**
+    - Constant-power, current, impedance, ZIP, and exponential laws as constitutive relations
+      that change feasible sets without changing topology.
+23. **From conductor geometry to impedance fidelity**
+    - Geometry, earth return, mutual matrices, conditioning, sequence coordinates, and the
+      physical provenance of scalar transmission edges.
 
 ### Part II — A common language for transformations
 

@@ -92,6 +92,10 @@ Reversing the stored orientation swaps end-specific records:
 It does not blindly negate both terminal currents. Antisymmetry belongs to a
 particular internal series-current coordinate, not to every terminal quantity.
 
+![Stored orientation and operating-point power transfer are separate records.](../assets/orientation-power-transfer.png)
+
+The figure makes the sign discipline explicit: reversing ``\ell_{ij}`` changes the coordinate convention, while changing the operating point can reverse ``P_{\ell ij}`` without changing the stored asset orientation.
+
 ## Series current and terminal power
 
 For a reciprocal scalar series element, use current into the element at each

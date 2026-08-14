@@ -14,11 +14,9 @@
       ]
     },
     "decisions": {
-      "source": [
-      ],
+      "source": [],
       "relation": "fixed connection and leakage factors introduce no tap, topology, or investment decision",
-      "target": [
-      ]
+      "target": []
     },
     "constraints": {
       "source": [
@@ -39,11 +37,9 @@
       ]
     },
     "objectives": {
-      "source": [
-      ],
+      "source": [],
       "relation": "no transformer-local objective term is declared",
-      "target": [
-      ]
+      "target": []
     },
     "state_variables": {
       "source": [
@@ -133,8 +129,7 @@
     },
     "model_category": "multiwinding_leakage_and_typed_winding_connection_factors"
   },
-  "forgets": [
-  ],
+  "forgets": [],
   "recovery_map": {
     "aligned_coil_voltage": "v_coil = A*v_terminal",
     "aligned_coil_current": "i_coil = (Yw kron I)*A*v_terminal",
@@ -859,5 +854,52 @@
     "reference_choice_terminal_admittance_difference_S": 8.526512829121202e-14
   },
   "schema_version": "1.1.0",
-  "certificate_id": "TR-XFMR-003"
+  "certificate_id": "TR-XFMR-003",
+  "typed_interfaces": {
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "source_variable_labels": [
+      "winding terminal voltages",
+      "winding coil voltages and currents"
+    ],
+    "target_variable_labels": [
+      "stacked terminal voltages and currents",
+      "recoverable aligned coil currents"
+    ],
+    "source_unit_families": [
+      "admittance",
+      "current",
+      "voltage"
+    ],
+    "target_unit_families": [
+      "admittance",
+      "current",
+      "voltage"
+    ],
+    "source_boundary_labels": [
+      "all winding terminal voltages and currents"
+    ],
+    "target_boundary_labels": [
+      "all winding terminal voltages and currents"
+    ],
+    "state_domain_ids": [],
+    "unit_family_map": {
+      "S": [
+        "admittance"
+      ],
+      "winding-own A": [
+        "current"
+      ],
+      "winding-own V": [
+        "voltage"
+      ],
+      "winding-terminal A": [
+        "current"
+      ],
+      "winding-terminal V": [
+        "voltage"
+      ]
+    },
+    "unresolved_unit_labels": [],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed"
+  }
 }

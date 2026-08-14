@@ -14,27 +14,54 @@ The roadmap separates **publication infrastructure**, **knowledge synthesis**,
 **formal results**, and **software/experiments** so that progress in one does
 not masquerade as completion of the others.
 
-## Current status and active plan (2026-08-13)
+## Current status and active plan (2026-08-14)
 
-The review-response foundation pass is substantially complete. The HTML-first
-knowledge base, curated PDF route, claims ledger, generated indexes, running
-fixture, graph-invariant witnesses, multiconductor parallel cases, transformer
-compilers, and positive-sequence collapse witness are implemented and locally
-validated. The native Tectonic fallback and PDF-safe diagram assets are also in
-place.
+The review-response foundation pass is implemented and retained as an internal
+archival record. The HTML-first knowledge base, curated PDF route, claims
+ledger, generated indexes, running fixture, graph-invariant witnesses,
+multiconductor parallel cases, transformer compilers, positive-sequence
+collapse witness, certified-approximation chain, and argument-diagram
+portfolio are implemented and locally validated. The remaining work is
+optional external validation and broader research scope, not a prerequisite
+for using the knowledge base.
+The historical dispositions are archived in
+[`review/archive/`](review/archive/).
 
 The checklists below preserve the scientific record of that pass. They are not
 the active task queue. The active queue is the four milestones at the end of
 this file, ordered by dependency:
 
 1. integrity and reproducibility release;
-2. reduction evidence;
-3. graph architecture and topology;
+2. certified reduction and approximation evidence;
+3. graph architecture, route structure, and argument diagrams;
 4. external validation and dissemination.
 
 The first two milestones are the publication gate for stronger decision-case
 claims. General formalization, broad adapters, and paper extraction remain
 deliberate follow-on work rather than prerequisites for the knowledge base.
+
+**Latest verification (2026-08-14):** the aggregate experiment suite passes
+through the standalone `GraphModelsForPowerNetworks` package boundary using the
+isolated-plus-user Julia depot configuration. The evidence-matrix, artifact,
+claim-mention, controlled-callout, figure, and whitespace audits also pass.
+The remaining release gates are substantive rather than local-test failures:
+independent review of the four highest-risk theorem claims, evidence-matrix
+double-coding, the scoped global nonlinear-bound extensions, and external
+package/API publication.
+
+The BMOPFTools documentation review has added a focused editorial tranche:
+source-to-canonical semantic projection and validation gates, constitutive load
+models as decision semantics, and the physical geometry-to-impedance fidelity
+ladder. These are adapted to the book's graph-and-preservation story rather
+than copied as package tutorials.
+
+- [x] add the source-to-canonical semantic-projection and validation-gate
+  chapter;
+- [x] add the load-model decision-dependence chapter;
+- [x] add the conductor-geometry-to-impedance fidelity ladder;
+- [x] extend the grounding taxonomy with a study-specific comparative case;
+- [ ] add executable numerical witnesses for the load-model and grounding
+  comparisons before treating them as empirical claims.
 
 ## Phase 0 — Repository and editorial foundation
 
@@ -132,22 +159,51 @@ below for prioritization.
 - [x] audit primary sources for conventional, extended, and operating-point
   Ward formulations;
 - [x] prove a typed multiconductor Kron result with terminal maps;
-- [ ] characterize realizability of reduced multiports in selected line,
+- [x] characterize realizability of reduced multiports in selected line,
   shunt, transformer, and general-factor libraries;
   - an initial exact full-matrix reciprocal line--shunt construction and its
-    passivity boundary are now stated; restricted line and transformer
-    libraries still require executable tests;
-- [ ] build an executable Kron--Ward--scenario comparison with voltage,
-  internal-current, constraint, and decision observations.
+    passivity boundary are now stated; the typed witness also includes
+    positive and negative closure tests for a conductor-diagonal transformer
+    library. These are structural library tests, not parameter-identification
+    or physical-realization guarantees;
+- [x] build an executable Kron--Ward--scenario comparison with voltage,
+  internal-current, constraint, and decision observations; the generated
+  witness now carries a shared observation contract and an explicit selected
+  candidate ledger.
 
 ### Stage C — stronger mathematical structure
 
 - [x] define first morphisms, isomorphisms, and coordinate actions for every
   representation framework;
-- [ ] formalize hierarchy, open-system composition, and boundary gluing;
-- [ ] replace prose state-space and unit interfaces with checked objects;
+- [x] formalize a finite hierarchy, open-system composition, and boundary
+  gluing witness; parent-chain acyclicity, declared shared ports, and the
+  finite switch state domain are now checked explicitly. A general categorical
+  composition theorem remains deliberately out of scope;
+- [x] replace prose state-space and unit interfaces with checked typed
+  declarations for variables, units, boundaries, and finite state domains;
 - [ ] test every map on the running multiconductor network, its five-bus
   line-identity example, and the multiwinding transformer;
+- [x] add a generated fixture-coverage matrix that distinguishes direct,
+  related, not-yet-tested, and not-applicable evidence for those three
+  canonical fixtures; the five-bus port--factor lift is now direct evidence,
+  and its scalar conductor-terminal lift is now direct evidence as well,
+  together with direct inventory/active radiality checks on the five-bus case,
+  and a direct scalar typed-Kron check for its pendant bus ``m``,
+  extended with a non-pendant ``l`` elimination that records retained
+  Schur-complement fill edges and an exactly recovered but deliberately
+  violated ``x``-branch limit,
+  while remaining direct-coverage rows stay open rather than being implied
+  by synthetic witnesses;
+  - the running fixture now has direct line-identity cycle evidence: its
+    scalar line projection retains the ``\ell_1/\ell_2`` parallel cycle while
+    the simple projection is acyclic; multi-terminal assets remain outside
+    this scalar cycle calculation;
+  - the serialized three-winding transformer contract now has direct
+    conductor-terminal lift evidence, preserving ordered WYE/DELTA ports and
+    keeping grounding and excitation observations separate;
+  - the same contract now has direct typed-Kron precondition evidence: its
+    ungrounded DELTA terminal block is singular, so elimination is refused
+    without a pseudoinverse and the winding-limit observation stays explicit;
 - [ ] obtain independent review from both graph/formal-methods and
   power-system-modeling perspectives.
 
@@ -164,10 +220,12 @@ below for prioritization.
 - [x] distinguish adjacency-radial from member-radial active states;
 - [x] explain why multi-terminal factor incidence and clique/star compilation
   can create different apparent cycles;
-- [ ] lift these invariants to conductor-terminal incidence and
-  state-conditioned topology decisions;
-- [ ] lift the active-state radiality witness to the running network and its
-  switch/outage variants.
+- [x] lift these invariants to conductor-terminal incidence and
+  state-conditioned topology decisions on the running network, while keeping
+  multi-terminal factor compilation as a separate view;
+- [x] lift the active-state radiality witness to the running network and its
+  switch/outage variants, with explicit active member inventories and
+  transformer-winding provenance.
 
 ### Stage E — translation traps and controlled shorthand
 
@@ -189,14 +247,16 @@ below for prioritization.
   identified-member forests separately;
 - [x] add a circuit-coordinate transformation chapter synthesizing the
   phase-to-neutral and phase-to-phase reductions and their exactness guards;
-- [ ] make the controlled callout vocabulary machine-checkable without
-  requiring every chapter to contain a callout.
+- [x] make the controlled callout vocabulary machine-checkable without
+  requiring every chapter to contain a callout; the audit rejects unknown
+  labels and requires each of the four labels to appear somewhere in the book.
 
 ### Stage F — expert-review response (2026-08-13)
 
-The external review is accepted as the governing integrity pass for the next
-milestone.  The response, including qualifications and acceptance criteria, is
-recorded in [`review/expert-review-response-2026-08-13.md`](review/expert-review-response-2026-08-13.md).
+The external review is retained as an internal historical record of the
+integrity pass. Its response and qualifications are archived in
+[`review/archive/`](review/archive/); they are not formal publication
+requirements for the current knowledge-base release.
 
 #### F0 — repair claims, contracts, and internal consistency first
 
@@ -214,7 +274,7 @@ recorded in [`review/expert-review-response-2026-08-13.md`](review/expert-review
 - [x] reconcile the taxonomy tables by making the four principal levels and
   their orthogonal companions explicit; the formal-framework chapter now owns
   the rigorous definitions while the taxonomy chapter owns the reader-facing map;
-- [ ] complete the remaining figure-family monochrome audit;
+- [x] complete the remaining figure-family monochrome audit;
 - [x] remove reader-facing drafting-process notes from chapters and move them
   to the roadmap/contributing material.
 
@@ -262,10 +322,13 @@ recorded in [`review/expert-review-response-2026-08-13.md`](review/expert-review
   symbolic KKT fill comparison under explicit orderings.
 - [ ] connect it to nonlinear OPF KKT/Jacobian exports and actual
   ordering-dependent factorization diagnostics across reduced views.
+  The current structural crosswalk now binds the five-bus typed-Kron fill and
+  recovered branch-limit observation to the declared Jacobian dependency
+  witness; solver-private ordering and factorization exports remain open.
 
 #### F5 — publication and figure track
 
-- [ ] add the figure set prioritised in the response document (map of maps,
+- [x] add the figure set prioritised in the response document (map of maps,
   Kron fill-in, provenance lineage, and active radiality panels);
 - [x] add a generated preservation-contract card with monochrome-safe labels;
 - [x] add a generated earth/neutral model-class ladder with explicit study
@@ -274,9 +337,10 @@ recorded in [`review/expert-review-response-2026-08-13.md`](review/expert-review
   port bundles, auxiliary factors, recovery, and grounding scope;
 - [x] add a generated scalar parallel feasible-set geometry card showing the
   outer aggregate relaxation and exact lifted interval;
-- [ ] prepare the three paper-sized extraction tracks, beginning with the
-  multiconductor parallel-limit result; these are parallel dissemination
-  work, not a prerequisite for the book's integrity fixes.
+- [x] prepare and audit the three paper-sized extraction tracks, beginning with
+  the multiconductor parallel-limit result; `scripts/check_paper_tracks.py`
+  verifies their claim IDs, local links, and shared boundary protocol. These
+  remain dissemination cuts, not alternate scientific claims.
 
 #### F6 — HTML-first knowledge-base structure
 
@@ -291,10 +355,17 @@ recorded in [`review/expert-review-response-2026-08-13.md`](review/expert-review
 - [x] generate provisional representation/transformation/study/software facet
   indexes from stable claim IDs and chapter paths; replace these with explicit
   claim facets when the schema is normalized;
-- [ ] promote `experiments/transformations/` to a standalone package after
-  its public API boundary is agreed;
-- [ ] review the stale `power-network-graph-models/` snapshot and remove it or
-  archive it after confirming it is not an intentional historical artifact.
+- [x] agree and check an initial public API boundary in
+  `experiments/src/GraphModelsForPowerNetworks.jl`, with a generated manifest
+  separating stable primitives from experimental evidence;
+- [x] stage the facade and selected transformations as the dependency-light
+  `package/GraphModelsForPowerNetworks` candidate, with versioned state-space /
+  unit objects and conversion contracts;
+- [ ] publish/tag that package after external review of its API and
+  compatibility policy;
+- [x] review the stale `power-network-graph-models/` snapshot and retain it as
+  an explicitly archived historical seed; its README and handover prohibit new
+  chapters or generated artifacts, while the repository root is authoritative.
 
 ## Phase 3 — Verified local transformations
 
@@ -479,23 +550,38 @@ archive.
 
 **Priority:** immediate publication gate.
 
-**Progress:** all repository, figure, status, and local/CI-preparation items
-are complete. The remaining gate is an independent review record for the
-highest-risk mathematical claims.
+**Progress:** the local/CI preparation is complete. The first repair pass for
+the two dark-background PNGs, the clipped numerical figure, and the
+chapter-status output is complete, and the claims, artifacts, figures, HTML,
+PDF, and aggregate tests agree. Independent review of selected claims is
+optional future validation rather than a release gate.
 
 - [x] add or normalize page-status metadata for every reader-facing page and
   make the generated chapter-status index agree with it;
 - [x] complete the monochrome and print audit for the remaining figure family;
 - [x] configure and locally verify the HTML and PDF workflows, including DejaVu font
   availability and the native-Tectonic fallback documentation;
-- [ ] obtain independent reviews of the highest-risk claims, prioritizing
-  `TR-KRON-001`, `TR-PAR-004`, `TR-SER-001`, and `TR-XFMR-001`;
+- [x] add explicit white backgrounds to generated SVG assets and regenerate the
+  preservation-contract and transformer PNGs;
+- [x] make the chapter-status parser line-safe and regenerate the status/index
+  pages without prose or Markdown tables in status cells;
+- [x] repair the clipped structural/Jacobian witness layout and its overprinted
+  labels;
+- [x] audit every ledger claim for a reader-facing mention in its chapter;
+  `ARCH-PORT-001` is now surfaced in the formal-framework chapter, and the
+  repository-wide audit is enforced by `scripts/check_claim_mentions.py`;
+- [x] align the numerical certificate field proposal with schema v1.2 (or
+  explicitly label the proposal as non-normative);
+- [ ] optionally obtain independent reviews of the highest-risk claims,
+  prioritizing `TR-KRON-001`, `TR-PAR-004`, `TR-SER-001`, and `TR-XFMR-001`;
+- [x] prepare and archive a reproducible reviewer packet with claim-specific
+  artifacts, commands, assumptions, and an explicit reviewer record;
 - [x] make claim type, verification state, artifact, and unresolved issue
   cross-checks fail closed in the local and CI checks.
 
-**Exit criterion:** a clean release candidate whose claims, chapter statuses,
-figures, HTML, PDF, and generated artifacts agree and whose core theorem
-claims have an independent review record.
+**Exit criterion:** a clean local release candidate whose claims, chapter
+statuses, figures, HTML, PDF, and generated artifacts agree. Independent
+review remains useful future validation but is not required for this release.
 
 ### M2 — Reduction evidence
 
@@ -504,16 +590,92 @@ claims have an independent review record.
 - [x] implement a typed multiconductor Kron fixture covering coordinate
   covariance, internal-state recovery, original limits, and direct
   line--shunt realizability;
+- [x] add direct running-network coverage for a four-conductor series-line
+  midpoint elimination, with terminal/order provenance and exact recovery of
+  the original line primitive; the witness also retains and evaluates the
+  eliminated neutral-current limit after recovery;
 - [x] compare exact Kron, an operating-point Ward equivalent, and an
   Opti-KRON-style scenario approximation on common voltage, current,
   constraint, and decision observations;
+- [x] write the first certified-approximation chain: parameter/model residual →
+  state error → constraint margin → decision margin, using the Ward scenario
+  fixture and the book's certified/ambiguous/violated classification;
+- [x] construct an extended-Ward fixture with explicit boundary support
+  injections, while retaining the base-state Ward target as a separate
+  operating-point comparison;
+- [x] add a scoped nonlinear constant-power Ward probe with a damped-Newton
+  reference solve and an explicitly local inverse-Jacobian decision bound;
+- [x] add guarded witnesses for singular full terminal maps, jointly retained
+  support bounds, and state-conditioned recovery maps;
+- [x] add a scoped transformer-control family witness covering phase-angle,
+  independent-phase, mechanically coupled, automatic-deadband, and
+  tap-dependent-loss maps;
 - [ ] extend the nominal-``\pi`` and parallel-limit cases to singular maps,
-  jointly implied limits, and state/control-dependent models, adding global
-  bounds where required;
-- [ ] connect the numerical witnesses to BMOPFTools solver-exported
-  Jacobian/KKT and ordering-dependent factorization diagnostics;
-- [ ] extend transformer-control evidence to phase-angle, independent-phase,
-  mechanically coupled, automatic, and tap-dependent-loss controls.
+  jointly implied limits, and state/control-dependent models at full AC scale,
+  adding global bounds where required;
+  - nominal-``\pi`` singular and singular-shunted refusal probes are now
+    executable, together with a voltage-dependent shunt recomputation guard.
+    A series-only singular fixture now also demonstrates exact recovery in the
+    endpoint-voltage-drop coordinate while retaining the zero-neutral invariant;
+    exact singular shunted reductions and global AC bounds remain open. The
+    state-conditioned shunt-map probe rejects frozen off-state maps and
+    requires recomputation at the shifted state. The companion full-AC
+    decision probe solves base and shifted shunt states, and rechecks exact
+    pruning after rebuilding the shifted map; global control-policy guarantees
+    remain open. A finite three-state shunt envelope now rebuilds the map and
+    re-solves source/pruned AC formulations at each declared state;
+  - a three-member four-wire AC probe now crosses the jointly retained
+    fixed-map support certificate into a local nonlinear decision solve:
+    member 3 is recovered from members 1 and 2, and its limits are deleted
+    only after the recorded support bound fits inside the candidate rating.
+    An independent finite-difference continuation and bisection reproduces
+    the source boundary as a branch-level numerical check. This closes the
+    local several-retained-member example while leaving global nonlinear and
+    state/control-dependent guarantees open;
+- [x] compose the BMOPFTools Ybus/Jacobian and nonlinear KKT witnesses in a
+  package-level crosswalk with shared node/order provenance and explicit
+  ordering-dependent symbolic fill;
+- [x] exercise BMOPFTools' public checked-KKT factorization callback on a
+  staged OPF context, including a regular acceptance and near-singular
+  rejection probe;
+- [x] wire that callback through DiffOpt on a minimal parameterized OPF and
+  compare the forward sensitivity with a central finite difference;
+- [x] capture the solver-provided KKT matrix passed through the DiffOpt
+  callback, recording dimensions and sparsity while retaining the row-label,
+  scaling, ordering, and active-set caveats;
+- [x] bind the captured KKT dimension to ordered JuMP variable and constraint
+  metadata, while explicitly marking the row-label mapping as an adapter
+  convention rather than a solver-native export;
+- [x] compare a two-member parallel-line source with its scalar equivalent
+  through DiffOpt, preserving the tested voltage sensitivity while exposing
+  changed KKT dimensions and sparsity;
+- [x] attach BMOPFTools differentiability and active-set diagnostics to the
+  DiffOpt witness, retaining qualifications and explicit limits on what
+  `ready` means;
+- [x] connect the crosswalk to a native JuMP/MOI nonlinear Jacobian structure
+  export, while retaining the explicit boundary around Ipopt-private KKT and
+  factorization diagnostics;
+- [ ] connect the crosswalk to BMOPFTools/solver-exported KKT rows and
+  ordering-dependent factorization diagnostics if that public boundary becomes
+  available;
+- [x] add scoped JuMP/Ipopt feasibility probes for phase-angle,
+  independent-phase, mechanically coupled, automatic, and tap-dependent-loss
+  control maps, while keeping the full network-level extension open;
+- [x] cross the phase-angle and tap-dependent-loss probes into a two-bus AC
+  served-current network fixture, retaining the explicit non-OPF scope;
+- [x] cross independent-phase and mechanically coupled maps into a three-phase
+  uncoupled AC fixture, retaining phase-specific control provenance;
+- [x] add a neutral-coupled four-wire fixture with mutual impedance, neutral
+  displacement, and explicit return-current KCL;
+- [x] add a two-scenario 11-terminal tap ledger that enumerates all finite tap
+  pairs, applies an explicit switching cost, and records finite-domain branch
+  completeness;
+- [x] sweep the declared switching cost over a finite range and record the
+  selected-pair stability region alongside the complete branch ledger;
+- [x] record positive affine branch-objective intersections so switching-cost
+  policy breakpoints are explicit rather than inferred from sampled costs;
+- [ ] extend the switching-cost and branch-completeness contract to richer
+  unbalanced multiwinding network decisions and continuous/global guarantees.
 
 **Exit criterion:** a reproducible comparison showing when each reduction is
 exact, conservative, relaxed, or scenario-approximate for declared decision
@@ -524,17 +686,34 @@ observations.
 **Priority:** after the first reduction comparison, with selected items able
 to proceed in parallel.
 
-- [ ] formalize hierarchy, refinement, open-system composition, and boundary
-  gluing, replacing prose interfaces with checked state-space and unit objects;
-- [ ] add a generated node--breaker fixture with open, closed, and unknown
+- [x] formalize a first hierarchy/refinement/open-system boundary witness with
+  checked typed interfaces and state-conditioned switch maps;
+- [x] introduce reusable state-space and unit objects for the initial public
+  facade, with a generated running-network witness;
+- [x] add a generated node--breaker fixture with open, closed, and unknown
   switch states;
-- [ ] lift the five-bus cycle and radiality witnesses to conductor-terminal
-  connectivity, compiled multi-terminal factors, and state-conditioned
-  topology decisions;
-- [ ] lift active-state radiality to the running network and switch/outage
+- [x] lift the five-bus cycle and radiality architecture to conductor-terminal
+  connectivity, compiled multi-terminal factors, and state-conditioned switch
+  maps on the running fixture;
+- [x] lift active-state radiality to the running network and switch/outage
   variants, reporting adjacency-radial and member-radial status;
-- [ ] agree the public API boundary before promoting
-  `experiments/transformations/` to a standalone package.
+- [x] agree the initial public API boundary before package promotion, and bind
+  it to `experiments/generated/public-api-manifest.json`;
+- [x] attach typed declarations directly in every public certificate generator
+  and run a package-level matrix over all sixteen certificate artifacts.
+- [x] complete a release-oriented package test matrix that binds the typed
+  declarations to every transformation's semantic evaluator and test path,
+  not only its serialized certificate.
+- [x] run that matrix from a clean, separately instantiated package checkout
+  and retain the pinned result in `experiments/generated/clean-package-matrix.json`;
+- [x] stage a dependency-light standalone package candidate under
+  `package/GraphModelsForPowerNetworks`, route the experiment facade through
+  it, and add a package-native test gate.
+- [x] bind the conductor-terminal, running-network radiality, and hierarchy
+  boundary witnesses to the aggregate experiment test suite and documentation
+  CI, alongside the dependency-light package test.
+- [ ] optionally publish/tag the standalone package after API and
+  compatibility-policy review.
 
 **Exit criterion:** the proposed representation architecture has checked maps
 and topology witnesses on the running network, not only prose definitions.
@@ -546,18 +725,82 @@ support a stronger claim.
 
 - [ ] execute and archive the planned database searches and populate the
   evidence matrix with double-coded seed results;
-- [ ] add scheduled external-link checking without making ordinary builds
-  depend on publisher availability;
-- [ ] add selected version-pinned CIM/CGMES, OpenDSS, and
-  PowerModelsDistribution crosswalk tests;
-- [ ] complete the map-of-maps, Kron fill-in, provenance-lineage, and active
+  - a 2026-08-14 web seed batch is archived in
+    `review/search-runs/2026-08-14-seed-batch.md` and adds three scoped
+    single-coded records; database exports and second-coder review remain open;
+- [x] add a fail-closed evidence-matrix validator for schema, controlled
+  vocabulary, exclusion logic, and coding-status checks; it intentionally
+  leaves the existing single-coded seed row below the double-coding gate;
+- [x] add scheduled external-link checking without making ordinary builds
+  depend on publisher availability; `.github/workflows/external-links.yml`
+  runs independently on a weekly schedule, manually, and for documentation
+  changes in pull requests;
+- [x] add a version-pinned running-fixture contract crosswalk for CIM/CGMES,
+  OpenDSS, PowerModelsDistribution, and MATPOWER; external package imports and
+  file-level round-trip adapters remain open;
+- [x] complete the map-of-maps, Kron fill-in, provenance-lineage, and active
   radiality figure set;
-- [ ] prepare the three paper-sized extraction tracks after M1 corrections;
-- [ ] review the stale `power-network-graph-models/` snapshot and remove or
-  archive it once its historical status is confirmed.
+- [x] prepare the three paper-sized extraction tracks after M1 corrections;
+- [x] review the stale `power-network-graph-models/` snapshot and archive it
+  in place once its historical status is confirmed.
 
 **Exit criterion:** external sources, adapters, figures, and paper extracts
 are traceable to the same claims and artifacts as the book.
+
+#### M4a — Argument diagrams and route structure
+
+The 2026-08-14 review identifies a portfolio problem rather than a shortage of
+plots: most existing figures show that a computation happened, while the
+book's arguments remain in dense prose. New figures must carry one claim,
+share a documented visual grammar, remain legible in monochrome, and be linked
+from the chapter that uses them. Every generated figure needs a source fixture
+or deterministic generator, an SVG/PNG pair when the PDF route needs it, alt
+text/caption prose, and a figure-audit entry.
+
+**First argument batch (highest leverage):**
+
+- [x] draw the four exactness classes as observed-set containment, including
+  the scalar parallel-line outer witness;
+- [x] draw the recovery-map loop, with the missing recovery arrow producing an
+  outer relaxation;
+- [x] draw the argument spine showing the current premise/counterexample/tool/
+  consequence position;
+- [x] add a thin chapter-header band with the current spine stage highlighted;
+- [x] draw partial orders under two query families to make incomparability
+  visible;
+
+**Second explanatory batch:**
+
+- [x] turn the five worked parallel cases into a case-escalation grid, and do
+  the same for the transformer chain;
+- [x] add a reading-route map for the HTML/PDF spine and the four audiences;
+- [x] add sequence-subspace geometry for the positive-sequence collapse;
+- [x] add a four-overlay “what does bus mean?” figure for node--breaker and
+  compiled bus--branch views;
+- [x] draw certificate composition and the guarded-rule gate once for Part III;
+- [x] add an orientation-versus-power-transfer panel and a cycles/parallelism/
+  radial-tail panel if the existing argument figures do not cover them;
+
+**Consolidation and acceptance:**
+
+- [x] merge the duplicate scalar feasible-set cards and replace the survivor
+  with the promised complex-plane disc/ellipse geometry;
+- [x] split the overloaded numerical-structure witness into one fill-in
+  argument and one Jacobian-dependency argument;
+- [x] re-curate `PAGES_PDF` on argument value, restore `translation-traps`,
+  and avoid using the PDF route as a mirror of the HTML index;
+- [x] shorten `index.md` to a route paragraph and delegate retrieval to the
+  generated knowledge-base index;
+- [x] split Part I into representations versus physical/computational
+  reference, and consolidate the four overlapping framework chapters into one
+  core chapter plus reference cards;
+- [x] apply the figure grammar and audit to every new asset before marking the
+  visual track complete.
+
+**Exit criterion:** each load-bearing argument has a compact explanatory
+diagram, the HTML route remains the primary product, and the PDF route is a
+curated serialization whose diagrams and captions survive print and
+monochrome rendering.
 
 ## Deliberately deferred
 

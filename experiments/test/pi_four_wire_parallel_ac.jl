@@ -67,4 +67,35 @@ using .PiFourWireParallelACDecision
     @test abs(certificate["evidence"]["pruned_objective_gap"]) <= 1.0e-7
     @test certificate["evidence"]["naive_objective_gap"] > 0.6
     @test abs(certificate["evidence"]["independent_source_objective_gap"]) <= 2.0e-7
+    singular = singular_pi_guard()
+    @test singular["realified_rank"] < singular["realified_dimension"]
+    @test singular["rejected_by_recovery_guard"]
+    singular_shunted = singular_shunted_pi_guard()
+    @test singular_shunted["realified_rank"] < singular_shunted["realified_dimension"]
+    @test abs(singular_shunted["retained_from_end_shunt_neutral"]) > 0
+    @test singular_shunted["retained_to_end_shunt_neutral"] == 0
+    @test singular_shunted["rejected_by_recovery_guard"]
+    reduced = series_reduced_coordinate_guard()
+    @test reduced["full_terminal_map_rank"] < reduced["full_terminal_map_dimension"]
+    @test reduced["reduced_coordinate_recovery_residual"] ≤ 1.0e-12
+    @test reduced["neutral_current_retained_as_zero"]
+    @test occursin("endpoint-voltage-drop", reduced["classification"])
+    state_guard = state_conditioned_pi_guard()
+    @test state_guard["frozen_map_rejected_off_state"]
+    @test state_guard["recomputed_map_consistent"]
+    voltage_guard = voltage_dependent_pi_guard()
+    @test voltage_guard["frozen_map_rejected_off_state"]
+    @test voltage_guard["recomputed_map_consistent"]
+    state_probe = state_conditioned_pi_decision_probe(; data)
+    @test state_probe["base_map_redundancy_certified"]
+    @test state_probe["shifted_map_redundancy_certified"]
+    @test state_probe["state_changes_decision"]
+    @test state_probe["shifted_pruning_remains_exact"]
+    envelope = certificate["evidence"]["finite_state_decision_envelope"]
+    @test envelope["declared_state_count"] == 3
+    @test envelope["all_maps_certified"]
+    @test envelope["maximum_absolute_pruned_objective_gap"] ≤ 1.0e-7
+    @test envelope["minimum_relative_margin"] ≥ 9.0e-9
+    @test all(record["source_status"] in ("LOCALLY_SOLVED", "OPTIMAL") for record in envelope["states"])
+    @test all(record["pruned_status"] in ("LOCALLY_SOLVED", "OPTIMAL") for record in envelope["states"])
 end

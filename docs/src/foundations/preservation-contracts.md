@@ -62,6 +62,13 @@ This is not a binary checklist. Each item needs a precise scope. For example,
 
 ## Proposed certificate schema
 
+The field table in this section is a **non-normative v1.2 proposal**. The
+machine-checked repository schema remains version 1.1.0 and deliberately does
+not yet require an ``error_bound`` field or a normalized numerical-evidence
+object. Implementations must validate against the versioned JSON schema; the
+proposal below is a compatibility target for a future schema revision, not an
+implicit requirement on current certificates.
+
 Every transformation record should contain:
 
 | Field | Meaning |
@@ -93,6 +100,15 @@ Operational constraints deserve a classification independent of the equations:
 A claim that a reduction "preserves limits" is incomplete without identifying
 which of these meanings applies.
 
+![Exact, inner, outer, and scenario-approximate observed-set relations.](../assets/exactness-classes.png)
+
+This is the visual version of the classification. The sets are observed sets,
+not raw internal state spaces: the observation map ``h`` is part of the
+contract. The ``15 V`` point is the scalar parallel-line witness from the
+[first failure case](@ref first-failure-parallel-branches); it lies in the
+outer target's extra region and therefore cannot be called a preserved member
+limit.
+
 ## Recovery maps are first-class
 
 If internal variables are eliminated by a Schur complement, their recovery is
@@ -110,6 +126,15 @@ and ``i_I=0``, the internal voltage is
 ```math
 v_I=-Y_{II}^{-1}Y_{IB}v_B.
 ```
+
+![Recovery-map loop with and without source-constraint evaluation.](../assets/recovery-map-loop.png)
+
+The left panel is the positive mechanism behind an exact lifted decision:
+solve or reduce in the target variables, reconstruct ``z=R(\widehat x)``, and
+evaluate the source constraints on the recovered quantities. The right panel
+is the failure mode. A target boundary relation can still be correct while
+the source member limits are uncheckable, so the target feasible set may be an
+outer relaxation.
 
 The reduced admittance is
 

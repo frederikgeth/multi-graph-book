@@ -87,6 +87,10 @@ Bullo analyze the graph and loopy-Laplacian properties of this operation
 [DorflerBullo2013](@cite). Closure inside a more restrictive dynamic or device
 class requires additional physical assumptions [CaliskanTabuada2014](@cite).
 
+![Kron reduction creates a boundary fill edge.](../assets/kron-fill-in.png)
+
+The dashed boundary coupling is a reduced coefficient. It is exact for the retained linear boundary relation, but it is not by itself a physical asset with recoverable currents, limits, or outage identity.
+
 Kron reduction does not by itself preserve:
 
 - eliminated asset identity or topology;
@@ -99,6 +103,20 @@ Kron reduction does not by itself preserve:
 The Schur complement first produces a reduced multiport relation. Realizing
 that relation as a permitted collection of bus--branch devices is a separate
 synthesis or compilation problem.
+
+!!! warning "Decision-model consequence"
+
+Eliminating a neutral voltage does not eliminate the neutral conductor's
+current rating. If the source relation gives the neutral branch current as
+``I_n=A_{nB}v_B+A_{nI}v_I`` and Kron recovery gives
+``v_I=Y_{II}^{-1}(i_I-Y_{IB}v_B)``, then the reduced decision model must retain
+the recovered constraint
+``|A_{nB}v_B+A_{nI}Y_{II}^{-1}(i_I-Y_{IB}v_B)|leq\bar I_n`` (or its declared
+multiconductor norm). The boundary Schur complement alone is not enough for
+an OPF, hosting-capacity, protection, or contingency problem that observes
+that neutral limit. The constraint may be omitted only when the neutral rating
+is genuinely outside the observation set or is proved redundant by a separate
+certificate.
 
 ## Typed multiconductor Kron reduction
 
@@ -229,6 +247,57 @@ line--shunt witness is stamped exactly, with residual below ``10^{-15}``, while
 a diagonal-only line library is rejected. This is deliberately a positive and
 negative realizability test, not a claim that every Kron-reduced multiport is a
 physical bus--branch network.
+
+The same witness now applies a deliberately narrower transformer-library test.
+In this selected library, each winding block is required to be diagonal in the
+declared conductor coordinates and the complete relation must remain reciprocal.
+The coupled target above is rejected because at least one winding block is
+dense; a companion target obtained by removing those cross-conductor entries is
+accepted. This is a closure test for a restricted transformer vocabulary, not
+an identification of turns ratios, leakage parameters, or grounding data.
+
+### Direct running-network line witness
+
+The canonical running fixture now has a direct typed-Kron check in
+`experiments/generated/running-network-typed-kron-witness.json`. Line ``l_1``
+is split into two equal four-conductor series sections, with the midpoint
+retained as the internal block. Eliminating that midpoint reproduces the
+original ``i_1``--``i_2`` line primitive to below ``10^{-11}`` and recovers the
+midpoint voltage ``(U_{i_1}+U_{i_2})/2`` to the same tolerance. Terminal order,
+bus identity, and the four-conductor boundary are retained explicitly.
+
+This closes direct fixture coverage for a linear series line in the running
+network. It does not extend the claim to shunt elimination, constant-power
+loads, transformer internal states, or a nonlinear study model; those remain
+separate map families in the coverage matrix.
+
+The same artifact carries a deliberately tight neutral-limit witness. The
+four-conductor midpoint is eliminated, but the recovered neutral current is
+``(-0.0430252+0.0197760\,\mathrm i)`` p.u. on both half-sections. A declared
+limit of ``0.0426173`` p.u. is therefore violated by this boundary point. The
+test records that the current recovery is exact and that dropping the neutral
+constraint would accept a point the source model rejects. This is claim
+`TR-KRON-NEUTRAL-001`: a decision-preservation witness, not a claim about the
+fixture's physical rating.
+
+The five-bus companion
+`experiments/generated/five-bus-typed-kron-witness.json` covers the scalar
+pendant case directly. Eliminating bus ``m`` through its sole incident line
+``x`` gives the same retained ``Y``-bus as deleting that leaf line from the
+graph, and the recovered boundary current matches the full nodal relation to
+machine precision. This is claim `TR-KRON-FIVE-001`. Because the eliminated
+block is a pendant scalar branch with no independent internal injection, this
+does not generalize by itself to non-pendant eliminations, shunts, or retained
+branch limits.
+
+The same witness also eliminates the non-pendant bus ``\ell`` while retaining
+``i,j,k,m``. Boundary-current recovery remains exact, but the Schur complement
+creates retained support on ``j-m`` and ``k-m``. These are fill edges: they are
+couplings in the reduced relation, not automatically new physical lines.
+The recovered ``x``-branch current is exact as well, but a deliberately tight
+declared ``x``-limit is violated by the recorded state. This is claim
+`TR-KRON-FIVE-002` and is the small scalar analogue of the ordering, fill-in,
+and retained-constraint consequences discussed later in the numerical chapter.
 
 ## Realizability is a second theorem
 
@@ -452,8 +521,12 @@ being called Kron reduction.
 
 The comparison artifact
 `experiments/generated/kron-ward-scenario-comparison.json` uses four declared
-scenarios and the same boundary-current, internal-voltage, source-limit, and
-scenario-objective observations for three targets:
+scenarios and a shared observation contract for three targets. It records
+boundary voltage and current, recovered internal voltage and current, the
+source-current constraint margin, and the scenario objective together with the
+selected structural decision. This prevents a sparse candidate from looking
+successful merely because its boundary-current error was reported without the
+state, constraint, or decision quantities that the study actually uses.
 
 | Target | Construction | Result in the fixture |
 | --- | --- | --- |
@@ -468,6 +541,87 @@ the artifact, and the selected target is judged on the same observation family
 as the alternatives. The result is claim `TR-KRON-002` and does not establish
 global AC feasibility, objective, or control preservation.
 
+The fixture now also exposes the boundary-support distinction directly. An
+**extended Ward support target** retains the same base-calibrated reduced
+admittance and fixed base injection, but supplies the explicit support term
+
+```math
+Delta mathbf i_B^{mathrm{support}}
+  =mathbf K_I(mathbf i_I-mathbf i_I^{mathrm{base}}).
+```
+
+For the declared fixed-current linear fixture this support term makes the
+target exact at every scenario, and its off-base norm is nonzero. That result
+does not make the construction a globally exact AC Ward equivalent: it records
+the additional boundary quantity that must be available, and the source model
+under which it is valid. The generated comparison records these rows under
+`extended_ward_rows` alongside the operating-point rows.
+
+### Certified approximation chain
+
+The next artifact composes the approximation vocabulary into a decision
+test. In the same one-state fixture, the Ward target freezes the internal
+injection at the base scenario. For a scenario injection mismatch
+``\delta i_I=i_I^{\mathrm{base}}-i_I``, the exact linear maps give
+
+```math
+\delta i_I
+\longmapsto
+Y_{II}^{-1}\delta i_I
+\longmapsto
+K_I\delta i_I
+\longmapsto
+m=L-\lVert\widehat i_B\rVert,
+```
+
+where the middle term bounds recovered-state error, the next term bounds
+boundary-current error, and ``m`` is the approximate current-limit margin. A
+declared error bound ``e`` yields the same three-way test used in the
+[numerical consequences chapter](@ref numerical-consequences): ``m>e`` is
+certified feasible, ``m<-e`` is certified violated, and ``|m|\le e`` is
+ambiguous.
+
+The generated witness
+`experiments/generated/certified-approximation-witness.json` reports this
+chain for all four scenarios:
+
+| Scenario | Approximate margin | Error bound | Classification |
+| --- | ---: | ---: | --- |
+| base | ``-0.09535`` | ``0`` | certified violated |
+| high-load | ``0.02203`` | ``0.03430`` | ambiguous |
+| low-voltage | ``0.12026`` | ``0.03028`` | certified feasible |
+| internal-outage proxy | ``-0.07692`` | ``0.07498`` | certified violated |
+
+This is claim `TR-KRON-003`. The normwise bound is exact for the declared
+one-state linear fixture, so it demonstrates composition of the machinery,
+not a general nonlinear or uncertainty-aware certification theorem. In
+particular, the high-load row is intentionally ambiguous even though the
+nominal Ward point satisfies the limit: the error interval crosses the
+decision boundary.
+
+### Scoped nonlinear AC probe
+
+The generated `nonlinear-ward-witness.json` takes one deliberately small step
+toward the AC case. Its eliminated state has a constant-power injection, so
+the internal current is ``mathbf i_I(mathbf v_I)=overline{mathbf S/mathbf
+v_I}`` and the exact state is found with a damped Newton solve. The Ward
+target still freezes the base internal current. For each scenario the witness
+reports the nonlinear residual at the Ward state, a local inverse-Jacobian
+estimate, the direct boundary-current error, and the resulting local decision
+classification:
+
+| Scenario | Local result | What it demonstrates |
+| --- | --- | --- |
+| base | locally certified feasible | calibration is exact at the base point |
+| small shift | locally certified feasible | the local estimate dominates the observed boundary-current error |
+| large shift | local-bound ambiguous | nonlinear residual and the error interval grow away from calibration |
+
+This is an exploratory numerical witness, not a theorem. The inverse-Jacobian
+estimate is local, depends on the chosen Newton solution, and does not certify
+global AC feasibility, bifurcation behaviour, parameter uncertainty, or KKT
+preservation. A solver-exported Jacobian/KKT comparison remains a separate
+roadmap item.
+
 The current evidence leaves four implementation questions open:
 
 1. executable realizability tests for selected line, shunt, transformer, and
@@ -476,4 +630,7 @@ The current evidence leaves four implementation questions open:
 3. an executable small example comparing exact Kron, a Ward operating-point
    equivalent, and an Opti-KRON-style scenario approximation;
 4. a decision experiment measuring feasibility, active constraints, and
-   objective error in addition to voltage error.
+   objective error in addition to voltage error;
+5. extension of the certified-approximation chain to nonlinear AC residuals,
+   uncertain parameters, and an independently derived error analysis beyond
+   this scoped probe.

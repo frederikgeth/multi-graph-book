@@ -22,6 +22,10 @@ The definitions below are book conventions. They are intentionally strong for
 isomorphism and deliberately modest for general morphisms; later chapters may
 specialize them for particular data standards or equation languages.
 
+![One source architecture feeding several typed maps.](../assets/map-of-maps.png)
+
+The map-of-maps view is the practical reading rule for this chapter: a quotient, compiler, coordinate change, or elimination is justified by the query and contract attached to its arrow.
+
 ## Simple-topology maps
 
 Let ``G=(\mathcal B,E)`` and ``G'=(\mathcal B',E')`` be loopless undirected
@@ -214,6 +218,16 @@ Connectivity queries factor through ``Q_{\mathrm{MS}}``. A query for the
 rating of ``\ell_1`` generally does not. Boundary-current queries can factor
 through exact Kron reduction, whereas an ownership query does not. This
 query-relative factorization is the book's formal meaning of *fit for purpose*.
+
+![Partial orders under boundary power-flow queries and asset/outage queries.](../assets/query-partial-orders.png)
+
+The two panels make the non-ladder claim concrete. Under boundary power-flow
+queries, a typed port--factor view can compile to an oriented multigraph and a
+simple projection, while an equation/sparsity view answers a different
+compiled question. Under asset, outage, and maintenance queries, the
+asset/dependency view is primary and any electrical compilation requires an
+explicit ``\Lambda`` and state map. The arrows therefore change with the
+query family; they are not a universal “more detailed” order.
 
 ## The running network through the maps
 

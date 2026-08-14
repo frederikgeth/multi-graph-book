@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">
+<title>Positive-sequence invariant subspace and sequence mixing</title>
+<desc>Two projected sequence-space panels show a circulant factor preserving the positive-sequence axis and a non-circulant perturbation producing an off-axis residual.</desc>
+<rect width="1400" height="760" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:20px;font-weight:bold}.body{font-size:16px}.small{font-size:14px;fill:#5f6b76}.axis{stroke:#17212b;stroke-width:2}.invariant{stroke:#245b7a;stroke-width:5;fill:none;marker-end:url(#arrow)}.mix{stroke:#8a3232;stroke-width:5;fill:none;marker-end:url(#arrow)}.residual{stroke:#8a3232;stroke-width:3;stroke-dasharray:8 6}.state{fill:#17212b}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>
+<text x="40" y="46" class="title" text-anchor="start">Sequence subspace geometry</text>
+<text x="40" y="76" class="sub" text-anchor="start">A balanced state stays on the positive-sequence axis only when the factor preserves that invariant subspace.</text>
+<rect x="40" y="120" width="635" height="540" rx="14" class="panel"/>
+<rect x="725" y="120" width="635" height="540" rx="14" class="panel"/>
+<text x="70" y="160" class="head" text-anchor="start">circulant factor</text>
+<text x="755" y="160" class="head" text-anchor="start">non-circulant perturbation</text>
+<line x1="140" y1="430" x2="595" y2="430" class="axis"/>
+<line x1="355" y1="575" x2="355" y2="250" class="axis"/>
+<text x="595" y="458" class="small" text-anchor="end">positive-sequence direction</text>
+<text x="367" y="250" class="small" text-anchor="start">mixing direction</text>
+<line x1="825" y1="430" x2="1280" y2="430" class="axis"/>
+<line x1="1040" y1="575" x2="1040" y2="250" class="axis"/>
+<text x="1280" y="458" class="small" text-anchor="end">positive-sequence direction</text>
+<text x="1052" y="250" class="small" text-anchor="start">mixing direction</text>
+<circle cx="220" cy="430" r="8" class="state"/>
+<path d="M220 430 L500 430" class="invariant"/>
+<text x="220" y="470" class="small" text-anchor="middle">balanced state</text>
+<text x="500" y="405" class="body" text-anchor="middle">Y𝒱₊ ⊂ 𝒱₊</text>
+<text x="355" y="575" class="small" text-anchor="middle">sequence residual = 0</text>
+<circle cx="905" cy="430" r="8" class="state"/>
+<path d="M905 430 L1150 315" class="mix"/>
+<path d="M905 430 L1150 430" class="residual"/>
+<text x="905" y="470" class="small" text-anchor="middle">balanced input</text>
+<text x="1150" y="295" class="body" text-anchor="middle">Yv</text>
+<text x="1035" y="455" class="small" text-anchor="middle">projection onto 𝒱₊</text>
+<text x="1035" y="540" class="body" text-anchor="middle">ρ₊(v) = ‖v − E₊C₊v‖</text>
+<text x="1035" y="575" class="small" text-anchor="middle">coordinate residual, not yet a decision bound</text>
+<text x="40" y="710" class="small" text-anchor="start">The positive-sequence model is exact for the restricted observation family only when the factor, grounding, decisions, and observations close under the restriction.</text>
+</svg>

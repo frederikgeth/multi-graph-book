@@ -38,6 +38,7 @@
     "source": {"$ref": "#/$defs/modelReference"},
     "target": {"$ref": "#/$defs/modelReference"},
     "interfaces": {"$ref": "#/$defs/interfaceContract"},
+    "typed_interfaces": {"$ref": "#/$defs/typedInterfaceAttachment"},
     "preconditions": {"$ref": "#/$defs/uniqueStrings"},
     "preserves": {"$ref": "#/$defs/uniqueStrings"},
     "forgets": {"$ref": "#/$defs/uniqueStrings"},
@@ -79,6 +80,39 @@
         "objectives": {"$ref": "#/$defs/interfaceMapping"},
         "units": {"$ref": "#/$defs/interfaceMapping"},
         "boundary_quantities": {"$ref": "#/$defs/interfaceMapping"}
+      },
+      "additionalProperties": false
+    },
+    "typedInterfaceAttachment": {
+      "type": "object",
+      "required": [
+        "state_space_ref",
+        "source_variable_labels",
+        "target_variable_labels",
+        "source_unit_families",
+        "target_unit_families",
+        "unit_family_map",
+        "unresolved_unit_labels",
+        "source_boundary_labels",
+        "target_boundary_labels",
+        "state_domain_ids",
+        "attachment_rule"
+      ],
+      "properties": {
+        "state_space_ref": {"type": "string", "minLength": 1},
+        "source_variable_labels": {"$ref": "#/$defs/uniqueStrings"},
+        "target_variable_labels": {"$ref": "#/$defs/uniqueStrings"},
+        "source_unit_families": {"$ref": "#/$defs/uniqueStrings"},
+        "target_unit_families": {"$ref": "#/$defs/uniqueStrings"},
+        "unit_family_map": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/uniqueStrings"}
+        },
+        "unresolved_unit_labels": {"$ref": "#/$defs/uniqueStrings"},
+        "source_boundary_labels": {"$ref": "#/$defs/uniqueStrings"},
+        "target_boundary_labels": {"$ref": "#/$defs/uniqueStrings"},
+        "state_domain_ids": {"$ref": "#/$defs/uniqueStrings"},
+        "attachment_rule": {"type": "string", "minLength": 1}
       },
       "additionalProperties": false
     },

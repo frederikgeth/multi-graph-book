@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<title>Audience routes through the HTML and PDF book</title>
+<desc>A central argument spine is shared by HTML and PDF. Four audience routes branch to the chapters most useful to distribution modellers, OPF researchers, standards practitioners, and numerical-methods readers.</desc>
+<rect width="1400" height="800" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.head{font-size:18px;font-weight:bold}.node{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.aud1{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.aud2{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.aud3{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.aud4{fill:#eee8f8;stroke:#7856a8;stroke-width:2}.small{font-size:14px;fill:#5f6b76}.body{font-size:15px}.line{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.branch{stroke:#5f6b76;stroke-width:2;fill:none;marker-end:url(#arrow)}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>
+<text x="40" y="46" class="title" text-anchor="start">Reading routes through one argument</text>
+<text x="40" y="76" class="sub" text-anchor="start">HTML is the full knowledge base; the PDF is a shorter, argument-shaped serialization of the same sources.</text>
+<text x="40" y="130" class="head" text-anchor="start">shared spine</text>
+<rect x="100" y="155" width="190" height="70" rx="12" class="node"/>
+<text x="195" y="197" class="body" text-anchor="middle">scope</text>
+<path d="M290 190 L330 190" class="line"/>
+<rect x="340" y="155" width="190" height="70" rx="12" class="node"/>
+<text x="435" y="197" class="body" text-anchor="middle">representations</text>
+<path d="M530 190 L570 190" class="line"/>
+<rect x="580" y="155" width="190" height="70" rx="12" class="node"/>
+<text x="675" y="197" class="body" text-anchor="middle">contracts</text>
+<path d="M770 190 L810 190" class="line"/>
+<rect x="820" y="155" width="190" height="70" rx="12" class="node"/>
+<text x="915" y="197" class="body" text-anchor="middle">counterexamples</text>
+<path d="M1010 190 L1050 190" class="line"/>
+<rect x="1060" y="155" width="190" height="70" rx="12" class="node"/>
+<text x="1155" y="197" class="body" text-anchor="middle">consequences</text>
+<rect x="105" y="420" width="260" height="145" rx="12" class="aud1"/>
+<text x="235" y="458" class="head" text-anchor="middle">distribution modeller</text>
+<text x="235" y="490" class="small" text-anchor="middle">earth/neutral</text>
+<text x="235" y="509" class="small" text-anchor="middle">node–breaker</text>
+<text x="235" y="528" class="small" text-anchor="middle">crosswalk</text>
+<path d="M435 225 C435 330 235 370 235 420" class="branch"/>
+<rect x="425" y="490" width="260" height="145" rx="12" class="aud2"/>
+<text x="555" y="528" class="head" text-anchor="middle">OPF researcher</text>
+<text x="555" y="560" class="small" text-anchor="middle">parallel limits</text>
+<text x="555" y="579" class="small" text-anchor="middle">Kron/Ward</text>
+<text x="555" y="598" class="small" text-anchor="middle">certificates</text>
+<path d="M675 225 C675 330 555 440 555 490" class="branch"/>
+<rect x="745" y="420" width="260" height="145" rx="12" class="aud3"/>
+<text x="875" y="458" class="head" text-anchor="middle">standards/data practitioner</text>
+<text x="875" y="490" class="small" text-anchor="middle">asset links</text>
+<text x="875" y="509" class="small" text-anchor="middle">provenance</text>
+<text x="875" y="528" class="small" text-anchor="middle">rating semantics</text>
+<path d="M435 225 C435 330 875 370 875 420" class="branch"/>
+<rect x="1065" y="490" width="260" height="145" rx="12" class="aud4"/>
+<text x="1195" y="528" class="head" text-anchor="middle">numerical-methods reader</text>
+<text x="1195" y="560" class="small" text-anchor="middle">conditioning</text>
+<text x="1195" y="579" class="small" text-anchor="middle">Jacobians</text>
+<text x="1195" y="598" class="small" text-anchor="middle">fill</text>
+<text x="1195" y="617" class="small" text-anchor="middle">margins</text>
+<path d="M915 225 C915 330 1195 440 1195 490" class="branch"/>
+<text x="40" y="700" class="small" text-anchor="start">Each route re-enters the same contract language; audience emphasis changes, but preservation claims do not.</text>
+</svg>

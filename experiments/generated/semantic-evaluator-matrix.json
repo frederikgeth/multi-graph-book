@@ -1,0 +1,319 @@
+{
+  "witness_id": "PKG-SEMANTIC-001",
+  "schema_version": "0.1.0",
+  "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+  "rows": [
+    {
+      "artifact": "experiments/generated/parallel-branch-certificate.json",
+      "certificate_id": "TR-PAR-001",
+      "classification": "outer_relaxation",
+      "evaluator": "experiments/run_vertical_slice.jl",
+      "evaluator_symbol": "parallel_branch_certificate",
+      "semantic_test": "experiments/test/runtests.jl",
+      "checks": {
+        "source_target_declared": true,
+        "typed_interfaces_declared": true,
+        "typed_state_space_is_canonical": true,
+        "unit_coverage_is_explicit": true,
+        "evaluator_path_exists": true,
+        "evaluator_symbol_is_present": true,
+        "semantic_test_path_exists": true,
+        "evidence_is_present": true
+      },
+      "valid": true
+    },
+    {
+      "artifact": "experiments/generated/degree-two-series-certificate.json",
+      "certificate_id": "TR-SER-001",
+      "classification": "exact_behavioral_reduction",
+      "evaluator": "experiments/transformations/SeriesElimination.jl",
+      "evaluator_symbol": "eliminate_degree_two",
+      "semantic_test": "experiments/test/series_elimination.jl",
+      "checks": {
+        "source_target_declared": true,
+        "typed_interfaces_declared": true,
+        "typed_state_space_is_canonical": true,
+        "unit_coverage_is_explicit": true,
+        "evaluator_path_exists": true,
+        "evaluator_symbol_is_present": true,
+        "semantic_test_path_exists": true,
+        "evidence_is_present": true
+      },
+      "valid": true
+    },
+    {
+      "artifact": "experiments/generated/coordinate-normalization-certificate.json",
+      "certificate_id": "TR-COORD-001",
+      "classification": "exact_normalization",
+      "evaluator": "experiments/transformations/ConductorNormalization.jl",
+      "evaluator_symbol": "normalize_conductor_coordinates",
+      "semantic_test": "experiments/test/coordinate_normalization.jl",
+      "checks": {
+        "source_target_declared": true,
+        "typed_interfaces_declared": true,
+        "typed_state_space_is_canonical": true,
+        "unit_coverage_is_explicit": true,
+        "evaluator_path_exists": true,
+        "evaluator_symbol_is_present": true,
+        "semantic_test_path_exists": true,
+        "evidence_is_present": true
+      },
+      "valid": true
+    },
+    {
+      "artifact": "experiments/generated/coordinate-series-composition-certificate.json",
+      "certificate_id": "TR-COMP-001",
+      "classification": "exact_behavioral_reduction",
+      "evaluator": "experiments/transformations/TransformationContracts.jl",
+      "evaluator_symbol": "compose_certificates",
+      "semantic_test": "experiments/test/coordinate_normalization.jl",
+      "checks": {
+        "source_target_declared": true,
+        "typed_interfaces_declared": true,
+        "typed_state_space_is_canonical": true,
+        "unit_coverage_is_explicit": true,
+        "evaluator_path_exists": true,
+        "evaluator_symbol_is_present": true,
+        "semantic_test_path_exists": true,
+        "evidence_is_present": true
+      },
+      "valid": true
+    },
+    {
+      "artifact": "experiments/generated/parallel-opf-comparison.json",
+      "certificate_id": "TR-PAR-003",
+      "classification": "outer_relaxation",
+      "evaluator": "experiments/transformations/ParallelDecisionComparison.jl",
+      "evaluator_symbol": "parallel_decision_certificate",
+      "semantic_test": "experiments/test/parallel_decision_comparison.jl",
+      "checks": {
+        "source_target_declared": true,
+        "typed_interfaces_declared": true,
+        "typed_state_space_is_canonical": true,
+        "unit_coverage_is_explicit": true,
+        "evaluator_path_exists": true,
+        "evaluator_symbol_is_present": true,
+        "semantic_test_path_exists": true,
+        "evidence_is_present": true
+      },
+      "valid": true
+    },
+    {
+      "artifact": "experiments/generated/transformer-winding-normalization-certificate.json",
+      "certificate_id": "TR-XFMR-001",
+      "classification": "exact_normalization",
+      "evaluator": "experiments/transformations/TransformerWindingNormalization.jl",
+      "evaluator_symbol": "normalize_winding_terminals",
+      "semantic_test": "experiments/test/transformer_winding_normalization.jl",
+      "checks": {
+        "source_target_declared": true,
+        "typed_interfaces_declared": true,
+        "typed_state_space_is_canonical": true,
+        "unit_coverage_is_explicit": true,
+        "evaluator_path_exists": true,
+        "evaluator_symbol_is_present": true,
+        "semantic_test_path_exists": true,
+        "evidence_is_present": true
+      },
+      "valid": true
+    },
+    {
+      "artifact": "experiments/generated/multiwinding-leakage-compilation-certificate.json",
+      "certificate_id": "TR-XFMR-002",
+      "classification": "exact_compilation",
+      "evaluator": "experiments/transformations/MultiwindingLeakageCompilation.jl",
+      "evaluator_symbol": "compile_pairwise_leakage",
+      "semantic_test": "experiments/test/multiwinding_leakage_compilation.jl",
+      "checks": {
+        "source_target_declared": true,
+        "typed_interfaces_declared": true,
+        "typed_state_space_is_canonical": true,
+        "unit_coverage_is_explicit": true,
+        "evaluator_path_exists": true,
+        "evaluator_symbol_is_present": true,
+        "semantic_test_path_exists": true,
+        "evidence_is_present": true
+      },
+      "valid": true
+    },
+    {
+      "artifact": "experiments/generated/multiwinding-terminal-assembly-certificate.json",
+      "certificate_id": "TR-XFMR-003",
+      "classification": "exact_compilation",
+      "evaluator": "experiments/transformations/MultiwindingTerminalAssembly.jl",
+      "evaluator_symbol": "assemble_terminal_leakage",
+      "semantic_test": "experiments/test/multiwinding_terminal_assembly.jl",
+      "checks": {
+        "source_target_declared": true,
+        "typed_interfaces_declared": true,
+        "typed_state_space_is_canonical": true,
+        "unit_coverage_is_explicit": true,
+        "evaluator_path_exists": true,
+        "evaluator_symbol_is_present": true,
+        "semantic_test_path_exists": true,
+        "evidence_is_present": true
+      },
+      "valid": true
+    },
+    {
+      "artifact": "experiments/generated/transformer-factor-completion-certificate.json",
+      "certificate_id": "TR-XFMR-004",
+      "classification": "exact_compilation",
+      "evaluator": "experiments/transformations/TransformerFactorCompletion.jl",
+      "evaluator_symbol": "assemble_complete_transformer",
+      "semantic_test": "experiments/test/transformer_factor_completion.jl",
+      "checks": {
+        "source_target_declared": true,
+        "typed_interfaces_declared": true,
+        "typed_state_space_is_canonical": true,
+        "unit_coverage_is_explicit": true,
+        "evaluator_path_exists": true,
+        "evaluator_symbol_is_present": true,
+        "semantic_test_path_exists": true,
+        "evidence_is_present": true
+      },
+      "valid": true
+    },
+    {
+      "artifact": "experiments/generated/transformer-tap-decision-certificate.json",
+      "certificate_id": "TR-XFMR-005",
+      "classification": "exact_compilation",
+      "evaluator": "experiments/transformations/TransformerTapDecisionCompilation.jl",
+      "evaluator_symbol": "compile_parameterized_transformer",
+      "semantic_test": "experiments/test/transformer_tap_decision_compilation.jl",
+      "checks": {
+        "source_target_declared": true,
+        "typed_interfaces_declared": true,
+        "typed_state_space_is_canonical": true,
+        "unit_coverage_is_explicit": true,
+        "evaluator_path_exists": true,
+        "evaluator_symbol_is_present": true,
+        "semantic_test_path_exists": true,
+        "evidence_is_present": true
+      },
+      "valid": true
+    },
+    {
+      "artifact": "experiments/generated/transformer-tap-ac-decision-certificate.json",
+      "certificate_id": "TR-XFMR-006",
+      "classification": "exact_compilation",
+      "evaluator": "experiments/transformations/TransformerTapACDecision.jl",
+      "evaluator_symbol": "transformer_tap_ac_certificate",
+      "semantic_test": "experiments/test/transformer_tap_ac_decision.jl",
+      "checks": {
+        "source_target_declared": true,
+        "typed_interfaces_declared": true,
+        "typed_state_space_is_canonical": true,
+        "unit_coverage_is_explicit": true,
+        "evaluator_path_exists": true,
+        "evaluator_symbol_is_present": true,
+        "semantic_test_path_exists": true,
+        "evidence_is_present": true
+      },
+      "valid": true
+    },
+    {
+      "artifact": "experiments/generated/transformer-tap-ac-independent-certificate.json",
+      "certificate_id": "TR-XFMR-007",
+      "classification": "mixed",
+      "evaluator": "experiments/transformations/TransformerTapACIndependentReproduction.jl",
+      "evaluator_symbol": "independent_transformer_tap_certificate",
+      "semantic_test": "experiments/test/transformer_tap_ac_independent_reproduction.jl",
+      "checks": {
+        "source_target_declared": true,
+        "typed_interfaces_declared": true,
+        "typed_state_space_is_canonical": true,
+        "unit_coverage_is_explicit": true,
+        "evaluator_path_exists": true,
+        "evaluator_symbol_is_present": true,
+        "semantic_test_path_exists": true,
+        "evidence_is_present": true
+      },
+      "valid": true
+    },
+    {
+      "artifact": "experiments/generated/multiconductor-parallel-ac-certificate.json",
+      "certificate_id": "TR-PAR-004",
+      "classification": "outer_relaxation",
+      "evaluator": "experiments/transformations/MulticonductorParallelACDecision.jl",
+      "evaluator_symbol": "multiconductor_ac_certificate",
+      "semantic_test": "experiments/test/multiconductor_parallel_ac.jl",
+      "checks": {
+        "source_target_declared": true,
+        "typed_interfaces_declared": true,
+        "typed_state_space_is_canonical": true,
+        "unit_coverage_is_explicit": true,
+        "evaluator_path_exists": true,
+        "evaluator_symbol_is_present": true,
+        "semantic_test_path_exists": true,
+        "evidence_is_present": true
+      },
+      "valid": true
+    },
+    {
+      "artifact": "experiments/generated/four-wire-parallel-ac-certificate.json",
+      "certificate_id": "TR-PAR-006",
+      "classification": "exact_normalization",
+      "evaluator": "experiments/transformations/FourWireParallelACDecision.jl",
+      "evaluator_symbol": "four_wire_parallel_certificate",
+      "semantic_test": "experiments/test/four_wire_parallel_ac.jl",
+      "checks": {
+        "source_target_declared": true,
+        "typed_interfaces_declared": true,
+        "typed_state_space_is_canonical": true,
+        "unit_coverage_is_explicit": true,
+        "evaluator_path_exists": true,
+        "evaluator_symbol_is_present": true,
+        "semantic_test_path_exists": true,
+        "evidence_is_present": true
+      },
+      "valid": true
+    },
+    {
+      "artifact": "experiments/generated/pi-four-wire-parallel-ac-certificate.json",
+      "certificate_id": "TR-PAR-007",
+      "classification": "exact_normalization",
+      "evaluator": "experiments/transformations/PiFourWireParallelACDecision.jl",
+      "evaluator_symbol": "pi_four_wire_certificate",
+      "semantic_test": "experiments/test/pi_four_wire_parallel_ac.jl",
+      "checks": {
+        "source_target_declared": true,
+        "typed_interfaces_declared": true,
+        "typed_state_space_is_canonical": true,
+        "unit_coverage_is_explicit": true,
+        "evaluator_path_exists": true,
+        "evaluator_symbol_is_present": true,
+        "semantic_test_path_exists": true,
+        "evidence_is_present": true
+      },
+      "valid": true
+    },
+    {
+      "artifact": "experiments/generated/typed-kron-certificate.json",
+      "certificate_id": "TR-KRON-001",
+      "classification": "exact_behavioral_reduction",
+      "evaluator": "experiments/transformations/TypedKronReduction.jl",
+      "evaluator_symbol": "kron_reduce",
+      "semantic_test": "experiments/test/typed_kron.jl",
+      "checks": {
+        "source_target_declared": true,
+        "typed_interfaces_declared": true,
+        "typed_state_space_is_canonical": true,
+        "unit_coverage_is_explicit": true,
+        "evaluator_path_exists": true,
+        "evaluator_symbol_is_present": true,
+        "semantic_test_path_exists": true,
+        "evidence_is_present": true
+      },
+      "valid": true
+    }
+  ],
+  "checks": {
+    "all_certificates_covered": true,
+    "all_evaluators_exist": true,
+    "all_tests_exist": true,
+    "all_typed_contracts_present": true,
+    "all_semantic_evidence_bound": true
+  },
+  "valid": true
+}

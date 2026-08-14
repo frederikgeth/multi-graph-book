@@ -149,9 +149,23 @@
     "nonzero_dependencies": 30,
     "interpretation": "declared factor, KCL, and member-limit dependencies; not a solver-exported derivative matrix"
   },
+  "typed_kron_crosswalk": {
+    "source_artifact": "experiments/generated/five-bus-typed-kron-witness.json",
+    "eliminated_node": "l",
+    "fill_edges": [
+      "j-m",
+      "k-m"
+    ],
+    "boundary_residual": 1.4653444446016847e-15,
+    "recovered_line_x_limit_satisfied": false,
+    "interpretation": "the Schur fill and recovered branch constraint are linked to the numerical structure witness without treating fill as a physical asset or solver-private factorization record"
+  },
   "checks": {
     "neighbour_clique_verified": true,
     "fill_is_not_a_source_asset": true,
-    "physical_and_jacobian_graphs_are_distinct": true
+    "physical_and_jacobian_graphs_are_distinct": true,
+    "typed_kron_fill_crosswalk_matches": true,
+    "typed_kron_boundary_residual_is_small": true,
+    "typed_kron_constraint_observation_retained": true
   }
 }

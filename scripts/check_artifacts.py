@@ -18,13 +18,39 @@ TRANSFORMER_TAP_CONTRACT = ROOT / "data/transformer-contracts/x1-discrete-tap-v0
 TRANSFORMER_CONTRACTS = (TRANSFORMER_CONTRACT, TRANSFORMER_TAP_CONTRACT)
 GENERATED = ROOT / "experiments/generated"
 PORT_FACTOR_ARCHITECTURE = GENERATED / "port-factor-architecture.json"
+FIVE_BUS_PORT_FACTOR = GENERATED / "five-bus-port-factor-witness.json"
 POSITIVE_SEQUENCE_WITNESS = GENERATED / "positive-sequence-collapse-witness.json"
 KRON_WARD_SCENARIO = GENERATED / "kron-ward-scenario-comparison.json"
+CERTIFIED_APPROXIMATION = GENERATED / "certified-approximation-witness.json"
+NONLINEAR_WARD_WITNESS = GENERATED / "nonlinear-ward-witness.json"
+SOLVER_DIAGNOSTICS_CROSSWALK = GENERATED / "solver-diagnostics-crosswalk.json"
+DATA_MODEL_CROSSWALK = GENERATED / "data-model-crosswalk-witness.json"
+RUNNING_NETWORK_TYPED_KRON = GENERATED / "running-network-typed-kron-witness.json"
+GUARDED_PARALLEL_REDUCTION = GENERATED / "guarded-parallel-reduction-witness.json"
+THREE_MEMBER_FOUR_WIRE_PARALLEL_AC = GENERATED / "three-member-four-wire-parallel-ac-certificate.json"
+TRANSFORMER_CONTROL_FAMILY = GENERATED / "transformer-control-family-witness.json"
+TRANSFORMER_TAP_AC = GENERATED / "transformer-tap-ac-decision-certificate.json"
+NODE_BREAKER_STATE = GENERATED / "node-breaker-state-witness.json"
+RUNNING_NETWORK_RADIALITY = GENERATED / "running-network-radiality-witness.json"
+FIVE_BUS_ACTIVE_RADIALITY = GENERATED / "five-bus-active-radiality-witness.json"
+FIVE_BUS_TYPED_KRON = GENERATED / "five-bus-typed-kron-witness.json"
+CONDUCTOR_TERMINAL_LIFT = GENERATED / "conductor-terminal-lift-witness.json"
+FIVE_BUS_CONDUCTOR_TERMINAL_LIFT = GENERATED / "five-bus-conductor-terminal-lift-witness.json"
+MULTIWINDING_TERMINAL_LIFT = GENERATED / "multiwinding-terminal-lift-witness.json"
+MULTIWINDING_TYPED_KRON = GENERATED / "multiwinding-typed-kron-witness.json"
+HIERARCHY_BOUNDARY = GENERATED / "hierarchy-boundary-witness.json"
+PUBLIC_API_MANIFEST = GENERATED / "public-api-manifest.json"
+STATE_SPACE_UNIT = GENERATED / "state-space-unit-witness.json"
+SEMANTIC_EVALUATOR_MATRIX = GENERATED / "semantic-evaluator-matrix.json"
+FIXTURE_COVERAGE_MATRIX = GENERATED / "fixture-coverage-matrix.json"
+CLEAN_PACKAGE_MATRIX = GENERATED / "clean-package-matrix.json"
+STANDALONE_PACKAGE = ROOT / "package/GraphModelsForPowerNetworks"
 FIGURE = ROOT / "docs/src/assets/running-network-views.png"
 FIGURE_AUDIT = ROOT / "docs/src/assets/figure-audit.json"
 FIVE_BUS_ANALYSIS = GENERATED / "five-bus-cycle-space-analysis.json"
 NUMERICAL_STRUCTURE_WITNESS = GENERATED / "numerical-structure-witness.json"
-NUMERICAL_STRUCTURE_FIGURE = ROOT / "docs/src/assets/numerical-structure-witness.svg"
+NUMERICAL_FILL_FIGURE = ROOT / "docs/src/assets/numerical-fill-in.svg"
+NUMERICAL_JACOBIAN_FIGURE = ROOT / "docs/src/assets/numerical-jacobian-dependency.svg"
 YBUS_JACOBIAN_WITNESS = GENERATED / "ybus-jacobian-witness.json"
 YBUS_JACOBIAN_FIGURE = ROOT / "docs/src/assets/ybus-jacobian-witness.svg"
 NONLINEAR_KKT_WITNESS = GENERATED / "nonlinear-kkt-witness.json"
@@ -35,7 +61,7 @@ TRANSFORMER_ANATOMY = ROOT / "docs/src/assets/transformer-anatomy.svg"
 PARALLEL_FEASIBLE_SET_CARD = ROOT / "docs/src/assets/parallel-feasible-set-card.svg"
 KNOWLEDGE_BASE_INDEX = ROOT / "docs/src/reference/knowledge-base-index.md"
 CHAPTER_STATUS = ROOT / "docs/src/reference/chapter-status.md"
-PAGE_STATUS = re.compile(r"^\*\*Page status:\*\*\s*(.+?)\s*$", re.MULTILINE)
+PAGE_STATUS = re.compile(r"^\*\*Page status:\*\*[ \t]*(?P<status>[^\r\n]+)$", re.MULTILINE)
 FIVE_BUS_FIGURES = {
     "cycle_basis": ROOT / "docs/src/assets/five-bus-cycle-basis.png",
     "transformation_map": ROOT / "docs/src/assets/five-bus-transformation-map.png",
@@ -159,6 +185,46 @@ def validate_certificate(certificate: dict, schema: dict, artifact: str) -> list
                     errors.append(f"{artifact} interfaces.{name}.{side} must be a string array")
             if not isinstance(mapping["relation"], str) or not mapping["relation"]:
                 errors.append(f"{artifact} interfaces.{name}.relation must be a nonempty string")
+    typed = certificate.get("typed_interfaces")
+    typed_fields = {
+        "state_space_ref",
+        "source_variable_labels",
+        "target_variable_labels",
+        "source_unit_families",
+        "target_unit_families",
+        "source_boundary_labels",
+        "target_boundary_labels",
+        "state_domain_ids",
+        "unit_family_map",
+        "unresolved_unit_labels",
+        "attachment_rule",
+    }
+    if not isinstance(typed, dict) or set(typed) != typed_fields:
+        errors.append(f"{artifact} typed_interfaces has an invalid shape")
+    else:
+        if not isinstance(typed["state_space_ref"], str) or not typed["state_space_ref"]:
+            errors.append(f"{artifact} typed_interfaces.state_space_ref must be nonempty")
+        for field in (
+            "source_variable_labels", "target_variable_labels", "source_unit_families",
+            "target_unit_families", "source_boundary_labels", "target_boundary_labels",
+            "state_domain_ids", "unresolved_unit_labels",
+        ):
+            values = typed[field]
+            if not isinstance(values, list) or not all(isinstance(value, str) for value in values):
+                errors.append(f"{artifact} typed_interfaces.{field} must be a string array")
+            elif len(values) != len(set(values)):
+                errors.append(f"{artifact} typed_interfaces.{field} must be unique")
+        unit_map = typed["unit_family_map"]
+        if not isinstance(unit_map, dict) or not all(
+            isinstance(key, str)
+            and isinstance(value, list)
+            and all(isinstance(family, str) for family in value)
+            and len(value) == len(set(value))
+            for key, value in unit_map.items()
+        ):
+            errors.append(f"{artifact} typed_interfaces.unit_family_map has an invalid shape")
+        if not isinstance(typed["attachment_rule"], str) or not typed["attachment_rule"]:
+            errors.append(f"{artifact} typed_interfaces.attachment_rule must be nonempty")
     return errors
 
 
@@ -297,8 +363,10 @@ def main() -> int:
         *FIVE_BUS_FIGURES.values(),
         GENERATED / "summary.json",
         FIVE_BUS_ANALYSIS,
+        GENERATED / "running-network-cycle-space-witness.json",
         NUMERICAL_STRUCTURE_WITNESS,
-        NUMERICAL_STRUCTURE_FIGURE,
+        NUMERICAL_FILL_FIGURE,
+        NUMERICAL_JACOBIAN_FIGURE,
         YBUS_JACOBIAN_WITNESS,
         YBUS_JACOBIAN_FIGURE,
         NONLINEAR_KKT_WITNESS,
@@ -314,8 +382,39 @@ def main() -> int:
         *(GENERATED / artifact for artifact in CERTIFICATES),
         GENERATED / "provenance.json",
         PORT_FACTOR_ARCHITECTURE,
+        FIVE_BUS_PORT_FACTOR,
         POSITIVE_SEQUENCE_WITNESS,
         KRON_WARD_SCENARIO,
+        CERTIFIED_APPROXIMATION,
+        NONLINEAR_WARD_WITNESS,
+        SOLVER_DIAGNOSTICS_CROSSWALK,
+        DATA_MODEL_CROSSWALK,
+        RUNNING_NETWORK_TYPED_KRON,
+        GUARDED_PARALLEL_REDUCTION,
+        THREE_MEMBER_FOUR_WIRE_PARALLEL_AC,
+        TRANSFORMER_CONTROL_FAMILY,
+        NODE_BREAKER_STATE,
+        RUNNING_NETWORK_RADIALITY,
+        FIVE_BUS_ACTIVE_RADIALITY,
+        FIVE_BUS_TYPED_KRON,
+        CONDUCTOR_TERMINAL_LIFT,
+        FIVE_BUS_CONDUCTOR_TERMINAL_LIFT,
+        MULTIWINDING_TERMINAL_LIFT,
+        MULTIWINDING_TYPED_KRON,
+        HIERARCHY_BOUNDARY,
+        PUBLIC_API_MANIFEST,
+        STATE_SPACE_UNIT,
+        SEMANTIC_EVALUATOR_MATRIX,
+        FIXTURE_COVERAGE_MATRIX,
+        CLEAN_PACKAGE_MATRIX,
+        STANDALONE_PACKAGE / "Project.toml",
+        STANDALONE_PACKAGE / "README.md",
+        STANDALONE_PACKAGE / "src/GraphModelsForPowerNetworks.jl",
+        STANDALONE_PACKAGE / "src/MultigraphCycleSpace.jl",
+        STANDALONE_PACKAGE / "src/TypedKronReduction.jl",
+        STANDALONE_PACKAGE / "src/TypedStateSpace.jl",
+        STANDALONE_PACKAGE / "src/TransformationContracts.jl",
+        STANDALONE_PACKAGE / "test/runtests.jl",
         GENERATED / "typed-kron-witness.json",
         SOURCE_MAP,
         CLEAN_REPRODUCTION / "v0.1.0.json",
@@ -364,6 +463,128 @@ def main() -> int:
         errors.append("port-factor architecture has an unexpected object type")
     if model.get("notation") != "𝔓=(Q,J,Φ,j,f,H,X,R)":
         errors.append("port-factor architecture notation contract changed")
+
+    five_bus_port_factor = load_json(FIVE_BUS_PORT_FACTOR)
+    if five_bus_port_factor.get("claim_id") not in claim_ids:
+        errors.append("five-bus port-factor witness uses an unregistered claim ID")
+    if five_bus_port_factor.get("source_fixture") != "experiments/generated/five-bus-cycle-space-analysis.json":
+        errors.append("five-bus port-factor witness names an unexpected source fixture")
+    five_model = five_bus_port_factor.get("model", {})
+    five_validation = five_bus_port_factor.get("validation", {})
+    if five_validation.get("valid") is not True:
+        errors.append("five-bus port-factor witness failed structural validation")
+    if (
+        len(five_model.get("ports", [])) != 14
+        or len(five_model.get("junctions", [])) != 5
+        or len(five_model.get("factors", [])) != 7
+    ):
+        errors.append("five-bus port-factor witness changed its incidence cardinalities")
+
+    five_bus_terminal_lift = load_json(FIVE_BUS_CONDUCTOR_TERMINAL_LIFT)
+    if five_bus_terminal_lift.get("witness_id") != "ARCH-CONDUCTOR-002":
+        errors.append("five-bus conductor-terminal lift has an invalid witness ID")
+    if five_bus_terminal_lift.get("source_fixture") != "experiments/generated/five-bus-cycle-space-analysis.json":
+        errors.append("five-bus conductor-terminal lift names an unexpected source fixture")
+    lift_checks = five_bus_terminal_lift.get("checks", {})
+    for name in (
+        "all_factor_ports_resolve",
+        "scalar_line_factors_are_two_port",
+        "terminal_junctions_preserved",
+        "line_identity_preserved",
+        "parallel_fibre_retained",
+    ):
+        if lift_checks.get(name) is not True:
+            errors.append(f"five-bus conductor-terminal lift check failed: {name}")
+    if len(five_bus_terminal_lift.get("ports", [])) != 14 or len(five_bus_terminal_lift.get("factors", [])) != 7:
+        errors.append("five-bus conductor-terminal lift changed its incidence cardinalities")
+
+    multiwinding_terminal_lift = load_json(MULTIWINDING_TERMINAL_LIFT)
+    if multiwinding_terminal_lift.get("witness_id") != "ARCH-CONDUCTOR-MULTI-001":
+        errors.append("multiwinding conductor-terminal lift has an invalid witness ID")
+    if multiwinding_terminal_lift.get("source_fixture") != "data/transformer-contracts/x1-fixed-linear-v0.1.0.json":
+        errors.append("multiwinding conductor-terminal lift names an unexpected source fixture")
+    for name in (
+        "all_transfer_ports_resolve",
+        "multiwinding_factor_has_three_ports",
+        "winding_identity_preserved",
+        "wye_neutral_terminal_retained",
+        "delta_winding_has_no_neutral_terminal",
+        "internal_grounding_is_separate_observation",
+        "excitation_shunt_is_separate_observation",
+    ):
+        if multiwinding_terminal_lift.get("checks", {}).get(name) is not True:
+            errors.append(f"multiwinding conductor-terminal lift check failed: {name}")
+    if len(multiwinding_terminal_lift.get("ports", [])) != 3 or len(multiwinding_terminal_lift.get("factors", [])) != 1:
+        errors.append("multiwinding conductor-terminal lift changed its incidence cardinalities")
+
+    multiwinding_typed_kron = load_json(MULTIWINDING_TYPED_KRON)
+    if multiwinding_typed_kron.get("witness_id") != "TR-KRON-MULTI-001":
+        errors.append("multiwinding typed Kron witness has an invalid witness ID")
+    if multiwinding_typed_kron.get("source_fixture") != "data/transformer-contracts/x1-fixed-linear-v0.1.0.json":
+        errors.append("multiwinding typed Kron witness names an unexpected source fixture")
+    for name in (
+        "internal_block_is_singular",
+        "retained_wye_ports_have_eight_terminals",
+        "eliminated_delta_port_has_three_terminals",
+        "reduction_refused_without_pseudoinverse",
+        "internal_current_recovery_is_explicit",
+        "eliminated_winding_constraint_observation_retained",
+        "eliminated_delta_limits_are_positive",
+    ):
+        if multiwinding_typed_kron.get("checks", {}).get(name) is not True:
+            errors.append(f"multiwinding typed Kron check failed: {name}")
+    if multiwinding_typed_kron.get("residuals", {}).get("internal_block_rank", 99) >= multiwinding_typed_kron.get("residuals", {}).get("internal_block_dimension", 0):
+        errors.append("multiwinding typed Kron witness lost its singular-block boundary")
+
+    five_bus_active = load_json(FIVE_BUS_ACTIVE_RADIALITY)
+    if five_bus_active.get("witness_id") != "TR-GRAPH-ACTIVE-001":
+        errors.append("five-bus active radiality witness has an invalid witness ID")
+    if five_bus_active.get("source_fixture") != "experiments/generated/five-bus-cycle-space-analysis.json":
+        errors.append("five-bus active radiality witness names an unexpected source fixture")
+    if five_bus_active.get("all_checks_pass") is not True:
+        errors.append("five-bus active radiality witness failed its checks")
+    active_checks = five_bus_active.get("checks", {})
+    for name in (
+        "inventory_member_cycle_rank_is_three",
+        "inventory_adjacency_cycle_rank_is_two",
+        "inventory_is_not_radial",
+        "declared_tree_is_member_radial",
+        "declared_tree_is_adjacency_radial",
+        "declared_tree_has_five_bus_tree_size",
+    ):
+        if active_checks.get(name) is not True:
+            errors.append(f"five-bus active radiality check failed: {name}")
+
+    five_bus_kron = load_json(FIVE_BUS_TYPED_KRON)
+    if five_bus_kron.get("witness_id") != "TR-KRON-FIVE-001":
+        errors.append("five-bus typed Kron witness has an invalid witness ID")
+    if five_bus_kron.get("source_fixture") != "experiments/generated/five-bus-cycle-space-analysis.json":
+        errors.append("five-bus typed Kron witness names an unexpected source fixture")
+    if five_bus_kron.get("all_checks_pass") is not True:
+        errors.append("five-bus typed Kron witness failed its checks")
+    kron_checks = five_bus_kron.get("checks", {})
+    for name in (
+        "internal_block_is_invertible",
+        "reduced_matches_direct_leaf_deletion",
+        "boundary_current_recovery",
+        "full_nodal_residual_is_zero",
+        "eliminated_bus_is_pendant",
+        "provenance_retained",
+    ):
+        if kron_checks.get(name) is not True:
+            errors.append(f"five-bus typed Kron check failed: {name}")
+    for name in (
+        "non_pendant_internal_block_is_invertible",
+        "non_pendant_boundary_current_recovery",
+        "non_pendant_fill_jm_is_present",
+        "non_pendant_fill_km_is_present",
+        "recovered_line_x_current_is_exact",
+        "tight_line_x_limit_is_not_satisfied",
+    ):
+        if kron_checks.get(name) is not True:
+            errors.append(f"five-bus non-pendant Kron check failed: {name}")
+    if five_bus_kron.get("non_pendant_fill_edges") != ["j-m", "k-m"]:
+        errors.append("five-bus non-pendant Kron fill provenance changed")
     validation = architecture.get("validation", {})
     if validation.get("valid") is not True or validation.get("n_ports") != 8:
         errors.append("port-factor architecture validation failed")
@@ -388,13 +609,478 @@ def main() -> int:
     if kron_ward.get("selected_candidate") == "full_kron" or kron_ward.get("selected_is_exact") is not False:
         errors.append("scenario comparison no longer demonstrates a non-exact structural selection")
     checks = kron_ward.get("checks", {})
-    for name in ("exact_kron_base_relation", "ward_is_operating_point_only", "scenario_selection_is_structural", "all_candidate_observations_reported"):
+    for name in (
+        "exact_kron_base_relation",
+        "ward_is_operating_point_only",
+        "extended_support_is_exact_for_fixture",
+        "extended_support_is_nontrivial_off_base",
+        "scenario_selection_is_structural",
+        "all_candidate_observations_reported",
+    ):
         if checks.get(name) is not True:
             errors.append(f"Kron/Ward/scenario comparison check failed: {name}")
     if not any(row.get("base_exact") and row.get("current_error_norm", 1.0) <= 1e-12 for row in kron_ward.get("ward_rows", [])):
         errors.append("Ward comparison lost its exact base operating-point row")
     if not any((not row.get("base_exact")) and row.get("current_error_norm", 0.0) > 1e-4 for row in kron_ward.get("ward_rows", [])):
         errors.append("Ward comparison no longer exposes off-base error")
+    if not all(row.get("current_error_norm", 1.0) <= 1e-12 for row in kron_ward.get("extended_ward_rows", [])):
+        errors.append("extended Ward support rows are no longer exact for the declared fixture")
+
+    approximation = load_json(CERTIFIED_APPROXIMATION)
+    if approximation.get("claim_id") not in claim_ids or approximation.get("witness_id") != "TR-KRON-003":
+        errors.append("certified approximation witness uses an invalid claim or witness ID")
+    approximation_checks = approximation.get("checks", {})
+    for name in (
+        "bound_dominates_direct_constraint_error",
+        "base_is_exactly_calibrated",
+        "has_certified_feasible_case",
+        "has_ambiguous_case",
+        "has_certified_violated_case",
+    ):
+        if approximation_checks.get(name) is not True:
+            errors.append(f"certified approximation check failed: {name}")
+
+    nonlinear_ward = load_json(NONLINEAR_WARD_WITNESS)
+    if nonlinear_ward.get("witness_id") != "nonlinear_ward_probe_v0.1.0":
+        errors.append("nonlinear Ward witness has an invalid witness ID")
+    if nonlinear_ward.get("evidence_type") != "scoped_exploratory_nonlinear_witness":
+        errors.append("nonlinear Ward witness has an invalid evidence type")
+    nonlinear_checks = nonlinear_ward.get("checks", {})
+    for name in (
+        "base_residual_is_small",
+        "small_shift_is_locally_bounded",
+        "large_shift_exposes_nonlinear_residual",
+        "all_newton_solves_converged",
+        "has_local_feasible_case",
+        "has_local_ambiguous_case",
+    ):
+        if nonlinear_checks.get(name) is not True:
+            errors.append(f"nonlinear Ward witness check failed: {name}")
+
+    crosswalk = load_json(SOLVER_DIAGNOSTICS_CROSSWALK)
+    if crosswalk.get("witness_id") != "NUM-SOLVER-CROSSWALK-001":
+        errors.append("solver diagnostics crosswalk has an invalid witness ID")
+    if crosswalk.get("solver_boundary", {}).get("solver_internal_kkt_export") is not False:
+        errors.append("solver diagnostics crosswalk must state that solver-internal KKT export is unavailable")
+    if crosswalk.get("solver_boundary", {}).get("checked_kkt_callback_api") != (
+        "BMOPFTools.opf_checked_kkt_factorization"
+    ):
+        errors.append("solver diagnostics crosswalk lost the checked-KKT callback boundary")
+    callback_probe = crosswalk.get("solver_callback_probe", {})
+    if callback_probe.get("diagnostic_status") != "accepted":
+        errors.append("solver diagnostics callback probe did not accept the regular matrix")
+    if callback_probe.get("diagnostic_dimension") != 6:
+        errors.append("solver diagnostics callback probe dimension changed")
+    if callback_probe.get("rejected_near_singular_probe") is not True:
+        errors.append("solver diagnostics callback probe lost its near-singular rejection")
+    diffopt_probe = crosswalk.get("diffopt_sensitivity_probe", {})
+    if diffopt_probe.get("solver_status") not in ("LOCALLY_SOLVED", "OPTIMAL"):
+        errors.append("DiffOpt sensitivity probe did not solve the staged OPF")
+    if diffopt_probe.get("diagnostic_status") != "accepted":
+        errors.append("DiffOpt sensitivity probe did not record an accepted KKT diagnostic")
+    if abs(diffopt_probe.get("forward_sensitivity", 0.0) - 0.5) > 1e-7:
+        errors.append("DiffOpt sensitivity probe changed its analytic forward sensitivity")
+    if diffopt_probe.get("sensitivity_residual", 1.0) > 1e-7:
+        errors.append("DiffOpt sensitivity probe no longer agrees with central difference")
+    if diffopt_probe.get("callback_invocations", 0) < 1:
+        errors.append("DiffOpt sensitivity probe did not capture a callback invocation")
+    if diffopt_probe.get("captured_kkt_rows") != diffopt_probe.get("diagnostic_dimension"):
+        errors.append("captured DiffOpt KKT dimension disagrees with its diagnostic")
+    if diffopt_probe.get("captured_kkt_columns") != diffopt_probe.get("captured_kkt_rows"):
+        errors.append("captured DiffOpt KKT matrix is not square")
+    if diffopt_probe.get("captured_kkt_nonzeros", 0) <= 0:
+        errors.append("captured DiffOpt KKT matrix has no nonzeros")
+    if diffopt_probe.get("kkt_unaccounted_rows") != 4:
+        errors.append("captured DiffOpt KKT internal-row count changed")
+    if diffopt_probe.get("native_nlp_jacobian_rows") != diffopt_probe.get("model_constraint_count"):
+        errors.append("native JuMP/MOI Jacobian row count disagrees with declared constraints")
+    if diffopt_probe.get("native_nlp_jacobian_nonzeros", 0) <= 0:
+        errors.append("native JuMP/MOI Jacobian export has no nonzeros")
+    if diffopt_probe.get("native_nlp_export_is_solver_internal") is not False:
+        errors.append("native JuMP/MOI Jacobian export boundary was not marked non-internal")
+    if diffopt_probe.get("differentiability_termination_status") not in ("LOCALLY_SOLVED", "OPTIMAL"):
+        errors.append("DiffOpt differentiability report has an invalid termination status")
+    if not isinstance(diffopt_probe.get("active_constraints"), list):
+        errors.append("DiffOpt differentiability report lost active constraints")
+    if not isinstance(diffopt_probe.get("near_active_constraints"), list):
+        errors.append("DiffOpt differentiability report lost near-active constraints")
+    if not isinstance(diffopt_probe.get("violated_constraints"), list):
+        errors.append("DiffOpt differentiability report lost violated constraints")
+    parallel_comparison = crosswalk.get("diffopt_parallel_comparison", {})
+    parallel_checks = parallel_comparison.get("checks", {})
+    for name in (
+        "source_and_reduced_solve", "sensitivity_is_preserved",
+        "finite_difference_is_preserved", "kkt_structure_changes",
+        "native_jacobian_support_changes",
+    ):
+        if parallel_checks.get(name) is not True:
+            errors.append(f"DiffOpt parallel comparison check failed: {name}")
+    parallel_source = parallel_comparison.get("source", {})
+    parallel_reduced = parallel_comparison.get("reduced", {})
+    if abs(parallel_source.get("forward_sensitivity", 0.0) - 0.25) > 1e-7 or abs(
+        parallel_reduced.get("forward_sensitivity", 0.0) - 0.25
+    ) > 1e-7:
+        errors.append("DiffOpt parallel comparison lost its exact scalar sensitivity")
+    if parallel_source.get("captured_kkt_rows", 0) <= parallel_reduced.get("captured_kkt_rows", 0):
+        errors.append("DiffOpt parallel comparison no longer exposes source KKT growth")
+    density = diffopt_probe.get("captured_kkt_density", 0.0)
+    if not (0.0 < density <= 1.0):
+        errors.append("captured DiffOpt KKT density is invalid")
+    crosswalk_checks = crosswalk.get("checks", {})
+    for name in (
+        "ybus_uses_bmopftools_builders",
+        "realified_jacobian_has_declared_dimension",
+        "kkt_source_and_aggregate_are_both_present",
+        "ordering_diagnostics_are_recorded",
+        "ordering_changes_symbolic_fill",
+        "crosswalk_retains_node_order",
+    ):
+        if crosswalk_checks.get(name) is not True:
+            errors.append(f"solver diagnostics crosswalk check failed: {name}")
+
+    data_crosswalk = load_json(DATA_MODEL_CROSSWALK)
+    if data_crosswalk.get("witness_id") != "DATA-XWALK-001" or data_crosswalk.get("claim_id") not in claim_ids:
+        errors.append("data-model crosswalk has an invalid witness or claim ID")
+    if data_crosswalk.get("source_fixture") != "data/running-network/v0.1.0.json":
+        errors.append("data-model crosswalk names an unexpected source fixture")
+    data_checks = data_crosswalk.get("checks", {})
+    for name in (
+        "all_profiles_version_pinned",
+        "canonical_bus_ids_are_unique",
+        "canonical_asset_ids_are_unique",
+        "terminal_records_have_provenance",
+        "rating_records_have_owner_and_unit",
+        "profile_asset_round_trip",
+        "matpower_projection_is_marked",
+        "state_provenance_is_retained",
+    ):
+        if data_checks.get(name) is not True:
+            errors.append(f"data-model crosswalk check failed: {name}")
+    if len(data_crosswalk.get("profiles", [])) != 4:
+        errors.append("data-model crosswalk must contain four pinned ecosystem profiles")
+
+    running_kron = load_json(RUNNING_NETWORK_TYPED_KRON)
+    if running_kron.get("witness_id") != "TR-KRON-RUNNING-001" or running_kron.get("claim_id") not in claim_ids:
+        errors.append("running-network typed Kron witness has an invalid witness or claim ID")
+    if running_kron.get("source_fixture") != "data/running-network/v0.1.0.json" or running_kron.get("asset_id") != "line/l1":
+        errors.append("running-network typed Kron witness names an unexpected fixture or asset")
+    running_kron_checks = running_kron.get("checks", {})
+    for name in (
+        "internal_block_is_invertible",
+        "reduced_matches_direct_line_primitive",
+        "midpoint_recovery_is_exact_for_equal_halves",
+        "boundary_relation_is_satisfied",
+        "terminal_order_is_preserved",
+        "source_identity_is_retained",
+    ):
+        if running_kron_checks.get(name) is not True:
+            errors.append(f"running-network typed Kron check failed: {name}")
+    if running_kron.get("residuals", {}).get("primitive", 1.0) > 1.0e-11:
+        errors.append("running-network typed Kron primitive residual is too large")
+
+    guarded = load_json(GUARDED_PARALLEL_REDUCTION)
+    if guarded.get("witness_id") != "TR-PAR-GUARDED-001":
+        errors.append("guarded parallel reduction witness has an invalid witness ID")
+    if guarded.get("evidence_type") != "scoped_guarded_reduction_witness":
+        errors.append("guarded parallel reduction witness has an invalid evidence type")
+    guarded_checks = guarded.get("checks", {})
+    for name in (
+        "singular_full_map_is_rank_deficient",
+        "singular_guard_rejects_full_map",
+        "reduced_voltage_drop_map_certified",
+        "joint_retained_support_certified",
+        "fixed_map_fails_off_state",
+        "recomputed_state_map_is_consistent",
+    ):
+        if guarded_checks.get(name) is not True:
+            errors.append(f"guarded parallel reduction witness check failed: {name}")
+
+    three_member = load_json(THREE_MEMBER_FOUR_WIRE_PARALLEL_AC)
+    if three_member.get("retained_members") != ["l1", "l2"] or three_member.get("candidate_member") != "l3":
+        errors.append("three-member AC witness has an unexpected retained/candidate partition")
+    if three_member.get("certified") is not True:
+        errors.append("three-member AC witness is not certified")
+    supports = three_member.get("exact_worst_case_component_magnitudes", [])
+    limits = three_member.get("candidate_limits", [])
+    if not supports or len(supports) != len(limits) or any(support > limit + 1.0e-12 for support, limit in zip(supports, limits)):
+        errors.append("three-member AC support bound does not fit candidate limits")
+    if abs(three_member.get("objective_gap", 1.0)) > 1.0e-7:
+        errors.append("three-member AC source/pruned objective gap is too large")
+    independent = three_member.get("independent_source_boundary", {})
+    if independent.get("bracket_width", 1.0) > 1.0e-8 or independent.get("power_flow_residual", 1.0) > 1.0e-9:
+        errors.append("three-member AC independent boundary reproduction is too loose")
+    if abs(three_member.get("independent_source_objective_gap", 1.0)) > 3.0e-8:
+        errors.append("three-member AC independent boundary differs too far from the source solve")
+
+    pi_certificate = load_json(GENERATED / "pi-four-wire-parallel-ac-certificate.json")
+    envelope = pi_certificate.get("evidence", {}).get("finite_state_decision_envelope", {})
+    if envelope.get("declared_state_count") != 3 or envelope.get("all_maps_certified") is not True:
+        errors.append("finite nominal-pi state envelope is incomplete or uncertified")
+    if envelope.get("maximum_absolute_pruned_objective_gap", 1.0) > 1.0e-7:
+        errors.append("finite nominal-pi state envelope has a large pruning gap")
+    states = envelope.get("states", [])
+    if len(states) != 3 or any(
+        state.get("source_status") not in ("LOCALLY_SOLVED", "OPTIMAL")
+        or state.get("pruned_status") not in ("LOCALLY_SOLVED", "OPTIMAL")
+        for state in states
+    ):
+        errors.append("finite nominal-pi state envelope lost a solver-backed state record")
+    reduced_guard = pi_certificate.get("evidence", {}).get("series_reduced_coordinate_guard", {})
+    if reduced_guard.get("full_terminal_map_rank", 0) >= reduced_guard.get("full_terminal_map_dimension", 0):
+        errors.append("series-only singular guard lost its rank-deficient full-map record")
+    if reduced_guard.get("reduced_coordinate_recovery_residual", 1.0) > 1.0e-12:
+        errors.append("series-only singular reduced-coordinate recovery residual is too large")
+    if reduced_guard.get("neutral_current_retained_as_zero") is not True:
+        errors.append("series-only singular guard lost its explicit zero-neutral invariant")
+
+    controls = load_json(TRANSFORMER_CONTROL_FAMILY)
+    if controls.get("witness_id") != "TR-XFMR-CONTROL-001":
+        errors.append("transformer control family witness has an invalid witness ID")
+    if controls.get("evidence_type") != "scoped_transformer_control_witness":
+        errors.append("transformer control family witness has an invalid evidence type")
+    control_checks = controls.get("checks", {})
+    for name in (
+        "scalar_magnitude_is_pointwise_exact",
+        "phase_angle_is_pointwise_exact",
+        "independent_phase_is_pointwise_exact",
+        "mechanical_coupling_is_explicit",
+        "automatic_deadband_output_is_explicit",
+        "solver_backed_control_probes_solve",
+        "network_control_probes_solve",
+        "tap_dependent_loss_rejects_frozen_base",
+    ):
+        if control_checks.get(name) is not True:
+            errors.append(f"transformer control family witness check failed: {name}")
+    if not isinstance(controls.get("automatic_probe", {}).get("solver_status"), str):
+        errors.append("transformer control family witness lost automatic solver probe provenance")
+    network_probes = controls.get("network_probes", {})
+    for name in ("phase_angle", "tap_dependent_loss", "independent_phase", "mechanically_coupled"):
+        if network_probes.get(name, {}).get("status") not in ("LOCALLY_SOLVED", "OPTIMAL"):
+            errors.append(f"transformer network control probe did not solve: {name}")
+
+    transformer_tap = load_json(TRANSFORMER_TAP_AC)
+    switching = transformer_tap.get("evidence", {}).get("switching_decision", {})
+    if switching.get("branch_completeness") is not True:
+        errors.append("transformer tap switching ledger is not branch-complete")
+    if switching.get("cost_sweep_branch_complete") is not True:
+        errors.append("transformer tap switching-cost sweep is not branch-complete")
+    if len(switching.get("cost_sweep", [])) != 5:
+        errors.append("transformer tap switching-cost sweep changed size")
+    if switching.get("positive_breakpoint_count", 0) <= 0:
+        errors.append("transformer tap switching ledger lost positive breakpoints")
+    if len(switching.get("positive_breakpoints", [])) != switching.get("positive_breakpoint_count"):
+        errors.append("transformer tap switching breakpoint count disagrees with ledger")
+
+    node_breaker = load_json(NODE_BREAKER_STATE)
+    if node_breaker.get("witness_id") != "TOPO-NB-001":
+        errors.append("node-breaker state witness has an invalid witness ID")
+    if node_breaker.get("evidence_type") != "scoped_node_breaker_state_witness":
+        errors.append("node-breaker state witness has an invalid evidence type")
+    node_checks = node_breaker.get("checks", {})
+    for name in (
+        "radial_open_is_resolved_radial",
+        "parallel_closed_separates_member_and_adjacency_radiality",
+        "cycle_closed_is_nonradial",
+        "unknown_state_is_not_collapsed",
+        "unknown_state_has_both_radialities",
+    ):
+        if node_checks.get(name) is not True:
+            errors.append(f"node-breaker state witness check failed: {name}")
+
+    running_radiality = load_json(RUNNING_NETWORK_RADIALITY)
+    if running_radiality.get("witness_id") != "TOPO-RUNNING-001":
+        errors.append("running-network radiality witness has an invalid witness ID")
+    if running_radiality.get("evidence_type") != "running_network_state_radiality_witness":
+        errors.append("running-network radiality witness has an invalid evidence type")
+    running_checks = running_radiality.get("checks", {})
+    for name in (
+        "base_preserves_parallel_member_cycle",
+        "switch_open_preserves_member_cycle",
+        "line_outage_removes_parallel_cycle",
+        "switch_and_line_outage_remain_radial",
+        "terminal_provenance_retained",
+        "transformer_factor_provenance_retained",
+    ):
+        if running_checks.get(name) is not True:
+            errors.append(f"running-network radiality witness check failed: {name}")
+
+    conductor_lift = load_json(CONDUCTOR_TERMINAL_LIFT)
+    if conductor_lift.get("witness_id") != "ARCH-CONDUCTOR-001":
+        errors.append("conductor-terminal lift has an invalid witness ID")
+    if conductor_lift.get("evidence_type") != "conductor_terminal_incidence_witness":
+        errors.append("conductor-terminal lift has an invalid evidence type")
+    lift_checks = conductor_lift.get("checks", {})
+    for name in (
+        "all_factor_ports_resolve",
+        "line_factors_are_two_port",
+        "transformer_is_multi_terminal",
+        "switch_has_three_state_domain",
+        "closed_switch_contraction_is_per_conductor",
+        "unknown_switch_has_no_forced_contraction",
+    ):
+        if lift_checks.get(name) is not True:
+            errors.append(f"conductor-terminal lift check failed: {name}")
+
+    hierarchy = load_json(HIERARCHY_BOUNDARY)
+    if hierarchy.get("witness_id") != "ARCH-BOUNDARY-001":
+        errors.append("hierarchy boundary witness has an invalid witness ID")
+    if hierarchy.get("evidence_type") != "hierarchy_boundary_refinement_witness":
+        errors.append("hierarchy boundary witness has an invalid evidence type")
+    hierarchy_checks = hierarchy.get("checks", {})
+    for name in (
+        "hierarchy_is_acyclic_by_parent_chain",
+        "source_boundary_is_typed",
+        "target_boundary_is_typed",
+        "refinement_is_total_on_declared_subset",
+        "gluing_reuses_shared_boundary",
+        "unknown_state_defers_boundary_map",
+        "all_structural_checks_pass",
+    ):
+        if hierarchy_checks.get(name) is not True:
+            errors.append(f"hierarchy boundary witness check failed: {name}")
+
+    api_manifest = load_json(PUBLIC_API_MANIFEST)
+    if api_manifest.get("package") != "GraphModelsForPowerNetworks":
+        errors.append("public API manifest names an unexpected package")
+    if api_manifest.get("version") != "0.1.0":
+        errors.append("public API manifest has an unsupported version")
+    stable_exports = api_manifest.get("stable_exports")
+    if (
+        not isinstance(stable_exports, list)
+        or not stable_exports
+        or len(stable_exports) != len(set(stable_exports))
+        or not all(isinstance(value, str) and value for value in stable_exports)
+    ):
+        errors.append("public API manifest has invalid stable exports")
+    expected_exports = {
+        "IdentifiedEdge", "canonical_pair", "connected_components", "cycle_rank",
+        "incidence_matrix", "simple_projection", "kron_reduce", "transform_blocks",
+        "recovered_current", "UnitSpec", "UnitSystem", "VariableSpec", "StateDomain",
+        "BoundarySpec", "StateSpaceSpec", "convert_value", "to_per_unit", "from_per_unit",
+        "state_variables", "boundary_variables", "validate_state_space", "state_space_dict",
+        "running_state_space", "attach_typed_interfaces", "validate_certificate",
+        "compose_certificates", "api_manifest",
+    }
+    if set(stable_exports or []) != expected_exports:
+        errors.append("public API manifest stable exports differ from the facade")
+    for layer in ("multigraph primitives", "typed linear Kron reduction", "typed state-space and units", "certificate contracts"):
+        if layer not in api_manifest.get("stable_layers", []):
+            errors.append(f"public API manifest omits stable layer {layer!r}")
+    if "solver-backed AC decision cases" not in api_manifest.get("experimental_layers", []):
+        errors.append("public API manifest omits solver-backed experimental layer")
+    if not isinstance(api_manifest.get("boundary_rule"), str) or not api_manifest["boundary_rule"]:
+        errors.append("public API manifest lacks a boundary rule")
+
+    state_space = load_json(STATE_SPACE_UNIT)
+    if state_space.get("witness_id") != "ARCH-STATE-UNIT-001":
+        errors.append("typed state-space witness has an invalid witness ID")
+    if state_space.get("evidence_type") != "typed_state_space_unit_witness":
+        errors.append("typed state-space witness has an invalid evidence type")
+    if state_space.get("source_fixture") != "data/running-network/v0.1.0.json":
+        errors.append("typed state-space witness names an unexpected source fixture")
+    state_checks = state_space.get("checks", {})
+    for name in (
+        "state_space_valid",
+        "boundary_projection_is_typed",
+        "switch_state_domain_is_explicit",
+        "unit_conversion_is_family_checked",
+    ):
+        if state_checks.get(name) is not True:
+            errors.append(f"typed state-space witness check failed: {name}")
+    space = state_space.get("space", {})
+    validation = space.get("validation", {})
+    if validation.get("valid") is not True or validation.get("n_variables") != 4:
+        errors.append("typed state-space validation summary changed")
+    if validation.get("n_state_variables") != 2 or validation.get("n_boundaries") != 2:
+        errors.append("typed state-space cardinalities changed")
+    domains = space.get("state_domains", [])
+    if domains != [{"values": ["open", "closed", "unknown"], "id": "switch_state"}]:
+        errors.append("typed state-space switch domain changed")
+
+    semantic_matrix = load_json(SEMANTIC_EVALUATOR_MATRIX)
+    if semantic_matrix.get("witness_id") != "PKG-SEMANTIC-001":
+        errors.append("semantic evaluator matrix has an invalid witness ID")
+    if semantic_matrix.get("schema_version") != "0.1.0":
+        errors.append("semantic evaluator matrix has an unsupported schema version")
+    if semantic_matrix.get("state_space_ref") != "experiments/generated/state-space-unit-witness.json":
+        errors.append("semantic evaluator matrix names an unexpected state-space witness")
+    semantic_rows = semantic_matrix.get("rows", [])
+    expected_semantic_artifacts = {
+        f"experiments/generated/{artifact}" for artifact in CERTIFICATES
+    }
+    if len(semantic_rows) != len(expected_semantic_artifacts):
+        errors.append("semantic evaluator matrix row count changed")
+    if {row.get("artifact") for row in semantic_rows} != expected_semantic_artifacts:
+        errors.append("semantic evaluator matrix does not cover the certificate set")
+    for row in semantic_rows:
+        row_checks = row.get("checks", {})
+        if row.get("valid") is not True or not all(row_checks.values()):
+            errors.append(f"semantic evaluator matrix row is not valid: {row.get('artifact')}")
+        for field in ("evaluator", "semantic_test", "evaluator_symbol"):
+            path = row.get(field)
+            if field != "evaluator_symbol" and (not isinstance(path, str) or not (ROOT / path).is_file()):
+                errors.append(f"semantic evaluator matrix {field} is not a repository path: {path}")
+    semantic_checks = semantic_matrix.get("checks", {})
+    for name in (
+        "all_certificates_covered", "all_evaluators_exist", "all_tests_exist",
+        "all_typed_contracts_present", "all_semantic_evidence_bound",
+    ):
+        if semantic_checks.get(name) is not True:
+            errors.append(f"semantic evaluator matrix check failed: {name}")
+
+    fixture_matrix = load_json(FIXTURE_COVERAGE_MATRIX)
+    if fixture_matrix.get("witness_id") != "PKG-FIXTURE-001":
+        errors.append("fixture coverage matrix has an invalid witness ID")
+    if fixture_matrix.get("schema_version") != "0.1.0":
+        errors.append("fixture coverage matrix has an unsupported schema version")
+    if fixture_matrix.get("status_vocabulary") != ["direct", "related", "not_yet_tested", "not_applicable"]:
+        errors.append("fixture coverage matrix status vocabulary changed")
+    fixture_checks = fixture_matrix.get("checks", {})
+    for name in (
+        "fixture_definitions_exist", "all_fixture_families_present",
+        "all_map_families_have_declared_scope", "direct_evidence_has_artifact",
+        "not_yet_tested_is_explicit",
+    ):
+        if fixture_checks.get(name) is not True:
+            errors.append(f"fixture coverage matrix check failed: {name}")
+    fixture_rows = fixture_matrix.get("rows", [])
+    if len(fixture_rows) != 18:
+        errors.append("fixture coverage matrix row count changed")
+    valid_statuses = set(fixture_matrix.get("status_vocabulary", []))
+    for row in fixture_rows:
+        if row.get("status") not in valid_statuses:
+            errors.append(f"fixture coverage row has an unknown status: {row}")
+
+    clean_package = load_json(CLEAN_PACKAGE_MATRIX)
+    if clean_package.get("witness_id") != "PKG-CLEAN-001":
+        errors.append("clean package matrix has an invalid witness ID")
+    if clean_package.get("schema_version") != "0.1.0":
+        errors.append("clean package matrix has an unsupported schema version")
+    if not re.fullmatch(r"[0-9a-f]{40}", clean_package.get("dependency_commit", "")):
+        errors.append("clean package matrix does not pin a full dependency commit")
+    if clean_package.get("diffopt_version") != "0.6.2":
+        errors.append("clean package matrix does not pin the DiffOpt compatibility version")
+    if clean_package.get("environment") != "separately instantiated package checkout":
+        errors.append("clean package matrix has an unexpected environment description")
+    if clean_package.get("tests") != [
+        "experiments/test/public_api.jl",
+        "experiments/test/state_space_units.jl",
+        "experiments/test/certificate_api_matrix.jl",
+        "experiments/test/solver_diagnostics_crosswalk.jl",
+        "package/GraphModelsForPowerNetworks/test/runtests.jl",
+    ]:
+        errors.append("clean package matrix test set changed")
+    if clean_package.get("semantic_matrix_sha256") != sha256(SEMANTIC_EVALUATOR_MATRIX):
+        errors.append("clean package matrix is stale relative to the semantic evaluator matrix")
+    if clean_package.get("valid") is not True:
+        errors.append("clean package matrix is not marked valid")
+    classifications = approximation.get("classifications", {})
+    if classifications.get("high_load") != "ambiguous":
+        errors.append("certified approximation lost its ambiguous high-load case")
+    if classifications.get("low_voltage") != "certified_feasible":
+        errors.append("certified approximation lost its feasible low-voltage case")
+    if classifications.get("internal_outage_proxy") != "certified_violated":
+        errors.append("certified approximation lost its violated outage-proxy case")
 
     cycle_analysis = load_json(FIVE_BUS_ANALYSIS)
     if cycle_analysis.get("analysis_id") not in claim_ids:
@@ -441,6 +1127,16 @@ def main() -> int:
     for name in ("neighbour_clique_verified", "fill_is_not_a_source_asset", "physical_and_jacobian_graphs_are_distinct"):
         if checks.get(name) is not True:
             errors.append(f"numerical structure witness check failed: {name}")
+    for name in (
+        "typed_kron_fill_crosswalk_matches",
+        "typed_kron_boundary_residual_is_small",
+        "typed_kron_constraint_observation_retained",
+    ):
+        if checks.get(name) is not True:
+            errors.append(f"numerical/typed-Kron crosswalk check failed: {name}")
+    crosswalk = numerical.get("typed_kron_crosswalk", {})
+    if crosswalk.get("fill_edges") != ["j-m", "k-m"] or crosswalk.get("eliminated_node") != "l":
+        errors.append("numerical/typed-Kron crosswalk provenance changed")
 
     ybus = load_json(YBUS_JACOBIAN_WITNESS)
     if ybus.get("claim_id") not in claim_ids or ybus.get("witness_id") != "NUM-YBUS-001":
@@ -502,6 +1198,10 @@ def main() -> int:
     for artifact in CERTIFICATES:
         certificate = load_json(GENERATED / artifact)
         errors.extend(validate_certificate(certificate, certificate_schema, artifact))
+        if certificate.get("typed_interfaces", {}).get("state_space_ref") != (
+            "experiments/generated/state-space-unit-witness.json"
+        ):
+            errors.append(f"{artifact} is not attached to the canonical typed state-space witness")
         certificate_id = certificate.get("certificate_id")
         if certificate_id not in claim_ids:
             errors.append(f"{artifact} uses unregistered claim/certificate ID {certificate_id!r}")

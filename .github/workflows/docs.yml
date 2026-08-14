@@ -36,8 +36,26 @@ jobs:
       - name: Check claims ledger
         run: julia scripts/check_claims.jl
 
+      - name: Audit reader-facing claim mentions
+        run: python3 scripts/check_claim_mentions.py
+
+      - name: Check controlled callout vocabulary
+        run: python3 scripts/check_callouts.py
+
+      - name: Generate fixture coverage matrix
+        run: python3 scripts/generate_fixture_coverage_matrix.py
+
+      - name: Check fixture coverage matrix is committed
+        run: git diff --exit-code -- experiments/generated/fixture-coverage-matrix.json
+
+      - name: Check paper extraction tracks
+        run: python3 scripts/check_paper_tracks.py
+
       - name: Check bibliography audit coverage
         run: julia scripts/check_bibliography.jl
+
+      - name: Check evidence matrix schema and coding status
+        run: python3 scripts/check_evidence_matrix.py
 
       - name: Check generated artifacts and local links
         run: python3 scripts/check_artifacts.py
@@ -54,7 +72,16 @@ jobs:
           julia experiments/test/multiwinding_terminal_assembly.jl
           julia experiments/test/transformer_factor_completion_core.jl
           julia --project=experiments experiments/test/typed_kron.jl
+          julia --project=experiments experiments/test/running_network_typed_kron.jl
           julia --project=experiments experiments/test/kron_ward_scenario.jl
+          julia --project=experiments experiments/test/certified_approximation.jl
+          julia --project=experiments experiments/test/conductor_terminal_lift.jl
+          julia --project=experiments experiments/test/running_network_radiality_witness.jl
+          julia --project=experiments experiments/test/hierarchy_boundary_witness.jl
+          julia --project=experiments experiments/test/data_model_crosswalk.jl
+
+      - name: Test dependency-light package candidate
+        run: julia --project=package/GraphModelsForPowerNetworks package/GraphModelsForPowerNetworks/test/runtests.jl
 
       - name: Build HTML and PDF
         env:

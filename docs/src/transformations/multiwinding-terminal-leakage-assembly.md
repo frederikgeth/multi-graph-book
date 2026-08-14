@@ -175,6 +175,27 @@ For the recorded witness, terminal-current recovery has residual
 winding 2 rather than winding 1 as its internal reference changes the terminal
 matrix by at most ``8.53\times10^{-14}\ \mathrm S``.
 
+The focused test suite also reads the canonical running-network ``x1`` contract
+directly and rebuilds this WYE/WYE/DELTA assembly from its declared winding
+maps, short-circuit data, and current limits. This is a fixture smoke test, not
+nameplate validation: the contract itself labels the illustrative extensions
+and does not turn the executable model into measured equipment data.
+
+The companion conductor-terminal lift is now direct for the serialized
+multiwinding contract. It creates one ordered port for each winding, preserves
+the neutral terminal on the two WYE windings, leaves the DELTA winding as a
+three-terminal port, and records the internal grounding and excitation shunt
+as separate observations. This is a structural incidence result; it does not
+replace the terminal leakage assembly or claim that the reduced port graph
+alone preserves winding-current constraints.
+
+The companion typed-Kron probe makes the reduction precondition visible. If
+the DELTA terminal block is selected for elimination from this serialized
+terminal admittance, its three-by-three internal block is singular because no
+terminal grounding for that port is declared. The reduction therefore refuses
+the Schur complement without a pseudoinverse. The DELTA winding's current-limit
+observation remains in the source contract and is not silently removed.
+
 The package-independent implementation rejects mismatched coil-label sets,
 inconsistent winding positions, differing transformer identities, nonfinite
 matrices, and disagreement between winding and leakage current limits. Its

@@ -1,6 +1,8 @@
 module PortFactorArchitecture
 
-export running_port_factor_bundle, validate_port_factor_bundle
+export running_port_factor_bundle,
+       five_bus_port_factor_bundle,
+       validate_port_factor_bundle
 
 """Build a small, executable `(𝔓, Λ)` slice from the running-network identities.
 
@@ -104,6 +106,65 @@ function running_port_factor_bundle()
 
     Dict("claim_id" => "ARCH-PORT-001", "model" => model, "lambda" => lambda,
          "source_fixture" => "data/running-network/v0.1.0.json")
+end
+
+"Build the scalar five-bus multigraph as a structural port--factor incidence bundle."
+function five_bus_port_factor_bundle()
+    edges = [
+        ("q", "j", "i"), ("r", "i", "j"), ("s", "j", "k"),
+        ("t", "k", "i"), ("v", "l", "j"), ("w", "k", "l"),
+        ("x", "l", "m"),
+    ]
+    buses = ["i", "j", "k", "l", "m"]
+    ports = Dict{String,Any}[]
+    factors = Dict{String,Any}[]
+    lambda = Dict{String,Any}[]
+    for (line, from, to) in edges
+        from_port = "line/$(line)/port/from"
+        to_port = "line/$(line)/port/to"
+        push!(ports, Dict(
+            "id" => from_port, "factor" => "line/$(line)", "junction" => from,
+            "terminal" => "scalar", "variable_space" => "V×I", "source_assets" => ["line/$(line)"],
+        ))
+        push!(ports, Dict(
+            "id" => to_port, "factor" => "line/$(line)", "junction" => to,
+            "terminal" => "scalar", "variable_space" => "V×I", "source_assets" => ["line/$(line)"],
+        ))
+        push!(factors, Dict(
+            "id" => "line/$(line)", "factor_type" => "scalar_series_line",
+            "ports" => [from_port, to_port],
+            "relation" => "I_$(line) = Y_$(line) (U_$(from) − U_$(to))",
+            "source_assets" => ["line/$(line)"],
+        ))
+        push!(lambda, Dict(
+            "asset" => "line/$(line)", "electrical" => "line/$(line)",
+            "relation_type" => "realizes", "scope" => "line identity, orientation, and limit",
+        ))
+    end
+    junctions = [
+        Dict("id" => bus, "relation" => "voltage compatibility plus signed KCL")
+        for bus in buses
+    ]
+    hierarchy = [
+        Dict("parent" => "five-bus-multigraph", "child" => "line/$(line)")
+        for (line, _, _) in edges
+    ]
+    model = Dict(
+        "object_type" => "hierarchical_port_factor_model",
+        "notation" => "𝔓=(Q,J,Φ,j,f,H,X,R)",
+        "ports" => ports,
+        "junctions" => junctions,
+        "factors" => factors,
+        "hierarchy" => hierarchy,
+        "boundary_ports" => [port["id"] for port in ports],
+    )
+    Dict(
+        "claim_id" => "ARCH-PORT-002",
+        "model" => model,
+        "lambda" => lambda,
+        "source_fixture" => "experiments/generated/five-bus-cycle-space-analysis.json",
+        "interpretation" => "Structural lift of the identified scalar bus-branch multigraph; it preserves line identity and declared orientation but does not add a numerical factor evaluator.",
+    )
 end
 
 """Validate incidence and relational consistency of a `(𝔓, Λ)` bundle."""

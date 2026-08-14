@@ -14,11 +14,9 @@
       ]
     },
     "decisions": {
-      "source": [
-      ],
+      "source": [],
       "relation": "all voltage transfers are fixed; adjustable controls are rejected rather than frozen",
-      "target": [
-      ]
+      "target": []
     },
     "constraints": {
       "source": [
@@ -41,11 +39,9 @@
       ]
     },
     "objectives": {
-      "source": [
-      ],
+      "source": [],
       "relation": "no transformer-local objective term is introduced",
-      "target": [
-      ]
+      "target": []
     },
     "state_variables": {
       "source": [
@@ -132,8 +128,7 @@
     },
     "model_category": "terminal_leakage_factor_and_typed_transformer_completion_contract"
   },
-  "forgets": [
-  ],
+  "forgets": [],
   "recovery_map": {
     "terminal_current": "i_terminal = (T*A)^H*i_leak + S^H*i_excitation + i_ground",
     "winding_leakage_current": "i_winding = T^H*i_leak",
@@ -1031,5 +1026,47 @@
     ]
   },
   "schema_version": "1.1.0",
-  "certificate_id": "TR-XFMR-004"
+  "certificate_id": "TR-XFMR-004",
+  "typed_interfaces": {
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "source_variable_labels": [
+      "terminal voltages",
+      "leakage coil voltages and currents",
+      "excitation and internal-ground currents"
+    ],
+    "target_variable_labels": [
+      "stacked terminal voltages and currents",
+      "recoverable component currents"
+    ],
+    "source_unit_families": [
+      "admittance",
+      "current",
+      "voltage"
+    ],
+    "target_unit_families": [
+      "admittance",
+      "current",
+      "voltage"
+    ],
+    "source_boundary_labels": [
+      "all winding terminal voltages and currents"
+    ],
+    "target_boundary_labels": [
+      "all winding terminal voltages and currents"
+    ],
+    "state_domain_ids": [],
+    "unit_family_map": {
+      "A": [
+        "current"
+      ],
+      "S": [
+        "admittance"
+      ],
+      "V": [
+        "voltage"
+      ]
+    },
+    "unresolved_unit_labels": [],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed"
+  }
 }

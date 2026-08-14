@@ -15,6 +15,7 @@ defined by `schemas/transformation-certificate.schema.json`.
 | `classification` | exact normalization, exact compilation, exact behavioural reduction, inner restriction, outer relaxation, scenario approximation, or mixed |
 | `source`, `target` | model categories and object identities |
 | `interfaces` | typed source/target contracts for states, constraints, decisions, objectives, units, and boundary quantities |
+| `typed_interfaces` | crosswalk from the certificate-local labels to the checked state-space/unit vocabulary |
 | `preconditions` | conditions under which the classification holds |
 | `preserves`, `forgets` | the semantic contract |
 | `constraint_map` | forward transport of declared constraints |
@@ -55,10 +56,15 @@ identity. Non-exact component rules are rejected for now because composing
 inner, outer, and mixed approximations requires a more explicit order-theoretic
 calculus.
 
-Composition also carries the six interface contracts from the first source to
-the second target. This is a trace, not yet a proof of compatibility: the
+Composition also carries the six interface contracts and, when present, the
+typed crosswalk from the first source to the second target. This is a trace,
+not yet a proof of compatibility: the
 current rule records both component relations but still uses generated/source
 object identity as its executable meeting check.
+
+![Forward and reverse order of certificate composition.](../assets/certificate-composition.png)
+
+The intermediate identity is the meeting point: constraints compose forward, while recovery reverses the transformation order.
 
 ## Normalization followed by elimination
 
@@ -82,9 +88,36 @@ source list, a target list, and the relation between them. Empty lists are
 allowed and meaningful: for example, a fixed-parameter leakage compilation
 declares that it introduces no tap or investment decision. The fields are
 typed by role but their individual entries are still prose rather than a
-formal state-space or unit algebra.
+formal state-space or unit algebra. The optional `typed_interfaces` extension
+now binds the generated certificates to
+`experiments/generated/state-space-unit-witness.json`: it records the mapped
+unit families, variable and boundary labels, state-domain IDs, and any unit
+labels that remain unresolved. The build checker requires this attachment on
+all sixteen public certificate artifacts, while the schema keeps it optional
+for older external certificates.
 
 The schema does not yet type uncertainty sets or prove that composed interface
 relations are compatible. Nor does it establish associativity modulo
 serialization. Those extensions should be driven by the grounding, switch,
-and larger OPF case studies.
+and larger OPF case studies. Current Julia generators attach the crosswalk
+through `TransformationContracts.attach_typed_interfaces`; the Python helper
+is retained only for migration of older generated artifacts.
+
+## Release-oriented semantic matrix
+
+The generated
+`experiments/generated/semantic-evaluator-matrix.json` binds each of the
+sixteen public certificate artifacts to the Julia evaluator source, its
+semantic test file, and the evaluator symbol or rule name. Each row checks
+that source and target identities, typed unit coverage, the canonical state
+space witness, evaluator provenance, and nonempty evidence are all present.
+The package test matrix reads these rows in addition to validating the
+certificate structure. This is a release traceability contract, not a claim
+that all evaluators share one numerical backend: the rows intentionally span
+package-independent algebra, BMOPFTools cross-checks, and JuMP/Ipopt cases.
+
+The release gate additionally runs the public facade, typed state-space tests,
+and this 16-certificate matrix from a separately instantiated package
+checkout. The pinned result is recorded in
+`experiments/generated/clean-package-matrix.json`; it is a package-isolation
+check, not a claim that the full research fixture has no external dependency.

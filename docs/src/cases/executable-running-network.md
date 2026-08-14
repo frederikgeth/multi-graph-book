@@ -1,7 +1,8 @@
 # Executable running network
 
-**Page status:** executable fixture and local solver evidence; claims are
-versioned and verification-scoped.
+**Page status:** executable fixture, local solver evidence, and a derived
+state-conditioned radiality witness; claims are versioned and
+verification-scoped.
 
 ## Status and purpose
 
@@ -59,6 +60,10 @@ simple-topology quotient, are generated in
 `experiments/generated/view-source-maps.json`. Automated checks require every
 generated object to identify an existing fixture source and bind the map to the
 exact fixture and figure hashes.
+
+![Compilation changes objects, not provenance.](../assets/provenance-lineage.png)
+
+The lineage is the operational companion to the view figure: virtual compiled objects are allowed, but source identity, map identity, and recovery remain available for limits, outages, maintenance, and decisions.
 
 ## Executed checks
 
@@ -120,6 +125,22 @@ delta demand and ``h_{\mathrm{ref}}`` tertiary reference shunt, and it retains
 or any other convenience object merely to make a continuous solve look more
 complete. Future fixture versions may promote semantic-only controls, but must
 change the version, source hashes, and provenance together.
+
+### Derived running-network topology states
+
+The generated
+`experiments/generated/running-network-radiality-witness.json` lifts the
+topology predicates to this same fixture without changing version 0.1.0's
+continuous PF/OPF contract. It retains the four line identities, the ``w_0``
+switch, the two compiled transformer winding connections, and every ordered
+terminal map. Four derived states are compared: base switch closed, switch
+open, ``l_2`` outage, and the combined switch-open/``l_2``-outage state.
+
+The base and switch-open states remain member-nonradial because ``l_1`` and
+``l_2`` are parallel members, even though their simple adjacency projection is
+radial. Removing ``l_2`` removes that member cycle. The witness therefore
+reports both predicates and preserves transformer-factor provenance rather
+than treating the bus quotient as the source topology.
 
 ## What remains semantic-only
 

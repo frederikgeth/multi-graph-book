@@ -5,6 +5,7 @@ using LinearAlgebra
 export comparison_fixture,
        exact_boundary,
        ward_boundary,
+       extended_ward_boundary,
        scenario_candidates,
        evaluate_comparison
 
@@ -40,6 +41,22 @@ function ward_boundary(fixture, base_v, base_i, vB, iI)
        YK = reference.YK, fixed_boundary_injection = reference.KI * base_i)
 end
 
+"""Evaluate an operating-state Ward target with explicit support injection.
+
+The support term is declared as the boundary injection change required by the
+fixed-current fixture, ``K_I(i_I-i_I^base)``.  It is therefore exact for this
+linear source model, while making the additional boundary quantity explicit
+instead of silently folding it into the reduced admittance.
+"""
+function extended_ward_boundary(fixture, base_v, base_i, vB, iI)
+    reference = exact_boundary(fixture, base_v, base_i)
+    support = reference.KI * (iI - base_i)
+    (; iB = reference.YK * vB + reference.KI * base_i + support,
+       YK = reference.YK,
+       fixed_boundary_injection = reference.KI * base_i,
+       support_injection = support)
+end
+
 function scenario_candidates(fixture, base_v, base_i)
     reference = exact_boundary(fixture, base_v, base_i)
     Y = reference.YK
@@ -58,6 +75,7 @@ function evaluate_comparison()
     candidates = scenario_candidates(fixture, base_v, base_i)
     rows = Dict{String,Any}[]
     ward_rows = Dict{String,Any}[]
+    extended_rows = Dict{String,Any}[]
     candidate_rows = Dict{String,Vector{Dict{String,Any}}}()
     for (name, vB, iI) in fixture.scenarios
         exact = exact_boundary(fixture, vB, iI)
@@ -68,22 +86,40 @@ function evaluate_comparison()
             "relative_current_error" => norm(ward.iB - exact.iB) / max(norm(exact.iB), eps()),
             "base_exact" => name == base_name,
         ))
+        extended = extended_ward_boundary(fixture, base_v, base_i, vB, iI)
+        push!(extended_rows, Dict(
+            "scenario" => name,
+            "current_error_norm" => norm(extended.iB - exact.iB),
+            "support_injection_norm" => norm(extended.support_injection),
+            "base_exact" => name == base_name,
+        ))
         push!(rows, Dict(
             "scenario" => name,
             "exact_current_norm" => norm(exact.iB),
+            "boundary_voltage_norm" => norm(vB),
             "internal_voltage_norm" => norm(exact.vI),
+            "internal_current_norm" => norm(iI),
+            "internal_current_recovery_error_norm" => norm(fixture.YIB * vB + fixture.YII * exact.vI - iI),
             "source_limit" => 2.10,
+            "constraint_margin" => 2.10 - norm(exact.iB),
             "exact_limit_satisfied" => norm(exact.iB) ≤ 2.10,
         ))
         candidate_rows[name] = Dict{String,Any}[]
         for (candidate, Ycandidate) in candidates
             b = exact_base.KI * base_i
             predicted = Ycandidate * vB + b
+            recovered_vI = fixture.YII \ (iI - fixture.YIB * vB)
+            recovered_iI = fixture.YIB * vB + fixture.YII * recovered_vI
             push!(candidate_rows[name], Dict(
                 "candidate" => candidate,
                 "current_error_norm" => norm(predicted - exact.iB),
                 "relative_current_error" => norm(predicted - exact.iB) / max(norm(exact.iB), eps()),
+                "boundary_voltage_norm" => norm(vB),
+                "recovered_internal_voltage_norm" => norm(recovered_vI),
+                "recovered_internal_current_norm" => norm(recovered_iI),
+                "recovered_internal_current_error_norm" => norm(recovered_iI - iI),
                 "predicted_limit_satisfied" => norm(predicted) ≤ 2.10,
+                "constraint_margin" => 2.10 - norm(predicted),
                 "structural_nnz" => count(!iszero, Ycandidate),
             ))
         end
@@ -102,10 +138,23 @@ function evaluate_comparison()
         scenario_error[candidate] = total / length(fixture.scenarios) + 0.35 * complexity
     end
     selected = argmin(scenario_error)
-    (; fixture, exact_reduced_admittance = exact_base.YK, ward_rows, exact_rows = rows,
-       candidate_rows, scenario_objective = scenario_error, selected_candidate = selected,
+    decision_observations = [
+        Dict(
+            "candidate" => candidate,
+            "objective_value" => objective,
+            "selected" => candidate == selected,
+            "structural_nnz" => count(!iszero, candidates[candidate]),
+            "scenario_count" => length(fixture.scenarios),
+        ) for (candidate, objective) in scenario_error
+    ]
+    (; fixture, exact_reduced_admittance = exact_base.YK, ward_rows, extended_rows,
+       exact_rows = rows,
+       candidate_rows, scenario_objective = scenario_error,
+       decision_observations, selected_candidate = selected,
        selected_is_exact = selected == "full_kron", base_scenario = base_name,
-       observations = ["boundary current", "internal voltage recovery", "source current limit", "scenario objective"])
+       observations = ["boundary voltage", "boundary current", "internal voltage recovery",
+                       "internal current recovery", "source-current constraint margin",
+                       "scenario objective and selected decision"])
 end
 
 end

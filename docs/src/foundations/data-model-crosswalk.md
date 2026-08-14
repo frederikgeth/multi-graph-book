@@ -1,7 +1,7 @@
 # [Data-model crosswalk](@id data-model-crosswalk)
 
-**Page status:** versioned practice crosswalk; adapter and round-trip tests
-remain future implementation work.
+**Page status:** versioned practice crosswalk with a checked running-fixture
+contract; external package imports and full round-trip adapters remain open.
 
 The book's objects are semantic categories, not a claim that every software or
 standard uses the same schema. This crosswalk records where common ecosystems
@@ -73,3 +73,19 @@ protection-zone logic, contingency state, or profile-specific validity rules.
 Those omissions must be reported as unsupported fields in the adapter record;
 successful parsing is not evidence that a PF, OPF, state-estimation, fault, or
 protection study has been preserved.
+
+## Version-pinned contract witness
+
+The generated `experiments/generated/data-model-crosswalk-witness.json`
+checks the adapter obligations on the running fixture
+(`data/running-network/v0.1.0.json`) for four pinned documentation profiles:
+CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER. It verifies unique
+asset identifiers, terminal provenance, rating owners and units, state-field
+retention, and an explicit MATPOWER two-terminal compilation boundary.
+
+This is deliberately a contract test rather than an import test. The repository
+does not claim that any external package is installed, that a particular
+publisher profile is the latest, or that a successful parse preserves a study
+result. The remaining adapter work is to run these same checks against selected
+version-pinned external files and record unsupported fields and round-trip
+recovery results.

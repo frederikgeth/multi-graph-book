@@ -206,7 +206,10 @@ The source is infeasible, while the summed check
 
 passes.
 
-![Equal nodal admittance but unequal source and naive-aggregate feasible voltage sets.](../assets/five-bus-feasible-sets.png)
+The same source-versus-aggregate feasible-set geometry is shown in the
+complex-plane figure in [A first failure: heterogeneous parallel branches](@ref
+first-failure-parallel-branches). This five-bus chapter keeps the network
+topology and recovery discussion local rather than repeating the scalar card.
 
 The weighted simple graph can still be used exactly if the member recovery
 maps and nonredundant source constraints remain lifted. This is the same

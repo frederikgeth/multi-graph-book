@@ -1,4 +1,5 @@
 using LinearAlgebra
+using JSON3
 using Test
 
 if !isdefined(@__MODULE__, :CoordinateActions)
@@ -54,6 +55,37 @@ function terminal_assembly_windings()
     ]
 end
 
+function running_network_terminal_assembly_inputs()
+    root = normpath(joinpath(@__DIR__, "..", ".."))
+    network = JSON3.read(read(joinpath(root, "data", "running-network", "v0.1.0.json"), String), Dict{String,Any})
+    transformer = network["transformer"]["n_winding"]["x1"]
+    windings = transformer["windings"]
+    data = MultiwindingLeakageData(
+        "x1",
+        ["x1/winding/$(index)" for index in eachindex(windings)],
+        [Float64(winding["v_nom"]) for winding in windings],
+        [Float64(winding["r_winding"]) for winding in windings],
+        [Float64(winding["i_max"]) for winding in windings],
+        Dict((1, 2) => Float64(transformer["x_sc"]["1_2"]),
+             (1, 3) => Float64(transformer["x_sc"]["1_3"]),
+             (2, 3) => Float64(transformer["x_sc"]["2_3"])),
+    )
+    labels = ["a", "b", "c"]
+    factors = WindingFactor[]
+    for (index, winding) in enumerate(windings)
+        terminals = String.(winding["terminal_map"])
+        incidence = winding["configuration"] == "WYE" ?
+            wye_incidence(terminals) :
+            delta_incidence(terminals; roll=Int(winding["delta_roll"]))
+        push!(factors, WindingFactor(
+            "x1/winding/$index", "x1", index, String(winding["bus"]), terminals,
+            String(winding["configuration"]), incidence, fill(Float64(winding["i_max"]), 3);
+            coil_labels=labels,
+        ))
+    end
+    data, factors
+end
+
 @testset "multiwinding terminal leakage assembly" begin
     leakage = compile_pairwise_leakage(terminal_assembly_leakage_data())
     windings = terminal_assembly_windings()
@@ -84,6 +116,17 @@ end
         recovered_source = assembled.coil_permutations[k]' * aligned
         @test assembled.coil_permutations[k] * recovered_source ≈ aligned
     end
+end
+
+@testset "running-network transformer contract smoke test" begin
+    data, windings = running_network_terminal_assembly_inputs()
+    assembled = assemble_terminal_leakage(compile_pairwise_leakage(data), windings)
+    @test assembled isa MultiwindingTerminalAssemblyResult
+    @test assembled.transformer_id == "x1"
+    @test length(assembled.winding_ids) == 3
+    @test size(assembled.terminal_admittance) == (11, 11)
+    @test assembled.coil_current_limit == vcat(fill(180.0, 3), fill(2200.0, 3), fill(280.0, 3))
+    @test isempty(validate_certificate(assembled.certificate))
 end
 
 @testset "terminal factor is invariant to leakage and terminal coordinates" begin
@@ -164,4 +207,3 @@ end
     @test rejected_position isa MultiwindingTerminalAssemblyRejection
     @test "winding_positions_must_cover_1_to_n" in rejected_position.failed_guards
 end
-

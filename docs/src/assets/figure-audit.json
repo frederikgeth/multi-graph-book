@@ -2,6 +2,15 @@
   "schema_version": "1.0.0",
   "review_date": "2026-08-13",
   "principle": "Colour may reinforce a distinction, but no reader-critical distinction is encoded by colour alone.",
+  "visual_grammar": {
+    "background": "white",
+    "ink": "#17212b",
+    "semantic_channels": ["typography", "panel boundaries", "line style", "arrows", "explicit labels", "caption prose"],
+    "colour_role": "secondary cue only",
+    "required_svg_markers": ["title", "desc", "text"],
+    "required_companion": "PNG for PDF-safe rendering",
+    "audit_rule": "Every maintained SVG has an audit entry, a PNG companion, a captioned Markdown use, and a non-colour distinguishing channel."
+  },
   "figures": {
     "earth-return-ladder": {
       "svg": "docs/src/assets/earth-return-ladder.svg",
@@ -9,23 +18,65 @@
       "monochrome_safe": true,
       "distinguishing_channels": ["ordered labelled stages", "box boundaries", "explicit captions"]
     },
+    "argument-spine": {
+      "svg": "docs/src/assets/argument-spine.svg",
+      "png": "docs/src/assets/argument-spine.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["numbered stages", "serpentine arrows", "chapter-purpose labels"]
+    },
+    "audience-routes": {
+      "svg": "docs/src/assets/audience-routes.svg",
+      "png": "docs/src/assets/audience-routes.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["shared spine boxes", "branch arrows", "audience-labelled panels"]
+    },
+    "case-escalation-grid": {
+      "svg": "docs/src/assets/case-escalation-grid.svg",
+      "png": "docs/src/assets/case-escalation-grid.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["row/column labels", "textual yes/partial/absent states", "two titled grids"]
+    },
+    "exactness-classes": {
+      "svg": "docs/src/assets/exactness-classes.svg",
+      "png": "docs/src/assets/exactness-classes.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["four titled panels", "solid/dashed set boundaries", "witness and sample annotations"]
+    },
     "nonlinear-kkt-witness": {
       "svg": "docs/src/assets/nonlinear-kkt-witness.svg",
       "png": "docs/src/assets/nonlinear-kkt-witness.png",
       "monochrome_safe": true,
       "distinguishing_channels": ["source/aggregate panel labels", "matrix boundaries", "numeric captions"]
     },
-    "numerical-structure-witness": {
-      "svg": "docs/src/assets/numerical-structure-witness.svg",
-      "png": "docs/src/assets/numerical-structure-witness.png",
+    "numerical-fill-in": {
+      "svg": "docs/src/assets/numerical-fill-in.svg",
+      "png": "docs/src/assets/numerical-fill-in.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["solid/dashed edge styles", "node and panel labels", "explicit legend"]
+      "distinguishing_channels": ["solid source edges", "dashed fill edges", "eliminated-node annotation"]
+    },
+    "numerical-jacobian-dependency": {
+      "svg": "docs/src/assets/numerical-jacobian-dependency.svg",
+      "png": "docs/src/assets/numerical-jacobian-dependency.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["equation/variable labels", "matrix cells", "explicit dependency legend"]
     },
     "parallel-feasible-set-card": {
       "svg": "docs/src/assets/parallel-feasible-set-card.svg",
       "png": "docs/src/assets/parallel-feasible-set-card.png",
       "monochrome_safe": true,
       "distinguishing_channels": ["three labelled rows", "interval position", "witness annotation"]
+    },
+    "query-partial-orders": {
+      "svg": "docs/src/assets/query-partial-orders.svg",
+      "png": "docs/src/assets/query-partial-orders.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["two titled query panels", "directed/dashed map styles", "explicit incomparability marker"]
+    },
+    "recovery-map-loop": {
+      "svg": "docs/src/assets/recovery-map-loop.svg",
+      "png": "docs/src/assets/recovery-map-loop.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["with/without panels", "solid/dashed recovery arrows", "explicit constraint boxes"]
     },
     "preservation-contract-card": {
       "svg": "docs/src/assets/preservation-contract-card.svg",
@@ -38,6 +89,72 @@
       "png": "docs/src/assets/transformer-anatomy.png",
       "monochrome_safe": true,
       "distinguishing_channels": ["port/factor labels", "arrows and boundaries", "typed interface text"]
+    },
+    "sequence-subspace": {
+      "svg": "docs/src/assets/sequence-subspace.svg",
+      "png": "docs/src/assets/sequence-subspace.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["two titled panels", "axis/residual geometry", "explicit invariant-subspace labels"]
+    },
+    "bus-meaning-overlays": {
+      "svg": "docs/src/assets/bus-meaning-overlays.svg",
+      "png": "docs/src/assets/bus-meaning-overlays.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["four titled overlays", "terminal/wire geometry", "state and provenance labels"]
+    },
+    "certificate-composition": {
+      "svg": "docs/src/assets/certificate-composition.svg",
+      "png": "docs/src/assets/certificate-composition.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["forward/reverse arrows", "intermediate node", "compatibility gate"]
+    },
+    "guarded-rule-gate": {
+      "svg": "docs/src/assets/guarded-rule-gate.svg",
+      "png": "docs/src/assets/guarded-rule-gate.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["guard sequence", "solid pass branch", "dashed structured-rejection branch"]
+    },
+    "spine-band": {
+      "svg": "docs/src/assets/spine-band.svg",
+      "png": "docs/src/assets/spine-band.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["nine numbered stages", "highlighted current stage", "left-to-right route arrows"]
+    },
+    "orientation-power-transfer": {
+      "svg": "docs/src/assets/orientation-power-transfer.svg",
+      "png": "docs/src/assets/orientation-power-transfer.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["two titled panels", "reference and operating arrows", "endpoint labels"]
+    },
+    "cycles-parallelism-radial-tail": {
+      "svg": "docs/src/assets/cycles-parallelism-radial-tail.svg",
+      "png": "docs/src/assets/cycles-parallelism-radial-tail.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["three titled panels", "triangle and parallel fibre geometry", "leaf and tail annotation"]
+    },
+    "map-of-maps": {
+      "svg": "docs/src/assets/map-of-maps.svg",
+      "png": "docs/src/assets/map-of-maps.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["source-to-view arrows", "query labels", "contract gate"]
+    },
+    "kron-fill-in": {
+      "svg": "docs/src/assets/kron-fill-in.svg",
+      "png": "docs/src/assets/kron-fill-in.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["boundary/internal node labels", "solid source edges", "dashed reduced coupling"]
+    },
+    "provenance-lineage": {
+      "svg": "docs/src/assets/provenance-lineage.svg",
+      "png": "docs/src/assets/provenance-lineage.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["typed lineage stages", "virtual-object panel", "dashed recovery path"]
+    },
+    "active-radiality": {
+      "svg": "docs/src/assets/active-radiality.svg",
+      "png": "docs/src/assets/active-radiality.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["inventory/state panels", "solid/open member styles", "explicit radiality predicates"]
     },
     "ybus-jacobian-witness": {
       "svg": "docs/src/assets/ybus-jacobian-witness.svg",

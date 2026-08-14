@@ -1,7 +1,8 @@
 # [Node--breaker, bus--breaker, and topology processing](@id node-breaker-topology)
 
-**Page status:** scoped topology-processing definitions; generated switch-state
-fixture coverage remains future work.
+**Page status:** scoped topology-processing definitions with a generated
+node--breaker switch-state and radiality witness; larger running-network
+topology lifts remain future work.
 
 Topology processing is a state-conditioned compilation. It is not the same as
 deleting switches from a graph or replacing every closed switch by a zero
@@ -100,6 +101,40 @@ state- and purpose-relative:
 The simple graph of topological nodes is a further quotient. It may be useful
 for islands and partitioning, but it forgets member identity and should not be
 used as the source of switching or protection decisions.
+
+### Generated state witness
+
+The artifact
+`experiments/generated/node-breaker-state-witness.json` uses four
+connectivity nodes, three fixed line members, and two switch assets. It
+enumerates four declared states: both switches open, a closed parallel switch,
+a closed chord, and an unknown switch. For each resolved state it reports
+member-radiality, simple adjacency-radiality, compiled-bus radiality, the
+closed-switch contraction components, and the surviving line members. For the
+unknown state it enumerates both admissible realizations rather than silently
+choosing open or closed.
+
+The witness exposes a useful separation:
+
+| State | Member-radial | Adjacency-radial | Interpretation |
+| --- | --- | --- | --- |
+| both switches open | yes | yes | resolved tree |
+| parallel switch closed | no | yes | member cycle hidden by simple projection |
+| chord switch closed | no | no | visible adjacency cycle |
+| switch unknown | unknown | unknown | report both admissible realizations |
+
+These are state-conditioned predicates, not properties of the equipment
+inventory alone. The compiled bus quotient can be radial even when the
+identified-member graph is not, because closed ideal switches contract
+connectivity components and remove self-loops from the bus view.
+
+![Inventory and active-state radiality differ.](../assets/active-radiality.png)
+
+The active-state panel makes the qualification explicit: report both the simple-projection predicate and the identified-member predicate, together with the state ``\sigma`` that selects open and closed members.
+
+![One substation shown as four bus representations.](../assets/bus-meaning-overlays.png)
+
+The same physical drawing is therefore not one graph with four labels: each overlay retains a different object set and answers different queries.
 
 ## Relation to CIM/CGMES and software topology views
 

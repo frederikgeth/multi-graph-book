@@ -49,4 +49,13 @@ using .TypedKronReduction
     @test realization.reciprocal
     @test realization.block_symmetric
     @test realization.diagonal_library_rejected
+
+    transformer_library = assess_restricted_transformer_library(f.Y_library, f.c)
+    transformer_library_witness = assess_restricted_transformer_library(
+        restricted_transformer_library_fixture(f.c), f.c,
+    )
+    @test !transformer_library.admissible
+    @test !transformer_library.off_diagonal_blocks_diagonal
+    @test transformer_library_witness.admissible
+    @test transformer_library_witness.off_diagonal_blocks_diagonal
 end

@@ -72,6 +72,16 @@ impedance matrices, conductor ratings, construction records, outage states, and 
 investment decisions. An aggregated admittance may be a valid terminal-behaviour view while being
 invalid for the decision problem.
 
+The generated line-identity witness makes the graph consequence explicit. In
+the scalar line projection of this multiconductor fixture, the four lines have
+one cycle-space dimension: the chord is ``\ell_2`` against the declared tree
+``\{\ell_1,\ell_3,\ell_4\}``, so the cycle is the two-member parallel fibre.
+Collapsing unordered bus pairs to a simple graph gives cycle rank zero. The
+switch and the three-winding transformer are deliberately excluded from this
+line-only calculation; their terminal and factor incidences belong to the
+port--factor view rather than being silently treated as scalar edges. The
+executable record is `experiments/generated/running-network-cycle-space-witness.json`.
+
 Line ``\ell_3`` is a four-conductor section with nonzero mutual impedance and shunt admittance.
 Line ``\ell_4`` is a three-conductor lateral. Its terminal maps make the phase selection explicit:
 

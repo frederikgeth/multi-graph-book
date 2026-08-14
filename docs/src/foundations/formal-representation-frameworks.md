@@ -220,6 +220,31 @@ witness, not yet a numerical factor evaluator: the relation signatures are
 declared strings and the electrical equations are tested by the existing
 transformation artifacts.
 
+This witness is the evidence object for `ARCH-PORT-001`, whose claim is that
+the typed incidence, multiwinding factor, explicit grounding factor, and
+many-to-many ``\Lambda`` link can be represented together without collapsing
+their identities. The claim is deliberately limited: it validates the
+structure and its declared link signatures, not the adequacy of the proposed
+architecture for arbitrary asset models or a general evaluated-factor
+semantics. The generated artifact is indexed in the
+[knowledge-base evidence register](../reference/knowledge-base-index.md).
+
+The same construction is now applied directly to the five-bus line-identity
+multigraph in `experiments/generated/five-bus-port-factor-witness.json`. It
+creates five bus junctions, fourteen endpoint ports, and seven distinct
+two-port scalar line factors. In particular, ``q`` and ``r`` remain separate
+factors even though their endpoints project to the same simple-graph edge.
+This is claim `ARCH-PORT-002`: a structural fixture lift that preserves
+identity and orientation, not a numerical factor evaluator or a new AC model.
+
+The companion artifact
+`experiments/generated/five-bus-conductor-terminal-lift-witness.json` makes
+the scalar special case explicit: each of the seven identified lines has two
+scalar endpoint ports attached to one of five terminal junctions. The ``q/r``
+parallel fibre remains visible in the terminal incidence and retains the
+extra line-identity cycle dimension. This is claim `ARCH-CONDUCTOR-002`; it is
+a structural lift, not a multiconductor, switch, or transformer calculation.
+
 ## Asset and dependency relation model
 
 **Definition.** An asset/dependency relation model is a typed attributed

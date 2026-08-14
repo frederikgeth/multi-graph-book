@@ -68,6 +68,22 @@
     "member susceptances are positive"
   ],
   "rule_id": "parallel_admittance_with_summed_rating",
+  "provenance": {
+    "solver": "Ipopt through JuMP",
+    "implementation": "experiments/transformations/ParallelDecisionComparison.jl"
+  },
+  "classification": "outer_relaxation",
+  "target": {
+    "object_ids": [
+      "naive_parallel_aggregate_l"
+    ],
+    "detail": {
+      "flow_limit_MW": 200,
+      "susceptance_MW_per_rad": 1100
+    },
+    "model_category": "two_bus_naive_aggregate_decision_model"
+  },
+  "certificate_id": "TR-PAR-003",
   "preserves": [
     "unconstrained_terminal_power_angle_relation"
   ],
@@ -75,11 +91,6 @@
     "naive_aggregate": "sum_l f_lij <= sum_l f_max_l",
     "exact_lifted": "retain f_lij = b_l * delta_ij and f_lij <= f_max_l for every l"
   },
-  "provenance": {
-    "solver": "Ipopt through JuMP",
-    "implementation": "experiments/transformations/ParallelDecisionComparison.jl"
-  },
-  "classification": "outer_relaxation",
   "source": {
     "object_ids": [
       "parallel_member_l1",
@@ -105,15 +116,44 @@
   "recovery_map": {
     "member_flows": "f_lij = b_l * delta_ij"
   },
-  "target": {
-    "object_ids": [
-      "naive_parallel_aggregate_l"
+  "typed_interfaces": {
+    "target_unit_families": [
+      "power"
     ],
-    "detail": {
-      "flow_limit_MW": 200,
-      "susceptance_MW_per_rad": 1100
+    "unresolved_unit_labels": [
+      "rad"
+    ],
+    "target_boundary_labels": [
+      "delta_ij",
+      "aggregate terminal flow"
+    ],
+    "source_unit_families": [
+      "power"
+    ],
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "state_domain_ids": [
+    ],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+    "unit_family_map": {
+      "MW": [
+        "power"
+      ],
+      "rad": [
+      ]
     },
-    "model_category": "two_bus_naive_aggregate_decision_model"
+    "source_boundary_labels": [
+      "delta_ij",
+      "sum of member terminal flows"
+    ],
+    "source_variable_labels": [
+      "delta_ij",
+      "f_l1ij",
+      "f_l2ij"
+    ],
+    "target_variable_labels": [
+      "delta_ij",
+      "f_eqij"
+    ]
   },
   "evidence": {
     "naive_objective_gap_MW": 90.00000090000007,
@@ -146,6 +186,5 @@
       "angle_difference_rad": 0.1818181836340855
     }
   },
-  "schema_version": "1.1.0",
-  "certificate_id": "TR-PAR-003"
+  "schema_version": "1.1.0"
 }

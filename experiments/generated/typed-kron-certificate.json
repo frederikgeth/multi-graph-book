@@ -104,14 +104,62 @@
         "source_current": "I_l = A_lB v_B + A_lI v_I",
         "internal_voltage": "v_I = Y_II^-1 (i_I - Y_IB v_B)"
     },
+    "typed_interfaces": {
+        "target_unit_families": [
+            "admittance",
+            "current",
+            "voltage"
+        ],
+        "unresolved_unit_labels": [
+        ],
+        "target_boundary_labels": [
+            "i_B",
+            "v_B"
+        ],
+        "source_unit_families": [
+            "admittance",
+            "current",
+            "voltage"
+        ],
+        "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+        "state_domain_ids": [
+        ],
+        "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+        "unit_family_map": {
+            "complex-current": [
+                "current"
+            ],
+            "siemens": [
+                "admittance"
+            ],
+            "complex-voltage": [
+                "voltage"
+            ]
+        },
+        "source_boundary_labels": [
+            "i_B",
+            "v_B"
+        ],
+        "source_variable_labels": [
+            "v_B",
+            "v_I",
+            "i_I"
+        ],
+        "target_variable_labels": [
+            "v_B",
+            "i_I"
+        ]
+    },
     "evidence": {
         "checks": {
             "internal_recovery": true,
             "restricted_library_boundary_exposed": true,
+            "restricted_transformer_library_rejection_exposed": true,
             "affine_covariance": true,
             "source_limits_recovered": true,
             "coordinate_covariance": true,
-            "line_shunt_stamping_exact": true
+            "line_shunt_stamping_exact": true,
+            "restricted_transformer_library_positive_witness": true
         },
         "realizability_boundary": "the general reduced multiport is not required to be block-symmetric; an admissible full-matrix line-shunt witness is stamped separately"
     },

@@ -71,6 +71,23 @@
     "candidate-to-retained current recovery passes the exact complex-polydisc row-norm test"
   ],
   "rule_id": "joint_componentwise_parallel_limit_pruning",
+  "provenance": {
+    "independent_primitive": "impedance and admittance matrices use the BMOPFTools ordered four-wire line convention",
+    "implementation": "experiments/transformations/FourWireParallelACDecision.jl",
+    "solver": "Ipopt through JuMP"
+  },
+  "classification": "exact_normalization",
+  "target": {
+    "object_ids": [
+      "four_wire_parallel_l1",
+      "four_wire_parallel_l2"
+    ],
+    "detail": {
+      "pruned_limit_owner": "four_wire_parallel_l2"
+    },
+    "model_category": "same_ac_opf_with_certified_redundant_limits_pruned"
+  },
+  "certificate_id": "TR-PAR-006",
   "preserves": [
     "AC feasible set",
     "served-load objective",
@@ -80,12 +97,6 @@
   "constraint_map": {
     "member_2_limits": "jointly implied by all member-1 component limits through I_l2ij=(Y_l2/Y_l1)I_l1ij at both ends"
   },
-  "provenance": {
-    "independent_primitive": "impedance and admittance matrices use the BMOPFTools ordered four-wire line convention",
-    "implementation": "experiments/transformations/FourWireParallelACDecision.jl",
-    "solver": "Ipopt through JuMP"
-  },
-  "classification": "exact_normalization",
   "source": {
     "object_ids": [
       "four_wire_parallel_l1",
@@ -271,18 +282,109 @@
   "recovery_map": {
     "member_currents": "I_lij = Y_l * (U_i-U_j) for l in {1,2}"
   },
-  "target": {
-    "object_ids": [
-      "four_wire_parallel_l1",
-      "four_wire_parallel_l2"
+  "typed_interfaces": {
+    "target_unit_families": [
+      "current",
+      "dimensionless",
+      "power",
+      "voltage"
     ],
-    "detail": {
-      "pruned_limit_owner": "four_wire_parallel_l2"
+    "unresolved_unit_labels": [
+    ],
+    "target_boundary_labels": [
+      "same four conductor voltages and total terminal currents"
+    ],
+    "source_unit_families": [
+      "current",
+      "dimensionless",
+      "power",
+      "voltage"
+    ],
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "state_domain_ids": [
+    ],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+    "unit_family_map": {
+      "per-unit voltage, current, and power": [
+        "current",
+        "dimensionless",
+        "power",
+        "voltage"
+      ]
     },
-    "model_category": "same_ac_opf_with_certified_redundant_limits_pruned"
+    "source_boundary_labels": [
+      "four conductor voltages and total terminal currents"
+    ],
+    "source_variable_labels": [
+      "U_j(a,b,c,n)",
+      "I_l1ij",
+      "I_l2ij"
+    ],
+    "target_variable_labels": [
+      "U_j(a,b,c,n)",
+      "recovered I_l1ij",
+      "recovered I_l2ij"
+    ]
   },
   "evidence": {
-    "independent_source_objective_gap": 1.3273452115214468e-8,
+    "naive_aggregate_solution": {
+      "phase_power_pu": [
+        {
+          "q": 0.25281453603636517,
+          "p": 1.2640726801818387
+        },
+        {
+          "q": 0.2166981737454649,
+          "p": 0.993199963000017
+        },
+        {
+          "q": 0.1625236303090961,
+          "p": 0.7584436081091067
+        }
+      ],
+      "member_current_magnitude_pu": [
+        [
+          1.210155500806971,
+          0.8633135021039117,
+          0.6716848499027692,
+          0.4376188117605109
+        ],
+        [
+          0.22986699963344073,
+          0.15888322591007156,
+          0.12201666152791371,
+          0.08453325851875328
+        ]
+      ],
+      "neutral_kcl_residual_pu": 3.8766501701910735e-15,
+      "termination_status": "LOCALLY_SOLVED",
+      "phase_voltage_magnitude_pu": [
+        0.8952126752311128,
+        0.9945379825131521,
+        0.9773785497607264
+      ],
+      "model_size": {
+        "variables": 9,
+        "constraints": 19
+      },
+      "neutral_voltage_magnitude_pu": 0.04878847069606448,
+      "member_current_loading": [
+        [
+          1.680771528898571,
+          1.1990465306998774,
+          0.9328956248649573,
+          0.6078039052229318
+        ],
+        [
+          0.3192597217131121,
+          0.22067114709732163,
+          0.16946758545543572,
+          0.11740730349826844
+        ]
+      ],
+      "objective_served_fraction": 1.8058181145454872,
+      "formulation": "naive_aggregate"
+    },
     "pruned_objective_gap": -1.687538997430238e-14,
     "independent_source_boundary": {
       "boundary_voltage_margin_pu": 0.054729836895559214,
@@ -382,6 +484,10 @@
         "c",
         "n"
       ],
+      "best_scalar_ratio": {
+        "re": 0.19012093559340407,
+        "im": 0.003855405209213274
+      },
       "criterion": "exact complex-polydisc row norm of candidate-to-retained current recovery map",
       "retained_member": "l1",
       "backward_error": 3.7229057481769353e-16,
@@ -397,22 +503,15 @@
         "ji"
       ],
       "certified": true,
+      "scope": "series-only members with nonsingular retained admittance and identical endpoint voltage coordinates",
+      "retained_map_condition_number": 2.183001182350658,
+      "backward_error_tolerance": 1.0e-10,
       "preserves": [
         "candidate member law and identity",
         "feasible set of the retained voltage variables",
         "all objectives and constraints on unchanged variables"
       ],
       "candidate_member": "l2",
-      "scalar_proportionality_residual": 0.3662968611051118,
-      "minimum_relative_margin": 1.0e-8,
-      "numerically_ambiguous": false,
-      "best_scalar_ratio": {
-        "re": 0.19012093559340407,
-        "im": 0.003855405209213274
-      },
-      "scope": "series-only members with nonsingular retained admittance and identical endpoint voltage coordinates",
-      "retained_map_condition_number": 2.183001182350658,
-      "backward_error_tolerance": 1.0e-10,
       "candidate_from_retained_current_map": [
         [
           {
@@ -487,6 +586,9 @@
           }
         ]
       ],
+      "scalar_proportionality_residual": 0.3662968611051118,
+      "minimum_relative_margin": 1.0e-8,
+      "numerically_ambiguous": false,
       "forgets": [
         "only candidate limits proved jointly implied"
       ],
@@ -669,65 +771,7 @@
     },
     "lifted_objective_gap": 0,
     "naive_objective_gap": 0.6783852107604709,
-    "naive_aggregate_solution": {
-      "phase_power_pu": [
-        {
-          "q": 0.25281453603636517,
-          "p": 1.2640726801818387
-        },
-        {
-          "q": 0.2166981737454649,
-          "p": 0.993199963000017
-        },
-        {
-          "q": 0.1625236303090961,
-          "p": 0.7584436081091067
-        }
-      ],
-      "member_current_magnitude_pu": [
-        [
-          1.210155500806971,
-          0.8633135021039117,
-          0.6716848499027692,
-          0.4376188117605109
-        ],
-        [
-          0.22986699963344073,
-          0.15888322591007156,
-          0.12201666152791371,
-          0.08453325851875328
-        ]
-      ],
-      "neutral_kcl_residual_pu": 3.8766501701910735e-15,
-      "termination_status": "LOCALLY_SOLVED",
-      "phase_voltage_magnitude_pu": [
-        0.8952126752311128,
-        0.9945379825131521,
-        0.9773785497607264
-      ],
-      "model_size": {
-        "variables": 9,
-        "constraints": 19
-      },
-      "neutral_voltage_magnitude_pu": 0.04878847069606448,
-      "member_current_loading": [
-        [
-          1.680771528898571,
-          1.1990465306998774,
-          0.9328956248649573,
-          0.6078039052229318
-        ],
-        [
-          0.3192597217131121,
-          0.22067114709732163,
-          0.16946758545543572,
-          0.11740730349826844
-        ]
-      ],
-      "objective_served_fraction": 1.8058181145454872,
-      "formulation": "naive_aggregate"
-    }
+    "independent_source_objective_gap": 1.3273452115214468e-8
   },
-  "schema_version": "1.1.0",
-  "certificate_id": "TR-PAR-006"
+  "schema_version": "1.1.0"
 }

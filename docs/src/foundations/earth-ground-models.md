@@ -75,3 +75,24 @@ soil or electrode model, so grounding-asset decisions remain outside its
 current numerical scope. Future explicit-earth cases should add a physical
 earth conductor or grounding-grid factor and test recovery of ground currents,
 neutral voltages, and protection observations.
+
+## A useful comparative case
+
+The BMOPFTools grounding tutorial suggests a compact experiment that fits the
+book's preservation story. Hold the line matrix, load, and bus graph fixed and
+vary only the customer-end grounding relation:
+
+| State | Added relation | Observations that should change |
+|:--|:--|:--|
+| floating neutral | no local neutral-to-reference path | neutral-to-earth voltage and return-current allocation |
+| impedance grounded | finite electrode shunt | electrode current, neutral displacement, and phase-to-neutral voltage |
+| perfectly grounded | ideal voltage constraint | neutral voltage by construction and a different current path |
+| explicit earth return | earth conductor or factor with its own impedance | earth current, neutral current, and grounding-asset limits |
+
+This is not four different graphs in the simple-topology sense. It is one
+asset/connectivity view with four electrical and decision models. A study that
+only asks whether buses are connected sees no change; a study that asks for
+neutral limits, touch voltage, fault current, or electrode maintenance does.
+The comparison is therefore a natural future executable case for the
+``E_0``--``E_3`` classes, not a reason to promote “grounded” to a single graph
+attribute.

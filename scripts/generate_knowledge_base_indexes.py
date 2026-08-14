@@ -16,7 +16,7 @@ DOCS = ROOT / "docs/src"
 GENERATED = ROOT / "experiments/generated"
 INDEX = DOCS / "reference/knowledge-base-index.md"
 STATUS = DOCS / "reference/chapter-status.md"
-PAGE_STATUS = re.compile(r"^\*\*Page status:\*\*\s*(.+?)\s*$", re.MULTILINE)
+PAGE_STATUS = re.compile(r"^\*\*Page status:\*\*[ \t]*(?P<status>[^\r\n]+)$", re.MULTILINE)
 
 
 def facets_for_claim(claim: dict) -> set[str]:
@@ -66,12 +66,22 @@ def page_status_for(path: Path) -> str:
     match = PAGE_STATUS.search(text)
     if match is None:
         raise ValueError(f"reader-facing page lacks Page status metadata: {rel(path)}")
-    # Permit a readable wrapped metadata paragraph in Markdown, while keeping
-    # the generated table one-line and stable.
-    lines = [match.group(1).strip()]
-    remainder = text[match.end():].lstrip("\r\n")
+    # Permit a deliberately wrapped metadata paragraph, but never consume the
+    # first heading, table, or body paragraph after a blank line. The previous
+    # expression allowed ``\\s*`` to cross line boundaries and flattened whole
+    # chapters into the status table.
+    lines = [match.group("status").strip()]
+    remainder = text[match.end():]
+    if remainder.startswith("\r\n"):
+        remainder = remainder[2:]
+    elif remainder.startswith("\n"):
+        remainder = remainder[1:]
+    if not remainder or remainder.startswith(("\n", "\r")):
+        return lines[0]
     for line in remainder.splitlines():
         if not line.strip():
+            break
+        if line.lstrip().startswith(("#", "|", "```")):
             break
         lines.append(line.strip())
     return " ".join(lines)
@@ -116,7 +126,7 @@ def generate_index(claims: list[dict]) -> None:
             by_facet[facet].append(claim)
 
     lines = [
-        "# Knowledge-base indexes",
+        "# [Knowledge-base indexes](@id knowledge-base-index)",
         "",
         f"<!-- generated-from claims/claims.toml sha256:{source_stamp()} -->",
         "This page is generated from `claims/claims.toml` and the JSON artifacts under",
@@ -171,7 +181,7 @@ def generate_status(claims: list[dict]) -> None:
         grouped[claim["chapter"]].append(claim)
     chapter_paths = sorted(DOCS.rglob("*.md"))
     lines = [
-        "# Chapter status",
+        "# [Chapter status](@id chapter-status)",
         "",
         f"<!-- generated-from claims/claims.toml sha256:{source_stamp()} -->",
         "This page is generated from the claims ledger. It makes the evidence state visible without",

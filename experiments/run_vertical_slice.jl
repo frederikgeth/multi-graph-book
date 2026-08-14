@@ -5,6 +5,8 @@ using JuMP
 using SHA
 
 include(joinpath(@__DIR__, "running_network.jl"))
+include(joinpath(@__DIR__, "transformations", "TransformationContracts.jl"))
+using .TransformationContracts
 
 const REPOSITORY_ROOT = normpath(joinpath(@__DIR__, ".."))
 const FIXTURE_PATH = normpath(get(
@@ -240,7 +242,7 @@ summary = Dict{String,Any}(
 )
 
 write_json(joinpath(GENERATED_DIR, "summary.json"), summary)
-write_json(joinpath(GENERATED_DIR, "parallel-branch-certificate.json"), parallel_branch_certificate())
+write_json(joinpath(GENERATED_DIR, "parallel-branch-certificate.json"), attach_typed_interfaces(parallel_branch_certificate()))
 write_json(joinpath(GENERATED_DIR, "provenance.json"), provenance)
 
 println("fixture: ", relpath(FIXTURE_PATH, REPOSITORY_ROOT))

@@ -15,6 +15,15 @@ def main() -> int:
     errors: list[str] = []
     manifest = json.loads(MANIFEST.read_text())
     figures = manifest.get("figures", {})
+    grammar = manifest.get("visual_grammar", {})
+    required_grammar = {
+        "background", "ink", "semantic_channels", "colour_role",
+        "required_svg_markers", "required_companion", "audit_rule",
+    }
+    if not required_grammar <= set(grammar):
+        errors.append("figure audit lacks the shared visual-grammar contract")
+    if grammar.get("colour_role") != "secondary cue only":
+        errors.append("figure audit does not state the colour-only limitation")
     svg_paths = {path.relative_to(ROOT).as_posix() for path in ASSETS.glob("*.svg")}
     listed_svg_paths = {entry.get("svg") for entry in figures.values()}
     if svg_paths != listed_svg_paths:
@@ -37,6 +46,8 @@ def main() -> int:
         channels = entry.get("distinguishing_channels")
         if not isinstance(channels, list) or not channels:
             errors.append(f"{name} lacks non-colour distinguishing channels")
+        if not any(png_path.name in markdown.read_text() for markdown in (ROOT / "docs/src").rglob("*.md")):
+            errors.append(f"{name} has no captioned Markdown use")
 
     if errors:
         print("figure audit failed:")

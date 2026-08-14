@@ -2,7 +2,9 @@ using JSON3
 using LinearAlgebra
 
 include(joinpath(@__DIR__, "transformations", "TypedKronReduction.jl"))
+include(joinpath(@__DIR__, "transformations", "TransformationContracts.jl"))
 using .TypedKronReduction
+using .TransformationContracts
 
 f = typed_kron_fixture()
 source = kron_reduce(f.YBB, f.YBI, f.YIB, f.YII, f.iI, f.vB)
@@ -24,6 +26,10 @@ source_current = recovered_current(f.A_B, f.A_I, f.vB, source.vI)
 limits = abs.(source_current) .+ [0.4, 0.35]
 general_realization = realize_full_matrix_line_shunt(source.YK, f.c)
 realization = realize_full_matrix_line_shunt(f.Y_library, f.c)
+transformer_library = assess_restricted_transformer_library(f.Y_library, f.c)
+transformer_library_witness = assess_restricted_transformer_library(
+    restricted_transformer_library_fixture(f.c), f.c,
+)
 
 result = Dict(
     "witness_id" => "TR-KRON-001",
@@ -63,6 +69,15 @@ result = Dict(
         "restricted_diagonal_line_library_rejected" => realization.diagonal_library_rejected,
         "interpretation" => "exact complete-graph stamping identity; not closure of a restricted physical line library",
     ),
+    "transformer_library_realizability" => Dict(
+        "target_library" => "reciprocal_conductor_diagonal_transformer",
+        "coupled_target_admissible" => transformer_library.admissible,
+        "coupled_target_rejected" => !transformer_library.admissible,
+        "restricted_witness_admissible" => transformer_library_witness.admissible,
+        "coupled_target_off_diagonal_blocks_diagonal" => transformer_library.off_diagonal_blocks_diagonal,
+        "restricted_witness_off_diagonal_blocks_diagonal" => transformer_library_witness.off_diagonal_blocks_diagonal,
+        "interpretation" => "a restricted transformer library is tested as a structural closure condition; this is not a synthesis of transformer parameters",
+    ),
     "checks" => Dict(
         "coordinate_covariance" => norm(target.YK - TB' * source.YK * TB) ≤ 1e-11,
         "affine_covariance" => norm(target.KI * transformed.iI - TB' * source.KI * f.iI) ≤ 1e-11,
@@ -70,6 +85,8 @@ result = Dict(
         "source_limits_recovered" => all(abs.(source_current) .≤ limits),
         "line_shunt_stamping_exact" => realization.exact,
         "restricted_library_boundary_exposed" => realization.diagonal_library_rejected,
+        "restricted_transformer_library_rejection_exposed" => !transformer_library.admissible,
+        "restricted_transformer_library_positive_witness" => transformer_library_witness.admissible,
     ),
 )
 
@@ -112,6 +129,7 @@ certificate = Dict(
     "provenance" => Dict("witness" => "experiments/generated/typed-kron-witness.json", "fixture" => "experiments/transformations/TypedKronReduction.jl"),
     "evidence" => Dict("checks" => result["checks"], "realizability_boundary" => "the general reduced multiport is not required to be block-symmetric; an admissible full-matrix line-shunt witness is stamped separately"),
 )
+certificate = attach_typed_interfaces(certificate)
 certificate_output = joinpath(@__DIR__, "generated", "typed-kron-certificate.json")
 open(certificate_output, "w") do io
     JSON3.pretty(io, certificate)

@@ -76,6 +76,22 @@ using .TransformationContracts
     @test abs(comparison["source_target_objective_gap"]) <= 1.0e-9
     @test optimum["maximum_leakage_current_loading"] ≈ 1.0 atol=1.0e-7
 
+    switching = solve_transformer_tap_ac_switching_decision(case)
+    @test switching.branch_count == 9
+    @test switching.branch_completeness
+    @test length(switching.branches) == switching.branch_count
+    @test switching.selected_branch["net_objective"] ≈
+          maximum(branch["net_objective"] for branch in switching.branches)
+    @test switching.selected_branch["scenario_1_tap"] in switching.positions
+    @test switching.selected_branch["scenario_2_tap"] in switching.positions
+    @test switching.cost_sweep_branch_complete
+    @test length(switching.cost_sweep) == 5
+    @test all(row["branch_count"] == 9 for row in switching.cost_sweep)
+    @test all(pair == (0.95, 0.95) for pair in switching.cost_sweep_selected_pairs)
+    @test switching.positive_breakpoint_count > 0
+    @test length(switching.positive_breakpoints) == switching.positive_breakpoint_count
+    @test issorted([row["switching_cost"] for row in switching.positive_breakpoints])
+
     certificate = transformer_tap_ac_certificate()
     @test certificate["certificate_id"] == "TR-XFMR-006"
     @test certificate["classification"] == "exact_compilation"
@@ -83,4 +99,7 @@ using .TransformationContracts
     @test isempty(validate_certificate(certificate))
     @test certificate["evidence"]["parameterized_target_optimum"]["tap_value"] == 0.95
     @test certificate["evidence"]["frozen_start_objective_gap"] > 0.060
+    @test certificate["evidence"]["switching_decision"].branch_completeness
+    @test certificate["evidence"]["switching_decision"].cost_sweep_branch_complete
+    @test certificate["evidence"]["switching_decision"].positive_breakpoint_count > 0
 end

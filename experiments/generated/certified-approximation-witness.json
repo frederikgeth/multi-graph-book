@@ -1,0 +1,82 @@
+{
+    "checks": {
+        "has_certified_violated_case": true,
+        "bound_dominates_direct_constraint_error": true,
+        "has_ambiguous_case": true,
+        "base_is_exactly_calibrated": true,
+        "has_certified_feasible_case": true
+    },
+    "classifications": {
+        "base": "certified_violated",
+        "low_voltage": "certified_feasible",
+        "high_load": "ambiguous",
+        "internal_outage_proxy": "certified_violated"
+    },
+    "interpretation": "The Ward target is classified using a declared normwise error bound. The bound is exact for the one-state linear fixture and is not a general nonlinear or parameter-uncertainty theorem.",
+    "witness_id": "TR-KRON-003",
+    "claim_id": "TR-KRON-003",
+    "source_fixture": "kron_ward_scenario_fixture_v0.1.0",
+    "bound_method": "δi_I → Y_II⁻¹δi_I → K_Iδi_I → limit margin; exact normwise bound for the one-state linear fixture",
+    "chain": [
+        "parameter/model residual",
+        "recovered-state error bound",
+        "constraint error bound",
+        "approximate constraint margin",
+        "decision classification"
+    ],
+    "rows": [
+        {
+            "base_calibration_point": true,
+            "scenario": "base",
+            "source_residual_norm": 0,
+            "classification": "certified_violated",
+            "constraint_error_bound": 0,
+            "constraint_error": 0,
+            "decision_margin": -0.0953512870588975,
+            "approximate_margin": -0.0953512870588975,
+            "state_error_bound": 0,
+            "approximate_current_norm": 2.1953512870588976,
+            "limit": 2.1
+        },
+        {
+            "base_calibration_point": false,
+            "scenario": "high_load",
+            "source_residual_norm": 0.0824621125123532,
+            "classification": "ambiguous",
+            "constraint_error_bound": 0.034295434465598955,
+            "constraint_error": 0.03429543446559884,
+            "decision_margin": -0.012264305983836703,
+            "approximate_margin": 0.022031128481762252,
+            "state_error_bound": 0.0426829618358235,
+            "approximate_current_norm": 2.077968871518238,
+            "limit": 2.1
+        },
+        {
+            "base_calibration_point": false,
+            "scenario": "low_voltage",
+            "source_residual_norm": 0.07280109889280519,
+            "classification": "certified_feasible",
+            "constraint_error_bound": 0.03027748428986421,
+            "constraint_error": 0.03027748428986435,
+            "decision_margin": 0.08997991167057984,
+            "approximate_margin": 0.12025739596044405,
+            "state_error_bound": 0.03768235412574615,
+            "approximate_current_norm": 1.979742604039556,
+            "limit": 2.1
+        },
+        {
+            "base_calibration_point": false,
+            "scenario": "internal_outage_proxy",
+            "source_residual_norm": 0.18027756377319945,
+            "classification": "certified_violated",
+            "constraint_error_bound": 0.07497621860069861,
+            "constraint_error": 0.07497621860069878,
+            "decision_margin": -0.0019449497705414653,
+            "approximate_margin": -0.07692116837124008,
+            "state_error_bound": 0.09331291838095945,
+            "approximate_current_norm": 2.17692116837124,
+            "limit": 2.1
+        }
+    ],
+    "base_scenario": "base"
+}

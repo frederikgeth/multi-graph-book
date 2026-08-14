@@ -1,0 +1,49 @@
+{
+  "witness_id": "TR-KRON-MULTI-001",
+  "evidence_type": "multiwinding_terminal_typed_kron_recovery",
+  "source_fixture": "data/transformer-contracts/x1-fixed-linear-v0.1.0.json",
+  "source_assembly": "experiments/generated/multiwinding-terminal-assembly-certificate.json",
+  "model_scope": "serialized three-winding terminal admittance with DELTA terminal block eliminated",
+  "retained_terminal_order": [
+    "x1/winding/1/a",
+    "x1/winding/1/b",
+    "x1/winding/1/c",
+    "x1/winding/1/n",
+    "x1/winding/2/a",
+    "x1/winding/2/b",
+    "x1/winding/2/c",
+    "x1/winding/2/n"
+  ],
+  "eliminated_terminal_order": [
+    "x1/winding/3/a",
+    "x1/winding/3/b",
+    "x1/winding/3/c"
+  ],
+  "constraint_observation_ledger": {
+    "eliminated_delta_coil_limits_A": [
+      280,
+      280,
+      280
+    ],
+    "retained_wye_coil_limit_count": 6,
+    "source_coil_current_limit_count": 9,
+    "eliminated_delta_coil_limit_count": 3
+  },
+  "reduced_admittance": null,
+  "recovered_internal_current": null,
+  "checks": {
+    "retained_wye_ports_have_eight_terminals": true,
+    "reduction_refused_without_pseudoinverse": true,
+    "internal_block_is_singular": true,
+    "internal_current_recovery_is_explicit": true,
+    "eliminated_delta_limits_are_positive": true,
+    "eliminated_delta_port_has_three_terminals": true,
+    "eliminated_winding_constraint_observation_retained": true
+  },
+  "residuals": {
+    "internal_block_rank": 2,
+    "internal_block_dimension": 3,
+    "full_terminal_relation": null
+  },
+  "interpretation": "The declared DELTA terminal block is singular because the contract does not provide a terminal grounding for that port. The typed Kron precondition therefore refuses elimination without a pseudoinverse; the eliminated winding's limits remain an explicit observation obligation."
+}

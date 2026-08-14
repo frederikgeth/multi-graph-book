@@ -1,0 +1,154 @@
+{
+    "checks": {
+        "gluing_ports_are_declared": true,
+        "state_domain_is_explicit": true,
+        "refinement_is_total_on_declared_subset": true,
+        "gluing_reuses_shared_boundary": true,
+        "hierarchy_is_acyclic_by_parent_chain": true,
+        "target_boundary_is_typed": true,
+        "source_boundary_is_typed": true,
+        "all_structural_checks_pass": true,
+        "unknown_state_defers_boundary_map": true
+    },
+    "source_fixture": "data/running-network/v0.1.0.json",
+    "target_boundary": [
+        {
+            "source": "topological-node/i1",
+            "id": "bus/i1",
+            "space": "V₄×I₄"
+        },
+        {
+            "source": "topological-node/i2",
+            "id": "bus/i2",
+            "space": "V₄×I₄"
+        },
+        {
+            "source": "topological-node/i5",
+            "id": "bus/i5",
+            "space": "V₄×I₄"
+        },
+        {
+            "source": "topological-node/i6",
+            "id": "bus/i6",
+            "space": "V₃×I₃"
+        }
+    ],
+    "containers": [
+        {
+            "id": "running-network",
+            "parent": null,
+            "boundary": [
+                "i0",
+                "i1",
+                "i2",
+                "i3",
+                "i4",
+                "i5",
+                "i6"
+            ]
+        },
+        {
+            "id": "parallel-corridor",
+            "parent": "running-network",
+            "boundary": [
+                "i1",
+                "i2",
+                "i3",
+                "i4"
+            ]
+        },
+        {
+            "id": "transformer-bay",
+            "parent": "running-network",
+            "boundary": [
+                "i1",
+                "i5",
+                "i6"
+            ]
+        }
+    ],
+    "model_scope": "running-network hierarchy, typed boundary refinement, open-system gluing, and state-conditioned switch maps",
+    "state_cases": {
+        "unknown": {
+            "boundary_map_defined": false,
+            "contraction": "deferred until state resolution",
+            "switch_state": "unknown"
+        },
+        "open": {
+            "boundary_map_defined": true,
+            "contraction": "none",
+            "switch_state": "open"
+        },
+        "closed": {
+            "boundary_map_defined": true,
+            "contraction": "i0/a→i1/a; i0/b→i1/b; i0/c→i1/c; i0/n→i1/n",
+            "switch_state": "closed"
+        }
+    },
+    "refinement": [
+        {
+            "source": "i1/a",
+            "relation": "terminal injection into bus port",
+            "target": "bus/i1"
+        },
+        {
+            "source": "i1/b",
+            "relation": "terminal injection into bus port",
+            "target": "bus/i1"
+        },
+        {
+            "source": "i5/a",
+            "relation": "winding port injection into bus port",
+            "target": "bus/i5"
+        },
+        {
+            "source": "i6/a",
+            "relation": "delta terminal port injection into bus port",
+            "target": "bus/i6"
+        }
+    ],
+    "witness_id": "ARCH-BOUNDARY-001",
+    "evidence_type": "hierarchy_boundary_refinement_witness",
+    "errors": [
+    ],
+    "source_boundary": [
+        {
+            "source": "bus/i1/terminal/a",
+            "id": "i1/a",
+            "space": "V₁×I₁"
+        },
+        {
+            "source": "bus/i1/terminal/b",
+            "id": "i1/b",
+            "space": "V₁×I₁"
+        },
+        {
+            "source": "bus/i5/terminal/a",
+            "id": "i5/a",
+            "space": "V₁×I₁"
+        },
+        {
+            "source": "bus/i6/terminal/a",
+            "id": "i6/a",
+            "space": "V₁×I₁"
+        }
+    ],
+    "gluing": [
+        {
+            "shared_ports": [
+                "bus/i1"
+            ],
+            "relation": "same ordered bus terminal variables",
+            "boundary": "parallel-corridor/transformer-bay at i1"
+        },
+        {
+            "shared_ports": [
+                "bus/i2"
+            ],
+            "relation": "same ordered bus terminal variables",
+            "boundary": "parallel-corridor/running-network at i2"
+        }
+    ],
+    "interpretation": "The witness treats hierarchy as a typed containment relation and refinement as a partial boundary map. Subsystems glue through shared typed ports; an unknown switch state leaves its contraction and boundary map unresolved.",
+    "source": "experiments/transformations/HierarchyBoundaryWitness.jl"
+}

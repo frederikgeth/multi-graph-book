@@ -78,6 +78,10 @@ non-circulant perturbation that mixes sequences. It is a factor-level witness,
 not yet a complete balanced transmission network or a global decision
 equivalence test.
 
+![Positive-sequence invariant subspace and sequence mixing.](../assets/sequence-subspace.png)
+
+The geometry is a projection aid: the circulant factor leaves the positive-sequence axis invariant, while the perturbed factor produces an off-axis residual. The residual ``\\rho_+`` is a coordinate diagnostic until propagated through constraints and decisions.
+
 ## Network-level derivation
 
 Let ``C_+`` restrict a general model to the positive-sequence subspace and let

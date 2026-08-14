@@ -13,11 +13,9 @@
       ]
     },
     "decisions": {
-      "source": [
-      ],
+      "source": [],
       "relation": "the compilation introduces no tap, topology, or investment decision",
-      "target": [
-      ]
+      "target": []
     },
     "constraints": {
       "source": [
@@ -40,11 +38,9 @@
       ]
     },
     "objectives": {
-      "source": [
-      ],
+      "source": [],
       "relation": "the leakage factor declares no local objective term",
-      "target": [
-      ]
+      "target": []
     },
     "state_variables": {
       "source": [
@@ -117,8 +113,7 @@
     },
     "model_category": "pairwise_short_circuit_multiwinding_leakage_data"
   },
-  "forgets": [
-  ],
+  "forgets": [],
   "recovery_map": {
     "pair_i_j": "Z_ij = ZB[p(i),p(i)] + ZB[p(j),p(j)] - 2*ZB[p(i),p(j)] for i,j != r",
     "pair_r_j": "Z_rj = ZB[p(j),p(j)] for selected reference r",
@@ -280,5 +275,52 @@
     }
   },
   "schema_version": "1.1.0",
-  "certificate_id": "TR-XFMR-002"
+  "certificate_id": "TR-XFMR-002",
+  "typed_interfaces": {
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "source_variable_labels": [
+      "external winding coil voltages",
+      "external winding coil currents"
+    ],
+    "target_variable_labels": [
+      "referred winding voltages",
+      "reference voltage differences",
+      "external winding coil currents"
+    ],
+    "source_unit_families": [
+      "current",
+      "impedance",
+      "voltage"
+    ],
+    "target_unit_families": [
+      "admittance",
+      "impedance"
+    ],
+    "source_boundary_labels": [
+      "external winding coil voltages and currents"
+    ],
+    "target_boundary_labels": [
+      "external winding coil voltages and currents"
+    ],
+    "state_domain_ids": [],
+    "unit_family_map": {
+      "declared short-circuit-reference ohm": [
+        "impedance"
+      ],
+      "selected-reference ohm": [
+        "impedance"
+      ],
+      "winding-coordinate siemens": [
+        "admittance"
+      ],
+      "winding-own A": [
+        "current"
+      ],
+      "winding-own V": [
+        "voltage"
+      ]
+    },
+    "unresolved_unit_labels": [],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed"
+  }
 }

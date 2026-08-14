@@ -78,6 +78,27 @@
     "each finite tap-conditioned continuous subproblem is solved to the recorded local optimum"
   ],
   "rule_id": "parameterized_transformer_tap_network_decision_embedding",
+  "provenance": {
+    "source_factor_certificate": "TR-XFMR-005",
+    "source_contract": "x1/discrete-tap/v0.1.0",
+    "solver": "Ipopt through JuMP",
+    "implementation": "experiments/transformations/TransformerTapACDecision.jl",
+    "coordinate_system": "rectangular complex conductor voltages with physical transformer matrices and normalized voltage variables"
+  },
+  "classification": "exact_compilation",
+  "target": {
+    "object_ids": [
+      "generated_parameterized_transformer_factor__x1",
+      "generated_network_tap_subproblems__x1"
+    ],
+    "detail": {
+      "continuous_subproblem_count": 3,
+      "source_parameterized_factor_certificate": "TR-XFMR-005",
+      "selection_method": "exact enumeration of the finite declared tap domain"
+    },
+    "model_category": "parameterized_transformer_factor_embedded_in_discrete_tap_ac_network_opf"
+  },
+  "certificate_id": "TR-XFMR-006",
   "preserves": [
     "tap_decision_identity_and_domain",
     "network_voltage_and_power_balance_feasible_set_at_each_tap",
@@ -90,14 +111,6 @@
     "discrete_selection": "solve every declared tap-conditioned continuous subproblem and select the maximum served-load objective",
     "frozen_start": "tap=tap_start is a feasible-set restriction, not an exact replacement for the retained decision"
   },
-  "provenance": {
-    "source_factor_certificate": "TR-XFMR-005",
-    "source_contract": "x1/discrete-tap/v0.1.0",
-    "solver": "Ipopt through JuMP",
-    "implementation": "experiments/transformations/TransformerTapACDecision.jl",
-    "coordinate_system": "rectangular complex conductor voltages with physical transformer matrices and normalized voltage variables"
-  },
-  "classification": "exact_compilation",
   "source": {
     "object_ids": [
       "x1",
@@ -132,22 +145,61 @@
     "tap": "tap_source = tap_target",
     "terminal_current": "I_terminal = Y_complete(tap)*U"
   },
-  "target": {
-    "object_ids": [
-      "generated_parameterized_transformer_factor__x1",
-      "generated_network_tap_subproblems__x1"
+  "typed_interfaces": {
+    "target_unit_families": [
+      "current",
+      "dimensionless",
+      "power",
+      "voltage"
     ],
-    "detail": {
-      "continuous_subproblem_count": 3,
-      "source_parameterized_factor_certificate": "TR-XFMR-005",
-      "selection_method": "exact enumeration of the finite declared tap domain"
+    "unresolved_unit_labels": [
+    ],
+    "target_boundary_labels": [
+      "the same winding terminal phasors"
+    ],
+    "source_unit_families": [
+      "current",
+      "dimensionless",
+      "power",
+      "voltage"
+    ],
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "state_domain_ids": [
+    ],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+    "unit_family_map": {
+      "A": [
+        "current"
+      ],
+      "dimensionless tap": [
+        "dimensionless"
+      ],
+      "per-unit voltage": [
+        "dimensionless",
+        "voltage"
+      ],
+      "V": [
+        "voltage"
+      ],
+      "MVA": [
+        "power"
+      ]
     },
-    "model_category": "parameterized_transformer_factor_embedded_in_discrete_tap_ac_network_opf"
+    "source_boundary_labels": [
+      "all winding terminal voltage and current phasors"
+    ],
+    "source_variable_labels": [
+      "11 complex transformer terminal voltages",
+      "terminal and leakage currents"
+    ],
+    "target_variable_labels": [
+      "the same 11 complex voltages",
+      "currents recovered from the evaluated parameterized factor"
+    ]
   },
   "evidence": {
     "parameterized_target_subproblems": [
       {
-        "secondary_neutral_kcl_residual_A": 3.135841685019324e-12,
         "leakage_current_limit_A": [
           180,
           180,
@@ -159,7 +211,6 @@
           280,
           280
         ],
-        "termination_status": "LOCALLY_SOLVED",
         "leakage_current_magnitude_A": [
           89.14025241954099,
           89.14025241954106,
@@ -173,11 +224,6 @@
         ],
         "tertiary_kcl_residual_A": 1.3839437004843516e-12,
         "tap_value": 0.95,
-        "secondary_phase_to_neutral_voltage_pu": [
-          1.0291923105734202,
-          1.0291923105734202,
-          1.0291923105734202
-        ],
         "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
         "terminal_voltage": [
           {
@@ -258,21 +304,27 @@
             "magnitude": 2369.0925446796546
           }
         ],
+        "phase_power_balance_residual_MVA": 7.947987303456224e-16,
+        "served_load_MVA": {
+          "active": 1.8458797906686575,
+          "reactive": 0.36917595813373155
+        },
+        "formulation": "parameterized",
+        "secondary_neutral_kcl_residual_A": 3.135841685019324e-12,
+        "termination_status": "LOCALLY_SOLVED",
+        "secondary_phase_to_neutral_voltage_pu": [
+          1.0291923105734202,
+          1.0291923105734202,
+          1.0291923105734202
+        ],
         "model_size": {
           "variables": 15,
           "constraints": 30
         },
-        "phase_power_balance_residual_MVA": 7.947987303456224e-16,
         "maximum_leakage_current_loading": 1.0000000002728129,
-        "objective_served_fraction": 1.2305865271124383,
-        "formulation": "parameterized",
-        "served_load_MVA": {
-          "active": 1.8458797906686575,
-          "reactive": 0.36917595813373155
-        }
+        "objective_served_fraction": 1.2305865271124383
       },
       {
-        "secondary_neutral_kcl_residual_A": 7.895696929033911e-12,
         "leakage_current_limit_A": [
           180,
           180,
@@ -284,7 +336,6 @@
           280,
           280
         ],
-        "termination_status": "LOCALLY_SOLVED",
         "leakage_current_magnitude_A": [
           84.6832397976007,
           84.68323979760085,
@@ -298,11 +349,6 @@
         ],
         "tertiary_kcl_residual_A": 1.3008901005983452e-12,
         "tap_value": 1,
-        "secondary_phase_to_neutral_voltage_pu": [
-          0.9789174161063198,
-          0.9789174161063198,
-          0.9789174161063198
-        ],
         "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
         "terminal_voltage": [
           {
@@ -383,21 +429,27 @@
             "magnitude": 2370.879271769111
           }
         ],
+        "phase_power_balance_residual_MVA": 3.2652638748082423e-15,
+        "served_load_MVA": {
+          "active": 1.755710821510322,
+          "reactive": 0.35114216430206446
+        },
+        "formulation": "parameterized",
+        "secondary_neutral_kcl_residual_A": 7.895696929033911e-12,
+        "termination_status": "LOCALLY_SOLVED",
+        "secondary_phase_to_neutral_voltage_pu": [
+          0.9789174161063198,
+          0.9789174161063198,
+          0.9789174161063198
+        ],
         "model_size": {
           "variables": 15,
           "constraints": 30
         },
-        "phase_power_balance_residual_MVA": 3.2652638748082423e-15,
         "maximum_leakage_current_loading": 1.0000000002614375,
-        "objective_served_fraction": 1.1704738810068813,
-        "formulation": "parameterized",
-        "served_load_MVA": {
-          "active": 1.755710821510322,
-          "reactive": 0.35114216430206446
-        }
+        "objective_served_fraction": 1.1704738810068813
       },
       {
-        "secondary_neutral_kcl_residual_A": 4.955895238830895e-13,
         "leakage_current_limit_A": [
           180,
           180,
@@ -409,7 +461,6 @@
           280,
           280
         ],
-        "termination_status": "LOCALLY_SOLVED",
         "leakage_current_magnitude_A": [
           80.6507045682322,
           80.65070456823237,
@@ -423,11 +474,6 @@
         ],
         "tertiary_kcl_residual_A": 6.67389084595788e-13,
         "tap_value": 1.05,
-        "secondary_phase_to_neutral_voltage_pu": [
-          0.9333169732377591,
-          0.9333169732377591,
-          0.9333169732377591
-        ],
         "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
         "terminal_voltage": [
           {
@@ -508,42 +554,36 @@
             "magnitude": 2372.481997820905
           }
         ],
+        "phase_power_balance_residual_MVA": 3.1168226180653363e-15,
+        "served_load_MVA": {
+          "active": 1.6739255518104996,
+          "reactive": 0.33478511036209996
+        },
+        "formulation": "parameterized",
+        "secondary_neutral_kcl_residual_A": 4.955895238830895e-13,
+        "termination_status": "LOCALLY_SOLVED",
+        "secondary_phase_to_neutral_voltage_pu": [
+          0.9333169732377591,
+          0.9333169732377591,
+          0.9333169732377591
+        ],
         "model_size": {
           "variables": 15,
           "constraints": 30
         },
-        "phase_power_balance_residual_MVA": 3.1168226180653363e-15,
         "maximum_leakage_current_loading": 1.0000000002501384,
-        "objective_served_fraction": 1.1159503678736664,
-        "formulation": "parameterized",
-        "served_load_MVA": {
-          "active": 1.6739255518104996,
-          "reactive": 0.33478511036209996
-        }
+        "objective_served_fraction": 1.1159503678736664
       }
     ],
     "source_target_objective_gap": 0,
     "decision_id": "tap/x1/winding/2",
-    "pointwise_factor_differences": [
-      {
-        "maximum_terminal_admittance_difference_S": 0,
-        "maximum_leakage_current_map_difference_S": 0,
-        "tap_value": 0.95
-      },
-      {
-        "maximum_terminal_admittance_difference_S": 0,
-        "maximum_leakage_current_map_difference_S": 0,
-        "tap_value": 1
-      },
-      {
-        "maximum_terminal_admittance_difference_S": 0,
-        "maximum_leakage_current_map_difference_S": 0,
-        "tap_value": 1.05
-      }
+    "positions": [
+      0.95,
+      1.0,
+      1.05
     ],
     "frozen_start_objective_gap": 0.060112646105557,
     "frozen_start_solution": {
-      "secondary_neutral_kcl_residual_A": 7.895696929033911e-12,
       "leakage_current_limit_A": [
         180,
         180,
@@ -555,7 +595,6 @@
         280,
         280
       ],
-      "termination_status": "LOCALLY_SOLVED",
       "leakage_current_magnitude_A": [
         84.6832397976007,
         84.68323979760085,
@@ -569,11 +608,6 @@
       ],
       "tertiary_kcl_residual_A": 1.3008901005983452e-12,
       "tap_value": 1,
-      "secondary_phase_to_neutral_voltage_pu": [
-        0.9789174161063198,
-        0.9789174161063198,
-        0.9789174161063198
-      ],
       "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
       "terminal_voltage": [
         {
@@ -654,21 +688,293 @@
           "magnitude": 2370.879271769111
         }
       ],
-      "model_size": {
-        "variables": 15,
-        "constraints": 30
-      },
       "phase_power_balance_residual_MVA": 3.2652638748082423e-15,
-      "maximum_leakage_current_loading": 1.0000000002614375,
-      "objective_served_fraction": 1.1704738810068813,
-      "formulation": "parameterized",
       "served_load_MVA": {
         "active": 1.755710821510322,
         "reactive": 0.35114216430206446
+      },
+      "formulation": "parameterized",
+      "secondary_neutral_kcl_residual_A": 7.895696929033911e-12,
+      "termination_status": "LOCALLY_SOLVED",
+      "secondary_phase_to_neutral_voltage_pu": [
+        0.9789174161063198,
+        0.9789174161063198,
+        0.9789174161063198
+      ],
+      "model_size": {
+        "variables": 15,
+        "constraints": 30
+      },
+      "maximum_leakage_current_loading": 1.0000000002614375,
+      "objective_served_fraction": 1.1704738810068813
+    },
+    "pointwise_factor_differences": [
+      {
+        "maximum_terminal_admittance_difference_S": 0,
+        "maximum_leakage_current_map_difference_S": 0,
+        "tap_value": 0.95
+      },
+      {
+        "maximum_terminal_admittance_difference_S": 0,
+        "maximum_leakage_current_map_difference_S": 0,
+        "tap_value": 1
+      },
+      {
+        "maximum_terminal_admittance_difference_S": 0,
+        "maximum_leakage_current_map_difference_S": 0,
+        "tap_value": 1.05
       }
+    ],
+    "switching_decision": {
+      "decision_id": "tap/x1/winding/2",
+      "positions": [
+        0.95,
+        1.0,
+        1.05
+      ],
+      "scenario_scale": 1.15,
+      "switching_cost": 0.02,
+      "branch_count": 9,
+      "branches": [
+        {
+          "switching_cost": 0,
+          "scenario_1_served_fraction": 1.2305865271124383,
+          "net_objective": 2.300661768044194,
+          "scenario_1_tap": 0.95,
+          "scenario_2_tap": 0.95,
+          "scenario_2_served_fraction": 1.0700752409317555
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "scenario_1_served_fraction": 1.2305865271124383,
+          "net_objective": 2.247389901865533,
+          "scenario_1_tap": 0.95,
+          "scenario_2_tap": 1,
+          "scenario_2_served_fraction": 1.0178033747530943
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "scenario_1_served_fraction": 1.2305865271124383,
+          "net_objective": 2.198978151314874,
+          "scenario_1_tap": 0.95,
+          "scenario_2_tap": 1.05,
+          "scenario_2_served_fraction": 0.9703916242024352
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "scenario_1_served_fraction": 1.1704738810068813,
+          "net_objective": 2.2395491219386368,
+          "scenario_1_tap": 1,
+          "scenario_2_tap": 0.95,
+          "scenario_2_served_fraction": 1.0700752409317555
+        },
+        {
+          "switching_cost": 0,
+          "scenario_1_served_fraction": 1.1704738810068813,
+          "net_objective": 2.1882772557599757,
+          "scenario_1_tap": 1,
+          "scenario_2_tap": 1,
+          "scenario_2_served_fraction": 1.0178033747530943
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "scenario_1_served_fraction": 1.1704738810068813,
+          "net_objective": 2.1398655052093165,
+          "scenario_1_tap": 1,
+          "scenario_2_tap": 1.05,
+          "scenario_2_served_fraction": 0.9703916242024352
+        },
+        {
+          "switching_cost": 0.0020000000000000018,
+          "scenario_1_served_fraction": 1.1159503678736664,
+          "net_objective": 2.184025608805422,
+          "scenario_1_tap": 1.05,
+          "scenario_2_tap": 0.95,
+          "scenario_2_served_fraction": 1.0700752409317555
+        },
+        {
+          "switching_cost": 0.0010000000000000009,
+          "scenario_1_served_fraction": 1.1159503678736664,
+          "net_objective": 2.1327537426267607,
+          "scenario_1_tap": 1.05,
+          "scenario_2_tap": 1,
+          "scenario_2_served_fraction": 1.0178033747530943
+        },
+        {
+          "switching_cost": 0,
+          "scenario_1_served_fraction": 1.1159503678736664,
+          "net_objective": 2.0863419920761017,
+          "scenario_1_tap": 1.05,
+          "scenario_2_tap": 1.05,
+          "scenario_2_served_fraction": 0.9703916242024352
+        }
+      ],
+      "selected_branch": {
+        "switching_cost": 0,
+        "scenario_1_served_fraction": 1.2305865271124383,
+        "net_objective": 2.300661768044194,
+        "scenario_1_tap": 0.95,
+        "scenario_2_tap": 0.95,
+        "scenario_2_served_fraction": 1.0700752409317555
+      },
+      "cost_sweep": [
+        {
+          "switching_cost": 0,
+          "selected_scenario_2_tap": 0.95,
+          "selected_net_objective": 2.300661768044194,
+          "selected_scenario_1_tap": 0.95,
+          "branch_count": 9
+        },
+        {
+          "switching_cost": 0.5,
+          "selected_scenario_2_tap": 0.95,
+          "selected_net_objective": 2.300661768044194,
+          "selected_scenario_1_tap": 0.95,
+          "branch_count": 9
+        },
+        {
+          "switching_cost": 1,
+          "selected_scenario_2_tap": 0.95,
+          "selected_net_objective": 2.300661768044194,
+          "selected_scenario_1_tap": 0.95,
+          "branch_count": 9
+        },
+        {
+          "switching_cost": 1.1,
+          "selected_scenario_2_tap": 0.95,
+          "selected_net_objective": 2.300661768044194,
+          "selected_scenario_1_tap": 0.95,
+          "branch_count": 9
+        },
+        {
+          "switching_cost": 2,
+          "selected_scenario_2_tap": 0.95,
+          "selected_net_objective": 2.300661768044194,
+          "selected_scenario_1_tap": 0.95,
+          "branch_count": 9
+        }
+      ],
+      "cost_sweep_branch_complete": true,
+      "cost_sweep_selected_pairs": [
+        [
+          0.95,
+          0.95
+        ],
+        [
+          0.95,
+          0.95
+        ],
+        [
+          0.95,
+          0.95
+        ],
+        [
+          0.95,
+          0.95
+        ],
+        [
+          0.95,
+          0.95
+        ]
+      ],
+      "positive_breakpoint_count": 13,
+      "positive_breakpoints": [
+        {
+          "switching_cost": 0.1270089555489794,
+          "left_scenario_2_tap": 1.05,
+          "right_scenario_2_tap": 1,
+          "right_scenario_1_tap": 1,
+          "left_scenario_1_tap": 0.95
+        },
+        {
+          "switching_cost": 0.9032020719221104,
+          "left_scenario_2_tap": 1.05,
+          "right_scenario_2_tap": 0.95,
+          "right_scenario_1_tap": 1.05,
+          "left_scenario_1_tap": 1
+        },
+        {
+          "switching_cost": 0.9482350110131756,
+          "left_scenario_2_tap": 1,
+          "right_scenario_2_tap": 1.05,
+          "right_scenario_1_tap": 1.05,
+          "left_scenario_1_tap": 1.05
+        },
+        {
+          "switching_cost": 0.9968361672932016,
+          "left_scenario_2_tap": 0.95,
+          "right_scenario_2_tap": 1.05,
+          "right_scenario_1_tap": 1.05,
+          "left_scenario_1_tap": 1.05
+        },
+        {
+          "switching_cost": 1.0454373235732186,
+          "left_scenario_2_tap": 0.95,
+          "right_scenario_2_tap": 1,
+          "right_scenario_1_tap": 1,
+          "left_scenario_1_tap": 1
+        },
+        {
+          "switching_cost": 1.0454373235732275,
+          "left_scenario_2_tap": 0.95,
+          "right_scenario_2_tap": 1,
+          "right_scenario_1_tap": 1.05,
+          "left_scenario_1_tap": 1.05
+        },
+        {
+          "switching_cost": 1.0904702626642928,
+          "left_scenario_2_tap": 1.05,
+          "right_scenario_2_tap": 1.05,
+          "right_scenario_1_tap": 1.05,
+          "left_scenario_1_tap": 1
+        },
+        {
+          "switching_cost": 1.146361592387718,
+          "left_scenario_2_tap": 1.05,
+          "right_scenario_2_tap": 1.05,
+          "right_scenario_1_tap": 1.05,
+          "left_scenario_1_tap": 0.95
+        },
+        {
+          "switching_cost": 1.2022529221111433,
+          "left_scenario_2_tap": 1,
+          "right_scenario_2_tap": 1,
+          "right_scenario_1_tap": 1,
+          "left_scenario_1_tap": 0.95
+        },
+        {
+          "switching_cost": 1.2022529221111433,
+          "left_scenario_2_tap": 1.05,
+          "right_scenario_2_tap": 1.05,
+          "right_scenario_1_tap": 1,
+          "left_scenario_1_tap": 0.95
+        },
+        {
+          "switching_cost": 1.3444881737622605,
+          "left_scenario_2_tap": 1.05,
+          "right_scenario_2_tap": 1,
+          "right_scenario_1_tap": 1.05,
+          "left_scenario_1_tap": 0.95
+        },
+        {
+          "switching_cost": 3.084142597250696,
+          "left_scenario_2_tap": 0.95,
+          "right_scenario_2_tap": 1.05,
+          "right_scenario_1_tap": 1.05,
+          "left_scenario_1_tap": 1
+        },
+        {
+          "switching_cost": 3.240958195788621,
+          "left_scenario_2_tap": 1,
+          "right_scenario_2_tap": 1.05,
+          "right_scenario_1_tap": 1.05,
+          "left_scenario_1_tap": 0.95
+        }
+      ],
+      "branch_completeness": true,
+      "interpretation": "Exact enumeration of the declared two-scenario tap-pair domain; each continuous scenario value is the locally solved Ipopt result for that tap."
     },
     "source_optimum": {
-      "secondary_neutral_kcl_residual_A": 3.135841685019324e-12,
       "leakage_current_limit_A": [
         180,
         180,
@@ -680,7 +986,6 @@
         280,
         280
       ],
-      "termination_status": "LOCALLY_SOLVED",
       "leakage_current_magnitude_A": [
         89.14025241954099,
         89.14025241954106,
@@ -694,11 +999,6 @@
       ],
       "tertiary_kcl_residual_A": 1.3839437004843516e-12,
       "tap_value": 0.95,
-      "secondary_phase_to_neutral_voltage_pu": [
-        1.0291923105734202,
-        1.0291923105734202,
-        1.0291923105734202
-      ],
       "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
       "terminal_voltage": [
         {
@@ -779,21 +1079,27 @@
           "magnitude": 2369.0925446796546
         }
       ],
+      "phase_power_balance_residual_MVA": 7.947987303456224e-16,
+      "served_load_MVA": {
+        "active": 1.8458797906686575,
+        "reactive": 0.36917595813373155
+      },
+      "formulation": "source",
+      "secondary_neutral_kcl_residual_A": 3.135841685019324e-12,
+      "termination_status": "LOCALLY_SOLVED",
+      "secondary_phase_to_neutral_voltage_pu": [
+        1.0291923105734202,
+        1.0291923105734202,
+        1.0291923105734202
+      ],
       "model_size": {
         "variables": 15,
         "constraints": 30
       },
-      "phase_power_balance_residual_MVA": 7.947987303456224e-16,
       "maximum_leakage_current_loading": 1.0000000002728129,
-      "objective_served_fraction": 1.2305865271124383,
-      "formulation": "source",
-      "served_load_MVA": {
-        "active": 1.8458797906686575,
-        "reactive": 0.36917595813373155
-      }
+      "objective_served_fraction": 1.2305865271124383
     },
     "parameterized_target_optimum": {
-      "secondary_neutral_kcl_residual_A": 3.135841685019324e-12,
       "leakage_current_limit_A": [
         180,
         180,
@@ -805,7 +1111,6 @@
         280,
         280
       ],
-      "termination_status": "LOCALLY_SOLVED",
       "leakage_current_magnitude_A": [
         89.14025241954099,
         89.14025241954106,
@@ -819,11 +1124,6 @@
       ],
       "tertiary_kcl_residual_A": 1.3839437004843516e-12,
       "tap_value": 0.95,
-      "secondary_phase_to_neutral_voltage_pu": [
-        1.0291923105734202,
-        1.0291923105734202,
-        1.0291923105734202
-      ],
       "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
       "terminal_voltage": [
         {
@@ -904,27 +1204,28 @@
           "magnitude": 2369.0925446796546
         }
       ],
+      "phase_power_balance_residual_MVA": 7.947987303456224e-16,
+      "served_load_MVA": {
+        "active": 1.8458797906686575,
+        "reactive": 0.36917595813373155
+      },
+      "formulation": "parameterized",
+      "secondary_neutral_kcl_residual_A": 3.135841685019324e-12,
+      "termination_status": "LOCALLY_SOLVED",
+      "secondary_phase_to_neutral_voltage_pu": [
+        1.0291923105734202,
+        1.0291923105734202,
+        1.0291923105734202
+      ],
       "model_size": {
         "variables": 15,
         "constraints": 30
       },
-      "phase_power_balance_residual_MVA": 7.947987303456224e-16,
       "maximum_leakage_current_loading": 1.0000000002728129,
-      "objective_served_fraction": 1.2305865271124383,
-      "formulation": "parameterized",
-      "served_load_MVA": {
-        "active": 1.8458797906686575,
-        "reactive": 0.36917595813373155
-      }
+      "objective_served_fraction": 1.2305865271124383
     },
-    "positions": [
-      0.95,
-      1.0,
-      1.05
-    ],
     "source_subproblems": [
       {
-        "secondary_neutral_kcl_residual_A": 3.135841685019324e-12,
         "leakage_current_limit_A": [
           180,
           180,
@@ -936,7 +1237,6 @@
           280,
           280
         ],
-        "termination_status": "LOCALLY_SOLVED",
         "leakage_current_magnitude_A": [
           89.14025241954099,
           89.14025241954106,
@@ -950,11 +1250,6 @@
         ],
         "tertiary_kcl_residual_A": 1.3839437004843516e-12,
         "tap_value": 0.95,
-        "secondary_phase_to_neutral_voltage_pu": [
-          1.0291923105734202,
-          1.0291923105734202,
-          1.0291923105734202
-        ],
         "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
         "terminal_voltage": [
           {
@@ -1035,21 +1330,27 @@
             "magnitude": 2369.0925446796546
           }
         ],
+        "phase_power_balance_residual_MVA": 7.947987303456224e-16,
+        "served_load_MVA": {
+          "active": 1.8458797906686575,
+          "reactive": 0.36917595813373155
+        },
+        "formulation": "source",
+        "secondary_neutral_kcl_residual_A": 3.135841685019324e-12,
+        "termination_status": "LOCALLY_SOLVED",
+        "secondary_phase_to_neutral_voltage_pu": [
+          1.0291923105734202,
+          1.0291923105734202,
+          1.0291923105734202
+        ],
         "model_size": {
           "variables": 15,
           "constraints": 30
         },
-        "phase_power_balance_residual_MVA": 7.947987303456224e-16,
         "maximum_leakage_current_loading": 1.0000000002728129,
-        "objective_served_fraction": 1.2305865271124383,
-        "formulation": "source",
-        "served_load_MVA": {
-          "active": 1.8458797906686575,
-          "reactive": 0.36917595813373155
-        }
+        "objective_served_fraction": 1.2305865271124383
       },
       {
-        "secondary_neutral_kcl_residual_A": 7.895696929033911e-12,
         "leakage_current_limit_A": [
           180,
           180,
@@ -1061,7 +1362,6 @@
           280,
           280
         ],
-        "termination_status": "LOCALLY_SOLVED",
         "leakage_current_magnitude_A": [
           84.6832397976007,
           84.68323979760085,
@@ -1075,11 +1375,6 @@
         ],
         "tertiary_kcl_residual_A": 1.3008901005983452e-12,
         "tap_value": 1,
-        "secondary_phase_to_neutral_voltage_pu": [
-          0.9789174161063198,
-          0.9789174161063198,
-          0.9789174161063198
-        ],
         "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
         "terminal_voltage": [
           {
@@ -1160,21 +1455,27 @@
             "magnitude": 2370.879271769111
           }
         ],
+        "phase_power_balance_residual_MVA": 3.2652638748082423e-15,
+        "served_load_MVA": {
+          "active": 1.755710821510322,
+          "reactive": 0.35114216430206446
+        },
+        "formulation": "source",
+        "secondary_neutral_kcl_residual_A": 7.895696929033911e-12,
+        "termination_status": "LOCALLY_SOLVED",
+        "secondary_phase_to_neutral_voltage_pu": [
+          0.9789174161063198,
+          0.9789174161063198,
+          0.9789174161063198
+        ],
         "model_size": {
           "variables": 15,
           "constraints": 30
         },
-        "phase_power_balance_residual_MVA": 3.2652638748082423e-15,
         "maximum_leakage_current_loading": 1.0000000002614375,
-        "objective_served_fraction": 1.1704738810068813,
-        "formulation": "source",
-        "served_load_MVA": {
-          "active": 1.755710821510322,
-          "reactive": 0.35114216430206446
-        }
+        "objective_served_fraction": 1.1704738810068813
       },
       {
-        "secondary_neutral_kcl_residual_A": 4.955895238830895e-13,
         "leakage_current_limit_A": [
           180,
           180,
@@ -1186,7 +1487,6 @@
           280,
           280
         ],
-        "termination_status": "LOCALLY_SOLVED",
         "leakage_current_magnitude_A": [
           80.6507045682322,
           80.65070456823237,
@@ -1200,11 +1500,6 @@
         ],
         "tertiary_kcl_residual_A": 6.67389084595788e-13,
         "tap_value": 1.05,
-        "secondary_phase_to_neutral_voltage_pu": [
-          0.9333169732377591,
-          0.9333169732377591,
-          0.9333169732377591
-        ],
         "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
         "terminal_voltage": [
           {
@@ -1285,21 +1580,27 @@
             "magnitude": 2372.481997820905
           }
         ],
+        "phase_power_balance_residual_MVA": 3.1168226180653363e-15,
+        "served_load_MVA": {
+          "active": 1.6739255518104996,
+          "reactive": 0.33478511036209996
+        },
+        "formulation": "source",
+        "secondary_neutral_kcl_residual_A": 4.955895238830895e-13,
+        "termination_status": "LOCALLY_SOLVED",
+        "secondary_phase_to_neutral_voltage_pu": [
+          0.9333169732377591,
+          0.9333169732377591,
+          0.9333169732377591
+        ],
         "model_size": {
           "variables": 15,
           "constraints": 30
         },
-        "phase_power_balance_residual_MVA": 3.1168226180653363e-15,
         "maximum_leakage_current_loading": 1.0000000002501384,
-        "objective_served_fraction": 1.1159503678736664,
-        "formulation": "source",
-        "served_load_MVA": {
-          "active": 1.6739255518104996,
-          "reactive": 0.33478511036209996
-        }
+        "objective_served_fraction": 1.1159503678736664
       }
     ]
   },
-  "schema_version": "1.1.0",
-  "certificate_id": "TR-XFMR-006"
+  "schema_version": "1.1.0"
 }

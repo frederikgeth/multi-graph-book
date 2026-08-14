@@ -62,6 +62,12 @@ must classify each source limit as one of:
   scenarios or parameter sets;
 - **forgotten:** the target cannot answer the rating query.
 
+In particular, a neutral-current limit after Kron elimination is normally
+**mapped**, not forgotten: recover the eliminated neutral voltage or current
+from the retained variables and impose the original magnitude or
+multiconductor norm bound. A boundary ``Y`` matrix without that recovered
+constraint answers terminal behaviour but not the neutral-rating decision.
+
 For a parallel-line transformation, summing admittances preserves an aggregate
 terminal relation but does not map two member limits to one scalar limit unless
 the member feasible regions and their state/ownership semantics support that

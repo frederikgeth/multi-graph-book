@@ -66,13 +66,6 @@
     "member admittances are retained for recovery"
   ],
   "rule_id": "parallel_admittance_with_summed_current_rating",
-  "preserves": [
-    "unconstrained_terminal_current_voltage_relation"
-  ],
-  "constraint_map": {
-    "naive_aggregate": "magnitude(sum_l i_lij) <= sum_l i_max_l",
-    "exact_lifted": "retain i_lij = y_l * delta_u_ij and magnitude(i_lij) <= i_max_l for every l"
-  },
   "provenance": {
     "fixture_members": [
       "l1",
@@ -81,6 +74,25 @@
     "implementation": "experiments/run_vertical_slice.jl"
   },
   "classification": "outer_relaxation",
+  "target": {
+    "object_ids": [
+      "naive_parallel_aggregate_l"
+    ],
+    "detail": {
+      "z_equivalent_ohm": 0.09090909090909091,
+      "maximum_admissible_voltage_drop_V": 18.181818181818183,
+      "i_max_A": 200
+    },
+    "model_category": "scalar_naive_parallel_aggregate_model"
+  },
+  "certificate_id": "TR-PAR-001",
+  "preserves": [
+    "unconstrained_terminal_current_voltage_relation"
+  ],
+  "constraint_map": {
+    "naive_aggregate": "magnitude(sum_l i_lij) <= sum_l i_max_l",
+    "exact_lifted": "retain i_lij = y_l * delta_u_ij and magnitude(i_lij) <= i_max_l for every l"
+  },
   "source": {
     "object_ids": [
       "parallel_member_l1",
@@ -107,16 +119,51 @@
   "recovery_map": {
     "member_currents": "i_lij = y_l * delta_u_ij"
   },
-  "target": {
-    "object_ids": [
-      "naive_parallel_aggregate_l"
+  "typed_interfaces": {
+    "target_unit_families": [
+      "current",
+      "impedance",
+      "voltage"
     ],
-    "detail": {
-      "z_equivalent_ohm": 0.09090909090909091,
-      "maximum_admissible_voltage_drop_V": 18.181818181818183,
-      "i_max_A": 200
+    "unresolved_unit_labels": [
+    ],
+    "target_boundary_labels": [
+      "delta_u_ij",
+      "aggregate current"
+    ],
+    "source_unit_families": [
+      "current",
+      "impedance",
+      "voltage"
+    ],
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "state_domain_ids": [
+    ],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+    "unit_family_map": {
+      "A": [
+        "current"
+      ],
+      "V": [
+        "voltage"
+      ],
+      "ohm": [
+        "impedance"
+      ]
     },
-    "model_category": "scalar_naive_parallel_aggregate_model"
+    "source_boundary_labels": [
+      "delta_u_ij",
+      "sum of member currents"
+    ],
+    "source_variable_labels": [
+      "delta_u_ij",
+      "i_l1ij",
+      "i_l2ij"
+    ],
+    "target_variable_labels": [
+      "delta_u_ij",
+      "i_eqij"
+    ]
   },
   "evidence": {
     "classification_reason": "the target admits a voltage drop that violates one source member limit",
@@ -131,6 +178,5 @@
       "voltage_drop_V": 15
     }
   },
-  "schema_version": "1.1.0",
-  "certificate_id": "TR-PAR-001"
+  "schema_version": "1.1.0"
 }

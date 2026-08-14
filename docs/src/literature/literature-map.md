@@ -1,6 +1,6 @@
 # Literature map
 
-**Page status:** research record; coverage is provisional and not an exhaustive systematic review.
+**Page status:** research record; coverage is provisional and not an exhaustive systematic review. The current evidence matrix contains four single-coded seed records.
 
 The relevant work is substantial but fragmented across communities. No single
 literature currently supplies the full combination of typed physical assets,
@@ -131,3 +131,17 @@ network equivalents.
 
 This table is a provisional assessment to be replaced by a systematic review
 with a reproducible search protocol and coded evidence matrix.
+
+## Current evidence-matrix snapshot
+
+The versioned matrix in `review/evidence-matrix.csv` currently contains four
+included, single-coded records. They cover parallel-line constraint pruning,
+graph-aware Kron/power-flow reductions, structure-preserving radial feeder
+reduction, and CGMES topology processing. The rows intentionally preserve
+different exactness labels and limitations; they are not merged into a single
+claim about “network reduction.”
+
+The 2026-08-14 seed search and its limitations are archived in
+`review/search-runs/2026-08-14-seed-batch.md`. Database exports, duplicate
+resolution, citation chasing, full-text screening, and independent
+double-coding remain open tasks.

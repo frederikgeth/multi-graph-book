@@ -16,6 +16,13 @@ phase-to-neutral power, voltage bounds, and nonlinear AC power balance. Its
 purpose is to test whether the same representation failure changes an AC
 decision optimum.
 
+![Escalation grid for the parallel-member and transformer worked cases.](../assets/case-escalation-grid.png)
+
+The grid explains why the later cases are not repetitions of the scalar
+example. Coupling, explicit neutrals, end shunts, two-end observations, and
+control decisions are added deliberately; the evidence obligation grows with
+the model rather than being hidden behind a larger diagram.
+
 ## Source model
 
 Two buses ``i`` and ``j`` have ordered conductor set ``(a,n)``. The sending

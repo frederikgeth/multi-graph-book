@@ -1,0 +1,881 @@
+{
+    "checks": {
+        "base_preserves_parallel_member_cycle": true,
+        "switch_open_preserves_member_cycle": true,
+        "terminal_provenance_retained": true,
+        "line_outage_changes_inventory": true,
+        "switch_and_line_outage_remain_radial": true,
+        "line_outage_excludes_l2_member": true,
+        "transformer_factor_provenance_retained": true,
+        "transformer_windings_remain_explicit": true,
+        "switch_state_changes_inventory": true,
+        "line_outage_removes_parallel_cycle": true,
+        "switch_open_excludes_switch_member": true
+    },
+    "interpretation": "The running fixture preserves identified lines, the switch asset, multiwinding transformer winding provenance, and terminal maps. Radiality is reported both on the member multigraph and its simple adjacency projection; line outages change member cycles, while opening the existing switch does not remove the parallel-line cycle.",
+    "source": "experiments/transformations/RunningNetworkRadialityWitness.jl",
+    "witness_id": "TOPO-RUNNING-001",
+    "rows": [
+        {
+            "scenario": "base_closed",
+            "analysis": {
+                "bus_components": [
+                    [
+                        "i0",
+                        "i1",
+                        "i2",
+                        "i3",
+                        "i4",
+                        "i5",
+                        "i6"
+                    ]
+                ],
+                "terminal_object_count": 7,
+                "terminal_objects": [
+                    {
+                        "kind": "line",
+                        "asset": "line/l1",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i2"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        }
+                    },
+                    {
+                        "kind": "line",
+                        "asset": "line/l2",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i2"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        }
+                    },
+                    {
+                        "kind": "line",
+                        "asset": "line/l3",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i3"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i2"
+                        }
+                    },
+                    {
+                        "kind": "line",
+                        "asset": "line/l4",
+                        "to": {
+                            "terminals": [
+                                "c",
+                                "a",
+                                "n"
+                            ],
+                            "bus": "i4"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i3"
+                        }
+                    },
+                    {
+                        "kind": "switch",
+                        "asset": "switch/w0",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i0"
+                        },
+                        "state": "closed"
+                    },
+                    {
+                        "kind": "transformer_winding",
+                        "asset": "transformer/x1/w2",
+                        "factor_parent": "transformer/x1",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i5"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        }
+                    },
+                    {
+                        "kind": "transformer_winding",
+                        "asset": "transformer/x1/w3",
+                        "factor_parent": "transformer/x1",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c"
+                            ],
+                            "bus": "i6"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        }
+                    }
+                ],
+                "member_radial": false,
+                "member_cycle_rank": 1,
+                "switch_state": "closed",
+                "member_ids": [
+                    "line/l1",
+                    "line/l2",
+                    "line/l3",
+                    "line/l4",
+                    "switch/w0",
+                    "transformer/x1/w2",
+                    "transformer/x1/w3"
+                ],
+                "adjacency_radial": true,
+                "adjacency_cycle_rank": 0,
+                "omitted_lines": [
+                ],
+                "simple_membership": {
+                    "e_i1i6": [
+                        "transformer/x1/w3"
+                    ],
+                    "e_i2i3": [
+                        "line/l3"
+                    ],
+                    "e_i3i4": [
+                        "line/l4"
+                    ],
+                    "e_i1i5": [
+                        "transformer/x1/w2"
+                    ],
+                    "e_i0i1": [
+                        "switch/w0"
+                    ],
+                    "e_i1i2": [
+                        "line/l1",
+                        "line/l2"
+                    ]
+                },
+                "active_inventory": {
+                    "switch_ids": [
+                        "switch/w0"
+                    ],
+                    "component_count": 1,
+                    "transformer_winding_ids": [
+                        "transformer/x1/w2",
+                        "transformer/x1/w3"
+                    ],
+                    "line_ids": [
+                        "line/l1",
+                        "line/l2",
+                        "line/l3",
+                        "line/l4"
+                    ],
+                    "member_edge_count": 7,
+                    "simple_edge_count": 6
+                }
+            }
+        },
+        {
+            "scenario": "switch_open",
+            "analysis": {
+                "bus_components": [
+                    [
+                        "i0"
+                    ],
+                    [
+                        "i1",
+                        "i2",
+                        "i3",
+                        "i4",
+                        "i5",
+                        "i6"
+                    ]
+                ],
+                "terminal_object_count": 7,
+                "terminal_objects": [
+                    {
+                        "kind": "line",
+                        "asset": "line/l1",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i2"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        }
+                    },
+                    {
+                        "kind": "line",
+                        "asset": "line/l2",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i2"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        }
+                    },
+                    {
+                        "kind": "line",
+                        "asset": "line/l3",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i3"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i2"
+                        }
+                    },
+                    {
+                        "kind": "line",
+                        "asset": "line/l4",
+                        "to": {
+                            "terminals": [
+                                "c",
+                                "a",
+                                "n"
+                            ],
+                            "bus": "i4"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i3"
+                        }
+                    },
+                    {
+                        "kind": "switch",
+                        "asset": "switch/w0",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i0"
+                        },
+                        "state": "open"
+                    },
+                    {
+                        "kind": "transformer_winding",
+                        "asset": "transformer/x1/w2",
+                        "factor_parent": "transformer/x1",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i5"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        }
+                    },
+                    {
+                        "kind": "transformer_winding",
+                        "asset": "transformer/x1/w3",
+                        "factor_parent": "transformer/x1",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c"
+                            ],
+                            "bus": "i6"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        }
+                    }
+                ],
+                "member_radial": false,
+                "member_cycle_rank": 1,
+                "switch_state": "open",
+                "member_ids": [
+                    "line/l1",
+                    "line/l2",
+                    "line/l3",
+                    "line/l4",
+                    "transformer/x1/w2",
+                    "transformer/x1/w3"
+                ],
+                "adjacency_radial": true,
+                "adjacency_cycle_rank": 0,
+                "omitted_lines": [
+                ],
+                "simple_membership": {
+                    "e_i2i3": [
+                        "line/l3"
+                    ],
+                    "e_i3i4": [
+                        "line/l4"
+                    ],
+                    "e_i1i5": [
+                        "transformer/x1/w2"
+                    ],
+                    "e_i1i2": [
+                        "line/l1",
+                        "line/l2"
+                    ],
+                    "e_i1i6": [
+                        "transformer/x1/w3"
+                    ]
+                },
+                "active_inventory": {
+                    "switch_ids": [
+                    ],
+                    "component_count": 2,
+                    "transformer_winding_ids": [
+                        "transformer/x1/w2",
+                        "transformer/x1/w3"
+                    ],
+                    "line_ids": [
+                        "line/l1",
+                        "line/l2",
+                        "line/l3",
+                        "line/l4"
+                    ],
+                    "member_edge_count": 6,
+                    "simple_edge_count": 5
+                }
+            }
+        },
+        {
+            "scenario": "l2_outage",
+            "analysis": {
+                "bus_components": [
+                    [
+                        "i0",
+                        "i1",
+                        "i2",
+                        "i3",
+                        "i4",
+                        "i5",
+                        "i6"
+                    ]
+                ],
+                "terminal_object_count": 6,
+                "terminal_objects": [
+                    {
+                        "kind": "line",
+                        "asset": "line/l1",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i2"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        }
+                    },
+                    {
+                        "kind": "line",
+                        "asset": "line/l3",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i3"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i2"
+                        }
+                    },
+                    {
+                        "kind": "line",
+                        "asset": "line/l4",
+                        "to": {
+                            "terminals": [
+                                "c",
+                                "a",
+                                "n"
+                            ],
+                            "bus": "i4"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i3"
+                        }
+                    },
+                    {
+                        "kind": "switch",
+                        "asset": "switch/w0",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i0"
+                        },
+                        "state": "closed"
+                    },
+                    {
+                        "kind": "transformer_winding",
+                        "asset": "transformer/x1/w2",
+                        "factor_parent": "transformer/x1",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i5"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        }
+                    },
+                    {
+                        "kind": "transformer_winding",
+                        "asset": "transformer/x1/w3",
+                        "factor_parent": "transformer/x1",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c"
+                            ],
+                            "bus": "i6"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        }
+                    }
+                ],
+                "member_radial": true,
+                "member_cycle_rank": 0,
+                "switch_state": "closed",
+                "member_ids": [
+                    "line/l1",
+                    "line/l3",
+                    "line/l4",
+                    "switch/w0",
+                    "transformer/x1/w2",
+                    "transformer/x1/w3"
+                ],
+                "adjacency_radial": true,
+                "adjacency_cycle_rank": 0,
+                "omitted_lines": [
+                    "l2"
+                ],
+                "simple_membership": {
+                    "e_i1i6": [
+                        "transformer/x1/w3"
+                    ],
+                    "e_i2i3": [
+                        "line/l3"
+                    ],
+                    "e_i3i4": [
+                        "line/l4"
+                    ],
+                    "e_i1i5": [
+                        "transformer/x1/w2"
+                    ],
+                    "e_i0i1": [
+                        "switch/w0"
+                    ],
+                    "e_i1i2": [
+                        "line/l1"
+                    ]
+                },
+                "active_inventory": {
+                    "switch_ids": [
+                        "switch/w0"
+                    ],
+                    "component_count": 1,
+                    "transformer_winding_ids": [
+                        "transformer/x1/w2",
+                        "transformer/x1/w3"
+                    ],
+                    "line_ids": [
+                        "line/l1",
+                        "line/l3",
+                        "line/l4"
+                    ],
+                    "member_edge_count": 6,
+                    "simple_edge_count": 6
+                }
+            }
+        },
+        {
+            "scenario": "switch_open_l2_outage",
+            "analysis": {
+                "bus_components": [
+                    [
+                        "i0"
+                    ],
+                    [
+                        "i1",
+                        "i2",
+                        "i3",
+                        "i4",
+                        "i5",
+                        "i6"
+                    ]
+                ],
+                "terminal_object_count": 6,
+                "terminal_objects": [
+                    {
+                        "kind": "line",
+                        "asset": "line/l1",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i2"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        }
+                    },
+                    {
+                        "kind": "line",
+                        "asset": "line/l3",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i3"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i2"
+                        }
+                    },
+                    {
+                        "kind": "line",
+                        "asset": "line/l4",
+                        "to": {
+                            "terminals": [
+                                "c",
+                                "a",
+                                "n"
+                            ],
+                            "bus": "i4"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i3"
+                        }
+                    },
+                    {
+                        "kind": "switch",
+                        "asset": "switch/w0",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i0"
+                        },
+                        "state": "open"
+                    },
+                    {
+                        "kind": "transformer_winding",
+                        "asset": "transformer/x1/w2",
+                        "factor_parent": "transformer/x1",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i5"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        }
+                    },
+                    {
+                        "kind": "transformer_winding",
+                        "asset": "transformer/x1/w3",
+                        "factor_parent": "transformer/x1",
+                        "to": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c"
+                            ],
+                            "bus": "i6"
+                        },
+                        "from": {
+                            "terminals": [
+                                "a",
+                                "b",
+                                "c",
+                                "n"
+                            ],
+                            "bus": "i1"
+                        }
+                    }
+                ],
+                "member_radial": true,
+                "member_cycle_rank": 0,
+                "switch_state": "open",
+                "member_ids": [
+                    "line/l1",
+                    "line/l3",
+                    "line/l4",
+                    "transformer/x1/w2",
+                    "transformer/x1/w3"
+                ],
+                "adjacency_radial": true,
+                "adjacency_cycle_rank": 0,
+                "omitted_lines": [
+                    "l2"
+                ],
+                "simple_membership": {
+                    "e_i2i3": [
+                        "line/l3"
+                    ],
+                    "e_i3i4": [
+                        "line/l4"
+                    ],
+                    "e_i1i5": [
+                        "transformer/x1/w2"
+                    ],
+                    "e_i1i2": [
+                        "line/l1"
+                    ],
+                    "e_i1i6": [
+                        "transformer/x1/w3"
+                    ]
+                },
+                "active_inventory": {
+                    "switch_ids": [
+                    ],
+                    "component_count": 2,
+                    "transformer_winding_ids": [
+                        "transformer/x1/w2",
+                        "transformer/x1/w3"
+                    ],
+                    "line_ids": [
+                        "line/l1",
+                        "line/l3",
+                        "line/l4"
+                    ],
+                    "member_edge_count": 5,
+                    "simple_edge_count": 5
+                }
+            }
+        }
+    ],
+    "source_fixture": "data/running-network/v0.1.0.json",
+    "evidence_type": "running_network_state_radiality_witness",
+    "model_scope": "running-network v0.1.0 bus/member graph with switch and line-outage variants plus conductor-terminal provenance"
+}

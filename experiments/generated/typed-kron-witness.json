@@ -2,10 +2,12 @@
     "checks": {
         "internal_recovery": true,
         "restricted_library_boundary_exposed": true,
+        "restricted_transformer_library_rejection_exposed": true,
         "affine_covariance": true,
         "source_limits_recovered": true,
         "coordinate_covariance": true,
-        "line_shunt_stamping_exact": true
+        "line_shunt_stamping_exact": true,
+        "restricted_transformer_library_positive_witness": true
     },
     "coordinate_action": {
         "recovery_covariance_residual": 6.283435673255384e-17,
@@ -54,6 +56,15 @@
         "conductor_count": 2,
         "internal_coordinates": 2,
         "retained_coordinates": 6
+    },
+    "transformer_library_realizability": {
+        "coupled_target_rejected": true,
+        "coupled_target_off_diagonal_blocks_diagonal": false,
+        "restricted_witness_admissible": true,
+        "coupled_target_admissible": false,
+        "interpretation": "a restricted transformer library is tested as a structural closure condition; this is not a synthesis of transformer parameters",
+        "target_library": "reciprocal_conductor_diagonal_transformer",
+        "restricted_witness_off_diagonal_blocks_diagonal": true
     },
     "boundary_relation": {
         "boundary_residual": 0,

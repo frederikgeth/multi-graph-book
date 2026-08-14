@@ -1,0 +1,692 @@
+{
+    "junctions": [
+        {
+            "id": "i0/a",
+            "bus": "i0",
+            "terminal": "a"
+        },
+        {
+            "id": "i0/b",
+            "bus": "i0",
+            "terminal": "b"
+        },
+        {
+            "id": "i0/c",
+            "bus": "i0",
+            "terminal": "c"
+        },
+        {
+            "id": "i0/n",
+            "bus": "i0",
+            "terminal": "n"
+        },
+        {
+            "id": "i1/a",
+            "bus": "i1",
+            "terminal": "a"
+        },
+        {
+            "id": "i1/b",
+            "bus": "i1",
+            "terminal": "b"
+        },
+        {
+            "id": "i1/c",
+            "bus": "i1",
+            "terminal": "c"
+        },
+        {
+            "id": "i1/n",
+            "bus": "i1",
+            "terminal": "n"
+        },
+        {
+            "id": "i2/a",
+            "bus": "i2",
+            "terminal": "a"
+        },
+        {
+            "id": "i2/b",
+            "bus": "i2",
+            "terminal": "b"
+        },
+        {
+            "id": "i2/c",
+            "bus": "i2",
+            "terminal": "c"
+        },
+        {
+            "id": "i2/n",
+            "bus": "i2",
+            "terminal": "n"
+        },
+        {
+            "id": "i3/a",
+            "bus": "i3",
+            "terminal": "a"
+        },
+        {
+            "id": "i3/b",
+            "bus": "i3",
+            "terminal": "b"
+        },
+        {
+            "id": "i3/c",
+            "bus": "i3",
+            "terminal": "c"
+        },
+        {
+            "id": "i3/n",
+            "bus": "i3",
+            "terminal": "n"
+        },
+        {
+            "id": "i4/a",
+            "bus": "i4",
+            "terminal": "a"
+        },
+        {
+            "id": "i4/c",
+            "bus": "i4",
+            "terminal": "c"
+        },
+        {
+            "id": "i4/n",
+            "bus": "i4",
+            "terminal": "n"
+        },
+        {
+            "id": "i5/a",
+            "bus": "i5",
+            "terminal": "a"
+        },
+        {
+            "id": "i5/b",
+            "bus": "i5",
+            "terminal": "b"
+        },
+        {
+            "id": "i5/c",
+            "bus": "i5",
+            "terminal": "c"
+        },
+        {
+            "id": "i5/n",
+            "bus": "i5",
+            "terminal": "n"
+        },
+        {
+            "id": "i6/a",
+            "bus": "i6",
+            "terminal": "a"
+        },
+        {
+            "id": "i6/b",
+            "bus": "i6",
+            "terminal": "b"
+        },
+        {
+            "id": "i6/c",
+            "bus": "i6",
+            "terminal": "c"
+        }
+    ],
+    "checks": {
+        "switch_has_three_state_domain": true,
+        "all_factor_ports_resolve": true,
+        "line_factors_are_two_port": true,
+        "closed_switch_contraction_is_per_conductor": true,
+        "conductor_terminal_vertices_preserved": true,
+        "unknown_switch_terminal_state_is_unresolved": true,
+        "unknown_switch_has_no_forced_contraction": true,
+        "state_conditioned_terminal_analysis_present": true,
+        "transformer_is_multi_terminal": true,
+        "terminal_member_parallel_cycle_retained": true
+    },
+    "terminal_members": {
+        "line": [
+            {
+                "id": "line/l1/a",
+                "to": "i2/a",
+                "from": "i1/a"
+            },
+            {
+                "id": "line/l1/b",
+                "to": "i2/b",
+                "from": "i1/b"
+            },
+            {
+                "id": "line/l1/c",
+                "to": "i2/c",
+                "from": "i1/c"
+            },
+            {
+                "id": "line/l1/n",
+                "to": "i2/n",
+                "from": "i1/n"
+            },
+            {
+                "id": "line/l2/a",
+                "to": "i2/a",
+                "from": "i1/a"
+            },
+            {
+                "id": "line/l2/b",
+                "to": "i2/b",
+                "from": "i1/b"
+            },
+            {
+                "id": "line/l2/c",
+                "to": "i2/c",
+                "from": "i1/c"
+            },
+            {
+                "id": "line/l2/n",
+                "to": "i2/n",
+                "from": "i1/n"
+            },
+            {
+                "id": "line/l3/a",
+                "to": "i3/a",
+                "from": "i2/a"
+            },
+            {
+                "id": "line/l3/b",
+                "to": "i3/b",
+                "from": "i2/b"
+            },
+            {
+                "id": "line/l3/c",
+                "to": "i3/c",
+                "from": "i2/c"
+            },
+            {
+                "id": "line/l3/n",
+                "to": "i3/n",
+                "from": "i2/n"
+            },
+            {
+                "id": "line/l4/a",
+                "to": "i4/c",
+                "from": "i3/a"
+            },
+            {
+                "id": "line/l4/c",
+                "to": "i4/a",
+                "from": "i3/c"
+            },
+            {
+                "id": "line/l4/n",
+                "to": "i4/n",
+                "from": "i3/n"
+            }
+        ],
+        "switch": [
+            {
+                "id": "switch/w0/a",
+                "to": "i1/a",
+                "from": "i0/a"
+            },
+            {
+                "id": "switch/w0/b",
+                "to": "i1/b",
+                "from": "i0/b"
+            },
+            {
+                "id": "switch/w0/c",
+                "to": "i1/c",
+                "from": "i0/c"
+            },
+            {
+                "id": "switch/w0/n",
+                "to": "i1/n",
+                "from": "i0/n"
+            }
+        ]
+    },
+    "terminal_states": {
+        "switch_closed": {
+            "member_radial": false,
+            "switch_state": "closed",
+            "active_member_cycle_rank": 4,
+            "adjacency_radial": true,
+            "active_adjacency_cycle_rank": 0,
+            "active_member_count": 19,
+            "parallel_fibres": [
+                [
+                    "line/l1/b",
+                    "line/l2/b"
+                ],
+                [
+                    "line/l1/n",
+                    "line/l2/n"
+                ],
+                [
+                    "line/l1/a",
+                    "line/l2/a"
+                ],
+                [
+                    "line/l1/c",
+                    "line/l2/c"
+                ]
+            ]
+        },
+        "switch_unknown": [
+            {
+                "member_radial": false,
+                "switch_state": "open",
+                "active_member_cycle_rank": 4,
+                "adjacency_radial": true,
+                "active_adjacency_cycle_rank": 0,
+                "active_member_count": 15,
+                "parallel_fibres": [
+                    [
+                        "line/l1/b",
+                        "line/l2/b"
+                    ],
+                    [
+                        "line/l1/n",
+                        "line/l2/n"
+                    ],
+                    [
+                        "line/l1/a",
+                        "line/l2/a"
+                    ],
+                    [
+                        "line/l1/c",
+                        "line/l2/c"
+                    ]
+                ]
+            },
+            {
+                "member_radial": false,
+                "switch_state": "closed",
+                "active_member_cycle_rank": 4,
+                "adjacency_radial": true,
+                "active_adjacency_cycle_rank": 0,
+                "active_member_count": 19,
+                "parallel_fibres": [
+                    [
+                        "line/l1/b",
+                        "line/l2/b"
+                    ],
+                    [
+                        "line/l1/n",
+                        "line/l2/n"
+                    ],
+                    [
+                        "line/l1/a",
+                        "line/l2/a"
+                    ],
+                    [
+                        "line/l1/c",
+                        "line/l2/c"
+                    ]
+                ]
+            }
+        ],
+        "switch_open": {
+            "member_radial": false,
+            "switch_state": "open",
+            "active_member_cycle_rank": 4,
+            "adjacency_radial": true,
+            "active_adjacency_cycle_rank": 0,
+            "active_member_count": 15,
+            "parallel_fibres": [
+                [
+                    "line/l1/b",
+                    "line/l2/b"
+                ],
+                [
+                    "line/l1/n",
+                    "line/l2/n"
+                ],
+                [
+                    "line/l1/a",
+                    "line/l2/a"
+                ],
+                [
+                    "line/l1/c",
+                    "line/l2/c"
+                ]
+            ]
+        }
+    },
+    "source_fixture": "data/running-network/v0.1.0.json",
+    "model_scope": "running-network v0.1.0 conductor-terminal incidence with line, switch, and three-winding factor compilation",
+    "witness_id": "ARCH-CONDUCTOR-001",
+    "evidence_type": "conductor_terminal_incidence_witness",
+    "interpretation": "The lift keeps bus identity, ordered conductor terminals, factor arity, and switch state separate. Closed-switch contraction is a per-conductor state-conditioned map; unknown state is not contracted.",
+    "switch_contracted": {
+        "unknown": null,
+        "open": {
+        },
+        "closed": {
+            "i0/b": "i1/b",
+            "i0/a": "i1/a",
+            "i0/c": "i1/c",
+            "i0/n": "i1/n"
+        }
+    },
+    "factors": [
+        {
+            "source_asset": "line/l1",
+            "id": "line/l1",
+            "ports": [
+                "line/l1/port/from",
+                "line/l1/port/to"
+            ],
+            "type": "multiconductor_line",
+            "arity": 2
+        },
+        {
+            "source_asset": "line/l2",
+            "id": "line/l2",
+            "ports": [
+                "line/l2/port/from",
+                "line/l2/port/to"
+            ],
+            "type": "multiconductor_line",
+            "arity": 2
+        },
+        {
+            "source_asset": "line/l3",
+            "id": "line/l3",
+            "ports": [
+                "line/l3/port/from",
+                "line/l3/port/to"
+            ],
+            "type": "multiconductor_line",
+            "arity": 2
+        },
+        {
+            "source_asset": "line/l4",
+            "id": "line/l4",
+            "ports": [
+                "line/l4/port/from",
+                "line/l4/port/to"
+            ],
+            "type": "multiconductor_line",
+            "arity": 2
+        },
+        {
+            "source_asset": "transformer/x1",
+            "id": "transformer/x1",
+            "ports": [
+                "transformer/x1/port/w1",
+                "transformer/x1/port/w2",
+                "transformer/x1/port/w3"
+            ],
+            "type": "multiwinding_transformer",
+            "arity": 3
+        },
+        {
+            "source_asset": "switch/w0",
+            "id": "switch/w0",
+            "ports": [
+                "switch/w0/port/from",
+                "switch/w0/port/to"
+            ],
+            "type": "ideal_switch",
+            "arity": 2,
+            "states": [
+                "closed",
+                "open",
+                "unknown"
+            ]
+        }
+    ],
+    "source": "experiments/transformations/ConductorTerminalLift.jl",
+    "ports": [
+        {
+            "junctions": [
+                "i1/a",
+                "i1/b",
+                "i1/c",
+                "i1/n"
+            ],
+            "terminal_order": [
+                "a",
+                "b",
+                "c",
+                "n"
+            ],
+            "id": "line/l1/port/from",
+            "factor": "line/l1",
+            "variable_space": "V_4×I_4"
+        },
+        {
+            "junctions": [
+                "i2/a",
+                "i2/b",
+                "i2/c",
+                "i2/n"
+            ],
+            "terminal_order": [
+                "a",
+                "b",
+                "c",
+                "n"
+            ],
+            "id": "line/l1/port/to",
+            "factor": "line/l1",
+            "variable_space": "V_4×I_4"
+        },
+        {
+            "junctions": [
+                "i1/a",
+                "i1/b",
+                "i1/c",
+                "i1/n"
+            ],
+            "terminal_order": [
+                "a",
+                "b",
+                "c",
+                "n"
+            ],
+            "id": "line/l2/port/from",
+            "factor": "line/l2",
+            "variable_space": "V_4×I_4"
+        },
+        {
+            "junctions": [
+                "i2/a",
+                "i2/b",
+                "i2/c",
+                "i2/n"
+            ],
+            "terminal_order": [
+                "a",
+                "b",
+                "c",
+                "n"
+            ],
+            "id": "line/l2/port/to",
+            "factor": "line/l2",
+            "variable_space": "V_4×I_4"
+        },
+        {
+            "junctions": [
+                "i2/a",
+                "i2/b",
+                "i2/c",
+                "i2/n"
+            ],
+            "terminal_order": [
+                "a",
+                "b",
+                "c",
+                "n"
+            ],
+            "id": "line/l3/port/from",
+            "factor": "line/l3",
+            "variable_space": "V_4×I_4"
+        },
+        {
+            "junctions": [
+                "i3/a",
+                "i3/b",
+                "i3/c",
+                "i3/n"
+            ],
+            "terminal_order": [
+                "a",
+                "b",
+                "c",
+                "n"
+            ],
+            "id": "line/l3/port/to",
+            "factor": "line/l3",
+            "variable_space": "V_4×I_4"
+        },
+        {
+            "junctions": [
+                "i3/a",
+                "i3/c",
+                "i3/n"
+            ],
+            "terminal_order": [
+                "a",
+                "c",
+                "n"
+            ],
+            "id": "line/l4/port/from",
+            "factor": "line/l4",
+            "variable_space": "V_3×I_3"
+        },
+        {
+            "junctions": [
+                "i4/c",
+                "i4/a",
+                "i4/n"
+            ],
+            "terminal_order": [
+                "c",
+                "a",
+                "n"
+            ],
+            "id": "line/l4/port/to",
+            "factor": "line/l4",
+            "variable_space": "V_3×I_3"
+        },
+        {
+            "junctions": [
+                "i1/a",
+                "i1/b",
+                "i1/c",
+                "i1/n"
+            ],
+            "terminal_order": [
+                "a",
+                "b",
+                "c",
+                "n"
+            ],
+            "winding_index": 1,
+            "id": "transformer/x1/port/w1",
+            "factor": "transformer/x1",
+            "variable_space": "V_4×I_4"
+        },
+        {
+            "junctions": [
+                "i5/a",
+                "i5/b",
+                "i5/c",
+                "i5/n"
+            ],
+            "terminal_order": [
+                "a",
+                "b",
+                "c",
+                "n"
+            ],
+            "winding_index": 2,
+            "id": "transformer/x1/port/w2",
+            "factor": "transformer/x1",
+            "variable_space": "V_4×I_4"
+        },
+        {
+            "junctions": [
+                "i6/a",
+                "i6/b",
+                "i6/c"
+            ],
+            "terminal_order": [
+                "a",
+                "b",
+                "c"
+            ],
+            "winding_index": 3,
+            "id": "transformer/x1/port/w3",
+            "factor": "transformer/x1",
+            "variable_space": "V_3×I_3"
+        },
+        {
+            "junctions": [
+                "i0/a",
+                "i0/b",
+                "i0/c",
+                "i0/n"
+            ],
+            "terminal_order": [
+                "a",
+                "b",
+                "c",
+                "n"
+            ],
+            "id": "switch/w0/port/from",
+            "factor": "switch/w0",
+            "variable_space": "V_4×I_4"
+        },
+        {
+            "junctions": [
+                "i1/a",
+                "i1/b",
+                "i1/c",
+                "i1/n"
+            ],
+            "terminal_order": [
+                "a",
+                "b",
+                "c",
+                "n"
+            ],
+            "id": "switch/w0/port/to",
+            "factor": "switch/w0",
+            "variable_space": "V_4×I_4"
+        }
+    ],
+    "relations": [
+        {
+            "electrical": "line/l1",
+            "asset": "line/l1",
+            "relation": "realizes ordered terminal matrix relation"
+        },
+        {
+            "electrical": "line/l2",
+            "asset": "line/l2",
+            "relation": "realizes ordered terminal matrix relation"
+        },
+        {
+            "electrical": "line/l3",
+            "asset": "line/l3",
+            "relation": "realizes ordered terminal matrix relation"
+        },
+        {
+            "electrical": "line/l4",
+            "asset": "line/l4",
+            "relation": "realizes ordered terminal matrix relation"
+        },
+        {
+            "electrical": "transformer/x1",
+            "asset": "transformer/x1",
+            "relation": "realizes multiwinding factor with ordered winding ports"
+        },
+        {
+            "electrical": "switch/w0",
+            "asset": "switch/w0",
+            "relation": "state-conditioned ideal connectivity or open relation"
+        }
+    ]
+}

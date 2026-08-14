@@ -23,6 +23,7 @@ using ..TransformerWindingNormalization: WindingFactor,
 export TransformerTapACCase,
        load_transformer_tap_ac_case,
        solve_transformer_tap_ac_decision,
+       solve_transformer_tap_ac_switching_decision,
        solve_transformer_tap_ac_snapshot,
        transformer_tap_ac_certificate
 
@@ -383,9 +384,110 @@ function solve_transformer_tap_ac_decision(case::TransformerTapACCase)
     )
 end
 
+"""Enumerate a two-scenario tap decision with an explicit switching cost.
+
+Every ordered tap pair is evaluated on the two locally solved AC subproblem
+tables. The result is branch-complete for the declared finite pair domain, but
+the continuous values remain local Ipopt solutions rather than a global OPF
+certificate.
+"""
+function solve_transformer_tap_ac_switching_decision(
+    case::TransformerTapACCase;
+    switching_cost::Real=0.02,
+    scenario_scale::Real=1.15,
+)
+    domain = only(case.factor.decisions)
+    domain.control_mode == "discrete" ||
+        throw(ArgumentError("the recorded network case requires a finite discrete tap domain"))
+    stressed = TransformerTapACCase(
+        case.factor,
+        case.source_completion,
+        case.terminal_voltage_base_V,
+        case.slack_voltage_V,
+        case.load_direction_MVA_per_phase * scenario_scale,
+        case.secondary_voltage_bounds_pu,
+    )
+    scenario_1 = solve_transformer_tap_ac_decision(case)["parameterized_target_subproblems"]
+    scenario_2 = solve_transformer_tap_ac_decision(stressed)["parameterized_target_subproblems"]
+    branches = Dict{String,Any}[]
+    for (i, tap_1) in enumerate(domain.positions)
+        for (j, tap_2) in enumerate(domain.positions)
+            served_1 = scenario_1[i]["objective_served_fraction"]
+            served_2 = scenario_2[j]["objective_served_fraction"]
+            cost = switching_cost * abs(tap_2 - tap_1)
+            push!(branches, Dict(
+                "scenario_1_tap" => tap_1,
+                "scenario_2_tap" => tap_2,
+                "scenario_1_served_fraction" => served_1,
+                "scenario_2_served_fraction" => served_2,
+                "switching_cost" => cost,
+                "net_objective" => served_1 + served_2 - cost,
+            ))
+        end
+    end
+    best = branches[argmax(branch["net_objective"] for branch in branches)]
+    sweep_costs = [0.0, 0.5, 1.0, 1.1, 2.0]
+    cost_sweep = Dict{String,Any}[]
+    for sweep_cost in sweep_costs
+        candidates = [begin
+            net = branch["scenario_1_served_fraction"] +
+                branch["scenario_2_served_fraction"] -
+                sweep_cost * abs(branch["scenario_2_tap"] - branch["scenario_1_tap"])
+            merge(branch, Dict("sweep_switching_cost" => sweep_cost,
+                              "sweep_net_objective" => net))
+        end for branch in branches]
+        selected = candidates[argmax(candidate["sweep_net_objective"] for candidate in candidates)]
+        push!(cost_sweep, Dict(
+            "switching_cost" => sweep_cost,
+            "selected_scenario_1_tap" => selected["scenario_1_tap"],
+            "selected_scenario_2_tap" => selected["scenario_2_tap"],
+            "selected_net_objective" => selected["sweep_net_objective"],
+            "branch_count" => length(candidates),
+        ))
+    end
+    breakpoints = Dict{String,Any}[]
+    for left_index in eachindex(branches), right_index in (left_index + 1):length(branches)
+        left = branches[left_index]
+        right = branches[right_index]
+        left_base = left["scenario_1_served_fraction"] + left["scenario_2_served_fraction"]
+        right_base = right["scenario_1_served_fraction"] + right["scenario_2_served_fraction"]
+        left_distance = abs(left["scenario_2_tap"] - left["scenario_1_tap"])
+        right_distance = abs(right["scenario_2_tap"] - right["scenario_1_tap"])
+        denominator = right_distance - left_distance
+        if abs(denominator) > eps(Float64)
+            crossing = (right_base - left_base) / denominator
+            crossing > 0 && push!(breakpoints, Dict(
+                "switching_cost" => crossing,
+                "left_scenario_1_tap" => left["scenario_1_tap"],
+                "left_scenario_2_tap" => left["scenario_2_tap"],
+                "right_scenario_1_tap" => right["scenario_1_tap"],
+                "right_scenario_2_tap" => right["scenario_2_tap"],
+            ))
+        end
+    end
+    sort!(breakpoints, by = row -> row["switching_cost"])
+    (; decision_id = domain.decision_id,
+       positions = domain.positions,
+       scenario_scale,
+       switching_cost,
+       branch_count = length(branches),
+       branches,
+       selected_branch = best,
+       cost_sweep,
+       cost_sweep_branch_complete = all(row["branch_count"] == length(domain.positions)^2
+                                         for row in cost_sweep),
+       cost_sweep_selected_pairs = [(row["selected_scenario_1_tap"],
+                                     row["selected_scenario_2_tap"]) for row in cost_sweep],
+       positive_breakpoint_count = length(breakpoints),
+       positive_breakpoints = breakpoints,
+       branch_completeness = length(branches) == length(domain.positions)^2,
+       interpretation = "Exact enumeration of the declared two-scenario tap-pair domain; each continuous scenario value is the locally solved Ipopt result for that tap.")
+end
+
 function transformer_tap_ac_certificate(; certificate_id="TR-XFMR-006")
     case = load_transformer_tap_ac_case()
     comparison = solve_transformer_tap_ac_decision(case)
+    switching = solve_transformer_tap_ac_switching_decision(case)
     domain = only(case.factor.decisions)
     Dict{String,Any}(
         "schema_version" => "1.1.0",
@@ -488,7 +590,7 @@ function transformer_tap_ac_certificate(; certificate_id="TR-XFMR-006")
             "source_factor_certificate" => case.factor.certificate["certificate_id"],
             "coordinate_system" => "rectangular complex conductor voltages with physical transformer matrices and normalized voltage variables",
         ),
-        "evidence" => comparison,
+        "evidence" => merge(comparison, Dict("switching_decision" => switching)),
     )
 end
 

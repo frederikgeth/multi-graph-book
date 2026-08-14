@@ -216,8 +216,8 @@
           "criterion": "Q_retained - Q_candidate is positive semidefinite",
           "relative_margin": -1.245104867289142e-16,
           "minimum_psd_margin": -1.0452732219217487e-13,
-          "scaled_tolerance": 8.395061728395061e-8,
-          "minimum_relative_margin": 1.0e-8,
+          "scaled_tolerance": 8.395061728395061e-08,
+          "minimum_relative_margin": 1e-08,
           "voltage_state_complex_dimension": 4,
           "numerically_ambiguous": false,
           "difference_eigenvalues": [
@@ -242,8 +242,8 @@
           "criterion": "Q_retained - Q_candidate is positive semidefinite",
           "relative_margin": -1.0148607699118492e-16,
           "minimum_psd_margin": -8.519818809136508e-14,
-          "scaled_tolerance": 8.395061728395059e-8,
-          "minimum_relative_margin": 1.0e-8,
+          "scaled_tolerance": 8.395061728395059e-08,
+          "minimum_relative_margin": 1e-08,
           "voltage_state_complex_dimension": 4,
           "numerically_ambiguous": false,
           "difference_eigenvalues": [
@@ -268,8 +268,8 @@
           "criterion": "Q_retained - Q_candidate is positive semidefinite",
           "relative_margin": -1.245104867289142e-16,
           "minimum_psd_margin": -1.0452732219217487e-13,
-          "scaled_tolerance": 8.395061728395061e-8,
-          "minimum_relative_margin": 1.0e-8,
+          "scaled_tolerance": 8.395061728395061e-08,
+          "minimum_relative_margin": 1e-08,
           "voltage_state_complex_dimension": 4,
           "numerically_ambiguous": false,
           "difference_eigenvalues": [
@@ -294,8 +294,8 @@
           "criterion": "Q_retained - Q_candidate is positive semidefinite",
           "relative_margin": -1.0148607699118492e-16,
           "minimum_psd_margin": -8.519818809136508e-14,
-          "scaled_tolerance": 8.395061728395059e-8,
-          "minimum_relative_margin": 1.0e-8,
+          "scaled_tolerance": 8.395061728395059e-08,
+          "minimum_relative_margin": 1e-08,
           "voltage_state_complex_dimension": 4,
           "numerically_ambiguous": false,
           "difference_eigenvalues": [
@@ -326,7 +326,7 @@
         "n"
       ],
       "classification": "exact_constraint_pruning",
-      "minimum_relative_margin": 1.0e-8,
+      "minimum_relative_margin": 1e-08,
       "required_terminal_ends": [
         "ij",
         "ji"
@@ -668,5 +668,55 @@
     }
   },
   "schema_version": "1.1.0",
-  "certificate_id": "TR-PAR-004"
+  "certificate_id": "TR-PAR-004",
+  "typed_interfaces": {
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "source_variable_labels": [
+      "U_j conductor phasors",
+      "I_lij member conductor phasors"
+    ],
+    "target_variable_labels": [
+      "U_j conductor phasors",
+      "I_eqij aggregate conductor phasor"
+    ],
+    "source_unit_families": [
+      "current",
+      "dimensionless",
+      "power",
+      "voltage"
+    ],
+    "target_unit_families": [
+      "current",
+      "dimensionless",
+      "power",
+      "voltage"
+    ],
+    "source_boundary_labels": [
+      "U_i",
+      "U_j",
+      "sum of member terminal currents"
+    ],
+    "target_boundary_labels": [
+      "U_i",
+      "U_j",
+      "aggregate terminal current"
+    ],
+    "state_domain_ids": [],
+    "unit_family_map": {
+      "per-unit current": [
+        "current",
+        "dimensionless"
+      ],
+      "per-unit power": [
+        "dimensionless",
+        "power"
+      ],
+      "per-unit voltage": [
+        "dimensionless",
+        "voltage"
+      ]
+    },
+    "unresolved_unit_labels": [],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed"
+  }
 }

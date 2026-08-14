@@ -5,6 +5,12 @@
 This chapter begins a catalogue of candidate rules. Each rule distinguishes
 physical normalization from more general behavioral reduction.
 
+![Chapter route with the guarded-rules stage highlighted.](../assets/spine-band.png)
+
+![A guarded transformation rule as a gate.](../assets/guarded-rule-gate.png)
+
+The catalogue’s central operational rule is refusal with a structured reason when a guard fails; a candidate is never silently approximated.
+
 ## Canonical conductor coordinates
 
 Before comparing or composing multiconductor elements, normalize:

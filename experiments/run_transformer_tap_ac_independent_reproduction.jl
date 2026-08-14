@@ -10,8 +10,10 @@ include(joinpath(@__DIR__, "transformations", "TransformerTapACDecision.jl"))
 include(joinpath(
     @__DIR__, "transformations", "TransformerTapACIndependentReproduction.jl",
 ))
+include(joinpath(@__DIR__, "transformations", "TransformationContracts.jl"))
 using .TransformerTapACDecision
 using .TransformerTapACIndependentReproduction
+using .TransformationContracts
 
 const OUTPUT = joinpath(
     @__DIR__, "generated", "transformer-tap-ac-independent-certificate.json",
@@ -20,7 +22,7 @@ case = load_transformer_tap_ac_case()
 certificate = independent_transformer_tap_certificate(case)
 mkpath(dirname(OUTPUT))
 open(OUTPUT, "w") do io
-    JSON3.pretty(io, certificate, JSON3.AlignmentContext(; indent=UInt16(2)))
+    JSON3.pretty(io, attach_typed_interfaces(certificate), JSON3.AlignmentContext(; indent=UInt16(2)))
     write(io, '\n')
 end
 println(relpath(OUTPUT, normpath(joinpath(@__DIR__, ".."))))

@@ -1,0 +1,279 @@
+{
+    "checks": {
+        "mechanical_coupling_is_explicit": true,
+        "phase_angle_is_pointwise_exact": true,
+        "scalar_magnitude_is_pointwise_exact": true,
+        "solver_backed_control_probes_solve": true,
+        "network_control_probes_solve": true,
+        "tap_dependent_loss_rejects_frozen_base": true,
+        "neutral_coupled_four_wire_is_explicit": true,
+        "independent_phase_is_pointwise_exact": true,
+        "automatic_deadband_output_is_explicit": true
+    },
+    "network_probes": {
+        "independent_phase": {
+            "status": "LOCALLY_SOLVED",
+            "served_fraction": 1.1853073780316992,
+            "phase_voltage_magnitudes": [
+                0.9026951522011711,
+                0.9081999941687656,
+                0.8999999946298747
+            ],
+            "control_family": "independent_phase"
+        },
+        "tap_dependent_loss": {
+            "status": "LOCALLY_SOLVED",
+            "served_fraction": 2.7963649856290025,
+            "voltage_magnitude": 0.8999999945695871,
+            "loss_parameter": 0.024000000000000007,
+            "tap_magnitude": 1.1
+        },
+        "mechanically_coupled": {
+            "status": "LOCALLY_SOLVED",
+            "served_fraction": 1.0035968401080486,
+            "phase_voltage_magnitudes": [
+                0.9596055809228413,
+                0.9397314744480126,
+                0.8999999946267659
+            ],
+            "control_family": "mechanically_coupled"
+        },
+        "phase_angle": {
+            "status": "LOCALLY_SOLVED",
+            "served_fraction": 1.1362152362952085,
+            "voltage_magnitude": 0.8999999946480817,
+            "loss_parameter": 0.02,
+            "tap_magnitude": 1
+        },
+        "neutral_coupled_four_wire": {
+            "status": "LOCALLY_SOLVED",
+            "served_fraction": 1.624648197526695,
+            "phase_voltage_magnitudes": [
+                0.8999999945825915,
+                0.959338941836056,
+                1.037270796412319
+            ],
+            "neutral_voltage_magnitude": 0.020505145669773215,
+            "mutual_impedance_terms": 6,
+            "return_current_kcl": true
+        }
+    },
+    "interpretation": "Pointwise compilation is exact when the source and target retain the same typed control domain and evaluate the same factor map. Automatic controls and tap-dependent losses require that controller or loss relation to be retained; freezing either at a nominal tap is not an exact transformation.",
+    "automatic_probe": {
+        "solver_objective": 0,
+        "solver_status": "LOCALLY_SOLVED",
+        "solver_backed": true
+    },
+    "witness_id": "TR-XFMR-CONTROL-001",
+    "rows": [
+        {
+            "solver_objective": 0,
+            "classification": "pointwise_exact_if_control_domain_and_map_are retained",
+            "solver_status": "LOCALLY_SOLVED",
+            "solver_backed": true,
+            "control_family": "scalar_magnitude",
+            "max_pointwise_residual": 0,
+            "description": "one ganged positive scalar tap",
+            "direct_current": [
+                {
+                    "real": 1.05,
+                    "imag": 0.042
+                },
+                {
+                    "real": 0.9876299999999999,
+                    "imag": -0.03066
+                },
+                {
+                    "real": 0.91707,
+                    "imag": 0.049245
+                }
+            ],
+            "compiled_current": [
+                {
+                    "real": 1.05,
+                    "imag": 0.042
+                },
+                {
+                    "real": 0.9876299999999999,
+                    "imag": -0.03066
+                },
+                {
+                    "real": 0.91707,
+                    "imag": 0.049245
+                }
+            ]
+        },
+        {
+            "solver_objective": 0,
+            "classification": "pointwise_exact_if_control_domain_and_map_are retained",
+            "solver_status": "LOCALLY_SOLVED",
+            "solver_backed": true,
+            "control_family": "phase_angle",
+            "max_pointwise_residual": 0,
+            "description": "one ganged complex phase-angle factor",
+            "direct_current": [
+                {
+                    "real": 0.9936051185438526,
+                    "imag": 0.11978676222127747
+                },
+                {
+                    "real": 0.9399251940121437,
+                    "imag": 0.04606115132336734
+                },
+                {
+                    "real": 0.8668586111375535,
+                    "imag": 0.11654749373826828
+                }
+            ],
+            "compiled_current": [
+                {
+                    "real": 0.9936051185438526,
+                    "imag": 0.11978676222127747
+                },
+                {
+                    "real": 0.9399251940121437,
+                    "imag": 0.04606115132336734
+                },
+                {
+                    "real": 0.8668586111375535,
+                    "imag": 0.11654749373826828
+                }
+            ]
+        },
+        {
+            "solver_objective": -4.336808689942018e-19,
+            "classification": "pointwise_exact_if_control_domain_and_map_are retained",
+            "solver_status": "LOCALLY_SOLVED",
+            "solver_backed": true,
+            "control_family": "independent_phase",
+            "max_pointwise_residual": 0,
+            "description": "one phase factor per declared winding",
+            "direct_current": [
+                {
+                    "real": 0.9983502137408877,
+                    "imag": 0.06997750155245516
+                },
+                {
+                    "real": 0.9402609752585576,
+                    "imag": -0.03860438324628379
+                },
+                {
+                    "real": 0.8699644543901687,
+                    "imag": 0.09049319365353437
+                }
+            ],
+            "compiled_current": [
+                {
+                    "real": 0.9983502137408877,
+                    "imag": 0.06997750155245516
+                },
+                {
+                    "real": 0.9402609752585576,
+                    "imag": -0.03860438324628379
+                },
+                {
+                    "real": 0.8699644543901687,
+                    "imag": 0.09049319365353437
+                }
+            ]
+        },
+        {
+            "solver_objective": 0,
+            "classification": "pointwise_exact_if_control_domain_and_map_are retained",
+            "solver_status": "LOCALLY_SOLVED",
+            "solver_backed": true,
+            "control_family": "mechanically_coupled",
+            "max_pointwise_residual": 0,
+            "description": "one retained mechanical variable mapped to three winding factors",
+            "direct_current": [
+                {
+                    "real": 1.04,
+                    "imag": 0.041600000000000005
+                },
+                {
+                    "real": 0.9594119999999999,
+                    "imag": -0.029783999999999998
+                },
+                {
+                    "real": 0.855932,
+                    "imag": 0.045962
+                }
+            ],
+            "compiled_current": [
+                {
+                    "real": 1.04,
+                    "imag": 0.041600000000000005
+                },
+                {
+                    "real": 0.9594119999999999,
+                    "imag": -0.029783999999999998
+                },
+                {
+                    "real": 0.855932,
+                    "imag": 0.045962
+                }
+            ]
+        },
+        {
+            "solver_objective": 0,
+            "classification": "pointwise_exact_if_control_domain_and_map_are retained",
+            "solver_status": "LOCALLY_SOLVED",
+            "solver_backed": true,
+            "control_family": "automatic_deadband",
+            "max_pointwise_residual": 0,
+            "description": "deadband controller output retained as a pointwise factor",
+            "direct_current": [
+                {
+                    "real": 1.01,
+                    "imag": 0.0404
+                },
+                {
+                    "real": 0.950006,
+                    "imag": -0.029491999999999997
+                },
+                {
+                    "real": 0.882134,
+                    "imag": 0.047368999999999994
+                }
+            ],
+            "compiled_current": [
+                {
+                    "real": 1.01,
+                    "imag": 0.0404
+                },
+                {
+                    "real": 0.950006,
+                    "imag": -0.029491999999999997
+                },
+                {
+                    "real": 0.882134,
+                    "imag": 0.047368999999999994
+                }
+            ]
+        },
+        {
+            "frozen_base_loss": 0.02,
+            "solver_objective": 0,
+            "classification": "tap-conditioned loss map required",
+            "solver_backed": true,
+            "loss_residual": 0.004000000000000007,
+            "full_loss": 0.024000000000000007,
+            "control_family": "tap_dependent_loss",
+            "description": "loss parameter is a declared function of tap and cannot be frozen at the base tap",
+            "solver_status": "LOCALLY_SOLVED",
+            "base_tap": 1,
+            "off_tap": 1.1
+        }
+    ],
+    "source": "experiments/transformations/TransformerControlFamilyWitness.jl",
+    "evidence_type": "scoped_transformer_control_witness",
+    "model_scope": "pointwise transformer control compilation with phase, mechanical, automatic, and tap-dependent-loss families",
+    "control_domain": {
+        "automatic_deadband": "retained controller output after deadband rule",
+        "scalar_magnitude": "positive scalar factor",
+        "independent_phase": "one declared factor per winding/phase",
+        "tap_dependent_loss": "loss function evaluated at the retained tap",
+        "mechanically_coupled": "one retained variable plus an explicit winding map",
+        "phase_angle": "unit-modulus complex factor exp(i theta)"
+    }
+}

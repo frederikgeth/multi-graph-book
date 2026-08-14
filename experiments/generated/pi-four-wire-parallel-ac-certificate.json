@@ -67,6 +67,23 @@
     "all candidate rows pass the exact recovery-map row norm"
   ],
   "rule_id": "full_nominal_pi_joint_component_limit_pruning",
+  "provenance": {
+    "primitive_cross_check": "BMOPFTools line_yprim",
+    "implementation": "experiments/transformations/PiFourWireParallelACDecision.jl",
+    "solver": "Ipopt through JuMP"
+  },
+  "classification": "exact_normalization",
+  "target": {
+    "object_ids": [
+      "pi_four_wire_l1",
+      "pi_four_wire_l2"
+    ],
+    "detail": {
+      "pruned_limit_owner": "pi_four_wire_l2"
+    },
+    "model_category": "same_nominal_pi_ac_opf_with_certified_limits_pruned"
+  },
+  "certificate_id": "TR-PAR-007",
   "preserves": [
     "AC feasible set",
     "served-load objective",
@@ -76,12 +93,6 @@
   "constraint_map": {
     "member_2_limits": "jointly implied by all member-1 ij and ji component limits through the full primitive recovery map"
   },
-  "provenance": {
-    "primitive_cross_check": "BMOPFTools line_yprim",
-    "implementation": "experiments/transformations/PiFourWireParallelACDecision.jl",
-    "solver": "Ipopt through JuMP"
-  },
-  "classification": "exact_normalization",
   "source": {
     "object_ids": [
       "pi_four_wire_l1",
@@ -567,18 +578,48 @@
   "recovery_map": {
     "terminal_currents": "[I_lij;I_lji]=Yprim_l*[U_i;U_j]"
   },
-  "target": {
-    "object_ids": [
-      "pi_four_wire_l1",
-      "pi_four_wire_l2"
+  "typed_interfaces": {
+    "target_unit_families": [
+      "current",
+      "dimensionless",
+      "power",
+      "voltage"
     ],
-    "detail": {
-      "pruned_limit_owner": "pi_four_wire_l2"
+    "unresolved_unit_labels": [
+    ],
+    "target_boundary_labels": [
+      "same both-end terminal currents"
+    ],
+    "source_unit_families": [
+      "current",
+      "dimensionless",
+      "power",
+      "voltage"
+    ],
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "state_domain_ids": [
+    ],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+    "unit_family_map": {
+      "per-unit voltage, current, and power": [
+        "current",
+        "dimensionless",
+        "power",
+        "voltage"
+      ]
     },
-    "model_category": "same_nominal_pi_ac_opf_with_certified_limits_pruned"
+    "source_boundary_labels": [
+      "both-end terminal currents including shunts"
+    ],
+    "source_variable_labels": [
+      "U_j(a,b,c,n)",
+      "two-end member currents"
+    ],
+    "target_variable_labels": [
+      "same voltages and recovered two-end currents"
+    ]
   },
   "evidence": {
-    "independent_source_objective_gap": 1.369925217709067e-8,
     "pruned_objective_gap": 1.1746159600534156e-13,
     "independent_source_boundary": {
       "boundary_voltage_margin_pu": 0.05375477807585971,
@@ -588,6 +629,285 @@
       "boundary_current_margin_pu": -9.998128103205772e-9,
       "bracket_width": 7.450580152834618e-10,
       "power_flow_residual": 3.552713678800501e-15
+    },
+    "naive_objective_gap": 0.6790908484275608,
+    "independent_source_objective_gap": 1.369925217709067e-8,
+    "exact_pruned_solution": {
+      "phase_power_pu": [
+        {
+          "q": 0.15800687696476773,
+          "p": 0.7900343848238367
+        },
+        {
+          "q": 0.13543446596980122,
+          "p": 0.6207413023615882
+        },
+        {
+          "q": 0.10157584947734957,
+          "p": 0.47402063089430685
+        }
+      ],
+      "member_current_magnitude_pu": [
+        {
+          "ji": [
+            0.7200000006323135,
+            0.53867996472059,
+            0.4163001438696396,
+            0.2499433187036826
+          ],
+          "ij": [
+            0.7124999968139504,
+            0.5314493613130212,
+            0.41131607741688714,
+            0.2501594247082468
+          ]
+        },
+        {
+          "ji": [
+            0.13671298812054464,
+            0.09908328495593613,
+            0.07553233168540417,
+            0.048343043672587765
+          ],
+          "ij": [
+            0.13532373944778095,
+            0.09780911000953,
+            0.07477656445477297,
+            0.04838634044240038
+          ]
+        }
+      ],
+      "neutral_kcl_residual_pu": 7.145645855036086e-15,
+      "termination_status": "LOCALLY_SOLVED",
+      "phase_voltage_magnitude_pu": [
+        0.9404443641025352,
+        0.9962452219628884,
+        0.9857525602175821
+      ],
+      "model_size": {
+        "variables": 9,
+        "constraints": 23
+      },
+      "neutral_voltage_magnitude_pu": 0.027998529396427878,
+      "member_current_loading": [
+        {
+          "ji": [
+            1.0000000008782133,
+            0.7481666176674862,
+            0.5781946442633883,
+            0.3471434981995592
+          ],
+          "ij": [
+            0.9895833289082644,
+            0.7381241129347518,
+            0.5712723297456767,
+            0.34744364542812056
+          ]
+        },
+        {
+          "ji": [
+            0.18987915016742313,
+            0.1376156735499113,
+            0.10490601622972802,
+            0.06714311621192745
+          ],
+          "ij": [
+            0.187949638121918,
+            0.13584598612434723,
+            0.10385633952051802,
+            0.06720325061444497
+          ]
+        }
+      ],
+      "objective_served_fraction": 1.1286205497483408,
+      "formulation": "exact_pruned"
+    },
+    "naive_aggregate_solution": {
+      "phase_power_pu": [
+        {
+          "q": 0.2530795957446066,
+          "p": 1.2653979787230454
+        },
+        {
+          "q": 0.21692536778109522,
+          "p": 0.9942412689966806
+        },
+        {
+          "q": 0.16269402583581877,
+          "p": 0.7592387872338289
+        }
+      ],
+      "member_current_magnitude_pu": [
+        {
+          "ji": [
+            1.2101622364242677,
+            0.863416314172847,
+            0.6717468469924859,
+            0.43760165817243585
+          ],
+          "ij": [
+            1.2015481597929767,
+            0.8551411317370745,
+            0.666725746486771,
+            0.4379789231316948
+          ]
+        },
+        {
+          "ji": [
+            0.22985845762253004,
+            0.15886877652323272,
+            0.12199538545810398,
+            0.08453632299325067
+          ],
+          "ij": [
+            0.22824387470512497,
+            0.15738373724076118,
+            0.12123162604040053,
+            0.084611884361306
+          ]
+        }
+      ],
+      "neutral_kcl_residual_pu": 6.852199012011056e-15,
+      "termination_status": "LOCALLY_SOLVED",
+      "phase_voltage_magnitude_pu": [
+        0.8961512478868497,
+        0.9954891573871819,
+        0.9783411573742699
+      ],
+      "model_size": {
+        "variables": 9,
+        "constraints": 23
+      },
+      "neutral_voltage_magnitude_pu": 0.048843819439609776,
+      "member_current_loading": [
+        {
+          "ji": [
+            1.6807808839225942,
+            1.1991893252400654,
+            0.9329817319340082,
+            0.6077800807950499
+          ],
+          "ij": [
+            1.6688168886013566,
+            1.1876960163014925,
+            0.9260079812316264,
+            0.6083040599051317
+          ]
+        },
+        {
+          "ji": [
+            0.3192478578090695,
+            0.2206510785044899,
+            0.16943803535847776,
+            0.11741155971284817
+          ],
+          "ij": [
+            0.3170053815348958,
+            0.21858852394550166,
+            0.16837725838944517,
+            0.11751650605736945
+          ]
+        }
+      ],
+      "objective_served_fraction": 1.8077113981757842,
+      "formulation": "naive_aggregate"
+    },
+    "singular_map_guard": {
+      "classification": "refuse singular nominal-pi map; retain endpoint-voltage or factor coordinates",
+      "rejected_by_recovery_guard": true,
+      "realified_rank": 6,
+      "realified_dimension": 16
+    },
+    "lifted_objective_gap": 0,
+    "exact_lifted_solution": {
+      "phase_power_pu": [
+        {
+          "q": 0.1580068769647509,
+          "p": 0.7900343848237559
+        },
+        {
+          "q": 0.13543446596978936,
+          "p": 0.6207413023615267
+        },
+        {
+          "q": 0.10157584947734,
+          "p": 0.47402063089425417
+        }
+      ],
+      "member_current_magnitude_pu": [
+        {
+          "ji": [
+            0.7200000006322347,
+            0.5386799647205365,
+            0.4163001438695924,
+            0.24994331870365308
+          ],
+          "ij": [
+            0.7124999968138718,
+            0.5314493613129674,
+            0.4113160774168403,
+            0.25015942470821717
+          ]
+        },
+        {
+          "ji": [
+            0.13671298812052912,
+            0.09908328495592665,
+            0.07553233168539639,
+            0.04834304367258206
+          ],
+          "ij": [
+            0.1353237394477655,
+            0.09780911000952026,
+            0.07477656445476491,
+            0.04838634044239467
+          ]
+        }
+      ],
+      "neutral_kcl_residual_pu": 5.129002076074266e-15,
+      "termination_status": "LOCALLY_SOLVED",
+      "phase_voltage_magnitude_pu": [
+        0.9404443641025424,
+        0.9962452219628887,
+        0.9857525602175833
+      ],
+      "model_size": {
+        "variables": 9,
+        "constraints": 31
+      },
+      "neutral_voltage_magnitude_pu": 0.027998529396424596,
+      "member_current_loading": [
+        {
+          "ji": [
+            1.0000000008781038,
+            0.7481666176674118,
+            0.5781946442633228,
+            0.3471434981995182
+          ],
+          "ij": [
+            0.9895833289081553,
+            0.738124112934677,
+            0.5712723297456115,
+            0.34744364542807943
+          ]
+        },
+        {
+          "ji": [
+            0.18987915016740156,
+            0.13761567354989812,
+            0.10490601622971721,
+            0.06714311621191953
+          ],
+          "ij": [
+            0.18794963812189652,
+            0.1358459861243337,
+            0.10385633952050682,
+            0.06720325061443705
+          ]
+        }
+      ],
+      "objective_served_fraction": 1.1286205497482233,
+      "formulation": "exact_lifted"
     },
     "redundancy": {
       "checks": [
@@ -754,12 +1074,23 @@
         "ji-c",
         "ji-n"
       ],
-      "scope": "full nominal-pi terminal-current primitives with an invertible retained two-end map",
-      "retained_map_condition_number": 2922.8559992087935,
       "criterion": "exact complex-polydisc row norm of candidate-to-retained current recovery map",
       "retained_member": "l1",
       "backward_error": 2.565996132190903e-16,
+      "classification": "exact_constraint_pruning",
+      "required_terminal_ends": [
+        "ij",
+        "ji"
+      ],
+      "certified": true,
+      "scope": "full nominal-pi terminal-current primitives with an invertible retained two-end map",
+      "retained_map_condition_number": 2922.8559992087935,
       "backward_error_tolerance": 1.0e-10,
+      "preserves": [
+        "candidate member law and identity",
+        "feasible set of the retained voltage variables",
+        "all objectives and constraints on unchanged variables"
+      ],
       "candidate_member": "l2",
       "candidate_from_retained_current_map": [
         [
@@ -1035,29 +1366,18 @@
           }
         ]
       ],
-      "preserves": [
-        "candidate member law and identity",
-        "feasible set of the retained voltage variables",
-        "all objectives and constraints on unchanged variables"
-      ],
-      "classification": "exact_constraint_pruning",
       "minimum_relative_margin": 1.0e-8,
-      "required_terminal_ends": [
-        "ij",
-        "ji"
-      ],
-      "numerically_ambiguous": false,
-      "forgets": [
-        "only candidate limits proved jointly implied"
-      ],
-      "current_map_residual": 1.5416490818128602e-15,
       "terminal_order": [
         "a",
         "b",
         "c",
         "n"
       ],
-      "certified": true,
+      "numerically_ambiguous": false,
+      "forgets": [
+        "only candidate limits proved jointly implied"
+      ],
+      "current_map_residual": 1.5416490818128602e-15,
       "maximum_condition_number": 100000000
     },
     "source_solution": {
@@ -1150,279 +1470,471 @@
       "objective_served_fraction": 1.1286205497482233,
       "formulation": "source"
     },
-    "exact_lifted_solution": {
-      "phase_power_pu": [
-        {
-          "q": 0.1580068769647509,
-          "p": 0.7900343848237559
-        },
-        {
-          "q": 0.13543446596978936,
-          "p": 0.6207413023615267
-        },
-        {
-          "q": 0.10157584947734,
-          "p": 0.47402063089425417
-        }
+    "state_conditioned_map_guard": {
+      "frozen_map_rejected_off_state": true,
+      "state_values": [
+        "base",
+        "shifted_shunt"
       ],
-      "member_current_magnitude_pu": [
-        {
-          "ji": [
-            0.7200000006322347,
-            0.5386799647205365,
-            0.4163001438695924,
-            0.24994331870365308
-          ],
-          "ij": [
-            0.7124999968138718,
-            0.5314493613129674,
-            0.4113160774168403,
-            0.25015942470821717
-          ]
-        },
-        {
-          "ji": [
-            0.13671298812052912,
-            0.09908328495592665,
-            0.07553233168539639,
-            0.04834304367258206
-          ],
-          "ij": [
-            0.1353237394477655,
-            0.09780911000952026,
-            0.07477656445476491,
-            0.04838634044239467
-          ]
-        }
-      ],
-      "neutral_kcl_residual_pu": 5.129002076074266e-15,
-      "termination_status": "LOCALLY_SOLVED",
-      "phase_voltage_magnitude_pu": [
-        0.9404443641025424,
-        0.9962452219628887,
-        0.9857525602175833
-      ],
-      "model_size": {
-        "variables": 9,
-        "constraints": 31
-      },
-      "neutral_voltage_magnitude_pu": 0.027998529396424596,
-      "member_current_loading": [
-        {
-          "ji": [
-            1.0000000008781038,
-            0.7481666176674118,
-            0.5781946442633228,
-            0.3471434981995182
-          ],
-          "ij": [
-            0.9895833289081553,
-            0.738124112934677,
-            0.5712723297456115,
-            0.34744364542807943
-          ]
-        },
-        {
-          "ji": [
-            0.18987915016740156,
-            0.13761567354989812,
-            0.10490601622971721,
-            0.06714311621191953
-          ],
-          "ij": [
-            0.18794963812189652,
-            0.1358459861243337,
-            0.10385633952050682,
-            0.06720325061443705
-          ]
-        }
-      ],
-      "objective_served_fraction": 1.1286205497482233,
-      "formulation": "exact_lifted"
+      "classification": "decision-conditioned map required",
+      "frozen_map_off_state_residual": 0.006999999999999673,
+      "recomputed_map_consistent": true,
+      "recomputed_map_residual": 0
     },
-    "exact_pruned_solution": {
-      "phase_power_pu": [
-        {
-          "q": 0.15800687696476773,
-          "p": 0.7900343848238367
-        },
-        {
-          "q": 0.13543446596980122,
-          "p": 0.6207413023615882
-        },
-        {
-          "q": 0.10157584947734957,
-          "p": 0.47402063089430685
-        }
-      ],
-      "member_current_magnitude_pu": [
-        {
-          "ji": [
-            0.7200000006323135,
-            0.53867996472059,
-            0.4163001438696396,
-            0.2499433187036826
-          ],
-          "ij": [
-            0.7124999968139504,
-            0.5314493613130212,
-            0.41131607741688714,
-            0.2501594247082468
-          ]
-        },
-        {
-          "ji": [
-            0.13671298812054464,
-            0.09908328495593613,
-            0.07553233168540417,
-            0.048343043672587765
-          ],
-          "ij": [
-            0.13532373944778095,
-            0.09780911000953,
-            0.07477656445477297,
-            0.04838634044240038
-          ]
-        }
-      ],
-      "neutral_kcl_residual_pu": 7.145645855036086e-15,
-      "termination_status": "LOCALLY_SOLVED",
-      "phase_voltage_magnitude_pu": [
-        0.9404443641025352,
-        0.9962452219628884,
-        0.9857525602175821
-      ],
-      "model_size": {
-        "variables": 9,
-        "constraints": 23
+    "singular_shunted_map_guard": {
+      "classification": "refuse singular shunted nominal-pi map; retain endpoint-voltage or factor coordinates",
+      "rejected_by_recovery_guard": true,
+      "realified_rank": 14,
+      "realified_dimension": 16,
+      "retained_from_end_shunt_neutral": {
+        "re": 0,
+        "im": 0.004
       },
-      "neutral_voltage_magnitude_pu": 0.027998529396427878,
-      "member_current_loading": [
-        {
-          "ji": [
-            1.0000000008782133,
-            0.7481666176674862,
-            0.5781946442633883,
-            0.3471434981995592
-          ],
-          "ij": [
-            0.9895833289082644,
-            0.7381241129347518,
-            0.5712723297456767,
-            0.34744364542812056
-          ]
-        },
-        {
-          "ji": [
-            0.18987915016742313,
-            0.1376156735499113,
-            0.10490601622972802,
-            0.06714311621192745
-          ],
-          "ij": [
-            0.187949638121918,
-            0.13584598612434723,
-            0.10385633952051802,
-            0.06720325061444497
-          ]
-        }
-      ],
-      "objective_served_fraction": 1.1286205497483408,
-      "formulation": "exact_pruned"
+      "retained_to_end_shunt_neutral": {
+        "re": 0,
+        "im": 0
+      }
     },
-    "lifted_objective_gap": 0,
-    "naive_objective_gap": 0.6790908484275608,
-    "naive_aggregate_solution": {
-      "phase_power_pu": [
-        {
-          "q": 0.2530795957446066,
-          "p": 1.2653979787230454
-        },
-        {
-          "q": 0.21692536778109522,
-          "p": 0.9942412689966806
-        },
-        {
-          "q": 0.16269402583581877,
-          "p": 0.7592387872338289
-        }
+    "voltage_dependent_map_guard": {
+      "frozen_map_rejected_off_state": true,
+      "state_values": [
+        "unit_voltage",
+        "shifted_voltage"
       ],
-      "member_current_magnitude_pu": [
-        {
-          "ji": [
-            1.2101622364242677,
-            0.863416314172847,
-            0.6717468469924859,
-            0.43760165817243585
-          ],
-          "ij": [
-            1.2015481597929767,
-            0.8551411317370745,
-            0.666725746486771,
-            0.4379789231316948
-          ]
+      "classification": "voltage-conditioned map required; no frozen-map exactness claim",
+      "voltage_dependent_from_gain": 0.45,
+      "frozen_map_off_state_residual": 0.0005490000000012429,
+      "recomputed_map_consistent": true,
+      "recomputed_map_residual": 0,
+      "voltage_dependent_to_gain": -0.3
+    },
+    "state_conditioned_decision_probe": {
+      "shifted_pruning_remains_exact": true,
+      "shifted_solution": {
+        "phase_power_pu": [
+          {
+            "q": 0.1580003080158265,
+            "p": 0.7900015400791266
+          },
+          {
+            "q": 0.13542883544213777,
+            "p": 0.6207154957764559
+          },
+          {
+            "q": 0.10157162658160682,
+            "p": 0.47400092404747823
+          }
+        ],
+        "member_current_magnitude_pu": [
+          {
+            "ji": [
+              0.720000000632265,
+              0.5386123420764054,
+              0.41625417132945924,
+              0.25001971568714754
+            ],
+            "ij": [
+              0.7119422933965,
+              0.5309044831792382,
+              0.4109925215877957,
+              0.25017096888259416
+            ]
+          },
+          {
+            "ji": [
+              0.13691070450236387,
+              0.0992677139749929,
+              0.0756601126992358,
+              0.0483428460618148
+            ],
+            "ij": [
+              0.13548121662371929,
+              0.09795092879655619,
+              0.07485613595349984,
+              0.048386136081449205
+            ]
+          }
+        ],
+        "neutral_kcl_residual_pu": 2.9432690821353368e-15,
+        "termination_status": "LOCALLY_SOLVED",
+        "phase_voltage_magnitude_pu": [
+          0.9401791727578283,
+          0.9960005942161068,
+          0.9855078146622916
+        ],
+        "model_size": {
+          "variables": 9,
+          "constraints": 31
         },
-        {
-          "ji": [
-            0.22985845762253004,
-            0.15886877652323272,
-            0.12199538545810398,
-            0.08453632299325067
-          ],
-          "ij": [
-            0.22824387470512497,
-            0.15738373724076118,
-            0.12123162604040053,
-            0.084611884361306
-          ]
-        }
-      ],
-      "neutral_kcl_residual_pu": 6.852199012011056e-15,
-      "termination_status": "LOCALLY_SOLVED",
-      "phase_voltage_magnitude_pu": [
-        0.8961512478868497,
-        0.9954891573871819,
-        0.9783411573742699
-      ],
-      "model_size": {
-        "variables": 9,
-        "constraints": 23
+        "neutral_voltage_magnitude_pu": 0.02799571891283273,
+        "member_current_loading": [
+          {
+            "ji": [
+              1.0000000008781458,
+              0.7480726973283409,
+              0.5781307935131379,
+              0.34724960512103825
+            ],
+            "ij": [
+              0.9888087408284721,
+              0.737367337748942,
+              0.5708229466497162,
+              0.34745967900360303
+            ]
+          },
+          {
+            "ji": [
+              0.19015375625328315,
+              0.13787182496526793,
+              0.10508348986004971,
+              0.06714284175252055
+            ],
+            "ij": [
+              0.18816835642183236,
+              0.1360429566618836,
+              0.103966855490972,
+              0.06720296677979057
+            ]
+          }
+        ],
+        "objective_served_fraction": 1.1285736286844699,
+        "formulation": "source"
       },
-      "neutral_voltage_magnitude_pu": 0.048843819439609776,
-      "member_current_loading": [
+      "states": [
+        "base",
+        "shifted_shunt"
+      ],
+      "classification": "state-conditioned full-AC probe; each state requires its own primitive and redundancy certificate",
+      "shifted_pruned_solution": {
+        "phase_power_pu": [
+          {
+            "q": 0.15800030801583007,
+            "p": 0.790001540079158
+          },
+          {
+            "q": 0.1354288354421425,
+            "p": 0.6207154957764832
+          },
+          {
+            "q": 0.1015716265816001,
+            "p": 0.474000924047499
+          }
+        ],
+        "member_current_magnitude_pu": [
+          {
+            "ji": [
+              0.7200000006322947,
+              0.5386123420764298,
+              0.4162541713294751,
+              0.2500197156871563
+            ],
+            "ij": [
+              0.7119422933965297,
+              0.5309044831792613,
+              0.41099252158781385,
+              0.25017096888260293
+            ]
+          },
+          {
+            "ji": [
+              0.1369107045023701,
+              0.09926771397499685,
+              0.07566011269923856,
+              0.04834284606181653
+            ],
+            "ij": [
+              0.1354812166237255,
+              0.09795092879656016,
+              0.07485613595350253,
+              0.04838613608145094
+            ]
+          }
+        ],
+        "neutral_kcl_residual_pu": 5.935800937918812e-15,
+        "termination_status": "LOCALLY_SOLVED",
+        "phase_voltage_magnitude_pu": [
+          0.9401791727578257,
+          0.996000594216106,
+          0.9855078146622925
+        ],
+        "model_size": {
+          "variables": 9,
+          "constraints": 23
+        },
+        "neutral_voltage_magnitude_pu": 0.027995718912833745,
+        "member_current_loading": [
+          {
+            "ji": [
+              1.000000000878187,
+              0.7480726973283748,
+              0.5781307935131599,
+              0.34724960512105046
+            ],
+            "ij": [
+              0.9888087408285136,
+              0.7373673377489741,
+              0.5708229466497415,
+              0.3474596790036152
+            ]
+          },
+          {
+            "ji": [
+              0.19015375625329184,
+              0.13787182496527342,
+              0.10508348986005356,
+              0.06714284175252297
+            ],
+            "ij": [
+              0.188168356421841,
+              0.13604295666188912,
+              0.10396685549097574,
+              0.06720296677979297
+            ]
+          }
+        ],
+        "objective_served_fraction": 1.128573628684514,
+        "formulation": "exact_pruned"
+      },
+      "base_solution": {
+        "phase_power_pu": [
+          {
+            "q": 0.1580068769647509,
+            "p": 0.7900343848237559
+          },
+          {
+            "q": 0.13543446596978936,
+            "p": 0.6207413023615267
+          },
+          {
+            "q": 0.10157584947734,
+            "p": 0.47402063089425417
+          }
+        ],
+        "member_current_magnitude_pu": [
+          {
+            "ji": [
+              0.7200000006322347,
+              0.5386799647205365,
+              0.4163001438695924,
+              0.24994331870365308
+            ],
+            "ij": [
+              0.7124999968138718,
+              0.5314493613129674,
+              0.4113160774168403,
+              0.25015942470821717
+            ]
+          },
+          {
+            "ji": [
+              0.13671298812052912,
+              0.09908328495592665,
+              0.07553233168539639,
+              0.04834304367258206
+            ],
+            "ij": [
+              0.1353237394477655,
+              0.09780911000952026,
+              0.07477656445476491,
+              0.04838634044239467
+            ]
+          }
+        ],
+        "neutral_kcl_residual_pu": 5.129002076074266e-15,
+        "termination_status": "LOCALLY_SOLVED",
+        "phase_voltage_magnitude_pu": [
+          0.9404443641025424,
+          0.9962452219628887,
+          0.9857525602175833
+        ],
+        "model_size": {
+          "variables": 9,
+          "constraints": 31
+        },
+        "neutral_voltage_magnitude_pu": 0.027998529396424596,
+        "member_current_loading": [
+          {
+            "ji": [
+              1.0000000008781038,
+              0.7481666176674118,
+              0.5781946442633228,
+              0.3471434981995182
+            ],
+            "ij": [
+              0.9895833289081553,
+              0.738124112934677,
+              0.5712723297456115,
+              0.34744364542807943
+            ]
+          },
+          {
+            "ji": [
+              0.18987915016740156,
+              0.13761567354989812,
+              0.10490601622971721,
+              0.06714311621191953
+            ],
+            "ij": [
+              0.18794963812189652,
+              0.1358459861243337,
+              0.10385633952050682,
+              0.06720325061443705
+            ]
+          }
+        ],
+        "objective_served_fraction": 1.1286205497482233,
+        "formulation": "source"
+      },
+      "state_changes_decision": true,
+      "base_map_redundancy_certified": true,
+      "shifted_pruned_objective_gap": 4.418687638008123e-14,
+      "shifted_map_redundancy_certified": true,
+      "state_objective_delta": -4.692106375348004e-5
+    },
+    "finite_state_decision_envelope": {
+      "classification": "finite declared state envelope; each state rebuilds its nominal-pi map and AC decision model",
+      "minimum_relative_margin": 1.0e-8,
+      "maximum_absolute_pruned_objective_gap": 1.1746159600534156e-13,
+      "declared_state_count": 3,
+      "states": [
         {
-          "ji": [
-            1.6807808839225942,
-            1.1991893252400654,
-            0.9329817319340082,
-            0.6077800807950499
-          ],
-          "ij": [
-            1.6688168886013566,
-            1.1876960163014925,
-            0.9260079812316264,
-            0.6083040599051317
-          ]
+          "state": "base",
+          "map_certified": true,
+          "pruned_objective_gap": 1.1746159600534156e-13,
+          "minimum_relative_margin": 1.0e-8,
+          "from_shunt_scale": 1,
+          "source_served_fraction": 1.1286205497482233,
+          "pruned_served_fraction": 1.1286205497483408,
+          "source_status": "LOCALLY_SOLVED",
+          "pruned_status": "LOCALLY_SOLVED",
+          "to_shunt_scale": 1
         },
         {
-          "ji": [
-            0.3192478578090695,
-            0.2206510785044899,
-            0.16943803535847776,
-            0.11741155971284817
-          ],
-          "ij": [
-            0.3170053815348958,
-            0.21858852394550166,
-            0.16837725838944517,
-            0.11751650605736945
-          ]
+          "state": "shifted_shunt",
+          "map_certified": true,
+          "pruned_objective_gap": 4.418687638008123e-14,
+          "minimum_relative_margin": 1.0e-8,
+          "from_shunt_scale": 1.35,
+          "source_served_fraction": 1.1285736286844699,
+          "pruned_served_fraction": 1.128573628684514,
+          "source_status": "LOCALLY_SOLVED",
+          "pruned_status": "LOCALLY_SOLVED",
+          "to_shunt_scale": 0.7
+        },
+        {
+          "state": "reverse_shift",
+          "map_certified": true,
+          "pruned_objective_gap": 1.0302869668521453e-13,
+          "minimum_relative_margin": 1.0e-8,
+          "from_shunt_scale": 0.75,
+          "source_served_fraction": 1.128658619897101,
+          "pruned_served_fraction": 1.128658619897204,
+          "source_status": "LOCALLY_SOLVED",
+          "pruned_status": "LOCALLY_SOLVED",
+          "to_shunt_scale": 1.25
         }
       ],
-      "objective_served_fraction": 1.8077113981757842,
-      "formulation": "naive_aggregate"
+      "all_maps_certified": true
+    },
+    "series_reduced_coordinate_guard": {
+      "endpoint_voltage_drop_coordinate": [
+        {
+          "re": 0.08,
+          "im": 0.02
+        },
+        {
+          "re": -0.04,
+          "im": 0.03
+        },
+        {
+          "re": 0.02,
+          "im": -0.01
+        },
+        {
+          "re": 0.15,
+          "im": 0.04
+        }
+      ],
+      "classification": "guarded exact series-only reduction in endpoint-voltage-drop coordinates; full two-end map remains singular",
+      "full_terminal_map_rank": 6,
+      "full_terminal_map_dimension": 16,
+      "reduced_recovery_map": [
+        [
+          {
+            "re": 0.5,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0.4,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0.3,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ]
+      ],
+      "reduced_coordinate_recovery_residual": 0,
+      "neutral_current_retained_as_zero": true
     }
   },
-  "schema_version": "1.1.0",
-  "certificate_id": "TR-PAR-007"
+  "schema_version": "1.1.0"
 }

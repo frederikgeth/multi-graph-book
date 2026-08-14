@@ -1,7 +1,9 @@
 using JSON3
 
 include(joinpath(@__DIR__, "transformations", "SeriesElimination.jl"))
+include(joinpath(@__DIR__, "transformations", "TransformationContracts.jl"))
 using .SeriesElimination
+using .TransformationContracts
 
 const OUTPUT = joinpath(@__DIR__, "generated", "degree-two-series-certificate.json")
 
@@ -25,7 +27,7 @@ result isa TransformationResult || error("expected the degree-two rule to apply"
 
 mkpath(dirname(OUTPUT))
 open(OUTPUT, "w") do io
-    JSON3.pretty(io, certificate_dict(result), JSON3.AlignmentContext(; indent=UInt16(2)))
+    JSON3.pretty(io, attach_typed_interfaces(certificate_dict(result)), JSON3.AlignmentContext(; indent=UInt16(2)))
     write(io, '\n')
 end
 

@@ -1,11 +1,11 @@
-# Knowledge-base indexes
+# [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:7c082ad9cae0dd625b8b8b578a29ec8415e87360006ef4cf02aae3fba90d9f4a -->
+<!-- generated-from claims/claims.toml sha256:6c19ad73243e584f597ee6cc83ce38c16a287cfdb008ed7e616186d3219552a5 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 
-**Indexed claims:** 37
+**Indexed claims:** 47
 **Indexed chapters:** 25
 
 ## Claims by type
@@ -20,19 +20,28 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `THESIS-001` — Representation adequacy is evaluated relative to declared observations, constraints, and decisions. | [Scope and thesis](../foundations/scope-and-thesis.md) | `self-checked` |
 | `TOPOLOGY-001` — For a fixed switch state, topological nodes are the connected components of the closed-switch connectivity graph; compiling them into bus--branch buses is a state-conditioned quotient that requires provenance and does not preserve switching decisions by itself. | [Node--breaker, bus--breaker, and topology processing](../foundations/node-breaker-topology-processing.md) | `self-checked` |
 
-### `empirical` (10)
+### `empirical` (19)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
+| `ARCH-CONDUCTOR-002` — The five-bus scalar line-identity fixture lifts to fourteen scalar endpoint ports, five terminal junctions, and seven two-port line factors; the lift retains the q/r parallel fibre and its extra cycle dimension while adding no multiconductor, switch, or transformer semantics. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `self-checked` |
 | `ARCH-PORT-001` — A minimal executable port--factor bundle instantiated from the running network validates typed port-to-junction and port-to-factor incidence, a three-port multiwinding factor, grounding as an explicit factor, and a many-to-many asset/electrical relation Λ. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `self-checked` |
+| `ARCH-PORT-002` — The five-bus identified scalar multigraph has a direct structural port--factor lift with five bus junctions, seven two-port scalar line factors, fourteen endpoint ports, and one asset-to-factor relation per identified line; parallel members q and r remain distinct factors despite sharing the same bus pair. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `self-checked` |
 | `COLLAPSE-002` — The generated Fortescue witness diagonalizes a circulant three-phase impedance matrix and preserves the positive-sequence subspace, while a non-circulant perturbation produces sequence mixing and a positive-subspace residual. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `self-checked` |
 | `FIXTURE-001` — Running-network fixture v0.1.0 passes the current BMOPFTools JSON schema and conformance checks without errors or warnings. | [Executable running network](../cases/executable-running-network.md) | `self-checked` |
 | `FIXTURE-002` — The v0.1.0 continuous PF and OPF instances terminate locally solved in the recorded environment. | [Executable running network](../cases/executable-running-network.md) | `self-checked` |
 | `NUMERICAL-002` — For the pinned running-network fixture, BMOPFTools exports a 20-by-20 passive Ybus with 166 nonzeros; the constant-Z linearized Ybus agrees with it, and realification produces a 40-by-40 current-voltage matrix with 664 nonzeros. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
 | `NUMERICAL-003` — In the pinned nonlinear two-bus parallel-member witness, retaining two explicit member-current laws produces a 6-by-7 residual Jacobian and 13-by-13 KKT pattern, while the summed-current aggregate produces a 4-by-5 Jacobian and 9-by-9 KKT pattern; symbolic fill changes with elimination order in both formulations. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
+| `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `self-checked` |
 | `TR-KRON-002` — In the declared linear scenario fixture, exact Kron reproduces each fixed-injection boundary relation, an operating-point Ward-style equivalent is exact only at its calibration point, and an explicit scenario objective can select a sparser non-exact target. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
+| `TR-KRON-003` — In the declared one-state linear Ward scenario fixture, an internal-injection residual propagates through a recovered-state bound and a boundary-current bound to classify the approximate source-limit decision as certified feasible, ambiguous, or certified violated; the bound is exact for this fixture but is not a general nonlinear error theorem. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
+| `TR-KRON-FIVE-001` — In the five-bus scalar fixture, eliminating the pendant bus m through line x by typed Kron reduction reproduces the retained boundary Y-bus obtained by direct deletion of the leaf line, with exact boundary-current recovery for the recorded voltage state. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
+| `TR-KRON-FIVE-002` — In the same five-bus fixture, eliminating the non-pendant bus l by typed Kron reduction preserves the recorded boundary current relation, creates Schur-complement fill edges j-m and k-m among the retained buses, and exactly recovers the x-branch current whose deliberately tight declared limit is violated by the recorded state. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
+| `TR-KRON-NEUTRAL-001` — In the running four-conductor midpoint Kron fixture, the eliminated neutral half-section current is exactly recoverable from the retained boundary solution and midpoint recovery; a neutral-current limit must therefore remain in the reduced feasible set, and dropping it admits the recorded boundary point that the source model rejects. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
 | `TR-PAR-003` — In the recorded two-bus maximum-served-load problem, the naive summed-rating aggregate serves 200 MW while the source and exact lifted formulations each serve 110 MW. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `self-checked` |
 | `TR-PAR-004` — In the recorded two-conductor AC maximum-served-load case, the source, exact lifted, and certified exact-pruned formulations have objective 0.6138908, while a summed-limit aggregate has objective 1.0630833 and violates a 0.6 p.u. member limit. | [Multiconductor parallel AC decision case](../cases/multiconductor-parallel-ac-decision.md) | `self-checked` |
+| `TR-PAR-AC-JOINT-001` — In the recorded three-member four-wire AC case, member 3 has the fixed recovery I_l3=0.10 I_l1+0.10 I_l2 and a 0.15 p.u. component limit; the joint support bound is 0.144 p.u., so deleting member-3 limits preserves the locally solved source objective 1.2401762 to 7e-14. An independent damped-Newton continuation and bisection reproduces the source boundary within 1.3e-8 served-fraction units. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `self-checked` |
+| `TR-PAR-SINGULAR-001` — For the declared series-only singular four-wire fixture, the full two-end terminal-current map is rank deficient, but the endpoint-voltage-drop coordinate recovers member-2 currents exactly from member-1 currents through the declared diagonal map, with the zero-neutral rows retained as an explicit invariant; this is a guarded reduced-coordinate result, not a pseudoinverse or singular-shunt theorem. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `self-checked` |
 | `TR-XFMR-007` — A separate damped finite-difference Newton, continuation, and bisection implementation reproduces all three TR-XFMR-006 tap-conditioned high-voltage branch boundaries without an external optimizer; its largest served-fraction difference from JuMP/Ipopt is 3.14e-10, and both methods select tap 0.95. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `independently-implemented` |
 
 ### `practice` (1)
@@ -41,7 +50,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | --- | --- | --- |
 | `DATA-XWALK-001` — CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER provide distinct partial correspondences to the book's asset, terminal, topology, factor, state, and rating objects; successful import is not by itself semantic or decision equivalence. | [Data-model crosswalk](../foundations/data-model-crosswalk.md) | `self-checked` |
 
-### `theorem` (21)
+### `theorem` (22)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -58,6 +67,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `TR-PAR-005` — For fixed linear complex terminal-current maps with centered Euclidean norm limits, one normalized constraint implies another if and only if the retained normalized real quadratic form minus the candidate form is positive semidefinite; applying this pairwise test to every aligned conductor and both terminal ends certifies exact candidate-limit pruning while retaining both member models. | [Multiconductor parallel AC decision case](../cases/multiconductor-parallel-ac-decision.md) | `self-checked` |
 | `TR-PAR-006` — For nonsingular fixed series admittances on common multiconductor endpoint coordinates, candidate component currents recover as I_l2=(Y_l2/Y_l1)I_l1, and the exact maximum of candidate component c over all retained component-current discs is sum_k abs(K_ck) Imax_l1k; in the recorded reciprocal non-proportional three-phase four-wire AC case this certifies all l2 limits redundant, the exact-pruned and source objectives agree at 1.1274329, and a summed-limit aggregate reaches 1.8058181 by violating an l1 limit. | [Non-proportional three-phase four-wire parallel case](../cases/four-wire-parallel-ac-decision.md) | `self-checked` |
 | `TR-PAR-007` — For fixed nominal-pi multiconductor members whose retained full two-end terminal-current primitive Ar is nonsingular, all candidate terminal currents recover as Ac*inv(Ar) times the retained terminal-current vector, so exact complex-polydisc row norms certify joint implication across both line ends; in the recorded non-proportional four-wire case, pruning eight member-2 limits preserves the 1.1286205 source objective while a same-size summed-limit model reaches 1.8077114 by violating member 1. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `self-checked` |
+| `TR-PAR-JOINT-001` — For fixed series current maps in common endpoint-voltage-drop coordinates, a candidate component-current limit is implied by several retained member limits when its exact recovery row has support bound sum_k abs(K_ck) Ibar_k no larger than the candidate rating; the guarded witness certifies this joint implication for three retained discs. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `self-checked` |
 | `TR-SER-001` — A zero-injection degree-two junction between coordinate-aligned series elements has equivalent impedance Z_l1 + P' Z_l2 P. | [Degree-two series elimination](../transformations/degree-two-series-elimination.md) | `self-checked` |
 | `TR-SER-002` — Exact terminal-behaviour closure under degree-two elimination does not by itself establish closure within a homogeneous physical line class. | [Degree-two series elimination](../transformations/degree-two-series-elimination.md) | `self-checked` |
 | `TR-XFMR-001` — A transformer winding terminal permutation is an exact typed-factor normalization when its complete terminal-to-coil incidence relation is right-multiplied by the inverse permutation and coil coordinates remain fixed. | [Transformer-winding coordinate normalization](../transformations/transformer-winding-coordinate-normalization.md) | `self-checked` |
@@ -72,16 +82,18 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | Verification | Claims |
 | --- | ---: |
 | `independently-implemented` | 1 |
-| `self-checked` | 36 |
+| `self-checked` | 46 |
 
 ## Unresolved issues
 
 | Claim | Issue |
 | --- | --- |
+| `ARCH-CONDUCTOR-002` | Compare the scalar terminal lift with a full conductor-terminal factor evaluator and state-conditioned topology maps. |
 | `ARCH-PORT-001` | Lift the data witness to evaluated factor relations and independently review the architecture against a non-synthetic asset model. |
+| `ARCH-PORT-002` | Extend the lift to evaluated factor relations and compare its boundary semantics with the simple quotient and line-identity cycle basis. |
 | `COLLAPSE-001` | Add a generated balanced transmission fixture, residual calculation, and independent mathematical review. |
 | `COLLAPSE-002` | Extend the witness to nominal-pi shunts, network assembly, and an independently implemented balanced transmission fixture. |
-| `DATA-XWALK-001` | Implement and test version-pinned adapters with round-trip provenance and rating checks. |
+| `DATA-XWALK-001` | The running-fixture contract is checked against pinned documentation profiles; external package imports and file-level round-trip provenance/rating checks remain open. |
 | `FIXTURE-001` | Add an independent fixture reviewer. |
 | `FIXTURE-002` | Re-run with an independent solver where possible. |
 | `GRAPH-CYCLE-001` | Lift the executable incidence and cycle objects to conductor-terminal graphs, state-conditioned topology decisions, and compiled multi-terminal factors. |
@@ -89,22 +101,30 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `LIT-PAR-001` | Establish necessary and sufficient redundancy tests for arbitrary multiconductor limits and for state- or decision-dependent line models. |
 | `NUMERICAL-001` | Extend the current five-bus structural witness to a pinned running-network benchmark with solver-exported Ybus/Jacobian sparsity, ordering-dependent fill, and recovered decision-margin checks. |
 | `NUMERICAL-002` | Add an independent KKT/Jacobian export and compare ordering-dependent fill and decision margins across source and reduced views. |
-| `NUMERICAL-003` | Connect the same source/aggregate comparison to BMOPFTools checked KKT/DiffOpt diagnostics and solver-exported active-set rows. |
+| `NUMERICAL-003` | The public BMOPFTools checked-KKT callback now runs through DiffOpt on a minimal parameterized OPF and agrees with finite difference; a native JuMP/MOI Jacobian structure is now recorded, while solver-private KKT rows, ordering, and factorization statistics remain outside the public boundary. |
 | `RATING-001` | Map selected utility and software rating fields into the typed limit record. |
 | `TOPOLOGY-001` | Add a generated node--breaker fixture with open, closed, and unknown switch states. |
 | `TR-COMP-001` | Prove associativity modulo certificate serialization and strengthen compatibility checks beyond object identity. |
 | `TR-COORD-001` | Add an independent mathematical reviewer and extend coordinate actions to general input/output tensors. |
 | `TR-GRAPH-001` | Extend the executable invariant checks to conductor-terminal incidence and state-indexed multi-terminal factors. |
 | `TR-GRAPH-002` | Add active-state radiality certificates with open/closed switches, outages, and multi-terminal compilation choices. |
+| `TR-GRAPH-ACTIVE-001` | Extend the active-state witness to switching, outages, and energized-state uncertainty on the canonical multiconductor fixture. |
 | `TR-KRON-001` | Extend the fixture to randomized and terminal-permutation campaigns, then obtain an independent mathematical review. |
 | `TR-KRON-002` | Replace the illustrative target-selection family with a source-faithful Opti-KRON implementation and extend observations to voltage, constraints, decisions, and topology guards. |
+| `TR-KRON-003` | Extend the chain to a nonlinear AC decision model, parameter uncertainty, and independent error analysis before treating it as a general certification theorem. |
+| `TR-KRON-FIVE-001` | Extend the direct fixture check to non-pendant eliminations, retained branch limits, shunts, and multiconductor internal states. |
+| `TR-KRON-FIVE-002` | Extend the fill-in witness to multiconductor blocks, retained branch limits, shunts, and ordering-dependent numerical factorization diagnostics. |
+| `TR-KRON-NEUTRAL-001` | Extend the neutral-current recovery contract to shunts, nonlinear loads, explicit earth-return factors, and general neutral/grounding reductions. |
 | `TR-PAR-001` | Add an independent mathematical reviewer. |
 | `TR-PAR-002` | Molzahn2018 gives an exact scalar AC constraint-pruning test without asset aggregation; a general multiconductor classification remains open. |
 | `TR-PAR-003` | The multiconductor mechanism is exercised in TR-PAR-004; add an independent reviewer for this linear case. |
 | `TR-PAR-004` | Extend the scalar quadratic-containment idea to non-proportional three-phase four-wire members and reproduce with an independent numerical solver. |
 | `TR-PAR-005` | Extend from pairwise implications to constraints jointly implied by multiple retained limits, then condition certificates on topology, controls, outages, investments, and non-Euclidean thermal regions. |
-| `TR-PAR-006` | TR-PAR-007 covers nonsingular nominal-pi primitives; extend to singular maps, several retained members, state-dependent topology and controls, and obtain an independent global optimality bound where required. |
-| `TR-PAR-007` | Extend to singular shunted primitives, voltage-dependent shunts, several retained members, topology and control states, and global AC optimality bounds where required. |
+| `TR-PAR-006` | TR-PAR-007 covers nonsingular nominal-pi primitives; the companion certificate now refuses singular and singular-shunted recovery maps. Extend from that refusal boundary to exact singular reductions, several retained members, state-dependent topology and controls, and obtain an independent global optimality bound where required. |
+| `TR-PAR-007` | The certificate now includes singular-shunted refusal and voltage-dependent recomputation probes. Extend from these guards to exact singular reductions, voltage-dependent nonlinear decision models, several retained members, topology and control states, and global AC optimality bounds where required. |
+| `TR-PAR-AC-JOINT-001` | Extend beyond this fixed linear member relation to voltage-dependent shunts, topology/control states, several independently varying retained members, and global nonlinear AC optimality guarantees. |
+| `TR-PAR-JOINT-001` | Extend the joint-support certificate to full nonlinear AC cases with several retained members, state-dependent maps, topology decisions, and global optimality bounds. |
+| `TR-PAR-SINGULAR-001` | Extend the reduced-coordinate treatment to singular shunted primitives, coupled conductor models, and global nonlinear AC decision bounds. |
 | `TR-SER-001` | Add an independent mathematical reviewer. |
 | `TR-SER-002` | Formalize sufficient physical line-merge guards for selected line models. |
 | `TR-XFMR-001` | Prove which normalized factors can be serialized back into compact vector-group and delta-roll fields without loss. |
@@ -112,8 +132,8 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `TR-XFMR-003` | Independently review the fixed and parameterized completions and test tap-dependent leakage or excitation models. |
 | `TR-XFMR-004` | Independently review the completion and test phase-angle controls, tap-dependent leakage, and total-current or apparent-power ratings. |
 | `TR-XFMR-005` | The first solver-backed network embedding is TR-XFMR-006; extend the contract to phase-angle, independent per-phase, mechanically coupled, and tap-dependent-loss controls. |
-| `TR-XFMR-006` | TR-XFMR-007 independently reproduces the numerical branch search; extend to unbalanced downstream networks, phase-angle controls, independent-phase taps, mechanical coupling, automatic logic, switching costs, and tap-dependent loss parameters. |
-| `TR-XFMR-007` | Reproduce the case with an independently assembled transformer primitive or external power-system tool and establish global or branch-completeness guarantees where required. |
+| `TR-XFMR-006` | TR-XFMR-007 independently reproduces the numerical branch search, and the certificate now includes a finite two-scenario tap-pair switching-cost ledger; extend the network-level contract to unbalanced downstream controls and richer multiwinding decisions. |
+| `TR-XFMR-007` | The finite tap-pair ledger is branch-complete for its declared domain, but the continuous subproblems remain local Ipopt solutions; reproduce the case with an independently assembled transformer primitive or external power-system tool and establish global guarantees where required. |
 
 ## Facet indexes
 
@@ -121,7 +141,7 @@ These retrieval facets are provisional and path-derived. They are navigation aid
 additional verification labels; explicit facet fields can replace them when the claims
 schema is normalised.
 
-### `decision-cases` (16)
+### `decision-cases` (19)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -134,6 +154,9 @@ schema is normalised.
 | `TR-PAR-005` — For fixed linear complex terminal-current maps with centered Euclidean norm limits, one normalized constraint implies another if and only if the retained normalized real quadratic form minus the candidate form is positive semidefinite; applying this pairwise test to every aligned conductor and both terminal ends certifies exact candidate-limit pruning while retaining both member models. | [Multiconductor parallel AC decision case](../cases/multiconductor-parallel-ac-decision.md) | `theorem` |
 | `TR-PAR-006` — For nonsingular fixed series admittances on common multiconductor endpoint coordinates, candidate component currents recover as I_l2=(Y_l2/Y_l1)I_l1, and the exact maximum of candidate component c over all retained component-current discs is sum_k abs(K_ck) Imax_l1k; in the recorded reciprocal non-proportional three-phase four-wire AC case this certifies all l2 limits redundant, the exact-pruned and source objectives agree at 1.1274329, and a summed-limit aggregate reaches 1.8058181 by violating an l1 limit. | [Non-proportional three-phase four-wire parallel case](../cases/four-wire-parallel-ac-decision.md) | `theorem` |
 | `TR-PAR-007` — For fixed nominal-pi multiconductor members whose retained full two-end terminal-current primitive Ar is nonsingular, all candidate terminal currents recover as Ac*inv(Ar) times the retained terminal-current vector, so exact complex-polydisc row norms certify joint implication across both line ends; in the recorded non-proportional four-wire case, pruning eight member-2 limits preserves the 1.1286205 source objective while a same-size summed-limit model reaches 1.8077114 by violating member 1. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `theorem` |
+| `TR-PAR-AC-JOINT-001` — In the recorded three-member four-wire AC case, member 3 has the fixed recovery I_l3=0.10 I_l1+0.10 I_l2 and a 0.15 p.u. component limit; the joint support bound is 0.144 p.u., so deleting member-3 limits preserves the locally solved source objective 1.2401762 to 7e-14. An independent damped-Newton continuation and bisection reproduces the source boundary within 1.3e-8 served-fraction units. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
+| `TR-PAR-JOINT-001` — For fixed series current maps in common endpoint-voltage-drop coordinates, a candidate component-current limit is implied by several retained member limits when its exact recovery row has support bound sum_k abs(K_ck) Ibar_k no larger than the candidate rating; the guarded witness certifies this joint implication for three retained discs. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `theorem` |
+| `TR-PAR-SINGULAR-001` — For the declared series-only singular four-wire fixture, the full two-end terminal-current map is rank deficient, but the endpoint-voltage-drop coordinate recovers member-2 currents exactly from member-1 currents through the declared diagonal map, with the zero-neutral rows retained as an explicit invariant; this is a guarded reduced-coordinate result, not a pseudoinverse or singular-shunt theorem. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
 | `TR-XFMR-001` — A transformer winding terminal permutation is an exact typed-factor normalization when its complete terminal-to-coil incidence relation is right-multiplied by the inverse permutation and coil coordinates remain fixed. | [Transformer-winding coordinate normalization](../transformations/transformer-winding-coordinate-normalization.md) | `theorem` |
 | `TR-XFMR-002` — Complete pairwise multiwinding short-circuit impedances compile exactly into a reference-coordinate impedance matrix ZB, from which every pairwise impedance is recoverable; changing the selected reference winding leaves the external winding admittance invariant, and the classical star/T representation is the three-winding special case. | [Multiwinding leakage reference compilation](../transformations/multiwinding-leakage-reference-compilation.md) | `theorem` |
 | `TR-XFMR-003` — Aligned winding connection-incidence factors compose exactly with a multiwinding leakage admittance as Yterminal=A'*(Yw kron I)*A; retaining the coil-current map preserves per-coil winding limits and makes terminal-coordinate and leakage-reference changes explicit coordinate actions. | [Multiwinding terminal leakage assembly](../transformations/multiwinding-terminal-leakage-assembly.md) | `theorem` |
@@ -142,13 +165,14 @@ schema is normalised.
 | `TR-XFMR-006` — A retained finite scalar transformer tap factor embeds exactly into unchanged multiconductor AC voltage, KCL, power-balance, voltage-limit, and recovered leakage-current constraints by pointwise evaluation; in the recorded 11-terminal WYE/WYE/DELTA case, direct source and parameterized target subproblems agree at all three taps, select 0.95 with served fraction 1.2305865, and freezing the 1.00 start loses 0.0601126 served fraction (0.090169 MW). | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `theorem` |
 | `TR-XFMR-007` — A separate damped finite-difference Newton, continuation, and bisection implementation reproduces all three TR-XFMR-006 tap-conditioned high-voltage branch boundaries without an external optimizer; its largest served-fraction difference from JuMP/Ipopt is 3.14e-10, and both methods select tap 0.95. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
 
-### `graph-and-topology` (10)
+### `graph-and-topology` (14)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
 | `GRAPH-CYCLE-001` — The recorded connected five-bus bus--branch multigraph has seven identified lines, incidence rank four, and cycle-space dimension three; collapsing its parallel q/r pair to a simple edge reduces the cycle-space dimension to two, whereas the spanning-tree-plus-chords representation retains all three source dimensions. | [A five-bus multigraph: identities, cycles, and tree coordinates](../start/five-bus-cycle-spaces.md) | `theorem` |
 | `TR-GRAPH-001` — For a loopless identified multigraph and its simple endpoint projection, the multigraph cycle rank exceeds the simple-graph cycle rank by the sum over edge fibres of fibre size minus one; the lost dimensions are line-identity cycles supported on parallel fibres. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
 | `TR-GRAPH-002` — An identified line is a multigraph bridge exactly when its simple endpoint edge is a bridge and its parallel fibre is a singleton; consequently the identified multigraph is a forest exactly when its simple projection is a forest and every edge fibre is a singleton. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
+| `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-PAR-001` — Summed admittance preserves the unconstrained terminal relation of parallel linear branches. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 | `TR-PAR-002` — Using the sum of member current ratings can create an outer relaxation of the member-constrained feasible set. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 | `TR-PAR-003` — In the recorded two-bus maximum-served-load problem, the naive summed-rating aggregate serves 200 MW while the source and exact lifted formulations each serve 110 MW. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `empirical` |
@@ -156,6 +180,9 @@ schema is normalised.
 | `TR-PAR-005` — For fixed linear complex terminal-current maps with centered Euclidean norm limits, one normalized constraint implies another if and only if the retained normalized real quadratic form minus the candidate form is positive semidefinite; applying this pairwise test to every aligned conductor and both terminal ends certifies exact candidate-limit pruning while retaining both member models. | [Multiconductor parallel AC decision case](../cases/multiconductor-parallel-ac-decision.md) | `theorem` |
 | `TR-PAR-006` — For nonsingular fixed series admittances on common multiconductor endpoint coordinates, candidate component currents recover as I_l2=(Y_l2/Y_l1)I_l1, and the exact maximum of candidate component c over all retained component-current discs is sum_k abs(K_ck) Imax_l1k; in the recorded reciprocal non-proportional three-phase four-wire AC case this certifies all l2 limits redundant, the exact-pruned and source objectives agree at 1.1274329, and a summed-limit aggregate reaches 1.8058181 by violating an l1 limit. | [Non-proportional three-phase four-wire parallel case](../cases/four-wire-parallel-ac-decision.md) | `theorem` |
 | `TR-PAR-007` — For fixed nominal-pi multiconductor members whose retained full two-end terminal-current primitive Ar is nonsingular, all candidate terminal currents recover as Ac*inv(Ar) times the retained terminal-current vector, so exact complex-polydisc row norms certify joint implication across both line ends; in the recorded non-proportional four-wire case, pruning eight member-2 limits preserves the 1.1286205 source objective while a same-size summed-limit model reaches 1.8077114 by violating member 1. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `theorem` |
+| `TR-PAR-AC-JOINT-001` — In the recorded three-member four-wire AC case, member 3 has the fixed recovery I_l3=0.10 I_l1+0.10 I_l2 and a 0.15 p.u. component limit; the joint support bound is 0.144 p.u., so deleting member-3 limits preserves the locally solved source objective 1.2401762 to 7e-14. An independent damped-Newton continuation and bisection reproduces the source boundary within 1.3e-8 served-fraction units. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
+| `TR-PAR-JOINT-001` — For fixed series current maps in common endpoint-voltage-drop coordinates, a candidate component-current limit is implied by several retained member limits when its exact recovery row has support bound sum_k abs(K_ck) Ibar_k no larger than the candidate rating; the guarded witness certifies this joint implication for three retained discs. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `theorem` |
+| `TR-PAR-SINGULAR-001` — For the declared series-only singular four-wire fixture, the full two-end terminal-current map is rank deficient, but the endpoint-voltage-drop coordinate recovers member-2 currents exactly from member-1 currents through the declared diagonal map, with the zero-neutral rows retained as an explicit invariant; this is a guarded reduced-coordinate result, not a pseudoinverse or singular-shunt theorem. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
 
 ### `numerical-evidence` (5)
 
@@ -167,7 +194,7 @@ schema is normalised.
 | `NUMERICAL-002` — For the pinned running-network fixture, BMOPFTools exports a 20-by-20 passive Ybus with 166 nonzeros; the constant-Z linearized Ybus agrees with it, and realification produces a 40-by-40 current-voltage matrix with 664 nonzeros. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `empirical` |
 | `NUMERICAL-003` — In the pinned nonlinear two-bus parallel-member witness, retaining two explicit member-current laws produces a 6-by-7 residual Jacobian and 13-by-13 KKT pattern, while the summed-current aggregate produces a 4-by-5 Jacobian and 9-by-9 KKT pattern; symbolic fill changes with elimination order in both formulations. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `empirical` |
 
-### `physical-modelling` (4)
+### `physical-modelling` (5)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -175,12 +202,15 @@ schema is normalised.
 | `RATING-001` — A power-network rating must identify its constrained asset or terminal, measured quantity and feasible region, duration, ambient/scenario validity, and ownership/provenance before a transformation can claim to preserve it. | [Rating and limit semantics](../foundations/rating-semantics.md) | `definition` |
 | `TR-GRAPH-001` — For a loopless identified multigraph and its simple endpoint projection, the multigraph cycle rank exceeds the simple-graph cycle rank by the sum over edge fibres of fibre size minus one; the lost dimensions are line-identity cycles supported on parallel fibres. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
 | `TR-GRAPH-002` — An identified line is a multigraph bridge exactly when its simple endpoint edge is a bridge and its parallel fibre is a singleton; consequently the identified multigraph is a forest exactly when its simple projection is a forest and every edge fibre is a singleton. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
+| `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 
-### `representation` (13)
+### `representation` (16)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
+| `ARCH-CONDUCTOR-002` — The five-bus scalar line-identity fixture lifts to fourteen scalar endpoint ports, five terminal junctions, and seven two-port line factors; the lift retains the q/r parallel fibre and its extra cycle dimension while adding no multiconductor, switch, or transformer semantics. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
 | `ARCH-PORT-001` — A minimal executable port--factor bundle instantiated from the running network validates typed port-to-junction and port-to-factor incidence, a three-port multiwinding factor, grounding as an explicit factor, and a many-to-many asset/electrical relation Λ. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
+| `ARCH-PORT-002` — The five-bus identified scalar multigraph has a direct structural port--factor lift with five bus junctions, seven two-port scalar line factors, fourteen endpoint ports, and one asset-to-factor relation per identified line; parallel members q and r remain distinct factors despite sharing the same bus pair. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
 | `COLLAPSE-001` — Under compatible three-phase terminals, cyclic (circulant) series and shunt matrices, balanced boundary data, sequence-compatible grounding, two-terminal factor closure, phase-symmetric decisions, and positive-sequence observations, the general phase-domain relation restricts exactly to the positive-sequence scalar network. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `theorem` |
 | `COLLAPSE-002` — The generated Fortescue witness diagonalizes a circulant three-phase impedance matrix and preserves the positive-sequence subspace, while a non-circulant perturbation produces sequence mixing and a positive-subspace residual. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `empirical` |
 | `DATA-XWALK-001` — CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER provide distinct partial correspondences to the book's asset, terminal, topology, factor, state, and rating objects; successful import is not by itself semantic or decision equivalence. | [Data-model crosswalk](../foundations/data-model-crosswalk.md) | `practice` |
@@ -193,12 +223,15 @@ schema is normalised.
 | `TOPOLOGY-001` — For a fixed switch state, topological nodes are the connected components of the closed-switch connectivity graph; compiling them into bus--branch buses is a state-conditioned quotient that requires provenance and does not preserve switching decisions by itself. | [Node--breaker, bus--breaker, and topology processing](../foundations/node-breaker-topology-processing.md) | `definition` |
 | `TR-GRAPH-001` — For a loopless identified multigraph and its simple endpoint projection, the multigraph cycle rank exceeds the simple-graph cycle rank by the sum over edge fibres of fibre size minus one; the lost dimensions are line-identity cycles supported on parallel fibres. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
 | `TR-GRAPH-002` — An identified line is a multigraph bridge exactly when its simple endpoint edge is a bridge and its parallel fibre is a singleton; consequently the identified multigraph is a forest exactly when its simple projection is a forest and every edge fibre is a singleton. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
+| `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 
-### `software-and-data` (4)
+### `software-and-data` (6)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
+| `ARCH-CONDUCTOR-002` — The five-bus scalar line-identity fixture lifts to fourteen scalar endpoint ports, five terminal junctions, and seven two-port line factors; the lift retains the q/r parallel fibre and its extra cycle dimension while adding no multiconductor, switch, or transformer semantics. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
 | `ARCH-PORT-001` — A minimal executable port--factor bundle instantiated from the running network validates typed port-to-junction and port-to-factor incidence, a three-port multiwinding factor, grounding as an explicit factor, and a many-to-many asset/electrical relation Λ. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
+| `ARCH-PORT-002` — The five-bus identified scalar multigraph has a direct structural port--factor lift with five bus junctions, seven two-port scalar line factors, fourteen endpoint ports, and one asset-to-factor relation per identified line; parallel members q and r remain distinct factors despite sharing the same bus pair. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
 | `DATA-XWALK-001` — CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER provide distinct partial correspondences to the book's asset, terminal, topology, factor, state, and rating objects; successful import is not by itself semantic or decision equivalence. | [Data-model crosswalk](../foundations/data-model-crosswalk.md) | `practice` |
 | `FIXTURE-001` — Running-network fixture v0.1.0 passes the current BMOPFTools JSON schema and conformance checks without errors or warnings. | [Executable running network](../cases/executable-running-network.md) | `empirical` |
 | `FIXTURE-002` — The v0.1.0 continuous PF and OPF instances terminate locally solved in the recorded environment. | [Executable running network](../cases/executable-running-network.md) | `empirical` |
@@ -209,7 +242,7 @@ schema is normalised.
 | --- | --- | --- |
 | `LIT-PAR-001` — For fixed scalar AC pi-line models on common endpoints, a parallel member's current- or apparent-power limit at one terminal is redundant when its normalized terminal-voltage quadratic feasible set contains that of another member; applying the test at both terminals certifies removal of both directional limits without aggregating the line models. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 
-### `transformations` (22)
+### `transformations` (30)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -217,8 +250,13 @@ schema is normalised.
 | `TR-COORD-001` — A simultaneous permutation of conductor coordinates, terminal pairing, element matrices, and componentwise limits is an exact normalization with an inverse permutation. | [Conductor-coordinate normalization](../transformations/conductor-coordinate-normalization.md) | `theorem` |
 | `TR-GRAPH-001` — For a loopless identified multigraph and its simple endpoint projection, the multigraph cycle rank exceeds the simple-graph cycle rank by the sum over edge fibres of fibre size minus one; the lost dimensions are line-identity cycles supported on parallel fibres. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
 | `TR-GRAPH-002` — An identified line is a multigraph bridge exactly when its simple endpoint edge is a bridge and its parallel fibre is a singleton; consequently the identified multigraph is a forest exactly when its simple projection is a forest and every edge fibre is a singleton. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
+| `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-KRON-001` — Typed multiconductor Kron reduction commutes with invertible block-diagonal terminal-coordinate changes when currents transform by the power-dual action. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `theorem` |
 | `TR-KRON-002` — In the declared linear scenario fixture, exact Kron reproduces each fixed-injection boundary relation, an operating-point Ward-style equivalent is exact only at its calibration point, and an explicit scenario objective can select a sparser non-exact target. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
+| `TR-KRON-003` — In the declared one-state linear Ward scenario fixture, an internal-injection residual propagates through a recovered-state bound and a boundary-current bound to classify the approximate source-limit decision as certified feasible, ambiguous, or certified violated; the bound is exact for this fixture but is not a general nonlinear error theorem. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
+| `TR-KRON-FIVE-001` — In the five-bus scalar fixture, eliminating the pendant bus m through line x by typed Kron reduction reproduces the retained boundary Y-bus obtained by direct deletion of the leaf line, with exact boundary-current recovery for the recorded voltage state. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
+| `TR-KRON-FIVE-002` — In the same five-bus fixture, eliminating the non-pendant bus l by typed Kron reduction preserves the recorded boundary current relation, creates Schur-complement fill edges j-m and k-m among the retained buses, and exactly recovers the x-branch current whose deliberately tight declared limit is violated by the recorded state. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
+| `TR-KRON-NEUTRAL-001` — In the running four-conductor midpoint Kron fixture, the eliminated neutral half-section current is exactly recoverable from the retained boundary solution and midpoint recovery; a neutral-current limit must therefore remain in the reduced feasible set, and dropping it admits the recorded boundary point that the source model rejects. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
 | `TR-PAR-001` — Summed admittance preserves the unconstrained terminal relation of parallel linear branches. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 | `TR-PAR-002` — Using the sum of member current ratings can create an outer relaxation of the member-constrained feasible set. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 | `TR-PAR-003` — In the recorded two-bus maximum-served-load problem, the naive summed-rating aggregate serves 200 MW while the source and exact lifted formulations each serve 110 MW. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `empirical` |
@@ -226,6 +264,9 @@ schema is normalised.
 | `TR-PAR-005` — For fixed linear complex terminal-current maps with centered Euclidean norm limits, one normalized constraint implies another if and only if the retained normalized real quadratic form minus the candidate form is positive semidefinite; applying this pairwise test to every aligned conductor and both terminal ends certifies exact candidate-limit pruning while retaining both member models. | [Multiconductor parallel AC decision case](../cases/multiconductor-parallel-ac-decision.md) | `theorem` |
 | `TR-PAR-006` — For nonsingular fixed series admittances on common multiconductor endpoint coordinates, candidate component currents recover as I_l2=(Y_l2/Y_l1)I_l1, and the exact maximum of candidate component c over all retained component-current discs is sum_k abs(K_ck) Imax_l1k; in the recorded reciprocal non-proportional three-phase four-wire AC case this certifies all l2 limits redundant, the exact-pruned and source objectives agree at 1.1274329, and a summed-limit aggregate reaches 1.8058181 by violating an l1 limit. | [Non-proportional three-phase four-wire parallel case](../cases/four-wire-parallel-ac-decision.md) | `theorem` |
 | `TR-PAR-007` — For fixed nominal-pi multiconductor members whose retained full two-end terminal-current primitive Ar is nonsingular, all candidate terminal currents recover as Ac*inv(Ar) times the retained terminal-current vector, so exact complex-polydisc row norms certify joint implication across both line ends; in the recorded non-proportional four-wire case, pruning eight member-2 limits preserves the 1.1286205 source objective while a same-size summed-limit model reaches 1.8077114 by violating member 1. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `theorem` |
+| `TR-PAR-AC-JOINT-001` — In the recorded three-member four-wire AC case, member 3 has the fixed recovery I_l3=0.10 I_l1+0.10 I_l2 and a 0.15 p.u. component limit; the joint support bound is 0.144 p.u., so deleting member-3 limits preserves the locally solved source objective 1.2401762 to 7e-14. An independent damped-Newton continuation and bisection reproduces the source boundary within 1.3e-8 served-fraction units. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
+| `TR-PAR-JOINT-001` — For fixed series current maps in common endpoint-voltage-drop coordinates, a candidate component-current limit is implied by several retained member limits when its exact recovery row has support bound sum_k abs(K_ck) Ibar_k no larger than the candidate rating; the guarded witness certifies this joint implication for three retained discs. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `theorem` |
+| `TR-PAR-SINGULAR-001` — For the declared series-only singular four-wire fixture, the full two-end terminal-current map is rank deficient, but the endpoint-voltage-drop coordinate recovers member-2 currents exactly from member-1 currents through the declared diagonal map, with the zero-neutral rows retained as an explicit invariant; this is a guarded reduced-coordinate result, not a pseudoinverse or singular-shunt theorem. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
 | `TR-SER-001` — A zero-injection degree-two junction between coordinate-aligned series elements has equivalent impedance Z_l1 + P' Z_l2 P. | [Degree-two series elimination](../transformations/degree-two-series-elimination.md) | `theorem` |
 | `TR-SER-002` — Exact terminal-behaviour closure under degree-two elimination does not by itself establish closure within a homogeneous physical line class. | [Degree-two series elimination](../transformations/degree-two-series-elimination.md) | `theorem` |
 | `TR-XFMR-001` — A transformer winding terminal permutation is an exact typed-factor normalization when its complete terminal-to-coil incidence relation is right-multiplied by the inverse permutation and coil coordinates remain fixed. | [Transformer-winding coordinate normalization](../transformations/transformer-winding-coordinate-normalization.md) | `theorem` |
@@ -241,17 +282,32 @@ schema is normalised.
 | Artifact | Evidence summary |
 | --- | --- |
 | `active-radiality-witness.json` | generated evidence |
+| `certified-approximation-witness.json` | `TR-KRON-003` — kron_ward_scenario_fixture_v0.1.0 |
+| `clean-package-matrix.json` | `PKG-CLEAN-001` — generated evidence |
+| `conductor-terminal-lift-witness.json` | `ARCH-CONDUCTOR-001` — running-network v0.1.0 conductor-terminal incidence with line, switch, and three-winding factor compilation |
 | `coordinate-normalization-certificate.json` | `TR-COORD-001` — generated evidence |
 | `coordinate-series-composition-certificate.json` | `TR-COMP-001` — generated evidence |
+| `data-model-crosswalk-witness.json` | `DATA-XWALK-001` — data/running-network/v0.1.0.json |
 | `degree-two-series-certificate.json` | `TR-SER-001` — generated evidence |
+| `five-bus-active-radiality-witness.json` | `TR-GRAPH-ACTIVE-001` — experiments/generated/five-bus-cycle-space-analysis.json |
+| `five-bus-conductor-terminal-lift-witness.json` | `ARCH-CONDUCTOR-002` — five-bus cycle-space scalar line identities lifted to scalar terminal junctions and two-port factors |
 | `five-bus-cycle-space-analysis.json` | `GRAPH-CYCLE-001` — connected loopless scalar series bus-branch multigraph |
 | `five-bus-figure-manifest.json` | generated evidence |
+| `five-bus-port-factor-witness.json` | `ARCH-PORT-002` — experiments/generated/five-bus-cycle-space-analysis.json |
+| `five-bus-typed-kron-witness.json` | `TR-KRON-FIVE-001` — experiments/generated/five-bus-cycle-space-analysis.json |
+| `fixture-coverage-matrix.json` | `PKG-FIXTURE-001` — generated evidence |
 | `four-wire-parallel-ac-certificate.json` | `TR-PAR-006` — generated evidence |
+| `guarded-parallel-reduction-witness.json` | `TR-PAR-GUARDED-001` — series-only singular terminal map, jointly retained current discs, and state-dependent admittance maps |
+| `hierarchy-boundary-witness.json` | `ARCH-BOUNDARY-001` — running-network hierarchy, typed boundary refinement, open-system gluing, and state-conditioned switch maps |
 | `kron-ward-scenario-comparison.json` | `TR-KRON-002` — kron_ward_scenario_fixture_v0.1.0 |
 | `multiconductor-parallel-ac-certificate.json` | `TR-PAR-004` — generated evidence |
 | `multiwinding-leakage-compilation-certificate.json` | `TR-XFMR-002` — generated evidence |
 | `multiwinding-terminal-assembly-certificate.json` | `TR-XFMR-003` — generated evidence |
+| `multiwinding-terminal-lift-witness.json` | `ARCH-CONDUCTOR-MULTI-001` — serialized three-winding fixed-linear transformer contract lifted to ordered terminal ports |
+| `multiwinding-typed-kron-witness.json` | `TR-KRON-MULTI-001` — serialized three-winding terminal admittance with DELTA terminal block eliminated |
+| `node-breaker-state-witness.json` | `TOPO-NB-001` — four-connectivity-node node-breaker fixture with two switch assets and state-conditioned bus compilation |
 | `nonlinear-kkt-witness.json` | `NUMERICAL-003` — finite-difference nonlinear AC decision Jacobians and symbolic KKT sparsity for a two-bus parallel-member witness |
+| `nonlinear-ward-witness.json` | `nonlinear_ward_probe_v0.1.0` — scalar constant-power internal state with a base-state Ward approximation |
 | `numerical-structure-witness.json` | `NUM-STRUCT-001` — five-bus source topology; structural dependency patterns, not numerical Jacobian entries |
 | `parallel-branch-certificate.json` | `TR-PAR-001` — generated evidence |
 | `parallel-opf-comparison.json` | `TR-PAR-003` — generated evidence |
@@ -259,7 +315,16 @@ schema is normalised.
 | `port-factor-architecture.json` | `ARCH-PORT-001` — data/running-network/v0.1.0.json |
 | `positive-sequence-collapse-witness.json` | `COLLAPSE-002` — generated evidence |
 | `provenance.json` | generated evidence |
+| `public-api-manifest.json` | generated evidence |
+| `running-network-cycle-space-witness.json` | `GRAPH-CYCLE-RUNNING-001` — identified scalar line projection of the running multiconductor fixture |
+| `running-network-radiality-witness.json` | `TOPO-RUNNING-001` — running-network v0.1.0 bus/member graph with switch and line-outage variants plus conductor-terminal provenance |
+| `running-network-typed-kron-witness.json` | `TR-KRON-001` — data/running-network/v0.1.0.json |
+| `semantic-evaluator-matrix.json` | `PKG-SEMANTIC-001` — generated evidence |
+| `solver-diagnostics-crosswalk.json` | `NUM-SOLVER-CROSSWALK-001` — package-level BMOPFTools Ybus/Jacobian plus finite-difference nonlinear KKT diagnostics |
+| `state-space-unit-witness.json` | `ARCH-STATE-UNIT-001` — data/running-network/v0.1.0.json |
 | `summary.json` | generated evidence |
+| `three-member-four-wire-parallel-ac-certificate.json` | generated evidence |
+| `transformer-control-family-witness.json` | `TR-XFMR-CONTROL-001` — pointwise transformer control compilation with phase, mechanical, automatic, and tap-dependent-loss families |
 | `transformer-factor-completion-certificate.json` | `TR-XFMR-004` — generated evidence |
 | `transformer-tap-ac-decision-certificate.json` | `TR-XFMR-006` — generated evidence |
 | `transformer-tap-ac-independent-certificate.json` | `TR-XFMR-007` — generated evidence |

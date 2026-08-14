@@ -74,20 +74,6 @@
     "fixed excitation and transformer-internal grounding factors do not depend on the tap decision"
   ],
   "rule_id": "parameterized_transformer_tap_factor_compilation",
-  "preserves": [
-    "all_declared_source_semantics",
-    "tap_decision_identity_and_domain",
-    "tap_parameterized_terminal_relation",
-    "tap_dependent_component_current_recovery",
-    "leakage_path_current_limits",
-    "tap_dependent_objective_expressions"
-  ],
-  "constraint_map": {
-    "continuous_tap": "tap_min <= tap[decision_id] <= tap_max",
-    "discrete_tap": "tap[decision_id] belongs to the declared ordered position set",
-    "coefficient": "coefficient_xkc(tap) = tap * base_coefficient_xkc",
-    "network_and_limits": "evaluate the fixed-linear component relations at the same retained decision value"
-  },
   "provenance": {
     "generated_objects": [
       "generated_parameterized_transformer_factor__x1",
@@ -102,6 +88,36 @@
     "source_completion_contract": "x1/discrete-tap/v0.1.0"
   },
   "classification": "exact_compilation",
+  "target": {
+    "object_ids": [
+      "generated_parameterized_transformer_factor__x1",
+      "generated_tap_decision_recovery__x1",
+      "generated_parameterized_component_current_maps__x1"
+    ],
+    "detail": {
+      "decision_count": 1,
+      "decision_ids": [
+        "tap/x1/winding/2"
+      ],
+      "fixed_snapshot_terminal_dimension": 11
+    },
+    "model_category": "parameterized_transformer_factor_with_retained_tap_decisions"
+  },
+  "certificate_id": "TR-XFMR-005",
+  "preserves": [
+    "all_declared_source_semantics",
+    "tap_decision_identity_and_domain",
+    "tap_parameterized_terminal_relation",
+    "tap_dependent_component_current_recovery",
+    "leakage_path_current_limits",
+    "tap_dependent_objective_expressions"
+  ],
+  "constraint_map": {
+    "continuous_tap": "tap_min <= tap[decision_id] <= tap_max",
+    "discrete_tap": "tap[decision_id] belongs to the declared ordered position set",
+    "coefficient": "coefficient_xkc(tap) = tap * base_coefficient_xkc",
+    "network_and_limits": "evaluate the fixed-linear component relations at the same retained decision value"
+  },
   "source": {
     "object_ids": [
       "generated_terminal_leakage__x1",
@@ -138,20 +154,53 @@
     "fixed_snapshot": "substitute the retained decision value into coefficient_xkc(tap) and apply TR-XFMR-004",
     "component_currents": "use the fixed-snapshot leakage, winding, excitation, and grounding recovery maps at the retained tap value"
   },
-  "target": {
-    "object_ids": [
-      "generated_parameterized_transformer_factor__x1",
-      "generated_tap_decision_recovery__x1",
-      "generated_parameterized_component_current_maps__x1"
+  "typed_interfaces": {
+    "target_unit_families": [
+      "admittance",
+      "current",
+      "dimensionless",
+      "voltage"
     ],
-    "detail": {
-      "decision_count": 1,
-      "decision_ids": [
-        "tap/x1/winding/2"
+    "unresolved_unit_labels": [
+    ],
+    "target_boundary_labels": [
+      "the same tap-parameterized winding terminal voltages and currents"
+    ],
+    "source_unit_families": [
+      "admittance",
+      "current",
+      "dimensionless",
+      "voltage"
+    ],
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "state_domain_ids": [
+    ],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+    "unit_family_map": {
+      "A": [
+        "current"
       ],
-      "fixed_snapshot_terminal_dimension": 11
+      "S": [
+        "admittance"
+      ],
+      "dimensionless tap": [
+        "dimensionless"
+      ],
+      "V": [
+        "voltage"
+      ]
     },
-    "model_category": "parameterized_transformer_factor_with_retained_tap_decisions"
+    "source_boundary_labels": [
+      "tap-parameterized winding terminal voltages and currents"
+    ],
+    "source_variable_labels": [
+      "terminal voltages",
+      "tap-dependent leakage and component currents"
+    ],
+    "target_variable_labels": [
+      "the same terminal voltages",
+      "recoverable tap-dependent component currents"
+    ]
   },
   "evidence": {
     "maximum_complex_power_balance_residual_VA": 4.8744221999899176e-9,
@@ -723,6 +772,5 @@
       ]
     ]
   },
-  "schema_version": "1.1.0",
-  "certificate_id": "TR-XFMR-005"
+  "schema_version": "1.1.0"
 }

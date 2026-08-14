@@ -35,6 +35,9 @@ and [chapter-status page](docs/src/reference/chapter-status.md) provide retrieva
 state directly from the claims ledger and generated artifacts. The PDF is a secondary curated
 serialization of the same Markdown sources.
 
+The former `power-network-graph-models/` directory is retained as an archived
+historical seed for provenance only; it is not part of the maintained build.
+
 The separately reimplemented transformer-network check shares the certified
 transformer matrices and case assembly with the primary experiment. It is
 independent as a numerical solution path, not yet an independent nameplate or
@@ -95,6 +98,7 @@ julia --project=experiments experiments/run_transformer_tap_ac_independent_repro
 julia --project=experiments experiments/run_multiconductor_parallel_ac.jl
 julia --project=experiments experiments/test/runtests.jl
 julia scripts/check_claims.jl
+python3 scripts/check_claim_mentions.py
 python3 scripts/check_artifacts.py
 bash scripts/reproduce_clean_fixture.sh
 ```

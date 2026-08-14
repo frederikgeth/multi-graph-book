@@ -1,7 +1,8 @@
 # [Cycles, parallelism, and radial structure](@id cycles-parallelism-radiality)
 
 **Page status:** representation-scoped graph definitions with executable
-invariant witnesses; conductor-terminal and state-conditioned lifts remain open.
+invariant witnesses, including conductor-terminal and state-conditioned lifts;
+broader multi-terminal compilation families remain open.
 
 ## Why these words need a representation
 
@@ -84,6 +85,27 @@ particular operating point.
     Do not use *cycle*, *cycle-basis coordinate*, and *loop flow* as synonyms.
     The first two are properties or coordinates of a declared graph; the last
     is an operating statement requiring electrical variables and equations.
+
+![Simple cycles, line-identity cycles, and radial tails.](../assets/cycles-parallelism-radial-tail.png)
+
+The three panels are deliberately side by side: the triangle is a simple cycle, the parallel fibre contributes a cycle only when line identity is retained, and the tail is a maximal bridge path ending at a leaf.
+
+### Conductor-terminal and state-conditioned lifts
+
+The running-network conductor-terminal witness carries the same distinction one
+level closer to the electrical factors. Each ordered conductor map becomes a
+member edge between terminal vertices such as ``i1/a`` and ``i2/a``; the line
+identity is retained, so parallel phase or neutral members remain visible. The
+artifact `experiments/generated/conductor-terminal-lift-witness.json` reports
+member and simple-projection cycle ranks for open and closed switch states. An
+unknown switch is represented by both admissible realizations rather than being
+silently treated as open, so radiality is a state-conditioned observation.
+
+This is still a terminal-incidence witness, not a universal rule for compiling
+every multi-terminal factor. A three-winding transformer can be represented as
+a factor node, a star compilation, or a clique compilation; those choices are
+separate views whose cycle spaces must not be conflated with the physical
+terminal graph.
 
 ## Parallelism has levels
 
@@ -256,8 +278,26 @@ the active identified multigraph is a tree, so both active radiality predicates
 agree. This is the small counterexample needed before using radiality as a
 guard for a conductor-coordinate or phase-to-phase reduction.
 
+The running-network witness extends this counterexample to declared switch and
+line-outage states. Each state row records the active line, switch, and
+transformer-winding inventories before reporting cycle ranks. Opening the
+switch therefore changes the active inventory without silently deleting the
+switch asset, while an ``l2`` outage removes exactly that line member. The
+transformer remains represented by explicit winding members with factor
+provenance. Radiality is consequently a predicate of the state-conditioned
+member inventory, not a permanent property of the asset inventory.
+
+The five-bus companion
+`experiments/generated/five-bus-active-radiality-witness.json` makes the same
+distinction on the chapter's line-identity example. Its inventory has member
+cycle rank 3 and simple-projection cycle rank 2; the declared spanning tree
+``\{r,s,w,x\}`` is radial at both levels. This is claim
+`TR-GRAPH-ACTIVE-001`: the active state must be named before calling the
+network radial.
+
 Run it with:
 
 ```sh
 julia --project=experiments experiments/run_active_radiality.jl
+julia --project=experiments experiments/run_five_bus_active_radiality.jl
 ```

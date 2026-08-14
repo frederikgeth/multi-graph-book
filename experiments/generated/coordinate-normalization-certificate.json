@@ -61,35 +61,11 @@
     "each from-terminal label remains paired with its original to-terminal label"
   ],
   "rule_id": "conductor_coordinate_normalization",
-  "preserves": [
-    "all_declared_source_semantics",
-    "external_terminal_voltage_current_relation",
-    "conductor_identity",
-    "componentwise_current_limits",
-    "source_to_target_provenance"
-  ],
-  "constraint_map": {
-    "target_componentwise_limit": "i_max_target = P * i_max_source",
-    "target_impedance": "Z_target = P * Z_source * P'",
-    "target_coordinates": "x_target = P * x_source"
-  },
   "provenance": {
     "generated_object": "normalized__l6__a_n",
     "source_element": "l6"
   },
   "classification": "exact_normalization",
-  "source": {
-    "object_ids": [
-      "l6"
-    ],
-    "model_category": "ordered_multiconductor_series_element"
-  },
-  "forgets": [
-  ],
-  "recovery_map": {
-    "source_coordinates": "x_source = P' * x_target",
-    "source_impedance": "Z_source = P' * Z_target * P"
-  },
   "target": {
     "object_ids": [
       "normalized__l6__a_n"
@@ -132,6 +108,72 @@
     },
     "model_category": "ordered_multiconductor_series_element"
   },
+  "certificate_id": "TR-COORD-001",
+  "preserves": [
+    "all_declared_source_semantics",
+    "external_terminal_voltage_current_relation",
+    "conductor_identity",
+    "componentwise_current_limits",
+    "source_to_target_provenance"
+  ],
+  "constraint_map": {
+    "target_componentwise_limit": "i_max_target = P * i_max_source",
+    "target_impedance": "Z_target = P * Z_source * P'",
+    "target_coordinates": "x_target = P * x_source"
+  },
+  "source": {
+    "object_ids": [
+      "l6"
+    ],
+    "model_category": "ordered_multiconductor_series_element"
+  },
+  "forgets": [
+  ],
+  "recovery_map": {
+    "source_coordinates": "x_source = P' * x_target",
+    "source_impedance": "Z_source = P' * Z_target * P"
+  },
+  "typed_interfaces": {
+    "target_unit_families": [
+      "current",
+      "impedance",
+      "voltage"
+    ],
+    "unresolved_unit_labels": [
+    ],
+    "target_boundary_labels": [
+      "target-order terminal voltage and current vectors"
+    ],
+    "source_unit_families": [
+      "current",
+      "impedance",
+      "voltage"
+    ],
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "state_domain_ids": [
+    ],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+    "unit_family_map": {
+      "A": [
+        "current"
+      ],
+      "V": [
+        "voltage"
+      ],
+      "ohm": [
+        "impedance"
+      ]
+    },
+    "source_boundary_labels": [
+      "source-order terminal voltage and current vectors"
+    ],
+    "source_variable_labels": [
+      "ordered conductor state x_source"
+    ],
+    "target_variable_labels": [
+      "ordered conductor state x_target"
+    ]
+  },
   "evidence": {
     "permutation_matrix": [
       [
@@ -152,6 +194,5 @@
       "n"
     ]
   },
-  "schema_version": "1.1.0",
-  "certificate_id": "TR-COORD-001"
+  "schema_version": "1.1.0"
 }

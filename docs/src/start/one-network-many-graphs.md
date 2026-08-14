@@ -1,4 +1,4 @@
-# One network, many graphs
+# [One network, many graphs](@id one-network-many-graphs)
 
 **Page status:** explanatory synthesis introducing the representation landscape.
 
