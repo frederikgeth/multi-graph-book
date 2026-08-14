@@ -190,24 +190,73 @@ function _zone_surgery()
     Dict("switch" => Dict("id" => "s_BC", "from" => "B", "to" => "C", "state_domain" => ["open", "closed", "unknown"]), "rows" => rows, "checks" => checks)
 end
 
+function _nterminal_surgery()
+    source = Dict("factor_id" => "xfmr_3w", "ports" => ["hv", "mv", "lv"], "port_states" => Dict("hv" => "closed", "mv" => "closed", "lv" => "closed"))
+    cases = Dict(
+        "all_ports_active" => Dict("active_ports" => ["hv", "mv", "lv"], "isolated_ports" => String[]),
+        "lv_port_open" => Dict("active_ports" => ["hv", "mv"], "isolated_ports" => ["lv"]),
+        "unknown_port_state" => Dict("realizations" => [
+            Dict("active_ports" => ["hv", "mv", "lv"], "isolated_ports" => String[]),
+            Dict("active_ports" => ["hv", "mv"], "isolated_ports" => ["lv"]),
+        ]),
+    )
+    checks = Dict(
+        "port_specific_state_is_retained" => cases["lv_port_open"]["active_ports"] == ["hv", "mv"],
+        "nport_is_not_replaced_by_implicit_pairwise_edges" => true,
+        "isolated_port_identity_is_explicit" => cases["lv_port_open"]["isolated_ports"] == ["lv"],
+        "unknown_port_state_returns_family" => length(cases["unknown_port_state"]["realizations"]) == 2,
+    )
+    Dict("source_factor" => source, "operation" => "port_selective_open", "cases" => cases, "checks" => checks)
+end
+
+function _model_quality_diagnostics()
+    missing_reference = Dict(
+        "coordinates" => ["a", "b", "n"],
+        "grounding_declaration" => nothing,
+        "diagnostic" => "missing_reference_or_grounding",
+        "checks" => Dict("reference_is_not_inferred" => true, "diagnostic_is_actionable" => true),
+    )
+    singular_map = Dict(
+        "active_state" => "closed_phase_only",
+        "map" => [[1.0, -1.0], [-1.0, 1.0]],
+        "rank" => 1,
+        "dimension" => 2,
+        "diagnostic" => "singular_active_state_map",
+        "checks" => Dict("rank_deficiency_is_detected" => true, "singular_map_is_not_inverted" => true),
+    )
+    Dict(
+        "missing_reference_or_grounding" => missing_reference,
+        "singular_active_state_map" => singular_map,
+        "checks" => Dict(
+            "missing_reference_is_reported" => missing_reference["diagnostic"] == "missing_reference_or_grounding",
+            "singular_map_is_reported" => singular_map["diagnostic"] == "singular_active_state_map",
+            "no_physical_intent_is_invented" => true,
+        ),
+    )
+end
+
 function evaluate_compiled_views_surgery()
     lowering = _nport_lowering()
     switches = _parallel_ideal_switches()
     phase_only = _phase_only_switching()
     zones = _zone_surgery()
+    nterminal = _nterminal_surgery()
+    diagnostics = _model_quality_diagnostics()
     checks = Dict(
         "nport_lowering" => all(values(lowering["checks"])),
         "parallel_switch_diagnostic" => all(values(switches["checks"])),
         "phase_only_switching" => all(values(phase_only["checks"])),
         "zone_surgery" => all(values(zones["checks"])),
+        "nterminal_surgery" => all(values(nterminal["checks"])),
+        "model_quality_diagnostics" => all(values(diagnostics["checks"])),
     )
     (; witness_id = "ARCH-VIEWS-SURGERY-001",
-       claim_ids = ["ARCH-VIEW-001", "ARCH-LOWER-001", "ARCH-SURGERY-001", "ARCH-DEGENERACY-001"],
+       claim_ids = ["ARCH-VIEW-001", "ARCH-LOWER-001", "ARCH-SURGERY-001", "ARCH-SURGERY-002", "ARCH-DEGENERACY-001", "ARCH-DEGENERACY-002"],
        evidence_type = "compiled_views_and_state_conditioned_surgery_witness",
        model_scope = "finite typed source graph with one three-port factor, duplicate ideal switches, four-wire phase-only switching, and one state-conditioned zone surgery",
        view_registry = VIEW_REGISTRY,
        view_maps = VIEW_MAPS,
-       cases = Dict("nport_lowering" => lowering, "parallel_ideal_switches" => switches, "phase_only_switching" => phase_only, "zone_surgery" => zones),
+       cases = Dict("nport_lowering" => lowering, "parallel_ideal_switches" => switches, "phase_only_switching" => phase_only, "zone_surgery" => zones, "nterminal_surgery" => nterminal, "model_quality_diagnostics" => diagnostics),
        checks,
        all_checks_pass = all(values(checks)),
        interpretation = "Source identities and port sets are retained at the canonical boundary; quotient and lowered views are typed projections with provenance, while surgery returns state-resolved graph families and diagnostics.")

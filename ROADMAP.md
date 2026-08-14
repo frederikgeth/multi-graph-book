@@ -963,6 +963,8 @@ n-port, grounding, switch, or asset semantics.
   switches with an ambiguity certificate, (iii) phase-only switching whose
   phase and neutral connectivity/radiality queries disagree, and (iv)
   open-switch/galvanic-zone surgery that returns a family of active graphs;
+- [x] extend the witness with port-selective n-terminal surgery and explicit
+  missing-reference and singular-active-map diagnostics;
 - [x] add reader-facing claims and a compact “source graph to views and
   surgery” chapter, then cross-link it to the formal-representation,
   node--breaker, cycles/radiality, and transformation-register chapters;

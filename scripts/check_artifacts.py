@@ -1212,7 +1212,7 @@ def main() -> int:
     compiled_views = load_json(COMPILED_VIEWS_SURGERY)
     if compiled_views.get("witness_id") != "ARCH-VIEWS-SURGERY-001":
         errors.append("compiled views/surgery witness has an invalid witness ID")
-    if compiled_views.get("claim_ids") != ["ARCH-VIEW-001", "ARCH-LOWER-001", "ARCH-SURGERY-001", "ARCH-DEGENERACY-001"]:
+    if compiled_views.get("claim_ids") != ["ARCH-VIEW-001", "ARCH-LOWER-001", "ARCH-SURGERY-001", "ARCH-SURGERY-002", "ARCH-DEGENERACY-001", "ARCH-DEGENERACY-002"]:
         errors.append("compiled views/surgery witness has an unexpected claim set")
     if compiled_views.get("evidence_type") != "compiled_views_and_state_conditioned_surgery_witness":
         errors.append("compiled views/surgery witness has an invalid evidence type")
@@ -1225,7 +1225,7 @@ def main() -> int:
         errors.append("compiled views/surgery witness has an unexpected source-to-view map registry")
     if any(entry.get("reverse_status") in (None, "") for entry in compiled_views.get("view_maps", [])):
         errors.append("compiled views/surgery source-to-view maps must declare reverse status")
-    for case_name in ("nport_lowering", "parallel_ideal_switches", "phase_only_switching", "zone_surgery"):
+    for case_name in ("nport_lowering", "parallel_ideal_switches", "phase_only_switching", "zone_surgery", "nterminal_surgery", "model_quality_diagnostics"):
         case = compiled_views.get("cases", {}).get(case_name, {})
         if not case.get("checks") or not all(value is True for value in case["checks"].values()):
             errors.append(f"compiled views/surgery case failed checks: {case_name}")

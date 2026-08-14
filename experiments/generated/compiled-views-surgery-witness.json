@@ -1,9 +1,11 @@
 {
     "checks": {
+        "model_quality_diagnostics": true,
         "zone_surgery": true,
         "nport_lowering": true,
         "parallel_switch_diagnostic": true,
-        "phase_only_switching": true
+        "phase_only_switching": true,
+        "nterminal_surgery": true
     },
     "view_maps": [
         {
@@ -114,7 +116,9 @@
         "ARCH-VIEW-001",
         "ARCH-LOWER-001",
         "ARCH-SURGERY-001",
-        "ARCH-DEGENERACY-001"
+        "ARCH-SURGERY-002",
+        "ARCH-DEGENERACY-001",
+        "ARCH-DEGENERACY-002"
     ],
     "witness_id": "ARCH-VIEWS-SURGERY-001",
     "evidence_type": "compiled_views_and_state_conditioned_surgery_witness",
@@ -206,6 +210,46 @@
     "interpretation": "Source identities and port sets are retained at the canonical boundary; quotient and lowered views are typed projections with provenance, while surgery returns state-resolved graph families and diagnostics.",
     "source": "experiments/transformations/CompiledViewsSurgeryWitness.jl",
     "cases": {
+        "model_quality_diagnostics": {
+            "checks": {
+                "no_physical_intent_is_invented": true,
+                "missing_reference_is_reported": true,
+                "singular_map_is_reported": true
+            },
+            "missing_reference_or_grounding": {
+                "checks": {
+                    "diagnostic_is_actionable": true,
+                    "reference_is_not_inferred": true
+                },
+                "coordinates": [
+                    "a",
+                    "b",
+                    "n"
+                ],
+                "diagnostic": "missing_reference_or_grounding",
+                "grounding_declaration": null
+            },
+            "singular_active_state_map": {
+                "rank": 1,
+                "checks": {
+                    "rank_deficiency_is_detected": true,
+                    "singular_map_is_not_inverted": true
+                },
+                "map": [
+                    [
+                        1,
+                        -1
+                    ],
+                    [
+                        -1,
+                        1
+                    ]
+                ],
+                "diagnostic": "singular_active_state_map",
+                "dimension": 2,
+                "active_state": "closed_phase_only"
+            }
+        },
         "zone_surgery": {
             "checks": {
                 "closed_switch_returns_one_zone": true,
@@ -410,6 +454,70 @@
                         "a_A-a_B",
                         "b_A-b_B",
                         "c_A-c_B"
+                    ]
+                }
+            }
+        },
+        "nterminal_surgery": {
+            "checks": {
+                "unknown_port_state_returns_family": true,
+                "isolated_port_identity_is_explicit": true,
+                "port_specific_state_is_retained": true,
+                "nport_is_not_replaced_by_implicit_pairwise_edges": true
+            },
+            "source_factor": {
+                "factor_id": "xfmr_3w",
+                "port_states": {
+                    "mv": "closed",
+                    "hv": "closed",
+                    "lv": "closed"
+                },
+                "ports": [
+                    "hv",
+                    "mv",
+                    "lv"
+                ]
+            },
+            "operation": "port_selective_open",
+            "cases": {
+                "unknown_port_state": {
+                    "realizations": [
+                        {
+                            "isolated_ports": [
+                            ],
+                            "active_ports": [
+                                "hv",
+                                "mv",
+                                "lv"
+                            ]
+                        },
+                        {
+                            "isolated_ports": [
+                                "lv"
+                            ],
+                            "active_ports": [
+                                "hv",
+                                "mv"
+                            ]
+                        }
+                    ]
+                },
+                "all_ports_active": {
+                    "isolated_ports": [
+                    ],
+                    "active_ports": [
+                        "hv",
+                        "mv",
+                        "lv"
+                    ]
+                },
+                "lv_port_open": {
+                    "isolated_ports": [
+                        "lv"
+                    ],
+                    "active_ports": [
+                        "hv",
+                        "mv"
                     ]
                 }
             }

@@ -1,21 +1,23 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:2915b01d1e15f9697b6a9c100b933373f9c6f26763888d981c6e0233b629d5d6 -->
+<!-- generated-from claims/claims.toml sha256:cda0642283fc916ac14c06046a23abe52574a0552f88c7a9085d2b7cccddcd71 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 
-**Indexed claims:** 77
+**Indexed claims:** 79
 **Indexed chapters:** 30
 
 ## Claims by type
 
-### `definition` (8)
+### `definition` (10)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
 | `ARCH-DEGENERACY-001` — Duplicate ideal switches with identical terminal sets and state domains are semantically under-determined by a connectivity quotient; the model should retain both identities and emit a diagnostic rather than invent physical intent. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
+| `ARCH-DEGENERACY-002` — Missing grounding/reference declarations and rank-deficient active-state maps are model-quality diagnostics; a compiler should refuse to infer a reference or invert a singular map without an additional declaration or restricted coordinate query. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
 | `ARCH-SURGERY-001` — State-conditioned graph surgery should return state-indexed graphs or graph families with diagnostics and provenance; unknown switch states must not be silently collapsed to one active graph. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
+| `ARCH-SURGERY-002` — An n-terminal surgery must retain port-coordinate identity and may return port-specific active and isolated sets; it cannot be inferred by replacing an n-port factor with implicit pairwise edges. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
 | `ARCH-VIEW-001` — A power-network visualisation should declare its object level, preserved and forgotten semantics, identity fibres, and reverse-map status; single-line, multi-line, port-factor, node-breaker, nodal-support, and reduced views are distinct typed projections. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
 | `GROUND-SCOPE-001` — Reference, neutral, earth-return, and grounding-asset semantics are distinct model objects; reductions involving them must declare an earth-return class, grounding points, retained observations, and recovery data. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `self-checked` |
 | `NUMERICAL-001` — Representation and reduction choices have numerical consequences that must be reported separately from electrical preservation: coordinate scaling changes conditioning without changing an invertible solution set, Jacobian dependency graphs need not equal physical graphs, Schur elimination can create fill-in, and decision certificates require residual/error estimates and margins. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
@@ -112,7 +114,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | Verification | Claims |
 | --- | ---: |
 | `independently-implemented` | 4 |
-| `self-checked` | 73 |
+| `self-checked` | 75 |
 
 ## Unresolved issues
 
@@ -121,6 +123,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `ARCH-CHORDAL-001` | Characterize chordality and minimal fill under missing phases, sparse coupling blocks, parallel factors, multi-terminal devices, and meshed bus graphs. |
 | `ARCH-CONDUCTOR-002` | Compare the scalar terminal lift with a full conductor-terminal factor evaluator and state-conditioned topology maps. |
 | `ARCH-DEGENERACY-001` | Specify utility-data remediation policies for duplicate or indistinguishable switch assets. |
+| `ARCH-DEGENERACY-002` | Connect diagnostics to standards-aware import remediation and quantify restricted-coordinate recovery policies. |
 | `ARCH-LOWER-001` | Add a full evaluated multiwinding factor lowerer and independently review equation-preservation conditions. |
 | `ARCH-NODAL-001` | Classify identifiable and bounded ambiguity families under realistic line, transformer, shunt, catalog, measurement, and state constraints. |
 | `ARCH-PORT-001` | Lift the data witness to evaluated factor relations and independently review the architecture against a non-synthetic asset model. |
@@ -131,6 +134,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `ARCH-RECOVERY-004` | Extend deterministic bounds to noisy partial observations, structured/passive uncertainty sets, nonlinear operating points, and experiment design. |
 | `ARCH-SUPPORT-001` | Extend the support/stamp distinction to frequency-coupled, rectangular realified, Jacobian, and multi-terminal compiled operator families. |
 | `ARCH-SURGERY-001` | Extend the surgery contract to energized islands, protection states, n-terminal factors, and optimization decisions. |
+| `ARCH-SURGERY-002` | Extend port-selective surgery to coupled conductor bundles, grounding factors, and protection/energization states. |
 | `ARCH-VIEW-001` | Compare the registry with external single-line, node-breaker, CIM/CGMES, and multi-line visual languages. |
 | `COLLAPSE-001` | Extend the network witness to controls, phase-specific limits, contingencies, and an independent mathematical review before making a global decision-equivalence claim. |
 | `COLLAPSE-002` | Extend the witness to controls, phase-specific limits, contingencies, and independent mathematical review. |
@@ -277,13 +281,14 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `representation` (34)
+### `representation` (36)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
 | `ARCH-CHORDAL-001` — For a simple bus-level tree with a common m-coordinate block at every bus and a structurally dense two-terminal stamp on every tree edge, the scalar structural-support graph is chordal and leaf-bus block elimination is a zero-fill perfect elimination ordering. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-CONDUCTOR-002` — The five-bus scalar line-identity fixture lifts to fourteen scalar endpoint ports, five terminal junctions, and seven two-port line factors; the lift retains the q/r parallel fibre and its extra cycle dimension while adding no multiconductor, switch, or transformer semantics. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
 | `ARCH-DEGENERACY-001` — Duplicate ideal switches with identical terminal sets and state domains are semantically under-determined by a connectivity quotient; the model should retain both identities and emit a diagnostic rather than invent physical intent. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `definition` |
+| `ARCH-DEGENERACY-002` — Missing grounding/reference declarations and rank-deficient active-state maps are model-quality diagnostics; a compiler should refuse to infer a reference or invert a singular map without an additional declaration or restricted coordinate query. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `definition` |
 | `ARCH-LOWER-001` — A typed lowering from an identity-bearing n-port source graph to ordinary-edge incidence objects may preserve a declared equation relation while forgetting factor identity unless source fibres and provenance are retained. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `theorem` |
 | `ARCH-NODAL-001` — Assembly of typed linear factor stamps into a compound nodal operator is not generally injective: distinct admissible parallel-factor decompositions can produce an identical nodal operator and identical normalized assembly residuals. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-PORT-001` — A minimal executable port--factor bundle instantiated from the running network validates typed port-to-junction and port-to-factor incidence, a three-port multiwinding factor, grounding as an explicit factor, and a many-to-many asset/electrical relation Λ. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
@@ -294,6 +299,7 @@ schema is normalised.
 | `ARCH-RECOVERY-004` — For noisy full-rank multiconductor voltage/current snapshots, the pseudoinverse source estimate has a deterministic Frobenius error bound proportional to the noise radius and the voltage-snapshot pseudoinverse norm; nearly dependent excitation therefore enlarges the certified uncertainty set even when the observation map is full rank. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-SUPPORT-001` — Block and scalar nonzero-support graphs of a declared compound nodal operator are simple graphs by construction, while the identified factor-stamp decomposition is separate data and may be a multigraph. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-SURGERY-001` — State-conditioned graph surgery should return state-indexed graphs or graph families with diagnostics and provenance; unknown switch states must not be silently collapsed to one active graph. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `definition` |
+| `ARCH-SURGERY-002` — An n-terminal surgery must retain port-coordinate identity and may return port-specific active and isolated sets; it cannot be inferred by replacing an n-port factor with implicit pairwise edges. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `definition` |
 | `ARCH-VIEW-001` — A power-network visualisation should declare its object level, preserved and forgotten semantics, identity fibres, and reverse-map status; single-line, multi-line, port-factor, node-breaker, nodal-support, and reduced views are distinct typed projections. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `definition` |
 | `COLLAPSE-001` — Under compatible three-phase terminals, cyclic (circulant) series and shunt matrices, balanced boundary data, sequence-compatible grounding, two-terminal factor closure, phase-symmetric decisions, and positive-sequence observations, the general phase-domain relation restricts exactly to the positive-sequence scalar network. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `theorem` |
 | `COLLAPSE-002` — The generated Fortescue witness diagonalizes a circulant three-phase impedance matrix and preserves the positive-sequence subspace, while a non-circulant perturbation produces sequence mixing and a positive-subspace residual. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `empirical` |
@@ -316,13 +322,14 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `software-and-data` (17)
+### `software-and-data` (19)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
 | `ARCH-CHORDAL-001` — For a simple bus-level tree with a common m-coordinate block at every bus and a structurally dense two-terminal stamp on every tree edge, the scalar structural-support graph is chordal and leaf-bus block elimination is a zero-fill perfect elimination ordering. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-CONDUCTOR-002` — The five-bus scalar line-identity fixture lifts to fourteen scalar endpoint ports, five terminal junctions, and seven two-port line factors; the lift retains the q/r parallel fibre and its extra cycle dimension while adding no multiconductor, switch, or transformer semantics. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
 | `ARCH-DEGENERACY-001` — Duplicate ideal switches with identical terminal sets and state domains are semantically under-determined by a connectivity quotient; the model should retain both identities and emit a diagnostic rather than invent physical intent. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `definition` |
+| `ARCH-DEGENERACY-002` — Missing grounding/reference declarations and rank-deficient active-state maps are model-quality diagnostics; a compiler should refuse to infer a reference or invert a singular map without an additional declaration or restricted coordinate query. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `definition` |
 | `ARCH-LOWER-001` — A typed lowering from an identity-bearing n-port source graph to ordinary-edge incidence objects may preserve a declared equation relation while forgetting factor identity unless source fibres and provenance are retained. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `theorem` |
 | `ARCH-NODAL-001` — Assembly of typed linear factor stamps into a compound nodal operator is not generally injective: distinct admissible parallel-factor decompositions can produce an identical nodal operator and identical normalized assembly residuals. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-PORT-001` — A minimal executable port--factor bundle instantiated from the running network validates typed port-to-junction and port-to-factor incidence, a three-port multiwinding factor, grounding as an explicit factor, and a many-to-many asset/electrical relation Λ. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
@@ -333,6 +340,7 @@ schema is normalised.
 | `ARCH-RECOVERY-004` — For noisy full-rank multiconductor voltage/current snapshots, the pseudoinverse source estimate has a deterministic Frobenius error bound proportional to the noise radius and the voltage-snapshot pseudoinverse norm; nearly dependent excitation therefore enlarges the certified uncertainty set even when the observation map is full rank. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-SUPPORT-001` — Block and scalar nonzero-support graphs of a declared compound nodal operator are simple graphs by construction, while the identified factor-stamp decomposition is separate data and may be a multigraph. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-SURGERY-001` — State-conditioned graph surgery should return state-indexed graphs or graph families with diagnostics and provenance; unknown switch states must not be silently collapsed to one active graph. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `definition` |
+| `ARCH-SURGERY-002` — An n-terminal surgery must retain port-coordinate identity and may return port-specific active and isolated sets; it cannot be inferred by replacing an n-port factor with implicit pairwise edges. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `definition` |
 | `ARCH-VIEW-001` — A power-network visualisation should declare its object level, preserved and forgotten semantics, identity fibres, and reverse-map status; single-line, multi-line, port-factor, node-breaker, nodal-support, and reduced views are distinct typed projections. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `definition` |
 | `DATA-XWALK-001` — CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER provide distinct partial correspondences to the book's asset, terminal, topology, factor, state, and rating objects; successful import is not by itself semantic or decision equivalence. | [Data-model crosswalk](../foundations/data-model-crosswalk.md) | `practice` |
 | `FIXTURE-001` — Running-network fixture v0.1.0 passes the current BMOPFTools JSON schema and conformance checks without errors or warnings. | [Executable running network](../cases/executable-running-network.md) | `empirical` |

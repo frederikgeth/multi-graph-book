@@ -136,6 +136,36 @@ review_date = ""
 unresolved_issue = "Extend the surgery contract to energized islands, protection states, n-terminal factors, and optimization decisions."
 
 [[claim]]
+claim_id = "ARCH-SURGERY-002"
+chapter = "docs/src/foundations/compiled-views-and-graph-surgery.md"
+claim_text = "An n-terminal surgery must retain port-coordinate identity and may return port-specific active and isolated sets; it cannot be inferred by replacing an n-port factor with implicit pairwise edges."
+status = "established_result"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "port-selective_n-terminal_executable_witness"
+citation_keys = []
+model_scope = "three-port transformer factor with an open, closed, or unknown state on one named port"
+assumptions = "the surgery declares the port state domain and preserves the source factor identity"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend port-selective surgery to coupled conductor bundles, grounding factors, and protection/energization states."
+
+[[claim]]
+claim_id = "ARCH-DEGENERACY-002"
+chapter = "docs/src/foundations/compiled-views-and-graph-surgery.md"
+claim_text = "Missing grounding/reference declarations and rank-deficient active-state maps are model-quality diagnostics; a compiler should refuse to infer a reference or invert a singular map without an additional declaration or restricted coordinate query."
+status = "established_result"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "missing-reference_and_singular-map_executable_diagnostic_witness"
+citation_keys = []
+model_scope = "finite four-wire coordinate declaration and a rank-one two-coordinate active map"
+assumptions = "the source does not provide an alternate grounding, reference, or pseudoinverse policy"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Connect diagnostics to standards-aware import remediation and quantify restricted-coordinate recovery policies."
+
+[[claim]]
 claim_id = "ARCH-DEGENERACY-001"
 chapter = "docs/src/foundations/compiled-views-and-graph-surgery.md"
 claim_text = "Duplicate ideal switches with identical terminal sets and state domains are semantically under-determined by a connectivity quotient; the model should retain both identities and emit a diagnostic rather than invent physical intent."

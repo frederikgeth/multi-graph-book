@@ -156,6 +156,13 @@ opening the neutral or earth path. Consequently, a bus-level tree can coexist
 with a disconnected phase-terminal graph, or with a neutral path that remains
 connected.
 
+For an n-terminal factor, the surgery result should name the active and
+isolated port sets. Opening the ``lv`` port of a three-winding transformer is
+not the same operation as deleting one of three pairwise lines: the factor
+identity, the remaining ``hv``/``mv`` relation, and the isolated-port status
+remain explicit. If the port state is unknown, the result is a family of port
+sets.
+
 ## 5. Degenerate and under-determined models
 
 Some modelling problems cannot be resolved from the graph alone. In the
@@ -170,6 +177,13 @@ reference declarations, and singular active-state maps. These are not
 ordinary graph errors: they are model-quality findings that require a source
 declaration, an additional observation, or a deliberately restricted query.
 
+In particular, a four-wire coordinate list without a grounding or reference
+declaration must not acquire one by convention. Likewise, a rank-deficient
+active-state map must not be inverted merely because a downstream algorithm
+expects an inverse. A restricted endpoint-voltage query, an explicit
+pseudoinverse policy, or a source-level grounding declaration may make a
+well-scoped operation possible; the default result is a diagnostic.
+
 ## 6. Executable scope
 
 The package-independent witness
@@ -183,7 +197,9 @@ cases:
 3. a four-wire phase-only switch whose phase connectivity changes while the
    neutral path remains connected; and
 4. an open/closed/unknown switch surgery that returns one-zone, two-zone, or
-   state-family results.
+   state-family results;
+5. a port-selective n-terminal surgery that retains the isolated port; and
+6. missing-reference and singular-active-map diagnostics.
 
 These are architecture witnesses, not claims that every utility data model
 uses the same view classes. The next extensions are richer n-terminal factors,
