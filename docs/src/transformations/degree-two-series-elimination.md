@@ -54,8 +54,17 @@ Hence the exact behavioural composite has
 
 This is claim `TR-SER-001`. It is a coordinate-aware terminal equivalence, not
 a license to add matrices whose rows merely happen to have the same position.
+The displayed formula also assumes that the two voltage-drop relations contain
+no mutual-impedance terms linking either source element to the other or to an
+external element. The coupled case is treated separately below.
 
 ## Guards
+
+The source type supplies a precondition before the junction guards are even
+considered: **both factors are series-only multiconductor elements**. A
+nominal-``\pi`` or other shunted factor is outside this rule. A shunt carried
+inside such a factor is not made admissible merely because no separately named
+shunt object is attached to ``b``.
 
 The implemented rule accepts the rewrite only when all of the following hold:
 
@@ -66,10 +75,13 @@ The implemented rule accepts the rewrite only when all of the following hold:
 | no current injection at ``b`` | establishes a common series current |
 | no shunt or grounding at ``b`` | prevents current from leaving the series path |
 | no measurement, control, or protection boundary at ``b`` | keeps elimination within the declared observation contract |
-| neither element participates in omitted external mutual coupling | prevents loss of a constitutive relation outside the pair |
+| neither element is mutually coupled to the other source element | makes the displayed uncoupled impedance sum applicable |
+| neither element is mutually coupled to any external element | prevents loss of a constitutive relation outside the pair |
 
 A failed guard returns a structured rejection with the failed condition and the
-source evidence. It does not return a best-effort equivalent.
+source evidence. Mutual coupling is represented by element-pair impedance data,
+not by a flag on the junction, so the guard can inspect the constitutive model
+that would invalidate the formula. It does not return a best-effort equivalent.
 
 ## Constraint and recovery maps
 
@@ -143,6 +155,36 @@ two-port rather than a nominal-``\pi`` section with naively summed parameters.
     dropping a junction constraint, shunt, grounding branch, control, rating or
     provenance boundary without recording it.
 
+## Mutual-coupling counterexample
+
+Suppose the two series sections are themselves mutually coupled. In coordinates
+where their drop relations contain cross blocks ``\mathbf Z_{12}`` and
+``\mathbf Z_{21}``, substituting
+``\mathbf I_2=\mathbf P\mathbf I_1`` gives
+
+```math
+\mathbf Z_{\mathrm{eq,coupled}}
+ = \mathbf Z_1
+ + \mathbf Z_{12}\mathbf P
+ + \mathbf P^{\mathsf T}\mathbf Z_{21}
+ + \mathbf P^{\mathsf T}\mathbf Z_2\mathbf P.
+```
+
+The two cross terms do not disappear merely because ``b`` has zero injection.
+Coupling between adjacent sections of the same corridor is also not naturally
+described as *external coupling at the junction*: it is a constitutive relation
+between the two element identities. The implementation therefore stores
+mutual-coupling blocks against the other element identity and rejects the local
+uncoupled rule whenever either an internal-pair or external-pair block exists.
+A more general coupled-factor elimination could be exact, but it would be a
+different rule with the full coupled block as its source.
+
+The executable negative witness uses two reciprocal two-conductor sections. It
+compares the displayed uncoupled sum with the four-term expression above and
+records an approximately 11.65% relative Frobenius-norm error. This is a
+counterexample to the insufficient guard, not a claim that mutual coupling
+always produces an error of that size.
+
 ## Grounding counterexample
 
 If a grounding or shunt admittance ``\mathbf Y_g`` is attached at ``b``, then
@@ -175,6 +217,8 @@ Its machine-readable result is
 `experiments/generated/degree-two-series-certificate.json`. The certificate
 classifies the result as an exact behavioural reduction, records the
 permutation and constraint intersection, and explicitly refuses to call the
-target a homogeneous physical line. It conforms to the common interface in
+target a homogeneous physical line. It also records the cross-coupled negative
+witness, its four-term exact expression, the failed element-pair guard, and the
+relative error made by the uncoupled expression. It conforms to the common interface in
 [Certificate schema and composition](@ref certificate-schema-composition), where the separately certified
 coordinate normalization is composed with this rule.

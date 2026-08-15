@@ -333,17 +333,17 @@ unresolved_issue = "Re-run with an independent solver where possible."
 [[claim]]
 claim_id = "TR-SER-001"
 chapter = "docs/src/transformations/degree-two-series-elimination.md"
-claim_text = "A zero-injection degree-two junction between coordinate-aligned series elements has equivalent impedance Z_l1 + P' Z_l2 P."
+claim_text = "A zero-injection degree-two junction between coordinate-aligned, series-only elements with no pairwise or external mutual coupling has equivalent impedance Z_l1 + P' Z_l2 P; mutually coupled sections instead contain the cross terms Z_12 P + P' Z_21."
 status = "established_result"
 claim_type = "theorem"
 verification = "self-checked"
-evidence_type = "algebraic_derivation_and_executable_certificate"
+evidence_type = "algebraic_derivation_executable_certificate_guard_tests_and_cross_coupling_negative_witness"
 citation_keys = []
 model_scope = "linear multiconductor series elements with ordered terminal maps"
-assumptions = "matching conductor sets; no injection, shunt, grounding, observation boundary, control, protection boundary, or omitted external mutual coupling at the eliminated junction"
+assumptions = "both source factors are series-only; matching conductor sets; no injection, shunt, grounding, observation boundary, control, or protection boundary at the eliminated junction; neither source element is mutually coupled to the other source element or to an external element"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Add an independent mathematical reviewer."
+unresolved_issue = "The 2026-08-15 automated independent re-derivation found and motivated the repaired coupling guard but is not human peer review; add a named mathematical reviewer and formulate a separate exact rule for coupled section pairs."
 
 [[claim]]
 claim_id = "TR-SER-002"

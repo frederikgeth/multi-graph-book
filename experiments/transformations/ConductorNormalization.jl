@@ -39,6 +39,12 @@ function normalize_conductor_coordinates(
     certificate_id="TR-COORD-001",
 )
     order = String.(requested_order)
+    isempty(source.mutual_couplings) || return NormalizationRejection(
+        "conductor_coordinate_normalization",
+        source.id,
+        order,
+        ["element_pair_mutual_coupling_requires_joint_normalization"],
+    )
     action = coordinate_action(source.terminals_from, order)
     action isa CoordinateActionRejection && return NormalizationRejection(
         "conductor_coordinate_normalization",

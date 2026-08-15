@@ -201,8 +201,10 @@ than duplicating graph or witness data in the drawing code.
 - `experiments/generated/certified-approximation-witness.json`: a declared
   residual-to-state-to-constraint-to-decision margin chain for the Ward
   scenario fixture, including feasible, ambiguous, and violated cases;
-- `experiments/generated/degree-two-series-certificate.json`: the first
-  executable guarded series-elimination rule.
+- `experiments/generated/degree-two-series-certificate.json`: the executable
+  guarded series-elimination rule, including an element-pair mutual-coupling
+  rejection and the cross-coupled negative witness that invalidates the
+  uncoupled impedance sum by about 11.65% in the recorded fixture;
 - `experiments/generated/coordinate-normalization-certificate.json`: an exact,
   invertible conductor-coordinate rewrite;
 - `experiments/generated/coordinate-series-composition-certificate.json`: the

@@ -1109,16 +1109,18 @@ conflict below is resolved and recorded.
 
 #### B. High-risk technical claims and certificates
 
-- [ ] **Hold `TR-SER-001` as blocking.** State that both factors must be
+- [x] **Resolve the `TR-SER-001` publication hold.** State that both factors must be
   series-only and that there is no mutual coupling either with other elements
   or between the two eliminated sections. For cross-coupled sections, document
   the exact composite
   ``Z_1 + Z_{12}P + P^{\mathsf T}Z_{21} + P^{\mathsf T}Z_2P`` rather than
   ``Z_1 + P^{\mathsf T}Z_2P``;
-- [ ] redesign the series-elimination data contract so mutual coupling is an
+- [x] redesign the series-elimination data contract so mutual coupling is an
   element-pair property that the guard can inspect, not junction free text;
   add a negative executable witness reproducing the reported 11.65% relative
-  error before releasing the hold;
+  error before releasing the hold. The repaired rule and adjacent coordinate
+  normalization now fail closed on declared pair coupling, the focused tests
+  pass 22/22 in each suite, and the aggregate and clean-package suites pass;
 - [ ] revise `TR-KRON-001` to separate the mathematical requirement that the
   coordinate action respect the retained/internal partition from the stronger
   modelling choice of per-port block diagonality; add the load-bearing

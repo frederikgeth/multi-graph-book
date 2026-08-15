@@ -15,7 +15,7 @@ CASES = {
     "parallel-branch-certificate.json": ("experiments/run_vertical_slice.jl", "experiments/test/runtests.jl", "parallel_branch_certificate"),
     "degree-two-series-certificate.json": ("experiments/transformations/SeriesElimination.jl", "experiments/test/series_elimination.jl", "eliminate_degree_two"),
     "coordinate-normalization-certificate.json": ("experiments/transformations/ConductorNormalization.jl", "experiments/test/coordinate_normalization.jl", "normalize_conductor_coordinates"),
-    "coordinate-series-composition-certificate.json": ("experiments/transformations/TransformationContracts.jl", "experiments/test/coordinate_normalization.jl", "compose_certificates"),
+    "coordinate-series-composition-certificate.json": ("package/GraphModelsForPowerNetworks/src/TransformationContracts.jl", "experiments/test/coordinate_normalization.jl", "compose_certificates"),
     "parallel-opf-comparison.json": ("experiments/transformations/ParallelDecisionComparison.jl", "experiments/test/parallel_decision_comparison.jl", "parallel_decision_certificate"),
     "transformer-winding-normalization-certificate.json": ("experiments/transformations/TransformerWindingNormalization.jl", "experiments/test/transformer_winding_normalization.jl", "normalize_winding_terminals"),
     "multiwinding-leakage-compilation-certificate.json": ("experiments/transformations/MultiwindingLeakageCompilation.jl", "experiments/test/multiwinding_leakage_compilation.jl", "compile_pairwise_leakage"),
@@ -27,7 +27,7 @@ CASES = {
     "multiconductor-parallel-ac-certificate.json": ("experiments/transformations/MulticonductorParallelACDecision.jl", "experiments/test/multiconductor_parallel_ac.jl", "multiconductor_ac_certificate"),
     "four-wire-parallel-ac-certificate.json": ("experiments/transformations/FourWireParallelACDecision.jl", "experiments/test/four_wire_parallel_ac.jl", "four_wire_parallel_certificate"),
     "pi-four-wire-parallel-ac-certificate.json": ("experiments/transformations/PiFourWireParallelACDecision.jl", "experiments/test/pi_four_wire_parallel_ac.jl", "pi_four_wire_certificate"),
-    "typed-kron-certificate.json": ("experiments/transformations/TypedKronReduction.jl", "experiments/test/typed_kron.jl", "kron_reduce"),
+    "typed-kron-certificate.json": ("package/GraphModelsForPowerNetworks/src/TypedKronReduction.jl", "experiments/test/typed_kron.jl", "kron_reduce"),
 }
 
 

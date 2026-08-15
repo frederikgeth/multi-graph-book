@@ -46,6 +46,16 @@ using .TransformationContracts
     @test rejected isa NormalizationRejection
     @test "coordinate_sets_differ" in rejected.failed_guards
 
+    coupled_source = SeriesElement(
+        "coupled-l6", "ib", "i8", ["n", "a"], ["n", "a"],
+        source.impedance;
+        mutual_couplings=Dict("coupled-l5" => 0.05 .* source.impedance),
+    )
+    coupled_rejection = normalize_conductor_coordinates(coupled_source, ["a", "n"])
+    @test coupled_rejection isa NormalizationRejection
+    @test "element_pair_mutual_coupling_requires_joint_normalization" in
+        coupled_rejection.failed_guards
+
     first = SeriesElement(
         "l5", "i7", "ib", ["a", "n"], ["a", "n"],
         ComplexF64[1+2im 0.1+0.2im; 0.1+0.2im 3+1im];

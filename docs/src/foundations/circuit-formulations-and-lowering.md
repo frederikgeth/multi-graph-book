@@ -222,7 +222,7 @@ and decisions. The [representation taxonomy](@ref representation-taxonomy)
 classifies their retained meanings; the [transformation semantics register](@ref
 transformation-semantics-register) records the guards for moving among them.
 
-!!! warning "Power-network shorthand"
+!!! warning "Power-system shorthand"
     “The network has a Y-bus” usually means that one study formulation has
     assembled a nodal operator for one declared state and variable set. It does
     not mean that the full power-network source model is a simple graph, a

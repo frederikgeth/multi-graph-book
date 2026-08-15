@@ -57,10 +57,16 @@ The elimination is exact for the series terminal relation when:
 1. conductor sets and coordinate systems are compatible;
 2. the middle object has no current injection;
 3. there is no grounding, shunt, tap, control, or measurement relation there;
-4. neither segment participates in an external mutual-coupling factor that the
-   replacement omits;
+4. neither segment is mutually coupled to the other segment or to an external
+   element through a factor that the replacement omits;
 5. eliminated variables and any constraints can be recovered or are outside
    the observation contract.
+
+The fourth guard is an element-pair condition, not a property of ``b``. If the
+two sections have cross blocks ``Z_{12}`` and ``Z_{21}``, the exact composite
+contains both cross terms; see
+[Degree-two series elimination](@ref degree-two-series-rule) for the formula
+and executable counterexample.
 
 Different line construction codes do **not** invalidate this algebraic series
 equivalence.

@@ -64,7 +64,7 @@
       "artifact": "experiments/generated/coordinate-series-composition-certificate.json",
       "certificate_id": "TR-COMP-001",
       "classification": "exact_behavioral_reduction",
-      "evaluator": "experiments/transformations/TransformationContracts.jl",
+      "evaluator": "package/GraphModelsForPowerNetworks/src/TransformationContracts.jl",
       "evaluator_symbol": "compose_certificates",
       "semantic_test": "experiments/test/coordinate_normalization.jl",
       "checks": {
@@ -292,7 +292,7 @@
       "artifact": "experiments/generated/typed-kron-certificate.json",
       "certificate_id": "TR-KRON-001",
       "classification": "exact_behavioral_reduction",
-      "evaluator": "experiments/transformations/TypedKronReduction.jl",
+      "evaluator": "package/GraphModelsForPowerNetworks/src/TypedKronReduction.jl",
       "evaluator_symbol": "kron_reduce",
       "semantic_test": "experiments/test/typed_kron.jl",
       "checks": {

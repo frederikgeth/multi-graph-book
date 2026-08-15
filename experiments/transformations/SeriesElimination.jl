@@ -18,6 +18,7 @@ struct SeriesElement
     impedance::Matrix{ComplexF64}
     current_limit::Union{Nothing,Vector{Float64}}
     construction_code::Union{Nothing,String}
+    mutual_couplings::Dict{String,Matrix{ComplexF64}}
 
     function SeriesElement(
         id,
@@ -28,6 +29,7 @@ struct SeriesElement
         impedance;
         current_limit=nothing,
         construction_code=nothing,
+        mutual_couplings=Dict{String,Matrix{ComplexF64}}(),
     )
         n = length(terminals_from)
         length(terminals_to) == n || throw(ArgumentError("terminal maps must have equal length"))
@@ -36,6 +38,15 @@ struct SeriesElement
         length(unique(terminals_to)) == n || throw(ArgumentError("to-terminal labels must be unique"))
         current_limit === nothing || length(current_limit) == n ||
             throw(ArgumentError("current limit must have one entry per conductor"))
+        coupling_map = Dict{String,Matrix{ComplexF64}}()
+        for (other_id, coupling) in pairs(mutual_couplings)
+            other = String(other_id)
+            other == String(id) &&
+                throw(ArgumentError("mutual coupling must identify a distinct element"))
+            size(coupling) == (n, n) ||
+                throw(ArgumentError("mutual coupling with $other must be $n by $n"))
+            coupling_map[other] = ComplexF64.(coupling)
+        end
         new(
             String(id),
             String(bus_from),
@@ -45,6 +56,7 @@ struct SeriesElement
             ComplexF64.(impedance),
             current_limit === nothing ? nothing : Float64.(current_limit),
             construction_code === nothing ? nothing : String(construction_code),
+            coupling_map,
         )
     end
 end
@@ -57,7 +69,6 @@ Base.@kwdef struct JunctionContext
     measurements::Vector{String} = String[]
     controls::Vector{String} = String[]
     protection_boundaries::Vector{String} = String[]
-    external_couplings::Vector{String} = String[]
 end
 
 struct TransformationCertificate
@@ -113,7 +124,13 @@ function junction_failures(first, second, junction)
     isempty(junction.measurements) || push!(failures, "junction_has_measurement")
     isempty(junction.controls) || push!(failures, "junction_has_control")
     isempty(junction.protection_boundaries) || push!(failures, "junction_is_protection_boundary")
-    isempty(junction.external_couplings) || push!(failures, "element_has_external_mutual_coupling")
+    (haskey(first.mutual_couplings, second.id) ||
+     haskey(second.mutual_couplings, first.id)) &&
+        push!(failures, "source_elements_have_mutual_coupling")
+    any(!=(second.id), keys(first.mutual_couplings)) &&
+        push!(failures, "first_element_has_external_mutual_coupling")
+    any(!=(first.id), keys(second.mutual_couplings)) &&
+        push!(failures, "second_element_has_external_mutual_coupling")
     failures
 end
 
@@ -151,7 +168,10 @@ function eliminate_degree_two(
                 "measurements" => junction.measurements,
                 "controls" => junction.controls,
                 "protection_boundaries" => junction.protection_boundaries,
-                "external_couplings" => junction.external_couplings,
+                "element_pair_mutual_couplings" => Dict(
+                    first.id => sort!(collect(keys(first.mutual_couplings))),
+                    second.id => sort!(collect(keys(second.mutual_couplings))),
+                ),
             ),
         )
     end
@@ -274,11 +294,12 @@ function certificate_dict(result::TransformationResult)
             ),
         ),
         "preconditions" => [
+            "both source objects are series-only multiconductor elements without shunt terms",
             "the first element ends at the eliminated junction",
             "the second element starts at the eliminated junction",
             "junction conductor sets agree up to permutation",
             "the junction has no injection, shunt, grounding, measurement, control, or protection boundary",
-            "neither source element has an external mutual coupling",
+            "neither source element has mutual coupling with the other source element or any external element",
         ],
         "preserves" => certificate.preserves,
         "forgets" => certificate.forgets,
@@ -288,6 +309,7 @@ function certificate_dict(result::TransformationResult)
         "evidence" => Dict(
             "conductor_permutation" => [collect(row) for row in eachrow(certificate.conductor_permutation)],
             "impedance_derivation" => "Z_equivalent = Z_first + P' * Z_second * P",
+            "excluded_cross_coupled_derivation" => "Z_equivalent = Z_first + Z_12 * P + P' * Z_21 + P' * Z_second * P",
             "physical_classification" => certificate.physical_classification,
         ),
     )

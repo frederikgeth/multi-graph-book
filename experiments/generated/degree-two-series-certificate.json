@@ -67,11 +67,12 @@
     }
   },
   "preconditions": [
+    "both source objects are series-only multiconductor elements without shunt terms",
     "the first element ends at the eliminated junction",
     "the second element starts at the eliminated junction",
     "junction conductor sets agree up to permutation",
     "the junction has no injection, shunt, grounding, measurement, control, or protection boundary",
-    "neither source element has an external mutual coupling"
+    "neither source element has mutual coupling with the other source element or any external element"
   ],
   "rule_id": "degree_two_series_elimination",
   "provenance": {
@@ -207,7 +208,120 @@
     ]
   },
   "evidence": {
+    "checks": {
+      "pairwise_mutual_coupling_rejected": true,
+      "uncoupled_rule_accepted": true,
+      "cross_coupling_relative_error_exceeds_0_1": true
+    },
     "impedance_derivation": "Z_equivalent = Z_first + P' * Z_second * P",
+    "excluded_cross_coupled_derivation": "Z_equivalent = Z_first + Z_12 * P + P' * Z_21 + P' * Z_second * P",
+    "mutual_coupling_negative_witness": {
+      "relative_error_frobenius": 0.11648967675016095,
+      "Z_21": [
+        [
+          {
+            "re": 0.04,
+            "im": 0.09
+          },
+          {
+            "re": 0.01,
+            "im": 0.02
+          }
+        ],
+        [
+          {
+            "re": 0.01,
+            "im": 0.02
+          },
+          {
+            "re": 0.035,
+            "im": 0.085
+          }
+        ]
+      ],
+      "Z_1": [
+        [
+          {
+            "re": 0.3,
+            "im": 0.6
+          },
+          {
+            "re": 0.05,
+            "im": 0.1
+          }
+        ],
+        [
+          {
+            "re": 0.05,
+            "im": 0.1
+          },
+          {
+            "re": 0.32,
+            "im": 0.62
+          }
+        ]
+      ],
+      "Z_12": [
+        [
+          {
+            "re": 0.04,
+            "im": 0.09
+          },
+          {
+            "re": 0.01,
+            "im": 0.02
+          }
+        ],
+        [
+          {
+            "re": 0.01,
+            "im": 0.02
+          },
+          {
+            "re": 0.035,
+            "im": 0.085
+          }
+        ]
+      ],
+      "uncoupled_formula": "Z_1 + P' * Z_2 * P",
+      "coupled_formula": "Z_1 + Z_12 * P + P' * Z_21 + P' * Z_2 * P",
+      "absolute_error_frobenius": 0.27658633371878666,
+      "failed_guards": [
+        "source_elements_have_mutual_coupling"
+      ],
+      "conductor_permutation": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "Z_2": [
+        [
+          {
+            "re": 0.4,
+            "im": 0.8
+          },
+          {
+            "re": 0.06,
+            "im": 0.12
+          }
+        ],
+        [
+          {
+            "re": 0.06,
+            "im": 0.12
+          },
+          {
+            "re": 0.41,
+            "im": 0.79
+          }
+        ]
+      ]
+    },
     "physical_classification": "exact_behavioral_composite_not_a_homogeneous_physical_line",
     "conductor_permutation": [
       [

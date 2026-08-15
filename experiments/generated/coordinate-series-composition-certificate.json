@@ -63,11 +63,12 @@
     "requested and source conductor labels are unique",
     "requested and source conductor sets are equal",
     "each from-terminal label remains paired with its original to-terminal label",
+    "both source objects are series-only multiconductor elements without shunt terms",
     "the first element ends at the eliminated junction",
     "the second element starts at the eliminated junction",
     "junction conductor sets agree up to permutation",
     "the junction has no injection, shunt, grounding, measurement, control, or protection boundary",
-    "neither source element has an external mutual coupling"
+    "neither source element has mutual coupling with the other source element or any external element"
   ],
   "rule_id": "sequential_composition",
   "preserves": [

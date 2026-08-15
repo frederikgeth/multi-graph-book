@@ -285,7 +285,7 @@ uses the same view classes. The next extensions are richer n-terminal factors,
 energization and protection semantics, and independently reviewed adapters to
 external standards.
 
-!!! note "Reader shortcut"
+!!! note "Graph-theory trap"
     When a diagram appears to contradict a familiar statement such as “the
     feeder is radial,” first ask: radial in which view, at which state, and
     with which conductor or member identities retained?
