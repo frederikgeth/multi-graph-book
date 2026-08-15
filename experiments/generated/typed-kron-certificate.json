@@ -62,8 +62,10 @@
     },
     "preconditions": [
         "Y_II is invertible",
-        "T_B and T_I are invertible block-diagonal coordinate actions",
-        "internal injection model is fixed"
+        "T = diag(T_B, T_I) is invertible and respects the retained/internal partition",
+        "per-port block diagonality is an optional locality restriction, not a proof requirement",
+        "internal injections i_I are fixed data independent of v_I",
+        "current coordinates use the conjugate-transpose power dual"
     ],
     "rule_id": "typed_multiconductor_kron_reduction",
     "provenance": {
@@ -155,10 +157,16 @@
             "internal_recovery": true,
             "restricted_library_boundary_exposed": true,
             "restricted_transformer_library_rejection_exposed": true,
-            "affine_covariance": true,
-            "source_limits_recovered": true,
             "coordinate_covariance": true,
+            "complex_power_dual_reciprocity_distinguished": true,
             "line_shunt_stamping_exact": true,
+            "fixed_internal_injection_scope": true,
+            "dense_partition_covariance": true,
+            "physical_reciprocity_preserved": true,
+            "affine_covariance": true,
+            "dense_partition_affine_covariance": true,
+            "dense_partition_recovery": true,
+            "source_limits_recovered": true,
             "restricted_transformer_library_positive_witness": true
         },
         "realizability_boundary": "the general reduced multiport is not required to be block-symmetric; an admissible full-matrix line-shunt witness is stamped separately"

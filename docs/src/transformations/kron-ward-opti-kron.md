@@ -149,9 +149,12 @@ only after these terminal maps have been applied. Consequently every product
 
 **Proposition (typed coordinate-covariant Kron reduction).** Suppose the
 assembled linear multiconductor relation has
-``\mathbf Y_{II}:\mathcal V_I\rightarrow\mathcal V_I`` invertible. Let
-``\mathbf T_B`` and ``\mathbf T_I`` be invertible, block-diagonal changes of
-retained and internal terminal coordinates, with
+``\mathbf Y_{II}:\mathcal V_I\rightarrow\mathcal V_I`` invertible and the
+internal injection ``\mathbf i_I`` is fixed data, independent of
+``\mathbf v_I``. Let ``\mathbf T_B`` and ``\mathbf T_I`` be invertible
+coordinate actions such that
+``\mathbf T=\operatorname{diag}(\mathbf T_B,\mathbf T_I)`` respects the
+retained/internal partition, with
 
 ```math
 \mathbf v_B=\mathbf T_B\widetilde{\mathbf v}_B,
@@ -209,7 +212,22 @@ leaves ``\mathbf T_B^{\mathsf H}\mathbf Y_{\mathrm K}\mathbf T_B``. The same
 substitution proves the affine and recovery identities.
 
 The proposition covers phase permutations and other invertible port-coordinate
-actions. A sequence-coordinate statement needs its transform convention
+actions. Per-port block diagonality within ``\mathbf T_B`` or ``\mathbf T_I``
+is an additional modelling restriction that keeps the action local to each
+port; it is not needed by the covariance proof. A dense action within the
+retained partition and a dense action within the internal partition satisfy the
+same identities. What is excluded is a coordinate map that mixes retained and
+internal variables, because then it changes the eliminated/observed partition.
+
+The fixed-injection qualification is load-bearing. If an internal device has a
+voltage-dependent law, for example
+``\mathbf i_I(\mathbf v_I)=\overline{\mathbf S_I\oslash\mathbf v_I}``,
+then ``\mathbf K_I\mathbf i_I(\mathbf v_I)`` is not a fixed affine term and
+the proposition does not provide a voltage-independent boundary operator.
+Such a device may still be eliminated with a nonlinear or state-dependent
+implicit relation, but that is a different transformation contract.
+
+A sequence-coordinate statement needs its transform convention
 declared: with the usual non-unitary Fortescue matrix ``A``, applying the same
 voltage and current coordinates gives the similarity action
 ``A^{-1}\mathbf Y A``; the power-dual convention above gives the congruence
@@ -218,14 +236,16 @@ normalization assumptions. Neither convention justifies dropping a conductor,
 identifying a neutral with earth, or aggregating phases: those maps are not
 invertible coordinate changes and require separate preservation claims.
 
-**Corollary (reciprocity is convention-relative).** If a nodal matrix is
-complex symmetric in physical coordinates, a real coordinate congruence
-``T^{\mathsf T}\mathbf YT`` preserves complex symmetry. The power-dual action
-``T^{\mathsf H}\mathbf YT`` preserves it when ``T`` is real (or under other
-explicit compatibility conditions), but not for an arbitrary complex ``T``.
-Hermitian structure and complex symmetry are therefore distinct properties;
-the certificate must record which one is required and which coordinate action
-is being used.
+**Corollary (reciprocity is convention-relative).** Kron reduction preserves
+complex symmetry of a reciprocal nodal matrix in physical coordinates. A real
+coordinate congruence ``T^{\mathsf T}\mathbf YT`` also preserves complex
+symmetry. The power-dual action ``T^{\mathsf H}\mathbf YT`` preserves it when
+``T`` is real (or under other explicit compatibility conditions), but not for
+an arbitrary complex ``T``. Hermitian structure and complex symmetry are
+distinct properties; the certificate must record which one is required and
+which coordinate action is being used. Thus “Kron preserves reciprocity” and
+“this complex coordinate representation remains symmetric” are separate
+claims.
 
 ### Executable typed fixture
 
@@ -235,9 +255,19 @@ The first package-independent witness is recorded in
 two-conductor ports and one eliminated two-conductor port. The fixture checks
 the reduced covariance residual, affine-injection covariance, internal-voltage
 recovery, and source-current limit evaluation after applying complex
-block-diagonal power-dual coordinate actions. The reported residuals are below
-``2\times 10^{-15}`` for the boundary identity and below ``7\times10^{-17}``
-for internal-state recovery.
+block-diagonal power-dual coordinate actions. It also checks dense actions
+within the retained and internal partitions, confirming that per-port
+block-diagonality is only a locality restriction. The reported residuals are
+below ``2\times 10^{-15}`` for the boundary identity and below ``7\times10^{-17}``
+for internal-state recovery; the fixture records the condition numbers of the
+internal block and coordinate actions.
+
+The witness evaluates a deliberately different constant-power internal
+injection at the same recovered ``\mathbf v_I``. Its current differs materially
+from the fixed datum, and the affine boundary term changes accordingly. This
+is a scope diagnostic: it does not disprove nonlinear elimination, but prevents
+the fixed-injection affine certificate from being reused for a voltage-
+dependent device.
 
 The same artifact records two target-library outcomes. The general reduced
 multiport is reciprocal but its off-diagonal conductor blocks are not all

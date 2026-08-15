@@ -317,9 +317,10 @@ that passes at `ij` but fails at `ji`.
   nonlinear parallel-member/aggregate decision Jacobian and symbolic KKT
   fill comparison under two elimination orders.
 - `experiments/generated/typed-kron-witness.json`: a package-independent
-  multiconductor Kron fixture covering coordinate covariance, affine boundary
-  recovery, source-current limits, and positive/negative line--shunt library
-  realizability cases.
+  multiconductor Kron fixture covering coordinate covariance, dense
+  within-partition actions, affine boundary recovery, source-current limits,
+  reciprocity conventions, fixed-injection scope, and positive/negative
+  line--shunt library realizability cases.
 - `experiments/generated/five-bus-typed-kron-witness.json`: direct scalar
   five-bus Kron evidence eliminating the pendant bus ``m`` through line ``x``
   and matching the retained boundary ``Y``-bus to direct leaf deletion. The

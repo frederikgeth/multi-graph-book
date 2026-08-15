@@ -3,14 +3,30 @@
         "internal_recovery": true,
         "restricted_library_boundary_exposed": true,
         "restricted_transformer_library_rejection_exposed": true,
+        "dense_partition_covariance": true,
+        "physical_reciprocity_preserved": true,
         "affine_covariance": true,
-        "source_limits_recovered": true,
+        "dense_partition_affine_covariance": true,
         "coordinate_covariance": true,
+        "dense_partition_recovery": true,
+        "source_limits_recovered": true,
+        "complex_power_dual_reciprocity_distinguished": true,
         "line_shunt_stamping_exact": true,
+        "fixed_internal_injection_scope": true,
         "restricted_transformer_library_positive_witness": true
     },
     "coordinate_action": {
         "recovery_covariance_residual": 6.283435673255384e-17,
+        "per_port_block_diagonality": "modelling restriction only; not required by the covariance identity",
+        "dense_partition_action": {
+            "recovery_covariance_residual": 1.1983411512519015e-16,
+            "retained_action": "dense invertible T_B within the retained B partition",
+            "reduced_covariance_residual": 1.2367009004146935e-15,
+            "internal_condition_number": 1.0408156598858382,
+            "internal_action": "dense invertible T_I within the internal I partition",
+            "retained_condition_number": 1.0607094100968562,
+            "affine_covariance_residual": 7.152448122690996e-18
+        },
         "retained_action": "complex block-diagonal invertible T_B",
         "current_action": "conjugate-transpose power dual",
         "reduced_covariance_residual": 1.777587628338693e-15,
@@ -36,35 +52,11 @@
         "recovered_current_residual": 0,
         "source_limits_satisfied": true
     },
-    "line_shunt_realizability": {
-        "general_reduced_multiport_block_symmetric": false,
-        "shunt_block_count": 3,
-        "general_multiport_stamping_residual": 0.0040723518143269185,
-        "general_reduced_multiport_direct_realization": false,
-        "reciprocal": true,
-        "library_witness_block_symmetric": true,
-        "series_block_count": 3,
-        "library_witness_stamping_residual": 7.033485482605096e-16,
-        "interpretation": "exact complete-graph stamping identity; not closure of a restricted physical line library",
-        "restricted_diagonal_line_library_rejected": true,
-        "target_library": "full_matrix_reciprocal_line_shunt"
-    },
-    "witness_id": "TR-KRON-001",
-    "claim_id": "TR-KRON-001",
-    "source_fixture": "typed_multiconductor_kron_fixture_v0.1.0",
-    "dimensions": {
-        "conductor_count": 2,
-        "internal_coordinates": 2,
-        "retained_coordinates": 6
-    },
-    "transformer_library_realizability": {
-        "coupled_target_rejected": true,
-        "coupled_target_off_diagonal_blocks_diagonal": false,
-        "restricted_witness_admissible": true,
-        "coupled_target_admissible": false,
-        "interpretation": "a restricted transformer library is tested as a structural closure condition; this is not a synthesis of transformer parameters",
-        "target_library": "reciprocal_conductor_diagonal_transformer",
-        "restricted_witness_off_diagonal_blocks_diagonal": true
+    "reciprocity": {
+        "physical_reduced_matrix_residual": 0,
+        "interpretation": "Kron preserves physical-coordinate reciprocity; a complex power-dual action need not preserve complex symmetry",
+        "power_dual_complex_congruence_residual": 0.9894048405850124,
+        "real_congruence_residual": 2.7848931053240187e-16
     },
     "boundary_relation": {
         "boundary_residual": 0,
@@ -78,6 +70,62 @@
                 "imag": 0.05
             }
         ],
-        "internal_block_condition_number": 1.2215104984701914
+        "internal_block_condition_number": 1.2215104984701914,
+        "constant_power_probe": {
+            "current": [
+                {
+                    "real": 3.2583004036631236,
+                    "imag": -2.010972230233043
+                },
+                {
+                    "real": -3.8694978318856847,
+                    "imag": -0.7908015909156837
+                }
+            ],
+            "affine_term_difference": 0.6629448377754272,
+            "relative_difference_from_fixed_injection": 20.34069941881046,
+            "interpretation": "voltage-dependent internal injections are outside the fixed-affine Kron proposition",
+            "operating_point": "evaluated at the fixed-injection recovered v_I",
+            "power_data": [
+                {
+                    "real": 1,
+                    "imag": 0.4
+                },
+                {
+                    "real": -0.7,
+                    "imag": 0.2
+                }
+            ]
+        }
+    },
+    "claim_id": "TR-KRON-001",
+    "source_fixture": "typed_multiconductor_kron_fixture_v0.1.0",
+    "transformer_library_realizability": {
+        "coupled_target_rejected": true,
+        "coupled_target_off_diagonal_blocks_diagonal": false,
+        "restricted_witness_admissible": true,
+        "coupled_target_admissible": false,
+        "interpretation": "a restricted transformer library is tested as a structural closure condition; this is not a synthesis of transformer parameters",
+        "target_library": "reciprocal_conductor_diagonal_transformer",
+        "restricted_witness_off_diagonal_blocks_diagonal": true
+    },
+    "witness_id": "TR-KRON-001",
+    "dimensions": {
+        "conductor_count": 2,
+        "internal_coordinates": 2,
+        "retained_coordinates": 6
+    },
+    "line_shunt_realizability": {
+        "general_reduced_multiport_block_symmetric": false,
+        "shunt_block_count": 3,
+        "general_multiport_stamping_residual": 0.0040723518143269185,
+        "general_reduced_multiport_direct_realization": false,
+        "reciprocal": true,
+        "library_witness_block_symmetric": true,
+        "series_block_count": 3,
+        "library_witness_stamping_residual": 7.033485482605096e-16,
+        "interpretation": "exact complete-graph stamping identity; not closure of a restricted physical line library",
+        "restricted_diagonal_line_library_rejected": true,
+        "target_library": "full_matrix_reciprocal_line_shunt"
     }
 }

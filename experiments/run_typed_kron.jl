@@ -22,8 +22,22 @@ target = kron_reduce(
     transformed.YBB, transformed.YBI, transformed.YIB, transformed.YII,
     transformed.iI, transformed.vB,
 )
+TB_dense = Matrix{ComplexF64}(I, 6, 6) .+
+    (0.01 + 0.003im) .* (ones(ComplexF64, 6, 6) .- Matrix{ComplexF64}(I, 6, 6))
+TI_dense = Matrix{ComplexF64}(I, 2, 2) .+
+    (0.02 - 0.004im) .* (ones(ComplexF64, 2, 2) .- Matrix{ComplexF64}(I, 2, 2))
+dense_blocks = transform_blocks(
+    f.YBB, f.YBI, f.YIB, f.YII, f.iI, f.vB, TB_dense, TI_dense,
+)
+dense_target = kron_reduce(
+    dense_blocks.YBB, dense_blocks.YBI, dense_blocks.YIB, dense_blocks.YII,
+    dense_blocks.iI, dense_blocks.vB,
+)
 source_current = recovered_current(f.A_B, f.A_I, f.vB, source.vI)
 limits = abs.(source_current) .+ [0.4, 0.35]
+S_internal = ComplexF64[1.0 + 0.4im, -0.7 + 0.2im]
+constant_power_current = conj.(S_internal ./ source.vI)
+constant_power_relative_difference = norm(constant_power_current - f.iI) / norm(f.iI)
 general_realization = realize_full_matrix_line_shunt(source.YK, f.c)
 realization = realize_full_matrix_line_shunt(f.Y_library, f.c)
 transformer_library = assess_restricted_transformer_library(f.Y_library, f.c)
@@ -43,11 +57,35 @@ result = Dict(
         "reduced_covariance_residual" => norm(target.YK - TB' * source.YK * TB),
         "affine_covariance_residual" => norm(target.KI * transformed.iI - TB' * source.KI * f.iI),
         "recovery_covariance_residual" => norm(TI * target.vI - source.vI),
+        "dense_partition_action" => Dict(
+            "retained_action" => "dense invertible T_B within the retained B partition",
+            "internal_action" => "dense invertible T_I within the internal I partition",
+            "reduced_covariance_residual" => norm(dense_target.YK - TB_dense' * source.YK * TB_dense),
+            "affine_covariance_residual" => norm(dense_target.KI * dense_blocks.iI - TB_dense' * source.KI * f.iI),
+            "recovery_covariance_residual" => norm(TI_dense * dense_target.vI - source.vI),
+            "retained_condition_number" => cond(TB_dense),
+            "internal_condition_number" => cond(TI_dense),
+        ),
+        "per_port_block_diagonality" => "modelling restriction only; not required by the covariance identity",
     ),
     "boundary_relation" => Dict(
         "internal_injection" => complex_pair.(f.iI),
         "boundary_residual" => norm(source.YK * f.vB + source.KI * f.iI - source.iB),
         "internal_block_condition_number" => cond(f.YII),
+        "constant_power_probe" => Dict(
+            "power_data" => complex_pair.(S_internal),
+            "operating_point" => "evaluated at the fixed-injection recovered v_I",
+            "current" => complex_pair.(constant_power_current),
+            "relative_difference_from_fixed_injection" => constant_power_relative_difference,
+            "affine_term_difference" => norm(source.KI * (constant_power_current - f.iI)),
+            "interpretation" => "voltage-dependent internal injections are outside the fixed-affine Kron proposition",
+        ),
+    ),
+    "reciprocity" => Dict(
+        "physical_reduced_matrix_residual" => norm(source.YK - transpose(source.YK)),
+        "power_dual_complex_congruence_residual" => norm(TB' * source.YK * TB - transpose(TB' * source.YK * TB)),
+        "real_congruence_residual" => norm(real.(TB)' * source.YK * real.(TB) - transpose(real.(TB)' * source.YK * real.(TB))),
+        "interpretation" => "Kron preserves physical-coordinate reciprocity; a complex power-dual action need not preserve complex symmetry",
     ),
     "source_limit_recovery" => Dict(
         "source_current" => complex_pair.(source_current),
@@ -82,6 +120,12 @@ result = Dict(
         "coordinate_covariance" => norm(target.YK - TB' * source.YK * TB) ≤ 1e-11,
         "affine_covariance" => norm(target.KI * transformed.iI - TB' * source.KI * f.iI) ≤ 1e-11,
         "internal_recovery" => norm(TI * target.vI - source.vI) ≤ 1e-11,
+        "dense_partition_covariance" => norm(dense_target.YK - TB_dense' * source.YK * TB_dense) ≤ 1e-11,
+        "dense_partition_affine_covariance" => norm(dense_target.KI * dense_blocks.iI - TB_dense' * source.KI * f.iI) ≤ 1e-11,
+        "dense_partition_recovery" => norm(TI_dense * dense_target.vI - source.vI) ≤ 1e-11,
+        "fixed_internal_injection_scope" => constant_power_relative_difference > 1.0,
+        "physical_reciprocity_preserved" => norm(source.YK - transpose(source.YK)) ≤ 1e-11,
+        "complex_power_dual_reciprocity_distinguished" => norm(TB' * source.YK * TB - transpose(TB' * source.YK * TB)) > 1e-8,
         "source_limits_recovered" => all(abs.(source_current) .≤ limits),
         "line_shunt_stamping_exact" => realization.exact,
         "restricted_library_boundary_exposed" => realization.diagonal_library_rejected,
@@ -118,7 +162,7 @@ certificate = Dict(
         "units" => Dict("source" => ["complex-voltage", "complex-current", "siemens"], "target" => ["complex-voltage", "complex-current", "siemens"], "relation" => "typed coordinate units are unchanged"),
         "boundary_quantities" => Dict("source" => ["i_B", "v_B"], "target" => ["i_B", "v_B"], "relation" => "the affine boundary relation is exact"),
     ),
-    "preconditions" => ["Y_II is invertible", "T_B and T_I are invertible block-diagonal coordinate actions", "internal injection model is fixed"],
+    "preconditions" => ["Y_II is invertible", "T = diag(T_B, T_I) is invertible and respects the retained/internal partition", "per-port block diagonality is an optional locality restriction, not a proof requirement", "internal injections i_I are fixed data independent of v_I", "current coordinates use the conjugate-transpose power dual"],
     "preserves" => ["affine boundary relation", "power-dual coordinate covariance", "internal-voltage recovery", "source-current limit evaluation"],
     "forgets" => ["internal asset identity", "restricted physical line-library closure", "nonlinear voltage-dependent injections"],
     "recovery_map" => Dict(

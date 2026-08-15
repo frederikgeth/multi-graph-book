@@ -22,11 +22,12 @@ ledger, generated indexes, running fixture, graph-invariant witnesses,
 multiconductor parallel cases, transformer compilers, positive-sequence
 collapse witness, certified-approximation chain, and argument-diagram
 portfolio are implemented and locally validated. A 2026-08-15 automated
-independent re-derivation has nevertheless found one blocking mathematical
-issue in the series-elimination claim, plus blocking record/certificate repairs
-for typed Kron reduction and transformer winding normalization. These repairs
-are now publication gates; broader human validation and research scope remain
-follow-on work.
+independent re-derivation found one blocking mathematical issue in the
+series-elimination claim and blocking record/certificate repairs for typed Kron
+reduction and transformer winding normalization. The series and typed-Kron
+repairs are now implemented and locally validated; the transformer certificate
+repair remains a publication gate. Broader human validation and research scope
+remain follow-on work.
 The historical dispositions are archived in
 [`review/archive/`](review/archive/).
 
@@ -1121,12 +1122,14 @@ conflict below is resolved and recorded.
   error before releasing the hold. The repaired rule and adjacent coordinate
   normalization now fail closed on declared pair coupling, the focused tests
   pass 22/22 in each suite, and the aggregate and clean-package suites pass;
-- [ ] revise `TR-KRON-001` to separate the mathematical requirement that the
+- [x] revise `TR-KRON-001` to separate the mathematical requirement that the
   coordinate action respect the retained/internal partition from the stronger
   modelling choice of per-port block diagonality; add the load-bearing
   assumption that internal current injections are fixed data independent of
-  internal voltage, plus a voltage-dependent-injection counterexample;
-- [ ] sharpen the Kron reciprocity discussion by separating physical Kron
+  internal voltage, plus a voltage-dependent-injection counterexample. The
+  typed witness now exercises dense within-partition actions and records the
+  fixed-injection scope probe;
+- [x] sharpen the Kron reciprocity discussion by separating physical Kron
   reduction from complex power-dual coordinate action, and record numerical
   conditioning in the witnesses;
 - [ ] repair the `TR-XFMR-001` certificate with the terminal-current dual map

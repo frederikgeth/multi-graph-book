@@ -678,17 +678,17 @@ unresolved_issue = "Extend operation-count, dwell-time, deadband, and switching-
 [[claim]]
 claim_id = "TR-KRON-001"
 chapter = "docs/src/transformations/kron-ward-opti-kron.md"
-claim_text = "Typed multiconductor Kron reduction commutes with invertible block-diagonal terminal-coordinate changes when currents transform by the power-dual action."
+claim_text = "Typed multiconductor Kron reduction commutes with invertible coordinate actions that preserve the retained/internal partition when currents transform by the power-dual action; per-port block diagonality is an optional locality restriction, and the affine statement requires fixed internal injections."
 status = "established_result"
 claim_type = "theorem"
 verification = "self-checked"
-evidence_type = "algebraic_derivation_and_package_independent_executable_witness"
+evidence_type = "algebraic_derivation_package_independent_executable_witness_dense_partition_witness_and_voltage_dependent_injection_negative_probe"
 citation_keys = ["DorflerBullo2013"]
 model_scope = "finite-dimensional complex linear nodal relations assembled from aligned typed terminal maps"
-assumptions = "retained and internal coordinate actions are invertible and block diagonal; the internal admittance block is invertible; current coordinates use the conjugate-transpose power dual"
+assumptions = "T = diag(T_B,T_I) is invertible and respects the retained/internal partition; Y_II is invertible; internal injections i_I are fixed data independent of v_I; current coordinates use the conjugate-transpose power dual; per-port block diagonality is only a modelling locality restriction"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Extend the fixture to randomized and terminal-permutation campaigns, then obtain an independent mathematical review."
+unresolved_issue = "The 2026-08-15 automated independent re-derivation verified dense partition actions, reciprocity distinctions, and the fixed-injection scope but is not human peer review; extend the fixture to randomized and terminal-permutation campaigns and obtain a named mathematical review."
 
 [[claim]]
 claim_id = "TR-KRON-002"
