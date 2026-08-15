@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<title>Evidence map: preservation coverage is visible only when the holes remain</title>
+<desc>Counts are derived from explicit preservation dimensions in the claims ledger; an empty cell means no claim is coded there.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#245b7a"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight:bold}.sub{font-size:15px;fill:#5f6b76}
+.head{font-size:18px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#46525d}.tiny{font-size:12px;fill:#46525d}
+.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.card{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.good{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.empty{fill:#ffffff;stroke:#9aa5ad;stroke-width:2;stroke-dasharray:5 4}.ink{stroke:#17212b;stroke-width:2}.arrow{stroke:#245b7a;stroke-width:3;marker-end:url(#arrow)}
+</style>
+
+<text x="35" y="40" class="title" text-anchor="start">Evidence map: preservation coverage is visible only when the holes remain</text>
+<text x="35" y="68" class="sub" text-anchor="start">Counts are derived from explicit preservation dimensions in the claims ledger; an empty cell means no claim is coded there.</text>
+<text x="505.0" y="125" class="small" text-anchor="middle">self-checked</text>
+<text x="795.0" y="125" class="small" text-anchor="middle">independently-implemented</text>
+<text x="1085.0" y="125" class="small" text-anchor="middle">externally-reviewed</text>
+<text x="340" y="176" class="small" text-anchor="end">structure</text>
+<rect x="360" y="145" width="278" height="34" rx="10" class="good"/>
+<text x="499.0" y="175" class="head" text-anchor="middle">50</text>
+<rect x="650" y="145" width="278" height="34" rx="10" class="good"/>
+<text x="789.0" y="175" class="head" text-anchor="middle">3</text>
+<rect x="940" y="145" width="278" height="34" rx="10" class="empty"/>
+<text x="1079.0" y="175" class="small" text-anchor="middle">0</text>
+<text x="340" y="218" class="small" text-anchor="end">terminal_behavior</text>
+<rect x="360" y="187" width="278" height="34" rx="10" class="good"/>
+<text x="499.0" y="217" class="head" text-anchor="middle">63</text>
+<rect x="650" y="187" width="278" height="34" rx="10" class="good"/>
+<text x="789.0" y="217" class="head" text-anchor="middle">4</text>
+<rect x="940" y="187" width="278" height="34" rx="10" class="empty"/>
+<text x="1079.0" y="217" class="small" text-anchor="middle">0</text>
+<text x="340" y="260" class="small" text-anchor="end">phase_neutral</text>
+<rect x="360" y="229" width="278" height="34" rx="10" class="good"/>
+<text x="499.0" y="259" class="head" text-anchor="middle">32</text>
+<rect x="650" y="229" width="278" height="34" rx="10" class="good"/>
+<text x="789.0" y="259" class="head" text-anchor="middle">3</text>
+<rect x="940" y="229" width="278" height="34" rx="10" class="empty"/>
+<text x="1079.0" y="259" class="small" text-anchor="middle">0</text>
+<text x="340" y="302" class="small" text-anchor="end">limits</text>
+<rect x="360" y="271" width="278" height="34" rx="10" class="good"/>
+<text x="499.0" y="301" class="head" text-anchor="middle">26</text>
+<rect x="650" y="271" width="278" height="34" rx="10" class="good"/>
+<text x="789.0" y="301" class="head" text-anchor="middle">4</text>
+<rect x="940" y="271" width="278" height="34" rx="10" class="empty"/>
+<text x="1079.0" y="301" class="small" text-anchor="middle">0</text>
+<text x="340" y="344" class="small" text-anchor="end">decision</text>
+<rect x="360" y="313" width="278" height="34" rx="10" class="good"/>
+<text x="499.0" y="343" class="head" text-anchor="middle">46</text>
+<rect x="650" y="313" width="278" height="34" rx="10" class="good"/>
+<text x="789.0" y="343" class="head" text-anchor="middle">4</text>
+<rect x="940" y="313" width="278" height="34" rx="10" class="empty"/>
+<text x="1079.0" y="343" class="small" text-anchor="middle">0</text>
+<text x="340" y="386" class="small" text-anchor="end">state</text>
+<rect x="360" y="355" width="278" height="34" rx="10" class="good"/>
+<text x="499.0" y="385" class="head" text-anchor="middle">9</text>
+<rect x="650" y="355" width="278" height="34" rx="10" class="empty"/>
+<text x="789.0" y="385" class="small" text-anchor="middle">0</text>
+<rect x="940" y="355" width="278" height="34" rx="10" class="empty"/>
+<text x="1079.0" y="385" class="small" text-anchor="middle">0</text>
+<text x="340" y="428" class="small" text-anchor="end">measurement</text>
+<rect x="360" y="397" width="278" height="34" rx="10" class="empty"/>
+<text x="499.0" y="427" class="small" text-anchor="middle">0</text>
+<rect x="650" y="397" width="278" height="34" rx="10" class="empty"/>
+<text x="789.0" y="427" class="small" text-anchor="middle">0</text>
+<rect x="940" y="397" width="278" height="34" rx="10" class="empty"/>
+<text x="1079.0" y="427" class="small" text-anchor="middle">0</text>
+<text x="340" y="470" class="small" text-anchor="end">provenance</text>
+<rect x="360" y="439" width="278" height="34" rx="10" class="good"/>
+<text x="499.0" y="469" class="head" text-anchor="middle">50</text>
+<rect x="650" y="439" width="278" height="34" rx="10" class="good"/>
+<text x="789.0" y="469" class="head" text-anchor="middle">3</text>
+<rect x="940" y="439" width="278" height="34" rx="10" class="empty"/>
+<text x="1079.0" y="469" class="small" text-anchor="middle">0</text>
+<text x="340" y="512" class="small" text-anchor="end">numerical_structure</text>
+<rect x="360" y="481" width="278" height="34" rx="10" class="good"/>
+<text x="499.0" y="511" class="head" text-anchor="middle">3</text>
+<rect x="650" y="481" width="278" height="34" rx="10" class="empty"/>
+<text x="789.0" y="511" class="small" text-anchor="middle">0</text>
+<rect x="940" y="481" width="278" height="34" rx="10" class="empty"/>
+<text x="1079.0" y="511" class="small" text-anchor="middle">0</text>
+<rect x="70" y="180" width="175" height="310" rx="10" class="card"/>
+<text x="157" y="220" class="head" text-anchor="middle">read the map</text>
+<text x="90" y="265" class="body" text-anchor="start">filled cell</text>
+<text x="90" y="290" class="small" text-anchor="start">coded coverage</text>
+<text x="90" y="350" class="body" text-anchor="start">empty cell</text>
+<text x="90" y="375" class="small" text-anchor="start">research gap or</text>
+<text x="90" y="395" class="small" text-anchor="start">uncoded scope</text>
+<rect x="70" y="570" width="1220" height="80" rx="10" class="panel"/>
+<text x="95" y="607" class="body" text-anchor="start">External review remains empty across every dimension; dimensions describe the book's claim scope, not literature completeness.</text>
+<text x="95" y="632" class="small" text-anchor="start">The map is a gap analysis, not a claim that an empty cell proves the literature is empty.</text>
+<text x="75" y="720" class="small" text-anchor="start">Generated from claims/claims.toml · 81 claims · preservation dimensions are controlled metadata.</text>
+</svg>

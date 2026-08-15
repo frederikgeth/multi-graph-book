@@ -48,6 +48,23 @@ restricted domain. They are not interchangeable source models: eliminating a
 current variable can remove the direct place to attach a thermal limit, a
 switch state, or a protection relation.
 
+## Numerical footprint of the formulation choice
+
+The choice of equation target also changes the symbolic problem seen by a
+solver.  Schur elimination can add fill edges, while a Jacobian dependency
+graph records equation--variable relations rather than physical incidence.
+These are formulation-level effects, so they belong here beside the lowering
+boundary rather than only in the later executed numerical witnesses.
+
+![Schur elimination creates structural fill-in.](../assets/numerical-fill-in.png)
+
+![Jacobian dependency is a separate graph from physical incidence.](../assets/numerical-jacobian-dependency.png)
+
+The figures are conceptual structural views.  The pinned numerical export and
+nonlinear KKT witnesses remain in [Numerical consequences of representation and
+reduction](@ref numerical-consequences), where their fixture-specific counts,
+residuals, and solver limitations are recorded.
+
 ## 2. When an exact nodal admittance target exists
 
 For a declared set ``\Phi_{\mathrm{lin}}`` of fixed linear factors, choose a

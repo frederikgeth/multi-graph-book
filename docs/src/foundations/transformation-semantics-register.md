@@ -106,6 +106,13 @@ Every row should eventually be backed by a certificate with `preconditions`,
 `evidence`. The register is therefore a navigation layer over the existing
 certificate system, not a competing schema.
 
+![Typed transformation-register glyphs used as a visual index for operation families.](../assets/transformation-register-glyphs.png)
+
+The glyphs are deliberately low-bandwidth. A solid or dashed arrow, a split
+factor, a fill edge, or a state tag helps the reader find the relevant row, but
+it never carries the guard or preservation theorem by itself. Those remain in
+the register and in the executable certificate.
+
 ## Narrow circuit transformations: star--delta and shunt placement
 
 The register also covers transformations that power engineers routinely use

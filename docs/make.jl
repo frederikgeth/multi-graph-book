@@ -157,6 +157,7 @@ const PAGES_HTML = [
     "Reference" => [
         "Notation and modelling conventions" => "foundations/notation-and-conventions.md",
         "Terminology" => "reference/terminology.md",
+        "Evidence map and verification summary" => "reference/evidence-map.md",
         "Knowledge-base indexes" => "reference/knowledge-base-index.md",
         "Chapter status" => "reference/chapter-status.md",
         "References" => "reference/references.md",
@@ -203,6 +204,7 @@ const PAGES_PDF = [
     "Reference" => [
         "Notation and modelling conventions" => "foundations/notation-and-conventions.md",
         "Terminology" => "reference/terminology.md",
+        "Evidence map and verification summary" => "reference/evidence-map.md",
         "References" => "reference/references.md",
     ],
 ]
@@ -295,6 +297,7 @@ function make_latex()
     build()
 end
 
+run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_reference_figures.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_knowledge_base_indexes.py"))`)
 make_html()
 

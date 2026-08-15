@@ -173,11 +173,73 @@ def size_inversion():
     return finish(lines)
 
 
+def trap_card():
+    witness = json.loads((ROOT / "experiments/generated/translation-trap-witnesses.json").read_text())["anti_patterns"]
+    lines = shell(
+        "Translation traps: one card, four recurring mistakes",
+        "Repeat the same diagnostic: what was said, what is testable, and which representation resolves the ambiguity?",
+        1400,
+        900,
+    )
+    cards = [
+        ("heterogeneous series merge", "‘Two sections make one line.’", "OH-A + UG-B; target construction code = none", "multigraph identities + a generic two-port factor", "reject homogeneous-line closure"),
+        ("external grounding absorption", "‘Put the ground inside the transformer.’", "ground asset retained; external-bus guard fails", "asset relation Λ + explicit grounding factor", "do not erase the return path"),
+        ("three-winding flattening", "‘The transformer is just a line.’", f"source ports = {witness['line_transformer_flattening']['source_port_count']}; flattened endpoints = 2", "port–factor model with a 3-port factor", "arity is testable"),
+        ("shared BIM/BFM branch variable", "‘One W_ij proves the members agree.’", f"aggregate balance passes; consistency residual = {witness['bim_bfm_index_loss']['parallel_consistency_residual']:.3f}", "identified members + common voltage-drop constraint", "aggregate balance is not compatibility"),
+    ]
+    positions = [(45, 145), (705, 145), (45, 510), (705, 510)]
+    for (title, said, testable, resolves, consequence), (x, y) in zip(cards, positions):
+        lines += [rect(x, y, 650, 300, "panel"), t(x + 25, y + 38, title, "head"), rect(x + 25, y + 60, 600, 58, "card"), t(x + 42, y + 94, said, "body"), t(x + 25, y + 150, "testable", "head"), t(x + 165, y + 150, testable, "small"), t(x + 25, y + 198, "resolving view", "head"), t(x + 180, y + 198, resolves, "small"), rect(x + 25, y + 220, 600, 54, "warn"), t(x + 325, y + 253, consequence, "body", "middle")]
+    lines += [t(55, 850, "The card is a reusable marginal template: repeat it when a later chapter reuses the same colloquial phrase under a different factor or query.", "small")]
+    return finish(lines)
+
+
+def register_glyphs():
+    lines = shell(
+        "Transformation register: stable glyphs for typed arrows",
+        "Each mark names an operation family; the caption and certificate still carry guards, preservation layers, and provenance.",
+        1400,
+        860,
+    )
+    rows = [
+        ("COORD-PERM", "exact normalization", "same objects, reordered coordinates", "permutation", "structure + behaviour + decisions"),
+        ("PROJECTION", "quotient / view", "forgets identity or attributes", "many-to-one", "connectivity only unless side data"),
+        ("COMPILATION", "realization", "replaces one factor by lower-level objects", "virtual nodes", "relation + provenance"),
+        ("KRON", "behavioural reduction", "eliminates hidden variables", "fill-in", "declared boundary relation"),
+        ("PAR-SUM", "aggregation", "sums parallel terminal contributions", "fibre collapse", "unconstrained terminal map"),
+        ("APPROX", "scenario approximation", "matches selected observables on a domain", "dashed boundary", "bounded error only"),
+        ("STATE-QUOT", "state-indexed contraction", "contracts closed ideal switches", "state tag", "connectivity in declared state"),
+    ]
+    for idx, (rule, kind, meaning, glyph, preserves) in enumerate(rows):
+        y = 135 + idx * 92
+        lines += [rect(45, y, 1310, 72, "panel"), t(70, y + 30, rule, "head"), t(235, y + 30, kind, "body"), t(470, y + 30, meaning, "small"), t(770, y + 30, f"glyph: {glyph}", "small"), t(1030, y + 30, f"preserves: {preserves}", "small")]
+        # Small monochrome glyph on the left of each row.
+        gx, gy = 118, y + 52
+        if rule == "COORD-PERM":
+            lines += [line(gx - 28, gy, gx + 28, gy, "wire", 3), line(gx - 28, gy - 10, gx + 28, gy - 10, "wire", 3)]
+        elif rule == "PROJECTION":
+            lines += [line(gx - 28, gy, gx + 4, gy, "wire", 3), line(gx + 4, gy, gx + 27, gy, "dashed", 3)]
+        elif rule == "COMPILATION":
+            lines += [rect(gx - 28, gy - 15, 20, 20, "factor", 4), line(gx - 5, gy - 5, gx + 8, gy - 5, "wire", 3), rect(gx + 10, gy - 22, 16, 14, "factor", 3), rect(gx + 10, gy, 16, 14, "factor", 3)]
+        elif rule == "KRON":
+            lines += [circle := f'<circle cx="{gx-18}" cy="{gy}" r="7" class="bus"/>', circle := f'<circle cx="{gx+18}" cy="{gy}" r="7" class="bus"/>', line(gx - 18, gy, gx + 18, gy, "dashed", 3)]
+        elif rule == "PAR-SUM":
+            lines += [line(gx - 25, gy - 10, gx + 5, gy - 10, "wire", 3), line(gx - 25, gy + 10, gx + 5, gy + 10, "wire", 3), line(gx + 5, gy - 10, gx + 27, gy, "wire", 3), line(gx + 5, gy + 10, gx + 27, gy, "wire", 3)]
+        elif rule == "APPROX":
+            lines += [line(gx - 28, gy, gx + 28, gy, "dashed", 3)]
+        else:
+            lines += [rect(gx - 24, gy - 12, 48, 24, "good", 5), line(gx - 12, gy - 22, gx + 12, gy - 22, "wire", 3)]
+    lines += [rect(45, 795, 1310, 45, "card"), t(70, 823, "Use the glyph as a visual index, never as a substitute for the typed certificate.", "body")]
+    return finish(lines)
+
+
 def main():
     outputs = {
         "canonical-port-factor-model.svg": canonical_port_factor(),
         "coordinate-three-by-three-plate.svg": coordinate_three_by_three(),
         "transformation-size-inversion.svg": size_inversion(),
+        "translation-trap-card.svg": trap_card(),
+        "transformation-register-glyphs.svg": register_glyphs(),
     }
     for name, content in outputs.items():
         (OUT / name).write_text(content)

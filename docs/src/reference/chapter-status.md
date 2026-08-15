@@ -1,6 +1,6 @@
 # [Chapter status](@id chapter-status)
 
-<!-- generated-from claims/claims.toml sha256:68de1f058957eb722be94563195c6ae46a705653bf457109bff32fc873ea8f52 -->
+<!-- generated-from claims/claims.toml sha256:dbb44ae763114b8ebe017c9193eb6b94c848f19a8d0f81b1c4bce81bb0bd5c5b -->
 This page is generated from the claims ledger. It makes the evidence state visible without
 requiring readers to inspect TOML or generated JSON files. Claim absence means the page is
 tracked as explanatory, definitional, or proposed material rather than silently treated as a
@@ -43,6 +43,7 @@ verified empirical result.
 | [Structure-Preserving Graph Models for Power Networks](../index.md) | reader-facing overview and navigation map. | 0 | — | `untracked` | — |
 | [Literature map](../literature/literature-map.md) | research record; coverage is provisional and not an exhaustive systematic review. The current evidence matrix contains ten single-coded seed records spanning reductions, topology processing, and formulation/framework precedents. | 0 | — | `untracked` | — |
 | [Research agenda](../literature/research-agenda.md) | proposal and open-work register. | 0 | — | `untracked` | — |
+| [Evidence map and verification summary](../reference/evidence-map.md) | generated reference navigation and evidence-gap summary. | 0 | — | `untracked` | — |
 | [References](../reference/references.md) | bibliography and source register. | 0 | — | `untracked` | — |
 | [Terminology](../reference/terminology.md) | maintained glossary and translation aid. | 0 | — | `untracked` | — |
 | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | introductory counterexample with executable scalar and multiconductor evidence; independent mathematical review remains open. | 4 | empirical, theorem | `self-checked` | Add an independent mathematical reviewer.; Molzahn2018 gives an exact scalar AC constraint-pruning test without asset aggregation; a general multiconductor classification remains open.; Establish necessary and sufficient redundancy tests for arbitrary multiconductor limits and for state- or decision-dependent line models.; The multiconductor mechanism is exercised in TR-PAR-004; add an independent reviewer for this linear case. |

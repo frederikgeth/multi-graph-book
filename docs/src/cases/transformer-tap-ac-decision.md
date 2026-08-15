@@ -16,6 +16,9 @@ leakage-current constraints, and the boundary voltages are variables. The
 network objective therefore selects ``0.95``. The examples are complementary
 objective/boundary-condition cases, not contradictory tap recommendations.
 
+![The optimal tap belongs to the decision problem, not the transformer: the
+same finite tap domain gives different choices under different embeddings.](../assets/transformer-tap-decision-plate.png)
+
 The example deliberately retains the running transformer's WYE/WYE/DELTA
 structure. It is not a balanced positive-sequence transformer surrogate.
 

@@ -13,6 +13,9 @@ transformer model. Magnetizing and core-loss branches, vector-group phase
 shifts not represented by the connection incidence, and adjustable taps remain
 separate factors.
 
+![The running transformer retains two WYE windings and an open DELTA tertiary;
+the terminal assembly is a multi-port factor, not an ordinary line.](../assets/transformer-anatomy.png)
+
 ## Typed winding factors
 
 For transformer ``x``, winding ``k`` at bus ``i`` has ordered terminal voltage

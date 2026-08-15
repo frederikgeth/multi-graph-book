@@ -23,6 +23,9 @@ example. Coupling, explicit neutrals, end shunts, two-end observations, and
 control decisions are added deliberately; the evidence obligation grows with
 the model rather than being hidden behind a larger diagram.
 
+![Parallel-member aggregation preserves a terminal relation, but exact
+decision pruning needs a recovered member-current map and a proved implication.](../assets/parallel-member-decision-plate.png)
+
 ## Source model
 
 Two buses ``i`` and ``j`` have ordered conductor set ``(a,n)``. The sending

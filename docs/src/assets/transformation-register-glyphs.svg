@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="860" viewBox="0 0 1400 860">
+<title>Transformation register: stable glyphs for typed arrows</title>
+<desc>Each mark names an operation family; the caption and certificate still carry guards, preservation layers, and provenance.</desc>
+<defs><marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#245b7a"/></marker><marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8a4f13"/></marker><marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#477a55"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}
+.title{font-size:28px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}
+.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}
+.body{font-size:15px}.small{font-size:13px;fill:#5f6b76}.tiny{font-size:12px;fill:#5f6b76}
+.bus{fill:#d9eef8;stroke:#245b7a;stroke-width:3}.factor{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}
+.asset{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.port{fill:white;stroke:#8a4f13;stroke-width:2}
+.jmap{stroke:#245b7a;stroke-width:3;marker-end:url(#arrowBlue)}.fmap{stroke:#8a4f13;stroke-width:3;marker-end:url(#arrowOrange)}
+.lambda{stroke:#477a55;stroke-width:2.5;stroke-dasharray:8 6;marker-end:url(#arrowGreen)}
+.wire{stroke:#3d78b5;stroke-width:4}.dashed{stroke:#8a3232;stroke-width:3;stroke-dasharray:8 6}
+.matrix{fill:#eee8f8;stroke:#7856a8;stroke-width:2}.good{fill:#e4f4e7;stroke:#477a55;stroke-width:2}
+.warn{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.card{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}
+</style>
+
+<text x="35" y="40" class="title" text-anchor="start">Transformation register: stable glyphs for typed arrows</text>
+<text x="35" y="68" class="sub" text-anchor="start">Each mark names an operation family; the caption and certificate still carry guards, preservation layers, and provenance.</text>
+<rect x="45" y="135" width="1310" height="72" rx="12" class="panel"/>
+<text x="70" y="165" class="head" text-anchor="start">COORD-PERM</text>
+<text x="235" y="165" class="body" text-anchor="start">exact normalization</text>
+<text x="470" y="165" class="small" text-anchor="start">same objects, reordered coordinates</text>
+<text x="770" y="165" class="small" text-anchor="start">glyph: permutation</text>
+<text x="1030" y="165" class="small" text-anchor="start">preserves: structure + behaviour + decisions</text>
+<line x1="90" y1="187" x2="146" y2="187" class="wire" stroke-width="3"/>
+<line x1="90" y1="177" x2="146" y2="177" class="wire" stroke-width="3"/>
+<rect x="45" y="227" width="1310" height="72" rx="12" class="panel"/>
+<text x="70" y="257" class="head" text-anchor="start">PROJECTION</text>
+<text x="235" y="257" class="body" text-anchor="start">quotient / view</text>
+<text x="470" y="257" class="small" text-anchor="start">forgets identity or attributes</text>
+<text x="770" y="257" class="small" text-anchor="start">glyph: many-to-one</text>
+<text x="1030" y="257" class="small" text-anchor="start">preserves: connectivity only unless side data</text>
+<line x1="90" y1="279" x2="122" y2="279" class="wire" stroke-width="3"/>
+<line x1="122" y1="279" x2="145" y2="279" class="dashed" stroke-width="3"/>
+<rect x="45" y="319" width="1310" height="72" rx="12" class="panel"/>
+<text x="70" y="349" class="head" text-anchor="start">COMPILATION</text>
+<text x="235" y="349" class="body" text-anchor="start">realization</text>
+<text x="470" y="349" class="small" text-anchor="start">replaces one factor by lower-level objects</text>
+<text x="770" y="349" class="small" text-anchor="start">glyph: virtual nodes</text>
+<text x="1030" y="349" class="small" text-anchor="start">preserves: relation + provenance</text>
+<rect x="90" y="356" width="20" height="20" rx="4" class="factor"/>
+<line x1="113" y1="366" x2="126" y2="366" class="wire" stroke-width="3"/>
+<rect x="128" y="349" width="16" height="14" rx="3" class="factor"/>
+<rect x="128" y="371" width="16" height="14" rx="3" class="factor"/>
+<rect x="45" y="411" width="1310" height="72" rx="12" class="panel"/>
+<text x="70" y="441" class="head" text-anchor="start">KRON</text>
+<text x="235" y="441" class="body" text-anchor="start">behavioural reduction</text>
+<text x="470" y="441" class="small" text-anchor="start">eliminates hidden variables</text>
+<text x="770" y="441" class="small" text-anchor="start">glyph: fill-in</text>
+<text x="1030" y="441" class="small" text-anchor="start">preserves: declared boundary relation</text>
+<circle cx="100" cy="463" r="7" class="bus"/>
+<circle cx="136" cy="463" r="7" class="bus"/>
+<line x1="100" y1="463" x2="136" y2="463" class="dashed" stroke-width="3"/>
+<rect x="45" y="503" width="1310" height="72" rx="12" class="panel"/>
+<text x="70" y="533" class="head" text-anchor="start">PAR-SUM</text>
+<text x="235" y="533" class="body" text-anchor="start">aggregation</text>
+<text x="470" y="533" class="small" text-anchor="start">sums parallel terminal contributions</text>
+<text x="770" y="533" class="small" text-anchor="start">glyph: fibre collapse</text>
+<text x="1030" y="533" class="small" text-anchor="start">preserves: unconstrained terminal map</text>
+<line x1="93" y1="545" x2="123" y2="545" class="wire" stroke-width="3"/>
+<line x1="93" y1="565" x2="123" y2="565" class="wire" stroke-width="3"/>
+<line x1="123" y1="545" x2="145" y2="555" class="wire" stroke-width="3"/>
+<line x1="123" y1="565" x2="145" y2="555" class="wire" stroke-width="3"/>
+<rect x="45" y="595" width="1310" height="72" rx="12" class="panel"/>
+<text x="70" y="625" class="head" text-anchor="start">APPROX</text>
+<text x="235" y="625" class="body" text-anchor="start">scenario approximation</text>
+<text x="470" y="625" class="small" text-anchor="start">matches selected observables on a domain</text>
+<text x="770" y="625" class="small" text-anchor="start">glyph: dashed boundary</text>
+<text x="1030" y="625" class="small" text-anchor="start">preserves: bounded error only</text>
+<line x1="90" y1="647" x2="146" y2="647" class="dashed" stroke-width="3"/>
+<rect x="45" y="687" width="1310" height="72" rx="12" class="panel"/>
+<text x="70" y="717" class="head" text-anchor="start">STATE-QUOT</text>
+<text x="235" y="717" class="body" text-anchor="start">state-indexed contraction</text>
+<text x="470" y="717" class="small" text-anchor="start">contracts closed ideal switches</text>
+<text x="770" y="717" class="small" text-anchor="start">glyph: state tag</text>
+<text x="1030" y="717" class="small" text-anchor="start">preserves: connectivity in declared state</text>
+<rect x="94" y="727" width="48" height="24" rx="5" class="good"/>
+<line x1="106" y1="717" x2="130" y2="717" class="wire" stroke-width="3"/>
+<rect x="45" y="795" width="1310" height="45" rx="12" class="card"/>
+<text x="70" y="823" class="body" text-anchor="start">Use the glyph as a visual index, never as a substitute for the typed certificate.</text>
+</svg>

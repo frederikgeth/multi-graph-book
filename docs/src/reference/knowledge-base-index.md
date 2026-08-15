@@ -1,9 +1,11 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:68de1f058957eb722be94563195c6ae46a705653bf457109bff32fc873ea8f52 -->
+<!-- generated-from claims/claims.toml sha256:dbb44ae763114b8ebe017c9193eb6b94c848f19a8d0f81b1c4bce81bb0bd5c5b -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
+For a compact visual summary of notation, terminology distinctions, coverage gaps, and
+verification state, see the [evidence map and verification summary](evidence-map.md).
 
 **Indexed claims:** 81
 **Indexed chapters:** 31

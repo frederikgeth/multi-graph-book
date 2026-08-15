@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">
+<title>How to decode a power-network symbol</title>
+<desc>The index grammar separates element identity, oriented attachment, relation role, and coordinate slots.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#245b7a"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight:bold}.sub{font-size:15px;fill:#5f6b76}
+.head{font-size:18px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#46525d}.tiny{font-size:12px;fill:#46525d}
+.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.card{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.good{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.empty{fill:#ffffff;stroke:#9aa5ad;stroke-width:2;stroke-dasharray:5 4}.ink{stroke:#17212b;stroke-width:2}.arrow{stroke:#245b7a;stroke-width:3;marker-end:url(#arrow)}
+</style>
+
+<text x="35" y="40" class="title" text-anchor="start">How to decode a power-network symbol</text>
+<text x="35" y="68" class="sub" text-anchor="start">The index grammar separates element identity, oriented attachment, relation role, and coordinate slots.</text>
+<rect x="45" y="115" width="1310" height="250" rx="10" class="good"/>
+<text x="680" y="200" class="title" text-anchor="middle">Y</text>
+<text x="715" y="178" class="head" text-anchor="middle">sh</text>
+<text x="705" y="218" class="head" text-anchor="middle">l</text>
+<text x="738" y="218" class="head" text-anchor="middle">ij</text>
+<text x="700" y="250" class="body" text-anchor="middle">element · role · orientation</text>
+<rect x="90" y="160" width="285" height="70" rx="10" class="panel"/>
+<text x="108" y="189" class="head" text-anchor="start">Y</text>
+<text x="108" y="212" class="small" text-anchor="start">constitutive quantity / operator</text>
+<rect x="380" y="145" width="285" height="70" rx="10" class="panel"/>
+<text x="398" y="174" class="head" text-anchor="start">sh</text>
+<text x="398" y="197" class="small" text-anchor="start">relation role: shunt, series, reference, coil, leak</text>
+<rect x="930" y="145" width="285" height="70" rx="10" class="panel"/>
+<text x="948" y="174" class="head" text-anchor="start">ℓ</text>
+<text x="948" y="197" class="small" text-anchor="start">element identity; intrinsic under reversal</text>
+<rect x="930" y="285" width="285" height="70" rx="10" class="panel"/>
+<text x="948" y="314" class="head" text-anchor="start">ij</text>
+<text x="948" y="337" class="small" text-anchor="start">oriented attachment; endpoint-specific data</text>
+<text x="245" y="402" class="body" text-anchor="middle">The same grammar scales to symbols that are not yet in a table.</text>
+<rect x="45" y="445" width="625" height="220" rx="10" class="panel"/>
+<rect x="710" y="445" width="645" height="220" rx="10" class="panel"/>
+<text x="70" y="485" class="head" text-anchor="start">coordinate slots</text>
+<text x="735" y="485" class="head" text-anchor="start">orientation rule</text>
+<text x="75" y="525" class="body" text-anchor="start">p,q</text>
+<text x="165" y="525" class="small" text-anchor="start">phase / conductor coordinates</text>
+<text x="75" y="565" class="body" text-anchor="start">k</text>
+<text x="165" y="565" class="small" text-anchor="start">winding or port label</text>
+<text x="75" y="605" class="body" text-anchor="start">d</text>
+<text x="165" y="605" class="small" text-anchor="start">decision or scenario index</text>
+<text x="735" y="525" class="body" text-anchor="start">Z_l = Z_l^T is element-intrinsic</text>
+<text x="735" y="565" class="body" text-anchor="start">Y_lij may be end-specific</text>
+<text x="735" y="605" class="small" text-anchor="start">I_lij and S_lij use the oriented triple</text>
+<text x="55" y="710" class="small" text-anchor="start">The symbols are compact, but their ownership is not implicit: every index belongs to a declared set.</text>
+</svg>

@@ -35,6 +35,9 @@ codes.  In particular, the overhead 60 Hz/order alignment is an inference
 from the probe, not a statement found in the source file; the underground
 `CS1035` mapping remains unresolved.
 
+![A generated guarded-result plate makes the Carson claim, discharged guards,
+residual, cross-check, and open item visible without replacing the certificate.](../assets/guarded-result-plate.png)
+
 The generated artifact also carries the versioned
 `power-network-impedance` contract from
 `experiments/data/impedance_contract_schema.toml`.  It requires ordered
@@ -111,3 +114,20 @@ The result is therefore useful in two ways: it verifies that the available
 construction data can be regenerated end to end, and it identifies exactly
 which published cases still need their original construction provenance before
 they can be claimed as faithful reproductions.
+
+### Reconciliation and the unresolved companion case
+
+![The overhead mismatch is reconciled by frequency and conductor-order probes,
+while the independent CS1035 matrix remains outside the reproduced model.](../assets/australian-carson-reconciliation.png)
+
+The two knobs are shown together because either one alone leaves a substantial
+residual.  They are diagnostic probes, not retroactive source metadata: the
+artifact records the 60 Hz/order alignment as an inference.
+
+![CS1035 is retained as an explicit unresolved data task rather than being
+labelled a successful reproduction.](../assets/australian-cs1035-gap.png)
+
+This is a deliberate credibility boundary.  The available fixture fields and
+the independent matrix are useful, but without the raw conductor/screen
+geometry, earth-return convention, frequency, and ordering, the construction
+map cannot be reconstructed faithfully.

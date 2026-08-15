@@ -122,11 +122,10 @@ seven line identities but only six edges after simple projection because ``q``
 and ``r`` are parallel. Eliminating ``j`` then adds the ``i``--``l`` fill edge
 to the projected pattern. The fill argument and the dependency argument are
 shown separately so that a reader does not confuse a Schur-complement edge
-with a numerical derivative:
-
-![Schur elimination creates structural fill-in.](../assets/numerical-fill-in.png)
-
-![Jacobian dependency is a separate graph from physical incidence.](../assets/numerical-jacobian-dependency.png)
+with a numerical derivative. The conceptual pair now appears in the
+[formulation and lowering chapter](@ref circuit-formulations-and-lowering);
+this chapter retains the executed witnesses and their fixture-specific
+counts.
 
 The data and checks are recorded in
 `experiments/generated/numerical-structure-witness.json`; the renderer is

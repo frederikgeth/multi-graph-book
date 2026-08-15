@@ -6,7 +6,7 @@ const BIBLIOGRAPHY = joinpath(ROOT, "docs", "src", "references.bib")
 const REQUIRED = Set([
     "claim_id", "chapter", "claim_text", "status", "evidence_type",
     "claim_type", "verification", "citation_keys", "model_scope", "assumptions", "reviewer",
-    "review_date", "unresolved_issue",
+    "review_date", "unresolved_issue", "preservation_dimensions",
 ])
 const STATUSES = Set([
     "definition", "established_result", "empirical_result",
@@ -18,6 +18,10 @@ const CLAIM_TYPES = Set([
 ])
 const VERIFICATIONS = Set([
     "unreviewed", "self-checked", "independently-implemented", "externally-reviewed",
+])
+const PRESERVATION_DIMENSIONS = Set([
+    "structure", "terminal_behavior", "phase_neutral", "limits", "decision",
+    "state", "measurement", "provenance", "numerical_structure",
 ])
 
 ledger = TOML.parsefile(LEDGER)
@@ -37,6 +41,9 @@ for claim in claims
     claim["status"] in STATUSES || error("$id has unknown status $(claim["status"])")
     claim["claim_type"] in CLAIM_TYPES || error("$id has unknown claim_type $(claim["claim_type"])")
     claim["verification"] in VERIFICATIONS || error("$id has unknown verification $(claim["verification"])")
+    dims = claim["preservation_dimensions"]
+    dims isa Vector && !isempty(dims) || error("$id must declare at least one preservation dimension")
+    all(dim -> dim in PRESERVATION_DIMENSIONS, dims) || error("$id has unknown preservation dimension(s): $(dims)")
     isfile(joinpath(ROOT, claim["chapter"])) || error("$id chapter does not exist: $(claim["chapter"])")
     for key in claim["citation_keys"]
         key in bibkeys || error("$id cites missing BibTeX key: $key")

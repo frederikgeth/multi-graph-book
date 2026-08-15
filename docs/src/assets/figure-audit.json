@@ -180,6 +180,84 @@
       "monochrome_safe": true,
       "distinguishing_channels": ["four titled operation cards", "printed node/edge counts", "size-is-not-semantics panel"]
     },
+    "translation-trap-card": {
+      "svg": "docs/src/assets/translation-trap-card.svg",
+      "png": "docs/src/assets/translation-trap-card.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["four repeated cards", "quote/testable/resolving labels", "explicit guard consequences"]
+    },
+    "transformation-register-glyphs": {
+      "svg": "docs/src/assets/transformation-register-glyphs.svg",
+      "png": "docs/src/assets/transformation-register-glyphs.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["typed rule labels", "distinct operation glyphs", "preservation summaries"]
+    },
+    "guarded-result-plate": {
+      "svg": "docs/src/assets/guarded-result-plate.svg",
+      "png": "docs/src/assets/guarded-result-plate.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["claim/classification band", "guard checklist", "residual/cross-check/open-item panels"]
+    },
+    "four-wire-impedance-ladder": {
+      "svg": "docs/src/assets/four-wire-impedance-ladder.svg",
+      "png": "docs/src/assets/four-wire-impedance-ladder.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["typed edge cards", "explicit edge checks", "endpoint flag and accumulated guards"]
+    },
+    "australian-carson-reconciliation": {
+      "svg": "docs/src/assets/australian-carson-reconciliation.svg",
+      "png": "docs/src/assets/australian-carson-reconciliation.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["three comparison panels", "frequency/order labels", "numeric residuals and credibility boundary"]
+    },
+    "australian-cs1035-gap": {
+      "svg": "docs/src/assets/australian-cs1035-gap.svg",
+      "png": "docs/src/assets/australian-cs1035-gap.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["available/probe/missing panels", "frequency residuals", "explicit open-data task"]
+    },
+    "transformer-tap-decision-plate": {
+      "svg": "docs/src/assets/transformer-tap-decision-plate.svg",
+      "png": "docs/src/assets/transformer-tap-decision-plate.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["two decision-embedding panels", "tap and served-fraction values", "freeze-loss and lesson panel"]
+    },
+    "parallel-member-decision-plate": {
+      "svg": "docs/src/assets/parallel-member-decision-plate.svg",
+      "png": "docs/src/assets/parallel-member-decision-plate.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["source/aggregate/certificate panels", "numeric objective gap", "recovery and guard text"]
+    },
+    "bim-bfm-signature-capability": {
+      "svg": "docs/src/assets/bim-bfm-signature-capability.svg",
+      "png": "docs/src/assets/bim-bfm-signature-capability.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["question rows", "shared/member-indexed columns", "explicit missing consistency relation"]
+    },
+    "reference-symbol-anatomy": {
+      "svg": "docs/src/assets/reference-symbol-anatomy.svg",
+      "png": "docs/src/assets/reference-symbol-anatomy.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["slot callouts", "coordinate-slot panel", "explicit intrinsic/end-specific rule"]
+    },
+    "reference-distinction-map": {
+      "svg": "docs/src/assets/reference-distinction-map.svg",
+      "png": "docs/src/assets/reference-distinction-map.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["confusable clusters", "diagnostic question cards", "named term families"]
+    },
+    "reference-evidence-map": {
+      "svg": "docs/src/assets/reference-evidence-map.svg",
+      "png": "docs/src/assets/reference-evidence-map.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["facet/state axes", "numeric cell counts", "dashed empty cells"]
+    },
+    "reference-verification-summary": {
+      "svg": "docs/src/assets/reference-verification-summary.svg",
+      "png": "docs/src/assets/reference-verification-summary.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["claim-type rows", "verification-state columns", "explicit zero external review"]
+    },
     "radial-clique-projection": {
       "svg": "docs/src/assets/radial-clique-projection.svg",
       "png": "docs/src/assets/radial-clique-projection.png",

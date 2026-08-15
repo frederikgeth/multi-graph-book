@@ -9,6 +9,12 @@ They study BIM and BFM second-order-cone formulations for parallel lines and
 case belongs in this book because it is not only about convex relaxation: it
 shows how a missing branch index changes what a proof can state.
 
+![A variable-signature capability matrix shows which member-level questions a
+shared BIM/BFM bus-pair variable can and cannot express.](../assets/bim-bfm-signature-capability.png)
+
+This is a notation-capability plate, not a new numerical certificate. It makes
+the scope boundary visible before the equations are interpreted as a theorem.
+
 ## The branch identity is part of the variable signature
 
 Consider two parallel branches ``\ell i j`` and ``k i j``. Their impedances are

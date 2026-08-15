@@ -38,6 +38,14 @@ example, is: *at this operating point, ``P_{\ell ij}`` is the active-power
 injection into terminal ``i`` of member ``\ell``, using the stored orientation
 ``\ell ij``*. That sentence remains valid if the operating transfer reverses.
 
+![Reusable translation-trap card: what was said, what is testable, and which representation resolves the ambiguity.](../assets/translation-trap-card.png)
+
+The card is a deliberate template rather than a summary of four isolated
+mistakes. When a later chapter reuses a colloquial phrase, it should be able to
+repeat the same three fields in a margin or caption: quote the phrase, name a
+checkable quantity or guard, and identify the graph or factor model that makes
+the distinction visible.
+
 ## Highest-priority translations
 
 - *The network graph* becomes **the named graph derived for the stated

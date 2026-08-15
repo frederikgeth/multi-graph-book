@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">
+<title>A guarded result plate: Carson overhead case</title>
+<desc>A compact, artifact-derived audit summary for a case chapter.</desc>
+<rect width="100%" height="100%" fill="white"/>
+
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:27px;font-weight:bold}.sub{font-size:15px;fill:#5f6b76}
+.head{font-size:18px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#46525d}.tiny{font-size:12px;fill:#46525d}
+.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.good{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.warn{fill:#fff3dc;stroke:#a36516;stroke-width:2}.bad{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.ink{stroke:#17212b;stroke-width:2}.ok{fill:#2f6b3b}.red{fill:#8a3232}.amber{fill:#a36516}
+</style>
+
+<text x="35" y="40" class="title" text-anchor="start">A guarded result plate: Carson overhead case</text>
+<text x="35" y="68" class="sub" text-anchor="start">A compact, artifact-derived audit summary for a case chapter.</text>
+<rect x="40" y="105" width="1320" height="100" rx="10" class="good"/>
+<text x="70" y="140" class="head" text-anchor="start">AUSTRALIAN-CARSON-001</text>
+<text x="70" y="171" class="body" text-anchor="start">source-backed reproduction · comparison diagnostic</text>
+<text x="1325" y="142" class="head" text-anchor="end">AUDITED SUMMARY</text>
+<rect x="40" y="230" width="640" height="220" rx="10" class="panel"/>
+<rect x="720" y="230" width="640" height="220" rx="10" class="panel"/>
+<text x="70" y="268" class="head" text-anchor="start">source scope</text>
+<text x="70" y="299" class="small" text-anchor="start">lifted overhead construction + independent Australian Z_abcn</text>
+<text x="70" y="318" class="small" text-anchor="start">reference</text>
+<text x="70" y="374" class="head" text-anchor="start">guards discharged</text>
+<text x="70" y="405" class="ok" text-anchor="start">✓</text>
+<text x="92" y="405" class="small" text-anchor="start">construction fields are source-backed</text>
+<text x="70" y="423" class="ok" text-anchor="start">✓</text>
+<text x="92" y="423" class="small" text-anchor="start">reference matrix is not used as model input</text>
+<text x="70" y="441" class="ok" text-anchor="start">✓</text>
+<text x="92" y="441" class="small" text-anchor="start">60 Hz/order probe is labelled an inference</text>
+<text x="750" y="268" class="head" text-anchor="start">verification</text>
+<text x="750" y="307" class="tiny" text-anchor="start">residual</text>
+<text x="750" y="329" class="body" text-anchor="start">4.3×10⁻⁵ Ω/km</text>
+<text x="750" y="374" class="tiny" text-anchor="start">cross-check</text>
+<text x="750" y="396" class="small" text-anchor="start">OpenDSSDirect and independent LinearAlgebra solve agree on</text>
+<text x="750" y="414" class="small" text-anchor="start">voltage/loss rows</text>
+<rect x="40" y="485" width="1320" height="105" rx="10" class="warn"/>
+<text x="70" y="522" class="head" text-anchor="start">OPEN ITEM</text>
+<text x="70" y="555" class="body" text-anchor="start">CS1035 raw construction mapping remains unavailable.</text>
+<rect x="40" y="630" width="1320" height="55" rx="10" class="panel"/>
+<text x="70" y="664" class="small" text-anchor="start">Generated from the checked artifact; read the chapter and certificate for the full contract.</text>
+</svg>

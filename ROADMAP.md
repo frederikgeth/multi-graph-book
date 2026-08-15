@@ -1251,6 +1251,72 @@ caption or companion metadata; a visually neat single-line diagram is not
 evidence that n-port, grounding, switch-state, or member-identity semantics
 survived.
 
+#### Guarded-case evidence-plate tranche — 2026-08-16
+
+The next-section review identifies an evidence-distribution problem: the
+numerical-consequences chapter held most of the figures while the executed
+case chapters had none. The immediate repair is to make the book's own audit
+method visible at the point where a reader evaluates a reproduction. A
+generated result plate is a summary of an artifact, not a replacement for its
+certificate; it must expose claim identity, classification, source scope,
+discharged guards, residual, cross-check, and open item.
+
+- [x] add a reusable artifact-derived guarded-result plate and link it from
+  the Australian Carson case;
+- [x] add the four-wire transformation-ladder plate: green edge-local checks,
+  a red endpoint, and accumulated unresolved guards;
+- [x] add the overhead Carson reconciliation plate with frequency and
+  conductor-order probes shown as diagnostic knobs;
+- [x] add the CS1035 unresolved-data plate, retaining the failed probe as a
+  credibility result rather than relabelling it a reproduction;
+- [x] instantiate decision/evidence plates for the transformer-tap and
+  parallel-line cases, and add the BIM/BFM member-signature capability plate;
+  each plate states whether it is artifact-backed or notation-only;
+- [x] reuse `transformer-anatomy.png` in the multiwinding terminal-leakage
+  case; decide later whether conductor-coordinate normalization deserves its
+  own plate or belongs inside the impedance ladder;
+- [x] move conceptual numerical-fill-in and Jacobian-dependency figures to
+  the core formulation/lowering chapter, leaving only executed witness figures
+  in the numerical-consequences chapter;
+- [ ] revisit whether the overloaded guarded-case section should become a
+  separate Part after the case-plate tranche is stable.
+
+**Exit criterion:** every executed case has either an artifact-derived result
+plate or a documented reason that its evidence is not yet expressible in the
+shared template; unresolved source mappings remain visibly unresolved.
+
+#### Reference-section navigation and evidence tranche — 2026-08-16
+
+The reference review correctly treats this section as queried infrastructure,
+not a miniature narrative. The generated knowledge-base index should remain
+complete and machine-readable; the repair is to add compact navigational and
+relational views that cannot drift from `claims/claims.toml`.
+
+- [x] add generated symbol anatomy showing element identity, relation role,
+  oriented attachment, and coordinate slots;
+- [x] add a terminology distinction map for bus, transformation, exactness,
+  state, and flow clusters;
+- [x] add a claims-derived evidence map with visible empty cells and an
+  explicit warning that facet counts are retrieval aids, not literature
+  completeness claims;
+- [x] add a claims-derived verification summary showing the current
+  self-checked, independently-implemented, and externally-reviewed states;
+- [x] include the evidence map and verification summary in both HTML and the
+  curated PDF route;
+- [x] add explicit preservation-dimension fields to the claims schema and use
+  the controlled dimensions to drive the evidence map (the remaining
+  transformation-family × dimension synthesis is a later literature task);
+- [ ] reconcile the claims ledger with the second-coded literature matrix and
+  display classical Kron/Ward coverage as a separate evidence-matrix view,
+  without treating frequent citation as a coded record;
+- [ ] reduce generated-index verbosity only if retrieval tests show a concrete
+  failure; do not replace the complete index with a hand-curated summary.
+
+**Exit criterion:** a reader can decode notation, resolve a terminology
+collision, inspect evidence coverage, and see verification state without
+reading the 20,000-word generated index; the HTML and PDF summaries are
+generated from the same source ledger.
+
 #### Structural-section diagram review — 2026-08-15
 
 The next-section review changes the figure test from surprise to reuse: formal
@@ -1270,7 +1336,7 @@ card. The following tranche is now implemented:
   size-inversion plate, marked as schematic rather than a new numerical
   witness;
 - [x] strengthen the topology-projection figure's port-incidence legend;
-- [ ] design the reusable translation-trap card and typed transformation
+- [x] design the reusable translation-trap card and typed transformation
   register glyph plate after the structural source vocabulary is reviewed;
 - [ ] revisit chapter splitting for the overloaded Kron/Ward/Opti-KRON and
   two-level-topology chapters rather than adding more figures to them.

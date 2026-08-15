@@ -15,6 +15,15 @@ ordering, and the fact that the fixture is deterministic rather than derived
 from a particular geometry solver. This is the minimum data needed to compare
 the views without mistaking a derived matrix for a primitive asset property.
 
+![The transformation ladder is locally defensible but globally guarded: each
+edge is checked, while the endpoint retains unresolved decision guards.](../assets/four-wire-impedance-ladder.png)
+
+The green checks in this plate certify edge-local contracts only.  The red
+endpoint is intentional: composition carries forward the weakest exactness
+label and the union of unresolved guards.  A positive-sequence decision model
+is therefore not certified merely because each preceding coordinate or
+elimination step has a valid derivation.
+
 ## The path
 
 ```math

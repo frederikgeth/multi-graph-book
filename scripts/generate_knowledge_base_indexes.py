@@ -132,6 +132,8 @@ def generate_index(claims: list[dict]) -> None:
         "This page is generated from `claims/claims.toml` and the JSON artifacts under",
         "`experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated",
         "PDF route does not attempt to reproduce these indexes as a linear chapter sequence.",
+        "For a compact visual summary of notation, terminology distinctions, coverage gaps, and",
+        "verification state, see the [evidence map and verification summary](evidence-map.md).",
         "",
         f"**Indexed claims:** {len(claims)}",
         f"**Indexed chapters:** {len({claim['chapter'] for claim in claims})}",
