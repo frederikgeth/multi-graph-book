@@ -4,9 +4,13 @@
 
 ## Why familiar words become dangerous
 
-Graph theory, circuit theory, and power-system practice each have internally
-useful vocabularies. Trouble begins when a statement is moved from one of
-these vocabularies to another without also moving its assumptions.
+Graph theory, circuit theory, power-system practice, software and data
+modelling, mathematical optimization, and graph machine learning each have
+internally useful vocabularies. Trouble begins when a statement is moved from
+one vocabulary to another without also moving its assumptions. The short
+[five-community vocabulary bridge](@ref one-network-five-languages) introduces
+the communities and their characteristic false friends; this chapter develops
+the failures that matter for power-network models.
 
 For example, *the line is directed from ``i`` to ``j``* may be harmless data
 shorthand for the stored triple ``\ell ij``. It is false if it is read as a

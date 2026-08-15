@@ -8,6 +8,12 @@ the meaning of every vector, matrix, and componentwise constraint. A rewrite
 that changes an order without changing all dependent objects is therefore a
 model error, not a harmless formatting operation.
 
+!!! note "Normalization vocabulary"
+    *Normalization* in this chapter is an invertible rewrite into a declared
+    conductor order. It is not per-unit conversion, schema normalization, or
+    ML feature scaling. Those operations require their own maps, units,
+    inverses where applicable, and preservation claims.
+
 ## Rule
 
 Consider an element ``\ell i j`` with source conductor order

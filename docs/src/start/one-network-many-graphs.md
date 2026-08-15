@@ -136,7 +136,10 @@ certificate.
 
 ## The route through the book
 
-The [Representation taxonomy](@ref representation-taxonomy) separates the major model families. [Notation and modelling
+Before the formal taxonomy, [One network, five languages](@ref
+one-network-five-languages) translates the recurring terms used by power
+engineers, software and data experts, mathematical modellers, graph theorists,
+and graph-machine-learning readers. The [Representation taxonomy](@ref representation-taxonomy) separates the major model families. [Notation and modelling
 conventions](@ref) fixes the element, arc, terminal, and winding indices. [Representation
 architecture](@ref) presents the proposed linked reference architecture. The transformation parts
 then ask which views can be derived, under what guards, and with what consequences for feasible

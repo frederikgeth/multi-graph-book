@@ -18,8 +18,10 @@ The central thesis is simple:
 
 ## A short reading route
 
-Start with [One network, many graphs](@ref one-network-many-graphs), then follow the five-bus cycle
-example and [A first failure: heterogeneous parallel branches](@ref first-failure-parallel-branches). These
+Start with [One network, many graphs](@ref one-network-many-graphs), cross the
+[five-community vocabulary bridge](@ref one-network-five-languages), then
+follow the five-bus cycle example and [A first failure: heterogeneous parallel
+branches](@ref first-failure-parallel-branches). These
 chapters establish the recurring pattern: a representation may preserve a
 terminal equation while changing a decision-feasible set. Continue through
 [Formal representation frameworks](@ref formal-representation-frameworks),
@@ -41,11 +43,16 @@ the HTML index remains the place for exhaustive lookup.
 
 ![Audience routes through the shared HTML/PDF argument.](assets/audience-routes.png)
 
-The audience map is a route selector, not another taxonomy: every route returns
-to the same preservation-contract and evidence language.
+The audience map is a route selector, not another taxonomy. Power engineers,
+software and data experts, mathematical modellers, graph theorists, and graph
+machine-learning experts enter through different questions, but every route
+returns to the same preservation-contract and evidence language.
 
 ## What to read by question
 
+- **I recognize the words but not their use here.** Read [One network, five
+  languages](@ref one-network-five-languages), then use the maintained
+  [Terminology](@ref) page for lookup.
 - **Which graph is this?** Read [Representation frameworks](@ref
   formal-representation-frameworks), [Representation taxonomy](@ref
   representation-taxonomy), and [Maps between representation frameworks](@ref

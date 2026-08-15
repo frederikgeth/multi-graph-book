@@ -2,6 +2,47 @@
 
 **Page status:** maintained glossary and translation aid.
 
+This page records the preferred vocabulary used in definitions, claims, and
+certificates. Readers approaching from power engineering, software and data,
+mathematical modelling, graph theory, or graph machine learning should begin
+with [One network, five languages](@ref one-network-five-languages).
+
+The bridge distinguishes three editorial statuses:
+
+- a **preferred house term**, used where semantic ownership matters;
+- an **accepted qualified shorthand**, retained when its representation and
+  scope are stated;
+- an **unsafe unqualified term**, for which a missing representation,
+  quantity, state, or preservation object must be supplied.
+
+Community terms are not declared synonyms merely because they occupy the same
+row below. Their relation may be an exact alias, a scoped alias, a broader or
+narrower term, a representation-dependent term, or a false friend.
+
+## Cross-community collision index
+
+| Familiar term or cluster | Required question in this book | Common unsafe inference |
+| --- | --- | --- |
+| bus, node, vertex, junction, terminal, port | What object type and representation? | every node is one physical bus |
+| line, branch, edge, arc, relation, nonzero | What owns identity and what records attachment or coupling? | every graph edge is one physical branch |
+| factor | Behavioural relation, factor-graph node, power factor, or matrix factor? | these uses are interchangeable |
+| graph, topology, adjacency | Asset, active-connectivity, factor-incidence, equation, support, or message graph? | one topology answers every query |
+| directed, oriented, upstream, downstream | Stored order, operating sign, rooted-tree relation, causality, or admissibility? | an arrow predicts physical transfer |
+| flow, current, power, message | Which terminal or internal quantity and which conservation law? | one antisymmetric scalar lives on every edge |
+| parallel | Same endpoints, same terminals, shared corridor, homogeneous equipment, or parallel computation? | members can be merged without a contract |
+| cycle, loop, mesh, radial | In which graph and active state? | a graph cycle is a circulating physical flow |
+| state | Electrical variables, equipment status, scenario, estimator state, or ML hidden state? | one state object contains all of them |
+| rating, limit, constraint | Source datum, operational policy, or mathematical encoding? | one scalar constraint reproduces the equipment limit |
+| equivalent, exact, preserving | Which interface and preservation object? | equal terminal equations imply equal decisions |
+| projection, compilation, elimination, aggregation, reduction, pooling | Which objects are changed, forgotten, solved, or recoverable? | every operation merely makes a graph smaller |
+| normalization | Per-unit, coordinate, schema, physical-model, or feature normalization? | all normalizations preserve the same semantics |
+| loss | Electrical dissipation, information loss, or training objective? | a shared word implies a shared quantity |
+| ground, neutral, reference | Physical earth, conductor, impedance, or gauge choice? | all are one zero-voltage node |
+
+The sections below give the compact house definitions. Detailed counterexamples
+belong to [Translation traps](@ref translation-traps); rigorous graph objects
+belong to [Representation frameworks](@ref formal-representation-frameworks).
+
 | Term | Meaning in this book |
 | --- | --- |
 | Asset | A physical or organizational entity with stable identity and lifecycle facts |
@@ -20,6 +61,12 @@
 | Morphism | A map preserving the declared structure within one representation framework |
 | Isomorphism | A reversible morphism; a change of names or coordinates rather than a quotient or compilation |
 | Query factorization | Evidence that a source query can be answered from a target because it factors through the declared transformation |
+| Computational dependency graph | A graph whose vertices and edges encode declared variables, equations, operations, or dependencies rather than physical equipment |
+| Message graph | The compiled graph on which a graph-learning architecture exchanges messages; its nodes and edges need not be physical buses and branches |
+| Feature | An attribute supplied to a statistical or learned model; physical meaning exists only through its source map, units, coordinate convention, and state association |
+| Pooling | A many-to-one learned or algorithmic aggregation whose sufficiency is relative to a downstream query and retained side information |
+| Electrical state | The declared continuous electrical variables at an operating point, distinct from equipment status, scenario labels, estimator metadata, and learned hidden state |
+| Equipment state | A discrete or continuous device condition such as switch status or tap position, with source identity and admissible transitions retained |
 | Asset/terminal topology | Identified high-level equipment and its port or bus attachments; a multigraph only for the genuinely two-terminal subset |
 | Conductor/port--factor topology | Electrical conductor junctions, typed ports, and constitutive factors, with terminal maps and coupling retained |
 | Block-support graph | Simple graph with one vertex per retained nodal block and an edge for each nonzero off-diagonal block of an assembled operator |

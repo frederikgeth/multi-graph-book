@@ -1387,7 +1387,8 @@ semantic word in their captions and surrounding prose.
 
 - [x] turn the five worked parallel cases into a case-escalation grid, and do
   the same for the transformer chain;
-- [x] add a reading-route map for the HTML/PDF spine and the four audiences;
+- [x] add a reading-route map for the HTML/PDF spine and revise it for the five
+  target communities;
 - [x] add sequence-subspace geometry for the positive-sequence collapse;
 - [x] add a four-overlay “what does bus mean?” figure for node--breaker and
   compiled bus--branch views;
@@ -1417,6 +1418,44 @@ semantic word in their captions and surrounding prose.
 diagram, the HTML route remains the primary product, and the PDF route is a
 curated serialization whose diagrams and captions survive print and
 monochrome rendering.
+
+#### Cross-community vocabulary bridge — 2026-08-16
+
+The same terms carry different object, state, and preservation semantics in
+power engineering, software and network data, mathematical modelling, graph
+theory, and graph machine learning. The bridge should retain familiar language
+while preventing word-level translation from substituting for a typed map.
+
+- [x] add a short illustrated Start Here chapter describing one source network
+  in the five community vocabularies;
+- [x] distinguish exact aliases, scoped aliases, broader/narrower terms,
+  representation-dependent terms, and false friends;
+- [x] adopt the three editorial statuses: preferred house term, accepted
+  qualified shorthand, and unsafe unqualified term;
+- [x] add the first cross-community collision index to the maintained
+  terminology page;
+- [x] connect the bridge to the opening route, representation introduction,
+  translation traps, HTML navigation, and curated PDF route;
+- [x] revise the audience-route diagram so graph theory and graph machine
+  learning are explicit rather than implicit audiences;
+- [ ] stabilize the manual collision set, then promote it to a structured
+  vocabulary registry capable of generating community-to-book and
+  book-to-community indexes;
+- [x] complete the first targeted bridge-card audit: computational graph
+  identity, electrical/equipment/hidden state, coarsening and pooling,
+  normalization, and the three meanings of loss now appear at their
+  load-bearing chapters;
+- [ ] continue the chapter audit only where a concrete cross-community false
+  inference remains, prioritizing factor, direction/flow, and software object
+  identity rather than repeating the bridge mechanically;
+- [ ] seek separate terminology review from representatives of the five
+  communities; do not treat internal consistency as evidence that the bridge
+  matches every community's practice.
+
+**Exit criterion:** a reader can start from a familiar community term, locate
+the book's object and required qualifier, identify the unsafe inference, and
+reach the rigorous defining chapter without learning a second disconnected
+glossary.
 
 ## Deliberately deferred
 

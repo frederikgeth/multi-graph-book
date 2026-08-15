@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "review_date": "2026-08-15",
+  "review_date": "2026-08-16",
   "principle": "Colour may reinforce a distinction, but no reader-critical distinction is encoded by colour alone.",
   "visual_grammar": {
     "background": "white",
@@ -29,6 +29,12 @@
       "png": "docs/src/assets/audience-routes.png",
       "monochrome_safe": true,
       "distinguishing_channels": ["shared spine boxes", "branch arrows", "audience-labelled panels"]
+    },
+    "vocabulary-bridge-five-languages": {
+      "svg": "docs/src/assets/vocabulary-bridge-five-languages.svg",
+      "png": "docs/src/assets/vocabulary-bridge-five-languages.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["five community-labelled rows", "bridge and unsafe-inference columns", "explicit house-rule banner"]
     },
     "case-escalation-grid": {
       "svg": "docs/src/assets/case-escalation-grid.svg",

@@ -34,6 +34,13 @@ linked to—but not nested inside—the electrical port--factor model.
     [translation-traps chapter](@ref translation-traps) gives controlled
     replacements for this and other familiar shorthand.
 
+!!! note "Graph-learning bridge"
+    A node, edge, or message graph supplied to a learning architecture is a
+    compiled computational view. It is not the source ontology unless its map
+    from assets, ports, factors, states, limits, and provenance is declared.
+    Heterogeneous node and edge types help express that map, but do not prove
+    that parallel identity or n-port semantics survived compilation.
+
 Here *canonical* means the selected source formalism for this book. It does not
 mean that adequacy or uniqueness has already been established.
 

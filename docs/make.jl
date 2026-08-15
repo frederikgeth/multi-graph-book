@@ -30,17 +30,18 @@ function Documenter.LaTeXWriter.latex(
     return
 end
 
-# The worked five-bus figures form part of the argument and must not float ahead
-# of the definitions and witness that introduce them. Keep other book images on
-# Documenter's default float policy, but pin this generated figure family to its
-# source position in the PDF. HTML remains unchanged.
+# The worked five-bus figures and the opening vocabulary bridge carry the local
+# argument and must not float past the text that introduces them. Keep other
+# book images on Documenter's default float policy, but pin these generated
+# figure families to their source position in the PDF. HTML remains unchanged.
 function Documenter.LaTeXWriter.latex(
     io::Documenter.LaTeXWriter.Context,
     node::Documenter.MarkdownAST.Node,
     image::Documenter.LocalImage,
 )
     writer = Documenter.LaTeXWriter
-    fixed_position = startswith(basename(image.path), "five-bus-")
+    fixed_position = startswith(basename(image.path), "five-bus-") ||
+                     startswith(basename(image.path), "vocabulary-bridge-")
     writer._println(io, fixed_position ? "\\begin{figure}[H]" : "\\begin{figure}")
     writer._println(io, "\\centering")
     writer._println(
@@ -94,6 +95,7 @@ const PAGES_HTML = [
     "Start here" => [
         "Home" => "index.md",
         "One network, many graphs" => "start/one-network-many-graphs.md",
+        "One network, five languages" => "start/one-network-five-languages.md",
         "A five-bus multigraph: identities, cycles, and tree coordinates" => "start/five-bus-cycle-spaces.md",
         "A first failure: heterogeneous parallel branches" => "start/first-failure-parallel-branches.md",
         "Scope and thesis" => "foundations/scope-and-thesis.md",
@@ -168,6 +170,7 @@ const PAGES_PDF = [
     "Start here" => [
         "Home" => "index.md",
         "One network, many graphs" => "start/one-network-many-graphs.md",
+        "One network, five languages" => "start/one-network-five-languages.md",
         "A five-bus multigraph: identities, cycles, and tree coordinates" => "start/five-bus-cycle-spaces.md",
         "A first failure: heterogeneous parallel branches" => "start/first-failure-parallel-branches.md",
         "Scope and thesis" => "foundations/scope-and-thesis.md",

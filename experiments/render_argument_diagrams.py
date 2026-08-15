@@ -316,13 +316,84 @@ def case_escalation() -> str:
     return "\n".join(lines) + "\n"
 
 
+def vocabulary_bridge() -> str:
+    lines = [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="980" viewBox="0 0 1400 980">',
+        '<title>One network, five languages</title>',
+        '<desc>Five rows translate familiar community language into the book\'s typed vocabulary and state one unsafe inference for each community.</desc>',
+        '<rect width="1400" height="980" fill="white"/>',
+        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.head{font-size:18px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#5f6b76}.community{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.bridge{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.warning{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.row{fill:#fbfcfd;stroke:#17212b;stroke-width:1.5}.arrow{stroke:#17212b;stroke-width:2;fill:none;marker-end:url(#arrow)}.tag{fill:#eee8f8;stroke:#7856a8;stroke-width:1.5}</style>',
+        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
+        txt(40, 46, "One network, five languages", "title"),
+        txt(40, 76, "Translate the object and query—not only the word. Each community sees a useful view and carries a characteristic risk.", "sub"),
+        '<rect x="40" y="105" width="1320" height="82" rx="14" class="tag"/>',
+        txt(700, 137, "shared semantic anchor", "head", "middle"),
+        txt(700, 164, "identified assets · ordered ports · junctions · factors · states · limits · provenance", "body", "middle"),
+        txt(55, 225, "community language", "head"),
+        txt(430, 225, "bridge used in this book", "head"),
+        txt(930, 225, "unsafe inference", "head"),
+    ]
+    rows = [
+        (
+            "power engineering",
+            "bus · feeder · line · radial · power flow",
+            "name graph, active state, terminal quantity",
+            "one arrow or edge carries one conserved flow",
+        ),
+        (
+            "software and network data",
+            "equipment · terminal · connectivity node · status",
+            "name source/generated object and provenance map",
+            "a record, compiled bus, and physical asset are identical",
+        ),
+        (
+            "mathematical modelling",
+            "variable · constraint · feasible set · relaxation",
+            "name observation, decision, and recovery maps",
+            "equal equations imply equal feasible decisions",
+        ),
+        (
+            "mathematical graph theory",
+            "vertex · edge/arc · cycle · quotient · minor",
+            "name object types, incidence, graph, and morphism",
+            "unlabelled topology determines electrical meaning",
+        ),
+        (
+            "graph machine learning",
+            "node/edge feature · message · pooling · hidden state",
+            "name compiled message graph and retained semantics",
+            "pooling preserves member identity, limits, and n-port structure",
+        ),
+    ]
+    for idx, (community, terms, bridge, warning) in enumerate(rows):
+        y = 250 + idx * 128
+        lines += [
+            f'<rect x="40" y="{y}" width="1320" height="108" rx="12" class="row"/>',
+            f'<rect x="55" y="{y + 14}" width="325" height="80" rx="10" class="community"/>',
+            f'<rect x="420" y="{y + 14}" width="430" height="80" rx="10" class="bridge"/>',
+            f'<rect x="910" y="{y + 14}" width="430" height="80" rx="10" class="warning"/>',
+            txt(217, y + 43, community, "head", "middle"),
+            txt(217, y + 70, terms, "small", "middle"),
+            txt(635, y + 58, bridge, "body", "middle"),
+            txt(1125, y + 58, warning, "body", "middle"),
+            f'<path d="M380 {y + 54} L410 {y + 54}" class="arrow"/>',
+            f'<path d="M850 {y + 54} L900 {y + 54}" class="arrow"/>',
+        ]
+    lines += [
+        '<rect x="40" y="905" width="1320" height="50" rx="12" class="tag"/>',
+        txt(700, 936, "house rule: preferred term · accepted qualified shorthand · unsafe unqualified term", "head", "middle"),
+        '</svg>',
+    ]
+    return "\n".join(lines) + "\n"
+
+
 def audience_routes() -> str:
     lines = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">',
         '<title>Audience routes through the HTML and PDF book</title>',
-        '<desc>A central argument spine is shared by HTML and PDF. Four audience routes branch to the chapters most useful to distribution modellers, OPF researchers, standards practitioners, and numerical-methods readers.</desc>',
+        '<desc>A central argument spine is shared by HTML and PDF. Five community routes branch to power engineering, software and data, mathematical modelling, graph theory, and graph machine learning chapters.</desc>',
         '<rect width="1400" height="800" fill="white"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.head{font-size:18px;font-weight:bold}.node{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.aud1{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.aud2{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.aud3{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.aud4{fill:#eee8f8;stroke:#7856a8;stroke-width:2}.small{font-size:14px;fill:#5f6b76}.body{font-size:15px}.line{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.branch{stroke:#5f6b76;stroke-width:2;fill:none;marker-end:url(#arrow)}</style>',
+        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.head{font-size:17px;font-weight:bold}.node{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.aud1{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.aud2{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.aud3{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.aud4{fill:#eee8f8;stroke:#7856a8;stroke-width:2}.aud5{fill:#f7f7f7;stroke:#17212b;stroke-width:2}.small{font-size:13px;fill:#5f6b76}.body{font-size:15px}.line{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.branch{stroke:#5f6b76;stroke-width:2;fill:none;marker-end:url(#arrow)}</style>',
         '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
         txt(40, 46, "Reading routes through one argument", "title"),
         txt(40, 76, "HTML is the full knowledge base; the PDF is a shorter, argument-shaped serialization of the same sources.", "sub"),
@@ -335,19 +406,20 @@ def audience_routes() -> str:
         if i < len(spine) - 1:
             lines.append(f'<path d="M{x + 190} 190 L{x + 230} 190" class="line"/>')
     audiences = [
-        ("distribution modeller", "earth/neutral · node–breaker · crosswalk", "aud1", 105, 420, 340),
-        ("OPF researcher", "parallel limits · Kron/Ward · certificates", "aud2", 425, 490, 580),
-        ("standards/data practitioner", "asset links · provenance · rating semantics", "aud3", 745, 420, 340),
-        ("numerical-methods reader", "conditioning · Jacobians · fill · margins", "aud4", 1065, 490, 820),
+        ("power engineer", "physical meaning · terminals · decisions", "aud1", 45, 420, 100),
+        ("software / data expert", "identity · topology · provenance", "aud2", 315, 490, 340),
+        ("mathematical modeller", "feasible sets · maps · certificates", "aud3", 585, 420, 580),
+        ("graph theorist", "typed incidence · cycles · quotients", "aud4", 855, 490, 820),
+        ("graph ML expert", "message graph · pooling · recovery", "aud5", 1125, 420, 1060),
     ]
     for title, detail, cls, x, y, anchor_x in audiences:
-        lines.append(f'<rect x="{x}" y="{y}" width="260" height="145" rx="12" class="{cls}"/>')
-        lines.append(txt(x + 130, y + 38, title, "head", "middle"))
+        lines.append(f'<rect x="{x}" y="{y}" width="230" height="145" rx="12" class="{cls}"/>')
+        lines.append(txt(x + 115, y + 38, title, "head", "middle"))
         parts = detail.split(" · ")
         for j, part in enumerate(parts):
-            lines.append(txt(x + 130, y + 70 + 19 * j, part, "small", "middle"))
+            lines.append(txt(x + 115, y + 70 + 19 * j, part, "small", "middle"))
         branch_start_x = anchor_x + 95
-        lines.append(f'<path d="M{branch_start_x} 225 C{branch_start_x} 330 {x + 130} {y - 50} {x + 130} {y}" class="branch"/>')
+        lines.append(f'<path d="M{branch_start_x} 225 C{branch_start_x} 330 {x + 115} {y - 50} {x + 115} {y}" class="branch"/>')
     lines += [
         txt(40, 700, "Each route re-enters the same contract language; audience emphasis changes, but preservation claims do not.", "small"),
         '</svg>',
@@ -768,6 +840,8 @@ def topology_projection_layers() -> str:
         txt(697, 570, "factor decomposition remains explicit", "small", "middle"),
         txt(697, 600, "open circles = factor ports", "small", "middle"),
         txt(697, 625, "shared attachment is not aggregation", "small", "middle"),
+        '<path d="M520 665 L575 665" class="wire"/><text x="585" y="670" class="small" text-anchor="start">j: port → junction</text>',
+        '<path d="M720 665 L775 665" class="wire"/><text x="785" y="670" class="small" text-anchor="start">f: port → factor</text>',
         # Algebraic block support and summed off-diagonal block.
         '<rect x="1010" y="235" width="120" height="120" rx="12" class="algebra"/>',
         '<rect x="1185" y="235" width="120" height="120" rx="12" class="algebra"/>',
@@ -840,12 +914,12 @@ def radial_clique_projection() -> str:
 def source_views_surgery() -> str:
     lines = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">',
-        '<title>One source graph, four representative views, and three state-conditioned surgeries</title>',
-        '<desc>A canonical source graph with identified equipment and ports maps to four representative views from a six-entry registry: single-line, port-factor, lowered-edge, and nodal-support. Three surgery outputs show open-switch zones, a phase-only state, and an unknown-state family.</desc>',
+        '<title>One source graph, four views, and three state-conditioned surgeries</title>',
+        '<desc>A canonical source graph with identified equipment and ports maps to single-line, port-factor, lowered-edge, and nodal-support views. Three surgery outputs show open-switch zones, a phase-only state, and an unknown-state family.</desc>',
         '<rect width="1400" height="820" fill="white"/>',
         '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:18px;font-weight:bold}.body{font-size:14px}.small{font-size:13px;fill:#5f6b76}.source{fill:#d9eef8;stroke:#245b7a;stroke-width:3}.view{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.lower{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.surgery{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.arrow{stroke:#17212b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}.dashed{stroke:#8a3232;stroke-width:2.5;stroke-dasharray:8 6;fill:none;marker-end:url(#arrow)}.edge{stroke:#245b7a;stroke-width:4}.thin{stroke:#477a55;stroke-width:2}</style>',
         '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
-        txt(40, 42, "One source graph, four representative views, and three surgeries", "title"),
+        txt(40, 42, "One source graph, four views, and three surgeries", "title"),
         txt(40, 70, "Each arrow is typed: it records what survives, what is forgotten, and which state selects the output.", "sub"),
         '<rect x="40" y="105" width="350" height="300" rx="14" class="panel"/>',
         txt(65, 140, "canonical source", "head"),
@@ -885,6 +959,7 @@ def main() -> None:
         "argument-spine": argument_spine(),
         "query-partial-orders": query_partial_orders(),
         "case-escalation-grid": case_escalation(),
+        "vocabulary-bridge-five-languages": vocabulary_bridge(),
         "audience-routes": audience_routes(),
         "sequence-subspace": sequence_subspace(),
         "bus-meaning-overlays": bus_overlay(),
