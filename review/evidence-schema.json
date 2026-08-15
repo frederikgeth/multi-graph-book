@@ -12,6 +12,7 @@
     "target_model",
     "transformation_type",
     "exactness",
+    "exactness_object",
     "model_scope",
     "decision_scope",
     "evidence_type",
@@ -31,6 +32,9 @@
       "enum": ["projection", "compilation", "normalization", "exact_behavioral_reduction", "approximate_reduction", "topology_quotient", "other", "not_reported"]
     },
     "exactness": {"enum": ["exact", "inner", "outer", "scenario_approximate", "unclassified", "not_reported"]},
+    "exactness_object": {
+      "enum": ["equation_identity", "boundary_behavior", "feasible_set", "connectivity_view", "representation_definition", "observation_sample", "not_applicable", "not_reported"]
+    },
     "model_scope": {"type": "string"},
     "phase_neutral_ground_scope": {"type": "string"},
     "multi_terminal_scope": {"type": "string"},

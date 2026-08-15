@@ -51,9 +51,18 @@ Then
 =\mathbf A_{xk}\mathbf U_{xki}.
 ```
 
-Winding and coil limits are unchanged because their coordinates have not been
-permuted. If coil coordinates were also reordered, they would require a second
-coordinate action on the rows and on every coil-indexed constraint.
+The terminal-current map is the dual of the voltage map: target terminal
+currents are P times source terminal currents, while source terminal currents
+are the transpose of the source incidence matrix times the coil currents. The
+transpose (rather than an adjoint) is correct because the incidence matrix is
+real. This gives complex-power invariance between source and target terminal
+coordinates, and between terminal and coil coordinates.
+
+Coil-indexed limits are unchanged because their coordinates have not been
+permuted. A terminal-current limit is different: when it is declared in the
+source model, it must be reordered by the same P action. If coil coordinates
+were also reordered, they would require a second coordinate action on the rows
+and on every coil-indexed constraint.
 
 ## Why delta needs the full relation
 
@@ -85,7 +94,10 @@ julia --project=experiments experiments/run_transformer_winding_normalization.jl
 
 The generated transformer-winding certificate records the source fixture
 winding, both terminal orders, the permutation, both incidence matrices, the
-unchanged coil limits, and the inverse relation.
+dual current map, terminal-versus-coil limit semantics, and executable
+complex-power checks. It deliberately does not claim
+all_declared_source_semantics: only the listed identities and constraints
+are certified.
 
 The next step, [Multiwinding terminal leakage assembly](@ref
 multiwinding-terminal-leakage-assembly), aligns these coil-row identities and

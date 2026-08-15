@@ -199,7 +199,11 @@ then
 The source member limit gives ``C=0.66`` p.u.; the summed aggregate gives
 ``C=1.2`` p.u. The served-power derivative on the high-voltage branch remains
 positive at both limits, so each current cap is binding. The positive quadratic
-roots reproduce both Ipopt objectives to better than ``10^{-7}``.
+roots reproduce both Ipopt objectives to better than ``10^{-7}``. These are
+values on the traced high-voltage branch: Ipopt supplies local solves here, not
+a global-optimality certificate. The exact pruning conclusion also relies on
+the deliberately exact proportionality ``\mathbf Z_{\ell_2}=10\mathbf Z_{\ell_1}``;
+near-proportional data require the general quadratic-containment test.
 
 ## Scope and reproducibility
 
@@ -222,6 +226,7 @@ julia --project=experiments experiments/test/multiconductor_parallel_ac.jl
 
 The generated AC certificate contains all four solutions, the proportional
 cross-check, the two-end quadratic-containment certificate, recovered member
-currents, model sizes, residuals, and closed-form differences. The generic
-checker is in
+currents, model sizes, residuals, and closed-form differences. An automated
+independent re-derivation reproduces the reported figures and the binding
+constraint interpretation; it is not human peer review. The generic checker is in
 `experiments/transformations/MulticonductorFlowLimitRedundancy.jl`.

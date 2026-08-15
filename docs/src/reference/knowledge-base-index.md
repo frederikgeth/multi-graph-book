@@ -1,6 +1,6 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:c57306eba3db58ff8c5371e2764ace956f39c3a6d51c5c95e20dd4d09ab7c5ae -->
+<!-- generated-from claims/claims.toml sha256:68de1f058957eb722be94563195c6ae46a705653bf457109bff32fc873ea8f52 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
@@ -187,7 +187,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `TR-PAR-001` | Add an independent mathematical reviewer. |
 | `TR-PAR-002` | Molzahn2018 gives an exact scalar AC constraint-pruning test without asset aggregation; a general multiconductor classification remains open. |
 | `TR-PAR-003` | The multiconductor mechanism is exercised in TR-PAR-004; add an independent reviewer for this linear case. |
-| `TR-PAR-004` | Extend the scalar quadratic-containment idea to non-proportional three-phase four-wire members and reproduce with an independent numerical solver. |
+| `TR-PAR-004` | The 2026-08-15 automated independent re-derivation reproduces the closed-form values, relaxation, pruning, and binding-current interpretation but is not human peer review; extend the result to near-proportional/non-proportional members, global nonlinear optimality, and independently reviewed physical cases. |
 | `TR-PAR-005` | Extend from pairwise implications to constraints jointly implied by multiple retained limits, then condition certificates on topology, controls, outages, investments, and non-Euclidean thermal regions. |
 | `TR-PAR-006` | TR-PAR-007 covers nonsingular nominal-pi primitives; the companion certificate now refuses singular and singular-shunted recovery maps. Extend from that refusal boundary to exact singular reductions, several retained members, state-dependent topology and controls, and obtain an independent global optimality bound where required. |
 | `TR-PAR-007` | The certificate now includes singular-shunted refusal and voltage-dependent recomputation probes. Extend from these guards to exact singular reductions, voltage-dependent nonlinear decision models, several retained members, topology and control states, and global AC optimality bounds where required. |
@@ -454,6 +454,7 @@ schema is normalised.
 | `multiwinding-terminal-assembly-certificate.json` | `TR-XFMR-003` — generated evidence |
 | `multiwinding-terminal-lift-witness.json` | `ARCH-CONDUCTOR-MULTI-001` — serialized three-winding fixed-linear transformer contract lifted to ordered terminal ports |
 | `multiwinding-typed-kron-witness.json` | `TR-KRON-MULTI-001` — serialized three-winding terminal admittance with DELTA terminal block eliminated |
+| `narrow-circuit-transformations-witness.json` | generated evidence |
 | `neutral-kron-independent-reproduction.json` | `TR-KRON-NEUTRAL-001` — data/running-network/v0.1.0.json |
 | `nodal-recovery-guards-witness.json` | `ARCH-RECOVERY-GUARDS-001` — finite nodal operators with declared catalog bounds, member observations, grounding metadata, and scalar state maps |
 | `nodal-source-recovery-witness.json` | `ARCH-RECOVERY-001` — finite compound nodal operators with declared support, elimination, and parameter classes |

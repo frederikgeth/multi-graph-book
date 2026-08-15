@@ -22,6 +22,7 @@ struct WindingFactor
     coil_labels::Vector{String}
     terminal_to_coil::Matrix{Float64}
     coil_current_limit::Vector{Float64}
+    terminal_current_limit::Union{Nothing,Vector{Float64}}
     attributes::Dict{String,Any}
 
     function WindingFactor(
@@ -34,6 +35,7 @@ struct WindingFactor
         terminal_to_coil,
         coil_current_limit;
         coil_labels=["coil_$row" for row in axes(terminal_to_coil, 1)],
+        terminal_current_limit=nothing,
         attributes=Dict{String,Any}(),
     )
         n_terminal = length(terminals)
@@ -45,6 +47,9 @@ struct WindingFactor
             throw(ArgumentError("coil labels must match connection-matrix rows"))
         length(unique(String.(coil_labels))) == length(coil_labels) ||
             throw(ArgumentError("coil labels must be unique"))
+        terminal_limit = terminal_current_limit === nothing ? nothing : Float64.(terminal_current_limit)
+        terminal_limit === nothing || length(terminal_limit) == n_terminal ||
+            throw(ArgumentError("terminal current limits must match terminal coordinates"))
         new(
             String(id),
             String(transformer_id),
@@ -55,6 +60,7 @@ struct WindingFactor
             String.(coil_labels),
             Float64.(terminal_to_coil),
             Float64.(coil_current_limit),
+            terminal_limit,
             Dict{String,Any}(String(key) => value for (key, value) in attributes),
         )
     end
@@ -131,6 +137,8 @@ function normalize_winding_terminals(
         transformed_connection,
         source.coil_current_limit;
         coil_labels=source.coil_labels,
+        terminal_current_limit=source.terminal_current_limit === nothing ?
+            nothing : action.permutation * source.terminal_current_limit,
         attributes=source.attributes,
     )
 
@@ -147,6 +155,8 @@ function normalize_winding_terminals(
                 "winding_position" => source.winding_position,
                 "connection" => source.connection,
                 "coil_labels" => source.coil_labels,
+                "coil_current_limit_A" => source.coil_current_limit,
+                "terminal_current_limit_A" => source.terminal_current_limit,
             ),
         ),
         "target" => Dict(
@@ -157,6 +167,7 @@ function normalize_winding_terminals(
                 "terminal_to_coil_incidence" => matrix_rows(target.terminal_to_coil),
                 "coil_labels" => target.coil_labels,
                 "coil_current_limit_A" => target.coil_current_limit,
+                "terminal_current_limit_A" => target.terminal_current_limit,
             ),
         ),
         "interfaces" => Dict(
@@ -166,8 +177,11 @@ function normalize_winding_terminals(
                 "relation" => "terminal voltages map by P while coil coordinates remain fixed",
             ),
             "constraints" => Dict(
-                "source" => ["coil current limits"], "target" => ["coil current limits"],
-                "relation" => "coil-indexed constraints are unchanged",
+                "source" => source.terminal_current_limit === nothing ?
+                    ["coil current limits"] : ["coil current limits", "terminal current limits"],
+                "target" => target.terminal_current_limit === nothing ?
+                    ["coil current limits"] : ["coil current limits", "terminal current limits"],
+                "relation" => "coil-indexed limits are unchanged; terminal-current limits, when declared, follow the dual permutation",
             ),
             "decisions" => Dict(
                 "source" => String[], "target" => String[],
@@ -194,28 +208,32 @@ function normalize_winding_terminals(
             "coil coordinates and coil limits retain their identities",
         ],
         "preserves" => [
-            "all_declared_source_semantics",
             "winding_terminal_to_coil_voltage_relation",
             "winding_connection_semantics",
             "coil_current_limits",
+            "terminal_current_dual_map",
             "transformer_and_winding_identity",
         ],
         "forgets" => String[],
         "recovery_map" => Dict(
             "source_terminal_voltage" => "u_source = P' * u_target",
             "source_connection" => "A_source = A_target * P",
+            "source_terminal_current" => "i_source = P' * i_target",
+            "source_terminal_current_limit" => "i_max_source = P' * i_max_target when terminal limits are declared",
         ),
         "constraint_map" => Dict(
             "target_terminal_voltage" => "u_target = P * u_source",
             "target_connection" => "A_target = A_source * P'",
             "coil_limits" => "coil coordinates are unchanged, so their limits are unchanged",
+            "terminal_current" => "i_target = P * i_source",
+            "terminal_current_limits" => "i_max_target = P * i_max_source when terminal limits are declared",
         ),
         "provenance" => Dict(
             "source_transformer" => source.transformer_id,
             "source_winding" => source.winding_position,
             "generated_object" => target.id,
         ),
-        "evidence" => Dict(
+        "evidence" => Dict{String,Any}(
             "permutation_matrix" => matrix_rows(action.permutation),
             "source_terminal_order" => source.terminals,
             "target_terminal_order" => target.terminals,

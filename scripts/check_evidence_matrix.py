@@ -20,7 +20,7 @@ SCHEMA = ROOT / "review/evidence-schema.json"
 
 REQUIRED = {
     "record_id", "citation_key", "screening_status", "source_model",
-    "target_model", "transformation_type", "exactness", "model_scope",
+    "target_model", "transformation_type", "exactness", "exactness_object", "model_scope",
     "decision_scope", "evidence_type", "coding_status",
 }
 ENUMS = {
@@ -31,6 +31,10 @@ ENUMS = {
         "topology_quotient", "other", "not_reported",
     },
     "exactness": {"exact", "inner", "outer", "scenario_approximate", "unclassified", "not_reported"},
+    "exactness_object": {
+        "equation_identity", "boundary_behavior", "feasible_set", "connectivity_view",
+        "representation_definition", "observation_sample", "not_applicable", "not_reported",
+    },
     "evidence_type": {"proof", "derivation", "empirical", "software", "standard", "engineering_practice", "mixed", "not_reported"},
     "coding_status": {"seed", "single_coded", "double_checked", "conflict"},
 }

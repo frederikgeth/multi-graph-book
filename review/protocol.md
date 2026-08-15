@@ -94,6 +94,9 @@ Critical coding dimensions are:
 - source and target model families;
 - physical features and conductor/ground treatment;
 - transformation type and operating domain;
+- exactness together with the object it qualifies (equation identity,
+  boundary behaviour, feasible set, connectivity view, representation
+  definition, or observation sample);
 - preserved observations and feasible-set classification;
 - retained limits, discrete decisions, objectives, and source identities;
 - recovery, constraint, and provenance maps;

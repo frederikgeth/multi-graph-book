@@ -30,6 +30,7 @@ julia --project=experiments experiments/run_pi_four_wire_parallel_ac.jl
 julia --project=experiments experiments/run_five_bus_cycle_space.jl
 julia --project=experiments experiments/run_running_network_cycle_space.jl
 julia --project=experiments experiments/run_translation_traps.jl
+julia --project=experiments experiments/run_narrow_circuit_transformations.jl
 julia --project=experiments experiments/run_load_grounding_witnesses.jl
 julia --project=experiments experiments/run_balanced_transmission_witness.jl
 julia --project=experiments experiments/run_four_wire_impedance_model_ladder.jl
@@ -205,6 +206,9 @@ than duplicating graph or witness data in the drawing code.
   guarded series-elimination rule, including an element-pair mutual-coupling
   rejection and the cross-coupled negative witness that invalidates the
   uncoupled impedance sum by about 11.65% in the recorded fixture;
+- `experiments/generated/narrow-circuit-transformations-witness.json`: scalar
+  floating star--delta equivalence, grounded-star rejection, and the measured
+  loss from adapting unequal endpoint shunts to one shared field;
 - `experiments/generated/coordinate-normalization-certificate.json`: an exact,
   invertible conductor-coordinate rewrite;
 - `experiments/generated/coordinate-series-composition-certificate.json`: the

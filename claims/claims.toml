@@ -427,13 +427,13 @@ claim_text = "In the recorded two-conductor AC maximum-served-load case, the sou
 status = "empirical_result"
 claim_type = "empirical"
 verification = "self-checked"
-evidence_type = "JuMP_Ipopt_execution_recovery_check_proportional_redundancy_certificate_and_closed_form_verification"
+evidence_type = "JuMP_Ipopt_execution_recovery_check_proportional_redundancy_certificate_closed_form_verification_and_automated_independent_rederivation"
 citation_keys = ["Molzahn2018"]
 model_scope = "two-bus phase-neutral AC model with two coupled proportional parallel impedance matrices"
-assumptions = "fixed sending voltage; scalable constant-power direction 1+j0.2; receiving voltage magnitude in [0.70,1.05] p.u.; member current limits 0.6 p.u."
+assumptions = "fixed sending voltage; scalable constant-power direction 1+j0.2; receiving voltage magnitude in [0.70,1.05] p.u.; member current limits 0.6 p.u.; values refer to the traced high-voltage power-flow branch; Ipopt results are local solves, not global-optimality certificates; exact pruning uses exact proportionality Z_l2=10 Z_l1"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Extend the scalar quadratic-containment idea to non-proportional three-phase four-wire members and reproduce with an independent numerical solver."
+unresolved_issue = "The 2026-08-15 automated independent re-derivation reproduces the closed-form values, relaxation, pruning, and binding-current interpretation but is not human peer review; extend the result to near-proportional/non-proportional members, global nonlinear optimality, and independently reviewed physical cases."
 
 [[claim]]
 claim_id = "TR-PAR-005"

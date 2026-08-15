@@ -82,6 +82,7 @@ NUMERICAL_JACOBIAN_FIGURE = ROOT / "docs/src/assets/numerical-jacobian-dependenc
 YBUS_JACOBIAN_WITNESS = GENERATED / "ybus-jacobian-witness.json"
 YBUS_JACOBIAN_FIGURE = ROOT / "docs/src/assets/ybus-jacobian-witness.svg"
 NONLINEAR_KKT_WITNESS = GENERATED / "nonlinear-kkt-witness.json"
+NARROW_CIRCUIT_TRANSFORMATIONS = GENERATED / "narrow-circuit-transformations-witness.json"
 NONLINEAR_KKT_FIGURE = ROOT / "docs/src/assets/nonlinear-kkt-witness.svg"
 PRESERVATION_CONTRACT_CARD = ROOT / "docs/src/assets/preservation-contract-card.svg"
 EARTH_RETURN_LADDER = ROOT / "docs/src/assets/earth-return-ladder.svg"
@@ -398,6 +399,7 @@ def main() -> int:
         YBUS_JACOBIAN_WITNESS,
         YBUS_JACOBIAN_FIGURE,
         NONLINEAR_KKT_WITNESS,
+        NARROW_CIRCUIT_TRANSFORMATIONS,
         NONLINEAR_KKT_FIGURE,
         PRESERVATION_CONTRACT_CARD,
         EARTH_RETURN_LADDER,

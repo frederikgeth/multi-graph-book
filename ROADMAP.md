@@ -82,6 +82,27 @@ The next editorial tranche is now explicit:
 - [x] add executable negative witnesses for the anti-patterns and formulation
   changes, then bind them to the certificate/evidence matrix.
 
+The narrow-circuit transformation tranche makes commonly used star--delta and
+shunt-placement manipulations explicit instead of leaving them implicit in
+equipment models:
+
+- [x] add a reader-facing register entry and guarded scalar formulas for
+  floating star--delta / delta--star conversion, including the distinction
+  between fixed linear terminal equivalence and preservation of grounding,
+  branch limits, switching, and asset identities;
+- [x] state why the scalar formulas do not automatically lift to arbitrary
+  coupled multiconductor blocks, and route those cases through typed Schur
+  complements or port--factor relations;
+- [x] document endpoint shunts as two independently placed terms, including
+  capacitor banks, neutral-ground points, and magnetizing branches, and state
+  explicitly that unequal endpoint diagonals do not imply non-reciprocity;
+- [x] add the adapter rule for tools with only one shared line-shunt field:
+  retain an explicit shunt or generic endpoint-augmented factor and report the
+  loss of semantics rather than silently averaging from/to shunts;
+- [x] add executable witnesses for scalar Y--Delta conversion, rejection of a
+  grounded-star case, and asymmetric-shunt adapter diagnostics before adding
+  these transformations to the stronger claim ledger.
+
 The impedance-standardisation tranche is now added as a bridge from the book's
 taxonomy to implementable data and transformation workflows:
 
@@ -1132,17 +1153,18 @@ conflict below is resolved and recorded.
 - [x] sharpen the Kron reciprocity discussion by separating physical Kron
   reduction from complex power-dual coordinate action, and record numerical
   conditioning in the witnesses;
-- [ ] repair the `TR-XFMR-001` certificate with the terminal-current dual map
+- [x] repair the `TR-XFMR-001` certificate with the terminal-current dual map
   ``\widehat i=Pi``, terminal- versus coil-indexed limit semantics, and a
   complex-power-invariance check; remove the unfalsifiable
   `all_declared_source_semantics` entry and populate `evidence.checks` from the
   executable assertions;
-- [ ] record `TR-PAR-004` as mathematically reproduced by the automated audit,
+- [x] record `TR-PAR-004` as mathematically reproduced by the automated audit,
   while adding the high-voltage-branch/local-solve caveat and the exact-
   proportionality scope of the pruning result; do not label it human-reviewed;
-- [ ] refresh the independent-review packet: `running_network_typed_kron` is
+- [x] refresh the independent-review packet: `running_network_typed_kron` is
   13/13 rather than 7/7, and its scope note must acknowledge the existing
-  neutral-shunt witness.
+  neutral-shunt witness. The refreshed 2026-08-15 packet preserves the stale
+  2026-08-14 snapshot as archival history.
 
 #### C. Evidence-matrix reconciliation and coverage
 
@@ -1151,10 +1173,14 @@ conflict below is resolved and recorded.
   `scenario_approximate` for `EV-0003`, treat `EV-0008` as behavioural
   reduction, treat `EV-0009` as a representation definition rather than an
   exact compilation, reconsider `EV-0010`, and split or qualify `EV-0013`;
-- [ ] repair the `provenance_map` slot errors in `EV-0007`, `EV-0010`, and
+- [x] apply an automated reconciliation of the six controlled-field conflicts
+  and retain `single_coded` status pending a genuine independent second pass;
+  the field-by-field decisions are recorded in
+  [`review/evidence-matrix-reconciliation-2026-08-15.md`](review/evidence-matrix-reconciliation-2026-08-15.md);
+- [x] repair the `provenance_map` slot errors in `EV-0007`, `EV-0010`, and
   `EV-0012`, moving limitation prose to `limitations`, and soften the
   over-reading of MNA multi-terminal scope in `EV-0005`;
-- [ ] add a controlled `exactness_object` field to the schema, coding guide,
+- [x] add a controlled `exactness_object` field to the schema, coding guide,
   validator, and canonical matrix so equation identity, connectivity quotient,
   boundary behaviour, feasible-set preservation, and observation-sample
   agreement are not aggregated as though they were the same object;

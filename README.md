@@ -74,7 +74,10 @@ DOCUMENTER_TECTONIC="$(command -v tectonic)" julia --project=docs docs/make.jl -
 
 The override is optional and affects only the PDF compiler; HTML uses no TeX installation.
 The build script supplies a temporary Fontconfig path for the per-user Homebrew font
-installation, so no global font-cache configuration is required.
+installation, so no global font-cache configuration is required. On macOS,
+`docs/make.jl` also uses `scripts/tectonic-font-wrapper.sh` to point XeTeX at
+the per-user DejaVu font files when name-based lookup fails. Set
+`MULTIGRAPH_DEJAVU_FONT_DIR` if those files are installed elsewhere.
 
 Outputs are written to `docs/build/` and `docs/latex_build/`.
 

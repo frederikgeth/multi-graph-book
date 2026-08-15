@@ -1,14 +1,14 @@
 {
   "deduplication": {
     "path": "review/deduplication-register.csv",
-    "row_count": 14,
-    "sha256": "73da09416ca80fbca579c2e639b9da21bbbfd4280bb30a1f681ec7c7a7071d55"
+    "row_count": 21,
+    "sha256": "219ce56581c7013e751fc44a7e90aed724f993d2df4f9214cd2a530491f1555c"
   },
   "independent_double_coding": false,
   "inputs": {
     "review/bibliography-audit.toml": "41ef3b9b159ad55283713a61597790fa089835182368b29bf8bdb97a90953149",
-    "review/coding-guide.md": "61807ec78a72c52da7d2cb98b42b67825e6b2b47eba92a9cb7ee6b52885040cb",
-    "review/protocol.md": "e88c55d40e9cb9e8b83a19016da2fcc7625a8333bb11778b9e91d71e36acde60",
+    "review/coding-guide.md": "921a77a1f2ce540a699388977d78fc1dc10e09a2d4d9c0059010339dbfffd63d",
+    "review/protocol.md": "e4505e829825648b8a671e63f63df352dcc23dcc15fb8c796b9d42dd77a387ed",
     "review/search-runs/2026-08-14-seed-batch.md": "bd0038ee6f0799be2c2fc00a16ecc82e38d207e22cd6d18dc69db1e2c3056adb",
     "review/search-runs/2026-08-15-formulation-landscape.md": "414f5384b87cc5e53ca5ab62eedcf43345fe992c655ae0002e26541989a5c642",
     "review/search-runs/2026-08-15-information-model-citation-chase.md": "42351417ea975f337076d124fb1a613fe8ae62757ce109b03ec6e2ae4c978dfa",
@@ -16,11 +16,11 @@
   },
   "matrix": {
     "coding_status_counts": {
-      "single_coded": 14
+      "single_coded": 21
     },
     "path": "review/evidence-matrix.csv",
-    "row_count": 14,
-    "sha256": "3bfd987233c110f582375632e1445c519dc1e8929b29de4de5653df62a31b516"
+    "row_count": 21,
+    "sha256": "b608c404aae85513c5751d76c77dc8a8d55acbdee682311f0e36d70461f67a4b"
   },
   "record_ids": [
     "EV-0001",
@@ -36,7 +36,14 @@
     "EV-0011",
     "EV-0012",
     "EV-0013",
-    "EV-0014"
+    "EV-0014",
+    "EV-0015",
+    "EV-0016",
+    "EV-0017",
+    "EV-0018",
+    "EV-0019",
+    "EV-0020",
+    "EV-0021"
   ],
   "schema_version": "0.1.0",
   "search_runs": [

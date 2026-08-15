@@ -95,6 +95,9 @@ small and explicit; generated certificates remain the evidence source.
 | `KRON` | retained/internal port factor → Schur complement | selected boundary relation; recoverable internal states | internal assets, sparsity, unlifted limits and protection | general factor; exact for declared boundary observations |
 | `XFMR-COMPOSE` | transformer plus connected factor → completed multiport | declared terminal relation and mapped winding limits | compact transformer identity if flattened | completed transformer factor; exact only with provenance |
 | `GROUND-ABSORB` | external grounding factor + device → device-only factor | perhaps a fixed linear terminal relation | ground asset, neutral current, ownership, protection and topology dependence | not canonical by default; reject unless explicitly scoped |
+| `STAR-DELTA` / `DELTA-STAR` | scalar floating three-terminal star ↔ delta | linear terminal relation under non-singular scalar guards | internal node, branch identities, grounding and branch limits unless mapped | exact behavioural circuit transform; not a general multiconductor matrix rule |
+| `SHUNT-ABSORB-ENDPOINT` | explicit bus shunt + factor → endpoint-augmented factor | fixed linear terminal relation at the declared state | shunt asset, switching decision, ownership, protection and placement | exact only as a generic factor; reject for a narrower line/transformer class unless encoded |
+| `SHUNT-SYMMETRIZE` | unequal from/to shunts → one shared shunt parameter | only if equality or a proved observation-specific approximation holds | endpoint asymmetry and from/to current semantics | approximate or invalid by default; never infer from tool field names |
 | `BIM/BFM-INDEX` | formulation with branch index → formulation with shared/branch variables | only the declared projection or relaxation relation | branch identity or relaxation-tightness information | formulation change, not a graph isomorphism |
 | `ROOTED-TREE` | active radial graph → rooted feeder hierarchy | parent/child and ancestor queries for the declared state and root | mesh chords, alternate paths, future switch states and root-independent meaning | derived algorithmic view; recompute after topology changes |
 
@@ -102,6 +105,98 @@ Every row should eventually be backed by a certificate with `preconditions`,
 `preserves`, `forgets`, `constraint_map`, `recovery_map`, `target_type` and
 `evidence`. The register is therefore a navigation layer over the existing
 certificate system, not a competing schema.
+
+## Narrow circuit transformations: star--delta and shunt placement
+
+The register also covers transformations that power engineers routinely use
+inside a line, load, or feeder model without calling them *graph
+transformations*. They still change the factorization and therefore need the
+same preservation language.
+
+### Scalar floating star--delta
+
+For three scalar impedances ``z_a,z_b,z_c`` connected from terminals
+``a,b,c`` to a **floating** internal star point, the terminal behaviour can be
+represented by a delta with
+
+```math
+z_{ab}=z_a+z_b+\frac{z_a z_b}{z_c},
+\qquad
+z_{bc}=z_b+z_c+\frac{z_b z_c}{z_a},
+\qquad
+z_{ca}=z_c+z_a+\frac{z_c z_a}{z_b}.
+```
+
+The inverse uses the corresponding nonzero delta-sum denominators, for
+example
+
+```math
+z_a=\frac{z_{ab}z_{ca}}{z_{ab}+z_{bc}+z_{ca}}.
+```
+
+These are exact terminal-equation transforms for a linear scalar network when
+the required impedances and sums are nonsingular. They are not automatically
+exact for a constant-power load, a switched capacitor bank, a grounded star
+point, branch-specific current limits, or a protection/measurement boundary.
+Those quantities either need recovery maps or remain explicit factors.
+
+The familiar formulas also do not lift by replacing each scalar with an
+arbitrary coupled matrix: matrix products need not commute, and a matrix star
+point may have a different terminal coordinate space at each arm. Use a block
+Schur complement or a typed port--factor relation instead. A commuting or
+scalar-block specialisation can be declared separately.
+
+Star and delta have different graph shapes: a star is a tree through an
+internal point, while a delta contains a three-edge cycle. That cycle can be a
+compilation artefact, not evidence of an additional physical corridor cycle.
+Conversely, eliminating a floating star point can hide a source identity or a
+grounding location. `STAR-DELTA` therefore preserves a declared terminal
+relation, not the source topology or asset semantics by default.
+
+### Endpoint shunts and tool asymmetry
+
+For a two-terminal series factor with distinct endpoint shunts, write
+
+```math
+\begin{aligned}
+I_{ij}&=Y_s(U_i-U_j)+Y^{\mathrm{sh}}_{i}U_i,\\
+I_{ji}&=-Y_s(U_i-U_j)+Y^{\mathrm{sh}}_{j}U_j.
+\end{aligned}
+```
+
+The endpoint shunts may be unequal. A reciprocal primitive can therefore have
+different diagonal endpoint blocks while its off-diagonal blocks remain
+transpose paired. Endpoint asymmetry is not the same thing as
+non-reciprocity. Replacing ``Y^{\mathrm{sh}}_i`` and
+``Y^{\mathrm{sh}}_j`` by their average because a software line object has one
+shared shunt field is an approximation (or an invalid encoding), not a
+coordinate change.
+
+Absorbing a capacitor bank, a neutral grounding point, a magnetizing branch,
+or another explicit shunt into a line or transformer can preserve a fixed
+linear terminal equation. It can nevertheless delete the shunt's switching
+state, rating, owner, protection boundary, frequency dependence, or neutral/
+earth-current observation. A safe lowering target is either an endpoint-
+augmented generic two-port with both shunts retained in provenance, or separate
+explicit shunt factors. If the target tool cannot represent unequal from/to
+shunts, retain the richer source and report the adapter limitation; do not
+silently symmetrize.
+
+!!! warning "Power-system shorthand"
+    “Put the capacitor/grounding into the line” can mean an exact fixed-state
+    assembly of a nodal operator, or it can mean changing the equipment model.
+    State which one is intended, and keep the shunt asset and recovery map when
+    its state, limit, protection, or neutral-current meaning is in scope.
+
+The same warning applies when a delta load is replaced by a wye load: the
+linear floating terminal relation may be preserved, while grounded-neutral
+current, phase-specific limits, unbalance, and switching semantics are not.
+
+The executable companion at
+experiments/generated/narrow-circuit-transformations-witness.json checks the
+floating scalar identity, rejects a grounded-star use of that rule, and
+quantifies the residual introduced by an adapter that replaces unequal
+endpoint shunts with one shared field.
 
 ## Risk-aware impedance paths
 

@@ -31,6 +31,7 @@ theorem into one row if they have different targets or preservation claims.
 | `source_model`, `target_model` | Name the mathematical/data object, not merely the software package or algorithm. |
 | `transformation_type` | Use `projection` for information loss, `compilation` for a change of variables/equations, `normalization` for within-family coordinate cleanup, `topology_quotient` for state/connectivity contraction, and reduction types only when variables or network structure are eliminated. Use `other` when the operation does not fit. |
 | `exactness` | Code the authors' declared domain, then qualify it in `limitations`; use `unclassified` when no defensible exact/inner/outer/scenario label is available. |
+| `exactness_object` | Record what the exactness label applies to: an equation identity, boundary behaviour, feasible set, connectivity view, representation definition, or observation sample. Do not compare labels across different objects. |
 | `phase_neutral_ground_scope` | Record explicit treatment. Absence of discussion is `not_reported`, not evidence of omission. |
 | `multi_terminal_scope` | Distinguish native n-port support from pairwise compilation or no statement. |
 | `preserved_observations` | List what is actually shown or specified, not what a reader might infer. |

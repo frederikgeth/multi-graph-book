@@ -12,17 +12,21 @@
       ]
     },
     "decisions": {
-      "source": [],
+      "source": [
+      ],
       "relation": "no tap, switching, or investment decision is changed",
-      "target": []
+      "target": [
+      ]
     },
     "constraints": {
       "source": [
-        "coil current limits"
+        "coil current limits",
+        "terminal current limits"
       ],
-      "relation": "coil-indexed constraints are unchanged",
+      "relation": "coil-indexed limits are unchanged; terminal-current limits, when declared, follow the dual permutation",
       "target": [
-        "coil current limits"
+        "coil current limits",
+        "terminal current limits"
       ]
     },
     "boundary_quantities": {
@@ -37,9 +41,11 @@
       ]
     },
     "objectives": {
-      "source": [],
+      "source": [
+      ],
       "relation": "no winding-local objective term is declared",
-      "target": []
+      "target": [
+      ]
     },
     "state_variables": {
       "source": [
@@ -60,45 +66,12 @@
     "coil coordinates and coil limits retain their identities"
   ],
   "rule_id": "transformer_winding_terminal_normalization",
-  "preserves": [
-    "all_declared_source_semantics",
-    "winding_terminal_to_coil_voltage_relation",
-    "winding_connection_semantics",
-    "coil_current_limits",
-    "transformer_and_winding_identity"
-  ],
-  "constraint_map": {
-    "target_connection": "A_target = A_source * P'",
-    "target_terminal_voltage": "u_target = P * u_source",
-    "coil_limits": "coil coordinates are unchanged, so their limits are unchanged"
-  },
   "provenance": {
     "generated_object": "normalized__x1_winding_3__c_a_b",
     "source_transformer": "x1",
     "source_winding": 3
   },
   "classification": "exact_normalization",
-  "source": {
-    "object_ids": [
-      "x1/winding/3"
-    ],
-    "detail": {
-      "coil_labels": [
-        "a",
-        "b",
-        "c"
-      ],
-      "winding_position": 3,
-      "transformer_id": "x1",
-      "connection": "DELTA"
-    },
-    "model_category": "typed_multiwinding_transformer_winding_factor"
-  },
-  "forgets": [],
-  "recovery_map": {
-    "source_connection": "A_source = A_target * P",
-    "source_terminal_voltage": "u_source = P' * u_target"
-  },
   "target": {
     "object_ids": [
       "normalized__x1_winding_3__c_a_b"
@@ -108,6 +81,11 @@
         280,
         280,
         280
+      ],
+      "terminal_current_limit_A": [
+        240,
+        280,
+        260
       ],
       "terminal_order": [
         "c",
@@ -139,7 +117,105 @@
     },
     "model_category": "typed_multiwinding_transformer_winding_factor"
   },
+  "certificate_id": "TR-XFMR-001",
+  "preserves": [
+    "winding_terminal_to_coil_voltage_relation",
+    "winding_connection_semantics",
+    "coil_current_limits",
+    "terminal_current_dual_map",
+    "transformer_and_winding_identity"
+  ],
+  "constraint_map": {
+    "target_connection": "A_target = A_source * P'",
+    "target_terminal_voltage": "u_target = P * u_source",
+    "coil_limits": "coil coordinates are unchanged, so their limits are unchanged",
+    "terminal_current": "i_target = P * i_source",
+    "terminal_current_limits": "i_max_target = P * i_max_source when terminal limits are declared"
+  },
+  "source": {
+    "object_ids": [
+      "x1/winding/3"
+    ],
+    "detail": {
+      "coil_current_limit_A": [
+        280,
+        280,
+        280
+      ],
+      "terminal_current_limit_A": [
+        280,
+        260,
+        240
+      ],
+      "coil_labels": [
+        "a",
+        "b",
+        "c"
+      ],
+      "winding_position": 3,
+      "transformer_id": "x1",
+      "connection": "DELTA"
+    },
+    "model_category": "typed_multiwinding_transformer_winding_factor"
+  },
+  "forgets": [
+  ],
+  "recovery_map": {
+    "source_connection": "A_source = A_target * P",
+    "source_terminal_current": "i_source = P' * i_target",
+    "source_terminal_voltage": "u_source = P' * u_target",
+    "source_terminal_current_limit": "i_max_source = P' * i_max_target when terminal limits are declared"
+  },
+  "typed_interfaces": {
+    "target_unit_families": [
+      "current",
+      "voltage"
+    ],
+    "unresolved_unit_labels": [
+    ],
+    "target_boundary_labels": [
+      "winding terminal voltages",
+      "coil voltages"
+    ],
+    "source_unit_families": [
+      "current",
+      "voltage"
+    ],
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "state_domain_ids": [
+    ],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+    "unit_family_map": {
+      "A": [
+        "current"
+      ],
+      "V": [
+        "voltage"
+      ]
+    },
+    "source_boundary_labels": [
+      "winding terminal voltages",
+      "coil voltages"
+    ],
+    "source_variable_labels": [
+      "source-order winding terminal voltages",
+      "stable coil voltages"
+    ],
+    "target_variable_labels": [
+      "target-order winding terminal voltages",
+      "stable coil voltages"
+    ]
+  },
   "evidence": {
+    "checks": {
+      "coil_current_limits_unchanged": true,
+      "complex_power_source_target_invariant": true,
+      "complex_power_terminal_coil_invariant": true,
+      "coil_voltage_identity_exact": true,
+      "terminal_current_limits_follow_dual_map": true,
+      "terminal_voltage_recovery_exact": true,
+      "terminal_current_dual_map_exact": true
+    },
     "permutation_matrix": [
       [
         0,
@@ -196,50 +272,95 @@
         -1
       ]
     ],
+    "witness": {
+      "coil_current": [
+        {
+          "re": 0.8,
+          "im": -0.2
+        },
+        {
+          "re": -0.3,
+          "im": 0.5
+        },
+        {
+          "re": 0.4,
+          "im": 0.1
+        }
+      ],
+      "target_terminal_voltage": [
+        {
+          "re": -0.6,
+          "im": 0.7
+        },
+        {
+          "re": 1,
+          "im": 0.1
+        },
+        {
+          "re": -0.4,
+          "im": -0.8
+        }
+      ],
+      "source_terminal_current": [
+        {
+          "re": 1.1,
+          "im": -0.7
+        },
+        {
+          "re": -0.7,
+          "im": 0.4
+        },
+        {
+          "re": -0.4,
+          "im": 0.30000000000000004
+        }
+      ],
+      "complex_power_target_VA": {
+        "re": 1.44,
+        "im": -1.43
+      },
+      "complex_power_coil_VA": {
+        "re": 1.4400000000000002,
+        "im": -1.4300000000000002
+      },
+      "source_terminal_voltage": [
+        {
+          "re": 1,
+          "im": 0.1
+        },
+        {
+          "re": -0.4,
+          "im": -0.8
+        },
+        {
+          "re": -0.6,
+          "im": 0.7
+        }
+      ],
+      "complex_power_source_VA": {
+        "re": 1.44,
+        "im": -1.4299999999999997
+      },
+      "target_terminal_current": [
+        {
+          "re": -0.4,
+          "im": 0.30000000000000004
+        },
+        {
+          "re": 1.1,
+          "im": -0.7
+        },
+        {
+          "re": -0.7,
+          "im": 0.4
+        }
+      ]
+    },
     "target_terminal_order": [
       "c",
       "a",
       "b"
     ]
   },
-  "schema_version": "1.1.0",
-  "certificate_id": "TR-XFMR-001",
-  "typed_interfaces": {
-    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
-    "source_variable_labels": [
-      "source-order winding terminal voltages",
-      "stable coil voltages"
-    ],
-    "target_variable_labels": [
-      "target-order winding terminal voltages",
-      "stable coil voltages"
-    ],
-    "source_unit_families": [
-      "current",
-      "voltage"
-    ],
-    "target_unit_families": [
-      "current",
-      "voltage"
-    ],
-    "source_boundary_labels": [
-      "winding terminal voltages",
-      "coil voltages"
-    ],
-    "target_boundary_labels": [
-      "winding terminal voltages",
-      "coil voltages"
-    ],
-    "state_domain_ids": [],
-    "unit_family_map": {
-      "A": [
-        "current"
-      ],
-      "V": [
-        "voltage"
-      ]
-    },
-    "unresolved_unit_labels": [],
-    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed"
-  }
+  "schema_version": "1.1.0"
 }

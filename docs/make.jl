@@ -68,7 +68,13 @@ const PDF_PATH = joinpath(@__DIR__, "latex_build", PDF_NAME)
 const GENERATED_PDF_PATH = joinpath(@__DIR__, "latex_build", GENERATED_PDF_NAME)
 # Prefer a working system Tectonic binary when supplied. This is useful on macOS
 # when the Julia artifact cache is incomplete or mismatched with the host runtime.
-const TECTONIC = get(ENV, "DOCUMENTER_TECTONIC", tectonic_jll.tectonic())
+# Prefer a working system Tectonic binary when supplied. On macOS the wrapper
+# patches Documenter's generated font style to use the installed DejaVu files
+# directly; this avoids a Fontconfig/XeTeX name-resolution failure while
+# retaining the bundled-artifact fallback on other platforms.
+const TECTONIC_REAL = get(ENV, "DOCUMENTER_TECTONIC", tectonic_jll.tectonic())
+const TECTONIC_WRAPPER = joinpath(@__DIR__, "..", "scripts", "tectonic-font-wrapper.sh")
+const TECTONIC = Sys.isapple() && isfile(TECTONIC_WRAPPER) ? TECTONIC_WRAPPER : TECTONIC_REAL
 
 # Documenter normally derives source links from the current Git commit. A freshly initialized
 # repository has no commit yet, so disable those links only until HEAD exists.
@@ -227,20 +233,22 @@ end
 
 function make_latex()
     build = function ()
-        makedocs(
-            sitename = SITENAME,
-            authors = AUTHORS,
-            format = Documenter.LaTeX(
-                platform = "tectonic",
-                version = VERSION,
-                tectonic = TECTONIC,
-            ),
-            build = joinpath(@__DIR__, "latex_build"),
-            plugins = [bibliography()],
-            remotes = REMOTES,
-            pages = PAGES_PDF,
-            warnonly = false,
-        )
+        withenv("MULTIGRAPH_TECTONIC_REAL" => TECTONIC_REAL) do
+            makedocs(
+                sitename = SITENAME,
+                authors = AUTHORS,
+                format = Documenter.LaTeX(
+                    platform = "tectonic",
+                    version = VERSION,
+                    tectonic = TECTONIC,
+                ),
+                build = joinpath(@__DIR__, "latex_build"),
+                plugins = [bibliography()],
+                remotes = REMOTES,
+                pages = PAGES_PDF,
+                warnonly = false,
+            )
+        end
     end
 
     # Documenter's LaTeX preamble uses DejaVu Sans. On macOS, Fontconfig may
