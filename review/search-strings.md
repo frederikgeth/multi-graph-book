@@ -50,6 +50,24 @@ AND
 (equivalen* OR behavio* OR recover* OR eliminat* OR normal-form OR closure)
 ```
 
+## Graph-model and formulation landscape
+
+```text
+("power network*" OR "power system*" OR "electrical network*" OR circuit*)
+AND
+(multigraph OR hypergraph OR "factor graph" OR "port graph" OR
+ "port-Hamiltonian" OR "bond graph" OR "node-breaker" OR "bus-branch" OR
+ "modified nodal" OR "sparse tableau" OR "branch-current")
+AND
+(representation OR formulation OR topology OR interconnection OR
+ equivalen* OR compil* OR transform*)
+```
+
+Use this family to separate mathematical formulation precedents from power
+system reduction papers. Code the source and target as equation/graph objects,
+record whether the result is behavioral or decision-preserving, and mark
+utility identity, phase/neutral, grounding, and provenance scope explicitly.
+
 ## Targeted method families
 
 Run separate narrower searches for:

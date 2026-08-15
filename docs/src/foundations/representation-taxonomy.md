@@ -88,6 +88,12 @@ nonzero structure. Their vertices may represent variables, equations, blocks, or
 than physical objects. They are indispensable for analysis and computation, but their edges do not
 automatically carry physical meaning.
 
+Equation-graph choice is coupled to formulation choice: nodal support, modified
+nodal, sparse tableau, branch-current, and port/factor targets can induce
+different variable and sparsity graphs from the same source model. The guarded
+formulation boundary is defined in [Circuit formulations and the lowering
+boundary](@ref circuit-formulations-and-lowering).
+
 The block- and scalar-support graphs of the compound nodal operator are
 defined once in [Two topology levels and the nodal projection](@ref two-level-topology-and-nodal-projection).
 This taxonomy records their role without introducing a competing support

@@ -1,12 +1,12 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:f470c1a106e5969004b59d3d6292a19ec1d3c2f0fbbe7833f1d4fd4fa14e8226 -->
+<!-- generated-from claims/claims.toml sha256:3010fe7f965e9b66016e51728e688eab270fbbb27486c7d73b0a6a2898a7588f -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 
-**Indexed claims:** 79
-**Indexed chapters:** 30
+**Indexed claims:** 81
+**Indexed chapters:** 31
 
 ## Claims by type
 
@@ -79,7 +79,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `ARCH-SURGERY-002` — The book proposes that an n-terminal surgery retain port-coordinate identity and return port-specific active and isolated sets; it cannot be inferred by replacing an n-port factor with implicit pairwise edges. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
 | `ARCH-VIEW-001` — The book proposes that a power-network visualisation declare its object level, preserved and forgotten semantics, identity fibres, and reverse-map status; single-line, multi-line, port-factor, node-breaker, nodal-support, and reduced views are distinct typed projections. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
 
-### `theorem` (30)
+### `theorem` (32)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -92,6 +92,8 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `ARCH-RECOVERY-004` — For noisy full-rank multiconductor voltage/current snapshots, the pseudoinverse source estimate has a deterministic Frobenius error bound proportional to the noise radius and the voltage-snapshot pseudoinverse norm; nearly dependent excitation therefore enlarges the certified uncertainty set even when the observation map is full rank. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `self-checked` |
 | `ARCH-SUPPORT-001` — Block and scalar nonzero-support graphs of a declared compound nodal operator are simple graphs by construction, while the identified factor-stamp decomposition is separate data and may be a multigraph. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `self-checked` |
 | `COLLAPSE-001` — Under compatible three-phase terminals, cyclic (circulant) series and shunt matrices, balanced boundary data, sequence-compatible grounding, two-terminal factor closure, phase-symmetric decisions, and positive-sequence observations, the general phase-domain relation restricts exactly to the positive-sequence scalar network. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `self-checked` |
+| `FORMULATION-NODAL-001` — An ideal voltage source with a queried source current is not representable by a plain nodal-admittance injection without adding an extra current variable or changing the query contract; a modified-nodal or tableau formulation preserves the voltage constraint and current observation. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `self-checked` |
+| `FORMULATION-NODAL-002` — Even when a nodal operator can be assembled, it may be singular without a declared reference or shunt, or semantically insufficient for member-level limits: aligned parallel factors can share one aggregate admittance while having different member currents and feasible limits. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `self-checked` |
 | `GRAPH-CYCLE-001` — The recorded connected five-bus bus--branch multigraph has seven identified lines, incidence rank four, and cycle-space dimension three; collapsing its parallel q/r pair to a simple edge reduces the cycle-space dimension to two, whereas the spanning-tree-plus-chords representation retains all three source dimensions. | [A five-bus multigraph: identities, cycles, and tree coordinates](../start/five-bus-cycle-spaces.md) | `self-checked` |
 | `LIT-PAR-001` — For fixed scalar AC pi-line models on common endpoints, a parallel member's current- or apparent-power limit at one terminal is redundant when its normalized terminal-voltage quadratic feasible set contains that of another member; applying the test at both terminals certifies removal of both directional limits without aggregating the line models. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `self-checked` |
 | `TR-COMP-001` — Two exact certified transformations compose when the first target is consumed by the second source; constraint maps apply forward and recovery maps apply in reverse order. | [Certificate schema and composition](../transformations/certificate-schema-and-composition.md) | `self-checked` |
@@ -119,7 +121,7 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | Verification | Claims |
 | --- | ---: |
 | `independently-implemented` | 4 |
-| `self-checked` | 75 |
+| `self-checked` | 77 |
 
 ## Unresolved issues
 
@@ -146,6 +148,8 @@ PDF route does not attempt to reproduce these indexes as a linear chapter sequen
 | `DATA-XWALK-001` | The running-fixture contract is checked against pinned documentation profiles; external package imports and file-level round-trip provenance/rating checks remain open. |
 | `FIXTURE-001` | Add an independent fixture reviewer. |
 | `FIXTURE-002` | Re-run with an independent solver where possible. |
+| `FORMULATION-NODAL-001` | Add independent review and extend the witness to controlled, dynamic, and multi-terminal power-network factors. |
+| `FORMULATION-NODAL-002` | Extend the failure-family witness to multiconductor, grounded, state-dependent, and nonlinear formulations with independent review. |
 | `GRAPH-CYCLE-001` | Lift the executable incidence and cycle objects to conductor-terminal graphs, state-conditioned topology decisions, and compiled multi-terminal factors. |
 | `GROUND-SCOPE-001` | Extend the explicit-earth witness to relay curves, CT saturation, richer maintenance decisions, and independent reproduction. |
 | `GROUND-SCOPE-002` | Extend the explicit-earth comparison to relay curves, CT saturation, richer maintenance decisions, and independent reproduction. |
@@ -286,7 +290,7 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `representation` (36)
+### `representation` (38)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -309,6 +313,8 @@ schema is normalised.
 | `COLLAPSE-001` — Under compatible three-phase terminals, cyclic (circulant) series and shunt matrices, balanced boundary data, sequence-compatible grounding, two-terminal factor closure, phase-symmetric decisions, and positive-sequence observations, the general phase-domain relation restricts exactly to the positive-sequence scalar network. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `theorem` |
 | `COLLAPSE-002` — The generated Fortescue witness diagonalizes a circulant three-phase impedance matrix and preserves the positive-sequence subspace, while a non-circulant perturbation produces sequence mixing and a positive-subspace residual. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `empirical` |
 | `DATA-XWALK-001` — CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER provide distinct partial correspondences to the book's asset, terminal, topology, factor, state, and rating objects; successful import is not by itself semantic or decision equivalence. | [Data-model crosswalk](../foundations/data-model-crosswalk.md) | `practice` |
+| `FORMULATION-NODAL-001` — An ideal voltage source with a queried source current is not representable by a plain nodal-admittance injection without adding an extra current variable or changing the query contract; a modified-nodal or tableau formulation preserves the voltage constraint and current observation. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `theorem` |
+| `FORMULATION-NODAL-002` — Even when a nodal operator can be assembled, it may be singular without a declared reference or shunt, or semantically insufficient for member-level limits: aligned parallel factors can share one aggregate admittance while having different member currents and feasible limits. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `theorem` |
 | `GROUND-SCOPE-001` — Reference, neutral, earth-return, and grounding-asset semantics are distinct model objects; reductions involving them must declare an earth-return class, grounding points, retained observations, and recovery data. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `definition` |
 | `GROUND-SCOPE-002` — On the recorded two-conductor fixture, floating, finite-impedance, and ideal customer-end grounding relations share the same simple bus--branch graph but change neutral voltage, ground-current allocation, and the associated observations. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `empirical` |
 | `GROUND-SCOPE-003` — In the scoped E₂ witness, an explicit earth conductor with a finite neutral-to-earth bond has distinct in-service, earth-conductor-outage, and phase-to-earth-fault states; the outage changes earth-current availability and the fault crosses the declared protection-current threshold while the simple bus graph remains fixed. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `empirical` |
@@ -413,6 +419,7 @@ schema is normalised.
 | `balanced-transmission-independent-reproduction.json` | `COLLAPSE-001` — generated evidence |
 | `balanced-transmission-witness.json` | `COLLAPSE-001` — generated evidence |
 | `certified-approximation-witness.json` | `TR-KRON-003` — kron_ward_scenario_fixture_v0.1.0 |
+| `circuit-formulation-witness.json` | `FORMULATION-NODAL-001` — ideal voltage source, floating linear network, and aligned parallel members with source-level current limits |
 | `clean-package-matrix.json` | `PKG-CLEAN-001` — generated evidence |
 | `compiled-views-surgery-witness.json` | `ARCH-VIEWS-SURGERY-001` — finite typed source graph with one three-port factor, duplicate ideal switches, four-wire phase-only switching, and one state-conditioned zone surgery |
 | `conductor-terminal-lift-witness.json` | `ARCH-CONDUCTOR-001` — running-network v0.1.0 conductor-terminal incidence with line, switch, and three-winding factor compilation |

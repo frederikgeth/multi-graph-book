@@ -115,16 +115,19 @@ selected result.
 
 ## 3. Lowering as a typed compilation boundary
 
-For a declared algorithm, use the following typed pipeline. Direct stamping is
-the default; ordinary-edge lowering is an optional branch only when the target
-algorithm requires it:
+For a declared algorithm, use the following typed pipeline. Direct factor
+stamping into a declared equation/constraint operator is the default; a nodal
+admittance target and ordinary-edge lowering are optional guarded branches.
+The formulation choices and exact-``\mathbf Y`` guards are developed in
+[Circuit formulations and the lowering boundary](@ref
+circuit-formulations-and-lowering).
 
 ```math
 \mathcal M
   \xrightarrow{\;C\;}
 \mathcal M_{\mathrm{port}}
   \xrightarrow{\;A\;}
-\mathbf Y,\mathbf J,\text{ or another numeric operator},
+\mathcal E=(\mathbf F,\mathbf g,\operatorname{obs},\operatorname{prov}),
 \qquad
 \mathcal M_{\mathrm{port}}
   \xrightarrow{\;L\;}
@@ -132,6 +135,11 @@ algorithm requires it:
   \xrightarrow{\;A_{\mathrm{edge}}\;}
 \text{target algorithm}.
 ```
+
+When the nodal guards hold, ``\mathcal E`` may additionally lower to a
+nodal operator ``(\mathbf Y^{\mathrm N},\mathbf J)``. Otherwise the faithful
+target may be MNA/tableau or a direct factor relation; the compiler must not
+invent a ``\mathbf Y`` merely because a downstream library expects one.
 
 ``C`` completes the canonical port--factor representation. ``L`` lowers a
 factor to the ordinary-edge or incidence objects expected by a graph

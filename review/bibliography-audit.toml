@@ -71,6 +71,34 @@ verified_on = "2026-08-13"
 note = "Official journal record confirms authors, title, volume, number, pages, and publication date."
 
 [[entry]]
+key = "HoRuehliBrennan1975"
+status = "verified"
+verification_source = "https://doi.org/10.1109/TCS.1975.1084079"
+verified_on = "2026-08-15"
+note = "IEEE DOI record confirms the modified nodal analysis article metadata and publication details."
+
+[[entry]]
+key = "HachtelBraytonGustavson1971"
+status = "verified"
+verification_source = "https://doi.org/10.1109/TCT.1971.1083223"
+verified_on = "2026-08-15"
+note = "IEEE DOI record confirms the sparse tableau article metadata and publication details."
+
+[[entry]]
+key = "ParkHolzerDeMarco2019"
+status = "verified"
+verification_source = "https://doi.org/10.1109/TPWRS.2018.2869705"
+verified_on = "2026-08-15"
+note = "IEEE DOI record and official PNNL publication page confirm the node-breaker sparse-tableau OPF article metadata."
+
+[[entry]]
+key = "Nanopass2005"
+status = "verified"
+verification_source = "https://doi.org/10.1017/S0956796805005605"
+verified_on = "2026-08-15"
+note = "Cambridge DOI record confirms the nanopass compiler-framework article metadata."
+
+[[entry]]
 key = "vanderSchaftMaschke2013"
 status = "verified"
 verification_source = "https://api.crossref.org/works/10.1137%2F110840091"

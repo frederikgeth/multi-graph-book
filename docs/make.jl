@@ -112,6 +112,7 @@ const PAGES_HTML = [
         "Representation taxonomy (reference card)" => "foundations/representation-taxonomy.md",
         "Maps between representation frameworks (reference card)" => "foundations/representation-maps.md",
         "Representation architecture (reference card)" => "foundations/representation-architecture.md",
+        "Circuit formulations and the lowering boundary" => "foundations/circuit-formulations-and-lowering.md",
     ],
     "Part I — Physical and computational reference" => [
         "Translation traps: graphs, circuits, and power-system language" => "foundations/translation-traps.md",
@@ -171,6 +172,7 @@ const PAGES_PDF = [
     ],
     "Core representation and transformation language" => [
         "Representation frameworks" => "foundations/formal-representation-frameworks.md",
+        "Circuit formulations and the lowering boundary" => "foundations/circuit-formulations-and-lowering.md",
         "Translation traps: graphs, circuits, and power-system language" => "foundations/translation-traps.md",
         "Two topology levels and the nodal projection" => "foundations/two-level-topology-and-nodal-projection.md",
         "Orientation, terminal quantities, and power transfer" => "foundations/orientation-terminal-power.md",

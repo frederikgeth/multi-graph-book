@@ -1,0 +1,126 @@
+{
+    "checks": {
+        "semantic_loss_is_diagnosed": true,
+        "member_limit_is_lost_by_aggregate_y": true,
+        "aggregate_y_preserves_terminal_relation": true,
+        "same_voltage_can_have_different_source_current": true,
+        "mna_residuals_are_zero": true,
+        "tableau_or_mna_target_available": true,
+        "plain_nodal_y_lowering_is_rejected": true,
+        "source_current_is_an_extra_unknown": true,
+        "floating_nodal_operator_is_singular": true,
+        "floating_singularity_is_diagnosed": true,
+        "source_relation_is_voltage_constraint": true,
+        "ordinary_y_injection_would_be_single_valued": true,
+        "source_provenance_is_retained": true
+    },
+    "all_checks_pass": true,
+    "source_factor": {
+        "factor_id": "vs_1",
+        "factor_type": "ideal_voltage_source",
+        "relation": "v_p - v_ref = E",
+        "ports": [
+            "p",
+            "ref"
+        ],
+        "current_variable": "i_vs"
+    },
+    "model_scope": "ideal voltage source, floating linear network, and aligned parallel members with source-level current limits",
+    "observations": {
+        "source_currents": [
+            -1,
+            1
+        ],
+        "node_voltages": [
+            1,
+            1
+        ],
+        "injections": [
+            0,
+            2
+        ]
+    },
+    "claim_ids": [
+        "FORMULATION-NODAL-001",
+        "FORMULATION-NODAL-002"
+    ],
+    "witness_id": "FORMULATION-NODAL-001",
+    "mna_target": {
+        "variables": [
+            "v_p",
+            "i_vs"
+        ],
+        "right_hand_sides": [
+            [
+                0,
+                1
+            ],
+            [
+                2,
+                1
+            ]
+        ],
+        "matrix": [
+            1,
+            1,
+            1,
+            0
+        ],
+        "solutions": [
+            [
+                1,
+                -1
+            ],
+            [
+                1,
+                1
+            ]
+        ]
+    },
+    "evidence_type": "minimal_formulation_failure_family_witness",
+    "lowering": {
+        "direct_target": "MNA/tableau equation and constraint operator",
+        "diagnostic": "nodal_admittance_target_requires_voltage_source_current_variable",
+        "plain_nodal_y_target": "unavailable_without_extra_variable_or_changed_query",
+        "omitted_semantics_if_forced": [
+            "voltage_constraint",
+            "source_current",
+            "branch_limit_attachment"
+        ]
+    },
+    "interpretation": "An ideal voltage source is naturally represented by a voltage constraint and an extra branch-current unknown. A plain nodal-admittance injection is single-valued in node voltage and therefore cannot preserve the source relation and current observations without changing the target contract.",
+    "source": "experiments/transformations/CircuitFormulationWitness.jl",
+    "failure_cases": {
+        "semantically_lossy_parallel_aggregation": {
+            "member_admittances": [
+                1,
+                3
+            ],
+            "diagnostic": "aggregate_y_forgets_member_current_limits",
+            "member_currents_at_drop": [
+                1,
+                3
+            ],
+            "aggregate_admittance": 4,
+            "member_limits": [
+                2,
+                2
+            ]
+        },
+        "singular_floating_network": {
+            "rank": 1,
+            "diagnostic": "nodal_operator_singular_without_reference_or_shunt",
+            "operator": [
+                1,
+                -1,
+                -1,
+                1
+            ],
+            "dimension": 2
+        },
+        "unavailable_voltage_source": {
+            "diagnostic": "nodal_admittance_target_requires_extra_current_variable",
+            "target": "MNA/tableau"
+        }
+    }
+}

@@ -82,6 +82,12 @@ the resolution is logged; it is never silently changed.
 The canonical row store is [evidence-matrix.csv](evidence-matrix.csv). Each row
 describes one result at one declared scope; a paper may therefore occupy several
 rows. Controlled fields and allowed values are defined by the JSON schema.
+The operational field rules and second-coder procedure are in
+[coding-guide.md](coding-guide.md), while DOI/title duplicate decisions are
+recorded in [deduplication-register.csv](deduplication-register.csv).
+The current seed snapshot is recorded in [snapshot-manifest.json](snapshot-manifest.json)
+and checked by `scripts/check_review_snapshot.py`; the manifest deliberately
+states that independent double-coding has not yet occurred.
 
 Critical coding dimensions are:
 

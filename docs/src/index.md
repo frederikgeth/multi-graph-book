@@ -57,6 +57,10 @@ to the same preservation-contract and evidence language.
 - **How did this graph get made?** Read [From source data to a canonical
   network model](@ref source-to-canonical-model), then [From conductor geometry
   to impedance fidelity](@ref impedance-fidelity-ladder).
+- **Why is a Y-bus not always enough?** Read [Circuit formulations and the
+  lowering boundary](@ref circuit-formulations-and-lowering), then [Two
+  topology levels and the nodal projection](@ref
+  two-level-topology-and-nodal-projection).
 - **Why can the same graph produce different decisions?** Read [Load models and
   decision dependence](@ref load-models-and-decision-dependence), followed by
   the parallel-line decision cases.

@@ -1,6 +1,6 @@
-# Literature map
+# [Literature map](@id literature-map)
 
-**Page status:** research record; coverage is provisional and not an exhaustive systematic review. The current evidence matrix contains four single-coded seed records.
+**Page status:** research record; coverage is provisional and not an exhaustive systematic review. The current evidence matrix contains ten single-coded seed records spanning reductions, topology processing, and formulation/framework precedents.
 
 The relevant work is substantial but fragmented across communities. No single
 literature currently supplies the full combination of typed physical assets,
@@ -9,6 +9,37 @@ decision-constraint preservation, provenance, and executable normalization
 rules.
 
 ## Circuit and graph theory
+
+### A landscape of graph models
+
+The literature does not converge on one graph class because different models
+answer different questions. Simple undirected graphs support connectivity,
+cuts, and generic algorithms; identified multigraphs retain parallel-member
+identity; oriented incidence graphs supply sign conventions for conservation
+equations; and hypergraph or factor representations retain relations whose
+arity exceeds two. Port-based and compositional circuit work gives a rigorous
+language for multi-terminal behaviour [BaezFong2018](@cite), while
+port-Hamiltonian graph models emphasize interconnection, energy, and passivity
+[vanderSchaftMaschke2013](@cite). Typed graph-transformation theory adds
+matching, negative conditions, and rewrite composition [Ehrig2006](@cite).
+
+Power-system information models add a different axis: equipment, terminals,
+connectivity nodes, topological nodes, ownership, protection, and provenance.
+CIM/CGMES and engineering compilers such as PowerModelsDistribution therefore
+provide typed data and state-processing views rather than a single electrical
+graph [CIMTopologicalNode, CGMESLibrary, PMDEngineering, PMDConversion](@cite).
+Equation and sparsity graphs then project a chosen formulation onto variables,
+constraints, or nonzero blocks. These models are alternatives or companions,
+not successive rungs of one universal refinement ladder.
+
+The book selects a linked asset/dependency model and hierarchical port--factor
+electrical model as its source pair because they jointly retain the identities,
+terminal structure, behavioural relations, limits, states, and provenance
+needed by the declared multiconductor decision problems. Simple graphs,
+oriented multigraphs, nodal-support graphs, and tableau/MNA systems remain
+important derived views or formulation targets. This is a scoped canonicality
+claim—canonical for the book's source contract—not a claim that these are the
+only valid graph models or that the literature has a unique standard.
 
 Kron reduction gives the foundational boundary-variable elimination through a
 Schur complement. Dörfler and Bullo analyze the resulting topology, algebra,
@@ -54,6 +85,34 @@ winding, and connection maps for general multiphase transformers
 view. They do not make the inverse decomposition unique: asset identity,
 limits, states, and primitive lineage still have to be retained outside the
 assembled nodal operator.
+
+### Circuit formulations beyond nodal admittance
+
+The circuit literature supplies several established equation targets rather
+than one universally correct matrix. Classical nodal analysis is compact when
+each retained element contributes a voltage-to-current relation. Modified
+nodal analysis augments node voltages with selected branch currents, making
+ideal voltage sources and current-controlled elements explicit
+[HoRuehliBrennan1975](@cite). Sparse tableau formulations retain branch- and
+device-level variables and equations, with sparsity and elimination treated as
+separate design choices [HachtelBraytonGustavson1971](@cite).
+
+This distinction is directly relevant to power-network models. Sparse-tableau
+OPF and node--breaker work keeps multi-port elements, breaker actions, and
+member-level constraints in the formulation instead of rebuilding a different
+fixed ``Y_{\mathrm{bus}}`` matrix for every state [ParkHolzerDeMarco2019](@cite).
+The lesson is not that tableau is always preferable: it is that a nodal
+admittance target is a guarded lowering for a declared variable set and query
+family, not a universal representation of a power network.
+
+The book therefore treats nodal support, MNA/tableau systems, branch-current
+models, hybrid port parameters, and general port--factor relations as related
+but non-identical formulation families. A formulation may be equivalent after
+regular elimination for one boundary-voltage observation while failing to
+preserve switching decisions, asset identity, grounding paths, current limits,
+or multi-terminal behaviour. The new [circuit formulations and lowering
+boundary](@ref circuit-formulations-and-lowering) chapter records these guards
+as part of the representation choice rather than as an implementation detail.
 
 ## Power-system network reduction
 
@@ -154,10 +213,11 @@ with a reproducible search protocol and coded evidence matrix.
 
 ## Current evidence-matrix snapshot
 
-The versioned matrix in `review/evidence-matrix.csv` currently contains four
+The versioned matrix in `review/evidence-matrix.csv` currently contains ten
 included, single-coded records. They cover parallel-line constraint pruning,
 graph-aware Kron/power-flow reductions, structure-preserving radial feeder
-reduction, and CGMES topology processing. The rows intentionally preserve
+reduction, CGMES topology processing, and circuit/graph formulation
+precedents. The rows intentionally preserve
 different exactness labels and limitations; they are not merged into a single
 claim about “network reduction.”
 

@@ -149,6 +149,10 @@ not attempt to reproduce the knowledge-base indexes as a linear chapter sequence
 23. **Circuit formulations and the lowering boundary**
    - Nodal admittance, modified/sparse tableau, branch-current, hybrid,
      port/factor, and constraint formulations.
+   - Nodal admittance as a powerful representation for an important class of
+     reduced linear networks, but not a universal representation of general
+     *power networks* when identity, switching, controls, limits, grounding,
+     multi-terminal behaviour, or decisions matter.
    - Exact nodal-stamping conditions, singular or unavailable ``Y`` cases,
      direct factor stamping, and provenance-aware compiler targets.
 24. **When the general model collapses**

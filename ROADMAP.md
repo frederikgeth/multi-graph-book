@@ -1013,37 +1013,51 @@ next tranche will distinguish literature context from the book's adopted
 formalism, and will make the lowering boundary honest about cases where an
 exact nodal-admittance operator does not exist or is not the right target.
 
-- [ ] add a reader-facing representation-landscape section (or chapter) that
+- [x] add a reader-facing representation-landscape section (or chapter) that
   surveys simple, multi-, directed/oriented, hypergraph, incidence/factor,
   port-Hamiltonian/bond-graph, asset/dependency, equation, sparsity, and
   tableau/MNA families;
-- [ ] classify each family as selected source, derived view, equivalent
+- [x] classify each family as selected source, derived view, equivalent
   alternative, scope-specific collapse, or orthogonal companion, with a
   preservation/omission matrix and explicit canonicality status;
-- [ ] justify the book's chosen source pair as sufficiently canonical for the
+- [x] justify the book's chosen source pair as sufficiently canonical for the
   stated multiconductor, multi-terminal, and decision-problem scope without
   claiming universal uniqueness or community-wide standardisation;
-- [ ] expand the literature map with primary references, a reproducible search
-  protocol, and a coded evidence matrix for graph-model and circuit-formulation
-  precedents (not only network-reduction papers);
-- [ ] add a circuit-formulation chapter covering nodal admittance, modified or
-  sparse tableau, branch-current, hybrid, and general port/factor relations,
-  including the conditions under which exact nodal stamping is unavailable,
-  singular, or semantically lossy;
-- [ ] revise the compiled-view lowering contract so its numeric target is a
+- [x] expand the literature map with primary references, a dated seed search
+  protocol, and coded evidence-matrix rows for graph-model and
+  circuit-formulation precedents (not only network-reduction papers);
+- [x] add an operational coding guide, DOI/title deduplication register, and
+  citation-chasing records for official information-model and software sources;
+- [x] add a hash-checked review snapshot manifest that joins matrix rows to
+  deduplication records and explicitly records the single-coded status;
+- [ ] execute database exports, deduplicate and citation-chase the seed set,
+  and obtain independent double-coding before calling the literature review
+  systematic;
+- [x] add a circuit-formulation chapter covering nodal admittance, modified or
+  sparse tableau, branch-current, hybrid, and general port/factor relations.
+  State precisely that nodal admittance is powerful for an important class of
+  reduced linear networks, but is not a universal representation of general
+  *power networks*: asset identity, switching, controls, limits, grounding,
+  multi-terminal behaviour, and decision semantics may be absent even when a
+  numerical ``\mathbf Y`` can be assembled;
+- [x] document the conditions under which exact nodal stamping is unavailable,
+  singular, or semantically lossy, and when a tableau/factor target is the
+  faithful lowering result;
+- [x] revise the compiled-view lowering contract so its numeric target is a
   general declared equation/constraint operator, with nodal admittance as an
   optional target guarded by formulation and device assumptions;
-- [ ] add a minimal witness with a general circuit element that is representable
+- [x] add a minimal witness with a general circuit element that is representable
   in tableau/factor form but not as an exact ordinary nodal-admittance graph,
   and record the resulting lowering diagnostic and provenance boundary;
-- [ ] cross-link the landscape, formal-framework, two-level-topology,
+- [x] cross-link the landscape, formal-framework, two-level-topology,
   compiled-view, numerical-consequences, and positive-sequence chapters, then
   update the reader routes and chapter-status index.
 
 **Exit criterion:** a reader can see which graph/circuit frameworks exist, why
 the book selects its source pair, what collapses for the declared scope, and
 why the lowering pipeline may terminate in a tableau or factor operator rather
-than an exact ``\mathbf Y`` matrix.
+than an exact ``\mathbf Y`` matrix, even when some reduced numerical nodal
+equation could be formed.
 
 ### M4 — External validation and dissemination
 

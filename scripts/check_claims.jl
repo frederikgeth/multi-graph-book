@@ -11,7 +11,7 @@ const REQUIRED = Set([
 const STATUSES = Set([
     "definition", "established_result", "empirical_result",
     "engineering_practice", "interpretation", "proposal",
-    "conjecture", "open_question",
+    "proposed_result", "conjecture", "open_question",
 ])
 const CLAIM_TYPES = Set([
     "definition", "theorem", "empirical", "practice", "proposal", "open",

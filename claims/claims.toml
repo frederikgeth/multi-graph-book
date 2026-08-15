@@ -181,6 +181,36 @@ review_date = ""
 unresolved_issue = "Specify utility-data remediation policies for duplicate or indistinguishable switch assets."
 
 [[claim]]
+claim_id = "FORMULATION-NODAL-001"
+chapter = "docs/src/foundations/circuit-formulations-and-lowering.md"
+claim_text = "An ideal voltage source with a queried source current is not representable by a plain nodal-admittance injection without adding an extra current variable or changing the query contract; a modified-nodal or tableau formulation preserves the voltage constraint and current observation."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "minimal_mna_vs_nodal_admittance_witness"
+citation_keys = ["HoRuehliBrennan1975", "HachtelBraytonGustavson1971", "ParkHolzerDeMarco2019"]
+model_scope = "one grounded ideal voltage source feeding one linear shunt with two source-current observations"
+assumptions = "plain nodal admittance means a single-valued current injection function of retained node voltages; the source voltage is fixed while source current varies with external injection"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add independent review and extend the witness to controlled, dynamic, and multi-terminal power-network factors."
+
+[[claim]]
+claim_id = "FORMULATION-NODAL-002"
+chapter = "docs/src/foundations/circuit-formulations-and-lowering.md"
+claim_text = "Even when a nodal operator can be assembled, it may be singular without a declared reference or shunt, or semantically insufficient for member-level limits: aligned parallel factors can share one aggregate admittance while having different member currents and feasible limits."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "minimal_singularity_and_parallel_semantic_loss_witness"
+citation_keys = ["KettnerPaolone2019", "Molzahn2018"]
+model_scope = "two-node floating linear network and two aligned scalar parallel members with distinct current limits"
+assumptions = "nodal support retains only the assembled operator; member identities and current limits are not included in the target"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the failure-family witness to multiconductor, grounded, state-dependent, and nonlinear formulations with independent review."
+
+[[claim]]
 claim_id = "ARCH-CHORDAL-001"
 chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"
 claim_text = "For a simple bus-level tree with a common m-coordinate block at every bus and a structurally dense two-terminal stamp on every tree edge, the scalar structural-support graph is chordal and leaf-bus block elimination is a zero-fill perfect elimination ordering."

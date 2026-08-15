@@ -37,6 +37,13 @@ linked to—but not nested inside—the electrical port--factor model.
 Here *canonical* means the selected source formalism for this book. It does not
 mean that adequacy or uniqueness has already been established.
 
+The wider literature contains other valid graph and equation families. Their
+selection and relationship to these rows is surveyed in the [literature map](@ref
+literature-map) and the [circuit formulations and lowering boundary](@ref
+circuit-formulations-and-lowering). The definitions below are therefore the
+book's scoped source/view contract, not a claim that every power-network study
+should use the same formalism.
+
 ## Simple topology graph
 
 **Definition.** A loopless undirected simple topology graph is a pair

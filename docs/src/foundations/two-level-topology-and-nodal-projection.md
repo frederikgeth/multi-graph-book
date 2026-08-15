@@ -24,6 +24,15 @@ derived computational view. The asset/dependency model remains an orthogonal
 companion to both: ownership, protection, common-mode failure, and maintenance
 are not entries of a nodal admittance matrix.
 
+The same boundary applies to formulation choice. A compound ``\mathbf
+Y^{\mathrm N}`` is an exact target for a declared class of fixed linear factors,
+but it is not a universal representation of a power network. General
+power-network studies may need modified nodal or sparse-tableau variables,
+branch currents, multi-terminal factor relations, switch states, controls, and
+limits that are not recoverable from nodal support alone. See [Circuit
+formulations and the lowering boundary](@ref circuit-formulations-and-lowering)
+for the guarded compilation alternatives.
+
 ![Two source topology levels and their many-to-one nodal-admittance projection.](../assets/topology-projection-layers.png)
 
 The figure uses parallel lines because they expose the loss immediately. Both
