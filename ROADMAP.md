@@ -21,33 +21,38 @@ archival record. The HTML-first knowledge base, curated PDF route, claims
 ledger, generated indexes, running fixture, graph-invariant witnesses,
 multiconductor parallel cases, transformer compilers, positive-sequence
 collapse witness, certified-approximation chain, and argument-diagram
-portfolio are implemented and locally validated. The remaining work is
-optional external validation and broader research scope, not a prerequisite
-for using the knowledge base.
+portfolio are implemented and locally validated. A 2026-08-15 automated
+independent re-derivation has nevertheless found one blocking mathematical
+issue in the series-elimination claim, plus blocking record/certificate repairs
+for typed Kron reduction and transformer winding normalization. These repairs
+are now publication gates; broader human validation and research scope remain
+follow-on work.
 The historical dispositions are archived in
 [`review/archive/`](review/archive/).
 
 The checklists below preserve the scientific record of that pass. They are not
-the active task queue. The active queue is the four milestones at the end of
-this file, ordered by dependency:
+the active task queue. The active queue is the review-repair tranche followed
+by the four milestones at the end of this file, ordered by dependency:
 
-1. integrity and reproducibility release;
-2. certified reduction and approximation evidence;
-3. graph architecture, route structure, and argument diagrams;
-4. external validation and dissemination.
+1. reconcile the 2026-08-15 technical, formulation-chapter, and literature-coding reviews;
+2. integrity and reproducibility release;
+3. certified reduction and approximation evidence;
+4. graph architecture, route structure, and argument diagrams;
+5. external validation and dissemination.
 
-The first two milestones are the publication gate for stronger decision-case
-claims. General formalization, broad adapters, and paper extraction remain
-deliberate follow-on work rather than prerequisites for the knowledge base.
+The review-repair, integrity, and certified-evidence milestones are the
+publication gate for stronger decision-case claims. General formalization,
+broad adapters, and paper extraction remain deliberate follow-on work rather
+than prerequisites for the knowledge base.
 
-**Latest verification (2026-08-14):** the aggregate experiment suite passes
-through the standalone `GraphModelsForPowerNetworks` package boundary using the
-isolated-plus-user Julia depot configuration. The evidence-matrix, artifact,
-claim-mention, controlled-callout, figure, and whitespace audits also pass.
-The remaining release gates are substantive rather than local-test failures:
-independent review of the four highest-risk theorem claims, evidence-matrix
-double-coding, the scoped global nonlinear-bound extensions, and external
-package/API publication.
+**Latest verification (2026-08-15):** all five commands in the independent
+review packet pass under Julia 1.12.6 in a clean invocation, and the aggregate
+experiment suite and documentation audits remain green. Passing tests do not
+close the new semantic findings: the automated reviewer independently
+re-derived the four high-risk results and exposed assumptions and certificate
+content that the current implementations cannot fully express or test. The
+evidence-matrix second-coding pass likewise remains an automated audit, not
+independent human double-coding.
 
 The BMOPFTools documentation review has added a focused editorial tranche:
 source-to-canonical semantic projection and validation gates, constitutive load
@@ -1058,6 +1063,115 @@ the book selects its source pair, what collapses for the declared scope, and
 why the lowering pipeline may terminate in a tableau or factor operator rather
 than an exact ``\mathbf Y`` matrix, even when some reduced numerical nodal
 equation could be formed.
+
+### Urgent review-repair tranche — 2026-08-15
+
+This tranche reconciles three distinct review streams without conflating their
+status:
+
+1. the expert review of the circuit-formulation and lowering chapter;
+2. the automated independent technical review in
+   [`review/independent-technical-review-2026-08-15.md`](review/independent-technical-review-2026-08-15.md);
+3. the automated literature second-coding log in
+   [`review/second-coding-2026-08-15.md`](review/second-coding-2026-08-15.md),
+   whose working snapshot is
+   [`review/snapshots/evidence-matrix-second-coding-2026-08-15.csv`](review/snapshots/evidence-matrix-second-coding-2026-08-15.csv).
+
+Both automated passes are valuable reproducible audits, but neither is human
+peer review. They must not populate metadata in a way that implies external
+human validation. The second-coder snapshot remains non-canonical until each
+conflict below is resolved and recorded.
+
+#### A. Circuit-formulation and lowering chapter
+
+- [ ] add explicit MNA/tableau structural-solvability diagnostics for ideal
+  voltage-source loops and ideal current-source cutsets, distinguishing
+  redundant consistent constraints from contradictory constraints; do not
+  make a general DAE-index claim without a precise supporting source;
+- [ ] add the nodal-admittance rank/nonsingularity guard, with the relevant
+  Kettner--Paolone result, and state that merely declaring grounding or a
+  reference does not by itself establish the required rank;
+- [ ] merge overlapping nodal-admittance guards, define the current sign
+  convention and MNA right-hand-side terms, and state explicitly that
+  ``\Phi_{\mathrm{lin}}`` excludes decision-carrying factors;
+- [ ] add chain/ABCD formulations, separate branch-current formulations from
+  branch-flow/BFM formulations, and note scattering variables as a possible
+  remedy when a chosen hybrid partition is singular;
+- [ ] define equivalence between formulations relative to a declared
+  observation family ``H`` and its preservation contract, rather than treating
+  algebraic interconvertibility as semantic equivalence;
+- [ ] make the circuit-formulation chapter authoritative for assembly
+  identities and formulation guards, while the two-level-topology chapter owns
+  topology, support, projection, and non-identifiability;
+- [ ] compress the duplicated parallel-line witness and cross-reference its
+  authoritative claim/case, register the lowering architecture as a proposal
+  claim, and add the formulation-lattice argument figure.
+
+#### B. High-risk technical claims and certificates
+
+- [ ] **Hold `TR-SER-001` as blocking.** State that both factors must be
+  series-only and that there is no mutual coupling either with other elements
+  or between the two eliminated sections. For cross-coupled sections, document
+  the exact composite
+  ``Z_1 + Z_{12}P + P^{\mathsf T}Z_{21} + P^{\mathsf T}Z_2P`` rather than
+  ``Z_1 + P^{\mathsf T}Z_2P``;
+- [ ] redesign the series-elimination data contract so mutual coupling is an
+  element-pair property that the guard can inspect, not junction free text;
+  add a negative executable witness reproducing the reported 11.65% relative
+  error before releasing the hold;
+- [ ] revise `TR-KRON-001` to separate the mathematical requirement that the
+  coordinate action respect the retained/internal partition from the stronger
+  modelling choice of per-port block diagonality; add the load-bearing
+  assumption that internal current injections are fixed data independent of
+  internal voltage, plus a voltage-dependent-injection counterexample;
+- [ ] sharpen the Kron reciprocity discussion by separating physical Kron
+  reduction from complex power-dual coordinate action, and record numerical
+  conditioning in the witnesses;
+- [ ] repair the `TR-XFMR-001` certificate with the terminal-current dual map
+  ``\widehat i=Pi``, terminal- versus coil-indexed limit semantics, and a
+  complex-power-invariance check; remove the unfalsifiable
+  `all_declared_source_semantics` entry and populate `evidence.checks` from the
+  executable assertions;
+- [ ] record `TR-PAR-004` as mathematically reproduced by the automated audit,
+  while adding the high-voltage-branch/local-solve caveat and the exact-
+  proportionality scope of the pruning result; do not label it human-reviewed;
+- [ ] refresh the independent-review packet: `running_network_typed_kron` is
+  13/13 rather than 7/7, and its scope note must acknowledge the existing
+  neutral-shunt witness.
+
+#### C. Evidence-matrix reconciliation and coverage
+
+- [ ] resolve the six substantive coding conflicts against the non-canonical
+  snapshot before changing `coding_status`: split or recode `EV-0002`, use
+  `scenario_approximate` for `EV-0003`, treat `EV-0008` as behavioural
+  reduction, treat `EV-0009` as a representation definition rather than an
+  exact compilation, reconsider `EV-0010`, and split or qualify `EV-0013`;
+- [ ] repair the `provenance_map` slot errors in `EV-0007`, `EV-0010`, and
+  `EV-0012`, moving limitation prose to `limitations`, and soften the
+  over-reading of MNA multi-terminal scope in `EV-0005`;
+- [ ] add a controlled `exactness_object` field to the schema, coding guide,
+  validator, and canonical matrix so equation identity, connectivity quotient,
+  boundary behaviour, feasible-set preservation, and observation-sample
+  agreement are not aggregated as though they were the same object;
+- [ ] expand the evidence matrix beyond the current 14/35 bibliography seed
+  coverage, prioritising classical Kron/Ward equivalencing and
+  `DorflerBullo2013`, `Jang2013`, `CurtisMorrow2000`, and
+  `KettnerPaolone2019`, then the Gan--Low formulation records and practical
+  feeder/transmission reductions;
+- [ ] exercise the screening protocol with genuine `exclude` or `uncertain`
+  records and record corpus-flow counts before making any PRISMA-style claim;
+- [ ] resolve the reviewer/date consistency rule, and distinguish automated
+  agreement, human double-coding, and external technical review explicitly in
+  the metadata rather than promoting the eight agreement candidates directly;
+- [ ] record that the CGMES and PowSyBl rows describe the same underlying
+  connectivity-node-to-topological-node transformation without treating the
+  sources as duplicates, then regenerate and validate the canonical snapshot.
+
+**Exit criterion:** no blocking claim is labelled established while a required
+assumption is absent or unrepresentable; the transformer and Kron certificates
+state their complete typed maps; the formulation chapter has symmetric
+solvability and equivalence guards; and all evidence-matrix conflicts are
+resolved without presenting automated audits as human review.
 
 ### M4 — External validation and dissemination
 
