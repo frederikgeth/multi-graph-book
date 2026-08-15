@@ -28,6 +28,18 @@ label refers to. This prevents an equation identity, a boundary-behaviour
 black box, a connectivity quotient, and a feasible-set statement from being
 counted as the same kind of exact result.
 
-The current 14-row matrix has no `exclude` or `uncertain` rows, so it still
-does not support a PRISMA-style screening flow. The bibliography-coverage and
-genuine second-coder tasks remain open.
+The current matrix has no `exclude` or `uncertain` rows, so it still does not
+support a PRISMA-style screening flow. The genuine second-coder task remains
+open.
+
+## Coverage expansion
+
+The canonical matrix now includes seven priority records from the verified
+bibliography seed: the classical Ward family (`EV-0015`--`EV-0017`), exact
+scalar Kron reduction (`EV-0018`), line-limit-preserving equivalencing
+(`EV-0019`), recoverability (`EV-0020`), and compound polyphase nodal
+assembly (`EV-0021`). These are deliberately coded at their documented scope;
+they do not turn external equivalencing into a universal decision-preserving
+transformation, or a compound nodal matrix into an invertible asset model.
+Their deduplication entries and snapshot checksum were refreshed together with
+the matrix.

@@ -5,6 +5,16 @@ multiconductor evidence; independent mathematical review remains open.
 
 ## The tempting replacement
 
+Here is the decision-level version of the same trap. Two models can have the
+same assembled nodal admittance and still answer a dispatch question
+differently:
+
+![Same nodal admittance, different dispatch because member limits were lost.](../assets/start-here-same-ybus.png)
+
+The resolving phrase is **which observations and constraints?** The equality
+of the unconstrained terminal map is real; it simply does not include member
+ratings, outage states, or independent controls.
+
 Consider two scalar resistive branches ``\ell_1 i j`` and ``\ell_2 i j`` with
 intrinsic impedances
 

@@ -149,6 +149,16 @@ semidefiniteness of the symmetric matrix
 componentwise nonnegative-arm rule. The executable tests include a valid
 negative-arm case and a nearby non-PSD rejection.
 
+The reader-facing witness makes the distinction concrete: three positive
+pairwise tests ``(1.0,1.0,3.0)\ \Omega`` compile to a star with
+``\operatorname{Im}(z_1)=-0.5\ \Omega`` and
+``\lambda(\operatorname{Im}(Z_B))=(0.5,1.5)``. The negative entry is a
+coordinate result, not a negative physical test. The generated evidence is
+`negative_star_arm_witness` in
+`experiments/generated/multiwinding-leakage-compilation-certificate.json`.
+
+![A negative star-arm reactance can be a valid coordinate representation.](../assets/start-here-negative-star-arm.png)
+
 ## Running transformer
 
 For fixture transformer ``x_1``, all three referred winding resistances are

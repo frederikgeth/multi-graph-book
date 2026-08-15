@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">
+<title>The running network: one layout to reuse</title>
+<desc>Stable source identities stay visible while later figures change the question or the view.</desc>
+<rect width="100%" height="100%" fill="white"/>
+
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}
+.title{font-size:28px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}
+.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}
+.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.tiny{font-size:13px;fill:#5f6b76}
+.bus{fill:#d9eef8;stroke:#245b7a;stroke-width:3}.bus2{fill:#e4f4e7;stroke:#477a55;stroke-width:3}
+.wire{stroke:#3d78b5;stroke-width:5}.wire2{stroke:#7856a8;stroke-width:4}
+.ground{stroke:#477a55;stroke-width:4}.accent{stroke:#8a4f13;stroke-width:4}
+.dashed{stroke:#8a3232;stroke-width:3;stroke-dasharray:9 7}.card{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}
+.bad{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.good{fill:#e4f4e7;stroke:#477a55;stroke-width:2}
+.matrix{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.matrix2{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}
+</style>
+
+<text x="35" y="40" class="title" text-anchor="start">The running network: one layout to reuse</text>
+<text x="35" y="68" class="sub" text-anchor="start">Stable source identities stay visible while later figures change the question or the view.</text>
+<rect x="35" y="100" width="1330" height="500" rx="12" class="panel"/>
+<text x="65" y="140" class="head" text-anchor="start">reference physical layout</text>
+<line x1="150" y1="330" x2="370" y2="330" class="wire2"/>
+<line x1="370" y1="315" x2="610" y2="315" class="wire"/>
+<line x1="370" y1="345" x2="610" y2="345" class="wire"/>
+<line x1="610" y1="330" x2="850" y2="330" class="wire"/>
+<line x1="850" y1="330" x2="1080" y2="330" class="wire"/>
+<line x1="750" y1="435" x2="370" y2="330" class="accent"/>
+<line x1="750" y1="435" x2="700" y2="505" class="accent"/>
+<line x1="750" y1="435" x2="930" y2="505" class="accent"/>
+<circle cx="150" cy="330" r="32" class="bus"/><text x="150" y="336" class="head" text-anchor="middle">i0</text>
+<circle cx="370" cy="330" r="32" class="bus"/><text x="370" y="336" class="head" text-anchor="middle">i1</text>
+<circle cx="610" cy="330" r="32" class="bus"/><text x="610" y="336" class="head" text-anchor="middle">i2</text>
+<circle cx="850" cy="330" r="32" class="bus"/><text x="850" y="336" class="head" text-anchor="middle">i3</text>
+<circle cx="1080" cy="330" r="32" class="bus"/><text x="1080" y="336" class="head" text-anchor="middle">i4</text>
+<circle cx="700" cy="505" r="32" class="bus"/><text x="700" y="511" class="head" text-anchor="middle">i5</text>
+<circle cx="930" cy="505" r="32" class="bus"/><text x="930" y="511" class="head" text-anchor="middle">i6</text>
+<rect x="232" y="297" width="56" height="36" rx="8" class="card"/>
+<text x="260" y="320" class="tiny" text-anchor="middle">w0</text>
+<rect x="462" y="277" width="56" height="36" rx="8" class="matrix"/>
+<text x="490" y="300" class="tiny" text-anchor="middle">l1</text>
+<rect x="462" y="347" width="56" height="36" rx="8" class="matrix"/>
+<text x="490" y="370" class="tiny" text-anchor="middle">l2</text>
+<rect x="702" y="282" width="56" height="36" rx="8" class="matrix"/>
+<text x="730" y="305" class="tiny" text-anchor="middle">l3</text>
+<rect x="937" y="282" width="56" height="36" rx="8" class="matrix2"/>
+<text x="965" y="305" class="tiny" text-anchor="middle">l4</text>
+<rect x="722" y="417" width="56" height="36" rx="8" class="card"/>
+<text x="750" y="440" class="tiny" text-anchor="middle">x1</text>
+<rect x="672" y="557" width="56" height="36" rx="8" class="good"/>
+<text x="700" y="580" class="tiny" text-anchor="middle">d3</text>
+<rect x="902" y="557" width="56" height="36" rx="8" class="good"/>
+<text x="930" y="580" class="tiny" text-anchor="middle">g1</text>
+<text x="110" y="665" class="body" text-anchor="start">parallel members ℓ₁, ℓ₂</text>
+<text x="410" y="665" class="body" text-anchor="start">coupled line ℓ₃</text>
+<text x="735" y="665" class="body" text-anchor="start">three-winding factor x₁</text>
+<text x="1080" y="665" class="body" text-anchor="end">phase-mapped lateral ℓ₄</text>
+<text x="65" y="715" class="small" text-anchor="start">This is the reference layout.  A graph view may forget, compile, or expand these objects, but it must say which.</text>
+</svg>

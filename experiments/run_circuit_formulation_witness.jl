@@ -14,6 +14,7 @@ open(output, "w") do io
         "source_factor" => result.source_factor,
         "mna_target" => result.mna_target,
         "observations" => result.observations,
+        "structural_diagnostics" => result.structural_diagnostics,
         "failure_cases" => result.failure_cases,
         "lowering" => result.lowering,
         "checks" => result.checks,

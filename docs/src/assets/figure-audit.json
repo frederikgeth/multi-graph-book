@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "review_date": "2026-08-13",
+  "review_date": "2026-08-15",
   "principle": "Colour may reinforce a distinction, but no reader-critical distinction is encoded by colour alone.",
   "visual_grammar": {
     "background": "white",
@@ -179,6 +179,42 @@
       "png": "docs/src/assets/ybus-jacobian-witness.png",
       "monochrome_safe": true,
       "distinguishing_channels": ["separate titled panels", "matrix grids", "numeric captions"]
+    },
+    "start-here-running-network": {
+      "svg": "docs/src/assets/start-here-running-network.svg",
+      "png": "docs/src/assets/start-here-running-network.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["stable source labels", "parallel line styles", "explicit multiwinding factor"]
+    },
+    "start-here-radial-triangles": {
+      "svg": "docs/src/assets/start-here-radial-triangles.svg",
+      "png": "docs/src/assets/start-here-radial-triangles.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["tree and support panels", "solid/dashed graph distinction", "which-graph resolution card"]
+    },
+    "start-here-same-ybus": {
+      "svg": "docs/src/assets/start-here-same-ybus.svg",
+      "png": "docs/src/assets/start-here-same-ybus.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["network A/B panels", "numeric equality banner", "dispatch comparison"]
+    },
+    "start-here-neutral-recovery": {
+      "svg": "docs/src/assets/start-here-neutral-recovery.svg",
+      "png": "docs/src/assets/start-here-neutral-recovery.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["eliminated-node marker", "numeric current/limit labels", "recovery obligation cards"]
+    },
+    "start-here-negative-star-arm": {
+      "svg": "docs/src/assets/start-here-negative-star-arm.svg",
+      "png": "docs/src/assets/start-here-negative-star-arm.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["positive pair-test cards", "negative-arm card", "eigenvalue guard banner"]
+    },
+    "formulation-lowering-lattice": {
+      "svg": "docs/src/assets/formulation-lowering-lattice.svg",
+      "png": "docs/src/assets/formulation-lowering-lattice.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["faithful compilation spine", "guarded Y branch", "blocked-shortcut warning"]
     }
   }
 }

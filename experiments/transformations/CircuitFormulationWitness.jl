@@ -4,6 +4,33 @@ using LinearAlgebra
 
 export evaluate_circuit_formulation_witness
 
+"""Classify an affine constraint block by rank consistency.
+
+This is deliberately a structural diagnostic, not a general DAE-index test:
+it distinguishes consistent redundant rows from an inconsistent right-hand
+side.  The same check applies to ideal-source loop (KVL) and cutset (KCL)
+blocks once their sign convention has been declared.
+"""
+function diagnose_affine_constraints(A, b)
+    rank_a = rank(A)
+    rank_augmented = rank(hcat(A, b))
+    classification = if rank_augmented > rank_a
+        "contradictory_constraints"
+    elseif rank_a < size(A, 1)
+        "consistent_redundant_constraints"
+    else
+        "consistent_independent_constraints"
+    end
+    Dict(
+        "matrix" => A,
+        "rhs" => b,
+        "rank" => rank_a,
+        "augmented_rank" => rank_augmented,
+        "row_count" => size(A, 1),
+        "classification" => classification,
+    )
+end
+
 """
     evaluate_circuit_formulation_witness()
 
@@ -52,6 +79,28 @@ function evaluate_circuit_formulation_witness()
         ),
     )
 
+    # A loop of ideal voltage sources is represented here by its declared KVL
+    # constraint rows.  The second row is a duplicate relation in the
+    # consistent case and an incompatible right-hand side in the contradictory
+    # case.  The cutset witness uses the same rank test for ideal current-source
+    # KCL rows; no DAE-index conclusion is inferred from either example.
+    source_rows = [1.0 1.0 1.0; 2.0 2.0 2.0]
+    voltage_loop_consistent = diagnose_affine_constraints(source_rows, [3.0, 6.0])
+    voltage_loop_contradictory = diagnose_affine_constraints(source_rows, [3.0, 7.0])
+    current_cutset_consistent = diagnose_affine_constraints(source_rows, [0.0, 0.0])
+    current_cutset_contradictory = diagnose_affine_constraints(source_rows, [0.0, 1.0])
+    structural_diagnostics = Dict(
+        "scope" => "rank consistency of declared ideal-source loop/cutset constraints",
+        "voltage_source_loop" => Dict(
+            "consistent" => voltage_loop_consistent,
+            "contradictory" => voltage_loop_contradictory,
+        ),
+        "current_source_cutset" => Dict(
+            "consistent" => current_cutset_consistent,
+            "contradictory" => current_cutset_contradictory,
+        ),
+    )
+
     checks = Dict(
         "source_relation_is_voltage_constraint" => true,
         "source_current_is_an_extra_unknown" => true,
@@ -68,6 +117,14 @@ function evaluate_circuit_formulation_witness()
         "source_provenance_is_retained" => true,
         "floating_nodal_operator_is_singular" => rank(floating_y) < size(floating_y, 1),
         "floating_singularity_is_diagnosed" => true,
+        "voltage_loop_redundancy_is_detected" =>
+            voltage_loop_consistent["classification"] == "consistent_redundant_constraints",
+        "voltage_loop_contradiction_is_detected" =>
+            voltage_loop_contradictory["classification"] == "contradictory_constraints",
+        "current_cutset_redundancy_is_detected" =>
+            current_cutset_consistent["classification"] == "consistent_redundant_constraints",
+        "current_cutset_contradiction_is_detected" =>
+            current_cutset_contradictory["classification"] == "contradictory_constraints",
         "aggregate_y_preserves_terminal_relation" => aggregate_admittance == sum(member_admittances),
         "member_limit_is_lost_by_aggregate_y" => any(member_currents .> member_limits),
         "semantic_loss_is_diagnosed" => true,
@@ -95,6 +152,7 @@ function evaluate_circuit_formulation_witness()
            "node_voltages" => voltages,
            "source_currents" => source_currents,
        ),
+       structural_diagnostics,
        failure_cases,
        lowering = Dict(
            "direct_target" => "MNA/tableau equation and constraint operator",

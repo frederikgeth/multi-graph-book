@@ -25,6 +25,18 @@ The representation-scoped meanings of cycles, parallelism, bridges, leaves,
 and radial ends are developed in
 [Cycles, parallelism, and radial structure](@ref cycles-parallelism-radiality).
 
+The first surprise is not a new device; it is a change of graph. At the bus
+level the feeder can be radial, while dense multiconductor stamps create
+cliques—and therefore cycles—in the scalar support graph used by a matrix
+algorithm:
+
+![A radial bus-level feeder can have cycles in its conductor-expanded support graph.](../assets/start-here-radial-triangles.png)
+
+The resolving phrase is **which graph?** Bus-level radiality is a statement
+about equipment connectivity. Support-graph cycles are a statement about
+algebraic coupling. The latter can still be chordal and admit useful leaf-clique
+elimination; it is not evidence of an additional physical loop.
+
 Nothing exotic is required to create representational disagreement. Parallel lines already show
 the issue. If two branches ``\ell_1`` and ``\ell_2`` connect buses ``i`` and ``j``, a multigraph
 retains both triples

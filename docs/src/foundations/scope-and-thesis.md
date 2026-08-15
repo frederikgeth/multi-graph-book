@@ -25,6 +25,18 @@ attached to its incidence structure.
     graph, active state, terminal quantities, and retained constraints must be
     named before a connectivity or reduction claim is interpreted.
 
+The most consequential omissions are often constraints on quantities that were
+eliminated algebraically. In the running four-conductor Kron witness, the
+retained phase relation is exact to numerical precision, but the recovered
+neutral current is ``43.0\ \mathrm{A}`` against a declared ``42.6\ \mathrm{A}``
+limit:
+
+![A Kron-reduced boundary model still needs the recovered neutral-current constraint.](../assets/start-here-neutral-recovery.png)
+
+The resolving phrase is **what must be recovered?** A reduced equation is not a
+decision certificate until every eliminated current, voltage, limit, and
+observation required by the study has a recovery or preservation map.
+
 The limitations become consequential in decision problems. Suppose parallel branches ``\ell``
 have terminal relation
 

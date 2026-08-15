@@ -22,12 +22,10 @@ ledger, generated indexes, running fixture, graph-invariant witnesses,
 multiconductor parallel cases, transformer compilers, positive-sequence
 collapse witness, certified-approximation chain, and argument-diagram
 portfolio are implemented and locally validated. A 2026-08-15 automated
-independent re-derivation found one blocking mathematical issue in the
-series-elimination claim and blocking record/certificate repairs for typed Kron
-reduction and transformer winding normalization. The series and typed-Kron
-repairs are now implemented and locally validated; the transformer certificate
-repair remains a publication gate. Broader human validation and research scope
-remain follow-on work.
+independent re-derivation found blocking mathematical and certificate issues in
+series elimination, typed Kron reduction, and transformer winding
+normalization; those repairs are now implemented and locally validated.
+Broader human validation and research scope remain follow-on work.
 The historical dispositions are archived in
 [`review/archive/`](review/archive/).
 
@@ -1106,7 +1104,7 @@ conflict below is resolved and recorded.
 
 #### A. Circuit-formulation and lowering chapter
 
-- [ ] add explicit MNA/tableau structural-solvability diagnostics for ideal
+- [x] add explicit MNA/tableau structural-solvability diagnostics for ideal
   voltage-source loops and ideal current-source cutsets, distinguishing
   redundant consistent constraints from contradictory constraints; do not
   make a general DAE-index claim without a precise supporting source;
@@ -1184,11 +1182,13 @@ conflict below is resolved and recorded.
   validator, and canonical matrix so equation identity, connectivity quotient,
   boundary behaviour, feasible-set preservation, and observation-sample
   agreement are not aggregated as though they were the same object;
-- [ ] expand the evidence matrix beyond the current 14/35 bibliography seed
-  coverage, prioritising classical Kron/Ward equivalencing and
+- [x] expand the evidence matrix beyond the initial 14/35 bibliography seed
+  coverage with the classical Ward family and the priority
   `DorflerBullo2013`, `Jang2013`, `CurtisMorrow2000`, and
-  `KettnerPaolone2019`, then the Gan--Low formulation records and practical
-  feeder/transmission reductions;
+  `KettnerPaolone2019` records; the controlled scope and exactness-object
+  decisions are recorded in the reconciliation note;
+- [ ] add the Gan--Low formulation records and practical feeder/transmission
+  reductions, then reassess whether any source needs split rows;
 - [ ] exercise the screening protocol with genuine `exclude` or `uncertain`
   records and record corpus-flow counts before making any PRISMA-style claim;
 - [ ] resolve the reviewer/date consistency rule, and distinguish automated
@@ -1251,6 +1251,32 @@ caption or companion metadata; a visually neat single-line diagram is not
 evidence that n-port, grounding, switch-state, or member-identity semantics
 survived.
 
+#### Start-here hook tranche — 2026-08-15 review
+
+The start-here review correctly identifies a missing pedagogical layer: the
+opening figures must create a numerical surprise and immediately name the
+semantic distinction that resolves it. The first high-value hooks are now
+implemented:
+
+- [x] draw the reusable running-network source layout and use it as the
+  reference drawing for later views;
+- [x] draw the radial-bus/tree versus conductor-expanded support/clique
+  contrast, with the resolution **which graph?**;
+- [x] draw the same-``Y``-bus/different-dispatch counterexample, with the
+  resolution **which observations and constraints?**;
+- [x] draw the neutral-recovery hook, with ``43.0\ \mathrm{A}`` against a
+  ``42.6\ \mathrm{A}`` limit and the resolution **what must be recovered?**;
+- [x] add a source-bound negative-star-arm panel and promote its positive-
+  semidefinite matrix guard as reader-facing evidence (the guard is
+  ``\operatorname{Im}(Z_B)\succeq 0``, not componentwise arm positivity);
+- [ ] add the paired “eight constraints deleted” panel only after the exact
+  redundancy and naïve aggregate objectives are bound to a dedicated,
+  source-traceable witness rather than review prose.
+
+The generated SVG/PNG assets are registered in `figure-audit.json`, and the
+three opening chapters now state the belief, numerical failure, and resolving
+semantic word in their captions and surrounding prose.
+
 **First argument batch (highest leverage):**
 
 - [x] draw the four exactness classes as observed-set containment, including
@@ -1274,6 +1300,8 @@ survived.
 - [x] draw certificate composition and the guarded-rule gate once for Part III;
 - [x] add an orientation-versus-power-transfer panel and a cycles/parallelism/
   radial-tail panel if the existing argument figures do not cover them;
+- [x] add the formulation-lattice argument figure showing the faithful
+  equation/constraint boundary and the guarded nodal-admittance branch;
 
 **Consolidation and acceptance:**
 

@@ -156,6 +156,29 @@ fixed linear boundary voltage relation, eliminating tableau variables may be
 appropriate; if it asks for switching, protection, or member ratings, the
 uneliminated variables are part of the preservation contract.
 
+### Structural solvability of ideal-source blocks
+
+Ideal voltage-source loops and ideal current-source cutsets deserve a small
+diagnostic before numerical solution. After declaring the branch ordering and
+sign convention, write the affected KVL or KCL rows as an affine block
+``Aq=b``. The scoped check used here compares
+``\operatorname{rank}(A)`` with
+``\operatorname{rank}([A\;b])``:
+
+| rank result | interpretation |
+| --- | --- |
+| ``\operatorname{rank}([A\;b])>\operatorname{rank}(A)`` | contradictory source constraints; no solution for that state |
+| equal ranks, but ``\operatorname{rank}(A)<`` number of rows | consistent redundant constraints; retain them or remove them with provenance |
+| equal full row rank | consistent independent constraints |
+
+The distinction matters for MNA/tableau assembly. A redundant ideal-source row
+is not automatically an error, while a contradictory loop or cutset makes the
+declared state infeasible. The generated witness
+``experiments/generated/circuit-formulation-witness.json`` records both cases
+for a voltage-source loop and a current-source cutset. This is a rank-
+consistency diagnostic only; it is not a general statement about DAE index,
+dynamic regularity, or every possible dependent-source formulation.
+
 ## 4. Lowering from a source model
 
 The formulation-aware compilation boundary is:
@@ -197,6 +220,17 @@ Every lowering record should state:
 4. the preserved observations, constraints, and decisions;
 5. the omitted semantics and unresolved guards; and
 6. the recovery and provenance maps.
+
+![The formulation-lowering lattice: the equation/constraint operator is the faithful boundary, while MNA/tableau and nodal admittance are guarded study targets.](../assets/formulation-lowering-lattice.png)
+
+The diagram is intentionally asymmetric. The source model first lowers to an
+equation/constraint operator that still has somewhere to attach observations,
+limits, and decisions. MNA or a sparse tableau can retain those variables
+directly. A nodal ``\mathbf Y`` target is a separate diagonal branch: it is
+available only when the declared formulation guards and query contract permit
+the extra variables and constraints to be eliminated. The crossed shortcut is
+the common but unsafe mental model in which every linear factor is silently
+turned into an admittance edge.
 
 This is the formulation-specific instance of the general compiled-view
 contract. It also explains why a compiler pipeline can legitimately stop at a

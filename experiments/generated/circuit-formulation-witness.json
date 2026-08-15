@@ -1,18 +1,101 @@
 {
     "checks": {
+        "current_cutset_redundancy_is_detected": true,
         "semantic_loss_is_diagnosed": true,
         "member_limit_is_lost_by_aggregate_y": true,
         "aggregate_y_preserves_terminal_relation": true,
         "same_voltage_can_have_different_source_current": true,
         "mna_residuals_are_zero": true,
+        "voltage_loop_contradiction_is_detected": true,
         "tableau_or_mna_target_available": true,
+        "current_cutset_contradiction_is_detected": true,
         "plain_nodal_y_lowering_is_rejected": true,
         "source_current_is_an_extra_unknown": true,
+        "voltage_loop_redundancy_is_detected": true,
         "floating_nodal_operator_is_singular": true,
         "floating_singularity_is_diagnosed": true,
         "source_relation_is_voltage_constraint": true,
         "ordinary_y_injection_would_be_single_valued": true,
         "source_provenance_is_retained": true
+    },
+    "structural_diagnostics": {
+        "current_source_cutset": {
+            "consistent": {
+                "rank": 1,
+                "classification": "consistent_redundant_constraints",
+                "matrix": [
+                    1,
+                    2,
+                    1,
+                    2,
+                    1,
+                    2
+                ],
+                "rhs": [
+                    0,
+                    0
+                ],
+                "row_count": 2,
+                "augmented_rank": 1
+            },
+            "contradictory": {
+                "rank": 1,
+                "classification": "contradictory_constraints",
+                "matrix": [
+                    1,
+                    2,
+                    1,
+                    2,
+                    1,
+                    2
+                ],
+                "rhs": [
+                    0,
+                    1
+                ],
+                "row_count": 2,
+                "augmented_rank": 2
+            }
+        },
+        "scope": "rank consistency of declared ideal-source loop/cutset constraints",
+        "voltage_source_loop": {
+            "consistent": {
+                "rank": 1,
+                "classification": "consistent_redundant_constraints",
+                "matrix": [
+                    1,
+                    2,
+                    1,
+                    2,
+                    1,
+                    2
+                ],
+                "rhs": [
+                    3,
+                    6
+                ],
+                "row_count": 2,
+                "augmented_rank": 1
+            },
+            "contradictory": {
+                "rank": 1,
+                "classification": "contradictory_constraints",
+                "matrix": [
+                    1,
+                    2,
+                    1,
+                    2,
+                    1,
+                    2
+                ],
+                "rhs": [
+                    3,
+                    7
+                ],
+                "row_count": 2,
+                "augmented_rank": 2
+            }
+        }
     },
     "all_checks_pass": true,
     "source_factor": {

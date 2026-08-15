@@ -11,6 +11,12 @@ the [executable running network](executable-running-network.md), version 0.1.0.
 The semantic contract remains authoritative where that fixture explicitly lists
 an unimplemented feature.
 
+The layout below is the reference drawing for the rest of the book. Later
+figures should be read as views or overlays of this same source object set,
+not as unrelated replacement networks.
+
+![Reusable physical layout of the running multiconductor network.](../assets/start-here-running-network.png)
+
 ## Design requirements
 
 The running network must contain:

@@ -11,5 +11,11 @@ using .CircuitFormulationWitness
     @test result.checks["mna_residuals_are_zero"]
     @test result.checks["floating_nodal_operator_is_singular"]
     @test result.checks["member_limit_is_lost_by_aggregate_y"]
+    @test result.checks["voltage_loop_redundancy_is_detected"]
+    @test result.checks["voltage_loop_contradiction_is_detected"]
+    @test result.checks["current_cutset_redundancy_is_detected"]
+    @test result.checks["current_cutset_contradiction_is_detected"]
+    @test result.structural_diagnostics["voltage_source_loop"]["contradictory"]["classification"] == "contradictory_constraints"
+    @test result.structural_diagnostics["current_source_cutset"]["consistent"]["classification"] == "consistent_redundant_constraints"
     @test result.failure_cases["semantically_lossy_parallel_aggregation"]["diagnostic"] == "aggregate_y_forgets_member_current_limits"
 end
