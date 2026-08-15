@@ -59,6 +59,16 @@ a declared recovery map. A numerical example should therefore report which
 formula was evaluated, the grounding convention, the invertibility condition,
 and the residual of the discarded mode.
 
+![One checked four-wire primitive produces three different 3×3 views under three different routes.](../assets/coordinate-three-by-three-plate.png)
+
+The plate is deliberately not a catalogue of interchangeable impedance
+matrices. ``Z^{\mathrm{pn}}`` is a phase-to-neutral coordinate congruence,
+``Z^{\mathrm{Kron}}`` eliminates the neutral block, and ``Z^{abc}`` is merely
+the neutral-deleted phase block. The actual phase-to-phase quotient is shown
+as a 2×2 inset because the common-mode quotient removes one dimension. This
+distinction is the practical reason to record the route, grounding contract,
+and discarded mode alongside every exported matrix.
+
 ## Four-wire phase-to-neutral transformation
 
 Let the phase-to-ground voltage vector at bus ``i`` be

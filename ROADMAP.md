@@ -1251,6 +1251,34 @@ caption or companion metadata; a visually neat single-line diagram is not
 evidence that n-port, grounding, switch-state, or member-identity semantics
 survived.
 
+#### Structural-section diagram review — 2026-08-15
+
+The next-section review changes the figure test from surprise to reuse: formal
+objects should have canonical glyphs, distinctions should be shown side by
+side with numbers, and each transformation family should have a stable visual
+card. The following tranche is now implemented:
+
+- [x] place the existing map-of-maps and query-partial-orders plates in the
+  PDF-facing formal-representation-frameworks chapter;
+- [x] draw the canonical ``\mathfrak P`` port--factor object with explicit
+  ports, junction bars, separate ``j``/``f`` incidence arrows, containment,
+  and the many-to-many ``\Lambda`` asset relation;
+- [x] add the numerical three-route impedance plate from
+  ``IMPEDANCE-LADDER-001``; explicitly show that the phase-to-phase quotient
+  is 2×2 rather than mislabelling it as a 3×3 matrix;
+- [x] add the projection/normalization/compilation/behavioural-reduction
+  size-inversion plate, marked as schematic rather than a new numerical
+  witness;
+- [x] strengthen the topology-projection figure's port-incidence legend;
+- [ ] design the reusable translation-trap card and typed transformation
+  register glyph plate after the structural source vocabulary is reviewed;
+- [ ] revisit chapter splitting for the overloaded Kron/Ward/Opti-KRON and
+  two-level-topology chapters rather than adding more figures to them.
+
+The review's claim that the topology-projection panel had no ports was stale:
+the current panel already contains factor-boundary port nodes. The repair makes
+the ``j``/``f`` distinction explicit instead of redrawing the object.
+
 #### Start-here hook tranche — 2026-08-15 review
 
 The start-here review correctly identifies a missing pedagogical layer: the

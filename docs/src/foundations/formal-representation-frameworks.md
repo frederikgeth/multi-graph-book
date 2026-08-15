@@ -37,6 +37,15 @@ linked to—but not nested inside—the electrical port--factor model.
 Here *canonical* means the selected source formalism for this book. It does not
 mean that adequacy or uniqueness has already been established.
 
+![The source architecture feeding typed representation maps.](../assets/map-of-maps.png)
+
+![Query-relative partial orders: different query families induce different useful views.](../assets/query-partial-orders.png)
+
+These two plates belong here as well as in the detailed map chapter. This is
+the PDF-facing definition of the objects; the map chapter supplies the fuller
+map vocabulary and proofs. The arrows are query- and contract-indexed, not a
+single “more detailed” ordering.
+
 The wider literature contains other valid graph and equation families. Their
 selection and relationship to these rows is surveyed in the [literature map](@ref
 literature-map) and the [circuit formulations and lowering boundary](@ref
@@ -181,6 +190,15 @@ where ``\mathcal U_\phi`` contains continuous or discrete decisions and
 ``\Theta_\phi`` contains fixed parameters. Equations, inequalities,
 measurements, and uncertainty sets are all relations rather than new graph
 edge types.
+
+![Canonical port--factor source object with explicit ports, junction attachments, factor ownership, and the asset relation ``\Lambda``.](../assets/canonical-port-factor-model.png)
+
+The circles in this figure are not decorative edge endpoints. They are the
+typed ports in ``\mathcal Q``. The two incidence maps have different domains
+and meanings: ``j`` attaches a port to a junction, while ``f`` assigns that
+same port to its owning factor. The dashed ``\Lambda`` links are many-to-many
+provenance relations to the asset model. This is the glyph vocabulary reused
+by the later factor and lowering diagrams.
 
 For junction ``k``, let ``\mathcal Q_k=j^{-1}(k)``. Its junction relation
 ``\mathcal R_k^{\mathrm J}`` enforces compatible effort variables after the

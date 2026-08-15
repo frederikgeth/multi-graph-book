@@ -104,5 +104,14 @@ PowsyblTopology](@cite).
 5. An approximate reduced model can outperform an exact terminal equivalent
    for a chosen application metric while being less generally valid.
 
+![Projection, normalization, compilation, and behavioural reduction change different notions of size.](../assets/transformation-size-inversion.png)
+
+The counts in this teaching plate are schematic. Its point is the inversion:
+compilation can add virtual nodes and edges, while behavioural reduction can
+remove variables and create denser fill. A smaller drawing is therefore not
+evidence of a stronger reduction, and a larger drawing is not evidence of a
+less faithful one. The preservation contract and target factor class decide
+what the arrow means.
+
 The resulting mathematical object is better viewed as a graph of model spaces
 and typed transformations than as a linear ladder.

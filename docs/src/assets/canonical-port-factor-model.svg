@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">
+<title>The canonical source object is a port–factor model</title>
+<desc>Ports are the typed interface: j attaches a port to a junction, f assigns it to a factor, and Λ links electrical objects to assets.</desc>
+<defs><marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#245b7a"/></marker><marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8a4f13"/></marker><marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#477a55"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}
+.title{font-size:28px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}
+.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}
+.body{font-size:15px}.small{font-size:13px;fill:#5f6b76}.tiny{font-size:12px;fill:#5f6b76}
+.bus{fill:#d9eef8;stroke:#245b7a;stroke-width:3}.factor{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}
+.asset{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.port{fill:white;stroke:#8a4f13;stroke-width:2}
+.jmap{stroke:#245b7a;stroke-width:3;marker-end:url(#arrowBlue)}.fmap{stroke:#8a4f13;stroke-width:3;marker-end:url(#arrowOrange)}
+.lambda{stroke:#477a55;stroke-width:2.5;stroke-dasharray:8 6;marker-end:url(#arrowGreen)}
+.wire{stroke:#3d78b5;stroke-width:4}.dashed{stroke:#8a3232;stroke-width:3;stroke-dasharray:8 6}
+.matrix{fill:#eee8f8;stroke:#7856a8;stroke-width:2}.good{fill:#e4f4e7;stroke:#477a55;stroke-width:2}
+.warn{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.card{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}
+</style>
+
+<text x="35" y="40" class="title" text-anchor="start">The canonical source object is a port–factor model</text>
+<text x="35" y="68" class="sub" text-anchor="start">Ports are the typed interface: j attaches a port to a junction, f assigns it to a factor, and Λ links electrical objects to assets.</text>
+<rect x="35" y="105" width="860" height="600" rx="12" class="panel"/>
+<rect x="935" y="105" width="430" height="600" rx="12" class="panel"/>
+<text x="65" y="145" class="head" text-anchor="start">electrical source model 𝔓</text>
+<text x="965" y="145" class="head" text-anchor="start">asset / electrical relation Λ</text>
+<line x1="130" y1="215" x2="130" y2="305" class="wire" stroke-width="7"/>
+<text x="112" y="266" class="body" text-anchor="end">J_i</text>
+<line x1="130" y1="425" x2="130" y2="515" class="wire" stroke-width="7"/>
+<text x="112" y="476" class="body" text-anchor="end">J_j</text>
+<line x1="130" y1="570" x2="130" y2="660" class="wire" stroke-width="7"/>
+<text x="112" y="621" class="body" text-anchor="end">J_n</text>
+<rect x="430" y="235" width="240" height="100" rx="12" class="factor"/>
+<text x="550.0" y="262" class="head" text-anchor="middle">factor l1</text>
+<circle cx="475.0" cy="317" r="8" class="port"/>
+<text x="475.0" y="342" class="tiny" text-anchor="middle">q1i</text>
+<circle cx="625.0" cy="317" r="8" class="port"/>
+<text x="625.0" y="342" class="tiny" text-anchor="middle">q1j</text>
+<rect x="430" y="430" width="240" height="125" rx="12" class="factor"/>
+<text x="550.0" y="457" class="head" text-anchor="middle">factor x1 (three-winding)</text>
+<circle cx="475.0" cy="537" r="8" class="port"/>
+<text x="475.0" y="562" class="tiny" text-anchor="middle">q1</text>
+<circle cx="550.0" cy="537" r="8" class="port"/>
+<text x="550.0" y="562" class="tiny" text-anchor="middle">q2</text>
+<circle cx="625.0" cy="537" r="8" class="port"/>
+<text x="625.0" y="562" class="tiny" text-anchor="middle">q3</text>
+<rect x="430" y="610" width="240" height="70" rx="12" class="factor"/>
+<text x="550.0" y="637" class="head" text-anchor="middle">factor hn</text>
+<circle cx="475.0" cy="662" r="8" class="port"/>
+<text x="475.0" y="687" class="tiny" text-anchor="middle">qn</text>
+<path d="M475 317 L130 260" class="jmap" fill="none"/>
+<path d="M625 317 L130 470" class="jmap" fill="none"/>
+<path d="M475 537 L130 260" class="jmap" fill="none"/>
+<path d="M570 537 L130 470" class="jmap" fill="none"/>
+<path d="M665 537 L130 615" class="jmap" fill="none"/>
+<path d="M550 662 L130 615" class="jmap" fill="none"/>
+<path d="M475 317 L430 317" class="fmap" fill="none"/>
+<path d="M625 317 L670 317" class="fmap" fill="none"/>
+<path d="M475 537 L430 537" class="fmap" fill="none"/>
+<path d="M570 537 L550 537" class="fmap" fill="none"/>
+<path d="M665 537 L670 537" class="fmap" fill="none"/>
+<path d="M550 662 L550 662" class="fmap" fill="none"/>
+<text x="245" y="205" class="body" text-anchor="start">j: Q → J</text>
+<text x="720" y="205" class="body" text-anchor="start">f: Q → Φ</text>
+<line x1="170" y1="215" x2="220" y2="215" class="jmap"/>
+<line x1="650" y1="215" x2="700" y2="215" class="fmap"/>
+<rect x="80" y="735" width="790" height="50" rx="12" class="card"/>
+<text x="100" y="766" class="body" text-anchor="start">The circles are ports; the bars are junctions; the boxes are behavioural factors.</text>
+<rect x="980" y="205" width="325" height="190" rx="12" class="asset"/>
+<text x="1142" y="240" class="head" text-anchor="middle">asset hierarchy 𝔄</text>
+<rect x="1020" y="270" width="120" height="75" rx="12" class="panel"/>
+<rect x="1170" y="270" width="105" height="75" rx="12" class="panel"/>
+<text x="1080" y="305" class="body" text-anchor="middle">corridor</text>
+<text x="1222" y="305" class="body" text-anchor="middle">x₁ asset</text>
+<text x="1142" y="370" class="small" text-anchor="middle">containment / ownership</text>
+<rect x="1010" y="451" width="250" height="48" rx="12" class="panel"/>
+<text x="1135" y="480" class="body" text-anchor="middle">line ℓ₁</text>
+<rect x="1010" y="511" width="250" height="48" rx="12" class="panel"/>
+<text x="1135" y="540" class="body" text-anchor="middle">winding q₁</text>
+<rect x="1010" y="571" width="250" height="48" rx="12" class="panel"/>
+<text x="1135" y="600" class="body" text-anchor="middle">ground hₙ</text>
+<path d="M1170 305 L1135 475" class="lambda" fill="none"/>
+<path d="M1170 305 L1135 535" class="lambda" fill="none"/>
+<path d="M1170 305 L1135 595" class="lambda" fill="none"/>
+<path d="M1170 305 L1135 535" class="lambda" fill="none"/>
+<text x="965" y="670" class="body" text-anchor="start">Λ is relational, not necessarily one asset per factor.</text>
+<text x="965" y="694" class="small" text-anchor="start">It is the provenance bridge that a projection cannot invent later.</text>
+</svg>

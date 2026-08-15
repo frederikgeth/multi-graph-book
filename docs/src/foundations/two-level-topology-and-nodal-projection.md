@@ -41,6 +41,13 @@ their matrix contributions occupy the same nodal block. The assembly preserves
 their combined linear boundary relation but forgets how that contribution was
 split between assets.
 
+The middle panel is a port--factor incidence view, not a bare bipartite graph:
+the small open circles are ports, the junction bars are the codomain of ``j``,
+and the factor boxes are the codomain of ``f``. The labelled ``j`` and ``f``
+families are intentionally distinct. A later compilation may replace this
+structure by ordinary edges, but that is a new target view with a provenance
+obligation rather than an identity of the source object.
+
 ## Level 1: identified equipment and high-level attachments
 
 For the two-terminal subset of a network, let

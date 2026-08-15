@@ -160,7 +160,25 @@
       "svg": "docs/src/assets/topology-projection-layers.svg",
       "png": "docs/src/assets/topology-projection-layers.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["three numbered panels", "separate junction circles and factor-boundary port nodes", "lift/stamp arrows", "lost-decomposition annotation"]
+      "distinguishing_channels": ["three numbered panels", "separate junction circles and factor-boundary port nodes", "lift/stamp arrows", "explicit j/f incidence labels", "lost-decomposition annotation"]
+    },
+    "canonical-port-factor-model": {
+      "svg": "docs/src/assets/canonical-port-factor-model.svg",
+      "png": "docs/src/assets/canonical-port-factor-model.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["port circles", "junction bars", "separate j/f arrows", "dashed Lambda provenance links"]
+    },
+    "coordinate-three-by-three-plate": {
+      "svg": "docs/src/assets/coordinate-three-by-three-plate.svg",
+      "png": "docs/src/assets/coordinate-three-by-three-plate.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["three numeric matrix cards", "route labels", "2x2 phase-to-phase inset"]
+    },
+    "transformation-size-inversion": {
+      "svg": "docs/src/assets/transformation-size-inversion.svg",
+      "png": "docs/src/assets/transformation-size-inversion.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["four titled operation cards", "printed node/edge counts", "size-is-not-semantics panel"]
     },
     "radial-clique-projection": {
       "svg": "docs/src/assets/radial-clique-projection.svg",

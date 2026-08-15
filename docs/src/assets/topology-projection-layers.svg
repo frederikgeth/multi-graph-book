@@ -42,6 +42,8 @@
 <text x="697" y="570" class="small" text-anchor="middle">factor decomposition remains explicit</text>
 <text x="697" y="600" class="small" text-anchor="middle">open circles = factor ports</text>
 <text x="697" y="625" class="small" text-anchor="middle">shared attachment is not aggregation</text>
+<path d="M520 665 L575 665" class="wire"/><text x="585" y="670" class="small" text-anchor="start">j: port → junction</text>
+<path d="M720 665 L775 665" class="wire"/><text x="785" y="670" class="small" text-anchor="start">f: port → factor</text>
 <rect x="1010" y="235" width="120" height="120" rx="12" class="algebra"/>
 <rect x="1185" y="235" width="120" height="120" rx="12" class="algebra"/>
 <text x="1070" y="282" class="body" text-anchor="middle">node block i</text>
