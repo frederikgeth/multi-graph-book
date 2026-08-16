@@ -64,6 +64,7 @@ FIVE_BUS_ACTIVE_RADIALITY = GENERATED / "five-bus-active-radiality-witness.json"
 FIVE_BUS_TYPED_KRON = GENERATED / "five-bus-typed-kron-witness.json"
 CONDUCTOR_TERMINAL_LIFT = GENERATED / "conductor-terminal-lift-witness.json"
 FIVE_BUS_CONDUCTOR_TERMINAL_LIFT = GENERATED / "five-bus-conductor-terminal-lift-witness.json"
+FIVE_BUS_TRANSFORMER_LOWERING = GENERATED / "five-bus-transformer-lowering-witness.json"
 MULTIWINDING_TERMINAL_LIFT = GENERATED / "multiwinding-terminal-lift-witness.json"
 MULTIWINDING_TYPED_KRON = GENERATED / "multiwinding-typed-kron-witness.json"
 HIERARCHY_BOUNDARY = GENERATED / "hierarchy-boundary-witness.json"
@@ -576,6 +577,34 @@ def main() -> int:
             errors.append(f"multiwinding conductor-terminal lift check failed: {name}")
     if len(multiwinding_terminal_lift.get("ports", [])) != 3 or len(multiwinding_terminal_lift.get("factors", [])) != 1:
         errors.append("multiwinding conductor-terminal lift changed its incidence cardinalities")
+
+    five_bus_transformer = load_json(FIVE_BUS_TRANSFORMER_LOWERING)
+    if five_bus_transformer.get("witness_id") != "ARCH-FIVEBUS-XFMR-001":
+        errors.append("five-bus transformer lowering witness has an invalid witness ID")
+    if five_bus_transformer.get("all_checks_pass") is not True:
+        errors.append("five-bus transformer lowering witness failed its checks")
+    lowering_checks = five_bus_transformer.get("checks", {})
+    for name in (
+        "base_member_cycle_rank_is_three",
+        "base_simple_cycle_rank_is_two",
+        "source_transformer_is_one_three_port_factor",
+        "local_factor_incidence_is_acyclic",
+        "local_star_is_acyclic",
+        "local_clique_has_one_cycle",
+        "embedded_incidence_cycle_rank_is_five",
+        "embedded_star_member_cycle_rank_is_five",
+        "embedded_clique_member_cycle_rank_is_six",
+        "embedded_clique_simple_cycle_rank_is_three",
+        "three_winding_star_is_declared_special_case",
+        "winding_current_and_internal_observations_remain_declared",
+    ):
+        if lowering_checks.get(name) is not True:
+            errors.append(f"five-bus transformer lowering check failed: {name}")
+    source_dependencies = five_bus_transformer.get("source_dependencies", {})
+    for source_path, recorded_hash in source_dependencies.items():
+        path = ROOT / source_path
+        if not path.is_file() or sha256(path) != recorded_hash:
+            errors.append(f"five-bus transformer lowering dependency is stale: {source_path}")
 
     multiwinding_typed_kron = load_json(MULTIWINDING_TYPED_KRON)
     if multiwinding_typed_kron.get("witness_id") != "TR-KRON-MULTI-001":

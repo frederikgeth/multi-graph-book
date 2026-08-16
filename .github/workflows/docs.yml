@@ -82,6 +82,7 @@ jobs:
           julia --project=experiments experiments/test/kron_ward_scenario.jl
           julia --project=experiments experiments/test/certified_approximation.jl
           julia --project=experiments experiments/test/conductor_terminal_lift.jl
+          julia --project=experiments experiments/test/five_bus_transformer_lowering.jl
           julia --project=experiments experiments/test/running_network_radiality_witness.jl
           julia --project=experiments experiments/test/hierarchy_boundary_witness.jl
           julia --project=experiments experiments/test/data_model_crosswalk.jl

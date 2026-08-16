@@ -1,7 +1,8 @@
 # [A five-bus multigraph: identities, cycles, and tree coordinates](@id five-bus-cycle-spaces)
 
-**Page status:** generated worked graph example with hash-bound figures and
-BMOPFTools cross-checks; conductor-terminal lifts remain open.
+**Page status:** generated worked graph example with hash-bound figures,
+BMOPFTools cross-checks, and companion conductor-terminal and multi-port
+lowering witnesses.
 
 ## Purpose and status
 
@@ -308,6 +309,12 @@ ordinary bus--branch edge. Its natural cycle participation belongs to the
 port--factor or terminal-incidence view. Any cycle basis of a compiled
 two-terminal realization is relative to that compilation and must retain a map
 back to the source transformer and windings.
+
+The companion [Five buses through a multi-port lowering](@ref
+five-bus-transformer-lowering) keeps this chapter's line-induced graph
+unchanged and adds a symbolic three-port transformer extension. It compares
+factor incidence, a generated star, and the terminal clique produced by
+internal elimination, with a separate cycle rank for every declared graph.
 
 ## Executable evidence
 

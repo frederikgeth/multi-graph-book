@@ -317,6 +317,24 @@
       "png": "docs/src/assets/formulation-lowering-lattice.png",
       "monochrome_safe": true,
       "distinguishing_channels": ["faithful compilation spine", "guarded Y branch", "blocked-shortcut warning"]
+    },
+    "transformer-graph-views": {
+      "svg": "docs/src/assets/transformer-graph-views.svg",
+      "png": "docs/src/assets/transformer-graph-views.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["numbered construction panels", "solid versus generated edges", "explicit cycle-rank labels", "n-winding guard"]
+    },
+    "five-bus-transformer-lowering": {
+      "svg": "docs/src/assets/five-bus-transformer-lowering.svg",
+      "png": "docs/src/assets/five-bus-transformer-lowering.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["stable five-bus small multiples", "factor, virtual-node, and clique labels", "representation-scoped cycle counts", "loss ledger"]
+    },
+    "layer-lens-matrix": {
+      "svg": "docs/src/assets/layer-lens-matrix.svg",
+      "png": "docs/src/assets/layer-lens-matrix.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["construction-stage rows", "semantic-lens columns", "typed transformation arrows", "branching warning"]
     }
   }
 }

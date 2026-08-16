@@ -201,6 +201,59 @@ but a multiwinding transformer requires either a target that supports a
 multi-terminal object or a declared compilation into two-terminal factors.
 There is no canonical clique expansion.
 
+## Construction stages crossed with semantic lenses
+
+The preceding maps should not be rearranged into one universal ladder. It is
+more precise to separate two axes:
+
+1. a **construction stage**, which records how the present object was derived;
+2. a **semantic lens**, which records the question being asked of that object.
+
+![Construction stages form the rows and semantic questions form the columns; transformations branch between rows rather than becoming additional levels.](../assets/layer-lens-matrix.png)
+
+The five construction stages used by this book are:
+
+```math
+L_0=\text{source asset/property},\quad
+L_1=\text{canonical port--factor},\quad
+L_2=\text{optional edge realization},\quad
+L_3=\text{equation/operator},\quad
+L_4=\text{support/algorithm graph}.
+```
+
+The columns ask about identity/provenance, connectivity, electrical behaviour,
+decisions/constraints, and software/computation. A software package may expose
+objects in several rows, so package names are annotations in this matrix rather
+than representation levels.
+
+Projection, normalization, compilation, elimination, behavioural reduction,
+approximation, and state-conditioned surgery are typed arrows. They may branch
+from different rows and need not pass through ``L_2``. In particular, direct
+factor stamping ``L_1\to L_3`` is the default route for an arbitrary-arity
+factor; ``L_1\to L_2\to L_3`` is an optional compatibility path for an
+edge-only algorithm.
+
+For each arrow ``T:L_a\to L_b``, record an interface ledger
+
+```math
+\mathcal I_T
+=
+(\mathcal B_T,\mathcal X_T,\mathcal S_T,
+ \mathcal O_T,\mathcal C_T,
+ \operatorname{prov}_T,R_T),
+```
+
+where the entries declare boundary quantities, coordinate spaces, state,
+observations, constraints, provenance, and recovery. This is an editorial
+interface schema, not a claim that every representation category has the same
+morphisms. Its purpose is to prevent a target that preserves terminal equations
+from silently inheriting asset, constraint, or decision semantics it does not
+contain.
+
+The [five-bus multi-port lowering](@ref five-bus-transformer-lowering) applies
+the matrix to one three-winding transformer and shows why an acyclic star and a
+cyclic terminal support graph can both be valid derived structures.
+
 ## Expressiveness relative to questions
 
 There is no useful total ordering of these frameworks. Let ``T:M\rightarrow N``

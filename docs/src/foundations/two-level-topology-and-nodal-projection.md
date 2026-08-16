@@ -48,6 +48,13 @@ families are intentionally distinct. A later compilation may replace this
 structure by ordinary edges, but that is a new target view with a provenance
 obligation rather than an identity of the source object.
 
+Parallel lines make decomposition loss visible, while a multiwinding
+transformer makes graph-class change visible. The companion [five-bus
+multi-port lowering](@ref five-bus-transformer-lowering) shows one three-port
+factor as an acyclic incidence/star object and, after internal elimination, a
+cyclic terminal clique. That new support cycle is fill or terminal coupling,
+not an additional physical transformer loop.
+
 ## Level 1: identified equipment and high-level attachments
 
 For the two-terminal subset of a network, let

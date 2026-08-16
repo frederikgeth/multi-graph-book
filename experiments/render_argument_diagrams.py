@@ -953,6 +953,146 @@ def source_views_surgery() -> str:
     return "\n".join(lines) + "\n"
 
 
+def transformer_graph_views() -> str:
+    lines = [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="860" viewBox="0 0 1400 860">',
+        '<title>One multiwinding transformer has several associated graphs</title>',
+        '<desc>A three-winding transformer is shown as one identified asset and three-port factor, a pair-test triangle, a generated star with an internal virtual node, and a terminal clique after elimination. A final guard explains that an arbitrary n-winding model is not generally a diagonal star.</desc>',
+        '<rect width="1400" height="860" fill="white"/>',
+        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#5f6b76}.port{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.factor{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.virtual{fill:#eee8f8;stroke:#7856a8;stroke-width:2;stroke-dasharray:7 5}.guard{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.edge{stroke:#245b7a;stroke-width:3;fill:none}.generated{stroke:#7856a8;stroke-width:3;fill:none;stroke-dasharray:8 5}.arrow{stroke:#17212b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}</style>',
+        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
+        txt(40, 44, "One transformer, several graphs", "title"),
+        txt(40, 72, "The object and arrow labels—not the visual shape—state what each construction means.", "sub"),
+    ]
+    xs = [35, 370, 705, 1040]
+    for x in xs:
+        lines.append(f'<rect x="{x}" y="115" width="300" height="480" rx="14" class="panel"/>')
+    lines += [
+        txt(60, 155, "1  source and canonical factor", "head"),
+        '<rect x="115" y="245" width="140" height="130" rx="14" class="factor"/>',
+        txt(185, 287, "asset x₁", "head", "middle"), txt(185, 315, "one factor", "body", "middle"), txt(185, 342, "arity 3", "small", "middle"),
+        '<circle cx="75" cy="235" r="24" class="port"/><circle cx="75" cy="405" r="24" class="port"/><circle cx="295" cy="320" r="24" class="port"/>',
+        txt(75, 241, "k1", "small", "middle"), txt(75, 411, "k2", "small", "middle"), txt(295, 326, "k3", "small", "middle"),
+        '<line x1="98" y1="247" x2="115" y2="270" class="edge"/><line x1="98" y1="393" x2="115" y2="350" class="edge"/><line x1="255" y1="315" x2="271" y2="318" class="edge"/>',
+        txt(185, 490, "identity + winding interfaces", "body", "middle"), txt(185, 520, "limits, state, taps, grounding", "small", "middle"),
+        txt(395, 155, "2  pair-test data graph", "head"),
+        '<circle cx="440" cy="400" r="25" class="port"/><circle cx="520" cy="245" r="25" class="port"/><circle cx="620" cy="400" r="25" class="port"/>',
+        '<line x1="452" y1="378" x2="508" y2="267" class="edge"/><line x1="545" y1="263" x2="605" y2="380" class="edge"/><line x1="465" y1="400" x2="595" y2="400" class="edge"/>',
+        txt(440, 406, "1", "body", "middle"), txt(520, 251, "2", "body", "middle"), txt(620, 406, "3", "body", "middle"),
+        txt(480, 320, "z₁₂ˢᶜ", "small", "middle"), txt(572, 320, "z₂₃ˢᶜ", "small", "middle"), txt(530, 425, "z₁₃ˢᶜ", "small", "middle"),
+        txt(520, 490, "edges index tests", "body", "middle"), txt(520, 520, "not independent transformers", "small", "middle"),
+        txt(730, 155, "3  generated star / T", "head"),
+        '<circle cx="765" cy="270" r="25" class="port"/><circle cx="765" cy="455" r="25" class="port"/><circle cx="965" cy="360" r="25" class="port"/><circle cx="865" cy="360" r="28" class="virtual"/>',
+        '<line x1="789" y1="281" x2="840" y2="338" class="generated"/><line x1="789" y1="444" x2="840" y2="382" class="generated"/><line x1="893" y1="360" x2="940" y2="360" class="generated"/>',
+        txt(765, 276, "k1", "small", "middle"), txt(765, 461, "k2", "small", "middle"), txt(965, 366, "k3", "small", "middle"), txt(865, 366, "νx", "body", "middle"),
+        txt(865, 490, "local cycle rank 0", "body", "middle"), txt(865, 520, "virtual node and arms", "small", "middle"),
+        txt(1065, 155, "4  terminal clique", "head"),
+        '<circle cx="1095" cy="405" r="25" class="port"/><circle cx="1190" cy="245" r="25" class="port"/><circle cx="1290" cy="405" r="25" class="port"/>',
+        '<line x1="1108" y1="383" x2="1177" y2="267" class="generated"/><line x1="1214" y1="264" x2="1276" y2="383" class="generated"/><line x1="1120" y1="405" x2="1265" y2="405" class="generated"/>',
+        txt(1095, 411, "k1", "small", "middle"), txt(1190, 251, "k2", "small", "middle"), txt(1290, 411, "k3", "small", "middle"),
+        txt(1190, 490, "local cycle rank 1", "body", "middle"), txt(1190, 520, "after internal elimination", "small", "middle"),
+        '<path d="M337 350 L360 350" class="arrow"/><path d="M672 350 L695 350" class="arrow"/><path d="M1007 350 L1030 350" class="arrow"/>',
+        '<rect x="80" y="650" width="1240" height="140" rx="14" class="guard"/>',
+        txt(110, 690, "n-winding guard", "head"),
+        txt(110, 725, "For n = 3 the full reference relation has the familiar star/T coordinates. For general n, the exact (n−1)×(n−1) reference impedance is generally full.", "body"),
+        txt(110, 755, "A diagonal n-arm star, a complete edge graph, and the terminal support graph are therefore guarded target views—not the source transformer.", "body"),
+        txt(40, 835, "A tree can become a clique under exact elimination without creating a new physical power-system loop.", "small"),
+        '</svg>',
+    ]
+    return "\n".join(lines) + "\n"
+
+
+def five_bus_transformer_lowering() -> str:
+    lines = [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="900" viewBox="0 0 1500 900">',
+        '<title>The five-bus topology kernel becomes a transformer-lowering laboratory</title>',
+        '<desc>Four panels retain the same five buses and line identities while adding a three-port transformer at buses j, l, and m. The panels compare the source n-port factor, a generated star, and a terminal clique, with representation-scoped cycle ranks and a loss ledger.</desc>',
+        '<rect width="1500" height="900" fill="white"/>',
+        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}.body{font-size:14px}.small{font-size:12px;fill:#5f6b76}.bus{fill:white;stroke:#17212b;stroke-width:2}.line{stroke:#3979b8;stroke-width:3;fill:none}.parallel{stroke:#3979b8;stroke-width:3;fill:none}.factor{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.generated{stroke:#7856a8;stroke-width:3;stroke-dasharray:7 5;fill:none}.virtual{fill:#eee8f8;stroke:#7856a8;stroke-width:2;stroke-dasharray:5 4}.warn{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.arrow{stroke:#17212b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}</style>',
+        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
+        txt(40, 44, "Five buses through a three-port lowering", "title"),
+        txt(40, 72, "The line graph Gᴸ remains fixed; the transformer extension branches into several declared target structures.", "sub"),
+    ]
+    panel_x = [35, 400, 765, 1130]
+    titles = ["1  line topology kernel Gᴸ", "2  one three-port factor", "3  optional compiled star", "4  eliminated terminal clique"]
+    for x, title in zip(panel_x, titles):
+        lines += [f'<rect x="{x}" y="115" width="335" height="570" rx="14" class="panel"/>', txt(x + 22, 153, title, "head")]
+    def base(x):
+        return [
+            f'<circle cx="{x+55}" cy="330" r="20" class="bus"/><circle cx="{x+145}" cy="235" r="20" class="bus"/><circle cx="{x+145}" cy="425" r="20" class="bus"/><circle cx="{x+245}" cy="330" r="20" class="bus"/><circle cx="{x+300}" cy="425" r="20" class="bus"/>',
+            f'<path d="M{x+72} 319 C{x+95} 280 {x+115} 270 {x+132} 251" class="parallel"/><path d="M{x+72} 341 C{x+95} 380 {x+115} 390 {x+132} 409" class="parallel"/>',
+            f'<line x1="{x+145}" y1="255" x2="{x+145}" y2="405" class="line"/><line x1="{x+164}" y1="242" x2="{x+227}" y2="318" class="line"/><line x1="{x+164}" y1="418" x2="{x+227}" y2="342" class="line"/><line x1="{x+265}" y1="348" x2="{x+288}" y2="407" class="line"/>',
+            txt(x+55,336,"i","body","middle"),txt(x+145,241,"j","body","middle"),txt(x+145,431,"k","body","middle"),txt(x+245,336,"l","body","middle"),txt(x+300,431,"m","body","middle"),
+        ]
+    for x in panel_x: lines += base(x)
+    lines += [
+        txt(202, 545, "identified lines q,r,s,t,v,w,x", "small", "middle"), txt(202, 575, "member μ = 3; simple μ = 2", "body", "middle"),
+        '<rect x="610" y="475" width="72" height="52" rx="10" class="factor"/>', txt(646, 507, "x₁", "head", "middle"),
+        '<line x1="610" y1="485" x2="560" y2="250" class="generated"/><line x1="610" y1="500" x2="645" y2="345" class="generated"/><line x1="682" y1="510" x2="700" y2="420" class="generated"/>',
+        txt(567, 545, "source asset: one x₁", "body", "middle"), txt(567, 575, "factor incidence μ = 5", "small", "middle"), txt(567, 600, "no ordinary source edge for x₁", "small", "middle"),
+        '<circle cx="1030" cy="500" r="22" class="virtual"/>', txt(1030,506,"νx","small","middle"),
+        '<line x1="1030" y1="478" x2="925" y2="250" class="generated"/><line x1="1010" y1="500" x2="1010" y2="345" class="generated"/><line x1="1048" y1="513" x2="1065" y2="420" class="generated"/>',
+        txt(932, 555, "generated node + three arms", "body", "middle"), txt(932, 582, "embedded member μ = 5", "small", "middle"), txt(932, 607, "local star μ = 0", "small", "middle"),
+        '<line x1="1290" y1="250" x2="1375" y2="345" class="generated"/><line x1="1290" y1="250" x2="1430" y2="420" class="generated"/><line x1="1375" y1="345" x2="1430" y2="420" class="generated"/>',
+        txt(1297, 555, "same terminal relation under guards", "body", "middle"), txt(1297, 582, "embedded member μ = 6", "small", "middle"), txt(1297, 607, "local clique μ = 1", "small", "middle"),
+        '<path d="M372 400 L390 400" class="arrow"/><path d="M737 400 L755 400" class="arrow"/><path d="M1102 400 L1120 400" class="arrow"/>',
+        '<rect x="80" y="735" width="1340" height="105" rx="14" class="warn"/>',
+        txt(105, 770, "Loss ledger", "head"),
+        txt(250, 770, "generated arms are not lines", "body"), txt(500, 770, "clique edges are not assets", "body"), txt(770, 770, "winding currents need recovery", "body"), txt(1055, 770, "support cycles are not power-flow loops", "body"),
+        txt(105, 810, "Retain x₁ identity, winding-to-target fibres, connection/tap/grounding semantics, source limits, and the domain of every exactness claim.", "small"),
+        txt(40, 875, "Cycle rank is reported only after the graph construction is named; the source n-port object has no privileged ordinary-edge expansion.", "small"),
+        '</svg>',
+    ]
+    return "\n".join(lines) + "\n"
+
+
+def layer_lens_matrix() -> str:
+    rows = [
+        ("source asset/property", "asset and winding IDs", "terminal attachments", "nameplate + construction", "states, ratings, ownership", "source schema"),
+        ("canonical port–factor", "factor + port ownership", "typed junction incidence", "multi-port relation", "limits, controls, observations", "factor API / IR"),
+        ("optional edge realization", "generated source fibres", "virtual nodes + edges", "guarded equivalent", "lifted source constraints", "edge-algorithm adapter"),
+        ("equation / operator", "constraint ownership map", "variable incidence", "residuals or Y/MNA/tableau", "feasible set + objective", "solver formulation"),
+        ("support / algorithm graph", "external metadata only", "nonzero adjacency", "coupling pattern only", "not native", "sparse / graph / GNN"),
+    ]
+    lines = [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="900" viewBox="0 0 1500 900">',
+        '<title>Construction stages and semantic lenses form a matrix, not a ladder</title>',
+        '<desc>Five construction stages are rows and five question lenses are columns. Typed transformations cross rows, while each row can be inspected through identity, connectivity, electrical, decision, and computational lenses.</desc>',
+        '<rect width="1500" height="900" fill="white"/>',
+        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.head{font-size:16px;font-weight:bold}.body{font-size:13px}.small{font-size:12px;fill:#5f6b76}.row{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.cell{fill:#fbfcfd;stroke:#9aa5ad;stroke-width:1.5}.branch{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.warn{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.arrow{stroke:#17212b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}</style>',
+        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
+        txt(40, 44, "Construction stage × semantic lens", "title"),
+        txt(40, 72, "Rows say how the model was constructed; columns say which question is being asked. Software can span several rows.", "sub"),
+    ]
+    x0, y0, roww, cellw, rowh = 40, 160, 250, 230, 105
+    heads = ["identity / provenance", "connectivity", "electrical behaviour", "decisions / constraints", "software / computation"]
+    for j, head in enumerate(heads):
+        lines += [f'<rect x="{x0+roww+j*cellw}" y="105" width="{cellw}" height="55" class="branch"/>', txt(x0+roww+j*cellw+cellw/2, 138, head, "head", "middle")]
+    for i, row in enumerate(rows):
+        y = y0 + i * rowh
+        lines += [f'<rect x="{x0}" y="{y}" width="{roww}" height="{rowh}" class="row"/>', txt(x0+18, y+43, row[0], "head"), txt(x0+18, y+72, f"stage L{i}", "small")]
+        for j, value in enumerate(row[1:]):
+            x = x0 + roww + j * cellw
+            lines += [f'<rect x="{x}" y="{y}" width="{cellw}" height="{rowh}" class="cell"/>']
+            words = value.split(" ")
+            if len(words) > 3:
+                cut = len(words)//2
+                lines += [txt(x+cellw/2, y+45, " ".join(words[:cut]), "body", "middle"), txt(x+cellw/2, y+67, " ".join(words[cut:]), "body", "middle")]
+            else:
+                lines.append(txt(x+cellw/2, y+56, value, "body", "middle"))
+    lines += [
+        '<path d="M265 250 L265 280" class="arrow"/><path d="M265 355 L265 385" class="arrow"/><path d="M265 460 L265 490" class="arrow"/><path d="M265 565 L265 595" class="arrow"/>',
+        txt(245, 273, "canonicalize", "small", "end"), txt(245, 378, "optional compile", "small", "end"), txt(245, 483, "assemble", "small", "end"), txt(245, 588, "project support", "small", "end"),
+        '<rect x="40" y="720" width="1420" height="110" rx="14" class="warn"/>',
+        txt(65, 755, "Transformations are typed arrows, not extra layers", "head"),
+        txt(65, 785, "Projection, normalization, compilation, elimination, behavioural reduction, approximation, and graph surgery may branch at different rows.", "body"),
+        txt(65, 810, "Every branch declares its interface, generated objects, preservation dimensions, omissions, provenance, and recovery status.", "small"),
+        txt(40, 875, "No cell is universally ‘more expressive’: sufficiency is relative to the query family and declared transformation contract.", "small"),
+        '</svg>',
+    ]
+    return "\n".join(lines) + "\n"
+
+
 def main() -> None:
     outputs = {
         "exactness-classes": exactness_classes(),
@@ -976,6 +1116,9 @@ def main() -> None:
         "topology-projection-layers": topology_projection_layers(),
         "radial-clique-projection": radial_clique_projection(),
         "source-views-surgery": source_views_surgery(),
+        "transformer-graph-views": transformer_graph_views(),
+        "five-bus-transformer-lowering": five_bus_transformer_lowering(),
+        "layer-lens-matrix": layer_lens_matrix(),
     }
     for stem, content in outputs.items():
         (ASSETS / f"{stem}.svg").write_text(content)

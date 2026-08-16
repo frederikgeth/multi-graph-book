@@ -21,7 +21,9 @@ The central thesis is simple:
 Start with [One network, many graphs](@ref one-network-many-graphs), cross the
 [five-community vocabulary bridge](@ref one-network-five-languages), then
 follow the five-bus cycle example and [A first failure: heterogeneous parallel
-branches](@ref first-failure-parallel-branches). These
+branches](@ref first-failure-parallel-branches), then unpack the same topology
+kernel in [Five buses through a multi-port lowering](@ref
+five-bus-transformer-lowering). These
 chapters establish the recurring pattern: a representation may preserve a
 terminal equation while changing a decision-feasible set. Continue through
 [Formal representation frameworks](@ref formal-representation-frameworks),

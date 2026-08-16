@@ -81,6 +81,22 @@ review_date = ""
 unresolved_issue = "Lift the executable incidence and cycle objects to conductor-terminal graphs, state-conditioned topology decisions, and compiled multi-terminal factors."
 
 [[claim]]
+claim_id = "ARCH-FIVEBUS-XFMR-001"
+preservation_dimensions = ['structure', 'terminal_behavior', 'limits', 'state', 'provenance', 'numerical_structure']
+chapter = "docs/src/start/five-bus-transformer-lowering.md"
+claim_text = "In the recorded five-bus structural extension, one three-port transformer has an acyclic local factor-incidence and star realization, while eliminating the virtual star point yields a terminal clique with cycle rank one; embedded cycle counts differ across the declared factor-incidence, star, clique, member, and simple views without implying additional physical transformer loops."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_composed_five_bus_and_multiwinding_lowering_witness"
+citation_keys = []
+model_scope = "the scalar five-bus line topology plus a structural three-port transformer attached at j, l, and m, composed with the checked fixed-linear three-winding leakage and terminal-lift artifacts"
+assumptions = "the original cycle ranks remain scoped to the line-induced graph; the transformer extension is structural rather than a new AC solve; the three-winding star is the declared fixed-leakage special case; terminal clique edges exist where the composed coupling is structurally nonzero"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independently review the layer interfaces and extend the witness to evaluated four- and n-winding factors, non-diagonal reference matrices, connection-specific shunts, controls, and decision-preserving edge realizations."
+
+[[claim]]
 claim_id = "ARCH-NODAL-001"
 preservation_dimensions = ['structure', 'terminal_behavior', 'provenance']
 chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"

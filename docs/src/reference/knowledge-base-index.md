@@ -1,14 +1,14 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:d9d92c0be8a0923f5c8108d0f19a5cc612c736cf368e405c4fe18cb294a3e9e6 -->
+<!-- generated-from claims/claims.toml sha256:3097b33da089656fc0a90e228551a26dd887fbc848e617ed36c17f52c02572e1 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 82
-**Indexed chapters:** 32
+**Indexed claims:** 83
+**Indexed chapters:** 33
 
 ## Claims by type
 
@@ -22,11 +22,12 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `THESIS-001` — Representation adequacy is evaluated relative to declared observations, constraints, and decisions. | [Scope and thesis](../foundations/scope-and-thesis.md) | `self-checked` |
 | `TOPOLOGY-001` — For a fixed switch state, topological nodes are the connected components of the closed-switch connectivity graph; compiling them into bus--branch buses is a state-conditioned quotient that requires provenance and does not preserve switching decisions by itself. | [Node--breaker, bus--breaker, and topology processing](../foundations/node-breaker-topology-processing.md) | `self-checked` |
 
-### `empirical` (38)
+### `empirical` (39)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
 | `ARCH-CONDUCTOR-002` — The five-bus scalar line-identity fixture lifts to fourteen scalar endpoint ports, five terminal junctions, and seven two-port line factors; the lift retains the q/r parallel fibre and its extra cycle dimension while adding no multiconductor, switch, or transformer semantics. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `self-checked` |
+| `ARCH-FIVEBUS-XFMR-001` — In the recorded five-bus structural extension, one three-port transformer has an acyclic local factor-incidence and star realization, while eliminating the virtual star point yields a terminal clique with cycle rank one; embedded cycle counts differ across the declared factor-incidence, star, clique, member, and simple views without implying additional physical transformer loops. | [Five buses through a multi-port lowering](../start/five-bus-transformer-lowering.md) | `self-checked` |
 | `ARCH-PORT-001` — A minimal executable port--factor bundle instantiated from the running network validates typed port-to-junction and port-to-factor incidence, a three-port multiwinding factor, grounding as an explicit factor, and a many-to-many asset/electrical relation Λ. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `self-checked` |
 | `ARCH-PORT-002` — The five-bus identified scalar multigraph has a direct structural port--factor lift with five bus junctions, seven two-port scalar line factors, fourteen endpoint ports, and one asset-to-factor relation per identified line; parallel members q and r remain distinct factors despite sharing the same bus pair. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `self-checked` |
 | `COLLAPSE-002` — The generated Fortescue witness diagonalizes a circulant three-phase impedance matrix and preserves the positive-sequence subspace, while a non-circulant perturbation produces sequence mixing and a positive-subspace residual. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `self-checked` |
@@ -124,7 +125,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | Verification | Claims |
 | --- | ---: |
 | `independently-implemented` | 4 |
-| `self-checked` | 78 |
+| `self-checked` | 79 |
 
 ## Unresolved issues
 
@@ -134,6 +135,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `ARCH-CONDUCTOR-002` | Compare the scalar terminal lift with a full conductor-terminal factor evaluator and state-conditioned topology maps. |
 | `ARCH-DEGENERACY-001` | Specify utility-data remediation policies for duplicate or indistinguishable switch assets. |
 | `ARCH-DEGENERACY-002` | Connect diagnostics to standards-aware import remediation and quantify restricted-coordinate recovery policies. |
+| `ARCH-FIVEBUS-XFMR-001` | Independently review the layer interfaces and extend the witness to evaluated four- and n-winding factors, non-diagonal reference matrices, connection-specific shunts, controls, and decision-preserving edge realizations. |
 | `ARCH-LOWER-001` | Add a full evaluated multiwinding factor lowerer and independently review equation-preservation conditions. |
 | `ARCH-NODAL-001` | Classify identifiable and bounded ambiguity families under realistic line, transformer, shunt, catalog, measurement, and state constraints. |
 | `ARCH-PORT-001` | Lift the data witness to evaluated factor relations and independently review the architecture against a non-synthetic asset model. |
@@ -256,10 +258,11 @@ schema is normalised.
 | --- | --- | --- |
 | `VOCAB-BRIDGE-001` — Load-bearing statements use a preferred house term or qualified shorthand that declares the relevant representation, quantity, state, and preservation object; an unqualified term is unsafe when it can change the claim. | [One network, five languages](../start/one-network-five-languages.md) | `practice` |
 
-### `graph-and-topology` (15)
+### `graph-and-topology` (16)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
+| `ARCH-FIVEBUS-XFMR-001` — In the recorded five-bus structural extension, one three-port transformer has an acyclic local factor-incidence and star realization, while eliminating the virtual star point yields a terminal clique with cycle rank one; embedded cycle counts differ across the declared factor-incidence, star, clique, member, and simple views without implying additional physical transformer loops. | [Five buses through a multi-port lowering](../start/five-bus-transformer-lowering.md) | `empirical` |
 | `GRAPH-CYCLE-001` — The recorded connected five-bus bus--branch multigraph has seven identified lines, incidence rank four, and cycle-space dimension three; collapsing its parallel q/r pair to a simple edge reduces the cycle-space dimension to two, whereas the spanning-tree-plus-chords representation retains all three source dimensions. | [A five-bus multigraph: identities, cycles, and tree coordinates](../start/five-bus-cycle-spaces.md) | `theorem` |
 | `TR-GRAPH-001` — For a loopless identified multigraph and its simple endpoint projection, the multigraph cycle rank exceeds the simple-graph cycle rank by the sum over edge fibres of fibre size minus one; the lost dimensions are line-identity cycles supported on parallel fibres. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
 | `TR-GRAPH-002` — An identified line is a multigraph bridge exactly when its simple endpoint edge is a bridge and its parallel fibre is a singleton; consequently the identified multigraph is a forest exactly when its simple projection is a forest and every edge fibre is a singleton. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
@@ -300,7 +303,7 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `representation` (38)
+### `representation` (39)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -308,6 +311,7 @@ schema is normalised.
 | `ARCH-CONDUCTOR-002` — The five-bus scalar line-identity fixture lifts to fourteen scalar endpoint ports, five terminal junctions, and seven two-port line factors; the lift retains the q/r parallel fibre and its extra cycle dimension while adding no multiconductor, switch, or transformer semantics. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
 | `ARCH-DEGENERACY-001` — Duplicate ideal switches with identical terminal sets and state domains have a well-defined electrical connectivity quotient but an unresolved asset-attribution relation; the model should retain both identities and emit a diagnostic rather than invent protection, maintenance, or failure ownership. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `proposal` |
 | `ARCH-DEGENERACY-002` — The book proposes that missing grounding/reference declarations and rank-deficient active-state maps be treated as model-quality diagnostics; a compiler should refuse to infer a reference or invert a singular map without an additional declaration or restricted coordinate query. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `proposal` |
+| `ARCH-FIVEBUS-XFMR-001` — In the recorded five-bus structural extension, one three-port transformer has an acyclic local factor-incidence and star realization, while eliminating the virtual star point yields a terminal clique with cycle rank one; embedded cycle counts differ across the declared factor-incidence, star, clique, member, and simple views without implying additional physical transformer loops. | [Five buses through a multi-port lowering](../start/five-bus-transformer-lowering.md) | `empirical` |
 | `ARCH-LOWER-001` — A typed lowering from an identity-bearing n-port source graph to ordinary-edge incidence objects may preserve a declared equation relation while forgetting factor identity unless source fibres and provenance are retained. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `theorem` |
 | `ARCH-NODAL-001` — Assembly of typed linear factor stamps into a compound nodal operator is not generally injective: distinct admissible parallel-factor decompositions can produce an identical nodal operator and identical normalized assembly residuals. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-PORT-001` — A minimal executable port--factor bundle instantiated from the running network validates typed port-to-junction and port-to-factor incidence, a three-port multiwinding factor, grounding as an explicit factor, and a many-to-many asset/electrical relation Λ. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
@@ -343,7 +347,7 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `software-and-data` (19)
+### `software-and-data` (20)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -351,6 +355,7 @@ schema is normalised.
 | `ARCH-CONDUCTOR-002` — The five-bus scalar line-identity fixture lifts to fourteen scalar endpoint ports, five terminal junctions, and seven two-port line factors; the lift retains the q/r parallel fibre and its extra cycle dimension while adding no multiconductor, switch, or transformer semantics. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
 | `ARCH-DEGENERACY-001` — Duplicate ideal switches with identical terminal sets and state domains have a well-defined electrical connectivity quotient but an unresolved asset-attribution relation; the model should retain both identities and emit a diagnostic rather than invent protection, maintenance, or failure ownership. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `proposal` |
 | `ARCH-DEGENERACY-002` — The book proposes that missing grounding/reference declarations and rank-deficient active-state maps be treated as model-quality diagnostics; a compiler should refuse to infer a reference or invert a singular map without an additional declaration or restricted coordinate query. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `proposal` |
+| `ARCH-FIVEBUS-XFMR-001` — In the recorded five-bus structural extension, one three-port transformer has an acyclic local factor-incidence and star realization, while eliminating the virtual star point yields a terminal clique with cycle rank one; embedded cycle counts differ across the declared factor-incidence, star, clique, member, and simple views without implying additional physical transformer loops. | [Five buses through a multi-port lowering](../start/five-bus-transformer-lowering.md) | `empirical` |
 | `ARCH-LOWER-001` — A typed lowering from an identity-bearing n-port source graph to ordinary-edge incidence objects may preserve a declared equation relation while forgetting factor identity unless source fibres and provenance are retained. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `theorem` |
 | `ARCH-NODAL-001` — Assembly of typed linear factor stamps into a compound nodal operator is not generally injective: distinct admissible parallel-factor decompositions can produce an identical nodal operator and identical normalized assembly residuals. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-PORT-001` — A minimal executable port--factor bundle instantiated from the running network validates typed port-to-junction and port-to-factor incidence, a three-port multiwinding factor, grounding as an explicit factor, and a many-to-many asset/electrical relation Λ. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
@@ -446,6 +451,7 @@ schema is normalised.
 | `five-bus-cycle-space-analysis.json` | `GRAPH-CYCLE-001` — connected loopless scalar series bus-branch multigraph |
 | `five-bus-figure-manifest.json` | generated evidence |
 | `five-bus-port-factor-witness.json` | `ARCH-PORT-002` — experiments/generated/five-bus-cycle-space-analysis.json |
+| `five-bus-transformer-lowering-witness.json` | `ARCH-FIVEBUS-XFMR-001` — five-bus scalar line topology plus a structural three-port transformer extension attached at j, l, and m |
 | `five-bus-typed-kron-witness.json` | `TR-KRON-FIVE-001` — experiments/generated/five-bus-cycle-space-analysis.json |
 | `fixture-coverage-matrix.json` | `PKG-FIXTURE-001` — generated evidence |
 | `four-wire-impedance-model-ladder.json` | `IMPEDANCE-LADDER-001` — deterministic four-wire matrix fixture |

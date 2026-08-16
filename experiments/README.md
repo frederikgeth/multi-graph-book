@@ -28,6 +28,7 @@ julia --project=experiments experiments/run_multiconductor_parallel_ac.jl
 julia --project=experiments experiments/run_four_wire_parallel_ac.jl
 julia --project=experiments experiments/run_pi_four_wire_parallel_ac.jl
 julia --project=experiments experiments/run_five_bus_cycle_space.jl
+julia --project=experiments experiments/run_five_bus_transformer_lowering.jl
 julia --project=experiments experiments/run_running_network_cycle_space.jl
 julia --project=experiments experiments/run_translation_traps.jl
 julia --project=experiments experiments/run_narrow_circuit_transformations.jl

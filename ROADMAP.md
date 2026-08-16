@@ -1487,6 +1487,46 @@ the book's object and required qualifier, identify the unsafe inference, and
 reach the rigorous defining chapter without learning a second disconnected
 glossary.
 
+#### Multi-port lowering pedagogy — 2026-08-16
+
+The transformer discussion exposed a missing connection between the clean
+five-bus topology example, the canonical port--factor model, optional
+ordinary-edge realizations, equation/operator targets, and support graphs. The
+repair treats construction stage and semantic lens as orthogonal axes and
+makes structure loss visible at every lowering boundary.
+
+- [x] preserve the original five-bus line-induced graph as the stable topology
+  kernel rather than changing its incidence and cycle-space derivation;
+- [x] add a companion five-bus structural extension with one three-port
+  transformer attached at ``j``, ``l``, and ``m``;
+- [x] add a hash-bound executable witness comparing local and embedded
+  factor-incidence, generated-star, terminal-clique, member, and simple graph
+  cycle ranks;
+- [x] define the source-asset, canonical port--factor, optional edge,
+  equation/operator, and support stages together with the interface carried at
+  each stage;
+- [x] add generated transformer-unpacking, five-bus-lowering, and layer--lens
+  diagrams with explicit loss ledgers and monochrome-safe companions;
+- [x] state that direct factor stamping is the default branch and that an
+  ordinary-edge realization is a guarded compatibility target;
+- [x] separate the three-winding star/T special case from the generally full
+  ``(n-1)\times(n-1)`` reference impedance of the arbitrary-winding case;
+- [x] split the short Start Here argument route from the longer canonical-model
+  construction and running-case material in HTML and PDF navigation;
+- [ ] independently review the proposed layer-interface ledger and the
+  interpretation of factor-incidence versus terminal-support cycle counts;
+- [ ] extend the composed witness to an evaluated four-winding factor with a
+  non-diagonal reference matrix and to connection-specific shunts, grounding,
+  controls, and decision-preserving edge realizations;
+- [ ] test the layer--lens matrix against concrete APIs from power-system data,
+  optimization, sparse-matrix, and graph-learning software without assigning
+  an entire package to one representation stage.
+
+**Exit criterion:** a reader can follow one transformer from source identity to
+several valid target graphs, name the interface at each boundary, and explain
+why a tree-to-clique change does not create a physical loop or authorize new
+asset decisions.
+
 ## Deliberately deferred
 
 Lean formalization, broad category-theoretic claims, a full explicit-earth and

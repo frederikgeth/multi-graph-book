@@ -98,7 +98,10 @@ const PAGES_HTML = [
         "One network, five languages" => "start/one-network-five-languages.md",
         "A five-bus multigraph: identities, cycles, and tree coordinates" => "start/five-bus-cycle-spaces.md",
         "A first failure: heterogeneous parallel branches" => "start/first-failure-parallel-branches.md",
+        "Five buses through a multi-port lowering" => "start/five-bus-transformer-lowering.md",
         "Scope and thesis" => "foundations/scope-and-thesis.md",
+    ],
+    "Constructing the canonical model" => [
         "From source data to a canonical network model" => "foundations/source-to-canonical-model.md",
         "Load models and decision dependence" => "foundations/load-models-and-decision-dependence.md",
         "From conductor geometry to impedance fidelity" => "foundations/impedance-fidelity-ladder.md",
@@ -174,7 +177,10 @@ const PAGES_PDF = [
         "One network, five languages" => "start/one-network-five-languages.md",
         "A five-bus multigraph: identities, cycles, and tree coordinates" => "start/five-bus-cycle-spaces.md",
         "A first failure: heterogeneous parallel branches" => "start/first-failure-parallel-branches.md",
+        "Five buses through a multi-port lowering" => "start/five-bus-transformer-lowering.md",
         "Scope and thesis" => "foundations/scope-and-thesis.md",
+    ],
+    "Constructing the canonical model" => [
         "From source data to a canonical network model" => "foundations/source-to-canonical-model.md",
         "Load models and decision dependence" => "foundations/load-models-and-decision-dependence.md",
         "From conductor geometry to impedance fidelity" => "foundations/impedance-fidelity-ladder.md",

@@ -1,0 +1,682 @@
+{
+  "loss_ledger": [
+    {
+      "at_risk": [
+        "ownership",
+        "maintenance and common-mode failure",
+        "source nameplate semantics"
+      ],
+      "boundary": "source_asset→port_factor"
+    },
+    {
+      "at_risk": [
+        "factor arity",
+        "one-device identity",
+        "winding limits",
+        "tap and connection semantics",
+        "grounding and excitation placement"
+      ],
+      "boundary": "port_factor→ordinary_edge_realization"
+    },
+    {
+      "at_risk": [
+        "generated internal current",
+        "virtual-node provenance",
+        "source constraint ownership"
+      ],
+      "boundary": "ordinary_edge_realization→equation_operator"
+    },
+    {
+      "at_risk": [
+        "coefficients and signs",
+        "constitutive meaning",
+        "feasible-set and decision semantics"
+      ],
+      "boundary": "equation_operator→support_graph"
+    }
+  ],
+  "checks": {
+    "source_transformer_is_one_three_port_factor": true,
+    "embedded_clique_member_cycle_rank_is_six": true,
+    "embedded_clique_simple_cycle_rank_is_three": true,
+    "winding_current_and_internal_observations_remain_declared": true,
+    "local_star_is_acyclic": true,
+    "embedded_star_member_cycle_rank_is_five": true,
+    "three_winding_star_is_declared_special_case": true,
+    "embedded_incidence_cycle_rank_is_five": true,
+    "base_member_cycle_rank_is_three": true,
+    "local_clique_has_one_cycle": true,
+    "local_factor_incidence_is_acyclic": true,
+    "base_simple_cycle_rank_is_two": true
+  },
+  "all_checks_pass": true,
+  "embedded_views": {
+    "port_factor_incidence": {
+      "simple_cycle_rank": 5,
+      "member_cycle_rank": 5,
+      "simple_membership": {
+        "e_factor/line/wk": [
+          "incidence/line/w/from"
+        ],
+        "e_factor/line/rj": [
+          "incidence/line/r/to"
+        ],
+        "e_factor/line/wl": [
+          "incidence/line/w/to"
+        ],
+        "e_factor/line/ri": [
+          "incidence/line/r/from"
+        ],
+        "e_mtransformer/x1": [
+          "incidence/transformer/x1/port/3"
+        ],
+        "e_factor/line/vj": [
+          "incidence/line/v/to"
+        ],
+        "e_factor/line/ti": [
+          "incidence/line/t/to"
+        ],
+        "e_factor/line/xm": [
+          "incidence/line/x/to"
+        ],
+        "e_factor/line/tk": [
+          "incidence/line/t/from"
+        ],
+        "e_ltransformer/x1": [
+          "incidence/transformer/x1/port/2"
+        ],
+        "e_factor/line/qi": [
+          "incidence/line/q/to"
+        ],
+        "e_factor/line/sk": [
+          "incidence/line/s/to"
+        ],
+        "e_factor/line/qj": [
+          "incidence/line/q/from"
+        ],
+        "e_factor/line/sj": [
+          "incidence/line/s/from"
+        ],
+        "e_jtransformer/x1": [
+          "incidence/transformer/x1/port/1"
+        ],
+        "e_factor/line/xl": [
+          "incidence/line/x/from"
+        ],
+        "e_factor/line/vl": [
+          "incidence/line/v/from"
+        ]
+      },
+      "vertices": [
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "factor/line/q",
+        "factor/line/r",
+        "factor/line/s",
+        "factor/line/t",
+        "factor/line/v",
+        "factor/line/w",
+        "factor/line/x",
+        "transformer/x1"
+      ],
+      "edges": [
+        {
+          "id": "incidence/line/q/from",
+          "to": "factor/line/q",
+          "from": "j"
+        },
+        {
+          "id": "incidence/line/q/to",
+          "to": "i",
+          "from": "factor/line/q"
+        },
+        {
+          "id": "incidence/line/r/from",
+          "to": "factor/line/r",
+          "from": "i"
+        },
+        {
+          "id": "incidence/line/r/to",
+          "to": "j",
+          "from": "factor/line/r"
+        },
+        {
+          "id": "incidence/line/s/from",
+          "to": "factor/line/s",
+          "from": "j"
+        },
+        {
+          "id": "incidence/line/s/to",
+          "to": "k",
+          "from": "factor/line/s"
+        },
+        {
+          "id": "incidence/line/t/from",
+          "to": "factor/line/t",
+          "from": "k"
+        },
+        {
+          "id": "incidence/line/t/to",
+          "to": "i",
+          "from": "factor/line/t"
+        },
+        {
+          "id": "incidence/line/v/from",
+          "to": "factor/line/v",
+          "from": "l"
+        },
+        {
+          "id": "incidence/line/v/to",
+          "to": "j",
+          "from": "factor/line/v"
+        },
+        {
+          "id": "incidence/line/w/from",
+          "to": "factor/line/w",
+          "from": "k"
+        },
+        {
+          "id": "incidence/line/w/to",
+          "to": "l",
+          "from": "factor/line/w"
+        },
+        {
+          "id": "incidence/line/x/from",
+          "to": "factor/line/x",
+          "from": "l"
+        },
+        {
+          "id": "incidence/line/x/to",
+          "to": "m",
+          "from": "factor/line/x"
+        },
+        {
+          "id": "incidence/transformer/x1/port/1",
+          "to": "transformer/x1",
+          "from": "j"
+        },
+        {
+          "id": "incidence/transformer/x1/port/2",
+          "to": "transformer/x1",
+          "from": "l"
+        },
+        {
+          "id": "incidence/transformer/x1/port/3",
+          "to": "transformer/x1",
+          "from": "m"
+        }
+      ]
+    },
+    "terminal_clique": {
+      "simple_cycle_rank": 3,
+      "member_cycle_rank": 6,
+      "simple_membership": {
+        "e_kl": [
+          "line/w"
+        ],
+        "e_jl": [
+          "generated/x1/clique/1-2",
+          "line/v"
+        ],
+        "e_jm": [
+          "generated/x1/clique/1-3"
+        ],
+        "e_ik": [
+          "line/t"
+        ],
+        "e_ij": [
+          "line/q",
+          "line/r"
+        ],
+        "e_jk": [
+          "line/s"
+        ],
+        "e_lm": [
+          "generated/x1/clique/2-3",
+          "line/x"
+        ]
+      },
+      "vertices": [
+        "i",
+        "j",
+        "k",
+        "l",
+        "m"
+      ],
+      "edges": [
+        {
+          "id": "line/q",
+          "to": "i",
+          "from": "j"
+        },
+        {
+          "id": "line/r",
+          "to": "j",
+          "from": "i"
+        },
+        {
+          "id": "line/s",
+          "to": "k",
+          "from": "j"
+        },
+        {
+          "id": "line/t",
+          "to": "i",
+          "from": "k"
+        },
+        {
+          "id": "line/v",
+          "to": "j",
+          "from": "l"
+        },
+        {
+          "id": "line/w",
+          "to": "l",
+          "from": "k"
+        },
+        {
+          "id": "line/x",
+          "to": "m",
+          "from": "l"
+        },
+        {
+          "id": "generated/x1/clique/1-2",
+          "to": "l",
+          "from": "j"
+        },
+        {
+          "id": "generated/x1/clique/1-3",
+          "to": "m",
+          "from": "j"
+        },
+        {
+          "id": "generated/x1/clique/2-3",
+          "to": "m",
+          "from": "l"
+        }
+      ]
+    },
+    "compiled_star": {
+      "simple_cycle_rank": 4,
+      "member_cycle_rank": 5,
+      "simple_membership": {
+        "e_generated/x1/internalm": [
+          "generated/x1/star/w3"
+        ],
+        "e_kl": [
+          "line/w"
+        ],
+        "e_jl": [
+          "line/v"
+        ],
+        "e_generated/x1/internall": [
+          "generated/x1/star/w2"
+        ],
+        "e_ik": [
+          "line/t"
+        ],
+        "e_ij": [
+          "line/q",
+          "line/r"
+        ],
+        "e_generated/x1/internalj": [
+          "generated/x1/star/w1"
+        ],
+        "e_jk": [
+          "line/s"
+        ],
+        "e_lm": [
+          "line/x"
+        ]
+      },
+      "vertices": [
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "generated/x1/internal"
+      ],
+      "edges": [
+        {
+          "id": "line/q",
+          "to": "i",
+          "from": "j"
+        },
+        {
+          "id": "line/r",
+          "to": "j",
+          "from": "i"
+        },
+        {
+          "id": "line/s",
+          "to": "k",
+          "from": "j"
+        },
+        {
+          "id": "line/t",
+          "to": "i",
+          "from": "k"
+        },
+        {
+          "id": "line/v",
+          "to": "j",
+          "from": "l"
+        },
+        {
+          "id": "line/w",
+          "to": "l",
+          "from": "k"
+        },
+        {
+          "id": "line/x",
+          "to": "m",
+          "from": "l"
+        },
+        {
+          "id": "generated/x1/star/w1",
+          "to": "generated/x1/internal",
+          "from": "j"
+        },
+        {
+          "id": "generated/x1/star/w2",
+          "to": "generated/x1/internal",
+          "from": "l"
+        },
+        {
+          "id": "generated/x1/star/w3",
+          "to": "generated/x1/internal",
+          "from": "m"
+        }
+      ]
+    }
+  },
+  "model_scope": "five-bus scalar line topology plus a structural three-port transformer extension attached at j, l, and m",
+  "transformer_extension": {
+    "asset_id": "transformer/x1",
+    "local_views": {
+      "port_factor_incidence": {
+        "simple_cycle_rank": 0,
+        "member_cycle_rank": 0,
+        "simple_membership": {
+          "e_transformer/x1transformer/x1/port/1": [
+            "incidence/transformer/x1/port/1"
+          ],
+          "e_transformer/x1transformer/x1/port/2": [
+            "incidence/transformer/x1/port/2"
+          ],
+          "e_transformer/x1transformer/x1/port/3": [
+            "incidence/transformer/x1/port/3"
+          ]
+        },
+        "vertices": [
+          "transformer/x1",
+          "transformer/x1/port/1",
+          "transformer/x1/port/2",
+          "transformer/x1/port/3"
+        ],
+        "edges": [
+          {
+            "id": "incidence/transformer/x1/port/1",
+            "to": "transformer/x1/port/1",
+            "from": "transformer/x1"
+          },
+          {
+            "id": "incidence/transformer/x1/port/2",
+            "to": "transformer/x1/port/2",
+            "from": "transformer/x1"
+          },
+          {
+            "id": "incidence/transformer/x1/port/3",
+            "to": "transformer/x1/port/3",
+            "from": "transformer/x1"
+          }
+        ]
+      },
+      "terminal_clique": {
+        "simple_cycle_rank": 1,
+        "member_cycle_rank": 1,
+        "simple_membership": {
+          "e_jl": [
+            "generated/x1/clique/1-2"
+          ],
+          "e_jm": [
+            "generated/x1/clique/1-3"
+          ],
+          "e_lm": [
+            "generated/x1/clique/2-3"
+          ]
+        },
+        "vertices": [
+          "j",
+          "l",
+          "m"
+        ],
+        "edges": [
+          {
+            "id": "generated/x1/clique/1-2",
+            "to": "l",
+            "from": "j"
+          },
+          {
+            "id": "generated/x1/clique/1-3",
+            "to": "m",
+            "from": "j"
+          },
+          {
+            "id": "generated/x1/clique/2-3",
+            "to": "m",
+            "from": "l"
+          }
+        ]
+      },
+      "star_realization": {
+        "simple_cycle_rank": 0,
+        "member_cycle_rank": 0,
+        "simple_membership": {
+          "e_generated/x1/internalm": [
+            "generated/x1/star/w3"
+          ],
+          "e_generated/x1/internall": [
+            "generated/x1/star/w2"
+          ],
+          "e_generated/x1/internalj": [
+            "generated/x1/star/w1"
+          ]
+        },
+        "vertices": [
+          "j",
+          "l",
+          "m",
+          "generated/x1/internal"
+        ],
+        "edges": [
+          {
+            "id": "generated/x1/star/w1",
+            "to": "generated/x1/internal",
+            "from": "j"
+          },
+          {
+            "id": "generated/x1/star/w2",
+            "to": "generated/x1/internal",
+            "from": "l"
+          },
+          {
+            "id": "generated/x1/star/w3",
+            "to": "generated/x1/internal",
+            "from": "m"
+          }
+        ]
+      }
+    },
+    "attachments": {
+      "transformer/x1/port/2": "l",
+      "transformer/x1/port/1": "j",
+      "transformer/x1/port/3": "m"
+    }
+  },
+  "witness_id": "ARCH-FIVEBUS-XFMR-001",
+  "layers": [
+    {
+      "interface": "asset and winding identity, attachments, state, ratings, provenance",
+      "objects": [
+        "transformer/x1",
+        "x1/winding/1",
+        "x1/winding/2",
+        "x1/winding/3"
+      ],
+      "id": "source_asset"
+    },
+    {
+      "interface": "ordered winding voltage/current ports, behavioural relation, limits, controls, observations",
+      "objects": [
+        "transformer/x1",
+        "transformer/x1/port/1",
+        "transformer/x1/port/2",
+        "transformer/x1/port/3"
+      ],
+      "id": "port_factor"
+    },
+    {
+      "interface": "boundary buses, generated IDs, source fibre, winding-current recovery",
+      "objects": [
+        "generated/x1/internal",
+        "generated/x1/star/w1",
+        "generated/x1/star/w2",
+        "generated/x1/star/w3"
+      ],
+      "id": "ordinary_edge_realization"
+    },
+    {
+      "interface": "coordinate order, residual equations, constraint ownership, recovery operator",
+      "objects": [
+        "direct factor block",
+        "terminal admittance block"
+      ],
+      "id": "equation_operator"
+    },
+    {
+      "interface": "block order and numerical-zero policy only",
+      "objects": [
+        "terminal coupling nonzeros"
+      ],
+      "id": "support_graph"
+    }
+  ],
+  "maps": [
+    {
+      "status": "retains transformer and winding identity",
+      "id": "C_x1",
+      "to": "port_factor",
+      "from": "source_asset",
+      "type": "canonicalization"
+    },
+    {
+      "status": "default exact branch for the declared fixed-linear factor",
+      "id": "A_x1",
+      "to": "equation_operator",
+      "from": "port_factor",
+      "type": "direct stamping"
+    },
+    {
+      "status": "optional three-winding star branch with generated objects",
+      "id": "L_x1",
+      "to": "ordinary_edge_realization",
+      "from": "port_factor",
+      "type": "guarded compilation"
+    },
+    {
+      "status": "creates terminal clique support and requires recovery",
+      "id": "R_internal",
+      "to": "equation_operator",
+      "from": "ordinary_edge_realization",
+      "type": "behavioural elimination"
+    },
+    {
+      "status": "forgets coefficients, decomposition, limits, and physical identity",
+      "id": "S",
+      "to": "support_graph",
+      "from": "equation_operator",
+      "type": "support projection"
+    }
+  ],
+  "interpretation": "The extension does not assign one cycle rank to the transformer. One source asset becomes one three-port factor, an optional acyclic local star, or a cyclic terminal clique; embedded cycle counts are properties of those declared target graphs, not extra physical transformer loops.",
+  "base_line_graph": {
+    "simple_cycle_rank": 2,
+    "member_cycle_rank": 3,
+    "simple_membership": {
+      "e_kl": [
+        "line/w"
+      ],
+      "e_jl": [
+        "line/v"
+      ],
+      "e_ik": [
+        "line/t"
+      ],
+      "e_ij": [
+        "line/q",
+        "line/r"
+      ],
+      "e_jk": [
+        "line/s"
+      ],
+      "e_lm": [
+        "line/x"
+      ]
+    },
+    "vertices": [
+      "i",
+      "j",
+      "k",
+      "l",
+      "m"
+    ],
+    "edges": [
+      {
+        "id": "line/q",
+        "to": "i",
+        "from": "j"
+      },
+      {
+        "id": "line/r",
+        "to": "j",
+        "from": "i"
+      },
+      {
+        "id": "line/s",
+        "to": "k",
+        "from": "j"
+      },
+      {
+        "id": "line/t",
+        "to": "i",
+        "from": "k"
+      },
+      {
+        "id": "line/v",
+        "to": "j",
+        "from": "l"
+      },
+      {
+        "id": "line/w",
+        "to": "l",
+        "from": "k"
+      },
+      {
+        "id": "line/x",
+        "to": "m",
+        "from": "l"
+      }
+    ]
+  },
+  "source_dependencies": {
+    "experiments/generated/five-bus-cycle-space-analysis.json": "34c007db2508b0643064bfeee09ab61ff76b7d1eb3a28274397bc49ca1795b2f",
+    "experiments/generated/multiwinding-leakage-compilation-certificate.json": "eb3103e59cbf6c7978bbd8d91dbea3478171b8b631be562acc56fbfb1ef26b23",
+    "experiments/generated/multiwinding-terminal-lift-witness.json": "0eb9d72e23312e882e9b2fbf8d998227ea0b786bcdf6c1f9c9a36fa959779f32"
+  },
+  "schema_version": "0.1.0"
+}

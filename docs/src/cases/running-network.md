@@ -143,6 +143,10 @@ The first exact compilation of the fixture's pairwise leakage data is developed 
 [Multiwinding leakage reference compilation](@ref multiwinding-leakage-reference-compilation).
 Its connection to all eleven external winding terminals is developed in
 [Multiwinding terminal leakage assembly](@ref multiwinding-terminal-leakage-assembly).
+The earlier [five-bus multi-port lowering](@ref
+five-bus-transformer-lowering) reuses this transformer's checked interface as a
+structural teaching extension; it does not replace or relocate the numerical
+running fixture.
 An explicitly marked illustrative extension then exercises excitation,
 transformer-internal grounding, and fixed transfer serialization in
 [Fixed-linear transformer factor completion](@ref
