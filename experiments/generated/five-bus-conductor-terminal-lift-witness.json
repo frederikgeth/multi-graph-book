@@ -65,7 +65,7 @@
             "from": "k/scalar"
         },
         {
-            "id": "line/x",
+            "id": "line/u",
             "to": "m/scalar",
             "from": "l/scalar"
         }
@@ -138,11 +138,11 @@
             "arity": 2
         },
         {
-            "source_asset": "line/x",
-            "id": "line/x",
+            "source_asset": "line/u",
+            "id": "line/u",
             "ports": [
-                "line/x/port/from",
-                "line/x/port/to"
+                "line/u/port/from",
+                "line/u/port/to"
             ],
             "type": "scalar_series_line",
             "arity": 2
@@ -157,7 +157,7 @@
                 "line/v"
             ],
             "e_l/scalarm/scalar": [
-                "line/x"
+                "line/u"
             ],
             "e_i/scalarj/scalar": [
                 "line/q",
@@ -312,8 +312,8 @@
             "terminal_order": [
                 "scalar"
             ],
-            "id": "line/x/port/from",
-            "factor": "line/x",
+            "id": "line/u/port/from",
+            "factor": "line/u",
             "variable_space": "V₁×I₁"
         },
         {
@@ -323,8 +323,8 @@
             "terminal_order": [
                 "scalar"
             ],
-            "id": "line/x/port/to",
-            "factor": "line/x",
+            "id": "line/u/port/to",
+            "factor": "line/u",
             "variable_space": "V₁×I₁"
         }
     ],
@@ -360,8 +360,8 @@
             "relation": "realizes oriented scalar line relation"
         },
         {
-            "electrical": "line/x",
-            "asset": "line/x",
+            "electrical": "line/u",
+            "asset": "line/u",
             "relation": "realizes oriented scalar line relation"
         }
     ]

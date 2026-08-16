@@ -27,7 +27,7 @@ G_L=(\mathcal B,\mathcal L,\partial),
 \qquad
 \mathcal B=\{i,j,k,l,m\},
 \qquad
-\mathcal L=\{q,r,s,t,v,w,x\}.
+\mathcal L=\{q,r,s,t,u,v,w\}.
 ```
 
 Its member cycle rank remains ``\mu_L=3`` and its simple projection remains at
@@ -54,10 +54,11 @@ the five-bus drawing creates a new validated power-flow case.
 
 ![The stable five-bus line graph extended by one three-port transformer and two guarded target constructions.](../assets/five-bus-transformer-lowering.png)
 
-The first panel is still ``G_L``. The second adds one factor of arity three,
-not three source lines. The third and fourth are generated targets. Their
-different cycle ranks do not contradict one another because their edge sets do
-not have the same semantics.
+The first panel is still ``G_L`` and shows both members ``q`` and ``r`` of its
+parallel fibre. The second adds one factor of arity three, not three source
+lines. The third and fourth are generated targets. Some ranks coincide and
+others differ; neither fact establishes semantic equivalence because the edge
+and vertex types are different.
 
 ## One transformer, several legitimate graphs
 
@@ -99,11 +100,13 @@ invent asset identities, states, and permissible decisions.
 
 ### Terminal clique after elimination
 
-Eliminating ``\nu_{x_1}`` can produce direct pairwise terminal coupling. If all
-three off-diagonal blocks are structurally nonzero, its support graph is
-``K_3`` and has cycle rank one. The cycle is an algebraic coupling cycle. It is
-not evidence that a new circulating power-system route appeared inside the
-transformer.
+Eliminating ``\nu_{x_1}`` generically produces direct pairwise terminal
+coupling. For generic pairwise leakage data all three off-diagonal blocks are
+structurally nonzero, so the support graph is ``K_3`` and has cycle rank one.
+A proper subgraph requires structural decoupling or an exceptional numerical
+cancellation and must be justified from the coefficients. The cycle is an
+algebraic coupling cycle, not evidence that a new circulating power-system
+route appeared inside the transformer.
 
 !!! warning "Graph-theory trap"
     *The transformer is a tree* and *the transformer contains a cycle* can both
@@ -129,19 +132,25 @@ local clique has ``n`` vertices and ``\binom n2`` edges, hence
 =\frac{(n-1)(n-2)}{2}.
 ```
 
-For ``n=3``, the two counts are zero and one. This is a statement about two
-graph constructions, not a claim that elimination changes the physical asset.
-If a coupling block is structurally absent or cancels numerically, the support
-graph is a subgraph of the clique and the corresponding count must be
-recomputed.
+For ``n=3``, the two local counts are zero and one. The complete clique is the
+generic terminal support; if a coupling block is structurally absent or
+cancels numerically, the exceptional subgraph and its count must be declared.
+This is a statement about graph constructions, not a claim that elimination
+changes the physical asset.
 
 Embedding the transformer into an already connected graph makes the same point
-more forcefully. A generated star attached at ``n`` existing vertices adds
-``n`` member edges and one virtual vertex, increasing member cycle rank by
-``n-1``. A complete generated clique adds ``\binom n2`` identified member
-edges. A simple projection may add fewer adjacencies where the source already
-contains an edge between two attachment buses. Therefore the phrase *the
-transformer adds two cycles* is no safer than *the network is radial* without a
+more forcefully. Direct factor stamping adds no ordinary bus--branch object, so
+the line graph has ``\Delta\mu=0``. A factor vertex joined to ``n`` existing
+attachment vertices and a generated star both add ``n`` member edges and one
+vertex, so each has ``\Delta\mu=n-1``. Their equal count does **not** make their
+vertices equivalent: one is an equation/factor object and the other is a
+generated electrical coordinate. A complete generated clique instead adds
+``\binom n2`` identified member edges, hence ``\Delta\mu=\binom n2``. For three
+ports these increments are respectively ``0``, ``2``, ``2``, and ``3``.
+They can all encode the same declared terminal behaviour under their guards.
+A simple projection may add fewer adjacencies where the source already contains
+an edge between two attachment buses. Therefore the phrase *the transformer
+adds two cycles* is no safer than *the network is radial* without a
 representation qualifier.
 
 The recorded five-bus extension gives:
@@ -238,10 +247,14 @@ are in [Multiwinding leakage reference compilation](@ref
 multiwinding-leakage-reference-compilation).
 
 Even for three windings, a star arm can have negative reactance while the
-reference reactance matrix remains positive semidefinite. Reinterpreting the
-arm as a conventional line can consequently trigger an invalid componentwise
-passivity check. The invariant guard belongs to the compiled matrix relation,
-not to the visual intuition of three ordinary lines.
+reference reactance matrix remains positive semidefinite. The composed witness
+uses positive pair-test reactances ``(x_{12},x_{13},x_{23})=(1,1,3)\ \Omega``.
+Its generated star coordinates are ``(-0.5,1.5,1.5)\ \Omega`` in reactance,
+while the eigenvalues of the reference reactance matrix are
+``(0.5,1.5)\ \Omega``. Reinterpreting the negative arm as a conventional line
+would therefore trigger an invalid componentwise passivity rejection even
+though the invariant matrix guard passes. The guard belongs to the compiled
+matrix relation, not to the visual intuition of three ordinary lines.
 
 ## Executable composition and evidence boundary
 
@@ -255,11 +268,11 @@ existing evidence objects:
 - the exact pairwise-leakage reference compilation.
 
 Its checks verify the local and embedded cycle counts, one-factor/three-port
-identity, the declared three-winding special case, winding identity, and the
-continued presence of grounding and current-limit observations. This is direct
-evidence for the structural maps and loss ledger. It is not a new AC solve, a
-general ``n``-port realizability theorem, or permission to compile every
-transformer into ordinary edges.
+identity, the declared three-winding special case, the numerical negative-arm
+guard, winding identity, and the continued presence of grounding and
+current-limit observations. This is direct evidence for the structural maps
+and loss ledger. It is not a new AC solve, a general ``n``-port realizability
+theorem, or permission to compile every transformer into ordinary edges.
 
 The detailed terminal connection and current-recovery equations remain in
 [Multiwinding terminal leakage assembly](@ref

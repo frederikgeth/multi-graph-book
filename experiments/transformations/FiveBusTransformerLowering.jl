@@ -84,6 +84,14 @@ function five_bus_transformer_lowering_witness(root=normpath(joinpath(@__DIR__, 
     )
 
     three_special = leakage["evidence"]["three_winding_special_case"]
+    negative_arm = leakage["evidence"]["negative_star_arm_witness"]
+    negative_arm_impedances = negative_arm["star_arm_impedances_ohm"]
+    minimum_star_reactance = minimum(
+        Float64(value["imag"]) for value in values(negative_arm_impedances)
+    )
+    minimum_matrix_reactance_eigenvalue = minimum(
+        Float64.(negative_arm["reactance_eigenvalues"])
+    )
     lift_checks = lift["checks"]
     checks = Dict(
         "base_member_cycle_rank_is_three" => base["member_cycle_rank"] == 3,
@@ -97,6 +105,9 @@ function five_bus_transformer_lowering_witness(root=normpath(joinpath(@__DIR__, 
         "embedded_clique_member_cycle_rank_is_six" => clique["member_cycle_rank"] == 6,
         "embedded_clique_simple_cycle_rank_is_three" => clique["simple_cycle_rank"] == 3,
         "three_winding_star_is_declared_special_case" => three_special["applies"] === true,
+        "negative_star_arm_is_retained" => minimum_star_reactance < 0,
+        "reference_reactance_matrix_remains_positive_semidefinite" =>
+            minimum_matrix_reactance_eigenvalue ≥ -1.0e-12,
         "winding_current_and_internal_observations_remain_declared" =>
             lift_checks["winding_identity_preserved"] === true &&
             lift_checks["internal_grounding_is_separate_observation"] === true &&
@@ -135,6 +146,14 @@ function five_bus_transformer_lowering_witness(root=normpath(joinpath(@__DIR__, 
         ),
         "base_line_graph" => base,
         "transformer_extension" => Dict("asset_id" => "transformer/x1", "attachments" => attachments, "local_views" => local_views),
+        "negative_star_arm_guard" => Dict(
+            "star_arm_impedances_ohm" => negative_arm_impedances,
+            "minimum_star_reactance_ohm" => minimum_star_reactance,
+            "reference_reactance_eigenvalues_ohm" => negative_arm["reactance_eigenvalues"],
+            "minimum_reference_reactance_eigenvalue_ohm" => minimum_matrix_reactance_eigenvalue,
+            "invalid_componentwise_test" => "imag(z_k) >= 0 for every generated star arm",
+            "valid_invariant_test" => negative_arm["guard"],
+        ),
         "embedded_views" => Dict("port_factor_incidence" => incidence, "compiled_star" => star, "terminal_clique" => clique),
         "layers" => layers,
         "maps" => maps,

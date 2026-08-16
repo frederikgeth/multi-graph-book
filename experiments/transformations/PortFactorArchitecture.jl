@@ -113,7 +113,7 @@ function five_bus_port_factor_bundle()
     edges = [
         ("q", "j", "i"), ("r", "i", "j"), ("s", "j", "k"),
         ("t", "k", "i"), ("v", "l", "j"), ("w", "k", "l"),
-        ("x", "l", "m"),
+        ("u", "l", "m"),
     ]
     buses = ["i", "j", "k", "l", "m"]
     ports = Dict{String,Any}[]

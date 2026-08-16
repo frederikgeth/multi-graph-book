@@ -401,7 +401,7 @@ model, or a standards-aligned grounding result.
 The five-bus companion
 `experiments/generated/five-bus-typed-kron-witness.json` covers the scalar
 pendant case directly. Eliminating bus ``m`` through its sole incident line
-``x`` gives the same retained ``Y``-bus as deleting that leaf line from the
+``u`` gives the same retained ``Y``-bus as deleting that leaf line from the
 graph, and the recovered boundary current matches the full nodal relation to
 machine precision. This is claim `TR-KRON-FIVE-001`. Because the eliminated
 block is a pendant scalar branch with no independent internal injection, this
@@ -412,8 +412,8 @@ The same witness also eliminates the non-pendant bus ``\ell`` while retaining
 ``i,j,k,m``. Boundary-current recovery remains exact, but the Schur complement
 creates retained support on ``j-m`` and ``k-m``. These are fill edges: they are
 couplings in the reduced relation, not automatically new physical lines.
-The recovered ``x``-branch current is exact as well, but a deliberately tight
-declared ``x``-limit is violated by the recorded state. This is claim
+The recovered ``u``-branch current is exact as well, but a deliberately tight
+declared ``u``-limit is violated by the recorded state. This is claim
 `TR-KRON-FIVE-002` and is the small scalar analogue of the ordering, fill-in,
 and retained-constraint consequences discussed later in the numerical chapter.
 

@@ -791,8 +791,8 @@ def main() -> int:
         "non_pendant_boundary_current_recovery",
         "non_pendant_fill_jm_is_present",
         "non_pendant_fill_km_is_present",
-        "recovered_line_x_current_is_exact",
-        "tight_line_x_limit_is_not_satisfied",
+        "recovered_line_u_current_is_exact",
+        "tight_line_u_limit_is_not_satisfied",
     ):
         if kron_checks.get(name) is not True:
             errors.append(f"five-bus non-pendant Kron check failed: {name}")
@@ -1787,7 +1787,7 @@ def main() -> int:
         errors.append("five-bus source cycle-space invariants changed")
     if source_cycle.get("incidence_cycle_residual") != 0:
         errors.append("five-bus fundamental cycles are not in the incidence nullspace")
-    if source_cycle.get("bridges") != ["x"]:
+    if source_cycle.get("bridges") != ["u"]:
         errors.append("five-bus bridge set changed")
     if simple_cycle.get("cycle_rank") != 2 or simple_cycle.get("lost_cycle_dimension") != 1:
         errors.append("five-bus simple-projection cycle-space invariants changed")

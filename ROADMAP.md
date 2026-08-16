@@ -351,7 +351,7 @@ below for prioritization.
   and a direct scalar typed-Kron check for its pendant bus ``m``,
   extended with a non-pendant ``l`` elimination that records retained
   Schur-complement fill edges and an exactly recovered but deliberately
-  violated ``x``-branch limit,
+  violated ``u``-branch limit,
   while remaining direct-coverage rows stay open rather than being implied
   by synthetic witnesses;
   - the running fixture now has direct line-identity cycle evidence: its
@@ -1513,8 +1513,19 @@ makes structure loss visible at every lowering boundary.
   ``(n-1)\times(n-1)`` reference impedance of the arbitrary-winding case;
 - [x] split the short Start Here argument route from the longer canonical-model
   construction and running-case material in HTML and PDF navigation;
-- [ ] independently review the proposed layer-interface ledger and the
+- [x] independently review the proposed layer-interface ledger and the
   interpretation of factor-incidence versus terminal-support cycle counts;
+- [x] close the 2026-08-16 review corrections: remove the five-bus line/
+  transformer ``x`` collision by renaming the pendant line ``u``; distinguish
+  equal cycle ranks from equal semantics; show the parallel pair in the
+  flagship figure; state that full ``K_3`` terminal support is generic; and
+  compose the numerical negative-star-arm guard into the witness;
+- [x] type ``\pi_\sigma`` as a state-conditioned edge-contraction quotient,
+  add it to the principal map table with reciprocal topology-processing links,
+  and distinguish exact query factorization from inner, outer, and
+  scenario-approximate sufficiency;
+- [x] require a boundary reduction to declare its internal-injection model
+  rather than hiding that load-bearing assumption under admissible inputs;
 - [ ] extend the composed witness to an evaluated four-winding factor with a
   non-diagonal reference matrix and to connection-specific shunts, grounding,
   controls, and decision-preserving edge realizations;

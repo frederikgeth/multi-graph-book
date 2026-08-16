@@ -49,7 +49,7 @@
         "parent": "five-bus-multigraph"
       },
       {
-        "child": "line/x",
+        "child": "line/u",
         "parent": "five-bus-multigraph"
       }
     ],
@@ -67,8 +67,8 @@
       "line/v/port/to",
       "line/w/port/from",
       "line/w/port/to",
-      "line/x/port/from",
-      "line/x/port/to"
+      "line/u/port/from",
+      "line/u/port/to"
     ],
     "factors": [
       {
@@ -144,15 +144,15 @@
         ]
       },
       {
-        "id": "line/x",
+        "id": "line/u",
         "factor_type": "scalar_series_line",
         "ports": [
-          "line/x/port/from",
-          "line/x/port/to"
+          "line/u/port/from",
+          "line/u/port/to"
         ],
-        "relation": "I_x = Y_x (U_l − U_m)",
+        "relation": "I_u = Y_u (U_l − U_m)",
         "source_assets": [
-          "line/x"
+          "line/u"
         ]
       }
     ],
@@ -279,20 +279,20 @@
       },
       {
         "junction": "l",
-        "id": "line/x/port/from",
-        "factor": "line/x",
+        "id": "line/u/port/from",
+        "factor": "line/u",
         "source_assets": [
-          "line/x"
+          "line/u"
         ],
         "terminal": "scalar",
         "variable_space": "V×I"
       },
       {
         "junction": "m",
-        "id": "line/x/port/to",
-        "factor": "line/x",
+        "id": "line/u/port/to",
+        "factor": "line/u",
         "source_assets": [
-          "line/x"
+          "line/u"
         ],
         "terminal": "scalar",
         "variable_space": "V×I"
@@ -340,9 +340,9 @@
       "relation_type": "realizes"
     },
     {
-      "electrical": "line/x",
+      "electrical": "line/u",
       "scope": "line identity, orientation, and limit",
-      "asset": "line/x",
+      "asset": "line/u",
       "relation_type": "realizes"
     }
   ],

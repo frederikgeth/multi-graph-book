@@ -15,7 +15,7 @@
 <rect x="1130" y="115" width="335" height="570" rx="14" class="panel"/>
 <text x="1152" y="153" class="head" text-anchor="start">4  eliminated terminal clique</text>
 <circle cx="90" cy="330" r="20" class="bus"/><circle cx="180" cy="235" r="20" class="bus"/><circle cx="180" cy="425" r="20" class="bus"/><circle cx="280" cy="330" r="20" class="bus"/><circle cx="335" cy="425" r="20" class="bus"/>
-<path d="M107 319 C130 280 150 270 167 251" class="parallel"/><path d="M107 341 C130 380 150 390 167 409" class="parallel"/>
+<path d="M107 315 C129 278 148 265 167 249" class="parallel"/><path d="M111 323 C136 290 154 276 171 253" class="parallel"/><path d="M107 341 C130 380 150 390 167 409" class="parallel"/>
 <line x1="180" y1="255" x2="180" y2="405" class="line"/><line x1="199" y1="242" x2="262" y2="318" class="line"/><line x1="199" y1="418" x2="262" y2="342" class="line"/><line x1="300" y1="348" x2="323" y2="407" class="line"/>
 <text x="90" y="336" class="body" text-anchor="middle">i</text>
 <text x="180" y="241" class="body" text-anchor="middle">j</text>
@@ -23,7 +23,7 @@
 <text x="280" y="336" class="body" text-anchor="middle">l</text>
 <text x="335" y="431" class="body" text-anchor="middle">m</text>
 <circle cx="455" cy="330" r="20" class="bus"/><circle cx="545" cy="235" r="20" class="bus"/><circle cx="545" cy="425" r="20" class="bus"/><circle cx="645" cy="330" r="20" class="bus"/><circle cx="700" cy="425" r="20" class="bus"/>
-<path d="M472 319 C495 280 515 270 532 251" class="parallel"/><path d="M472 341 C495 380 515 390 532 409" class="parallel"/>
+<path d="M472 315 C494 278 513 265 532 249" class="parallel"/><path d="M476 323 C501 290 519 276 536 253" class="parallel"/><path d="M472 341 C495 380 515 390 532 409" class="parallel"/>
 <line x1="545" y1="255" x2="545" y2="405" class="line"/><line x1="564" y1="242" x2="627" y2="318" class="line"/><line x1="564" y1="418" x2="627" y2="342" class="line"/><line x1="665" y1="348" x2="688" y2="407" class="line"/>
 <text x="455" y="336" class="body" text-anchor="middle">i</text>
 <text x="545" y="241" class="body" text-anchor="middle">j</text>
@@ -31,7 +31,7 @@
 <text x="645" y="336" class="body" text-anchor="middle">l</text>
 <text x="700" y="431" class="body" text-anchor="middle">m</text>
 <circle cx="820" cy="330" r="20" class="bus"/><circle cx="910" cy="235" r="20" class="bus"/><circle cx="910" cy="425" r="20" class="bus"/><circle cx="1010" cy="330" r="20" class="bus"/><circle cx="1065" cy="425" r="20" class="bus"/>
-<path d="M837 319 C860 280 880 270 897 251" class="parallel"/><path d="M837 341 C860 380 880 390 897 409" class="parallel"/>
+<path d="M837 315 C859 278 878 265 897 249" class="parallel"/><path d="M841 323 C866 290 884 276 901 253" class="parallel"/><path d="M837 341 C860 380 880 390 897 409" class="parallel"/>
 <line x1="910" y1="255" x2="910" y2="405" class="line"/><line x1="929" y1="242" x2="992" y2="318" class="line"/><line x1="929" y1="418" x2="992" y2="342" class="line"/><line x1="1030" y1="348" x2="1053" y2="407" class="line"/>
 <text x="820" y="336" class="body" text-anchor="middle">i</text>
 <text x="910" y="241" class="body" text-anchor="middle">j</text>
@@ -39,28 +39,28 @@
 <text x="1010" y="336" class="body" text-anchor="middle">l</text>
 <text x="1065" y="431" class="body" text-anchor="middle">m</text>
 <circle cx="1185" cy="330" r="20" class="bus"/><circle cx="1275" cy="235" r="20" class="bus"/><circle cx="1275" cy="425" r="20" class="bus"/><circle cx="1375" cy="330" r="20" class="bus"/><circle cx="1430" cy="425" r="20" class="bus"/>
-<path d="M1202 319 C1225 280 1245 270 1262 251" class="parallel"/><path d="M1202 341 C1225 380 1245 390 1262 409" class="parallel"/>
+<path d="M1202 315 C1224 278 1243 265 1262 249" class="parallel"/><path d="M1206 323 C1231 290 1249 276 1266 253" class="parallel"/><path d="M1202 341 C1225 380 1245 390 1262 409" class="parallel"/>
 <line x1="1275" y1="255" x2="1275" y2="405" class="line"/><line x1="1294" y1="242" x2="1357" y2="318" class="line"/><line x1="1294" y1="418" x2="1357" y2="342" class="line"/><line x1="1395" y1="348" x2="1418" y2="407" class="line"/>
 <text x="1185" y="336" class="body" text-anchor="middle">i</text>
 <text x="1275" y="241" class="body" text-anchor="middle">j</text>
 <text x="1275" y="431" class="body" text-anchor="middle">k</text>
 <text x="1375" y="336" class="body" text-anchor="middle">l</text>
 <text x="1430" y="431" class="body" text-anchor="middle">m</text>
-<text x="202" y="545" class="small" text-anchor="middle">identified lines q,r,s,t,v,w,x</text>
+<text x="202" y="545" class="small" text-anchor="middle">identified lines q,r,s,t,u,v,w</text>
 <text x="202" y="575" class="body" text-anchor="middle">member μ = 3; simple μ = 2</text>
 <rect x="610" y="475" width="72" height="52" rx="10" class="factor"/>
 <text x="646" y="507" class="head" text-anchor="middle">x₁</text>
-<line x1="610" y1="485" x2="560" y2="250" class="generated"/><line x1="610" y1="500" x2="645" y2="345" class="generated"/><line x1="682" y1="510" x2="700" y2="420" class="generated"/>
+<line x1="610" y1="485" x2="560" y2="250" class="generated"/><line x1="610" y1="500" x2="645" y2="345" class="generated"/><line x1="682" y1="510" x2="695" y2="445" class="generated"/>
 <text x="567" y="545" class="body" text-anchor="middle">source asset: one x₁</text>
 <text x="567" y="575" class="small" text-anchor="middle">factor incidence μ = 5</text>
 <text x="567" y="600" class="small" text-anchor="middle">no ordinary source edge for x₁</text>
 <circle cx="1030" cy="500" r="22" class="virtual"/>
-<text x="1030" y="506" class="small" text-anchor="middle">νx</text>
-<line x1="1030" y1="478" x2="925" y2="250" class="generated"/><line x1="1010" y1="500" x2="1010" y2="345" class="generated"/><line x1="1048" y1="513" x2="1065" y2="420" class="generated"/>
+<text x="1030" y="506" class="small" text-anchor="middle">νₓ₁</text>
+<line x1="1030" y1="478" x2="925" y2="250" class="generated"/><line x1="1010" y1="500" x2="1010" y2="345" class="generated"/><line x1="1048" y1="513" x2="1055" y2="443" class="generated"/>
 <text x="932" y="555" class="body" text-anchor="middle">generated node + three arms</text>
 <text x="932" y="582" class="small" text-anchor="middle">embedded member μ = 5</text>
 <text x="932" y="607" class="small" text-anchor="middle">local star μ = 0</text>
-<line x1="1290" y1="250" x2="1375" y2="345" class="generated"/><line x1="1290" y1="250" x2="1430" y2="420" class="generated"/><line x1="1375" y1="345" x2="1430" y2="420" class="generated"/>
+<line x1="1290" y1="250" x2="1360" y2="315" class="generated"/><line x1="1290" y1="250" x2="1417" y2="410" class="generated"/><line x1="1390" y1="345" x2="1417" y2="410" class="generated"/>
 <text x="1297" y="555" class="body" text-anchor="middle">same terminal relation under guards</text>
 <text x="1297" y="582" class="small" text-anchor="middle">embedded member μ = 6</text>
 <text x="1297" y="607" class="small" text-anchor="middle">local clique μ = 1</text>

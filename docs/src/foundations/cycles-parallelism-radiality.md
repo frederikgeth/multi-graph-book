@@ -339,7 +339,7 @@ The five-bus companion
 `experiments/generated/five-bus-active-radiality-witness.json` makes the same
 distinction on the chapter's line-identity example. Its inventory has member
 cycle rank 3 and simple-projection cycle rank 2; the declared spanning tree
-``\{r,s,w,x\}`` is radial at both levels. This is claim
+``\{r,s,w,u\}`` is radial at both levels. This is claim
 `TR-GRAPH-ACTIVE-001`: the active state must be named before calling the
 network radial.
 

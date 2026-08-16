@@ -135,7 +135,7 @@ def edge_path(edge_id, points):
         "t": [k, i],
         "v": [l, j],
         "w": [k, l],
-        "x": [l, m],
+        "u": [l, m],
     }[edge_id]
 
 
@@ -213,7 +213,7 @@ def edge_label_point(edge_id, path):
     point, _ = point_on_polyline(path, 0.50)
     offsets = {
         "q": (-6, -22), "r": (18, 18), "s": (20, 0), "t": (-10, 22),
-        "v": (5, -18), "w": (12, 20), "x": (0, -20),
+        "v": (5, -18), "w": (12, 20), "u": (0, -20),
     }
     dx, dy = offsets[edge_id]
     return point[0] + dx, point[1] + dy
@@ -254,9 +254,9 @@ def draw_graph(
     tree, chords = set(tree or []), set(chords or [])
     records = edge_records(analysis)
 
-    draw_ids = ["q", "r", "s", "t", "v", "w", "x"]
+    draw_ids = ["q", "r", "s", "t", "v", "w", "u"]
     if collapsed_parallel:
-        draw_ids = ["e_ij", "s", "t", "v", "w", "x"]
+        draw_ids = ["e_ij", "s", "t", "v", "w", "u"]
 
     for edge_id in draw_ids:
         source_id = "r" if edge_id == "e_ij" else edge_id
@@ -311,7 +311,7 @@ def render_cycle_basis(analysis):
     text_block(
         draw,
         (80, 960),
-        ["q and r share endpoints but remain different assets.", "x is the only bridge; it belongs to no cycle."],
+        ["q and r share endpoints but remain different assets.", "u is the only bridge; it belongs to no cycle."],
         SMALL,
         MUTED,
         6,
@@ -386,7 +386,7 @@ def render_transformation_map(analysis):
 
     card(draw, (775, 165, 1625, 560), fill=WHITE)
     draw.text((815, 195), "Identified source multigraph", font=PANEL, fill=INK)
-    badge(draw, (815, 245), "physical members q,r,s,t,v,w,x", PALE_BLUE, BLUE)
+    badge(draw, (815, 245), "physical members q,r,s,t,u,v,w", PALE_BLUE, BLUE)
     draw_graph(draw, analysis, (820, 300, 1580, 525), show_directions=True, show_labels=True)
 
     left_box = (55, 735, 755, 1345)

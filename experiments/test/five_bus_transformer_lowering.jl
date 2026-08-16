@@ -14,6 +14,8 @@ using .FiveBusTransformerLowering
     @test result["transformer_extension"]["local_views"]["terminal_clique"]["member_cycle_rank"] == 1
     @test result["embedded_views"]["compiled_star"]["member_cycle_rank"] == 5
     @test result["embedded_views"]["terminal_clique"]["member_cycle_rank"] == 6
+    @test result["negative_star_arm_guard"]["minimum_star_reactance_ohm"] == -0.5
+    @test result["negative_star_arm_guard"]["minimum_reference_reactance_eigenvalue_ohm"] == 0.5
     @test length(result["layers"]) == 5
     @test length(result["loss_ledger"]) == 4
 end

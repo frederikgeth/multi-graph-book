@@ -55,7 +55,7 @@
         ]
       },
       {
-        "line": "x",
+        "line": "u",
         "endpoints": [
           "l",
           "m"
@@ -144,7 +144,7 @@
       "I_t",
       "I_v",
       "I_w",
-      "I_x"
+      "I_u"
     ],
     "nonzero_dependencies": 30,
     "interpretation": "declared factor, KCL, and member-limit dependencies; not a solver-exported derivative matrix"
@@ -157,7 +157,7 @@
       "k-m"
     ],
     "boundary_residual": 1.4653444446016847e-15,
-    "recovered_line_x_limit_satisfied": false,
+    "recovered_line_u_limit_satisfied": false,
     "interpretation": "the Schur fill and recovered branch constraint are linked to the numerical structure witness without treating fill as a physical asset or solver-private factorization record"
   },
   "checks": {

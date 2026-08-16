@@ -9,7 +9,7 @@ using .FiveBusTypedKronWitness
     result = five_bus_typed_kron_witness()
     @test result["all_checks_pass"]
     @test result["eliminated_vertex"] == "m"
-    @test result["eliminated_incident_members"] == ["x"]
+    @test result["eliminated_incident_members"] == ["u"]
     @test result["checks"]["reduced_matches_direct_leaf_deletion"]
     @test result["checks"]["boundary_current_recovery"]
     @test result["checks"]["full_nodal_residual_is_zero"]
@@ -17,8 +17,8 @@ using .FiveBusTypedKronWitness
     @test result["checks"]["non_pendant_boundary_current_recovery"]
     @test result["checks"]["non_pendant_fill_jm_is_present"]
     @test result["checks"]["non_pendant_fill_km_is_present"]
-    @test result["checks"]["recovered_line_x_current_is_exact"]
-    @test result["checks"]["tight_line_x_limit_is_not_satisfied"]
+    @test result["checks"]["recovered_line_u_current_is_exact"]
+    @test result["checks"]["tight_line_u_limit_is_not_satisfied"]
     @test result["non_pendant_fill_edges"] == ["j-m", "k-m"]
     @test result["source_fixture"] == "experiments/generated/five-bus-cycle-space-analysis.json"
 end

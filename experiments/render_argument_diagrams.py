@@ -984,7 +984,7 @@ def transformer_graph_views() -> str:
         txt(730, 155, "3  generated star / T", "head"),
         '<circle cx="765" cy="270" r="25" class="port"/><circle cx="765" cy="455" r="25" class="port"/><circle cx="965" cy="360" r="25" class="port"/><circle cx="865" cy="360" r="28" class="virtual"/>',
         '<line x1="789" y1="281" x2="840" y2="338" class="generated"/><line x1="789" y1="444" x2="840" y2="382" class="generated"/><line x1="893" y1="360" x2="940" y2="360" class="generated"/>',
-        txt(765, 276, "k1", "small", "middle"), txt(765, 461, "k2", "small", "middle"), txt(965, 366, "k3", "small", "middle"), txt(865, 366, "νx", "body", "middle"),
+        txt(765, 276, "k1", "small", "middle"), txt(765, 461, "k2", "small", "middle"), txt(965, 366, "k3", "small", "middle"), txt(865, 366, "νₓ₁", "body", "middle"),
         txt(865, 490, "local cycle rank 0", "body", "middle"), txt(865, 520, "virtual node and arms", "small", "middle"),
         txt(1065, 155, "4  terminal clique", "head"),
         '<circle cx="1095" cy="405" r="25" class="port"/><circle cx="1190" cy="245" r="25" class="port"/><circle cx="1290" cy="405" r="25" class="port"/>',
@@ -1020,20 +1020,20 @@ def five_bus_transformer_lowering() -> str:
     def base(x):
         return [
             f'<circle cx="{x+55}" cy="330" r="20" class="bus"/><circle cx="{x+145}" cy="235" r="20" class="bus"/><circle cx="{x+145}" cy="425" r="20" class="bus"/><circle cx="{x+245}" cy="330" r="20" class="bus"/><circle cx="{x+300}" cy="425" r="20" class="bus"/>',
-            f'<path d="M{x+72} 319 C{x+95} 280 {x+115} 270 {x+132} 251" class="parallel"/><path d="M{x+72} 341 C{x+95} 380 {x+115} 390 {x+132} 409" class="parallel"/>',
+            f'<path d="M{x+72} 315 C{x+94} 278 {x+113} 265 {x+132} 249" class="parallel"/><path d="M{x+76} 323 C{x+101} 290 {x+119} 276 {x+136} 253" class="parallel"/><path d="M{x+72} 341 C{x+95} 380 {x+115} 390 {x+132} 409" class="parallel"/>',
             f'<line x1="{x+145}" y1="255" x2="{x+145}" y2="405" class="line"/><line x1="{x+164}" y1="242" x2="{x+227}" y2="318" class="line"/><line x1="{x+164}" y1="418" x2="{x+227}" y2="342" class="line"/><line x1="{x+265}" y1="348" x2="{x+288}" y2="407" class="line"/>',
             txt(x+55,336,"i","body","middle"),txt(x+145,241,"j","body","middle"),txt(x+145,431,"k","body","middle"),txt(x+245,336,"l","body","middle"),txt(x+300,431,"m","body","middle"),
         ]
     for x in panel_x: lines += base(x)
     lines += [
-        txt(202, 545, "identified lines q,r,s,t,v,w,x", "small", "middle"), txt(202, 575, "member μ = 3; simple μ = 2", "body", "middle"),
+        txt(202, 545, "identified lines q,r,s,t,u,v,w", "small", "middle"), txt(202, 575, "member μ = 3; simple μ = 2", "body", "middle"),
         '<rect x="610" y="475" width="72" height="52" rx="10" class="factor"/>', txt(646, 507, "x₁", "head", "middle"),
-        '<line x1="610" y1="485" x2="560" y2="250" class="generated"/><line x1="610" y1="500" x2="645" y2="345" class="generated"/><line x1="682" y1="510" x2="700" y2="420" class="generated"/>',
+        '<line x1="610" y1="485" x2="560" y2="250" class="generated"/><line x1="610" y1="500" x2="645" y2="345" class="generated"/><line x1="682" y1="510" x2="695" y2="445" class="generated"/>',
         txt(567, 545, "source asset: one x₁", "body", "middle"), txt(567, 575, "factor incidence μ = 5", "small", "middle"), txt(567, 600, "no ordinary source edge for x₁", "small", "middle"),
-        '<circle cx="1030" cy="500" r="22" class="virtual"/>', txt(1030,506,"νx","small","middle"),
-        '<line x1="1030" y1="478" x2="925" y2="250" class="generated"/><line x1="1010" y1="500" x2="1010" y2="345" class="generated"/><line x1="1048" y1="513" x2="1065" y2="420" class="generated"/>',
+        '<circle cx="1030" cy="500" r="22" class="virtual"/>', txt(1030,506,"νₓ₁","small","middle"),
+        '<line x1="1030" y1="478" x2="925" y2="250" class="generated"/><line x1="1010" y1="500" x2="1010" y2="345" class="generated"/><line x1="1048" y1="513" x2="1055" y2="443" class="generated"/>',
         txt(932, 555, "generated node + three arms", "body", "middle"), txt(932, 582, "embedded member μ = 5", "small", "middle"), txt(932, 607, "local star μ = 0", "small", "middle"),
-        '<line x1="1290" y1="250" x2="1375" y2="345" class="generated"/><line x1="1290" y1="250" x2="1430" y2="420" class="generated"/><line x1="1375" y1="345" x2="1430" y2="420" class="generated"/>',
+        '<line x1="1290" y1="250" x2="1360" y2="315" class="generated"/><line x1="1290" y1="250" x2="1417" y2="410" class="generated"/><line x1="1390" y1="345" x2="1417" y2="410" class="generated"/>',
         txt(1297, 555, "same terminal relation under guards", "body", "middle"), txt(1297, 582, "embedded member μ = 6", "small", "middle"), txt(1297, 607, "local clique μ = 1", "small", "middle"),
         '<path d="M372 400 L390 400" class="arrow"/><path d="M737 400 L755 400" class="arrow"/><path d="M1102 400 L1120 400" class="arrow"/>',
         '<rect x="80" y="735" width="1340" height="105" rx="14" class="warn"/>',

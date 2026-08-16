@@ -30,21 +30,21 @@ Let the buses and identified lines be
 ```math
 \mathcal B=\{i,j,k,l,m\},
 \qquad
-\mathcal L=\{q,r,s,t,v,w,x\}.
+\mathcal L=\{q,r,s,t,u,v,w\}.
 ```
 
 Using the book's element--endpoint convention, declare
 
 ```math
 \mathcal T^{L\rightarrow}
-=\{qji,\ rij,\ sjk,\ tki,\ vlj,\ wkl,\ xlm\}.
+=\{qji,\ rij,\ sjk,\ tki,\ vlj,\ wkl,\ ulm\}.
 ```
 
 Thus ``q`` and ``r`` are distinct parallel lines even though their declared
 orientations are opposite. Reversing either arrow changes signs in oriented
 coordinates but does not change the underlying undirected multigraph.
 
-With bus order ``(i,j,k,l,m)`` and line order ``(q,r,s,t,v,w,x)``, take ``-1``
+With bus order ``(i,j,k,l,m)`` and line order ``(q,r,s,t,v,w,u)``, take ``-1``
 at the declared from bus and ``+1`` at the declared to bus. The incidence
 matrix is
 
@@ -83,7 +83,7 @@ cycles gives a different graph and can give a different answer.
 Choose the spanning tree
 
 ```math
-\mathcal T_{\mathrm{tree}}=\{r,s,w,x\}.
+\mathcal T_{\mathrm{tree}}=\{r,s,w,u\}.
 ```
 
 Its chords are ``q``, ``t``, and ``v``. Adding each chord to the tree gives
@@ -113,7 +113,7 @@ s&0&1&1\\
 t&0&1&0\\
 v&0&0&1\\
 w&0&0&1\\
-x&0&0&0
+u&0&0&0
 \end{array},
 \qquad
 \mathbf A\mathbf C=\mathbf 0.
@@ -125,8 +125,8 @@ nonnegative edge weights and minimizes total basis weight
 source multigraph: replacing ``q`` by ``r`` produces a different line cycle,
 and the two-edge cycle cannot be represented without member identity.
 
-Line ``x`` is the only **bridge**: removing it increases the number of connected
-components. Calling ``x`` a radial edge is less precise, and calling ``m`` a
+Line ``u`` is the only **bridge**: removing it increases the number of connected
+components. Calling ``u`` a radial edge is less precise, and calling ``m`` a
 radial bus does not generalize well. A cycle-core bus can also be the attachment
 point of a bridge and a pendant tree. Bridges, the graph ``2``-core, and
 block--cut structure express those roles without assigning radiality to an
@@ -258,9 +258,9 @@ source/injection bus. The degree-two series rule must reject its elimination:
 topological degree alone does not establish a common series current. The exact
 guards are given in [Degree-two series elimination](@ref degree-two-series-rule).
 
-Line ``x`` is a dangling bridge, but it cannot be removed merely because it is
+Line ``u`` is a dangling bridge, but it cannot be removed merely because it is
 outside every cycle. If bus ``m`` carries a load, generator, measurement,
-bound, contingency, or retained voltage, pruning ``x`` changes the study.
+bound, contingency, or retained voltage, pruning ``u`` changes the study.
 Pendant-tree removal is valid only under an observation and decision contract
 that either excludes that subtree or replaces it with a certified boundary
 model.
@@ -334,4 +334,4 @@ also give
 ```
 
 BMOPFTools reports three extra physical edges, and the independently computed
-bridge set is ``\{x\}``.
+bridge set is ``\{u\}``.

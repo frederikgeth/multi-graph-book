@@ -1,14 +1,14 @@
 {
   "checks": {
     "non_pendant_fill_km_is_present": true,
-    "tight_line_x_limit_is_not_satisfied": true,
     "boundary_current_recovery": true,
-    "recovered_line_x_current_is_exact": true,
     "provenance_retained": true,
     "eliminated_bus_is_pendant": true,
     "non_pendant_boundary_current_recovery": true,
+    "recovered_line_u_current_is_exact": true,
     "non_pendant_internal_block_is_invertible": true,
     "internal_block_is_invertible": true,
+    "tight_line_u_limit_is_not_satisfied": true,
     "full_nodal_residual_is_zero": true,
     "non_pendant_fill_jm_is_present": true,
     "reduced_matches_direct_leaf_deletion": true
@@ -19,9 +19,7 @@
     "k",
     "m"
   ],
-  "line_x_limit_satisfied": false,
   "internal_residual": 5.164700352369269e-18,
-  "line_x_declared_limit": 0.0716310178948049,
   "non_pendant_eliminated_vertex": "l",
   "source_ybus": [
     [
@@ -287,10 +285,6 @@
     ]
   ],
   "eliminated_vertex": "m",
-  "line_x_current": {
-    "real": 0.08108108108108081,
-    "imag": 0.00945945945945946
-  },
   "witness_id": "TR-KRON-FIVE-001",
   "reduced_ybus": [
     [
@@ -366,13 +360,15 @@
       }
     ]
   ],
+  "line_u_declared_limit": 0.0716310178948049,
   "evidence_type": "direct_five_bus_scalar_typed_kron_witness",
   "retained_tree_lines": [
     "r",
     "s",
     "w",
-    "x"
+    "u"
   ],
+  "line_u_limit_satisfied": false,
   "retained_vertices": [
     "i",
     "j",
@@ -380,7 +376,7 @@
     "l"
   ],
   "eliminated_incident_members": [
-    "x"
+    "u"
   ],
   "boundary_residual": 2.2247786310271853e-16,
   "interpretation": "For a pendant scalar bus with no independent injection, typed Kron elimination removes the leaf member and preserves the retained boundary Ybus exactly. The result is a direct fixture check, not a general claim about arbitrary reductions or retained current limits.",
@@ -388,5 +384,9 @@
     "j-m",
     "k-m"
   ],
-  "non_pendant_boundary_residual": 1.4653444446016847e-15
+  "non_pendant_boundary_residual": 1.4653444446016847e-15,
+  "line_u_current": {
+    "real": 0.08108108108108081,
+    "imag": 0.00945945945945946
+  }
 }

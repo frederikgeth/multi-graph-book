@@ -327,7 +327,7 @@ that passes at `ij` but fails at `ji`.
   reciprocity conventions, fixed-injection scope, and positive/negative
   line--shunt library realizability cases.
 - `experiments/generated/five-bus-typed-kron-witness.json`: direct scalar
-  five-bus Kron evidence eliminating the pendant bus ``m`` through line ``x``
+  five-bus Kron evidence eliminating the pendant bus ``m`` through line ``u``
   and matching the retained boundary ``Y``-bus to direct leaf deletion. The
   same witness eliminates non-pendant bus ``l`` and records the resulting
   ``j-m`` and ``k-m`` Schur-complement fill edges;

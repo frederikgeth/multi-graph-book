@@ -19,7 +19,7 @@ using .MultigraphCycleSpace
     @test A * C == zeros(Int, 5, 3)
     @test rank(Float64.(C)) == 3
     @test result["fundamental_chords"] == ["q", "t", "v"]
-    @test result["bridges"] == ["x"]
+    @test result["bridges"] == ["u"]
 
     line_order = [edge.id for edge in result["edges"]]
     cycles = [Set(line_order[index] for index in findall(!iszero, C[:, column]))

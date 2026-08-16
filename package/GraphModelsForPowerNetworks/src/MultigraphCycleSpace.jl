@@ -192,9 +192,9 @@ function five_bus_analysis()
         IdentifiedEdge("t", "k", "i", 10 / 3),
         IdentifiedEdge("v", "l", "j", 2.5),
         IdentifiedEdge("w", "k", "l", 2.0),
-        IdentifiedEdge("x", "l", "m", 5 / 3),
+        IdentifiedEdge("u", "l", "m", 5 / 3),
     ]
-    tree_ids = ["r", "s", "w", "x"]
+    tree_ids = ["r", "s", "w", "u"]
     A = incidence_matrix(vertices, edges)
     fundamental = fundamental_cycle_matrix(vertices, edges, tree_ids)
     projection = simple_projection(vertices, edges)

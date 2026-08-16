@@ -12,6 +12,11 @@ boundary, unknown-state family semantics, and degeneracy diagnostics are defined
 there. The examples below therefore explain this specialization rather than
 introducing a competing transformation vocabulary.
 
+The general taxonomy in [Maps between representation frameworks](@ref
+representation-maps) types ``\pi_\sigma`` as an edge-contraction quotient. In
+particular it is not an ordinary homomorphism between loopless simple graphs,
+because it deliberately identifies endpoints of closed switch edges.
+
 Topology processing is a state-conditioned compilation. It is not the same as
 deleting switches from a graph or replacing every closed switch by a zero
 impedance line without recording the state that justified the replacement.

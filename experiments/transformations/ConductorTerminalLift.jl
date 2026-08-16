@@ -166,7 +166,7 @@ function evaluate_five_bus_terminal_lift()
     edges = [
         ("q", "j", "i"), ("r", "i", "j"), ("s", "j", "k"),
         ("t", "k", "i"), ("v", "l", "j"), ("w", "k", "l"),
-        ("x", "l", "m"),
+        ("u", "l", "m"),
     ]
     junctions = [Dict("id" => _terminal_id(bus, "scalar"), "bus" => bus, "terminal" => "scalar") for bus in buses]
     ports = Dict{String,Any}[]

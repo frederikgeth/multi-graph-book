@@ -32,7 +32,7 @@
         "t",
         "v",
         "w",
-        "x"
+        "u"
       ],
       "adjacency_cycle_rank": 2,
       "state": "inventory"
@@ -46,7 +46,7 @@
         "r",
         "s",
         "w",
-        "x"
+        "u"
       ],
       "adjacency_cycle_rank": 0,
       "state": "declared_spanning_tree"

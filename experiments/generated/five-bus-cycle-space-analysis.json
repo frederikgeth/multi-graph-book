@@ -78,7 +78,7 @@
         "series_admittance_S": 2
       },
       {
-        "line": "x",
+        "line": "u",
         "current_limit_A": null,
         "to": "m",
         "from": "l",
@@ -99,7 +99,7 @@
       "r",
       "s",
       "w",
-      "x"
+      "u"
     ],
     "line_order": [
       "q",
@@ -108,10 +108,10 @@
       "t",
       "v",
       "w",
-      "x"
+      "u"
     ],
     "bridges": [
-      "x"
+      "u"
     ],
     "fundamental_cycle_matrix": [
       [
@@ -214,7 +214,7 @@
       },
       {
         "source_members": [
-          "x"
+          "u"
         ],
         "id": "e_lm",
         "endpoints": [

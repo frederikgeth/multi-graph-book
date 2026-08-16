@@ -39,7 +39,7 @@
 <text x="765" y="276" class="small" text-anchor="middle">k1</text>
 <text x="765" y="461" class="small" text-anchor="middle">k2</text>
 <text x="965" y="366" class="small" text-anchor="middle">k3</text>
-<text x="865" y="366" class="body" text-anchor="middle">νx</text>
+<text x="865" y="366" class="body" text-anchor="middle">νₓ₁</text>
 <text x="865" y="490" class="body" text-anchor="middle">local cycle rank 0</text>
 <text x="865" y="520" class="small" text-anchor="middle">virtual node and arms</text>
 <text x="1065" y="155" class="head" text-anchor="start">4  terminal clique</text>

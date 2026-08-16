@@ -42,12 +42,14 @@
     "winding_current_and_internal_observations_remain_declared": true,
     "local_star_is_acyclic": true,
     "embedded_star_member_cycle_rank_is_five": true,
+    "negative_star_arm_is_retained": true,
     "three_winding_star_is_declared_special_case": true,
     "embedded_incidence_cycle_rank_is_five": true,
     "base_member_cycle_rank_is_three": true,
     "local_clique_has_one_cycle": true,
     "local_factor_incidence_is_acyclic": true,
-    "base_simple_cycle_rank_is_two": true
+    "base_simple_cycle_rank_is_two": true,
+    "reference_reactance_matrix_remains_positive_semidefinite": true
   },
   "all_checks_pass": true,
   "embedded_views": {
@@ -76,9 +78,6 @@
         "e_factor/line/ti": [
           "incidence/line/t/to"
         ],
-        "e_factor/line/xm": [
-          "incidence/line/x/to"
-        ],
         "e_factor/line/tk": [
           "incidence/line/t/from"
         ],
@@ -94,14 +93,17 @@
         "e_factor/line/qj": [
           "incidence/line/q/from"
         ],
+        "e_factor/line/um": [
+          "incidence/line/u/to"
+        ],
         "e_factor/line/sj": [
           "incidence/line/s/from"
         ],
+        "e_factor/line/ul": [
+          "incidence/line/u/from"
+        ],
         "e_jtransformer/x1": [
           "incidence/transformer/x1/port/1"
-        ],
-        "e_factor/line/xl": [
-          "incidence/line/x/from"
         ],
         "e_factor/line/vl": [
           "incidence/line/v/from"
@@ -119,7 +121,7 @@
         "factor/line/t",
         "factor/line/v",
         "factor/line/w",
-        "factor/line/x",
+        "factor/line/u",
         "transformer/x1"
       ],
       "edges": [
@@ -184,14 +186,14 @@
           "from": "factor/line/w"
         },
         {
-          "id": "incidence/line/x/from",
-          "to": "factor/line/x",
+          "id": "incidence/line/u/from",
+          "to": "factor/line/u",
           "from": "l"
         },
         {
-          "id": "incidence/line/x/to",
+          "id": "incidence/line/u/to",
           "to": "m",
-          "from": "factor/line/x"
+          "from": "factor/line/u"
         },
         {
           "id": "incidence/transformer/x1/port/1",
@@ -236,7 +238,7 @@
         ],
         "e_lm": [
           "generated/x1/clique/2-3",
-          "line/x"
+          "line/u"
         ]
       },
       "vertices": [
@@ -278,7 +280,7 @@
           "from": "k"
         },
         {
-          "id": "line/x",
+          "id": "line/u",
           "to": "m",
           "from": "l"
         },
@@ -329,7 +331,7 @@
           "line/s"
         ],
         "e_lm": [
-          "line/x"
+          "line/u"
         ]
       },
       "vertices": [
@@ -372,7 +374,7 @@
           "from": "k"
         },
         {
-          "id": "line/x",
+          "id": "line/u",
           "to": "m",
           "from": "l"
         },
@@ -519,6 +521,67 @@
     }
   },
   "witness_id": "ARCH-FIVEBUS-XFMR-001",
+  "negative_star_arm_guard": {
+    "minimum_star_reactance_ohm": -0.5,
+    "invalid_componentwise_test": "imag(z_k) >= 0 for every generated star arm",
+    "reference_reactance_eigenvalues_ohm": [
+      0.5,
+      1.5
+    ],
+    "valid_invariant_test": "minimum eigenvalue of imag(Z_B) is nonnegative",
+    "minimum_reference_reactance_eigenvalue_ohm": 0.5,
+    "star_arm_impedances_ohm": {
+      "1": {
+        "real": 0.1,
+        "imag": -0.5
+      },
+      "2": {
+        "real": 0.1,
+        "imag": 1.5
+      },
+      "3": {
+        "real": 0.1,
+        "imag": 1.5
+      }
+    }
+  },
+  "maps": [
+    {
+      "status": "retains transformer and winding identity",
+      "id": "C_x1",
+      "to": "port_factor",
+      "from": "source_asset",
+      "type": "canonicalization"
+    },
+    {
+      "status": "default exact branch for the declared fixed-linear factor",
+      "id": "A_x1",
+      "to": "equation_operator",
+      "from": "port_factor",
+      "type": "direct stamping"
+    },
+    {
+      "status": "optional three-winding star branch with generated objects",
+      "id": "L_x1",
+      "to": "ordinary_edge_realization",
+      "from": "port_factor",
+      "type": "guarded compilation"
+    },
+    {
+      "status": "creates terminal clique support and requires recovery",
+      "id": "R_internal",
+      "to": "equation_operator",
+      "from": "ordinary_edge_realization",
+      "type": "behavioural elimination"
+    },
+    {
+      "status": "forgets coefficients, decomposition, limits, and physical identity",
+      "id": "S",
+      "to": "support_graph",
+      "from": "equation_operator",
+      "type": "support projection"
+    }
+  ],
   "layers": [
     {
       "interface": "asset and winding identity, attachments, state, ratings, provenance",
@@ -566,43 +629,6 @@
       "id": "support_graph"
     }
   ],
-  "maps": [
-    {
-      "status": "retains transformer and winding identity",
-      "id": "C_x1",
-      "to": "port_factor",
-      "from": "source_asset",
-      "type": "canonicalization"
-    },
-    {
-      "status": "default exact branch for the declared fixed-linear factor",
-      "id": "A_x1",
-      "to": "equation_operator",
-      "from": "port_factor",
-      "type": "direct stamping"
-    },
-    {
-      "status": "optional three-winding star branch with generated objects",
-      "id": "L_x1",
-      "to": "ordinary_edge_realization",
-      "from": "port_factor",
-      "type": "guarded compilation"
-    },
-    {
-      "status": "creates terminal clique support and requires recovery",
-      "id": "R_internal",
-      "to": "equation_operator",
-      "from": "ordinary_edge_realization",
-      "type": "behavioural elimination"
-    },
-    {
-      "status": "forgets coefficients, decomposition, limits, and physical identity",
-      "id": "S",
-      "to": "support_graph",
-      "from": "equation_operator",
-      "type": "support projection"
-    }
-  ],
   "interpretation": "The extension does not assign one cycle rank to the transformer. One source asset becomes one three-port factor, an optional acyclic local star, or a cyclic terminal clique; embedded cycle counts are properties of those declared target graphs, not extra physical transformer loops.",
   "base_line_graph": {
     "simple_cycle_rank": 2,
@@ -625,7 +651,7 @@
         "line/s"
       ],
       "e_lm": [
-        "line/x"
+        "line/u"
       ]
     },
     "vertices": [
@@ -667,14 +693,14 @@
         "from": "k"
       },
       {
-        "id": "line/x",
+        "id": "line/u",
         "to": "m",
         "from": "l"
       }
     ]
   },
   "source_dependencies": {
-    "experiments/generated/five-bus-cycle-space-analysis.json": "34c007db2508b0643064bfeee09ab61ff76b7d1eb3a28274397bc49ca1795b2f",
+    "experiments/generated/five-bus-cycle-space-analysis.json": "b600f9a550d433008eab528905f487cffa5f6f5674829ae43d8c4328db88a554",
     "experiments/generated/multiwinding-leakage-compilation-certificate.json": "eb3103e59cbf6c7978bbd8d91dbea3478171b8b631be562acc56fbfb1ef26b23",
     "experiments/generated/multiwinding-terminal-lift-witness.json": "0eb9d72e23312e882e9b2fbf8d998227ea0b786bcdf6c1f9c9a36fa959779f32"
   },

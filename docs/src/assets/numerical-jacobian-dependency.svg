@@ -24,7 +24,7 @@
 <text x="380.0" y="139" text-anchor="middle" transform="rotate(-55 380.0 139)">I_t</text>
 <text x="410.0" y="139" text-anchor="middle" transform="rotate(-55 410.0 139)">I_v</text>
 <text x="440.0" y="139" text-anchor="middle" transform="rotate(-55 440.0 139)">I_w</text>
-<text x="470.0" y="139" text-anchor="middle" transform="rotate(-55 470.0 139)">I_x</text>
+<text x="470.0" y="139" text-anchor="middle" transform="rotate(-55 470.0 139)">I_u</text>
 <rect x="125" y="155" width="30" height="30" class="cell hit"/>
 <rect x="155" y="155" width="30" height="30" class="cell miss"/>
 <rect x="185" y="155" width="30" height="30" class="cell miss"/>

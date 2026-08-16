@@ -153,7 +153,7 @@ The numerical witness now carries a crosswalk to
 `experiments/generated/five-bus-typed-kron-witness.json`. That crosswalk uses
 the non-pendant ``\ell`` elimination, whose fill edges are ``j-m`` and
 ``k-m``, and records the small boundary residual together with the recovered
-``x``-branch limit observation. This ties the Schur-complement example to the
+``u``-branch limit observation. This ties the Schur-complement example to the
 numerical-structure discussion without conflating fill edges with physical
 assets or solver-private factorization output.
 

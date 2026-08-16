@@ -52,7 +52,7 @@ def svg_graph(nodes: list[str], edges: list[tuple[str, str]], fill_edges: list[t
         '<text x="35" y="420" class="small">Rows are equations; columns are variables. Blocks indicate declared dependence.</text>',
     ]
     rows = ["KCL i", "KCL j", "KCL k", "KCL l", "KCL m", "factor q", "factor r", "limit q/r"]
-    cols = ["U_i", "U_j", "U_k", "U_l", "U_m", "I_q", "I_r", "I_s", "I_t", "I_v", "I_w", "I_x"]
+    cols = ["U_i", "U_j", "U_k", "U_l", "U_m", "I_q", "I_r", "I_s", "I_t", "I_v", "I_w", "I_u"]
     x0, y0, cell = 120, 505, 24
     for i, label in enumerate(rows):
         lines.append(f'<text x="{x0-10}" y="{y0+i*cell+16}" text-anchor="end" class="small">{label}</text>')
@@ -107,7 +107,7 @@ def svg_fill_graph(nodes: list[str], edges: list[tuple[str, str]], fill_edges: l
 
 def svg_jacobian_graph() -> str:
     rows = ["KCL i", "KCL j", "KCL k", "KCL l", "KCL m", "factor q", "factor r", "limit q/r"]
-    cols = ["U_i", "U_j", "U_k", "U_l", "U_m", "I_q", "I_r", "I_s", "I_t", "I_v", "I_w", "I_x"]
+    cols = ["U_i", "U_j", "U_k", "U_l", "U_m", "I_q", "I_r", "I_s", "I_t", "I_v", "I_w", "I_u"]
     deps = {
         (0, 0), (0, 5), (0, 6), (0, 9), (1, 0), (1, 1), (1, 5), (1, 6), (1, 7), (1, 10),
         (2, 1), (2, 2), (2, 7), (2, 8), (2, 10), (3, 2), (3, 3), (3, 9), (3, 10), (3, 11),
@@ -175,7 +175,7 @@ def main() -> None:
         },
         "jacobian_dependency": {
             "rows": ["KCL i", "KCL j", "KCL k", "KCL l", "KCL m", "factor q", "factor r", "limit q/r"],
-            "columns": ["U_i", "U_j", "U_k", "U_l", "U_m", "I_q", "I_r", "I_s", "I_t", "I_v", "I_w", "I_x"],
+            "columns": ["U_i", "U_j", "U_k", "U_l", "U_m", "I_q", "I_r", "I_s", "I_t", "I_v", "I_w", "I_u"],
             "nonzero_dependencies": 30,
             "interpretation": "declared factor, KCL, and member-limit dependencies; not a solver-exported derivative matrix",
         },
@@ -184,7 +184,7 @@ def main() -> None:
             "eliminated_node": kron["non_pendant_eliminated_vertex"],
             "fill_edges": kron["non_pendant_fill_edges"],
             "boundary_residual": kron["non_pendant_boundary_residual"],
-            "recovered_line_x_limit_satisfied": kron["line_x_limit_satisfied"],
+            "recovered_line_u_limit_satisfied": kron["line_u_limit_satisfied"],
             "interpretation": "the Schur fill and recovered branch constraint are linked to the numerical structure witness without treating fill as a physical asset or solver-private factorization record",
         },
         "checks": {
@@ -193,7 +193,7 @@ def main() -> None:
             "physical_and_jacobian_graphs_are_distinct": True,
             "typed_kron_fill_crosswalk_matches": kron["non_pendant_fill_edges"] == ["j-m", "k-m"],
             "typed_kron_boundary_residual_is_small": kron["non_pendant_boundary_residual"] <= 1.0e-12,
-            "typed_kron_constraint_observation_retained": kron["line_x_limit_satisfied"] is False,
+            "typed_kron_constraint_observation_retained": kron["line_u_limit_satisfied"] is False,
         },
     }
     OUT.write_text(json.dumps(witness, indent=2) + "\n")
