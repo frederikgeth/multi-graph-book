@@ -1,4 +1,4 @@
-# Executable running network
+# [Executable running network](@id executable-running-network)
 
 **Page status:** executable fixture, local solver evidence, and a derived
 state-conditioned radiality witness; claims are versioned and

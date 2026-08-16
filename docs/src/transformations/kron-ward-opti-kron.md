@@ -228,10 +228,10 @@ Such a device may still be eliminated with a nonlinear or state-dependent
 implicit relation, but that is a different transformation contract.
 
 A sequence-coordinate statement needs its transform convention
-declared: with the usual non-unitary Fortescue matrix ``A``, applying the same
+declared: with the usual non-unitary Fortescue matrix ``\mathbf F``, applying the same
 voltage and current coordinates gives the similarity action
-``A^{-1}\mathbf Y A``; the power-dual convention above gives the congruence
-action ``A^{\mathsf H}\mathbf Y A``. These coincide only under additional
+``\mathbf F^{-1}\mathbf Y\mathbf F``; the power-dual convention above gives the congruence
+action ``\mathbf F^{\mathsf H}\mathbf Y\mathbf F``. These coincide only under additional
 normalization assumptions. Neither convention justifies dropping a conductor,
 identifying a neutral with earth, or aggregating phases: those maps are not
 invertible coordinate changes and require separate preservation claims.

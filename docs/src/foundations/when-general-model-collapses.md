@@ -12,19 +12,19 @@ bus--branch model and lists the assumptions that make the collapse admissible.
 ## The balanced invariant subspace
 
 Let a three-phase two-terminal factor use the phase order ``(a,b,c)`` and the
-Fortescue matrix ``A``
+Fortescue matrix ``\mathbf F``
 
 ```math
-\mathbf v_{abc}=A\mathbf v_{012},
+\mathbf v_{abc}=\mathbf F\mathbf v_{012},
 \qquad
-A=\begin{bmatrix}1&1&1\\1&a^2&a\\1&a&a^2\end{bmatrix},
+\mathbf F=\begin{bmatrix}1&1&1\\1&a^2&a\\1&a&a^2\end{bmatrix},
 \qquad a=e^{\mathrm j2\pi/3}.
 ```
 
 The positive-sequence subspace is
 
 ```math
-\mathcal V_+=\{A[0,V_1,0]^{\mathsf T}:V_1\in\mathbb C\}.
+\mathcal V_+=\{\mathbf F[0,V_1,0]^{\mathsf T}:V_1\in\mathbb C\}.
 ```
 
 An exactly balanced operating point has phase voltages and currents in this
@@ -56,11 +56,11 @@ Consider a linear series or nominal-``\pi`` factor with phase-domain relation
    neutral-to-ground, negative-sequence, zero-sequence, or internal winding
    quantities.
 
-Under these assumptions, ``A^{-1}\mathbf Y A`` is diagonal in sequence
+Under these assumptions, ``\mathbf F^{-1}\mathbf Y\mathbf F`` is diagonal in sequence
 coordinates, and the positive-sequence block is invariant:
 
 ```math
-\mathbf Y_{012}=A^{-1}\mathbf Y_{abc}A
+\mathbf Y_{012}=\mathbf F^{-1}\mathbf Y_{abc}\mathbf F
 =\operatorname{diag}(Y_0,Y_1,Y_2),
 \qquad
 I_1=Y_1V_1.
@@ -94,7 +94,7 @@ assumptions or a standards-aligned transmission validation.
 
 ![Positive-sequence invariant subspace and sequence mixing.](../assets/sequence-subspace.png)
 
-The geometry is a projection aid: the circulant factor leaves the positive-sequence axis invariant, while the perturbed factor produces an off-axis residual. The residual ``\\rho_+`` is a coordinate diagnostic until propagated through constraints and decisions.
+The geometry is a projection aid: the circulant factor leaves the positive-sequence axis invariant, while the perturbed factor produces an off-axis residual. The residual ``\rho_+`` is a coordinate diagnostic until propagated through constraints and decisions.
 
 ## Network-level derivation
 
@@ -108,11 +108,15 @@ factor, boundary, and decision assumptions above,
 E_+(\mathcal F_{+})\subseteq\mathcal F_{abc},
 ```
 
-and the declared observations factor as
+and the declared observations agree on the embedded balanced states as
 
 ```math
 h_{abc}\circ E_+=\widehat h_+.
 ```
+
+This is a **restricted** factorization on ``E_+(\mathcal F_+)``. It is not the
+stronger global identity ``h_{abc}=\widehat h_+\circ C_+`` on arbitrary
+phase-domain states.
 
 Thus the positive-sequence model is exact for the restricted observation
 family ``H_+``. It is not exact for the unrestricted phase-domain feasible set

@@ -63,6 +63,12 @@ These checks should return stable finding codes and machine-readable details,
 not only prose warnings. A graph quotient may be mathematically valid while
 the input is semantically unfit for the intended decision problem.
 
+![The ordered source-to-canonical validation pipeline.](../assets/source-canonical-pipeline.png)
+
+The ordering is semantic, not cosmetic: a later graph view cannot repair a
+missing terminal map, an invalid domain value, or an ownerless limit that
+should have been rejected earlier.
+
 ## Inference is not identity
 
 Practical formats often encode meaning positionally or through defaults. An

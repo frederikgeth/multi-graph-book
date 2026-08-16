@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+<title>Same graph, different constitutive law</title>
+<desc>The load model moves the operating point and the continuation boundary while topology, limits, and nominal demand stay fixed.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#245b7a"/></marker><marker id="arrowo" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8a4f13"/></marker><marker id="arrowg" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#477a55"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}
+.title{font-size:28px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}
+.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}
+.body{font-size:15px}.small{font-size:13px;fill:#5f6b76}.tiny{font-size:12px;fill:#5f6b76}
+.blue{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.orange{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}
+.green{fill:#e5f1e7;stroke:#477a55;stroke-width:2}.red{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}
+.axis{stroke:#17212b;stroke-width:2}.grid{stroke:#c7d0d8;stroke-width:1;stroke-dasharray:4 4}
+.limit{stroke:#8a3232;stroke-width:2;stroke-dasharray:7 5}.curve1{stroke:#245b7a;stroke-width:3;fill:none}
+.curve2{stroke:#8a4f13;stroke-width:3;fill:none}.curve3{stroke:#477a55;stroke-width:3;fill:none}
+.curve4{stroke:#7856a8;stroke-width:3;fill:none}.failed{stroke:#8a3232;stroke-width:3;fill:none;stroke-dasharray:8 5}
+.arrow{stroke:#245b7a;stroke-width:3;fill:none;marker-end:url(#arrow)}
+.arrowo{stroke:#8a4f13;stroke-width:3;fill:none;marker-end:url(#arrowo)}
+.arrowg{stroke:#477a55;stroke-width:3;fill:none;marker-end:url(#arrowg)}
+</style>
+
+<text x="35" y="40" class="title" text-anchor="start">Same graph, different constitutive law</text>
+<text x="35" y="68" class="sub" text-anchor="start">The load model moves the operating point and the continuation boundary while topology, limits, and nominal demand stay fixed.</text>
+<rect x="35" y="105" width="650" height="640" rx="14" class="panel"/>
+<rect x="715" y="105" width="650" height="640" rx="14" class="panel"/>
+<text x="65" y="140" class="head" text-anchor="start">A. Operating point at scale 1</text>
+<text x="745" y="140" class="head" text-anchor="start">B. Iteration-scoped continuation probe</text>
+<line x1="125" y1="570" x2="615" y2="570" class="axis"/>
+<line x1="125" y1="205" x2="125" y2="570" class="axis"/>
+<text x="370.0" y="606" class="small" text-anchor="middle">receiving voltage |Uᵣ| (p.u.)</text>
+<text x="129" y="193" class="small" text-anchor="start">current magnitude |I| (p.u.)</text>
+<line x1="125.0" y1="205" x2="125.0" y2="570" class="grid"/>
+<text x="125.0" y="588" class="tiny" text-anchor="middle">0.82</text>
+<line x1="370.0" y1="205" x2="370.0" y2="570" class="grid"/>
+<text x="369.99999999999983" y="588" class="tiny" text-anchor="middle">0.91</text>
+<line x1="615.0" y1="205" x2="615.0" y2="570" class="grid"/>
+<text x="615.0" y="588" class="tiny" text-anchor="middle">1</text>
+<line x1="125" y1="570.0" x2="615" y2="570.0" class="grid"/>
+<text x="115" y="574.0" class="tiny" text-anchor="end">0.75</text>
+<line x1="125" y1="387.5" x2="615" y2="387.5" class="grid"/>
+<text x="115" y="391.5" class="tiny" text-anchor="end">1</text>
+<line x1="125" y1="205.0" x2="615" y2="205.0" class="grid"/>
+<text x="115" y="209.0" class="tiny" text-anchor="end">1.25</text>
+<path d="M125.0,285.9 L137.2,290.5 L149.5,295.0 L161.7,299.4 L174.0,303.8 L186.2,308.2 L198.5,312.5 L210.7,316.7 L223.0,320.9 L235.2,325.1 L247.5,329.2 L259.7,333.3 L272.0,337.3 L284.2,341.3 L296.5,345.3 L308.8,349.2 L321.0,353.1 L333.2,356.9 L345.5,360.7 L357.8,364.5 L370.0,368.2 L382.2,371.9 L394.5,375.5 L406.8,379.1 L419.0,382.7 L431.3,386.3 L443.5,389.8 L455.8,393.3 L468.0,396.7 L480.3,400.1 L492.5,403.5 L504.8,406.8 L517.0,410.2 L529.2,413.4 L541.5,416.7 L553.8,419.9 L566.0,423.1 L578.2,426.3 L590.5,429.4 L602.8,432.5 L615.0,435.6" class="curve1"/>
+<path d="M125.0,435.6 L137.2,435.6 L149.5,435.6 L161.7,435.6 L174.0,435.6 L186.2,435.6 L198.5,435.6 L210.7,435.6 L223.0,435.6 L235.2,435.6 L247.5,435.6 L259.7,435.6 L272.0,435.6 L284.2,435.6 L296.5,435.6 L308.8,435.6 L321.0,435.6 L333.2,435.6 L345.5,435.6 L357.8,435.6 L370.0,435.6 L382.2,435.6 L394.5,435.6 L406.8,435.6 L419.0,435.6 L431.3,435.6 L443.5,435.6 L455.8,435.6 L468.0,435.6 L480.3,435.6 L492.5,435.6 L504.8,435.6 L517.0,435.6 L529.2,435.6 L541.5,435.6 L553.8,435.6 L566.0,435.6 L578.2,435.6 L590.5,435.6 L602.8,435.6 L615.0,435.6" class="curve2"/>
+<path d="M125.0,558.4 L137.2,555.3 L149.5,552.2 L161.7,549.2 L174.0,546.1 L186.2,543.0 L198.5,540.0 L210.7,536.9 L223.0,533.8 L235.2,530.7 L247.5,527.7 L259.7,524.6 L272.0,521.5 L284.2,518.5 L296.5,515.4 L308.8,512.3 L321.0,509.3 L333.2,506.2 L345.5,503.1 L357.8,500.1 L370.0,497.0 L382.2,493.9 L394.5,490.9 L406.8,487.8 L419.0,484.7 L431.3,481.7 L443.5,478.6 L455.8,475.5 L468.0,472.4 L480.3,469.4 L492.5,466.3 L504.8,463.2 L517.0,460.2 L529.2,457.1 L541.5,454.0 L553.8,451.0 L566.0,447.9 L578.2,444.8 L590.5,441.8 L602.8,438.7 L615.0,435.6" class="curve3"/>
+<path d="M125.0,435.8 L137.2,436.0 L149.5,436.3 L161.7,436.5 L174.0,436.7 L186.2,436.9 L198.5,437.0 L210.7,437.2 L223.0,437.3 L235.2,437.5 L247.5,437.6 L259.7,437.7 L272.0,437.8 L284.2,437.9 L296.5,437.9 L308.8,438.0 L321.0,438.0 L333.2,438.1 L345.5,438.1 L357.8,438.1 L370.0,438.1 L382.2,438.0 L394.5,438.0 L406.8,438.0 L419.0,437.9 L431.3,437.8 L443.5,437.8 L455.8,437.7 L468.0,437.6 L480.3,437.5 L492.5,437.4 L504.8,437.2 L517.0,437.1 L529.2,436.9 L541.5,436.8 L553.8,436.6 L566.0,436.4 L578.2,436.2 L590.5,436.0 L602.8,435.8 L615.0,435.6" class="curve4"/>
+<line x1="261.1" y1="205" x2="261.1" y2="570" class="limit"/>
+<line x1="125" y1="387.5" x2="615" y2="387.5" class="limit"/>
+<text x="266.1111111111112" y="221" class="tiny" text-anchor="start">|Uᵣ| ≥ 0.87</text>
+<text x="610" y="380.5" class="tiny" text-anchor="end">|I| ≤ 1.00</text>
+<circle cx="231.6" cy="323.9" r="7" class="red"/>
+<text x="241.63579579978816" y="314.85680938757747" class="tiny" text-anchor="start">CP</text>
+<circle cx="289.1" cy="435.6" r="7" class="orange"/>
+<text x="299.101593226501" y="426.62372823216674" class="tiny" text-anchor="start">CI</text>
+<circle cx="325.7" cy="508.1" r="7" class="green"/>
+<text x="335.7395555912315" y="499.07917723748176" class="tiny" text-anchor="start">CZ</text>
+<circle cx="286.3" cy="437.9" r="7" class="blue"/>
+<text x="296.29144651340084" y="428.8833027300544" class="tiny" text-anchor="start">ZIP</text>
+<line x1="805" y1="570" x2="1295" y2="570" class="axis"/>
+<line x1="805" y1="205" x2="805" y2="570" class="axis"/>
+<text x="1050.0" y="606" class="small" text-anchor="middle">demand scale</text>
+<text x="809" y="193" class="small" text-anchor="start">receiving voltage |Uᵣ| (p.u.)</text>
+<line x1="805.0" y1="205" x2="805.0" y2="570" class="grid"/>
+<text x="805.0" y="588" class="tiny" text-anchor="middle">0.2</text>
+<line x1="1050.0" y1="205" x2="1050.0" y2="570" class="grid"/>
+<text x="1050.0" y="588" class="tiny" text-anchor="middle">1.6</text>
+<line x1="1295.0" y1="205" x2="1295.0" y2="570" class="grid"/>
+<text x="1295.0" y="588" class="tiny" text-anchor="middle">3</text>
+<line x1="805" y1="570.0" x2="1295" y2="570.0" class="grid"/>
+<text x="795" y="574.0" class="tiny" text-anchor="end">0.45</text>
+<line x1="805" y1="387.5" x2="1295" y2="387.5" class="grid"/>
+<text x="795" y="391.5" class="tiny" text-anchor="end">0.735</text>
+<line x1="805" y1="205.0" x2="1295" y2="205.0" class="grid"/>
+<text x="795" y="209.0" class="tiny" text-anchor="end">1.02</text>
+<path d="M805.0,232.7 L822.5,240.6 L840.0,248.8 L857.5,257.4 L875.0,266.5 L892.5,275.9 L910.0,286.0 L927.5,296.6 L945.0,308.0 L962.5,320.2 L980.0,333.5 L997.5,348.1 L1015.0,364.5 L1032.5,383.4 L1050.0,406.2 L1067.5,436.9 L1085.0,527.0" class="failed"/>
+<path d="M805.0,232.3 L822.5,239.8 L840.0,247.3 L857.5,254.9 L875.0,262.6 L892.5,270.4 L910.0,278.3 L927.5,286.4 L945.0,294.5 L962.5,302.7 L980.0,311.0 L997.5,319.4 L1015.0,327.9 L1032.5,336.6 L1050.0,345.3 L1067.5,354.1 L1085.0,363.1 L1102.5,372.1 L1120.0,381.3 L1137.5,390.5 L1155.0,399.9 L1172.5,409.4 L1190.0,418.9 L1207.5,428.7 L1225.0,438.5 L1242.5,448.4 L1260.0,458.5 L1277.5,468.6 L1295.0,478.9" class="curve2"/>
+<path d="M805.0,232.0 L822.5,239.0 L840.0,246.0 L857.5,252.8 L875.0,259.6 L892.5,266.3 L910.0,272.9 L927.5,279.4 L945.0,285.9 L962.5,292.2 L980.0,298.5 L997.5,304.6 L1015.0,310.7 L1032.5,316.7 L1050.0,322.6 L1067.5,328.5 L1085.0,334.2 L1102.5,339.9 L1120.0,345.4 L1137.5,350.9 L1155.0,356.3 L1172.5,361.6 L1190.0,366.8 L1207.5,371.9 L1225.0,377.0 L1242.5,382.0 L1260.0,386.9 L1277.5,391.7 L1295.0,396.4" class="curve3"/>
+<path d="M805.0,232.4 L822.5,239.8 L840.0,247.4 L857.5,255.0 L875.0,262.8 L892.5,270.7 L910.0,278.7 L927.5,286.9 L945.0,295.1 L962.5,303.5 L980.0,312.1 L997.5,320.8 L1015.0,329.7 L1032.5,338.8 L1050.0,348.0 L1067.5,357.4 L1085.0,367.1 L1102.5,377.0 L1120.0,387.2 L1137.5,397.7 L1155.0,408.6 L1172.5,419.8 L1190.0,431.5 L1207.5,443.8 L1225.0,456.7 L1242.5,470.5 L1260.0,485.4 L1277.5,501.8 L1295.0,520.7" class="curve4"/>
+<circle cx="1085.0" cy="527.0" r="7" class="red"/>
+<text x="1095.0" y="230" class="tiny" text-anchor="start">CP first failure: 1.8</text>
+<line x1="70" y1="665" x2="100" y2="665" class="curve1"/>
+<text x="108" y="670" class="small" text-anchor="start">CP</text>
+<line x1="190" y1="665" x2="220" y2="665" class="curve2"/>
+<text x="228" y="670" class="small" text-anchor="start">CI</text>
+<line x1="310" y1="665" x2="340" y2="665" class="curve3"/>
+<text x="348" y="670" class="small" text-anchor="start">CZ</text>
+<line x1="430" y1="665" x2="460" y2="665" class="curve4"/>
+<text x="468" y="670" class="small" text-anchor="start">ZIP</text>
+<rect x="35" y="780" width="1330" height="70" rx="10" class="orange"/>
+<text x="55" y="810" class="head" text-anchor="start">Interpretation</text>
+<text x="185" y="807" class="small" text-anchor="start">The topology is unchanged. The constitutive law changes the feasible operating point and the iteration-scoped branch boundary;</text>
+<text x="185" y="830" class="small" text-anchor="start">this is not a universal load-model ranking or collapse theorem.</text>
+</svg>

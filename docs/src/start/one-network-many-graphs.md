@@ -17,9 +17,9 @@ and inadequate for others.
 The running network for this book contains ordered conductor terminals, an explicit neutral and
 grounding impedance, heterogeneous parallel lines, switchgear, and a genuinely multiwinding
 transformer. It also contains limits and controls used in a decision problem. Its complete semantic
-specification is given in [The running multiconductor network](@ref).
+specification is given in [The running multiconductor network](@ref running-network).
 Its first numerical realization and the six illustrated views described below are given in
-the [Executable running network](@ref).
+the [Executable running network](@ref executable-running-network).
 
 The representation-scoped meanings of cycles, parallelism, bridges, leaves,
 and radial ends are developed in

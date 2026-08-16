@@ -149,16 +149,18 @@ The common path is not a list of interchangeable names:
 \text{conductor primitive}
 \xrightarrow{K_n\ \text{or}\ P_n}
 \text{phase view}
-\xrightarrow{F}
+\xrightarrow{\mathbf F}
 \text{sequence coordinates}
-\xrightarrow{D\ \text{or}\ F_1}
+\xrightarrow{D\ \text{or}\ \mathbf F_1}
 \text{restricted scalar view}.
 ```
 
+![The impedance-fidelity ladder with guarded transformations and an explicit loss ledger.](../assets/impedance-fidelity-ladder.png)
+
 ``K_g`` and ``K_n`` require declared grounding and invertibility assumptions;
 ``P_n`` can recover neutral current under its zero-ground-current guard but loses
-common-mode voltage; ``F`` is an invertible coordinate change; ``D`` deletes
-sequence coupling; and ``F_1`` retains only a positive-sequence subspace. The
+common-mode voltage; ``\mathbf F`` is an invertible coordinate change; ``D`` deletes
+sequence coupling; and ``\mathbf F_1`` retains only a positive-sequence subspace. The
 last two are therefore not harmless formatting operations. Their admissibility
 depends on the factor, boundary data, limits, controls, and observations.
 

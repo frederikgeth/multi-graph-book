@@ -22,6 +22,10 @@ quantity. Indices are not added merely because an equation is evaluated at an en
 | ``\mathcal H`` | shunts and grounding impedances | ``h`` |
 | ``\mathcal P`` | phases | ``p,q`` |
 | ``\mathcal N`` | terminal names | ``p,q`` |
+| ``\mathbf A`` | oriented incidence matrix | declared bus/edge coordinates |
+| ``\mathbf F`` | Fortescue phase-to-sequence transform | ``abc\leftrightarrow012`` |
+| ``C_+`` | restriction to the positive-sequence subspace | phase state ``\to`` positive sequence |
+| ``E_+`` | embedding of a positive-sequence state | positive sequence ``\to`` phase state |
 
 Identifiers need not be consecutive integers. A data model may use stable strings while the
 mathematical model uses the corresponding symbols. When an implementation needs an ordinary

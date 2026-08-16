@@ -14,6 +14,7 @@ BARE_PI = re.compile(r"(?<!\\)\bPi\b")
 # A bold command must be followed by an argument.  This deliberately checks
 # only unmistakable omissions, leaving TeX package-specific syntax alone.
 ORPHAN_BOLD = re.compile(r"\\mathbf\s*(?:$|[,.;:)\]])")
+DOUBLE_BACKSLASH = re.compile(r"\\\\")
 
 
 def find_math_hygiene_findings(root: Path) -> list[str]:
@@ -29,7 +30,7 @@ def find_math_hygiene_findings(root: Path) -> list[str]:
                 if stripped.startswith("```"):
                     in_fence = False
                 else:
-                    _check_segment(findings, document, line_number, line)
+                    _check_segment(findings, document, line_number, line, check_double=False)
                 continue
             if stripped.startswith("```math"):
                 in_fence = True
@@ -51,7 +52,7 @@ def find_math_hygiene_findings(root: Path) -> list[str]:
                         inline_buffer.append(remainder)
                         break
                     inline_buffer.append(remainder[:marker])
-                    _check_segment(findings, document, inline_start, "\n".join(inline_buffer))
+                    _check_segment(findings, document, inline_start, "\n".join(inline_buffer), check_double=True)
                     inline_open = False
                     inline_buffer = []
                     remainder = remainder[marker + 2 :]
@@ -60,7 +61,7 @@ def find_math_hygiene_findings(root: Path) -> list[str]:
     return findings
 
 
-def _check_segment(findings: list[str], document: Path, line_number: int, segment: str) -> None:
+def _check_segment(findings: list[str], document: Path, line_number: int, segment: str, *, check_double: bool) -> None:
     location = f"{document.relative_to(document.parents[1])}:{line_number}"
     if BARE_ELL.search(segment):
         findings.append(f"{location}: use \\ell rather than bare ell in math")
@@ -68,6 +69,8 @@ def _check_segment(findings: list[str], document: Path, line_number: int, segmen
         findings.append(f"{location}: use \\Pi rather than bare Pi in math")
     if ORPHAN_BOLD.search(segment):
         findings.append(f"{location}: \\mathbf has no visible argument")
+    if check_double and DOUBLE_BACKSLASH.search(segment):
+        findings.append(f"{location}: doubled backslash in inline/display math; use a single TeX command escape")
 
 
 def main() -> int:

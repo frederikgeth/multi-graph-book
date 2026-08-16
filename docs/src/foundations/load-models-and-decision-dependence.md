@@ -148,6 +148,14 @@ This is a decision witness, not a universal ranking of load models. It shows
 that a graph-preserving change of constitutive law can change both feasibility
 and the active constraint set.
 
+![Operating-point divergence and continuation boundaries for four load laws.](../assets/load-model-divergence.png)
+
+The left panel places the recorded operating points against the same voltage
+and current limits. The right panel is the finite continuation probe: CP is
+the first family to fail the declared iteration test, while the other three
+families remain traceable through scale 3.0. Neither panel is a universal
+voltage-collapse or load-model-ranking theorem.
+
 The artifact
 `experiments/generated/load-model-independent-reproduction.json` repeats the
 same damped fixed-point calculation with a separate standard-library Python

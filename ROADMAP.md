@@ -18,10 +18,11 @@ not masquerade as completion of the others.
 
 The repository is a locally validated HTML-first release candidate. The
 curated PDF is a secondary serialization of the same Markdown sources. The
-current checks cover 87 registered claims, 57 audited SVG/PNG pairs, 532 local
-links, the aggregate experiment suite, the HTML build, and a 209-page PDF.
-The high-risk 2026-08-15 review findings and the 2026-08-16 vocabulary and
-multi-port-lowering reviews have been repaired. Those automated and supplied
+current checks cover 89 registered claims, 60 audited SVG/PNG pairs, 528 local
+links, the aggregate experiment suite, the HTML build, and a 214-page PDF.
+The high-risk 2026-08-15 review findings, the 2026-08-16 vocabulary and
+multi-port-lowering reviews, and the canonical-model section review have been
+repaired. Those automated and supplied
 reviews remain technical evidence, not external human peer review.
 
 M1 (integrity and reproducibility) is complete. M2 (reduction evidence) and M3
@@ -139,6 +140,24 @@ starting model as the universal ontology.
 **Exit criterion:** the Start Here route is concise, the visual claims agree
 with their executable witnesses, navigation follows the intended onboarding
 order, and the notation slips called out by review fail the validation gate.
+
+### Canonical-model section review tranche (complete)
+
+- [x] repair doubled-backslash inline math, add stable anchors for both running
+  fixture chapters, and use those anchors in source and generated references;
+- [x] include the executable running-network evidence in the PDF route;
+- [x] standardize the Fortescue transform as ``\mathbf F`` while retaining
+  ``\mathbf A`` for incidence, and document ``C_+``/``E_+`` and the restricted
+  observation factorization;
+- [x] register the source-adapter and impedance-data publication contracts as
+  scoped practice claims and check their required fields;
+- [x] add the load-model divergence/continuation figure, source validation
+  pipeline, and impedance-fidelity ladder figure to the maintained audit.
+
+**Exit criterion:** the canonical-model section has no fragile fixture links,
+its paired reduction chapters use one transform vocabulary, the PDF carries
+the executable evidence, and the three central “same graph, different model”
+arguments have maintainable visual summaries.
 
 ### Then — literature and external validation
 

@@ -189,6 +189,7 @@ const PAGES_PDF = [
         "Load models and decision dependence" => "foundations/load-models-and-decision-dependence.md",
         "From conductor geometry to impedance fidelity" => "foundations/impedance-fidelity-ladder.md",
         "The running multiconductor network" => "cases/running-network.md",
+        "Executable running network" => "cases/executable-running-network.md",
         "When the general model collapses" => "foundations/when-general-model-collapses.md",
     ],
     "Core representation and transformation language" => [

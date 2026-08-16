@@ -93,7 +93,18 @@ def rel(path: Path) -> str:
 
 def link_to_chapter(path_string: str) -> str:
     path = ROOT / path_string
+    anchors = {
+        "docs/src/cases/running-network.md": "running-network",
+        "docs/src/cases/executable-running-network.md": "executable-running-network",
+    }
+    if path_string in anchors:
+        return f"[{title_for(path)}](@ref {anchors[path_string]})"
     return f"[{title_for(path)}](../{path.relative_to(DOCS).as_posix()})"
+
+
+def chapter_link(path: Path) -> str:
+    path_string = rel(path)
+    return link_to_chapter(path_string)
 
 
 def load_claims() -> list[dict]:
@@ -207,7 +218,7 @@ def generate_status(claims: list[dict]) -> None:
         else:
             types, verification, issue = "—", "untracked", "—"
         lines.append(
-            f"| [{title_for(path)}](../{path.relative_to(DOCS).as_posix()}) | "
+            f"| {chapter_link(path)} | "
             f"{page_status_for(path)} | {len(records)} | {types} | `{verification}` | {issue} |"
         )
     lines += ["", "_This file is regenerated during the documentation build._", ""]

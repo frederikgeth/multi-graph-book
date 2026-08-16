@@ -1,4 +1,4 @@
-# The running multiconductor network
+# [The running multiconductor network](@id running-network)
 
 **Page status:** semantic specification; numerical realization is versioned separately.
 
@@ -7,7 +7,7 @@ network is deliberately small enough to draw and solve repeatedly, but it contai
 that disappear in a conventional balanced bus--branch diagram.
 
 This page is the **semantic specification**. Its first numerical realization is
-the [executable running network](executable-running-network.md), version 0.1.0.
+the [executable running network](@ref executable-running-network), version 0.1.0.
 The semantic contract remains authoritative where that fixture explicitly lists
 an unimplemented feature.
 

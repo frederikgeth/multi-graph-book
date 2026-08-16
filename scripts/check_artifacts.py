@@ -98,6 +98,38 @@ READING_ROUTES_FIGURES = (
     ROOT / "docs/src/assets/reading-routes-graph-transmission.svg",
     ROOT / "docs/src/assets/reading-routes-graph-transmission.png",
 )
+CANONICAL_SECTION_FIGURES = tuple(
+    ROOT / "docs/src/assets" / name
+    for name in (
+        "load-model-divergence.svg",
+        "load-model-divergence.png",
+        "source-canonical-pipeline.svg",
+        "source-canonical-pipeline.png",
+        "impedance-fidelity-ladder.svg",
+        "impedance-fidelity-ladder.png",
+    )
+)
+PRACTICE_CONTRACT_FIELDS = {
+    "PRACTICE-ADAPTER-001": (
+        "source format, profile, and version",
+        "stable asset and terminal identifiers",
+        "state, scenario, and control treatment",
+        "factor, rating, and objective mappings",
+        "generated objects and their source parents",
+        "unsupported or lossy fields",
+        "validation findings and their severity",
+        "round-trip or recovery checks",
+    ),
+    "PRACTICE-IMPEDANCE-001": (
+        "conductor order and terminal maps",
+        "units, base values, frequency, and length convention",
+        "geometry or linecode provenance",
+        "earth-return and grounding assumptions",
+        "symmetry, reciprocity, passivity, and conditioning diagnostics",
+        "whether shunts are explicit or folded",
+        "which limits and decisions use the resulting current coordinates",
+    ),
+}
 KNOWLEDGE_BASE_INDEX = ROOT / "docs/src/reference/knowledge-base-index.md"
 CHAPTER_STATUS = ROOT / "docs/src/reference/chapter-status.md"
 PAGE_STATUS = re.compile(r"^\*\*Page status:\*\*[ \t]*(?P<status>[^\r\n]+)$", re.MULTILINE)
@@ -400,6 +432,7 @@ def main() -> int:
         FIGURE,
         FIGURE_AUDIT,
         *READING_ROUTES_FIGURES,
+        *CANONICAL_SECTION_FIGURES,
         *FIVE_BUS_FIGURES.values(),
         GENERATED / "summary.json",
         FIVE_BUS_ANALYSIS,
@@ -511,6 +544,16 @@ def main() -> int:
 
     claims = tomllib.loads((ROOT / "claims/claims.toml").read_text()).get("claim", [])
     claim_ids = {claim["claim_id"] for claim in claims}
+    for claim_id, required_fields in PRACTICE_CONTRACT_FIELDS.items():
+        claim = next((item for item in claims if item.get("claim_id") == claim_id), None)
+        if claim is None:
+            errors.append(f"missing maintained practice claim {claim_id}")
+            continue
+        chapter = ROOT / claim["chapter"]
+        source = chapter.read_text()
+        for field in required_fields:
+            if field not in source:
+                errors.append(f"{claim_id} contract field is missing from {chapter.relative_to(ROOT)}: {field}")
     claims_hash = sha256(ROOT / "claims/claims.toml")
     for generated_page in (KNOWLEDGE_BASE_INDEX, CHAPTER_STATUS):
         first_lines = generated_page.read_text().splitlines()[:4]

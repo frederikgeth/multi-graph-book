@@ -1391,3 +1391,35 @@ assumptions = "the neutral block is invertible; the phase-to-neutral current lif
 reviewer = ""
 review_date = ""
 unresolved_issue = "Reproduce authored overhead-line and underground-cable cases with geometry or linecode provenance, balanced and unbalanced load rows, grounding variants, and an external solver cross-check."
+
+[[claim]]
+claim_id = "PRACTICE-ADAPTER-001"
+preservation_dimensions = ['structure', 'state', 'decision', 'provenance']
+chapter = "docs/src/foundations/source-to-canonical-model.md"
+claim_text = "A safe source-to-canonical adapter should publish stable identities, terminal maps, state and control treatment, factor and rating mappings, generated-object provenance, unsupported fields, validation findings, and declared recovery checks before downstream graph transformations are trusted."
+status = "engineering_practice"
+claim_type = "practice"
+verification = "self-checked"
+evidence_type = "maintained_source_adapter_contract_and_editorial_audit"
+citation_keys = []
+model_scope = "the source-to-canonical contract described by this knowledge base"
+assumptions = "the list is a scoped engineering contract, not a universal data standard or a guarantee of round-trip recovery"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Compare the contract against additional utility, CIM/CGMES, OpenDSS, and solver-native adapters with external domain review."
+
+[[claim]]
+claim_id = "PRACTICE-IMPEDANCE-001"
+preservation_dimensions = ['phase_neutral', 'terminal_behavior', 'limits', 'provenance']
+chapter = "docs/src/foundations/impedance-fidelity-ladder.md"
+claim_text = "A safe impedance adapter should retain conductor order and terminal maps, units and frequency, geometry or linecode provenance, earth-return assumptions, matrix diagnostics, shunt placement, and the limits and decisions that use the resulting coordinates."
+status = "engineering_practice"
+claim_type = "practice"
+verification = "self-checked"
+evidence_type = "maintained_impedance_contract_and_editorial_audit"
+citation_keys = []
+model_scope = "the impedance-data contract described by this knowledge base"
+assumptions = "the list is a scoped engineering contract, not a universal line-modelling standard or a geometry-validation result"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Exercise the contract on source-backed overhead and underground construction records and obtain independent power-engineering review."

@@ -348,6 +348,24 @@
       "monochrome_safe": true,
       "distinguishing_channels": ["two labelled onboarding routes", "branch-specific arrow styles", "shared convergence boxes", "explicit preservation-contract target"]
     },
+    "load-model-divergence": {
+      "svg": "docs/src/assets/load-model-divergence.svg",
+      "png": "docs/src/assets/load-model-divergence.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["two labelled panels", "solid limit lines versus family curves", "recorded operating-point markers", "explicit failed continuation marker"]
+    },
+    "source-canonical-pipeline": {
+      "svg": "docs/src/assets/source-canonical-pipeline.svg",
+      "png": "docs/src/assets/source-canonical-pipeline.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["ordered numbered gates", "failure cards", "canonical/findings/provenance outputs", "ordering-rule banner"]
+    },
+    "impedance-fidelity-ladder": {
+      "svg": "docs/src/assets/impedance-fidelity-ladder.svg",
+      "png": "docs/src/assets/impedance-fidelity-ladder.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["five labelled stages", "guard labels on arrows", "loss-ledger panel", "explicit restricted-scalar endpoint"]
+    },
     "label-coordinate-bridge": {
       "svg": "docs/src/assets/label-coordinate-bridge.svg",
       "png": "docs/src/assets/label-coordinate-bridge.png",
