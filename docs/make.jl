@@ -218,10 +218,12 @@ const PAGES_PDF = [
         "Four-wire nominal-pi parallel case" => "cases/pi-four-wire-parallel-ac-decision.md",
         "Four-wire impedance-model ladder" => "cases/four-wire-impedance-model-ladder.md",
         "Conductor-coordinate normalization" => "transformations/conductor-coordinate-normalization.md",
+        "Transformer-winding coordinate normalization" => "transformations/transformer-winding-coordinate-normalization.md",
         "Multiwinding leakage reference compilation" => "transformations/multiwinding-leakage-reference-compilation.md",
         "Multiwinding terminal leakage assembly" => "transformations/multiwinding-terminal-leakage-assembly.md",
         "Fixed-linear transformer factor completion" => "transformations/fixed-linear-transformer-factor-completion.md",
         "Parameterized transformer tap decisions" => "transformations/parameterized-transformer-tap-decisions.md",
+        "Guarded normalization rules" => "transformations/guarded-normalization.md",
         "Transformer tap AC decision case" => "cases/transformer-tap-ac-decision.md",
         "BIM/BFM parallel lines: an expressiveness audit" => "cases/bim-bfm-parallel-lines.md",
         "Australian Carson reproduction" => "cases/australian-carson-reproduction.md",
@@ -333,6 +335,7 @@ function make_latex()
     build()
 end
 
+run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_winding_coordinate_actions.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_reference_figures.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_vocabulary_indexes.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_knowledge_base_indexes.py"))`)

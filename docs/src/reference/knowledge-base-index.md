@@ -1,14 +1,14 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:edfb4740f7b7ff593d47236014a7b017d20207e24e1a30e8a744422b31b2ec25 -->
+<!-- generated-from claims/claims.toml sha256:160b515bdecd11d4dbd7e1c0bc0f42bec4326e2a562729a87322cb44b4639740 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 93
-**Indexed chapters:** 41
+**Indexed claims:** 94
+**Indexed chapters:** 42
 
 ## Claims by type
 
@@ -80,7 +80,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `PRACTICE-IMPEDANCE-001` — A safe impedance adapter should retain conductor order and terminal maps, units and frequency, geometry or linecode provenance, earth-return assumptions, matrix diagnostics, shunt placement, and the limits and decisions that use the resulting coordinates. | [From conductor geometry to impedance fidelity](../foundations/impedance-fidelity-ladder.md) | `self-checked` |
 | `VOCAB-BRIDGE-001` — Load-bearing statements use a preferred house term or qualified shorthand that declares the relevant representation, quantity, state, and preservation object; an unqualified term is unsafe when it can change the claim. | [One network, five languages](../start/one-network-five-languages.md) | `self-checked` |
 
-### `proposal` (6)
+### `proposal` (7)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -90,6 +90,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `ARCH-SURGERY-001` — The book proposes that state-conditioned graph surgery return state-indexed graphs or graph families with diagnostics and provenance; for many unknown switches, a three-valued certain-connected/certain-separated/undetermined summary should be available instead of silently collapsing to one active graph. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
 | `ARCH-SURGERY-002` — The book proposes that an n-terminal surgery retain port-coordinate identity and return port-specific active and isolated sets; it cannot be inferred by replacing an n-port factor with implicit pairwise edges. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
 | `ARCH-VIEW-001` — The book proposes that a power-network visualisation declare its object level, preserved and forgotten semantics, identity fibres, and reverse-map status; single-line, multi-line, port-factor, node-breaker, nodal-support, and reduced views are distinct typed projections. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
+| `TRANSFORM-CATALOG-001` — The guarded-normalization catalogue treats coordinate normalization, series elimination, parallel bundling, switch contraction, multiwinding compilation, and rooted-tree views as distinct rule families whose acceptance depends on declared closure, recovery, constraint, and provenance guards. | [Guarded normalization rules](../transformations/guarded-normalization.md) | `self-checked` |
 
 ### `theorem` (34)
 
@@ -135,7 +136,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | Verification | Claims |
 | --- | ---: |
 | `independently-implemented` | 5 |
-| `self-checked` | 88 |
+| `self-checked` | 89 |
 
 ## Unresolved issues
 
@@ -231,6 +232,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `TR-XFMR-008` | This is a finite local witness, not a global unbalanced OPF guarantee; extend the contract to richer multiwinding controls, topology decisions, and independently assembled physical models. |
 | `TR-XFMR-009` | This remains a finite local path witness, not a global unbalanced multi-period OPF guarantee; extend to richer controls, topology decisions, switching operation limits, and independently assembled physical models. |
 | `TR-XFMR-010` | Extend operation-count, dwell-time, deadband, and switching-cost semantics to richer multiwinding controls and globally certified multi-period OPF models. |
+| `TRANSFORM-CATALOG-001` | Attach executable certificates to the remaining catalogue rows and review rewrite-system termination, critical-pair, and confluence conditions. |
 | `TRANSFORM-SEM-001` | Add independently reviewed formal signatures for closure and composition across larger transformation families. |
 | `VOCAB-BRIDGE-001` | Obtain terminology review from representatives of power engineering, software and network data, mathematical modelling, graph theory, and graph machine learning. |
 
@@ -412,7 +414,7 @@ schema is normalised.
 | `LIT-PAR-001` — For fixed scalar AC pi-line models on common endpoints, a parallel member's current- or apparent-power limit at one terminal is redundant when its normalized terminal-voltage quadratic feasible set contains that of another member; applying the test at both terminals certifies removal of both directional limits without aggregating the line models. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 | `PRACTICE-ARCH-001` — The representation implementation record keeps public API maturity, fixture coverage, direct-versus-related evidence, and not-yet-tested rows separate from the normative mathematical representation definitions. | [Representation implementation record](../literature/representation-implementation-record.md) | `practice` |
 
-### `transformations` (42)
+### `transformations` (43)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -458,6 +460,7 @@ schema is normalised.
 | `TR-XFMR-008` — In the recorded 11-terminal WYE/WYE/DELTA tap case, a phase-selective unbalanced second scenario can be handled without collapsing the transformer or its phase identities: exact enumeration of the nine ordered tap pairs preserves branch completeness and exposes the per-phase scenario directions explicitly. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
 | `TR-XFMR-009` — For the recorded 11-terminal WYE/WYE/DELTA case, a three-scenario phase-selective tap path can be enumerated exactly over the 3^3 ordered tap triples, with consecutive tap movement charged explicitly and each scenario retaining its own phase directions. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
 | `TR-XFMR-010` — In the recorded three-scenario tap path, enumerating all 27 ordered tap triples and then applying an explicit at-most-one-movement policy leaves 15 admissible branches; the policy is a decision constraint and must not be inferred from the unconstrained best path. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
+| `TRANSFORM-CATALOG-001` — The guarded-normalization catalogue treats coordinate normalization, series elimination, parallel bundling, switch contraction, multiwinding compilation, and rooted-tree views as distinct rule families whose acceptance depends on declared closure, recovery, constraint, and provenance guards. | [Guarded normalization rules](../transformations/guarded-normalization.md) | `proposal` |
 
 ## Generated artifacts
 

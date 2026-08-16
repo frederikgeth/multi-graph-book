@@ -96,7 +96,8 @@ returns to the same preservation-contract and evidence language.
   bim-bfm-parallel-lines).
 - **What survives a decision problem?** Read the parallel-line cases, the
   transformer-tap case, [Certificate schema and composition](@ref
-  certificate-schema-composition), and [Guarded normalization rules](@ref).
+  certificate-schema-composition), and [Guarded normalization rules](@ref
+  guarded-normalization-rules).
 - **What changes numerically?** Read [Numerical consequences of representation
   and reduction](@ref numerical-consequences).
 

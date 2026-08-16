@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="720" viewBox="0 0 1500 720">
+<title>Winding coordinate actions: terminal columns versus coil rows</title>
+<desc>Two panels show the same connection-incidence matrix under distinct permutation actions. Terminal-coordinate permutations act on columns by right multiplication with the transpose, while coil-row permutations act on rows by left multiplication.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#245b7a"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:27px;font-weight:bold}
+.sub{font-size:15px;fill:#5f6b76}.head{font-size:18px;font-weight:bold}.body{font-size:14px}
+.small{font-size:12px;fill:#5f6b76}.panel{fill:#f8fbfd;stroke:#245b7a;stroke-width:2}
+.matrix{fill:#e5f1e7;stroke:#477a55;stroke-width:2}.vector{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}
+.arrow{stroke:#245b7a;stroke-width:3;fill:none;marker-end:url(#arrow)}
+</style>
+
+<text x="35" y="42" class="title" text-anchor="start">One incidence matrix, two typed permutation actions</text>
+<text x="35" y="70" class="sub" text-anchor="start">The index set being permuted determines the side on which the action appears.</text>
+<rect x="45" y="110" width="680" height="500" rx="16" class="panel"/>
+<text x="385" y="150" class="head" text-anchor="middle">Terminal-coordinate permutation (columns)</text>
+<text x="385" y="180" class="body" text-anchor="middle">Û = P U   ⇒   Â = A Pᵀ</text>
+<rect x="110" y="250" width="150" height="150" class="matrix"/>
+<text x="185" y="290" class="head" text-anchor="middle">A</text>
+<text x="185" y="325" class="small" text-anchor="middle">coil rows</text>
+<text x="185" y="350" class="small" text-anchor="middle">terminal columns</text>
+<path d="M270 325 L410 325" class="arrow"/>
+<rect x="420" y="250" width="150" height="150" class="matrix"/>
+<text x="495" y="290" class="head" text-anchor="middle">A Pᵀ</text>
+<text x="495" y="325" class="small" text-anchor="middle">same coil rows</text>
+<text x="495" y="350" class="small" text-anchor="middle">reordered columns</text>
+<text x="385" y="455" class="body" text-anchor="middle">Voltage coordinates move; coil labels and coil limits stay fixed.</text>
+<text x="385" y="485" class="small" text-anchor="middle">Dual terminal currents transform as Î = P I.</text>
+<rect x="775" y="110" width="680" height="500" rx="16" class="panel"/>
+<text x="1115" y="150" class="head" text-anchor="middle">Coil-row permutation (rows)</text>
+<text x="1115" y="180" class="body" text-anchor="middle">Ṽ = Q V   ⇒   Ã = Q A</text>
+<rect x="840" y="250" width="150" height="150" class="matrix"/>
+<text x="915" y="290" class="head" text-anchor="middle">A</text>
+<text x="915" y="325" class="small" text-anchor="middle">source coil rows</text>
+<text x="915" y="350" class="small" text-anchor="middle">terminal columns</text>
+<path d="M1000 325 L1140 325" class="arrow"/>
+<rect x="1150" y="250" width="150" height="150" class="matrix"/>
+<text x="1225" y="290" class="head" text-anchor="middle">Q A</text>
+<text x="1225" y="325" class="small" text-anchor="middle">common coil rows</text>
+<text x="1225" y="350" class="small" text-anchor="middle">same terminal columns</text>
+<text x="1115" y="455" class="body" text-anchor="middle">Coil coordinates move; terminal labels stay fixed.</text>
+<text x="1115" y="485" class="small" text-anchor="middle">Coil-current limits transform with Q (or Qᵀ in recovery).</text>
+<rect x="105" y="545" width="1290" height="40" rx="10" class="vector"/>
+<text x="750" y="571" class="body" text-anchor="middle">Do not reuse P_xk for both actions: P_xk is terminal-column order; Q_xk is coil-row order.</text>
+</svg>

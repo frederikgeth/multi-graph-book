@@ -27,6 +27,8 @@ distinct from the terminal-coordinate order.
 
 ## Terminal-coordinate action
 
+![Terminal-column and coil-row permutation actions on the same winding incidence matrix.](../assets/winding-coordinate-actions.png)
+
 Let
 
 ```math
@@ -51,12 +53,17 @@ Then
 =\mathbf A_{xk}\mathbf U_{xki}.
 ```
 
-The terminal-current map is the dual of the voltage map: target terminal
-currents are P times source terminal currents, while source terminal currents
-are the transpose of the source incidence matrix times the coil currents. The
-transpose (rather than an adjoint) is correct because the incidence matrix is
-real. This gives complex-power invariance between source and target terminal
-coordinates, and between terminal and coil coordinates.
+The terminal-current map is the dual of the voltage map:
+
+```math
+\widehat{\mathbf I}_{xki}=\mathbf P_{xk}\mathbf I_{xki},
+\qquad
+\mathbf I_{xki}=\mathbf A_{xk}^{\mathsf T}\mathbf I_{xk}^{\mathrm{coil}}.
+```
+
+The transpose (rather than an adjoint) is correct because the incidence matrix
+is real. These two maps give complex-power invariance between source and target
+terminal coordinates, and between terminal and coil coordinates.
 
 Coil-indexed limits are unchanged because their coordinates have not been
 permuted. A terminal-current limit is different: when it is declared in the

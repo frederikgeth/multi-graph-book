@@ -1041,6 +1041,22 @@ review_date = ""
 unresolved_issue = "Extend local derivative bounds to adaptive/global continuation, nonlinear multi-point grounding, noisy observations, and physical-model review."
 
 [[claim]]
+claim_id = "TRANSFORM-CATALOG-001"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision', 'provenance']
+chapter = "docs/src/transformations/guarded-normalization.md"
+claim_text = "The guarded-normalization catalogue treats coordinate normalization, series elimination, parallel bundling, switch contraction, multiwinding compilation, and rooted-tree views as distinct rule families whose acceptance depends on declared closure, recovery, constraint, and provenance guards."
+status = "proposed_result"
+claim_type = "proposal"
+verification = "self-checked"
+evidence_type = "reader-facing_rule_catalogue_and_cross_reference_to_executable_certificates"
+citation_keys = []
+model_scope = "candidate transformation families in the guarded-normalization register"
+assumptions = "catalogue rows are navigation and scope declarations, not certificates of every listed rule"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Attach executable certificates to the remaining catalogue rows and review rewrite-system termination, critical-pair, and confluence conditions."
+
+[[claim]]
 claim_id = "TR-GRAPH-001"
 preservation_dimensions = ['structure', 'state', 'provenance']
 chapter = "docs/src/foundations/cycles-parallelism-radiality.md"

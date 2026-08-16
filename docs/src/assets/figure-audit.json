@@ -120,6 +120,12 @@
       "monochrome_safe": true,
       "distinguishing_channels": ["guard sequence", "solid pass branch", "dashed structured-rejection branch"]
     },
+    "winding-coordinate-actions": {
+      "svg": "docs/src/assets/winding-coordinate-actions.svg",
+      "png": "docs/src/assets/winding-coordinate-actions.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["two titled panels", "row-versus-column arrows", "labelled index sets", "explicit P and Q actions"]
+    },
     "spine-band": {
       "svg": "docs/src/assets/spine-band.svg",
       "png": "docs/src/assets/spine-band.png",

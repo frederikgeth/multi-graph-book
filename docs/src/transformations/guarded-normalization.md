@@ -1,4 +1,4 @@
-# Guarded normalization rules
+# [Guarded normalization rules](@id guarded-normalization-rules)
 
 **Page status:** candidate rule catalogue; individual rules require explicit certificates.
 
@@ -34,81 +34,18 @@ valid equivalence test.
 
 ## Degree-two series elimination
 
-Consider a middle connectivity object ``b`` joining two series-only
-multiconductor elements:
+The catalogue points to [Degree-two series elimination](@ref
+degree-two-series-rule) for the complete coordinate-aware rule, executable
+guards, mutual-coupling counterexample, grounding counterexample, recovery map,
+and nominal-``\pi`` closure warning. In particular, the target impedance is
+``Z_1+P^{\mathsf T}Z_2P```, not an unqualified ``Z_1+Z_2``: the second section
+must first be pulled back into the first section's conductor coordinates.
 
-```math
-v_a-v_b=Z_1i,
-\qquad
-v_b-v_c=Z_2i.
-```
-
-If there is no injection or shunt at ``b``, Kirchhoff conservation gives a
-common current and hence
-
-```math
-v_a-v_c=(Z_1+Z_2)i.
-```
-
-### Behavioral rule
-
-The elimination is exact for the series terminal relation when:
-
-1. conductor sets and coordinate systems are compatible;
-2. the middle object has no current injection;
-3. there is no grounding, shunt, tap, control, or measurement relation there;
-4. neither segment is mutually coupled to the other segment or to an external
-   element through a factor that the replacement omits;
-5. eliminated variables and any constraints can be recovered or are outside
-   the observation contract.
-
-The fourth guard is an element-pair condition, not a property of ``b``. If the
-two sections have cross blocks ``Z_{12}`` and ``Z_{21}``, the exact composite
-contains both cross terms; see
-[Degree-two series elimination](@ref degree-two-series-rule) for the formula
-and executable counterexample.
-
-Different line construction codes do **not** invalidate this algebraic series
-equivalence.
-
-### Physical line-merge rule
-
-Replacing the segments by a longer instance of one physical line type is a
-stronger rewrite. Proposed guards include:
-
-- same construction/line code after explicit overrides;
-- same conductor material, geometry, ordering and transposition regime;
-- same parameter model and frequency basis;
-- compatible rating semantics and thermal model;
-- no splice, joint, location, protection, ownership or maintenance boundary
-  that the target application must retain;
-- no midspan fault or outage state that remains independently selectable;
-- a line model class closed under length concatenation.
-
-If these guards fail, the correct result may be a typed
-`CompositeSeriesBranch` with segment provenance—not a homogeneous line.
-
-### Neutral grounding counterexample
-
-If the neutral at ``b`` is grounded through ``Y_g``, then
-
-```math
-i_1-i_2=Y_gv_{b,n},
-```
-
-so the two line currents are not identical. Schur elimination may still produce
-an exact terminal two-port, but its shunt and cross-terminal terms generally do
-not belong to the original homogeneous line class. The grounding location and
-asset identity also disappear. This should reject physical merging even when a
-behavioral reduction remains available.
-
-### Line charging and distributed models
-
-Two sections of the same exact distributed-parameter line can be concatenated
-through their transmission matrices. Two independently formed nominal-``\pi``
-approximations do not generally reduce to the naïve nominal-``\pi`` model
-obtained by summing all displayed parameters. Their cascade is a general
-two-port and requires a closure proof or controlled re-approximation.
+This catalogue entry deliberately records only the rule-family distinction:
+behavioural series elimination may be exact in a generic two-port library,
+whereas merging two assets into one homogeneous physical line requires a
+separate closure proof for construction, ratings, ownership, grounding,
+charging, and outage semantics.
 
 ## Constraint transformation for series elements
 

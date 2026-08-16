@@ -18,8 +18,8 @@ not masquerade as completion of the others.
 
 The repository is a locally validated HTML-first release candidate. The
 curated PDF is a secondary serialization of the same Markdown sources. The
-current checks cover 93 registered claims, 62 audited SVG/PNG pairs, 539 local
-links, the aggregate experiment suite, the HTML build, and a 308-page PDF.
+current checks cover 94 registered claims, 63 audited SVG/PNG pairs, 542 local
+links, the aggregate experiment suite, the HTML build, and a 315-page PDF.
 The high-risk 2026-08-15 review findings, the 2026-08-16 vocabulary and
 multi-port-lowering reviews, and the canonical-model section review have been
 repaired. Those automated and supplied
@@ -64,6 +64,28 @@ reader-facing serialisations.
 **Exit criterion:** transformation chapters have auditable callouts, explicit
 scope boundaries, definition-level ledger coverage, and a visible guarded-rule
 template before the later transformation cases.
+
+### Guarded-patterns review tranche (complete)
+
+- [x] distinguish terminal-column permutations ``P_{xk}`` from coil-row
+  permutations ``Q_{xk}`` in the adjacent transformer chapters;
+- [x] replace the catalogue's duplicated series-elimination derivation with a
+  coordinate-aware pointer to the dedicated executable rule;
+- [x] give the guarded-normalization catalogue a stable anchor and a scoped
+  catalogue claim;
+- [x] promote transformer-winding normalization and the guarded catalogue into
+  the PDF route alongside the dependent multiwinding assembly chapters;
+- [x] write the dual current relation as explicit equations and add a
+  maintainable row-versus-column action figure.
+
+**Exit criterion:** the guarded-pattern section has one authoritative series
+rule, unambiguous transformer coordinate actions, complete HTML/PDF coverage,
+and a visual bridge for the two permutation types.
+
+Deferred follow-ups from this review: replace the remaining chapter-local raw
+LaTeX pagination hacks with a template-level float policy, and either wire the
+legacy `five-bus-feasible-sets`/`numerical-structure-witness` raster assets into
+reader-facing chapters or retire them after checking historical references.
 
 M1 (integrity and reproducibility) is complete. M2 (reduction evidence) and M3
 (graph architecture) satisfy their scoped book claims; their remaining broad

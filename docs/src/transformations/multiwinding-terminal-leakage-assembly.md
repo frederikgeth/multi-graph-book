@@ -30,20 +30,22 @@ connection incidence satisfies
 The row labels of ``\mathbf A_{xk}`` are part of the type. Two rows occupying
 the same array position do not thereby represent the same magnetic coordinate.
 The executable rule requires every winding to declare the same set
-``\mathcal C_x`` and constructs the permutation ``\mathbf P_{xk}`` from its
+``\mathcal C_x`` and constructs the coil-row permutation ``\mathbf Q_{xk}`` from its
 source order to a common order. It then uses
 
 ```math
 \widetilde{\mathbf A}_{xk}
-=\mathbf P_{xk}\mathbf A_{xk},
+=\mathbf Q_{xk}\mathbf A_{xk},
 \qquad
 \widetilde{\boldsymbol{\imath}}_{xk}^{\max}
-=\mathbf P_{xk}\boldsymbol{\imath}_{xk}^{\max}.
+=\mathbf Q_{xk}\boldsymbol{\imath}_{xk}^{\max}.
 ```
 
 This is an output-coordinate action on the terminal-to-coil operator. It is
 distinct from permuting the input terminal coordinates, which right-multiplies
-``\mathbf A_{xk}`` by an inverse permutation.
+``\mathbf A_{xk}`` by an inverse permutation. We use ``\mathbf Q_{xk}`` for
+the coil-row action throughout this chapter so it cannot be confused with the
+terminal-coordinate permutation ``\mathbf P_{xk}`` in the preceding chapter.
 
 ```@raw latex
 \newpage
@@ -129,7 +131,7 @@ and enforces every source constraint
 ```math
 \left|
 \left[
-\mathbf P_{xk}^{\mathsf T}
+\mathbf Q_{xk}^{\mathsf T}
 \mathbf I_{xk}^{\mathrm{coil}}
 \right]_c
 \right|
@@ -148,7 +150,7 @@ Three independent changes are tested:
 1. changing the internal leakage reference leaves ``\mathbf Y_x^{\mathrm w}``
    and hence the terminal factor unchanged;
 2. reordering a winding's coil rows and labels is removed by
-   ``\mathbf P_{xk}``; and
+   ``\mathbf Q_{xk}``; and
 3. if terminal coordinates change by ``\widehat{\mathbf U}_x=\mathbf P_x
    \mathbf U_x``, then
 
