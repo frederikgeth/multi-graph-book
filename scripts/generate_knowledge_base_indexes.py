@@ -159,7 +159,7 @@ def generate_index(claims: list[dict]) -> None:
         lines.append("")
 
     lines += ["## Claims by verification state", "", "| Verification | Claims |", "| --- | ---: |"]
-    for key in sorted(by_verification):
+    for key in ("self-checked", "independently-implemented", "externally-reviewed"):
         lines.append(f"| `{key}` | {len(by_verification[key])} |")
     lines += ["", "## Unresolved issues", "", "| Claim | Issue |", "| --- | --- |"]
     for claim in sorted(claims, key=lambda item: item["claim_id"]):

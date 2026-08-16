@@ -1,22 +1,30 @@
-# Structure-Preserving Graph Models for Power Networks
+# What Power-Network Models Preserve
 
-This repository is a scientific book and living knowledge base on graph representations,
-projections, compilation, normalization, and reduction of power-network models.
+*Graphs, reductions, and decision boundaries*
 
-The central premise is that there is no universally correct "power-system graph." A graph
-representation is adequate only relative to the physical, operational, and decision questions it
-must support. The project develops typed physical and electrical representations, traceable derived
-views, and explicit preservation contracts for transformations between them.
+This repository is a problem-first scientific book and living knowledge base about what is lost
+when a power-network model is projected, compiled, normalized, or reduced.
+
+The central problem is not choosing the smallest or most familiar graph. It is deciding whether a
+representation still answers the physical, operational, and decision question that motivated the
+model. A simplified view may preserve a terminal equation while losing asset identity, grounding,
+limits, controls, feasible decisions, measurements, or provenance.
+
+The book develops the vocabulary and tests needed to expose those losses. Typed representations,
+traceable views, transformation rules, and certificates are proposed tools for responding to the
+problem; they are not presented as a completed universal transformation theory.
 
 The general baseline is a multiconductor network with arbitrary ordered terminals, explicit neutral
 and grounding semantics, full conductor coupling, multi-terminal and multiwinding devices, and
 continuous or discrete decision variables. Balanced transmission models are treated as important
 derived cases rather than the universal source representation.
 
-The current drafting foundation includes:
+The current drafting foundation includes the following problem-first route:
 
-- the [reader-facing book plan](BOOK_PLAN.md);
-- the scope, representation taxonomy, proposed architecture, and preservation contracts;
+- the [reader-facing book plan](BOOK_PLAN.md), including current, reference, worked-case, and
+  future-application boundaries;
+- the problem statement, representation obligations, canonical-model contract, and preservation
+  vocabulary;
 - a BMOPFTools-aligned notation contract and a common multiconductor running case;
 - a schema-valid numerical running fixture, six illustrated representation views, a simple-topology quotient map, and PF/OPF checks;
 - executable parallel-branch, conductor-, transformer-winding-, reference-invariant multiwinding-leakage-, terminal-assembly-, fixed-linear transformer-completion-, parameterized tap-decision-, solver-backed and separately reimplemented transformer-network-, degree-two-series, and composed preservation certificates;
@@ -30,10 +38,22 @@ The current drafting foundation includes:
 See [ROADMAP.md](ROADMAP.md) for the proposed work plan and
 [QUALITY_CONTROL.md](QUALITY_CONTROL.md) for the evidence and review policy.
 
-The HTML knowledge base is the primary product. Its generated [knowledge-base indexes](docs/src/reference/knowledge-base-index.md)
-and [chapter-status page](docs/src/reference/chapter-status.md) provide retrieval and evidence
-state directly from the claims ledger and generated artifacts. The PDF is a secondary curated
-serialization of the same Markdown sources.
+## Two complementary products
+
+The long-form monograph follows one argument: problem and counterexample, representation
+obligations, canonical model, valid collapses and failure modes, preservation contracts,
+transformations and recovery, then worked cases and consequences. It is the route for learning
+the thesis.
+
+The HTML knowledge base is the exhaustive retrieval surface. Its generated [knowledge-base
+indexes](docs/src/reference/knowledge-base-index.md), [chapter-status page](docs/src/reference/chapter-status.md),
+claims ledger, literature records, and artifacts are the route for checking a term, claim,
+certificate, source, or unresolved boundary. The PDF is a secondary curated serialization of the
+same Markdown sources; it follows the argument route but does not reproduce every retrieval index.
+
+See [How to use this book](docs/src/start/how-to-use-this-book.md) for the recommended routes,
+evidence labels, and the boundary between established literature, repository witnesses, and open
+proposals.
 
 The former `power-network-graph-models/` directory is retained as an archived
 historical seed for provenance only; it is not part of the maintained build.
@@ -102,6 +122,7 @@ julia --project=experiments experiments/run_multiconductor_parallel_ac.jl
 julia --project=experiments experiments/test/runtests.jl
 julia scripts/check_claims.jl
 python3 scripts/check_claim_mentions.py
+python3 scripts/check_evidence_summary.py
 python3 scripts/check_artifacts.py
 python3 scripts/check_rendered_outputs.py
 bash scripts/reproduce_clean_fixture.sh

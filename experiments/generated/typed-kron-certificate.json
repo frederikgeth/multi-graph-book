@@ -73,6 +73,16 @@
         "witness": "experiments/generated/typed-kron-witness.json"
     },
     "classification": "exact_behavioral_reduction",
+    "numerical_evidence": {
+        "solver_status": "not_applicable; direct linear algebra witness",
+        "uncertainty_status": "not_quantified; deterministic synthetic fixture",
+        "conditioning": 1.2215104984701914,
+        "notes": "Residuals are algebraic consistency checks; no solver or global optimization claim.",
+        "backward_error": 0,
+        "optimality_status": "not_applicable",
+        "residual": 1.777587628338693e-15,
+        "tolerance": 1.0e-11
+    },
     "target": {
         "object_ids": [
             "typed-kron-fixture-v0.1.0/boundary-multiport"

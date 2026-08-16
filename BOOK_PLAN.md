@@ -2,7 +2,9 @@
 
 ## Working identity
 
-**Working title:** *Structure-Preserving Graph Models for Power Networks*
+**Working title:** *What Power-Network Models Preserve*
+
+**Subtitle:** *Graphs, reductions, and decision boundaries*
 
 **Form:** a scientific reference monograph with tutorial entry points and an executable
 knowledge base.
@@ -15,6 +17,12 @@ basics is introduced as needed.
 **Assumed background:** linear algebra, phasors, elementary circuit modelling, and basic power
 flow. The book does not assume that the reader already knows category theory, graph rewriting,
 multiconductor OPF, CIM, or a particular software package.
+
+**Editorial status labels:** `[core argument]` chapters carry the problem-first thesis; `[reference
+card]` chapters provide definitions, crosswalks, or compact lookup material; `[worked case]`
+chapters demonstrate the thesis on a declared fixture; `[research record]` chapters report
+literature, implementation, or open-work status; `[future application]` chapters are planned
+inventory, not completed evidence in the current release candidate.
 
 ## Scope
 
@@ -38,6 +46,23 @@ The first edition emphasizes steady-state and quasi-steady models used in power 
 power flow, topology processing, state estimation, selected fault studies, and planning. Dynamics,
 EMT, harmonics, protection logic, communications, markets, geographic graphs, and graph learning
 are boundary cases unless a result directly tests the proposed framework.
+
+The current release candidate is not a completed general transformation calculus and does not
+claim complete coverage of state estimation, protection, planning, contingency analysis, or
+feeder reduction. Those application areas remain explicit future boundaries unless a chapter's
+claims ledger and executable evidence say otherwise.
+
+## The problem before the tools
+
+Power-network workflows routinely move between physical assets, terminal connections, circuit
+factors, nodal matrices, optimization models, and visual or data views. Each move can be useful,
+but it can also forget distinctions that matter to the study: conductor identity, grounding,
+limits, controls, switching states, measurements, decisions, or provenance. A smaller graph may
+therefore preserve one equation while changing the feasible set or the decision problem.
+
+The book is organized to establish this problem first. Its typed architecture, transformations,
+and certificates are responses to the problem, not the premise that a single preferred graph can
+represent every purpose.
 
 ## Central claim
 
@@ -72,81 +97,87 @@ After reading the core route, a reader should be able to:
 
 ## Linear book structure
 
-The HTML knowledge base is the primary product and provides generated indexes by claim type,
+The long-form monograph is the argument-shaped product and follows:
+
+**problem and counterexample → representation obligations → canonical model → valid collapses and
+failure modes → preservation contracts → transformations and recovery → cases and consequences.**
+
+The HTML knowledge base is the exhaustive retrieval product and provides generated indexes by claim type,
 verification state, chapter, artifact, and unresolved issue. The PDF is a secondary, curated
-serialization with a shorter argument-shaped route; it reuses the same Markdown sources but does
-not attempt to reproduce the knowledge-base indexes as a linear chapter sequence.
+serialization of the same Markdown sources. It follows the argument sequence without shortening the
+underlying chapter content and does not attempt to reproduce the knowledge-base indexes as a linear
+chapter sequence.
 
 ### Start here — one network, many graphs
 
-1. **One network, many graphs**
+1. **[core argument] One network, many graphs**
    - Render the running network as an asset graph, terminal-connectivity model, multigraph,
      port--factor model, equation graph, and sparsity graph.
    - Show that these views answer different questions.
-2. **Fit for purpose and preservation**
+2. **[core argument] Fit for purpose and preservation**
    - Identity, interconnection, behaviour, constraints, decisions, provenance, and recovery.
-3. **A first failure: heterogeneous parallel branches**
+3. **[worked case] A first failure: heterogeneous parallel branches**
    - Preserve terminal admittance while changing the OPF feasible set and available decisions.
-4. **Reading paths and scope**
+4. **[core argument] Reading paths and scope**
    - Routes for power engineers, optimization researchers, software/data practitioners, and
      graph/formal-methods readers.
-5. **From source data to a canonical network model**
+5. **[core argument] From source data to a canonical network model**
    - Semantic projection, validation gates, inference, unsupported fields, and provenance before
      any graph view is derived.
 
 ### Part I — Representation landscape
 
-6. **Formal representation frameworks**
+6. **[core argument] Formal representation frameworks**
    - Simple topology quotient, oriented attributed multigraph, hierarchical
      port--factor incidence model, asset/dependency relation model, and
      equation/sparsity graphs.
-7. **Maps between representation frameworks**
+7. **[reference card] Maps between representation frameworks**
    - Morphisms and isomorphisms within each framework; typed quotients,
      compilers, reductions, provenance relations, and query factorization
      between frameworks.
-8. **Translation traps: graphs, circuits, and power-system language**
+8. **[core argument] Translation traps: graphs, circuits, and power-system language**
    - Controlled replacements for ambiguous arrows, flows, conservation,
      cycles, parallelism, radiality, buses, equivalents, and matrix language.
-9. **Two topology levels and the nodal projection**
+9. **[core argument] Two topology levels and the nodal projection**
    - Identified asset/terminal topology, conductor/port--factor topology, and
      block/scalar nodal-operator support.
    - Parallelism and cycles at each level; factor-stamp assembly,
      non-identifiability, source retention, and radial macro-topology with
      cyclic conductor-expanded support.
-10. **Cycles, parallelism, and radial structure**
+10. **[core argument] Cycles, parallelism, and radial structure**
    - Simple cycles, line-identity cycles, parallel fibres, graph degrees,
      bridges, leaves, radial tails, active-state forests, and multi-terminal
      factor incidence.
-11. **Physical assets and dependency relations**
-12. **Terminals, conductors, connectivity, and ground**
+11. **[reference card] Physical assets and dependency relations**
+12. **[reference card] Terminals, conductors, connectivity, and ground**
    - Reference, neutral, earth-return, and asset-aware grounding classes;
      scope contracts for neutral and earth reductions.
-13. **Orientation, terminal signs, and operating-point power transfer**
+13. **[core argument] Orientation, terminal signs, and operating-point power transfer**
    - Undirected physical incidence, the terminal-arc double cover, arbitrary
      reference orientation, two-end current and power observations, losses,
      nominal-``\pi`` shunts, and genuinely directed relations.
    - Rooted active-tree views, parent/child labels, source-relative distance,
      meshed chords, and switching-state recomputation.
-14. **Node--breaker, bus--breaker, and oriented bus--branch models**
+14. **[reference card] Node--breaker, bus--breaker, and oriented bus--branch models**
    - State-conditioned connectivity, switch contraction, topological nodes,
      and recovery of switching/protection identity.
-15. **Simple topology quotients and weighted graphs**
-16. **Multi-terminal and multiwinding devices**
-17. **Port, factor, and hypergraph models**
-18. **Circuit matrices, equation graphs, and sparsity graphs**
-19. **Hierarchy, zones, and subsystem boundaries**
-20. **Numerical consequences of representation and reduction**
+15. **[reference card] Simple topology quotients and weighted graphs**
+16. **[reference card] Multi-terminal and multiwinding devices**
+17. **[reference card] Port, factor, and hypergraph models**
+18. **[reference card] Circuit matrices, equation graphs, and sparsity graphs**
+19. **[reference card] Hierarchy, zones, and subsystem boundaries**
+20. **[core argument] Numerical consequences of representation and reduction**
    - Per-unit and coordinate scaling, conditioning, residual/backward-error
      reporting, Jacobian dependency structure, Schur-complement fill-in,
      ordering, recovery cost, and decision margins.
-21. **Study-specific and algorithmic graphs**
-22. **Comparing representation families**
+21. **[reference card] Study-specific and algorithmic graphs**
+22. **[research record] Comparing representation families**
    - Literature-facing landscape of graph, circuit, equation, and information
      models; selected source, derived view, equivalent alternative, scope
      collapse, and orthogonal companion; crosswalks to CIM/CGMES,
      PowerModelsDistribution, OpenDSS, and MATPOWER.
    - Canonicality is argued as a scoped design choice, not universal uniqueness.
-23. **Circuit formulations and the lowering boundary**
+23. **[core argument] Circuit formulations and the lowering boundary**
    - Nodal admittance, modified/sparse tableau, branch-current, hybrid,
      port/factor, and constraint formulations.
    - Nodal admittance as a powerful representation for an important class of
@@ -155,84 +186,91 @@ not attempt to reproduce the knowledge-base indexes as a linear chapter sequence
      multi-terminal behaviour, or decisions matter.
    - Exact nodal-stamping conditions, singular or unavailable ``Y`` cases,
      direct factor stamping, and provenance-aware compiler targets.
-24. **When the general model collapses**
+24. **[core argument] When the general model collapses**
     - Balanced operation, transposition, sequence decoupling, neutral elimination, identical
       terminal sets, two-terminal equipment, and transmission-style models.
-25. **Load models and decision dependence**
+25. **[core argument] Load models and decision dependence**
     - Constant-power, current, impedance, ZIP, and exponential laws as constitutive relations
       that change feasible sets without changing topology.
-26. **From conductor geometry to impedance fidelity**
+26. **[reference card] From conductor geometry to impedance fidelity**
     - Geometry, earth return, mutual matrices, conditioning, sequence coordinates, and the
       physical provenance of scalar transmission edges.
 
-27. **Transformation semantics, closure, and anti-patterns**
+27. **[core argument] Transformation semantics, closure, and anti-patterns**
     - Structure, behaviour, decisions and provenance; target-library closure;
       typed composition; and warnings for line/transformer, grounding/
       transformer and unguarded series merges.
 
 ### Part II — A common language for transformations
 
-28. **Source, target, and observation contracts**
-29. **Projection and forgetting**
-30. **Compilation and realization**
-31. **Normalization within a model family**
-32. **Circuit coordinate transformations**
+28. **[core argument] Source, target, and observation contracts**
+29. **[core argument] Projection and forgetting**
+30. **[core argument] Compilation and realization**
+31. **[core argument] Normalization within a model family**
+32. **[core argument] Circuit coordinate transformations**
     - Phase-to-neutral and phase-to-phase maps, common-mode quotients,
       neutral recovery, grounding and shunt guards, and active-member
       radiality conditions.
-33. **Exact behavioural reduction and linear Kron elimination**
-34. **Ward and extended-Ward external-system equivalents**
-35. **Structure-constrained and optimized reduction**
+33. **[core argument] Exact behavioural reduction and linear Kron elimination**
+34. **[core argument] Ward and extended-Ward external-system equivalents**
+35. **[core argument] Structure-constrained and optimized reduction**
     - Opti-KRON, voltage-observation metrics, phase/connectivity guards, and
       radiality restoration.
-36. **Approximate but certified reduction**
-37. **Transformation certificates and recovery maps**
-38. **Composition, critical pairs, and purpose-specific normal forms**
+36. **[core argument] Approximate but certified reduction**
+37. **[core argument] Transformation certificates and recovery maps**
+38. **[core argument] Composition, critical pairs, and purpose-specific normal forms**
 
 ### Part III — Guarded transformation patterns
 
-39. **Conductor coordinates, terminal maps, and orientation**
-40. **Switch contraction and state-resolved topology**
-41. **Series elimination and physical line concatenation**
-42. **Parallel recognition, aggregation, and constraint lifting**
-43. **Grounding and explicit neutrals**
-44. **Multiwinding transformer compilation**
-45. **Star--mesh and related circuit transformations**
-46. **Constraint and decision recovery**
+39. **[core argument] Conductor coordinates, terminal maps, and orientation**
+40. **[core argument] Switch contraction and state-resolved topology**
+41. **[core argument] Series elimination and physical line concatenation**
+42. **[core argument] Parallel recognition, aggregation, and constraint lifting**
+43. **[core argument] Grounding and explicit neutrals**
+44. **[core argument] Multiwinding transformer compilation**
+45. **[reference card] Star--mesh and related circuit transformations**
+46. **[core argument] Constraint and decision recovery**
    - Rating and limit semantics: duration, ambient, quantity, ownership, and
      uncertainty domains.
 
 ### Part IV — Consequences for decisions
 
-47. **Power flow and optimal power flow**
-48. **Topology processing and switching**
-49. **State estimation and measurement structure**
-50. **Fault, grounding, and protection boundaries**
-51. **Planning, contingencies, and reliability**
-52. **Feeder reduction and operating envelopes**
+47. **[future application] Power flow and optimal power flow**
+48. **[future application] Topology processing and switching**
+49. **[future application] State estimation and measurement structure**
+50. **[future application] Fault, grounding, and protection boundaries**
+51. **[future application] Planning, contingencies, and reliability**
+52. **[future application] Feeder reduction and operating envelopes**
 
 These chapters evaluate more than state error. Their comparison criteria include feasibility,
 active limits, continuous and discrete controls, objective value, optimal decisions, contingency
 outcomes, and recoverability of source quantities.
 
+In the current release candidate, Part IV is a future-application inventory rather than a claim
+that all of these study families are complete. The repository contains scoped power-flow, OPF,
+topology, grounding, transformer-control, and reduction witnesses, but it does not yet establish
+general state-estimation, protection, planning, contingency, or feeder-reduction results. New
+chapters in these areas should enter as research records or bounded worked cases until their
+source model, evidence, recovery, and review status are explicit.
+
 ### Part V — Worked cases
 
-53. **The running multiconductor network, end to end**
-54. **Heterogeneous parallel-line OPF**
-55. **Four-wire grounding-aware estimation**
-56. **Multiwinding transformer realization**
-57. **Distribution-model cleaning**
-58. **Certified feeder reduction**
+53. **[worked case] The running multiconductor network, end to end**
+54. **[worked case] Heterogeneous parallel-line OPF**
+55. **[future application] Four-wire grounding-aware estimation**
+56. **[worked case] Multiwinding transformer realization**
+57. **[future application] Distribution-model cleaning**
+58. **[future application] Certified feeder reduction**
 
 ### Reference
 
-- notation and modelling conventions;
-- terminology and controlled vocabulary;
-- representation comparison tables;
-- transformation-certificate schema;
-- software and information-model crosswalks;
-- literature synthesis and verified bibliography;
-- open questions and research agenda.
+- **[reference card]** notation and modelling conventions;
+- **[reference card]** terminology and controlled vocabulary;
+- **[reference card]** representation comparison tables;
+- **[reference card]** transformation-certificate schema;
+- **[reference card]** software and information-model crosswalks;
+- **[research record]** literature synthesis and verified bibliography;
+- **[research record]** open questions and research agenda.
 
 ## Chapter forms
 

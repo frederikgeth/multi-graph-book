@@ -33,6 +33,9 @@ const REQUIRED_FIELDS = Set([
 ])
 
 const TYPED_STATE_SPACE_REF = "experiments/generated/state-space-unit-witness.json"
+const NUMERICAL_OPTIMALITY_STATUSES = Set([
+    "not_applicable", "not_assessed", "local", "branch_scoped", "global_certified",
+])
 
 function unit_families(label)
     text = lowercase(String(label))
@@ -98,6 +101,36 @@ function validate_certificate(certificate::AbstractDict)
     end
     for field in ("recovery_map", "constraint_map", "provenance", "evidence")
         get(certificate, field, nothing) isa AbstractDict || push!(errors, "$field must be an object")
+    end
+    if haskey(certificate, "numerical_evidence")
+        numerical = certificate["numerical_evidence"]
+        if !(numerical isa AbstractDict)
+            push!(errors, "numerical_evidence must be an object")
+        else
+            for name in (
+                "solver_status", "optimality_status", "residual", "tolerance",
+                "conditioning", "backward_error", "uncertainty_status",
+            )
+                haskey(numerical, name) || push!(errors, "numerical_evidence.$name is missing")
+            end
+            get(numerical, "solver_status", nothing) isa AbstractString ||
+                push!(errors, "numerical_evidence.solver_status must be a string")
+            get(numerical, "optimality_status", nothing) in NUMERICAL_OPTIMALITY_STATUSES ||
+                push!(errors, "numerical_evidence.optimality_status is unknown")
+            for name in ("residual", "tolerance", "backward_error")
+                value = get(numerical, name, nothing)
+                value isa Real && value >= 0 ||
+                    push!(errors, "numerical_evidence.$name must be nonnegative")
+            end
+            tolerance = get(numerical, "tolerance", nothing)
+            tolerance isa Real && tolerance > 0 ||
+                push!(errors, "numerical_evidence.tolerance must be positive")
+            conditioning = get(numerical, "conditioning", nothing)
+            (conditioning === nothing || conditioning isa Real && conditioning >= 0) ||
+                push!(errors, "numerical_evidence.conditioning must be nonnegative or null")
+            get(numerical, "uncertainty_status", nothing) isa AbstractString ||
+                push!(errors, "numerical_evidence.uncertainty_status must be a string")
+        end
     end
     interfaces = get(certificate, "interfaces", nothing)
     if !(interfaces isa AbstractDict)

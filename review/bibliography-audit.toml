@@ -1,6 +1,48 @@
 schema_version = 1
 
 [[entry]]
+key = "Fortescue1918"
+status = "verified"
+verification_source = "https://doi.org/10.1109/T-AIEE.1918.4765570"
+verified_on = "2026-08-17"
+note = "The DOI record confirms Fortescue's original symmetrical-coordinate paper and its Transactions metadata; the book uses it as the historical anchor for the sequence transform, while exact reduction remains conditioned on declared invariance and observation guards."
+
+[[entry]]
+key = "Carson1926"
+status = "verified"
+verification_source = "https://doi.org/10.1002/j.1538-7305.1926.tb00122.x"
+verified_on = "2026-08-17"
+note = "The publisher record confirms the original ground-return impedance paper, Bell System Technical Journal metadata, pages, year, and DOI; it is used as a physical ground-return anchor, not as a claim that every earth model is Carson-equivalent."
+
+[[entry]]
+key = "ChengShirmohammadi1995"
+status = "verified"
+verification_source = "https://doi.org/10.1109/59.387902"
+verified_on = "2026-08-17"
+note = "The DOI record identifies the primary three-phase distribution power-flow method and its IEEE Transactions on Power Systems publication metadata; the book cites it for unbalanced feeder analysis under its stated method scope."
+
+[[entry]]
+key = "ZimmermanChiang1995"
+status = "verified"
+verification_source = "https://doi.org/10.1109/59.476074"
+verified_on = "2026-08-17"
+note = "The DOI record identifies the primary fast-decoupled formulation for unbalanced radial distribution systems; it is used as a second method anchor, not as evidence for positive-sequence exactness in general networks."
+
+[[entry]]
+key = "FarrokhabadiVanfretti2014"
+status = "verified"
+verification_source = "https://doi.org/10.1016/j.epsr.2013.08.014"
+verified_on = "2026-08-17"
+note = "The publisher record confirms the automated transmission-network topology processor, state-estimation context, journal metadata, pages, year, and DOI; the book uses it to anchor EMS topology processing rather than to certify its own topology compiler."
+
+[[entry]]
+key = "W3CPROVDM2013"
+status = "verified"
+verification_source = "https://www.w3.org/TR/prov-dm/"
+verified_on = "2026-08-17"
+note = "The W3C Recommendation defines the PROV data model and its provenance entities, activities, agents, derivations, and constraints; the book uses it as a provenance vocabulary anchor rather than claiming PROV semantics are an electrical-network transformation calculus."
+
+[[entry]]
 key = "Ward1949"
 status = "verified"
 verification_source = "https://doi.org/10.1109/T-AIEE.1949.5059947"

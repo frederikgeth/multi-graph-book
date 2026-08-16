@@ -22,10 +22,19 @@ defined by `schemas/transformation-certificate.schema.json`.
 | `recovery_map` | reconstruction of source quantities from target results |
 | `provenance` | source-to-target lineage and implementation context |
 | `evidence` | derivation data, witnesses, permutations, or computed results |
+| `numerical_evidence` | optional solver status, optimality scope, residual/tolerance, conditioning/backward error, and uncertainty status |
 
 JSON-schema validity establishes a structural contract. It does not prove that
 the reported classification or equations are true. Those remain claims that
 need derivation, tests, and independent review.
+
+When numerical evidence is reported, `optimality_status` distinguishes a local
+solve, a branch-scoped comparison, and a globally certified result. A residual
+and tolerance describe numerical consistency; they do not establish model
+adequacy. `conditioning` and `backward_error` make numerical fragility visible,
+while `uncertainty_status` records whether parameter or measurement uncertainty
+was quantified. Deterministic algebraic certificates may declare solver and
+optimality as `not_applicable` rather than implying an optimization result.
 
 ## Sequential composition
 

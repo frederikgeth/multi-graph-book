@@ -2,6 +2,12 @@
 
 **Page status:** foundational definitions; certificate requirements are normative proposals.
 
+!!! note "Evidence boundary"
+    **Scope:** observation-indexed feasible-set equivalence and preservation contracts for declared model classes.
+    **Evidence:** definitions, linear recovery derivations, and scoped certificate examples.
+    **Numerical optimality:** certificate examples are not global optimality proofs.
+    **Unresolved boundary:** general nonlinear, mixed-integer, uncertainty-aware, or externally reviewed preservation theorems.
+
 ## Observation precedes equivalence
 
 Two models are not simply "equivalent." They are equivalent with respect to a

@@ -4,6 +4,12 @@
 and a package-independent Kron/Ward/scenario comparison; independent
 mathematical review and source-faithful Opti-KRON implementation remain open.
 
+!!! note "Evidence boundary"
+    **Scope:** linear and affine boundary reductions, operating-point Ward-style targets, and small scenario-approximation witnesses.
+    **Evidence:** Schur-complement derivations, recovery checks, and package-independent numerical fixtures.
+    **Numerical optimality:** scenario probes and local solves do not establish global nonlinear AC optimality.
+    **Unresolved boundary:** universal physical realizability, uncertainty-robust preservation, and external review.
+
 ## Three different questions
 
 Kron reduction, Ward equivalents, and Opti-KRON are related, but they do not

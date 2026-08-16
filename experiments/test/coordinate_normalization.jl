@@ -1,4 +1,5 @@
 using LinearAlgebra
+using Random
 using Test
 
 if !isdefined(@__MODULE__, :SeriesElimination)
@@ -76,4 +77,34 @@ using .TransformationContracts
         "conductor_coordinate_normalization", "degree_two_series_elimination",
     ]
     @test any(startswith(key, "reverse_step_1") for key in keys(composed["recovery_map"]))
+end
+
+@testset "adversarial coordinate permutations" begin
+    Random.seed!(20260817)
+    labels = ["a", "b", "c", "n"]
+    impedance = ComplexF64[
+        2.0+0.1im 0.2+0.3im 0.1-0.2im 0.05+0.01im;
+        0.2+0.3im 3.0+0.4im 0.15+0.2im 0.03-0.02im;
+        0.1-0.2im 0.15+0.2im 1.5+0.2im 0.04+0.03im;
+        0.05+0.01im 0.03-0.02im 0.04+0.03im 0.8+0.1im;
+    ]
+    source = SeriesElement(
+        "adversarial-l", "u", "v", labels, labels, impedance;
+        current_limit=[90.0, 100.0, 110.0, 40.0], construction_code="TEST",
+    )
+    for requested in (["n", "c", "a", "b"], ["b", "a", "n", "c"], ["c", "n", "b", "a"])
+        normalized = normalize_conductor_coordinates(source, requested)
+        @test normalized isa NormalizationResult
+        @test normalized.target.impedance ≈
+            transpose(normalized.target.impedance) atol=1.0e-12
+        @test normalized.target.current_limit == [source.current_limit[findfirst(==(label), labels)] for label in requested]
+        @test isempty(validate_certificate(normalized.certificate))
+    end
+
+    nearly_singular = ComplexF64[1.0 1.0; 1.0 1.0 + 1.0e-12im]
+    near_source = SeriesElement("near-singular-l", "u", "v", ["x", "y"], ["x", "y"], nearly_singular)
+    near_normalized = normalize_conductor_coordinates(near_source, ["y", "x"])
+    @test near_normalized isa NormalizationResult
+    @test near_normalized.target.impedance ≈ nearly_singular[[2, 1], [2, 1]]
+    @test isempty(validate_certificate(near_normalized.certificate))
 end

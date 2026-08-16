@@ -4,6 +4,12 @@
 explicit-earth/protection witness; asset-aware protection studies remain future
 work.
 
+!!! note "Evidence boundary"
+    **Scope:** reduced-earth, neutral/grounding-factor, and explicit-earth model classes in the declared steady-state fixtures.
+    **Evidence:** definitions, impedance constructions, and scoped numerical witnesses.
+    **Numerical optimality:** no protection or network optimization result is claimed by the taxonomy or fixtures.
+    **Unresolved boundary:** source-faithful earth-return data, asset-aware protection, uncertainty, and independent engineering review.
+
 “Ground” is used for several different objects in power-system models. This
 book distinguishes a mathematical voltage reference, a neutral conductor, an
 earth-return path, and a physical grounding asset. A representation must state
@@ -69,15 +75,17 @@ an automatic physical deletion [GethHeidariKoirala2022](@cite).
 
 ## Consequences for the running network
 
-The running fixture is at least ``E_1`` and partly ``E_2``: ``h_n`` is a finite
-neutral-to-earth shunt, the four-wire line retains a neutral terminal, and the
-source reference is declared separately. The fixture does not claim a detailed
-soil or electrode model, so grounding-asset decisions remain outside its
-current numerical scope. Future explicit-earth cases should add a physical
-earth conductor or grounding-grid factor and test recovery of ground currents,
-neutral voltages, and protection observations. The separate E₂ witness below
-provides that minimal explicit-earth check without changing the classification
-of the running fixture.
+The running fixture uses a reduced-earth ``E_1`` model with an explicit neutral
+and grounding factor: ``h_n`` is a finite neutral-to-earth shunt, the four-wire
+line retains a neutral terminal, and the source reference is declared
+separately. It does not contain an explicit earth conductor or earth port, so it
+is not an ``E_2`` model. The fixture does not claim a detailed soil or electrode
+model, so grounding-asset decisions remain outside its current numerical scope.
+Future explicit-earth cases should add a physical earth conductor or
+grounding-grid factor and test recovery of ground currents, neutral voltages,
+and protection observations. The separate E₂ witness below provides that
+minimal explicit-earth check without changing the classification of the running
+fixture.
 
 ## A useful comparative case
 

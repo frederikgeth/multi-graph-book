@@ -148,6 +148,21 @@ def verification_summary(claims: list[dict]) -> str:
     return finish(lines)
 
 
+def verification_sentence(claims: list[dict]) -> str:
+    totals = Counter(claim["verification"] for claim in claims)
+    return (
+        "The largest named gaps in this snapshot are measurement (no coded claims at any "
+        "verification state), state and numerical-structure claims without independent "
+        "implementations, and external review (zero claims across all nine preservation "
+        "dimensions). These are gaps in the current evidence record, not evidence that the "
+        "corresponding literature or engineering practice is empty. The verification summary "
+        f"reports {totals['self-checked']} self-checked, "
+        f"{totals['independently-implemented']} independently implemented, and "
+        f"{totals['externally-reviewed']} externally reviewed claims out of {len(claims)}; "
+        "self-checking and independent implementation are useful but are not external peer review."
+    )
+
+
 def main() -> None:
     claims = tomllib.loads((ROOT / "claims/claims.toml").read_text()).get("claim", [])
     outputs = {
@@ -159,7 +174,26 @@ def main() -> None:
     for name, content in outputs.items():
         (OUT / name).write_text(content)
         print(f"wrote {OUT / name}")
-    REFERENCE.write_text("""# [Evidence map and verification summary](@id reference-evidence-map)\n\n**Page status:** generated reference navigation and evidence-gap summary.\n\nThis page is generated from `claims/claims.toml`. It is a retrieval aid and gap analysis, not a replacement for the claims ledger or the evidence matrix. Empty cells are intentionally visible.\n\n![Symbol anatomy for the book's index grammar.](../assets/reference-symbol-anatomy.png)\n\n![Terminology distinction map.](../assets/reference-distinction-map.png)\n\n![Evidence coverage by preservation dimension and verification state.](../assets/reference-evidence-map.png)\n\n![Verification state by claim type.](../assets/reference-verification-summary.png)\n\nThe largest named gaps in this snapshot are measurement (no coded claims at any verification state), state and numerical-structure claims without independent implementations, and external review (zero claims across all nine preservation dimensions). These are gaps in the current evidence record, not evidence that the corresponding literature or engineering practice is empty. The verification summary reports 86 self-checked, 5 independently implemented, and 0 externally reviewed claims out of 94; self-checking and independent implementation are useful but are not external peer review.\n""")
+    REFERENCE.write_text(
+        """# [Evidence map and verification summary](@id reference-evidence-map)
+
+**Page status:** generated reference navigation and evidence-gap summary.
+
+This page is generated from `claims/claims.toml`. It is a retrieval aid and gap analysis, not a replacement for the claims ledger or the evidence matrix. Empty cells are intentionally visible.
+
+![Symbol anatomy for the book's index grammar.](../assets/reference-symbol-anatomy.png)
+
+![Terminology distinction map.](../assets/reference-distinction-map.png)
+
+![Evidence coverage by preservation dimension and verification state.](../assets/reference-evidence-map.png)
+
+![Verification state by claim type.](../assets/reference-verification-summary.png)
+
+<!-- generated-evidence-summary:start -->
+"""
+        + verification_sentence(claims)
+        + "\n<!-- generated-evidence-summary:end -->\n"
+    )
     print(f"wrote {REFERENCE}")
 
 

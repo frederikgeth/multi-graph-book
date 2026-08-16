@@ -4,6 +4,12 @@
 network-level executable witnesses; global decision equivalence and external
 review remain open.
 
+!!! note "Evidence boundary"
+    **Scope:** three-phase linear factors and networks with cyclic symmetry, balanced boundary data, and positive-sequence observations.
+    **Evidence:** sequence-coordinate derivation, balanced transmission witness, and independent numerical reimplementation of that fixture.
+    **Numerical optimality:** the witness is not a global nonlinear OPF result.
+    **Unresolved boundary:** exactness for untransposed or unbalanced networks, phase-specific decisions, and external mathematical review.
+
 The general multiconductor, multi-terminal model is a baseline for preserving
 meaning. It is not a claim that every study needs all of that structure. This
 chapter gives a positive derivation of the familiar balanced positive-sequence
@@ -13,6 +19,12 @@ bus--branch model and lists the assumptions that make the collapse admissible.
 
 Let a three-phase two-terminal factor use the phase order ``(a,b,c)`` and the
 Fortescue matrix ``\mathbf F``
+
+This is the classical symmetrical-coordinate construction introduced by
+Fortescue [Fortescue1918](@cite). The transform itself is always invertible;
+sequence decoupling is not. Decoupling requires the phase-domain operator,
+including connected series/shunt factors and grounding, to leave the sequence
+subspaces invariant.
 
 ```math
 \mathbf v_{abc}=\mathbf F\mathbf v_{012},
@@ -65,6 +77,11 @@ coordinates, and the positive-sequence block is invariant:
 \qquad
 I_1=Y_1V_1.
 ```
+
+Transposition alone is therefore not an exact positive-sequence reduction. It
+can support a balanced or approximately cyclic model, but exact restricted
+closure still requires the operator, grounding, devices, limits, controls,
+and observations to respect the declared sequence symmetry.
 
 For a nominal-``\pi`` factor, the same statement applies to the series and
 shunt blocks separately. The positive-sequence network is therefore a derived

@@ -32,6 +32,24 @@ objective value, and decisions—not state error alone.
 **Reference entries** are compact cards recording definition, aliases, source and target types,
 preserved properties, characteristic losses, recovery, evidence, and related entries.
 
+### Evidence boundary banner
+
+Load-bearing chapters should place a compact evidence boundary immediately after the page-status
+line. Keep the wording specific to the chapter and distinguish a derivation or executable witness
+from external review:
+
+```markdown
+!!! note "Evidence boundary"
+    **Scope:** [model, fixture, and observation family].
+    **Evidence:** [definition, derivation, theorem, executable witness, or independent numerical reproduction].
+    **Numerical optimality:** [not applicable, locally solved only, branch-scoped, or globally certified].
+    **Unresolved boundary:** [global, physical, solver, uncertainty, or external-review claims that remain open].
+```
+
+The banner is a reader-facing summary, not a replacement for the claims ledger, certificate, or
+literature citation. A numerical reproduction of the same fixture is not an independently assembled
+physical model, and a locally solved nonlinear optimization problem is not a global optimality proof.
+
 ## Translation-trap callouts
 
 Use the controlled callouts introduced in

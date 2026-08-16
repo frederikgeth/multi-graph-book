@@ -1,14 +1,23 @@
-# Structure-Preserving Graph Models for Power Networks
+# What Power-Network Models Preserve
 
 **Page status:** reader-facing overview and navigation map.
 
-This knowledge base develops graph models for power-network decision problems,
-starting with the general multiconductor case: explicit terminals and neutral/
-grounding, coupled line factors, switching states, multiwinding transformers,
-limits, controls, and recoverable decisions. Balanced transmission models are
-derived specializations, not the starting ontology.
+*Graphs, reductions, and decision boundaries*
 
-The central thesis is simple:
+This book starts with a failure mode: a familiar power-network representation
+can remain numerically plausible while silently discarding the identity,
+grounding, limits, controls, decisions, measurements, or provenance needed by
+the study. The question is therefore not “which graph is correct?” but:
+
+> What does this representation preserve for this observation, constraint, or decision—and what does it forget?
+
+The general multiconductor model is the baseline for making that question
+visible: explicit terminals and neutral/grounding, coupled line factors,
+switching states, multiwinding transformers, limits, controls, and recoverable
+decisions. Balanced transmission models are derived specializations, not the
+starting ontology.
+
+The central thesis is:
 
 > A graph transformation is meaningful only relative to declared observations,
 > constraints, and decisions. Simpler graphs should be derived, traceable views
@@ -16,26 +25,19 @@ The central thesis is simple:
 
 ![The argument spine of the book.](assets/argument-spine.png)
 
-## A short reading route
+## The argument route
 
-Start with [One network, many graphs](@ref one-network-many-graphs), read [How
-to read diagrams and equations](@ref how-to-read-diagrams-and-equations), then
-cross the [five-community vocabulary bridge](@ref one-network-five-languages)
-before choosing the
-[graph and transmission reading guide](@ref reading-guide-graph-and-transmission).
-Then
-follow the five-bus cycle example and [A first failure: heterogeneous parallel
-branches](@ref first-failure-parallel-branches), then unpack the same topology
-kernel in [Five buses through a multi-port lowering](@ref
-five-bus-transformer-lowering). These
-chapters establish the recurring pattern: a representation may preserve a
-terminal equation while changing a decision-feasible set. Continue through
-[Formal representation frameworks](@ref formal-representation-frameworks),
-[Translation traps: graphs, circuits, and power-system language](@ref
-translation-traps), and [Preservation contracts](@ref preservation-contracts)
-and [Transformation semantics and register](@ref
-transformation-semantics-register) before reading the guarded transformations
-and worked cases.
+Follow [How to use this book](@ref how-to-use-this-book) for the full route.
+The compact argument is [One network, many graphs](@ref
+one-network-many-graphs) → [A first failure: heterogeneous parallel branches](@ref
+first-failure-parallel-branches) → [Scope and thesis](@ref scope-and-thesis) →
+[Formal representation frameworks](@ref formal-representation-frameworks) →
+[From source data to a canonical network model](@ref source-to-canonical-model)
+→ [When the general model collapses](@ref positive-sequence-collapse) →
+[Translation traps](@ref translation-traps) → [Preservation contracts](@ref
+preservation-contracts) → [Transformation semantics and register](@ref
+transformation-semantics-register) → the guarded transformations and worked
+decision cases.
 
 For the complete retrieval surface, use the generated [knowledge-base index](@ref
 knowledge-base-index), which lists claims, artifacts, chapters, open items, and
@@ -44,10 +46,9 @@ vocabulary-indexes) translate in both directions between familiar community
 phrases and the book's maintained terms. The [chapter-status table](@ref
 chapter-status) records the scope and verification boundary of each page.
 
-The HTML route is the primary product. The PDF is a shorter argument-shaped
-serialization: it keeps the definitions, counterexamples, contracts,
-transformations, and numerical consequences needed to follow the thesis, while
-the HTML index remains the place for exhaustive lookup.
+The long-form PDF is the argument-shaped monograph. The HTML route is both that
+argument and the exhaustive knowledge base: use its generated indexes when the
+question is retrieval rather than sequence.
 
 ![Audience routes through the shared HTML/PDF argument.](assets/audience-routes.png)
 

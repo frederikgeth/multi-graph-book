@@ -1,4 +1,5 @@
 using LinearAlgebra
+using Random
 using Test
 
 include(joinpath(@__DIR__, "..", "transformations", "TypedKronReduction.jl"))
@@ -46,6 +47,34 @@ using .TypedKronReduction
     @test norm(dense_target.YK - TB_dense' * source.YK * TB_dense) ≤ 1e-11
     @test norm(dense_target.KI * dense_blocks.iI - TB_dense' * source.KI * f.iI) ≤ 1e-11
     @test norm(TI_dense * dense_target.vI - source.vI) ≤ 1e-11
+
+    @testset "deterministic randomized covariance" begin
+        Random.seed!(20260817)
+        for trial in 1:8
+            TB_random = Matrix{ComplexF64}(I, 6, 6) .+
+                (0.003 / trial) .* randn(ComplexF64, 6, 6)
+            TI_random = Matrix{ComplexF64}(I, 2, 2) .+
+                (0.004 / trial) .* randn(ComplexF64, 2, 2)
+            random_blocks = transform_blocks(
+                f.YBB, f.YBI, f.YIB, f.YII, f.iI, f.vB,
+                TB_random, TI_random,
+            )
+            random_target = kron_reduce(
+                random_blocks.YBB, random_blocks.YBI, random_blocks.YIB,
+                random_blocks.YII, random_blocks.iI, random_blocks.vB,
+            )
+            @test norm(random_target.YK - TB_random' * source.YK * TB_random) ≤ 1e-11
+            @test norm(random_target.KI * random_blocks.iI - TB_random' * source.KI * f.iI) ≤ 1e-11
+            @test norm(TI_random * random_target.vI - source.vI) ≤ 1e-11
+        end
+    end
+
+    near_degenerate_internal = ComplexF64[1.0 0.2; 0.2 1.0e-8]
+    near_degenerate = kron_reduce(
+        f.YBB, f.YBI, f.YIB, near_degenerate_internal, f.iI, f.vB,
+    )
+    @test all(isfinite, real.(near_degenerate.vI))
+    @test norm(near_degenerate.YK * f.vB + near_degenerate.KI * f.iI - near_degenerate.iB) ≤ 1e-8
 
     # A voltage-dependent internal injection is outside the affine proposition.
     # Evaluate a constant-power law at the same recovered operating point and

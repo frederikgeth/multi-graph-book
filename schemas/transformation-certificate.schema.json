@@ -45,7 +45,8 @@
     "recovery_map": {"type": "object", "additionalProperties": {"type": "string"}},
     "constraint_map": {"type": "object", "additionalProperties": {"type": "string"}},
     "provenance": {"type": "object"},
-    "evidence": {"type": "object"}
+    "evidence": {"type": "object"},
+    "numerical_evidence": {"$ref": "#/$defs/numericalEvidence"}
   },
   "$defs": {
     "uniqueStrings": {
@@ -123,6 +124,31 @@
         "model_category": {"type": "string", "minLength": 1},
         "object_ids": {"$ref": "#/$defs/uniqueStrings"},
         "detail": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "numericalEvidence": {
+      "type": "object",
+      "required": [
+        "solver_status",
+        "optimality_status",
+        "residual",
+        "tolerance",
+        "conditioning",
+        "backward_error",
+        "uncertainty_status"
+      ],
+      "properties": {
+        "solver_status": {"type": "string", "minLength": 1},
+        "optimality_status": {
+          "enum": ["not_applicable", "not_assessed", "local", "branch_scoped", "global_certified"]
+        },
+        "residual": {"type": "number", "minimum": 0},
+        "tolerance": {"type": "number", "exclusiveMinimum": 0},
+        "conditioning": {"type": ["number", "null"], "minimum": 0},
+        "backward_error": {"type": "number", "minimum": 0},
+        "uncertainty_status": {"type": "string", "minLength": 1},
+        "notes": {"type": "string"}
       },
       "additionalProperties": false
     }

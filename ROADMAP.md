@@ -6,25 +6,196 @@ table of contents, chapter forms, and first drafting milestone are maintained se
 
 ## Guiding outcome
 
-Produce a citable, open scientific book and executable knowledge base that
-explains power-network graph model categories and provides verified,
-provenance-aware transformations among them.
+Produce a citable, open, problem-first scientific book and executable companion
+knowledge base that explains what power-network representations preserve and
+lose, when familiar simplifications fail, and how transformations can make
+their preservation obligations explicit.
+
+The book's primary contribution is methodological and diagnostic: it establishes
+representation problems, semantic failure modes, and evidence boundaries. The
+typed architecture, transformation rules, and certificates are the proposed
+tools for addressing those problems. They must not be presented as a completed
+general transformation calculus when the evidence is only fixture-level or
+scope-specific.
 
 The roadmap separates **publication infrastructure**, **knowledge synthesis**,
 **formal results**, and **software/experiments** so that progress in one does
 not masquerade as completion of the others.
 
-## Current status and active plan (2026-08-16)
+## Current status and active plan (2026-08-17)
 
-The repository is a locally validated HTML-first release candidate. The
+The repository is an internally validated HTML-first release candidate. The
 curated PDF is a secondary serialization of the same Markdown sources. The
-current checks cover 95 registered claims, 66 audited SVG/PNG pairs, 557 local
+current checks cover 95 registered claims, 66 audited SVG/PNG pairs, 559 local
 links, the aggregate experiment suite, rendered-output smoke checks, the HTML
-build, and a 339-page PDF.
+build, and a 346-page PDF.
 The high-risk 2026-08-15 review findings, the 2026-08-16 vocabulary and
 multi-port-lowering reviews, and the canonical-model section review have been
 repaired. Those automated and supplied
 reviews remain technical evidence, not external human peer review.
+
+The remaining work is a refactor and review-readiness programme, not a content
+shortening programme. The full long-form material remains in scope. The active
+question is how to make the book, knowledge base, evidence record, and external
+review packet tell the same story.
+
+### Product identity and editorial stance
+
+The project has two deliberate products:
+
+1. a long-form scientific monograph whose argument is problem-first; and
+2. an HTML knowledge base that provides exhaustive retrieval, claims, artifacts,
+   literature records, and unresolved boundaries.
+
+The PDF may remain long. Refactoring means improving order, authority chains,
+cross-references, duplicated explanations, and evidence labels while retaining
+the detailed chapters and research agenda.
+
+The working title is now **What Power-Network Models Preserve: Graphs, reductions,
+and decision boundaries**. It signals that the book is about the limits and
+preservation of power-network models, not only about constructing a preferred
+graph or solving reduction problems. The repository and PDF filenames retain
+their historical identifiers for compatibility.
+
+### Active programme — problem-first refactor and external-review readiness
+
+This is the current implementation queue. It supersedes older “Next” labels
+when they conflict with the sequence below. Completed historical tranches remain
+below for provenance; they are not re-opened by this programme.
+
+#### R0 — Establish one source of truth for status and evidence
+
+- [x] regenerate the evidence-map prose from the claims ledger so its claim and
+  verification counts agree with the generated knowledge-base index (currently
+  the prose and generated verification graphic report different totals);
+- [x] add a consistency check for generated claim counts, verification counts,
+  chapter-status hashes, and evidence-map text so this drift fails in CI;
+- [x] audit every reader-facing status line for the distinction between
+  theorem, definition, proposal, empirical witness, independent numerical
+  reproduction, and external review;
+- [x] add a compact, reusable chapter evidence banner with fields for scope,
+  evidence type, numerical optimality status, and unresolved boundary;
+- [x] correct the running-fixture earth classification: an explicit neutral and
+  finite neutral-to-earth relation without an explicit earth conductor is not
+  “partly E₂”; classify it as the applicable reduced-earth class plus explicit
+  neutral/grounding factors;
+- [x] rerun the complete local validation suite and archive the resulting status
+  snapshot.
+
+**R0 exit criterion:** generated counts and prose agree; every load-bearing
+claim visibly states what kind of evidence supports it; no numerical witness is
+described as external review or global optimality.
+
+#### R1 — Refactor the long-form argument without shortening the content
+
+- [x] rewrite the README, home page, and book-plan opening so the central
+  problem is stated as representation loss and preservation, with transformations
+  presented as the response rather than the premise;
+- [x] preserve the complete chapter inventory, but mark each chapter as core
+  argument, reference card, worked case, research record, or future application;
+- [x] revise the curated PDF route around the argument sequence:
+  problem and counterexample → representation obligations → canonical model →
+  valid collapses and failure modes → preservation contracts → transformations
+  and recovery → cases and consequences;
+- [x] move repeated navigation and status explanation to the knowledge-base
+  indexes, replacing duplicated prose in argument chapters with authoritative
+  cross-references rather than deleting substantive material;
+- [x] align `BOOK_PLAN.md` with the actual evidence boundary so promised state
+  estimation, protection, planning, and feeder-reduction chapters are visibly
+  either current content, scoped future content, or research agenda material;
+- [x] decide the public title and subtitle after the route refactor, using the
+  test that the title must communicate limits, meaning, and preservation of
+  power-network models;
+- [x] add a short “how to use this book” page explaining the relationship between
+  the long-form monograph and the exhaustive HTML knowledge base.
+
+**R1 exit criterion:** the full content remains available, but a new reader can
+follow one problem-first argument without mistaking the knowledge-base index,
+research agenda, or proposed architecture for established theory.
+
+#### R2 — Complete the engineering and scientific readiness audit
+
+- [x] perform a formula-level audit of the positive-sequence, phase-to-neutral,
+  phase-to-phase, Kron, Ward, and nominal-π chapters, checking coordinate duals,
+  grounding assumptions, invertibility, reciprocity, and shunt placement;
+- [x] make the positive-sequence chapter cite the original symmetrical-component
+  literature and state explicitly that transposition alone is not an exact
+  reduction without the required sequence-invariance conditions;
+- [x] require every exactness claim to name its exactness object using the
+  controlled vocabulary: equation identity, boundary behaviour, feasible set,
+  connectivity view, representation definition, observation sample, or
+  `not_applicable`;
+- [x] extend certificate evidence fields with solver status, local/global
+  optimality status, residual and tolerance, conditioning/backward error, and
+  uncertainty status where applicable;
+- [x] add permutation, randomized, and near-degenerate tests to the highest-risk
+  algebraic rules, especially coordinate actions, series composition, Kron
+  covariance, and parallel-limit implication;
+- [x] distinguish source-faithful external model validation from independent
+  reimplementation of the same synthetic fixture;
+- [x] keep state estimation, protection, contingency, and full adapter claims
+  explicitly scoped until a solved, versioned, independently checked case exists.
+
+**R2 exit criterion:** an external technical reviewer can identify, for every
+high-consequence result, the mathematical scope, numerical evidence, solver
+limitations, recovery obligations, and known failure cases without inferring
+them from surrounding prose.
+
+#### R3 — Strengthen the literature record and citation practice
+
+- [x] add primary literature anchors for symmetrical components, ground-return
+  impedance, EMS topology processing, unbalanced power-flow modelling, and
+  provenance/model transformation semantics;
+- [x] add a chapter-level literature-position table recording what the literature
+  establishes, what the book synthesizes, what the repository demonstrates, and
+  what remains open;
+- [x] audit every broad literature statement in the rendered literature map for
+  a directly supporting source,
+  especially claims about prevalence, maturity, industrial deployment, and
+  “structure-preserving” terminology;
+- [x] distinguish standards, peer-reviewed primary papers, official software
+  documentation, author-derived results, and project proposals in the rendered
+  literature map;
+- [ ] execute and archive the planned database exports, backward/forward citation
+  chasing, duplicate resolution, and independent human double-coding before
+  using systematic-review or PRISMA-style language;
+- [x] retain the current single-coded seed snapshot as historical evidence rather
+  than silently replacing it with a later coding state.
+
+**R3 exit criterion:** every major foundation chapter has a defensible literature
+anchor set and an explicit boundary between prior work, synthesis, and project
+contribution; the review record is either genuinely double-coded or clearly
+labelled as a seed review.
+
+#### R4 — Prepare the external-review packet
+
+- [x] assemble separate review tracks for graph/formal methods, circuit and
+  multiconductor modelling, optimization/decision preservation, and utility/data
+  practice/visual language;
+- [x] give each reviewer a bounded packet containing the relevant chapters,
+  claims, certificates, source fixtures, reproduction commands, assumptions,
+  and specific questions rather than asking for an undifferentiated review;
+- [x] create a reviewer response ledger that records finding, severity,
+  affected claim/chapter, disposition, evidence, and whether the change is
+  mathematical, engineering, editorial, or scope-only;
+- [x] define the external-review release gate: no claim is promoted to
+  externally reviewed without a named reviewer, date, scope, and recorded
+  response;
+- [ ] freeze a review candidate commit, bibliography snapshot, generated
+  artifacts, and PDF only after R0--R3 pass;
+- [ ] contact external reviewers after the packet and release candidate have
+  passed the preceding gates.
+
+**R4 exit criterion:** reviewers can reproduce the selected results, understand
+  the unresolved boundaries, and return structured feedback against stable
+  artifacts and claims.
+
+#### Implementation order
+
+Work in this order: **R0 → R1 → R2 → R3 → R4**. Do not expand the general
+transformation theory or add broad application claims before R0--R2 are complete.
+New content is welcome when it closes a named evidence or reader-inference gap;
+otherwise it belongs in the research agenda rather than the active queue.
 
 ### Latest Part I review tranche (complete)
 
@@ -1042,7 +1213,9 @@ work belongs in the current dashboard, not in this archive.
 
 ### M1 — Integrity and reproducibility release
 
-**Status:** scoped milestone complete; external review remains optional.
+**Status:** scoped internal milestone complete; external review is the next
+release gate for the externally validated book and package, not an optional
+replacement for the internal checks.
 
 **Progress:** the local/CI preparation is complete. The first repair pass for
 the two dark-background PNGs, the clipped numerical figure, and the
@@ -1066,16 +1239,18 @@ optional future validation rather than a release gate.
   repository-wide audit is enforced by `scripts/check_claim_mentions.py`;
 - [x] align the numerical certificate field proposal with schema v1.2 (or
   explicitly label the proposal as non-normative);
-- **External:** optionally obtain independent reviews of the highest-risk claims,
-  prioritizing `TR-KRON-001`, `TR-PAR-004`, `TR-SER-001`, and `TR-XFMR-001`;
+- **External:** obtain independent reviews of the highest-risk claims,
+  prioritizing `TR-KRON-001`, `TR-PAR-004`, `TR-SER-001`, and `TR-XFMR-001`,
+  after the active R0--R4 readiness programme has produced a stable packet;
 - [x] prepare and archive a reproducible reviewer packet with claim-specific
   artifacts, commands, assumptions, and an explicit reviewer record;
 - [x] make claim type, verification state, artifact, and unresolved issue
   cross-checks fail closed in the local and CI checks.
 
-**Exit criterion:** a clean local release candidate whose claims, chapter
-statuses, figures, HTML, PDF, and generated artifacts agree. Independent
-review remains useful future validation but is not required for this release.
+**Exit criterion:** a clean internal release candidate whose claims, chapter
+statuses, figures, HTML, PDF, and generated artifacts agree. External review is
+not required for this internal milestone, but it is required before describing
+the book as externally validated or publishing a reviewer-backed release.
 
 ### M2 — Reduction evidence
 
@@ -1485,9 +1660,11 @@ resolved without presenting automated audits as human review.
 
 ### M4 — External validation and dissemination
 
-**Status:** open external track; it is not a gate on the scoped M1--M3 claims,
-but it is required before systematic-review language, external-validation
-claims, or a package release.
+**Status:** open external gate. It is not required to keep developing the
+scoped M1--M3 material, but it is required before systematic-review language,
+external-validation claims, a reviewer-backed book release, or a package
+release. The active R0--R4 programme above defines the preparation sequence;
+M4 begins when the stable packet is sent to external reviewers.
 
 - **External:** execute and archive the planned database searches and populate the
   evidence matrix with double-coded seed results;

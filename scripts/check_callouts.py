@@ -17,6 +17,7 @@ ALLOWED = {
     "Circuit-theory trap",
     "Power-system shorthand",
     "Decision-model consequence",
+    "Evidence boundary",
     "Vocabulary bridge",
 }
 ADMONITION = re.compile(r'^!!!\s+[^\s]+\s+"([^"]+)"\s*$', re.MULTILINE)

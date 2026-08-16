@@ -2,8 +2,8 @@
 
 **Page status:** research record; coverage is provisional and not an exhaustive systematic review. Current matrix counts, checksums, search coverage, and coding status are published in the generated [review protocol and evidence status](@ref review-protocol-evidence-status) page.
 
-The relevant work is substantial but fragmented across communities. No single
-literature currently supplies the full combination of typed physical assets,
+The current seed matrix spans several communities. No included record in that
+matrix supplies the full combination of typed physical assets,
 multiconductor terminal structure, exact/approximate behavioral maps,
 decision-constraint preservation, provenance, and executable normalization
 rules.
@@ -89,9 +89,23 @@ assembled nodal operator.
 A software-facing companion makes the same bridge explicit for four-wire
 unbalanced power flow: matrix-valued series and shunt data feed a nodal
 current-injection method, while a radial backward--forward sweep uses an
-element-wise impedance view [GethClaeysHeidari2023](@cite). This is useful
-terminology evidence, not a claim that one solver formulation is universally
-preferable.
+element-wise impedance view [GethClaeysHeidari2023](@cite). The primary
+three-phase distribution methods of Cheng and Shirmohammadi and of Zimmerman
+and Chiang provide complementary precedents for unbalanced feeder equations
+and radial solution structure [ChengShirmohammadi1995,
+ZimmermanChiang1995](@cite). These sources establish method-specific modelling
+and solution results, not a universal four-wire, grounding, or decision-
+preservation contract.
+
+### Ground-return impedance and earth modelling
+
+Carson's original ground-return treatment derives overhead-wire propagation
+under a homogeneous half-space idealization [Carson1926](@cite). It is an
+important physical anchor for earth-return impedance, but it does not identify
+the earth conductor, grounding topology, protection state, or uncertainty
+semantics of a modern multiconductor network. The book therefore treats
+Carson-style impedance as one possible reduced-earth factor and keeps explicit
+earth conductors, bonds, and grounding observations as separate model objects.
 
 ### Circuit formulations beyond nodal admittance
 
@@ -123,7 +137,7 @@ as part of the representation choice rather than as an implementation detail.
 
 ## Power-system network reduction
 
-The mainstream power-system literature emphasizes external-system equivalents,
+The cited power-system reduction literature emphasizes external-system equivalents,
 Kron/Ward/REI methods, coherency, and dynamic model reduction. "Structure
 preserving" has several meanings.
 
@@ -140,7 +154,7 @@ taxonomy, not one universal `Ward` operator.
 Grudzien and coauthors use topology-guided reductions of lines, trees and
 triangular subgraphs while preserving power-flow behavior for their model class
 [Grudzien2018](@cite). Sistermanns and coauthors seek to avoid artificial
-entities and maintain physical correspondence for important transmission-grid
+entities and maintain physical correspondence for selected transmission-grid
 features [Sistermanns2019](@cite). These works are directly relevant, although
 they do not establish a general typed asset-preservation framework.
 
@@ -181,10 +195,15 @@ preservation domains and failure cases deserve explicit certificates.
 ## Topology processing and information models
 
 CIM's connectivity/topological-node distinction and software such as PowSyBl
-provide mature state-dependent topology processing [CIMTopologicalNode,
-PowsyblTopology](@cite). This is perhaps the most widely deployed graph
-projection in power-system operations. Its limitation is not correctness but
+document state-dependent topology processing [CIMTopologicalNode,
+PowsyblTopology](@cite). Its limitation for this agenda is not correctness but
 scope: connectivity quotienting is only one of the transformations needed.
+An automated topology-processor study makes the EMS boundary concrete: breaker
+and substation configuration data are converted into network topology for state
+estimation, with implementation and timing evaluated on test systems
+[FarrokhabadiVanfretti2014](@cite). That is prior evidence for a topology-
+processing function, not evidence that the book's typed quotient preserves all
+electrical, asset, or decision semantics.
 The evidence rows for CGMES and PowSyBl describe this same underlying
 connectivity-node-to-topological-node map, while remaining separate records:
 one is a standards/building-process source and the other is an implementation
@@ -199,9 +218,43 @@ implementation case study for provenance-aware compilation.
 
 Typed algebraic graph transformation supplies formal rule matching, negative
 application conditions, rewrite composition, critical-pair analysis and
-confluence [Ehrig2006](@cite). These ideas are common in software and systems
-model transformations but have not been deeply integrated with power-system
-network equivalents.
+confluence [Ehrig2006](@cite). These ideas are well-developed in formal
+software and systems model-transformation literature but have not been deeply integrated with power-system
+network equivalents. The W3C PROV-DM recommendation supplies a separate
+provenance vocabulary for entities, activities, agents, and derivations
+[W3CPROVDM2013](@cite). The book combines these as conceptual anchors for
+transformation traces and source-to-target lineage; it does not claim that
+either source already defines the proposed electrical certificate calculus.
+
+## Literature-position table
+
+The table records the boundary between prior work, the book's synthesis, and
+repository evidence. “Repository demonstrates” refers to the checked fixtures
+and generated artifacts in this project; it is not independent validation of
+the cited literature or external review of the book's assumptions.
+
+## Source-type legend
+
+The literature map keeps source authority separate from the book's own
+evidence. The same topic may therefore appear in several rows without those
+rows being interchangeable.
+
+| Source class | What it can establish here | What it cannot establish here |
+| --- | --- | --- |
+| Peer-reviewed primary paper | A published method, theorem, derivation, or reported case under its stated assumptions | That the book's broader model, implementation, or claims are equivalent to the paper's scope |
+| Standard or information-model specification | Normative vocabulary, profile structure, exchange requirements, or documented semantics | Electrical behaviour, solver convergence, or preservation of omitted asset/decision detail |
+| Official software documentation | Intended API, data model, topology operation, or documented implementation behaviour | A peer-reviewed theorem, universal semantics, or independent validation of the current version |
+| Author-derived result or repository reproduction | A traceable computation, fixture result, or independent reimplementation when its method is declared | External review, source-faithful utility validation, or global optimality unless separately demonstrated |
+| Project proposal or synthesis | The book's definitions, taxonomies, research questions, and proposed certificates | Prior-art status or evidence that the proposed calculus is already established |
+
+| Chapter or foundation | Literature establishes | Book synthesizes | Repository demonstrates | Open boundary |
+| --- | --- | --- | --- | --- |
+| When the general model collapses | Symmetrical coordinates and sequence analysis [Fortescue1918](@cite) | Exact positive-sequence restriction requires operator, grounding, decision, and observation invariance | Circulant/non-circulant sequence witnesses and balanced transmission fixture | Unbalanced controls, phase-specific limits, and external mathematical review |
+| Circuit coordinate transformations | Ground-return physics [Carson1926](@cite) and multiphase power-flow methods [ChengShirmohammadi1995, ZimmermanChiang1995](@cite) | Phase-to-neutral and phase-to-phase maps are distinct from neutral deletion and Kron elimination | Four-wire ladder, grounding guards, and coordinate-action tests | Typed four-wire/three-wire certificates and standards-aligned validation |
+| Kron, Ward, and optimized equivalents | Kron, Ward, and feeder-reduction families [DorflerBullo2013, Ward1949, Pecenak2018](@cite) | Boundary behavior, calibration-point approximation, decision preservation, and physical realizability are separate objects | Typed Kron covariance, Ward/scenario probes, and recovery witnesses | Source-faithful Opti-KRON validation and global nonlinear claims |
+| Node--breaker and topology processing | Connectivity/topological-node models and EMS topology processors [CIMTopologicalNode, FarrokhabadiVanfretti2014, PowsyblTopology](@cite) | Topology processing is a state-conditioned quotient with provenance, not a complete electrical reduction | Active-state connectivity, two-level topology, and graph-surgery witnesses | Full state-estimation/protection integration and utility-model validation |
+| Data model crosswalk and provenance | CIM/CGMES information models, engineering compilers, graph transformation, and PROV [CGMESLibrary, PMDEngineering, Ehrig2006, W3CPROVDM2013](@cite) | Source-to-canonical maps must expose losses, inferences, identities, and recovery obligations | Version-pinned crosswalks, certificates, provenance manifests, and schema checks | Round-trip adapters, profile conformance, and independent domain review |
+| Parallel-member and decision cases | Scalar exact constraint-pruning theory [Molzahn2018](@cite) and multiphase OPF formulations [GanLowChordal2014, GanLowMultiphase2014](@cite) | Preserving a feasible set is not the same as aggregating assets or preserving topology | Multiconductor, four-wire, nominal-π, and joint implication witnesses | Broader contingencies, protection, uncertainty, and external case validation |
 
 ## Current assessment
 
@@ -224,10 +277,11 @@ with a reproducible search protocol and coded evidence matrix.
 
 ![Provisional literature attention and structured gaps across the preservation agenda.](../assets/literature-gap-map.png)
 
-The figure is a synthesis aid, not a bibliometric score. It identifies where
-the current record is comparatively mature and where the book's proposed
-typed-closure, grounding, decision-preservation, provenance, and certified
-normalization questions remain weakly represented.
+The figure is a synthesis aid, not a bibliometric score or prevalence claim.
+Its attention labels are the book's provisional assessment of the coded seed
+matrix; they identify where the cited record is more developed for this agenda
+and where the book's proposed typed-closure, grounding, decision-preservation,
+provenance, and certified-normalization questions remain weakly represented.
 
 ## Current evidence-matrix snapshot
 

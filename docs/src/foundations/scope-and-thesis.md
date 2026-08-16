@@ -1,6 +1,12 @@
-# Scope and thesis
+# [Scope and thesis](@id scope-and-thesis)
 
 **Page status:** reader-facing scope contract and methodological thesis.
+
+!!! note "Evidence boundary"
+    **Scope:** the book's proposed representation and preservation vocabulary for steady-state and quasi-steady power-network models.
+    **Evidence:** definitions, scoped derivations, and repository-level executable witnesses.
+    **Numerical optimality:** not applicable to the thesis; local solver witnesses do not establish global decision equivalence.
+    **Unresolved boundary:** a universal representation theorem and external validation of the proposed architecture.
 
 ## The problem
 

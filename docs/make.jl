@@ -92,11 +92,11 @@ end
 # This is a documentation-only project: all reader-facing source lives under docs/src.
 # HTML is the primary knowledge-base product. The PDF has a deliberately shorter
 # argument-shaped route while reusing the same Markdown sources.
-const SITENAME = "Structure-Preserving Graph Models for Power Networks"
+const SITENAME = "What Power-Network Models Preserve"
 const AUTHORS = "Frederik Geth and contributors"
 const VERSION = "Draft"
 const PDF_NAME = "GraphModelsForPowerSystems.pdf"
-const GENERATED_PDF_NAME = "Structure-PreservingGraphModelsforPowerNetworks.pdf"
+const GENERATED_PDF_NAME = "WhatPower-NetworkModelsPreserve.pdf"
 const PDF_PATH = joinpath(@__DIR__, "latex_build", PDF_NAME)
 const GENERATED_PDF_PATH = joinpath(@__DIR__, "latex_build", GENERATED_PDF_NAME)
 # Prefer a working system Tectonic binary when supplied. This is useful on macOS
@@ -126,6 +126,7 @@ end
 const PAGES_HTML = [
     "Start here" => [
         "Home" => "index.md",
+        "How to use this book" => "start/how-to-use-this-book.md",
         "One network, many graphs" => "start/one-network-many-graphs.md",
         "How to read diagrams and equations" => "start/how-to-read-diagrams-and-equations.md",
         "One network, five languages" => "start/one-network-five-languages.md",
@@ -212,8 +213,9 @@ const PAGES_HTML = [
 ]
 
 const PAGES_PDF = [
-    "Start here" => [
+    "Start: problem and counterexample" => [
         "Home" => "index.md",
+        "How to use this book" => "start/how-to-use-this-book.md",
         "One network, many graphs" => "start/one-network-many-graphs.md",
         "How to read diagrams and equations" => "start/how-to-read-diagrams-and-equations.md",
         "One network, five languages" => "start/one-network-five-languages.md",
@@ -223,39 +225,40 @@ const PAGES_PDF = [
         "Five buses through a multi-port lowering" => "start/five-bus-transformer-lowering.md",
         "Scope and thesis" => "foundations/scope-and-thesis.md",
     ],
-    "Constructing the canonical model" => [
+    "Representation obligations" => [
+        "Representation frameworks" => "foundations/formal-representation-frameworks.md",
+        "Representation taxonomy" => "foundations/representation-taxonomy.md",
+        "Maps between representation frameworks" => "foundations/representation-maps.md",
+        "Translation traps: graphs, circuits, and power-system language" => "foundations/translation-traps.md",
+        "Two topology levels and the nodal projection" => "foundations/two-level-topology-and-nodal-projection.md",
+        "Cycles, parallelism, and radial structure" => "foundations/cycles-parallelism-radiality.md",
+        "Orientation, terminal quantities, and power transfer" => "foundations/orientation-terminal-power.md",
+        "Circuit formulations and the lowering boundary" => "foundations/circuit-formulations-and-lowering.md",
+        "From source graphs to views and graph surgery" => "foundations/compiled-views-and-graph-surgery.md",
+    ],
+    "Canonical model and valid collapses" => [
         "From source data to a canonical network model" => "foundations/source-to-canonical-model.md",
         "Load models and decision dependence" => "foundations/load-models-and-decision-dependence.md",
         "From conductor geometry to impedance fidelity" => "foundations/impedance-fidelity-ladder.md",
         "The running multiconductor network" => "cases/running-network.md",
         "Executable running network" => "cases/executable-running-network.md",
+        "Earth, neutral, and reference model classes" => "foundations/earth-ground-models.md",
+        "Node--breaker, bus--breaker, and topology processing" => "foundations/node-breaker-topology-processing.md",
         "When the general model collapses" => "foundations/when-general-model-collapses.md",
     ],
-    "Core representation and transformation language" => [
-        "Representation frameworks" => "foundations/formal-representation-frameworks.md",
-        "Representation taxonomy" => "foundations/representation-taxonomy.md",
-        "Maps between representation frameworks" => "foundations/representation-maps.md",
-        "Circuit formulations and the lowering boundary" => "foundations/circuit-formulations-and-lowering.md",
-        "Translation traps: graphs, circuits, and power-system language" => "foundations/translation-traps.md",
-        "Two topology levels and the nodal projection" => "foundations/two-level-topology-and-nodal-projection.md",
-        "Orientation, terminal quantities, and power transfer" => "foundations/orientation-terminal-power.md",
-        "Cycles, parallelism, and radial structure" => "foundations/cycles-parallelism-radiality.md",
+    "Preservation contracts" => [
         "Preservation contracts" => "foundations/preservation-contracts.md",
         "Transformation semantics and register" => "foundations/transformation-semantics-register.md",
         "Projection, compilation, and reduction" => "transformations/projection-compilation-reduction.md",
+        "Numerical consequences of representation and reduction" => "foundations/numerical-consequences.md",
+        "Rating and limit semantics" => "foundations/rating-semantics.md",
+        "Data-model crosswalk" => "foundations/data-model-crosswalk.md",
+    ],
+    "Transformations and recovery" => [
         "Circuit coordinate transformations" => "transformations/circuit-coordinate-transformations.md",
         "Degree-two series elimination" => "transformations/degree-two-series-elimination.md",
         "Certificate schema and composition" => "transformations/certificate-schema-and-composition.md",
         "Kron, Ward, and optimized network equivalents" => "transformations/kron-ward-opti-kron.md",
-    ],
-    "Guarded cases and computational consequences" => [
-        "Earth, neutral, and reference model classes" => "foundations/earth-ground-models.md",
-        "Node--breaker, bus--breaker, and topology processing" => "foundations/node-breaker-topology-processing.md",
-        "From source graphs to views and graph surgery" => "foundations/compiled-views-and-graph-surgery.md",
-        "Multiconductor parallel AC decision case" => "cases/multiconductor-parallel-ac-decision.md",
-        "Non-proportional three-phase four-wire parallel case" => "cases/four-wire-parallel-ac-decision.md",
-        "Four-wire nominal-pi parallel case" => "cases/pi-four-wire-parallel-ac-decision.md",
-        "Four-wire impedance-model ladder" => "cases/four-wire-impedance-model-ladder.md",
         "Conductor-coordinate normalization" => "transformations/conductor-coordinate-normalization.md",
         "Transformer-winding coordinate normalization" => "transformations/transformer-winding-coordinate-normalization.md",
         "Multiwinding leakage reference compilation" => "transformations/multiwinding-leakage-reference-compilation.md",
@@ -263,12 +266,15 @@ const PAGES_PDF = [
         "Fixed-linear transformer factor completion" => "transformations/fixed-linear-transformer-factor-completion.md",
         "Parameterized transformer tap decisions" => "transformations/parameterized-transformer-tap-decisions.md",
         "Guarded normalization rules" => "transformations/guarded-normalization.md",
+    ],
+    "Cases and consequences" => [
+        "Multiconductor parallel AC decision case" => "cases/multiconductor-parallel-ac-decision.md",
+        "Non-proportional three-phase four-wire parallel case" => "cases/four-wire-parallel-ac-decision.md",
+        "Four-wire nominal-pi parallel case" => "cases/pi-four-wire-parallel-ac-decision.md",
+        "Four-wire impedance-model ladder" => "cases/four-wire-impedance-model-ladder.md",
         "Transformer tap AC decision case" => "cases/transformer-tap-ac-decision.md",
         "BIM/BFM parallel lines: an expressiveness audit" => "cases/bim-bfm-parallel-lines.md",
         "Australian Carson reproduction" => "cases/australian-carson-reproduction.md",
-        "Numerical consequences of representation and reduction" => "foundations/numerical-consequences.md",
-        "Rating and limit semantics" => "foundations/rating-semantics.md",
-        "Data-model crosswalk" => "foundations/data-model-crosswalk.md",
     ],
     "Research record" => [
         "Literature map" => "literature/literature-map.md",

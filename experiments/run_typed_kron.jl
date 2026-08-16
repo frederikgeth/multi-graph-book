@@ -172,6 +172,25 @@ certificate = Dict(
     "constraint_map" => Dict("member-current-limits" => "apply each source limit to the recovered source current"),
     "provenance" => Dict("witness" => "experiments/generated/typed-kron-witness.json", "fixture" => "experiments/transformations/TypedKronReduction.jl"),
     "evidence" => Dict("checks" => result["checks"], "realizability_boundary" => "the general reduced multiport is not required to be block-symmetric; an admissible full-matrix line-shunt witness is stamped separately"),
+    "numerical_evidence" => Dict(
+        "solver_status" => "not_applicable; direct linear algebra witness",
+        "optimality_status" => "not_applicable",
+        "residual" => maximum([
+            norm(target.YK - TB' * source.YK * TB),
+            norm(target.KI * transformed.iI - TB' * source.KI * f.iI),
+            norm(TI * target.vI - source.vI),
+            norm(dense_target.YK - TB_dense' * source.YK * TB_dense),
+            norm(dense_target.KI * dense_blocks.iI - TB_dense' * source.KI * f.iI),
+            norm(TI_dense * dense_target.vI - source.vI),
+        ]),
+        "tolerance" => 1.0e-11,
+        "conditioning" => maximum([
+            cond(f.YII), cond(TB), cond(TI), cond(TB_dense), cond(TI_dense),
+        ]),
+        "backward_error" => norm(source.YK * f.vB + source.KI * f.iI - source.iB),
+        "uncertainty_status" => "not_quantified; deterministic synthetic fixture",
+        "notes" => "Residuals are algebraic consistency checks; no solver or global optimization claim.",
+    ),
 )
 certificate = attach_typed_interfaces(certificate)
 certificate_output = joinpath(@__DIR__, "generated", "typed-kron-certificate.json")

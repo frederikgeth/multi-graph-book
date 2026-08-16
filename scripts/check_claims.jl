@@ -6,7 +6,7 @@ const BIBLIOGRAPHY = joinpath(ROOT, "docs", "src", "references.bib")
 const REQUIRED = Set([
     "claim_id", "chapter", "claim_text", "status", "evidence_type",
     "claim_type", "verification", "citation_keys", "model_scope", "assumptions", "reviewer",
-    "review_date", "unresolved_issue", "preservation_dimensions",
+    "review_date", "unresolved_issue", "preservation_dimensions", "exactness_object",
 ])
 const STATUSES = Set([
     "definition", "established_result", "empirical_result",
@@ -22,6 +22,10 @@ const VERIFICATIONS = Set([
 const PRESERVATION_DIMENSIONS = Set([
     "structure", "terminal_behavior", "phase_neutral", "limits", "decision",
     "state", "measurement", "provenance", "numerical_structure",
+])
+const EXACTNESS_OBJECTS = Set([
+    "equation_identity", "boundary_behavior", "feasible_set", "connectivity_view",
+    "representation_definition", "observation_sample", "not_applicable", "not_reported",
 ])
 
 ledger = TOML.parsefile(LEDGER)
@@ -44,6 +48,8 @@ for claim in claims
     dims = claim["preservation_dimensions"]
     dims isa Vector && !isempty(dims) || error("$id must declare at least one preservation dimension")
     all(dim -> dim in PRESERVATION_DIMENSIONS, dims) || error("$id has unknown preservation dimension(s): $(dims)")
+    claim["exactness_object"] in EXACTNESS_OBJECTS ||
+        error("$id has unknown exactness_object $(claim["exactness_object"])")
     isfile(joinpath(ROOT, claim["chapter"])) || error("$id chapter does not exist: $(claim["chapter"])")
     for key in claim["citation_keys"]
         key in bibkeys || error("$id cites missing BibTeX key: $key")

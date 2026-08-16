@@ -13,6 +13,7 @@ from urllib.parse import unquote
 
 from check_math_hygiene import find_math_hygiene_findings
 from check_pdf_refs import find_pdf_reference_errors
+from check_evidence_summary import find_evidence_summary_errors
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE = ROOT / "data/running-network/v0.1.0.json"
@@ -2093,6 +2094,7 @@ def main() -> int:
     checked_links = check_links(errors)
     errors.extend(find_math_hygiene_findings(ROOT))
     errors.extend(find_pdf_reference_errors())
+    errors.extend(find_evidence_summary_errors())
     if errors:
         print("artifact validation failed:", file=sys.stderr)
         for error in errors:

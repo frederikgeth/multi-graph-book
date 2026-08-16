@@ -1,6 +1,6 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:5adebbbb375106e852a5c355b60178fb55c4fb1c050d3133196a17552bf3e4d3 -->
+<!-- generated-from claims/claims.toml sha256:d4c54bec4fde962b0c71e150d177f2fe202bb661f3560a5e409db43a79ec3984 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
@@ -136,8 +136,9 @@ verification state, see the [evidence map and verification summary](evidence-map
 
 | Verification | Claims |
 | --- | ---: |
-| `independently-implemented` | 5 |
 | `self-checked` | 90 |
+| `independently-implemented` | 5 |
+| `externally-reviewed` | 0 |
 
 ## Unresolved issues
 
