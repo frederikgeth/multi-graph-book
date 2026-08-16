@@ -31,6 +31,19 @@ function diagnose_affine_constraints(A, b)
     )
 end
 
+"Return the scoped rank diagnostic required before using a nodal target."
+function diagnose_nodal_rank(Y; declared_reference=nothing)
+    n = size(Y, 1)
+    rank_y = rank(Y)
+    Dict(
+        "dimension" => n,
+        "rank" => rank_y,
+        "nonsingular" => rank_y == n,
+        "declared_reference" => declared_reference,
+        "diagnostic" => rank_y == n ? "rank_guard_passes" : "rank_guard_fails",
+    )
+end
+
 """
     evaluate_circuit_formulation_witness()
 
@@ -53,6 +66,8 @@ function evaluate_circuit_formulation_witness()
     source_currents = [solution[2] for solution in solutions]
 
     floating_y = [1.0 -1.0; -1.0 1.0]
+    declared_reference_but_disconnected = [1.0 -1.0 0.0; -1.0 1.0 0.0; 0.0 0.0 0.0]
+    grounded_y = [2.0 -1.0; -1.0 1.0]
     member_admittances = [1.0, 3.0]
     member_limits = [2.0, 2.0]
     voltage_drop = 1.0
@@ -100,6 +115,27 @@ function evaluate_circuit_formulation_witness()
             "contradictory" => current_cutset_contradictory,
         ),
     )
+    nodal_rank_diagnostics = Dict(
+        "floating_network" => diagnose_nodal_rank(floating_y; declared_reference=nothing),
+        "declared_reference_but_disconnected" => diagnose_nodal_rank(
+            declared_reference_but_disconnected; declared_reference="bus_3"
+        ),
+        "grounded_network" => diagnose_nodal_rank(grounded_y; declared_reference="bus_2"),
+        "interpretation" => "A reference or grounding declaration is an input to the rank check, not a substitute for it.",
+    )
+    observation_contract = Dict(
+        "H_voltage" => "retained node voltages",
+        "H_voltage_and_source_current" => "retained node voltages plus ideal-source current",
+        "mna_and_plain_nodal_agree_for" => ["H_voltage"],
+        "mna_and_plain_nodal_not_equivalent_for" => ["H_voltage_and_source_current"],
+        "equivalence_scope" => "formulations are equivalent only relative to a declared observation family H and preservation contract",
+    )
+    formulation_guards = Dict(
+        "phi_lin" => "fixed linear factors only; unfixed decision-carrying factors remain in the equation/constraint operator",
+        "kcl_sign_convention" => "branch current i_e enters the KCL row with +B*i_e and source injection j is positive on the right-hand side",
+        "voltage_constraint_rhs" => "the selected voltage-source relation appears as e on the MNA right-hand side",
+        "nodal_rank_guard" => "rank(Y^N) equals the retained voltage dimension after all declared reference, grounding, and state maps are applied",
+    )
 
     checks = Dict(
         "source_relation_is_voltage_constraint" => true,
@@ -117,6 +153,9 @@ function evaluate_circuit_formulation_witness()
         "source_provenance_is_retained" => true,
         "floating_nodal_operator_is_singular" => rank(floating_y) < size(floating_y, 1),
         "floating_singularity_is_diagnosed" => true,
+        "declared_reference_does_not_imply_nonsingularity" =>
+            !nodal_rank_diagnostics["declared_reference_but_disconnected"]["nonsingular"],
+        "grounded_rank_guard_passes" => nodal_rank_diagnostics["grounded_network"]["nonsingular"],
         "voltage_loop_redundancy_is_detected" =>
             voltage_loop_consistent["classification"] == "consistent_redundant_constraints",
         "voltage_loop_contradiction_is_detected" =>
@@ -131,7 +170,7 @@ function evaluate_circuit_formulation_witness()
     )
 
     (; witness_id = "FORMULATION-NODAL-001",
-       claim_ids = ["FORMULATION-NODAL-001", "FORMULATION-NODAL-002"],
+       claim_ids = ["FORMULATION-NODAL-001", "FORMULATION-NODAL-002", "FORMULATION-NODAL-003"],
        evidence_type = "minimal_formulation_failure_family_witness",
        model_scope = "ideal voltage source, floating linear network, and aligned parallel members with source-level current limits",
        source_factor = Dict(
@@ -153,6 +192,9 @@ function evaluate_circuit_formulation_witness()
            "source_currents" => source_currents,
        ),
        structural_diagnostics,
+       nodal_rank_diagnostics,
+       observation_contract,
+       formulation_guards,
        failure_cases,
        lowering = Dict(
            "direct_target" => "MNA/tableau equation and constraint operator",

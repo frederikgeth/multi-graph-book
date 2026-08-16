@@ -21,7 +21,7 @@ SCHEMA = ROOT / "review/evidence-schema.json"
 REQUIRED = {
     "record_id", "citation_key", "screening_status", "source_model",
     "target_model", "transformation_type", "exactness", "exactness_object", "model_scope",
-    "decision_scope", "evidence_type", "coding_status",
+    "decision_scope", "evidence_type", "review_basis", "coding_status",
 }
 ENUMS = {
     "screening_status": {"include", "exclude", "uncertain"},
@@ -36,6 +36,7 @@ ENUMS = {
         "representation_definition", "observation_sample", "not_applicable", "not_reported",
     },
     "evidence_type": {"proof", "derivation", "empirical", "software", "standard", "engineering_practice", "mixed", "not_reported"},
+    "review_basis": {"primary_coding", "automated_reconciliation", "independent_human_double_coding", "external_technical_review", "not_reported"},
     "coding_status": {"seed", "single_coded", "double_checked", "conflict"},
 }
 
@@ -71,6 +72,14 @@ def main() -> int:
             errors.append(f"row {row_number} excludes a record without an exclusion reason")
         if row.get("screening_status") != "exclude" and row.get("exclusion_reason", ""):
             errors.append(f"row {row_number} has an exclusion reason for a non-excluded record")
+        if row.get("review_date", "") and not row.get("reviewer", ""):
+            errors.append(f"row {row_number} has a review date without a reviewer")
+        if row.get("reviewer", "") and not row.get("review_date", ""):
+            errors.append(f"row {row_number} has a reviewer without a review date")
+        if row.get("coding_status") == "double_checked" and row.get("review_basis") != "independent_human_double_coding":
+            errors.append(f"row {row_number} marks double_checked without independent human coding")
+        if row.get("review_basis") == "automated_reconciliation" and row.get("coding_status") == "double_checked":
+            errors.append(f"row {row_number} promotes automated reconciliation to double_checked")
         if args.require_double_coded and row.get("coding_status") != "double_checked":
             errors.append(f"row {row_number} is not double_checked in a release-required run")
 

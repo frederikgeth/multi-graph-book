@@ -65,6 +65,8 @@ FIVE_BUS_TYPED_KRON = GENERATED / "five-bus-typed-kron-witness.json"
 CONDUCTOR_TERMINAL_LIFT = GENERATED / "conductor-terminal-lift-witness.json"
 FIVE_BUS_CONDUCTOR_TERMINAL_LIFT = GENERATED / "five-bus-conductor-terminal-lift-witness.json"
 FIVE_BUS_TRANSFORMER_LOWERING = GENERATED / "five-bus-transformer-lowering-witness.json"
+FOUR_WINDING_LOWERING = GENERATED / "four-winding-lowering-witness.json"
+LAYER_LENS_API = GENERATED / "layer-lens-api-witness.json"
 MULTIWINDING_TERMINAL_LIFT = GENERATED / "multiwinding-terminal-lift-witness.json"
 MULTIWINDING_TYPED_KRON = GENERATED / "multiwinding-typed-kron-witness.json"
 HIERARCHY_BOUNDARY = GENERATED / "hierarchy-boundary-witness.json"
@@ -458,6 +460,8 @@ def main() -> int:
         FIVE_BUS_TYPED_KRON,
         CONDUCTOR_TERMINAL_LIFT,
         FIVE_BUS_CONDUCTOR_TERMINAL_LIFT,
+        FOUR_WINDING_LOWERING,
+        LAYER_LENS_API,
         MULTIWINDING_TERMINAL_LIFT,
         MULTIWINDING_TYPED_KRON,
         HIERARCHY_BOUNDARY,
@@ -605,6 +609,58 @@ def main() -> int:
         path = ROOT / source_path
         if not path.is_file() or sha256(path) != recorded_hash:
             errors.append(f"five-bus transformer lowering dependency is stale: {source_path}")
+
+    four_winding = load_json(FOUR_WINDING_LOWERING)
+    if four_winding.get("witness_id") != "ARCH-LOWER-002":
+        errors.append("four-winding lowering witness has an invalid witness ID")
+    if four_winding.get("claim_ids") != ["ARCH-LOWER-002"]:
+        errors.append("four-winding lowering witness has an unexpected claim set")
+    if four_winding.get("all_checks_pass") is not True:
+        errors.append("four-winding lowering witness failed its checks")
+    for name in (
+        "four_windings_are_retained",
+        "reference_matrix_is_full_and_non_diagonal",
+        "reference_matrix_is_positive_definite",
+        "mixed_connection_ports_are_retained",
+        "connection_specific_shunts_are_distinct",
+        "internal_grounding_is_retained",
+        "pointwise_decision_states_are_evaluated",
+        "decision_changes_equation_operator",
+        "decision_identity_is_retained",
+        "reference_choice_preserves_terminal_leakage",
+        "all_state_recovery_checks_pass",
+        "ordinary_edge_realization_is_not_invented",
+    ):
+        if four_winding.get("checks", {}).get(name) is not True:
+            errors.append(f"four-winding lowering check failed: {name}")
+    if len(four_winding.get("states", [])) != 2:
+        errors.append("four-winding lowering witness must contain two evaluated states")
+
+    layer_lens = load_json(LAYER_LENS_API)
+    if layer_lens.get("witness_id") != "ARCH-LENS-001":
+        errors.append("layer-lens API witness has an invalid witness ID")
+    if layer_lens.get("claim_ids") != ["ARCH-LENS-001"]:
+        errors.append("layer-lens API witness has an unexpected claim set")
+    if layer_lens.get("all_checks_pass") is not True:
+        errors.append("layer-lens API witness failed its checks")
+    for name in (
+        "source_data_api_has_assets_and_terminals",
+        "five_construction_rows_are_declared",
+        "five_semantic_lenses_are_declared",
+        "matrix_is_rectangular",
+        "direct_factor_to_equation_route_is_declared",
+        "ordinary_edge_route_is_optional",
+        "optimization_api_retains_decision_semantics",
+        "sparse_api_exposes_support_without_provenance",
+        "graph_learning_tensor_contract_is_explicit",
+        "support_graph_does_not_infer_asset_identity",
+        "decision_is_not_assigned_to_support_graph",
+        "package_names_are_api_annotations_not_layers",
+    ):
+        if layer_lens.get("checks", {}).get(name) is not True:
+            errors.append(f"layer-lens API check failed: {name}")
+    if len(layer_lens.get("api_contracts", [])) != 4:
+        errors.append("layer-lens API witness must contain four API contracts")
 
     multiwinding_typed_kron = load_json(MULTIWINDING_TYPED_KRON)
     if multiwinding_typed_kron.get("witness_id") != "TR-KRON-MULTI-001":

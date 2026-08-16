@@ -288,6 +288,30 @@ The [five-bus multi-port lowering](@ref five-bus-transformer-lowering) applies
 the matrix to one three-winding transformer and shows why an acyclic star and a
 cyclic terminal support graph can both be valid derived structures.
 
+### Concrete interface smoke test
+
+The generated
+[`layer-lens-api-witness.json`](https://github.com/uqfgeth/multi-graph-book/blob/main/experiments/generated/layer-lens-api-witness.json)
+provides a small, executable crosswalk for claim `ARCH-LENS-001`. It keeps the
+construction stages and the semantic lenses separate:
+
+| Interface | Construction stages | What the smoke test demonstrates | What it does not infer |
+|:--|:--|:--|:--|
+| Versioned JSON3 data | ``L_0``--``L_1`` | asset, terminal, and source-fibre fields can be read from a versioned object | equation coefficients or solver variables |
+| JuMP model | ``L_0`` and ``L_3`` | a decision variable, bounds, an explicit constraint, and an objective remain visible in an optimization model | asset provenance unless a map supplies it |
+| `SparseArrays.SparseMatrixCSC` | ``L_3``--``L_4`` | operator nonzeros expose a support relation that can be used by sparse algorithms | the source factor decomposition or ownership of an edge |
+| Graph-learning tensor contract | ``L_4`` | `node_features`, `edge_index`, and `edge_attr` have declared shapes and labels | physical, circuit, or feasibility semantics without explicit features and maps |
+
+The test deliberately does not import a particular graph-learning package: the
+tensor names are an interface vocabulary, not a claim that every package uses
+the same data model. Likewise, a JuMP model is an optimization interface that
+can consume a compiled equation view; it is not itself a new graph layer. The
+preferred path for an arbitrary-arity factor remains direct ``L_1\to L_3``
+stamping. The ordinary-edge row ``L_2`` is an optional compatibility route and
+must retain a source fibre when it is used. A support graph can therefore be
+useful for algorithms while remaining unable to recover asset identity,
+terminal behaviour, or a feasible decision set on its own.
+
 ## Expressiveness relative to questions
 
 There is no useful total ordering of these frameworks. Let ``T:M\rightarrow N``

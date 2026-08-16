@@ -1,6 +1,6 @@
 # [Literature map](@id literature-map)
 
-**Page status:** research record; coverage is provisional and not an exhaustive systematic review. The current evidence matrix contains ten single-coded seed records spanning reductions, topology processing, and formulation/framework precedents.
+**Page status:** research record; coverage is provisional and not an exhaustive systematic review. The current evidence matrix contains 28 included and one explicitly excluded, single-coded seed records spanning reductions, topology processing, multiphase formulations, and circuit/graph frameworks.
 
 The relevant work is substantial but fragmented across communities. No single
 literature currently supplies the full combination of typed physical assets,
@@ -178,6 +178,10 @@ provide mature state-dependent topology processing [CIMTopologicalNode,
 PowsyblTopology](@cite). This is perhaps the most widely deployed graph
 projection in power-system operations. Its limitation is not correctness but
 scope: connectivity quotienting is only one of the transformations needed.
+The evidence rows for CGMES and PowSyBl describe this same underlying
+connectivity-node-to-topological-node map, while remaining separate records:
+one is a standards/building-process source and the other is an implementation
+and API source. They are therefore related evidence, not duplicate citations.
 
 PowerModelsDistribution provides a concrete engineering-to-mathematical
 compiler and supports conductor terminals, grounding and multiwinding
@@ -213,15 +217,17 @@ with a reproducible search protocol and coded evidence matrix.
 
 ## Current evidence-matrix snapshot
 
-The versioned matrix in `review/evidence-matrix.csv` currently contains ten
-included, single-coded records. They cover parallel-line constraint pruning,
-graph-aware Kron/power-flow reductions, structure-preserving radial feeder
-reduction, CGMES topology processing, and circuit/graph formulation
-precedents. The rows intentionally preserve
+The versioned matrix in `review/evidence-matrix.csv` currently contains 28
+included and one excluded, single-coded record. They cover parallel-line constraint pruning,
+graph-aware Kron/power-flow reductions, multiphase OPF formulations,
+structure-preserving feeder and transmission reduction, CGMES topology
+processing, and circuit/graph formulation precedents. The rows intentionally preserve
 different exactness labels and limitations; they are not merged into a single
 claim about “network reduction.”
 
 The 2026-08-14 seed search and its limitations are archived in
-`review/search-runs/2026-08-14-seed-batch.md`. Database exports, duplicate
-resolution, citation chasing, full-text screening, and independent
-double-coding remain open tasks.
+`review/search-runs/2026-08-14-seed-batch.md`; the targeted 2026-08-16
+multiphase/practical-reduction pass is archived in
+`review/search-runs/2026-08-16-multiphase-and-practical-reductions.md`.
+Database exports, duplicate resolution beyond the coded seed, full-text
+screening, and independent double-coding remain open tasks.

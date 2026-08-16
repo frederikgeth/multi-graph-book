@@ -1,8 +1,9 @@
 # [Circuit formulations and the lowering boundary](@id circuit-formulations-and-lowering)
 
-**Page status:** scoped formulation guide; the definitions and guards below are
-book conventions supported by circuit and power-system precedents, while a
-complete formulation-equivalence theory remains future work.
+**Page status:** formulation guide and equivalence contract; the definitions
+and guards below are book conventions supported by circuit and power-system
+precedents. General equivalence theorems beyond the declared linear scopes
+remain future work.
 
 The same power network can be compiled into several equation systems. A nodal
 admittance matrix is one particularly useful target, but it is not a universal
@@ -14,8 +15,12 @@ nodal system, branch-current variables, or an unevaluated port--factor relation.
 
 This chapter supplies the formulation boundary for [From source graphs to
 views and graph surgery](@ref compiled-views-and-graph-surgery). The source
-object and its view registry remain authoritative there; this chapter explains
-what equation targets can and cannot be reached from those views.
+object and its view registry remain authoritative there; this chapter owns
+equation targets, assembly identities, solvability guards, and formulation
+equivalence. [Two topology levels and the nodal projection](@ref
+two-level-topology-and-nodal-projection) owns topology, support, projection,
+and nodal-operator non-identifiability. The [representation maps](@ref
+representation-maps) chapter owns the cross-framework arrow vocabulary.
 
 ## 1. Formulation families
 
@@ -86,6 +91,12 @@ then assembly gives
 \mathbf i^{\mathrm{inj}}=\mathbf Y^{\mathrm N}\mathbf U.
 ```
 
+Here ``\Phi_{\mathrm{lin}}`` is a formulation subset, not the entire source
+inventory. It contains factors whose parameters and states are fixed for the
+declared solve. A factor carrying an unfixed tap, switching state, control law,
+or other decision remains in the equation/constraint operator unless the
+target is explicitly rebuilt pointwise over that decision domain.
+
 This is an assembly identity, not a claim that ``\mathbf Y^{\mathrm N}`` is a
 canonical factorization or a complete power-network model. A useful sufficient
 guard for exact nodal stamping is:
@@ -102,6 +113,26 @@ guard for exact nodal stamping is:
 5. grounding, reference, terminal maps, and coordinate order are declared; and
 6. every limit, control, and decision that the study queries has a surviving
    variable or an explicit recovery/constraint map.
+
+### Rank and sign contract
+
+Let ``\mathbf Y^{\mathrm N}(\sigma,\gamma)`` denote the assembled operator
+after the declared active state ``\sigma`` and grounding/reference map
+``\gamma`` have been applied, and let ``n_V`` be the retained voltage
+dimension. The nodal target passes its basic regularity guard only when
+
+```math
+\operatorname{rank}\!\left(\mathbf Y^{\mathrm N}(\sigma,\gamma)\right)=n_V.
+```
+
+A reference label, a nominal ground, or a removed datum does not establish this
+rank by itself. An isolated component, a disconnected grounding element, a
+singular shunt, or a state-dependent topology can leave a nontrivial nullspace.
+The rank must be checked on the assembled compound operator for the declared
+state and coordinates. This is the scoped diagnostic supported by
+[KettnerPaolone2019](@cite), not a universal assertion that every grounded
+power-system model is nonsingular. The executable witness records both a
+disconnected network with a declared reference and a regular grounded case.
 
 Failure of these guards does not make the network invalid. It means that a
 bare ``\mathbf Y`` target is unavailable, incomplete, or semantically lossy for
@@ -147,6 +178,23 @@ The blocks encode KCL, selected element currents, voltage-source or control
 relations, and any declared algebraic coupling. The matrix can be sparse even
 when eliminating ``\mathbf I_{\mathrm e}`` would create dense fill-in.
 
+The sign convention is part of the formulation contract. With ``\mathbf B``
+the signed incidence of selected element currents into the KCL rows, use
+
+```math
+\mathbf Y\mathbf U+\mathbf B\mathbf I_{\mathrm e}=\mathbf J,
+\qquad
+\mathbf C\mathbf U+\mathbf D\mathbf I_{\mathrm e}=\mathbf e.
+```
+
+Thus a positive component of ``\mathbf I_{\mathrm e}`` follows the stored
+element/terminal orientation encoded by ``\mathbf B``; ``\mathbf J`` is the
+positive KCL injection on the right-hand side, and ``\mathbf e`` is the
+right-hand side of the selected voltage or device relation. Reversing an
+element orientation changes the corresponding incidence signs and current
+coordinate, not the physical factor. The witness uses this convention for its
+ideal voltage source.
+
 A sparse tableau keeps this idea at the factor boundary. Let ``\mathbf z``
 collect node, terminal, branch-current, power, and device variables. A tableau
 target records
@@ -172,6 +220,33 @@ better target only for the declared questions. If the study asks only for a
 fixed linear boundary voltage relation, eliminating tableau variables may be
 appropriate; if it asks for switching, protection, or member ratings, the
 uneliminated variables are part of the preservation contract.
+
+### Branch-current, branch-flow, and chain formulations
+
+A branch-current formulation retains an oriented current for each identified
+member and writes KCL together with the member constitutive equations. A
+branch-flow or BFM formulation instead promotes selected complex powers,
+voltage magnitudes, and current/power products to variables; its balance
+equations and relaxations depend on the declared branch model and on whether
+parallel member identities are retained. An aggregate branch-flow equation is
+therefore not automatically equivalent to a member-current formulation.
+
+For a two-port partition, a chain or ABCD representation may write a transfer
+relation such as
+
+```math
+\begin{bmatrix}u_i\\i_{ij}\end{bmatrix}
+=
+\begin{bmatrix}A&B\\C&D\end{bmatrix}
+\begin{bmatrix}u_j\\i_{ji}\end{bmatrix}.
+```
+
+This can be useful for cascading declared two-port sections, but it is a
+coordinate choice with its own invertibility and termination guards. It is not
+a universal substitute for a multi-conductor or multi-terminal factor. Hybrid
+effort/flow variables and scattering variables can avoid a singular chosen
+partition in some applications; they change the target coordinates and must
+carry their own recovery and observation contracts.
 
 ### Structural solvability of ideal-source blocks
 
@@ -254,7 +329,39 @@ contract. It also explains why a compiler pipeline can legitimately stop at a
 tableau or factor operator even when a smaller numerical matrix could be
 constructed for a narrower query.
 
-## 5. Scope collapses and literature alternatives
+## 5. Formulation equivalence is query-relative
+
+Let ``\mathcal E_1`` and ``\mathcal E_2`` be two equation/constraint operators
+with solution sets ``\mathcal S_1`` and ``\mathcal S_2``. A lowering map
+``T:\mathcal S_1\to\mathcal S_2`` and a recovery map ``R`` are not sufficient to
+call the formulations equivalent without saying what is observed. For an
+observation family ``H`` (voltages, member currents, powers, states, or
+decisions), we call the pair *equivalent for H* when the declared domains are
+mapped consistently and
+
+```math
+H_1(x)=H_2(Tx),
+\qquad\text{or, after recovery,}\qquad
+H_1(x)=H_2(RTx).
+```
+
+For a decision problem, this contract must also map feasible sets, objective
+values, and state domains. An algebraically eliminable variable may therefore
+be harmless for a boundary-voltage query and load-bearing for a member-current
+limit or switching decision. Approximate maps use the same vocabulary, but
+must state the error measure, domain, and which observations are only bounded
+or one-sided preserved.
+
+The executable witness makes the distinction concrete. MNA and a plain nodal
+description agree for ``H_{\mathrm{voltage}}`` in the ideal-source example, while
+they are not equivalent for ``H_{\mathrm{voltage+source-current}}`` because the
+source current is an additional retained unknown. Likewise, summing aligned
+parallel admittances preserves the terminal voltage relation but not the
+member-current-limit observation. The rank and sign guards above are part of
+the domain of these equivalence statements; they are not optional annotations.
+The rank claim is registered as ``FORMULATION-NODAL-003``.
+
+## 6. Scope collapses and literature alternatives
 
 Several familiar power-flow models are valid collapses when their guards are
 declared:
@@ -279,7 +386,7 @@ transformation-semantics-register) records the guards for moving among them.
     not mean that the full power-network source model is a simple graph, a
     two-terminal multigraph, or a lossless collection of admittance edges.
 
-## 6. Evidence boundary
+## 7. Evidence boundary
 
 The circuit and power-system precedents establish that nodal, modified-nodal,
 and sparse-tableau formulations are established alternatives. The book's

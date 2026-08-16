@@ -9,6 +9,13 @@ unchanged. All rows remain `single_coded`; a later independent human pass must
 still confirm or revise these decisions before any row is marked
 `double_checked`.
 
+The canonical rows now use `reviewer = primary_coder`, a coding date, and
+`review_basis = primary_coding`. This resolves the earlier date-without-role
+ambiguity without implying that the automated reconciliation was an independent
+human review. Future rows must use `independent_human_double_coding` before
+their `coding_status` may become `double_checked`; external technical review is
+recorded as a separate basis.
+
 ## Controlled-field resolutions
 
 | Record | Field | Reconciliation | Reason |
@@ -31,6 +38,13 @@ counted as the same kind of exact result.
 The current matrix has no `exclude` or `uncertain` rows, so it still does not
 support a PRISMA-style screening flow. The genuine second-coder task remains
 open.
+
+The follow-up 2026-08-16 targeted pass adds seven further single-coded records:
+Gan--Low's two multiphase formulation papers, generalized Kron reduction,
+multiphase transformer construction, multiphase feeder reduction, practical
+transmission reduction, and the journal Opti-KRON record. These additions close
+the current roadmap coverage item without changing the single-coded status or
+the non-systematic-review qualification.
 
 ## Coverage expansion
 

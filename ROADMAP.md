@@ -18,8 +18,8 @@ not masquerade as completion of the others.
 
 The repository is a locally validated HTML-first release candidate. The
 curated PDF is a secondary serialization of the same Markdown sources. The
-current checks cover 83 registered claims, 54 audited SVG/PNG pairs, 514 local
-links, the aggregate experiment suite, the HTML build, and a 198-page PDF.
+current checks cover 86 registered claims, 54 audited SVG/PNG pairs, 524 local
+links, the aggregate experiment suite, the HTML build, and a 200-page PDF.
 The high-risk 2026-08-15 review findings and the 2026-08-16 vocabulary and
 multi-port-lowering reviews have been repaired. Those automated and supplied
 reviews remain technical evidence, not external human peer review.
@@ -30,19 +30,19 @@ items are research extensions, not publication blockers. M4 (systematic
 literature work and external validation) remains open. Historical review
 dispositions are retained in [`review/archive/`](review/archive/).
 
-### Now — formulation equivalence and the nodal-admittance boundary
+### Now — formulation equivalence and the nodal-admittance boundary (complete)
 
-- [ ] add the precise nodal rank/nonsingularity guard and its
+- [x] add the precise nodal rank/nonsingularity guard and its
   Kettner--Paolone scope, making clear that a declared ground or reference does
   not alone prove the required rank;
-- [ ] define current signs and MNA right-hand-side terms, consolidate the
+- [x] define current signs and MNA right-hand-side terms, consolidate the
   nodal-stamping guards, and state that ``\Phi_{\mathrm{lin}}`` excludes
   unfixed decision-carrying factors;
-- [ ] separate branch-current, branch-flow/BFM, chain/ABCD, hybrid, and
+- [x] separate branch-current, branch-flow/BFM, chain/ABCD, hybrid, and
   scattering formulations, including the singular-partition caveat;
-- [ ] define formulation equivalence relative to a declared observation family
+- [x] define formulation equivalence relative to a declared observation family
   and preservation contract;
-- [ ] make the formulation chapter authoritative for assembly and formulation
+- [x] make the formulation chapter authoritative for assembly and formulation
   guards, remove its duplicated parallel-line derivation, and register the
   lowering architecture as a proposal claim. The formulation-lattice figure is
   already complete.
@@ -51,15 +51,15 @@ dispositions are retained in [`review/archive/`](review/archive/).
 exists, when another circuit formulation is required, and what “equivalent
 formulations” preserve for the declared study.
 
-### Next — general multi-port lowering
+### Next — general multi-port lowering (complete)
 
-- [ ] extend the composed transformer witness to an evaluated four-winding
+- [x] extend the composed transformer witness to an evaluated four-winding
   factor with a full non-diagonal reference matrix, connection-specific
   shunts, grounding, controls, and retained decision observations;
-- [ ] state and test the realizability boundary for direct factor stamping,
+- [x] state and test the realizability boundary for direct factor stamping,
   generated edge models, and terminal support without implying that every
   ``n``-port has a source-faithful ordinary-edge realization;
-- [ ] test the layer--lens matrix against concrete power-system data,
+- [x] test the layer--lens matrix against concrete power-system data,
   optimization, sparse-matrix, and graph-learning APIs without assigning an
   entire package to one stage.
 
@@ -69,14 +69,15 @@ four-winding model.
 
 ### Then — literature and external validation
 
-- [ ] reconcile the claims ledger and canonical evidence matrix, add the
+- [x] reconcile the claims ledger and canonical evidence matrix, add the
   Gan--Low and practical feeder/transmission records, and encode the shared
   CGMES/PowSyBl topology transformation without treating the sources as
   duplicates;
-- [ ] exercise genuine ``exclude`` and ``uncertain`` screening decisions,
-  resolve automated-versus-human reviewer metadata, and execute archived
-  database exports and independent double-coding before using *systematic* or
-  PRISMA-style language.
+- [x] exercise genuine ``exclude`` screening decisions and resolve
+  automated-versus-human reviewer metadata; the current matrix has one
+  explicit exclusion and machine-readable review bases.
+- [ ] execute and archive database exports and complete an independent human
+  double-coding pass before using *systematic* or PRISMA-style language.
 
 The following work is **externally blocked or conditional**, so it is not part
 of the unchecked active queue: recovering missing Australian source
@@ -950,7 +951,7 @@ observations.
 ### M3 — Graph architecture and topology
 
 **Status:** core scoped milestone complete; the general multi-port extension is
-the **Next** queue in the current dashboard.
+also complete for the current evaluated, package-independent scope.
 
 - [x] formalize a first hierarchy/refinement/open-system boundary witness with
   checked typed interfaces and state-conditioned switch maps;
@@ -1143,30 +1144,30 @@ conflict below is resolved and recorded.
 
 #### A. Circuit-formulation and lowering chapter
 
-The unresolved details in this subsection are the single **Now** milestone in
-the current dashboard; they are repeated here only to retain their review
+The details in this subsection were the formulation milestone in the current
+dashboard; the completed entries are retained here to preserve their review
 provenance.
 
 - [x] add explicit MNA/tableau structural-solvability diagnostics for ideal
   voltage-source loops and ideal current-source cutsets, distinguishing
   redundant consistent constraints from contradictory constraints; do not
   make a general DAE-index claim without a precise supporting source;
-- **Now:** add the nodal-admittance rank/nonsingularity guard, with the relevant
+- [x] add the nodal-admittance rank/nonsingularity guard, with the relevant
   Kettner--Paolone result, and state that merely declaring grounding or a
   reference does not by itself establish the required rank;
-- **Now:** merge overlapping nodal-admittance guards, define the current sign
+- [x] merge overlapping nodal-admittance guards, define the current sign
   convention and MNA right-hand-side terms, and state explicitly that
   ``\Phi_{\mathrm{lin}}`` excludes decision-carrying factors;
-- **Now:** add chain/ABCD formulations, separate branch-current formulations from
+- [x] add chain/ABCD formulations, separate branch-current formulations from
   branch-flow/BFM formulations, and note scattering variables as a possible
   remedy when a chosen hybrid partition is singular;
-- **Now:** define equivalence between formulations relative to a declared
+- [x] define equivalence between formulations relative to a declared
   observation family ``H`` and its preservation contract, rather than treating
   algebraic interconvertibility as semantic equivalence;
-- **Now:** make the circuit-formulation chapter authoritative for assembly
+- [x] make the circuit-formulation chapter authoritative for assembly
   identities and formulation guards, while the two-level-topology chapter owns
   topology, support, projection, and non-identifiability;
-- **Now:** compress the duplicated parallel-line witness, cross-reference its
+- [x] compress the duplicated parallel-line witness, cross-reference its
   authoritative claim/case, and register the lowering architecture as a
   proposal claim. The formulation-lattice argument figure is complete.
 
@@ -1226,14 +1227,18 @@ provenance.
   `DorflerBullo2013`, `Jang2013`, `CurtisMorrow2000`, and
   `KettnerPaolone2019` records; the controlled scope and exactness-object
   decisions are recorded in the reconciliation note;
-- **Then:** add the Gan--Low formulation records and practical feeder/transmission
-  reductions, then reassess whether any source needs split rows;
-- **Then:** exercise the screening protocol with genuine `exclude` or `uncertain`
-  records and record corpus-flow counts before making any PRISMA-style claim;
-- **Then:** resolve the reviewer/date consistency rule, and distinguish automated
+- [x] add the Gan--Low formulation records and practical feeder/transmission
+  reductions, then reassess whether any source needs split rows; the targeted
+  2026-08-16 pass retained one scoped row per source and documented why no split
+  was required yet;
+- [x] exercise the screening protocol with a genuine `exclude / wrong_domain`
+  record (`EV-0029`) and retain the explicit limitation that one screened seed
+  is not a corpus-flow count or a PRISMA-style review;
+- [x] resolve the reviewer/date consistency rule, and distinguish automated
   agreement, human double-coding, and external technical review explicitly in
-  the metadata rather than promoting the eight agreement candidates directly;
-- **Then:** record that the CGMES and PowSyBl rows describe the same underlying
+  the metadata; the new `review_basis` field and fail-closed validator keep all
+  29 current rows as `single_coded` until a genuine human second pass occurs;
+- [x] record that the CGMES and PowSyBl rows describe the same underlying
   connectivity-node-to-topological-node transformation without treating the
   sources as duplicates, then regenerate and validate the canonical snapshot.
 
@@ -1254,6 +1259,9 @@ claims, or a package release.
   - a 2026-08-14 web seed batch is archived in
     `review/search-runs/2026-08-14-seed-batch.md` and adds three scoped
     single-coded records; database exports and second-coder review remain open;
+- [x] generate a current blank second-coding worksheet from the canonical matrix;
+  it contains all 29 records and does not promote any row or count as human
+  review;
 - [x] add a fail-closed evidence-matrix validator for schema, controlled
   vocabulary, exclusion logic, and coding-status checks; it intentionally
   leaves the existing single-coded seed row below the double-coding gate;
@@ -1566,10 +1574,13 @@ makes structure loss visible at every lowering boundary.
   scenario-approximate sufficiency;
 - [x] require a boundary reduction to declare its internal-injection model
   rather than hiding that load-bearing assumption under admissible inputs;
-- **Next:** extend the composed witness to an evaluated four-winding factor with a
+- [x] extend the composed witness to an evaluated four-winding factor with a
   non-diagonal reference matrix and to connection-specific shunts, grounding,
-  controls, and decision-preserving edge realizations;
-- **Next:** test the layer--lens matrix against concrete APIs from power-system data,
+  controls, and decision-preserving pointwise equation operators;
+- [x] state the direct-factor, pointwise equation-operator, support-projection,
+  and ordinary-edge realizability boundary in the evaluated witness; do not
+  infer an edge realization from a terminal operator;
+- [x] test the layer--lens matrix against concrete APIs from power-system data,
   optimization, sparse-matrix, and graph-learning software without assigning
   an entire package to one representation stage.
 

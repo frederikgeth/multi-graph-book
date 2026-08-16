@@ -85,6 +85,10 @@ rows. Controlled fields and allowed values are defined by the JSON schema.
 The operational field rules and second-coder procedure are in
 [coding-guide.md](coding-guide.md), while DOI/title duplicate decisions are
 recorded in [deduplication-register.csv](deduplication-register.csv).
+The current blank worksheet for an independent pass is generated at
+[second-coding-template.csv](second-coding-template.csv) by
+`scripts/generate_second_coding_template.py`; it is a work form, not evidence
+of a completed second code.
 The current seed snapshot is recorded in [snapshot-manifest.json](snapshot-manifest.json)
 and checked by `scripts/check_review_snapshot.py`; the manifest deliberately
 states that independent double-coding has not yet occurred.
@@ -102,6 +106,12 @@ Critical coding dimensions are:
 - recovery, constraint, and provenance maps;
 - proof, empirical, software, standard, or engineering-practice evidence;
 - executable availability and independent-review state.
+
+The `review_basis` field makes that last distinction machine-readable:
+`primary_coding` is the initial row pass, `automated_reconciliation` is a
+reproducible audit that cannot promote a row, `independent_human_double_coding`
+is required for `double_checked`, and `external_technical_review` is tracked
+separately from literature coding.
 
 Absence of discussion is coded `not_reported`, not `no`. Exactness claims are
 recorded in the authors' scope and separately assessed against the book's

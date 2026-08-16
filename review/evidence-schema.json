@@ -16,6 +16,7 @@
     "model_scope",
     "decision_scope",
     "evidence_type",
+    "review_basis",
     "coding_status"
   ],
   "properties": {
@@ -48,6 +49,7 @@
     "limitations": {"type": "string"},
     "reviewer": {"type": "string"},
     "review_date": {"type": "string"},
+    "review_basis": {"enum": ["primary_coding", "automated_reconciliation", "independent_human_double_coding", "external_technical_review", "not_reported"]},
     "coding_status": {"enum": ["seed", "single_coded", "double_checked", "conflict"]},
     "notes": {"type": "string"}
   }

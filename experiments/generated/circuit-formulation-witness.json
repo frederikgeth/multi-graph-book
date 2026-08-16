@@ -3,9 +3,11 @@
         "current_cutset_redundancy_is_detected": true,
         "semantic_loss_is_diagnosed": true,
         "member_limit_is_lost_by_aggregate_y": true,
+        "declared_reference_does_not_imply_nonsingularity": true,
         "aggregate_y_preserves_terminal_relation": true,
         "same_voltage_can_have_different_source_current": true,
         "mna_residuals_are_zero": true,
+        "grounded_rank_guard_passes": true,
         "voltage_loop_contradiction_is_detected": true,
         "tableau_or_mna_target_available": true,
         "current_cutset_contradiction_is_detected": true,
@@ -17,6 +19,30 @@
         "source_relation_is_voltage_constraint": true,
         "ordinary_y_injection_would_be_single_valued": true,
         "source_provenance_is_retained": true
+    },
+    "nodal_rank_diagnostics": {
+        "interpretation": "A reference or grounding declaration is an input to the rank check, not a substitute for it.",
+        "floating_network": {
+            "rank": 1,
+            "declared_reference": null,
+            "diagnostic": "rank_guard_fails",
+            "nonsingular": false,
+            "dimension": 2
+        },
+        "grounded_network": {
+            "rank": 2,
+            "declared_reference": "bus_2",
+            "diagnostic": "rank_guard_passes",
+            "nonsingular": true,
+            "dimension": 2
+        },
+        "declared_reference_but_disconnected": {
+            "rank": 1,
+            "declared_reference": "bus_3",
+            "diagnostic": "rank_guard_fails",
+            "nonsingular": false,
+            "dimension": 3
+        }
     },
     "structural_diagnostics": {
         "current_source_cutset": {
@@ -98,6 +124,17 @@
         }
     },
     "all_checks_pass": true,
+    "observation_contract": {
+        "mna_and_plain_nodal_agree_for": [
+            "H_voltage"
+        ],
+        "mna_and_plain_nodal_not_equivalent_for": [
+            "H_voltage_and_source_current"
+        ],
+        "H_voltage_and_source_current": "retained node voltages plus ideal-source current",
+        "H_voltage": "retained node voltages",
+        "equivalence_scope": "formulations are equivalent only relative to a declared observation family H and preservation contract"
+    },
     "source_factor": {
         "factor_id": "vs_1",
         "factor_type": "ideal_voltage_source",
@@ -125,9 +162,16 @@
     },
     "claim_ids": [
         "FORMULATION-NODAL-001",
-        "FORMULATION-NODAL-002"
+        "FORMULATION-NODAL-002",
+        "FORMULATION-NODAL-003"
     ],
     "witness_id": "FORMULATION-NODAL-001",
+    "formulation_guards": {
+        "voltage_constraint_rhs": "the selected voltage-source relation appears as e on the MNA right-hand side",
+        "phi_lin": "fixed linear factors only; unfixed decision-carrying factors remain in the equation/constraint operator",
+        "kcl_sign_convention": "branch current i_e enters the KCL row with +B*i_e and source injection j is positive on the right-hand side",
+        "nodal_rank_guard": "rank(Y^N) equals the retained voltage dimension after all declared reference, grounding, and state maps are applied"
+    },
     "mna_target": {
         "variables": [
             "v_p",

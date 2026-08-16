@@ -161,6 +161,38 @@ review_date = ""
 unresolved_issue = "Add a full evaluated multiwinding factor lowerer and independently review equation-preservation conditions."
 
 [[claim]]
+claim_id = "ARCH-LOWER-002"
+preservation_dimensions = ['structure', 'terminal_behavior', 'limits', 'decision', 'provenance']
+chapter = "docs/src/start/five-bus-transformer-lowering.md"
+claim_text = "A four-winding transformer factor can be compiled pointwise into a complete terminal equation operator while retaining a full non-diagonal reference impedance, mixed winding connection maps, connection-specific shunts, internal grounding, recovery maps, and an explicit finite tap/phase decision domain; this does not by itself provide a source-faithful ordinary-edge realization."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "evaluated_four_winding_lowering_with_decision_and_recovery_contract"
+citation_keys = []
+model_scope = "fixed-frequency four-winding transformer factor with three-coil winding ports, mixed WYE/DELTA connections, finite pointwise tap and phase states, passive connection-specific shunts, and internal grounding"
+assumptions = "the non-diagonal reference matrix is positive definite; each decision state is compiled with fixed coefficients; shunt placement and grounding scope are declared; ordinary-edge realizability is not inferred"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independently review the four-winding equation-preservation conditions and extend the decision family to richer controls and non-diagonal coupled conductor blocks."
+
+[[claim]]
+claim_id = "ARCH-LENS-001"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision', 'provenance', 'numerical_structure']
+chapter = "docs/src/foundations/representation-maps.md"
+claim_text = "A layer--lens matrix can attach concrete data, optimization, sparse-matrix, and graph-learning interfaces to different construction stages without treating software packages as representation levels; each attachment must declare preserved and omitted semantics."
+status = "proposed_result"
+claim_type = "proposal"
+verification = "self-checked"
+evidence_type = "layer_lens_matrix_api_smoke_test"
+citation_keys = []
+model_scope = "five construction stages crossed with five semantic lenses"
+assumptions = "API cells are declared interface contracts; the graph-learning cell is package-independent; smoke tests do not establish external package-wide semantic equivalence"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Exercise the matrix against version-pinned external imports and independently review the cross-community API terminology."
+
+[[claim]]
 claim_id = "ARCH-SURGERY-001"
 preservation_dimensions = ['structure', 'state', 'provenance']
 chapter = "docs/src/foundations/compiled-views-and-graph-surgery.md"
@@ -255,6 +287,22 @@ assumptions = "nodal support retains only the assembled operator; member identit
 reviewer = ""
 review_date = ""
 unresolved_issue = "Extend the failure-family witness to multiconductor, grounded, state-dependent, and nonlinear formulations with independent review."
+
+[[claim]]
+claim_id = "FORMULATION-NODAL-003"
+preservation_dimensions = ['structure', 'terminal_behavior', 'provenance']
+chapter = "docs/src/foundations/circuit-formulations-and-lowering.md"
+claim_text = "A declared reference or grounding label does not by itself establish nonsingularity of a compound nodal operator: the rank guard must be evaluated on the assembled operator after the declared reference, grounding, and active-state maps are applied."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "executable_nodal_rank_guard_witness_with_disconnected_declared_reference"
+citation_keys = ["KettnerPaolone2019"]
+model_scope = "finite linear nodal operators for polyphase or scalar network coordinates"
+assumptions = "rank is evaluated on the declared retained operator; reference and grounding declarations are metadata and structural maps, not automatic nonsingularity proofs"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the rank guard to frequency-dependent, singular-shunt, dynamic, and state-dependent compound operators with independent review."
 
 [[claim]]
 claim_id = "ARCH-CHORDAL-001"

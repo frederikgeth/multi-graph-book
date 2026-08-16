@@ -1,4 +1,12 @@
 record_id,identifier_key,duplicate_group,canonical_record,decision,checked_on,checker,notes
+EV-0029,10.1017/S0956796805005605,D-0029,EV-0029,unique,2026-08-16,primary,DOI-normalized; excluded as generic compiler work without an electrical-network mapping
+EV-0022,10.1109/ISCAS.2014.6865509,D-0022,EV-0022,unique,2026-08-16,primary,DOI-normalized; Gan-Low chordal-relaxation record
+EV-0023,10.1109/PSCC.2014.7038399,D-0023,EV-0023,unique,2026-08-16,primary,DOI-normalized; Gan-Low multiphase-relaxation record
+EV-0024,10.1016/j.automatica.2014.08.017,D-0024,EV-0024,unique,2026-08-16,primary,DOI-normalized; generalized Kron record
+EV-0025,10.1049/iet-gtd.2016.2080,D-0025,EV-0025,unique,2026-08-16,primary,DOI-normalized; multiphase transformer record
+EV-0026,10.1109/TPWRS.2017.2726502,D-0026,EV-0026,unique,2026-08-16,primary,DOI-normalized; multiphase feeder reduction record
+EV-0027,10.1109/PTC.2019.8810704,D-0027,EV-0027,unique,2026-08-16,primary,DOI-normalized; transmission reduction record
+EV-0028,10.1016/j.epsr.2026.113615,D-0028,EV-0028,unique,2026-08-16,primary,DOI-normalized; Opti-KRON record
 EV-0001,10.1109/TPWRS.2018.2816807,D-0001,EV-0001,unique,2026-08-15,primary,DOI-normalized
 EV-0002,10.1137/17M1138054,D-0002,EV-0002,unique,2026-08-15,primary,DOI-normalized
 EV-0003,arXiv:2508.15006,D-0003,EV-0003,unique,2026-08-15,primary,Preprint retained as distinct radiality record

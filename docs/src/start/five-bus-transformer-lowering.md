@@ -256,6 +256,43 @@ would therefore trigger an invalid componentwise passivity rejection even
 though the invariant matrix guard passes. The guard belongs to the compiled
 matrix relation, not to the visual intuition of three ordinary lines.
 
+## An evaluated four-winding companion
+
+The three-winding construction is a useful diagram, but it is not the limit of
+the architecture. The companion artifact
+`experiments/generated/four-winding-lowering-witness.json` evaluates a
+four-winding factor with four ordered ports: three WYE ports and one DELTA
+port. Its reference-coordinate impedance has dimension ``3\times3`` and is
+deliberately non-diagonal. The pairwise short-circuit data are generated from
+that full matrix and recovered after compilation, so the example does not
+silently replace a general reference matrix by independent star arms.
+
+The evaluated target keeps the following objects separate:
+
+| Source meaning | Evaluated target | Why it remains explicit |
+|:--|:--|:--|
+| winding and connection identity | ordered WYE/DELTA port maps | terminal dimensions and incidence differ |
+| shunt on winding 2 | WYE coil-coordinate shunt map | placement is not a generic line parameter |
+| shunt on winding 3 | DELTA coil-coordinate shunt map | the same numerical matrix has a different connection meaning |
+| neutral grounding | two internal terminal grounding maps | grounding scope is not inferred from a bus label |
+| tap and phase settings | two pointwise equation operators | a decision state is not frozen into one source object |
+| winding current limits | recovery and constraint maps | limits remain attached to winding identity |
+
+The control states are intentionally finite and explicit: one state uses a
+lower tap on winding 2 and a leading phase shift on winding 4, while the other
+uses a higher tap and a lagging shift. Each state is compiled with fixed
+coefficients, and the witness checks that the resulting terminal operators
+differ, that both decision identities survive, and that terminal currents and
+complex power recover through the leakage, shunt, and grounding maps.
+
+This is a pointwise exact compilation family, not a claim that a single static
+``Y`` contains the whole decision problem. The source decision domain remains
+outside each fixed-state operator. Nor does the availability of a terminal
+operator imply an ordinary-edge transformer surrogate: the witness records the
+ordinary-edge branch as *not asserted* until an independent n-port
+realizability condition is supplied. The four-winding result is registered as
+``ARCH-LOWER-002``.
+
 ## Executable composition and evidence boundary
 
 The generated artifact

@@ -38,7 +38,8 @@ theorem into one row if they have different targets or preservation claims.
 | `retained_constraints` | Separate equations from ratings, switching decisions, objectives, and feasible sets. |
 | `recovery_map`, `provenance_map` | Use `none reported` when the source does not provide one; do not infer reversibility from an equivalent boundary response. |
 | `evidence_type` | `proof`/`derivation` for mathematical arguments, `empirical` for measured study results, `software` for implementation documentation or code, `standard` for standards/profile material, `engineering_practice` for operational procedures, and `mixed` for a combination. |
-| `coding_status` | `single_coded` means one pass; `double_checked` requires an independent second pass and a recorded resolution of disagreements. |
+| `reviewer`, `review_date`, `review_basis` | A populated date must have a named role. `primary_coder` identifies the initial coding pass; `independent_human_double_coding` is the only basis that permits `double_checked`; `automated_reconciliation` records a reproducible audit but never counts as a second human coder; `external_technical_review` is separate from matrix double-coding. |
+| `coding_status` | `single_coded` means one pass; `double_checked` requires an independent human second pass and a recorded resolution of disagreements. |
 
 ## Second-coder procedure
 
