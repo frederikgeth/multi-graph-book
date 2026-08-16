@@ -159,6 +159,13 @@ const PAGES_HTML = [
     "Research record" => [
         "Literature map" => "literature/literature-map.md",
         "Representation implementation record" => "literature/representation-implementation-record.md",
+        "Review protocol and evidence status" => "literature/review-protocol-and-evidence-status.md",
+        "Search runs" => [
+            "2026-08-14 seed batch" => "literature/search-runs/2026-08-14-seed-batch.md",
+            "2026-08-15 formulation landscape" => "literature/search-runs/2026-08-15-formulation-landscape.md",
+            "2026-08-15 information-model citation chase" => "literature/search-runs/2026-08-15-information-model-citation-chase.md",
+            "2026-08-16 multiphase and practical reductions" => "literature/search-runs/2026-08-16-multiphase-and-practical-reductions.md",
+        ],
         "Research agenda" => "literature/research-agenda.md",
     ],
     "Reference" => [
@@ -234,6 +241,14 @@ const PAGES_PDF = [
     "Research record" => [
         "Literature map" => "literature/literature-map.md",
         "Representation implementation record" => "literature/representation-implementation-record.md",
+        "Review protocol and evidence status" => "literature/review-protocol-and-evidence-status.md",
+        "Search runs" => [
+            "2026-08-14 seed batch" => "literature/search-runs/2026-08-14-seed-batch.md",
+            "2026-08-15 formulation landscape" => "literature/search-runs/2026-08-15-formulation-landscape.md",
+            "2026-08-15 information-model citation chase" => "literature/search-runs/2026-08-15-information-model-citation-chase.md",
+            "2026-08-16 multiphase and practical reductions" => "literature/search-runs/2026-08-16-multiphase-and-practical-reductions.md",
+        ],
+        "Research agenda" => "literature/research-agenda.md",
     ],
     "Reference" => [
         "Notation and modelling conventions" => "foundations/notation-and-conventions.md",
@@ -336,6 +351,8 @@ function make_latex()
 end
 
 run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_winding_coordinate_actions.py"))`)
+run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_literature_gap_map.py"))`)
+run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_research_record.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_reference_figures.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_vocabulary_indexes.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_knowledge_base_indexes.py"))`)

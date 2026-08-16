@@ -60,7 +60,7 @@ returns to the same preservation-contract and evidence language.
 
 - **I recognize the words but not their use here.** Read [One network, five
   languages](@ref one-network-five-languages), then use the maintained
-  [Terminology](@ref) page for compact definitions or the [cross-community
+  [Terminology](@ref reference-terminology) page for compact definitions or the [cross-community
   vocabulary indexes](@ref vocabulary-indexes) for bidirectional lookup.
 - **I know simple graphs or balanced transmission models.** Start with the
   [graph and transmission reading guide](@ref

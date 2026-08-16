@@ -126,6 +126,12 @@
       "monochrome_safe": true,
       "distinguishing_channels": ["two titled panels", "row-versus-column arrows", "labelled index sets", "explicit P and Q actions"]
     },
+    "literature-gap-map": {
+      "svg": "docs/src/assets/literature-gap-map.svg",
+      "png": "docs/src/assets/literature-gap-map.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["ordered topic labels", "horizontal bar lengths", "explicit attention labels", "zero-to-high axis guides"]
+    },
     "spine-band": {
       "svg": "docs/src/assets/spine-band.svg",
       "png": "docs/src/assets/spine-band.png",

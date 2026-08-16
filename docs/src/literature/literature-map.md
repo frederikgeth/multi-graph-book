@@ -1,6 +1,6 @@
 # [Literature map](@id literature-map)
 
-**Page status:** research record; coverage is provisional and not an exhaustive systematic review. The current evidence matrix contains 28 included and one explicitly excluded, single-coded seed records spanning reductions, topology processing, multiphase formulations, and circuit/graph frameworks.
+**Page status:** research record; coverage is provisional and not an exhaustive systematic review. Current matrix counts, checksums, search coverage, and coding status are published in the generated [review protocol and evidence status](@ref review-protocol-evidence-status) page.
 
 The relevant work is substantial but fragmented across communities. No single
 literature currently supplies the full combination of typed physical assets,
@@ -222,10 +222,18 @@ network equivalents.
 This table is a provisional assessment to be replaced by a systematic review
 with a reproducible search protocol and coded evidence matrix.
 
+![Provisional literature attention and structured gaps across the preservation agenda.](../assets/literature-gap-map.png)
+
+The figure is a synthesis aid, not a bibliometric score. It identifies where
+the current record is comparatively mature and where the book's proposed
+typed-closure, grounding, decision-preservation, provenance, and certified
+normalization questions remain weakly represented.
+
 ## Current evidence-matrix snapshot
 
-The versioned matrix in `review/evidence-matrix.csv` currently contains 28
-included and one excluded, single-coded record. They cover parallel-line constraint pruning,
+The versioned matrix in `review/evidence-matrix.csv` is a single-coded snapshot;
+its generated status page reports the current included/excluded counts. The
+records cover parallel-line constraint pruning,
 graph-aware Kron/power-flow reductions, multiphase OPF formulations,
 structure-preserving feeder and transmission reduction, CGMES topology
 processing, and circuit/graph formulation precedents. The rows intentionally preserve

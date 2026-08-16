@@ -12,4 +12,4 @@ This page is generated from `claims/claims.toml`. It is a retrieval aid and gap 
 
 ![Verification state by claim type.](../assets/reference-verification-summary.png)
 
-The evidence map exposes where the current record is concentrated and where it is silent. The verification summary is deliberately candid: self-checking and independent implementation are useful but are not external peer review.
+The largest named gaps in this snapshot are measurement (no coded claims at any verification state), state and numerical-structure claims without independent implementations, and external review (zero claims across all nine preservation dimensions). These are gaps in the current evidence record, not evidence that the corresponding literature or engineering practice is empty. The verification summary reports 86 self-checked, 5 independently implemented, and 0 externally reviewed claims out of 94; self-checking and independent implementation are useful but are not external peer review.

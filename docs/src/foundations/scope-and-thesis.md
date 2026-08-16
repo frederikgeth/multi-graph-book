@@ -201,5 +201,5 @@ stating:
 - which questions become unanswerable afterward.
 
 That language should support both scientific results and an implementable transformation system.
-The [Notation and modelling conventions](@ref) and [The running multiconductor network](@ref running-network)
+The [Notation and modelling conventions](@ref reference-notation-conventions) and [The running multiconductor network](@ref running-network)
 provide the common vocabulary and adversarial case on which the proposal will first be tested.

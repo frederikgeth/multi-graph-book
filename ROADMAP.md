@@ -18,8 +18,8 @@ not masquerade as completion of the others.
 
 The repository is a locally validated HTML-first release candidate. The
 curated PDF is a secondary serialization of the same Markdown sources. The
-current checks cover 94 registered claims, 63 audited SVG/PNG pairs, 542 local
-links, the aggregate experiment suite, the HTML build, and a 315-page PDF.
+current checks cover 94 registered claims, 64 audited SVG/PNG pairs, 553 local
+links, the aggregate experiment suite, the HTML build, and a 327-page PDF.
 The high-risk 2026-08-15 review findings, the 2026-08-16 vocabulary and
 multi-port-lowering reviews, and the canonical-model section review have been
 repaired. Those automated and supplied
@@ -86,6 +86,38 @@ Deferred follow-ups from this review: replace the remaining chapter-local raw
 LaTeX pagination hacks with a template-level float policy, and either wire the
 legacy `five-bus-feasible-sets`/`numerical-structure-witness` raster assets into
 reader-facing chapters or retire them after checking historical references.
+
+### Research-record review tranche (complete)
+
+- [x] publish a generated review-protocol/evidence-status chapter with
+  protocol version, snapshot date, checksums, database coverage, search runs,
+  screening counts, coding status, and the explicit single-coded boundary;
+- [x] add scoped status lines to every research-agenda candidate result;
+- [x] give the research agenda a stable anchor and include it in the PDF route;
+- [x] add a literature-attention/gap-map figure linked to the current
+  assessment table;
+- [x] replace hand-maintained literature-map counts with a link to the
+  generated status page;
+- [x] refresh the review snapshot manifest after its bibliography-input hash
+  drift and verify the snapshot checker passes.
+
+Deferred: apply the second-coding recommendations to the canonical matrix only
+after independent human review and recorded conflict resolution; add a
+PRISMA-style flow figure once the full screening pipeline has published stable
+counts.
+
+### Reference-section review tranche (complete)
+
+- [x] expand the notation table with the high-use Greek symbols ``\sigma``,
+  ``\pi``, ``\alpha``, ``\Lambda``, ``\rho``, ``\kappa``, ``\Theta``, and
+  ``\eta``, including their competing scopes and qualifiers;
+- [x] make the evidence-map prose name the empty measurement, state,
+  numerical-structure, and external-review regions rather than leaving the
+  reader to infer gaps from pixels;
+- [x] add stable anchors to notation, terminology, and references;
+- [x] clarify the retrieval roles of the knowledge-base and vocabulary indexes;
+- [x] add limit dispositions and observed-set preservation classes to the
+  maintained terminology surface.
 
 M1 (integrity and reproducibility) is complete. M2 (reduction evidence) and M3
 (graph architecture) satisfy their scoped book claims; their remaining broad

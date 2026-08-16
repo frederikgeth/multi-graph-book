@@ -1,4 +1,4 @@
-# References
+# [References](@id reference-bibliography)
 
 **Page status:** bibliography and source register.
 

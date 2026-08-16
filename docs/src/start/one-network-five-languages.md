@@ -218,8 +218,8 @@ grounding, protection, and decision constraint in the declared domain.
 The [Translation traps](@ref translation-traps) chapter develops the most
 dangerous false inferences. [Representation taxonomy](@ref
 representation-taxonomy) defines the graph families, [Notation and modelling
-conventions](@ref) fixes semantic ownership and indices, and the maintained
-[Terminology](@ref) page provides the compact lookup vocabulary. The generated
+conventions](@ref reference-notation-conventions) fixes semantic ownership and indices, and the maintained
+[Terminology](@ref reference-terminology) page provides the compact lookup vocabulary. The generated
 [cross-community vocabulary indexes](@ref vocabulary-indexes) support both
 community-to-book and book-to-community lookup. The later preservation-contract
 chapters turn these linguistic qualifications into mathematical obligations.

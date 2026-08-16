@@ -1,4 +1,4 @@
-# Research agenda
+# [Research agenda](@id research-agenda)
 
 **Page status:** proposal and open-work register.
 
@@ -31,9 +31,18 @@ reliable computation without silently invalidating the decisions being made.
 bus--branch multigraphs, conductor-expanded graphs, hypergraphs/factor graphs,
 and common component compilations embed into the port--factor kernel.
 
+**Status:** partial — `ARCH-BLOCK-001`, `ARCH-LOWER-001`, `ARCH-PORT-001`, and
+the representation taxonomy establish finite typed embeddings and lowering
+examples; a general representation theorem remains open.
+
 **Candidate result A2.** Conditions under which a projection between model
 categories is faithful, conservative, or admits a reconstruction functor on a
 restricted subcategory.
+
+**Status:** partial — `ARCH-LENS-001`, `ARCH-RECOVERY-002`, and the
+representation-map query-sufficiency analysis classify scoped faithful,
+set-identifiable, and non-identifiable cases; a general reconstruction result
+is open.
 
 ## Workstream B: normalization calculus
 
@@ -49,13 +58,27 @@ restricted subcategory.
 **Candidate result B1.** Necessary and sufficient conditions for degree-two
 multiconductor bus elimination to remain inside a selected line model class.
 
+**Status:** partial — `TR-SER-001` and `TR-SER-002` discharge the guarded
+behavioural rule and show why homogeneous line-class closure is separate;
+necessary-and-sufficient closure conditions for broader line libraries remain
+open.
+
 **Candidate result B2.** A closure classification for series composition of
 series-only, nominal-``\pi``, exact distributed-parameter, frequency-dependent,
 and thermally coupled line models.
 
+**Status:** partial — the guarded-normalization catalogue and the degree-two
+series chapter cover series-only, nominal-``\pi``, and distributed-parameter
+warnings; frequency-dependent and thermally coupled closure are open.
+
 **Candidate result B3.** A non-existence result showing that no single simple
 edge with conventional scalar or per-conductor limits can exactly represent
 the feasible set of general heterogeneous parallel branches.
+
+**Status:** partial — the parallel decision cases and `TR-PAR-001`/`TR-PAR-002`
+give scalar counterexamples and explicit outer-relaxation witnesses; a formal
+non-existence theorem for the general heterogeneous multiconductor class is
+open.
 
 **Candidate result B4.** Necessary and sufficient redundancy certificates for
 multiconductor parallel-member constraint sets, extending scalar quadratic
@@ -90,8 +113,16 @@ and state-conditioned models remain open parts of B4.
 uniquely recoverable and all source constraints are composed with that recovery
 map, optimization over boundary variables is exactly equivalent.
 
+**Status:** partial — `PRESERVE-001`, the recovery-map chapter, and the Kron,
+parallel, and transformer certificates establish the statement for declared
+finite linear and decision cases; a general theorem over nonlinear and mixed
+discrete models remains open.
+
 **Candidate result C2.** Complexity or representability bounds for projecting
 branch-wise thermal constraints onto boundary variables.
+
+**Status:** open — current work provides exact recovery and support-function
+certificates, but no general complexity or representability bound.
 
 ## Workstream D: approximate but certified models
 

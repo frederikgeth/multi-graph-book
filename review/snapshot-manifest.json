@@ -6,7 +6,7 @@
   },
   "independent_double_coding": false,
   "inputs": {
-    "review/bibliography-audit.toml": "41ef3b9b159ad55283713a61597790fa089835182368b29bf8bdb97a90953149",
+    "review/bibliography-audit.toml": "702268993187f1af6b4b5ca7b65f9ac0d279e1ee1d61fd472cf635a869e6e112",
     "review/coding-guide.md": "8a282e7ecb302403f8897a165eb700084f3cffd2cbfff0a37df7a6eee18ddbb3",
     "review/protocol.md": "3ce30aeea9161ddf5a3a866258c4126754f3bc05d082164e37762ca6d733ce2c",
     "review/search-runs/2026-08-14-seed-batch.md": "bd0038ee6f0799be2c2fc00a16ecc82e38d207e22cd6d18dc69db1e2c3056adb",

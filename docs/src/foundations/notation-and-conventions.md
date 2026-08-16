@@ -1,4 +1,4 @@
-# Notation and modelling conventions
+# [Notation and modelling conventions](@id reference-notation-conventions)
 
 **Page status:** maintained modelling convention; not a standalone empirical claim.
 
@@ -29,6 +29,14 @@ quantity. Indices are not added merely because an equation is evaluated at an en
 | ``\mathbf F`` | Fortescue phase-to-sequence transform | ``abc\leftrightarrow012`` |
 | ``C_+`` | restriction to the positive-sequence subspace | phase state ``\to`` positive sequence |
 | ``E_+`` | embedding of a positive-sequence state | positive sequence ``\to`` phase state |
+| ``\sigma`` | declared equipment/topology state; use ``\sigma_e`` for an element state and ``G^\sigma`` for its resolved graph | active/open/closed state, not a nominal-``\pi`` subscript |
+| ``\pi`` | projection or quotient map when decorated (for example ``\pi_\sigma``); nominal-``\pi`` is a model-family label | ``\pi_\sigma`` for connectivity quotient; ``\pi`` section for a circuit model |
+| ``\alpha`` | scalar decision or model coefficient; qualify the role, such as served-load ``\alpha`` or ZIP ``\alpha_Z`` | ``\alpha`` in an optimization case; ``\alpha_Z,\alpha_I,\alpha_P`` in a load law |
+| ``\Lambda`` | asset-to-electrical relation, generally many-to-many rather than a function | ``(a,e)\in\Lambda`` |
+| ``\rho`` | a declared realification map, sequence-mixing residual, or fitted proportionality scalar; qualify each use | ``\rho(z)``, ``\rho_+`` or ``\rho^\star`` |
+| ``\kappa`` | enumeration map when subscripted by a semantic set, or a condition-number diagnostic | ``\kappa_{\mathcal B}`` versus ``\kappa(\mathbf A)`` |
+| ``\Theta`` | admissible family of typed factors or parameters; ``\Theta_\phi`` denotes a factor family | model-class or factor-parameter set |
+| ``\eta`` | backward-error, residual, or scenario-validity diagnostic; qualify the source | ``\eta(\widehat x)`` or ``\eta_{\mathrm{asm}}`` |
 
 Identifiers need not be consecutive integers. A data model may use stable strings while the
 mathematical model uses the corresponding symbols. When an implementation needs an ordinary

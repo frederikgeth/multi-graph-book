@@ -1,4 +1,4 @@
-# Terminology
+# [Terminology](@id reference-terminology)
 
 **Page status:** maintained glossary and translation aid.
 
@@ -56,6 +56,8 @@ belong to [Representation frameworks](@ref formal-representation-frameworks).
 | Behavioral reduction | Elimination of hidden variables preserving a declared external relation | [Projection, compilation, and reduction](@ref) |
 | Approximate reduction | Reduction with a stated observation domain, metric and error | [Projection, compilation, and reduction](@ref) |
 | Preservation contract | Precise statement of retained observations, constraints, assumptions and recovery | [Contracts](@ref preservation-contracts) |
+| Limit disposition | Six-way classification of a source limit as retained, mapped, conservative, relaxed, scenario/uncertain, or forgotten | [Rating semantics](@ref rating-semantics) |
+| Observed-set class | Feasible-set relation classified as exact, inner/conservative, outer/relaxed, or scenario-approximate | [Preservation contracts](@ref preservation-contracts) |
 | Recovery map | Map from retained/reduced variables to eliminated source quantities | [Contracts](@ref preservation-contracts) |
 | Provenance | Traceable correspondence among source, generated and reduced objects | [Source architecture](@ref source-to-canonical-model) |
 | Morphism | A map preserving the declared structure within one representation framework | [Representation maps](@ref representation-maps) |
@@ -69,10 +71,10 @@ belong to [Representation frameworks](@ref formal-representation-frameworks).
 | Equipment state | A discrete or continuous device condition such as switch status or tap position, with source identity and admissible transitions retained | [Topology processing](@ref node-breaker-topology) |
 | Neutral conductor | An explicit conductor with voltage, current, connectivity, ratings, and provenance rather than a synonym for earth or reference | [Earth and neutral](@ref earth-ground-models) |
 | Voltage reference | A gauge choice used to select a voltage representative; not automatically physical earth or a neutral conductor | [Earth and neutral](@ref earth-ground-models) |
-| Terminal coordinate | One ordered component of a declared terminal interface vector | [Notation and modelling conventions](@ref) |
-| Label-indexed relation | A family of quantities indexed by semantic sets such as buses, lines, terminals, or cycles | [Notation and modelling conventions](@ref) |
-| Enumeration | An explicit bijection from a semantic finite set to integer storage positions | [Notation and modelling conventions](@ref) |
-| Array position | An implementation row, column, or tensor slot after enumeration; not an asset identity | [Notation and modelling conventions](@ref) |
+| Terminal coordinate | One ordered component of a declared terminal interface vector | [Notation and modelling conventions](@ref reference-notation-conventions) |
+| Label-indexed relation | A family of quantities indexed by semantic sets such as buses, lines, terminals, or cycles | [Notation and modelling conventions](@ref reference-notation-conventions) |
+| Enumeration | An explicit bijection from a semantic finite set to integer storage positions | [Notation and modelling conventions](@ref reference-notation-conventions) |
+| Array position | An implementation row, column, or tensor slot after enumeration; not an asset identity | [Notation and modelling conventions](@ref reference-notation-conventions) |
 | Sequence coordinate | A transformed combination of phase-domain coordinates under a declared basis | [General-model collapse](@ref positive-sequence-collapse) |
 | Asset/terminal topology | Identified high-level equipment and its port or bus attachments; a multigraph only for the genuinely two-terminal subset | [Frameworks](@ref formal-representation-frameworks) |
 | Conductor/port--factor topology | Electrical conductor junctions, typed ports, and constitutive factors, with terminal maps and coupling retained | [Frameworks](@ref formal-representation-frameworks) |
