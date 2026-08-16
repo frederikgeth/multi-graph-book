@@ -6,7 +6,8 @@ export JunctionContext,
        TransformationRejection,
        TransformationResult,
        certificate_dict,
-       eliminate_degree_two
+       eliminate_degree_two,
+       eliminate_coupled_series_pair
 
 """A two-terminal series element with explicitly ordered conductor coordinates.
 
@@ -140,6 +141,35 @@ function junction_failures(first, second, junction)
     failures
 end
 
+"Guards shared by the uncoupled and coupled-pair series rules."
+function coupled_junction_failures(first, second, junction)
+    failures = String[]
+    first.bus_to == junction.id || push!(failures, "first_element_does_not_end_at_junction")
+    second.bus_from == junction.id || push!(failures, "second_element_does_not_start_at_junction")
+    first.id != second.id || push!(failures, "source_element_identity_not_distinct")
+    length(first.terminals_to) == length(second.terminals_from) ||
+        push!(failures, "junction_terminal_arity_mismatch")
+    Set(first.terminals_to) == Set(second.terminals_from) ||
+        push!(failures, "junction_conductor_sets_do_not_match")
+    isempty(junction.injections) || push!(failures, "junction_has_injection")
+    isempty(junction.shunts) || push!(failures, "junction_has_shunt_or_grounding")
+    isempty(junction.measurements) || push!(failures, "junction_has_measurement")
+    isempty(junction.controls) || push!(failures, "junction_has_control")
+    isempty(junction.protection_boundaries) || push!(failures, "junction_is_protection_boundary")
+    # A coupled-pair rule is exact only when the pair is the complete coupling
+    # neighbourhood of both source elements. External blocks would survive
+    # the rewrite and cannot be represented by the returned two-terminal target.
+    any(!=(second.id), keys(first.mutual_couplings)) &&
+        push!(failures, "first_element_has_external_mutual_coupling")
+    any(!=(first.id), keys(second.mutual_couplings)) &&
+        push!(failures, "second_element_has_external_mutual_coupling")
+    haskey(first.mutual_couplings, second.id) ||
+        push!(failures, "first_element_missing_pair_mutual_coupling")
+    haskey(second.mutual_couplings, first.id) ||
+        push!(failures, "second_element_missing_pair_mutual_coupling")
+    failures
+end
+
 function aligned_limit(first_limit, second_limit, P)
     first_limit === nothing && second_limit === nothing && return nothing
     n = size(P, 1)
@@ -244,6 +274,103 @@ function eliminate_degree_two(
     TransformationResult(target, certificate)
 end
 
+"""
+Eliminate a zero-injection junction between two *mutually coupled* series
+elements.
+
+This is deliberately a separate rule from `eliminate_degree_two`.  It accepts
+only a complete two-element coupling neighbourhood (both cross blocks are
+declared and no external blocks exist), and returns a terminal-behaviour
+composite with
+`Z₁ + Z₁₂ P + P' Z₂₁ + P' Z₂ P`.  The result is not thereby a homogeneous
+physical line or a proof that the source coupling has been physically removed.
+"""
+function eliminate_coupled_series_pair(
+    first::SeriesElement,
+    second::SeriesElement,
+    junction::JunctionContext;
+    certificate_id="TR-SER-003",
+)
+    failures = coupled_junction_failures(first, second, junction)
+    if !isempty(failures)
+        return TransformationRejection(
+            "coupled_pair_series_elimination",
+            [first.id, second.id],
+            junction.id,
+            failures,
+            Dict(
+                "injections" => junction.injections,
+                "shunts" => junction.shunts,
+                "measurements" => junction.measurements,
+                "controls" => junction.controls,
+                "protection_boundaries" => junction.protection_boundaries,
+                "element_pair_mutual_couplings" => Dict(
+                    first.id => sort!(collect(keys(first.mutual_couplings))),
+                    second.id => sort!(collect(keys(second.mutual_couplings))),
+                ),
+                "mutual_coupling_representation" =>
+                    "SeriesElement.mutual_couplings[other_element_id] stores pairwise cross-impedance blocks",
+            ),
+        )
+    end
+
+    P = permutation_matrix(first.terminals_to, second.terminals_from)
+    P === nothing && error("internal error: conductor guard passed without a permutation")
+    Z12 = first.mutual_couplings[second.id]
+    Z21 = second.mutual_couplings[first.id]
+    impedance = first.impedance + Z12 * P + transpose(P) * Z21 +
+        transpose(P) * second.impedance * P
+    target_to = [second.terminals_to[findfirst(==(label), second.terminals_from)]
+                 for label in first.terminals_to]
+    limit = aligned_limit(first.current_limit, second.current_limit, P)
+    target_id = "generated_coupled_series__$(first.id)__$(second.id)"
+    target = SeriesElement(
+        target_id,
+        first.bus_from,
+        second.bus_to,
+        first.terminals_from,
+        target_to,
+        impedance;
+        current_limit=limit,
+        construction_code=nothing,
+    )
+    certificate = TransformationCertificate(
+        String(certificate_id),
+        "exact_behavioral_reduction",
+        [first.id, second.id, junction.id],
+        target_id,
+        [
+            "external_terminal_voltage_current_relation",
+            "ordered_conductor_identity",
+            "source_current_limits_via_intersection",
+            "source_pair_mutual_coupling_contribution",
+            "source_to_target_provenance",
+        ],
+        ["independent_visibility_of_the_internal_junction", "independent_visibility_of_the_pair_cross_blocks"],
+        P,
+        Dict(
+            "source_current_$(first.id)" => "i_$(first.id) = i_equivalent",
+            "source_current_$(second.id)" => "i_$(second.id) = P * i_equivalent",
+            "junction_voltage" => "u_$(junction.id) = u_$(first.bus_from) - (Z_$(first.id) + Z_12 * P) * i_equivalent",
+        ),
+        Dict(
+            "current_feasible_set" => "C_equivalent = C_$(first.id) intersect P' * C_$(second.id)",
+            "componentwise_current_limit" => "i_max_equivalent = min(i_max_$(first.id), P' * i_max_$(second.id))",
+        ),
+        "exact_behavioral_composite_with_pairwise_mutual_coupling",
+        Dict(
+            "rule_id" => "coupled_pair_series_elimination",
+            "generated_object" => target_id,
+            "source_elements" => [first.id, second.id],
+            "eliminated_junction" => junction.id,
+            "pairwise_blocks" => ["Z_12", "Z_21"],
+            "external_coupling" => "rejected",
+            "physical_line_closure" => "not asserted",
+        ),
+    )
+    TransformationResult(target, certificate)
+end
+
 function complex_matrix_rows(matrix)
     [[Dict("re" => real(value), "im" => imag(value)) for value in matrix[row, :]]
      for row in axes(matrix, 1)]
@@ -255,7 +382,7 @@ function certificate_dict(result::TransformationResult)
     Dict{String,Any}(
         "schema_version" => "1.1.0",
         "certificate_id" => certificate.certificate_id,
-        "rule_id" => "degree_two_series_elimination",
+        "rule_id" => get(certificate.provenance, "rule_id", "degree_two_series_elimination"),
         "classification" => certificate.classification,
         "source" => Dict(
             "model_category" => "ordered_multiconductor_series_chain",
@@ -309,7 +436,10 @@ function certificate_dict(result::TransformationResult)
             "the second element starts at the eliminated junction",
             "junction conductor sets agree up to permutation",
             "the junction has no injection, shunt, grounding, measurement, control, or protection boundary",
-            "neither source element has mutual coupling with the other source element or any external element",
+            get(certificate.provenance, "rule_id", "degree_two_series_elimination") ==
+                "coupled_pair_series_elimination" ?
+                "the two source elements declare both pairwise cross-impedance blocks and have no external mutual coupling" :
+                "neither source element has mutual coupling with the other source element or any external element",
         ],
         "preserves" => certificate.preserves,
         "forgets" => certificate.forgets,
@@ -318,7 +448,10 @@ function certificate_dict(result::TransformationResult)
         "provenance" => certificate.provenance,
         "evidence" => Dict(
             "conductor_permutation" => [collect(row) for row in eachrow(certificate.conductor_permutation)],
-            "impedance_derivation" => "Z_equivalent = Z_first + P' * Z_second * P",
+            "impedance_derivation" => get(certificate.provenance, "rule_id", "degree_two_series_elimination") ==
+                "coupled_pair_series_elimination" ?
+                "Z_equivalent = Z_first + Z_12 * P + P' * Z_21 + P' * Z_second * P" :
+                "Z_equivalent = Z_first + P' * Z_second * P",
             "excluded_cross_coupled_derivation" => "Z_equivalent = Z_first + Z_12 * P + P' * Z_21 + P' * Z_second * P",
             "physical_classification" => certificate.physical_classification,
         ),

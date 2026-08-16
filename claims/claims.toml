@@ -185,12 +185,12 @@ status = "proposed_result"
 claim_type = "proposal"
 verification = "self-checked"
 evidence_type = "typed_view_registry_and_executable_witness"
-citation_keys = []
+citation_keys = ["IEC60617DB", "IEC61082", "IEC61970453", "IEC618506", "IEEEC571270"]
 model_scope = "six declared view classes for the book's canonical power-network architecture"
 assumptions = "view metadata is declared by the model author; absence of a reverse map is not treated as recoverability"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Compare the registry with external single-line, node-breaker, CIM/CGMES, and multi-line visual languages."
+unresolved_issue = "Add independent technical review of the house visual grammar and compare additional utility and manufacturer diagram conventions."
 
 [[claim]]
 claim_id = "ARCH-LOWER-001"
@@ -494,7 +494,7 @@ model_scope = "linear multiconductor series elements with ordered terminal maps"
 assumptions = "both source factors are series-only; matching conductor sets; no injection, shunt, grounding, observation boundary, control, or protection boundary at the eliminated junction; neither source element is mutually coupled to the other source element or to an external element"
 reviewer = ""
 review_date = ""
-unresolved_issue = "The 2026-08-15 automated independent re-derivation found and motivated the repaired coupling guard but is not human peer review; add a named mathematical reviewer and formulate a separate exact rule for coupled section pairs."
+unresolved_issue = "The 2026-08-15 automated independent re-derivation found and motivated the repaired coupling guard but is not human peer review; add a named mathematical reviewer for the uncoupled rule and its coupling boundary."
 
 [[claim]]
 claim_id = "TR-SER-002"
@@ -511,6 +511,22 @@ assumptions = "behavioural equivalence is evaluated only at the declared externa
 reviewer = ""
 review_date = ""
 unresolved_issue = "Formalize sufficient physical line-merge guards for selected line models."
+
+[[claim]]
+claim_id = "TR-SER-003"
+preservation_dimensions = ['structure', 'terminal_behavior', 'limits', 'provenance']
+chapter = "docs/src/transformations/degree-two-series-elimination.md"
+claim_text = "For a zero-injection degree-two junction whose two series-only source elements declare both pairwise cross-impedance blocks and no external mutual coupling, the exact terminal-behaviour composite has impedance Z_1 + Z_12 P + P' Z_21 + P' Z_2 P, with source currents recovered by I_1 = I_equivalent and I_2 = P I_equivalent."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "algebraic_derivation_executable_certificate_and_guard_tests"
+citation_keys = []
+model_scope = "linear multiconductor series elements with ordered terminal maps and pair-keyed mutual-coupling blocks"
+assumptions = "both source factors are series-only; matching conductor sets; no injection, shunt, grounding, observation boundary, control, or protection boundary at the eliminated junction; both pairwise cross blocks are declared; neither source element has external mutual coupling"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add an independent mathematical reviewer; determine model-specific reciprocity and physical line-class closure guards."
 
 [[claim]]
 claim_id = "TR-COORD-001"

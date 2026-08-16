@@ -103,6 +103,7 @@ julia --project=experiments experiments/test/runtests.jl
 julia scripts/check_claims.jl
 python3 scripts/check_claim_mentions.py
 python3 scripts/check_artifacts.py
+python3 scripts/check_rendered_outputs.py
 bash scripts/reproduce_clean_fixture.sh
 ```
 

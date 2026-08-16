@@ -6,7 +6,7 @@
   },
   "independent_double_coding": false,
   "inputs": {
-    "review/bibliography-audit.toml": "702268993187f1af6b4b5ca7b65f9ac0d279e1ee1d61fd472cf635a869e6e112",
+    "review/bibliography-audit.toml": "bc006999ff1a52bccb7a4f7e88c4c12ec60d47091be5736e9ef9fbe062bdec9c",
     "review/coding-guide.md": "8a282e7ecb302403f8897a165eb700084f3cffd2cbfff0a37df7a6eee18ddbb3",
     "review/protocol.md": "3ce30aeea9161ddf5a3a866258c4126754f3bc05d082164e37762ca6d733ce2c",
     "review/search-runs/2026-08-14-seed-batch.md": "bd0038ee6f0799be2c2fc00a16ecc82e38d207e22cd6d18dc69db1e2c3056adb",
@@ -61,6 +61,6 @@
     "review/search-runs/2026-08-15-information-model-citation-chase.md",
     "review/search-runs/2026-08-16-multiphase-and-practical-reductions.md"
   ],
-  "snapshot_date": "2026-08-16",
+  "snapshot_date": "2026-08-17",
   "status": "single_coded_seed_snapshot"
 }

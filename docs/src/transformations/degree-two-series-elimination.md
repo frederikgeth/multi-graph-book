@@ -201,6 +201,41 @@ data model cannot express this case, while the pair-keyed `mutual_couplings`
 field can. A coupled-factor elimination would need the full pair block and a
 different target interface; silently dropping that field is a semantic loss.
 
+## A separate exact rule for a coupled section pair
+
+The cross terms are not merely a reason to weaken the guard. They define a
+different, narrower rewrite. `TR-SER-003` applies when the two candidate
+elements are series-only, the junction guards above hold, both pairwise blocks
+``\mathbf Z_{12}`` and ``\mathbf Z_{21}`` are declared, and neither element has
+any mutual-coupling block to a third element. No reciprocity assumption is
+needed by the algebra; if a physical model requires ``\mathbf Z_{21} =
+\mathbf Z_{12}^{\mathsf T}``, that is an additional model-specific guard.
+
+With ``\mathbf P`` aligning the conductor order at ``b``, the target is the
+terminal-behaviour composite
+
+```math
+\mathbf Z_{\mathrm{eq,coupled}}
+ = \mathbf Z_1 + \mathbf Z_{12}\mathbf P
+ + \mathbf P^{\mathsf T}\mathbf Z_{21}
+ + \mathbf P^{\mathsf T}\mathbf Z_2\mathbf P.
+```
+
+The recovery map remains ``\mathbf I_1 = \mathbf I_{\mathrm{eq}}`` and
+``\mathbf I_2 = \mathbf P\mathbf I_{\mathrm{eq}}``; member current limits therefore
+map by the same intersection as in the uncoupled rule. The certificate retains
+the pair identities and declares that physical homogeneous-line closure is
+*not* asserted. In particular, this rule does not turn a corridor coupling
+model into two independent line objects, and it rejects any external coupling
+that would be left dangling after the rewrite. It is exact for the declared
+external terminal voltage/current relation, not a license to erase the internal
+coupling semantics.
+
+The executable certificate records this rule alongside the negative witness in
+`experiments/generated/degree-two-series-certificate.json`. The implementation
+and tests are self-checked; an independent mathematical review of the new rule
+remains an explicit review item.
+
 ## Grounding counterexample
 
 If a grounding or shunt admittance ``\mathbf Y_g`` is attached at ``b``, then

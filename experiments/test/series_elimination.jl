@@ -76,6 +76,55 @@ using .SeriesElimination
     @test relative_error ≈ 0.1165 atol=5e-5
     @test !isapprox(stated, true_coupled; rtol=0.1)
 
+    # A separate rule accepts the complete pair coupling and retains both
+    # cross blocks in the exact terminal composite.
+    coupled_exact = eliminate_coupled_series_pair(
+        coupled_first, coupled_second, JunctionContext(id="b"),
+    )
+    @test coupled_exact isa TransformationResult
+    @test coupled_exact.target.impedance ≈ true_coupled
+    @test coupled_exact.target.id == "generated_coupled_series__c1__c2"
+    @test coupled_exact.certificate.classification == "exact_behavioral_reduction"
+    @test coupled_exact.certificate.provenance["rule_id"] == "coupled_pair_series_elimination"
+    @test "source_pair_mutual_coupling_contribution" in coupled_exact.certificate.preserves
+
+    nonreciprocal_Z21 = ComplexF64[0.02+0.03im 0.01+0.00im; 0.00+0.01im 0.04+0.02im]
+    nonreciprocal_second = SeriesElement(
+        "c2n", "b", "j", ["n", "a"], ["n", "a"], Z2;
+        mutual_couplings=Dict("c1" => nonreciprocal_Z21),
+    )
+    nonreciprocal_first = SeriesElement(
+        "c1", "i", "b", ["a", "n"], ["a", "n"], Z1;
+        mutual_couplings=Dict("c2n" => Z12),
+    )
+    nonreciprocal_exact = eliminate_coupled_series_pair(
+        nonreciprocal_first, nonreciprocal_second, JunctionContext(id="b"),
+    )
+    @test nonreciprocal_exact isa TransformationResult
+    @test nonreciprocal_exact.target.impedance ≈
+        Z1 + Z12 * P + transpose(P) * nonreciprocal_Z21 + transpose(P) * Z2 * P
+
+    missing_pair_block = SeriesElement(
+        "m1", "i", "b", ["a", "n"], ["a", "n"], Z1;
+        mutual_couplings=Dict("m2" => Z12),
+    )
+    missing_pair_other = SeriesElement("m2", "b", "j", ["a", "n"], ["a", "n"], Z2)
+    missing_pair = eliminate_coupled_series_pair(
+        missing_pair_block, missing_pair_other, JunctionContext(id="b"),
+    )
+    @test missing_pair isa TransformationRejection
+    @test "second_element_missing_pair_mutual_coupling" in missing_pair.failed_guards
+
+    coupled_external = SeriesElement(
+        "c2e", "b", "j", ["n", "a"], ["n", "a"], Z2;
+        mutual_couplings=Dict("c1" => Z21, "other" => Z12),
+    )
+    coupled_external_rejection = eliminate_coupled_series_pair(
+        coupled_first, coupled_external, JunctionContext(id="b"),
+    )
+    @test coupled_external_rejection isa TransformationRejection
+    @test "second_element_has_external_mutual_coupling" in coupled_external_rejection.failed_guards
+
     externally_coupled_first = SeriesElement(
         "e1", "i", "b", ["a", "n"], ["a", "n"], Z1;
         mutual_couplings=Dict("corridor/other" => Z12),

@@ -204,6 +204,41 @@ verified_on = "2026-08-13"
 note = "Official documentation title verified; unsupported publication year replaced by n.d."
 
 [[entry]]
+key = "IEC60617DB"
+status = "verified"
+verification_source = "https://webstore.iec.ch/en/publication/2723"
+verified_on = "2026-08-17"
+note = "IEC product record verified for the current graphical-symbol database and its scope across conductors, conversion equipment, switchgear, protection, and diagrams."
+
+[[entry]]
+key = "IEC61082"
+status = "verified"
+verification_source = "https://webstore.iec.ch/en/publication/4469"
+verified_on = "2026-08-17"
+note = "IEC product record verified for the rules and guidelines governing presentation of electrotechnical documents, diagrams, drawings, and tables."
+
+[[entry]]
+key = "IEC61970453"
+status = "verified"
+verification_source = "https://webstore.iec.ch/en/publication/6213"
+verified_on = "2026-08-17"
+note = "IEC product record verified for CIM-linked diagram layout exchange and revision management."
+
+[[entry]]
+key = "IEC618506"
+status = "verified"
+verification_source = "https://webstore.iec.ch/en/publication/103863"
+verified_on = "2026-08-17"
+note = "IEC product record verified for substation and IED configuration exchange and switchyard structure descriptions."
+
+[[entry]]
+key = "IEEEC571270"
+status = "verified"
+verification_source = "https://standards.ieee.org/ieee/C57.12.70/7353/"
+verified_on = "2026-08-17"
+note = "IEEE record verified for active transformer terminal-marking, neutral, grounding, polarity, and connection conventions."
+
+[[entry]]
 key = "PMDEngineering"
 status = "corrected"
 verification_source = "https://lanl-ansi.github.io/PowerModelsDistribution.jl/stable/manual/eng-data-model.html"

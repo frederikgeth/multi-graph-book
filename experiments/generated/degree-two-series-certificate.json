@@ -324,6 +324,46 @@
         ]
       ]
     },
+    "coupled_pair_exact_rule": {
+      "classification": "exact_behavioral_reduction",
+      "impedance_ohm": [
+        [
+          {
+            "re": 0.73,
+            "im": 1.4300000000000002
+          },
+          {
+            "re": 0.185,
+            "im": 0.395
+          }
+        ],
+        [
+          {
+            "re": 0.185,
+            "im": 0.395
+          },
+          {
+            "re": 0.74,
+            "im": 1.46
+          }
+        ]
+      ],
+      "target_id": "generated_coupled_series__c1__c2",
+      "rule_id": "coupled_pair_series_elimination",
+      "recovery_map": {
+        "source_current_c2": "i_c2 = P * i_equivalent",
+        "source_current_c1": "i_c1 = i_equivalent",
+        "junction_voltage": "u_b = u_i - (Z_c1 + Z_12 * P) * i_equivalent"
+      },
+      "impedance_formula": "Z_1 + Z_12 * P + P' * Z_21 + P' * Z_2 * P",
+      "external_coupling_guard": "all mutual-coupling keys must be the other source identity",
+      "constraint_map": {
+        "componentwise_current_limit": "i_max_equivalent = min(i_max_c1, P' * i_max_c2)",
+        "current_feasible_set": "C_equivalent = C_c1 intersect P' * C_c2"
+      },
+      "physical_line_closure": "not asserted",
+      "certificate_id": "TR-SER-003"
+    },
     "physical_classification": "exact_behavioral_composite_not_a_homogeneous_physical_line",
     "conductor_permutation": [
       [

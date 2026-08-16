@@ -11,7 +11,7 @@ single-coded seed corpus is an independently validated systematic review.
 | field | value |
 | --- | --- |
 | protocol version | `0.1.0` |
-| snapshot date | `2026-08-16` |
+| snapshot date | `2026-08-17` |
 | matrix records | 29 |
 | matrix SHA-256 | `770b9f9baa4720e8e89f514e470ba7baec07ace45ea3fd1d0590dbda8c03342b` |
 | deduplication rows | 29 |

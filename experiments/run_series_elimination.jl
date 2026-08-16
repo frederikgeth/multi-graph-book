@@ -47,6 +47,11 @@ coupled_rejection = eliminate_degree_two(
 )
 coupled_rejection isa TransformationRejection ||
     error("expected pairwise mutual coupling to block the uncoupled series rule")
+coupled_exact = eliminate_coupled_series_pair(
+    coupled_first, coupled_second, JunctionContext(id="b"),
+)
+coupled_exact isa TransformationResult ||
+    error("expected the coupled-pair exact rule to accept the complete pair")
 Z_uncoupled = Z1 + transpose(P) * Z2 * P
 Z_coupled = Z1 + Z12 * P + transpose(P) * Z21 + transpose(P) * Z2 * P
 absolute_error = norm(Z_uncoupled - Z_coupled)
@@ -75,6 +80,18 @@ artifact["evidence"]["mutual_coupling_negative_witness"] = Dict(
     "absolute_error_frobenius" => absolute_error,
     "relative_error_frobenius" => relative_error,
     "failed_guards" => coupled_rejection.failed_guards,
+)
+artifact["evidence"]["coupled_pair_exact_rule"] = Dict(
+    "certificate_id" => coupled_exact.certificate.certificate_id,
+    "rule_id" => "coupled_pair_series_elimination",
+    "classification" => coupled_exact.certificate.classification,
+    "target_id" => coupled_exact.target.id,
+    "impedance_formula" => "Z_1 + Z_12 * P + P' * Z_21 + P' * Z_2 * P",
+    "impedance_ohm" => complex_rows(coupled_exact.target.impedance),
+    "recovery_map" => coupled_exact.certificate.recovery_map,
+    "constraint_map" => coupled_exact.certificate.constraint_map,
+    "external_coupling_guard" => "all mutual-coupling keys must be the other source identity",
+    "physical_line_closure" => "not asserted",
 )
 
 mkpath(dirname(OUTPUT))

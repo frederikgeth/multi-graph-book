@@ -96,6 +96,9 @@ jobs:
           DOCUMENTER_SKIP_DEPLOY: '1'
         run: julia --project=docs docs/make.jl --pdf
 
+      - name: Check rendered HTML and PDF outputs
+        run: python3 scripts/check_rendered_outputs.py
+
       - name: Check generated indexes are committed
         run: git diff --exit-code -- docs/src/reference/knowledge-base-index.md docs/src/reference/chapter-status.md
 

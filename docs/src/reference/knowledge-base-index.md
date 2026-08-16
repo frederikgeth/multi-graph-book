@@ -1,13 +1,13 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:160b515bdecd11d4dbd7e1c0bc0f42bec4326e2a562729a87322cb44b4639740 -->
+<!-- generated-from claims/claims.toml sha256:5adebbbb375106e852a5c355b60178fb55c4fb1c050d3133196a17552bf3e4d3 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 94
+**Indexed claims:** 95
 **Indexed chapters:** 42
 
 ## Claims by type
@@ -92,7 +92,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `ARCH-VIEW-001` — The book proposes that a power-network visualisation declare its object level, preserved and forgotten semantics, identity fibres, and reverse-map status; single-line, multi-line, port-factor, node-breaker, nodal-support, and reduced views are distinct typed projections. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
 | `TRANSFORM-CATALOG-001` — The guarded-normalization catalogue treats coordinate normalization, series elimination, parallel bundling, switch contraction, multiwinding compilation, and rooted-tree views as distinct rule families whose acceptance depends on declared closure, recovery, constraint, and provenance guards. | [Guarded normalization rules](../transformations/guarded-normalization.md) | `self-checked` |
 
-### `theorem` (34)
+### `theorem` (35)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -124,6 +124,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `TR-PAR-JOINT-001` — For fixed series current maps in common endpoint-voltage-drop coordinates, a candidate component-current limit is implied by several retained member limits when its exact recovery row has support bound sum_k abs(K_ck) Ibar_k no larger than the candidate rating; the guarded witness certifies this joint implication for three retained discs. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `self-checked` |
 | `TR-SER-001` — A zero-injection degree-two junction between coordinate-aligned, series-only elements with no pairwise or external mutual coupling has equivalent impedance Z_l1 + P' Z_l2 P; mutually coupled sections instead contain the cross terms Z_12 P + P' Z_21. | [Degree-two series elimination](../transformations/degree-two-series-elimination.md) | `self-checked` |
 | `TR-SER-002` — Exact terminal-behaviour closure under degree-two elimination does not by itself establish closure within a homogeneous physical line class. | [Degree-two series elimination](../transformations/degree-two-series-elimination.md) | `self-checked` |
+| `TR-SER-003` — For a zero-injection degree-two junction whose two series-only source elements declare both pairwise cross-impedance blocks and no external mutual coupling, the exact terminal-behaviour composite has impedance Z_1 + Z_12 P + P' Z_21 + P' Z_2 P, with source currents recovered by I_1 = I_equivalent and I_2 = P I_equivalent. | [Degree-two series elimination](../transformations/degree-two-series-elimination.md) | `self-checked` |
 | `TR-XFMR-001` — A transformer winding terminal permutation is an exact typed-factor normalization when its complete terminal-to-coil incidence relation is right-multiplied by the inverse permutation and coil coordinates remain fixed. | [Transformer-winding coordinate normalization](../transformations/transformer-winding-coordinate-normalization.md) | `self-checked` |
 | `TR-XFMR-002` — Complete pairwise multiwinding short-circuit impedances compile exactly into a reference-coordinate impedance matrix ZB, from which every pairwise impedance is recoverable; changing the selected reference winding leaves the external winding admittance invariant, and the classical star/T representation is the three-winding special case. | [Multiwinding leakage reference compilation](../transformations/multiwinding-leakage-reference-compilation.md) | `self-checked` |
 | `TR-XFMR-003` — Aligned winding connection-incidence factors compose exactly with a multiwinding leakage admittance as Yterminal=A'*(Yw kron I)*A; retaining the coil-current map preserves per-coil winding limits and makes terminal-coordinate and leakage-reference changes explicit coordinate actions. | [Multiwinding terminal leakage assembly](../transformations/multiwinding-terminal-leakage-assembly.md) | `self-checked` |
@@ -136,7 +137,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | Verification | Claims |
 | --- | ---: |
 | `independently-implemented` | 5 |
-| `self-checked` | 89 |
+| `self-checked` | 90 |
 
 ## Unresolved issues
 
@@ -161,7 +162,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `ARCH-SUPPORT-001` | Extend the support/stamp distinction to frequency-coupled, rectangular realified, Jacobian, and multi-terminal compiled operator families. |
 | `ARCH-SURGERY-001` | Extend the surgery contract to energized islands, protection states, n-terminal factors, and optimization decisions. |
 | `ARCH-SURGERY-002` | Extend port-selective surgery to coupled conductor bundles, grounding factors, and protection/energization states. |
-| `ARCH-VIEW-001` | Compare the registry with external single-line, node-breaker, CIM/CGMES, and multi-line visual languages. |
+| `ARCH-VIEW-001` | Add independent technical review of the house visual grammar and compare additional utility and manufacturer diagram conventions. |
 | `AU-CARSON-001` | Recover the raw CS1035 conductor, screen, earth-return, frequency, and ordering provenance before claiming a faithful reconstruction. |
 | `COLLAPSE-001` | Extend the network witness to controls, phase-specific limits, contingencies, and an independent mathematical review before making a global decision-equivalence claim. |
 | `COLLAPSE-002` | Extend the witness to controls, phase-specific limits, contingencies, and independent mathematical review. |
@@ -220,8 +221,9 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `TR-PAR-JOINT-001` | Extend the joint-support certificate to full nonlinear AC cases with several retained members, state-dependent maps, topology decisions, and global optimality bounds. |
 | `TR-PAR-SINGULAR-001` | Extend the reduced-coordinate treatment to singular shunted primitives, coupled conductor models, and global nonlinear AC decision bounds. |
 | `TR-PAR-STATE-001` | Extend from the finite scalar and phase-selective envelope to topology/control states, independently varying recovery maps, global nonlinear optimality, and external physical-model review. |
-| `TR-SER-001` | The 2026-08-15 automated independent re-derivation found and motivated the repaired coupling guard but is not human peer review; add a named mathematical reviewer and formulate a separate exact rule for coupled section pairs. |
+| `TR-SER-001` | The 2026-08-15 automated independent re-derivation found and motivated the repaired coupling guard but is not human peer review; add a named mathematical reviewer for the uncoupled rule and its coupling boundary. |
 | `TR-SER-002` | Formalize sufficient physical line-merge guards for selected line models. |
+| `TR-SER-003` | Add an independent mathematical reviewer; determine model-specific reciprocity and physical line-class closure guards. |
 | `TR-XFMR-001` | Prove which normalized factors can be serialized back into compact vector-group and delta-roll fields without loss. |
 | `TR-XFMR-002` | Add an independent transformer-model review and establish compact serialization contracts that preserve the declared source and compilation references. |
 | `TR-XFMR-003` | Independently review the fixed and parameterized completions and test tap-dependent leakage or excitation models. |
@@ -414,7 +416,7 @@ schema is normalised.
 | `LIT-PAR-001` — For fixed scalar AC pi-line models on common endpoints, a parallel member's current- or apparent-power limit at one terminal is redundant when its normalized terminal-voltage quadratic feasible set contains that of another member; applying the test at both terminals certifies removal of both directional limits without aggregating the line models. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
 | `PRACTICE-ARCH-001` — The representation implementation record keeps public API maturity, fixture coverage, direct-versus-related evidence, and not-yet-tested rows separate from the normative mathematical representation definitions. | [Representation implementation record](../literature/representation-implementation-record.md) | `practice` |
 
-### `transformations` (43)
+### `transformations` (44)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -450,6 +452,7 @@ schema is normalised.
 | `TR-PAR-STATE-001` — In the recorded finite four-state four-wire AC envelope, rebuilding the member maps and source/pruned formulations at each declared scalar or phase-selective admittance state preserves exact joint limit pruning locally while changing the optimal served value across states. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
 | `TR-SER-001` — A zero-injection degree-two junction between coordinate-aligned, series-only elements with no pairwise or external mutual coupling has equivalent impedance Z_l1 + P' Z_l2 P; mutually coupled sections instead contain the cross terms Z_12 P + P' Z_21. | [Degree-two series elimination](../transformations/degree-two-series-elimination.md) | `theorem` |
 | `TR-SER-002` — Exact terminal-behaviour closure under degree-two elimination does not by itself establish closure within a homogeneous physical line class. | [Degree-two series elimination](../transformations/degree-two-series-elimination.md) | `theorem` |
+| `TR-SER-003` — For a zero-injection degree-two junction whose two series-only source elements declare both pairwise cross-impedance blocks and no external mutual coupling, the exact terminal-behaviour composite has impedance Z_1 + Z_12 P + P' Z_21 + P' Z_2 P, with source currents recovered by I_1 = I_equivalent and I_2 = P I_equivalent. | [Degree-two series elimination](../transformations/degree-two-series-elimination.md) | `theorem` |
 | `TR-XFMR-001` — A transformer winding terminal permutation is an exact typed-factor normalization when its complete terminal-to-coil incidence relation is right-multiplied by the inverse permutation and coil coordinates remain fixed. | [Transformer-winding coordinate normalization](../transformations/transformer-winding-coordinate-normalization.md) | `theorem` |
 | `TR-XFMR-002` — Complete pairwise multiwinding short-circuit impedances compile exactly into a reference-coordinate impedance matrix ZB, from which every pairwise impedance is recoverable; changing the selected reference winding leaves the external winding admittance invariant, and the classical star/T representation is the three-winding special case. | [Multiwinding leakage reference compilation](../transformations/multiwinding-leakage-reference-compilation.md) | `theorem` |
 | `TR-XFMR-003` — Aligned winding connection-incidence factors compose exactly with a multiwinding leakage admittance as Yterminal=A'*(Yw kron I)*A; retaining the coil-current map preserves per-coil winding limits and makes terminal-coordinate and leakage-reference changes explicit coordinate actions. | [Multiwinding terminal leakage assembly](../transformations/multiwinding-terminal-leakage-assembly.md) | `theorem` |

@@ -18,6 +18,45 @@ The same physical feeder can therefore have several faithful diagrams. The
 diagram is a view with a declared semantic level, not an unqualified picture of
 the network.
 
+## A visual legend before the equations
+
+The book uses familiar electrotechnical symbols where possible, but the symbol
+does not carry the entire model. IEC 60617 is a symbol library and IEC 61082 is
+a document-presentation standard; neither one determines the semantics of a
+book-specific lowering or reduction. Read each maintained figure with this
+legend:
+
+| Mark | House meaning | Do not infer |
+|:--|:--|:--|
+| solid electrical connector | declared attachment in the displayed view | that the attachment is a physical conductor in every other view |
+| double or bundled stroke | several ordered conductors | that phases or neutral may be discarded |
+| dashed arrow | refinement, quotient, decomposition, or compilation map | physical power-flow direction |
+| separate control arrow | tap, switch, protection, or decision relation | an extra series branch |
+| grounding branch | explicit neutral/earth/reference connection | that the grounding can be absorbed without a guard |
+| ``x_1`` or ``\ell i j`` label | persistent source identity | an array coordinate or a flow sign |
+| pole/state label such as ``\sigma_a`` | per-conductor or per-pole operating state | one scalar open/closed state for the whole asset |
+| ``\lambda_{ij}`` factor label | computational coupling with declared provenance | a physical line, outage asset, or ownership edge |
+
+Single-line diagrams answer “which equipment and terminal-level connections are
+present?” Multi-line diagrams answer “which conductors, neutral paths, and
+terminal connections are present?” A factor or equation view answers “which
+constitutive relation is being assembled?” A compiled graph answers “what does
+this particular algorithm receive?” These are related views, not successive
+truth values.
+
+When a figure expands a transformer, line, regulator, or switch, look for the
+identity fibre and the omitted-semantics note before interpreting a new edge.
+For example, a complete graph of pairwise transformer leakage factors may be a
+faithful equation decomposition while still being the wrong graph for asset
+outages or ownership. The same warning applies to a nodal-support graph whose
+edges record algebraic coupling rather than physical lines.
+
+The high-risk cases are collected in the [special semantic overlays](@ref
+special-semantic-overlays) plate in the foundations section: neutral grounding,
+nominal-``\pi`` shunts, phase-selective switching, and ``n``-winding leakage
+factors. When one of these appears compressed into a single-line symbol, look
+for the state scope and edge provenance in the caption or map certificate.
+
 ## The scalar circuit in one minute
 
 For a scalar branch stored from ``i`` to ``j``, write the voltage difference

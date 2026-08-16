@@ -395,6 +395,18 @@
       "png": "docs/src/assets/label-coordinate-bridge.png",
       "monochrome_safe": true,
       "distinguishing_channels": ["three numbered stages", "semantic labels versus coordinate numbers", "explicit enumeration arrow", "matrix grid", "textual storage warning"]
+    },
+    "visual-language-equipment-plate": {
+      "svg": "docs/src/assets/visual-language-equipment-plate.svg",
+      "png": "docs/src/assets/visual-language-equipment-plate.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["titled semantic-level panels", "solid conductor versus dashed map/control lines", "persistent equipment identities", "explicit omitted-semantics warning"]
+    },
+    "visual-language-special-semantics": {
+      "svg": "docs/src/assets/visual-language-special-semantics.svg",
+      "png": "docs/src/assets/visual-language-special-semantics.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["four titled semantic traps", "explicit grounding and shunt factors", "per-pole state vector", "factor-edge provenance warning"]
     }
   }
 }

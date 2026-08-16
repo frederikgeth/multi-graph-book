@@ -18,8 +18,9 @@ not masquerade as completion of the others.
 
 The repository is a locally validated HTML-first release candidate. The
 curated PDF is a secondary serialization of the same Markdown sources. The
-current checks cover 94 registered claims, 64 audited SVG/PNG pairs, 553 local
-links, the aggregate experiment suite, the HTML build, and a 327-page PDF.
+current checks cover 95 registered claims, 66 audited SVG/PNG pairs, 557 local
+links, the aggregate experiment suite, rendered-output smoke checks, the HTML
+build, and a 339-page PDF.
 The high-risk 2026-08-15 review findings, the 2026-08-16 vocabulary and
 multi-port-lowering reviews, and the canonical-model section review have been
 repaired. Those automated and supplied
@@ -118,6 +119,30 @@ counts.
 - [x] clarify the retrieval roles of the knowledge-base and vocabulary indexes;
 - [x] add limit dispositions and observed-set preservation classes to the
   maintained terminology surface.
+
+### PDF table-of-contents refinement (complete)
+
+- [x] expose internal subsection entries for the reader-facing start,
+  foundations, transformations, and worked-case chapters;
+- [x] keep generated indexes, literature records, references, and archived
+  search runs at chapter level so the TOC remains a reading aid;
+- [x] retain linked search-run content in the PDF while suppressing its
+  artificial child-page entries.
+
+### Rendered-output validation tranche (complete)
+
+- [x] add a PDF TOC-policy check for the selected subsection chapters and the
+  intentionally chapter-level reference/search-run pages;
+- [x] check expected HTML page inventory, nonempty titles, image alt text, and
+  empty-link regressions;
+- [x] check PDF text extraction, page count, compiler-log markers, and a
+  cover-page raster smoke test;
+- [x] wire the rendered-output check into the README validation recipe and the
+  documentation workflow.
+
+Visual comparison against stored page snapshots and human assessment of
+mathematical correctness, pedagogy, and typography remain separate review
+activities rather than pretending to be machine proofs.
 
 M1 (integrity and reproducibility) is complete. M2 (reduction evidence) and M3
 (graph architecture) satisfy their scoped book claims; their remaining broad
@@ -267,12 +292,15 @@ arguments have maintainable visual summaries.
 - [x] independently re-derive the generated series-elimination certificate with
   an explicit cross-coupling witness and expose the element-pair model field
   that a junction-only representation cannot carry;
-- [ ] formulate and independently review a separate exact rule for eliminating
-  mutually coupled section pairs.
+- [x] formulate a separate exact rule for eliminating a complete mutually
+  coupled section pair, with an explicit four-term impedance identity,
+  pair-keyed coupling guards, recovery/constraint maps, executable tests, and
+  certificate evidence; independent mathematical review remains open.
 
 **Exit criterion:** the parallel case chapters expose their numerical guards,
 units, evidence boundaries, and PDF route, while coupled-section elimination
-remains a separately scoped rule rather than an implicit extension.
+is a separately scoped, self-checked rule rather than an implicit extension;
+named independent mathematical review remains an external validation item.
 
 ### Then — literature and external validation
 
@@ -1796,7 +1824,7 @@ several valid target graphs, name the interface at each boundary, and explain
 why a tree-to-clique change does not create a physical loop or authorize new
 asset decisions.
 
-### Representation-landscape review tranche (in progress)
+### Representation-landscape review tranche (complete)
 
 - [x] make `formal-representation-frameworks.md` the sole normative authority
   for the linked architecture and disambiguate ``\mathfrak B(\mathfrak P)``
@@ -1808,12 +1836,43 @@ asset decisions.
 - [x] register the implementation-status contract as `PRACTICE-ARCH-001`;
 - [x] add and run a PDF ``@ref`` reachability gate, and include the normative
   target chapters needed by the curated route;
-- [ ] decide whether the expanded PDF route should later be shortened after
-  the next independent editorial pass.
+- [x] retain the expanded PDF route after the TOC audit: reader-facing start,
+  foundations, transformations, and worked-case chapters expose their
+  subsections, while generated indexes, literature records, references, and
+  archived search runs remain chapter-level. The resulting 335-page PDF is
+  intentionally a navigable secondary serialization, not the primary
+  retrieval surface.
 
 **Exit criterion:** the representation landscape has one authority chain, one
 maintained classification figure, no orphan architecture chapter, and no
 dangling cross-reference in the curated PDF.
+
+### Standards-aware visual-language tranche (in progress)
+
+The book now has a typed view registry, but its visual conventions are still
+distributed across individual figures. This tranche makes the visual language
+explicit without claiming that IEC/IEEE symbol standards define the book's
+lowering semantics.
+
+- [x] record the standards boundary: IEC 60617 for graphical symbols, IEC
+  61082 for document presentation, IEC 61970-453/CGMES for identity-linked
+  diagram layout exchange, IEC 61850-6 for substation configuration exchange,
+  and IEEE C57.12.70 for transformer terminal and connection conventions;
+- [x] add a visual contract declaring object level, identity fibre, preserved
+  semantics, omitted semantics, map type, and reverse-map status;
+- [x] add a reader-facing legend that distinguishes asset, terminal,
+  conductor, factor, compiled-equation, and operational overlays;
+- [x] add the first maintainable equipment plate covering line, three-winding
+  transformer, regulator, switch, and single-line/multi-line/factor views;
+- [x] extend the plate family to explicit neutral grounding, nominal-``\pi``
+  shunts, phase-selective switching, and an n-winding leakage-factor graph;
+- [ ] independently review the visual grammar with power-system engineering
+  and diagramming practitioners.
+
+**Exit criterion:** every maintained equipment figure identifies its semantic
+level and source-object mapping, and a reader can distinguish a physical
+asset, a factor decomposition, and a compiled graph without relying on symbol
+shape alone.
 
 ## Deliberately deferred
 

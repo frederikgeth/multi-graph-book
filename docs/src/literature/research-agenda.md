@@ -59,9 +59,10 @@ is open.
 multiconductor bus elimination to remain inside a selected line model class.
 
 **Status:** partial — `TR-SER-001` and `TR-SER-002` discharge the guarded
-behavioural rule and show why homogeneous line-class closure is separate;
-necessary-and-sufficient closure conditions for broader line libraries remain
-open.
+uncoupled behavioural rule and show why homogeneous line-class closure is
+separate; `TR-SER-003` now gives a distinct exact rule for a complete mutually
+coupled section pair, while necessary-and-sufficient closure conditions for
+broader line libraries remain open.
 
 **Candidate result B2.** A closure classification for series composition of
 series-only, nominal-``\pi``, exact distributed-parameter, frequency-dependent,

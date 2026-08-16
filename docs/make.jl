@@ -3,6 +3,19 @@ using DocumenterCitations
 const USER_FONTCONFIG_FILE = get(ENV, "FONTCONFIG_FILE", nothing)
 import tectonic_jll
 
+# The PDF TOC is a reading aid, not a second generated index. Show internal
+# Markdown subsections for the pedagogical spine and worked cases, while
+# keeping generated retrieval pages, literature records, references, and
+# archived search runs at chapter level.
+function pdf_subsections_enabled(path::AbstractString)
+    normalized = replace(normpath(path), "\\" => "/")
+    return normalized == "index.md" ||
+           startswith(normalized, "start/") ||
+           startswith(normalized, "foundations/") ||
+           startswith(normalized, "transformations/") ||
+           startswith(normalized, "cases/")
+end
+
 # Documenter maps navigation depth to the PDF chapter hierarchy and then emits each page's H1
 # beneath it. For this book, that repeats every chapter title. Retain the H1 anchor for cross-links
 # while suppressing only the duplicate top-level heading in LaTeX; HTML headings are unchanged.
@@ -15,7 +28,26 @@ function Documenter.LaTeXWriter.latex(
     is_page_title = Documenter.LaTeXWriter.istoplevel(node) &&
                     heading.element isa Documenter.MarkdownAST.Heading &&
                     heading.element.level == 1
+    is_untitled_page = !is_page_title &&
+                       heading.element isa Documenter.MarkdownAST.Heading &&
+                       heading.element.level == 1
+    if is_untitled_page
+        # Search-run pages have blank navigation titles in the PDF route. Keep
+        # their Markdown title as an unnumbered local heading without adding a
+        # fourth-level TOC entry.
+        println(io.io, "\\subsection*{")
+        Documenter.LaTeXWriter.latex(io, heading.children)
+        println(io.io, "}")
+        id = Documenter.LaTeXWriter._hash(Documenter.anchor_label(ah.anchor))
+        println(io.io, "\\phantomsection\\label{", id, "}{}")
+        return
+    end
     if is_page_title
+        # `tocdepth=2` includes subsection entries. Set the depth at the start
+        # of each page so only the selected reader-facing pages contribute
+        # them; the page's own chapter entry has already been emitted.
+        tocdepth = pdf_subsections_enabled(io.filename) ? 2 : 1
+        println(io.io, "\\setcounter{tocdepth}{", tocdepth, "}")
         id = Documenter.LaTeXWriter._hash(Documenter.anchor_label(ah.anchor))
         println(io.io, "\\phantomsection\\label{", id, "}{}")
         return
@@ -243,10 +275,10 @@ const PAGES_PDF = [
         "Representation implementation record" => "literature/representation-implementation-record.md",
         "Review protocol and evidence status" => "literature/review-protocol-and-evidence-status.md",
         "Search runs" => [
-            "2026-08-14 seed batch" => "literature/search-runs/2026-08-14-seed-batch.md",
-            "2026-08-15 formulation landscape" => "literature/search-runs/2026-08-15-formulation-landscape.md",
-            "2026-08-15 information-model citation chase" => "literature/search-runs/2026-08-15-information-model-citation-chase.md",
-            "2026-08-16 multiphase and practical reductions" => "literature/search-runs/2026-08-16-multiphase-and-practical-reductions.md",
+            "" => "literature/search-runs/2026-08-14-seed-batch.md",
+            "" => "literature/search-runs/2026-08-15-formulation-landscape.md",
+            "" => "literature/search-runs/2026-08-15-information-model-citation-chase.md",
+            "" => "literature/search-runs/2026-08-16-multiphase-and-practical-reductions.md",
         ],
         "Research agenda" => "literature/research-agenda.md",
     ],
@@ -354,6 +386,8 @@ run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_winding_coordinat
 run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_literature_gap_map.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_research_record.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_reference_figures.py"))`)
+run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_visual_language_equipment_plate.py"))`)
+run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_visual_language_special_semantics.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_vocabulary_indexes.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_knowledge_base_indexes.py"))`)
 make_html()
