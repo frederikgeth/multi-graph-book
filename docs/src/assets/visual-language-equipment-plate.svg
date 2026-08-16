@@ -1,17 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
 <title>Standards-aware visual language for power-network equipment</title>
 <desc>Line, three-winding transformer, regulator, and switch are shown as single-line assets, multi-line terminal expansions, and typed factor or compiled views. Persistent identities and omitted semantics are explicit.</desc>
-<defs><marker id="maparrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#7856a8"/></marker><marker id="controlarrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#477a55"/></marker></defs>
+<defs><marker id="maparrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#7856a8"/></marker><marker id="controlarrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#477a55"/></marker><marker id="orientationarrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>
 <rect width="100%" height="100%" fill="white"/>
 
 <style>
 text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}
 .head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#46525d}.tiny{font-size:12px;fill:#46525d}
-.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.asset{fill:#d9eef8;stroke:#245b7a;stroke-width:2}
+.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.asset{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.bus{fill:white;stroke:#17212b;stroke-width:2}
 .factor{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.aux{fill:#e4f4e7;stroke:#477a55;stroke-width:2}
 .ink{stroke:#17212b;stroke-width:2;fill:none}.wire{stroke:#245b7a;stroke-width:4;fill:none}
 .bundle{stroke:#245b7a;stroke-width:2;fill:none}.map{stroke:#7856a8;stroke-width:2.5;stroke-dasharray:8 5;fill:none;marker-end:url(#maparrow)}
 .control{stroke:#477a55;stroke-width:2.5;stroke-dasharray:3 5;fill:none;marker-end:url(#controlarrow)}
+.orientation{stroke:#17212b;stroke-width:2.5;fill:none;marker-end:url(#orientationarrow)}
 .warn{fill:#f4e5e5;stroke:#8a3030;stroke-width:2}
 </style>
 
@@ -19,26 +20,47 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight
 <text x="36" y="70" class="sub" text-anchor="start">IEC-style symbols are the visual vocabulary; identity fibres and map labels carry the power-system semantics.</text>
 <rect x="36" y="105" width="1528" height="240" rx="12" class="panel"/>
 <text x="58" y="139" class="head" text-anchor="start">A. Single-line asset view</text>
-<text x="58" y="163" class="small" text-anchor="start">Equipment-level identity and endpoint connectivity; conductor and internal-factor detail is intentionally compressed</text>
-<circle cx="220" cy="220" r="34" class="asset"/><text x="220" y="225" class="head" text-anchor="middle">L1</text>
-<text x="220" y="277" class="body" text-anchor="middle">line  l₁ i j</text>
-<circle cx="590" cy="220" r="34" class="asset"/><text x="590" y="225" class="head" text-anchor="middle">X1</text>
-<text x="590" y="277" class="body" text-anchor="middle">3-winding transformer  x₁</text>
-<circle cx="960" cy="220" r="34" class="asset"/><text x="960" y="225" class="head" text-anchor="middle">R1</text>
-<text x="960" y="277" class="body" text-anchor="middle">regulator  r₁</text>
-<circle cx="1330" cy="220" r="34" class="asset"/><text x="1330" y="225" class="head" text-anchor="middle">S1</text>
-<text x="1330" y="277" class="body" text-anchor="middle">switch  s₁</text>
-<path d="M255 220 L555 220" class="wire"/>
-<path d="M625 220 L925 220" class="wire"/>
-<path d="M995 220 L1295 220" class="wire"/>
-<text x="405" y="195" class="tiny" text-anchor="middle">orientation marker only</text>
-<text x="1150" y="195" class="tiny" text-anchor="middle">state/control overlay is separate</text>
-<text x="36" y="320" class="small" text-anchor="start">Persistent IDs: L1, X1, R1, S1. A single-line glyph does not imply a scalar model or a single physical conductor.</text>
+<text x="58" y="163" class="small" text-anchor="start">Buses/terminals are vertices; lines, transformers, regulators, and switches are branches or multi-terminal equipment</text>
+<rect x="72" y="192" width="105" height="52" rx="5" class="bus"/>
+<rect x="253" y="192" width="105" height="52" rx="5" class="bus"/>
+<text x="124" y="224" class="head" text-anchor="middle">B_i</text>
+<text x="305" y="224" class="head" text-anchor="middle">B_j</text>
+<path d="M177 218 L253 218" class="wire"/>
+<text x="215" y="198" class="head" text-anchor="middle">L1</text>
+<path d="M194 218 L235 218" class="orientation"/>
+<text x="215" y="180" class="tiny" text-anchor="middle">stored orientation</text>
+<text x="72" y="270" class="small" text-anchor="start">line branch</text>
+<rect x="490" y="192" width="82" height="52" rx="5" class="bus"/>
+<rect x="690" y="192" width="82" height="52" rx="5" class="bus"/>
+<rect x="590" y="270" width="82" height="42" rx="5" class="bus"/>
+<text x="531" y="224" class="body" text-anchor="middle">B_1</text>
+<text x="731" y="224" class="body" text-anchor="middle">B_2</text>
+<text x="631" y="298" class="body" text-anchor="middle">B_3</text>
+<path d="M572 218 L610 238 M690 218 L650 238 M631 270 L631 244" class="wire"/>
+<circle cx="631" cy="238" r="23" class="asset"/><path d="M617 238 Q631 215 645 238 Q631 261 617 238" class="ink"/>
+<text x="631" y="242" class="body" text-anchor="middle">X1</text>
+<text x="631" y="335" class="small" text-anchor="middle">three-winding transformer</text>
+<rect x="900" y="192" width="82" height="52" rx="5" class="bus"/>
+<rect x="1125" y="192" width="82" height="52" rx="5" class="bus"/>
+<text x="941" y="224" class="body" text-anchor="middle">B_k</text>
+<text x="1166" y="224" class="body" text-anchor="middle">B_l</text>
+<path d="M982 218 L1030 218" class="wire"/><path d="M1070 218 L1125 218" class="wire"/>
+<circle cx="1048" cy="218" r="19" class="asset"/><circle cx="1063" cy="218" r="19" class="asset"/>
+<path d="M1040 178 L1065 164" class="control"/>
+<text x="1055" y="150" class="small" text-anchor="middle">R1 tap</text>
+<text x="1055" y="270" class="small" text-anchor="middle">regulator branch</text>
+<rect x="1310" y="192" width="82" height="52" rx="5" class="bus"/>
+<rect x="1485" y="192" width="60" height="52" rx="5" class="bus"/>
+<text x="1351" y="224" class="body" text-anchor="middle">B_m</text>
+<text x="1515" y="224" class="body" text-anchor="middle">B_n</text>
+<path d="M1392 218 L1440 218 M1470 218 L1485 218" class="wire"/><path d="M1438 218 L1462 202" class="ink"/>
+<text x="1450" y="270" class="small" text-anchor="middle">S1 open contact</text>
+<text x="72" y="320" class="small" text-anchor="start">Persistent IDs: L1, X1, R1, S1. The equipment is not a bus; its terminals attach to buses.</text>
 <rect x="36" y="375" width="1528" height="300" rx="12" class="panel"/>
 <text x="58" y="409" class="head" text-anchor="start">B. Multi-line terminal view</text>
 <text x="58" y="433" class="small" text-anchor="start">Conductors, winding connections, poles, neutral, and control ownership become visible</text>
-<text x="80" y="425" class="head" text-anchor="start">L1</text>
-<text x="80" y="451" class="small" text-anchor="start">four-wire line</text>
+<text x="80" y="464" class="head" text-anchor="start">L1</text>
+<text x="80" y="484" class="small" text-anchor="start">four-wire line</text>
 <text x="120" y="495" class="body" text-anchor="start">a</text>
 <path d="M150 490 L335 490" class="bundle"/>
 <text x="120" y="529" class="body" text-anchor="start">b</text>
@@ -47,16 +69,16 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight
 <path d="M150 558 L335 558" class="bundle"/>
 <text x="120" y="597" class="body" text-anchor="start">n</text>
 <path d="M150 592 L335 592" class="bundle"/>
-<text x="420" y="425" class="head" text-anchor="start">X1</text>
-<text x="420" y="451" class="small" text-anchor="start">winding ports</text>
+<text x="420" y="464" class="head" text-anchor="start">X1</text>
+<text x="420" y="484" class="small" text-anchor="start">winding ports</text>
 <rect x="500" y="473" width="180" height="36" rx="8" class="asset"/>
 <text x="590" y="497" class="body" text-anchor="middle">W1  a,b,c,n</text>
 <rect x="500" y="525" width="180" height="36" rx="8" class="asset"/>
 <text x="590" y="549" class="body" text-anchor="middle">W2  a,b,c,n</text>
 <rect x="500" y="577" width="180" height="36" rx="8" class="asset"/>
 <text x="590" y="601" class="body" text-anchor="middle">W3  a,b,c</text>
-<text x="720" y="425" class="head" text-anchor="start">R1</text>
-<text x="720" y="451" class="small" text-anchor="start">tap/control relation</text>
+<text x="720" y="464" class="head" text-anchor="start">R1</text>
+<text x="720" y="484" class="small" text-anchor="start">tap/control relation</text>
 <text x="750" y="505" class="body" text-anchor="start">a</text>
 <path d="M780 500 L900 500" class="bundle"/>
 <rect x="830" y="482" width="46" height="32" rx="6" class="aux"/>
@@ -69,8 +91,8 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight
 <path d="M780 590 L900 590" class="bundle"/>
 <rect x="830" y="572" width="46" height="32" rx="6" class="aux"/>
 <text x="853" y="594" class="body" text-anchor="middle">t</text>
-<text x="1000" y="425" class="head" text-anchor="start">S1</text>
-<text x="1000" y="451" class="small" text-anchor="start">pole-wise contacts</text>
+<text x="1000" y="464" class="head" text-anchor="start">S1</text>
+<text x="1000" y="484" class="small" text-anchor="start">pole-wise contacts</text>
 <text x="1035" y="495" class="body" text-anchor="start">a</text>
 <path d="M1060 490 L1120 490" class="bundle"/>
 <path d="M1160 490 L1220 490" class="bundle"/>
@@ -85,16 +107,16 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight
 <rect x="1120" y="548" width="40" height="20" rx="4" class="asset"/>
 <text x="1035" y="597" class="body" text-anchor="start">n</text>
 <path d="M1060 592 L1120 592" class="bundle"/>
-<path d="M1160 592 L1220 592" class="bundle"/>
-<rect x="1120" y="582" width="40" height="20" rx="4" class="asset"/>
+<path d="M1165 592 L1220 592" class="bundle"/>
+<path d="M1120 592 L1158 576" class="ink"/>
 <text x="1280" y="505" class="small" text-anchor="start">solid conductors</text>
 <text x="1280" y="535" class="small" text-anchor="start">explicit neutral/earth</text>
-<text x="1280" y="565" class="small" text-anchor="start">dashed control path</text>
-<path d="M1230 555 L1280 555" class="control"/>
+<text x="1280" y="565" class="small" text-anchor="start">n pole shown open</text>
+<text x="720" y="630" class="small" text-anchor="start">R1 is phase-only here; its neutral is not a tap port.</text>
 <text x="36" y="650" class="small" text-anchor="start">The multi-line view is still not the complete equation model: internal leakage, excitation, and grounding may remain factor-level objects.</text>
 <rect x="36" y="705" width="1528" height="305" rx="12" class="panel"/>
 <text x="58" y="739" class="head" text-anchor="start">C. Factor and compiled views</text>
-<text x="58" y="763" class="small" text-anchor="start">The lower row states what the target algorithm receives and what the decomposition edges mean</text>
+<text x="58" y="763" class="small" text-anchor="start">Sibling factors are listed side by side; no map is implied</text>
 <rect x="75" y="770" width="315" height="150" rx="12" class="factor"/>
 <text x="98" y="805" class="head" text-anchor="start">L1 factor</text>
 <text x="98" y="837" class="body" text-anchor="start">Z_l, Y_l_from, Y_l_to</text>
@@ -116,9 +138,6 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight
 <text x="1230" y="838" class="body" text-anchor="start">factor edge = physical asset</text>
 <text x="1230" y="870" class="body" text-anchor="start">single-line = scalar model</text>
 <text x="1230" y="902" class="body" text-anchor="start">arrow = power-flow direction</text>
-<path d="M390 845 L445 845" class="map"/>
-<path d="M815 845 L870 845" class="map"/>
-<path d="M1150 845 L1205 845" class="map"/>
 <text x="36" y="975" class="head" text-anchor="start">Legend</text>
 <path d="M120 970 L210 970" class="wire"/>
 <text x="225" y="975" class="small" text-anchor="start">declared electrical attachment</text>

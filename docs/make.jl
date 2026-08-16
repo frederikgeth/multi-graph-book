@@ -388,6 +388,8 @@ run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_research_record.py"
 run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_reference_figures.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_visual_language_equipment_plate.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_visual_language_special_semantics.py"))`)
+run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_argument_diagrams.py"))`)
+run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_label_coordinate_bridge.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_vocabulary_indexes.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_knowledge_base_indexes.py"))`)
 make_html()

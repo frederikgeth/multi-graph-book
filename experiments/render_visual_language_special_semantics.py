@@ -74,10 +74,10 @@ def render():
     lines += panel(816, 95, 748, 470, "B. Nominal-pi shunts remain terminal semantics", "Do not silently absorb endpoint shunts into a line or transformer when direction and ownership matter")
     lines += [text(850, 190, "bus i", "head"), text(1490, 190, "bus j", "head")]
     lines += ['<path d="M900 225 L1060 225" class="wire"/>', rect(1060, 195, 150, 60, "factor", 8), text(1135, 232, "Z_l", "head", "middle"), '<path d="M1210 225 L1470 225" class="wire"/>']
-    lines += [f'<path d="M990 225 L990 330" class="wire"/>', rect(930, 330, 120, 52, "factor", 8), text(990, 362, "Y_from", "body", "middle")]
-    lines += [f'<path d="M1310 225 L1310 330" class="wire"/>', rect(1250, 330, 120, 52, "factor", 8), text(1310, 362, "Y_to", "body", "middle")]
-    lines += ground(990, 382) + ground(1310, 382)
-    lines += [text(850, 455, "terminal current", "small"), text(985, 455, "I_i = I_series + Y_from V_i", "body"), text(850, 485, "terminal power", "small"), text(985, 485, "S_i includes shunt absorption", "body"), rect(850, 505, 670, 38, "warn", 7), text(868, 530, "A line-only edge cannot represent these shunts without a declared target and loss ledger.", "small")]
+    lines += [f'<path d="M990 225 L990 330" class="wire"/>', rect(915, 320, 150, 62, "factor", 8), text(990, 357, "Y_from", "body", "middle")]
+    lines += [f'<path d="M1310 225 L1310 330" class="wire"/>', rect(1275, 334, 70, 42, "factor", 8), text(1310, 360, "Y_to", "body", "middle")]
+    lines += ground(990, 382) + ground(1310, 376)
+    lines += [text(850, 425, "terminal currents", "small"), text(985, 425, "I_i = I_series + Y_from V_i", "body"), text(985, 452, "I_j = -I_series + Y_to V_j", "body"), text(850, 480, "asymmetry", "small"), text(985, 480, "Y_from != Y_to; I_ij != -I_ji", "body"), rect(850, 505, 670, 38, "warn", 7), text(868, 530, "A line-only edge cannot represent these shunts without a declared target and loss ledger.", "small")]
 
     # C: phase-selective switching
     lines += panel(36, 595, 748, 520, "C. Phase-selective switching has a vector state", "A single switch identity can own several pole states; a radial orientation is not a substitute for this record")
@@ -87,13 +87,13 @@ def render():
         y = 735 + idx * 54
         lines += [text(125, y + 5, lab, "body"), rect(215, y - 22, 120, 34, "asset" if state == "closed" else "warn", 7), text(275, y + 1, state, "body", "middle"), text(390, y + 5, consequence, "body")]
         lines += [f'<path d="M90 {y} L110 {y}" class="wire"/>', f'<path d="M140 {y} L205 {y}" class="bundle"/>']
-    lines += [text(70, 985, "state scope", "head"), text(205, 985, "sigma_S = (sigma_a, sigma_b, sigma_c, sigma_n)", "body"), text(70, 1020, "map type", "head"), text(205, 1020, "state-conditioned quotient / surgery", "body"), rect(70, 1045, 650, 42, "warn", 7), text(88, 1072, "Never collapse pole states to one scalar open/closed flag without a guard.", "small")]
+    lines += [text(70, 985, "state scope", "head"), text(205, 985, "sigma_S = (sigma_a, sigma_b, sigma_c, sigma_n)", "body"), text(70, 1020, "map type", "head"), text(205, 1020, "state-conditioned quotient / surgery", "body"), rect(70, 1045, 650, 42, "warn", 7), text(88, 1066, "Never collapse pole states to one scalar open/closed flag without a guard.", "small"), text(88, 1082, "An open neutral may leave a floating, hazardous neutral.", "tiny")]
 
     # D: n-winding factor graph
-    lines += panel(816, 595, 748, 520, "D. N-winding leakage graphs are factor decompositions", "Pairwise leakage edges are computational factors with provenance, not independent physical assets")
-    lines += [text(850, 690, "one transformer asset", "head"), rect(850, 710, 270, 260, "asset", 14), text(985, 745, "X1", "head", "middle"), text(985, 770, "n winding ports", "small", "middle")]
-    nodes = {"W1": (915, 835), "W2": (1050, 835), "W3": (915, 915), "W4": (1050, 915)}
-    pairs = [("W1", "W2", "lambda_12"), ("W1", "W3", "lambda_13"), ("W1", "W4", "lambda_14"), ("W2", "W3", "lambda_23"), ("W2", "W4", "lambda_24"), ("W3", "W4", "lambda_34")]
+    lines += panel(816, 595, 748, 520, "D. N-winding leakage graphs are factor decompositions", "X1 is shown with three winding ports (n = 3); pairwise edges remain computational factors")
+    lines += [text(850, 690, "one transformer asset", "head"), rect(850, 710, 270, 260, "asset", 14), text(985, 745, "X1", "head", "middle"), text(985, 770, "three winding ports", "small", "middle")]
+    nodes = {"W1": (915, 850), "W2": (1060, 850), "W3": (985, 930)}
+    pairs = [("W1", "W2", "lambda_12"), ("W1", "W3", "lambda_13"), ("W2", "W3", "lambda_23")]
     for left, right, label in pairs:
         x1, y1 = nodes[left]
         x2, y2 = nodes[right]

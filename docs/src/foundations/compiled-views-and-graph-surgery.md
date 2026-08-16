@@ -180,6 +180,17 @@ same stroke.
 
 ![Neutral grounding, nominal-pi shunts, phase-selective switching, and n-winding leakage-factor provenance.](../assets/visual-language-special-semantics.png)
 
+For review and reuse, the shared legend is:
+
+| Mark | Meaning in the plates | Do not infer |
+| --- | --- | --- |
+| bus rectangle | retained connectivity node or terminal boundary | an equipment asset |
+| equipment glyph | identified physical asset | one scalar constitutive equation |
+| orange factor box | constitutive or computational factor | an independently switchable asset |
+| dashed ``\lambda_{ij}`` edge | pairwise leakage/coupling factor | a conductor, outage edge, or physical cycle |
+| open/closed state chip | declared per-pole state | one state for every pole or winding |
+| earth branch | explicit reference, grounding, or neutral path | a removable datum with no current consequence |
+
 The rule is operational: before a lowering or graph-surgery algorithm runs,
 record state scope and edge provenance in the map certificate. If either is
 unknown, retain the richer factor representation or refuse the transformation.

@@ -23,13 +23,17 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:27px;font-weight
 <text x="926" y="140" class="head" text-anchor="start">3. Stored matrix</text>
 <text x="58" y="176" class="body" text-anchor="start">B = {source, load, neutral}</text>
 <text x="58" y="209" class="body" text-anchor="start">L = {ℓmain, ℓtap}</text>
-<circle cx="118" cy="300" r="35" class="label"/><circle cx="300" cy="300" r="35" class="label"/>
+<circle cx="118" cy="300" r="35" class="label"/><circle cx="300" cy="300" r="35" class="label"/><circle cx="210" cy="405" r="35" class="label"/>
 <text x="118" y="306" class="small" text-anchor="middle">source</text>
 <text x="300" y="306" class="small" text-anchor="middle">load</text>
+<text x="210" y="411" class="small" text-anchor="middle">neutral</text>
 <path d="M153 300 L265 300" class="arrow"/>
 <text x="209" y="282" class="small" text-anchor="middle">ℓmain</text>
-<text x="58" y="390" class="body" text-anchor="start">Yᴺij is a labelled block map</text>
-<text x="58" y="420" class="small" text-anchor="start">i,j ∈ B; it is not yet an array position</text>
+<text x="209" y="330" class="tiny" text-anchor="middle">stored orientation only</text>
+<path d="M143 325 L185 380" class="arrow"/>
+<text x="158" y="370" class="small" text-anchor="middle">ℓtap</text>
+<text x="58" y="455" class="body" text-anchor="start">Yᴺij is a labelled block map</text>
+<text x="58" y="485" class="small" text-anchor="start">i,j ∈ B; it is not yet an array position</text>
 <text x="492" y="176" class="body" text-anchor="start">κB(source)=1</text>
 <text x="492" y="206" class="body" text-anchor="start">κB(load)=2</text>
 <text x="492" y="236" class="body" text-anchor="start">κB(neutral)=3</text>

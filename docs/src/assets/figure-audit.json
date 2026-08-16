@@ -9,7 +9,7 @@
     "colour_role": "secondary cue only",
     "required_svg_markers": ["title", "desc", "text"],
     "required_companion": "PNG for PDF-safe rendering",
-    "audit_rule": "Every maintained SVG has an audit entry, a PNG companion, a captioned Markdown use, and a non-colour distinguishing channel."
+    "audit_rule": "Every maintained SVG has an audit entry, a PNG companion, a captioned Markdown use, a non-colour distinguishing channel, and a rendered grayscale contrast sample."
   },
   "figures": {
     "earth-return-ladder": {

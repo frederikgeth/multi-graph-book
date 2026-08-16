@@ -55,23 +55,24 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight
 <text x="1135" y="232" class="head" text-anchor="middle">Z_l</text>
 <path d="M1210 225 L1470 225" class="wire"/>
 <path d="M990 225 L990 330" class="wire"/>
-<rect x="930" y="330" width="120" height="52" rx="8" class="factor"/>
-<text x="990" y="362" class="body" text-anchor="middle">Y_from</text>
+<rect x="915" y="320" width="150" height="62" rx="8" class="factor"/>
+<text x="990" y="357" class="body" text-anchor="middle">Y_from</text>
 <path d="M1310 225 L1310 330" class="wire"/>
-<rect x="1250" y="330" width="120" height="52" rx="8" class="factor"/>
-<text x="1310" y="362" class="body" text-anchor="middle">Y_to</text>
+<rect x="1275" y="334" width="70" height="42" rx="8" class="factor"/>
+<text x="1310" y="360" class="body" text-anchor="middle">Y_to</text>
 <path d="M990 382 L990 400" class="earth"/>
 <path d="M972 400 L1008 400" class="earth"/>
 <path d="M978 406 L1002 406" class="earth"/>
 <path d="M984 412 L996 412" class="earth"/>
-<path d="M1310 382 L1310 400" class="earth"/>
-<path d="M1292 400 L1328 400" class="earth"/>
-<path d="M1298 406 L1322 406" class="earth"/>
-<path d="M1304 412 L1316 412" class="earth"/>
-<text x="850" y="455" class="small" text-anchor="start">terminal current</text>
-<text x="985" y="455" class="body" text-anchor="start">I_i = I_series + Y_from V_i</text>
-<text x="850" y="485" class="small" text-anchor="start">terminal power</text>
-<text x="985" y="485" class="body" text-anchor="start">S_i includes shunt absorption</text>
+<path d="M1310 376 L1310 394" class="earth"/>
+<path d="M1292 394 L1328 394" class="earth"/>
+<path d="M1298 400 L1322 400" class="earth"/>
+<path d="M1304 406 L1316 406" class="earth"/>
+<text x="850" y="425" class="small" text-anchor="start">terminal currents</text>
+<text x="985" y="425" class="body" text-anchor="start">I_i = I_series + Y_from V_i</text>
+<text x="985" y="452" class="body" text-anchor="start">I_j = -I_series + Y_to V_j</text>
+<text x="850" y="480" class="small" text-anchor="start">asymmetry</text>
+<text x="985" y="480" class="body" text-anchor="start">Y_from != Y_to; I_ij != -I_ji</text>
 <rect x="850" y="505" width="670" height="38" rx="7" class="warn"/>
 <text x="868" y="530" class="small" text-anchor="start">A line-only edge cannot represent these shunts without a declared target and loss ledger.</text>
 <rect x="36" y="595" width="748" height="520" rx="12" class="panel"/>
@@ -110,34 +111,27 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight
 <text x="70" y="1020" class="head" text-anchor="start">map type</text>
 <text x="205" y="1020" class="body" text-anchor="start">state-conditioned quotient / surgery</text>
 <rect x="70" y="1045" width="650" height="42" rx="7" class="warn"/>
-<text x="88" y="1072" class="small" text-anchor="start">Never collapse pole states to one scalar open/closed flag without a guard.</text>
+<text x="88" y="1066" class="small" text-anchor="start">Never collapse pole states to one scalar open/closed flag without a guard.</text>
+<text x="88" y="1082" class="tiny" text-anchor="start">An open neutral may leave a floating, hazardous neutral.</text>
 <rect x="816" y="595" width="748" height="520" rx="12" class="panel"/>
 <text x="838" y="629" class="head" text-anchor="start">D. N-winding leakage graphs are factor decompositions</text>
-<text x="838" y="653" class="small" text-anchor="start">Pairwise leakage edges are computational factors with provenance, not independent physical assets</text>
+<text x="838" y="653" class="small" text-anchor="start">X1 is shown with three winding ports (n = 3); pairwise edges remain computational factors</text>
 <text x="850" y="690" class="head" text-anchor="start">one transformer asset</text>
 <rect x="850" y="710" width="270" height="260" rx="14" class="asset"/>
 <text x="985" y="745" class="head" text-anchor="middle">X1</text>
-<text x="985" y="770" class="small" text-anchor="middle">n winding ports</text>
-<path d="M915 835 L1050 835" class="factorline"/>
-<text x="987.5" y="831.0" class="tiny" text-anchor="middle">lambda_12</text>
-<path d="M915 835 L915 915" class="factorline"/>
-<text x="920.0" y="871.0" class="tiny" text-anchor="middle">lambda_13</text>
-<path d="M915 835 L1050 915" class="factorline"/>
-<text x="987.5" y="871.0" class="tiny" text-anchor="middle">lambda_14</text>
-<path d="M1050 835 L915 915" class="factorline"/>
-<text x="987.5" y="871.0" class="tiny" text-anchor="middle">lambda_23</text>
-<path d="M1050 835 L1050 915" class="factorline"/>
-<text x="1055.0" y="871.0" class="tiny" text-anchor="middle">lambda_24</text>
-<path d="M915 915 L1050 915" class="factorline"/>
-<text x="987.5" y="911.0" class="tiny" text-anchor="middle">lambda_34</text>
-<circle cx="915" cy="835" r="24" class="factor"/>
-<text x="915" y="840" class="body" text-anchor="middle">W1</text>
-<circle cx="1050" cy="835" r="24" class="factor"/>
-<text x="1050" y="840" class="body" text-anchor="middle">W2</text>
-<circle cx="915" cy="915" r="24" class="factor"/>
-<text x="915" y="920" class="body" text-anchor="middle">W3</text>
-<circle cx="1050" cy="915" r="24" class="factor"/>
-<text x="1050" y="920" class="body" text-anchor="middle">W4</text>
+<text x="985" y="770" class="small" text-anchor="middle">three winding ports</text>
+<path d="M915 850 L1060 850" class="factorline"/>
+<text x="992.5" y="846.0" class="tiny" text-anchor="middle">lambda_12</text>
+<path d="M915 850 L985 930" class="factorline"/>
+<text x="955.0" y="886.0" class="tiny" text-anchor="middle">lambda_13</text>
+<path d="M1060 850 L985 930" class="factorline"/>
+<text x="1027.5" y="886.0" class="tiny" text-anchor="middle">lambda_23</text>
+<circle cx="915" cy="850" r="24" class="factor"/>
+<text x="915" y="855" class="body" text-anchor="middle">W1</text>
+<circle cx="1060" cy="850" r="24" class="factor"/>
+<text x="1060" y="855" class="body" text-anchor="middle">W2</text>
+<circle cx="985" cy="930" r="24" class="factor"/>
+<text x="985" y="935" class="body" text-anchor="middle">W3</text>
 <text x="1170" y="700" class="head" text-anchor="start">edge provenance</text>
 <text x="1170" y="735" class="body" text-anchor="start">lambda_ij = leakage factor</text>
 <text x="1170" y="770" class="body" text-anchor="start">not a conductor</text>

@@ -1874,6 +1874,34 @@ level and source-object mapping, and a reader can distinguish a physical
 asset, a factor decomposition, and a compiled graph without relying on symbol
 shape alone.
 
+### Practitioner visual-review repair tranche (in progress)
+
+The first independent review found unsafe inferences in the original
+equipment plate and several cross-figure consistency gaps. The repair gate is
+now explicit:
+
+- [x] redraw the single-line panel with buses/terminals as vertices and real
+  branch or multi-terminal equipment glyphs, including a three-terminal X1;
+- [x] remove sibling-factor arrows that falsely asserted lowering maps and add
+  exactness/reverse-map labels to the source/view surgery figure;
+- [x] make nominal-``\pi`` asymmetry visible with unequal shunt glyphs and both
+  terminal-current equations;
+- [x] reconcile the X1 winding count, make the phase-only regulator choice
+  explicit, and flag an open neutral as a potentially floating/hazardous state;
+- [x] repair leakage-factor label collisions and add one shared legend for the
+  reviewer packet;
+- [x] add the missing neutral bus and an orientation disclaimer to the
+  label-to-coordinate bridge;
+- [x] replace the declared-only monochrome flag with a dependency-free rendered
+  PNG grayscale contrast sample in the figure audit;
+- [ ] obtain a three-reviewer practitioner pass (power/protection, CIM or
+  network software, and graph/optimization) using the shared packet and record
+  findings by semantic risk rather than symbol preference.
+
+**Exit criterion:** no maintained figure encourages a reader to treat a bus as
+equipment, a factor as an asset, a per-pole state as scalar, or a support edge
+as a physical circuit without an explicit warning and map contract.
+
 ## Deliberately deferred
 
 Lean formalization, broad category-theoretic claims, a full explicit-earth and

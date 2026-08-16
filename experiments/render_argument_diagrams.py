@@ -2,6 +2,8 @@
 """Render the first argument-carrying diagrams for the preservation chapters."""
 
 from pathlib import Path
+import shutil
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "docs/src/assets"
@@ -926,20 +928,21 @@ def source_views_surgery() -> str:
         txt(65, 140, "canonical source", "head"),
         '<circle cx="120" cy="240" r="30" class="source"/><circle cx="250" cy="180" r="30" class="source"/><circle cx="250" cy="300" r="30" class="source"/>',
         '<line x1="145" y1="225" x2="225" y2="195" class="edge"/><line x1="145" y1="255" x2="225" y2="285" class="edge"/>',
-        txt(120, 246, "A", "head", "middle"), txt(250, 186, "B", "head", "middle"), txt(250, 306, "C", "head", "middle"),
-        txt(185, 202, "xfmr₃w", "small", "middle"), txt(185, 288, "switches", "small", "middle"),
+        txt(120, 246, "B_i", "head", "middle"), txt(250, 186, "B_j", "head", "middle"), txt(250, 306, "B_k", "head", "middle"),
+        txt(185, 202, "X1", "small", "middle"), txt(185, 288, "S1", "small", "middle"),
         txt(65, 352, "identities + ordered ports + states", "body"),
         txt(65, 376, "source fibres remain available", "small"),
         '<rect x="450" y="105" width="870" height="300" rx="14" class="panel"/>',
         txt(475, 140, "typed views", "head"),
-        '<rect x="490" y="185" width="170" height="100" rx="12" class="view"/><rect x="700" y="185" width="170" height="100" rx="12" class="view"/><rect x="910" y="185" width="170" height="100" rx="12" class="lower"/><rect x="1120" y="185" width="155" height="100" rx="12" class="view"/>',
-        txt(575, 220, "single-line", "head", "middle"), txt(575, 247, "quotient", "small", "middle"), txt(575, 270, "partial reverse map", "small", "middle"),
-        txt(785, 220, "port–factor", "head", "middle"), txt(785, 247, "canonical", "small", "middle"), txt(785, 270, "identity retained", "small", "middle"),
-        txt(995, 220, "lowered edges", "head", "middle"), txt(995, 247, "algorithm target", "small", "middle"), txt(995, 270, "fibre required", "small", "middle"),
-        txt(1197, 220, "nodal support", "head", "middle"), txt(1197, 247, "many-to-one", "small", "middle"), txt(1197, 270, "no identity recovery", "small", "middle"),
-        '<path d="M392 220 L440 160 L575 160 L575 180" class="arrow"/><path d="M392 240 L460 170 L785 170 L785 180" class="arrow"/><path d="M392 260 L480 180 L995 180" class="arrow"/><path d="M392 280 L450 200 L1197 200 L1197 180" class="arrow"/>',
-        '<path d="M660 335 L450 335" class="dashed"/><path d="M870 335 L450 350" class="dashed"/><path d="M1080 335 L450 365" class="dashed"/>',
-        txt(535, 382, "reverse maps only where declared", "small", "middle"),
+        '<rect x="490" y="185" width="170" height="120" rx="12" class="view"/><rect x="700" y="185" width="170" height="120" rx="12" class="view"/><rect x="910" y="185" width="170" height="120" rx="12" class="lower"/><rect x="1120" y="185" width="155" height="120" rx="12" class="view"/>',
+        txt(575, 220, "single-line", "head", "middle"), txt(575, 247, "quotient", "small", "middle"), txt(575, 270, "partial reverse map", "small", "middle"), txt(575, 292, "exactness: target-relative", "small", "middle"),
+        txt(785, 220, "port–factor", "head", "middle"), txt(785, 247, "canonical", "small", "middle"), txt(785, 270, "identity retained", "small", "middle"), txt(785, 292, "exactness: source model", "small", "middle"),
+        txt(995, 220, "lowered edges", "head", "middle"), txt(995, 247, "algorithm target", "small", "middle"), txt(995, 270, "fibre required", "small", "middle"), txt(995, 292, "exactness: guarded", "small", "middle"),
+        txt(1197, 220, "nodal support", "head", "middle"), txt(1197, 247, "many-to-one", "small", "middle"), txt(1197, 270, "no identity recovery", "small", "middle"), txt(1197, 292, "no feasible-set claim", "small", "middle"),
+        '<path d="M392 170 C445 170 485 180 575 180" class="arrow"/><path d="M392 210 C470 210 535 180 785 180" class="arrow"/><path d="M392 250 C480 250 590 180 995 180" class="arrow"/><path d="M392 290 C500 290 650 180 1197 180" class="arrow"/>',
+        '<rect x="490" y="325" width="785" height="45" rx="10" class="view"/>',
+        '<path d="M575 305 L575 325" class="dashed"/><path d="M785 305 L785 325" class="dashed"/><path d="M995 305 L995 325" class="dashed"/><path d="M1197 305 L1197 325" class="dashed"/>',
+        txt(882, 353, "reverse-map status is recorded here; recovery is not implied", "small", "middle"),
         '<rect x="40" y="455" width="1280" height="315" rx="14" class="panel"/>',
         txt(65, 490, "state-conditioned surgery outputs", "head"),
         '<rect x="90" y="535" width="330" height="170" rx="12" class="surgery"/><rect x="535" y="535" width="330" height="170" rx="12" class="surgery"/><rect x="980" y="535" width="290" height="170" rx="12" class="surgery"/>',
@@ -947,6 +950,7 @@ def source_views_surgery() -> str:
         txt(700, 570, "phase-only switch", "head", "middle"), txt(700, 600, "coordinate query", "body", "middle"), txt(700, 628, "phase changes; neutral stays", "small", "middle"), txt(700, 665, "member radiality ≠ bus radiality", "small", "middle"),
         txt(1125, 570, "unknown switch", "head", "middle"), txt(1125, 600, "family return", "body", "middle"), txt(1125, 628, "open and closed cases", "small", "middle"), txt(1125, 665, "diagnostic, not a guess", "small", "middle"),
         '<path d="M210 405 L210 525" class="arrow"/><path d="M700 405 L700 525" class="arrow"/><path d="M1170 405 L1170 525" class="arrow"/>',
+        txt(225, 470, "source state", "small"), txt(715, 470, "port state", "small"), txt(1185, 470, "support query", "small"),
         txt(40, 805, "The source object is the semantic anchor; views and surgeries are typed, state-indexed projections with provenance.", "small"),
         '</svg>',
     ]
@@ -1120,8 +1124,14 @@ def main() -> None:
         "five-bus-transformer-lowering": five_bus_transformer_lowering(),
         "layer-lens-matrix": layer_lens_matrix(),
     }
+    converter = shutil.which("rsvg-convert")
+    if converter is None:
+        raise SystemExit("rsvg-convert is required to create PNG companions")
     for stem, content in outputs.items():
-        (ASSETS / f"{stem}.svg").write_text(content)
+        svg = ASSETS / f"{stem}.svg"
+        png = ASSETS / f"{stem}.png"
+        svg.write_text(content)
+        subprocess.run([converter, "-o", str(png), str(svg)], check=True)
     print("rendered " + ", ".join(outputs))
 
 
