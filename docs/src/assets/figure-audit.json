@@ -342,6 +342,12 @@
       "monochrome_safe": true,
       "distinguishing_channels": ["four titled panels", "explicit conductor labels", "block matrix grid", "solid support versus dashed realification rule", "reading-rule caption"]
     },
+    "reading-routes-graph-transmission": {
+      "svg": "docs/src/assets/reading-routes-graph-transmission.svg",
+      "png": "docs/src/assets/reading-routes-graph-transmission.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["two labelled onboarding routes", "branch-specific arrow styles", "shared convergence boxes", "explicit preservation-contract target"]
+    },
     "label-coordinate-bridge": {
       "svg": "docs/src/assets/label-coordinate-bridge.svg",
       "png": "docs/src/assets/label-coordinate-bridge.png",

@@ -18,8 +18,8 @@ not masquerade as completion of the others.
 
 The repository is a locally validated HTML-first release candidate. The
 curated PDF is a secondary serialization of the same Markdown sources. The
-current checks cover 87 registered claims, 56 audited SVG/PNG pairs, 531 local
-links, the aggregate experiment suite, the HTML build, and a 210-page PDF.
+current checks cover 87 registered claims, 57 audited SVG/PNG pairs, 532 local
+links, the aggregate experiment suite, the HTML build, and a 209-page PDF.
 The high-risk 2026-08-15 review findings and the 2026-08-16 vocabulary and
 multi-port-lowering reviews have been repaired. Those automated and supplied
 reviews remain technical evidence, not external human peer review.
@@ -123,6 +123,22 @@ that reordering storage cannot change the underlying network semantics.
 balanced transmission modelling, identify what must be expanded or qualified,
 and reach the same multiconductor decision semantics without treating either
 starting model as the universal ontology.
+
+### Start Here review repair tranche (complete)
+
+- [x] repair the graph/transmission guide's BMOPFTools-style ``\ell`` notation;
+- [x] align the block-structure figure with the ``ARCH-BLOCK-001`` 8×8 witness,
+  including the two-port/four-conductor distinction and all 64 scalar supports;
+- [x] shorten the guide to a routing page rather than a duplicate teaching
+  chapter, and place the vocabulary bridge before it in HTML and PDF navigation;
+- [x] add a maintainable two-route convergence figure and register its SVG/PNG
+  pair in the figure audit;
+- [x] add math-hygiene validation for bare ``ell``/``Pi``, orphan ``\mathbf``,
+  and unbalanced inline math delimiters, and run it from artifact checks.
+
+**Exit criterion:** the Start Here route is concise, the visual claims agree
+with their executable witnesses, navigation follows the intended onboarding
+order, and the notation slips called out by review fail the validation gate.
 
 ### Then — literature and external validation
 

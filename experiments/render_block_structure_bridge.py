@@ -67,7 +67,7 @@ def render():
     lines += panel(714, 105, 650, 350, "B. Port–factor incidence", "The canonical electrical view keeps ports, factor identity, and terminal maps explicit")
     lines += [circle(800, 285, 40, "i"), circle(1278, 285, 40, "j"),
               '<rect x="976" y="210" width="126" height="150" rx="10" class="factor"/>',
-              t(1039, 255, "φℓ", "head", "middle"), t(1039, 285, "factor", "body", "middle"), t(1039, 315, "4-port", "small", "middle")]
+              t(1039, 255, "φℓ", "head", "middle"), t(1039, 285, "factor", "body", "middle"), t(1039, 315, "2-port · 4 conductors", "small", "middle")]
     for idx, lab in enumerate(("a", "b", "c", "n")):
         y = 225 + idx * 40
         lines += [f'<circle cx="875" cy="{y}" r="7" class="port"/>', f'<circle cx="1203" cy="{y}" r="7" class="port"/>',
@@ -89,18 +89,22 @@ def render():
               t(360, 798, "block support is simple; stamp identity remains separate provenance", "small", "middle")]
     # D: scalar support and realification.
     lines += panel(714, 485, 650, 350, "D. Scalar support and realification", "Expanding coordinates can reveal dense support without creating new physical members")
-    nodes = [(800, 610, "ia"), (800, 700, "ib"), (890, 610, "ja"), (890, 700, "jb")]
-    # four representative coordinates, with dense cross-coupling and a legend.
-    for a in nodes[:2]:
-        for b in nodes[2:]:
+    nodes = [
+        (790, 590, "ia"), (790, 650, "ib"), (790, 710, "ic"), (790, 770, "in"),
+        (930, 590, "ja"), (930, 650, "jb"), (930, 710, "jc"), (930, 770, "jn"),
+    ]
+    # The witness is a dense 8×8 complex local matrix: all scalar coordinate
+    # pairs have support, including within-bus and cross-bus couplings.
+    for index, a in enumerate(nodes):
+        for b in nodes[index + 1:]:
             lines.append(f'<path d="M{a[0]+18} {a[1]} L{b[0]-18} {b[1]}" class="support"/>')
     for x, y, lab in nodes:
         lines.append(circle(x, y, 18, lab, "bus"))
-    lines += [t(1035, 630, "complex support", "head", "middle"), t(1035, 657, "dense block → scalar clique", "small", "middle"),
+    lines += [t(1140, 600, "8×8 complex support", "head", "middle"), t(1140, 627, "all 64 scalar entries nonzero", "small", "middle"),
               '<path d="M960 700 L1100 700" class="dashed"/>',
-              t(1035, 715, "realification", "head", "middle"), t(1035, 743, "R(Y) = [ G  −B ; B  G ]", "body", "middle"),
-              t(1035, 773, "twice the coordinates, same declared assets", "small", "middle"),
-              t(760, 818, "support answers an algebraic question; factor fibres answer an identity question", "small")]
+              t(1140, 715, "realification", "head", "middle"), t(1140, 743, "R(Y) = [ G  −B ; B  G ]", "body", "middle"),
+              t(1140, 773, "twice the coordinates, same declared assets", "small", "middle"),
+              t(1035, 818, "support answers an algebraic question; factor fibres answer an identity question", "small", "middle")]
     lines += [f'<rect x="36" y="865" width="1328" height="42" rx="10" class="factor"/>',
               t(55, 892, "Reading rule", "head"), t(190, 892, "Use A/B for assets and ports, C for matrix equations, and D for coordinate support or realified numerics. Never infer a physical cycle or new asset from D alone.", "body")]
     lines.append("</svg>")

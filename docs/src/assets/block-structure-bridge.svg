@@ -36,7 +36,7 @@ text{font-family:Arial,sans-serif;fill:#17212b}
 <rect x="976" y="210" width="126" height="150" rx="10" class="factor"/>
 <text x="1039" y="255" class="head" text-anchor="middle">φℓ</text>
 <text x="1039" y="285" class="body" text-anchor="middle">factor</text>
-<text x="1039" y="315" class="small" text-anchor="middle">4-port</text>
+<text x="1039" y="315" class="small" text-anchor="middle">2-port · 4 conductors</text>
 <circle cx="875" cy="225" r="7" class="port"/>
 <circle cx="1203" cy="225" r="7" class="port"/>
 <path d="M840 285 L875 225 L976 225" class="wire2"/>
@@ -86,21 +86,49 @@ text{font-family:Arial,sans-serif;fill:#17212b}
 <rect x="714" y="485" width="650" height="350" rx="14" class="panel"/>
 <text x="736" y="519" class="head" text-anchor="start">D. Scalar support and realification</text>
 <text x="736" y="543" class="small" text-anchor="start">Expanding coordinates can reveal dense support without creating new physical members</text>
-<path d="M818 610 L872 610" class="support"/>
-<path d="M818 610 L872 700" class="support"/>
-<path d="M818 700 L872 610" class="support"/>
-<path d="M818 700 L872 700" class="support"/>
-<circle cx="800" cy="610" r="18" class="bus"/><text x="800" y="615" class="head" text-anchor="middle">ia</text>
-<circle cx="800" cy="700" r="18" class="bus"/><text x="800" y="705" class="head" text-anchor="middle">ib</text>
-<circle cx="890" cy="610" r="18" class="bus"/><text x="890" y="615" class="head" text-anchor="middle">ja</text>
-<circle cx="890" cy="700" r="18" class="bus"/><text x="890" y="705" class="head" text-anchor="middle">jb</text>
-<text x="1035" y="630" class="head" text-anchor="middle">complex support</text>
-<text x="1035" y="657" class="small" text-anchor="middle">dense block → scalar clique</text>
+<path d="M808 590 L772 650" class="support"/>
+<path d="M808 590 L772 710" class="support"/>
+<path d="M808 590 L772 770" class="support"/>
+<path d="M808 590 L912 590" class="support"/>
+<path d="M808 590 L912 650" class="support"/>
+<path d="M808 590 L912 710" class="support"/>
+<path d="M808 590 L912 770" class="support"/>
+<path d="M808 650 L772 710" class="support"/>
+<path d="M808 650 L772 770" class="support"/>
+<path d="M808 650 L912 590" class="support"/>
+<path d="M808 650 L912 650" class="support"/>
+<path d="M808 650 L912 710" class="support"/>
+<path d="M808 650 L912 770" class="support"/>
+<path d="M808 710 L772 770" class="support"/>
+<path d="M808 710 L912 590" class="support"/>
+<path d="M808 710 L912 650" class="support"/>
+<path d="M808 710 L912 710" class="support"/>
+<path d="M808 710 L912 770" class="support"/>
+<path d="M808 770 L912 590" class="support"/>
+<path d="M808 770 L912 650" class="support"/>
+<path d="M808 770 L912 710" class="support"/>
+<path d="M808 770 L912 770" class="support"/>
+<path d="M948 590 L912 650" class="support"/>
+<path d="M948 590 L912 710" class="support"/>
+<path d="M948 590 L912 770" class="support"/>
+<path d="M948 650 L912 710" class="support"/>
+<path d="M948 650 L912 770" class="support"/>
+<path d="M948 710 L912 770" class="support"/>
+<circle cx="790" cy="590" r="18" class="bus"/><text x="790" y="595" class="head" text-anchor="middle">ia</text>
+<circle cx="790" cy="650" r="18" class="bus"/><text x="790" y="655" class="head" text-anchor="middle">ib</text>
+<circle cx="790" cy="710" r="18" class="bus"/><text x="790" y="715" class="head" text-anchor="middle">ic</text>
+<circle cx="790" cy="770" r="18" class="bus"/><text x="790" y="775" class="head" text-anchor="middle">in</text>
+<circle cx="930" cy="590" r="18" class="bus"/><text x="930" y="595" class="head" text-anchor="middle">ja</text>
+<circle cx="930" cy="650" r="18" class="bus"/><text x="930" y="655" class="head" text-anchor="middle">jb</text>
+<circle cx="930" cy="710" r="18" class="bus"/><text x="930" y="715" class="head" text-anchor="middle">jc</text>
+<circle cx="930" cy="770" r="18" class="bus"/><text x="930" y="775" class="head" text-anchor="middle">jn</text>
+<text x="1140" y="600" class="head" text-anchor="middle">8×8 complex support</text>
+<text x="1140" y="627" class="small" text-anchor="middle">all 64 scalar entries nonzero</text>
 <path d="M960 700 L1100 700" class="dashed"/>
-<text x="1035" y="715" class="head" text-anchor="middle">realification</text>
-<text x="1035" y="743" class="body" text-anchor="middle">R(Y) = [ G  −B ; B  G ]</text>
-<text x="1035" y="773" class="small" text-anchor="middle">twice the coordinates, same declared assets</text>
-<text x="760" y="818" class="small" text-anchor="start">support answers an algebraic question; factor fibres answer an identity question</text>
+<text x="1140" y="715" class="head" text-anchor="middle">realification</text>
+<text x="1140" y="743" class="body" text-anchor="middle">R(Y) = [ G  −B ; B  G ]</text>
+<text x="1140" y="773" class="small" text-anchor="middle">twice the coordinates, same declared assets</text>
+<text x="1035" y="818" class="small" text-anchor="middle">support answers an algebraic question; factor fibres answer an identity question</text>
 <rect x="36" y="865" width="1328" height="42" rx="10" class="factor"/>
 <text x="55" y="892" class="head" text-anchor="start">Reading rule</text>
 <text x="190" y="892" class="body" text-anchor="start">Use A/B for assets and ports, C for matrix equations, and D for coordinate support or realified numerics. Never infer a physical cycle or new asset from D alone.</text>

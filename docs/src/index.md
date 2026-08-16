@@ -19,10 +19,11 @@ The central thesis is simple:
 ## A short reading route
 
 Start with [One network, many graphs](@ref one-network-many-graphs), read [How
-to read diagrams and equations](@ref how-to-read-diagrams-and-equations), then choose the
+to read diagrams and equations](@ref how-to-read-diagrams-and-equations), then
+cross the [five-community vocabulary bridge](@ref one-network-five-languages)
+before choosing the
 [graph and transmission reading guide](@ref reading-guide-graph-and-transmission).
-Cross the
-[five-community vocabulary bridge](@ref one-network-five-languages), then
+Then
 follow the five-bus cycle example and [A first failure: heterogeneous parallel
 branches](@ref first-failure-parallel-branches), then unpack the same topology
 kernel in [Five buses through a multi-port lowering](@ref

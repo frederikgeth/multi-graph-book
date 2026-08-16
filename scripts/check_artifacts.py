@@ -11,6 +11,8 @@ import tomllib
 from pathlib import Path
 from urllib.parse import unquote
 
+from check_math_hygiene import find_math_hygiene_findings
+
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE = ROOT / "data/running-network/v0.1.0.json"
 TRANSFORMER_CONTRACT = ROOT / "data/transformer-contracts/x1-fixed-linear-v0.1.0.json"
@@ -92,6 +94,10 @@ PRESERVATION_CONTRACT_CARD = ROOT / "docs/src/assets/preservation-contract-card.
 EARTH_RETURN_LADDER = ROOT / "docs/src/assets/earth-return-ladder.svg"
 TRANSFORMER_ANATOMY = ROOT / "docs/src/assets/transformer-anatomy.svg"
 PARALLEL_FEASIBLE_SET_CARD = ROOT / "docs/src/assets/parallel-feasible-set-card.svg"
+READING_ROUTES_FIGURES = (
+    ROOT / "docs/src/assets/reading-routes-graph-transmission.svg",
+    ROOT / "docs/src/assets/reading-routes-graph-transmission.png",
+)
 KNOWLEDGE_BASE_INDEX = ROOT / "docs/src/reference/knowledge-base-index.md"
 CHAPTER_STATUS = ROOT / "docs/src/reference/chapter-status.md"
 PAGE_STATUS = re.compile(r"^\*\*Page status:\*\*[ \t]*(?P<status>[^\r\n]+)$", re.MULTILINE)
@@ -393,6 +399,7 @@ def main() -> int:
         *TRANSFORMER_CONTRACTS,
         FIGURE,
         FIGURE_AUDIT,
+        *READING_ROUTES_FIGURES,
         *FIVE_BUS_FIGURES.values(),
         GENERATED / "summary.json",
         FIVE_BUS_ANALYSIS,
@@ -2022,6 +2029,7 @@ def main() -> int:
                 errors.append(f"view {view_name} object {generated_id} has unknown sources {sorted(unknown)}")
 
     checked_links = check_links(errors)
+    errors.extend(find_math_hygiene_findings(ROOT))
     if errors:
         print("artifact validation failed:", file=sys.stderr)
         for error in errors:
