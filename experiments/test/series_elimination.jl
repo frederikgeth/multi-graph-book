@@ -67,6 +67,7 @@ using .SeriesElimination
     coupled = eliminate_degree_two(coupled_first, coupled_second, JunctionContext(id="b"))
     @test coupled isa TransformationRejection
     @test "source_elements_have_mutual_coupling" in coupled.failed_guards
+    @test occursin("pairwise", coupled.evidence["mutual_coupling_representation"])
 
     P = Float64[0 1; 1 0]
     stated = Z1 + transpose(P) * Z2 * P

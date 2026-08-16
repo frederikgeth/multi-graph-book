@@ -18,8 +18,8 @@ not masquerade as completion of the others.
 
 The repository is a locally validated HTML-first release candidate. The
 curated PDF is a secondary serialization of the same Markdown sources. The
-current checks cover 89 registered claims, 60 audited SVG/PNG pairs, 528 local
-links, the aggregate experiment suite, the HTML build, and a 214-page PDF.
+current checks cover 91 registered claims, 62 audited SVG/PNG pairs, 534 local
+links, the aggregate experiment suite, the HTML build, and a 301-page PDF.
 The high-risk 2026-08-15 review findings, the 2026-08-16 vocabulary and
 multi-port-lowering reviews, and the canonical-model section review have been
 repaired. Those automated and supplied
@@ -158,6 +158,27 @@ order, and the notation slips called out by review fail the validation gate.
 its paired reduction chapters use one transform vocabulary, the PDF carries
 the executable evidence, and the three central “same graph, different model”
 arguments have maintainable visual summaries.
+
+### Parallel AC evidence-section review tranche (in progress)
+
+- [x] include the three parallel AC decision chapters in the curated PDF route;
+- [x] state the nominal-``\pi`` conditioning and relative-margin thresholds;
+- [x] separate singular-map, jointly retained, and state-conditioned evidence
+  in the nominal-``\pi`` chapter and repair the ``\ell`` indices;
+- [x] report relative non-proportionality and distinguish absolute p.u.
+  currents from rating fractions in the four-wire tables;
+- [x] register the source-backed Australian Carson/OpenDSS reproduction as a
+  scoped empirical claim, retaining the unresolved CS1035 boundary;
+- [x] add and audit a maintained certificate-geometry/decision-gap figure;
+- [x] independently re-derive the generated series-elimination certificate with
+  an explicit cross-coupling witness and expose the element-pair model field
+  that a junction-only representation cannot carry;
+- [ ] formulate and independently review a separate exact rule for eliminating
+  mutually coupled section pairs.
+
+**Exit criterion:** the parallel case chapters expose their numerical guards,
+units, evidence boundaries, and PDF route, while coupled-section elimination
+remains a separately scoped rule rather than an implicit extension.
 
 ### Then — literature and external validation
 
@@ -1680,6 +1701,25 @@ makes structure loss visible at every lowering boundary.
 several valid target graphs, name the interface at each boundary, and explain
 why a tree-to-clique change does not create a physical loop or authorize new
 asset decisions.
+
+### Representation-landscape review tranche (in progress)
+
+- [x] make `formal-representation-frameworks.md` the sole normative authority
+  for the linked architecture and disambiguate ``\mathfrak B(\mathfrak P)``
+  from the bus set ``\mathcal B``;
+- [x] add a four-level taxonomy diagram with orthogonal asset and
+  computational companions;
+- [x] retire the orphan architecture chapter, preserving its implementation
+  and fixture-coverage material in the research record;
+- [x] register the implementation-status contract as `PRACTICE-ARCH-001`;
+- [x] add and run a PDF ``@ref`` reachability gate, and include the normative
+  target chapters needed by the curated route;
+- [ ] decide whether the expanded PDF route should later be shortened after
+  the next independent editorial pass.
+
+**Exit criterion:** the representation landscape has one authority chain, one
+maintained classification figure, no orphan architecture chapter, and no
+dangling cross-reference in the curated PDF.
 
 ## Deliberately deferred
 

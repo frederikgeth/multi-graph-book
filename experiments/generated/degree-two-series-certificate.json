@@ -77,11 +77,13 @@
   "rule_id": "degree_two_series_elimination",
   "provenance": {
     "generated_object": "generated_series__l5__l6",
+    "junction_context_mutual_coupling": "not representable; coupling is an element-pair property",
     "eliminated_junction": "ib",
     "source_elements": [
       "l5",
       "l6"
-    ]
+    ],
+    "mutual_coupling_field": "SeriesElement.mutual_couplings[other_element_id]"
   },
   "classification": "exact_behavioral_reduction",
   "target": {

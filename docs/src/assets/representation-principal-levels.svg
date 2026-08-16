@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="880" viewBox="0 0 1500 880">
+<title>Representation taxonomy: four principal levels and orthogonal projections</title>
+<desc>Four principal levels run from simple topology through bus-branch and port-factor representations, with an orthogonal asset relation model and computational equation and sparsity projections attached sideways.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#245b7a"/></marker><marker id="arrowg" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#477a55"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight:bold}
+.sub{font-size:16px;fill:#5f6b76}.head{font-size:18px;font-weight:bold}.body{font-size:14px}
+.small{font-size:12px;fill:#5f6b76}.level{fill:#d9eef8;stroke:#245b7a;stroke-width:2}
+.special{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.asset{fill:#e5f1e7;stroke:#477a55;stroke-width:2}
+.compute{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.arrow{stroke:#245b7a;stroke-width:3;fill:none;marker-end:url(#arrow)}
+.dashed{stroke:#477a55;stroke-width:2;fill:none;stroke-dasharray:8 5;marker-end:url(#arrowg)}
+</style>
+
+<text x="35" y="42" class="title" text-anchor="start">Four principal levels, with specialisations—not one universal ladder</text>
+<text x="35" y="70" class="sub" text-anchor="start">The central boxes answer different electrical or identity questions. Sideways companions and computational projections retain incomparable information.</text>
+<rect x="70" y="170" width="290" height="150" rx="14" class="level"/>
+<text x="215.0" y="208" class="head" text-anchor="middle">1  Simple graph</text>
+<text x="215.0" y="248" class="body" text-anchor="middle">connectivity · islands · partitioning</text>
+<text x="215.0" y="284" class="small" text-anchor="middle">forgets parallel identity and terminals</text>
+<rect x="420" y="170" width="290" height="150" rx="14" class="level"/>
+<text x="565.0" y="208" class="head" text-anchor="middle">2  Oriented multigraph</text>
+<text x="565.0" y="248" class="body" text-anchor="middle">bus–branch PF/OPF · asset identities</text>
+<text x="565.0" y="284" class="small" text-anchor="middle">retains two-terminal members</text>
+<rect x="770" y="170" width="290" height="150" rx="14" class="level"/>
+<text x="915.0" y="208" class="head" text-anchor="middle">3  Port–factor incidence</text>
+<text x="915.0" y="248" class="body" text-anchor="middle">multiconductor · n-port · coupled</text>
+<text x="915.0" y="284" class="small" text-anchor="middle">canonical electrical source model</text>
+<rect x="1120" y="170" width="290" height="150" rx="14" class="asset"/>
+<text x="1265.0" y="208" class="head" text-anchor="middle">4  Asset/dependency</text>
+<text x="1265.0" y="248" class="body" text-anchor="middle">ownership · protection · maintenance</text>
+<text x="1265.0" y="284" class="small" text-anchor="middle">orthogonal companion source model</text>
+<path d="M360 245 L415 245" class="arrow"/>
+<path d="M710 245 L765 245" class="arrow"/>
+<path d="M1060 245 L1115 245" class="dashed"/>
+<text x="1088" y="220" class="small" text-anchor="middle">linked, not nested</text>
+<rect x="105" y="385" width="470" height="120" rx="12" class="special"/>
+<text x="340" y="418" class="head" text-anchor="middle">Attached specialisations</text>
+<text x="340" y="450" class="body" text-anchor="middle">node–breaker / bus–breaker / bus–branch</text>
+<text x="340" y="478" class="small" text-anchor="middle">terminal and state-resolved views</text>
+<path d="M215 320 L215 385" class="dashed"/>
+<path d="M565 320 L565 385" class="dashed"/>
+<path d="M915 320 L565 385" class="dashed"/>
+<rect x="650" y="385" width="700" height="120" rx="12" class="compute"/>
+<text x="1000" y="418" class="head" text-anchor="middle">Computational projections</text>
+<text x="1000" y="450" class="body" text-anchor="middle">equation · incidence · nodal support · Jacobian · KKT · sparsity</text>
+<text x="1000" y="478" class="small" text-anchor="middle">vertices and edges mean algebraic dependence, not automatically physical assets</text>
+<path d="M915 320 L915 385" class="dashed"/>
+<rect x="70" y="585" width="1330" height="190" rx="14" fill="#fbfcfd" stroke="#17212b" stroke-width="2"/>
+<text x="95" y="622" class="head" text-anchor="start">Reading rule</text>
+<text x="95" y="657" class="body" text-anchor="start">The boxes are analytical levels, not a total ordering by detail or graph size.</text>
+<text x="95" y="692" class="body" text-anchor="start">A simple graph may be perfect for islands; a port–factor graph may be necessary for a three-winding transformer;</text>
+<text x="95" y="720" class="body" text-anchor="start">an equation graph may be the right object for sparse ordering; the asset model answers a different question.</text>
+<text x="95" y="752" class="small" text-anchor="start">Every arrow therefore needs a declared map, purpose, loss ledger, and recovery/provenance contract.</text>
+</svg>

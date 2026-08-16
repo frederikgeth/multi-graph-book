@@ -1,6 +1,6 @@
 # [Chapter status](@id chapter-status)
 
-<!-- generated-from claims/claims.toml sha256:abe42994427a5aef4cf2da2104a7a1876e73974a27d379fa7c9b28180ce387e7 -->
+<!-- generated-from claims/claims.toml sha256:3422f108f5d5138e01cfddd0e4eb6b54b67e4537ea1814291e54f91140581610 -->
 This page is generated from the claims ledger. It makes the evidence state visible without
 requiring readers to inspect TOML or generated JSON files. Claim absence means the page is
 tracked as explanatory, definitional, or proposed material rather than silently treated as a
@@ -8,7 +8,7 @@ verified empirical result.
 
 | Chapter | Page status | Claims | Claim types | Verification | Open issue |
 | --- | --- | ---: | --- | --- | --- |
-| [Australian construction inputs: Carson and OpenDSSDirect](../cases/australian-carson-reproduction.md) | source-backed Carson/OpenDSSDirect reproduction; overhead and underground reference matrices remain independently compared outputs, and the CS1035 construction mapping is explicitly unresolved. | 0 | — | `untracked` | — |
+| [Australian construction inputs: Carson and OpenDSSDirect](../cases/australian-carson-reproduction.md) | source-backed Carson/OpenDSSDirect reproduction; overhead and underground reference matrices remain independently compared outputs, and the CS1035 construction mapping is explicitly unresolved. | 1 | empirical | `independently-implemented` | Recover the raw CS1035 conductor, screen, earth-return, frequency, and ordering provenance before claiming a faithful reconstruction. |
 | [BIM/BFM parallel lines: an expressiveness audit](../cases/bim-bfm-parallel-lines.md) | literature-informed formulation case; the equations illustrate scope boundaries and are not a new executable certificate. | 0 | — | `untracked` | — |
 | [Executable running network](@ref executable-running-network) | executable fixture, local solver evidence, and a derived state-conditioned radiality witness; claims are versioned and verification-scoped. | 2 | empirical | `self-checked` | Add an independent fixture reviewer.; Re-run with an independent solver where possible. |
 | [Four-wire impedance-model ladder](../cases/four-wire-impedance-model-ladder.md) | deterministic four-wire transformation witness; authored overhead and cable reproductions remain a follow-on case-study tranche. | 1 | empirical | `self-checked` | Reproduce authored overhead-line and underground-cable cases with geometry or linecode provenance, balanced and unbalanced load rows, grounding variants, and an external solver cross-check. |
@@ -31,7 +31,6 @@ verified empirical result.
 | [Orientation, terminal quantities, and power transfer](../foundations/orientation-terminal-power.md) | foundational definitions and terminology. | 0 | — | `untracked` | — |
 | [Preservation contracts](../foundations/preservation-contracts.md) | foundational definitions; certificate requirements are normative proposals. | 0 | — | `untracked` | — |
 | [Rating and limit semantics](../foundations/rating-semantics.md) | normative rating and limit vocabulary; utility-field mappings remain future implementation work. | 1 | definition | `self-checked` | Map selected utility and software rating fields into the typed limit record. |
-| [Representation architecture](../foundations/representation-architecture.md) | proposed architecture; adequacy remains an open research question. | 0 | — | `untracked` | — |
 | [Maps between representation frameworks](../foundations/representation-maps.md) | formal vocabulary and scoped map definitions. | 1 | proposal | `self-checked` | Exercise the matrix against version-pinned external imports and independently review the cross-community API terminology. |
 | [Representation taxonomy](../foundations/representation-taxonomy.md) | foundational taxonomy; categories are analytical, not a standards claim. | 0 | — | `untracked` | — |
 | [Scope and thesis](../foundations/scope-and-thesis.md) | reader-facing scope contract and methodological thesis. | 1 | definition | `self-checked` | — |
@@ -42,6 +41,7 @@ verified empirical result.
 | [When the general model collapses](../foundations/when-general-model-collapses.md) | controlled positive-sequence specialization with factor- and network-level executable witnesses; global decision equivalence and external review remain open. | 2 | empirical, theorem | `self-checked` | Extend the network witness to controls, phase-specific limits, contingencies, and an independent mathematical review before making a global decision-equivalence claim.; Extend the witness to controls, phase-specific limits, contingencies, and independent mathematical review. |
 | [Structure-Preserving Graph Models for Power Networks](../index.md) | reader-facing overview and navigation map. | 0 | — | `untracked` | — |
 | [Literature map](../literature/literature-map.md) | research record; coverage is provisional and not an exhaustive systematic review. The current evidence matrix contains 28 included and one explicitly excluded, single-coded seed records spanning reductions, topology processing, multiphase formulations, and circuit/graph frameworks. | 0 | — | `untracked` | — |
+| [Representation implementation record](../literature/representation-implementation-record.md) | research and software record; implementation coverage is evidence about the current repository, not a claim that the architecture is complete. | 1 | practice | `self-checked` | Compare the implementation contract with an independently reviewed package boundary and broader source-data adapters. |
 | [Research agenda](../literature/research-agenda.md) | proposal and open-work register. | 0 | — | `untracked` | — |
 | [Evidence map and verification summary](../reference/evidence-map.md) | generated reference navigation and evidence-gap summary. | 0 | — | `untracked` | — |
 | [References](../reference/references.md) | bibliography and source register. | 0 | — | `untracked` | — |

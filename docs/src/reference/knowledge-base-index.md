@@ -1,14 +1,14 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:abe42994427a5aef4cf2da2104a7a1876e73974a27d379fa7c9b28180ce387e7 -->
+<!-- generated-from claims/claims.toml sha256:3422f108f5d5138e01cfddd0e4eb6b54b67e4537ea1814291e54f91140581610 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 89
-**Indexed chapters:** 37
+**Indexed claims:** 91
+**Indexed chapters:** 39
 
 ## Claims by type
 
@@ -22,7 +22,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `THESIS-001` — Representation adequacy is evaluated relative to declared observations, constraints, and decisions. | [Scope and thesis](../foundations/scope-and-thesis.md) | `self-checked` |
 | `TOPOLOGY-001` — For a fixed switch state, topological nodes are the connected components of the closed-switch connectivity graph; compiling them into bus--branch buses is a state-conditioned quotient that requires provenance and does not preserve switching decisions by itself. | [Node--breaker, bus--breaker, and topology processing](../foundations/node-breaker-topology-processing.md) | `self-checked` |
 
-### `empirical` (40)
+### `empirical` (41)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -31,6 +31,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `ARCH-FIVEBUS-XFMR-001` — In the recorded five-bus structural extension, one three-port transformer has acyclic local factor-incidence and star realizations, while eliminating the virtual star point generically yields a terminal clique with cycle rank one; the embedded factor-incidence and star member ranks coincide at five despite carrying different semantics, while the clique member rank is six, without implying additional physical transformer loops. | [Five buses through a multi-port lowering](../start/five-bus-transformer-lowering.md) | `self-checked` |
 | `ARCH-PORT-001` — A minimal executable port--factor bundle instantiated from the running network validates typed port-to-junction and port-to-factor incidence, a three-port multiwinding factor, grounding as an explicit factor, and a many-to-many asset/electrical relation Λ. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `self-checked` |
 | `ARCH-PORT-002` — The five-bus identified scalar multigraph has a direct structural port--factor lift with five bus junctions, seven two-port scalar line factors, fourteen endpoint ports, and one asset-to-factor relation per identified line; parallel members q and r remain distinct factors despite sharing the same bus pair. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `self-checked` |
+| `AU-CARSON-001` — The Australian Carson reproduction regenerates overhead and underground multiconductor primitives from lifted construction inputs, compares them with independent OpenDSS reference matrices, and identifies the CS1035 construction mapping as unresolved rather than presenting it as a faithful reproduction. | [Australian construction inputs: Carson and OpenDSSDirect](../cases/australian-carson-reproduction.md) | `independently-implemented` |
 | `COLLAPSE-002` — The generated Fortescue witness diagonalizes a circulant three-phase impedance matrix and preserves the positive-sequence subspace, while a non-circulant perturbation produces sequence mixing and a positive-subspace residual. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `self-checked` |
 | `FIXTURE-001` — Running-network fixture v0.1.0 passes the current BMOPFTools JSON schema and conformance checks without errors or warnings. | [Executable running network](@ref executable-running-network) | `self-checked` |
 | `FIXTURE-002` — The v0.1.0 continuous PF and OPF instances terminate locally solved in the recorded environment. | [Executable running network](@ref executable-running-network) | `self-checked` |
@@ -67,12 +68,13 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `TR-XFMR-009` — For the recorded 11-terminal WYE/WYE/DELTA case, a three-scenario phase-selective tap path can be enumerated exactly over the 3^3 ordered tap triples, with consecutive tap movement charged explicitly and each scenario retaining its own phase directions. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `independently-implemented` |
 | `TR-XFMR-010` — In the recorded three-scenario tap path, enumerating all 27 ordered tap triples and then applying an explicit at-most-one-movement policy leaves 15 admissible branches; the policy is a decision constraint and must not be inferred from the unconstrained best path. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `independently-implemented` |
 
-### `practice` (4)
+### `practice` (5)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
 | `DATA-XWALK-001` — CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER provide distinct partial correspondences to the book's asset, terminal, topology, factor, state, and rating objects; successful import is not by itself semantic or decision equivalence. | [Data-model crosswalk](../foundations/data-model-crosswalk.md) | `self-checked` |
 | `PRACTICE-ADAPTER-001` — A safe source-to-canonical adapter should publish stable identities, terminal maps, state and control treatment, factor and rating mappings, generated-object provenance, unsupported fields, validation findings, and declared recovery checks before downstream graph transformations are trusted. | [From source data to a canonical network model](../foundations/source-to-canonical-model.md) | `self-checked` |
+| `PRACTICE-ARCH-001` — The representation implementation record keeps public API maturity, fixture coverage, direct-versus-related evidence, and not-yet-tested rows separate from the normative mathematical representation definitions. | [Representation implementation record](../literature/representation-implementation-record.md) | `self-checked` |
 | `PRACTICE-IMPEDANCE-001` — A safe impedance adapter should retain conductor order and terminal maps, units and frequency, geometry or linecode provenance, earth-return assumptions, matrix diagnostics, shunt placement, and the limits and decisions that use the resulting coordinates. | [From conductor geometry to impedance fidelity](../foundations/impedance-fidelity-ladder.md) | `self-checked` |
 | `VOCAB-BRIDGE-001` — Load-bearing statements use a preferred house term or qualified shorthand that declares the relevant representation, quantity, state, and preservation object; an unqualified term is unsafe when it can change the claim. | [One network, five languages](../start/one-network-five-languages.md) | `self-checked` |
 
@@ -130,8 +132,8 @@ verification state, see the [evidence map and verification summary](evidence-map
 
 | Verification | Claims |
 | --- | ---: |
-| `independently-implemented` | 4 |
-| `self-checked` | 85 |
+| `independently-implemented` | 5 |
+| `self-checked` | 86 |
 
 ## Unresolved issues
 
@@ -157,6 +159,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `ARCH-SURGERY-001` | Extend the surgery contract to energized islands, protection states, n-terminal factors, and optimization decisions. |
 | `ARCH-SURGERY-002` | Extend port-selective surgery to coupled conductor bundles, grounding factors, and protection/energization states. |
 | `ARCH-VIEW-001` | Compare the registry with external single-line, node-breaker, CIM/CGMES, and multi-line visual languages. |
+| `AU-CARSON-001` | Recover the raw CS1035 conductor, screen, earth-return, frequency, and ordering provenance before claiming a faithful reconstruction. |
 | `COLLAPSE-001` | Extend the network witness to controls, phase-specific limits, contingencies, and an independent mathematical review before making a global decision-equivalence claim. |
 | `COLLAPSE-002` | Extend the witness to controls, phase-specific limits, contingencies, and independent mathematical review. |
 | `DATA-XWALK-001` | The running-fixture contract is checked against pinned documentation profiles; external package imports and file-level round-trip provenance/rating checks remain open. |
@@ -179,6 +182,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `NUMERICAL-002` | Add an independent KKT/Jacobian export and compare ordering-dependent fill and decision margins across source and reduced views. |
 | `NUMERICAL-003` | The public BMOPFTools checked-KKT callback now runs through DiffOpt on a minimal parameterized OPF and agrees with finite difference; a native JuMP/MOI Jacobian structure is now recorded, while solver-private KKT rows, ordering, and factorization statistics remain outside the public boundary. |
 | `PRACTICE-ADAPTER-001` | Compare the contract against additional utility, CIM/CGMES, OpenDSS, and solver-native adapters with external domain review. |
+| `PRACTICE-ARCH-001` | Compare the implementation contract with an independently reviewed package boundary and broader source-data adapters. |
 | `PRACTICE-IMPEDANCE-001` | Exercise the contract on source-backed overhead and underground construction records and obtain independent power-engineering review. |
 | `RATING-001` | Map selected utility and software rating fields into the typed limit record. |
 | `TOPOLOGY-001` | Add a generated node--breaker fixture with open, closed, and unknown switch states. |
@@ -232,10 +236,11 @@ These retrieval facets are provisional and path-derived. They are navigation aid
 additional verification labels; explicit facet fields can replace them when the claims
 schema is normalised.
 
-### `decision-cases` (27)
+### `decision-cases` (28)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
+| `AU-CARSON-001` — The Australian Carson reproduction regenerates overhead and underground multiconductor primitives from lifted construction inputs, compares them with independent OpenDSS reference matrices, and identifies the CS1035 construction mapping as unresolved rather than presenting it as a faithful reproduction. | [Australian construction inputs: Carson and OpenDSSDirect](../cases/australian-carson-reproduction.md) | `empirical` |
 | `FIXTURE-001` — Running-network fixture v0.1.0 passes the current BMOPFTools JSON schema and conformance checks without errors or warnings. | [Executable running network](@ref executable-running-network) | `empirical` |
 | `FIXTURE-002` — The v0.1.0 continuous PF and OPF instances terminate locally solved in the recorded environment. | [Executable running network](@ref executable-running-network) | `empirical` |
 | `IMPEDANCE-LADDER-001` — In the deterministic four-wire impedance ladder fixture, phase-to-neutral current and voltage recovery are exact under the declared zero-ground-current map, while the deliberately non-circulant reduced matrix has visible sequence mixing; shunt deletion and positive-sequence use therefore require explicit decision-domain guards. | [Four-wire impedance-model ladder](../cases/four-wire-impedance-model-ladder.md) | `empirical` |
@@ -394,11 +399,12 @@ schema is normalised.
 | `FIXTURE-001` — Running-network fixture v0.1.0 passes the current BMOPFTools JSON schema and conformance checks without errors or warnings. | [Executable running network](@ref executable-running-network) | `empirical` |
 | `FIXTURE-002` — The v0.1.0 continuous PF and OPF instances terminate locally solved in the recorded environment. | [Executable running network](@ref executable-running-network) | `empirical` |
 
-### `study-and-literature` (1)
+### `study-and-literature` (2)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
 | `LIT-PAR-001` — For fixed scalar AC pi-line models on common endpoints, a parallel member's current- or apparent-power limit at one terminal is redundant when its normalized terminal-voltage quadratic feasible set contains that of another member; applying the test at both terminals certifies removal of both directional limits without aggregating the line models. | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | `theorem` |
+| `PRACTICE-ARCH-001` — The representation implementation record keeps public API maturity, fixture coverage, direct-versus-related evidence, and not-yet-tested rows separate from the normative mathematical representation definitions. | [Representation implementation record](../literature/representation-implementation-record.md) | `practice` |
 
 ### `transformations` (42)
 

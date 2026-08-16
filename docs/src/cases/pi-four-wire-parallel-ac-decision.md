@@ -9,6 +9,11 @@ in [the first scalar counterexample](@ref first-failure-parallel-branches).
 Only the additional shunt-current observations and both-end limit contract are
 new here.
 
+The shared certificate geometry and decision-gap plate are introduced in the
+[multiconductor parallel case](@ref multiconductor-parallel-ac-case); the
+nominal-``\pi`` chapter then adds the full two-end primitive and its refusal
+and recomputation guards.
+
 The series-only four-wire case uses the same current magnitude at opposite
 member ends. A nominal-``\pi`` line removes that shortcut: shunt current depends
 on the local terminal voltage, and ``\mathbf I_{\ell i j}`` is generally not
@@ -74,6 +79,14 @@ numerically ambiguous. The result is exact for the nominal matrices and
 centered complex discs; uncertainty in those matrices requires a separate
 robustness analysis.
 
+For reproducibility, the implementation rejects a retained map when its
+2-norm condition number exceeds ``\kappa_{\max}=10^8``; it also rejects a
+candidate row when its relative margin is below
+``\varepsilon_{\mathrm{margin}}=10^{-8}``. These are numerical certification
+guards, not physical operating limits. The present fixture has
+``\kappa_2(\mathbf A_{\ell_1})=2922.9``, comfortably inside the declared
+conditioning bound.
+
 ### Guarded extensions: singular, jointly retained, and state-dependent
 
 The companion witness
@@ -90,6 +103,8 @@ boundaries executable:
 exact linear-disc implication when every retained limit is imposed together.
 The generated witness now uses three retained discs. It is not yet a full
 nonlinear AC result for several retained members.
+
+#### Jointly retained constraints (`TR-PAR-JOINT-001`, `TR-PAR-AC-JOINT-001`)
 
 A separate three-member AC probe crosses this linear certificate into the
 nonlinear network model. It sets ``I_{\ell_3}=0.10I_{\ell_1}+0.10I_{\ell_2}``,
@@ -122,6 +137,8 @@ This does not certify a singular shunted primitive or arbitrary AC control
 policy. It records the guard and the correct next representation, rather than
 treating a pseudoinverse or a frozen nominal map as an exact rewrite.
 
+#### Singular-map refusal (`TR-PAR-SINGULAR-001`)
+
 The generated nominal-``\pi`` certificate now includes singular-map refusal
 probes. One constructs a rank-deficient neutral series map with zero endpoint
 shunts; a second retains a nonzero from-end neutral shunt while leaving the
@@ -132,14 +149,16 @@ a refusal witness, not a pseudoinverse-based reduction.
 
 For the series-only singular fixture, the certificate also demonstrates the
 valid reduced-coordinate fallback. Writing ``\Delta\mathbf U=\mathbf U_i-
-\mathbf U_j`` gives ``\mathbf I_{ell_1}=\mathbf Y_{ell_1}\Delta\mathbf U`` and
-``\mathbf I_{ell_2}=\mathbf Y_{ell_2}\Delta\mathbf U``; the declared neutral
+\mathbf U_j`` gives ``\mathbf I_{\ell_1}=\mathbf Y_{\ell_1}\Delta\mathbf U`` and
+``\mathbf I_{\ell_2}=\mathbf Y_{\ell_2}\Delta\mathbf U``; the declared neutral
 rows are zero and are retained as an explicit invariant. The reduced recovery
 map is therefore exact on the endpoint-voltage-drop coordinate even though the
 full two-end terminal map remains rank deficient. This is a scoped series-only
 result: it does not use a pseudoinverse and does not extend to singular shunted
 maps or a global nonlinear AC theorem.
 This scoped executable result is claim `TR-PAR-SINGULAR-001`.
+
+#### State-conditioned maps (`TR-PAR-STATE-001`)
 
 The same certificate includes scoped state-conditioned map probes: changing
 the endpoint shunts changes the nominal-π primitive, so the base-state map is
@@ -166,6 +185,15 @@ solved, with maximum source/pruned objective gap below ``1.2\times10^{-13}``.
 This is finite declared-state evidence, not a bound over a continuous control
 or uncertainty set.
 
+The finite envelope is summarized once here; the map and both local nonlinear
+solves are rebuilt for every row.
+
+| Declared state | From/to shunt scales | Map certified | Source served fraction | Pruned served fraction | Objective gap |
+|:--|:--:|:--:|--:|--:|--:|
+| base | 1.00 / 1.00 | yes | 1.1286205497 | 1.1286205497 | ``1.2\times10^{-13}`` |
+| shifted_shunt | 1.35 / 0.70 | yes | 1.1285736287 | 1.1285736287 | ``4.5\times10^{-14}`` |
+| reverse_shift | 0.75 / 1.25 | yes | 1.1286586199 | 1.1286586199 | ``1.1\times10^{-13}`` |
+
 ## AC decision comparison
 
 The load directions, explicit neutral KCL, phase-to-neutral voltage bounds,
@@ -173,7 +201,7 @@ and served-load objective are retained from the preceding four-wire case.
 Receiving-bus power uses the negative ``ji`` terminal current, including the
 receiving-end shunt.
 
-| Formulation | Served fraction | Phase-``a`` voltage | Largest ``\ell_1`` loading | Largest ``\ell_2`` loading | Variables / constraints |
+| Formulation | Served fraction | Phase-``a`` voltage | Largest ``\ell_1`` loading | Largest ``\ell_2`` loading (fraction of 0.72 p.u. rating) | Variables / constraints |
 |:--|--:|--:|--:|--:|--:|
 | source | 1.1286205 | 0.9404444 | 1.0000000 | 0.1898792 | 9 / 31 |
 | exact lifted | 1.1286205 | 0.9404444 | 1.0000000 | 0.1898792 | 9 / 31 |
@@ -183,6 +211,8 @@ receiving-end shunt.
 The exact-pruned target deletes eight constraints and agrees with the source to
 ``1.2\times10^{-13}`` in objective value. The same-size naive formulation
 serves substantially more load by violating the binding member-1 limit.
+The certified worst-case currents are absolute p.u. magnitudes; the loading
+columns are current divided by the corresponding 0.72 p.u. rating.
 
 ## Independent checks and scope
 

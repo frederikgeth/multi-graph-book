@@ -234,6 +234,18 @@
       "monochrome_safe": true,
       "distinguishing_channels": ["source/aggregate/certificate panels", "numeric objective gap", "recovery and guard text"]
     },
+    "parallel-redundancy-certificate": {
+      "svg": "docs/src/assets/parallel-redundancy-certificate.svg",
+      "png": "docs/src/assets/parallel-redundancy-certificate.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["complex-plane axes and nested discs", "solid versus dashed certificate boundaries", "exact versus naive labelled bars"]
+    },
+    "representation-principal-levels": {
+      "svg": "docs/src/assets/representation-principal-levels.svg",
+      "png": "docs/src/assets/representation-principal-levels.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["four numbered principal-level boxes", "sideways asset and computational panels", "solid versus dashed labelled arrows"]
+    },
     "bim-bfm-signature-capability": {
       "svg": "docs/src/assets/bim-bfm-signature-capability.svg",
       "png": "docs/src/assets/bim-bfm-signature-capability.png",

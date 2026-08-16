@@ -79,9 +79,14 @@ The implemented rule accepts the rewrite only when all of the following hold:
 | neither element is mutually coupled to any external element | prevents loss of a constitutive relation outside the pair |
 
 A failed guard returns a structured rejection with the failed condition and the
-source evidence. Mutual coupling is represented by element-pair impedance data,
-not by a flag on the junction, so the guard can inspect the constitutive model
-that would invalidate the formula. It does not return a best-effort equivalent.
+source evidence. In the executable model, mutual coupling is represented by
+the field
+``SeriesElement.mutual_couplings[other_element_id]``: an element-pair
+cross-impedance block keyed by the other asset identity. It is deliberately not
+a `JunctionContext` flag, because the same pairwise constitutive relation may
+span a junction or extend beyond it. The guard therefore inspects the source
+element fields that would invalidate the formula and does not return a
+best-effort equivalent.
 
 ## Constraint and recovery maps
 
@@ -184,6 +189,11 @@ compares the displayed uncoupled sum with the four-term expression above and
 records an approximately 11.65% relative Frobenius-norm error. This is a
 counterexample to the insufficient guard, not a claim that mutual coupling
 always produces an error of that size.
+
+The witness also records the representation boundary explicitly: a junction-only
+data model cannot express this case, while the pair-keyed `mutual_couplings`
+field can. A coupled-factor elimination would need the full pair block and a
+different target interface; silently dropping that field is a semantic loss.
 
 ## Grounding counterexample
 

@@ -8,7 +8,13 @@ export JunctionContext,
        certificate_dict,
        eliminate_degree_two
 
-"A two-terminal series element with explicitly ordered conductor coordinates."
+"""A two-terminal series element with explicitly ordered conductor coordinates.
+
+`mutual_couplings` is an element-pair constitutive field: its keys are the
+identities of other coupled elements and its values are the corresponding
+cross-impedance blocks. It is intentionally not part of `JunctionContext`,
+because coupling is not a local junction fact.
+"""
 struct SeriesElement
     id::String
     bus_from::String
@@ -172,6 +178,8 @@ function eliminate_degree_two(
                     first.id => sort!(collect(keys(first.mutual_couplings))),
                     second.id => sort!(collect(keys(second.mutual_couplings))),
                 ),
+                "mutual_coupling_representation" =>
+                    "SeriesElement.mutual_couplings[other_element_id] stores pairwise cross-impedance blocks; JunctionContext cannot encode this constitutive relation",
             ),
         )
     end
@@ -229,6 +237,8 @@ function eliminate_degree_two(
             "generated_object" => target_id,
             "source_elements" => [first.id, second.id],
             "eliminated_junction" => junction.id,
+            "mutual_coupling_field" => "SeriesElement.mutual_couplings[other_element_id]",
+            "junction_context_mutual_coupling" => "not representable; coupling is an element-pair property",
         ),
     )
     TransformationResult(target, certificate)

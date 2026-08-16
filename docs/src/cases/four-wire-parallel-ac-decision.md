@@ -8,6 +8,11 @@ This case reuses the canonical member-versus-aggregate distinction from
 new content is the non-proportional four-wire current map and joint quadratic
 containment certificate.
 
+The shared certificate geometry and decision-gap plate are introduced in the
+[multiconductor parallel case](@ref multiconductor-parallel-ac-case); this
+chapter reuses that visual contract while changing the member data and solving
+the non-proportional four-wire decision problem.
+
 The preceding phase--neutral example deliberately used proportional member
 matrices. This case removes that simplification while retaining the book's
 general baseline: ordered ``(a,b,c,n)`` conductors, full mutual coupling, an
@@ -23,7 +28,10 @@ of the first: after fitting the best complex scalar ``\rho``, the infinity-norm
 residual is
 
 ```math
-\|\mathbf Y_{\ell_2}-\rho\mathbf Y_{\ell_1}\|_\infty=0.3663.
+\|\mathbf Y_{\ell_2}-\rho\mathbf Y_{\ell_1}\|_\infty=0.3663,
+\qquad
+\frac{\|\mathbf Y_{\ell_2}-\rho\mathbf Y_{\ell_1}\|_\infty}
+{\|\mathbf Y_{\ell_2}\|_\infty}=0.1219.
 ```
 
 Both members follow
@@ -83,7 +91,7 @@ distinct from/to shunt currents and certifies the full stacked terminal map.
 
 ## Decision results
 
-| Formulation | Served fraction | Phase-``a`` voltage | Largest ``\ell_1`` loading | Largest ``\ell_2`` loading | Variables / constraints |
+| Formulation | Served fraction | Phase-``a`` voltage | Largest ``\ell_1`` loading | Largest ``\ell_2`` loading (fraction of 0.72 p.u. rating) | Variables / constraints |
 |:--|--:|--:|--:|--:|--:|
 | source | 1.1274329 | 0.9394441 | 1.0000000 | 0.1898951 | 9 / 23 |
 | exact lifted | 1.1274329 | 0.9394441 | 1.0000000 | 0.1898951 | 9 / 23 |
@@ -94,6 +102,8 @@ The exact-pruned target removes four constraints and agrees with the source to
 ``1.7\times10^{-14}`` in objective value. The naive target has the same model
 size but serves 60% more of the load direction by violating the binding
 ``\ell_1`` phase-``a`` constraint. Again, size does not determine fidelity.
+The certified worst-case currents are absolute p.u. magnitudes; the loading
+columns are current divided by the 0.72 p.u. member rating.
 
 The unbalanced solution has neutral voltage ``0.02796`` p.u.; this is not a
 balanced transmission case with a cosmetic fourth coordinate. All four

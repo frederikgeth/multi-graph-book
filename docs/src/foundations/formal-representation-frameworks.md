@@ -15,10 +15,14 @@ different electrical resolutions, one records orthogonal physical and
 organizational relations, and another family is compiled for computation.
 
 The companion [representation taxonomy](@ref representation-taxonomy) is the
-reader-facing level map; this chapter is its normative mathematical
-specification. In particular, equation and sparsity graphs are computational
-projections, not a fifth semantic level, and the asset/dependency model is
-linked to—but not nested inside—the electrical port--factor model.
+reader-facing level map; this chapter is the normative mathematical
+specification for those levels and their linked source structures. The
+implementation status of the executable facade and fixture matrix is kept in
+the [representation implementation record](@ref
+representation-implementation-record), rather than being a competing
+architecture chapter. In particular, equation and sparsity graphs are
+computational projections, not a fifth semantic level, and the asset/dependency
+model is linked to—but not nested inside—the electrical port--factor model.
 
 | Framework | Primary purpose | Status |
 |:--|:--|:--|
@@ -215,7 +219,7 @@ For electrical phasor ports these are voltage compatibility and KCL.
 Given boundary ports ``\partial\mathcal Q``, the external behaviour is
 
 ```math
-\mathcal B(\mathfrak P)
+\mathfrak B(\mathfrak P)
 =
 \operatorname{proj}_{\partial\mathcal Q}
 \left\{
@@ -226,7 +230,9 @@ z_{\mathcal Q_k}\in\mathcal R_k^{\mathrm J}\ \forall k
 \right\}.
 ```
 
-This definition makes an ordinary two-terminal line one factor of arity two,
+Here ``\mathfrak B(\mathfrak P)`` denotes external behaviour; the bus set
+``\mathcal B`` used by the simple and multigraph definitions is a different
+object. This definition makes an ordinary two-terminal line one factor of arity two,
 not the template for every device. A multiwinding transformer, coupled line
 group, converter, grounding relation, or shared control can retain its natural
 port arity. Hierarchy determines ownership of internal variables and the

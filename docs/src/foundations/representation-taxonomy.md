@@ -75,6 +75,14 @@ should not be counted as additional rungs in a single ladder. The rigorous
 objects and maps are specified in [Formal representation frameworks](@ref
 formal-representation-frameworks).
 
+![Four principal representation levels with terminal and node-breaker specialisations, computational projections, and the orthogonal asset model.](../assets/representation-principal-levels.png)
+
+The diagram is the classification in one view. The computational projections
+hang off the electrical source model because their vertices and edges are
+chosen from a declared equation or matrix support; the asset model is drawn
+sideways because ownership and maintenance are not a refinement of electrical
+boundary behaviour.
+
 ### Port, factor, and hypergraph models
 
 A behavioural factor relates variables on an arbitrary ordered set of ports. Ordinary branches are

@@ -23,6 +23,9 @@ quantity. Indices are not added merely because an equation is evaluated at an en
 | ``\mathcal P`` | phases | ``p,q`` |
 | ``\mathcal N`` | terminal names | ``p,q`` |
 | ``\mathbf A`` | oriented incidence matrix | declared bus/edge coordinates |
+| ``\mathbf A_\ell`` | full two-end primitive of element ``\ell`` | nominal-``\pi`` terminal-current map |
+| ``A_r,A_c`` | retained and candidate current row maps | redundancy certificates |
+| ``\mathbf A_\phi,\mathbf A_x`` | factor-incidence maps | conductor/factor assembly |
 | ``\mathbf F`` | Fortescue phase-to-sequence transform | ``abc\leftrightarrow012`` |
 | ``C_+`` | restriction to the positive-sequence subspace | phase state ``\to`` positive sequence |
 | ``E_+`` | embedding of a positive-sequence state | positive sequence ``\to`` phase state |

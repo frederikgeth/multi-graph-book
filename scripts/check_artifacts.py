@@ -12,6 +12,7 @@ from pathlib import Path
 from urllib.parse import unquote
 
 from check_math_hygiene import find_math_hygiene_findings
+from check_pdf_refs import find_pdf_reference_errors
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE = ROOT / "data/running-network/v0.1.0.json"
@@ -2026,6 +2027,18 @@ def main() -> int:
         if certificate_id not in claim_ids:
             errors.append(f"{artifact} uses unregistered claim/certificate ID {certificate_id!r}")
 
+    series_certificate = load_json(GENERATED / "degree-two-series-certificate.json")
+    series_provenance = series_certificate.get("provenance", {})
+    if series_provenance.get("mutual_coupling_field") != "SeriesElement.mutual_couplings[other_element_id]":
+        errors.append("degree-two series certificate does not expose the pairwise mutual-coupling field")
+    if series_provenance.get("junction_context_mutual_coupling") != (
+        "not representable; coupling is an element-pair property"
+    ):
+        errors.append("degree-two series certificate does not record the junction-only representation limit")
+    coupling_witness = series_certificate.get("evidence", {}).get("mutual_coupling_negative_witness", {})
+    if not coupling_witness.get("failed_guards") or not coupling_witness.get("relative_error_frobenius", 0) > 0.1:
+        errors.append("degree-two series certificate lost its cross-coupling refusal witness")
+
     provenance = load_json(GENERATED / "provenance.json")
     repository = provenance.get("bmopftools_repository", {})
     if not re.fullmatch(r"[0-9a-f]{40}", repository.get("commit", "")):
@@ -2073,6 +2086,7 @@ def main() -> int:
 
     checked_links = check_links(errors)
     errors.extend(find_math_hygiene_findings(ROOT))
+    errors.extend(find_pdf_reference_errors())
     if errors:
         print("artifact validation failed:", file=sys.stderr)
         for error in errors:

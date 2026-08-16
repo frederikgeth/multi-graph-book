@@ -1423,3 +1423,35 @@ assumptions = "the list is a scoped engineering contract, not a universal line-m
 reviewer = ""
 review_date = ""
 unresolved_issue = "Exercise the contract on source-backed overhead and underground construction records and obtain independent power-engineering review."
+
+[[claim]]
+claim_id = "AU-CARSON-001"
+preservation_dimensions = ['phase_neutral', 'terminal_behavior', 'provenance', 'decision']
+chapter = "docs/src/cases/australian-carson-reproduction.md"
+claim_text = "The Australian Carson reproduction regenerates overhead and underground multiconductor primitives from lifted construction inputs, compares them with independent OpenDSS reference matrices, and identifies the CS1035 construction mapping as unresolved rather than presenting it as a faithful reproduction."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "independently-implemented"
+evidence_type = "generated_carson_opendss_and_independent_linear_algebra_reproduction"
+citation_keys = []
+model_scope = "the Australian overhead and UGHV construction fixtures lifted into experiments/data/australian_source_inputs.toml"
+assumptions = "Carson uses the declared 50 Hz source-library setting; OpenDSSDirect solves the four-wire fixture with vminpu=0 and vmaxpu=2; reference matrices are comparison outputs rather than model inputs"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Recover the raw CS1035 conductor, screen, earth-return, frequency, and ordering provenance before claiming a faithful reconstruction."
+
+[[claim]]
+claim_id = "PRACTICE-ARCH-001"
+preservation_dimensions = ['structure', 'state', 'decision', 'provenance']
+chapter = "docs/src/literature/representation-implementation-record.md"
+claim_text = "The representation implementation record keeps public API maturity, fixture coverage, direct-versus-related evidence, and not-yet-tested rows separate from the normative mathematical representation definitions."
+status = "engineering_practice"
+claim_type = "practice"
+verification = "self-checked"
+evidence_type = "generated_public_api_manifest_fixture_coverage_matrix_and_typed_state_space_witness"
+citation_keys = []
+model_scope = "the current GraphModelsForPowerNetworks implementation facade and generated fixture evidence"
+assumptions = "implementation inventories are scoped repository records, not universal software-standard or architecture-completeness claims"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Compare the implementation contract with an independently reviewed package boundary and broader source-data adapters."
