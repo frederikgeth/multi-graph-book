@@ -14,44 +14,90 @@ The roadmap separates **publication infrastructure**, **knowledge synthesis**,
 **formal results**, and **software/experiments** so that progress in one does
 not masquerade as completion of the others.
 
-## Current status and active plan (2026-08-15)
+## Current status and active plan (2026-08-16)
 
-The review-response foundation pass is implemented and retained as an internal
-archival record. The HTML-first knowledge base, curated PDF route, claims
-ledger, generated indexes, running fixture, graph-invariant witnesses,
-multiconductor parallel cases, transformer compilers, positive-sequence
-collapse witness, certified-approximation chain, and argument-diagram
-portfolio are implemented and locally validated. A 2026-08-15 automated
-independent re-derivation found blocking mathematical and certificate issues in
-series elimination, typed Kron reduction, and transformer winding
-normalization; those repairs are now implemented and locally validated.
-Broader human validation and research scope remain follow-on work.
-The historical dispositions are archived in
-[`review/archive/`](review/archive/).
+The repository is a locally validated HTML-first release candidate. The
+curated PDF is a secondary serialization of the same Markdown sources. The
+current checks cover 83 registered claims, 54 audited SVG/PNG pairs, 514 local
+links, the aggregate experiment suite, the HTML build, and a 198-page PDF.
+The high-risk 2026-08-15 review findings and the 2026-08-16 vocabulary and
+multi-port-lowering reviews have been repaired. Those automated and supplied
+reviews remain technical evidence, not external human peer review.
 
-The checklists below preserve the scientific record of that pass. They are not
-the active task queue. The active queue is the review-repair tranche followed
-by the four milestones at the end of this file, ordered by dependency:
+M1 (integrity and reproducibility) is complete. M2 (reduction evidence) and M3
+(graph architecture) satisfy their scoped book claims; their remaining broad
+items are research extensions, not publication blockers. M4 (systematic
+literature work and external validation) remains open. Historical review
+dispositions are retained in [`review/archive/`](review/archive/).
 
-1. reconcile the 2026-08-15 technical, formulation-chapter, and literature-coding reviews;
-2. integrity and reproducibility release;
-3. certified reduction and approximation evidence;
-4. graph architecture, route structure, and argument diagrams;
-5. external validation and dissemination.
+### Now — formulation equivalence and the nodal-admittance boundary
 
-The review-repair, integrity, and certified-evidence milestones are the
-publication gate for stronger decision-case claims. General formalization,
-broad adapters, and paper extraction remain deliberate follow-on work rather
-than prerequisites for the knowledge base.
+- [ ] add the precise nodal rank/nonsingularity guard and its
+  Kettner--Paolone scope, making clear that a declared ground or reference does
+  not alone prove the required rank;
+- [ ] define current signs and MNA right-hand-side terms, consolidate the
+  nodal-stamping guards, and state that ``\Phi_{\mathrm{lin}}`` excludes
+  unfixed decision-carrying factors;
+- [ ] separate branch-current, branch-flow/BFM, chain/ABCD, hybrid, and
+  scattering formulations, including the singular-partition caveat;
+- [ ] define formulation equivalence relative to a declared observation family
+  and preservation contract;
+- [ ] make the formulation chapter authoritative for assembly and formulation
+  guards, remove its duplicated parallel-line derivation, and register the
+  lowering architecture as a proposal claim. The formulation-lattice figure is
+  already complete.
 
-**Latest verification (2026-08-15):** all five commands in the independent
-review packet pass under Julia 1.12.6 in a clean invocation, and the aggregate
-experiment suite and documentation audits remain green. Passing tests do not
-close the new semantic findings: the automated reviewer independently
-re-derived the four high-risk results and exposed assumptions and certificate
-content that the current implementations cannot fully express or test. The
-evidence-matrix second-coding pass likewise remains an automated audit, not
-independent human double-coding.
+**Exit criterion:** the book can state exactly when a nodal-admittance target
+exists, when another circuit formulation is required, and what “equivalent
+formulations” preserve for the declared study.
+
+### Next — general multi-port lowering
+
+- [ ] extend the composed transformer witness to an evaluated four-winding
+  factor with a full non-diagonal reference matrix, connection-specific
+  shunts, grounding, controls, and retained decision observations;
+- [ ] state and test the realizability boundary for direct factor stamping,
+  generated edge models, and terminal support without implying that every
+  ``n``-port has a source-faithful ordinary-edge realization;
+- [ ] test the layer--lens matrix against concrete power-system data,
+  optimization, sparse-matrix, and graph-learning APIs without assigning an
+  entire package to one stage.
+
+**Exit criterion:** the three-winding example is demonstrably a pedagogical
+special case of an architecture that remains valid for a nontrivial
+four-winding model.
+
+### Then — literature and external validation
+
+- [ ] reconcile the claims ledger and canonical evidence matrix, add the
+  Gan--Low and practical feeder/transmission records, and encode the shared
+  CGMES/PowSyBl topology transformation without treating the sources as
+  duplicates;
+- [ ] exercise genuine ``exclude`` and ``uncertain`` screening decisions,
+  resolve automated-versus-human reviewer metadata, and execute archived
+  database exports and independent double-coding before using *systematic* or
+  PRISMA-style language.
+
+The following work is **externally blocked or conditional**, so it is not part
+of the unchecked active queue: recovering missing Australian source
+frequency/order and cable-construction provenance; solver-native
+BMOPFTools/KKT row and factorization exports; external terminology and
+technical review; and publishing/tagging the standalone package after that API
+review. No stronger claim should be made while its stated gate remains open.
+
+The following work is **later research scope**: global nonlinear recovery,
+noisy partial inverse problems, general singular AC reductions, richer
+continuous multiwinding controls, full optimizer-independent guarantees, and
+formal categorical composition. Conditional chapter splits, extra figures,
+and vocabulary additions should be undertaken only when retrieval tests,
+evidence, or a concrete false inference justifies them.
+
+### How to read the remainder
+
+The sections below preserve the scientific and editorial history. Completed
+checkboxes document delivered work. Remaining ambitions are labelled
+**Next**, **Later**, **External**, **Conditional**, or **Gate** and point back
+to the queue above; they are not a second active task list.
 
 The BMOPFTools documentation review has added a focused editorial tranche:
 source-to-canonical semantic projection and validation gates, constitutive load
@@ -67,7 +113,7 @@ than copied as package tutorials.
 - [x] add executable numerical witnesses for the load-model and grounding
   comparisons before treating them as empirical claims.
 
-The next editorial tranche is now explicit:
+The subsequent editorial tranche is complete:
 
 - [x] define the four preservation layers (structure, behaviour, decision,
   provenance) and a first reader-facing transformation register;
@@ -117,9 +163,10 @@ taxonomy to implementable data and transformation workflows:
 - [x] promote the reader-facing impedance contract to a versioned interchange
   schema with machine-readable finding codes and source/derived/inferred field
   status, limits, and grounding assumptions;
-- [ ] reproduce the authored overhead-line and underground-cable cases with
-  balanced/unbalanced load rows, grounding variants, voltage/loss observations,
-  and geometry or linecode provenance;
+- [x] reproduce the available authored overhead-line and underground-cable
+  construction cases as bounded local studies with load, grounding,
+  voltage/loss, and available geometry/linecode provenance; reserve *faithful
+  source reproduction* for the provenance gate below;
 - [x] cross-check the authored cases against OpenDSS, BMOPFTools, and a
   separately assembled LinearAlgebra reference solve, with explicit line-loss
   versus grounding-reactor-loss accounting;
@@ -148,13 +195,13 @@ bounded case study:
   and decompose OpenDSS line losses from separately modelled grounding losses;
 - [x] add low- and high-grounding-impedance rows with independent voltage and
   line-loss cross-checks;
-- [ ] recover an explicit source declaration for the overhead reference
-  frequency/order, and the raw cable construction mapping for CS1035;
-- [ ] only claim a faithful reproduction of those reference cases after the
-  preceding provenance mappings are available.
+- **External:** recover an explicit source declaration for the overhead
+  reference frequency/order and the raw cable construction mapping for CS1035.
+- **Gate:** claim a faithful reproduction of those reference cases only after
+  the preceding provenance mappings are available.
 
-The two-level topology and nodal-projection tranche is now part of the active
-graph-architecture work:
+The two-level topology and nodal-projection tranche is part of the completed
+graph-architecture record:
 
 - [x] distinguish identified asset/terminal topology, conductor/port--factor
   topology, and block/scalar nodal-operator support;
@@ -184,7 +231,7 @@ graph-architecture work:
   voltage snapshots;
 - [x] add a local nonlinear-grounding derivative certificate comparing the
   frozen nominal bond coefficient with the recomputed real Jacobian;
-- [ ] extend the guarded classification to noisy partial observations,
+- **Later:** extend the guarded classification to noisy partial observations,
   global nonlinear grounding, full transformer controls, and experimental
   design, with independent evidence before treating those extensions as
   general results.
@@ -341,8 +388,9 @@ below for prioritization.
   composition theorem remains deliberately out of scope;
 - [x] replace prose state-space and unit interfaces with checked typed
   declarations for variables, units, boundaries, and finite state domains;
-- [ ] test every map on the running multiconductor network, its five-bus
-  line-identity example, and the multiwinding transformer;
+- **Coverage rule:** use the generated fixture-coverage matrix to expose
+  specific direct-evidence gaps; do not require every map to apply to every
+  fixture when the combination is explicitly not applicable;
 - [x] add a generated fixture-coverage matrix that distinguishes direct,
   related, not-yet-tested, and not-applicable evidence for those three
   canonical fixtures; the five-bus port--factor lift is now direct evidence,
@@ -374,7 +422,7 @@ below for prioritization.
     matrix: direct on the running network through the retained-tap AC decision
     certificate, not applicable to the five-bus cycle-space fixture, and related
     (rather than direct) to the fixed ``x1`` multiwinding contract;
-- [ ] obtain independent review from both graph/formal-methods and
+- **External:** obtain independent review from both graph/formal-methods and
   power-system-modeling perspectives.
 
 ### Stage D — graph invariants with representation scope
@@ -532,11 +580,10 @@ requirements for the current knowledge-base release.
   `Ybus` and realified current-Jacobian view.
 - [x] add a finite-difference nonlinear source/aggregate decision Jacobian and
   symbolic KKT fill comparison under explicit orderings.
-- [ ] connect it to nonlinear OPF KKT/Jacobian exports and actual
-  ordering-dependent factorization diagnostics across reduced views.
-  The current structural crosswalk now binds the five-bus typed-Kron fill and
-  recovered branch-limit observation to the declared Jacobian dependency
-  witness; solver-private ordering and factorization exports remain open.
+- [x] connect the structural crosswalk to public JuMP/MOI nonlinear Jacobian
+  structure and a captured KKT callback with explicit row/order caveats. The
+  remaining solver-native row identities and factorization diagnostics are
+  recorded once as an external boundary under M2.
 
 #### F5 — publication and figure track
 
@@ -573,7 +620,7 @@ requirements for the current knowledge-base release.
 - [x] stage the facade and selected transformations as the dependency-light
   `package/GraphModelsForPowerNetworks` candidate, with versioned state-space /
   unit objects and conversion contracts;
-- [ ] publish/tag that package after external review of its API and
+- **External:** publish/tag that package after external review of its API and
   compatibility policy;
 - [x] review the stale `power-network-graph-models/` snapshot and retain it as
   an explicitly archived historical seed; its README and handover prohibit new
@@ -753,14 +800,13 @@ The first executable vertical slice is complete:
     decision consequences.
 
 The numbered record above documents the completed first vertical slice. New
-work should be added to the active milestones below, not appended to this
-archive.
+work belongs in the current dashboard, not in this archive.
 
-## Active milestones
+## Milestone record
 
 ### M1 — Integrity and reproducibility release
 
-**Priority:** immediate publication gate.
+**Status:** scoped milestone complete; external review remains optional.
 
 **Progress:** the local/CI preparation is complete. The first repair pass for
 the two dark-background PNGs, the clipped numerical figure, and the
@@ -784,7 +830,7 @@ optional future validation rather than a release gate.
   repository-wide audit is enforced by `scripts/check_claim_mentions.py`;
 - [x] align the numerical certificate field proposal with schema v1.2 (or
   explicitly label the proposal as non-normative);
-- [ ] optionally obtain independent reviews of the highest-risk claims,
+- **External:** optionally obtain independent reviews of the highest-risk claims,
   prioritizing `TR-KRON-001`, `TR-PAR-004`, `TR-SER-001`, and `TR-XFMR-001`;
 - [x] prepare and archive a reproducible reviewer packet with claim-specific
   artifacts, commands, assumptions, and an explicit reviewer record;
@@ -797,7 +843,8 @@ review remains useful future validation but is not required for this release.
 
 ### M2 — Reduction evidence
 
-**Priority:** next scientific tranche.
+**Status:** scoped milestone complete; unresolved global and richer-control
+extensions are later research rather than blockers.
 
 - [x] implement a typed multiconductor Kron fixture covering coordinate
   covariance, internal-state recovery, original limits, and direct
@@ -822,7 +869,7 @@ review remains useful future validation but is not required for this release.
 - [x] add a scoped transformer-control family witness covering phase-angle,
   independent-phase, mechanically coupled, automatic-deadband, and
   tap-dependent-loss maps;
-- [ ] extend the nominal-``\pi`` and parallel-limit cases to singular maps,
+- **Later:** extend the nominal-``\pi`` and parallel-limit cases to singular maps,
   jointly implied limits, and state/control-dependent models at full AC scale,
   adding global bounds where required;
   - nominal-``\pi`` singular and singular-shunted refusal probes are now
@@ -867,7 +914,7 @@ review remains useful future validation but is not required for this release.
 - [x] connect the crosswalk to a native JuMP/MOI nonlinear Jacobian structure
   export, while retaining the explicit boundary around Ipopt-private KKT and
   factorization diagnostics;
-- [ ] connect the crosswalk to BMOPFTools/solver-exported KKT rows and
+- **External:** connect the crosswalk to BMOPFTools/solver-exported KKT rows and
   ordering-dependent factorization diagnostics if that public boundary becomes
   available;
 - [x] add scoped JuMP/Ipopt feasibility probes for phase-angle,
@@ -893,7 +940,7 @@ review remains useful future validation but is not required for this release.
   27-branch tap path with consecutive movement cost and explicit phase scales;
 - [x] add an explicit at-most-one tap-movement policy over that full 27-branch
   domain, retaining 15 admissible branches and an independent reproduction;
-- [ ] extend the switching-cost and branch-completeness contract to richer
+- **Later:** extend the switching-cost and branch-completeness contract to richer
   unbalanced multiwinding network decisions and continuous/global guarantees.
 
 **Exit criterion:** a reproducible comparison showing when each reduction is
@@ -902,8 +949,8 @@ observations.
 
 ### M3 — Graph architecture and topology
 
-**Priority:** after the first reduction comparison, with selected items able
-to proceed in parallel.
+**Status:** core scoped milestone complete; the general multi-port extension is
+the **Next** queue in the current dashboard.
 
 - [x] formalize a first hierarchy/refinement/open-system boundary witness with
   checked typed interfaces and state-conditioned switch maps;
@@ -943,18 +990,12 @@ to proceed in parallel.
 - [x] add the multiconductor observation-rank and phase-selective
   partial-observation witness;
 - [x] add the bounded-noise multiconductor recovery and conditioning witness;
-- [ ] extend guarded recovery to noisy partial observations, nonlinear
-  grounding, full transformer controls, and experimental design before
-  claiming general inverse-import guarantees;
-- [ ] optionally publish/tag the standalone package after API and
-  compatibility-policy review.
-
-The next graph-architecture tranche is now scoped around **identity,
-visualisation, lowering, and surgery**. The existing chapters already define
-identified equipment, port--factor structure, state-conditioned topology, and
-provenance; this tranche makes their relationship explicit and adds the
-diagnostics needed when a power-system drawing or algorithm silently changes
-the object set. The identity-agnostic high-level graph is treated as a
+The completed graph-architecture tranche was scoped around **identity,
+visualisation, lowering, and surgery**. The chapters define identified
+equipment, port--factor structure, state-conditioned topology, and provenance;
+the tranche made their relationship explicit and added diagnostics for when a
+power-system drawing or algorithm silently changes the object set. The
+identity-agnostic high-level graph is treated as a
 quotient view with source fibres, not as a competing canonical model. Likewise,
 ordinary-edge expansion is a lowering target, not permission to discard
 n-port, grounding, switch, or asset semantics.
@@ -1023,20 +1064,18 @@ an electrical degeneracy, and unknown-state families need a scalable summary.
 - [x] make the node--breaker, representation-taxonomy, and compiled-views
   chapters defer to one authoritative definition each, retaining only
   cross-links and application-specific qualifications;
-- [ ] add independent review or executable evidence for the full
+- **Next:** add independent review or executable evidence for the full
   n-port-to-edge realizability conditions beyond the scoped witness.
 
 **Exit criterion:** the proposed representation architecture has checked maps
 and topology witnesses on the running network, not only prose definitions.
 
-### Next tranche — representation landscape and circuit-formulation boundary
+### Representation-landscape and circuit-formulation tranche
 
-The recent architecture work makes a contextual gap explicit: the selected
-graph families are defined, but their relationship to the wider circuit,
-graph, and equation-model literature is not yet sufficiently visible. The
-next tranche will distinguish literature context from the book's adopted
-formalism, and will make the lowering boundary honest about cases where an
-exact nodal-admittance operator does not exist or is not the right target.
+This tranche distinguished literature context from the book's adopted
+formalism and made the lowering boundary honest about cases where an exact
+nodal-admittance operator does not exist or is not the right target. Its
+remaining formulation details are now owned by the **Now** dashboard.
 
 - [x] add a reader-facing representation-landscape section (or chapter) that
   surveys simple, multi-, directed/oriented, hypergraph, incidence/factor,
@@ -1055,9 +1094,9 @@ exact nodal-admittance operator does not exist or is not the right target.
   citation-chasing records for official information-model and software sources;
 - [x] add a hash-checked review snapshot manifest that joins matrix rows to
   deduplication records and explicitly records the single-coded status;
-- [ ] execute database exports, deduplicate and citation-chase the seed set,
-  and obtain independent double-coding before calling the literature review
-  systematic;
+- **Gate:** do not call the literature review systematic until the M4 database
+  exports, deduplication, citation chasing, and independent double-coding are
+  complete;
 - [x] add a circuit-formulation chapter covering nodal admittance, modified or
   sparse tableau, branch-current, hybrid, and general port/factor relations.
   State precisely that nodal admittance is powerful for an important class of
@@ -1104,28 +1143,32 @@ conflict below is resolved and recorded.
 
 #### A. Circuit-formulation and lowering chapter
 
+The unresolved details in this subsection are the single **Now** milestone in
+the current dashboard; they are repeated here only to retain their review
+provenance.
+
 - [x] add explicit MNA/tableau structural-solvability diagnostics for ideal
   voltage-source loops and ideal current-source cutsets, distinguishing
   redundant consistent constraints from contradictory constraints; do not
   make a general DAE-index claim without a precise supporting source;
-- [ ] add the nodal-admittance rank/nonsingularity guard, with the relevant
+- **Now:** add the nodal-admittance rank/nonsingularity guard, with the relevant
   Kettner--Paolone result, and state that merely declaring grounding or a
   reference does not by itself establish the required rank;
-- [ ] merge overlapping nodal-admittance guards, define the current sign
+- **Now:** merge overlapping nodal-admittance guards, define the current sign
   convention and MNA right-hand-side terms, and state explicitly that
   ``\Phi_{\mathrm{lin}}`` excludes decision-carrying factors;
-- [ ] add chain/ABCD formulations, separate branch-current formulations from
+- **Now:** add chain/ABCD formulations, separate branch-current formulations from
   branch-flow/BFM formulations, and note scattering variables as a possible
   remedy when a chosen hybrid partition is singular;
-- [ ] define equivalence between formulations relative to a declared
+- **Now:** define equivalence between formulations relative to a declared
   observation family ``H`` and its preservation contract, rather than treating
   algebraic interconvertibility as semantic equivalence;
-- [ ] make the circuit-formulation chapter authoritative for assembly
+- **Now:** make the circuit-formulation chapter authoritative for assembly
   identities and formulation guards, while the two-level-topology chapter owns
   topology, support, projection, and non-identifiability;
-- [ ] compress the duplicated parallel-line witness and cross-reference its
-  authoritative claim/case, register the lowering architecture as a proposal
-  claim, and add the formulation-lattice argument figure.
+- **Now:** compress the duplicated parallel-line witness, cross-reference its
+  authoritative claim/case, and register the lowering architecture as a
+  proposal claim. The formulation-lattice argument figure is complete.
 
 #### B. High-risk technical claims and certificates
 
@@ -1166,14 +1209,10 @@ conflict below is resolved and recorded.
 
 #### C. Evidence-matrix reconciliation and coverage
 
-- [ ] resolve the six substantive coding conflicts against the non-canonical
-  snapshot before changing `coding_status`: split or recode `EV-0002`, use
-  `scenario_approximate` for `EV-0003`, treat `EV-0008` as behavioural
-  reduction, treat `EV-0009` as a representation definition rather than an
-  exact compilation, reconsider `EV-0010`, and split or qualify `EV-0013`;
-- [x] apply an automated reconciliation of the six controlled-field conflicts
-  and retain `single_coded` status pending a genuine independent second pass;
-  the field-by-field decisions are recorded in
+- [x] reconcile the six controlled-field conflicts from the non-canonical
+  snapshot, apply the recorded decisions to the canonical matrix, and retain
+  `single_coded` status pending a genuine independent second pass; the
+  field-by-field decisions are recorded in
   [`review/evidence-matrix-reconciliation-2026-08-15.md`](review/evidence-matrix-reconciliation-2026-08-15.md);
 - [x] repair the `provenance_map` slot errors in `EV-0007`, `EV-0010`, and
   `EV-0012`, moving limitation prose to `limitations`, and soften the
@@ -1187,14 +1226,14 @@ conflict below is resolved and recorded.
   `DorflerBullo2013`, `Jang2013`, `CurtisMorrow2000`, and
   `KettnerPaolone2019` records; the controlled scope and exactness-object
   decisions are recorded in the reconciliation note;
-- [ ] add the Gan--Low formulation records and practical feeder/transmission
+- **Then:** add the Gan--Low formulation records and practical feeder/transmission
   reductions, then reassess whether any source needs split rows;
-- [ ] exercise the screening protocol with genuine `exclude` or `uncertain`
+- **Then:** exercise the screening protocol with genuine `exclude` or `uncertain`
   records and record corpus-flow counts before making any PRISMA-style claim;
-- [ ] resolve the reviewer/date consistency rule, and distinguish automated
+- **Then:** resolve the reviewer/date consistency rule, and distinguish automated
   agreement, human double-coding, and external technical review explicitly in
   the metadata rather than promoting the eight agreement candidates directly;
-- [ ] record that the CGMES and PowSyBl rows describe the same underlying
+- **Then:** record that the CGMES and PowSyBl rows describe the same underlying
   connectivity-node-to-topological-node transformation without treating the
   sources as duplicates, then regenerate and validate the canonical snapshot.
 
@@ -1206,10 +1245,11 @@ resolved without presenting automated audits as human review.
 
 ### M4 — External validation and dissemination
 
-**Priority:** parallel track; not a gate on M1--M3 unless a result is used to
-support a stronger claim.
+**Status:** open external track; it is not a gate on the scoped M1--M3 claims,
+but it is required before systematic-review language, external-validation
+claims, or a package release.
 
-- [ ] execute and archive the planned database searches and populate the
+- **External:** execute and archive the planned database searches and populate the
   evidence matrix with double-coded seed results;
   - a 2026-08-14 web seed batch is archived in
     `review/search-runs/2026-08-14-seed-batch.md` and adds three scoped
@@ -1278,7 +1318,7 @@ discharged guards, residual, cross-check, and open item.
 - [x] move conceptual numerical-fill-in and Jacobian-dependency figures to
   the core formulation/lowering chapter, leaving only executed witness figures
   in the numerical-consequences chapter;
-- [ ] revisit whether the overloaded guarded-case section should become a
+- **Conditional:** revisit whether the overloaded guarded-case section should become a
   separate Part after the case-plate tranche is stable.
 
 **Exit criterion:** every executed case has either an artifact-derived result
@@ -1306,10 +1346,10 @@ relational views that cannot drift from `claims/claims.toml`.
 - [x] add explicit preservation-dimension fields to the claims schema and use
   the controlled dimensions to drive the evidence map (the remaining
   transformation-family × dimension synthesis is a later literature task);
-- [ ] reconcile the claims ledger with the second-coded literature matrix and
+- **Then:** reconcile the claims ledger with the second-coded literature matrix and
   display classical Kron/Ward coverage as a separate evidence-matrix view,
   without treating frequent citation as a coded record;
-- [ ] reduce generated-index verbosity only if retrieval tests show a concrete
+- **Conditional:** reduce generated-index verbosity only if retrieval tests show a concrete
   failure; do not replace the complete index with a hand-curated summary.
 
 **Exit criterion:** a reader can decode notation, resolve a terminology
@@ -1338,7 +1378,7 @@ card. The following tranche is now implemented:
 - [x] strengthen the topology-projection figure's port-incidence legend;
 - [x] design the reusable translation-trap card and typed transformation
   register glyph plate after the structural source vocabulary is reviewed;
-- [ ] revisit chapter splitting for the overloaded Kron/Ward/Opti-KRON and
+- **Conditional:** revisit chapter splitting for the overloaded Kron/Ward/Opti-KRON and
   two-level-topology chapters rather than adding more figures to them.
 
 The review's claim that the topology-projection panel had no ports was stale:
@@ -1363,7 +1403,7 @@ implemented:
 - [x] add a source-bound negative-star-arm panel and promote its positive-
   semidefinite matrix guard as reader-facing evidence (the guard is
   ``\operatorname{Im}(Z_B)\succeq 0``, not componentwise arm positivity);
-- [ ] add the paired “eight constraints deleted” panel only after the exact
+- **Conditional:** add the paired “eight constraints deleted” panel only after the exact
   redundancy and naïve aggregate objectives are bound to a dedicated,
   source-traceable witness rather than review prose.
 
@@ -1445,13 +1485,13 @@ while preventing word-level translation from substituting for a typed map.
   identity, electrical/equipment/hidden state, coarsening and pooling,
   normalization, and the three meanings of loss now appear at their
   load-bearing chapters;
-- [ ] continue the chapter audit only where a concrete cross-community false
+- **Conditional:** continue the chapter audit only where a concrete cross-community false
   inference remains, prioritizing factor, direction/flow, and software object
   identity rather than repeating the bridge mechanically;
-- [ ] seek separate terminology review from representatives of the five
+- **External:** seek separate terminology review from representatives of the five
   communities; do not treat internal consistency as evidence that the bridge
   matches every community's practice.
-- [ ] after community review, add or revise registry entries only with a
+- **Gate:** after community review, add or revise registry entries only with a
   recorded usage witness; do not imply that the controlled book vocabulary is
   a descriptive standard for any community.
 
@@ -1526,10 +1566,10 @@ makes structure loss visible at every lowering boundary.
   scenario-approximate sufficiency;
 - [x] require a boundary reduction to declare its internal-injection model
   rather than hiding that load-bearing assumption under admissible inputs;
-- [ ] extend the composed witness to an evaluated four-winding factor with a
+- **Next:** extend the composed witness to an evaluated four-winding factor with a
   non-diagonal reference matrix and to connection-specific shunts, grounding,
   controls, and decision-preserving edge realizations;
-- [ ] test the layer--lens matrix against concrete APIs from power-system data,
+- **Next:** test the layer--lens matrix against concrete APIs from power-system data,
   optimization, sparse-matrix, and graph-learning software without assigning
   an entire package to one representation stage.
 
