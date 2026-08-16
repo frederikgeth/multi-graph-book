@@ -1,0 +1,81 @@
+{
+  "checks": {
+    "realification_doubles_coordinates_only": true,
+    "realification_preserves_nonzero_complex_entries": true,
+    "support_does_not_encode_factor_identity": true,
+    "four_conductor_terminal_order_is_declared": true,
+    "sparse_support_can_be_formed_without_asset_inventory": true,
+    "shunts_modify_diagonal_blocks": true,
+    "local_stamp_has_two_four_by_four_blocks": true,
+    "scalar_support_exposes_dense_conductor_coupling": true,
+    "block_support_is_two_by_two_simple_support": true
+  },
+  "support_counts": {
+    "complex_nonzero": 64,
+    "scalar_support_nonzero": 64,
+    "realified_nonzero": 256
+  },
+  "all_checks_pass": true,
+  "model_scope": "two-bus four-conductor fixed linear factor with full complex series matrix and endpoint shunts",
+  "claim_ids": [
+    "ARCH-BLOCK-001"
+  ],
+  "witness_id": "ARCH-BLOCK-001",
+  "matrix_dimensions": {
+    "complex_local": [
+      8,
+      8
+    ],
+    "realified_local": [
+      16,
+      16
+    ]
+  },
+  "views": [
+    {
+      "coordinates": "complex four-vector",
+      "id": "vector_edge",
+      "object": "two-terminal factor",
+      "preserves": [
+        "factor identity",
+        "terminal order"
+      ]
+    },
+    {
+      "coordinates": "four ports at each terminal",
+      "id": "port_factor",
+      "object": "typed port-factor incidence",
+      "preserves": [
+        "ports",
+        "source fibre"
+      ]
+    },
+    {
+      "coordinates": "four-by-four complex blocks",
+      "id": "block_nodal",
+      "object": "2×2 block nodal operator",
+      "preserves": [
+        "assembled terminal relation"
+      ]
+    },
+    {
+      "coordinates": "scalar or stacked real coordinates",
+      "id": "scalar_realified_support",
+      "object": "coordinate support",
+      "preserves": [
+        "support pattern"
+      ],
+      "omits": [
+        "asset identity by default"
+      ]
+    }
+  ],
+  "terminal_order": [
+    "a",
+    "b",
+    "c",
+    "n"
+  ],
+  "interpretation": "The same declared factor can be drawn at several semantic levels. Block and realified coordinate structure is useful for equations and sparse kernels, but nonzero support is not a substitute for source factor identity or limits.",
+  "schema_version": "0.1.0"
+}

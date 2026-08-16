@@ -1,14 +1,14 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:f13d5891b0c389d99f153f01620e3a413566ff8fd719d58a021eb50951c533bd -->
+<!-- generated-from claims/claims.toml sha256:83a1dd6d454b0697d2aca729924937c40156c144463075cd6d6b5606af484973 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 86
-**Indexed chapters:** 34
+**Indexed claims:** 87
+**Indexed chapters:** 35
 
 ## Claims by type
 
@@ -22,10 +22,11 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `THESIS-001` — Representation adequacy is evaluated relative to declared observations, constraints, and decisions. | [Scope and thesis](../foundations/scope-and-thesis.md) | `self-checked` |
 | `TOPOLOGY-001` — For a fixed switch state, topological nodes are the connected components of the closed-switch connectivity graph; compiling them into bus--branch buses is a state-conditioned quotient that requires provenance and does not preserve switching decisions by itself. | [Node--breaker, bus--breaker, and topology processing](../foundations/node-breaker-topology-processing.md) | `self-checked` |
 
-### `empirical` (39)
+### `empirical` (40)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
+| `ARCH-BLOCK-001` — For a declared two-bus four-conductor linear factor, the vector-edge, port-factor, block nodal, scalar-support, and realified-coordinate views are related representations of one assembled relation; coordinate expansion and realification do not create physical assets, while factor identity remains separate provenance. | [How to read power-network diagrams and equations](../start/how-to-read-diagrams-and-equations.md) | `self-checked` |
 | `ARCH-CONDUCTOR-002` — The five-bus scalar line-identity fixture lifts to fourteen scalar endpoint ports, five terminal junctions, and seven two-port line factors; the lift retains the q/r parallel fibre and its extra cycle dimension while adding no multiconductor, switch, or transformer semantics. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `self-checked` |
 | `ARCH-FIVEBUS-XFMR-001` — In the recorded five-bus structural extension, one three-port transformer has acyclic local factor-incidence and star realizations, while eliminating the virtual star point generically yields a terminal clique with cycle rank one; the embedded factor-incidence and star member ranks coincide at five despite carrying different semantics, while the clique member rank is six, without implying additional physical transformer loops. | [Five buses through a multi-port lowering](../start/five-bus-transformer-lowering.md) | `self-checked` |
 | `ARCH-PORT-001` — A minimal executable port--factor bundle instantiated from the running network validates typed port-to-junction and port-to-factor incidence, a three-port multiwinding factor, grounding as an explicit factor, and a many-to-many asset/electrical relation Λ. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `self-checked` |
@@ -128,12 +129,13 @@ verification state, see the [evidence map and verification summary](evidence-map
 | Verification | Claims |
 | --- | ---: |
 | `independently-implemented` | 4 |
-| `self-checked` | 82 |
+| `self-checked` | 83 |
 
 ## Unresolved issues
 
 | Claim | Issue |
 | --- | --- |
+| `ARCH-BLOCK-001` | Extend to mixed terminal counts, multi-terminal factors, and numerical-zero policies. |
 | `ARCH-CHORDAL-001` | Characterize chordality and minimal fill under missing phases, sparse coupling blocks, parallel factors, multi-terminal devices, and meshed bus graphs. |
 | `ARCH-CONDUCTOR-002` | Compare the scalar terminal lift with a full conductor-terminal factor evaluator and state-conditioned topology maps. |
 | `ARCH-DEGENERACY-001` | Specify utility-data remediation policies for duplicate or indistinguishable switch assets. |
@@ -310,10 +312,11 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `representation` (42)
+### `representation` (43)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
+| `ARCH-BLOCK-001` — For a declared two-bus four-conductor linear factor, the vector-edge, port-factor, block nodal, scalar-support, and realified-coordinate views are related representations of one assembled relation; coordinate expansion and realification do not create physical assets, while factor identity remains separate provenance. | [How to read power-network diagrams and equations](../start/how-to-read-diagrams-and-equations.md) | `empirical` |
 | `ARCH-CHORDAL-001` — For a simple bus-level tree with a common m-coordinate block at every bus and a structurally dense two-terminal stamp on every tree edge, the scalar structural-support graph is chordal and leaf-bus block elimination is a zero-fill perfect elimination ordering. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-CONDUCTOR-002` — The five-bus scalar line-identity fixture lifts to fourteen scalar endpoint ports, five terminal junctions, and seven two-port line factors; the lift retains the q/r parallel fibre and its extra cycle dimension while adding no multiconductor, switch, or transformer semantics. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
 | `ARCH-DEGENERACY-001` — Duplicate ideal switches with identical terminal sets and state domains have a well-defined electrical connectivity quotient but an unresolved asset-attribution relation; the model should retain both identities and emit a diagnostic rather than invent protection, maintenance, or failure ownership. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `proposal` |
@@ -357,10 +360,11 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `software-and-data` (22)
+### `software-and-data` (23)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
+| `ARCH-BLOCK-001` — For a declared two-bus four-conductor linear factor, the vector-edge, port-factor, block nodal, scalar-support, and realified-coordinate views are related representations of one assembled relation; coordinate expansion and realification do not create physical assets, while factor identity remains separate provenance. | [How to read power-network diagrams and equations](../start/how-to-read-diagrams-and-equations.md) | `empirical` |
 | `ARCH-CHORDAL-001` — For a simple bus-level tree with a common m-coordinate block at every bus and a structurally dense two-terminal stamp on every tree edge, the scalar structural-support graph is chordal and leaf-bus block elimination is a zero-fill perfect elimination ordering. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `theorem` |
 | `ARCH-CONDUCTOR-002` — The five-bus scalar line-identity fixture lifts to fourteen scalar endpoint ports, five terminal junctions, and seven two-port line factors; the lift retains the q/r parallel fibre and its extra cycle dimension while adding no multiconductor, switch, or transformer semantics. | [Formal representation frameworks](../foundations/formal-representation-frameworks.md) | `empirical` |
 | `ARCH-DEGENERACY-001` — Duplicate ideal switches with identical terminal sets and state domains have a well-defined electrical connectivity quotient but an unresolved asset-attribution relation; the model should retain both identities and emit a diagnostic rather than invent protection, maintenance, or failure ownership. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `proposal` |
@@ -445,6 +449,7 @@ schema is normalised.
 | `australian-carson-reproduction.json` | generated evidence |
 | `balanced-transmission-independent-reproduction.json` | `COLLAPSE-001` — generated evidence |
 | `balanced-transmission-witness.json` | `COLLAPSE-001` — generated evidence |
+| `block-structure-bridge-witness.json` | `ARCH-BLOCK-001` — two-bus four-conductor fixed linear factor with full complex series matrix and endpoint shunts |
 | `certified-approximation-witness.json` | `TR-KRON-003` — kron_ward_scenario_fixture_v0.1.0 |
 | `circuit-formulation-witness.json` | `FORMULATION-NODAL-001` — ideal voltage source, floating linear network, and aligned parallel members with source-level current limits |
 | `clean-package-matrix.json` | `PKG-CLEAN-001` — generated evidence |

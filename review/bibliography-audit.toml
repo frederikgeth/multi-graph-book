@@ -183,6 +183,13 @@ verified_on = "2026-08-14"
 note = "The supplied IEEE PESGM paper and DOI record confirm the authors, title, venue, year, and DOI; its parallel-line consistency constraints, BIM/BFM variable-space distinction, and total-terminal-current bounds are used in the expressiveness-audit case."
 
 [[entry]]
+key = "GethClaeysHeidari2023"
+status = "verified"
+verification_source = "https://arxiv.org/abs/2305.04405"
+verified_on = "2026-08-16"
+note = "The arXiv record and supplied technology report confirm the authors, title, year, identifier, matrix-valued four-wire component equations, nodal current-injection formulation, and the contrast with radial impedance-based methods."
+
+[[entry]]
 key = "CIMTopologicalNode"
 status = "corrected"
 verification_source = "https://zepben.github.io/evolve/docs/cim/cim100/TC57CIM/IEC61970/Base/Topology/TopologicalNode/"

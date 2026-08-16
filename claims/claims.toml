@@ -129,6 +129,22 @@ review_date = ""
 unresolved_issue = "Extend the support/stamp distinction to frequency-coupled, rectangular realified, Jacobian, and multi-terminal compiled operator families."
 
 [[claim]]
+claim_id = "ARCH-BLOCK-001"
+preservation_dimensions = ['structure', 'terminal_behavior', 'numerical_structure', 'provenance']
+chapter = "docs/src/start/how-to-read-diagrams-and-equations.md"
+claim_text = "For a declared two-bus four-conductor linear factor, the vector-edge, port-factor, block nodal, scalar-support, and realified-coordinate views are related representations of one assembled relation; coordinate expansion and realification do not create physical assets, while factor identity remains separate provenance."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "executable_block_structure_and_realification_witness"
+citation_keys = ["GethClaeysHeidari2023"]
+model_scope = "two-bus four-conductor fixed linear factor with full complex series matrix and endpoint shunts"
+assumptions = "fixed terminal ordering; realification uses the displayed coordinate embedding; support threshold is exact structural nonzero pattern"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to mixed terminal counts, multi-terminal factors, and numerical-zero policies."
+
+[[claim]]
 claim_id = "ARCH-VIEW-001"
 preservation_dimensions = ['structure', 'terminal_behavior', 'provenance']
 chapter = "docs/src/foundations/compiled-views-and-graph-surgery.md"

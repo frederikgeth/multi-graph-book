@@ -186,6 +186,12 @@ therefore assumed to be three-phase, wye-connected, or phase-to-neutral.
 
 ## Compound nodal operator
 
+The scalar-to-matrix transition is a change in coordinate space, not a change
+of graph vocabulary. A scalar branch law uses ``i_{\ell ij}=y_\ell(v_i-v_j)``;
+the multiconductor analogue uses ordered vectors and a matrix primitive. The
+translation bridge and its diagram-reading checklist are given in [How to read
+power-network diagrams and equations](@ref how-to-read-diagrams-and-equations).
+
 The assembled linear current--voltage operator on a declared ordered set of
 retained junction coordinates is
 

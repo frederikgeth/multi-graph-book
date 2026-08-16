@@ -31,6 +31,7 @@ julia --project=experiments experiments/run_five_bus_cycle_space.jl
 julia --project=experiments experiments/run_five_bus_transformer_lowering.jl
 julia --project=experiments experiments/run_four_winding_lowering.jl
 julia --project=experiments experiments/run_layer_lens_api_witness.jl
+julia --project=experiments experiments/run_block_structure_bridge_witness.jl
 julia --project=experiments experiments/run_running_network_cycle_space.jl
 julia --project=experiments experiments/run_translation_traps.jl
 julia --project=experiments experiments/run_narrow_circuit_transformations.jl

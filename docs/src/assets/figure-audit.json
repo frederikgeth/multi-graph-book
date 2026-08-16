@@ -335,6 +335,12 @@
       "png": "docs/src/assets/layer-lens-matrix.png",
       "monochrome_safe": true,
       "distinguishing_channels": ["construction-stage rows", "semantic-lens columns", "typed transformation arrows", "branching warning"]
+    },
+    "block-structure-bridge": {
+      "svg": "docs/src/assets/block-structure-bridge.svg",
+      "png": "docs/src/assets/block-structure-bridge.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["four titled panels", "explicit conductor labels", "block matrix grid", "solid support versus dashed realification rule", "reading-rule caption"]
     }
   }
 }

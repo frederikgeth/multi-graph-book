@@ -212,6 +212,95 @@ gives the same assembled block through
 (\mathbf Y_1+\Delta,\mathbf Y_2-\Delta).
 ```
 
+### Block structure and coordinate expansions
+
+The phrase **vector-valued multigraph** is useful as a translation bridge for
+the two-terminal case: each high-level edge retains its identity and carries a
+vector of terminal quantities, while its constitutive data are matrices. It is
+not the canonical name of the general source model. In particular, an
+``n``-winding transformer is a typed port--factor relation, not an ordinary
+edge with a longer vector label.
+
+Suppose each retained bus has ``c`` ordered conductor coordinates. The compound
+nodal operator is then naturally a block matrix,
+
+```math
+\mathbf Y^{\mathrm N}
+=
+\begin{bmatrix}
+\mathbf Y_{11} & \cdots & \mathbf Y_{1N}\\
+\vdots & \ddots & \vdots\\
+\mathbf Y_{N1} & \cdots & \mathbf Y_{NN}
+\end{bmatrix},
+\qquad
+\mathbf Y_{ij}\in\mathbb C^{c\times c}.
+```
+
+For one two-terminal series factor with a full conductor admittance
+``\mathbf Y_\ell^{\mathrm s}``, the off-diagonal blocks are dense in general,
+while endpoint shunts add to the diagonal blocks. A nominal-``\pi`` factor is
+therefore one matrix-valued factor whose local stamp may be written schematically
+as
+
+```math
+\begin{bmatrix}
+\mathbf Y_{\ell i}^{\mathrm{sh}}+\mathbf Y_\ell^{\mathrm s}
+  &-\mathbf Y_\ell^{\mathrm s}\\
+-\mathbf Y_\ell^{\mathrm s}
+  &\mathbf Y_{\ell j}^{\mathrm{sh}}+\mathbf Y_\ell^{\mathrm s}
+\end{bmatrix}.
+```
+
+This compact block view and the expanded scalar view answer different questions:
+
+| View | Vertices or indices | What a nonzero means |
+|:--|:--|:--|
+| factor multigraph | identified assets/factors | a declared factor attachment |
+| block support | buses or junctions | one or more conductor coordinates are coupled |
+| scalar support | bus--conductor coordinates | a particular coordinate pair is coupled |
+| numerical matrix | ordered rows and columns | a coefficient is numerically nonzero at this operating/model point |
+
+Two parallel matrix-valued factors can occupy the same block support and be
+summed by assembly. A dense ``c\times c`` factor can produce a clique in the
+scalar support graph even when the bus-level equipment graph is a tree. The
+clique is an algebraic coupling pattern, not a claim that every pair of
+conductors is a physical line. Eliminating an internal bus or factor can add
+new nonzero blocks by Schur-complement fill; it does not create new source
+assets.
+
+The complex phasor representation can also be realified for software that
+expects real arrays. For ``\mathbf Y=\mathbf G+\mathrm j\mathbf B``, one common
+coordinate embedding is
+
+```math
+\mathcal R(\mathbf Y)
+=
+\begin{bmatrix}
+\mathbf G&-\mathbf B\\
+\mathbf B&\mathbf G
+\end{bmatrix}.
+```
+
+Realification doubles coordinates, not buses, conductors, or assets. The
+block support relation is normally the same under this embedding, while the
+scalar real coordinate graph has twice as many coordinate vertices and may
+show a different fine-grained pattern. Say **complex-labelled graph** or
+**realified coordinate graph**, not “the complex graph” or “the real graph,”
+unless the coordinate convention is explicitly part of the sentence.
+
+The four-view bridge in [How to read power-network diagrams and equations](@ref
+how-to-read-diagrams-and-equations) is the reader-facing summary of this
+distinction. Its scoped correspondence is registered as `ARCH-BLOCK-001`: the
+witness checks the block assembly, support projection, and realification of one
+declared two-bus four-wire factor, while deliberately treating factor identity
+as separate provenance rather than inferring it from nonzero matrix entries.
+
+These distinctions also explain why a current-injection solver and a
+backward--forward sweep can use different computational views of one declared
+four-wire model. The former may factor a block nodal operator; the latter may
+traverse element-wise impedance relations on a radial view. Neither algorithmic
+graph replaces the source factor and terminal semantics.
+
 For reciprocal factors, ``\mathcal D`` may require
 ``\Delta^{\mathsf T}=\Delta``. Adding passivity constraints such as
 ``\operatorname{He}(\mathbf Y_k)\succeq0`` intersects the affine family with a

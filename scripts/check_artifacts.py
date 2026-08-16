@@ -70,6 +70,7 @@ LAYER_LENS_API = GENERATED / "layer-lens-api-witness.json"
 MULTIWINDING_TERMINAL_LIFT = GENERATED / "multiwinding-terminal-lift-witness.json"
 MULTIWINDING_TYPED_KRON = GENERATED / "multiwinding-typed-kron-witness.json"
 HIERARCHY_BOUNDARY = GENERATED / "hierarchy-boundary-witness.json"
+BLOCK_STRUCTURE_BRIDGE = GENERATED / "block-structure-bridge-witness.json"
 PUBLIC_API_MANIFEST = GENERATED / "public-api-manifest.json"
 STATE_SPACE_UNIT = GENERATED / "state-space-unit-witness.json"
 SEMANTIC_EVALUATOR_MATRIX = GENERATED / "semantic-evaluator-matrix.json"
@@ -465,6 +466,7 @@ def main() -> int:
         MULTIWINDING_TERMINAL_LIFT,
         MULTIWINDING_TYPED_KRON,
         HIERARCHY_BOUNDARY,
+        BLOCK_STRUCTURE_BRIDGE,
         PUBLIC_API_MANIFEST,
         STATE_SPACE_UNIT,
         SEMANTIC_EVALUATOR_MATRIX,
@@ -1669,6 +1671,25 @@ def main() -> int:
     ):
         if lift_checks.get(name) is not True:
             errors.append(f"conductor-terminal lift check failed: {name}")
+
+    block_bridge = load_json(BLOCK_STRUCTURE_BRIDGE)
+    if block_bridge.get("witness_id") != "ARCH-BLOCK-001":
+        errors.append("block-structure bridge witness has an invalid witness ID")
+    if block_bridge.get("claim_ids") != ["ARCH-BLOCK-001"]:
+        errors.append("block-structure bridge witness has an unexpected claim set")
+    for name in (
+        "four_conductor_terminal_order_is_declared",
+        "local_stamp_has_two_four_by_four_blocks",
+        "block_support_is_two_by_two_simple_support",
+        "scalar_support_exposes_dense_conductor_coupling",
+        "shunts_modify_diagonal_blocks",
+        "realification_doubles_coordinates_only",
+        "realification_preserves_nonzero_complex_entries",
+        "support_does_not_encode_factor_identity",
+        "sparse_support_can_be_formed_without_asset_inventory",
+    ):
+        if block_bridge.get("checks", {}).get(name) is not True:
+            errors.append(f"block-structure bridge check failed: {name}")
 
     hierarchy = load_json(HIERARCHY_BOUNDARY)
     if hierarchy.get("witness_id") != "ARCH-BOUNDARY-001":

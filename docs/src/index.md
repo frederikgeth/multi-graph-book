@@ -18,7 +18,8 @@ The central thesis is simple:
 
 ## A short reading route
 
-Start with [One network, many graphs](@ref one-network-many-graphs), cross the
+Start with [One network, many graphs](@ref one-network-many-graphs), read [How
+to read diagrams and equations](@ref how-to-read-diagrams-and-equations), cross the
 [five-community vocabulary bridge](@ref one-network-five-languages), then
 follow the five-bus cycle example and [A first failure: heterogeneous parallel
 branches](@ref first-failure-parallel-branches), then unpack the same topology

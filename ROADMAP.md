@@ -18,8 +18,8 @@ not masquerade as completion of the others.
 
 The repository is a locally validated HTML-first release candidate. The
 curated PDF is a secondary serialization of the same Markdown sources. The
-current checks cover 86 registered claims, 54 audited SVG/PNG pairs, 524 local
-links, the aggregate experiment suite, the HTML build, and a 200-page PDF.
+current checks cover 87 registered claims, 55 audited SVG/PNG pairs, 529 local
+links, the aggregate experiment suite, the HTML build, and a 204-page PDF.
 The high-risk 2026-08-15 review findings and the 2026-08-16 vocabulary and
 multi-port-lowering reviews have been repaired. Those automated and supplied
 reviews remain technical evidence, not external human peer review.
@@ -66,6 +66,27 @@ formulations” preserve for the declared study.
 **Exit criterion:** the three-winding example is demonstrably a pedagogical
 special case of an architecture that remains valid for a nontrivial
 four-winding model.
+
+### Parallel editorial tranche — diagram and equation bridge (in progress)
+
+- [x] add a Start Here bridge explaining how to read diagram levels, stored
+  orientation, KCL, KVL, Ohm/constitutive laws, lossy edges, and scalar versus
+  matrix-valued branch relations;
+- [x] qualify *vector-valued multigraph* as a useful two-terminal bridge phrase
+  while retaining typed port--factor incidence as the canonical n-port model;
+- [x] expand the two-level topology chapter with block nodal structure,
+  scalar-expanded support, Schur fill, and complex-to-realified coordinates;
+- [x] add the PowerModelsDistribution four-wire current-injection report as a
+  traceable literature bridge;
+- [x] add the paired four-panel diagram (asset/vector edge, port--factor,
+  block nodal matrix, scalar/realified support);
+- [x] add an executable block-structure witness before registering a stronger
+  block-support claim.
+
+**Exit criterion:** a reader can translate one scalar line diagram into a
+matrix-valued multiconductor equation and a block nodal operator, then explain
+which graph cycles, identities, and coordinates are introduced or forgotten by
+each view.
 
 ### Then — literature and external validation
 

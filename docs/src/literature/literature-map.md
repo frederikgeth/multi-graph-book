@@ -86,6 +86,13 @@ view. They do not make the inverse decomposition unique: asset identity,
 limits, states, and primitive lineage still have to be retained outside the
 assembled nodal operator.
 
+A software-facing companion makes the same bridge explicit for four-wire
+unbalanced power flow: matrix-valued series and shunt data feed a nodal
+current-injection method, while a radial backward--forward sweep uses an
+element-wise impedance view [GethClaeysHeidari2023](@cite). This is useful
+terminology evidence, not a claim that one solver formulation is universally
+preferable.
+
 ### Circuit formulations beyond nodal admittance
 
 The circuit literature supplies several established equation targets rather
