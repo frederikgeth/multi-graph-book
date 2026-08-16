@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="650" viewBox="0 0 1300 650">
+<title>Semantic labels are enumerated into storage coordinates</title>
+<desc>A labelled bus and line relation is mapped through explicit enumeration functions to an ordinary integer-indexed matrix. Reordering storage positions does not change the semantic network.</desc>
+<rect width="100%" height="100%" fill="white"/>
+
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:27px;font-weight:bold}
+.sub{font-size:16px;fill:#5f6b76}.head{font-size:19px;font-weight:bold}.body{font-size:15px}
+.small{font-size:13px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}
+.label{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.coord{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}
+.matrix{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.arrow{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}
+.grid{stroke:#17212b;stroke-width:1.5}.dash{stroke:#8a3232;stroke-width:2;stroke-dasharray:8 6;fill:none}
+</style>
+
+<defs><marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 z" fill="#17212b"/></marker></defs>
+<text x="34" y="40" class="title" text-anchor="start">Labels first, coordinates second</text>
+<text x="34" y="68" class="sub" text-anchor="start">The same relation can be named semantically and stored as an ordinary numeric array.</text>
+<rect x="34" y="105" width="365" height="390" rx="14" class="panel"/>
+<rect x="468" y="105" width="365" height="390" rx="14" class="panel"/>
+<rect x="902" y="105" width="365" height="390" rx="14" class="panel"/>
+<text x="58" y="140" class="head" text-anchor="start">1. Semantic index sets</text>
+<text x="492" y="140" class="head" text-anchor="start">2. Explicit enumeration</text>
+<text x="926" y="140" class="head" text-anchor="start">3. Stored matrix</text>
+<text x="58" y="176" class="body" text-anchor="start">B = {source, load, neutral}</text>
+<text x="58" y="209" class="body" text-anchor="start">L = {ℓmain, ℓtap}</text>
+<circle cx="118" cy="300" r="35" class="label"/><circle cx="300" cy="300" r="35" class="label"/>
+<text x="118" y="306" class="small" text-anchor="middle">source</text>
+<text x="300" y="306" class="small" text-anchor="middle">load</text>
+<path d="M153 300 L265 300" class="arrow"/>
+<text x="209" y="282" class="small" text-anchor="middle">ℓmain</text>
+<text x="58" y="390" class="body" text-anchor="start">Yᴺij is a labelled block map</text>
+<text x="58" y="420" class="small" text-anchor="start">i,j ∈ B; it is not yet an array position</text>
+<text x="492" y="176" class="body" text-anchor="start">κB(source)=1</text>
+<text x="492" y="206" class="body" text-anchor="start">κB(load)=2</text>
+<text x="492" y="236" class="body" text-anchor="start">κB(neutral)=3</text>
+<path d="M650 270 L650 370" class="arrow"/>
+<text x="650" y="310" class="head" text-anchor="middle">κB</text>
+<rect x="535" y="390" width="230" height="65" rx="9" class="coord"/>
+<text x="650" y="418" class="body" text-anchor="middle">row/column positions</text>
+<text x="650" y="442" class="small" text-anchor="middle">1, 2, 3</text>
+<text x="926" y="176" class="head" text-anchor="start">[Yᴺ]κ(i),κ(j)</text>
+<rect x="1000" y="205" width="170" height="170" class="matrix"/>
+<path d="M1056 205 V375 M1113 205 V375 M1000 262 H1170 M1000 319 H1170" class="grid"/>
+<text x="1028" y="240" class="small" text-anchor="middle">Yss</text>
+<text x="1085" y="240" class="small" text-anchor="middle">Ysl</text>
+<text x="1142" y="240" class="small" text-anchor="middle">Ysn</text>
+<text x="1028" y="297" class="small" text-anchor="middle">Yls</text>
+<text x="1085" y="297" class="small" text-anchor="middle">Yll</text>
+<text x="1142" y="297" class="small" text-anchor="middle">Yln</text>
+<text x="1028" y="354" class="small" text-anchor="middle">Yns</text>
+<text x="1085" y="354" class="small" text-anchor="middle">Ynl</text>
+<text x="1142" y="354" class="small" text-anchor="middle">Ynn</text>
+<text x="926" y="420" class="body" text-anchor="start">Reordering the array changes positions</text>
+<text x="926" y="450" class="small" text-anchor="start">but not buses, lines, or equations.</text>
+<rect x="34" y="530" width="1233" height="70" rx="12" class="coord"/>
+<text x="58" y="560" class="head" text-anchor="start">Do not infer semantics from storage</text>
+<text x="390" y="560" class="body" text-anchor="start">The integer matrix is a coordinate realization. The labelled relation, terminal maps, and factor fibres carry the meaning.</text>
+</svg>

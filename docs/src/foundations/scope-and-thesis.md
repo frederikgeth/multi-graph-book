@@ -10,7 +10,10 @@ Much power-system analysis starts from a bus--branch graph
 G=(V,E),
 ```
 
-where buses are vertices and lines or transformers are edges. This is useful, especially when the
+Here ``V`` and ``E`` are semantic vertex and edge sets; they are not assumed to
+be the integer positions of a stored adjacency matrix. An implementation may
+choose enumerations ``\kappa_V`` and ``\kappa_E`` later. Where buses are
+vertices and lines or transformers are edges, this is useful, especially when the
 network and study satisfy the assumptions of a balanced transmission model. It is not a universal
 physical or decision model.
 

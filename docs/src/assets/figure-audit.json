@@ -341,6 +341,12 @@
       "png": "docs/src/assets/block-structure-bridge.png",
       "monochrome_safe": true,
       "distinguishing_channels": ["four titled panels", "explicit conductor labels", "block matrix grid", "solid support versus dashed realification rule", "reading-rule caption"]
+    },
+    "label-coordinate-bridge": {
+      "svg": "docs/src/assets/label-coordinate-bridge.svg",
+      "png": "docs/src/assets/label-coordinate-bridge.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["three numbered stages", "semantic labels versus coordinate numbers", "explicit enumeration arrow", "matrix grid", "textual storage warning"]
     }
   }
 }

@@ -47,6 +47,11 @@ Now introduce transformer ``x_1`` with winding set
 \beta_{x_1}(3)=m.
 ```
 
+The labels ``1,2,3`` here identify windings in this worked example; they are
+not claims that winding identities are intrinsically integer-valued. A source
+format may name the same ports ``HV``, ``LV``, and ``tertiary``. The terminal
+ordering and any storage enumeration are separate declarations.
+
 These attachments form a pedagogical structural extension. The electrical
 data and winding-interface semantics are inherited from the checked running
 transformer contract; this page does not pretend that moving that factor onto
@@ -87,8 +92,10 @@ scalar conductor terminals.
 Complete three-winding short-circuit input supplies the three pair-indexed
 quantities ``z_{12}^{\mathrm{sc}}``, ``z_{13}^{\mathrm{sc}}``, and
 ``z_{23}^{\mathrm{sc}}``. Drawing these as the edges of ``K_3`` is a useful
-**data-incidence graph**. Its edges index tests; they are not three independent
-two-winding transformers and do not acquire independent outage states.
+**data-incidence graph**. The pair labels ``12``, ``13``, and ``23`` identify
+tests between winding pairs; they are not entries of a three-by-three matrix.
+Its edges index tests; they are not three independent two-winding transformers
+and do not acquire independent outage states.
 
 ### Generated star
 

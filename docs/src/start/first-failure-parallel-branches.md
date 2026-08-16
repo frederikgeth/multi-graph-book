@@ -35,6 +35,10 @@ currents are
 I_{\ell_k i j}=Y_{\ell_k}\Delta U,\qquad k\in\{1,2\}.
 ```
 
+Here ``k`` is a local member label for the two identified branches. It is not
+an instruction to use the first and second rows of a stored array; the member
+identity is ``\ell_k`` and remains meaningful under any reordering.
+
 Replacing the pair by one branch with
 
 ```math

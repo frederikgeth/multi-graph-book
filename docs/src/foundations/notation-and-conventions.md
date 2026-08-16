@@ -24,7 +24,23 @@ quantity. Indices are not added merely because an equation is evaluated at an en
 | ``\mathcal N`` | terminal names | ``p,q`` |
 
 Identifiers need not be consecutive integers. A data model may use stable strings while the
-mathematical model uses the corresponding symbols.
+mathematical model uses the corresponding symbols. When an implementation needs an ordinary
+array, introduce an explicit enumeration map, such as
+
+```math
+\kappa_{\mathcal B}:\mathcal B\overset{\sim}{\longrightarrow}\{1,\ldots,|\mathcal B|\}.
+```
+
+The semantic object is the label-indexed family ``(Y_{ij})_{i,j\in\mathcal B}``; the stored
+array is ``[Y]_{\kappa_{\mathcal B}(i),\kappa_{\mathcal B}(j)}``. This book names the semantic
+indices before displaying their integer coordinate realization. Integer positions are not
+asset identities, and changing the enumeration must not change a claim about the network.
+
+For multiconductor models, bold ``\mathbf Y^{\mathrm N}_{ij}`` denotes a block map between
+terminal spaces. It becomes a scalar matrix entry only after the terminal coordinates and bus
+enumeration have both been declared. By contrast, ``\mathbf Y_\ell`` is intrinsic data owned by
+element ``\ell`` and does not acquire endpoint indices merely because it appears in a nodal
+assembly.
 
 ## Oriented element triples
 

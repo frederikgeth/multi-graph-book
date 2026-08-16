@@ -20,7 +20,7 @@ Let ``D`` be a source document and ``C`` a canonical network model. An adapter
 is a partial map
 
 ```math
-P:Dlongrightarrow (C,F,Pi),
+P:D\longrightarrow (C,F,\Pi),
 ```
 
 where ``F`` is a finding ledger and ``\Pi`` is a provenance manifest. The map

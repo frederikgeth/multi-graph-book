@@ -18,8 +18,8 @@ not masquerade as completion of the others.
 
 The repository is a locally validated HTML-first release candidate. The
 curated PDF is a secondary serialization of the same Markdown sources. The
-current checks cover 87 registered claims, 55 audited SVG/PNG pairs, 529 local
-links, the aggregate experiment suite, the HTML build, and a 204-page PDF.
+current checks cover 87 registered claims, 56 audited SVG/PNG pairs, 530 local
+links, the aggregate experiment suite, the HTML build, and a 206-page PDF.
 The high-risk 2026-08-15 review findings and the 2026-08-16 vocabulary and
 multi-port-lowering reviews have been repaired. Those automated and supplied
 reviews remain technical evidence, not external human peer review.
@@ -67,7 +67,7 @@ formulations” preserve for the declared study.
 special case of an architecture that remains valid for a nontrivial
 four-winding model.
 
-### Parallel editorial tranche — diagram and equation bridge (in progress)
+### Parallel editorial tranche — diagram and equation bridge (complete)
 
 - [x] add a Start Here bridge explaining how to read diagram levels, stored
   orientation, KCL, KVL, Ohm/constitutive laws, lossy edges, and scalar versus
@@ -87,6 +87,26 @@ four-winding model.
 matrix-valued multiconductor equation and a block nodal operator, then explain
 which graph cycles, identities, and coordinates are introduced or forgotten by
 each view.
+
+### Label-before-coordinate pedagogy (complete)
+
+- [x] state in the opening equation-reading chapter that semantic labels and
+  storage coordinates are different objects;
+- [x] show an explicit enumeration map from named buses to ordinary array
+  positions, including the scalar/block distinction for ``Y_{ij}``;
+- [x] apply the same labelled-index principle to the signed incidence and
+  edge--cycle matrices in the five-bus example;
+- [x] add a maintainable semantic-label-to-storage-coordinate diagram;
+- [x] add a short vocabulary-bridge entry for “label-indexed relation,”
+  “enumeration,” and “array position” to the reference terminology page;
+- [x] audit the remaining opening-route chapters for equations that use
+  integer-looking subscripts without declaring whether they are labels,
+  coordinates, or phases; qualify member, winding-pair, and generic graph
+  indices where needed.
+
+**Exit criterion:** a new reader can read ``Y^{\mathrm N}_{ij}`` as a labelled
+block relation, understand how it becomes an integer-indexed array, and see
+that reordering storage cannot change the underlying network semantics.
 
 ### Then — literature and external validation
 

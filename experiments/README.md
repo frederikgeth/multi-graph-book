@@ -61,6 +61,7 @@ julia --project=experiments experiments/run_certified_approximation.jl
 python3 experiments/generate_five_bus_cycle_figure.py
 python3 experiments/generate_numerical_structure_views.py
 python3 experiments/render_argument_diagrams.py
+python3 experiments/render_label_coordinate_bridge.py
 julia --project=experiments experiments/run_ybus_jacobian_witness.jl
 python3 experiments/render_ybus_jacobian_view.py
 julia --project=experiments experiments/run_nonlinear_kkt_witness.jl

@@ -61,6 +61,48 @@ These three statements have different jobs:
 | KCL | balance at a junction | which graph view produced the junction |
 | KVL | compatible voltage differences around a circuit loop | a cycle in every derived support graph |
 
+## Labels are not coordinates
+
+The subscripts in a power-network equation are semantic labels first and array
+positions second. A bus may be named ``source``, ``load``, or ``i_\mathrm{north}``,
+and a line may be identified by ``\ell_\mathrm{main}``; neither name is required
+to be a consecutive integer. Software normally enumerates those labels so that
+it can store an ordinary array. That enumeration is a coordinate chart, not a
+change in the network.
+
+For example, begin with the labelled bus set
+
+```math
+\mathcal B=\{\text{source},\text{load},\text{neutral}\},
+\qquad
+\kappa_{\mathcal B}:\mathcal B\overset{\sim}{\longrightarrow}\{1,2,3\}.
+```
+
+The semantic nodal blocks are ``\mathbf Y^{\mathrm N}_{ij}``, with
+``i,j\in\mathcal B``. After choosing ``\kappa_{\mathcal B}``, a software array
+stores the same block as
+
+```math
+\bigl[\mathbf Y^{\mathrm N}\bigr]_{\kappa_{\mathcal B}(i),\kappa_{\mathcal B}(j)}
+ =\mathbf Y^{\mathrm N}_{ij}.
+```
+
+The familiar integer-indexed matrix is therefore a realization of a
+label-indexed operator family. Reordering the array changes positions, not
+the buses or the physical relation. The same rule applies to the signed
+edge--cycle matrix: its semantic entries are ``A_{i\ell}`` and
+``C_{\ell\gamma}`` for ``i\in\mathcal B``, ``\ell\in\mathcal L``, and
+``\gamma\in\Gamma``; an implementation may enumerate all three sets before
+performing ordinary matrix multiplication.
+
+![Semantic network labels are enumerated into storage coordinates before an ordinary matrix is formed.](../assets/label-coordinate-bridge.png)
+
+This is why ``\mathbf Y_\ell`` (an element-intrinsic matrix),
+``\mathbf Y^{\mathrm N}_{ij}`` (a bus-to-bus block), and
+``[\mathbf Y^{\mathrm N}]_{\kappa(i),\kappa(j)}`` (an array position) should
+not be read as interchangeable notation. In the scalar case a block may be
+one number; in the multiconductor case it is generally a matrix.
+
 ## The same line with multiple conductors
 
 For a four-wire line, the scalar voltage and current become ordered vectors:

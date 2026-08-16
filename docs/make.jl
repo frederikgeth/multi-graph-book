@@ -236,6 +236,7 @@ function make_html()
             repolink = "https://github.com/frederikgeth/multi-graph-book",
             edit_link = "main",
             inventory_version = "0.1.0",
+            size_threshold_ignore = ["reference/knowledge-base-index.md", "reference/vocabulary-indexes.md"],
         ),
         plugins = [bibliography()],
         remotes = REMOTES,

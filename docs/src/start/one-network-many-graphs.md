@@ -45,6 +45,12 @@ retains both triples
 \ell_1ij,\ \ell_2ij\in\mathcal T^{L\rightarrow}.
 ```
 
+Here ``i`` and ``j`` are bus labels, not necessarily row and column numbers in
+an array. If a software implementation enumerates the bus set, its stored
+entry is written ``[\mathbf Y]_{\kappa(i),\kappa(j)}``; the semantic relation
+remains ``\mathbf Y_{ij}``. This is the same label-before-coordinate rule used
+in the [equation-reading bridge](@ref how-to-read-diagrams-and-equations).
+
 A simple graph retains only the adjacency ``i\sim j``. A weighted simple graph might store
 
 ```math

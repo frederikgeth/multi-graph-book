@@ -37,6 +37,7 @@ maintained definition surface.
 | loss | Electrical dissipation, information loss, or training objective? | a shared word implies a shared quantity |
 | [ground, neutral, reference](@ref terminology-ground-neutral-reference) | Physical earth, conductor, impedance, or gauge choice? | all are one zero-voltage node |
 | [phase, conductor, sequence, coordinate](@ref terminology-phase-conductor-coordinate) | Asset label, physical path, terminal slot, phase-domain quantity, or transformed coordinate? | one label fixes every coordinate and transformation |
+| label, index, coordinate, array position | Semantic object identity or storage location? | an integer row/column is the physical bus, line, or cycle identity |
 
 The sections below give the compact house definitions. Detailed counterexamples
 belong to [Translation traps](@ref translation-traps); rigorous graph objects
@@ -69,6 +70,9 @@ belong to [Representation frameworks](@ref formal-representation-frameworks).
 | Neutral conductor | An explicit conductor with voltage, current, connectivity, ratings, and provenance rather than a synonym for earth or reference | [Earth and neutral](@ref earth-ground-models) |
 | Voltage reference | A gauge choice used to select a voltage representative; not automatically physical earth or a neutral conductor | [Earth and neutral](@ref earth-ground-models) |
 | Terminal coordinate | One ordered component of a declared terminal interface vector | [Notation and modelling conventions](@ref) |
+| Label-indexed relation | A family of quantities indexed by semantic sets such as buses, lines, terminals, or cycles | [Notation and modelling conventions](@ref) |
+| Enumeration | An explicit bijection from a semantic finite set to integer storage positions | [Notation and modelling conventions](@ref) |
+| Array position | An implementation row, column, or tensor slot after enumeration; not an asset identity | [Notation and modelling conventions](@ref) |
 | Sequence coordinate | A transformed combination of phase-domain coordinates under a declared basis | [General-model collapse](@ref positive-sequence-collapse) |
 | Asset/terminal topology | Identified high-level equipment and its port or bus attachments; a multigraph only for the genuinely two-terminal subset | [Frameworks](@ref formal-representation-frameworks) |
 | Conductor/port--factor topology | Electrical conductor junctions, typed ports, and constitutive factors, with terminal maps and coupling retained | [Frameworks](@ref formal-representation-frameworks) |

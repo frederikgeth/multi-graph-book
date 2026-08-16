@@ -236,6 +236,20 @@ nodal operator is then naturally a block matrix,
 \mathbf Y_{ij}\in\mathbb C^{c\times c}.
 ```
 
+The block labels ``i,j`` are bus identities, not necessarily integer positions.
+For a finite bus set ``\mathcal B``, an enumeration ``\kappa_{\mathcal B}``
+turns the labelled family ``(\mathbf Y^{\mathrm N}_{ij})_{i,j\in\mathcal B}``
+into the stored block array
+
+```math
+\bigl[\mathbf Y^{\mathrm N}\bigr]_{\kappa_{\mathcal B}(i),\kappa_{\mathcal B}(j)}
+=\mathbf Y^{\mathrm N}_{ij}.
+```
+
+This is the matrix analogue of the labelled edge--cycle construction in the
+opening example. The enumeration can change without changing the block
+operator, its support, or its factor provenance.
+
 For one two-terminal series factor with a full conductor admittance
 ``\mathbf Y_\ell^{\mathrm s}``, the off-diagonal blocks are dense in general,
 while endpoint shunts add to the diagonal blocks. A nominal-``\pi`` factor is

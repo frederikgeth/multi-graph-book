@@ -75,6 +75,22 @@ components has
 \mu=|\mathcal L|-|\mathcal B|+c.
 ```
 
+The displayed integer matrix below is only one coordinate realization. Its
+semantic rows are indexed by buses ``i\in\mathcal B`` and its columns by
+identified lines ``\ell\in\mathcal L``. If ``\kappa_{\mathcal B}`` and
+``\kappa_{\mathcal L}`` enumerate those sets, then the stored array satisfies
+
+```math
+\bigl[\mathbf A\bigr]_{\kappa_{\mathcal B}(i),\kappa_{\mathcal L}(\ell)}
+=A_{i\ell}.
+```
+
+This distinction matters even in this small example: the line labels ``q``
+and ``r`` are not row or column numbers, and the cycle labels
+``\mathcal C_q,\mathcal C_t,\mathcal C_v`` are not required to be integers.
+The integer ordering is useful for computation; the labelled incidence is what
+retains the identity of parallel members.
+
 This count uses identified lines. Deduplicating endpoint pairs before counting
 cycles gives a different graph and can give a different answer.
 
@@ -118,6 +134,12 @@ u&0&0&0
 \qquad
 \mathbf A\mathbf C=\mathbf 0.
 ```
+
+Equivalently, write the relation without choosing storage coordinates as
+``C_{\ell\gamma}`` for ``\ell\in\mathcal L`` and
+``\gamma\in\Gamma``. The equation ``A_{i\ell}C_{\ell\gamma}`` is then a
+finite labelled sum over the shared line index ``\ell``. This is the same
+label-before-coordinate principle used for nodal blocks and terminal maps.
 
 Cycle bases are not unique. A *minimum* cycle basis additionally requires
 nonnegative edge weights and minimizes total basis weight
