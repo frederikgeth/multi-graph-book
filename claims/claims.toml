@@ -17,6 +17,38 @@ review_date = ""
 unresolved_issue = ""
 
 [[claim]]
+claim_id = "PRESERVE-001"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision', 'provenance']
+chapter = "docs/src/foundations/preservation-contracts.md"
+claim_text = "Equivalence of two power-network models is indexed by a declared observation family and admissible input set; equality of an unconstrained terminal relation alone does not establish equality of constrained feasible observable sets."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "formal_observation_indexed_definition_and_reader_facing_contract"
+citation_keys = []
+model_scope = "finite power-network models with declared feasible sets and observation maps"
+assumptions = "the observation family and admissible input set are part of the equivalence statement"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Obtain independent review of the observation-indexed equivalence vocabulary and connect it to additional solver interfaces."
+
+[[claim]]
+claim_id = "TRANSFORM-SEM-001"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision', 'provenance']
+chapter = "docs/src/foundations/transformation-semantics-register.md"
+claim_text = "Transformation certificates should distinguish typed structure, constitutive behaviour, decision semantics, and provenance; a structure-changing rewrite may remain exact for a narrower observation family only when its forgotten information, target closure, and recovery or constraint maps are declared."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "four-layer_semantics_definition_and_transformation_register"
+citation_keys = []
+model_scope = "typed power-network transformations and compiled graph views"
+assumptions = "target factor libraries and preservation dimensions are explicitly declared"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add independently reviewed formal signatures for closure and composition across larger transformation families."
+
+[[claim]]
 claim_id = "VOCAB-BRIDGE-001"
 preservation_dimensions = ['structure', 'state', 'decision', 'provenance']
 chapter = "docs/src/start/one-network-five-languages.md"

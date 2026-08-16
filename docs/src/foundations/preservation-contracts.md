@@ -89,7 +89,7 @@ Every transformation record should contain:
 | `provenance` | source-to-target and target-to-source object maps |
 | `recovery_map` | reconstruction of eliminated variables where possible |
 | `constraint_map` | exact, conservative or approximate lifting of limits |
-| `error_bound` | norm, domain and bound for approximate transformations |
+| `error_bound` **(v1.2 proposal)** | norm, domain and bound for approximate transformations |
 | `evidence` | theorem, derivation, test suite, or external reference |
 
 ## Exact, conservative, and approximate maps

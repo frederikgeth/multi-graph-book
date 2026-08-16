@@ -1,26 +1,28 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:6b3e7cc4d9a8ed7dee3cd4d41e6f97704b80fa719f78ebcc7a786d571a03a5e1 -->
+<!-- generated-from claims/claims.toml sha256:edfb4740f7b7ff593d47236014a7b017d20207e24e1a30e8a744422b31b2ec25 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 91
-**Indexed chapters:** 39
+**Indexed claims:** 93
+**Indexed chapters:** 41
 
 ## Claims by type
 
-### `definition` (5)
+### `definition` (7)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
 | `GROUND-SCOPE-001` — Reference, neutral, earth-return, and grounding-asset semantics are distinct model objects; reductions involving them must declare an earth-return class, grounding points, retained observations, and recovery data. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `self-checked` |
 | `NUMERICAL-001` — Representation and reduction choices have numerical consequences that must be reported separately from electrical preservation: coordinate scaling changes conditioning without changing an invertible solution set, Jacobian dependency graphs need not equal physical graphs, Schur elimination can create fill-in, and decision certificates require residual/error estimates and margins. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
+| `PRESERVE-001` — Equivalence of two power-network models is indexed by a declared observation family and admissible input set; equality of an unconstrained terminal relation alone does not establish equality of constrained feasible observable sets. | [Preservation contracts](../foundations/preservation-contracts.md) | `self-checked` |
 | `RATING-001` — A power-network rating must identify its constrained asset or terminal, measured quantity and feasible region, duration, ambient/scenario validity, and ownership/provenance before a transformation can claim to preserve it. | [Rating and limit semantics](../foundations/rating-semantics.md) | `self-checked` |
 | `THESIS-001` — Representation adequacy is evaluated relative to declared observations, constraints, and decisions. | [Scope and thesis](../foundations/scope-and-thesis.md) | `self-checked` |
 | `TOPOLOGY-001` — For a fixed switch state, topological nodes are the connected components of the closed-switch connectivity graph; compiling them into bus--branch buses is a state-conditioned quotient that requires provenance and does not preserve switching decisions by itself. | [Node--breaker, bus--breaker, and topology processing](../foundations/node-breaker-topology-processing.md) | `self-checked` |
+| `TRANSFORM-SEM-001` — Transformation certificates should distinguish typed structure, constitutive behaviour, decision semantics, and provenance; a structure-changing rewrite may remain exact for a narrower observation family only when its forgotten information, target closure, and recovery or constraint maps are declared. | [Transformation semantics and register](../foundations/transformation-semantics-register.md) | `self-checked` |
 
 ### `empirical` (41)
 
@@ -133,7 +135,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | Verification | Claims |
 | --- | ---: |
 | `independently-implemented` | 5 |
-| `self-checked` | 86 |
+| `self-checked` | 88 |
 
 ## Unresolved issues
 
@@ -184,6 +186,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `PRACTICE-ADAPTER-001` | Compare the contract against additional utility, CIM/CGMES, OpenDSS, and solver-native adapters with external domain review. |
 | `PRACTICE-ARCH-001` | Compare the implementation contract with an independently reviewed package boundary and broader source-data adapters. |
 | `PRACTICE-IMPEDANCE-001` | Exercise the contract on source-backed overhead and underground construction records and obtain independent power-engineering review. |
+| `PRESERVE-001` | Obtain independent review of the observation-indexed equivalence vocabulary and connect it to additional solver interfaces. |
 | `RATING-001` | Map selected utility and software rating fields into the typed limit record. |
 | `TOPOLOGY-001` | Add a generated node--breaker fixture with open, closed, and unknown switch states. |
 | `TR-COMP-001` | Prove associativity modulo certificate serialization and strengthen compatibility checks beyond object identity. |
@@ -228,6 +231,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `TR-XFMR-008` | This is a finite local witness, not a global unbalanced OPF guarantee; extend the contract to richer multiwinding controls, topology decisions, and independently assembled physical models. |
 | `TR-XFMR-009` | This remains a finite local path witness, not a global unbalanced multi-period OPF guarantee; extend to richer controls, topology decisions, switching operation limits, and independently assembled physical models. |
 | `TR-XFMR-010` | Extend operation-count, dwell-time, deadband, and switching-cost semantics to richer multiwinding controls and globally certified multi-period OPF models. |
+| `TRANSFORM-SEM-001` | Add independently reviewed formal signatures for closure and composition across larger transformation families. |
 | `VOCAB-BRIDGE-001` | Obtain terminology review from representatives of power engineering, software and network data, mathematical modelling, graph theory, and graph machine learning. |
 
 ## Facet indexes
@@ -321,7 +325,7 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `representation` (45)
+### `representation` (47)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -363,6 +367,7 @@ schema is normalised.
 | `NUMERICAL-003` — In the pinned nonlinear two-bus parallel-member witness, retaining two explicit member-current laws produces a 6-by-7 residual Jacobian and 13-by-13 KKT pattern, while the summed-current aggregate produces a 4-by-5 Jacobian and 9-by-9 KKT pattern; symbolic fill changes with elimination order in both formulations. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `empirical` |
 | `PRACTICE-ADAPTER-001` — A safe source-to-canonical adapter should publish stable identities, terminal maps, state and control treatment, factor and rating mappings, generated-object provenance, unsupported fields, validation findings, and declared recovery checks before downstream graph transformations are trusted. | [From source data to a canonical network model](../foundations/source-to-canonical-model.md) | `practice` |
 | `PRACTICE-IMPEDANCE-001` — A safe impedance adapter should retain conductor order and terminal maps, units and frequency, geometry or linecode provenance, earth-return assumptions, matrix diagnostics, shunt placement, and the limits and decisions that use the resulting coordinates. | [From conductor geometry to impedance fidelity](../foundations/impedance-fidelity-ladder.md) | `practice` |
+| `PRESERVE-001` — Equivalence of two power-network models is indexed by a declared observation family and admissible input set; equality of an unconstrained terminal relation alone does not establish equality of constrained feasible observable sets. | [Preservation contracts](../foundations/preservation-contracts.md) | `definition` |
 | `RATING-001` — A power-network rating must identify its constrained asset or terminal, measured quantity and feasible region, duration, ambient/scenario validity, and ownership/provenance before a transformation can claim to preserve it. | [Rating and limit semantics](../foundations/rating-semantics.md) | `definition` |
 | `THESIS-001` — Representation adequacy is evaluated relative to declared observations, constraints, and decisions. | [Scope and thesis](../foundations/scope-and-thesis.md) | `definition` |
 | `TOPOLOGY-001` — For a fixed switch state, topological nodes are the connected components of the closed-switch connectivity graph; compiling them into bus--branch buses is a state-conditioned quotient that requires provenance and does not preserve switching decisions by itself. | [Node--breaker, bus--breaker, and topology processing](../foundations/node-breaker-topology-processing.md) | `definition` |
@@ -370,6 +375,7 @@ schema is normalised.
 | `TR-GRAPH-002` — An identified line is a multigraph bridge exactly when its simple endpoint edge is a bridge and its parallel fibre is a singleton; consequently the identified multigraph is a forest exactly when its simple projection is a forest and every edge fibre is a singleton. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `theorem` |
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
+| `TRANSFORM-SEM-001` — Transformation certificates should distinguish typed structure, constitutive behaviour, decision semantics, and provenance; a structure-changing rewrite may remain exact for a narrower observation family only when its forgotten information, target closure, and recovery or constraint maps are declared. | [Transformation semantics and register](../foundations/transformation-semantics-register.md) | `definition` |
 
 ### `software-and-data` (23)
 

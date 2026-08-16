@@ -31,6 +31,15 @@ def main() -> int:
         for match in ADMONITION.finditer(text):
             label = match.group(1)
             total += 1
+            # Documenter admonitions require a genuinely indented body.  An
+            # empty callout is easy to create when editing a long chapter and
+            # silently turns the following prose into ordinary body text.
+            line_end = text.find("\n", match.end())
+            body_start = len(text) if line_end < 0 else line_end + 1
+            body_line = text[body_start:].splitlines()[0] if body_start < len(text) else ""
+            if not body_line.startswith("    "):
+                line = text.count("\n", 0, match.start()) + 1
+                failures.append(f"{path.relative_to(ROOT)}:{line}: callout body must be indented by four spaces")
             if label not in ALLOWED:
                 line = text.count("\n", 0, match.start()) + 1
                 failures.append(f"{path.relative_to(ROOT)}:{line}: unknown callout {label!r}")

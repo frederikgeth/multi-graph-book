@@ -18,8 +18,8 @@ not masquerade as completion of the others.
 
 The repository is a locally validated HTML-first release candidate. The
 curated PDF is a secondary serialization of the same Markdown sources. The
-current checks cover 91 registered claims, 62 audited SVG/PNG pairs, 534 local
-links, the aggregate experiment suite, the HTML build, and a 307-page PDF.
+current checks cover 93 registered claims, 62 audited SVG/PNG pairs, 539 local
+links, the aggregate experiment suite, the HTML build, and a 308-page PDF.
 The high-risk 2026-08-15 review findings, the 2026-08-16 vocabulary and
 multi-port-lowering reviews, and the canonical-model section review have been
 repaired. Those automated and supplied
@@ -45,6 +45,25 @@ reviews remain technical evidence, not external human peer review.
 **Exit criterion:** the Part I reference and numerical chapters agree with the
 executed witness fields, use unambiguous notation, and are present in both
 reader-facing serialisations.
+
+### Transformation-language review tranche (complete)
+
+- [x] repair the neutral-rating admonition indentation and bare ``\leq``
+  command, and make the callout and math hygiene checks gate these failures;
+- [x] split the long Kron witness by fixture and question, with one scope table
+  covering the running-network, earth/grounding, state-dependent, and five-bus
+  claims;
+- [x] register definition claims for observation-indexed preservation
+  contracts and the four-layer transformation semantics register;
+- [x] mark the v1.2-only `error_bound` field at the table row where it is
+  proposed rather than current-schema-required;
+- [x] place the guarded-rule gate figure at the first executable series rule;
+- [x] extend the math lint from isolated ``ell``/``Pi`` checks to a controlled
+  set of commonly mistyped bare TeX command names.
+
+**Exit criterion:** transformation chapters have auditable callouts, explicit
+scope boundaries, definition-level ledger coverage, and a visible guarded-rule
+template before the later transformation cases.
 
 M1 (integrity and reproducibility) is complete. M2 (reduction evidence) and M3
 (graph architecture) satisfy their scoped book claims; their remaining broad

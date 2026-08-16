@@ -60,6 +60,12 @@ external element. The coupled case is treated separately below.
 
 ## Guards
 
+![The guarded series rewrite: inspect, certify, or reject before lowering.](../assets/guarded-rule-gate.png)
+
+The gate is the operational pattern used by the executable rule: a candidate
+rewrite is accepted only after its structural, constitutive, decision, and
+provenance preconditions have been checked.
+
 The source type supplies a precondition before the junction guards are even
 considered: **both factors are series-only multiconductor elements**. A
 nominal-``\pi`` or other shunted factor is outside this rule. A shunt carried

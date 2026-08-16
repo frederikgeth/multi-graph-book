@@ -105,18 +105,17 @@ that relation as a permitted collection of bus--branch devices is a separate
 synthesis or compilation problem.
 
 !!! warning "Decision-model consequence"
-
-Eliminating a neutral voltage does not eliminate the neutral conductor's
-current rating. If the source relation gives the neutral branch current as
-``I_n=A_{nB}v_B+A_{nI}v_I`` and Kron recovery gives
-``v_I=Y_{II}^{-1}(i_I-Y_{IB}v_B)``, then the reduced decision model must retain
-the recovered constraint
-``|A_{nB}v_B+A_{nI}Y_{II}^{-1}(i_I-Y_{IB}v_B)|leq\bar I_n`` (or its declared
-multiconductor norm). The boundary Schur complement alone is not enough for
-an OPF, hosting-capacity, protection, or contingency problem that observes
-that neutral limit. The constraint may be omitted only when the neutral rating
-is genuinely outside the observation set or is proved redundant by a separate
-certificate.
+    Eliminating a neutral voltage does not eliminate the neutral conductor's
+    current rating. If the source relation gives the neutral branch current as
+    ``I_n=A_{nB}v_B+A_{nI}v_I`` and Kron recovery gives
+    ``v_I=Y_{II}^{-1}(i_I-Y_{IB}v_B)``, then the reduced decision model must retain
+    the recovered constraint
+    ``|A_{nB}v_B+A_{nI}Y_{II}^{-1}(i_I-Y_{IB}v_B)|\leq\bar I_n`` (or its declared
+    multiconductor norm). The boundary Schur complement alone is not enough for
+    an OPF, hosting-capacity, protection, or contingency problem that observes
+    that neutral limit. The constraint may be omitted only when the neutral rating
+    is genuinely outside the observation set or is proved redundant by a separate
+    certificate.
 
 ## Typed multiconductor Kron reduction
 
@@ -288,6 +287,26 @@ an identification of turns ratios, leakage parameters, or grounding data.
 
 ### Direct running-network line witness
 
+The witness family is split by the question it answers rather than presented
+as one undifferentiated Kron example:
+
+| claims | fixture/question | what varies | what changes | not claimed |
+| --- | --- | --- | --- | --- |
+| `TR-KRON-NEUTRAL-001` | running four-conductor line midpoint | retained midpoint and neutral limit | recovered neutral current changes feasibility | physical rating generality; nonlinear loads |
+| `TR-KRON-NEUTRAL-002` | explicit five-conductor earth coordinate | neutral--earth bond and earth terminal | neutral and earth KCL currents remain separate | standards-aligned grounding/protection |
+| `TR-KRON-NEUTRAL-003` | two explicit grounding points | two bond locations | both bond-current observations survive | one aggregate neutral constraint |
+| `TR-KRON-NEUTRAL-004` | grounding-impedance sensitivity | two declared impedance pairs | neutral current and feasibility classification | uncertainty quantification |
+| `TR-KRON-NEUTRAL-005` | one state-dependent bond | endpoint state | frozen nominal map leaves residual; recomputation restores it | global nonlinear theorem |
+| `TR-KRON-NEUTRAL-006` | two state-dependent bonds | endpoint state and two maps | segment currents and residual change | global continuation/protection |
+| `TR-KRON-NEUTRAL-007` | finite continuation | five endpoint states | neutral-limit margin changes | adaptive/global continuation |
+| `TR-KRON-NEUTRAL-008` | local derivative bound | perturbation scale | recomputed Jacobian reduces local error | global error bound |
+| `TR-KRON-FIVE-001`, `-002` | five-bus scalar pendant/non-pendant cases | eliminated bus and retained boundary | exact recovery; non-pendant elimination creates fill | general multiconductor closure |
+
+The table is the scope summary; the paragraphs below retain the construction
+details needed to reproduce each check.
+
+#### Running-network line and explicit neutral recovery
+
 The canonical running fixture now has a direct typed-Kron check in
 `experiments/generated/running-network-typed-kron-witness.json`. Line ``l_1``
 is split into two equal four-conductor series sections, with the midpoint
@@ -296,35 +315,28 @@ original ``i_1``--``i_2`` line primitive to below ``10^{-11}`` and recovers the
 midpoint voltage ``(U_{i_1}+U_{i_2})/2`` to the same tolerance. Terminal order,
 bus identity, and the four-conductor boundary are retained explicitly.
 
-This closes direct fixture coverage for a linear series line in the running
-network. It does not extend the claim to shunt elimination, constant-power
-loads, transformer internal states, or a nonlinear study model; those remain
-separate map families in the coverage matrix.
-
 The same artifact carries a deliberately tight neutral-limit witness. The
 four-conductor midpoint is eliminated, but the recovered neutral current is
 ``(-0.0430252+0.0197760\,\mathrm i)`` p.u. on both half-sections. A declared
 limit of ``0.0426173`` p.u. is therefore violated by this boundary point. The
 test records that the current recovery is exact and that dropping the neutral
 constraint would accept a point the source model rejects. This is claim
-`TR-KRON-NEUTRAL-001`: a decision-preservation witness, not a claim about the
-fixture's physical rating.
+`TR-KRON-NEUTRAL-001`.
 
 The companion
 `experiments/generated/neutral-kron-independent-reproduction.json` reconstructs
 the four-conductor impedance and midpoint recovery with a separate
 standard-library complex solver. It matches both half-section neutral currents,
 reproduces the exact recovery identity, and retains the deliberately violated
-limit. The reproduction is still scoped to the linear series fixture; shunts,
-nonlinear loads, and explicit earth-return factors require separate contracts.
+limit.
 
 The same witness now includes a midpoint neutral-to-reference shunt probe. The
 shunt changes the recovered neutral current from the series-only value, adds a
 reference-current term to the midpoint KCL, and retains a separate neutral
 limit evaluation. Its KCL residual is below ``10^{-11}``, and the independent
-reproduction checks the shunted currents as well as the series case. This is a
-linear shunt-aware probe; nonlinear loads and explicit earth-return factors are
-still outside the contract.
+reproduction checks the shunted currents as well as the series case.
+
+#### Explicit earth coordinate and grounding-parameter sensitivity
 
 The next probe makes the earth-return coordinate explicit rather than treating
 it as an unnamed reference. In `TR-KRON-NEUTRAL-002`, a synthetic five-conductor
@@ -333,10 +345,8 @@ midpoint neutral--earth bond. Kron recovery reports separate neutral and earth
 currents, verifies their KCL equations with opposite bond-current signs, and
 evaluates the neutral current limit on the recovered half-section. The companion
 `experiments/generated/explicit-earth-kron-independent-reproduction.json` uses a
-separate standard-library complex solver. This is deliberately a linear
-structure-and-decision witness, not a standards-aligned grounding, protection,
-or nonlinear earth-return model; collapsing ``e`` into ``n`` would erase the
-observed bond-current relation.
+separate standard-library complex solver. Collapsing ``e`` into ``n`` would
+erase the observed bond-current relation.
 
 The same artifact adds a two-grounding-point extension, `TR-KRON-NEUTRAL-003`.
 A three-segment five-conductor chain has explicit internal points ``m_1`` and
@@ -344,9 +354,7 @@ A three-segment five-conductor chain has explicit internal points ``m_1`` and
 verify separate neutral and earth KCL at both points, and both bond currents
 remain observable after the two internal blocks are eliminated. This is the
 smallest useful warning against replacing a distributed grounding structure by
-one aggregate neutral constraint. The probe and its independent reproduction
-remain synthetic linear evidence; nonlinear grounding, uncertain impedances,
-and protection studies are outside scope.
+one aggregate neutral constraint.
 
 Finally, `TR-KRON-NEUTRAL-004` holds the topology and terminal order fixed while
 sweeping four declared pairs of grounding impedances. The recovered neutral
@@ -355,18 +363,20 @@ changes feasibility classification: the structural Kron and KCL checks remain
 valid, but the decision observation does not. The generated sweep and its
 standard-library reproduction therefore separate structure preservation from
 parameter-dependent feasible-set preservation. This is a finite sensitivity
-probe, not an uncertainty quantification or standards-aligned grounding study.
+probe.
+
+#### State-dependent grounding bonds
 
 The next boundary is local state dependence. In `TR-KRON-NEUTRAL-005`, the
 neutral--earth bond current is defined by an illustrative voltage-dependent law
-``i_{ne}=y_0(1+\alpha|V_n-V_e|^2)(V_n-V_e)``. After an endpoint state shift, the
+``i_{ne}=y_0(1+\alpha_{\mathrm g}|V_n-V_e|^2)(V_n-V_e)``. Here
+``\alpha_{\mathrm g}`` is a grounding-law coefficient, distinct from the
+served-load decision ``\alpha`` used in the parallel-line cases. After an
+endpoint state shift, the
 nominal bond map leaves a nonzero nonlinear residual and a different recovered
 neutral current; a local Newton solve with the bond recomputed at the shifted
 state restores the relation and re-evaluates the neutral limit. The independent
-reproduction uses a separate finite-difference Newton implementation. This is
-local synthetic evidence for state-conditioned recomputation, not a global
-nonlinear grounding theorem, continuation result, uncertainty set, or
-standards-aligned protection model.
+reproduction uses a separate finite-difference Newton implementation.
 
 The distributed version is also exercised locally in `TR-KRON-NEUTRAL-006`.
 The three-segment chain has two voltage-dependent neutral--earth bonds. After
@@ -374,18 +384,14 @@ the same endpoint shift, freezing both nominal bond maps leaves a nonzero chain
 residual and changes the recovered neutral currents on the three segments; a
 two-point Newton solve with both maps recomputed restores the local relation.
 The companion standard-library reproduction checks the midpoint values and
-residuals. This remains local synthetic evidence: global continuation,
-uncertainty sets, and standards-aligned grounding or protection models remain
-open.
+residuals.
 
 `TR-KRON-NEUTRAL-007` records a finite endpoint-state continuation of that
 two-point chain at ``\lambda\in\{0,0.25,0.5,0.75,1\}``. Each state is solved
 with both nonlinear bond maps recomputed; the five nonlinear residuals remain
 small and the fixed ``0.05`` p.u. neutral limit changes classification along the
 path. Reusing the nominal map fails away from ``\lambda=0``. The independent
-reproduction checks every continuation row. This is a finite local path, not
-adaptive/global continuation, uncertainty quantification, or a protection
-study.
+reproduction checks every continuation row. This is a finite local path.
 
 `TR-KRON-NEUTRAL-008` adds a local derivative certificate for the same
 illustrative voltage-dependent neutral--earth bond law. At a declared base
@@ -395,18 +401,16 @@ whereas the recomputed Jacobian gives the smaller local linearisation error;
 the error decreases as the declared step is reduced. The generated
 `experiments/generated/nonlinear-grounding-local-bound-witness.json` records
 the Jacobian, residuals, step scales, and interpretation. This is a local
-Taylor/conditioning check, not a global continuation theorem, a protection
-model, or a standards-aligned grounding result.
+Taylor/conditioning check.
+
+#### Five-bus scalar reductions
 
 The five-bus companion
 `experiments/generated/five-bus-typed-kron-witness.json` covers the scalar
 pendant case directly. Eliminating bus ``m`` through its sole incident line
 ``u`` gives the same retained ``Y``-bus as deleting that leaf line from the
 graph, and the recovered boundary current matches the full nodal relation to
-machine precision. This is claim `TR-KRON-FIVE-001`. Because the eliminated
-block is a pendant scalar branch with no independent internal injection, this
-does not generalize by itself to non-pendant eliminations, shunts, or retained
-branch limits.
+machine precision. This is claim `TR-KRON-FIVE-001`.
 
 The same witness also eliminates the non-pendant bus ``\ell`` while retaining
 ``i,j,k,m``. Boundary-current recovery remains exact, but the Schur complement
@@ -664,8 +668,8 @@ The fixture now also exposes the boundary-support distinction directly. An
 admittance and fixed base injection, but supplies the explicit support term
 
 ```math
-Delta mathbf i_B^{mathrm{support}}
-  =mathbf K_I(mathbf i_I-mathbf i_I^{mathrm{base}}).
+\Delta \mathbf i_B^{\mathrm{support}}
+  =\mathbf K_I(\mathbf i_I-\mathbf i_I^{\mathrm{base}}).
 ```
 
 For the declared fixed-current linear fixture this support term makes the
@@ -721,7 +725,7 @@ decision boundary.
 
 The generated `nonlinear-ward-witness.json` takes one deliberately small step
 toward the AC case. Its eliminated state has a constant-power injection, so
-the internal current is ``mathbf i_I(mathbf v_I)=overline{mathbf S/mathbf
+the internal current is ``\mathbf i_I(\mathbf v_I)=\overline{\mathbf S/\mathbf
 v_I}`` and the exact state is found with a damped Newton solve. The Ward
 target still freezes the base internal current. For each scenario the witness
 reports the nonlinear residual at the Ward state, a local inverse-Jacobian
