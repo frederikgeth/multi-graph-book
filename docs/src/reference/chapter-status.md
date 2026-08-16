@@ -1,6 +1,6 @@
 # [Chapter status](@id chapter-status)
 
-<!-- generated-from claims/claims.toml sha256:3422f108f5d5138e01cfddd0e4eb6b54b67e4537ea1814291e54f91140581610 -->
+<!-- generated-from claims/claims.toml sha256:6b3e7cc4d9a8ed7dee3cd4d41e6f97704b80fa719f78ebcc7a786d571a03a5e1 -->
 This page is generated from the claims ledger. It makes the evidence state visible without
 requiring readers to inspect TOML or generated JSON files. Claim absence means the page is
 tracked as explanatory, definitional, or proposed material rather than silently treated as a

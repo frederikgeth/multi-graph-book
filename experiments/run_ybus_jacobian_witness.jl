@@ -28,6 +28,14 @@ function matrix_summary(A; atol=1.0e-12)
     dense = Matrix(A)
     scaled = Diagonal([max(norm(dense[row, :]), atol)^-1 for row in axes(dense, 1)]) * dense
     scaled = scaled * Diagonal([max(norm(scaled[:, col]), atol)^-1 for col in axes(scaled, 2)])
+    singular_values = svdvals(dense)
+    scaled_singular_values = svdvals(scaled)
+    numerical_rank = rank(dense; atol=atol)
+    scaled_rank = rank(scaled; atol=atol)
+    # `cond` is not a useful finite diagnostic once the matrix is rank deficient:
+    # tiny singular values below the modelling tolerance are not resolvable data.
+    effective_condition = numerical_rank == 0 ? Inf : singular_values[1] / singular_values[numerical_rank]
+    equilibrated_effective_condition = scaled_rank == 0 ? Inf : scaled_singular_values[1] / scaled_singular_values[scaled_rank]
     Dict(
         "rows" => size(dense, 1),
         "cols" => size(dense, 2),
@@ -35,6 +43,12 @@ function matrix_summary(A; atol=1.0e-12)
         "condition_2" => cond(dense),
         "equilibrated_condition_2" => cond(scaled),
         "rank_atol" => rank(dense; atol=atol),
+        "numerical_rank" => numerical_rank,
+        "equilibrated_numerical_rank" => scaled_rank,
+        "rank_deficient" => numerical_rank < size(dense, 2),
+        "effective_condition_2" => effective_condition,
+        "equilibrated_effective_condition_2" => equilibrated_effective_condition,
+        "smallest_resolved_singular_value" => singular_values[numerical_rank],
         "max_transpose_residual" => maximum(abs.(dense .- transpose(dense))),
         "entries" => sparse_entries(dense; atol),
     )

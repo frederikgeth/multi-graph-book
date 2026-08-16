@@ -6,7 +6,16 @@
     "reciprocal_complex_symmetry": true
   },
   "linearized_ybus": {
+    "numerical_rank": 18,
+    "smallest_resolved_singular_value": 3.5399035268078184e-7,
+    "condition_2": 248671841761487744,
+    "equilibrated_effective_condition_2": 1.1265511172241874e7,
+    "equilibrated_condition_2": 23625553308796232,
+    "equilibrated_numerical_rank": 18,
+    "effective_condition_2": 6.498577772197349e8,
     "rows": 20,
+    "rank_deficient": true,
+    "nnz_atol": 166,
     "entries": [
       {
         "real": 4.581533455676849,
@@ -1005,11 +1014,8 @@
         "col": 20
       }
     ],
-    "nnz_atol": 166,
-    "condition_2": 248671841761487744,
-    "equilibrated_condition_2": 23625553308796232,
-    "cols": 20,
     "max_transpose_residual": 1.790180836524724e-15,
+    "cols": 20,
     "rank_atol": 18
   },
   "claim_id": "NUMERICAL-002",
@@ -1022,7 +1028,16 @@
     "linearized_fold": "constant_z"
   },
   "realified_current_jacobian": {
+    "numerical_rank": 36,
+    "smallest_resolved_singular_value": 3.5399035259894956e-7,
+    "condition_2": 447881501892372224,
+    "equilibrated_effective_condition_2": 1.1265511171705713e7,
+    "equilibrated_condition_2": 78174181825276320,
+    "equilibrated_numerical_rank": 36,
+    "effective_condition_2": 6.498577773699632e8,
     "rows": 40,
+    "rank_deficient": true,
+    "nnz_atol": 664,
     "entries": [
       {
         "real": 4.581533455676849,
@@ -5009,17 +5024,23 @@
         "col": 40
       }
     ],
-    "nnz_atol": 664,
-    "condition_2": 447881501892372224,
-    "equilibrated_condition_2": 78174181825276320,
-    "cols": 40,
     "max_transpose_residual": 448.78857286441877,
+    "cols": 40,
     "rank_atol": 36
   },
   "model_scope": "BMOPFTools passive and constant-Z linearized Ybus for running-network fixture v0.1.0",
   "witness_id": "NUM-YBUS-001",
   "passive_ybus": {
+    "numerical_rank": 18,
+    "smallest_resolved_singular_value": 3.5399035268078184e-7,
+    "condition_2": 248671841761487744,
+    "equilibrated_effective_condition_2": 1.1265511172241874e7,
+    "equilibrated_condition_2": 23625553308796232,
+    "equilibrated_numerical_rank": 18,
+    "effective_condition_2": 6.498577772197349e8,
     "rows": 20,
+    "rank_deficient": true,
+    "nnz_atol": 166,
     "entries": [
       {
         "real": 4.581533455676849,
@@ -6018,11 +6039,8 @@
         "col": 20
       }
     ],
-    "nnz_atol": 166,
-    "condition_2": 248671841761487744,
-    "equilibrated_condition_2": 23625553308796232,
-    "cols": 20,
     "max_transpose_residual": 1.790180836524724e-15,
+    "cols": 20,
     "rank_atol": 18
   },
   "schema_version": "0.1.0",

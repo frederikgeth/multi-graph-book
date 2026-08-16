@@ -302,6 +302,13 @@ show a different fine-grained pattern. Say **complex-labelled graph** or
 **realified coordinate graph**, not “the complex graph” or “the real graph,”
 unless the coordinate convention is explicitly part of the sentence.
 
+One important invariant does not survive unchanged. Even when ``\mathbf Y`` is
+complex-transpose-symmetric, ``\mathcal R(\mathbf Y)`` is generally not an
+ordinary symmetric real matrix unless ``\mathbf B=0``. Realification preserves
+the coordinate relation and its support, but it changes which matrix symmetry
+statement is appropriate; do not silently transfer reciprocity claims from
+the complex representation to the realified one.
+
 The four-view bridge in [How to read power-network diagrams and equations](@ref
 how-to-read-diagrams-and-equations) is the reader-facing summary of this
 distinction. Its scoped correspondence is registered as `ARCH-BLOCK-001`: the

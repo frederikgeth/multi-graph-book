@@ -120,13 +120,13 @@ const PAGES_HTML = [
         "BIM/BFM parallel lines: an expressiveness audit" => "cases/bim-bfm-parallel-lines.md",
         "Australian Carson reproduction" => "cases/australian-carson-reproduction.md",
     ],
-    "Part I — Representation landscape" => [
+    "Representation landscape" => [
         "Representation frameworks" => "foundations/formal-representation-frameworks.md",
         "Representation taxonomy (reference card)" => "foundations/representation-taxonomy.md",
         "Maps between representation frameworks (reference card)" => "foundations/representation-maps.md",
         "Circuit formulations and the lowering boundary" => "foundations/circuit-formulations-and-lowering.md",
     ],
-    "Part I — Physical and computational reference" => [
+    "Physical and computational reference" => [
         "Translation traps: graphs, circuits, and power-system language" => "foundations/translation-traps.md",
         "Two topology levels and the nodal projection" => "foundations/two-level-topology-and-nodal-projection.md",
         "Cycles, parallelism, and radial structure" => "foundations/cycles-parallelism-radiality.md",
@@ -138,7 +138,7 @@ const PAGES_HTML = [
         "Data-model crosswalk" => "foundations/data-model-crosswalk.md",
         "Numerical consequences of representation and reduction" => "foundations/numerical-consequences.md",
     ],
-    "Part II — Transformation language" => [
+    "Transformation language" => [
         "Preservation contracts" => "foundations/preservation-contracts.md",
         "Transformation semantics and register" => "foundations/transformation-semantics-register.md",
         "Projection, compilation, and reduction" => "transformations/projection-compilation-reduction.md",
@@ -147,7 +147,7 @@ const PAGES_HTML = [
         "Certificate schema and composition" => "transformations/certificate-schema-and-composition.md",
         "Kron, Ward, and optimized network equivalents" => "transformations/kron-ward-opti-kron.md",
     ],
-    "Part III — Guarded transformation patterns" => [
+    "Guarded transformation patterns" => [
         "Conductor-coordinate normalization" => "transformations/conductor-coordinate-normalization.md",
         "Transformer-winding coordinate normalization" => "transformations/transformer-winding-coordinate-normalization.md",
         "Multiwinding leakage reference compilation" => "transformations/multiwinding-leakage-reference-compilation.md",
@@ -226,6 +226,8 @@ const PAGES_PDF = [
         "BIM/BFM parallel lines: an expressiveness audit" => "cases/bim-bfm-parallel-lines.md",
         "Australian Carson reproduction" => "cases/australian-carson-reproduction.md",
         "Numerical consequences of representation and reduction" => "foundations/numerical-consequences.md",
+        "Rating and limit semantics" => "foundations/rating-semantics.md",
+        "Data-model crosswalk" => "foundations/data-model-crosswalk.md",
     ],
     "Research record" => [
         "Literature map" => "literature/literature-map.md",

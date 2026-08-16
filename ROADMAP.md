@@ -19,11 +19,32 @@ not masquerade as completion of the others.
 The repository is a locally validated HTML-first release candidate. The
 curated PDF is a secondary serialization of the same Markdown sources. The
 current checks cover 91 registered claims, 62 audited SVG/PNG pairs, 534 local
-links, the aggregate experiment suite, the HTML build, and a 301-page PDF.
+links, the aggregate experiment suite, the HTML build, and a 307-page PDF.
 The high-risk 2026-08-15 review findings, the 2026-08-16 vocabulary and
 multi-port-lowering reviews, and the canonical-model section review have been
 repaired. Those automated and supplied
 reviews remain technical evidence, not external human peer review.
+
+### Latest Part I review tranche (complete)
+
+- [x] correct the nonlinear witness prose so primal-variable counts are not
+  confused with KKT dimensions (7 source variables versus 5 aggregate
+  variables; 13 is the source KKT dimension);
+- [x] report rank-aware effective condition estimates for the singular Ybus
+  witness, while retaining the ordinary estimates only as diagnostic signals;
+- [x] state explicitly that complex transpose symmetry need not survive the
+  realified coordinate embedding, and bind that distinction to the generated
+  witness and `NUMERICAL-002` claim;
+- [x] remove the rating-record notation collision by using ``\chi`` for
+  scenario validity and ``\omega`` for provenance/protection ownership;
+- [x] remove duplicate Roman-part labels from the HTML navigation and promote
+  rating semantics and the data-model crosswalk into the curated PDF route;
+- [x] add the translation table from limit dispositions to preservation
+  contracts, with a record-by-record qualification.
+
+**Exit criterion:** the Part I reference and numerical chapters agree with the
+executed witness fields, use unambiguous notation, and are present in both
+reader-facing serialisations.
 
 M1 (integrity and reproducibility) is complete. M2 (reduction evidence) and M3
 (graph architecture) satisfy their scoped book claims; their remaining broad

@@ -1973,6 +1973,12 @@ def main() -> int:
         errors.append("running-network linearized Ybus dimensions or sparsity changed")
     if realified.get("rows") != 40 or realified.get("cols") != 40 or realified.get("nnz_atol") != 664:
         errors.append("running-network realified current Jacobian dimensions or sparsity changed")
+    if passive.get("numerical_rank") != 18 or passive.get("rank_deficient") is not True:
+        errors.append("running-network passive Ybus rank-aware diagnostic changed")
+    if not (6.4e8 < passive.get("effective_condition_2", 0.0) < 6.6e8):
+        errors.append("running-network passive Ybus effective condition changed")
+    if realified.get("numerical_rank") != 36 or realified.get("max_transpose_residual", 0.0) < 400.0:
+        errors.append("running-network realification symmetry diagnostic changed")
     ybus_checks = ybus.get("checks", {})
     for name in ("linearized_matches_passive_at_constant_z", "reciprocal_complex_symmetry", "realification_is_real", "realification_dimension_doubles"):
         if ybus_checks.get(name) is not True:

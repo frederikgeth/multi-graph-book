@@ -163,7 +163,16 @@ The running fixture provides a second, numerical witness through BMOPFTools'
 passive and constant-``Z`` linearized ``Y``-bus exporters. In the exporter's
 node order, the passive matrix has 20 rows and 166 nonzeros. The constant-``Z``
 linearized matrix agrees with that passive matrix for this fixture. Realifying
-the complex current relation gives a 40-by-40 real matrix with 664 nonzeros:
+the complex current relation gives a 40-by-40 real matrix with 664 nonzeros.
+This is a coordinate embedding, not a promise that every complex invariant is
+preserved: the complex Ybus is transpose-symmetric to numerical precision,
+whereas the realified current-Jacobian embedding has a large transpose
+residual. That residual is expected for a nonzero imaginary part: the block
+matrix ``\mathcal R(Y)`` with diagonal blocks ``\Re Y`` and off-diagonal blocks
+``-\Im Y`` and ``\Im Y`` is generally not symmetric. This is not a
+round-off failure. Realification preserves the coordinate support and the
+current relation, but symmetry claims must be stated in the representation in
+which they are checked (the witness residual is approximately ``448.79``):
 
 ```math
 \begin{bmatrix}\Re I\\ \Im I\end{bmatrix}
@@ -177,14 +186,19 @@ the complex current relation gives a 40-by-40 real matrix with 664 nonzeros:
 
 ![Generated passive Ybus and realified current-Jacobian patterns.](../assets/ybus-jacobian-witness.png)
 
-The condition estimate for the unscaled passive matrix is approximately
-``2.49\times10^{17}`` in the reported 2-norm, while simple row/column
-equilibration lowers the recorded estimate to approximately
-``2.36\times10^{16}``. These values are diagnostic, not universal constants:
-they depend on units, node ordering, norm, rank tolerance, and the chosen
-fixture. The matrix has numerical rank 18 at the witness tolerance, so a solver
-must also account for reference and grounding structure rather than treating a
-large condition estimate as a graph invariant.
+The ordinary 2-norm condition estimates are approximately
+``2.49\times10^{17}`` (unscaled) and ``2.36\times10^{16}`` (after simple
+row/column equilibration). Because both matrices are numerically rank
+deficient (rank 18 of 20 at the witness tolerance), those finite values should
+not be read as meaningful condition numbers: they are dominated by singular
+values below the modelling tolerance. The witness therefore also reports the
+rank-aware effective estimates ``\kappa_{\mathrm{eff}}=\sigma_1/\sigma_{18}``
+and its equilibrated counterpart. These are diagnostic, not universal
+constants: they depend on units, node ordering, norm, rank tolerance, and the
+chosen fixture. For this export the effective estimates are approximately
+``6.50\times10^8`` and ``1.13\times10^7`` after equilibration. A solver must
+account for reference and grounding structure rather than treating any of
+these numbers as a graph invariant.
 
 The complete export, including node order, nonzero entries, checks, and the
 linearization convention, is recorded in
@@ -210,11 +224,13 @@ vectors. The aggregate formulation replaces them by one summed current law.
 At the recorded operating point both residuals are exactly zero, but their
 finite-difference Jacobians and KKT patterns differ:
 
-For avoidance of a common counting error, the source witness has four complex
-member-current coordinates, represented as eight real variables, in addition to
-the five retained real coordinates. It therefore has 13 real source variables;
-the aggregate witness has five real variables. The reduction removes eight real
-variables (four complex currents), not six.
+For avoidance of a common counting error, the source witness has two complex
+member-current coordinates, represented as four real variables, in addition to
+the three retained real coordinates. It therefore has seven real source
+variables; the aggregate witness has five real variables. The reduction removes
+two real variables (one complex current), not eight. The source KKT system has
+13 rows and columns because it adds six residual/constraint multipliers; that
+KKT dimension is a different count from the number of primal variables.
 
 ![Nonlinear source and aggregate KKT sparsity and fill witness.](../assets/nonlinear-kkt-witness.png)
 
