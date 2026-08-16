@@ -19,7 +19,9 @@ The central thesis is simple:
 ## A short reading route
 
 Start with [One network, many graphs](@ref one-network-many-graphs), read [How
-to read diagrams and equations](@ref how-to-read-diagrams-and-equations), cross the
+to read diagrams and equations](@ref how-to-read-diagrams-and-equations), then choose the
+[graph and transmission reading guide](@ref reading-guide-graph-and-transmission).
+Cross the
 [five-community vocabulary bridge](@ref one-network-five-languages), then
 follow the five-bus cycle example and [A first failure: heterogeneous parallel
 branches](@ref first-failure-parallel-branches), then unpack the same topology
@@ -59,6 +61,10 @@ returns to the same preservation-contract and evidence language.
   languages](@ref one-network-five-languages), then use the maintained
   [Terminology](@ref) page for compact definitions or the [cross-community
   vocabulary indexes](@ref vocabulary-indexes) for bidirectional lookup.
+- **I know simple graphs or balanced transmission models.** Start with the
+  [graph and transmission reading guide](@ref
+  reading-guide-graph-and-transmission), then follow the route for your
+  background into the shared four-wire and preservation examples.
 - **Which graph is this?** Read [Representation frameworks](@ref
   formal-representation-frameworks), [Representation taxonomy](@ref
   representation-taxonomy), and [Maps between representation frameworks](@ref

@@ -18,8 +18,8 @@ not masquerade as completion of the others.
 
 The repository is a locally validated HTML-first release candidate. The
 curated PDF is a secondary serialization of the same Markdown sources. The
-current checks cover 87 registered claims, 56 audited SVG/PNG pairs, 530 local
-links, the aggregate experiment suite, the HTML build, and a 206-page PDF.
+current checks cover 87 registered claims, 56 audited SVG/PNG pairs, 531 local
+links, the aggregate experiment suite, the HTML build, and a 210-page PDF.
 The high-risk 2026-08-15 review findings and the 2026-08-16 vocabulary and
 multi-port-lowering reviews have been repaired. Those automated and supplied
 reviews remain technical evidence, not external human peer review.
@@ -107,6 +107,22 @@ each view.
 **Exit criterion:** a new reader can read ``Y^{\mathrm N}_{ij}`` as a labelled
 block relation, understand how it becomes an integer-indexed array, and see
 that reordering storage cannot change the underlying network semantics.
+
+### Audience-specific reading guide (complete)
+
+- [x] add parallel onboarding routes for simple-graph readers and balanced
+  transmission readers;
+- [x] name the conceptual leaps: terminal factors, vector-valued buses,
+  multigraph identity, support cycles, n-port devices, lossy terminal
+  quantities, neutral recovery, and formulation boundaries;
+- [x] converge both routes on the first decision counterexample and the
+  preservation-contract language;
+- [x] link the guide from the Start Here navigation and home reading route.
+
+**Exit criterion:** a reader can enter from either simple graph theory or
+balanced transmission modelling, identify what must be expanded or qualified,
+and reach the same multiconductor decision semantics without treating either
+starting model as the universal ontology.
 
 ### Then — literature and external validation
 
