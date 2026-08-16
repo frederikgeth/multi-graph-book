@@ -1,0 +1,277 @@
+schema_version = "0.1.0"
+target_communities = ["power_engineering", "software_data", "mathematical_modelling", "graph_theory", "graph_machine_learning"]
+shared_technical_vocabularies = ["circuit_theory"]
+relation_classes = ["exact_alias", "scoped_alias", "broader_narrower", "representation_dependent", "false_friend"]
+usage_statuses = ["preferred_house_term", "accepted_qualified_shorthand", "unsafe_unqualified_term"]
+
+[[concept]]
+id = "object-node-interface"
+house_terms = ["asset", "junction", "port", "terminal", "vertex"]
+relation_class = "representation_dependent"
+usage_status = "unsafe_unqualified_term"
+required_question = "What object type and representation does the word name?"
+unsafe_inference = "Every node is one physical bus."
+definition_path = "docs/src/reference/terminology.md"
+definition_anchor = "terminology-bus"
+power_engineering = ["bus", "node", "terminal"]
+software_data = ["equipment", "terminal", "connectivity node", "topological node"]
+mathematical_modelling = ["node", "variable block", "index"]
+graph_theory = ["vertex", "node"]
+graph_machine_learning = ["node", "node type"]
+circuit_theory = ["node", "terminal", "port"]
+
+[[concept]]
+id = "element-edge-relation"
+house_terms = ["asset", "line", "oriented attachment", "support edge"]
+relation_class = "representation_dependent"
+usage_status = "unsafe_unqualified_term"
+required_question = "What owns identity, and what records attachment or algebraic coupling?"
+unsafe_inference = "Every edge is one physical branch."
+definition_path = "docs/src/reference/terminology.md"
+definition_anchor = "terminology-line"
+power_engineering = ["line", "branch", "circuit"]
+software_data = ["conducting equipment", "branch record", "terminal pair"]
+mathematical_modelling = ["branch", "arc", "relation"]
+graph_theory = ["edge", "arc"]
+graph_machine_learning = ["edge", "edge type", "relation"]
+circuit_theory = ["branch", "one-port", "two-port"]
+
+[[concept]]
+id = "factor"
+house_terms = ["factor", "behavioural relation"]
+relation_class = "false_friend"
+usage_status = "unsafe_unqualified_term"
+required_question = "Does factor mean a behavioural relation, factor-graph node, power factor, or matrix factorization?"
+unsafe_inference = "The shared word denotes the same mathematical object."
+definition_path = "docs/src/foundations/formal-representation-frameworks.md"
+definition_anchor = ""
+power_engineering = ["device model", "power factor"]
+software_data = ["component model", "equipment model"]
+mathematical_modelling = ["constraint relation", "factor"]
+graph_theory = ["factor node", "hyperedge"]
+graph_machine_learning = ["factor node", "relation type"]
+circuit_theory = ["constitutive relation", "multiport"]
+
+[[concept]]
+id = "graph-topology-adjacency"
+house_terms = ["named graph", "typed incidence", "active topology", "support graph"]
+relation_class = "representation_dependent"
+usage_status = "unsafe_unqualified_term"
+required_question = "Which asset, connectivity, factor, equation, support, or message graph is meant?"
+unsafe_inference = "One topology answers every physical and computational query."
+definition_path = "docs/src/foundations/representation-taxonomy.md"
+definition_anchor = "representation-taxonomy"
+power_engineering = ["network graph", "topology", "one-line"]
+software_data = ["node-breaker topology", "bus-branch topology", "connectivity graph"]
+mathematical_modelling = ["equation graph", "dependency graph", "sparsity pattern"]
+graph_theory = ["graph", "adjacency", "incidence structure"]
+graph_machine_learning = ["input graph", "message graph", "adjacency"]
+circuit_theory = ["circuit graph", "network topology", "incidence"]
+
+[[concept]]
+id = "direction-orientation-hierarchy"
+house_terms = ["stored orientation", "terminal sign", "operating transfer", "rooted-tree relation"]
+relation_class = "scoped_alias"
+usage_status = "accepted_qualified_shorthand"
+required_question = "Is direction a stored order, sign convention, operating result, rooted hierarchy, causal relation, or admissibility rule?"
+unsafe_inference = "An arrow predicts physical transfer or permanent upstream/downstream status."
+definition_path = "docs/src/reference/terminology.md"
+definition_anchor = "terminology-directed"
+power_engineering = ["from bus", "to bus", "upstream", "downstream"]
+software_data = ["terminal 1", "terminal 2", "from", "to"]
+mathematical_modelling = ["positive direction", "oriented arc", "causal dependency"]
+graph_theory = ["orientation", "directed edge", "rooted tree"]
+graph_machine_learning = ["message direction", "directed relation"]
+circuit_theory = ["reference direction", "passive sign convention"]
+
+[[concept]]
+id = "flow-current-power-message"
+house_terms = ["series current", "terminal current", "terminal power", "operating transfer", "message"]
+relation_class = "false_friend"
+usage_status = "unsafe_unqualified_term"
+required_question = "Which terminal or internal quantity is meant, and which conservation law applies?"
+unsafe_inference = "One antisymmetric conserved scalar lives on every edge."
+definition_path = "docs/src/reference/terminology.md"
+definition_anchor = "terminology-flow"
+power_engineering = ["power flow", "line flow", "branch current"]
+software_data = ["from-end flow", "to-end flow", "measurement"]
+mathematical_modelling = ["flow variable", "injection", "transfer"]
+graph_theory = ["network flow", "circulation"]
+graph_machine_learning = ["message", "aggregation"]
+circuit_theory = ["branch current", "terminal current", "complex power"]
+
+[[concept]]
+id = "parallel"
+house_terms = ["parallel fibre", "terminal parallelism", "electrical aggregability"]
+relation_class = "broader_narrower"
+usage_status = "accepted_qualified_shorthand"
+required_question = "Do members share endpoints, terminals, a corridor, constitutive data, or operating interchangeability?"
+unsafe_inference = "Parallel members can be merged without a preservation contract."
+definition_path = "docs/src/foundations/cycles-parallelism-radiality.md"
+definition_anchor = "cycles-parallelism-radiality"
+power_engineering = ["parallel lines", "double circuit", "same corridor"]
+software_data = ["duplicate endpoint pair", "parallel equipment records"]
+mathematical_modelling = ["parallel branches", "aggregate branch"]
+graph_theory = ["parallel edges", "edge multiplicity"]
+graph_machine_learning = ["multi-edge", "duplicate relation"]
+circuit_theory = ["parallel connection", "common terminal pair"]
+
+[[concept]]
+id = "cycle-radial-tree"
+house_terms = ["simple cycle", "line-identity cycle", "adjacency-radial", "member-radial", "rooted active-tree view"]
+relation_class = "representation_dependent"
+usage_status = "unsafe_unqualified_term"
+required_question = "In which graph and active state is the cycle, tree, mesh, or radiality claim made?"
+unsafe_inference = "A graph cycle is a circulating physical flow, or radiality is representation independent."
+definition_path = "docs/src/foundations/cycles-parallelism-radiality.md"
+definition_anchor = "cycles-parallelism-radiality"
+power_engineering = ["radial feeder", "mesh", "loop"]
+software_data = ["radial topology", "island", "loop"]
+mathematical_modelling = ["cycle basis", "tree formulation", "radiality constraint"]
+graph_theory = ["cycle", "forest", "bridge", "chord"]
+graph_machine_learning = ["graph cycle", "tree architecture"]
+circuit_theory = ["loop", "mesh", "loop current"]
+
+[[concept]]
+id = "state"
+house_terms = ["electrical state", "equipment state", "scenario", "estimator state", "hidden state"]
+relation_class = "false_friend"
+usage_status = "unsafe_unqualified_term"
+required_question = "Is state an electrical variable, equipment status, scenario, estimator object, or learned hidden representation?"
+unsafe_inference = "One state container gives all meanings the same semantics."
+definition_path = "docs/src/start/one-network-five-languages.md"
+definition_anchor = ""
+power_engineering = ["system state", "operating state", "switch state"]
+software_data = ["status", "profile", "state variable"]
+mathematical_modelling = ["state variable", "scenario", "decision state"]
+graph_theory = ["graph state", "dynamic graph"]
+graph_machine_learning = ["hidden state", "node state", "graph state"]
+circuit_theory = ["circuit state", "initial condition"]
+
+[[concept]]
+id = "rating-limit-constraint"
+house_terms = ["rating", "limit record", "feasible region", "constraint", "binding status"]
+relation_class = "broader_narrower"
+usage_status = "unsafe_unqualified_term"
+required_question = "Is this a source datum, operational policy, mathematical encoding, or solution status?"
+unsafe_inference = "One scalar constraint reproduces the complete equipment limit."
+definition_path = "docs/src/foundations/rating-semantics.md"
+definition_anchor = "rating-semantics"
+power_engineering = ["rating", "thermal limit", "emergency rating"]
+software_data = ["normal amps", "limit set", "operational limit"]
+mathematical_modelling = ["constraint", "bound", "active constraint"]
+graph_theory = ["capacity", "edge weight"]
+graph_machine_learning = ["constraint feature", "feasibility label"]
+circuit_theory = ["admissible region", "device limit"]
+
+[[concept]]
+id = "equivalence-exactness-preservation"
+house_terms = ["preservation contract", "exact normalization", "behavioural equivalence", "decision equivalence"]
+relation_class = "scoped_alias"
+usage_status = "unsafe_unqualified_term"
+required_question = "Which interface, domain, observation, constraint, decision, and recovery object is preserved?"
+unsafe_inference = "Equal terminal equations imply equal feasible decisions and source meaning."
+definition_path = "docs/src/reference/terminology.md"
+definition_anchor = "terminology-equivalent"
+power_engineering = ["equivalent circuit", "network equivalent"]
+software_data = ["equivalent model", "round trip"]
+mathematical_modelling = ["exact reformulation", "relaxation", "equivalent feasible set"]
+graph_theory = ["isomorphism", "quotient", "minor"]
+graph_machine_learning = ["expressive equivalence", "invariant representation"]
+circuit_theory = ["port equivalence", "driving-point equivalence"]
+
+[[concept]]
+id = "transformation-family"
+house_terms = ["projection", "compilation", "normalization", "elimination", "aggregation", "reduction"]
+relation_class = "broader_narrower"
+usage_status = "unsafe_unqualified_term"
+required_question = "Which objects are renamed, generated, forgotten, solved, aggregated, or recoverable?"
+unsafe_inference = "Every transformation merely makes the graph smaller."
+definition_path = "docs/src/foundations/transformation-semantics-register.md"
+definition_anchor = "transformation-semantics-register"
+power_engineering = ["network reduction", "equivalencing", "aggregation"]
+software_data = ["conversion", "topology processing", "compilation"]
+mathematical_modelling = ["elimination", "projection", "reformulation"]
+graph_theory = ["quotient", "contraction", "minor", "coarsening"]
+graph_machine_learning = ["pooling", "coarsening", "readout"]
+circuit_theory = ["network reduction", "equivalent circuit", "elimination"]
+
+[[concept]]
+id = "normalization"
+house_terms = ["coordinate normalization"]
+relation_class = "false_friend"
+usage_status = "unsafe_unqualified_term"
+required_question = "Is normalization changing units, coordinates, schemas, physical parameters, or statistical features?"
+unsafe_inference = "All normalizations preserve the same semantics and admit the same inverse."
+definition_path = "docs/src/transformations/conductor-coordinate-normalization.md"
+definition_anchor = "conductor-coordinate-normalization"
+power_engineering = ["per-unit normalization", "base conversion"]
+software_data = ["schema normalization", "canonical ordering"]
+mathematical_modelling = ["variable scaling", "coordinate normalization"]
+graph_theory = ["canonical labelling", "normal form"]
+graph_machine_learning = ["feature normalization", "graph normalization"]
+circuit_theory = ["reference scaling", "per-unit conversion"]
+
+[[concept]]
+id = "loss"
+house_terms = ["electrical loss", "information loss", "objective function"]
+relation_class = "false_friend"
+usage_status = "unsafe_unqualified_term"
+required_question = "Is loss absorbed power, unrecoverable information, or an optimization/training objective?"
+unsafe_inference = "Reducing one kind of loss reduces the others."
+definition_path = "docs/src/foundations/numerical-consequences.md"
+definition_anchor = "numerical-consequences"
+power_engineering = ["line loss", "network loss"]
+software_data = ["data loss", "loss of provenance"]
+mathematical_modelling = ["objective", "penalty", "loss"]
+graph_theory = ["information loss", "forgotten labels"]
+graph_machine_learning = ["training loss", "objective"]
+circuit_theory = ["dissipation", "absorbed power"]
+
+[[concept]]
+id = "ground-neutral-reference"
+house_terms = ["physical earth", "neutral conductor", "grounding factor", "voltage reference"]
+relation_class = "false_friend"
+usage_status = "unsafe_unqualified_term"
+required_question = "Is this physical earth, a conductor, an impedance or connection, or a gauge reference?"
+unsafe_inference = "All are one zero-voltage node."
+definition_path = "docs/src/reference/terminology.md"
+definition_anchor = "terminology-ground-neutral-reference"
+power_engineering = ["ground", "earth", "neutral", "solidly grounded"]
+software_data = ["node 0", "ground bus", "neutral terminal", "reference bus"]
+mathematical_modelling = ["reference node", "ground constraint", "eliminated neutral"]
+graph_theory = ["distinguished vertex", "contracted ground node"]
+graph_machine_learning = ["ground node", "reference feature", "neutral node"]
+circuit_theory = ["datum node", "ground", "reference", "return conductor"]
+
+[[concept]]
+id = "phase-conductor-sequence-coordinate"
+house_terms = ["asset phase label", "conductor", "terminal coordinate", "phase-domain component", "sequence coordinate"]
+relation_class = "representation_dependent"
+usage_status = "unsafe_unqualified_term"
+required_question = "Does phase name an asset label, physical path, terminal slot, phase-domain component, or transformed coordinate?"
+unsafe_inference = "A matching phase label fixes every terminal and coordinate map."
+definition_path = "docs/src/reference/terminology.md"
+definition_anchor = "terminology-phase-conductor-coordinate"
+power_engineering = ["phase", "phase conductor", "positive sequence"]
+software_data = ["phase code", "terminal number", "conductor order"]
+mathematical_modelling = ["phase index", "coordinate", "sequence component"]
+graph_theory = ["layer", "vertex colour", "fibre coordinate"]
+graph_machine_learning = ["phase feature", "channel", "positional encoding"]
+circuit_theory = ["phase-domain coordinate", "sequence component", "terminal variable"]
+
+[[concept]]
+id = "nodal-operator-alias"
+house_terms = ["declared nodal operator"]
+relation_class = "exact_alias"
+usage_status = "preferred_house_term"
+required_question = "Are the coordinate order and model class fixed, and is the alias restricted to the assembled operator?"
+unsafe_inference = "An operator alias is also an alias for the source network or its assembly decomposition."
+definition_path = "docs/src/foundations/notation-and-conventions.md"
+definition_anchor = ""
+power_engineering = ["Y-bus", "bus admittance matrix"]
+software_data = ["Ybus", "system Y matrix"]
+mathematical_modelling = ["nodal admittance operator", "assembled linear operator"]
+graph_theory = ["weighted support operator"]
+graph_machine_learning = ["physics operator", "graph shift operator"]
+circuit_theory = ["nodal admittance matrix"]

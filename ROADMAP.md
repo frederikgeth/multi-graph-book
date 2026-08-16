@@ -1438,9 +1438,9 @@ while preventing word-level translation from substituting for a typed map.
   translation traps, HTML navigation, and curated PDF route;
 - [x] revise the audience-route diagram so graph theory and graph machine
   learning are explicit rather than implicit audiences;
-- [ ] stabilize the manual collision set, then promote it to a structured
-  vocabulary registry capable of generating community-to-book and
-  book-to-community indexes;
+- [x] stabilize the manual collision set, promote its 17 initial concepts to a
+  structured registry, and generate community-to-book and book-to-community
+  HTML indexes for the five audience routes plus shared circuit vocabulary;
 - [x] complete the first targeted bridge-card audit: computational graph
   identity, electrical/equipment/hidden state, coarsening and pooling,
   normalization, and the three meanings of loss now appear at their
@@ -1451,6 +1451,36 @@ while preventing word-level translation from substituting for a typed map.
 - [ ] seek separate terminology review from representatives of the five
   communities; do not treat internal consistency as evidence that the bridge
   matches every community's practice.
+- [ ] after community review, add or revise registry entries only with a
+  recorded usage witness; do not imply that the controlled book vocabulary is
+  a descriptive standard for any community.
+
+##### Vocabulary-bridge review repair — 2026-08-16
+
+The first focused review accepted the chapter and its placement but found one
+blocking repository gate and several semantic/navigation weaknesses. The
+agreed repair is complete:
+
+- [x] collapse five ad-hoc admonition titles into the single controlled
+  **Vocabulary bridge** callout and update the checker and declared callout
+  vocabulary together;
+- [x] qualify the `Ybus` exact-alias example as an operator alias, not an alias
+  for the network or its assembly decomposition, and make the scoped branch-
+  orientation example state its required qualifier;
+- [x] explain why circuit theory is shared target/technical vocabulary rather
+  than a sixth audience route;
+- [x] promote ground/earth/neutral/reference and
+  phase/conductor/sequence/coordinate into the Start Here collision set and
+  add a third worked neutral-elimination translation;
+- [x] state explicitly that vocabulary-relation classes and editorial-usage
+  statuses are orthogonal, with the house policy owned by the Start Here
+  chapter rather than duplicated in the glossary;
+- [x] make the collision index link to its detailed expansions and add a
+  definition/route column to the house-definition table;
+- [x] redraw the vocabulary figure so the solid bridge path blocks the unsafe
+  inference and a dashed *if untranslated* path bypasses it;
+- [x] add the auditable `VOCAB-BRIDGE-001` engineering-practice claim and bind
+  it to the controlled callout checker.
 
 **Exit criterion:** a reader can start from a familiar community term, locate
 the book's object and required qualifier, identify the unsafe inference, and

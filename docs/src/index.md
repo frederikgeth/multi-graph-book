@@ -33,8 +33,10 @@ and worked cases.
 
 For the complete retrieval surface, use the generated [knowledge-base index](@ref
 knowledge-base-index), which lists claims, artifacts, chapters, open items, and
-their evidence. The [chapter-status table](@ref chapter-status) records the
-scope and verification boundary of each page.
+their evidence. The generated [cross-community vocabulary indexes](@ref
+vocabulary-indexes) translate in both directions between familiar community
+phrases and the book's maintained terms. The [chapter-status table](@ref
+chapter-status) records the scope and verification boundary of each page.
 
 The HTML route is the primary product. The PDF is a shorter argument-shaped
 serialization: it keeps the definitions, counterexamples, contracts,
@@ -52,7 +54,8 @@ returns to the same preservation-contract and evidence language.
 
 - **I recognize the words but not their use here.** Read [One network, five
   languages](@ref one-network-five-languages), then use the maintained
-  [Terminology](@ref) page for lookup.
+  [Terminology](@ref) page for compact definitions or the [cross-community
+  vocabulary indexes](@ref vocabulary-indexes) for bidirectional lookup.
 - **Which graph is this?** Read [Representation frameworks](@ref
   formal-representation-frameworks), [Representation taxonomy](@ref
   representation-taxonomy), and [Maps between representation frameworks](@ref

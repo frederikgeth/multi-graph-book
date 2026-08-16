@@ -159,6 +159,7 @@ const PAGES_HTML = [
     "Reference" => [
         "Notation and modelling conventions" => "foundations/notation-and-conventions.md",
         "Terminology" => "reference/terminology.md",
+        "Cross-community vocabulary indexes" => "reference/vocabulary-indexes.md",
         "Evidence map and verification summary" => "reference/evidence-map.md",
         "Knowledge-base indexes" => "reference/knowledge-base-index.md",
         "Chapter status" => "reference/chapter-status.md",
@@ -301,6 +302,7 @@ function make_latex()
 end
 
 run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_reference_figures.py"))`)
+run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_vocabulary_indexes.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_knowledge_base_indexes.py"))`)
 make_html()
 

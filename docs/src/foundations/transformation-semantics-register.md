@@ -7,7 +7,7 @@ rewrite can preserve a terminal equation while deleting an asset, changing a
 relaxation, or losing a current limit. This chapter gives the vocabulary used
 to say exactly what survived.
 
-!!! note "Coarsening and pooling bridge"
+!!! note "Vocabulary bridge"
     Graph coarsening and learned pooling belong in this register when their
     outputs are used to answer a physical or decision query. Permutation
     equivariance can preserve the effect of renaming source objects; it does

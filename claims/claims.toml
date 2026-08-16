@@ -17,6 +17,22 @@ review_date = ""
 unresolved_issue = ""
 
 [[claim]]
+claim_id = "VOCAB-BRIDGE-001"
+preservation_dimensions = ['structure', 'state', 'decision', 'provenance']
+chapter = "docs/src/start/one-network-five-languages.md"
+claim_text = "Load-bearing statements use a preferred house term or qualified shorthand that declares the relevant representation, quantity, state, and preservation object; an unqualified term is unsafe when it can change the claim."
+status = "engineering_practice"
+claim_type = "practice"
+verification = "self-checked"
+evidence_type = "controlled_editorial_policy_and_callout_audit"
+citation_keys = []
+model_scope = "reader-facing definitions, claims, contracts, figures, and executable-artifact descriptions in this knowledge base"
+assumptions = "community vocabulary relations and editorial usage statuses are treated as orthogonal classifications"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Obtain terminology review from representatives of power engineering, software and network data, mathematical modelling, graph theory, and graph machine learning."
+
+[[claim]]
 claim_id = "TR-PAR-001"
 preservation_dimensions = ['terminal_behavior', 'limits', 'decision']
 chapter = "docs/src/start/first-failure-parallel-branches.md"

@@ -11,7 +11,7 @@ voltage laws. A graph representation does not identify a load model. The
 constitutive relation belongs to the factor or asset layer and must be carried
 through any preservation claim.
 
-!!! note "State vocabulary"
+!!! note "Vocabulary bridge"
     *Electrical state* below means the continuous voltages and currents at an
     operating point. Equipment status, operating scenario, state-estimator
     metadata, load-model parameters, and a learned hidden state are separate

@@ -12,7 +12,7 @@ This book therefore uses a **bridge vocabulary**. It does not ask readers to
 abandon familiar language. It asks them to qualify a familiar term when that
 term carries mathematical, physical, software, or decision meaning.
 
-![Five communities approach the same source model through different vocabularies; the bridge records the object, qualifier, and unsafe inference.](../assets/vocabulary-bridge-five-languages.png)
+![Five communities approach the book's shared semantic anchor through different vocabularies; a dashed bypass shows the unsafe inference made when the bridge is skipped.](../assets/vocabulary-bridge-five-languages.png)
 
 ## The running network in five dialects
 
@@ -42,6 +42,14 @@ transformer. Each community has a useful description of it:
 None of these descriptions is the universal one. The bridge is the typed map
 from a community's phrase to the object and query meant in this book.
 
+Circuit theory is not counted as a sixth target community in this route. Its
+language of nodes, branches, ports, multiports, incidence, tableau equations,
+and equivalents is a shared technical inheritance of power engineering and
+mathematical modelling, and part of the precise target vocabulary used here.
+Its own translation failures remain important; they are developed in
+[Translation traps](@ref translation-traps) and [Circuit formulations and the
+lowering boundary](@ref circuit-formulations-and-lowering).
+
 ## Translation is not word substitution
 
 For each community term, the relation to the book's term should be classified
@@ -49,9 +57,12 @@ before it is reused:
 
 - **Exact alias:** interchangeable under the declared scope. For example,
   `Ybus` can be an alias for the declared nodal operator after its coordinate
-  order and model class are fixed.
+  order and model class are fixed. The alias is to that operator, not to the
+  source network or factor decomposition that assembled it.
 - **Scoped alias:** conventional shorthand that is safe only with a qualifier.
-  *Branch direction* may mean the stored orientation ``\ell ij``.
+  The sentence *branch ``\ell`` has stored reference orientation ``\ell ij``*
+  is safe; *branch ``\ell`` is directed from ``i`` to ``j``* is not safe if it
+  can be read as an operating-flow or one-way-admissibility claim.
 - **Broader or narrower term:** one term contains distinctions omitted by the
   other. A physical line can contain several homogeneous model sections.
 - **Representation-dependent term:** its referent changes with the selected
@@ -82,6 +93,22 @@ An especially important collision is **factor**. Here it means a typed
 constitutive, control, measurement, limit, or decision relation over ports. It
 does not mean power factor or matrix factorization, although the same factor
 may become a node in a factor graph.
+
+### Electrical coordinates and reference
+
+**Ground, earth, neutral, grounding impedance, and voltage reference** are not
+names for one zero-voltage node. Earth can be a physical return medium; a
+neutral is a conductor with a state and current; a grounding impedance is a
+factor between declared terminals; and a voltage reference removes gauge
+freedom. Eliminating a neutral coordinate does not eliminate its recovered
+current or a limit on that current.
+
+**Phase, conductor, terminal coordinate, and sequence** also name different
+structures. A conductor is a physical or modelled path, a terminal coordinate
+is one ordered component of an interface vector, and a sequence component is
+a transformed coordinate. *Phase ``a``* may refer to an asset label, a bus
+terminal, a voltage coordinate, or a phase-domain component; the terminal and
+coordinate maps decide whether those uses coincide.
 
 ### Structure and state
 
@@ -130,9 +157,14 @@ Two cross-community false friends deserve permanent warnings:
 - **loss** can mean electrical dissipation, information discarded by a map,
   or an ML training objective.
 
-## House policy: familiar words with explicit qualifiers
+## [House policy: familiar words with explicit qualifiers](@id vocabulary-house-policy)
 
-The book uses three vocabulary statuses:
+The five relation classes above classify the **map between vocabularies**. The
+three statuses below classify **how a term may be used in this book**. They are
+orthogonal: a false friend is often unsafe, but a representation-dependent
+term can be accepted shorthand once its representation is named.
+
+The book uses three vocabulary statuses (`VOCAB-BRIDGE-001`):
 
 1. A **preferred house term** is used in definitions, claims, contracts, and
    executable artifacts.
@@ -147,7 +179,12 @@ Similarly, *power flow on line ``\ell``* is replaced in an equation or limit
 claim by the relevant terminal observation ``\mathbf S_{\ell ij}`` or
 ``\mathbf S_{\ell ji}`` and its sign convention.
 
-## Two worked translations
+The recurring **Vocabulary bridge** callout belongs to this policy. It marks a
+local crossing between community language and the house vocabulary; it must
+name the missing object or qualifier and the inference that would otherwise be
+unsafe.
+
+## Three worked translations
 
 > **Community phrase:** Power flows downstream on each edge of the radial
 > feeder.
@@ -167,12 +204,22 @@ coordinates, and recovery are inputs to the downstream query. If they are,
 the pooled graph needs side information or is not a sufficient representation
 for that task.
 
+> **Community phrase:** Ground the neutral, then remove the neutral node.
+
+A testable translation separates the neutral conductor, its connections, each
+grounding impedance or earth-return factor, and the gauge reference. It then
+names whether *remove* means a topological projection, a fixed linear Kron
+elimination, or omission from the source model. If the neutral is eliminated,
+the recovery map must still evaluate every retained neutral-current,
+grounding, protection, and decision constraint in the declared domain.
+
 ## Where to go next
 
 The [Translation traps](@ref translation-traps) chapter develops the most
 dangerous false inferences. [Representation taxonomy](@ref
 representation-taxonomy) defines the graph families, [Notation and modelling
 conventions](@ref) fixes semantic ownership and indices, and the maintained
-[Terminology](@ref) page provides the compact lookup vocabulary. The later
-preservation-contract chapters turn these linguistic qualifications into
-mathematical obligations.
+[Terminology](@ref) page provides the compact lookup vocabulary. The generated
+[cross-community vocabulary indexes](@ref vocabulary-indexes) support both
+community-to-book and book-to-community lookup. The later preservation-contract
+chapters turn these linguistic qualifications into mathematical obligations.

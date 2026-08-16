@@ -1,6 +1,6 @@
 # [Chapter status](@id chapter-status)
 
-<!-- generated-from claims/claims.toml sha256:dbb44ae763114b8ebe017c9193eb6b94c848f19a8d0f81b1c4bce81bb0bd5c5b -->
+<!-- generated-from claims/claims.toml sha256:d9d92c0be8a0923f5c8108d0f19a5cc612c736cf368e405c4fe18cb294a3e9e6 -->
 This page is generated from the claims ledger. It makes the evidence state visible without
 requiring readers to inspect TOML or generated JSON files. Claim absence means the page is
 tracked as explanatory, definitional, or proposed material rather than silently treated as a
@@ -46,9 +46,10 @@ verified empirical result.
 | [Evidence map and verification summary](../reference/evidence-map.md) | generated reference navigation and evidence-gap summary. | 0 | — | `untracked` | — |
 | [References](../reference/references.md) | bibliography and source register. | 0 | — | `untracked` | — |
 | [Terminology](../reference/terminology.md) | maintained glossary and translation aid. | 0 | — | `untracked` | — |
+| [Cross-community vocabulary indexes](../reference/vocabulary-indexes.md) | generated bidirectional vocabulary index; not a standards crosswalk. | 0 | — | `untracked` | — |
 | [A first failure: heterogeneous parallel branches](../start/first-failure-parallel-branches.md) | introductory counterexample with executable scalar and multiconductor evidence; independent mathematical review remains open. | 4 | empirical, theorem | `self-checked` | Add an independent mathematical reviewer.; Molzahn2018 gives an exact scalar AC constraint-pruning test without asset aggregation; a general multiconductor classification remains open.; Establish necessary and sufficient redundancy tests for arbitrary multiconductor limits and for state- or decision-dependent line models.; The multiconductor mechanism is exercised in TR-PAR-004; add an independent reviewer for this linear case. |
 | [A five-bus multigraph: identities, cycles, and tree coordinates](../start/five-bus-cycle-spaces.md) | generated worked graph example with hash-bound figures and BMOPFTools cross-checks; conductor-terminal lifts remain open. | 1 | theorem | `self-checked` | Lift the executable incidence and cycle objects to conductor-terminal graphs, state-conditioned topology decisions, and compiled multi-terminal factors. |
-| [One network, five languages](../start/one-network-five-languages.md) | explanatory cross-community vocabulary bridge; not a standards crosswalk. | 0 | — | `untracked` | — |
+| [One network, five languages](../start/one-network-five-languages.md) | explanatory cross-community vocabulary bridge; not a standards crosswalk. | 1 | practice | `self-checked` | Obtain terminology review from representatives of power engineering, software and network data, mathematical modelling, graph theory, and graph machine learning. |
 | [One network, many graphs](../start/one-network-many-graphs.md) | explanatory synthesis introducing the representation landscape. | 0 | — | `untracked` | — |
 | [Certificate schema and composition](../transformations/certificate-schema-and-composition.md) | versioned certificate schema and composition contract; associativity and richer interface compatibility remain open. | 1 | theorem | `self-checked` | Prove associativity modulo certificate serialization and strengthen compatibility checks beyond object identity. |
 | [Circuit coordinate transformations: phase-to-neutral and phase-to-phase](../transformations/circuit-coordinate-transformations.md) | guarded transformation definitions with executable witnesses. | 0 | — | `untracked` | — |

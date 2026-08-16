@@ -34,7 +34,7 @@ linked to—but not nested inside—the electrical port--factor model.
     [translation-traps chapter](@ref translation-traps) gives controlled
     replacements for this and other familiar shorthand.
 
-!!! note "Graph-learning bridge"
+!!! note "Vocabulary bridge"
     A node, edge, or message graph supplied to a learning architecture is a
     compiled computational view. It is not the source ontology unless its map
     from assets, ports, factors, states, limits, and provenance is declared.

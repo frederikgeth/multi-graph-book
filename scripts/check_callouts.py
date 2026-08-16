@@ -9,11 +9,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs/src"
+CLAIMS = ROOT / "claims/claims.toml"
+VOCABULARY_POLICY = DOCS / "start/one-network-five-languages.md"
+VOCABULARY_CLAIM_ID = "VOCAB-BRIDGE-001"
 ALLOWED = {
     "Graph-theory trap",
     "Circuit-theory trap",
     "Power-system shorthand",
     "Decision-model consequence",
+    "Vocabulary bridge",
 }
 ADMONITION = re.compile(r'^!!!\s+[^\s]+\s+"([^"]+)"\s*$', re.MULTILINE)
 
@@ -34,6 +38,10 @@ def main() -> int:
                 counts[label] += 1
     missing = [label for label, count in counts.items() if count == 0]
     failures.extend(f"controlled callout is unused: {label}" for label in missing)
+    if VOCABULARY_CLAIM_ID not in CLAIMS.read_text():
+        failures.append(f"controlled vocabulary claim is missing: {VOCABULARY_CLAIM_ID}")
+    if VOCABULARY_CLAIM_ID not in VOCABULARY_POLICY.read_text():
+        failures.append(f"vocabulary policy page does not mention {VOCABULARY_CLAIM_ID}")
     if failures:
         print("callout vocabulary audit failed:")
         print("\n".join(f"- {failure}" for failure in failures))

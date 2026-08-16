@@ -1,67 +1,68 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="980" viewBox="0 0 1400 980">
 <title>One network, five languages</title>
-<desc>Five rows translate familiar community language into the book's typed vocabulary and state one unsafe inference for each community.</desc>
+<desc>Five rows show community language entering the book's typed bridge. A dashed bypass marked if untranslated leads directly to an unsafe inference; the bridge blocks that inference.</desc>
 <rect width="1400" height="980" fill="white"/>
-<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.head{font-size:18px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#5f6b76}.community{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.bridge{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.warning{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.row{fill:#fbfcfd;stroke:#17212b;stroke-width:1.5}.arrow{stroke:#17212b;stroke-width:2;fill:none;marker-end:url(#arrow)}.tag{fill:#eee8f8;stroke:#7856a8;stroke-width:1.5}</style>
-<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.head{font-size:18px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#5f6b76}.community{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.bridge{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.warning{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.row{fill:#fbfcfd;stroke:#17212b;stroke-width:1.5}.arrow{stroke:#17212b;stroke-width:2;fill:none;marker-end:url(#arrow)}.bypass{stroke:#8a4f13;stroke-width:2;stroke-dasharray:8 6;fill:none;marker-end:url(#warnArrow)}.tag{fill:#eee8f8;stroke:#7856a8;stroke-width:1.5}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker><marker id="warnArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8a4f13"/></marker></defs>
 <text x="40" y="46" class="title" text-anchor="start">One network, five languages</text>
 <text x="40" y="76" class="sub" text-anchor="start">Translate the object and query—not only the word. Each community sees a useful view and carries a characteristic risk.</text>
 <rect x="40" y="105" width="1320" height="82" rx="14" class="tag"/>
-<text x="700" y="137" class="head" text-anchor="middle">shared semantic anchor</text>
+<text x="700" y="137" class="head" text-anchor="middle">source model / shared semantic anchor</text>
 <text x="700" y="164" class="body" text-anchor="middle">identified assets · ordered ports · junctions · factors · states · limits · provenance</text>
 <text x="55" y="225" class="head" text-anchor="start">community language</text>
-<text x="430" y="225" class="head" text-anchor="start">bridge used in this book</text>
-<text x="930" y="225" class="head" text-anchor="start">unsafe inference</text>
+<text x="470" y="225" class="head" text-anchor="start">bridge / qualified statement</text>
+<text x="1010" y="225" class="head" text-anchor="start">if untranslated → unsafe inference</text>
 <rect x="40" y="250" width="1320" height="108" rx="12" class="row"/>
 <rect x="55" y="264" width="325" height="80" rx="10" class="community"/>
-<rect x="420" y="264" width="430" height="80" rx="10" class="bridge"/>
-<rect x="910" y="264" width="430" height="80" rx="10" class="warning"/>
+<rect x="460" y="292" width="430" height="52" rx="10" class="bridge"/>
+<rect x="1010" y="264" width="330" height="80" rx="10" class="warning"/>
 <text x="217" y="293" class="head" text-anchor="middle">power engineering</text>
 <text x="217" y="320" class="small" text-anchor="middle">bus · feeder · line · radial · power flow</text>
-<text x="635" y="308" class="body" text-anchor="middle">name graph, active state, terminal quantity</text>
-<text x="1125" y="308" class="body" text-anchor="middle">one arrow or edge carries one conserved flow</text>
-<path d="M380 304 L410 304" class="arrow"/>
-<path d="M850 304 L900 304" class="arrow"/>
+<text x="675" y="323" class="body" text-anchor="middle">name graph, active state, terminal quantity</text>
+<text x="1175" y="308" class="body" text-anchor="middle">one edge carries one conserved flow</text>
+<path d="M380 320 L450 320" class="arrow"/>
+<path d="M380 284 C520 252 900 252 1000 284" class="bypass"/>
 <rect x="40" y="378" width="1320" height="108" rx="12" class="row"/>
 <rect x="55" y="392" width="325" height="80" rx="10" class="community"/>
-<rect x="420" y="392" width="430" height="80" rx="10" class="bridge"/>
-<rect x="910" y="392" width="430" height="80" rx="10" class="warning"/>
+<rect x="460" y="420" width="430" height="52" rx="10" class="bridge"/>
+<rect x="1010" y="392" width="330" height="80" rx="10" class="warning"/>
 <text x="217" y="421" class="head" text-anchor="middle">software and network data</text>
 <text x="217" y="448" class="small" text-anchor="middle">equipment · terminal · connectivity node · status</text>
-<text x="635" y="436" class="body" text-anchor="middle">name source/generated object and provenance map</text>
-<text x="1125" y="436" class="body" text-anchor="middle">a record, compiled bus, and physical asset are identical</text>
-<path d="M380 432 L410 432" class="arrow"/>
-<path d="M850 432 L900 432" class="arrow"/>
+<text x="675" y="451" class="body" text-anchor="middle">name source/generated object and provenance map</text>
+<text x="1175" y="436" class="body" text-anchor="middle">record = compiled bus = physical asset</text>
+<path d="M380 448 L450 448" class="arrow"/>
+<path d="M380 412 C520 380 900 380 1000 412" class="bypass"/>
 <rect x="40" y="506" width="1320" height="108" rx="12" class="row"/>
 <rect x="55" y="520" width="325" height="80" rx="10" class="community"/>
-<rect x="420" y="520" width="430" height="80" rx="10" class="bridge"/>
-<rect x="910" y="520" width="430" height="80" rx="10" class="warning"/>
+<rect x="460" y="548" width="430" height="52" rx="10" class="bridge"/>
+<rect x="1010" y="520" width="330" height="80" rx="10" class="warning"/>
 <text x="217" y="549" class="head" text-anchor="middle">mathematical modelling</text>
 <text x="217" y="576" class="small" text-anchor="middle">variable · constraint · feasible set · relaxation</text>
-<text x="635" y="564" class="body" text-anchor="middle">name observation, decision, and recovery maps</text>
-<text x="1125" y="564" class="body" text-anchor="middle">equal equations imply equal feasible decisions</text>
-<path d="M380 560 L410 560" class="arrow"/>
-<path d="M850 560 L900 560" class="arrow"/>
+<text x="675" y="579" class="body" text-anchor="middle">name observation, decision, and recovery maps</text>
+<text x="1175" y="564" class="body" text-anchor="middle">equal equations imply equal decisions</text>
+<path d="M380 576 L450 576" class="arrow"/>
+<path d="M380 540 C520 508 900 508 1000 540" class="bypass"/>
 <rect x="40" y="634" width="1320" height="108" rx="12" class="row"/>
 <rect x="55" y="648" width="325" height="80" rx="10" class="community"/>
-<rect x="420" y="648" width="430" height="80" rx="10" class="bridge"/>
-<rect x="910" y="648" width="430" height="80" rx="10" class="warning"/>
+<rect x="460" y="676" width="430" height="52" rx="10" class="bridge"/>
+<rect x="1010" y="648" width="330" height="80" rx="10" class="warning"/>
 <text x="217" y="677" class="head" text-anchor="middle">mathematical graph theory</text>
 <text x="217" y="704" class="small" text-anchor="middle">vertex · edge/arc · cycle · quotient · minor</text>
-<text x="635" y="692" class="body" text-anchor="middle">name object types, incidence, graph, and morphism</text>
-<text x="1125" y="692" class="body" text-anchor="middle">unlabelled topology determines electrical meaning</text>
-<path d="M380 688 L410 688" class="arrow"/>
-<path d="M850 688 L900 688" class="arrow"/>
+<text x="675" y="707" class="body" text-anchor="middle">name object types, incidence, graph, and morphism</text>
+<text x="1175" y="692" class="body" text-anchor="middle">topology alone fixes electrical meaning</text>
+<path d="M380 704 L450 704" class="arrow"/>
+<path d="M380 668 C520 636 900 636 1000 668" class="bypass"/>
 <rect x="40" y="762" width="1320" height="108" rx="12" class="row"/>
 <rect x="55" y="776" width="325" height="80" rx="10" class="community"/>
-<rect x="420" y="776" width="430" height="80" rx="10" class="bridge"/>
-<rect x="910" y="776" width="430" height="80" rx="10" class="warning"/>
+<rect x="460" y="804" width="430" height="52" rx="10" class="bridge"/>
+<rect x="1010" y="776" width="330" height="80" rx="10" class="warning"/>
 <text x="217" y="805" class="head" text-anchor="middle">graph machine learning</text>
 <text x="217" y="832" class="small" text-anchor="middle">node/edge feature · message · pooling · hidden state</text>
-<text x="635" y="820" class="body" text-anchor="middle">name compiled message graph and retained semantics</text>
-<text x="1125" y="820" class="body" text-anchor="middle">pooling preserves member identity, limits, and n-port structure</text>
-<path d="M380 816 L410 816" class="arrow"/>
-<path d="M850 816 L900 816" class="arrow"/>
+<text x="675" y="835" class="body" text-anchor="middle">name compiled message graph and retained semantics</text>
+<text x="1175" y="820" class="body" text-anchor="middle">pooling preserves identity and limits</text>
+<path d="M380 832 L450 832" class="arrow"/>
+<path d="M380 796 C520 764 900 764 1000 796" class="bypass"/>
 <rect x="40" y="905" width="1320" height="50" rx="12" class="tag"/>
-<text x="700" y="936" class="head" text-anchor="middle">house rule: preferred term · accepted qualified shorthand · unsafe unqualified term</text>
+<text x="700" y="930" class="head" text-anchor="middle">solid arrow: qualify through the bridge · dashed arrow: unsafe bypass if untranslated</text>
+<text x="700" y="949" class="small" text-anchor="middle">house rule: preferred term · accepted qualified shorthand · unsafe unqualified term</text>
 </svg>

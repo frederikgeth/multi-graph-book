@@ -34,7 +34,7 @@
       "svg": "docs/src/assets/vocabulary-bridge-five-languages.svg",
       "png": "docs/src/assets/vocabulary-bridge-five-languages.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["five community-labelled rows", "bridge and unsafe-inference columns", "explicit house-rule banner"]
+      "distinguishing_channels": ["five community-labelled rows", "solid bridge arrows versus dashed untranslated bypasses", "bridge and unsafe-inference columns", "explicit arrow legend and house-rule banner"]
     },
     "case-escalation-grid": {
       "svg": "docs/src/assets/case-escalation-grid.svg",

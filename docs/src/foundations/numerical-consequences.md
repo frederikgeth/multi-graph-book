@@ -29,7 +29,7 @@ The statements below concern a declared operating point, coordinate system,
 and solver tolerance. They do not claim that one representation is uniformly
 better.
 
-!!! note "Loss vocabulary"
+!!! note "Vocabulary bridge"
     Electrical loss is power absorbed by a device model. Information loss is
     a failure of recovery under a representation map. An optimization or ML
     loss is an objective function. The shared word does not make these

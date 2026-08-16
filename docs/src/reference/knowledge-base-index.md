@@ -1,14 +1,14 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:dbb44ae763114b8ebe017c9193eb6b94c848f19a8d0f81b1c4bce81bb0bd5c5b -->
+<!-- generated-from claims/claims.toml sha256:d9d92c0be8a0923f5c8108d0f19a5cc612c736cf368e405c4fe18cb294a3e9e6 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 81
-**Indexed chapters:** 31
+**Indexed claims:** 82
+**Indexed chapters:** 32
 
 ## Claims by type
 
@@ -65,11 +65,12 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `TR-XFMR-009` — For the recorded 11-terminal WYE/WYE/DELTA case, a three-scenario phase-selective tap path can be enumerated exactly over the 3^3 ordered tap triples, with consecutive tap movement charged explicitly and each scenario retaining its own phase directions. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `independently-implemented` |
 | `TR-XFMR-010` — In the recorded three-scenario tap path, enumerating all 27 ordered tap triples and then applying an explicit at-most-one-movement policy leaves 15 admissible branches; the policy is a decision constraint and must not be inferred from the unconstrained best path. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `independently-implemented` |
 
-### `practice` (1)
+### `practice` (2)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
 | `DATA-XWALK-001` — CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER provide distinct partial correspondences to the book's asset, terminal, topology, factor, state, and rating objects; successful import is not by itself semantic or decision equivalence. | [Data-model crosswalk](../foundations/data-model-crosswalk.md) | `self-checked` |
+| `VOCAB-BRIDGE-001` — Load-bearing statements use a preferred house term or qualified shorthand that declares the relevant representation, quantity, state, and preservation object; an unqualified term is unsafe when it can change the claim. | [One network, five languages](../start/one-network-five-languages.md) | `self-checked` |
 
 ### `proposal` (5)
 
@@ -123,7 +124,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | Verification | Claims |
 | --- | ---: |
 | `independently-implemented` | 4 |
-| `self-checked` | 77 |
+| `self-checked` | 78 |
 
 ## Unresolved issues
 
@@ -209,6 +210,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `TR-XFMR-008` | This is a finite local witness, not a global unbalanced OPF guarantee; extend the contract to richer multiwinding controls, topology decisions, and independently assembled physical models. |
 | `TR-XFMR-009` | This remains a finite local path witness, not a global unbalanced multi-period OPF guarantee; extend to richer controls, topology decisions, switching operation limits, and independently assembled physical models. |
 | `TR-XFMR-010` | Extend operation-count, dwell-time, deadband, and switching-cost semantics to richer multiwinding controls and globally certified multi-period OPF models. |
+| `VOCAB-BRIDGE-001` | Obtain terminology review from representatives of power engineering, software and network data, mathematical modelling, graph theory, and graph machine learning. |
 
 ## Facet indexes
 
@@ -247,6 +249,12 @@ schema is normalised.
 | `TR-XFMR-008` — In the recorded 11-terminal WYE/WYE/DELTA tap case, a phase-selective unbalanced second scenario can be handled without collapsing the transformer or its phase identities: exact enumeration of the nine ordered tap pairs preserves branch completeness and exposes the per-phase scenario directions explicitly. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
 | `TR-XFMR-009` — For the recorded 11-terminal WYE/WYE/DELTA case, a three-scenario phase-selective tap path can be enumerated exactly over the 3^3 ordered tap triples, with consecutive tap movement charged explicitly and each scenario retaining its own phase directions. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
 | `TR-XFMR-010` — In the recorded three-scenario tap path, enumerating all 27 ordered tap triples and then applying an explicit at-most-one-movement policy leaves 15 admissible branches; the policy is a decision constraint and must not be inferred from the unconstrained best path. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
+
+### `general` (1)
+
+| Claim | Chapter | Type |
+| --- | --- | --- |
+| `VOCAB-BRIDGE-001` — Load-bearing statements use a preferred house term or qualified shorthand that declares the relevant representation, quantity, state, and preservation object; an unqualified term is unsafe when it can change the claim. | [One network, five languages](../start/one-network-five-languages.md) | `practice` |
 
 ### `graph-and-topology` (15)
 

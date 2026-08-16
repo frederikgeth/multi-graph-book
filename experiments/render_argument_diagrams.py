@@ -320,49 +320,49 @@ def vocabulary_bridge() -> str:
     lines = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="980" viewBox="0 0 1400 980">',
         '<title>One network, five languages</title>',
-        '<desc>Five rows translate familiar community language into the book\'s typed vocabulary and state one unsafe inference for each community.</desc>',
+        '<desc>Five rows show community language entering the book\'s typed bridge. A dashed bypass marked if untranslated leads directly to an unsafe inference; the bridge blocks that inference.</desc>',
         '<rect width="1400" height="980" fill="white"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.head{font-size:18px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#5f6b76}.community{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.bridge{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.warning{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.row{fill:#fbfcfd;stroke:#17212b;stroke-width:1.5}.arrow{stroke:#17212b;stroke-width:2;fill:none;marker-end:url(#arrow)}.tag{fill:#eee8f8;stroke:#7856a8;stroke-width:1.5}</style>',
-        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
+        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.head{font-size:18px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#5f6b76}.community{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.bridge{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.warning{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.row{fill:#fbfcfd;stroke:#17212b;stroke-width:1.5}.arrow{stroke:#17212b;stroke-width:2;fill:none;marker-end:url(#arrow)}.bypass{stroke:#8a4f13;stroke-width:2;stroke-dasharray:8 6;fill:none;marker-end:url(#warnArrow)}.tag{fill:#eee8f8;stroke:#7856a8;stroke-width:1.5}</style>',
+        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker><marker id="warnArrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8a4f13"/></marker></defs>',
         txt(40, 46, "One network, five languages", "title"),
         txt(40, 76, "Translate the object and query—not only the word. Each community sees a useful view and carries a characteristic risk.", "sub"),
         '<rect x="40" y="105" width="1320" height="82" rx="14" class="tag"/>',
-        txt(700, 137, "shared semantic anchor", "head", "middle"),
+        txt(700, 137, "source model / shared semantic anchor", "head", "middle"),
         txt(700, 164, "identified assets · ordered ports · junctions · factors · states · limits · provenance", "body", "middle"),
         txt(55, 225, "community language", "head"),
-        txt(430, 225, "bridge used in this book", "head"),
-        txt(930, 225, "unsafe inference", "head"),
+        txt(470, 225, "bridge / qualified statement", "head"),
+        txt(1010, 225, "if untranslated → unsafe inference", "head"),
     ]
     rows = [
         (
             "power engineering",
             "bus · feeder · line · radial · power flow",
             "name graph, active state, terminal quantity",
-            "one arrow or edge carries one conserved flow",
+            "one edge carries one conserved flow",
         ),
         (
             "software and network data",
             "equipment · terminal · connectivity node · status",
             "name source/generated object and provenance map",
-            "a record, compiled bus, and physical asset are identical",
+            "record = compiled bus = physical asset",
         ),
         (
             "mathematical modelling",
             "variable · constraint · feasible set · relaxation",
             "name observation, decision, and recovery maps",
-            "equal equations imply equal feasible decisions",
+            "equal equations imply equal decisions",
         ),
         (
             "mathematical graph theory",
             "vertex · edge/arc · cycle · quotient · minor",
             "name object types, incidence, graph, and morphism",
-            "unlabelled topology determines electrical meaning",
+            "topology alone fixes electrical meaning",
         ),
         (
             "graph machine learning",
             "node/edge feature · message · pooling · hidden state",
             "name compiled message graph and retained semantics",
-            "pooling preserves member identity, limits, and n-port structure",
+            "pooling preserves identity and limits",
         ),
     ]
     for idx, (community, terms, bridge, warning) in enumerate(rows):
@@ -370,18 +370,19 @@ def vocabulary_bridge() -> str:
         lines += [
             f'<rect x="40" y="{y}" width="1320" height="108" rx="12" class="row"/>',
             f'<rect x="55" y="{y + 14}" width="325" height="80" rx="10" class="community"/>',
-            f'<rect x="420" y="{y + 14}" width="430" height="80" rx="10" class="bridge"/>',
-            f'<rect x="910" y="{y + 14}" width="430" height="80" rx="10" class="warning"/>',
+            f'<rect x="460" y="{y + 42}" width="430" height="52" rx="10" class="bridge"/>',
+            f'<rect x="1010" y="{y + 14}" width="330" height="80" rx="10" class="warning"/>',
             txt(217, y + 43, community, "head", "middle"),
             txt(217, y + 70, terms, "small", "middle"),
-            txt(635, y + 58, bridge, "body", "middle"),
-            txt(1125, y + 58, warning, "body", "middle"),
-            f'<path d="M380 {y + 54} L410 {y + 54}" class="arrow"/>',
-            f'<path d="M850 {y + 54} L900 {y + 54}" class="arrow"/>',
+            txt(675, y + 73, bridge, "body", "middle"),
+            txt(1175, y + 58, warning, "body", "middle"),
+            f'<path d="M380 {y + 70} L450 {y + 70}" class="arrow"/>',
+            f'<path d="M380 {y + 34} C520 {y + 2} 900 {y + 2} 1000 {y + 34}" class="bypass"/>',
         ]
     lines += [
         '<rect x="40" y="905" width="1320" height="50" rx="12" class="tag"/>',
-        txt(700, 936, "house rule: preferred term · accepted qualified shorthand · unsafe unqualified term", "head", "middle"),
+        txt(700, 930, "solid arrow: qualify through the bridge · dashed arrow: unsafe bypass if untranslated", "head", "middle"),
+        txt(700, 949, "house rule: preferred term · accepted qualified shorthand · unsafe unqualified term", "small", "middle"),
         '</svg>',
     ]
     return "\n".join(lines) + "\n"

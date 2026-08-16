@@ -276,7 +276,7 @@ neither is asked to carry facts that it cannot represent.
 
 ## Recurring callouts used in the book
 
-Later chapters use four controlled callout labels:
+Later chapters use five controlled callout labels:
 
 - **Graph-theory trap:** a correct graph concept has been applied to an
   unnamed or inappropriate representation.
@@ -286,6 +286,8 @@ Later chapters use four controlled callout labels:
   mathematically underspecified.
 - **Decision-model consequence:** a representation or reduction changes what
   can be constrained, chosen, observed, or recovered.
+- **Vocabulary bridge:** a familiar term crosses a community boundary and its
+  object, qualifier, or unsafe inference must be made explicit.
 
 These callouts do not replace definitions or proofs. Each should give a
 precise replacement statement and link to the chapter that establishes it.
