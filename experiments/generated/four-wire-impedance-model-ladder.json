@@ -1,0 +1,1548 @@
+{
+  "checks": {
+    "phase_neutral_current_is_recoverable": true,
+    "shunt_deletion_changes_declared_factor": true,
+    "source_matrix_is_not_hermitian": true,
+    "kron_phase_relation_is_defined": true,
+    "fortescue_transform_is_invertible": true,
+    "every_path_rule_has_risk_tags": true,
+    "positive_sequence_guard_is_required": true,
+    "phase_to_neutral_branch_composes": true,
+    "sequence_mixing_is_visible": true,
+    "source_matrix_is_complex_symmetric": true,
+    "phase_neutral_drop_is_recovered": true,
+    "main_path_composes": true,
+    "neutral_block_is_invertible": true
+  },
+  "scope": "The fixture separates exact coordinate changes and guarded reductions from shunt deletion, sequence decoupling, balancing, and positive-sequence decision restrictions. It is not a geometry-identification or global power-flow accuracy claim.",
+  "witness_id": "IMPEDANCE-LADDER-001",
+  "models": {
+    "Z_012": {
+      "shunt": [
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ]
+      ],
+      "series": [
+        [
+          {
+            "re": 0.6624361420243773,
+            "im": 0.9659517753047165
+          },
+          {
+            "re": 0.01722329934981104,
+            "im": -0.021753438903540867
+          },
+          {
+            "re": -0.02800920290042047,
+            "im": 0.02742964452092289
+          }
+        ],
+        [
+          {
+            "re": -0.02800920290042047,
+            "im": 0.027429644520922863
+          },
+          {
+            "re": 0.3432310545839958,
+            "im": 0.635888182299947
+          },
+          {
+            "re": 0.01621169090325958,
+            "im": -0.003162720119825213
+          }
+        ],
+        [
+          {
+            "re": 0.01722329934981104,
+            "im": -0.021753438903540846
+          },
+          {
+            "re": 0.010620847517514118,
+            "im": 0.008069450379496634
+          },
+          {
+            "re": 0.34323105458399583,
+            "im": 0.635888182299947
+          }
+        ]
+      ]
+    },
+    "Pi_abcn": {
+      "shunt": [
+        [
+          {
+            "re": 0.002,
+            "im": 0.011
+          },
+          {
+            "re": 0.0002,
+            "im": 0.001
+          },
+          {
+            "re": 0.0001,
+            "im": 0.0008
+          },
+          {
+            "re": 0.0003,
+            "im": 0.0012
+          }
+        ],
+        [
+          {
+            "re": 0.0002,
+            "im": 0.001
+          },
+          {
+            "re": 0.0022,
+            "im": 0.01
+          },
+          {
+            "re": 0.0002,
+            "im": 0.0009
+          },
+          {
+            "re": 0.0003,
+            "im": 0.0011
+          }
+        ],
+        [
+          {
+            "re": 0.0001,
+            "im": 0.0008
+          },
+          {
+            "re": 0.0002,
+            "im": 0.0009
+          },
+          {
+            "re": 0.0018,
+            "im": 0.009
+          },
+          {
+            "re": 0.0002,
+            "im": 0.001
+          }
+        ],
+        [
+          {
+            "re": 0.0003,
+            "im": 0.0012
+          },
+          {
+            "re": 0.0003,
+            "im": 0.0011
+          },
+          {
+            "re": 0.0002,
+            "im": 0.001
+          },
+          {
+            "re": 0.001,
+            "im": 0.004
+          }
+        ]
+      ],
+      "series": [
+        [
+          {
+            "re": 0.42,
+            "im": 0.84
+          },
+          {
+            "re": 0.08,
+            "im": 0.22
+          },
+          {
+            "re": 0.06,
+            "im": 0.18
+          },
+          {
+            "re": 0.11,
+            "im": 0.25
+          }
+        ],
+        [
+          {
+            "re": 0.08,
+            "im": 0.22
+          },
+          {
+            "re": 0.45,
+            "im": 0.88
+          },
+          {
+            "re": 0.09,
+            "im": 0.2
+          },
+          {
+            "re": 0.13,
+            "im": 0.27
+          }
+        ],
+        [
+          {
+            "re": 0.06,
+            "im": 0.18
+          },
+          {
+            "re": 0.09,
+            "im": 0.2
+          },
+          {
+            "re": 0.39,
+            "im": 0.79
+          },
+          {
+            "re": 0.1,
+            "im": 0.23
+          }
+        ],
+        [
+          {
+            "re": 0.11,
+            "im": 0.25
+          },
+          {
+            "re": 0.13,
+            "im": 0.27
+          },
+          {
+            "re": 0.1,
+            "im": 0.23
+          },
+          {
+            "re": 0.73,
+            "im": 0.31
+          }
+        ]
+      ]
+    },
+    "Z_abcn": {
+      "shunt": [
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ]
+      ],
+      "series": [
+        [
+          {
+            "re": 0.42,
+            "im": 0.84
+          },
+          {
+            "re": 0.08,
+            "im": 0.22
+          },
+          {
+            "re": 0.06,
+            "im": 0.18
+          },
+          {
+            "re": 0.11,
+            "im": 0.25
+          }
+        ],
+        [
+          {
+            "re": 0.08,
+            "im": 0.22
+          },
+          {
+            "re": 0.45,
+            "im": 0.88
+          },
+          {
+            "re": 0.09,
+            "im": 0.2
+          },
+          {
+            "re": 0.13,
+            "im": 0.27
+          }
+        ],
+        [
+          {
+            "re": 0.06,
+            "im": 0.18
+          },
+          {
+            "re": 0.09,
+            "im": 0.2
+          },
+          {
+            "re": 0.39,
+            "im": 0.79
+          },
+          {
+            "re": 0.1,
+            "im": 0.23
+          }
+        ],
+        [
+          {
+            "re": 0.11,
+            "im": 0.25
+          },
+          {
+            "re": 0.13,
+            "im": 0.27
+          },
+          {
+            "re": 0.1,
+            "im": 0.23
+          },
+          {
+            "re": 0.73,
+            "im": 0.31
+          }
+        ]
+      ]
+    },
+    "Z_MD": {
+      "shunt": [
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ]
+      ],
+      "series": [
+        [
+          {
+            "re": 0.6624361420243773,
+            "im": 0.9659517753047165
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0.3432310545839958,
+            "im": 0.635888182299947
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0.34323105458399583,
+            "im": 0.635888182299947
+          }
+        ]
+      ]
+    },
+    "Z_POS": {
+      "shunt": [
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ]
+      ],
+      "series": [
+        [
+          {
+            "re": 0.3432310545839958,
+            "im": 0.635888182299947
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0.3432310545839958,
+            "im": 0.635888182299947
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0.3432310545839958,
+            "im": 0.635888182299947
+          }
+        ]
+      ]
+    },
+    "Z_Kron": {
+      "shunt": [
+        [
+          {
+            "re": 0.002,
+            "im": 0.011
+          },
+          {
+            "re": 0.0002,
+            "im": 0.001
+          },
+          {
+            "re": 0.0001,
+            "im": 0.0008
+          }
+        ],
+        [
+          {
+            "re": 0.0002,
+            "im": 0.001
+          },
+          {
+            "re": 0.0022,
+            "im": 0.01
+          },
+          {
+            "re": 0.0002,
+            "im": 0.0009
+          }
+        ],
+        [
+          {
+            "re": 0.0001,
+            "im": 0.0008
+          },
+          {
+            "re": 0.0002,
+            "im": 0.0009
+          },
+          {
+            "re": 0.0018,
+            "im": 0.009
+          }
+        ]
+      ],
+      "series": [
+        [
+          {
+            "re": 0.45138632750397456,
+            "im": 0.751329093799682
+          },
+          {
+            "re": 0.11108744038155803,
+            "im": 0.12159300476947535
+          },
+          {
+            "re": 0.08917647058823529,
+            "im": 0.09870588235294117
+          }
+        ],
+        [
+          {
+            "re": 0.11108744038155803,
+            "im": 0.12159300476947536
+          },
+          {
+            "re": 0.48039427662957074,
+            "im": 0.7709284578696344
+          },
+          {
+            "re": 0.11894117647058823,
+            "im": 0.10976470588235296
+          }
+        ],
+        [
+          {
+            "re": 0.08917647058823529,
+            "im": 0.09870588235294117
+          },
+          {
+            "re": 0.11894117647058823,
+            "im": 0.10976470588235294
+          },
+          {
+            "re": 0.41711764705882354,
+            "im": 0.7154705882352942
+          }
+        ]
+      ]
+    },
+    "Z_balanced_projection": {
+      "shunt": [
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ]
+      ],
+      "series": [
+        [
+          {
+            "re": 0.4975,
+            "im": 0.705
+          },
+          {
+            "re": 0.09500000000000001,
+            "im": 0.225
+          },
+          {
+            "re": 0.09500000000000001,
+            "im": 0.225
+          },
+          {
+            "re": 0.09500000000000001,
+            "im": 0.225
+          }
+        ],
+        [
+          {
+            "re": 0.09500000000000001,
+            "im": 0.225
+          },
+          {
+            "re": 0.4975,
+            "im": 0.705
+          },
+          {
+            "re": 0.09500000000000001,
+            "im": 0.225
+          },
+          {
+            "re": 0.09500000000000001,
+            "im": 0.225
+          }
+        ],
+        [
+          {
+            "re": 0.09500000000000001,
+            "im": 0.225
+          },
+          {
+            "re": 0.09500000000000001,
+            "im": 0.225
+          },
+          {
+            "re": 0.4975,
+            "im": 0.705
+          },
+          {
+            "re": 0.09500000000000001,
+            "im": 0.225
+          }
+        ],
+        [
+          {
+            "re": 0.09500000000000001,
+            "im": 0.225
+          },
+          {
+            "re": 0.09500000000000001,
+            "im": 0.225
+          },
+          {
+            "re": 0.09500000000000001,
+            "im": 0.225
+          },
+          {
+            "re": 0.4975,
+            "im": 0.705
+          }
+        ]
+      ]
+    },
+    "Z_pn": {
+      "shunt": [
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ],
+        [
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          },
+          {
+            "re": 0,
+            "im": 0
+          }
+        ]
+      ],
+      "series": [
+        [
+          {
+            "re": 0.9299999999999999,
+            "im": 0.6499999999999999
+          },
+          {
+            "re": 0.57,
+            "im": 0.009999999999999981
+          },
+          {
+            "re": 0.58,
+            "im": 0.009999999999999981
+          }
+        ],
+        [
+          {
+            "re": 0.57,
+            "im": 0.009999999999999981
+          },
+          {
+            "re": 0.9199999999999999,
+            "im": 0.6499999999999999
+          },
+          {
+            "re": 0.59,
+            "im": 0.009999999999999981
+          }
+        ],
+        [
+          {
+            "re": 0.58,
+            "im": 0.009999999999999981
+          },
+          {
+            "re": 0.59,
+            "im": 0.009999999999999981
+          },
+          {
+            "re": 0.92,
+            "im": 0.64
+          }
+        ]
+      ]
+    }
+  },
+  "maps": {
+    "fortescue": [
+      [
+        {
+          "re": 1,
+          "im": 0
+        },
+        {
+          "re": 1,
+          "im": 0
+        },
+        {
+          "re": 1,
+          "im": 0
+        }
+      ],
+      [
+        {
+          "re": 1,
+          "im": 0
+        },
+        {
+          "re": -0.5000000000000003,
+          "im": -0.8660254037844384
+        },
+        {
+          "re": -0.4999999999999998,
+          "im": 0.8660254037844387
+        }
+      ],
+      [
+        {
+          "re": 1,
+          "im": 0
+        },
+        {
+          "re": -0.4999999999999998,
+          "im": 0.8660254037844387
+        },
+        {
+          "re": -0.5000000000000003,
+          "im": -0.8660254037844384
+        }
+      ]
+    ],
+    "phase_to_neutral_voltage": [
+      [
+        {
+          "re": 1,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": -1,
+          "im": 0
+        }
+      ],
+      [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 1,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": -1,
+          "im": 0
+        }
+      ],
+      [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 1,
+          "im": 0
+        },
+        {
+          "re": -1,
+          "im": 0
+        }
+      ]
+    ],
+    "phase_to_neutral_current_lift": [
+      [
+        {
+          "re": 1,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        }
+      ],
+      [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 1,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        }
+      ],
+      [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 1,
+          "im": 0
+        }
+      ],
+      [
+        {
+          "re": -1,
+          "im": 0
+        },
+        {
+          "re": -1,
+          "im": 0
+        },
+        {
+          "re": -1,
+          "im": 0
+        }
+      ]
+    ],
+    "kron_series": "Z_Kron = Z_pp - Z_pn Z_nn^{-1} Z_np",
+    "neutral_current_recovery": "I_lij,n = -(I_lij,a + I_lij,b + I_lij,c)"
+  },
+  "sample_observation": {
+    "conductor_current": [
+      {
+        "re": 0.8,
+        "im": 0.1
+      },
+      {
+        "re": -0.3,
+        "im": 0.04
+      },
+      {
+        "re": -0.22,
+        "im": -0.12
+      },
+      {
+        "re": -0.28,
+        "im": -0.020000000000000018
+      }
+    ],
+    "phase_to_neutral_drop": [
+      {
+        "re": 0.38120000000000004,
+        "im": 0.5610000000000002
+      },
+      {
+        "re": 0.024399999999999977,
+        "im": -0.16619999999999996
+      },
+      {
+        "re": 0.16,
+        "im": -0.16460000000000002
+      }
+    ],
+    "neutral_voltage_drop_magnitude": 0.1816970005256003,
+    "phase_current": [
+      {
+        "re": 0.8,
+        "im": 0.1
+      },
+      {
+        "re": -0.3,
+        "im": 0.04
+      },
+      {
+        "re": -0.22,
+        "im": -0.12
+      }
+    ],
+    "neutral_current_magnitude": 0.28071337695236404
+  },
+  "terminals": [
+    "a",
+    "b",
+    "c",
+    "n"
+  ],
+  "source": {
+    "series_matrix": [
+      [
+        {
+          "re": 0.42,
+          "im": 0.84
+        },
+        {
+          "re": 0.08,
+          "im": 0.22
+        },
+        {
+          "re": 0.06,
+          "im": 0.18
+        },
+        {
+          "re": 0.11,
+          "im": 0.25
+        }
+      ],
+      [
+        {
+          "re": 0.08,
+          "im": 0.22
+        },
+        {
+          "re": 0.45,
+          "im": 0.88
+        },
+        {
+          "re": 0.09,
+          "im": 0.2
+        },
+        {
+          "re": 0.13,
+          "im": 0.27
+        }
+      ],
+      [
+        {
+          "re": 0.06,
+          "im": 0.18
+        },
+        {
+          "re": 0.09,
+          "im": 0.2
+        },
+        {
+          "re": 0.39,
+          "im": 0.79
+        },
+        {
+          "re": 0.1,
+          "im": 0.23
+        }
+      ],
+      [
+        {
+          "re": 0.11,
+          "im": 0.25
+        },
+        {
+          "re": 0.13,
+          "im": 0.27
+        },
+        {
+          "re": 0.1,
+          "im": 0.23
+        },
+        {
+          "re": 0.73,
+          "im": 0.31
+        }
+      ]
+    ],
+    "metadata": {
+      "series_units": "ohm",
+      "frequency_hz": 50,
+      "length_km": 1,
+      "shunt_units": "siemens",
+      "earth_model": "local ground reference; explicit earth conductor is outside this fixture"
+    },
+    "shunt_matrix": [
+      [
+        {
+          "re": 0.002,
+          "im": 0.011
+        },
+        {
+          "re": 0.0002,
+          "im": 0.001
+        },
+        {
+          "re": 0.0001,
+          "im": 0.0008
+        },
+        {
+          "re": 0.0003,
+          "im": 0.0012
+        }
+      ],
+      [
+        {
+          "re": 0.0002,
+          "im": 0.001
+        },
+        {
+          "re": 0.0022,
+          "im": 0.01
+        },
+        {
+          "re": 0.0002,
+          "im": 0.0009
+        },
+        {
+          "re": 0.0003,
+          "im": 0.0011
+        }
+      ],
+      [
+        {
+          "re": 0.0001,
+          "im": 0.0008
+        },
+        {
+          "re": 0.0002,
+          "im": 0.0009
+        },
+        {
+          "re": 0.0018,
+          "im": 0.009
+        },
+        {
+          "re": 0.0002,
+          "im": 0.001
+        }
+      ],
+      [
+        {
+          "re": 0.0003,
+          "im": 0.0012
+        },
+        {
+          "re": 0.0003,
+          "im": 0.0011
+        },
+        {
+          "re": 0.0002,
+          "im": 0.001
+        },
+        {
+          "re": 0.001,
+          "im": 0.004
+        }
+      ]
+    ]
+  },
+  "claim_id": "IMPEDANCE-LADDER-001",
+  "source_fixture": "deterministic four-wire matrix fixture",
+  "transformation_path": [
+    {
+      "risk_tags": [
+        "earth-return",
+        "reference-potential",
+        "provenance"
+      ],
+      "source": "circuit_primitive",
+      "forgets": [
+        "explicit earth asset and alternative ground-potential observations"
+      ],
+      "exactness": "guarded-exact",
+      "guards": [
+        "earth reference and earth-return convention declared"
+      ],
+      "target": "four-wire-conductor-primitive",
+      "rule": "K_g",
+      "preserves": [
+        "ordered conductor relation under the declared ground model"
+      ]
+    },
+    {
+      "risk_tags": [
+        "neutral-shift",
+        "neutral-limit",
+        "grounding"
+      ],
+      "source": "four-wire-conductor-primitive",
+      "forgets": [
+        "neutral voltage and separate neutral identity unless recovered"
+      ],
+      "exactness": "guarded-exact",
+      "guards": [
+        "neutral block invertible",
+        "neutral voltage/grounding assumption declared",
+        "neutral limits recovered"
+      ],
+      "target": "phase-primitive",
+      "rule": "K_n",
+      "preserves": [
+        "declared phase boundary relation"
+      ]
+    },
+    {
+      "risk_tags": [
+        "shunt",
+        "common-mode",
+        "decision-domain"
+      ],
+      "source": "four-wire-conductor-primitive",
+      "forgets": [
+        "common-mode voltage"
+      ],
+      "exactness": "guarded-exact",
+      "guards": [
+        "zero local ground current",
+        "shunt-to-ground effects excluded or mapped"
+      ],
+      "target": "phase-to-neutral-primitive",
+      "rule": "P_n",
+      "preserves": [
+        "phase-to-neutral voltage relation and neutral-current recovery"
+      ]
+    },
+    {
+      "risk_tags": [
+        "voltage",
+        "loss",
+        "cable"
+      ],
+      "source": "nominal-pi-factor",
+      "forgets": [
+        "shunt currents, charging and associated losses"
+      ],
+      "exactness": "approximate",
+      "guards": [
+        "shunt observations declared out of scope"
+      ],
+      "target": "series-only-factor",
+      "rule": "Z",
+      "preserves": [
+        "series relation only"
+      ]
+    },
+    {
+      "risk_tags": [
+        "ordering",
+        "coordinate-convention"
+      ],
+      "source": "phase-primitive",
+      "forgets": [
+        "natural phase labels as the working coordinates"
+      ],
+      "exactness": "exact-coordinate",
+      "guards": [
+        "phase order and Fortescue convention declared"
+      ],
+      "target": "sequence-primitive",
+      "rule": "F",
+      "preserves": [
+        "all invertible linear observations"
+      ]
+    },
+    {
+      "risk_tags": [
+        "sequence-mixing",
+        "unbalance",
+        "decision-domain"
+      ],
+      "source": "sequence-primitive",
+      "forgets": [
+        "sequence coupling and cross-channel constraints"
+      ],
+      "exactness": "approximate",
+      "guards": [
+        "sequence coupling is negligible or excluded by the study"
+      ],
+      "target": "diagonal-sequence-primitive",
+      "rule": "D",
+      "preserves": [
+        "diagonal sequence relation only"
+      ]
+    },
+    {
+      "risk_tags": [
+        "unbalance",
+        "phase-limits",
+        "neutral",
+        "decision-domain"
+      ],
+      "source": "diagonal-sequence-primitive",
+      "forgets": [
+        "zero/negative sequence, phase-specific and neutral observations"
+      ],
+      "exactness": "restricted-approximation",
+      "guards": [
+        "balanced boundary data",
+        "sequence-compatible factors and decisions",
+        "positive-sequence observations"
+      ],
+      "target": "positive-sequence-primitive",
+      "rule": "F_1",
+      "preserves": [
+        "positive-sequence subspace under the declared closure"
+      ]
+    }
+  ],
+  "path_compositions": {
+    "phase_to_neutral": {
+      "component_rules": [
+        "K_g",
+        "P_n"
+      ],
+      "discharged_guards": [
+      ],
+      "risk_tags": [
+        "earth-return",
+        "reference-potential",
+        "provenance",
+        "shunt",
+        "common-mode",
+        "decision-domain"
+      ],
+      "composable": true,
+      "weakest_exactness": "guarded-exact",
+      "guards": [
+        "earth reference and earth-return convention declared",
+        "zero local ground current",
+        "shunt-to-ground effects excluded or mapped"
+      ],
+      "findings": [
+      ],
+      "preservation_status": "guarded",
+      "source": "circuit_primitive",
+      "unresolved_guards": [
+        "earth reference and earth-return convention declared",
+        "zero local ground current",
+        "shunt-to-ground effects excluded or mapped"
+      ],
+      "forgets": [
+        "explicit earth asset and alternative ground-potential observations",
+        "common-mode voltage"
+      ],
+      "target": "phase-to-neutral-primitive"
+    },
+    "main": {
+      "component_rules": [
+        "K_g",
+        "K_n",
+        "F",
+        "D",
+        "F_1"
+      ],
+      "discharged_guards": [
+      ],
+      "risk_tags": [
+        "earth-return",
+        "reference-potential",
+        "provenance",
+        "neutral-shift",
+        "neutral-limit",
+        "grounding",
+        "ordering",
+        "coordinate-convention",
+        "sequence-mixing",
+        "unbalance",
+        "decision-domain",
+        "phase-limits",
+        "neutral"
+      ],
+      "composable": true,
+      "weakest_exactness": "restricted-approximation",
+      "guards": [
+        "earth reference and earth-return convention declared",
+        "neutral block invertible",
+        "neutral voltage/grounding assumption declared",
+        "neutral limits recovered",
+        "phase order and Fortescue convention declared",
+        "sequence coupling is negligible or excluded by the study",
+        "balanced boundary data",
+        "sequence-compatible factors and decisions",
+        "positive-sequence observations"
+      ],
+      "findings": [
+      ],
+      "preservation_status": "not-preserved",
+      "source": "circuit_primitive",
+      "unresolved_guards": [
+        "earth reference and earth-return convention declared",
+        "neutral block invertible",
+        "neutral voltage/grounding assumption declared",
+        "neutral limits recovered",
+        "phase order and Fortescue convention declared",
+        "sequence coupling is negligible or excluded by the study",
+        "balanced boundary data",
+        "sequence-compatible factors and decisions",
+        "positive-sequence observations"
+      ],
+      "forgets": [
+        "explicit earth asset and alternative ground-potential observations",
+        "neutral voltage and separate neutral identity unless recovered",
+        "natural phase labels as the working coordinates",
+        "sequence coupling and cross-channel constraints",
+        "zero/negative sequence, phase-specific and neutral observations"
+      ],
+      "target": "positive-sequence-primitive"
+    }
+  },
+  "all_checks_pass": true,
+  "schema_version": "0.1.0"
+}

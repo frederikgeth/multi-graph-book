@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="720" viewBox="0 0 1400 720">
+<title>CS1035: an explicit unresolved reproduction</title>
+<desc>A failed probe is evidence too: changing frequency does not close the construction-to-matrix gap.</desc>
+<rect width="100%" height="100%" fill="white"/>
+
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:27px;font-weight:bold}.sub{font-size:15px;fill:#5f6b76}
+.head{font-size:18px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#46525d}.tiny{font-size:12px;fill:#46525d}
+.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.good{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.warn{fill:#fff3dc;stroke:#a36516;stroke-width:2}.bad{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.ink{stroke:#17212b;stroke-width:2}.ok{fill:#2f6b3b}.red{fill:#8a3232}.amber{fill:#a36516}
+</style>
+
+<text x="35" y="40" class="title" text-anchor="start">CS1035: an explicit unresolved reproduction</text>
+<text x="35" y="68" class="sub" text-anchor="start">A failed probe is evidence too: changing frequency does not close the construction-to-matrix gap.</text>
+<rect x="50" y="130" width="390" height="390" rx="10" class="panel"/>
+<rect x="505" y="130" width="390" height="390" rx="10" class="warn"/>
+<rect x="960" y="130" width="390" height="390" rx="10" class="bad"/>
+<text x="75" y="170" class="head" text-anchor="start">available</text>
+<text x="75" y="210" class="body" text-anchor="start">UGHV fixture fields</text>
+<text x="75" y="250" class="small" text-anchor="start">diameter, resistance, positions</text>
+<text x="75" y="278" class="small" text-anchor="start">50 Hz Carson primitive</text>
+<text x="75" y="340" class="tiny" text-anchor="start">independent reference</text>
+<text x="75" y="365" class="small" text-anchor="start">CS1035 Z_abcn matrix</text>
+<text x="530" y="170" class="head" text-anchor="start">frequency probe</text>
+<text x="530" y="220" class="body" text-anchor="start">50 Hz</text>
+<text x="530" y="250" class="small" text-anchor="start">error 0.525 Ω/km</text>
+<text x="530" y="315" class="body" text-anchor="start">60 Hz</text>
+<text x="530" y="345" class="small" text-anchor="start">error 0.545 Ω/km</text>
+<text x="530" y="420" class="head" text-anchor="start">frequency is not sufficient</text>
+<text x="985" y="170" class="head" text-anchor="start">missing</text>
+<text x="985" y="220" class="body" text-anchor="start">raw CS1035 construction mapping</text>
+<text x="985" y="275" class="small" text-anchor="start">conductor / screen geometry</text>
+<text x="985" y="302" class="small" text-anchor="start">earth-return convention</text>
+<text x="985" y="329" class="small" text-anchor="start">source frequency and ordering</text>
+<text x="985" y="410" class="head" text-anchor="start">OPEN DATA TASK</text>
+<rect x="50" y="565" width="1300" height="75" rx="10" class="panel"/>
+<text x="75" y="610" class="body" text-anchor="start">Do not relabel this as a successful reproduction: retain the matrix as an independent comparison and preserve the missing provenance in the evidence ledger.</text>
+</svg>

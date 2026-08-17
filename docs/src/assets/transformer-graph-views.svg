@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="860" viewBox="0 0 1400 860">
+<title>One multiwinding transformer has several associated graphs</title>
+<desc>A three-winding transformer is shown as one identified asset and three-port factor, a pair-test triangle, a generated star with an internal virtual node, and a terminal clique after elimination. A final guard explains that an arbitrary n-winding model is not generally a diagonal star.</desc>
+<rect width="1400" height="860" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#5f6b76}.port{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.factor{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.virtual{fill:#eee8f8;stroke:#7856a8;stroke-width:2;stroke-dasharray:7 5}.guard{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.edge{stroke:#245b7a;stroke-width:3;fill:none}.generated{stroke:#7856a8;stroke-width:3;fill:none;stroke-dasharray:8 5}.arrow{stroke:#17212b;stroke-width:2.5;fill:none;marker-end:url(#arrow)}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>
+<text x="40" y="44" class="title" text-anchor="start">One transformer, several graphs</text>
+<text x="40" y="72" class="sub" text-anchor="start">The object and arrow labels—not the visual shape—state what each construction means.</text>
+<rect x="35" y="115" width="300" height="480" rx="14" class="panel"/>
+<rect x="370" y="115" width="300" height="480" rx="14" class="panel"/>
+<rect x="705" y="115" width="300" height="480" rx="14" class="panel"/>
+<rect x="1040" y="115" width="300" height="480" rx="14" class="panel"/>
+<text x="60" y="155" class="head" text-anchor="start">1  source and canonical factor</text>
+<rect x="115" y="245" width="140" height="130" rx="14" class="factor"/>
+<text x="185" y="287" class="head" text-anchor="middle">asset x₁</text>
+<text x="185" y="315" class="body" text-anchor="middle">one factor</text>
+<text x="185" y="342" class="small" text-anchor="middle">arity 3</text>
+<circle cx="75" cy="235" r="24" class="port"/><circle cx="75" cy="405" r="24" class="port"/><circle cx="295" cy="320" r="24" class="port"/>
+<text x="75" y="241" class="small" text-anchor="middle">k1</text>
+<text x="75" y="411" class="small" text-anchor="middle">k2</text>
+<text x="295" y="326" class="small" text-anchor="middle">k3</text>
+<line x1="98" y1="247" x2="115" y2="270" class="edge"/><line x1="98" y1="393" x2="115" y2="350" class="edge"/><line x1="255" y1="315" x2="271" y2="318" class="edge"/>
+<text x="185" y="490" class="body" text-anchor="middle">identity + winding interfaces</text>
+<text x="185" y="520" class="small" text-anchor="middle">limits, state, taps, grounding</text>
+<text x="395" y="155" class="head" text-anchor="start">2  pair-test data graph</text>
+<circle cx="440" cy="400" r="25" class="port"/><circle cx="520" cy="245" r="25" class="port"/><circle cx="620" cy="400" r="25" class="port"/>
+<line x1="452" y1="378" x2="508" y2="267" class="edge"/><line x1="545" y1="263" x2="605" y2="380" class="edge"/><line x1="465" y1="400" x2="595" y2="400" class="edge"/>
+<text x="440" y="406" class="body" text-anchor="middle">1</text>
+<text x="520" y="251" class="body" text-anchor="middle">2</text>
+<text x="620" y="406" class="body" text-anchor="middle">3</text>
+<text x="480" y="320" class="small" text-anchor="middle">z₁₂ˢᶜ</text>
+<text x="572" y="320" class="small" text-anchor="middle">z₂₃ˢᶜ</text>
+<text x="530" y="425" class="small" text-anchor="middle">z₁₃ˢᶜ</text>
+<text x="520" y="490" class="body" text-anchor="middle">edges index tests</text>
+<text x="520" y="520" class="small" text-anchor="middle">not independent transformers</text>
+<text x="730" y="155" class="head" text-anchor="start">3  generated star / T</text>
+<circle cx="765" cy="270" r="25" class="port"/><circle cx="765" cy="455" r="25" class="port"/><circle cx="965" cy="360" r="25" class="port"/><circle cx="865" cy="360" r="28" class="virtual"/>
+<line x1="789" y1="281" x2="840" y2="338" class="generated"/><line x1="789" y1="444" x2="840" y2="382" class="generated"/><line x1="893" y1="360" x2="940" y2="360" class="generated"/>
+<text x="765" y="276" class="small" text-anchor="middle">k1</text>
+<text x="765" y="461" class="small" text-anchor="middle">k2</text>
+<text x="965" y="366" class="small" text-anchor="middle">k3</text>
+<text x="865" y="366" class="body" text-anchor="middle">νₓ₁</text>
+<text x="865" y="490" class="body" text-anchor="middle">local cycle rank 0</text>
+<text x="865" y="520" class="small" text-anchor="middle">virtual node and arms</text>
+<text x="1065" y="155" class="head" text-anchor="start">4  terminal clique</text>
+<circle cx="1095" cy="405" r="25" class="port"/><circle cx="1190" cy="245" r="25" class="port"/><circle cx="1290" cy="405" r="25" class="port"/>
+<line x1="1108" y1="383" x2="1177" y2="267" class="generated"/><line x1="1214" y1="264" x2="1276" y2="383" class="generated"/><line x1="1120" y1="405" x2="1265" y2="405" class="generated"/>
+<text x="1095" y="411" class="small" text-anchor="middle">k1</text>
+<text x="1190" y="251" class="small" text-anchor="middle">k2</text>
+<text x="1290" y="411" class="small" text-anchor="middle">k3</text>
+<text x="1190" y="490" class="body" text-anchor="middle">local cycle rank 1</text>
+<text x="1190" y="520" class="small" text-anchor="middle">after internal elimination</text>
+<path d="M337 350 L360 350" class="arrow"/><path d="M672 350 L695 350" class="arrow"/><path d="M1007 350 L1030 350" class="arrow"/>
+<rect x="80" y="650" width="1240" height="140" rx="14" class="guard"/>
+<text x="110" y="690" class="head" text-anchor="start">n-winding guard</text>
+<text x="110" y="725" class="body" text-anchor="start">For n = 3 the full reference relation has the familiar star/T coordinates. For general n, the exact (n−1)×(n−1) reference impedance is generally full.</text>
+<text x="110" y="755" class="body" text-anchor="start">A diagonal n-arm star, a complete edge graph, and the terminal support graph are therefore guarded target views—not the source transformer.</text>
+<text x="40" y="835" class="small" text-anchor="start">A tree can become a clique under exact elimination without creating a new physical power-system loop.</text>
+</svg>

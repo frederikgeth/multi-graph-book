@@ -1,0 +1,131 @@
+{
+  "star_delta": {
+    "inverse_recovers_source": true,
+    "floating_scalar_guards_hold": true,
+    "interpretation": "The transform preserves a fixed floating linear terminal relation, not hidden branch semantics.",
+    "star_impedances": [
+      {
+        "real": 0.7,
+        "imag": 0.16
+      },
+      {
+        "real": 0.92,
+        "imag": 0.21
+      },
+      {
+        "real": 1.15,
+        "imag": 0.12
+      }
+    ],
+    "terminal_admittance_residual": 2.466969522362136e-16,
+    "recovered_star_impedances": [
+      {
+        "real": 0.7000000000000001,
+        "imag": 0.16
+      },
+      {
+        "real": 0.9200000000000002,
+        "imag": 0.20999999999999996
+      },
+      {
+        "real": 1.15,
+        "imag": 0.12000000000000004
+      }
+    ],
+    "terminal_equivalence_holds": true,
+    "inverse_impedance_residual": 1.6478959984131287e-16,
+    "delta_impedances": [
+      {
+        "real": 2.1714728102326277,
+        "imag": 0.5682810980626823
+      },
+      {
+        "real": 3.5813731574864236,
+        "imag": 0.48725756400310305
+      },
+      {
+        "real": 2.725032004491858,
+        "imag": 0.3715687815833802
+      }
+    ]
+  },
+  "all_witnesses_pass": true,
+  "source": "experiments/transformations/NarrowCircuitTransformations.jl",
+  "scope": "fixed_scalar_linear_circuit_transformations",
+  "asymmetric_endpoint_shunt": {
+    "to_shunt": {
+      "real": 0,
+      "imag": 0.21
+    },
+    "source_admittance": [
+      [
+        {
+          "real": 2.5641025641025643,
+          "imag": -3.766153846153846
+        },
+        {
+          "real": -2.5641025641025643,
+          "imag": 3.8461538461538463
+        }
+      ],
+      [
+        {
+          "real": -2.5641025641025643,
+          "imag": 3.8461538461538463
+        },
+        {
+          "real": 2.5641025641025643,
+          "imag": -3.6361538461538463
+        }
+      ]
+    ],
+    "adapter_residual": 0.0919238815542511,
+    "endpoint_asymmetry_is_nonreciprocity": false,
+    "from_shunt": {
+      "real": 0,
+      "imag": 0.08
+    },
+    "off_diagonal_reciprocity_residual": 0,
+    "interpretation": "Unequal endpoint shunts change the diagonal blocks; averaging them is an approximation, not a coordinate change.",
+    "adapter_must_report_loss": true,
+    "shared_field_encoding_valid": false,
+    "shared_shunt_adapter_admittance": [
+      [
+        {
+          "real": 2.5641025641025643,
+          "imag": -3.7011538461538462
+        },
+        {
+          "real": -2.5641025641025643,
+          "imag": 3.8461538461538463
+        }
+      ],
+      [
+        {
+          "real": -2.5641025641025643,
+          "imag": 3.8461538461538463
+        },
+        {
+          "real": 2.5641025641025643,
+          "imag": -3.7011538461538462
+        }
+      ]
+    ],
+    "endpoint_shunts_unequal": true
+  },
+  "schema_version": "0.1.0",
+  "grounded_star_guard": {
+    "compiler_rejected": true,
+    "interpretation": "A grounded star has an additional reference port and requires a typed Schur complement or explicit factor.",
+    "guards": {
+      "scalar_linear": true,
+      "nonsingular_required_impedances": true,
+      "floating_internal_node": false,
+      "branch_limits_absent": true
+    },
+    "failed_guards": [
+      "floating_internal_node"
+    ],
+    "grounding_asset_retained": true
+  }
+}

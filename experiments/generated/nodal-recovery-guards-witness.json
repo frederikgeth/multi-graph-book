@@ -1,0 +1,178 @@
+{
+  "checks": {
+    "member_current_measurement_member_currents_are_observed": true,
+    "grounding_declaration_unknown_grounding_and_shunt_split_is_ambiguous": true,
+    "catalog_bounds_bounds_make_ambiguity_compact": true,
+    "transformer_state_declaration_tap_map_is_explicitly_state_conditioned": true,
+    "grounding_declaration_recovers_residual_split": true,
+    "catalog_bounds_bounds_do_not_make_recovery_unique": true,
+    "catalog_bounds_both_candidates_obey_bounds": true,
+    "member_measurement_recovers_members": true,
+    "transformer_state_declaration_unknown_tap_has_multiple_state_parameter_pairs": true,
+    "member_current_measurement_member_measurement_lifts_parallel_ambiguity": true,
+    "transformer_state_declaration_recovers_state_conditioned_primitive": true,
+    "grounding_declaration_grounding_declaration_lifts_this_diagonal_ambiguity": true,
+    "catalog_bounds_candidate_splits_are_distinct": true,
+    "grounding_declaration_unknown_candidates_have_identical_diagonal_residual": true,
+    "member_current_measurement_total_and_member_observations_are_consistent": true,
+    "transformer_state_declaration_declared_tap_recovers_base_primitive": true,
+    "transformer_state_declaration_state_declaration_removes_this_parameter_ambiguity": true,
+    "catalog_bounds_are_bounded_not_unique": true,
+    "grounding_declaration_declared_grounding_recovers_local_shunt": true,
+    "member_current_measurement_augmented_map_is_injective_for_this_case": true
+  },
+  "claim_ids": [
+    "ARCH-RECOVERY-002"
+  ],
+  "all_checks_pass": true,
+  "witness_id": "ARCH-RECOVERY-GUARDS-001",
+  "augmented_map_statement": "additional observations lift ambiguity only when their joint kernel intersects the original ambiguity set trivially",
+  "schema_version": "0.1.0",
+  "model_scope": "finite nodal operators with declared catalog bounds, member observations, grounding metadata, and scalar state maps",
+  "cases": {
+    "catalog_bounds": {
+      "candidate_b": [
+        1.75,
+        0.5
+      ],
+      "checks": {
+        "candidate_splits_are_distinct": true,
+        "bounds_do_not_make_recovery_unique": true,
+        "both_candidates_obey_bounds": true,
+        "bounds_make_ambiguity_compact": true
+      },
+      "status": "bounded-non-identifiable",
+      "candidate_a": [
+        1.25,
+        1.0
+      ],
+      "total_series_admittance": 2.25,
+      "model_class": "two scalar parallel factors with catalog intervals",
+      "member_two_bounds": [
+        0.5,
+        1.0
+      ],
+      "member_one_bounds": [
+        1,
+        2
+      ],
+      "feasible_member_one_interval": [
+        1.25,
+        1.75
+      ]
+    },
+    "member_current_measurement": {
+      "checks": {
+        "total_and_member_observations_are_consistent": true,
+        "augmented_map_is_injective_for_this_case": true,
+        "member_measurement_lifts_parallel_ambiguity": true,
+        "member_currents_are_observed": true
+      },
+      "voltage_drop": {
+        "re": 2,
+        "im": 0.5
+      },
+      "observed_member_currents": [
+        {
+          "re": 2.9,
+          "im": 1.15
+        },
+        {
+          "re": 1.45,
+          "im": 0.575
+        }
+      ],
+      "status": "identifiable",
+      "recovered_member_admittances": [
+        {
+          "re": 1.5,
+          "im": 0.19999999999999996
+        },
+        {
+          "re": 0.75,
+          "im": 0.09999999999999998
+        }
+      ],
+      "model_class": "two aligned parallel scalar factors with nonzero voltage drop and member-current observations"
+    },
+    "grounding_declaration": {
+      "declared_grounding": 0.1,
+      "unknown_grounding_candidates": [
+        [
+          0.1,
+          0.2
+        ],
+        [
+          0.2,
+          0.1
+        ]
+      ],
+      "recovered_local_shunt": 0.19999999999999982,
+      "observed_operator": [
+        [
+          {
+            "re": 2.3,
+            "im": 0.5
+          },
+          {
+            "re": -2,
+            "im": -0.5
+          }
+        ],
+        [
+          {
+            "re": -2,
+            "im": -0.5
+          },
+          {
+            "re": 2,
+            "im": 0.5
+          }
+        ]
+      ],
+      "checks": {
+        "grounding_declaration_lifts_this_diagonal_ambiguity": true,
+        "unknown_grounding_and_shunt_split_is_ambiguous": true,
+        "declared_grounding_recovers_local_shunt": true,
+        "unknown_candidates_have_identical_diagonal_residual": true
+      },
+      "status": "identifiable-with-declaration",
+      "model_class": "series factor with a diagonal residual split between local shunt and grounding"
+    },
+    "transformer_state_declaration": {
+      "unknown_state_candidates": [
+        {
+          "base_admittance": {
+            "re": 1,
+            "im": 0.25
+          },
+          "tap": 1
+        },
+        {
+          "base_admittance": {
+            "re": 4,
+            "im": 1
+          },
+          "tap": 2
+        }
+      ],
+      "checks": {
+        "state_declaration_removes_this_parameter_ambiguity": true,
+        "tap_map_is_explicitly_state_conditioned": true,
+        "unknown_tap_has_multiple_state_parameter_pairs": true,
+        "declared_tap_recovers_base_primitive": true
+      },
+      "recovered_base_admittance": {
+        "re": 4,
+        "im": 1
+      },
+      "status": "identifiable-with-state",
+      "model_class": "tap-scaled scalar primitive with declared active tap state",
+      "effective_admittance": {
+        "re": 1,
+        "im": 0.25
+      },
+      "declared_tap": 2
+    }
+  }
+}

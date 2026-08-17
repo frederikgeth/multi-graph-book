@@ -1,0 +1,198 @@
+{
+  "phase_order": [
+    "a",
+    "b",
+    "c"
+  ],
+  "checks": {
+    "branch_currents_match_embedded_scalar": true,
+    "circulant_series_and_shunt": true,
+    "balanced_transmission_fixture_has_two_arcs": true,
+    "phase_solution_matches_embedded_scalar": true,
+    "nominal_pi_shunts_included": true,
+    "phase_nodal_residual_is_small": true,
+    "phase_solution_stays_positive_sequence": true
+  },
+  "phase_voltages": [
+    {
+      "re": 1,
+      "im": 0
+    },
+    {
+      "re": -0.5000000000000003,
+      "im": -0.8660254037844384
+    },
+    {
+      "re": -0.4999999999999998,
+      "im": 0.8660254037844387
+    },
+    {
+      "re": 1.1156473824832402,
+      "im": 0.16158388992788497
+    },
+    {
+      "re": -0.4178879377217637,
+      "im": -1.046970919860042
+    },
+    {
+      "re": -0.6977594447614761,
+      "im": 0.8853870299321571
+    },
+    {
+      "re": 1.1542561918639178,
+      "im": 0.21547043745836925
+    },
+    {
+      "re": -0.3905252233284652,
+      "im": -1.107350403358822
+    },
+    {
+      "re": -0.7637309685354521,
+      "im": 0.8918799659004524
+    }
+  ],
+  "fortescue_positive_sequence_impedance": {
+    "re": 0.10999999999999996,
+    "im": 0.30000000000000004
+  },
+  "fortescue_positive_sequence_shunt": {
+    "re": 0.0017999999999999986,
+    "im": 0.009000000000000001
+  },
+  "all_checks_pass": true,
+  "claim_id": "COLLAPSE-001",
+  "fixture": "balanced three-bus two-arc nominal-pi transmission network",
+  "branches": [
+    {
+      "current_residual": 2.0807427796300308e-15,
+      "embedded_positive_sequence_current": [
+        {
+          "re": -0.598476876116766,
+          "im": 0.17021975370131923
+        },
+        {
+          "re": 0.44665306898965584,
+          "im": 0.4331863014440119
+        },
+        {
+          "re": 0.15182380712711022,
+          "im": -0.6034060551453314
+        }
+      ],
+      "phase_current": [
+        {
+          "re": -0.598476876116767,
+          "im": 0.17021975370131923
+        },
+        {
+          "re": 0.4466530689896558,
+          "im": 0.433186301444012
+        },
+        {
+          "re": 0.15182380712711172,
+          "im": -0.60340605514533
+        }
+      ],
+      "arc": {
+        "asset": "l12",
+        "to": "b2",
+        "from": "b1"
+      }
+    },
+    {
+      "current_residual": 1.0937950820210114e-15,
+      "embedded_positive_sequence_current": [
+        {
+          "re": -0.19965383125632583,
+          "im": 0.06055391497920956
+        },
+        {
+          "re": 0.15226814429876148,
+          "im": 0.1426283323412649
+        },
+        {
+          "re": 0.04738568695756434,
+          "im": -0.20318224732047452
+        }
+      ],
+      "phase_current": [
+        {
+          "re": -0.1996538312563252,
+          "im": 0.06055391497921045
+        },
+        {
+          "re": 0.15226814429876162,
+          "im": 0.1426283323412647
+        },
+        {
+          "re": 0.04738568695756422,
+          "im": -0.20318224732047474
+        }
+      ],
+      "arc": {
+        "asset": "l23",
+        "to": "b3",
+        "from": "b2"
+      }
+    }
+  ],
+  "arcs": [
+    "l12",
+    "l23"
+  ],
+  "witness_id": "COLLAPSE-NETWORK-001",
+  "residuals": {
+    "positive_subspace_inf_norm": 7.108895957933346e-16,
+    "phase_voltage_inf_norm": 6.473657049138938e-16,
+    "phase_nodal_inf_norm": 2.589462819655575e-15
+  },
+  "embedded_scalar_voltages": [
+    {
+      "re": 1,
+      "im": 0
+    },
+    {
+      "re": -0.5000000000000003,
+      "im": -0.8660254037844384
+    },
+    {
+      "re": -0.4999999999999998,
+      "im": 0.8660254037844387
+    },
+    {
+      "re": 1.11564738248324,
+      "im": 0.16158388992788475
+    },
+    {
+      "re": -0.4178879377217637,
+      "im": -1.046970919860042
+    },
+    {
+      "re": -0.6977594447614764,
+      "im": 0.8853870299321577
+    },
+    {
+      "re": 1.1542561918639174,
+      "im": 0.21547043745836936
+    },
+    {
+      "re": -0.3905252233284651,
+      "im": -1.107350403358822
+    },
+    {
+      "re": -0.7637309685354524,
+      "im": 0.8918799659004529
+    }
+  ],
+  "interpretation": "A balanced three-phase nominal-pi network can be solved in positive-sequence coordinates when its factors, boundary injections, and observations close under the declared symmetry; the witness does not certify unbalanced, grounding, or phase-specific decisions.",
+  "injections_positive_sequence": [
+    {
+      "re": 0.4,
+      "im": -0.1
+    },
+    {
+      "re": 0.2,
+      "im": -0.05
+    }
+  ]
+}

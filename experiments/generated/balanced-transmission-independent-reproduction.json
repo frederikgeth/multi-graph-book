@@ -1,0 +1,30 @@
+{
+  "witness_id": "COLLAPSE-NETWORK-001-REPRO",
+  "claim_id": "COLLAPSE-001",
+  "method": "independent pure-Python complex Gaussian elimination",
+  "source_witness": "experiments/generated/balanced-transmission-witness.json",
+  "residuals": {
+    "phase_voltage_inf_norm": 1.1226435567921847e-15,
+    "phase_nodal_inf_norm": 1.831026719408895e-15,
+    "positive_subspace_inf_norm": 4.577566798522237e-16
+  },
+  "branches": [
+    {
+      "arc": "l12",
+      "current_residual": 2.558937633260452e-15
+    },
+    {
+      "arc": "l23",
+      "current_residual": 7.711855592701269e-16
+    }
+  ],
+  "matches_julia": true,
+  "checks": {
+    "all_values_match_julia": true,
+    "independent_solver_used": true,
+    "nominal_pi_shunts_reconstructed": true,
+    "no_numpy_or_julia_import": true
+  },
+  "all_checks_pass": true,
+  "interpretation": "Independent reproduction of the declared balanced nominal-pi network and its positive-sequence embedding; not a global decision-equivalence or unbalanced-network validation."
+}

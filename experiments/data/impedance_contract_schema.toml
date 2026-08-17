@@ -1,0 +1,31 @@
+# Versioned interchange contract for multiconductor impedance data.
+# This is intentionally narrower than a complete utility data standard: it
+# specifies the fields needed to carry graph identity, electrical blocks,
+# limits, and transformation provenance without silently losing semantics.
+
+[schema]
+id = "power-network-impedance"
+version = "0.1.0"
+status_vocabulary = ["declared", "derived", "inferred", "unsupported", "unresolved"]
+preservation_layers = ["structure", "behaviour", "decision", "provenance"]
+required_element_fields = ["element_id", "kind", "terminals", "blocks", "units", "limits", "grounding", "provenance", "views", "findings"]
+
+[blocks]
+required = ["series", "shunt"]
+series_semantics = "ordered terminal-to-terminal impedance block"
+shunt_semantics = "terminal-to-reference or terminal-to-terminal admittance block"
+
+[provenance]
+required = ["source", "status", "lineage"]
+source_status_meaning = "declared, derived, inferred, unsupported, or unresolved"
+
+[limits]
+required = ["ampacity_a", "scope", "owner"]
+
+[grounding]
+required = ["model", "nominal_impedance_ohm", "terminal", "status"]
+status_meaning = "declared, derived, inferred, unsupported, or unresolved"
+
+[findings]
+code_prefix = "IMP-"
+severity_vocabulary = ["info", "warning", "error"]

@@ -1,0 +1,44 @@
+name: llm-accessibility
+
+on:
+  push:
+    paths:
+      - 'llm/**'
+      - 'claims/claims.toml'
+      - 'vocabulary/vocabulary.toml'
+      - 'docs/src/**'
+      - 'schemas/llm-*.json'
+      - 'scripts/*llm*.py'
+      - 'scripts/check_neural_benchmark.py'
+      - 'scripts/check_release_candidate.py'
+      - 'scripts/mcp_llm_server.py'
+      - 'scripts/serve_llm_access.py'
+      - '.github/workflows/llm-accessibility.yml'
+  pull_request:
+    paths:
+      - 'llm/**'
+      - 'claims/claims.toml'
+      - 'vocabulary/vocabulary.toml'
+      - 'docs/src/**'
+      - 'schemas/llm-*.json'
+      - 'scripts/*llm*.py'
+      - 'scripts/check_neural_benchmark.py'
+      - 'scripts/check_release_candidate.py'
+      - 'scripts/mcp_llm_server.py'
+      - 'scripts/serve_llm_access.py'
+      - '.github/workflows/llm-accessibility.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check dependency-free LLM accessibility reproduction
+        run: python3 scripts/check_llm_reproducibility.py

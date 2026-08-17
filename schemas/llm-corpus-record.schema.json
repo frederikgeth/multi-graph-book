@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:multi-graph-book:schema:llm-corpus-record:0.1.0",
+  "title": "Book LLM corpus record",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "record_id",
+    "record_type",
+    "title",
+    "text",
+    "source",
+    "release"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "record_id": {"type": "string", "minLength": 1},
+    "record_type": {"enum": ["section", "claim_bundle", "concept_bundle"]},
+    "title": {"type": "string", "minLength": 1},
+    "text": {"type": "string", "minLength": 1},
+    "source": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "anchor": {"type": "string"},
+        "line": {"type": "integer", "minimum": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": true
+    },
+    "release": {
+      "type": "object",
+      "required": ["release_candidate_id", "status", "release_identity_sha256"],
+      "properties": {
+        "release_candidate_id": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "minLength": 1},
+        "release_identity_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "claim": {"type": "object"},
+    "concept": {"type": "object"},
+    "supporting_passage": {"type": "object"},
+    "misconception_ids": {"type": "array", "items": {"type": "string"}}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"record_type": {"const": "claim_bundle"}}},
+      "then": {"required": ["claim", "supporting_passage", "misconception_ids"]}
+    },
+    {
+      "if": {"properties": {"record_type": {"const": "concept_bundle"}}},
+      "then": {"required": ["concept", "misconception_ids"]}
+    }
+  ],
+  "additionalProperties": true
+}

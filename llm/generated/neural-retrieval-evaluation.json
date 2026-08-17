@@ -1,0 +1,2872 @@
+{
+  "cases": [
+    {
+      "audience": "student",
+      "case_id": "HOLDOUT-GRAPH-STUDENT",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.222222,
+        "recall_at_10": 0.4,
+        "recall_at_5": 0.2,
+        "top_10": [
+          "concept:graph-topology-adjacency",
+          "claim:NUMERICAL-001",
+          "claim:THESIS-001",
+          "claim:ARCH-SURGERY-001",
+          "claim:ARCH-RECOVERY-002",
+          "claim:TOPOLOGY-001",
+          "claim:TR-XFMR-001",
+          "claim:TR-PAR-002",
+          "claim:ARCH-SUPPORT-001",
+          "claim:ARCH-LOWER-001"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:ARCH-SUPPORT-001",
+        "claim:ARCH-VIEW-001",
+        "claim:VOCAB-BRIDGE-001",
+        "concept:element-edge-relation",
+        "concept:graph-topology-adjacency"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.286667,
+        "recall_at_10": 0.6,
+        "recall_at_5": 0.4,
+        "top_10": [
+          "concept:graph-topology-adjacency",
+          "claim:ARCH-LOWER-001",
+          "claim:ARCH-SUPPORT-001",
+          "claim:THESIS-001",
+          "claim:TOPOLOGY-001",
+          "claim:NUMERICAL-001",
+          "claim:ARCH-CHORDAL-001",
+          "claim:TR-GRAPH-ACTIVE-001",
+          "claim:GRAPH-CYCLE-001",
+          "claim:ARCH-VIEW-001"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.227885,
+        "recall_at_10": 0.2,
+        "recall_at_5": 0.2,
+        "top_10": [
+          "claim:ARCH-VIEW-001",
+          "claim:TR-GRAPH-ACTIVE-001",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:TR-KRON-002",
+          "claim:THESIS-001",
+          "claim:NUMERICAL-002",
+          "claim:ARCH-SURGERY-001",
+          "claim:RATING-001",
+          "claim:NUMERICAL-001",
+          "claim:ARCH-CHORDAL-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.32,
+        "recall_at_10": 0.6,
+        "recall_at_5": 0.6,
+        "top_10": [
+          "concept:graph-topology-adjacency",
+          "claim:ARCH-LOWER-001",
+          "claim:ARCH-SUPPORT-001",
+          "claim:ARCH-CHORDAL-001",
+          "claim:ARCH-VIEW-001",
+          "claim:TR-GRAPH-ACTIVE-001",
+          "claim:NUMERICAL-002",
+          "claim:TOPOLOGY-001",
+          "claim:GRAPH-CYCLE-001",
+          "claim:ARCH-SURGERY-002"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.274115,
+        "recall_at_10": 0.4,
+        "recall_at_5": 0.2,
+        "top_10": [
+          "concept:graph-topology-adjacency",
+          "claim:ARCH-SURGERY-001",
+          "claim:TOPOLOGY-001",
+          "concept:object-node-interface",
+          "claim:TR-GRAPH-ACTIVE-001",
+          "claim:ARCH-VIEW-001",
+          "claim:TR-GRAPH-002",
+          "concept:direction-orientation-hierarchy",
+          "claim:THESIS-001",
+          "concept:cycle-radial-tree"
+        ]
+      },
+      "question": "When someone says network graph here, which objects and operating condition have they actually chosen?"
+    },
+    {
+      "audience": "software_engineer",
+      "case_id": "HOLDOUT-GRAPH-SOFTWARE",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.266667,
+        "recall_at_10": 0.4,
+        "recall_at_5": 0.4,
+        "top_10": [
+          "concept:graph-topology-adjacency",
+          "claim:ARCH-LOWER-001",
+          "claim:ARCH-SUPPORT-001",
+          "claim:TRANSFORM-SEM-001",
+          "claim:TOPOLOGY-001",
+          "claim:ARCH-LENS-001",
+          "claim:ARCH-DEGENERACY-001",
+          "claim:ARCH-SURGERY-002",
+          "concept:cycle-radial-tree",
+          "claim:ARCH-RECOVERY-001"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:ARCH-SUPPORT-001",
+        "claim:ARCH-VIEW-001",
+        "claim:VOCAB-BRIDGE-001",
+        "concept:element-edge-relation",
+        "concept:graph-topology-adjacency"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.280952,
+        "recall_at_10": 0.4,
+        "recall_at_5": 0.4,
+        "top_10": [
+          "concept:graph-topology-adjacency",
+          "claim:ARCH-LOWER-001",
+          "claim:ARCH-SUPPORT-001",
+          "claim:ARCH-LENS-001",
+          "claim:TRANSFORM-SEM-001",
+          "claim:ARCH-SURGERY-002",
+          "claim:TOPOLOGY-001",
+          "claim:GRAPH-CYCLE-001",
+          "claim:ARCH-NODAL-001",
+          "concept:cycle-radial-tree"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.225,
+        "recall_at_10": 0.4,
+        "recall_at_5": 0.2,
+        "top_10": [
+          "concept:graph-topology-adjacency",
+          "claim:ARCH-DEGENERACY-001",
+          "claim:TRANSFORM-SEM-001",
+          "claim:ARCH-LOWER-001",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "concept:cycle-radial-tree",
+          "claim:ARCH-DEGENERACY-002",
+          "claim:ARCH-SUPPORT-001",
+          "claim:PRESERVE-001",
+          "claim:GROUND-SCOPE-002"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.283333,
+        "recall_at_10": 0.4,
+        "recall_at_5": 0.4,
+        "top_10": [
+          "concept:graph-topology-adjacency",
+          "claim:ARCH-LOWER-001",
+          "claim:ARCH-SUPPORT-001",
+          "claim:ARCH-LENS-001",
+          "claim:ARCH-SURGERY-002",
+          "claim:TRANSFORM-SEM-001",
+          "claim:GRAPH-CYCLE-001",
+          "claim:ARCH-NODAL-001",
+          "claim:ARCH-BLOCK-001",
+          "claim:ARCH-CHORDAL-001"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.335238,
+        "recall_at_10": 0.8,
+        "recall_at_5": 0.6,
+        "top_10": [
+          "concept:graph-topology-adjacency",
+          "concept:direction-orientation-hierarchy",
+          "claim:ARCH-VIEW-001",
+          "claim:TR-GRAPH-002",
+          "concept:element-edge-relation",
+          "claim:GRAPH-CYCLE-001",
+          "claim:ARCH-SUPPORT-001",
+          "claim:TR-GRAPH-ACTIVE-001",
+          "claim:TOPOLOGY-001",
+          "claim:THESIS-001"
+        ]
+      },
+      "question": "How should a topology API distinguish its source equipment relations from the adjacency it derives for an algorithm?"
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "HOLDOUT-GRAPH-POWER",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.01,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "concept:state",
+          "claim:TOPOLOGY-001",
+          "claim:TRANSFORM-CATALOG-001",
+          "claim:TR-KRON-002",
+          "claim:ARCH-NODAL-001",
+          "claim:ARCH-SURGERY-002",
+          "claim:ARCH-SURGERY-001",
+          "claim:TR-GRAPH-002",
+          "claim:TR-KRON-003",
+          "claim:ARCH-DEGENERACY-001"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:ARCH-SUPPORT-001",
+        "claim:ARCH-VIEW-001",
+        "claim:VOCAB-BRIDGE-001",
+        "concept:element-edge-relation",
+        "concept:graph-topology-adjacency"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.022291,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "concept:state",
+          "claim:TOPOLOGY-001",
+          "claim:TRANSFORM-CATALOG-001",
+          "claim:ARCH-SURGERY-002",
+          "claim:TR-KRON-002",
+          "claim:ARCH-DEGENERACY-001",
+          "claim:ARCH-SURGERY-001",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:ARCH-NODAL-001",
+          "claim:TR-GRAPH-002"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.037607,
+        "recall_at_10": 0.2,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:TR-GRAPH-ACTIVE-001",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:ARCH-DEGENERACY-001",
+          "claim:ARCH-SURGERY-002",
+          "claim:TOPOLOGY-001",
+          "concept:cycle-radial-tree",
+          "claim:GROUND-SCOPE-002",
+          "claim:FORMULATION-NODAL-003",
+          "claim:ARCH-VIEW-001",
+          "claim:ARCH-CONDUCTOR-002"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.030952,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "concept:state",
+          "claim:ARCH-SURGERY-002",
+          "claim:TOPOLOGY-001",
+          "claim:TRANSFORM-CATALOG-001",
+          "claim:ARCH-DEGENERACY-001",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:PRACTICE-ADAPTER-001",
+          "claim:ARCH-SURGERY-001",
+          "concept:cycle-radial-tree",
+          "claim:TR-KRON-002"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.112222,
+        "recall_at_10": 0.6,
+        "recall_at_5": 0.4,
+        "top_10": [
+          "claim:TR-GRAPH-ACTIVE-001",
+          "concept:state",
+          "claim:ARCH-DEGENERACY-001",
+          "concept:graph-topology-adjacency",
+          "claim:ARCH-VIEW-001",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:THESIS-001",
+          "claim:TOPOLOGY-001",
+          "concept:element-edge-relation",
+          "claim:ARCH-SURGERY-002"
+        ]
+      },
+      "question": "Which network view is appropriate when a feeder study needs both equipment identity and the active connectivity state?"
+    },
+    {
+      "audience": "student",
+      "case_id": "HOLDOUT-YSPLIT-STUDENT",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.105413,
+        "recall_at_10": 0.333333,
+        "recall_at_5": 0.166667,
+        "top_10": [
+          "claim:TRANSFORM-SEM-001",
+          "claim:FORMULATION-NODAL-001",
+          "concept:factor",
+          "claim:NUMERICAL-001",
+          "claim:ARCH-PORT-001",
+          "claim:LOAD-DECISION-001",
+          "claim:TR-KRON-NEUTRAL-004",
+          "claim:ARCH-SUPPORT-001",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-CONDUCTOR-002"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:ARCH-NODAL-001",
+        "claim:FORMULATION-Y-SPLIT-001",
+        "claim:LOAD-DECISION-001",
+        "concept:factor",
+        "concept:graph-topology-adjacency",
+        "concept:nodal-operator-alias"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.125,
+        "recall_at_10": 0.5,
+        "recall_at_5": 0.333333,
+        "top_10": [
+          "claim:FORMULATION-NODAL-001",
+          "claim:TRANSFORM-SEM-001",
+          "concept:factor",
+          "claim:ARCH-SUPPORT-001",
+          "claim:ARCH-NODAL-001",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:ARCH-PORT-001",
+          "claim:NUMERICAL-001",
+          "claim:TR-XFMR-001",
+          "claim:ARCH-PORT-002"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.177778,
+        "recall_at_10": 0.166667,
+        "recall_at_5": 0.166667,
+        "top_10": [
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:NUMERICAL-001",
+          "claim:FORMULATION-NODAL-001",
+          "claim:LIT-PAR-001",
+          "claim:COLLAPSE-002",
+          "claim:ARCH-LOWER-002",
+          "claim:TR-XFMR-001",
+          "claim:TR-XFMR-002",
+          "claim:ARCH-LENS-001",
+          "claim:TR-XFMR-004"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.181481,
+        "recall_at_10": 0.5,
+        "recall_at_5": 0.5,
+        "top_10": [
+          "claim:FORMULATION-NODAL-001",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "concept:factor",
+          "claim:TRANSFORM-SEM-001",
+          "claim:ARCH-NODAL-001",
+          "claim:ARCH-BLOCK-001",
+          "claim:COLLAPSE-002",
+          "claim:ARCH-SUPPORT-001",
+          "claim:COLLAPSE-001",
+          "claim:TR-PAR-STATE-001"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.2375,
+        "recall_at_10": 0.666667,
+        "recall_at_5": 0.333333,
+        "top_10": [
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:FORMULATION-NODAL-002",
+          "claim:NUMERICAL-003",
+          "claim:TR-PAR-003",
+          "claim:ARCH-NODAL-001",
+          "claim:ARCH-BLOCK-001",
+          "claim:NUMERICAL-001",
+          "concept:factor",
+          "claim:NUMERICAL-002",
+          "concept:nodal-operator-alias"
+        ]
+      },
+      "question": "Why can an iterative power-flow calculation put part of a device into a linear matrix without changing what the device is in the original model?"
+    },
+    {
+      "audience": "software_engineer",
+      "case_id": "HOLDOUT-YSPLIT-SOFTWARE",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.086905,
+        "recall_at_10": 0.333333,
+        "recall_at_5": 0.333333,
+        "top_10": [
+          "claim:FORMULATION-NODAL-002",
+          "claim:ARCH-BLOCK-001",
+          "claim:ARCH-SUPPORT-001",
+          "claim:ARCH-NODAL-001",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:ARCH-RECOVERY-002",
+          "claim:ARCH-RECOVERY-003",
+          "claim:TR-SER-003",
+          "claim:NUMERICAL-001",
+          "claim:TR-PAR-JOINT-001"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:ARCH-NODAL-001",
+        "claim:FORMULATION-Y-SPLIT-001",
+        "claim:LOAD-DECISION-001",
+        "concept:factor",
+        "concept:graph-topology-adjacency",
+        "concept:nodal-operator-alias"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.076389,
+        "recall_at_10": 0.333333,
+        "recall_at_5": 0.166667,
+        "top_10": [
+          "claim:ARCH-BLOCK-001",
+          "claim:FORMULATION-NODAL-002",
+          "claim:ARCH-SUPPORT-001",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:TR-SER-003",
+          "claim:ARCH-RECOVERY-003",
+          "claim:TR-PAR-JOINT-001",
+          "claim:ARCH-NODAL-001",
+          "claim:ARCH-RECOVERY-002",
+          "claim:NUMERICAL-003"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.166667,
+        "recall_at_10": 0.166667,
+        "recall_at_5": 0.166667,
+        "top_10": [
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:ARCH-BLOCK-001",
+          "claim:NUMERICAL-003",
+          "claim:NUMERICAL-002",
+          "claim:FORMULATION-NODAL-002",
+          "claim:TR-PAR-AC-JOINT-001",
+          "claim:FIXTURE-002",
+          "claim:TR-PAR-STATE-001",
+          "claim:FORMULATION-NODAL-001",
+          "claim:PRACTICE-ADAPTER-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.06746,
+        "recall_at_10": 0.166667,
+        "recall_at_5": 0.166667,
+        "top_10": [
+          "claim:ARCH-BLOCK-001",
+          "claim:FORMULATION-NODAL-002",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:TR-SER-003",
+          "claim:ARCH-SUPPORT-001",
+          "claim:LOAD-CONTINUATION-001",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:ARCH-RECOVERY-003",
+          "claim:TR-SER-001",
+          "claim:NUMERICAL-003"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.194444,
+        "recall_at_10": 0.333333,
+        "recall_at_5": 0.166667,
+        "top_10": [
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:TR-COMP-001",
+          "claim:PRACTICE-ADAPTER-001",
+          "claim:ARCH-RECOVERY-003",
+          "claim:FORMULATION-NODAL-002",
+          "claim:ARCH-NODAL-001",
+          "claim:TRANSFORM-SEM-001",
+          "claim:FORMULATION-NODAL-001",
+          "claim:TR-KRON-003",
+          "claim:TR-PAR-AC-JOINT-001"
+        ]
+      },
+      "question": "How should an importer represent an element whose linear contribution is assembled for one solver iteration while its source record remains nonlinear?"
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "HOLDOUT-YSPLIT-POWER",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.194444,
+        "recall_at_10": 0.333333,
+        "recall_at_5": 0.166667,
+        "top_10": [
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:TR-KRON-NEUTRAL-008",
+          "claim:TR-KRON-NEUTRAL-005",
+          "claim:TR-KRON-NEUTRAL-006",
+          "claim:TR-PAR-003",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:TR-KRON-NEUTRAL-007",
+          "claim:NUMERICAL-002",
+          "concept:graph-topology-adjacency",
+          "claim:TR-KRON-NEUTRAL-003"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:ARCH-NODAL-001",
+        "claim:FORMULATION-Y-SPLIT-001",
+        "claim:LOAD-DECISION-001",
+        "concept:factor",
+        "concept:graph-topology-adjacency",
+        "concept:nodal-operator-alias"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.220221,
+        "recall_at_10": 0.333333,
+        "recall_at_5": 0.333333,
+        "top_10": [
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:NUMERICAL-002",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:TR-GRAPH-001",
+          "concept:graph-topology-adjacency",
+          "claim:TR-PAR-003",
+          "claim:TR-XFMR-006",
+          "claim:TR-XFMR-008",
+          "claim:FORMULATION-NODAL-003",
+          "claim:TR-KRON-NEUTRAL-008"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.190476,
+        "recall_at_10": 0.333333,
+        "recall_at_5": 0.166667,
+        "top_10": [
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:NUMERICAL-002",
+          "claim:ARCH-BLOCK-001",
+          "claim:LOAD-CONNECTION-001",
+          "claim:PRESERVE-001",
+          "claim:TR-PAR-AC-JOINT-001",
+          "claim:LOAD-DECISION-001",
+          "claim:TR-SER-003",
+          "claim:LOAD-CONTINUATION-001",
+          "claim:TR-XFMR-005"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.228571,
+        "recall_at_10": 0.5,
+        "recall_at_5": 0.333333,
+        "top_10": [
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:NUMERICAL-002",
+          "claim:FORMULATION-NODAL-001",
+          "claim:TR-GRAPH-001",
+          "claim:LOAD-DECISION-001",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:TR-XFMR-010",
+          "claim:TR-XFMR-006",
+          "claim:TR-GRAPH-ACTIVE-001",
+          "concept:factor"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.272624,
+        "recall_at_10": 0.333333,
+        "recall_at_5": 0.333333,
+        "top_10": [
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:LOAD-DECISION-001",
+          "claim:TR-PAR-003",
+          "claim:THESIS-001",
+          "claim:LOAD-CONTINUATION-001",
+          "claim:NUMERICAL-002",
+          "claim:NUMERICAL-001",
+          "claim:ARCH-BLOCK-001",
+          "claim:FORMULATION-NODAL-002",
+          "claim:NUMERICAL-003"
+        ]
+      },
+      "question": "What does it mean physically and computationally when a load model contributes a constant-Z part to the linearised network equation?"
+    },
+    {
+      "audience": "student",
+      "case_id": "HOLDOUT-YBUS-STUDENT",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.391667,
+        "recall_at_10": 0.8,
+        "recall_at_5": 0.6,
+        "top_10": [
+          "concept:nodal-operator-alias",
+          "claim:ARCH-NODAL-001",
+          "claim:FORMULATION-NODAL-002",
+          "claim:ARCH-BLOCK-001",
+          "claim:FORMULATION-NODAL-003",
+          "claim:ARCH-VIEW-001",
+          "claim:ARCH-RECOVERY-003",
+          "claim:ARCH-SUPPORT-001",
+          "claim:TR-XFMR-001",
+          "claim:ARCH-CHORDAL-001"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:ARCH-NODAL-001",
+        "claim:ARCH-SUPPORT-001",
+        "claim:FORMULATION-NODAL-002",
+        "concept:graph-topology-adjacency",
+        "concept:nodal-operator-alias"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.356667,
+        "recall_at_10": 0.8,
+        "recall_at_5": 0.8,
+        "top_10": [
+          "concept:nodal-operator-alias",
+          "claim:ARCH-BLOCK-001",
+          "claim:FORMULATION-NODAL-002",
+          "claim:ARCH-SUPPORT-001",
+          "claim:ARCH-NODAL-001",
+          "claim:FORMULATION-NODAL-003",
+          "claim:ARCH-RECOVERY-003",
+          "claim:ARCH-VIEW-001",
+          "claim:ARCH-CHORDAL-001",
+          "claim:TR-KRON-001"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.318571,
+        "recall_at_10": 0.8,
+        "recall_at_5": 0.6,
+        "top_10": [
+          "claim:FORMULATION-NODAL-002",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:ARCH-RECOVERY-003",
+          "concept:nodal-operator-alias",
+          "claim:ARCH-NODAL-001",
+          "claim:ARCH-BLOCK-001",
+          "claim:ARCH-SUPPORT-001",
+          "claim:FORMULATION-NODAL-003",
+          "claim:ARCH-RECOVERY-001",
+          "claim:FORMULATION-NODAL-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.378571,
+        "recall_at_10": 0.8,
+        "recall_at_5": 0.6,
+        "top_10": [
+          "claim:ARCH-SUPPORT-001",
+          "concept:nodal-operator-alias",
+          "claim:ARCH-BLOCK-001",
+          "claim:FORMULATION-NODAL-002",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:FORMULATION-NODAL-003",
+          "claim:ARCH-NODAL-001",
+          "claim:ARCH-RECOVERY-003",
+          "claim:ARCH-CHORDAL-001",
+          "claim:FORMULATION-NODAL-001"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.38,
+        "recall_at_10": 0.6,
+        "recall_at_5": 0.6,
+        "top_10": [
+          "claim:ARCH-NODAL-001",
+          "claim:ARCH-SUPPORT-001",
+          "concept:nodal-operator-alias",
+          "claim:ARCH-SURGERY-002",
+          "claim:ARCH-LENS-001",
+          "claim:ARCH-VIEW-001",
+          "claim:ARCH-RECOVERY-001",
+          "claim:ARCH-RECOVERY-003",
+          "concept:element-edge-relation",
+          "claim:AU-CARSON-001"
+        ]
+      },
+      "question": "Can you look at an assembled nodal matrix and tell which individual pieces of equipment produced it?"
+    },
+    {
+      "audience": "software_engineer",
+      "case_id": "HOLDOUT-YBUS-SOFTWARE",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.416667,
+        "recall_at_10": 0.8,
+        "recall_at_5": 0.8,
+        "top_10": [
+          "concept:nodal-operator-alias",
+          "claim:FORMULATION-NODAL-002",
+          "claim:ARCH-SUPPORT-001",
+          "claim:ARCH-NODAL-001",
+          "claim:ARCH-SURGERY-002",
+          "claim:FORMULATION-NODAL-003",
+          "claim:ARCH-BLOCK-001",
+          "claim:ARCH-CHORDAL-001",
+          "claim:ARCH-LENS-001",
+          "claim:ARCH-RECOVERY-003"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:ARCH-NODAL-001",
+        "claim:ARCH-SUPPORT-001",
+        "claim:FORMULATION-NODAL-002",
+        "concept:graph-topology-adjacency",
+        "concept:nodal-operator-alias"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.416667,
+        "recall_at_10": 0.8,
+        "recall_at_5": 0.8,
+        "top_10": [
+          "concept:nodal-operator-alias",
+          "claim:ARCH-SUPPORT-001",
+          "claim:FORMULATION-NODAL-002",
+          "claim:ARCH-NODAL-001",
+          "claim:FORMULATION-NODAL-003",
+          "claim:ARCH-SURGERY-002",
+          "claim:ARCH-CHORDAL-001",
+          "claim:ARCH-BLOCK-001",
+          "claim:ARCH-RECOVERY-003",
+          "claim:ARCH-LENS-001"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.39,
+        "recall_at_10": 0.8,
+        "recall_at_5": 0.8,
+        "top_10": [
+          "claim:FORMULATION-NODAL-002",
+          "concept:nodal-operator-alias",
+          "claim:ARCH-RECOVERY-001",
+          "claim:ARCH-NODAL-001",
+          "claim:ARCH-SUPPORT-001",
+          "claim:FORMULATION-NODAL-003",
+          "claim:ARCH-RECOVERY-003",
+          "claim:ARCH-LOWER-002",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:TR-KRON-002"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.416667,
+        "recall_at_10": 0.8,
+        "recall_at_5": 0.8,
+        "top_10": [
+          "concept:nodal-operator-alias",
+          "claim:ARCH-SUPPORT-001",
+          "claim:ARCH-NODAL-001",
+          "claim:FORMULATION-NODAL-002",
+          "claim:FORMULATION-NODAL-003",
+          "claim:ARCH-CHORDAL-001",
+          "claim:ARCH-RECOVERY-003",
+          "claim:ARCH-SURGERY-002",
+          "claim:ARCH-LENS-001",
+          "claim:ARCH-BLOCK-001"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.098182,
+        "recall_at_10": 0.2,
+        "recall_at_5": 0.2,
+        "top_10": [
+          "claim:ARCH-SURGERY-002",
+          "claim:ARCH-RECOVERY-001",
+          "claim:ARCH-NODAL-001",
+          "concept:transformation-family",
+          "claim:ARCH-RECOVERY-003",
+          "claim:TRANSFORM-SEM-001",
+          "claim:ARCH-SURGERY-001",
+          "claim:ARCH-LENS-001",
+          "claim:ARCH-RECOVERY-002",
+          "claim:TR-COORD-001"
+        ]
+      },
+      "question": "What information is lost when an equipment decomposition is replaced by a sparse assembled operator?"
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "HOLDOUT-YBUS-POWER",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.011765,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "concept:rating-limit-constraint",
+          "concept:element-edge-relation",
+          "claim:PRESERVE-001",
+          "claim:RATING-001",
+          "claim:ARCH-LENS-001",
+          "claim:PRACTICE-ADAPTER-001",
+          "claim:FORMULATION-NODAL-003",
+          "claim:TR-XFMR-010",
+          "claim:TR-XFMR-008",
+          "claim:TR-SER-002"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:ARCH-NODAL-001",
+        "claim:ARCH-SUPPORT-001",
+        "claim:FORMULATION-NODAL-002",
+        "concept:graph-topology-adjacency",
+        "concept:nodal-operator-alias"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.015385,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "concept:rating-limit-constraint",
+          "concept:element-edge-relation",
+          "claim:RATING-001",
+          "claim:PRESERVE-001",
+          "claim:ARCH-LENS-001",
+          "claim:ARCH-SURGERY-002",
+          "concept:object-node-interface",
+          "claim:ARCH-PORT-002",
+          "claim:PRACTICE-ADAPTER-001",
+          "claim:LIT-PAR-001"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.0,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:GROUND-SCOPE-002",
+          "claim:ARCH-BLOCK-001",
+          "claim:ARCH-PORT-002",
+          "claim:NUMERICAL-002",
+          "claim:NUMERICAL-003",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:GRAPH-CYCLE-001",
+          "claim:LOAD-DECISION-001",
+          "claim:ARCH-DEGENERACY-001",
+          "claim:DATA-XWALK-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.016667,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "concept:rating-limit-constraint",
+          "claim:RATING-001",
+          "concept:element-edge-relation",
+          "claim:ARCH-SURGERY-002",
+          "concept:object-node-interface",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:LIT-PAR-001",
+          "claim:ARCH-LENS-001",
+          "claim:PRESERVE-001"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.022291,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-SURGERY-002",
+          "claim:DATA-XWALK-001",
+          "claim:PRACTICE-ADAPTER-001",
+          "claim:THESIS-001",
+          "concept:direction-orientation-hierarchy",
+          "claim:RATING-001",
+          "claim:PRACTICE-IMPEDANCE-001",
+          "claim:TRANSFORM-SEM-001",
+          "concept:element-edge-relation"
+        ]
+      },
+      "question": "Does a matching bus-matrix export establish that two studies have the same assets, ratings, and controls?"
+    },
+    {
+      "audience": "student",
+      "case_id": "HOLDOUT-PARALLEL-STUDENT",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.026852,
+        "recall_at_10": 0.166667,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:TR-XFMR-008",
+          "claim:ARCH-PORT-001",
+          "claim:ARCH-SURGERY-002",
+          "claim:ARCH-BLOCK-001",
+          "claim:TR-XFMR-001",
+          "claim:FORMULATION-NODAL-002",
+          "claim:TR-XFMR-010",
+          "claim:TR-NEG-001",
+          "claim:TR-PAR-001",
+          "claim:TR-XFMR-009"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:TR-PAR-001",
+        "claim:TR-PAR-002",
+        "claim:TR-PAR-003",
+        "concept:equivalence-exactness-preservation",
+        "concept:parallel",
+        "concept:rating-limit-constraint"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.056818,
+        "recall_at_10": 0.166667,
+        "recall_at_5": 0.166667,
+        "top_10": [
+          "claim:TR-XFMR-008",
+          "claim:TR-XFMR-010",
+          "claim:TR-XFMR-009",
+          "claim:TR-PAR-001",
+          "claim:TR-XFMR-001",
+          "claim:GRAPH-CYCLE-001",
+          "claim:TR-NEG-001",
+          "claim:ARCH-PORT-001",
+          "claim:ARCH-BLOCK-001",
+          "claim:PRESERVE-001"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.055556,
+        "recall_at_10": 0.166667,
+        "recall_at_5": 0.166667,
+        "top_10": [
+          "claim:LOAD-DECISION-001",
+          "claim:LOAD-CONTINUATION-001",
+          "claim:TR-PAR-007",
+          "claim:TR-PAR-002",
+          "claim:TR-XFMR-001",
+          "claim:FORMULATION-NODAL-002",
+          "claim:TR-PAR-005",
+          "claim:TR-PAR-AC-JOINT-001",
+          "claim:TR-XFMR-008",
+          "claim:TR-PAR-SINGULAR-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.047222,
+        "recall_at_10": 0.166667,
+        "recall_at_5": 0.166667,
+        "top_10": [
+          "claim:TR-XFMR-008",
+          "claim:GRAPH-CYCLE-001",
+          "claim:TR-XFMR-010",
+          "claim:TR-XFMR-009",
+          "claim:TR-PAR-001",
+          "claim:TR-GRAPH-002",
+          "claim:NUMERICAL-003",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-CHORDAL-001",
+          "claim:TR-XFMR-001"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.045228,
+        "recall_at_10": 0.166667,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:LOAD-DECISION-001",
+          "claim:TR-PAR-004",
+          "claim:TR-PAR-007",
+          "claim:TR-PAR-JOINT-001",
+          "claim:FORMULATION-NODAL-001",
+          "claim:TR-PAR-005",
+          "claim:FORMULATION-NODAL-002",
+          "claim:IMPEDANCE-LADDER-001",
+          "claim:TR-PAR-001",
+          "claim:TR-PAR-006"
+        ]
+      },
+      "question": "How can a bundled pair give the right voltage-current equation yet still allow an impossible loading decision?"
+    },
+    {
+      "audience": "software_engineer",
+      "case_id": "HOLDOUT-PARALLEL-SOFTWARE",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.116667,
+        "recall_at_10": 0.333333,
+        "recall_at_5": 0.333333,
+        "top_10": [
+          "claim:COLLAPSE-001",
+          "concept:equivalence-exactness-preservation",
+          "claim:COLLAPSE-002",
+          "claim:TR-XFMR-002",
+          "claim:TR-PAR-002",
+          "claim:TR-PAR-SINGULAR-001",
+          "claim:ARCH-SURGERY-002",
+          "claim:TR-XFMR-001",
+          "concept:element-edge-relation",
+          "claim:NUMERICAL-002"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:TR-PAR-001",
+        "claim:TR-PAR-002",
+        "claim:TR-PAR-003",
+        "concept:equivalence-exactness-preservation",
+        "concept:parallel",
+        "concept:rating-limit-constraint"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.099306,
+        "recall_at_10": 0.333333,
+        "recall_at_5": 0.333333,
+        "top_10": [
+          "claim:COLLAPSE-002",
+          "claim:TR-XFMR-002",
+          "concept:equivalence-exactness-preservation",
+          "claim:COLLAPSE-001",
+          "claim:TR-PAR-002",
+          "claim:ARCH-LOWER-001",
+          "claim:NUMERICAL-002",
+          "claim:TR-PAR-SINGULAR-001",
+          "claim:RATING-001",
+          "concept:element-edge-relation"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.12323,
+        "recall_at_10": 0.333333,
+        "recall_at_5": 0.166667,
+        "top_10": [
+          "claim:RATING-001",
+          "claim:TR-PAR-001",
+          "claim:ARCH-LOWER-001",
+          "claim:TOPOLOGY-001",
+          "claim:TR-XFMR-002",
+          "claim:TR-PAR-SINGULAR-001",
+          "claim:TR-XFMR-008",
+          "claim:TR-PAR-002",
+          "claim:TR-PAR-AC-JOINT-001",
+          "claim:TR-XFMR-004"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.052976,
+        "recall_at_10": 0.333333,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:COLLAPSE-002",
+          "claim:RATING-001",
+          "claim:ARCH-LOWER-001",
+          "claim:TR-XFMR-002",
+          "claim:FIXTURE-001",
+          "claim:NUMERICAL-002",
+          "concept:equivalence-exactness-preservation",
+          "claim:TR-PAR-002",
+          "claim:TR-XFMR-004",
+          "claim:TR-PAR-SINGULAR-001"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.011905,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:TRANSFORM-SEM-001",
+          "claim:TR-KRON-FIVE-002",
+          "claim:ARCH-LOWER-001",
+          "claim:TR-KRON-FIVE-001",
+          "claim:TR-PAR-JOINT-001",
+          "claim:TRANSFORM-CATALOG-001",
+          "claim:TOPOLOGY-001",
+          "claim:ARCH-RECOVERY-002",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:TR-KRON-001"
+        ]
+      },
+      "question": "Which invariant must a branch-compression pass preserve before it discards the individual circuit records?"
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "HOLDOUT-PARALLEL-POWER",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.06492,
+        "recall_at_10": 0.333333,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "concept:direction-orientation-hierarchy",
+          "concept:object-node-interface",
+          "concept:flow-current-power-message",
+          "concept:transformation-family",
+          "concept:element-edge-relation",
+          "concept:factor",
+          "concept:cycle-radial-tree",
+          "concept:equivalence-exactness-preservation",
+          "concept:rating-limit-constraint",
+          "concept:ground-neutral-reference"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:TR-PAR-001",
+        "claim:TR-PAR-002",
+        "claim:TR-PAR-003",
+        "concept:equivalence-exactness-preservation",
+        "concept:parallel",
+        "concept:rating-limit-constraint"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.071759,
+        "recall_at_10": 0.333333,
+        "recall_at_5": 0.166667,
+        "top_10": [
+          "concept:direction-orientation-hierarchy",
+          "concept:object-node-interface",
+          "concept:flow-current-power-message",
+          "concept:parallel",
+          "concept:phase-conductor-sequence-coordinate",
+          "concept:element-edge-relation",
+          "concept:ground-neutral-reference",
+          "concept:equivalence-exactness-preservation",
+          "concept:transformation-family",
+          "concept:factor"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.170228,
+        "recall_at_10": 0.5,
+        "recall_at_5": 0.333333,
+        "top_10": [
+          "claim:FORMULATION-NODAL-002",
+          "claim:TR-PAR-002",
+          "concept:parallel",
+          "concept:flow-current-power-message",
+          "claim:ARCH-LOWER-002",
+          "claim:PRESERVE-001",
+          "claim:LIT-PAR-001",
+          "claim:TR-PAR-004",
+          "concept:equivalence-exactness-preservation",
+          "claim:PRACTICE-IMPEDANCE-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.054487,
+        "recall_at_10": 0.166667,
+        "recall_at_5": 0.166667,
+        "top_10": [
+          "concept:direction-orientation-hierarchy",
+          "concept:object-node-interface",
+          "concept:flow-current-power-message",
+          "concept:parallel",
+          "claim:ARCH-SURGERY-002",
+          "concept:phase-conductor-sequence-coordinate",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-PORT-001",
+          "concept:ground-neutral-reference"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.02963,
+        "recall_at_10": 0.166667,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "concept:flow-current-power-message",
+          "concept:direction-orientation-hierarchy",
+          "concept:element-edge-relation",
+          "claim:ARCH-PORT-001",
+          "claim:PRACTICE-ADAPTER-001",
+          "claim:TR-NEG-001",
+          "concept:object-node-interface",
+          "claim:ARCH-SURGERY-002",
+          "concept:parallel",
+          "claim:ARCH-PORT-002"
+        ]
+      },
+      "question": "Why can an aggregate circuit be adequate for terminal behavior but unsafe for a constrained operating study?"
+    },
+    {
+      "audience": "student",
+      "case_id": "HOLDOUT-RADIAL-STUDENT",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.165385,
+        "recall_at_10": 0.6,
+        "recall_at_5": 0.4,
+        "top_10": [
+          "claim:TR-KRON-NEUTRAL-003",
+          "concept:element-edge-relation",
+          "claim:GRAPH-CYCLE-001",
+          "concept:parallel",
+          "claim:ARCH-DEGENERACY-001",
+          "claim:TR-GRAPH-001",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:TOPOLOGY-001",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:ARCH-PORT-002"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:GRAPH-CYCLE-001",
+        "claim:TR-GRAPH-001",
+        "claim:TR-GRAPH-ACTIVE-001",
+        "concept:cycle-radial-tree",
+        "concept:parallel"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.205385,
+        "recall_at_10": 0.6,
+        "recall_at_5": 0.6,
+        "top_10": [
+          "concept:element-edge-relation",
+          "concept:parallel",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:TR-GRAPH-001",
+          "claim:GRAPH-CYCLE-001",
+          "claim:ARCH-DEGENERACY-001",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-BLOCK-001",
+          "claim:ARCH-LENS-001"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.34,
+        "recall_at_10": 0.6,
+        "recall_at_5": 0.6,
+        "top_10": [
+          "claim:TR-GRAPH-001",
+          "claim:GRAPH-CYCLE-001",
+          "claim:TR-GRAPH-002",
+          "claim:ARCH-DEGENERACY-001",
+          "concept:parallel",
+          "claim:LIT-PAR-001",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:NUMERICAL-001",
+          "claim:ARCH-BLOCK-001",
+          "claim:TR-KRON-NEUTRAL-002"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.207738,
+        "recall_at_10": 0.6,
+        "recall_at_5": 0.4,
+        "top_10": [
+          "concept:element-edge-relation",
+          "concept:parallel",
+          "claim:TR-GRAPH-001",
+          "claim:ARCH-BLOCK-001",
+          "claim:ARCH-CHORDAL-001",
+          "claim:ARCH-LENS-001",
+          "claim:GRAPH-CYCLE-001",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:ARCH-NODAL-001",
+          "claim:ARCH-SURGERY-002"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.276667,
+        "recall_at_10": 0.4,
+        "recall_at_5": 0.4,
+        "top_10": [
+          "claim:TR-GRAPH-001",
+          "claim:TR-GRAPH-002",
+          "claim:GRAPH-CYCLE-001",
+          "claim:ARCH-CHORDAL-001",
+          "concept:element-edge-relation",
+          "claim:ARCH-VIEW-001",
+          "claim:TR-SER-002",
+          "claim:TRANSFORM-CATALOG-001",
+          "claim:ARCH-SURGERY-002",
+          "claim:ARCH-DEGENERACY-001"
+        ]
+      },
+      "question": "If duplicate endpoints are collapsed into one edge, what kind of loop might disappear from the representation?"
+    },
+    {
+      "audience": "software_engineer",
+      "case_id": "HOLDOUT-RADIAL-SOFTWARE",
+      "char_tfidf": {
+        "complete_at_10": true,
+        "mean_reciprocal_rank_at_20": 0.251905,
+        "recall_at_10": 1.0,
+        "recall_at_5": 0.6,
+        "top_10": [
+          "concept:graph-topology-adjacency",
+          "claim:GRAPH-CYCLE-001",
+          "claim:TR-GRAPH-002",
+          "concept:parallel",
+          "concept:cycle-radial-tree",
+          "claim:TR-GRAPH-ACTIVE-001",
+          "claim:TR-GRAPH-001",
+          "claim:ARCH-PORT-002",
+          "claim:TR-PAR-JOINT-001",
+          "claim:ARCH-SUPPORT-001"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:GRAPH-CYCLE-001",
+        "claim:TR-GRAPH-001",
+        "claim:TR-GRAPH-ACTIVE-001",
+        "concept:cycle-radial-tree",
+        "concept:parallel"
+      ],
+      "hybrid": {
+        "complete_at_10": true,
+        "mean_reciprocal_rank_at_20": 0.276667,
+        "recall_at_10": 1.0,
+        "recall_at_5": 0.8,
+        "top_10": [
+          "concept:graph-topology-adjacency",
+          "claim:GRAPH-CYCLE-001",
+          "claim:TR-GRAPH-ACTIVE-001",
+          "concept:parallel",
+          "claim:TR-GRAPH-001",
+          "claim:TR-GRAPH-002",
+          "claim:ARCH-CHORDAL-001",
+          "claim:ARCH-SUPPORT-001",
+          "claim:ARCH-BLOCK-001",
+          "concept:cycle-radial-tree"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.336667,
+        "recall_at_10": 0.8,
+        "recall_at_5": 0.6,
+        "top_10": [
+          "claim:GRAPH-CYCLE-001",
+          "concept:graph-topology-adjacency",
+          "concept:cycle-radial-tree",
+          "claim:TR-GRAPH-ACTIVE-001",
+          "claim:ARCH-DEGENERACY-001",
+          "claim:LIT-PAR-001",
+          "claim:FORMULATION-NODAL-002",
+          "claim:TR-PAR-007",
+          "claim:TR-PAR-006",
+          "concept:parallel"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.238333,
+        "recall_at_10": 0.8,
+        "recall_at_5": 0.4,
+        "top_10": [
+          "concept:graph-topology-adjacency",
+          "claim:GRAPH-CYCLE-001",
+          "claim:TR-GRAPH-ACTIVE-001",
+          "claim:ARCH-CHORDAL-001",
+          "claim:ARCH-BLOCK-001",
+          "claim:TR-GRAPH-001",
+          "claim:ARCH-SUPPORT-001",
+          "concept:parallel",
+          "claim:TR-NEG-001",
+          "claim:LOAD-DECISION-001"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.231071,
+        "recall_at_10": 0.8,
+        "recall_at_5": 0.6,
+        "top_10": [
+          "claim:TR-GRAPH-002",
+          "claim:GRAPH-CYCLE-001",
+          "concept:graph-topology-adjacency",
+          "concept:parallel",
+          "claim:TR-GRAPH-ACTIVE-001",
+          "claim:TOPOLOGY-001",
+          "claim:TR-GRAPH-001",
+          "claim:TRANSFORM-CATALOG-001",
+          "concept:direction-orientation-hierarchy",
+          "claim:ARCH-VIEW-001"
+        ]
+      },
+      "question": "What topology distinction is needed when a deduplicated adjacency is a tree but multiple source members share the same endpoints?"
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "HOLDOUT-RADIAL-POWER",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.344848,
+        "recall_at_10": 0.8,
+        "recall_at_5": 0.6,
+        "top_10": [
+          "concept:cycle-radial-tree",
+          "claim:TR-GRAPH-002",
+          "claim:TR-GRAPH-ACTIVE-001",
+          "concept:direction-orientation-hierarchy",
+          "claim:TR-GRAPH-001",
+          "claim:ARCH-CHORDAL-001",
+          "concept:graph-topology-adjacency",
+          "claim:TRANSFORM-SEM-001",
+          "claim:ARCH-NODAL-001",
+          "concept:parallel"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:GRAPH-CYCLE-001",
+        "claim:TR-GRAPH-001",
+        "claim:TR-GRAPH-ACTIVE-001",
+        "concept:cycle-radial-tree",
+        "concept:parallel"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.314286,
+        "recall_at_10": 0.6,
+        "recall_at_5": 0.6,
+        "top_10": [
+          "concept:cycle-radial-tree",
+          "claim:TR-GRAPH-002",
+          "concept:direction-orientation-hierarchy",
+          "claim:TR-GRAPH-ACTIVE-001",
+          "claim:TR-GRAPH-001",
+          "claim:ARCH-CHORDAL-001",
+          "claim:ARCH-PORT-002",
+          "claim:TRANSFORM-SEM-001",
+          "claim:ARCH-NODAL-001",
+          "claim:ARCH-CONDUCTOR-002"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.31619,
+        "recall_at_10": 0.8,
+        "recall_at_5": 0.4,
+        "top_10": [
+          "claim:TR-GRAPH-ACTIVE-001",
+          "claim:ARCH-CHORDAL-001",
+          "claim:TR-GRAPH-002",
+          "claim:ARCH-PORT-002",
+          "concept:cycle-radial-tree",
+          "claim:TR-GRAPH-001",
+          "claim:GRAPH-CYCLE-001",
+          "claim:FORMULATION-NODAL-002",
+          "claim:ARCH-LOWER-002",
+          "claim:VOCAB-BRIDGE-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.293333,
+        "recall_at_10": 0.6,
+        "recall_at_5": 0.4,
+        "top_10": [
+          "concept:cycle-radial-tree",
+          "concept:direction-orientation-hierarchy",
+          "claim:TR-GRAPH-002",
+          "claim:TR-GRAPH-001",
+          "claim:ARCH-PORT-002",
+          "claim:TR-GRAPH-ACTIVE-001",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:ARCH-CHORDAL-001",
+          "claim:ARCH-PORT-001",
+          "concept:object-node-interface"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.351515,
+        "recall_at_10": 0.6,
+        "recall_at_5": 0.6,
+        "top_10": [
+          "claim:TR-GRAPH-ACTIVE-001",
+          "claim:ARCH-CHORDAL-001",
+          "claim:GRAPH-CYCLE-001",
+          "concept:cycle-radial-tree",
+          "claim:TR-GRAPH-002",
+          "concept:direction-orientation-hierarchy",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-VIEW-001",
+          "claim:TOPOLOGY-001",
+          "claim:ARCH-CONDUCTOR-002"
+        ]
+      },
+      "question": "Why can a double-circuit feeder have a radial bus layout without being radial at the identified-circuit level?"
+    },
+    {
+      "audience": "student",
+      "case_id": "HOLDOUT-KRON-STUDENT",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.052904,
+        "recall_at_10": 0.2,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:NUMERICAL-001",
+          "claim:TR-KRON-FIVE-001",
+          "claim:TR-XFMR-004",
+          "claim:FORMULATION-NODAL-001",
+          "claim:ARCH-RECOVERY-001",
+          "claim:THESIS-001",
+          "claim:FORMULATION-NODAL-003",
+          "claim:TR-KRON-002",
+          "claim:TRANSFORM-SEM-001"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:PRESERVE-001",
+        "claim:TR-KRON-002",
+        "claim:TR-KRON-FIVE-002",
+        "concept:equivalence-exactness-preservation",
+        "concept:transformation-family"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.097222,
+        "recall_at_10": 0.6,
+        "recall_at_5": 0.2,
+        "top_10": [
+          "claim:TR-KRON-FIVE-001",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:NUMERICAL-001",
+          "claim:TR-KRON-002",
+          "claim:FORMULATION-NODAL-001",
+          "claim:TRANSFORM-SEM-001",
+          "claim:TR-XFMR-004",
+          "claim:PRESERVE-001",
+          "claim:TR-KRON-FIVE-002",
+          "concept:flow-current-power-message"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.051447,
+        "recall_at_10": 0.2,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:ARCH-RECOVERY-001",
+          "claim:TRANSFORM-SEM-001",
+          "claim:NUMERICAL-001",
+          "claim:TR-KRON-FIVE-001",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:FORMULATION-NODAL-003",
+          "claim:PRESERVE-001",
+          "claim:ARCH-RECOVERY-002",
+          "claim:NUMERICAL-003",
+          "claim:GROUND-SCOPE-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.175,
+        "recall_at_10": 0.6,
+        "recall_at_5": 0.4,
+        "top_10": [
+          "claim:TR-KRON-FIVE-001",
+          "claim:TR-KRON-002",
+          "claim:TRANSFORM-SEM-001",
+          "claim:TR-KRON-FIVE-002",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:ARCH-FIVEBUS-XFMR-001",
+          "claim:FORMULATION-NODAL-001",
+          "claim:PRESERVE-001",
+          "claim:NUMERICAL-001",
+          "concept:flow-current-power-message"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.048718,
+        "recall_at_10": 0.2,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:ARCH-RECOVERY-002",
+          "claim:ARCH-RECOVERY-001",
+          "claim:ARCH-DEGENERACY-002",
+          "claim:ARCH-RECOVERY-003",
+          "claim:AU-CARSON-001",
+          "claim:PRESERVE-001",
+          "claim:TRANSFORM-SEM-001",
+          "claim:THESIS-001",
+          "claim:PRACTICE-IMPEDANCE-001",
+          "claim:ARCH-SURGERY-001"
+        ]
+      },
+      "question": "After eliminating internal variables, which observations remain exact and which quantities must be reconstructed?"
+    },
+    {
+      "audience": "software_engineer",
+      "case_id": "HOLDOUT-KRON-SOFTWARE",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.266667,
+        "recall_at_10": 0.4,
+        "recall_at_5": 0.4,
+        "top_10": [
+          "claim:TR-KRON-FIVE-002",
+          "claim:ARCH-VIEW-001",
+          "concept:transformation-family",
+          "claim:TR-COMP-001",
+          "claim:NUMERICAL-001",
+          "concept:normalization",
+          "claim:ARCH-RECOVERY-001",
+          "claim:TRANSFORM-CATALOG-001",
+          "claim:TR-XFMR-003",
+          "claim:FORMULATION-NODAL-003"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:PRESERVE-001",
+        "claim:TR-KRON-002",
+        "claim:TR-KRON-FIVE-002",
+        "concept:equivalence-exactness-preservation",
+        "concept:transformation-family"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.25,
+        "recall_at_10": 0.4,
+        "recall_at_5": 0.4,
+        "top_10": [
+          "concept:transformation-family",
+          "claim:ARCH-VIEW-001",
+          "claim:TR-COMP-001",
+          "claim:TR-KRON-FIVE-002",
+          "claim:NUMERICAL-001",
+          "claim:TRANSFORM-CATALOG-001",
+          "claim:ARCH-RECOVERY-001",
+          "claim:TR-XFMR-001",
+          "claim:FORMULATION-NODAL-003",
+          "concept:normalization"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.22,
+        "recall_at_10": 0.4,
+        "recall_at_5": 0.2,
+        "top_10": [
+          "claim:TR-KRON-FIVE-002",
+          "claim:ARCH-VIEW-001",
+          "claim:NUMERICAL-001",
+          "claim:TR-KRON-001",
+          "claim:TR-KRON-NEUTRAL-004",
+          "claim:TR-KRON-NEUTRAL-007",
+          "claim:TR-PAR-JOINT-001",
+          "claim:TR-KRON-NEUTRAL-006",
+          "claim:TR-KRON-NEUTRAL-005",
+          "claim:PRESERVE-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.233333,
+        "recall_at_10": 0.4,
+        "recall_at_5": 0.2,
+        "top_10": [
+          "concept:transformation-family",
+          "claim:TR-COMP-001",
+          "claim:TRANSFORM-CATALOG-001",
+          "claim:ARCH-VIEW-001",
+          "claim:NUMERICAL-001",
+          "claim:TR-KRON-FIVE-002",
+          "claim:GRAPH-CYCLE-001",
+          "claim:ARCH-CHORDAL-001",
+          "claim:TR-XFMR-001",
+          "claim:TR-KRON-FIVE-001"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.072222,
+        "recall_at_10": 0.4,
+        "recall_at_5": 0.2,
+        "top_10": [
+          "claim:TRANSFORM-CATALOG-001",
+          "claim:TRANSFORM-SEM-001",
+          "claim:ARCH-VIEW-001",
+          "concept:transformation-family",
+          "claim:TR-COMP-001",
+          "claim:THESIS-001",
+          "claim:ARCH-LOWER-001",
+          "claim:PRACTICE-ADAPTER-001",
+          "claim:TR-KRON-FIVE-002",
+          "claim:ARCH-LENS-001"
+        ]
+      },
+      "question": "What metadata and reverse maps should accompany a Schur-complement network reduction?"
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "HOLDOUT-KRON-POWER",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.0,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:GROUND-SCOPE-001",
+          "claim:ARCH-SURGERY-002",
+          "claim:TR-KRON-FIVE-001",
+          "claim:ARCH-FIVEBUS-XFMR-001",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:TOPOLOGY-001",
+          "claim:TR-SER-003",
+          "claim:ARCH-DEGENERACY-001",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:TR-SER-002"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:PRESERVE-001",
+        "claim:TR-KRON-002",
+        "claim:TR-KRON-FIVE-002",
+        "concept:equivalence-exactness-preservation",
+        "concept:transformation-family"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.011765,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:TR-KRON-FIVE-001",
+          "claim:GROUND-SCOPE-001",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:TR-KRON-NEUTRAL-004",
+          "claim:ARCH-DEGENERACY-001",
+          "claim:TR-KRON-001",
+          "claim:ARCH-FIVEBUS-XFMR-001",
+          "claim:TR-XFMR-003",
+          "claim:ARCH-SURGERY-002"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.064286,
+        "recall_at_10": 0.2,
+        "recall_at_5": 0.2,
+        "top_10": [
+          "claim:TR-KRON-001",
+          "claim:TR-XFMR-008",
+          "claim:TR-KRON-FIVE-001",
+          "claim:TR-KRON-FIVE-002",
+          "claim:GROUND-SCOPE-001",
+          "claim:NUMERICAL-001",
+          "claim:ARCH-LOWER-002",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:RATING-001",
+          "claim:FORMULATION-NODAL-002"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.013333,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:TR-KRON-FIVE-001",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:TR-KRON-NEUTRAL-004",
+          "claim:TR-KRON-001",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:GROUND-SCOPE-001",
+          "claim:TR-XFMR-003",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:ARCH-DEGENERACY-001",
+          "claim:PRACTICE-ADAPTER-001"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.1,
+        "recall_at_10": 0.2,
+        "recall_at_5": 0.2,
+        "top_10": [
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:TR-KRON-FIVE-002",
+          "claim:TR-PAR-JOINT-001",
+          "claim:ARCH-LOWER-001",
+          "claim:TR-KRON-FIVE-001",
+          "claim:RATING-001",
+          "claim:TR-KRON-003",
+          "claim:ARCH-SURGERY-002",
+          "claim:GROUND-SCOPE-003",
+          "claim:ARCH-RECOVERY-002"
+        ]
+      },
+      "question": "Can a boundary-preserving reduction be used for internal protection and equipment limits without additional checks?"
+    },
+    {
+      "audience": "student",
+      "case_id": "HOLDOUT-SEQUENCE-STUDENT",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.425,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "claim:COLLAPSE-002",
+          "claim:COLLAPSE-001",
+          "claim:PRACTICE-IMPEDANCE-001",
+          "claim:TR-KRON-001",
+          "concept:phase-conductor-sequence-coordinate",
+          "claim:IMPEDANCE-LADDER-001",
+          "claim:LOAD-CONNECTION-001",
+          "claim:NUMERICAL-002",
+          "claim:ARCH-NODAL-001",
+          "claim:ARCH-RECOVERY-003"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:COLLAPSE-001",
+        "claim:COLLAPSE-002",
+        "concept:equivalence-exactness-preservation",
+        "concept:phase-conductor-sequence-coordinate"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.375,
+        "recall_at_10": 0.5,
+        "recall_at_5": 0.5,
+        "top_10": [
+          "claim:COLLAPSE-002",
+          "claim:COLLAPSE-001",
+          "claim:LOAD-CONNECTION-001",
+          "claim:IMPEDANCE-LADDER-001",
+          "claim:TR-KRON-001",
+          "claim:PRACTICE-IMPEDANCE-001",
+          "claim:NUMERICAL-002",
+          "claim:PRACTICE-ADAPTER-001",
+          "claim:ARCH-NODAL-001",
+          "claim:TR-PAR-005"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.4,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.5,
+        "top_10": [
+          "claim:COLLAPSE-002",
+          "claim:COLLAPSE-001",
+          "claim:IMPEDANCE-LADDER-001",
+          "claim:TR-XFMR-009",
+          "claim:ARCH-LOWER-002",
+          "claim:LOAD-CONNECTION-001",
+          "claim:TR-PAR-005",
+          "claim:TR-XFMR-010",
+          "claim:GROUND-SCOPE-003",
+          "concept:phase-conductor-sequence-coordinate"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.375,
+        "recall_at_10": 0.5,
+        "recall_at_5": 0.5,
+        "top_10": [
+          "claim:COLLAPSE-002",
+          "claim:COLLAPSE-001",
+          "claim:LOAD-CONNECTION-001",
+          "claim:IMPEDANCE-LADDER-001",
+          "claim:NUMERICAL-002",
+          "claim:TR-KRON-001",
+          "claim:TR-PAR-006",
+          "claim:TR-PAR-005",
+          "claim:PRACTICE-ADAPTER-001",
+          "claim:PRACTICE-IMPEDANCE-001"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.375,
+        "recall_at_10": 0.5,
+        "recall_at_5": 0.5,
+        "top_10": [
+          "claim:COLLAPSE-002",
+          "claim:COLLAPSE-001",
+          "claim:TR-XFMR-009",
+          "claim:TR-XFMR-008",
+          "claim:LOAD-CONNECTION-001",
+          "claim:LIT-PAR-001",
+          "claim:TR-PAR-SINGULAR-001",
+          "claim:ARCH-RECOVERY-002",
+          "claim:TR-PAR-006",
+          "claim:ARCH-RECOVERY-003"
+        ]
+      },
+      "question": "What symmetry conditions let a three-phase model stay inside the positive-sequence subspace?"
+    },
+    {
+      "audience": "software_engineer",
+      "case_id": "HOLDOUT-SEQUENCE-SOFTWARE",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.479167,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "claim:COLLAPSE-001",
+          "concept:phase-conductor-sequence-coordinate",
+          "claim:COLLAPSE-002",
+          "claim:IMPEDANCE-LADDER-001",
+          "claim:TR-XFMR-002",
+          "claim:FORMULATION-NODAL-003",
+          "claim:TR-PAR-SINGULAR-001",
+          "claim:PRACTICE-ADAPTER-001",
+          "claim:TR-XFMR-008",
+          "claim:ARCH-DEGENERACY-002"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:COLLAPSE-001",
+        "claim:COLLAPSE-002",
+        "concept:equivalence-exactness-preservation",
+        "concept:phase-conductor-sequence-coordinate"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.458333,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "claim:COLLAPSE-001",
+          "concept:phase-conductor-sequence-coordinate",
+          "claim:COLLAPSE-002",
+          "claim:TR-XFMR-002",
+          "claim:TR-NEG-001",
+          "claim:IMPEDANCE-LADDER-001",
+          "claim:FORMULATION-NODAL-003",
+          "claim:ARCH-DEGENERACY-002",
+          "claim:ARCH-LOWER-001",
+          "claim:TR-SER-003"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.395833,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "claim:COLLAPSE-001",
+          "claim:IMPEDANCE-LADDER-001",
+          "concept:phase-conductor-sequence-coordinate",
+          "claim:COLLAPSE-002",
+          "claim:ARCH-DEGENERACY-002",
+          "claim:TR-XFMR-007",
+          "claim:TR-XFMR-005",
+          "claim:TR-XFMR-010",
+          "claim:TR-XFMR-009",
+          "claim:ARCH-RECOVERY-002"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.258333,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "claim:TR-NEG-001",
+          "claim:COLLAPSE-001",
+          "concept:phase-conductor-sequence-coordinate",
+          "claim:TR-XFMR-002",
+          "claim:COLLAPSE-002",
+          "claim:ARCH-LOWER-001",
+          "claim:ARCH-DEGENERACY-002",
+          "claim:TR-SER-003",
+          "claim:ARCH-RECOVERY-002",
+          "claim:TR-PAR-005"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.244048,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.5,
+        "top_10": [
+          "claim:TR-COMP-001",
+          "claim:COLLAPSE-001",
+          "claim:COLLAPSE-002",
+          "claim:TR-NEG-001",
+          "claim:ARCH-DEGENERACY-002",
+          "claim:FIXTURE-001",
+          "concept:phase-conductor-sequence-coordinate",
+          "claim:ARCH-RECOVERY-002",
+          "claim:TRANSFORM-SEM-001",
+          "claim:FIXTURE-002"
+        ]
+      },
+      "question": "Which invariance tests should guard a phase-domain to sequence-domain compiler?"
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "HOLDOUT-SEQUENCE-POWER",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.425,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "concept:phase-conductor-sequence-coordinate",
+          "claim:COLLAPSE-001",
+          "claim:RATING-001",
+          "concept:rating-limit-constraint",
+          "claim:COLLAPSE-002",
+          "claim:IMPEDANCE-LADDER-001",
+          "claim:PRACTICE-ADAPTER-001",
+          "claim:PRACTICE-IMPEDANCE-001",
+          "claim:ARCH-LOWER-002",
+          "claim:FORMULATION-NODAL-003"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:COLLAPSE-001",
+        "claim:COLLAPSE-002",
+        "concept:equivalence-exactness-preservation",
+        "concept:phase-conductor-sequence-coordinate"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.4375,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "concept:phase-conductor-sequence-coordinate",
+          "claim:COLLAPSE-001",
+          "claim:RATING-001",
+          "claim:COLLAPSE-002",
+          "concept:rating-limit-constraint",
+          "claim:IMPEDANCE-LADDER-001",
+          "claim:PRACTICE-ADAPTER-001",
+          "claim:PRACTICE-IMPEDANCE-001",
+          "claim:ARCH-LOWER-002",
+          "claim:FORMULATION-NODAL-003"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.388158,
+        "recall_at_10": 0.5,
+        "recall_at_5": 0.5,
+        "top_10": [
+          "claim:COLLAPSE-001",
+          "claim:COLLAPSE-002",
+          "claim:GROUND-SCOPE-001",
+          "claim:IMPEDANCE-LADDER-001",
+          "claim:ARCH-LOWER-002",
+          "claim:GROUND-SCOPE-002",
+          "claim:FORMULATION-NODAL-003",
+          "claim:RATING-001",
+          "claim:TR-XFMR-010",
+          "claim:ARCH-DEGENERACY-002"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.458333,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "concept:phase-conductor-sequence-coordinate",
+          "claim:COLLAPSE-001",
+          "claim:COLLAPSE-002",
+          "claim:RATING-001",
+          "concept:rating-limit-constraint",
+          "claim:IMPEDANCE-LADDER-001",
+          "claim:PRACTICE-IMPEDANCE-001",
+          "claim:PRACTICE-ADAPTER-001",
+          "claim:ARCH-LOWER-002",
+          "claim:TR-XFMR-004"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.40625,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.5,
+        "top_10": [
+          "concept:phase-conductor-sequence-coordinate",
+          "claim:COLLAPSE-001",
+          "claim:GROUND-SCOPE-001",
+          "claim:GROUND-SCOPE-002",
+          "claim:GROUND-SCOPE-004",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:GROUND-SCOPE-003",
+          "claim:COLLAPSE-002",
+          "claim:TR-KRON-NEUTRAL-006",
+          "claim:TR-KRON-NEUTRAL-005"
+        ]
+      },
+      "question": "What must be true of grounding, boundary conditions, and constraints before positive-sequence results can stand for the phase study?"
+    },
+    {
+      "audience": "student",
+      "case_id": "HOLDOUT-GROUND-STUDENT",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.4375,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "claim:GROUND-SCOPE-001",
+          "concept:ground-neutral-reference",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:GROUND-SCOPE-002",
+          "claim:TR-KRON-FIVE-001",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:TR-KRON-NEUTRAL-004",
+          "claim:GROUND-SCOPE-003",
+          "claim:PRACTICE-IMPEDANCE-001"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:GROUND-SCOPE-001",
+        "claim:GROUND-SCOPE-002",
+        "concept:ground-neutral-reference",
+        "concept:object-node-interface"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.458333,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "concept:ground-neutral-reference",
+          "claim:GROUND-SCOPE-001",
+          "claim:GROUND-SCOPE-002",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:TR-KRON-FIVE-001",
+          "claim:GROUND-SCOPE-003",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:TR-KRON-NEUTRAL-004",
+          "claim:ARCH-SURGERY-002"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.410714,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.5,
+        "top_10": [
+          "claim:GROUND-SCOPE-002",
+          "concept:ground-neutral-reference",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:TR-PAR-SINGULAR-001",
+          "claim:TR-KRON-NEUTRAL-006",
+          "claim:GROUND-SCOPE-001",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:IMPEDANCE-LADDER-001",
+          "claim:GROUND-SCOPE-003"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.4375,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "concept:ground-neutral-reference",
+          "claim:GROUND-SCOPE-002",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:GROUND-SCOPE-001",
+          "claim:ARCH-SURGERY-002",
+          "claim:GROUND-SCOPE-003",
+          "claim:GROUND-SCOPE-004",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:TR-KRON-NEUTRAL-004",
+          "claim:TR-KRON-FIVE-001"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.4375,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "claim:GROUND-SCOPE-002",
+          "concept:ground-neutral-reference",
+          "claim:GROUND-SCOPE-003",
+          "claim:GROUND-SCOPE-001",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:GROUND-SCOPE-004",
+          "claim:TR-KRON-NEUTRAL-004",
+          "claim:IMPEDANCE-LADDER-001",
+          "claim:TR-KRON-NEUTRAL-006"
+        ]
+      },
+      "question": "Why can the wire called neutral and the physical return through earth have different voltages and currents?"
+    },
+    {
+      "audience": "software_engineer",
+      "case_id": "HOLDOUT-GROUND-SOFTWARE",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.425,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "claim:GROUND-SCOPE-001",
+          "concept:ground-neutral-reference",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:PRACTICE-IMPEDANCE-001",
+          "claim:GROUND-SCOPE-002",
+          "claim:ARCH-SURGERY-001",
+          "claim:GROUND-SCOPE-003",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-SURGERY-002"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:GROUND-SCOPE-001",
+        "claim:GROUND-SCOPE-002",
+        "concept:ground-neutral-reference",
+        "concept:object-node-interface"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.4375,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "claim:GROUND-SCOPE-001",
+          "concept:ground-neutral-reference",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:GROUND-SCOPE-002",
+          "claim:GROUND-SCOPE-003",
+          "claim:ARCH-SURGERY-002",
+          "claim:ARCH-SURGERY-001",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-PORT-001",
+          "claim:ARCH-CONDUCTOR-002"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.30625,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.25,
+        "top_10": [
+          "claim:GROUND-SCOPE-001",
+          "claim:TRANSFORM-SEM-001",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:GROUND-SCOPE-003",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:PRACTICE-IMPEDANCE-001",
+          "claim:TR-KRON-NEUTRAL-003",
+          "concept:ground-neutral-reference",
+          "claim:ARCH-NODAL-001",
+          "claim:GROUND-SCOPE-002"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.4375,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "concept:ground-neutral-reference",
+          "claim:GROUND-SCOPE-001",
+          "claim:GROUND-SCOPE-003",
+          "claim:GROUND-SCOPE-002",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:ARCH-SURGERY-002",
+          "claim:ARCH-LOWER-002",
+          "claim:GROUND-SCOPE-004",
+          "claim:ARCH-PORT-001",
+          "claim:ARCH-PORT-002"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.47619,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "concept:ground-neutral-reference",
+          "claim:GROUND-SCOPE-002",
+          "claim:GROUND-SCOPE-001",
+          "claim:PRACTICE-IMPEDANCE-001",
+          "claim:GROUND-SCOPE-003",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:ARCH-PORT-001",
+          "claim:GROUND-SCOPE-004",
+          "claim:AU-CARSON-001"
+        ]
+      },
+      "question": "Which typed objects should remain distinct when a schema contains a return conductor, an earth connection, and a numerical datum?"
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "HOLDOUT-GROUND-POWER",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.458333,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "concept:ground-neutral-reference",
+          "claim:GROUND-SCOPE-001",
+          "claim:GROUND-SCOPE-002",
+          "concept:direction-orientation-hierarchy",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:PRACTICE-IMPEDANCE-001",
+          "claim:TR-KRON-NEUTRAL-004",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:ARCH-SURGERY-002"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:GROUND-SCOPE-001",
+        "claim:GROUND-SCOPE-002",
+        "concept:ground-neutral-reference",
+        "concept:object-node-interface"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.415064,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "concept:ground-neutral-reference",
+          "concept:direction-orientation-hierarchy",
+          "claim:GROUND-SCOPE-002",
+          "claim:GROUND-SCOPE-001",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:ARCH-SURGERY-002",
+          "claim:GROUND-SCOPE-003",
+          "claim:ARCH-PORT-001",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:TRANSFORM-SEM-001"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.458333,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.75,
+        "top_10": [
+          "claim:GROUND-SCOPE-002",
+          "concept:ground-neutral-reference",
+          "claim:GROUND-SCOPE-001",
+          "claim:GROUND-SCOPE-003",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:TR-KRON-NEUTRAL-004",
+          "claim:PRACTICE-IMPEDANCE-001",
+          "claim:COLLAPSE-001",
+          "claim:TR-KRON-NEUTRAL-005"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.256061,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.5,
+        "top_10": [
+          "concept:direction-orientation-hierarchy",
+          "concept:ground-neutral-reference",
+          "claim:GROUND-SCOPE-002",
+          "claim:ARCH-SURGERY-002",
+          "claim:GROUND-SCOPE-003",
+          "claim:ARCH-PORT-001",
+          "claim:ARCH-PORT-002",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:GROUND-SCOPE-001"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.431373,
+        "recall_at_10": 0.75,
+        "recall_at_5": 0.5,
+        "top_10": [
+          "concept:ground-neutral-reference",
+          "claim:GROUND-SCOPE-002",
+          "concept:direction-orientation-hierarchy",
+          "concept:element-edge-relation",
+          "claim:ARCH-PORT-002",
+          "concept:object-node-interface",
+          "claim:PRACTICE-IMPEDANCE-001",
+          "claim:TR-KRON-FIVE-002",
+          "claim:TR-KRON-FIVE-001",
+          "claim:ARCH-SURGERY-002"
+        ]
+      },
+      "question": "What study information can disappear if neutral, grounding impedance, earth return, and reference are all represented as one bus?"
+    },
+    {
+      "audience": "student",
+      "case_id": "HOLDOUT-DECISION-STUDENT",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.066667,
+        "recall_at_10": 0.2,
+        "recall_at_5": 0.2,
+        "top_10": [
+          "claim:TR-XFMR-001",
+          "claim:ARCH-LENS-001",
+          "claim:PRESERVE-001",
+          "claim:TR-KRON-001",
+          "concept:loss",
+          "claim:FORMULATION-NODAL-003",
+          "concept:factor",
+          "claim:TR-PAR-006",
+          "claim:TR-XFMR-006",
+          "claim:GROUND-SCOPE-001"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:PRESERVE-001",
+        "claim:TR-PAR-001",
+        "claim:TR-PAR-002",
+        "concept:equivalence-exactness-preservation",
+        "concept:rating-limit-constraint"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.115385,
+        "recall_at_10": 0.2,
+        "recall_at_5": 0.2,
+        "top_10": [
+          "claim:ARCH-LENS-001",
+          "claim:PRESERVE-001",
+          "claim:FORMULATION-NODAL-003",
+          "claim:TR-XFMR-006",
+          "concept:loss",
+          "claim:GROUND-SCOPE-001",
+          "claim:TR-PAR-006",
+          "claim:ARCH-LOWER-001",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:FORMULATION-NODAL-002"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.2,
+        "recall_at_10": 0.2,
+        "recall_at_5": 0.2,
+        "top_10": [
+          "claim:PRESERVE-001",
+          "claim:FORMULATION-NODAL-003",
+          "claim:FORMULATION-NODAL-002",
+          "claim:ARCH-LENS-001",
+          "claim:ARCH-DEGENERACY-001",
+          "claim:ARCH-DEGENERACY-002",
+          "claim:NUMERICAL-001",
+          "claim:ARCH-LOWER-002",
+          "claim:GROUND-SCOPE-001",
+          "claim:TR-XFMR-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.083333,
+        "recall_at_10": 0.2,
+        "recall_at_5": 0.2,
+        "top_10": [
+          "claim:ARCH-LENS-001",
+          "claim:FORMULATION-NODAL-003",
+          "claim:PRESERVE-001",
+          "claim:TR-XFMR-006",
+          "claim:ARCH-VIEW-001",
+          "claim:GROUND-SCOPE-001",
+          "claim:NUMERICAL-002",
+          "concept:loss",
+          "claim:ARCH-LOWER-001",
+          "claim:FORMULATION-NODAL-001"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.082705,
+        "recall_at_10": 0.4,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:FORMULATION-NODAL-002",
+          "claim:FORMULATION-NODAL-001",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:TR-PAR-004",
+          "claim:NUMERICAL-001",
+          "concept:equivalence-exactness-preservation",
+          "claim:TR-PAR-003",
+          "claim:LIT-PAR-001",
+          "claim:PRESERVE-001",
+          "claim:FORMULATION-NODAL-003"
+        ]
+      },
+      "question": "What else besides the circuit equation must agree before two models can be substituted in an optimization?"
+    },
+    {
+      "audience": "software_engineer",
+      "case_id": "HOLDOUT-DECISION-SOFTWARE",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.027149,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:TRANSFORM-CATALOG-001",
+          "claim:TR-KRON-NEUTRAL-004",
+          "claim:TR-XFMR-007",
+          "claim:TR-KRON-FIVE-001",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:ARCH-LENS-001",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:TR-KRON-NEUTRAL-007",
+          "claim:TR-KRON-NEUTRAL-005"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:PRESERVE-001",
+        "claim:TR-PAR-001",
+        "claim:TR-PAR-002",
+        "concept:equivalence-exactness-preservation",
+        "concept:rating-limit-constraint"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.011111,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:TRANSFORM-CATALOG-001",
+          "claim:TR-XFMR-007",
+          "claim:TR-KRON-NEUTRAL-004",
+          "claim:TR-KRON-FIVE-001",
+          "claim:ARCH-LENS-001",
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:TR-KRON-NEUTRAL-002",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:FIXTURE-001",
+          "claim:TR-KRON-NEUTRAL-005"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.013333,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:TR-KRON-NEUTRAL-004",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:TR-KRON-NEUTRAL-005",
+          "claim:TRANSFORM-CATALOG-001",
+          "claim:TR-XFMR-007",
+          "claim:RATING-001",
+          "claim:TR-KRON-NEUTRAL-008",
+          "claim:TR-KRON-NEUTRAL-006",
+          "claim:TR-KRON-003",
+          "claim:TR-KRON-FIVE-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.0,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:TRANSFORM-CATALOG-001",
+          "claim:TR-XFMR-007",
+          "claim:FIXTURE-001",
+          "claim:PRACTICE-ADAPTER-001",
+          "claim:DATA-XWALK-001",
+          "claim:TR-KRON-NEUTRAL-004",
+          "claim:ARCH-LENS-001",
+          "claim:TR-KRON-FIVE-001",
+          "claim:ARCH-RECOVERY-001",
+          "claim:TR-KRON-NEUTRAL-003"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.025,
+        "recall_at_10": 0.2,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "claim:TR-PAR-005",
+          "claim:ARCH-DEGENERACY-002",
+          "claim:TR-COMP-001",
+          "claim:LIT-PAR-001",
+          "claim:TR-KRON-002",
+          "claim:PRACTICE-ADAPTER-001",
+          "claim:DATA-XWALK-001",
+          "claim:PRESERVE-001",
+          "claim:PRACTICE-ARCH-001",
+          "claim:ARCH-PORT-001"
+        ]
+      },
+      "question": "Which feasibility and provenance checks belong in a model-reduction acceptance test for an optimizer?"
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "HOLDOUT-DECISION-POWER",
+      "char_tfidf": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.025911,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "concept:direction-orientation-hierarchy",
+          "claim:TRANSFORM-CATALOG-001",
+          "claim:FORMULATION-NODAL-003",
+          "claim:TR-SER-002",
+          "claim:TR-SER-001",
+          "claim:ARCH-CHORDAL-001",
+          "claim:TRANSFORM-SEM-001",
+          "claim:ARCH-PORT-001",
+          "claim:FORMULATION-NODAL-002",
+          "claim:COLLAPSE-001"
+        ]
+      },
+      "expected_record_ids": [
+        "claim:PRESERVE-001",
+        "claim:TR-PAR-001",
+        "claim:TR-PAR-002",
+        "concept:equivalence-exactness-preservation",
+        "concept:rating-limit-constraint"
+      ],
+      "hybrid": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.023333,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "concept:direction-orientation-hierarchy",
+          "claim:TRANSFORM-CATALOG-001",
+          "claim:ARCH-PORT-001",
+          "claim:ARCH-PORT-002",
+          "claim:TRANSFORM-SEM-001",
+          "claim:TR-SER-001",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:FORMULATION-NODAL-003",
+          "claim:TR-SER-002",
+          "concept:object-node-interface"
+        ]
+      },
+      "hybrid_reranked": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.101765,
+        "recall_at_10": 0.4,
+        "recall_at_5": 0.4,
+        "top_10": [
+          "claim:TR-XFMR-001",
+          "claim:TR-SER-002",
+          "claim:FORMULATION-NODAL-002",
+          "claim:PRESERVE-001",
+          "claim:TR-PAR-002",
+          "claim:FORMULATION-NODAL-003",
+          "claim:COLLAPSE-002",
+          "claim:ARCH-DEGENERACY-001",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:TR-KRON-NEUTRAL-004"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.01,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "concept:direction-orientation-hierarchy",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:ARCH-PORT-001",
+          "concept:object-node-interface",
+          "claim:ARCH-SURGERY-002",
+          "claim:TRANSFORM-CATALOG-001",
+          "claim:TRANSFORM-SEM-001",
+          "claim:FORMULATION-NODAL-001",
+          "claim:TR-XFMR-004"
+        ]
+      },
+      "neural": {
+        "complete_at_10": false,
+        "mean_reciprocal_rank_at_20": 0.011765,
+        "recall_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "top_10": [
+          "concept:direction-orientation-hierarchy",
+          "claim:TR-GRAPH-ACTIVE-001",
+          "claim:TOPOLOGY-001",
+          "claim:THESIS-001",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-DEGENERACY-001",
+          "claim:ARCH-SURGERY-002",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:DATA-XWALK-001",
+          "claim:ARCH-PORT-001"
+        ]
+      },
+      "question": "Why is an equivalent terminal response not sufficient evidence that planning or dispatch choices remain valid?"
+    }
+  ],
+  "corpus": {
+    "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
+    "corpus_sha256": "8d73544719d5c384159167355602ceb9576b5c71c6838f4557c969be2c40eaf7",
+    "record_count": 661,
+    "release": {
+      "external_reviewed_claims": 0,
+      "independent_human_double_coding": false,
+      "release_candidate_id": "mgb-2026-08-17-internal-rc",
+      "release_identity_sha256": "7b959c50016fc1130c0184e965c8c8d986bbef327a014614fba31db9c11a6a8f",
+      "status": "internally_validated_not_externally_reviewed"
+    }
+  },
+  "embedding_provenance": {
+    "artifact_hash_complete": true,
+    "artifact_hash_source": "declared",
+    "artifact_sha256": "507dfbc0b17cb6138f2a9f9e0894df3198cab2bebb23fc46759021e6ee458d02",
+    "device": "cpu",
+    "embedding_dimension": 384,
+    "implementation": "cpython-CPython",
+    "local_files_only": true,
+    "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+    "model_path": "mgb-model-minilm",
+    "model_revision": "ea78891063587eb050ed4166b20062eaf978037c",
+    "normalize_embeddings": true,
+    "numpy_version": "2.5.2",
+    "provider": "sentence-transformers",
+    "python_version": "3.12.13",
+    "sentence_transformers_version": "5.7.0",
+    "torch_version": "2.13.0",
+    "transformers_version": "5.15.0"
+  },
+  "inputs": {
+    "heldout_paraphrases": {
+      "path": "llm/heldout-paraphrases.toml",
+      "sha256": "59de33ec99d2b61ac4e0db0e2f0286d3d0e79303447a187ba23fbef3a13ebf56"
+    }
+  },
+  "methods": {
+    "char_tfidf": "character n-gram TF-IDF surface-semantic proxy",
+    "hybrid": "reciprocal-rank fusion of lexical and character TF-IDF",
+    "hybrid_reranked": "cross-encoder reranking of the bounded hybrid candidate set",
+    "lexical": "BM25 lexical retrieval with controlled vocabulary expansion",
+    "neural": "cosine similarity over sentence-transformers embeddings"
+  },
+  "purpose": "Compare an explicitly pinned neural embedder with the committed retrieval baselines.",
+  "reranker_provenance": {
+    "artifact_hash_complete": true,
+    "artifact_hash_source": "declared",
+    "artifact_sha256": "d5d6c60ab5d3e953626f0839cad9292482a5970deeea2551d3223b2f984cee92",
+    "device": "cpu",
+    "implementation": "cpython-CPython",
+    "local_files_only": true,
+    "max_length": 512,
+    "model_id": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "model_path": "mgb-model-cross-encoder",
+    "model_revision": "c5ee24cb16019beea0893ab7796b1df96625c6b8",
+    "numpy_version": "2.5.2",
+    "provider": "sentence-transformers-cross-encoder",
+    "python_version": "3.12.13",
+    "sentence_transformers_version": "5.7.0",
+    "torch_version": "2.13.0",
+    "transformers_version": "5.15.0"
+  },
+  "schema_version": "0.1.0",
+  "status": "fail",
+  "summary": {
+    "cases": 27,
+    "char_tfidf": {
+      "complete_at_10": 0.037037,
+      "mean_reciprocal_rank_at_20": 0.213542,
+      "recall_at_10": 0.441975,
+      "recall_at_5": 0.359259
+    },
+    "char_tfidf_recall_at_10_minus_lexical": 0.001852,
+    "hybrid": {
+      "complete_at_10": 0.037037,
+      "mean_reciprocal_rank_at_20": 0.219074,
+      "recall_at_10": 0.453704,
+      "recall_at_5": 0.405556
+    },
+    "hybrid_recall_at_10_minus_lexical": 0.013581,
+    "hybrid_reranked": {
+      "complete_at_10": 0.0,
+      "mean_reciprocal_rank_at_20": 0.225406,
+      "recall_at_10": 0.441358,
+      "recall_at_5": 0.326543
+    },
+    "hybrid_reranked_complete_at_10_minus_hybrid": -0.037037,
+    "hybrid_reranked_recall_at_10_minus_hybrid": -0.012346,
+    "hybrid_reranked_recall_at_10_minus_lexical": 0.001235,
+    "lexical": {
+      "complete_at_10": 0.0,
+      "mean_reciprocal_rank_at_20": 0.20576,
+      "recall_at_10": 0.440123,
+      "recall_at_5": 0.360494
+    },
+    "neural": {
+      "complete_at_10": 0.0,
+      "mean_reciprocal_rank_at_20": 0.206793,
+      "recall_at_10": 0.433951,
+      "recall_at_5": 0.308642
+    },
+    "neural_complete_at_10_minus_hybrid": -0.037037,
+    "neural_recall_at_10_minus_hybrid": -0.019753,
+    "neural_recall_at_10_minus_lexical": -0.006172
+  },
+  "thresholds": {
+    "hybrid_reranked_complete_at_10_not_worse_than_hybrid": false,
+    "hybrid_reranked_recall_at_10_not_worse_than_hybrid": false,
+    "neural_complete_at_10_not_worse_than_hybrid": false,
+    "neural_provenance_complete": true,
+    "neural_recall_at_10_not_worse_than_hybrid": false,
+    "reranker_provenance_complete": true
+  }
+}

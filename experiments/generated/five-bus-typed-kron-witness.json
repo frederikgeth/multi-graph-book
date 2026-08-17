@@ -1,0 +1,392 @@
+{
+  "checks": {
+    "non_pendant_fill_km_is_present": true,
+    "boundary_current_recovery": true,
+    "provenance_retained": true,
+    "eliminated_bus_is_pendant": true,
+    "non_pendant_boundary_current_recovery": true,
+    "recovered_line_u_current_is_exact": true,
+    "non_pendant_internal_block_is_invertible": true,
+    "internal_block_is_invertible": true,
+    "tight_line_u_limit_is_not_satisfied": true,
+    "full_nodal_residual_is_zero": true,
+    "non_pendant_fill_jm_is_present": true,
+    "reduced_matches_direct_leaf_deletion": true
+  },
+  "non_pendant_retained_vertices": [
+    "i",
+    "j",
+    "k",
+    "m"
+  ],
+  "internal_residual": 5.164700352369269e-18,
+  "non_pendant_eliminated_vertex": "l",
+  "source_ybus": [
+    [
+      {
+        "real": 14.333333333333334,
+        "imag": 0
+      },
+      {
+        "real": -11,
+        "imag": 0
+      },
+      {
+        "real": -3.3333333333333335,
+        "imag": 0
+      },
+      {
+        "real": 0,
+        "imag": 0
+      },
+      {
+        "real": 0,
+        "imag": 0
+      }
+    ],
+    [
+      {
+        "real": -11,
+        "imag": 0
+      },
+      {
+        "real": 18.5,
+        "imag": 0
+      },
+      {
+        "real": -5,
+        "imag": 0
+      },
+      {
+        "real": -2.5,
+        "imag": 0
+      },
+      {
+        "real": 0,
+        "imag": 0
+      }
+    ],
+    [
+      {
+        "real": -3.3333333333333335,
+        "imag": 0
+      },
+      {
+        "real": -5,
+        "imag": 0
+      },
+      {
+        "real": 10.333333333333334,
+        "imag": 0
+      },
+      {
+        "real": -2,
+        "imag": 0
+      },
+      {
+        "real": 0,
+        "imag": 0
+      }
+    ],
+    [
+      {
+        "real": 0,
+        "imag": 0
+      },
+      {
+        "real": -2.5,
+        "imag": 0
+      },
+      {
+        "real": -2,
+        "imag": 0
+      },
+      {
+        "real": 6.166666666666667,
+        "imag": 0
+      },
+      {
+        "real": -1.6666666666666667,
+        "imag": 0
+      }
+    ],
+    [
+      {
+        "real": 0,
+        "imag": 0
+      },
+      {
+        "real": 0,
+        "imag": 0
+      },
+      {
+        "real": 0,
+        "imag": 0
+      },
+      {
+        "real": -1.6666666666666667,
+        "imag": 0
+      },
+      {
+        "real": 1.6666666666666667,
+        "imag": 0
+      }
+    ]
+  ],
+  "direct_leaf_deleted_ybus": [
+    [
+      {
+        "real": 14.333333333333334,
+        "imag": 0
+      },
+      {
+        "real": -11,
+        "imag": 0
+      },
+      {
+        "real": -3.3333333333333335,
+        "imag": 0
+      },
+      {
+        "real": 0,
+        "imag": 0
+      }
+    ],
+    [
+      {
+        "real": -11,
+        "imag": 0
+      },
+      {
+        "real": 18.5,
+        "imag": 0
+      },
+      {
+        "real": -5,
+        "imag": 0
+      },
+      {
+        "real": -2.5,
+        "imag": 0
+      }
+    ],
+    [
+      {
+        "real": -3.3333333333333335,
+        "imag": 0
+      },
+      {
+        "real": -5,
+        "imag": 0
+      },
+      {
+        "real": 10.333333333333334,
+        "imag": 0
+      },
+      {
+        "real": -2,
+        "imag": 0
+      }
+    ],
+    [
+      {
+        "real": 0,
+        "imag": 0
+      },
+      {
+        "real": -2.5,
+        "imag": 0
+      },
+      {
+        "real": -2,
+        "imag": 0
+      },
+      {
+        "real": 4.5,
+        "imag": 0
+      }
+    ]
+  ],
+  "all_checks_pass": true,
+  "claim_id": "TR-KRON-FIVE-001",
+  "source_fixture": "experiments/generated/five-bus-cycle-space-analysis.json",
+  "non_pendant_reduced_ybus": [
+    [
+      {
+        "real": 14.333333333333334,
+        "imag": 0
+      },
+      {
+        "real": -11,
+        "imag": 0
+      },
+      {
+        "real": -3.3333333333333335,
+        "imag": 0
+      },
+      {
+        "real": 0,
+        "imag": 0
+      }
+    ],
+    [
+      {
+        "real": -11,
+        "imag": 0
+      },
+      {
+        "real": 17.486486486486488,
+        "imag": 0
+      },
+      {
+        "real": -5.8108108108108105,
+        "imag": 0
+      },
+      {
+        "real": -0.6756756756756755,
+        "imag": 0
+      }
+    ],
+    [
+      {
+        "real": -3.3333333333333335,
+        "imag": 0
+      },
+      {
+        "real": -5.8108108108108105,
+        "imag": 0
+      },
+      {
+        "real": 9.684684684684685,
+        "imag": 0
+      },
+      {
+        "real": -0.5405405405405405,
+        "imag": 0
+      }
+    ],
+    [
+      {
+        "real": 0,
+        "imag": 0
+      },
+      {
+        "real": -0.6756756756756757,
+        "imag": 0
+      },
+      {
+        "real": -0.5405405405405405,
+        "imag": 0
+      },
+      {
+        "real": 1.2162162162162162,
+        "imag": 0
+      }
+    ]
+  ],
+  "eliminated_vertex": "m",
+  "witness_id": "TR-KRON-FIVE-001",
+  "reduced_ybus": [
+    [
+      {
+        "real": 14.333333333333334,
+        "imag": 0
+      },
+      {
+        "real": -11,
+        "imag": 0
+      },
+      {
+        "real": -3.3333333333333335,
+        "imag": 0
+      },
+      {
+        "real": 0,
+        "imag": 0
+      }
+    ],
+    [
+      {
+        "real": -11,
+        "imag": 0
+      },
+      {
+        "real": 18.5,
+        "imag": 0
+      },
+      {
+        "real": -5,
+        "imag": 0
+      },
+      {
+        "real": -2.5,
+        "imag": 0
+      }
+    ],
+    [
+      {
+        "real": -3.3333333333333335,
+        "imag": 0
+      },
+      {
+        "real": -5,
+        "imag": 0
+      },
+      {
+        "real": 10.333333333333334,
+        "imag": 0
+      },
+      {
+        "real": -2,
+        "imag": 0
+      }
+    ],
+    [
+      {
+        "real": 0,
+        "imag": 0
+      },
+      {
+        "real": -2.5,
+        "imag": 0
+      },
+      {
+        "real": -2,
+        "imag": 0
+      },
+      {
+        "real": 4.5,
+        "imag": 0
+      }
+    ]
+  ],
+  "line_u_declared_limit": 0.0716310178948049,
+  "evidence_type": "direct_five_bus_scalar_typed_kron_witness",
+  "retained_tree_lines": [
+    "r",
+    "s",
+    "w",
+    "u"
+  ],
+  "line_u_limit_satisfied": false,
+  "retained_vertices": [
+    "i",
+    "j",
+    "k",
+    "l"
+  ],
+  "eliminated_incident_members": [
+    "u"
+  ],
+  "boundary_residual": 2.2247786310271853e-16,
+  "interpretation": "For a pendant scalar bus with no independent injection, typed Kron elimination removes the leaf member and preserves the retained boundary Ybus exactly. The result is a direct fixture check, not a general claim about arbitrary reductions or retained current limits.",
+  "non_pendant_fill_edges": [
+    "j-m",
+    "k-m"
+  ],
+  "non_pendant_boundary_residual": 1.4653444446016847e-15,
+  "line_u_current": {
+    "real": 0.08108108108108081,
+    "imag": 0.00945945945945946
+  }
+}

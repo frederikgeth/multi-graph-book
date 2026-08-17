@@ -1,0 +1,198 @@
+{
+  "interfaces": {
+    "units": {
+      "source": [
+        "V",
+        "A",
+        "ohm"
+      ],
+      "relation": "permutation changes order but not units",
+      "target": [
+        "V",
+        "A",
+        "ohm"
+      ]
+    },
+    "decisions": {
+      "source": [
+      ],
+      "relation": "any conductor-indexed decisions must follow the same permutation; none occur in this example",
+      "target": [
+      ]
+    },
+    "constraints": {
+      "source": [
+        "source-coordinate componentwise current limits"
+      ],
+      "relation": "constraint coordinates are permuted by P",
+      "target": [
+        "target-coordinate componentwise current limits"
+      ]
+    },
+    "boundary_quantities": {
+      "source": [
+        "source-order terminal voltage and current vectors"
+      ],
+      "relation": "boundary vectors map bijectively by P and P'",
+      "target": [
+        "target-order terminal voltage and current vectors"
+      ]
+    },
+    "objectives": {
+      "source": [
+      ],
+      "relation": "the rule declares no objective term",
+      "target": [
+      ]
+    },
+    "state_variables": {
+      "source": [
+        "ordered conductor state x_source"
+      ],
+      "relation": "x_target = P * x_source",
+      "target": [
+        "ordered conductor state x_target"
+      ]
+    }
+  },
+  "preconditions": [
+    "requested and source conductor labels are unique",
+    "requested and source conductor sets are equal",
+    "each from-terminal label remains paired with its original to-terminal label"
+  ],
+  "rule_id": "conductor_coordinate_normalization",
+  "provenance": {
+    "generated_object": "normalized__l6__a_n",
+    "source_element": "l6"
+  },
+  "classification": "exact_normalization",
+  "target": {
+    "object_ids": [
+      "normalized__l6__a_n"
+    ],
+    "detail": {
+      "terminal_map_from": [
+        "a",
+        "n"
+      ],
+      "impedance_ohm": [
+        [
+          {
+            "re": 0.2,
+            "im": 0.3
+          },
+          {
+            "re": 0.03,
+            "im": 0.05
+          }
+        ],
+        [
+          {
+            "re": 0.03,
+            "im": 0.05
+          },
+          {
+            "re": 0.4,
+            "im": 0.25
+          }
+        ]
+      ],
+      "terminal_map_to": [
+        "a",
+        "n"
+      ],
+      "current_limit_A": [
+        110,
+        80
+      ]
+    },
+    "model_category": "ordered_multiconductor_series_element"
+  },
+  "certificate_id": "TR-COORD-001",
+  "preserves": [
+    "all_declared_source_semantics",
+    "external_terminal_voltage_current_relation",
+    "conductor_identity",
+    "componentwise_current_limits",
+    "source_to_target_provenance"
+  ],
+  "constraint_map": {
+    "target_componentwise_limit": "i_max_target = P * i_max_source",
+    "target_impedance": "Z_target = P * Z_source * P'",
+    "target_coordinates": "x_target = P * x_source"
+  },
+  "source": {
+    "object_ids": [
+      "l6"
+    ],
+    "model_category": "ordered_multiconductor_series_element"
+  },
+  "forgets": [
+  ],
+  "recovery_map": {
+    "source_coordinates": "x_source = P' * x_target",
+    "source_impedance": "Z_source = P' * Z_target * P"
+  },
+  "typed_interfaces": {
+    "target_unit_families": [
+      "current",
+      "impedance",
+      "voltage"
+    ],
+    "unresolved_unit_labels": [
+    ],
+    "target_boundary_labels": [
+      "target-order terminal voltage and current vectors"
+    ],
+    "source_unit_families": [
+      "current",
+      "impedance",
+      "voltage"
+    ],
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "state_domain_ids": [
+    ],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+    "unit_family_map": {
+      "A": [
+        "current"
+      ],
+      "V": [
+        "voltage"
+      ],
+      "ohm": [
+        "impedance"
+      ]
+    },
+    "source_boundary_labels": [
+      "source-order terminal voltage and current vectors"
+    ],
+    "source_variable_labels": [
+      "ordered conductor state x_source"
+    ],
+    "target_variable_labels": [
+      "ordered conductor state x_target"
+    ]
+  },
+  "evidence": {
+    "permutation_matrix": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "source_order": [
+      "n",
+      "a"
+    ],
+    "target_order": [
+      "a",
+      "n"
+    ]
+  },
+  "schema_version": "1.1.0"
+}

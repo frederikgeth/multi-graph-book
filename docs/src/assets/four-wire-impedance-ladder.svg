@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="920" viewBox="0 0 1500 920">
+<title>Every edge can be defensible while the path is not</title>
+<desc>The composed ladder retains the weakest exactness label and the union of unresolved guards.</desc>
+<rect width="100%" height="100%" fill="white"/>
+
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:27px;font-weight:bold}.sub{font-size:15px;fill:#5f6b76}
+.head{font-size:18px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#46525d}.tiny{font-size:12px;fill:#46525d}
+.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.good{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.warn{fill:#fff3dc;stroke:#a36516;stroke-width:2}.bad{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.ink{stroke:#17212b;stroke-width:2}.ok{fill:#2f6b3b}.red{fill:#8a3232}.amber{fill:#a36516}
+</style>
+
+<text x="35" y="40" class="title" text-anchor="start">Every edge can be defensible while the path is not</text>
+<text x="35" y="68" class="sub" text-anchor="start">The composed ladder retains the weakest exactness label and the union of unresolved guards.</text>
+<rect x="55" y="150" width="188" height="290" rx="10" class="good"/>
+<text x="149.0" y="182" class="head" text-anchor="middle">K_g</text>
+<text x="149.0" y="208" class="tiny" text-anchor="middle">guarded-exact</text>
+<text x="70" y="245" class="tiny" text-anchor="start">source</text>
+<text x="70" y="264" class="tiny" text-anchor="start">circuit_primitive</text>
+<text x="70" y="301" class="tiny" text-anchor="start">target</text>
+<text x="70" y="320" class="tiny" text-anchor="start">four-wire-conductor-primitive</text>
+<text x="70" y="360" class="small" text-anchor="start">✓ edge guards</text>
+<text x="70" y="381" class="tiny" text-anchor="start">earth reference and</text>
+<text x="70" y="395" class="tiny" text-anchor="start">earth-return</text>
+<text x="70" y="420" class="tiny" text-anchor="start">preserves:</text>
+<text x="70" y="435" class="tiny" text-anchor="start">ordered conductor</text>
+<line x1="243" y1="295" x2="257" y2="295" class="ink" stroke-width="3"/>
+<text x="250.0" y="282" class="head" text-anchor="middle">→</text>
+<rect x="261" y="150" width="188" height="290" rx="10" class="good"/>
+<text x="355.0" y="182" class="head" text-anchor="middle">K_n</text>
+<text x="355.0" y="208" class="tiny" text-anchor="middle">guarded-exact</text>
+<text x="276" y="245" class="tiny" text-anchor="start">source</text>
+<text x="276" y="264" class="tiny" text-anchor="start">four-wire-conductor-primitive</text>
+<text x="276" y="301" class="tiny" text-anchor="start">target</text>
+<text x="276" y="320" class="tiny" text-anchor="start">phase-primitive</text>
+<text x="276" y="360" class="small" text-anchor="start">✓ edge guards</text>
+<text x="276" y="381" class="tiny" text-anchor="start">neutral block</text>
+<text x="276" y="395" class="tiny" text-anchor="start">invertible</text>
+<text x="276" y="420" class="tiny" text-anchor="start">preserves:</text>
+<text x="276" y="435" class="tiny" text-anchor="start">declared phase</text>
+<line x1="449" y1="295" x2="463" y2="295" class="ink" stroke-width="3"/>
+<text x="456.0" y="282" class="head" text-anchor="middle">→</text>
+<rect x="467" y="150" width="188" height="290" rx="10" class="good"/>
+<text x="561.0" y="182" class="head" text-anchor="middle">P_n</text>
+<text x="561.0" y="208" class="tiny" text-anchor="middle">guarded-exact</text>
+<text x="482" y="245" class="tiny" text-anchor="start">source</text>
+<text x="482" y="264" class="tiny" text-anchor="start">four-wire-conductor-primitive</text>
+<text x="482" y="301" class="tiny" text-anchor="start">target</text>
+<text x="482" y="320" class="tiny" text-anchor="start">phase-to-neutral-primitive</text>
+<text x="482" y="360" class="small" text-anchor="start">✓ edge guards</text>
+<text x="482" y="381" class="tiny" text-anchor="start">zero local ground</text>
+<text x="482" y="395" class="tiny" text-anchor="start">current</text>
+<text x="482" y="420" class="tiny" text-anchor="start">preserves:</text>
+<text x="482" y="435" class="tiny" text-anchor="start">phase-to-neutral</text>
+<line x1="655" y1="295" x2="669" y2="295" class="ink" stroke-width="3"/>
+<text x="662.0" y="282" class="head" text-anchor="middle">→</text>
+<rect x="673" y="150" width="188" height="290" rx="10" class="warn"/>
+<text x="767.0" y="182" class="head" text-anchor="middle">Z</text>
+<text x="767.0" y="208" class="tiny" text-anchor="middle">approximate</text>
+<text x="688" y="245" class="tiny" text-anchor="start">source</text>
+<text x="688" y="264" class="tiny" text-anchor="start">nominal-pi-factor</text>
+<text x="688" y="301" class="tiny" text-anchor="start">target</text>
+<text x="688" y="320" class="tiny" text-anchor="start">series-only-factor</text>
+<text x="688" y="360" class="small" text-anchor="start">✓ edge guards</text>
+<text x="688" y="381" class="tiny" text-anchor="start">shunt observations</text>
+<text x="688" y="395" class="tiny" text-anchor="start">declared out of scope</text>
+<text x="688" y="420" class="tiny" text-anchor="start">preserves:</text>
+<text x="688" y="435" class="tiny" text-anchor="start">series relation only</text>
+<line x1="861" y1="295" x2="875" y2="295" class="ink" stroke-width="3"/>
+<text x="868.0" y="282" class="head" text-anchor="middle">→</text>
+<rect x="879" y="150" width="188" height="290" rx="10" class="good"/>
+<text x="973.0" y="182" class="head" text-anchor="middle">F</text>
+<text x="973.0" y="208" class="tiny" text-anchor="middle">exact-coordinate</text>
+<text x="894" y="245" class="tiny" text-anchor="start">source</text>
+<text x="894" y="264" class="tiny" text-anchor="start">phase-primitive</text>
+<text x="894" y="301" class="tiny" text-anchor="start">target</text>
+<text x="894" y="320" class="tiny" text-anchor="start">sequence-primitive</text>
+<text x="894" y="360" class="small" text-anchor="start">✓ edge guards</text>
+<text x="894" y="381" class="tiny" text-anchor="start">phase order and</text>
+<text x="894" y="395" class="tiny" text-anchor="start">Fortescue convention</text>
+<text x="894" y="420" class="tiny" text-anchor="start">preserves:</text>
+<text x="894" y="435" class="tiny" text-anchor="start">all invertible linear</text>
+<line x1="1067" y1="295" x2="1081" y2="295" class="ink" stroke-width="3"/>
+<text x="1074.0" y="282" class="head" text-anchor="middle">→</text>
+<rect x="1085" y="150" width="188" height="290" rx="10" class="warn"/>
+<text x="1179.0" y="182" class="head" text-anchor="middle">D</text>
+<text x="1179.0" y="208" class="tiny" text-anchor="middle">approximate</text>
+<text x="1100" y="245" class="tiny" text-anchor="start">source</text>
+<text x="1100" y="264" class="tiny" text-anchor="start">sequence-primitive</text>
+<text x="1100" y="301" class="tiny" text-anchor="start">target</text>
+<text x="1100" y="320" class="tiny" text-anchor="start">diagonal-sequence-primitive</text>
+<text x="1100" y="360" class="small" text-anchor="start">✓ edge guards</text>
+<text x="1100" y="381" class="tiny" text-anchor="start">sequence coupling is</text>
+<text x="1100" y="395" class="tiny" text-anchor="start">negligible or excluded</text>
+<text x="1100" y="420" class="tiny" text-anchor="start">preserves:</text>
+<text x="1100" y="435" class="tiny" text-anchor="start">diagonal sequence</text>
+<line x1="1273" y1="295" x2="1287" y2="295" class="ink" stroke-width="3"/>
+<text x="1280.0" y="282" class="head" text-anchor="middle">→</text>
+<rect x="1291" y="150" width="188" height="290" rx="10" class="warn"/>
+<text x="1385.0" y="182" class="head" text-anchor="middle">F_1</text>
+<text x="1385.0" y="208" class="tiny" text-anchor="middle">restricted-approximation</text>
+<text x="1306" y="245" class="tiny" text-anchor="start">source</text>
+<text x="1306" y="264" class="tiny" text-anchor="start">diagonal-sequence-primitive</text>
+<text x="1306" y="301" class="tiny" text-anchor="start">target</text>
+<text x="1306" y="320" class="tiny" text-anchor="start">positive-sequence-primitive</text>
+<text x="1306" y="360" class="small" text-anchor="start">✓ edge guards</text>
+<text x="1306" y="381" class="tiny" text-anchor="start">balanced boundary data</text>
+<text x="1306" y="420" class="tiny" text-anchor="start">preserves:</text>
+<text x="1306" y="435" class="tiny" text-anchor="start">positive-sequence</text>
+<rect x="1288" y="475" width="194" height="95" rx="10" class="bad"/>
+<text x="1385.0" y="508" class="head" text-anchor="middle">⚑ endpoint</text>
+<text x="1385.0" y="534" class="small" text-anchor="middle">positive-sequence decision</text>
+<rect x="55" y="570" width="1390" height="180" rx="10" class="panel"/>
+<text x="80" y="608" class="head" text-anchor="start">accumulated unresolved guards</text>
+<text x="80" y="650" class="red" text-anchor="start">!</text>
+<text x="100" y="650" class="body" text-anchor="start">neutral limits recovered</text>
+<text x="760" y="650" class="red" text-anchor="start">!</text>
+<text x="780" y="650" class="body" text-anchor="start">shunt/common-mode effects excluded or mapped</text>
+<text x="80" y="688" class="red" text-anchor="start">!</text>
+<text x="100" y="688" class="body" text-anchor="start">sequence coupling negligible or excluded</text>
+<text x="760" y="688" class="red" text-anchor="start">!</text>
+<text x="780" y="688" class="body" text-anchor="start">balanced boundary data and sequence-compatible decisions</text>
+<text x="60" y="805" class="small" text-anchor="start">Green ticks certify individual edges; they do not certify their composition for a richer decision query.</text>
+</svg>

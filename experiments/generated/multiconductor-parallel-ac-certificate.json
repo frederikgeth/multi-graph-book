@@ -1,0 +1,722 @@
+{
+  "interfaces": {
+    "units": {
+      "source": [
+        "per-unit voltage",
+        "per-unit current",
+        "per-unit power"
+      ],
+      "relation": "the same per-unit bases are used",
+      "target": [
+        "per-unit voltage",
+        "per-unit current",
+        "per-unit power"
+      ]
+    },
+    "decisions": {
+      "source": [
+        "served-load fraction alpha"
+      ],
+      "relation": "the same scalar load decision is optimized",
+      "target": [
+        "served-load fraction alpha"
+      ]
+    },
+    "constraints": {
+      "source": [
+        "member conductor current circles",
+        "voltage magnitude bounds",
+        "AC power balance"
+      ],
+      "relation": "the naive target replaces member circles; the exact lift retains recovered member circles",
+      "target": [
+        "summed aggregate current circles",
+        "voltage magnitude bounds",
+        "AC power balance"
+      ]
+    },
+    "boundary_quantities": {
+      "source": [
+        "U_i",
+        "U_j",
+        "sum of member terminal currents"
+      ],
+      "relation": "complex terminal current-voltage behaviour is equal before constraints",
+      "target": [
+        "U_i",
+        "U_j",
+        "aggregate terminal current"
+      ]
+    },
+    "objectives": {
+      "source": [
+        "maximize alpha"
+      ],
+      "relation": "objective is unchanged while feasibility differs",
+      "target": [
+        "maximize alpha"
+      ]
+    },
+    "state_variables": {
+      "source": [
+        "U_j conductor phasors",
+        "I_lij member conductor phasors"
+      ],
+      "relation": "aggregate current is the member sum and member currents recover from U_i-U_j",
+      "target": [
+        "U_j conductor phasors",
+        "I_eqij aggregate conductor phasor"
+      ]
+    }
+  },
+  "preconditions": [
+    "parallel members share both endpoint terminal-voltage coordinates",
+    "each member has a linear complex multiconductor series relation",
+    "the receiving load is a phase-to-neutral constant-power direction scaled by one decision"
+  ],
+  "rule_id": "multiconductor_parallel_admittance_with_summed_current_limits",
+  "preserves": [
+    "unconstrained_complex_terminal_current_voltage_relation"
+  ],
+  "constraint_map": {
+    "naive_aggregate": "abs(sum_l I_lij,c) <= sum_l I_max_l,c for each conductor c",
+    "exact_lifted": "recover every I_lij and retain abs(I_lij,c) <= I_max_l,c",
+    "exact_pruned": "after proving I_l2ij=0.1*I_l1ij with equal limits, retain only member-1 current circles while keeping both recovery maps"
+  },
+  "provenance": {
+    "solver": "Ipopt through JuMP",
+    "implementation": "experiments/transformations/MulticonductorParallelACDecision.jl",
+    "coordinate_system": "per-unit rectangular complex conductor voltages and currents"
+  },
+  "classification": "outer_relaxation",
+  "source": {
+    "object_ids": [
+      "ac_parallel_member_l1",
+      "ac_parallel_member_l2"
+    ],
+    "detail": {
+      "terminal_order": [
+        "a",
+        "n"
+      ],
+      "impedance_pu": [
+        [
+          [
+            {
+              "re": 0.04,
+              "im": 0.08
+            },
+            {
+              "re": 0.01,
+              "im": 0.02
+            }
+          ],
+          [
+            {
+              "re": 0.01,
+              "im": 0.02
+            },
+            {
+              "re": 0.04,
+              "im": 0.08
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "re": 0.4,
+              "im": 0.8
+            },
+            {
+              "re": 0.1,
+              "im": 0.2
+            }
+          ],
+          [
+            {
+              "re": 0.1,
+              "im": 0.2
+            },
+            {
+              "re": 0.4,
+              "im": 0.8
+            }
+          ]
+        ]
+      ],
+      "current_limit_pu": [
+        [
+          0.6,
+          0.6
+        ],
+        [
+          0.6,
+          0.6
+        ]
+      ],
+      "load_direction_pu": {
+        "re": 1,
+        "im": 0.2
+      }
+    },
+    "model_category": "two_bus_multiconductor_ac_parallel_member_opf"
+  },
+  "forgets": [
+    "member_current_limits",
+    "member_identity",
+    "independent_member_current_state"
+  ],
+  "recovery_map": {
+    "member_currents": "I_lij = Y_l * (U_i - U_j)"
+  },
+  "target": {
+    "object_ids": [
+      "naive_ac_parallel_aggregate_l"
+    ],
+    "detail": {
+      "summed_current_limit_pu": [
+        1.2,
+        1.2
+      ],
+      "aggregate_admittance_pu": [
+        [
+          {
+            "re": 5.866666666666666,
+            "im": -11.733333333333333
+          },
+          {
+            "re": -1.4666666666666666,
+            "im": 2.933333333333333
+          }
+        ],
+        [
+          {
+            "re": -1.4666666666666666,
+            "im": 2.933333333333333
+          },
+          {
+            "re": 5.866666666666666,
+            "im": -11.733333333333333
+          }
+        ]
+      ]
+    },
+    "model_category": "naive_multiconductor_ac_parallel_aggregate_opf"
+  },
+  "evidence": {
+    "exact_pruned_served_fraction_gap": -1.554312234475219e-14,
+    "certified_redundancy": {
+      "checks": [
+        {
+          "retained_limit": 0.6,
+          "candidate_limit": 0.6,
+          "terminal_end": "ij",
+          "conductor": "a",
+          "criterion": "Q_retained - Q_candidate is positive semidefinite",
+          "relative_margin": -1.245104867289142e-16,
+          "minimum_psd_margin": -1.0452732219217487e-13,
+          "scaled_tolerance": 8.395061728395061e-08,
+          "minimum_relative_margin": 1e-08,
+          "voltage_state_complex_dimension": 4,
+          "numerically_ambiguous": false,
+          "difference_eigenvalues": [
+            -1.0452732219217487e-13,
+            -1.115378049216369e-14,
+            -3.346247294322945e-47,
+            1.261830834532822e-64,
+            3.9653226903044985e-30,
+            1.7768797100272297e-14,
+            831.1111111111107,
+            831.1111111111107
+          ],
+          "certified": true,
+          "candidate_current_group_dimension": 1,
+          "retained_current_group_dimension": 1
+        },
+        {
+          "retained_limit": 0.6,
+          "candidate_limit": 0.6,
+          "terminal_end": "ij",
+          "conductor": "n",
+          "criterion": "Q_retained - Q_candidate is positive semidefinite",
+          "relative_margin": -1.0148607699118492e-16,
+          "minimum_psd_margin": -8.519818809136508e-14,
+          "scaled_tolerance": 8.395061728395059e-08,
+          "minimum_relative_margin": 1e-08,
+          "voltage_state_complex_dimension": 4,
+          "numerically_ambiguous": false,
+          "difference_eigenvalues": [
+            -8.519818809136508e-14,
+            -1.3898725686393445e-14,
+            -3.456356630663037e-65,
+            1.2290901382158922e-47,
+            1.0132790924098765e-31,
+            2.0305256990109946e-14,
+            831.1111111111109,
+            831.111111111111
+          ],
+          "certified": true,
+          "candidate_current_group_dimension": 1,
+          "retained_current_group_dimension": 1
+        },
+        {
+          "retained_limit": 0.6,
+          "candidate_limit": 0.6,
+          "terminal_end": "ji",
+          "conductor": "a",
+          "criterion": "Q_retained - Q_candidate is positive semidefinite",
+          "relative_margin": -1.245104867289142e-16,
+          "minimum_psd_margin": -1.0452732219217487e-13,
+          "scaled_tolerance": 8.395061728395061e-08,
+          "minimum_relative_margin": 1e-08,
+          "voltage_state_complex_dimension": 4,
+          "numerically_ambiguous": false,
+          "difference_eigenvalues": [
+            -1.0452732219217487e-13,
+            -1.115378049216369e-14,
+            -3.346247294322945e-47,
+            1.261830834532822e-64,
+            3.9653226903044985e-30,
+            1.7768797100272297e-14,
+            831.1111111111107,
+            831.1111111111107
+          ],
+          "certified": true,
+          "candidate_current_group_dimension": 1,
+          "retained_current_group_dimension": 1
+        },
+        {
+          "retained_limit": 0.6,
+          "candidate_limit": 0.6,
+          "terminal_end": "ji",
+          "conductor": "n",
+          "criterion": "Q_retained - Q_candidate is positive semidefinite",
+          "relative_margin": -1.0148607699118492e-16,
+          "minimum_psd_margin": -8.519818809136508e-14,
+          "scaled_tolerance": 8.395061728395059e-08,
+          "minimum_relative_margin": 1e-08,
+          "voltage_state_complex_dimension": 4,
+          "numerically_ambiguous": false,
+          "difference_eigenvalues": [
+            -8.519818809136508e-14,
+            -1.3898725686393445e-14,
+            -3.456356630663037e-65,
+            1.2290901382158922e-47,
+            1.0132790924098765e-31,
+            2.0305256990109946e-14,
+            831.1111111111109,
+            831.111111111111
+          ],
+          "certified": true,
+          "candidate_current_group_dimension": 1,
+          "retained_current_group_dimension": 1
+        }
+      ],
+      "criterion": "corresponding normalized quadratic containment at every conductor and terminal end",
+      "retained_member": "l1",
+      "preserves": [
+        "candidate member law and identity",
+        "feasible set of the retained voltage variables",
+        "all objectives and constraints on unchanged variables"
+      ],
+      "candidate_member": "l2",
+      "conductor_order": [
+        "a",
+        "n"
+      ],
+      "classification": "exact_constraint_pruning",
+      "minimum_relative_margin": 1e-08,
+      "required_terminal_ends": [
+        "ij",
+        "ji"
+      ],
+      "numerically_ambiguous": false,
+      "forgets": [
+        "only candidate limits proved implied"
+      ],
+      "certified": true
+    },
+    "source_solver_minus_closed_form": 6.227480753295822e-10,
+    "exact_pruned_solution": {
+      "current_balance_residual_pu": 9.50197851991224e-16,
+      "termination_status": "LOCALLY_SOLVED",
+      "load_voltage_magnitude_pu": 0.9485579228182422,
+      "served_active_power_pu": 0.6138907961267288,
+      "receiving_voltage": [
+        {
+          "re": 0.9733205332318317,
+          "terminal": "a",
+          "im": -0.030136457264403057
+        },
+        {
+          "re": 0.026679466768168427,
+          "terminal": "n",
+          "im": 0.03013645726440301
+        }
+      ],
+      "member_currents": [
+        [
+          {
+            "re": 0.5796825419798297,
+            "magnitude_pu": 0.6000000006449984,
+            "terminal": "a",
+            "im": -0.15481650847955786,
+            "limit_pu": 0.6
+          },
+          {
+            "re": -0.5796825419798296,
+            "magnitude_pu": 0.6000000006449985,
+            "terminal": "n",
+            "im": 0.1548165084795587,
+            "limit_pu": 0.6
+          }
+        ],
+        [
+          {
+            "re": 0.05796825419798297,
+            "magnitude_pu": 0.060000000064499834,
+            "terminal": "a",
+            "im": -0.015481650847955788,
+            "limit_pu": 0.6
+          },
+          {
+            "re": -0.05796825419798296,
+            "magnitude_pu": 0.06000000006449985,
+            "terminal": "n",
+            "im": 0.015481650847955872,
+            "limit_pu": 0.6
+          }
+        ]
+      ],
+      "total_current": [
+        {
+          "re": 0.6376507961778127,
+          "magnitude_pu": 0.6600000007094983,
+          "terminal": "a",
+          "im": -0.17029815932751363
+        },
+        {
+          "re": -0.6376507961778126,
+          "magnitude_pu": 0.6600000007094984,
+          "terminal": "n",
+          "im": 0.17029815932751458
+        }
+      ],
+      "served_reactive_power_pu": 0.12277815922534589,
+      "model_size": {
+        "variables": 5,
+        "constraints": 9
+      },
+      "objective_served_fraction": 0.6138907961267286,
+      "formulation": "exact_pruned"
+    },
+    "naive_served_fraction_gap": 0.44919254521377927,
+    "naive_aggregate_solution": {
+      "current_balance_residual_pu": 1.1443916996305594e-15,
+      "termination_status": "LOCALLY_SOLVED",
+      "load_voltage_magnitude_pu": 0.9034471168725695,
+      "served_active_power_pu": 1.063083341340523,
+      "receiving_voltage": [
+        {
+          "re": 0.9486988013438625,
+          "terminal": "a",
+          "im": -0.052187727665807516
+        },
+        {
+          "re": 0.05130119865613736,
+          "terminal": "n",
+          "im": 0.052187727665807544
+        }
+      ],
+      "member_currents": [
+        [
+          {
+            "re": 1.03784435991835,
+            "magnitude_pu": 1.0909090910772,
+            "terminal": "a",
+            "im": -0.33609779764311576,
+            "limit_pu": 0.6
+          },
+          {
+            "re": -1.0378443599183496,
+            "magnitude_pu": 1.0909090910771992,
+            "terminal": "n",
+            "im": 0.33609779764311476,
+            "limit_pu": 0.6
+          }
+        ],
+        [
+          {
+            "re": 0.103784435991835,
+            "magnitude_pu": 0.10909090910771999,
+            "terminal": "a",
+            "im": -0.03360977976431158,
+            "limit_pu": 0.6
+          },
+          {
+            "re": -0.10378443599183497,
+            "magnitude_pu": 0.10909090910771993,
+            "terminal": "n",
+            "im": 0.03360977976431149,
+            "limit_pu": 0.6
+          }
+        ]
+      ],
+      "total_current": [
+        {
+          "re": 1.141628795910185,
+          "magnitude_pu": 1.2000000001849198,
+          "terminal": "a",
+          "im": -0.3697075774074273
+        },
+        {
+          "re": -1.1416287959101845,
+          "magnitude_pu": 1.2000000001849191,
+          "terminal": "n",
+          "im": 0.36970757740742627
+        }
+      ],
+      "served_reactive_power_pu": 0.21261666826810288,
+      "model_size": {
+        "variables": 5,
+        "constraints": 9
+      },
+      "objective_served_fraction": 1.0630833413405234,
+      "formulation": "naive_aggregate"
+    },
+    "proportional_cross_check": {
+      "minimum_limit_ratio": 1,
+      "current_map_ratio": {
+        "real": 0.09999999999999999,
+        "imag": -1.9592171022796884e-18
+      },
+      "retained_member": 1,
+      "redundant_member": 2,
+      "implication": "abs(I_l1ij,c)<=Imax_l1,c implies abs(I_l2ij,c)<=Imax_l2,c for every conductor c",
+      "maximum_proportionality_residual": 3.1031676915590914e-16
+    },
+    "naive_solver_minus_closed_form": 1.4509216050839768e-10,
+    "exact_lifted_solution": {
+      "current_balance_residual_pu": 3.8559277963506344e-16,
+      "termination_status": "LOCALLY_SOLVED",
+      "load_voltage_magnitude_pu": 0.9485579228182408,
+      "served_active_power_pu": 0.6138907961267426,
+      "receiving_voltage": [
+        {
+          "re": 0.9733205332318309,
+          "terminal": "a",
+          "im": -0.030136457264403674
+        },
+        {
+          "re": 0.026679466768169156,
+          "terminal": "n",
+          "im": 0.0301364572644037
+        }
+      ],
+      "member_currents": [
+        [
+          {
+            "re": 0.5796825419798433,
+            "magnitude_pu": 0.600000000645013,
+            "terminal": "a",
+            "im": -0.15481650847956385,
+            "limit_pu": 0.6
+          },
+          {
+            "re": -0.5796825419798436,
+            "magnitude_pu": 0.6000000006450134,
+            "terminal": "n",
+            "im": 0.15481650847956402,
+            "limit_pu": 0.6
+          }
+        ],
+        [
+          {
+            "re": 0.05796825419798433,
+            "magnitude_pu": 0.060000000064501305,
+            "terminal": "a",
+            "im": -0.01548165084795639,
+            "limit_pu": 0.6
+          },
+          {
+            "re": -0.05796825419798436,
+            "magnitude_pu": 0.06000000006450134,
+            "terminal": "n",
+            "im": 0.015481650847956406,
+            "limit_pu": 0.6
+          }
+        ]
+      ],
+      "total_current": [
+        {
+          "re": 0.6376507961778276,
+          "magnitude_pu": 0.6600000007095144,
+          "terminal": "a",
+          "im": -0.17029815932752024
+        },
+        {
+          "re": -0.6376507961778279,
+          "magnitude_pu": 0.6600000007095147,
+          "terminal": "n",
+          "im": 0.17029815932752043
+        }
+      ],
+      "served_reactive_power_pu": 0.12277815922535015,
+      "model_size": {
+        "variables": 5,
+        "constraints": 11
+      },
+      "objective_served_fraction": 0.6138907961267414,
+      "formulation": "exact_lifted"
+    },
+    "source_solution": {
+      "current_balance_residual_pu": 5.828670879282072e-16,
+      "termination_status": "LOCALLY_SOLVED",
+      "load_voltage_magnitude_pu": 0.9485579228182409,
+      "served_active_power_pu": 0.613890796126744,
+      "receiving_voltage": [
+        {
+          "re": 0.9733205332318309,
+          "terminal": "a",
+          "im": -0.030136457264403796
+        },
+        {
+          "re": 0.026679466768169072,
+          "terminal": "n",
+          "im": 0.03013645726440382
+        }
+      ],
+      "member_currents": [
+        [
+          {
+            "re": 0.5796825419798447,
+            "magnitude_pu": 0.6000000006450141,
+            "terminal": "a",
+            "im": -0.15481650847956283,
+            "limit_pu": 0.6
+          },
+          {
+            "re": -0.5796825419798447,
+            "magnitude_pu": 0.600000000645014,
+            "terminal": "n",
+            "im": 0.1548165084795623,
+            "limit_pu": 0.6
+          }
+        ],
+        [
+          {
+            "re": 0.05796825419798448,
+            "magnitude_pu": 0.06000000006450142,
+            "terminal": "a",
+            "im": -0.015481650847956288,
+            "limit_pu": 0.6
+          },
+          {
+            "re": -0.05796825419798447,
+            "magnitude_pu": 0.0600000000645014,
+            "terminal": "n",
+            "im": 0.015481650847956238,
+            "limit_pu": 0.6
+          }
+        ]
+      ],
+      "total_current": [
+        {
+          "re": 0.6376507961778292,
+          "magnitude_pu": 0.6600000007095156,
+          "terminal": "a",
+          "im": -0.17029815932751913
+        },
+        {
+          "re": -0.6376507961778292,
+          "magnitude_pu": 0.6600000007095154,
+          "terminal": "n",
+          "im": 0.17029815932751854
+        }
+      ],
+      "served_reactive_power_pu": 0.12277815922534888,
+      "model_size": {
+        "variables": 13,
+        "constraints": 19
+      },
+      "objective_served_fraction": 0.6138907961267441,
+      "formulation": "source"
+    },
+    "exact_lifted_served_fraction_gap": -2.7755575615628914e-15,
+    "closed_form_current_limited_check": {
+      "naive_aggregate": {
+        "total_current_limit_pu": 1.2,
+        "load_voltage_magnitude_pu": 0.9034471168884869,
+        "served_fraction_derivative_at_limit": 0.7846146271424123,
+        "objective_served_fraction": 1.0630833411954312
+      },
+      "member_current_fractions": [
+        0.9090909090909091,
+        0.09090909090909091
+      ],
+      "source": {
+        "total_current_limit_pu": 0.66,
+        "load_voltage_magnitude_pu": 0.9485579228757193,
+        "served_fraction_derivative_at_limit": 0.8777088814324491,
+        "objective_served_fraction": 0.6138907955039961
+      },
+      "equivalent_loop_impedance_pu": {
+        "re": 0.05454545454545455,
+        "im": 0.1090909090909091
+      }
+    }
+  },
+  "schema_version": "1.1.0",
+  "certificate_id": "TR-PAR-004",
+  "typed_interfaces": {
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "source_variable_labels": [
+      "U_j conductor phasors",
+      "I_lij member conductor phasors"
+    ],
+    "target_variable_labels": [
+      "U_j conductor phasors",
+      "I_eqij aggregate conductor phasor"
+    ],
+    "source_unit_families": [
+      "current",
+      "dimensionless",
+      "power",
+      "voltage"
+    ],
+    "target_unit_families": [
+      "current",
+      "dimensionless",
+      "power",
+      "voltage"
+    ],
+    "source_boundary_labels": [
+      "U_i",
+      "U_j",
+      "sum of member terminal currents"
+    ],
+    "target_boundary_labels": [
+      "U_i",
+      "U_j",
+      "aggregate terminal current"
+    ],
+    "state_domain_ids": [],
+    "unit_family_map": {
+      "per-unit current": [
+        "current",
+        "dimensionless"
+      ],
+      "per-unit power": [
+        "dimensionless",
+        "power"
+      ],
+      "per-unit voltage": [
+        "dimensionless",
+        "voltage"
+      ]
+    },
+    "unresolved_unit_labels": [],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed"
+  }
+}

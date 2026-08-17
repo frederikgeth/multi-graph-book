@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:multi-graph-book:schema:llm-answer-response:0.1.0",
+  "title": "Book-grounded LLM answer response",
+  "type": "object",
+  "required": ["api_schema_version", "type", "corpus_id", "release", "packet", "markdown", "validation"],
+  "properties": {
+    "api_schema_version": {"const": "0.1.0"},
+    "type": {"const": "book_grounded_answer_packet"},
+    "corpus_id": {"type": "string", "minLength": 1},
+    "release": {"type": "object"},
+    "packet": {"type": "object"},
+    "markdown": {"type": "string", "minLength": 1},
+    "validation": {
+      "type": "object",
+      "required": ["valid", "source_hashes_checked", "claim_coverage_checked", "citation_presence_checked"],
+      "properties": {
+        "valid": {"const": true},
+        "source_hashes_checked": {"const": true},
+        "claim_coverage_checked": {"const": true},
+        "citation_presence_checked": {"const": true}
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,411 @@
+{
+    "checks": {
+        "ordering_diagnostics_are_recorded": true,
+        "ordering_changes_symbolic_fill": true,
+        "realified_jacobian_has_declared_dimension": true,
+        "kkt_source_and_aggregate_are_both_present": true,
+        "ybus_uses_bmopftools_builders": true,
+        "crosswalk_retains_node_order": true
+    },
+    "solver_callback_probe": {
+        "solver_status": "LOCALLY_SOLVED",
+        "callback_matrix_dimension": 6,
+        "callback_factorization_type": "LinearAlgebra.LU{Float64, Matrix{Float64}, Vector{Int64}}",
+        "diagnostic_status": "accepted",
+        "diagnostic_dimension": 6,
+        "diagnostic_pivot_ratio": 1,
+        "diagnostic_tolerance": 1.0e-10,
+        "rejected_near_singular_probe": true,
+        "callback_api": "BMOPFTools.opf_checked_kkt_factorization",
+        "diagnostic_api": "BMOPFTools.opf_kkt_diagnostic"
+    },
+    "solver_boundary": {
+        "required_next_export": "capture the solver-provided KKT matrix, linear-solver ordering, pivot/inertia, and factorization statistics",
+        "checked_kkt_callback_api": "BMOPFTools.opf_checked_kkt_factorization",
+        "package_level_builders": [
+            "BMOPFTools.ybus_passive",
+            "BMOPFTools.ybus_linearized"
+        ],
+        "solver_internal_kkt_export": false
+    },
+    "comparisons": {
+        "kkt_source_dimension": 13,
+        "source_natural_factor_edges": 41,
+        "source_constraints_first_fill_edges": 21,
+        "kkt_aggregate_dimension": 9,
+        "source_natural_fill_edges": 15,
+        "ybus_realified_dimension": 40,
+        "source_constraints_first_factor_edges": 47
+    },
+    "model_scope": "package-level BMOPFTools Ybus/Jacobian plus finite-difference nonlinear KKT diagnostics",
+    "witness_id": "NUM-SOLVER-CROSSWALK-001",
+    "source_witnesses": [
+        "NUM-YBUS-001",
+        "NUM-KKT-001"
+    ],
+    "diagnostic_layers": [
+        "physical fixture node/terminal order",
+        "BMOPFTools passive and constant-Z linearized Ybus",
+        "realified current Jacobian",
+        "finite-difference nonlinear residual Jacobian",
+        "symbolic KKT graph under declared elimination orders"
+    ],
+    "diffopt_sensitivity_probe": {
+        "solver_status": "LOCALLY_SOLVED",
+        "base_voltage": 1005,
+        "forward_sensitivity": 0.5,
+        "central_sensitivity": 0.49999999998817657,
+        "sensitivity_residual": 1.1823431123048067e-11,
+        "diagnostic_status": "accepted",
+        "diagnostic_dimension": 36,
+        "diagnostic_pivot_ratio": 0.4,
+        "differentiability_ready": true,
+        "differentiability_lifecycle": "kcl_finalized",
+        "differentiability_termination_status": "LOCALLY_SOLVED",
+        "inequality_constraint_count": 0,
+        "active_constraints": [
+        ],
+        "near_active_constraints": [
+        ],
+        "weakly_active_constraints": [
+        ],
+        "violated_constraints": [
+        ],
+        "minimum_inactive_slack": null,
+        "differentiability_qualifications": [
+            "The IVR-EN OPF is nonconvex; sensitivities describe the selected local primal-dual solution, not a certified global optimizer.",
+            "This report does not certify KKT nonsingularity, LICQ, strict complementarity, or second-order sufficiency."
+        ],
+        "callback_invocations": 1,
+        "captured_kkt_rows": 36,
+        "captured_kkt_columns": 36,
+        "captured_kkt_nonzeros": 56,
+        "captured_kkt_density": 0.043209876543209874,
+        "captured_kkt_source": "DiffOpt NonLinearKKTJacobianFactorization callback",
+        "native_nlp_jacobian_rows": 19,
+        "native_nlp_jacobian_nonzeros": 23,
+        "native_nlp_evaluator_structure_nonzeros": 0,
+        "native_nlp_jacobian_source": "regular JuMP mirror / native affine-quadratic variable support plus JuMP.NLPEvaluator",
+        "native_nlp_export_is_solver_internal": false,
+        "model_variable_count": 19,
+        "model_fixed_variable_count": 6,
+        "model_constraint_count": 19,
+        "kkt_unaccounted_rows": 4,
+        "model_variable_order": [
+            "vr_sourcebus_1",
+            "vi_sourcebus_1",
+            "vr_sourcebus_n",
+            "vi_sourcebus_n",
+            "vr_bus1_1",
+            "vi_bus1_1",
+            "vr_bus1_n",
+            "vi_bus1_n",
+            "cr_fr_l1_1",
+            "ci_fr_l1_1",
+            "cr_src_vs_1",
+            "ci_src_vs_1",
+            "cr_gnd_sourcebus_n",
+            "ci_gnd_sourcebus_n",
+            "cr_gnd_bus1_n",
+            "ci_gnd_bus1_n",
+            "theta_I",
+            "custom_cr",
+            "custom_ci"
+        ],
+        "model_constraint_order": [
+            "AffExpr/MathOptInterface.EqualTo{Float64}[1]",
+            "AffExpr/MathOptInterface.EqualTo{Float64}[2]",
+            "AffExpr/MathOptInterface.EqualTo{Float64}[3]",
+            "AffExpr/MathOptInterface.EqualTo{Float64}[4]",
+            "AffExpr/MathOptInterface.EqualTo{Float64}[5]",
+            "AffExpr/MathOptInterface.EqualTo{Float64}[6]",
+            "AffExpr/MathOptInterface.EqualTo{Float64}[7]",
+            "AffExpr/MathOptInterface.EqualTo{Float64}[8]",
+            "AffExpr/MathOptInterface.EqualTo{Float64}[9]",
+            "AffExpr/MathOptInterface.EqualTo{Float64}[10]",
+            "AffExpr/MathOptInterface.EqualTo{Float64}[11]",
+            "AffExpr/MathOptInterface.EqualTo{Float64}[12]",
+            "VariableRef/MathOptInterface.EqualTo{Float64}[1]",
+            "VariableRef/MathOptInterface.EqualTo{Float64}[2]",
+            "VariableRef/MathOptInterface.EqualTo{Float64}[3]",
+            "VariableRef/MathOptInterface.EqualTo{Float64}[4]",
+            "VariableRef/MathOptInterface.EqualTo{Float64}[5]",
+            "VariableRef/MathOptInterface.EqualTo{Float64}[6]",
+            "VariableRef/MathOptInterface.Parameter{Float64}[1]"
+        ],
+        "kkt_ordering_basis": "JuMP non-fixed variable order followed by declared JuMP constraint order; fixed variables are excluded by the solver, and remaining callback rows are DiffOpt/solver-internal rather than independently row-labelled",
+        "callback_api": "BMOPFTools.opf_checked_kkt_factorization",
+        "differentiation_api": "DiffOpt.forward_differentiate!"
+    },
+    "diffopt_parallel_comparison": {
+        "source": {
+            "solver_status": "LOCALLY_SOLVED",
+            "base_voltage": 1002.5,
+            "forward_sensitivity": 0.25,
+            "central_sensitivity": 0.2500000000509317,
+            "sensitivity_residual": 5.093170329928398e-11,
+            "diagnostic_status": "accepted",
+            "diagnostic_dimension": 40,
+            "diagnostic_pivot_ratio": 0.3333333333333333,
+            "differentiability_ready": true,
+            "differentiability_lifecycle": "kcl_finalized",
+            "differentiability_termination_status": "LOCALLY_SOLVED",
+            "inequality_constraint_count": 0,
+            "active_constraints": [
+            ],
+            "near_active_constraints": [
+            ],
+            "weakly_active_constraints": [
+            ],
+            "violated_constraints": [
+            ],
+            "minimum_inactive_slack": null,
+            "differentiability_qualifications": [
+                "The IVR-EN OPF is nonconvex; sensitivities describe the selected local primal-dual solution, not a certified global optimizer.",
+                "This report does not certify KKT nonsingularity, LICQ, strict complementarity, or second-order sufficiency."
+            ],
+            "callback_invocations": 1,
+            "captured_kkt_rows": 40,
+            "captured_kkt_columns": 40,
+            "captured_kkt_nonzeros": 76,
+            "captured_kkt_density": 0.0475,
+            "captured_kkt_source": "DiffOpt NonLinearKKTJacobianFactorization callback",
+            "native_nlp_jacobian_rows": 21,
+            "native_nlp_jacobian_nonzeros": 33,
+            "native_nlp_evaluator_structure_nonzeros": 0,
+            "native_nlp_jacobian_source": "regular JuMP mirror / native affine-quadratic variable support plus JuMP.NLPEvaluator",
+            "native_nlp_export_is_solver_internal": false,
+            "model_variable_count": 21,
+            "model_fixed_variable_count": 6,
+            "model_constraint_count": 21,
+            "kkt_unaccounted_rows": 4,
+            "model_variable_order": [
+                "vr_sourcebus_1",
+                "vi_sourcebus_1",
+                "vr_sourcebus_n",
+                "vi_sourcebus_n",
+                "vr_bus1_1",
+                "vi_bus1_1",
+                "vr_bus1_n",
+                "vi_bus1_n",
+                "cr_fr_l2_1",
+                "ci_fr_l2_1",
+                "cr_fr_l1_1",
+                "ci_fr_l1_1",
+                "cr_src_vs_1",
+                "ci_src_vs_1",
+                "cr_gnd_sourcebus_n",
+                "ci_gnd_sourcebus_n",
+                "cr_gnd_bus1_n",
+                "ci_gnd_bus1_n",
+                "theta_I",
+                "custom_cr",
+                "custom_ci"
+            ],
+            "model_constraint_order": [
+                "AffExpr/MathOptInterface.EqualTo{Float64}[1]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[2]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[3]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[4]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[5]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[6]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[7]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[8]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[9]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[10]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[11]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[12]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[13]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[14]",
+                "VariableRef/MathOptInterface.EqualTo{Float64}[1]",
+                "VariableRef/MathOptInterface.EqualTo{Float64}[2]",
+                "VariableRef/MathOptInterface.EqualTo{Float64}[3]",
+                "VariableRef/MathOptInterface.EqualTo{Float64}[4]",
+                "VariableRef/MathOptInterface.EqualTo{Float64}[5]",
+                "VariableRef/MathOptInterface.EqualTo{Float64}[6]",
+                "VariableRef/MathOptInterface.Parameter{Float64}[1]"
+            ],
+            "kkt_ordering_basis": "JuMP non-fixed variable order followed by declared JuMP constraint order; fixed variables are excluded by the solver, and remaining callback rows are DiffOpt/solver-internal rather than independently row-labelled",
+            "callback_api": "BMOPFTools.opf_checked_kkt_factorization",
+            "differentiation_api": "DiffOpt.forward_differentiate!"
+        },
+        "reduced": {
+            "solver_status": "LOCALLY_SOLVED",
+            "base_voltage": 1002.5,
+            "forward_sensitivity": 0.25,
+            "central_sensitivity": 0.2500000000509317,
+            "sensitivity_residual": 5.093170329928398e-11,
+            "diagnostic_status": "accepted",
+            "diagnostic_dimension": 36,
+            "diagnostic_pivot_ratio": 0.4444444444444444,
+            "differentiability_ready": true,
+            "differentiability_lifecycle": "kcl_finalized",
+            "differentiability_termination_status": "LOCALLY_SOLVED",
+            "inequality_constraint_count": 0,
+            "active_constraints": [
+            ],
+            "near_active_constraints": [
+            ],
+            "weakly_active_constraints": [
+            ],
+            "violated_constraints": [
+            ],
+            "minimum_inactive_slack": null,
+            "differentiability_qualifications": [
+                "The IVR-EN OPF is nonconvex; sensitivities describe the selected local primal-dual solution, not a certified global optimizer.",
+                "This report does not certify KKT nonsingularity, LICQ, strict complementarity, or second-order sufficiency."
+            ],
+            "callback_invocations": 1,
+            "captured_kkt_rows": 36,
+            "captured_kkt_columns": 36,
+            "captured_kkt_nonzeros": 56,
+            "captured_kkt_density": 0.043209876543209874,
+            "captured_kkt_source": "DiffOpt NonLinearKKTJacobianFactorization callback",
+            "native_nlp_jacobian_rows": 19,
+            "native_nlp_jacobian_nonzeros": 23,
+            "native_nlp_evaluator_structure_nonzeros": 0,
+            "native_nlp_jacobian_source": "regular JuMP mirror / native affine-quadratic variable support plus JuMP.NLPEvaluator",
+            "native_nlp_export_is_solver_internal": false,
+            "model_variable_count": 19,
+            "model_fixed_variable_count": 6,
+            "model_constraint_count": 19,
+            "kkt_unaccounted_rows": 4,
+            "model_variable_order": [
+                "vr_sourcebus_1",
+                "vi_sourcebus_1",
+                "vr_sourcebus_n",
+                "vi_sourcebus_n",
+                "vr_bus1_1",
+                "vi_bus1_1",
+                "vr_bus1_n",
+                "vi_bus1_n",
+                "cr_fr_l_eq_1",
+                "ci_fr_l_eq_1",
+                "cr_src_vs_1",
+                "ci_src_vs_1",
+                "cr_gnd_sourcebus_n",
+                "ci_gnd_sourcebus_n",
+                "cr_gnd_bus1_n",
+                "ci_gnd_bus1_n",
+                "theta_I",
+                "custom_cr",
+                "custom_ci"
+            ],
+            "model_constraint_order": [
+                "AffExpr/MathOptInterface.EqualTo{Float64}[1]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[2]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[3]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[4]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[5]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[6]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[7]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[8]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[9]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[10]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[11]",
+                "AffExpr/MathOptInterface.EqualTo{Float64}[12]",
+                "VariableRef/MathOptInterface.EqualTo{Float64}[1]",
+                "VariableRef/MathOptInterface.EqualTo{Float64}[2]",
+                "VariableRef/MathOptInterface.EqualTo{Float64}[3]",
+                "VariableRef/MathOptInterface.EqualTo{Float64}[4]",
+                "VariableRef/MathOptInterface.EqualTo{Float64}[5]",
+                "VariableRef/MathOptInterface.EqualTo{Float64}[6]",
+                "VariableRef/MathOptInterface.Parameter{Float64}[1]"
+            ],
+            "kkt_ordering_basis": "JuMP non-fixed variable order followed by declared JuMP constraint order; fixed variables are excluded by the solver, and remaining callback rows are DiffOpt/solver-internal rather than independently row-labelled",
+            "callback_api": "BMOPFTools.opf_checked_kkt_factorization",
+            "differentiation_api": "DiffOpt.forward_differentiate!"
+        },
+        "checks": {
+            "sensitivity_is_preserved": true,
+            "native_jacobian_support_changes": true,
+            "source_and_reduced_solve": true,
+            "kkt_structure_changes": true,
+            "finite_difference_is_preserved": true
+        },
+        "interpretation": "Scoped exact scalar parallel-line fixture: the equivalent resistance preserves the tested voltage sensitivity while changing the solver KKT structure. This does not establish equivalence for multiconductor, nonlinear, or decision-rich models."
+    },
+    "interpretation": "This crosswalk composes package-level electrical matrix diagnostics with a symbolic nonlinear KKT witness. It does not claim an Ipopt or other solver-internal derivative or factorization export.",
+    "node_order": [
+        {
+            "bus": "i0",
+            "terminal": "a"
+        },
+        {
+            "bus": "i0",
+            "terminal": "b"
+        },
+        {
+            "bus": "i0",
+            "terminal": "c"
+        },
+        {
+            "bus": "i2",
+            "terminal": "a"
+        },
+        {
+            "bus": "i2",
+            "terminal": "b"
+        },
+        {
+            "bus": "i2",
+            "terminal": "c"
+        },
+        {
+            "bus": "i2",
+            "terminal": "n"
+        },
+        {
+            "bus": "i3",
+            "terminal": "a"
+        },
+        {
+            "bus": "i3",
+            "terminal": "b"
+        },
+        {
+            "bus": "i3",
+            "terminal": "c"
+        },
+        {
+            "bus": "i3",
+            "terminal": "n"
+        },
+        {
+            "bus": "i4",
+            "terminal": "a"
+        },
+        {
+            "bus": "i4",
+            "terminal": "c"
+        },
+        {
+            "bus": "i4",
+            "terminal": "n"
+        },
+        {
+            "bus": "i5",
+            "terminal": "a"
+        },
+        {
+            "bus": "i5",
+            "terminal": "b"
+        },
+        {
+            "bus": "i5",
+            "terminal": "c"
+        },
+        {
+            "bus": "i6",
+            "terminal": "a"
+        },
+        {
+            "bus": "i6",
+            "terminal": "b"
+        },
+        {
+            "bus": "i6",
+            "terminal": "c"
+        }
+    ]
+}

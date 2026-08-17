@@ -1,0 +1,512 @@
+{
+  "interfaces": {
+    "units": {
+      "source": [
+        "V",
+        "A",
+        "MVA",
+        "per-unit voltage"
+      ],
+      "relation": "residual scaling is invertible and does not change equality feasibility",
+      "target": [
+        "the same physical units with scaled residuals"
+      ]
+    },
+    "decisions": {
+      "source": [
+        "tap/x1/winding/2",
+        "served-load fraction alpha"
+      ],
+      "relation": "the finite tap domain is enumerated identically and alpha is traced on each high-voltage power-flow branch",
+      "target": [
+        "tap/x1/winding/2",
+        "served-load fraction alpha"
+      ]
+    },
+    "constraints": {
+      "source": [
+        "JuMP phase-power, neutral-KCL, tertiary-KCL, gauge, voltage, and leakage-current constraints"
+      ],
+      "relation": "complex equations are split into scaled real and imaginary residuals without changing their zero set; inequalities are evaluated on recovered physical states",
+      "target": [
+        "14 equality residuals plus independently evaluated voltage and leakage-current inequalities"
+      ]
+    },
+    "boundary_quantities": {
+      "source": [
+        "11 terminal voltage and current phasors",
+        "nine leakage currents"
+      ],
+      "relation": "both numerical paths evaluate the same parameterized transformer matrices",
+      "target": [
+        "the same quantities recovered from normalized rectangular coordinates"
+      ]
+    },
+    "objectives": {
+      "source": [
+        "maximize served-load fraction alpha"
+      ],
+      "relation": "the target reproduces the source objective when the first upper boundary is the relevant branch optimum",
+      "target": [
+        "locate the upper feasible alpha boundary on each traced branch and select the largest"
+      ]
+    },
+    "state_variables": {
+      "source": [
+        "JuMP rectangular voltage variables and served fraction"
+      ],
+      "relation": "the normalized target coordinates map bijectively to the same seven unknown complex terminal voltages",
+      "target": [
+        "14 normalized rectangular voltage coordinates and served fraction"
+      ]
+    }
+  },
+  "preconditions": [
+    "TR-XFMR-006 supplies the same pointwise transformer and network equations",
+    "the no-load linear solution lies on the high-voltage branch to be traced",
+    "damped Newton converges at every continuation and boundary-search point",
+    "the scan encounters a feasible point followed by a converged upper infeasible point",
+    "the first upper feasibility boundary is the relevant maximum-served-load point on the traced branch"
+  ],
+  "rule_id": "independent_transformer_tap_ac_numerical_reproduction",
+  "provenance": {
+    "independent_numerical_engine": "LinearAlgebra-only damped Newton, continuation, and bisection",
+    "implementation": "experiments/transformations/TransformerTapACIndependentReproduction.jl",
+    "shared_input": "x1/discrete-tap/v0.1.0",
+    "reference_certificate": "TR-XFMR-006"
+  },
+  "classification": "mixed",
+  "target": {
+    "object_ids": [
+      "generated_independent_power_flow_residual__x1",
+      "generated_independent_tap_boundary_search__x1"
+    ],
+    "detail": {
+      "jacobian": "central finite differences",
+      "external_optimizer_packages": [
+      ],
+      "nonlinear_solver": "damped Newton",
+      "decision_search": "finite tap enumeration with continuation and bisection",
+      "equality_dimension": 14
+    },
+    "model_category": "independent_rectangular_residual_continuation_and_boundary_search"
+  },
+  "certificate_id": "TR-XFMR-007",
+  "preserves": [
+    "network_equality_zero_set_under_rectangular_scaling",
+    "physical_voltage_and_current_recovery",
+    "finite_tap_domain",
+    "recorded_tap_conditioned_boundary_solutions",
+    "recorded_optimal_tap_and_served_load"
+  ],
+  "constraint_map": {
+    "complex_equalities": "split phase power, neutral KCL, tertiary KCL, and gauge equations into 14 scaled real residuals",
+    "upper_boundary": "require an explicit feasible/infeasible bracket before bisection",
+    "inequalities": "evaluate voltage bounds and nine leakage-current limits after physical-state recovery"
+  },
+  "source": {
+    "object_ids": [
+      "TR-XFMR-006",
+      "tap/x1/winding/2"
+    ],
+    "detail": {
+      "solver": "Ipopt through JuMP",
+      "tap_positions": [
+        0.95,
+        1.0,
+        1.05
+      ]
+    },
+    "model_category": "jump_ipopt_transformer_tap_ac_network_decision"
+  },
+  "forgets": [
+  ],
+  "recovery_map": {
+    "leakage_current": "Ileakage=Mleakage(tap)*U",
+    "terminal_voltage": "U[1:4]=Uslack and U[5:11]=Vbase.*(xre+j*xim)",
+    "terminal_current": "Iterminal=Ycomplete(tap)*U"
+  },
+  "typed_interfaces": {
+    "target_unit_families": [
+    ],
+    "unresolved_unit_labels": [
+      "the same physical units with scaled residuals"
+    ],
+    "target_boundary_labels": [
+      "the same quantities recovered from normalized rectangular coordinates"
+    ],
+    "source_unit_families": [
+      "current",
+      "dimensionless",
+      "power",
+      "voltage"
+    ],
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "state_domain_ids": [
+    ],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+    "unit_family_map": {
+      "A": [
+        "current"
+      ],
+      "the same physical units with scaled residuals": [
+      ],
+      "per-unit voltage": [
+        "dimensionless",
+        "voltage"
+      ],
+      "V": [
+        "voltage"
+      ],
+      "MVA": [
+        "power"
+      ]
+    },
+    "source_boundary_labels": [
+      "11 terminal voltage and current phasors",
+      "nine leakage currents"
+    ],
+    "source_variable_labels": [
+      "JuMP rectangular voltage variables and served fraction"
+    ],
+    "target_variable_labels": [
+      "14 normalized rectangular voltage coordinates and served fraction"
+    ]
+  },
+  "evidence": {
+    "ipopt_comparison": {
+      "ipopt_optimal_tap": 0.95,
+      "maximum_secondary_voltage_difference_pu": 1.9400037132299985e-12,
+      "maximum_absolute_served_fraction_difference": 3.1356539587079624e-10,
+      "independent_optimal_tap": 0.95,
+      "maximum_leakage_current_difference_A": 5.176466402190272e-7,
+      "pointwise_comparisons": [
+        {
+          "served_fraction_difference": -2.9013902391739066e-10,
+          "maximum_secondary_voltage_difference_pu": 1.9400037132299985e-12,
+          "maximum_leakage_current_difference_A": 4.7220282795024104e-7,
+          "tap_value": 0.95
+        },
+        {
+          "served_fraction_difference": -3.1356539587079624e-10,
+          "maximum_secondary_voltage_difference_pu": 7.890355036010988e-13,
+          "maximum_leakage_current_difference_A": 5.176466402190272e-7,
+          "tap_value": 1
+        },
+        {
+          "served_fraction_difference": -2.739404258988998e-10,
+          "maximum_secondary_voltage_difference_pu": 1.2390088954816747e-13,
+          "maximum_leakage_current_difference_A": 4.6580544221797027e-7,
+          "tap_value": 1.05
+        }
+      ]
+    },
+    "independent_reproduction": {
+      "tap_results": [
+        {
+          "scan_maximum": 1.6,
+          "leakage_current_limit_A": [
+            180,
+            180,
+            180,
+            2200,
+            2200,
+            2200,
+            280,
+            280,
+            280
+          ],
+          "served_fraction": 1.2305865268222993,
+          "leakage_current_magnitude_A": [
+            89.14025240041161,
+            89.14025240040918,
+            89.14025240040931,
+            2200.0000001281005,
+            2200.0000001279855,
+            2200.000000127995,
+            3.1010015870826348e-12,
+            2.575740643864051e-12,
+            9.780491870603244e-13
+          ],
+          "upper_infeasible_served_fraction": 1.2305865269154315,
+          "terminal_voltage_imag_V": [
+            0,
+            -6235.000000000001,
+            6235.000000000001,
+            0,
+            -675.0760970362388,
+            -898.2883733116234,
+            -405.01702726384366,
+            -659.4604992039018,
+            1108.6915722456122,
+            -2367.506524219403,
+            1258.8149519737915
+          ],
+          "tertiary_kcl_residual_A": 2.290231099463643e-12,
+          "bisection_iterations": 29,
+          "tap_value": 0.95,
+          "scanned_points": 26,
+          "residual_evaluations": 1,
+          "delta_common_mode_voltage_pu": 4.002966042486721e-16,
+          "terminal_voltage_real_V": [
+            7199.557856794634,
+            -3599.778928397315,
+            -3599.778928397315,
+            0.0,
+            973.9804412013668,
+            533.2714201469606,
+            560.3184289831298,
+            689.1900967771525,
+            2093.6576804482606,
+            -86.6737736977196,
+            -2006.9839067505402
+          ],
+          "maximum_constraint_violation": 5.822742288330574e-11,
+          "scan_step": 0.05,
+          "newton_iterations": 0,
+          "secondary_neutral_kcl_residual_A": 4.223331692306133e-11,
+          "algorithm": "damped finite-difference Newton continuation and bisection",
+          "total_newton_iterations": 84,
+          "converged": true,
+          "secondary_phase_to_neutral_voltage_pu": [
+            1.0291923105753593,
+            1.0291923105753602,
+            1.0291923105753602
+          ],
+          "total_residual_evaluations": 2575,
+          "maximum_leakage_current_loading": 1.0000000000582274,
+          "maximum_scaled_equality_residual": 4.023482935711087e-11
+        },
+        {
+          "scan_maximum": 1.6,
+          "leakage_current_limit_A": [
+            180,
+            180,
+            180,
+            2200,
+            2200,
+            2200,
+            280,
+            280,
+            280
+          ],
+          "served_fraction": 1.170473880693316,
+          "leakage_current_magnitude_A": [
+            84.68323977767577,
+            84.68323977767551,
+            84.68323977767497,
+            2200.0000000575324,
+            2200.000000057519,
+            2200.0000000575146,
+            4.665309315781765e-13,
+            3.31468299831578e-13,
+            7.855025001690952e-13
+          ],
+          "upper_infeasible_served_fraction": 1.170473880786448,
+          "terminal_voltage_imag_V": [
+            0,
+            -6235.000000000001,
+            6235.000000000001,
+            0,
+            -54.40166541618727,
+            -267.8586096528795,
+            201.38574358495808,
+            -40.29151049470287,
+            1113.3373227757036,
+            -2369.4459216343876,
+            1256.1085988586838
+          ],
+          "tertiary_kcl_residual_A": 1.6134857489108457e-12,
+          "bisection_iterations": 29,
+          "tap_value": 1,
+          "scanned_points": 25,
+          "residual_evaluations": 1,
+          "delta_common_mode_voltage_pu": 1.5700924586837752e-16,
+          "terminal_voltage_real_V": [
+            7199.557856794634,
+            -3599.778928397315,
+            -3599.778928397315,
+            0.0,
+            290.7480776894357,
+            -127.84920541026972,
+            -103.40970018359074,
+            19.829724031858447,
+            2093.2148783683388,
+            -82.42903467905467,
+            -2010.7858436892839
+          ],
+          "maximum_constraint_violation": 2.6151081300440637e-11,
+          "scan_step": 0.05,
+          "newton_iterations": 0,
+          "secondary_neutral_kcl_residual_A": 5.18471115143764e-12,
+          "algorithm": "damped finite-difference Newton continuation and bisection",
+          "total_newton_iterations": 81,
+          "converged": true,
+          "secondary_phase_to_neutral_voltage_pu": [
+            0.9789174161071084,
+            0.9789174161071088,
+            0.9789174161071086
+          ],
+          "total_residual_evaluations": 2484,
+          "maximum_leakage_current_loading": 1.000000000026151,
+          "maximum_scaled_equality_residual": 5.545983117194453e-11
+        },
+        {
+          "scan_maximum": 1.6,
+          "leakage_current_limit_A": [
+            180,
+            180,
+            180,
+            2200,
+            2200,
+            2200,
+            280,
+            280,
+            280
+          ],
+          "served_fraction": 1.115950367599726,
+          "leakage_current_magnitude_A": [
+            80.65070455117286,
+            80.65070455117784,
+            80.65070455116135,
+            2200.0000000850423,
+            2200.000000085243,
+            2200.000000084493,
+            9.851389587874932e-12,
+            1.831188479718456e-11,
+            1.7880331011863283e-11
+          ],
+          "upper_infeasible_served_fraction": 1.1159503676928582,
+          "terminal_voltage_imag_V": [
+            0,
+            -6235.000000000001,
+            6235.000000000001,
+            0,
+            444.51606705063426,
+            240.01336318589054,
+            687.4555406305677,
+            457.32832362236377,
+            1117.5379002788409,
+            -2371.1803006797736,
+            1253.642400400933
+          ],
+          "tertiary_kcl_residual_A": 1.7510541278078026e-11,
+          "bisection_iterations": 29,
+          "tap_value": 1.05,
+          "scanned_points": 24,
+          "residual_evaluations": 1,
+          "delta_common_mode_voltage_pu": 2.482534153247273e-16,
+          "terminal_voltage_real_V": [
+            7199.557856794634,
+            -3599.778928397315,
+            -3599.778928397315,
+            0.0,
+            1120.5510591509412,
+            721.9590270883037,
+            744.1505064301464,
+            862.2201975564651,
+            2092.7923622336175,
+            -78.57996978340412,
+            -2014.212392450213
+          ],
+          "maximum_constraint_violation": 3.8746783559417963e-11,
+          "scan_step": 0.05,
+          "newton_iterations": 0,
+          "secondary_neutral_kcl_residual_A": 3.323804981018772e-11,
+          "algorithm": "damped finite-difference Newton continuation and bisection",
+          "total_newton_iterations": 78,
+          "converged": true,
+          "secondary_phase_to_neutral_voltage_pu": [
+            0.9333169732378752,
+            0.9333169732378777,
+            0.933316973237883
+          ],
+          "total_residual_evaluations": 2393,
+          "maximum_leakage_current_loading": 1.0000000000387468,
+          "maximum_scaled_equality_residual": 5.4019025363949424e-11
+        }
+      ],
+      "decision_id": "tap/x1/winding/2",
+      "optimum": {
+        "scan_maximum": 1.6,
+        "leakage_current_limit_A": [
+          180,
+          180,
+          180,
+          2200,
+          2200,
+          2200,
+          280,
+          280,
+          280
+        ],
+        "served_fraction": 1.2305865268222993,
+        "leakage_current_magnitude_A": [
+          89.14025240041161,
+          89.14025240040918,
+          89.14025240040931,
+          2200.0000001281005,
+          2200.0000001279855,
+          2200.000000127995,
+          3.1010015870826348e-12,
+          2.575740643864051e-12,
+          9.780491870603244e-13
+        ],
+        "upper_infeasible_served_fraction": 1.2305865269154315,
+        "terminal_voltage_imag_V": [
+          0,
+          -6235.000000000001,
+          6235.000000000001,
+          0,
+          -675.0760970362388,
+          -898.2883733116234,
+          -405.01702726384366,
+          -659.4604992039018,
+          1108.6915722456122,
+          -2367.506524219403,
+          1258.8149519737915
+        ],
+        "tertiary_kcl_residual_A": 2.290231099463643e-12,
+        "bisection_iterations": 29,
+        "tap_value": 0.95,
+        "scanned_points": 26,
+        "residual_evaluations": 1,
+        "delta_common_mode_voltage_pu": 4.002966042486721e-16,
+        "terminal_voltage_real_V": [
+          7199.557856794634,
+          -3599.778928397315,
+          -3599.778928397315,
+          0.0,
+          973.9804412013668,
+          533.2714201469606,
+          560.3184289831298,
+          689.1900967771525,
+          2093.6576804482606,
+          -86.6737736977196,
+          -2006.9839067505402
+        ],
+        "maximum_constraint_violation": 5.822742288330574e-11,
+        "scan_step": 0.05,
+        "newton_iterations": 0,
+        "secondary_neutral_kcl_residual_A": 4.223331692306133e-11,
+        "algorithm": "damped finite-difference Newton continuation and bisection",
+        "total_newton_iterations": 84,
+        "converged": true,
+        "secondary_phase_to_neutral_voltage_pu": [
+          1.0291923105753593,
+          1.0291923105753602,
+          1.0291923105753602
+        ],
+        "total_residual_evaluations": 2575,
+        "maximum_leakage_current_loading": 1.0000000000582274,
+        "maximum_scaled_equality_residual": 4.023482935711087e-11
+      },
+      "positions": [
+        0.95,
+        1.0,
+        1.05
+      ]
+    }
+  },
+  "schema_version": "1.1.0"
+}

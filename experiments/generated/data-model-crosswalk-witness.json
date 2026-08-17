@@ -1,0 +1,283 @@
+{
+    "witness_id": "DATA-XWALK-001",
+    "claim_id": "DATA-XWALK-001",
+    "source_fixture": "data/running-network/v0.1.0.json",
+    "canonical": {
+        "buses": [
+            "i0",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+        ],
+        "assets": [
+            "line/l1",
+            "line/l2",
+            "line/l3",
+            "line/l4",
+            "switch/w0",
+            "transformer/x1",
+            "transformer/x1/winding/1",
+            "transformer/x1/winding/2",
+            "transformer/x1/winding/3"
+        ],
+        "terminals": [
+            {
+                "asset": "line/l1",
+                "to": "i2:a,b,c,n",
+                "from": "i1:a,b,c,n"
+            },
+            {
+                "asset": "line/l2",
+                "to": "i2:a,b,c,n",
+                "from": "i1:a,b,c,n"
+            },
+            {
+                "asset": "line/l3",
+                "to": "i3:a,b,c,n",
+                "from": "i2:a,b,c,n"
+            },
+            {
+                "asset": "line/l4",
+                "to": "i4:c,a,n",
+                "from": "i3:a,c,n"
+            },
+            {
+                "asset": "switch/w0",
+                "to": "i1:a,b,c,n",
+                "from": "i0:a,b,c,n"
+            },
+            {
+                "terminals": [
+                    "a",
+                    "b",
+                    "c",
+                    "n"
+                ],
+                "asset": "transformer/x1/winding/1",
+                "bus": "i1",
+                "configuration": "WYE"
+            },
+            {
+                "terminals": [
+                    "a",
+                    "b",
+                    "c",
+                    "n"
+                ],
+                "asset": "transformer/x1/winding/2",
+                "bus": "i5",
+                "configuration": "WYE"
+            },
+            {
+                "terminals": [
+                    "a",
+                    "b",
+                    "c"
+                ],
+                "asset": "transformer/x1/winding/3",
+                "bus": "i6",
+                "configuration": "DELTA"
+            }
+        ],
+        "ratings": [
+            {
+                "values": [
+                    210,
+                    210,
+                    210,
+                    210
+                ],
+                "owner": "line/l1",
+                "unit": "A",
+                "quantity": "terminal-current"
+            },
+            {
+                "values": [
+                    115,
+                    115,
+                    115,
+                    115
+                ],
+                "owner": "line/l2",
+                "unit": "A",
+                "quantity": "terminal-current"
+            },
+            {
+                "values": [
+                    240,
+                    240,
+                    240,
+                    240
+                ],
+                "owner": "line/l3",
+                "unit": "A",
+                "quantity": "terminal-current"
+            },
+            {
+                "values": [
+                    95,
+                    95,
+                    95
+                ],
+                "owner": "line/l4",
+                "unit": "A",
+                "quantity": "terminal-current"
+            },
+            {
+                "values": [
+                    420,
+                    420,
+                    420,
+                    420
+                ],
+                "owner": "switch/w0",
+                "unit": "A",
+                "quantity": "terminal-current"
+            },
+            {
+                "values": [
+                    180
+                ],
+                "owner": "transformer/x1/winding/1",
+                "unit": "A",
+                "quantity": "winding-current"
+            },
+            {
+                "values": [
+                    2200
+                ],
+                "owner": "transformer/x1/winding/2",
+                "unit": "A",
+                "quantity": "winding-current"
+            },
+            {
+                "values": [
+                    280
+                ],
+                "owner": "transformer/x1/winding/3",
+                "unit": "A",
+                "quantity": "winding-current"
+            }
+        ]
+    },
+    "profiles": [
+        {
+            "version_pin": "CIM100 TopologicalNode + CGMES library documentation snapshot 2026-08-13",
+            "round_trip": {
+                "asset_ids": [
+                    "line/l1",
+                    "line/l2",
+                    "line/l3",
+                    "line/l4",
+                    "switch/w0",
+                    "transformer/x1",
+                    "transformer/x1/winding/1",
+                    "transformer/x1/winding/2",
+                    "transformer/x1/winding/3"
+                ],
+                "state_fields": [
+                    "switch/w0.open_switch",
+                    "transformer/x1/winding/*"
+                ],
+                "rating_owner_count": 8,
+                "terminal_record_count": 8
+            },
+            "preserves_neutral_terminals": true,
+            "ecosystem": "CIM/CGMES",
+            "native_multi_terminal": true,
+            "projection": "Terminal/ConnectivityNode/TopologicalNode views"
+        },
+        {
+            "version_pin": "engineering-data-model documentation + conversion v0.9 reference 2020-06-30",
+            "round_trip": {
+                "asset_ids": [
+                    "line/l1",
+                    "line/l2",
+                    "line/l3",
+                    "line/l4",
+                    "switch/w0",
+                    "transformer/x1",
+                    "transformer/x1/winding/1",
+                    "transformer/x1/winding/2",
+                    "transformer/x1/winding/3"
+                ],
+                "state_fields": [
+                    "switch/w0.open_switch",
+                    "transformer/x1/winding/*"
+                ],
+                "rating_owner_count": 8,
+                "terminal_record_count": 8
+            },
+            "preserves_neutral_terminals": true,
+            "ecosystem": "PowerModelsDistribution",
+            "native_multi_terminal": true,
+            "projection": "engineering-to-mathematical compiler boundary"
+        },
+        {
+            "version_pin": "Circuit Reduction for OpenDSS Version 8.5 documentation snapshot 2026-08-13",
+            "round_trip": {
+                "asset_ids": [
+                    "line/l1",
+                    "line/l2",
+                    "line/l3",
+                    "line/l4",
+                    "switch/w0",
+                    "transformer/x1",
+                    "transformer/x1/winding/1",
+                    "transformer/x1/winding/2",
+                    "transformer/x1/winding/3"
+                ],
+                "state_fields": [
+                    "switch/w0.open_switch",
+                    "transformer/x1/winding/*"
+                ],
+                "rating_owner_count": 8,
+                "terminal_record_count": 8
+            },
+            "preserves_neutral_terminals": true,
+            "ecosystem": "OpenDSS",
+            "native_multi_terminal": true,
+            "projection": "circuit/equipment objects with declared reduction scope"
+        },
+        {
+            "version_pin": "case-format version 2 + developer data-model documentation snapshot 2026-08-13",
+            "round_trip": {
+                "asset_ids": [
+                    "line/l1",
+                    "line/l2",
+                    "line/l3",
+                    "line/l4",
+                    "switch/w0",
+                    "transformer/x1",
+                    "transformer/x1/winding/1",
+                    "transformer/x1/winding/2",
+                    "transformer/x1/winding/3"
+                ],
+                "state_fields": [
+                    "switch/w0.open_switch",
+                    "transformer/x1/winding/*"
+                ],
+                "rating_owner_count": 8,
+                "terminal_record_count": 8
+            },
+            "preserves_neutral_terminals": false,
+            "ecosystem": "MATPOWER",
+            "native_multi_terminal": false,
+            "projection": "compiled two-terminal branch rows; neutral and arbitrary ports require an adapter"
+        }
+    ],
+    "checks": {
+        "all_profiles_version_pinned": true,
+        "canonical_bus_ids_are_unique": true,
+        "canonical_asset_ids_are_unique": true,
+        "terminal_records_have_provenance": true,
+        "rating_records_have_owner_and_unit": true,
+        "profile_asset_round_trip": true,
+        "matpower_projection_is_marked": true,
+        "state_provenance_is_retained": true
+    },
+    "interpretation": "Version-pinned contract crosswalk over the running fixture. It checks identifier, terminal, rating, and state provenance obligations without claiming that an external package import or study result is semantically equivalent."
+}

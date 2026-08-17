@@ -1,0 +1,1012 @@
+{
+  "not_claimed": [
+    "a solver-internal Ipopt KKT export",
+    "a global OPF sensitivity theorem",
+    "decision equivalence between source and aggregate models"
+  ],
+  "checks": {
+    "aggregate_operating_point_is_exact": true,
+    "ordering_changes_fill": true,
+    "source_retains_more_current_variables": true,
+    "source_operating_point_is_exact": true
+  },
+  "source": {
+    "jacobian": {
+      "rows": 6,
+      "entries": [
+        {
+          "real": 9.999999995846665,
+          "row": 1,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 19.99999999946489,
+          "row": 1,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": 0.9999999994736442,
+          "row": 1,
+          "imag": 0,
+          "col": 4
+        },
+        {
+          "real": -19.99999998891777,
+          "row": 2,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 10.000000000287557,
+          "row": 2,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": 0.9999999994736442,
+          "row": 2,
+          "imag": 0,
+          "col": 5
+        },
+        {
+          "real": 0.9999999994736442,
+          "row": 3,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 2.0000000000575113,
+          "row": 3,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": 1.0000000000287557,
+          "row": 3,
+          "imag": 0,
+          "col": 6
+        },
+        {
+          "real": -1.9999999989472883,
+          "row": 4,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 1.0000000000287557,
+          "row": 4,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": 1.0000000000287557,
+          "row": 4,
+          "imag": 0,
+          "col": 7
+        },
+        {
+          "real": 2.199999997731794,
+          "row": 5,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": -1.09999999997612,
+          "row": 5,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": -2.0899999997325835,
+          "row": 5,
+          "imag": 0,
+          "col": 3
+        },
+        {
+          "real": 0.9200000006259756,
+          "row": 5,
+          "imag": 0,
+          "col": 4
+        },
+        {
+          "real": -0.06000000052353016,
+          "row": 5,
+          "imag": 0,
+          "col": 5
+        },
+        {
+          "real": 0.9200000006259756,
+          "row": 5,
+          "imag": 0,
+          "col": 6
+        },
+        {
+          "real": -0.06000000052353016,
+          "row": 5,
+          "imag": 0,
+          "col": 7
+        },
+        {
+          "real": 1.09999999997612,
+          "row": 6,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 2.19999999995224,
+          "row": 6,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": -0.8800000000919184,
+          "row": 6,
+          "imag": 0,
+          "col": 3
+        },
+        {
+          "real": -0.05999999996841865,
+          "row": 6,
+          "imag": 0,
+          "col": 4
+        },
+        {
+          "real": -0.9199999995157526,
+          "row": 6,
+          "imag": 0,
+          "col": 5
+        },
+        {
+          "real": -0.05999999996841865,
+          "row": 6,
+          "imag": 0,
+          "col": 6
+        },
+        {
+          "real": -0.9199999995157526,
+          "row": 6,
+          "imag": 0,
+          "col": 7
+        }
+      ],
+      "nnz_atol": 26,
+      "condition_2": 1022.5557560322763,
+      "cols": 7
+    },
+    "kkt": {
+      "orders": {
+        "constraints_first": {
+          "order": [
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "input_edges": 26,
+          "factor_edges": 47,
+          "fill_edges": 21
+        },
+        "natural": {
+          "order": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "input_edges": 26,
+          "factor_edges": 41,
+          "fill_edges": 15
+        }
+      },
+      "dimension": 13,
+      "nnz_atol": 59,
+      "condition_2": 2.2634835665933275e9,
+      "entries": [
+        {
+          "real": 1.0e-8,
+          "row": 1,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 9.999999995846665,
+          "row": 1,
+          "imag": 0,
+          "col": 8
+        },
+        {
+          "real": -19.99999998891777,
+          "row": 1,
+          "imag": 0,
+          "col": 9
+        },
+        {
+          "real": 0.9999999994736442,
+          "row": 1,
+          "imag": 0,
+          "col": 10
+        },
+        {
+          "real": -1.9999999989472883,
+          "row": 1,
+          "imag": 0,
+          "col": 11
+        },
+        {
+          "real": 2.199999997731794,
+          "row": 1,
+          "imag": 0,
+          "col": 12
+        },
+        {
+          "real": 1.09999999997612,
+          "row": 1,
+          "imag": 0,
+          "col": 13
+        },
+        {
+          "real": 1.0e-8,
+          "row": 2,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": 19.99999999946489,
+          "row": 2,
+          "imag": 0,
+          "col": 8
+        },
+        {
+          "real": 10.000000000287557,
+          "row": 2,
+          "imag": 0,
+          "col": 9
+        },
+        {
+          "real": 2.0000000000575113,
+          "row": 2,
+          "imag": 0,
+          "col": 10
+        },
+        {
+          "real": 1.0000000000287557,
+          "row": 2,
+          "imag": 0,
+          "col": 11
+        },
+        {
+          "real": -1.09999999997612,
+          "row": 2,
+          "imag": 0,
+          "col": 12
+        },
+        {
+          "real": 2.19999999995224,
+          "row": 2,
+          "imag": 0,
+          "col": 13
+        },
+        {
+          "real": 1.0e-8,
+          "row": 3,
+          "imag": 0,
+          "col": 3
+        },
+        {
+          "real": -2.0899999997325835,
+          "row": 3,
+          "imag": 0,
+          "col": 12
+        },
+        {
+          "real": -0.8800000000919184,
+          "row": 3,
+          "imag": 0,
+          "col": 13
+        },
+        {
+          "real": 1.0e-8,
+          "row": 4,
+          "imag": 0,
+          "col": 4
+        },
+        {
+          "real": 0.9999999994736442,
+          "row": 4,
+          "imag": 0,
+          "col": 8
+        },
+        {
+          "real": 0.9200000006259756,
+          "row": 4,
+          "imag": 0,
+          "col": 12
+        },
+        {
+          "real": -0.05999999996841865,
+          "row": 4,
+          "imag": 0,
+          "col": 13
+        },
+        {
+          "real": 1.0e-8,
+          "row": 5,
+          "imag": 0,
+          "col": 5
+        },
+        {
+          "real": 0.9999999994736442,
+          "row": 5,
+          "imag": 0,
+          "col": 9
+        },
+        {
+          "real": -0.06000000052353016,
+          "row": 5,
+          "imag": 0,
+          "col": 12
+        },
+        {
+          "real": -0.9199999995157526,
+          "row": 5,
+          "imag": 0,
+          "col": 13
+        },
+        {
+          "real": 1.0e-8,
+          "row": 6,
+          "imag": 0,
+          "col": 6
+        },
+        {
+          "real": 1.0000000000287557,
+          "row": 6,
+          "imag": 0,
+          "col": 10
+        },
+        {
+          "real": 0.9200000006259756,
+          "row": 6,
+          "imag": 0,
+          "col": 12
+        },
+        {
+          "real": -0.05999999996841865,
+          "row": 6,
+          "imag": 0,
+          "col": 13
+        },
+        {
+          "real": 1.0e-8,
+          "row": 7,
+          "imag": 0,
+          "col": 7
+        },
+        {
+          "real": 1.0000000000287557,
+          "row": 7,
+          "imag": 0,
+          "col": 11
+        },
+        {
+          "real": -0.06000000052353016,
+          "row": 7,
+          "imag": 0,
+          "col": 12
+        },
+        {
+          "real": -0.9199999995157526,
+          "row": 7,
+          "imag": 0,
+          "col": 13
+        },
+        {
+          "real": 9.999999995846665,
+          "row": 8,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 19.99999999946489,
+          "row": 8,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": 0.9999999994736442,
+          "row": 8,
+          "imag": 0,
+          "col": 4
+        },
+        {
+          "real": -19.99999998891777,
+          "row": 9,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 10.000000000287557,
+          "row": 9,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": 0.9999999994736442,
+          "row": 9,
+          "imag": 0,
+          "col": 5
+        },
+        {
+          "real": 0.9999999994736442,
+          "row": 10,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 2.0000000000575113,
+          "row": 10,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": 1.0000000000287557,
+          "row": 10,
+          "imag": 0,
+          "col": 6
+        },
+        {
+          "real": -1.9999999989472883,
+          "row": 11,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 1.0000000000287557,
+          "row": 11,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": 1.0000000000287557,
+          "row": 11,
+          "imag": 0,
+          "col": 7
+        },
+        {
+          "real": 2.199999997731794,
+          "row": 12,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": -1.09999999997612,
+          "row": 12,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": -2.0899999997325835,
+          "row": 12,
+          "imag": 0,
+          "col": 3
+        },
+        {
+          "real": 0.9200000006259756,
+          "row": 12,
+          "imag": 0,
+          "col": 4
+        },
+        {
+          "real": -0.06000000052353016,
+          "row": 12,
+          "imag": 0,
+          "col": 5
+        },
+        {
+          "real": 0.9200000006259756,
+          "row": 12,
+          "imag": 0,
+          "col": 6
+        },
+        {
+          "real": -0.06000000052353016,
+          "row": 12,
+          "imag": 0,
+          "col": 7
+        },
+        {
+          "real": 1.09999999997612,
+          "row": 13,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 2.19999999995224,
+          "row": 13,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": -0.8800000000919184,
+          "row": 13,
+          "imag": 0,
+          "col": 3
+        },
+        {
+          "real": -0.05999999996841865,
+          "row": 13,
+          "imag": 0,
+          "col": 4
+        },
+        {
+          "real": -0.9199999995157526,
+          "row": 13,
+          "imag": 0,
+          "col": 5
+        },
+        {
+          "real": -0.05999999996841865,
+          "row": 13,
+          "imag": 0,
+          "col": 6
+        },
+        {
+          "real": -0.9199999995157526,
+          "row": 13,
+          "imag": 0,
+          "col": 7
+        }
+      ]
+    },
+    "variables": [
+      "U_r",
+      "U_i",
+      "alpha",
+      "I1_r",
+      "I1_i",
+      "I2_r",
+      "I2_i"
+    ],
+    "model": "parallel_members",
+    "residual_norm_2": 0,
+    "equations": [
+      "I1_ohm_r",
+      "I1_ohm_i",
+      "I2_ohm_r",
+      "I2_ohm_i",
+      "power_r",
+      "power_i"
+    ],
+    "state": [
+      0.92,
+      -0.06,
+      1.0,
+      1.9999999999999996,
+      -0.9999999999999992,
+      0.19999999999999996,
+      -0.09999999999999992
+    ]
+  },
+  "witness_id": "NUM-KKT-001",
+  "claim_id": "NUMERICAL-003",
+  "construction": {
+    "source": "two explicit parallel current laws plus nonlinear complex-power balance",
+    "finite_difference_step": 1.0e-7,
+    "kkt_hessian_regularization": 1.0e-8,
+    "aggregate": "one summed current law plus the same nonlinear complex-power balance",
+    "difference": "source retains member current variables; aggregate replaces them by one recovered total current"
+  },
+  "schema_version": "0.1.0",
+  "model_scope": "finite-difference nonlinear AC decision Jacobians and symbolic KKT sparsity for a two-bus parallel-member witness",
+  "aggregate": {
+    "jacobian": {
+      "rows": 4,
+      "entries": [
+        {
+          "real": 10.999999995320309,
+          "row": 1,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 22.000000001742848,
+          "row": 1,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": 0.9999999983634211,
+          "row": 1,
+          "imag": 0,
+          "col": 4
+        },
+        {
+          "real": -21.99999998842017,
+          "row": 2,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 10.9999999997612,
+          "row": 2,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": 1.0000000005838672,
+          "row": 2,
+          "imag": 0,
+          "col": 5
+        },
+        {
+          "real": 2.199999997731794,
+          "row": 3,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": -1.09999999997612,
+          "row": 3,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": -2.0899999997325835,
+          "row": 3,
+          "imag": 0,
+          "col": 3
+        },
+        {
+          "real": 0.9199999984055296,
+          "row": 3,
+          "imag": 0,
+          "col": 4
+        },
+        {
+          "real": -0.06000000052353016,
+          "row": 3,
+          "imag": 0,
+          "col": 5
+        },
+        {
+          "real": 1.09999999997612,
+          "row": 4,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 2.19999999995224,
+          "row": 4,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": -0.8800000000919184,
+          "row": 4,
+          "imag": 0,
+          "col": 3
+        },
+        {
+          "real": -0.05999999996841865,
+          "row": 4,
+          "imag": 0,
+          "col": 4
+        },
+        {
+          "real": -0.9200000006259756,
+          "row": 4,
+          "imag": 0,
+          "col": 5
+        }
+      ],
+      "nnz_atol": 16,
+      "condition_2": 621.1151864975149,
+      "cols": 5
+    },
+    "kkt": {
+      "orders": {
+        "constraints_first": {
+          "order": [
+            6,
+            7,
+            8,
+            9,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "input_edges": 16,
+          "factor_edges": 26,
+          "fill_edges": 10
+        },
+        "natural": {
+          "order": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "input_edges": 16,
+          "factor_edges": 22,
+          "fill_edges": 6
+        }
+      },
+      "dimension": 9,
+      "nnz_atol": 37,
+      "condition_2": 2.4744283513127885e9,
+      "entries": [
+        {
+          "real": 1.0e-8,
+          "row": 1,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 10.999999995320309,
+          "row": 1,
+          "imag": 0,
+          "col": 6
+        },
+        {
+          "real": -21.99999998842017,
+          "row": 1,
+          "imag": 0,
+          "col": 7
+        },
+        {
+          "real": 2.199999997731794,
+          "row": 1,
+          "imag": 0,
+          "col": 8
+        },
+        {
+          "real": 1.09999999997612,
+          "row": 1,
+          "imag": 0,
+          "col": 9
+        },
+        {
+          "real": 1.0e-8,
+          "row": 2,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": 22.000000001742848,
+          "row": 2,
+          "imag": 0,
+          "col": 6
+        },
+        {
+          "real": 10.9999999997612,
+          "row": 2,
+          "imag": 0,
+          "col": 7
+        },
+        {
+          "real": -1.09999999997612,
+          "row": 2,
+          "imag": 0,
+          "col": 8
+        },
+        {
+          "real": 2.19999999995224,
+          "row": 2,
+          "imag": 0,
+          "col": 9
+        },
+        {
+          "real": 1.0e-8,
+          "row": 3,
+          "imag": 0,
+          "col": 3
+        },
+        {
+          "real": -2.0899999997325835,
+          "row": 3,
+          "imag": 0,
+          "col": 8
+        },
+        {
+          "real": -0.8800000000919184,
+          "row": 3,
+          "imag": 0,
+          "col": 9
+        },
+        {
+          "real": 1.0e-8,
+          "row": 4,
+          "imag": 0,
+          "col": 4
+        },
+        {
+          "real": 0.9999999983634211,
+          "row": 4,
+          "imag": 0,
+          "col": 6
+        },
+        {
+          "real": 0.9199999984055296,
+          "row": 4,
+          "imag": 0,
+          "col": 8
+        },
+        {
+          "real": -0.05999999996841865,
+          "row": 4,
+          "imag": 0,
+          "col": 9
+        },
+        {
+          "real": 1.0e-8,
+          "row": 5,
+          "imag": 0,
+          "col": 5
+        },
+        {
+          "real": 1.0000000005838672,
+          "row": 5,
+          "imag": 0,
+          "col": 7
+        },
+        {
+          "real": -0.06000000052353016,
+          "row": 5,
+          "imag": 0,
+          "col": 8
+        },
+        {
+          "real": -0.9200000006259756,
+          "row": 5,
+          "imag": 0,
+          "col": 9
+        },
+        {
+          "real": 10.999999995320309,
+          "row": 6,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 22.000000001742848,
+          "row": 6,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": 0.9999999983634211,
+          "row": 6,
+          "imag": 0,
+          "col": 4
+        },
+        {
+          "real": -21.99999998842017,
+          "row": 7,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 10.9999999997612,
+          "row": 7,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": 1.0000000005838672,
+          "row": 7,
+          "imag": 0,
+          "col": 5
+        },
+        {
+          "real": 2.199999997731794,
+          "row": 8,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": -1.09999999997612,
+          "row": 8,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": -2.0899999997325835,
+          "row": 8,
+          "imag": 0,
+          "col": 3
+        },
+        {
+          "real": 0.9199999984055296,
+          "row": 8,
+          "imag": 0,
+          "col": 4
+        },
+        {
+          "real": -0.06000000052353016,
+          "row": 8,
+          "imag": 0,
+          "col": 5
+        },
+        {
+          "real": 1.09999999997612,
+          "row": 9,
+          "imag": 0,
+          "col": 1
+        },
+        {
+          "real": 2.19999999995224,
+          "row": 9,
+          "imag": 0,
+          "col": 2
+        },
+        {
+          "real": -0.8800000000919184,
+          "row": 9,
+          "imag": 0,
+          "col": 3
+        },
+        {
+          "real": -0.05999999996841865,
+          "row": 9,
+          "imag": 0,
+          "col": 4
+        },
+        {
+          "real": -0.9200000006259756,
+          "row": 9,
+          "imag": 0,
+          "col": 5
+        }
+      ]
+    },
+    "variables": [
+      "U_r",
+      "U_i",
+      "alpha",
+      "Ieq_r",
+      "Ieq_i"
+    ],
+    "model": "summed_member_current",
+    "residual_norm_2": 0,
+    "equations": [
+      "Ieq_ohm_r",
+      "Ieq_ohm_i",
+      "power_r",
+      "power_i"
+    ],
+    "state": [
+      0.92,
+      -0.06,
+      1.0,
+      2.1999999999999993,
+      -1.0999999999999992
+    ]
+  }
+}

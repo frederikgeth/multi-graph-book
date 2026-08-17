@@ -1,0 +1,1633 @@
+schema_version = 1
+
+[[claim]]
+claim_id = "THESIS-001"
+exactness_object = "not_applicable"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision', 'provenance']
+chapter = "docs/src/foundations/scope-and-thesis.md"
+claim_text = "Representation adequacy is evaluated relative to declared observations, constraints, and decisions."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "book_contract"
+citation_keys = []
+model_scope = "power-network representations"
+assumptions = "none; this is the methodological convention adopted by the book"
+reviewer = ""
+review_date = ""
+unresolved_issue = ""
+
+[[claim]]
+claim_id = "PRESERVE-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision', 'provenance']
+chapter = "docs/src/foundations/preservation-contracts.md"
+claim_text = "Equivalence of two power-network models is indexed by a declared observation family and admissible input set; equality of an unconstrained terminal relation alone does not establish equality of constrained feasible observable sets."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "formal_observation_indexed_definition_and_reader_facing_contract"
+citation_keys = []
+model_scope = "finite power-network models with declared feasible sets and observation maps"
+assumptions = "the observation family and admissible input set are part of the equivalence statement"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Obtain independent review of the observation-indexed equivalence vocabulary and connect it to additional solver interfaces."
+
+[[claim]]
+claim_id = "TRANSFORM-SEM-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision', 'provenance']
+chapter = "docs/src/foundations/transformation-semantics-register.md"
+claim_text = "Transformation certificates should distinguish typed structure, constitutive behaviour, decision semantics, and provenance; a structure-changing rewrite may remain exact for a narrower observation family only when its forgotten information, target closure, and recovery or constraint maps are declared."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "four-layer_semantics_definition_and_transformation_register"
+citation_keys = []
+model_scope = "typed power-network transformations and compiled graph views"
+assumptions = "target factor libraries and preservation dimensions are explicitly declared"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add independently reviewed formal signatures for closure and composition across larger transformation families."
+
+[[claim]]
+claim_id = "VOCAB-BRIDGE-001"
+exactness_object = "not_applicable"
+preservation_dimensions = ['structure', 'state', 'decision', 'provenance']
+chapter = "docs/src/start/one-network-five-languages.md"
+claim_text = "Load-bearing statements use a preferred house term or qualified shorthand that declares the relevant representation, quantity, state, and preservation object; an unqualified term is unsafe when it can change the claim."
+status = "engineering_practice"
+claim_type = "practice"
+verification = "self-checked"
+evidence_type = "controlled_editorial_policy_and_callout_audit"
+citation_keys = []
+model_scope = "reader-facing definitions, claims, contracts, figures, and executable-artifact descriptions in this knowledge base"
+assumptions = "community vocabulary relations and editorial usage statuses are treated as orthogonal classifications"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Obtain terminology review from representatives of power engineering, software and network data, mathematical modelling, graph theory, and graph machine learning."
+
+[[claim]]
+claim_id = "TR-PAR-001"
+exactness_object = "equation_identity"
+preservation_dimensions = ['terminal_behavior', 'limits', 'decision']
+chapter = "docs/src/start/first-failure-parallel-branches.md"
+claim_text = "Summed admittance preserves the unconstrained terminal relation of parallel linear branches."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "algebraic_derivation_and_executable_witness"
+citation_keys = []
+model_scope = "linear parallel branches in common voltage coordinates"
+assumptions = "common endpoints; branch currents are Y_l times the common voltage drop"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add an independent mathematical reviewer."
+
+[[claim]]
+claim_id = "TR-PAR-002"
+exactness_object = "feasible_set"
+preservation_dimensions = ['terminal_behavior', 'limits', 'decision']
+chapter = "docs/src/start/first-failure-parallel-branches.md"
+claim_text = "Using the sum of member current ratings can create an outer relaxation of the member-constrained feasible set."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "analytic_counterexample_and_executable_witness"
+citation_keys = []
+model_scope = "two scalar resistive parallel branches"
+assumptions = "z=[0.1,1.0] ohm; member limits=[100,100] A; aggregate limit=200 A"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Molzahn2018 gives an exact scalar AC constraint-pruning test without asset aggregation; a general multiconductor classification remains open."
+
+[[claim]]
+claim_id = "GRAPH-CYCLE-001"
+exactness_object = "connectivity_view"
+preservation_dimensions = ['structure', 'state', 'provenance']
+chapter = "docs/src/start/five-bus-cycle-spaces.md"
+claim_text = "The recorded connected five-bus bus--branch multigraph has seven identified lines, incidence rank four, and cycle-space dimension three; collapsing its parallel q/r pair to a simple edge reduces the cycle-space dimension to two, whereas the spanning-tree-plus-chords representation retains all three source dimensions."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "incidence_nullity_derivation_executable_fundamental_cycle_basis_and_BMOPFTools_parallel_aware_cross_check"
+citation_keys = ["Kavitha2008"]
+model_scope = "connected loopless scalar series bus--branch multigraph with buses i,j,k,l,m and identified lines q,r,s,t,u,v,w"
+assumptions = "line identity is retained in the source incidence matrix; the simple projection canonicalizes unordered endpoint pairs; the spanning set r,s,w,u is fixed; BMOPFTools counts physical branch records rather than deduplicated adjacencies"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Lift the executable incidence and cycle objects to conductor-terminal graphs, state-conditioned topology decisions, and compiled multi-terminal factors."
+
+[[claim]]
+claim_id = "ARCH-FIVEBUS-XFMR-001"
+exactness_object = "observation_sample"
+preservation_dimensions = ['structure', 'terminal_behavior', 'limits', 'state', 'provenance', 'numerical_structure']
+chapter = "docs/src/start/five-bus-transformer-lowering.md"
+claim_text = "In the recorded five-bus structural extension, one three-port transformer has acyclic local factor-incidence and star realizations, while eliminating the virtual star point generically yields a terminal clique with cycle rank one; the embedded factor-incidence and star member ranks coincide at five despite carrying different semantics, while the clique member rank is six, without implying additional physical transformer loops."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_composed_five_bus_and_multiwinding_lowering_witness"
+citation_keys = []
+model_scope = "the scalar five-bus line topology plus a structural three-port transformer attached at j, l, and m, composed with the checked fixed-linear three-winding leakage and terminal-lift artifacts"
+assumptions = "the original cycle ranks remain scoped to the line-induced graph; the transformer extension is structural rather than a new AC solve; the three-winding star is the declared fixed-leakage special case; terminal clique edges exist where the composed coupling is structurally nonzero"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independently review the layer interfaces and extend the witness to evaluated four- and n-winding factors, non-diagonal reference matrices, connection-specific shunts, controls, and decision-preserving edge realizations."
+
+[[claim]]
+claim_id = "ARCH-NODAL-001"
+exactness_object = "equation_identity"
+preservation_dimensions = ['structure', 'terminal_behavior', 'provenance']
+chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"
+claim_text = "Assembly of typed linear factor stamps into a compound nodal operator is not generally injective: distinct admissible parallel-factor decompositions can produce an identical nodal operator and identical normalized assembly residuals."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "algebraic_kernel_criterion_and_executable_passive_reciprocal_parallel_split_witness"
+citation_keys = []
+model_scope = "finite-dimensional fixed linear factor collections with declared real terminal assembly maps; executable case uses two aligned passive reciprocal two-conductor series factors"
+assumptions = "factor types, coordinates, and assembly maps are fixed; admissible ambiguity directions remain inside the declared factor class; decisions and limits are outside the nodal assembly"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Classify identifiable and bounded ambiguity families under realistic line, transformer, shunt, catalog, measurement, and state constraints."
+
+[[claim]]
+claim_id = "ARCH-SUPPORT-001"
+exactness_object = "connectivity_view"
+preservation_dimensions = ['structure', 'terminal_behavior', 'provenance']
+chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"
+claim_text = "Block and scalar nonzero-support graphs of a declared compound nodal operator are simple graphs by construction, while the identified factor-stamp decomposition is separate data and may be a multigraph."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "definition_level_derivation_and_parallel_stamp_projection_witness"
+citation_keys = ["KettnerPaolone2019"]
+model_scope = "finite ordered compound nodal matrices and their declared block/scalar partitions"
+assumptions = "support adjacency records nonzero matrix positions only; stamp identity and provenance are not inferred from the assembled sum"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the support/stamp distinction to frequency-coupled, rectangular realified, Jacobian, and multi-terminal compiled operator families."
+
+[[claim]]
+claim_id = "ARCH-BLOCK-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'terminal_behavior', 'numerical_structure', 'provenance']
+chapter = "docs/src/start/how-to-read-diagrams-and-equations.md"
+claim_text = "For a declared two-bus four-conductor linear factor, the vector-edge, port-factor, block nodal, scalar-support, and realified-coordinate views are related representations of one assembled relation; coordinate expansion and realification do not create physical assets, while factor identity remains separate provenance."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "executable_block_structure_and_realification_witness"
+citation_keys = ["GethClaeysHeidari2023"]
+model_scope = "two-bus four-conductor fixed linear factor with full complex series matrix and endpoint shunts"
+assumptions = "fixed terminal ordering; realification uses the displayed coordinate embedding; support threshold is exact structural nonzero pattern"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to mixed terminal counts, multi-terminal factors, and numerical-zero policies."
+
+[[claim]]
+claim_id = "ARCH-VIEW-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'terminal_behavior', 'provenance']
+chapter = "docs/src/foundations/compiled-views-and-graph-surgery.md"
+claim_text = "The book proposes that a power-network visualisation declare its object level, preserved and forgotten semantics, identity fibres, and reverse-map status; single-line, multi-line, port-factor, node-breaker, nodal-support, and reduced views are distinct typed projections."
+status = "proposed_result"
+claim_type = "proposal"
+verification = "self-checked"
+evidence_type = "typed_view_registry_and_executable_witness"
+citation_keys = ["IEC60617DB", "IEC61082", "IEC61970453", "IEC618506", "IEEEC571270"]
+model_scope = "six declared view classes for the book's canonical power-network architecture"
+assumptions = "view metadata is declared by the model author; absence of a reverse map is not treated as recoverability"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add independent technical review of the house visual grammar and compare additional utility and manufacturer diagram conventions."
+
+[[claim]]
+claim_id = "ARCH-LOWER-001"
+exactness_object = "equation_identity"
+preservation_dimensions = ['structure', 'terminal_behavior', 'provenance']
+chapter = "docs/src/foundations/compiled-views-and-graph-surgery.md"
+claim_text = "A typed lowering from an identity-bearing n-port source graph to ordinary-edge incidence objects may preserve a declared equation relation while forgetting factor identity unless source fibres and provenance are retained."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "definition_level_contract_and_executable_multiwinding_lowering_witness"
+citation_keys = []
+model_scope = "finite three-port transformer factor lowered to an ordinary-edge incidence view"
+assumptions = "the lowerer declares the expansion and retains a source-fibre map; no source identity is inferred from the target edges"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add a full evaluated multiwinding factor lowerer and independently review equation-preservation conditions."
+
+[[claim]]
+claim_id = "ARCH-LOWER-002"
+exactness_object = "equation_identity"
+preservation_dimensions = ['structure', 'terminal_behavior', 'limits', 'decision', 'provenance']
+chapter = "docs/src/start/five-bus-transformer-lowering.md"
+claim_text = "A four-winding transformer factor can be compiled pointwise into a complete terminal equation operator while retaining a full non-diagonal reference impedance, mixed winding connection maps, connection-specific shunts, internal grounding, recovery maps, and an explicit finite tap/phase decision domain; this does not by itself provide a source-faithful ordinary-edge realization."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "evaluated_four_winding_lowering_with_decision_and_recovery_contract"
+citation_keys = []
+model_scope = "fixed-frequency four-winding transformer factor with three-coil winding ports, mixed WYE/DELTA connections, finite pointwise tap and phase states, passive connection-specific shunts, and internal grounding"
+assumptions = "the non-diagonal reference matrix is positive definite; each decision state is compiled with fixed coefficients; shunt placement and grounding scope are declared; ordinary-edge realizability is not inferred"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independently review the four-winding equation-preservation conditions and extend the decision family to richer controls and non-diagonal coupled conductor blocks."
+
+[[claim]]
+claim_id = "ARCH-LENS-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision', 'provenance', 'numerical_structure']
+chapter = "docs/src/foundations/representation-maps.md"
+claim_text = "A layer--lens matrix can attach concrete data, optimization, sparse-matrix, and graph-learning interfaces to different construction stages without treating software packages as representation levels; each attachment must declare preserved and omitted semantics."
+status = "proposed_result"
+claim_type = "proposal"
+verification = "self-checked"
+evidence_type = "layer_lens_matrix_api_smoke_test"
+citation_keys = []
+model_scope = "five construction stages crossed with five semantic lenses"
+assumptions = "API cells are declared interface contracts; the graph-learning cell is package-independent; smoke tests do not establish external package-wide semantic equivalence"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Exercise the matrix against version-pinned external imports and independently review the cross-community API terminology."
+
+[[claim]]
+claim_id = "ARCH-SURGERY-001"
+exactness_object = "not_applicable"
+preservation_dimensions = ['structure', 'state', 'provenance']
+chapter = "docs/src/foundations/compiled-views-and-graph-surgery.md"
+claim_text = "The book proposes that state-conditioned graph surgery return state-indexed graphs or graph families with diagnostics and provenance; for many unknown switches, a three-valued certain-connected/certain-separated/undetermined summary should be available instead of silently collapsing to one active graph."
+status = "proposed_result"
+claim_type = "proposal"
+verification = "self-checked"
+evidence_type = "state-enumeration_and_galvanic-zone_executable_witness"
+citation_keys = []
+model_scope = "finite switch state domain with open, closed, and unknown states"
+assumptions = "the surgery query declares its zero-impedance relation and returns all admissible realizations for unknown states"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the surgery contract to energized islands, protection states, n-terminal factors, and optimization decisions."
+
+[[claim]]
+claim_id = "ARCH-SURGERY-002"
+exactness_object = "equation_identity"
+preservation_dimensions = ['structure', 'state', 'provenance']
+chapter = "docs/src/foundations/compiled-views-and-graph-surgery.md"
+claim_text = "The book proposes that an n-terminal surgery retain port-coordinate identity and return port-specific active and isolated sets; it cannot be inferred by replacing an n-port factor with implicit pairwise edges."
+status = "proposed_result"
+claim_type = "proposal"
+verification = "self-checked"
+evidence_type = "port-selective_n-terminal_executable_witness"
+citation_keys = []
+model_scope = "three-port transformer factor with an open, closed, or unknown state on one named port"
+assumptions = "the surgery declares the port state domain and preserves the source factor identity"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend port-selective surgery to coupled conductor bundles, grounding factors, and protection/energization states."
+
+[[claim]]
+claim_id = "ARCH-DEGENERACY-002"
+exactness_object = "observation_sample"
+preservation_dimensions = ['structure', 'state', 'provenance']
+chapter = "docs/src/foundations/compiled-views-and-graph-surgery.md"
+claim_text = "The book proposes that missing grounding/reference declarations and rank-deficient active-state maps be treated as model-quality diagnostics; a compiler should refuse to infer a reference or invert a singular map without an additional declaration or restricted coordinate query."
+status = "proposed_result"
+claim_type = "proposal"
+verification = "self-checked"
+evidence_type = "missing-reference_and_singular-map_executable_diagnostic_witness"
+citation_keys = []
+model_scope = "finite four-wire coordinate declaration and a rank-one two-coordinate active map"
+assumptions = "the source does not provide an alternate grounding, reference, or pseudoinverse policy"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Connect diagnostics to standards-aware import remediation and quantify restricted-coordinate recovery policies."
+
+[[claim]]
+claim_id = "ARCH-DEGENERACY-001"
+exactness_object = "connectivity_view"
+preservation_dimensions = ['structure', 'state', 'provenance']
+chapter = "docs/src/foundations/compiled-views-and-graph-surgery.md"
+claim_text = "Duplicate ideal switches with identical terminal sets and state domains have a well-defined electrical connectivity quotient but an unresolved asset-attribution relation; the model should retain both identities and emit a diagnostic rather than invent protection, maintenance, or failure ownership."
+status = "proposed_result"
+claim_type = "proposal"
+verification = "self-checked"
+evidence_type = "duplicate-ideal-switch_executable_diagnostic_witness"
+citation_keys = []
+model_scope = "two identified ideal switches in parallel between the same terminal pair"
+assumptions = "no additional protection, maintenance, failure, or measurement declaration distinguishes the devices"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Specify utility-data remediation policies for duplicate or indistinguishable switch assets."
+
+[[claim]]
+claim_id = "FORMULATION-NODAL-001"
+exactness_object = "equation_identity"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision']
+chapter = "docs/src/foundations/circuit-formulations-and-lowering.md"
+claim_text = "An ideal voltage source with a queried source current is not representable by a plain nodal-admittance injection without adding an extra current variable or changing the query contract; a modified-nodal or tableau formulation preserves the voltage constraint and current observation."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "minimal_mna_vs_nodal_admittance_witness"
+citation_keys = ["HoRuehliBrennan1975", "HachtelBraytonGustavson1971", "ParkHolzerDeMarco2019"]
+model_scope = "one grounded ideal voltage source feeding one linear shunt with two source-current observations"
+assumptions = "plain nodal admittance means a single-valued current injection function of retained node voltages; the source voltage is fixed while source current varies with external injection"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add independent review and extend the witness to controlled, dynamic, and multi-terminal power-network factors."
+
+[[claim]]
+claim_id = "FORMULATION-NODAL-002"
+exactness_object = "feasible_set"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision']
+chapter = "docs/src/foundations/circuit-formulations-and-lowering.md"
+claim_text = "Even when a nodal operator can be assembled, it may be singular without a declared reference or shunt, or semantically insufficient for member-level limits: aligned parallel factors can share one aggregate admittance while having different member currents and feasible limits."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "minimal_singularity_and_parallel_semantic_loss_witness"
+citation_keys = ["KettnerPaolone2019", "Molzahn2018"]
+model_scope = "two-node floating linear network and two aligned scalar parallel members with distinct current limits"
+assumptions = "nodal support retains only the assembled operator; member identities and current limits are not included in the target"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the failure-family witness to multiconductor, grounded, state-dependent, and nonlinear formulations with independent review."
+
+[[claim]]
+claim_id = "FORMULATION-NODAL-003"
+exactness_object = "equation_identity"
+preservation_dimensions = ['structure', 'terminal_behavior', 'provenance']
+chapter = "docs/src/foundations/circuit-formulations-and-lowering.md"
+claim_text = "A declared reference or grounding label does not by itself establish nonsingularity of a compound nodal operator: the rank guard must be evaluated on the assembled operator after the declared reference, grounding, and active-state maps are applied."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "executable_nodal_rank_guard_witness_with_disconnected_declared_reference"
+citation_keys = ["KettnerPaolone2019"]
+model_scope = "finite linear nodal operators for polyphase or scalar network coordinates"
+assumptions = "rank is evaluated on the declared retained operator; reference and grounding declarations are metadata and structural maps, not automatic nonsingularity proofs"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the rank guard to frequency-dependent, singular-shunt, dynamic, and state-dependent compound operators with independent review."
+
+[[claim]]
+claim_id = "FORMULATION-Y-SPLIT-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision', 'provenance']
+chapter = "docs/src/foundations/circuit-formulations-and-lowering.md"
+claim_text = "A load or generator may be represented as a factor attached to a source network while a declared study formulation places a constant-admittance, Norton, or other linearized part in the nodal operator and retains the remainder as an injection, control, limit, or decision relation; the resulting nodal matrix is therefore mode-, state-, and linearization-qualified rather than a unique graph of the source system."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "formulation_definition_supported_by_official_OpenDSS_documentation_and_application_directed_equivalent"
+citation_keys = ["OpenDSSSolutionTechniques", "OpenDSSPowerConversionElements", "OpenDSSLoad", "OpenDSSFaultStudyEquations", "IswaranThakarNekkalapuVittalKhorsand2026"]
+model_scope = "power-network source models with declared terminal/factor maps and nodal, current-injection, fault-study, or linearized solver targets"
+assumptions = "the source inventory, active state, study mode, coordinate order, and linearization or equivalent construction are declared; inclusion in a nodal operator does not imply physical-edge identity"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Obtain independent review of the source-factor versus study-operator distinction and extend the witness to a generator control and a non-OpenDSS formulation."
+
+[[claim]]
+claim_id = "ARCH-CHORDAL-001"
+exactness_object = "connectivity_view"
+preservation_dimensions = ['structure']
+chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"
+claim_text = "For a simple bus-level tree with a common m-coordinate block at every bus and a structurally dense two-terminal stamp on every tree edge, the scalar structural-support graph is chordal and leaf-bus block elimination is a zero-fill perfect elimination ordering."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "inductive_proof_and_executable_three_bus_two_conductor_symbolic_elimination_witness"
+citation_keys = ["GanLowChordal2014"]
+model_scope = "simple bus trees with equal retained coordinate blocks and clique support on each two-terminal edge stamp"
+assumptions = "the support is structural; each endpoint-union stamp is dense; assembled entries do not cancel; no multi-terminal factor adds non-tree support"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Characterize chordality and minimal fill under missing phases, sparse coupling blocks, parallel factors, multi-terminal devices, and meshed bus graphs."
+
+[[claim]]
+claim_id = "ARCH-RECOVERY-001"
+exactness_object = "boundary_behavior"
+preservation_dimensions = ['terminal_behavior', 'limits', 'decision', 'provenance']
+chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"
+claim_text = "Source recovery from a compound nodal operator is class-dependent: support-separated single-factor classes can be identifiable, over-parameterized classes can be set-identifiable at the terminal-primitive level, and parallel multiplicity or eliminated internal coordinates can be non-identifiable; a recovery interface must report the status and ambiguity rather than infer asset identity."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "restricted-injectivity-classification_and_executable_recovery-witness"
+citation_keys = []
+model_scope = "finite compound nodal operators with declared support, elimination, and local parameter classes"
+assumptions = "the observed coordinates, assembly maps, and admissible model class are explicitly declared; status is relative to that class"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Classify realistic catalog, measurement, grounding, transformer, and state-dependent recovery classes beyond the four finite witnesses."
+
+[[claim]]
+claim_id = "ARCH-RECOVERY-002"
+exactness_object = "feasible_set"
+preservation_dimensions = ['terminal_behavior', 'limits', 'decision', 'provenance']
+chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"
+claim_text = "Auxiliary observations and declarations lift source-recovery ambiguity only through their joint observation map: catalog bounds may produce a compact but non-singleton feasible set, whereas member-current measurements, explicit grounding attribution, or a declared transformer state can make the restricted map injective in a scoped model class."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "augmented-kernel-criterion_and_executable_guarded-recovery-witness"
+citation_keys = []
+model_scope = "finite scalar parallel, diagonal-residual, and state-conditioned primitive cases"
+assumptions = "auxiliary observations share the declared coordinate system; member-current case has nonzero voltage drop; declarations are treated as model data rather than inferred facts"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the augmented-observation criterion to multiconductor current measurements, nonlinear grounding, transformer controls, and partial observability."
+
+[[claim]]
+claim_id = "ARCH-RECOVERY-003"
+exactness_object = "equation_identity"
+preservation_dimensions = ['terminal_behavior', 'limits', 'decision', 'provenance']
+chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"
+claim_text = "For a matrix-valued multiconductor factor observed through member-current snapshots, full primitive recovery requires voltage snapshots spanning the retained conductor space and coverage of every current coordinate; single-snapshot or phase-selective observations retain reciprocal ambiguity even when the assembled nodal operator is known."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "matrix-observation-rank-derivation_and_executable_multiconductor-witness"
+citation_keys = []
+model_scope = "two reciprocal two-conductor parallel factors with linear voltage/current snapshots"
+assumptions = "fixed linear factors; member-current observations use common conductor coordinates; no noise or nonlinear estimator is claimed"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the rank and partial-observation criterion to noisy measurements, nonlinear operating-point data, coupled transformer ports, and experimental design."
+
+[[claim]]
+claim_id = "ARCH-RECOVERY-004"
+exactness_object = "observation_sample"
+preservation_dimensions = ['terminal_behavior', 'limits', 'decision', 'provenance']
+chapter = "docs/src/foundations/two-level-topology-and-nodal-projection.md"
+claim_text = "For noisy full-rank multiconductor voltage/current snapshots, the pseudoinverse source estimate has a deterministic Frobenius error bound proportional to the noise radius and the voltage-snapshot pseudoinverse norm; nearly dependent excitation therefore enlarges the certified uncertainty set even when the observation map is full rank."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "normwise-error-derivation_and_executable_conditioning-witness"
+citation_keys = []
+model_scope = "fixed two-conductor matrix primitive with additive bounded current-snapshot noise"
+assumptions = "linear observation I=YV+E; full row rank of V; Frobenius noise bound; no statistical or nonlinear estimator claim"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend deterministic bounds to noisy partial observations, structured/passive uncertainty sets, nonlinear operating points, and experiment design."
+
+[[claim]]
+claim_id = "LIT-PAR-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ['terminal_behavior', 'decision']
+chapter = "docs/src/start/first-failure-parallel-branches.md"
+claim_text = "For fixed scalar AC pi-line models on common endpoints, a parallel member's current- or apparent-power limit at one terminal is redundant when its normalized terminal-voltage quadratic feasible set contains that of another member; applying the test at both terminals certifies removal of both directional limits without aggregating the line models."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "peer_reviewed_result_and_algorithm"
+citation_keys = ["Molzahn2018"]
+model_scope = "parallel two-terminal scalar AC pi-line models with fixed complex transformer ratios, shunts, and current-magnitude or apparent-power limits"
+assumptions = "members share both endpoint voltages; normalized quadratic forms are positive semidefinite; each proposed removal is certified at both line terminals"
+reviewer = ""
+review_date = "2026-08-13"
+unresolved_issue = "Establish necessary and sufficient redundancy tests for arbitrary multiconductor limits and for state- or decision-dependent line models."
+
+[[claim]]
+claim_id = "FIXTURE-001"
+exactness_object = "observation_sample"
+preservation_dimensions = ['structure', 'terminal_behavior', 'provenance']
+chapter = "docs/src/cases/executable-running-network.md"
+claim_text = "Running-network fixture v0.1.0 passes the current BMOPFTools JSON schema and conformance checks without errors or warnings."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "automated_validation"
+citation_keys = []
+model_scope = "data/running-network/v0.1.0.json"
+assumptions = "local BMOPFTools state recorded in experiments/generated/provenance.json"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add an independent fixture reviewer."
+
+[[claim]]
+claim_id = "FIXTURE-002"
+exactness_object = "observation_sample"
+preservation_dimensions = ['structure', 'terminal_behavior', 'provenance']
+chapter = "docs/src/cases/executable-running-network.md"
+claim_text = "The v0.1.0 continuous PF and OPF instances terminate locally solved in the recorded environment."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "BMOPFTools_Ipopt_execution"
+citation_keys = []
+model_scope = "running-network fixture v0.1.0; fixed closed switch"
+assumptions = "per-unit solve; Ipopt local nonlinear solution; clean BMOPFTools commit b7aa9a1bb48bcc8b790d3bcf5417d6a32036352a; no claim of global optimality"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Re-run with an independent solver where possible."
+
+[[claim]]
+claim_id = "TR-SER-001"
+exactness_object = "equation_identity"
+preservation_dimensions = ['structure', 'terminal_behavior', 'provenance']
+chapter = "docs/src/transformations/degree-two-series-elimination.md"
+claim_text = "A zero-injection degree-two junction between coordinate-aligned, series-only elements with no pairwise or external mutual coupling has equivalent impedance Z_l1 + P' Z_l2 P; mutually coupled sections instead contain the cross terms Z_12 P + P' Z_21."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "algebraic_derivation_executable_certificate_guard_tests_and_cross_coupling_negative_witness"
+citation_keys = []
+model_scope = "linear multiconductor series elements with ordered terminal maps"
+assumptions = "both source factors are series-only; matching conductor sets; no injection, shunt, grounding, observation boundary, control, or protection boundary at the eliminated junction; neither source element is mutually coupled to the other source element or to an external element"
+reviewer = ""
+review_date = ""
+unresolved_issue = "The 2026-08-15 automated independent re-derivation found and motivated the repaired coupling guard but is not human peer review; add a named mathematical reviewer for the uncoupled rule and its coupling boundary."
+
+[[claim]]
+claim_id = "TR-SER-002"
+exactness_object = "boundary_behavior"
+preservation_dimensions = ['structure', 'terminal_behavior', 'provenance']
+chapter = "docs/src/transformations/degree-two-series-elimination.md"
+claim_text = "Exact terminal-behaviour closure under degree-two elimination does not by itself establish closure within a homogeneous physical line class."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "definition_boundary_and_constructive_counterexample"
+citation_keys = []
+model_scope = "series elements with distinct construction or lifecycle facts"
+assumptions = "behavioural equivalence is evaluated only at the declared external terminals"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Formalize sufficient physical line-merge guards for selected line models."
+
+[[claim]]
+claim_id = "TR-SER-003"
+exactness_object = "equation_identity"
+preservation_dimensions = ['structure', 'terminal_behavior', 'limits', 'provenance']
+chapter = "docs/src/transformations/degree-two-series-elimination.md"
+claim_text = "For a zero-injection degree-two junction whose two series-only source elements declare both pairwise cross-impedance blocks and no external mutual coupling, the exact terminal-behaviour composite has impedance Z_1 + Z_12 P + P' Z_21 + P' Z_2 P, with source currents recovered by I_1 = I_equivalent and I_2 = P I_equivalent."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "algebraic_derivation_executable_certificate_and_guard_tests"
+citation_keys = []
+model_scope = "linear multiconductor series elements with ordered terminal maps and pair-keyed mutual-coupling blocks"
+assumptions = "both source factors are series-only; matching conductor sets; no injection, shunt, grounding, observation boundary, control, or protection boundary at the eliminated junction; both pairwise cross blocks are declared; neither source element has external mutual coupling"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add an independent mathematical reviewer; determine model-specific reciprocity and physical line-class closure guards."
+
+[[claim]]
+claim_id = "TR-COORD-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'phase_neutral', 'provenance']
+chapter = "docs/src/transformations/conductor-coordinate-normalization.md"
+claim_text = "A simultaneous permutation of conductor coordinates, terminal pairing, element matrices, and componentwise limits is an exact normalization with an inverse permutation."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "algebraic_derivation_and_executable_certificate"
+citation_keys = []
+model_scope = "ordered multiconductor two-terminal series elements"
+assumptions = "unique conductor labels; source and target label sets agree; all indexed data are permuted consistently"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add an independent mathematical reviewer and extend coordinate actions to general input/output tensors."
+
+[[claim]]
+claim_id = "TR-COMP-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision', 'provenance']
+chapter = "docs/src/transformations/certificate-schema-and-composition.md"
+claim_text = "Two exact certified transformations compose when the first target is consumed by the second source; constraint maps apply forward and recovery maps apply in reverse order."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "definition_algebra_and_executable_composition"
+citation_keys = []
+model_scope = "the version 1.1.0 transformation-certificate interface"
+assumptions = "both component certificates validate and are exact; target/source object identities meet"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Prove associativity modulo certificate serialization and strengthen compatibility checks beyond object identity."
+
+[[claim]]
+claim_id = "TR-PAR-003"
+exactness_object = "feasible_set"
+preservation_dimensions = ['terminal_behavior', 'limits', 'decision']
+chapter = "docs/src/start/first-failure-parallel-branches.md"
+claim_text = "In the recorded two-bus maximum-served-load problem, the naive summed-rating aggregate serves 200 MW while the source and exact lifted formulations each serve 110 MW."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "JuMP_Ipopt_execution_and_analytic_check"
+citation_keys = []
+model_scope = "two linear parallel branches with b=[1000,100] MW/rad and limits=[100,100] MW"
+assumptions = "nonnegative angle difference and served load; local solver results checked against the analytic optima"
+reviewer = ""
+review_date = ""
+unresolved_issue = "The multiconductor mechanism is exercised in TR-PAR-004; add an independent reviewer for this linear case."
+
+[[claim]]
+claim_id = "TR-XFMR-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'limits', 'decision', 'provenance']
+chapter = "docs/src/transformations/transformer-winding-coordinate-normalization.md"
+claim_text = "A transformer winding terminal permutation is an exact typed-factor normalization when its complete terminal-to-coil incidence relation is right-multiplied by the inverse permutation and coil coordinates remain fixed."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "algebraic_derivation_executable_certificate_and_complex_voltage_round_trip"
+citation_keys = []
+model_scope = "individual grounded-wye or delta winding ports of a typed multiwinding transformer factor"
+assumptions = "unique equal terminal-label sets; explicit terminal-to-coil incidence; stable coil coordinates and winding identity"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Prove which normalized factors can be serialized back into compact vector-group and delta-roll fields without loss."
+
+[[claim]]
+claim_id = "TR-PAR-004"
+exactness_object = "feasible_set"
+preservation_dimensions = ['terminal_behavior', 'limits', 'decision']
+chapter = "docs/src/cases/multiconductor-parallel-ac-decision.md"
+claim_text = "In the recorded two-conductor AC maximum-served-load case, the source, exact lifted, and certified exact-pruned formulations have objective 0.6138908, while a summed-limit aggregate has objective 1.0630833 and violates a 0.6 p.u. member limit."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "JuMP_Ipopt_execution_recovery_check_proportional_redundancy_certificate_closed_form_verification_and_automated_independent_rederivation"
+citation_keys = ["Molzahn2018"]
+model_scope = "two-bus phase-neutral AC model with two coupled proportional parallel impedance matrices"
+assumptions = "fixed sending voltage; scalable constant-power direction 1+j0.2; receiving voltage magnitude in [0.70,1.05] p.u.; member current limits 0.6 p.u.; values refer to the traced high-voltage power-flow branch; Ipopt results are local solves, not global-optimality certificates; exact pruning uses exact proportionality Z_l2=10 Z_l1"
+reviewer = ""
+review_date = ""
+unresolved_issue = "The 2026-08-15 automated independent re-derivation reproduces the closed-form values, relaxation, pruning, and binding-current interpretation but is not human peer review; extend the result to near-proportional/non-proportional members, global nonlinear optimality, and independently reviewed physical cases."
+
+[[claim]]
+claim_id = "TR-PAR-005"
+exactness_object = "feasible_set"
+preservation_dimensions = ['terminal_behavior', 'limits', 'decision']
+chapter = "docs/src/cases/multiconductor-parallel-ac-decision.md"
+claim_text = "For fixed linear complex terminal-current maps with centered Euclidean norm limits, one normalized constraint implies another if and only if the retained normalized real quadratic form minus the candidate form is positive semidefinite; applying this pairwise test to every aligned conductor and both terminal ends certifies exact candidate-limit pruning while retaining both member models."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "algebraic_derivation_executable_quadratic_containment_certificate_and_positive_negative_guard_tests"
+citation_keys = ["Molzahn2018"]
+model_scope = "fixed linear complex multiconductor terminal-current maps with centered scalar or grouped Euclidean current-magnitude constraints"
+assumptions = "source and candidate maps act on the same stacked voltage state; conductor coordinates are aligned; limits are positive and finite; every removed componentwise constraint passes at every required terminal end"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend from pairwise implications to constraints jointly implied by multiple retained limits, then condition certificates on topology, controls, outages, investments, and non-Euclidean thermal regions."
+
+[[claim]]
+claim_id = "TR-PAR-006"
+exactness_object = "feasible_set"
+preservation_dimensions = ['terminal_behavior', 'limits', 'decision']
+chapter = "docs/src/cases/four-wire-parallel-ac-decision.md"
+claim_text = "For nonsingular fixed series admittances on common multiconductor endpoint coordinates, candidate component currents recover as I_l2=(Y_l2/Y_l1)I_l1, and the exact maximum of candidate component c over all retained component-current discs is sum_k abs(K_ck) Imax_l1k; in the recorded reciprocal non-proportional three-phase four-wire AC case this certifies all l2 limits redundant, the exact-pruned and source objectives agree at 1.1274329, and a summed-limit aggregate reaches 1.8058181 by violating an l1 limit."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "algebraic_complex_polydisc_support_function_JuMP_Ipopt_execution_independent_Newton_continuation_bisection_and_BMOPFTools_line_primitive_cross_check"
+citation_keys = ["Molzahn2018"]
+model_scope = "two fixed reciprocal series-only parallel members with full ordered (a,b,c,n) impedance matrices, componentwise current limits, explicit neutral KCL, unbalanced wye constant-power directions, and phase-to-neutral voltage bounds"
+assumptions = "retained series admittance is nonsingular; both members share endpoint voltage coordinates; component current limits are centered complex discs; reverse-end series current differs only by sign; the relevant high-voltage power-flow branch is traced continuously"
+reviewer = ""
+review_date = ""
+unresolved_issue = "TR-PAR-007 covers nonsingular nominal-pi primitives; the companion certificate now refuses singular and singular-shunted recovery maps. Extend from that refusal boundary to exact singular reductions, several retained members, state-dependent topology and controls, and obtain an independent global optimality bound where required."
+
+[[claim]]
+claim_id = "TR-PAR-007"
+exactness_object = "feasible_set"
+preservation_dimensions = ['terminal_behavior', 'limits', 'decision']
+chapter = "docs/src/cases/pi-four-wire-parallel-ac-decision.md"
+claim_text = "For fixed nominal-pi multiconductor members whose retained full two-end terminal-current primitive Ar is nonsingular, all candidate terminal currents recover as Ac*inv(Ar) times the retained terminal-current vector, so exact complex-polydisc row norms certify joint implication across both line ends; in the recorded non-proportional four-wire case, pruning eight member-2 limits preserves the 1.1286205 source objective while a same-size summed-limit model reaches 1.8077114 by violating member 1."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "algebraic_full_terminal_primitive_recovery_complex_polydisc_support_function_JuMP_Ipopt_execution_independent_Newton_continuation_bisection_and_BMOPFTools_nominal_pi_primitive_cross_check"
+citation_keys = ["Molzahn2018"]
+model_scope = "two fixed reciprocal non-proportional nominal-pi parallel members with full ordered (a,b,c,n) series impedance and unequal diagonal from/to shunt blocks, both-end component current limits, explicit neutral KCL, unbalanced wye constant-power loading, and phase-to-neutral voltage bounds"
+assumptions = "the retained stacked ij/ji terminal-current primitive is numerically nonsingular; endpoint voltage coordinates align; limits are centered complex discs; all candidate rows pass the exact recovery-map row norm; the relevant high-voltage branch is traced continuously"
+reviewer = ""
+review_date = ""
+unresolved_issue = "The certificate now includes singular-shunted refusal and voltage-dependent recomputation probes. Extend from these guards to exact singular reductions, voltage-dependent nonlinear decision models, several retained members, topology and control states, and global AC optimality bounds where required."
+
+[[claim]]
+claim_id = "TR-PAR-JOINT-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ['terminal_behavior', 'limits', 'decision']
+chapter = "docs/src/cases/pi-four-wire-parallel-ac-decision.md"
+claim_text = "For fixed series current maps in common endpoint-voltage-drop coordinates, a candidate component-current limit is implied by several retained member limits when its exact recovery row has support bound sum_k abs(K_ck) Ibar_k no larger than the candidate rating; the guarded witness certifies this joint implication for three retained discs."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "exact_complex_polydisc_support_bound_and_guarded_executable_witness"
+citation_keys = []
+model_scope = "fixed linear series-only multiconductor member maps with common endpoint voltage-drop coordinates and centered component-current discs"
+assumptions = "all retained member limits are simultaneously imposed; the candidate current is a fixed linear recovery of retained currents; the declared support bound is evaluated componentwise"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the joint-support certificate to full nonlinear AC cases with several retained members, state-dependent maps, topology decisions, and global optimality bounds."
+
+[[claim]]
+claim_id = "TR-PAR-AC-JOINT-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ['terminal_behavior', 'limits', 'decision']
+chapter = "docs/src/cases/pi-four-wire-parallel-ac-decision.md"
+claim_text = "In the recorded three-member four-wire AC case, member 3 has the fixed recovery I_l3=0.10 I_l1+0.10 I_l2 and a 0.15 p.u. component limit; the joint support bound is 0.144 p.u., so deleting member-3 limits preserves the locally solved source objective 1.2401762 to 7e-14. An independent damped-Newton continuation and bisection reproduces the source boundary within 1.3e-8 served-fraction units."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "joint_linear_recovery_certificate_JuMP_Ipopt_source_vs_pruned_AC_comparison_plus_independent_finite_difference_boundary"
+citation_keys = []
+model_scope = "three fixed four-conductor series-only parallel members with unbalanced wye constant-power loading, explicit neutral KCL, and component-current discs"
+assumptions = "member 3 is exactly the declared linear combination of members 1 and 2; the support bound is evaluated componentwise; both formulations use the same locally solved high-voltage AC branch"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend beyond this fixed linear member relation to voltage-dependent shunts, topology/control states, several independently varying retained members, and global nonlinear AC optimality guarantees."
+
+[[claim]]
+claim_id = "TR-PAR-STATE-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ['terminal_behavior', 'limits', 'decision']
+chapter = "docs/src/cases/pi-four-wire-parallel-ac-decision.md"
+claim_text = "In the recorded finite four-state four-wire AC envelope, rebuilding the member maps and source/pruned formulations at each declared scalar or phase-selective admittance state preserves exact joint limit pruning locally while changing the optimal served value across states."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "independently-implemented"
+evidence_type = "generated_three_member_state_dependent_ac_envelope"
+citation_keys = []
+model_scope = "four declared scalar or phase-selective admittance states of the fixed three-member four-conductor AC decision fixture"
+assumptions = "each state rebuilds all member maps and solves the same local high-voltage branch; the joint recovery relation and component discs remain declared for each state"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend from the finite scalar and phase-selective envelope to topology/control states, independently varying recovery maps, global nonlinear optimality, and external physical-model review."
+
+[[claim]]
+claim_id = "TR-PAR-SINGULAR-001"
+exactness_object = "boundary_behavior"
+preservation_dimensions = ['terminal_behavior', 'limits', 'decision']
+chapter = "docs/src/cases/pi-four-wire-parallel-ac-decision.md"
+claim_text = "For the declared series-only singular four-wire fixture, the full two-end terminal-current map is rank deficient, but the endpoint-voltage-drop coordinate recovers member-2 currents exactly from member-1 currents through the declared diagonal map, with the zero-neutral rows retained as an explicit invariant; this is a guarded reduced-coordinate result, not a pseudoinverse or singular-shunt theorem."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "series_only_singular_endpoint_drop_recovery_witness"
+citation_keys = []
+model_scope = "fixed series-only four-wire members with a singular neutral channel and common endpoint-voltage-drop coordinates"
+assumptions = "the declared series admittances are diagonal with zero neutral entries; both members use the same endpoint-voltage-drop coordinate; neutral current is explicitly retained as zero"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the reduced-coordinate treatment to singular shunted primitives, coupled conductor models, and global nonlinear AC decision bounds."
+
+[[claim]]
+claim_id = "TR-XFMR-002"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'limits', 'decision', 'provenance']
+chapter = "docs/src/transformations/multiwinding-leakage-reference-compilation.md"
+claim_text = "Complete pairwise multiwinding short-circuit impedances compile exactly into a reference-coordinate impedance matrix ZB, from which every pairwise impedance is recoverable; changing the selected reference winding leaves the external winding admittance invariant, and the classical star/T representation is the three-winding special case."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "algebraic_derivation_executable_certificate_round_trip_and_guard_tests"
+citation_keys = []
+model_scope = "linear n-winding leakage data with fixed nominal turns ratios, per-winding resistances, and a nonsingular reference impedance matrix"
+assumptions = "all unordered winding-pair tests are present on a declared winding voltage base; imag(ZB) is positive semidefinite within tolerance; the compilation reference is any declared winding"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add an independent transformer-model review and establish compact serialization contracts that preserve the declared source and compilation references."
+
+[[claim]]
+claim_id = "TR-XFMR-003"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'limits', 'decision', 'provenance']
+chapter = "docs/src/transformations/multiwinding-terminal-leakage-assembly.md"
+claim_text = "Aligned winding connection-incidence factors compose exactly with a multiwinding leakage admittance as Yterminal=A'*(Yw kron I)*A; retaining the coil-current map preserves per-coil winding limits and makes terminal-coordinate and leakage-reference changes explicit coordinate actions."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "algebraic_derivation_executable_certificate_power_identity_coordinate_round_trips_and_guard_tests"
+citation_keys = []
+model_scope = "fixed linear multiwinding leakage relation with equal labelled coil-coordinate sets and explicit grounded-wye or delta terminal-to-coil incidence factors"
+assumptions = "winding order matches the leakage factor; coil labels align by permutations; the winding leakage admittance repeats independently on each common coil coordinate; connection factors are fixed; winding and leakage current limits agree; no magnetizing branch or adjustable tap is compiled"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independently review the fixed and parameterized completions and test tap-dependent leakage or excitation models."
+
+[[claim]]
+claim_id = "TR-XFMR-004"
+exactness_object = "equation_identity"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'limits', 'decision', 'provenance']
+chapter = "docs/src/transformations/fixed-linear-transformer-factor-completion.md"
+claim_text = "A fixed linear transformer completion with declared voltage transfer T, leakage map B=T*A, excitation placement S, and transformer-internal grounding has terminal admittance Ycomplete=B^H*Ycoil*B+S^T*Y0*S+Yground; the power-dual and component-current recovery maps preserve the declared leakage-path limits, while adjustable transfers must remain parameterized decision factors."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "algebraic_derivation_executable_certificate_power_identity_guard_tests_and_independent_BMOPFTools_primitive_cross_check"
+citation_keys = []
+model_scope = "fixed linear phasor multiwinding transformer factors with labelled coil coordinates, nonzero finite per-coil voltage transfers, a reciprocal passive excitation shunt, and passive transformer-internal terminal grounding"
+assumptions = "the terminal leakage factor is exact; voltage transfers follow the declared connected-coil-to-leakage convention; all transfer modes are fixed; excitation placement is explicit; external bus grounding is not absorbed; limits apply to the declared leakage-path winding currents"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independently review the completion and test phase-angle controls, tap-dependent leakage, and total-current or apparent-power ratings."
+
+[[claim]]
+claim_id = "TR-XFMR-005"
+exactness_object = "feasible_set"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'limits', 'decision', 'provenance']
+chapter = "docs/src/transformations/parameterized-transformer-tap-decisions.md"
+claim_text = "A continuous or discrete scalar winding tap compiles exactly as a retained parameterized transformer factor when coefficient_xkc(tap)=tap*base_coefficient_xkc and the decision identity and domain are mapped identically; freezing the tap at its start value is generally only an inner restriction, and in the recorded discrete witness it loses the 1.05 optimum and increases the winding-current objective by 671.060 A."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "pointwise_algebraic_compilation_executable_domain_and_power_tests_source_target_round_trip_and_discrete_decision_counterexample"
+citation_keys = []
+model_scope = "fixed-frequency linear multiwinding transformer factor with one or more positive scalar ganged winding taps over declared continuous intervals or finite discrete position sets"
+assumptions = "base transfer coefficients and labelled coordinates are fixed; each tap has a unique decision identity; excitation and internal grounding are tap independent; pointwise fixed snapshots satisfy TR-XFMR-004; the witness holds boundary voltages fixed and minimizes winding-2 leakage-current stress subject to its 2200 A limit"
+reviewer = ""
+review_date = ""
+unresolved_issue = "The first solver-backed network embedding is TR-XFMR-006; extend the contract to phase-angle, independent per-phase, mechanically coupled, and tap-dependent-loss controls."
+
+[[claim]]
+claim_id = "TR-XFMR-006"
+exactness_object = "feasible_set"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'limits', 'decision', 'provenance']
+chapter = "docs/src/cases/transformer-tap-ac-decision.md"
+claim_text = "A retained finite scalar transformer tap factor embeds exactly into unchanged multiconductor AC voltage, KCL, power-balance, voltage-limit, and recovered leakage-current constraints by pointwise evaluation; in the recorded 11-terminal WYE/WYE/DELTA case, direct source and parameterized target subproblems agree at all three taps, select 0.95 with served fraction 1.2305865, and freezing the 1.00 start loses 0.0601126 served fraction (0.090169 MW)."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "pointwise_algebraic_network_embedding_JuMP_Ipopt_finite_domain_enumeration_source_target_state_constraint_and_objective_comparison"
+citation_keys = []
+model_scope = "11-terminal three-winding WYE/WYE/DELTA fixed-frequency phasor factor with one finite ganged magnitude tap, a balanced four-wire constant-power load, an open delta tertiary, and recovered per-coil leakage-current limits"
+assumptions = "TR-XFMR-005 applies pointwise; source and target use identical network equations; winding 1 is a fixed balanced slack; winding 2 voltage is bounded in [0.90,1.05] p.u.; the open delta common mode is fixed only by a gauge; each finite tap-conditioned nonconvex subproblem is compared on the locally solved branch returned by Ipopt"
+reviewer = ""
+review_date = ""
+unresolved_issue = "TR-XFMR-007 independently reproduces the numerical branch search, and the certificate now includes a finite two-scenario tap-pair switching-cost ledger; extend the network-level contract to unbalanced downstream controls and richer multiwinding decisions."
+
+[[claim]]
+claim_id = "TR-XFMR-007"
+exactness_object = "observation_sample"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'limits', 'decision', 'provenance']
+chapter = "docs/src/cases/transformer-tap-ac-decision.md"
+claim_text = "A separate damped finite-difference Newton, continuation, and bisection implementation reproduces all three TR-XFMR-006 tap-conditioned high-voltage branch boundaries without an external optimizer; its largest served-fraction difference from JuMP/Ipopt is 3.14e-10, and both methods select tap 0.95."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "independently-implemented"
+evidence_type = "independent_numerical_engine_finite_difference_Newton_continuation_bisection_pointwise_state_constraint_and_decision_comparison_with_structured_bracketing_guard_tests"
+citation_keys = []
+model_scope = "the recorded 11-terminal WYE/WYE/DELTA transformer tap AC case and its finite tap domain"
+assumptions = "both paths share the certified transformer matrices and case assembly; the direct no-load solution initializes the high-voltage branch; Newton converges throughout continuation; a feasible point and subsequent converged infeasible point bracket the first upper boundary; this boundary is the relevant branch maximum"
+reviewer = ""
+review_date = ""
+unresolved_issue = "The finite tap-pair ledger is branch-complete for its declared domain, but the continuous subproblems remain local Ipopt solutions; reproduce the case with an independently assembled transformer primitive or external power-system tool and establish global guarantees where required."
+
+[[claim]]
+claim_id = "TR-XFMR-008"
+exactness_object = "feasible_set"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'limits', 'decision', 'provenance']
+chapter = "docs/src/cases/transformer-tap-ac-decision.md"
+claim_text = "In the recorded 11-terminal WYE/WYE/DELTA tap case, a phase-selective unbalanced second scenario can be handled without collapsing the transformer or its phase identities: exact enumeration of the nine ordered tap pairs preserves branch completeness and exposes the per-phase scenario directions explicitly."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "solver_backed_unbalanced_multiphase_scenario_ledger_with_finite_tap_pair_enumeration_and_branch_completeness_checks"
+citation_keys = []
+model_scope = "the recorded 11-terminal three-winding WYE/WYE/DELTA AC tap case with a finite three-position scalar tap and a phase-selective second-scenario constant-power direction"
+assumptions = "the transformer factor, terminal ordering, voltage bounds, KCL equations, and recovered leakage-current limits are unchanged; the phase multipliers and tap-pair domain are declared explicitly; each continuous subproblem is a local Ipopt result"
+reviewer = ""
+review_date = ""
+unresolved_issue = "This is a finite local witness, not a global unbalanced OPF guarantee; extend the contract to richer multiwinding controls, topology decisions, and independently assembled physical models."
+
+[[claim]]
+claim_id = "TR-XFMR-009"
+exactness_object = "feasible_set"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'limits', 'decision', 'provenance']
+chapter = "docs/src/cases/transformer-tap-ac-decision.md"
+claim_text = "For the recorded 11-terminal WYE/WYE/DELTA case, a three-scenario phase-selective tap path can be enumerated exactly over the 3^3 ordered tap triples, with consecutive tap movement charged explicitly and each scenario retaining its own phase directions."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "independently-implemented"
+evidence_type = "solver_backed_three_scenario_unbalanced_multiphase_tap_path_ledger_with_independent_finite_difference_reproduction_and_branch_completeness_checks"
+citation_keys = []
+model_scope = "the recorded 11-terminal three-winding WYE/WYE/DELTA AC tap case with three finite-position scalar taps across three phase-selective constant-power scenarios"
+assumptions = "the transformer factor and terminal ordering remain fixed; the three scenario phase scales and consecutive movement cost are declared; every continuous scenario/tap subproblem is a local Ipopt result"
+reviewer = ""
+review_date = ""
+unresolved_issue = "This remains a finite local path witness, not a global unbalanced multi-period OPF guarantee; extend to richer controls, topology decisions, switching operation limits, and independently assembled physical models."
+
+[[claim]]
+claim_id = "TR-XFMR-010"
+exactness_object = "feasible_set"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'limits', 'decision', 'provenance']
+chapter = "docs/src/cases/transformer-tap-ac-decision.md"
+claim_text = "In the recorded three-scenario tap path, enumerating all 27 ordered tap triples and then applying an explicit at-most-one-movement policy leaves 15 admissible branches; the policy is a decision constraint and must not be inferred from the unconstrained best path."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "independently-implemented"
+evidence_type = "solver_backed_and_independent_finite_difference_operation_limited_tap_path_ledger"
+citation_keys = []
+model_scope = "the recorded 11-terminal three-winding WYE/WYE/DELTA AC tap path with three phase-selective scenarios, three finite tap positions, and an at-most-one consecutive tap-movement constraint"
+assumptions = "all 27 ordered tap triples are enumerated before filtering; operation count means the number of consecutive scenario tap changes; continuous scenario values are local high-voltage branch solutions"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend operation-count, dwell-time, deadband, and switching-cost semantics to richer multiwinding controls and globally certified multi-period OPF models."
+
+[[claim]]
+claim_id = "TR-KRON-001"
+exactness_object = "boundary_behavior"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'decision', 'provenance']
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "Typed multiconductor Kron reduction commutes with invertible coordinate actions that preserve the retained/internal partition when currents transform by the power-dual action; per-port block diagonality is an optional locality restriction, and the affine statement requires fixed internal injections."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "algebraic_derivation_package_independent_executable_witness_dense_partition_witness_and_voltage_dependent_injection_negative_probe"
+citation_keys = ["DorflerBullo2013"]
+model_scope = "finite-dimensional complex linear nodal relations assembled from aligned typed terminal maps"
+assumptions = "T = diag(T_B,T_I) is invertible and respects the retained/internal partition; Y_II is invertible; internal injections i_I are fixed data independent of v_I; current coordinates use the conjugate-transpose power dual; per-port block diagonality is only a modelling locality restriction"
+reviewer = ""
+review_date = ""
+unresolved_issue = "The 2026-08-15 automated independent re-derivation verified dense partition actions, reciprocity distinctions, and the fixed-injection scope but is not human peer review; extend the fixture to randomized and terminal-permutation campaigns and obtain a named mathematical review."
+
+[[claim]]
+claim_id = "TR-KRON-002"
+exactness_object = "boundary_behavior"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'decision', 'provenance']
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the declared linear scenario fixture, exact Kron reproduces each fixed-injection boundary relation, an operating-point Ward-style equivalent is exact only at its calibration point, and an explicit scenario objective can select a sparser non-exact target."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "package_independent_scenario_comparison"
+citation_keys = ["Mokhtari2027"]
+model_scope = "three-retained-port scalar complex linear fixture with four declared voltage/injection scenarios"
+assumptions = "fixed linear nodal relation; Ward boundary injection is calibrated at the base scenario; scenario target candidates are full, banded, and diagonal retained couplings; objective uses normalized boundary-current error plus an explicit sparsity penalty"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Replace the illustrative target-selection family with a source-faithful Opti-KRON implementation and extend observations to voltage, constraints, decisions, and topology guards."
+
+[[claim]]
+claim_id = "TR-KRON-FIVE-001"
+exactness_object = "boundary_behavior"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'decision', 'provenance']
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the five-bus scalar fixture, eliminating the pendant bus m through line u by typed Kron reduction reproduces the retained boundary Y-bus obtained by direct deletion of the leaf line, with exact boundary-current recovery for the recorded voltage state."
+status = "established_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "direct_five_bus_scalar_typed_kron_witness"
+citation_keys = []
+model_scope = "five-bus line-identity scalar series-admittance multigraph with pendant bus m and line u"
+assumptions = "line u is the sole incident member of m; the eliminated block is invertible; no independent internal injection is present"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the direct fixture check to non-pendant eliminations, retained branch limits, shunts, and multiconductor internal states."
+
+[[claim]]
+claim_id = "TR-KRON-FIVE-002"
+exactness_object = "boundary_behavior"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'decision', 'provenance']
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the same five-bus fixture, eliminating the non-pendant bus l by typed Kron reduction preserves the recorded boundary current relation, creates Schur-complement fill edges j-m and k-m among the retained buses, and exactly recovers the u-branch current whose deliberately tight declared limit is violated by the recorded state."
+status = "established_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "direct_five_bus_non_pendant_typed_kron_witness"
+citation_keys = []
+model_scope = "five-bus line-identity scalar series-admittance multigraph with bus l eliminated and buses i,j,k,m retained"
+assumptions = "the eliminated scalar block is invertible; no independent internal injection is present; fill is interpreted in the retained Y-bus support"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the fill-in witness to multiconductor blocks, retained branch limits, shunts, and ordering-dependent numerical factorization diagnostics."
+
+[[claim]]
+claim_id = "TR-KRON-NEUTRAL-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'decision', 'provenance']
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the running four-conductor midpoint Kron fixture, the eliminated neutral half-section current is exactly recoverable from the retained boundary solution and midpoint recovery; a neutral-current limit must therefore remain in the reduced feasible set, and dropping it admits the recorded boundary point that the source model rejects."
+status = "established_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "executable_typed_kron_recovery_and_neutral_limit_guard"
+citation_keys = []
+model_scope = "running-network v0.1.0 four-conductor line l1 split into two equal linear series sections"
+assumptions = "linear series relation; invertible internal block; neutral current is an observed branch quantity; the declared current limit is part of the decision observation set"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the neutral-current recovery contract from the linear shunt probe to nonlinear loads, explicit earth-return factors, and general neutral/grounding reductions; the series and shunt probes have independent reproductions."
+
+[[claim]]
+claim_id = "TR-KRON-NEUTRAL-002"
+exactness_object = "observation_sample"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'decision', 'provenance']
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the recorded five-conductor midpoint probe, retaining an explicit earth terminal and a midpoint neutral-earth bond yields separately recoverable neutral and earth KCL currents and a neutral-current limit; collapsing earth return into neutral would lose an observed factor relation."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_explicit_earth_kron_recovery_witness"
+citation_keys = []
+model_scope = "synthetic five-conductor linear series midpoint with ordered (a,b,c,n,e) terminals and a fixed midpoint neutral-earth bond"
+assumptions = "the earth terminal and bond are explicit; the probe is linear and synthetic; no standards-aligned grounding or protection claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to nonlinear earth-return factors, multiple grounding points, protection observations, and independent physical-model review."
+
+[[claim]]
+claim_id = "TR-KRON-NEUTRAL-003"
+exactness_object = "observation_sample"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'decision', 'provenance']
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the recorded three-segment five-conductor probe with two explicit neutral-earth bonds, each grounding point has separately recoverable neutral and earth KCL currents and bond-current observations; a single collapsed neutral constraint cannot represent both points."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_multiple_grounding_kron_recovery_witness"
+citation_keys = []
+model_scope = "synthetic five-conductor linear three-segment series chain with ordered (a,b,c,n,e) terminals and two fixed internal neutral-earth bonds"
+assumptions = "both internal grounding points and the earth conductor are explicit; the probe is linear and synthetic; no standards-aligned grounding or protection claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to nonlinear and state-dependent grounding, grounding impedance uncertainty, protection observations, and physical-model review."
+
+[[claim]]
+claim_id = "TR-KRON-NEUTRAL-004"
+exactness_object = "feasible_set"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'decision', 'provenance']
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the recorded finite grounding-impedance sweep, changing the two explicit neutral-earth impedances changes recovered neutral current and the feasibility classification under one fixed neutral limit, even though the structural reduction and KCL contracts remain unchanged."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_grounding_impedance_sweep_kron_witness"
+citation_keys = []
+model_scope = "synthetic five-conductor linear three-segment series chain with two explicit grounding points and four declared impedance pairs"
+assumptions = "the topology, terminal order, and reduction map are fixed across cases; only the two grounding impedances vary; no uncertainty or standards-aligned grounding claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to uncertainty sets, nonlinear/state-dependent grounding, protection observations, and physical-model review."
+
+[[claim]]
+claim_id = "TR-KRON-NEUTRAL-005"
+exactness_object = "observation_sample"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'decision', 'provenance']
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the recorded local state-dependent grounding probe, shifting an endpoint state changes the nonlinear neutral-earth bond map; reusing the nominal bond map leaves a nonzero shifted-state residual, while recomputation restores the relation and preserves explicit neutral-limit evaluation."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_state_dependent_grounding_probe"
+citation_keys = []
+model_scope = "synthetic five-conductor linear series midpoint with a voltage-dependent neutral-earth bond and two declared endpoint states"
+assumptions = "the nonlinear bond law is an illustrative local constitutive relation; Newton convergence is local; no global nonlinear grounding, protection, or uncertainty claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to global continuation, multiple nonlinear grounding points, uncertainty sets, protection observations, and physical-model review."
+
+[[claim]]
+claim_id = "TR-KRON-NEUTRAL-006"
+exactness_object = "observation_sample"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'decision', 'provenance']
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the recorded two-point state-dependent grounding chain, shifting the endpoint state changes both nonlinear neutral-earth bond maps; freezing both nominal maps leaves a nonzero chain residual and changes recovered segment-neutral currents, while recomputation restores the local relation."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_two_point_state_dependent_grounding_probe"
+citation_keys = []
+model_scope = "synthetic five-conductor three-segment series chain with two voltage-dependent neutral-earth bonds and two declared endpoint states"
+assumptions = "the nonlinear bond laws are illustrative local constitutive relations; Newton convergence is local; no global nonlinear grounding, protection, or uncertainty claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to global continuation, more nonlinear grounding points, uncertainty sets, protection observations, and physical-model review."
+
+[[claim]]
+claim_id = "TR-KRON-NEUTRAL-007"
+exactness_object = "feasible_set"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'decision', 'provenance']
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the recorded finite endpoint-state continuation of the two-point nonlinear grounding chain, recomputing the bond maps at five declared states preserves small nonlinear residuals and records changing neutral-limit margins, while the frozen nominal map fails away from the base state."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_two_point_nonlinear_grounding_continuation"
+citation_keys = []
+model_scope = "synthetic five-conductor three-segment chain with two voltage-dependent neutral-earth bonds and five endpoint-state continuation points"
+assumptions = "the continuation points and nonlinear bond laws are illustrative and local; each state is solved independently; no global continuation, uncertainty, or protection claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to adaptive continuation, global branch tracking, uncertainty sets, protection observations, and physical-model review."
+
+[[claim]]
+claim_id = "TR-KRON-NEUTRAL-008"
+exactness_object = "observation_sample"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'decision', 'provenance']
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the recorded local nonlinear grounding derivative probe, the analytic real Jacobian at the base state gives a smaller shifted-state linearisation error than the frozen nominal bond coefficient, and the Jacobian error decreases over the declared smaller step scales."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "analytic_real_jacobian_and_generated_local_grounding_bound_witness"
+citation_keys = []
+model_scope = "illustrative voltage-dependent scalar neutral-earth bond law at one base state and three finite perturbation scales"
+assumptions = "the constitutive law is illustrative; the Jacobian certificate is local; no global continuation, protection, standards, or uncertainty claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend local derivative bounds to adaptive/global continuation, nonlinear multi-point grounding, noisy observations, and physical-model review."
+
+[[claim]]
+claim_id = "TRANSFORM-CATALOG-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision', 'provenance']
+chapter = "docs/src/transformations/guarded-normalization.md"
+claim_text = "The guarded-normalization catalogue treats coordinate normalization, series elimination, parallel bundling, switch contraction, multiwinding compilation, and rooted-tree views as distinct rule families whose acceptance depends on declared closure, recovery, constraint, and provenance guards."
+status = "proposed_result"
+claim_type = "proposal"
+verification = "self-checked"
+evidence_type = "reader-facing_rule_catalogue_and_cross_reference_to_executable_certificates"
+citation_keys = []
+model_scope = "candidate transformation families in the guarded-normalization register"
+assumptions = "catalogue rows are navigation and scope declarations, not certificates of every listed rule"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Attach executable certificates to the remaining catalogue rows and review rewrite-system termination, critical-pair, and confluence conditions."
+
+[[claim]]
+claim_id = "TR-GRAPH-001"
+exactness_object = "connectivity_view"
+preservation_dimensions = ['structure', 'state', 'provenance']
+chapter = "docs/src/foundations/cycles-parallelism-radiality.md"
+claim_text = "For a loopless identified multigraph and its simple endpoint projection, the multigraph cycle rank exceeds the simple-graph cycle rank by the sum over edge fibres of fibre size minus one; the lost dimensions are line-identity cycles supported on parallel fibres."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "incidence_nullity_derivation"
+citation_keys = []
+model_scope = "finite loopless undirected bus--branch multigraphs with identified line members and a simple endpoint projection"
+assumptions = "cycle rank is the dimension of the real incidence nullspace; connected components are unchanged by the endpoint projection; self-loops are excluded"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the executable invariant checks to conductor-terminal incidence and state-indexed multi-terminal factors."
+
+[[claim]]
+claim_id = "TR-GRAPH-ACTIVE-001"
+exactness_object = "connectivity_view"
+preservation_dimensions = ['structure', 'state', 'provenance']
+chapter = "docs/src/foundations/cycles-parallelism-radiality.md"
+claim_text = "For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "executable_five_bus_inventory_and_active_state_witness"
+citation_keys = []
+model_scope = "five-bus line-identity multigraph and its simple endpoint projection"
+assumptions = "the declared active state is the spanning tree {r,s,w,u}; radiality is evaluated by incidence cycle rank at both member and quotient levels"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the active-state witness to switching, outages, and energized-state uncertainty on the canonical multiconductor fixture."
+
+[[claim]]
+claim_id = "TR-GRAPH-002"
+exactness_object = "connectivity_view"
+preservation_dimensions = ['structure', 'state', 'provenance']
+chapter = "docs/src/foundations/cycles-parallelism-radiality.md"
+claim_text = "An identified line is a multigraph bridge exactly when its simple endpoint edge is a bridge and its parallel fibre is a singleton; consequently the identified multigraph is a forest exactly when its simple projection is a forest and every edge fibre is a singleton."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "graph-connectivity_proof"
+citation_keys = []
+model_scope = "finite loopless undirected bus--branch multigraphs with identified line members and a simple endpoint projection"
+assumptions = "bridge means deletion of one identified edge increases connected-component count; the projection retains all bus vertices and unordered endpoint pairs"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add active-state radiality certificates with open/closed switches, outages, and multi-terminal compilation choices."
+
+[[claim]]
+claim_id = "ARCH-PORT-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'provenance']
+chapter = "docs/src/foundations/formal-representation-frameworks.md"
+claim_text = "A minimal executable port--factor bundle instantiated from the running network validates typed port-to-junction and port-to-factor incidence, a three-port multiwinding factor, grounding as an explicit factor, and a many-to-many asset/electrical relation Λ."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "executable_data_witness_and_structural_validator"
+citation_keys = []
+model_scope = "the minimal port--factor slice in experiments/generated/port-factor-architecture.json"
+assumptions = "data-level validation of identities and incidence; factor equations are represented by declared relation signatures rather than evaluated numerically"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Lift the data witness to evaluated factor relations and independently review the architecture against a non-synthetic asset model."
+
+[[claim]]
+claim_id = "ARCH-PORT-002"
+exactness_object = "connectivity_view"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'provenance']
+chapter = "docs/src/foundations/formal-representation-frameworks.md"
+claim_text = "The five-bus identified scalar multigraph has a direct structural port--factor lift with five bus junctions, seven two-port scalar line factors, fourteen endpoint ports, and one asset-to-factor relation per identified line; parallel members q and r remain distinct factors despite sharing the same bus pair."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "executable_fixture_lift_and_structural_validator"
+citation_keys = []
+model_scope = "experiments/generated/five-bus-port-factor-witness.json derived from experiments/generated/five-bus-cycle-space-analysis.json"
+assumptions = "structural incidence only; scalar line relations are declared signatures and no numerical factor evaluator or AC feasibility claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the lift to evaluated factor relations and compare its boundary semantics with the simple quotient and line-identity cycle basis."
+
+[[claim]]
+claim_id = "ARCH-CONDUCTOR-002"
+exactness_object = "connectivity_view"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'provenance']
+chapter = "docs/src/foundations/formal-representation-frameworks.md"
+claim_text = "The five-bus scalar line-identity fixture lifts to fourteen scalar endpoint ports, five terminal junctions, and seven two-port line factors; the lift retains the q/r parallel fibre and its extra cycle dimension while adding no multiconductor, switch, or transformer semantics."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "executable_scalar_terminal_incidence_lift"
+citation_keys = []
+model_scope = "experiments/generated/five-bus-conductor-terminal-lift-witness.json derived from experiments/generated/five-bus-cycle-space-analysis.json"
+assumptions = "each scalar line has one terminal coordinate at each endpoint; incidence and cycle-rank checks are structural; no numerical factor evaluation is claimed"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Compare the scalar terminal lift with a full conductor-terminal factor evaluator and state-conditioned topology maps."
+
+[[claim]]
+claim_id = "COLLAPSE-001"
+exactness_object = "boundary_behavior"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision']
+chapter = "docs/src/foundations/when-general-model-collapses.md"
+claim_text = "Under compatible three-phase terminals, cyclic (circulant) series and shunt matrices, balanced boundary data, sequence-compatible grounding, two-terminal factor closure, phase-symmetric decisions, and positive-sequence observations, the general phase-domain relation restricts exactly to the positive-sequence scalar network."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "sequence-coordinate_derivation_under_explicit_invariance_guards"
+citation_keys = ["Fortescue1918"]
+model_scope = "linear balanced three-phase series and nominal-pi factors with declared positive-sequence observation family"
+assumptions = "all seven guards stated in docs/src/foundations/when-general-model-collapses.md"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the network witness to controls, phase-specific limits, contingencies, and an independent mathematical review before making a global decision-equivalence claim."
+
+[[claim]]
+claim_id = "GROUND-SCOPE-001"
+exactness_object = "boundary_behavior"
+preservation_dimensions = ['phase_neutral', 'terminal_behavior', 'limits']
+chapter = "docs/src/foundations/earth-ground-models.md"
+claim_text = "Reference, neutral, earth-return, and grounding-asset semantics are distinct model objects; reductions involving them must declare an earth-return class, grounding points, retained observations, and recovery data."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "book_scope_contract_and_source-aligned_terminology"
+citation_keys = ["GethHeidariKoirala2022"]
+model_scope = "steady-state multiconductor power-network reductions"
+assumptions = "the four earth/ground meanings and E_0--E_3 model classes are book conventions"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the explicit-earth witness to relay curves, CT saturation, richer maintenance decisions, and independent reproduction."
+
+[[claim]]
+claim_id = "TOPOLOGY-001"
+exactness_object = "connectivity_view"
+preservation_dimensions = ['structure', 'state', 'provenance']
+chapter = "docs/src/foundations/node-breaker-topology-processing.md"
+claim_text = "For a fixed switch state, topological nodes are the connected components of the closed-switch connectivity graph; compiling them into bus--branch buses is a state-conditioned quotient that requires provenance and does not preserve switching decisions by itself."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "formal_state_quotient_and_external_topology_crosswalk"
+citation_keys = ["CIMTopologicalNode", "PowsyblTopology"]
+model_scope = "ideal zero-impedance connectivity and declared switch states"
+assumptions = "the closed-switch graph and component quotient are explicitly declared"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add a generated node--breaker fixture with open, closed, and unknown switch states."
+
+[[claim]]
+claim_id = "RATING-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['limits', 'decision']
+chapter = "docs/src/foundations/rating-semantics.md"
+claim_text = "A power-network rating must identify its constrained asset or terminal, measured quantity and feasible region, duration, ambient/scenario validity, and ownership/provenance before a transformation can claim to preserve it."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "book_limit_contract"
+citation_keys = []
+model_scope = "steady-state and quasi-steady decision models"
+assumptions = "limit records may be scalar, vector, complex, thermal, apparent-power, or relay regions"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Map selected utility and software rating fields into the typed limit record."
+
+[[claim]]
+claim_id = "DATA-XWALK-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'provenance']
+chapter = "docs/src/foundations/data-model-crosswalk.md"
+claim_text = "CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER provide distinct partial correspondences to the book's asset, terminal, topology, factor, state, and rating objects; successful import is not by itself semantic or decision equivalence."
+status = "interpretation"
+claim_type = "practice"
+verification = "self-checked"
+evidence_type = "versioned_documentation_crosswalk"
+citation_keys = ["CIMTopologicalNode", "CGMESLibrary", "PMDEngineering", "PMDConversion", "OpenDSSReduction", "MATPOWERCaseFormat", "MATPOWERDataModel"]
+model_scope = "documented schemas and data-model APIs accessed 2026-08-13"
+assumptions = "crosswalk records semantic correspondences and losses, not complete adapters"
+reviewer = ""
+review_date = ""
+unresolved_issue = "The running-fixture contract is checked against pinned documentation profiles; external package imports and file-level round-trip provenance/rating checks remain open."
+
+[[claim]]
+claim_id = "COLLAPSE-002"
+exactness_object = "observation_sample"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision']
+chapter = "docs/src/foundations/when-general-model-collapses.md"
+claim_text = "The generated Fortescue witness diagonalizes a circulant three-phase impedance matrix and preserves the positive-sequence subspace, while a non-circulant perturbation produces sequence mixing and a positive-subspace residual."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_complex_matrix_witness_with_positive_and_negative_cases"
+citation_keys = ["Fortescue1918"]
+model_scope = "one fixed three-phase linear series primitive in declared a,b,c order"
+assumptions = "Fortescue matrix and phase-domain matrix are exactly those recorded in the generated witness"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the witness to controls, phase-specific limits, contingencies, and independent mathematical review."
+
+[[claim]]
+claim_id = "NUMERICAL-001"
+exactness_object = "equation_identity"
+preservation_dimensions = ['numerical_structure', 'terminal_behavior']
+chapter = "docs/src/foundations/numerical-consequences.md"
+claim_text = "Representation and reduction choices have numerical consequences that must be reported separately from electrical preservation: coordinate scaling changes conditioning without changing an invertible solution set, Jacobian dependency graphs need not equal physical graphs, Schur elimination can create fill-in, and decision certificates require residual/error estimates and margins."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "book_numerical_contract_and_linear_algebra_derivation"
+citation_keys = []
+model_scope = "declared linearizations and steady-state decision models with explicit coordinate and solver conventions"
+assumptions = "eliminated blocks are tested for rank; conditioning and error estimates use a declared norm and scaling; dependency graphs are generated from the equation-variable map"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the current five-bus structural witness to a pinned running-network benchmark with solver-exported Ybus/Jacobian sparsity, ordering-dependent fill, and recovered decision-margin checks."
+
+[[claim]]
+claim_id = "NUMERICAL-002"
+exactness_object = "observation_sample"
+preservation_dimensions = ['numerical_structure', 'terminal_behavior']
+chapter = "docs/src/foundations/numerical-consequences.md"
+claim_text = "For the pinned running-network fixture, BMOPFTools exports a 20-by-20 passive Ybus with 166 nonzeros; the constant-Z linearized Ybus agrees with it, and realification produces a 40-by-40 current-voltage matrix with 664 nonzeros. The complex matrices have numerical rank 18 at the declared tolerance, with rank-aware effective 2-norm condition about 6.50e8 (1.13e7 after equilibration); the realified embedding preserves support and dimension but is not complex-transpose-symmetric."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "BMOPFTools_ybus_passive_and_ybus_linearized_export_with_realification"
+citation_keys = []
+model_scope = "data/running-network/v0.1.0.json; BMOPFTools local package revision recorded in provenance"
+assumptions = "passive Ybus excludes nonlinear loads and generators; linearized mode is constant_z; node ordering is the exporter ordering; nonzero counts use absolute tolerance 1e-12"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add an independent KKT/Jacobian export and compare ordering-dependent fill and decision margins across source and reduced views."
+
+[[claim]]
+claim_id = "NUMERICAL-003"
+exactness_object = "observation_sample"
+preservation_dimensions = ['numerical_structure', 'terminal_behavior']
+chapter = "docs/src/foundations/numerical-consequences.md"
+claim_text = "In the pinned nonlinear two-bus parallel-member witness, retaining two explicit member-current laws produces a 6-by-7 residual Jacobian and 13-by-13 KKT pattern, while the summed-current aggregate produces a 4-by-5 Jacobian and 9-by-9 KKT pattern; symbolic fill changes with elimination order in both formulations."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "central_finite_difference_nonlinear_residual_and_symbolic_KKT_fill_witness"
+citation_keys = []
+model_scope = "two-bus scalar AC decision witness with fixed complex endpoint voltage and nonlinear complex-power balance"
+assumptions = "finite-difference step 1e-7; 1e-8 diagonal KKT regularization; nonzero threshold 1e-10; fill is symbolic graph fill, not numeric factorization time"
+reviewer = ""
+review_date = ""
+unresolved_issue = "The public BMOPFTools checked-KKT callback now runs through DiffOpt on a minimal parameterized OPF and agrees with finite difference; a native JuMP/MOI Jacobian structure is now recorded, while solver-private KKT rows, ordering, and factorization statistics remain outside the public boundary."
+
+[[claim]]
+claim_id = "TR-KRON-003"
+exactness_object = "feasible_set"
+preservation_dimensions = ['structure', 'terminal_behavior', 'phase_neutral', 'decision', 'provenance']
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the declared one-state linear Ward scenario fixture, an internal-injection residual propagates through a recovered-state bound and a boundary-current bound to classify the approximate source-limit decision as certified feasible, ambiguous, or certified violated; the bound is exact for this fixture but is not a general nonlinear error theorem."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_certified_approximation_chain"
+citation_keys = []
+model_scope = "one-state linear Kron/Ward scenario fixture with a fixed boundary-current limit"
+assumptions = "Euclidean norm; one eliminated state; fixed internal injection mismatch; exact linear recovery and boundary-current maps; no parameter uncertainty or nonlinear residual term"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the chain to a nonlinear AC decision model, parameter uncertainty, and independent error analysis before treating it as a general certification theorem."
+
+[[claim]]
+claim_id = "TR-NEG-001"
+exactness_object = "observation_sample"
+preservation_dimensions = ['structure', 'provenance', 'decision']
+chapter = "docs/src/foundations/translation-traps.md"
+claim_text = "The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_negative_transformation_and_formulation_witness"
+citation_keys = []
+model_scope = "small package-independent series, transformer-scope, multi-terminal-incidence, and two-member BIM/BFM fixtures"
+assumptions = "the named compiler guards and branch consistency relation are the declared semantics; the witnesses are counterexamples to the shorthand, not universal impossibility theorems"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the negative cases to nominal-pi cascades, protection boundaries, nonlinear formulations, and independent reproduction."
+
+[[claim]]
+claim_id = "LOAD-DECISION-001"
+exactness_object = "observation_sample"
+preservation_dimensions = ['terminal_behavior', 'phase_neutral', 'decision']
+chapter = "docs/src/foundations/load-models-and-decision-dependence.md"
+claim_text = "On the recorded two-bus fixture, CP, CI, CZ, and a normalized ZIP load law share the same bus--branch graph but produce distinct high-voltage solutions and decision margins: CP violates both the declared voltage and current limits, while CI, CZ, and ZIP satisfy both."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_fixed_point_load_model_decision_witness"
+citation_keys = []
+model_scope = "two-bus scalar AC fixture with fixed source voltage, series impedance, nominal demand, separately normalized active- and reactive-power ZIP coefficients, and declared voltage/current limits"
+assumptions = "damped fixed-point iteration selects the recorded high-voltage branch; CP, CI, and CZ use the stated nominal anchor and scalar demand; this is not a global solvability or model-ranking theorem"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Add multiconductor connection maps and continuation to collapse points; the declared scalar CP/CI/CZ/ZIP fixture now has separately varying reactive coefficients and an independent reproduction."
+
+[[claim]]
+claim_id = "LOAD-CONNECTION-001"
+exactness_object = "observation_sample"
+preservation_dimensions = ['terminal_behavior', 'phase_neutral', 'decision']
+chapter = "docs/src/foundations/load-models-and-decision-dependence.md"
+claim_text = "On the recorded balanced three-phase terminal fixture, explicit wye phase-to-neutral and delta phase-to-phase connection maps share the same bus and graph but produce different load-voltage observations: unit-magnitude wye voltages and sqrt(3)-magnitude delta voltages."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_terminal_connection_map_witness"
+citation_keys = []
+model_scope = "one balanced three-phase bus with ordered (a,b,c,n) terminals and fixed linear wye/delta voltage maps"
+assumptions = "phase voltages are balanced positive sequence; the neutral is the reference; the maps are fixed and linear; no load power-flow or rating claim is made"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend connection-map evidence to unbalanced multiconductor loads, explicit grounding, phase-specific ratings, and network-level decision solves."
+
+[[claim]]
+claim_id = "LOAD-CONTINUATION-001"
+exactness_object = "observation_sample"
+preservation_dimensions = ['terminal_behavior', 'phase_neutral', 'decision']
+chapter = "docs/src/foundations/load-models-and-decision-dependence.md"
+claim_text = "On the recorded scalar two-bus continuation probe, the damped CP branch first fails to converge at demand scale 1.8 after a converged scale 1.7, while CI, CZ, and the declared ZIP branch remain converged through scale 3.0; this is an iteration-scoped branch diagnostic, not a global collapse theorem."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_scalar_load_continuation_probe"
+citation_keys = []
+model_scope = "two-bus scalar AC fixture with fixed series impedance, demand scale grid 0.2:0.1:3.0, damped fixed-point continuation, and CP/CI/CZ/ZIP laws"
+assumptions = "the continuation starts from the previous converged voltage, uses a 2000-iteration cap and 0.5 damping, and classifies failure by residual and convergence flag"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Replace the iteration-failure boundary with a mathematically continued nose curve, add independent solver continuation, and extend to multiconductor/network-level decisions."
+
+[[claim]]
+claim_id = "GROUND-SCOPE-002"
+exactness_object = "observation_sample"
+preservation_dimensions = ['phase_neutral', 'terminal_behavior', 'limits']
+chapter = "docs/src/foundations/earth-ground-models.md"
+claim_text = "On the recorded two-conductor fixture, floating, finite-impedance, and ideal customer-end grounding relations share the same simple bus--branch graph but change neutral voltage, ground-current allocation, and the associated observations."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_linear_neutral_grounding_comparison"
+citation_keys = []
+model_scope = "one-phase two-conductor linear load with explicit neutral return and three customer-end grounding relations"
+assumptions = "the source neutral is the reference through a finite neutral impedance; ideal grounding is represented by a 1e6 S shunt; this is not an explicit-earth-conductor or protection certificate"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the explicit-earth comparison to relay curves, CT saturation, richer maintenance decisions, and independent reproduction."
+
+[[claim]]
+claim_id = "GROUND-SCOPE-003"
+exactness_object = "observation_sample"
+preservation_dimensions = ['phase_neutral', 'terminal_behavior', 'limits']
+chapter = "docs/src/foundations/earth-ground-models.md"
+claim_text = "In the scoped E₂ witness, an explicit earth conductor with a finite neutral-to-earth bond has distinct in-service, earth-conductor-outage, and phase-to-earth-fault states; the outage changes earth-current availability and the fault crosses the declared protection-current threshold while the simple bus graph remains fixed."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_explicit_earth_conductor_and_protection_threshold_witness"
+citation_keys = []
+model_scope = "one-phase three-node linear phase/neutral/earth fixture with a finite bond and three declared states"
+assumptions = "the earth conductor is represented by a finite series impedance, the outage by a 1e6 ohm impedance, the fault by a fixed phase-to-earth admittance, and protection is the declared 0.50 pu current threshold"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend to relay curves, CT saturation, richer maintenance decisions, and independent reproduction."
+
+[[claim]]
+claim_id = "GROUND-SCOPE-004"
+exactness_object = "observation_sample"
+preservation_dimensions = ['phase_neutral', 'terminal_behavior', 'limits']
+chapter = "docs/src/foundations/earth-ground-models.md"
+claim_text = "In the explicit-earth witness, a declared inverse-time relay curve maps the CT-scaled phase-earth fault current to a 0.2466 s operation, while the neutral-earth fault remains below pickup; a separate declared CT-saturation cap changes the phase-fault trip decision."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_illustrative_relay_curve_and_ct_saturation_probe"
+citation_keys = []
+model_scope = "the GROUND-SCOPE-003 three-node fixture with CT ratio 10, 0.20 pu secondary pickup, a 0.10 s inverse-time constant, and a 0.18 pu saturation sensitivity cap"
+assumptions = "the relay curve and saturation cap are declared illustrative functions, not standards, calibrated relay models, or electromagnetic CT simulations"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Replace the illustrative functions with standards-aligned relay/CT models and quantify uncertainty and coordination margins."
+
+[[claim]]
+claim_id = "IMPEDANCE-LADDER-001"
+exactness_object = "observation_sample"
+preservation_dimensions = ['terminal_behavior', 'phase_neutral', 'provenance']
+chapter = "docs/src/cases/four-wire-impedance-model-ladder.md"
+claim_text = "In the deterministic four-wire impedance ladder fixture, phase-to-neutral current and voltage recovery are exact under the declared zero-ground-current map, while the deliberately non-circulant reduced matrix has visible sequence mixing; shunt deletion and positive-sequence use therefore require explicit decision-domain guards."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "generated_four_wire_impedance_model_ladder_witness"
+citation_keys = []
+model_scope = "deterministic coupled four-wire series and shunt matrix fixture with ordered a,b,c,n terminals"
+assumptions = "the neutral block is invertible; the phase-to-neutral current lift imposes zero current into local ground; the sequence and positive-sequence views are evaluated under their declared coordinate conventions"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Reproduce authored overhead-line and underground-cable cases with geometry or linecode provenance, balanced and unbalanced load rows, grounding variants, and an external solver cross-check."
+
+[[claim]]
+claim_id = "PRACTICE-ADAPTER-001"
+exactness_object = "not_applicable"
+preservation_dimensions = ['structure', 'state', 'decision', 'provenance']
+chapter = "docs/src/foundations/source-to-canonical-model.md"
+claim_text = "A safe source-to-canonical adapter should publish stable identities, terminal maps, state and control treatment, factor and rating mappings, generated-object provenance, unsupported fields, validation findings, and declared recovery checks before downstream graph transformations are trusted."
+status = "engineering_practice"
+claim_type = "practice"
+verification = "self-checked"
+evidence_type = "maintained_source_adapter_contract_and_editorial_audit"
+citation_keys = []
+model_scope = "the source-to-canonical contract described by this knowledge base"
+assumptions = "the list is a scoped engineering contract, not a universal data standard or a guarantee of round-trip recovery"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Compare the contract against additional utility, CIM/CGMES, OpenDSS, and solver-native adapters with external domain review."
+
+[[claim]]
+claim_id = "PRACTICE-IMPEDANCE-001"
+exactness_object = "not_applicable"
+preservation_dimensions = ['phase_neutral', 'terminal_behavior', 'limits', 'provenance']
+chapter = "docs/src/foundations/impedance-fidelity-ladder.md"
+claim_text = "A safe impedance adapter should retain conductor order and terminal maps, units and frequency, geometry or linecode provenance, earth-return assumptions, matrix diagnostics, shunt placement, and the limits and decisions that use the resulting coordinates."
+status = "engineering_practice"
+claim_type = "practice"
+verification = "self-checked"
+evidence_type = "maintained_impedance_contract_and_editorial_audit"
+citation_keys = []
+model_scope = "the impedance-data contract described by this knowledge base"
+assumptions = "the list is a scoped engineering contract, not a universal line-modelling standard or a geometry-validation result"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Exercise the contract on source-backed overhead and underground construction records and obtain independent power-engineering review."
+
+[[claim]]
+claim_id = "AU-CARSON-001"
+exactness_object = "observation_sample"
+preservation_dimensions = ['phase_neutral', 'terminal_behavior', 'provenance', 'decision']
+chapter = "docs/src/cases/australian-carson-reproduction.md"
+claim_text = "The Australian Carson reproduction regenerates overhead and underground multiconductor primitives from lifted construction inputs, compares them with independent OpenDSS reference matrices, and identifies the CS1035 construction mapping as unresolved rather than presenting it as a faithful reproduction."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "independently-implemented"
+evidence_type = "generated_carson_opendss_and_independent_linear_algebra_reproduction"
+citation_keys = []
+model_scope = "the Australian overhead and UGHV construction fixtures lifted into experiments/data/australian_source_inputs.toml"
+assumptions = "Carson uses the declared 50 Hz source-library setting; OpenDSSDirect solves the four-wire fixture with vminpu=0 and vmaxpu=2; reference matrices are comparison outputs rather than model inputs"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Recover the raw CS1035 conductor, screen, earth-return, frequency, and ordering provenance before claiming a faithful reconstruction."
+
+[[claim]]
+claim_id = "PRACTICE-ARCH-001"
+exactness_object = "not_applicable"
+preservation_dimensions = ['structure', 'state', 'decision', 'provenance']
+chapter = "docs/src/literature/representation-implementation-record.md"
+claim_text = "The representation implementation record keeps public API maturity, fixture coverage, direct-versus-related evidence, and not-yet-tested rows separate from the normative mathematical representation definitions."
+status = "engineering_practice"
+claim_type = "practice"
+verification = "self-checked"
+evidence_type = "generated_public_api_manifest_fixture_coverage_matrix_and_typed_state_space_witness"
+citation_keys = []
+model_scope = "the current GraphModelsForPowerNetworks implementation facade and generated fixture evidence"
+assumptions = "implementation inventories are scoped repository records, not universal software-standard or architecture-completeness claims"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Compare the implementation contract with an independently reviewed package boundary and broader source-data adapters."

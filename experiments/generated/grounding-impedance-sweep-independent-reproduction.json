@@ -1,0 +1,65 @@
+{
+  "witness_id": "TR-KRON-NEUTRAL-004-REPRO",
+  "claim_id": "TR-KRON-NEUTRAL-004",
+  "method": "independent pure-Python complex Gaussian elimination",
+  "source_witness": "experiments/generated/grounding-impedance-sweep-witness.json",
+  "rows": [
+    {
+      "case": "nominal",
+      "maximum_neutral_current": 0.028639212190547114,
+      "limit_satisfied": false,
+      "kcl_residuals": [
+        2.8274529280199067e-16,
+        1.0426034452283375e-16,
+        8.568901862535442e-17,
+        2.3268585165752165e-16
+      ],
+      "matches_julia": true
+    },
+    {
+      "case": "strong_first",
+      "maximum_neutral_current": 0.027167470394637384,
+      "limit_satisfied": true,
+      "kcl_residuals": [
+        2.4537600715311586e-16,
+        9.00720816387144e-17,
+        3.2826633950803417e-16,
+        1.0551910960100405e-17
+      ],
+      "matches_julia": true
+    },
+    {
+      "case": "weak_first",
+      "maximum_neutral_current": 0.030215966716294264,
+      "limit_satisfied": false,
+      "kcl_residuals": [
+        1.859980347811241e-16,
+        1.7065879465812848e-16,
+        8.845388854693244e-17,
+        2.9252602421247135e-16
+      ],
+      "matches_julia": true
+    },
+    {
+      "case": "asymmetric",
+      "maximum_neutral_current": 0.023724509292163205,
+      "limit_satisfied": true,
+      "kcl_residuals": [
+        3.140280746743875e-16,
+        7.114481453410855e-17,
+        3.485542544631715e-16,
+        8.398641807648575e-17
+      ],
+      "matches_julia": true
+    }
+  ],
+  "checks": {
+    "all_rows_match_julia": true,
+    "feasibility_classification_changes": true,
+    "all_kcl_residuals_are_small": true,
+    "independent_solver_used": true,
+    "no_numpy_or_julia_import": true
+  },
+  "all_checks_pass": true,
+  "interpretation": "Independent reproduction of the finite grounding-impedance sensitivity sweep; not an uncertainty quantification or standards-aligned grounding study."
+}

@@ -1,0 +1,174 @@
+{
+  "checks": {
+    "ill_conditioned_bound_is_finite": true,
+    "ill_conditioning_amplifies_uncertainty": true,
+    "noise_does_not_create_exact_identifiability": true,
+    "well_conditioned_bound_is_finite": true
+  },
+  "claim_ids": [
+    "ARCH-RECOVERY-004"
+  ],
+  "all_checks_pass": true,
+  "witness_id": "ARCH-RECOVERY-NOISE-001",
+  "bound_statement": "||Yhat - Y||_F <= ||E||_F ||V^dagger||_2 for I = Y V + E",
+  "ill_conditioned": {
+    "voltage_snapshots": [
+      [
+        {
+          "re": 1,
+          "im": 0
+        },
+        {
+          "re": 1,
+          "im": 0
+        }
+      ],
+      [
+        {
+          "re": 1,
+          "im": 0
+        },
+        {
+          "re": 1.001,
+          "im": 0
+        }
+      ]
+    ],
+    "checks": {
+      "noise_is_within_declared_radius": true,
+      "estimate_respects_deterministic_error_bound": true,
+      "estimate_is_not_claimed_as_exact_primitive": true,
+      "voltage_snapshots_have_full_row_rank": true
+    },
+    "pseudoinverse_operator_norm": 2000.5001250002065,
+    "status": "bounded-uncertain",
+    "noise_frobenius_radius": 0.001414213562373095,
+    "certified_error_bound": 2.829134408304364,
+    "least_squares_estimate": [
+      [
+        {
+          "re": 3.0010000000002037,
+          "im": 0.5
+        },
+        {
+          "re": -0.8000000000001819,
+          "im": 0.10000000000002274
+        }
+      ],
+      [
+        {
+          "re": 1.2000000000000455,
+          "im": 0.0999999999999659
+        },
+        {
+          "re": 0.5,
+          "im": 0.25
+        }
+      ]
+    ],
+    "primitive_error_frobenius": 2.0005001874533437,
+    "observed_currents": [
+      [
+        {
+          "re": 2.201,
+          "im": 0.6
+        },
+        {
+          "re": 2.2002,
+          "im": 0.6001
+        }
+      ],
+      [
+        {
+          "re": 1.7,
+          "im": 0.35
+        },
+        {
+          "re": 1.7005,
+          "im": 0.35024999999999995
+        }
+      ]
+    ]
+  },
+  "schema_version": "0.1.0",
+  "model_scope": "two-conductor matrix primitive observed through noisy full-rank voltage/current snapshots",
+  "well_conditioned": {
+    "voltage_snapshots": [
+      [
+        {
+          "re": 1,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        }
+      ],
+      [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 1,
+          "im": 0
+        }
+      ]
+    ],
+    "checks": {
+      "noise_is_within_declared_radius": true,
+      "estimate_respects_deterministic_error_bound": true,
+      "estimate_is_not_claimed_as_exact_primitive": true,
+      "voltage_snapshots_have_full_row_rank": true
+    },
+    "pseudoinverse_operator_norm": 1,
+    "status": "bounded-uncertain",
+    "noise_frobenius_radius": 0.001414213562373095,
+    "certified_error_bound": 0.001414213562373095,
+    "least_squares_estimate": [
+      [
+        {
+          "re": 2.001,
+          "im": 0.5
+        },
+        {
+          "re": 0.2,
+          "im": 0.1
+        }
+      ],
+      [
+        {
+          "re": 0.2,
+          "im": 0.1
+        },
+        {
+          "re": 1.499,
+          "im": 0.25
+        }
+      ]
+    ],
+    "primitive_error_frobenius": 0.0014142135623729393,
+    "observed_currents": [
+      [
+        {
+          "re": 2.001,
+          "im": 0.5
+        },
+        {
+          "re": 0.2,
+          "im": 0.1
+        }
+      ],
+      [
+        {
+          "re": 0.2,
+          "im": 0.1
+        },
+        {
+          "re": 1.499,
+          "im": 0.25
+        }
+      ]
+    ]
+  }
+}

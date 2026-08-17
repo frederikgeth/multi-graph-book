@@ -1,0 +1,30 @@
+record_id,identifier_key,duplicate_group,canonical_record,decision,checked_on,checker,notes
+EV-0029,10.1017/S0956796805005605,D-0029,EV-0029,unique,2026-08-16,primary,DOI-normalized; excluded as generic compiler work without an electrical-network mapping
+EV-0022,10.1109/ISCAS.2014.6865509,D-0022,EV-0022,unique,2026-08-16,primary,DOI-normalized; Gan-Low chordal-relaxation record
+EV-0023,10.1109/PSCC.2014.7038399,D-0023,EV-0023,unique,2026-08-16,primary,DOI-normalized; Gan-Low multiphase-relaxation record
+EV-0024,10.1016/j.automatica.2014.08.017,D-0024,EV-0024,unique,2026-08-16,primary,DOI-normalized; generalized Kron record
+EV-0025,10.1049/iet-gtd.2016.2080,D-0025,EV-0025,unique,2026-08-16,primary,DOI-normalized; multiphase transformer record
+EV-0026,10.1109/TPWRS.2017.2726502,D-0026,EV-0026,unique,2026-08-16,primary,DOI-normalized; multiphase feeder reduction record
+EV-0027,10.1109/PTC.2019.8810704,D-0027,EV-0027,unique,2026-08-16,primary,DOI-normalized; transmission reduction record
+EV-0028,10.1016/j.epsr.2026.113615,D-0028,EV-0028,unique,2026-08-16,primary,DOI-normalized; Opti-KRON record
+EV-0001,10.1109/TPWRS.2018.2816807,D-0001,EV-0001,unique,2026-08-15,primary,DOI-normalized
+EV-0002,10.1137/17M1138054,D-0002,EV-0002,unique,2026-08-15,primary,DOI-normalized
+EV-0003,arXiv:2508.15006,D-0003,EV-0003,unique,2026-08-15,primary,Preprint retained as distinct radiality record
+EV-0004,CGMESLibrary,D-0004,EV-0004,unique,2026-08-15,primary,Official guide record; no DOI
+EV-0005,10.1109/TCS.1975.1084079,D-0005,EV-0005,unique,2026-08-15,primary,DOI-normalized
+EV-0006,10.1109/TCT.1971.1083223,D-0006,EV-0006,unique,2026-08-15,primary,DOI-normalized
+EV-0007,10.1109/TPWRS.2018.2869705,D-0007,EV-0007,unique,2026-08-15,primary,DOI-normalized
+EV-0008,10.48550/arXiv.1504.05625,D-0008,EV-0008,unique,2026-08-15,primary,Journal article and preprint linked by title; journal key retained
+EV-0009,10.1137/110840091,D-0009,EV-0009,unique,2026-08-15,primary,DOI-normalized
+EV-0010,10.1007/3-540-31188-2,D-0010,EV-0010,unique,2026-08-15,primary,Book DOI-normalized
+EV-0011,PowsyblTopology,D-0011,EV-0011,unique,2026-08-15,primary,Official software documentation; no DOI
+EV-0012,PMDConversion,D-0012,EV-0012,unique,2026-08-15,primary,Version-pinned software documentation
+EV-0013,OpenDSSReduction,D-0013,EV-0013,unique,2026-08-15,primary,Official EPRI documentation; no DOI
+EV-0014,MATPOWERDataModel,D-0014,EV-0014,unique,2026-08-15,primary,Official developer documentation; no DOI
+EV-0015,10.1109/T-AIEE.1949.5059947,D-0015,EV-0015,unique,2026-08-15,primary,DOI-normalized
+EV-0016,10.1109/TPAS.1979.319387,D-0016,EV-0016,unique,2026-08-15,primary,DOI-normalized
+EV-0017,10.1109/59.192953,D-0017,EV-0017,unique,2026-08-15,primary,DOI-normalized
+EV-0018,10.1109/TCSI.2012.2215780,D-0018,EV-0018,unique,2026-08-15,primary,DOI-normalized
+EV-0019,10.1109/PECI.2013.6506059,D-0019,EV-0019,unique,2026-08-15,primary,DOI-normalized
+EV-0020,10.1142/4306,D-0020,EV-0020,unique,2026-08-15,primary,DOI-normalized
+EV-0021,10.1109/TPWRS.2018.2863671,D-0021,EV-0021,unique,2026-08-15,primary,DOI-normalized

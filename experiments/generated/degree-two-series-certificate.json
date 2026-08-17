@@ -1,0 +1,380 @@
+{
+  "interfaces": {
+    "units": {
+      "source": [
+        "V",
+        "A",
+        "ohm"
+      ],
+      "relation": "physical units are unchanged",
+      "target": [
+        "V",
+        "A",
+        "ohm"
+      ]
+    },
+    "decisions": {
+      "source": [
+      ],
+      "relation": "no decision variables are introduced or removed by this fixed-state rule",
+      "target": [
+      ]
+    },
+    "constraints": {
+      "source": [
+        "member current-feasible sets",
+        "zero-injection junction equations"
+      ],
+      "relation": "member constraints map by intersection after conductor alignment",
+      "target": [
+        "coordinate-aligned intersection current-feasible set"
+      ]
+    },
+    "boundary_quantities": {
+      "source": [
+        "U_i",
+        "U_j",
+        "terminal currents"
+      ],
+      "relation": "external terminal voltage-current behaviour is equal",
+      "target": [
+        "U_i",
+        "U_j",
+        "equivalent terminal current"
+      ]
+    },
+    "objectives": {
+      "source": [
+      ],
+      "relation": "no objective term is declared by the local element rule",
+      "target": [
+      ]
+    },
+    "state_variables": {
+      "source": [
+        "U_i",
+        "U_b",
+        "U_j",
+        "I_l1ib",
+        "I_l2bj"
+      ],
+      "relation": "source currents and the eliminated junction voltage recover from the equivalent current",
+      "target": [
+        "U_i",
+        "U_j",
+        "I_leqij"
+      ]
+    }
+  },
+  "preconditions": [
+    "both source objects are series-only multiconductor elements without shunt terms",
+    "the first element ends at the eliminated junction",
+    "the second element starts at the eliminated junction",
+    "junction conductor sets agree up to permutation",
+    "the junction has no injection, shunt, grounding, measurement, control, or protection boundary",
+    "neither source element has mutual coupling with the other source element or any external element"
+  ],
+  "rule_id": "degree_two_series_elimination",
+  "provenance": {
+    "generated_object": "generated_series__l5__l6",
+    "junction_context_mutual_coupling": "not representable; coupling is an element-pair property",
+    "eliminated_junction": "ib",
+    "source_elements": [
+      "l5",
+      "l6"
+    ],
+    "mutual_coupling_field": "SeriesElement.mutual_couplings[other_element_id]"
+  },
+  "classification": "exact_behavioral_reduction",
+  "target": {
+    "object_ids": [
+      "generated_series__l5__l6"
+    ],
+    "detail": {
+      "bus_from": "i7",
+      "bus_to": "i8",
+      "terminal_map_from": [
+        "a",
+        "n"
+      ],
+      "terminal_map_to": [
+        "a",
+        "n"
+      ],
+      "impedance_ohm": [
+        [
+          {
+            "re": 0.30000000000000004,
+            "im": 0.5
+          },
+          {
+            "re": 0.05,
+            "im": 0.09
+          }
+        ],
+        [
+          {
+            "re": 0.05,
+            "im": 0.09
+          },
+          {
+            "re": 0.7,
+            "im": 0.4
+          }
+        ]
+      ],
+      "current_limit_A": [
+        110,
+        80
+      ],
+      "physical_classification": "exact_behavioral_composite_not_a_homogeneous_physical_line"
+    },
+    "model_category": "ordered_multiconductor_series_element"
+  },
+  "certificate_id": "TR-SER-001",
+  "preserves": [
+    "external_terminal_voltage_current_relation",
+    "ordered_conductor_identity",
+    "source_current_limits_via_intersection",
+    "source_to_target_provenance"
+  ],
+  "constraint_map": {
+    "componentwise_current_limit": "i_max_equivalent = min(i_max_l5, P' * i_max_l6)",
+    "current_feasible_set": "C_equivalent = C_l5 intersect P' * C_l6"
+  },
+  "source": {
+    "object_ids": [
+      "l5",
+      "l6",
+      "ib"
+    ],
+    "model_category": "ordered_multiconductor_series_chain"
+  },
+  "forgets": [
+    "independent_visibility_of_the_internal_junction"
+  ],
+  "recovery_map": {
+    "source_current_l6": "i_l6 = P * i_equivalent",
+    "source_current_l5": "i_l5 = i_equivalent",
+    "junction_voltage": "u_ib = u_i7 - Z_l5 * i_equivalent"
+  },
+  "typed_interfaces": {
+    "target_unit_families": [
+      "current",
+      "impedance",
+      "voltage"
+    ],
+    "unresolved_unit_labels": [
+    ],
+    "target_boundary_labels": [
+      "U_i",
+      "U_j",
+      "equivalent terminal current"
+    ],
+    "source_unit_families": [
+      "current",
+      "impedance",
+      "voltage"
+    ],
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "state_domain_ids": [
+    ],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+    "unit_family_map": {
+      "A": [
+        "current"
+      ],
+      "V": [
+        "voltage"
+      ],
+      "ohm": [
+        "impedance"
+      ]
+    },
+    "source_boundary_labels": [
+      "U_i",
+      "U_j",
+      "terminal currents"
+    ],
+    "source_variable_labels": [
+      "U_i",
+      "U_b",
+      "U_j",
+      "I_l1ib",
+      "I_l2bj"
+    ],
+    "target_variable_labels": [
+      "U_i",
+      "U_j",
+      "I_leqij"
+    ]
+  },
+  "evidence": {
+    "checks": {
+      "pairwise_mutual_coupling_rejected": true,
+      "uncoupled_rule_accepted": true,
+      "cross_coupling_relative_error_exceeds_0_1": true
+    },
+    "impedance_derivation": "Z_equivalent = Z_first + P' * Z_second * P",
+    "excluded_cross_coupled_derivation": "Z_equivalent = Z_first + Z_12 * P + P' * Z_21 + P' * Z_second * P",
+    "mutual_coupling_negative_witness": {
+      "relative_error_frobenius": 0.11648967675016095,
+      "Z_21": [
+        [
+          {
+            "re": 0.04,
+            "im": 0.09
+          },
+          {
+            "re": 0.01,
+            "im": 0.02
+          }
+        ],
+        [
+          {
+            "re": 0.01,
+            "im": 0.02
+          },
+          {
+            "re": 0.035,
+            "im": 0.085
+          }
+        ]
+      ],
+      "Z_1": [
+        [
+          {
+            "re": 0.3,
+            "im": 0.6
+          },
+          {
+            "re": 0.05,
+            "im": 0.1
+          }
+        ],
+        [
+          {
+            "re": 0.05,
+            "im": 0.1
+          },
+          {
+            "re": 0.32,
+            "im": 0.62
+          }
+        ]
+      ],
+      "Z_12": [
+        [
+          {
+            "re": 0.04,
+            "im": 0.09
+          },
+          {
+            "re": 0.01,
+            "im": 0.02
+          }
+        ],
+        [
+          {
+            "re": 0.01,
+            "im": 0.02
+          },
+          {
+            "re": 0.035,
+            "im": 0.085
+          }
+        ]
+      ],
+      "uncoupled_formula": "Z_1 + P' * Z_2 * P",
+      "coupled_formula": "Z_1 + Z_12 * P + P' * Z_21 + P' * Z_2 * P",
+      "absolute_error_frobenius": 0.27658633371878666,
+      "failed_guards": [
+        "source_elements_have_mutual_coupling"
+      ],
+      "conductor_permutation": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "Z_2": [
+        [
+          {
+            "re": 0.4,
+            "im": 0.8
+          },
+          {
+            "re": 0.06,
+            "im": 0.12
+          }
+        ],
+        [
+          {
+            "re": 0.06,
+            "im": 0.12
+          },
+          {
+            "re": 0.41,
+            "im": 0.79
+          }
+        ]
+      ]
+    },
+    "coupled_pair_exact_rule": {
+      "classification": "exact_behavioral_reduction",
+      "impedance_ohm": [
+        [
+          {
+            "re": 0.73,
+            "im": 1.4300000000000002
+          },
+          {
+            "re": 0.185,
+            "im": 0.395
+          }
+        ],
+        [
+          {
+            "re": 0.185,
+            "im": 0.395
+          },
+          {
+            "re": 0.74,
+            "im": 1.46
+          }
+        ]
+      ],
+      "target_id": "generated_coupled_series__c1__c2",
+      "rule_id": "coupled_pair_series_elimination",
+      "recovery_map": {
+        "source_current_c2": "i_c2 = P * i_equivalent",
+        "source_current_c1": "i_c1 = i_equivalent",
+        "junction_voltage": "u_b = u_i - (Z_c1 + Z_12 * P) * i_equivalent"
+      },
+      "impedance_formula": "Z_1 + Z_12 * P + P' * Z_21 + P' * Z_2 * P",
+      "external_coupling_guard": "all mutual-coupling keys must be the other source identity",
+      "constraint_map": {
+        "componentwise_current_limit": "i_max_equivalent = min(i_max_c1, P' * i_max_c2)",
+        "current_feasible_set": "C_equivalent = C_c1 intersect P' * C_c2"
+      },
+      "physical_line_closure": "not asserted",
+      "certificate_id": "TR-SER-003"
+    },
+    "physical_classification": "exact_behavioral_composite_not_a_homogeneous_physical_line",
+    "conductor_permutation": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ]
+  },
+  "schema_version": "1.1.0"
+}

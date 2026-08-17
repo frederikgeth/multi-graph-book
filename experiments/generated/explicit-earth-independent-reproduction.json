@@ -1,0 +1,63 @@
+{
+  "witness_id": "GROUND-SCOPE-004-REPRO",
+  "claim_id": "GROUND-SCOPE-004",
+  "method": "independent pure-Python complex Gaussian elimination",
+  "source_witness": "experiments/generated/load-grounding-witnesses.json",
+  "rows": [
+    {
+      "state": "earth_in_service",
+      "fault_class": "none",
+      "earth_voltage_magnitude_pu": 0.04974766423776547,
+      "earth_conductor_current_magnitude_pu": 0.18539859826246477,
+      "fault_current_magnitude_pu": 0.0,
+      "ct_measured_current_magnitude_pu": 0.0,
+      "protection_trip_observed": false,
+      "relay_trip_time_s": null,
+      "touch_voltage_pu": 0.04974766423776547,
+      "matches_julia": true
+    },
+    {
+      "state": "earth_conductor_maintenance_outage",
+      "fault_class": "none",
+      "earth_voltage_magnitude_pu": 0.1418430252516654,
+      "earth_conductor_current_magnitude_pu": 1.4184302525166537e-07,
+      "fault_current_magnitude_pu": 0.0,
+      "ct_measured_current_magnitude_pu": 0.0,
+      "protection_trip_observed": false,
+      "relay_trip_time_s": null,
+      "touch_voltage_pu": 0.1418430252516654,
+      "matches_julia": true
+    },
+    {
+      "state": "phase_to_earth_fault",
+      "fault_class": "phase_earth",
+      "earth_voltage_magnitude_pu": 0.5217290985900337,
+      "earth_conductor_current_magnitude_pu": 1.9443695504783418,
+      "fault_current_magnitude_pu": 2.811142138964219,
+      "ct_measured_current_magnitude_pu": 0.2811142138964219,
+      "protection_trip_observed": true,
+      "relay_trip_time_s": 0.2465659104523757,
+      "touch_voltage_pu": 0.5217290985900337,
+      "matches_julia": true
+    },
+    {
+      "state": "neutral_to_earth_fault",
+      "fault_class": "neutral_earth",
+      "earth_voltage_magnitude_pu": 0.07851313226164307,
+      "earth_conductor_current_magnitude_pu": 0.2926011681057762,
+      "fault_current_magnitude_pu": 0.25111657355241396,
+      "ct_measured_current_magnitude_pu": 0.025111657355241394,
+      "protection_trip_observed": false,
+      "relay_trip_time_s": null,
+      "touch_voltage_pu": 0.07851313226164307,
+      "matches_julia": true
+    }
+  ],
+  "checks": {
+    "all_rows_match_julia": true,
+    "independent_solver_used": true,
+    "no_numpy_or_julia_import": true
+  },
+  "all_checks_pass": true,
+  "interpretation": "Independent reproduction of the declared linear fixture, CT map, and illustrative relay calculation; not an independent physical protection model."
+}

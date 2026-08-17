@@ -1,0 +1,2418 @@
+{
+  "source_inputs": {
+    "provenance": {
+      "source_repository": "https://github.com/hei06j/ImpedanceModels.jl",
+      "source_commit": "31dcf7a3aeccc86cf00035f4a714d3e543ba1cc1",
+      "frequency_hz": 50,
+      "source_overhead_file": "data/opendss/private_jordans_linecodelibrary/simple.dss",
+      "earth_resistivity_ohm_m": 100,
+      "earth_model": "modified_carson",
+      "source_wire_file": "data/opendss/private_jordans_linecodelibrary/StandardLinecodes.dss"
+    },
+    "audit_path": "experiments/data/australian_source_audit.toml",
+    "audit": {
+      "case": {
+        "overhead": {
+          "finding_codes": [
+            "SRC-FREQ-INFERRED",
+            "SRC-ORDER-INFERRED"
+          ],
+          "reference_frequency_status": "inferred_from_probe",
+          "reference_conductor_order_status": "inferred_from_probe",
+          "mapping_status": "near_exact_after_frequency_and_order_alignment",
+          "reference_conductor_order": [
+            4,
+            1,
+            2,
+            3
+          ],
+          "reference_frequency_hz": 60,
+          "construction_status": "lifted",
+          "reference_matrix_status": "derived_reference"
+        },
+        "underground": {
+          "finding_codes": [
+            "SRC-CS1035-MAPPING-UNRESOLVED",
+            "SRC-FREQ-NOT-EXPLANATORY"
+          ],
+          "reference_frequency_status": "not_explanatory",
+          "mapping_status": "unresolved",
+          "construction_status": "lifted_fixture",
+          "reference_matrix_status": "derived_reference"
+        }
+      },
+      "schema": {
+        "purpose": "field-level provenance and unresolved-mapping register",
+        "version": "0.1.0"
+      }
+    },
+    "sha256": "75c629c02854ac828df6c11a5f063ec21c80aca8a2e223e2d4a24da85faf177b",
+    "audit_sha256": "8cf7dba1d51303f87acba730883c3dc798760cc65b161cb5513d0bb8c052ff6b",
+    "path": "experiments/data/australian_source_inputs.toml"
+  },
+  "scope": "Carson-generated matrices and OpenDSS solves are regenerated from construction inputs. The CS1035 files are read only as independent reference outputs; the source repository does not provide their raw cable construction mapping.",
+  "impedance_contract": {
+    "schema_id": "power-network-impedance",
+    "elements": [
+      {
+        "units": {
+          "shunt": "nF_per_km",
+          "series": "ohm_per_km"
+        },
+        "kind": "multiconductor_line",
+        "provenance": {
+          "lineage": [
+            "construction_input",
+            "carson_primitive",
+            "opendss_case"
+          ],
+          "source": {
+            "commit": "31dcf7a3aeccc86cf00035f4a714d3e543ba1cc1",
+            "repository": "https://github.com/hei06j/ImpedanceModels.jl",
+            "construction_file": "data/opendss/private_jordans_linecodelibrary/simple.dss"
+          },
+          "status": "derived",
+          "field_status": {
+            "series_block": "derived",
+            "reference_alignment": "near_exact_after_frequency_and_order_alignment",
+            "construction": "lifted",
+            "frequency": "declared",
+            "shunt_block": "derived"
+          }
+        },
+        "views": [
+          "conductor_primitive",
+          "open_dss_linecode",
+          "reference_comparison"
+        ],
+        "terminals": [
+          "a",
+          "b",
+          "c",
+          "n"
+        ],
+        "blocks": {
+          "shunt": [
+            10.296657942054626,
+            -2.2838527490465284,
+            -1.236689489646048,
+            -3.230376768745721,
+            -2.2838527490465284,
+            10.296657942054622,
+            -3.23037676874572,
+            -1.2366894896460483,
+            -1.236689489646048,
+            -3.23037676874572,
+            9.68002673238575,
+            -0.8665573040341256,
+            -3.230376768745721,
+            -1.2366894896460483,
+            -0.8665573040341256,
+            9.680026732385752
+          ],
+          "series": [
+            [
+              {
+                "re": 0.2173480220054468,
+                "im": 0.7385349547787345
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.4362078020019465
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.4020514361343089
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.45665469445232615
+              }
+            ],
+            [
+              {
+                "re": 0.04934802200544679,
+                "im": 0.4362078020019465
+              },
+              {
+                "re": 0.2173480220054468,
+                "im": 0.7385349547787345
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.45665469445232615
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.4020514361343089
+              }
+            ],
+            [
+              {
+                "re": 0.04934802200544679,
+                "im": 0.4020514361343089
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.45665469445232615
+              },
+              {
+                "re": 0.2173480220054468,
+                "im": 0.7385349547787345
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.38004756854278143
+              }
+            ],
+            [
+              {
+                "re": 0.04934802200544679,
+                "im": 0.45665469445232615
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.4020514361343089
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.38004756854278143
+              },
+              {
+                "re": 0.2173480220054468,
+                "im": 0.7385349547787345
+              }
+            ]
+          ]
+        },
+        "grounding": {
+          "status": "declared",
+          "model": "external_grounding_reactor",
+          "nominal_impedance_ohm": {
+            "re": 0.1,
+            "im": 0.01
+          },
+          "terminal": "n"
+        },
+        "findings": [
+          {
+            "severity": "warning",
+            "code": "SRC-FREQ-INFERRED"
+          },
+          {
+            "severity": "warning",
+            "code": "SRC-ORDER-INFERRED"
+          }
+        ],
+        "element_id": "Australian_overhead",
+        "limits": {
+          "ampacity_a": 400,
+          "scope": "per_conductor_continuous",
+          "owner": "construction_input"
+        }
+      },
+      {
+        "units": {
+          "shunt": "nF_per_km",
+          "series": "ohm_per_km"
+        },
+        "kind": "multiconductor_line",
+        "provenance": {
+          "lineage": [
+            "construction_input",
+            "carson_primitive",
+            "opendss_case"
+          ],
+          "source": {
+            "commit": "31dcf7a3aeccc86cf00035f4a714d3e543ba1cc1",
+            "repository": "https://github.com/hei06j/ImpedanceModels.jl",
+            "construction_file": "data/opendss/private_jordans_linecodelibrary/StandardLinecodes.dss"
+          },
+          "status": "derived",
+          "field_status": {
+            "series_block": "derived",
+            "reference_alignment": "unresolved",
+            "construction": "lifted_fixture",
+            "frequency": "declared",
+            "shunt_block": "derived"
+          }
+        },
+        "views": [
+          "conductor_primitive",
+          "open_dss_linecode",
+          "reference_comparison"
+        ],
+        "terminals": [
+          "a",
+          "b",
+          "c",
+          "n"
+        ],
+        "blocks": {
+          "shunt": [
+            31.031594340367352,
+            -13.106878660431558,
+            -1.7454810485099912,
+            -13.078144409622348,
+            -13.106878660431558,
+            31.031594340367352,
+            -13.078144409622348,
+            -1.7454810485099868,
+            -1.7454810485099912,
+            -13.078144409622348,
+            31.090405915217968,
+            -13.04832265471536,
+            -13.078144409622348,
+            -1.7454810485099868,
+            -13.04832265471536,
+            31.090405915217968
+          ],
+          "series": [
+            [
+              {
+                "re": 0.24734802200544684,
+                "im": 0.7463546411834191
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.6458562612771329
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.6240804003740968
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.6458562612771329
+              }
+            ],
+            [
+              {
+                "re": 0.04934802200544679,
+                "im": 0.6458562612771329
+              },
+              {
+                "re": 0.24734802200544684,
+                "im": 0.7463546411834191
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.6458562612771329
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.6240804003740968
+              }
+            ],
+            [
+              {
+                "re": 0.04934802200544679,
+                "im": 0.6240804003740968
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.6458562612771329
+              },
+              {
+                "re": 0.24734802200544684,
+                "im": 0.7463546411834191
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.6458562612771329
+              }
+            ],
+            [
+              {
+                "re": 0.04934802200544679,
+                "im": 0.6458562612771329
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.6240804003740968
+              },
+              {
+                "re": 0.04934802200544679,
+                "im": 0.6458562612771329
+              },
+              {
+                "re": 0.24734802200544684,
+                "im": 0.7463546411834191
+              }
+            ]
+          ]
+        },
+        "grounding": {
+          "status": "declared",
+          "model": "external_grounding_reactor",
+          "nominal_impedance_ohm": {
+            "re": 0.1,
+            "im": 0.01
+          },
+          "terminal": "n"
+        },
+        "findings": [
+          {
+            "severity": "warning",
+            "code": "SRC-CS1035-MAPPING-UNRESOLVED"
+          },
+          {
+            "severity": "warning",
+            "code": "SRC-FREQ-NOT-EXPLANATORY"
+          }
+        ],
+        "element_id": "Australian_underground_fixture",
+        "limits": {
+          "ampacity_a": 400,
+          "scope": "per_conductor_continuous",
+          "owner": "construction_input"
+        }
+      }
+    ],
+    "schema_source": "experiments/data/impedance_contract_schema.toml",
+    "schema_version": "0.1.0",
+    "schema_sha256": "4e1649d4a8108233433a9492436ef04c89decff06e9ad26f008fd7c0eedabf69"
+  },
+  "artifact_id": "AUSTRALIAN-CARSON-001",
+  "schema_version": "0.1.0",
+  "open_dss_settings": {
+    "frequency_note": "OpenDSSDirect's embedded engine is left at its stable 60 Hz default; the Carson primitive is regenerated at the 50 Hz source-library frequency.",
+    "matrix_inputs_reused": false,
+    "primitive_frequency_hz": 50,
+    "vmaxpu": 2,
+    "solve_frequency_hz": 60,
+    "vminpu": 0,
+    "engine": "OpenDSSDirect.jl"
+  },
+  "cases": {
+    "overhead": {
+      "label": "Australian_overhead",
+      "reference_case": {
+        "max_series_error_ohm_per_km": 0.16132432786456946,
+        "comparison_note": "The 60 Hz probe with source conductor order [4,1,2,3] nearly reproduces this reference; the 50 Hz/source-order comparison above is retained because the lifted primitive is source-backed at 50 Hz.",
+        "frequency_probe": [
+          {
+            "source_order_max_series_error_ohm_per_km": 0.16132432786456946,
+            "frequency_hz": 50,
+            "permutation": [
+              4,
+              1,
+              2,
+              3
+            ],
+            "permuted_max_series_error_ohm_per_km": 0.14113656105325006
+          },
+          {
+            "source_order_max_series_error_ohm_per_km": 0.09197110958181196,
+            "frequency_hz": 60,
+            "permutation": [
+              4,
+              1,
+              2,
+              3
+            ],
+            "permuted_max_series_error_ohm_per_km": 4.257997357010564e-5
+          }
+        ],
+        "matrix_used_as_input": false,
+        "path": "data/opendss/Australian_overhead/AusOverhead_nr_Zabcn_veryunbalanced.dss",
+        "series_reference_ohm_per_km": [
+          [
+            {
+              "re": 0.227217624,
+              "im": 0.879326005
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.541069709
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.475545802
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.449141163
+            }
+          ],
+          [
+            {
+              "re": 0.059217624,
+              "im": 0.541069709
+            },
+            {
+              "re": 0.227217624,
+              "im": 0.879326005
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.516533439
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.475545802
+            }
+          ],
+          [
+            {
+              "re": 0.059217624,
+              "im": 0.475545802
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.516533439
+            },
+            {
+              "re": 0.227217624,
+              "im": 0.879326005
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.541069709
+            }
+          ],
+          [
+            {
+              "re": 0.059217624,
+              "im": 0.449141163
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.475545802
+            },
+            {
+              "re": 0.059217624,
+              "im": 0.541069709
+            },
+            {
+              "re": 0.227217624,
+              "im": 0.879326005
+            }
+          ]
+        ]
+      },
+      "construction_input": {
+        "name": "Australian LV overhead / Pluto",
+        "diameter_mm": 18.8,
+        "rac_ohm_per_km": 0.168,
+        "gmr_m": 0.007320720000000001,
+        "radius_m": 0.0094,
+        "frequency_hz": 50,
+        "length_km": 0.2,
+        "earth_resistivity_ohm_m": 100,
+        "coordinates_m": {
+          "x": [
+            -0.45,
+            0.45,
+            1.1,
+            -1.1
+          ],
+          "y": [
+            5.8,
+            5.8,
+            5.8,
+            5.8
+          ]
+        },
+        "earth_model": "modified_carson"
+      },
+      "generated_primitive": {
+        "series_ohm_per_km": [
+          [
+            {
+              "re": 0.2173480220054468,
+              "im": 0.7385349547787345
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.4362078020019465
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.4020514361343089
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.45665469445232615
+            }
+          ],
+          [
+            {
+              "re": 0.04934802200544679,
+              "im": 0.4362078020019465
+            },
+            {
+              "re": 0.2173480220054468,
+              "im": 0.7385349547787345
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.45665469445232615
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.4020514361343089
+            }
+          ],
+          [
+            {
+              "re": 0.04934802200544679,
+              "im": 0.4020514361343089
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.45665469445232615
+            },
+            {
+              "re": 0.2173480220054468,
+              "im": 0.7385349547787345
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.38004756854278143
+            }
+          ],
+          [
+            {
+              "re": 0.04934802200544679,
+              "im": 0.45665469445232615
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.4020514361343089
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.38004756854278143
+            },
+            {
+              "re": 0.2173480220054468,
+              "im": 0.7385349547787345
+            }
+          ]
+        ],
+        "capacitance_nF_per_km": [
+          10.296657942054626,
+          -2.2838527490465284,
+          -1.236689489646048,
+          -3.230376768745721,
+          -2.2838527490465284,
+          10.296657942054622,
+          -3.23037676874572,
+          -1.2366894896460483,
+          -1.236689489646048,
+          -3.23037676874572,
+          9.68002673238575,
+          -0.8665573040341256,
+          -3.230376768745721,
+          -1.2366894896460483,
+          -0.8665573040341256,
+          9.680026732385752
+        ]
+      },
+      "cases": {
+        "source_veryunbalanced": {
+          "independent_reference": {
+            "grounding_losses_va": {
+              "re": 2341.1822878950816,
+              "im": 234.11822878950818
+            },
+            "complex_line_loss_error_va": 0.00013649828608168079,
+            "method": "LinearAlgebra-only damped Newton constant-power solve",
+            "line_shunt_convention": "j*2*pi*f*C_per_m*1000*length_km, split equally by nominal-pi ends",
+            "load_model": "constant-power wye loads; pf=0.9 lagging",
+            "circuit_losses_va": {
+              "re": 4748.642363124466,
+              "im": 4374.774147589173
+            },
+            "line_current_from_source_a": [
+              {
+                "re": 174.76714803894305,
+                "im": -100.07416950974743
+              },
+              {
+                "re": -10.390505748031716,
+                "im": -6.229029874440015
+              },
+              {
+                "re": -12.739776492136638,
+                "im": 85.85618733181504
+              },
+              {
+                "re": -151.63687760264017,
+                "im": 20.447010291793948
+              }
+            ],
+            "line_losses_va": {
+              "re": 2407.4600752293845,
+              "im": 4140.6559187996645
+            },
+            "grounding_impedance_ohm": {
+              "re": 0.1,
+              "im": 0.01
+            },
+            "iterations": 4,
+            "residual_norm": 1.1013412404281553e-13,
+            "voltage_nodes_v": [
+              {
+                "re": 218.51400552268785,
+                "im": -6.67180290959396
+              },
+              {
+                "re": -115.28614789544821,
+                "im": -200.14620878074288
+              },
+              {
+                "re": -109.42216679991971,
+                "im": 197.41872233787822
+              },
+              {
+                "re": 20.368464069793983,
+                "im": 7.024674406754906
+              }
+            ],
+            "voltage_magnitudes_v": [
+              218.61583557380678,
+              230.97489211140652,
+              225.71522437954803,
+              21.54577404233614
+            ],
+            "converged": true,
+            "line_current_from_load_a": [
+              {
+                "re": -174.76716058176012,
+                "im": 100.07436997732094
+              },
+              {
+                "re": 10.39070920174611,
+                "im": 6.228927324818767
+              },
+              {
+                "re": 12.739582633186272,
+                "im": -85.8562634212988
+              },
+              {
+                "re": 151.63686874682787,
+                "im": -20.44703388084091
+              }
+            ],
+            "max_voltage_magnitude_error_v": 4.980224375117359e-7,
+            "crosscheck_status": "agreement",
+            "frequency_hz": 60,
+            "complex_loss_error_va": 2352.859163537072
+          },
+          "loads_kva": [
+            40,
+            3,
+            20
+          ],
+          "opendss_grounding_losses_va": {
+            "re": 2341.182188350071,
+            "im": 234.1182188350071
+          },
+          "voltage_nodes_v": [
+            {
+              "re": 218.5140054679596,
+              "im": -6.671802946454287
+            },
+            {
+              "re": -115.28614784196499,
+              "im": -200.14620876181442
+            },
+            {
+              "re": -109.42216661174021,
+              "im": 197.41872228948108
+            },
+            {
+              "re": 20.36846349457936,
+              "im": 7.024674547111512
+            }
+          ],
+          "voltage_magnitudes_v": [
+            218.61583552022896,
+            230.97489206830946,
+            225.71522424599252,
+            21.545773544313704
+          ],
+          "circuit_losses_va": {
+            "re": 2407.460002818024,
+            "im": 4140.65580309151
+          },
+          "model_source": "BMOPFTools Carson primitive; line code generated in memory",
+          "vminpu": 0,
+          "scenario": "source_veryunbalanced",
+          "opendss_frequency_hz": 60,
+          "opendss_line": {
+            "powers_va": [
+              {
+                "re": 40.360743280651846,
+                "im": 23.11113907951316
+              },
+              {
+                "re": 2.4455982470193325,
+                "im": 1.358834737625145
+              },
+              {
+                "re": 18.642300340979272,
+                "im": 7.365863393994758
+              },
+              {
+                "re": -2.3411821883500745,
+                "im": -0.23411821883500833
+              },
+              {
+                "re": -38.85674810503416,
+                "im": -20.701639057022167
+              },
+              {
+                "re": -2.4446010402507086,
+                "im": -1.3615520193408865
+              },
+              {
+                "re": -18.34362675691279,
+                "im": -6.879546356481597
+              },
+              {
+                "re": 2.9449762247153,
+                "im": 1.4816742436381054
+              }
+            ],
+            "losses_va": {
+              "re": 2407.460002818024,
+              "im": 4140.65580309151
+            },
+            "currents_a": [
+              {
+                "re": 174.76714509073537,
+                "im": -100.07416798050106
+              },
+              {
+                "re": -10.390505789222424,
+                "im": -6.229029922261972
+              },
+              {
+                "re": -12.739776446485845,
+                "im": 85.85618836147167
+              },
+              {
+                "re": -151.63687465889123,
+                "im": 20.447007780711715
+              },
+              {
+                "re": -174.76715763355202,
+                "im": 100.07436844807442
+              },
+              {
+                "re": 10.390709242936062,
+                "im": 6.228927372640619
+              },
+              {
+                "re": 12.739582587535189,
+                "im": -85.8562644509558
+              },
+              {
+                "re": 151.63686580307865,
+                "im": -20.447031369758975
+              }
+            ],
+            "node_order": [
+              1,
+              2,
+              3,
+              4,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "commands": [
+            "clear",
+            "new circuit.Australian_LV_overhead___Pluto_source_veryunbalanced phases=3 basekv=0.4 bus1=B1 mvasc1=1e8 mvasc3=1e8",
+            "new linecode.CarsonGenerated nphases=4 units=km",
+            "~ rmatrix=(0.217348022005 | 0.0493480220054 0.217348022005 | 0.0493480220054 0.0493480220054 0.217348022005 | 0.0493480220054 0.0493480220054 0.0493480220054 0.217348022005)",
+            "~ xmatrix=(0.738534954779 | 0.436207802002 0.738534954779 | 0.402051436134 0.456654694452 0.738534954779 | 0.456654694452 0.402051436134 0.380047568543 0.738534954779)",
+            "~ cmatrix=(10.2966579421 | -2.28385274905 10.2966579421 | -1.23668948965 -3.23037676875 9.68002673239 | -3.23037676875 -1.23668948965 -0.866557304034 9.68002673239)",
+            "new line.Line1 bus1=B1.1.2.3.4 bus2=B2.1.2.3.4 linecode=CarsonGenerated length=0.2 units=km",
+            "new reactor.grounding phases=1 bus1=B1.4 bus2=B1.0 R=0.1 X=0.01",
+            "new load.LoadP1 phases=1 bus1=B2.1.4 kv=0.23 model=1 conn=wye kVA=40.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP2 phases=1 bus1=B2.2.4 kv=0.23 model=1 conn=wye kVA=3.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP3 phases=1 bus1=B2.3.4 kv=0.23 model=1 conn=wye kVA=20.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "set voltagebases=[0.4]",
+            "set tolerance=0.00000001",
+            "calcvoltagebases",
+            "solve mode=Snap Clear"
+          ],
+          "solve": {
+            "iterations": 15,
+            "error_number": 1,
+            "bus_names": [
+              "b1",
+              "b2"
+            ],
+            "converged": true,
+            "error_description": ""
+          },
+          "vmaxpu": 2,
+          "source_bus_voltage_nodes_v": [
+            {
+              "re": 230.94010744689646,
+              "im": -1.5198806060390252e-7
+            },
+            {
+              "re": -115.47005380428969,
+              "im": -200.00000000507967
+            },
+            {
+              "re": -115.47005372804365,
+              "im": 199.99999997584277
+            },
+            {
+              "re": 15.368157543696219,
+              "im": -0.5283320314822526
+            }
+          ]
+        }
+      }
+    },
+    "underground": {
+      "label": "Australian_underground_construction_fixture",
+      "reference_case": {
+        "max_series_error_ohm_per_km": 0.5252356027854029,
+        "comparison_note": "The 50-to-60 Hz probe does not explain the CS1035 mismatch, and the raw construction mapping remains unavailable.",
+        "frequency_probe": [
+          {
+            "source_order_max_series_error_ohm_per_km": 0.5252356027854029,
+            "frequency_hz": 50,
+            "permutation": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "permuted_max_series_error_ohm_per_km": 0.5252356027854029
+          },
+          {
+            "source_order_max_series_error_ohm_per_km": 0.5447763465132962,
+            "frequency_hz": 60,
+            "permutation": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "permuted_max_series_error_ohm_per_km": 0.5447763465132962
+          }
+        ],
+        "matrix_used_as_input": false,
+        "path": "data/opendss/Australian_underground/CS1035_nr_Zabcn_balanced.dss",
+        "series_reference_ohm_per_km": [
+          [
+            {
+              "re": 0.7710898110209621,
+              "im": 0.7078895114426766
+            },
+            {
+              "re": 0.2465698110209621,
+              "im": 0.6383435114426766
+            },
+            {
+              "re": 0.2460118110209621,
+              "im": 0.6141895114426766
+            },
+            {
+              "re": 0.24656681102096212,
+              "im": 0.6383375114426767
+            }
+          ],
+          [
+            {
+              "re": 0.2465698110209621,
+              "im": 0.6383435114426766
+            },
+            {
+              "re": 0.7711468110209622,
+              "im": 0.7080435114426766
+            },
+            {
+              "re": 0.2466218110209621,
+              "im": 0.6384825114426766
+            },
+            {
+              "re": 0.24601281102096212,
+              "im": 0.6141955114426767
+            }
+          ],
+          [
+            {
+              "re": 0.2460118110209621,
+              "im": 0.6141895114426766
+            },
+            {
+              "re": 0.2466218110209621,
+              "im": 0.6384825114426766
+            },
+            {
+              "re": 0.7711938110209621,
+              "im": 0.7081705114426766
+            },
+            {
+              "re": 0.24661881102096211,
+              "im": 0.6384705114426766
+            }
+          ],
+          [
+            {
+              "re": 0.24656681102096212,
+              "im": 0.6383375114426767
+            },
+            {
+              "re": 0.24601281102096212,
+              "im": 0.6141955114426767
+            },
+            {
+              "re": 0.24661881102096211,
+              "im": 0.6384705114426766
+            },
+            {
+              "re": 0.7711408110209621,
+              "im": 0.7080275114426766
+            }
+          ]
+        ]
+      },
+      "construction_input": {
+        "name": "UGHV 185 Al PILC 4-wire construction fixture",
+        "diameter_mm": 16.6,
+        "rac_ohm_per_km": 0.198,
+        "gmr_m": 0.006464040000000001,
+        "radius_m": 0.0083,
+        "frequency_hz": 50,
+        "length_km": 0.1,
+        "earth_resistivity_ohm_m": 100,
+        "coordinates_m": {
+          "x": [
+            0,
+            -0.032,
+            -0.032,
+            0
+          ],
+          "y": [
+            1.032,
+            1.032,
+            1.0,
+            1.0
+          ]
+        },
+        "earth_model": "modified_carson"
+      },
+      "generated_primitive": {
+        "series_ohm_per_km": [
+          [
+            {
+              "re": 0.24734802200544684,
+              "im": 0.7463546411834191
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6458562612771329
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6240804003740968
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6458562612771329
+            }
+          ],
+          [
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6458562612771329
+            },
+            {
+              "re": 0.24734802200544684,
+              "im": 0.7463546411834191
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6458562612771329
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6240804003740968
+            }
+          ],
+          [
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6240804003740968
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6458562612771329
+            },
+            {
+              "re": 0.24734802200544684,
+              "im": 0.7463546411834191
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6458562612771329
+            }
+          ],
+          [
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6458562612771329
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6240804003740968
+            },
+            {
+              "re": 0.04934802200544679,
+              "im": 0.6458562612771329
+            },
+            {
+              "re": 0.24734802200544684,
+              "im": 0.7463546411834191
+            }
+          ]
+        ],
+        "capacitance_nF_per_km": [
+          31.031594340367352,
+          -13.106878660431558,
+          -1.7454810485099912,
+          -13.078144409622348,
+          -13.106878660431558,
+          31.031594340367352,
+          -13.078144409622348,
+          -1.7454810485099868,
+          -1.7454810485099912,
+          -13.078144409622348,
+          31.090405915217968,
+          -13.04832265471536,
+          -13.078144409622348,
+          -1.7454810485099868,
+          -13.04832265471536,
+          31.090405915217968
+        ]
+      },
+      "cases": {
+        "unbalanced": {
+          "independent_reference": {
+            "grounding_losses_va": {
+              "re": 584.4540859865249,
+              "im": 58.44540859865248
+            },
+            "complex_line_loss_error_va": 1.3127149757609193e-5,
+            "method": "LinearAlgebra-only damped Newton constant-power solve",
+            "line_shunt_convention": "j*2*pi*f*C_per_m*1000*length_km, split equally by nominal-pi ends",
+            "load_model": "constant-power wye loads; pf=0.9 lagging",
+            "circuit_losses_va": {
+              "re": 1843.207180724423,
+              "im": 725.0009197648703
+            },
+            "line_current_from_source_a": [
+              {
+                "re": 165.94872297303255,
+                "im": -74.49046290257152
+              },
+              {
+                "re": -112.77679565132478,
+                "im": -69.93171635367936
+              },
+              {
+                "re": -6.89123873999733,
+                "im": 83.57286792041016
+              },
+              {
+                "re": -46.280688779604034,
+                "im": 60.84931146652944
+              }
+            ],
+            "line_losses_va": {
+              "re": 1258.7530947378982,
+              "im": 666.5555111662179
+            },
+            "grounding_impedance_ohm": {
+              "re": 0.1,
+              "im": 0.01
+            },
+            "iterations": 3,
+            "residual_norm": 1.1226575225009583e-12,
+            "voltage_nodes_v": [
+              {
+                "re": 226.72371611744458,
+                "im": -0.20784966448079173
+              },
+              {
+                "re": -114.07237610359417,
+                "im": -197.58274400651277
+              },
+              {
+                "re": -114.33150660634509,
+                "im": 198.7758781415871
+              },
+              {
+                "re": 6.916728607161796,
+                "im": -6.607408706466897
+              }
+            ],
+            "voltage_magnitudes_v": [
+              226.72381139083436,
+              228.1478637179472,
+              229.3110183437242,
+              9.565510150505562
+            ],
+            "converged": true,
+            "line_current_from_load_a": [
+              {
+                "re": -165.94881097223595,
+                "im": 74.49079188000083
+              },
+              {
+                "re": 112.77712606150114,
+                "im": 69.93152526730296
+              },
+              {
+                "re": 6.890904015499185,
+                "im": -83.57296405424495
+              },
+              {
+                "re": 46.28078089523566,
+                "im": -60.84935309305884
+              }
+            ],
+            "max_voltage_magnitude_error_v": 2.030841450562093e-7,
+            "crosscheck_status": "agreement",
+            "frequency_hz": 60,
+            "complex_loss_error_va": 587.3690994693977
+          },
+          "loads_kva": [
+            40,
+            30,
+            20
+          ],
+          "opendss_grounding_losses_va": {
+            "re": 584.4540601902911,
+            "im": 58.44540601902912
+          },
+          "voltage_nodes_v": [
+            {
+              "re": 226.7237159687848,
+              "im": -0.20784980643556494
+            },
+            {
+              "re": -114.07237611939652,
+              "im": -197.58274381456286
+            },
+            {
+              "re": -114.33150649307615,
+              "im": 198.77587809444557
+            },
+            {
+              "re": 6.916728379454343,
+              "im": -6.607408650830444
+            }
+          ],
+          "voltage_magnitudes_v": [
+            226.72381124230478,
+            228.147863559614,
+            229.31101824638563,
+            9.565509947421416
+          ],
+          "circuit_losses_va": {
+            "re": 1258.7530827930063,
+            "im": 666.5555057218062
+          },
+          "model_source": "BMOPFTools Carson primitive; line code generated in memory",
+          "vminpu": 0,
+          "scenario": "unbalanced",
+          "opendss_frequency_hz": 60,
+          "opendss_line": {
+            "powers_va": [
+              {
+                "re": 38.3242155920285,
+                "im": 17.202835379242234
+              },
+              {
+                "re": 27.00868602167812,
+                "im": 14.480340086982368
+              },
+              {
+                "re": 17.51030540644993,
+                "im": 8.271915874716731
+              },
+              {
+                "re": -0.584454060190301,
+                "im": -0.058445406019024516
+              },
+              {
+                "re": -37.640013646065455,
+                "im": -16.854336608212837
+              },
+              {
+                "re": -26.682017477626403,
+                "im": -14.305558784199873
+              },
+              {
+                "re": -17.40013686877992,
+                "im": -8.185277458578149
+              },
+              {
+                "re": 0.7221681152985296,
+                "im": 0.11508242179035819
+              }
+            ],
+            "losses_va": {
+              "re": 1258.7530827930063,
+              "im": 666.5555057218062
+            },
+            "currents_a": [
+              {
+                "re": 165.94872149661433,
+                "im": -74.49046244233502
+              },
+              {
+                "re": -112.77679597343138,
+                "im": -69.93171664560488
+              },
+              {
+                "re": -6.891238718987871,
+                "im": 83.57286851984483
+              },
+              {
+                "re": -46.28068700208823,
+                "im": 60.84931069878968
+              },
+              {
+                "re": -165.94880949581716,
+                "im": 74.49079141976483
+              },
+              {
+                "re": 112.77712638360978,
+                "im": 69.93152555922826
+              },
+              {
+                "re": 6.890903994490301,
+                "im": -83.57296465367688
+              },
+              {
+                "re": 46.28077911771935,
+                "im": -60.84935232531899
+              }
+            ],
+            "node_order": [
+              1,
+              2,
+              3,
+              4,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "commands": [
+            "clear",
+            "new circuit.UGHV_185_Al_PILC_4_wire_construction_fixture_unbalanced phases=3 basekv=0.4 bus1=B1 mvasc1=1e8 mvasc3=1e8",
+            "new linecode.CarsonGenerated nphases=4 units=km",
+            "~ rmatrix=(0.247348022005 | 0.0493480220054 0.247348022005 | 0.0493480220054 0.0493480220054 0.247348022005 | 0.0493480220054 0.0493480220054 0.0493480220054 0.247348022005)",
+            "~ xmatrix=(0.746354641183 | 0.645856261277 0.746354641183 | 0.624080400374 0.645856261277 0.746354641183 | 0.645856261277 0.624080400374 0.645856261277 0.746354641183)",
+            "~ cmatrix=(31.0315943404 | -13.1068786604 31.0315943404 | -1.74548104851 -13.0781444096 31.0904059152 | -13.0781444096 -1.74548104851 -13.0483226547 31.0904059152)",
+            "new line.Line1 bus1=B1.1.2.3.4 bus2=B2.1.2.3.4 linecode=CarsonGenerated length=0.1 units=km",
+            "new reactor.grounding phases=1 bus1=B1.4 bus2=B1.0 R=0.1 X=0.01",
+            "new load.LoadP1 phases=1 bus1=B2.1.4 kv=0.23 model=1 conn=wye kVA=40.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP2 phases=1 bus1=B2.2.4 kv=0.23 model=1 conn=wye kVA=30.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP3 phases=1 bus1=B2.3.4 kv=0.23 model=1 conn=wye kVA=20.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "set voltagebases=[0.4]",
+            "set tolerance=0.00000001",
+            "calcvoltagebases",
+            "solve mode=Snap Clear"
+          ],
+          "solve": {
+            "iterations": 10,
+            "error_number": 1,
+            "bus_names": [
+              "b1",
+              "b2"
+            ],
+            "converged": true,
+            "error_description": ""
+          },
+          "vmaxpu": 2,
+          "source_bus_voltage_nodes_v": [
+            {
+              "re": 230.94010749462814,
+              "im": -1.4772741749768402e-7
+            },
+            {
+              "re": -115.47005385884118,
+              "im": -199.9999998209322
+            },
+            {
+              "re": -115.47005372925953,
+              "im": 199.99999996815092
+            },
+            {
+              "re": 5.2365618071965825,
+              "im": -5.622124199858045
+            }
+          ]
+        },
+        "veryunbalanced": {
+          "independent_reference": {
+            "grounding_losses_va": {
+              "re": 2239.1163032949335,
+              "im": 223.91163032949333
+            },
+            "complex_line_loss_error_va": 3.6353287865755825e-5,
+            "method": "LinearAlgebra-only damped Newton constant-power solve",
+            "line_shunt_convention": "j*2*pi*f*C_per_m*1000*length_km, split equally by nominal-pi ends",
+            "load_model": "constant-power wye loads; pf=0.9 lagging",
+            "circuit_losses_va": {
+              "re": 3555.5330843896736,
+              "im": 925.0261342584229
+            },
+            "line_current_from_source_a": [
+              {
+                "re": 171.8867954999385,
+                "im": -85.35073579216619
+              },
+              {
+                "re": -10.64944983973903,
+                "im": -6.32983816380756
+              },
+              {
+                "re": -11.824652325462631,
+                "im": 83.49462301920683
+              },
+              {
+                "re": -149.41269430197866,
+                "im": 8.185952258196343
+              }
+            ],
+            "line_losses_va": {
+              "re": 1316.4167810947401,
+              "im": 701.1145039289295
+            },
+            "grounding_impedance_ohm": {
+              "re": 0.1,
+              "im": 0.01
+            },
+            "iterations": 3,
+            "residual_norm": 5.899103427964292e-11,
+            "voltage_nodes_v": [
+              {
+                "re": 226.49716877355962,
+                "im": -0.06323587441238729
+              },
+              {
+                "re": -115.34062992017681,
+                "im": -200.09300326937128
+              },
+              {
+                "re": -114.21096209667591,
+                "im": 198.83993804863692
+              },
+              {
+                "re": 18.07755239236393,
+                "im": 1.9918329148272615
+              }
+            ],
+            "voltage_magnitudes_v": [
+              226.49717760098946,
+              230.95599335747883,
+              229.30648666410227,
+              18.18695408415747
+            ],
+            "converged": true,
+            "line_current_from_load_a": [
+              {
+                "re": -171.8868805294635,
+                "im": 85.35105978255557
+              },
+              {
+                "re": 10.649782259896686,
+                "im": 6.3296456726419565
+              },
+              {
+                "re": 11.824320613326446,
+                "im": -83.49472391441485
+              },
+              {
+                "re": 149.41277765624153,
+                "im": -8.185981540782846
+              }
+            ],
+            "max_voltage_magnitude_error_v": 3.3291932055590223e-7,
+            "crosscheck_status": "agreement",
+            "frequency_hz": 60,
+            "complex_loss_error_va": 2250.2840688658293
+          },
+          "loads_kva": [
+            40,
+            3,
+            20
+          ],
+          "opendss_grounding_losses_va": {
+            "re": 2239.116221331301,
+            "im": 223.91162213313015
+          },
+          "voltage_nodes_v": [
+            {
+              "re": 226.4971686246094,
+              "im": -0.06323601895746804
+            },
+            {
+              "re": -115.34062988242245,
+              "im": -200.09300326820954
+            },
+            {
+              "re": -114.21096197949488,
+              "im": 198.83993799609783
+            },
+            {
+              "re": 18.07755203766478,
+              "im": 1.9918330942117892
+            }
+          ],
+          "voltage_magnitudes_v": [
+            226.4971774520796,
+            230.95599333761763,
+            229.30648656017922,
+            18.18695375123815
+          ],
+          "circuit_losses_va": {
+            "re": 1316.4167486291717,
+            "im": 701.1144875720225
+          },
+          "model_source": "BMOPFTools Carson primitive; line code generated in memory",
+          "vminpu": 0,
+          "scenario": "veryunbalanced",
+          "opendss_frequency_hz": 60,
+          "opendss_line": {
+            "powers_va": [
+              {
+                "re": 39.69555445151126,
+                "im": 19.71090788142717
+              },
+              {
+                "re": 2.4956601846741897,
+                "im": 1.3989832142638057
+              },
+              {
+                "re": 18.064318079625522,
+                "im": 7.276198257206827
+              },
+              {
+                "re": -2.2391162213313183,
+                "im": -0.2239116221331506
+              },
+              {
+                "re": -38.937288448936386,
+                "im": -19.320903752909935
+              },
+              {
+                "re": -2.4948704121286607,
+                "im": -1.400881597333229
+              },
+              {
+                "re": -17.95255299521464,
+                "im": -7.1848656751642865
+              },
+              {
+                "re": 2.6847121104292073,
+                "im": 0.44558778221482376
+              }
+            ],
+            "losses_va": {
+              "re": 1316.4167486291717,
+              "im": 701.1144875720225
+            },
+            "currents_a": [
+              {
+                "re": 171.88679295736307,
+                "im": -85.35073497505337
+              },
+              {
+                "re": -10.649449851043357,
+                "im": -6.329838186772605
+              },
+              {
+                "re": -11.82465240821233,
+                "im": 83.49462416393695
+              },
+              {
+                "re": -149.41269166534346,
+                "im": 8.185950319321108
+              },
+              {
+                "re": -171.88687798688701,
+                "im": 85.35105896544269
+              },
+              {
+                "re": 10.64978227120082,
+                "im": 6.329645695607013
+              },
+              {
+                "re": 11.824320696077677,
+                "im": -83.49472505914464
+              },
+              {
+                "re": 149.4127750196061,
+                "im": -8.18597960190786
+              }
+            ],
+            "node_order": [
+              1,
+              2,
+              3,
+              4,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "commands": [
+            "clear",
+            "new circuit.UGHV_185_Al_PILC_4_wire_construction_fixture_veryunbalanced phases=3 basekv=0.4 bus1=B1 mvasc1=1e8 mvasc3=1e8",
+            "new linecode.CarsonGenerated nphases=4 units=km",
+            "~ rmatrix=(0.247348022005 | 0.0493480220054 0.247348022005 | 0.0493480220054 0.0493480220054 0.247348022005 | 0.0493480220054 0.0493480220054 0.0493480220054 0.247348022005)",
+            "~ xmatrix=(0.746354641183 | 0.645856261277 0.746354641183 | 0.624080400374 0.645856261277 0.746354641183 | 0.645856261277 0.624080400374 0.645856261277 0.746354641183)",
+            "~ cmatrix=(31.0315943404 | -13.1068786604 31.0315943404 | -1.74548104851 -13.0781444096 31.0904059152 | -13.0781444096 -1.74548104851 -13.0483226547 31.0904059152)",
+            "new line.Line1 bus1=B1.1.2.3.4 bus2=B2.1.2.3.4 linecode=CarsonGenerated length=0.1 units=km",
+            "new reactor.grounding phases=1 bus1=B1.4 bus2=B1.0 R=0.1 X=0.01",
+            "new load.LoadP1 phases=1 bus1=B2.1.4 kv=0.23 model=1 conn=wye kVA=40.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP2 phases=1 bus1=B2.2.4 kv=0.23 model=1 conn=wye kVA=3.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP3 phases=1 bus1=B2.3.4 kv=0.23 model=1 conn=wye kVA=20.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "set voltagebases=[0.4]",
+            "set tolerance=0.00000001",
+            "calcvoltagebases",
+            "solve mode=Snap Clear"
+          ],
+          "solve": {
+            "iterations": 11,
+            "error_number": 1,
+            "bus_names": [
+              "b1",
+              "b2"
+            ],
+            "converged": true,
+            "error_description": ""
+          },
+          "vmaxpu": 2,
+          "source_bus_voltage_nodes_v": [
+            {
+              "re": 230.94010747082837,
+              "im": -1.537398434176627e-7
+            },
+            {
+              "re": -115.47005380438567,
+              "im": -200.00000000514788
+            },
+            {
+              "re": -115.47005373210439,
+              "im": 199.99999997482948
+            },
+            {
+              "re": 15.023128669727425,
+              "im": 0.6755318847214431
+            }
+          ]
+        },
+        "balanced": {
+          "independent_reference": {
+            "grounding_losses_va": {
+              "re": 0.011322425405160309,
+              "im": 0.0011322425405160307
+            },
+            "complex_line_loss_error_va": 2.350884232361164e-6,
+            "method": "LinearAlgebra-only damped Newton constant-power solve",
+            "line_shunt_convention": "j*2*pi*f*C_per_m*1000*length_km, split equally by nominal-pi ends",
+            "load_model": "constant-power wye loads; pf=0.9 lagging",
+            "circuit_losses_va": {
+              "re": 1028.6156878683864,
+              "im": 559.3409711632692
+            },
+            "line_current_from_source_a": [
+              {
+                "re": 118.71016801195636,
+                "im": -57.38091536792667
+              },
+              {
+                "re": -109.04109133840247,
+                "im": -73.74494253120339
+              },
+              {
+                "re": -9.380593002658204,
+                "im": 130.95264966144057
+              },
+              {
+                "re": -0.2884845485924177,
+                "im": 0.17320773445543608
+              }
+            ],
+            "line_losses_va": {
+              "re": 1028.6043654429814,
+              "im": 559.3398389207287
+            },
+            "grounding_impedance_ohm": {
+              "re": 0.1,
+              "im": 0.01
+            },
+            "iterations": 3,
+            "residual_norm": 3.566036355096003e-13,
+            "voltage_nodes_v": [
+              {
+                "re": 227.72781413120273,
+                "im": -0.07729960480944827
+              },
+              {
+                "re": -114.0525379383753,
+                "im": -197.4446333312225
+              },
+              {
+                "re": -113.84331577577157,
+                "im": 197.75991010965325
+              },
+              {
+                "re": 0.19862006593569112,
+                "im": -0.2524129756125299
+              }
+            ],
+            "voltage_magnitudes_v": [
+              227.72782725043623,
+              228.01834277418436,
+              228.18694658853772,
+              0.3211887931573421
+            ],
+            "converged": true,
+            "line_current_from_load_a": [
+              {
+                "re": -118.71025313782054,
+                "im": 57.38124785121483
+              },
+              {
+                "re": 109.04142184318421,
+                "im": 73.74475148033318
+              },
+              {
+                "re": 9.380261854183278,
+                "im": -130.9527426143121
+              },
+              {
+                "re": 0.28856944045292954,
+                "im": -0.1732567172358153
+              }
+            ],
+            "max_voltage_magnitude_error_v": 2.131489225121186e-7,
+            "crosscheck_status": "agreement",
+            "frequency_hz": 60,
+            "complex_loss_error_va": 0.0113775969149715
+          },
+          "loads_kva": [
+            30,
+            30,
+            30
+          ],
+          "opendss_grounding_losses_va": {
+            "re": 0.011322648123099362,
+            "im": 0.0011322648123099363
+          },
+          "voltage_nodes_v": [
+            {
+              "re": 227.72781391802837,
+              "im": -0.07729967978307378
+            },
+            {
+              "re": -114.05253801862531,
+              "im": -197.4446332993069
+            },
+            {
+              "re": -113.84331553818548,
+              "im": 197.75991000681194
+            },
+            {
+              "re": 0.19862079063925542,
+              "im": -0.25241220008638615
+            }
+          ],
+          "voltage_magnitudes_v": [
+            227.7278270372873,
+            228.01834278668844,
+            228.18694638087698,
+            0.3211886318452332
+          ],
+          "circuit_losses_va": {
+            "re": 1028.604366931393,
+            "im": 559.3398371010344
+          },
+          "model_source": "BMOPFTools Carson primitive; line code generated in memory",
+          "vminpu": 0,
+          "scenario": "balanced",
+          "opendss_frequency_hz": 60,
+          "opendss_line": {
+            "powers_va": [
+              {
+                "re": 27.41493957709156,
+                "im": 13.251555187041426
+              },
+              {
+                "re": 27.33996785244199,
+                "im": 13.292885162651714
+              },
+              {
+                "re": 27.273708268241187,
+                "im": 13.24499111998817
+              },
+              {
+                "re": -1.1322648123137235e-5,
+                "im": -1.1322648123004032e-6
+              },
+              {
+                "re": -27.03806258595811,
+                "im": -13.058130293442552
+              },
+              {
+                "re": -26.996955009402164,
+                "im": -13.118866886318754
+              },
+              {
+                "re": -26.96508346090738,
+                "im": -13.05305489169406
+              },
+              {
+                "re": 0.00010104807243079462,
+                "im": -3.842886009535314e-5
+              }
+            ],
+            "losses_va": {
+              "re": 1028.604366931393,
+              "im": 559.3398371010344
+            },
+            "currents_a": [
+              {
+                "re": 118.71017063349854,
+                "im": -57.38091723486663
+              },
+              {
+                "re": -109.0410862059177,
+                "im": -73.74493883709165
+              },
+              {
+                "re": -9.380593768206673,
+                "im": 130.95265304487188
+              },
+              {
+                "re": -0.28849153707692254,
+                "im": 0.17320252384627466
+              },
+              {
+                "re": -118.7102557593611,
+                "im": 57.38124971815411
+              },
+              {
+                "re": 109.04141671069844,
+                "im": 73.74474778622195
+              },
+              {
+                "re": 9.380262619732656,
+                "im": -130.95274599774072
+              },
+              {
+                "re": 0.28857642893595825,
+                "im": -0.1732515066257303
+              }
+            ],
+            "node_order": [
+              1,
+              2,
+              3,
+              4,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "commands": [
+            "clear",
+            "new circuit.UGHV_185_Al_PILC_4_wire_construction_fixture_balanced phases=3 basekv=0.4 bus1=B1 mvasc1=1e8 mvasc3=1e8",
+            "new linecode.CarsonGenerated nphases=4 units=km",
+            "~ rmatrix=(0.247348022005 | 0.0493480220054 0.247348022005 | 0.0493480220054 0.0493480220054 0.247348022005 | 0.0493480220054 0.0493480220054 0.0493480220054 0.247348022005)",
+            "~ xmatrix=(0.746354641183 | 0.645856261277 0.746354641183 | 0.624080400374 0.645856261277 0.746354641183 | 0.645856261277 0.624080400374 0.645856261277 0.746354641183)",
+            "~ cmatrix=(31.0315943404 | -13.1068786604 31.0315943404 | -1.74548104851 -13.0781444096 31.0904059152 | -13.0781444096 -1.74548104851 -13.0483226547 31.0904059152)",
+            "new line.Line1 bus1=B1.1.2.3.4 bus2=B2.1.2.3.4 linecode=CarsonGenerated length=0.1 units=km",
+            "new reactor.grounding phases=1 bus1=B1.4 bus2=B1.0 R=0.1 X=0.01",
+            "new load.LoadP1 phases=1 bus1=B2.1.4 kv=0.23 model=1 conn=wye kVA=30.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP2 phases=1 bus1=B2.2.4 kv=0.23 model=1 conn=wye kVA=30.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP3 phases=1 bus1=B2.3.4 kv=0.23 model=1 conn=wye kVA=30.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "set voltagebases=[0.4]",
+            "set tolerance=0.00000001",
+            "calcvoltagebases",
+            "solve mode=Snap Clear"
+          ],
+          "solve": {
+            "iterations": 7,
+            "error_number": 1,
+            "bus_names": [
+              "b1",
+              "b2"
+            ],
+            "converged": true,
+            "error_description": ""
+          },
+          "vmaxpu": 2,
+          "source_bus_voltage_nodes_v": [
+            {
+              "re": 230.94010754070615,
+              "im": -8.39273761218704e-8
+            },
+            {
+              "re": -115.47005386502103,
+              "im": -199.9999998281366
+            },
+            {
+              "re": -115.4700536535605,
+              "im": 199.99999995074347
+            },
+            {
+              "re": 0.030581178946039456,
+              "im": -0.014435337013847256
+            }
+          ]
+        },
+        "balanced_low_grounding": {
+          "independent_reference": {
+            "grounding_losses_va": {
+              "re": 0.0011278588607733296,
+              "im": 0.00011278588607733299
+            },
+            "complex_line_loss_error_va": 1.9711166674069274e-6,
+            "method": "LinearAlgebra-only damped Newton constant-power solve",
+            "line_shunt_convention": "j*2*pi*f*C_per_m*1000*length_km, split equally by nominal-pi ends",
+            "load_model": "constant-power wye loads; pf=0.9 lagging",
+            "circuit_losses_va": {
+              "re": 1028.6048025394957,
+              "im": 559.3381120798233
+            },
+            "line_current_from_source_a": [
+              {
+                "re": 118.69241501262958,
+                "im": -57.38060100588212
+              },
+              {
+                "re": -109.03262219480146,
+                "im": -73.76009546974366
+              },
+              {
+                "re": -9.371827009231238,
+                "im": 130.9678924020919
+              },
+              {
+                "re": -0.28796668786912966,
+                "im": 0.1728035669628608
+              }
+            ],
+            "line_losses_va": {
+              "re": 1028.6036746806349,
+              "im": 559.3379992939372
+            },
+            "grounding_impedance_ohm": {
+              "re": 0.01,
+              "im": 0.001
+            },
+            "iterations": 2,
+            "residual_norm": 2.448501845719875e-9,
+            "voltage_nodes_v": [
+              {
+                "re": 227.7281356074032,
+                "im": -0.0771083254868335
+              },
+              {
+                "re": -114.05285703202604,
+                "im": -197.44441728877632
+              },
+              {
+                "re": -113.84333684001152,
+                "im": 197.75948154810845
+              },
+              {
+                "re": 0.1711106854551556,
+                "im": -0.23939587658321052
+              }
+            ],
+            "voltage_magnitudes_v": [
+              227.72814866177103,
+              228.01831530750377,
+              228.1865856816412,
+              0.2942605179122353
+            ],
+            "converged": true,
+            "line_current_from_load_a": [
+              {
+                "re": -118.69250013215374,
+                "im": 57.38093350300554
+              },
+              {
+                "re": 109.0329527002543,
+                "im": 73.75990442042338
+              },
+              {
+                "re": 9.371495867465036,
+                "im": -130.9679853413709
+              },
+              {
+                "re": 0.28805156443385355,
+                "im": -0.17285258206097154
+              }
+            ],
+            "max_voltage_magnitude_error_v": 1.7894680581775901e-7,
+            "crosscheck_status": "agreement",
+            "frequency_hz": 60,
+            "complex_loss_error_va": 0.001131563284322473
+          },
+          "loads_kva": [
+            30,
+            30,
+            30
+          ],
+          "opendss_grounding_losses_va": {
+            "re": 0.0011278470806675334,
+            "im": 0.00011278470806675328
+          },
+          "voltage_nodes_v": [
+            {
+              "re": 227.72813548946445,
+              "im": -0.07710840688538126
+            },
+            {
+              "re": -114.0528570597569,
+              "im": -197.44441712751055
+            },
+            {
+              "re": -113.84333663574368,
+              "im": 197.75948145921905
+            },
+            {
+              "re": 0.17111064153540448,
+              "im": -0.23939580335262237
+            }
+          ],
+          "voltage_magnitudes_v": [
+            227.72814854385985,
+            228.0183151817321,
+            228.18658550269438,
+            0.2942604327963668
+          ],
+          "circuit_losses_va": {
+            "re": 1028.6036765480535,
+            "im": 559.3379999248481
+          },
+          "model_source": "BMOPFTools Carson primitive; line code generated in memory",
+          "vminpu": 0,
+          "scenario": "balanced_low_grounding",
+          "opendss_frequency_hz": 60,
+          "opendss_line": {
+            "powers_va": [
+              {
+                "re": 27.410838881265597,
+                "im": 13.251482080779061
+              },
+              {
+                "re": 27.342021714761465,
+                "im": 13.289442164645536
+              },
+              {
+                "re": 27.275744234788135,
+                "im": 13.248504372067028
+              },
+              {
+                "re": -1.1278470806644536e-6,
+                "im": -1.1278470806945312e-7
+              },
+              {
+                "re": -27.034046096120882,
+                "im": -13.05810073450994
+              },
+              {
+                "re": -26.999000981965388,
+                "im": -13.115419900162994
+              },
+              {
+                "re": -26.967043616498902,
+                "im": -13.056530488360533
+              },
+              {
+                "re": 9.066816510361617e-5,
+                "im": -3.938174860391255e-5
+              }
+            ],
+            "losses_va": {
+              "re": 1028.6036765480535,
+              "im": 559.3379999248481
+            },
+            "currents_a": [
+              {
+                "re": 118.69241409969892,
+                "im": -57.38060067544214
+              },
+              {
+                "re": -109.03262170575503,
+                "im": -73.76009513013335
+              },
+              {
+                "re": -9.371827069770905,
+                "im": 130.96789433331784
+              },
+              {
+                "re": -0.2879662034422805,
+                "im": 0.1728009656837486
+              },
+              {
+                "re": -118.69249921922291,
+                "im": 57.38093317256584
+              },
+              {
+                "re": 109.03295221120663,
+                "im": 73.75990408081361
+              },
+              {
+                "re": 9.371495928005576,
+                "im": -130.96798727259738
+              },
+              {
+                "re": 0.2880510800068248,
+                "im": -0.17284998078154068
+              }
+            ],
+            "node_order": [
+              1,
+              2,
+              3,
+              4,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "commands": [
+            "clear",
+            "new circuit.UGHV_185_Al_PILC_4_wire_construction_fixture_balanced_low_grounding phases=3 basekv=0.4 bus1=B1 mvasc1=1e8 mvasc3=1e8",
+            "new linecode.CarsonGenerated nphases=4 units=km",
+            "~ rmatrix=(0.247348022005 | 0.0493480220054 0.247348022005 | 0.0493480220054 0.0493480220054 0.247348022005 | 0.0493480220054 0.0493480220054 0.0493480220054 0.247348022005)",
+            "~ xmatrix=(0.746354641183 | 0.645856261277 0.746354641183 | 0.624080400374 0.645856261277 0.746354641183 | 0.645856261277 0.624080400374 0.645856261277 0.746354641183)",
+            "~ cmatrix=(31.0315943404 | -13.1068786604 31.0315943404 | -1.74548104851 -13.0781444096 31.0904059152 | -13.0781444096 -1.74548104851 -13.0483226547 31.0904059152)",
+            "new line.Line1 bus1=B1.1.2.3.4 bus2=B2.1.2.3.4 linecode=CarsonGenerated length=0.1 units=km",
+            "new reactor.grounding phases=1 bus1=B1.4 bus2=B1.0 R=0.01 X=0.001",
+            "new load.LoadP1 phases=1 bus1=B2.1.4 kv=0.23 model=1 conn=wye kVA=30.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP2 phases=1 bus1=B2.2.4 kv=0.23 model=1 conn=wye kVA=30.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP3 phases=1 bus1=B2.3.4 kv=0.23 model=1 conn=wye kVA=30.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "set voltagebases=[0.4]",
+            "set tolerance=0.00000001",
+            "calcvoltagebases",
+            "solve mode=Snap Clear"
+          ],
+          "solve": {
+            "iterations": 5,
+            "error_number": 1,
+            "bus_names": [
+              "b1",
+              "b2"
+            ],
+            "converged": true,
+            "error_description": ""
+          },
+          "vmaxpu": 2,
+          "source_bus_voltage_nodes_v": [
+            {
+              "re": 230.9401075407135,
+              "im": -8.389994105903008e-8
+            },
+            {
+              "re": -115.47005386504783,
+              "im": -199.9999998281439
+            },
+            {
+              "re": -115.47005365354025,
+              "im": 199.99999995072392
+            },
+            {
+              "re": 0.0030524630001178854,
+              "im": -0.0014400434533906976
+            }
+          ]
+        },
+        "balanced_high_grounding": {
+          "independent_reference": {
+            "grounding_losses_va": {
+              "re": 0.11807135493309315,
+              "im": 0.011807135493309334
+            },
+            "complex_line_loss_error_va": 0.00025247176114374264,
+            "method": "LinearAlgebra-only damped Newton constant-power solve",
+            "line_shunt_convention": "j*2*pi*f*C_per_m*1000*length_km, split equally by nominal-pi ends",
+            "load_model": "constant-power wye loads; pf=0.9 lagging",
+            "circuit_losses_va": {
+              "re": 1028.7317244390072,
+              "im": 559.3709835959722
+            },
+            "line_current_from_source_a": [
+              {
+                "re": 118.89209176026823,
+                "im": -57.38395136278526
+              },
+              {
+                "re": -109.12757954068594,
+                "im": -73.5898047254186
+              },
+              {
+                "re": -9.469996439137386,
+                "im": 130.7967491149716
+              },
+              {
+                "re": -0.2945166419993177,
+                "im": 0.1770065041702932
+              }
+            ],
+            "line_losses_va": {
+              "re": 1028.613653084074,
+              "im": 559.3591764604789
+            },
+            "grounding_impedance_ohm": {
+              "re": 1,
+              "im": 0.1
+            },
+            "iterations": 3,
+            "residual_norm": 3.410605131648481e-13,
+            "voltage_nodes_v": [
+              {
+                "re": 227.724521017552,
+                "im": -0.07926248222660862
+              },
+              {
+                "re": -114.04927463287429,
+                "im": -197.44684900376134
+              },
+              {
+                "re": -113.84310575086337,
+                "im": 197.76429158291515
+              },
+              {
+                "re": 0.4800766136193781,
+                "im": -0.3857348137520842
+              }
+            ],
+            "voltage_magnitudes_v": [
+              227.72453481172067,
+              228.01862912007633,
+              228.19063905492388,
+              0.6158448680346412
+            ],
+            "converged": true,
+            "line_current_from_load_a": [
+              {
+                "re": -118.89217695106974,
+                "im": 57.38428370452185
+              },
+              {
+                "re": 109.12791003859255,
+                "im": 73.58961365869237
+              },
+              {
+                "re": 9.4696652219515,
+                "im": -130.79684220691178
+              },
+              {
+                "re": 0.2946016905257222,
+                "im": -0.17705515630249133
+              }
+            ],
+            "max_voltage_magnitude_error_v": 0.00032534386779836666,
+            "crosscheck_status": "agreement",
+            "frequency_hz": 60,
+            "complex_loss_error_va": 0.11859899422716005
+          },
+          "loads_kva": [
+            30,
+            30,
+            30
+          ],
+          "opendss_grounding_losses_va": {
+            "re": 0.11844802804723557,
+            "im": 0.011844802804723553
+          },
+          "voltage_nodes_v": [
+            {
+              "re": 227.7244998060936,
+              "im": -0.07925675228651247
+            },
+            {
+              "re": -114.04928165626026,
+              "im": -197.4468775084552
+            },
+            {
+              "re": -113.84308901465988,
+              "im": 197.76429393216173
+            },
+            {
+              "re": 0.4809617678201947,
+              "im": -0.38515127928019455
+            }
+          ],
+          "voltage_magnitudes_v": [
+            227.72451359826923,
+            228.0186573159045,
+            228.19063274132495,
+            0.6161702119024396
+          ],
+          "circuit_losses_va": {
+            "re": 1028.6136899154453,
+            "im": 559.3594262312544
+          },
+          "model_source": "BMOPFTools Carson primitive; line code generated in memory",
+          "vminpu": 0,
+          "scenario": "balanced_high_grounding",
+          "opendss_frequency_hz": 60,
+          "opendss_line": {
+            "powers_va": [
+              {
+                "re": 27.457108754803592,
+                "im": 13.252418826027826
+              },
+              {
+                "re": 27.318646925026105,
+                "im": 13.328028808558809
+              },
+              {
+                "re": 27.25297640861921,
+                "im": 13.209015033359512
+              },
+              {
+                "re": -0.00011844802804726703,
+                "im": -1.1844802804541998e-5
+              },
+              {
+                "re": -27.07936379175578,
+                "im": -13.058544910261682
+              },
+              {
+                "re": -26.975721234741258,
+                "im": -13.154055066826269
+              },
+              {
+                "re": -26.945125070609954,
+                "im": -13.017462529213908
+              },
+              {
+                "re": 0.00021014660158194073,
+                "im": -2.8890610228835947e-5
+              }
+            ],
+            "losses_va": {
+              "re": 1028.6136899154453,
+              "im": 559.3594262312544
+            },
+            "currents_a": [
+              {
+                "re": 118.89276852935023,
+                "im": -57.38465690160897
+              },
+              {
+                "re": -109.1267137161399,
+                "im": -73.58889713396657
+              },
+              {
+                "re": -9.470618300490276,
+                "im": 130.79701805871824
+              },
+              {
+                "re": -0.29543737518880153,
+                "im": 0.17653550744485713
+              },
+              {
+                "re": -118.89285371987853,
+                "im": 57.38498924290057
+              },
+              {
+                "re": 109.12704421410245,
+                "im": 73.58870606717856
+              },
+              {
+                "re": 9.470287083578654,
+                "im": -130.79711115107955
+              },
+              {
+                "re": 0.29552242304426457,
+                "im": -0.17658415854458553
+              }
+            ],
+            "node_order": [
+              1,
+              2,
+              3,
+              4,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "commands": [
+            "clear",
+            "new circuit.UGHV_185_Al_PILC_4_wire_construction_fixture_balanced_high_grounding phases=3 basekv=0.4 bus1=B1 mvasc1=1e8 mvasc3=1e8",
+            "new linecode.CarsonGenerated nphases=4 units=km",
+            "~ rmatrix=(0.247348022005 | 0.0493480220054 0.247348022005 | 0.0493480220054 0.0493480220054 0.247348022005 | 0.0493480220054 0.0493480220054 0.0493480220054 0.247348022005)",
+            "~ xmatrix=(0.746354641183 | 0.645856261277 0.746354641183 | 0.624080400374 0.645856261277 0.746354641183 | 0.645856261277 0.624080400374 0.645856261277 0.746354641183)",
+            "~ cmatrix=(31.0315943404 | -13.1068786604 31.0315943404 | -1.74548104851 -13.0781444096 31.0904059152 | -13.0781444096 -1.74548104851 -13.0483226547 31.0904059152)",
+            "new line.Line1 bus1=B1.1.2.3.4 bus2=B2.1.2.3.4 linecode=CarsonGenerated length=0.1 units=km",
+            "new reactor.grounding phases=1 bus1=B1.4 bus2=B1.0 R=1.0 X=0.1",
+            "new load.LoadP1 phases=1 bus1=B2.1.4 kv=0.23 model=1 conn=wye kVA=30.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP2 phases=1 bus1=B2.2.4 kv=0.23 model=1 conn=wye kVA=30.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "new load.LoadP3 phases=1 bus1=B2.3.4 kv=0.23 model=1 conn=wye kVA=30.0 pf=0.9 vminpu=0 vmaxpu=2",
+            "set voltagebases=[0.4]",
+            "set tolerance=0.00000001",
+            "calcvoltagebases",
+            "solve mode=Snap Clear"
+          ],
+          "solve": {
+            "iterations": 15,
+            "error_number": 1,
+            "bus_names": [
+              "b1",
+              "b2"
+            ],
+            "converged": false,
+            "error_description": ""
+          },
+          "vmaxpu": 2,
+          "source_bus_voltage_nodes_v": [
+            {
+              "re": 230.94010754062919,
+              "im": -8.420913265084392e-8
+            },
+            {
+              "re": -115.47005386474582,
+              "im": -199.99999982806398
+            },
+            {
+              "re": -115.47005365376738,
+              "im": 199.99999995094382
+            },
+            {
+              "re": 0.3130909259330255,
+              "im": -0.14699176992644405
+            }
+          ]
+        }
+      }
+    }
+  },
+  "underground_mapping_note": "construction fixture available; CS1035 case mapping not present in source repository"
+}

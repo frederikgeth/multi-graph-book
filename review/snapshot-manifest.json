@@ -1,0 +1,66 @@
+{
+  "deduplication": {
+    "path": "review/deduplication-register.csv",
+    "row_count": 29,
+    "sha256": "9288671ce375781afbc940e65c05a4d10275099af329784cbe105097cacc5d95"
+  },
+  "independent_double_coding": false,
+  "inputs": {
+    "review/bibliography-audit.toml": "8acefdb494cf477c08c825ea76611079235a1de80d5cc1794a781273c3455fa4",
+    "review/coding-guide.md": "8a282e7ecb302403f8897a165eb700084f3cffd2cbfff0a37df7a6eee18ddbb3",
+    "review/protocol.md": "3ce30aeea9161ddf5a3a866258c4126754f3bc05d082164e37762ca6d733ce2c",
+    "review/search-runs/2026-08-14-seed-batch.md": "bd0038ee6f0799be2c2fc00a16ecc82e38d207e22cd6d18dc69db1e2c3056adb",
+    "review/search-runs/2026-08-15-formulation-landscape.md": "414f5384b87cc5e53ca5ab62eedcf43345fe992c655ae0002e26541989a5c642",
+    "review/search-runs/2026-08-15-information-model-citation-chase.md": "42351417ea975f337076d124fb1a613fe8ae62757ce109b03ec6e2ae4c978dfa",
+    "review/search-runs/2026-08-16-multiphase-and-practical-reductions.md": "fb66ec740d92522d3512bf6b9131739d07b1dfe98f486a838bc340181b478910",
+    "review/search-strings.md": "2e1dc82eecbce8072a7707e53e018e00a53afb7141a4d70bce4e9971f189d073"
+  },
+  "matrix": {
+    "coding_status_counts": {
+      "single_coded": 29
+    },
+    "path": "review/evidence-matrix.csv",
+    "row_count": 29,
+    "sha256": "770b9f9baa4720e8e89f514e470ba7baec07ace45ea3fd1d0590dbda8c03342b"
+  },
+  "record_ids": [
+    "EV-0029",
+    "EV-0023",
+    "EV-0024",
+    "EV-0025",
+    "EV-0026",
+    "EV-0027",
+    "EV-0028",
+    "EV-0022",
+    "EV-0001",
+    "EV-0002",
+    "EV-0003",
+    "EV-0004",
+    "EV-0005",
+    "EV-0006",
+    "EV-0007",
+    "EV-0008",
+    "EV-0009",
+    "EV-0010",
+    "EV-0011",
+    "EV-0012",
+    "EV-0013",
+    "EV-0014",
+    "EV-0015",
+    "EV-0016",
+    "EV-0017",
+    "EV-0018",
+    "EV-0019",
+    "EV-0020",
+    "EV-0021"
+  ],
+  "schema_version": "0.1.0",
+  "search_runs": [
+    "review/search-runs/2026-08-14-seed-batch.md",
+    "review/search-runs/2026-08-15-formulation-landscape.md",
+    "review/search-runs/2026-08-15-information-model-citation-chase.md",
+    "review/search-runs/2026-08-16-multiphase-and-practical-reductions.md"
+  ],
+  "snapshot_date": "2026-08-17",
+  "status": "single_coded_seed_snapshot"
+}

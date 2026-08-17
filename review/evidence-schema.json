@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/frederikgeth/multi-graph-book/review/evidence-schema.json",
+  "title": "Power-network graph-model evidence row",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_id",
+    "citation_key",
+    "screening_status",
+    "source_model",
+    "target_model",
+    "transformation_type",
+    "exactness",
+    "exactness_object",
+    "model_scope",
+    "decision_scope",
+    "evidence_type",
+    "review_basis",
+    "coding_status"
+  ],
+  "properties": {
+    "record_id": {"type": "string", "pattern": "^EV-[0-9]{4,}$"},
+    "citation_key": {"type": "string"},
+    "doi_or_url": {"type": "string"},
+    "screening_status": {"enum": ["include", "exclude", "uncertain"]},
+    "exclusion_reason": {
+      "enum": ["", "wrong_domain", "no_representation_or_transformation", "no_technical_content", "superseded_duplicate", "insufficient_access", "language_or_format_unassessable"]
+    },
+    "source_model": {"type": "string"},
+    "target_model": {"type": "string"},
+    "transformation_type": {
+      "enum": ["projection", "compilation", "normalization", "exact_behavioral_reduction", "approximate_reduction", "topology_quotient", "other", "not_reported"]
+    },
+    "exactness": {"enum": ["exact", "inner", "outer", "scenario_approximate", "unclassified", "not_reported"]},
+    "exactness_object": {
+      "enum": ["equation_identity", "boundary_behavior", "feasible_set", "connectivity_view", "representation_definition", "observation_sample", "not_applicable", "not_reported"]
+    },
+    "model_scope": {"type": "string"},
+    "phase_neutral_ground_scope": {"type": "string"},
+    "multi_terminal_scope": {"type": "string"},
+    "preserved_observations": {"type": "string"},
+    "retained_constraints": {"type": "string"},
+    "decision_scope": {"type": "string"},
+    "recovery_map": {"type": "string"},
+    "provenance_map": {"type": "string"},
+    "evidence_type": {"enum": ["proof", "derivation", "empirical", "software", "standard", "engineering_practice", "mixed", "not_reported"]},
+    "implementation": {"type": "string"},
+    "limitations": {"type": "string"},
+    "reviewer": {"type": "string"},
+    "review_date": {"type": "string"},
+    "review_basis": {"enum": ["primary_coding", "automated_reconciliation", "independent_human_double_coding", "external_technical_review", "not_reported"]},
+    "coding_status": {"enum": ["seed", "single_coded", "double_checked", "conflict"]},
+    "notes": {"type": "string"}
+  }
+}

@@ -1,0 +1,776 @@
+{
+  "interfaces": {
+    "units": {
+      "source": [
+        "dimensionless tap",
+        "V",
+        "A",
+        "S"
+      ],
+      "relation": "the scalar tap multiplies dimensionless base voltage-transfer coefficients",
+      "target": [
+        "dimensionless tap",
+        "V",
+        "A",
+        "S"
+      ]
+    },
+    "decisions": {
+      "source": [
+        "tap/x1/winding/2"
+      ],
+      "relation": "decision identity, mode, domain, and selected value are unchanged",
+      "target": [
+        "tap/x1/winding/2"
+      ]
+    },
+    "constraints": {
+      "source": [
+        "tap domains",
+        "tap-dependent leakage-path current limits",
+        "excitation and grounding relations"
+      ],
+      "relation": "constraints are evaluated without replacing a decision by its start value",
+      "target": [
+        "identical tap domains",
+        "the same parameterized current and component relations"
+      ]
+    },
+    "boundary_quantities": {
+      "source": [
+        "tap-parameterized winding terminal voltages and currents"
+      ],
+      "relation": "pointwise evaluation at every admissible decision yields the certified fixed-linear terminal factor",
+      "target": [
+        "the same tap-parameterized winding terminal voltages and currents"
+      ]
+    },
+    "objectives": {
+      "source": [
+        "objectives that may depend on retained tap decisions and transformer states"
+      ],
+      "relation": "no tap-dependent objective term is evaluated or discarded by compilation",
+      "target": [
+        "the same objective expressions under identity decision recovery"
+      ]
+    },
+    "state_variables": {
+      "source": [
+        "terminal voltages",
+        "tap-dependent leakage and component currents"
+      ],
+      "relation": "for every admissible tap decision, evaluation produces the exact fixed-linear component equations at that same decision value",
+      "target": [
+        "the same terminal voltages",
+        "recoverable tap-dependent component currents"
+      ]
+    }
+  },
+  "preconditions": [
+    "the terminal leakage factor is exact and the completion contract is structurally valid at its start values",
+    "each adjustable transfer has a unique stable decision identity",
+    "each adjustable scalar tap is finite and positive on a declared continuous interval or sorted discrete set",
+    "the tap multiplies every declared base coefficient on its winding according to the recorded convention",
+    "fixed excitation and transformer-internal grounding factors do not depend on the tap decision"
+  ],
+  "rule_id": "parameterized_transformer_tap_factor_compilation",
+  "provenance": {
+    "generated_objects": [
+      "generated_parameterized_transformer_factor__x1",
+      "generated_tap_decision_recovery__x1",
+      "generated_parameterized_component_current_maps__x1"
+    ],
+    "source_terminal_leakage_certificate": "TR-XFMR-003",
+    "decision_ids": [
+      "tap/x1/winding/2"
+    ],
+    "source_transformer": "x1",
+    "source_completion_contract": "x1/discrete-tap/v0.1.0"
+  },
+  "classification": "exact_compilation",
+  "target": {
+    "object_ids": [
+      "generated_parameterized_transformer_factor__x1",
+      "generated_tap_decision_recovery__x1",
+      "generated_parameterized_component_current_maps__x1"
+    ],
+    "detail": {
+      "decision_count": 1,
+      "decision_ids": [
+        "tap/x1/winding/2"
+      ],
+      "fixed_snapshot_terminal_dimension": 11
+    },
+    "model_category": "parameterized_transformer_factor_with_retained_tap_decisions"
+  },
+  "certificate_id": "TR-XFMR-005",
+  "preserves": [
+    "all_declared_source_semantics",
+    "tap_decision_identity_and_domain",
+    "tap_parameterized_terminal_relation",
+    "tap_dependent_component_current_recovery",
+    "leakage_path_current_limits",
+    "tap_dependent_objective_expressions"
+  ],
+  "constraint_map": {
+    "continuous_tap": "tap_min <= tap[decision_id] <= tap_max",
+    "discrete_tap": "tap[decision_id] belongs to the declared ordered position set",
+    "coefficient": "coefficient_xkc(tap) = tap * base_coefficient_xkc",
+    "network_and_limits": "evaluate the fixed-linear component relations at the same retained decision value"
+  },
+  "source": {
+    "object_ids": [
+      "generated_terminal_leakage__x1",
+      "generated_coil_current_recovery__x1",
+      "x1/discrete-tap/v0.1.0"
+    ],
+    "detail": {
+      "source_terminal_leakage_certificate": "TR-XFMR-003",
+      "decision_domains": [
+        {
+          "decision_id": "tap/x1/winding/2",
+          "lower_bound": 0.95,
+          "winding_id": "x1/winding/2",
+          "control_mode": "discrete",
+          "winding_position": 2,
+          "start_value": 1,
+          "upper_bound": 1.05,
+          "positions": [
+            0.95,
+            1.0,
+            1.05
+          ]
+        }
+      ],
+      "tap_parameterization": "coefficient_xkc(tap) = tap * base_coefficient_xkc",
+      "transformer_id": "x1"
+    },
+    "model_category": "typed_transformer_completion_contract_with_adjustable_winding_transfers"
+  },
+  "forgets": [
+  ],
+  "recovery_map": {
+    "tap_decision": "tap_source[decision_id] = tap_target[decision_id]",
+    "fixed_snapshot": "substitute the retained decision value into coefficient_xkc(tap) and apply TR-XFMR-004",
+    "component_currents": "use the fixed-snapshot leakage, winding, excitation, and grounding recovery maps at the retained tap value"
+  },
+  "typed_interfaces": {
+    "target_unit_families": [
+      "admittance",
+      "current",
+      "dimensionless",
+      "voltage"
+    ],
+    "unresolved_unit_labels": [
+    ],
+    "target_boundary_labels": [
+      "the same tap-parameterized winding terminal voltages and currents"
+    ],
+    "source_unit_families": [
+      "admittance",
+      "current",
+      "dimensionless",
+      "voltage"
+    ],
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "state_domain_ids": [
+    ],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+    "unit_family_map": {
+      "A": [
+        "current"
+      ],
+      "S": [
+        "admittance"
+      ],
+      "dimensionless tap": [
+        "dimensionless"
+      ],
+      "V": [
+        "voltage"
+      ]
+    },
+    "source_boundary_labels": [
+      "tap-parameterized winding terminal voltages and currents"
+    ],
+    "source_variable_labels": [
+      "terminal voltages",
+      "tap-dependent leakage and component currents"
+    ],
+    "target_variable_labels": [
+      "the same terminal voltages",
+      "recoverable tap-dependent component currents"
+    ]
+  },
+  "evidence": {
+    "maximum_complex_power_balance_residual_VA": 4.8744221999899176e-9,
+    "start_snapshot_contract": "x1/discrete-tap/v0.1.0/snapshot",
+    "decision_domains": [
+      {
+        "decision_id": "tap/x1/winding/2",
+        "lower_bound": 0.95,
+        "winding_id": "x1/winding/2",
+        "control_mode": "discrete",
+        "winding_position": 2,
+        "start_value": 1,
+        "upper_bound": 1.05,
+        "positions": [
+          0.95,
+          1.0,
+          1.05
+        ]
+      }
+    ],
+    "decision_witness": {
+      "parameterized_target_feasible_taps": [
+        1,
+        1.05
+      ],
+      "optimal_objective_A": 1232.655977922626,
+      "source_feasible_taps": [
+        1,
+        1.05
+      ],
+      "description": "minimize maximum winding-2 leakage current at fixed boundary voltage subject to the original 2200 A winding limit",
+      "frozen_start_objective_A": 1903.7157960195007,
+      "frozen_start_objective_gap_A": 671.0598180968746,
+      "parameterized_target_optimal_tap": 1.05,
+      "tap_position_results": {
+        "0.95": {
+          "direct_source_terminal_admittance_difference_S": 0,
+          "complex_power_balance_residual_VA": 2.0923760964453764e-9,
+          "maximum_winding_2_leakage_current_A": 4732.320182938474,
+          "current_limit_A": 2200,
+          "feasible": false
+        },
+        "1.05": {
+          "direct_source_terminal_admittance_difference_S": 0,
+          "complex_power_balance_residual_VA": 3.0887699088105764e-9,
+          "maximum_winding_2_leakage_current_A": 1232.655977922626,
+          "current_limit_A": 2200,
+          "feasible": true
+        },
+        "1.0": {
+          "direct_source_terminal_admittance_difference_S": 0,
+          "complex_power_balance_residual_VA": 4.8744221999899176e-9,
+          "maximum_winding_2_leakage_current_A": 1903.7157960195007,
+          "current_limit_A": 2200,
+          "feasible": true
+        }
+      },
+      "winding_2_voltage_scale": 0.97,
+      "frozen_start_tap": 1,
+      "source_optimal_tap": 1.05
+    },
+    "maximum_pointwise_source_target_difference_S": 0,
+    "start_snapshot_terminal_admittance_matrix_S": [
+      [
+        {
+          "real": 0.03535083202990505,
+          "imag": -0.2420860775718814
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": -0.03535083202990505,
+          "imag": 0.2420860775718814
+        },
+        {
+          "real": -0.6684448928334037,
+          "imag": 3.731666271296046
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0.6684448928334037,
+          "imag": -3.731666271296046
+        },
+        {
+          "real": -0.016650355253256758,
+          "imag": 0.17037572817285976
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0.016650355253256758,
+          "imag": -0.17037572817285976
+        }
+      ],
+      [
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0.03535083202990505,
+          "imag": -0.2420860775718814
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": -0.03535083202990505,
+          "imag": 0.2420860775718814
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": -0.6684448928334037,
+          "imag": 3.731666271296046
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0.6684448928334037,
+          "imag": -3.731666271296046
+        },
+        {
+          "real": 0.016650355253256758,
+          "imag": -0.17037572817285976
+        },
+        {
+          "real": -0.016650355253256758,
+          "imag": 0.17037572817285976
+        },
+        {
+          "real": 0,
+          "imag": 0
+        }
+      ],
+      [
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0.03535083202990505,
+          "imag": -0.2420860775718814
+        },
+        {
+          "real": -0.03535083202990505,
+          "imag": 0.2420860775718814
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": -0.6684448928334037,
+          "imag": 3.731666271296046
+        },
+        {
+          "real": 0.6684448928334037,
+          "imag": -3.731666271296046
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0.016650355253256758,
+          "imag": -0.17037572817285976
+        },
+        {
+          "real": -0.016650355253256758,
+          "imag": 0.17037572817285976
+        }
+      ],
+      [
+        {
+          "real": -0.03535083202990505,
+          "imag": 0.2420860775718814
+        },
+        {
+          "real": -0.03535083202990505,
+          "imag": 0.2420860775718814
+        },
+        {
+          "real": -0.03535083202990505,
+          "imag": 0.2420860775718814
+        },
+        {
+          "real": 0.10705249608971515,
+          "imag": -0.7282582327156442
+        },
+        {
+          "real": 0.6684448928334037,
+          "imag": -3.731666271296046
+        },
+        {
+          "real": 0.6684448928334037,
+          "imag": -3.731666271296046
+        },
+        {
+          "real": 0.6684448928334037,
+          "imag": -3.731666271296046
+        },
+        {
+          "real": -2.005334678500211,
+          "imag": 11.194998813888137
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0,
+          "imag": 0
+        }
+      ],
+      [
+        {
+          "real": -0.6684448928334037,
+          "imag": 3.731666271296046
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0.6684448928334037,
+          "imag": -3.731666271296046
+        },
+        {
+          "real": 45.603694052844695,
+          "imag": -224.3943264322094
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": -45.603694052844695,
+          "imag": 224.3943264322094
+        },
+        {
+          "real": -1.8811432612169026,
+          "imag": 8.490293649556504
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 1.8811432612169026,
+          "imag": -8.490293649556504
+        }
+      ],
+      [
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": -0.6684448928334037,
+          "imag": 3.731666271296046
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0.6684448928334037,
+          "imag": -3.731666271296046
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 45.603694052844695,
+          "imag": -224.3943264322094
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": -45.603694052844695,
+          "imag": 224.3943264322094
+        },
+        {
+          "real": 1.8811432612169026,
+          "imag": -8.490293649556504
+        },
+        {
+          "real": -1.8811432612169026,
+          "imag": 8.490293649556504
+        },
+        {
+          "real": 0,
+          "imag": 0
+        }
+      ],
+      [
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": -0.6684448928334037,
+          "imag": 3.731666271296046
+        },
+        {
+          "real": 0.6684448928334037,
+          "imag": -3.731666271296046
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 45.603694052844695,
+          "imag": -224.3943264322094
+        },
+        {
+          "real": -45.603694052844695,
+          "imag": 224.3943264322094
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 1.8811432612169026,
+          "imag": -8.490293649556504
+        },
+        {
+          "real": -1.8811432612169026,
+          "imag": 8.490293649556504
+        }
+      ],
+      [
+        {
+          "real": 0.6684448928334037,
+          "imag": -3.731666271296046
+        },
+        {
+          "real": 0.6684448928334037,
+          "imag": -3.731666271296046
+        },
+        {
+          "real": 0.6684448928334037,
+          "imag": -3.731666271296046
+        },
+        {
+          "real": -2.005334678500211,
+          "imag": 11.194998813888137
+        },
+        {
+          "real": -45.603694052844695,
+          "imag": 224.3943264322094
+        },
+        {
+          "real": -45.603694052844695,
+          "imag": 224.3943264322094
+        },
+        {
+          "real": -45.603694052844695,
+          "imag": 224.3943264322094
+        },
+        {
+          "real": 136.81108215853408,
+          "imag": -673.1829792966282
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0,
+          "imag": 0
+        }
+      ],
+      [
+        {
+          "real": -0.01665035525325677,
+          "imag": 0.17037572817285973
+        },
+        {
+          "real": 0.01665035525325677,
+          "imag": -0.17037572817285973
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": -1.8811432612169023,
+          "imag": 8.490293649556506
+        },
+        {
+          "real": 1.8811432612169023,
+          "imag": -8.490293649556506
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0.30826582151007914,
+          "imag": -1.7209274557345289
+        },
+        {
+          "real": -0.15413291075503957,
+          "imag": 0.8604637278672644
+        },
+        {
+          "real": -0.15413291075503957,
+          "imag": 0.8604637278672644
+        }
+      ],
+      [
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": -0.01665035525325677,
+          "imag": 0.17037572817285973
+        },
+        {
+          "real": 0.01665035525325677,
+          "imag": -0.17037572817285973
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": -1.8811432612169023,
+          "imag": 8.490293649556506
+        },
+        {
+          "real": 1.8811432612169023,
+          "imag": -8.490293649556506
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": -0.15413291075503957,
+          "imag": 0.8604637278672644
+        },
+        {
+          "real": 0.30826582151007914,
+          "imag": -1.7209274557345289
+        },
+        {
+          "real": -0.15413291075503957,
+          "imag": 0.8604637278672644
+        }
+      ],
+      [
+        {
+          "real": 0.01665035525325677,
+          "imag": -0.17037572817285973
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": -0.01665035525325677,
+          "imag": 0.17037572817285973
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": 1.8811432612169023,
+          "imag": -8.490293649556506
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": -1.8811432612169023,
+          "imag": 8.490293649556506
+        },
+        {
+          "real": 0,
+          "imag": 0
+        },
+        {
+          "real": -0.15413291075503957,
+          "imag": 0.8604637278672644
+        },
+        {
+          "real": -0.15413291075503957,
+          "imag": 0.8604637278672644
+        },
+        {
+          "real": 0.30826582151007914,
+          "imag": -1.7209274557345289
+        }
+      ]
+    ]
+  },
+  "schema_version": "1.1.0"
+}

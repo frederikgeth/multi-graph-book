@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+<title>Preservation contract card</title>
+<desc>A transformation certificate records scope, guards, retained observations, forgotten meaning, recovery, and evidence.</desc>
+<rect x="0" y="0" width="1200" height="720" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight:bold}.subtitle{font-size:16px;fill:#5f6b76}.heading{font-size:18px;font-weight:bold}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.card{stroke:#17212b;stroke-width:2}.arrow{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>
+<text x="40" y="42" class="title">Preservation contract</text>
+<text x="40" y="70" class="subtitle">A transformation is a scoped claim about observations and decisions, not a label of similarity.</text>
+<rect x="40" y="105" width="350" height="150" rx="12" class="card" fill="#e4f4e7"/>
+<text x="60" y="137" class="heading">1. Scope</text>
+<text x="60" y="162" class="body">source and target model categories</text>
+<text x="60" y="187" class="body">admissible inputs, states, and decisions</text>
+<text x="60" y="212" class="body">observation family H and boundary</text>
+<text x="60" y="237" class="body">units, coordinates, and orientation</text>
+<rect x="425" y="105" width="350" height="150" rx="12" class="card" fill="#e8f0fa"/>
+<text x="445" y="137" class="heading">2. Guards</text>
+<text x="445" y="162" class="body">rank / invertibility conditions</text>
+<text x="445" y="187" class="body">grounding and terminal compatibility</text>
+<text x="445" y="212" class="body">state and device-library assumptions</text>
+<text x="445" y="237" class="body">applicability domain</text>
+<rect x="810" y="105" width="350" height="150" rx="12" class="card" fill="#f8e1c4"/>
+<text x="830" y="137" class="heading">3. Classification</text>
+<text x="830" y="162" class="body">exact, inner, outer, or scenario</text>
+<text x="830" y="187" class="body">feasible-set and objective relation</text>
+<text x="830" y="212" class="body">decision map and active constraints</text>
+<text x="830" y="237" class="body">error / margin if approximate</text>
+<path d="M215 275 L215 320 L600 320 L600 350" class="arrow"/>
+<path d="M600 275 L600 350" class="arrow"/>
+<path d="M985 275 L985 320 L600 320 L600 350" class="arrow"/>
+<rect x="275" y="350" width="650" height="110" rx="12" class="card" fill="#f7f9fb"/>
+<text x="295" y="382" class="heading">4. Transformation map</text>
+<text x="295" y="407" class="body">source objects  →  generated / reduced objects</text>
+<text x="295" y="432" class="body">typed relation, provenance, and target interfaces</text>
+<path d="M600 480 L600 515 L215 515 L215 545" class="arrow"/>
+<path d="M600 480 L600 545" class="arrow"/>
+<path d="M600 480 L600 515 L985 515 L985 545" class="arrow"/>
+<rect x="40" y="545" width="350" height="115" rx="12" class="card" fill="#e8f0fa"/>
+<text x="60" y="577" class="heading">5. Retains</text>
+<text x="60" y="602" class="body">terminal behaviour and limits</text>
+<text x="60" y="627" class="body">states, controls, objectives</text>
+<text x="60" y="652" class="body">declared observations</text>
+<rect x="425" y="545" width="350" height="115" rx="12" class="card" fill="#f4e5e5"/>
+<text x="445" y="577" class="heading">6. Forgets</text>
+<text x="445" y="602" class="body">unanswerable identities or states</text>
+<text x="445" y="627" class="body">eliminated variables and constraints</text>
+<text x="445" y="652" class="body">out-of-scope physical detail</text>
+<rect x="810" y="545" width="350" height="115" rx="12" class="card" fill="#e4f4e7"/>
+<text x="830" y="577" class="heading">7. Recovery + evidence</text>
+<text x="830" y="602" class="body">recovery and constraint maps</text>
+<text x="830" y="627" class="body">provenance and reproducible artifact</text>
+<text x="830" y="652" class="body">proof, test, or external source</text>
+<text x="40" y="700" class="small">Colour is secondary; headings and text carry the contract in monochrome.</text>
+</svg>

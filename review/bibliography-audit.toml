@@ -1,0 +1,365 @@
+schema_version = 1
+
+[[entry]]
+key = "Fortescue1918"
+status = "verified"
+verification_source = "https://doi.org/10.1109/T-AIEE.1918.4765570"
+verified_on = "2026-08-17"
+note = "The DOI record confirms Fortescue's original symmetrical-coordinate paper and its Transactions metadata; the book uses it as the historical anchor for the sequence transform, while exact reduction remains conditioned on declared invariance and observation guards."
+
+[[entry]]
+key = "Carson1926"
+status = "verified"
+verification_source = "https://doi.org/10.1002/j.1538-7305.1926.tb00122.x"
+verified_on = "2026-08-17"
+note = "The publisher record confirms the original ground-return impedance paper, Bell System Technical Journal metadata, pages, year, and DOI; it is used as a physical ground-return anchor, not as a claim that every earth model is Carson-equivalent."
+
+[[entry]]
+key = "ChengShirmohammadi1995"
+status = "verified"
+verification_source = "https://doi.org/10.1109/59.387902"
+verified_on = "2026-08-17"
+note = "The DOI record identifies the primary three-phase distribution power-flow method and its IEEE Transactions on Power Systems publication metadata; the book cites it for unbalanced feeder analysis under its stated method scope."
+
+[[entry]]
+key = "ZimmermanChiang1995"
+status = "verified"
+verification_source = "https://doi.org/10.1109/59.476074"
+verified_on = "2026-08-17"
+note = "The DOI record identifies the primary fast-decoupled formulation for unbalanced radial distribution systems; it is used as a second method anchor, not as evidence for positive-sequence exactness in general networks."
+
+[[entry]]
+key = "FarrokhabadiVanfretti2014"
+status = "verified"
+verification_source = "https://doi.org/10.1016/j.epsr.2013.08.014"
+verified_on = "2026-08-17"
+note = "The publisher record confirms the automated transmission-network topology processor, state-estimation context, journal metadata, pages, year, and DOI; the book uses it to anchor EMS topology processing rather than to certify its own topology compiler."
+
+[[entry]]
+key = "W3CPROVDM2013"
+status = "verified"
+verification_source = "https://www.w3.org/TR/prov-dm/"
+verified_on = "2026-08-17"
+note = "The W3C Recommendation defines the PROV data model and its provenance entities, activities, agents, derivations, and constraints; the book uses it as a provenance vocabulary anchor rather than claiming PROV semantics are an electrical-network transformation calculus."
+
+[[entry]]
+key = "Ward1949"
+status = "verified"
+verification_source = "https://doi.org/10.1109/T-AIEE.1949.5059947"
+verified_on = "2026-08-13"
+note = "DOI registration and the indexed Transactions record confirm the author, title, volume, pages, year, and DOI; the paper states the constant-current approximation, retained tie terminals, boundary mesh, and equivalent terminal injections."
+
+[[entry]]
+key = "Monticelli1979"
+status = "verified"
+verification_source = "https://doi.org/10.1109/TPAS.1979.319387"
+verified_on = "2026-08-13"
+note = "The IEEE article record and author-hosted copy confirm authors, title, journal, issue, pages, year, and DOI; the text identifies its construction as an extended Ward method based on a single state estimate."
+
+[[entry]]
+key = "Machowski1988"
+status = "verified"
+verification_source = "https://doi.org/10.1109/59.192953"
+verified_on = "2026-08-13"
+note = "The IEEE record and author-hosted copy confirm article metadata and distinguish Ward-PV load-node elimination from subsequent coherent generator aggregation."
+
+[[entry]]
+key = "DorflerBullo2013"
+status = "verified"
+verification_source = "https://api.crossref.org/works/10.1109%2FTCSI.2012.2215780"
+verified_on = "2026-08-13"
+note = "Title, authors, journal, volume, issue, pages, year, and DOI agree with DOI registration."
+
+[[entry]]
+key = "CaliskanTabuada2014"
+status = "verified"
+verification_source = "https://www.sciencedirect.com/science/article/pii/S0005109814003331"
+verified_on = "2026-08-13"
+note = "Title, authors, journal, volume, issue, pages, year, and DOI verified from publisher and DOI registration."
+
+[[entry]]
+key = "GanLowChordal2014"
+status = "verified"
+verification_source = "https://authors.library.caltech.edu/records/szyhw-g8827"
+verified_on = "2026-08-15"
+note = "The CaltechAUTHORS record confirms authors, title, conference, pages, year, and DOI; its abstract states the radial macro-level and per-line clique result."
+
+[[entry]]
+key = "GanLowMultiphase2014"
+status = "verified"
+verification_source = "https://authors.library.caltech.edu/records/1fcqw-beg37"
+verified_on = "2026-08-15"
+note = "The CaltechAUTHORS record and attached author manuscript confirm authors, title, PSCC venue, pages, year, and DOI."
+
+[[entry]]
+key = "KettnerPaolone2019"
+status = "verified"
+verification_source = "https://api.crossref.org/works/10.1109%2FTPWRS.2018.2863671"
+verified_on = "2026-08-15"
+note = "DOI registration and the author manuscript confirm title, authors, journal, volume, issue, pages, and the compound-incidence assembly setting."
+
+[[entry]]
+key = "Coppo2017"
+status = "verified"
+verification_source = "https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/iet-gtd.2016.2080"
+verified_on = "2026-08-15"
+note = "The publisher record confirms authors, title, journal, volume, issue, pages, year, DOI, and the nested incidence-matrix construction for general multiphase transformers."
+
+[[entry]]
+key = "BaezFong2018"
+status = "verified"
+verification_source = "https://www.tac.mta.ca/tac/volumes/33/38/33-38abs.html"
+verified_on = "2026-08-13"
+note = "Official journal record confirms authors, title, volume, number, pages, and publication date."
+
+[[entry]]
+key = "HoRuehliBrennan1975"
+status = "verified"
+verification_source = "https://doi.org/10.1109/TCS.1975.1084079"
+verified_on = "2026-08-15"
+note = "IEEE DOI record confirms the modified nodal analysis article metadata and publication details."
+
+[[entry]]
+key = "HachtelBraytonGustavson1971"
+status = "verified"
+verification_source = "https://doi.org/10.1109/TCT.1971.1083223"
+verified_on = "2026-08-15"
+note = "IEEE DOI record confirms the sparse tableau article metadata and publication details."
+
+[[entry]]
+key = "ParkHolzerDeMarco2019"
+status = "verified"
+verification_source = "https://doi.org/10.1109/TPWRS.2018.2869705"
+verified_on = "2026-08-15"
+note = "IEEE DOI record and official PNNL publication page confirm the node-breaker sparse-tableau OPF article metadata."
+
+[[entry]]
+key = "Nanopass2005"
+status = "verified"
+verification_source = "https://doi.org/10.1017/S0956796805005605"
+verified_on = "2026-08-15"
+note = "Cambridge DOI record confirms the nanopass compiler-framework article metadata."
+
+[[entry]]
+key = "vanderSchaftMaschke2013"
+status = "verified"
+verification_source = "https://api.crossref.org/works/10.1137%2F110840091"
+verified_on = "2026-08-13"
+note = "DOI registration confirms article metadata."
+
+[[entry]]
+key = "CurtisMorrow2000"
+status = "verified"
+verification_source = "https://api.crossref.org/works/10.1142%2F4306"
+verified_on = "2026-08-13"
+note = "DOI registration confirms title, authors, and publication year."
+
+[[entry]]
+key = "Ehrig2006"
+status = "verified"
+verification_source = "https://api.crossref.org/works/10.1007%2F3-540-31188-2"
+verified_on = "2026-08-13"
+note = "DOI registration confirms the book title, series, and year; author list retained from the publisher record."
+
+[[entry]]
+key = "Grudzien2018"
+status = "verified"
+verification_source = "https://epubs.siam.org/doi/10.1137/17M1138054"
+verified_on = "2026-08-13"
+note = "Publisher record confirms authors, title, journal, volume, issue, pages, year, and DOI."
+
+[[entry]]
+key = "Sistermanns2019"
+status = "corrected"
+verification_source = "https://api.crossref.org/works/10.1109%2FPTC.2019.8810704"
+verified_on = "2026-08-13"
+note = "Replaced the preprint-only entry with the final IEEE Milan PowerTech conference record and DOI."
+
+[[entry]]
+key = "Pecenak2018"
+status = "verified"
+verification_source = "https://api.crossref.org/works/10.1109%2FTPWRS.2017.2726502"
+verified_on = "2026-08-13"
+note = "DOI registration confirms article metadata."
+
+[[entry]]
+key = "Mokhtari2027"
+status = "corrected"
+verification_source = "https://api.crossref.org/works/10.1016%2Fj.epsr.2026.113615"
+verified_on = "2026-08-13"
+note = "Replaced the inaccurately titled preprint entry with the registered Electric Power Systems Research article; retained the arXiv identifier."
+
+[[entry]]
+key = "MokhtariRadial2025"
+status = "verified"
+verification_source = "https://arxiv.org/abs/2508.15006"
+verified_on = "2026-08-13"
+note = "Added the distinct radiality-preservation preprint so its result is not attributed to the three-phase Opti-KRON article."
+
+[[entry]]
+key = "Jang2013"
+status = "verified"
+verification_source = "https://api.crossref.org/works/10.1109%2FPECI.2013.6506059"
+verified_on = "2026-08-13"
+note = "DOI registration confirms conference title, paper title, pages, year, and DOI; author-copy URL retained."
+
+[[entry]]
+key = "Molzahn2018"
+status = "verified"
+verification_source = "https://molzahn.github.io/pubs/molzahn-redundant_flow_limits.pdf"
+verified_on = "2026-08-13"
+note = "The supplied final IEEE paper and author-hosted copy confirm the author, title, journal, volume, issue, pages, date, and DOI."
+
+[[entry]]
+key = "GethHeidariKoirala2022"
+status = "verified"
+verification_source = "https://doi.org/10.1145/3538637.3538844"
+verified_on = "2026-08-13"
+note = "The supplied ACM e-Energy paper and DOI record confirm the authors, title, venue, year, pages, and DOI; its phase-to-neutral transformation, grounding assumptions, neutral recovery algorithm, and comparison with neutral Kron reduction are used in the circuit-coordinate chapter."
+
+[[entry]]
+key = "GethLiu2022"
+status = "verified"
+verification_source = "https://doi.org/10.1109/PESGM48719.2022.9917005"
+verified_on = "2026-08-14"
+note = "The supplied IEEE PESGM paper and DOI record confirm the authors, title, venue, year, and DOI; its parallel-line consistency constraints, BIM/BFM variable-space distinction, and total-terminal-current bounds are used in the expressiveness-audit case."
+
+[[entry]]
+key = "GethClaeysHeidari2023"
+status = "verified"
+verification_source = "https://arxiv.org/abs/2305.04405"
+verified_on = "2026-08-16"
+note = "The arXiv record and supplied technology report confirm the authors, title, year, identifier, matrix-valued four-wire component equations, nodal current-injection formulation, and the contrast with radial impedance-based methods."
+
+[[entry]]
+key = "CIMTopologicalNode"
+status = "corrected"
+verification_source = "https://zepben.github.io/evolve/docs/cim/cim100/TC57CIM/IEC61970/Base/Topology/TopologicalNode/"
+verified_on = "2026-08-13"
+note = "Corrected attribution from IEC to the Zepben-generated CIM100 documentation and removed an unsupported publication year."
+
+[[entry]]
+key = "PowsyblTopology"
+status = "corrected"
+verification_source = "https://powsybl.readthedocs.io/projects/powsybl-tutorials/en/latest/topology.html"
+verified_on = "2026-08-13"
+note = "Official documentation title verified; unsupported publication year replaced by n.d."
+
+[[entry]]
+key = "IEC60617DB"
+status = "verified"
+verification_source = "https://webstore.iec.ch/en/publication/2723"
+verified_on = "2026-08-17"
+note = "IEC product record verified for the current graphical-symbol database and its scope across conductors, conversion equipment, switchgear, protection, and diagrams."
+
+[[entry]]
+key = "IEC61082"
+status = "verified"
+verification_source = "https://webstore.iec.ch/en/publication/4469"
+verified_on = "2026-08-17"
+note = "IEC product record verified for the rules and guidelines governing presentation of electrotechnical documents, diagrams, drawings, and tables."
+
+[[entry]]
+key = "IEC61970453"
+status = "verified"
+verification_source = "https://webstore.iec.ch/en/publication/6213"
+verified_on = "2026-08-17"
+note = "IEC product record verified for CIM-linked diagram layout exchange and revision management."
+
+[[entry]]
+key = "IEC618506"
+status = "verified"
+verification_source = "https://webstore.iec.ch/en/publication/103863"
+verified_on = "2026-08-17"
+note = "IEC product record verified for substation and IED configuration exchange and switchyard structure descriptions."
+
+[[entry]]
+key = "IEEEC571270"
+status = "verified"
+verification_source = "https://standards.ieee.org/ieee/C57.12.70/7353/"
+verified_on = "2026-08-17"
+note = "IEEE record verified for active transformer terminal-marking, neutral, grounding, polarity, and connection conventions."
+
+[[entry]]
+key = "PMDEngineering"
+status = "corrected"
+verification_source = "https://lanl-ansi.github.io/PowerModelsDistribution.jl/stable/manual/eng-data-model.html"
+verified_on = "2026-08-13"
+note = "Official documentation title verified; unsupported publication year replaced by n.d."
+
+[[entry]]
+key = "PMDConversion"
+status = "corrected"
+verification_source = "https://lanl-ansi.github.io/PowerModelsDistribution.jl/v0.9/eng2math/"
+verified_on = "2026-08-13"
+note = "Corrected the title to the title displayed by the versioned official documentation."
+
+[[entry]]
+key = "OpenDSSReduction"
+status = "corrected"
+verification_source = "https://opendss.epri.com/CircuitReductionforVersion85.html"
+verified_on = "2026-08-13"
+note = "Official EPRI documentation title verified; unsupported publication year replaced by n.d."
+
+[[entry]]
+key = "OpenDSSSolutionTechniques"
+status = "verified"
+verification_source = "https://opendss.epri.com/OpenDSSSolutionTechniques.html"
+verified_on = "2026-08-17"
+note = "Official EPRI documentation verified for the current-injection fixed-point equation, compensation-current iteration, and direct initialization with zero compensation current."
+
+[[entry]]
+key = "OpenDSSPowerConversionElements"
+status = "verified"
+verification_source = "https://opendss.epri.com/PowerConversionElements.html"
+verified_on = "2026-08-17"
+note = "Official EPRI documentation verified for the constant primitive-admittance plus compensation-current treatment of nonlinear power-conversion elements."
+
+[[entry]]
+key = "OpenDSSLoad"
+status = "verified"
+verification_source = "https://opendss.epri.com/Load1.html"
+verified_on = "2026-08-17"
+note = "Official EPRI documentation verified for load-model selection and the power-flow/admittance distinction used in fault-oriented studies."
+
+[[entry]]
+key = "OpenDSSFaultStudyEquations"
+status = "verified"
+verification_source = "https://opendss.epri.com/FaultStudyModeEquations1.html"
+verified_on = "2026-08-17"
+note = "Official EPRI documentation verified for the fault-study nodal matrix, source/generator equivalents, and load-current terms not already included in the matrix."
+
+[[entry]]
+key = "IswaranThakarNekkalapuVittalKhorsand2026"
+status = "verified"
+verification_source = "https://doi.org/10.1109/TPWRS.2026.3722057"
+verified_on = "2026-08-17"
+note = "Supplied accepted IEEE author version checked for the application-directed feeder equivalent, nodal reduction, PV/load aggregation, phase-shifting elements, and separate power-flow/EMT validation."
+
+[[entry]]
+key = "Kavitha2008"
+status = "verified"
+verification_source = "https://link.springer.com/article/10.1007/s00453-007-9064-z"
+verified_on = "2026-08-13"
+note = "The publisher record confirms the title, authors, journal, volume, issue, pages, year, and DOI."
+
+[[entry]]
+key = "CGMESLibrary"
+status = "verified"
+verification_source = "https://www.entsoe.eu/data/cim/cim-for-grid-models-exchange/"
+verified_on = "2026-08-13"
+note = "Official ENTSO-E CGMES library verified as the source for current CIM/CGMES exchange profiles and versioned releases."
+
+[[entry]]
+key = "MATPOWERCaseFormat"
+status = "verified"
+verification_source = "https://matpower.org/docs/ref/matpower6.0/caseformat.html"
+verified_on = "2026-08-13"
+note = "Official MATPOWER case-format documentation verified for the version-2 mpc fields and matrix-based bus, branch, generator, and cost representation."
+
+[[entry]]
+key = "MATPOWERDataModel"
+status = "verified"
+verification_source = "https://matpower.org/documentation/dev-manual/data-model.html"
+verified_on = "2026-08-13"
+note = "Official MATPOWER developer documentation verified for data-model elements and port/node connection semantics."

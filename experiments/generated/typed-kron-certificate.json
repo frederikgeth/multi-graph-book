@@ -1,0 +1,185 @@
+{
+    "interfaces": {
+        "units": {
+            "source": [
+                "complex-voltage",
+                "complex-current",
+                "siemens"
+            ],
+            "relation": "typed coordinate units are unchanged",
+            "target": [
+                "complex-voltage",
+                "complex-current",
+                "siemens"
+            ]
+        },
+        "decisions": {
+            "source": [
+            ],
+            "relation": "no discrete decisions in the fixture",
+            "target": [
+            ]
+        },
+        "constraints": {
+            "source": [
+                "member-current-limits"
+            ],
+            "relation": "evaluate source limits through the recovery map",
+            "target": [
+                "recovered-member-current-limits"
+            ]
+        },
+        "boundary_quantities": {
+            "source": [
+                "i_B",
+                "v_B"
+            ],
+            "relation": "the affine boundary relation is exact",
+            "target": [
+                "i_B",
+                "v_B"
+            ]
+        },
+        "objectives": {
+            "source": [
+            ],
+            "relation": "no objective is claimed",
+            "target": [
+            ]
+        },
+        "state_variables": {
+            "source": [
+                "v_B",
+                "v_I",
+                "i_I"
+            ],
+            "relation": "v_I is recovered from the affine internal solve",
+            "target": [
+                "v_B",
+                "i_I"
+            ]
+        }
+    },
+    "preconditions": [
+        "Y_II is invertible",
+        "T = diag(T_B, T_I) is invertible and respects the retained/internal partition",
+        "per-port block diagonality is an optional locality restriction, not a proof requirement",
+        "internal injections i_I are fixed data independent of v_I",
+        "current coordinates use the conjugate-transpose power dual"
+    ],
+    "rule_id": "typed_multiconductor_kron_reduction",
+    "provenance": {
+        "fixture": "experiments/transformations/TypedKronReduction.jl",
+        "witness": "experiments/generated/typed-kron-witness.json"
+    },
+    "classification": "exact_behavioral_reduction",
+    "numerical_evidence": {
+        "solver_status": "not_applicable; direct linear algebra witness",
+        "uncertainty_status": "not_quantified; deterministic synthetic fixture",
+        "conditioning": 1.2215104984701914,
+        "notes": "Residuals are algebraic consistency checks; no solver or global optimization claim.",
+        "backward_error": 0,
+        "optimality_status": "not_applicable",
+        "residual": 1.777587628338693e-15,
+        "tolerance": 1.0e-11
+    },
+    "target": {
+        "object_ids": [
+            "typed-kron-fixture-v0.1.0/boundary-multiport"
+        ],
+        "model_category": "typed_affine_boundary_multiport"
+    },
+    "certificate_id": "TR-KRON-001",
+    "preserves": [
+        "affine boundary relation",
+        "power-dual coordinate covariance",
+        "internal-voltage recovery",
+        "source-current limit evaluation"
+    ],
+    "constraint_map": {
+        "member-current-limits": "apply each source limit to the recovered source current"
+    },
+    "source": {
+        "object_ids": [
+            "typed-kron-fixture-v0.1.0",
+            "retained-ports-B",
+            "internal-port-I"
+        ],
+        "model_category": "typed_multiconductor_nodal_relation"
+    },
+    "forgets": [
+        "internal asset identity",
+        "restricted physical line-library closure",
+        "nonlinear voltage-dependent injections"
+    ],
+    "recovery_map": {
+        "source_current": "I_l = A_lB v_B + A_lI v_I",
+        "internal_voltage": "v_I = Y_II^-1 (i_I - Y_IB v_B)"
+    },
+    "typed_interfaces": {
+        "target_unit_families": [
+            "admittance",
+            "current",
+            "voltage"
+        ],
+        "unresolved_unit_labels": [
+        ],
+        "target_boundary_labels": [
+            "i_B",
+            "v_B"
+        ],
+        "source_unit_families": [
+            "admittance",
+            "current",
+            "voltage"
+        ],
+        "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+        "state_domain_ids": [
+        ],
+        "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+        "unit_family_map": {
+            "complex-current": [
+                "current"
+            ],
+            "siemens": [
+                "admittance"
+            ],
+            "complex-voltage": [
+                "voltage"
+            ]
+        },
+        "source_boundary_labels": [
+            "i_B",
+            "v_B"
+        ],
+        "source_variable_labels": [
+            "v_B",
+            "v_I",
+            "i_I"
+        ],
+        "target_variable_labels": [
+            "v_B",
+            "i_I"
+        ]
+    },
+    "evidence": {
+        "checks": {
+            "internal_recovery": true,
+            "restricted_library_boundary_exposed": true,
+            "restricted_transformer_library_rejection_exposed": true,
+            "coordinate_covariance": true,
+            "complex_power_dual_reciprocity_distinguished": true,
+            "line_shunt_stamping_exact": true,
+            "fixed_internal_injection_scope": true,
+            "dense_partition_covariance": true,
+            "physical_reciprocity_preserved": true,
+            "affine_covariance": true,
+            "dense_partition_affine_covariance": true,
+            "dense_partition_recovery": true,
+            "source_limits_recovered": true,
+            "restricted_transformer_library_positive_witness": true
+        },
+        "realizability_boundary": "the general reduced multiport is not required to be block-symmetric; an admissible full-matrix line-shunt witness is stamped separately"
+    },
+    "schema_version": "1.1.0"
+}

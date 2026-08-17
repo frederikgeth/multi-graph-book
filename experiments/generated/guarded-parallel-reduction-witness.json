@@ -1,0 +1,151 @@
+{
+    "checks": {
+        "fixed_map_fails_off_state": true,
+        "recomputed_state_map_is_consistent": true,
+        "singular_full_map_is_rank_deficient": true,
+        "joint_retained_support_rejects_too_tight_candidate": true,
+        "reduced_voltage_drop_map_certified": true,
+        "singular_guard_rejects_full_map": true,
+        "joint_retained_support_certified": true
+    },
+    "state_conditioned": {
+        "state_values": [
+            0,
+            1
+        ],
+        "classification": "decision-conditioned map required",
+        "fixed_map_off_state_residual": 0.013998139053825754,
+        "recomputed_state_map_residual": 8.673617379884035e-18
+    },
+    "interpretation": "The witness guards singular full terminal maps, demonstrates a jointly retained support bound, and shows that state-dependent admittances require recomputing or certifying a map at each admissible state. It is not a global robust AC theorem.",
+    "witness_id": "TR-PAR-GUARDED-001",
+    "jointly_retained": {
+        "retained_limits": [
+            0.8,
+            0.6,
+            0.5
+        ],
+        "retained_member_count": 3,
+        "candidate_limit": 0.7,
+        "exact_worst_case_magnitude": 0.6717732862241232,
+        "candidate_rejection_limit": 0.65,
+        "retained_member_ids": [
+            "l1",
+            "l2",
+            "l3"
+        ],
+        "formula": "sum_k abs(K_ck) * limit_k over all retained members",
+        "coefficients": [
+            {
+                "real": 0.55,
+                "imag": 0.1
+            },
+            {
+                "real": -0.25,
+                "imag": 0.05
+            },
+            {
+                "real": 0.14,
+                "imag": -0.03
+            }
+        ]
+    },
+    "source": "experiments/transformations/GuardedParallelReductionWitness.jl",
+    "evidence_type": "scoped_guarded_reduction_witness",
+    "model_scope": "series-only singular terminal map, jointly retained current discs, and state-dependent admittance maps",
+    "singular_map": {
+        "reduced_certificate": {
+            "checks": [
+                {
+                    "retained_limit_contributions": [
+                        0.1827677420318152,
+                        0.0021696458068090484
+                    ],
+                    "candidate_limit": 0.6,
+                    "exact_worst_case_magnitude": 0.18493738783862426,
+                    "numerically_ambiguous": false,
+                    "conductor": "a",
+                    "certified": true,
+                    "margin": 0.41506261216137574,
+                    "relative_margin": 0.41506261216137574
+                },
+                {
+                    "retained_limit_contributions": [
+                        0.0018909506758451981,
+                        0.16410662101704848
+                    ],
+                    "candidate_limit": 0.55,
+                    "exact_worst_case_magnitude": 0.16599757169289367,
+                    "numerically_ambiguous": false,
+                    "conductor": "b",
+                    "certified": true,
+                    "margin": 0.3840024283071064,
+                    "relative_margin": 0.3840024283071064
+                }
+            ],
+            "component_order": [
+                "a",
+                "b"
+            ],
+            "scope": "series-only members with nonsingular retained admittance and identical endpoint voltage coordinates",
+            "retained_map_condition_number": 1.2664602049801512,
+            "criterion": "exact complex-polydisc row norm of candidate-to-retained current recovery map",
+            "retained_member": "l1",
+            "backward_error": 5.982211075584648e-17,
+            "backward_error_tolerance": 1.0e-10,
+            "candidate_member": "l2",
+            "candidate_from_retained_current_map": [
+                [
+                    {
+                        "re": 0.22845938166961244,
+                        "im": -0.00036768017837570527
+                    },
+                    {
+                        "re": 0.0018751685392238533,
+                        "im": 0.0024679153279316434
+                    }
+                ],
+                [
+                    {
+                        "re": 0.0011680433941228922,
+                        "im": 0.0020549202468271013
+                    },
+                    {
+                        "re": 0.23442876704581422,
+                        "im": -0.002084011295492537
+                    }
+                ]
+            ],
+            "preserves": [
+                "candidate member law and identity",
+                "feasible set of the retained voltage variables",
+                "all objectives and constraints on unchanged variables"
+            ],
+            "conductor_order": [
+                "a",
+                "b"
+            ],
+            "classification": "exact_constraint_pruning",
+            "minimum_relative_margin": 1.0e-8,
+            "required_terminal_ends": [
+                "ij",
+                "ji"
+            ],
+            "numerically_ambiguous": false,
+            "forgets": [
+                "only candidate limits proved jointly implied"
+            ],
+            "current_map_residual": 5.982211075584648e-17,
+            "certified": true,
+            "maximum_condition_number": 100000000
+        },
+        "complex_map_cols": 4,
+        "realified_rank": 4,
+        "realified_dimension": [
+            8,
+            8
+        ],
+        "guard_result": "rejected for full terminal-current recovery; use endpoint voltage-drop coordinates",
+        "complex_map_rows": 4
+    }
+}

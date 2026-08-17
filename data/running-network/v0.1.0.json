@@ -1,0 +1,613 @@
+{
+  "terminal_conventions": {
+    "phase": [
+      "a",
+      "b",
+      "c"
+    ],
+    "earth": [
+    ],
+    "neutral": [
+      "n"
+    ]
+  },
+  "bus": {
+    "i5": {
+      "v_max": [
+        299.2983795479021,
+        299.2983795479021,
+        299.2983795479021
+      ],
+      "terminal_names": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "perfectly_grounded_terminals": [
+        "n"
+      ],
+      "v_min": [
+        243.87275370569796,
+        243.87275370569796,
+        243.87275370569796
+      ]
+    },
+    "i4": {
+      "v_max": [
+        7775.522485338205,
+        7775.522485338205
+      ],
+      "terminal_names": [
+        "a",
+        "c",
+        "n"
+      ],
+      "v_min": [
+        6335.610913979278,
+        6335.610913979278
+      ],
+      "vn_max": 180
+    },
+    "i0": {
+      "terminal_names": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "perfectly_grounded_terminals": [
+        "n"
+      ]
+    },
+    "i3": {
+      "v_max": [
+        7775.522485338205,
+        7775.522485338205,
+        7775.522485338205
+      ],
+      "terminal_names": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "v_min": [
+        6335.610913979278,
+        6335.610913979278,
+        6335.610913979278
+      ],
+      "vn_max": 180
+    },
+    "i1": {
+      "v_max": [
+        7775.522485338205,
+        7775.522485338205,
+        7775.522485338205
+      ],
+      "terminal_names": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "v_min": [
+        6335.610913979278,
+        6335.610913979278,
+        6335.610913979278
+      ],
+      "vn_max": 180
+    },
+    "i2": {
+      "v_max": [
+        7775.522485338205,
+        7775.522485338205,
+        7775.522485338205
+      ],
+      "terminal_names": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "v_min": [
+        6335.610913979278,
+        6335.610913979278,
+        6335.610913979278
+      ],
+      "vn_max": 180
+    },
+    "i6": {
+      "vpp_min": [
+        3660.8,
+        3660.8,
+        3660.8
+      ],
+      "vpp_max": [
+        4492.8,
+        4492.8,
+        4492.8
+      ],
+      "terminal_names": [
+        "a",
+        "b",
+        "c"
+      ]
+    }
+  },
+  "name": "running_network_v0_1_0",
+  "switch": {
+    "w0": {
+      "open_switch": false,
+      "bus_from": "i0",
+      "bus_to": "i1",
+      "terminal_map_from": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "terminal_map_to": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "i_max": [
+        420,
+        420,
+        420,
+        420
+      ]
+    }
+  },
+  "generator": {
+    "g1": {
+      "q_min": [
+        -25000,
+        -25000,
+        -25000
+      ],
+      "cost": [
+        -0.08,
+        -0.08,
+        -0.08
+      ],
+      "p_max": [
+        55000,
+        55000,
+        55000
+      ],
+      "p_min": [
+        0,
+        0,
+        0
+      ],
+      "q_max": [
+        25000,
+        25000,
+        25000
+      ],
+      "terminal_map": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "bus": "i3",
+      "s_max": [
+        60000,
+        60000,
+        60000
+      ],
+      "configuration": "WYE"
+    }
+  },
+  "voltage_source": {
+    "s0": {
+      "v_magnitude": [
+        7199.557856794634,
+        7199.557856794634,
+        7199.557856794634
+      ],
+      "terminal_map": [
+        "a",
+        "b",
+        "c"
+      ],
+      "bus": "i0",
+      "v_angle": [
+        0,
+        -2.0943951023931953,
+        2.0943951023931953
+      ]
+    }
+  },
+  "line": {
+    "l2": {
+      "X_series_4_3": 0.053,
+      "X_series_2_3": 0.061,
+      "R_series_1_3": 0.024,
+      "R_series_3_2": 0.027,
+      "R_series_1_2": 0.026,
+      "R_series_2_4": 0.045,
+      "X_series_3_3": 0.28,
+      "terminal_map_to": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "R_series_2_2": 0.2,
+      "R_series_3_4": 0.047,
+      "R_series_1_4": 0.046,
+      "R_series_4_2": 0.045,
+      "X_series_1_3": 0.059,
+      "X_series_3_4": 0.053,
+      "X_series_1_1": 0.26,
+      "R_series_4_3": 0.047,
+      "X_series_2_1": 0.063,
+      "R_series_1_1": 0.19,
+      "X_series_1_4": 0.052,
+      "bus_from": "i1",
+      "terminal_map_from": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "R_series_3_3": 0.21,
+      "X_series_4_4": 0.2,
+      "X_series_3_2": 0.061,
+      "R_series_2_1": 0.026,
+      "i_max": [
+        115,
+        115,
+        115,
+        115
+      ],
+      "R_series_4_1": 0.046,
+      "X_series_4_1": 0.052,
+      "X_series_2_2": 0.27,
+      "X_series_4_2": 0.051,
+      "bus_to": "i2",
+      "R_series_4_4": 0.31,
+      "R_series_3_1": 0.024,
+      "X_series_1_2": 0.063,
+      "R_series_2_3": 0.027,
+      "X_series_2_4": 0.051,
+      "X_series_3_1": 0.059
+    },
+    "l4": {
+      "X_series_2_3": 0.069,
+      "R_series_1_3": 0.06,
+      "R_series_3_2": 0.061,
+      "R_series_1_2": 0.035,
+      "X_series_3_3": 0.25,
+      "terminal_map_to": [
+        "c",
+        "a",
+        "n"
+      ],
+      "R_series_2_2": 0.22,
+      "X_series_1_3": 0.068,
+      "X_series_1_1": 0.29,
+      "X_series_2_1": 0.07,
+      "R_series_1_1": 0.2,
+      "bus_from": "i3",
+      "terminal_map_from": [
+        "a",
+        "c",
+        "n"
+      ],
+      "R_series_3_3": 0.38,
+      "X_series_3_2": 0.069,
+      "R_series_2_1": 0.035,
+      "i_max": [
+        95,
+        95,
+        95
+      ],
+      "X_series_2_2": 0.31,
+      "bus_to": "i4",
+      "R_series_3_1": 0.06,
+      "X_series_1_2": 0.07,
+      "R_series_2_3": 0.061,
+      "X_series_3_1": 0.068
+    },
+    "l3": {
+      "X_series_4_3": 0.064,
+      "X_series_2_3": 0.08,
+      "R_series_1_3": 0.028,
+      "R_series_3_2": 0.031,
+      "R_series_1_2": 0.03,
+      "R_series_2_4": 0.049,
+      "X_series_3_3": 0.26,
+      "terminal_map_to": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "R_series_2_2": 0.17,
+      "R_series_3_4": 0.052,
+      "R_series_1_4": 0.05,
+      "R_series_4_2": 0.049,
+      "X_series_1_3": 0.077,
+      "X_series_3_4": 0.064,
+      "X_series_1_1": 0.24,
+      "R_series_4_3": 0.052,
+      "X_series_2_1": 0.082,
+      "R_series_1_1": 0.16,
+      "X_series_1_4": 0.062,
+      "bus_from": "i2",
+      "terminal_map_from": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "R_series_3_3": 0.18,
+      "X_series_4_4": 0.23,
+      "X_series_3_2": 0.08,
+      "R_series_2_1": 0.03,
+      "i_max": [
+        240,
+        240,
+        240,
+        240
+      ],
+      "R_series_4_1": 0.05,
+      "X_series_4_1": 0.062,
+      "X_series_2_2": 0.25,
+      "X_series_4_2": 0.061,
+      "bus_to": "i3",
+      "R_series_4_4": 0.34,
+      "R_series_3_1": 0.028,
+      "X_series_1_2": 0.082,
+      "R_series_2_3": 0.031,
+      "X_series_2_4": 0.061,
+      "X_series_3_1": 0.077
+    },
+    "l1": {
+      "X_series_4_3": 0.042,
+      "X_series_2_3": 0.051,
+      "R_series_1_3": 0.017,
+      "R_series_3_2": 0.019,
+      "R_series_1_2": 0.018,
+      "R_series_2_4": 0.031,
+      "X_series_3_3": 0.21,
+      "terminal_map_to": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "R_series_2_2": 0.115,
+      "R_series_3_4": 0.033,
+      "R_series_1_4": 0.032,
+      "R_series_4_2": 0.031,
+      "X_series_1_3": 0.049,
+      "X_series_3_4": 0.042,
+      "X_series_1_1": 0.2,
+      "R_series_4_3": 0.033,
+      "X_series_2_1": 0.052,
+      "R_series_1_1": 0.11,
+      "X_series_1_4": 0.041,
+      "bus_from": "i1",
+      "terminal_map_from": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "R_series_3_3": 0.12,
+      "X_series_4_4": 0.16,
+      "X_series_3_2": 0.051,
+      "R_series_2_1": 0.018,
+      "i_max": [
+        210,
+        210,
+        210,
+        210
+      ],
+      "R_series_4_1": 0.032,
+      "X_series_4_1": 0.041,
+      "X_series_2_2": 0.205,
+      "X_series_4_2": 0.04,
+      "bus_to": "i2",
+      "R_series_4_4": 0.24,
+      "R_series_3_1": 0.017,
+      "X_series_1_2": 0.052,
+      "R_series_2_3": 0.019,
+      "X_series_2_4": 0.04,
+      "X_series_3_1": 0.049
+    }
+  },
+  "meta": {
+    "$schema": "https://raw.githubusercontent.com/frederikgeth/bmopf-report/main/schema/bmopf.json",
+    "provenance": {
+      "semantic_specification": "docs/src/cases/running-network.md",
+      "book_fixture_version": "0.1.0"
+    },
+    "case_study_generator": {
+      "version": "0.1.0",
+      "tool": "BMOPFTools.jl"
+    },
+    "created": "2026-08-13",
+    "title": "Running multiconductor network v0.1.0",
+    "license": "CC-BY-4.0",
+    "description": "Synthetic decision-focused fixture for Structure-Preserving Graph Models for Power Networks",
+    "version": "0.1.0",
+    "authors": [
+      {
+        "name": "Frederik Geth"
+      }
+    ]
+  },
+  "shunt": {
+    "hn": {
+      "B_1_1": 0,
+      "terminal_map": [
+        "n"
+      ],
+      "bus": "i2",
+      "G_1_1": 2
+    },
+    "href": {
+      "B_1_1": 0,
+      "terminal_map": [
+        "a"
+      ],
+      "bus": "i6",
+      "G_1_1": 1.0e-6
+    }
+  },
+  "transformer": {
+    "n_winding": {
+      "x1": {
+        "windings": [
+          {
+            "i_max": 180,
+            "v_nom": 7199.557856794634,
+            "r_winding": 0.38875225,
+            "terminal_map": [
+              "a",
+              "b",
+              "c",
+              "n"
+            ],
+            "bus": "i1",
+            "configuration": "WYE"
+          },
+          {
+            "i_max": 2200,
+            "v_nom": 277.1281292110204,
+            "r_winding": 0.000576,
+            "terminal_map": [
+              "a",
+              "b",
+              "c",
+              "n"
+            ],
+            "bus": "i5",
+            "configuration": "WYE"
+          },
+          {
+            "delta_roll": -1,
+            "v_nom": 4160,
+            "i_max": 280,
+            "r_winding": 0.12979200000000002,
+            "terminal_map": [
+              "a",
+              "b",
+              "c"
+            ],
+            "bus": "i6",
+            "configuration": "DELTA"
+          }
+        ],
+        "x_sc": {
+          "1_2": 4.665027,
+          "1_3": 5.4425315,
+          "2_3": 3.8875225
+        },
+        "s_rating": 2000000
+      }
+    }
+  },
+  "load": {
+    "d3": {
+      "p_nom": [
+        22000,
+        18000,
+        27000
+      ],
+      "model": "constant_power",
+      "q_nom": [
+        7000,
+        5000,
+        8000
+      ],
+      "terminal_map": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "bus": "i5",
+      "configuration": "WYE"
+    },
+    "d1": {
+      "p_nom": [
+        120000,
+        82000,
+        64000
+      ],
+      "model": "constant_power",
+      "q_nom": [
+        38000,
+        24000,
+        18000
+      ],
+      "terminal_map": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "bus": "i3",
+      "configuration": "WYE"
+    },
+    "d2a": {
+      "p_nom": [
+        52000
+      ],
+      "model": "constant_power",
+      "q_nom": [
+        16000
+      ],
+      "terminal_map": [
+        "a",
+        "n"
+      ],
+      "bus": "i4",
+      "configuration": "SINGLE_PHASE"
+    },
+    "d2c": {
+      "p_nom": [
+        31000
+      ],
+      "model": "constant_power",
+      "q_nom": [
+        9000
+      ],
+      "terminal_map": [
+        "c",
+        "n"
+      ],
+      "bus": "i4",
+      "configuration": "SINGLE_PHASE"
+    },
+    "d4": {
+      "p_nom": [
+        74000,
+        58000,
+        69000
+      ],
+      "model": "constant_power",
+      "q_nom": [
+        22000,
+        17000,
+        20000
+      ],
+      "terminal_map": [
+        "a",
+        "b",
+        "c"
+      ],
+      "bus": "i6",
+      "configuration": "DELTA"
+    }
+  }
+}

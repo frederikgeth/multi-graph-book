@@ -1,0 +1,516 @@
+{
+  "checks": {
+    "optimization_api_retains_decision_semantics": true,
+    "package_names_are_api_annotations_not_layers": true,
+    "source_data_api_has_assets_and_terminals": true,
+    "matrix_is_rectangular": true,
+    "five_construction_rows_are_declared": true,
+    "decision_is_not_assigned_to_support_graph": true,
+    "support_graph_does_not_infer_asset_identity": true,
+    "ordinary_edge_route_is_optional": true,
+    "five_semantic_lenses_are_declared": true,
+    "direct_factor_to_equation_route_is_declared": true,
+    "sparse_api_exposes_support_without_provenance": true,
+    "graph_learning_tensor_contract_is_explicit": true
+  },
+  "source_summary": {
+    "switch_ids": [
+      "w0"
+    ],
+    "line_ids": [
+      "l1",
+      "l2",
+      "l3",
+      "l4"
+    ],
+    "winding_terminal_counts": [
+      4,
+      4,
+      3
+    ],
+    "transformer_id": "transformer/n_winding/x1"
+  },
+  "all_checks_pass": true,
+  "source_fixture": "data/running-network/v0.1.0.json",
+  "lenses": [
+    {
+      "question": "which object and provenance fibre?",
+      "id": "identity"
+    },
+    {
+      "question": "which terminals or nodes connect?",
+      "id": "connectivity"
+    },
+    {
+      "question": "which equations or responses hold?",
+      "id": "behaviour"
+    },
+    {
+      "question": "which states, limits, and objectives survive?",
+      "id": "decision"
+    },
+    {
+      "question": "which API and variable layout consume this view?",
+      "id": "software"
+    }
+  ],
+  "model_scope": "five construction stages crossed with identity, connectivity, behaviour, decision, and software lenses",
+  "claim_ids": [
+    "ARCH-LENS-001"
+  ],
+  "witness_id": "ARCH-LENS-001",
+  "evidence_type": "layer_lens_matrix_api_smoke_test",
+  "matrix": {
+    "L1": {
+      "behaviour": {
+        "api": "factor relation evaluator",
+        "output": "multiport relation",
+        "status": "smoke_tested",
+        "preserves": [
+          "terminal behaviour"
+        ],
+        "omits": [
+          "support-only interpretation"
+        ],
+        "input": "multiport relation"
+      },
+      "software": {
+        "api": "typed Julia structs",
+        "output": "factor API inputs",
+        "status": "smoke_tested",
+        "preserves": [
+          "coordinate labels",
+          "map metadata"
+        ],
+        "omits": [
+          "solver execution"
+        ],
+        "input": "factor API inputs"
+      },
+      "connectivity": {
+        "api": "port/junction incidence",
+        "output": "terminal-level incidence",
+        "status": "smoke_tested",
+        "preserves": [
+          "port attachments",
+          "conductor identity"
+        ],
+        "omits": [
+          "matrix ordering outside declaration"
+        ],
+        "input": "terminal-level incidence"
+      },
+      "decision": {
+        "api": "typed state and limit fields",
+        "output": "factor constraints and decision domain",
+        "status": "smoke_tested",
+        "preserves": [
+          "controls",
+          "limits"
+        ],
+        "omits": [
+          "optimizer-specific relaxation"
+        ],
+        "input": "factor constraints and decision domain"
+      },
+      "identity": {
+        "api": "typed port-factor records",
+        "output": "ordered ports and source fibres",
+        "status": "smoke_tested",
+        "preserves": [
+          "factor identity",
+          "port order"
+        ],
+        "omits": [
+          "organizational ownership unless linked"
+        ],
+        "input": "ordered ports and source fibres"
+      }
+    },
+    "L2": {
+      "behaviour": {
+        "api": "edge constitutive blocks",
+        "output": "edge equations or stamps",
+        "status": "smoke_tested",
+        "preserves": [
+          "declared edge relation"
+        ],
+        "omits": [
+          "unrealizable n-port semantics"
+        ],
+        "input": "edge equations or stamps"
+      },
+      "software": {
+        "api": "Graphs-style edge table",
+        "output": "edge-indexed algorithm input",
+        "status": "smoke_tested",
+        "preserves": [
+          "edge ordering"
+        ],
+        "omits": [
+          "source asset meaning without fibre"
+        ],
+        "input": "edge-indexed algorithm input"
+      },
+      "connectivity": {
+        "api": "incidence edge list",
+        "output": "ordinary graph adjacency",
+        "status": "smoke_tested",
+        "preserves": [
+          "target connectivity"
+        ],
+        "omits": [
+          "n-port factor arity"
+        ],
+        "input": "ordinary graph adjacency"
+      },
+      "decision": {
+        "api": "guarded edge compiler",
+        "output": "recovery and constraint maps",
+        "status": "smoke_tested",
+        "preserves": [
+          "source decision ownership"
+        ],
+        "omits": [
+          "independent edge decisions unless explicitly allowed"
+        ],
+        "input": "recovery and constraint maps"
+      },
+      "identity": {
+        "api": "generated edge records",
+        "output": "edge IDs plus source fibre",
+        "status": "smoke_tested",
+        "preserves": [
+          "generated provenance"
+        ],
+        "omits": [
+          "ordinary-edge identity as physical asset"
+        ],
+        "input": "edge IDs plus source fibre"
+      }
+    },
+    "L3": {
+      "behaviour": {
+        "api": "SparseArrays.SparseMatrixCSC",
+        "output": "nodal or MNA operator",
+        "status": "smoke_tested",
+        "preserves": [
+          "linear operator coefficients"
+        ],
+        "omits": [
+          "unqueried source variables"
+        ],
+        "input": "nodal or MNA operator"
+      },
+      "software": {
+        "api": "JuMP + SparseArrays",
+        "output": "solver and sparse-kernel inputs",
+        "status": "smoke_tested",
+        "preserves": [
+          "variable and matrix layout"
+        ],
+        "omits": [
+          "community-specific graph vocabulary"
+        ],
+        "input": "solver and sparse-kernel inputs"
+      },
+      "connectivity": {
+        "api": "incidence and block structure",
+        "output": "KCL/KVL and terminal equations",
+        "status": "smoke_tested",
+        "preserves": [
+          "declared equation connectivity"
+        ],
+        "omits": [
+          "simple graph interpretation"
+        ],
+        "input": "KCL/KVL and terminal equations"
+      },
+      "decision": {
+        "api": "JuMP.Model variables/constraints/objective",
+        "output": "decision-ready feasible set",
+        "status": "smoke_tested",
+        "preserves": [
+          "tap variable",
+          "bounds",
+          "objective term"
+        ],
+        "omits": [
+          "asset provenance unless mapped"
+        ],
+        "input": "decision-ready feasible set"
+      },
+      "identity": {
+        "api": "equation/constraint operator",
+        "output": "variable-owner and provenance maps",
+        "status": "smoke_tested",
+        "preserves": [
+          "equation ownership"
+        ],
+        "omits": [
+          "graph drawing semantics"
+        ],
+        "input": "variable-owner and provenance maps"
+      }
+    },
+    "L4": {
+      "behaviour": {
+        "api": "node features + edge attributes",
+        "output": "learned message-passing inputs",
+        "status": "smoke_tested",
+        "preserves": [
+          "declared learning features"
+        ],
+        "omits": [
+          "exact circuit equations by default"
+        ],
+        "input": "learned message-passing inputs"
+      },
+      "software": {
+        "api": "package-independent tensor contract",
+        "output": "node_features, edge_index, edge_attr",
+        "status": "smoke_tested",
+        "preserves": [
+          "tensor shapes"
+        ],
+        "omits": [
+          "a claim about any particular graph-ML package"
+        ],
+        "input": "node_features, edge_index, edge_attr"
+      },
+      "connectivity": {
+        "api": "edge_index / adjacency",
+        "output": "message-passing graph",
+        "status": "smoke_tested",
+        "preserves": [
+          "support connectivity"
+        ],
+        "omits": [
+          "physical connectivity if projection is undocumented"
+        ],
+        "input": "message-passing graph"
+      },
+      "decision": {
+        "api": "mask and target tensors",
+        "output": "learning task data",
+        "status": "smoke_tested",
+        "preserves": [
+          "declared labels/masks"
+        ],
+        "omits": [
+          "optimization feasibility unless encoded"
+        ],
+        "input": "learning task data"
+      },
+      "identity": {
+        "api": "source-map/fibre metadata",
+        "output": "graph nodes and edges with provenance",
+        "status": "smoke_tested",
+        "preserves": [
+          "explicit source links"
+        ],
+        "omits": [
+          "identity inferred from adjacency"
+        ],
+        "input": "graph nodes and edges with provenance"
+      }
+    },
+    "L0": {
+      "behaviour": {
+        "api": "typed factor metadata",
+        "output": "declared factor ownership",
+        "status": "smoke_tested",
+        "preserves": [
+          "equation provenance"
+        ],
+        "omits": [
+          "solver residuals"
+        ],
+        "input": "relation signatures and parameters"
+      },
+      "software": {
+        "api": "JSON3 object dictionaries",
+        "output": "versioned source object",
+        "status": "smoke_tested",
+        "preserves": [
+          "field names",
+          "source version"
+        ],
+        "omits": [
+          "package-specific solver variables"
+        ],
+        "input": "versioned source object"
+      },
+      "connectivity": {
+        "api": "terminal maps in versioned data",
+        "output": "declared attachments",
+        "status": "smoke_tested",
+        "preserves": [
+          "electrical connectivity"
+        ],
+        "omits": [
+          "constitutive coefficients"
+        ],
+        "input": "bus and terminal records"
+      },
+      "decision": {
+        "api": "state/rating fields",
+        "output": "state labels and rating owners",
+        "status": "smoke_tested",
+        "preserves": [
+          "feasible-set semantics"
+        ],
+        "omits": [
+          "optimized solution"
+        ],
+        "input": "switch state domains and limits"
+      },
+      "identity": {
+        "api": "JSON source fixture",
+        "output": "stable identifiers and source fibres",
+        "status": "smoke_tested",
+        "preserves": [
+          "asset identity",
+          "provenance"
+        ],
+        "omits": [
+          "assembled equations",
+          "matrix support"
+        ],
+        "input": "asset IDs, line IDs, winding IDs"
+      }
+    }
+  },
+  "layers": [
+    {
+      "name": "source asset/property",
+      "id": "L0"
+    },
+    {
+      "name": "canonical port-factor",
+      "id": "L1"
+    },
+    {
+      "name": "optional edge realization",
+      "id": "L2"
+    },
+    {
+      "name": "equation/operator",
+      "id": "L3"
+    },
+    {
+      "name": "support/algorithm graph",
+      "id": "L4"
+    }
+  ],
+  "maps": [
+    {
+      "kind": "direct factor stamping",
+      "status": "preferred when guards hold",
+      "id": "L1_to_L3"
+    },
+    {
+      "kind": "guarded compatibility lowering",
+      "status": "optional; source fibre required",
+      "id": "L1_to_L2_to_L3"
+    },
+    {
+      "kind": "support projection",
+      "status": "forgets coefficients and source decomposition",
+      "id": "L3_to_L4"
+    }
+  ],
+  "api_contracts": [
+    {
+      "community": "power-system data",
+      "api": "JSON3 + versioned data-model crosswalk",
+      "scope": [
+        "L0",
+        "L1"
+      ],
+      "status": "smoke_tested"
+    },
+    {
+      "community": "optimization",
+      "api": "JuMP.Model",
+      "scope": [
+        "L0",
+        "L3"
+      ],
+      "status": "smoke_tested_without_solver"
+    },
+    {
+      "community": "sparse linear algebra",
+      "api": "SparseArrays.SparseMatrixCSC/findnz",
+      "scope": [
+        "L3",
+        "L4"
+      ],
+      "status": "smoke_tested"
+    },
+    {
+      "community": "graph machine learning",
+      "api": "node_features/edge_index/edge_attr tensor contract",
+      "scope": [
+        "L4"
+      ],
+      "status": "package_independent_contract"
+    }
+  ],
+  "interpretation": "The matrix is an interface crosswalk, not a package taxonomy. The same software ecosystem can consume several construction stages, and a graph-learning tensor contract does not inherit physical, optimization, or provenance semantics without explicit maps.",
+  "api_observations": {
+    "graph_learning_tensors": {
+      "edge_index": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "node_features": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "edge_attr": [
+        [
+          "support_coupling"
+        ],
+        [
+          "support_coupling"
+        ]
+      ]
+    },
+    "optimization_model": {
+      "variables": [
+        "tap"
+      ],
+      "constraints": [
+        "tap_lower_bound",
+        "tap_upper_bound",
+        "explicit_tap_floor"
+      ],
+      "objective": "minimize tap"
+    },
+    "sparse_operator": {
+      "shape": [
+        2,
+        2
+      ],
+      "nonzero_count": 4,
+      "support_edges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    }
+  },
+  "schema_version": "0.1.0"
+}

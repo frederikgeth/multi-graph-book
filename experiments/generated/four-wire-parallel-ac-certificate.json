@@ -1,0 +1,777 @@
+{
+  "interfaces": {
+    "units": {
+      "source": [
+        "per-unit voltage, current, and power"
+      ],
+      "relation": "identity",
+      "target": [
+        "per-unit voltage, current, and power"
+      ]
+    },
+    "decisions": {
+      "source": [
+        "served-load fraction alpha"
+      ],
+      "relation": "identity",
+      "target": [
+        "served-load fraction alpha"
+      ]
+    },
+    "constraints": {
+      "source": [
+        "both members' component current limits",
+        "unbalanced AC power balance",
+        "phase voltage bounds",
+        "neutral KCL"
+      ],
+      "relation": "only jointly implied member-2 current limits are removed",
+      "target": [
+        "member-1 component current limits",
+        "unchanged unbalanced AC power balance",
+        "unchanged phase voltage bounds",
+        "unchanged neutral KCL"
+      ]
+    },
+    "boundary_quantities": {
+      "source": [
+        "four conductor voltages and total terminal currents"
+      ],
+      "relation": "identity",
+      "target": [
+        "same four conductor voltages and total terminal currents"
+      ]
+    },
+    "objectives": {
+      "source": [
+        "maximize alpha"
+      ],
+      "relation": "identity",
+      "target": [
+        "maximize alpha"
+      ]
+    },
+    "state_variables": {
+      "source": [
+        "U_j(a,b,c,n)",
+        "I_l1ij",
+        "I_l2ij"
+      ],
+      "relation": "member currents retain their original admittance recovery maps",
+      "target": [
+        "U_j(a,b,c,n)",
+        "recovered I_l1ij",
+        "recovered I_l2ij"
+      ]
+    }
+  },
+  "preconditions": [
+    "fixed nonsingular series admittances share the same four endpoint voltage coordinates",
+    "member current limits are centered componentwise complex discs",
+    "candidate-to-retained current recovery passes the exact complex-polydisc row-norm test"
+  ],
+  "rule_id": "joint_componentwise_parallel_limit_pruning",
+  "provenance": {
+    "independent_primitive": "impedance and admittance matrices use the BMOPFTools ordered four-wire line convention",
+    "implementation": "experiments/transformations/FourWireParallelACDecision.jl",
+    "solver": "Ipopt through JuMP"
+  },
+  "classification": "exact_normalization",
+  "target": {
+    "object_ids": [
+      "four_wire_parallel_l1",
+      "four_wire_parallel_l2"
+    ],
+    "detail": {
+      "pruned_limit_owner": "four_wire_parallel_l2"
+    },
+    "model_category": "same_ac_opf_with_certified_redundant_limits_pruned"
+  },
+  "certificate_id": "TR-PAR-006",
+  "preserves": [
+    "AC feasible set",
+    "served-load objective",
+    "member identities",
+    "member-current recovery"
+  ],
+  "constraint_map": {
+    "member_2_limits": "jointly implied by all member-1 component limits through I_l2ij=(Y_l2/Y_l1)I_l1ij at both ends"
+  },
+  "source": {
+    "object_ids": [
+      "four_wire_parallel_l1",
+      "four_wire_parallel_l2"
+    ],
+    "detail": {
+      "terminal_order": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "impedance_pu": [
+        [
+          [
+            {
+              "re": 0.04,
+              "im": 0.08
+            },
+            {
+              "re": 0.008,
+              "im": 0.018
+            },
+            {
+              "re": 0.007,
+              "im": 0.016
+            },
+            {
+              "re": 0.006,
+              "im": 0.014
+            }
+          ],
+          [
+            {
+              "re": 0.008,
+              "im": 0.018
+            },
+            {
+              "re": 0.043,
+              "im": 0.084
+            },
+            {
+              "re": 0.009,
+              "im": 0.019
+            },
+            {
+              "re": 0.007,
+              "im": 0.015
+            }
+          ],
+          [
+            {
+              "re": 0.007,
+              "im": 0.016
+            },
+            {
+              "re": 0.009,
+              "im": 0.019
+            },
+            {
+              "re": 0.046,
+              "im": 0.088
+            },
+            {
+              "re": 0.008,
+              "im": 0.017
+            }
+          ],
+          [
+            {
+              "re": 0.006,
+              "im": 0.014
+            },
+            {
+              "re": 0.007,
+              "im": 0.015
+            },
+            {
+              "re": 0.008,
+              "im": 0.017
+            },
+            {
+              "re": 0.06,
+              "im": 0.105
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "re": 0.2,
+              "im": 0.38
+            },
+            {
+              "re": 0.024,
+              "im": 0.056
+            },
+            {
+              "re": 0.02,
+              "im": 0.048
+            },
+            {
+              "re": 0.016,
+              "im": 0.04
+            }
+          ],
+          [
+            {
+              "re": 0.024,
+              "im": 0.056
+            },
+            {
+              "re": 0.224,
+              "im": 0.408
+            },
+            {
+              "re": 0.028,
+              "im": 0.06
+            },
+            {
+              "re": 0.02,
+              "im": 0.044
+            }
+          ],
+          [
+            {
+              "re": 0.02,
+              "im": 0.048
+            },
+            {
+              "re": 0.028,
+              "im": 0.06
+            },
+            {
+              "re": 0.244,
+              "im": 0.44
+            },
+            {
+              "re": 0.024,
+              "im": 0.052
+            }
+          ],
+          [
+            {
+              "re": 0.016,
+              "im": 0.04
+            },
+            {
+              "re": 0.02,
+              "im": 0.044
+            },
+            {
+              "re": 0.024,
+              "im": 0.052
+            },
+            {
+              "re": 0.3,
+              "im": 0.52
+            }
+          ]
+        ]
+      ],
+      "current_limit_pu": [
+        [
+          0.72,
+          0.72,
+          0.72,
+          0.72
+        ],
+        [
+          0.72,
+          0.72,
+          0.72,
+          0.72
+        ]
+      ]
+    },
+    "model_category": "nonproportional_three_phase_four_wire_parallel_member_ac_opf"
+  },
+  "forgets": [
+    "only member-2 component limits certified jointly implied"
+  ],
+  "recovery_map": {
+    "member_currents": "I_lij = Y_l * (U_i-U_j) for l in {1,2}"
+  },
+  "typed_interfaces": {
+    "target_unit_families": [
+      "current",
+      "dimensionless",
+      "power",
+      "voltage"
+    ],
+    "unresolved_unit_labels": [
+    ],
+    "target_boundary_labels": [
+      "same four conductor voltages and total terminal currents"
+    ],
+    "source_unit_families": [
+      "current",
+      "dimensionless",
+      "power",
+      "voltage"
+    ],
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "state_domain_ids": [
+    ],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+    "unit_family_map": {
+      "per-unit voltage, current, and power": [
+        "current",
+        "dimensionless",
+        "power",
+        "voltage"
+      ]
+    },
+    "source_boundary_labels": [
+      "four conductor voltages and total terminal currents"
+    ],
+    "source_variable_labels": [
+      "U_j(a,b,c,n)",
+      "I_l1ij",
+      "I_l2ij"
+    ],
+    "target_variable_labels": [
+      "U_j(a,b,c,n)",
+      "recovered I_l1ij",
+      "recovered I_l2ij"
+    ]
+  },
+  "evidence": {
+    "naive_aggregate_solution": {
+      "phase_power_pu": [
+        {
+          "q": 0.25281453603636517,
+          "p": 1.2640726801818387
+        },
+        {
+          "q": 0.2166981737454649,
+          "p": 0.993199963000017
+        },
+        {
+          "q": 0.1625236303090961,
+          "p": 0.7584436081091067
+        }
+      ],
+      "member_current_magnitude_pu": [
+        [
+          1.210155500806971,
+          0.8633135021039117,
+          0.6716848499027692,
+          0.4376188117605109
+        ],
+        [
+          0.22986699963344073,
+          0.15888322591007156,
+          0.12201666152791371,
+          0.08453325851875328
+        ]
+      ],
+      "neutral_kcl_residual_pu": 3.8766501701910735e-15,
+      "termination_status": "LOCALLY_SOLVED",
+      "phase_voltage_magnitude_pu": [
+        0.8952126752311128,
+        0.9945379825131521,
+        0.9773785497607264
+      ],
+      "model_size": {
+        "variables": 9,
+        "constraints": 19
+      },
+      "neutral_voltage_magnitude_pu": 0.04878847069606448,
+      "member_current_loading": [
+        [
+          1.680771528898571,
+          1.1990465306998774,
+          0.9328956248649573,
+          0.6078039052229318
+        ],
+        [
+          0.3192597217131121,
+          0.22067114709732163,
+          0.16946758545543572,
+          0.11740730349826844
+        ]
+      ],
+      "objective_served_fraction": 1.8058181145454872,
+      "formulation": "naive_aggregate"
+    },
+    "pruned_objective_gap": -1.687538997430238e-14,
+    "independent_source_boundary": {
+      "boundary_voltage_margin_pu": 0.054729836895559214,
+      "method": "finite-difference damped Newton continuation and bisection",
+      "boundary_served_fraction": 1.1274329170584685,
+      "upper_bracket_served_fraction": 1.1274329178035265,
+      "member_current_magnitude_pu": [
+        [
+          0.7200000097164578,
+          0.5386132970016314,
+          0.41625542401729454,
+          0.24995628351855217
+        ],
+        [
+          0.13672449780939694,
+          0.09910857048345383,
+          0.07555110284537551,
+          0.04833737664733752
+        ]
+      ],
+      "phase_voltage_magnitude_pu": [
+        0.939444108141346,
+        0.9952701631044408,
+        0.9847864201667691
+      ],
+      "boundary_current_margin_pu": -9.716457860520222e-9,
+      "bracket_width": 7.450580152834618e-10,
+      "power_flow_residual": 4.440892098500626e-16,
+      "scan_points": 23
+    },
+    "redundancy": {
+      "checks": [
+        {
+          "retained_limit_contributions": [
+            0.14705707893195985,
+            0.01104468913680168,
+            0.010231253150071116,
+            0.008989697225830531
+          ],
+          "candidate_limit": 0.72,
+          "exact_worst_case_magnitude": 0.17732271844466319,
+          "numerically_ambiguous": false,
+          "conductor": "a",
+          "certified": true,
+          "margin": 0.5426772815553368,
+          "relative_margin": 0.5426772815553368
+        },
+        {
+          "retained_limit_contributions": [
+            0.009488212076265042,
+            0.1424906791759006,
+            0.010670012440148292,
+            0.008374548568556333
+          ],
+          "candidate_limit": 0.72,
+          "exact_worst_case_magnitude": 0.17102345226087026,
+          "numerically_ambiguous": false,
+          "conductor": "b",
+          "certified": true,
+          "margin": 0.5489765477391297,
+          "relative_margin": 0.5489765477391297
+        },
+        {
+          "retained_limit_contributions": [
+            0.007866682399678915,
+            0.009465572840403216,
+            0.13876709695369135,
+            0.008594729324293645
+          ],
+          "candidate_limit": 0.72,
+          "exact_worst_case_magnitude": 0.16469408151806714,
+          "numerically_ambiguous": false,
+          "conductor": "c",
+          "certified": true,
+          "margin": 0.5553059184819329,
+          "relative_margin": 0.5553059184819329
+        },
+        {
+          "retained_limit_contributions": [
+            0.006226354635792225,
+            0.006710059286654796,
+            0.007723027383303828,
+            0.14292130643898826
+          ],
+          "candidate_limit": 0.72,
+          "exact_worst_case_magnitude": 0.1635807477447391,
+          "numerically_ambiguous": false,
+          "conductor": "n",
+          "certified": true,
+          "margin": 0.5564192522552609,
+          "relative_margin": 0.5564192522552609
+        }
+      ],
+      "component_order": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "best_scalar_ratio": {
+        "re": 0.19012093559340407,
+        "im": 0.003855405209213274
+      },
+      "criterion": "exact complex-polydisc row norm of candidate-to-retained current recovery map",
+      "retained_member": "l1",
+      "backward_error": 3.7229057481769353e-16,
+      "conductor_order": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "classification": "exact_constraint_pruning",
+      "required_terminal_ends": [
+        "ij",
+        "ji"
+      ],
+      "certified": true,
+      "scope": "series-only members with nonsingular retained admittance and identical endpoint voltage coordinates",
+      "retained_map_condition_number": 2.183001182350658,
+      "backward_error_tolerance": 1.0e-10,
+      "preserves": [
+        "candidate member law and identity",
+        "feasible set of the retained voltage variables",
+        "all objectives and constraints on unchanged variables"
+      ],
+      "candidate_member": "l2",
+      "candidate_from_retained_current_map": [
+        [
+          {
+            "re": 0.20420901011335368,
+            "im": 0.0038839933798728715
+          },
+          {
+            "re": 0.015338331216060952,
+            "im": -0.00021557255404431458
+          },
+          {
+            "re": 0.014210073819432109,
+            "im": 5.619359025234999e-8
+          },
+          {
+            "re": 0.012480814565052442,
+            "im": 0.00034890878138955396
+          }
+        ],
+        [
+          {
+            "re": 0.01317655561962202,
+            "im": 0.00019993071012699027
+          },
+          {
+            "re": 0.19782702697007726,
+            "im": 0.00550910306280053
+          },
+          {
+            "re": 0.014819447719002107,
+            "im": -2.0372684589214582e-5
+          },
+          {
+            "re": 0.011625964722057902,
+            "im": 0.0003528314772680667
+          }
+        ],
+        [
+          {
+            "re": 0.01092326572815435,
+            "im": 0.0002420757425082229
+          },
+          {
+            "re": 0.013146107687680554,
+            "im": -0.00011706955853467513
+          },
+          {
+            "re": 0.19268068033130142,
+            "im": 0.004450813653815111
+          },
+          {
+            "re": 0.011929285689497105,
+            "im": 0.00043252028675460664
+          }
+        ],
+        [
+          {
+            "re": 0.008638473846321782,
+            "im": 0.000399675347168095
+          },
+          {
+            "re": 0.009318086513044277,
+            "im": 0.00016383915715093315
+          },
+          {
+            "re": 0.010723306513400286,
+            "im": 0.0002587120343119269
+          },
+          {
+            "re": 0.19850137602580406,
+            "im": 0.00041722307808560177
+          }
+        ]
+      ],
+      "scalar_proportionality_residual": 0.3662968611051118,
+      "minimum_relative_margin": 1.0e-8,
+      "numerically_ambiguous": false,
+      "forgets": [
+        "only candidate limits proved jointly implied"
+      ],
+      "current_map_residual": 1.1189180729089664e-15,
+      "maximum_condition_number": 100000000
+    },
+    "source_solution": {
+      "phase_power_pu": [
+        {
+          "q": 0.15784060652990214,
+          "p": 0.7892030326495112
+        },
+        {
+          "q": 0.13529194845420353,
+          "p": 0.6200880970817586
+        },
+        {
+          "q": 0.10146896134065175,
+          "p": 0.47352181958971096
+        }
+      ],
+      "member_current_magnitude_pu": [
+        [
+          0.7200000006322125,
+          0.5386132906406148,
+          0.4162554190490051,
+          0.2499562802074754
+        ],
+        [
+          0.13672449608372028,
+          0.09910856931268526,
+          0.07555110194250111,
+          0.04833737600789356
+        ]
+      ],
+      "neutral_kcl_residual_pu": 3.2023728339893768e-15,
+      "termination_status": "LOCALLY_SOLVED",
+      "phase_voltage_magnitude_pu": [
+        0.9394441089347694,
+        0.9952701631415481,
+        0.9847864203290475
+      ],
+      "model_size": {
+        "variables": 9,
+        "constraints": 23
+      },
+      "neutral_voltage_magnitude_pu": 0.027959519402910988,
+      "member_current_loading": [
+        [
+          1.000000000878073,
+          0.7480740147786317,
+          0.5781325264569516,
+          0.3471615002881603
+        ],
+        [
+          0.1898951334496115,
+          0.13765079071206288,
+          0.10493208603125155,
+          0.06713524445540772
+        ]
+      ],
+      "objective_served_fraction": 1.1274329037850164,
+      "formulation": "source"
+    },
+    "exact_lifted_solution": {
+      "phase_power_pu": [
+        {
+          "q": 0.15784060652990214,
+          "p": 0.7892030326495112
+        },
+        {
+          "q": 0.13529194845420353,
+          "p": 0.6200880970817586
+        },
+        {
+          "q": 0.10146896134065175,
+          "p": 0.47352181958971096
+        }
+      ],
+      "member_current_magnitude_pu": [
+        [
+          0.7200000006322125,
+          0.5386132906406148,
+          0.4162554190490051,
+          0.2499562802074754
+        ],
+        [
+          0.13672449608372028,
+          0.09910856931268526,
+          0.07555110194250111,
+          0.04833737600789356
+        ]
+      ],
+      "neutral_kcl_residual_pu": 3.2023728339893768e-15,
+      "termination_status": "LOCALLY_SOLVED",
+      "phase_voltage_magnitude_pu": [
+        0.9394441089347694,
+        0.9952701631415481,
+        0.9847864203290475
+      ],
+      "model_size": {
+        "variables": 9,
+        "constraints": 23
+      },
+      "neutral_voltage_magnitude_pu": 0.027959519402910988,
+      "member_current_loading": [
+        [
+          1.000000000878073,
+          0.7480740147786317,
+          0.5781325264569516,
+          0.3471615002881603
+        ],
+        [
+          0.1898951334496115,
+          0.13765079071206288,
+          0.10493208603125155,
+          0.06713524445540772
+        ]
+      ],
+      "objective_served_fraction": 1.1274329037850164,
+      "formulation": "exact_lifted"
+    },
+    "exact_pruned_solution": {
+      "phase_power_pu": [
+        {
+          "q": 0.15784060652990023,
+          "p": 0.7892030326494994
+        },
+        {
+          "q": 0.13529194845420353,
+          "p": 0.6200880970817466
+        },
+        {
+          "q": 0.10146896134064964,
+          "p": 0.47352181958969924
+        }
+      ],
+      "member_current_magnitude_pu": [
+        [
+          0.7200000006322012,
+          0.5386132906406048,
+          0.41625541904899466,
+          0.24995628020747326
+        ],
+        [
+          0.13672449608371814,
+          0.09910856931268341,
+          0.07555110194249923,
+          0.04833737600789314
+        ]
+      ],
+      "neutral_kcl_residual_pu": 3.2652638748082423e-15,
+      "termination_status": "LOCALLY_SOLVED",
+      "phase_voltage_magnitude_pu": [
+        0.9394441089347703,
+        0.9952701631415483,
+        0.984786420329048
+      ],
+      "model_size": {
+        "variables": 9,
+        "constraints": 19
+      },
+      "neutral_voltage_magnitude_pu": 0.027959519402910728,
+      "member_current_loading": [
+        [
+          1.0000000008780572,
+          0.7480740147786178,
+          0.578132526456937,
+          0.34716150028815734
+        ],
+        [
+          0.18989513344960854,
+          0.1376507907120603,
+          0.10493208603124893,
+          0.06713524445540714
+        ]
+      ],
+      "objective_served_fraction": 1.1274329037849995,
+      "formulation": "exact_pruned"
+    },
+    "lifted_objective_gap": 0,
+    "naive_objective_gap": 0.6783852107604709,
+    "independent_source_objective_gap": 1.3273452115214468e-8
+  },
+  "schema_version": "1.1.0"
+}

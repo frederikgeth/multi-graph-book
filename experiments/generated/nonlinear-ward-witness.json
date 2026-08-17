@@ -1,0 +1,110 @@
+{
+    "checks": {
+        "has_local_feasible_case": true,
+        "base_residual_is_small": true,
+        "small_shift_is_locally_bounded": true,
+        "large_shift_exposes_nonlinear_residual": true,
+        "all_newton_solves_converged": true,
+        "has_local_ambiguous_case": true
+    },
+    "interpretation": "The local inverse-Jacobian estimate is a scoped nonlinear numerical witness. It is not a global AC error bound, a feasible-set equivalence result, or a substitute for solver-exported KKT evidence.",
+    "source": "experiments/transformations/NonlinearWardWitness.jl",
+    "witness_id": "nonlinear_ward_probe_v0.1.0",
+    "rows": [
+        {
+            "approximate_boundary_current_norm": 1.471857175842816,
+            "direct_state_error": 8.326672684688674e-17,
+            "local_current_error_bound": 3.347635878819228e-17,
+            "direct_current_error": 5.551115123125783e-17,
+            "exact_boundary_current_norm": 1.471857175842816,
+            "exact_internal_voltage": {
+                "real": 0.4376849814171398,
+                "imag": -0.1557546247397431
+            },
+            "current_limit": 1.5,
+            "scenario": "base",
+            "classification": "locally_certified_feasible",
+            "approximate_margin": 0.028142824157183943,
+            "newton_iterations": 1,
+            "nonlinear_residual_at_ward": 6.206335383118183e-17,
+            "exact_residual_norm": 1.6184142622847344e-16,
+            "S": {
+                "real": 0.12,
+                "imag": 0.04
+            },
+            "vB": {
+                "real": 1,
+                "imag": 0
+            },
+            "local_state_error_bound": 7.829790071675529e-17,
+            "ward_internal_voltage": {
+                "real": 0.4376849814171398,
+                "imag": -0.15575462473974303
+            }
+        },
+        {
+            "approximate_boundary_current_norm": 1.4424326038093815,
+            "direct_state_error": 0.014794733995566254,
+            "local_current_error_bound": 0.016123908661090338,
+            "direct_current_error": 0.006325505778285253,
+            "exact_boundary_current_norm": 1.43927145698429,
+            "exact_internal_voltage": {
+                "real": 0.438793963788404,
+                "imag": -0.16390794068338196
+            },
+            "current_limit": 1.5,
+            "scenario": "small_shift",
+            "classification": "locally_certified_feasible",
+            "approximate_margin": 0.05756739619061846,
+            "newton_iterations": 4,
+            "nonlinear_residual_at_ward": 0.02729311339285545,
+            "exact_residual_norm": 1.3877787807814457e-16,
+            "S": {
+                "real": 0.13,
+                "imag": 0.043
+            },
+            "vB": {
+                "real": 0.98,
+                "imag": 0.015
+            },
+            "local_state_error_bound": 0.03771223171252954,
+            "ward_internal_voltage": {
+                "real": 0.4315594619263722,
+                "imag": -0.1510026651416579
+            }
+        },
+        {
+            "approximate_boundary_current_norm": 1.293524157426111,
+            "direct_state_error": 0.1189552987659316,
+            "local_current_error_bound": 0.3253185776511488,
+            "direct_current_error": 0.05085947675213685,
+            "exact_boundary_current_norm": 1.2927132646061965,
+            "exact_internal_voltage": {
+                "real": 0.4082640633317499,
+                "imag": -0.25991059027724434
+            },
+            "current_limit": 1.5,
+            "scenario": "large_shift",
+            "classification": "local_bound_ambiguous",
+            "approximate_margin": 0.20647584257388907,
+            "newton_iterations": 6,
+            "nonlinear_residual_at_ward": 0.20118087621965713,
+            "exact_residual_norm": 5.551115123125783e-17,
+            "S": {
+                "real": 0.19,
+                "imag": 0.066
+            },
+            "vB": {
+                "real": 0.88,
+                "imag": 0.045
+            },
+            "local_state_error_bound": 0.7608880600010192,
+            "ward_internal_voltage": {
+                "real": 0.4007046037013209,
+                "imag": -0.14119573158386947
+            }
+        }
+    ],
+    "evidence_type": "scoped_exploratory_nonlinear_witness",
+    "model_scope": "scalar constant-power internal state with a base-state Ward approximation"
+}

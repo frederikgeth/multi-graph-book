@@ -1,0 +1,118 @@
+schema_version = "0.1.0"
+
+[[misconception]]
+id = "one-universal-network-graph"
+title = "There is one representation-independent network graph"
+severity = "high"
+query_patterns = ["the network graph", "network graph", "what is the graph of the network", "the topology"]
+tempting_answer = "The network is a graph whose buses are nodes and whose equipment is represented by edges."
+required_qualification = "A graph claim must name the asset, connectivity, factor, equation-support, or computational representation and the active state relevant to the query."
+safe_shorthand = "A bus--branch graph is safe shorthand only after its node, edge, state, and query semantics are declared."
+operational_consequence = "Using the wrong graph can erase parallel identity, multi-terminal structure, limits, switching state, or the distinction between physical factors and matrix support."
+mandatory_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001"]
+mandatory_concept_ids = ["graph-topology-adjacency", "element-edge-relation"]
+source_paths = ["docs/src/start/one-network-five-languages.md", "docs/src/foundations/representation-taxonomy.md", "docs/src/foundations/two-level-topology-and-nodal-projection.md"]
+
+[[misconception]]
+id = "loads-generators-fixed-graph-membership"
+title = "Loads and generators either always belong to the graph or never do"
+severity = "high"
+query_patterns = ["do loads belong to the graph", "do generators belong to the graph", "loads and generators", "separate injections", "put loads in ybus", "fold load into ybus", "constant admittance load", "load in component graph", "iterative power flow", "linear matrix device", "linearized device contribution"]
+tempting_answer = "Loads and generators are nodal injections and therefore are separate from the network graph and Ybus."
+required_qualification = "Source-model ownership and study-formulation placement are distinct: a load or generator may remain an attached factor while a declared constant-admittance, Norton, or linearized component is assembled into a nodal operator for a particular formulation or iteration."
+safe_shorthand = "Calling a device an injection is safe only when the study formulation, retained nonlinear part, state dependence, and provenance of any assembled linear part are explicit."
+operational_consequence = "Treating formulation placement as intrinsic graph membership produces incompatible Ybus definitions, obscures model updates, and can change load-flow, initialization, short-circuit, and decision semantics."
+mandatory_claim_ids = ["FORMULATION-Y-SPLIT-001", "ARCH-NODAL-001", "LOAD-DECISION-001"]
+mandatory_concept_ids = ["graph-topology-adjacency", "factor", "nodal-operator-alias"]
+source_paths = ["docs/src/foundations/circuit-formulations-and-lowering.md", "docs/src/foundations/load-models-and-decision-dependence.md"]
+
+[[misconception]]
+id = "nodal-operator-is-source-network"
+title = "The nodal admittance matrix uniquely is the network"
+severity = "high"
+query_patterns = ["ybus is the network", "nodal admittance matrix represents the network", "recover network from ybus", "reconstruct source asset graph", "sparse ybus export", "electrically complete ybus equivalent"]
+tempting_answer = "Ybus completely represents the electrical network."
+required_qualification = "A declared nodal operator represents an assembled linear relation in fixed coordinates; assembly is generally non-injective, its support is a derived simple graph, and it can omit factor identity, member limits, controls, provenance, and variables required by the query."
+safe_shorthand = "Ybus may be called the network matrix, not the unique source network, under a fixed model class and coordinate order."
+operational_consequence = "Inferring assets, member constraints, or a unique graph from the matrix can create false topology and decision claims."
+mandatory_claim_ids = ["ARCH-NODAL-001", "ARCH-SUPPORT-001", "FORMULATION-NODAL-002"]
+mandatory_concept_ids = ["nodal-operator-alias", "graph-topology-adjacency"]
+source_paths = ["docs/src/foundations/two-level-topology-and-nodal-projection.md", "docs/src/foundations/circuit-formulations-and-lowering.md"]
+
+[[misconception]]
+id = "parallel-admittance-implies-decision-equivalence"
+title = "Parallel admittances and ratings can simply be summed"
+severity = "critical"
+query_patterns = ["combine parallel lines", "sum parallel ratings", "equivalent parallel branch", "parallel circuits opf", "total mva rating"]
+tempting_answer = "Replace parallel branches by one branch with summed admittance and summed rating."
+required_qualification = "Summed admittance preserves the unconstrained terminal relation, but a summed member rating can be an outer relaxation of the member-constrained feasible set unless member observations and limits are recoverable or provably redundant."
+safe_shorthand = "Summed admittance is safe for the declared unconstrained terminal equation, not automatically for member-constrained decisions."
+operational_consequence = "The aggregate can admit dispatch or loading decisions that overload a source member."
+mandatory_claim_ids = ["TR-PAR-001", "TR-PAR-002", "TR-PAR-003"]
+mandatory_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/start/first-failure-parallel-branches.md"]
+
+[[misconception]]
+id = "radial-is-representation-independent"
+title = "A radial feeder is cycle-free without qualification"
+severity = "high"
+query_patterns = ["is this feeder radial", "radial means no cycles", "tree network"]
+tempting_answer = "A radial feeder is a tree and therefore contains no cycles."
+required_qualification = "Radiality and cycle rank belong to a named active graph: a tree-shaped simple bus projection may hide a line-identity cycle from parallel members, and inventory and active-state graphs can differ."
+safe_shorthand = "Radial feeder is safe shorthand only when the representation and active state are understood."
+operational_consequence = "The shortcut can erase outage redundancy, member switching choices, and cycle-space dimensions used by algorithms."
+mandatory_claim_ids = ["GRAPH-CYCLE-001", "TR-GRAPH-001", "TR-GRAPH-ACTIVE-001"]
+mandatory_concept_ids = ["cycle-radial-tree", "parallel"]
+source_paths = ["docs/src/foundations/cycles-parallelism-radiality.md", "docs/src/start/five-bus-cycle-spaces.md"]
+
+[[misconception]]
+id = "kron-reduction-preserves-everything"
+title = "Exact Kron reduction makes a fully equivalent network"
+severity = "critical"
+query_patterns = ["is kron reduction exact", "kron equivalent network", "eliminate internal buses", "delete kron eliminated components", "reduced matrix model store", "schur complement reduction", "schur-complement network reduction", "metadata reverse map", "internal equipment limits", "protection quantities"]
+tempting_answer = "Kron reduction is exact, so the reduced network is equivalent to the original."
+required_qualification = "Kron reduction can preserve a declared linear boundary relation under its algebraic guards; it can create fill and still require recovery maps for internal quantities, state-dependent factors, limits, decisions, and provenance."
+safe_shorthand = "Exact Kron reduction is safe only when the exactness object, domain, retained observations, and recovery obligations are named."
+operational_consequence = "A boundary-exact reduction can still lose internal feasibility, protection quantities, asset meaning, or validity away from its calibration domain."
+mandatory_claim_ids = ["PRESERVE-001", "TR-KRON-002", "TR-KRON-FIVE-002"]
+mandatory_concept_ids = ["equivalence-exactness-preservation", "transformation-family"]
+source_paths = ["docs/src/foundations/preservation-contracts.md", "docs/src/transformations/kron-ward-opti-kron.md"]
+
+[[misconception]]
+id = "transposition-implies-positive-sequence-exactness"
+title = "Transposition alone makes a positive-sequence model exact"
+severity = "critical"
+query_patterns = ["transposed line positive sequence", "positive sequence exact", "positive sequence equivalent", "transposed network", "transposed line model", "sequence invariant subspace", "balanced equivalent"]
+tempting_answer = "A transposed three-phase line can be represented exactly by its positive-sequence circuit."
+required_qualification = "Exact collapse requires compatible terminals, sequence-invariant constitutive matrices and grounding, balanced boundary data, compatible device closure, and phase-symmetric constraints and decisions; transposition alone does not establish those conditions."
+safe_shorthand = "Positive-sequence modelling is exact only on the declared invariant subspace under the complete collapse contract."
+operational_consequence = "The shortcut can suppress sequence coupling, neutral or grounding behaviour, unbalance, and phase-selective limits or decisions."
+mandatory_claim_ids = ["COLLAPSE-001", "COLLAPSE-002"]
+mandatory_concept_ids = ["phase-conductor-sequence-coordinate", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/foundations/when-general-model-collapses.md"]
+
+[[misconception]]
+id = "ground-neutral-reference-are-one-node"
+title = "Ground, neutral, earth, and voltage reference are the same node"
+severity = "critical"
+query_patterns = ["ground node", "neutral is ground", "earth reference node", "remove neutral node"]
+tempting_answer = "Ground and neutral can be represented by the zero-voltage reference node."
+required_qualification = "Physical earth, neutral conductors, grounding impedances or assets, and gauge references are distinct objects; any identification or elimination must declare the earth-return class, grounding points, retained observations, and recovery requirements."
+safe_shorthand = "Ground node is safe only when the physical and mathematical objects intentionally identified by that model are stated."
+operational_consequence = "Conflation can erase neutral voltage and current, earth-return paths, grounding-device state, protection quantities, and limits."
+mandatory_claim_ids = ["GROUND-SCOPE-001", "GROUND-SCOPE-002"]
+mandatory_concept_ids = ["ground-neutral-reference", "object-node-interface"]
+source_paths = ["docs/src/foundations/earth-ground-models.md", "docs/src/start/one-network-five-languages.md"]
+
+[[misconception]]
+id = "terminal-equivalence-implies-opf-equivalence"
+title = "Equal terminal equations imply equal optimization decisions"
+severity = "critical"
+query_patterns = ["equivalent circuit preserves opf", "terminal equivalent optimization", "same terminal behavior same decisions", "terminal equation regression test", "model reduction for optimization", "network equivalent preserve opf", "planning decisions"]
+tempting_answer = "If two models have the same terminal equations, they are interchangeable in optimization."
+required_qualification = "Decision equivalence is indexed by the admissible domain, observations, constraints, objective, discrete choices, and recovery map; terminal equality alone does not establish equality of constrained feasible observable sets."
+safe_shorthand = "Equivalent is safe only when the preservation contract names the relevant exactness object."
+operational_consequence = "An apparently exact equivalent can admit infeasible source decisions, hide binding member constraints, or change objective values."
+mandatory_claim_ids = ["PRESERVE-001", "TR-PAR-001", "TR-PAR-002"]
+mandatory_concept_ids = ["equivalence-exactness-preservation", "rating-limit-constraint"]
+source_paths = ["docs/src/foundations/preservation-contracts.md", "docs/src/start/first-failure-parallel-branches.md"]

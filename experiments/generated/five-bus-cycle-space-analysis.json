@@ -1,0 +1,234 @@
+{
+  "analysis_id": "GRAPH-CYCLE-001",
+  "electrical_check": {
+    "parallel_decision_witness": {
+      "source_voltage_limit_V": 10,
+      "voltage_difference_V": 15,
+      "member_limits_A": [
+        100,
+        100
+      ],
+      "source_feasible": false,
+      "aggregate_current_A": 165,
+      "aggregate_voltage_limit_V": 18.181818181818183,
+      "member_currents_A": [
+        150,
+        15
+      ],
+      "aggregate_feasible": true,
+      "aggregate_limit_A": 200
+    },
+    "maximum_ybus_difference": 0
+  },
+  "interpretation": {
+    "electrical_aggregation": "preserves the scalar series nodal admittance but requires member-current recovery for source limits",
+    "physical_tree": "would require a state change or a separate preservation certificate",
+    "simple_projection": "forgets the q/r member distinction and one cycle-space dimension",
+    "spanning_tree": "selects coordinates; chord lines q, t, and v remain in the source model"
+  },
+  "source": {
+    "buses": [
+      "i",
+      "j",
+      "k",
+      "l",
+      "m"
+    ],
+    "forward_topology": [
+      {
+        "line": "q",
+        "current_limit_A": 100,
+        "to": "i",
+        "from": "j",
+        "series_admittance_S": 10
+      },
+      {
+        "line": "r",
+        "current_limit_A": 100,
+        "to": "j",
+        "from": "i",
+        "series_admittance_S": 1
+      },
+      {
+        "line": "s",
+        "current_limit_A": null,
+        "to": "k",
+        "from": "j",
+        "series_admittance_S": 5
+      },
+      {
+        "line": "t",
+        "current_limit_A": null,
+        "to": "i",
+        "from": "k",
+        "series_admittance_S": 3.3333333333333335
+      },
+      {
+        "line": "v",
+        "current_limit_A": null,
+        "to": "j",
+        "from": "l",
+        "series_admittance_S": 2.5
+      },
+      {
+        "line": "w",
+        "current_limit_A": null,
+        "to": "l",
+        "from": "k",
+        "series_admittance_S": 2
+      },
+      {
+        "line": "u",
+        "current_limit_A": null,
+        "to": "m",
+        "from": "l",
+        "series_admittance_S": 1.6666666666666667
+      }
+    ]
+  },
+  "cycle_space": {
+    "chord_lines": [
+      "q",
+      "t",
+      "v"
+    ],
+    "incidence_rank": 4,
+    "cycle_rank": 3,
+    "incidence_cycle_residual": 0,
+    "spanning_tree_lines": [
+      "r",
+      "s",
+      "w",
+      "u"
+    ],
+    "line_order": [
+      "q",
+      "r",
+      "s",
+      "t",
+      "v",
+      "w",
+      "u"
+    ],
+    "bridges": [
+      "u"
+    ],
+    "fundamental_cycle_matrix": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "simple_projection": {
+    "incidence_rank": 4,
+    "cycle_rank": 2,
+    "lost_cycle_dimension": 1,
+    "edges": [
+      {
+        "source_members": [
+          "q",
+          "r"
+        ],
+        "id": "e_ij",
+        "endpoints": [
+          "i",
+          "j"
+        ],
+        "aggregate_series_admittance_S": 11
+      },
+      {
+        "source_members": [
+          "t"
+        ],
+        "id": "e_ik",
+        "endpoints": [
+          "i",
+          "k"
+        ],
+        "aggregate_series_admittance_S": 3.3333333333333335
+      },
+      {
+        "source_members": [
+          "s"
+        ],
+        "id": "e_jk",
+        "endpoints": [
+          "j",
+          "k"
+        ],
+        "aggregate_series_admittance_S": 5
+      },
+      {
+        "source_members": [
+          "v"
+        ],
+        "id": "e_jl",
+        "endpoints": [
+          "j",
+          "l"
+        ],
+        "aggregate_series_admittance_S": 2.5
+      },
+      {
+        "source_members": [
+          "w"
+        ],
+        "id": "e_kl",
+        "endpoints": [
+          "k",
+          "l"
+        ],
+        "aggregate_series_admittance_S": 2
+      },
+      {
+        "source_members": [
+          "u"
+        ],
+        "id": "e_lm",
+        "endpoints": [
+          "l",
+          "m"
+        ],
+        "aggregate_series_admittance_S": 1.6666666666666667
+      }
+    ]
+  },
+  "bmopftools_cross_check": {
+    "expected": 3,
+    "n_extra_edges": 3
+  },
+  "schema_version": "1.0.0",
+  "model_scope": "connected loopless scalar series bus-branch multigraph"
+}

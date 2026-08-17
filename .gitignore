@@ -1,0 +1,27 @@
+# Documenter build output and resolved environment
+docs/build/
+docs/latex_build/
+docs/Manifest.toml
+
+# PDF placeholder created during the documentation build
+docs/src/*.pdf
+
+# Local render-and-inspect artifacts
+tmp/
+
+# Original imported notes; canonical copies now live at the repository root and under docs/src
+/power-network-graph-models/
+
+# Julia
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+experiments/Manifest.toml
+
+# Python-generated caches
+__pycache__/
+*.pyc
+
+# OS and editors
+.DS_Store
+*.swp

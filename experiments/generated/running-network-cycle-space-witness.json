@@ -1,0 +1,68 @@
+{
+  "chord_ids": [
+    "l2"
+  ],
+  "incidence_rank": 3,
+  "simple_incidence_rank": 3,
+  "witness_id": "GRAPH-CYCLE-RUNNING-001",
+  "cycle_residual": 0,
+  "parallel_members": [
+    "l1",
+    "l2"
+  ],
+  "tree_ids": [
+    "l1",
+    "l3",
+    "l4"
+  ],
+  "line_order": [
+    "l1",
+    "l2",
+    "l3",
+    "l4"
+  ],
+  "simple_cycle_rank": 0,
+  "cycle_rank": 1,
+  "source_fixture": "data/running-network/v0.1.0.json",
+  "vertices": [
+    "i1",
+    "i2",
+    "i3",
+    "i4"
+  ],
+  "simple_membership": {
+    "e_i2i3": [
+      "l3"
+    ],
+    "e_i3i4": [
+      "l4"
+    ],
+    "e_i1i2": [
+      "l1",
+      "l2"
+    ]
+  },
+  "excluded_assets": [
+    "switch/w0",
+    "transformer/n_winding"
+  ],
+  "model_scope": "identified scalar line projection of the running multiconductor fixture",
+  "bridges": [
+    "l3",
+    "l4"
+  ],
+  "fundamental_cycle_matrix": [
+    [
+      -1
+    ],
+    [
+      1
+    ],
+    [
+      0
+    ],
+    [
+      0
+    ]
+  ]
+}

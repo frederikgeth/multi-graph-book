@@ -1,0 +1,157 @@
+{
+  "witness_id": "ARCH-CONDUCTOR-MULTI-001",
+  "evidence_type": "multiwinding_contract_terminal_port_lift",
+  "source_fixture": "data/transformer-contracts/x1-fixed-linear-v0.1.0.json",
+  "model_scope": "serialized three-winding fixed-linear transformer contract lifted to ordered terminal ports",
+  "ports": [
+    {
+      "junctions": [
+        "x1/winding/1/a",
+        "x1/winding/1/b",
+        "x1/winding/1/c",
+        "x1/winding/1/n"
+      ],
+      "terminal_order": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "coil_order": [
+        "a",
+        "b",
+        "c"
+      ],
+      "winding_id": "x1/winding/1",
+      "id": "transformer/x1/port/1",
+      "factor": "transformer/x1",
+      "variable_space": "V_4×I_4"
+    },
+    {
+      "junctions": [
+        "x1/winding/2/a",
+        "x1/winding/2/b",
+        "x1/winding/2/c",
+        "x1/winding/2/n"
+      ],
+      "terminal_order": [
+        "a",
+        "b",
+        "c",
+        "n"
+      ],
+      "coil_order": [
+        "a",
+        "b",
+        "c"
+      ],
+      "winding_id": "x1/winding/2",
+      "id": "transformer/x1/port/2",
+      "factor": "transformer/x1",
+      "variable_space": "V_4×I_4"
+    },
+    {
+      "junctions": [
+        "x1/winding/3/a",
+        "x1/winding/3/b",
+        "x1/winding/3/c"
+      ],
+      "terminal_order": [
+        "a",
+        "b",
+        "c"
+      ],
+      "coil_order": [
+        "a",
+        "b",
+        "c"
+      ],
+      "winding_id": "x1/winding/3",
+      "id": "transformer/x1/port/3",
+      "factor": "transformer/x1",
+      "variable_space": "V_3×I_3"
+    }
+  ],
+  "factors": [
+    {
+      "source_asset": "x1",
+      "id": "transformer/x1",
+      "ports": [
+        "transformer/x1/port/1",
+        "transformer/x1/port/2",
+        "transformer/x1/port/3"
+      ],
+      "type": "multiwinding_transformer",
+      "arity": 3
+    }
+  ],
+  "cycle_views": {
+    "factor_incidence": {
+      "cycle_rank": 0,
+      "vertices": [
+        "transformer/x1",
+        "transformer/x1/port/1",
+        "transformer/x1/port/2",
+        "transformer/x1/port/3"
+      ],
+      "edges": [
+        {
+          "id": "incidence/transformer/x1/port/1",
+          "to": "transformer/x1/port/1",
+          "from": "transformer/x1"
+        },
+        {
+          "id": "incidence/transformer/x1/port/2",
+          "to": "transformer/x1/port/2",
+          "from": "transformer/x1"
+        },
+        {
+          "id": "incidence/transformer/x1/port/3",
+          "to": "transformer/x1/port/3",
+          "from": "transformer/x1"
+        }
+      ]
+    },
+    "clique_compilation": {
+      "cycle_rank": 1,
+      "vertices": [
+        "transformer/x1/port/1",
+        "transformer/x1/port/2",
+        "transformer/x1/port/3"
+      ],
+      "edges": [
+        {
+          "id": "compiled/transformer/x1/port/1/transformer/x1/port/2",
+          "to": "transformer/x1/port/2",
+          "from": "transformer/x1/port/1"
+        },
+        {
+          "id": "compiled/transformer/x1/port/1/transformer/x1/port/3",
+          "to": "transformer/x1/port/3",
+          "from": "transformer/x1/port/1"
+        },
+        {
+          "id": "compiled/transformer/x1/port/2/transformer/x1/port/3",
+          "to": "transformer/x1/port/3",
+          "from": "transformer/x1/port/2"
+        }
+      ]
+    }
+  },
+  "observations": {
+    "excitation_shunt": "x1/excitation/winding/2",
+    "internal_groundings": 1
+  },
+  "checks": {
+    "winding_identity_preserved": true,
+    "factor_incidence_is_acyclic": true,
+    "delta_winding_has_no_neutral_terminal": true,
+    "wye_neutral_terminal_retained": true,
+    "clique_compilation_adds_cycle": true,
+    "excitation_shunt_is_separate_observation": true,
+    "multiwinding_factor_has_three_ports": true,
+    "all_transfer_ports_resolve": true,
+    "internal_grounding_is_separate_observation": true
+  },
+  "interpretation": "The lift preserves winding identity, terminal order, WYE neutral presence, DELTA terminal arity, and separate internal observations; it is structural evidence, not a full electrical equivalence certificate."
+}

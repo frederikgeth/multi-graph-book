@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="530" viewBox="0 0 1200 530">
+<title>Earth and neutral model classes</title>
+<desc>A ladder from an ideal reference to an asset-aware grounding model, with explicit limits on the questions each class can answer.</desc>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:27px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.head{font-size:18px;font-weight:bold}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.box{stroke:#17212b;stroke-width:2}.arrow{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>
+<text x="35" y="38" class="title">Earth / neutral model-class ladder</text>
+<text x="35" y="66" class="sub">More detail is not automatically better: choose the class from the observations and decisions to preserve.</text>
+<text x="40" y="112" class="head">Class</text>
+<text x="135" y="112" class="head">Electrical object</text>
+<text x="385" y="112" class="head">Retained return meaning</text>
+<text x="700" y="112" class="head">Typical study boundary</text>
+<rect x="35" y="135" width="1130" height="72" rx="10" class="box" fill="#f7f9fb"/>
+<text x="55" y="165" class="head">E₀</text>
+<text x="135" y="162" class="body">ideal reference</text>
+<text x="385" y="162" class="body">gauge only</text>
+<text x="385" y="186" class="small">no earth current</text>
+<text x="700" y="173" class="body">PF/OPF under declared balance</text>
+<path d="M600 213 L600 227" class="arrow"/>
+<rect x="35" y="220" width="1130" height="72" rx="10" class="box" fill="#e8f0fa"/>
+<text x="55" y="250" class="head">E₁</text>
+<text x="135" y="247" class="body">reduced earth return</text>
+<text x="385" y="247" class="body">embedded impedance/shunt</text>
+<text x="385" y="271" class="small">return effects, no asset path</text>
+<text x="700" y="258" class="body">feeder PF and planning</text>
+<path d="M600 298 L600 312" class="arrow"/>
+<rect x="35" y="305" width="1130" height="72" rx="10" class="box" fill="#e4f4e7"/>
+<text x="55" y="335" class="head">E₂</text>
+<text x="135" y="332" class="body">explicit earth conductor</text>
+<text x="385" y="332" class="body">voltage/current port</text>
+<text x="385" y="356" class="small">coupling and conductor limits</text>
+<text x="700" y="343" class="body">four-wire and protection studies</text>
+<path d="M600 383 L600 397" class="arrow"/>
+<rect x="35" y="390" width="1130" height="72" rx="10" class="box" fill="#f8e1c4"/>
+<text x="55" y="420" class="head">E₃</text>
+<text x="135" y="417" class="body">asset-aware grounding</text>
+<text x="385" y="417" class="body">electrical + asset relations</text>
+<text x="385" y="441" class="small">electrode/grid identity and state</text>
+<text x="700" y="428" class="body">outage, switching, and maintenance</text>
+<text x="35" y="500" class="small">The arrows indicate added modelling commitments, not a universal accuracy ranking.</text>
+<text x="35" y="520" class="small">A reduction is admissible only when its omitted return, protection, and asset observations are outside the contract or recoverable.</text>
+</svg>

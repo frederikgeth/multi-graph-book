@@ -1,0 +1,28 @@
+# Experimental neural retrieval record. Model files are not bundled in the
+# repository; the artifact hashes identify the exact local snapshots used for
+# the benchmark report in generated/neural-retrieval-evaluation.*.
+
+[embedding]
+provider = "sentence-transformers"
+model_id = "sentence-transformers/all-MiniLM-L6-v2"
+revision = "ea78891063587eb050ed4166b20062eaf978037c"
+artifact_sha256 = "507dfbc0b17cb6138f2a9f9e0894df3198cab2bebb23fc46759021e6ee458d02"
+embedding_dimension = 384
+normalization = "unit_l2"
+role = "compact semantic-retrieval baseline"
+
+[reranker]
+provider = "sentence-transformers-cross-encoder"
+model_id = "cross-encoder/ms-marco-MiniLM-L6-v2"
+revision = "c5ee24cb16019beea0893ab7796b1df96625c6b8"
+artifact_sha256 = "d5d6c60ab5d3e953626f0839cad9292482a5970deeea2551d3223b2f984cee92"
+max_length = 512
+role = "generic cross-encoder reranking experiment"
+
+[runtime]
+python = "3.12.13"
+sentence_transformers = "5.7.0"
+torch = "2.13.0"
+transformers = "5.15.0"
+numpy = "2.5.2"
+device = "cpu"

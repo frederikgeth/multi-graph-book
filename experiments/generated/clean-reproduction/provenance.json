@@ -1,0 +1,19 @@
+{
+  "bmopftools_repository": {
+    "untracked_files": [
+    ],
+    "commit": "b7aa9a1bb48bcc8b790d3bcf5417d6a32036352a",
+    "path_expectation": "BMOPFTOOLS_ROOT environment override",
+    "dirty": false,
+    "path": "/private/tmp/multi-graph-clean.MkH5pF/BMOPFTools.jl",
+    "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "julia_version": "1.12.6",
+  "packages": {
+    "JSON3": "1.14.3",
+    "Ipopt": "1.15.0",
+    "BMOPFTools": "0.1.0",
+    "JuMP": "1.31.1"
+  },
+  "generated_at": "2026-08-13"
+}

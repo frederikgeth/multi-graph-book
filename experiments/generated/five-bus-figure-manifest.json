@@ -1,0 +1,20 @@
+{
+  "figures": {
+    "cycle_basis": {
+      "path": "docs/src/assets/five-bus-cycle-basis.png",
+      "sha256": "9281635f037970f495ebc652869d5f3941f92901297c6608b667e1fd08e23dfc"
+    },
+    "feasible_sets": {
+      "path": "docs/src/assets/five-bus-feasible-sets.png",
+      "sha256": "275e45ec8d1c4dcff47179aa546e73631882a82aaa6c1d672d91267807de40dc"
+    },
+    "transformation_map": {
+      "path": "docs/src/assets/five-bus-transformation-map.png",
+      "sha256": "5331ff21e17ebedb420f692f5fa6418dc26507571427d776a5af1b9316933ad4"
+    }
+  },
+  "generator": "experiments/generate_five_bus_cycle_figure.py",
+  "schema_version": "1.0.0",
+  "source_analysis": "experiments/generated/five-bus-cycle-space-analysis.json",
+  "source_analysis_sha256": "b600f9a550d433008eab528905f487cffa5f6f5674829ae43d8c4328db88a554"
+}

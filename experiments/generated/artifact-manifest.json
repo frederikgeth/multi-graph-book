@@ -1,0 +1,472 @@
+{
+  "artifact_count": 93,
+  "artifacts": [
+    {
+      "path": "experiments/generated/active-radiality-witness.json",
+      "sha256": "c676f21f9774f319d6ddf9c8775f3179734d0c9c24e532411b8c21dfec47199e",
+      "size_bytes": 700
+    },
+    {
+      "path": "experiments/generated/australian-carson-reproduction.json",
+      "sha256": "3b7c0a5a4ac467368ee1983137aa7ae2ae2f9c374a13c4938f0dae94e5dc4c08",
+      "size_bytes": 75747
+    },
+    {
+      "path": "experiments/generated/balanced-transmission-independent-reproduction.json",
+      "sha256": "0c369ac6193970cc488f0e0e155ff04469ac7fe2d8298d987098c66cdb39934d",
+      "size_bytes": 1015
+    },
+    {
+      "path": "experiments/generated/balanced-transmission-witness.json",
+      "sha256": "2ffa917cf2d8765a3a3817f4f7d2fd2c5861d0ae2f60c1ee4a202bbca7872740",
+      "size_bytes": 4432
+    },
+    {
+      "path": "experiments/generated/block-structure-bridge-witness.json",
+      "sha256": "ed03e7c3d2529a110380c8b6c204f5b7104b3d64ceea755fbce822686257fcf6",
+      "size_bytes": 2227
+    },
+    {
+      "path": "experiments/generated/certified-approximation-witness.json",
+      "sha256": "d57c3dc96d6ceb144b2e443f40d9ee059d379d7c14e0e9bb46462cb31f4c759f",
+      "size_bytes": 3386
+    },
+    {
+      "path": "experiments/generated/circuit-formulation-witness.json",
+      "sha256": "11569ca3bb70fe39c3c85054fba94a5dcddd9f9e3699a822c971ee7428c88d47",
+      "size_bytes": 8186
+    },
+    {
+      "path": "experiments/generated/clean-package-matrix.json",
+      "sha256": "f4bb418ea6d2cbbded7535cc906e67da074244604bb2df91b5b3190c5db1bc2a",
+      "size_bytes": 640
+    },
+    {
+      "path": "experiments/generated/clean-reproduction/parallel-branch-certificate.json",
+      "sha256": "da22c055cced749c5f09462dbc115b2187fd949631bb365deb4ec9374ea3f944",
+      "size_bytes": 1910
+    },
+    {
+      "path": "experiments/generated/clean-reproduction/provenance.json",
+      "sha256": "7d190f1ae07f569ca45d8733b3b1a601aa64b5aec88c984fdde63684edd164d8",
+      "size_bytes": 548
+    },
+    {
+      "path": "experiments/generated/clean-reproduction/summary.json",
+      "sha256": "e088dd07d6ce9ce703fd61f470d018050e7c773e1ebcfafecb0c00f864a54c56",
+      "size_bytes": 9256
+    },
+    {
+      "path": "experiments/generated/clean-reproduction/v0.1.0.json",
+      "sha256": "80aa8704cf813f4e98b9df4037c062e7016f651307855115db85df441c28a021",
+      "size_bytes": 11621
+    },
+    {
+      "path": "experiments/generated/compiled-views-surgery-witness.json",
+      "sha256": "471ee7e4c07a1c49991eb8d6ad273a056b291b7bc0f8b598e6ce728915abfc64",
+      "size_bytes": 19066
+    },
+    {
+      "path": "experiments/generated/conductor-terminal-lift-witness.json",
+      "sha256": "8c291d52ecae078893d7348f0aa61e2ae107406218983e78b5320f3674163a50",
+      "size_bytes": 17674
+    },
+    {
+      "path": "experiments/generated/connection-map-independent-reproduction.json",
+      "sha256": "af422560e6370ca8f4d532cb32fc22c808f6dacde0871dbc2c19ab87bf9310c0",
+      "size_bytes": 693
+    },
+    {
+      "path": "experiments/generated/coordinate-normalization-certificate.json",
+      "sha256": "c4e98c9a384674eb03904a1be0a5d04a86b2d72ed55f2b5cdd3f46b9646fbb51",
+      "size_bytes": 4456
+    },
+    {
+      "path": "experiments/generated/coordinate-series-composition-certificate.json",
+      "sha256": "db91f8bd923a79e26017c215ff6edd085b4c51a57eac996d0810c06fab7130da",
+      "size_bytes": 6405
+    },
+    {
+      "path": "experiments/generated/data-model-crosswalk-witness.json",
+      "sha256": "415c46150b48a70fd8af0bb1ccc56b80880c7809b97072c53dea38642a73ebc7",
+      "size_bytes": 9026
+    },
+    {
+      "path": "experiments/generated/degree-two-series-certificate.json",
+      "sha256": "72dd8f258c3e0e0873bb688fefb76987672ac919aa04e268a91de41cc9867e30",
+      "size_bytes": 8903
+    },
+    {
+      "path": "experiments/generated/explicit-earth-independent-reproduction.json",
+      "sha256": "e9dc4dd9aacd6b86f6d6ff346c22d997726ab6aebc290849d0307b38367b3afe",
+      "size_bytes": 2430
+    },
+    {
+      "path": "experiments/generated/explicit-earth-kron-independent-reproduction.json",
+      "sha256": "3af029968262ff1482d7367f1cc3b3912710e88fd97c3c0a64b60e404e757026",
+      "size_bytes": 4052
+    },
+    {
+      "path": "experiments/generated/explicit-earth-kron-witness.json",
+      "sha256": "790bde7686c0606a5e0502164568b6e7e0b87737d2e57ea0a319ca716342f8f2",
+      "size_bytes": 5054
+    },
+    {
+      "path": "experiments/generated/five-bus-active-radiality-witness.json",
+      "sha256": "fbf8d1a5f634368cf4d192210423b6a1f3b69980ab01006b256fa9539e3ec820",
+      "size_bytes": 1420
+    },
+    {
+      "path": "experiments/generated/five-bus-conductor-terminal-lift-witness.json",
+      "sha256": "b922a60b03f4810ffad2716194e587bd540c92a5b16ef088eb61b6dea3833fc3",
+      "size_bytes": 9577
+    },
+    {
+      "path": "experiments/generated/five-bus-cycle-space-analysis.json",
+      "sha256": "b600f9a550d433008eab528905f487cffa5f6f5674829ae43d8c4328db88a554",
+      "size_bytes": 4442
+    },
+    {
+      "path": "experiments/generated/five-bus-figure-manifest.json",
+      "sha256": "69ba130b7fe91931e7b00d4967f6b1734e8bb9af77699589a58d0089ad24028e",
+      "size_bytes": 817
+    },
+    {
+      "path": "experiments/generated/five-bus-port-factor-witness.json",
+      "sha256": "1208b23aa1690675b2808ec43d94386006ec36bac825af3cf29019d0b70e6edc",
+      "size_bytes": 8328
+    },
+    {
+      "path": "experiments/generated/five-bus-transformer-lowering-witness.json",
+      "sha256": "344ceffa50eef8caed85a3fc3124de912782ec7af712eba49df44c6b5173bb95",
+      "size_bytes": 17009
+    },
+    {
+      "path": "experiments/generated/five-bus-typed-kron-witness.json",
+      "sha256": "149bd7889e69f7874875c197857e9dcc308ba26938b21113aebae15cb7190e25",
+      "size_bytes": 6605
+    },
+    {
+      "path": "experiments/generated/fixture-coverage-matrix.json",
+      "sha256": "25825f096489ce816aba8b9ac6b24b61ea282514db4671be4d095e26bb37f716",
+      "size_bytes": 7180
+    },
+    {
+      "path": "experiments/generated/four-winding-lowering-witness.json",
+      "sha256": "cf527e027ecbf8065c0754780556214d06fac20293995ad5dd224ee6bc27ff01",
+      "size_bytes": 50680
+    },
+    {
+      "path": "experiments/generated/four-wire-impedance-model-ladder.json",
+      "sha256": "429af4a2fa0e3e30157cdea5a8f2a5826578341706ace5d670bab92f63019731",
+      "size_bytes": 29676
+    },
+    {
+      "path": "experiments/generated/four-wire-parallel-ac-certificate.json",
+      "sha256": "aad4e1b3684a20ea7289638fd36cee4a9ff2a05e36b90d32105056027c411bbe",
+      "size_bytes": 19757
+    },
+    {
+      "path": "experiments/generated/grounding-impedance-sweep-independent-reproduction.json",
+      "sha256": "525ad1af4602a67054e9365b90ed465fb871871a1cc37a3dd4b519782df72dad",
+      "size_bytes": 1925
+    },
+    {
+      "path": "experiments/generated/grounding-impedance-sweep-witness.json",
+      "sha256": "9fe4a9faf1f2fde1daecdc3b25ebad60ad2c48185570f6f78205173755e7be6e",
+      "size_bytes": 2839
+    },
+    {
+      "path": "experiments/generated/guarded-parallel-reduction-witness.json",
+      "sha256": "c5759e7a2b476769e4555763e54aa030ec5242587f67be3a309b5fcea70dc31e",
+      "size_bytes": 5622
+    },
+    {
+      "path": "experiments/generated/hierarchy-boundary-witness.json",
+      "sha256": "26b2daecd16ab20d68618f4789d6557a67e8fa17d6268da46f63e0f6952b693d",
+      "size_bytes": 4491
+    },
+    {
+      "path": "experiments/generated/kron-ward-scenario-comparison.json",
+      "sha256": "753cec18f5147205f1c93879e79fc4de94ce18b3211cb0f3bcec6142892410b5",
+      "size_bytes": 13809
+    },
+    {
+      "path": "experiments/generated/layer-lens-api-witness.json",
+      "sha256": "3c375697ba5a7a4361e6aa3c372d60bc227ed9bab29777da2fa705bd213c93e6",
+      "size_bytes": 13406
+    },
+    {
+      "path": "experiments/generated/load-continuation-independent-reproduction.json",
+      "sha256": "67bf999262703eff8126dfc886cad747498154130c58ee4a0e1ab4a66c3eba78",
+      "size_bytes": 21634
+    },
+    {
+      "path": "experiments/generated/load-grounding-witnesses.json",
+      "sha256": "3395b71763571ab57897207bf7e1da6b07485d3544481e00e486725951f933ae",
+      "size_bytes": 84138
+    },
+    {
+      "path": "experiments/generated/load-model-independent-reproduction.json",
+      "sha256": "83670ee6bb79f1e7e184aa54d39cb39a96cdde101769e61593a1a7fe05f06462",
+      "size_bytes": 1858
+    },
+    {
+      "path": "experiments/generated/multiconductor-parallel-ac-certificate.json",
+      "sha256": "ce3031fd3ba014fc50a9fcc06d925a3064289b8b19cda957b79c357d909d678c",
+      "size_bytes": 20676
+    },
+    {
+      "path": "experiments/generated/multiconductor-recovery-witness.json",
+      "sha256": "93f96231e3e28771b5bd1b7dceb7be7f7ccee13d1976f560befde244ef5265db",
+      "size_bytes": 5259
+    },
+    {
+      "path": "experiments/generated/multiwinding-leakage-compilation-certificate.json",
+      "sha256": "eb3103e59cbf6c7978bbd8d91dbea3478171b8b631be562acc56fbfb1ef26b23",
+      "size_bytes": 10478
+    },
+    {
+      "path": "experiments/generated/multiwinding-terminal-assembly-certificate.json",
+      "sha256": "655c9a3ea49026bffd94ae2787853ca9d5dc6cbf3c7a2e9c86f745be2035fae0",
+      "size_bytes": 18764
+    },
+    {
+      "path": "experiments/generated/multiwinding-terminal-lift-witness.json",
+      "sha256": "0eb9d72e23312e882e9b2fbf8d998227ea0b786bcdf6c1f9c9a36fa959779f32",
+      "size_bytes": 4087
+    },
+    {
+      "path": "experiments/generated/multiwinding-typed-kron-witness.json",
+      "sha256": "5992935a4de0b075274e9437f9ed59031b03dfc169e75f79c7f733def4ac6252",
+      "size_bytes": 1813
+    },
+    {
+      "path": "experiments/generated/narrow-circuit-transformations-witness.json",
+      "sha256": "d0f2358b257a7735358e57965375a981aeb70ae04c507a268f2255a47626d0fd",
+      "size_bytes": 3298
+    },
+    {
+      "path": "experiments/generated/neutral-kron-independent-reproduction.json",
+      "sha256": "6f7e6030a7d05e4e95f185bc93cb1e0e15e59f04eadcf4f086ec2397d5655fe0",
+      "size_bytes": 1161
+    },
+    {
+      "path": "experiments/generated/nodal-recovery-guards-witness.json",
+      "sha256": "ae8c679496d94d802fffd515559603032fd894b64718e2ea0954dccb7d6dd9de",
+      "size_bytes": 5528
+    },
+    {
+      "path": "experiments/generated/nodal-source-recovery-witness.json",
+      "sha256": "292bfcaa27608ba5cb2e022fa7bc2a27151ed29610b3daa58d2b7ca976019f5f",
+      "size_bytes": 6961
+    },
+    {
+      "path": "experiments/generated/node-breaker-state-witness.json",
+      "sha256": "666c717ab8802df6610cd6db775ee91a58a014eb03f5cf175a98bb128f915f9b",
+      "size_bytes": 9258
+    },
+    {
+      "path": "experiments/generated/noisy-multiconductor-recovery-witness.json",
+      "sha256": "fb4a2c667a2c851ce46deb86dee2c8014800accdb268b51f770fa2eba77f83b9",
+      "size_bytes": 3539
+    },
+    {
+      "path": "experiments/generated/nonlinear-grounding-local-bound-witness.json",
+      "sha256": "c59dab5ed34653d3bfe384f5914691ec75da313aedd446cacc911e901a03bf7e",
+      "size_bytes": 1562
+    },
+    {
+      "path": "experiments/generated/nonlinear-grounding-probe-independent-reproduction.json",
+      "sha256": "7ab007ed4958baa3218f5887d5c8350ed3724e7292dd658c72776910808605a7",
+      "size_bytes": 2555
+    },
+    {
+      "path": "experiments/generated/nonlinear-grounding-probe-witness.json",
+      "sha256": "f40c16dae548bae9fb4cc56e006aa4a9cb1a199ab66fe9adafd7bf2f90f9e355",
+      "size_bytes": 2535
+    },
+    {
+      "path": "experiments/generated/nonlinear-kkt-witness.json",
+      "sha256": "9fee262e16755359a32d063d1ee17ba4b75723a5230b7c1be676d04971123511",
+      "size_bytes": 20111
+    },
+    {
+      "path": "experiments/generated/nonlinear-two-point-grounding-continuation-independent-reproduction.json",
+      "sha256": "646ee5befa77018ab79cc2f84156b5022a67e4e55560ec95d98c99290aae6d82",
+      "size_bytes": 1973
+    },
+    {
+      "path": "experiments/generated/nonlinear-two-point-grounding-continuation.json",
+      "sha256": "3f53f79e83b37b280b91ef0d68f62235134b7918ffd09d92a78e6f330eddf41b",
+      "size_bytes": 2657
+    },
+    {
+      "path": "experiments/generated/nonlinear-two-point-grounding-independent-reproduction.json",
+      "sha256": "9f03bbda60acb8391d39181d7cae410b5a46005775bce033d8a4ef2f807f54dc",
+      "size_bytes": 3321
+    },
+    {
+      "path": "experiments/generated/nonlinear-two-point-grounding-witness.json",
+      "sha256": "8b6b1832d641b9e91c05111eb1e51b74fddeb272b35b51952b79827eabd96a2c",
+      "size_bytes": 3067
+    },
+    {
+      "path": "experiments/generated/nonlinear-ward-witness.json",
+      "sha256": "7c85b9c3e58ae75fce9d4d0dbf947f12f1864fa75dd508d831b9a09b03c426ad",
+      "size_bytes": 4420
+    },
+    {
+      "path": "experiments/generated/numerical-structure-witness.json",
+      "sha256": "22efe362888886f02aa8c5d91bc07de6d609de4ebf7402bb697e90d893ddcf4b",
+      "size_bytes": 3165
+    },
+    {
+      "path": "experiments/generated/parallel-branch-certificate.json",
+      "sha256": "f90cda3dd5d4556777f842617d46a98ea37bd60c0e48a52b900382bd7e05a242",
+      "size_bytes": 4243
+    },
+    {
+      "path": "experiments/generated/parallel-opf-comparison.json",
+      "sha256": "7f59ee44d1daa7be1fd8a0e5e2ec0554517a865db588e371a0984a606b381b8d",
+      "size_bytes": 4774
+    },
+    {
+      "path": "experiments/generated/pi-four-wire-parallel-ac-certificate.json",
+      "sha256": "fdb190198670930d5224395b9849fbe135bac8e9248291715dc94d433def218c",
+      "size_bytes": 48518
+    },
+    {
+      "path": "experiments/generated/port-factor-architecture.json",
+      "sha256": "604521b12ea8be2f7d8281a90bd00f456c1f8d908e4155fe133f7cf3f250c8f3",
+      "size_bytes": 5901
+    },
+    {
+      "path": "experiments/generated/positive-sequence-collapse-witness.json",
+      "sha256": "404613c6573bdeed055b0abc06ead8decbf78fba9e1cf1d506c344a8fb8f3113",
+      "size_bytes": 4094
+    },
+    {
+      "path": "experiments/generated/provenance.json",
+      "sha256": "62c61b3d63927b16dc832c4b88a9207f46f3bf82145f5f33dfd089006934002f",
+      "size_bytes": 820
+    },
+    {
+      "path": "experiments/generated/public-api-manifest.json",
+      "sha256": "3c5049d672ff1e17de40d065db14f27cc3030edefe5b55951d2d5c4144832382",
+      "size_bytes": 1590
+    },
+    {
+      "path": "experiments/generated/running-network-cycle-space-witness.json",
+      "sha256": "4afb309cf8d7d598374329610a382fe0745c5188f881e03cf132e9b3a2eb8e86",
+      "size_bytes": 942
+    },
+    {
+      "path": "experiments/generated/running-network-radiality-witness.json",
+      "sha256": "614deb823a98295b9fd29b29d146e0146afe33d7d6bb9d727289fe7981cc222a",
+      "size_bytes": 30757
+    },
+    {
+      "path": "experiments/generated/running-network-typed-kron-witness.json",
+      "sha256": "1212810f4d977ece2a59239023253910bdfc76f4320ed40bf992921e6ed57601",
+      "size_bytes": 21255
+    },
+    {
+      "path": "experiments/generated/semantic-evaluator-matrix.json",
+      "sha256": "f3dfbbb92dc7e56612308fb2035fa633f5cef5a8a8efa332b32757d61b27df92",
+      "size_bytes": 12814
+    },
+    {
+      "path": "experiments/generated/solver-diagnostics-crosswalk.json",
+      "sha256": "d2061049cbf8aaeba0f4c107b2ae22ce91668359dea557a4ca3f91a9458a606d",
+      "size_bytes": 17484
+    },
+    {
+      "path": "experiments/generated/state-space-unit-witness.json",
+      "sha256": "083ffc6a8b7de0d64fd063025b8cbf7fa406cdf91cba2106600f8186ad3020e2",
+      "size_bytes": 2925
+    },
+    {
+      "path": "experiments/generated/summary.json",
+      "sha256": "2c1cbae0130a80e8a6ba633f7d8781813782fe8fd9ab825db508e3dd7cd16af7",
+      "size_bytes": 9252
+    },
+    {
+      "path": "experiments/generated/three-member-four-wire-parallel-ac-certificate.json",
+      "sha256": "b8cb9b61aaf93a36a395c33b803f6fb6fed04b27b4187b91ee3eabb11361fb26",
+      "size_bytes": 10409
+    },
+    {
+      "path": "experiments/generated/three-member-state-envelope-independent-reproduction.json",
+      "sha256": "15939e9123cfda3eeea15afa1eaf8c8bc2213d7372e811990bbf6efb1629e1c4",
+      "size_bytes": 1330
+    },
+    {
+      "path": "experiments/generated/topology-projection-witness.json",
+      "sha256": "bd2e0b9f4affafd45cd2314dfb1704a4edc3459b7b476ccec5afcce0e22b53b4",
+      "size_bytes": 11232
+    },
+    {
+      "path": "experiments/generated/transformer-control-family-witness.json",
+      "sha256": "62e1029f4fe3ce9bc3e7f1bdaf216e7ba4037d7e1b0c16ac48ccebe45d307a79",
+      "size_bytes": 10168
+    },
+    {
+      "path": "experiments/generated/transformer-factor-completion-certificate.json",
+      "sha256": "9f8bf3d47c4f8032f61cfb656e0a040fedb663403741655110ba1a2f461d74ad",
+      "size_bytes": 23039
+    },
+    {
+      "path": "experiments/generated/transformer-tap-ac-decision-certificate.json",
+      "sha256": "94f736df2af80561cf4ab63845b9f21340ed98dcdc7d4446c2684818d0c3e656",
+      "size_bytes": 85871
+    },
+    {
+      "path": "experiments/generated/transformer-tap-ac-independent-certificate.json",
+      "sha256": "1c3d6dfc4a0d88173fd4b6c89fe864d5116551e5f9d76dd0012467b370c34719",
+      "size_bytes": 16967
+    },
+    {
+      "path": "experiments/generated/transformer-tap-decision-certificate.json",
+      "sha256": "4281e31665c10e04682e21cfad879cb477e800b1c5b26139e7302defa8f6add6",
+      "size_bytes": 19130
+    },
+    {
+      "path": "experiments/generated/transformer-tap-three-scenario-independent-certificate.json",
+      "sha256": "22228f1e0ba41a44e78704673f72554d9a6c418d9efa896d30f63d3c073d9e2b",
+      "size_bytes": 100207
+    },
+    {
+      "path": "experiments/generated/transformer-winding-normalization-certificate.json",
+      "sha256": "90fc870e1e74d41731fd374ce7753f6adfa033dc256329a3fdbcfffefe40d04f",
+      "size_bytes": 7750
+    },
+    {
+      "path": "experiments/generated/translation-trap-witnesses.json",
+      "sha256": "41b70260728faeb3f6a44a86b162f3a547dd780235b68ab95782510f45a587d2",
+      "size_bytes": 3536
+    },
+    {
+      "path": "experiments/generated/typed-kron-certificate.json",
+      "sha256": "c8df96b929e8a425e7986ee5620aa2f273c2b6a2bba86d7bd6c3d15eeeeb2c35",
+      "size_bytes": 6006
+    },
+    {
+      "path": "experiments/generated/typed-kron-witness.json",
+      "sha256": "015e5f2806bb049ddeebfd9c0c5ebf55a42cf76476b999fe9e9b66cfa6a7f070",
+      "size_bytes": 5408
+    },
+    {
+      "path": "experiments/generated/view-source-maps.json",
+      "sha256": "dea566cc39bed5e7a23c1dc2521c4b52418116679aa85c5a59afabd66b1a3705",
+      "size_bytes": 26025
+    },
+    {
+      "path": "experiments/generated/ybus-jacobian-witness.json",
+      "sha256": "eea13f03e6dc5c35f245739740a642b825ece3356cf753a4634246ee926111f7",
+      "size_bytes": 117607
+    }
+  ],
+  "purpose": "Inventory of generated experiment JSON artifacts. Semantic validation remains in the artifact-specific checks; this manifest prevents new generated files from becoming invisible.",
+  "schema_version": "0.1.0"
+}

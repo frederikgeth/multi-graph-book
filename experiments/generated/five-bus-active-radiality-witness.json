@@ -1,0 +1,55 @@
+{
+  "checks": {
+    "inventory_adjacency_cycle_rank_is_two": true,
+    "declared_tree_is_adjacency_radial": true,
+    "declared_tree_has_five_bus_tree_size": true,
+    "inventory_member_cycle_rank_is_three": true,
+    "declared_tree_is_member_radial": true,
+    "inventory_is_not_radial": true
+  },
+  "interpretation": "Inventory and active-state radiality are evaluated separately on the identified multigraph and its simple endpoint projection; the declared spanning tree is radial at both levels.",
+  "all_checks_pass": true,
+  "witness_id": "TR-GRAPH-ACTIVE-001",
+  "source_fixture": "experiments/generated/five-bus-cycle-space-analysis.json",
+  "evidence_type": "five_bus_inventory_and_active_radiality_witness",
+  "vertices": [
+    "i",
+    "j",
+    "k",
+    "l",
+    "m"
+  ],
+  "states": [
+    {
+      "member_radial": false,
+      "member_cycle_rank": 3,
+      "adjacency_radial": false,
+      "active_member_count": 7,
+      "active_members": [
+        "q",
+        "r",
+        "s",
+        "t",
+        "v",
+        "w",
+        "u"
+      ],
+      "adjacency_cycle_rank": 2,
+      "state": "inventory"
+    },
+    {
+      "member_radial": true,
+      "member_cycle_rank": 0,
+      "adjacency_radial": true,
+      "active_member_count": 4,
+      "active_members": [
+        "r",
+        "s",
+        "w",
+        "u"
+      ],
+      "adjacency_cycle_rank": 0,
+      "state": "declared_spanning_tree"
+    }
+  ]
+}

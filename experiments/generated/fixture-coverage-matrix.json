@@ -1,0 +1,215 @@
+{
+  "witness_id": "PKG-FIXTURE-001",
+  "schema_version": "0.1.0",
+  "fixtures": {
+    "running_network": "data/running-network/v0.1.0.json",
+    "five_bus_cycle_space": "experiments/generated/five-bus-cycle-space-analysis.json",
+    "multiwinding_transformer": "data/transformer-contracts/x1-fixed-linear-v0.1.0.json"
+  },
+  "status_vocabulary": [
+    "direct",
+    "related",
+    "not_yet_tested",
+    "not_applicable"
+  ],
+  "rows": [
+    {
+      "map_family": "port_factor_architecture",
+      "fixture": "running_network",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/port-factor-architecture.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "port_factor_architecture",
+      "fixture": "five_bus_cycle_space",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/five-bus-port-factor-witness.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "port_factor_architecture",
+      "fixture": "multiwinding_transformer",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/port-factor-architecture.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "conductor_terminal_lift",
+      "fixture": "running_network",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/conductor-terminal-lift-witness.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "conductor_terminal_lift",
+      "fixture": "five_bus_cycle_space",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/five-bus-conductor-terminal-lift-witness.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "conductor_terminal_lift",
+      "fixture": "multiwinding_transformer",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/multiwinding-terminal-lift-witness.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "active_radiality",
+      "fixture": "running_network",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/running-network-radiality-witness.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "active_radiality",
+      "fixture": "five_bus_cycle_space",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/five-bus-active-radiality-witness.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "active_radiality",
+      "fixture": "multiwinding_transformer",
+      "status": "not_yet_tested",
+      "evidence_artifact": null,
+      "evidence_exists": false
+    },
+    {
+      "map_family": "five_bus_cycle_space",
+      "fixture": "running_network",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/running-network-cycle-space-witness.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "five_bus_cycle_space",
+      "fixture": "five_bus_cycle_space",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/five-bus-cycle-space-analysis.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "five_bus_cycle_space",
+      "fixture": "multiwinding_transformer",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/multiwinding-terminal-lift-witness.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "multiwinding_compilation",
+      "fixture": "running_network",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/multiwinding-terminal-assembly-certificate.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "multiwinding_compilation",
+      "fixture": "five_bus_cycle_space",
+      "status": "not_applicable",
+      "evidence_artifact": null,
+      "evidence_exists": false
+    },
+    {
+      "map_family": "multiwinding_compilation",
+      "fixture": "multiwinding_transformer",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/multiwinding-terminal-assembly-certificate.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "typed_kron_reduction",
+      "fixture": "running_network",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/running-network-typed-kron-witness.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "typed_kron_reduction",
+      "fixture": "five_bus_cycle_space",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/five-bus-typed-kron-witness.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "typed_kron_reduction",
+      "fixture": "multiwinding_transformer",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/multiwinding-typed-kron-witness.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "typed_state_space_units",
+      "fixture": "running_network",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/state-space-unit-witness.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "typed_state_space_units",
+      "fixture": "five_bus_cycle_space",
+      "status": "not_applicable",
+      "evidence_artifact": null,
+      "evidence_exists": false
+    },
+    {
+      "map_family": "typed_state_space_units",
+      "fixture": "multiwinding_transformer",
+      "status": "related",
+      "evidence_artifact": null,
+      "evidence_exists": false
+    },
+    {
+      "map_family": "transformer_winding_normalization",
+      "fixture": "running_network",
+      "status": "related",
+      "evidence_artifact": null,
+      "evidence_exists": false
+    },
+    {
+      "map_family": "transformer_winding_normalization",
+      "fixture": "five_bus_cycle_space",
+      "status": "not_applicable",
+      "evidence_artifact": null,
+      "evidence_exists": false
+    },
+    {
+      "map_family": "transformer_winding_normalization",
+      "fixture": "multiwinding_transformer",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/transformer-winding-normalization-certificate.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "parameterized_transformer_control",
+      "fixture": "running_network",
+      "status": "direct",
+      "evidence_artifact": "experiments/generated/transformer-tap-ac-decision-certificate.json",
+      "evidence_exists": true
+    },
+    {
+      "map_family": "parameterized_transformer_control",
+      "fixture": "five_bus_cycle_space",
+      "status": "not_applicable",
+      "evidence_artifact": null,
+      "evidence_exists": false
+    },
+    {
+      "map_family": "parameterized_transformer_control",
+      "fixture": "multiwinding_transformer",
+      "status": "related",
+      "evidence_artifact": null,
+      "evidence_exists": false
+    }
+  ],
+  "checks": {
+    "fixture_definitions_exist": true,
+    "all_fixture_families_present": true,
+    "all_map_families_have_declared_scope": true,
+    "direct_evidence_has_artifact": true,
+    "not_yet_tested_is_explicit": true
+  },
+  "valid": true,
+  "interpretation": "Coverage is declared per map family and canonical fixture. Related evidence is not direct fixture validation, and not_yet_tested remains an explicit open boundary."
+}

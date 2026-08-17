@@ -1,0 +1,74 @@
+schema_version = "0.1.0"
+purpose = "deterministic adversarial and metamorphic retrieval checks; not human-calibrated evidence"
+
+[[case]]
+case_id = "ADV-YSPLIT-TYPO"
+audience = "power_engineer"
+question = "Do loadss belong in Ybus when iterative power flow linearises a constant admittance part?"
+expected_status = "qualified"
+expected_claim_ids = ["FORMULATION-Y-SPLIT-001", "ARCH-NODAL-001", "LOAD-DECISION-001"]
+expected_concept_ids = ["graph-topology-adjacency", "factor", "nodal-operator-alias"]
+
+[[case]]
+case_id = "ADV-YSPLIT-SYNONYM"
+audience = "software_engineer"
+question = "Can a fixed-admittance component be assembled into the nodal operator while its device record remains authoritative?"
+expected_status = "qualified"
+expected_claim_ids = ["FORMULATION-Y-SPLIT-001", "ARCH-NODAL-001", "LOAD-DECISION-001"]
+expected_concept_ids = ["graph-topology-adjacency", "factor", "nodal-operator-alias"]
+
+[[case]]
+case_id = "ADV-PARALLEL-ABBREVIATION"
+audience = "power_engineer"
+question = "For OPF, can twin circuits be merged and their total MVA limit used?"
+expected_status = "qualified"
+expected_claim_ids = ["TR-PAR-001", "TR-PAR-002", "TR-PAR-003"]
+expected_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-KRON-SYNONYM"
+audience = "software_engineer"
+question = "Does a Schur-complement equivalent preserve hidden equipment limits automatically?"
+expected_status = "qualified"
+expected_claim_ids = ["PRESERVE-001", "TR-KRON-002", "TR-KRON-FIVE-002"]
+expected_concept_ids = ["equivalence-exactness-preservation", "transformation-family"]
+
+[[case]]
+case_id = "ADV-GRAPH-API"
+audience = "software_engineer"
+question = "Should a topology API expose one adjacency list as the complete network graph?"
+expected_status = "qualified"
+expected_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001"]
+expected_concept_ids = ["graph-topology-adjacency", "element-edge-relation"]
+
+[[case]]
+case_id = "ADV-GROUND-ABBREVIATION"
+audience = "power_engineer"
+question = "Can neutral and earth both be replaced by node zero in a fault study?"
+expected_status = "qualified"
+expected_claim_ids = ["GROUND-SCOPE-001", "GROUND-SCOPE-002"]
+expected_concept_ids = ["ground-neutral-reference", "object-node-interface"]
+
+[[case]]
+case_id = "ADV-SEQUENCE-ABSOLUTE"
+audience = "student"
+question = "Does line transposition by itself make the positive-sequence model exact?"
+expected_status = "qualified"
+expected_claim_ids = ["COLLAPSE-001", "COLLAPSE-002"]
+expected_concept_ids = ["phase-conductor-sequence-coordinate", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-DECISION-QUALIFIER"
+audience = "student"
+question = "Are matching terminal equations enough to guarantee the same optimization answer?"
+expected_status = "qualified"
+expected_claim_ids = ["PRESERVE-001", "TR-PAR-001", "TR-PAR-002"]
+expected_concept_ids = ["equivalence-exactness-preservation", "rating-limit-constraint"]
+
+[[case]]
+case_id = "ADV-UNSUPPORTED-NEGATIVE"
+audience = "student"
+question = "What is the weather on Mars today?"
+expected_status = "unsupported"
+expected_claim_ids = []
+expected_concept_ids = []

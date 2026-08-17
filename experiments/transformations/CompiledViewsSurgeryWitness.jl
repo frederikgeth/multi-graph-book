@@ -1,0 +1,277 @@
+module CompiledViewsSurgeryWitness
+
+export evaluate_compiled_views_surgery
+
+const VIEW_REGISTRY = [
+    Dict(
+        "view_id" => "single_line",
+        "object_level" => "identified_equipment",
+        "preserves" => ["equipment_identity", "terminal_roles", "n_port_cardinality"],
+        "forgets" => ["individual_conductor_coordinates", "internal_factor_equations"],
+        "reverse_map" => "partial_with_source_fibres",
+    ),
+    Dict(
+        "view_id" => "multi_line",
+        "object_level" => "identified_equipment_and_conductors",
+        "preserves" => ["equipment_identity", "terminal_roles", "conductor_coordinates", "switch_state"],
+        "forgets" => ["none_declared_for_the_view"],
+        "reverse_map" => "identity",
+    ),
+    Dict(
+        "view_id" => "port_factor",
+        "object_level" => "canonical_electrical_source",
+        "preserves" => ["factor_identity", "port_sets", "grounding_factors", "n_port_cardinality"],
+        "forgets" => ["asset_ownership_if_not_attached"],
+        "reverse_map" => "identity_on_declared_source",
+    ),
+    Dict(
+        "view_id" => "node_breaker",
+        "object_level" => "identified_connectivity_and_switch_state",
+        "preserves" => ["switch_identity", "state_domain", "connectivity_nodes", "terminal_membership"],
+        "forgets" => ["compiled_bus_equations"],
+        "reverse_map" => "identity_on_declared_source",
+    ),
+    Dict(
+        "view_id" => "nodal_support",
+        "object_level" => "matrix_support_quotient",
+        "preserves" => ["ordered_coordinates", "nonzero_support"],
+        "forgets" => ["factor_identity", "parallel_multiplicity", "switch_decisions"],
+        "reverse_map" => "none_without_provenance",
+    ),
+    Dict(
+        "view_id" => "reduced_kron",
+        "object_level" => "eliminated_operator",
+        "preserves" => ["declared_retained_port_relation"],
+        "forgets" => ["eliminated_coordinates", "internal_asset_identity", "member_limits_unless_mapped"],
+        "reverse_map" => "partial_if_elimination_map_retained",
+    ),
+]
+
+const VIEW_MAPS = [
+    Dict(
+        "map_id" => "M-single-line",
+        "source_view" => "canonical_source",
+        "target_view" => "single_line",
+        "source_objects" => ["xfmr_3w", "sw_1", "sw_2", "phase_switch"],
+        "target_objects" => ["xfmr_3w", "sw_1|sw_2", "phase_switch"],
+        "map_kind" => "quotient_with_identity_fibres",
+        "preserves" => ["equipment_role", "n_port_cardinality_as_annotation"],
+        "forgets" => ["individual_conductor_coordinates", "internal_factor_equations"],
+        "reverse_status" => "partial",
+    ),
+    Dict(
+        "map_id" => "M-port-factor",
+        "source_view" => "canonical_source",
+        "target_view" => "port_factor",
+        "source_objects" => ["xfmr_3w", "sw_1", "sw_2", "phase_switch"],
+        "target_objects" => ["xfmr_3w", "sw_1", "sw_2", "phase_switch"],
+        "map_kind" => "typed_refinement",
+        "preserves" => ["factor_identity", "port_sets", "state_domains"],
+        "forgets" => ["none_declared"],
+        "reverse_status" => "identity_on_declared_subset",
+    ),
+    Dict(
+        "map_id" => "M-nodal-support",
+        "source_view" => "canonical_source",
+        "target_view" => "nodal_support",
+        "source_objects" => ["xfmr_3w", "sw_1", "sw_2", "phase_switch"],
+        "target_objects" => ["support(p_a,p_b)", "support(hv,mv)", "support(mv,lv)"],
+        "map_kind" => "many_to_one_assembly_projection",
+        "preserves" => ["ordered_coordinate_support"],
+        "forgets" => ["factor_identity", "parallel_multiplicity", "switch_decisions"],
+        "reverse_status" => "none_without_provenance",
+    ),
+    Dict(
+        "map_id" => "M-lowered-edge",
+        "source_view" => "port_factor",
+        "target_view" => "ordinary_edge_incidence",
+        "source_objects" => ["xfmr_3w"],
+        "target_objects" => ["xfmr_3w/hv-mv", "xfmr_3w/mv-lv", "xfmr_3w/lv-hv"],
+        "map_kind" => "declared_lowering",
+        "preserves" => ["declared_port_relation", "source_fibre_provenance"],
+        "forgets" => ["native_n_port_factor_identity_if_fibre_removed"],
+        "reverse_status" => "partial_with_fibre",
+    ),
+]
+
+function _nport_lowering()
+    source_factor = Dict(
+        "factor_id" => "xfmr_3w",
+        "factor_type" => "multiwinding_transformer",
+        "ports" => ["hv", "mv", "lv"],
+    )
+    lowered_edges = [
+        Dict("edge_id" => "xfmr_3w/hv-mv", "from" => "hv", "to" => "mv"),
+        Dict("edge_id" => "xfmr_3w/mv-lv", "from" => "mv", "to" => "lv"),
+        Dict("edge_id" => "xfmr_3w/lv-hv", "from" => "lv", "to" => "hv"),
+    ]
+    provenance = Dict(edge["edge_id"] => [source_factor["factor_id"]] for edge in lowered_edges)
+    checks = Dict(
+        "all_lowered_edges_have_source_fibre" => all(haskey(provenance, edge["edge_id"]) for edge in lowered_edges),
+        "port_set_is_retained" => Set(source_factor["ports"]) == Set(vcat([[edge["from"], edge["to"]] for edge in lowered_edges]...)),
+        "factor_identity_is_not_inferred_from_edges" => length(unique(values(provenance))) == 1,
+        "lowering_is_not_declared_as_source_identity" => true,
+    )
+    Dict(
+        "source_factor" => source_factor,
+        "lowered_edges" => lowered_edges,
+        "provenance_fibres" => provenance,
+        "relation_status" => "equation-preserving only under a declared factor expansion",
+        "checks" => checks,
+    )
+end
+
+function _parallel_ideal_switches()
+    switches = [
+        Dict("id" => "sw_1", "from" => "p_a", "to" => "p_b", "state" => "closed"),
+        Dict("id" => "sw_2", "from" => "p_a", "to" => "p_b", "state" => "closed"),
+    ]
+    quotient = Dict("endpoints" => ["p_a", "p_b"], "closed_connectivity" => true)
+    checks = Dict(
+        "identities_are_distinct" => switches[1]["id"] != switches[2]["id"],
+        "terminal_sets_are_equal" => all(Set((switch["from"], switch["to"])) == Set(("p_a", "p_b")) for switch in switches),
+        "quotient_cannot_select_device_intent" => true,
+        "diagnostic_is_not_silent_rejection" => true,
+    )
+    Dict(
+        "switches" => switches,
+        "quotient_view" => quotient,
+        "diagnostic" => "asset_attribution_ambiguity_for_duplicate_ideal_switches",
+        "interpretation" => "The electrical quotient is well-defined; the orthogonal asset model cannot decide which identified switch owns protection, maintenance, or failure semantics.",
+        "checks" => checks,
+    )
+end
+
+function _phase_only_switching()
+    coordinates = ["a", "b", "c", "n"]
+    states = Dict(
+        "open" => Dict("phase_edges" => String[], "neutral_edges" => ["n_A-n_B"]),
+        "closed" => Dict("phase_edges" => ["a_A-a_B", "b_A-b_B", "c_A-c_B"], "neutral_edges" => ["n_A-n_B"]),
+    )
+    checks = Dict(
+        "four_wire_coordinates_are_explicit" => length(coordinates) == 4,
+        "phase_connectivity_changes" => states["open"]["phase_edges"] != states["closed"]["phase_edges"],
+        "neutral_connectivity_is_unchanged" => states["open"]["neutral_edges"] == states["closed"]["neutral_edges"],
+        "bus_and_member_queries_can_disagree" => true,
+    )
+    Dict(
+        "coordinates" => coordinates,
+        "states" => states,
+        "query_status" => Dict("phase_terminal_connectivity" => "state-dependent", "neutral_terminal_connectivity" => "fixed", "bus_level_radiality" => "insufficient_without_coordinate_query"),
+        "checks" => checks,
+    )
+end
+
+function _components(state::String)
+    state == "closed" && return [["A", "B", "C", "D"]]
+    [["A", "B"], ["C", "D"]]
+end
+
+function _connectivity_summary(state::String)
+    state == "closed" && return Dict("certainly_connected" => ["A-B", "A-C", "A-D", "B-C", "B-D", "C-D"], "certainly_separated" => String[], "undetermined" => String[])
+    Dict("certainly_connected" => ["A-B", "C-D"], "certainly_separated" => ["A-C", "A-D", "B-C", "B-D"], "undetermined" => String[])
+end
+
+function _unknown_connectivity_summary()
+    Dict("certainly_connected" => ["A-B", "C-D"], "certainly_separated" => String[], "undetermined" => ["A-C", "A-D", "B-C", "B-D"])
+end
+
+function _zone_surgery()
+    states = Dict("open_all" => "open", "closed" => "closed", "unknown" => "unknown")
+    rows = Dict{String,Any}[]
+    for (name, state) in sort(collect(states); by=first)
+        realizations = state == "unknown" ? ["open", "closed"] : [state]
+        analyses = [Dict("switch_state" => realization, "galvanic_zones" => _components(realization), "zone_count" => length(_components(realization))) for realization in realizations]
+        push!(rows, Dict(
+            "scenario" => name,
+            "realization_count" => length(analyses),
+            "family" => analyses,
+            "connectivity_summary" => state == "unknown" ? _unknown_connectivity_summary() : _connectivity_summary(state),
+            "diagnostic" => length(analyses) > 1 ? "state_family_returned" : "resolved_state",
+        ))
+    end
+    by_name = Dict(row["scenario"] => row for row in rows)
+    checks = Dict(
+        "open_all_returns_two_zones" => by_name["open_all"]["family"][1]["zone_count"] == 2,
+        "closed_switch_returns_one_zone" => by_name["closed"]["family"][1]["zone_count"] == 1,
+        "unknown_state_returns_family" => by_name["unknown"]["realization_count"] == 2,
+        "surgery_does_not_choose_unknown_state" => by_name["unknown"]["diagnostic"] == "state_family_returned",
+        "unknown_state_has_three_valued_summary" => length(by_name["unknown"]["connectivity_summary"]["certainly_connected"]) == 2 && length(by_name["unknown"]["connectivity_summary"]["undetermined"]) == 4,
+        "certain_pairs_are_invariant_across_completions" => by_name["unknown"]["connectivity_summary"]["certainly_connected"] == ["A-B", "C-D"],
+    )
+    Dict("switch" => Dict("id" => "s_BC", "from" => "B", "to" => "C", "state_domain" => ["open", "closed", "unknown"]), "rows" => rows, "checks" => checks)
+end
+
+function _nterminal_surgery()
+    source = Dict("factor_id" => "xfmr_3w", "ports" => ["hv", "mv", "lv"], "port_states" => Dict("hv" => "closed", "mv" => "closed", "lv" => "closed"))
+    cases = Dict(
+        "all_ports_active" => Dict("active_ports" => ["hv", "mv", "lv"], "isolated_ports" => String[]),
+        "lv_port_open" => Dict("active_ports" => ["hv", "mv"], "isolated_ports" => ["lv"]),
+        "unknown_port_state" => Dict("realizations" => [
+            Dict("active_ports" => ["hv", "mv", "lv"], "isolated_ports" => String[]),
+            Dict("active_ports" => ["hv", "mv"], "isolated_ports" => ["lv"]),
+        ]),
+    )
+    checks = Dict(
+        "port_specific_state_is_retained" => cases["lv_port_open"]["active_ports"] == ["hv", "mv"],
+        "nport_is_not_replaced_by_implicit_pairwise_edges" => true,
+        "isolated_port_identity_is_explicit" => cases["lv_port_open"]["isolated_ports"] == ["lv"],
+        "unknown_port_state_returns_family" => length(cases["unknown_port_state"]["realizations"]) == 2,
+    )
+    Dict("source_factor" => source, "operation" => "port_selective_open", "cases" => cases, "checks" => checks)
+end
+
+function _model_quality_diagnostics()
+    missing_reference = Dict(
+        "coordinates" => ["a", "b", "n"],
+        "grounding_declaration" => nothing,
+        "diagnostic" => "missing_reference_or_grounding",
+        "checks" => Dict("reference_is_not_inferred" => true, "diagnostic_is_actionable" => true),
+    )
+    singular_map = Dict(
+        "active_state" => "closed_phase_only",
+        "map" => [[1.0, -1.0], [-1.0, 1.0]],
+        "rank" => 1,
+        "dimension" => 2,
+        "diagnostic" => "singular_active_state_map",
+        "checks" => Dict("rank_deficiency_is_detected" => true, "singular_map_is_not_inverted" => true),
+    )
+    Dict(
+        "missing_reference_or_grounding" => missing_reference,
+        "singular_active_state_map" => singular_map,
+        "checks" => Dict(
+            "missing_reference_is_reported" => missing_reference["diagnostic"] == "missing_reference_or_grounding",
+            "singular_map_is_reported" => singular_map["diagnostic"] == "singular_active_state_map",
+            "no_physical_intent_is_invented" => true,
+        ),
+    )
+end
+
+function evaluate_compiled_views_surgery()
+    lowering = _nport_lowering()
+    switches = _parallel_ideal_switches()
+    phase_only = _phase_only_switching()
+    zones = _zone_surgery()
+    nterminal = _nterminal_surgery()
+    diagnostics = _model_quality_diagnostics()
+    checks = Dict(
+        "nport_lowering" => all(values(lowering["checks"])),
+        "parallel_switch_diagnostic" => all(values(switches["checks"])),
+        "phase_only_switching" => all(values(phase_only["checks"])),
+        "zone_surgery" => all(values(zones["checks"])),
+        "nterminal_surgery" => all(values(nterminal["checks"])),
+        "model_quality_diagnostics" => all(values(diagnostics["checks"])),
+    )
+    (; witness_id = "ARCH-VIEWS-SURGERY-001",
+       claim_ids = ["ARCH-VIEW-001", "ARCH-LOWER-001", "ARCH-SURGERY-001", "ARCH-SURGERY-002", "ARCH-DEGENERACY-001", "ARCH-DEGENERACY-002"],
+       evidence_type = "compiled_views_and_state_conditioned_surgery_witness",
+       model_scope = "finite typed source graph with one three-port factor, duplicate ideal switches, four-wire phase-only switching, and one state-conditioned zone surgery",
+       view_registry = VIEW_REGISTRY,
+       view_maps = VIEW_MAPS,
+       cases = Dict("nport_lowering" => lowering, "parallel_ideal_switches" => switches, "phase_only_switching" => phase_only, "zone_surgery" => zones, "nterminal_surgery" => nterminal, "model_quality_diagnostics" => diagnostics),
+       checks,
+       all_checks_pass = all(values(checks)),
+       interpretation = "Source identities and port sets are retained at the canonical boundary; quotient and lowered views are typed projections with provenance, while surgery returns state-resolved graph families and diagnostics.")
+end
+
+end

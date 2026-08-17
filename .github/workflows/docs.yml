@@ -1,0 +1,129 @@
+name: docs
+
+on:
+  push:
+    branches: [main]
+    tags: ['*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+  statuses: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1'
+
+      - uses: julia-actions/cache@v2
+
+      - uses: actions/cache/restore@v4
+        with:
+          path: ~/.cache/Tectonic
+          key: tectonic-bundle-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            tectonic-bundle-${{ runner.os }}-
+
+      - name: Install PDF and figure rendering dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fontconfig fonts-dejavu-core librsvg2-bin poppler-utils
+          fc-cache -f
+
+      - name: Instantiate documentation environment
+        run: julia --project=docs -e 'using Pkg; Pkg.instantiate()'
+
+      - name: Check claims ledger
+        run: julia scripts/check_claims.jl
+
+      - name: Audit reader-facing claim mentions
+        run: python3 scripts/check_claim_mentions.py
+
+      - name: Check controlled callout vocabulary
+        run: python3 scripts/check_callouts.py
+
+      - name: Check cross-community vocabulary registry
+        run: python3 scripts/check_vocabulary.py
+
+      - name: Check generated vocabulary indexes are current
+        run: python3 scripts/generate_vocabulary_indexes.py --check
+
+      - name: Generate fixture coverage matrix
+        run: python3 scripts/generate_fixture_coverage_matrix.py
+
+      - name: Check fixture coverage matrix is committed
+        run: git diff --exit-code -- experiments/generated/fixture-coverage-matrix.json
+
+      - name: Check paper extraction tracks
+        run: python3 scripts/check_paper_tracks.py
+
+      - name: Check bibliography audit coverage
+        run: julia scripts/check_bibliography.jl
+
+      - name: Check evidence matrix schema and coding status
+        run: python3 scripts/check_evidence_matrix.py
+
+      - name: Check generated artifacts and local links
+        run: python3 scripts/check_artifacts.py
+
+      - name: Check figure accessibility and monochrome audit
+        run: python3 scripts/check_figures.py
+
+      - name: Test package-independent transformations
+        run: |
+          julia -e 'using Pkg; Pkg.add("JSON3")'
+          julia experiments/test/series_elimination.jl
+          julia experiments/test/coordinate_normalization.jl
+          julia experiments/test/transformer_winding_normalization.jl
+          julia experiments/test/multiwinding_leakage_compilation.jl
+          julia experiments/test/multiwinding_terminal_assembly.jl
+          julia experiments/test/transformer_factor_completion_core.jl
+          julia experiments/test/typed_kron.jl
+          julia experiments/test/running_network_typed_kron.jl
+          julia experiments/test/kron_ward_scenario.jl
+          julia experiments/test/certified_approximation.jl
+          julia experiments/test/conductor_terminal_lift.jl
+          julia experiments/test/five_bus_transformer_lowering.jl
+          julia experiments/test/running_network_radiality_witness.jl
+          julia experiments/test/hierarchy_boundary_witness.jl
+          julia experiments/test/data_model_crosswalk.jl
+
+      - name: Test dependency-light package candidate
+        run: julia --project=package/GraphModelsForPowerNetworks package/GraphModelsForPowerNetworks/test/runtests.jl
+
+      - name: Build HTML and PDF
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DOCUMENTER_SKIP_DEPLOY: '1'
+        run: julia --project=docs docs/make.jl --pdf
+
+      - name: Check rendered HTML and PDF outputs
+        run: python3 scripts/check_rendered_outputs.py
+
+      - name: Check generated indexes are committed
+        run: git diff --exit-code -- docs/src/reference/knowledge-base-index.md docs/src/reference/chapter-status.md
+
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: graph-models-for-power-systems-pdf
+          path: docs/latex_build/GraphModelsForPowerSystems.pdf
+
+      - name: Deploy documentation
+        if: ${{ success() && github.event_name != 'pull_request' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: julia --project=docs -e 'using Documenter; deploydocs(root=abspath("docs"), repo="github.com/frederikgeth/multi-graph-book.git", devbranch="main", push_preview=false)'
+
+      - uses: actions/cache/save@v4
+        if: ${{ always() }}
+        with:
+          path: ~/.cache/Tectonic
+          key: tectonic-bundle-${{ runner.os }}-${{ github.run_id }}

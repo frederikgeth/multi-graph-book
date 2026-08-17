@@ -1,0 +1,18 @@
+schema_version = "0.1.0"
+purpose = "Explicit derived-number bindings for machine-checkable prose; direct artifact matches require no entry."
+
+[[binding]]
+path = "docs/src/cases/four-wire-parallel-ac-decision.md"
+line = 34
+literal = "0.1219"
+source_artifact = "experiments/generated/four-wire-parallel-ac-certificate.json"
+source_sha256 = "aad4e1b3684a20ea7289638fd36cee4a9ff2a05e36b90d32105056027c411bbe"
+derivation = "Displayed relative residual derived from the certificate's stored numerator and infinity norm; the ratio is not itself serialized."
+
+[[binding]]
+path = "docs/src/cases/transformer-tap-ac-decision.md"
+line = 110
+literal = "0.090169"
+source_artifact = "experiments/generated/transformer-tap-ac-decision-certificate.json"
+source_sha256 = "94f736df2af80561cf4ab63845b9f21340ed98dcdc7d4446c2684818d0c3e656"
+derivation = "Displayed MW loss derived by converting the stored served-fraction gap using the three 0.50 MW phase directions."

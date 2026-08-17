@@ -1,0 +1,435 @@
+{
+  "independent_source_boundary": {
+    "boundary_voltage_margin_pu": 0.05472983689063615,
+    "method": "finite-difference damped Newton continuation and bisection",
+    "boundary_served_fraction": 1.2401762068271642,
+    "upper_bracket_served_fraction": 1.2401762127876286,
+    "member_current_magnitude_pu": [
+      [
+        0.7200000085112115,
+        0.5386132961576886,
+        0.41625542335813004,
+        0.24995628307925707
+      ],
+      [
+        0.13672449758044394,
+        0.09910857032812305,
+        0.07555110272558721,
+        0.048337376562499666
+      ],
+      [
+        0.08567112549715347,
+        0.06376918180305194,
+        0.04917528027749392,
+        0.029829346173700918
+      ]
+    ],
+    "phase_voltage_magnitude_pu": [
+      0.939444108246613,
+      0.9952701631093639,
+      0.9847864201882993
+    ],
+    "boundary_current_margin_pu": -8.511211513351213e-9,
+    "bracket_width": 5.9604643443122995e-9,
+    "power_flow_residual": 1.0547118733938987e-15
+  },
+  "scope": "fixed three-member series-only current maps with centered component discs; exact joint implication before nonlinear AC solve",
+  "recovery_maps": [
+    [
+      [
+        {
+          "re": 0.1,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        }
+      ],
+      [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0.1,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        }
+      ],
+      [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0.1,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        }
+      ],
+      [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0.1,
+          "im": 0
+        }
+      ]
+    ],
+    [
+      [
+        {
+          "re": 0.1,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        }
+      ],
+      [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0.1,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        }
+      ],
+      [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0.1,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        }
+      ],
+      [
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0,
+          "im": 0
+        },
+        {
+          "re": 0.1,
+          "im": 0
+        }
+      ]
+    ]
+  ],
+  "retained_members": [
+    "l1",
+    "l2"
+  ],
+  "candidate_member": "l3",
+  "candidate_limits": [
+    0.15,
+    0.15,
+    0.15,
+    0.15
+  ],
+  "independent_source_objective_gap": 1.265442461928501e-8,
+  "classification": "exact nonlinear AC constraint pruning under a fixed linear joint recovery map",
+  "recovery_relation": "I_l3 = 0.10 I_l1 + 0.10 I_l2",
+  "exact_worst_case_component_magnitudes": [
+    0.144,
+    0.144,
+    0.144,
+    0.144
+  ],
+  "source_solution": {
+    "phase_power_pu": [
+      {
+        "q": 0.1736246671841839,
+        "p": 0.8681233359209161
+      },
+      {
+        "q": 0.14882114330073504,
+        "p": 0.6820969067950089
+      },
+      {
+        "q": 0.11161585747554564,
+        "p": 0.5208740015525509
+      }
+    ],
+    "member_current_magnitude_pu": [
+      [
+        0.7200000006379487,
+        0.5386132906446355,
+        0.4162554190521393,
+        0.2499562802095633
+      ],
+      [
+        0.13672449608480997,
+        0.0991085693134253,
+        0.07555110194307066,
+        0.048337376008296774
+      ],
+      [
+        0.08567112456027849,
+        0.06376918115030804,
+        0.04917527976869938,
+        0.029829345831311364
+      ]
+    ],
+    "neutral_kcl_residual_pu": 1.2291051413029514e-15,
+    "termination_status": "LOCALLY_SOLVED",
+    "phase_voltage_magnitude_pu": [
+      0.9394441089342684,
+      0.9952701631415236,
+      0.9847864203289457
+    ],
+    "model_size": {
+      "variables": 9,
+      "constraints": 27
+    },
+    "neutral_voltage_magnitude_pu": 0.02795951940314359,
+    "member_current_loading": [
+      [
+        1.00000000088604,
+        0.748074014784216,
+        0.5781325264613046,
+        0.34716150029106013
+      ],
+      [
+        0.18989513345112496,
+        0.1376507907130907,
+        0.10493208603204258,
+        0.06713524445596775
+      ],
+      [
+        0.5711408304018566,
+        0.42512787433538696,
+        0.32783519845799586,
+        0.19886230554207576
+      ]
+    ],
+    "objective_served_fraction": 1.2401761941727396,
+    "formulation": "source"
+  },
+  "certified": true,
+  "exact_pruned_solution": {
+    "phase_power_pu": [
+      {
+        "q": 0.17362466718417496,
+        "p": 0.8681233359208725
+      },
+      {
+        "q": 0.14882114330072682,
+        "p": 0.682096906794966
+      },
+      {
+        "q": 0.11161585747553976,
+        "p": 0.5208740015525235
+      }
+    ],
+    "member_current_magnitude_pu": [
+      [
+        0.7200000006379098,
+        0.5386132906446014,
+        0.4162554190521174,
+        0.2499562802095493
+      ],
+      [
+        0.13672449608480255,
+        0.099108569313419,
+        0.07555110194306668,
+        0.04833737600829406
+      ],
+      [
+        0.08567112456027387,
+        0.063769181150304,
+        0.04917527976869679,
+        0.02982934583130969
+      ]
+    ],
+    "neutral_kcl_residual_pu": 9.883479487474066e-16,
+    "termination_status": "LOCALLY_SOLVED",
+    "phase_voltage_magnitude_pu": [
+      0.9394441089342722,
+      0.9952701631415246,
+      0.9847864203289458
+    ],
+    "model_size": {
+      "variables": 9,
+      "constraints": 23
+    },
+    "neutral_voltage_magnitude_pu": 0.027959519403142015,
+    "member_current_loading": [
+      [
+        1.000000000885986,
+        0.7480740147841687,
+        0.5781325264612741,
+        0.3471615002910407
+      ],
+      [
+        0.18989513345111467,
+        0.13765079071308195,
+        0.10493208603203705,
+        0.06713524445596397
+      ],
+      [
+        0.5711408304018258,
+        0.42512787433536003,
+        0.3278351984579786,
+        0.1988623055420646
+      ]
+    ],
+    "objective_served_fraction": 1.240176194172674,
+    "formulation": "exact_pruned"
+  },
+  "objective_gap": -6.550315845288424e-14,
+  "finite_state_envelope": {
+    "checks": {
+      "pruned_matches_source_in_each_state": true,
+      "state_changes_decision_value": true,
+      "all_states_certify_joint_pruning": true,
+      "independent_boundary_matches_source_in_each_state": true,
+      "all_source_and_pruned_solves_terminate": true,
+      "state_rows_are_explicit": true
+    },
+    "interpretation": "A finite three-state unbalanced four-wire AC envelope rebuilds the member maps and source/pruned formulations at each declared admittance state. Joint limit pruning remains exact in each local state, but the optimal served value changes across states. This is finite local evidence, not a global state/control-dependent AC theorem.",
+    "all_checks_pass": true,
+    "witness_id": "TR-PAR-STATE-001",
+    "claim_id": "TR-PAR-STATE-001",
+    "evidence_type": "generated_three_member_state_dependent_ac_envelope",
+    "states": [
+      {
+        "pruned_termination_status": "LOCALLY_SOLVED",
+        "source_current_margin": -6.379486938712375e-10,
+        "admittance_scale": 1,
+        "independent_boundary_gap": 1.265442461928501e-8,
+        "state": "base",
+        "independent_boundary": 1.2401762068271642,
+        "source_objective": 1.2401761941727396,
+        "pruned_current_margin": -6.379098360653757e-10,
+        "certificate_certified": true,
+        "source_termination_status": "LOCALLY_SOLVED",
+        "pruned_objective": 1.240176194172674,
+        "objective_gap": -6.550315845288424e-14
+      },
+      {
+        "pruned_termination_status": "LOCALLY_SOLVED",
+        "source_current_margin": -6.384731632280705e-10,
+        "admittance_scale": 1.08,
+        "independent_boundary_gap": 1.1001066502203116e-8,
+        "state": "higher_admittance",
+        "independent_boundary": 1.2463007032871252,
+        "source_objective": 1.2463006922860587,
+        "pruned_current_margin": -6.384853756813413e-10,
+        "certificate_certified": true,
+        "source_termination_status": "LOCALLY_SOLVED",
+        "pruned_objective": 1.2463006922860804,
+        "objective_gap": 2.1760371282653068e-14
+      },
+      {
+        "pruned_termination_status": "LOCALLY_SOLVED",
+        "source_current_margin": -6.372189442771514e-10,
+        "admittance_scale": 0.92,
+        "independent_boundary_gap": 1.4461629671558285e-8,
+        "state": "lower_admittance",
+        "independent_boundary": 1.232935959100724,
+        "source_objective": 1.2329359446390944,
+        "pruned_current_margin": -6.372280481059533e-10,
+        "certificate_certified": true,
+        "source_termination_status": "LOCALLY_SOLVED",
+        "pruned_objective": 1.232935944639111,
+        "objective_gap": 1.6653345369377348e-14
+      },
+      {
+        "pruned_termination_status": "LOCALLY_SOLVED",
+        "source_current_margin": -6.376653649553532e-10,
+        "admittance_scale": [
+          [
+            1.03,
+            0.97,
+            1.02,
+            1.0
+          ],
+          [
+            0.98,
+            1.04,
+            0.96,
+            1.0
+          ]
+        ],
+        "independent_boundary_gap": 1.1244713160607489e-8,
+        "state": "phase_selective",
+        "independent_boundary": 1.231944209337235,
+        "source_objective": 1.2319441980925219,
+        "pruned_current_margin": -6.376701389143591e-10,
+        "certificate_certified": true,
+        "source_termination_status": "LOCALLY_SOLVED",
+        "pruned_objective": 1.231944198092527,
+        "objective_gap": 5.10702591327572e-15
+      }
+    ]
+  }
+}

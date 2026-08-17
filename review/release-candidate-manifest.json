@@ -1,0 +1,3746 @@
+{
+  "schema_version": 1,
+  "release_candidate_id": "mgb-2026-08-17-internal-rc",
+  "generated_on": "2026-08-17",
+  "status": "internally_validated_not_externally_reviewed",
+  "external_reviewed_claims": 0,
+  "independent_human_double_coding": false,
+  "observed_counts": {
+    "claims": 96,
+    "bibliography_records": 52,
+    "bibliography_unique_doi_fields": 31,
+    "html_pages": 66,
+    "image_tags": 73,
+    "pdf_pages": 349,
+    "required_artifacts": 122,
+    "certificates": 16,
+    "source_objects": 22,
+    "view_maps": 7,
+    "local_links": 562,
+    "llm_corpus_records": 661,
+    "llm_section_records": 548,
+    "llm_claim_bundles": 96,
+    "llm_concept_bundles": 17,
+    "llm_misconception_contracts": 9,
+    "llm_evaluation_cases": 27,
+    "llm_retrieval_cases": 27,
+    "llm_heldout_cases": 27,
+    "llm_route_top1_percent": 100,
+    "llm_lexical_complete_at_10_tenths_percent": 37,
+    "llm_contract_complete_percent": 100,
+    "llm_heldout_hybrid_recall_at_10_tenths_percent": 454,
+    "llm_heldout_router_fired_tenths_percent": 704,
+    "llm_heldout_hybrid_zero_recall_at_10_cases": 5
+  },
+  "checks": [
+    {
+      "name": "bibliography",
+      "command": [
+        "julia",
+        "--startup-file=no",
+        "scripts/check_bibliography.jl"
+      ]
+    },
+    {
+      "name": "claims",
+      "command": [
+        "julia",
+        "--startup-file=no",
+        "scripts/check_claims.jl"
+      ]
+    },
+    {
+      "name": "claim mentions",
+      "command": [
+        "python3",
+        "scripts/check_claim_mentions.py"
+      ]
+    },
+    {
+      "name": "evidence summary",
+      "command": [
+        "python3",
+        "scripts/check_evidence_summary.py"
+      ]
+    },
+    {
+      "name": "review snapshot",
+      "command": [
+        "python3",
+        "scripts/check_review_snapshot.py"
+      ]
+    },
+    {
+      "name": "evidence matrix",
+      "command": [
+        "python3",
+        "scripts/check_evidence_matrix.py"
+      ]
+    },
+    {
+      "name": "figures",
+      "command": [
+        "python3",
+        "scripts/check_figures.py"
+      ]
+    },
+    {
+      "name": "vocabulary",
+      "command": [
+        "python3",
+        "scripts/check_vocabulary.py"
+      ]
+    },
+    {
+      "name": "LLM accessibility",
+      "command": [
+        "python3",
+        "scripts/check_llm_accessibility.py"
+      ]
+    },
+    {
+      "name": "LLM retrieval",
+      "command": [
+        "python3",
+        "scripts/evaluate_llm_retrieval.py",
+        "--check"
+      ]
+    },
+    {
+      "name": "LLM neural benchmark",
+      "command": [
+        "python3",
+        "scripts/check_neural_benchmark.py"
+      ]
+    },
+    {
+      "name": "LLM access routes",
+      "command": [
+        "python3",
+        "scripts/check_llm_routes.py"
+      ]
+    },
+    {
+      "name": "LLM answer contract",
+      "command": [
+        "python3",
+        "scripts/check_llm_answer_contract.py"
+      ]
+    },
+    {
+      "name": "LLM access fixtures",
+      "command": [
+        "python3",
+        "scripts/generate_llm_access_fixtures.py",
+        "--check"
+      ]
+    },
+    {
+      "name": "LLM adversarial evaluation",
+      "command": [
+        "python3",
+        "scripts/evaluate_llm_adversarial.py",
+        "--check"
+      ]
+    },
+    {
+      "name": "prose numbers",
+      "command": [
+        "python3",
+        "scripts/check_prose_numbers.py"
+      ]
+    },
+    {
+      "name": "math hygiene",
+      "command": [
+        "python3",
+        "scripts/check_math_hygiene.py"
+      ]
+    },
+    {
+      "name": "callouts",
+      "command": [
+        "python3",
+        "scripts/check_callouts.py"
+      ]
+    },
+    {
+      "name": "page anchors",
+      "command": [
+        "python3",
+        "scripts/check_page_ids.py"
+      ]
+    },
+    {
+      "name": "paper tracks",
+      "command": [
+        "python3",
+        "scripts/check_paper_tracks.py"
+      ]
+    },
+    {
+      "name": "generated artifact manifest",
+      "command": [
+        "python3",
+        "scripts/generate_artifact_manifest.py",
+        "--check"
+      ]
+    },
+    {
+      "name": "artifacts",
+      "command": [
+        "python3",
+        "scripts/check_artifacts.py"
+      ]
+    },
+    {
+      "name": "rendered outputs",
+      "command": [
+        "python3",
+        "scripts/check_rendered_outputs.py"
+      ]
+    },
+    {
+      "name": "PDF references",
+      "command": [
+        "python3",
+        "scripts/check_pdf_refs.py"
+      ]
+    },
+    {
+      "name": "experiment suite",
+      "command": [
+        "julia",
+        "--startup-file=no",
+        "--project=experiments",
+        "experiments/test/runtests.jl"
+      ]
+    },
+    {
+      "name": "git diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "BOOK_PLAN.md",
+      "sha256": "8b3ac855d19719b61760dc08b47f95742b1bd41010805bbcb552dc691d3f6f7d"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sha256": "c34e67db81b9e42108f18f2aae869e2ebb03ae4ee22902dad5a2f999581debeb"
+    },
+    {
+      "path": "QUALITY_CONTROL.md",
+      "sha256": "6f2606d8012d5dfa3cef14e6720d3a856e47ed67924b4bf08ab9b5b9478d21c4"
+    },
+    {
+      "path": "README.md",
+      "sha256": "ec3848c3b4a1c304ff64b58e9cc203245fdc6ff63cc1d087b581cb9de6f4d858"
+    },
+    {
+      "path": "ROADMAP.md",
+      "sha256": "a7e1d4b3345bc985a4077c560fbc6b1ddb2820a38e28e1804cb70a9446d796d6"
+    },
+    {
+      "path": "claims/claims.toml",
+      "sha256": "e5bec546a9bb2dd861b4bc3deab7f186498b7287dceb71ec95efd0cdff416d88"
+    },
+    {
+      "path": "docs/build/.DS_Store",
+      "sha256": "ee8c77ae7f3d8d8faaacdf7b7fb0ce5f849c0607bf93fbcf1b15afa2d103d16e"
+    },
+    {
+      "path": "docs/build/.documenter-siteinfo.json",
+      "sha256": "c951f5072d0dedb6bfa29c1c07bec76d76b2a5dc49dd02fb03631c33729c6274"
+    },
+    {
+      "path": "docs/build/GraphModelsForPowerSystems.pdf",
+      "sha256": "dfa375904d855ccd79f78e2504156f56c5b6385098ee857ff61bc289b767f035"
+    },
+    {
+      "path": "docs/build/assets/active-radiality.png",
+      "sha256": "e34968bd40ab7678c9e52d6f6e1fee8475ff5c79fb159588f3835e4560f640f4"
+    },
+    {
+      "path": "docs/build/assets/active-radiality.svg",
+      "sha256": "50d2268c918200900f267d9d468ab0ecc6e08148570d36e14cbe21b7d589e844"
+    },
+    {
+      "path": "docs/build/assets/argument-spine.png",
+      "sha256": "2cab7d5538b9baf3f8b5fffff238c2ad66f2aea746d365656c52b1ec072913bd"
+    },
+    {
+      "path": "docs/build/assets/argument-spine.svg",
+      "sha256": "0713fbb3da4fcd7c05c2f0a17fd7aa9c8bb3a410411845cebd9f1f7d0c02adf0"
+    },
+    {
+      "path": "docs/build/assets/audience-routes.png",
+      "sha256": "9f84f83e8bfb45a13c5f3745734356d2553531fc09d9a78355b5a335da86892b"
+    },
+    {
+      "path": "docs/build/assets/audience-routes.svg",
+      "sha256": "5d5504dd7a5a0f551c0bdc254561cf1f6cd68d5c1baa143eee63215412ba6d59"
+    },
+    {
+      "path": "docs/build/assets/australian-carson-reconciliation.png",
+      "sha256": "d47041b9a29b1fee1117cdb61af9fc2d91dbf4780490231600b50120bcd5de59"
+    },
+    {
+      "path": "docs/build/assets/australian-carson-reconciliation.svg",
+      "sha256": "cc6585903f133d34c1da58b80304d3f7a531026ca12916b21674be177d265094"
+    },
+    {
+      "path": "docs/build/assets/australian-cs1035-gap.png",
+      "sha256": "ecea3da51aa7e4e7f5eccf8f5c6df18ed1189972194a62275e86f1b0be5156ab"
+    },
+    {
+      "path": "docs/build/assets/australian-cs1035-gap.svg",
+      "sha256": "05e90d8dacc20d65b80f2a214199827611d1a81475b17e480e72e6348a912c34"
+    },
+    {
+      "path": "docs/build/assets/bim-bfm-signature-capability.png",
+      "sha256": "ec9baf5a25a65a7e40c7627b980bfcb1bffb010711ca842d524a8662641a67f6"
+    },
+    {
+      "path": "docs/build/assets/bim-bfm-signature-capability.svg",
+      "sha256": "12c436d3111336dd419a28bd63c8a9054b51c3f80064ad59b9c8f3e4d7d31584"
+    },
+    {
+      "path": "docs/build/assets/block-structure-bridge.png",
+      "sha256": "7e958a6477524e95c549951ec7d208ab285e1d3b46f815a83400bf2078d330a7"
+    },
+    {
+      "path": "docs/build/assets/block-structure-bridge.svg",
+      "sha256": "075ab1fc9a2121e6c4f961aa6cc81d4065a7ceee58b0660c2d7371579963ff87"
+    },
+    {
+      "path": "docs/build/assets/bus-meaning-overlays.png",
+      "sha256": "b33d9a47b56e8d475460fd97f0773986ec64fb8886447dbd8b50ce3c967cf757"
+    },
+    {
+      "path": "docs/build/assets/bus-meaning-overlays.svg",
+      "sha256": "2425b742ef3b073b5ac775c40a7d9493dfcf1b8148dead0614701f7602409feb"
+    },
+    {
+      "path": "docs/build/assets/canonical-port-factor-model.png",
+      "sha256": "96e9a20a8ca888094c992f435429c23250a231f701f1b110cf8e3a89e9a103e7"
+    },
+    {
+      "path": "docs/build/assets/canonical-port-factor-model.svg",
+      "sha256": "eafd320475394e08f4d14af63eac441fe655070f7bee99d1a99f5a190c42e4e7"
+    },
+    {
+      "path": "docs/build/assets/case-escalation-grid.png",
+      "sha256": "abaea33a1b816f4a87a603ff366fd1a2c6bdfe6e4ee09cbfbe8dd2915655ce61"
+    },
+    {
+      "path": "docs/build/assets/case-escalation-grid.svg",
+      "sha256": "ba2a3b9d0924c763a9543e58b55633379c956012d456b52a7d9b51de1970125c"
+    },
+    {
+      "path": "docs/build/assets/certificate-composition.png",
+      "sha256": "7876838557626e3710e5997c8f11748ac7365fcf8e6727d97d2a108a9d1d95b1"
+    },
+    {
+      "path": "docs/build/assets/certificate-composition.svg",
+      "sha256": "638f26917839b025df70900f10f425a2e1309c0fc743768cfcf0656091beacd2"
+    },
+    {
+      "path": "docs/build/assets/coordinate-three-by-three-plate.png",
+      "sha256": "e828bf0389a89292f493de968775182973e2f46d4a611630c258fb138f9b5a17"
+    },
+    {
+      "path": "docs/build/assets/coordinate-three-by-three-plate.svg",
+      "sha256": "8b9fd1d2f73fafc63d199233e4ab40ecbf3f6a74809b2dd14bdbc7682fadb438"
+    },
+    {
+      "path": "docs/build/assets/custom.sty",
+      "sha256": "15c4dcc4c2c11457816bdb20cc359c895aa9aad754f8c19f32290d054c41d0d0"
+    },
+    {
+      "path": "docs/build/assets/cycles-parallelism-radial-tail.png",
+      "sha256": "b5ee2c339c33b1156d6b403c8a9cf1248e35f5398819f15ea5ae0809ef46d4be"
+    },
+    {
+      "path": "docs/build/assets/cycles-parallelism-radial-tail.svg",
+      "sha256": "4690065aef84e14874ff0c15abde8d4ce0f98ea274acf2baffed2524120c21c7"
+    },
+    {
+      "path": "docs/build/assets/documenter.js",
+      "sha256": "edc60e988a8a6032924d9ba1ac754b0972a9cbfc7c2d21a029863d6062676f11"
+    },
+    {
+      "path": "docs/build/assets/earth-return-ladder.png",
+      "sha256": "151afb9ae8e5865975adbf5bbc1bba03c7b8100b329be1f78189d7266cfe993c"
+    },
+    {
+      "path": "docs/build/assets/earth-return-ladder.svg",
+      "sha256": "f03b25d57fd71875deacb1dcec4763165a5e4d3ceeecf95e823c108837fb7375"
+    },
+    {
+      "path": "docs/build/assets/exactness-classes.png",
+      "sha256": "b461d768c751c76be1e540173f193d72bbfd664994e20405b864d2716e2edc96"
+    },
+    {
+      "path": "docs/build/assets/exactness-classes.svg",
+      "sha256": "0c5a8ccc7120dba00dd5c8052ab3bb71f954d8d6327f1ec475c2e41965e050b1"
+    },
+    {
+      "path": "docs/build/assets/figure-audit.json",
+      "sha256": "c2e178018dcdf32793a79e3a8e5a6b671a2976b77938a940b367c754314a3387"
+    },
+    {
+      "path": "docs/build/assets/five-bus-cycle-basis.png",
+      "sha256": "9281635f037970f495ebc652869d5f3941f92901297c6608b667e1fd08e23dfc"
+    },
+    {
+      "path": "docs/build/assets/five-bus-feasible-sets.png",
+      "sha256": "275e45ec8d1c4dcff47179aa546e73631882a82aaa6c1d672d91267807de40dc"
+    },
+    {
+      "path": "docs/build/assets/five-bus-transformation-map.png",
+      "sha256": "5331ff21e17ebedb420f692f5fa6418dc26507571427d776a5af1b9316933ad4"
+    },
+    {
+      "path": "docs/build/assets/five-bus-transformer-lowering.png",
+      "sha256": "c7848471a0503422bb5817fccdf3baaed8e6649222b2217f4484677e57c227bb"
+    },
+    {
+      "path": "docs/build/assets/five-bus-transformer-lowering.svg",
+      "sha256": "7521a499fa29b497c84673a928b00cad85a91d71280e823418f67f9aec4efce2"
+    },
+    {
+      "path": "docs/build/assets/formulation-lowering-lattice.png",
+      "sha256": "d450934cb738ac8e807cd5baa7c5952a1bd692f48fbb77eae7bde5c67be333d9"
+    },
+    {
+      "path": "docs/build/assets/formulation-lowering-lattice.svg",
+      "sha256": "b27c1fe189a90ceebc5a67fe444dc3bff9867e1e9f3b11c7820b396b5a8e54dd"
+    },
+    {
+      "path": "docs/build/assets/four-wire-impedance-ladder.png",
+      "sha256": "005a2c0b17d63d947cf4be504ad2365b68641200d97057d216d4825ab8efd3ec"
+    },
+    {
+      "path": "docs/build/assets/four-wire-impedance-ladder.svg",
+      "sha256": "7c38ffcd25e85071d1902ed272d3e3e54ef0e39f4a71bdf3e8d803538ecaebd8"
+    },
+    {
+      "path": "docs/build/assets/guarded-result-plate.png",
+      "sha256": "932e42bffd88d25d15f1dae5a9bc9c006ff518fb7c6f0787e7506557deff38ef"
+    },
+    {
+      "path": "docs/build/assets/guarded-result-plate.svg",
+      "sha256": "716630f3f109efdd5a8e9fd959d87021850f8a103c5d1ea5e4c1b54783765a16"
+    },
+    {
+      "path": "docs/build/assets/guarded-rule-gate.png",
+      "sha256": "fcf253a3b758dcdedde4606caeeeee1c08ae449070d8e131d8cb3611c3e60ee3"
+    },
+    {
+      "path": "docs/build/assets/guarded-rule-gate.svg",
+      "sha256": "8cc369392dc38a4b497eae24be9114f3cd55952a66ac5f34376cbd5af12505bc"
+    },
+    {
+      "path": "docs/build/assets/impedance-fidelity-ladder.png",
+      "sha256": "28c47c459602262261a22ecbeab234d2d00e5a4ae40a7fca84a15c15483544bb"
+    },
+    {
+      "path": "docs/build/assets/impedance-fidelity-ladder.svg",
+      "sha256": "386e24bee021a99fdd96faa30b014e0f2242036f48dad4c07c6b1b2c932fd5cd"
+    },
+    {
+      "path": "docs/build/assets/kron-fill-in.png",
+      "sha256": "9903fd31dab8d78aa45685802de4eb97345753dfbb0b24901cbedccd35de0bb2"
+    },
+    {
+      "path": "docs/build/assets/kron-fill-in.svg",
+      "sha256": "4c86ec931e3f1dce261a4137a7886587d52203904055a8eb8fe1ecabd8eb2e9f"
+    },
+    {
+      "path": "docs/build/assets/label-coordinate-bridge.png",
+      "sha256": "3553dd03f75a7f09d7884693e9a0263e1eca3a23e28ced9d1b62e4e96bc345dd"
+    },
+    {
+      "path": "docs/build/assets/label-coordinate-bridge.svg",
+      "sha256": "21fabb98b0f4e201408e8704445aeddb20c8031259af27b781354b3c906c81fb"
+    },
+    {
+      "path": "docs/build/assets/layer-lens-matrix.png",
+      "sha256": "03d77277841131e83b1f5173ca319840f34d3ab08801d2bf53c6bd40f4b65929"
+    },
+    {
+      "path": "docs/build/assets/layer-lens-matrix.svg",
+      "sha256": "ea4fbb2f23d826509729132e383b8bf7738ece067fdd4797651e871d6eb95bb1"
+    },
+    {
+      "path": "docs/build/assets/literature-gap-map.png",
+      "sha256": "5b12d2d2d658017657898c8f2697766977e655f75b08735534441fb159d2297d"
+    },
+    {
+      "path": "docs/build/assets/literature-gap-map.svg",
+      "sha256": "d4975f23fa4dc2b9210e1f451c5fd191305f594fa8e10ddbb287dcf4398c1446"
+    },
+    {
+      "path": "docs/build/assets/load-model-divergence.png",
+      "sha256": "3c1ef1421032e7ea7a1aa187e2097341d8b759eaa2d698253e50772dfd096b8a"
+    },
+    {
+      "path": "docs/build/assets/load-model-divergence.svg",
+      "sha256": "0145ec28e4718f3a02cd09b6b81cdd266a452ca43c7f9e4a53a0d9b2b2eeff2c"
+    },
+    {
+      "path": "docs/build/assets/map-of-maps.png",
+      "sha256": "f942d62d9978f8eeee24ac7d7557ccee8dcb1c5336250a60e06e6d92d3162b1c"
+    },
+    {
+      "path": "docs/build/assets/map-of-maps.svg",
+      "sha256": "cc659d65a34ab88c94d75d401ad84474cef751b58fcaa1bdfa8d2af9722f7eb2"
+    },
+    {
+      "path": "docs/build/assets/nonlinear-kkt-witness.png",
+      "sha256": "677bf136a5ed836edd8c1fce1c50c9e9f63bda2ed71afccfa6cd3138b8d72eeb"
+    },
+    {
+      "path": "docs/build/assets/nonlinear-kkt-witness.svg",
+      "sha256": "54c1160b4d369d7090b2ac589d57adb48050cefe2d43b7e85f187560484a2b8e"
+    },
+    {
+      "path": "docs/build/assets/numerical-fill-in.png",
+      "sha256": "167b3287aa66531c282b4b8060190bfc9deaa62b5b35ae46e7bd13f14002dd1c"
+    },
+    {
+      "path": "docs/build/assets/numerical-fill-in.svg",
+      "sha256": "9cacdd52eee75d6a0c968049170312ee4c7301ab09ab4f4da3d11c69a6a48b89"
+    },
+    {
+      "path": "docs/build/assets/numerical-jacobian-dependency.png",
+      "sha256": "5fe465e69cfb337944703d4b08f63bf4e28d0dac2cf6a12ccfde6f873d0b3915"
+    },
+    {
+      "path": "docs/build/assets/numerical-jacobian-dependency.svg",
+      "sha256": "9a2b64ef9211b7735f4cd732d075b41e56ff2fe14673dddd5cbdae737ead1ab3"
+    },
+    {
+      "path": "docs/build/assets/numerical-structure-witness.png",
+      "sha256": "b1b6d6d7f344fe55877cf8144c36a59e733ae8ee1c6e6285678b9e72e90031d1"
+    },
+    {
+      "path": "docs/build/assets/orientation-power-transfer.png",
+      "sha256": "c68836345203dc821d8ef6b0d0fc15fa2cbf2fd8b3bd6416a0de8df1f416569d"
+    },
+    {
+      "path": "docs/build/assets/orientation-power-transfer.svg",
+      "sha256": "1360b494067c5f7446f7bd1cdb7ac1c495029066f053ca65afe3e2d241df1470"
+    },
+    {
+      "path": "docs/build/assets/parallel-feasible-set-card.png",
+      "sha256": "44730221a7438572980f099e67b7686e9af30cbf266ead23451a29f429afceff"
+    },
+    {
+      "path": "docs/build/assets/parallel-feasible-set-card.svg",
+      "sha256": "c87594f2765a7050bb2e6c8f5d8e9f34fde6cbe8f40fac8f97ebd5bc08cd7251"
+    },
+    {
+      "path": "docs/build/assets/parallel-member-decision-plate.png",
+      "sha256": "a25f78f8eefd0c9a5efcac52684474bca5e6c2592851b3799c4023fe32cf398e"
+    },
+    {
+      "path": "docs/build/assets/parallel-member-decision-plate.svg",
+      "sha256": "8351e66462730d7d675d1f8d3435b0226ab6ea4aa2408c18ee033d0b4fafe632"
+    },
+    {
+      "path": "docs/build/assets/parallel-redundancy-certificate.png",
+      "sha256": "2337f17a9de2129d6204acbf0f2fcfb877d0c95d210d002752f8d4c9cac20a86"
+    },
+    {
+      "path": "docs/build/assets/parallel-redundancy-certificate.svg",
+      "sha256": "667e1b420473e04233154901647e37aa81389951339617221b4b1bec9d6e46c5"
+    },
+    {
+      "path": "docs/build/assets/preamble.tex",
+      "sha256": "a1e4c9d26c69f5579d63e6be7f34cbb129157f15fcc3a245e30c77622048a653"
+    },
+    {
+      "path": "docs/build/assets/preservation-contract-card.png",
+      "sha256": "a6e015aae1464016d4aa758eb94ca2e6b4ccb3bfd0c1f51bfda4960f3b32a356"
+    },
+    {
+      "path": "docs/build/assets/preservation-contract-card.svg",
+      "sha256": "92fd129900611ec7bd98f5e61053ab007aa204f8ab40be8b6b3845a65db4f9e4"
+    },
+    {
+      "path": "docs/build/assets/provenance-lineage.png",
+      "sha256": "4f8618b11a0dd4a7e5d354bd8bc9c3ce01f40adfbb47aa042e392f1cc66df74f"
+    },
+    {
+      "path": "docs/build/assets/provenance-lineage.svg",
+      "sha256": "c2f674faa04075b751e93336a1dcf961e3888f9546111c5cbe7c0614a9589367"
+    },
+    {
+      "path": "docs/build/assets/query-partial-orders.png",
+      "sha256": "ff81ad826be85378ccb3cf60c042ae7865c20cb269b88e0fafc2c8fae61c3997"
+    },
+    {
+      "path": "docs/build/assets/query-partial-orders.svg",
+      "sha256": "4765fbfd4585bf964f8f7c2bdd559e4951b45bea7422227ea713a1ab81483ed8"
+    },
+    {
+      "path": "docs/build/assets/radial-clique-projection.png",
+      "sha256": "9d4dfb7ed1935217d36c8da4f3ffee8cde813704186886cc78adeaa6ced0be13"
+    },
+    {
+      "path": "docs/build/assets/radial-clique-projection.svg",
+      "sha256": "d38f231a3fbe88858a065f0820b504992dab7e56894d35e9a642bac0244f0a0d"
+    },
+    {
+      "path": "docs/build/assets/reading-routes-graph-transmission.png",
+      "sha256": "43586fc69939846691a4f1fa7d4f20b763f41234aa34c5afb14840a6972fef6b"
+    },
+    {
+      "path": "docs/build/assets/reading-routes-graph-transmission.svg",
+      "sha256": "aed6904c6923e1f033a56adcf62f16b674d20606efd3c2732eb776a476048652"
+    },
+    {
+      "path": "docs/build/assets/recovery-map-loop.png",
+      "sha256": "7f1d2fee656b1293476beba6918d0843e8c4760583dfb99deff0b68186e7d5c5"
+    },
+    {
+      "path": "docs/build/assets/recovery-map-loop.svg",
+      "sha256": "ad029e4d6206add2ad95226998a5a6e03bc65e61cdf643c2d52755a49e334720"
+    },
+    {
+      "path": "docs/build/assets/reference-distinction-map.png",
+      "sha256": "2fe5136f48e2c38c5693b78b98805c89c9d07d23f56dac60e27789ba15fa2aa4"
+    },
+    {
+      "path": "docs/build/assets/reference-distinction-map.svg",
+      "sha256": "08193bbac4a208454997f259ae52b968c4e25f6d9f88dcc7b1fc8ccbfefa9fb7"
+    },
+    {
+      "path": "docs/build/assets/reference-evidence-map.png",
+      "sha256": "3f9509c9b073a09d07d1d0b866569daee59c668e8b0f3b2ed90f2a7b9cf38f1a"
+    },
+    {
+      "path": "docs/build/assets/reference-evidence-map.svg",
+      "sha256": "8607ebf90beef7a4a979f0f0bb411a1a72ed6e917d8546a839716bd05613b6da"
+    },
+    {
+      "path": "docs/build/assets/reference-symbol-anatomy.png",
+      "sha256": "606ebaba33657017ed4e65bc02aaa45df367a5ef3ca2c3d9b98a42ef5564a92e"
+    },
+    {
+      "path": "docs/build/assets/reference-symbol-anatomy.svg",
+      "sha256": "e12077e91dbc6e595d9d1098c33b334574ed53dbbc63a81da5a993c85578edf5"
+    },
+    {
+      "path": "docs/build/assets/reference-verification-summary.png",
+      "sha256": "4857ffb4953a73efd297238459578eae4c1ff37472c3e6f18f98a03dc2379d78"
+    },
+    {
+      "path": "docs/build/assets/reference-verification-summary.svg",
+      "sha256": "3999b508274efac7b277a4b9eaa6ab4d8513d53576a4f5df01109f6dedc77eba"
+    },
+    {
+      "path": "docs/build/assets/representation-principal-levels.png",
+      "sha256": "f4ae9df2ceaecc8b2149f6a19ea8f6136687625e567dfd76350892e559802325"
+    },
+    {
+      "path": "docs/build/assets/representation-principal-levels.svg",
+      "sha256": "c4824c4cae673334c9cef3a1c621e029d27e9935cdd283a62b3e4dbd295d9fbb"
+    },
+    {
+      "path": "docs/build/assets/running-network-views.png",
+      "sha256": "044ac1c4a5948341378046e5aeed6134dbfb9e2d5a18e22d4419a401f333d8e3"
+    },
+    {
+      "path": "docs/build/assets/sequence-subspace.png",
+      "sha256": "b6bd05a8cc2c3269c943bc41dd65519d2ce5a82c417894fa0ea0ca8bbc754c15"
+    },
+    {
+      "path": "docs/build/assets/sequence-subspace.svg",
+      "sha256": "bc5d870b1cd62af03a0838290079b5a7705fb3d05329ac7052bb99d229ba7056"
+    },
+    {
+      "path": "docs/build/assets/source-canonical-pipeline.png",
+      "sha256": "bc412ba8e30bff506c1417eee835b74cc35c9b4c3921ca308e1ac6abcd7c4ce5"
+    },
+    {
+      "path": "docs/build/assets/source-canonical-pipeline.svg",
+      "sha256": "2a0e743a40b68979c7735718d644f497c8b2eddf4a32934d6e2a63876bbf2f0c"
+    },
+    {
+      "path": "docs/build/assets/source-views-surgery.png",
+      "sha256": "cc09be57ce98724c9f0aa3f979645a6d80d55e26209b2ac6a1e95414894f38b4"
+    },
+    {
+      "path": "docs/build/assets/source-views-surgery.svg",
+      "sha256": "0bcfa03fda5bdf75b609512155f32dc5b0d782279e72096adbf9b7327730acdb"
+    },
+    {
+      "path": "docs/build/assets/spine-band.png",
+      "sha256": "5bbf908f28585cdfc58e9373c6b343ca560008f4936356b085c786901d962f08"
+    },
+    {
+      "path": "docs/build/assets/spine-band.svg",
+      "sha256": "bb20c89437e1a002ece1b90e5510d6f6a33f13911ef52fb2967b359bc586d039"
+    },
+    {
+      "path": "docs/build/assets/start-here-negative-star-arm.png",
+      "sha256": "1f66e184caada567b270c33b0f23a945df48047b7d3b854a373e4f94b56a2e86"
+    },
+    {
+      "path": "docs/build/assets/start-here-negative-star-arm.svg",
+      "sha256": "e12c314eff52bf3f8a73c6559d7fb9c1a712ff10285046ab901e0261753de2b5"
+    },
+    {
+      "path": "docs/build/assets/start-here-neutral-recovery.png",
+      "sha256": "8c92209c5c8244191a31626bcdef024f8f5626cff7dbd1a0d747d7779db4d5c1"
+    },
+    {
+      "path": "docs/build/assets/start-here-neutral-recovery.svg",
+      "sha256": "2ffcb406971bf2f2bf98c549228b171c5dd459cca3b0feeb6e3bfcfb7a977eef"
+    },
+    {
+      "path": "docs/build/assets/start-here-radial-triangles.png",
+      "sha256": "62501dd30baaab2320b143eb8a2e941e2170eca7bc42d4bd23d7a4e3ceec9478"
+    },
+    {
+      "path": "docs/build/assets/start-here-radial-triangles.svg",
+      "sha256": "0f0555f71fac8b61bef5e26640d2f2297a4c068fb57dd912d4f1d34cefae78c0"
+    },
+    {
+      "path": "docs/build/assets/start-here-running-network.png",
+      "sha256": "c82d5b7c9e0db3d9ddba7d7d28ad5f9cf7d369d0f3a98b2249f1c2e3ad3f4bee"
+    },
+    {
+      "path": "docs/build/assets/start-here-running-network.svg",
+      "sha256": "dc6184d2c2ea6992e3a948ba39670cb39d973a1945881a797dfc7328eb19baf9"
+    },
+    {
+      "path": "docs/build/assets/start-here-same-ybus.png",
+      "sha256": "3e74de795b10e63ec9264d60eab46e052b23d1f01faa46f58cd7d84a7cd0d8e7"
+    },
+    {
+      "path": "docs/build/assets/start-here-same-ybus.svg",
+      "sha256": "32e1e60be5dc26aa5681522582291a73447914b5a32cb956ad94abb20f9b35c0"
+    },
+    {
+      "path": "docs/build/assets/themes/catppuccin-frappe.css",
+      "sha256": "45da9ff8e66df3f282d8ae570f073a060559dbb4bcf7a54917e4a3ff15f4fccb"
+    },
+    {
+      "path": "docs/build/assets/themes/catppuccin-latte.css",
+      "sha256": "3db0c815fd211682c1f20176fd981972b36a3ed0a214b19ab929f15869d7feb6"
+    },
+    {
+      "path": "docs/build/assets/themes/catppuccin-macchiato.css",
+      "sha256": "72c6ba0ae53c81cbbc995a8175a586319744fda1af70c1cfb7b1c1dcd60b5a63"
+    },
+    {
+      "path": "docs/build/assets/themes/catppuccin-mocha.css",
+      "sha256": "8b7dd739f4fdc7bde986d5351222ea407ba180f18ef2e185241f06098ac960f6"
+    },
+    {
+      "path": "docs/build/assets/themes/documenter-dark.css",
+      "sha256": "2a76667b3b81b9e402661fdefb609d31cbe2e7bb23046cf07494062d244d649f"
+    },
+    {
+      "path": "docs/build/assets/themes/documenter-light.css",
+      "sha256": "706b5379af688761c9f0168af88e1eaa05495e1cdc7c4a0debbf03621d8923a7"
+    },
+    {
+      "path": "docs/build/assets/themeswap.js",
+      "sha256": "55f38b961d1c725dab51f7bfdffc68e1224e14911cbaaafb4e2405c57c4da4b9"
+    },
+    {
+      "path": "docs/build/assets/topology-projection-layers.png",
+      "sha256": "53a693f3797b06b049f2883bc4f3aa1d65fda62045489535dafdf7ab0965a95b"
+    },
+    {
+      "path": "docs/build/assets/topology-projection-layers.svg",
+      "sha256": "f9dd8c777ef4ff3997e0084352651af1595ea3f7992a765cdda98da8c31d0040"
+    },
+    {
+      "path": "docs/build/assets/transformation-register-glyphs.png",
+      "sha256": "b3a4948fb1ba012ea6f8af5c0294afd535f0897924450307fdd0ff3063f85ec8"
+    },
+    {
+      "path": "docs/build/assets/transformation-register-glyphs.svg",
+      "sha256": "7bf8d1845cef19702a2052054211529d08e2af6cc259bdbe2d0776b5cf28aff2"
+    },
+    {
+      "path": "docs/build/assets/transformation-size-inversion.png",
+      "sha256": "9e51065b27a2039e9bb39acc4ca91b8f3e7d0e3b973871ea9454f624b372282b"
+    },
+    {
+      "path": "docs/build/assets/transformation-size-inversion.svg",
+      "sha256": "7dcc2628323237a013ba89450bda175c68c75a2864ba070a69fd68d99721c0a4"
+    },
+    {
+      "path": "docs/build/assets/transformer-anatomy.png",
+      "sha256": "3d6be84fc03274fe08c32125223b0484e25442b2b05f13e53905a7db9c05c055"
+    },
+    {
+      "path": "docs/build/assets/transformer-anatomy.svg",
+      "sha256": "7e14ceca3c9a25908c8544a3e64a7ea514ff2df5a984df32d20a32ba1420827b"
+    },
+    {
+      "path": "docs/build/assets/transformer-graph-views.png",
+      "sha256": "815665312f0255b36a6801052463fbbc4f346c336ec833ca205d595bb3f21b1f"
+    },
+    {
+      "path": "docs/build/assets/transformer-graph-views.svg",
+      "sha256": "73dbd5bf35e09a853a6b4b9ccf8a6959e921ca7cef242a664f035b86be582b9c"
+    },
+    {
+      "path": "docs/build/assets/transformer-tap-decision-plate.png",
+      "sha256": "44380aaa168feafd5e626763823a01e4884f071900910848a68b3b36e038963f"
+    },
+    {
+      "path": "docs/build/assets/transformer-tap-decision-plate.svg",
+      "sha256": "d09367b75105e5c4334aa924f8530200769de42e0b8bd323388582f97551b14b"
+    },
+    {
+      "path": "docs/build/assets/translation-trap-card.png",
+      "sha256": "18fcea854a63a79e15a98550ef975395300054bcf94c671e066d5aae9c0f3c9b"
+    },
+    {
+      "path": "docs/build/assets/translation-trap-card.svg",
+      "sha256": "c564ef1b188332aa6fa1e44464a464c75b6050fccd00b18ca22cc1964c17ae03"
+    },
+    {
+      "path": "docs/build/assets/visual-language-equipment-plate.png",
+      "sha256": "5e4de77226fb8c90742d5bc7f30c4ec9c3f338abc69f417f44614c6543c82850"
+    },
+    {
+      "path": "docs/build/assets/visual-language-equipment-plate.svg",
+      "sha256": "5a1e37263329b9c6603f7be6099d4a8a4cfab34fe0911102120fd885bd2412b3"
+    },
+    {
+      "path": "docs/build/assets/visual-language-special-semantics.png",
+      "sha256": "4aba4946c3f798a760c0c6ffcadeb1be7039e512ae21385f64f394b8d474ea66"
+    },
+    {
+      "path": "docs/build/assets/visual-language-special-semantics.svg",
+      "sha256": "67828118755151337acba6da0569ce52a238fe37f44d39aedee11a9489bdda42"
+    },
+    {
+      "path": "docs/build/assets/vocabulary-bridge-five-languages.png",
+      "sha256": "109e260d9babe4dbcec6fb903ab9103239f3f1512f99f08526b8ad3ae488f9c0"
+    },
+    {
+      "path": "docs/build/assets/vocabulary-bridge-five-languages.svg",
+      "sha256": "d0ea233f2410a331ae2052cf2359ebf32f583098f657681d6d32397e8c8e8748"
+    },
+    {
+      "path": "docs/build/assets/warner.js",
+      "sha256": "b49c535b1dd1ad004e73b034143088e5b8a185e716f5312bd9f136a5ea75370f"
+    },
+    {
+      "path": "docs/build/assets/winding-coordinate-actions.png",
+      "sha256": "43fbf4e8a1e75ca618b5b2c50fd54ffcb8565d9be7f14e8bc7b877f74dfcc5e7"
+    },
+    {
+      "path": "docs/build/assets/winding-coordinate-actions.svg",
+      "sha256": "c9b60d906ca3ef1254433e7c488862cf85d0fb35fc17f0c74b21297039130cd9"
+    },
+    {
+      "path": "docs/build/assets/ybus-jacobian-witness.png",
+      "sha256": "2b34541e24a2084bce655d153bd3e3b73af6b7183e08359c2912339fc75e588b"
+    },
+    {
+      "path": "docs/build/assets/ybus-jacobian-witness.svg",
+      "sha256": "3bdba1c182cdf590ad9df2b2aac37ecd5bb498a67bf7af8f2983a373d0d37a66"
+    },
+    {
+      "path": "docs/build/cases/australian-carson-reproduction.html",
+      "sha256": "b457780fb93c15a030b1c42ac924b7ecefaaec8394617684692c7c29302885b1"
+    },
+    {
+      "path": "docs/build/cases/bim-bfm-parallel-lines.html",
+      "sha256": "e696ae3f9059d777902536f8baf82c61bf41ad5df470f1c8a38f631c69704b9f"
+    },
+    {
+      "path": "docs/build/cases/executable-running-network.html",
+      "sha256": "8c924318d507aa57ea03a97f4644256b18a0a52bcda8ab47051a51d12cd21bba"
+    },
+    {
+      "path": "docs/build/cases/four-wire-impedance-model-ladder.html",
+      "sha256": "4224db26f0cc1a85b5cccdfddf370bf84dc9562c56cb2e07a508361a1c58d651"
+    },
+    {
+      "path": "docs/build/cases/four-wire-parallel-ac-decision.html",
+      "sha256": "cae535112d09962be4fea45f7a74c5640db8c1a4e5e139b7309bcb28d223cb8b"
+    },
+    {
+      "path": "docs/build/cases/multiconductor-parallel-ac-decision.html",
+      "sha256": "6d6586c0cd7b30e88e4dd44c6679c49f49d265b7b10ed5e5025f1e95c3530da1"
+    },
+    {
+      "path": "docs/build/cases/pi-four-wire-parallel-ac-decision.html",
+      "sha256": "d4bb90cc9d11aced59f5c2f842e92e83833ab1f09c03d76098e4bf1097df2c7b"
+    },
+    {
+      "path": "docs/build/cases/running-network.html",
+      "sha256": "4cd3db6dc8e6289f318302f2609376c23743f39e1d82801da1c9394cc4f41cbb"
+    },
+    {
+      "path": "docs/build/cases/transformer-tap-ac-decision.html",
+      "sha256": "a78770be0ecd2483cd4a7f935ae693559065b2c5a6b923c7a4a48a6cc74e5766"
+    },
+    {
+      "path": "docs/build/foundations/circuit-formulations-and-lowering.html",
+      "sha256": "2bdb272c5e61172d0b1f0ee129045160724931d9cea65ee9dff4371986c4073f"
+    },
+    {
+      "path": "docs/build/foundations/compiled-views-and-graph-surgery.html",
+      "sha256": "3b575d1b51f03dfc3549ddfdd0423dc030051739e61209c37908d83f4c6cafa3"
+    },
+    {
+      "path": "docs/build/foundations/cycles-parallelism-radiality.html",
+      "sha256": "8b641014debacd78ad42ea3a9e497294fed359026dca80893404ac6a5ba87d24"
+    },
+    {
+      "path": "docs/build/foundations/data-model-crosswalk.html",
+      "sha256": "bb06cb260605676ce544ba90d7a78db815d13dea72f3f8c014cabe3f13fe37e5"
+    },
+    {
+      "path": "docs/build/foundations/earth-ground-models.html",
+      "sha256": "8fd2b9715e9e63d391cb173c3f9d95a2e55073e9c6a00222f72deed8f1cd6b7b"
+    },
+    {
+      "path": "docs/build/foundations/formal-representation-frameworks.html",
+      "sha256": "d087741eee080132e9dacbf895deeab043788e96632b6799e472d4932bd60a9e"
+    },
+    {
+      "path": "docs/build/foundations/impedance-fidelity-ladder.html",
+      "sha256": "372a9b1621ea74dfaf9fa6a40d67da7d04d415f2adad96112d68941e93502c81"
+    },
+    {
+      "path": "docs/build/foundations/load-models-and-decision-dependence.html",
+      "sha256": "63d07d4610dda248ad16b95838217f977231d92e3052116251743385c7cc7051"
+    },
+    {
+      "path": "docs/build/foundations/node-breaker-topology-processing.html",
+      "sha256": "c6ba8367fc491213cf79b4e9c649154305188974d8ba94d8ce4a873c082da930"
+    },
+    {
+      "path": "docs/build/foundations/notation-and-conventions.html",
+      "sha256": "64011494ec89bc805fb3064a3c8f3337b972f486b0ed29480b870de0b88381cd"
+    },
+    {
+      "path": "docs/build/foundations/numerical-consequences.html",
+      "sha256": "e3f2afe30b21f84d88eba4387c2e6da1293c0585c2fda1e48ce854683787701a"
+    },
+    {
+      "path": "docs/build/foundations/orientation-terminal-power.html",
+      "sha256": "5cde956d5e634bafeb20ee05771b1eea928f2e651ff36c6e1814541d4568b6bd"
+    },
+    {
+      "path": "docs/build/foundations/preservation-contracts.html",
+      "sha256": "787567ed7c5c0f7366dbe49b59e4f716b483873622217e866c771259ec803341"
+    },
+    {
+      "path": "docs/build/foundations/rating-semantics.html",
+      "sha256": "5029c94d0844dcfe145a26b43a7545c8becc3cdb8530abc8b54bde5ffe9e6604"
+    },
+    {
+      "path": "docs/build/foundations/representation-maps.html",
+      "sha256": "7a8fb63e8509a51be9d79accac3488de65a2425385949601dfb50a5683433c74"
+    },
+    {
+      "path": "docs/build/foundations/representation-taxonomy.html",
+      "sha256": "cbaefe6abfb3937d0805a0b81bbccb344efae28d42597e2376aaacfb38a2b361"
+    },
+    {
+      "path": "docs/build/foundations/scope-and-thesis.html",
+      "sha256": "5295edaea889d82d67ba8f78de700e05377b9e1b9f88423e74ef8745eb629470"
+    },
+    {
+      "path": "docs/build/foundations/source-to-canonical-model.html",
+      "sha256": "05d01985b14f5a11b620bd1f01f74244d04c912043e21a05d77c23faa7106ca1"
+    },
+    {
+      "path": "docs/build/foundations/transformation-semantics-register.html",
+      "sha256": "34647c1e7153cefb2365b24a47e0f51a655c9757c32e76dffd8ce9cffb3db9e0"
+    },
+    {
+      "path": "docs/build/foundations/translation-traps.html",
+      "sha256": "7f56fcd0a7098f3c5639e1b9eb5fbaed568d7ac000a02ed5766970e3b19ba69c"
+    },
+    {
+      "path": "docs/build/foundations/two-level-topology-and-nodal-projection.html",
+      "sha256": "c53c5099e281a4398823571fe9ba3d8bbd5f1b69691786380a9100b9bfa828ab"
+    },
+    {
+      "path": "docs/build/foundations/when-general-model-collapses.html",
+      "sha256": "1b7b1db231200369b33f7814a2f400610bf266edce2e8fb3fb21e205e9dd4d1b"
+    },
+    {
+      "path": "docs/build/index.html",
+      "sha256": "7ecaccd18e503681aa37364ed2f2f2f2c0e9a2142bdf0ba7f01b9c6f35a2ad97"
+    },
+    {
+      "path": "docs/build/literature/literature-map.html",
+      "sha256": "ade4ce5b6557ec3664e2596bd74b7f85c2e9688c1259c8fac902bb339026a2a0"
+    },
+    {
+      "path": "docs/build/literature/representation-implementation-record.html",
+      "sha256": "701b04386b896597fe1e578d944cb827e00d3fa2b44652e0c066c2d3f0ba628d"
+    },
+    {
+      "path": "docs/build/literature/research-agenda.html",
+      "sha256": "9b6942fc16bc357ff736d468a224441dacec654b4442813a8afddeff5b8e839f"
+    },
+    {
+      "path": "docs/build/literature/review-protocol-and-evidence-status.html",
+      "sha256": "39b2c1c4e9a34d9fa9a6d2a240cbfc71b389868b94a39c0100540b1f48ecf3b6"
+    },
+    {
+      "path": "docs/build/literature/search-runs/2026-08-14-seed-batch.html",
+      "sha256": "aa7e124a535bb64122dbd54f5196e9423162caa5e8e821687c96c0cdeafdfc2e"
+    },
+    {
+      "path": "docs/build/literature/search-runs/2026-08-15-formulation-landscape.html",
+      "sha256": "1151c5670d8a0d26c8e0241c5be2c6bdbbba917fe486b0644ffd6541e7c5b712"
+    },
+    {
+      "path": "docs/build/literature/search-runs/2026-08-15-information-model-citation-chase.html",
+      "sha256": "b1ec45af37ee8656f0155f16e0de04a4822c3ca81c668baca5159466c6b7746d"
+    },
+    {
+      "path": "docs/build/literature/search-runs/2026-08-16-multiphase-and-practical-reductions.html",
+      "sha256": "b35d5f46b6381fa9beaf51745dae9e52944f2140eb5ff6d8226d6db64f20fb62"
+    },
+    {
+      "path": "docs/build/objects.inv",
+      "sha256": "8b5490b264233b9007855b332042115d952e9a0f860ade279fff82799006cecb"
+    },
+    {
+      "path": "docs/build/reference/chapter-status.html",
+      "sha256": "4df4ac411e698dbf8e6c285a0d6495bea257b8c48e68e2372841fe744ae5e0f7"
+    },
+    {
+      "path": "docs/build/reference/evidence-map.html",
+      "sha256": "cc5f978424633cb63d163f7ccadfb2a99dc0fc043b7a0e77418335250cae04ad"
+    },
+    {
+      "path": "docs/build/reference/knowledge-base-index.html",
+      "sha256": "23f766d6ef19bd2631db9ace0320678cd9dd2e796b02419009a26e739b09d180"
+    },
+    {
+      "path": "docs/build/reference/references.html",
+      "sha256": "54387f960fb0de7876d93e8b60b0565813f741ce739dbe7ece404ffeb6803810"
+    },
+    {
+      "path": "docs/build/reference/terminology.html",
+      "sha256": "ed48a325225e43357f92b3fbbe5415da97745a038a995cf00611b04bb9efde8b"
+    },
+    {
+      "path": "docs/build/reference/vocabulary-indexes.html",
+      "sha256": "850bae5e36af4bdad38ab48810af63e3490dc889978a4271d38b4efce73bb442"
+    },
+    {
+      "path": "docs/build/references.bib",
+      "sha256": "5a076daae2f6547f10461f91f05fca15397e1bb4b57418747f0f188af5a03696"
+    },
+    {
+      "path": "docs/build/search_index.js",
+      "sha256": "e3df04417c2556de0760bf7827e2549c234097d06aad03d2a5849d3f3f0b7abb"
+    },
+    {
+      "path": "docs/build/start/first-failure-parallel-branches.html",
+      "sha256": "e8e97e9d6269f81d51c07eea6a74e1173d10eb4e4fce406521b6c4ed141c17a2"
+    },
+    {
+      "path": "docs/build/start/five-bus-cycle-spaces.html",
+      "sha256": "6cea99eaacf48b9ec167ee4274b4bf11f24e70e74694bc41a23eca12592d9c6d"
+    },
+    {
+      "path": "docs/build/start/five-bus-transformer-lowering.html",
+      "sha256": "4d6fec3717fa0374ec0d16d6ba3b3ede28ae83340a2baba587b15ff56ce120f9"
+    },
+    {
+      "path": "docs/build/start/how-to-read-diagrams-and-equations.html",
+      "sha256": "486df2e8a9062a8b7ed6ed5d6a1860b5dec59a564cc34815cc9129763f822b27"
+    },
+    {
+      "path": "docs/build/start/how-to-use-this-book.html",
+      "sha256": "2d95c82ad3f7eeee6df273baca20c063fa279eea4634c27ae28f161bcf6593a1"
+    },
+    {
+      "path": "docs/build/start/one-network-five-languages.html",
+      "sha256": "37adc915ce1ba19b5388d2bf2da096d07b06187b64947905a4ce708de7e28de8"
+    },
+    {
+      "path": "docs/build/start/one-network-many-graphs.html",
+      "sha256": "3f935afdc40b62b03c54ffaab4ebbdc3b06329c0ab11d7c5e0e369515b6220a0"
+    },
+    {
+      "path": "docs/build/start/reading-guide-graph-and-transmission.html",
+      "sha256": "420590e8d621559a699264bc44e09db4dab6937b361c08b3d1b3efdab2bb90cf"
+    },
+    {
+      "path": "docs/build/transformations/certificate-schema-and-composition.html",
+      "sha256": "dafc982615746863bfb493ca9eea4cb4b9d7b4cb2aabe949cb3fe297f0aac3ba"
+    },
+    {
+      "path": "docs/build/transformations/circuit-coordinate-transformations.html",
+      "sha256": "b6737673a8c41662be83bea96282beef659d9d84e3cc1bc85f195f62afcfc92b"
+    },
+    {
+      "path": "docs/build/transformations/conductor-coordinate-normalization.html",
+      "sha256": "c8e86d4183d240891897b8310815592822b34a48af75583f0fabf5fb8c5c5af6"
+    },
+    {
+      "path": "docs/build/transformations/degree-two-series-elimination.html",
+      "sha256": "b731e1319af7c39dd0332d714aeec758774b403f938dbdcff29f3f0e68012458"
+    },
+    {
+      "path": "docs/build/transformations/fixed-linear-transformer-factor-completion.html",
+      "sha256": "d20492281de9d16761646fa15100852e606c6690dbecb61bfe5089884aa3f5f3"
+    },
+    {
+      "path": "docs/build/transformations/guarded-normalization.html",
+      "sha256": "5de4f2ed702269c6968d2fb0d69e538a400a7897a88dcf01f95d4482897c6af3"
+    },
+    {
+      "path": "docs/build/transformations/kron-ward-opti-kron.html",
+      "sha256": "71445e5dfcb82c2c59ee742aea148e6beb11d4db41fdca803db98d6ee2c88a01"
+    },
+    {
+      "path": "docs/build/transformations/multiwinding-leakage-reference-compilation.html",
+      "sha256": "49284baba3116779c58b24b7cdb1ee971d37ef6dfc069278458dd9b165438a7c"
+    },
+    {
+      "path": "docs/build/transformations/multiwinding-terminal-leakage-assembly.html",
+      "sha256": "cdf8a62ea196949e7a5d619cfdb5176c4ed62375a62489aaa9ad044dac6470f9"
+    },
+    {
+      "path": "docs/build/transformations/parameterized-transformer-tap-decisions.html",
+      "sha256": "1941d263c2f787177cbea340d92f010996e4e687954bede94352e2a4b19f153a"
+    },
+    {
+      "path": "docs/build/transformations/projection-compilation-reduction.html",
+      "sha256": "a8007a38edca50d52b72ff80bd2ff42320e2fd8c03272c13ef06e26b878dbd6b"
+    },
+    {
+      "path": "docs/build/transformations/transformer-winding-coordinate-normalization.html",
+      "sha256": "2f563d7510359b73a9e688e3040c62c01057a2b58e1069a808faa3ee0e8ee5c4"
+    },
+    {
+      "path": "docs/latex_build/GraphModelsForPowerSystems.pdf",
+      "sha256": "dfa375904d855ccd79f78e2504156f56c5b6385098ee857ff61bc289b767f035"
+    },
+    {
+      "path": "docs/latex_build/WhatPower-NetworkModelsPreserve.pdf",
+      "sha256": "dfa375904d855ccd79f78e2504156f56c5b6385098ee857ff61bc289b767f035"
+    },
+    {
+      "path": "docs/make.jl",
+      "sha256": "08da645a03b89db1ff9f603b9cbd2c73d5222f70abf7fac90c97bb9a8101258c"
+    },
+    {
+      "path": "docs/src/.DS_Store",
+      "sha256": "ee8c77ae7f3d8d8faaacdf7b7fb0ce5f849c0607bf93fbcf1b15afa2d103d16e"
+    },
+    {
+      "path": "docs/src/GraphModelsForPowerSystems.pdf",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/src/assets/active-radiality.png",
+      "sha256": "e34968bd40ab7678c9e52d6f6e1fee8475ff5c79fb159588f3835e4560f640f4"
+    },
+    {
+      "path": "docs/src/assets/active-radiality.svg",
+      "sha256": "50d2268c918200900f267d9d468ab0ecc6e08148570d36e14cbe21b7d589e844"
+    },
+    {
+      "path": "docs/src/assets/argument-spine.png",
+      "sha256": "2cab7d5538b9baf3f8b5fffff238c2ad66f2aea746d365656c52b1ec072913bd"
+    },
+    {
+      "path": "docs/src/assets/argument-spine.svg",
+      "sha256": "0713fbb3da4fcd7c05c2f0a17fd7aa9c8bb3a410411845cebd9f1f7d0c02adf0"
+    },
+    {
+      "path": "docs/src/assets/audience-routes.png",
+      "sha256": "9f84f83e8bfb45a13c5f3745734356d2553531fc09d9a78355b5a335da86892b"
+    },
+    {
+      "path": "docs/src/assets/audience-routes.svg",
+      "sha256": "5d5504dd7a5a0f551c0bdc254561cf1f6cd68d5c1baa143eee63215412ba6d59"
+    },
+    {
+      "path": "docs/src/assets/australian-carson-reconciliation.png",
+      "sha256": "d47041b9a29b1fee1117cdb61af9fc2d91dbf4780490231600b50120bcd5de59"
+    },
+    {
+      "path": "docs/src/assets/australian-carson-reconciliation.svg",
+      "sha256": "cc6585903f133d34c1da58b80304d3f7a531026ca12916b21674be177d265094"
+    },
+    {
+      "path": "docs/src/assets/australian-cs1035-gap.png",
+      "sha256": "ecea3da51aa7e4e7f5eccf8f5c6df18ed1189972194a62275e86f1b0be5156ab"
+    },
+    {
+      "path": "docs/src/assets/australian-cs1035-gap.svg",
+      "sha256": "05e90d8dacc20d65b80f2a214199827611d1a81475b17e480e72e6348a912c34"
+    },
+    {
+      "path": "docs/src/assets/bim-bfm-signature-capability.png",
+      "sha256": "ec9baf5a25a65a7e40c7627b980bfcb1bffb010711ca842d524a8662641a67f6"
+    },
+    {
+      "path": "docs/src/assets/bim-bfm-signature-capability.svg",
+      "sha256": "12c436d3111336dd419a28bd63c8a9054b51c3f80064ad59b9c8f3e4d7d31584"
+    },
+    {
+      "path": "docs/src/assets/block-structure-bridge.png",
+      "sha256": "7e958a6477524e95c549951ec7d208ab285e1d3b46f815a83400bf2078d330a7"
+    },
+    {
+      "path": "docs/src/assets/block-structure-bridge.svg",
+      "sha256": "075ab1fc9a2121e6c4f961aa6cc81d4065a7ceee58b0660c2d7371579963ff87"
+    },
+    {
+      "path": "docs/src/assets/bus-meaning-overlays.png",
+      "sha256": "b33d9a47b56e8d475460fd97f0773986ec64fb8886447dbd8b50ce3c967cf757"
+    },
+    {
+      "path": "docs/src/assets/bus-meaning-overlays.svg",
+      "sha256": "2425b742ef3b073b5ac775c40a7d9493dfcf1b8148dead0614701f7602409feb"
+    },
+    {
+      "path": "docs/src/assets/canonical-port-factor-model.png",
+      "sha256": "96e9a20a8ca888094c992f435429c23250a231f701f1b110cf8e3a89e9a103e7"
+    },
+    {
+      "path": "docs/src/assets/canonical-port-factor-model.svg",
+      "sha256": "eafd320475394e08f4d14af63eac441fe655070f7bee99d1a99f5a190c42e4e7"
+    },
+    {
+      "path": "docs/src/assets/case-escalation-grid.png",
+      "sha256": "abaea33a1b816f4a87a603ff366fd1a2c6bdfe6e4ee09cbfbe8dd2915655ce61"
+    },
+    {
+      "path": "docs/src/assets/case-escalation-grid.svg",
+      "sha256": "ba2a3b9d0924c763a9543e58b55633379c956012d456b52a7d9b51de1970125c"
+    },
+    {
+      "path": "docs/src/assets/certificate-composition.png",
+      "sha256": "7876838557626e3710e5997c8f11748ac7365fcf8e6727d97d2a108a9d1d95b1"
+    },
+    {
+      "path": "docs/src/assets/certificate-composition.svg",
+      "sha256": "638f26917839b025df70900f10f425a2e1309c0fc743768cfcf0656091beacd2"
+    },
+    {
+      "path": "docs/src/assets/coordinate-three-by-three-plate.png",
+      "sha256": "e828bf0389a89292f493de968775182973e2f46d4a611630c258fb138f9b5a17"
+    },
+    {
+      "path": "docs/src/assets/coordinate-three-by-three-plate.svg",
+      "sha256": "8b9fd1d2f73fafc63d199233e4ab40ecbf3f6a74809b2dd14bdbc7682fadb438"
+    },
+    {
+      "path": "docs/src/assets/custom.sty",
+      "sha256": "15c4dcc4c2c11457816bdb20cc359c895aa9aad754f8c19f32290d054c41d0d0"
+    },
+    {
+      "path": "docs/src/assets/cycles-parallelism-radial-tail.png",
+      "sha256": "b5ee2c339c33b1156d6b403c8a9cf1248e35f5398819f15ea5ae0809ef46d4be"
+    },
+    {
+      "path": "docs/src/assets/cycles-parallelism-radial-tail.svg",
+      "sha256": "4690065aef84e14874ff0c15abde8d4ce0f98ea274acf2baffed2524120c21c7"
+    },
+    {
+      "path": "docs/src/assets/earth-return-ladder.png",
+      "sha256": "151afb9ae8e5865975adbf5bbc1bba03c7b8100b329be1f78189d7266cfe993c"
+    },
+    {
+      "path": "docs/src/assets/earth-return-ladder.svg",
+      "sha256": "f03b25d57fd71875deacb1dcec4763165a5e4d3ceeecf95e823c108837fb7375"
+    },
+    {
+      "path": "docs/src/assets/exactness-classes.png",
+      "sha256": "b461d768c751c76be1e540173f193d72bbfd664994e20405b864d2716e2edc96"
+    },
+    {
+      "path": "docs/src/assets/exactness-classes.svg",
+      "sha256": "0c5a8ccc7120dba00dd5c8052ab3bb71f954d8d6327f1ec475c2e41965e050b1"
+    },
+    {
+      "path": "docs/src/assets/figure-audit.json",
+      "sha256": "c2e178018dcdf32793a79e3a8e5a6b671a2976b77938a940b367c754314a3387"
+    },
+    {
+      "path": "docs/src/assets/five-bus-cycle-basis.png",
+      "sha256": "9281635f037970f495ebc652869d5f3941f92901297c6608b667e1fd08e23dfc"
+    },
+    {
+      "path": "docs/src/assets/five-bus-feasible-sets.png",
+      "sha256": "275e45ec8d1c4dcff47179aa546e73631882a82aaa6c1d672d91267807de40dc"
+    },
+    {
+      "path": "docs/src/assets/five-bus-transformation-map.png",
+      "sha256": "5331ff21e17ebedb420f692f5fa6418dc26507571427d776a5af1b9316933ad4"
+    },
+    {
+      "path": "docs/src/assets/five-bus-transformer-lowering.png",
+      "sha256": "c7848471a0503422bb5817fccdf3baaed8e6649222b2217f4484677e57c227bb"
+    },
+    {
+      "path": "docs/src/assets/five-bus-transformer-lowering.svg",
+      "sha256": "7521a499fa29b497c84673a928b00cad85a91d71280e823418f67f9aec4efce2"
+    },
+    {
+      "path": "docs/src/assets/formulation-lowering-lattice.png",
+      "sha256": "d450934cb738ac8e807cd5baa7c5952a1bd692f48fbb77eae7bde5c67be333d9"
+    },
+    {
+      "path": "docs/src/assets/formulation-lowering-lattice.svg",
+      "sha256": "b27c1fe189a90ceebc5a67fe444dc3bff9867e1e9f3b11c7820b396b5a8e54dd"
+    },
+    {
+      "path": "docs/src/assets/four-wire-impedance-ladder.png",
+      "sha256": "005a2c0b17d63d947cf4be504ad2365b68641200d97057d216d4825ab8efd3ec"
+    },
+    {
+      "path": "docs/src/assets/four-wire-impedance-ladder.svg",
+      "sha256": "7c38ffcd25e85071d1902ed272d3e3e54ef0e39f4a71bdf3e8d803538ecaebd8"
+    },
+    {
+      "path": "docs/src/assets/guarded-result-plate.png",
+      "sha256": "932e42bffd88d25d15f1dae5a9bc9c006ff518fb7c6f0787e7506557deff38ef"
+    },
+    {
+      "path": "docs/src/assets/guarded-result-plate.svg",
+      "sha256": "716630f3f109efdd5a8e9fd959d87021850f8a103c5d1ea5e4c1b54783765a16"
+    },
+    {
+      "path": "docs/src/assets/guarded-rule-gate.png",
+      "sha256": "fcf253a3b758dcdedde4606caeeeee1c08ae449070d8e131d8cb3611c3e60ee3"
+    },
+    {
+      "path": "docs/src/assets/guarded-rule-gate.svg",
+      "sha256": "8cc369392dc38a4b497eae24be9114f3cd55952a66ac5f34376cbd5af12505bc"
+    },
+    {
+      "path": "docs/src/assets/impedance-fidelity-ladder.png",
+      "sha256": "28c47c459602262261a22ecbeab234d2d00e5a4ae40a7fca84a15c15483544bb"
+    },
+    {
+      "path": "docs/src/assets/impedance-fidelity-ladder.svg",
+      "sha256": "386e24bee021a99fdd96faa30b014e0f2242036f48dad4c07c6b1b2c932fd5cd"
+    },
+    {
+      "path": "docs/src/assets/kron-fill-in.png",
+      "sha256": "9903fd31dab8d78aa45685802de4eb97345753dfbb0b24901cbedccd35de0bb2"
+    },
+    {
+      "path": "docs/src/assets/kron-fill-in.svg",
+      "sha256": "4c86ec931e3f1dce261a4137a7886587d52203904055a8eb8fe1ecabd8eb2e9f"
+    },
+    {
+      "path": "docs/src/assets/label-coordinate-bridge.png",
+      "sha256": "3553dd03f75a7f09d7884693e9a0263e1eca3a23e28ced9d1b62e4e96bc345dd"
+    },
+    {
+      "path": "docs/src/assets/label-coordinate-bridge.svg",
+      "sha256": "21fabb98b0f4e201408e8704445aeddb20c8031259af27b781354b3c906c81fb"
+    },
+    {
+      "path": "docs/src/assets/layer-lens-matrix.png",
+      "sha256": "03d77277841131e83b1f5173ca319840f34d3ab08801d2bf53c6bd40f4b65929"
+    },
+    {
+      "path": "docs/src/assets/layer-lens-matrix.svg",
+      "sha256": "ea4fbb2f23d826509729132e383b8bf7738ece067fdd4797651e871d6eb95bb1"
+    },
+    {
+      "path": "docs/src/assets/literature-gap-map.png",
+      "sha256": "5b12d2d2d658017657898c8f2697766977e655f75b08735534441fb159d2297d"
+    },
+    {
+      "path": "docs/src/assets/literature-gap-map.svg",
+      "sha256": "d4975f23fa4dc2b9210e1f451c5fd191305f594fa8e10ddbb287dcf4398c1446"
+    },
+    {
+      "path": "docs/src/assets/load-model-divergence.png",
+      "sha256": "3c1ef1421032e7ea7a1aa187e2097341d8b759eaa2d698253e50772dfd096b8a"
+    },
+    {
+      "path": "docs/src/assets/load-model-divergence.svg",
+      "sha256": "0145ec28e4718f3a02cd09b6b81cdd266a452ca43c7f9e4a53a0d9b2b2eeff2c"
+    },
+    {
+      "path": "docs/src/assets/map-of-maps.png",
+      "sha256": "f942d62d9978f8eeee24ac7d7557ccee8dcb1c5336250a60e06e6d92d3162b1c"
+    },
+    {
+      "path": "docs/src/assets/map-of-maps.svg",
+      "sha256": "cc659d65a34ab88c94d75d401ad84474cef751b58fcaa1bdfa8d2af9722f7eb2"
+    },
+    {
+      "path": "docs/src/assets/nonlinear-kkt-witness.png",
+      "sha256": "677bf136a5ed836edd8c1fce1c50c9e9f63bda2ed71afccfa6cd3138b8d72eeb"
+    },
+    {
+      "path": "docs/src/assets/nonlinear-kkt-witness.svg",
+      "sha256": "54c1160b4d369d7090b2ac589d57adb48050cefe2d43b7e85f187560484a2b8e"
+    },
+    {
+      "path": "docs/src/assets/numerical-fill-in.png",
+      "sha256": "167b3287aa66531c282b4b8060190bfc9deaa62b5b35ae46e7bd13f14002dd1c"
+    },
+    {
+      "path": "docs/src/assets/numerical-fill-in.svg",
+      "sha256": "9cacdd52eee75d6a0c968049170312ee4c7301ab09ab4f4da3d11c69a6a48b89"
+    },
+    {
+      "path": "docs/src/assets/numerical-jacobian-dependency.png",
+      "sha256": "5fe465e69cfb337944703d4b08f63bf4e28d0dac2cf6a12ccfde6f873d0b3915"
+    },
+    {
+      "path": "docs/src/assets/numerical-jacobian-dependency.svg",
+      "sha256": "9a2b64ef9211b7735f4cd732d075b41e56ff2fe14673dddd5cbdae737ead1ab3"
+    },
+    {
+      "path": "docs/src/assets/numerical-structure-witness.png",
+      "sha256": "b1b6d6d7f344fe55877cf8144c36a59e733ae8ee1c6e6285678b9e72e90031d1"
+    },
+    {
+      "path": "docs/src/assets/orientation-power-transfer.png",
+      "sha256": "c68836345203dc821d8ef6b0d0fc15fa2cbf2fd8b3bd6416a0de8df1f416569d"
+    },
+    {
+      "path": "docs/src/assets/orientation-power-transfer.svg",
+      "sha256": "1360b494067c5f7446f7bd1cdb7ac1c495029066f053ca65afe3e2d241df1470"
+    },
+    {
+      "path": "docs/src/assets/parallel-feasible-set-card.png",
+      "sha256": "44730221a7438572980f099e67b7686e9af30cbf266ead23451a29f429afceff"
+    },
+    {
+      "path": "docs/src/assets/parallel-feasible-set-card.svg",
+      "sha256": "c87594f2765a7050bb2e6c8f5d8e9f34fde6cbe8f40fac8f97ebd5bc08cd7251"
+    },
+    {
+      "path": "docs/src/assets/parallel-member-decision-plate.png",
+      "sha256": "a25f78f8eefd0c9a5efcac52684474bca5e6c2592851b3799c4023fe32cf398e"
+    },
+    {
+      "path": "docs/src/assets/parallel-member-decision-plate.svg",
+      "sha256": "8351e66462730d7d675d1f8d3435b0226ab6ea4aa2408c18ee033d0b4fafe632"
+    },
+    {
+      "path": "docs/src/assets/parallel-redundancy-certificate.png",
+      "sha256": "2337f17a9de2129d6204acbf0f2fcfb877d0c95d210d002752f8d4c9cac20a86"
+    },
+    {
+      "path": "docs/src/assets/parallel-redundancy-certificate.svg",
+      "sha256": "667e1b420473e04233154901647e37aa81389951339617221b4b1bec9d6e46c5"
+    },
+    {
+      "path": "docs/src/assets/preamble.tex",
+      "sha256": "a1e4c9d26c69f5579d63e6be7f34cbb129157f15fcc3a245e30c77622048a653"
+    },
+    {
+      "path": "docs/src/assets/preservation-contract-card.png",
+      "sha256": "a6e015aae1464016d4aa758eb94ca2e6b4ccb3bfd0c1f51bfda4960f3b32a356"
+    },
+    {
+      "path": "docs/src/assets/preservation-contract-card.svg",
+      "sha256": "92fd129900611ec7bd98f5e61053ab007aa204f8ab40be8b6b3845a65db4f9e4"
+    },
+    {
+      "path": "docs/src/assets/provenance-lineage.png",
+      "sha256": "4f8618b11a0dd4a7e5d354bd8bc9c3ce01f40adfbb47aa042e392f1cc66df74f"
+    },
+    {
+      "path": "docs/src/assets/provenance-lineage.svg",
+      "sha256": "c2f674faa04075b751e93336a1dcf961e3888f9546111c5cbe7c0614a9589367"
+    },
+    {
+      "path": "docs/src/assets/query-partial-orders.png",
+      "sha256": "ff81ad826be85378ccb3cf60c042ae7865c20cb269b88e0fafc2c8fae61c3997"
+    },
+    {
+      "path": "docs/src/assets/query-partial-orders.svg",
+      "sha256": "4765fbfd4585bf964f8f7c2bdd559e4951b45bea7422227ea713a1ab81483ed8"
+    },
+    {
+      "path": "docs/src/assets/radial-clique-projection.png",
+      "sha256": "9d4dfb7ed1935217d36c8da4f3ffee8cde813704186886cc78adeaa6ced0be13"
+    },
+    {
+      "path": "docs/src/assets/radial-clique-projection.svg",
+      "sha256": "d38f231a3fbe88858a065f0820b504992dab7e56894d35e9a642bac0244f0a0d"
+    },
+    {
+      "path": "docs/src/assets/reading-routes-graph-transmission.png",
+      "sha256": "43586fc69939846691a4f1fa7d4f20b763f41234aa34c5afb14840a6972fef6b"
+    },
+    {
+      "path": "docs/src/assets/reading-routes-graph-transmission.svg",
+      "sha256": "aed6904c6923e1f033a56adcf62f16b674d20606efd3c2732eb776a476048652"
+    },
+    {
+      "path": "docs/src/assets/recovery-map-loop.png",
+      "sha256": "7f1d2fee656b1293476beba6918d0843e8c4760583dfb99deff0b68186e7d5c5"
+    },
+    {
+      "path": "docs/src/assets/recovery-map-loop.svg",
+      "sha256": "ad029e4d6206add2ad95226998a5a6e03bc65e61cdf643c2d52755a49e334720"
+    },
+    {
+      "path": "docs/src/assets/reference-distinction-map.png",
+      "sha256": "2fe5136f48e2c38c5693b78b98805c89c9d07d23f56dac60e27789ba15fa2aa4"
+    },
+    {
+      "path": "docs/src/assets/reference-distinction-map.svg",
+      "sha256": "08193bbac4a208454997f259ae52b968c4e25f6d9f88dcc7b1fc8ccbfefa9fb7"
+    },
+    {
+      "path": "docs/src/assets/reference-evidence-map.png",
+      "sha256": "3f9509c9b073a09d07d1d0b866569daee59c668e8b0f3b2ed90f2a7b9cf38f1a"
+    },
+    {
+      "path": "docs/src/assets/reference-evidence-map.svg",
+      "sha256": "8607ebf90beef7a4a979f0f0bb411a1a72ed6e917d8546a839716bd05613b6da"
+    },
+    {
+      "path": "docs/src/assets/reference-symbol-anatomy.png",
+      "sha256": "606ebaba33657017ed4e65bc02aaa45df367a5ef3ca2c3d9b98a42ef5564a92e"
+    },
+    {
+      "path": "docs/src/assets/reference-symbol-anatomy.svg",
+      "sha256": "e12077e91dbc6e595d9d1098c33b334574ed53dbbc63a81da5a993c85578edf5"
+    },
+    {
+      "path": "docs/src/assets/reference-verification-summary.png",
+      "sha256": "4857ffb4953a73efd297238459578eae4c1ff37472c3e6f18f98a03dc2379d78"
+    },
+    {
+      "path": "docs/src/assets/reference-verification-summary.svg",
+      "sha256": "3999b508274efac7b277a4b9eaa6ab4d8513d53576a4f5df01109f6dedc77eba"
+    },
+    {
+      "path": "docs/src/assets/representation-principal-levels.png",
+      "sha256": "f4ae9df2ceaecc8b2149f6a19ea8f6136687625e567dfd76350892e559802325"
+    },
+    {
+      "path": "docs/src/assets/representation-principal-levels.svg",
+      "sha256": "c4824c4cae673334c9cef3a1c621e029d27e9935cdd283a62b3e4dbd295d9fbb"
+    },
+    {
+      "path": "docs/src/assets/running-network-views.png",
+      "sha256": "044ac1c4a5948341378046e5aeed6134dbfb9e2d5a18e22d4419a401f333d8e3"
+    },
+    {
+      "path": "docs/src/assets/sequence-subspace.png",
+      "sha256": "b6bd05a8cc2c3269c943bc41dd65519d2ce5a82c417894fa0ea0ca8bbc754c15"
+    },
+    {
+      "path": "docs/src/assets/sequence-subspace.svg",
+      "sha256": "bc5d870b1cd62af03a0838290079b5a7705fb3d05329ac7052bb99d229ba7056"
+    },
+    {
+      "path": "docs/src/assets/source-canonical-pipeline.png",
+      "sha256": "bc412ba8e30bff506c1417eee835b74cc35c9b4c3921ca308e1ac6abcd7c4ce5"
+    },
+    {
+      "path": "docs/src/assets/source-canonical-pipeline.svg",
+      "sha256": "2a0e743a40b68979c7735718d644f497c8b2eddf4a32934d6e2a63876bbf2f0c"
+    },
+    {
+      "path": "docs/src/assets/source-views-surgery.png",
+      "sha256": "cc09be57ce98724c9f0aa3f979645a6d80d55e26209b2ac6a1e95414894f38b4"
+    },
+    {
+      "path": "docs/src/assets/source-views-surgery.svg",
+      "sha256": "0bcfa03fda5bdf75b609512155f32dc5b0d782279e72096adbf9b7327730acdb"
+    },
+    {
+      "path": "docs/src/assets/spine-band.png",
+      "sha256": "5bbf908f28585cdfc58e9373c6b343ca560008f4936356b085c786901d962f08"
+    },
+    {
+      "path": "docs/src/assets/spine-band.svg",
+      "sha256": "bb20c89437e1a002ece1b90e5510d6f6a33f13911ef52fb2967b359bc586d039"
+    },
+    {
+      "path": "docs/src/assets/start-here-negative-star-arm.png",
+      "sha256": "1f66e184caada567b270c33b0f23a945df48047b7d3b854a373e4f94b56a2e86"
+    },
+    {
+      "path": "docs/src/assets/start-here-negative-star-arm.svg",
+      "sha256": "e12c314eff52bf3f8a73c6559d7fb9c1a712ff10285046ab901e0261753de2b5"
+    },
+    {
+      "path": "docs/src/assets/start-here-neutral-recovery.png",
+      "sha256": "8c92209c5c8244191a31626bcdef024f8f5626cff7dbd1a0d747d7779db4d5c1"
+    },
+    {
+      "path": "docs/src/assets/start-here-neutral-recovery.svg",
+      "sha256": "2ffcb406971bf2f2bf98c549228b171c5dd459cca3b0feeb6e3bfcfb7a977eef"
+    },
+    {
+      "path": "docs/src/assets/start-here-radial-triangles.png",
+      "sha256": "62501dd30baaab2320b143eb8a2e941e2170eca7bc42d4bd23d7a4e3ceec9478"
+    },
+    {
+      "path": "docs/src/assets/start-here-radial-triangles.svg",
+      "sha256": "0f0555f71fac8b61bef5e26640d2f2297a4c068fb57dd912d4f1d34cefae78c0"
+    },
+    {
+      "path": "docs/src/assets/start-here-running-network.png",
+      "sha256": "c82d5b7c9e0db3d9ddba7d7d28ad5f9cf7d369d0f3a98b2249f1c2e3ad3f4bee"
+    },
+    {
+      "path": "docs/src/assets/start-here-running-network.svg",
+      "sha256": "dc6184d2c2ea6992e3a948ba39670cb39d973a1945881a797dfc7328eb19baf9"
+    },
+    {
+      "path": "docs/src/assets/start-here-same-ybus.png",
+      "sha256": "3e74de795b10e63ec9264d60eab46e052b23d1f01faa46f58cd7d84a7cd0d8e7"
+    },
+    {
+      "path": "docs/src/assets/start-here-same-ybus.svg",
+      "sha256": "32e1e60be5dc26aa5681522582291a73447914b5a32cb956ad94abb20f9b35c0"
+    },
+    {
+      "path": "docs/src/assets/topology-projection-layers.png",
+      "sha256": "53a693f3797b06b049f2883bc4f3aa1d65fda62045489535dafdf7ab0965a95b"
+    },
+    {
+      "path": "docs/src/assets/topology-projection-layers.svg",
+      "sha256": "f9dd8c777ef4ff3997e0084352651af1595ea3f7992a765cdda98da8c31d0040"
+    },
+    {
+      "path": "docs/src/assets/transformation-register-glyphs.png",
+      "sha256": "b3a4948fb1ba012ea6f8af5c0294afd535f0897924450307fdd0ff3063f85ec8"
+    },
+    {
+      "path": "docs/src/assets/transformation-register-glyphs.svg",
+      "sha256": "7bf8d1845cef19702a2052054211529d08e2af6cc259bdbe2d0776b5cf28aff2"
+    },
+    {
+      "path": "docs/src/assets/transformation-size-inversion.png",
+      "sha256": "9e51065b27a2039e9bb39acc4ca91b8f3e7d0e3b973871ea9454f624b372282b"
+    },
+    {
+      "path": "docs/src/assets/transformation-size-inversion.svg",
+      "sha256": "7dcc2628323237a013ba89450bda175c68c75a2864ba070a69fd68d99721c0a4"
+    },
+    {
+      "path": "docs/src/assets/transformer-anatomy.png",
+      "sha256": "3d6be84fc03274fe08c32125223b0484e25442b2b05f13e53905a7db9c05c055"
+    },
+    {
+      "path": "docs/src/assets/transformer-anatomy.svg",
+      "sha256": "7e14ceca3c9a25908c8544a3e64a7ea514ff2df5a984df32d20a32ba1420827b"
+    },
+    {
+      "path": "docs/src/assets/transformer-graph-views.png",
+      "sha256": "815665312f0255b36a6801052463fbbc4f346c336ec833ca205d595bb3f21b1f"
+    },
+    {
+      "path": "docs/src/assets/transformer-graph-views.svg",
+      "sha256": "73dbd5bf35e09a853a6b4b9ccf8a6959e921ca7cef242a664f035b86be582b9c"
+    },
+    {
+      "path": "docs/src/assets/transformer-tap-decision-plate.png",
+      "sha256": "44380aaa168feafd5e626763823a01e4884f071900910848a68b3b36e038963f"
+    },
+    {
+      "path": "docs/src/assets/transformer-tap-decision-plate.svg",
+      "sha256": "d09367b75105e5c4334aa924f8530200769de42e0b8bd323388582f97551b14b"
+    },
+    {
+      "path": "docs/src/assets/translation-trap-card.png",
+      "sha256": "18fcea854a63a79e15a98550ef975395300054bcf94c671e066d5aae9c0f3c9b"
+    },
+    {
+      "path": "docs/src/assets/translation-trap-card.svg",
+      "sha256": "c564ef1b188332aa6fa1e44464a464c75b6050fccd00b18ca22cc1964c17ae03"
+    },
+    {
+      "path": "docs/src/assets/visual-language-equipment-plate.png",
+      "sha256": "5e4de77226fb8c90742d5bc7f30c4ec9c3f338abc69f417f44614c6543c82850"
+    },
+    {
+      "path": "docs/src/assets/visual-language-equipment-plate.svg",
+      "sha256": "5a1e37263329b9c6603f7be6099d4a8a4cfab34fe0911102120fd885bd2412b3"
+    },
+    {
+      "path": "docs/src/assets/visual-language-special-semantics.png",
+      "sha256": "4aba4946c3f798a760c0c6ffcadeb1be7039e512ae21385f64f394b8d474ea66"
+    },
+    {
+      "path": "docs/src/assets/visual-language-special-semantics.svg",
+      "sha256": "67828118755151337acba6da0569ce52a238fe37f44d39aedee11a9489bdda42"
+    },
+    {
+      "path": "docs/src/assets/vocabulary-bridge-five-languages.png",
+      "sha256": "109e260d9babe4dbcec6fb903ab9103239f3f1512f99f08526b8ad3ae488f9c0"
+    },
+    {
+      "path": "docs/src/assets/vocabulary-bridge-five-languages.svg",
+      "sha256": "d0ea233f2410a331ae2052cf2359ebf32f583098f657681d6d32397e8c8e8748"
+    },
+    {
+      "path": "docs/src/assets/winding-coordinate-actions.png",
+      "sha256": "43fbf4e8a1e75ca618b5b2c50fd54ffcb8565d9be7f14e8bc7b877f74dfcc5e7"
+    },
+    {
+      "path": "docs/src/assets/winding-coordinate-actions.svg",
+      "sha256": "c9b60d906ca3ef1254433e7c488862cf85d0fb35fc17f0c74b21297039130cd9"
+    },
+    {
+      "path": "docs/src/assets/ybus-jacobian-witness.png",
+      "sha256": "2b34541e24a2084bce655d153bd3e3b73af6b7183e08359c2912339fc75e588b"
+    },
+    {
+      "path": "docs/src/assets/ybus-jacobian-witness.svg",
+      "sha256": "3bdba1c182cdf590ad9df2b2aac37ecd5bb498a67bf7af8f2983a373d0d37a66"
+    },
+    {
+      "path": "docs/src/cases/australian-carson-reproduction.md",
+      "sha256": "5752d72900ca212ff0691815b084033d0f9d0f3ba68916b2a3c688fc4ad22c61"
+    },
+    {
+      "path": "docs/src/cases/bim-bfm-parallel-lines.md",
+      "sha256": "e89a0e9331a491c2f943f8bd5857186ec0a7ec560b331033295e4a11c8192d7c"
+    },
+    {
+      "path": "docs/src/cases/executable-running-network.md",
+      "sha256": "cd072d27d90913ccaae157ff9f1ec40100e8eefecfe8c4405a21c0ace5ffab75"
+    },
+    {
+      "path": "docs/src/cases/four-wire-impedance-model-ladder.md",
+      "sha256": "c38ee50b8bebe2f32da828b6108434fecc2b6540c19e5e3537c38594c0ac2ecb"
+    },
+    {
+      "path": "docs/src/cases/four-wire-parallel-ac-decision.md",
+      "sha256": "2f436dd0ef8e74fee06e1576c809170f6204f8535700fdd7114cfd074200838d"
+    },
+    {
+      "path": "docs/src/cases/multiconductor-parallel-ac-decision.md",
+      "sha256": "4f09e8535f237e5c140662a5558ac13bc281c8d868b7e8763fe51f1dffc9a421"
+    },
+    {
+      "path": "docs/src/cases/pi-four-wire-parallel-ac-decision.md",
+      "sha256": "586c2038571adb5bbdecb94fab7d75d4fa5c80c8484ebb13b8b80b3bc2e90aae"
+    },
+    {
+      "path": "docs/src/cases/running-network.md",
+      "sha256": "eb2b65edec6f02397628e5d758fa324057ec6dbeb82b2bd03d697485b2cde9ef"
+    },
+    {
+      "path": "docs/src/cases/transformer-tap-ac-decision.md",
+      "sha256": "8993431d2ed95645efaab622b7caba9833900fb891445b0116379b1927b15448"
+    },
+    {
+      "path": "docs/src/foundations/circuit-formulations-and-lowering.md",
+      "sha256": "fa9dd2b1788f726968774401c9c106b555c4650f8f16d52d5fc2e61e94eb5cfc"
+    },
+    {
+      "path": "docs/src/foundations/compiled-views-and-graph-surgery.md",
+      "sha256": "5cd85e6eba1cbdb73f4af57570d3c1eaec1b74431296fa8f8ebb13c0df38e802"
+    },
+    {
+      "path": "docs/src/foundations/cycles-parallelism-radiality.md",
+      "sha256": "baf9ee10b17af6f6de4659edfdce9bb0a9bf1f83859017883ddc2ad8829d8ad9"
+    },
+    {
+      "path": "docs/src/foundations/data-model-crosswalk.md",
+      "sha256": "fd101133bcc2c939ef8d67534576f934e5ffc5807f86107ecd45d9e715108511"
+    },
+    {
+      "path": "docs/src/foundations/earth-ground-models.md",
+      "sha256": "64f86cb284b55a08ffe03ad4ab6e6617f74838a3be283a61671da39294cffae4"
+    },
+    {
+      "path": "docs/src/foundations/formal-representation-frameworks.md",
+      "sha256": "53048a3b53634b828323b1dd76945b737655e176513105a063d32640f8e6a838"
+    },
+    {
+      "path": "docs/src/foundations/impedance-fidelity-ladder.md",
+      "sha256": "1463d3a17d38f00a86cbaa5ab28ad137bb7f14e27ae3a1297e3f1d085572b191"
+    },
+    {
+      "path": "docs/src/foundations/load-models-and-decision-dependence.md",
+      "sha256": "5232a6a18dfb64b546ccde67987dfb5026bfaf144a71ee7c54c0028ba91c8828"
+    },
+    {
+      "path": "docs/src/foundations/node-breaker-topology-processing.md",
+      "sha256": "9c51b6d6f10101a4e28717d2f64daba9c66d8198ecd74ae2b0cce664e7f64400"
+    },
+    {
+      "path": "docs/src/foundations/notation-and-conventions.md",
+      "sha256": "65260912bb69a59c925d084d1d0c038c1eac314aa62517b3c09d1467e3755073"
+    },
+    {
+      "path": "docs/src/foundations/numerical-consequences.md",
+      "sha256": "a1529183f314f91172abe3caa1c3f231000acab01d978014b747b9474afa2ab9"
+    },
+    {
+      "path": "docs/src/foundations/orientation-terminal-power.md",
+      "sha256": "1f0851b76b2bcf7d45b8debe6e5867708492d64a52c010e8a26fa7ab5ada13fc"
+    },
+    {
+      "path": "docs/src/foundations/preservation-contracts.md",
+      "sha256": "8c2cdf0fac18fc8c5457964d175abe730101cf2d7f5c6728ef2c32759ce95696"
+    },
+    {
+      "path": "docs/src/foundations/rating-semantics.md",
+      "sha256": "e0da387fa7cb9aa6270bf95916ad211884a85543fdd3cda54e9cb2348a464090"
+    },
+    {
+      "path": "docs/src/foundations/representation-maps.md",
+      "sha256": "aacf09172b668efef2869e3bedc005ce8447f7ff63c4917942f590572eb9b7f7"
+    },
+    {
+      "path": "docs/src/foundations/representation-taxonomy.md",
+      "sha256": "783a37c286f430482935075830d8d8f9a62251fc33c0cecda90a3506434e79cc"
+    },
+    {
+      "path": "docs/src/foundations/scope-and-thesis.md",
+      "sha256": "df8aa18e3bb35a6b29ccd8954baf4cba1c7e47d8ffeb63bce76d89e18ca8be9b"
+    },
+    {
+      "path": "docs/src/foundations/source-to-canonical-model.md",
+      "sha256": "eeb8adaa694239d56897a7340b740201ee413b8077b68ce2f88aa9032e0ee152"
+    },
+    {
+      "path": "docs/src/foundations/transformation-semantics-register.md",
+      "sha256": "ae67bc055b34555c6edfacf8248f5a81dd975b596e0f67241b05d8c232bef190"
+    },
+    {
+      "path": "docs/src/foundations/translation-traps.md",
+      "sha256": "7e3641c38b44668f49b54a9a498aae293cd66e7fb7290508e8c0a822dd37a255"
+    },
+    {
+      "path": "docs/src/foundations/two-level-topology-and-nodal-projection.md",
+      "sha256": "32e16e98d3338402a35da97215a18053e3acb0aff293ee3e2408fccc25354c1e"
+    },
+    {
+      "path": "docs/src/foundations/when-general-model-collapses.md",
+      "sha256": "61920e2755223a7b16c2a43b9604e494ad72dd3eed1d274a3178dc568a4b2d5b"
+    },
+    {
+      "path": "docs/src/index.md",
+      "sha256": "9ddafbbd4c298532543658657582db97996546f2d9a9f46deaf03fa0352fc786"
+    },
+    {
+      "path": "docs/src/literature/literature-map.md",
+      "sha256": "1d4f2b0353440b68947e53a039cc389d21e9cdcb26b80b7ba64c15b2f05af69f"
+    },
+    {
+      "path": "docs/src/literature/representation-implementation-record.md",
+      "sha256": "b65fc3d9593fc632364ee6f015c03a436a3fffa9c9da9cc5838e710faba0b396"
+    },
+    {
+      "path": "docs/src/literature/research-agenda.md",
+      "sha256": "fdc9db209812663dc530fd9c42b9e087bf19449302f0fbcf2448be6762fdfe58"
+    },
+    {
+      "path": "docs/src/literature/review-protocol-and-evidence-status.md",
+      "sha256": "f85a939c6526a5ba24a4bfbe2d67e0b308c9e2db864f987535c78b3b7fd8a408"
+    },
+    {
+      "path": "docs/src/literature/search-runs/2026-08-14-seed-batch.md",
+      "sha256": "e24c2acec9e84c7cda73ab353ad44411f4564c599c4f529d6121c2ee964c668f"
+    },
+    {
+      "path": "docs/src/literature/search-runs/2026-08-15-formulation-landscape.md",
+      "sha256": "2f89f443ec3d26981f76b9b69fe5df6fdf1054e54c8413b8fa9d8026031b4a8e"
+    },
+    {
+      "path": "docs/src/literature/search-runs/2026-08-15-information-model-citation-chase.md",
+      "sha256": "abb1b6ae17f2a5c73b5b456d07e4d54e46d78d3aba92bfc3e3549bf0155284e3"
+    },
+    {
+      "path": "docs/src/literature/search-runs/2026-08-16-multiphase-and-practical-reductions.md",
+      "sha256": "3e21db53c37b214f82a81feae7b3be84a13ddec4d35219afd8e9e2baea92533d"
+    },
+    {
+      "path": "docs/src/reference/chapter-status.md",
+      "sha256": "ea82ede8f8a7bdb3b65b74a5b142bfae14b58f72e3f49c039f5d64694aa85fea"
+    },
+    {
+      "path": "docs/src/reference/evidence-map.md",
+      "sha256": "c9aa9770f33fe23ddd36fc0ba1b8a067f3ff529263d0239dc467ad05cc636638"
+    },
+    {
+      "path": "docs/src/reference/knowledge-base-index.md",
+      "sha256": "10e00c77348ed8636c70d472c761766a827458268d2659e1399e9ff0103ecdec"
+    },
+    {
+      "path": "docs/src/reference/references.md",
+      "sha256": "7b1bfef4d0cc0f2250e026fd87e61bada6e07fe9c83cc8f65e4c8966e3ee15b9"
+    },
+    {
+      "path": "docs/src/reference/terminology.md",
+      "sha256": "d00e5b1215106f44c0152adf5cd2944a13f58ba3aa6263937eed4e3403ae8e10"
+    },
+    {
+      "path": "docs/src/reference/vocabulary-indexes.md",
+      "sha256": "df4c63d3c245297a53e4bc4885122971c9e9640c327c6dbee349bc0a45026722"
+    },
+    {
+      "path": "docs/src/references.bib",
+      "sha256": "5a076daae2f6547f10461f91f05fca15397e1bb4b57418747f0f188af5a03696"
+    },
+    {
+      "path": "docs/src/start/first-failure-parallel-branches.md",
+      "sha256": "7f5e4204c13a3113a44c599dce3161dbda3067a5b70867ade46f433903eee72e"
+    },
+    {
+      "path": "docs/src/start/five-bus-cycle-spaces.md",
+      "sha256": "0dbaece215c9c9fc73a14e765281469cbd7322a29ca9ea7ee83dbcd8263d601a"
+    },
+    {
+      "path": "docs/src/start/five-bus-transformer-lowering.md",
+      "sha256": "b53e0b3f8f2df76c4e85a27b8855925886c927b2cb3e1d7f21cad63e49c36668"
+    },
+    {
+      "path": "docs/src/start/how-to-read-diagrams-and-equations.md",
+      "sha256": "6665dafa7763037f48d37235d1b46e9d806ab8df85c6412be943f415cf909f9a"
+    },
+    {
+      "path": "docs/src/start/how-to-use-this-book.md",
+      "sha256": "37ba1fe80cd3de4290a0bc6a295b30527e2b56a3c4bbc516436481e73cc1e813"
+    },
+    {
+      "path": "docs/src/start/one-network-five-languages.md",
+      "sha256": "099a81f7487d26394a4d89b8ee7b0b9b99977f143532927fc536eb810993fce6"
+    },
+    {
+      "path": "docs/src/start/one-network-many-graphs.md",
+      "sha256": "3abfe8a4d467b53418623f8d961b5552476ade7d57912da400477822730e66bc"
+    },
+    {
+      "path": "docs/src/start/reading-guide-graph-and-transmission.md",
+      "sha256": "c27f7d1d70be8dbd22570cdba95906920d2c9aefa875ab829a8d390032f2fd79"
+    },
+    {
+      "path": "docs/src/transformations/certificate-schema-and-composition.md",
+      "sha256": "ceb8e96459bf9d831aed9a13702e1a7c912dd1e548ba4aa3fa922c5636ad7932"
+    },
+    {
+      "path": "docs/src/transformations/circuit-coordinate-transformations.md",
+      "sha256": "0cf35ecf2e215c26a93bc17d4cac32f54dc3dde2ec156134c3657f7954d08da9"
+    },
+    {
+      "path": "docs/src/transformations/conductor-coordinate-normalization.md",
+      "sha256": "19e1b05e8b412aeb1ac289fb946129fa769172e341806017d03b79200eb247e9"
+    },
+    {
+      "path": "docs/src/transformations/degree-two-series-elimination.md",
+      "sha256": "987daac57b095e1a343d19ecb5d6648fd0e65cc60f34ac8be5ab9c1cc163485c"
+    },
+    {
+      "path": "docs/src/transformations/fixed-linear-transformer-factor-completion.md",
+      "sha256": "b30e6c5efec1878d4d9ac71e79feffdcabf7fbc5862f4656e9fdf9e17d3d5fb5"
+    },
+    {
+      "path": "docs/src/transformations/guarded-normalization.md",
+      "sha256": "9aad7975a069f2935f01a98a269aaba13121035c9ec0e6223daae7775048dd64"
+    },
+    {
+      "path": "docs/src/transformations/kron-ward-opti-kron.md",
+      "sha256": "95580de37702069d58a76b48fb309e7a0c346c9854d961e42242af27aa4b8029"
+    },
+    {
+      "path": "docs/src/transformations/multiwinding-leakage-reference-compilation.md",
+      "sha256": "03c90cb44f5b15baac52b9909f7597074e716cedbab9b3a4ed8b28eb0faf5ea0"
+    },
+    {
+      "path": "docs/src/transformations/multiwinding-terminal-leakage-assembly.md",
+      "sha256": "f9a6c088676dbc75703fdaec05030bf431d909968f680587f3ba1441080174ad"
+    },
+    {
+      "path": "docs/src/transformations/parameterized-transformer-tap-decisions.md",
+      "sha256": "e989add1fb3746ce331fbe43f35d3e8ce707d7faa15b4295c637b807e1d0b339"
+    },
+    {
+      "path": "docs/src/transformations/projection-compilation-reduction.md",
+      "sha256": "b50a063409130c007162f232c9c5f5bcb9113a4a7829fd354847e219f323e2ff"
+    },
+    {
+      "path": "docs/src/transformations/transformer-winding-coordinate-normalization.md",
+      "sha256": "239f18d5fe712edb73ffb140ce349110b0a2d5859955d547b8f374562303934f"
+    },
+    {
+      "path": "experiments/Manifest.toml",
+      "sha256": "9b93330508ced010ef2fce43dbad52fb1be03c457bd1545f9aafd9d65705fb19"
+    },
+    {
+      "path": "experiments/Project.toml",
+      "sha256": "5419cbd61ca017ca7b9690914fe7da20e00db1f4a9a52081b60324602c5d5ff0"
+    },
+    {
+      "path": "experiments/README.md",
+      "sha256": "574abbcd7058beb2ea5cc37e234ee42964313533b3d9b0dd7a3cac27ccf9dd0b"
+    },
+    {
+      "path": "experiments/data/australian_source_audit.toml",
+      "sha256": "8cf7dba1d51303f87acba730883c3dc798760cc65b161cb5513d0bb8c052ff6b"
+    },
+    {
+      "path": "experiments/data/australian_source_inputs.toml",
+      "sha256": "75c629c02854ac828df6c11a5f063ec21c80aca8a2e223e2d4a24da85faf177b"
+    },
+    {
+      "path": "experiments/data/impedance_contract_schema.toml",
+      "sha256": "4e1649d4a8108233433a9492436ef04c89decff06e9ad26f008fd7c0eedabf69"
+    },
+    {
+      "path": "experiments/generate_five_bus_cycle_figure.py",
+      "sha256": "b4755d4761616acde0dd6af75494db82953d41f6680e86281337138ceddb466d"
+    },
+    {
+      "path": "experiments/generate_numerical_structure_views.py",
+      "sha256": "ed5c8d694716e1ab0a0c5e3b9143f6d5e77ec8bb7ad6b6a46a459478d5405339"
+    },
+    {
+      "path": "experiments/generate_views.py",
+      "sha256": "68e3bb90ad6fed04db4ddec35c74fe8702145f96b306b8d25a72f9b9f69a58f1"
+    },
+    {
+      "path": "experiments/generated/active-radiality-witness.json",
+      "sha256": "c676f21f9774f319d6ddf9c8775f3179734d0c9c24e532411b8c21dfec47199e"
+    },
+    {
+      "path": "experiments/generated/artifact-manifest.json",
+      "sha256": "63c14c80e607a03d7921dc00a09c237a0d54df9e2f12898110902e1226ab1e52"
+    },
+    {
+      "path": "experiments/generated/australian-carson-reproduction.json",
+      "sha256": "3b7c0a5a4ac467368ee1983137aa7ae2ae2f9c374a13c4938f0dae94e5dc4c08"
+    },
+    {
+      "path": "experiments/generated/balanced-transmission-independent-reproduction.json",
+      "sha256": "0c369ac6193970cc488f0e0e155ff04469ac7fe2d8298d987098c66cdb39934d"
+    },
+    {
+      "path": "experiments/generated/balanced-transmission-witness.json",
+      "sha256": "2ffa917cf2d8765a3a3817f4f7d2fd2c5861d0ae2f60c1ee4a202bbca7872740"
+    },
+    {
+      "path": "experiments/generated/block-structure-bridge-witness.json",
+      "sha256": "ed03e7c3d2529a110380c8b6c204f5b7104b3d64ceea755fbce822686257fcf6"
+    },
+    {
+      "path": "experiments/generated/certified-approximation-witness.json",
+      "sha256": "d57c3dc96d6ceb144b2e443f40d9ee059d379d7c14e0e9bb46462cb31f4c759f"
+    },
+    {
+      "path": "experiments/generated/circuit-formulation-witness.json",
+      "sha256": "11569ca3bb70fe39c3c85054fba94a5dcddd9f9e3699a822c971ee7428c88d47"
+    },
+    {
+      "path": "experiments/generated/clean-package-matrix.json",
+      "sha256": "f4bb418ea6d2cbbded7535cc906e67da074244604bb2df91b5b3190c5db1bc2a"
+    },
+    {
+      "path": "experiments/generated/clean-reproduction/parallel-branch-certificate.json",
+      "sha256": "da22c055cced749c5f09462dbc115b2187fd949631bb365deb4ec9374ea3f944"
+    },
+    {
+      "path": "experiments/generated/clean-reproduction/provenance.json",
+      "sha256": "7d190f1ae07f569ca45d8733b3b1a601aa64b5aec88c984fdde63684edd164d8"
+    },
+    {
+      "path": "experiments/generated/clean-reproduction/summary.json",
+      "sha256": "e088dd07d6ce9ce703fd61f470d018050e7c773e1ebcfafecb0c00f864a54c56"
+    },
+    {
+      "path": "experiments/generated/clean-reproduction/v0.1.0.json",
+      "sha256": "80aa8704cf813f4e98b9df4037c062e7016f651307855115db85df441c28a021"
+    },
+    {
+      "path": "experiments/generated/compiled-views-surgery-witness.json",
+      "sha256": "471ee7e4c07a1c49991eb8d6ad273a056b291b7bc0f8b598e6ce728915abfc64"
+    },
+    {
+      "path": "experiments/generated/conductor-terminal-lift-witness.json",
+      "sha256": "8c291d52ecae078893d7348f0aa61e2ae107406218983e78b5320f3674163a50"
+    },
+    {
+      "path": "experiments/generated/connection-map-independent-reproduction.json",
+      "sha256": "af422560e6370ca8f4d532cb32fc22c808f6dacde0871dbc2c19ab87bf9310c0"
+    },
+    {
+      "path": "experiments/generated/coordinate-normalization-certificate.json",
+      "sha256": "c4e98c9a384674eb03904a1be0a5d04a86b2d72ed55f2b5cdd3f46b9646fbb51"
+    },
+    {
+      "path": "experiments/generated/coordinate-series-composition-certificate.json",
+      "sha256": "db91f8bd923a79e26017c215ff6edd085b4c51a57eac996d0810c06fab7130da"
+    },
+    {
+      "path": "experiments/generated/data-model-crosswalk-witness.json",
+      "sha256": "415c46150b48a70fd8af0bb1ccc56b80880c7809b97072c53dea38642a73ebc7"
+    },
+    {
+      "path": "experiments/generated/degree-two-series-certificate.json",
+      "sha256": "72dd8f258c3e0e0873bb688fefb76987672ac919aa04e268a91de41cc9867e30"
+    },
+    {
+      "path": "experiments/generated/explicit-earth-independent-reproduction.json",
+      "sha256": "e9dc4dd9aacd6b86f6d6ff346c22d997726ab6aebc290849d0307b38367b3afe"
+    },
+    {
+      "path": "experiments/generated/explicit-earth-kron-independent-reproduction.json",
+      "sha256": "3af029968262ff1482d7367f1cc3b3912710e88fd97c3c0a64b60e404e757026"
+    },
+    {
+      "path": "experiments/generated/explicit-earth-kron-witness.json",
+      "sha256": "790bde7686c0606a5e0502164568b6e7e0b87737d2e57ea0a319ca716342f8f2"
+    },
+    {
+      "path": "experiments/generated/five-bus-active-radiality-witness.json",
+      "sha256": "fbf8d1a5f634368cf4d192210423b6a1f3b69980ab01006b256fa9539e3ec820"
+    },
+    {
+      "path": "experiments/generated/five-bus-conductor-terminal-lift-witness.json",
+      "sha256": "b922a60b03f4810ffad2716194e587bd540c92a5b16ef088eb61b6dea3833fc3"
+    },
+    {
+      "path": "experiments/generated/five-bus-cycle-space-analysis.json",
+      "sha256": "b600f9a550d433008eab528905f487cffa5f6f5674829ae43d8c4328db88a554"
+    },
+    {
+      "path": "experiments/generated/five-bus-figure-manifest.json",
+      "sha256": "69ba130b7fe91931e7b00d4967f6b1734e8bb9af77699589a58d0089ad24028e"
+    },
+    {
+      "path": "experiments/generated/five-bus-port-factor-witness.json",
+      "sha256": "1208b23aa1690675b2808ec43d94386006ec36bac825af3cf29019d0b70e6edc"
+    },
+    {
+      "path": "experiments/generated/five-bus-transformer-lowering-witness.json",
+      "sha256": "344ceffa50eef8caed85a3fc3124de912782ec7af712eba49df44c6b5173bb95"
+    },
+    {
+      "path": "experiments/generated/five-bus-typed-kron-witness.json",
+      "sha256": "149bd7889e69f7874875c197857e9dcc308ba26938b21113aebae15cb7190e25"
+    },
+    {
+      "path": "experiments/generated/fixture-coverage-matrix.json",
+      "sha256": "25825f096489ce816aba8b9ac6b24b61ea282514db4671be4d095e26bb37f716"
+    },
+    {
+      "path": "experiments/generated/four-winding-lowering-witness.json",
+      "sha256": "cf527e027ecbf8065c0754780556214d06fac20293995ad5dd224ee6bc27ff01"
+    },
+    {
+      "path": "experiments/generated/four-wire-impedance-model-ladder.json",
+      "sha256": "429af4a2fa0e3e30157cdea5a8f2a5826578341706ace5d670bab92f63019731"
+    },
+    {
+      "path": "experiments/generated/four-wire-parallel-ac-certificate.json",
+      "sha256": "aad4e1b3684a20ea7289638fd36cee4a9ff2a05e36b90d32105056027c411bbe"
+    },
+    {
+      "path": "experiments/generated/grounding-impedance-sweep-independent-reproduction.json",
+      "sha256": "525ad1af4602a67054e9365b90ed465fb871871a1cc37a3dd4b519782df72dad"
+    },
+    {
+      "path": "experiments/generated/grounding-impedance-sweep-witness.json",
+      "sha256": "9fe4a9faf1f2fde1daecdc3b25ebad60ad2c48185570f6f78205173755e7be6e"
+    },
+    {
+      "path": "experiments/generated/guarded-parallel-reduction-witness.json",
+      "sha256": "c5759e7a2b476769e4555763e54aa030ec5242587f67be3a309b5fcea70dc31e"
+    },
+    {
+      "path": "experiments/generated/hierarchy-boundary-witness.json",
+      "sha256": "26b2daecd16ab20d68618f4789d6557a67e8fa17d6268da46f63e0f6952b693d"
+    },
+    {
+      "path": "experiments/generated/kron-ward-scenario-comparison.json",
+      "sha256": "753cec18f5147205f1c93879e79fc4de94ce18b3211cb0f3bcec6142892410b5"
+    },
+    {
+      "path": "experiments/generated/layer-lens-api-witness.json",
+      "sha256": "3c375697ba5a7a4361e6aa3c372d60bc227ed9bab29777da2fa705bd213c93e6"
+    },
+    {
+      "path": "experiments/generated/load-continuation-independent-reproduction.json",
+      "sha256": "67bf999262703eff8126dfc886cad747498154130c58ee4a0e1ab4a66c3eba78"
+    },
+    {
+      "path": "experiments/generated/load-grounding-witnesses.json",
+      "sha256": "3395b71763571ab57897207bf7e1da6b07485d3544481e00e486725951f933ae"
+    },
+    {
+      "path": "experiments/generated/load-model-independent-reproduction.json",
+      "sha256": "83670ee6bb79f1e7e184aa54d39cb39a96cdde101769e61593a1a7fe05f06462"
+    },
+    {
+      "path": "experiments/generated/multiconductor-parallel-ac-certificate.json",
+      "sha256": "ce3031fd3ba014fc50a9fcc06d925a3064289b8b19cda957b79c357d909d678c"
+    },
+    {
+      "path": "experiments/generated/multiconductor-recovery-witness.json",
+      "sha256": "93f96231e3e28771b5bd1b7dceb7be7f7ccee13d1976f560befde244ef5265db"
+    },
+    {
+      "path": "experiments/generated/multiwinding-leakage-compilation-certificate.json",
+      "sha256": "eb3103e59cbf6c7978bbd8d91dbea3478171b8b631be562acc56fbfb1ef26b23"
+    },
+    {
+      "path": "experiments/generated/multiwinding-terminal-assembly-certificate.json",
+      "sha256": "655c9a3ea49026bffd94ae2787853ca9d5dc6cbf3c7a2e9c86f745be2035fae0"
+    },
+    {
+      "path": "experiments/generated/multiwinding-terminal-lift-witness.json",
+      "sha256": "0eb9d72e23312e882e9b2fbf8d998227ea0b786bcdf6c1f9c9a36fa959779f32"
+    },
+    {
+      "path": "experiments/generated/multiwinding-typed-kron-witness.json",
+      "sha256": "5992935a4de0b075274e9437f9ed59031b03dfc169e75f79c7f733def4ac6252"
+    },
+    {
+      "path": "experiments/generated/narrow-circuit-transformations-witness.json",
+      "sha256": "d0f2358b257a7735358e57965375a981aeb70ae04c507a268f2255a47626d0fd"
+    },
+    {
+      "path": "experiments/generated/neutral-kron-independent-reproduction.json",
+      "sha256": "6f7e6030a7d05e4e95f185bc93cb1e0e15e59f04eadcf4f086ec2397d5655fe0"
+    },
+    {
+      "path": "experiments/generated/nodal-recovery-guards-witness.json",
+      "sha256": "ae8c679496d94d802fffd515559603032fd894b64718e2ea0954dccb7d6dd9de"
+    },
+    {
+      "path": "experiments/generated/nodal-source-recovery-witness.json",
+      "sha256": "292bfcaa27608ba5cb2e022fa7bc2a27151ed29610b3daa58d2b7ca976019f5f"
+    },
+    {
+      "path": "experiments/generated/node-breaker-state-witness.json",
+      "sha256": "666c717ab8802df6610cd6db775ee91a58a014eb03f5cf175a98bb128f915f9b"
+    },
+    {
+      "path": "experiments/generated/noisy-multiconductor-recovery-witness.json",
+      "sha256": "fb4a2c667a2c851ce46deb86dee2c8014800accdb268b51f770fa2eba77f83b9"
+    },
+    {
+      "path": "experiments/generated/nonlinear-grounding-local-bound-witness.json",
+      "sha256": "c59dab5ed34653d3bfe384f5914691ec75da313aedd446cacc911e901a03bf7e"
+    },
+    {
+      "path": "experiments/generated/nonlinear-grounding-probe-independent-reproduction.json",
+      "sha256": "7ab007ed4958baa3218f5887d5c8350ed3724e7292dd658c72776910808605a7"
+    },
+    {
+      "path": "experiments/generated/nonlinear-grounding-probe-witness.json",
+      "sha256": "f40c16dae548bae9fb4cc56e006aa4a9cb1a199ab66fe9adafd7bf2f90f9e355"
+    },
+    {
+      "path": "experiments/generated/nonlinear-kkt-witness.json",
+      "sha256": "9fee262e16755359a32d063d1ee17ba4b75723a5230b7c1be676d04971123511"
+    },
+    {
+      "path": "experiments/generated/nonlinear-two-point-grounding-continuation-independent-reproduction.json",
+      "sha256": "646ee5befa77018ab79cc2f84156b5022a67e4e55560ec95d98c99290aae6d82"
+    },
+    {
+      "path": "experiments/generated/nonlinear-two-point-grounding-continuation.json",
+      "sha256": "3f53f79e83b37b280b91ef0d68f62235134b7918ffd09d92a78e6f330eddf41b"
+    },
+    {
+      "path": "experiments/generated/nonlinear-two-point-grounding-independent-reproduction.json",
+      "sha256": "9f03bbda60acb8391d39181d7cae410b5a46005775bce033d8a4ef2f807f54dc"
+    },
+    {
+      "path": "experiments/generated/nonlinear-two-point-grounding-witness.json",
+      "sha256": "8b6b1832d641b9e91c05111eb1e51b74fddeb272b35b51952b79827eabd96a2c"
+    },
+    {
+      "path": "experiments/generated/nonlinear-ward-witness.json",
+      "sha256": "7c85b9c3e58ae75fce9d4d0dbf947f12f1864fa75dd508d831b9a09b03c426ad"
+    },
+    {
+      "path": "experiments/generated/numerical-structure-witness.json",
+      "sha256": "22efe362888886f02aa8c5d91bc07de6d609de4ebf7402bb697e90d893ddcf4b"
+    },
+    {
+      "path": "experiments/generated/parallel-branch-certificate.json",
+      "sha256": "f90cda3dd5d4556777f842617d46a98ea37bd60c0e48a52b900382bd7e05a242"
+    },
+    {
+      "path": "experiments/generated/parallel-opf-comparison.json",
+      "sha256": "7f59ee44d1daa7be1fd8a0e5e2ec0554517a865db588e371a0984a606b381b8d"
+    },
+    {
+      "path": "experiments/generated/pi-four-wire-parallel-ac-certificate.json",
+      "sha256": "fdb190198670930d5224395b9849fbe135bac8e9248291715dc94d433def218c"
+    },
+    {
+      "path": "experiments/generated/port-factor-architecture.json",
+      "sha256": "604521b12ea8be2f7d8281a90bd00f456c1f8d908e4155fe133f7cf3f250c8f3"
+    },
+    {
+      "path": "experiments/generated/positive-sequence-collapse-witness.json",
+      "sha256": "404613c6573bdeed055b0abc06ead8decbf78fba9e1cf1d506c344a8fb8f3113"
+    },
+    {
+      "path": "experiments/generated/provenance.json",
+      "sha256": "62c61b3d63927b16dc832c4b88a9207f46f3bf82145f5f33dfd089006934002f"
+    },
+    {
+      "path": "experiments/generated/public-api-manifest.json",
+      "sha256": "3c5049d672ff1e17de40d065db14f27cc3030edefe5b55951d2d5c4144832382"
+    },
+    {
+      "path": "experiments/generated/running-network-cycle-space-witness.json",
+      "sha256": "4afb309cf8d7d598374329610a382fe0745c5188f881e03cf132e9b3a2eb8e86"
+    },
+    {
+      "path": "experiments/generated/running-network-radiality-witness.json",
+      "sha256": "614deb823a98295b9fd29b29d146e0146afe33d7d6bb9d727289fe7981cc222a"
+    },
+    {
+      "path": "experiments/generated/running-network-typed-kron-witness.json",
+      "sha256": "1212810f4d977ece2a59239023253910bdfc76f4320ed40bf992921e6ed57601"
+    },
+    {
+      "path": "experiments/generated/semantic-evaluator-matrix.json",
+      "sha256": "f3dfbbb92dc7e56612308fb2035fa633f5cef5a8a8efa332b32757d61b27df92"
+    },
+    {
+      "path": "experiments/generated/solver-diagnostics-crosswalk.json",
+      "sha256": "d2061049cbf8aaeba0f4c107b2ae22ce91668359dea557a4ca3f91a9458a606d"
+    },
+    {
+      "path": "experiments/generated/state-space-unit-witness.json",
+      "sha256": "083ffc6a8b7de0d64fd063025b8cbf7fa406cdf91cba2106600f8186ad3020e2"
+    },
+    {
+      "path": "experiments/generated/summary.json",
+      "sha256": "2c1cbae0130a80e8a6ba633f7d8781813782fe8fd9ab825db508e3dd7cd16af7"
+    },
+    {
+      "path": "experiments/generated/three-member-four-wire-parallel-ac-certificate.json",
+      "sha256": "b8cb9b61aaf93a36a395c33b803f6fb6fed04b27b4187b91ee3eabb11361fb26"
+    },
+    {
+      "path": "experiments/generated/three-member-state-envelope-independent-reproduction.json",
+      "sha256": "15939e9123cfda3eeea15afa1eaf8c8bc2213d7372e811990bbf6efb1629e1c4"
+    },
+    {
+      "path": "experiments/generated/topology-projection-witness.json",
+      "sha256": "bd2e0b9f4affafd45cd2314dfb1704a4edc3459b7b476ccec5afcce0e22b53b4"
+    },
+    {
+      "path": "experiments/generated/transformer-control-family-witness.json",
+      "sha256": "62e1029f4fe3ce9bc3e7f1bdaf216e7ba4037d7e1b0c16ac48ccebe45d307a79"
+    },
+    {
+      "path": "experiments/generated/transformer-factor-completion-certificate.json",
+      "sha256": "9f8bf3d47c4f8032f61cfb656e0a040fedb663403741655110ba1a2f461d74ad"
+    },
+    {
+      "path": "experiments/generated/transformer-tap-ac-decision-certificate.json",
+      "sha256": "94f736df2af80561cf4ab63845b9f21340ed98dcdc7d4446c2684818d0c3e656"
+    },
+    {
+      "path": "experiments/generated/transformer-tap-ac-independent-certificate.json",
+      "sha256": "1c3d6dfc4a0d88173fd4b6c89fe864d5116551e5f9d76dd0012467b370c34719"
+    },
+    {
+      "path": "experiments/generated/transformer-tap-decision-certificate.json",
+      "sha256": "4281e31665c10e04682e21cfad879cb477e800b1c5b26139e7302defa8f6add6"
+    },
+    {
+      "path": "experiments/generated/transformer-tap-three-scenario-independent-certificate.json",
+      "sha256": "22228f1e0ba41a44e78704673f72554d9a6c418d9efa896d30f63d3c073d9e2b"
+    },
+    {
+      "path": "experiments/generated/transformer-winding-normalization-certificate.json",
+      "sha256": "90fc870e1e74d41731fd374ce7753f6adfa033dc256329a3fdbcfffefe40d04f"
+    },
+    {
+      "path": "experiments/generated/translation-trap-witnesses.json",
+      "sha256": "41b70260728faeb3f6a44a86b162f3a547dd780235b68ab95782510f45a587d2"
+    },
+    {
+      "path": "experiments/generated/typed-kron-certificate.json",
+      "sha256": "c8df96b929e8a425e7986ee5620aa2f273c2b6a2bba86d7bd6c3d15eeeeb2c35"
+    },
+    {
+      "path": "experiments/generated/typed-kron-witness.json",
+      "sha256": "015e5f2806bb049ddeebfd9c0c5ebf55a42cf76476b999fe9e9b66cfa6a7f070"
+    },
+    {
+      "path": "experiments/generated/view-source-maps.json",
+      "sha256": "dea566cc39bed5e7a23c1dc2521c4b52418116679aa85c5a59afabd66b1a3705"
+    },
+    {
+      "path": "experiments/generated/ybus-jacobian-witness.json",
+      "sha256": "eea13f03e6dc5c35f245739740a642b825ece3356cf753a4634246ee926111f7"
+    },
+    {
+      "path": "experiments/render_argument_diagrams.py",
+      "sha256": "f23aa97f3f9f423260066b7df8bcd58684cbad3fe3732009a6194b0d444e732a"
+    },
+    {
+      "path": "experiments/render_block_structure_bridge.py",
+      "sha256": "f86df7e27b303150d4de6f3f4588f4d75b3dc5ad3d76c4fd70756b2e1e17202b"
+    },
+    {
+      "path": "experiments/render_canonical_model_section_figures.py",
+      "sha256": "bdb7b715fe844982b51f90d35596e216eada35d390609ef29fd1fbd6a51bd5ac"
+    },
+    {
+      "path": "experiments/render_earth_return_ladder.py",
+      "sha256": "1a1ac01e8b14b0fa382ef4f0d97eedbe4b4420b55b9ab161885dd61b922dfc1d"
+    },
+    {
+      "path": "experiments/render_guarded_case_figures.py",
+      "sha256": "82b865cb2f5e54cb25fbe659e6b98c6a5dffe3ef8633b46dfd53200e989ffee9"
+    },
+    {
+      "path": "experiments/render_label_coordinate_bridge.py",
+      "sha256": "f5e81429ff4d9b80da84836ed95d1cb2c34e53bccb3e00ebb167f84ad1f58176"
+    },
+    {
+      "path": "experiments/render_literature_gap_map.py",
+      "sha256": "4028bf4f3dafff43800b5b9186d39ac8e720441320356ec0eebc070f4732eeac"
+    },
+    {
+      "path": "experiments/render_nonlinear_kkt_view.py",
+      "sha256": "507d9cb674d40414f1c2d1d5c61378b17cedb3513f1e4d9c28dd463df93d9ad5"
+    },
+    {
+      "path": "experiments/render_parallel_certificate_geometry.py",
+      "sha256": "ee3d6bff3af34a2f627d93b4b236af5c6d859f0536ee11509475cff0bd97d2c5"
+    },
+    {
+      "path": "experiments/render_parallel_feasible_set_card.py",
+      "sha256": "74e931bf252e37a4a06c2a95e9758ffc283ab0450c10f4142ac889e232b7b62e"
+    },
+    {
+      "path": "experiments/render_preservation_contract_card.py",
+      "sha256": "5138cc95f78d8855cef8dfc988dff9ede3ebcd03eca8ab6834fc160cd18ae6b0"
+    },
+    {
+      "path": "experiments/render_reading_routes.py",
+      "sha256": "59882f2229a6b0bf7a5e52adae3ea2e59abf8ecbe6f8afa654869155e86d8528"
+    },
+    {
+      "path": "experiments/render_reference_figures.py",
+      "sha256": "bdc66f93fb2c136b0451c38bfb306881eb5f1ae1c56f29130f0dd8fb1ce439df"
+    },
+    {
+      "path": "experiments/render_representation_taxonomy.py",
+      "sha256": "e511a0ac009caa5afc0cfd5bb94553f40be6f5cedd603091edd521d561cd6333"
+    },
+    {
+      "path": "experiments/render_section_figures.py",
+      "sha256": "d450905479ae802e25babf9f5bb02a4cad202b51c80cd683a90d04a6d7aff190"
+    },
+    {
+      "path": "experiments/render_start_here_figures.py",
+      "sha256": "4b873f3367aef0f61b366028738c5fe2f0be51a202b503be3de392f3b096a29a"
+    },
+    {
+      "path": "experiments/render_transformer_anatomy.py",
+      "sha256": "b4875348a12066a7762660645704f3853de02f3851441eee4a8e95cf0b260a7d"
+    },
+    {
+      "path": "experiments/render_visual_language_equipment_plate.py",
+      "sha256": "4588aca61ce07f21ea112efa4ff45d5e9d7a7978156b8fb38b5c2798eb559325"
+    },
+    {
+      "path": "experiments/render_visual_language_special_semantics.py",
+      "sha256": "b1706841aaa41d9b1d3638ff975b9797eb69d2dfd5c6eef0858d7d8157dcc3f4"
+    },
+    {
+      "path": "experiments/render_winding_coordinate_actions.py",
+      "sha256": "43b155b1abfc8f350515c9cf060345f1b404c2f720f28e407fa0b4ef23501751"
+    },
+    {
+      "path": "experiments/render_ybus_jacobian_view.py",
+      "sha256": "a8530ae05b5586a6cfde75a98d25ffc07d9360900918a3d12e2085e5da78ba60"
+    },
+    {
+      "path": "experiments/run_active_radiality.jl",
+      "sha256": "9d2767ba80d148c8d965f62da269e7bb8f0edda756a1f6adbba607eebfa9c32e"
+    },
+    {
+      "path": "experiments/run_australian_carson_reproduction.jl",
+      "sha256": "cc5bba3506cc16129690cf90c51a1a8c96f5f2d2bf00ba13923de31a99f2270b"
+    },
+    {
+      "path": "experiments/run_balanced_transmission_witness.jl",
+      "sha256": "6631fadef8b61a7cd7f7d4b6be802ebd5b0e29a07cb0353b67ee9b1b00a5abd2"
+    },
+    {
+      "path": "experiments/run_block_structure_bridge_witness.jl",
+      "sha256": "bbaef7cf5349df92491c52c7d4cdbec624bd3a0d1222c9d4d9af39640f805ba7"
+    },
+    {
+      "path": "experiments/run_certified_approximation.jl",
+      "sha256": "f20d6118481dc1e43f05cd2cc1b2303c40c86aacf354671b0e2f605a78793f52"
+    },
+    {
+      "path": "experiments/run_circuit_formulation_witness.jl",
+      "sha256": "a975ee440cf8c2bd3289cf73d2eef7022c1be9cb3d9d0f44649f566b4e59719f"
+    },
+    {
+      "path": "experiments/run_compiled_views_surgery_witness.jl",
+      "sha256": "2f8da5547732c748687afff95a0b77894df2d2d8d27266ae6518be10e0f9e16d"
+    },
+    {
+      "path": "experiments/run_conductor_terminal_lift.jl",
+      "sha256": "5cffa35c70997c77e93d0e23ae1b3a0446fe2aac72748bd0c3d131b37a206ab4"
+    },
+    {
+      "path": "experiments/run_coordinate_series_composition.jl",
+      "sha256": "1ee3387513f332d40ca1996effaeaba3169b34d2d2d2728eb2146a1904309193"
+    },
+    {
+      "path": "experiments/run_data_model_crosswalk.jl",
+      "sha256": "746743eb0502396b2478b33714bcb543cbd67be3bd48b39b7d2cc9aeeff994d1"
+    },
+    {
+      "path": "experiments/run_explicit_earth_kron.jl",
+      "sha256": "92df26d2e7fc0154c889e9309bd344c124e041f7900371992ffc2bde3e39c8ab"
+    },
+    {
+      "path": "experiments/run_five_bus_active_radiality.jl",
+      "sha256": "9b9c3cee9e6bb5593b910ab6731a50bc48003c43652e04f09bbfbb7eef33a587"
+    },
+    {
+      "path": "experiments/run_five_bus_cycle_space.jl",
+      "sha256": "b59a7f0d7e198af6f4bdc8080709c12014ea211bdfadda018e39da263db99def"
+    },
+    {
+      "path": "experiments/run_five_bus_port_factor.jl",
+      "sha256": "5a660b20f331e49ed56f1716e86c672bf63aad06189ca5601563fe53eb93fe87"
+    },
+    {
+      "path": "experiments/run_five_bus_terminal_lift.jl",
+      "sha256": "53b4dbc0b6cddaaf265194126d9966a9c11445fd96844cad78d0c98d769ff9c5"
+    },
+    {
+      "path": "experiments/run_five_bus_transformer_lowering.jl",
+      "sha256": "282696e2f430b96fc0b19b1b79053dd060495ad02c66154de309bd46c214cdf4"
+    },
+    {
+      "path": "experiments/run_five_bus_typed_kron.jl",
+      "sha256": "c500730a097b642073f44f2e6f48a9ed98b89546af640bc6dce4775233805ade"
+    },
+    {
+      "path": "experiments/run_four_winding_lowering.jl",
+      "sha256": "bab2c342ba208aa1d2100f5cc4272eb8c41cf30e690b269edd45c4d213f9688d"
+    },
+    {
+      "path": "experiments/run_four_wire_impedance_model_ladder.jl",
+      "sha256": "00e352d4ca80e77dd0731faeaadf360b87843964cff4b0e98d84c649dc33231c"
+    },
+    {
+      "path": "experiments/run_four_wire_parallel_ac.jl",
+      "sha256": "3acffbca1ea77ff8c6a5bfb7786d6ad192708ab5094a8865fc6f6010b941fb18"
+    },
+    {
+      "path": "experiments/run_grounding_impedance_sweep.jl",
+      "sha256": "4d71f5e23861348a942f3f284f01a515a9f7fa721ab2a8745d26a2470938dcf5"
+    },
+    {
+      "path": "experiments/run_guarded_parallel_reduction_witness.jl",
+      "sha256": "f508c44ed3a544beb51c9b925be29af902f01a04583b8ff6f8f342669af28cb4"
+    },
+    {
+      "path": "experiments/run_hierarchy_boundary_witness.jl",
+      "sha256": "2a023f31d91a9b5bc4703d1f8fcc090125e14886e079fd2285b14a0624b50119"
+    },
+    {
+      "path": "experiments/run_kron_ward_scenario.jl",
+      "sha256": "f1aea44f98af11a6f9828538c710b9b388a8cbd222e740b1efb43fb072c2c984"
+    },
+    {
+      "path": "experiments/run_layer_lens_api_witness.jl",
+      "sha256": "53c7e10f52413ba7c76c43238489fd1cf99cc926dc74dccbf557a87d9e68ad8b"
+    },
+    {
+      "path": "experiments/run_load_grounding_witnesses.jl",
+      "sha256": "98f4593c6cc2b295c338dbe25dedbf8f884bb052f07d346ec563393576dfe3ed"
+    },
+    {
+      "path": "experiments/run_multiconductor_parallel_ac.jl",
+      "sha256": "42bcfdc59bef66f2ed87b529135dbdc007609d05a11123a4015f7a13a5482082"
+    },
+    {
+      "path": "experiments/run_multiconductor_recovery_witness.jl",
+      "sha256": "b145ebb784a046a86026b7bb7b9dd1ec55841af4f1284de06f999d7d2b144fe5"
+    },
+    {
+      "path": "experiments/run_multiwinding_leakage_compilation.jl",
+      "sha256": "6b9b5e21692ee7292fc438842fed52060d42f69c30a52f35fa00911ca2f706e4"
+    },
+    {
+      "path": "experiments/run_multiwinding_terminal_assembly.jl",
+      "sha256": "8758ff36e42f260f3b646e5ac05cf40d263f371cb4eb3640551b29f79e467245"
+    },
+    {
+      "path": "experiments/run_multiwinding_terminal_lift.jl",
+      "sha256": "a9474ed0358eed1a83fd9cbbf8e91d3d4085b9c1bb3bbacea6058118d54c5021"
+    },
+    {
+      "path": "experiments/run_multiwinding_typed_kron.jl",
+      "sha256": "169933c5edd53ebaed79fac4052010d03950bf0a5e709672ef8f281a4fcc5e14"
+    },
+    {
+      "path": "experiments/run_narrow_circuit_transformations.jl",
+      "sha256": "4fbb3c946883f4f2831cddded8d4e2c0493540b3ba6cd72e56d35e45aa846fe4"
+    },
+    {
+      "path": "experiments/run_nodal_recovery_guards_witness.jl",
+      "sha256": "d4e982dbfff972969bc3ae65f59909d730e1bf5e8934b758536c06af1e425bce"
+    },
+    {
+      "path": "experiments/run_nodal_source_recovery_witness.jl",
+      "sha256": "8a140c6de29c7492407f330212274d019923cd0b53495360aec201b8d8edd8ca"
+    },
+    {
+      "path": "experiments/run_node_breaker_state_witness.jl",
+      "sha256": "deb4f7443bbe69e4857508f2ca7fe4dcf16f75c0f39f04b28264de24d1adc998"
+    },
+    {
+      "path": "experiments/run_noisy_multiconductor_recovery_witness.jl",
+      "sha256": "3f0d0ab4e18415715cd3b41ae96c73030fa0c250dba8a4de36c75c325bde71f2"
+    },
+    {
+      "path": "experiments/run_nonlinear_grounding_local_bound_witness.jl",
+      "sha256": "b000bb09fda4831c25906b94fb67e9bd457d105afc4ce218cc3cc4b7cfe54ff7"
+    },
+    {
+      "path": "experiments/run_nonlinear_grounding_probe.jl",
+      "sha256": "5a4c0c80d59052758cd5b01cf4bbcf87d477744ddb4bdd93f8cd427a4c7378d7"
+    },
+    {
+      "path": "experiments/run_nonlinear_kkt_witness.jl",
+      "sha256": "63b48cc57281d341a7b8de199ef6988805fb67ac9195994ea40d5995ba3e239d"
+    },
+    {
+      "path": "experiments/run_nonlinear_two_point_continuation.jl",
+      "sha256": "d6045b796f11f901fcdf4f7d81c17481443bd38f640ffd1d645d0502a08b9214"
+    },
+    {
+      "path": "experiments/run_nonlinear_two_point_grounding_probe.jl",
+      "sha256": "c70899f85f4d73ce758e623c24997f12fee8bdc639db2a5c791aa9219e875af5"
+    },
+    {
+      "path": "experiments/run_nonlinear_ward_witness.jl",
+      "sha256": "5d404931c98250a608db0a979e05cc7266d4025429e641fd19b55feac0f27f28"
+    },
+    {
+      "path": "experiments/run_parallel_decision_comparison.jl",
+      "sha256": "7532489cedcad85f80cb0e9b1f6ceab9bff5a00161fa8c3c628ad77aa83e64f2"
+    },
+    {
+      "path": "experiments/run_pi_four_wire_parallel_ac.jl",
+      "sha256": "9e50ab9d207a553772d1288558f26fc9be4a1c1d9526f0bbb041b6d7a2c43c24"
+    },
+    {
+      "path": "experiments/run_port_factor_architecture.jl",
+      "sha256": "9e3779b8bb92cacf2b57b342bc768645e73fd811c020204058a09a3b9922b82f"
+    },
+    {
+      "path": "experiments/run_positive_sequence_collapse.jl",
+      "sha256": "a44e902320c25e1f65baf4b36ced3d7384219d4414b78a15cd3be0aa794fc1a2"
+    },
+    {
+      "path": "experiments/run_public_api_manifest.jl",
+      "sha256": "bccecb2ce067da7bced6ba7a6864c979f3181ada10694df0c9fa00bd5709912a"
+    },
+    {
+      "path": "experiments/run_running_network_cycle_space.jl",
+      "sha256": "d02bf3204ee1c2959a7a983df10f366076fc83bb14b03600597b1fe693456646"
+    },
+    {
+      "path": "experiments/run_running_network_radiality_witness.jl",
+      "sha256": "5c9bf4d3af49a5082bd32803f80eece457a893fea39c8a683c0d75d347c08bd6"
+    },
+    {
+      "path": "experiments/run_running_network_typed_kron.jl",
+      "sha256": "996c3a395dbc4c4298fd632c355f27a14cb6630e61db594e4100dbfbeb10065d"
+    },
+    {
+      "path": "experiments/run_series_elimination.jl",
+      "sha256": "8cc66f1390fe2abfc198acc17a0dd1b9ccafdf35d186d3654be2dc9f8d4df67b"
+    },
+    {
+      "path": "experiments/run_solver_diagnostics_crosswalk.jl",
+      "sha256": "bd7d773dc6190d111251ae4008ca72bfc0a96a8c6510008ef5f72ac52310ec4f"
+    },
+    {
+      "path": "experiments/run_state_space_units.jl",
+      "sha256": "f33354139b21ff9f413ed6081f323fddbd9160602c12600f22f0452ade740955"
+    },
+    {
+      "path": "experiments/run_three_member_four_wire_parallel_ac.jl",
+      "sha256": "9981852125081536a01758821c5e20faf1cf58faa116780ab4bce3e8a1e6e45d"
+    },
+    {
+      "path": "experiments/run_topology_projection_witness.jl",
+      "sha256": "969a614bb8c3e223e58bc9353b6a967af16bb61d704182bb714a242e66168a76"
+    },
+    {
+      "path": "experiments/run_transformer_control_family_witness.jl",
+      "sha256": "fe05eadf1753d76ac6eefbd982caffd4a096696d7959c8113a1d4fc9e92f0d40"
+    },
+    {
+      "path": "experiments/run_transformer_factor_completion.jl",
+      "sha256": "c541c86c0d48dd22028f4707480b90ee21a049083b9df502a164e889624eeeaa"
+    },
+    {
+      "path": "experiments/run_transformer_tap_ac_decision.jl",
+      "sha256": "5be84485684e60cbc057e6ac0a86b5d3c771af2313c31df1cfaa2c5c2fd4eae6"
+    },
+    {
+      "path": "experiments/run_transformer_tap_ac_independent_reproduction.jl",
+      "sha256": "86662de50141d27515e4132659561eb2f1986fe028b186196fe235f7739cccc4"
+    },
+    {
+      "path": "experiments/run_transformer_tap_decision_compilation.jl",
+      "sha256": "faaa65e616089fa097c4faf924ce0e114ae4e95f0ccdf9293545fa78e40fc968"
+    },
+    {
+      "path": "experiments/run_transformer_tap_three_scenario_independent_reproduction.jl",
+      "sha256": "01e13fc8498b8cf37257815fa41f12867bc2737751bfb97d4dceee5a7780fca0"
+    },
+    {
+      "path": "experiments/run_transformer_winding_normalization.jl",
+      "sha256": "d3668b5b78896a19c45e27394b6c725cde6a76e22168c66f135d5c8f965cbc96"
+    },
+    {
+      "path": "experiments/run_translation_traps.jl",
+      "sha256": "6ba3fba31dbbb282e2c4824be4d7228451720b6316932ebc62086457558269da"
+    },
+    {
+      "path": "experiments/run_typed_kron.jl",
+      "sha256": "1241e22cae9602a1f7ba4cfb07b4486816face0db1648ea3a070493b812e2508"
+    },
+    {
+      "path": "experiments/run_vertical_slice.jl",
+      "sha256": "6c39604419e70a9f7a3603448404d0c0cc2c0c647885ff25e18020d50412c8a2"
+    },
+    {
+      "path": "experiments/run_ybus_jacobian_witness.jl",
+      "sha256": "4c163006522b9bbec8014cab04b6d45f5c8e9e1c03d38cb5c577c7e1c11a19ff"
+    },
+    {
+      "path": "experiments/running_network.jl",
+      "sha256": "536dbdc27678af0a3acdd33293df4760a9208b30ddcd1a3c23fde347689d9803"
+    },
+    {
+      "path": "experiments/src/GraphModelsForPowerNetworks.jl",
+      "sha256": "8fe470f95e76c4961d5ab6022a90b20125e91f78675829b5003c577617e779a2"
+    },
+    {
+      "path": "experiments/test/active_radiality.jl",
+      "sha256": "9e36677969393b12a4b9b235555a6d1670128f1bb06b8e777e7fbe75fa97e943"
+    },
+    {
+      "path": "experiments/test/australian_carson_reproduction.jl",
+      "sha256": "0162c30693c4538acd0482b23ba463971754af2addd0e27e00fc944ec644389b"
+    },
+    {
+      "path": "experiments/test/balanced_transmission_witness.jl",
+      "sha256": "58db1af03b2cb2a54320a58c5842f2657a671607654a5006882d96bae7835587"
+    },
+    {
+      "path": "experiments/test/block_structure_bridge_witness.jl",
+      "sha256": "b112620cbdd41e838b2042b4159d08388531fd1f66970efd16d712e5500a3029"
+    },
+    {
+      "path": "experiments/test/certificate_api_matrix.jl",
+      "sha256": "7cd34d0153dcbe9e14616239d990a925d77defdeb4c884a3743180fa20e5bf1e"
+    },
+    {
+      "path": "experiments/test/certified_approximation.jl",
+      "sha256": "7c0875fa3887310ce13411c61d3ef4758e0184d6c7f9d6111720f4e4cf9f9efa"
+    },
+    {
+      "path": "experiments/test/circuit_formulation_witness.jl",
+      "sha256": "ed60f43e3f9ba3cb31b115f0ccb3e63084bb9836342c6193c6b7e07367bcea69"
+    },
+    {
+      "path": "experiments/test/compiled_views_surgery_witness.jl",
+      "sha256": "e2e742eedbeb8a15507b1fea44254964cd02f6820afb78f30a33694156c7519b"
+    },
+    {
+      "path": "experiments/test/conductor_terminal_lift.jl",
+      "sha256": "33f0f89d8b88a837b7895f8290d4da0228afe524326f10e3d178baff1338b867"
+    },
+    {
+      "path": "experiments/test/coordinate_normalization.jl",
+      "sha256": "e388f6d7e7517196f10a8e6c838fb6cb079e267c5b4d49605dfadf69cc00b9b4"
+    },
+    {
+      "path": "experiments/test/data_model_crosswalk.jl",
+      "sha256": "81ca5ba88533ef2abc48b1e5cd6a17172eea92e48c77b7e748880566d78de6d8"
+    },
+    {
+      "path": "experiments/test/explicit_earth_kron.jl",
+      "sha256": "cef56c616f3b2683ad9ad2e931af6e158767c4853c9641d2c7096707b03500ac"
+    },
+    {
+      "path": "experiments/test/five_bus_active_radiality.jl",
+      "sha256": "b89bc6936b65e1e516d94a90d2e19cf5ddfe848b4fd00be54ebcf9510e52e6f5"
+    },
+    {
+      "path": "experiments/test/five_bus_port_factor.jl",
+      "sha256": "661a58cb4a2b4cb2b6a8185c1e848dcad352616aa06d5853425fe8bd0277c96b"
+    },
+    {
+      "path": "experiments/test/five_bus_terminal_lift.jl",
+      "sha256": "7a89217aa640d28a6baa129e93bbe261399ca29ce9e7588a5cc755cea35e2690"
+    },
+    {
+      "path": "experiments/test/five_bus_transformer_lowering.jl",
+      "sha256": "b888b8842ad4bbc2b012f9824ce30f502c3bd33bc49609f64726bee0d55c2938"
+    },
+    {
+      "path": "experiments/test/five_bus_typed_kron.jl",
+      "sha256": "1000c66026022c1e43b6f9405aba3b3f1de1f79efb06076911ff00a3a89b6eb2"
+    },
+    {
+      "path": "experiments/test/four_winding_lowering.jl",
+      "sha256": "f61e19d194536ea14b481877c0ea9c44d588a8ccf397ed0ffc57a3dd5670d927"
+    },
+    {
+      "path": "experiments/test/four_wire_impedance_model_ladder.jl",
+      "sha256": "12eebac6a8d9e36db98e481dd34cb62badddd378a976a684a8972d7dfe59816f"
+    },
+    {
+      "path": "experiments/test/four_wire_parallel_ac.jl",
+      "sha256": "9f2eb9e4dc879d0eb550b8579cfb5b84e30091706aff4e0e22252d9c15a47633"
+    },
+    {
+      "path": "experiments/test/grounding_impedance_sweep.jl",
+      "sha256": "ac7b90f2b814cbc6b289eae45048efefcd5fe64931f7f3c2ba0b64962cbefd82"
+    },
+    {
+      "path": "experiments/test/guarded_parallel_reduction_witness.jl",
+      "sha256": "764c5527f901c0946fa02a6d4bbaf983c81131b8af76a0bdc87ac78f8818d029"
+    },
+    {
+      "path": "experiments/test/hierarchy_boundary_witness.jl",
+      "sha256": "0cd6c63a27fbd0d3b95bda2539ed3e6fbb7ed52ce6ec4180cd821f381701f3ba"
+    },
+    {
+      "path": "experiments/test/kron_ward_scenario.jl",
+      "sha256": "566f1a3d8f487ac5d7a938f48927d9b1fb8020eea95f71e8cda559c455457e3e"
+    },
+    {
+      "path": "experiments/test/layer_lens_api_witness.jl",
+      "sha256": "cc234dd471bb33e9e3c94e71e479803f872223aeeb3a67081c6ef579d41e9d19"
+    },
+    {
+      "path": "experiments/test/load_grounding_witness.jl",
+      "sha256": "3e860428ece7151f8a4ec06d21ec198e989c1aec876b73aa9824f9218bee2f3f"
+    },
+    {
+      "path": "experiments/test/multiconductor_flow_limit_redundancy.jl",
+      "sha256": "7a1a621dbc0166d1c07967e85c9a7b95274be196c627604c6d49b2b4d99231b5"
+    },
+    {
+      "path": "experiments/test/multiconductor_parallel_ac.jl",
+      "sha256": "618049f4707c475b50b43f66f1a79af2cc9be637567a1b63dcdd30b8740b28e2"
+    },
+    {
+      "path": "experiments/test/multiconductor_recovery_witness.jl",
+      "sha256": "ded08eebbe2663a605494f3ebaa8852c59cc7db43f8018de83fe5925dffba426"
+    },
+    {
+      "path": "experiments/test/multigraph_cycle_space.jl",
+      "sha256": "7b1171bd40122fb2f8cd886b15b436c4eb4af06ee815e94242358e55d400b7bf"
+    },
+    {
+      "path": "experiments/test/multiwinding_leakage_compilation.jl",
+      "sha256": "eaea479df8b1b3780d12601c79774b7b3e88da3682fb25123f74adb0b1574fc7"
+    },
+    {
+      "path": "experiments/test/multiwinding_terminal_assembly.jl",
+      "sha256": "32522577494b520b3713d546a80c4e82163559a26c02256c1212df7e30b6f01e"
+    },
+    {
+      "path": "experiments/test/multiwinding_terminal_lift.jl",
+      "sha256": "d14d5f1ac092c712bfeb2655615f0ef882bec8d7ffeb87d3c81de4372258798a"
+    },
+    {
+      "path": "experiments/test/multiwinding_typed_kron.jl",
+      "sha256": "83e7bafeedf9b50132c9192fed9d0b77a2d00d0f120852c2f10f7742cf4d2be0"
+    },
+    {
+      "path": "experiments/test/narrow_circuit_transformations.jl",
+      "sha256": "153deb2554b07fd29b040d0e6ae1facba88b5b2d745c05633ffb6cc77f9f0635"
+    },
+    {
+      "path": "experiments/test/nodal_recovery_guards_witness.jl",
+      "sha256": "e235254f23645a4f0a829d1413e0a82ea3f5c0712401a4da64df6e4e9dd7cd7a"
+    },
+    {
+      "path": "experiments/test/nodal_source_recovery_witness.jl",
+      "sha256": "cf2053905e3931b057a156a86c3478f203951775adec423f3c71a59964364e66"
+    },
+    {
+      "path": "experiments/test/node_breaker_state_witness.jl",
+      "sha256": "05356e381e128f47a71d3b1a5fc93c761aa2c619723fcfa515aceab3141783c8"
+    },
+    {
+      "path": "experiments/test/noisy_multiconductor_recovery_witness.jl",
+      "sha256": "17975369dd47432982982e79b03d30198c953de663bab62be9f46ed6b5b97dd6"
+    },
+    {
+      "path": "experiments/test/nonlinear_grounding_local_bound_witness.jl",
+      "sha256": "bab7f5dd367a1d6b167527739afeb0c5b6f463fabb0164142a62ce8bd9dee2f0"
+    },
+    {
+      "path": "experiments/test/nonlinear_grounding_probe.jl",
+      "sha256": "8196dbf84a76298c794fb75f74285682a21acfa7462e6a1729fe0e8cc6097317"
+    },
+    {
+      "path": "experiments/test/nonlinear_two_point_continuation.jl",
+      "sha256": "f2f9fdcc78203d34a7f1a69c59079adc9f28cdb263bbe195f2f911e9fb67af98"
+    },
+    {
+      "path": "experiments/test/nonlinear_two_point_grounding_probe.jl",
+      "sha256": "0b0a65ee98889fe193bc505b75eedfa1c6919d4feff7364536b13899366b5fc5"
+    },
+    {
+      "path": "experiments/test/nonlinear_ward_witness.jl",
+      "sha256": "d7ce7614e32312fcacb262b978c460224878bc01440047c678df7231c1a9644d"
+    },
+    {
+      "path": "experiments/test/parallel_decision_comparison.jl",
+      "sha256": "51c9c72e5f47edd4d0b2f4bcfc68e418b1cb2e0257272c8c5e7de43dd2154aa3"
+    },
+    {
+      "path": "experiments/test/pi_four_wire_parallel_ac.jl",
+      "sha256": "5668b525a2665bda5b4406f3daa599accb2b7d4f54cd091a7cd4159cb9dfdb99"
+    },
+    {
+      "path": "experiments/test/port_factor_architecture.jl",
+      "sha256": "38c4006dde47d6effeb76a722b97fb2940d98830b4b4eef8f8b380676f22075a"
+    },
+    {
+      "path": "experiments/test/positive_sequence_collapse.jl",
+      "sha256": "60a597105a7ce37f18c298151e076707b4e00bf0fe48f1160cf3a1d3610f1e89"
+    },
+    {
+      "path": "experiments/test/public_api.jl",
+      "sha256": "aac013c8247016aa34c997513f46fec1cf87ed5627c061e58f089d4acfea6562"
+    },
+    {
+      "path": "experiments/test/running_network_cycle_space.jl",
+      "sha256": "acd2dc0281ef95406a1cf6c02d021f587fd328000f458741bbfc10cd45874b15"
+    },
+    {
+      "path": "experiments/test/running_network_radiality_witness.jl",
+      "sha256": "9d3d397c114799c8ad5f55bc7c7e00e0708b11842dbafcfa400126aff595df71"
+    },
+    {
+      "path": "experiments/test/running_network_typed_kron.jl",
+      "sha256": "e0a13be0cd278db38a8bd9e47a46ec8eee10070fe424b260c2c554d44acdee10"
+    },
+    {
+      "path": "experiments/test/runtests.jl",
+      "sha256": "3349bb150d89c240833d92ea64f471015406205e42969183b6f82b3c56897751"
+    },
+    {
+      "path": "experiments/test/series_elimination.jl",
+      "sha256": "395c404bd038f14b63004b0d58672cc67556d05ae00b096745849e97347c99ef"
+    },
+    {
+      "path": "experiments/test/solver_diagnostics_crosswalk.jl",
+      "sha256": "fb7e39a155d5010e3caa047f18fc73176e391a533c35d4548cf407a297994fe9"
+    },
+    {
+      "path": "experiments/test/state_space_units.jl",
+      "sha256": "228e1816906e8b784c20b86613547b92fd32fb56f5197c9d05a40892d61c8cfb"
+    },
+    {
+      "path": "experiments/test/three_member_four_wire_parallel_ac.jl",
+      "sha256": "2966c73c7ec4c8593aa62a919934118d488894eafdac40aeeb77aaf4a60c6407"
+    },
+    {
+      "path": "experiments/test/topology_projection_witness.jl",
+      "sha256": "0dc47111a0212a25d787efb49bbe98eac37a42ee4f3424acb8ba9063169a6886"
+    },
+    {
+      "path": "experiments/test/transformer_control_family_witness.jl",
+      "sha256": "a5f385c4bfd6e9c8a901556c0d9d50f2436fb23ae87cd9a33faf3aebf1e8421c"
+    },
+    {
+      "path": "experiments/test/transformer_factor_completion.jl",
+      "sha256": "04a05c0dbac9b7b893ea8d7a81d1f91469565ece51d2752edd9293b03117943c"
+    },
+    {
+      "path": "experiments/test/transformer_factor_completion_core.jl",
+      "sha256": "b4b2bb37d6311ab5f225f52c0593c5427edf975c3eb35bde765c344fa06aa94c"
+    },
+    {
+      "path": "experiments/test/transformer_tap_ac_decision.jl",
+      "sha256": "89a376253514b5126ab3bbe60962618789975d9664c887807b0c352257e9d8dc"
+    },
+    {
+      "path": "experiments/test/transformer_tap_ac_independent_reproduction.jl",
+      "sha256": "7a67de77ebe0e1eaa07a16cd96c1721184da4985a660ae5d401c43322b710f03"
+    },
+    {
+      "path": "experiments/test/transformer_tap_decision_compilation.jl",
+      "sha256": "18c006accc09eaf3c72f75eeb96cf95662fb895642c78c7386cbf245611ca7ea"
+    },
+    {
+      "path": "experiments/test/transformer_winding_normalization.jl",
+      "sha256": "a6f2ad2d8e901f90422f5df92be0c10a63edd93e382adffdda5e53ba817581ce"
+    },
+    {
+      "path": "experiments/test/translation_traps.jl",
+      "sha256": "1b424337a55f8a69419633d120f1fc02acded7cb6849db3854c98db62b74ead5"
+    },
+    {
+      "path": "experiments/test/typed_kron.jl",
+      "sha256": "0ed53ea767ff15bda2d484c1f862f09c46690e52b5e1c1dfefe4f377ded5e060"
+    },
+    {
+      "path": "experiments/transformations/ActiveRadiality.jl",
+      "sha256": "90ca5f01a4223feffe189d4b68a5eb84a6b29c17cedb9fcf774c9aff62534a60"
+    },
+    {
+      "path": "experiments/transformations/AntiPatternWitnesses.jl",
+      "sha256": "9f748a1228077dd31968799f1c1b79b1215adf7ed5e8fccf3f8e7249da6802f6"
+    },
+    {
+      "path": "experiments/transformations/AustralianCarsonReproduction.jl",
+      "sha256": "a7da8574b5557f666757c59e610d9912433ca580bd0941232cb12a165892ed2d"
+    },
+    {
+      "path": "experiments/transformations/BalancedTransmissionWitness.jl",
+      "sha256": "2f779ed618c443633a74b48593d4280ae44440d817b5a3ba2be8459d213ac37c"
+    },
+    {
+      "path": "experiments/transformations/BlockStructureBridgeWitness.jl",
+      "sha256": "4ac0e8c40fcbf8edb3488ca61462f1282d5d29a00fd85ff6ea12306bb180dcba"
+    },
+    {
+      "path": "experiments/transformations/CertifiedApproximation.jl",
+      "sha256": "02437b41e9339a034708a47716abff4f8d3904f74ff9e7c9973e9711773b866c"
+    },
+    {
+      "path": "experiments/transformations/CircuitFormulationWitness.jl",
+      "sha256": "5012d8ead637d29e13039b9e09f7c33700985f8a53f8a28f1043757a489309ce"
+    },
+    {
+      "path": "experiments/transformations/CompiledViewsSurgeryWitness.jl",
+      "sha256": "8f828dc946c201055dc346b0c195743d5949b5d26ea7c7e641beaccb3e5d4627"
+    },
+    {
+      "path": "experiments/transformations/ConductorNormalization.jl",
+      "sha256": "c5f0bc49a4e036d4843a675b49cfafb974f53a15c6b95380192eb9b5bc02459b"
+    },
+    {
+      "path": "experiments/transformations/ConductorTerminalLift.jl",
+      "sha256": "f603742eb597faa45b96ce9bf7719fe2ddfcb51a6484a4efe518f53e8aa30a9e"
+    },
+    {
+      "path": "experiments/transformations/CoordinateActions.jl",
+      "sha256": "f737620d9071a8ff05901579d891edf2fed0ed04411f5be0e6dee75132f20830"
+    },
+    {
+      "path": "experiments/transformations/DataModelCrosswalk.jl",
+      "sha256": "9d64fdf3e4dd4b4924ef235daeb89088bf9cada916f92f1c9e1ce19cab34a6b4"
+    },
+    {
+      "path": "experiments/transformations/ExplicitEarthKronWitness.jl",
+      "sha256": "90ec530598fa4eddc1330f08bb2f708b09a417ed2a2e9d5330587428084346bf"
+    },
+    {
+      "path": "experiments/transformations/FiveBusTransformerLowering.jl",
+      "sha256": "c7201dacbfca4331c88fde488cefa78e77e684ee13da8cd4cefd6ed47d9617ef"
+    },
+    {
+      "path": "experiments/transformations/FiveBusTypedKronWitness.jl",
+      "sha256": "2c19580ae5901769ba0ae51daff78cad474bddb2fecc87960f7bf4137b7d7659"
+    },
+    {
+      "path": "experiments/transformations/FourWindingLoweringWitness.jl",
+      "sha256": "54360c4cf8f2c0e6e7daa99851462b4bb3029a62caaeb37a3ef5d61218f0f1e7"
+    },
+    {
+      "path": "experiments/transformations/FourWireImpedanceModelLadder.jl",
+      "sha256": "da89796d807eb2f26127d0a8640ccd0f2631dfdc8b6b8aa69506e3aaee069db9"
+    },
+    {
+      "path": "experiments/transformations/FourWireParallelACDecision.jl",
+      "sha256": "2a87236cbc00b5fdba93cba00c3b155ad749e9a15f8346bbfa6a93403bdc1318"
+    },
+    {
+      "path": "experiments/transformations/GuardedParallelReductionWitness.jl",
+      "sha256": "0ee307736a91a2dafc955ab20c2a0732f9e145a4949231eaef09c67b8ce48dab"
+    },
+    {
+      "path": "experiments/transformations/HierarchyBoundaryWitness.jl",
+      "sha256": "fc2a98ebf56a64dae0e1dd490051b8790e4bcfc51101550539f1c0fe8dac2f2f"
+    },
+    {
+      "path": "experiments/transformations/ImpedanceContract.jl",
+      "sha256": "771c55549e3f9175d9212d6db769bd83c8ef87f52cf3840bec09752dc0ad7d9c"
+    },
+    {
+      "path": "experiments/transformations/KronWardScenario.jl",
+      "sha256": "7c9fe4c3506057bffefe7eab33877e1c0a84127bf18013f9aedadced61332a82"
+    },
+    {
+      "path": "experiments/transformations/LayerLensApiWitness.jl",
+      "sha256": "0beee94307fe0fd50804c8ecf600f69e8fa3fb2f5dd2ac785a4c31e287fc5d1c"
+    },
+    {
+      "path": "experiments/transformations/LoadGroundingWitness.jl",
+      "sha256": "f8a9ae87fb916816979b50b4edd1ecbdf6698a98ed776e73785bb898c5c41482"
+    },
+    {
+      "path": "experiments/transformations/MulticonductorFlowLimitRedundancy.jl",
+      "sha256": "aa58d1568d88f1aff6b311aca510333693e7f254cf7e0cfa19e26e359ac622d3"
+    },
+    {
+      "path": "experiments/transformations/MulticonductorParallelACDecision.jl",
+      "sha256": "5282fe80091a66270c00c9dedeecb497b2f81e5ee2654460460e80e36c9b93b4"
+    },
+    {
+      "path": "experiments/transformations/MulticonductorRecoveryWitness.jl",
+      "sha256": "b3d3442ea0f8ff470857ef7a39361053fd1722f77274a9996266f40a8214e2f0"
+    },
+    {
+      "path": "experiments/transformations/MultigraphCycleSpace.jl",
+      "sha256": "10dd42187a304a51d2d48798f3dd1facb171f922b6c2f9a4960078397f1d611b"
+    },
+    {
+      "path": "experiments/transformations/MultiwindingLeakageCompilation.jl",
+      "sha256": "badd38b7d5829e94315232470ee1d3610d22fe4dc176666f7521f23d74a17c59"
+    },
+    {
+      "path": "experiments/transformations/MultiwindingTerminalAssembly.jl",
+      "sha256": "51ec5302f4b285ec393808eeafbebe9f8923d6c7cfcfccbe40076f579d691de8"
+    },
+    {
+      "path": "experiments/transformations/MultiwindingTypedKronWitness.jl",
+      "sha256": "3d4ab9d396dd6d058d02118662d430c2d90900c3a48d7de2d29e4c092133d0f5"
+    },
+    {
+      "path": "experiments/transformations/NarrowCircuitTransformations.jl",
+      "sha256": "5ffaf7cc92bd196f95f63ea910268d5b3b707f0a40edc127aacb7abd351d1649"
+    },
+    {
+      "path": "experiments/transformations/NodalRecoveryGuardsWitness.jl",
+      "sha256": "ba5cecc307a456b82a4057bd1fc1083b3d157d62d9a4de6248e18a46ed00b33c"
+    },
+    {
+      "path": "experiments/transformations/NodalSourceRecoveryWitness.jl",
+      "sha256": "134b76b8c5cc782155ade439bfdd9a7d580066bc53543c0c56a7a4600719e999"
+    },
+    {
+      "path": "experiments/transformations/NodeBreakerStateWitness.jl",
+      "sha256": "afa0e1919e9cc9f456ef09b9a896b2c3a21c32407671db97e1c40e6d478d7701"
+    },
+    {
+      "path": "experiments/transformations/NoisyMulticonductorRecoveryWitness.jl",
+      "sha256": "64ec544e6870fbc18676a9c90c4b2055cd742ed12f875f73d74e489e2e0c3210"
+    },
+    {
+      "path": "experiments/transformations/NonlinearGroundingLocalBoundWitness.jl",
+      "sha256": "f16750715e64df6438d9396703e886a1cbcb24c6611439e95383ef4ea04b8c78"
+    },
+    {
+      "path": "experiments/transformations/NonlinearWardWitness.jl",
+      "sha256": "c8e33acf9fd9aef7b194fcd6b827f9b724b4f5e8e0aa68eb850aa3548124c7b6"
+    },
+    {
+      "path": "experiments/transformations/ParallelDecisionComparison.jl",
+      "sha256": "f86abf813e3f286e80d9a446cb8ab2cff886dab143fcc5d67cfa09324a6d7e15"
+    },
+    {
+      "path": "experiments/transformations/PiFourWireParallelACDecision.jl",
+      "sha256": "c7a4056fc6eca7682d7b05d8c2325a7b0aa43c6a65b08ad3cc9b0769ce8adcfd"
+    },
+    {
+      "path": "experiments/transformations/PortFactorArchitecture.jl",
+      "sha256": "73be270fa8119c6bad9bbfc9651c539539b5999ce709884b472ef5e519bb05b5"
+    },
+    {
+      "path": "experiments/transformations/PositiveSequenceCollapse.jl",
+      "sha256": "657b1a708aa319c54c4bb3e90fc3f1af1dc0e5dc6894d3ef89de33a003d5353c"
+    },
+    {
+      "path": "experiments/transformations/RunningNetworkCycleSpace.jl",
+      "sha256": "d6a423708ceae91133d056b3c81f6710ac5fffd577e62d3cf0ca1942142a6d1d"
+    },
+    {
+      "path": "experiments/transformations/RunningNetworkRadialityWitness.jl",
+      "sha256": "5768fee447d09fe6c7856dff7459ac096bdbe32759dd79d57b0c6c5bde947578"
+    },
+    {
+      "path": "experiments/transformations/RunningNetworkTypedKronWitness.jl",
+      "sha256": "a0a15c7be031e9b8c978b0cb00bdd1edf5575253b40f6662a2a4cf8b92330281"
+    },
+    {
+      "path": "experiments/transformations/SeriesElimination.jl",
+      "sha256": "8b83a308173b0755b025684a0dbe2d43104ac26802a7e61591526a90884ce6be"
+    },
+    {
+      "path": "experiments/transformations/SolverDiagnosticsCrosswalk.jl",
+      "sha256": "513856a9f994356590882a5c941157a67a08ec0c627a24015a636069cffba817"
+    },
+    {
+      "path": "experiments/transformations/ThreeMemberFourWireParallelACDecision.jl",
+      "sha256": "8e4d73171de374738c3f20cab27906df5dd734016baba5b01a37f6cb6fe4e644"
+    },
+    {
+      "path": "experiments/transformations/TopologyProjectionWitness.jl",
+      "sha256": "0f8930ddc16b7c5bd1df59dad5966eb72071ffc97b6df6b8b024c752bb994f95"
+    },
+    {
+      "path": "experiments/transformations/TransformationContracts.jl",
+      "sha256": "0a5d604ef1e3b1de3061e14bb1bbaf5f4315ad7e33abac524bde7783a4deabdb"
+    },
+    {
+      "path": "experiments/transformations/TransformerControlFamilyWitness.jl",
+      "sha256": "446ffe3ff4c85cdb847a022dcc9c43a7f244e3dbd594d4d5fed962f33c4a8ee1"
+    },
+    {
+      "path": "experiments/transformations/TransformerFactorCompletion.jl",
+      "sha256": "30f9c60dd14f146847275b55081a3090dc83d9d49f14e408262dc0955232642a"
+    },
+    {
+      "path": "experiments/transformations/TransformerTapACDecision.jl",
+      "sha256": "bf7a8c47e8a1b8ddb1d5916ab81c0adc28cf1e36276e2c7702ea5bc9a337cfa8"
+    },
+    {
+      "path": "experiments/transformations/TransformerTapACIndependentReproduction.jl",
+      "sha256": "57c5910cb8e848f3855155e00a26234f238c71b2cdd0fc65cd3b299847ee604e"
+    },
+    {
+      "path": "experiments/transformations/TransformerTapDecisionCompilation.jl",
+      "sha256": "087fd02161771c9a4c5462c562099ddcba73f014b1e296fad6ab92c53d6e3a9c"
+    },
+    {
+      "path": "experiments/transformations/TransformerWindingNormalization.jl",
+      "sha256": "9f27d906f4f8606c9d6ddf04430e8dcaba410360610371529fd5492b9844851a"
+    },
+    {
+      "path": "experiments/transformations/TranslationTraps.jl",
+      "sha256": "69898a60f536f29cff0cc823b4f409822618881199f94dfa8d0a6dd10d1bb31c"
+    },
+    {
+      "path": "experiments/transformations/TypedKronReduction.jl",
+      "sha256": "4a5cc6da7cb48d780ee655e852b7d66426398942f6ce0d817c1b2d5759847e51"
+    },
+    {
+      "path": "experiments/transformations/TypedStateSpace.jl",
+      "sha256": "40d76ae6add2c2a19bc250436f389bb5dc8c22c696d717f9abf9d385dcf75327"
+    },
+    {
+      "path": "llm/README.md",
+      "sha256": "0c0734ee4561d6f36995c765bd9dfc4f4be026aca80d3667398ca43e98799fb8"
+    },
+    {
+      "path": "llm/access-fixtures.toml",
+      "sha256": "723853816e2f2ef743a7567142a1d44305a467a56d5a3670e843f0fee722e561"
+    },
+    {
+      "path": "llm/adversarial-cases.toml",
+      "sha256": "7a1adb4ba8763e62eb9bb1efd5eb6ae12df23de9448ecb225d26ff609b0dcf5a"
+    },
+    {
+      "path": "llm/evaluation-cases.toml",
+      "sha256": "1812f7a085ba351af80cd749ba09783f55b14740771ff7e438d49923aa1b386f"
+    },
+    {
+      "path": "llm/generated/access-fixtures.jsonl",
+      "sha256": "f0cfab57524952e14ac09ff5636e73d875067363f9e7bd9581ee61565ac8e11a"
+    },
+    {
+      "path": "llm/generated/adversarial-evaluation.json",
+      "sha256": "b54304157f0e5eb60806be53ee2d5d6c2c64072f3b1cc6725f1142598b900990"
+    },
+    {
+      "path": "llm/generated/adversarial-evaluation.md",
+      "sha256": "b696d0983f65b15a20723f89f51f8b7c4b9bd93caccd55d23c51580d515bd204"
+    },
+    {
+      "path": "llm/generated/corpus-manifest.json",
+      "sha256": "9f8c27313f8fae4084274363367b868b60759f7ea7b5a87149042727d251b6f3"
+    },
+    {
+      "path": "llm/generated/corpus.jsonl",
+      "sha256": "8d73544719d5c384159167355602ceb9576b5c71c6838f4557c969be2c40eaf7"
+    },
+    {
+      "path": "llm/generated/neural-retrieval-evaluation.json",
+      "sha256": "c0cdc9239396d5e0ee5427bc62ec6dec30eda31e7035a3e1070b0de4cdc787e1"
+    },
+    {
+      "path": "llm/generated/neural-retrieval-evaluation.md",
+      "sha256": "55908570477df2cf7e9d1c89d26307dd48cbf3461ac4fc8819d28de734f2c02f"
+    },
+    {
+      "path": "llm/generated/retrieval-evaluation.json",
+      "sha256": "68f6d24d520d19ac79d883b2e4e74e0805cfabfe79d77c478124b34547a5ed01"
+    },
+    {
+      "path": "llm/generated/retrieval-evaluation.md",
+      "sha256": "597e4d794f9e0df3562bff81f5d92554b6d3d386f8ab3e3ea6baf67f1242c944"
+    },
+    {
+      "path": "llm/heldout-paraphrases.toml",
+      "sha256": "59de33ec99d2b61ac4e0db0e2f0286d3d0e79303447a187ba23fbef3a13ebf56"
+    },
+    {
+      "path": "llm/misconceptions.toml",
+      "sha256": "64620198e4c41f66755abd6f1c824e5dd87ee6a4d373c575dac35746bd04a645"
+    },
+    {
+      "path": "llm/neural-models.toml",
+      "sha256": "2b701b302952063c03e85c3b5da6b8ba5beaf60d480fbbc2a6332360d50d695d"
+    },
+    {
+      "path": "package/.DS_Store",
+      "sha256": "ee308525f1ec7e6b96f6c4e00c3f600e00ee2117e3336bc5b8e96eb288ab503f"
+    },
+    {
+      "path": "package/GraphModelsForPowerNetworks/Manifest.toml",
+      "sha256": "e77c308fafafc9697aae21d8ebd8d251fc74a09c6ca96fcf6ff9d8f4337ef667"
+    },
+    {
+      "path": "package/GraphModelsForPowerNetworks/Project.toml",
+      "sha256": "5f40500fc4f1819162294b0ffcafe22b98253bcab64879c684c962075a2e55c5"
+    },
+    {
+      "path": "package/GraphModelsForPowerNetworks/README.md",
+      "sha256": "012980c6e437e6bb1df0695f9a0d87c947bbbce2ec3419b371cdca121cfa5fda"
+    },
+    {
+      "path": "package/GraphModelsForPowerNetworks/src/GraphModelsForPowerNetworks.jl",
+      "sha256": "3dc0fdfb55688955e5b38a7db7fb1046feda3a74dc0dcc5d67b50149e1555736"
+    },
+    {
+      "path": "package/GraphModelsForPowerNetworks/src/MultigraphCycleSpace.jl",
+      "sha256": "8d8656d379292f1be8555504a0600ab2f69ad5664dcfd08402e422cd1f0180d1"
+    },
+    {
+      "path": "package/GraphModelsForPowerNetworks/src/TransformationContracts.jl",
+      "sha256": "e8d0e6730826ef839857b4df56aa4938b8610ff9d1b14a37b0bbae2daf1e1511"
+    },
+    {
+      "path": "package/GraphModelsForPowerNetworks/src/TypedKronReduction.jl",
+      "sha256": "7f7acfcf8363e428730d6ce9fcb336c078cd02245178424607e318e8ded5469e"
+    },
+    {
+      "path": "package/GraphModelsForPowerNetworks/src/TypedStateSpace.jl",
+      "sha256": "f3f6dbd9d08479c55366772608f244213af2853a0bf81eac0959b69daf2c68aa"
+    },
+    {
+      "path": "package/GraphModelsForPowerNetworks/test/runtests.jl",
+      "sha256": "7af1d6616e058cb514c3500631a06dbbfbcd7af674c66f9d1e227109415bdb2a"
+    },
+    {
+      "path": "review/archive/README.md",
+      "sha256": "f7055191485ab222206abfed3c97b6e0e5d8cae382969557c5c6d04e066961f1"
+    },
+    {
+      "path": "review/archive/expert-review-response-2026-08-13.md",
+      "sha256": "1231a29187bf392b87703b92b5e611330b850008e948451363f2e12477311b16"
+    },
+    {
+      "path": "review/archive/expert-review-response-2026-08-14.md",
+      "sha256": "553b1b3cb715bbb23bdb36d74cbbc8272bbe072ea1a61d11d1ab9ee19c0f9df8"
+    },
+    {
+      "path": "review/archive/independent-review-packet-2026-08-14.md",
+      "sha256": "c17d29878dc0432f519b1d7b0df5c90a29fa81b5c4a5cf213efeb4778271700f"
+    },
+    {
+      "path": "review/bibliography-audit.toml",
+      "sha256": "8acefdb494cf477c08c825ea76611079235a1de80d5cc1794a781273c3455fa4"
+    },
+    {
+      "path": "review/coding-guide.md",
+      "sha256": "8a282e7ecb302403f8897a165eb700084f3cffd2cbfff0a37df7a6eee18ddbb3"
+    },
+    {
+      "path": "review/deduplication-register.csv",
+      "sha256": "9288671ce375781afbc940e65c05a4d10275099af329784cbe105097cacc5d95"
+    },
+    {
+      "path": "review/evidence-matrix-reconciliation-2026-08-15.md",
+      "sha256": "f7c98efebe96a8ad7e3baa778765a9c934f70168d50a50701fd37fe393347827"
+    },
+    {
+      "path": "review/evidence-matrix.csv",
+      "sha256": "770b9f9baa4720e8e89f514e470ba7baec07ace45ea3fd1d0590dbda8c03342b"
+    },
+    {
+      "path": "review/evidence-schema.json",
+      "sha256": "45692ef5e2ebd89fe1cb33bb9a16a2892446528e5ef2d965c33b2611f37a578f"
+    },
+    {
+      "path": "review/expert-review-2026-08-13.md",
+      "sha256": "35bef060cb7d03acbba0000a8d697ad6761df7d2e39b196f654b048fa12e7b91"
+    },
+    {
+      "path": "review/expert-review-2026-08-14.md",
+      "sha256": "945ee3b7ebc6bba92b2c85dc0909c15eec42ada241f01e9b45e6151550872584"
+    },
+    {
+      "path": "review/external-review-packet-2026-08-17.md",
+      "sha256": "267cf197e7b180fe9b7bdba1e22b3508152093021ccd70b93af51ce6afc791f4"
+    },
+    {
+      "path": "review/external-review-response-ledger.csv",
+      "sha256": "f62b51ca61380e7ddec49bbfaa3da1cc04348163ec11f2b159a36b9b8f10f238"
+    },
+    {
+      "path": "review/independent-review-packet-2026-08-15.md",
+      "sha256": "b3eef127659277db22ea29ec44fb7f03541e6b684b7123d8969ccdf07dc80b6d"
+    },
+    {
+      "path": "review/independent-technical-review-2026-08-15.md",
+      "sha256": "772520e9a22a4be2f4c7e6507f93a90464656e6f84f1bd224dbd257aacb554a9"
+    },
+    {
+      "path": "review/paper-extraction-tracks.md",
+      "sha256": "db17b42e7bcb5dda3108b051bd5e5423f9b4cb210a3b7980c60e49a1f282c9da"
+    },
+    {
+      "path": "review/prose-number-bindings.toml",
+      "sha256": "5f29ea5f4c408d3234275aa5db5c8a55307d368ad9296a1da1d619c418fbd91e"
+    },
+    {
+      "path": "review/protocol.md",
+      "sha256": "3ce30aeea9161ddf5a3a866258c4126754f3bc05d082164e37762ca6d733ce2c"
+    },
+    {
+      "path": "review/search-runs/2026-08-14-seed-batch.md",
+      "sha256": "bd0038ee6f0799be2c2fc00a16ecc82e38d207e22cd6d18dc69db1e2c3056adb"
+    },
+    {
+      "path": "review/search-runs/2026-08-15-formulation-landscape.md",
+      "sha256": "414f5384b87cc5e53ca5ab62eedcf43345fe992c655ae0002e26541989a5c642"
+    },
+    {
+      "path": "review/search-runs/2026-08-15-information-model-citation-chase.md",
+      "sha256": "42351417ea975f337076d124fb1a613fe8ae62757ce109b03ec6e2ae4c978dfa"
+    },
+    {
+      "path": "review/search-runs/2026-08-16-multiphase-and-practical-reductions.md",
+      "sha256": "fb66ec740d92522d3512bf6b9131739d07b1dfe98f486a838bc340181b478910"
+    },
+    {
+      "path": "review/search-strings.md",
+      "sha256": "2e1dc82eecbce8072a7707e53e018e00a53afb7141a4d70bce4e9971f189d073"
+    },
+    {
+      "path": "review/second-coding-2026-08-15.md",
+      "sha256": "fff9f9967d49bc47e82596e4f58e731e2d8e2d406780d2de00d8296d7ab06cc1"
+    },
+    {
+      "path": "review/second-coding-template.csv",
+      "sha256": "9c45cf2a022c0298acc87a4db0ea88df06a4dea5f2f216ab03a16812a72b0b24"
+    },
+    {
+      "path": "review/snapshot-manifest.json",
+      "sha256": "b72d56be732ff5346fcfa88f41d5b019eaeebbf53b80f9d3f33716a46f2196b6"
+    },
+    {
+      "path": "review/snapshots/evidence-matrix-second-coding-2026-08-15.csv",
+      "sha256": "3bfd987233c110f582375632e1445c519dc1e8929b29de4de5653df62a31b516"
+    },
+    {
+      "path": "review/snapshots/r0-status-2026-08-17.md",
+      "sha256": "2107dd2746139efa17d3f6b691974af2523fa30bd0b97226af655149a2389495"
+    },
+    {
+      "path": "review/snapshots/r2-engineering-scientific-audit-2026-08-17.md",
+      "sha256": "17ab7dc2a8864bbc69a5be3802161142b52d94f2a5db2f034c09825427355f32"
+    },
+    {
+      "path": "review/snapshots/r3-literature-language-audit-2026-08-17.md",
+      "sha256": "389ec950de229789887041518eb0112f3b92d5a966de253904fa87bd860b4976"
+    },
+    {
+      "path": "review/snapshots/r3-search-and-coding-gate-2026-08-17.md",
+      "sha256": "22bf42d4537c6c56113b0286b971e390e0da66c77ad75e35158f34454fe2bcaf"
+    },
+    {
+      "path": "schemas/llm-answer-response.schema.json",
+      "sha256": "07b72b26cd74fdaa3dfaab513c25275d2807e09818c2a187076fc9007cbdd6dc"
+    },
+    {
+      "path": "schemas/llm-context-packet.schema.json",
+      "sha256": "8015b397b812b0275b4bebea557490d102e39e5c015ebef276d6222b2d849b93"
+    },
+    {
+      "path": "schemas/llm-corpus-record.schema.json",
+      "sha256": "b29138a2c86ee3aeda12445fc34ad37e79dd1e14b3d33a5a5b8e3c6b33661407"
+    },
+    {
+      "path": "schemas/llm-evaluation-case.schema.json",
+      "sha256": "e7f8e26221072bee210a11123c8cdf8cb570dfde188bb84bbf8c486fa7e98b31"
+    },
+    {
+      "path": "schemas/llm-retrieval-benchmark.schema.json",
+      "sha256": "acd73f23b37a75aa211d4b8c3b6b116b7a969da11ba097ce95b54dac72088e38"
+    },
+    {
+      "path": "schemas/transformation-certificate.schema.json",
+      "sha256": "9bd2394287270d93a04c5c97b41b36f147da67bad39ab9509c6ed052a61ac09d"
+    },
+    {
+      "path": "scripts/attach_typed_certificate_interfaces.py",
+      "sha256": "e808b95a4cf52f402117d3468371ffd5ead72d6427a4887181703b113a01db20"
+    },
+    {
+      "path": "scripts/benchmark_llm_embeddings.py",
+      "sha256": "cb63732ab25ea4a2e7644a01bba61d8e2c23187fd5867980025fceb48d50276d"
+    },
+    {
+      "path": "scripts/check_artifacts.py",
+      "sha256": "15d359d6396d8ab29db3dbb3da56a9208fe4098a950500b1c4fc8102b17b9268"
+    },
+    {
+      "path": "scripts/check_bibliography.jl",
+      "sha256": "c52bc0b79433deae89b858b0c150b09183a67a36115bedee35d330345fcb562b"
+    },
+    {
+      "path": "scripts/check_callouts.py",
+      "sha256": "5b4561c8ff1a99022cb37eb08d864bc1e72129e0731237a1ddd06e5adcc18309"
+    },
+    {
+      "path": "scripts/check_claim_mentions.py",
+      "sha256": "2eb3800ec4384bb835e1c8581c1566a07958a94edb78b4a878ee0bc7941eaea1"
+    },
+    {
+      "path": "scripts/check_claims.jl",
+      "sha256": "5ac7012357bce6f19a3fa11d96572969e5d1e2e35bbc301670e2296e9ee632eb"
+    },
+    {
+      "path": "scripts/check_evidence_matrix.py",
+      "sha256": "1e7fa7a37266cfa9651e986956410189019e525692c568556cc6e3024fd1d9e6"
+    },
+    {
+      "path": "scripts/check_evidence_summary.py",
+      "sha256": "445d1bf243aedbddce458f14d3d5a661c9295213b6e9cd886a733208d4d9d910"
+    },
+    {
+      "path": "scripts/check_figures.py",
+      "sha256": "46ce435ce0ce3520ea4d1de467553663b4b22e2390b4d6e406fc752a12d98ac7"
+    },
+    {
+      "path": "scripts/check_llm_accessibility.py",
+      "sha256": "d186978c994ae97198ef99c2e86b917561f8ca22c3309382784c9c8b3ab647dc"
+    },
+    {
+      "path": "scripts/check_llm_answer_contract.py",
+      "sha256": "b0326dc7da78b65ebbbb2acd13cc1d1ae967a83449df51b0306646f9a25df5e4"
+    },
+    {
+      "path": "scripts/check_llm_reproducibility.py",
+      "sha256": "f7c93c936f55f0a943de3594ddbce433fbe3835188d871551db32d6e6612d7d9"
+    },
+    {
+      "path": "scripts/check_llm_routes.py",
+      "sha256": "5e475003a1dc0b3f4cc82c8a37181cba693a1e0967a14b61d5bc2791382f63be"
+    },
+    {
+      "path": "scripts/check_math_hygiene.py",
+      "sha256": "7b174c8bf634cfdc96c34694413b499dbe7e59e5fa915422cd15088f7c2c042f"
+    },
+    {
+      "path": "scripts/check_neural_benchmark.py",
+      "sha256": "9f387b616c7b924622944c8c70118ba075f4ef5476f4f447f579507dd50ccd09"
+    },
+    {
+      "path": "scripts/check_page_ids.py",
+      "sha256": "ea38044336f98a501c51ee6e9bae610a8df70b109f468354fed3faa7a632f5e6"
+    },
+    {
+      "path": "scripts/check_paper_tracks.py",
+      "sha256": "555191d1301b1e7b918ab6f5e8da8de9b99c63911434c4d49bb1ae8af22aeff3"
+    },
+    {
+      "path": "scripts/check_pdf_refs.py",
+      "sha256": "2d95d144053d32a19860ed9459897c92b62e1d499f7a501eed84a2e52dfb4e00"
+    },
+    {
+      "path": "scripts/check_prose_numbers.py",
+      "sha256": "d3b78ef2b51d7afd0c3609f46dd73b1ccd965913f9a031e05811faf8fd0c810e"
+    },
+    {
+      "path": "scripts/check_release_candidate.py",
+      "sha256": "b886daab354b97c65367c8199694ea1d6020cba69c2bd85209a80fdd414e4925"
+    },
+    {
+      "path": "scripts/check_rendered_outputs.py",
+      "sha256": "9258f1c2e3a311c9eac571e0c1d58d07d0608c5b4b15e5754df6bba212902692"
+    },
+    {
+      "path": "scripts/check_review_snapshot.py",
+      "sha256": "b57de4e163ec7b9c92f2fe5b0ea65ff761a7702187bf858fd91de8dbd6e2cce3"
+    },
+    {
+      "path": "scripts/check_vocabulary.py",
+      "sha256": "a834002770bc3ec9ca55d36c2d7f2c990a7eb4395a28c47fc887ad410d3937f2"
+    },
+    {
+      "path": "scripts/evaluate_llm_adversarial.py",
+      "sha256": "67997ce877e69435be841f7688ee20882a82565bf5a3a7777a1f84485130a33e"
+    },
+    {
+      "path": "scripts/evaluate_llm_retrieval.py",
+      "sha256": "1f60a1496c5d424b51a880d93d01d614220b85913a91432f34cfa4196cdb698c"
+    },
+    {
+      "path": "scripts/generate_artifact_manifest.py",
+      "sha256": "7ff151e0851caadf649d2fa520ea9a55a39a1a13c3169869c7d1c04c4d9f0bef"
+    },
+    {
+      "path": "scripts/generate_fixture_coverage_matrix.py",
+      "sha256": "b7e5fd226fb5ff3bebc469a857ddd75b9a6aa634d62cd6d5bbdf5a7a94c2234a"
+    },
+    {
+      "path": "scripts/generate_knowledge_base_indexes.py",
+      "sha256": "ed49a2d2c6be9c5228294ad6976fc4e5a25ed99ef37ab97da75cbfb0f8771f86"
+    },
+    {
+      "path": "scripts/generate_llm_access_fixtures.py",
+      "sha256": "88c4f381ac8fdcda0bd3ecce785470c3b1ef81bf9f403b45eb1bc374e2a2c8fc"
+    },
+    {
+      "path": "scripts/generate_llm_corpus.py",
+      "sha256": "ba7eac07f23e3668dd118645c2294f3b6b1c923b0a255df10f97b024dc1298cf"
+    },
+    {
+      "path": "scripts/generate_research_record.py",
+      "sha256": "ffea52dca34448aa0f5e274b9c61fe38e0a1850f833662faa881953e920e7ea4"
+    },
+    {
+      "path": "scripts/generate_review_snapshot.py",
+      "sha256": "82d502bdd53fb0ea2b503d1f6d5ecda11fddf9eacd27310d685b1db7fc5a38d1"
+    },
+    {
+      "path": "scripts/generate_second_coding_template.py",
+      "sha256": "0d277547efb8132207feff479d250c91acb0ab9d474e8e0549bbbfde1bcf260f"
+    },
+    {
+      "path": "scripts/generate_semantic_evaluator_matrix.py",
+      "sha256": "039757760b6a6071bff727186d33bd933a922de8bb4940c498295bcabb75e791"
+    },
+    {
+      "path": "scripts/generate_vocabulary_indexes.py",
+      "sha256": "72912180b3339bc50d476ab976f8f17db247ef53c8a6002bd018ea343ee3df75"
+    },
+    {
+      "path": "scripts/llm_embeddings.py",
+      "sha256": "89a148c816a77262a79087dfbe87cb3804d8db16017570f0a8797d7e5a116411"
+    },
+    {
+      "path": "scripts/llm_retrieval.py",
+      "sha256": "7f66ebd8a1d2ecbef8d4a65dd6fc603f70b030ad4c371bb7a15b05c41ac5f26c"
+    },
+    {
+      "path": "scripts/llm_service.py",
+      "sha256": "2b105328a3e075bb99c25eafdeb2c9d6de2f741405eea4d1de8930c580fcab0a"
+    },
+    {
+      "path": "scripts/mcp_llm_server.py",
+      "sha256": "977d9188d5f4f54741cb8699ca0d7c35d6193e415d1b017318e6fbede37147a7"
+    },
+    {
+      "path": "scripts/reproduce_balanced_transmission.py",
+      "sha256": "ff21b06da1c6af4a33640c735c19c4d664d9888cf51ebd102cd0d94a5142e8f2"
+    },
+    {
+      "path": "scripts/reproduce_clean_fixture.sh",
+      "sha256": "5179f251f604a2b62b63928a403bcb04b261e5506bac31cf74aedca8fe3ec245"
+    },
+    {
+      "path": "scripts/reproduce_clean_package_matrix.sh",
+      "sha256": "49ae0c649f597d11fd3ce67e14352b9cd652f5206e69ffee764eef3bd726bc3f"
+    },
+    {
+      "path": "scripts/reproduce_connection_maps.py",
+      "sha256": "4bb1d0a1f2fd44c1c44d10525d7cbb0132b0f42823fe25d54cfb0c240a52a4de"
+    },
+    {
+      "path": "scripts/reproduce_explicit_earth.py",
+      "sha256": "64e16b4dcdde70c52f0664b4397e2797c894af79953b8768b33aeca1e9ceec7a"
+    },
+    {
+      "path": "scripts/reproduce_explicit_earth_kron.py",
+      "sha256": "4994a86dfa761249ef66847a887c11700feee1086646c96fd5f17b3d4e58e468"
+    },
+    {
+      "path": "scripts/reproduce_grounding_impedance_sweep.py",
+      "sha256": "a6526af1706cceeb5cefe84920b2369938297c1915dca144ce0974c7f4cb3dfb"
+    },
+    {
+      "path": "scripts/reproduce_load_continuation.py",
+      "sha256": "d60dc520163c16869105cffd822a09425bdfb6f07cb06dc9269fee8efc03cec4"
+    },
+    {
+      "path": "scripts/reproduce_load_models.py",
+      "sha256": "e0538e31855e903713beae2aa1af3521387ed7680f00c3b752dab523cc7bdbfa"
+    },
+    {
+      "path": "scripts/reproduce_neutral_kron.py",
+      "sha256": "cc036e8287fb0c7a38c39a517666ebe78358d87b1669cb46a8afe894f53d2928"
+    },
+    {
+      "path": "scripts/reproduce_nonlinear_grounding_probe.py",
+      "sha256": "4c291c1eef49fd475e894516a75bb49e9416e741eb8fc6a5cc113d813061ffe2"
+    },
+    {
+      "path": "scripts/reproduce_nonlinear_two_point_continuation.py",
+      "sha256": "d3327eccef30cea891b50c030490d1cbf78650785ee6763e167c548e5a4b679c"
+    },
+    {
+      "path": "scripts/reproduce_nonlinear_two_point_grounding.py",
+      "sha256": "c1c54d899231edfc5f77d847eea055a7a2c43f98d56cea2694d6938746748ad5"
+    },
+    {
+      "path": "scripts/reproduce_three_member_state_envelope.py",
+      "sha256": "13b80bebf933dee1a88dcde2d64e8626f16fa2bcd3273e175aad10dc64c1acc7"
+    },
+    {
+      "path": "scripts/search_llm_corpus.py",
+      "sha256": "13f693f8701cd5f97063cab0117c5a29f7c066ef138abf0fc3d7bd61597bdd2f"
+    },
+    {
+      "path": "scripts/serve_llm_access.py",
+      "sha256": "1400ccc8e23aa2fe603c05c8d8d358377e7741343df2c2cb20c73f3ca507a754"
+    },
+    {
+      "path": "scripts/tectonic-font-wrapper.sh",
+      "sha256": "077611df56a75bbfb8acf5f7a02382f626c7513401753506efdc801e5234400b"
+    }
+  ]
+}

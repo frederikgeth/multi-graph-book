@@ -1,0 +1,16 @@
+{
+    "semantic_matrix_sha256": "f3dfbbb92dc7e56612308fb2035fa633f5cef5a8a8efa332b32757d61b27df92",
+    "witness_id": "PKG-CLEAN-001",
+    "valid": true,
+    "dependency_commit": "b7aa9a1bb48bcc8b790d3bcf5417d6a32036352a",
+    "schema_version": "0.1.0",
+    "diffopt_version": "0.6.2",
+    "environment": "separately instantiated package checkout",
+    "tests": [
+        "experiments/test/public_api.jl",
+        "experiments/test/state_space_units.jl",
+        "experiments/test/certificate_api_matrix.jl",
+        "experiments/test/solver_diagnostics_crosswalk.jl",
+        "package/GraphModelsForPowerNetworks/test/runtests.jl"
+    ]
+}

@@ -1,0 +1,50 @@
+schema_version = "0.1.0"
+purpose = "canonical machine-readable examples for route and answer-contract regression"
+
+[[fixture]]
+fixture_id = "FIXTURE-YSPLIT-STUDENT"
+audience = "student"
+query = "Do loads and generators belong to the graph or to Ybus?"
+expected_status = "qualified"
+expected_misconception_id = "loads-generators-fixed-graph-membership"
+required_markdown_headings = ["Book-supported answer basis", "Required qualifications", "Sources"]
+
+[[fixture]]
+fixture_id = "FIXTURE-YSPLIT-SOFTWARE"
+audience = "software_engineer"
+query = "Should a constant admittance load be put in Ybus while retaining its load record?"
+expected_status = "qualified"
+expected_misconception_id = "loads-generators-fixed-graph-membership"
+required_markdown_headings = ["Book-supported answer basis", "Scope and assumptions", "Failure consequences"]
+
+[[fixture]]
+fixture_id = "FIXTURE-YSPLIT-POWER"
+audience = "power_engineer"
+query = "During iterative power flow, is a linearized device contribution in Ybus still a load?"
+expected_status = "qualified"
+expected_misconception_id = "loads-generators-fixed-graph-membership"
+required_markdown_headings = ["Book-supported answer basis", "Safe shorthand", "Sources"]
+
+[[fixture]]
+fixture_id = "FIXTURE-PARALLEL-POWER"
+audience = "power_engineer"
+query = "Can parallel circuits be replaced by one total rating for OPF?"
+expected_status = "qualified"
+expected_misconception_id = "parallel-admittance-implies-decision-equivalence"
+required_markdown_headings = ["Book-supported answer basis", "Failure consequences", "Unresolved boundaries"]
+
+[[fixture]]
+fixture_id = "FIXTURE-UNSUPPORTED"
+audience = "student"
+query = "What is the weather on Mars?"
+expected_status = "unsupported"
+expected_misconception_id = ""
+required_markdown_headings = ["Audience guidance", "Sources"]
+
+[[fixture]]
+fixture_id = "FIXTURE-UNDER-RETRIEVED"
+audience = "power_engineer"
+query = "Does a matching bus-matrix export establish that two studies have the same assets, ratings, and controls?"
+expected_status = "under_retrieved"
+expected_misconception_id = ""
+required_markdown_headings = ["Retrieval warning", "Audience guidance", "Sources"]

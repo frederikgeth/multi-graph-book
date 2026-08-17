@@ -1,0 +1,35 @@
+name: external-links
+
+on:
+  schedule:
+    - cron: '17 3 * * 1'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'docs/src/**'
+      - 'README.md'
+      - 'ROADMAP.md'
+      - '.github/workflows/external-links.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check external links
+        uses: lycheeverse/lychee-action@v2.4.0
+        with:
+          args: >-
+            --verbose
+            --no-progress
+            --exclude-mail
+            --exclude '^file:'
+            --exclude 'localhost'
+            'docs/src/**/*.md'
+            'README.md'
+            'ROADMAP.md'
+          fail: true
+          jobSummary: true

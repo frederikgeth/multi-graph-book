@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1.0",
+  "contract_id": "x1/discrete-tap/v0.1.0",
+  "transformer_id": "x1",
+  "status": "illustrative_decision_extension_not_nameplate_data",
+  "voltage_transfer_convention": "v_leakage_xkc = coefficient_xkc * v_connected_coil_xkc",
+  "winding_transfers": [
+    {
+      "id": "x1/transfer/1",
+      "winding_id": "x1/winding/1",
+      "winding_position": 1,
+      "terminal_order": ["a", "b", "c", "n"],
+      "coil_order": ["a", "b", "c"],
+      "control_mode": "fixed",
+      "coefficient": [
+        {"real": 1.0, "imag": 0.0},
+        {"real": 1.0, "imag": 0.0},
+        {"real": 1.0, "imag": 0.0}
+      ],
+      "attributes": {"interpretation": "nominal fixed transfer"}
+    },
+    {
+      "id": "x1/transfer/2",
+      "winding_id": "x1/winding/2",
+      "winding_position": 2,
+      "terminal_order": ["a", "b", "c", "n"],
+      "coil_order": ["a", "b", "c"],
+      "control_mode": "discrete",
+      "decision_id": "tap/x1/winding/2",
+      "coefficient": [
+        {"real": 1.0, "imag": 0.0},
+        {"real": 1.0, "imag": 0.0},
+        {"real": 1.0, "imag": 0.0}
+      ],
+      "attributes": {
+        "coefficient_parameterization": "coefficient_xkc(tap) = tap * base_coefficient_xkc",
+        "tap_start": 1.0,
+        "tap_positions": [0.95, 1.0, 1.05],
+        "source_status": "illustrative positions for the executable decision contract"
+      }
+    },
+    {
+      "id": "x1/transfer/3",
+      "winding_id": "x1/winding/3",
+      "winding_position": 3,
+      "terminal_order": ["a", "b", "c"],
+      "coil_order": ["a", "b", "c"],
+      "control_mode": "fixed",
+      "coefficient": [
+        {"real": 1.0, "imag": 0.0},
+        {"real": 1.0, "imag": 0.0},
+        {"real": 1.0, "imag": 0.0}
+      ],
+      "attributes": {"interpretation": "delta incidence carries the declared connection orientation"}
+    }
+  ],
+  "excitation_shunt": {
+    "id": "x1/excitation/winding/2",
+    "winding_position": 2,
+    "coil_order": ["a", "b", "c"],
+    "admittance_S": [
+      [{"real": 0.00001, "imag": -0.00004}, {"real": 0.0, "imag": 0.0}, {"real": 0.0, "imag": 0.0}],
+      [{"real": 0.0, "imag": 0.0}, {"real": 0.00001, "imag": -0.00004}, {"real": 0.0, "imag": 0.0}],
+      [{"real": 0.0, "imag": 0.0}, {"real": 0.0, "imag": 0.0}, {"real": 0.00001, "imag": -0.00004}]
+    ],
+    "attributes": {
+      "placement": "across winding 2 connected coils and independent of the tap",
+      "source_status": "illustrative values for the executable contract"
+    }
+  },
+  "internal_groundings": [
+    {
+      "id": "x1/internal-ground/winding/1/n",
+      "winding_position": 1,
+      "terminal": "n",
+      "scope": "transformer_internal",
+      "admittance_S": {"real": 0.001, "imag": -0.002},
+      "attributes": {"source_status": "illustrative value for the executable contract"}
+    }
+  ],
+  "metadata": {
+    "source_fixture": "data/running-network/v0.1.0.json",
+    "source_leakage_certificate": "TR-XFMR-003",
+    "source_impedance_reference_winding": "x1/winding/1",
+    "selected_compilation_reference_winding": "x1/winding/1",
+    "purpose": "exercise exact decision retention and the frozen-tap counterexample"
+  }
+}

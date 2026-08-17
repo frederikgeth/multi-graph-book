@@ -1,0 +1,144 @@
+{
+  "anti_patterns": {
+    "all_witnesses_pass": true,
+    "external_grounding_absorption": {
+      "compiler_rejected": true,
+      "ground_asset_retained_as_separate_object": true,
+      "interpretation": "External grounding remains a bus/grounding relation, not transformer-internal data.",
+      "scope": "external_bus",
+      "failed_guards": [
+        "external_bus_grounding_cannot_be_absorbed"
+      ]
+    },
+    "heterogeneous_series_merge": {
+      "interpretation": "The exact two-port composite is not a homogeneous line asset.",
+      "target_construction_code": null,
+      "accepted_behavioural_reduction": true,
+      "source_construction_codes": [
+        "OH-A",
+        "UG-B"
+      ],
+      "member_id_preserved": false,
+      "homogeneous_line_class_preserved": false,
+      "failed_guards": [
+        "physical_line_class_not_closed_under_heterogeneous_merge"
+      ]
+    },
+    "line_transformer_flattening": {
+      "multi_terminal_incidence_preserved": false,
+      "interpretation": "A two-bus drawing does not make a three-winding factor a line.",
+      "source_port_count": 3,
+      "source_ports": [
+        "winding/1",
+        "winding/2",
+        "winding/3"
+      ],
+      "failed_guards": [
+        "multi_terminal_factor_was_flattened_to_two_terminal_line"
+      ],
+      "flattened_line_endpoint_count": 2
+    },
+    "bim_bfm_index_loss": {
+      "member_consistency_holds": false,
+      "aggregate_balance_holds": true,
+      "interpretation": "A shared W_ij or aggregate balance does not by itself recover member voltage compatibility.",
+      "parallel_consistency_residual": 0.158113883008419,
+      "shared_bus_pair": [
+        "i",
+        "j"
+      ],
+      "branch_ids": [
+        "l",
+        "k"
+      ],
+      "failed_guards": [
+        "branch_identity_or_common_voltage_drop_constraint_omitted"
+      ]
+    }
+  },
+  "terminal_ratings": {
+    "voltage_to_pu": {
+      "real": 0.78,
+      "imag": -0.12
+    },
+    "voltage_from_pu": {
+      "real": 1,
+      "imag": 0
+    },
+    "to_terminal_current_pu": 1.422343868408761,
+    "illustrative_terminal_rating_pu": 1.3843175350961934,
+    "series_current_pu": 1.40089257261219,
+    "terminal_magnitudes_differ": true,
+    "to_terminal_exceeds_rating": true,
+    "from_terminal_current_pu": 1.346291201783626,
+    "from_terminal_exceeds_rating": false
+  },
+  "matrix_symmetry": {
+    "complex_symmetric": true,
+    "hermitian": false,
+    "matrix": [
+      [
+        {
+          "real": 1,
+          "imag": 1
+        },
+        {
+          "real": 0,
+          "imag": 0.2
+        }
+      ],
+      [
+        {
+          "real": 0,
+          "imag": 0.2
+        },
+        {
+          "real": 2,
+          "imag": 0.5
+        }
+      ]
+    ],
+    "hermitian_part_min_eigenvalue": 1,
+    "hermitian_part_positive_semidefinite": true
+  },
+  "all_witnesses_pass": true,
+  "source": "experiments/transformations/TranslationTraps.jl",
+  "schema_version": "0.1.0",
+  "energization": {
+    "asset_edges": [
+      [
+        "source",
+        "bus_a"
+      ],
+      [
+        "bus_a",
+        "bus_b"
+      ],
+      [
+        "bus_b",
+        "load"
+      ]
+    ],
+    "connected_in_asset_graph": true,
+    "energized_in_active_graph": false,
+    "open_member": "line_bus_a_bus_b",
+    "active_edges": [
+      [
+        "source",
+        "bus_a"
+      ],
+      [
+        "bus_b",
+        "load"
+      ]
+    ],
+    "load_bus": "load",
+    "vertices": [
+      "source",
+      "bus_a",
+      "bus_b",
+      "load"
+    ],
+    "source_bus": "source"
+  }
+}

@@ -1,0 +1,253 @@
+{
+    "checks": {
+        "current_cutset_redundancy_is_detected": true,
+        "semantic_loss_is_diagnosed": true,
+        "member_limit_is_lost_by_aggregate_y": true,
+        "declared_reference_does_not_imply_nonsingularity": true,
+        "aggregate_y_preserves_terminal_relation": true,
+        "same_voltage_can_have_different_source_current": true,
+        "mna_residuals_are_zero": true,
+        "grounded_rank_guard_passes": true,
+        "voltage_loop_contradiction_is_detected": true,
+        "tableau_or_mna_target_available": true,
+        "current_cutset_contradiction_is_detected": true,
+        "plain_nodal_y_lowering_is_rejected": true,
+        "source_current_is_an_extra_unknown": true,
+        "voltage_loop_redundancy_is_detected": true,
+        "floating_nodal_operator_is_singular": true,
+        "floating_singularity_is_diagnosed": true,
+        "source_relation_is_voltage_constraint": true,
+        "ordinary_y_injection_would_be_single_valued": true,
+        "source_provenance_is_retained": true
+    },
+    "nodal_rank_diagnostics": {
+        "interpretation": "A reference or grounding declaration is an input to the rank check, not a substitute for it.",
+        "floating_network": {
+            "rank": 1,
+            "declared_reference": null,
+            "diagnostic": "rank_guard_fails",
+            "nonsingular": false,
+            "dimension": 2
+        },
+        "grounded_network": {
+            "rank": 2,
+            "declared_reference": "bus_2",
+            "diagnostic": "rank_guard_passes",
+            "nonsingular": true,
+            "dimension": 2
+        },
+        "declared_reference_but_disconnected": {
+            "rank": 1,
+            "declared_reference": "bus_3",
+            "diagnostic": "rank_guard_fails",
+            "nonsingular": false,
+            "dimension": 3
+        }
+    },
+    "structural_diagnostics": {
+        "current_source_cutset": {
+            "consistent": {
+                "rank": 1,
+                "classification": "consistent_redundant_constraints",
+                "matrix": [
+                    1,
+                    2,
+                    1,
+                    2,
+                    1,
+                    2
+                ],
+                "rhs": [
+                    0,
+                    0
+                ],
+                "row_count": 2,
+                "augmented_rank": 1
+            },
+            "contradictory": {
+                "rank": 1,
+                "classification": "contradictory_constraints",
+                "matrix": [
+                    1,
+                    2,
+                    1,
+                    2,
+                    1,
+                    2
+                ],
+                "rhs": [
+                    0,
+                    1
+                ],
+                "row_count": 2,
+                "augmented_rank": 2
+            }
+        },
+        "scope": "rank consistency of declared ideal-source loop/cutset constraints",
+        "voltage_source_loop": {
+            "consistent": {
+                "rank": 1,
+                "classification": "consistent_redundant_constraints",
+                "matrix": [
+                    1,
+                    2,
+                    1,
+                    2,
+                    1,
+                    2
+                ],
+                "rhs": [
+                    3,
+                    6
+                ],
+                "row_count": 2,
+                "augmented_rank": 1
+            },
+            "contradictory": {
+                "rank": 1,
+                "classification": "contradictory_constraints",
+                "matrix": [
+                    1,
+                    2,
+                    1,
+                    2,
+                    1,
+                    2
+                ],
+                "rhs": [
+                    3,
+                    7
+                ],
+                "row_count": 2,
+                "augmented_rank": 2
+            }
+        }
+    },
+    "all_checks_pass": true,
+    "observation_contract": {
+        "mna_and_plain_nodal_agree_for": [
+            "H_voltage"
+        ],
+        "mna_and_plain_nodal_not_equivalent_for": [
+            "H_voltage_and_source_current"
+        ],
+        "H_voltage_and_source_current": "retained node voltages plus ideal-source current",
+        "H_voltage": "retained node voltages",
+        "equivalence_scope": "formulations are equivalent only relative to a declared observation family H and preservation contract"
+    },
+    "source_factor": {
+        "factor_id": "vs_1",
+        "factor_type": "ideal_voltage_source",
+        "relation": "v_p - v_ref = E",
+        "ports": [
+            "p",
+            "ref"
+        ],
+        "current_variable": "i_vs"
+    },
+    "model_scope": "ideal voltage source, floating linear network, and aligned parallel members with source-level current limits",
+    "observations": {
+        "source_currents": [
+            -1,
+            1
+        ],
+        "node_voltages": [
+            1,
+            1
+        ],
+        "injections": [
+            0,
+            2
+        ]
+    },
+    "claim_ids": [
+        "FORMULATION-NODAL-001",
+        "FORMULATION-NODAL-002",
+        "FORMULATION-NODAL-003"
+    ],
+    "witness_id": "FORMULATION-NODAL-001",
+    "formulation_guards": {
+        "voltage_constraint_rhs": "the selected voltage-source relation appears as e on the MNA right-hand side",
+        "phi_lin": "fixed linear factors only; unfixed decision-carrying factors remain in the equation/constraint operator",
+        "kcl_sign_convention": "branch current i_e enters the KCL row with +B*i_e and source injection j is positive on the right-hand side",
+        "nodal_rank_guard": "rank(Y^N) equals the retained voltage dimension after all declared reference, grounding, and state maps are applied"
+    },
+    "mna_target": {
+        "variables": [
+            "v_p",
+            "i_vs"
+        ],
+        "right_hand_sides": [
+            [
+                0,
+                1
+            ],
+            [
+                2,
+                1
+            ]
+        ],
+        "matrix": [
+            1,
+            1,
+            1,
+            0
+        ],
+        "solutions": [
+            [
+                1,
+                -1
+            ],
+            [
+                1,
+                1
+            ]
+        ]
+    },
+    "evidence_type": "minimal_formulation_failure_family_witness",
+    "lowering": {
+        "direct_target": "MNA/tableau equation and constraint operator",
+        "diagnostic": "nodal_admittance_target_requires_voltage_source_current_variable",
+        "plain_nodal_y_target": "unavailable_without_extra_variable_or_changed_query",
+        "omitted_semantics_if_forced": [
+            "voltage_constraint",
+            "source_current",
+            "branch_limit_attachment"
+        ]
+    },
+    "interpretation": "An ideal voltage source is naturally represented by a voltage constraint and an extra branch-current unknown. A plain nodal-admittance injection is single-valued in node voltage and therefore cannot preserve the source relation and current observations without changing the target contract.",
+    "source": "experiments/transformations/CircuitFormulationWitness.jl",
+    "failure_cases": {
+        "semantically_lossy_parallel_aggregation": {
+            "member_admittances": [
+                1,
+                3
+            ],
+            "diagnostic": "aggregate_y_forgets_member_current_limits",
+            "member_currents_at_drop": [
+                1,
+                3
+            ],
+            "aggregate_admittance": 4,
+            "member_limits": [
+                2,
+                2
+            ]
+        },
+        "singular_floating_network": {
+            "rank": 1,
+            "diagnostic": "nodal_operator_singular_without_reference_or_shunt",
+            "operator": [
+                1,
+                -1,
+                -1,
+                1
+            ],
+            "dimension": 2
+        },
+        "unavailable_voltage_source": {
+            "diagnostic": "nodal_admittance_target_requires_extra_current_variable",
+            "target": "MNA/tableau"
+        }
+    }
+}

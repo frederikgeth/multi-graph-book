@@ -1,0 +1,362 @@
+{
+  "interfaces": {
+    "units": {
+      "source": [
+        "winding-own V",
+        "winding-own A",
+        "declared short-circuit-reference ohm"
+      ],
+      "relation": "winding resistances are referred by N_k squared; external admittance is mapped back by diag(N_k) inverse",
+      "target": [
+        "selected-reference ohm",
+        "winding-coordinate siemens"
+      ]
+    },
+    "decisions": {
+      "source": [
+      ],
+      "relation": "the compilation introduces no tap, topology, or investment decision",
+      "target": [
+      ]
+    },
+    "constraints": {
+      "source": [
+        "complete pairwise short-circuit tests",
+        "per-winding current limits"
+      ],
+      "relation": "all pairwise impedances are encoded by ZB and winding-indexed limits remain attached to their original windings",
+      "target": [
+        "reference-coordinate impedance relation",
+        "per-winding current limits"
+      ]
+    },
+    "boundary_quantities": {
+      "source": [
+        "external winding coil voltages and currents"
+      ],
+      "relation": "Yw preserves the same external winding leakage relation represented by all pairwise tests",
+      "target": [
+        "external winding coil voltages and currents"
+      ]
+    },
+    "objectives": {
+      "source": [
+      ],
+      "relation": "the leakage factor declares no local objective term",
+      "target": [
+      ]
+    },
+    "state_variables": {
+      "source": [
+        "external winding coil voltages",
+        "external winding coil currents"
+      ],
+      "relation": "turns-ratio scaling and the reference incidence map relate external and reference coordinates",
+      "target": [
+        "referred winding voltages",
+        "reference voltage differences",
+        "external winding coil currents"
+      ]
+    }
+  },
+  "preconditions": [
+    "all unordered winding pairs have short-circuit reactance data",
+    "nominal winding voltages are finite and positive",
+    "the source short-circuit-impedance reference winding is declared",
+    "the selected compilation reference is a source winding",
+    "per-winding resistances and current limits are finite and nonnegative",
+    "the symmetric reference reactance matrix is positive semidefinite within tolerance",
+    "the reference impedance matrix is nonsingular for admittance compilation",
+    "nominal turns ratios are fixed parameters"
+  ],
+  "rule_id": "multiwinding_pairwise_leakage_reference_compilation",
+  "provenance": {
+    "generated_objects": [
+      "generated_zb__x1",
+      "generated_yw__x1"
+    ],
+    "short_circuit_reference_winding": "x1/winding/1",
+    "source_windings": [
+      "x1/winding/1",
+      "x1/winding/2",
+      "x1/winding/3"
+    ],
+    "source_short_circuit_reference_convention": "BMOPFTools n_winding x_sc values use winding 1 as their impedance reference",
+    "selected_reference_winding": "x1/winding/1",
+    "source_transformer": "x1"
+  },
+  "classification": "exact_compilation",
+  "target": {
+    "object_ids": [
+      "generated_zb__x1",
+      "generated_yw__x1"
+    ],
+    "detail": {
+      "nonreference_winding_order": [
+        "x1/winding/2",
+        "x1/winding/3"
+      ],
+      "reference_winding": "x1/winding/1",
+      "reference_impedance_dimension": 2,
+      "external_winding_admittance_dimension": 3
+    },
+    "model_category": "reference_coordinate_multiwinding_leakage_factor"
+  },
+  "certificate_id": "TR-XFMR-002",
+  "preserves": [
+    "all_declared_source_semantics",
+    "all_pairwise_short_circuit_impedances",
+    "external_winding_leakage_relation",
+    "winding_identity_and_nominal_turns_ratios",
+    "per_winding_current_limits",
+    "source_to_target_provenance"
+  ],
+  "constraint_map": {
+    "external_admittance": "Yw = D^-1*Cref'*inv(ZB)*Cref*D^-1",
+    "turns_ratio": "N_k = v_nom[k]/v_nom[r] for selected reference r",
+    "reactance_referral": "x_sc_ref = x_sc_source*(v_nom[r]/v_nom[sc_ref])^2",
+    "current_limits": "retain limits by stable winding identity",
+    "reference_impedance": "ZB[p(i),p(j)] = (Z_ri + Z_rj - Z_ij)/2, with Z_ii = 0",
+    "resistance_referral": "r_k_ref = r_winding[k]/N_k^2"
+  },
+  "source": {
+    "object_ids": [
+      "x1"
+    ],
+    "detail": {
+      "pair_count": 3,
+      "short_circuit_reference_winding": "x1/winding/1",
+      "winding_ids": [
+        "x1/winding/1",
+        "x1/winding/2",
+        "x1/winding/3"
+      ]
+    },
+    "model_category": "pairwise_short_circuit_multiwinding_leakage_data"
+  },
+  "forgets": [
+  ],
+  "recovery_map": {
+    "pair_i_j": "Z_ij = ZB[p(i),p(i)] + ZB[p(j),p(j)] - 2*ZB[p(i),p(j)] for i,j != r",
+    "pair_r_j": "Z_rj = ZB[p(j),p(j)] for selected reference r",
+    "winding_resistance": "retain each source winding resistance and undo referral with r_k = N_k^2*r_k_ref",
+    "source_reactance": "x_sc_source = imag(Z_pair_selected_reference)/(v_ref/v_sc_ref)^2"
+  },
+  "typed_interfaces": {
+    "target_unit_families": [
+      "admittance",
+      "impedance"
+    ],
+    "unresolved_unit_labels": [
+    ],
+    "target_boundary_labels": [
+      "external winding coil voltages and currents"
+    ],
+    "source_unit_families": [
+      "current",
+      "impedance",
+      "voltage"
+    ],
+    "state_space_ref": "experiments/generated/state-space-unit-witness.json",
+    "state_domain_ids": [
+    ],
+    "attachment_rule": "certificate-local interface labels are crosswalked to the checked typed state-space/unit vocabulary; unresolved labels remain explicit rather than being guessed",
+    "unit_family_map": {
+      "winding-own V": [
+        "voltage"
+      ],
+      "winding-own A": [
+        "current"
+      ],
+      "winding-coordinate siemens": [
+        "admittance"
+      ],
+      "selected-reference ohm": [
+        "impedance"
+      ],
+      "declared short-circuit-reference ohm": [
+        "impedance"
+      ]
+    },
+    "source_boundary_labels": [
+      "external winding coil voltages and currents"
+    ],
+    "source_variable_labels": [
+      "external winding coil voltages",
+      "external winding coil currents"
+    ],
+    "target_variable_labels": [
+      "referred winding voltages",
+      "reference voltage differences",
+      "external winding coil currents"
+    ]
+  },
+  "evidence": {
+    "reference_impedance_matrix_ohm": [
+      [
+        {
+          "real": 0.7775045,
+          "imag": 4.665027
+        },
+        {
+          "real": 0.38875224999999997,
+          "imag": 3.1100179999999997
+        }
+      ],
+      [
+        {
+          "real": 0.38875224999999997,
+          "imag": 3.1100179999999997
+        },
+        {
+          "real": 0.7775045000000002,
+          "imag": 5.4425315
+        }
+      ]
+    ],
+    "reactance_reference_scale": 1,
+    "reference_choice_invariance": {
+      "comparison_relation": "external Yw in winding-own coordinates is independent of the selected internal reference",
+      "reference_windings": [
+        "x1/winding/1",
+        "x1/winding/2",
+        "x1/winding/3"
+      ],
+      "invariant_within_tolerance": true,
+      "source_short_circuit_reference_winding": "x1/winding/1",
+      "maximum_absolute_admittance_difference_S": 2.842170943040401e-14,
+      "per_reference_absolute_admittance_difference_S": {
+        "x1/winding/1": 0,
+        "x1/winding/3": 2.842170943040401e-14,
+        "x1/winding/2": 2.1316282072803006e-14
+      },
+      "all_references_compile": true
+    },
+    "negative_star_arm_witness": {
+      "guard": "minimum eigenvalue of imag(Z_B) is nonnegative",
+      "interpretation": "a negative star coordinate is a valid reference-coordinate representation; componentwise arm positivity is not the physical guard",
+      "all_pairwise_reactances_positive": true,
+      "reactance_eigenvalues": [
+        0.5,
+        1.5
+      ],
+      "negative_arm_is_accepted": true,
+      "source_pairwise_reactance_ohm": {
+        "12": 1,
+        "23": 3,
+        "13": 1
+      },
+      "star_arm_impedances_ohm": {
+        "1": {
+          "real": 0.1,
+          "imag": -0.5
+        },
+        "2": {
+          "real": 0.1,
+          "imag": 1.5
+        },
+        "3": {
+          "real": 0.1,
+          "imag": 1.5
+        }
+      }
+    },
+    "referred_winding_resistances_ohm": [
+      0.38875225,
+      0.38875225,
+      0.38875225000000013
+    ],
+    "source_short_circuit_reactance_round_trip_ohm": {
+      "1_2": 4.665027,
+      "1_3": 5.4425315,
+      "2_3": 3.8875225
+    },
+    "turns_ratios": [
+      1,
+      0.038492381716118684,
+      0.5778132605843247
+    ],
+    "pairwise_round_trip_ohm": {
+      "1_2": {
+        "real": 0.7775045,
+        "imag": 4.665027
+      },
+      "1_3": {
+        "real": 0.7775045000000002,
+        "imag": 5.4425315
+      },
+      "2_3": {
+        "real": 0.7775045000000002,
+        "imag": 3.8875225
+      }
+    },
+    "three_winding_special_case": {
+      "interpretation": "the full reference matrix is equivalent to the classical three-arm star/T representation",
+      "guard_note": "individual star-arm reactances may be negative; the invariant guard is PSD of imag(ZB)",
+      "applies": true,
+      "star_arm_impedances_ohm": {
+        "1": {
+          "real": 0.38875224999999997,
+          "imag": 3.1100179999999997
+        },
+        "2": {
+          "real": 0.38875224999999997,
+          "imag": 1.5550090000000005
+        },
+        "3": {
+          "real": 0.38875225000000013,
+          "imag": 2.3325135
+        }
+      }
+    },
+    "external_winding_admittance_S": [
+      [
+        {
+          "real": 0.03535083202990505,
+          "imag": -0.2420860775718814
+        },
+        {
+          "real": -0.6684448928334037,
+          "imag": 3.731666271296046
+        },
+        {
+          "real": -0.016650355253256758,
+          "imag": 0.17037572817285976
+        }
+      ],
+      [
+        {
+          "real": -0.6684448928334037,
+          "imag": 3.731666271296046
+        },
+        {
+          "real": 45.60368405284469,
+          "imag": -224.39428643220938
+        },
+        {
+          "real": -1.8811432612169026,
+          "imag": 8.490293649556504
+        }
+      ],
+      [
+        {
+          "real": -0.01665035525325677,
+          "imag": 0.17037572817285973
+        },
+        {
+          "real": -1.8811432612169023,
+          "imag": 8.490293649556506
+        },
+        {
+          "real": 0.15413291075503957,
+          "imag": -0.8604637278672644
+        }
+      ]
+    ],
+    "reactance_eigenvalues": [
+      1.9195584102690058,
+      8.188000089730995
+    ]
+  },
+  "schema_version": "1.1.0"
+}

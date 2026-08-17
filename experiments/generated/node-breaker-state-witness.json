@@ -1,0 +1,291 @@
+{
+    "checks": {
+        "unknown_state_has_both_radialities": true,
+        "cycle_closed_is_nonradial": true,
+        "unknown_state_is_not_collapsed": true,
+        "parallel_closed_separates_member_and_adjacency_radiality": true,
+        "radial_open_is_resolved_radial": true
+    },
+    "switch_assets": [
+        {
+            "id": "s12",
+            "to": "c2",
+            "from": "c1",
+            "states": [
+                "open",
+                "closed",
+                "unknown"
+            ]
+        },
+        {
+            "id": "s13",
+            "to": "c3",
+            "from": "c1",
+            "states": [
+                "open",
+                "closed",
+                "unknown"
+            ]
+        }
+    ],
+    "interpretation": "Unknown switch states are not silently treated as open or closed. Adjacency-radiality, member-radiality, and compiled-bus radiality are separate predicates evaluated after the declared state and contraction map.",
+    "source": "experiments/transformations/NodeBreakerStateWitness.jl",
+    "witness_id": "TOPO-NB-001",
+    "rows": [
+        {
+            "scenario": "cycle_closed",
+            "possible_nonradial_member": true,
+            "possible_member_radial": false,
+            "possible_nonradial_adjacency": true,
+            "possible_adjacency_radial": false,
+            "classification": "resolved",
+            "analysis": {
+                "member_radial": false,
+                "closed_switches": [
+                    "s13"
+                ],
+                "active_member_cycle_rank": 1,
+                "switch_states": {
+                    "s13": "closed",
+                    "s12": "open"
+                },
+                "active_members": [
+                    "l1",
+                    "l2",
+                    "l3",
+                    "s13"
+                ],
+                "compiled_bus_cycle_rank": 0,
+                "topological_buses": [
+                    "N1",
+                    "N2",
+                    "N3"
+                ],
+                "adjacency_radial": false,
+                "compiled_bus_radial": true,
+                "connectivity_components": {
+                    "c2": "N1",
+                    "c1": "N2",
+                    "c3": "N2",
+                    "c4": "N3"
+                },
+                "active_adjacency_cycle_rank": 1,
+                "compiled_edges": [
+                    "l1",
+                    "l2",
+                    "l3"
+                ]
+            },
+            "realizations": [
+            ],
+            "switch_states": {
+                "s13": "closed",
+                "s12": "open"
+            },
+            "realization_count": 1
+        },
+        {
+            "scenario": "parallel_closed",
+            "possible_nonradial_member": true,
+            "possible_member_radial": false,
+            "possible_nonradial_adjacency": false,
+            "possible_adjacency_radial": true,
+            "classification": "resolved",
+            "analysis": {
+                "member_radial": false,
+                "closed_switches": [
+                    "s12"
+                ],
+                "active_member_cycle_rank": 1,
+                "switch_states": {
+                    "s13": "open",
+                    "s12": "closed"
+                },
+                "active_members": [
+                    "l1",
+                    "l2",
+                    "l3",
+                    "s12"
+                ],
+                "compiled_bus_cycle_rank": 0,
+                "topological_buses": [
+                    "N1",
+                    "N2",
+                    "N3"
+                ],
+                "adjacency_radial": true,
+                "compiled_bus_radial": true,
+                "connectivity_components": {
+                    "c2": "N1",
+                    "c1": "N1",
+                    "c3": "N2",
+                    "c4": "N3"
+                },
+                "active_adjacency_cycle_rank": 0,
+                "compiled_edges": [
+                    "l2",
+                    "l3"
+                ]
+            },
+            "realizations": [
+            ],
+            "switch_states": {
+                "s13": "open",
+                "s12": "closed"
+            },
+            "realization_count": 1
+        },
+        {
+            "scenario": "radial_open",
+            "possible_nonradial_member": false,
+            "possible_member_radial": true,
+            "possible_nonradial_adjacency": false,
+            "possible_adjacency_radial": true,
+            "classification": "resolved",
+            "analysis": {
+                "member_radial": true,
+                "closed_switches": [
+                ],
+                "active_member_cycle_rank": 0,
+                "switch_states": {
+                    "s13": "open",
+                    "s12": "open"
+                },
+                "active_members": [
+                    "l1",
+                    "l2",
+                    "l3"
+                ],
+                "compiled_bus_cycle_rank": 0,
+                "topological_buses": [
+                    "N1",
+                    "N2",
+                    "N3",
+                    "N4"
+                ],
+                "adjacency_radial": true,
+                "compiled_bus_radial": true,
+                "connectivity_components": {
+                    "c2": "N1",
+                    "c1": "N2",
+                    "c3": "N3",
+                    "c4": "N4"
+                },
+                "active_adjacency_cycle_rank": 0,
+                "compiled_edges": [
+                    "l1",
+                    "l2",
+                    "l3"
+                ]
+            },
+            "realizations": [
+            ],
+            "switch_states": {
+                "s13": "open",
+                "s12": "open"
+            },
+            "realization_count": 1
+        },
+        {
+            "scenario": "unknown_switch",
+            "possible_nonradial_member": true,
+            "possible_member_radial": true,
+            "possible_nonradial_adjacency": false,
+            "possible_adjacency_radial": true,
+            "classification": "state-unknown; enumerate admissible realizations",
+            "analysis": null,
+            "realizations": [
+                {
+                    "member_radial": true,
+                    "closed_switches": [
+                    ],
+                    "active_member_cycle_rank": 0,
+                    "switch_states": {
+                        "s13": "open",
+                        "s12": "open"
+                    },
+                    "active_members": [
+                        "l1",
+                        "l2",
+                        "l3"
+                    ],
+                    "compiled_bus_cycle_rank": 0,
+                    "topological_buses": [
+                        "N1",
+                        "N2",
+                        "N3",
+                        "N4"
+                    ],
+                    "adjacency_radial": true,
+                    "compiled_bus_radial": true,
+                    "connectivity_components": {
+                        "c2": "N1",
+                        "c1": "N2",
+                        "c3": "N3",
+                        "c4": "N4"
+                    },
+                    "active_adjacency_cycle_rank": 0,
+                    "compiled_edges": [
+                        "l1",
+                        "l2",
+                        "l3"
+                    ]
+                },
+                {
+                    "member_radial": false,
+                    "closed_switches": [
+                        "s12"
+                    ],
+                    "active_member_cycle_rank": 1,
+                    "switch_states": {
+                        "s13": "open",
+                        "s12": "closed"
+                    },
+                    "active_members": [
+                        "l1",
+                        "l2",
+                        "l3",
+                        "s12"
+                    ],
+                    "compiled_bus_cycle_rank": 0,
+                    "topological_buses": [
+                        "N1",
+                        "N2",
+                        "N3"
+                    ],
+                    "adjacency_radial": true,
+                    "compiled_bus_radial": true,
+                    "connectivity_components": {
+                        "c2": "N1",
+                        "c1": "N1",
+                        "c3": "N2",
+                        "c4": "N3"
+                    },
+                    "active_adjacency_cycle_rank": 0,
+                    "compiled_edges": [
+                        "l2",
+                        "l3"
+                    ]
+                }
+            ],
+            "switch_states": {
+                "s13": "open",
+                "s12": "unknown"
+            },
+            "realization_count": 2
+        }
+    ],
+    "evidence_type": "scoped_node_breaker_state_witness",
+    "vertices": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+    ],
+    "line_members": [
+        "l1",
+        "l2",
+        "l3"
+    ],
+    "model_scope": "four-connectivity-node node-breaker fixture with two switch assets and state-conditioned bus compilation"
+}

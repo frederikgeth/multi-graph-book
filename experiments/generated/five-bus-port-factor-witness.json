@@ -1,0 +1,359 @@
+{
+  "interpretation": "Structural lift of the identified scalar bus-branch multigraph; it preserves line identity and declared orientation but does not add a numerical factor evaluator.",
+  "model": {
+    "junctions": [
+      {
+        "id": "i",
+        "relation": "voltage compatibility plus signed KCL"
+      },
+      {
+        "id": "j",
+        "relation": "voltage compatibility plus signed KCL"
+      },
+      {
+        "id": "k",
+        "relation": "voltage compatibility plus signed KCL"
+      },
+      {
+        "id": "l",
+        "relation": "voltage compatibility plus signed KCL"
+      },
+      {
+        "id": "m",
+        "relation": "voltage compatibility plus signed KCL"
+      }
+    ],
+    "hierarchy": [
+      {
+        "child": "line/q",
+        "parent": "five-bus-multigraph"
+      },
+      {
+        "child": "line/r",
+        "parent": "five-bus-multigraph"
+      },
+      {
+        "child": "line/s",
+        "parent": "five-bus-multigraph"
+      },
+      {
+        "child": "line/t",
+        "parent": "five-bus-multigraph"
+      },
+      {
+        "child": "line/v",
+        "parent": "five-bus-multigraph"
+      },
+      {
+        "child": "line/w",
+        "parent": "five-bus-multigraph"
+      },
+      {
+        "child": "line/u",
+        "parent": "five-bus-multigraph"
+      }
+    ],
+    "notation": "𝔓=(Q,J,Φ,j,f,H,X,R)",
+    "boundary_ports": [
+      "line/q/port/from",
+      "line/q/port/to",
+      "line/r/port/from",
+      "line/r/port/to",
+      "line/s/port/from",
+      "line/s/port/to",
+      "line/t/port/from",
+      "line/t/port/to",
+      "line/v/port/from",
+      "line/v/port/to",
+      "line/w/port/from",
+      "line/w/port/to",
+      "line/u/port/from",
+      "line/u/port/to"
+    ],
+    "factors": [
+      {
+        "id": "line/q",
+        "factor_type": "scalar_series_line",
+        "ports": [
+          "line/q/port/from",
+          "line/q/port/to"
+        ],
+        "relation": "I_q = Y_q (U_j − U_i)",
+        "source_assets": [
+          "line/q"
+        ]
+      },
+      {
+        "id": "line/r",
+        "factor_type": "scalar_series_line",
+        "ports": [
+          "line/r/port/from",
+          "line/r/port/to"
+        ],
+        "relation": "I_r = Y_r (U_i − U_j)",
+        "source_assets": [
+          "line/r"
+        ]
+      },
+      {
+        "id": "line/s",
+        "factor_type": "scalar_series_line",
+        "ports": [
+          "line/s/port/from",
+          "line/s/port/to"
+        ],
+        "relation": "I_s = Y_s (U_j − U_k)",
+        "source_assets": [
+          "line/s"
+        ]
+      },
+      {
+        "id": "line/t",
+        "factor_type": "scalar_series_line",
+        "ports": [
+          "line/t/port/from",
+          "line/t/port/to"
+        ],
+        "relation": "I_t = Y_t (U_k − U_i)",
+        "source_assets": [
+          "line/t"
+        ]
+      },
+      {
+        "id": "line/v",
+        "factor_type": "scalar_series_line",
+        "ports": [
+          "line/v/port/from",
+          "line/v/port/to"
+        ],
+        "relation": "I_v = Y_v (U_l − U_j)",
+        "source_assets": [
+          "line/v"
+        ]
+      },
+      {
+        "id": "line/w",
+        "factor_type": "scalar_series_line",
+        "ports": [
+          "line/w/port/from",
+          "line/w/port/to"
+        ],
+        "relation": "I_w = Y_w (U_k − U_l)",
+        "source_assets": [
+          "line/w"
+        ]
+      },
+      {
+        "id": "line/u",
+        "factor_type": "scalar_series_line",
+        "ports": [
+          "line/u/port/from",
+          "line/u/port/to"
+        ],
+        "relation": "I_u = Y_u (U_l − U_m)",
+        "source_assets": [
+          "line/u"
+        ]
+      }
+    ],
+    "ports": [
+      {
+        "junction": "j",
+        "id": "line/q/port/from",
+        "factor": "line/q",
+        "source_assets": [
+          "line/q"
+        ],
+        "terminal": "scalar",
+        "variable_space": "V×I"
+      },
+      {
+        "junction": "i",
+        "id": "line/q/port/to",
+        "factor": "line/q",
+        "source_assets": [
+          "line/q"
+        ],
+        "terminal": "scalar",
+        "variable_space": "V×I"
+      },
+      {
+        "junction": "i",
+        "id": "line/r/port/from",
+        "factor": "line/r",
+        "source_assets": [
+          "line/r"
+        ],
+        "terminal": "scalar",
+        "variable_space": "V×I"
+      },
+      {
+        "junction": "j",
+        "id": "line/r/port/to",
+        "factor": "line/r",
+        "source_assets": [
+          "line/r"
+        ],
+        "terminal": "scalar",
+        "variable_space": "V×I"
+      },
+      {
+        "junction": "j",
+        "id": "line/s/port/from",
+        "factor": "line/s",
+        "source_assets": [
+          "line/s"
+        ],
+        "terminal": "scalar",
+        "variable_space": "V×I"
+      },
+      {
+        "junction": "k",
+        "id": "line/s/port/to",
+        "factor": "line/s",
+        "source_assets": [
+          "line/s"
+        ],
+        "terminal": "scalar",
+        "variable_space": "V×I"
+      },
+      {
+        "junction": "k",
+        "id": "line/t/port/from",
+        "factor": "line/t",
+        "source_assets": [
+          "line/t"
+        ],
+        "terminal": "scalar",
+        "variable_space": "V×I"
+      },
+      {
+        "junction": "i",
+        "id": "line/t/port/to",
+        "factor": "line/t",
+        "source_assets": [
+          "line/t"
+        ],
+        "terminal": "scalar",
+        "variable_space": "V×I"
+      },
+      {
+        "junction": "l",
+        "id": "line/v/port/from",
+        "factor": "line/v",
+        "source_assets": [
+          "line/v"
+        ],
+        "terminal": "scalar",
+        "variable_space": "V×I"
+      },
+      {
+        "junction": "j",
+        "id": "line/v/port/to",
+        "factor": "line/v",
+        "source_assets": [
+          "line/v"
+        ],
+        "terminal": "scalar",
+        "variable_space": "V×I"
+      },
+      {
+        "junction": "k",
+        "id": "line/w/port/from",
+        "factor": "line/w",
+        "source_assets": [
+          "line/w"
+        ],
+        "terminal": "scalar",
+        "variable_space": "V×I"
+      },
+      {
+        "junction": "l",
+        "id": "line/w/port/to",
+        "factor": "line/w",
+        "source_assets": [
+          "line/w"
+        ],
+        "terminal": "scalar",
+        "variable_space": "V×I"
+      },
+      {
+        "junction": "l",
+        "id": "line/u/port/from",
+        "factor": "line/u",
+        "source_assets": [
+          "line/u"
+        ],
+        "terminal": "scalar",
+        "variable_space": "V×I"
+      },
+      {
+        "junction": "m",
+        "id": "line/u/port/to",
+        "factor": "line/u",
+        "source_assets": [
+          "line/u"
+        ],
+        "terminal": "scalar",
+        "variable_space": "V×I"
+      }
+    ],
+    "object_type": "hierarchical_port_factor_model"
+  },
+  "claim_id": "ARCH-PORT-002",
+  "source_fixture": "experiments/generated/five-bus-cycle-space-analysis.json",
+  "lambda": [
+    {
+      "electrical": "line/q",
+      "scope": "line identity, orientation, and limit",
+      "asset": "line/q",
+      "relation_type": "realizes"
+    },
+    {
+      "electrical": "line/r",
+      "scope": "line identity, orientation, and limit",
+      "asset": "line/r",
+      "relation_type": "realizes"
+    },
+    {
+      "electrical": "line/s",
+      "scope": "line identity, orientation, and limit",
+      "asset": "line/s",
+      "relation_type": "realizes"
+    },
+    {
+      "electrical": "line/t",
+      "scope": "line identity, orientation, and limit",
+      "asset": "line/t",
+      "relation_type": "realizes"
+    },
+    {
+      "electrical": "line/v",
+      "scope": "line identity, orientation, and limit",
+      "asset": "line/v",
+      "relation_type": "realizes"
+    },
+    {
+      "electrical": "line/w",
+      "scope": "line identity, orientation, and limit",
+      "asset": "line/w",
+      "relation_type": "realizes"
+    },
+    {
+      "electrical": "line/u",
+      "scope": "line identity, orientation, and limit",
+      "asset": "line/u",
+      "relation_type": "realizes"
+    }
+  ],
+  "validation": {
+    "errors": [
+    ],
+    "valid": true,
+    "multi_asset_or_factor_link": false,
+    "n_junctions": 5,
+    "n_lambda_relations": 7,
+    "n_factors": 7,
+    "n_ports": 14
+  }
+}

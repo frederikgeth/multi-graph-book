@@ -1,0 +1,848 @@
+{
+  "witness_id": "LOAD-CONTINUATION-001-REPRO",
+  "claim_id": "LOAD-CONTINUATION-001",
+  "method": "independent pure-Python damped fixed-point continuation",
+  "source_witness": "experiments/generated/load-grounding-witnesses.json",
+  "rows": [
+    {
+      "family": "CP",
+      "scale": 0.2,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9767442787974071,
+      "residual_pu": 5.6247567769310114e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CP",
+      "scale": 0.3,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9644160669667514,
+      "residual_pu": 6.074658423158701e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CP",
+      "scale": 0.4,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9515599876143833,
+      "residual_pu": 7.111770497125922e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CP",
+      "scale": 0.5,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9381198227897438,
+      "residual_pu": 8.929722091811603e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CP",
+      "scale": 0.6,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9240281787226592,
+      "residual_pu": 6.76271306632079e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CP",
+      "scale": 0.7,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9092031224440803,
+      "residual_pu": 1.0210824448166381e-13,
+      "matches_julia": true
+    },
+    {
+      "family": "CP",
+      "scale": 0.8,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8935433919568554,
+      "residual_pu": 9.911708516851918e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CP",
+      "scale": 0.9,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8769213625804698,
+      "residual_pu": 1.1269924452167828e-13,
+      "matches_julia": true
+    },
+    {
+      "family": "CP",
+      "scale": 1,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8591723331509342,
+      "residual_pu": 9.420096797337752e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CP",
+      "scale": 1.1,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8400774634281135,
+      "residual_pu": 1.023406601136329e-13,
+      "matches_julia": true
+    },
+    {
+      "family": "CP",
+      "scale": 1.2,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8193350522667895,
+      "residual_pu": 9.860332601436782e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CP",
+      "scale": 1.3,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7965086307085373,
+      "residual_pu": 9.933289706558344e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CP",
+      "scale": 1.4,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7709238323255534,
+      "residual_pu": 1.3128984907002963e-13,
+      "matches_julia": true
+    },
+    {
+      "family": "CP",
+      "scale": 1.5,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7414341485806595,
+      "residual_pu": 1.233376459587271e-13,
+      "matches_julia": true
+    },
+    {
+      "family": "CP",
+      "scale": 1.6,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7057662949351559,
+      "residual_pu": 1.4258972813846783e-13,
+      "matches_julia": true
+    },
+    {
+      "family": "CP",
+      "scale": 1.7,
+      "converged": true,
+      "voltage_magnitude_pu": 0.6578294578248255,
+      "residual_pu": 1.4404796127135062e-13,
+      "matches_julia": true
+    },
+    {
+      "family": "CP",
+      "scale": 1.8,
+      "converged": false,
+      "voltage_magnitude_pu": 0.5185824064090145,
+      "residual_pu": 0.004244042641622568,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 0.2,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9772924327012489,
+      "residual_pu": 7.252611913993309e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 0.3,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9657078404576619,
+      "residual_pu": 7.838741881269043e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 0.4,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9539691625196314,
+      "residual_pu": 8.297587154206647e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 0.5,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9420761493995196,
+      "residual_pu": 8.603277899772282e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 0.6,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9300284793366943,
+      "residual_pu": 8.796002473067486e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 0.7,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9178257575470421,
+      "residual_pu": 8.914496460495172e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 0.8,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9054675152974191,
+      "residual_pu": 8.996841503350037e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 0.9,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8929532087999411,
+      "residual_pu": 9.022007917944733e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 1,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8802822179199725,
+      "residual_pu": 9.054215916576984e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 1.1,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8674538446905558,
+      "residual_pu": 9.075538576214821e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 1.2,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8544673116248609,
+      "residual_pu": 9.08202174982829e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 1.3,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8413217598169469,
+      "residual_pu": 9.094551766626961e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 1.4,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8280162468197704,
+      "residual_pu": 9.086210657476334e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 1.5,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8145497442878801,
+      "residual_pu": 9.088071068061703e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 1.6,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8009211353706124,
+      "residual_pu": 9.094705508488816e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 1.7,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7871292118398191,
+      "residual_pu": 9.101027427156517e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 1.8,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7731726709341914,
+      "residual_pu": 9.103932461641401e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 1.9,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7590501119000691,
+      "residual_pu": 9.104221433309721e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 2,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7447600322062096,
+      "residual_pu": 9.094715673148417e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 2.1,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7303008234073007,
+      "residual_pu": 9.101489586427722e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 2.2,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7156707666279936,
+      "residual_pu": 9.105081524568788e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 2.3,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7008680276358594,
+      "residual_pu": 9.105650079397126e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 2.4,
+      "converged": true,
+      "voltage_magnitude_pu": 0.6858906514678845,
+      "residual_pu": 9.103701870055351e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 2.5,
+      "converged": true,
+      "voltage_magnitude_pu": 0.6707365565708374,
+      "residual_pu": 9.103764489999528e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 2.6,
+      "converged": true,
+      "voltage_magnitude_pu": 0.6554035284110092,
+      "residual_pu": 9.113447205153651e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 2.7,
+      "converged": true,
+      "voltage_magnitude_pu": 0.6398892125033439,
+      "residual_pu": 9.126148065780742e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 2.8,
+      "converged": true,
+      "voltage_magnitude_pu": 0.6241911068037332,
+      "residual_pu": 9.117427339864445e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 2.9,
+      "converged": true,
+      "voltage_magnitude_pu": 0.6083065534011484,
+      "residual_pu": 9.124530977978308e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CI",
+      "scale": 3,
+      "converged": true,
+      "voltage_magnitude_pu": 0.5922327294381345,
+      "residual_pu": 9.114479697083068e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 0.2,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9778031467146289,
+      "residual_pu": 5.2081580240668175e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 0.3,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9668662566273938,
+      "residual_pu": 7.125776408733828e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 0.4,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9560442656356598,
+      "residual_pu": 4.738546209896873e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 0.5,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9453417486938012,
+      "residual_pu": 6.671047005660106e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 0.6,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9347626703675048,
+      "residual_pu": 4.504671777274161e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 0.7,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9243104284065177,
+      "residual_pu": 6.580220223976414e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 0.8,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9139878955695453,
+      "residual_pu": 4.5083808748757045e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 0.9,
+      "converged": true,
+      "voltage_magnitude_pu": 0.903797459593573,
+      "residual_pu": 6.860487174981342e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 1,
+      "converged": true,
+      "voltage_magnitude_pu": 0.893741061237585,
+      "residual_pu": 4.797830840115435e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 1.1,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8838202303608614,
+      "residual_pu": 7.58894552887503e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 1.2,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8740361200246924,
+      "residual_pu": 5.4051508968626037e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 1.3,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8643895386263707,
+      "residual_pu": 3.8701306121603786e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 1.4,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8548809800946281,
+      "residual_pu": 6.475539966903316e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 1.5,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8455106521887027,
+      "residual_pu": 4.726676738042505e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 1.6,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8362785029562423,
+      "residual_pu": 8.239977851985596e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 1.7,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8271842454129021,
+      "residual_pu": 6.168366803175052e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 1.8,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8182273805148359,
+      "residual_pu": 4.6419073900503866e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 1.9,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8094072184979855,
+      "residual_pu": 3.5220031906075804e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 2,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8007228986629078,
+      "residual_pu": 6.596362328826122e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 2.1,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7921734076845309,
+      "residual_pu": 5.1303987384179383e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 2.2,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7837575965269522,
+      "residual_pu": 4.0143199038184937e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 2.3,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7754741960429978,
+      "residual_pu": 3.182358003776943e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 2.4,
+      "converged": true,
+      "voltage_magnitude_pu": 0.767321831337006,
+      "residual_pu": 6.441305507737629e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 2.5,
+      "converged": true,
+      "voltage_magnitude_pu": 0.759299034967598,
+      "residual_pu": 5.2380036685691524e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 2.6,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7514042590642837,
+      "residual_pu": 4.281584306731552e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 2.7,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7436358864302712,
+      "residual_pu": 3.556411052650858e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 2.8,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7359922406996492,
+      "residual_pu": 2.977266477862132e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 2.9,
+      "converged": true,
+      "voltage_magnitude_pu": 0.728471595614853,
+      "residual_pu": 6.610415568633874e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "CZ",
+      "scale": 3,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7210721834866064,
+      "residual_pu": 5.70613121282064e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 0.2,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9772684209349723,
+      "residual_pu": 7.126014754840673e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 0.3,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9656504812268667,
+      "residual_pu": 7.71301353278873e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 0.4,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9538606024392353,
+      "residual_pu": 8.172885659294577e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 0.5,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9418951182693469,
+      "residual_pu": 8.54356363559296e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 0.6,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9297496470251606,
+      "residual_pu": 8.895245100151055e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 0.7,
+      "converged": true,
+      "voltage_magnitude_pu": 0.9174190054493818,
+      "residual_pu": 9.325220900831142e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 0.8,
+      "converged": true,
+      "voltage_magnitude_pu": 0.904897106704469,
+      "residual_pu": 9.905121501990478e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 0.9,
+      "converged": true,
+      "voltage_magnitude_pu": 0.892176838853312,
+      "residual_pu": 5.3731073926348744e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 1,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8792499191273557,
+      "residual_pu": 5.973771258716717e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 1.1,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8661067178713687,
+      "residual_pu": 6.830290195608186e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 1.2,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8527360441501296,
+      "residual_pu": 8.043073515187763e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 1.3,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8391248823746712,
+      "residual_pu": 9.771895853596247e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 1.4,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8252580656359697,
+      "residual_pu": 6.329004651123459e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 1.5,
+      "converged": true,
+      "voltage_magnitude_pu": 0.8111178662208332,
+      "residual_pu": 8.325127480938864e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 1.6,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7966834762498004,
+      "residual_pu": 5.951843921123171e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 1.7,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7819303402802854,
+      "residual_pu": 8.622413300421152e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 1.8,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7668292850103458,
+      "residual_pu": 6.969888719946146e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 1.9,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7513453654691971,
+      "residual_pu": 6.102759358123115e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 2,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7354363062903719,
+      "residual_pu": 1.0609639120800098e-13,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 2.1,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7190503500499575,
+      "residual_pu": 1.0987618758088096e-13,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 2.2,
+      "converged": true,
+      "voltage_magnitude_pu": 0.7021232119520581,
+      "residual_pu": 7.154353752232181e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 2.3,
+      "converged": true,
+      "voltage_magnitude_pu": 0.6845736415194318,
+      "residual_pu": 9.541674596784608e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 2.4,
+      "converged": true,
+      "voltage_magnitude_pu": 0.6662967246631051,
+      "residual_pu": 8.682970185125531e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 2.5,
+      "converged": true,
+      "voltage_magnitude_pu": 0.6471533402315511,
+      "residual_pu": 9.893756704201466e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 2.6,
+      "converged": true,
+      "voltage_magnitude_pu": 0.6269526745897133,
+      "residual_pu": 9.100792529520638e-14,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 2.7,
+      "converged": true,
+      "voltage_magnitude_pu": 0.6054212361824488,
+      "residual_pu": 1.2451560804070178e-13,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 2.8,
+      "converged": true,
+      "voltage_magnitude_pu": 0.5821429327557164,
+      "residual_pu": 1.2276046356325774e-13,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 2.9,
+      "converged": true,
+      "voltage_magnitude_pu": 0.556428238680882,
+      "residual_pu": 1.3496203940084224e-13,
+      "matches_julia": true
+    },
+    {
+      "family": "ZIP",
+      "scale": 3,
+      "converged": true,
+      "voltage_magnitude_pu": 0.5269713535767072,
+      "residual_pu": 1.2903691283786515e-13,
+      "matches_julia": true
+    }
+  ],
+  "checks": {
+    "all_rows_match_julia": true,
+    "independent_iteration_used": true,
+    "cp_first_failure_is_scale_1_8": true,
+    "no_numpy_or_julia_import": true
+  },
+  "all_checks_pass": true,
+  "interpretation": "Independent reproduction of the declared iteration-scoped scalar continuation probe; not a global collapse or saddle-node calculation."
+}
