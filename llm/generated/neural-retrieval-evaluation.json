@@ -2755,6 +2755,13 @@
       "question": "Why is an equivalent terminal response not sufficient evidence that planning or dispatch choices remain valid?"
     }
   ],
+  "compatibility": {
+    "current_corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
+    "current_corpus_sha256": "fba3ea042f6b778c45253793a9d9cee7d083a7ba76d5aab446d868d69ac0ada0",
+    "current_record_count": 690,
+    "required_action": "rerun both pinned neural retriever and reranker before comparing them with the current corpus",
+    "status": "archived_prior_corpus"
+  },
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
     "corpus_sha256": "8d73544719d5c384159167355602ceb9576b5c71c6838f4557c969be2c40eaf7",

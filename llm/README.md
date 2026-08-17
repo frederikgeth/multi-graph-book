@@ -119,6 +119,13 @@ compact neural retriever and generic cross-encoder reranker do not beat the
 hybrid baseline on this corpus. The hybrid baseline therefore remains the
 production candidate. Run `python3 scripts/check_neural_benchmark.py` to verify
 that the recorded result still matches the current corpus and baseline report.
+When canonical content changes without re-running those external models, the
+record is retained as an explicitly archived prior-corpus result and names the
+current corpus hash plus the required rerun. The gate must never copy current
+lexical scores into an old neural run or present stale neural rankings as a
+current comparison. The archive marker can be refreshed with
+`python3 scripts/check_neural_benchmark.py --archive-current-drift`; promotion
+still requires a genuine model rerun.
 
 ## Stable access routes
 

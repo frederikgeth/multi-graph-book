@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `d95501db616d3f10032f29a1349ec92ecc159d801dc9b9dedc0670b7bd731c86`<br>
+**Corpus hash:** `fba3ea042f6b778c45253793a9d9cee7d083a7ba76d5aab446d868d69ac0ada0`<br>
 **Cases:** 27
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -16,11 +16,11 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Measure | Result | Release gate? |
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
-| Open-corpus lexical evidence recall@5 | 31.5% | diagnostic |
-| Open-corpus lexical evidence recall@10 | 40.7% | diagnostic |
+| Open-corpus lexical evidence recall@5 | 30.9% | diagnostic |
+| Open-corpus lexical evidence recall@10 | 41.5% | diagnostic |
 | Open-corpus complete evidence@10 | 0.0% | diagnostic |
-| Evidence-only lexical recall@5 | 41.2% | diagnostic |
-| Evidence-only lexical recall@10 | 54.1% | diagnostic |
+| Evidence-only lexical recall@5 | 41.3% | diagnostic |
+| Evidence-only lexical recall@10 | 53.4% | diagnostic |
 | Evidence-only complete evidence@10 | 3.7% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
@@ -43,16 +43,16 @@ evidence sets, so the effective target count is nine rather than 27 independent 
 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `lexical` | 36.0% | 44.0% | 0.0% | 0/27 | 5/27 | 0.206 |
-| `char_tfidf` | 35.9% | 44.2% | 3.7% | 1/27 | 5/27 | 0.214 |
-| `hybrid` | 40.6% | 45.4% | 3.7% | 1/27 | 5/27 | 0.219 |
-| `graph` | 38.6% | 52.7% | 22.2% | 6/27 | 4/27 | 0.246 |
+| `lexical` | 36.0% | 43.3% | 0.0% | 0/27 | 5/27 | 0.205 |
+| `char_tfidf` | 34.4% | 43.3% | 0.0% | 0/27 | 5/27 | 0.212 |
+| `hybrid` | 39.1% | 43.9% | 0.0% | 0/27 | 5/27 | 0.222 |
+| `graph` | 38.6% | 53.4% | 22.2% | 6/27 | 4/27 | 0.253 |
 
 Held-out contract-router firing: **19/27 (70.4%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **14/27 (51.9%)**; this remains diagnostic because the set is synthetic and clustered.
 Target clusters: **9**, with cluster sizes `[3, 3, 3, 3, 3, 3, 3, 3, 3]`; percentage differences are therefore not independent observations.
-Hybrid versus lexical complete@10: **1/27** versus **0/27**; hybrid zero-recall@10: **5/27**.
-Graph versus hybrid complete@10: **6/27** versus **1/27**.
+Hybrid versus lexical complete@10: **0/27** versus **0/27**; hybrid zero-recall@10: **5/27**.
+Graph versus hybrid complete@10: **6/27** versus **0/27**.
 
 | Held-out case | Audience | Expected route | Observed top-1 | Router fired | Lexical complete@10 | TF-IDF complete@10 | Hybrid complete@10 | Graph complete@10 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -69,7 +69,7 @@ Graph versus hybrid complete@10: **6/27** versus **1/27**.
 | `HOLDOUT-PARALLEL-SOFTWARE` | `software_engineer` | `parallel-admittance-implies-decision-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
 | `HOLDOUT-PARALLEL-POWER` | `power_engineer` | `parallel-admittance-implies-decision-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
 | `HOLDOUT-RADIAL-STUDENT` | `student` | `radial-is-representation-independent` | `none` | no | no | no | no | no |
-| `HOLDOUT-RADIAL-SOFTWARE` | `software_engineer` | `radial-is-representation-independent` | `radial-is-representation-independent` | yes | no | yes | yes | yes |
+| `HOLDOUT-RADIAL-SOFTWARE` | `software_engineer` | `radial-is-representation-independent` | `radial-is-representation-independent` | yes | no | no | no | yes |
 | `HOLDOUT-RADIAL-POWER` | `power_engineer` | `radial-is-representation-independent` | `radial-is-representation-independent` | yes | no | no | no | no |
 | `HOLDOUT-KRON-STUDENT` | `student` | `kron-reduction-preserves-everything` | `kron-reduction-preserves-everything` | yes | no | no | no | no |
 | `HOLDOUT-KRON-SOFTWARE` | `software_engineer` | `kron-reduction-preserves-everything` | `kron-reduction-preserves-everything` | yes | no | no | no | no |
@@ -89,7 +89,7 @@ Graph versus hybrid complete@10: **6/27** versus **1/27**.
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
 | `power_engineer` | 9 | 100.0% | 54.4% | 100.0% |
-| `software_engineer` | 9 | 100.0% | 48.1% | 100.0% |
+| `software_engineer` | 9 | 100.0% | 45.9% | 100.0% |
 | `student` | 9 | 100.0% | 59.8% | 100.0% |
 
 ## Case results
@@ -109,7 +109,7 @@ Graph versus hybrid complete@10: **6/27** versus **1/27**.
 | `EVAL-PARALLEL-SOFTWARE` | `software_engineer` | `parallel-admittance-implies-decision-equivalence` | 16.7% | yes |
 | `EVAL-PARALLEL-POWER` | `power_engineer` | `parallel-admittance-implies-decision-equivalence` | 50.0% | yes |
 | `EVAL-RADIAL-STUDENT` | `student` | `radial-is-representation-independent` | 80.0% | yes |
-| `EVAL-RADIAL-SOFTWARE` | `software_engineer` | `radial-is-representation-independent` | 80.0% | yes |
+| `EVAL-RADIAL-SOFTWARE` | `software_engineer` | `radial-is-representation-independent` | 60.0% | yes |
 | `EVAL-RADIAL-POWER` | `power_engineer` | `radial-is-representation-independent` | 80.0% | yes |
 | `EVAL-KRON-STUDENT` | `student` | `kron-reduction-preserves-everything` | 80.0% | yes |
 | `EVAL-KRON-SOFTWARE` | `software_engineer` | `kron-reduction-preserves-everything` | 0.0% | yes |

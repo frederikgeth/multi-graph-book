@@ -1,4 +1,4 @@
-# Search run: 2026-08-14 seed batch
+# [Search run: 2026-08-14 seed batch](@id search-run-2026-08-14-seed-batch)
 
 **Protocol:** 0.1.0  
 **Run date:** 2026-08-14  

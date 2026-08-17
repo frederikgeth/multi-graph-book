@@ -16,6 +16,9 @@ The general taxonomy in [Maps between representation frameworks](@ref
 representation-maps) types ``\pi_\sigma`` as an edge-contraction quotient. In
 particular it is not an ordinary homomorphism between loopless simple graphs,
 because it deliberately identifies endpoints of closed switch edges.
+The resulting parallel members and contraction-created loops use the normative
+conventions in [Multigraphs for expert modelers](@ref
+multigraphs-for-modelers).
 
 Topology processing is a state-conditioned compilation. It is not the same as
 deleting switches from a graph or replacing every closed switch by a zero
@@ -98,6 +101,36 @@ those are carried by ``\operatorname{prov}_\sigma`` and the surrounding model.
 The general surgery result may be a graph or a family with three-valued
 connectivity summaries; the present compiler assumes a declared resolved state
 when it constructs ``G_{\mathrm{bus}}(\sigma)``.
+
+### Worked contraction state
+
+Consider connectivity nodes ``a,b,c,d``, a switch ``s_{ab}``, and identified
+non-switch members
+
+```math
+e_{ac},\quad e_{bc},\quad e_{ab},\quad e_{cd}.
+```
+
+When ``s_{ab}`` is open, ``\pi_{\mathrm{open}}`` leaves all four nodes
+distinct. When it is closed, the quotient identifies ``a`` and ``b`` as the
+topological node ``u=[a,b]``. The member images are then
+
+```math
+e_{ac}\mapsto\{u,c\},\qquad
+e_{bc}\mapsto\{u,c\},\qquad
+e_{ab}\mapsto\{\!\{u,u\}\!\},\qquad
+e_{cd}\mapsto\{c,d\}.
+```
+
+Thus one state change simultaneously creates a parallel class
+``\{e_{ac},e_{bc}\}`` and a graph loop ``e_{ab}``. A loopless simple target
+would collapse the first pair and omit the loop, but those are two additional
+information-losing maps after the connectivity quotient. A provenance-complete
+compiler retains the three source-member identities and records whether the
+loop image is electrically redundant, represented as another factor, or
+rejected by the target formulation. It does not call the loop a shunt: both of
+its source terminals belong to the same quotient node, whereas a shunt has a
+declared reference or grounding relation.
 
 ### Rooted feeder view after topology processing
 

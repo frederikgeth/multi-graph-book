@@ -1,4 +1,4 @@
-# Search run: 2026-08-15 formulation and graph-model landscape
+# [Search run: 2026-08-15 formulation and graph-model landscape](@id search-run-2026-08-15-formulation-landscape)
 
 **Protocol:** 0.2.0  
 **Run date:** 2026-08-15  

@@ -6,20 +6,20 @@
   "external_reviewed_claims": 0,
   "independent_human_double_coding": false,
   "observed_counts": {
-    "claims": 96,
-    "bibliography_records": 52,
-    "bibliography_unique_doi_fields": 31,
-    "html_pages": 66,
+    "claims": 100,
+    "bibliography_records": 59,
+    "bibliography_unique_doi_fields": 36,
+    "html_pages": 67,
     "image_tags": 73,
-    "pdf_pages": 349,
+    "pdf_pages": 363,
     "required_artifacts": 122,
     "certificates": 16,
     "source_objects": 22,
     "view_maps": 7,
-    "local_links": 562,
-    "llm_corpus_records": 661,
-    "llm_section_records": 548,
-    "llm_claim_bundles": 96,
+    "local_links": 584,
+    "llm_corpus_records": 690,
+    "llm_section_records": 573,
+    "llm_claim_bundles": 100,
     "llm_concept_bundles": 17,
     "llm_misconception_contracts": 9,
     "llm_evaluation_cases": 27,
@@ -28,7 +28,7 @@
     "llm_route_top1_percent": 100,
     "llm_lexical_complete_at_10_tenths_percent": 37,
     "llm_contract_complete_percent": 100,
-    "llm_heldout_hybrid_recall_at_10_tenths_percent": 454,
+    "llm_heldout_hybrid_recall_at_10_tenths_percent": 439,
     "llm_heldout_router_fired_tenths_percent": 704,
     "llm_heldout_hybrid_zero_recall_at_10_cases": 5
   },
@@ -240,15 +240,15 @@
     },
     {
       "path": "README.md",
-      "sha256": "ec3848c3b4a1c304ff64b58e9cc203245fdc6ff63cc1d087b581cb9de6f4d858"
+      "sha256": "0b3b625987e9eda09c88c19fb488beaa769f2530d46bda884fdfe51409e7ea97"
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "a7e1d4b3345bc985a4077c560fbc6b1ddb2820a38e28e1804cb70a9446d796d6"
+      "sha256": "7896b3f4b0f322b2d7002a731f559b72c30b475b0a59682a586652844e8ed306"
     },
     {
       "path": "claims/claims.toml",
-      "sha256": "e5bec546a9bb2dd861b4bc3deab7f186498b7287dceb71ec95efd0cdff416d88"
+      "sha256": "6214c5d025f5a8084be7f55698c14274fe01f952649b7374b35a7eb7717282c8"
     },
     {
       "path": "docs/build/.DS_Store",
@@ -256,11 +256,11 @@
     },
     {
       "path": "docs/build/.documenter-siteinfo.json",
-      "sha256": "c951f5072d0dedb6bfa29c1c07bec76d76b2a5dc49dd02fb03631c33729c6274"
+      "sha256": "dad629592c50be242783e525761d1882460c02b02c1f8de3cc2eadc9f332c123"
     },
     {
       "path": "docs/build/GraphModelsForPowerSystems.pdf",
-      "sha256": "dfa375904d855ccd79f78e2504156f56c5b6385098ee857ff61bc289b767f035"
+      "sha256": "c2325bede67e0610bddebf6540ca7d606bbe851fa793c351be76fa518cd2f9fe"
     },
     {
       "path": "docs/build/assets/active-radiality.png",
@@ -628,7 +628,7 @@
     },
     {
       "path": "docs/build/assets/reference-evidence-map.svg",
-      "sha256": "8607ebf90beef7a4a979f0f0bb411a1a72ed6e917d8546a839716bd05613b6da"
+      "sha256": "8ea0de6d4bb6bd6c9a11bd7908267dbdb3d68b6cc8686f2320de17d624521d08"
     },
     {
       "path": "docs/build/assets/reference-symbol-anatomy.png",
@@ -644,7 +644,7 @@
     },
     {
       "path": "docs/build/assets/reference-verification-summary.svg",
-      "sha256": "3999b508274efac7b277a4b9eaa6ab4d8513d53576a4f5df01109f6dedc77eba"
+      "sha256": "cc9780097597c7200962c7bc6949b4bd588c396c1215acd2682f3fe472f7d395"
     },
     {
       "path": "docs/build/assets/representation-principal-levels.png",
@@ -860,291 +860,295 @@
     },
     {
       "path": "docs/build/cases/australian-carson-reproduction.html",
-      "sha256": "b457780fb93c15a030b1c42ac924b7ecefaaec8394617684692c7c29302885b1"
+      "sha256": "7f48142e41a40643e218e821e2317a779da3c11f601717f5ac9584469bf31003"
     },
     {
       "path": "docs/build/cases/bim-bfm-parallel-lines.html",
-      "sha256": "e696ae3f9059d777902536f8baf82c61bf41ad5df470f1c8a38f631c69704b9f"
+      "sha256": "bf509cd75110e43e9be2083face4e1c62195b52ae567fdfd2ce0462aa2f37926"
     },
     {
       "path": "docs/build/cases/executable-running-network.html",
-      "sha256": "8c924318d507aa57ea03a97f4644256b18a0a52bcda8ab47051a51d12cd21bba"
+      "sha256": "c23b1db6d59ed9b18611bb3f84c53b785dc1bae629c4418b66a7c557055be694"
     },
     {
       "path": "docs/build/cases/four-wire-impedance-model-ladder.html",
-      "sha256": "4224db26f0cc1a85b5cccdfddf370bf84dc9562c56cb2e07a508361a1c58d651"
+      "sha256": "92125c9d366d51aa77dd17e4b83ee8dddbe4f33a54f65a671508d3b24c20ddd4"
     },
     {
       "path": "docs/build/cases/four-wire-parallel-ac-decision.html",
-      "sha256": "cae535112d09962be4fea45f7a74c5640db8c1a4e5e139b7309bcb28d223cb8b"
+      "sha256": "c5778363ab8f10640c7377f86ee623b9992ce802901aaee5bc619c925b93c81b"
     },
     {
       "path": "docs/build/cases/multiconductor-parallel-ac-decision.html",
-      "sha256": "6d6586c0cd7b30e88e4dd44c6679c49f49d265b7b10ed5e5025f1e95c3530da1"
+      "sha256": "ac57de8897126dec6049677cac823bcac67915907a07ec242e93d8710f307e9b"
     },
     {
       "path": "docs/build/cases/pi-four-wire-parallel-ac-decision.html",
-      "sha256": "d4bb90cc9d11aced59f5c2f842e92e83833ab1f09c03d76098e4bf1097df2c7b"
+      "sha256": "41946df53db5574ac5b9cd753217f0139814019261b31417164732581816c0b2"
     },
     {
       "path": "docs/build/cases/running-network.html",
-      "sha256": "4cd3db6dc8e6289f318302f2609376c23743f39e1d82801da1c9394cc4f41cbb"
+      "sha256": "3e3e14b247fda02158ae0c87bf4af5e846550de5d70d8f46430e8108f274f315"
     },
     {
       "path": "docs/build/cases/transformer-tap-ac-decision.html",
-      "sha256": "a78770be0ecd2483cd4a7f935ae693559065b2c5a6b923c7a4a48a6cc74e5766"
+      "sha256": "eca7b3f46b393324e0a1a3738eb7f983810b58b6f1d5ccb699fb3d29c9342182"
     },
     {
       "path": "docs/build/foundations/circuit-formulations-and-lowering.html",
-      "sha256": "2bdb272c5e61172d0b1f0ee129045160724931d9cea65ee9dff4371986c4073f"
+      "sha256": "59c492c0db52abcf13bb7bbe4a8cf8d301ee2861a74b1de6e6be426b69e4223b"
     },
     {
       "path": "docs/build/foundations/compiled-views-and-graph-surgery.html",
-      "sha256": "3b575d1b51f03dfc3549ddfdd0423dc030051739e61209c37908d83f4c6cafa3"
+      "sha256": "65de8a830fb31b42e4ba715d2326eef42abfb8ab3faf666da4158b02ecbd212a"
     },
     {
       "path": "docs/build/foundations/cycles-parallelism-radiality.html",
-      "sha256": "8b641014debacd78ad42ea3a9e497294fed359026dca80893404ac6a5ba87d24"
+      "sha256": "0f3696ade81050de3aa695d39a2f7aa0db13c4c3fd982032201f47d8fed2a435"
     },
     {
       "path": "docs/build/foundations/data-model-crosswalk.html",
-      "sha256": "bb06cb260605676ce544ba90d7a78db815d13dea72f3f8c014cabe3f13fe37e5"
+      "sha256": "d64a2468cc76a1c3f2689c75cc1b8c95b605a0fae7c6ca05815016e2024fb306"
     },
     {
       "path": "docs/build/foundations/earth-ground-models.html",
-      "sha256": "8fd2b9715e9e63d391cb173c3f9d95a2e55073e9c6a00222f72deed8f1cd6b7b"
+      "sha256": "f9855de80d6448fb0619392858c19b147b803f4b26327eeb4c86b8de6b17cb46"
     },
     {
       "path": "docs/build/foundations/formal-representation-frameworks.html",
-      "sha256": "d087741eee080132e9dacbf895deeab043788e96632b6799e472d4932bd60a9e"
+      "sha256": "d4a8dfc587844f1266e472e13a379c6ba67ecbe942fef4a94f244aba3cf86f25"
     },
     {
       "path": "docs/build/foundations/impedance-fidelity-ladder.html",
-      "sha256": "372a9b1621ea74dfaf9fa6a40d67da7d04d415f2adad96112d68941e93502c81"
+      "sha256": "9159a36f0f94fdd43c92f1f124907a4859cae00606977069287a2401bf303614"
     },
     {
       "path": "docs/build/foundations/load-models-and-decision-dependence.html",
-      "sha256": "63d07d4610dda248ad16b95838217f977231d92e3052116251743385c7cc7051"
+      "sha256": "6d50ae9ef684140c2cb01899fba00fcb54ccd1ddead1d798d18418c26b0a91f2"
+    },
+    {
+      "path": "docs/build/foundations/multigraphs-for-modelers.html",
+      "sha256": "3a5e6793ce10557706ccc40cd825558952d0dcd7a004c8db24ddbcd14c19d142"
     },
     {
       "path": "docs/build/foundations/node-breaker-topology-processing.html",
-      "sha256": "c6ba8367fc491213cf79b4e9c649154305188974d8ba94d8ce4a873c082da930"
+      "sha256": "f8ed6537c7152923a8134c1bbb3bdba2a90821768b4e9c6d4c93245967ffc57f"
     },
     {
       "path": "docs/build/foundations/notation-and-conventions.html",
-      "sha256": "64011494ec89bc805fb3064a3c8f3337b972f486b0ed29480b870de0b88381cd"
+      "sha256": "da9bdeccefb36cb117c5cd917983b255a66b9a53715ebc803806073d460a0246"
     },
     {
       "path": "docs/build/foundations/numerical-consequences.html",
-      "sha256": "e3f2afe30b21f84d88eba4387c2e6da1293c0585c2fda1e48ce854683787701a"
+      "sha256": "4e4c9c7ff7862034aeab33ae226ec953d4e2616c717a7e109b33987f90fa0482"
     },
     {
       "path": "docs/build/foundations/orientation-terminal-power.html",
-      "sha256": "5cde956d5e634bafeb20ee05771b1eea928f2e651ff36c6e1814541d4568b6bd"
+      "sha256": "11fb2da7122f9a3b4b9f4e6640468a2765f228a19f3b375f4c66c31ec6b77d21"
     },
     {
       "path": "docs/build/foundations/preservation-contracts.html",
-      "sha256": "787567ed7c5c0f7366dbe49b59e4f716b483873622217e866c771259ec803341"
+      "sha256": "9ee568058a2f130bd1cf10ad379d2ac88c41df4ef0ec9d46366d70c7e9a0fde5"
     },
     {
       "path": "docs/build/foundations/rating-semantics.html",
-      "sha256": "5029c94d0844dcfe145a26b43a7545c8becc3cdb8530abc8b54bde5ffe9e6604"
+      "sha256": "0e9b6e5751576de2614306ea2aed5805ef239e5cf302cf5ffe8157fba85b6c62"
     },
     {
       "path": "docs/build/foundations/representation-maps.html",
-      "sha256": "7a8fb63e8509a51be9d79accac3488de65a2425385949601dfb50a5683433c74"
+      "sha256": "f9673b1ddb5e2a5fcf8f129b54f2814454ed8e692e28a6dd7a1814782c2bf2a0"
     },
     {
       "path": "docs/build/foundations/representation-taxonomy.html",
-      "sha256": "cbaefe6abfb3937d0805a0b81bbccb344efae28d42597e2376aaacfb38a2b361"
+      "sha256": "c6c407b743de18bcbc26d109ab90303af98b689fd3ae6bd415d7944b7a9487ae"
     },
     {
       "path": "docs/build/foundations/scope-and-thesis.html",
-      "sha256": "5295edaea889d82d67ba8f78de700e05377b9e1b9f88423e74ef8745eb629470"
+      "sha256": "66171836f292ca4a305539d370fdf0a37c28929265a9be5b91b1279a7fd32d39"
     },
     {
       "path": "docs/build/foundations/source-to-canonical-model.html",
-      "sha256": "05d01985b14f5a11b620bd1f01f74244d04c912043e21a05d77c23faa7106ca1"
+      "sha256": "c43d2144a698e3d0f29db7bfdc8c323db1536e54d7f4bcbf19446938dac3d47f"
     },
     {
       "path": "docs/build/foundations/transformation-semantics-register.html",
-      "sha256": "34647c1e7153cefb2365b24a47e0f51a655c9757c32e76dffd8ce9cffb3db9e0"
+      "sha256": "518a1226102ca166330ccb8a093e8cb8a080129623d2d6fd22e0cba721cadaa8"
     },
     {
       "path": "docs/build/foundations/translation-traps.html",
-      "sha256": "7f56fcd0a7098f3c5639e1b9eb5fbaed568d7ac000a02ed5766970e3b19ba69c"
+      "sha256": "2b328fa258bfa73939d6ea5086e1fb700c28a4320e227fd303ed10b4d067563a"
     },
     {
       "path": "docs/build/foundations/two-level-topology-and-nodal-projection.html",
-      "sha256": "c53c5099e281a4398823571fe9ba3d8bbd5f1b69691786380a9100b9bfa828ab"
+      "sha256": "94ffc360a5dbb8827290ee421df4195274b65fbbe2c4bfb984b89f7b8d16e227"
     },
     {
       "path": "docs/build/foundations/when-general-model-collapses.html",
-      "sha256": "1b7b1db231200369b33f7814a2f400610bf266edce2e8fb3fb21e205e9dd4d1b"
+      "sha256": "e2eb3feab899f543517f853a8953ff44af0bc277691a7efcc08e3af600d92898"
     },
     {
       "path": "docs/build/index.html",
-      "sha256": "7ecaccd18e503681aa37364ed2f2f2f2c0e9a2142bdf0ba7f01b9c6f35a2ad97"
+      "sha256": "a2dfefb596f4ced9b58d35723323036eb7bdbfdba576df13594766f542660cac"
     },
     {
       "path": "docs/build/literature/literature-map.html",
-      "sha256": "ade4ce5b6557ec3664e2596bd74b7f85c2e9688c1259c8fac902bb339026a2a0"
+      "sha256": "4deb30b97a6a6dbdb53d7043583e2535a070f1bb2dfca951af3b665d50701a61"
     },
     {
       "path": "docs/build/literature/representation-implementation-record.html",
-      "sha256": "701b04386b896597fe1e578d944cb827e00d3fa2b44652e0c066c2d3f0ba628d"
+      "sha256": "b92a7eb4a05ddac716340b2b3ce0b826d44ed7f53c3e70fa54d92b6a9bdd39fe"
     },
     {
       "path": "docs/build/literature/research-agenda.html",
-      "sha256": "9b6942fc16bc357ff736d468a224441dacec654b4442813a8afddeff5b8e839f"
+      "sha256": "d9cac729d8c6966ec66c806699bc2b4376a9ecd33ea01ea1110bc64071413321"
     },
     {
       "path": "docs/build/literature/review-protocol-and-evidence-status.html",
-      "sha256": "39b2c1c4e9a34d9fa9a6d2a240cbfc71b389868b94a39c0100540b1f48ecf3b6"
+      "sha256": "cee89e6eb9eecd7c92d17e79bd0aac565a8d42811ddc6fcbbaf268fd57925e73"
     },
     {
       "path": "docs/build/literature/search-runs/2026-08-14-seed-batch.html",
-      "sha256": "aa7e124a535bb64122dbd54f5196e9423162caa5e8e821687c96c0cdeafdfc2e"
+      "sha256": "4a07f164a86ee6301e652d947211a99f88ec882e297312494174c53503106187"
     },
     {
       "path": "docs/build/literature/search-runs/2026-08-15-formulation-landscape.html",
-      "sha256": "1151c5670d8a0d26c8e0241c5be2c6bdbbba917fe486b0644ffd6541e7c5b712"
+      "sha256": "1fb7b0311e4f6518a2751baf9f7f897e6630c45e772d5a998ebbd6f66254d071"
     },
     {
       "path": "docs/build/literature/search-runs/2026-08-15-information-model-citation-chase.html",
-      "sha256": "b1ec45af37ee8656f0155f16e0de04a4822c3ca81c668baca5159466c6b7746d"
+      "sha256": "87ecccec412e901a7771d02a974158f36f2bb693b8d506a75c4d4d52121dbf52"
     },
     {
       "path": "docs/build/literature/search-runs/2026-08-16-multiphase-and-practical-reductions.html",
-      "sha256": "b35d5f46b6381fa9beaf51745dae9e52944f2140eb5ff6d8226d6db64f20fb62"
+      "sha256": "39999c2f27fecafba75b04312b26943bee612792b18b8c1caab95994a4341d5e"
     },
     {
       "path": "docs/build/objects.inv",
-      "sha256": "8b5490b264233b9007855b332042115d952e9a0f860ade279fff82799006cecb"
+      "sha256": "f7c4c500878e4bf9b18b85df0655ea8626495351af2a596d6041514e9dad9c45"
     },
     {
       "path": "docs/build/reference/chapter-status.html",
-      "sha256": "4df4ac411e698dbf8e6c285a0d6495bea257b8c48e68e2372841fe744ae5e0f7"
+      "sha256": "09d89661aa3a31b788c0cfb80644ea0c96b02a407885096c3850da59b4855575"
     },
     {
       "path": "docs/build/reference/evidence-map.html",
-      "sha256": "cc5f978424633cb63d163f7ccadfb2a99dc0fc043b7a0e77418335250cae04ad"
+      "sha256": "feb0183ad5fa5823e294c84a558389a35aab1cf7e927e47dc399e40b0f932f11"
     },
     {
       "path": "docs/build/reference/knowledge-base-index.html",
-      "sha256": "23f766d6ef19bd2631db9ace0320678cd9dd2e796b02419009a26e739b09d180"
+      "sha256": "eef263661c5b1a0bebe36a1f62ad026e3d07b4b69db1cda5c0c2f923c6264d03"
     },
     {
       "path": "docs/build/reference/references.html",
-      "sha256": "54387f960fb0de7876d93e8b60b0565813f741ce739dbe7ece404ffeb6803810"
+      "sha256": "eee2461371f30b0ffaf53e75b1e2f855fc2e5da2c0191626b6686a0f79920778"
     },
     {
       "path": "docs/build/reference/terminology.html",
-      "sha256": "ed48a325225e43357f92b3fbbe5415da97745a038a995cf00611b04bb9efde8b"
+      "sha256": "17930c339cefecc2cd6ea19f9e810280dc7fd9bfea2ee9ca932f82216f1b8cab"
     },
     {
       "path": "docs/build/reference/vocabulary-indexes.html",
-      "sha256": "850bae5e36af4bdad38ab48810af63e3490dc889978a4271d38b4efce73bb442"
+      "sha256": "8c5e86ed92dc7194daceed1e5272c29fcbfbd2dbe8d6c20b9a9684b8d83d09fd"
     },
     {
       "path": "docs/build/references.bib",
-      "sha256": "5a076daae2f6547f10461f91f05fca15397e1bb4b57418747f0f188af5a03696"
+      "sha256": "59487deaf6ceed851ca9e5b536cb1dfde1079e148bfe8b9408472e833d16399f"
     },
     {
       "path": "docs/build/search_index.js",
-      "sha256": "e3df04417c2556de0760bf7827e2549c234097d06aad03d2a5849d3f3f0b7abb"
+      "sha256": "f2746ef5b02ecc2db7e0806ec0a151f3a1a80fca689ebeaa998ae48b203ad0a3"
     },
     {
       "path": "docs/build/start/first-failure-parallel-branches.html",
-      "sha256": "e8e97e9d6269f81d51c07eea6a74e1173d10eb4e4fce406521b6c4ed141c17a2"
+      "sha256": "116ea718634a8027587814e11199ee432110d53999b0cadf70715b6d0823f612"
     },
     {
       "path": "docs/build/start/five-bus-cycle-spaces.html",
-      "sha256": "6cea99eaacf48b9ec167ee4274b4bf11f24e70e74694bc41a23eca12592d9c6d"
+      "sha256": "25a264c735b30a88ba2e185173e5b13d48dfdbffccbb391fc6295e44c214f861"
     },
     {
       "path": "docs/build/start/five-bus-transformer-lowering.html",
-      "sha256": "4d6fec3717fa0374ec0d16d6ba3b3ede28ae83340a2baba587b15ff56ce120f9"
+      "sha256": "28ff78116c4844be65e159d51116d07379117ff0a46ae68a4e8b7f04d23cd2da"
     },
     {
       "path": "docs/build/start/how-to-read-diagrams-and-equations.html",
-      "sha256": "486df2e8a9062a8b7ed6ed5d6a1860b5dec59a564cc34815cc9129763f822b27"
+      "sha256": "57cc50394ef58074e0af57e19d61104a4bfb63e8d761cbc0a448f32e982cf2c2"
     },
     {
       "path": "docs/build/start/how-to-use-this-book.html",
-      "sha256": "2d95c82ad3f7eeee6df273baca20c063fa279eea4634c27ae28f161bcf6593a1"
+      "sha256": "e90703ed8dc4da8a0cab02fdd55ff38e121f148d380c10f4a2ec9b79ee7519d4"
     },
     {
       "path": "docs/build/start/one-network-five-languages.html",
-      "sha256": "37adc915ce1ba19b5388d2bf2da096d07b06187b64947905a4ce708de7e28de8"
+      "sha256": "2e1fdbc4bc05561880cac411fe864e0b77159d695b20f5d81ed25658c5d2968a"
     },
     {
       "path": "docs/build/start/one-network-many-graphs.html",
-      "sha256": "3f935afdc40b62b03c54ffaab4ebbdc3b06329c0ab11d7c5e0e369515b6220a0"
+      "sha256": "9279f4343c6ecc9d1de56dc2ef02d8044d097b8479f285641594a41f13ce1494"
     },
     {
       "path": "docs/build/start/reading-guide-graph-and-transmission.html",
-      "sha256": "420590e8d621559a699264bc44e09db4dab6937b361c08b3d1b3efdab2bb90cf"
+      "sha256": "af92dd8c20bfd0d626b9baf954df6b5e96542f4771fde9bd974d9c15aed90ac8"
     },
     {
       "path": "docs/build/transformations/certificate-schema-and-composition.html",
-      "sha256": "dafc982615746863bfb493ca9eea4cb4b9d7b4cb2aabe949cb3fe297f0aac3ba"
+      "sha256": "5faf3b3b244459c32fc75e84aa3ed1dcf77d87168d74a79abe666808bbe232c3"
     },
     {
       "path": "docs/build/transformations/circuit-coordinate-transformations.html",
-      "sha256": "b6737673a8c41662be83bea96282beef659d9d84e3cc1bc85f195f62afcfc92b"
+      "sha256": "844beb7ef7e9d4a148de1ebae7fe45cdfefe5ed992893ebe7623204f4fd4e0e7"
     },
     {
       "path": "docs/build/transformations/conductor-coordinate-normalization.html",
-      "sha256": "c8e86d4183d240891897b8310815592822b34a48af75583f0fabf5fb8c5c5af6"
+      "sha256": "792a565b6efd10d88eb6ee500de107fdc69c89ee446e82b8ebc4865fdff405ef"
     },
     {
       "path": "docs/build/transformations/degree-two-series-elimination.html",
-      "sha256": "b731e1319af7c39dd0332d714aeec758774b403f938dbdcff29f3f0e68012458"
+      "sha256": "929aafd5b1cf11e831d86ef624419f9dc2e780d1acc08e438181240a9a531a54"
     },
     {
       "path": "docs/build/transformations/fixed-linear-transformer-factor-completion.html",
-      "sha256": "d20492281de9d16761646fa15100852e606c6690dbecb61bfe5089884aa3f5f3"
+      "sha256": "c6890e00a2c966c92acea4b73aaaf412f8c83be897d30c934e799fc7351e559c"
     },
     {
       "path": "docs/build/transformations/guarded-normalization.html",
-      "sha256": "5de4f2ed702269c6968d2fb0d69e538a400a7897a88dcf01f95d4482897c6af3"
+      "sha256": "6f513cc86d953e1e47f2b8d16376c44363d184423280b27e9edbfb8fe0393b47"
     },
     {
       "path": "docs/build/transformations/kron-ward-opti-kron.html",
-      "sha256": "71445e5dfcb82c2c59ee742aea148e6beb11d4db41fdca803db98d6ee2c88a01"
+      "sha256": "cfec846acdf69ea009042b17e46967280d1f90184cc75b55f8ca59457eb960eb"
     },
     {
       "path": "docs/build/transformations/multiwinding-leakage-reference-compilation.html",
-      "sha256": "49284baba3116779c58b24b7cdb1ee971d37ef6dfc069278458dd9b165438a7c"
+      "sha256": "2f661ada2a8d4920fa702a32ec1eb20ed796315ac0a60ca4a94da5ab4350320e"
     },
     {
       "path": "docs/build/transformations/multiwinding-terminal-leakage-assembly.html",
-      "sha256": "cdf8a62ea196949e7a5d619cfdb5176c4ed62375a62489aaa9ad044dac6470f9"
+      "sha256": "8db6390fb862be59f44b264f6f72251e80da05764b1e80de4fbe8e26f71d0556"
     },
     {
       "path": "docs/build/transformations/parameterized-transformer-tap-decisions.html",
-      "sha256": "1941d263c2f787177cbea340d92f010996e4e687954bede94352e2a4b19f153a"
+      "sha256": "398bf8aac93e9225ef7950d8a0ac0e2d4a3c14608cda218a7478d6a531c16c79"
     },
     {
       "path": "docs/build/transformations/projection-compilation-reduction.html",
-      "sha256": "a8007a38edca50d52b72ff80bd2ff42320e2fd8c03272c13ef06e26b878dbd6b"
+      "sha256": "2b4729cdd2e2b78f622c5de01c85ef5011912a54badfa73c84a5baf567080eb5"
     },
     {
       "path": "docs/build/transformations/transformer-winding-coordinate-normalization.html",
-      "sha256": "2f563d7510359b73a9e688e3040c62c01057a2b58e1069a808faa3ee0e8ee5c4"
+      "sha256": "691e16ee89bc6372c439200f3e8bfd0a68f90f106447328f4abcb5a079ccea0d"
     },
     {
       "path": "docs/latex_build/GraphModelsForPowerSystems.pdf",
-      "sha256": "dfa375904d855ccd79f78e2504156f56c5b6385098ee857ff61bc289b767f035"
+      "sha256": "c2325bede67e0610bddebf6540ca7d606bbe851fa793c351be76fa518cd2f9fe"
     },
     {
       "path": "docs/latex_build/WhatPower-NetworkModelsPreserve.pdf",
-      "sha256": "dfa375904d855ccd79f78e2504156f56c5b6385098ee857ff61bc289b767f035"
+      "sha256": "c2325bede67e0610bddebf6540ca7d606bbe851fa793c351be76fa518cd2f9fe"
     },
     {
       "path": "docs/make.jl",
-      "sha256": "08da645a03b89db1ff9f603b9cbd2c73d5222f70abf7fac90c97bb9a8101258c"
+      "sha256": "8b1415d1c5eaa6dd252b2265495bd4441f4c5421a4f57fa9f300087ca75e193f"
     },
     {
       "path": "docs/src/.DS_Store",
@@ -1516,7 +1520,7 @@
     },
     {
       "path": "docs/src/assets/reference-evidence-map.svg",
-      "sha256": "8607ebf90beef7a4a979f0f0bb411a1a72ed6e917d8546a839716bd05613b6da"
+      "sha256": "8ea0de6d4bb6bd6c9a11bd7908267dbdb3d68b6cc8686f2320de17d624521d08"
     },
     {
       "path": "docs/src/assets/reference-symbol-anatomy.png",
@@ -1532,7 +1536,7 @@
     },
     {
       "path": "docs/src/assets/reference-verification-summary.svg",
-      "sha256": "3999b508274efac7b277a4b9eaa6ab4d8513d53576a4f5df01109f6dedc77eba"
+      "sha256": "cc9780097597c7200962c7bc6949b4bd588c396c1215acd2682f3fe472f7d395"
     },
     {
       "path": "docs/src/assets/representation-principal-levels.png",
@@ -1752,15 +1756,15 @@
     },
     {
       "path": "docs/src/foundations/circuit-formulations-and-lowering.md",
-      "sha256": "fa9dd2b1788f726968774401c9c106b555c4650f8f16d52d5fc2e61e94eb5cfc"
+      "sha256": "cd91574be4687eea562657d906058d151c8fdc330a28e6ac581b3a6f61736e2a"
     },
     {
       "path": "docs/src/foundations/compiled-views-and-graph-surgery.md",
-      "sha256": "5cd85e6eba1cbdb73f4af57570d3c1eaec1b74431296fa8f8ebb13c0df38e802"
+      "sha256": "984629295f665570d31af3d6e5bef171a8573d44ebbdae58a4ba8d408b748d2b"
     },
     {
       "path": "docs/src/foundations/cycles-parallelism-radiality.md",
-      "sha256": "baf9ee10b17af6f6de4659edfdce9bb0a9bf1f83859017883ddc2ad8829d8ad9"
+      "sha256": "64d84332f9c4a00caffd640afbff5cf2e3ef6bd33015dd3b2fde51ac89095259"
     },
     {
       "path": "docs/src/foundations/data-model-crosswalk.md",
@@ -1772,7 +1776,7 @@
     },
     {
       "path": "docs/src/foundations/formal-representation-frameworks.md",
-      "sha256": "53048a3b53634b828323b1dd76945b737655e176513105a063d32640f8e6a838"
+      "sha256": "33ca9df43a8fb5a40ae4cfd183e4b111be699f2b421d5d42bbe7595337b20719"
     },
     {
       "path": "docs/src/foundations/impedance-fidelity-ladder.md",
@@ -1783,12 +1787,16 @@
       "sha256": "5232a6a18dfb64b546ccde67987dfb5026bfaf144a71ee7c54c0028ba91c8828"
     },
     {
+      "path": "docs/src/foundations/multigraphs-for-modelers.md",
+      "sha256": "a6a6aa236b584b4c24a2d8700333a5cf693aa45cbcf59436950dbe3b53e4c8fa"
+    },
+    {
       "path": "docs/src/foundations/node-breaker-topology-processing.md",
-      "sha256": "9c51b6d6f10101a4e28717d2f64daba9c66d8198ecd74ae2b0cce664e7f64400"
+      "sha256": "d8a41cea7b996f822e6a01578d35df0e25726e8dadeb75fc75e5aa0cc549fb7b"
     },
     {
       "path": "docs/src/foundations/notation-and-conventions.md",
-      "sha256": "65260912bb69a59c925d084d1d0c038c1eac314aa62517b3c09d1467e3755073"
+      "sha256": "2bcec276127ebda24ab833a502d5e84ea1cc971e5c7686094901d98d22be2f53"
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
@@ -1808,11 +1816,11 @@
     },
     {
       "path": "docs/src/foundations/representation-maps.md",
-      "sha256": "aacf09172b668efef2869e3bedc005ce8447f7ff63c4917942f590572eb9b7f7"
+      "sha256": "def2b84c7697422f2235406954aa50f0559ba0f59e1023bf4954d033fbdc3a68"
     },
     {
       "path": "docs/src/foundations/representation-taxonomy.md",
-      "sha256": "783a37c286f430482935075830d8d8f9a62251fc33c0cecda90a3506434e79cc"
+      "sha256": "1362bfda01b5de804578772321e408e414c822e2e454449c80d9e5d111065279"
     },
     {
       "path": "docs/src/foundations/scope-and-thesis.md",
@@ -1832,7 +1840,7 @@
     },
     {
       "path": "docs/src/foundations/two-level-topology-and-nodal-projection.md",
-      "sha256": "32e16e98d3338402a35da97215a18053e3acb0aff293ee3e2408fccc25354c1e"
+      "sha256": "0a6154fb03a5e28742bde1630979845c9aec606290dab6122d70425d9a0aad95"
     },
     {
       "path": "docs/src/foundations/when-general-model-collapses.md",
@@ -1840,7 +1848,7 @@
     },
     {
       "path": "docs/src/index.md",
-      "sha256": "9ddafbbd4c298532543658657582db97996546f2d9a9f46deaf03fa0352fc786"
+      "sha256": "db621698dac127e287291ad3df23655d2412db2f7574dd117a7861e1dc9b3a7d"
     },
     {
       "path": "docs/src/literature/literature-map.md",
@@ -1860,7 +1868,7 @@
     },
     {
       "path": "docs/src/literature/search-runs/2026-08-14-seed-batch.md",
-      "sha256": "e24c2acec9e84c7cda73ab353ad44411f4564c599c4f529d6121c2ee964c668f"
+      "sha256": "9a118bbb1bd8d79402274d80229356028e94ca164172f3575fc1b76cbda1351c"
     },
     {
       "path": "docs/src/literature/search-runs/2026-08-15-formulation-landscape.md",
@@ -1872,19 +1880,19 @@
     },
     {
       "path": "docs/src/literature/search-runs/2026-08-16-multiphase-and-practical-reductions.md",
-      "sha256": "3e21db53c37b214f82a81feae7b3be84a13ddec4d35219afd8e9e2baea92533d"
+      "sha256": "c18c3974c0797743b8da331524b1b8171bb78ee527f43bb02e9505117a83a7bf"
     },
     {
       "path": "docs/src/reference/chapter-status.md",
-      "sha256": "ea82ede8f8a7bdb3b65b74a5b142bfae14b58f72e3f49c039f5d64694aa85fea"
+      "sha256": "7e3effa7cb8e7242e1648fe3f9cc87a3b70f032324a41c8b9b4328444fbe2c18"
     },
     {
       "path": "docs/src/reference/evidence-map.md",
-      "sha256": "c9aa9770f33fe23ddd36fc0ba1b8a067f3ff529263d0239dc467ad05cc636638"
+      "sha256": "db8073923aea7fb275f81ecf5e78542d7988bdfc4fd9817e6217baf8d8b2e10b"
     },
     {
       "path": "docs/src/reference/knowledge-base-index.md",
-      "sha256": "10e00c77348ed8636c70d472c761766a827458268d2659e1399e9ff0103ecdec"
+      "sha256": "674c7c26dce6689062d80d467bc07c47ea01e1e9d0328ee095ffa14265c9dc0d"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -1892,7 +1900,7 @@
     },
     {
       "path": "docs/src/reference/terminology.md",
-      "sha256": "d00e5b1215106f44c0152adf5cd2944a13f58ba3aa6263937eed4e3403ae8e10"
+      "sha256": "f7f5f95508a7376a093dd0c12ed19a6cd991db1059fcf9f75c179ea5917f1f87"
     },
     {
       "path": "docs/src/reference/vocabulary-indexes.md",
@@ -1900,7 +1908,7 @@
     },
     {
       "path": "docs/src/references.bib",
-      "sha256": "5a076daae2f6547f10461f91f05fca15397e1bb4b57418747f0f188af5a03696"
+      "sha256": "59487deaf6ceed851ca9e5b536cb1dfde1079e148bfe8b9408472e833d16399f"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
@@ -2871,6 +2879,10 @@
       "sha256": "ded08eebbe2663a605494f3ebaa8852c59cc7db43f8018de83fe5925dffba426"
     },
     {
+      "path": "experiments/test/multigraph_conventions.jl",
+      "sha256": "48512ef071d5bf326e5057be8af033b52c6dbc046bf57139c96f9906cbb8d9e2"
+    },
+    {
       "path": "experiments/test/multigraph_cycle_space.jl",
       "sha256": "7b1171bd40122fb2f8cd886b15b436c4eb4af06ee815e94242358e55d400b7bf"
     },
@@ -2964,7 +2976,7 @@
     },
     {
       "path": "experiments/test/runtests.jl",
-      "sha256": "3349bb150d89c240833d92ea64f471015406205e42969183b6f82b3c56897751"
+      "sha256": "744146f9ba771183c6fe0edc2965522e210547515847bdaa9441b0e07ab1b244"
     },
     {
       "path": "experiments/test/series_elimination.jl",
@@ -3260,7 +3272,7 @@
     },
     {
       "path": "llm/README.md",
-      "sha256": "0c0734ee4561d6f36995c765bd9dfc4f4be026aca80d3667398ca43e98799fb8"
+      "sha256": "cc1030fb4fc8a74782686fa331ee8f222d41efe94a86bc8ab758c860e84ac43a"
     },
     {
       "path": "llm/access-fixtures.toml",
@@ -3276,11 +3288,11 @@
     },
     {
       "path": "llm/generated/access-fixtures.jsonl",
-      "sha256": "f0cfab57524952e14ac09ff5636e73d875067363f9e7bd9581ee61565ac8e11a"
+      "sha256": "a59971b2eb9d5efd7e0e5a5d54e927f18cb962b44ccb7092c123a1e7d22827de"
     },
     {
       "path": "llm/generated/adversarial-evaluation.json",
-      "sha256": "b54304157f0e5eb60806be53ee2d5d6c2c64072f3b1cc6725f1142598b900990"
+      "sha256": "1bfeeecc1ef9427962abb5b30b1942cc3fa1fba7a7c59381ce6cb157bfddd361"
     },
     {
       "path": "llm/generated/adversarial-evaluation.md",
@@ -3288,27 +3300,27 @@
     },
     {
       "path": "llm/generated/corpus-manifest.json",
-      "sha256": "9f8c27313f8fae4084274363367b868b60759f7ea7b5a87149042727d251b6f3"
+      "sha256": "ec9ffe0c7bb5594bf5adfd8ed176de22d72d223ac4764e294e1915cd43d7f487"
     },
     {
       "path": "llm/generated/corpus.jsonl",
-      "sha256": "8d73544719d5c384159167355602ceb9576b5c71c6838f4557c969be2c40eaf7"
+      "sha256": "fba3ea042f6b778c45253793a9d9cee7d083a7ba76d5aab446d868d69ac0ada0"
     },
     {
       "path": "llm/generated/neural-retrieval-evaluation.json",
-      "sha256": "c0cdc9239396d5e0ee5427bc62ec6dec30eda31e7035a3e1070b0de4cdc787e1"
+      "sha256": "8f36d2b55b38ff84fc39f3bb62aca66ab53fa4e15e53e07bf59ac64d6a60222f"
     },
     {
       "path": "llm/generated/neural-retrieval-evaluation.md",
-      "sha256": "55908570477df2cf7e9d1c89d26307dd48cbf3461ac4fc8819d28de734f2c02f"
+      "sha256": "d63bf80158f0552c4fcaa515b6b5ce148e856add90a795852c6292e7a3ee1da6"
     },
     {
       "path": "llm/generated/retrieval-evaluation.json",
-      "sha256": "68f6d24d520d19ac79d883b2e4e74e0805cfabfe79d77c478124b34547a5ed01"
+      "sha256": "6467522b9091bc850a9ff3ffb71712624e721e78a47dfd65b83a697c2e8a47d8"
     },
     {
       "path": "llm/generated/retrieval-evaluation.md",
-      "sha256": "597e4d794f9e0df3562bff81f5d92554b6d3d386f8ab3e3ea6baf67f1242c944"
+      "sha256": "40ceea7cdee8f693d7838335b38f48a13a58b9d09134731b48e6622cb572bbbe"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -3316,7 +3328,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "64620198e4c41f66755abd6f1c824e5dd87ee6a4d373c575dac35746bd04a645"
+      "sha256": "58fa45e63871eeddf6504d7e39ded0827ba40091529781ca6fdab1bd45eafc74"
     },
     {
       "path": "llm/neural-models.toml",
@@ -3380,7 +3392,7 @@
     },
     {
       "path": "review/bibliography-audit.toml",
-      "sha256": "8acefdb494cf477c08c825ea76611079235a1de80d5cc1794a781273c3455fa4"
+      "sha256": "78c25cb4d4a9657d81c794c1dd5d02b6476fe1ffa12c1dce54415a5cba2c59ef"
     },
     {
       "path": "review/coding-guide.md",
@@ -3440,19 +3452,19 @@
     },
     {
       "path": "review/search-runs/2026-08-14-seed-batch.md",
-      "sha256": "bd0038ee6f0799be2c2fc00a16ecc82e38d207e22cd6d18dc69db1e2c3056adb"
+      "sha256": "489107a577914770d35bd9c52bd2f3f08ab6bce56a6921b0c8b8052353961c72"
     },
     {
       "path": "review/search-runs/2026-08-15-formulation-landscape.md",
-      "sha256": "414f5384b87cc5e53ca5ab62eedcf43345fe992c655ae0002e26541989a5c642"
+      "sha256": "1d984aeedec5f2c4be9d0a3bde719bc156cd4d7bfc1e7fd8933da617a76b54f8"
     },
     {
       "path": "review/search-runs/2026-08-15-information-model-citation-chase.md",
-      "sha256": "42351417ea975f337076d124fb1a613fe8ae62757ce109b03ec6e2ae4c978dfa"
+      "sha256": "84aa8c0e24aab663af4a491433bdd666a75d8e8fbab52d5b299b879773db09df"
     },
     {
       "path": "review/search-runs/2026-08-16-multiphase-and-practical-reductions.md",
-      "sha256": "fb66ec740d92522d3512bf6b9131739d07b1dfe98f486a838bc340181b478910"
+      "sha256": "e791723bf30c0da0e3e8376cb570465f8dbcb495c3821eefce22fae3b3b6ab85"
     },
     {
       "path": "review/search-strings.md",
@@ -3468,7 +3480,7 @@
     },
     {
       "path": "review/snapshot-manifest.json",
-      "sha256": "b72d56be732ff5346fcfa88f41d5b019eaeebbf53b80f9d3f33716a46f2196b6"
+      "sha256": "cfafc04fd21482c221276077b33e725ec68e0c6704fe032dd7d390c1751acd6b"
     },
     {
       "path": "review/snapshots/evidence-matrix-second-coding-2026-08-15.csv",
@@ -3520,11 +3532,11 @@
     },
     {
       "path": "scripts/benchmark_llm_embeddings.py",
-      "sha256": "cb63732ab25ea4a2e7644a01bba61d8e2c23187fd5867980025fceb48d50276d"
+      "sha256": "10c89817fdfc842c9d2560f62d793d2cc800dad54e834cced218da8d776cc6e3"
     },
     {
       "path": "scripts/check_artifacts.py",
-      "sha256": "15d359d6396d8ab29db3dbb3da56a9208fe4098a950500b1c4fc8102b17b9268"
+      "sha256": "214a6c2fb5a26b767248d3356cec1b36a11ad528cd694c7e7e341ef98d823a52"
     },
     {
       "path": "scripts/check_bibliography.jl",
@@ -3564,7 +3576,7 @@
     },
     {
       "path": "scripts/check_llm_reproducibility.py",
-      "sha256": "f7c93c936f55f0a943de3594ddbce433fbe3835188d871551db32d6e6612d7d9"
+      "sha256": "6a4f58cf315f7f9eae73a5d561911bfdfb3bda543c7c7a8765dc355a00aebe85"
     },
     {
       "path": "scripts/check_llm_routes.py",
@@ -3576,7 +3588,7 @@
     },
     {
       "path": "scripts/check_neural_benchmark.py",
-      "sha256": "9f387b616c7b924622944c8c70118ba075f4ef5476f4f447f579507dd50ccd09"
+      "sha256": "acf6ad4f5a5083370d43b75a9cf3a1ddcfbfa9df5fd848fda460a4bd335dab82"
     },
     {
       "path": "scripts/check_page_ids.py",
@@ -3600,7 +3612,7 @@
     },
     {
       "path": "scripts/check_rendered_outputs.py",
-      "sha256": "9258f1c2e3a311c9eac571e0c1d58d07d0608c5b4b15e5754df6bba212902692"
+      "sha256": "948fbee63ee79ea96f3540792c7841d1b181a7d0d2e002dee0fe3732a58a811d"
     },
     {
       "path": "scripts/check_review_snapshot.py",
@@ -3740,7 +3752,7 @@
     },
     {
       "path": "scripts/tectonic-font-wrapper.sh",
-      "sha256": "077611df56a75bbfb8acf5f7a02382f626c7513401753506efdc801e5234400b"
+      "sha256": "d505cf903fa39d8348c7d755262cef51090862a546670a2008455e134c973525"
     }
   ]
 }

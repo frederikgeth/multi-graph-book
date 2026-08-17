@@ -180,6 +180,15 @@ def markdown_report(result: dict) -> str:
         f"**Corpus:** `{result['corpus']['corpus_id']}`",
         f"**Model:** `{provenance['model_id']}` at revision `{provenance['model_revision']}`",
         f"**Embedding artifact hash:** `{provenance['artifact_sha256']}`",
+    ]
+    compatibility = result.get("compatibility", {})
+    if compatibility.get("status") == "archived_prior_corpus":
+        lines += [
+            "**Current-corpus compatibility:** `archived_prior_corpus`",
+            f"**Current corpus hash:** `{compatibility.get('current_corpus_sha256')}`",
+            f"**Required action:** {compatibility.get('required_action')}",
+        ]
+    lines += [
         "",
         "This report is an opt-in comparison. It does not promote neural retrieval into the release path",
         "or prove answer faithfulness; it measures only held-out evidence-record retrieval.",

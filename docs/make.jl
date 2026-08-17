@@ -105,7 +105,22 @@ const GENERATED_PDF_PATH = joinpath(@__DIR__, "latex_build", GENERATED_PDF_NAME)
 # patches Documenter's generated font style to use the installed DejaVu files
 # directly; this avoids a Fontconfig/XeTeX name-resolution failure while
 # retaining the bundled-artifact fallback on other platforms.
-const TECTONIC_REAL = get(ENV, "DOCUMENTER_TECTONIC", tectonic_jll.tectonic())
+const USER_TECTONIC = get(ENV, "DOCUMENTER_TECTONIC", nothing)
+const TECTONIC_JLL_COMMAND = tectonic_jll.tectonic()
+const TECTONIC_REAL = USER_TECTONIC === nothing ?
+    String(first(TECTONIC_JLL_COMMAND.exec)) : USER_TECTONIC
+const TECTONIC_JLL_ENV = USER_TECTONIC === nothing ?
+    Pair{String,String}[
+        let fields = split(entry, "="; limit = 2)
+            fields[1] => get(fields, 2, "")
+        end
+        for entry in TECTONIC_JLL_COMMAND.env
+    ] : Pair{String,String}[]
+const TECTONIC_DYLD_FALLBACK = get(
+    Dict(TECTONIC_JLL_ENV),
+    "DYLD_FALLBACK_LIBRARY_PATH",
+    "",
+)
 const TECTONIC_WRAPPER = joinpath(@__DIR__, "..", "scripts", "tectonic-font-wrapper.sh")
 const TECTONIC = Sys.isapple() && isfile(TECTONIC_WRAPPER) ? TECTONIC_WRAPPER : TECTONIC_REAL
 
@@ -156,6 +171,7 @@ const PAGES_HTML = [
     "Representation landscape" => [
         "Representation frameworks" => "foundations/formal-representation-frameworks.md",
         "Representation taxonomy (reference card)" => "foundations/representation-taxonomy.md",
+        "Multigraphs for expert modelers" => "foundations/multigraphs-for-modelers.md",
         "Maps between representation frameworks (reference card)" => "foundations/representation-maps.md",
         "Circuit formulations and the lowering boundary" => "foundations/circuit-formulations-and-lowering.md",
     ],
@@ -228,6 +244,7 @@ const PAGES_PDF = [
     "Representation obligations" => [
         "Representation frameworks" => "foundations/formal-representation-frameworks.md",
         "Representation taxonomy" => "foundations/representation-taxonomy.md",
+        "Multigraphs for expert modelers" => "foundations/multigraphs-for-modelers.md",
         "Maps between representation frameworks" => "foundations/representation-maps.md",
         "Translation traps: graphs, circuits, and power-system language" => "foundations/translation-traps.md",
         "Two topology levels and the nodal projection" => "foundations/two-level-topology-and-nodal-projection.md",
@@ -326,21 +343,26 @@ end
 
 function make_latex()
     build = function ()
-        withenv("MULTIGRAPH_TECTONIC_REAL" => TECTONIC_REAL) do
-            makedocs(
-                sitename = SITENAME,
-                authors = AUTHORS,
-                format = Documenter.LaTeX(
-                    platform = "tectonic",
-                    version = VERSION,
-                    tectonic = TECTONIC,
-                ),
-                build = joinpath(@__DIR__, "latex_build"),
-                plugins = [bibliography()],
-                remotes = REMOTES,
-                pages = PAGES_PDF,
-                warnonly = false,
-            )
+        withenv(TECTONIC_JLL_ENV...) do
+            withenv(
+                "MULTIGRAPH_TECTONIC_REAL" => TECTONIC_REAL,
+                "MULTIGRAPH_TECTONIC_DYLD_FALLBACK" => TECTONIC_DYLD_FALLBACK,
+            ) do
+                makedocs(
+                    sitename = SITENAME,
+                    authors = AUTHORS,
+                    format = Documenter.LaTeX(
+                        platform = "tectonic",
+                        version = VERSION,
+                        tectonic = TECTONIC,
+                    ),
+                    build = joinpath(@__DIR__, "latex_build"),
+                    plugins = [bibliography()],
+                    remotes = REMOTES,
+                    pages = PAGES_PDF,
+                    warnonly = false,
+                )
+            end
         end
     end
 

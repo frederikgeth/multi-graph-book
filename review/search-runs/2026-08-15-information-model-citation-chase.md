@@ -1,4 +1,4 @@
-# Search run: 2026-08-15 information-model and software citation chase
+# [Search run: 2026-08-15 information-model and software citation chase](@id search-run-2026-08-15-information-model-citation-chase)
 
 **Protocol:** 0.2.0  
 **Run date:** 2026-08-15  

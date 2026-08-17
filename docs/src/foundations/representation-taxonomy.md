@@ -88,6 +88,11 @@ boundary behaviour.
 A behavioural factor relates variables on an arbitrary ordered set of ports. Ordinary branches are
 arity-two special cases. Multiwinding transformers, converters, mutual couplings, shared controls,
 and measurement relations need not be decomposed into artificial pairwise edges.
+The formal relation between a two-uniform flag multigraph, an arbitrary-arity
+incidence structure, a bipartite incidence graph, and a typed port--factor
+relation is fixed in [Multigraphs for expert modelers](@ref
+multigraphs-for-modelers). This taxonomy names the representation family; it
+does not use *hypergraph* and *factor graph* as interchangeable data models.
 
 ### Algebraic and equation models
 

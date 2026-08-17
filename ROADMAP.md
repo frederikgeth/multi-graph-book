@@ -248,6 +248,52 @@ the mandatory scope and counterexample for dangerous-shortcut questions, render
 one scientific answer in each target audience's language, cite stable book
 sources, and abstain when the resource does not support an answer.
 
+#### R6 — Develop the multigraph reference for expert modelers
+
+This tranche absorbs and extends the graph-theoretic material reviewed from
+Appendix A. It is a refactor-and-expansion tranche: the existing representation,
+cycle, topology-processing, and nodal-projection chapters remain authoritative
+for their subjects, while a new reference chapter supplies the common formal
+object and convention layer that those chapters can cite.
+
+- [x] create a dedicated development branch from the squashed public snapshot;
+- [x] define the finite undirected multigraph using edge ends (flags), so loops,
+  parallel members, endpoint multiplicity, and later port generalizations are
+  unambiguous;
+- [x] separate incidence degree, distinct-neighbour degree, terminal count, and
+  model-specific engineering counts rather than using an unqualified degree;
+- [x] state compatible incidence, adjacency, degree, Laplacian, and cycle-space
+  conventions, including the treatment of graph loops;
+- [x] distinguish graph loops, shunts to reference, contraction-created loops,
+  diagonal matrix terms, and self-dependencies;
+- [x] define simple projection as a quotient with explicit edge fibres and give
+  a query-indexed preservation table for simplification;
+- [x] connect deletion, contraction, graphic matroids, parallel classes, and
+  minimal cycle supports to topology processing and network-model reduction;
+- [x] add graph-theory, algebraic graph theory, matroid, and classical
+  network-matrix textbook anchors, with conventions attributed rather than
+  presented as universal;
+- [x] add an executable convention witness covering loop degree, Laplacian
+  cancellation, parallel-cycle rank, simple projection, and shunt distinction;
+- [x] refactor overlapping chapters to cite the new normative definitions and
+  remove competing notation without shortening their application-specific
+  explanations;
+- [x] add worked examples for deletion/contraction, weighted parallel
+  aggregation under different queries, and topology-processor state changes;
+- [x] extend the treatment from two-terminal multigraphs to declared
+  hypergraph/incidence and port--factor alternatives for n-port equipment;
+- [x] register the high-consequence convention and simplification claims in the
+  claims ledger and accessibility corpus after the prose stabilizes;
+- [ ] commission expert review of graph/matroid terminology and the boundary
+  between combinatorial and electrical statements as part of R4.
+
+**R6 exit criterion:** an expert mathematical modeler can identify the exact
+graph object, loop and multiplicity convention, matrix construction, and
+information-losing quotient behind every graph-derived statement; a power
+engineer can determine which assets or nodal elements are represented by that
+object; and the core identities are covered by executable witnesses and stable
+literature anchors.
+
 #### Implementation order
 
 Work in this order: **R0 → R1 → R2 → R3 → R4** for the external-review
@@ -256,6 +302,9 @@ evidence boundary; it must not silently promote verification states or delay a
 stable reviewer snapshot. Do not expand the general transformation theory or add broad application claims before R0--R2 are complete.
 New content is welcome when it closes a named evidence or reader-inference gap;
 otherwise it belongs in the research agenda rather than the active queue.
+R6 may proceed as a self-contained reference tranche. Its definitions must be
+integrated before its claims are promoted, and its externally reviewed status
+remains subject to R4.
 
 ### Latest Part I review tranche (complete)
 
