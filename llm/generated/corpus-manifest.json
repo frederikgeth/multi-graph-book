@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "f6150a44c7ad3b4f8a971afc3981d3f7c675f01c5dd6cc08cce3132659e7e946",
+  "corpus_sha256": "7eec81d0a7d219b25ba5e026475a02ac726ea21cb5934b81154cabc4c5cefba1",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -80,7 +80,7 @@
     },
     {
       "path": "docs/src/foundations/cycles-parallelism-radiality.md",
-      "sha256": "64d84332f9c4a00caffd640afbff5cf2e3ef6bd33015dd3b2fde51ac89095259"
+      "sha256": "3aa4be38601023d71f42d37b9ac59afeee57bfcfdcd0529efb6de73d70e44955"
     },
     {
       "path": "docs/src/foundations/data-model-crosswalk.md",
@@ -92,7 +92,7 @@
     },
     {
       "path": "docs/src/foundations/formal-representation-frameworks.md",
-      "sha256": "33ca9df43a8fb5a40ae4cfd183e4b111be699f2b421d5d42bbe7595337b20719"
+      "sha256": "e47a4f8a2f870a59459ee2b62b66009e6c418db4066b42803ee71838b274ea17"
     },
     {
       "path": "docs/src/foundations/impedance-fidelity-ladder.md",

@@ -44,12 +44,12 @@
           "claim:FORMULATION-Y-SPLIT-001",
           "concept:nodal-operator-alias",
           "claim:NUMERICAL-002",
-          "claim:FORMULATION-NODAL-003",
           "claim:FORMULATION-NODAL-002",
+          "claim:FORMULATION-NODAL-003",
           "claim:GRAPH-PI-COLLAPSE-001",
+          "claim:TR-XFMR-004",
           "claim:GRAPH-SELF-LOOP-001",
-          "claim:FORMULATION-NODAL-001",
-          "claim:TR-XFMR-004"
+          "claim:FORMULATION-NODAL-001"
         ]
       },
       "lexical": {
@@ -339,7 +339,7 @@
           "claim:GRAPH-CYCLE-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
           "claim:ARCH-LOWER-001",
-          "claim:TR-GRAPH-001"
+          "claim:GRAPH-NPORT-001"
         ]
       },
       "lexical": {
@@ -481,7 +481,7 @@
           "claim:FORMULATION-NODAL-003",
           "claim:TOPOLOGY-001",
           "claim:LIT-PAR-001",
-          "claim:TR-GRAPH-002"
+          "claim:TR-XFMR-003"
         ]
       },
       "lexical": {
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "f6150a44c7ad3b4f8a971afc3981d3f7c675f01c5dd6cc08cce3132659e7e946"
+    "corpus_sha256": "7eec81d0a7d219b25ba5e026475a02ac726ea21cb5934b81154cabc4c5cefba1"
   },
   "inputs": {
     "adversarial_cases": {

@@ -26,12 +26,12 @@ cycle, parallelism, bridge, leaf, and radiality definitions.
 
 ## Simple cycles and line-identity cycles
 
-Let ``G_{\mathrm s}=(\mathcal B,E)`` be a loopless undirected simple graph.
+Let ``G_{\mathrm s}=(\mathcal B,E_{\mathrm s})`` be a loopless undirected simple graph.
 A simple cycle is a closed walk with at least three distinct vertices and no
 repeated edge or internal vertex. Its cycle-space dimension is
 
 ```math
-\mu_{\mathrm s}=|E|-|\mathcal B|+c,
+\mu_{\mathrm s}=|E_{\mathrm s}|-|\mathcal B|+c,
 ```
 
 where ``c`` is the number of connected components. The equation counts a
@@ -68,20 +68,23 @@ For a loopless multigraph with ``c`` connected components,
 \mu_{\mathrm M}=|\mathcal L|-|\mathcal B|+c.
 ```
 
-If ``q:\mathcal L\rightarrow E`` forgets line identity and retains the
-unordered endpoint pair, then
+The simple projection ``\operatorname{simp}:\mathcal L^{\circ}\rightarrow
+E_{\mathrm s}`` forgets line identity and retains the unordered endpoint pair.
+In this loopless specialization
+``\mathcal L^{\circ}=\mathcal L``; the superscript makes the non-loop domain
+explicit. The cycle-rank difference is then
 
 ```math
 \mu_{\mathrm M}-\mu_{\mathrm s}
 =
-\sum_{e\in E}\bigl(|q^{-1}(e)|-1\bigr).
+\sum_{e\in E_{\mathrm s}}\bigl(|\operatorname{simp}^{-1}(e)|-1\bigr).
 ```
 
 Thus each additional identified member in a parallel fibre contributes one
 line-identity cycle dimension, even though the simple graph sees only one
 adjacency. The five-bus example makes this loss explicit: its source rank is
-three and its simple projection rank is two because the ``q``--``r`` fibre
-contains two lines.
+three and its simple projection rank is two because the fibre over the endpoint
+pair ``\{q,r\}`` contains two lines.
 
 The cycle vector is a topological object. A nonzero cycle coordinate in a
 branch-current parameterization is not automatically a circulating current,
@@ -131,7 +134,7 @@ Only topological parallelism is visible in a bare multigraph. In a simple graph
 it is not an internal relation at all: it survives only as the fibre
 
 ```math
-q^{-1}(\{i,j\})\subseteq\mathcal L
+\operatorname{simp}^{-1}(\{i,j\})\subseteq\mathcal L^{\circ}
 ```
 
 of the multigraph-to-simple-graph quotient. In a port--factor model, the two
@@ -143,7 +146,7 @@ Electrical parallelism permits a terminal relation such as
 
 ```math
 \mathbf I_{ij}^{\mathrm{total}}
-=\sum_{\ell\in q^{-1}(\{i,j\})}\mathbf I_{\ell ij},
+=\sum_{\ell\in \operatorname{simp}^{-1}(\{i,j\})}\mathbf I_{\ell ij},
 ```
 
 but it does not permit replacing member constraints by a summed constraint.
@@ -159,11 +162,11 @@ and the incidence degree in the loopless identified multigraph by
 
 ```math
 d_{\mathrm{nbr}}(i)
-=|\{j:\{i,j\}\in E\}|,
+=|\{j:\{i,j\}\in E_{\mathrm s}\}|,
 \qquad
 d_{\mathrm{inc}}(i)
 =|s^{-1}(i)|
-=\sum_{e\in E:\,i\in e}|q^{-1}(e)|.
+=\sum_{e\in E_{\mathrm s}:\,i\in e}|\operatorname{simp}^{-1}(e)|.
 ```
 
 These are different measurements. Because this chapter's identified
@@ -187,15 +190,17 @@ We use these precise terms:
 
 An edge is a **bridge** if deleting that identified edge increases the number
 of connected components. A simple edge ``e`` represents a parallel fibre
-``q^{-1}(e)`` in the multigraph.
+``\operatorname{simp}^{-1}(e)`` in the multigraph.
 
 **Proposition.** For a line ``\ell`` in a loopless identified multigraph,
-``\ell`` is a bridge if and only if ``q(\ell)`` is a bridge in the simple
-projection and ``|q^{-1}(q(\ell))|=1``.
+``\ell`` is a bridge if and only if ``\operatorname{simp}(\ell)`` is a bridge
+in the simple projection and
+``|\operatorname{simp}^{-1}(\operatorname{simp}(\ell))|=1``.
 
 **Proof.** If another line shares the same endpoint pair, deleting ``\ell``
 leaves that pair connected, so ``\ell`` cannot be a bridge. Conversely, suppose
-the fibre of ``e=q(\ell)`` is a singleton but ``\ell`` is not a bridge. Then
+the fibre of ``e=\operatorname{simp}(\ell)`` is a singleton but ``\ell`` is
+not a bridge. Then
 there is a multigraph path between the two sides after deleting ``\ell``.
 Projecting that path and removing repeated vertices gives a walk, hence a path,
 in the simple graph with ``e`` deleted. This contradicts that ``e`` is a

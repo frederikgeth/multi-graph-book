@@ -75,13 +75,13 @@ it does not introduce a competing multigraph convention.
 **Definition.** A loopless undirected simple topology graph is a pair
 
 ```math
-G_{\mathrm{s}}=(\mathcal B,E),
+G_{\mathrm{s}}=(\mathcal B,E_{\mathrm s}),
 \qquad
-E\subseteq
+E_{\mathrm s}\subseteq
 \bigl\{\{i,j\}:i,j\in\mathcal B,\ i\ne j\bigr\}.
 ```
 
-An optional weight map ``w:E\rightarrow\mathcal W`` does not restore the
+An optional weight map ``w:E_{\mathrm s}\rightarrow\mathcal W`` does not restore the
 identities of several source elements mapped to the same edge. Its codomain and
 aggregation rule must be declared: a conductance, distance, capacity, and
 binary adjacency have different semantics.
@@ -92,15 +92,19 @@ line set ``\mathcal L`` and derived unordered endpoint map
 is the set of two-element subsets of ``\mathcal B``. Its simple
 projection is
 
+In this loopless specialization ``\mathcal L^{\circ}=\mathcal L``; the
+superscript is retained on the map domain to make the non-loop restriction
+explicit.
+
 ```math
-q:\mathcal L\rightarrow E,
+\operatorname{simp}:\mathcal L^{\circ}\rightarrow E_{\mathrm s},
 \qquad
-q(\ell)=\partial\ell,
+\operatorname{simp}(\ell)=\partial\ell,
 \qquad
-E=\operatorname{im}\partial.
+E_{\mathrm s}=\operatorname{im}\partial.
 ```
 
-Thus ``\ell_1\sim_q\ell_2`` exactly when the two lines have the same
+Thus ``\ell_1\sim_{\operatorname{simp}}\ell_2`` exactly when the two lines have the same
 unordered endpoints.
 
 **Proposition.** If the loopless multigraph has ``c`` connected components,
@@ -109,16 +113,17 @@ then its cycle rank and that of its simple projection satisfy
 ```math
 \begin{aligned}
 \mu_{\mathrm M}&=|\mathcal L|-|\mathcal B|+c,\\
-\mu_{\mathrm s}&=|E|-|\mathcal B|+c,\\
+\mu_{\mathrm s}&=|E_{\mathrm s}|-|\mathcal B|+c,\\
 \mu_{\mathrm M}-\mu_{\mathrm s}
-&=\sum_{e\in E}\bigl(|q^{-1}(e)|-1\bigr).
+&=\sum_{e\in E_{\mathrm s}}\bigl(|\operatorname{simp}^{-1}(e)|-1\bigr).
 \end{aligned}
 ```
 
 **Proof.** Collapsing parallel identity does not change the vertex set,
 adjacency relation, or connected components. Subtracting the two standard
-cycle-rank identities gives ``|\mathcal L|-|E|``. Partitioning
-``\mathcal L`` into the nonempty fibres of ``q`` gives the final sum.
+cycle-rank identities gives ``|\mathcal L|-|E_{\mathrm s}|``. Partitioning
+``\mathcal L^{\circ}`` into the nonempty fibres of ``\operatorname{simp}``
+gives the final sum.
 
 The projection therefore preserves connectivity and islands, but not the
 line-indexed cycle space, member states, or member constraints. A simple
@@ -134,12 +139,12 @@ multigraph is the normative flag object
 ```math
 G_{\mathrm M}
 =
-(\mathcal B,\mathcal L,\mathcal F,s,p,o,a),
+(\mathcal B,\mathcal L,\mathcal F,s,\operatorname{ed},o,a),
 ```
 
 restricted here to edges whose two flags map to different buses. The maps
-``s:\mathcal F\to\mathcal B`` and ``p:\mathcal F\to\mathcal L`` record
-incidence, each fibre ``p^{-1}(\ell)`` contains two flags, ``o`` orders those
+``s:\mathcal F\to\mathcal B`` and ``\operatorname{ed}:\mathcal F\to\mathcal L`` record
+incidence, each fibre ``\operatorname{ed}^{-1}(\ell)`` contains two flags, ``o`` orders those
 flags as tail and head, and ``a`` is a family of typed attribute maps. The
 derived endpoint functions ``\partial^-`` and ``\partial^+`` return the buses
 of the ordered tail and head flags. Parallel elements remain distinct members
