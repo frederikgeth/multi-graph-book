@@ -2,9 +2,9 @@
 
 **Generated report:** deterministic evaluation of the committed corpus and question contracts.
 
-**Status:** `pass`  
-**Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`  
-**Corpus hash:** `612f09cd64109c96eaef926c968b410d3d4485caa841018d7353a4d967e36705`  
+**Status:** `pass`<br>
+**Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
+**Corpus hash:** `8d73544719d5c384159167355602ceb9576b5c71c6838f4557c969be2c40eaf7`<br>
 **Cases:** 27
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.

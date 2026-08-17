@@ -134,6 +134,13 @@ The current CI fails on:
   solver-backed transformer tap network case;
 - an optimizer-independent continuation/Newton reproduction of the transformer tap network case,
   including explicit infeasible and unbracketed-search rejections;
+- high-precision numerical literals in canonical prose must match a generated
+  experiment artifact at the displayed precision or have an explicit,
+  hash-bound derived-number binding;
+- every HTML-routed page must have a unique stable H1 `@id` anchor;
+- every generated experiment JSON artifact must appear in the generated artifact
+  inventory, while artifact-specific semantic checks remain authoritative for
+  contents;
 
 Planned extensions include:
 

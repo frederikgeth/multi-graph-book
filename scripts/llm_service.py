@@ -113,8 +113,8 @@ def render_markdown(packet: dict) -> str:
     lines = [
         "# Book-grounded answer packet",
         "",
-        f"**Status:** `{packet['status']}`  ",
-        f"**Audience:** `{packet['audience']}`  ",
+        f"**Status:** `{packet['status']}`<br>",
+        f"**Audience:** `{packet['audience']}`<br>",
         f"**Corpus release:** `{packet['release']['release_candidate_id']}`",
         "",
     ]

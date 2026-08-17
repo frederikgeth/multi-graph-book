@@ -1927,7 +1927,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "612f09cd64109c96eaef926c968b410d3d4485caa841018d7353a4d967e36705",
+    "corpus_sha256": "8d73544719d5c384159167355602ceb9576b5c71c6838f4557c969be2c40eaf7",
     "record_count": 661,
     "release": {
       "external_reviewed_claims": 0,
@@ -2297,8 +2297,8 @@
           "claim:FORMULATION-Y-SPLIT-001",
           "claim:ARCH-RECOVERY-002",
           "claim:ARCH-RECOVERY-003",
-          "claim:TR-SER-003",
           "claim:NUMERICAL-001",
+          "claim:TR-SER-003",
           "claim:TR-PAR-JOINT-001"
         ],
         "expected_misconception_id": "loads-generators-fixed-graph-membership",

@@ -144,6 +144,13 @@
       ]
     },
     {
+      "name": "prose numbers",
+      "command": [
+        "python3",
+        "scripts/check_prose_numbers.py"
+      ]
+    },
+    {
       "name": "math hygiene",
       "command": [
         "python3",
@@ -158,10 +165,25 @@
       ]
     },
     {
+      "name": "page anchors",
+      "command": [
+        "python3",
+        "scripts/check_page_ids.py"
+      ]
+    },
+    {
       "name": "paper tracks",
       "command": [
         "python3",
         "scripts/check_paper_tracks.py"
+      ]
+    },
+    {
+      "name": "generated artifact manifest",
+      "command": [
+        "python3",
+        "scripts/generate_artifact_manifest.py",
+        "--check"
       ]
     },
     {
@@ -214,7 +236,7 @@
     },
     {
       "path": "QUALITY_CONTROL.md",
-      "sha256": "b334c471f188182767a6e47b926bf0b6fa86dd9cc020737f6a69539e278b628d"
+      "sha256": "6f2606d8012d5dfa3cef14e6720d3a856e47ed67924b4bf08ab9b5b9478d21c4"
     },
     {
       "path": "README.md",
@@ -222,7 +244,7 @@
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "43c3f4e5b2097cefc966552c7ece72ca7aa93a53c052f83ffb2e98d913ff93bc"
+      "sha256": "a7e1d4b3345bc985a4077c560fbc6b1ddb2820a38e28e1804cb70a9446d796d6"
     },
     {
       "path": "claims/claims.toml",
@@ -1818,7 +1840,7 @@
     },
     {
       "path": "docs/src/index.md",
-      "sha256": "4a58839a16203009fc1f56f2a202f23c55b25f2a76051b22adc84c43bb596776"
+      "sha256": "9ddafbbd4c298532543658657582db97996546f2d9a9f46deaf03fa0352fc786"
     },
     {
       "path": "docs/src/literature/literature-map.md",
@@ -1838,19 +1860,19 @@
     },
     {
       "path": "docs/src/literature/search-runs/2026-08-14-seed-batch.md",
-      "sha256": "cc332499b2d3ab12b6a7853d8581219ecf63b6de19cd489ebcf000968086692c"
+      "sha256": "e24c2acec9e84c7cda73ab353ad44411f4564c599c4f529d6121c2ee964c668f"
     },
     {
       "path": "docs/src/literature/search-runs/2026-08-15-formulation-landscape.md",
-      "sha256": "aa6196fa85fc0be2cb6932b13c768f57461f93fc919d512217eb3c8c41af3bc3"
+      "sha256": "2f89f443ec3d26981f76b9b69fe5df6fdf1054e54c8413b8fa9d8026031b4a8e"
     },
     {
       "path": "docs/src/literature/search-runs/2026-08-15-information-model-citation-chase.md",
-      "sha256": "9878052b845245f19797d653ff404234f2b17ce0f35a634bf14b3827e50fb840"
+      "sha256": "abb1b6ae17f2a5c73b5b456d07e4d54e46d78d3aba92bfc3e3549bf0155284e3"
     },
     {
       "path": "docs/src/literature/search-runs/2026-08-16-multiphase-and-practical-reductions.md",
-      "sha256": "fd017436870d0f980d3e3cedbe7f7378c6c7815acf9c9355906716cad7ee14fd"
+      "sha256": "3e21db53c37b214f82a81feae7b3be84a13ddec4d35219afd8e9e2baea92533d"
     },
     {
       "path": "docs/src/reference/chapter-status.md",
@@ -1954,7 +1976,7 @@
     },
     {
       "path": "docs/src/transformations/projection-compilation-reduction.md",
-      "sha256": "c993b6af4a453b8e93ce0f63a2070d2d92ac30341645247e3bf3205d81a99376"
+      "sha256": "b50a063409130c007162f232c9c5f5bcb9113a4a7829fd354847e219f323e2ff"
     },
     {
       "path": "docs/src/transformations/transformer-winding-coordinate-normalization.md",
@@ -1999,6 +2021,10 @@
     {
       "path": "experiments/generated/active-radiality-witness.json",
       "sha256": "c676f21f9774f319d6ddf9c8775f3179734d0c9c24e532411b8c21dfec47199e"
+    },
+    {
+      "path": "experiments/generated/artifact-manifest.json",
+      "sha256": "63c14c80e607a03d7921dc00a09c237a0d54df9e2f12898110902e1226ab1e52"
     },
     {
       "path": "experiments/generated/australian-carson-reproduction.json",
@@ -3250,11 +3276,11 @@
     },
     {
       "path": "llm/generated/access-fixtures.jsonl",
-      "sha256": "6f216ba87f21a4de4cc7f3a5b37bd5a606e1d96ed2aebbb2965b621ab00de54e"
+      "sha256": "f0cfab57524952e14ac09ff5636e73d875067363f9e7bd9581ee61565ac8e11a"
     },
     {
       "path": "llm/generated/adversarial-evaluation.json",
-      "sha256": "b57aa3c4e029f8c64acc4aea7a490aad96124ac9456449c19ffc0ca138908388"
+      "sha256": "b54304157f0e5eb60806be53ee2d5d6c2c64072f3b1cc6725f1142598b900990"
     },
     {
       "path": "llm/generated/adversarial-evaluation.md",
@@ -3262,15 +3288,15 @@
     },
     {
       "path": "llm/generated/corpus-manifest.json",
-      "sha256": "5b9be4153827fd2698a3f841cd41753f2dc004bbd88b015c025bc877cdc1f768"
+      "sha256": "9f8c27313f8fae4084274363367b868b60759f7ea7b5a87149042727d251b6f3"
     },
     {
       "path": "llm/generated/corpus.jsonl",
-      "sha256": "612f09cd64109c96eaef926c968b410d3d4485caa841018d7353a4d967e36705"
+      "sha256": "8d73544719d5c384159167355602ceb9576b5c71c6838f4557c969be2c40eaf7"
     },
     {
       "path": "llm/generated/neural-retrieval-evaluation.json",
-      "sha256": "bd2828127f216f59024c7ec4d641902a063c445609a57507f66cd3fe39674402"
+      "sha256": "c0cdc9239396d5e0ee5427bc62ec6dec30eda31e7035a3e1070b0de4cdc787e1"
     },
     {
       "path": "llm/generated/neural-retrieval-evaluation.md",
@@ -3278,11 +3304,11 @@
     },
     {
       "path": "llm/generated/retrieval-evaluation.json",
-      "sha256": "abfc61252c7ef3e6070913019a402be429935e260cbb463adab0ad26033d258f"
+      "sha256": "68f6d24d520d19ac79d883b2e4e74e0805cfabfe79d77c478124b34547a5ed01"
     },
     {
       "path": "llm/generated/retrieval-evaluation.md",
-      "sha256": "f7a840de5f7180f2d3b56e8bc79d4a19c9b8edd8829bf7b84cee8cb67e2cf5b5"
+      "sha256": "597e4d794f9e0df3562bff81f5d92554b6d3d386f8ab3e3ea6baf67f1242c944"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -3403,6 +3429,10 @@
     {
       "path": "review/paper-extraction-tracks.md",
       "sha256": "db17b42e7bcb5dda3108b051bd5e5423f9b4cb210a3b7980c60e49a1f282c9da"
+    },
+    {
+      "path": "review/prose-number-bindings.toml",
+      "sha256": "5f29ea5f4c408d3234275aa5db5c8a55307d368ad9296a1da1d619c418fbd91e"
     },
     {
       "path": "review/protocol.md",
@@ -3549,6 +3579,10 @@
       "sha256": "9f387b616c7b924622944c8c70118ba075f4ef5476f4f447f579507dd50ccd09"
     },
     {
+      "path": "scripts/check_page_ids.py",
+      "sha256": "ea38044336f98a501c51ee6e9bae610a8df70b109f468354fed3faa7a632f5e6"
+    },
+    {
       "path": "scripts/check_paper_tracks.py",
       "sha256": "555191d1301b1e7b918ab6f5e8da8de9b99c63911434c4d49bb1ae8af22aeff3"
     },
@@ -3557,8 +3591,12 @@
       "sha256": "2d95d144053d32a19860ed9459897c92b62e1d499f7a501eed84a2e52dfb4e00"
     },
     {
+      "path": "scripts/check_prose_numbers.py",
+      "sha256": "d3b78ef2b51d7afd0c3609f46dd73b1ccd965913f9a031e05811faf8fd0c810e"
+    },
+    {
       "path": "scripts/check_release_candidate.py",
-      "sha256": "d2f94d1caaf5ba42558b6f2f9090b653066eb47ea8dc02052bc1d6b97b3290e2"
+      "sha256": "b886daab354b97c65367c8199694ea1d6020cba69c2bd85209a80fdd414e4925"
     },
     {
       "path": "scripts/check_rendered_outputs.py",
@@ -3578,7 +3616,11 @@
     },
     {
       "path": "scripts/evaluate_llm_retrieval.py",
-      "sha256": "8b8e3d77638fc115e9d69e30a624dc015b221ac9edbf2863a6507c0f0aa7195e"
+      "sha256": "1f60a1496c5d424b51a880d93d01d614220b85913a91432f34cfa4196cdb698c"
+    },
+    {
+      "path": "scripts/generate_artifact_manifest.py",
+      "sha256": "7ff151e0851caadf649d2fa520ea9a55a39a1a13c3169869c7d1c04c4d9f0bef"
     },
     {
       "path": "scripts/generate_fixture_coverage_matrix.py",
@@ -3626,7 +3668,7 @@
     },
     {
       "path": "scripts/llm_service.py",
-      "sha256": "9a9f9ecca5cfea58b356dc7ca31b14f347d6bdaf45818cc4953ea63e2a914845"
+      "sha256": "2b105328a3e075bb99c25eafdeb2c9d6de2f741405eea4d1de8930c580fcab0a"
     },
     {
       "path": "scripts/mcp_llm_server.py",

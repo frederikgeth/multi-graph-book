@@ -232,6 +232,10 @@ labelled as a seed review.
 - [x] trigger the accessibility reproduction check when canonical chapters,
   claims, or vocabulary sources change, and record the generated-page exclusion
   rule in the corpus manifest;
+- [x] bind high-precision canonical prose numbers to generated artifacts or
+  explicit hash-bound derivation records;
+- [x] require stable H1 `@id` anchors for every HTML-routed page and inventory
+  generated experiment artifacts without replacing their semantic validators;
 - [ ] select, adapt, or train a domain-appropriate retriever/reranker that
   passes the required-claim, qualification, and counterexample gates;
 - [ ] promote graph retrieval beyond its explicit diagnostic/opt-in route only

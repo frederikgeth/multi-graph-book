@@ -1,4 +1,4 @@
-# Search run: 2026-08-15 formulation and graph-model landscape
+# [Search run: 2026-08-15 formulation and graph-model landscape](@id search-run-2026-08-15-formulation-landscape)
 
 **Page status:** generated search-run record.
 

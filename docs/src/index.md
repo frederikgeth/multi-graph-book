@@ -1,4 +1,4 @@
-# What Power-Network Models Preserve
+# [What Power-Network Models Preserve](@id home)
 
 **Page status:** reader-facing overview and navigation map.
 

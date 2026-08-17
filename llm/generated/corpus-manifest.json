@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "612f09cd64109c96eaef926c968b410d3d4485caa841018d7353a4d967e36705",
+  "corpus_sha256": "8d73544719d5c384159167355602ceb9576b5c71c6838f4557c969be2c40eaf7",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -160,7 +160,7 @@
     },
     {
       "path": "docs/src/index.md",
-      "sha256": "4a58839a16203009fc1f56f2a202f23c55b25f2a76051b22adc84c43bb596776"
+      "sha256": "9ddafbbd4c298532543658657582db97996546f2d9a9f46deaf03fa0352fc786"
     },
     {
       "path": "docs/src/literature/literature-map.md",
@@ -180,19 +180,19 @@
     },
     {
       "path": "docs/src/literature/search-runs/2026-08-14-seed-batch.md",
-      "sha256": "cc332499b2d3ab12b6a7853d8581219ecf63b6de19cd489ebcf000968086692c"
+      "sha256": "e24c2acec9e84c7cda73ab353ad44411f4564c599c4f529d6121c2ee964c668f"
     },
     {
       "path": "docs/src/literature/search-runs/2026-08-15-formulation-landscape.md",
-      "sha256": "aa6196fa85fc0be2cb6932b13c768f57461f93fc919d512217eb3c8c41af3bc3"
+      "sha256": "2f89f443ec3d26981f76b9b69fe5df6fdf1054e54c8413b8fa9d8026031b4a8e"
     },
     {
       "path": "docs/src/literature/search-runs/2026-08-15-information-model-citation-chase.md",
-      "sha256": "9878052b845245f19797d653ff404234f2b17ce0f35a634bf14b3827e50fb840"
+      "sha256": "abb1b6ae17f2a5c73b5b456d07e4d54e46d78d3aba92bfc3e3549bf0155284e3"
     },
     {
       "path": "docs/src/literature/search-runs/2026-08-16-multiphase-and-practical-reductions.md",
-      "sha256": "fd017436870d0f980d3e3cedbe7f7378c6c7815acf9c9355906716cad7ee14fd"
+      "sha256": "3e21db53c37b214f82a81feae7b3be84a13ddec4d35219afd8e9e2baea92533d"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -276,7 +276,7 @@
     },
     {
       "path": "docs/src/transformations/projection-compilation-reduction.md",
-      "sha256": "c993b6af4a453b8e93ce0f63a2070d2d92ac30341645247e3bf3205d81a99376"
+      "sha256": "b50a063409130c007162f232c9c5f5bcb9113a4a7829fd354847e219f323e2ff"
     },
     {
       "path": "docs/src/transformations/transformer-winding-coordinate-normalization.md",

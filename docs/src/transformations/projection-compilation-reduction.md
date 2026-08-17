@@ -1,4 +1,4 @@
-# Projection, compilation, and reduction
+# [Projection, compilation, and reduction](@id projection-compilation-reduction)
 
 **Page status:** foundational transformation definitions and scope boundaries.
 
