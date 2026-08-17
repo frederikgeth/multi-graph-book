@@ -62,6 +62,46 @@ This is a useful counterweight to a common simplification: “the network graph
 is unchanged, so the OPF is unchanged.” The graph is one layer of the model;
 the load factor is another.
 
+### When a load or generator enters the nodal operator
+
+The factor layer and the nodal operator should not be confused. A constant-
+impedance load is a one-terminal shunt factor, so a declared formulation may
+stamp its admittance into a diagonal nodal block. A ZIP or constant-power load
+may instead be represented by a fixed linear part plus a voltage-dependent
+compensation current. The same distinction applies to generators: a fixed
+Norton or dynamic equivalent may contribute a matrix block, while a PV/PQ
+control, current limit, or inverter control law remains an injection or
+constraint relation.
+
+OpenDSS provides a useful engineering example. Its normal solution uses a
+system nodal matrix together with compensation currents from nonlinear power-
+conversion elements; its direct/admittance option solves with load and
+generator equivalents included in the matrix. The documentation also notes
+that loads may be switched to an admittance representation for fault studies
+and that the fault-study matrix has its own source, generator, and load-current
+composition [OpenDSSSolutionTechniques, OpenDSSPowerConversionElements,
+OpenDSSLoad, OpenDSSFaultStudyEquations](@cite). This is a solver and study
+choice, not a claim that the underlying load has become a line edge or that
+the source graph has changed.
+
+The supplied application-directed distribution equivalent illustrates the
+same boundary at feeder scale. Its reduction first constructs a nodal
+equivalent and then aggregates PVs and loads at an equivalent node, with
+phase-shifting and shunt elements added to preserve the selected study
+responses. The resulting model is validated for declared power-flow and EMT
+observations; it is not presented as the unique graph of the original feeder
+[IswaranThakarNekkalapuVittalKhorsand2026](@cite).
+
+For this reason, a nodal matrix should be annotated with at least:
+
+- the source factor inventory and terminal/attachment maps;
+- the study mode and active device state;
+- which load, generator, shunt, or source components were stamped into the
+  matrix;
+- which nonlinear or controlled parts remain in injection and constraint maps;
+- the operating point or iteration used for any linearization; and
+- the observations, limits, decisions, and recovery maps that remain valid.
+
 ## Decision consequences
 
 Load-model choice becomes especially visible in three regimes:

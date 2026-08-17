@@ -114,6 +114,58 @@ guard for exact nodal stamping is:
 6. every limit, control, and decision that the study queries has a surviving
    variable or an explicit recovery/constraint map.
 
+### Source factors versus study-specific nodal splits
+
+The source model and the matrix used by an iterative solver are related but
+are not the same object. Let ``\mu`` denote a study mode, ``\sigma`` an active
+equipment state, and ``k`` an operating point or iteration. A current-injection
+solver may use the split
+
+```math
+\mathbf Y_{\mathrm{lin}}^{(\mu,\sigma,k)}\mathbf V^{k+1}
+ =\mathbf I_{\mathrm{src}}^{(\mu,\sigma)}
+  +\mathbf I_{\mathrm{comp}}^{(\mu,\sigma)}(\mathbf V^k).
+```
+
+The linear operator may contain passive delivery elements, fixed shunts,
+constant-admittance load or generator parts, or a declared Norton equivalent.
+The compensation term carries the remaining nonlinear or operating-point
+dependent current. A constant-impedance load can therefore appear in the
+diagonal of ``\mathbf Y_{\mathrm{lin}}`` while a constant-power load at the
+same bus appears through ``\mathbf I_{\mathrm{comp}}``. A generator may be a
+PV/PQ constraint, a Norton source, a dynamic equivalent, or a current-limited
+injection depending on the study.
+
+This is not automatically a Newton--Raphson step. Newton's method forms a
+residual Jacobian for an increment ``\Delta x``,
+
+```math
+\mathbf J(\mathbf x^k)\Delta\mathbf x
+ =-\mathbf F(\mathbf x^k),
+```
+
+whereas a fixed-point current-injection method can keep
+``\mathbf Y_{\mathrm{lin}}`` fixed and update only the compensation current.
+Setting the compensation current to zero for a direct or initial solve is a
+linear starting model, not proof that the nonlinear source model is itself
+constant impedance.
+
+OpenDSS documents this separation operationally: power-conversion elements use
+a constant primitive-admittance part plus compensation currents, and its direct
+or admittance solution can include load and generator equivalents in the
+system matrix [OpenDSSSolutionTechniques, OpenDSSPowerConversionElements](@cite).
+Its fault-study equations construct a mode-specific nodal model with source
+and generator equivalents and the portion of load current not already included
+in the matrix [OpenDSSFaultStudyEquations](@cite). These are legitimate
+formulation targets, not competing definitions of the physical network graph.
+
+The practical rule is to qualify every nodal matrix with its source class,
+study mode, active state, coordinate order, and linearization or reduction
+point. Prefer names such as ``\mathbf Y_{\mathrm{passive}}``,
+``\mathbf Y_{\mathrm{direct}}``, ``\mathbf Y_{\mathrm{fault}}``, or
+``\mathbf Y^{(k)}_{\mathrm{lin}}`` to an unqualified claim that the system has
+one uniquely meaningful ``Y_{\mathrm{bus}}``.
+
 ### Rank and sign contract
 
 Let ``\mathbf Y^{\mathrm N}(\sigma,\gamma)`` denote the assembled operator

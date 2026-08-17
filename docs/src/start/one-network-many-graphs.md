@@ -99,6 +99,35 @@ The nonzero pattern of an admittance, Jacobian, KKT, or Schur-complement matrix 
 graph. Elimination may reduce the number of variables while making this graph denser. A sparsity
 edge means algebraic coupling, not necessarily a physical branch.
 
+### Loads, generators, and the graph boundary
+
+Loads and generators expose why an element inventory must be declared before
+the word *graph* is used. In an asset or bus--branch graph they are usually
+devices attached to a bus, not ordinary line edges. In a port--factor graph
+they are explicit one-terminal or multi-terminal factors. In a nodal-support
+graph they appear only when a declared formulation stamps a linear or
+linearized part of their relation into the nodal operator. In an equation or
+optimization graph they also appear through injections, controls, limits, and
+decision variables.
+
+The same device can therefore be absent from one graph and present in another
+without contradiction:
+
+| View | Device role | Typical question |
+| --- | --- | --- |
+| asset or bus--branch graph | attached equipment or a bus-side factor; not necessarily an edge | which device is switchable, owned, or removed? |
+| port--factor graph | one-terminal or multi-terminal constitutive factor with a terminal map | what relation, limit, or control does the device impose? |
+| nodal-support graph | a diagonal shunt, off-diagonal block, or no direct stamp, depending on the declared model | which retained voltage coordinates are coupled by this formulation? |
+| solver/Jacobian graph | injection, residual, derivative, control, or constraint block | which variables and equations determine the next iterate or decision? |
+
+A constant-admittance load can therefore be stamped into a diagonal nodal
+block without becoming a physical network edge. A Norton generator or a
+multi-terminal device can contribute a different block pattern. The stamping
+choice is a property of the declared study formulation, not a definition of
+the source asset graph. The [circuit formulation boundary](@ref
+circuit-formulations-and-lowering) and [load-model chapter](@ref
+load-models-and-decision-dependence) make this split explicit.
+
 ## Different questions select different views
 
 | Question | Required retained meaning | A useful view |

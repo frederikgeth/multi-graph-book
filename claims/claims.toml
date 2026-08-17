@@ -375,6 +375,23 @@ review_date = ""
 unresolved_issue = "Extend the rank guard to frequency-dependent, singular-shunt, dynamic, and state-dependent compound operators with independent review."
 
 [[claim]]
+claim_id = "FORMULATION-Y-SPLIT-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision', 'provenance']
+chapter = "docs/src/foundations/circuit-formulations-and-lowering.md"
+claim_text = "A load or generator may be represented as a factor attached to a source network while a declared study formulation places a constant-admittance, Norton, or other linearized part in the nodal operator and retains the remainder as an injection, control, limit, or decision relation; the resulting nodal matrix is therefore mode-, state-, and linearization-qualified rather than a unique graph of the source system."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "formulation_definition_supported_by_official_OpenDSS_documentation_and_application_directed_equivalent"
+citation_keys = ["OpenDSSSolutionTechniques", "OpenDSSPowerConversionElements", "OpenDSSLoad", "OpenDSSFaultStudyEquations", "IswaranThakarNekkalapuVittalKhorsand2026"]
+model_scope = "power-network source models with declared terminal/factor maps and nodal, current-injection, fault-study, or linearized solver targets"
+assumptions = "the source inventory, active state, study mode, coordinate order, and linearization or equivalent construction are declared; inclusion in a nodal operator does not imply physical-edge identity"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Obtain independent review of the source-factor versus study-operator distinction and extend the witness to a generator control and a non-OpenDSS formulation."
+
+[[claim]]
 claim_id = "ARCH-CHORDAL-001"
 exactness_object = "connectivity_view"
 preservation_dimensions = ['structure']

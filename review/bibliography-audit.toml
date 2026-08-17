@@ -302,6 +302,41 @@ verified_on = "2026-08-13"
 note = "Official EPRI documentation title verified; unsupported publication year replaced by n.d."
 
 [[entry]]
+key = "OpenDSSSolutionTechniques"
+status = "verified"
+verification_source = "https://opendss.epri.com/OpenDSSSolutionTechniques.html"
+verified_on = "2026-08-17"
+note = "Official EPRI documentation verified for the current-injection fixed-point equation, compensation-current iteration, and direct initialization with zero compensation current."
+
+[[entry]]
+key = "OpenDSSPowerConversionElements"
+status = "verified"
+verification_source = "https://opendss.epri.com/PowerConversionElements.html"
+verified_on = "2026-08-17"
+note = "Official EPRI documentation verified for the constant primitive-admittance plus compensation-current treatment of nonlinear power-conversion elements."
+
+[[entry]]
+key = "OpenDSSLoad"
+status = "verified"
+verification_source = "https://opendss.epri.com/Load1.html"
+verified_on = "2026-08-17"
+note = "Official EPRI documentation verified for load-model selection and the power-flow/admittance distinction used in fault-oriented studies."
+
+[[entry]]
+key = "OpenDSSFaultStudyEquations"
+status = "verified"
+verification_source = "https://opendss.epri.com/FaultStudyModeEquations1.html"
+verified_on = "2026-08-17"
+note = "Official EPRI documentation verified for the fault-study nodal matrix, source/generator equivalents, and load-current terms not already included in the matrix."
+
+[[entry]]
+key = "IswaranThakarNekkalapuVittalKhorsand2026"
+status = "verified"
+verification_source = "https://doi.org/10.1109/TPWRS.2026.3722057"
+verified_on = "2026-08-17"
+note = "Supplied accepted IEEE author version checked for the application-directed feeder equivalent, nodal reduction, PV/load aggregation, phase-shifting elements, and separate power-flow/EMT validation."
+
+[[entry]]
 key = "Kavitha2008"
 status = "verified"
 verification_source = "https://link.springer.com/article/10.1007/s00453-007-9064-z"

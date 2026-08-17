@@ -145,11 +145,20 @@ lineage/refinement relation, not by an assumed one-edge-to-one-wire rule.
 
 Stack the retained junction-voltage coordinates into ``\mathbf U``. Let
 ``\Phi_{\mathrm{lin}}`` be the declared subset of fixed linear unconstrained
-electrical factors. Loads with nonlinear constitutive laws, generators,
-limits, controls, objectives, and discrete states do not enter this set merely
-because they attach to the same network. The nodal operator is therefore
-exactly the part of the model from which most decision semantics have already
-been omitted.
+electrical factors. A load or generator does not enter this set merely because
+it attaches to the same network, but a declared constant-admittance part,
+Norton equivalent, fixed shunt, or iteration-specific linearization may enter
+it. The nodal operator is therefore a study- and state-specific part of the
+model from which some decision semantics may already have been omitted.
+
+This distinction is important for one-terminal devices. Their attachment map
+belongs to the port--factor or terminal-connectivity model even when their
+linear contribution is stamped into ``\mathbf Y^{\mathrm N}``. Conversely, a
+constant-power or controlled device may have no fixed admittance stamp while
+still contributing an injection function, control equation, limit, or
+optimization decision. Inclusion in ``\Phi_{\mathrm{lin}}`` is thus a
+formulation choice with a declared mode, state, and preservation contract; it
+does not decide whether the device belongs to the source graph.
 
 For each ``\phi\in\Phi_{\mathrm{lin}}``, let ``\mathbf A_\phi`` be a real
 select/permute/sign matrix for its ordered terminal voltages, so

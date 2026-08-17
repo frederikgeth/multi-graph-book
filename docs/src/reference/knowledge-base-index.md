@@ -1,21 +1,22 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:d4c54bec4fde962b0c71e150d177f2fe202bb661f3560a5e409db43a79ec3984 -->
+<!-- generated-from claims/claims.toml sha256:e5bec546a9bb2dd861b4bc3deab7f186498b7287dceb71ec95efd0cdff416d88 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 95
+**Indexed claims:** 96
 **Indexed chapters:** 42
 
 ## Claims by type
 
-### `definition` (7)
+### `definition` (8)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
+| `FORMULATION-Y-SPLIT-001` — A load or generator may be represented as a factor attached to a source network while a declared study formulation places a constant-admittance, Norton, or other linearized part in the nodal operator and retains the remainder as an injection, control, limit, or decision relation; the resulting nodal matrix is therefore mode-, state-, and linearization-qualified rather than a unique graph of the source system. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `self-checked` |
 | `GROUND-SCOPE-001` — Reference, neutral, earth-return, and grounding-asset semantics are distinct model objects; reductions involving them must declare an earth-return class, grounding points, retained observations, and recovery data. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `self-checked` |
 | `NUMERICAL-001` — Representation and reduction choices have numerical consequences that must be reported separately from electrical preservation: coordinate scaling changes conditioning without changing an invertible solution set, Jacobian dependency graphs need not equal physical graphs, Schur elimination can create fill-in, and decision certificates require residual/error estimates and margins. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
 | `PRESERVE-001` — Equivalence of two power-network models is indexed by a declared observation family and admissible input set; equality of an unconstrained terminal relation alone does not establish equality of constrained feasible observable sets. | [Preservation contracts](../foundations/preservation-contracts.md) | `self-checked` |
@@ -136,7 +137,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 
 | Verification | Claims |
 | --- | ---: |
-| `self-checked` | 90 |
+| `self-checked` | 91 |
 | `independently-implemented` | 5 |
 | `externally-reviewed` | 0 |
 
@@ -173,6 +174,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `FORMULATION-NODAL-001` | Add independent review and extend the witness to controlled, dynamic, and multi-terminal power-network factors. |
 | `FORMULATION-NODAL-002` | Extend the failure-family witness to multiconductor, grounded, state-dependent, and nonlinear formulations with independent review. |
 | `FORMULATION-NODAL-003` | Extend the rank guard to frequency-dependent, singular-shunt, dynamic, and state-dependent compound operators with independent review. |
+| `FORMULATION-Y-SPLIT-001` | Obtain independent review of the source-factor versus study-operator distinction and extend the witness to a generator control and a non-OpenDSS formulation. |
 | `GRAPH-CYCLE-001` | Lift the executable incidence and cycle objects to conductor-terminal graphs, state-conditioned topology decisions, and compiled multi-terminal factors. |
 | `GROUND-SCOPE-001` | Extend the explicit-earth witness to relay curves, CT saturation, richer maintenance decisions, and independent reproduction. |
 | `GROUND-SCOPE-002` | Extend the explicit-earth comparison to relay curves, CT saturation, richer maintenance decisions, and independent reproduction. |
@@ -330,7 +332,7 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `representation` (47)
+### `representation` (48)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -360,6 +362,7 @@ schema is normalised.
 | `FORMULATION-NODAL-001` — An ideal voltage source with a queried source current is not representable by a plain nodal-admittance injection without adding an extra current variable or changing the query contract; a modified-nodal or tableau formulation preserves the voltage constraint and current observation. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `theorem` |
 | `FORMULATION-NODAL-002` — Even when a nodal operator can be assembled, it may be singular without a declared reference or shunt, or semantically insufficient for member-level limits: aligned parallel factors can share one aggregate admittance while having different member currents and feasible limits. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `theorem` |
 | `FORMULATION-NODAL-003` — A declared reference or grounding label does not by itself establish nonsingularity of a compound nodal operator: the rank guard must be evaluated on the assembled operator after the declared reference, grounding, and active-state maps are applied. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `theorem` |
+| `FORMULATION-Y-SPLIT-001` — A load or generator may be represented as a factor attached to a source network while a declared study formulation places a constant-admittance, Norton, or other linearized part in the nodal operator and retains the remainder as an injection, control, limit, or decision relation; the resulting nodal matrix is therefore mode-, state-, and linearization-qualified rather than a unique graph of the source system. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `definition` |
 | `GROUND-SCOPE-001` — Reference, neutral, earth-return, and grounding-asset semantics are distinct model objects; reductions involving them must declare an earth-return class, grounding points, retained observations, and recovery data. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `definition` |
 | `GROUND-SCOPE-002` — On the recorded two-conductor fixture, floating, finite-impedance, and ideal customer-end grounding relations share the same simple bus--branch graph but change neutral voltage, ground-current allocation, and the associated observations. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `empirical` |
 | `GROUND-SCOPE-003` — In the scoped E₂ witness, an explicit earth conductor with a finite neutral-to-earth bond has distinct in-service, earth-conductor-outage, and phase-to-earth-fault states; the outage changes earth-current availability and the fault crosses the declared protection-current threshold while the simple bus graph remains fixed. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `empirical` |
