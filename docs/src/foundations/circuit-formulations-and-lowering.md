@@ -101,6 +101,12 @@ This is an assembly identity, not a claim that ``\mathbf Y^{\mathrm N}`` is a
 canonical factorization or a complete power-network model. A useful sufficient
 guard for exact nodal stamping is:
 
+The important degenerate case is covered in [Multigraphs for expert modelers](@ref
+multigraphs-for-modelers): identifying the two terminals of a fixed linear
+π factor can leave an exact one-terminal shunt stamp, but only after the factor
+has been assembled through its terminal map. Deleting a graph self-loop before
+that compilation is not an equivalent operation in general.
+
 1. the retained variables are node-voltage coordinates sufficient for the
    declared observation and decision queries;
 2. every included factor has a well-defined linear relation in those voltage

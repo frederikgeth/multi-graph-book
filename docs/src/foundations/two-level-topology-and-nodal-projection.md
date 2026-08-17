@@ -576,7 +576,9 @@ singular but because reference and grounding structure remain in that model.
 
 Not in the physical sense. A nodal admittance matrix is a linear operator on
 a chosen ordered voltage space. From it one can derive simple support graphs
-at several granularities.
+at several granularities. The graph-loop, shunt, incidence, adjacency, and
+Laplacian conventions used to distinguish those objects are fixed in
+[Multigraphs for expert modelers](@ref multigraphs-for-modelers).
 
 **Definition (block support).** Given bus blocks
 ``\mathbf Y^{\mathrm N}_{ij}``, define

@@ -1,4 +1,4 @@
-# Search run: multiphase formulations and practical reductions
+# [Search run: multiphase formulations and practical reductions](@id search-run-2026-08-16-multiphase-practical-reductions)
 
 **Page status:** generated search-run record.
 

@@ -1631,3 +1631,122 @@ assumptions = "implementation inventories are scoped repository records, not uni
 reviewer = ""
 review_date = ""
 unresolved_issue = "Compare the implementation contract with an independently reviewed package boundary and broader source-data adapters."
+
+[[claim]]
+claim_id = "GRAPH-MULTI-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'state', 'provenance']
+chapter = "docs/src/foundations/multigraphs-for-modelers.md"
+claim_text = "The book's finite undirected multigraph is an identified edge-and-flag object in which every edge owns exactly two distinct flags; loops have two flags incident to one vertex, parallel members retain distinct edge identities, and attributes remain typed maps rather than being inferred from adjacency."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "literature_anchored_book_convention"
+citation_keys = ["Diestel2025", "GrossYellenAnderson2019"]
+model_scope = "finite undirected multigraphs with loops, parallel edges, and typed vertex, edge, or flag attributes"
+assumptions = "each edge fibre contains exactly two flags; direction is optional additional structure; the convention is adopted explicitly because textbook loop and matrix conventions vary"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Obtain expert graph-theory review of the flag terminology and its relationship to the book's engineering specializations."
+
+[[claim]]
+claim_id = "GRAPH-MATRIX-001"
+exactness_object = "equation_identity"
+preservation_dimensions = ['structure', 'terminal_behavior', 'numerical_structure']
+chapter = "docs/src/foundations/multigraphs-for-modelers.md"
+claim_text = "Under the declared convention A_uv equals non-loop edge multiplicity off diagonal, A_vv equals twice the graph-loop count, and D contains incidence degrees, so D-A equals B B transpose; graph-loop columns vanish from signed incidence while a grounded shunt contributes a distinct diagonal constitutive term."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "algebraic_identity_literature_anchor_and_executable_loop_parallel_shunt_witness"
+citation_keys = ["Bapat2014", "Bollobas1998", "SeshuReed1961"]
+model_scope = "finite oriented scalar undirected multigraphs with the book's loop adjacency convention and optional grounded diagonal shunt term"
+assumptions = "B has -1 at the selected tail, +1 at the head, and a zero graph-loop column; scalar edge weights are diagonal when the weighted identity is used; shunts are declared constitutive relations rather than graph loops"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Obtain expert review and extend the executable witness to complex block stamps, transformer ratios, and coupled multi-terminal factors without calling the resulting operator a universal graph Laplacian."
+
+[[claim]]
+claim_id = "TR-GRAPH-SIMPLIFY-001"
+exactness_object = "connectivity_view"
+preservation_dimensions = ['structure', 'state', 'provenance']
+chapter = "docs/src/foundations/multigraphs-for-modelers.md"
+claim_text = "The loopless simple endpoint projection preserves the vertex set, adjacency, connected components, distinct-neighbour sets, and unweighted vertex distances, but it does not preserve identified edge count, incidence degree, cycle-space dimension, bridges, edge connectivity, spanning-tree multiplicity, or member-level state and provenance."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "quotient_derivation_preservation_table_and_executable_loop_parallel_simplification_witness"
+citation_keys = ["Diestel2025", "Oxley2011"]
+model_scope = "finite undirected multigraphs mapped to their loopless underlying simple graph by omitting graph loops and quotienting non-loop parallel classes by unordered endpoints"
+assumptions = "the vertex set is retained; distances are unweighted vertex-to-vertex distances; weighted aggregation is a separate query-specific transformation; source edge fibres are available only as external provenance"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Obtain independent proof review and add property-based checks over randomized finite multigraphs and application-specific weighted-query contracts."
+
+[[claim]]
+claim_id = "GRAPH-NPORT-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'terminal_behavior', 'provenance']
+chapter = "docs/src/foundations/multigraphs-for-modelers.md"
+claim_text = "Allowing a relation to own an arbitrary finite flag fibre generalizes the two-uniform multigraph to an incidence structure, while an expert mathematical model additionally needs typed flag spaces, relation roles or ordering, and a constitutive relation to represent an n-port factor rather than merely its hypergraph incidence."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "book_convention_and_cross_framework_definition"
+citation_keys = ["GrossYellenAnderson2019"]
+model_scope = "finite arbitrary-arity incidence structures and typed static port-factor relations"
+assumptions = "each relation has a declared finite flag fibre; variable spaces and relation semantics are supplied separately from bare incidence; hierarchy, ownership, and internal variables require the richer port-factor model"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Review the incidence/hypergraph/factor-graph terminology across mathematical modeling, circuit, and graph-theory communities and add evaluated n-port examples beyond the existing transformer witnesses."
+
+[[claim]]
+claim_id = "GRAPH-SELF-LOOP-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'terminal_behavior', 'provenance']
+chapter = "docs/src/foundations/multigraphs-for-modelers.md"
+claim_text = "In the book's loopless bus--branch circuit specialization, ordinary edges connect distinct retained circuit nodes; a graph self-loop may remain in the source multigraph or arise from a topology quotient, but it is not interchangeable with an electrical circuit loop or mesh, a grounded shunt, or a diagonal self-admittance term."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "literature_anchored_circuit_graph_boundary_and_loopy_laplacian_comparison"
+citation_keys = ["SeshuReed1961", "DorflerBullo2013", "SongHillLiu2017"]
+model_scope = "finite multigraph source objects, loopless bus--branch circuit views, grounded one-terminal factors, and nodal matrix supports"
+assumptions = "the circuit specialization declares distinct retained terminals for ordinary branches; graph and matrix layers retain their own semantics; literature uses self-loop terminology with more than one convention"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Obtain independent terminology review across graph theory, circuit topology, and power-system modeling communities."
+
+[[claim]]
+claim_id = "GRAPH-LOOPY-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'numerical_structure', 'provenance']
+chapter = "docs/src/foundations/multigraphs-for-modelers.md"
+claim_text = "Network-reduction and microgrid-stability literature uses loopy-Laplacian self-loop terms for grounded or differential-conductance diagonal effects; that matrix-level usage is distinct from the book's ordinary graph-loop convention with a zero signed-incidence column."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "primary_literature_comparison"
+citation_keys = ["DorflerBullo2013", "SongHillLiu2017"]
+model_scope = "weighted loopy Laplacians and differential-conductance abstractions used in electrical-network reduction and DC microgrid stability"
+assumptions = "the cited literature's matrix conventions are reported as source-specific conventions and are not substituted for the book's declared multigraph incidence convention"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Review whether the book should add a dedicated loopy-Laplacian notation for grounded diagonal terms in future editions."
+
+[[claim]]
+claim_id = "GRAPH-PI-COLLAPSE-001"
+exactness_object = "equation_identity"
+preservation_dimensions = ['terminal_behavior', 'numerical_structure', 'provenance']
+chapter = "docs/src/foundations/multigraphs-for-modelers.md"
+claim_text = "For a fixed linear two-terminal pi factor with series admittance Y_s and endpoint shunts Y_a and Y_b, identifying both terminals through the common attachment map T_pi=[1,1]^T gives T_pi^T Y_pi T_pi=Y_a+Y_b, so the series contribution cancels and the exact nodal image is a one-terminal constant-admittance shunt under the declared coordinate and reference assumptions."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "terminal_map_derivation_and_executable_pi_collapse_witness"
+citation_keys = ["SeshuReed1961", "OpenDSSLine", "HoRuehliBrennan1975"]
+model_scope = "fixed linear scalar two-terminal pi factors with common reference, identity terminal coordinates, and a nodal voltage target"
+assumptions = "both terminal maps identify the same retained coordinate; shunts are grounded in the same reference; no ideal source, transformer ratio, coupling, control, dynamic state, or member-level observation is queried"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend and independently review the block-coordinate result for multiphase pi factors, transformer maps, singular primitives, and retained branch-current or rating queries."

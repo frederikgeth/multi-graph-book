@@ -23,7 +23,7 @@ TOKEN = re.compile(r"[a-zA-Z][a-zA-Z0-9_-]+")
 ROUTER_GENERIC_TERMS = {
     "a", "asset", "branch", "circuit", "data", "device", "equivalent", "graph", "line",
     "matrix", "model", "network", "node", "power", "source", "state", "study", "system",
-    "the", "topology", "view",
+    "the", "topology", "view", "loop",
 }
 
 STOPWORDS = {

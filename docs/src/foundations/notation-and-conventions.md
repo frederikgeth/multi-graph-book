@@ -20,6 +20,7 @@ quantity. Indices are not added merely because an equation is evaluated at an en
 | ``\mathcal D`` | demands | ``d`` |
 | ``\mathcal G`` | generators | ``g`` |
 | ``\mathcal H`` | shunts and grounding impedances | ``h`` |
+| ``\mathcal F`` | edge ends or flags in the normative multigraph object | ``f`` |
 | ``\mathcal P`` | phases | ``p,q`` |
 | ``\mathcal N`` | terminal names | ``p,q`` |
 | ``\mathbf A`` | oriented incidence matrix | declared bus/edge coordinates |
@@ -56,6 +57,51 @@ terminal spaces. It becomes a scalar matrix entry only after the terminal coordi
 enumeration have both been declared. By contrast, ``\mathbf Y_\ell`` is intrinsic data owned by
 element ``\ell`` and does not acquire endpoint indices merely because it appears in a nodal
 assembly.
+
+## Graph objects and graph-derived counts
+
+The normative finite undirected multigraph is
+
+```math
+G=(V,E,\mathcal F,s,\operatorname{ed}),
+```
+
+with two flags in each edge fibre ``\operatorname{ed}^{-1}(e)``. The complete definition,
+including graph loops and matrix conventions, is maintained in [Multigraphs
+for expert modelers](@ref multigraphs-for-modelers). Power-system chapters may
+specialize ``V`` to buses ``\mathcal B`` and ``E`` to identified lines
+``\mathcal L``, but they must not infer that specialization from an
+unqualified word such as *network* or *graph*.
+
+For the loopless bus--branch specialization, ``\partial(\ell)`` denotes the
+derived unordered endpoint pair and
+
+```math
+\operatorname{simp}:\mathcal L^{\circ}\rightarrow E_{\mathrm s}
+```
+
+denotes the simple endpoint projection on non-loop members. The symbols ``p``
+and ``q`` remain available for phase and terminal indices; graph maps use
+descriptive operators. For arbitrary-arity incidence structures,
+``\operatorname{rel}:\mathcal F\to R`` maps a flag to its owning relation.
+The state-conditioned connectivity-node quotient remains ``\pi_\sigma``.
+
+The following names are not interchangeable:
+
+- ``d_{\mathrm{inc}}`` is incidence degree and counts the two flags of a graph
+  loop twice;
+- ``d_{\mathrm{nbr}}`` is distinct-neighbour degree in a loopless simple
+  projection;
+- incident-member count is an engineering count on identified equipment and
+  equals ``d_{\mathrm{inc}}`` only in the declared loopless specialization;
+- terminal count belongs to a port model; and
+- row or block nonzero count belongs to a compiled matrix-support graph.
+
+Likewise, ``B`` denotes a generic signed graph-incidence matrix in the expert
+reference chapter, while ``\mathbf A`` remains the preferred power-system
+incidence symbol in the engineering chapters. Both use ``-1`` at the selected
+tail and ``+1`` at the head unless a reproduced source declares another
+convention.
 
 ## Oriented element triples
 

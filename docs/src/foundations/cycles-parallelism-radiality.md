@@ -13,9 +13,11 @@ topology graph, an identified line multigraph, a junction--factor incidence
 graph, and a compiled equation graph can give different answers while all
 being legitimate views of the same network.
 
-This chapter fixes the book's terminology. The electrical and decision meaning
-of a topological statement is a second question: constitutive equations,
-limits, states, and observations must still be attached.
+This chapter applies the normative object and matrix conventions in
+[Multigraphs for expert modelers](@ref multigraphs-for-modelers) to cycle,
+parallelism, bridge, leaf, and radiality questions. The electrical and decision
+meaning of a topological statement is a second question: constitutive
+equations, limits, states, and observations must still be attached.
 
 The preceding [two-level topology chapter](@ref two-level-topology-and-nodal-projection)
 explains why asset, conductor/port--factor, and nodal-operator support graphs
@@ -24,18 +26,18 @@ cycle, parallelism, bridge, leaf, and radiality definitions.
 
 ## Simple cycles and line-identity cycles
 
-Let ``G_{\mathrm s}=(\mathcal B,E)`` be a loopless undirected simple graph.
+Let ``G_{\mathrm s}=(\mathcal B,E_{\mathrm s})`` be a loopless undirected simple graph.
 A simple cycle is a closed walk with at least three distinct vertices and no
 repeated edge or internal vertex. Its cycle-space dimension is
 
 ```math
-\mu_{\mathrm s}=|E|-|\mathcal B|+c,
+\mu_{\mathrm s}=|E_{\mathrm s}|-|\mathcal B|+c,
 ```
 
 where ``c`` is the number of connected components. The equation counts a
 vector-space dimension; it does not select a unique cycle basis.
 
-For an identified bus--branch multigraph, write
+For the loopless specialization of the normative flag multigraph, write
 
 ```math
 G_{\mathrm M}=(\mathcal B,\mathcal L,\partial),
@@ -66,20 +68,23 @@ For a loopless multigraph with ``c`` connected components,
 \mu_{\mathrm M}=|\mathcal L|-|\mathcal B|+c.
 ```
 
-If ``\pi:\mathcal L\rightarrow E`` forgets line identity and retains the
-unordered endpoint pair, then
+The simple projection ``\operatorname{simp}:\mathcal L^{\circ}\rightarrow
+E_{\mathrm s}`` forgets line identity and retains the unordered endpoint pair.
+In this loopless specialization
+``\mathcal L^{\circ}=\mathcal L``; the superscript makes the non-loop domain
+explicit. The cycle-rank difference is then
 
 ```math
 \mu_{\mathrm M}-\mu_{\mathrm s}
 =
-\sum_{e\in E}\bigl(|\pi^{-1}(e)|-1\bigr).
+\sum_{e\in E_{\mathrm s}}\bigl(|\operatorname{simp}^{-1}(e)|-1\bigr).
 ```
 
 Thus each additional identified member in a parallel fibre contributes one
 line-identity cycle dimension, even though the simple graph sees only one
 adjacency. The five-bus example makes this loss explicit: its source rank is
-three and its simple projection rank is two because the ``q``--``r`` fibre
-contains two lines.
+three and its simple projection rank is two because the fibre over the endpoint
+pair ``\{q,r\}`` contains two lines.
 
 The cycle vector is a topological object. A nonzero cycle coordinate in a
 branch-current parameterization is not automatically a circulating current,
@@ -129,7 +134,7 @@ Only topological parallelism is visible in a bare multigraph. In a simple graph
 it is not an internal relation at all: it survives only as the fibre
 
 ```math
-\pi^{-1}(\{i,j\})\subseteq\mathcal L
+\operatorname{simp}^{-1}(\{i,j\})\subseteq\mathcal L^{\circ}
 ```
 
 of the multigraph-to-simple-graph quotient. In a port--factor model, the two
@@ -141,7 +146,7 @@ Electrical parallelism permits a terminal relation such as
 
 ```math
 \mathbf I_{ij}^{\mathrm{total}}
-=\sum_{\ell\in\pi^{-1}(\{i,j\})}\mathbf I_{\ell ij},
+=\sum_{\ell\in \operatorname{simp}^{-1}(\{i,j\})}\mathbf I_{\ell ij},
 ```
 
 but it does not permit replacing member constraints by a summed constraint.
@@ -152,24 +157,31 @@ different ratings, outages, owners, or investment decisions.
 
 ## Degree, leaves, bridges, and radial ends
 
-For a bus ``i``, define the simple and multigraph degrees by
+For a bus ``i``, define the distinct-neighbour degree in the simple projection
+and the incidence degree in the loopless identified multigraph by
 
 ```math
-d_{\mathrm s}(i)
-=|\{j:\{i,j\}\in E\}|,
+d_{\mathrm{nbr}}(i)
+=|\{j:\{i,j\}\in E_{\mathrm s}\}|,
 \qquad
-d_{\mathrm M}(i)
-=\sum_{e\in E:\,i\in e}|\pi^{-1}(e)|.
+d_{\mathrm{inc}}(i)
+=|s^{-1}(i)|
+=\sum_{e\in E_{\mathrm s}:\,i\in e}|\operatorname{simp}^{-1}(e)|.
 ```
 
-These are different measurements. A bus joined to one neighbour by two
-parallel lines has ``d_{\mathrm s}(i)=1`` but ``d_{\mathrm M}(i)=2``. Calling
-it a leaf without naming the graph is therefore ambiguous.
+These are different measurements. Because this chapter's identified
+multigraph is loopless, ``d_{\mathrm{inc}}`` also equals its incident-member
+count; the equality would require adjustment if graph loops were admitted. A
+bus joined to one neighbour by two parallel lines has
+``d_{\mathrm{nbr}}(i)=1`` but ``d_{\mathrm{inc}}(i)=2``. Calling it a leaf or
+calling it degree one without naming the convention is therefore ambiguous.
 
 We use these precise terms:
 
-- a **simple leaf bus** has ``d_{\mathrm s}(i)=1``;
-- a **multigraph leaf bus** has ``d_{\mathrm M}(i)=1``;
+- a **simple leaf bus** has ``d_{\mathrm{nbr}}(i)=1`` in the declared simple
+  projection;
+- a **multigraph leaf bus** has ``d_{\mathrm{inc}}(i)=1`` in the declared
+  loopless identified multigraph;
 - a **pendant line** is a bridge incident to a leaf in the declared graph;
 - a **radial tail** is a maximal path of bridges ending at a leaf, with any
   internal buses of the path having degree two in that graph;
@@ -178,15 +190,17 @@ We use these precise terms:
 
 An edge is a **bridge** if deleting that identified edge increases the number
 of connected components. A simple edge ``e`` represents a parallel fibre
-``\pi^{-1}(e)`` in the multigraph.
+``\operatorname{simp}^{-1}(e)`` in the multigraph.
 
 **Proposition.** For a line ``\ell`` in a loopless identified multigraph,
-``\ell`` is a bridge if and only if ``\pi(\ell)`` is a bridge in the simple
-projection and ``|\pi^{-1}(\pi(\ell))|=1``.
+``\ell`` is a bridge if and only if ``\operatorname{simp}(\ell)`` is a bridge
+in the simple projection and
+``|\operatorname{simp}^{-1}(\operatorname{simp}(\ell))|=1``.
 
 **Proof.** If another line shares the same endpoint pair, deleting ``\ell``
 leaves that pair connected, so ``\ell`` cannot be a bridge. Conversely, suppose
-the fibre of ``e=\pi(\ell)`` is a singleton but ``\ell`` is not a bridge. Then
+the fibre of ``e=\operatorname{simp}(\ell)`` is a singleton but ``\ell`` is
+not a bridge. Then
 there is a multigraph path between the two sides after deleting ``\ell``.
 Projecting that path and removing repeated vertices gives a walk, hence a path,
 in the simple graph with ``e`` deleted. This contradicts that ``e`` is a
@@ -267,7 +281,10 @@ switching action.
 ## Multi-terminal factors change the question
 
 A multiwinding transformer represented as one factor is not an ordinary graph
-edge. Its natural incidence structure is bipartite:
+edge. The arbitrary-arity flag/incidence definition and its typed relation
+spaces are given in [Multigraphs for expert modelers](@ref
+multigraphs-for-modelers). Its natural incidence structure can be displayed as
+a bipartite graph:
 
 ```text
 bus i  --  factor x  --  bus j

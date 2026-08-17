@@ -1,4 +1,4 @@
-# Search run: 2026-08-14 seed batch
+# [Search run: 2026-08-14 seed batch](@id search-run-2026-08-14-seed-batch)
 
 **Page status:** generated search-run record.
 

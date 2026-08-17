@@ -84,6 +84,13 @@ OpenDSSLoad, OpenDSSFaultStudyEquations](@cite). This is a solver and study
 choice, not a claim that the underlying load has become a line edge or that
 the source graph has changed.
 
+The same warning applies to a two-terminal factor whose terminals become the
+same resolved node. A fixed linear π section can reduce exactly to a constant-
+admittance shunt after terminal-map assembly, but that compiled diagonal term
+is not a self-loop edge and does not erase the source factor, its controls,
+limits, or provenance. See [Multigraphs for expert modelers](@ref
+multigraphs-for-modelers) for the derivation and refusal boundary.
+
 The supplied application-directed distribution equivalent illustrates the
 same boundary at feeder scale. Its reduction first constructs a nodal
 equivalent and then aggregates PVs and loads at an equivalent node, with

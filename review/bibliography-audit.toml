@@ -71,6 +71,13 @@ verified_on = "2026-08-13"
 note = "Title, authors, journal, volume, issue, pages, year, and DOI agree with DOI registration."
 
 [[entry]]
+key = "SongHillLiu2017"
+status = "verified"
+verification_source = "https://doi.org/10.1109/CDC.2017.8264041"
+verified_on = "2026-08-17"
+note = "The DOI and institutional record confirm the authors, CDC 2017 venue, pages, year, and the paper's use of positive and negative self-loops for differential conductances in DC microgrid stability analysis."
+
+[[entry]]
 key = "CaliskanTabuada2014"
 status = "verified"
 verification_source = "https://www.sciencedirect.com/science/article/pii/S0005109814003331"
@@ -302,6 +309,13 @@ verified_on = "2026-08-13"
 note = "Official EPRI documentation title verified; unsupported publication year replaced by n.d."
 
 [[entry]]
+key = "OpenDSSLine"
+status = "verified"
+verification_source = "https://opendss.epri.com/Line.html"
+verified_on = "2026-08-17"
+note = "Official EPRI documentation verifies that the Line element is a multiphase two-port π model with series impedance and shunt capacitance data."
+
+[[entry]]
 key = "OpenDSSSolutionTechniques"
 status = "verified"
 verification_source = "https://opendss.epri.com/OpenDSSSolutionTechniques.html"
@@ -363,3 +377,52 @@ status = "verified"
 verification_source = "https://matpower.org/documentation/dev-manual/data-model.html"
 verified_on = "2026-08-13"
 note = "Official MATPOWER developer documentation verified for data-model elements and port/node connection semantics."
+
+[[entry]]
+key = "Diestel2025"
+status = "verified"
+verification_source = "https://link.springer.com/book/10.1007/978-3-662-70107-2"
+verified_on = "2026-08-17"
+note = "Publisher record confirms the sixth edition, author, Graduate Texts in Mathematics volume, publication year, and DOI."
+
+[[entry]]
+key = "GrossYellenAnderson2019"
+status = "verified"
+verification_source = "https://www.routledge.com/Graph-Theory-and-Its-Applications/Gross-Yellen-Anderson/p/book/9781482249484"
+verified_on = "2026-08-17"
+note = "Publisher record confirms the third edition, authors, 2019 copyright year, and ISBN."
+
+[[entry]]
+key = "Bapat2014"
+status = "verified"
+verification_source = "https://link.springer.com/book/10.1007/978-1-4471-6569-9"
+verified_on = "2026-08-17"
+note = "Publisher record confirms the second edition, author, Universitext series, publication year, and DOI."
+
+[[entry]]
+key = "Bollobas1998"
+status = "verified"
+verification_source = "https://link.springer.com/book/10.1007/978-1-4612-0619-4"
+verified_on = "2026-08-17"
+note = "Publisher record confirms the title, author, Graduate Texts in Mathematics volume, publication year, and DOI."
+
+[[entry]]
+key = "Oxley2011"
+status = "verified"
+verification_source = "https://academic.oup.com/book/34846"
+verified_on = "2026-08-17"
+note = "Oxford Academic record confirms the second edition, author, print ISBN, publication date, and DOI."
+
+[[entry]]
+key = "VanLintWilson2001"
+status = "verified"
+verification_source = "https://www.cambridge.org/core/books/a-course-in-combinatorics/84B89574496561D5E3A960863B85E4B7"
+verified_on = "2026-08-17"
+note = "Cambridge Core record confirms the second edition, authors, print publication year, and DOI."
+
+[[entry]]
+key = "SeshuReed1961"
+status = "verified"
+verification_source = "https://books.google.com/books/about/Linear_Graphs_and_Electrical_Networks.html?id=C0l8AAAAIAAJ"
+verified_on = "2026-08-17"
+note = "Catalog record confirms the authors, title, Addison-Wesley publisher, publication year, pagination, and ISBN."

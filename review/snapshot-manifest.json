@@ -6,13 +6,13 @@
   },
   "independent_double_coding": false,
   "inputs": {
-    "review/bibliography-audit.toml": "8acefdb494cf477c08c825ea76611079235a1de80d5cc1794a781273c3455fa4",
+    "review/bibliography-audit.toml": "f538c9333eb41c4da2dce361d33752fe82a5ebeeb1a0b22f9d5462cfa3c09fa8",
     "review/coding-guide.md": "8a282e7ecb302403f8897a165eb700084f3cffd2cbfff0a37df7a6eee18ddbb3",
     "review/protocol.md": "3ce30aeea9161ddf5a3a866258c4126754f3bc05d082164e37762ca6d733ce2c",
-    "review/search-runs/2026-08-14-seed-batch.md": "bd0038ee6f0799be2c2fc00a16ecc82e38d207e22cd6d18dc69db1e2c3056adb",
-    "review/search-runs/2026-08-15-formulation-landscape.md": "414f5384b87cc5e53ca5ab62eedcf43345fe992c655ae0002e26541989a5c642",
-    "review/search-runs/2026-08-15-information-model-citation-chase.md": "42351417ea975f337076d124fb1a613fe8ae62757ce109b03ec6e2ae4c978dfa",
-    "review/search-runs/2026-08-16-multiphase-and-practical-reductions.md": "fb66ec740d92522d3512bf6b9131739d07b1dfe98f486a838bc340181b478910",
+    "review/search-runs/2026-08-14-seed-batch.md": "489107a577914770d35bd9c52bd2f3f08ab6bce56a6921b0c8b8052353961c72",
+    "review/search-runs/2026-08-15-formulation-landscape.md": "1d984aeedec5f2c4be9d0a3bde719bc156cd4d7bfc1e7fd8933da617a76b54f8",
+    "review/search-runs/2026-08-15-information-model-citation-chase.md": "84aa8c0e24aab663af4a491433bdd666a75d8e8fbab52d5b299b879773db09df",
+    "review/search-runs/2026-08-16-multiphase-and-practical-reductions.md": "e791723bf30c0da0e3e8376cb570465f8dbcb495c3821eefce22fae3b3b6ab85",
     "review/search-strings.md": "2e1dc82eecbce8072a7707e53e018e00a53afb7141a4d70bce4e9971f189d073"
   },
   "matrix": {

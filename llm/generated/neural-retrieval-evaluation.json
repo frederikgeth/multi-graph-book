@@ -2755,6 +2755,47 @@
       "question": "Why is an equivalent terminal response not sufficient evidence that planning or dispatch choices remain valid?"
     }
   ],
+  "compatibility": {
+    "archived_on": "2026-08-17",
+    "current_corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
+    "current_corpus_sha256": "7eec81d0a7d219b25ba5e026475a02ac726ea21cb5934b81154cabc4c5cefba1",
+    "current_heldout_sha256": "92f62f77c45d5c184fb80df476efdff4a05b038465c81b1961d01c45723fe7b3",
+    "current_lexical_summary": {
+      "char_tfidf": {
+        "complete_at_10": 0.0,
+        "complete_at_10_count": 0,
+        "mean_reciprocal_rank_at_20": 0.207442,
+        "recall_at_10": 0.435556,
+        "recall_at_5": 0.344444,
+        "recall_expected_records_at_10": 165,
+        "recall_hits_at_10": 67,
+        "zero_recall_at_10_count": 5
+      },
+      "hybrid": {
+        "complete_at_10": 0.0,
+        "complete_at_10_count": 0,
+        "mean_reciprocal_rank_at_20": 0.221901,
+        "recall_at_10": 0.462778,
+        "recall_at_5": 0.394259,
+        "recall_expected_records_at_10": 165,
+        "recall_hits_at_10": 73,
+        "zero_recall_at_10_count": 5
+      },
+      "lexical": {
+        "complete_at_10": 0.0,
+        "complete_at_10_count": 0,
+        "mean_reciprocal_rank_at_20": 0.206667,
+        "recall_at_10": 0.446852,
+        "recall_at_5": 0.371852,
+        "recall_expected_records_at_10": 165,
+        "recall_hits_at_10": 70,
+        "zero_recall_at_10_count": 5
+      }
+    },
+    "current_record_count": 695,
+    "required_action": "rerun both pinned neural retriever and reranker before comparing them with the current corpus",
+    "status": "archived_prior_corpus"
+  },
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
     "corpus_sha256": "8d73544719d5c384159167355602ceb9576b5c71c6838f4557c969be2c40eaf7",

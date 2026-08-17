@@ -9,9 +9,22 @@ tempting_answer = "The network is a graph whose buses are nodes and whose equipm
 required_qualification = "A graph claim must name the asset, connectivity, factor, equation-support, or computational representation and the active state relevant to the query."
 safe_shorthand = "A bus--branch graph is safe shorthand only after its node, edge, state, and query semantics are declared."
 operational_consequence = "Using the wrong graph can erase parallel identity, multi-terminal structure, limits, switching state, or the distinction between physical factors and matrix support."
-mandatory_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001"]
+mandatory_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001", "GRAPH-MULTI-001", "GRAPH-MATRIX-001", "TR-GRAPH-SIMPLIFY-001", "GRAPH-NPORT-001"]
 mandatory_concept_ids = ["graph-topology-adjacency", "element-edge-relation"]
-source_paths = ["docs/src/start/one-network-five-languages.md", "docs/src/foundations/representation-taxonomy.md", "docs/src/foundations/two-level-topology-and-nodal-projection.md"]
+source_paths = ["docs/src/start/one-network-five-languages.md", "docs/src/foundations/representation-taxonomy.md", "docs/src/foundations/multigraphs-for-modelers.md", "docs/src/foundations/two-level-topology-and-nodal-projection.md"]
+
+[[misconception]]
+id = "self-loop-is-a-shunt-or-circuit-loop"
+title = "A graph self-loop, circuit loop, and nodal diagonal are interchangeable"
+severity = "high"
+query_patterns = ["self-loop", "self loop", "pi section", "self loop in circuit", "circuit self-loop", "pi section same node", "pi section self loop", "graph loop ybus", "diagonal admittance loop"]
+tempting_answer = "A self-loop is just a shunt or an ordinary circuit branch, so it can be deleted or stamped without checking the representation."
+required_qualification = "Distinguish the source multigraph loop, the loopless circuit specialization, loopy-Laplacian matrix convention, and the guarded terminal-map compilation of a fixed linear pi factor."
+safe_shorthand = "A graph self-loop has zero signed incidence under the declared convention; a shunt or collapsed factor contributes only after its constitutive relation and reference are assembled."
+operational_consequence = "Confusing these layers can erase grounding effects, branch observations, shunts, coupling, or source provenance and can produce incompatible nodal models."
+mandatory_claim_ids = ["GRAPH-SELF-LOOP-001", "GRAPH-LOOPY-001", "GRAPH-PI-COLLAPSE-001"]
+mandatory_concept_ids = ["graph-topology-adjacency", "factor", "nodal-operator-alias"]
+source_paths = ["docs/src/foundations/multigraphs-for-modelers.md", "docs/src/foundations/earth-ground-models.md", "docs/src/foundations/circuit-formulations-and-lowering.md"]
 
 [[misconception]]
 id = "loads-generators-fixed-graph-membership"
@@ -24,7 +37,7 @@ safe_shorthand = "Calling a device an injection is safe only when the study form
 operational_consequence = "Treating formulation placement as intrinsic graph membership produces incompatible Ybus definitions, obscures model updates, and can change load-flow, initialization, short-circuit, and decision semantics."
 mandatory_claim_ids = ["FORMULATION-Y-SPLIT-001", "ARCH-NODAL-001", "LOAD-DECISION-001"]
 mandatory_concept_ids = ["graph-topology-adjacency", "factor", "nodal-operator-alias"]
-source_paths = ["docs/src/foundations/circuit-formulations-and-lowering.md", "docs/src/foundations/load-models-and-decision-dependence.md"]
+source_paths = ["docs/src/foundations/multigraphs-for-modelers.md", "docs/src/foundations/circuit-formulations-and-lowering.md", "docs/src/foundations/load-models-and-decision-dependence.md"]
 
 [[misconception]]
 id = "nodal-operator-is-source-network"
@@ -63,7 +76,7 @@ safe_shorthand = "Radial feeder is safe shorthand only when the representation a
 operational_consequence = "The shortcut can erase outage redundancy, member switching choices, and cycle-space dimensions used by algorithms."
 mandatory_claim_ids = ["GRAPH-CYCLE-001", "TR-GRAPH-001", "TR-GRAPH-ACTIVE-001"]
 mandatory_concept_ids = ["cycle-radial-tree", "parallel"]
-source_paths = ["docs/src/foundations/cycles-parallelism-radiality.md", "docs/src/start/five-bus-cycle-spaces.md"]
+source_paths = ["docs/src/foundations/multigraphs-for-modelers.md", "docs/src/foundations/cycles-parallelism-radiality.md", "docs/src/start/five-bus-cycle-spaces.md"]
 
 [[misconception]]
 id = "kron-reduction-preserves-everything"

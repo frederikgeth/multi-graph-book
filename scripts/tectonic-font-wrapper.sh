@@ -15,6 +15,13 @@ if [ -z "$real_tectonic" ]; then
     exit 127
 fi
 
+# macOS can strip DYLD_* variables while launching the system shell that runs
+# this wrapper. Carry the JLL-computed library path under an ordinary variable
+# and restore it only for the final Tectonic process.
+if [ -n "${MULTIGRAPH_TECTONIC_DYLD_FALLBACK:-}" ]; then
+    export DYLD_FALLBACK_LIBRARY_PATH="$MULTIGRAPH_TECTONIC_DYLD_FALLBACK"
+fi
+
 font_dir="${MULTIGRAPH_DEJAVU_FONT_DIR:-${HOME}/Library/Fonts}"
 if [ -f documenter.sty ] &&
    [ -f "${font_dir}/DejaVuSans.ttf" ] &&

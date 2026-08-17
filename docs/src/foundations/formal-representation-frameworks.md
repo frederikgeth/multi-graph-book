@@ -64,37 +64,47 @@ circuit-formulations-and-lowering). The definitions below are therefore the
 book's scoped source/view contract, not a claim that every power-network study
 should use the same formalism.
 
+The normative finite-multigraph object, including flags, loops, degree and
+matrix conventions, is defined in [Multigraphs for expert modelers](@ref
+multigraphs-for-modelers). This chapter specializes that object to the
+loopless two-terminal engineering views used by the current executable cases;
+it does not introduce a competing multigraph convention.
+
 ## Simple topology graph
 
 **Definition.** A loopless undirected simple topology graph is a pair
 
 ```math
-G_{\mathrm{s}}=(\mathcal B,E),
+G_{\mathrm{s}}=(\mathcal B,E_{\mathrm s}),
 \qquad
-E\subseteq
+E_{\mathrm s}\subseteq
 \bigl\{\{i,j\}:i,j\in\mathcal B,\ i\ne j\bigr\}.
 ```
 
-An optional weight map ``w:E\rightarrow\mathcal W`` does not restore the
+An optional weight map ``w:E_{\mathrm s}\rightarrow\mathcal W`` does not restore the
 identities of several source elements mapped to the same edge. Its codomain and
 aggregation rule must be declared: a conductance, distance, capacity, and
 binary adjacency have different semantics.
 
-Let an identified multigraph have line set ``\mathcal L`` and unordered
-endpoint map
+Let a loopless identified multigraph, in the normative flag convention, have
+line set ``\mathcal L`` and derived unordered endpoint map
 ``\partial:\mathcal L\rightarrow\binom{\mathcal B}{2}``, where the codomain
 is the set of two-element subsets of ``\mathcal B``. Its simple
 projection is
 
+In this loopless specialization ``\mathcal L^{\circ}=\mathcal L``; the
+superscript is retained on the map domain to make the non-loop restriction
+explicit.
+
 ```math
-\pi:\mathcal L\rightarrow E,
+\operatorname{simp}:\mathcal L^{\circ}\rightarrow E_{\mathrm s},
 \qquad
-\pi(\ell)=\partial\ell,
+\operatorname{simp}(\ell)=\partial\ell,
 \qquad
-E=\operatorname{im}\partial.
+E_{\mathrm s}=\operatorname{im}\partial.
 ```
 
-Thus ``\ell_1\sim_\pi\ell_2`` exactly when the two lines have the same
+Thus ``\ell_1\sim_{\operatorname{simp}}\ell_2`` exactly when the two lines have the same
 unordered endpoints.
 
 **Proposition.** If the loopless multigraph has ``c`` connected components,
@@ -103,16 +113,17 @@ then its cycle rank and that of its simple projection satisfy
 ```math
 \begin{aligned}
 \mu_{\mathrm M}&=|\mathcal L|-|\mathcal B|+c,\\
-\mu_{\mathrm s}&=|E|-|\mathcal B|+c,\\
+\mu_{\mathrm s}&=|E_{\mathrm s}|-|\mathcal B|+c,\\
 \mu_{\mathrm M}-\mu_{\mathrm s}
-&=\sum_{e\in E}\bigl(|\pi^{-1}(e)|-1\bigr).
+&=\sum_{e\in E_{\mathrm s}}\bigl(|\operatorname{simp}^{-1}(e)|-1\bigr).
 \end{aligned}
 ```
 
 **Proof.** Collapsing parallel identity does not change the vertex set,
 adjacency relation, or connected components. Subtracting the two standard
-cycle-rank identities gives ``|\mathcal L|-|E|``. Partitioning
-``\mathcal L`` into the nonempty fibres of ``\pi`` gives the final sum.
+cycle-rank identities gives ``|\mathcal L|-|E_{\mathrm s}|``. Partitioning
+``\mathcal L^{\circ}`` into the nonempty fibres of ``\operatorname{simp}``
+gives the final sum.
 
 The projection therefore preserves connectivity and islands, but not the
 line-indexed cycle space, member states, or member constraints. A simple
@@ -122,19 +133,22 @@ make the matrix support different from bare adjacency.
 
 ## Oriented attributed multigraph
 
-**Definition.** An oriented attributed multigraph is
+**Definition (loopless engineering specialization).** An oriented attributed
+multigraph is the normative flag object
 
 ```math
 G_{\mathrm M}
 =
-(\mathcal B,\mathcal L,\partial^-,\partial^+,o,a),
+(\mathcal B,\mathcal L,\mathcal F,s,\operatorname{ed},o,a),
 ```
 
-where ``\mathcal B`` and ``\mathcal L`` are finite sets of buses and
-identified elements, ``\partial^-`` and ``\partial^+`` give the endpoints in
-a selected reference orientation, ``o`` records that orientation, and ``a``
-is a family of typed attribute maps. Parallel elements are distinct members of
-``\mathcal L`` even when both endpoint maps agree.
+restricted here to edges whose two flags map to different buses. The maps
+``s:\mathcal F\to\mathcal B`` and ``\operatorname{ed}:\mathcal F\to\mathcal L`` record
+incidence, each fibre ``\operatorname{ed}^{-1}(\ell)`` contains two flags, ``o`` orders those
+flags as tail and head, and ``a`` is a family of typed attribute maps. The
+derived endpoint functions ``\partial^-`` and ``\partial^+`` return the buses
+of the ordered tail and head flags. Parallel elements remain distinct members
+of ``\mathcal L`` even when both derived endpoint functions agree.
 
 The incidence matrix associated with the selected orientation is
 

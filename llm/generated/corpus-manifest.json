@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "d95501db616d3f10032f29a1349ec92ecc159d801dc9b9dedc0670b7bd731c86",
+  "corpus_sha256": "7eec81d0a7d219b25ba5e026475a02ac726ea21cb5934b81154cabc4c5cefba1",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -10,16 +10,16 @@
       "docs/src/reference/vocabulary-indexes.md"
     ],
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
-    "included_doc_count": 62
+    "included_doc_count": 63
   },
-  "evaluation_case_count": 27,
-  "heldout_case_count": 27,
-  "misconception_count": 9,
-  "record_count": 661,
+  "evaluation_case_count": 30,
+  "heldout_case_count": 30,
+  "misconception_count": 10,
+  "record_count": 695,
   "record_counts": {
-    "claim_bundle": 96,
+    "claim_bundle": 103,
     "concept_bundle": 17,
-    "section": 548
+    "section": 575
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -32,7 +32,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "e5bec546a9bb2dd861b4bc3deab7f186498b7287dceb71ec95efd0cdff416d88"
+      "sha256": "ffcb8eb3bcbb90d8b0c6ea699982b7f1d696936763ee261811463a6203d4acd0"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -72,7 +72,7 @@
     },
     {
       "path": "docs/src/foundations/circuit-formulations-and-lowering.md",
-      "sha256": "cd91574be4687eea562657d906058d151c8fdc330a28e6ac581b3a6f61736e2a"
+      "sha256": "82bf345eeaa3dd8ed3f1b080208d45796e4f1323b3089f6bf5efed515d587037"
     },
     {
       "path": "docs/src/foundations/compiled-views-and-graph-surgery.md",
@@ -80,7 +80,7 @@
     },
     {
       "path": "docs/src/foundations/cycles-parallelism-radiality.md",
-      "sha256": "baf9ee10b17af6f6de4659edfdce9bb0a9bf1f83859017883ddc2ad8829d8ad9"
+      "sha256": "3aa4be38601023d71f42d37b9ac59afeee57bfcfdcd0529efb6de73d70e44955"
     },
     {
       "path": "docs/src/foundations/data-model-crosswalk.md",
@@ -92,7 +92,7 @@
     },
     {
       "path": "docs/src/foundations/formal-representation-frameworks.md",
-      "sha256": "53048a3b53634b828323b1dd76945b737655e176513105a063d32640f8e6a838"
+      "sha256": "e47a4f8a2f870a59459ee2b62b66009e6c418db4066b42803ee71838b274ea17"
     },
     {
       "path": "docs/src/foundations/impedance-fidelity-ladder.md",
@@ -100,15 +100,19 @@
     },
     {
       "path": "docs/src/foundations/load-models-and-decision-dependence.md",
-      "sha256": "5232a6a18dfb64b546ccde67987dfb5026bfaf144a71ee7c54c0028ba91c8828"
+      "sha256": "f28ad6e9ba9c384f6094802d0454c3ce4e13d56e8d8cd26d44b5c0a6d07ab055"
+    },
+    {
+      "path": "docs/src/foundations/multigraphs-for-modelers.md",
+      "sha256": "e32f1e53811540ac42938563970226c4d68b5bf023c5678392fe63756eaa769f"
     },
     {
       "path": "docs/src/foundations/node-breaker-topology-processing.md",
-      "sha256": "9c51b6d6f10101a4e28717d2f64daba9c66d8198ecd74ae2b0cce664e7f64400"
+      "sha256": "637edada4e7af620f85721d3d25fbe1b0b4d952acb3f3ee7d0b1cad6f1d60846"
     },
     {
       "path": "docs/src/foundations/notation-and-conventions.md",
-      "sha256": "65260912bb69a59c925d084d1d0c038c1eac314aa62517b3c09d1467e3755073"
+      "sha256": "f6a4fdb2a7e984b27cde6007e82be2d25426f5374c5a1d1bff11aa13439f5c9b"
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
@@ -132,7 +136,7 @@
     },
     {
       "path": "docs/src/foundations/representation-taxonomy.md",
-      "sha256": "783a37c286f430482935075830d8d8f9a62251fc33c0cecda90a3506434e79cc"
+      "sha256": "1362bfda01b5de804578772321e408e414c822e2e454449c80d9e5d111065279"
     },
     {
       "path": "docs/src/foundations/scope-and-thesis.md",
@@ -152,7 +156,7 @@
     },
     {
       "path": "docs/src/foundations/two-level-topology-and-nodal-projection.md",
-      "sha256": "32e16e98d3338402a35da97215a18053e3acb0aff293ee3e2408fccc25354c1e"
+      "sha256": "0a6154fb03a5e28742bde1630979845c9aec606290dab6122d70425d9a0aad95"
     },
     {
       "path": "docs/src/foundations/when-general-model-collapses.md",
@@ -180,19 +184,19 @@
     },
     {
       "path": "docs/src/literature/search-runs/2026-08-14-seed-batch.md",
-      "sha256": "342b8d1ea66a0f387a0f570c3f2629b45316a3884516c8a7f3ba9de41ac31ff8"
+      "sha256": "9a118bbb1bd8d79402274d80229356028e94ca164172f3575fc1b76cbda1351c"
     },
     {
       "path": "docs/src/literature/search-runs/2026-08-15-formulation-landscape.md",
-      "sha256": "aa6196fa85fc0be2cb6932b13c768f57461f93fc919d512217eb3c8c41af3bc3"
+      "sha256": "2f89f443ec3d26981f76b9b69fe5df6fdf1054e54c8413b8fa9d8026031b4a8e"
     },
     {
       "path": "docs/src/literature/search-runs/2026-08-15-information-model-citation-chase.md",
-      "sha256": "9878052b845245f19797d653ff404234f2b17ce0f35a634bf14b3827e50fb840"
+      "sha256": "abb1b6ae17f2a5c73b5b456d07e4d54e46d78d3aba92bfc3e3549bf0155284e3"
     },
     {
       "path": "docs/src/literature/search-runs/2026-08-16-multiphase-and-practical-reductions.md",
-      "sha256": "fd017436870d0f980d3e3cedbe7f7378c6c7815acf9c9355906716cad7ee14fd"
+      "sha256": "c18c3974c0797743b8da331524b1b8171bb78ee527f43bb02e9505117a83a7bf"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -284,15 +288,15 @@
     },
     {
       "path": "llm/evaluation-cases.toml",
-      "sha256": "1812f7a085ba351af80cd749ba09783f55b14740771ff7e438d49923aa1b386f"
+      "sha256": "6805cb7ed316422ca9b1004af371a85ac889cf801574815622b0b1f4c6cf8a34"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
-      "sha256": "59de33ec99d2b61ac4e0db0e2f0286d3d0e79303447a187ba23fbef3a13ebf56"
+      "sha256": "92f62f77c45d5c184fb80df476efdff4a05b038465c81b1961d01c45723fe7b3"
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "64620198e4c41f66755abd6f1c824e5dd87ee6a4d373c575dac35746bd04a645"
+      "sha256": "c8b5fe62cab4a4f19713a67968a56958ac49e5210073fea4749d2ca2e2cd3d4b"
     },
     {
       "path": "vocabulary/vocabulary.toml",
