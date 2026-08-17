@@ -63,10 +63,10 @@ assembly.
 The normative finite undirected multigraph is
 
 ```math
-G=(V,E,\mathcal F,s,p),
+G=(V,E,\mathcal F,s,\operatorname{ed}),
 ```
 
-with two flags in each edge fibre ``p^{-1}(e)``. The complete definition,
+with two flags in each edge fibre ``\operatorname{ed}^{-1}(e)``. The complete definition,
 including graph loops and matrix conventions, is maintained in [Multigraphs
 for expert modelers](@ref multigraphs-for-modelers). Power-system chapters may
 specialize ``V`` to buses ``\mathcal B`` and ``E`` to identified lines
@@ -77,12 +77,14 @@ For the loopless bus--branch specialization, ``\partial(\ell)`` denotes the
 derived unordered endpoint pair and
 
 ```math
-q:\mathcal L\rightarrow E_{\mathrm s}
+\operatorname{simp}:\mathcal L^{\circ}\rightarrow E_{\mathrm s}
 ```
 
-denotes the simple endpoint projection. The symbol ``q`` is reserved for this
-parallel-class quotient in graph-theoretic passages; ``\pi_\sigma`` remains the
-state-conditioned connectivity-node quotient used in topology processing.
+denotes the simple endpoint projection on non-loop members. The symbols ``p``
+and ``q`` remain available for phase and terminal indices; graph maps use
+descriptive operators. For arbitrary-arity incidence structures,
+``\operatorname{rel}:\mathcal F\to R`` maps a flag to its owning relation.
+The state-conditioned connectivity-node quotient remains ``\pi_\sigma``.
 
 The following names are not interchangeable:
 

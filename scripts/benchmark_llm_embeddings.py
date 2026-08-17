@@ -185,9 +185,21 @@ def markdown_report(result: dict) -> str:
     if compatibility.get("status") == "archived_prior_corpus":
         lines += [
             "**Current-corpus compatibility:** `archived_prior_corpus`",
+            f"**Archived on:** `{compatibility.get('archived_on')}`",
             f"**Current corpus hash:** `{compatibility.get('current_corpus_sha256')}`",
+            f"**Current held-out input hash:** `{compatibility.get('current_heldout_sha256')}`",
             f"**Required action:** {compatibility.get('required_action')}",
         ]
+        lexical_summary = compatibility.get("current_lexical_summary", {})
+        if lexical_summary:
+            lines += [
+                "**Current lexical baseline:** "
+                + "; ".join(
+                    f"{method} recall@10={100 * lexical_summary[method]['recall_at_10']:.1f}%"
+                    for method in ("lexical", "char_tfidf", "hybrid")
+                    if method in lexical_summary
+                ),
+            ]
     lines += [
         "",
         "This report is an opt-in comparison. It does not promote neural retrieval into the release path",

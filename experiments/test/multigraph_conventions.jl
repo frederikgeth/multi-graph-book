@@ -1,24 +1,62 @@
 using LinearAlgebra
 using Test
 
+function incidence_from_edges(n_vertices, edges)
+    B = zeros(Int, n_vertices, length(edges))
+    for (j, (u, v)) in enumerate(edges)
+        u == v && continue
+        B[u, j] = -1
+        B[v, j] = 1
+    end
+    B
+end
+
+function multiplicity_matrices(n_vertices, edges)
+    adjacency = zeros(Int, n_vertices, n_vertices)
+    degree = zeros(Int, n_vertices)
+    for (u, v) in edges
+        degree[u] += 1
+        degree[v] += 1
+        if u == v
+            adjacency[u, u] += 2
+        else
+            adjacency[u, v] += 1
+            adjacency[v, u] += 1
+        end
+    end
+    Diagonal(degree), adjacency
+end
+
+function simple_projection(edges)
+    unique(sort([(min(u, v), max(u, v)) for (u, v) in edges if u != v]))
+end
+
+function contract_edge(n_vertices, edges, edge_index)
+    u, v = edges[edge_index]
+    @assert u != v
+    representatives = [x == v ? u : x for x in 1:n_vertices if x != v]
+    labels = Dict(rep => i for (i, rep) in enumerate(representatives))
+    quotient_edge(edge) = begin
+        a, b = edge
+        (labels[a == v ? u : a], labels[b == v ? u : b])
+    end
+    [quotient_edge(edge) for (i, edge) in enumerate(edges) if i != edge_index]
+end
+
 @testset "multigraph matrix conventions" begin
     # Edges: two parallel 1--2 members, one 2--3 member, and one loop at 2.
-    incidence = [
-         1 -1  0  0
-        -1  1  1  0
-         0  0 -1  0
-    ]
-
-    multiplicity_adjacency = [
-        0  2  0
-        2  2  1
-        0  1  0
-    ]
-    incidence_degree = Diagonal([2, 5, 1])
+    edges = [(1, 2), (1, 2), (2, 3), (2, 2)]
+    incidence = incidence_from_edges(3, edges)
+    incidence_degree, multiplicity_adjacency = multiplicity_matrices(3, edges)
 
     # With A[v,v] = twice the loop count, D - A agrees with B*B'.
     @test incidence_degree - multiplicity_adjacency == incidence * incidence'
     @test vec(sum(multiplicity_adjacency; dims=2)) == diag(incidence_degree)
+
+    # Reorientation changes a column sign but not the scalar Laplacian.
+    reoriented = copy(incidence)
+    reoriented[:, 2] .*= -1
+    @test reoriented * reoriented' == incidence * incidence'
 
     # One parallel-pair circuit and one graph-loop circuit.
     n_vertices = 3
@@ -28,11 +66,7 @@ using Test
     @test n_edges - rank(Float64.(incidence)) == 2
 
     # The loopless simple projection has only 1--2 and 2--3 and is a tree.
-    simple_incidence = [
-         1  0
-        -1  1
-         0 -1
-    ]
+    simple_incidence = incidence_from_edges(3, simple_projection(edges))
     @test size(simple_incidence, 2) - rank(Float64.(simple_incidence)) == 0
 
     # A shunt is a grounded diagonal term, not a zero incidence-column loop.
@@ -61,25 +95,20 @@ end
 
 @testset "deletion, contraction, and simplification" begin
     # e1,e2: u--v; e3: v--w; e4: w--u.
-    source_incidence = [
-        -1 -1  0  1
-         1  1 -1  0
-         0  0  1 -1
-    ]
+    source_edges = [(1, 2), (1, 2), (2, 3), (3, 1)]
+    source_incidence = incidence_from_edges(3, source_edges)
     @test size(source_incidence, 2) - rank(Float64.(source_incidence)) == 2
 
     deleted_incidence = source_incidence[:, 2:4]
     @test size(deleted_incidence, 2) - rank(Float64.(deleted_incidence)) == 1
 
     # Contract e1: e2 becomes a loop; e3 and e4 become parallel x--w edges.
-    contracted_incidence = [
-        0 -1  1
-        0  1 -1
-    ]
+    contracted_edges = contract_edge(3, source_edges, 1)
+    contracted_incidence = incidence_from_edges(2, contracted_edges)
     @test size(contracted_incidence, 2) - rank(Float64.(contracted_incidence)) == 2
     @test contracted_incidence[:, 1] == zeros(Int, 2)
 
-    simplified_incidence = [-1; 1;;]
+    simplified_incidence = incidence_from_edges(2, simple_projection(contracted_edges))
     @test size(simplified_incidence, 2) - rank(Float64.(simplified_incidence)) == 0
 end
 

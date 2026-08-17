@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "67ff0269eaf5deb97a03d42120f42726f8a7ddcb75057a19f8913553fb827220",
+  "corpus_sha256": "f6150a44c7ad3b4f8a971afc3981d3f7c675f01c5dd6cc08cce3132659e7e946",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -12,9 +12,9 @@
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
     "included_doc_count": 63
   },
-  "evaluation_case_count": 27,
-  "heldout_case_count": 27,
-  "misconception_count": 9,
+  "evaluation_case_count": 30,
+  "heldout_case_count": 30,
+  "misconception_count": 10,
   "record_count": 695,
   "record_counts": {
     "claim_bundle": 103,
@@ -32,7 +32,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "82ed0b0ca10d85827450a66924cef288d4142872fe26d238ee82782f6d712d33"
+      "sha256": "ffcb8eb3bcbb90d8b0c6ea699982b7f1d696936763ee261811463a6203d4acd0"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -104,7 +104,7 @@
     },
     {
       "path": "docs/src/foundations/multigraphs-for-modelers.md",
-      "sha256": "668e8badf48bb730252b9ad6ea57c0a4af12ad39d52a4a42b57a7936f09ab3a9"
+      "sha256": "e32f1e53811540ac42938563970226c4d68b5bf023c5678392fe63756eaa769f"
     },
     {
       "path": "docs/src/foundations/node-breaker-topology-processing.md",
@@ -112,7 +112,7 @@
     },
     {
       "path": "docs/src/foundations/notation-and-conventions.md",
-      "sha256": "2bcec276127ebda24ab833a502d5e84ea1cc971e5c7686094901d98d22be2f53"
+      "sha256": "f6a4fdb2a7e984b27cde6007e82be2d25426f5374c5a1d1bff11aa13439f5c9b"
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
@@ -288,15 +288,15 @@
     },
     {
       "path": "llm/evaluation-cases.toml",
-      "sha256": "1812f7a085ba351af80cd749ba09783f55b14740771ff7e438d49923aa1b386f"
+      "sha256": "6805cb7ed316422ca9b1004af371a85ac889cf801574815622b0b1f4c6cf8a34"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
-      "sha256": "59de33ec99d2b61ac4e0db0e2f0286d3d0e79303447a187ba23fbef3a13ebf56"
+      "sha256": "92f62f77c45d5c184fb80df476efdff4a05b038465c81b1961d01c45723fe7b3"
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "58fa45e63871eeddf6504d7e39ded0827ba40091529781ca6fdab1bd45eafc74"
+      "sha256": "c8b5fe62cab4a4f19713a67968a56958ac49e5210073fea4749d2ca2e2cd3d4b"
     },
     {
       "path": "vocabulary/vocabulary.toml",

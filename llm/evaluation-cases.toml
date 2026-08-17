@@ -8,7 +8,7 @@ case_id = "EVAL-GRAPH-STUDENT"
 audience = "student"
 question = "What is the graph of a power network—are buses nodes and lines edges?"
 misconception_id = "one-universal-network-graph"
-required_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001"]
+required_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001", "GRAPH-MULTI-001", "GRAPH-MATRIX-001", "TR-GRAPH-SIMPLIFY-001", "GRAPH-NPORT-001"]
 required_concept_ids = ["graph-topology-adjacency", "element-edge-relation"]
 required_answer_elements = ["name the representation and active state", "distinguish physical factors from derived graph edges"]
 forbidden_simplifications = ["there is one canonical graph for every question"]
@@ -18,7 +18,7 @@ case_id = "EVAL-GRAPH-SOFTWARE"
 audience = "software_engineer"
 question = "Which graph should my network API expose as the graph field?"
 misconception_id = "one-universal-network-graph"
-required_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001"]
+required_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001", "GRAPH-MULTI-001", "GRAPH-MATRIX-001", "TR-GRAPH-SIMPLIFY-001", "GRAPH-NPORT-001"]
 required_concept_ids = ["graph-topology-adjacency", "element-edge-relation"]
 required_answer_elements = ["use typed or separately named graph views", "record the projection and forgotten information"]
 forbidden_simplifications = ["serialize one adjacency list as the complete network"]
@@ -28,7 +28,7 @@ case_id = "EVAL-GRAPH-POWER"
 audience = "power_engineer"
 question = "For a feeder study, what exactly should we mean by the network graph?"
 misconception_id = "one-universal-network-graph"
-required_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001"]
+required_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001", "GRAPH-MULTI-001", "GRAPH-MATRIX-001", "TR-GRAPH-SIMPLIFY-001", "GRAPH-NPORT-001"]
 required_concept_ids = ["graph-topology-adjacency", "element-edge-relation"]
 required_answer_elements = ["name bus, asset, factor, or support view", "state switching status and study purpose"]
 forbidden_simplifications = ["the one-line topology is sufficient for every study"]
@@ -272,3 +272,33 @@ required_claim_ids = ["PRESERVE-001", "TR-PAR-001", "TR-PAR-002"]
 required_concept_ids = ["equivalence-exactness-preservation", "rating-limit-constraint"]
 required_answer_elements = ["name observations, constraints, objective, and admissible domain", "require recovery of source-feasible operating decisions"]
 forbidden_simplifications = ["electrical exactness is an unqualified decision-equivalence guarantee"]
+
+[[case]]
+case_id = "EVAL-SELF-LOOP-STUDENT"
+audience = "student"
+question = "Is a graph self-loop the same thing as a circuit loop, a shunt, or a diagonal term in Ybus?"
+misconception_id = "self-loop-is-a-shunt-or-circuit-loop"
+required_claim_ids = ["GRAPH-SELF-LOOP-001", "GRAPH-LOOPY-001", "GRAPH-PI-COLLAPSE-001"]
+required_concept_ids = ["graph-topology-adjacency", "factor", "nodal-operator-alias"]
+required_answer_elements = ["separate graph, circuit, and matrix meanings", "state the guarded pi-collapse assumptions"]
+forbidden_simplifications = ["delete every self-loop as if it were a harmless shunt"]
+
+[[case]]
+case_id = "EVAL-SELF-LOOP-SOFTWARE"
+audience = "software_engineer"
+question = "How should a network compiler treat a graph self-loop, a grounded stamp, and a pi factor whose terminals are identified?"
+misconception_id = "self-loop-is-a-shunt-or-circuit-loop"
+required_claim_ids = ["GRAPH-SELF-LOOP-001", "GRAPH-LOOPY-001", "GRAPH-PI-COLLAPSE-001"]
+required_concept_ids = ["graph-topology-adjacency", "factor", "nodal-operator-alias"]
+required_answer_elements = ["retain source factors and reference maps", "compile only under declared terminal and reference assumptions"]
+forbidden_simplifications = ["infer source self-loops from matrix diagonal support"]
+
+[[case]]
+case_id = "EVAL-SELF-LOOP-POWER"
+audience = "power_engineer"
+question = "When two terminals of a fixed linear pi section are identified, what remains in the nodal model and what must not be inferred?"
+misconception_id = "self-loop-is-a-shunt-or-circuit-loop"
+required_claim_ids = ["GRAPH-SELF-LOOP-001", "GRAPH-LOOPY-001", "GRAPH-PI-COLLAPSE-001"]
+required_concept_ids = ["graph-topology-adjacency", "factor", "nodal-operator-alias"]
+required_answer_elements = ["the series term cancels while same-reference shunts remain", "member observations and nontrivial factors still need guards"]
+forbidden_simplifications = ["call every collapsed pi section a deleted branch"]

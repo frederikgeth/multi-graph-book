@@ -1,6 +1,6 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:82ed0b0ca10d85827450a66924cef288d4142872fe26d238ee82782f6d712d33 -->
+<!-- generated-from claims/claims.toml sha256:ffcb8eb3bcbb90d8b0c6ea699982b7f1d696936763ee261811463a6203d4acd0 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.

@@ -8,6 +8,7 @@ import hashlib
 import json
 import sys
 import tomllib
+from datetime import date
 from pathlib import Path
 
 from evaluate_llm_retrieval import evaluate, ROOT
@@ -54,9 +55,15 @@ def main() -> int:
             return 0
         report["compatibility"] = {
             "status": "archived_prior_corpus",
+            "archived_on": date.today().isoformat(),
             "current_corpus_id": manifest.get("corpus_id"),
             "current_corpus_sha256": manifest.get("corpus_sha256"),
             "current_record_count": manifest.get("record_count"),
+            "current_heldout_sha256": sha256(HELDOUT),
+            "current_lexical_summary": {
+                method: current_retrieval["heldout"]["summary"][method]
+                for method in ("lexical", "char_tfidf", "hybrid")
+            },
             "required_action": "rerun both pinned neural retriever and reranker before comparing them with the current corpus",
         }
         REPORT.write_text(json.dumps(report, indent=2, ensure_ascii=False, sort_keys=True) + "\n")
@@ -73,9 +80,13 @@ def main() -> int:
         fail(errors, compatibility.get("current_corpus_id") != manifest.get("corpus_id"), "archived neural benchmark current corpus ID drift")
         fail(errors, compatibility.get("current_corpus_sha256") != manifest.get("corpus_sha256"), "archived neural benchmark current corpus hash drift")
         fail(errors, compatibility.get("current_record_count") != manifest.get("record_count"), "archived neural benchmark current record count drift")
+        fail(errors, compatibility.get("current_heldout_sha256") != sha256(HELDOUT), "archived neural benchmark current held-out input hash drift")
+        fail(errors, not compatibility.get("archived_on"), "archived neural benchmark lacks an archive date")
+        fail(errors, not compatibility.get("current_lexical_summary"), "archived neural benchmark lacks current lexical baselines")
         fail(errors, not compatibility.get("required_action"), "archived neural benchmark lacks a required rerun action")
     heldout_input = report.get("inputs", {}).get("heldout_paraphrases", {})
-    fail(errors, heldout_input.get("sha256") != sha256(HELDOUT), "neural benchmark held-out input hash drift")
+    if current_corpus:
+        fail(errors, heldout_input.get("sha256") != sha256(HELDOUT), "neural benchmark held-out input hash drift")
 
     embedding = report.get("embedding_provenance", {})
     embedding_config = config.get("embedding", {})
@@ -90,15 +101,15 @@ def main() -> int:
     fail(errors, len(str(reranker.get("artifact_sha256", ""))) != SHA256_LENGTH, "reranker artifact hash is incomplete")
 
     report_summary = report.get("summary", {})
-    if current_corpus:
-        current_summary = current_retrieval["heldout"]["summary"]
-        for method in ("lexical", "char_tfidf", "hybrid"):
-            for metric in ("recall_at_5", "recall_at_10", "complete_at_10", "mean_reciprocal_rank_at_20"):
-                fail(
-                    errors,
-                    report_summary.get(method, {}).get(metric) != current_summary[method][metric],
-                    f"recorded {method} {metric} differs from the current baseline",
-                )
+    current_summary = current_retrieval["heldout"]["summary"]
+    recorded_lexical = report_summary if current_corpus else compatibility.get("current_lexical_summary", {})
+    for method in ("lexical", "char_tfidf", "hybrid"):
+        for metric in ("recall_at_5", "recall_at_10", "complete_at_10", "mean_reciprocal_rank_at_20"):
+            fail(
+                errors,
+                recorded_lexical.get(method, {}).get(metric) != current_summary[method][metric],
+                f"recorded {method} {metric} differs from the current baseline",
+            )
     fail(errors, not REPORT.is_file(), "neural benchmark JSON report is missing")
     if REPORT.is_file() and MARKDOWN.is_file():
         fail(errors, MARKDOWN.read_text() != markdown_report(report), "neural benchmark Markdown report is stale")

@@ -35,7 +35,7 @@ consequences; it does not replace the definitions below.
 An **undirected multigraph with loops** is a tuple
 
 ```math
-G=(V,E,\mathcal F,s,p),
+G=(V,E,\mathcal F,s,\operatorname{ed}),
 ```
 
 where ``V`` is a finite vertex set, ``E`` is a finite set of identified edges,
@@ -44,9 +44,9 @@ where ``V`` is a finite vertex set, ``E`` is a finite set of identified edges,
 ```math
 s:\mathcal F\rightarrow V,
 \qquad
-p:\mathcal F\rightarrow E,
+\operatorname{ed}:\mathcal F\rightarrow E,
 \qquad
-|p^{-1}(e)|=2\quad(e\in E).
+|\operatorname{ed}^{-1}(e)|=2\quad(e\in E).
 ```
 
 Each edge therefore owns two distinct flags. If the two flags of ``e`` map
@@ -64,7 +64,7 @@ attributes.
 For compact notation define the endpoint multiset
 
 ```math
-\partial(e)=\{\!\{s(h):h\in p^{-1}(e)\}\!\}
+\partial(e)=\{\!\{s(h):h\in \operatorname{ed}^{-1}(e)\}\!\}
 \in \operatorname{Sym}^{2}(V).
 ```
 
@@ -98,7 +98,10 @@ the sign of current, power, or causality in an operating solution.
 
 Reorienting one edge negates the corresponding signed-incidence column and any
 edge-coordinate written in that orientation. It does not change connectivity,
-cycle rank, or the underlying physical member.
+cycle rank, or the underlying physical member. In particular, for diagonal edge
+weights ``W``, the assembled scalar operator ``BWB^{\mathsf T}`` is unchanged
+when an edge orientation is reversed, provided the edge-coordinate convention
+is changed consistently.
 
 ### The word degree is insufficient
 
@@ -145,9 +148,11 @@ the tail and ``+1`` at the head of each non-loop edge. A graph-loop column is
 zero because its two signed incidences occur at the same vertex and cancel.
 Changing all signs in a column is an equivalent orientation convention.
 
-This zero column does **not** say that a physical self-connected or grounded
-device has no effect. It says only that an ordinary graph loop contributes
-nothing to the signed boundary operator.
+!!! warning "Graph-theory trap"
+
+    This zero column does **not** say that a physical self-connected or grounded
+    device has no effect. It says only that an ordinary graph loop contributes
+    nothing to the signed boundary operator.
 
 ### Multiplicity adjacency and degree matrices
 
@@ -185,6 +190,13 @@ zero. Complex branch stamps, ideal transformer ratios, mutual coupling, phase
 coordinates, and controlled factors generally require a richer assembly than
 this scalar expression. A power-system nodal admittance matrix is therefore
 not, without qualification, “the graph Laplacian.”
+
+!!! warning "Circuit-theory trap"
+
+    A nodal-admittance diagonal may contain shunts, grounded loads, eliminated
+    terminal factors, or other compiled contributions. Its diagonal support is
+    not evidence that the source model contains graph self-loops, and its
+    off-diagonal support is not a complete asset-level graph.
 
 ### Graph loops are not shunts
 
@@ -292,6 +304,14 @@ power-system π models, where the line is a two-port and shunt terms enter the
 nodal diagonal rather than the off-diagonal bus coupling [OpenDSSLine,
 SeshuReed1961](@cite).
 
+!!! warning "Circuit-theory trap"
+
+    The two shunts in this collapse are assumed to use the same retained
+    ground/reference and compatible terminal coordinates. If the sections use
+    different references, or the retained coordinates identify more than the
+    declared terminal pair, the one-terminal formula must be rederived from
+    the full terminal relation.
+
 This identity does **not** license a universal “self-loop deletion” rule. It
 does not preserve a branch-current observation, member rating, loss
 allocation, switching decision, or source provenance. It also does not apply
@@ -361,15 +381,15 @@ be the non-loop edges. The loopless underlying simple graph is
 \overline E=\bigl\{\{u,v\}:e\in E^{\circ},\ \partial(e)=\{u,v\}\bigr\}.
 ```
 
-Its quotient map
+Its simple-projection map
 
 ```math
-q:E^{\circ}\rightarrow\overline E,
+\operatorname{simp}:E^{\circ}\rightarrow\overline E,
 \qquad
-q(e)=\partial(e)
+\operatorname{simp}(e)=\partial(e)
 ```
 
-has fibres ``q^{-1}(\{u,v\})`` containing all identified members between the
+has fibres ``\operatorname{simp}^{-1}(\{u,v\})`` containing all identified members between the
 same endpoint vertices. Constructing ``\overline G`` therefore performs two
 operations: graph loops are omitted, and every non-loop parallel class is
 replaced by one adjacency. Neither operation is invertible without retained
@@ -506,6 +526,13 @@ terminal identification or coordinate lowering. Their shared matrix support is
 a fact about that compiled operator, not proof that the source assets were one
 edge.
 
+The [multiconductor parallel AC decision case](@ref multiconductor-parallel-ac-case)
+is a concrete failure witness: a naive scalar aggregate serves more load than
+the source-member model while violating a member current limit, whereas the
+exact lifted and pruned formulations retain the source optimum. The example is
+why endpoint agreement is a necessary graph condition but not, by itself, an
+electrical aggregation certificate.
+
 ### Loads and generators: source role versus compiled placement
 
 Whether a load or generator “belongs to the graph” has no context-free answer.
@@ -555,21 +582,28 @@ relation, so its preservation contract must identify which observations and
 constraints survive. The multigraph remains essential for identified
 two-terminal members, but it is not the universal source ontology.
 
+The three-winding transformer is the useful mental model before the formal
+generalization: one physical relation owns three typed ports, while a star or
+terminal-clique graph is only a chosen lowering. The incidence construction
+below makes that distinction explicit and records why the resulting cycle
+structure belongs to the compiled view rather than automatically to the
+device inventory.
+
 ### Incidence structures and typed n-port relations
 
 The flag construction generalizes without forcing pairwise edges. Define a
 finite incidence structure
 
 ```math
-\mathcal I=(X,R,\mathcal F,s,p),
+\mathcal I=(X,R,\mathcal F,s,\operatorname{rel}),
 \qquad
 s:\mathcal F\to X,
 \qquad
-p:\mathcal F\to R,
+\operatorname{rel}:\mathcal F\to R,
 ```
 
 where ``X`` is a set of junction or object vertices and ``R`` is a set of
-identified relations. Unlike a multigraph, the fibre ``p^{-1}(r)`` may have
+identified relations. Unlike a multigraph, the fibre ``\operatorname{rel}^{-1}(r)`` may have
 any declared finite cardinality. A two-uniform incidence structure, in which
 every relation owns exactly two flags, recovers the multigraph object. A
 relation with three flags is natively ternary rather than three unexplained
@@ -577,12 +611,12 @@ pairwise edges.
 
 For mathematical modeling, incidence alone is usually insufficient. Give each
 flag ``f`` a typed variable space ``\mathcal X_f``, give each relation an
-ordering or role map ``\omega_r`` on ``p^{-1}(r)``, and attach a constitutive
+ordering or role map ``\omega_r`` on ``\operatorname{rel}^{-1}(r)``, and attach a constitutive
 or constraint relation
 
 ```math
 \mathcal R_r\subseteq
-\prod_{f\in p^{-1}(r)}\mathcal X_f.
+\prod_{f\in \operatorname{rel}^{-1}(r)}\mathcal X_f.
 ```
 
 This is the flat core of the book's hierarchical port--factor object. The

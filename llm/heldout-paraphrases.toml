@@ -5,21 +5,21 @@ purpose = "synthetic held-out paraphrase benchmark; not human-validated evidence
 case_id = "HOLDOUT-GRAPH-STUDENT"
 audience = "student"
 question = "When someone says network graph here, which objects and operating condition have they actually chosen?"
-expected_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001"]
+expected_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001", "GRAPH-MULTI-001", "GRAPH-MATRIX-001", "TR-GRAPH-SIMPLIFY-001", "GRAPH-NPORT-001"]
 expected_concept_ids = ["graph-topology-adjacency", "element-edge-relation"]
 
 [[case]]
 case_id = "HOLDOUT-GRAPH-SOFTWARE"
 audience = "software_engineer"
 question = "How should a topology API distinguish its source equipment relations from the adjacency it derives for an algorithm?"
-expected_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001"]
+expected_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001", "GRAPH-MULTI-001", "GRAPH-MATRIX-001", "TR-GRAPH-SIMPLIFY-001", "GRAPH-NPORT-001"]
 expected_concept_ids = ["graph-topology-adjacency", "element-edge-relation"]
 
 [[case]]
 case_id = "HOLDOUT-GRAPH-POWER"
 audience = "power_engineer"
 question = "Which network view is appropriate when a feeder study needs both equipment identity and the active connectivity state?"
-expected_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001"]
+expected_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001", "GRAPH-MULTI-001", "GRAPH-MATRIX-001", "TR-GRAPH-SIMPLIFY-001", "GRAPH-NPORT-001"]
 expected_concept_ids = ["graph-topology-adjacency", "element-edge-relation"]
 
 [[case]]
@@ -175,6 +175,27 @@ audience = "student"
 question = "What else besides the circuit equation must agree before two models can be substituted in an optimization?"
 expected_claim_ids = ["PRESERVE-001", "TR-PAR-001", "TR-PAR-002"]
 expected_concept_ids = ["equivalence-exactness-preservation", "rating-limit-constraint"]
+
+[[case]]
+case_id = "HOLDOUT-SELF-LOOP-STUDENT"
+audience = "student"
+question = "Is a graph self-loop the same as a shunt or an ordinary circuit branch?"
+expected_claim_ids = ["GRAPH-SELF-LOOP-001", "GRAPH-LOOPY-001", "GRAPH-PI-COLLAPSE-001"]
+expected_concept_ids = ["graph-topology-adjacency", "factor", "nodal-operator-alias"]
+
+[[case]]
+case_id = "HOLDOUT-SELF-LOOP-SOFTWARE"
+audience = "software_engineer"
+question = "What representation guards are needed before compiling an identified-terminal pi factor into a nodal diagonal?"
+expected_claim_ids = ["GRAPH-SELF-LOOP-001", "GRAPH-LOOPY-001", "GRAPH-PI-COLLAPSE-001"]
+expected_concept_ids = ["graph-topology-adjacency", "factor", "nodal-operator-alias"]
+
+[[case]]
+case_id = "HOLDOUT-SELF-LOOP-POWER"
+audience = "power_engineer"
+question = "Why does a zero graph-loop incidence column not imply that a collapsed pi section has no electrical effect?"
+expected_claim_ids = ["GRAPH-SELF-LOOP-001", "GRAPH-LOOPY-001", "GRAPH-PI-COLLAPSE-001"]
+expected_concept_ids = ["graph-topology-adjacency", "factor", "nodal-operator-alias"]
 
 [[case]]
 case_id = "HOLDOUT-DECISION-SOFTWARE"
