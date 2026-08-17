@@ -128,6 +128,23 @@ python3 scripts/check_rendered_outputs.py
 bash scripts/reproduce_clean_fixture.sh
 ```
 
+For the consolidated internal release gate, first rebuild the HTML and PDF,
+then write the hashed candidate manifest:
+
+```bash
+python3 scripts/check_release_candidate.py --write
+```
+
+Subsequent checks use the manifest to detect drift in the claims, bibliography,
+review record, source files, generated artifacts, rendered HTML, and PDF:
+
+```bash
+python3 scripts/check_release_candidate.py --check
+```
+
+The release gate records internal reproducibility only; it does not promote any
+claim to external review or replace human literature double-coding.
+
 The generated provenance states whether the BMOPFTools checkout was clean. The
 isolated reproduction script has verified fixture version 0.1.0 against clean
 BMOPFTools commit `b7aa9a1bb48bcc8b790d3bcf5417d6a32036352a`; dirty development

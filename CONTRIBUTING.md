@@ -120,6 +120,19 @@ are checked with:
 python3 scripts/check_artifacts.py
 ```
 
+Before an internal release candidate is handed to reviewers, rebuild the
+HTML/PDF and run the consolidated gate:
+
+```sh
+python3 scripts/check_release_candidate.py --write
+python3 scripts/check_release_candidate.py --check
+```
+
+The first command records the candidate's observed counts and hashes; the
+second fails if any release input or generated output has drifted. This gate is
+not external review and does not convert the single-coded literature seed into
+a double-coded review.
+
 The package-independent degree-two and coordinate/composition rules can be tested without BMOPFTools:
 
 ```sh

@@ -26,9 +26,9 @@ not masquerade as completion of the others.
 
 The repository is an internally validated HTML-first release candidate. The
 curated PDF is a secondary serialization of the same Markdown sources. The
-current checks cover 95 registered claims, 66 audited SVG/PNG pairs, 559 local
+current checks cover 96 registered claims, 66 audited SVG/PNG pairs, 562 local
 links, the aggregate experiment suite, rendered-output smoke checks, the HTML
-build, and a 346-page PDF.
+build, and a 349-page PDF.
 The high-risk 2026-08-15 review findings, the 2026-08-16 vocabulary and
 multi-port-lowering reviews, and the canonical-model section review have been
 repaired. Those automated and supplied
@@ -181,6 +181,8 @@ labelled as a seed review.
 - [x] define the external-review release gate: no claim is promoted to
   externally reviewed without a named reviewer, date, scope, and recorded
   response;
+- [x] add a consolidated internal release gate that records validator results,
+  observed output counts, and hashes for the source, artifacts, HTML, and PDF;
 - [ ] freeze a review candidate commit, bibliography snapshot, generated
   artifacts, and PDF only after R0--R3 pass;
 - [ ] contact external reviewers after the packet and release candidate have
