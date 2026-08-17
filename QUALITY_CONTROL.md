@@ -127,6 +127,8 @@ The current CI fails on:
 - clean-reproduction artifacts that disagree with the canonical fixture or recorded commit;
 - transformation certificates that violate the versioned common schema or use an unregistered claim ID;
 - generated claim, verification-state, chapter-status, and evidence-map summaries that disagree with `claims/claims.toml`;
+- stale LLM corpus records, source hashes, release identities, claim bundles,
+  misconception contracts, or audience-specific retrieval evaluation cases;
 - the package-independent degree-two, conductor, transformer-winding, multiwinding-leakage, terminal-assembly, fixed-linear transformer-completion, parameterized tap-decision, and composition tests;
 - local source/reduced/recovered feasibility checks for both parallel decision cases and the
   solver-backed transformer tap network case;
@@ -141,3 +143,43 @@ Planned extensions include:
 
 External-link checking should run on a schedule because publisher sites can be
 unstable.
+
+## 10. LLM-accessibility quality control
+
+AI-facing records are generated views, not an independent scientific source.
+Each record must resolve to a hashed canonical source and release identity.
+Every claim bundle retains its exactness object, scope, assumptions, evidence
+state, unresolved boundary, and a supporting passage. Dangerous-shortcut
+questions additionally declare mandatory claims, vocabulary concepts,
+qualifications, and forbidden simplifications.
+
+Retrieval and answer generation are evaluated separately. Retrieval tests ask
+whether all mandatory claims and counterexamples were supplied; answer tests
+ask whether the result is supported, correctly cited, properly scoped, and
+semantically consistent across student, software-engineering, and
+power-engineering renderings. A model judge may support regression triage but
+does not replace deterministic checks or calibrated human review.
+
+Ordinary ranking metrics and guarded context assembly are also reported
+separately. A misconception contract may force mandatory evidence into a
+context packet after successful query routing, but that intervention must not
+inflate lexical or semantic ranker recall. The release gate records routing,
+packet completeness, source-version agreement, and raw ranking diagnostics as
+distinct quantities.
+
+Optional neural retrieval has an additional provenance gate: the model revision
+must be immutable, the exact model artifact or cache bundle must be hashable,
+and the benchmark must record the provider, model ID, revision, artifact hash,
+embedding dimension, normalization policy, and runtime version. A neural score
+without those fields is exploratory only and must not replace the committed
+baseline or be presented as reproducible evidence.
+
+Negative neural or reranking results are retained as evidence, but do not become
+the production route. The recorded benchmark must continue to agree with the
+current corpus hash, held-out input hash, and dependency-free baseline metrics.
+
+The access layer additionally checks that every externally exposed claim basis
+has mandatory-record coverage, source-hash agreement, citation presence, and a
+release identity. Adversarial and unsupported-query fixtures are deterministic
+robustness checks; they do not substitute for human calibration of answer
+faithfulness or audience language.

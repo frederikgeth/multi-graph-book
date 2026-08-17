@@ -16,7 +16,19 @@
     "certificates": 16,
     "source_objects": 22,
     "view_maps": 7,
-    "local_links": 562
+    "local_links": 562,
+    "llm_corpus_records": 661,
+    "llm_section_records": 548,
+    "llm_claim_bundles": 96,
+    "llm_concept_bundles": 17,
+    "llm_misconception_contracts": 9,
+    "llm_evaluation_cases": 27,
+    "llm_retrieval_cases": 27,
+    "llm_heldout_cases": 27,
+    "llm_route_top1_percent": 100,
+    "llm_lexical_complete_at_10_tenths_percent": 37,
+    "llm_contract_complete_percent": 100,
+    "llm_heldout_hybrid_recall_at_10_tenths_percent": 454
   },
   "checks": [
     {
@@ -75,6 +87,58 @@
       "command": [
         "python3",
         "scripts/check_vocabulary.py"
+      ]
+    },
+    {
+      "name": "LLM accessibility",
+      "command": [
+        "python3",
+        "scripts/check_llm_accessibility.py"
+      ]
+    },
+    {
+      "name": "LLM retrieval",
+      "command": [
+        "python3",
+        "scripts/evaluate_llm_retrieval.py",
+        "--check"
+      ]
+    },
+    {
+      "name": "LLM neural benchmark",
+      "command": [
+        "python3",
+        "scripts/check_neural_benchmark.py"
+      ]
+    },
+    {
+      "name": "LLM access routes",
+      "command": [
+        "python3",
+        "scripts/check_llm_routes.py"
+      ]
+    },
+    {
+      "name": "LLM answer contract",
+      "command": [
+        "python3",
+        "scripts/check_llm_answer_contract.py"
+      ]
+    },
+    {
+      "name": "LLM access fixtures",
+      "command": [
+        "python3",
+        "scripts/generate_llm_access_fixtures.py",
+        "--check"
+      ]
+    },
+    {
+      "name": "LLM adversarial evaluation",
+      "command": [
+        "python3",
+        "scripts/evaluate_llm_adversarial.py",
+        "--check"
       ]
     },
     {
@@ -148,7 +212,7 @@
     },
     {
       "path": "QUALITY_CONTROL.md",
-      "sha256": "96687916a7b8f55f6ffb56ad7b8b6ffc04b69a7c2791366b336c2ec9ca15e730"
+      "sha256": "42b7886337a2a52d201d249e65050f2d320e238775b7da3f418d69ed8198340e"
     },
     {
       "path": "README.md",
@@ -156,7 +220,7 @@
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "18b88958f42c27574e0a82e678e28010055df9773867afcefcaa93d0eb1b0fe3"
+      "sha256": "3e0bb55bf3d8599f5a1a7af85658908241c487be92d2156c3ecbbbd3faee59ec"
     },
     {
       "path": "claims/claims.toml",
@@ -3167,6 +3231,70 @@
       "sha256": "40d76ae6add2c2a19bc250436f389bb5dc8c22c696d717f9abf9d385dcf75327"
     },
     {
+      "path": "llm/README.md",
+      "sha256": "6abf10d1b3e1c9865015b13d332bc34bfe278ac1e908561b764d06c3187d65a6"
+    },
+    {
+      "path": "llm/access-fixtures.toml",
+      "sha256": "bcaf994a2c57e8c2a1d82b18c95010fbde216d909cc28aeef1a9f650b616e757"
+    },
+    {
+      "path": "llm/adversarial-cases.toml",
+      "sha256": "7a1adb4ba8763e62eb9bb1efd5eb6ae12df23de9448ecb225d26ff609b0dcf5a"
+    },
+    {
+      "path": "llm/evaluation-cases.toml",
+      "sha256": "1812f7a085ba351af80cd749ba09783f55b14740771ff7e438d49923aa1b386f"
+    },
+    {
+      "path": "llm/generated/access-fixtures.jsonl",
+      "sha256": "56d10920a5bccd7446fefac0ac7c71663d98f797933c530e5cc9bc5ced3b9b81"
+    },
+    {
+      "path": "llm/generated/adversarial-evaluation.json",
+      "sha256": "b57aa3c4e029f8c64acc4aea7a490aad96124ac9456449c19ffc0ca138908388"
+    },
+    {
+      "path": "llm/generated/adversarial-evaluation.md",
+      "sha256": "b696d0983f65b15a20723f89f51f8b7c4b9bd93caccd55d23c51580d515bd204"
+    },
+    {
+      "path": "llm/generated/corpus-manifest.json",
+      "sha256": "e54b0cbc98e8e7406a458dac03bd3389201812498ac2e2b26c026566e6655ed3"
+    },
+    {
+      "path": "llm/generated/corpus.jsonl",
+      "sha256": "612f09cd64109c96eaef926c968b410d3d4485caa841018d7353a4d967e36705"
+    },
+    {
+      "path": "llm/generated/neural-retrieval-evaluation.json",
+      "sha256": "bd2828127f216f59024c7ec4d641902a063c445609a57507f66cd3fe39674402"
+    },
+    {
+      "path": "llm/generated/neural-retrieval-evaluation.md",
+      "sha256": "55908570477df2cf7e9d1c89d26307dd48cbf3461ac4fc8819d28de734f2c02f"
+    },
+    {
+      "path": "llm/generated/retrieval-evaluation.json",
+      "sha256": "4c816129803cdfdb9ac26a48df58c30d1a6a970e71043db7cf3a132a024bec40"
+    },
+    {
+      "path": "llm/generated/retrieval-evaluation.md",
+      "sha256": "70707538006d78e93be7597352c2c0c2d7606116630a54e71489bbf26eb7b8a8"
+    },
+    {
+      "path": "llm/heldout-paraphrases.toml",
+      "sha256": "59de33ec99d2b61ac4e0db0e2f0286d3d0e79303447a187ba23fbef3a13ebf56"
+    },
+    {
+      "path": "llm/misconceptions.toml",
+      "sha256": "64620198e4c41f66755abd6f1c824e5dd87ee6a4d373c575dac35746bd04a645"
+    },
+    {
+      "path": "llm/neural-models.toml",
+      "sha256": "2b701b302952063c03e85c3b5da6b8ba5beaf60d480fbbc2a6332360d50d695d"
+    },
+    {
       "path": "package/.DS_Store",
       "sha256": "ee308525f1ec7e6b96f6c4e00c3f600e00ee2117e3336bc5b8e96eb288ab503f"
     },
@@ -3331,12 +3459,36 @@
       "sha256": "22bf42d4537c6c56113b0286b971e390e0da66c77ad75e35158f34454fe2bcaf"
     },
     {
+      "path": "schemas/llm-answer-response.schema.json",
+      "sha256": "07b72b26cd74fdaa3dfaab513c25275d2807e09818c2a187076fc9007cbdd6dc"
+    },
+    {
+      "path": "schemas/llm-context-packet.schema.json",
+      "sha256": "d2dcfd3225b8162b6b562d16e178ced01e7cbaca445a4e9c07a72a986e7d6b0f"
+    },
+    {
+      "path": "schemas/llm-corpus-record.schema.json",
+      "sha256": "b29138a2c86ee3aeda12445fc34ad37e79dd1e14b3d33a5a5b8e3c6b33661407"
+    },
+    {
+      "path": "schemas/llm-evaluation-case.schema.json",
+      "sha256": "e7f8e26221072bee210a11123c8cdf8cb570dfde188bb84bbf8c486fa7e98b31"
+    },
+    {
+      "path": "schemas/llm-retrieval-benchmark.schema.json",
+      "sha256": "acd73f23b37a75aa211d4b8c3b6b116b7a969da11ba097ce95b54dac72088e38"
+    },
+    {
       "path": "schemas/transformation-certificate.schema.json",
       "sha256": "9bd2394287270d93a04c5c97b41b36f147da67bad39ab9509c6ed052a61ac09d"
     },
     {
       "path": "scripts/attach_typed_certificate_interfaces.py",
       "sha256": "e808b95a4cf52f402117d3468371ffd5ead72d6427a4887181703b113a01db20"
+    },
+    {
+      "path": "scripts/benchmark_llm_embeddings.py",
+      "sha256": "cb63732ab25ea4a2e7644a01bba61d8e2c23187fd5867980025fceb48d50276d"
     },
     {
       "path": "scripts/check_artifacts.py",
@@ -3371,8 +3523,28 @@
       "sha256": "46ce435ce0ce3520ea4d1de467553663b4b22e2390b4d6e406fc752a12d98ac7"
     },
     {
+      "path": "scripts/check_llm_accessibility.py",
+      "sha256": "257f746401d8a9e17eff275f4d1a0cdcfe66b29fa774a830816ace9504b26210"
+    },
+    {
+      "path": "scripts/check_llm_answer_contract.py",
+      "sha256": "b0326dc7da78b65ebbbb2acd13cc1d1ae967a83449df51b0306646f9a25df5e4"
+    },
+    {
+      "path": "scripts/check_llm_reproducibility.py",
+      "sha256": "f7c93c936f55f0a943de3594ddbce433fbe3835188d871551db32d6e6612d7d9"
+    },
+    {
+      "path": "scripts/check_llm_routes.py",
+      "sha256": "b5d901df0f2475aee099996d3fd1aca5af9ba8b756028267386f9a7c43543d26"
+    },
+    {
       "path": "scripts/check_math_hygiene.py",
       "sha256": "7b174c8bf634cfdc96c34694413b499dbe7e59e5fa915422cd15088f7c2c042f"
+    },
+    {
+      "path": "scripts/check_neural_benchmark.py",
+      "sha256": "9f387b616c7b924622944c8c70118ba075f4ef5476f4f447f579507dd50ccd09"
     },
     {
       "path": "scripts/check_paper_tracks.py",
@@ -3384,7 +3556,7 @@
     },
     {
       "path": "scripts/check_release_candidate.py",
-      "sha256": "28473848a031d742826e2ce7e0b47b878113d728160748f7619893ae923b9ce6"
+      "sha256": "8630091f85cde0e8428b253cb4fdb674890cd5cec65bb8ef6195552e181cc12a"
     },
     {
       "path": "scripts/check_rendered_outputs.py",
@@ -3399,12 +3571,28 @@
       "sha256": "a834002770bc3ec9ca55d36c2d7f2c990a7eb4395a28c47fc887ad410d3937f2"
     },
     {
+      "path": "scripts/evaluate_llm_adversarial.py",
+      "sha256": "67997ce877e69435be841f7688ee20882a82565bf5a3a7777a1f84485130a33e"
+    },
+    {
+      "path": "scripts/evaluate_llm_retrieval.py",
+      "sha256": "3fe3cd6ce2ccf45dfb3175c0d679ec6e58ec146b4485f7ca6d72890ce3d0650c"
+    },
+    {
       "path": "scripts/generate_fixture_coverage_matrix.py",
       "sha256": "b7e5fd226fb5ff3bebc469a857ddd75b9a6aa634d62cd6d5bbdf5a7a94c2234a"
     },
     {
       "path": "scripts/generate_knowledge_base_indexes.py",
       "sha256": "ed49a2d2c6be9c5228294ad6976fc4e5a25ed99ef37ab97da75cbfb0f8771f86"
+    },
+    {
+      "path": "scripts/generate_llm_access_fixtures.py",
+      "sha256": "88c4f381ac8fdcda0bd3ecce785470c3b1ef81bf9f403b45eb1bc374e2a2c8fc"
+    },
+    {
+      "path": "scripts/generate_llm_corpus.py",
+      "sha256": "dd09f61982a63384606c50ffb93e0eeda4c463f2dbf88e663bcb4a39f315fd67"
     },
     {
       "path": "scripts/generate_research_record.py",
@@ -3425,6 +3613,22 @@
     {
       "path": "scripts/generate_vocabulary_indexes.py",
       "sha256": "72912180b3339bc50d476ab976f8f17db247ef53c8a6002bd018ea343ee3df75"
+    },
+    {
+      "path": "scripts/llm_embeddings.py",
+      "sha256": "89a148c816a77262a79087dfbe87cb3804d8db16017570f0a8797d7e5a116411"
+    },
+    {
+      "path": "scripts/llm_retrieval.py",
+      "sha256": "b6ef8f32b43ec39029e57d0f3a4598473e3bfe770c4c1425c1c247fe4c9f06c2"
+    },
+    {
+      "path": "scripts/llm_service.py",
+      "sha256": "1b2bf6677e1781273faf4306f80a5d157493222a2c241b0a34642558fa53ca37"
+    },
+    {
+      "path": "scripts/mcp_llm_server.py",
+      "sha256": "977d9188d5f4f54741cb8699ca0d7c35d6193e415d1b017318e6fbede37147a7"
     },
     {
       "path": "scripts/reproduce_balanced_transmission.py",
@@ -3481,6 +3685,14 @@
     {
       "path": "scripts/reproduce_three_member_state_envelope.py",
       "sha256": "13b80bebf933dee1a88dcde2d64e8626f16fa2bcd3273e175aad10dc64c1acc7"
+    },
+    {
+      "path": "scripts/search_llm_corpus.py",
+      "sha256": "13f693f8701cd5f97063cab0117c5a29f7c066ef138abf0fc3d7bd61597bdd2f"
+    },
+    {
+      "path": "scripts/serve_llm_access.py",
+      "sha256": "1400ccc8e23aa2fe603c05c8d8d358377e7741343df2c2cb20c73f3ca507a754"
     },
     {
       "path": "scripts/tectonic-font-wrapper.sh",

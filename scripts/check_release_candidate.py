@@ -26,6 +26,13 @@ CHECKS: list[tuple[str, list[str]]] = [
     ("evidence matrix", [PYTHON, "scripts/check_evidence_matrix.py"]),
     ("figures", [PYTHON, "scripts/check_figures.py"]),
     ("vocabulary", [PYTHON, "scripts/check_vocabulary.py"]),
+    ("LLM accessibility", [PYTHON, "scripts/check_llm_accessibility.py"]),
+    ("LLM retrieval", [PYTHON, "scripts/evaluate_llm_retrieval.py", "--check"]),
+    ("LLM neural benchmark", [PYTHON, "scripts/check_neural_benchmark.py"]),
+    ("LLM access routes", [PYTHON, "scripts/check_llm_routes.py"]),
+    ("LLM answer contract", [PYTHON, "scripts/check_llm_answer_contract.py"]),
+    ("LLM access fixtures", [PYTHON, "scripts/generate_llm_access_fixtures.py", "--check"]),
+    ("LLM adversarial evaluation", [PYTHON, "scripts/evaluate_llm_adversarial.py", "--check"]),
     ("math hygiene", [PYTHON, "scripts/check_math_hygiene.py"]),
     ("callouts", [PYTHON, "scripts/check_callouts.py"]),
     ("paper tracks", [PYTHON, "scripts/check_paper_tracks.py"]),
@@ -53,6 +60,7 @@ HASH_ROOTS = (
     "schemas",
     "scripts",
     "review",
+    "llm",
 )
 
 
@@ -125,11 +133,20 @@ def first_int(pattern: str, text: str, label: str) -> int:
     return int(match.group(1))
 
 
+def first_tenths_percent(pattern: str, text: str, label: str) -> int:
+    match = re.search(pattern, text)
+    if match is None:
+        raise ValueError(f"could not parse {label} from validator output")
+    return int(match.group(1)) * 10 + int(match.group(2))
+
+
 def observed_counts(outputs: dict[str, str]) -> dict[str, int]:
     claims = first_int(r"claims ledger: (\d+) unique claims", outputs["claims"], "claims")
     bibliography = outputs["bibliography"]
     rendered = outputs["rendered outputs"]
     artifacts = outputs["artifacts"]
+    llm = outputs["LLM accessibility"]
+    llm_retrieval = outputs["LLM retrieval"]
     return {
         "claims": claims,
         "bibliography_records": first_int(r"bibliography audit: (\d+) records", bibliography, "bibliography records"),
@@ -142,6 +159,26 @@ def observed_counts(outputs: dict[str, str]) -> dict[str, int]:
         "source_objects": first_int(r"transformer contracts, (\d+) source objects", artifacts, "source objects"),
         "view_maps": first_int(r"source objects, (\d+) view maps", artifacts, "view maps"),
         "local_links": first_int(r"view maps, and (\d+) local links", artifacts, "local links"),
+        "llm_corpus_records": first_int(r"LLM accessibility: (\d+) records", llm, "LLM corpus records"),
+        "llm_section_records": first_int(r"records: (\d+) sections", llm, "LLM section records"),
+        "llm_claim_bundles": first_int(r"sections, (\d+) claim bundles", llm, "LLM claim bundles"),
+        "llm_concept_bundles": first_int(r"claim bundles, (\d+) concept bundles", llm, "LLM concept bundles"),
+        "llm_misconception_contracts": first_int(r"concept bundles, (\d+) misconception contracts", llm, "LLM misconception contracts"),
+        "llm_evaluation_cases": first_int(r"and (\d+) evaluation cases pass", llm, "LLM evaluation cases"),
+        "llm_retrieval_cases": first_int(r"LLM retrieval: (\d+) cases", llm_retrieval, "LLM retrieval cases"),
+        "llm_heldout_cases": first_int(r"heldout=(\d+)", llm_retrieval, "LLM held-out cases"),
+        "llm_route_top1_percent": first_int(r"route_top1=(\d+)\.\d+%", llm_retrieval, "LLM route top-1 percent"),
+        "llm_lexical_complete_at_10_tenths_percent": first_tenths_percent(
+            r"lexical_complete_at_10=(\d+)\.(\d)%", llm_retrieval, "LLM lexical complete at 10"
+        ),
+        "llm_contract_complete_percent": first_int(
+            r"contract_complete=(\d+)\.\d+%", llm_retrieval, "LLM contract complete percent"
+        ),
+        "llm_heldout_hybrid_recall_at_10_tenths_percent": first_tenths_percent(
+            r"heldout_hybrid_recall_at_10=(\d+)\.(\d)%",
+            llm_retrieval,
+            "LLM held-out hybrid recall at 10",
+        ),
     }
 
 

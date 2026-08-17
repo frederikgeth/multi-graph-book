@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:multi-graph-book:schema:llm-context-packet:0.1.0",
+  "title": "Book-grounded LLM context packet",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "query",
+    "audience",
+    "status",
+    "release",
+    "retrieval",
+    "mandatory_records",
+    "supporting_records",
+    "answer_contract",
+    "sources"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "query": {"type": "string", "minLength": 1},
+    "audience": {"enum": ["student", "software_engineer", "power_engineer"]},
+    "status": {"enum": ["qualified", "retrieval_only", "unsupported"]},
+    "release": {"type": "object"},
+    "retrieval": {
+      "type": "object",
+      "required": ["method", "expanded_query_terms", "detected_misconceptions"],
+      "properties": {
+        "method": {"enum": [
+          "lexical_with_contract_expansion",
+          "char_tfidf_with_contract_expansion",
+          "hybrid_with_contract_expansion",
+          "neural_with_contract_expansion",
+          "graph_with_contract_expansion"
+        ]},
+        "expanded_query_terms": {"type": "array", "items": {"type": "string"}},
+        "detected_misconceptions": {"type": "array", "items": {"type": "object"}},
+        "embedding_provenance": {"type": "object"}
+      }
+    },
+    "mandatory_records": {"type": "array", "items": {"type": "object"}},
+    "supporting_records": {"type": "array", "items": {"type": "object"}},
+    "answer_contract": {
+      "type": "object",
+      "required": [
+        "direct_answer_basis",
+        "scope_and_assumptions",
+        "required_qualifications",
+        "failure_consequences",
+        "safe_shorthand",
+        "audience_guidance",
+        "unresolved_boundaries"
+      ]
+    },
+    "sources": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": false
+}

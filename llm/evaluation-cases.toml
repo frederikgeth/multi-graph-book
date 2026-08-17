@@ -1,0 +1,274 @@
+schema_version = "0.1.0"
+
+# Each misconception is exercised in three professional languages. The
+# required evidence is intentionally identical across those renderings.
+
+[[case]]
+case_id = "EVAL-GRAPH-STUDENT"
+audience = "student"
+question = "What is the graph of a power network—are buses nodes and lines edges?"
+misconception_id = "one-universal-network-graph"
+required_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001"]
+required_concept_ids = ["graph-topology-adjacency", "element-edge-relation"]
+required_answer_elements = ["name the representation and active state", "distinguish physical factors from derived graph edges"]
+forbidden_simplifications = ["there is one canonical graph for every question"]
+
+[[case]]
+case_id = "EVAL-GRAPH-SOFTWARE"
+audience = "software_engineer"
+question = "Which graph should my network API expose as the graph field?"
+misconception_id = "one-universal-network-graph"
+required_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001"]
+required_concept_ids = ["graph-topology-adjacency", "element-edge-relation"]
+required_answer_elements = ["use typed or separately named graph views", "record the projection and forgotten information"]
+forbidden_simplifications = ["serialize one adjacency list as the complete network"]
+
+[[case]]
+case_id = "EVAL-GRAPH-POWER"
+audience = "power_engineer"
+question = "For a feeder study, what exactly should we mean by the network graph?"
+misconception_id = "one-universal-network-graph"
+required_claim_ids = ["VOCAB-BRIDGE-001", "ARCH-SUPPORT-001", "ARCH-VIEW-001"]
+required_concept_ids = ["graph-topology-adjacency", "element-edge-relation"]
+required_answer_elements = ["name bus, asset, factor, or support view", "state switching status and study purpose"]
+forbidden_simplifications = ["the one-line topology is sufficient for every study"]
+
+[[case]]
+case_id = "EVAL-YSPLIT-STUDENT"
+audience = "student"
+question = "Do loads and generators belong to the network graph or are they separate injections?"
+misconception_id = "loads-generators-fixed-graph-membership"
+required_claim_ids = ["FORMULATION-Y-SPLIT-001", "ARCH-NODAL-001", "LOAD-DECISION-001"]
+required_concept_ids = ["graph-topology-adjacency", "factor", "nodal-operator-alias"]
+required_answer_elements = ["separate source-model ownership from formulation placement", "explain constant-admittance or linearized parts"]
+forbidden_simplifications = ["loads are always outside the graph and Ybus"]
+
+[[case]]
+case_id = "EVAL-YSPLIT-SOFTWARE"
+audience = "software_engineer"
+question = "Should the data model store a constant-Z load in the component graph or fold it into Ybus?"
+misconception_id = "loads-generators-fixed-graph-membership"
+required_claim_ids = ["FORMULATION-Y-SPLIT-001", "ARCH-NODAL-001", "LOAD-DECISION-001"]
+required_concept_ids = ["graph-topology-adjacency", "factor", "nodal-operator-alias"]
+required_answer_elements = ["retain source identity and provenance", "allow formulation-specific assembly with a declared split"]
+forbidden_simplifications = ["matrix placement determines component identity"]
+
+[[case]]
+case_id = "EVAL-YSPLIT-POWER"
+audience = "power_engineer"
+question = "When OpenDSS linearises part of a load into the system admittance, has that load become part of the network?"
+misconception_id = "loads-generators-fixed-graph-membership"
+required_claim_ids = ["FORMULATION-Y-SPLIT-001", "ARCH-NODAL-001", "LOAD-DECISION-001"]
+required_concept_ids = ["graph-topology-adjacency", "factor", "nodal-operator-alias"]
+required_answer_elements = ["distinguish device model from iteration-specific formulation", "state what remains nonlinear or state dependent"]
+forbidden_simplifications = ["the chosen Ybus assembly uniquely defines the physical network"]
+
+[[case]]
+case_id = "EVAL-YBUS-STUDENT"
+audience = "student"
+question = "Does Ybus contain everything we need to know about the network?"
+misconception_id = "nodal-operator-is-source-network"
+required_claim_ids = ["ARCH-NODAL-001", "ARCH-SUPPORT-001", "FORMULATION-NODAL-002"]
+required_concept_ids = ["nodal-operator-alias", "graph-topology-adjacency"]
+required_answer_elements = ["describe Ybus as an assembled operator", "identify information it may omit"]
+forbidden_simplifications = ["Ybus uniquely identifies every branch and constraint"]
+
+[[case]]
+case_id = "EVAL-YBUS-SOFTWARE"
+audience = "software_engineer"
+question = "Can I reconstruct the source asset graph and all limits from a sparse Ybus export?"
+misconception_id = "nodal-operator-is-source-network"
+required_claim_ids = ["ARCH-NODAL-001", "ARCH-SUPPORT-001", "FORMULATION-NODAL-002"]
+required_concept_ids = ["nodal-operator-alias", "graph-topology-adjacency"]
+required_answer_elements = ["assembly is generally non-injective", "support edges do not carry factor provenance or member constraints"]
+forbidden_simplifications = ["each off-diagonal nonzero corresponds to one recoverable asset"]
+
+[[case]]
+case_id = "EVAL-YBUS-POWER"
+audience = "power_engineer"
+question = "Is the bus admittance matrix an electrically complete equivalent of the study network?"
+misconception_id = "nodal-operator-is-source-network"
+required_claim_ids = ["ARCH-NODAL-001", "ARCH-SUPPORT-001", "FORMULATION-NODAL-002"]
+required_concept_ids = ["nodal-operator-alias", "graph-topology-adjacency"]
+required_answer_elements = ["fix coordinates and model class", "qualify omitted controls, sources, limits, and member identity"]
+forbidden_simplifications = ["electrical equality of Ybus implies complete study equivalence"]
+
+[[case]]
+case_id = "EVAL-PARALLEL-STUDENT"
+audience = "student"
+question = "Why can’t I just add the admittances and current ratings of parallel lines?"
+misconception_id = "parallel-admittance-implies-decision-equivalence"
+required_claim_ids = ["TR-PAR-001", "TR-PAR-002", "TR-PAR-003"]
+required_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
+required_answer_elements = ["separate terminal equation identity from feasible-set equivalence", "give the member-overload counterexample consequence"]
+forbidden_simplifications = ["summed rating is always exact"]
+
+[[case]]
+case_id = "EVAL-PARALLEL-SOFTWARE"
+audience = "software_engineer"
+question = "Can a preprocessing pass merge parallel branch records by summing admittance and capacity?"
+misconception_id = "parallel-admittance-implies-decision-equivalence"
+required_claim_ids = ["TR-PAR-001", "TR-PAR-002", "TR-PAR-003"]
+required_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
+required_answer_elements = ["retain member identity or a recovery map", "require proof that removed constraints are implied"]
+forbidden_simplifications = ["matching endpoints authorizes a lossless merge"]
+
+[[case]]
+case_id = "EVAL-PARALLEL-POWER"
+audience = "power_engineer"
+question = "For OPF, may parallel circuits be replaced by one equivalent circuit with the total MVA rating?"
+misconception_id = "parallel-admittance-implies-decision-equivalence"
+required_claim_ids = ["TR-PAR-001", "TR-PAR-002", "TR-PAR-003"]
+required_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
+required_answer_elements = ["terminal behavior can be exact while limits are not", "source members must remain feasible or recoverable"]
+forbidden_simplifications = ["total MVA rating preserves all member-constrained OPF decisions"]
+
+[[case]]
+case_id = "EVAL-RADIAL-STUDENT"
+audience = "student"
+question = "If a feeder is radial, does that mean its graph has no cycles?"
+misconception_id = "radial-is-representation-independent"
+required_claim_ids = ["GRAPH-CYCLE-001", "TR-GRAPH-001", "TR-GRAPH-ACTIVE-001"]
+required_concept_ids = ["cycle-radial-tree", "parallel"]
+required_answer_elements = ["name simple versus identified multigraph", "name inventory or active state"]
+forbidden_simplifications = ["radiality is independent of graph representation"]
+
+[[case]]
+case_id = "EVAL-RADIAL-SOFTWARE"
+audience = "software_engineer"
+question = "Is checking that the deduplicated bus adjacency is a tree enough to mark a feeder radial?"
+misconception_id = "radial-is-representation-independent"
+required_claim_ids = ["GRAPH-CYCLE-001", "TR-GRAPH-001", "TR-GRAPH-ACTIVE-001"]
+required_concept_ids = ["cycle-radial-tree", "parallel"]
+required_answer_elements = ["deduplication forgets parallel-fibre cycle dimensions", "status must be evaluated on a declared active graph"]
+forbidden_simplifications = ["a tree-shaped simple projection proves member-radiality"]
+
+[[case]]
+case_id = "EVAL-RADIAL-POWER"
+audience = "power_engineer"
+question = "Can a double-circuit feeder still be called radial?"
+misconception_id = "radial-is-representation-independent"
+required_claim_ids = ["GRAPH-CYCLE-001", "TR-GRAPH-001", "TR-GRAPH-ACTIVE-001"]
+required_concept_ids = ["cycle-radial-tree", "parallel"]
+required_answer_elements = ["distinguish adjacency-radial from member-radial", "state which circuits are in service"]
+forbidden_simplifications = ["one familiar radial label answers both topology questions"]
+
+[[case]]
+case_id = "EVAL-KRON-STUDENT"
+audience = "student"
+question = "If Kron reduction is exact, why isn’t the smaller network simply equivalent?"
+misconception_id = "kron-reduction-preserves-everything"
+required_claim_ids = ["PRESERVE-001", "TR-KRON-002", "TR-KRON-FIVE-002"]
+required_concept_ids = ["equivalence-exactness-preservation", "transformation-family"]
+required_answer_elements = ["name boundary behavior as the exactness object", "explain recovery and internal constraints"]
+forbidden_simplifications = ["one exact matrix identity preserves every observation and decision"]
+
+[[case]]
+case_id = "EVAL-KRON-SOFTWARE"
+audience = "software_engineer"
+question = "Can I delete Kron-eliminated components and keep only the reduced matrix in the model store?"
+misconception_id = "kron-reduction-preserves-everything"
+required_claim_ids = ["PRESERVE-001", "TR-KRON-002", "TR-KRON-FIVE-002"]
+required_concept_ids = ["equivalence-exactness-preservation", "transformation-family"]
+required_answer_elements = ["retain transformation provenance and recovery maps", "record the domain and generated fill"]
+forbidden_simplifications = ["the reduced matrix is a provenance-complete replacement"]
+
+[[case]]
+case_id = "EVAL-KRON-POWER"
+audience = "power_engineer"
+question = "Does an exact Kron equivalent preserve internal equipment limits and protection quantities?"
+misconception_id = "kron-reduction-preserves-everything"
+required_claim_ids = ["PRESERVE-001", "TR-KRON-002", "TR-KRON-FIVE-002"]
+required_concept_ids = ["equivalence-exactness-preservation", "transformation-family"]
+required_answer_elements = ["boundary equality does not automatically preserve internal limits", "require recovery in the declared study domain"]
+forbidden_simplifications = ["exact Kron implies exact protection and operational decisions"]
+
+[[case]]
+case_id = "EVAL-SEQUENCE-STUDENT"
+audience = "student"
+question = "Does transposing a three-phase line make a positive-sequence model exact?"
+misconception_id = "transposition-implies-positive-sequence-exactness"
+required_claim_ids = ["COLLAPSE-001", "COLLAPSE-002"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "equivalence-exactness-preservation"]
+required_answer_elements = ["list the sequence-invariance and balanced-data requirements", "explain that a non-circulant perturbation couples sequences"]
+forbidden_simplifications = ["transposition alone proves exact positive-sequence collapse"]
+
+[[case]]
+case_id = "EVAL-SEQUENCE-SOFTWARE"
+audience = "software_engineer"
+question = "May an importer replace every transposed line model with one positive-sequence scalar?"
+misconception_id = "transposition-implies-positive-sequence-exactness"
+required_claim_ids = ["COLLAPSE-001", "COLLAPSE-002"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "equivalence-exactness-preservation"]
+required_answer_elements = ["check the complete collapse contract", "retain phase model when devices, grounding, data, or decisions break invariance"]
+forbidden_simplifications = ["a transposed flag authorizes unconditional scalarization"]
+
+[[case]]
+case_id = "EVAL-SEQUENCE-POWER"
+audience = "power_engineer"
+question = "When is a positive-sequence equivalent of a transposed network actually exact for a study?"
+misconception_id = "transposition-implies-positive-sequence-exactness"
+required_claim_ids = ["COLLAPSE-001", "COLLAPSE-002"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "equivalence-exactness-preservation"]
+required_answer_elements = ["require balanced boundary data and compatible grounding", "require phase-symmetric equipment, constraints, and decisions"]
+forbidden_simplifications = ["line transposition is the only condition"]
+
+[[case]]
+case_id = "EVAL-GROUND-STUDENT"
+audience = "student"
+question = "Why aren’t ground, earth, neutral, and the zero-voltage reference all the same node?"
+misconception_id = "ground-neutral-reference-are-one-node"
+required_claim_ids = ["GROUND-SCOPE-001", "GROUND-SCOPE-002"]
+required_concept_ids = ["ground-neutral-reference", "object-node-interface"]
+required_answer_elements = ["distinguish conductor, medium, connection, and gauge reference", "identify neutral and earth observations that can change"]
+forbidden_simplifications = ["all grounded objects have identically zero voltage and no independent current"]
+
+[[case]]
+case_id = "EVAL-GROUND-SOFTWARE"
+audience = "software_engineer"
+question = "Can a network schema normalize every neutral, earth, and reference terminal to node 0?"
+misconception_id = "ground-neutral-reference-are-one-node"
+required_claim_ids = ["GROUND-SCOPE-001", "GROUND-SCOPE-002"]
+required_concept_ids = ["ground-neutral-reference", "object-node-interface"]
+required_answer_elements = ["preserve distinct typed objects and connections", "make any quotient and recovery obligations explicit"]
+forbidden_simplifications = ["shared label or voltage value proves semantic identity"]
+
+[[case]]
+case_id = "EVAL-GROUND-POWER"
+audience = "power_engineer"
+question = "For load flow or fault studies, when may neutral and earth be collapsed into the reference bus?"
+misconception_id = "ground-neutral-reference-are-one-node"
+required_claim_ids = ["GROUND-SCOPE-001", "GROUND-SCOPE-002"]
+required_concept_ids = ["ground-neutral-reference", "object-node-interface"]
+required_answer_elements = ["declare the earth-return and grounding model", "retain or recover study-relevant neutral, earth, and protection quantities"]
+forbidden_simplifications = ["solid grounding language alone authorizes elimination"]
+
+[[case]]
+case_id = "EVAL-DECISION-STUDENT"
+audience = "student"
+question = "If two circuits have the same terminal behavior, why might an optimization choose a wrong answer?"
+misconception_id = "terminal-equivalence-implies-opf-equivalence"
+required_claim_ids = ["PRESERVE-001", "TR-PAR-001", "TR-PAR-002"]
+required_concept_ids = ["equivalence-exactness-preservation", "rating-limit-constraint"]
+required_answer_elements = ["distinguish equation equality from feasible-set equality", "show that hidden member limits can reject an aggregate decision"]
+forbidden_simplifications = ["same terminal equations imply the same feasible decisions"]
+
+[[case]]
+case_id = "EVAL-DECISION-SOFTWARE"
+audience = "software_engineer"
+question = "Is passing a terminal-equation regression test enough to approve a model reduction for optimization?"
+misconception_id = "terminal-equivalence-implies-opf-equivalence"
+required_claim_ids = ["PRESERVE-001", "TR-PAR-001", "TR-PAR-002"]
+required_concept_ids = ["equivalence-exactness-preservation", "rating-limit-constraint"]
+required_answer_elements = ["also test source feasibility, objectives, discrete choices, and recovery", "bind approval to a declared preservation contract"]
+forbidden_simplifications = ["one numerical terminal test certifies decision equivalence"]
+
+[[case]]
+case_id = "EVAL-DECISION-POWER"
+audience = "power_engineer"
+question = "Does an electrically exact network equivalent necessarily preserve OPF and planning decisions?"
+misconception_id = "terminal-equivalence-implies-opf-equivalence"
+required_claim_ids = ["PRESERVE-001", "TR-PAR-001", "TR-PAR-002"]
+required_concept_ids = ["equivalence-exactness-preservation", "rating-limit-constraint"]
+required_answer_elements = ["name observations, constraints, objective, and admissible domain", "require recovery of source-feasible operating decisions"]
+forbidden_simplifications = ["electrical exactness is an unqualified decision-equivalence guarantee"]

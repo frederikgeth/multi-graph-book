@@ -1,0 +1,291 @@
+{
+  "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
+  "corpus_sha256": "612f09cd64109c96eaef926c968b410d3d4485caa841018d7353a4d967e36705",
+  "evaluation_case_count": 27,
+  "heldout_case_count": 27,
+  "misconception_count": 9,
+  "record_count": 661,
+  "record_counts": {
+    "claim_bundle": 96,
+    "concept_bundle": 17,
+    "section": 548
+  },
+  "release": {
+    "external_reviewed_claims": 0,
+    "independent_human_double_coding": false,
+    "release_candidate_id": "mgb-2026-08-17-internal-rc",
+    "release_identity_sha256": "7b959c50016fc1130c0184e965c8c8d986bbef327a014614fba31db9c11a6a8f",
+    "status": "internally_validated_not_externally_reviewed"
+  },
+  "schema_version": "0.1.0",
+  "source_files": [
+    {
+      "path": "claims/claims.toml",
+      "sha256": "e5bec546a9bb2dd861b4bc3deab7f186498b7287dceb71ec95efd0cdff416d88"
+    },
+    {
+      "path": "docs/src/cases/australian-carson-reproduction.md",
+      "sha256": "5752d72900ca212ff0691815b084033d0f9d0f3ba68916b2a3c688fc4ad22c61"
+    },
+    {
+      "path": "docs/src/cases/bim-bfm-parallel-lines.md",
+      "sha256": "e89a0e9331a491c2f943f8bd5857186ec0a7ec560b331033295e4a11c8192d7c"
+    },
+    {
+      "path": "docs/src/cases/executable-running-network.md",
+      "sha256": "cd072d27d90913ccaae157ff9f1ec40100e8eefecfe8c4405a21c0ace5ffab75"
+    },
+    {
+      "path": "docs/src/cases/four-wire-impedance-model-ladder.md",
+      "sha256": "c38ee50b8bebe2f32da828b6108434fecc2b6540c19e5e3537c38594c0ac2ecb"
+    },
+    {
+      "path": "docs/src/cases/four-wire-parallel-ac-decision.md",
+      "sha256": "2f436dd0ef8e74fee06e1576c809170f6204f8535700fdd7114cfd074200838d"
+    },
+    {
+      "path": "docs/src/cases/multiconductor-parallel-ac-decision.md",
+      "sha256": "4f09e8535f237e5c140662a5558ac13bc281c8d868b7e8763fe51f1dffc9a421"
+    },
+    {
+      "path": "docs/src/cases/pi-four-wire-parallel-ac-decision.md",
+      "sha256": "586c2038571adb5bbdecb94fab7d75d4fa5c80c8484ebb13b8b80b3bc2e90aae"
+    },
+    {
+      "path": "docs/src/cases/running-network.md",
+      "sha256": "eb2b65edec6f02397628e5d758fa324057ec6dbeb82b2bd03d697485b2cde9ef"
+    },
+    {
+      "path": "docs/src/cases/transformer-tap-ac-decision.md",
+      "sha256": "8993431d2ed95645efaab622b7caba9833900fb891445b0116379b1927b15448"
+    },
+    {
+      "path": "docs/src/foundations/circuit-formulations-and-lowering.md",
+      "sha256": "fa9dd2b1788f726968774401c9c106b555c4650f8f16d52d5fc2e61e94eb5cfc"
+    },
+    {
+      "path": "docs/src/foundations/compiled-views-and-graph-surgery.md",
+      "sha256": "5cd85e6eba1cbdb73f4af57570d3c1eaec1b74431296fa8f8ebb13c0df38e802"
+    },
+    {
+      "path": "docs/src/foundations/cycles-parallelism-radiality.md",
+      "sha256": "baf9ee10b17af6f6de4659edfdce9bb0a9bf1f83859017883ddc2ad8829d8ad9"
+    },
+    {
+      "path": "docs/src/foundations/data-model-crosswalk.md",
+      "sha256": "fd101133bcc2c939ef8d67534576f934e5ffc5807f86107ecd45d9e715108511"
+    },
+    {
+      "path": "docs/src/foundations/earth-ground-models.md",
+      "sha256": "64f86cb284b55a08ffe03ad4ab6e6617f74838a3be283a61671da39294cffae4"
+    },
+    {
+      "path": "docs/src/foundations/formal-representation-frameworks.md",
+      "sha256": "53048a3b53634b828323b1dd76945b737655e176513105a063d32640f8e6a838"
+    },
+    {
+      "path": "docs/src/foundations/impedance-fidelity-ladder.md",
+      "sha256": "1463d3a17d38f00a86cbaa5ab28ad137bb7f14e27ae3a1297e3f1d085572b191"
+    },
+    {
+      "path": "docs/src/foundations/load-models-and-decision-dependence.md",
+      "sha256": "5232a6a18dfb64b546ccde67987dfb5026bfaf144a71ee7c54c0028ba91c8828"
+    },
+    {
+      "path": "docs/src/foundations/node-breaker-topology-processing.md",
+      "sha256": "9c51b6d6f10101a4e28717d2f64daba9c66d8198ecd74ae2b0cce664e7f64400"
+    },
+    {
+      "path": "docs/src/foundations/notation-and-conventions.md",
+      "sha256": "65260912bb69a59c925d084d1d0c038c1eac314aa62517b3c09d1467e3755073"
+    },
+    {
+      "path": "docs/src/foundations/numerical-consequences.md",
+      "sha256": "a1529183f314f91172abe3caa1c3f231000acab01d978014b747b9474afa2ab9"
+    },
+    {
+      "path": "docs/src/foundations/orientation-terminal-power.md",
+      "sha256": "1f0851b76b2bcf7d45b8debe6e5867708492d64a52c010e8a26fa7ab5ada13fc"
+    },
+    {
+      "path": "docs/src/foundations/preservation-contracts.md",
+      "sha256": "8c2cdf0fac18fc8c5457964d175abe730101cf2d7f5c6728ef2c32759ce95696"
+    },
+    {
+      "path": "docs/src/foundations/rating-semantics.md",
+      "sha256": "e0da387fa7cb9aa6270bf95916ad211884a85543fdd3cda54e9cb2348a464090"
+    },
+    {
+      "path": "docs/src/foundations/representation-maps.md",
+      "sha256": "aacf09172b668efef2869e3bedc005ce8447f7ff63c4917942f590572eb9b7f7"
+    },
+    {
+      "path": "docs/src/foundations/representation-taxonomy.md",
+      "sha256": "783a37c286f430482935075830d8d8f9a62251fc33c0cecda90a3506434e79cc"
+    },
+    {
+      "path": "docs/src/foundations/scope-and-thesis.md",
+      "sha256": "df8aa18e3bb35a6b29ccd8954baf4cba1c7e47d8ffeb63bce76d89e18ca8be9b"
+    },
+    {
+      "path": "docs/src/foundations/source-to-canonical-model.md",
+      "sha256": "eeb8adaa694239d56897a7340b740201ee413b8077b68ce2f88aa9032e0ee152"
+    },
+    {
+      "path": "docs/src/foundations/transformation-semantics-register.md",
+      "sha256": "ae67bc055b34555c6edfacf8248f5a81dd975b596e0f67241b05d8c232bef190"
+    },
+    {
+      "path": "docs/src/foundations/translation-traps.md",
+      "sha256": "7e3641c38b44668f49b54a9a498aae293cd66e7fb7290508e8c0a822dd37a255"
+    },
+    {
+      "path": "docs/src/foundations/two-level-topology-and-nodal-projection.md",
+      "sha256": "32e16e98d3338402a35da97215a18053e3acb0aff293ee3e2408fccc25354c1e"
+    },
+    {
+      "path": "docs/src/foundations/when-general-model-collapses.md",
+      "sha256": "61920e2755223a7b16c2a43b9604e494ad72dd3eed1d274a3178dc568a4b2d5b"
+    },
+    {
+      "path": "docs/src/index.md",
+      "sha256": "4a58839a16203009fc1f56f2a202f23c55b25f2a76051b22adc84c43bb596776"
+    },
+    {
+      "path": "docs/src/literature/literature-map.md",
+      "sha256": "1d4f2b0353440b68947e53a039cc389d21e9cdcb26b80b7ba64c15b2f05af69f"
+    },
+    {
+      "path": "docs/src/literature/representation-implementation-record.md",
+      "sha256": "b65fc3d9593fc632364ee6f015c03a436a3fffa9c9da9cc5838e710faba0b396"
+    },
+    {
+      "path": "docs/src/literature/research-agenda.md",
+      "sha256": "fdc9db209812663dc530fd9c42b9e087bf19449302f0fbcf2448be6762fdfe58"
+    },
+    {
+      "path": "docs/src/literature/review-protocol-and-evidence-status.md",
+      "sha256": "f85a939c6526a5ba24a4bfbe2d67e0b308c9e2db864f987535c78b3b7fd8a408"
+    },
+    {
+      "path": "docs/src/literature/search-runs/2026-08-14-seed-batch.md",
+      "sha256": "cc332499b2d3ab12b6a7853d8581219ecf63b6de19cd489ebcf000968086692c"
+    },
+    {
+      "path": "docs/src/literature/search-runs/2026-08-15-formulation-landscape.md",
+      "sha256": "aa6196fa85fc0be2cb6932b13c768f57461f93fc919d512217eb3c8c41af3bc3"
+    },
+    {
+      "path": "docs/src/literature/search-runs/2026-08-15-information-model-citation-chase.md",
+      "sha256": "9878052b845245f19797d653ff404234f2b17ce0f35a634bf14b3827e50fb840"
+    },
+    {
+      "path": "docs/src/literature/search-runs/2026-08-16-multiphase-and-practical-reductions.md",
+      "sha256": "fd017436870d0f980d3e3cedbe7f7378c6c7815acf9c9355906716cad7ee14fd"
+    },
+    {
+      "path": "docs/src/reference/references.md",
+      "sha256": "7b1bfef4d0cc0f2250e026fd87e61bada6e07fe9c83cc8f65e4c8966e3ee15b9"
+    },
+    {
+      "path": "docs/src/reference/terminology.md",
+      "sha256": "d00e5b1215106f44c0152adf5cd2944a13f58ba3aa6263937eed4e3403ae8e10"
+    },
+    {
+      "path": "docs/src/start/first-failure-parallel-branches.md",
+      "sha256": "7f5e4204c13a3113a44c599dce3161dbda3067a5b70867ade46f433903eee72e"
+    },
+    {
+      "path": "docs/src/start/five-bus-cycle-spaces.md",
+      "sha256": "0dbaece215c9c9fc73a14e765281469cbd7322a29ca9ea7ee83dbcd8263d601a"
+    },
+    {
+      "path": "docs/src/start/five-bus-transformer-lowering.md",
+      "sha256": "b53e0b3f8f2df76c4e85a27b8855925886c927b2cb3e1d7f21cad63e49c36668"
+    },
+    {
+      "path": "docs/src/start/how-to-read-diagrams-and-equations.md",
+      "sha256": "6665dafa7763037f48d37235d1b46e9d806ab8df85c6412be943f415cf909f9a"
+    },
+    {
+      "path": "docs/src/start/how-to-use-this-book.md",
+      "sha256": "37ba1fe80cd3de4290a0bc6a295b30527e2b56a3c4bbc516436481e73cc1e813"
+    },
+    {
+      "path": "docs/src/start/one-network-five-languages.md",
+      "sha256": "099a81f7487d26394a4d89b8ee7b0b9b99977f143532927fc536eb810993fce6"
+    },
+    {
+      "path": "docs/src/start/one-network-many-graphs.md",
+      "sha256": "3abfe8a4d467b53418623f8d961b5552476ade7d57912da400477822730e66bc"
+    },
+    {
+      "path": "docs/src/start/reading-guide-graph-and-transmission.md",
+      "sha256": "c27f7d1d70be8dbd22570cdba95906920d2c9aefa875ab829a8d390032f2fd79"
+    },
+    {
+      "path": "docs/src/transformations/certificate-schema-and-composition.md",
+      "sha256": "ceb8e96459bf9d831aed9a13702e1a7c912dd1e548ba4aa3fa922c5636ad7932"
+    },
+    {
+      "path": "docs/src/transformations/circuit-coordinate-transformations.md",
+      "sha256": "0cf35ecf2e215c26a93bc17d4cac32f54dc3dde2ec156134c3657f7954d08da9"
+    },
+    {
+      "path": "docs/src/transformations/conductor-coordinate-normalization.md",
+      "sha256": "19e1b05e8b412aeb1ac289fb946129fa769172e341806017d03b79200eb247e9"
+    },
+    {
+      "path": "docs/src/transformations/degree-two-series-elimination.md",
+      "sha256": "987daac57b095e1a343d19ecb5d6648fd0e65cc60f34ac8be5ab9c1cc163485c"
+    },
+    {
+      "path": "docs/src/transformations/fixed-linear-transformer-factor-completion.md",
+      "sha256": "b30e6c5efec1878d4d9ac71e79feffdcabf7fbc5862f4656e9fdf9e17d3d5fb5"
+    },
+    {
+      "path": "docs/src/transformations/guarded-normalization.md",
+      "sha256": "9aad7975a069f2935f01a98a269aaba13121035c9ec0e6223daae7775048dd64"
+    },
+    {
+      "path": "docs/src/transformations/kron-ward-opti-kron.md",
+      "sha256": "95580de37702069d58a76b48fb309e7a0c346c9854d961e42242af27aa4b8029"
+    },
+    {
+      "path": "docs/src/transformations/multiwinding-leakage-reference-compilation.md",
+      "sha256": "03c90cb44f5b15baac52b9909f7597074e716cedbab9b3a4ed8b28eb0faf5ea0"
+    },
+    {
+      "path": "docs/src/transformations/multiwinding-terminal-leakage-assembly.md",
+      "sha256": "f9a6c088676dbc75703fdaec05030bf431d909968f680587f3ba1441080174ad"
+    },
+    {
+      "path": "docs/src/transformations/parameterized-transformer-tap-decisions.md",
+      "sha256": "e989add1fb3746ce331fbe43f35d3e8ce707d7faa15b4295c637b807e1d0b339"
+    },
+    {
+      "path": "docs/src/transformations/projection-compilation-reduction.md",
+      "sha256": "c993b6af4a453b8e93ce0f63a2070d2d92ac30341645247e3bf3205d81a99376"
+    },
+    {
+      "path": "docs/src/transformations/transformer-winding-coordinate-normalization.md",
+      "sha256": "239f18d5fe712edb73ffb140ce349110b0a2d5859955d547b8f374562303934f"
+    },
+    {
+      "path": "llm/evaluation-cases.toml",
+      "sha256": "1812f7a085ba351af80cd749ba09783f55b14740771ff7e438d49923aa1b386f"
+    },
+    {
+      "path": "llm/heldout-paraphrases.toml",
+      "sha256": "59de33ec99d2b61ac4e0db0e2f0286d3d0e79303447a187ba23fbef3a13ebf56"
+    },
+    {
+      "path": "llm/misconceptions.toml",
+      "sha256": "64620198e4c41f66755abd6f1c824e5dd87ee6a4d373c575dac35746bd04a645"
+    },
+    {
+      "path": "vocabulary/vocabulary.toml",
+      "sha256": "ba6701b6309e5bed178378b33ff63e3954a5489335c4e44b890756ef25ea8985"
+    }
+  ]
+}

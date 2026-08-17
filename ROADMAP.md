@@ -192,10 +192,55 @@ labelled as a seed review.
   the unresolved boundaries, and return structured feedback against stable
   artifacts and claims.
 
+#### R5 — Build a versioned LLM-accessibility layer
+
+- [x] define a model-independent claim-bundle corpus generated from canonical
+  chapters, the claims ledger, the vocabulary registry, and the release identity;
+- [x] register high-consequence misconceptions with mandatory qualifications,
+  evidence, counterexamples, and operational consequences;
+- [x] add audience-parallel evaluation cases for students, software engineers,
+  and power engineers without maintaining separate scientific facts;
+- [x] make stale corpus records, hashes, release identity, and evidence links
+  fail the consolidated release gate;
+- [x] implement a model-independent lexical baseline over the generated corpus,
+  reporting raw ranking separately from guarded contract expansion;
+- [x] implement a structured context-packet builder and validator that binds
+  mandatory claims, qualifications, failure consequences, source anchors, and
+  release identity;
+- [x] evaluate required-claim, qualification, counterexample, routing, and
+  audience-parallel coverage on the initial 27-case benchmark;
+- [x] add a reproducible character n-gram TF-IDF surface-semantic proxy and
+  rank-fused hybrid baseline, comparing it with the committed lexical baseline;
+- [x] add an optional neural-embedding adapter with immutable-revision checks,
+  local artifact hashing, runtime provenance, neural search integration, and a
+  standalone benchmark contract;
+- [x] execute and record a pinned neural-retrieval comparison plus a generic
+  cross-encoder reranking experiment, with both candidates rejected by the
+  held-out quality gates because they underperform the hybrid baseline;
+- [x] expose deterministic answer packets with source-hash validation,
+  conservative abstention, stable Markdown/JSON and HTTP routes, and an MCP
+  stdio adapter over the same service behavior;
+- [x] add benchmark-only provenance-graph retrieval and adversarial/metamorphic
+  checks for terminology variants, misleading shorthand, and unsupported
+  questions;
+- [ ] select, adapt, or train a domain-appropriate retriever/reranker that
+  passes the required-claim, qualification, and counterexample gates;
+- [ ] promote graph retrieval beyond its explicit diagnostic/opt-in route only
+  after broader and independently calibrated evaluation;
+- [ ] calibrate answer-quality and audience-consistency evaluation against a
+  human-reviewed sample before presenting the interface as reliable.
+
+**R5 exit criterion:** an AI client can identify the corpus edition, retrieve
+the mandatory scope and counterexample for dangerous-shortcut questions, render
+one scientific answer in each target audience's language, cite stable book
+sources, and abstain when the resource does not support an answer.
+
 #### Implementation order
 
-Work in this order: **R0 → R1 → R2 → R3 → R4**. Do not expand the general
-transformation theory or add broad application claims before R0--R2 are complete.
+Work in this order: **R0 → R1 → R2 → R3 → R4** for the external-review
+candidate. R5 may proceed after R0--R3 because it compiles and tests the same
+evidence boundary; it must not silently promote verification states or delay a
+stable reviewer snapshot. Do not expand the general transformation theory or add broad application claims before R0--R2 are complete.
 New content is welcome when it closes a named evidence or reader-inference gap;
 otherwise it belongs in the research agenda rather than the active queue.
 

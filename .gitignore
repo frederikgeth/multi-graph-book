@@ -18,6 +18,10 @@ tmp/
 *.jl.mem
 experiments/Manifest.toml
 
+# Python-generated caches
+__pycache__/
+*.pyc
+
 # OS and editors
 .DS_Store
 *.swp
