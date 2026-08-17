@@ -1944,6 +1944,7 @@
         "audience": "student",
         "case_id": "HOLDOUT-GRAPH-STUDENT",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 2,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.222222,
         "char_tfidf_recall_at_10": 0.4,
         "char_tfidf_recall_at_5": 0.2,
@@ -1959,6 +1960,8 @@
           "claim:ARCH-SUPPORT-001",
           "claim:ARCH-LOWER-001"
         ],
+        "expected_misconception_id": "one-universal-network-graph",
+        "expected_record_count": 5,
         "expected_record_ids": [
           "claim:ARCH-SUPPORT-001",
           "claim:ARCH-VIEW-001",
@@ -1967,6 +1970,7 @@
           "concept:graph-topology-adjacency"
         ],
         "graph_complete_at_10": true,
+        "graph_hits_at_10": 5,
         "graph_mean_reciprocal_rank_at_20": 0.408333,
         "graph_recall_at_10": 1.0,
         "graph_recall_at_5": 0.6,
@@ -1983,6 +1987,7 @@
           "concept:parallel"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 3,
         "hybrid_mean_reciprocal_rank_at_20": 0.286667,
         "hybrid_recall_at_10": 0.6,
         "hybrid_recall_at_5": 0.4,
@@ -1999,6 +2004,7 @@
           "claim:ARCH-VIEW-001"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 3,
         "lexical_mean_reciprocal_rank_at_20": 0.32,
         "lexical_recall_at_10": 0.6,
         "lexical_recall_at_5": 0.6,
@@ -2014,12 +2020,16 @@
           "claim:GRAPH-CYCLE-001",
           "claim:ARCH-SURGERY-002"
         ],
-        "question": "When someone says network graph here, which objects and operating condition have they actually chosen?"
+        "question": "When someone says network graph here, which objects and operating condition have they actually chosen?",
+        "route_fired": true,
+        "route_top1": "one-universal-network-graph",
+        "route_top1_correct": true
       },
       {
         "audience": "software_engineer",
         "case_id": "HOLDOUT-GRAPH-SOFTWARE",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 2,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.266667,
         "char_tfidf_recall_at_10": 0.4,
         "char_tfidf_recall_at_5": 0.4,
@@ -2035,6 +2045,8 @@
           "concept:cycle-radial-tree",
           "claim:ARCH-RECOVERY-001"
         ],
+        "expected_misconception_id": "one-universal-network-graph",
+        "expected_record_count": 5,
         "expected_record_ids": [
           "claim:ARCH-SUPPORT-001",
           "claim:ARCH-VIEW-001",
@@ -2043,6 +2055,7 @@
           "concept:graph-topology-adjacency"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 4,
         "graph_mean_reciprocal_rank_at_20": 0.396667,
         "graph_recall_at_10": 0.8,
         "graph_recall_at_5": 0.6,
@@ -2059,6 +2072,7 @@
           "concept:nodal-operator-alias"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 2,
         "hybrid_mean_reciprocal_rank_at_20": 0.280952,
         "hybrid_recall_at_10": 0.4,
         "hybrid_recall_at_5": 0.4,
@@ -2075,6 +2089,7 @@
           "concept:cycle-radial-tree"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 2,
         "lexical_mean_reciprocal_rank_at_20": 0.283333,
         "lexical_recall_at_10": 0.4,
         "lexical_recall_at_5": 0.4,
@@ -2090,12 +2105,16 @@
           "claim:ARCH-BLOCK-001",
           "claim:ARCH-CHORDAL-001"
         ],
-        "question": "How should a topology API distinguish its source equipment relations from the adjacency it derives for an algorithm?"
+        "question": "How should a topology API distinguish its source equipment relations from the adjacency it derives for an algorithm?",
+        "route_fired": false,
+        "route_top1": "",
+        "route_top1_correct": false
       },
       {
         "audience": "power_engineer",
         "case_id": "HOLDOUT-GRAPH-POWER",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 0,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.01,
         "char_tfidf_recall_at_10": 0.0,
         "char_tfidf_recall_at_5": 0.0,
@@ -2111,6 +2130,8 @@
           "claim:TR-KRON-003",
           "claim:ARCH-DEGENERACY-001"
         ],
+        "expected_misconception_id": "one-universal-network-graph",
+        "expected_record_count": 5,
         "expected_record_ids": [
           "claim:ARCH-SUPPORT-001",
           "claim:ARCH-VIEW-001",
@@ -2119,6 +2140,7 @@
           "concept:graph-topology-adjacency"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 3,
         "graph_mean_reciprocal_rank_at_20": 0.320952,
         "graph_recall_at_10": 0.6,
         "graph_recall_at_5": 0.6,
@@ -2135,6 +2157,7 @@
           "claim:ARCH-LOWER-001"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 0,
         "hybrid_mean_reciprocal_rank_at_20": 0.022291,
         "hybrid_recall_at_10": 0.0,
         "hybrid_recall_at_5": 0.0,
@@ -2151,6 +2174,7 @@
           "claim:TR-GRAPH-002"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 0,
         "lexical_mean_reciprocal_rank_at_20": 0.030952,
         "lexical_recall_at_10": 0.0,
         "lexical_recall_at_5": 0.0,
@@ -2166,12 +2190,16 @@
           "concept:cycle-radial-tree",
           "claim:TR-KRON-002"
         ],
-        "question": "Which network view is appropriate when a feeder study needs both equipment identity and the active connectivity state?"
+        "question": "Which network view is appropriate when a feeder study needs both equipment identity and the active connectivity state?",
+        "route_fired": true,
+        "route_top1": "radial-is-representation-independent",
+        "route_top1_correct": false
       },
       {
         "audience": "student",
         "case_id": "HOLDOUT-YSPLIT-STUDENT",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 2,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.105413,
         "char_tfidf_recall_at_10": 0.333333,
         "char_tfidf_recall_at_5": 0.166667,
@@ -2187,6 +2215,8 @@
           "claim:ARCH-PORT-002",
           "claim:ARCH-CONDUCTOR-002"
         ],
+        "expected_misconception_id": "loads-generators-fixed-graph-membership",
+        "expected_record_count": 6,
         "expected_record_ids": [
           "claim:ARCH-NODAL-001",
           "claim:FORMULATION-Y-SPLIT-001",
@@ -2196,6 +2226,7 @@
           "concept:nodal-operator-alias"
         ],
         "graph_complete_at_10": true,
+        "graph_hits_at_10": 6,
         "graph_mean_reciprocal_rank_at_20": 0.377976,
         "graph_recall_at_10": 1.0,
         "graph_recall_at_5": 0.5,
@@ -2212,6 +2243,7 @@
           "concept:equivalence-exactness-preservation"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 3,
         "hybrid_mean_reciprocal_rank_at_20": 0.125,
         "hybrid_recall_at_10": 0.5,
         "hybrid_recall_at_5": 0.333333,
@@ -2228,6 +2260,7 @@
           "claim:ARCH-PORT-002"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 3,
         "lexical_mean_reciprocal_rank_at_20": 0.181481,
         "lexical_recall_at_10": 0.5,
         "lexical_recall_at_5": 0.5,
@@ -2243,12 +2276,16 @@
           "claim:COLLAPSE-001",
           "claim:TR-PAR-STATE-001"
         ],
-        "question": "Why can an iterative power-flow calculation put part of a device into a linear matrix without changing what the device is in the original model?"
+        "question": "Why can an iterative power-flow calculation put part of a device into a linear matrix without changing what the device is in the original model?",
+        "route_fired": true,
+        "route_top1": "loads-generators-fixed-graph-membership",
+        "route_top1_correct": true
       },
       {
         "audience": "software_engineer",
         "case_id": "HOLDOUT-YSPLIT-SOFTWARE",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 2,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.086905,
         "char_tfidf_recall_at_10": 0.333333,
         "char_tfidf_recall_at_5": 0.333333,
@@ -2264,6 +2301,8 @@
           "claim:NUMERICAL-001",
           "claim:TR-PAR-JOINT-001"
         ],
+        "expected_misconception_id": "loads-generators-fixed-graph-membership",
+        "expected_record_count": 6,
         "expected_record_ids": [
           "claim:ARCH-NODAL-001",
           "claim:FORMULATION-Y-SPLIT-001",
@@ -2273,6 +2312,7 @@
           "concept:nodal-operator-alias"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 1,
         "graph_mean_reciprocal_rank_at_20": 0.18573,
         "graph_recall_at_10": 0.166667,
         "graph_recall_at_5": 0.166667,
@@ -2289,6 +2329,7 @@
           "claim:TR-KRON-002"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 2,
         "hybrid_mean_reciprocal_rank_at_20": 0.076389,
         "hybrid_recall_at_10": 0.333333,
         "hybrid_recall_at_5": 0.166667,
@@ -2305,6 +2346,7 @@
           "claim:NUMERICAL-003"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 1,
         "lexical_mean_reciprocal_rank_at_20": 0.06746,
         "lexical_recall_at_10": 0.166667,
         "lexical_recall_at_5": 0.166667,
@@ -2320,12 +2362,16 @@
           "claim:TR-SER-001",
           "claim:NUMERICAL-003"
         ],
-        "question": "How should an importer represent an element whose linear contribution is assembled for one solver iteration while its source record remains nonlinear?"
+        "question": "How should an importer represent an element whose linear contribution is assembled for one solver iteration while its source record remains nonlinear?",
+        "route_fired": true,
+        "route_top1": "loads-generators-fixed-graph-membership",
+        "route_top1_correct": true
       },
       {
         "audience": "power_engineer",
         "case_id": "HOLDOUT-YSPLIT-POWER",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 2,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.194444,
         "char_tfidf_recall_at_10": 0.333333,
         "char_tfidf_recall_at_5": 0.166667,
@@ -2341,6 +2387,8 @@
           "concept:graph-topology-adjacency",
           "claim:TR-KRON-NEUTRAL-003"
         ],
+        "expected_misconception_id": "loads-generators-fixed-graph-membership",
+        "expected_record_count": 6,
         "expected_record_ids": [
           "claim:ARCH-NODAL-001",
           "claim:FORMULATION-Y-SPLIT-001",
@@ -2350,6 +2398,7 @@
           "concept:nodal-operator-alias"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 5,
         "graph_mean_reciprocal_rank_at_20": 0.343254,
         "graph_recall_at_10": 0.833333,
         "graph_recall_at_5": 0.5,
@@ -2366,6 +2415,7 @@
           "claim:TR-KRON-NEUTRAL-003"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 2,
         "hybrid_mean_reciprocal_rank_at_20": 0.220221,
         "hybrid_recall_at_10": 0.333333,
         "hybrid_recall_at_5": 0.333333,
@@ -2382,6 +2432,7 @@
           "claim:TR-KRON-NEUTRAL-008"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 3,
         "lexical_mean_reciprocal_rank_at_20": 0.228571,
         "lexical_recall_at_10": 0.5,
         "lexical_recall_at_5": 0.333333,
@@ -2397,12 +2448,16 @@
           "claim:TR-GRAPH-ACTIVE-001",
           "concept:factor"
         ],
-        "question": "What does it mean physically and computationally when a load model contributes a constant-Z part to the linearised network equation?"
+        "question": "What does it mean physically and computationally when a load model contributes a constant-Z part to the linearised network equation?",
+        "route_fired": true,
+        "route_top1": "loads-generators-fixed-graph-membership",
+        "route_top1_correct": true
       },
       {
         "audience": "student",
         "case_id": "HOLDOUT-YBUS-STUDENT",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 4,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.391667,
         "char_tfidf_recall_at_10": 0.8,
         "char_tfidf_recall_at_5": 0.6,
@@ -2418,6 +2473,8 @@
           "claim:TR-XFMR-001",
           "claim:ARCH-CHORDAL-001"
         ],
+        "expected_misconception_id": "nodal-operator-is-source-network",
+        "expected_record_count": 5,
         "expected_record_ids": [
           "claim:ARCH-NODAL-001",
           "claim:ARCH-SUPPORT-001",
@@ -2426,6 +2483,7 @@
           "concept:nodal-operator-alias"
         ],
         "graph_complete_at_10": true,
+        "graph_hits_at_10": 5,
         "graph_mean_reciprocal_rank_at_20": 0.44,
         "graph_recall_at_10": 1.0,
         "graph_recall_at_5": 0.8,
@@ -2442,6 +2500,7 @@
           "claim:ARCH-RECOVERY-004"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 4,
         "hybrid_mean_reciprocal_rank_at_20": 0.356667,
         "hybrid_recall_at_10": 0.8,
         "hybrid_recall_at_5": 0.8,
@@ -2458,6 +2517,7 @@
           "claim:TR-KRON-001"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 4,
         "lexical_mean_reciprocal_rank_at_20": 0.378571,
         "lexical_recall_at_10": 0.8,
         "lexical_recall_at_5": 0.6,
@@ -2473,12 +2533,16 @@
           "claim:ARCH-CHORDAL-001",
           "claim:FORMULATION-NODAL-001"
         ],
-        "question": "Can you look at an assembled nodal matrix and tell which individual pieces of equipment produced it?"
+        "question": "Can you look at an assembled nodal matrix and tell which individual pieces of equipment produced it?",
+        "route_fired": false,
+        "route_top1": "",
+        "route_top1_correct": false
       },
       {
         "audience": "software_engineer",
         "case_id": "HOLDOUT-YBUS-SOFTWARE",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 4,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.416667,
         "char_tfidf_recall_at_10": 0.8,
         "char_tfidf_recall_at_5": 0.8,
@@ -2494,6 +2558,8 @@
           "claim:ARCH-LENS-001",
           "claim:ARCH-RECOVERY-003"
         ],
+        "expected_misconception_id": "nodal-operator-is-source-network",
+        "expected_record_count": 5,
         "expected_record_ids": [
           "claim:ARCH-NODAL-001",
           "claim:ARCH-SUPPORT-001",
@@ -2502,6 +2568,7 @@
           "concept:nodal-operator-alias"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 4,
         "graph_mean_reciprocal_rank_at_20": 0.404848,
         "graph_recall_at_10": 0.8,
         "graph_recall_at_5": 0.6,
@@ -2518,6 +2585,7 @@
           "concept:nodal-operator-alias"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 4,
         "hybrid_mean_reciprocal_rank_at_20": 0.416667,
         "hybrid_recall_at_10": 0.8,
         "hybrid_recall_at_5": 0.8,
@@ -2534,6 +2602,7 @@
           "claim:ARCH-LENS-001"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 4,
         "lexical_mean_reciprocal_rank_at_20": 0.416667,
         "lexical_recall_at_10": 0.8,
         "lexical_recall_at_5": 0.8,
@@ -2549,12 +2618,16 @@
           "claim:ARCH-LENS-001",
           "claim:ARCH-BLOCK-001"
         ],
-        "question": "What information is lost when an equipment decomposition is replaced by a sparse assembled operator?"
+        "question": "What information is lost when an equipment decomposition is replaced by a sparse assembled operator?",
+        "route_fired": false,
+        "route_top1": "",
+        "route_top1_correct": false
       },
       {
         "audience": "power_engineer",
         "case_id": "HOLDOUT-YBUS-POWER",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 0,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.011765,
         "char_tfidf_recall_at_10": 0.0,
         "char_tfidf_recall_at_5": 0.0,
@@ -2570,6 +2643,8 @@
           "claim:TR-XFMR-008",
           "claim:TR-SER-002"
         ],
+        "expected_misconception_id": "nodal-operator-is-source-network",
+        "expected_record_count": 5,
         "expected_record_ids": [
           "claim:ARCH-NODAL-001",
           "claim:ARCH-SUPPORT-001",
@@ -2578,6 +2653,7 @@
           "concept:nodal-operator-alias"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 1,
         "graph_mean_reciprocal_rank_at_20": 0.036667,
         "graph_recall_at_10": 0.2,
         "graph_recall_at_5": 0.0,
@@ -2594,6 +2670,7 @@
           "claim:ARCH-SUPPORT-001"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 0,
         "hybrid_mean_reciprocal_rank_at_20": 0.015385,
         "hybrid_recall_at_10": 0.0,
         "hybrid_recall_at_5": 0.0,
@@ -2610,6 +2687,7 @@
           "claim:LIT-PAR-001"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 0,
         "lexical_mean_reciprocal_rank_at_20": 0.016667,
         "lexical_recall_at_10": 0.0,
         "lexical_recall_at_5": 0.0,
@@ -2625,12 +2703,16 @@
           "claim:ARCH-LENS-001",
           "claim:PRESERVE-001"
         ],
-        "question": "Does a matching bus-matrix export establish that two studies have the same assets, ratings, and controls?"
+        "question": "Does a matching bus-matrix export establish that two studies have the same assets, ratings, and controls?",
+        "route_fired": false,
+        "route_top1": "",
+        "route_top1_correct": false
       },
       {
         "audience": "student",
         "case_id": "HOLDOUT-PARALLEL-STUDENT",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 1,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.026852,
         "char_tfidf_recall_at_10": 0.166667,
         "char_tfidf_recall_at_5": 0.0,
@@ -2646,6 +2728,8 @@
           "claim:TR-PAR-001",
           "claim:TR-XFMR-009"
         ],
+        "expected_misconception_id": "parallel-admittance-implies-decision-equivalence",
+        "expected_record_count": 6,
         "expected_record_ids": [
           "claim:TR-PAR-001",
           "claim:TR-PAR-002",
@@ -2655,6 +2739,7 @@
           "concept:rating-limit-constraint"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 3,
         "graph_mean_reciprocal_rank_at_20": 0.130291,
         "graph_recall_at_10": 0.5,
         "graph_recall_at_5": 0.333333,
@@ -2671,6 +2756,7 @@
           "claim:TR-KRON-NEUTRAL-001"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 1,
         "hybrid_mean_reciprocal_rank_at_20": 0.056818,
         "hybrid_recall_at_10": 0.166667,
         "hybrid_recall_at_5": 0.166667,
@@ -2687,6 +2773,7 @@
           "claim:PRESERVE-001"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 1,
         "lexical_mean_reciprocal_rank_at_20": 0.047222,
         "lexical_recall_at_10": 0.166667,
         "lexical_recall_at_5": 0.166667,
@@ -2702,12 +2789,16 @@
           "claim:ARCH-CHORDAL-001",
           "claim:TR-XFMR-001"
         ],
-        "question": "How can a bundled pair give the right voltage-current equation yet still allow an impossible loading decision?"
+        "question": "How can a bundled pair give the right voltage-current equation yet still allow an impossible loading decision?",
+        "route_fired": true,
+        "route_top1": "terminal-equivalence-implies-opf-equivalence",
+        "route_top1_correct": false
       },
       {
         "audience": "software_engineer",
         "case_id": "HOLDOUT-PARALLEL-SOFTWARE",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 2,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.116667,
         "char_tfidf_recall_at_10": 0.333333,
         "char_tfidf_recall_at_5": 0.333333,
@@ -2723,6 +2814,8 @@
           "concept:element-edge-relation",
           "claim:NUMERICAL-002"
         ],
+        "expected_misconception_id": "parallel-admittance-implies-decision-equivalence",
+        "expected_record_count": 6,
         "expected_record_ids": [
           "claim:TR-PAR-001",
           "claim:TR-PAR-002",
@@ -2732,6 +2825,7 @@
           "concept:rating-limit-constraint"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 5,
         "graph_mean_reciprocal_rank_at_20": 0.322661,
         "graph_recall_at_10": 0.833333,
         "graph_recall_at_5": 0.666667,
@@ -2748,6 +2842,7 @@
           "claim:TR-PAR-001"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 2,
         "hybrid_mean_reciprocal_rank_at_20": 0.099306,
         "hybrid_recall_at_10": 0.333333,
         "hybrid_recall_at_5": 0.333333,
@@ -2764,6 +2859,7 @@
           "concept:element-edge-relation"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 2,
         "lexical_mean_reciprocal_rank_at_20": 0.052976,
         "lexical_recall_at_10": 0.333333,
         "lexical_recall_at_5": 0.0,
@@ -2779,12 +2875,16 @@
           "claim:TR-XFMR-004",
           "claim:TR-PAR-SINGULAR-001"
         ],
-        "question": "Which invariant must a branch-compression pass preserve before it discards the individual circuit records?"
+        "question": "Which invariant must a branch-compression pass preserve before it discards the individual circuit records?",
+        "route_fired": true,
+        "route_top1": "terminal-equivalence-implies-opf-equivalence",
+        "route_top1_correct": false
       },
       {
         "audience": "power_engineer",
         "case_id": "HOLDOUT-PARALLEL-POWER",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 2,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.06492,
         "char_tfidf_recall_at_10": 0.333333,
         "char_tfidf_recall_at_5": 0.0,
@@ -2800,6 +2900,8 @@
           "concept:rating-limit-constraint",
           "concept:ground-neutral-reference"
         ],
+        "expected_misconception_id": "parallel-admittance-implies-decision-equivalence",
+        "expected_record_count": 6,
         "expected_record_ids": [
           "claim:TR-PAR-001",
           "claim:TR-PAR-002",
@@ -2809,6 +2911,7 @@
           "concept:rating-limit-constraint"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 2,
         "graph_mean_reciprocal_rank_at_20": 0.219295,
         "graph_recall_at_10": 0.333333,
         "graph_recall_at_5": 0.166667,
@@ -2825,6 +2928,7 @@
           "concept:graph-topology-adjacency"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 2,
         "hybrid_mean_reciprocal_rank_at_20": 0.071759,
         "hybrid_recall_at_10": 0.333333,
         "hybrid_recall_at_5": 0.166667,
@@ -2841,6 +2945,7 @@
           "concept:factor"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 1,
         "lexical_mean_reciprocal_rank_at_20": 0.054487,
         "lexical_recall_at_10": 0.166667,
         "lexical_recall_at_5": 0.166667,
@@ -2856,12 +2961,16 @@
           "claim:ARCH-PORT-001",
           "concept:ground-neutral-reference"
         ],
-        "question": "Why can an aggregate circuit be adequate for terminal behavior but unsafe for a constrained operating study?"
+        "question": "Why can an aggregate circuit be adequate for terminal behavior but unsafe for a constrained operating study?",
+        "route_fired": true,
+        "route_top1": "terminal-equivalence-implies-opf-equivalence",
+        "route_top1_correct": false
       },
       {
         "audience": "student",
         "case_id": "HOLDOUT-RADIAL-STUDENT",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 3,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.165385,
         "char_tfidf_recall_at_10": 0.6,
         "char_tfidf_recall_at_5": 0.4,
@@ -2877,6 +2986,8 @@
           "claim:ARCH-CONDUCTOR-002",
           "claim:ARCH-PORT-002"
         ],
+        "expected_misconception_id": "radial-is-representation-independent",
+        "expected_record_count": 5,
         "expected_record_ids": [
           "claim:GRAPH-CYCLE-001",
           "claim:TR-GRAPH-001",
@@ -2885,6 +2996,7 @@
           "concept:parallel"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 1,
         "graph_mean_reciprocal_rank_at_20": 0.128182,
         "graph_recall_at_10": 0.2,
         "graph_recall_at_5": 0.2,
@@ -2901,6 +3013,7 @@
           "claim:TR-KRON-FIVE-001"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 3,
         "hybrid_mean_reciprocal_rank_at_20": 0.205385,
         "hybrid_recall_at_10": 0.6,
         "hybrid_recall_at_5": 0.6,
@@ -2917,6 +3030,7 @@
           "claim:ARCH-LENS-001"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 3,
         "lexical_mean_reciprocal_rank_at_20": 0.207738,
         "lexical_recall_at_10": 0.6,
         "lexical_recall_at_5": 0.4,
@@ -2932,12 +3046,16 @@
           "claim:ARCH-NODAL-001",
           "claim:ARCH-SURGERY-002"
         ],
-        "question": "If duplicate endpoints are collapsed into one edge, what kind of loop might disappear from the representation?"
+        "question": "If duplicate endpoints are collapsed into one edge, what kind of loop might disappear from the representation?",
+        "route_fired": false,
+        "route_top1": "",
+        "route_top1_correct": false
       },
       {
         "audience": "software_engineer",
         "case_id": "HOLDOUT-RADIAL-SOFTWARE",
         "char_tfidf_complete_at_10": true,
+        "char_tfidf_hits_at_10": 5,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.251905,
         "char_tfidf_recall_at_10": 1.0,
         "char_tfidf_recall_at_5": 0.6,
@@ -2953,6 +3071,8 @@
           "claim:TR-PAR-JOINT-001",
           "claim:ARCH-SUPPORT-001"
         ],
+        "expected_misconception_id": "radial-is-representation-independent",
+        "expected_record_count": 5,
         "expected_record_ids": [
           "claim:GRAPH-CYCLE-001",
           "claim:TR-GRAPH-001",
@@ -2961,6 +3081,7 @@
           "concept:parallel"
         ],
         "graph_complete_at_10": true,
+        "graph_hits_at_10": 5,
         "graph_mean_reciprocal_rank_at_20": 0.187222,
         "graph_recall_at_10": 1.0,
         "graph_recall_at_5": 0.4,
@@ -2977,6 +3098,7 @@
           "claim:FORMULATION-NODAL-002"
         ],
         "hybrid_complete_at_10": true,
+        "hybrid_hits_at_10": 5,
         "hybrid_mean_reciprocal_rank_at_20": 0.276667,
         "hybrid_recall_at_10": 1.0,
         "hybrid_recall_at_5": 0.8,
@@ -2993,6 +3115,7 @@
           "concept:cycle-radial-tree"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 4,
         "lexical_mean_reciprocal_rank_at_20": 0.238333,
         "lexical_recall_at_10": 0.8,
         "lexical_recall_at_5": 0.4,
@@ -3008,12 +3131,16 @@
           "claim:TR-NEG-001",
           "claim:LOAD-DECISION-001"
         ],
-        "question": "What topology distinction is needed when a deduplicated adjacency is a tree but multiple source members share the same endpoints?"
+        "question": "What topology distinction is needed when a deduplicated adjacency is a tree but multiple source members share the same endpoints?",
+        "route_fired": true,
+        "route_top1": "radial-is-representation-independent",
+        "route_top1_correct": true
       },
       {
         "audience": "power_engineer",
         "case_id": "HOLDOUT-RADIAL-POWER",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 4,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.344848,
         "char_tfidf_recall_at_10": 0.8,
         "char_tfidf_recall_at_5": 0.6,
@@ -3029,6 +3156,8 @@
           "claim:ARCH-NODAL-001",
           "concept:parallel"
         ],
+        "expected_misconception_id": "radial-is-representation-independent",
+        "expected_record_count": 5,
         "expected_record_ids": [
           "claim:GRAPH-CYCLE-001",
           "claim:TR-GRAPH-001",
@@ -3037,6 +3166,7 @@
           "concept:parallel"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 4,
         "graph_mean_reciprocal_rank_at_20": 0.165238,
         "graph_recall_at_10": 0.8,
         "graph_recall_at_5": 0.4,
@@ -3053,6 +3183,7 @@
           "claim:ARCH-VIEW-001"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 3,
         "hybrid_mean_reciprocal_rank_at_20": 0.314286,
         "hybrid_recall_at_10": 0.6,
         "hybrid_recall_at_5": 0.6,
@@ -3069,6 +3200,7 @@
           "claim:ARCH-CONDUCTOR-002"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 3,
         "lexical_mean_reciprocal_rank_at_20": 0.293333,
         "lexical_recall_at_10": 0.6,
         "lexical_recall_at_5": 0.4,
@@ -3084,12 +3216,16 @@
           "claim:ARCH-PORT-001",
           "concept:object-node-interface"
         ],
-        "question": "Why can a double-circuit feeder have a radial bus layout without being radial at the identified-circuit level?"
+        "question": "Why can a double-circuit feeder have a radial bus layout without being radial at the identified-circuit level?",
+        "route_fired": true,
+        "route_top1": "radial-is-representation-independent",
+        "route_top1_correct": true
       },
       {
         "audience": "student",
         "case_id": "HOLDOUT-KRON-STUDENT",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 1,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.052904,
         "char_tfidf_recall_at_10": 0.2,
         "char_tfidf_recall_at_5": 0.0,
@@ -3105,6 +3241,8 @@
           "claim:TR-KRON-002",
           "claim:TRANSFORM-SEM-001"
         ],
+        "expected_misconception_id": "kron-reduction-preserves-everything",
+        "expected_record_count": 5,
         "expected_record_ids": [
           "claim:PRESERVE-001",
           "claim:TR-KRON-002",
@@ -3113,6 +3251,7 @@
           "concept:transformation-family"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 2,
         "graph_mean_reciprocal_rank_at_20": 0.339384,
         "graph_recall_at_10": 0.4,
         "graph_recall_at_5": 0.4,
@@ -3129,6 +3268,7 @@
           "claim:TR-KRON-NEUTRAL-008"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 3,
         "hybrid_mean_reciprocal_rank_at_20": 0.097222,
         "hybrid_recall_at_10": 0.6,
         "hybrid_recall_at_5": 0.2,
@@ -3145,6 +3285,7 @@
           "concept:flow-current-power-message"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 3,
         "lexical_mean_reciprocal_rank_at_20": 0.175,
         "lexical_recall_at_10": 0.6,
         "lexical_recall_at_5": 0.4,
@@ -3160,12 +3301,16 @@
           "claim:NUMERICAL-001",
           "concept:flow-current-power-message"
         ],
-        "question": "After eliminating internal variables, which observations remain exact and which quantities must be reconstructed?"
+        "question": "After eliminating internal variables, which observations remain exact and which quantities must be reconstructed?",
+        "route_fired": true,
+        "route_top1": "kron-reduction-preserves-everything",
+        "route_top1_correct": true
       },
       {
         "audience": "software_engineer",
         "case_id": "HOLDOUT-KRON-SOFTWARE",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 2,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.266667,
         "char_tfidf_recall_at_10": 0.4,
         "char_tfidf_recall_at_5": 0.4,
@@ -3181,6 +3326,8 @@
           "claim:TR-XFMR-003",
           "claim:FORMULATION-NODAL-003"
         ],
+        "expected_misconception_id": "kron-reduction-preserves-everything",
+        "expected_record_count": 5,
         "expected_record_ids": [
           "claim:PRESERVE-001",
           "claim:TR-KRON-002",
@@ -3189,6 +3336,7 @@
           "concept:transformation-family"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 2,
         "graph_mean_reciprocal_rank_at_20": 0.323333,
         "graph_recall_at_10": 0.4,
         "graph_recall_at_5": 0.4,
@@ -3205,6 +3353,7 @@
           "claim:TR-KRON-NEUTRAL-002"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 2,
         "hybrid_mean_reciprocal_rank_at_20": 0.25,
         "hybrid_recall_at_10": 0.4,
         "hybrid_recall_at_5": 0.4,
@@ -3221,6 +3370,7 @@
           "concept:normalization"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 2,
         "lexical_mean_reciprocal_rank_at_20": 0.233333,
         "lexical_recall_at_10": 0.4,
         "lexical_recall_at_5": 0.2,
@@ -3236,12 +3386,16 @@
           "claim:TR-XFMR-001",
           "claim:TR-KRON-FIVE-001"
         ],
-        "question": "What metadata and reverse maps should accompany a Schur-complement network reduction?"
+        "question": "What metadata and reverse maps should accompany a Schur-complement network reduction?",
+        "route_fired": true,
+        "route_top1": "kron-reduction-preserves-everything",
+        "route_top1_correct": true
       },
       {
         "audience": "power_engineer",
         "case_id": "HOLDOUT-KRON-POWER",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 0,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.0,
         "char_tfidf_recall_at_10": 0.0,
         "char_tfidf_recall_at_5": 0.0,
@@ -3257,6 +3411,8 @@
           "claim:TR-KRON-NEUTRAL-001",
           "claim:TR-SER-002"
         ],
+        "expected_misconception_id": "kron-reduction-preserves-everything",
+        "expected_record_count": 5,
         "expected_record_ids": [
           "claim:PRESERVE-001",
           "claim:TR-KRON-002",
@@ -3265,6 +3421,7 @@
           "concept:transformation-family"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 2,
         "graph_mean_reciprocal_rank_at_20": 0.324286,
         "graph_recall_at_10": 0.4,
         "graph_recall_at_5": 0.4,
@@ -3281,6 +3438,7 @@
           "claim:TR-KRON-NEUTRAL-006"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 0,
         "hybrid_mean_reciprocal_rank_at_20": 0.011765,
         "hybrid_recall_at_10": 0.0,
         "hybrid_recall_at_5": 0.0,
@@ -3297,6 +3455,7 @@
           "claim:ARCH-SURGERY-002"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 0,
         "lexical_mean_reciprocal_rank_at_20": 0.013333,
         "lexical_recall_at_10": 0.0,
         "lexical_recall_at_5": 0.0,
@@ -3312,12 +3471,16 @@
           "claim:ARCH-DEGENERACY-001",
           "claim:PRACTICE-ADAPTER-001"
         ],
-        "question": "Can a boundary-preserving reduction be used for internal protection and equipment limits without additional checks?"
+        "question": "Can a boundary-preserving reduction be used for internal protection and equipment limits without additional checks?",
+        "route_fired": true,
+        "route_top1": "kron-reduction-preserves-everything",
+        "route_top1_correct": true
       },
       {
         "audience": "student",
         "case_id": "HOLDOUT-SEQUENCE-STUDENT",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 3,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.425,
         "char_tfidf_recall_at_10": 0.75,
         "char_tfidf_recall_at_5": 0.75,
@@ -3333,6 +3496,8 @@
           "claim:ARCH-NODAL-001",
           "claim:ARCH-RECOVERY-003"
         ],
+        "expected_misconception_id": "transposition-implies-positive-sequence-exactness",
+        "expected_record_count": 4,
         "expected_record_ids": [
           "claim:COLLAPSE-001",
           "claim:COLLAPSE-002",
@@ -3340,6 +3505,7 @@
           "concept:phase-conductor-sequence-coordinate"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 1,
         "graph_mean_reciprocal_rank_at_20": 0.123397,
         "graph_recall_at_10": 0.25,
         "graph_recall_at_5": 0.25,
@@ -3356,6 +3522,7 @@
           "claim:FORMULATION-Y-SPLIT-001"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 2,
         "hybrid_mean_reciprocal_rank_at_20": 0.375,
         "hybrid_recall_at_10": 0.5,
         "hybrid_recall_at_5": 0.5,
@@ -3372,6 +3539,7 @@
           "claim:TR-PAR-005"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 2,
         "lexical_mean_reciprocal_rank_at_20": 0.375,
         "lexical_recall_at_10": 0.5,
         "lexical_recall_at_5": 0.5,
@@ -3387,12 +3555,16 @@
           "claim:PRACTICE-ADAPTER-001",
           "claim:PRACTICE-IMPEDANCE-001"
         ],
-        "question": "What symmetry conditions let a three-phase model stay inside the positive-sequence subspace?"
+        "question": "What symmetry conditions let a three-phase model stay inside the positive-sequence subspace?",
+        "route_fired": false,
+        "route_top1": "",
+        "route_top1_correct": false
       },
       {
         "audience": "software_engineer",
         "case_id": "HOLDOUT-SEQUENCE-SOFTWARE",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 3,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.479167,
         "char_tfidf_recall_at_10": 0.75,
         "char_tfidf_recall_at_5": 0.75,
@@ -3408,6 +3580,8 @@
           "claim:TR-XFMR-008",
           "claim:ARCH-DEGENERACY-002"
         ],
+        "expected_misconception_id": "transposition-implies-positive-sequence-exactness",
+        "expected_record_count": 4,
         "expected_record_ids": [
           "claim:COLLAPSE-001",
           "claim:COLLAPSE-002",
@@ -3415,6 +3589,7 @@
           "concept:phase-conductor-sequence-coordinate"
         ],
         "graph_complete_at_10": true,
+        "graph_hits_at_10": 4,
         "graph_mean_reciprocal_rank_at_20": 0.520833,
         "graph_recall_at_10": 1.0,
         "graph_recall_at_5": 1.0,
@@ -3431,6 +3606,7 @@
           "claim:TR-SER-002"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 3,
         "hybrid_mean_reciprocal_rank_at_20": 0.458333,
         "hybrid_recall_at_10": 0.75,
         "hybrid_recall_at_5": 0.75,
@@ -3447,6 +3623,7 @@
           "claim:TR-SER-003"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 3,
         "lexical_mean_reciprocal_rank_at_20": 0.258333,
         "lexical_recall_at_10": 0.75,
         "lexical_recall_at_5": 0.75,
@@ -3462,12 +3639,16 @@
           "claim:ARCH-RECOVERY-002",
           "claim:TR-PAR-005"
         ],
-        "question": "Which invariance tests should guard a phase-domain to sequence-domain compiler?"
+        "question": "Which invariance tests should guard a phase-domain to sequence-domain compiler?",
+        "route_fired": false,
+        "route_top1": "",
+        "route_top1_correct": false
       },
       {
         "audience": "power_engineer",
         "case_id": "HOLDOUT-SEQUENCE-POWER",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 3,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.425,
         "char_tfidf_recall_at_10": 0.75,
         "char_tfidf_recall_at_5": 0.75,
@@ -3483,6 +3664,8 @@
           "claim:ARCH-LOWER-002",
           "claim:FORMULATION-NODAL-003"
         ],
+        "expected_misconception_id": "transposition-implies-positive-sequence-exactness",
+        "expected_record_count": 4,
         "expected_record_ids": [
           "claim:COLLAPSE-001",
           "claim:COLLAPSE-002",
@@ -3490,6 +3673,7 @@
           "concept:phase-conductor-sequence-coordinate"
         ],
         "graph_complete_at_10": true,
+        "graph_hits_at_10": 4,
         "graph_mean_reciprocal_rank_at_20": 0.404167,
         "graph_recall_at_10": 1.0,
         "graph_recall_at_5": 0.75,
@@ -3506,6 +3690,7 @@
           "claim:TR-PAR-001"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 3,
         "hybrid_mean_reciprocal_rank_at_20": 0.4375,
         "hybrid_recall_at_10": 0.75,
         "hybrid_recall_at_5": 0.75,
@@ -3522,6 +3707,7 @@
           "claim:FORMULATION-NODAL-003"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 3,
         "lexical_mean_reciprocal_rank_at_20": 0.458333,
         "lexical_recall_at_10": 0.75,
         "lexical_recall_at_5": 0.75,
@@ -3537,12 +3723,16 @@
           "claim:ARCH-LOWER-002",
           "claim:TR-XFMR-004"
         ],
-        "question": "What must be true of grounding, boundary conditions, and constraints before positive-sequence results can stand for the phase study?"
+        "question": "What must be true of grounding, boundary conditions, and constraints before positive-sequence results can stand for the phase study?",
+        "route_fired": false,
+        "route_top1": "",
+        "route_top1_correct": false
       },
       {
         "audience": "student",
         "case_id": "HOLDOUT-GROUND-STUDENT",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 3,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.4375,
         "char_tfidf_recall_at_10": 0.75,
         "char_tfidf_recall_at_5": 0.75,
@@ -3558,6 +3748,8 @@
           "claim:GROUND-SCOPE-003",
           "claim:PRACTICE-IMPEDANCE-001"
         ],
+        "expected_misconception_id": "ground-neutral-reference-are-one-node",
+        "expected_record_count": 4,
         "expected_record_ids": [
           "claim:GROUND-SCOPE-001",
           "claim:GROUND-SCOPE-002",
@@ -3565,6 +3757,7 @@
           "concept:object-node-interface"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 0,
         "graph_mean_reciprocal_rank_at_20": 0.047682,
         "graph_recall_at_10": 0.0,
         "graph_recall_at_5": 0.0,
@@ -3581,6 +3774,7 @@
           "claim:TR-KRON-001"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 3,
         "hybrid_mean_reciprocal_rank_at_20": 0.458333,
         "hybrid_recall_at_10": 0.75,
         "hybrid_recall_at_5": 0.75,
@@ -3597,6 +3791,7 @@
           "claim:ARCH-SURGERY-002"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 3,
         "lexical_mean_reciprocal_rank_at_20": 0.4375,
         "lexical_recall_at_10": 0.75,
         "lexical_recall_at_5": 0.75,
@@ -3612,12 +3807,16 @@
           "claim:TR-KRON-NEUTRAL-004",
           "claim:TR-KRON-FIVE-001"
         ],
-        "question": "Why can the wire called neutral and the physical return through earth have different voltages and currents?"
+        "question": "Why can the wire called neutral and the physical return through earth have different voltages and currents?",
+        "route_fired": true,
+        "route_top1": "ground-neutral-reference-are-one-node",
+        "route_top1_correct": true
       },
       {
         "audience": "software_engineer",
         "case_id": "HOLDOUT-GROUND-SOFTWARE",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 3,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.425,
         "char_tfidf_recall_at_10": 0.75,
         "char_tfidf_recall_at_5": 0.75,
@@ -3633,6 +3832,8 @@
           "claim:ARCH-PORT-002",
           "claim:ARCH-SURGERY-002"
         ],
+        "expected_misconception_id": "ground-neutral-reference-are-one-node",
+        "expected_record_count": 4,
         "expected_record_ids": [
           "claim:GROUND-SCOPE-001",
           "claim:GROUND-SCOPE-002",
@@ -3640,6 +3841,7 @@
           "concept:object-node-interface"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 0,
         "graph_mean_reciprocal_rank_at_20": 0.047024,
         "graph_recall_at_10": 0.0,
         "graph_recall_at_5": 0.0,
@@ -3656,6 +3858,7 @@
           "claim:TR-KRON-NEUTRAL-007"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 3,
         "hybrid_mean_reciprocal_rank_at_20": 0.4375,
         "hybrid_recall_at_10": 0.75,
         "hybrid_recall_at_5": 0.75,
@@ -3672,6 +3875,7 @@
           "claim:ARCH-CONDUCTOR-002"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 3,
         "lexical_mean_reciprocal_rank_at_20": 0.4375,
         "lexical_recall_at_10": 0.75,
         "lexical_recall_at_5": 0.75,
@@ -3687,12 +3891,16 @@
           "claim:ARCH-PORT-001",
           "claim:ARCH-PORT-002"
         ],
-        "question": "Which typed objects should remain distinct when a schema contains a return conductor, an earth connection, and a numerical datum?"
+        "question": "Which typed objects should remain distinct when a schema contains a return conductor, an earth connection, and a numerical datum?",
+        "route_fired": true,
+        "route_top1": "ground-neutral-reference-are-one-node",
+        "route_top1_correct": true
       },
       {
         "audience": "power_engineer",
         "case_id": "HOLDOUT-GROUND-POWER",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 3,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.458333,
         "char_tfidf_recall_at_10": 0.75,
         "char_tfidf_recall_at_5": 0.75,
@@ -3708,6 +3916,8 @@
           "claim:TR-KRON-NEUTRAL-001",
           "claim:ARCH-SURGERY-002"
         ],
+        "expected_misconception_id": "ground-neutral-reference-are-one-node",
+        "expected_record_count": 4,
         "expected_record_ids": [
           "claim:GROUND-SCOPE-001",
           "claim:GROUND-SCOPE-002",
@@ -3715,6 +3925,7 @@
           "concept:object-node-interface"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 2,
         "graph_mean_reciprocal_rank_at_20": 0.228084,
         "graph_recall_at_10": 0.5,
         "graph_recall_at_5": 0.5,
@@ -3731,6 +3942,7 @@
           "claim:TR-KRON-NEUTRAL-008"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 3,
         "hybrid_mean_reciprocal_rank_at_20": 0.415064,
         "hybrid_recall_at_10": 0.75,
         "hybrid_recall_at_5": 0.75,
@@ -3747,6 +3959,7 @@
           "claim:TRANSFORM-SEM-001"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 3,
         "lexical_mean_reciprocal_rank_at_20": 0.256061,
         "lexical_recall_at_10": 0.75,
         "lexical_recall_at_5": 0.5,
@@ -3762,12 +3975,16 @@
           "claim:ARCH-CONDUCTOR-002",
           "claim:GROUND-SCOPE-001"
         ],
-        "question": "What study information can disappear if neutral, grounding impedance, earth return, and reference are all represented as one bus?"
+        "question": "What study information can disappear if neutral, grounding impedance, earth return, and reference are all represented as one bus?",
+        "route_fired": true,
+        "route_top1": "ground-neutral-reference-are-one-node",
+        "route_top1_correct": true
       },
       {
         "audience": "student",
         "case_id": "HOLDOUT-DECISION-STUDENT",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 1,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.066667,
         "char_tfidf_recall_at_10": 0.2,
         "char_tfidf_recall_at_5": 0.2,
@@ -3783,6 +4000,8 @@
           "claim:TR-XFMR-006",
           "claim:GROUND-SCOPE-001"
         ],
+        "expected_misconception_id": "terminal-equivalence-implies-opf-equivalence",
+        "expected_record_count": 5,
         "expected_record_ids": [
           "claim:PRESERVE-001",
           "claim:TR-PAR-001",
@@ -3791,6 +4010,7 @@
           "concept:rating-limit-constraint"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 0,
         "graph_mean_reciprocal_rank_at_20": 0.018182,
         "graph_recall_at_10": 0.0,
         "graph_recall_at_5": 0.0,
@@ -3807,6 +4027,7 @@
           "claim:ARCH-DEGENERACY-001"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 1,
         "hybrid_mean_reciprocal_rank_at_20": 0.115385,
         "hybrid_recall_at_10": 0.2,
         "hybrid_recall_at_5": 0.2,
@@ -3823,6 +4044,7 @@
           "claim:FORMULATION-NODAL-002"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 1,
         "lexical_mean_reciprocal_rank_at_20": 0.083333,
         "lexical_recall_at_10": 0.2,
         "lexical_recall_at_5": 0.2,
@@ -3838,12 +4060,16 @@
           "claim:ARCH-LOWER-001",
           "claim:FORMULATION-NODAL-001"
         ],
-        "question": "What else besides the circuit equation must agree before two models can be substituted in an optimization?"
+        "question": "What else besides the circuit equation must agree before two models can be substituted in an optimization?",
+        "route_fired": true,
+        "route_top1": "terminal-equivalence-implies-opf-equivalence",
+        "route_top1_correct": true
       },
       {
         "audience": "software_engineer",
         "case_id": "HOLDOUT-DECISION-SOFTWARE",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 0,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.027149,
         "char_tfidf_recall_at_10": 0.0,
         "char_tfidf_recall_at_5": 0.0,
@@ -3859,6 +4085,8 @@
           "claim:TR-KRON-NEUTRAL-007",
           "claim:TR-KRON-NEUTRAL-005"
         ],
+        "expected_misconception_id": "terminal-equivalence-implies-opf-equivalence",
+        "expected_record_count": 5,
         "expected_record_ids": [
           "claim:PRESERVE-001",
           "claim:TR-PAR-001",
@@ -3867,6 +4095,7 @@
           "concept:rating-limit-constraint"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 0,
         "graph_mean_reciprocal_rank_at_20": 0.0,
         "graph_recall_at_10": 0.0,
         "graph_recall_at_5": 0.0,
@@ -3883,6 +4112,7 @@
           "claim:TR-KRON-NEUTRAL-001"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 0,
         "hybrid_mean_reciprocal_rank_at_20": 0.011111,
         "hybrid_recall_at_10": 0.0,
         "hybrid_recall_at_5": 0.0,
@@ -3899,6 +4129,7 @@
           "claim:TR-KRON-NEUTRAL-005"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 0,
         "lexical_mean_reciprocal_rank_at_20": 0.0,
         "lexical_recall_at_10": 0.0,
         "lexical_recall_at_5": 0.0,
@@ -3914,12 +4145,16 @@
           "claim:ARCH-RECOVERY-001",
           "claim:TR-KRON-NEUTRAL-003"
         ],
-        "question": "Which feasibility and provenance checks belong in a model-reduction acceptance test for an optimizer?"
+        "question": "Which feasibility and provenance checks belong in a model-reduction acceptance test for an optimizer?",
+        "route_fired": true,
+        "route_top1": "loads-generators-fixed-graph-membership",
+        "route_top1_correct": false
       },
       {
         "audience": "power_engineer",
         "case_id": "HOLDOUT-DECISION-POWER",
         "char_tfidf_complete_at_10": false,
+        "char_tfidf_hits_at_10": 0,
         "char_tfidf_mean_reciprocal_rank_at_20": 0.025911,
         "char_tfidf_recall_at_10": 0.0,
         "char_tfidf_recall_at_5": 0.0,
@@ -3935,6 +4170,8 @@
           "claim:FORMULATION-NODAL-002",
           "claim:COLLAPSE-001"
         ],
+        "expected_misconception_id": "terminal-equivalence-implies-opf-equivalence",
+        "expected_record_count": 5,
         "expected_record_ids": [
           "claim:PRESERVE-001",
           "claim:TR-PAR-001",
@@ -3943,6 +4180,7 @@
           "concept:rating-limit-constraint"
         ],
         "graph_complete_at_10": false,
+        "graph_hits_at_10": 1,
         "graph_mean_reciprocal_rank_at_20": 0.2,
         "graph_recall_at_10": 0.2,
         "graph_recall_at_5": 0.2,
@@ -3959,6 +4197,7 @@
           "claim:TR-KRON-001"
         ],
         "hybrid_complete_at_10": false,
+        "hybrid_hits_at_10": 0,
         "hybrid_mean_reciprocal_rank_at_20": 0.023333,
         "hybrid_recall_at_10": 0.0,
         "hybrid_recall_at_5": 0.0,
@@ -3975,6 +4214,7 @@
           "concept:object-node-interface"
         ],
         "lexical_complete_at_10": false,
+        "lexical_hits_at_10": 0,
         "lexical_mean_reciprocal_rank_at_20": 0.01,
         "lexical_recall_at_10": 0.0,
         "lexical_recall_at_5": 0.0,
@@ -3990,7 +4230,10 @@
           "claim:FORMULATION-NODAL-001",
           "claim:TR-XFMR-004"
         ],
-        "question": "Why is an equivalent terminal response not sufficient evidence that planning or dispatch choices remain valid?"
+        "question": "Why is an equivalent terminal response not sufficient evidence that planning or dispatch choices remain valid?",
+        "route_fired": true,
+        "route_top1": "terminal-equivalence-implies-opf-equivalence",
+        "route_top1_correct": true
       }
     ],
     "purpose": "synthetic held-out paraphrase benchmark; not human-validated evidence",
@@ -3998,36 +4241,68 @@
       "cases": 27,
       "char_tfidf": {
         "complete_at_10": 0.037037,
+        "complete_at_10_count": 1,
         "mean_reciprocal_rank_at_20": 0.213542,
         "recall_at_10": 0.441975,
-        "recall_at_5": 0.359259
+        "recall_at_5": 0.359259,
+        "recall_expected_records_at_10": 135,
+        "recall_hits_at_10": 57,
+        "zero_recall_at_10_count": 5
       },
       "graph": {
         "complete_at_10": 0.222222,
+        "complete_at_10_count": 6,
         "mean_reciprocal_rank_at_20": 0.246063,
         "recall_at_10": 0.526543,
-        "recall_at_5": 0.38642
+        "recall_at_5": 0.38642,
+        "recall_expected_records_at_10": 135,
+        "recall_hits_at_10": 72,
+        "zero_recall_at_10_count": 4
       },
       "hybrid": {
         "complete_at_10": 0.037037,
+        "complete_at_10_count": 1,
         "mean_reciprocal_rank_at_20": 0.219074,
         "recall_at_10": 0.453704,
-        "recall_at_5": 0.405556
+        "recall_at_5": 0.405556,
+        "recall_expected_records_at_10": 135,
+        "recall_hits_at_10": 59,
+        "zero_recall_at_10_count": 5
       },
       "hybrid_complete_at_10_minus_lexical": 0.037037,
       "hybrid_recall_at_10_minus_lexical": 0.013581,
       "lexical": {
         "complete_at_10": 0.0,
+        "complete_at_10_count": 0,
         "mean_reciprocal_rank_at_20": 0.20576,
         "recall_at_10": 0.440123,
-        "recall_at_5": 0.360494
-      }
+        "recall_at_5": 0.360494,
+        "recall_expected_records_at_10": 135,
+        "recall_hits_at_10": 57,
+        "zero_recall_at_10_count": 5
+      },
+      "router_fired_count": 19,
+      "router_fired_rate": 0.703704,
+      "router_top1_accuracy": 0.518519,
+      "router_top1_correct_count": 14,
+      "target_cluster_count": 9,
+      "target_cluster_sizes": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
     }
   },
   "inputs": {
     "context_packet_schema": {
       "path": "schemas/llm-context-packet.schema.json",
-      "sha256": "d2dcfd3225b8162b6b562d16e178ced01e7cbaca445a4e9c07a72a986e7d6b0f"
+      "sha256": "8015b397b812b0275b4bebea557490d102e39e5c015ebef276d6222b2d849b93"
     },
     "evaluation_cases": {
       "path": "llm/evaluation-cases.toml",
@@ -4076,6 +4351,7 @@
     "contract_complete_rate": true,
     "contract_record_recall": true,
     "heldout_hybrid_recall_not_worse": true,
+    "heldout_router_fired_rate": true,
     "packet_shape_valid_rate": true,
     "qualification_complete_rate": true,
     "release_match_rate": true,
@@ -4085,6 +4361,7 @@
     "contract_complete_rate": 1.0,
     "contract_record_recall": 1.0,
     "heldout_hybrid_recall_not_worse": 0.0,
+    "heldout_router_fired_rate": 0.6666666666666666,
     "packet_shape_valid_rate": 1.0,
     "qualification_complete_rate": 1.0,
     "release_match_rate": 1.0,

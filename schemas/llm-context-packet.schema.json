@@ -19,7 +19,7 @@
     "schema_version": {"const": "0.1.0"},
     "query": {"type": "string", "minLength": 1},
     "audience": {"enum": ["student", "software_engineer", "power_engineer"]},
-    "status": {"enum": ["qualified", "retrieval_only", "unsupported"]},
+    "status": {"enum": ["qualified", "under_retrieved", "unsupported"]},
     "release": {"type": "object"},
     "retrieval": {
       "type": "object",
@@ -48,6 +48,7 @@
         "failure_consequences",
         "safe_shorthand",
         "audience_guidance",
+        "retrieval_warning",
         "unresolved_boundaries"
       ]
     },

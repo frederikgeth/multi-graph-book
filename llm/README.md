@@ -28,6 +28,12 @@ search service may build lexical, embedding, reranking, or graph indexes from
 it, but those indexes must retain the corpus manifest identifier and may not
 silently change the scientific content.
 
+The corpus manifest records the document-selection rule. Four generated
+navigation pages (`chapter-status`, `evidence-map`, `knowledge-base-index`, and
+`vocabulary-indexes`) are excluded because they duplicate canonical ledgers and
+would dominate retrieval without adding independent scientific evidence. Their
+upstream chapters, claims, and vocabulary sources remain bound by hash.
+
 ## Answer contract
 
 Applications using this corpus should construct an answer from these fields
@@ -73,6 +79,15 @@ records through shared canonical sources and misconception identities. On the
 current synthetic held-out set it improves recall@10 over hybrid, but it remains
 an explicit diagnostic/opt-in method rather than the default production ranker.
 
+The held-out benchmark is synthetic and not human-validated evidence. Its 27
+questions are three audience phrasings for nine target evidence sets, so the
+effective target count is nine rather than 27 independent scientific questions.
+The report therefore includes counts, zero-recall cases, cluster structure, and
+contract-router firing coverage alongside percentages.
+The current router-firing release floor is 2/3: a provisional regression floor
+chosen so that the three-audience structure requires coverage of at least two
+audience phrasings on average. It is not evidence of robust generalization.
+
 ## Optional neural benchmark
 
 Neural retrieval is an opt-in comparison layer, not a bundled scientific
@@ -112,6 +127,9 @@ release identity. The response is an answer packet, not an uncited generated
 essay: it contains the supported answer basis, scope, qualifications, failure
 consequences, stable sources, and an explicit `unsupported` status when the
 lexical abstention floor finds no book support.
+When related material is retrieved but no qualified claim contract is found,
+the packet uses the distinct `under_retrieved` status and warning so a downstream
+model cannot mistake relevance for a supported answer.
 
 Run the local HTTP/JSON service with:
 

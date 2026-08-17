@@ -583,9 +583,17 @@ class CorpusIndex:
         if mandatory:
             status = "qualified"
         elif supporting:
-            status = "retrieval_only"
+            status = "under_retrieved"
         else:
             status = "unsupported"
+        retrieval_warning = ""
+        if status == "under_retrieved":
+            retrieval_warning = (
+                "Related book material was retrieved, but no qualified claim contract was found. "
+                "Do not treat relevance as a book-supported conclusion; broaden or reformulate the query."
+            )
+        elif status == "unsupported":
+            retrieval_warning = "No book-supported material was retrieved for this query."
         audience_guidance = {
             "student": "Use intuition and a minimal example, then show the counterexample before adding notation.",
             "software_engineer": "Name object types, preconditions, generated views, invariants, provenance, and failure handling.",
@@ -619,6 +627,7 @@ class CorpusIndex:
                 "failure_consequences": consequences,
                 "safe_shorthand": safe_shorthand,
                 "audience_guidance": audience_guidance,
+                "retrieval_warning": retrieval_warning,
                 "unresolved_boundaries": [
                     {"claim_id": claim["claim_id"], "boundary": claim["unresolved_issue"]}
                     for claim in claims

@@ -179,6 +179,16 @@ def observed_counts(outputs: dict[str, str]) -> dict[str, int]:
             llm_retrieval,
             "LLM held-out hybrid recall at 10",
         ),
+        "llm_heldout_router_fired_tenths_percent": first_tenths_percent(
+            r"heldout_router_fired=(\d+)\.(\d)%",
+            llm_retrieval,
+            "LLM held-out router firing",
+        ),
+        "llm_heldout_hybrid_zero_recall_at_10_cases": first_int(
+            r"heldout_hybrid_zero_recall_at_10=(\d+)/\d+",
+            llm_retrieval,
+            "LLM held-out hybrid zero-recall cases",
+        ),
     }
 
 

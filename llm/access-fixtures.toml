@@ -40,3 +40,11 @@ query = "What is the weather on Mars?"
 expected_status = "unsupported"
 expected_misconception_id = ""
 required_markdown_headings = ["Audience guidance", "Sources"]
+
+[[fixture]]
+fixture_id = "FIXTURE-UNDER-RETRIEVED"
+audience = "power_engineer"
+query = "Does a matching bus-matrix export establish that two studies have the same assets, ratings, and controls?"
+expected_status = "under_retrieved"
+expected_misconception_id = ""
+required_markdown_headings = ["Retrieval warning", "Audience guidance", "Sources"]

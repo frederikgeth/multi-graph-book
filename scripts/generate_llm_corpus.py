@@ -354,6 +354,18 @@ def rendered_payloads() -> tuple[str, str]:
         "misconception_count": metadata["misconceptions"],
         "evaluation_case_count": len(tomllib.loads(EVALUATIONS.read_text()).get("case", [])),
         "heldout_case_count": metadata["heldout_cases"],
+        "document_selection": {
+            "included_doc_count": sum(
+                path.suffix == ".md" and relative(path).startswith("docs/src/")
+                for path in source_paths
+            ),
+            "excluded_doc_count": len(EXCLUDED_DOCS),
+            "excluded_docs": sorted(EXCLUDED_DOCS),
+            "excluded_reason": (
+                "Generated navigation pages duplicate source ledgers and are excluded from retrieval; "
+                "their upstream canonical sources remain included."
+            ),
+        },
         "source_files": [
             {"path": relative(path), "sha256": sha256_file(path)}
             for path in sorted(set(source_paths), key=relative)

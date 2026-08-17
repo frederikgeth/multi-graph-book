@@ -13,6 +13,7 @@ from pathlib import Path
 
 from generate_llm_corpus import (
     CORPUS_MANIFEST,
+    EXCLUDED_DOCS,
     EVALUATIONS,
     MISCONCEPTIONS,
     OUTPUT,
@@ -219,6 +220,10 @@ def main() -> int:
     fail_if(manifest.get("misconception_count") != len(misconceptions), "misconception count differs from manifest", errors)
     fail_if(manifest.get("evaluation_case_count") != len(evaluations), "evaluation count differs from manifest", errors)
     fail_if(manifest.get("heldout_case_count") != len(heldout), "held-out evaluation count differs from manifest", errors)
+    selection = manifest.get("document_selection", {})
+    fail_if(selection.get("excluded_docs") != sorted(EXCLUDED_DOCS), "document exclusion rule differs from corpus manifest", errors)
+    fail_if(selection.get("excluded_doc_count") != len(EXCLUDED_DOCS), "document exclusion count differs from corpus manifest", errors)
+    fail_if(selection.get("included_doc_count") != len([path for path in (ROOT / "docs/src").rglob("*.md") if path.relative_to(ROOT).as_posix() not in EXCLUDED_DOCS]), "included document count differs from corpus manifest", errors)
     for source in manifest.get("source_files", []):
         path = ROOT / source.get("path", "")
         fail_if(not path.is_file(), f"manifest source missing: {source.get('path')}", errors)

@@ -182,4 +182,10 @@ The access layer additionally checks that every externally exposed claim basis
 has mandatory-record coverage, source-hash agreement, citation presence, and a
 release identity. Adversarial and unsupported-query fixtures are deterministic
 robustness checks; they do not substitute for human calibration of answer
-faithfulness or audience language.
+faithfulness or audience language. The held-out benchmark additionally reports
+contract-router firing coverage, zero-recall cases, and its nine-target cluster
+structure. Its provisional release floor is 2/3 router firing; that floor is a
+regression guard, not a claim that synthetic paraphrases establish generalization.
+When related records are retrieved without a qualified claim contract, the
+answer packet uses `under_retrieved`, distinct from `unsupported`, and carries a
+retrieval warning that downstream clients must preserve.

@@ -102,6 +102,8 @@ def validate_answer_response(index: CorpusIndex, response: dict) -> list[str]:
             errors.append(f"answer Markdown omits citation location: {source_location(source)}")
     if response.get("validation", {}).get("source_hashes_checked") is not True:
         errors.append("response does not declare source-hash validation")
+    if packet.get("status") in {"under_retrieved", "unsupported"} and not contract.get("retrieval_warning"):
+        errors.append("degraded response does not name its retrieval warning")
     return errors
 
 
@@ -120,6 +122,12 @@ def render_markdown(packet: dict) -> str:
         lines += [
             "The committed resource does not currently provide a qualified answer to this query.",
             "Use the retrieved material only as navigation, and label any external answer separately.",
+            "",
+        ]
+    elif packet["status"] == "under_retrieved":
+        lines += [
+            "The corpus returned related material, but no qualified claim contract was found.",
+            "Do not treat retrieval relevance as a book-supported conclusion; broaden or reformulate the query.",
             "",
         ]
     elif contract["direct_answer_basis"]:
@@ -157,6 +165,8 @@ def render_markdown(packet: dict) -> str:
         lines += ["## Unresolved boundaries", ""]
         lines.extend(f"- **{item['claim_id']}** — {item['boundary']}" for item in contract["unresolved_boundaries"])
         lines.append("")
+    if contract.get("retrieval_warning"):
+        lines += ["## Retrieval warning", "", contract["retrieval_warning"], ""]
     lines += ["## Audience guidance", "", contract["audience_guidance"], "", "## Sources", ""]
     for index, source in enumerate(packet["sources"], start=1):
         lines.append(f"{index}. `{source_location(source)}`")
@@ -193,13 +203,14 @@ class BookLLMService:
         # a curated dangerous-shortcut contract has explicitly qualified the
         # query.
         if (
-            packet["status"] == "retrieval_only"
+            packet["status"] == "under_retrieved"
             and not packet["retrieval"]["detected_misconceptions"]
             and not self.index.search(query, limit=1)
         ):
             packet["status"] = "unsupported"
             packet["supporting_records"] = []
             packet["sources"] = []
+            packet["answer_contract"]["retrieval_warning"] = "No book-supported material was retrieved for this query."
         errors = validate_context_packet(self.index, packet)
         if errors:
             raise ValueError("invalid context packet: " + "; ".join(errors))

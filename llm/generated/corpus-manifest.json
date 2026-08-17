@@ -1,6 +1,17 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
   "corpus_sha256": "612f09cd64109c96eaef926c968b410d3d4485caa841018d7353a4d967e36705",
+  "document_selection": {
+    "excluded_doc_count": 4,
+    "excluded_docs": [
+      "docs/src/reference/chapter-status.md",
+      "docs/src/reference/evidence-map.md",
+      "docs/src/reference/knowledge-base-index.md",
+      "docs/src/reference/vocabulary-indexes.md"
+    ],
+    "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
+    "included_doc_count": 62
+  },
   "evaluation_case_count": 27,
   "heldout_case_count": 27,
   "misconception_count": 9,

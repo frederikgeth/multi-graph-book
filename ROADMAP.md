@@ -223,6 +223,15 @@ labelled as a seed review.
 - [x] add benchmark-only provenance-graph retrieval and adversarial/metamorphic
   checks for terminology variants, misleading shorthand, and unsupported
   questions;
+- [x] report held-out contract-router firing, zero-recall cases, and the
+  nine-target clustering explicitly, with a provisional 2/3 routing regression
+  floor rather than treating the benchmark as independent evidence;
+- [x] distinguish `under_retrieved` related-material packets from genuine
+  `unsupported` abstention so downstream answer renderers cannot silently
+  promote relevance to book-supported evidence;
+- [x] trigger the accessibility reproduction check when canonical chapters,
+  claims, or vocabulary sources change, and record the generated-page exclusion
+  rule in the corpus manifest;
 - [ ] select, adapt, or train a domain-appropriate retriever/reranker that
   passes the required-claim, qualification, and counterexample gates;
 - [ ] promote graph retrieval beyond its explicit diagnostic/opt-in route only

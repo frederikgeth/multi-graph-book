@@ -28,7 +28,9 @@
     "llm_route_top1_percent": 100,
     "llm_lexical_complete_at_10_tenths_percent": 37,
     "llm_contract_complete_percent": 100,
-    "llm_heldout_hybrid_recall_at_10_tenths_percent": 454
+    "llm_heldout_hybrid_recall_at_10_tenths_percent": 454,
+    "llm_heldout_router_fired_tenths_percent": 704,
+    "llm_heldout_hybrid_zero_recall_at_10_cases": 5
   },
   "checks": [
     {
@@ -212,7 +214,7 @@
     },
     {
       "path": "QUALITY_CONTROL.md",
-      "sha256": "42b7886337a2a52d201d249e65050f2d320e238775b7da3f418d69ed8198340e"
+      "sha256": "b334c471f188182767a6e47b926bf0b6fa86dd9cc020737f6a69539e278b628d"
     },
     {
       "path": "README.md",
@@ -220,7 +222,7 @@
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "3e0bb55bf3d8599f5a1a7af85658908241c487be92d2156c3ecbbbd3faee59ec"
+      "sha256": "43c3f4e5b2097cefc966552c7ece72ca7aa93a53c052f83ffb2e98d913ff93bc"
     },
     {
       "path": "claims/claims.toml",
@@ -3232,11 +3234,11 @@
     },
     {
       "path": "llm/README.md",
-      "sha256": "6abf10d1b3e1c9865015b13d332bc34bfe278ac1e908561b764d06c3187d65a6"
+      "sha256": "0c0734ee4561d6f36995c765bd9dfc4f4be026aca80d3667398ca43e98799fb8"
     },
     {
       "path": "llm/access-fixtures.toml",
-      "sha256": "bcaf994a2c57e8c2a1d82b18c95010fbde216d909cc28aeef1a9f650b616e757"
+      "sha256": "723853816e2f2ef743a7567142a1d44305a467a56d5a3670e843f0fee722e561"
     },
     {
       "path": "llm/adversarial-cases.toml",
@@ -3248,7 +3250,7 @@
     },
     {
       "path": "llm/generated/access-fixtures.jsonl",
-      "sha256": "56d10920a5bccd7446fefac0ac7c71663d98f797933c530e5cc9bc5ced3b9b81"
+      "sha256": "6f216ba87f21a4de4cc7f3a5b37bd5a606e1d96ed2aebbb2965b621ab00de54e"
     },
     {
       "path": "llm/generated/adversarial-evaluation.json",
@@ -3260,7 +3262,7 @@
     },
     {
       "path": "llm/generated/corpus-manifest.json",
-      "sha256": "e54b0cbc98e8e7406a458dac03bd3389201812498ac2e2b26c026566e6655ed3"
+      "sha256": "5b9be4153827fd2698a3f841cd41753f2dc004bbd88b015c025bc877cdc1f768"
     },
     {
       "path": "llm/generated/corpus.jsonl",
@@ -3276,11 +3278,11 @@
     },
     {
       "path": "llm/generated/retrieval-evaluation.json",
-      "sha256": "4c816129803cdfdb9ac26a48df58c30d1a6a970e71043db7cf3a132a024bec40"
+      "sha256": "abfc61252c7ef3e6070913019a402be429935e260cbb463adab0ad26033d258f"
     },
     {
       "path": "llm/generated/retrieval-evaluation.md",
-      "sha256": "70707538006d78e93be7597352c2c0c2d7606116630a54e71489bbf26eb7b8a8"
+      "sha256": "f7a840de5f7180f2d3b56e8bc79d4a19c9b8edd8829bf7b84cee8cb67e2cf5b5"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -3464,7 +3466,7 @@
     },
     {
       "path": "schemas/llm-context-packet.schema.json",
-      "sha256": "d2dcfd3225b8162b6b562d16e178ced01e7cbaca445a4e9c07a72a986e7d6b0f"
+      "sha256": "8015b397b812b0275b4bebea557490d102e39e5c015ebef276d6222b2d849b93"
     },
     {
       "path": "schemas/llm-corpus-record.schema.json",
@@ -3524,7 +3526,7 @@
     },
     {
       "path": "scripts/check_llm_accessibility.py",
-      "sha256": "257f746401d8a9e17eff275f4d1a0cdcfe66b29fa774a830816ace9504b26210"
+      "sha256": "d186978c994ae97198ef99c2e86b917561f8ca22c3309382784c9c8b3ab647dc"
     },
     {
       "path": "scripts/check_llm_answer_contract.py",
@@ -3536,7 +3538,7 @@
     },
     {
       "path": "scripts/check_llm_routes.py",
-      "sha256": "b5d901df0f2475aee099996d3fd1aca5af9ba8b756028267386f9a7c43543d26"
+      "sha256": "5e475003a1dc0b3f4cc82c8a37181cba693a1e0967a14b61d5bc2791382f63be"
     },
     {
       "path": "scripts/check_math_hygiene.py",
@@ -3556,7 +3558,7 @@
     },
     {
       "path": "scripts/check_release_candidate.py",
-      "sha256": "8630091f85cde0e8428b253cb4fdb674890cd5cec65bb8ef6195552e181cc12a"
+      "sha256": "d2f94d1caaf5ba42558b6f2f9090b653066eb47ea8dc02052bc1d6b97b3290e2"
     },
     {
       "path": "scripts/check_rendered_outputs.py",
@@ -3576,7 +3578,7 @@
     },
     {
       "path": "scripts/evaluate_llm_retrieval.py",
-      "sha256": "3fe3cd6ce2ccf45dfb3175c0d679ec6e58ec146b4485f7ca6d72890ce3d0650c"
+      "sha256": "8b8e3d77638fc115e9d69e30a624dc015b221ac9edbf2863a6507c0f0aa7195e"
     },
     {
       "path": "scripts/generate_fixture_coverage_matrix.py",
@@ -3592,7 +3594,7 @@
     },
     {
       "path": "scripts/generate_llm_corpus.py",
-      "sha256": "dd09f61982a63384606c50ffb93e0eeda4c463f2dbf88e663bcb4a39f315fd67"
+      "sha256": "ba7eac07f23e3668dd118645c2294f3b6b1c923b0a255df10f97b024dc1298cf"
     },
     {
       "path": "scripts/generate_research_record.py",
@@ -3620,11 +3622,11 @@
     },
     {
       "path": "scripts/llm_retrieval.py",
-      "sha256": "b6ef8f32b43ec39029e57d0f3a4598473e3bfe770c4c1425c1c247fe4c9f06c2"
+      "sha256": "7f66ebd8a1d2ecbef8d4a65dd6fc603f70b030ad4c371bb7a15b05c41ac5f26c"
     },
     {
       "path": "scripts/llm_service.py",
-      "sha256": "1b2bf6677e1781273faf4306f80a5d157493222a2c241b0a34642558fa53ca37"
+      "sha256": "9a9f9ecca5cfea58b356dc7ca31b14f347d6bdaf45818cc4953ea63e2a914845"
     },
     {
       "path": "scripts/mcp_llm_server.py",

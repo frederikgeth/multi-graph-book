@@ -32,6 +32,20 @@ def main() -> int:
     check(packet["sources"], "context packet has no sources", errors)
     unsupported = service.response("What is the weather on Mars?", "student")
     check(unsupported["packet"]["status"] == "unsupported", "unsupported query did not abstain", errors)
+    under_retrieved = service.response(
+        "Does a matching bus-matrix export establish that two studies have the same assets, ratings, and controls?",
+        "power_engineer",
+    )
+    check(
+        under_retrieved["packet"]["status"] == "under_retrieved",
+        "supported-but-unqualified query did not expose under_retrieved status",
+        errors,
+    )
+    check(
+        "retrieval warning" in under_retrieved["markdown"].lower(),
+        "under_retrieved Markdown omitted its warning",
+        errors,
+    )
 
     def exercise_http(method: str, path: str, body: bytes = b"", accept: str = "application/json") -> tuple[int, object]:
         captured: dict = {}

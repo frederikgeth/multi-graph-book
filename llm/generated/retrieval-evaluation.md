@@ -26,6 +26,9 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Complete contract packets | 100.0% | yes |
 | Packets with qualification, failure, shorthand, and scope | 100.0% | yes |
 | Corpus-release identity agreement | 100.0% | yes |
+| Held-out contract-router firing | 19/27 (70.4%) | yes |
+| Held-out expected-contract top-1 | 14/27 (51.9%) | diagnostic |
+| Held-out hybrid zero-recall@10 cases | 5/27 | diagnostic |
 
 The diagnostic lexical scores are intentionally not release thresholds. A perfect contract score
 cannot be reported as a better ranker score: it measures whether an identified high-risk question
@@ -33,49 +36,53 @@ received all evidence mandated by the curated contract.
 
 ## Held-out paraphrase benchmark
 
-These questions are not used by the contract router. They test ordinary retrieval generalization
-against synthetic paraphrases across the three audiences.
+These questions are not used by the contract router during corpus construction. They test ordinary
+retrieval and routing generalization against synthetic paraphrases across the three audiences.
+They are not human-validated evidence: 27 cases are three audience phrasings for nine target
+evidence sets, so the effective target count is nine rather than 27 independent questions.
 
-| Method | Recall@5 | Recall@10 | Complete@10 | Mean reciprocal rank@20 |
-| --- | ---: | ---: | ---: | ---: |
-| `lexical` | 36.0% | 44.0% | 0.0% | 0.206 |
-| `char_tfidf` | 35.9% | 44.2% | 3.7% | 0.214 |
-| `hybrid` | 40.6% | 45.4% | 3.7% | 0.219 |
-| `graph` | 38.6% | 52.7% | 22.2% | 0.246 |
+| Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| `lexical` | 36.0% | 44.0% | 0.0% | 0/27 | 5/27 | 0.206 |
+| `char_tfidf` | 35.9% | 44.2% | 3.7% | 1/27 | 5/27 | 0.214 |
+| `hybrid` | 40.6% | 45.4% | 3.7% | 1/27 | 5/27 | 0.219 |
+| `graph` | 38.6% | 52.7% | 22.2% | 6/27 | 4/27 | 0.246 |
 
-Hybrid minus lexical recall@10: **1.4%**.
-Hybrid minus lexical complete@10: **3.7%**.
-Graph minus hybrid recall@10: **7.3%**.
+Held-out contract-router firing: **19/27 (70.4%)**; release floor: **66.7%**.
+Expected-contract top-1 agreement: **14/27 (51.9%)**; this remains diagnostic because the set is synthetic and clustered.
+Target clusters: **9**, with cluster sizes `[3, 3, 3, 3, 3, 3, 3, 3, 3]`; percentage differences are therefore not independent observations.
+Hybrid versus lexical complete@10: **1/27** versus **0/27**; hybrid zero-recall@10: **5/27**.
+Graph versus hybrid complete@10: **6/27** versus **1/27**.
 
-| Held-out case | Audience | Lexical complete@10 | TF-IDF complete@10 | Hybrid complete@10 | Graph complete@10 |
-| --- | --- | --- | --- | --- | --- |
-| `HOLDOUT-GRAPH-STUDENT` | `student` | no | no | no | yes |
-| `HOLDOUT-GRAPH-SOFTWARE` | `software_engineer` | no | no | no | no |
-| `HOLDOUT-GRAPH-POWER` | `power_engineer` | no | no | no | no |
-| `HOLDOUT-YSPLIT-STUDENT` | `student` | no | no | no | yes |
-| `HOLDOUT-YSPLIT-SOFTWARE` | `software_engineer` | no | no | no | no |
-| `HOLDOUT-YSPLIT-POWER` | `power_engineer` | no | no | no | no |
-| `HOLDOUT-YBUS-STUDENT` | `student` | no | no | no | yes |
-| `HOLDOUT-YBUS-SOFTWARE` | `software_engineer` | no | no | no | no |
-| `HOLDOUT-YBUS-POWER` | `power_engineer` | no | no | no | no |
-| `HOLDOUT-PARALLEL-STUDENT` | `student` | no | no | no | no |
-| `HOLDOUT-PARALLEL-SOFTWARE` | `software_engineer` | no | no | no | no |
-| `HOLDOUT-PARALLEL-POWER` | `power_engineer` | no | no | no | no |
-| `HOLDOUT-RADIAL-STUDENT` | `student` | no | no | no | no |
-| `HOLDOUT-RADIAL-SOFTWARE` | `software_engineer` | no | yes | yes | yes |
-| `HOLDOUT-RADIAL-POWER` | `power_engineer` | no | no | no | no |
-| `HOLDOUT-KRON-STUDENT` | `student` | no | no | no | no |
-| `HOLDOUT-KRON-SOFTWARE` | `software_engineer` | no | no | no | no |
-| `HOLDOUT-KRON-POWER` | `power_engineer` | no | no | no | no |
-| `HOLDOUT-SEQUENCE-STUDENT` | `student` | no | no | no | no |
-| `HOLDOUT-SEQUENCE-SOFTWARE` | `software_engineer` | no | no | no | yes |
-| `HOLDOUT-SEQUENCE-POWER` | `power_engineer` | no | no | no | yes |
-| `HOLDOUT-GROUND-STUDENT` | `student` | no | no | no | no |
-| `HOLDOUT-GROUND-SOFTWARE` | `software_engineer` | no | no | no | no |
-| `HOLDOUT-GROUND-POWER` | `power_engineer` | no | no | no | no |
-| `HOLDOUT-DECISION-STUDENT` | `student` | no | no | no | no |
-| `HOLDOUT-DECISION-SOFTWARE` | `software_engineer` | no | no | no | no |
-| `HOLDOUT-DECISION-POWER` | `power_engineer` | no | no | no | no |
+| Held-out case | Audience | Expected route | Observed top-1 | Router fired | Lexical complete@10 | TF-IDF complete@10 | Hybrid complete@10 | Graph complete@10 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| `HOLDOUT-GRAPH-STUDENT` | `student` | `one-universal-network-graph` | `one-universal-network-graph` | yes | no | no | no | yes |
+| `HOLDOUT-GRAPH-SOFTWARE` | `software_engineer` | `one-universal-network-graph` | `none` | no | no | no | no | no |
+| `HOLDOUT-GRAPH-POWER` | `power_engineer` | `one-universal-network-graph` | `radial-is-representation-independent` | yes | no | no | no | no |
+| `HOLDOUT-YSPLIT-STUDENT` | `student` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | yes |
+| `HOLDOUT-YSPLIT-SOFTWARE` | `software_engineer` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
+| `HOLDOUT-YSPLIT-POWER` | `power_engineer` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
+| `HOLDOUT-YBUS-STUDENT` | `student` | `nodal-operator-is-source-network` | `none` | no | no | no | no | yes |
+| `HOLDOUT-YBUS-SOFTWARE` | `software_engineer` | `nodal-operator-is-source-network` | `none` | no | no | no | no | no |
+| `HOLDOUT-YBUS-POWER` | `power_engineer` | `nodal-operator-is-source-network` | `none` | no | no | no | no | no |
+| `HOLDOUT-PARALLEL-STUDENT` | `student` | `parallel-admittance-implies-decision-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
+| `HOLDOUT-PARALLEL-SOFTWARE` | `software_engineer` | `parallel-admittance-implies-decision-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
+| `HOLDOUT-PARALLEL-POWER` | `power_engineer` | `parallel-admittance-implies-decision-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
+| `HOLDOUT-RADIAL-STUDENT` | `student` | `radial-is-representation-independent` | `none` | no | no | no | no | no |
+| `HOLDOUT-RADIAL-SOFTWARE` | `software_engineer` | `radial-is-representation-independent` | `radial-is-representation-independent` | yes | no | yes | yes | yes |
+| `HOLDOUT-RADIAL-POWER` | `power_engineer` | `radial-is-representation-independent` | `radial-is-representation-independent` | yes | no | no | no | no |
+| `HOLDOUT-KRON-STUDENT` | `student` | `kron-reduction-preserves-everything` | `kron-reduction-preserves-everything` | yes | no | no | no | no |
+| `HOLDOUT-KRON-SOFTWARE` | `software_engineer` | `kron-reduction-preserves-everything` | `kron-reduction-preserves-everything` | yes | no | no | no | no |
+| `HOLDOUT-KRON-POWER` | `power_engineer` | `kron-reduction-preserves-everything` | `kron-reduction-preserves-everything` | yes | no | no | no | no |
+| `HOLDOUT-SEQUENCE-STUDENT` | `student` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | no |
+| `HOLDOUT-SEQUENCE-SOFTWARE` | `software_engineer` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | yes |
+| `HOLDOUT-SEQUENCE-POWER` | `power_engineer` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | yes |
+| `HOLDOUT-GROUND-STUDENT` | `student` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | no |
+| `HOLDOUT-GROUND-SOFTWARE` | `software_engineer` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | no |
+| `HOLDOUT-GROUND-POWER` | `power_engineer` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | no |
+| `HOLDOUT-DECISION-STUDENT` | `student` | `terminal-equivalence-implies-opf-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
+| `HOLDOUT-DECISION-SOFTWARE` | `software_engineer` | `terminal-equivalence-implies-opf-equivalence` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
+| `HOLDOUT-DECISION-POWER` | `power_engineer` | `terminal-equivalence-implies-opf-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
 
 ## Audience consistency
 

@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - 'llm/**'
+      - 'claims/claims.toml'
+      - 'vocabulary/vocabulary.toml'
+      - 'docs/src/**'
       - 'schemas/llm-*.json'
       - 'scripts/*llm*.py'
       - 'scripts/check_neural_benchmark.py'
@@ -14,6 +17,9 @@ on:
   pull_request:
     paths:
       - 'llm/**'
+      - 'claims/claims.toml'
+      - 'vocabulary/vocabulary.toml'
+      - 'docs/src/**'
       - 'schemas/llm-*.json'
       - 'scripts/*llm*.py'
       - 'scripts/check_neural_benchmark.py'

@@ -22,6 +22,7 @@ MARKDOWN_OUTPUT = ROOT / "llm/generated/retrieval-evaluation.md"
 SCHEMA_VERSION = "0.1.0"
 RAW_LIMIT = 20
 REPORT_LIMIT = 10
+HELDOUT_ROUTER_FIRED_MIN = 2 / 3
 
 
 def sha256(path: Path) -> str:
@@ -89,15 +90,30 @@ def heldout_aggregate(rows: list[dict]) -> dict:
     count = len(rows)
     metrics = {}
     for method in ("lexical", "char_tfidf", "hybrid", "graph"):
+        recall_hits = sum(row[f"{method}_hits_at_10"] for row in rows)
+        recall_denominator = sum(row["expected_record_count"] for row in rows)
         metrics[method] = {
             "recall_at_5": ratio(sum(row[f"{method}_recall_at_5"] for row in rows), count),
             "recall_at_10": ratio(sum(row[f"{method}_recall_at_10"] for row in rows), count),
             "complete_at_10": ratio(sum(row[f"{method}_complete_at_10"] for row in rows), count),
+            "complete_at_10_count": sum(row[f"{method}_complete_at_10"] for row in rows),
+            "zero_recall_at_10_count": sum(row[f"{method}_recall_at_10"] == 0 for row in rows),
+            "recall_hits_at_10": recall_hits,
+            "recall_expected_records_at_10": recall_denominator,
             "mean_reciprocal_rank_at_20": ratio(
                 sum(row[f"{method}_mean_reciprocal_rank_at_20"] for row in rows), count
             ),
         }
     metrics["cases"] = count
+    target_clusters = defaultdict(int)
+    for row in rows:
+        target_clusters[tuple(row["expected_record_ids"])] += 1
+    metrics["target_cluster_count"] = len(target_clusters)
+    metrics["target_cluster_sizes"] = sorted(target_clusters.values())
+    metrics["router_fired_count"] = sum(row["route_fired"] for row in rows)
+    metrics["router_fired_rate"] = ratio(metrics["router_fired_count"], count)
+    metrics["router_top1_correct_count"] = sum(row["route_top1_correct"] for row in rows)
+    metrics["router_top1_accuracy"] = ratio(metrics["router_top1_correct_count"], count)
     metrics["hybrid_recall_at_10_minus_lexical"] = round(
         metrics["hybrid"]["recall_at_10"] - metrics["lexical"]["recall_at_10"], 6
     )
@@ -109,6 +125,15 @@ def heldout_aggregate(rows: list[dict]) -> dict:
 
 def evaluate_heldout(index: CorpusIndex) -> tuple[list[dict], dict]:
     cases = tomllib.loads(HELDOUT.read_text()).get("case", [])
+    expected_contracts = {}
+    for misconception in index.misconceptions:
+        key = tuple(sorted(
+            [f"claim:{claim_id}" for claim_id in misconception["mandatory_claim_ids"]]
+            + [f"concept:{concept_id}" for concept_id in misconception["mandatory_concept_ids"]]
+        ))
+        if key in expected_contracts:
+            raise ValueError("misconception contracts have duplicate mandatory evidence sets")
+        expected_contracts[key] = misconception["id"]
     rows = []
     evidence_types = {"claim_bundle", "concept_bundle"}
     seen_case_ids = set()
@@ -123,8 +148,13 @@ def evaluate_heldout(index: CorpusIndex) -> tuple[list[dict], dict]:
         unknown_records = expected - set(index.by_id)
         if unknown_records:
             raise ValueError(f"{case['case_id']} names unknown corpus records: {sorted(unknown_records)}")
+        expected_misconception_id = expected_contracts.get(tuple(sorted(expected)))
+        if expected_misconception_id is None:
+            raise ValueError(f"{case['case_id']} does not map to a unique misconception contract")
         if case["audience"] not in {"student", "software_engineer", "power_engineer"}:
             raise ValueError(f"{case['case_id']} has an unknown audience")
+        routes = index.route_misconceptions(case["question"])
+        route_top1 = routes[0]["misconception_id"] if routes else ""
         method_results = {}
         for method in ("lexical", "char_tfidf", "hybrid", "graph"):
             if method == "lexical":
@@ -140,6 +170,7 @@ def evaluate_heldout(index: CorpusIndex) -> tuple[list[dict], dict]:
                 "top_10": ids[:REPORT_LIMIT],
                 "recall_at_5": recall(expected, ids[:5]),
                 "recall_at_10": recall(expected, ids[:10]),
+                "hits_at_10": len(expected & set(ids[:10])),
                 "complete_at_10": expected <= set(ids[:10]),
                 "mean_reciprocal_rank_at_20": reciprocal_rank(expected, ids[:RAW_LIMIT]),
             }
@@ -148,6 +179,11 @@ def evaluate_heldout(index: CorpusIndex) -> tuple[list[dict], dict]:
                 "case_id": case["case_id"],
                 "audience": case["audience"],
                 "question": case["question"],
+                "expected_misconception_id": expected_misconception_id,
+                "route_top1": route_top1,
+                "route_fired": bool(routes),
+                "route_top1_correct": route_top1 == expected_misconception_id,
+                "expected_record_count": len(expected),
                 "expected_record_ids": sorted(expected),
                 **{
                     f"{method}_{metric}": value
@@ -248,6 +284,10 @@ def evaluate() -> dict:
     threshold_results["heldout_hybrid_recall_not_worse"] = (
         heldout_summary["hybrid_recall_at_10_minus_lexical"] >= 0.0
     )
+    thresholds["heldout_router_fired_rate"] = HELDOUT_ROUTER_FIRED_MIN
+    threshold_results["heldout_router_fired_rate"] = (
+        heldout_summary["router_fired_rate"] >= HELDOUT_ROUTER_FIRED_MIN
+    )
     return {
         "schema_version": SCHEMA_VERSION,
         "evaluation_id": f"retrieval-{index.manifest['corpus_id']}",
@@ -296,6 +336,7 @@ def percent(value: float) -> str:
 
 def markdown_report(result: dict) -> str:
     summary = result["summary"]
+    heldout_summary = result["heldout"]["summary"]
     lines = [
         "# LLM retrieval evaluation",
         "",
@@ -325,6 +366,9 @@ def markdown_report(result: dict) -> str:
         f"| Complete contract packets | {percent(summary['contract_complete_rate'])} | yes |",
         f"| Packets with qualification, failure, shorthand, and scope | {percent(summary['qualification_complete_rate'])} | yes |",
         f"| Corpus-release identity agreement | {percent(summary['release_match_rate'])} | yes |",
+        f"| Held-out contract-router firing | {heldout_summary['router_fired_count']}/{heldout_summary['cases']} ({percent(heldout_summary['router_fired_rate'])}) | yes |",
+        f"| Held-out expected-contract top-1 | {heldout_summary['router_top1_correct_count']}/{heldout_summary['cases']} ({percent(heldout_summary['router_top1_accuracy'])}) | diagnostic |",
+        f"| Held-out hybrid zero-recall@10 cases | {heldout_summary['hybrid']['zero_recall_at_10_count']}/{heldout_summary['cases']} | diagnostic |",
         "",
         "The diagnostic lexical scores are intentionally not release thresholds. A perfect contract score",
         "cannot be reported as a better ranker score: it measures whether an identified high-risk question",
@@ -332,31 +376,46 @@ def markdown_report(result: dict) -> str:
         "",
         "## Held-out paraphrase benchmark",
         "",
-        "These questions are not used by the contract router. They test ordinary retrieval generalization",
-        "against synthetic paraphrases across the three audiences.",
+        "These questions are not used by the contract router during corpus construction. They test ordinary",
+        "retrieval and routing generalization against synthetic paraphrases across the three audiences.",
+        "They are not human-validated evidence: 27 cases are three audience phrasings for nine target",
+        "evidence sets, so the effective target count is nine rather than 27 independent questions.",
         "",
-        "| Method | Recall@5 | Recall@10 | Complete@10 | Mean reciprocal rank@20 |",
-        "| --- | ---: | ---: | ---: | ---: |",
+        "| Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",
     ]
-    heldout_summary = result["heldout"]["summary"]
     for method in ("lexical", "char_tfidf", "hybrid", "graph"):
         metrics = heldout_summary[method]
         lines.append(
             f"| `{method}` | {percent(metrics['recall_at_5'])} | {percent(metrics['recall_at_10'])} | "
-            f"{percent(metrics['complete_at_10'])} | {metrics['mean_reciprocal_rank_at_20']:.3f} |"
+            f"{percent(metrics['complete_at_10'])} | {metrics['complete_at_10_count']}/{heldout_summary['cases']} | "
+            f"{metrics['zero_recall_at_10_count']}/{heldout_summary['cases']} | "
+            f"{metrics['mean_reciprocal_rank_at_20']:.3f} |"
         )
     lines += [
         "",
-        f"Hybrid minus lexical recall@10: **{percent(heldout_summary['hybrid_recall_at_10_minus_lexical'])}**.",
-        f"Hybrid minus lexical complete@10: **{percent(heldout_summary['hybrid_complete_at_10_minus_lexical'])}**.",
-        f"Graph minus hybrid recall@10: **{percent(heldout_summary['graph']['recall_at_10'] - heldout_summary['hybrid']['recall_at_10'])}**.",
+        f"Held-out contract-router firing: **{heldout_summary['router_fired_count']}/{heldout_summary['cases']} "
+        f"({percent(heldout_summary['router_fired_rate'])})**; release floor: **{percent(HELDOUT_ROUTER_FIRED_MIN)}**.",
+        f"Expected-contract top-1 agreement: **{heldout_summary['router_top1_correct_count']}/{heldout_summary['cases']} "
+        f"({percent(heldout_summary['router_top1_accuracy'])})**; this remains diagnostic because the set is synthetic and clustered.",
+        f"Target clusters: **{heldout_summary['target_cluster_count']}**, with cluster sizes "
+        f"`{heldout_summary['target_cluster_sizes']}`; percentage differences are therefore not independent observations.",
+        f"Hybrid versus lexical complete@10: **{heldout_summary['hybrid']['complete_at_10_count']}/"
+        f"{heldout_summary['cases']}** versus **{heldout_summary['lexical']['complete_at_10_count']}/"
+        f"{heldout_summary['cases']}**; hybrid zero-recall@10: **{heldout_summary['hybrid']['zero_recall_at_10_count']}/"
+        f"{heldout_summary['cases']}**.",
+        f"Graph versus hybrid complete@10: **{heldout_summary['graph']['complete_at_10_count']}/"
+        f"{heldout_summary['cases']}** versus **{heldout_summary['hybrid']['complete_at_10_count']}/"
+        f"{heldout_summary['cases']}**.",
         "",
-        "| Held-out case | Audience | Lexical complete@10 | TF-IDF complete@10 | Hybrid complete@10 | Graph complete@10 |",
-        "| --- | --- | --- | --- | --- | --- |",
+        "| Held-out case | Audience | Expected route | Observed top-1 | Router fired | Lexical complete@10 | TF-IDF complete@10 | Hybrid complete@10 | Graph complete@10 |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for row in result["heldout"]["cases"]:
         lines.append(
-            f"| `{row['case_id']}` | `{row['audience']}` | "
+            f"| `{row['case_id']}` | `{row['audience']}` | `{row['expected_misconception_id']}` | "
+            f"`{row['route_top1'] or 'none'}` | "
+            f"{'yes' if row['route_fired'] else 'no'} | "
             f"{'yes' if row['lexical_complete_at_10'] else 'no'} | "
             f"{'yes' if row['char_tfidf_complete_at_10'] else 'no'} | "
             f"{'yes' if row['hybrid_complete_at_10'] else 'no'} | "
@@ -436,7 +495,10 @@ def main() -> int:
         f"route_top1={percent(summary['route_top1_accuracy'])}; "
         f"lexical_complete_at_10={percent(summary['evidence_only_complete_at_10'])}; "
         f"contract_complete={percent(summary['contract_complete_rate'])}; "
-        f"heldout_hybrid_recall_at_10={percent(result['heldout']['summary']['hybrid']['recall_at_10'])}; {result['status']}"
+        f"heldout_hybrid_recall_at_10={percent(result['heldout']['summary']['hybrid']['recall_at_10'])}; "
+        f"heldout_router_fired={percent(result['heldout']['summary']['router_fired_rate'])}; "
+        f"heldout_hybrid_zero_recall_at_10={result['heldout']['summary']['hybrid']['zero_recall_at_10_count']}/"
+        f"{result['heldout']['summary']['cases']}; {result['status']}"
     )
     return 0 if result["status"] == "pass" else 1
 
