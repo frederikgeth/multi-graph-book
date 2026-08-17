@@ -1699,3 +1699,54 @@ assumptions = "each relation has a declared finite flag fibre; variable spaces a
 reviewer = ""
 review_date = ""
 unresolved_issue = "Review the incidence/hypergraph/factor-graph terminology across mathematical modeling, circuit, and graph-theory communities and add evaluated n-port examples beyond the existing transformer witnesses."
+
+[[claim]]
+claim_id = "GRAPH-SELF-LOOP-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'terminal_behavior', 'provenance']
+chapter = "docs/src/foundations/multigraphs-for-modelers.md"
+claim_text = "In the book's loopless bus--branch circuit specialization, ordinary edges connect distinct retained circuit nodes; a graph self-loop may remain in the source multigraph or arise from a topology quotient, but it is not interchangeable with an electrical circuit loop or mesh, a grounded shunt, or a diagonal self-admittance term."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "literature_anchored_circuit_graph_boundary_and_loopy_laplacian_comparison"
+citation_keys = ["SeshuReed1961", "DorflerBullo2013", "SongHillLiu2017"]
+model_scope = "finite multigraph source objects, loopless bus--branch circuit views, grounded one-terminal factors, and nodal matrix supports"
+assumptions = "the circuit specialization declares distinct retained terminals for ordinary branches; graph and matrix layers retain their own semantics; literature uses self-loop terminology with more than one convention"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Obtain independent terminology review across graph theory, circuit topology, and power-system modeling communities."
+
+[[claim]]
+claim_id = "GRAPH-LOOPY-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'numerical_structure', 'provenance']
+chapter = "docs/src/foundations/multigraphs-for-modelers.md"
+claim_text = "Network-reduction and microgrid-stability literature uses loopy-Laplacian self-loop terms for grounded or differential-conductance diagonal effects; that matrix-level usage is distinct from the book's ordinary graph-loop convention with a zero signed-incidence column."
+status = "established_result"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "primary_literature_comparison"
+citation_keys = ["DorflerBullo2013", "SongHillLiu2017"]
+model_scope = "weighted loopy Laplacians and differential-conductance abstractions used in electrical-network reduction and DC microgrid stability"
+assumptions = "the cited literature's matrix conventions are reported as source-specific conventions and are not substituted for the book's declared multigraph incidence convention"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Review whether the book should add a dedicated loopy-Laplacian notation for grounded diagonal terms in future editions."
+
+[[claim]]
+claim_id = "GRAPH-PI-COLLAPSE-001"
+exactness_object = "equation_identity"
+preservation_dimensions = ['terminal_behavior', 'numerical_structure', 'provenance']
+chapter = "docs/src/foundations/multigraphs-for-modelers.md"
+claim_text = "For a fixed linear two-terminal pi factor with series admittance Y_s and endpoint shunts Y_a and Y_b, identifying both terminals through the common attachment map T_pi=[1,1]^T gives T_pi^T Y_pi T_pi=Y_a+Y_b, so the series contribution cancels and the exact nodal image is a one-terminal constant-admittance shunt under the declared coordinate and reference assumptions."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "terminal_map_derivation_and_executable_pi_collapse_witness"
+citation_keys = ["SeshuReed1961", "OpenDSSLine", "HoRuehliBrennan1975"]
+model_scope = "fixed linear scalar nominal-pi two-port factors with common reference, identity terminal coordinates, and a nodal voltage target"
+assumptions = "both terminal maps identify the same retained coordinate; shunts are grounded in the same reference; no ideal source, transformer ratio, coupling, control, dynamic state, or member-level observation is queried"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend and independently review the block-coordinate result for multiphase pi factors, transformer maps, singular primitives, and retained branch-current or rating queries."

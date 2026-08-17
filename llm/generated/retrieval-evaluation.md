@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `fba3ea042f6b778c45253793a9d9cee7d083a7ba76d5aab446d868d69ac0ada0`<br>
+**Corpus hash:** `67ff0269eaf5deb97a03d42120f42726f8a7ddcb75057a19f8913553fb827220`<br>
 **Cases:** 27
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -43,16 +43,16 @@ evidence sets, so the effective target count is nine rather than 27 independent 
 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `lexical` | 36.0% | 43.3% | 0.0% | 0/27 | 5/27 | 0.205 |
-| `char_tfidf` | 34.4% | 43.3% | 0.0% | 0/27 | 5/27 | 0.212 |
-| `hybrid` | 39.1% | 43.9% | 0.0% | 0/27 | 5/27 | 0.222 |
-| `graph` | 38.6% | 53.4% | 22.2% | 6/27 | 4/27 | 0.253 |
+| `lexical` | 36.0% | 42.7% | 0.0% | 0/27 | 5/27 | 0.204 |
+| `char_tfidf` | 33.7% | 42.0% | 0.0% | 0/27 | 5/27 | 0.209 |
+| `hybrid` | 39.0% | 43.9% | 0.0% | 0/27 | 5/27 | 0.218 |
+| `graph` | 39.9% | 53.9% | 25.9% | 7/27 | 5/27 | 0.264 |
 
 Held-out contract-router firing: **19/27 (70.4%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **14/27 (51.9%)**; this remains diagnostic because the set is synthetic and clustered.
 Target clusters: **9**, with cluster sizes `[3, 3, 3, 3, 3, 3, 3, 3, 3]`; percentage differences are therefore not independent observations.
 Hybrid versus lexical complete@10: **0/27** versus **0/27**; hybrid zero-recall@10: **5/27**.
-Graph versus hybrid complete@10: **6/27** versus **0/27**.
+Graph versus hybrid complete@10: **7/27** versus **0/27**.
 
 | Held-out case | Audience | Expected route | Observed top-1 | Router fired | Lexical complete@10 | TF-IDF complete@10 | Hybrid complete@10 | Graph complete@10 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -79,7 +79,7 @@ Graph versus hybrid complete@10: **6/27** versus **0/27**.
 | `HOLDOUT-SEQUENCE-POWER` | `power_engineer` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | yes |
 | `HOLDOUT-GROUND-STUDENT` | `student` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | no |
 | `HOLDOUT-GROUND-SOFTWARE` | `software_engineer` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | no |
-| `HOLDOUT-GROUND-POWER` | `power_engineer` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | no |
+| `HOLDOUT-GROUND-POWER` | `power_engineer` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | yes |
 | `HOLDOUT-DECISION-STUDENT` | `student` | `terminal-equivalence-implies-opf-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
 | `HOLDOUT-DECISION-SOFTWARE` | `software_engineer` | `terminal-equivalence-implies-opf-equivalence` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
 | `HOLDOUT-DECISION-POWER` | `power_engineer` | `terminal-equivalence-implies-opf-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |

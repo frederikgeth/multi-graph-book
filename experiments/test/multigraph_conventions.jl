@@ -82,3 +82,29 @@ end
     simplified_incidence = [-1; 1;;]
     @test size(simplified_incidence, 2) - rank(Float64.(simplified_incidence)) == 0
 end
+
+@testset "collapsed linear pi factor" begin
+    series_admittance = 2.0 + 0.5im
+    from_shunt = 0.3 + 0.1im
+    to_shunt = 0.4 + 0.2im
+    pi_admittance = [
+        from_shunt + series_admittance  -series_admittance
+        -series_admittance               to_shunt + series_admittance
+    ]
+    same_node_map = reshape([1.0, 1.0], 2, 1)
+    nodal_stamp = same_node_map' * pi_admittance * same_node_map
+    series_only = [
+         series_admittance  -series_admittance
+        -series_admittance   series_admittance
+    ]
+
+    # Identifying the two terminals cancels the series path and preserves both
+    # grounded shunts as a one-terminal constant-admittance stamp.
+    @test nodal_stamp[1, 1] ≈ from_shunt + to_shunt
+    @test (same_node_map' * series_only * same_node_map)[1, 1] ≈ 0.0 + 0.0im
+
+    # The compiled diagonal term is not the zero column of a graph loop.
+    graph_loop_incidence = zeros(2, 1)
+    @test graph_loop_incidence * graph_loop_incidence' == zeros(2, 2)
+    @test nodal_stamp[1, 1] != 0.0 + 0.0im
+end

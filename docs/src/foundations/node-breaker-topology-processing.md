@@ -132,6 +132,13 @@ rejected by the target formulation. It does not call the loop a shunt: both of
 its source terminals belong to the same quotient node, whereas a shunt has a
 declared reference or grounding relation.
 
+If one of these source members is a two-terminal π factor, the contraction
+does not authorize deleting it as a graph loop. Compile its two terminal maps
+first; under the fixed linear assumptions in [Multigraphs for expert modelers](@ref
+multigraphs-for-modelers), the series contribution may cancel while its endpoint
+shunts combine into a one-terminal nodal stamp. Other factors may require
+modified nodal or tableau variables and must remain explicit.
+
 ### Rooted feeder view after topology processing
 
 After compiling a resolved state, a radiality check may construct a rooted

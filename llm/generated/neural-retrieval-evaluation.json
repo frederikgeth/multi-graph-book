@@ -2757,8 +2757,8 @@
   ],
   "compatibility": {
     "current_corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "current_corpus_sha256": "fba3ea042f6b778c45253793a9d9cee7d083a7ba76d5aab446d868d69ac0ada0",
-    "current_record_count": 690,
+    "current_corpus_sha256": "67ff0269eaf5deb97a03d42120f42726f8a7ddcb75057a19f8913553fb827220",
+    "current_record_count": 695,
     "required_action": "rerun both pinned neural retriever and reranker before comparing them with the current corpus",
     "status": "archived_prior_corpus"
   },

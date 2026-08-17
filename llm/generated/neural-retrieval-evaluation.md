@@ -5,7 +5,7 @@
 **Model:** `sentence-transformers/all-MiniLM-L6-v2` at revision `ea78891063587eb050ed4166b20062eaf978037c`
 **Embedding artifact hash:** `507dfbc0b17cb6138f2a9f9e0894df3198cab2bebb23fc46759021e6ee458d02`
 **Current-corpus compatibility:** `archived_prior_corpus`
-**Current corpus hash:** `fba3ea042f6b778c45253793a9d9cee7d083a7ba76d5aab446d868d69ac0ada0`
+**Current corpus hash:** `67ff0269eaf5deb97a03d42120f42726f8a7ddcb75057a19f8913553fb827220`
 **Required action:** rerun both pinned neural retriever and reranker before comparing them with the current corpus
 
 This report is an opt-in comparison. It does not promote neural retrieval into the release path

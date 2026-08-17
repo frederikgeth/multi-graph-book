@@ -294,6 +294,39 @@ engineer can determine which assets or nodal elements are represented by that
 object; and the core identities are covered by executable witnesses and stable
 literature anchors.
 
+#### R7 — Clarify self-loops, loopless circuit graphs, and collapsed two-port factors
+
+This tranche closes the remaining ambiguity between a graph-theoretic
+self-loop, an electrical circuit loop, a grounded shunt, and a two-terminal
+factor whose terminals become identified during topology processing. It extends
+R6 without changing the adopted multigraph object or treating a nodal matrix
+as the canonical source model.
+
+- [x] review graph-incidence, loopy-Laplacian, network-reduction, and
+  power-system π-model precedents;
+- [x] state the loopless bus--branch circuit specialization and distinguish
+  graph self-loops from electrical loops, meshes, and diagonal self-admittance;
+- [x] document that literature uses “loopy Laplacian” for some grounded or
+  differential-conductance diagonal terms, and keep that convention separate
+  from this book's zero-incidence graph-loop convention;
+- [x] derive the terminal-map compilation of a fixed linear π section after
+  both terminals are identified, including the exact constant-admittance
+  shunt result;
+- [x] state refusal conditions for ideal sources, transformers, coupling,
+  controls, nonmatching coordinates, and member-level observations;
+- [x] integrate the rule with node--breaker contraction, nodal lowering, and
+  load/generator placement without deleting source-factor identity;
+- [x] add literature-anchored claims, an executable π-collapse witness, and
+  synchronized accessibility/release artifacts;
+- [ ] commission expert review of the circuit-graph boundary and the use of
+  “self-loop” across graph-theory and power-system communities as part of R4.
+
+**R7 exit criterion:** a reader can decide whether a self-loop is a source
+graph object, a contraction artifact, a grounded one-port abstraction, or a
+compiled two-port result; can reproduce the exact π-section collapse under its
+assumptions; and can identify when the collapse is invalid or insufficient for
+the requested electrical query.
+
 #### Implementation order
 
 Work in this order: **R0 → R1 → R2 → R3 → R4** for the external-review
@@ -305,6 +338,9 @@ otherwise it belongs in the research agenda rather than the active queue.
 R6 may proceed as a self-contained reference tranche. Its definitions must be
 integrated before its claims are promoted, and its externally reviewed status
 remains subject to R4.
+R7 may proceed as a focused pre-review clarification of R6. Its π-collapse
+identity is a formulation-scoped assembly result, not a universal rule for
+all self-loops, circuit elements, or power-system study modes.
 
 ### Latest Part I review tranche (complete)
 

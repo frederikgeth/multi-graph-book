@@ -210,6 +210,103 @@ erase precisely the grounding effect being modeled.
 The compatible incidence/adjacency/Laplacian identity and the graph-loop versus
 grounded-shunt distinction are registered as `GRAPH-MATRIX-001`.
 
+### Self-loops, circuit branches, and collapsed two-port factors
+
+The word *loop* changes meaning at the boundary between graph theory and
+circuit theory. A graph self-loop is one identified edge whose two flags map to
+one vertex. An electrical loop or mesh is a closed branch path used by a
+particular circuit formulation. A graph self-loop may be a one-edge circuit in
+the graphic-matroid sense, but it is not thereby an ordinary circuit branch
+between two distinct retained nodes.
+
+Many incidence-based network texts use loopless graphs as their circuit
+specialization: every ordinary branch has a distinct source and sink node, and
+the incidence column records the difference of the two node potentials
+[SeshuReed1961](@cite). This is a useful specialization, not a universal
+definition of every graph used in electrical modeling. Network-reduction
+literature also uses *loopy Laplacian* for diagonal grounded terms, including
+positive or negative differential conductances; that usage is a matrix-level
+abstraction and must not be silently identified with the graph-loop convention
+above [DorflerBullo2013, SongHillLiu2017](@cite).
+
+The book therefore uses the following boundary:
+
+| Situation | Retain in the source model | Possible compiled view |
+|:--|:--|:--|
+| ordinary two-terminal branch with distinct retained terminals | identified factor and both terminal maps | loopless bus--branch edge or terminal relation |
+| graph self-loop in the multigraph | edge identity, flags, state, and provenance | omitted from distinct-node connectivity, or retained as a declared degenerate factor |
+| one-terminal shunt or grounded load | constitutive relation and attachment map | diagonal nodal stamp or explicit reference edge |
+| two-terminal factor after terminal identification | original factor, its two ports, and the quotient map | a compiled one-terminal relation only after the factor equation is assembled |
+
+Thus a self-loop produced by node contraction is not automatically deleted and
+not automatically called a shunt. The safe order is:
+
+1. retain the source factor and its terminal maps;
+2. apply the topology-state quotient to those maps;
+3. compile the factor in the declared equation target; and
+4. simplify only after checking the requested observations, limits, controls,
+   and recovery map.
+
+This order matters because graph projection and constitutive compilation need
+not commute. A loopless connectivity view may omit the self-loop while the
+compiled factor still contributes a diagonal term or a constraint.
+
+#### Exact collapse of a fixed linear π section
+
+Let a fixed two-port π factor have series admittance ``Y_s`` and terminal
+shunt admittances ``Y_a`` and ``Y_b``. Its terminal admittance relation is
+
+```math
+\mathbf i_\pi=Y_\pi\mathbf v_\pi,
+\qquad
+Y_\pi=
+\begin{bmatrix}
+Y_a+Y_s & -Y_s\\
+-Y_s & Y_b+Y_s
+\end{bmatrix}.
+```
+
+For retained node-voltage coordinates ``\mathbf u``, let ``T_\pi`` map
+retained voltages to the two terminal voltages. The nodal contribution is the
+standard terminal-map assembly
+
+```math
+Y^{\mathrm N}_\pi=T_\pi^{\mathsf T}Y_\pi T_\pi.
+```
+
+If topology processing identifies both terminals with the same retained
+coordinate and there is no transformer or coordinate conversion, then
+``T_\pi=[1\;1]^{\mathsf T}`` and
+
+```math
+Y^{\mathrm N}_\pi
+=\begin{bmatrix}1&1\end{bmatrix}Y_\pi
+  \begin{bmatrix}1\\1\end{bmatrix}
+=Y_a+Y_b.
+```
+
+The series term cancels because its terminal voltage difference is zero. The
+two shunts remain and combine into one constant-admittance, equivalently
+constant-impedance, one-terminal nodal contribution. This is consistent with
+power-system π models, where the line is a two-port and shunt terms enter the
+nodal diagonal rather than the off-diagonal bus coupling [OpenDSSLine,
+SeshuReed1961](@cite).
+
+This identity does **not** license a universal “self-loop deletion” rule. It
+does not preserve a branch-current observation, member rating, loss
+allocation, switching decision, or source provenance. It also does not apply
+without further analysis when the factor contains an ideal voltage source,
+zero-impedance constraint, nontrivial transformer ratio, mutual coupling,
+dependent source, control law, dynamic state, or incompatible terminal
+coordinates. Such factors belong in modified nodal, tableau, or port--factor
+formulations until an exact elimination and recovery map has been established
+[HoRuehliBrennan1975, OpenDSSSolutionTechniques](@cite).
+
+The loopless circuit specialization, the literature distinction between graph
+self-loops and loopy diagonal terms, and the guarded π-collapse identity are
+registered as `GRAPH-SELF-LOOP-001`, `GRAPH-LOOPY-001`, and
+`GRAPH-PI-COLLAPSE-001`.
+
 ## Connectivity and cycles
 
 Graph loops do not connect distinct vertices. Connected components are

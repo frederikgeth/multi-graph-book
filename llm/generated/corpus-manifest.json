@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "fba3ea042f6b778c45253793a9d9cee7d083a7ba76d5aab446d868d69ac0ada0",
+  "corpus_sha256": "67ff0269eaf5deb97a03d42120f42726f8a7ddcb75057a19f8913553fb827220",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -15,11 +15,11 @@
   "evaluation_case_count": 27,
   "heldout_case_count": 27,
   "misconception_count": 9,
-  "record_count": 690,
+  "record_count": 695,
   "record_counts": {
-    "claim_bundle": 100,
+    "claim_bundle": 103,
     "concept_bundle": 17,
-    "section": 573
+    "section": 575
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -32,7 +32,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "6214c5d025f5a8084be7f55698c14274fe01f952649b7374b35a7eb7717282c8"
+      "sha256": "82ed0b0ca10d85827450a66924cef288d4142872fe26d238ee82782f6d712d33"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -72,7 +72,7 @@
     },
     {
       "path": "docs/src/foundations/circuit-formulations-and-lowering.md",
-      "sha256": "cd91574be4687eea562657d906058d151c8fdc330a28e6ac581b3a6f61736e2a"
+      "sha256": "82bf345eeaa3dd8ed3f1b080208d45796e4f1323b3089f6bf5efed515d587037"
     },
     {
       "path": "docs/src/foundations/compiled-views-and-graph-surgery.md",
@@ -100,15 +100,15 @@
     },
     {
       "path": "docs/src/foundations/load-models-and-decision-dependence.md",
-      "sha256": "5232a6a18dfb64b546ccde67987dfb5026bfaf144a71ee7c54c0028ba91c8828"
+      "sha256": "f28ad6e9ba9c384f6094802d0454c3ce4e13d56e8d8cd26d44b5c0a6d07ab055"
     },
     {
       "path": "docs/src/foundations/multigraphs-for-modelers.md",
-      "sha256": "a6a6aa236b584b4c24a2d8700333a5cf693aa45cbcf59436950dbe3b53e4c8fa"
+      "sha256": "668e8badf48bb730252b9ad6ea57c0a4af12ad39d52a4a42b57a7936f09ab3a9"
     },
     {
       "path": "docs/src/foundations/node-breaker-topology-processing.md",
-      "sha256": "d8a41cea7b996f822e6a01578d35df0e25726e8dadeb75fc75e5aa0cc549fb7b"
+      "sha256": "637edada4e7af620f85721d3d25fbe1b0b4d952acb3f3ee7d0b1cad6f1d60846"
     },
     {
       "path": "docs/src/foundations/notation-and-conventions.md",
