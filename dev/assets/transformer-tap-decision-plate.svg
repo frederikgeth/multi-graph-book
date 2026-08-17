@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="850" viewBox="0 0 1500 850">
+<title>The optimal tap belongs to the decision problem, not the transformer</title>
+<desc>Same device and finite tap domain; different boundary/objective embeddings select different decisions.</desc>
+<rect width="100%" height="100%" fill="white"/>
+
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:27px;font-weight:bold}.sub{font-size:15px;fill:#5f6b76}
+.head{font-size:18px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#46525d}.tiny{font-size:12px;fill:#46525d}
+.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.good{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.warn{fill:#fff3dc;stroke:#a36516;stroke-width:2}.bad{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.ink{stroke:#17212b;stroke-width:2}.ok{fill:#2f6b3b}.red{fill:#8a3232}.amber{fill:#a36516}
+</style>
+
+<text x="35" y="40" class="title" text-anchor="start">The optimal tap belongs to the decision problem, not the transformer</text>
+<text x="35" y="68" class="sub" text-anchor="start">Same device and finite tap domain; different boundary/objective embeddings select different decisions.</text>
+<rect x="45" y="120" width="420" height="510" rx="10" class="panel"/>
+<rect x="510" y="120" width="420" height="510" rx="10" class="good"/>
+<rect x="975" y="120" width="460" height="510" rx="10" class="warn"/>
+<text x="70" y="160" class="head" text-anchor="start">local fixed-boundary metric</text>
+<text x="70" y="200" class="body" text-anchor="start">tap domain {0.95, 1.00, 1.05}</text>
+<text x="70" y="270" class="tiny" text-anchor="start">selected tap</text>
+<text x="70" y="305" class="head" text-anchor="start">1.05</text>
+<text x="70" y="370" class="tiny" text-anchor="start">what is optimized</text>
+<text x="70" y="398" class="small" text-anchor="start">transformer-local leakage metric</text>
+<text x="70" y="465" class="tiny" text-anchor="start">boundary</text>
+<text x="70" y="493" class="small" text-anchor="start">prescribed voltage</text>
+<text x="535" y="160" class="head" text-anchor="start">network AC embedding</text>
+<text x="535" y="200" class="body" text-anchor="start">tap domain {0.95, 1.00, 1.05}</text>
+<text x="535" y="270" class="tiny" text-anchor="start">selected tap</text>
+<text x="535" y="305" class="head" text-anchor="start">0.95</text>
+<text x="535" y="370" class="tiny" text-anchor="start">served fraction</text>
+<text x="535" y="398" class="head" text-anchor="start">1.2305865</text>
+<text x="535" y="465" class="tiny" text-anchor="start">what is optimized</text>
+<text x="535" y="493" class="small" text-anchor="start">network served load with AC limits</text>
+<text x="1000" y="160" class="head" text-anchor="start">same device ≠ same decision</text>
+<text x="1000" y="210" class="body" text-anchor="start">The network map is pointwise exact</text>
+<text x="1000" y="250" class="small" text-anchor="start">at all three taps; the embedding changes</text>
+<text x="1000" y="270" class="small" text-anchor="start">which objective and boundary are active.</text>
+<text x="1000" y="350" class="tiny" text-anchor="start">freeze at 1.00</text>
+<text x="1000" y="382" class="head" text-anchor="start">served-fraction loss 0.0601126</text>
+<text x="1000" y="435" class="tiny" text-anchor="start">independent reproduction</text>
+<text x="1000" y="462" class="small" text-anchor="start">max objective difference 3.14e-10</text>
+<text x="1000" y="530" class="tiny" text-anchor="start">lesson</text>
+<text x="1000" y="557" class="small" text-anchor="start">preserve the decision map, not</text>
+<text x="1000" y="576" class="small" text-anchor="start">just the device equation</text>
+<rect x="45" y="685" width="1390" height="85" rx="10" class="panel"/>
+<text x="70" y="725" class="body" text-anchor="start">The 1.05 and 0.95 choices are complementary witnesses, not contradictory recommendations.</text>
+<text x="70" y="750" class="small" text-anchor="start">A tap value has semantics only relative to the declared objective, boundary variables, constraints, and state domain.</text>
+</svg>

@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200">
+<title>Special semantics in power-network visual language</title>
+<desc>Neutral grounding, nominal-pi shunts, phase-selective switching, and an n-winding leakage-factor graph are shown with explicit identity and edge provenance warnings.</desc>
+<defs><marker id="controlarrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#477a55"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}
+.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#46525d}.tiny{font-size:12px;fill:#46525d}
+.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.asset{fill:#d9eef8;stroke:#245b7a;stroke-width:2}
+.factor{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.aux{fill:#e4f4e7;stroke:#477a55;stroke-width:2}
+.wire{stroke:#245b7a;stroke-width:3;fill:none}.bundle{stroke:#245b7a;stroke-width:2;fill:none}
+.factorline{stroke:#8a4f13;stroke-width:2.5;stroke-dasharray:7 5;fill:none}
+.control{stroke:#477a55;stroke-width:2.5;stroke-dasharray:3 5;fill:none;marker-end:url(#controlarrow)}
+.warn{fill:#f4e5e5;stroke:#8a3030;stroke-width:2}.earth{stroke:#17212b;stroke-width:2;fill:none}
+</style>
+
+<text x="36" y="42" class="title" text-anchor="start">Special semantics that a compressed diagram can hide</text>
+<text x="36" y="70" class="sub" text-anchor="start">Keep grounding, shunts, per-pole states, and factor provenance explicit before lowering.</text>
+<rect x="36" y="95" width="748" height="470" rx="12" class="panel"/>
+<text x="58" y="129" class="head" text-anchor="start">A. Neutral grounding is an explicit factor</text>
+<text x="58" y="153" class="small" text-anchor="start">A ground symbol is not merely a datum: it may carry impedance, current, ownership, and a limit</text>
+<text x="70" y="190" class="head" text-anchor="start">single-line badge</text>
+<text x="70" y="220" class="body" text-anchor="start">L1  4-wire</text>
+<path d="M190 215 L340 215" class="wire"/>
+<rect x="340" y="190" width="92" height="50" rx="8" class="asset"/>
+<text x="386" y="222" class="body" text-anchor="middle">GND?</text>
+<text x="70" y="300" class="head" text-anchor="start">multi-line expansion</text>
+<text x="90" y="350" class="body" text-anchor="start">a</text>
+<path d="M120 345 L310 345" class="bundle"/>
+<text x="90" y="384" class="body" text-anchor="start">b</text>
+<path d="M120 379 L310 379" class="bundle"/>
+<text x="90" y="418" class="body" text-anchor="start">c</text>
+<path d="M120 413 L310 413" class="bundle"/>
+<text x="90" y="452" class="body" text-anchor="start">n</text>
+<path d="M120 447 L310 447" class="bundle"/>
+<path d="M310 447 L390 447" class="wire"/>
+<rect x="390" y="420" width="110" height="54" rx="8" class="factor"/>
+<text x="445" y="453" class="body" text-anchor="middle">Z_g</text>
+<path d="M540 447 L540 465" class="earth"/>
+<path d="M522 465 L558 465" class="earth"/>
+<path d="M528 471 L552 471" class="earth"/>
+<path d="M534 477 L546 477" class="earth"/>
+<text x="585" y="442" class="body" text-anchor="start">I_n &lt;= I_n_max</text>
+<text x="585" y="470" class="small" text-anchor="start">neutral limit retained</text>
+<rect x="70" y="505" width="650" height="38" rx="7" class="warn"/>
+<text x="88" y="530" class="small" text-anchor="start">If neutral is eliminated, keep its recovery map and feasible current limit.</text>
+<rect x="816" y="95" width="748" height="470" rx="12" class="panel"/>
+<text x="838" y="129" class="head" text-anchor="start">B. Nominal-pi shunts remain terminal semantics</text>
+<text x="838" y="153" class="small" text-anchor="start">Do not silently absorb endpoint shunts into a line or transformer when direction and ownership matter</text>
+<text x="850" y="190" class="head" text-anchor="start">bus i</text>
+<text x="1490" y="190" class="head" text-anchor="start">bus j</text>
+<path d="M900 225 L1060 225" class="wire"/>
+<rect x="1060" y="195" width="150" height="60" rx="8" class="factor"/>
+<text x="1135" y="232" class="head" text-anchor="middle">Z_l</text>
+<path d="M1210 225 L1470 225" class="wire"/>
+<path d="M990 225 L990 330" class="wire"/>
+<rect x="915" y="320" width="150" height="62" rx="8" class="factor"/>
+<text x="990" y="357" class="body" text-anchor="middle">Y_from</text>
+<path d="M1310 225 L1310 330" class="wire"/>
+<rect x="1275" y="334" width="70" height="42" rx="8" class="factor"/>
+<text x="1310" y="360" class="body" text-anchor="middle">Y_to</text>
+<path d="M990 382 L990 400" class="earth"/>
+<path d="M972 400 L1008 400" class="earth"/>
+<path d="M978 406 L1002 406" class="earth"/>
+<path d="M984 412 L996 412" class="earth"/>
+<path d="M1310 376 L1310 394" class="earth"/>
+<path d="M1292 394 L1328 394" class="earth"/>
+<path d="M1298 400 L1322 400" class="earth"/>
+<path d="M1304 406 L1316 406" class="earth"/>
+<text x="850" y="425" class="small" text-anchor="start">terminal currents</text>
+<text x="985" y="425" class="body" text-anchor="start">I_i = I_series + Y_from V_i</text>
+<text x="985" y="452" class="body" text-anchor="start">I_j = -I_series + Y_to V_j</text>
+<text x="850" y="480" class="small" text-anchor="start">asymmetry</text>
+<text x="985" y="480" class="body" text-anchor="start">Y_from != Y_to; I_ij != -I_ji</text>
+<rect x="850" y="505" width="670" height="38" rx="7" class="warn"/>
+<text x="868" y="530" class="small" text-anchor="start">A line-only edge cannot represent these shunts without a declared target and loss ledger.</text>
+<rect x="36" y="595" width="748" height="520" rx="12" class="panel"/>
+<text x="58" y="629" class="head" text-anchor="start">C. Phase-selective switching has a vector state</text>
+<text x="58" y="653" class="small" text-anchor="start">A single switch identity can own several pole states; a radial orientation is not a substitute for this record</text>
+<text x="70" y="690" class="head" text-anchor="start">S1</text>
+<text x="125" y="690" class="small" text-anchor="start">pole</text>
+<text x="235" y="690" class="small" text-anchor="start">state</text>
+<text x="390" y="690" class="small" text-anchor="start">electrical consequence</text>
+<text x="125" y="740" class="body" text-anchor="start">a</text>
+<rect x="215" y="713" width="120" height="34" rx="7" class="asset"/>
+<text x="275" y="736" class="body" text-anchor="middle">closed</text>
+<text x="390" y="740" class="body" text-anchor="start">phase a connected</text>
+<path d="M90 735 L110 735" class="wire"/>
+<path d="M140 735 L205 735" class="bundle"/>
+<text x="125" y="794" class="body" text-anchor="start">b</text>
+<rect x="215" y="767" width="120" height="34" rx="7" class="warn"/>
+<text x="275" y="790" class="body" text-anchor="middle">open</text>
+<text x="390" y="794" class="body" text-anchor="start">phase b islanded</text>
+<path d="M90 789 L110 789" class="wire"/>
+<path d="M140 789 L205 789" class="bundle"/>
+<text x="125" y="848" class="body" text-anchor="start">c</text>
+<rect x="215" y="821" width="120" height="34" rx="7" class="asset"/>
+<text x="275" y="844" class="body" text-anchor="middle">closed</text>
+<text x="390" y="848" class="body" text-anchor="start">phase c connected</text>
+<path d="M90 843 L110 843" class="wire"/>
+<path d="M140 843 L205 843" class="bundle"/>
+<text x="125" y="902" class="body" text-anchor="start">n</text>
+<rect x="215" y="875" width="120" height="34" rx="7" class="warn"/>
+<text x="275" y="898" class="body" text-anchor="middle">open</text>
+<text x="390" y="902" class="body" text-anchor="start">neutral path open</text>
+<path d="M90 897 L110 897" class="wire"/>
+<path d="M140 897 L205 897" class="bundle"/>
+<text x="70" y="985" class="head" text-anchor="start">state scope</text>
+<text x="205" y="985" class="body" text-anchor="start">sigma_S = (sigma_a, sigma_b, sigma_c, sigma_n)</text>
+<text x="70" y="1020" class="head" text-anchor="start">map type</text>
+<text x="205" y="1020" class="body" text-anchor="start">state-conditioned quotient / surgery</text>
+<rect x="70" y="1045" width="650" height="42" rx="7" class="warn"/>
+<text x="88" y="1066" class="small" text-anchor="start">Never collapse pole states to one scalar open/closed flag without a guard.</text>
+<text x="88" y="1082" class="tiny" text-anchor="start">An open neutral may leave a floating, hazardous neutral.</text>
+<rect x="816" y="595" width="748" height="520" rx="12" class="panel"/>
+<text x="838" y="629" class="head" text-anchor="start">D. N-winding leakage graphs are factor decompositions</text>
+<text x="838" y="653" class="small" text-anchor="start">X1 is shown with three winding ports (n = 3); pairwise edges remain computational factors</text>
+<text x="850" y="690" class="head" text-anchor="start">one transformer asset</text>
+<rect x="850" y="710" width="270" height="260" rx="14" class="asset"/>
+<text x="985" y="745" class="head" text-anchor="middle">X1</text>
+<text x="985" y="770" class="small" text-anchor="middle">three winding ports</text>
+<path d="M915 850 L1060 850" class="factorline"/>
+<text x="992.5" y="846.0" class="tiny" text-anchor="middle">lambda_12</text>
+<path d="M915 850 L985 930" class="factorline"/>
+<text x="955.0" y="886.0" class="tiny" text-anchor="middle">lambda_13</text>
+<path d="M1060 850 L985 930" class="factorline"/>
+<text x="1027.5" y="886.0" class="tiny" text-anchor="middle">lambda_23</text>
+<circle cx="915" cy="850" r="24" class="factor"/>
+<text x="915" y="855" class="body" text-anchor="middle">W1</text>
+<circle cx="1060" cy="850" r="24" class="factor"/>
+<text x="1060" y="855" class="body" text-anchor="middle">W2</text>
+<circle cx="985" cy="930" r="24" class="factor"/>
+<text x="985" y="935" class="body" text-anchor="middle">W3</text>
+<text x="1170" y="700" class="head" text-anchor="start">edge provenance</text>
+<text x="1170" y="735" class="body" text-anchor="start">lambda_ij = leakage factor</text>
+<text x="1170" y="770" class="body" text-anchor="start">not a conductor</text>
+<text x="1170" y="805" class="body" text-anchor="start">not an outage/ownership asset</text>
+<rect x="1160" y="850" width="350" height="120" rx="9" class="warn"/>
+<text x="1180" y="885" class="head" text-anchor="start">Do not infer</text>
+<text x="1180" y="918" class="body" text-anchor="start">factor graph = physical graph</text>
+<text x="1180" y="947" class="body" text-anchor="start">or cycle = physical loop</text>
+<text x="850" y="1030" class="head" text-anchor="start">Compilation target</text>
+<text x="1025" y="1030" class="small" text-anchor="start">port-factor incidence, MNA, or guarded edge realization</text>
+<text x="850" y="1065" class="head" text-anchor="start">reverse map</text>
+<text x="1025" y="1065" class="small" text-anchor="start">retain X1 and lambda_ij provenance</text>
+<text x="36" y="1160" class="small" text-anchor="start">Every caption must state state scope, edge provenance, omitted semantics, and whether reverse recovery is available.</text>
+</svg>

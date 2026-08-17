@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">
+<title>Two routes into multiconductor power-network graph models</title>
+<desc>Simple graph theory and balanced transmission modelling take distinct routes through progressively richer representations and converge on preservation contracts.</desc>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#245b7a"/></marker><marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8a4f13"/></marker><marker id="arrow3" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#477a55"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}
+.title{font-size:28px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}
+.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}
+.body{font-size:15px}.small{font-size:13px;fill:#5f6b76}.tiny{font-size:12px;fill:#5f6b76}
+.graph{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.trans{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}
+.shared{fill:#e5f1e7;stroke:#477a55;stroke-width:2}.route{stroke:#245b7a;stroke-width:3;fill:none;marker-end:url(#arrow)}
+.route2{stroke:#8a4f13;stroke-width:3;fill:none;marker-end:url(#arrow2)}
+.merge{stroke:#477a55;stroke-width:3;fill:none;marker-end:url(#arrow3)}
+.dash{stroke:#17212b;stroke-width:2;stroke-dasharray:7 5;fill:none}
+</style>
+
+<text x="38" y="44" class="title" text-anchor="start">Two routes into one preservation language</text>
+<text x="38" y="72" class="sub" text-anchor="start">Use the route that matches your background; the convergent target is a decision-aware model, not a single graph drawing.</text>
+<rect x="38" y="102" width="1324" height="620" rx="14" class="panel"/>
+<text x="700" y="138" class="head" text-anchor="middle">Start here</text>
+<rect x="90" y="175" width="270" height="74" rx="12" class="graph"/>
+<text x="225.0" y="206" class="head" text-anchor="middle">Simple graph theory</text>
+<text x="225.0" y="232" class="small" text-anchor="middle">vertices · edges · cycles</text>
+<rect x="1040" y="175" width="270" height="74" rx="12" class="trans"/>
+<text x="1175.0" y="206" class="head" text-anchor="middle">Transmission modelling</text>
+<text x="1175.0" y="232" class="small" text-anchor="middle">bus–branch · positive sequence</text>
+<rect x="90" y="300" width="270" height="74" rx="12" class="graph"/>
+<text x="225.0" y="331" class="head" text-anchor="middle">Multigraph identity</text>
+<text x="225.0" y="357" class="small" text-anchor="middle">parallel members stay distinct</text>
+<rect x="1040" y="300" width="270" height="74" rx="12" class="trans"/>
+<text x="1175.0" y="331" class="head" text-anchor="middle">Phase/neutral expansion</text>
+<text x="1175.0" y="357" class="small" text-anchor="middle">coupling · shunts · grounding</text>
+<rect x="90" y="425" width="270" height="74" rx="12" class="graph"/>
+<text x="225.0" y="456" class="head" text-anchor="middle">Terminal/factor view</text>
+<text x="225.0" y="482" class="small" text-anchor="middle">ports · n-port devices</text>
+<rect x="1040" y="425" width="270" height="74" rx="12" class="trans"/>
+<text x="1175.0" y="456" class="head" text-anchor="middle">Matrix-valued edge</text>
+<text x="1175.0" y="482" class="small" text-anchor="middle">block equations · limits</text>
+<rect x="515" y="555" width="370" height="78" rx="12" class="shared"/>
+<text x="700.0" y="586" class="head" text-anchor="middle">First decision counterexample</text>
+<text x="700.0" y="612" class="small" text-anchor="middle">same terminal Y, different feasible set</text>
+<rect x="515" y="655" width="370" height="48" rx="12" class="shared"/>
+<text x="700.0" y="686" class="head" text-anchor="middle">Preservation contracts</text>
+<text x="700.0" y="712" class="small" text-anchor="middle">what survives, what is recovered</text>
+<path d="M225 249 L225 300" class="route"/>
+<path d="M225 374 L225 425" class="route"/>
+<path d="M1175 249 L1175 300" class="route2"/>
+<path d="M1175 374 L1175 425" class="route2"/>
+<path d="M360 462 C470 462 465 565 515 585" class="merge"/>
+<path d="M1040 462 C930 462 935 565 885 585" class="merge"/>
+<path d="M700 633 L700 655" class="merge"/>
+<text x="700" y="192" class="tiny" text-anchor="middle">qualify the graph</text>
+<text x="700" y="252" class="tiny" text-anchor="middle"></text>
+<text x="700" y="742" class="small" text-anchor="middle">The route map is pedagogical: each arrow adds structure or makes a preservation obligation explicit.</text>
+</svg>

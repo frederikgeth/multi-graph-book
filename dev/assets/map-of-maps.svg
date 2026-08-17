@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">
+<title>Map of maps from one source architecture</title>
+<desc>A typed source architecture feeds multigraph, simple topology, port-factor, OPF, and sparsity views through distinct maps, each annotated with the query it supports.</desc>
+<rect width="1400" height="820" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.source{fill:#eee8f8;stroke:#7856a8;stroke-width:3}.view{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.query{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.arrow{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.dashed{stroke:#8a4f13;stroke-width:2;stroke-dasharray:8 6;fill:none;marker-end:url(#arrow)}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>
+<text x="40" y="46" class="title" text-anchor="start">One source architecture, several typed maps</text>
+<text x="40" y="76" class="sub" text-anchor="start">A view is useful because a declared map supports a query—not because it sits higher or lower in a universal hierarchy.</text>
+<rect x="55" y="285" width="290" height="150" rx="14" class="source"/>
+<text x="200" y="335" class="head" text-anchor="middle">hierarchical source</text>
+<text x="200" y="365" class="body" text-anchor="middle">assets · ports · factors</text>
+<text x="200" y="392" class="small" text-anchor="middle">states · limits · provenance</text>
+<rect x="470" y="145" width="280" height="105" rx="12" class="view"/>
+<text x="610" y="175" class="head" text-anchor="middle">bus–branch multigraph</text>
+<text x="610" y="201" class="body" text-anchor="middle">Cₘ · PF/OPF incidence</text>
+<text x="610" y="227" class="small" text-anchor="middle">parallel identity retained</text>
+<path d="M345 360 C390 195 420 195 455 195" class="arrow"/>
+<rect x="840" y="145" width="280" height="105" rx="12" class="view"/>
+<text x="980" y="175" class="head" text-anchor="middle">simple topology</text>
+<text x="980" y="201" class="body" text-anchor="middle">πₛ · islands/partitioning</text>
+<text x="980" y="227" class="small" text-anchor="middle">parallel fibre forgotten</text>
+<path d="M345 360 C390 195 420 195 825 195" class="arrow"/>
+<rect x="470" y="430" width="280" height="105" rx="12" class="view"/>
+<text x="610" y="460" class="head" text-anchor="middle">port–factor</text>
+<text x="610" y="486" class="body" text-anchor="middle">Cₚ · multiconductor equations</text>
+<text x="610" y="512" class="small" text-anchor="middle">terminal maps retained</text>
+<path d="M345 360 C390 480 420 480 455 480" class="arrow"/>
+<rect x="840" y="430" width="280" height="105" rx="12" class="view"/>
+<text x="980" y="460" class="head" text-anchor="middle">OPF equation view</text>
+<text x="980" y="486" class="body" text-anchor="middle">Cₒ · decisions and limits</text>
+<text x="980" y="512" class="small" text-anchor="middle">constraint rows explicit</text>
+<path d="M345 360 C390 480 420 480 825 480" class="arrow"/>
+<rect x="470" y="650" width="280" height="105" rx="12" class="view"/>
+<text x="610" y="680" class="head" text-anchor="middle">sparsity/Jacobian</text>
+<text x="610" y="706" class="body" text-anchor="middle">δ · ordering and fill</text>
+<text x="610" y="732" class="small" text-anchor="middle">dependency graph</text>
+<path d="M345 360 C390 700 420 700 455 700" class="arrow"/>
+<rect x="1050" y="650" width="280" height="105" rx="12" class="query"/>
+<text x="1190" y="682" class="head" text-anchor="middle">preservation contract</text>
+<text x="1190" y="710" class="body" text-anchor="middle">observation + recovery</text>
+<text x="1190" y="735" class="small" text-anchor="middle">scope and refusal</text>
+<path d="M750 702 L1035 702" class="dashed"/>
+<text x="890" y="685" class="small" text-anchor="middle">every view needs a contract</text>
+<text x="55" y="790" class="small" text-anchor="start">Maps may be quotients, compilers, coordinate changes, or eliminations; the source and target object sets must be named.</text>
+</svg>

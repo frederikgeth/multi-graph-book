@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1060" viewBox="0 0 1400 1060">
+<title>Escalation grid for the worked cases</title>
+<desc>Two grids show how the parallel-line and transformer cases escalate coupling, conductor detail, shunts, controls, and independent checks rather than repeating one example.</desc>
+<rect width="1400" height="1060" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.head{font-size:19px;font-weight:bold}.label{font-size:14px;font-weight:bold}.cell{font-size:13px}.grid{stroke:#17212b;stroke-width:1}.headfill{fill:#e8f0fa}.yes{fill:#e4f4e7}.partial{fill:#f8e1c4}.none{fill:#fbfcfd}.foot{font-size:14px;fill:#5f6b76}</style>
+<text x="40" y="46" class="title" text-anchor="start">The worked cases are an escalation, not repetition</text>
+<text x="40" y="76" class="sub" text-anchor="start">Each row adds a modelling distinction or a stronger evidence obligation.</text>
+<text x="40" y="125" class="head" text-anchor="start">Parallel-member decision cases</text>
+<rect x="40" y="155" width="260" height="52" class="headfill"/>
+<text x="52" y="187" class="label" text-anchor="start">case</text>
+<rect x="300" y="155" width="175" height="52" class="headfill"/>
+<text x="387.5" y="187" class="label" text-anchor="middle">coupling</text>
+<rect x="475" y="155" width="175" height="52" class="headfill"/>
+<text x="562.5" y="187" class="label" text-anchor="middle">non-proportionality</text>
+<rect x="650" y="155" width="175" height="52" class="headfill"/>
+<text x="737.5" y="187" class="label" text-anchor="middle">neutral</text>
+<rect x="825" y="155" width="175" height="52" class="headfill"/>
+<text x="912.5" y="187" class="label" text-anchor="middle">shunts</text>
+<rect x="1000" y="155" width="175" height="52" class="headfill"/>
+<text x="1087.5" y="187" class="label" text-anchor="middle">end structure</text>
+<rect x="1175" y="155" width="175" height="52" class="headfill"/>
+<text x="1262.5" y="187" class="label" text-anchor="middle">check</text>
+<rect x="40" y="207" width="260" height="52" class="none"/>
+<text x="52" y="239" class="cell" text-anchor="start">scalar DC</text>
+<rect x="300" y="207" width="175" height="52" class="none"/>
+<text x="387.5" y="239" class="cell" text-anchor="middle">—</text>
+<rect x="475" y="207" width="175" height="52" class="none"/>
+<text x="562.5" y="239" class="cell" text-anchor="middle">—</text>
+<rect x="650" y="207" width="175" height="52" class="none"/>
+<text x="737.5" y="239" class="cell" text-anchor="middle">—</text>
+<rect x="825" y="207" width="175" height="52" class="none"/>
+<text x="912.5" y="239" class="cell" text-anchor="middle">—</text>
+<rect x="1000" y="207" width="175" height="52" class="none"/>
+<text x="1087.5" y="239" class="cell" text-anchor="middle">—</text>
+<rect x="1175" y="207" width="175" height="52" class="partial"/>
+<text x="1262.5" y="239" class="cell" text-anchor="middle">analytic</text>
+<rect x="40" y="259" width="260" height="52" class="none"/>
+<text x="52" y="291" class="cell" text-anchor="start">scalar AC π</text>
+<rect x="300" y="259" width="175" height="52" class="none"/>
+<text x="387.5" y="291" class="cell" text-anchor="middle">—</text>
+<rect x="475" y="259" width="175" height="52" class="none"/>
+<text x="562.5" y="291" class="cell" text-anchor="middle">—</text>
+<rect x="650" y="259" width="175" height="52" class="none"/>
+<text x="737.5" y="291" class="cell" text-anchor="middle">—</text>
+<rect x="825" y="259" width="175" height="52" class="yes"/>
+<text x="912.5" y="291" class="cell" text-anchor="middle">yes</text>
+<rect x="1000" y="259" width="175" height="52" class="partial"/>
+<text x="1087.5" y="291" class="cell" text-anchor="middle">one-end</text>
+<rect x="1175" y="259" width="175" height="52" class="partial"/>
+<text x="1262.5" y="291" class="cell" text-anchor="middle">analytic</text>
+<rect x="40" y="311" width="260" height="52" class="none"/>
+<text x="52" y="343" class="cell" text-anchor="start">proportional multiconductor</text>
+<rect x="300" y="311" width="175" height="52" class="yes"/>
+<text x="387.5" y="343" class="cell" text-anchor="middle">yes</text>
+<rect x="475" y="311" width="175" height="52" class="none"/>
+<text x="562.5" y="343" class="cell" text-anchor="middle">no</text>
+<rect x="650" y="311" width="175" height="52" class="yes"/>
+<text x="737.5" y="343" class="cell" text-anchor="middle">explicit</text>
+<rect x="825" y="311" width="175" height="52" class="none"/>
+<text x="912.5" y="343" class="cell" text-anchor="middle">—</text>
+<rect x="1000" y="311" width="175" height="52" class="partial"/>
+<text x="1087.5" y="343" class="cell" text-anchor="middle">one-end</text>
+<rect x="1175" y="311" width="175" height="52" class="yes"/>
+<text x="1262.5" y="343" class="cell" text-anchor="middle">certificate</text>
+<rect x="40" y="363" width="260" height="52" class="none"/>
+<text x="52" y="395" class="cell" text-anchor="start">non-proportional four-wire</text>
+<rect x="300" y="363" width="175" height="52" class="yes"/>
+<text x="387.5" y="395" class="cell" text-anchor="middle">yes</text>
+<rect x="475" y="363" width="175" height="52" class="yes"/>
+<text x="562.5" y="395" class="cell" text-anchor="middle">yes</text>
+<rect x="650" y="363" width="175" height="52" class="yes"/>
+<text x="737.5" y="395" class="cell" text-anchor="middle">explicit</text>
+<rect x="825" y="363" width="175" height="52" class="none"/>
+<text x="912.5" y="395" class="cell" text-anchor="middle">—</text>
+<rect x="1000" y="363" width="175" height="52" class="partial"/>
+<text x="1087.5" y="395" class="cell" text-anchor="middle">two-end</text>
+<rect x="1175" y="363" width="175" height="52" class="yes"/>
+<text x="1262.5" y="395" class="cell" text-anchor="middle">independent</text>
+<rect x="40" y="415" width="260" height="52" class="none"/>
+<text x="52" y="447" class="cell" text-anchor="start">four-wire nominal-π</text>
+<rect x="300" y="415" width="175" height="52" class="yes"/>
+<text x="387.5" y="447" class="cell" text-anchor="middle">yes</text>
+<rect x="475" y="415" width="175" height="52" class="yes"/>
+<text x="562.5" y="447" class="cell" text-anchor="middle">yes</text>
+<rect x="650" y="415" width="175" height="52" class="yes"/>
+<text x="737.5" y="447" class="cell" text-anchor="middle">explicit</text>
+<rect x="825" y="415" width="175" height="52" class="yes"/>
+<text x="912.5" y="447" class="cell" text-anchor="middle">yes</text>
+<rect x="1000" y="415" width="175" height="52" class="partial"/>
+<text x="1087.5" y="447" class="cell" text-anchor="middle">two-end</text>
+<rect x="1175" y="415" width="175" height="52" class="yes"/>
+<text x="1262.5" y="447" class="cell" text-anchor="middle">independent</text>
+<text x="40" y="500" class="head" text-anchor="start">Transformer compilation and control cases</text>
+<rect x="40" y="530" width="300" height="62" class="headfill"/>
+<text x="52" y="568" class="label" text-anchor="start">case</text>
+<rect x="340" y="530" width="255" height="62" class="headfill"/>
+<text x="467.5" y="568" class="label" text-anchor="middle">electrical scope</text>
+<rect x="595" y="530" width="255" height="62" class="headfill"/>
+<text x="722.5" y="568" class="label" text-anchor="middle">control domain</text>
+<rect x="850" y="530" width="255" height="62" class="headfill"/>
+<text x="977.5" y="568" class="label" text-anchor="middle">forgotten/auxiliary detail</text>
+<rect x="1105" y="530" width="255" height="62" class="headfill"/>
+<text x="1232.5" y="568" class="label" text-anchor="middle">evidence</text>
+<rect x="40" y="592" width="300" height="62" class="none"/>
+<text x="52" y="630" class="cell" text-anchor="start">leakage relation</text>
+<rect x="340" y="592" width="255" height="62" class="partial"/>
+<text x="467.5" y="630" class="cell" text-anchor="middle">pairwise</text>
+<rect x="595" y="592" width="255" height="62" class="partial"/>
+<text x="722.5" y="630" class="cell" text-anchor="middle">fixed</text>
+<rect x="850" y="592" width="255" height="62" class="none"/>
+<text x="977.5" y="630" class="cell" text-anchor="middle">—</text>
+<rect x="1105" y="592" width="255" height="62" class="none"/>
+<text x="1232.5" y="630" class="cell" text-anchor="middle">—</text>
+<rect x="40" y="654" width="300" height="62" class="none"/>
+<text x="52" y="692" class="cell" text-anchor="start">reference compilation</text>
+<rect x="340" y="654" width="255" height="62" class="partial"/>
+<text x="467.5" y="692" class="cell" text-anchor="middle">all windings</text>
+<rect x="595" y="654" width="255" height="62" class="partial"/>
+<text x="722.5" y="692" class="cell" text-anchor="middle">fixed</text>
+<rect x="850" y="654" width="255" height="62" class="yes"/>
+<text x="977.5" y="692" class="cell" text-anchor="middle">recovery</text>
+<rect x="1105" y="654" width="255" height="62" class="yes"/>
+<text x="1232.5" y="692" class="cell" text-anchor="middle">round-trip</text>
+<rect x="40" y="716" width="300" height="62" class="none"/>
+<text x="52" y="754" class="cell" text-anchor="start">terminal assembly</text>
+<rect x="340" y="716" width="255" height="62" class="partial"/>
+<text x="467.5" y="754" class="cell" text-anchor="middle">WYE/DELTA</text>
+<rect x="595" y="716" width="255" height="62" class="partial"/>
+<text x="722.5" y="754" class="cell" text-anchor="middle">fixed</text>
+<rect x="850" y="716" width="255" height="62" class="yes"/>
+<text x="977.5" y="754" class="cell" text-anchor="middle">ground</text>
+<rect x="1105" y="716" width="255" height="62" class="yes"/>
+<text x="1232.5" y="754" class="cell" text-anchor="middle">certificate</text>
+<rect x="40" y="778" width="300" height="62" class="none"/>
+<text x="52" y="816" class="cell" text-anchor="start">factor completion</text>
+<rect x="340" y="778" width="255" height="62" class="partial"/>
+<text x="467.5" y="816" class="cell" text-anchor="middle">multi-port</text>
+<rect x="595" y="778" width="255" height="62" class="partial"/>
+<text x="722.5" y="816" class="cell" text-anchor="middle">fixed</text>
+<rect x="850" y="778" width="255" height="62" class="yes"/>
+<text x="977.5" y="816" class="cell" text-anchor="middle">auxiliary</text>
+<rect x="1105" y="778" width="255" height="62" class="yes"/>
+<text x="1232.5" y="816" class="cell" text-anchor="middle">cross-check</text>
+<rect x="40" y="840" width="300" height="62" class="none"/>
+<text x="52" y="878" class="cell" text-anchor="start">tap decisions</text>
+<rect x="340" y="840" width="255" height="62" class="partial"/>
+<text x="467.5" y="878" class="cell" text-anchor="middle">multi-port</text>
+<rect x="595" y="840" width="255" height="62" class="partial"/>
+<text x="722.5" y="878" class="cell" text-anchor="middle">discrete</text>
+<rect x="850" y="840" width="255" height="62" class="yes"/>
+<text x="977.5" y="878" class="cell" text-anchor="middle">controls</text>
+<rect x="1105" y="840" width="255" height="62" class="yes"/>
+<text x="1232.5" y="878" class="cell" text-anchor="middle">solver-backed</text>
+<text x="40" y="930" class="foot" text-anchor="start">The progression makes the research programme visible: conductor coupling and decision observations grow together with the guard and reproduction burden.</text>
+<text x="40" y="960" class="foot" text-anchor="start">yes/explicit = present; partial = scoped or one-end; — = deliberately absent in that case.</text>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="520" viewBox="0 0 760 520">
+<title>Schur elimination creates structural fill-in</title>
+<desc>A five-node source graph is shown before and after eliminating node j. Dashed edges are fill edges created between the remaining neighbours and are not physical assets.</desc>
+<rect width="760" height="520" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:24px;font-weight:bold}.sub{font-size:15px;fill:#5f6b76}.edge{stroke:#3979b8;stroke-width:4}.fill{stroke:#c97126;stroke-width:4;stroke-dasharray:8 6}.node{fill:#d9eef8;stroke:#17212b;stroke-width:2}.legend{font-size:14px;fill:#5f6b76}</style>
+<text x="30" y="38" class="title">Fill-in is created by elimination</text>
+<text x="30" y="64" class="sub">Eliminating j connects its remaining neighbours; the dashed edges are computational, not assets.</text>
+<line x1="110" y1="250" x2="280" y2="130" class="edge"/>
+<line x1="110" y1="250" x2="450" y2="250" class="edge"/>
+<line x1="280" y1="130" x2="450" y2="250" class="edge"/>
+<line x1="280" y1="130" x2="450" y2="390" class="edge"/>
+<line x1="450" y1="250" x2="450" y2="390" class="edge"/>
+<line x1="450" y1="390" x2="610" y2="390" class="edge"/>
+<line x1="110" y1="250" x2="450" y2="390" class="fill"/>
+<circle cx="110" cy="250" r="25" class="node"/>
+<text x="110" y="256" text-anchor="middle">i</text>
+<circle cx="280" cy="130" r="25" class="node"/>
+<text x="280" y="136" text-anchor="middle">j</text>
+<circle cx="450" cy="250" r="25" class="node"/>
+<text x="450" y="256" text-anchor="middle">k</text>
+<circle cx="450" cy="390" r="25" class="node"/>
+<text x="450" y="396" text-anchor="middle">l</text>
+<circle cx="610" cy="390" r="25" class="node"/>
+<text x="610" y="396" text-anchor="middle">m</text>
+<text x="30" y="475" class="legend">blue = source incidence · orange dashed = Schur fill · eliminated junction: j</text>
+</svg>

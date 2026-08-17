@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">
+<title>Partial orders change with the query family</title>
+<desc>The same five representation nodes are shown under two query families. Electrical boundary queries order port-factor, multigraph, and simple views, while asset and outage queries privilege the asset/dependency view; incomparable relations are marked explicitly.</desc>
+<rect width="1400" height="820" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:20px;font-weight:bold}.node{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.asset{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.eq{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.arrow{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.dashed{stroke:#8a4f13;stroke-width:2;stroke-dasharray:8 6;fill:none}.cross{stroke:#8a3232;stroke-width:3}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>
+<text x="40" y="45" class="title" text-anchor="start">A representation order depends on the question</text>
+<text x="40" y="75" class="sub" text-anchor="start">Arrows mean “sufficient for this query family through a declared map”, not universal abstraction.</text>
+<rect x="40" y="115" width="635" height="590" rx="14" class="panel"/>
+<rect x="725" y="115" width="635" height="590" rx="14" class="panel"/>
+<text x="70" y="155" class="head" text-anchor="start">boundary power-flow queries</text>
+<text x="755" y="155" class="head" text-anchor="start">asset, outage, and maintenance queries</text>
+<rect x="75" y="265" width="170" height="70" rx="12" class="asset"/>
+<text x="160" y="307" class="body" text-anchor="middle">asset/dependency</text>
+<rect x="265" y="205" width="170" height="70" rx="12" class="node"/>
+<text x="350" y="247" class="body" text-anchor="middle">port–factor</text>
+<rect x="455" y="265" width="170" height="70" rx="12" class="node"/>
+<text x="540" y="307" class="body" text-anchor="middle">multigraph</text>
+<rect x="455" y="475" width="170" height="70" rx="12" class="node"/>
+<text x="540" y="517" class="body" text-anchor="middle">simple graph</text>
+<rect x="265" y="475" width="170" height="70" rx="12" class="eq"/>
+<text x="350" y="517" class="body" text-anchor="middle">equation/sparsity</text>
+<rect x="760" y="265" width="170" height="70" rx="12" class="asset"/>
+<text x="845" y="307" class="body" text-anchor="middle">asset/dependency</text>
+<rect x="950" y="205" width="170" height="70" rx="12" class="node"/>
+<text x="1035" y="247" class="body" text-anchor="middle">port–factor</text>
+<rect x="1140" y="265" width="170" height="70" rx="12" class="node"/>
+<text x="1225" y="307" class="body" text-anchor="middle">multigraph</text>
+<rect x="1140" y="475" width="170" height="70" rx="12" class="node"/>
+<text x="1225" y="517" class="body" text-anchor="middle">simple graph</text>
+<rect x="950" y="475" width="170" height="70" rx="12" class="eq"/>
+<text x="1035" y="517" class="body" text-anchor="middle">equation/sparsity</text>
+<path d="M435 240 L445 275" class="arrow"/>
+<path d="M540 345 L540 465" class="arrow"/>
+<path d="M455 510 L445 510" class="arrow"/>
+<path d="M350 275 L350 465" class="arrow"/>
+<text x="80" y="610" class="small" text-anchor="start">asset view is incomparable here</text>
+<path d="M235 300 L420 300" class="dashed"/>
+<text x="350" y="290" class="small" text-anchor="middle">Λ + study map required</text>
+<path d="M930 265 C980 180 1080 180 1140 265" class="dashed" marker-end="url(#arrow)"/>
+<text x="1035" y="190" class="small" text-anchor="middle">Λ + state map</text>
+<path d="M1225 345 L1225 465" class="arrow"/>
+<path d="M1035 275 L1035 465" class="dashed"/>
+<text x="1035" y="455" class="small" text-anchor="middle">not automatic</text>
+<text x="765" y="610" class="small" text-anchor="start">equation/sparsity view is not an asset system</text>
+<path d="M1080 580 L1190 580" class="cross"/>
+<path d="M1190 580 L1080 580" class="cross"/>
+<text x="1135" y="635" class="small" text-anchor="middle">incomparable unless a query map is declared</text>
+<text x="40" y="770" class="small" text-anchor="start">The edges change when Q changes. This is why “more detailed” is not a universal claim across the four frameworks.</text>
+</svg>

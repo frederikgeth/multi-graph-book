@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+<title>Jacobian dependency is not physical incidence</title>
+<desc>A bipartite equation-variable dependency matrix shows declared nonzero blocks for KCL, factor, and member-limit rows. Its pattern is a numerical model view, not the physical graph.</desc>
+<rect width="900" height="500" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:24px;font-weight:bold}.sub{font-size:15px;fill:#5f6b76}.cell{stroke:#dce2e8;stroke-width:1}.hit{fill:#3979b8}.miss{fill:#f2f5f7}.legend{font-size:14px;fill:#5f6b76}</style>
+<text x="30" y="38" class="title">Jacobian dependency is a separate graph</text>
+<text x="30" y="64" class="sub">Rows are equations; columns are variables. A dense factor block or recovery limit need not be a physical edge.</text>
+<text x="113" y="175" text-anchor="end">KCL i</text>
+<text x="113" y="205" text-anchor="end">KCL j</text>
+<text x="113" y="235" text-anchor="end">KCL k</text>
+<text x="113" y="265" text-anchor="end">KCL l</text>
+<text x="113" y="295" text-anchor="end">KCL m</text>
+<text x="113" y="325" text-anchor="end">factor q</text>
+<text x="113" y="355" text-anchor="end">factor r</text>
+<text x="113" y="385" text-anchor="end">limit q/r</text>
+<text x="140.0" y="139" text-anchor="middle" transform="rotate(-55 140.0 139)">U_i</text>
+<text x="170.0" y="139" text-anchor="middle" transform="rotate(-55 170.0 139)">U_j</text>
+<text x="200.0" y="139" text-anchor="middle" transform="rotate(-55 200.0 139)">U_k</text>
+<text x="230.0" y="139" text-anchor="middle" transform="rotate(-55 230.0 139)">U_l</text>
+<text x="260.0" y="139" text-anchor="middle" transform="rotate(-55 260.0 139)">U_m</text>
+<text x="290.0" y="139" text-anchor="middle" transform="rotate(-55 290.0 139)">I_q</text>
+<text x="320.0" y="139" text-anchor="middle" transform="rotate(-55 320.0 139)">I_r</text>
+<text x="350.0" y="139" text-anchor="middle" transform="rotate(-55 350.0 139)">I_s</text>
+<text x="380.0" y="139" text-anchor="middle" transform="rotate(-55 380.0 139)">I_t</text>
+<text x="410.0" y="139" text-anchor="middle" transform="rotate(-55 410.0 139)">I_v</text>
+<text x="440.0" y="139" text-anchor="middle" transform="rotate(-55 440.0 139)">I_w</text>
+<text x="470.0" y="139" text-anchor="middle" transform="rotate(-55 470.0 139)">I_u</text>
+<rect x="125" y="155" width="30" height="30" class="cell hit"/>
+<rect x="155" y="155" width="30" height="30" class="cell miss"/>
+<rect x="185" y="155" width="30" height="30" class="cell miss"/>
+<rect x="215" y="155" width="30" height="30" class="cell miss"/>
+<rect x="245" y="155" width="30" height="30" class="cell miss"/>
+<rect x="275" y="155" width="30" height="30" class="cell hit"/>
+<rect x="305" y="155" width="30" height="30" class="cell hit"/>
+<rect x="335" y="155" width="30" height="30" class="cell miss"/>
+<rect x="365" y="155" width="30" height="30" class="cell miss"/>
+<rect x="395" y="155" width="30" height="30" class="cell hit"/>
+<rect x="425" y="155" width="30" height="30" class="cell miss"/>
+<rect x="455" y="155" width="30" height="30" class="cell miss"/>
+<rect x="125" y="185" width="30" height="30" class="cell hit"/>
+<rect x="155" y="185" width="30" height="30" class="cell hit"/>
+<rect x="185" y="185" width="30" height="30" class="cell miss"/>
+<rect x="215" y="185" width="30" height="30" class="cell miss"/>
+<rect x="245" y="185" width="30" height="30" class="cell miss"/>
+<rect x="275" y="185" width="30" height="30" class="cell hit"/>
+<rect x="305" y="185" width="30" height="30" class="cell hit"/>
+<rect x="335" y="185" width="30" height="30" class="cell hit"/>
+<rect x="365" y="185" width="30" height="30" class="cell miss"/>
+<rect x="395" y="185" width="30" height="30" class="cell miss"/>
+<rect x="425" y="185" width="30" height="30" class="cell hit"/>
+<rect x="455" y="185" width="30" height="30" class="cell miss"/>
+<rect x="125" y="215" width="30" height="30" class="cell miss"/>
+<rect x="155" y="215" width="30" height="30" class="cell hit"/>
+<rect x="185" y="215" width="30" height="30" class="cell hit"/>
+<rect x="215" y="215" width="30" height="30" class="cell miss"/>
+<rect x="245" y="215" width="30" height="30" class="cell miss"/>
+<rect x="275" y="215" width="30" height="30" class="cell miss"/>
+<rect x="305" y="215" width="30" height="30" class="cell miss"/>
+<rect x="335" y="215" width="30" height="30" class="cell hit"/>
+<rect x="365" y="215" width="30" height="30" class="cell hit"/>
+<rect x="395" y="215" width="30" height="30" class="cell miss"/>
+<rect x="425" y="215" width="30" height="30" class="cell hit"/>
+<rect x="455" y="215" width="30" height="30" class="cell miss"/>
+<rect x="125" y="245" width="30" height="30" class="cell miss"/>
+<rect x="155" y="245" width="30" height="30" class="cell miss"/>
+<rect x="185" y="245" width="30" height="30" class="cell hit"/>
+<rect x="215" y="245" width="30" height="30" class="cell hit"/>
+<rect x="245" y="245" width="30" height="30" class="cell miss"/>
+<rect x="275" y="245" width="30" height="30" class="cell miss"/>
+<rect x="305" y="245" width="30" height="30" class="cell miss"/>
+<rect x="335" y="245" width="30" height="30" class="cell miss"/>
+<rect x="365" y="245" width="30" height="30" class="cell miss"/>
+<rect x="395" y="245" width="30" height="30" class="cell hit"/>
+<rect x="425" y="245" width="30" height="30" class="cell hit"/>
+<rect x="455" y="245" width="30" height="30" class="cell hit"/>
+<rect x="125" y="275" width="30" height="30" class="cell miss"/>
+<rect x="155" y="275" width="30" height="30" class="cell miss"/>
+<rect x="185" y="275" width="30" height="30" class="cell miss"/>
+<rect x="215" y="275" width="30" height="30" class="cell hit"/>
+<rect x="245" y="275" width="30" height="30" class="cell hit"/>
+<rect x="275" y="275" width="30" height="30" class="cell miss"/>
+<rect x="305" y="275" width="30" height="30" class="cell miss"/>
+<rect x="335" y="275" width="30" height="30" class="cell miss"/>
+<rect x="365" y="275" width="30" height="30" class="cell miss"/>
+<rect x="395" y="275" width="30" height="30" class="cell miss"/>
+<rect x="425" y="275" width="30" height="30" class="cell miss"/>
+<rect x="455" y="275" width="30" height="30" class="cell hit"/>
+<rect x="125" y="305" width="30" height="30" class="cell hit"/>
+<rect x="155" y="305" width="30" height="30" class="cell hit"/>
+<rect x="185" y="305" width="30" height="30" class="cell miss"/>
+<rect x="215" y="305" width="30" height="30" class="cell miss"/>
+<rect x="245" y="305" width="30" height="30" class="cell miss"/>
+<rect x="275" y="305" width="30" height="30" class="cell hit"/>
+<rect x="305" y="305" width="30" height="30" class="cell miss"/>
+<rect x="335" y="305" width="30" height="30" class="cell miss"/>
+<rect x="365" y="305" width="30" height="30" class="cell miss"/>
+<rect x="395" y="305" width="30" height="30" class="cell miss"/>
+<rect x="425" y="305" width="30" height="30" class="cell miss"/>
+<rect x="455" y="305" width="30" height="30" class="cell miss"/>
+<rect x="125" y="335" width="30" height="30" class="cell hit"/>
+<rect x="155" y="335" width="30" height="30" class="cell hit"/>
+<rect x="185" y="335" width="30" height="30" class="cell miss"/>
+<rect x="215" y="335" width="30" height="30" class="cell miss"/>
+<rect x="245" y="335" width="30" height="30" class="cell miss"/>
+<rect x="275" y="335" width="30" height="30" class="cell miss"/>
+<rect x="305" y="335" width="30" height="30" class="cell hit"/>
+<rect x="335" y="335" width="30" height="30" class="cell miss"/>
+<rect x="365" y="335" width="30" height="30" class="cell miss"/>
+<rect x="395" y="335" width="30" height="30" class="cell miss"/>
+<rect x="425" y="335" width="30" height="30" class="cell miss"/>
+<rect x="455" y="335" width="30" height="30" class="cell miss"/>
+<rect x="125" y="365" width="30" height="30" class="cell miss"/>
+<rect x="155" y="365" width="30" height="30" class="cell miss"/>
+<rect x="185" y="365" width="30" height="30" class="cell miss"/>
+<rect x="215" y="365" width="30" height="30" class="cell miss"/>
+<rect x="245" y="365" width="30" height="30" class="cell miss"/>
+<rect x="275" y="365" width="30" height="30" class="cell hit"/>
+<rect x="305" y="365" width="30" height="30" class="cell hit"/>
+<rect x="335" y="365" width="30" height="30" class="cell miss"/>
+<rect x="365" y="365" width="30" height="30" class="cell miss"/>
+<rect x="395" y="365" width="30" height="30" class="cell miss"/>
+<rect x="425" y="365" width="30" height="30" class="cell miss"/>
+<rect x="455" y="365" width="30" height="30" class="cell miss"/>
+<text x="30" y="465" class="legend">blue cells = declared dependence · white cells = absent in this structural witness</text>
+</svg>

@@ -1,0 +1,37 @@
+%% What Power-Network Models Preserve PDF preamble.
+\documentclass[oneside]{memoir}
+
+\usepackage{./documenter}
+\usepackage{./custom}
+
+\hypersetup{
+    pdftitle={What Power-Network Models Preserve},
+    pdfauthor={\DocAuthors},
+    pdfsubject={Graph-based representations, analysis, optimization, and learning for power systems},
+    pdfkeywords={power systems, graph models, network models, graph theory},
+    pdflang={en-AU},
+    pdfdisplaydoctitle=true,
+    bookmarksnumbered=true
+}
+
+\title{
+    {\HUGE \DocMainTitle }\\
+    \vspace{0.8em}
+    {\large A book and knowledge base}\\
+    \vspace{0.8em}
+    {\Large \DocVersion }
+}
+\author{\DocAuthors}
+
+% The build sets this back to section depth for generated/reference pages;
+% reader-facing pages opt into their internal subsection entries at page start.
+\settocdepth{subsection}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\clearpage
+\tableofcontents
+
+\mainmatter

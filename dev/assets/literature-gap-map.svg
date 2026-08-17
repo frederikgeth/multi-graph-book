@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="720" viewBox="0 0 1500 720">
+<title>Literature attention and structured gaps</title>
+<desc>Horizontal bars show the book's provisional literature-attention assessment for eleven topics, from high attention to very low attention. Lower attention indicates a research gap relative to the book agenda, not absence of all literature.</desc>
+<rect width="100%" height="100%" fill="white"/>
+
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:27px;font-weight:bold}
+.sub{font-size:15px;fill:#5f6b76}.body{font-size:14px}.small{font-size:12px;fill:#5f6b76}
+.bar{fill:#245b7a}.axis{stroke:#17212b;stroke-width:1}.guide{stroke:#aab7c2;stroke-width:1;stroke-dasharray:4 4}
+</style>
+
+<text x="35" y="42" class="title" text-anchor="start">Literature attention is uneven across the preservation agenda</text>
+<text x="35" y="70" class="sub" text-anchor="start">Provisional synthesis of the current evidence matrix and literature map; low attention is a gap signal, not a claim of no literature.</text>
+<text x="360" y="112" class="small" text-anchor="middle">relative attention</text>
+<path d="M360 125 L1190 125" class="axis"/>
+<path d="M360 120 L360 650" class="guide"/>
+<text x="360" y="112" class="small" text-anchor="middle">Very low</text>
+<path d="M526 120 L526 650" class="guide"/>
+<text x="526" y="112" class="small" text-anchor="middle">Low</text>
+<path d="M692 120 L692 650" class="guide"/>
+<text x="692" y="112" class="small" text-anchor="middle">Specialized</text>
+<path d="M858 120 L858 650" class="guide"/>
+<text x="858" y="112" class="small" text-anchor="middle">Emerging</text>
+<path d="M1024 120 L1024 650" class="guide"/>
+<text x="1024" y="112" class="small" text-anchor="middle">Moderate</text>
+<path d="M1190 120 L1190 650" class="guide"/>
+<text x="1190" y="112" class="small" text-anchor="middle">High</text>
+<text x="35" y="171" class="body" text-anchor="start">Switch topology processing</text>
+<rect x="360" y="155" width="830" height="24" rx="4" class="bar"/>
+<text x="1220" y="172" class="body" text-anchor="start">High</text>
+<text x="35" y="214" class="body" text-anchor="start">Linear terminal/Kron equivalents</text>
+<rect x="360" y="198" width="830" height="24" rx="4" class="bar"/>
+<text x="1220" y="215" class="body" text-anchor="start">High</text>
+<text x="35" y="257" class="body" text-anchor="start">Dynamic equivalents</text>
+<rect x="360" y="241" width="830" height="24" rx="4" class="bar"/>
+<text x="1220" y="258" class="body" text-anchor="start">High</text>
+<text x="35" y="300" class="body" text-anchor="start">Voltage/flow feeder reduction</text>
+<rect x="360" y="284" width="664" height="24" rx="4" class="bar"/>
+<text x="1220" y="301" class="body" text-anchor="start">Moderate</text>
+<text x="35" y="343" class="body" text-anchor="start">Radiality and phase preservation</text>
+<rect x="360" y="327" width="498" height="24" rx="4" class="bar"/>
+<text x="1220" y="344" class="body" text-anchor="start">Emerging</text>
+<text x="35" y="386" class="body" text-anchor="start">Thermal-limit preservation</text>
+<rect x="360" y="370" width="332" height="24" rx="4" class="bar"/>
+<text x="1220" y="387" class="body" text-anchor="start">Specialized</text>
+<text x="35" y="429" class="body" text-anchor="start">Typed equipment-class closure</text>
+<rect x="360" y="413" width="166" height="24" rx="4" class="bar"/>
+<text x="1220" y="430" class="body" text-anchor="start">Low</text>
+<text x="35" y="472" class="body" text-anchor="start">Explicit neutral/grounding</text>
+<rect x="360" y="456" width="166" height="24" rx="4" class="bar"/>
+<text x="1220" y="473" class="body" text-anchor="start">Low</text>
+<text x="35" y="515" class="body" text-anchor="start">Parallel decision preservation</text>
+<rect x="360" y="499" width="166" height="24" rx="4" class="bar"/>
+<text x="1220" y="516" class="body" text-anchor="start">Low</text>
+<text x="35" y="558" class="body" text-anchor="start">Provenance/reversible compilation</text>
+<rect x="360" y="542" width="166" height="24" rx="4" class="bar"/>
+<text x="1220" y="559" class="body" text-anchor="start">Low</text>
+<text x="35" y="601" class="body" text-anchor="start">Unified certified normalization</text>
+<rect x="360" y="585" width="0" height="24" rx="4" class="bar"/>
+<text x="1220" y="602" class="body" text-anchor="start">Very low</text>
+<text x="35" y="670" class="body" text-anchor="start">Interpretation</text>
+<text x="145" y="670" class="small" text-anchor="start">Established reduction and topology procedures receive substantial attention; typed closure, provenance, grounding, and decision preservation remain underdeveloped.</text>
+</svg>

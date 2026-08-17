@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+<title>Three-winding transformer port-factor anatomy</title>
+<desc>A three-winding transformer is one factor with terminal bundles, internal leakage, excitation, grounding, recovered currents, and limits.</desc>
+<rect x="0" y="0" width="1200" height="700" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:27px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.head{font-size:18px;font-weight:bold}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.port{stroke:#17212b;stroke-width:2}.flow{stroke:#3d78b5;stroke-width:3;fill:none;marker-end:url(#arrow)}.aux{stroke:#7856a8;stroke-width:3;fill:none;marker-end:url(#arrow)}.ground{stroke:#477a55;stroke-width:3;fill:none;marker-end:url(#arrow)}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>
+<text x="35" y="38" class="title">Three-winding transformer as one port–factor</text>
+<text x="35" y="66" class="sub">The factor retains winding bundles and internal relations; a compiled star is a target view, not the source device.</text>
+<rect x="430" y="155" width="340" height="330" rx="18" class="port" fill="#f8e1c4"/>
+<text x="515" y="205" class="head">factor x₁</text>
+<text x="485" y="238" class="body">Yₓᶜᵒⁱˡ, Tₓ, Aₓ</text>
+<text x="472" y="285" class="body">leakage relation</text>
+<text x="472" y="312" class="body">excitation relation</text>
+<text x="472" y="339" class="body">internal grounding</text>
+<text x="472" y="366" class="body">tap / control identity</text>
+<text x="472" y="420" class="small">one factor; three winding ports</text>
+<rect x="55" y="135" width="285" height="115" rx="14" class="port" fill="#e8f0fa"/>
+<rect x="55" y="292" width="285" height="115" rx="14" class="port" fill="#e8f0fa"/>
+<rect x="55" y="449" width="285" height="115" rx="14" class="port" fill="#e8f0fa"/>
+<text x="78" y="169" class="head">winding 1  •  port bundle</text>
+<text x="78" y="198" class="body">Uₓ₁, Iₓ₁  ·  WYE</text>
+<text x="78" y="226" class="small">ordered terminals and limits</text>
+<text x="78" y="326" class="head">winding 2  •  port bundle</text>
+<text x="78" y="355" class="body">Uₓ₂, Iₓ₂  ·  WYE</text>
+<text x="78" y="383" class="small">excitation placement declared</text>
+<text x="78" y="483" class="head">winding 3  •  port bundle</text>
+<text x="78" y="512" class="body">Uₓ₃, Iₓ₃  ·  DELTA</text>
+<text x="78" y="540" class="small">gauge and terminal order retained</text>
+<path d="M340 192 L430 230" class="flow"/><path d="M340 349 L430 320" class="flow"/><path d="M340 506 L430 400" class="flow"/>
+<rect x="855" y="140" width="300" height="125" rx="14" class="port" fill="#e4f4e7"/>
+<rect x="855" y="300" width="300" height="125" rx="14" class="port" fill="#e8f0fa"/>
+<rect x="855" y="460" width="300" height="125" rx="14" class="port" fill="#f4e5e5"/>
+<text x="878" y="175" class="head">recovered quantities</text>
+<text x="878" y="204" class="body">leakage-coil and winding currents</text>
+<text x="878" y="232" class="small">terminal current / power maps</text>
+<text x="878" y="335" class="head">declared constraints</text>
+<text x="878" y="364" class="body">per-coil, winding, and terminal limits</text>
+<text x="878" y="392" class="small">state and decision ownership</text>
+<text x="878" y="495" class="head">explicit auxiliary factors</text>
+<text x="878" y="524" class="body">excitation, internal ground, controls</text>
+<text x="878" y="552" class="small">not silently folded into an asset</text>
+<path d="M770 255 L855 200" class="flow"/><path d="M770 335 L855 360" class="flow"/><path d="M770 415 L855 520" class="aux"/>
+<path d="M430 390 L385 610 L490 610" class="ground"/>
+<text x="500" y="618" class="small">grounding scope is explicit</text>
+<text x="35" y="650" class="small">A two-terminal compilation may introduce virtual objects, but its certificate must preserve source identity, terminal relations, limits, and recovery.</text>
+</svg>
