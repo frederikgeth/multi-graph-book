@@ -19,6 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # help.openai.com is excluded below: it serves a JS challenge to every
+      # HTTP client (403 for browser and bot user agents alike), so no link
+      # checker can verify those URLs either way.
       - name: Check external links
         uses: lycheeverse/lychee-action@v2.4.0
         with:
@@ -28,6 +31,7 @@ jobs:
             --exclude-mail
             --exclude '^file:'
             --exclude 'localhost'
+            --exclude 'help\.openai\.com'
             'docs/src/**/*.md'
             'README.md'
             'ROADMAP.md'
