@@ -5,6 +5,9 @@
 [![CI](https://github.com/frederikgeth/multi-graph-book/actions/workflows/docs.yml/badge.svg)](https://github.com/frederikgeth/multi-graph-book/actions/workflows/docs.yml)
 [![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://frederikgeth.github.io/multi-graph-book/)
 
+[Read the HTML book](https://frederikgeth.github.io/multi-graph-book/dev/) ·
+[Download the long-form PDF](https://frederikgeth.github.io/multi-graph-book/dev/GraphModelsForPowerSystems.pdf)
+
 > [!WARNING]
 > This is a rapidly evolving, early-stage initiative. Structure, terminology, claims, and APIs
 > (including the LLM-accessibility routes below) can change without notice. Nothing here should
@@ -84,8 +87,9 @@ monograph pages in argument order. Build it locally with
 publishing is set up (see the note in that section).
 
 **c) PDF (Tectonic).** A single-file serialization following the monograph's argument route; it
-does not reproduce the knowledge base's retrieval indexes. Build it locally with the bundled
-Tectonic artifact, also described under [Build locally](#build-locally).
+does not reproduce the knowledge base's retrieval indexes. [Download the rendered
+PDF](https://frederikgeth.github.io/multi-graph-book/dev/GraphModelsForPowerSystems.pdf), or build
+it locally with the bundled Tectonic artifact as described under [Build locally](#build-locally).
 
 **d) MCP access for LLMs.** A retrieval interface over the same corpus for LLM clients, closer in
 spirit to the knowledge base than the monograph — an LLM client can query the book directly

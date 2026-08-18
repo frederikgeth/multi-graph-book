@@ -147,7 +147,7 @@ def argument_spine() -> str:
         '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.step{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.step.alt{fill:#f8e1c4;stroke:#8a4f13}.step.final{fill:#e4f4e7;stroke:#477a55}.num{font-size:18px;font-weight:bold}.head{font-size:17px;font-weight:bold}.small{font-size:14px;fill:#5f6b76}.arrow{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}</style>',
         '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
         txt(40, 46, "The argument spine", "title"),
-        txt(40, 76, "Each chapter supplies a premise, counterexample, tool, or consequence in one cumulative argument.", "sub"),
+        txt(40, 76, "Read 1–5 left to right, then 6–9 right to left; each step adds to one cumulative argument.", "sub"),
     ]
     # Five boxes on the first row and four on the second row, with a serpentine
     # reading order so the complete spine remains legible in print.
@@ -179,7 +179,9 @@ def argument_spine() -> str:
     for i in range(4):
         x = positions[i][0] + 220
         lines.append(f'<path d="M{x} 220 L{x + 45} 220" class="arrow"/>')
-    lines.append('<path d="M1150 295 L1150 405 L115 405 L115 455" class="arrow"/>')
+    # Step 5 turns directly down into step 6. Sending this connector across the
+    # empty left margin makes the layout look as if a tenth box is missing.
+    lines.append('<path d="M1220 295 L1220 455" class="arrow"/>')
     for i in range(3):
         x = positions[5 + i][0]
         lines.append(f'<path d="M{x} 530 L{x - 45} 530" class="arrow"/>')

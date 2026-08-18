@@ -2,6 +2,10 @@
 
 **Page status:** reader-facing overview and navigation map.
 
+!!! info "Read or download"
+    Read the searchable HTML book here, or [download the long-form
+    PDF](GraphModelsForPowerSystems.pdf) for the argument-shaped monograph.
+
 *Graphs, reductions, and decision boundaries*
 
 This book starts with a failure mode: a familiar power-network representation
@@ -24,6 +28,10 @@ The central thesis is:
 > with preservation and recovery contracts.
 
 ![The argument spine of the book.](assets/argument-spine.png)
+
+Read the numbered spine from 1 to 5 across the first row, then continue down
+to 6 and follow the second row from right to left through 9. The arrows show
+reading order, not logical implication or a hierarchy of claims.
 
 ## The argument route
 
