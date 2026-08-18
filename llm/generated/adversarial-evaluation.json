@@ -65,7 +65,7 @@
           "claim:FORMULATION-NODAL-002",
           "claim:ARCH-NODAL-001",
           "claim:GRAPH-PI-COLLAPSE-001",
-          "claim:FORMULATION-NODAL-001"
+          "claim:TR-XFMR-004"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -115,8 +115,8 @@
         "top_10": [
           "concept:nodal-operator-alias",
           "claim:FORMULATION-NODAL-002",
-          "claim:FORMULATION-NODAL-003",
           "claim:ARCH-BLOCK-001",
+          "claim:FORMULATION-NODAL-003",
           "claim:ARCH-RECOVERY-001",
           "claim:ARCH-SUPPORT-001",
           "claim:ARCH-RECOVERY-003",
@@ -265,8 +265,8 @@
           "claim:FORMULATION-NODAL-003",
           "claim:ARCH-LOWER-001",
           "claim:TR-XFMR-003",
-          "claim:FORMULATION-NODAL-001",
           "claim:TR-PAR-002",
+          "claim:FORMULATION-NODAL-001",
           "claim:NUMERICAL-001"
         ]
       },
@@ -277,8 +277,8 @@
           "claim:TR-KRON-FIVE-002",
           "concept:state",
           "claim:TR-SER-002",
-          "claim:FORMULATION-Y-SPLIT-001",
           "claim:TR-PAR-002",
+          "claim:FORMULATION-Y-SPLIT-001",
           "claim:FORMULATION-NODAL-001",
           "claim:TR-XFMR-003",
           "claim:ARCH-LOWER-001",
@@ -332,10 +332,10 @@
         "top_10": [
           "concept:graph-topology-adjacency",
           "claim:ARCH-SUPPORT-001",
-          "claim:PRACTICE-ARCH-001",
-          "claim:ARCH-LENS-001",
           "claim:GRAPH-MATRIX-001",
+          "claim:ARCH-LENS-001",
           "claim:GRAPH-MULTI-001",
+          "claim:PRACTICE-ARCH-001",
           "claim:GRAPH-CYCLE-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
           "claim:ARCH-LOWER-001",
@@ -349,13 +349,13 @@
           "concept:graph-topology-adjacency",
           "claim:ARCH-SUPPORT-001",
           "claim:ARCH-LENS-001",
-          "claim:PRACTICE-ARCH-001",
           "claim:ARCH-LOWER-001",
           "claim:GRAPH-CYCLE-001",
           "claim:GRAPH-MATRIX-001",
+          "claim:PRACTICE-ARCH-001",
           "claim:TR-GRAPH-ACTIVE-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
-          "claim:LOAD-DECISION-001"
+          "claim:GRAPH-MULTI-001"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -529,8 +529,8 @@
         "recall_at_10": 0.2,
         "top_10": [
           "concept:element-edge-relation",
-          "claim:ARCH-VIEW-001",
           "concept:equivalence-exactness-preservation",
+          "claim:ARCH-VIEW-001",
           "concept:graph-topology-adjacency",
           "concept:phase-conductor-sequence-coordinate",
           "concept:factor",
@@ -562,8 +562,8 @@
         "top_10": [
           "concept:direction-orientation-hierarchy",
           "claim:ARCH-PORT-002",
-          "claim:ARCH-SURGERY-002",
           "claim:ARCH-PORT-001",
+          "claim:ARCH-SURGERY-002",
           "claim:ARCH-CONDUCTOR-002",
           "concept:object-node-interface",
           "concept:phase-conductor-sequence-coordinate",
@@ -588,16 +588,16 @@
         "complete_at_10": true,
         "recall_at_10": 1.0,
         "top_10": [
-          "claim:TR-KRON-002",
           "claim:TR-KRON-NEUTRAL-007",
           "claim:TR-KRON-FIVE-001",
-          "claim:TR-KRON-NEUTRAL-001",
           "claim:TR-KRON-NEUTRAL-004",
-          "claim:TR-KRON-FIVE-002",
+          "claim:TR-KRON-002",
+          "claim:TR-KRON-NEUTRAL-001",
           "claim:TR-KRON-NEUTRAL-003",
           "claim:TR-KRON-NEUTRAL-002",
           "claim:TR-KRON-NEUTRAL-005",
-          "claim:TR-KRON-NEUTRAL-006"
+          "claim:TR-KRON-NEUTRAL-006",
+          "claim:TR-KRON-NEUTRAL-008"
         ]
       },
       "hybrid": {
@@ -608,8 +608,8 @@
           "claim:NUMERICAL-001",
           "claim:AU-CARSON-001",
           "claim:TR-KRON-FIVE-001",
-          "claim:TR-KRON-NEUTRAL-001",
           "claim:TR-KRON-NEUTRAL-004",
+          "claim:TR-KRON-NEUTRAL-001",
           "claim:TR-KRON-NEUTRAL-003",
           "claim:TR-KRON-NEUTRAL-002",
           "claim:TR-SER-003",
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "7eec81d0a7d219b25ba5e026475a02ac726ea21cb5934b81154cabc4c5cefba1"
+    "corpus_sha256": "be7174bd159c7853e5bffafd90f254bfc93bf3f922302bbc9cce1febffc6c5ae"
   },
   "inputs": {
     "adversarial_cases": {

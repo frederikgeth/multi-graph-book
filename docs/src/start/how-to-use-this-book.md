@@ -7,7 +7,9 @@ citations, generated artifacts, and evidence boundaries, but they answer differe
 
 For access through ChatGPT, see [Use this resource with ChatGPT](@ref chatgpt-access). It explains
 the Project, custom GPT, and developer-service routes, and how to distinguish a book-grounded
-answer from an ordinary model response.
+answer from an ordinary model response. For access through Claude, see
+[Use this resource with Claude](@ref claude-access), which adds a Model Context Protocol route
+that reads this repository's generated corpus directly.
 
 ## Follow the monograph argument
 

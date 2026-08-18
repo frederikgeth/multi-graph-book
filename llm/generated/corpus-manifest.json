@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "80676f769b291461d68bc37f4f67c1812ff98cda131d04b24e41a69eb97b2fb2",
+  "corpus_sha256": "be7174bd159c7853e5bffafd90f254bfc93bf3f922302bbc9cce1febffc6c5ae",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -10,16 +10,16 @@
       "docs/src/reference/vocabulary-indexes.md"
     ],
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
-    "included_doc_count": 64
+    "included_doc_count": 65
   },
   "evaluation_case_count": 30,
   "heldout_case_count": 30,
   "misconception_count": 10,
-  "record_count": 702,
+  "record_count": 710,
   "record_counts": {
     "claim_bundle": 103,
     "concept_bundle": 17,
-    "section": 582
+    "section": 590
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -164,7 +164,7 @@
     },
     {
       "path": "docs/src/index.md",
-      "sha256": "79fff9d1c0cbc98495e5c6d7eaa73046e9ea10a2070c88df32915ba15919ee61"
+      "sha256": "7f89cf7c7ff918848760cd5b7986cb7e66b577110178ca59a7a89483d79f752f"
     },
     {
       "path": "docs/src/literature/literature-map.md",
@@ -211,6 +211,10 @@
       "sha256": "7b81002a34ec018b7fecc3e778842b7273036fc68ce76f5af91e23bbf2f61540"
     },
     {
+      "path": "docs/src/start/claude-access.md",
+      "sha256": "52d719e8d587e18a3c93d2a2e527dbcc3feb3db38c085aed87437161c04cf2e6"
+    },
+    {
       "path": "docs/src/start/first-failure-parallel-branches.md",
       "sha256": "7f5e4204c13a3113a44c599dce3161dbda3067a5b70867ade46f433903eee72e"
     },
@@ -228,7 +232,7 @@
     },
     {
       "path": "docs/src/start/how-to-use-this-book.md",
-      "sha256": "88dfc49edda0e22f5107cd7c026df429b426395c7b471967542c81e8a7ad9953"
+      "sha256": "02004c89a2b51e7b2095b16d8399de3cff25294896dfce864ced712607958754"
     },
     {
       "path": "docs/src/start/one-network-five-languages.md",

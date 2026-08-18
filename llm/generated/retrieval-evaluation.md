@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `7eec81d0a7d219b25ba5e026475a02ac726ea21cb5934b81154cabc4c5cefba1`<br>
+**Corpus hash:** `be7174bd159c7853e5bffafd90f254bfc93bf3f922302bbc9cce1febffc6c5ae`<br>
 **Cases:** 30
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -17,9 +17,9 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
 | Open-corpus lexical evidence recall@5 | 30.0% | diagnostic |
-| Open-corpus lexical evidence recall@10 | 40.2% | diagnostic |
+| Open-corpus lexical evidence recall@10 | 39.6% | diagnostic |
 | Open-corpus complete evidence@10 | 0.0% | diagnostic |
-| Evidence-only lexical recall@5 | 39.6% | diagnostic |
+| Evidence-only lexical recall@5 | 40.2% | diagnostic |
 | Evidence-only lexical recall@10 | 53.1% | diagnostic |
 | Evidence-only complete evidence@10 | 3.3% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
@@ -43,10 +43,10 @@ evidence sets, so the effective target count is nine rather than 27 independent 
 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `lexical` | 37.2% | 44.7% | 0.0% | 0/30 | 5/30 | 0.207 |
-| `char_tfidf` | 34.4% | 43.6% | 0.0% | 0/30 | 5/30 | 0.207 |
-| `hybrid` | 39.4% | 46.3% | 0.0% | 0/30 | 5/30 | 0.222 |
-| `graph` | 37.9% | 52.2% | 30.0% | 9/30 | 5/30 | 0.243 |
+| `lexical` | 36.5% | 44.7% | 0.0% | 0/30 | 5/30 | 0.207 |
+| `char_tfidf` | 34.4% | 44.5% | 0.0% | 0/30 | 5/30 | 0.209 |
+| `hybrid` | 39.4% | 45.9% | 0.0% | 0/30 | 5/30 | 0.221 |
+| `graph` | 37.1% | 52.2% | 30.0% | 9/30 | 5/30 | 0.243 |
 
 Held-out contract-router firing: **22/30 (73.3%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **17/30 (56.7%)**; this remains diagnostic because the set is synthetic and clustered.
