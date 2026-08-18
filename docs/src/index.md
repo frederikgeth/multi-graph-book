@@ -28,6 +28,8 @@ The central thesis is:
 ## The argument route
 
 Follow [How to use this book](@ref how-to-use-this-book) for the full route.
+If you want to ask questions through ChatGPT, start with [Use this resource with ChatGPT](@ref
+chatgpt-access), which documents the supported reader and developer access paths.
 The compact argument is [One network, many graphs](@ref
 one-network-many-graphs) → [A first failure: heterogeneous parallel branches](@ref
 first-failure-parallel-branches) → [Scope and thesis](@ref scope-and-thesis) →

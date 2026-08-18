@@ -5,6 +5,10 @@
 This project has two complementary reading surfaces. They share Markdown sources, claims,
 citations, generated artifacts, and evidence boundaries, but they answer different reader needs.
 
+For access through ChatGPT, see [Use this resource with ChatGPT](@ref chatgpt-access). It explains
+the Project, custom GPT, and developer-service routes, and how to distinguish a book-grounded
+answer from an ordinary model response.
+
 ## Follow the monograph argument
 
 The long-form route is organized around a problem rather than a catalogue of graph types:
