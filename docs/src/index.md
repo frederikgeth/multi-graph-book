@@ -2,9 +2,8 @@
 
 **Page status:** reader-facing overview and navigation map.
 
-!!! info "Read or download"
-    Read the searchable HTML book here, or [download the long-form
-    PDF](GraphModelsForPowerSystems.pdf) for the argument-shaped monograph.
+Read the searchable HTML book here, or [download the long-form
+PDF](GraphModelsForPowerSystems.pdf) for the argument-shaped monograph.
 
 *Graphs, reductions, and decision boundaries*
 

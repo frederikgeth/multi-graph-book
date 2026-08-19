@@ -2165,7 +2165,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "be7174bd159c7853e5bffafd90f254bfc93bf3f922302bbc9cce1febffc6c5ae",
+    "corpus_sha256": "16a07c88d0da4d9df30096a181e0537a4072d3e5fa015a21317dd38e08a5a141",
     "record_count": 710,
     "release": {
       "external_reviewed_claims": 0,
@@ -3481,8 +3481,8 @@
         "char_tfidf_recall_at_5": 0.0,
         "char_tfidf_top_10": [
           "claim:TR-KRON-NEUTRAL-001",
-          "claim:NUMERICAL-001",
           "claim:TR-KRON-FIVE-001",
+          "claim:NUMERICAL-001",
           "claim:FORMULATION-NODAL-001",
           "claim:TR-XFMR-004",
           "claim:THESIS-001",
@@ -4290,8 +4290,8 @@
           "claim:TR-XFMR-006",
           "claim:GROUND-SCOPE-001",
           "claim:TR-PAR-006",
-          "claim:GRAPH-SELF-LOOP-001",
-          "claim:ARCH-LOWER-001"
+          "claim:ARCH-LOWER-001",
+          "claim:GRAPH-SELF-LOOP-001"
         ],
         "lexical_complete_at_10": false,
         "lexical_hits_at_10": 1,

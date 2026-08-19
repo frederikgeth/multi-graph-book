@@ -401,6 +401,15 @@ def validate_transformer_contract(contract: dict, network: dict, contract_path: 
     return errors
 
 
+# docs/make.jl writes this PDF into docs/src at build time (an empty
+# placeholder early in the run, overwritten with the rendered file), and
+# .gitignore excludes it. It is therefore absent from a fresh checkout but
+# present in the deployed site, and check_artifacts.py runs before the build.
+# Keep the link relative so it resolves under every deployed version
+# directory, and validate it by policy here.
+GENERATED_DOC_LINKS = {(ROOT / "docs/src/GraphModelsForPowerSystems.pdf").resolve()}
+
+
 def check_links(errors: list[str]) -> int:
     checked = 0
     candidates = [ROOT / name for name in ("README.md", "ROADMAP.md", "BOOK_PLAN.md", "CONTRIBUTING.md")]
@@ -421,6 +430,8 @@ def check_links(errors: list[str]) -> int:
             checked += 1
             target = Path(destination)
             target = target if target.is_absolute() else (document.parent / target).resolve()
+            if target in GENERATED_DOC_LINKS:
+                continue
             if not target.exists():
                 errors.append(f"broken local link in {document.relative_to(ROOT)}: {destination}")
     return checked
