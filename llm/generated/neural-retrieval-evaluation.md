@@ -5,11 +5,11 @@
 **Model:** `sentence-transformers/all-MiniLM-L6-v2` at revision `ea78891063587eb050ed4166b20062eaf978037c`
 **Embedding artifact hash:** `507dfbc0b17cb6138f2a9f9e0894df3198cab2bebb23fc46759021e6ee458d02`
 **Current-corpus compatibility:** `archived_prior_corpus`
-**Archived on:** `2026-08-17`
-**Current corpus hash:** `7eec81d0a7d219b25ba5e026475a02ac726ea21cb5934b81154cabc4c5cefba1`
-**Current held-out input hash:** `92f62f77c45d5c184fb80df476efdff4a05b038465c81b1961d01c45723fe7b3`
+**Archived on:** `2026-08-25`
+**Current corpus hash:** `69cfba46733d2d9151bc0db99bcfdef48774910740bf7214ab56237fb8a77aa3`
+**Current held-out input hash:** `171857dd883acf3ed9a091fac0e2e7485cbd13d5f0477a56af37d010cec16592`
 **Required action:** rerun both pinned neural retriever and reranker before comparing them with the current corpus
-**Current lexical baseline:** lexical recall@10=44.7%; char_tfidf recall@10=43.6%; hybrid recall@10=46.3%
+**Current lexical baseline:** lexical recall@10=44.9%; char_tfidf recall@10=44.9%; hybrid recall@10=46.9%
 
 This report is an opt-in comparison. It does not promote neural retrieval into the release path
 or prove answer faithfulness; it measures only held-out evidence-record retrieval.

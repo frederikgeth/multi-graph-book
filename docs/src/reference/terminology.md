@@ -27,7 +27,7 @@ maintained definition surface.
 | graph, topology, adjacency | Asset, active-connectivity, factor-incidence, equation, support, or message graph? | one topology answers every query |
 | [directed, oriented, upstream, downstream](@ref terminology-directed) | Stored order, operating sign, rooted-tree relation, causality, or admissibility? | an arrow predicts physical transfer |
 | [flow, current, power, message](@ref terminology-flow) | Which terminal or internal quantity and which conservation law? | one antisymmetric scalar lives on every edge |
-| parallel | Same endpoints, same terminals, shared corridor, homogeneous equipment, or parallel computation? | members can be merged without a contract |
+| [parallel](@ref terminology-parallel) | Same endpoints, same terminals, shared physical route, homogeneous equipment, or parallel computation? | members can be merged without a contract |
 | cycle, loop, mesh, radial | In which graph and active state? | a graph cycle is a circulating physical flow |
 | state | Electrical variables, equipment status, scenario, estimator state, or ML hidden state? | one state object contains all of them |
 | rating, limit, constraint | Source datum, operational policy, or mathematical encoding? | one scalar constraint reproduces the equipment limit |
@@ -83,7 +83,11 @@ belong to [Representation frameworks](@ref formal-representation-frameworks).
 | Stamp multigraph | Derived decomposition that retains one identified member for each separate factor stamp contributing to an assembled matrix | [Two-level topology](@ref two-level-topology-and-nodal-projection) |
 | Simple cycle | A closed cycle of at least three distinct vertices in a loopless simple graph | [Cycles and radiality](@ref cycles-parallelism-radiality) |
 | Line-identity cycle | A minimal-support nonzero vector in the incidence nullspace of an identified multigraph | [Cycles and radiality](@ref cycles-parallelism-radiality) |
+| Physically parallel sections | Line sections that overlap spatially on common towers, poles, trench, or right of way for a declared interval; not necessarily graph-parallel, electrically interchangeable, or part of one transfer corridor | [Coupled corridor](@ref coupled-multivoltage-corridor) |
 | Parallel fibre | The set of identified elements mapped to one unordered endpoint pair by the simple quotient | [Cycles and radiality](@ref cycles-parallelism-radiality) |
+| Mutual-coupling record | An oriented relation between two identified line sections carrying cross blocks, coordinate maps, overlap, and provenance | [Coupled corridor](@ref coupled-multivoltage-corridor) |
+| Coupling group | A connected component of the section-level mutual-coupling relation | [Coupled corridor](@ref coupled-multivoltage-corridor) |
+| Joint primitive | The impedance, admittance, or terminal relation assembled for a complete coupling group before any optional nodal or ordinary-edge lowering | [Coupled corridor](@ref coupled-multivoltage-corridor) |
 | Bridge | An identified edge whose deletion increases the number of connected components in the declared graph | [Cycles and radiality](@ref cycles-parallelism-radiality) |
 | Radial tail | A maximal bridge path ending at a leaf in a specified graph and active state | [Cycles and radiality](@ref cycles-parallelism-radiality) |
 | Adjacency-radial | Forest property of the simple topology projection | [Cycles and radiality](@ref cycles-parallelism-radiality) |
@@ -145,6 +149,22 @@ Distinguish:
 - model section introduced by discretization;
 - mathematical two-port branch;
 - behavioral equivalent with no single physical counterpart.
+
+### [Parallel](@id terminology-parallel)
+
+Distinguish physically parallel line sections, topological parallel edges,
+terminal or electrical parallelism, and operational interchangeability.
+*Physically parallel* follows line-modeling usage for spatially co-located
+sections; it is not the transfer meaning of *corridor*. Electromagnetic mutual
+coupling is a separate relation and can exist between sections at different
+voltage levels and with different endpoint pairs.
+
+### [Mutual coupling](@id terminology-mutual-coupling)
+
+A mutual-coupling record is a relation over two oriented line sections. Its
+connected components are coupling groups, and each group is assembled into one
+joint primitive. These source objects remain distinct from any generated
+weighted-lattice realization of the primitive.
 
 ### [Flow](@id terminology-flow)
 

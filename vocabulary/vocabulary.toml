@@ -102,19 +102,35 @@ circuit_theory = ["branch current", "terminal current", "complex power"]
 
 [[concept]]
 id = "parallel"
-house_terms = ["corridor parallelism", "parallel fibre", "terminal parallelism", "electrical aggregability", "coupling group"]
+house_terms = ["physical parallelism", "parallel fibre", "terminal parallelism", "electrical aggregability"]
 relation_class = "broader_narrower"
 usage_status = "accepted_qualified_shorthand"
-required_question = "Do members share endpoints, terminals, a corridor, constitutive data, or operating interchangeability?"
+required_question = "Do members share endpoints, terminals, a physical route, boundary variables, or operating interchangeability?"
 unsafe_inference = "Parallel members can be merged without a preservation contract."
-definition_path = "docs/src/foundations/cycles-parallelism-radiality.md"
-definition_anchor = "cycles-parallelism-radiality"
-power_engineering = ["parallel lines", "double circuit", "same corridor"]
+definition_path = "docs/src/reference/terminology.md"
+definition_anchor = "terminology-parallel"
+power_engineering = ["parallel lines", "physically parallel lines", "double circuit", "shared right of way"]
 software_data = ["duplicate endpoint pair", "parallel equipment records"]
 mathematical_modelling = ["parallel branches", "aggregate branch"]
 graph_theory = ["parallel edges", "edge multiplicity"]
 graph_machine_learning = ["multi-edge", "duplicate relation"]
 circuit_theory = ["parallel connection", "common terminal pair"]
+
+[[concept]]
+id = "mutual-coupling-relation"
+house_terms = ["mutual-coupling record", "coupling group", "joint primitive"]
+relation_class = "representation_dependent"
+usage_status = "preferred_house_term"
+required_question = "Is this the pairwise source relation, its connected group, the assembled primitive, or a generated realization?"
+unsafe_inference = "Mutual coupling is an ordinary parallel branch or every generated lattice edge is a physical conductor."
+definition_path = "docs/src/reference/terminology.md"
+definition_anchor = "terminology-mutual-coupling"
+power_engineering = ["mutual impedance", "mutually coupled lines", "joint line model"]
+software_data = ["MutualCoupling", "line coupling", "mutual impedance record"]
+mathematical_modelling = ["coupling relation", "block impedance matrix", "connected component"]
+graph_theory = ["relation graph", "connected component", "weighted realization"]
+graph_machine_learning = ["relation edge", "heterogeneous coupling edge"]
+circuit_theory = ["mutually coupled branches", "primitive impedance matrix", "equivalent lattice"]
 
 [[concept]]
 id = "cycle-radial-tree"

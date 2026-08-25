@@ -129,3 +129,16 @@ operational_consequence = "An apparently exact equivalent can admit infeasible s
 mandatory_claim_ids = ["PRESERVE-001", "TR-PAR-001", "TR-PAR-002"]
 mandatory_concept_ids = ["equivalence-exactness-preservation", "rating-limit-constraint"]
 source_paths = ["docs/src/foundations/preservation-contracts.md", "docs/src/start/first-failure-parallel-branches.md"]
+
+[[misconception]]
+id = "mutual-coupling-is-an-ordinary-parallel-network"
+title = "Mutually coupled sections and their lattice are ordinary physical parallel branches"
+severity = "critical"
+query_patterns = ["mutually coupled lines", "different voltage parallel lines", "shared impedance matrix", "share poles and a mutual impedance", "parallel graph edges mutual impedance", "lattice edges real wires", "coupling group", "joint primitive", "equivalent lattice", "six edge lattice", "cross voltage edge", "mutual coupling opf", "generated lattice conductor"]
+tempting_answer = "Treat the coupled lines as ordinary parallel branches and use every edge of the equivalent lattice as a physical line in subsequent studies."
+required_qualification = "Physical co-location, graph parallelism, and electromagnetic coupling are distinct. The canonical model retains identified line sections plus coupling records assembled into a joint primitive; an invertible reciprocal fixed-linear scalar primitive admits a generated lattice for its terminal equation, but the lattice edges are not conductors and the certificate does not establish limit, state, protection, or decision equivalence."
+safe_shorthand = "Equivalent lattice is safe only as a generated fixed-linear equation realization with source-current recovery, provenance, and a separate study-preservation contract."
+operational_consequence = "Treating generated signed cross edges as assets can create false galvanic connectivity, attach limits to fictitious conductors, violate solver weight assumptions, and admit source-infeasible operating decisions."
+mandatory_claim_ids = ["COUPLED-CORRIDOR-001", "COUPLED-CORRIDOR-002"]
+mandatory_concept_ids = ["mutual-coupling-relation", "parallel", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/cases/coupled-multivoltage-corridor.md", "docs/src/foundations/cycles-parallelism-radiality.md", "docs/src/foundations/preservation-contracts.md"]

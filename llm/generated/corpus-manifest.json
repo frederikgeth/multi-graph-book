@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "bf996522b66c2ae077e9f1ada2967a7ed6ae169e19983562713c3e657c4f438a",
+  "corpus_sha256": "69cfba46733d2d9151bc0db99bcfdef48774910740bf7214ab56237fb8a77aa3",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -12,14 +12,14 @@
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
     "included_doc_count": 67
   },
-  "evaluation_case_count": 30,
-  "heldout_case_count": 30,
-  "misconception_count": 10,
-  "record_count": 731,
+  "evaluation_case_count": 33,
+  "heldout_case_count": 33,
+  "misconception_count": 11,
+  "record_count": 734,
   "record_counts": {
     "claim_bundle": 105,
-    "concept_bundle": 17,
-    "section": 609
+    "concept_bundle": 18,
+    "section": 611
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -32,7 +32,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "2bc1d6b396760a6a8b9c0e8a9d88cc8121e3cc2f885b48607e776c5305db4c72"
+      "sha256": "7665586ed6a8a607a3d601f703193adb55a49ad64ed8a50cfa5557d5cbd92aeb"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -44,7 +44,7 @@
     },
     {
       "path": "docs/src/cases/coupled-multivoltage-corridor.md",
-      "sha256": "ec14d641278a16326683112e386d5acd65fb5f40665a7484d794053e25c4d77d"
+      "sha256": "f077d436e91e70f66a7fd506f6f6fffd799bdd21d3d93a4923a208c78090e78b"
     },
     {
       "path": "docs/src/cases/executable-running-network.md",
@@ -84,7 +84,7 @@
     },
     {
       "path": "docs/src/foundations/cycles-parallelism-radiality.md",
-      "sha256": "f6fc6ee4659b556aa3d4b4fc4c38c7fbc52961f6493718b23a45ac4736d5aa9e"
+      "sha256": "b21e4a81e42154fbf5a3fcf74fe7f5fd6886851068b1edb46df3f2dfa76fb531"
     },
     {
       "path": "docs/src/foundations/data-model-crosswalk.md",
@@ -108,7 +108,7 @@
     },
     {
       "path": "docs/src/foundations/multigraphs-for-modelers.md",
-      "sha256": "e32f1e53811540ac42938563970226c4d68b5bf023c5678392fe63756eaa769f"
+      "sha256": "f875b55e68300505e1f3404fc6a15231f7d5aefef4a60a46642c42bda01db050"
     },
     {
       "path": "docs/src/foundations/node-breaker-topology-processing.md",
@@ -180,7 +180,7 @@
     },
     {
       "path": "docs/src/literature/research-agenda.md",
-      "sha256": "daf523faf38a4bc9e1375e041f1f64bf4daee8998e0ab705a60c2c51f0dd0b66"
+      "sha256": "6bdcc84415e177bd6a3c8bab8d0f026577f32c0a5302ca0fe45982664427c262"
     },
     {
       "path": "docs/src/literature/review-protocol-and-evidence-status.md",
@@ -212,7 +212,7 @@
     },
     {
       "path": "docs/src/reference/terminology.md",
-      "sha256": "f7f5f95508a7376a093dd0c12ed19a6cd991db1059fcf9f75c179ea5917f1f87"
+      "sha256": "0b2ab3d877ed19866673d5506fedfd218fa269993e0c935da09bbec1070940b5"
     },
     {
       "path": "docs/src/start/chatgpt-access.md",
@@ -304,19 +304,19 @@
     },
     {
       "path": "llm/evaluation-cases.toml",
-      "sha256": "6805cb7ed316422ca9b1004af371a85ac889cf801574815622b0b1f4c6cf8a34"
+      "sha256": "10330001f650f5e862ce0acffd4ca5f7c1f2527165cc9432ea09acfa350b90ca"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
-      "sha256": "92f62f77c45d5c184fb80df476efdff4a05b038465c81b1961d01c45723fe7b3"
+      "sha256": "171857dd883acf3ed9a091fac0e2e7485cbd13d5f0477a56af37d010cec16592"
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "c8b5fe62cab4a4f19713a67968a56958ac49e5210073fea4749d2ca2e2cd3d4b"
+      "sha256": "6773f2584077655a7a47cced994a8ab790d386b664be9658b569df34c062b08f"
     },
     {
       "path": "vocabulary/vocabulary.toml",
-      "sha256": "8d1a2a3b092d1ad6800cb6d4edc52b7faa432aa7db5f42547532952eb3d662b6"
+      "sha256": "ffed5b11061ad3fc97f4670cd1e10bfd0e7b6ff238766adef786d83290885c9c"
     }
   ]
 }

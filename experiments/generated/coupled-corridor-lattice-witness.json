@@ -3,13 +3,15 @@
     "source_currents_recover_nodal_injections": true,
     "generated_cross_edges_include_signed_weights": true,
     "lattice_row_sums_are_zero": true,
-    "orientation_reversal_preserves_nodal_stamp": true,
-    "cross_voltage_per_unit_formula_matches": true,
     "per_unit_round_trip_preserves_joint_primitive": true,
     "joint_primitive_is_invertible": true,
-    "joint_primitive_is_reciprocal": true,
+    "orientation_reversal_changes_mutual_sign": true,
     "singular_joint_primitive_refuses_admittance_lowering": true,
-    "six_edge_lattice_matches_joint_stamp": true
+    "six_edge_lattice_matches_joint_stamp": true,
+    "reversed_lattice_matches_reversed_joint_stamp": true,
+    "cross_voltage_per_unit_formula_matches": true,
+    "joint_primitive_is_reciprocal": true,
+    "orientation_reversal_rebuilds_same_weight_table": true
   },
   "source_sections": [
     {
@@ -121,6 +123,74 @@
   ],
   "all_checks_pass": true,
   "model_scope": "two reciprocal fixed-linear scalar series sections on four retained terminal-voltage coordinates",
+  "orientation_reversal": {
+    "rebuilt_lattice": [
+      {
+        "provenance": "generated_from_reoriented_Gamma_HL",
+        "weight": {
+          "re": 0.7265510774393052,
+          "im": -2.3985171169529007
+        },
+        "to": "n",
+        "from": "m",
+        "asset_interpretation": false
+      },
+      {
+        "provenance": "generated_from_reoriented_Gamma_HL",
+        "weight": {
+          "re": 0.6156429271022806,
+          "im": -1.6790261648244018
+        },
+        "to": "p",
+        "from": "q",
+        "asset_interpretation": false
+      },
+      {
+        "provenance": "generated_from_reoriented_Gamma_HL",
+        "weight": {
+          "re": -0.15391073177557013,
+          "im": 0.41975654120610034
+        },
+        "to": "q",
+        "from": "m",
+        "asset_interpretation": false
+      },
+      {
+        "provenance": "generated_from_reoriented_Gamma_HL",
+        "weight": {
+          "re": 0.15391073177557013,
+          "im": -0.41975654120610034
+        },
+        "to": "p",
+        "from": "m",
+        "asset_interpretation": false
+      },
+      {
+        "provenance": "generated_from_reoriented_Gamma_HL",
+        "weight": {
+          "re": 0.15391073177557013,
+          "im": -0.41975654120610034
+        },
+        "to": "q",
+        "from": "n",
+        "asset_interpretation": false
+      },
+      {
+        "provenance": "generated_from_reoriented_Gamma_HL",
+        "weight": {
+          "re": -0.15391073177557013,
+          "im": 0.41975654120610034
+        },
+        "to": "p",
+        "from": "n",
+        "asset_interpretation": false
+      }
+    ],
+    "reversed_to": "p",
+    "reversed_from": "q",
+    "reversed_section": "s_L",
+    "mutual_admittance_changes_sign": true
+  },
   "claim_ids": [
     "COUPLED-CORRIDOR-001",
     "COUPLED-CORRIDOR-002"

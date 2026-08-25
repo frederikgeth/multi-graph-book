@@ -177,6 +177,27 @@ expected_claim_ids = ["PRESERVE-001", "TR-PAR-001", "TR-PAR-002"]
 expected_concept_ids = ["equivalence-exactness-preservation", "rating-limit-constraint"]
 
 [[case]]
+case_id = "HOLDOUT-COUPLING-STUDENT"
+audience = "student"
+question = "Why can two circuits on the same poles be coupled even though they do not connect the same buses, and what do the cross-links in their lattice mean?"
+expected_claim_ids = ["COUPLED-CORRIDOR-001", "COUPLED-CORRIDOR-002"]
+expected_concept_ids = ["mutual-coupling-relation", "parallel", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "HOLDOUT-COUPLING-SOFTWARE"
+audience = "software_engineer"
+question = "Which source records must survive when a shared block impedance is lowered to ordinary weighted edges?"
+expected_claim_ids = ["COUPLED-CORRIDOR-001", "COUPLED-CORRIDOR-002"]
+expected_concept_ids = ["mutual-coupling-relation", "parallel", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "HOLDOUT-COUPLING-POWER"
+audience = "power_engineer"
+question = "What does an exact terminal lattice for mutually coupled MV and LV circuits fail to prove about ratings, outages, protection, and dispatch?"
+expected_claim_ids = ["COUPLED-CORRIDOR-001", "COUPLED-CORRIDOR-002"]
+expected_concept_ids = ["mutual-coupling-relation", "parallel", "equivalence-exactness-preservation"]
+
+[[case]]
 case_id = "HOLDOUT-SELF-LOOP-STUDENT"
 audience = "student"
 question = "Is a graph self-loop the same as a shunt or an ordinary circuit branch?"

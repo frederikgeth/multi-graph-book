@@ -17,6 +17,24 @@ function lattice_matrix(weights)
     L
 end
 
+function section_lattice_weights(Y, first_endpoints, second_endpoints)
+    first_from, first_to = first_endpoints
+    second_from, second_to = second_endpoints
+    y_first, y_mutual, y_second = Y[1, 1], Y[1, 2], Y[2, 2]
+    [
+        (first_from, first_to, y_first),
+        (second_from, second_to, y_second),
+        (first_from, second_from, -y_mutual),
+        (first_from, second_to, y_mutual),
+        (first_to, second_from, y_mutual),
+        (first_to, second_to, -y_mutual),
+    ]
+end
+
+function canonical_weight_map(weights)
+    Dict((min(i, j), max(i, j)) => weight for (i, j, weight) in weights)
+end
+
 function evaluate_coupled_corridor_lattice(; atol=1.0e-11)
     Z = ComplexF64[
         0.12 + 0.40im  0.03 + 0.10im;
@@ -29,15 +47,7 @@ function evaluate_coupled_corridor_lattice(; atol=1.0e-11)
     Y = inv(Z)
     YN = transpose(A) * Y * A
 
-    yH, yM, yL = Y[1, 1], Y[1, 2], Y[2, 2]
-    weights = [
-        (1, 2, yH),
-        (3, 4, yL),
-        (1, 3, -yM),
-        (1, 4, yM),
-        (2, 3, yM),
-        (2, 4, -yM),
-    ]
+    weights = section_lattice_weights(Y, (1, 2), (3, 4))
     YLattice = lattice_matrix(weights)
 
     u = ComplexF64[1.02 + 0.01im, 0.98 - 0.02im, 0.43 + 0.03im, 0.40 - 0.01im]
@@ -49,7 +59,14 @@ function evaluate_coupled_corridor_lattice(; atol=1.0e-11)
     S = Diagonal(ComplexF64[1, -1])
     ZReversed = S * Z * S
     AReversed = real.(S) * A
-    YNReversed = transpose(AReversed) * inv(ZReversed) * AReversed
+    YReversed = inv(ZReversed)
+    YNReversed = transpose(AReversed) * YReversed * AReversed
+    reversed_weights = section_lattice_weights(YReversed, (1, 2), (4, 3))
+    YLatticeReversed = lattice_matrix(reversed_weights)
+    weight_map = canonical_weight_map(weights)
+    reversed_weight_map = canonical_weight_map(reversed_weights)
+    reversed_table_matches = keys(weight_map) == keys(reversed_weight_map) &&
+                             all(isapprox(weight_map[key], reversed_weight_map[key]; atol) for key in keys(weight_map))
 
     # Use one common scalar power base and different voltage bases. This is the
     # phase-coordinate form; three-phase line-line conventions would add their
@@ -73,7 +90,9 @@ function evaluate_coupled_corridor_lattice(; atol=1.0e-11)
         "six_edge_lattice_matches_joint_stamp" => isapprox(YLattice, YN; atol),
         "lattice_row_sums_are_zero" => maximum(abs.(YN * ones(4))) <= atol,
         "source_currents_recover_nodal_injections" => isapprox(nodal_injections, YN * u; atol),
-        "orientation_reversal_preserves_nodal_stamp" => isapprox(YNReversed, YN; atol),
+        "orientation_reversal_changes_mutual_sign" => isapprox(YReversed[1, 2], -Y[1, 2]; atol),
+        "orientation_reversal_rebuilds_same_weight_table" => reversed_table_matches,
+        "reversed_lattice_matches_reversed_joint_stamp" => isapprox(YLatticeReversed, YNReversed; atol),
         "cross_voltage_per_unit_formula_matches" => isapprox(Zpu[1, 2], expected_mutual_pu; atol),
         "per_unit_round_trip_preserves_joint_primitive" => isapprox(ZRoundTrip, Z; atol),
         "singular_joint_primitive_refuses_admittance_lowering" => !singular_can_lower,
@@ -106,6 +125,21 @@ function evaluate_coupled_corridor_lattice(; atol=1.0e-11)
                 "asset_interpretation" => false,
             ) for (i, j, weight) in weights
         ],
+        "orientation_reversal" => Dict(
+            "reversed_section" => "s_L",
+            "reversed_from" => "q",
+            "reversed_to" => "p",
+            "mutual_admittance_changes_sign" => true,
+            "rebuilt_lattice" => [
+                Dict(
+                    "from" => TERMINALS[i],
+                    "to" => TERMINALS[j],
+                    "weight" => Dict("re" => real(weight), "im" => imag(weight)),
+                    "provenance" => "generated_from_reoriented_Gamma_HL",
+                    "asset_interpretation" => false,
+                ) for (i, j, weight) in reversed_weights
+            ],
+        ),
         "per_unit" => Dict(
             "power_base_va" => power_base,
             "voltage_bases_v" => voltage_bases,

@@ -127,14 +127,16 @@ therefore distinguishes the following facets:
 
 | Facet | Condition | Where it can be decided |
 |:--|:--|:--|
-| corridor parallelism | sections overlap spatially on common towers, poles, trench, or right of way | asset, geometry, and section-lineage model |
+| physical parallelism | line sections overlap spatially on common towers, poles, trench, or right of way | asset, geometry, and section-lineage model |
 | topological parallelism | same unordered bus pair ``\partial(\ell_1)=\partial(\ell_2)`` | identified multigraph |
 | terminal parallelism | endpoint terminal spaces and terminal maps align, up to declared coordinate actions | terminal-connectivity or port model |
 | electrical parallelism | both factors see the same boundary voltage variables and their currents can be summed | port--factor or equation model |
 | operational parallelism | both members are active in the declared switch, outage, investment, and state scenario | asset/state and decision model |
 | homogeneous parallelism | construction, grounding, parameter, and constraint guards support a physical merge | asset plus electrical model |
 
-Mutual coupling adds another orthogonal relation. Corridor-parallel sections
+Here *physically parallel* follows line-modeling usage and means spatially
+co-located; it does not mean a transfer corridor. Mutual coupling adds another
+orthogonal relation. Physically parallel sections
 can belong to one joint electromagnetic factor even when their endpoint pairs,
 conductor sets, and nominal voltages differ. The [coupled multi-voltage
 corridor case](@ref coupled-multivoltage-corridor) develops this situation and

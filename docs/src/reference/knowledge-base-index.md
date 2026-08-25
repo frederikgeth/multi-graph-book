@@ -1,6 +1,6 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:2bc1d6b396760a6a8b9c0e8a9d88cc8121e3cc2f885b48607e776c5305db4c72 -->
+<!-- generated-from claims/claims.toml sha256:7665586ed6a8a607a3d601f703193adb55a49ad64ed8a50cfa5557d5cbd92aeb -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
@@ -95,7 +95,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `ARCH-SURGERY-001` — The book proposes that state-conditioned graph surgery return state-indexed graphs or graph families with diagnostics and provenance; for many unknown switches, a three-valued certain-connected/certain-separated/undetermined summary should be available instead of silently collapsing to one active graph. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
 | `ARCH-SURGERY-002` — The book proposes that an n-terminal surgery retain port-coordinate identity and return port-specific active and isolated sets; it cannot be inferred by replacing an n-port factor with implicit pairwise edges. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
 | `ARCH-VIEW-001` — The book proposes that a power-network visualisation declare its object level, preserved and forgotten semantics, identity fibres, and reverse-map status; single-line, multi-line, port-factor, node-breaker, nodal-support, and reduced views are distinct typed projections. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
-| `COUPLED-CORRIDOR-001` — Corridor-parallel line sections need not be parallel in the bus multigraph; a source model can retain stable line assets plus oriented section-to-section coupling records, with each connected coupling group compiling into one joint electrical factor before inversion or nodal stamping. | [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | `self-checked` |
+| `COUPLED-CORRIDOR-001` — Physically parallel line sections need not be parallel in the bus multigraph; a source model can retain stable line assets plus oriented section-to-section coupling records, with each connected coupling group compiling into one joint electrical factor before inversion or nodal stamping. | [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | `self-checked` |
 | `TRANSFORM-CATALOG-001` — The guarded-normalization catalogue treats coordinate normalization, series elimination, parallel bundling, switch contraction, multiwinding compilation, and rooted-tree views as distinct rule families whose acceptance depends on declared closure, recovery, constraint, and provenance guards. | [Guarded normalization rules](../transformations/guarded-normalization.md) | `self-checked` |
 
 ### `theorem` (39)
@@ -178,7 +178,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `COLLAPSE-001` | Extend the network witness to controls, phase-specific limits, contingencies, and an independent mathematical review before making a global decision-equivalence claim. |
 | `COLLAPSE-002` | Extend the witness to controls, phase-specific limits, contingencies, and independent mathematical review. |
 | `COUPLED-CORRIDOR-001` | Obtain information-model and protection review; define a machine-readable coupling-group schema and test partial-overlap import round trips. |
-| `COUPLED-CORRIDOR-002` | Independently review the sign/orientation convention and extend the result to block-valued full-pi and singular tableau targets. |
+| `COUPLED-CORRIDOR-002` | Independently review the sign/orientation convention; extend the result to block-valued full-pi and singular tableau targets; and separately test limit, state, protection, and optimization-decision preservation. |
 | `DATA-XWALK-001` | The running-fixture contract is checked against pinned documentation profiles; external package imports and file-level round-trip provenance/rating checks remain open. |
 | `FIXTURE-001` | Add an independent fixture reviewer. |
 | `FIXTURE-002` | Re-run with an independent solver where possible. |
@@ -270,7 +270,7 @@ schema is normalised.
 | Claim | Chapter | Type |
 | --- | --- | --- |
 | `AU-CARSON-001` — The Australian Carson reproduction regenerates overhead and underground multiconductor primitives from lifted construction inputs, compares them with independent OpenDSS reference matrices, and identifies the CS1035 construction mapping as unresolved rather than presenting it as a faithful reproduction. | [Australian construction inputs: Carson and OpenDSSDirect](../cases/australian-carson-reproduction.md) | `empirical` |
-| `COUPLED-CORRIDOR-001` — Corridor-parallel line sections need not be parallel in the bus multigraph; a source model can retain stable line assets plus oriented section-to-section coupling records, with each connected coupling group compiling into one joint electrical factor before inversion or nodal stamping. | [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | `proposal` |
+| `COUPLED-CORRIDOR-001` — Physically parallel line sections need not be parallel in the bus multigraph; a source model can retain stable line assets plus oriented section-to-section coupling records, with each connected coupling group compiling into one joint electrical factor before inversion or nodal stamping. | [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | `proposal` |
 | `COUPLED-CORRIDOR-002` — For two fixed linear reciprocal scalar series sections with a nonsingular joint impedance matrix, A_Gamma^T Z_Gamma^{-1} A_Gamma has an exact six-edge weighted-lattice realization on the four source terminals; source section currents are recovered by Z_Gamma^{-1} A_Gamma u, while the generated cross edges carry no asset or galvanic interpretation. | [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | `theorem` |
 | `FIXTURE-001` — Running-network fixture v0.1.0 passes the current BMOPFTools JSON schema and conformance checks without errors or warnings. | [Executable running network](@ref executable-running-network) | `empirical` |
 | `FIXTURE-002` — The v0.1.0 continuous PF and OPF instances terminate locally solved in the recorded environment. | [Executable running network](@ref executable-running-network) | `empirical` |

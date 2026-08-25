@@ -2,13 +2,16 @@
 
 **Page status:** literature-backed representation and exact fixed-linear
 lowering case with an executable scalar certificate; a geometry-derived
-multi-voltage certificate remains follow-on work.
+multi-voltage certificate and decision-preservation tests remain follow-on
+work.
 
 Two circuits can share towers or a right of way without sharing buses,
-terminals, or nominal voltage. They are then *corridor-parallel*, not
-necessarily parallel edges in a bus multigraph. Electromagnetic coupling
-nevertheless makes their longitudinal voltage drops and currents part of one
-constitutive relation.
+terminals, or nominal voltage. Following the line-modeling literature, they are
+then *physically parallel sections*: spatially co-located, but not necessarily
+parallel edges in a bus multigraph. Here *physical* qualifies the shared route;
+it does not mean a transfer corridor or electrical interchangeability.
+Electromagnetic coupling nevertheless makes their longitudinal voltage drops
+and currents part of one constitutive relation.
 
 This case separates three objects that a one-line diagram can make easy to
 conflate:
@@ -26,7 +29,7 @@ conductors, transformer windings, galvanic connections, or additional assets.
 Their weights can be signed or general complex quantities even when the joint
 primitive is reciprocal and passive as a whole.
 
-## Corridor parallelism is not graph parallelism
+## Physical parallelism is not graph parallelism
 
 Let the high-voltage section ``s_{\mathrm H}`` join buses ``m`` and ``n``, and
 let the lower-voltage section ``s_{\mathrm L}`` join buses ``p`` and ``q``.
@@ -45,7 +48,8 @@ implied by the bus--branch incidence map.
 
 For data and prose, this book uses the following terms:
 
-- **corridor-parallel sections** overlap spatially for a declared interval;
+- **physically parallel sections** overlap spatially on common towers, poles,
+  trench, or right of way for a declared interval;
 - a **mutual-coupling record** relates two oriented sections and carries their
   cross blocks, coordinate maps, overlap, and provenance;
 - a **coupling group** ``\Gamma`` is a connected component of the resulting
@@ -149,8 +153,19 @@ extends blockwise to multiconductor circuits.
 
 ## The generated lattice
 
-Under the book's weighted-Laplacian convention, the scalar nodal stamp is
-realized by six ordinary edges:
+For reciprocal ``\mathbf Z_\Gamma``, the inverse ``\mathbf Y_\Gamma`` is
+complex symmetric, so an undirected weighted graph is sufficient. A
+nonreciprocal primitive requires a directed or more general factor target.
+Under the book's [weighted-Laplacian convention](@ref
+weighted-laplacian-convention), the scalar nodal stamp is realized by six
+ordinary edges:
+
+!!! warning "Circuit-theory trap"
+
+    The following table is a generated scalar equation realization, not a line
+    inventory. If copied out of context, every row must retain its
+    `generated_from` provenance and `asset_interpretation = false`; the
+    cross-voltage rows are not conductors or galvanic connections.
 
 | generated endpoint pair | weight |
 |:--|:--|
@@ -160,6 +175,11 @@ realized by six ordinary edges:
 | ``m--q`` | ``y_{\mathrm M}`` |
 | ``n--p`` | ``y_{\mathrm M}`` |
 | ``n--q`` | ``-y_{\mathrm M}`` |
+
+The count *six* is scalar-specific. In a coordinate-expanded block
+realization, the two cross pairs become up to ``r_{\mathrm H}r_{\mathrm L}``
+cross-coordinate pairs before sparsity is considered, and the self blocks can
+require further within-circuit coordinate edges.
 
 The sign pattern depends on the two stored orientations. Reversing one section
 changes the sign of its mutual entries and permutes the terminal labels; it
@@ -182,10 +202,21 @@ i_{\mathrm H}\\i_{\mathrm L}
 and member limits, outages, measurements, and decisions must remain attached
 to those recovered source quantities.
 
+!!! warning "Decision-model consequence"
+
+    The certificate establishes no OPF, protection, limit, or discrete-state
+    equivalence. Signed generated weights can also violate positivity or
+    convexity assumptions made by graph-based solvers. A decision study must
+    keep the source constraints and decisions, use the current recovery map,
+    and prove its own preservation contract; that test has not yet been run.
+
 If ``\mathbf Z_\Gamma`` is singular, or if a queried current/state cannot be
 eliminated, a tableau or direct joint-factor formulation is the faithful
 target. Singularity is a refusal condition for this admittance/lattice branch,
 not evidence that the physical corridor is invalid.
+Consequently the lattice cannot be the canonical source representation: a
+canonical model must still represent a physically admissible coupled section
+when this optional lowering target is undefined.
 
 ## Different voltage bases
 
@@ -252,9 +283,10 @@ coupling [Kersting2006](@cite).
 The generated
 `experiments/generated/coupled-corridor-lattice-witness.json` certificate
 checks joint-matrix inversion, the six-edge lattice stamp, orientation
-invariance, source-current recovery, cross-voltage per-unit round trips, signed
-generated weights, and singular refusal. It does not yet reproduce either
-paper's numerical results.
+covariance of the mutual term and rebuilt edge table, source-current recovery,
+cross-voltage per-unit round trips, signed generated weights, and singular
+refusal. It does not yet reproduce either paper's numerical results or test a
+limit-, protection-, state-, or decision-preservation contract.
 The source-relation convention is registered as `COUPLED-CORRIDOR-001`, and
 the exact fixed-linear lattice lowering as `COUPLED-CORRIDOR-002`.
 The next executable tranche should add:

@@ -88,8 +88,8 @@
     },
     {
       "path": "experiments/generated/coupled-corridor-lattice-witness.json",
-      "sha256": "c0eb1e647f12ebd7905338dffb5bae102e597383ee455da9981dc3c009232ac6",
-      "size_bytes": 3376
+      "sha256": "b39718cd997ad302b8f528bd8ac35e8d39d368c0d2b31faadf40b61c0e53da03",
+      "size_bytes": 5238
     },
     {
       "path": "experiments/generated/data-model-crosswalk-witness.json",
