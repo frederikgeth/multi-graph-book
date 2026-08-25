@@ -53,6 +53,10 @@ graph** can then use those refined section identities as vertices and
 mutual-coupling records as edges. It captures spatial and constitutive
 relations that are absent from the bus multigraph, but it is not the original
 line-asset graph and its coupling edges are not galvanic connections.
+Nor is it the standard line graph of the bus multigraph: line-graph adjacency
+means that source edges share an endpoint, whereas section-coupling adjacency
+means that refined sections participate in a declared electromagnetic
+coupling relation.
 
 A later weighted-lattice lowering is different again. Its vertices are
 terminal-voltage coordinates and its edges realize the assembled equation.
@@ -233,7 +237,7 @@ to those recovered source quantities.
 If ``\mathbf Z_\Gamma`` is singular, or if a queried current/state cannot be
 eliminated, a tableau or direct joint-factor formulation is the faithful
 target. Singularity is a refusal condition for this admittance/lattice branch,
-not evidence that the physical corridor is invalid.
+not evidence that the coupled section is invalid.
 Consequently the lattice cannot be the canonical source representation: a
 canonical model must still represent a physically admissible coupled section
 when this optional lowering target is undefined.

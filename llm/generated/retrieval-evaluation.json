@@ -2292,8 +2292,8 @@
         "section:docs/src/cases/coupled-multivoltage-corridor.md#the-generated-lattice",
         "claim:COUPLED-CORRIDOR-002",
         "concept:mutual-coupling-relation",
-        "section:docs/src/cases/coupled-multivoltage-corridor.md#physical-parallelism-is-not-visible-in-the-bus-multigraph",
         "section:docs/src/foundations/two-level-topology-and-nodal-projection.md#the-missing-middle-between-a-one-line-diagram-and-mathbf-y-mathrm-n",
+        "section:docs/src/cases/coupled-multivoltage-corridor.md#physical-parallelism-is-not-visible-in-the-bus-multigraph",
         "section:docs/src/literature/search-runs/2026-08-25-coupled-multivoltage-corridors.md#synthesis-decision"
       ],
       "packet_shape_errors": [],
@@ -2373,7 +2373,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "0413934b7de65164aa6b0eed657aba0b38483a40ff0725351827b19bb38d38fc",
+    "corpus_sha256": "e28cede8c35c66d2732ffabeecda4b6e52842a3a31c978cdd5c2dd27ce29e522",
     "record_count": 734,
     "release": {
       "external_reviewed_claims": 0,
@@ -2480,7 +2480,7 @@
         "case_id": "HOLDOUT-GRAPH-SOFTWARE",
         "char_tfidf_complete_at_10": false,
         "char_tfidf_hits_at_10": 4,
-        "char_tfidf_mean_reciprocal_rank_at_20": 0.206397,
+        "char_tfidf_mean_reciprocal_rank_at_20": 0.201768,
         "char_tfidf_recall_at_10": 0.444444,
         "char_tfidf_recall_at_5": 0.222222,
         "char_tfidf_top_10": [
@@ -2489,9 +2489,9 @@
           "claim:ARCH-LOWER-001",
           "claim:TOPOLOGY-001",
           "claim:TRANSFORM-SEM-001",
-          "claim:GRAPH-MULTI-001",
           "claim:ARCH-LENS-001",
           "claim:ARCH-DEGENERACY-001",
+          "claim:GRAPH-MULTI-001",
           "claim:ARCH-SURGERY-002",
           "claim:GRAPH-MATRIX-001"
         ],
@@ -2518,8 +2518,8 @@
           "claim:ARCH-VIEW-001",
           "claim:ARCH-SUPPORT-001",
           "claim:GRAPH-NPORT-001",
-          "claim:GRAPH-MATRIX-001",
           "concept:element-edge-relation",
+          "claim:GRAPH-MATRIX-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
           "claim:GRAPH-MULTI-001",
           "claim:VOCAB-BRIDGE-001",
@@ -2527,7 +2527,7 @@
         ],
         "hybrid_complete_at_10": false,
         "hybrid_hits_at_10": 5,
-        "hybrid_mean_reciprocal_rank_at_20": 0.223031,
+        "hybrid_mean_reciprocal_rank_at_20": 0.221488,
         "hybrid_recall_at_10": 0.555556,
         "hybrid_recall_at_5": 0.222222,
         "hybrid_top_10": [
@@ -2538,13 +2538,13 @@
           "claim:TRANSFORM-SEM-001",
           "claim:ARCH-SURGERY-002",
           "claim:GRAPH-MATRIX-001",
-          "claim:GRAPH-MULTI-001",
           "claim:TOPOLOGY-001",
-          "claim:TR-GRAPH-SIMPLIFY-001"
+          "claim:TR-GRAPH-SIMPLIFY-001",
+          "claim:GRAPH-MULTI-001"
         ],
         "lexical_complete_at_10": false,
         "lexical_hits_at_10": 4,
-        "lexical_mean_reciprocal_rank_at_20": 0.21893,
+        "lexical_mean_reciprocal_rank_at_20": 0.217695,
         "lexical_recall_at_10": 0.444444,
         "lexical_recall_at_5": 0.222222,
         "lexical_top_10": [
@@ -2556,8 +2556,8 @@
           "claim:TRANSFORM-SEM-001",
           "claim:GRAPH-NPORT-001",
           "claim:GRAPH-CYCLE-001",
-          "claim:GRAPH-MATRIX-001",
-          "claim:ARCH-NODAL-001"
+          "claim:ARCH-NODAL-001",
+          "claim:GRAPH-MATRIX-001"
         ],
         "question": "How should a topology API distinguish its source equipment relations from the adjacency it derives for an algorithm?",
         "route_fired": false,
@@ -5213,7 +5213,7 @@
       "char_tfidf": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.223043,
+        "mean_reciprocal_rank_at_20": 0.222903,
         "recall_at_10": 0.444444,
         "recall_at_5": 0.367677,
         "recall_expected_records_at_10": 180,
@@ -5233,7 +5233,7 @@
       "hybrid": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.219142,
+        "mean_reciprocal_rank_at_20": 0.219095,
         "recall_at_10": 0.469192,
         "recall_at_5": 0.37862,
         "recall_expected_records_at_10": 180,
@@ -5245,7 +5245,7 @@
       "lexical": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.202058,
+        "mean_reciprocal_rank_at_20": 0.20202,
         "recall_at_10": 0.448653,
         "recall_at_5": 0.333502,
         "recall_expected_records_at_10": 180,

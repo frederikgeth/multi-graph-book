@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `0413934b7de65164aa6b0eed657aba0b38483a40ff0725351827b19bb38d38fc`<br>
+**Corpus hash:** `e28cede8c35c66d2732ffabeecda4b6e52842a3a31c978cdd5c2dd27ce29e522`<br>
 **Cases:** 33
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.

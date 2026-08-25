@@ -339,7 +339,7 @@
           "claim:GRAPH-CYCLE-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
           "claim:ARCH-LOWER-001",
-          "claim:GRAPH-NPORT-001"
+          "claim:TR-GRAPH-001"
         ]
       },
       "lexical": {
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "0413934b7de65164aa6b0eed657aba0b38483a40ff0725351827b19bb38d38fc"
+    "corpus_sha256": "e28cede8c35c66d2732ffabeecda4b6e52842a3a31c978cdd5c2dd27ce29e522"
   },
   "inputs": {
     "adversarial_cases": {
