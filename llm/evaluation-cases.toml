@@ -302,3 +302,33 @@ required_claim_ids = ["GRAPH-SELF-LOOP-001", "GRAPH-LOOPY-001", "GRAPH-PI-COLLAP
 required_concept_ids = ["graph-topology-adjacency", "factor", "nodal-operator-alias"]
 required_answer_elements = ["the series term cancels while same-reference shunts remain", "member observations and nontrivial factors still need guards"]
 forbidden_simplifications = ["call every collapsed pi section a deleted branch"]
+
+[[case]]
+case_id = "EVAL-COUPLING-STUDENT"
+audience = "student"
+question = "If two lines share poles and a mutual impedance, are they just parallel graph edges, and are the six equivalent-lattice edges real wires?"
+misconception_id = "mutual-coupling-is-an-ordinary-parallel-network"
+required_claim_ids = ["COUPLED-CORRIDOR-001", "COUPLED-CORRIDOR-002"]
+required_concept_ids = ["mutual-coupling-relation", "parallel", "equivalence-exactness-preservation"]
+required_answer_elements = ["separate spatial co-location, graph parallelism, and electromagnetic coupling", "identify the lattice as a generated scalar equation realization"]
+forbidden_simplifications = ["every generated cross-voltage edge is a physical conductor"]
+
+[[case]]
+case_id = "EVAL-COUPLING-SOFTWARE"
+audience = "software_engineer"
+question = "May an importer replace two coupled line records by the six-edge lattice and store those edges as the canonical branch inventory?"
+misconception_id = "mutual-coupling-is-an-ordinary-parallel-network"
+required_claim_ids = ["COUPLED-CORRIDOR-001", "COUPLED-CORRIDOR-002"]
+required_concept_ids = ["mutual-coupling-relation", "parallel", "equivalence-exactness-preservation"]
+required_answer_elements = ["retain source line identities and first-class coupling records", "explain singular refusal and generated-edge provenance"]
+forbidden_simplifications = ["the optional lattice is a source-complete canonical replacement"]
+
+[[case]]
+case_id = "EVAL-COUPLING-POWER"
+audience = "power_engineer"
+question = "Can I use the exact equivalent lattice of mutually coupled different-voltage lines as the physical network for OPF and protection studies?"
+misconception_id = "mutual-coupling-is-an-ordinary-parallel-network"
+required_claim_ids = ["COUPLED-CORRIDOR-001", "COUPLED-CORRIDOR-002"]
+required_concept_ids = ["mutual-coupling-relation", "parallel", "equivalence-exactness-preservation"]
+required_answer_elements = ["limit exactness to the fixed-linear terminal equation and recovered source currents", "state that limits, states, protection, and decisions remain untested"]
+forbidden_simplifications = ["terminal-equation exactness proves OPF or protection equivalence"]

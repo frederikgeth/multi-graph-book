@@ -154,7 +154,7 @@ Changing all signs in a column is an equivalent orientation convention.
     device has no effect. It says only that an ordinary graph loop contributes
     nothing to the signed boundary operator.
 
-### Multiplicity adjacency and degree matrices
+### [Multiplicity adjacency and degree matrices](@id weighted-laplacian-convention)
 
 Let ``\mu(u,v)`` be the number of edges with distinct endpoints ``u`` and
 ``v``, and let ``\lambda(v)`` be the number of graph loops at ``v``. This book

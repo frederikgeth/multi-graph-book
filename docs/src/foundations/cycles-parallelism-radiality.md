@@ -119,16 +119,28 @@ terminal graph.
 
 ## Parallelism has levels
 
-The phrase **parallel lines** is underspecified. The book distinguishes the
-following tests, from weakest to strongest:
+The phrase **parallel lines** is underspecified. In particular, spatial
+co-location is not one rung in a chain from weak to strong electrical
+parallelism. Two circuits can share a corridor without sharing endpoints, and
+two graph-parallel lines can be electromagnetically independent. The book
+therefore distinguishes the following facets:
 
-| Level | Condition | Where it can be decided |
+| Facet | Condition | Where it can be decided |
 |:--|:--|:--|
+| physical parallelism | line sections overlap spatially on common towers, poles, trench, or right of way | asset, geometry, and section-lineage model |
 | topological parallelism | same unordered bus pair ``\partial(\ell_1)=\partial(\ell_2)`` | identified multigraph |
 | terminal parallelism | endpoint terminal spaces and terminal maps align, up to declared coordinate actions | terminal-connectivity or port model |
 | electrical parallelism | both factors see the same boundary voltage variables and their currents can be summed | port--factor or equation model |
 | operational parallelism | both members are active in the declared switch, outage, investment, and state scenario | asset/state and decision model |
 | homogeneous parallelism | construction, grounding, parameter, and constraint guards support a physical merge | asset plus electrical model |
+
+Here *physically parallel* follows line-modeling usage and means spatially
+co-located; it does not mean a transfer corridor. Mutual coupling adds another
+orthogonal relation. Physically parallel sections
+can belong to one joint electromagnetic factor even when their endpoint pairs,
+conductor sets, and nominal voltages differ. The [coupled multi-voltage
+corridor case](@ref coupled-multivoltage-corridor) develops this situation and
+its optional ordinary-edge lowering.
 
 Only topological parallelism is visible in a bare multigraph. In a simple graph
 it is not an internal relation at all: it survives only as the fibre

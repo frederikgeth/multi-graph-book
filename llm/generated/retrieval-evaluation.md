@@ -4,8 +4,8 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `16a07c88d0da4d9df30096a181e0537a4072d3e5fa015a21317dd38e08a5a141`<br>
-**Cases:** 30
+**Corpus hash:** `e28cede8c35c66d2732ffabeecda4b6e52842a3a31c978cdd5c2dd27ce29e522`<br>
+**Cases:** 33
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
 The latter is permitted to add mandatory claims and concepts only after the query router identifies
@@ -16,19 +16,19 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Measure | Result | Release gate? |
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
-| Open-corpus lexical evidence recall@5 | 30.0% | diagnostic |
-| Open-corpus lexical evidence recall@10 | 39.6% | diagnostic |
+| Open-corpus lexical evidence recall@5 | 31.4% | diagnostic |
+| Open-corpus lexical evidence recall@10 | 42.0% | diagnostic |
 | Open-corpus complete evidence@10 | 0.0% | diagnostic |
-| Evidence-only lexical recall@5 | 40.2% | diagnostic |
-| Evidence-only lexical recall@10 | 53.1% | diagnostic |
-| Evidence-only complete evidence@10 | 3.3% | diagnostic |
+| Evidence-only lexical recall@5 | 42.3% | diagnostic |
+| Evidence-only lexical recall@10 | 55.0% | diagnostic |
+| Evidence-only complete evidence@10 | 3.0% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
 | Packets with qualification, failure, shorthand, and scope | 100.0% | yes |
 | Corpus-release identity agreement | 100.0% | yes |
-| Held-out contract-router firing | 22/30 (73.3%) | yes |
-| Held-out expected-contract top-1 | 17/30 (56.7%) | diagnostic |
-| Held-out hybrid zero-recall@10 cases | 5/30 | diagnostic |
+| Held-out contract-router firing | 25/33 (75.8%) | yes |
+| Held-out expected-contract top-1 | 19/33 (57.6%) | diagnostic |
+| Held-out hybrid zero-recall@10 cases | 5/33 | diagnostic |
 
 The diagnostic lexical scores are intentionally not release thresholds. A perfect contract score
 cannot be reported as a better ranker score: it measures whether an identified high-risk question
@@ -43,16 +43,16 @@ evidence sets, so the effective target count is nine rather than 27 independent 
 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `lexical` | 36.5% | 44.7% | 0.0% | 0/30 | 5/30 | 0.207 |
-| `char_tfidf` | 34.4% | 44.5% | 0.0% | 0/30 | 5/30 | 0.209 |
-| `hybrid` | 39.4% | 45.9% | 0.0% | 0/30 | 5/30 | 0.221 |
-| `graph` | 37.1% | 52.2% | 30.0% | 9/30 | 5/30 | 0.243 |
+| `lexical` | 33.4% | 44.9% | 0.0% | 0/33 | 5/33 | 0.202 |
+| `char_tfidf` | 36.8% | 44.4% | 0.0% | 0/33 | 6/33 | 0.223 |
+| `hybrid` | 37.9% | 46.9% | 0.0% | 0/33 | 5/33 | 0.219 |
+| `graph` | 42.2% | 54.5% | 27.3% | 9/33 | 5/33 | 0.260 |
 
-Held-out contract-router firing: **22/30 (73.3%)**; release floor: **66.7%**.
-Expected-contract top-1 agreement: **17/30 (56.7%)**; this remains diagnostic because the set is synthetic and clustered.
-Target clusters: **10**, with cluster sizes `[3, 3, 3, 3, 3, 3, 3, 3, 3, 3]`; percentage differences are therefore not independent observations.
-Hybrid versus lexical complete@10: **0/30** versus **0/30**; hybrid zero-recall@10: **5/30**.
-Graph versus hybrid complete@10: **9/30** versus **0/30**.
+Held-out contract-router firing: **25/33 (75.8%)**; release floor: **66.7%**.
+Expected-contract top-1 agreement: **19/33 (57.6%)**; this remains diagnostic because the set is synthetic and clustered.
+Target clusters: **11**, with cluster sizes `[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]`; percentage differences are therefore not independent observations.
+Hybrid versus lexical complete@10: **0/33** versus **0/33**; hybrid zero-recall@10: **5/33**.
+Graph versus hybrid complete@10: **9/33** versus **0/33**.
 
 | Held-out case | Audience | Expected route | Observed top-1 | Router fired | Lexical complete@10 | TF-IDF complete@10 | Hybrid complete@10 | Graph complete@10 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -77,10 +77,13 @@ Graph versus hybrid complete@10: **9/30** versus **0/30**.
 | `HOLDOUT-SEQUENCE-STUDENT` | `student` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | no |
 | `HOLDOUT-SEQUENCE-SOFTWARE` | `software_engineer` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | yes |
 | `HOLDOUT-SEQUENCE-POWER` | `power_engineer` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | yes |
-| `HOLDOUT-GROUND-STUDENT` | `student` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | no |
+| `HOLDOUT-GROUND-STUDENT` | `student` | `ground-neutral-reference-are-one-node` | `mutual-coupling-is-an-ordinary-parallel-network` | yes | no | no | no | no |
 | `HOLDOUT-GROUND-SOFTWARE` | `software_engineer` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | no |
 | `HOLDOUT-GROUND-POWER` | `power_engineer` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | yes |
 | `HOLDOUT-DECISION-STUDENT` | `student` | `terminal-equivalence-implies-opf-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
+| `HOLDOUT-COUPLING-STUDENT` | `student` | `mutual-coupling-is-an-ordinary-parallel-network` | `mutual-coupling-is-an-ordinary-parallel-network` | yes | no | no | no | no |
+| `HOLDOUT-COUPLING-SOFTWARE` | `software_engineer` | `mutual-coupling-is-an-ordinary-parallel-network` | `mutual-coupling-is-an-ordinary-parallel-network` | yes | no | no | no | no |
+| `HOLDOUT-COUPLING-POWER` | `power_engineer` | `mutual-coupling-is-an-ordinary-parallel-network` | `mutual-coupling-is-an-ordinary-parallel-network` | yes | no | no | no | no |
 | `HOLDOUT-SELF-LOOP-STUDENT` | `student` | `self-loop-is-a-shunt-or-circuit-loop` | `self-loop-is-a-shunt-or-circuit-loop` | yes | no | no | no | no |
 | `HOLDOUT-SELF-LOOP-SOFTWARE` | `software_engineer` | `self-loop-is-a-shunt-or-circuit-loop` | `self-loop-is-a-shunt-or-circuit-loop` | yes | no | no | no | yes |
 | `HOLDOUT-SELF-LOOP-POWER` | `power_engineer` | `self-loop-is-a-shunt-or-circuit-loop` | `self-loop-is-a-shunt-or-circuit-loop` | yes | no | no | no | no |
@@ -91,9 +94,9 @@ Graph versus hybrid complete@10: **9/30** versus **0/30**.
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 10 | 100.0% | 53.3% | 100.0% |
-| `software_engineer` | 10 | 100.0% | 45.7% | 100.0% |
-| `student` | 10 | 100.0% | 60.4% | 100.0% |
+| `power_engineer` | 11 | 100.0% | 55.8% | 100.0% |
+| `software_engineer` | 11 | 100.0% | 47.0% | 100.0% |
+| `student` | 11 | 100.0% | 62.2% | 100.0% |
 
 ## Case results
 
@@ -129,6 +132,9 @@ Graph versus hybrid complete@10: **9/30** versus **0/30**.
 | `EVAL-SELF-LOOP-STUDENT` | `student` | `self-loop-is-a-shunt-or-circuit-loop` | 83.3% | yes |
 | `EVAL-SELF-LOOP-SOFTWARE` | `software_engineer` | `self-loop-is-a-shunt-or-circuit-loop` | 50.0% | yes |
 | `EVAL-SELF-LOOP-POWER` | `power_engineer` | `self-loop-is-a-shunt-or-circuit-loop` | 50.0% | yes |
+| `EVAL-COUPLING-STUDENT` | `student` | `mutual-coupling-is-an-ordinary-parallel-network` | 80.0% | yes |
+| `EVAL-COUPLING-SOFTWARE` | `software_engineer` | `mutual-coupling-is-an-ordinary-parallel-network` | 60.0% | yes |
+| `EVAL-COUPLING-POWER` | `power_engineer` | `mutual-coupling-is-an-ordinary-parallel-network` | 80.0% | yes |
 
 ## Interpretation and next boundary
 

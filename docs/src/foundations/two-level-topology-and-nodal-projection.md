@@ -141,6 +141,36 @@ This level has its own notions of parallelism:
 The high- and low-level decompositions are therefore related by an explicit
 lineage/refinement relation, not by an assumed one-edge-to-one-wire rule.
 
+### A coupling relation over line-section identities
+
+Jointly coupled circuits expose why the identified multigraph and the factor
+model are both needed. Let ``\mathcal S`` be a set of oriented electrical line
+sections, each with lineage to a stable line asset, and let
+
+```math
+H_{\mathrm{cpl}}=(\mathcal S,\mathcal C)
+```
+
+be a typed relation graph whose edge ``c\in\mathcal C`` identifies two
+spatially overlapping sections and carries their mutual blocks, coordinate
+maps, orientation, and overlap interval. The vertices of ``H_{\mathrm{cpl}}``
+are therefore section identities that appear as edges or refinements in the
+equipment view. This is a relation *over line sections*, not another bus graph.
+
+Each connected component ``\Gamma`` of ``H_{\mathrm{cpl}}`` compiles into one
+joint electrical factor ``\phi_\Gamma``. Its primitive is assembled before
+inversion or nodal stamping. This order preserves indirect coupling created by
+the inverse of a block matrix and avoids pretending that each line owns an
+independent constitutive factor. Ratings, states, and decisions remain attached
+to the source line or section quantities through the factor-to-asset lineage.
+
+The [coupled multi-voltage corridor case](@ref
+coupled-multivoltage-corridor) gives the smallest exact witness. Its two source
+line assets can belong to different voltage systems, while their joint
+four-port factor lowers to a generated terminal lattice with cross-voltage
+edges. Those edges belong to nodal support, not to galvanic connectivity or
+the asset inventory.
+
 ## From factors to a compound nodal operator
 
 Stack the retained junction-voltage coordinates into ``\mathbf U``. Let

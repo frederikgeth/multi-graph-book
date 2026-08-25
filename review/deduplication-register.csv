@@ -28,3 +28,11 @@ EV-0018,10.1109/TCSI.2012.2215780,D-0018,EV-0018,unique,2026-08-15,primary,DOI-n
 EV-0019,10.1109/PECI.2013.6506059,D-0019,EV-0019,unique,2026-08-15,primary,DOI-normalized
 EV-0020,10.1142/4306,D-0020,EV-0020,unique,2026-08-15,primary,DOI-normalized
 EV-0021,10.1109/TPWRS.2018.2863671,D-0021,EV-0021,unique,2026-08-15,primary,DOI-normalized
+EV-0030,10.1109/TPAS.1985.319124,D-0030,EV-0030,unique,2026-08-25,primary,DOI-normalized; foundational unbalanced multiport building-block construction
+EV-0031,10.1109/TIA.2006.880897,D-0031,EV-0031,unique,2026-08-25,primary,DOI-normalized; coupled parallel distribution-line model
+EV-0032,10.1049/iet-gtd.2015.0178,D-0032,EV-0032,unique,2026-08-25,primary,DOI-normalized; direct different-voltage mutual-coupling study
+EV-0033,10.3390/en14020421,D-0033,EV-0033,unique,2026-08-25,primary,DOI-normalized; multi-circuit multi-voltage HVAC construction
+EV-0034,10.1109/CPRE.2014.6798993,D-0034,EV-0034,unique,2026-08-25,primary,DOI-normalized; coupled-line protection tutorial
+EV-0035,CIMMutualCoupling,D-0035,EV-0035,unique,2026-08-25,primary,Official generated IEC CIM ontology documentation; no DOI
+EV-0036,PowsyblLineCoupling,D-0036,EV-0036,unique,2026-08-25,primary,Version-pinned official PowSyBl documentation; no DOI
+EV-0037,PowerWorldMutualImpedance,D-0037,EV-0037,unique,2026-08-25,primary,Official PowerWorld documentation; no DOI

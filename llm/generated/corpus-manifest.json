@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "16a07c88d0da4d9df30096a181e0537a4072d3e5fa015a21317dd38e08a5a141",
+  "corpus_sha256": "e28cede8c35c66d2732ffabeecda4b6e52842a3a31c978cdd5c2dd27ce29e522",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -10,16 +10,16 @@
       "docs/src/reference/vocabulary-indexes.md"
     ],
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
-    "included_doc_count": 65
+    "included_doc_count": 67
   },
-  "evaluation_case_count": 30,
-  "heldout_case_count": 30,
-  "misconception_count": 10,
-  "record_count": 710,
+  "evaluation_case_count": 33,
+  "heldout_case_count": 33,
+  "misconception_count": 11,
+  "record_count": 734,
   "record_counts": {
-    "claim_bundle": 103,
-    "concept_bundle": 17,
-    "section": 590
+    "claim_bundle": 105,
+    "concept_bundle": 18,
+    "section": 611
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -32,7 +32,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "ffcb8eb3bcbb90d8b0c6ea699982b7f1d696936763ee261811463a6203d4acd0"
+      "sha256": "7665586ed6a8a607a3d601f703193adb55a49ad64ed8a50cfa5557d5cbd92aeb"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -41,6 +41,10 @@
     {
       "path": "docs/src/cases/bim-bfm-parallel-lines.md",
       "sha256": "e89a0e9331a491c2f943f8bd5857186ec0a7ec560b331033295e4a11c8192d7c"
+    },
+    {
+      "path": "docs/src/cases/coupled-multivoltage-corridor.md",
+      "sha256": "d288be8fa076d8e1cffcb7fecce71e94b3beaa9e37070e21457f1616048b924f"
     },
     {
       "path": "docs/src/cases/executable-running-network.md",
@@ -72,7 +76,7 @@
     },
     {
       "path": "docs/src/foundations/circuit-formulations-and-lowering.md",
-      "sha256": "82bf345eeaa3dd8ed3f1b080208d45796e4f1323b3089f6bf5efed515d587037"
+      "sha256": "f6f50346f7761288c5c3fb591c7c40e2258aa2caf3ee23a6965dfc07c1c4cdce"
     },
     {
       "path": "docs/src/foundations/compiled-views-and-graph-surgery.md",
@@ -80,11 +84,11 @@
     },
     {
       "path": "docs/src/foundations/cycles-parallelism-radiality.md",
-      "sha256": "3aa4be38601023d71f42d37b9ac59afeee57bfcfdcd0529efb6de73d70e44955"
+      "sha256": "b21e4a81e42154fbf5a3fcf74fe7f5fd6886851068b1edb46df3f2dfa76fb531"
     },
     {
       "path": "docs/src/foundations/data-model-crosswalk.md",
-      "sha256": "fd101133bcc2c939ef8d67534576f934e5ffc5807f86107ecd45d9e715108511"
+      "sha256": "dc2addf8488cc4ab927b49cb035fb402b4cc79f8046e2047fc67df8d939d8993"
     },
     {
       "path": "docs/src/foundations/earth-ground-models.md",
@@ -96,7 +100,7 @@
     },
     {
       "path": "docs/src/foundations/impedance-fidelity-ladder.md",
-      "sha256": "1463d3a17d38f00a86cbaa5ab28ad137bb7f14e27ae3a1297e3f1d085572b191"
+      "sha256": "b409f5f61ef4e4a98f4153ceed2c1335b6a8d9af50a194fea1613247a7dfc43c"
     },
     {
       "path": "docs/src/foundations/load-models-and-decision-dependence.md",
@@ -104,7 +108,7 @@
     },
     {
       "path": "docs/src/foundations/multigraphs-for-modelers.md",
-      "sha256": "e32f1e53811540ac42938563970226c4d68b5bf023c5678392fe63756eaa769f"
+      "sha256": "f875b55e68300505e1f3404fc6a15231f7d5aefef4a60a46642c42bda01db050"
     },
     {
       "path": "docs/src/foundations/node-breaker-topology-processing.md",
@@ -156,7 +160,7 @@
     },
     {
       "path": "docs/src/foundations/two-level-topology-and-nodal-projection.md",
-      "sha256": "0a6154fb03a5e28742bde1630979845c9aec606290dab6122d70425d9a0aad95"
+      "sha256": "20736c859598495e8baba40fbdc0a7b4471e2a74a1af2eb7bdfcd6c56ef41701"
     },
     {
       "path": "docs/src/foundations/when-general-model-collapses.md",
@@ -168,7 +172,7 @@
     },
     {
       "path": "docs/src/literature/literature-map.md",
-      "sha256": "1d4f2b0353440b68947e53a039cc389d21e9cdcb26b80b7ba64c15b2f05af69f"
+      "sha256": "cd1f72140e8ff7b96325cf6550892bc8b7831e14336910753e8da8f26066f7c3"
     },
     {
       "path": "docs/src/literature/representation-implementation-record.md",
@@ -176,11 +180,11 @@
     },
     {
       "path": "docs/src/literature/research-agenda.md",
-      "sha256": "fdc9db209812663dc530fd9c42b9e087bf19449302f0fbcf2448be6762fdfe58"
+      "sha256": "6bdcc84415e177bd6a3c8bab8d0f026577f32c0a5302ca0fe45982664427c262"
     },
     {
       "path": "docs/src/literature/review-protocol-and-evidence-status.md",
-      "sha256": "f85a939c6526a5ba24a4bfbe2d67e0b308c9e2db864f987535c78b3b7fd8a408"
+      "sha256": "4e59a911ac2ab61edbd9e8890ca961756360c89e053629bf2ae39acb95998d72"
     },
     {
       "path": "docs/src/literature/search-runs/2026-08-14-seed-batch.md",
@@ -199,12 +203,16 @@
       "sha256": "c18c3974c0797743b8da331524b1b8171bb78ee527f43bb02e9505117a83a7bf"
     },
     {
+      "path": "docs/src/literature/search-runs/2026-08-25-coupled-multivoltage-corridors.md",
+      "sha256": "84860eb10fd04db2fe8ede9152d348ae3f6d545aeabc16396f558433c810438c"
+    },
+    {
       "path": "docs/src/reference/references.md",
       "sha256": "7b1bfef4d0cc0f2250e026fd87e61bada6e07fe9c83cc8f65e4c8966e3ee15b9"
     },
     {
       "path": "docs/src/reference/terminology.md",
-      "sha256": "f7f5f95508a7376a093dd0c12ed19a6cd991db1059fcf9f75c179ea5917f1f87"
+      "sha256": "0b2ab3d877ed19866673d5506fedfd218fa269993e0c935da09bbec1070940b5"
     },
     {
       "path": "docs/src/start/chatgpt-access.md",
@@ -296,19 +304,19 @@
     },
     {
       "path": "llm/evaluation-cases.toml",
-      "sha256": "6805cb7ed316422ca9b1004af371a85ac889cf801574815622b0b1f4c6cf8a34"
+      "sha256": "10330001f650f5e862ce0acffd4ca5f7c1f2527165cc9432ea09acfa350b90ca"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
-      "sha256": "92f62f77c45d5c184fb80df476efdff4a05b038465c81b1961d01c45723fe7b3"
+      "sha256": "171857dd883acf3ed9a091fac0e2e7485cbd13d5f0477a56af37d010cec16592"
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "c8b5fe62cab4a4f19713a67968a56958ac49e5210073fea4749d2ca2e2cd3d4b"
+      "sha256": "6773f2584077655a7a47cced994a8ab790d386b664be9658b569df34c062b08f"
     },
     {
       "path": "vocabulary/vocabulary.toml",
-      "sha256": "ba6701b6309e5bed178378b33ff63e3954a5489335c4e44b890756ef25ea8985"
+      "sha256": "ffed5b11061ad3fc97f4670cd1e10bfd0e7b6ff238766adef786d83290885c9c"
     }
   ]
 }

@@ -1,27 +1,28 @@
 {
   "deduplication": {
     "path": "review/deduplication-register.csv",
-    "row_count": 29,
-    "sha256": "9288671ce375781afbc940e65c05a4d10275099af329784cbe105097cacc5d95"
+    "row_count": 37,
+    "sha256": "75143b8c286bbba4bd674c11fb205d594a1b7385783d634de0d11dcf79477b86"
   },
   "independent_double_coding": false,
   "inputs": {
-    "review/bibliography-audit.toml": "f538c9333eb41c4da2dce361d33752fe82a5ebeeb1a0b22f9d5462cfa3c09fa8",
+    "review/bibliography-audit.toml": "2c8f4b63ca26b60accafcb31e23e3f6048c26f4b22fe12d97da168ee20c3adb7",
     "review/coding-guide.md": "8a282e7ecb302403f8897a165eb700084f3cffd2cbfff0a37df7a6eee18ddbb3",
     "review/protocol.md": "3ce30aeea9161ddf5a3a866258c4126754f3bc05d082164e37762ca6d733ce2c",
     "review/search-runs/2026-08-14-seed-batch.md": "489107a577914770d35bd9c52bd2f3f08ab6bce56a6921b0c8b8052353961c72",
     "review/search-runs/2026-08-15-formulation-landscape.md": "1d984aeedec5f2c4be9d0a3bde719bc156cd4d7bfc1e7fd8933da617a76b54f8",
     "review/search-runs/2026-08-15-information-model-citation-chase.md": "84aa8c0e24aab663af4a491433bdd666a75d8e8fbab52d5b299b879773db09df",
     "review/search-runs/2026-08-16-multiphase-and-practical-reductions.md": "e791723bf30c0da0e3e8376cb570465f8dbcb495c3821eefce22fae3b3b6ab85",
+    "review/search-runs/2026-08-25-coupled-multivoltage-corridors.md": "ab72e63ae3f56a4ec1d1bc01e6153e4950adcc54e600ae8fca0db46e00b0abfa",
     "review/search-strings.md": "2e1dc82eecbce8072a7707e53e018e00a53afb7141a4d70bce4e9971f189d073"
   },
   "matrix": {
     "coding_status_counts": {
-      "single_coded": 29
+      "single_coded": 37
     },
     "path": "review/evidence-matrix.csv",
-    "row_count": 29,
-    "sha256": "770b9f9baa4720e8e89f514e470ba7baec07ace45ea3fd1d0590dbda8c03342b"
+    "row_count": 37,
+    "sha256": "3cbb795c0cd6063da9da5979056c04c294ebe6ae8bc7545f1b0a708dc39ee9f8"
   },
   "record_ids": [
     "EV-0029",
@@ -52,15 +53,24 @@
     "EV-0018",
     "EV-0019",
     "EV-0020",
-    "EV-0021"
+    "EV-0021",
+    "EV-0030",
+    "EV-0031",
+    "EV-0032",
+    "EV-0033",
+    "EV-0034",
+    "EV-0035",
+    "EV-0036",
+    "EV-0037"
   ],
   "schema_version": "0.1.0",
   "search_runs": [
     "review/search-runs/2026-08-14-seed-batch.md",
     "review/search-runs/2026-08-15-formulation-landscape.md",
     "review/search-runs/2026-08-15-information-model-citation-chase.md",
-    "review/search-runs/2026-08-16-multiphase-and-practical-reductions.md"
+    "review/search-runs/2026-08-16-multiphase-and-practical-reductions.md",
+    "review/search-runs/2026-08-25-coupled-multivoltage-corridors.md"
   ],
-  "snapshot_date": "2026-08-17",
+  "snapshot_date": "2026-08-25",
   "status": "single_coded_seed_snapshot"
 }

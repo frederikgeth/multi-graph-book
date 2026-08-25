@@ -25,15 +25,15 @@
         "recall_at_10": 0.833333,
         "top_10": [
           "claim:ARCH-NODAL-001",
-          "concept:graph-topology-adjacency",
           "claim:ARCH-SUPPORT-001",
+          "concept:graph-topology-adjacency",
           "concept:nodal-operator-alias",
-          "claim:FORMULATION-Y-SPLIT-001",
           "claim:FORMULATION-NODAL-002",
-          "concept:factor",
+          "claim:FORMULATION-Y-SPLIT-001",
           "concept:equivalence-exactness-preservation",
-          "claim:TR-KRON-FIVE-002",
-          "claim:ARCH-RECOVERY-001"
+          "concept:parallel",
+          "concept:factor",
+          "claim:TR-KRON-FIVE-002"
         ]
       },
       "hybrid": {
@@ -65,7 +65,7 @@
           "claim:FORMULATION-NODAL-002",
           "claim:ARCH-NODAL-001",
           "claim:GRAPH-PI-COLLAPSE-001",
-          "claim:TR-XFMR-004"
+          "claim:FORMULATION-NODAL-001"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -111,23 +111,23 @@
       },
       "hybrid": {
         "complete_at_10": false,
-        "recall_at_10": 0.5,
+        "recall_at_10": 0.333333,
         "top_10": [
           "concept:nodal-operator-alias",
           "claim:FORMULATION-NODAL-002",
-          "claim:ARCH-BLOCK-001",
           "claim:FORMULATION-NODAL-003",
+          "claim:ARCH-BLOCK-001",
           "claim:ARCH-RECOVERY-001",
           "claim:ARCH-SUPPORT-001",
           "claim:ARCH-RECOVERY-003",
           "claim:ARCH-NODAL-001",
-          "claim:TR-KRON-001",
-          "claim:FORMULATION-Y-SPLIT-001"
+          "concept:mutual-coupling-relation",
+          "claim:TR-KRON-001"
         ]
       },
       "lexical": {
         "complete_at_10": false,
-        "recall_at_10": 0.5,
+        "recall_at_10": 0.333333,
         "top_10": [
           "concept:nodal-operator-alias",
           "claim:FORMULATION-NODAL-002",
@@ -137,8 +137,8 @@
           "claim:ARCH-SUPPORT-001",
           "claim:ARCH-RECOVERY-001",
           "claim:ARCH-NODAL-001",
-          "claim:TR-KRON-001",
-          "claim:FORMULATION-Y-SPLIT-001"
+          "concept:mutual-coupling-relation",
+          "claim:TR-KRON-001"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -170,16 +170,16 @@
         "complete_at_10": true,
         "recall_at_10": 1.0,
         "top_10": [
-          "concept:equivalence-exactness-preservation",
           "concept:parallel",
+          "concept:equivalence-exactness-preservation",
           "claim:TR-PAR-002",
           "claim:TR-PAR-003",
-          "concept:graph-topology-adjacency",
+          "concept:mutual-coupling-relation",
           "concept:rating-limit-constraint",
           "claim:TR-PAR-001",
-          "claim:FORMULATION-Y-SPLIT-001",
-          "claim:FORMULATION-NODAL-002",
-          "concept:nodal-operator-alias"
+          "concept:element-edge-relation",
+          "concept:graph-topology-adjacency",
+          "claim:FORMULATION-Y-SPLIT-001"
         ]
       },
       "hybrid": {
@@ -189,12 +189,12 @@
           "concept:parallel",
           "claim:TR-PAR-002",
           "claim:TR-XFMR-006",
-          "claim:FORMULATION-NODAL-002",
           "concept:rating-limit-constraint",
+          "claim:FORMULATION-NODAL-002",
           "claim:TR-PAR-003",
-          "claim:ARCH-LOWER-001",
           "claim:TR-XFMR-007",
           "claim:TR-XFMR-009",
+          "claim:ARCH-LOWER-001",
           "claim:GRAPH-SELF-LOOP-001"
         ]
       },
@@ -204,14 +204,14 @@
         "top_10": [
           "concept:parallel",
           "claim:TR-PAR-002",
-          "claim:FORMULATION-NODAL-002",
           "claim:FIXTURE-002",
+          "claim:FORMULATION-NODAL-002",
           "claim:FORMULATION-NODAL-001",
           "claim:TR-XFMR-006",
           "claim:TR-PAR-003",
           "claim:PRACTICE-IMPEDANCE-001",
           "concept:rating-limit-constraint",
-          "claim:ARCH-LOWER-001"
+          "claim:TR-XFMR-009"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -243,8 +243,8 @@
         "recall_at_10": 0.6,
         "top_10": [
           "claim:TR-KRON-FIVE-002",
-          "claim:TR-KRON-002",
           "concept:equivalence-exactness-preservation",
+          "claim:TR-KRON-002",
           "claim:TR-KRON-NEUTRAL-005",
           "claim:TR-KRON-NEUTRAL-007",
           "claim:TR-KRON-001",
@@ -265,8 +265,8 @@
           "claim:FORMULATION-NODAL-003",
           "claim:ARCH-LOWER-001",
           "claim:TR-XFMR-003",
-          "claim:TR-PAR-002",
           "claim:FORMULATION-NODAL-001",
+          "claim:TR-PAR-002",
           "claim:NUMERICAL-001"
         ]
       },
@@ -283,7 +283,7 @@
           "claim:TR-XFMR-003",
           "claim:ARCH-LOWER-001",
           "claim:RATING-001",
-          "claim:FORMULATION-NODAL-003"
+          "concept:rating-limit-constraint"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -339,7 +339,7 @@
           "claim:GRAPH-CYCLE-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
           "claim:ARCH-LOWER-001",
-          "claim:GRAPH-NPORT-001"
+          "claim:TR-GRAPH-001"
         ]
       },
       "lexical": {
@@ -456,9 +456,9 @@
         "complete_at_10": false,
         "recall_at_10": 0.25,
         "top_10": [
+          "concept:equivalence-exactness-preservation",
           "claim:TR-KRON-002",
           "claim:TR-KRON-FIVE-002",
-          "concept:equivalence-exactness-preservation",
           "claim:TR-KRON-FIVE-001",
           "claim:TR-KRON-NEUTRAL-001",
           "claim:TR-KRON-003",
@@ -477,8 +477,8 @@
           "claim:TR-SER-002",
           "claim:IMPEDANCE-LADDER-001",
           "claim:TR-PAR-001",
-          "claim:ARCH-LOWER-002",
           "claim:FORMULATION-NODAL-003",
+          "claim:ARCH-LOWER-002",
           "claim:TOPOLOGY-001",
           "claim:LIT-PAR-001",
           "claim:TR-XFMR-003"
@@ -530,14 +530,14 @@
         "top_10": [
           "concept:element-edge-relation",
           "concept:equivalence-exactness-preservation",
+          "concept:parallel",
           "claim:ARCH-VIEW-001",
-          "concept:graph-topology-adjacency",
           "concept:phase-conductor-sequence-coordinate",
-          "concept:factor",
           "concept:object-node-interface",
-          "claim:ARCH-SUPPORT-001",
-          "claim:GRAPH-NPORT-001",
-          "concept:direction-orientation-hierarchy"
+          "concept:graph-topology-adjacency",
+          "concept:direction-orientation-hierarchy",
+          "concept:ground-neutral-reference",
+          "concept:mutual-coupling-relation"
         ]
       },
       "hybrid": {
@@ -549,11 +549,11 @@
           "claim:ARCH-PORT-001",
           "claim:TR-SER-001",
           "claim:ARCH-CONDUCTOR-002",
-          "concept:phase-conductor-sequence-coordinate",
           "concept:object-node-interface",
+          "concept:phase-conductor-sequence-coordinate",
           "claim:ARCH-SURGERY-002",
           "claim:TR-SER-003",
-          "claim:ARCH-LENS-001"
+          "claim:TRANSFORM-SEM-001"
         ]
       },
       "lexical": {
@@ -563,9 +563,9 @@
           "concept:direction-orientation-hierarchy",
           "claim:ARCH-PORT-002",
           "claim:ARCH-PORT-001",
+          "concept:object-node-interface",
           "claim:ARCH-SURGERY-002",
           "claim:ARCH-CONDUCTOR-002",
-          "concept:object-node-interface",
           "concept:phase-conductor-sequence-coordinate",
           "claim:TR-GRAPH-001",
           "claim:ARCH-NODAL-001",
@@ -590,8 +590,8 @@
         "top_10": [
           "claim:TR-KRON-NEUTRAL-007",
           "claim:TR-KRON-FIVE-001",
-          "claim:TR-KRON-NEUTRAL-004",
           "claim:TR-KRON-002",
+          "claim:TR-KRON-NEUTRAL-004",
           "claim:TR-KRON-NEUTRAL-001",
           "claim:TR-KRON-NEUTRAL-003",
           "claim:TR-KRON-NEUTRAL-002",
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "16a07c88d0da4d9df30096a181e0537a4072d3e5fa015a21317dd38e08a5a141"
+    "corpus_sha256": "e28cede8c35c66d2732ffabeecda4b6e52842a3a31c978cdd5c2dd27ce29e522"
   },
   "inputs": {
     "adversarial_cases": {
@@ -643,7 +643,7 @@
   "summary": {
     "cases": 9,
     "graph_recall_at_10": 0.616667,
-    "hybrid_recall_at_10": 0.483333,
+    "hybrid_recall_at_10": 0.464815,
     "qualified_contract_complete": 1.0,
     "status_accuracy": 1.0,
     "unsupported_abstention_accuracy": 1.0

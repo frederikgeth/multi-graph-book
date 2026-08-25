@@ -162,7 +162,8 @@ Build a deliberately difficult test corpus containing:
 - phase discontinuities and conductor permutations;
 - same-code and mixed-code degree-two line chains;
 - nominal-``\pi`` versus distributed line concatenation;
-- mutually coupled parallel circuits;
+- physically parallel and endpoint-parallel circuits with full, sequence-only,
+  partial-overlap, different-voltage, open, and grounded coupling states;
 - multiwinding and autotransformer/regulator models;
 - lossy and controllable switches;
 - measurements and protection zones at otherwise eliminable nodes.

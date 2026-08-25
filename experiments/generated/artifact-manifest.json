@@ -1,5 +1,5 @@
 {
-  "artifact_count": 93,
+  "artifact_count": 94,
   "artifacts": [
     {
       "path": "experiments/generated/active-radiality-witness.json",
@@ -85,6 +85,11 @@
       "path": "experiments/generated/coordinate-series-composition-certificate.json",
       "sha256": "db91f8bd923a79e26017c215ff6edd085b4c51a57eac996d0810c06fab7130da",
       "size_bytes": 6405
+    },
+    {
+      "path": "experiments/generated/coupled-corridor-lattice-witness.json",
+      "sha256": "b39718cd997ad302b8f528bd8ac35e8d39d368c0d2b31faadf40b61c0e53da03",
+      "size_bytes": 5238
     },
     {
       "path": "experiments/generated/data-model-crosswalk-witness.json",

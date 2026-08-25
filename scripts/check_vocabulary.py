@@ -37,6 +37,7 @@ REQUIRED_CONCEPTS = {
     "direction-orientation-hierarchy",
     "flow-current-power-message",
     "parallel",
+    "mutual-coupling-relation",
     "cycle-radial-tree",
     "state",
     "rating-limit-constraint",

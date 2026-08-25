@@ -257,10 +257,11 @@ source model, evidence, recovery, and review status are explicit.
 
 53. **[worked case] The running multiconductor network, end to end**
 54. **[worked case] Heterogeneous parallel-line OPF**
-55. **[future application] Four-wire grounding-aware estimation**
-56. **[worked case] Multiwinding transformer realization**
-57. **[future application] Distribution-model cleaning**
-58. **[future application] Certified feeder reduction**
+55. **[worked case] Coupled multi-voltage corridor and equivalent lattice**
+56. **[future application] Four-wire grounding-aware estimation**
+57. **[worked case] Multiwinding transformer realization**
+58. **[future application] Distribution-model cleaning**
+59. **[future application] Certified feeder reduction**
 
 ### Reference
 

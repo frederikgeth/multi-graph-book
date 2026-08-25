@@ -12,6 +12,12 @@
     "audit_rule": "Every maintained SVG has an audit entry, a PNG companion, a captioned Markdown use, a non-colour distinguishing channel, and a rendered grayscale contrast sample."
   },
   "figures": {
+    "coupled-corridor-lowering": {
+      "svg": "docs/src/assets/coupled-corridor-lowering.svg",
+      "png": "docs/src/assets/coupled-corridor-lowering.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": ["three titled stages", "asset lines versus dashed coupling relation", "joint-factor boundary", "generated-edge labels and warning"]
+    },
     "earth-return-ladder": {
       "svg": "docs/src/assets/earth-return-ladder.svg",
       "png": "docs/src/assets/earth-return-ladder.png",
