@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "69cfba46733d2d9151bc0db99bcfdef48774910740bf7214ab56237fb8a77aa3",
+  "corpus_sha256": "0413934b7de65164aa6b0eed657aba0b38483a40ff0725351827b19bb38d38fc",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -44,7 +44,7 @@
     },
     {
       "path": "docs/src/cases/coupled-multivoltage-corridor.md",
-      "sha256": "f077d436e91e70f66a7fd506f6f6fffd799bdd21d3d93a4923a208c78090e78b"
+      "sha256": "ae52993590ea28b8a99516dd1c1c4dfc561580892d12d414645ab637c871dfbe"
     },
     {
       "path": "docs/src/cases/executable-running-network.md",

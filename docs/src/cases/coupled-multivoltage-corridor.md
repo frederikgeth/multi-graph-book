@@ -29,7 +29,7 @@ conductors, transformer windings, galvanic connections, or additional assets.
 Their weights can be signed or general complex quantities even when the joint
 primitive is reciprocal and passive as a whole.
 
-## Physical parallelism is not graph parallelism
+## Physical parallelism is not visible in the bus multigraph
 
 Let the high-voltage section ``s_{\mathrm H}`` join buses ``m`` and ``n``, and
 let the lower-voltage section ``s_{\mathrm L}`` join buses ``p`` and ``q``.
@@ -44,7 +44,27 @@ The endpoint pairs need not agree:
 The two sections may even belong to otherwise galvanically disconnected
 voltage systems. Their spatial co-location is therefore an asset/construction
 relation, while their mutual impedance is a constitutive relation. Neither is
-implied by the bus--branch incidence map.
+implied by the high-level bus--branch incidence map.
+
+This is a limitation of that projection, not of graph representation in
+general. Refining each line asset into oriented conductor or wire sections
+makes the relevant granularity available. A separate **section-coupling
+graph** can then use those refined section identities as vertices and
+mutual-coupling records as edges. It captures spatial and constitutive
+relations that are absent from the bus multigraph, but it is not the original
+line-asset graph and its coupling edges are not galvanic connections.
+
+A later weighted-lattice lowering is different again. Its vertices are
+terminal-voltage coordinates and its edges realize the assembled equation.
+That graph captures the electrical effect of coupling, not the physical
+parallelism itself; its generated edges are neither source line objects nor
+physical wires. The representation progression is therefore
+
+```text
+line assets and bus attachments
+    -> refined conductor sections plus a coupling relation
+    -> optional generated equation edges.
+```
 
 For data and prose, this book uses the following terms:
 

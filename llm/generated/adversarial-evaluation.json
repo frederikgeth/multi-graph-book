@@ -195,7 +195,7 @@
           "claim:TR-XFMR-007",
           "claim:TR-XFMR-009",
           "claim:ARCH-LOWER-001",
-          "claim:FIXTURE-002"
+          "claim:GRAPH-SELF-LOOP-001"
         ]
       },
       "lexical": {
@@ -553,7 +553,7 @@
           "concept:phase-conductor-sequence-coordinate",
           "claim:ARCH-SURGERY-002",
           "claim:TR-SER-003",
-          "claim:ARCH-LENS-001"
+          "claim:TRANSFORM-SEM-001"
         ]
       },
       "lexical": {
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "69cfba46733d2d9151bc0db99bcfdef48774910740bf7214ab56237fb8a77aa3"
+    "corpus_sha256": "0413934b7de65164aa6b0eed657aba0b38483a40ff0725351827b19bb38d38fc"
   },
   "inputs": {
     "adversarial_cases": {
