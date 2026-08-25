@@ -91,6 +91,35 @@ then assembly gives
 \mathbf i^{\mathrm{inj}}=\mathbf Y^{\mathrm N}\mathbf U.
 ```
 
+### Coupled branches and the equivalent lattice
+
+Mutually coupled two-terminal sections are an instructive exact lowering. The
+source relation is not a sum of independent branch factors: the complete
+coupling group first supplies a joint impedance ``\mathbf Z_\Gamma``. When it
+is invertible, ``\mathbf Y_\Gamma=\mathbf Z_\Gamma^{-1}`` and one incidence map
+for all participating section drops gives
+
+```math
+\mathbf Y^{\mathrm N}_\Gamma
+=\mathbf A_\Gamma^{\mathsf T}
+ \mathbf Y_\Gamma
+ \mathbf A_\Gamma.
+```
+
+For two scalar sections on four distinct terminals, this stamp admits an exact
+six-edge lattice realization. Four of those edges cross between the two source
+endpoint pairs and two can carry the negative of the mutual admittance under
+the stored orientation. The lattice is therefore an ordinary weighted graph,
+but not a physical bus--branch inventory: its cross-voltage edges are generated
+couplings and its source line currents require the recovery map
+``\mathbf i_\Gamma=\mathbf Y_\Gamma\mathbf A_\Gamma\mathbf U``.
+
+The [coupled multi-voltage corridor case](@ref
+coupled-multivoltage-corridor) derives the full sign pattern, per-unit scaling,
+partial-overlap sections, and state guards. If the joint primitive is singular
+or the target edge library cannot carry the generated weights, the compiler
+must retain a direct factor or tableau rather than forcing this lattice.
+
 Here ``\Phi_{\mathrm{lin}}`` is a formulation subset, not the entire source
 inventory. It contains factors whose parameters and states are fixed for the
 declared solve. A factor carrying an unfixed tap, switching state, control law,

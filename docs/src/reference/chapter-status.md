@@ -1,6 +1,6 @@
 # [Chapter status](@id chapter-status)
 
-<!-- generated-from claims/claims.toml sha256:ffcb8eb3bcbb90d8b0c6ea699982b7f1d696936763ee261811463a6203d4acd0 -->
+<!-- generated-from claims/claims.toml sha256:2bc1d6b396760a6a8b9c0e8a9d88cc8121e3cc2f885b48607e776c5305db4c72 -->
 This page is generated from the claims ledger. It makes the evidence state visible without
 requiring readers to inspect TOML or generated JSON files. Claim absence means the page is
 tracked as explanatory, definitional, or proposed material rather than silently treated as a
@@ -10,6 +10,7 @@ verified empirical result.
 | --- | --- | ---: | --- | --- | --- |
 | [Australian construction inputs: Carson and OpenDSSDirect](../cases/australian-carson-reproduction.md) | source-backed Carson/OpenDSSDirect reproduction; overhead and underground reference matrices remain independently compared outputs, and the CS1035 construction mapping is explicitly unresolved. | 1 | empirical | `independently-implemented` | Recover the raw CS1035 conductor, screen, earth-return, frequency, and ordering provenance before claiming a faithful reconstruction. |
 | [BIM/BFM parallel lines: an expressiveness audit](../cases/bim-bfm-parallel-lines.md) | literature-informed formulation case; the equations illustrate scope boundaries and are not a new executable certificate. | 0 | — | `untracked` | — |
+| [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | literature-backed representation and exact fixed-linear lowering case with an executable scalar certificate; a geometry-derived multi-voltage certificate remains follow-on work. | 2 | proposal, theorem | `self-checked` | Obtain information-model and protection review; define a machine-readable coupling-group schema and test partial-overlap import round trips.; Independently review the sign/orientation convention and extend the result to block-valued full-pi and singular tableau targets. |
 | [Executable running network](@ref executable-running-network) | executable fixture, local solver evidence, and a derived state-conditioned radiality witness; claims are versioned and verification-scoped. | 2 | empirical | `self-checked` | Add an independent fixture reviewer.; Re-run with an independent solver where possible. |
 | [Four-wire impedance-model ladder](../cases/four-wire-impedance-model-ladder.md) | deterministic four-wire transformation witness; authored overhead and cable reproductions remain a follow-on case-study tranche. | 1 | empirical | `self-checked` | Reproduce authored overhead-line and underground-cable cases with geometry or linecode provenance, balanced and unbalanced load rows, grounding variants, and an external solver cross-check. |
 | [Non-proportional three-phase four-wire parallel case](../cases/four-wire-parallel-ac-decision.md) | guarded AC decision case with self-checked and independently reproduced numerical evidence; broader global claims remain open. | 1 | theorem | `self-checked` | TR-PAR-007 covers nonsingular nominal-pi primitives; the companion certificate now refuses singular and singular-shunted recovery maps. Extend from that refusal boundary to exact singular reductions, several retained members, state-dependent topology and controls, and obtain an independent global optimality bound where required. |
@@ -49,6 +50,7 @@ verified empirical result.
 | [Search run: 2026-08-15 formulation and graph-model landscape](../literature/search-runs/2026-08-15-formulation-landscape.md) | generated search-run record. | 0 | — | `untracked` | — |
 | [Search run: 2026-08-15 information-model and software citation chase](../literature/search-runs/2026-08-15-information-model-citation-chase.md) | generated search-run record. | 0 | — | `untracked` | — |
 | [Search run: multiphase formulations and practical reductions](../literature/search-runs/2026-08-16-multiphase-and-practical-reductions.md) | generated search-run record. | 0 | — | `untracked` | — |
+| [Search run: coupled multi-voltage corridors](../literature/search-runs/2026-08-25-coupled-multivoltage-corridors.md) | generated search-run record. | 0 | — | `untracked` | — |
 | [Evidence map and verification summary](../reference/evidence-map.md) | generated reference navigation and evidence-gap summary. | 0 | — | `untracked` | — |
 | [References](../reference/references.md) | bibliography and source register. | 0 | — | `untracked` | — |
 | [Terminology](../reference/terminology.md) | maintained glossary and translation aid. | 0 | — | `untracked` | — |

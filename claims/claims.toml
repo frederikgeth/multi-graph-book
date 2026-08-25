@@ -1750,3 +1750,37 @@ assumptions = "both terminal maps identify the same retained coordinate; shunts 
 reviewer = ""
 review_date = ""
 unresolved_issue = "Extend and independently review the block-coordinate result for multiphase pi factors, transformer maps, singular primitives, and retained branch-current or rating queries."
+
+[[claim]]
+claim_id = "COUPLED-CORRIDOR-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['structure', 'terminal_behavior', 'state', 'provenance']
+chapter = "docs/src/cases/coupled-multivoltage-corridor.md"
+claim_text = "Corridor-parallel line sections need not be parallel in the bus multigraph; a source model can retain stable line assets plus oriented section-to-section coupling records, with each connected coupling group compiling into one joint electrical factor before inversion or nodal stamping."
+status = "proposal"
+claim_type = "proposal"
+verification = "self-checked"
+evidence_type = "literature_and_information_model_synthesis"
+citation_keys = ["WortmanAllenGrigsby1985", "YanSaha2015", "CIMMutualCoupling", "PowsyblLineCoupling", "PowerWorldMutualImpedance"]
+model_scope = "finite steady-state line-section inventories with identified assets, oriented terminal coordinates, pairwise electromagnetic coupling data, and explicit overlap intervals"
+assumptions = "pairwise coupling records can be assembled into a complete group primitive; asset lineage and section orientation are retained; study-specific sequence or phase-domain scope is declared"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Obtain information-model and protection review; define a machine-readable coupling-group schema and test partial-overlap import round trips."
+
+[[claim]]
+claim_id = "COUPLED-CORRIDOR-002"
+exactness_object = "equation_identity"
+preservation_dimensions = ['terminal_behavior', 'limits', 'state', 'provenance', 'numerical_structure']
+chapter = "docs/src/cases/coupled-multivoltage-corridor.md"
+claim_text = "For two fixed linear reciprocal scalar series sections with a nonsingular joint impedance matrix, A_Gamma^T Z_Gamma^{-1} A_Gamma has an exact six-edge weighted-lattice realization on the four source terminals; source section currents are recovered by Z_Gamma^{-1} A_Gamma u, while the generated cross edges carry no asset or galvanic interpretation."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "symbolic_building_block_derivation_executable_scalar_certificate_and_literature_precedent"
+citation_keys = ["WortmanAllenGrigsby1985", "GraingerStevenson1994"]
+model_scope = "two fixed linear reciprocal scalar series sections on four retained terminal-voltage coordinates"
+assumptions = "the joint 2-by-2 impedance matrix is nonsingular; the target weighted-edge library admits signed complex weights; orientations and terminal maps are fixed; shunts, controls, and dynamics are outside this scalar derivation"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independently review the sign/orientation convention and extend the result to block-valued full-pi and singular tableau targets."

@@ -18,6 +18,7 @@ must not be inferred from a successful import.
 | topological node ``n_\sigma`` | ``TopologicalNode`` and state-derived topology | transformed mathematical bus/node set | active circuit connectivity | compiled bus set | state-resolved derived view |
 | two-terminal factor | ``ConductingEquipment`` with terminals | line, switch, transformer, load, or generator object | line, transformer, reactor, load, generator | branch/gen/load rows | direct only within each tool's native factor library |
 | multi-terminal factor | equipment plus multiple terminals | multiwinding transformer and coupled engineering objects | multiwinding/terminal object, often compiled for analysis | no native arbitrary-port object | requires a declared compiler and provenance |
+| line-section coupling relation | ``MutualCoupling`` links two line terminals and coupled-distance intervals, principally for zero-sequence short circuit data | no general source mapping currently established | can represent a joint conductor primitive when circuits are compiled as one multi-conductor element; separate-line provenance needs an adapter | no standard branch-pair mutual-coupling record | relation, section orientation, group assembly, and study scope require explicit adapter support |
 | factor relation ``\mathcal R_\phi`` | electrical parameters plus profile-specific attributes | engineering-to-mathematical conversion and JuMP formulation | primitive stamping and solver model | standard ``\pi`` branch/gen/load equations | equations are not fully represented by topology data |
 | rating/limit ``\lambda`` | equipment, operational limit, and profile-dependent attributes | thermal/current/voltage fields and correction routines | line/transformer/relay properties | branch/gen limits and extension fields | quantity, duration, ambient, and owner need explicit mapping |
 | operating state | state variables, SSH/SV and equipment status profiles | multinetwork/state fields and conversion options | active/open objects and controls | ``status`` and in-service fields | scenario and provenance must be retained |
@@ -41,6 +42,16 @@ OpenDSS is a practical circuit/equipment language with reduction operations.
 Its reduction documentation is evidence of useful engineering procedures, not
 a universal proof that limits, states, grounding, or provenance are preserved
 [OpenDSSReduction](@cite).
+
+Mutual coupling demonstrates why a crosswalk also needs relations whose
+endpoints are equipment sections rather than buses. CIM retains a distinct
+``MutualCoupling`` object with two terminal associations and four distances for
+the coupled portions [CIMMutualCoupling](@cite); PowSyBl's line-coupling
+extension and PowerWorld's sequence records similarly identify both lines and
+their overlap intervals [PowsyblLineCoupling,
+PowerWorldMutualImpedance](@cite). These implementations are useful precedent,
+but their scalar zero-sequence or short-circuit scope must not be generalized
+silently to a full phase-coordinate series-and-shunt primitive.
 
 MATPOWER's case format is intentionally compact: version-2 cases package
 ``baseMVA``, ``bus``, ``gen``, ``branch``, and optional ``gencost`` matrices, and

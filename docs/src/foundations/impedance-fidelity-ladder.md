@@ -11,14 +11,15 @@ changed.
 
 ## The physical-to-matrix ladder
 
-For a declared ordered conductor set, a typical steady-state construction is
+For a declared ordered conductor set or coupled corridor group, a typical
+steady-state construction is
 
 ```math
 \text{wire data + geometry + earth model + frequency}
 \longrightarrow
 (\mathbf R_\ell,\mathbf X_\ell,\mathbf Y^{\mathrm{sh}}_\ell)
 \longrightarrow
-\text{terminal factor}
+\text{line or joint terminal factor}
 \longrightarrow
 \text{network equations and decisions}.
 ```
@@ -36,13 +37,50 @@ which conductor geometry and return path produced it.
 
 The matrix is still not the complete factor. Terminal maps, from/to shunts,
 connection factors, ratings, and state ownership determine how it enters the
-network. This is why the book indexes intrinsic impedance by ``\ell`` and
-terminal quantities by ``\ell ij``.
+network. For an independent line the book indexes intrinsic impedance by
+``\ell`` and terminal quantities by ``\ell ij``. For mutually coupled line
+sections, the joint primitive is instead indexed by a coupling group
+``\Gamma`` and linked back to every participating line asset.
+
+### When the primitive spans several line assets
+
+For two coupled sections with possibly different conductor counts, the series
+primitive has block form
+
+```math
+\mathbf Z_\Gamma=
+\begin{bmatrix}
+\mathbf Z_{11}&\mathbf Z_{12}\\
+\mathbf Z_{21}&\mathbf Z_{22}
+\end{bmatrix}.
+```
+
+The off-diagonal blocks describe cross-circuit coupling and can be rectangular.
+They should not be copied into two nominally independent line records and the
+self blocks should not be inverted separately. A source adapter should retain
+or construct oriented electrical sections, pairwise coupling records, and a
+coupling-group identifier; the group primitive is assembled first and then
+compiled into a direct factor, tableau, or guarded nodal stamp.
+
+Different-voltage circuits also require cross-coordinate base data. With a
+common power base and compatible phase-voltage conventions, the mutual
+impedance base between voltage systems ``a`` and ``b`` is
+
+```math
+Z_{\mathrm b,ab}=\frac{U_{\mathrm b,a}U_{\mathrm b,b}}{S_{\mathrm b}}.
+```
+
+Using either circuit's self-impedance base for the cross block can break the
+declared reciprocity and scaling relation. The [coupled multi-voltage corridor
+case](@ref coupled-multivoltage-corridor) develops the source ownership,
+per-unit map, partial-overlap semantics, and equivalent lattice.
 
 ## A canonical impedance-data contract
 
 Standardisation should make the source model richer than any one solver input.
-For each oriented branch ``\ell i j``, the canonical record should retain:
+For each oriented branch ``\ell i j``, and for every coupling group in which
+one of its electrical sections participates, the canonical record should
+retain:
 
 - the asset identity, ordered conductor set, and endpoint terminal maps;
 - geometry, conductor material, length, temperature, frequency, and earth
@@ -56,6 +94,12 @@ For each oriented branch ``\ell i j``, the canonical record should retain:
   ground semantics; and
 - current, voltage, power, neutral, protection, and control observations that
   use the resulting coordinates.
+
+A coupling-group record additionally retains participating section identities,
+lineage to stable assets, overlap intervals, orientation/dot conventions,
+cross-block coordinate maps, the joint matrix ordering, and whether the
+relation is phase-domain, sequence-domain, series-only, or full series-and-
+shunt data.
 
 The canonical record is therefore a source of derived views, not merely a
 serialization of the values most convenient for one engine. A positive-

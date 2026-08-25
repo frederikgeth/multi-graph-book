@@ -97,6 +97,43 @@ ZimmermanChiang1995](@cite). These sources establish method-specific modelling
 and solution results, not a universal four-wire, grounding, or decision-
 preservation contract.
 
+### Mutually coupled corridors and multi-voltage lines
+
+The classical building-block literature does not require mutually coupled
+branches to share endpoints. Wortman, Allen and Grigsby construct a multiport
+steady-state network model from linear-graph incidence and joint component
+blocks, including mutual coupling, neutral and static conductors, and finite
+earth conductivity [WortmanAllenGrigsby1985](@cite). Standard power-system
+analysis texts then interpret the nodal stamp of two coupled scalar branches
+as an equivalent uncoupled terminal lattice [GraingerStevenson1994](@cite).
+This supports an exact equation-level lowering, not identification of the
+lattice edges with physical lines.
+
+Kersting develops phase impedance and shunt admittance models for physically
+parallel distribution lines on common poles, rights of way, or trenches
+[Kersting2006](@cite). Yan and Saha address the more revealing cross-voltage
+case: an 11 kV three-wire circuit and a 415 V four-wire circuit sharing poles,
+with the joint phase-coordinate relation assembled into an unbalanced current-
+injection load flow [YanSaha2015](@cite). Dziendziel, Kocot and Kubek develop
+multi-circuit, multi-voltage HVAC line models and state the product-voltage
+base required for mutual per-unit quantities under a common power base
+[DziendzielKocotKubek2021](@cite).
+
+Protection work emphasizes a narrower but operationally important projection:
+zero-sequence mutual coupling can dominate ground-fault and distance-element
+behaviour, and partial shared corridors require model section boundaries at
+the coupling start and end points [Tziouvaras2014](@cite). CIM, PowSyBl, and
+PowerWorld accordingly retain explicit relations between two line identities
+and their coupled intervals [CIMMutualCoupling, PowsyblLineCoupling,
+PowerWorldMutualImpedance](@cite). These records are implementation precedent
+for section-to-section coupling, while their usual short-circuit and scalar
+zero-sequence scope is narrower than a full phase-domain source primitive.
+
+The book's [coupled multi-voltage corridor case](@ref
+coupled-multivoltage-corridor) synthesizes these strands as a typed path from
+line assets and section-coupling records to one joint factor, then to a guarded
+nodal stamp or equivalent lattice with current and provenance recovery.
+
 ### Ground-return impedance and earth modelling
 
 Carson's original ground-return treatment derives overhead-wire propagation

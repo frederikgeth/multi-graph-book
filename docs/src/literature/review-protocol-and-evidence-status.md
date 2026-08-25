@@ -11,20 +11,20 @@ single-coded seed corpus is an independently validated systematic review.
 | field | value |
 | --- | --- |
 | protocol version | `0.1.0` |
-| snapshot date | `2026-08-17` |
-| matrix records | 29 |
-| matrix SHA-256 | `770b9f9baa4720e8e89f514e470ba7baec07ace45ea3fd1d0590dbda8c03342b` |
-| deduplication rows | 29 |
-| deduplication SHA-256 | `9288671ce375781afbc940e65c05a4d10275099af329784cbe105097cacc5d95` |
+| snapshot date | `2026-08-25` |
+| matrix records | 37 |
+| matrix SHA-256 | `3cbb795c0cd6063da9da5979056c04c294ebe6ae8bc7545f1b0a708dc39ee9f8` |
+| deduplication rows | 37 |
+| deduplication SHA-256 | `75143b8c286bbba4bd674c11fb205d594a1b7385783d634de0d11dcf79477b86` |
 | independent human double-coding | no |
 
 ### Screening and coding counts
 
 | dimension | counts |
 | --- | --- |
-| screening status | include: **28**; exclude: **1**; uncertain: **0** |
-| coding status | `single_coded`: **29** |
-| exactness labels | `exact`: **11**; `not_reported`: **1**; `outer`: **1**; `scenario_approximate`: **8**; `unclassified`: **8** |
+| screening status | include: **36**; exclude: **1**; uncertain: **0** |
+| coding status | `single_coded`: **37** |
+| exactness labels | `exact`: **14**; `not_reported`: **4**; `outer`: **1**; `scenario_approximate`: **8**; `unclassified`: **10** |
 
 The current snapshot is therefore a **single-coded seed snapshot**, not a
 double-coded corpus. The 2026-08-15 second-coding log recommends eight
@@ -51,6 +51,7 @@ The dated search runs included in this snapshot are:
 - [`2026-08-15-formulation-landscape.md`](search-runs/2026-08-15-formulation-landscape.md)
 - [`2026-08-15-information-model-citation-chase.md`](search-runs/2026-08-15-information-model-citation-chase.md)
 - [`2026-08-16-multiphase-and-practical-reductions.md`](search-runs/2026-08-16-multiphase-and-practical-reductions.md)
+- [`2026-08-25-coupled-multivoltage-corridors.md`](search-runs/2026-08-25-coupled-multivoltage-corridors.md)
 
 The search-run files record query families, available platforms, and
 limitations for each run. The protocol also requires backward and forward
@@ -75,7 +76,7 @@ without rewriting history.
 
 ## Reproducibility inputs
 
-The manifest records 8 hashed protocol, coding, bibliography, and search-run inputs.
+The manifest records 9 hashed protocol, coding, bibliography, and search-run inputs.
 Run `scripts/check_review_snapshot.py` to verify the matrix,
 deduplication register, record identifiers, and input hashes against this
 published snapshot.

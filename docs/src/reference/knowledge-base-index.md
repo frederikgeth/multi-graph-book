@@ -1,14 +1,14 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:ffcb8eb3bcbb90d8b0c6ea699982b7f1d696936763ee261811463a6203d4acd0 -->
+<!-- generated-from claims/claims.toml sha256:2bc1d6b396760a6a8b9c0e8a9d88cc8121e3cc2f885b48607e776c5305db4c72 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 103
-**Indexed chapters:** 43
+**Indexed claims:** 105
+**Indexed chapters:** 44
 
 ## Claims by type
 
@@ -85,7 +85,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `PRACTICE-IMPEDANCE-001` — A safe impedance adapter should retain conductor order and terminal maps, units and frequency, geometry or linecode provenance, earth-return assumptions, matrix diagnostics, shunt placement, and the limits and decisions that use the resulting coordinates. | [From conductor geometry to impedance fidelity](../foundations/impedance-fidelity-ladder.md) | `self-checked` |
 | `VOCAB-BRIDGE-001` — Load-bearing statements use a preferred house term or qualified shorthand that declares the relevant representation, quantity, state, and preservation object; an unqualified term is unsafe when it can change the claim. | [One network, five languages](../start/one-network-five-languages.md) | `self-checked` |
 
-### `proposal` (7)
+### `proposal` (8)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -95,9 +95,10 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `ARCH-SURGERY-001` — The book proposes that state-conditioned graph surgery return state-indexed graphs or graph families with diagnostics and provenance; for many unknown switches, a three-valued certain-connected/certain-separated/undetermined summary should be available instead of silently collapsing to one active graph. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
 | `ARCH-SURGERY-002` — The book proposes that an n-terminal surgery retain port-coordinate identity and return port-specific active and isolated sets; it cannot be inferred by replacing an n-port factor with implicit pairwise edges. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
 | `ARCH-VIEW-001` — The book proposes that a power-network visualisation declare its object level, preserved and forgotten semantics, identity fibres, and reverse-map status; single-line, multi-line, port-factor, node-breaker, nodal-support, and reduced views are distinct typed projections. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `self-checked` |
+| `COUPLED-CORRIDOR-001` — Corridor-parallel line sections need not be parallel in the bus multigraph; a source model can retain stable line assets plus oriented section-to-section coupling records, with each connected coupling group compiling into one joint electrical factor before inversion or nodal stamping. | [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | `self-checked` |
 | `TRANSFORM-CATALOG-001` — The guarded-normalization catalogue treats coordinate normalization, series elimination, parallel bundling, switch contraction, multiwinding compilation, and rooted-tree views as distinct rule families whose acceptance depends on declared closure, recovery, constraint, and provenance guards. | [Guarded normalization rules](../transformations/guarded-normalization.md) | `self-checked` |
 
-### `theorem` (38)
+### `theorem` (39)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -111,6 +112,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `ARCH-RECOVERY-004` — For noisy full-rank multiconductor voltage/current snapshots, the pseudoinverse source estimate has a deterministic Frobenius error bound proportional to the noise radius and the voltage-snapshot pseudoinverse norm; nearly dependent excitation therefore enlarges the certified uncertainty set even when the observation map is full rank. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `self-checked` |
 | `ARCH-SUPPORT-001` — Block and scalar nonzero-support graphs of a declared compound nodal operator are simple graphs by construction, while the identified factor-stamp decomposition is separate data and may be a multigraph. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `self-checked` |
 | `COLLAPSE-001` — Under compatible three-phase terminals, cyclic (circulant) series and shunt matrices, balanced boundary data, sequence-compatible grounding, two-terminal factor closure, phase-symmetric decisions, and positive-sequence observations, the general phase-domain relation restricts exactly to the positive-sequence scalar network. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `self-checked` |
+| `COUPLED-CORRIDOR-002` — For two fixed linear reciprocal scalar series sections with a nonsingular joint impedance matrix, A_Gamma^T Z_Gamma^{-1} A_Gamma has an exact six-edge weighted-lattice realization on the four source terminals; source section currents are recovered by Z_Gamma^{-1} A_Gamma u, while the generated cross edges carry no asset or galvanic interpretation. | [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | `self-checked` |
 | `FORMULATION-NODAL-001` — An ideal voltage source with a queried source current is not representable by a plain nodal-admittance injection without adding an extra current variable or changing the query contract; a modified-nodal or tableau formulation preserves the voltage constraint and current observation. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `self-checked` |
 | `FORMULATION-NODAL-002` — Even when a nodal operator can be assembled, it may be singular without a declared reference or shunt, or semantically insufficient for member-level limits: aligned parallel factors can share one aggregate admittance while having different member currents and feasible limits. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `self-checked` |
 | `FORMULATION-NODAL-003` — A declared reference or grounding label does not by itself establish nonsingularity of a compound nodal operator: the rank guard must be evaluated on the assembled operator after the declared reference, grounding, and active-state maps are applied. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `self-checked` |
@@ -144,7 +146,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 
 | Verification | Claims |
 | --- | ---: |
-| `self-checked` | 98 |
+| `self-checked` | 100 |
 | `independently-implemented` | 5 |
 | `externally-reviewed` | 0 |
 
@@ -175,6 +177,8 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `AU-CARSON-001` | Recover the raw CS1035 conductor, screen, earth-return, frequency, and ordering provenance before claiming a faithful reconstruction. |
 | `COLLAPSE-001` | Extend the network witness to controls, phase-specific limits, contingencies, and an independent mathematical review before making a global decision-equivalence claim. |
 | `COLLAPSE-002` | Extend the witness to controls, phase-specific limits, contingencies, and independent mathematical review. |
+| `COUPLED-CORRIDOR-001` | Obtain information-model and protection review; define a machine-readable coupling-group schema and test partial-overlap import round trips. |
+| `COUPLED-CORRIDOR-002` | Independently review the sign/orientation convention and extend the result to block-valued full-pi and singular tableau targets. |
 | `DATA-XWALK-001` | The running-fixture contract is checked against pinned documentation profiles; external package imports and file-level round-trip provenance/rating checks remain open. |
 | `FIXTURE-001` | Add an independent fixture reviewer. |
 | `FIXTURE-002` | Re-run with an independent solver where possible. |
@@ -261,11 +265,13 @@ These retrieval facets are provisional and path-derived. They are navigation aid
 additional verification labels; explicit facet fields can replace them when the claims
 schema is normalised.
 
-### `decision-cases` (28)
+### `decision-cases` (30)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
 | `AU-CARSON-001` — The Australian Carson reproduction regenerates overhead and underground multiconductor primitives from lifted construction inputs, compares them with independent OpenDSS reference matrices, and identifies the CS1035 construction mapping as unresolved rather than presenting it as a faithful reproduction. | [Australian construction inputs: Carson and OpenDSSDirect](../cases/australian-carson-reproduction.md) | `empirical` |
+| `COUPLED-CORRIDOR-001` — Corridor-parallel line sections need not be parallel in the bus multigraph; a source model can retain stable line assets plus oriented section-to-section coupling records, with each connected coupling group compiling into one joint electrical factor before inversion or nodal stamping. | [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | `proposal` |
+| `COUPLED-CORRIDOR-002` — For two fixed linear reciprocal scalar series sections with a nonsingular joint impedance matrix, A_Gamma^T Z_Gamma^{-1} A_Gamma has an exact six-edge weighted-lattice realization on the four source terminals; source section currents are recovered by Z_Gamma^{-1} A_Gamma u, while the generated cross edges carry no asset or galvanic interpretation. | [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | `theorem` |
 | `FIXTURE-001` — Running-network fixture v0.1.0 passes the current BMOPFTools JSON schema and conformance checks without errors or warnings. | [Executable running network](@ref executable-running-network) | `empirical` |
 | `FIXTURE-002` — The v0.1.0 continuous PF and OPF instances terminate locally solved in the recorded environment. | [Executable running network](@ref executable-running-network) | `empirical` |
 | `IMPEDANCE-LADDER-001` — In the deterministic four-wire impedance ladder fixture, phase-to-neutral current and voltage recovery are exact under the declared zero-ground-current map, while the deliberately non-circulant reduced matrix has visible sequence mixing; shunt deletion and positive-sequence use therefore require explicit decision-domain guards. | [Four-wire impedance-model ladder](../cases/four-wire-impedance-model-ladder.md) | `empirical` |
@@ -515,6 +521,7 @@ schema is normalised.
 | `connection-map-independent-reproduction.json` | `LOAD-CONNECTION-001` — generated evidence |
 | `coordinate-normalization-certificate.json` | `TR-COORD-001` — generated evidence |
 | `coordinate-series-composition-certificate.json` | `TR-COMP-001` — generated evidence |
+| `coupled-corridor-lattice-witness.json` | `COUPLED-CORRIDOR-002` — two reciprocal fixed-linear scalar series sections on four retained terminal-voltage coordinates |
 | `data-model-crosswalk-witness.json` | `DATA-XWALK-001` — data/running-network/v0.1.0.json |
 | `degree-two-series-certificate.json` | `TR-SER-001` — generated evidence |
 | `explicit-earth-independent-reproduction.json` | `GROUND-SCOPE-004` — generated evidence |

@@ -102,7 +102,7 @@ circuit_theory = ["branch current", "terminal current", "complex power"]
 
 [[concept]]
 id = "parallel"
-house_terms = ["parallel fibre", "terminal parallelism", "electrical aggregability"]
+house_terms = ["corridor parallelism", "parallel fibre", "terminal parallelism", "electrical aggregability", "coupling group"]
 relation_class = "broader_narrower"
 usage_status = "accepted_qualified_shorthand"
 required_question = "Do members share endpoints, terminals, a corridor, constitutive data, or operating interchangeability?"

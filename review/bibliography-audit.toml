@@ -426,3 +426,66 @@ status = "verified"
 verification_source = "https://books.google.com/books/about/Linear_Graphs_and_Electrical_Networks.html?id=C0l8AAAAIAAJ"
 verified_on = "2026-08-17"
 note = "Catalog record confirms the authors, title, Addison-Wesley publisher, publication year, pagination, and ISBN."
+
+[[entry]]
+key = "WortmanAllenGrigsby1985"
+status = "verified"
+verification_source = "https://doi.org/10.1109/TPAS.1985.319124"
+verified_on = "2026-08-25"
+note = "The DOI record confirms the building-block network-modeling article, authors, journal, volume, issue, pages, and year; the book uses it as a primitive-network assembly precedent."
+
+[[entry]]
+key = "GraingerStevenson1994"
+status = "verified"
+verification_source = "https://books.google.com/books/about/Power_System_Analysis.html?id=N9VGPgAACAAJ"
+verified_on = "2026-08-25"
+note = "The catalog record confirms the authors, title, publisher, and year; the cited sections supply the classical primitive-admittance and mutually coupled equivalent-lattice construction."
+
+[[entry]]
+key = "Kersting2006"
+status = "verified"
+verification_source = "https://doi.org/10.1109/TIA.2006.880897"
+verified_on = "2026-08-25"
+note = "The DOI record confirms the parallel-distribution-line modeling article and its publication metadata; the book cites it for phase-domain analysis of coupled parallel lines."
+
+[[entry]]
+key = "YanSaha2015"
+status = "verified"
+verification_source = "https://doi.org/10.1049/iet-gtd.2015.0178"
+verified_on = "2026-08-25"
+note = "The DOI record confirms the article on mutual coupling across different voltage levels and its journal metadata; the book uses it as the direct multi-voltage corridor precedent."
+
+[[entry]]
+key = "DziendzielKocotKubek2021"
+status = "verified"
+verification_source = "https://doi.org/10.3390/en14020421"
+verified_on = "2026-08-25"
+note = "The publisher record confirms the multi-circuit, multi-voltage HVAC line article, authors, volume, article number, year, and DOI; it supports the geometry-to-parameter modeling context."
+
+[[entry]]
+key = "Tziouvaras2014"
+status = "verified"
+verification_source = "https://doi.org/10.1109/CPRE.2014.6798993"
+verified_on = "2026-08-25"
+note = "The DOI record confirms the protective-relaying paper and conference metadata; it is cited for operational consequences and orientation conventions in mutually coupled transmission lines."
+
+[[entry]]
+key = "CIMMutualCoupling"
+status = "verified"
+verification_source = "https://ontology.tno.nl/IEC_CIM/cim_MutualCoupling.html"
+verified_on = "2026-08-25"
+note = "The generated IEC CIM ontology documentation exposes MutualCoupling as a separate class relating terminal sections; it is used only as a data-model precedent, not as evidence of complete phase-domain semantics."
+
+[[entry]]
+key = "PowsyblLineCoupling"
+status = "verified"
+verification_source = "https://powsybl.readthedocs.io/projects/powsybl-core/en/v7.3.0-rc1/grid_model/extensions.html#line-couplings"
+verified_on = "2026-08-25"
+note = "The version-pinned official documentation confirms a line-coupling extension with paired line identities, coupling coordinates, and coupling data; it is treated as an implementation precedent."
+
+[[entry]]
+key = "PowerWorldMutualImpedance"
+status = "verified"
+verification_source = "https://www.powerworld.com/WebHelp/Content/MainDocumentation_HTML/Mutual_Impedance_Records.htm"
+verified_on = "2026-08-25"
+note = "Official help documentation confirms branch-pair mutual-impedance records, dot convention, and coupled-section fractions; its zero-sequence scope is stated explicitly in the case."
