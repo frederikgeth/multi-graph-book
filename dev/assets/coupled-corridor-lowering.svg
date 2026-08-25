@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="720" viewBox="0 0 1500 720">
+<title>Coupled corridor source objects and an equivalent lattice lowering</title>
+<desc>Two distinct line assets in different voltage systems are related by a coupling record, compiled into one four-port joint factor, and optionally lowered to a generated six-edge terminal lattice.</desc>
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker>
+</defs>
+<rect width="100%" height="100%" fill="white"/>
+<style>
+text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:13px;fill:#5f6b76}.busH{fill:#d9eef8;stroke:#245b7a;stroke-width:3}.busL{fill:#e4f4e7;stroke:#477a55;stroke-width:3}.lineH{stroke:#245b7a;stroke-width:6}.lineL{stroke:#477a55;stroke-width:6}.couple{stroke:#8a4f13;stroke-width:3;stroke-dasharray:9 7;fill:none}.factor{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2.5}.port{fill:white;stroke:#8a4f13;stroke-width:2}.generated{stroke:#7856a8;stroke-width:3;fill:none}.negative{stroke:#8a3232;stroke-width:3;stroke-dasharray:7 5;fill:none}.arrow{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.note{fill:#eee8f8;stroke:#7856a8;stroke-width:2}
+</style>
+<text x="35" y="42" class="title">A coupled corridor has distinct source objects and an optional graph lowering</text>
+<text x="35" y="70" class="sub">Corridor co-location, constitutive coupling, and generated nodal support are different relations.</text>
+
+<rect x="35" y="112" width="405" height="505" rx="14" class="panel"/>
+<rect x="548" y="112" width="405" height="505" rx="14" class="panel"/>
+<rect x="1060" y="112" width="405" height="505" rx="14" class="panel"/>
+<text x="65" y="150" class="head">1  assets + coupling record</text>
+<text x="578" y="150" class="head">2  joint electrical factor</text>
+<text x="1090" y="150" class="head">3  generated lattice target</text>
+
+<circle cx="105" cy="260" r="27" class="busH"/><circle cx="365" cy="260" r="27" class="busH"/>
+<line x1="132" y1="260" x2="338" y2="260" class="lineH"/>
+<text x="105" y="266" class="body" text-anchor="middle">m</text><text x="365" y="266" class="body" text-anchor="middle">n</text>
+<text x="235" y="238" class="body" text-anchor="middle">HV section s<tspan baseline-shift="sub">H</tspan></text>
+<circle cx="105" cy="445" r="27" class="busL"/><circle cx="365" cy="445" r="27" class="busL"/>
+<line x1="132" y1="445" x2="338" y2="445" class="lineL"/>
+<text x="105" y="451" class="body" text-anchor="middle">p</text><text x="365" y="451" class="body" text-anchor="middle">q</text>
+<text x="235" y="423" class="body" text-anchor="middle">LV section s<tspan baseline-shift="sub">L</tspan></text>
+<path d="M190 295 C155 335 155 370 190 410 M280 295 C315 335 315 370 280 410" class="couple"/>
+<text x="235" y="350" class="body" text-anchor="middle">coupling record c</text>
+<text x="235" y="372" class="small" text-anchor="middle">overlap + orientation + Z<tspan baseline-shift="sub">HL</tspan></text>
+<text x="235" y="545" class="small" text-anchor="middle">ratings and states remain on each asset</text>
+
+<rect x="660" y="245" width="180" height="235" rx="18" class="factor"/>
+<text x="750" y="282" class="head" text-anchor="middle">factor φ<tspan baseline-shift="sub">Γ</tspan></text>
+<text x="750" y="317" class="body" text-anchor="middle">joint primitive</text>
+<text x="750" y="343" class="body" text-anchor="middle">Z<tspan baseline-shift="sub">Γ</tspan> = [Z<tspan baseline-shift="sub">HH</tspan>  Z<tspan baseline-shift="sub">HL</tspan>]</text>
+<text x="750" y="369" class="body" text-anchor="middle">       [Z<tspan baseline-shift="sub">LH</tspan>  Z<tspan baseline-shift="sub">LL</tspan>]</text>
+<circle cx="660" cy="315" r="8" class="port"/><circle cx="840" cy="315" r="8" class="port"/>
+<circle cx="660" cy="415" r="8" class="port"/><circle cx="840" cy="415" r="8" class="port"/>
+<text x="635" y="320" class="small" text-anchor="end">m</text><text x="865" y="320" class="small">n</text>
+<text x="635" y="420" class="small" text-anchor="end">p</text><text x="865" y="420" class="small">q</text>
+<text x="750" y="545" class="small" text-anchor="middle">one relation over four terminal bundles</text>
+
+<circle cx="1160" cy="255" r="27" class="busH"/><circle cx="1365" cy="255" r="27" class="busH"/>
+<circle cx="1160" cy="465" r="27" class="busL"/><circle cx="1365" cy="465" r="27" class="busL"/>
+<text x="1160" y="261" class="body" text-anchor="middle">m</text><text x="1365" y="261" class="body" text-anchor="middle">n</text>
+<text x="1160" y="471" class="body" text-anchor="middle">p</text><text x="1365" y="471" class="body" text-anchor="middle">q</text>
+<line x1="1187" y1="255" x2="1338" y2="255" class="generated"/>
+<line x1="1187" y1="465" x2="1338" y2="465" class="generated"/>
+<line x1="1179" y1="275" x2="1346" y2="445" class="generated"/>
+<line x1="1179" y1="445" x2="1346" y2="275" class="generated"/>
+<line x1="1160" y1="282" x2="1160" y2="438" class="negative"/>
+<line x1="1365" y1="282" x2="1365" y2="438" class="negative"/>
+<text x="1262" y="225" class="small" text-anchor="middle">y<tspan baseline-shift="sub">H</tspan></text>
+<text x="1262" y="505" class="small" text-anchor="middle">y<tspan baseline-shift="sub">L</tspan></text>
+<text x="1262" y="352" class="small" text-anchor="middle">± y<tspan baseline-shift="sub">M</tspan></text>
+<rect x="1110" y="535" width="305" height="55" rx="10" class="note"/>
+<text x="1262" y="558" class="body" text-anchor="middle">exact terminal equation</text>
+<text x="1262" y="579" class="small" text-anchor="middle">no asset or galvanic interpretation</text>
+
+<path d="M443 360 L535 360" class="arrow"/><text x="489" y="337" class="small" text-anchor="middle">compile</text>
+<path d="M956 360 L1047 360" class="arrow"/><text x="1001" y="337" class="small" text-anchor="middle">invert + stamp</text>
+<text x="35" y="674" class="small">If coupling covers only part of either line, introduce electrical section boundaries and retain lineage to the stable source assets.</text>
+</svg>

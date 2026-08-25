@@ -17,14 +17,14 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight
 <text x="1085.0" y="125" class="small" text-anchor="middle">externally-reviewed</text>
 <text x="340" y="176" class="small" text-anchor="end">structure</text>
 <rect x="360" y="145" width="278" height="34" rx="10" class="good"/>
-<text x="499.0" y="175" class="head" text-anchor="middle">69</text>
+<text x="499.0" y="175" class="head" text-anchor="middle">70</text>
 <rect x="650" y="145" width="278" height="34" rx="10" class="good"/>
 <text x="789.0" y="175" class="head" text-anchor="middle">3</text>
 <rect x="940" y="145" width="278" height="34" rx="10" class="empty"/>
 <text x="1079.0" y="175" class="small" text-anchor="middle">0</text>
 <text x="340" y="218" class="small" text-anchor="end">terminal_behavior</text>
 <rect x="360" y="187" width="278" height="34" rx="10" class="good"/>
-<text x="499.0" y="217" class="head" text-anchor="middle">78</text>
+<text x="499.0" y="217" class="head" text-anchor="middle">80</text>
 <rect x="650" y="187" width="278" height="34" rx="10" class="good"/>
 <text x="789.0" y="217" class="head" text-anchor="middle">5</text>
 <rect x="940" y="187" width="278" height="34" rx="10" class="empty"/>
@@ -52,7 +52,7 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight
 <text x="1079.0" y="343" class="small" text-anchor="middle">0</text>
 <text x="340" y="386" class="small" text-anchor="end">state</text>
 <rect x="360" y="355" width="278" height="34" rx="10" class="good"/>
-<text x="499.0" y="385" class="head" text-anchor="middle">15</text>
+<text x="499.0" y="385" class="head" text-anchor="middle">16</text>
 <rect x="650" y="355" width="278" height="34" rx="10" class="empty"/>
 <text x="789.0" y="385" class="small" text-anchor="middle">0</text>
 <rect x="940" y="355" width="278" height="34" rx="10" class="empty"/>
@@ -66,14 +66,14 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight
 <text x="1079.0" y="427" class="small" text-anchor="middle">0</text>
 <text x="340" y="470" class="small" text-anchor="end">provenance</text>
 <rect x="360" y="439" width="278" height="34" rx="10" class="good"/>
-<text x="499.0" y="469" class="head" text-anchor="middle">70</text>
+<text x="499.0" y="469" class="head" text-anchor="middle">71</text>
 <rect x="650" y="439" width="278" height="34" rx="10" class="good"/>
 <text x="789.0" y="469" class="head" text-anchor="middle">4</text>
 <rect x="940" y="439" width="278" height="34" rx="10" class="empty"/>
 <text x="1079.0" y="469" class="small" text-anchor="middle">0</text>
 <text x="340" y="512" class="small" text-anchor="end">numerical_structure</text>
 <rect x="360" y="481" width="278" height="34" rx="10" class="good"/>
-<text x="499.0" y="511" class="head" text-anchor="middle">9</text>
+<text x="499.0" y="511" class="head" text-anchor="middle">10</text>
 <rect x="650" y="481" width="278" height="34" rx="10" class="empty"/>
 <text x="789.0" y="511" class="small" text-anchor="middle">0</text>
 <rect x="940" y="481" width="278" height="34" rx="10" class="empty"/>
@@ -88,5 +88,5 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight
 <rect x="70" y="570" width="1220" height="80" rx="10" class="panel"/>
 <text x="95" y="607" class="body" text-anchor="start">External review remains empty across every dimension; dimensions describe the book's claim scope, not literature completeness.</text>
 <text x="95" y="632" class="small" text-anchor="start">The map is a gap analysis, not a claim that an empty cell proves the literature is empty.</text>
-<text x="75" y="720" class="small" text-anchor="start">Generated from claims/claims.toml · 103 claims · preservation dimensions are controlled metadata.</text>
+<text x="75" y="720" class="small" text-anchor="start">Generated from claims/claims.toml · 105 claims · preservation dimensions are controlled metadata.</text>
 </svg>
