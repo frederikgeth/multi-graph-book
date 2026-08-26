@@ -495,3 +495,37 @@ finding_codes = [
 ]
 related_finding_codes = ["W.PROV.SOURCE_INCOHERENT_ROTATION"]
 fixture_ids = ["terminal-permutation-001"]
+
+[[knowledge]]
+id = "PSK-000013"
+kind = "invalid-inference"
+title = "Solver termination is not a complete solved-network feasibility certificate"
+scientific_statement = "A solved or optimal termination status must be accompanied by independently computed equation, KCL, power-balance, device-limit, and recovery residual evidence before a complete feasibility claim is made; solver status alone does not certify those obligations."
+scope = "Claimed solved steady-state or optimization results with explicit residual and device-limit witness fields."
+evidence_status = "definition"
+does_not_establish = [
+  "A residual witness proves that its own computations cover every model equation or device.",
+  "Passing residual tolerances establishes global optimality, complete feasible-set equivalence, or solver derivative quality.",
+  "Every non-optimal termination status is scientifically invalid rather than outside this contract's applicability.",
+]
+
+[knowledge.book]
+claim_ids = ["NUMERICAL-005"]
+misconception_ids = ["complete-feasibility-status-is-enough"]
+certificate_ids = []
+counterexample_ids = ["solved-network-feasibility-001"]
+artifact_paths = ["experiments/generated/solver-diagnostics-crosswalk.json"]
+source_paths = ["docs/src/foundations/numerical-consequences.md"]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["solved_network_feasibility_validation"]
+finding_codes = [
+  "E.CONTRACT.FEASIBILITY_RESIDUAL_VIOLATION",
+  "E.CONTRACT.FEASIBILITY_DEVICE_LIMIT_VIOLATION",
+  "I.CONTRACT.FEASIBILITY_NOT_APPLICABLE",
+  "W.CONTRACT.FEASIBILITY_INDETERMINATE",
+]
+related_finding_codes = ["E.SOL.VOLT_VIOLATION", "E.SOL.THERMAL_VIOLATION"]
+fixture_ids = ["solved-network-feasibility-001"]

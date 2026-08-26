@@ -233,3 +233,16 @@ operational_consequence = "A partial permutation can attach impedance entries to
 mandatory_claim_ids = ["TR-KRON-001", "PRESERVE-001"]
 mandatory_concept_ids = ["phase-conductor-sequence-coordinate", "equivalence-exactness-preservation", "transformation-family"]
 source_paths = ["docs/src/transformations/circuit-coordinate-transformations.md", "docs/src/foundations/when-general-model-collapses.md"]
+
+[[misconception]]
+id = "complete-feasibility-status-is-enough"
+title = "Solver status alone is a complete solved-network feasibility certificate"
+severity = "critical"
+query_patterns = ["optimal status proves feasibility", "solver status complete certificate", "no residual check needed", "kcl residual unnecessary", "power balance after optimal", "device limit check after solver", "recovery residual solver", "optimal means every constraint passed", "solved network validation"]
+tempting_answer = "If the solver reports OPTIMAL or LOCALLY_SOLVED, the network is fully feasible and no independent residual checks are needed."
+required_qualification = "Termination status is algorithm evidence only. Require independently computed equation, KCL, power-balance, device-limit, and recovery residuals, each with explicit tolerances, before making a complete feasibility claim."
+safe_shorthand = "Solved is a status; feasibility is a separately measured residual and limit witness."
+operational_consequence = "Skipping independent checks can accept violated equations, device limits, power balance, or recovery maps and can turn a solver label into a false scientific conclusion."
+mandatory_claim_ids = ["NUMERICAL-005"]
+mandatory_concept_ids = ["factor", "rating-limit-constraint", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/foundations/numerical-consequences.md"]

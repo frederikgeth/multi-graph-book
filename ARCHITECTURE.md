@@ -524,6 +524,26 @@ entry, while its exact companion passes. This is a metamorphic complement to
 the book's typed coordinate-action and sequence/coupling material, not a
 replacement for a complete network transformation proof.
 
+## Thirteenth vertical slice: complete solved-network feasibility
+
+The thirteenth slice extends the book's numerical-consequence guardrails beyond
+solver termination. Book object `PSK-000013` links residual, limit, and recovery
+claims to the misconception that `OPTIMAL` or `LOCALLY_SOLVED` is a complete
+feasibility certificate. The book owns the scientific distinction between
+algorithm status, independently computed residuals, device-limit evidence,
+recovery error, and optimality level.
+
+BMOPFTools owns `solved_network_feasibility_validation`. It requires a claimed
+solved status and a finite residual witness for equations, KCL, power balance,
+device-limit violations, and recovery, comparing each norm with an explicit
+tolerance. A pass validates only the supplied witness fields; it does not
+recompute the model, authenticate coverage, prove complete feasible-set or
+objective equivalence, or establish global optimality.
+
+The minimized fixture retains `OPTIMAL` but fails one power-balance residual;
+its exact companion passes. This complements the existing result profiler and
+PSK3 status gate rather than replacing solver or equation code.
+
 ## Federated discovery and context assembly
 
 The existing book service remains the federation point for retrieval. Its

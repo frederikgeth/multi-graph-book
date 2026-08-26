@@ -1,5 +1,5 @@
 {
-  "corpus_sha256": "0da12f7376a7da1b4cc268188f74f193fa64218974bcd27871c6d9d93262ec11",
+  "corpus_sha256": "3436d933c0515050116f9319d242325e45540b11a50ccdeac820e6058d4b6b4d",
   "knowledge_ids": [
     "PSK-000001",
     "PSK-000002",
@@ -12,10 +12,11 @@
     "PSK-000009",
     "PSK-000010",
     "PSK-000011",
-    "PSK-000012"
+    "PSK-000012",
+    "PSK-000013"
   ],
   "manifest_id": "multi-graph-book-scientific-knowledge-0.1.0",
-  "record_count": 12,
+  "record_count": 13,
   "release": {
     "external_reviewed_claims": 0,
     "independent_human_double_coding": false,
@@ -27,7 +28,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "7d5475031842a08eaa8d77c78d92b5df0b8cfc7e41ac17d8fa34d3530ef8ef16"
+      "sha256": "4ba32bcbae9c0d2ebe06ae847cb0a226545facf072d7f760fe5dd7209fe3d90e"
     },
     {
       "path": "docs/src/cases/four-wire-impedance-model-ladder.md",
@@ -139,11 +140,11 @@
     },
     {
       "path": "knowledge/psk.toml",
-      "sha256": "48370ef411cba46a0b9023ff5802da3246b93276694b125990bcd1f2dad80fc2"
+      "sha256": "75b0a02d7fe1442ac8618a8c19f00f2fb65f0d4a1c2323146f96b60ca357ad51"
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "d7021a4586a1dd50263c152b42e8629903f3797189233a4f3facbfeb0bd10447"
+      "sha256": "f304784d5277661c47d3a5ed2871a8c7048de5e8b445749ce82ac2ab47c1a543"
     },
     {
       "path": "review/release-candidate-manifest.json",

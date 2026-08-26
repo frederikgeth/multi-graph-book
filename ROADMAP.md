@@ -63,7 +63,7 @@ and a minimized negative witness.
 | 10 | Fixed versus state-dependent equivalents | formulation split, Ward/Kron, and load-dependence claims | detect frozen parameters and missing state/update provenance | Implemented as `PSK-000010` |
 | 11 | Floating references and singularity | grounding/reference and numerical-consequence claims | existing reference, connectivity, and singularity diagnostics | Implemented as `PSK-000011` |
 | 12 | Terminal/conductor ordering and permutation | typed terminal-map and coordinate-action claims | metamorphic relabelling/permutation invariance | Implemented as `PSK-000012` |
-| 13 | Complete solved-network feasibility | numerical validation boundary | equation, KCL, power-balance, device-limit, and recovery residuals | Candidate expansion of `PSK-000003`; not one status heuristic |
+| 13 | Complete solved-network feasibility | numerical validation boundary | equation, KCL, power-balance, device-limit, and recovery residuals | Implemented as `PSK-000013`; residual-witness gate |
 | 14 | Unit/base and serialization invariance | normalization, coordinate, and provenance claims | round-trip and unit/base metamorphic tests | Candidate; importer/exporter preservation |
 
 The first scale-out milestone is now complete and extended: twelve stable PSK paths cover a
@@ -72,10 +72,10 @@ coordinates, an adjustable decision domain, typed transformer-winding
 conventions, the terminal-to-decision evidence boundary, and Kron boundary/recovery
 conditions, positive-sequence domain closure, state/update provenance,
 reference/rank validation, and terminal/conductor permutation invariance. The
-next milestone is complete for the first twelve paths; remaining promotion is
-evidence-gated rather than quota-driven. The immediate thirteenth slice is
-complete solved-network feasibility: equation, KCL, power-balance, device-limit,
-and recovery residuals, kept separate from solver termination status.
+next milestone is complete for the first thirteen paths; remaining promotion is
+evidence-gated rather than quota-driven. The immediate fourteenth slice is
+unit/base and serialization invariance: round-trip and unit/base metamorphic
+tests with explicit provenance.
 
 ### Product identity and editorial stance
 

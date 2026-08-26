@@ -542,3 +542,33 @@ required_claim_ids = ["TR-KRON-001", "PRESERVE-001"]
 required_concept_ids = ["phase-conductor-sequence-coordinate", "equivalence-exactness-preservation", "transformation-family"]
 required_answer_elements = ["require endpoint-map alignment and the exact row-column permutation relation", "distinguish a primitive-level pass from complete feasible-set, objective, protection, and solver equivalence"]
 forbidden_simplifications = ["same nameplate and conductor count imply coordinate invariance"]
+
+[[case]]
+case_id = "EVAL-FEASIBILITY-WITNESS-STUDENT"
+audience = "student"
+question = "If an OPF solver reports OPTIMAL, why do I still need equation, KCL, and limit checks?"
+misconception_id = "complete-feasibility-status-is-enough"
+required_claim_ids = ["NUMERICAL-005"]
+required_concept_ids = ["factor", "rating-limit-constraint", "equivalence-exactness-preservation"]
+required_answer_elements = ["separate termination status from independently computed residual and device-limit evidence", "include equation, KCL, power-balance, and recovery residuals with tolerances"]
+forbidden_simplifications = ["OPTIMAL by itself proves every feasibility obligation"]
+
+[[case]]
+case_id = "EVAL-FEASIBILITY-WITNESS-SOFTWARE"
+audience = "software_engineer"
+question = "What should an importer or solver adapter emit so a solver status complete certificate can be independently validated?"
+misconception_id = "complete-feasibility-status-is-enough"
+required_claim_ids = ["NUMERICAL-005"]
+required_concept_ids = ["factor", "rating-limit-constraint", "equivalence-exactness-preservation"]
+required_answer_elements = ["emit finite equation, KCL, power-balance, recovery residual norms and device-limit violation count", "run the solved_network_feasibility_validation contract and preserve solver status as separate evidence"]
+forbidden_simplifications = ["serialize only termination_status and objective value"]
+
+[[case]]
+case_id = "EVAL-FEASIBILITY-WITNESS-POWER"
+audience = "power_engineer"
+question = "Can I call a network fully feasible from solver termination without checking power balance after optimal and recovered quantities?"
+misconception_id = "complete-feasibility-status-is-enough"
+required_claim_ids = ["NUMERICAL-005"]
+required_concept_ids = ["factor", "rating-limit-constraint", "equivalence-exactness-preservation"]
+required_answer_elements = ["require an independent residual witness for equations, KCL, power balance, device limits, and recovery", "state that this evidence gate still does not prove global optimality or complete study equivalence"]
+forbidden_simplifications = ["a successful solver label is a complete feasibility certificate"]

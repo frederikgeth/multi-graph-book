@@ -388,6 +388,24 @@ leaves downstream limits, nonlinear state, network feasible sets, decisions,
 objectives, recovery, and solver behavior unassessed; the book retains those
 claims and the pedagogical permutation examples.
 
+## Thirteenth trace: complete solved-network feasibility
+
+The thirteenth slice separates solver status from an independently computed
+feasibility witness:
+
+| Layer | Stable identity | Owner | Purpose |
+|---|---|---|---|
+| Scientific knowledge | `PSK-000013` | this book | Requires residual, device-limit, and recovery evidence beyond solver status |
+| Claims | `NUMERICAL-001`, `NUMERICAL-004` | this book | Distinguish termination, residual/backward error, and optimality guarantees |
+| Misconception | `complete-feasibility-status-is-enough` | this book | Routes status-only claims to independent feasibility checks |
+| Executable contract | `solved_network_feasibility_validation` | BMOPFTools | Validates finite residual norms and device-limit witness fields |
+| API operation | `check_solved_network_feasibility` | BMOPFTools | Reports residual or device-limit violations, inapplicability, or indeterminacy |
+| Counterexample fixture | `solved-network-feasibility-001` | BMOPFTools | Retains `OPTIMAL` while failing one independent power-balance residual |
+| Findings | `E.CONTRACT.FEASIBILITY_RESIDUAL_VIOLATION`, `E.CONTRACT.FEASIBILITY_DEVICE_LIMIT_VIOLATION` | BMOPFTools | Separate residual and device-limit failures |
+
+The package validates the supplied witness; it does not calculate residuals or
+prove its completeness, global optimality, or full decision equivalence.
+
 ## What generalizes
 
 The federation pattern generalizes to other scientific guardrails:

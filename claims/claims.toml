@@ -1446,6 +1446,23 @@ review_date = ""
 unresolved_issue = "Extend the initial bus-result contract to equation residuals, device limits, power balance, objective and global-optimality evidence, and independent solver reproduction."
 
 [[claim]]
+claim_id = "NUMERICAL-005"
+exactness_object = "solution_validation"
+preservation_dimensions = ['numerical_structure', 'terminal_behavior', 'limits', 'decision', 'provenance']
+chapter = "docs/src/foundations/numerical-consequences.md"
+claim_text = "A complete solved-network feasibility claim requires an independently computed witness covering equation, KCL, power-balance, device-limit, and recovery residual obligations with declared tolerances; solver termination remains separate evidence."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "book_solution_residual_witness_contract_and_package_fixture"
+citation_keys = []
+model_scope = "steady-state solved-network and optimization results with independently computed residual and device-limit evidence"
+assumptions = "residual computations and coverage are declared independently of solver termination; unmeasured dimensions remain explicit"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the witness schema with model-specific equation coverage, scaling/backward-error metadata, and independent recomputation adapters."
+
+[[claim]]
 claim_id = "TR-NEG-001"
 exactness_object = "observation_sample"
 preservation_dimensions = ['structure', 'provenance', 'decision']

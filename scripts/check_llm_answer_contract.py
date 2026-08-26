@@ -185,6 +185,19 @@ def main() -> int:
                 validation_errors.append("terminal-permutation route omits the linked fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("terminal-permutation executable contract is not marked implemented")
+        if case["misconception_id"] == "complete-feasibility-status-is-enough":
+            packet = response["packet"]
+            if "knowledge:PSK-000013" not in observed:
+                validation_errors.append("feasibility-witness route omits mandatory PSK-000013")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000013"]:
+                validation_errors.append("feasibility-witness route scientific basis differs from PSK-000013")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["solved_network_feasibility_validation"]:
+                validation_errors.append("feasibility-witness route omits the residual-witness contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["solved-network-feasibility-001"]:
+                validation_errors.append("feasibility-witness route omits the linked fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("feasibility-witness executable contract is not marked implemented")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:
