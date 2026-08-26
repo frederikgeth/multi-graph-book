@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "b06d0f591cad9a56524b7a4bbf0875465823e6432bf18b28f01ebfac5a71ec5e",
+  "corpus_sha256": "1e7fd8ab1edc5b4be58eb6d8064d5af7cb2e661289817e9e441191323225773c",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -33,7 +33,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "4ba32bcbae9c0d2ebe06ae847cb0a226545facf072d7f760fe5dd7209fe3d90e"
+      "sha256": "0405340b6d64e4ad0d273637d207892ba7ba3c1438a7c2fbcc7cedfe09b7420d"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -209,7 +209,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "612d188b730b2382fa099bf4da5eb27723ba3adf6346c290c73763c9e784c64a"
+      "sha256": "143bf64ab3ecb8596774ab468d00c2b8e53a8792696d708a2e4f9b4a51e3511e"
     },
     {
       "path": "docs/src/reference/references.md",

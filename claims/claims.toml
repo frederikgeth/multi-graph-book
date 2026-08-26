@@ -1430,7 +1430,7 @@ unresolved_issue = "Extend the chain to a nonlinear AC decision model, parameter
 
 [[claim]]
 claim_id = "NUMERICAL-004"
-exactness_object = "solution_validation"
+exactness_object = "observation_sample"
 preservation_dimensions = ['numerical_structure', 'terminal_behavior', 'limits', 'decision']
 chapter = "docs/src/foundations/numerical-consequences.md"
 claim_text = "A solver termination status is an algorithm report, not an independent solution-validity certificate; any scientific claim based on returned primal values must separately check the relevant numeric finiteness, equations, bounds, residuals, recovery obligations, and optimality level."
@@ -1447,7 +1447,7 @@ unresolved_issue = "Extend the initial bus-result contract to equation residuals
 
 [[claim]]
 claim_id = "NUMERICAL-005"
-exactness_object = "solution_validation"
+exactness_object = "observation_sample"
 preservation_dimensions = ['numerical_structure', 'terminal_behavior', 'limits', 'decision', 'provenance']
 chapter = "docs/src/foundations/numerical-consequences.md"
 claim_text = "A complete solved-network feasibility claim requires an independently computed witness covering equation, KCL, power-balance, device-limit, and recovery residual obligations with declared tolerances; solver termination remains separate evidence."

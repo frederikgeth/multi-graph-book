@@ -1,4 +1,4 @@
-# Federated scientific knowledge: end-to-end trace
+# [Federated scientific knowledge: end-to-end trace](@id federated-knowledge-trace)
 
 **Page status:** maintained cross-repository implementation trace and scope boundary.
 

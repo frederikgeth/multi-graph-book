@@ -1,18 +1,18 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:7d5475031842a08eaa8d77c78d92b5df0b8cfc7e41ac17d8fa34d3530ef8ef16 -->
+<!-- generated-from claims/claims.toml sha256:0405340b6d64e4ad0d273637d207892ba7ba3c1438a7c2fbcc7cedfe09b7420d -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 107
+**Indexed claims:** 108
 **Indexed chapters:** 44
 
 ## Claims by type
 
-### `definition` (14)
+### `definition` (15)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -25,6 +25,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `LOAD-BASE-001` — A voltage-dependent load's nominal voltage is an anchor in the load factor's declared terminal coordinate: WYE uses phase-to-neutral voltage and DELTA uses line-to-line voltage; copying one numeric bus voltage into both coordinates without an explicit base conversion changes the normalized load law. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `self-checked` |
 | `NUMERICAL-001` — Representation and reduction choices have numerical consequences that must be reported separately from electrical preservation: coordinate scaling changes conditioning without changing an invertible solution set, Jacobian dependency graphs need not equal physical graphs, Schur elimination can create fill-in, and decision certificates require residual/error estimates and margins. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
 | `NUMERICAL-004` — A solver termination status is an algorithm report, not an independent solution-validity certificate; any scientific claim based on returned primal values must separately check the relevant numeric finiteness, equations, bounds, residuals, recovery obligations, and optimality level. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
+| `NUMERICAL-005` — A complete solved-network feasibility claim requires an independently computed witness covering equation, KCL, power-balance, device-limit, and recovery residual obligations with declared tolerances; solver termination remains separate evidence. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
 | `PRESERVE-001` — Equivalence of two power-network models is indexed by a declared observation family and admissible input set; equality of an unconstrained terminal relation alone does not establish equality of constrained feasible observable sets. | [Preservation contracts](../foundations/preservation-contracts.md) | `self-checked` |
 | `RATING-001` — A power-network rating must identify its constrained asset or terminal, measured quantity and feasible region, duration, ambient/scenario validity, and ownership/provenance before a transformation can claim to preserve it. | [Rating and limit semantics](../foundations/rating-semantics.md) | `self-checked` |
 | `THESIS-001` — Representation adequacy is evaluated relative to declared observations, constraints, and decisions. | [Scope and thesis](../foundations/scope-and-thesis.md) | `self-checked` |
@@ -148,7 +149,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 
 | Verification | Claims |
 | --- | ---: |
-| `self-checked` | 102 |
+| `self-checked` | 103 |
 | `independently-implemented` | 5 |
 | `externally-reviewed` | 0 |
 
@@ -209,6 +210,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `NUMERICAL-002` | Add an independent KKT/Jacobian export and compare ordering-dependent fill and decision margins across source and reduced views. |
 | `NUMERICAL-003` | The public BMOPFTools checked-KKT callback now runs through DiffOpt on a minimal parameterized OPF and agrees with finite difference; a native JuMP/MOI Jacobian structure is now recorded, while solver-private KKT rows, ordering, and factorization statistics remain outside the public boundary. |
 | `NUMERICAL-004` | Extend the initial bus-result contract to equation residuals, device limits, power balance, objective and global-optimality evidence, and independent solver reproduction. |
+| `NUMERICAL-005` | Extend the witness schema with model-specific equation coverage, scaling/backward-error metadata, and independent recomputation adapters. |
 | `PRACTICE-ADAPTER-001` | Compare the contract against additional utility, CIM/CGMES, OpenDSS, and solver-native adapters with external domain review. |
 | `PRACTICE-ARCH-001` | Compare the implementation contract with an independently reviewed package boundary and broader source-data adapters. |
 | `PRACTICE-IMPEDANCE-001` | Exercise the contract on source-backed overhead and underground construction records and obtain independent power-engineering review. |
@@ -339,7 +341,7 @@ schema is normalised.
 | `TR-PAR-SINGULAR-001` — For the declared series-only singular four-wire fixture, the full two-end terminal-current map is rank deficient, but the endpoint-voltage-drop coordinate recovers member-2 currents exactly from member-1 currents through the declared diagonal map, with the zero-neutral rows retained as an explicit invariant; this is a guarded reduced-coordinate result, not a pseudoinverse or singular-shunt theorem. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
 | `TR-PAR-STATE-001` — In the recorded finite four-state four-wire AC envelope, rebuilding the member maps and source/pruned formulations at each declared scalar or phase-selective admittance state preserves exact joint limit pruning locally while changing the optimal served value across states. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `empirical` |
 
-### `numerical-evidence` (6)
+### `numerical-evidence` (7)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -349,6 +351,7 @@ schema is normalised.
 | `NUMERICAL-002` — For the pinned running-network fixture, BMOPFTools exports a 20-by-20 passive Ybus with 166 nonzeros; the constant-Z linearized Ybus agrees with it, and realification produces a 40-by-40 current-voltage matrix with 664 nonzeros. The complex matrices have numerical rank 18 at the declared tolerance, with rank-aware effective 2-norm condition about 6.50e8 (1.13e7 after equilibration); the realified embedding preserves support and dimension but is not complex-transpose-symmetric. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `empirical` |
 | `NUMERICAL-003` — In the pinned nonlinear two-bus parallel-member witness, retaining two explicit member-current laws produces a 6-by-7 residual Jacobian and 13-by-13 KKT pattern, while the summed-current aggregate produces a 4-by-5 Jacobian and 9-by-9 KKT pattern; symbolic fill changes with elimination order in both formulations. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `empirical` |
 | `NUMERICAL-004` — A solver termination status is an algorithm report, not an independent solution-validity certificate; any scientific claim based on returned primal values must separately check the relevant numeric finiteness, equations, bounds, residuals, recovery obligations, and optimality level. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `definition` |
+| `NUMERICAL-005` — A complete solved-network feasibility claim requires an independently computed witness covering equation, KCL, power-balance, device-limit, and recovery residual obligations with declared tolerances; solver termination remains separate evidence. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `definition` |
 
 ### `physical-modelling` (9)
 
@@ -364,7 +367,7 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `representation` (57)
+### `representation` (58)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -413,6 +416,7 @@ schema is normalised.
 | `NUMERICAL-002` — For the pinned running-network fixture, BMOPFTools exports a 20-by-20 passive Ybus with 166 nonzeros; the constant-Z linearized Ybus agrees with it, and realification produces a 40-by-40 current-voltage matrix with 664 nonzeros. The complex matrices have numerical rank 18 at the declared tolerance, with rank-aware effective 2-norm condition about 6.50e8 (1.13e7 after equilibration); the realified embedding preserves support and dimension but is not complex-transpose-symmetric. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `empirical` |
 | `NUMERICAL-003` — In the pinned nonlinear two-bus parallel-member witness, retaining two explicit member-current laws produces a 6-by-7 residual Jacobian and 13-by-13 KKT pattern, while the summed-current aggregate produces a 4-by-5 Jacobian and 9-by-9 KKT pattern; symbolic fill changes with elimination order in both formulations. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `empirical` |
 | `NUMERICAL-004` — A solver termination status is an algorithm report, not an independent solution-validity certificate; any scientific claim based on returned primal values must separately check the relevant numeric finiteness, equations, bounds, residuals, recovery obligations, and optimality level. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `definition` |
+| `NUMERICAL-005` — A complete solved-network feasibility claim requires an independently computed witness covering equation, KCL, power-balance, device-limit, and recovery residual obligations with declared tolerances; solver termination remains separate evidence. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `definition` |
 | `PRACTICE-ADAPTER-001` — A safe source-to-canonical adapter should publish stable identities, terminal maps, state and control treatment, factor and rating mappings, generated-object provenance, unsupported fields, validation findings, and declared recovery checks before downstream graph transformations are trusted. | [From source data to a canonical network model](../foundations/source-to-canonical-model.md) | `practice` |
 | `PRACTICE-IMPEDANCE-001` — A safe impedance adapter should retain conductor order and terminal maps, units and frequency, geometry or linecode provenance, earth-return assumptions, matrix diagnostics, shunt placement, and the limits and decisions that use the resulting coordinates. | [From conductor geometry to impedance fidelity](../foundations/impedance-fidelity-ladder.md) | `practice` |
 | `PRESERVE-001` — Equivalence of two power-network models is indexed by a declared observation family and admissible input set; equality of an unconstrained terminal relation alone does not establish equality of constrained feasible observable sets. | [Preservation contracts](../foundations/preservation-contracts.md) | `definition` |

@@ -4293,7 +4293,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "b06d0f591cad9a56524b7a4bbf0875465823e6432bf18b28f01ebfac5a71ec5e",
+    "corpus_sha256": "1e7fd8ab1edc5b4be58eb6d8064d5af7cb2e661289817e9e441191323225773c",
     "record_count": 777,
     "release": {
       "external_reviewed_claims": 0,
@@ -6249,8 +6249,8 @@
           "claim:ARCH-SURGERY-002",
           "claim:ARCH-SURGERY-001",
           "claim:ARCH-PORT-002",
-          "claim:ARCH-PORT-001",
-          "claim:TR-KRON-NEUTRAL-003"
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:ARCH-PORT-001"
         ],
         "lexical_complete_at_10": false,
         "lexical_hits_at_10": 3,
