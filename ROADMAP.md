@@ -58,7 +58,7 @@ and a minimized negative witness.
 | 5 | Adjustable transformer tap domain | `TR-XFMR-005..006`; tap-decision certificates | mapped continuous interval comparison | Implemented as `PSK-000005` |
 | 6 | Transformer winding coil bases, ratio, and orientation | `TR-XFMR-001..004`; winding-normalization evidence | existing ratio/base/orientation diagnostics plus a mapped convention contract | Implemented as `PSK-000006` |
 | 7 | Terminal equivalence versus decision equivalence | preservation-contract definitions and multiple transformation witnesses | transformation manifest with constraints, objective, and recovery obligations | Implemented as `PSK-000007` |
-| 8 | Kron boundary exactness and internal recovery | `PRESERVE-001`, `TR-KRON-*`; Kron misconception | source/target boundary and recovery-map checks | Candidate; reduction preservation |
+| 8 | Kron boundary exactness and internal recovery | `PRESERVE-001`, `TR-KRON-*`; Kron misconception | source/target boundary and recovery-map checks | Implemented as `PSK-000008` |
 | 9 | Positive-sequence collapse applicability | `COLLAPSE-001..002`; sequence misconception | symmetry, grounding, terminal, and decision-domain guards | Candidate; applicability/refusal contract |
 | 10 | Fixed versus state-dependent equivalents | formulation split, Ward/Kron, and load-dependence claims | detect frozen parameters and missing state/update provenance | Candidate; state/domain preservation |
 | 11 | Floating references and singularity | grounding/reference and numerical-consequence claims | existing reference, connectivity, and singularity diagnostics | Candidate; validation bundle before a cross-model contract |
@@ -66,14 +66,15 @@ and a minimized negative witness.
 | 13 | Complete solved-network feasibility | numerical validation boundary | equation, KCL, power-balance, device-limit, and recovery residuals | Candidate expansion of `PSK-000003`; not one status heuristic |
 | 14 | Unit/base and serialization invariance | normalization, coordinate, and provenance claims | round-trip and unit/base metamorphic tests | Candidate; importer/exporter preservation |
 
-The first scale-out milestone is now complete and extended: seven stable PSK paths cover a
+The first scale-out milestone is now complete and extended: eight stable PSK paths cover a
 transformation constraint, model semantics, numerical inference, connection
 coordinates, an adjustable decision domain, typed transformer-winding
-conventions, and the terminal-to-decision evidence boundary. The next milestone is ten
+conventions, the terminal-to-decision evidence boundary, and Kron boundary/recovery
+conditions. The next milestone is ten
 stable paths, but promotion is evidence-gated rather than quota-driven. The
-immediate eighth slice is Kron boundary exactness and internal recovery. It
-must compare a declared retained boundary and recovery obligations without
-treating a Schur complement as preservation of every internal asset or limit.
+immediate ninth slice is positive-sequence collapse applicability. It must
+separate a symmetry-qualified coordinate reduction from a generic phase
+collapse and refuse unsupported grounding, terminal, or decision domains.
 
 ### Product identity and editorial stance
 
