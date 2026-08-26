@@ -29,6 +29,13 @@ The statements below concern a declared operating point, coordinate system,
 and solver tolerance. They do not claim that one representation is uniformly
 better.
 
+The federated `PSK-000011` guard makes one practical boundary executable:
+`reference_singularity_validation` compares mapped connected-island reference
+incidence and rank declarations before accepting a transformed model. A
+successful import or solver termination is not an independent certificate of
+full rank. The package pass remains declaration-level evidence; equation,
+Jacobian, conditioning, and solver-specific checks still belong to the study.
+
 !!! note "Vocabulary bridge"
     Electrical loss is power absorbed by a device model. Information loss is
     a failure of recovery under a representation map. An optimization or ML
@@ -363,6 +370,20 @@ but not the preservation theorem. A reduced model may converge faster because
 it has fewer variables, or slower because it has denser and more ill-conditioned
 blocks. A feasible point can also be numerically ambiguous when a constraint
 margin is comparable with the estimated forward error.
+
+A termination label such as `LOCALLY_SOLVED` or `OPTIMAL` records what the
+algorithm reports under a particular solver interface and tolerance. It is not
+an independent recomputation of the returned primal point. A scientific use of
+that result must separately name and check the relevant evidence: finite
+numeric values, model equations, declared bounds, device and network residuals,
+recovery obligations, and the level of optimality actually supported. Missing
+checks remain missing even when the status string sounds successful.
+
+This separation also works in the other direction. A status that does not
+claim feasibility is not evidence that a candidate primal point passed an
+independent validator, and a narrowly validated primal point does not upgrade a
+local solver result into a global optimum. Status, primal validation, and
+optimality evidence are distinct fields of a solution certificate.
 
 For a scalar inequality ``g_k(y,u)\le 0``, define the signed margin
 

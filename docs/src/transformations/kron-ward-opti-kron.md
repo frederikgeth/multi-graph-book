@@ -29,6 +29,22 @@ observation contract. None is inherently an asset-preserving transformation.
 
 ## Linear Kron reduction
 
+### Executable boundary guardrail
+
+The BMOPFTools tutorial `docs/src/tutorial_grounding.md` makes
+the key pedagogical point explicit: eliminating a neutral is conditional, not
+an automatically lossless simplification. The federated object `PSK-000008`
+links that warning to BMOPFTools contract
+`kron_boundary_recovery_preservation`. The compact check accepts a series-only
+four-wire source and three-wire target, requires perfect neutral grounding at
+both connection points, compares the ordered neutral Schur complement, and
+requires a declared recovery map. A floating or finite-grounded neutral is a
+grounding-precondition failure even if the matrices match; a passing check
+does not establish internal limits, protection, complete decision equivalence,
+or solver results. The companion fixture and its grounded target are intended
+as an executable teaching counterexample, alongside the richer Kron witnesses
+below.
+
 Partition a linear nodal relation into retained boundary variables ``B`` and
 eliminated internal variables ``I``:
 
@@ -507,6 +523,18 @@ current has the affine form
 substitution of the voltage recovery map gives an exact affine boundary map
 for ``\mathbf I_\ell``. Keeping that map permits source limits to be checked;
 discarding it does not make limits on artificial reduced branches equivalent.
+
+## Fixed versus state-dependent equivalents
+
+The finite continuation and nonlinear grounding witnesses make a second
+boundary explicit: a Ward or Kron map calibrated at one operating point is not
+automatically reusable when load, grounding, or another state parameter moves.
+Cross-repository object `PSK-000010` links this distinction to BMOPFTools
+contract `state_dependent_equivalent_provenance`. The compact package check
+requires a shared parameter, non-singleton domain, aligned base state, and an
+update-rule identifier; a frozen target is reported as provenance loss rather
+than promoted to a global equivalent. This declaration gate does not validate
+the update law or prove decision, protection, or solver equivalence.
 
 ## Ward equivalents
 

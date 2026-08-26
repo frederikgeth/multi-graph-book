@@ -83,6 +83,16 @@ can support a balanced or approximately cyclic model, but exact restricted
 closure still requires the operator, grounding, devices, limits, controls,
 and observations to respect the declared sequence symmetry.
 
+The federated applicability guard `PSK-000009` makes this boundary executable
+through BMOPFTools contract `positive_sequence_collapse_applicability`. The
+compact check verifies circulant series/shunt factors, phase order, and the
+scalar positive-sequence relation, while requiring explicit declarations for
+balanced boundary data, sequence-compatible grounding, two-terminal closure,
+phase-symmetric decisions, and positive-sequence observations. Its pass is a
+restricted relation check; it does not certify an unbalanced feeder or any
+phase-specific, neutral/earth, protection, internal-device, objective, or
+solver observation.
+
 For a nominal-``\pi`` factor, the same statement applies to the series and
 shunt blocks separately. The positive-sequence network is therefore a derived
 two-terminal scalar complex network with one voltage and current per bus/arc,

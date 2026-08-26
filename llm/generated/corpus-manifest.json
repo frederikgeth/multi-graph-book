@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "e28cede8c35c66d2732ffabeecda4b6e52842a3a31c978cdd5c2dd27ce29e522",
+  "corpus_sha256": "1e7fd8ab1edc5b4be58eb6d8064d5af7cb2e661289817e9e441191323225773c",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -10,16 +10,17 @@
       "docs/src/reference/vocabulary-indexes.md"
     ],
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
-    "included_doc_count": 67
+    "included_doc_count": 68
   },
-  "evaluation_case_count": 33,
+  "evaluation_case_count": 60,
   "heldout_case_count": 33,
-  "misconception_count": 11,
-  "record_count": 734,
+  "misconception_count": 20,
+  "record_count": 777,
   "record_counts": {
-    "claim_bundle": 105,
+    "claim_bundle": 108,
     "concept_bundle": 18,
-    "section": 611
+    "scientific_knowledge": 14,
+    "section": 637
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -32,7 +33,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "7665586ed6a8a607a3d601f703193adb55a49ad64ed8a50cfa5557d5cbd92aeb"
+      "sha256": "0405340b6d64e4ad0d273637d207892ba7ba3c1438a7c2fbcc7cedfe09b7420d"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -104,7 +105,7 @@
     },
     {
       "path": "docs/src/foundations/load-models-and-decision-dependence.md",
-      "sha256": "f28ad6e9ba9c384f6094802d0454c3ce4e13d56e8d8cd26d44b5c0a6d07ab055"
+      "sha256": "8b9e2062ae025d2ea36b398b55f4a92474a594eba898e830b672c0165f85acd6"
     },
     {
       "path": "docs/src/foundations/multigraphs-for-modelers.md",
@@ -120,7 +121,7 @@
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
-      "sha256": "a1529183f314f91172abe3caa1c3f231000acab01d978014b747b9474afa2ab9"
+      "sha256": "5a4f6522e443ca2dc07eb5f76e3a555b3f5cb1432efa0bba1e4fd9a87993aa68"
     },
     {
       "path": "docs/src/foundations/orientation-terminal-power.md",
@@ -128,7 +129,7 @@
     },
     {
       "path": "docs/src/foundations/preservation-contracts.md",
-      "sha256": "8c2cdf0fac18fc8c5457964d175abe730101cf2d7f5c6728ef2c32759ce95696"
+      "sha256": "3c7c4ff28cef5b67ac30d7e29e6abf443eeb63159b832f11552d5f11e8e2e90a"
     },
     {
       "path": "docs/src/foundations/rating-semantics.md",
@@ -164,7 +165,7 @@
     },
     {
       "path": "docs/src/foundations/when-general-model-collapses.md",
-      "sha256": "61920e2755223a7b16c2a43b9604e494ad72dd3eed1d274a3178dc568a4b2d5b"
+      "sha256": "b20850c7f9193fb3963ee3112a34758c54bc56924259a2884d50043dc7a79750"
     },
     {
       "path": "docs/src/index.md",
@@ -205,6 +206,10 @@
     {
       "path": "docs/src/literature/search-runs/2026-08-25-coupled-multivoltage-corridors.md",
       "sha256": "84860eb10fd04db2fe8ede9152d348ae3f6d545aeabc16396f558433c810438c"
+    },
+    {
+      "path": "docs/src/reference/federated-knowledge-trace.md",
+      "sha256": "143bf64ab3ecb8596774ab468d00c2b8e53a8792696d708a2e4f9b4a51e3511e"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -280,7 +285,7 @@
     },
     {
       "path": "docs/src/transformations/kron-ward-opti-kron.md",
-      "sha256": "95580de37702069d58a76b48fb309e7a0c346c9854d961e42242af27aa4b8029"
+      "sha256": "f4b08610fdbfdb13384f3111e4d70bc8f0b8da1e5992e625b8439811c3ae0bb4"
     },
     {
       "path": "docs/src/transformations/multiwinding-leakage-reference-compilation.md",
@@ -292,7 +297,7 @@
     },
     {
       "path": "docs/src/transformations/parameterized-transformer-tap-decisions.md",
-      "sha256": "e989add1fb3746ce331fbe43f35d3e8ce707d7faa15b4295c637b807e1d0b339"
+      "sha256": "12d0c3b95438fcd844c1ef4552d755765d177e32eabc03b99e87d16fe3b6cc19"
     },
     {
       "path": "docs/src/transformations/projection-compilation-reduction.md",
@@ -300,11 +305,19 @@
     },
     {
       "path": "docs/src/transformations/transformer-winding-coordinate-normalization.md",
-      "sha256": "239f18d5fe712edb73ffb140ce349110b0a2d5859955d547b8f374562303934f"
+      "sha256": "3f17032ace7c044bc436b7fb68ad78fa37ad9403567ee4d1e10a45a51b713774"
+    },
+    {
+      "path": "generated/scientific-knowledge-manifest.json",
+      "sha256": "2bcb9c3cdfc544d63adb96d15706cca0d02c46ba4f1a4e1cc834af0e091617f1"
+    },
+    {
+      "path": "generated/scientific_knowledge.jsonl",
+      "sha256": "09a2e5372a2a1ec5dcc68d57418d85e6629211909f3dbb08b0f59f70975584b1"
     },
     {
       "path": "llm/evaluation-cases.toml",
-      "sha256": "10330001f650f5e862ce0acffd4ca5f7c1f2527165cc9432ea09acfa350b90ca"
+      "sha256": "bedef3d898eed02c8a204556ee2fde35350f481e132475ec4bcdc1a510fbcdc1"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -312,7 +325,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "6773f2584077655a7a47cced994a8ab790d386b664be9658b569df34c062b08f"
+      "sha256": "1bd6ab3823ce995bb01e33cb6b382c3f721ad06ed5a51800e65f8a629c270948"
     },
     {
       "path": "vocabulary/vocabulary.toml",

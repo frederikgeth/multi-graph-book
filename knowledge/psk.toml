@@ -1,0 +1,565 @@
+schema_version = "0.1.0"
+
+[[knowledge]]
+id = "PSK-000001"
+kind = "modelling-antipattern"
+title = "Parallel terminal equivalence does not imply member-limit equivalence"
+scientific_statement = "Summing the admittances of fixed linear parallel members preserves their unconstrained aggregate terminal relation, but assigning the aggregate the sum of member ratings can relax the member-constrained feasible set."
+scope = "Fixed linear parallel branches with common endpoints and voltage coordinates, retained member admittances, and explicit member current limits."
+evidence_status = "established_result"
+does_not_establish = [
+  "Parallel aggregation is always invalid.",
+  "Every aggregate rating is an outer relaxation.",
+  "The scalar witness proves the general multiconductor or state-dependent case.",
+]
+
+[knowledge.book]
+claim_ids = ["TR-PAR-001", "TR-PAR-002", "TR-PAR-003"]
+misconception_ids = ["parallel-admittance-implies-decision-equivalence"]
+certificate_ids = ["TR-PAR-001", "TR-PAR-003"]
+counterexample_ids = ["parallel-rating-outer-relaxation-001"]
+artifact_paths = [
+  "experiments/generated/parallel-branch-certificate.json",
+  "experiments/generated/parallel-opf-comparison.json",
+]
+source_paths = ["docs/src/start/first-failure-parallel-branches.md"]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["parallel_member_limit_preservation"]
+finding_codes = [
+  "E.CONTRACT.PARALLEL_TERMINAL_RELATION_MISMATCH",
+  "W.CONTRACT.PARALLEL_MEMBER_LIMIT_LOSS",
+  "I.CONTRACT.NOT_APPLICABLE",
+  "W.CONTRACT.INDETERMINATE",
+]
+related_finding_codes = ["I.RED.PARALLEL_LINES", "E.SOL.THERMAL_VIOLATION"]
+fixture_ids = ["parallel-rating-outer-relaxation-001"]
+
+[[knowledge]]
+id = "PSK-000002"
+kind = "modelling-antipattern"
+title = "Neutral, ground, earth return, and voltage reference are distinct model relations"
+scientific_statement = "An explicit neutral conductor, a finite grounding relation, a physical earth-return model, and a mathematical voltage reference are distinct model objects; replacing neutral continuity or finite grounding with a local zero-voltage reference does not preserve those representation relations."
+scope = "Steady-state networks with explicit neutral terminals, declared neutral-carrying connections, perfect grounding declarations, finite neutral-only grounding shunts, and voltage-source reference incidence."
+evidence_status = "definition"
+does_not_establish = [
+  "A perfectly grounded neutral is always an invalid representation.",
+  "Every model without an explicit neutral has performed an invalid reduction.",
+  "Representation-relation preservation alone establishes terminal, explicit-earth, fault, touch-voltage, protection, or grounding-asset equivalence.",
+]
+
+[knowledge.book]
+claim_ids = ["GROUND-SCOPE-001", "GROUND-SCOPE-002"]
+misconception_ids = ["ground-neutral-reference-are-one-node"]
+certificate_ids = []
+counterexample_ids = ["neutral-ground-reference-conflation-001"]
+artifact_paths = ["experiments/generated/load-grounding-witnesses.json"]
+source_paths = ["docs/src/foundations/earth-ground-models.md"]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["neutral_ground_reference_preservation"]
+finding_codes = [
+  "E.CONTRACT.NEUTRAL_IDENTITY_LOSS",
+  "E.CONTRACT.NEUTRAL_CONTINUITY_MISMATCH",
+  "E.CONTRACT.GROUND_REFERENCE_RELATION_MISMATCH",
+  "I.CONTRACT.NEUTRAL_GROUND_NOT_APPLICABLE",
+  "W.CONTRACT.NEUTRAL_GROUND_INDETERMINATE",
+]
+related_finding_codes = [
+  "W.PROV.IMPLICIT_GROUNDING",
+  "E.PROV.FLOATING_NEUTRAL",
+  "W.PROV.FLOATING_NEUTRAL",
+  "E.INT.NO_VOLTAGE_REFERENCE",
+]
+fixture_ids = ["neutral-ground-reference-conflation-001"]
+
+[[knowledge]]
+id = "PSK-000003"
+kind = "invalid-inference"
+title = "Solver termination does not establish independently validated solution quality"
+scientific_statement = "A claimed-feasible or optimal solver termination status is algorithm evidence, not an independent certificate that the returned primal values are finite, satisfy the relevant equations and limits, support the required recovery, or meet a stated local or global optimality guarantee."
+scope = "Steady-state power-flow and optimization results with a declared termination status, returned primal coordinates, study constraints, and explicit validation tolerances."
+evidence_status = "definition"
+does_not_establish = [
+  "Every result with LOCALLY_SOLVED or OPTIMAL status is invalid.",
+  "Passing the initial bus-result contract establishes network equations, all equipment limits, power balance, or optimality.",
+  "One package's status vocabulary or tolerance policy applies unchanged to every solver interface.",
+]
+
+[knowledge.book]
+claim_ids = ["NUMERICAL-001", "NUMERICAL-004"]
+misconception_ids = ["solver-termination-implies-validated-solution"]
+certificate_ids = []
+counterexample_ids = ["claimed-feasible-invalid-solution-001"]
+artifact_paths = ["experiments/generated/solver-diagnostics-crosswalk.json"]
+source_paths = ["docs/src/foundations/numerical-consequences.md"]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["claimed_solution_validity"]
+finding_codes = [
+  "E.CONTRACT.CLAIMED_FEASIBLE_SOLUTION_INVALID",
+  "I.CONTRACT.SOLUTION_STATUS_NOT_APPLICABLE",
+  "W.CONTRACT.SOLUTION_VALIDATION_INDETERMINATE",
+]
+related_finding_codes = [
+  "E.SOL.NAN_IN_RESULT",
+  "E.SOL.VOLT_VIOLATION",
+  "E.SOL.ANGLE_VIOLATION",
+]
+fixture_ids = ["claimed-feasible-invalid-solution-001"]
+
+[[knowledge]]
+id = "PSK-000004"
+kind = "modelling-antipattern"
+title = "Load nominal voltage must match its connection coordinate"
+scientific_statement = "A voltage-dependent load's nominal anchor must use the same terminal-voltage coordinate as its constitutive law: phase-to-neutral for WYE and line-to-line for DELTA; reusing one numeric value across those coordinates without conversion changes the normalized load model."
+scope = "Three-phase voltage-dependent WYE and DELTA load declarations with explicit configurations, finite positive nominal anchors, and a declared nominal phase-to-neutral system base."
+evidence_status = "definition"
+does_not_establish = [
+  "Every nominal-voltage mismatch is exactly a square-root-of-three error.",
+  "A connection-consistent anchor proves source voltages, transformer ratios, terminal maps, load coefficients, units, or solved operating points are correct.",
+  "The initial WYE/DELTA executable contract covers arbitrary unbalanced terminal maps or other connection families.",
+]
+
+[knowledge.book]
+claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
+misconception_ids = ["wye-delta-share-nominal-voltage-base"]
+certificate_ids = []
+counterexample_ids = ["load-voltage-base-mismatch-001"]
+artifact_paths = ["experiments/generated/load-grounding-witnesses.json"]
+source_paths = ["docs/src/foundations/load-models-and-decision-dependence.md"]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["load_voltage_base_consistency"]
+finding_codes = [
+  "E.CONTRACT.LOAD_VOLTAGE_BASE_MISMATCH",
+  "I.CONTRACT.LOAD_VOLTAGE_BASE_NOT_APPLICABLE",
+  "W.CONTRACT.LOAD_VOLTAGE_BASE_INDETERMINATE",
+]
+related_finding_codes = [
+  "W.LOAD.VNOM_MISMATCH",
+  "E.LOAD.VNOM_MISSING",
+  "E.LOAD.VNOM_NONPOSITIVE",
+]
+fixture_ids = ["load-voltage-base-mismatch-001"]
+
+[[knowledge]]
+id = "PSK-000005"
+kind = "modelling-antipattern"
+title = "Freezing an adjustable transformer tap does not preserve its decision domain"
+scientific_statement = "Replacing an adjustable transformer tap by its fixed start value replaces the source tap domain by a singleton and is generally an inner restriction, not an equivalent decision model; exact parameterized preservation retains the mapped tap identity and complete admissible domain."
+scope = "Fixed-frequency transformer factors with a positive scalar ganged winding tap over a declared continuous interval or finite position set, fixed base transfer coefficients, and an explicit source-to-target decision mapping."
+evidence_status = "established_result"
+does_not_establish = [
+  "Freezing an adjustable tap always changes the feasible optimum or operating point.",
+  "Matching tap domains alone establishes pointwise transformer equations, tap-dependent losses, controls, network feasible-set equality, objective equality, or solver guarantees.",
+  "The initial BMOPFTools continuous-interval contract covers discrete positions, independent per-phase controls, mechanical coupling, or tap-dependent parameters.",
+]
+
+[knowledge.book]
+claim_ids = ["TR-XFMR-005", "TR-XFMR-006"]
+misconception_ids = ["fixed-tap-snapshot-preserves-adjustable-transformer"]
+certificate_ids = ["TR-XFMR-005", "TR-XFMR-006"]
+counterexample_ids = ["transformer-tap-domain-loss-001"]
+artifact_paths = [
+  "experiments/generated/transformer-tap-decision-certificate.json",
+  "experiments/generated/transformer-tap-ac-decision-certificate.json",
+]
+source_paths = [
+  "docs/src/transformations/parameterized-transformer-tap-decisions.md",
+  "docs/src/cases/transformer-tap-ac-decision.md",
+]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["transformer_tap_domain_preservation"]
+finding_codes = [
+  "E.CONTRACT.TRANSFORMER_TAP_DOMAIN_LOSS",
+  "I.CONTRACT.TRANSFORMER_TAP_NOT_APPLICABLE",
+  "W.CONTRACT.TRANSFORMER_TAP_INDETERMINATE",
+]
+related_finding_codes = [
+  "E.DOM.XFMR_VREF_INVALID",
+  "W.DOM.XFMR_RATIO_OOB",
+  "W.DOM.XFMR_REVERSED",
+  "W.DOM.XFMR_STEP_UP",
+]
+fixture_ids = ["transformer-tap-domain-loss-001"]
+
+[[knowledge]]
+id = "PSK-000006"
+kind = "modelling-antipattern"
+title = "Transformer endpoint reversal must preserve typed winding conventions"
+scientific_statement = "A transformer record's from/to order is not merely an arbitrary branch arrow: reversing or relabelling it preserves the fixed transformer factor only when winding roles, ordered terminal-to-coil incidence, winding reference voltages, fixed transfer ratio, and every end-specific relation are mapped consistently."
+scope = "Fixed-frequency fixed-linear transformer factors with labelled winding terminals, declared connection roles, positive reference voltages, fixed scalar transfer coefficients, and an explicit source-to-target bus and terminal mapping."
+evidence_status = "established_result"
+does_not_establish = [
+  "Every transformer must be stored with the high-voltage winding first.",
+  "A complete typed transformer reversal cannot be exact.",
+  "The initial BMOPFTools contract covers centre-tap, n-winding, subtype-changing, or adjustable reversal, or establishes leakage, excitation, grounding, limits, complete-factor, network, decision, or solver equivalence.",
+]
+
+[knowledge.book]
+claim_ids = ["TR-XFMR-001", "TR-XFMR-004"]
+misconception_ids = ["transformer-end-swap-is-ordinary-edge-reversal"]
+certificate_ids = ["TR-XFMR-001", "TR-XFMR-004"]
+counterexample_ids = ["transformer-winding-role-swap-001"]
+artifact_paths = [
+  "experiments/generated/transformer-winding-normalization-certificate.json",
+  "experiments/generated/transformer-factor-completion-certificate.json",
+]
+source_paths = [
+  "docs/src/transformations/transformer-winding-coordinate-normalization.md",
+  "docs/src/transformations/fixed-linear-transformer-factor-completion.md",
+]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["transformer_winding_convention_preservation"]
+finding_codes = [
+  "E.CONTRACT.TRANSFORMER_WINDING_INCIDENCE_MISMATCH",
+  "E.CONTRACT.TRANSFORMER_WINDING_BASE_RATIO_MISMATCH",
+  "I.CONTRACT.TRANSFORMER_WINDING_NOT_APPLICABLE",
+  "W.CONTRACT.TRANSFORMER_WINDING_INDETERMINATE",
+]
+related_finding_codes = [
+  "W.DOM.XFMR_REVERSED",
+  "W.DOM.XFMR_STEP_UP",
+  "W.DOM.XFMR_RATIO_OOB",
+  "E.DOM.XFMR_VREF_INVALID",
+]
+fixture_ids = ["transformer-winding-role-swap-001"]
+
+[[knowledge]]
+id = "PSK-000007"
+kind = "modelling-antipattern"
+title = "Terminal equivalence does not establish decision equivalence"
+scientific_statement = "Equality of an unconstrained terminal relation does not by itself establish exact decision equivalence, which is indexed by the admissible domain, observations, constraints, decision variables and discrete choices, objective, and recovery obligations; an exact claim must close each relevant dimension with independently checkable evidence."
+scope = "Observation-indexed transformations of declared steady-state model and study classes with explicit source and target identities, exactness object, admissible inputs, constraints, decisions, objective semantics, and recovery requirements."
+evidence_status = "established_result"
+does_not_establish = [
+  "Every useful transformation must preserve exact decision equivalence.",
+  "A complete manifest proves that its evidence references are authentic, independent, or correct.",
+  "The initial BMOPFTools completeness gate compares source and target equations, feasible sets, objectives, optimizer sets, recovery maps, or solver guarantees.",
+]
+
+[knowledge.book]
+claim_ids = ["PRESERVE-001", "TR-PAR-001", "TR-PAR-002"]
+misconception_ids = ["terminal-equivalence-implies-opf-equivalence"]
+certificate_ids = ["TR-PAR-001"]
+counterexample_ids = ["decision-manifest-terminal-only-001"]
+artifact_paths = [
+  "experiments/generated/parallel-branch-certificate.json",
+]
+source_paths = [
+  "docs/src/foundations/preservation-contracts.md",
+  "docs/src/start/first-failure-parallel-branches.md",
+]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["decision_preservation_manifest_completeness"]
+finding_codes = [
+  "E.CONTRACT.DECISION_MANIFEST_EVIDENCE_GAP",
+  "E.CONTRACT.DECISION_MANIFEST_UNRESOLVED_OBLIGATION",
+  "I.CONTRACT.DECISION_MANIFEST_NOT_APPLICABLE",
+  "W.CONTRACT.DECISION_MANIFEST_INDETERMINATE",
+]
+related_finding_codes = [
+  "W.CONTRACT.PARALLEL_MEMBER_LIMIT_LOSS",
+  "E.CONTRACT.TRANSFORMER_TAP_DOMAIN_LOSS",
+  "E.CONTRACT.TRANSFORMER_WINDING_INCIDENCE_MISMATCH",
+]
+fixture_ids = ["decision-manifest-terminal-only-001"]
+
+[[knowledge]]
+id = "PSK-000008"
+kind = "modelling-antipattern"
+title = "A Kron boundary relation requires its grounding precondition and recovery map"
+scientific_statement = "Eliminating an internal neutral by a Schur complement can preserve a fixed linear boundary relation only under its declared elimination conditions; for a four-wire to three-wire line, perfect grounding of the eliminated neutral at every connection point is required, and internal quantities require an explicit recovery map."
+scope = "Fixed series-only four-conductor linear lines reduced to an ordered three-conductor phase boundary by neutral elimination, with an invertible neutral block, explicit endpoint grounding declarations, and a declared recovery map."
+evidence_status = "established_result"
+does_not_establish = [
+  "Kron reduction is always invalid.",
+  "A Schur complement by itself preserves floating or finite-grounded neutral behavior.",
+  "A passing grounded boundary check preserves internal equipment identity, limits, protection quantities, state-dependent factors, complete feasible sets, objectives, or solver results.",
+]
+
+[knowledge.book]
+claim_ids = ["PRESERVE-001", "TR-KRON-002", "TR-KRON-FIVE-002"]
+misconception_ids = ["kron-reduction-preserves-everything"]
+certificate_ids = ["TR-KRON-001"]
+counterexample_ids = ["kron-boundary-grounding-001"]
+artifact_paths = [
+  "experiments/generated/typed-kron-certificate.json",
+  "experiments/generated/kron-ward-scenario-comparison.json",
+]
+source_paths = [
+  "docs/src/foundations/preservation-contracts.md",
+  "docs/src/transformations/kron-ward-opti-kron.md",
+]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["kron_boundary_recovery_preservation"]
+finding_codes = [
+  "E.CONTRACT.KRON_BOUNDARY_RELATION_MISMATCH",
+  "E.CONTRACT.KRON_GROUNDING_PRECONDITION",
+  "I.CONTRACT.KRON_NOT_APPLICABLE",
+  "W.CONTRACT.KRON_INDETERMINATE",
+  "W.CONTRACT.KRON_RECOVERY_INDETERMINATE",
+]
+related_finding_codes = [
+  "I.PROV.KRON_LIKELY",
+  "I.PROV.KRON_REDUCIBLE",
+  "W.PROV.FLOATING_NEUTRAL",
+]
+fixture_ids = ["kron-boundary-grounding-001"]
+
+[[knowledge]]
+id = "PSK-000009"
+kind = "modelling-antipattern"
+title = "Transposition alone does not make a positive-sequence model exact"
+scientific_statement = "An exact positive-sequence restriction requires compatible three-phase terminals, cyclic series and shunt factors, balanced boundary data, sequence-compatible grounding, two-terminal device closure, phase-symmetric decisions, and positive-sequence observations; transposition or a balanced-looking factor alone does not close that domain."
+scope = "Fixed three-phase linear factors and scalar positive-sequence targets under an explicitly declared balanced invariant subspace and restricted observation/decision domain."
+evidence_status = "established_result"
+does_not_establish = [
+  "Positive-sequence modelling is always invalid.",
+  "A circulant factor makes unbalanced, phase-specific, neutral, protection, or zero-sequence studies exact.",
+  "A passing applicability check establishes global decision, objective, or solver equivalence.",
+]
+
+[knowledge.book]
+claim_ids = ["COLLAPSE-001", "COLLAPSE-002"]
+misconception_ids = ["transposition-implies-positive-sequence-exactness"]
+certificate_ids = []
+counterexample_ids = ["positive-sequence-collapse-001"]
+artifact_paths = [
+  "experiments/generated/balanced-transmission-witness.json",
+  "experiments/generated/positive-sequence-collapse-witness.json",
+]
+source_paths = [
+  "docs/src/foundations/when-general-model-collapses.md",
+  "docs/src/cases/four-wire-impedance-model-ladder.md",
+]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["positive_sequence_collapse_applicability"]
+finding_codes = [
+  "E.CONTRACT.SEQUENCE_SYMMETRY_MISMATCH",
+  "E.CONTRACT.SEQUENCE_DOMAIN_MISMATCH",
+  "E.CONTRACT.SEQUENCE_RELATION_MISMATCH",
+  "I.CONTRACT.SEQUENCE_NOT_APPLICABLE",
+  "W.CONTRACT.SEQUENCE_INDETERMINATE",
+]
+fixture_ids = ["positive-sequence-collapse-001"]
+related_finding_codes = [
+  "W.PROV.SOURCE_ZERO_SEQUENCE",
+  "W.PROV.SOURCE_NEGATIVE_SEQUENCE",
+  "W.PROV.SOURCE_INCOHERENT_ROTATION",
+]
+
+[[knowledge]]
+id = "PSK-000010"
+kind = "invalid-inference"
+title = "A base-state equivalent is not globally exact over a state domain"
+scientific_statement = "An equivalent calibrated at one operating point is exact only for its declared calibration state unless its state parameter domain and update rule are preserved; freezing a state-dependent map can change boundary injections, constraints, feasible decisions, and protection margins away from calibration."
+scope = "State-dependent linearized, Ward-style, grounding, or load equivalents with a declared parameter domain, calibration state, and update/recomputation provenance."
+evidence_status = "established_result"
+does_not_establish = [
+  "Every operating-point equivalent is invalid.",
+  "A state-update identifier authenticates nonlinear map correctness or decision equivalence.",
+  "A passing declaration gate proves source and target feasible sets, objectives, protection results, or solver equivalence.",
+]
+
+[knowledge.book]
+claim_ids = ["PRESERVE-001", "TR-KRON-NEUTRAL-005", "TR-KRON-NEUTRAL-007"]
+misconception_ids = ["base-state-equivalent-is-globally-exact"]
+certificate_ids = []
+counterexample_ids = ["state-dependent-equivalent-001"]
+artifact_paths = [
+  "experiments/generated/nonlinear-grounding-probe-witness.json",
+  "experiments/generated/nonlinear-two-point-grounding-continuation.json",
+]
+source_paths = [
+  "docs/src/transformations/kron-ward-opti-kron.md",
+  "docs/src/foundations/preservation-contracts.md",
+]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["state_dependent_equivalent_provenance"]
+finding_codes = [
+  "E.CONTRACT.STATE_UPDATE_PROVENANCE_LOSS",
+  "E.CONTRACT.STATE_DOMAIN_MISMATCH",
+  "E.CONTRACT.STATE_BASE_ALIGNMENT_MISMATCH",
+  "I.CONTRACT.STATE_EQUIVALENT_NOT_APPLICABLE",
+  "W.CONTRACT.STATE_EQUIVALENT_INDETERMINATE",
+]
+fixture_ids = ["state-dependent-equivalent-001"]
+related_finding_codes = [
+  "W.PROV.FLOATING_NEUTRAL",
+  "W.CONTRACT.KRON_RECOVERY_INDETERMINATE",
+]
+
+[[knowledge]]
+id = "PSK-000011"
+kind = "invalid-inference"
+title = "Import or solver success does not prove reference completeness or nonsingularity"
+scientific_statement = "Voltage-reference incidence and rank are separate validation obligations: a transformed target can lose a source reference or become rank-deficient even when parsing succeeds, and solver termination is not an independent singularity certificate."
+scope = "Mapped connected-island reference declarations and rank evidence for source and transformed steady-state network formulations."
+evidence_status = "definition"
+does_not_establish = [
+  "Every rank deficiency is an error; intentional gauge freedoms require their own declared convention.",
+  "A reference/rank declaration gate replaces equation-level Ybus, Jacobian, conditioning, or solver validation.",
+  "A full-rank source guarantees every reduction or imported target is full rank.",
+]
+
+[knowledge.book]
+claim_ids = ["NUMERICAL-001", "NUMERICAL-004", "GROUND-SCOPE-001"]
+misconception_ids = ["reference-or-rank-success-proves-nonsingularity"]
+certificate_ids = []
+counterexample_ids = ["reference-singularity-001"]
+artifact_paths = [
+  "experiments/generated/solver-diagnostics-crosswalk.json",
+]
+source_paths = [
+  "docs/src/foundations/numerical-consequences.md",
+  "docs/src/foundations/earth-ground-models.md",
+]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["reference_singularity_validation"]
+finding_codes = [
+  "E.CONTRACT.REFERENCE_LOSS",
+  "E.CONTRACT.SINGULARITY_CHANGE",
+  "I.CONTRACT.REFERENCE_SINGULARITY_NOT_APPLICABLE",
+  "W.CONTRACT.REFERENCE_SINGULARITY_INDETERMINATE",
+]
+related_finding_codes = [
+  "E.INT.NO_VOLTAGE_REFERENCE",
+  "E.INT.SINGULAR_YBUS",
+]
+fixture_ids = ["reference-singularity-001"]
+
+[[knowledge]]
+id = "PSK-000012"
+kind = "modelling-antipattern"
+title = "Terminal and conductor ordering must be checked as an explicit permutation"
+scientific_statement = "Relabelling terminal coordinates preserves a fixed linear primitive only when the declared permutation is bijective, both endpoint terminal maps follow it, and the target matrix is the corresponding row/column permutation; matching labels or conductor counts alone do not establish invariance."
+scope = "Fixed linear series primitives with explicit ordered endpoint terminal maps and an explicit permutation."
+evidence_status = "established_result"
+does_not_establish = [
+  "A terminal permutation is merely cosmetic in a complete network.",
+  "A passing primitive-level check proves asset identity, nonlinear-state, limits, decisions, or solver equivalence.",
+  "The package-level matrix relation replaces the book's complete typed coordinate-action theorem.",
+]
+
+[knowledge.book]
+claim_ids = ["TR-KRON-001", "PRESERVE-001"]
+misconception_ids = ["terminal-permutation-is-cosmetic"]
+certificate_ids = ["TR-KRON-001"]
+counterexample_ids = ["terminal-permutation-001"]
+artifact_paths = ["experiments/generated/typed-kron-certificate.json"]
+source_paths = [
+  "docs/src/transformations/circuit-coordinate-transformations.md",
+  "docs/src/foundations/when-general-model-collapses.md",
+]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["terminal_permutation_invariance"]
+finding_codes = [
+  "E.CONTRACT.TERMINAL_ORDER_MISMATCH",
+  "E.CONTRACT.PERMUTATION_RELATION_MISMATCH",
+  "I.CONTRACT.PERMUTATION_NOT_APPLICABLE",
+  "W.CONTRACT.PERMUTATION_INDETERMINATE",
+]
+related_finding_codes = ["W.PROV.SOURCE_INCOHERENT_ROTATION"]
+fixture_ids = ["terminal-permutation-001"]
+
+[[knowledge]]
+id = "PSK-000013"
+kind = "invalid-inference"
+title = "Solver termination is not a complete solved-network feasibility certificate"
+scientific_statement = "A solved or optimal termination status must be accompanied by independently computed equation, KCL, power-balance, device-limit, and recovery residual evidence before a complete feasibility claim is made; solver status alone does not certify those obligations."
+scope = "Claimed solved steady-state or optimization results with explicit residual and device-limit witness fields."
+evidence_status = "definition"
+does_not_establish = [
+  "A residual witness proves that its own computations cover every model equation or device.",
+  "Passing residual tolerances establishes global optimality, complete feasible-set equivalence, or solver derivative quality.",
+  "Every non-optimal termination status is scientifically invalid rather than outside this contract's applicability.",
+]
+
+[knowledge.book]
+claim_ids = ["NUMERICAL-005"]
+misconception_ids = ["complete-feasibility-status-is-enough"]
+certificate_ids = []
+counterexample_ids = ["solved-network-feasibility-001"]
+artifact_paths = ["experiments/generated/solver-diagnostics-crosswalk.json"]
+source_paths = ["docs/src/foundations/numerical-consequences.md"]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["solved_network_feasibility_validation"]
+finding_codes = [
+  "E.CONTRACT.FEASIBILITY_RESIDUAL_VIOLATION",
+  "E.CONTRACT.FEASIBILITY_DEVICE_LIMIT_VIOLATION",
+  "I.CONTRACT.FEASIBILITY_NOT_APPLICABLE",
+  "W.CONTRACT.FEASIBILITY_INDETERMINATE",
+]
+related_finding_codes = ["E.SOL.VOLT_VIOLATION", "E.SOL.THERMAL_VIOLATION"]
+fixture_ids = ["solved-network-feasibility-001"]
+
+[[knowledge]]
+id = "PSK-000014"
+kind = "invalid-inference"
+title = "Unit/base metadata and serialization hashes must bind the semantic payload"
+scientific_statement = "A serialization round trip is trustworthy only when explicit unit-system and base metadata remain aligned and the canonical semantic payload is hash-bound; matching metadata or a hash alone does not prove physical or decision equivalence."
+scope = "Canonical BMOPF serialization pairs with explicit unit/base declarations and semantic payload provenance."
+evidence_status = "definition"
+does_not_establish = [
+  "Units can be inferred safely from numeric magnitudes.",
+  "Matching unit/base metadata proves the payload was serialized or hashed correctly.",
+  "A matching canonical hash proves complete physical, feasible-set, or objective equivalence.",
+]
+
+[knowledge.book]
+claim_ids = ["PRACTICE-ADAPTER-001"]
+misconception_ids = ["unit-base-metadata-is-equivalence"]
+certificate_ids = []
+counterexample_ids = ["unit-base-serialization-001"]
+artifact_paths = ["experiments/generated/solver-diagnostics-crosswalk.json"]
+source_paths = ["docs/src/foundations/data-model-crosswalk.md"]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["unit_base_serialization_invariance"]
+finding_codes = [
+  "E.CONTRACT.UNIT_SYSTEM_MISMATCH",
+  "E.CONTRACT.BASE_MAP_MISMATCH",
+  "E.CONTRACT.SERIALIZED_PAYLOAD_MISMATCH",
+  "W.CONTRACT.UNIT_BASE_SERIALIZATION_INDETERMINATE",
+]
+related_finding_codes = ["W.PROV.UNIT_ASSUMED", "W.PROV.SOURCE_HASH_MISSING"]
+fixture_ids = ["unit-base-serialization-001"]

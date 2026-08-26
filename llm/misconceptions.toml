@@ -105,6 +105,32 @@ mandatory_concept_ids = ["phase-conductor-sequence-coordinate", "equivalence-exa
 source_paths = ["docs/src/foundations/when-general-model-collapses.md"]
 
 [[misconception]]
+id = "base-state-equivalent-is-globally-exact"
+title = "A base-state equivalent is exact over the whole state domain"
+severity = "critical"
+query_patterns = ["operating point equivalent exact", "freeze equivalent", "state dependent equivalent", "Ward equivalent off nominal", "reuse base-state map", "equivalent across load levels", "frozen parameter model"]
+tempting_answer = "If an equivalent matches at the calibration operating point, it can be reused unchanged across the study domain."
+required_qualification = "A fixed operating-point map is exact only at its declared calibration state; a state-dependent equivalent must preserve the parameter domain and recompute or bound its update map with explicit provenance."
+safe_shorthand = "Operating-point exactness is local unless the state domain, update rule, and error or preservation contract are explicit."
+operational_consequence = "Freezing a state-dependent map can change boundary injections, constraints, feasible decisions, and protection margins away from calibration."
+mandatory_claim_ids = ["PRESERVE-001", "TR-KRON-NEUTRAL-005", "TR-KRON-NEUTRAL-007"]
+mandatory_concept_ids = ["equivalence-exactness-preservation", "transformation-family", "state"]
+source_paths = ["docs/src/transformations/kron-ward-opti-kron.md", "docs/src/foundations/preservation-contracts.md"]
+
+[[misconception]]
+id = "reference-or-rank-success-proves-nonsingularity"
+title = "A successful import or solver status proves every island is referenced and nonsingular"
+severity = "critical"
+query_patterns = ["floating island", "singular ybus", "rank deficient network", "missing voltage reference", "solver singularity", "reference bus check", "rank success proves"]
+tempting_answer = "If the model imports or the solver reports success, the network must have a valid voltage reference and full rank."
+required_qualification = "Reference incidence and rank are separate validation obligations; a transformed target can lose a source reference or become rank-deficient even when parsing succeeds, and solver termination is not an independent singularity certificate."
+safe_shorthand = "Every connected island needs an explicit reference/rank check for the declared formulation."
+operational_consequence = "Unreported floating islands produce arbitrary voltages, ill-conditioned equations, failed recovery, and misleading optimization or protection results."
+mandatory_claim_ids = ["NUMERICAL-001", "NUMERICAL-004", "GROUND-SCOPE-001"]
+mandatory_concept_ids = ["ground-neutral-reference", "equivalence-exactness-preservation", "state"]
+source_paths = ["docs/src/foundations/numerical-consequences.md", "docs/src/foundations/earth-ground-models.md"]
+
+[[misconception]]
 id = "ground-neutral-reference-are-one-node"
 title = "Ground, neutral, earth, and voltage reference are the same node"
 severity = "critical"
@@ -142,3 +168,94 @@ operational_consequence = "Treating generated signed cross edges as assets can c
 mandatory_claim_ids = ["COUPLED-CORRIDOR-001", "COUPLED-CORRIDOR-002"]
 mandatory_concept_ids = ["mutual-coupling-relation", "parallel", "equivalence-exactness-preservation"]
 source_paths = ["docs/src/cases/coupled-multivoltage-corridor.md", "docs/src/foundations/cycles-parallelism-radiality.md", "docs/src/foundations/preservation-contracts.md"]
+
+[[misconception]]
+id = "solver-termination-implies-validated-solution"
+title = "Successful solver termination proves the returned solution is scientifically valid"
+severity = "critical"
+query_patterns = ["solver says optimal", "locally solved means feasible", "solver success validates solution", "termination status proof", "trust optimal solution", "successful opf result", "opf converged successfully", "solver converged so correct", "accept solved result"]
+tempting_answer = "The solver returned a successful or optimal status, so the result satisfies the model and is valid for the study."
+required_qualification = "Termination status is algorithm evidence only; independently validate the returned numeric values, relevant equations, bounds, residuals, recovery obligations, and the actual local or global optimality guarantee before making a scientific conclusion."
+safe_shorthand = "Solved is safe shorthand only when the required independent validation dimensions and optimality level are stated."
+operational_consequence = "The shortcut can accept non-finite values, violated voltage or equipment limits, nonzero model residuals, incomplete result extraction, or a local point presented as a global decision."
+mandatory_claim_ids = ["NUMERICAL-001", "NUMERICAL-004"]
+mandatory_concept_ids = ["state", "rating-limit-constraint"]
+source_paths = ["docs/src/foundations/numerical-consequences.md"]
+
+[[misconception]]
+id = "unit-base-metadata-is-equivalence"
+title = "Matching unit/base metadata or a serialized hash proves equivalence"
+severity = "critical"
+query_patterns = ["unit base metadata proves equivalence", "serialization hash is enough", "round trip hash proves model", "infer units from magnitudes", "same per unit base means same network", "serialization is lossless by hash", "unit conversion equivalence", "base map round trip"]
+tempting_answer = "If the unit system, base values, or serialized hash match, the imported network is the same model."
+required_qualification = "Require explicit unit-system and base-map alignment plus a canonical semantic payload hash, while recognizing that metadata and hash equality do not authenticate their computation or prove complete physical and decision equivalence."
+safe_shorthand = "Unit/base and hash checks bind declared serialization evidence; they do not replace semantic, equation, or study-level validation."
+operational_consequence = "A wrong base or mutated payload can survive a metadata-only check, changing impedances, load laws, limits, or decisions after round trip."
+mandatory_claim_ids = ["PRACTICE-ADAPTER-001"]
+mandatory_concept_ids = ["normalization", "factor", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/foundations/data-model-crosswalk.md"]
+
+[[misconception]]
+id = "wye-delta-share-nominal-voltage-base"
+title = "WYE and DELTA voltage-dependent loads can reuse the same numeric nominal voltage"
+severity = "critical"
+query_patterns = ["wye and delta same nominal voltage", "delta load v_nom", "load kv line to line or line to neutral", "copy bus voltage into load v_nom", "230 v delta zip load", "400 v delta load on 230 v bus", "sqrt3 load voltage base", "line-to-line load nominal anchor", "phase-to-neutral load base", "wrong load voltage base"]
+tempting_answer = "Use the bus nominal voltage as v_nom for both WYE and DELTA loads because they are connected to the same bus."
+required_qualification = "The load anchor belongs to its terminal coordinate: WYE uses phase-to-neutral voltage and DELTA uses line-to-line voltage. On a nominal three-phase system those bases differ by sqrt(3), and reusing one numeric value changes the normalized voltage-dependent load law."
+safe_shorthand = "Bus voltage is a safe load anchor only after the connection coordinate and line-to-line or phase-to-neutral basis are named."
+operational_consequence = "A wrong anchor changes constant-current, constant-impedance, ZIP, or exponential demand away from the nominal point and can alter voltage, loading, feasibility, and decisions."
+mandatory_claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
+mandatory_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "factor"]
+source_paths = ["docs/src/foundations/load-models-and-decision-dependence.md"]
+
+[[misconception]]
+id = "fixed-tap-snapshot-preserves-adjustable-transformer"
+title = "A transformer fixed at its start tap preserves an adjustable-tap model"
+severity = "critical"
+query_patterns = ["freeze transformer tap", "fixed tap equivalent to adjustable tap", "use transformer start tap", "remove tap variable", "drop tap bounds", "tap_min tap_max", "fixed tap snapshot", "transformer tap decision domain", "replace adjustable transformer", "tap optimization preprocessing"]
+tempting_answer = "Replace the adjustable transformer by a fixed transformer at its starting tap; it has the same parameters at the initial operating point."
+required_qualification = "A start value is an initial point, not the admissible decision domain. Freezing it replaces the source interval or finite position set by a singleton and is generally an inner restriction unless the original domain is already a singleton or the removed choices are proved irrelevant for the declared study."
+safe_shorthand = "A fixed tap is safe only as a pointwise snapshot; decision preservation requires the mapped tap identity and complete domain, followed by separate equation, constraint, objective, recovery, and control checks."
+operational_consequence = "The shortcut can remove feasible voltage-control actions, change load service or loss objectives, conceal the source optimum, and present a restricted problem as an equivalent transformer model."
+mandatory_claim_ids = ["TR-XFMR-005", "TR-XFMR-006"]
+mandatory_concept_ids = ["state", "rating-limit-constraint", "equivalence-exactness-preservation", "transformation-family"]
+source_paths = ["docs/src/transformations/parameterized-transformer-tap-decisions.md", "docs/src/cases/transformer-tap-ac-decision.md"]
+
+[[misconception]]
+id = "transformer-end-swap-is-ordinary-edge-reversal"
+title = "Swapping transformer endpoints is an ordinary branch-arrow reversal"
+severity = "critical"
+query_patterns = ["swap transformer ends", "reverse transformer bus_from bus_to", "transformer orientation arbitrary", "swap transformer primary secondary", "reverse wye delta transformer", "transformer endpoint reversal", "flip transformer direction", "exchange transformer from and to buses", "transformer winding role swap", "treat transformer as undirected branch"]
+tempting_answer = "Swap bus_from and bus_to as for an undirected ordinary branch; the transformer still connects the same two buses."
+required_qualification = "Transformer endpoints carry typed winding roles. An exact reversal or relabelling must transform the subtype or connection roles, ordered terminal-to-coil incidence, winding reference voltages, fixed transfer convention, and every end-specific leakage, excitation, grounding, limit, and control relation. A bare endpoint swap preserves none of that by implication."
+safe_shorthand = "Transformer orientation is arbitrary only relative to a complete typed coordinate transformation, never as a bare endpoint-field swap."
+operational_consequence = "A partial reversal can attach WYE and DELTA coils, voltage bases, ratios, shunts, grounding, or limits to the wrong mapped bus and silently change the terminal factor."
+mandatory_claim_ids = ["TR-XFMR-001", "TR-XFMR-004"]
+mandatory_concept_ids = ["object-node-interface", "phase-conductor-sequence-coordinate", "equivalence-exactness-preservation", "transformation-family"]
+source_paths = ["docs/src/transformations/transformer-winding-coordinate-normalization.md", "docs/src/transformations/fixed-linear-transformer-factor-completion.md"]
+
+[[misconception]]
+id = "terminal-permutation-is-cosmetic"
+title = "Terminal or conductor order is cosmetic"
+severity = "critical"
+query_patterns = ["permute phases", "swap conductor order", "terminal permutation", "reorder phase terminals", "conductor relabelling", "terminal order cosmetic", "permutation of line matrix", "relabel line conductors", "swap phase coordinates", "importer permutes conductors"]
+tempting_answer = "Reordering terminal or conductor labels is cosmetic because the same physical line and number of conductors remain."
+required_qualification = "A relabelling is an exact primitive-level transformation only with an explicit bijection, both endpoint terminal maps transformed by it, and the target matrix equal to the corresponding row/column permutation. Matching counts or labels alone do not establish coordinate consistency, and the primitive check does not prove complete-network or decision equivalence."
+safe_shorthand = "Terminal order is safe to change only under a declared coordinate action with matrix, endpoint-map, provenance, and downstream-study checks."
+operational_consequence = "A partial permutation can attach impedance entries to the wrong phases, corrupt sequence and coupling relations, and silently change limits, controls, feasible decisions, or recovered quantities."
+mandatory_claim_ids = ["TR-KRON-001", "PRESERVE-001"]
+mandatory_concept_ids = ["phase-conductor-sequence-coordinate", "equivalence-exactness-preservation", "transformation-family"]
+source_paths = ["docs/src/transformations/circuit-coordinate-transformations.md", "docs/src/foundations/when-general-model-collapses.md"]
+
+[[misconception]]
+id = "complete-feasibility-status-is-enough"
+title = "Solver status alone is a complete solved-network feasibility certificate"
+severity = "critical"
+query_patterns = ["optimal status proves feasibility", "solver status complete certificate", "no residual check needed", "kcl residual unnecessary", "power balance after optimal", "device limit check after solver", "recovery residual solver", "optimal means every constraint passed", "solved network validation"]
+tempting_answer = "If the solver reports OPTIMAL or LOCALLY_SOLVED, the network is fully feasible and no independent residual checks are needed."
+required_qualification = "Termination status is algorithm evidence only. Require independently computed equation, KCL, power-balance, device-limit, and recovery residuals, each with explicit tolerances, before making a complete feasibility claim."
+safe_shorthand = "Solved is a status; feasibility is a separately measured residual and limit witness."
+operational_consequence = "Skipping independent checks can accept violated equations, device limits, power balance, or recovery maps and can turn a solver label into a false scientific conclusion."
+mandatory_claim_ids = ["NUMERICAL-005"]
+mandatory_concept_ids = ["factor", "rating-limit-constraint", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/foundations/numerical-consequences.md"]

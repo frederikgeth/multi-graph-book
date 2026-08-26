@@ -4,8 +4,8 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `e28cede8c35c66d2732ffabeecda4b6e52842a3a31c978cdd5c2dd27ce29e522`<br>
-**Cases:** 33
+**Corpus hash:** `1e7fd8ab1edc5b4be58eb6d8064d5af7cb2e661289817e9e441191323225773c`<br>
+**Cases:** 60
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
 The latter is permitted to add mandatory claims and concepts only after the query router identifies
@@ -16,18 +16,18 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Measure | Result | Release gate? |
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
-| Open-corpus lexical evidence recall@5 | 31.4% | diagnostic |
-| Open-corpus lexical evidence recall@10 | 42.0% | diagnostic |
+| Open-corpus lexical evidence recall@5 | 22.6% | diagnostic |
+| Open-corpus lexical evidence recall@10 | 31.8% | diagnostic |
 | Open-corpus complete evidence@10 | 0.0% | diagnostic |
-| Evidence-only lexical recall@5 | 42.3% | diagnostic |
-| Evidence-only lexical recall@10 | 55.0% | diagnostic |
-| Evidence-only complete evidence@10 | 3.0% | diagnostic |
+| Evidence-only lexical recall@5 | 33.3% | diagnostic |
+| Evidence-only lexical recall@10 | 43.0% | diagnostic |
+| Evidence-only complete evidence@10 | 1.7% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
 | Packets with qualification, failure, shorthand, and scope | 100.0% | yes |
 | Corpus-release identity agreement | 100.0% | yes |
 | Held-out contract-router firing | 25/33 (75.8%) | yes |
-| Held-out expected-contract top-1 | 19/33 (57.6%) | diagnostic |
+| Held-out expected-contract top-1 | 17/33 (51.5%) | diagnostic |
 | Held-out hybrid zero-recall@10 cases | 5/33 | diagnostic |
 
 The diagnostic lexical scores are intentionally not release thresholds. A perfect contract score
@@ -43,16 +43,16 @@ evidence sets, so the effective target count is nine rather than 27 independent 
 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `lexical` | 33.4% | 44.9% | 0.0% | 0/33 | 5/33 | 0.202 |
-| `char_tfidf` | 36.8% | 44.4% | 0.0% | 0/33 | 6/33 | 0.223 |
-| `hybrid` | 37.9% | 46.9% | 0.0% | 0/33 | 5/33 | 0.219 |
-| `graph` | 42.2% | 54.5% | 27.3% | 9/33 | 5/33 | 0.260 |
+| `lexical` | 33.4% | 44.9% | 0.0% | 0/33 | 5/33 | 0.201 |
+| `char_tfidf` | 36.2% | 44.2% | 0.0% | 0/33 | 6/33 | 0.224 |
+| `hybrid` | 38.0% | 46.6% | 0.0% | 0/33 | 5/33 | 0.219 |
+| `graph` | 38.9% | 57.7% | 21.2% | 7/33 | 4/33 | 0.252 |
 
 Held-out contract-router firing: **25/33 (75.8%)**; release floor: **66.7%**.
-Expected-contract top-1 agreement: **19/33 (57.6%)**; this remains diagnostic because the set is synthetic and clustered.
+Expected-contract top-1 agreement: **17/33 (51.5%)**; this remains diagnostic because the set is synthetic and clustered.
 Target clusters: **11**, with cluster sizes `[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]`; percentage differences are therefore not independent observations.
 Hybrid versus lexical complete@10: **0/33** versus **0/33**; hybrid zero-recall@10: **5/33**.
-Graph versus hybrid complete@10: **9/33** versus **0/33**.
+Graph versus hybrid complete@10: **7/33** versus **0/33**.
 
 | Held-out case | Audience | Expected route | Observed top-1 | Router fired | Lexical complete@10 | TF-IDF complete@10 | Hybrid complete@10 | Graph complete@10 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -61,7 +61,7 @@ Graph versus hybrid complete@10: **9/33** versus **0/33**.
 | `HOLDOUT-GRAPH-POWER` | `power_engineer` | `one-universal-network-graph` | `radial-is-representation-independent` | yes | no | no | no | no |
 | `HOLDOUT-YSPLIT-STUDENT` | `student` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | yes |
 | `HOLDOUT-YSPLIT-SOFTWARE` | `software_engineer` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
-| `HOLDOUT-YSPLIT-POWER` | `power_engineer` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | yes |
+| `HOLDOUT-YSPLIT-POWER` | `power_engineer` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
 | `HOLDOUT-YBUS-STUDENT` | `student` | `nodal-operator-is-source-network` | `none` | no | no | no | no | yes |
 | `HOLDOUT-YBUS-SOFTWARE` | `software_engineer` | `nodal-operator-is-source-network` | `none` | no | no | no | no | no |
 | `HOLDOUT-YBUS-POWER` | `power_engineer` | `nodal-operator-is-source-network` | `none` | no | no | no | no | no |
@@ -76,9 +76,9 @@ Graph versus hybrid complete@10: **9/33** versus **0/33**.
 | `HOLDOUT-KRON-POWER` | `power_engineer` | `kron-reduction-preserves-everything` | `kron-reduction-preserves-everything` | yes | no | no | no | no |
 | `HOLDOUT-SEQUENCE-STUDENT` | `student` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | no |
 | `HOLDOUT-SEQUENCE-SOFTWARE` | `software_engineer` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | yes |
-| `HOLDOUT-SEQUENCE-POWER` | `power_engineer` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | yes |
+| `HOLDOUT-SEQUENCE-POWER` | `power_engineer` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | no |
 | `HOLDOUT-GROUND-STUDENT` | `student` | `ground-neutral-reference-are-one-node` | `mutual-coupling-is-an-ordinary-parallel-network` | yes | no | no | no | no |
-| `HOLDOUT-GROUND-SOFTWARE` | `software_engineer` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | no |
+| `HOLDOUT-GROUND-SOFTWARE` | `software_engineer` | `ground-neutral-reference-are-one-node` | `terminal-permutation-is-cosmetic` | yes | no | no | no | no |
 | `HOLDOUT-GROUND-POWER` | `power_engineer` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | yes |
 | `HOLDOUT-DECISION-STUDENT` | `student` | `terminal-equivalence-implies-opf-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
 | `HOLDOUT-COUPLING-STUDENT` | `student` | `mutual-coupling-is-an-ordinary-parallel-network` | `mutual-coupling-is-an-ordinary-parallel-network` | yes | no | no | no | no |
@@ -88,15 +88,15 @@ Graph versus hybrid complete@10: **9/33** versus **0/33**.
 | `HOLDOUT-SELF-LOOP-SOFTWARE` | `software_engineer` | `self-loop-is-a-shunt-or-circuit-loop` | `self-loop-is-a-shunt-or-circuit-loop` | yes | no | no | no | yes |
 | `HOLDOUT-SELF-LOOP-POWER` | `power_engineer` | `self-loop-is-a-shunt-or-circuit-loop` | `self-loop-is-a-shunt-or-circuit-loop` | yes | no | no | no | no |
 | `HOLDOUT-DECISION-SOFTWARE` | `software_engineer` | `terminal-equivalence-implies-opf-equivalence` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
-| `HOLDOUT-DECISION-POWER` | `power_engineer` | `terminal-equivalence-implies-opf-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
+| `HOLDOUT-DECISION-POWER` | `power_engineer` | `terminal-equivalence-implies-opf-equivalence` | `terminal-permutation-is-cosmetic` | yes | no | no | no | no |
 
 ## Audience consistency
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 11 | 100.0% | 55.8% | 100.0% |
-| `software_engineer` | 11 | 100.0% | 47.0% | 100.0% |
-| `student` | 11 | 100.0% | 62.2% | 100.0% |
+| `power_engineer` | 20 | 100.0% | 45.6% | 100.0% |
+| `software_engineer` | 20 | 100.0% | 37.2% | 100.0% |
+| `student` | 20 | 100.0% | 46.4% | 100.0% |
 
 ## Case results
 
@@ -123,6 +123,12 @@ Graph versus hybrid complete@10: **9/33** versus **0/33**.
 | `EVAL-SEQUENCE-STUDENT` | `student` | `transposition-implies-positive-sequence-exactness` | 50.0% | yes |
 | `EVAL-SEQUENCE-SOFTWARE` | `software_engineer` | `transposition-implies-positive-sequence-exactness` | 50.0% | yes |
 | `EVAL-SEQUENCE-POWER` | `power_engineer` | `transposition-implies-positive-sequence-exactness` | 75.0% | yes |
+| `EVAL-STATE-EQUIVALENT-STUDENT` | `student` | `base-state-equivalent-is-globally-exact` | 33.3% | yes |
+| `EVAL-STATE-EQUIVALENT-SOFTWARE` | `software_engineer` | `base-state-equivalent-is-globally-exact` | 0.0% | yes |
+| `EVAL-STATE-EQUIVALENT-POWER` | `power_engineer` | `base-state-equivalent-is-globally-exact` | 33.3% | yes |
+| `EVAL-REFERENCE-STUDENT` | `student` | `reference-or-rank-success-proves-nonsingularity` | 0.0% | yes |
+| `EVAL-REFERENCE-SOFTWARE` | `software_engineer` | `reference-or-rank-success-proves-nonsingularity` | 0.0% | yes |
+| `EVAL-REFERENCE-POWER` | `power_engineer` | `reference-or-rank-success-proves-nonsingularity` | 33.3% | yes |
 | `EVAL-GROUND-STUDENT` | `student` | `ground-neutral-reference-are-one-node` | 75.0% | yes |
 | `EVAL-GROUND-SOFTWARE` | `software_engineer` | `ground-neutral-reference-are-one-node` | 100.0% | yes |
 | `EVAL-GROUND-POWER` | `power_engineer` | `ground-neutral-reference-are-one-node` | 75.0% | yes |
@@ -135,6 +141,27 @@ Graph versus hybrid complete@10: **9/33** versus **0/33**.
 | `EVAL-COUPLING-STUDENT` | `student` | `mutual-coupling-is-an-ordinary-parallel-network` | 80.0% | yes |
 | `EVAL-COUPLING-SOFTWARE` | `software_engineer` | `mutual-coupling-is-an-ordinary-parallel-network` | 60.0% | yes |
 | `EVAL-COUPLING-POWER` | `power_engineer` | `mutual-coupling-is-an-ordinary-parallel-network` | 80.0% | yes |
+| `EVAL-SOLVER-VALIDITY-STUDENT` | `student` | `solver-termination-implies-validated-solution` | 50.0% | yes |
+| `EVAL-SOLVER-VALIDITY-SOFTWARE` | `software_engineer` | `solver-termination-implies-validated-solution` | 25.0% | yes |
+| `EVAL-SOLVER-VALIDITY-POWER` | `power_engineer` | `solver-termination-implies-validated-solution` | 25.0% | yes |
+| `EVAL-LOAD-BASE-STUDENT` | `student` | `wye-delta-share-nominal-voltage-base` | 40.0% | yes |
+| `EVAL-LOAD-BASE-SOFTWARE` | `software_engineer` | `wye-delta-share-nominal-voltage-base` | 40.0% | yes |
+| `EVAL-LOAD-BASE-POWER` | `power_engineer` | `wye-delta-share-nominal-voltage-base` | 40.0% | yes |
+| `EVAL-TRANSFORMER-TAP-DOMAIN-STUDENT` | `student` | `fixed-tap-snapshot-preserves-adjustable-transformer` | 33.3% | yes |
+| `EVAL-TRANSFORMER-TAP-DOMAIN-SOFTWARE` | `software_engineer` | `fixed-tap-snapshot-preserves-adjustable-transformer` | 33.3% | yes |
+| `EVAL-TRANSFORMER-TAP-DOMAIN-POWER` | `power_engineer` | `fixed-tap-snapshot-preserves-adjustable-transformer` | 50.0% | yes |
+| `EVAL-TRANSFORMER-WINDING-REVERSAL-STUDENT` | `student` | `transformer-end-swap-is-ordinary-edge-reversal` | 16.7% | yes |
+| `EVAL-TRANSFORMER-WINDING-REVERSAL-SOFTWARE` | `software_engineer` | `transformer-end-swap-is-ordinary-edge-reversal` | 33.3% | yes |
+| `EVAL-TRANSFORMER-WINDING-REVERSAL-POWER` | `power_engineer` | `transformer-end-swap-is-ordinary-edge-reversal` | 16.7% | yes |
+| `EVAL-TERMINAL-PERMUTATION-STUDENT` | `student` | `terminal-permutation-is-cosmetic` | 20.0% | yes |
+| `EVAL-TERMINAL-PERMUTATION-SOFTWARE` | `software_engineer` | `terminal-permutation-is-cosmetic` | 20.0% | yes |
+| `EVAL-TERMINAL-PERMUTATION-POWER` | `power_engineer` | `terminal-permutation-is-cosmetic` | 0.0% | yes |
+| `EVAL-FEASIBILITY-WITNESS-STUDENT` | `student` | `complete-feasibility-status-is-enough` | 25.0% | yes |
+| `EVAL-FEASIBILITY-WITNESS-SOFTWARE` | `software_engineer` | `complete-feasibility-status-is-enough` | 50.0% | yes |
+| `EVAL-FEASIBILITY-WITNESS-POWER` | `power_engineer` | `complete-feasibility-status-is-enough` | 50.0% | yes |
+| `EVAL-UNIT-BASE-STUDENT` | `student` | `unit-base-metadata-is-equivalence` | 25.0% | yes |
+| `EVAL-UNIT-BASE-SOFTWARE` | `software_engineer` | `unit-base-metadata-is-equivalence` | 25.0% | yes |
+| `EVAL-UNIT-BASE-POWER` | `power_engineer` | `unit-base-metadata-is-equivalence` | 50.0% | yes |
 
 ## Interpretation and next boundary
 

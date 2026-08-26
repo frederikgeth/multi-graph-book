@@ -12,6 +12,12 @@
     "retrieval",
     "mandatory_records",
     "supporting_records",
+    "scientific_basis",
+    "known_misconceptions",
+    "counterexamples",
+    "executable_checks",
+    "implementation_examples",
+    "unresolved_boundaries",
     "answer_contract",
     "sources"
   ],
@@ -39,6 +45,12 @@
     },
     "mandatory_records": {"type": "array", "items": {"type": "object"}},
     "supporting_records": {"type": "array", "items": {"type": "object"}},
+    "scientific_basis": {"type": "array", "items": {"type": "object"}},
+    "known_misconceptions": {"type": "array", "items": {"type": "object"}},
+    "counterexamples": {"type": "array", "items": {"type": "object"}},
+    "executable_checks": {"type": "array", "items": {"type": "object"}},
+    "implementation_examples": {"type": "array", "items": {"type": "object"}},
+    "unresolved_boundaries": {"type": "array", "items": {"type": "object"}},
     "answer_contract": {
       "type": "object",
       "required": [

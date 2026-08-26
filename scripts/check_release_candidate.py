@@ -166,7 +166,7 @@ def observed_counts(outputs: dict[str, str]) -> dict[str, int]:
         "llm_section_records": first_int(r"records: (\d+) sections", llm, "LLM section records"),
         "llm_claim_bundles": first_int(r"sections, (\d+) claim bundles", llm, "LLM claim bundles"),
         "llm_concept_bundles": first_int(r"claim bundles, (\d+) concept bundles", llm, "LLM concept bundles"),
-        "llm_misconception_contracts": first_int(r"concept bundles, (\d+) misconception contracts", llm, "LLM misconception contracts"),
+        "llm_misconception_contracts": first_int(r", (\d+) misconception contracts", llm, "LLM misconception contracts"),
         "llm_evaluation_cases": first_int(r"and (\d+) evaluation cases pass", llm, "LLM evaluation cases"),
         "llm_retrieval_cases": first_int(r"LLM retrieval: (\d+) cases", llm_retrieval, "LLM retrieval cases"),
         "llm_heldout_cases": first_int(r"heldout=(\d+)", llm_retrieval, "LLM held-out cases"),

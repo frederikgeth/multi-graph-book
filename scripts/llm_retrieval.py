@@ -114,6 +114,12 @@ class CorpusIndex:
         self.manifest = json.loads(CORPUS_MANIFEST.read_text())
         self.misconceptions = tomllib.loads(MISCONCEPTIONS.read_text()).get("misconception", [])
         self.misconception_by_id = {item["id"]: item for item in self.misconceptions}
+        self.knowledge_by_misconception: dict[str, list[str]] = defaultdict(list)
+        for record in self.records:
+            if record["record_type"] != "scientific_knowledge":
+                continue
+            for misconception_id in record.get("misconception_ids", []):
+                self.knowledge_by_misconception[misconception_id].append(record["record_id"])
         self.documents: list[Counter[str]] = []
         self.lengths: list[int] = []
         document_frequency: Counter[str] = Counter()
@@ -222,7 +228,10 @@ class CorpusIndex:
         scored: list[tuple[float, str, int]] = []
         k1 = 1.5
         b = 0.75
-        type_boost = {"claim_bundle": 1.25, "concept_bundle": 1.15, "section": 1.0}
+        type_boost = {
+            "scientific_knowledge": 1.3, "claim_bundle": 1.25,
+            "concept_bundle": 1.15, "section": 1.0,
+        }
         for index, (record, counts, length) in enumerate(zip(self.records, self.documents, self.lengths)):
             if record_types and record["record_type"] not in record_types:
                 continue
@@ -262,7 +271,10 @@ class CorpusIndex:
         if not query_norm:
             return []
         scored: list[tuple[float, str, int]] = []
-        type_boost = {"claim_bundle": 1.25, "concept_bundle": 1.15, "section": 1.0}
+        type_boost = {
+            "scientific_knowledge": 1.3, "claim_bundle": 1.25,
+            "concept_bundle": 1.15, "section": 1.0,
+        }
         for index, record in enumerate(self.records):
             if record_types and record["record_type"] not in record_types:
                 continue
@@ -336,7 +348,10 @@ class CorpusIndex:
         query_norm = math.sqrt(sum(value * value for value in query_embedding))
         if not query_norm:
             return []
-        type_boost = {"claim_bundle": 1.25, "concept_bundle": 1.15, "section": 1.0}
+        type_boost = {
+            "scientific_knowledge": 1.3, "claim_bundle": 1.25,
+            "concept_bundle": 1.15, "section": 1.0,
+        }
         scored: list[tuple[float, str, int]] = []
         for index, record in enumerate(self.records):
             if record_types and record["record_type"] not in record_types:
@@ -394,7 +409,10 @@ class CorpusIndex:
                     ),
                 )
                 scores[neighbor_id] += 0.5 * seed_weight
-        type_boost = {"claim_bundle": 1.25, "concept_bundle": 1.15, "section": 1.0}
+        type_boost = {
+            "scientific_knowledge": 1.3, "claim_bundle": 1.25,
+            "concept_bundle": 1.15, "section": 1.0,
+        }
         ranked = []
         for record_id, result in by_id.items():
             score = scores[record_id] * type_boost[result.record_type]
@@ -515,6 +533,16 @@ class CorpusIndex:
                     "mathematical_modelling", "graph_theory", "graph_machine_learning", "circuit_theory",
                 )
             }
+        elif record["record_type"] == "scientific_knowledge":
+            summary["knowledge"] = {
+                field: record.get(field)
+                for field in (
+                    "knowledge_id", "kind", "scientific_statement", "scope",
+                    "evidence_status", "does_not_establish",
+                )
+            }
+            summary["book"] = record["book"]
+            summary["executable"] = record["executable"]
         else:
             summary["excerpt"] = record["text"][:1200]
         return summary
@@ -549,6 +577,12 @@ class CorpusIndex:
                 if record_id not in mandatory_ids:
                     mandatory.append(self._record_summary(record_id, f"mandatory for {misconception['id']}"))
                     mandatory_ids.add(record_id)
+            for record_id in self.knowledge_by_misconception.get(misconception["id"], []):
+                if record_id not in mandatory_ids:
+                    mandatory.append(
+                        self._record_summary(record_id, f"scientific basis for {misconception['id']}")
+                    )
+                    mandatory_ids.add(record_id)
 
         if method == "lexical":
             ranked = self.search(query, limit=supporting_limit + len(mandatory_ids) + 8)
@@ -571,6 +605,54 @@ class CorpusIndex:
                 break
 
         claims = [item["claim"] for item in mandatory if item["record_type"] == "claim_bundle"]
+        knowledge = [item for item in mandatory if item["record_type"] == "scientific_knowledge"]
+        scientific_basis = [
+            {
+                "knowledge_id": item["knowledge"]["knowledge_id"],
+                "title": item["title"],
+                "scientific_statement": item["knowledge"]["scientific_statement"],
+                "scope": item["knowledge"]["scope"],
+                "evidence_status": item["knowledge"]["evidence_status"],
+            }
+            for item in knowledge
+        ]
+        known_misconceptions = []
+        for route in routes:
+            item = self.misconception_by_id[route["misconception_id"]]
+            known_misconceptions.append(
+                {
+                    "misconception_id": item["id"],
+                    "title": item["title"],
+                    "severity": item["severity"],
+                    "tempting_answer": item["tempting_answer"],
+                    "required_qualification": item["required_qualification"],
+                }
+            )
+        counterexamples = [
+            {
+                "knowledge_id": item["knowledge"]["knowledge_id"],
+                "counterexample_ids": item["book"]["counterexample_ids"],
+                "artifact_paths": item["book"]["artifact_paths"],
+            }
+            for item in knowledge
+        ]
+        executable_checks = [
+            {"knowledge_id": item["knowledge"]["knowledge_id"], **item["executable"]}
+            for item in knowledge
+        ]
+        implementation_examples = [
+            {
+                "knowledge_id": item["knowledge"]["knowledge_id"],
+                "repository": item["executable"]["repository"],
+                "fixture_ids": item["executable"]["fixture_ids"],
+            }
+            for item in knowledge
+        ]
+        scientific_boundaries = [
+            {"knowledge_id": item["knowledge"]["knowledge_id"], "boundary": boundary}
+            for item in knowledge
+            for boundary in item["knowledge"]["does_not_establish"]
+        ]
         sources = []
         seen_sources = set()
         for item in [*mandatory, *supporting]:
@@ -612,8 +694,17 @@ class CorpusIndex:
             },
             "mandatory_records": mandatory,
             "supporting_records": supporting,
+            "scientific_basis": scientific_basis,
+            "known_misconceptions": known_misconceptions,
+            "counterexamples": counterexamples,
+            "executable_checks": executable_checks,
+            "implementation_examples": implementation_examples,
+            "unresolved_boundaries": scientific_boundaries,
             "answer_contract": {
-                "direct_answer_basis": [claim["claim_text"] for claim in claims],
+                "direct_answer_basis": [
+                    *[claim["claim_text"] for claim in claims],
+                    *[item["scientific_statement"] for item in scientific_basis],
+                ],
                 "scope_and_assumptions": [
                     {
                         "claim_id": claim["claim_id"],

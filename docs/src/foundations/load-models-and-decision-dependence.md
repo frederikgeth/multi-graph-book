@@ -142,6 +142,32 @@ phase-specific ``P_p`` and ``Q_p`` values. A balanced positive-sequence view
 preserves it only when the load relation, grounding, limits, controls, and
 observations close under the same phase symmetry.
 
+### Nominal voltage belongs to the load coordinate (LOAD-BASE-001)
+
+For a voltage-dependent load, nominal voltage is not merely descriptive
+nameplate metadata. It anchors the normalized terminal voltage used by the
+constitutive law. For example, a ZIP active-power law contains
+
+```math
+P(V)=P_0\left[
+\alpha_Z\left(\frac{|V|}{V_{\mathrm{nom}}}\right)^2
++\alpha_I\left(\frac{|V|}{V_{\mathrm{nom}}}\right)
++\alpha_P\right].
+```
+
+The voltage ``V`` and anchor ``V_{\mathrm{nom}}`` must use the same terminal
+coordinate. A WYE load uses phase-to-neutral voltage. A DELTA load uses
+line-to-line voltage. On a nominal three-phase system with phase-to-neutral
+base ``V_{\mathrm{pn}}``, the corresponding line-to-line base is
+``V_{\mathrm{ll}}=\sqrt{3}V_{\mathrm{pn}}``. Copying the same numeric value
+into both load records changes ``|V|/V_{\mathrm{nom}}`` by a factor of
+``\sqrt{3}``; it is a different load law, not a harmless label change.
+
+This rule is declaration-relative. A consistent anchor does not prove that
+the source voltage, transformer ratios, terminal map, coefficients, units, or
+solved operating point are correct. Those remain separate validation
+obligations.
+
 ### Executable connection-map probe (LOAD-CONNECTION-001)
 
 The generated `connection_maps` witness in

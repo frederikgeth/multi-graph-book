@@ -189,3 +189,12 @@ The machine-readable result is certificate `TR-XFMR-005`. The
 couples this factor to network voltage, neutral-KCL, power-balance, and
 recovered-current constraints rather than holding the boundary-voltage witness
 fixed.
+
+For a concrete BMOPF source/target pair, companion executable contract
+`transformer_tap_domain_preservation` checks the narrower question of whether a
+mapped continuous tap interval was retained. It can prove that dropping
+`tap_min` and `tap_max` replaced an adjustable interval by a fixed singleton,
+but a passing interval check is not a substitute for this chapter's pointwise
+factor certificate or the AC-network decision comparison. The stable link is
+`PSK-000005`; implementation details, Finding codes, and the minimized fixture
+remain owned by BMOPFTools.

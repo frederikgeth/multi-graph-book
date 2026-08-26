@@ -29,7 +29,7 @@ CORPUS_SCHEMA = ROOT / "schemas/llm-corpus-record.schema.json"
 EVAL_SCHEMA = ROOT / "schemas/llm-evaluation-case.schema.json"
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 AUDIENCES = {"student", "software_engineer", "power_engineer"}
-RECORD_TYPES = {"section", "claim_bundle", "concept_bundle"}
+RECORD_TYPES = {"section", "claim_bundle", "concept_bundle", "scientific_knowledge"}
 
 
 def file_hash(path: Path) -> str:
@@ -143,12 +143,25 @@ def main() -> int:
         for record in records
         if record.get("record_type") == "concept_bundle"
     }
+    scientific_records = {
+        record.get("knowledge_id"): record
+        for record in records
+        if record.get("record_type") == "scientific_knowledge"
+    }
     fail_if(set(claim_records) != claim_ids,
             f"claim bundle coverage differs: missing={sorted(claim_ids - set(claim_records))}, extra={sorted(set(claim_records) - claim_ids)}",
             errors)
     fail_if(set(concept_records) != concept_ids,
             f"concept bundle coverage differs: missing={sorted(concept_ids - set(concept_records))}, extra={sorted(set(concept_records) - concept_ids)}",
             errors)
+    scientific_manifest = json.loads((ROOT / "generated/scientific-knowledge-manifest.json").read_text())
+    fail_if(set(scientific_records) != set(scientific_manifest.get("knowledge_ids", [])),
+            "scientific-knowledge corpus coverage differs from its manifest", errors)
+    for knowledge_id, record in scientific_records.items():
+        fail_if(record.get("record_id") != f"knowledge:{knowledge_id}",
+                f"{knowledge_id}: unstable corpus record ID", errors)
+        fail_if(not record.get("misconception_ids"),
+                f"{knowledge_id}: scientific record has no misconception route", errors)
     for claim_id, record in claim_records.items():
         passage = record.get("supporting_passage", {})
         fail_if(not str(passage.get("text", "")).strip(), f"{claim_id}: empty supporting passage", errors)
@@ -240,7 +253,8 @@ def main() -> int:
     print(
         "LLM accessibility: "
         f"{len(records)} records: {section_count} sections, {len(claim_records)} claim bundles, "
-        f"{len(concept_records)} concept bundles, {len(misconceptions)} misconception contracts, "
+        f"{len(concept_records)} concept bundles, {len(scientific_records)} scientific records, "
+        f"{len(misconceptions)} misconception contracts, "
         f"and {len(evaluations)} evaluation cases pass"
     )
     return 0

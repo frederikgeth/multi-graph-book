@@ -1,0 +1,163 @@
+{
+  "corpus_sha256": "09a2e5372a2a1ec5dcc68d57418d85e6629211909f3dbb08b0f59f70975584b1",
+  "knowledge_ids": [
+    "PSK-000001",
+    "PSK-000002",
+    "PSK-000003",
+    "PSK-000004",
+    "PSK-000005",
+    "PSK-000006",
+    "PSK-000007",
+    "PSK-000008",
+    "PSK-000009",
+    "PSK-000010",
+    "PSK-000011",
+    "PSK-000012",
+    "PSK-000013",
+    "PSK-000014"
+  ],
+  "manifest_id": "multi-graph-book-scientific-knowledge-0.1.0",
+  "record_count": 14,
+  "release": {
+    "external_reviewed_claims": 0,
+    "independent_human_double_coding": false,
+    "release_candidate_id": "mgb-2026-08-17-internal-rc",
+    "release_identity_sha256": "7b959c50016fc1130c0184e965c8c8d986bbef327a014614fba31db9c11a6a8f",
+    "status": "internally_validated_not_externally_reviewed"
+  },
+  "schema_version": "0.1.0",
+  "source_files": [
+    {
+      "path": "claims/claims.toml",
+      "sha256": "0405340b6d64e4ad0d273637d207892ba7ba3c1438a7c2fbcc7cedfe09b7420d"
+    },
+    {
+      "path": "docs/src/cases/four-wire-impedance-model-ladder.md",
+      "sha256": "c38ee50b8bebe2f32da828b6108434fecc2b6540c19e5e3537c38594c0ac2ecb"
+    },
+    {
+      "path": "docs/src/cases/transformer-tap-ac-decision.md",
+      "sha256": "8993431d2ed95645efaab622b7caba9833900fb891445b0116379b1927b15448"
+    },
+    {
+      "path": "docs/src/foundations/data-model-crosswalk.md",
+      "sha256": "dc2addf8488cc4ab927b49cb035fb402b4cc79f8046e2047fc67df8d939d8993"
+    },
+    {
+      "path": "docs/src/foundations/earth-ground-models.md",
+      "sha256": "64f86cb284b55a08ffe03ad4ab6e6617f74838a3be283a61671da39294cffae4"
+    },
+    {
+      "path": "docs/src/foundations/load-models-and-decision-dependence.md",
+      "sha256": "8b9e2062ae025d2ea36b398b55f4a92474a594eba898e830b672c0165f85acd6"
+    },
+    {
+      "path": "docs/src/foundations/numerical-consequences.md",
+      "sha256": "5a4f6522e443ca2dc07eb5f76e3a555b3f5cb1432efa0bba1e4fd9a87993aa68"
+    },
+    {
+      "path": "docs/src/foundations/preservation-contracts.md",
+      "sha256": "3c7c4ff28cef5b67ac30d7e29e6abf443eeb63159b832f11552d5f11e8e2e90a"
+    },
+    {
+      "path": "docs/src/foundations/when-general-model-collapses.md",
+      "sha256": "b20850c7f9193fb3963ee3112a34758c54bc56924259a2884d50043dc7a79750"
+    },
+    {
+      "path": "docs/src/start/first-failure-parallel-branches.md",
+      "sha256": "7f5e4204c13a3113a44c599dce3161dbda3067a5b70867ade46f433903eee72e"
+    },
+    {
+      "path": "docs/src/transformations/circuit-coordinate-transformations.md",
+      "sha256": "0cf35ecf2e215c26a93bc17d4cac32f54dc3dde2ec156134c3657f7954d08da9"
+    },
+    {
+      "path": "docs/src/transformations/fixed-linear-transformer-factor-completion.md",
+      "sha256": "b30e6c5efec1878d4d9ac71e79feffdcabf7fbc5862f4656e9fdf9e17d3d5fb5"
+    },
+    {
+      "path": "docs/src/transformations/kron-ward-opti-kron.md",
+      "sha256": "f4b08610fdbfdb13384f3111e4d70bc8f0b8da1e5992e625b8439811c3ae0bb4"
+    },
+    {
+      "path": "docs/src/transformations/parameterized-transformer-tap-decisions.md",
+      "sha256": "12d0c3b95438fcd844c1ef4552d755765d177e32eabc03b99e87d16fe3b6cc19"
+    },
+    {
+      "path": "docs/src/transformations/transformer-winding-coordinate-normalization.md",
+      "sha256": "3f17032ace7c044bc436b7fb68ad78fa37ad9403567ee4d1e10a45a51b713774"
+    },
+    {
+      "path": "experiments/generated/balanced-transmission-witness.json",
+      "sha256": "2ffa917cf2d8765a3a3817f4f7d2fd2c5861d0ae2f60c1ee4a202bbca7872740"
+    },
+    {
+      "path": "experiments/generated/kron-ward-scenario-comparison.json",
+      "sha256": "753cec18f5147205f1c93879e79fc4de94ce18b3211cb0f3bcec6142892410b5"
+    },
+    {
+      "path": "experiments/generated/load-grounding-witnesses.json",
+      "sha256": "3395b71763571ab57897207bf7e1da6b07485d3544481e00e486725951f933ae"
+    },
+    {
+      "path": "experiments/generated/nonlinear-grounding-probe-witness.json",
+      "sha256": "f40c16dae548bae9fb4cc56e006aa4a9cb1a199ab66fe9adafd7bf2f90f9e355"
+    },
+    {
+      "path": "experiments/generated/nonlinear-two-point-grounding-continuation.json",
+      "sha256": "3f53f79e83b37b280b91ef0d68f62235134b7918ffd09d92a78e6f330eddf41b"
+    },
+    {
+      "path": "experiments/generated/parallel-branch-certificate.json",
+      "sha256": "f90cda3dd5d4556777f842617d46a98ea37bd60c0e48a52b900382bd7e05a242"
+    },
+    {
+      "path": "experiments/generated/parallel-opf-comparison.json",
+      "sha256": "7f59ee44d1daa7be1fd8a0e5e2ec0554517a865db588e371a0984a606b381b8d"
+    },
+    {
+      "path": "experiments/generated/positive-sequence-collapse-witness.json",
+      "sha256": "404613c6573bdeed055b0abc06ead8decbf78fba9e1cf1d506c344a8fb8f3113"
+    },
+    {
+      "path": "experiments/generated/solver-diagnostics-crosswalk.json",
+      "sha256": "d2061049cbf8aaeba0f4c107b2ae22ce91668359dea557a4ca3f91a9458a606d"
+    },
+    {
+      "path": "experiments/generated/transformer-factor-completion-certificate.json",
+      "sha256": "9f8bf3d47c4f8032f61cfb656e0a040fedb663403741655110ba1a2f461d74ad"
+    },
+    {
+      "path": "experiments/generated/transformer-tap-ac-decision-certificate.json",
+      "sha256": "94f736df2af80561cf4ab63845b9f21340ed98dcdc7d4446c2684818d0c3e656"
+    },
+    {
+      "path": "experiments/generated/transformer-tap-decision-certificate.json",
+      "sha256": "4281e31665c10e04682e21cfad879cb477e800b1c5b26139e7302defa8f6add6"
+    },
+    {
+      "path": "experiments/generated/transformer-winding-normalization-certificate.json",
+      "sha256": "90fc870e1e74d41731fd374ce7753f6adfa033dc256329a3fdbcfffefe40d04f"
+    },
+    {
+      "path": "experiments/generated/typed-kron-certificate.json",
+      "sha256": "c8df96b929e8a425e7986ee5620aa2f273c2b6a2bba86d7bd6c3d15eeeeb2c35"
+    },
+    {
+      "path": "knowledge/psk.toml",
+      "sha256": "3a867b411bb581908ec88da2235011d29f21ca9834f57e661cb75927e1372d0a"
+    },
+    {
+      "path": "llm/misconceptions.toml",
+      "sha256": "1bd6ab3823ce995bb01e33cb6b382c3f721ad06ed5a51800e65f8a629c270948"
+    },
+    {
+      "path": "review/release-candidate-manifest.json",
+      "sha256": "1909645d35246e3b8fa4ea804986cfbaf1a9b8baae859085d5bc1c42ed54dd4d"
+    },
+    {
+      "path": "schemas/power-system-knowledge.schema.json",
+      "sha256": "818bc8974084b473d6bd808145f3aadc5062c1411f919bc6736d63862e2077c7"
+    }
+  ]
+}

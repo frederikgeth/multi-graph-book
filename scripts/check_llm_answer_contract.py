@@ -29,6 +29,188 @@ def main() -> int:
             validation_errors.append(f"missing mandatory records: {sorted(expected - observed)}")
         if response["packet"]["status"] != "qualified":
             validation_errors.append(f"expected qualified packet, got {response['packet']['status']}")
+        if case["misconception_id"] == "parallel-admittance-implies-decision-equivalence":
+            packet = response["packet"]
+            if "knowledge:PSK-000001" not in observed:
+                validation_errors.append("parallel route omits mandatory PSK-000001")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000001"]:
+                validation_errors.append("parallel route scientific basis differs from PSK-000001")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["parallel_member_limit_preservation"]:
+                validation_errors.append("parallel route omits the executable preservation contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["parallel-rating-outer-relaxation-001"]:
+                validation_errors.append("parallel route omits the linked counterexample fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("parallel executable contract is not marked implemented")
+        if case["misconception_id"] == "ground-neutral-reference-are-one-node":
+            packet = response["packet"]
+            if "knowledge:PSK-000002" not in observed:
+                validation_errors.append("neutral/ground route omits mandatory PSK-000002")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000002"]:
+                validation_errors.append("neutral/ground route scientific basis differs from PSK-000002")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["neutral_ground_reference_preservation"]:
+                validation_errors.append("neutral/ground route omits the executable preservation contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["neutral-ground-reference-conflation-001"]:
+                validation_errors.append("neutral/ground route omits the linked counterexample fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("neutral/ground executable contract is not marked implemented")
+        if case["misconception_id"] == "solver-termination-implies-validated-solution":
+            packet = response["packet"]
+            if "knowledge:PSK-000003" not in observed:
+                validation_errors.append("solver-validity route omits mandatory PSK-000003")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000003"]:
+                validation_errors.append("solver-validity route scientific basis differs from PSK-000003")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["claimed_solution_validity"]:
+                validation_errors.append("solver-validity route omits the executable validation contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["claimed-feasible-invalid-solution-001"]:
+                validation_errors.append("solver-validity route omits the linked counterexample fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("solver-validity executable contract is not marked implemented")
+        if case["misconception_id"] == "wye-delta-share-nominal-voltage-base":
+            packet = response["packet"]
+            if "knowledge:PSK-000004" not in observed:
+                validation_errors.append("load-voltage-base route omits mandatory PSK-000004")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000004"]:
+                validation_errors.append("load-voltage-base route scientific basis differs from PSK-000004")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["load_voltage_base_consistency"]:
+                validation_errors.append("load-voltage-base route omits the executable consistency contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["load-voltage-base-mismatch-001"]:
+                validation_errors.append("load-voltage-base route omits the linked counterexample fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("load-voltage-base executable contract is not marked implemented")
+        if case["misconception_id"] == "fixed-tap-snapshot-preserves-adjustable-transformer":
+            packet = response["packet"]
+            if "knowledge:PSK-000005" not in observed:
+                validation_errors.append("transformer-tap route omits mandatory PSK-000005")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000005"]:
+                validation_errors.append("transformer-tap route scientific basis differs from PSK-000005")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["transformer_tap_domain_preservation"]:
+                validation_errors.append("transformer-tap route omits the executable domain-preservation contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["transformer-tap-domain-loss-001"]:
+                validation_errors.append("transformer-tap route omits the linked counterexample fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("transformer-tap executable contract is not marked implemented")
+        if case["misconception_id"] == "transformer-end-swap-is-ordinary-edge-reversal":
+            packet = response["packet"]
+            if "knowledge:PSK-000006" not in observed:
+                validation_errors.append("transformer-winding route omits mandatory PSK-000006")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000006"]:
+                validation_errors.append("transformer-winding route scientific basis differs from PSK-000006")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["transformer_winding_convention_preservation"]:
+                validation_errors.append("transformer-winding route omits the executable convention-preservation contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["transformer-winding-role-swap-001"]:
+                validation_errors.append("transformer-winding route omits the linked counterexample fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("transformer-winding executable contract is not marked implemented")
+        if case["misconception_id"] == "terminal-equivalence-implies-opf-equivalence":
+            packet = response["packet"]
+            if "knowledge:PSK-000007" not in observed:
+                validation_errors.append("decision-equivalence route omits mandatory PSK-000007")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000007"]:
+                validation_errors.append("decision-equivalence route scientific basis differs from PSK-000007")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["decision_preservation_manifest_completeness"]:
+                validation_errors.append("decision-equivalence route omits the manifest-completeness contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["decision-manifest-terminal-only-001"]:
+                validation_errors.append("decision-equivalence route omits the terminal-only manifest fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("decision-equivalence executable contract is not marked implemented")
+        if case["misconception_id"] == "kron-reduction-preserves-everything":
+            packet = response["packet"]
+            if "knowledge:PSK-000008" not in observed:
+                validation_errors.append("Kron route omits mandatory PSK-000008")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000008"]:
+                validation_errors.append("Kron route scientific basis differs from PSK-000008")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["kron_boundary_recovery_preservation"]:
+                validation_errors.append("Kron route omits the boundary/recovery contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["kron-boundary-grounding-001"]:
+                validation_errors.append("Kron route omits the linked grounding counterexample fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("Kron executable contract is not marked implemented")
+        if case["misconception_id"] == "transposition-implies-positive-sequence-exactness":
+            packet = response["packet"]
+            if "knowledge:PSK-000009" not in observed:
+                validation_errors.append("positive-sequence route omits mandatory PSK-000009")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000009"]:
+                validation_errors.append("positive-sequence route scientific basis differs from PSK-000009")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["positive_sequence_collapse_applicability"]:
+                validation_errors.append("positive-sequence route omits the collapse-applicability contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["positive-sequence-collapse-001"]:
+                validation_errors.append("positive-sequence route omits the linked collapse counterexample fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("positive-sequence executable contract is not marked implemented")
+        if case["misconception_id"] == "base-state-equivalent-is-globally-exact":
+            packet = response["packet"]
+            if "knowledge:PSK-000010" not in observed:
+                validation_errors.append("state-equivalent route omits mandatory PSK-000010")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000010"]:
+                validation_errors.append("state-equivalent route scientific basis differs from PSK-000010")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["state_dependent_equivalent_provenance"]:
+                validation_errors.append("state-equivalent route omits the update-provenance contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["state-dependent-equivalent-001"]:
+                validation_errors.append("state-equivalent route omits the linked frozen-map fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("state-equivalent executable contract is not marked implemented")
+        if case["misconception_id"] == "reference-or-rank-success-proves-nonsingularity":
+            packet = response["packet"]
+            if "knowledge:PSK-000011" not in observed:
+                validation_errors.append("reference/singularity route omits mandatory PSK-000011")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000011"]:
+                validation_errors.append("reference/singularity route scientific basis differs from PSK-000011")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["reference_singularity_validation"]:
+                validation_errors.append("reference/singularity route omits the validation bundle")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["reference-singularity-001"]:
+                validation_errors.append("reference/singularity route omits the linked floating-island fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("reference/singularity executable contract is not marked implemented")
+        if case["misconception_id"] == "terminal-permutation-is-cosmetic":
+            packet = response["packet"]
+            if "knowledge:PSK-000012" not in observed:
+                validation_errors.append("terminal-permutation route omits mandatory PSK-000012")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000012"]:
+                validation_errors.append("terminal-permutation route scientific basis differs from PSK-000012")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["terminal_permutation_invariance"]:
+                validation_errors.append("terminal-permutation route omits the permutation contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["terminal-permutation-001"]:
+                validation_errors.append("terminal-permutation route omits the linked fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("terminal-permutation executable contract is not marked implemented")
+        if case["misconception_id"] == "complete-feasibility-status-is-enough":
+            packet = response["packet"]
+            if "knowledge:PSK-000013" not in observed:
+                validation_errors.append("feasibility-witness route omits mandatory PSK-000013")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000013"]:
+                validation_errors.append("feasibility-witness route scientific basis differs from PSK-000013")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["solved_network_feasibility_validation"]:
+                validation_errors.append("feasibility-witness route omits the residual-witness contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["solved-network-feasibility-001"]:
+                validation_errors.append("feasibility-witness route omits the linked fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("feasibility-witness executable contract is not marked implemented")
+        if case["misconception_id"] == "unit-base-metadata-is-equivalence":
+            packet = response["packet"]
+            if "knowledge:PSK-000014" not in observed:
+                validation_errors.append("unit/base route omits mandatory PSK-000014")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000014"]:
+                validation_errors.append("unit/base route scientific basis differs from PSK-000014")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["unit_base_serialization_invariance"]:
+                validation_errors.append("unit/base route omits the serialization contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["unit-base-serialization-001"]:
+                validation_errors.append("unit/base route omits the linked fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("unit/base executable contract is not marked implemented")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:

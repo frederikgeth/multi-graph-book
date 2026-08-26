@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:multi-graph-book:schema:power-system-knowledge:0.1.0",
+  "title": "Federated power-system knowledge record",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "record_id",
+    "record_type",
+    "knowledge_id",
+    "kind",
+    "title",
+    "scientific_statement",
+    "scope",
+    "evidence_status",
+    "does_not_establish",
+    "book",
+    "executable",
+    "source",
+    "release",
+    "text"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "record_id": {"type": "string", "pattern": "^knowledge:PSK-[0-9]{6}$"},
+    "record_type": {"const": "scientific_knowledge"},
+    "knowledge_id": {"type": "string", "pattern": "^PSK-[0-9]{6}$"},
+    "kind": {
+      "enum": [
+        "misconception",
+        "modelling-antipattern",
+        "counterexample",
+        "negative-result",
+        "failure-mode",
+        "invalid-inference",
+        "numerical-pathology",
+        "software-antipattern",
+        "scope-boundary",
+        "open-question"
+      ]
+    },
+    "title": {"type": "string", "minLength": 1},
+    "scientific_statement": {"type": "string", "minLength": 1},
+    "scope": {"type": "string", "minLength": 1},
+    "evidence_status": {
+      "enum": [
+        "definition",
+        "established_result",
+        "empirical_result",
+        "engineering_practice",
+        "hypothesis",
+        "conjecture",
+        "open_question"
+      ]
+    },
+    "does_not_establish": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "book": {
+      "type": "object",
+      "required": [
+        "claim_ids",
+        "misconception_ids",
+        "certificate_ids",
+        "counterexample_ids",
+        "artifact_paths",
+        "source_paths"
+      ],
+      "properties": {
+        "claim_ids": {"$ref": "#/$defs/uniqueStrings"},
+        "misconception_ids": {"$ref": "#/$defs/uniqueStrings"},
+        "certificate_ids": {"$ref": "#/$defs/possiblyEmptyUniqueStrings"},
+        "counterexample_ids": {"$ref": "#/$defs/uniqueStrings"},
+        "artifact_paths": {"$ref": "#/$defs/uniqueStrings"},
+        "source_paths": {"$ref": "#/$defs/uniqueStrings"}
+      },
+      "additionalProperties": false
+    },
+    "executable": {
+      "type": "object",
+      "required": [
+        "repository",
+        "implementation_status",
+        "contract_ids",
+        "finding_codes",
+        "related_finding_codes",
+        "fixture_ids"
+      ],
+      "properties": {
+        "repository": {"const": "frederikgeth/BMOPFTools.jl"},
+        "implementation_status": {"enum": ["planned", "partial", "implemented"]},
+        "contract_ids": {"$ref": "#/$defs/uniqueStrings"},
+        "finding_codes": {"$ref": "#/$defs/uniqueStrings"},
+        "related_finding_codes": {"$ref": "#/$defs/uniqueStrings"},
+        "fixture_ids": {"$ref": "#/$defs/uniqueStrings"}
+      },
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "required": ["repository", "path", "anchor", "sha256"],
+      "properties": {
+        "repository": {"const": "frederikgeth/multi-graph-book"},
+        "path": {"const": "knowledge/psk.toml"},
+        "anchor": {"type": "string", "pattern": "^PSK-[0-9]{6}$"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "release": {"type": "object"},
+    "text": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "uniqueStrings": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "possiblyEmptyUniqueStrings": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "additionalProperties": false
+}

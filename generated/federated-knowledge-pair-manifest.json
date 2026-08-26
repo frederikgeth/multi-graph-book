@@ -1,0 +1,360 @@
+{
+  "bmopftools": {
+    "contract_ids": [
+      "claimed_solution_validity",
+      "decision_preservation_manifest_completeness",
+      "kron_boundary_recovery_preservation",
+      "load_voltage_base_consistency",
+      "neutral_ground_reference_preservation",
+      "parallel_member_limit_preservation",
+      "positive_sequence_collapse_applicability",
+      "reference_singularity_validation",
+      "solved_network_feasibility_validation",
+      "state_dependent_equivalent_provenance",
+      "terminal_permutation_invariance",
+      "transformer_tap_domain_preservation",
+      "transformer_winding_convention_preservation",
+      "unit_base_serialization_invariance"
+    ],
+    "corpus_sha256": "061ac1f7e9d4ff7929552d5573535dc44a655e563b2208415242a952fc90a133",
+    "knowledge_ids": [
+      "PSK-000001",
+      "PSK-000002",
+      "PSK-000003",
+      "PSK-000004",
+      "PSK-000005",
+      "PSK-000006",
+      "PSK-000007",
+      "PSK-000008",
+      "PSK-000009",
+      "PSK-000010",
+      "PSK-000011",
+      "PSK-000012",
+      "PSK-000013",
+      "PSK-000014"
+    ],
+    "manifest_id": "bmopftools-executable-knowledge-0.1.0",
+    "manifest_sha256": "7bd2bd74706e2ff516e2bd0cb635ba26fbedcf76d01c2d6ff7ae5b951cdd4cd2",
+    "package": {
+      "name": "BMOPFTools",
+      "version": "0.1.0"
+    },
+    "repository": "frederikgeth/BMOPFTools.jl",
+    "schema_version": "0.1.0"
+  },
+  "book": {
+    "corpus_sha256": "09a2e5372a2a1ec5dcc68d57418d85e6629211909f3dbb08b0f59f70975584b1",
+    "knowledge_ids": [
+      "PSK-000001",
+      "PSK-000002",
+      "PSK-000003",
+      "PSK-000004",
+      "PSK-000005",
+      "PSK-000006",
+      "PSK-000007",
+      "PSK-000008",
+      "PSK-000009",
+      "PSK-000010",
+      "PSK-000011",
+      "PSK-000012",
+      "PSK-000013",
+      "PSK-000014"
+    ],
+    "manifest_sha256": "2bcb9c3cdfc544d63adb96d15706cca0d02c46ba4f1a4e1cc834af0e091617f1",
+    "release": {
+      "external_reviewed_claims": 0,
+      "independent_human_double_coding": false,
+      "release_candidate_id": "mgb-2026-08-17-internal-rc",
+      "release_identity_sha256": "7b959c50016fc1130c0184e965c8c8d986bbef327a014614fba31db9c11a6a8f",
+      "status": "internally_validated_not_externally_reviewed"
+    },
+    "repository": "frederikgeth/multi-graph-book",
+    "schema_version": "0.1.0"
+  },
+  "links": {
+    "PSK-000001": {
+      "contracts": [
+        {
+          "contract_id": "parallel_member_limit_preservation",
+          "entrypoint": "check_parallel_member_limit_preservation",
+          "finding_codes": [
+            "E.CONTRACT.PARALLEL_TERMINAL_RELATION_MISMATCH",
+            "W.CONTRACT.PARALLEL_MEMBER_LIMIT_LOSS",
+            "I.CONTRACT.NOT_APPLICABLE",
+            "W.CONTRACT.INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "parallel-rating-outer-relaxation-001"
+          ],
+          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000002": {
+      "contracts": [
+        {
+          "contract_id": "neutral_ground_reference_preservation",
+          "entrypoint": "check_neutral_ground_reference_preservation",
+          "finding_codes": [
+            "E.CONTRACT.NEUTRAL_IDENTITY_LOSS",
+            "E.CONTRACT.NEUTRAL_CONTINUITY_MISMATCH",
+            "E.CONTRACT.GROUND_REFERENCE_RELATION_MISMATCH",
+            "I.CONTRACT.NEUTRAL_GROUND_NOT_APPLICABLE",
+            "W.CONTRACT.NEUTRAL_GROUND_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "neutral-ground-reference-conflation-001"
+          ],
+          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000003": {
+      "contracts": [
+        {
+          "contract_id": "claimed_solution_validity",
+          "entrypoint": "check_claimed_solution_validity",
+          "finding_codes": [
+            "E.CONTRACT.CLAIMED_FEASIBLE_SOLUTION_INVALID",
+            "I.CONTRACT.SOLUTION_STATUS_NOT_APPLICABLE",
+            "W.CONTRACT.SOLUTION_VALIDATION_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "claimed-feasible-invalid-solution-001"
+          ],
+          "source_sha256": "9be8d8593476ab6ba8c67bde349ed86dc80c0ef6bf23b23fc9e3527daaa3a215"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000004": {
+      "contracts": [
+        {
+          "contract_id": "load_voltage_base_consistency",
+          "entrypoint": "check_load_voltage_base_consistency",
+          "finding_codes": [
+            "E.CONTRACT.LOAD_VOLTAGE_BASE_MISMATCH",
+            "I.CONTRACT.LOAD_VOLTAGE_BASE_NOT_APPLICABLE",
+            "W.CONTRACT.LOAD_VOLTAGE_BASE_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "load-voltage-base-mismatch-001"
+          ],
+          "source_sha256": "af5777a1b6dff85fa7c814edec66e2a3dd464f441441ddcbd570c2d0ef823c07"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000005": {
+      "contracts": [
+        {
+          "contract_id": "transformer_tap_domain_preservation",
+          "entrypoint": "check_transformer_tap_domain_preservation",
+          "finding_codes": [
+            "E.CONTRACT.TRANSFORMER_TAP_DOMAIN_LOSS",
+            "I.CONTRACT.TRANSFORMER_TAP_NOT_APPLICABLE",
+            "W.CONTRACT.TRANSFORMER_TAP_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "transformer-tap-domain-loss-001"
+          ],
+          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000006": {
+      "contracts": [
+        {
+          "contract_id": "transformer_winding_convention_preservation",
+          "entrypoint": "check_transformer_winding_convention_preservation",
+          "finding_codes": [
+            "E.CONTRACT.TRANSFORMER_WINDING_INCIDENCE_MISMATCH",
+            "E.CONTRACT.TRANSFORMER_WINDING_BASE_RATIO_MISMATCH",
+            "I.CONTRACT.TRANSFORMER_WINDING_NOT_APPLICABLE",
+            "W.CONTRACT.TRANSFORMER_WINDING_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "transformer-winding-role-swap-001"
+          ],
+          "source_sha256": "72ec95753f7688a1f243bd29e6de10668927274fb355f2343e0c79492f54d853"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000007": {
+      "contracts": [
+        {
+          "contract_id": "decision_preservation_manifest_completeness",
+          "entrypoint": "check_decision_preservation_manifest",
+          "finding_codes": [
+            "E.CONTRACT.DECISION_MANIFEST_EVIDENCE_GAP",
+            "E.CONTRACT.DECISION_MANIFEST_UNRESOLVED_OBLIGATION",
+            "I.CONTRACT.DECISION_MANIFEST_NOT_APPLICABLE",
+            "W.CONTRACT.DECISION_MANIFEST_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "decision-manifest-terminal-only-001"
+          ],
+          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000008": {
+      "contracts": [
+        {
+          "contract_id": "kron_boundary_recovery_preservation",
+          "entrypoint": "check_kron_boundary_recovery",
+          "finding_codes": [
+            "E.CONTRACT.KRON_BOUNDARY_RELATION_MISMATCH",
+            "E.CONTRACT.KRON_GROUNDING_PRECONDITION",
+            "I.CONTRACT.KRON_NOT_APPLICABLE",
+            "W.CONTRACT.KRON_INDETERMINATE",
+            "W.CONTRACT.KRON_RECOVERY_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "kron-boundary-grounding-001"
+          ],
+          "source_sha256": "0e23362514caaf436f3f1c57e48d4a6ac68c3b2f734e0e3d9470e38547398272"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000009": {
+      "contracts": [
+        {
+          "contract_id": "positive_sequence_collapse_applicability",
+          "entrypoint": "check_positive_sequence_collapse",
+          "finding_codes": [
+            "E.CONTRACT.SEQUENCE_SYMMETRY_MISMATCH",
+            "E.CONTRACT.SEQUENCE_DOMAIN_MISMATCH",
+            "E.CONTRACT.SEQUENCE_RELATION_MISMATCH",
+            "I.CONTRACT.SEQUENCE_NOT_APPLICABLE",
+            "W.CONTRACT.SEQUENCE_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "positive-sequence-collapse-001"
+          ],
+          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000010": {
+      "contracts": [
+        {
+          "contract_id": "state_dependent_equivalent_provenance",
+          "entrypoint": "check_state_dependent_equivalent",
+          "finding_codes": [
+            "E.CONTRACT.STATE_UPDATE_PROVENANCE_LOSS",
+            "E.CONTRACT.STATE_DOMAIN_MISMATCH",
+            "E.CONTRACT.STATE_BASE_ALIGNMENT_MISMATCH",
+            "I.CONTRACT.STATE_EQUIVALENT_NOT_APPLICABLE",
+            "W.CONTRACT.STATE_EQUIVALENT_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "state-dependent-equivalent-001"
+          ],
+          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000011": {
+      "contracts": [
+        {
+          "contract_id": "reference_singularity_validation",
+          "entrypoint": "check_reference_singularity",
+          "finding_codes": [
+            "E.CONTRACT.REFERENCE_LOSS",
+            "E.CONTRACT.SINGULARITY_CHANGE",
+            "I.CONTRACT.REFERENCE_SINGULARITY_NOT_APPLICABLE",
+            "W.CONTRACT.REFERENCE_SINGULARITY_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "reference-singularity-001"
+          ],
+          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000012": {
+      "contracts": [
+        {
+          "contract_id": "terminal_permutation_invariance",
+          "entrypoint": "check_terminal_permutation_invariance",
+          "finding_codes": [
+            "E.CONTRACT.TERMINAL_ORDER_MISMATCH",
+            "E.CONTRACT.PERMUTATION_RELATION_MISMATCH",
+            "I.CONTRACT.PERMUTATION_NOT_APPLICABLE",
+            "W.CONTRACT.PERMUTATION_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "terminal-permutation-001"
+          ],
+          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000013": {
+      "contracts": [
+        {
+          "contract_id": "solved_network_feasibility_validation",
+          "entrypoint": "check_solved_network_feasibility",
+          "finding_codes": [
+            "E.CONTRACT.FEASIBILITY_RESIDUAL_VIOLATION",
+            "E.CONTRACT.FEASIBILITY_DEVICE_LIMIT_VIOLATION",
+            "I.CONTRACT.FEASIBILITY_NOT_APPLICABLE",
+            "W.CONTRACT.FEASIBILITY_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "solved-network-feasibility-001"
+          ],
+          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000014": {
+      "contracts": [
+        {
+          "contract_id": "unit_base_serialization_invariance",
+          "entrypoint": "check_unit_base_serialization_invariance",
+          "finding_codes": [
+            "E.CONTRACT.UNIT_SYSTEM_MISMATCH",
+            "E.CONTRACT.BASE_MAP_MISMATCH",
+            "E.CONTRACT.SERIALIZED_PAYLOAD_MISMATCH",
+            "W.CONTRACT.UNIT_BASE_SERIALIZATION_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "unit-base-serialization-001"
+          ],
+          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    }
+  },
+  "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
+  "pair_sha256": "4b6a3edb7135f7f4b4084b0866bf99d68812a9a0cc7e3fc976f0f73d7773e6b3",
+  "schema_version": "0.1.0"
+}
