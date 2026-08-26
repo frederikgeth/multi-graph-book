@@ -232,7 +232,7 @@
     },
     {
       "path": "CONTRIBUTING.md",
-      "sha256": "c34e67db81b9e42108f18f2aae869e2ebb03ae4ee22902dad5a2f999581debeb"
+      "sha256": "4247efb7f865263de4e1eb76c3b148b35aab071fb0cc03dac567ef405ead4936"
     },
     {
       "path": "QUALITY_CONTROL.md",
@@ -3372,7 +3372,7 @@
     },
     {
       "path": "llm/generated/corpus-manifest.json",
-      "sha256": "96ff27cdadce504cb3f9e1a037f1f2b315f551e397df1414a39d344021c82a9a"
+      "sha256": "58dacf72ef76a1cdfcbeb643aedcab6aa63a72fcb03de8d834e0663cb1dfa5ee"
     },
     {
       "path": "llm/generated/corpus.jsonl",
@@ -3773,6 +3773,10 @@
     {
       "path": "scripts/mcp_llm_server.py",
       "sha256": "977d9188d5f4f54741cb8699ca0d7c35d6193e415d1b017318e6fbede37147a7"
+    },
+    {
+      "path": "scripts/regenerate_all.py",
+      "sha256": "76a2571aaeb3a7d199b4e456ac5f3710dcfe8605fd4bf7e95babc5748b2e2bcc"
     },
     {
       "path": "scripts/reproduce_balanced_transmission.py",

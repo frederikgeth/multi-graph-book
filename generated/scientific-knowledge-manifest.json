@@ -29,7 +29,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "4ba32bcbae9c0d2ebe06ae847cb0a226545facf072d7f760fe5dd7209fe3d90e"
+      "sha256": "0405340b6d64e4ad0d273637d207892ba7ba3c1438a7c2fbcc7cedfe09b7420d"
     },
     {
       "path": "docs/src/cases/four-wire-impedance-model-ladder.md",
@@ -153,7 +153,7 @@
     },
     {
       "path": "review/release-candidate-manifest.json",
-      "sha256": "13e0c31bf9d6ac57dfa578628b077120272647b054e764118a871fce13adcf32"
+      "sha256": "e587ff357250942b3415c396b839930ed46eb6ae6eebb5167685c57019f95aa1"
     },
     {
       "path": "schemas/power-system-knowledge.schema.json",

@@ -128,6 +128,19 @@ python3 scripts/check_release_candidate.py --write
 python3 scripts/check_release_candidate.py --check
 ```
 
+When changing claims, PSKs, or canonical source pages, regenerate the derived
+cross-repository artifacts first:
+
+```sh
+python3 scripts/regenerate_all.py
+```
+
+The command assumes sibling checkouts at `../BMOPFTools.jl`; pass
+`--bmopf-root /path/to/BMOPFTools.jl` when using another layout. It runs the
+scientific export, federated pair check, and LLM corpus generation in their
+dependency order. Follow it with the retrieval, access, answer-contract, and
+release checks above.
+
 The first command records the candidate's observed counts and hashes; the
 second fails if any release input or generated output has drifted. This gate is
 not external review and does not convert the single-coded literature seed into
