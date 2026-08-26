@@ -236,10 +236,30 @@ models, grounding-asset state, fault current, touch voltage, or protection
 operation. Coupled grounding models and missing evidence are refused explicitly
 rather than collapsed to scalar assumptions.
 
-With transformation and model-semantics slices now traced end to end, the next
-validation slice is solver termination versus independently validated solution
-quality. Only after that third category is clean should shared infrastructure be
-generalized beyond the needs demonstrated by these slices.
+## Third vertical slice: solver termination and solution validity
+
+The third slice tests an invalid inference about numerical evidence. Book object
+`PSK-000003` links `NUMERICAL-001`, `NUMERICAL-004`, and the
+`solver-termination-implies-validated-solution` misconception to BMOPFTools
+contract `claimed_solution_validity`.
+
+The initial executable domain treats a claimed-feasible termination status as
+an applicability precondition. It requires complete numeric bus-terminal data,
+checks the result tree for non-finite values, and independently recomputes
+declared bus voltage and angle limits through the existing solution profiler.
+The minimized counterexample reports `LOCALLY_SOLVED` while violating a declared
+voltage range.
+
+This is intentionally not a complete feasibility or optimality certificate.
+Network equations, device limits, load-model residuals, power balance, recovery,
+objective guarantees, and solver derivatives remain explicit future contract
+dimensions.
+
+The three vertical slices now cover transformation preservation, model
+semantics, and numerical/scientific inference. Shared infrastructure may now be
+generalized incrementally, starting with registry-scale inventory and additional
+high-consequence PSK links, while each new executable check retains its own
+applicability, evidence, counterexample, and refusal semantics.
 
 ## Federated discovery and context assembly
 

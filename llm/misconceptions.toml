@@ -142,3 +142,16 @@ operational_consequence = "Treating generated signed cross edges as assets can c
 mandatory_claim_ids = ["COUPLED-CORRIDOR-001", "COUPLED-CORRIDOR-002"]
 mandatory_concept_ids = ["mutual-coupling-relation", "parallel", "equivalence-exactness-preservation"]
 source_paths = ["docs/src/cases/coupled-multivoltage-corridor.md", "docs/src/foundations/cycles-parallelism-radiality.md", "docs/src/foundations/preservation-contracts.md"]
+
+[[misconception]]
+id = "solver-termination-implies-validated-solution"
+title = "Successful solver termination proves the returned solution is scientifically valid"
+severity = "critical"
+query_patterns = ["solver says optimal", "locally solved means feasible", "solver success validates solution", "termination status proof", "trust optimal solution", "successful opf result", "opf converged successfully", "solver converged so correct", "accept solved result"]
+tempting_answer = "The solver returned a successful or optimal status, so the result satisfies the model and is valid for the study."
+required_qualification = "Termination status is algorithm evidence only; independently validate the returned numeric values, relevant equations, bounds, residuals, recovery obligations, and the actual local or global optimality guarantee before making a scientific conclusion."
+safe_shorthand = "Solved is safe shorthand only when the required independent validation dimensions and optimality level are stated."
+operational_consequence = "The shortcut can accept non-finite values, violated voltage or equipment limits, nonzero model residuals, incomplete result extraction, or a local point presented as a global decision."
+mandatory_claim_ids = ["NUMERICAL-001", "NUMERICAL-004"]
+mandatory_concept_ids = ["state", "rating-limit-constraint"]
+source_paths = ["docs/src/foundations/numerical-consequences.md"]

@@ -1429,6 +1429,23 @@ review_date = ""
 unresolved_issue = "Extend the chain to a nonlinear AC decision model, parameter uncertainty, and independent error analysis before treating it as a general certification theorem."
 
 [[claim]]
+claim_id = "NUMERICAL-004"
+exactness_object = "solution_validation"
+preservation_dimensions = ['numerical_structure', 'terminal_behavior', 'limits', 'decision']
+chapter = "docs/src/foundations/numerical-consequences.md"
+claim_text = "A solver termination status is an algorithm report, not an independent solution-validity certificate; any scientific claim based on returned primal values must separately check the relevant numeric finiteness, equations, bounds, residuals, recovery obligations, and optimality level."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "book_solution_evidence_contract_and_package_diagnostics_crosswalk"
+citation_keys = []
+model_scope = "steady-state power-flow and optimization results with declared solver status, primal result coordinates, study constraints, and validation tolerances"
+assumptions = "the solver status vocabulary and each independently checked dimension are reported separately; unchecked dimensions remain explicit"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the initial bus-result contract to equation residuals, device limits, power balance, objective and global-optimality evidence, and independent solver reproduction."
+
+[[claim]]
 claim_id = "TR-NEG-001"
 exactness_object = "observation_sample"
 preservation_dimensions = ['structure', 'provenance', 'decision']

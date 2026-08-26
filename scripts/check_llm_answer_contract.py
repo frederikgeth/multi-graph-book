@@ -55,6 +55,19 @@ def main() -> int:
                 validation_errors.append("neutral/ground route omits the linked counterexample fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("neutral/ground executable contract is not marked implemented")
+        if case["misconception_id"] == "solver-termination-implies-validated-solution":
+            packet = response["packet"]
+            if "knowledge:PSK-000003" not in observed:
+                validation_errors.append("solver-validity route omits mandatory PSK-000003")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000003"]:
+                validation_errors.append("solver-validity route scientific basis differs from PSK-000003")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["claimed_solution_validity"]:
+                validation_errors.append("solver-validity route omits the executable validation contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["claimed-feasible-invalid-solution-001"]:
+                validation_errors.append("solver-validity route omits the linked counterexample fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("solver-validity executable contract is not marked implemented")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:

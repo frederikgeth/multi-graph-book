@@ -76,3 +76,40 @@ related_finding_codes = [
   "E.INT.NO_VOLTAGE_REFERENCE",
 ]
 fixture_ids = ["neutral-ground-reference-conflation-001"]
+
+[[knowledge]]
+id = "PSK-000003"
+kind = "invalid-inference"
+title = "Solver termination does not establish independently validated solution quality"
+scientific_statement = "A claimed-feasible or optimal solver termination status is algorithm evidence, not an independent certificate that the returned primal values are finite, satisfy the relevant equations and limits, support the required recovery, or meet a stated local or global optimality guarantee."
+scope = "Steady-state power-flow and optimization results with a declared termination status, returned primal coordinates, study constraints, and explicit validation tolerances."
+evidence_status = "definition"
+does_not_establish = [
+  "Every result with LOCALLY_SOLVED or OPTIMAL status is invalid.",
+  "Passing the initial bus-result contract establishes network equations, all equipment limits, power balance, or optimality.",
+  "One package's status vocabulary or tolerance policy applies unchanged to every solver interface.",
+]
+
+[knowledge.book]
+claim_ids = ["NUMERICAL-001", "NUMERICAL-004"]
+misconception_ids = ["solver-termination-implies-validated-solution"]
+certificate_ids = []
+counterexample_ids = ["claimed-feasible-invalid-solution-001"]
+artifact_paths = ["experiments/generated/solver-diagnostics-crosswalk.json"]
+source_paths = ["docs/src/foundations/numerical-consequences.md"]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["claimed_solution_validity"]
+finding_codes = [
+  "E.CONTRACT.CLAIMED_FEASIBLE_SOLUTION_INVALID",
+  "I.CONTRACT.SOLUTION_STATUS_NOT_APPLICABLE",
+  "W.CONTRACT.SOLUTION_VALIDATION_INDETERMINATE",
+]
+related_finding_codes = [
+  "E.SOL.NAN_IN_RESULT",
+  "E.SOL.VOLT_VIOLATION",
+  "E.SOL.ANGLE_VIOLATION",
+]
+fixture_ids = ["claimed-feasible-invalid-solution-001"]

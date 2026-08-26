@@ -1,11 +1,12 @@
 {
-  "corpus_sha256": "c23b4936129ef636f232e07429727b7f4f77d6ee44a40fd04ba7c95ace78543c",
+  "corpus_sha256": "e4996df211e0fe2bb798b8c6efef4bc2c22a7e17185e6b5c5e6176b10927b1b7",
   "knowledge_ids": [
     "PSK-000001",
-    "PSK-000002"
+    "PSK-000002",
+    "PSK-000003"
   ],
   "manifest_id": "multi-graph-book-scientific-knowledge-0.1.0",
-  "record_count": 2,
+  "record_count": 3,
   "release": {
     "external_reviewed_claims": 0,
     "independent_human_double_coding": false,
@@ -17,11 +18,15 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "7665586ed6a8a607a3d601f703193adb55a49ad64ed8a50cfa5557d5cbd92aeb"
+      "sha256": "a7d325acb7696ec088ac731e4b8ae3f02ebfab2515f35efc22f06c9521710991"
     },
     {
       "path": "docs/src/foundations/earth-ground-models.md",
       "sha256": "64f86cb284b55a08ffe03ad4ab6e6617f74838a3be283a61671da39294cffae4"
+    },
+    {
+      "path": "docs/src/foundations/numerical-consequences.md",
+      "sha256": "164e9431de5cefb814bf05ea11934a8f29d897679f5d2a216cec8700a669fb32"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
@@ -40,12 +45,16 @@
       "sha256": "7f59ee44d1daa7be1fd8a0e5e2ec0554517a865db588e371a0984a606b381b8d"
     },
     {
+      "path": "experiments/generated/solver-diagnostics-crosswalk.json",
+      "sha256": "d2061049cbf8aaeba0f4c107b2ae22ce91668359dea557a4ca3f91a9458a606d"
+    },
+    {
       "path": "knowledge/psk.toml",
-      "sha256": "158fdd51b8ff0a3732c6635a8b65e297a29394fabf9d93cbcd672c90157a9c89"
+      "sha256": "b363285bbdfdf5c81ef0505035806532bb6c4a9039b17b60b0b597d78e8c3d50"
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "6773f2584077655a7a47cced994a8ab790d386b664be9658b569df34c062b08f"
+      "sha256": "2d6bf0635eedab213b75133f38097a8aa45c617a8dbe71080becbcccfccfadb4"
     },
     {
       "path": "review/release-candidate-manifest.json",

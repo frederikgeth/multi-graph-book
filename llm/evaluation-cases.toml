@@ -332,3 +332,33 @@ required_claim_ids = ["COUPLED-CORRIDOR-001", "COUPLED-CORRIDOR-002"]
 required_concept_ids = ["mutual-coupling-relation", "parallel", "equivalence-exactness-preservation"]
 required_answer_elements = ["limit exactness to the fixed-linear terminal equation and recovered source currents", "state that limits, states, protection, and decisions remain untested"]
 forbidden_simplifications = ["terminal-equation exactness proves OPF or protection equivalence"]
+
+[[case]]
+case_id = "EVAL-SOLVER-VALIDITY-STUDENT"
+audience = "student"
+question = "If an optimization solver says LOCALLY_SOLVED or OPTIMAL, why do I still need to check the answer?"
+misconception_id = "solver-termination-implies-validated-solution"
+required_claim_ids = ["NUMERICAL-001", "NUMERICAL-004"]
+required_concept_ids = ["state", "rating-limit-constraint"]
+required_answer_elements = ["separate the solver status from independent primal validation", "check finite values, equations, bounds, and residuals relevant to the study"]
+forbidden_simplifications = ["a successful status proves every model equation and limit"]
+
+[[case]]
+case_id = "EVAL-SOLVER-VALIDITY-SOFTWARE"
+audience = "software_engineer"
+question = "Can a pipeline accept an OPF result solely because termination_status is OPTIMAL or LOCALLY_SOLVED?"
+misconception_id = "solver-termination-implies-validated-solution"
+required_claim_ids = ["NUMERICAL-001", "NUMERICAL-004"]
+required_concept_ids = ["state", "rating-limit-constraint"]
+required_answer_elements = ["treat status as a precondition rather than a validation result", "run completeness, finiteness, equation, bound, residual, and recovery checks"]
+forbidden_simplifications = ["one status string is a complete solution certificate"]
+
+[[case]]
+case_id = "EVAL-SOLVER-VALIDITY-POWER"
+audience = "power_engineer"
+question = "The OPF converged successfully; is that enough to use its dispatch and voltages for an operational decision?"
+misconception_id = "solver-termination-implies-validated-solution"
+required_claim_ids = ["NUMERICAL-001", "NUMERICAL-004"]
+required_concept_ids = ["state", "rating-limit-constraint"]
+required_answer_elements = ["independently check study equations, voltages, equipment limits, and balance", "state whether optimality is local, global, or unverified"]
+forbidden_simplifications = ["convergence alone establishes a physically valid globally optimal dispatch"]

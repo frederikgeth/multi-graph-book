@@ -2,7 +2,7 @@
 
 **Page status:** maintained cross-repository implementation trace and scope boundary.
 
-This page traces two scientific statements from book evidence to executable BMOPFTools guardrails and back into the book's existing LLM context packets. The stable ownership rules are defined in the repository-root `ARCHITECTURE.md`; this page is the worked implementation trace.
+This page traces three scientific statements from book evidence to executable BMOPFTools guardrails and back into the book's existing LLM context packets. The stable ownership rules are defined in the repository-root `ARCHITECTURE.md`; this page is the worked implementation trace.
 
 ## First trace: parallel member limits
 
@@ -97,6 +97,44 @@ counterexample, implemented BMOPFTools contract, dedicated Finding codes, and
 the unresolved dimensions without changing the deterministic router or its
 `qualified`, `under_retrieved`, and `unsupported` semantics.
 
+## Third trace: solver termination and solution validity
+
+The third slice tests an invalid scientific inference about numerical evidence:
+
+| Layer | Stable identity | Owner | Purpose |
+|---|---|---|---|
+| Scientific knowledge | `PSK-000003` | this book | Separates algorithm status from independently validated solution evidence |
+| Claims | `NUMERICAL-001`, `NUMERICAL-004` | this book | Require residual/error evidence and define the solution-validation boundary |
+| Misconception | `solver-termination-implies-validated-solution` | this book | Routes successful-status shortcuts to mandatory qualification |
+| Executable contract | `claimed_solution_validity` | BMOPFTools | Checks the initial supported dimensions of a claimed-feasible result |
+| API operation | `check_claimed_solution_validity` | BMOPFTools | Exposes the four-status contract result without rerunning a solver |
+| Counterexample fixture | `claimed-feasible-invalid-solution-001` | BMOPFTools | Returns `LOCALLY_SOLVED` together with a declared voltage-limit violation |
+| Finding | `E.CONTRACT.CLAIMED_FEASIBLE_SOLUTION_INVALID` | BMOPFTools | Reports that independent evidence contradicts the feasible-status inference |
+
+`PSK-000003` states that a solver termination label is algorithm evidence, not
+an independent certificate of finite primal values, model equations, study
+limits, recovery, or local/global optimality. The related book diagnostics
+artifact already records solver-status and package-diagnostic layers separately;
+the package fixture now makes the invalid inference directly executable.
+
+The fixture network declares a 200--260 V bus-voltage range. Its negative
+result is labelled `LOCALLY_SOLVED` but reports 180.5 V. The contract first
+requires complete numeric `vr`, `vi`, and `vm` data for every declared bus
+terminal, then reuses BMOPFTools' existing `profile_solution` implementation.
+It retains `E.SOL.VOLT_VIOLATION` as underlying evidence and emits the dedicated
+contract finding. A companion 230.5 V result passes only termination status,
+result-tree finiteness, and the declared bus voltage/angle dimensions.
+
+That pass is intentionally not a general solution certificate. Network-equation
+residuals, thermal and device limits, load-model residuals, power balance,
+objective optimality, global guarantees, and solver derivative quality remain
+explicitly unassessed. A non-feasible solver status is `inapplicable`; missing
+status or bus-terminal evidence is `indeterminate`.
+
+All three audience routes make `knowledge:PSK-000003` mandatory and expose the
+counterexample, executable contract, dedicated Findings, and unresolved checks
+through the same deterministic, source-hash-bound context machinery.
+
 ## What generalizes
 
 The federation pattern generalizes to other scientific guardrails:
@@ -107,7 +145,7 @@ The federation pattern generalizes to other scientific guardrails:
 - implementations can report `passed`, `failed`, `inapplicable`, or `indeterminate` without turning absence of evidence into a pass; and
 - source hashes make context packets and cross-repository links auditable.
 
-The numerical formula used by the first contract does **not** generalize automatically. The scalar voltage-drop reduction, lack of shunts, fixed linear admittances, common coordinates, and explicit current ratings are case-specific. The second contract likewise does not turn relation matching into electrical equivalence: its explicit-neutral and scalar neutral-only grounding domain is case-specific. Multiconductor coupling, nonlinear devices, operating-state dependence, explicit-earth networks, protection quantities, switching choices, member provenance, and general feasible-set projection require separate PSK objects or broader contracts with their own evidence and fixtures.
+The numerical formula used by the first contract does **not** generalize automatically. The scalar voltage-drop reduction, lack of shunts, fixed linear admittances, common coordinates, and explicit current ratings are case-specific. The second contract likewise does not turn relation matching into electrical equivalence: its explicit-neutral and scalar neutral-only grounding domain is case-specific. The third contract establishes that the contract/result/refusal machinery generalizes to post-solve evidence, but its initial bus-result coverage is not a universal feasibility or optimality validator. Multiconductor coupling, nonlinear devices, explicit-earth networks, protection quantities, full equation residuals, device constraints, recovery, and global optimality require separate PSK objects or broader contracts with their own evidence and fixtures.
 
 ## Reproduction and release pairing
 
