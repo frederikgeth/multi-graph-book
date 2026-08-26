@@ -368,6 +368,26 @@ The pass does not replace equation-level Ybus/Jacobian or solver validation;
 the package checks declaration consistency only. Existing numerical and
 grounding evidence remains the scientific basis.
 
+## Twelfth trace: terminal/conductor ordering and permutation
+
+The twelfth slice turns a typed coordinate-action obligation into a narrow
+metamorphic primitive check:
+
+| Layer | Stable identity | Owner | Purpose |
+|---|---|---|---|
+| Scientific knowledge | `PSK-000012` | this book | Requires explicit bijective coordinate action on endpoint maps and matrix factors |
+| Claims | `TR-KRON-001`, `PRESERVE-001` | this book | Establish typed terminal coordinates and the boundary between primitive and study equivalence |
+| Misconception | `terminal-permutation-is-cosmetic` | this book | Routes relabelling shortcuts to endpoint-map and matrix checks |
+| Executable contract | `terminal_permutation_invariance` | BMOPFTools | Checks bijection, endpoint maps, and row/column permutation relation |
+| API operation | `check_terminal_permutation_invariance` | BMOPFTools | Reports order mismatch, relation mismatch, or qualified pass |
+| Counterexample fixture | `terminal-permutation-001` | BMOPFTools | Keeps labels aligned while perturbing one target matrix entry |
+| Findings | `E.CONTRACT.TERMINAL_ORDER_MISMATCH`, `E.CONTRACT.PERMUTATION_RELATION_MISMATCH` | BMOPFTools | Separates coordinate-map and primitive-factor failures |
+
+The package pass is not a complete coordinate-transformation theorem. It
+leaves downstream limits, nonlinear state, network feasible sets, decisions,
+objectives, recovery, and solver behavior unassessed; the book retains those
+claims and the pedagogical permutation examples.
+
 ## What generalizes
 
 The federation pattern generalizes to other scientific guardrails:

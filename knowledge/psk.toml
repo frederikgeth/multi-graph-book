@@ -458,3 +458,40 @@ related_finding_codes = [
   "E.INT.SINGULAR_YBUS",
 ]
 fixture_ids = ["reference-singularity-001"]
+
+[[knowledge]]
+id = "PSK-000012"
+kind = "modelling-antipattern"
+title = "Terminal and conductor ordering must be checked as an explicit permutation"
+scientific_statement = "Relabelling terminal coordinates preserves a fixed linear primitive only when the declared permutation is bijective, both endpoint terminal maps follow it, and the target matrix is the corresponding row/column permutation; matching labels or conductor counts alone do not establish invariance."
+scope = "Fixed linear series primitives with explicit ordered endpoint terminal maps and an explicit permutation."
+evidence_status = "established_result"
+does_not_establish = [
+  "A terminal permutation is merely cosmetic in a complete network.",
+  "A passing primitive-level check proves asset identity, nonlinear-state, limits, decisions, or solver equivalence.",
+  "The package-level matrix relation replaces the book's complete typed coordinate-action theorem.",
+]
+
+[knowledge.book]
+claim_ids = ["TR-KRON-001", "PRESERVE-001"]
+misconception_ids = ["terminal-permutation-is-cosmetic"]
+certificate_ids = ["TR-KRON-001"]
+counterexample_ids = ["terminal-permutation-001"]
+artifact_paths = ["experiments/generated/typed-kron-certificate.json"]
+source_paths = [
+  "docs/src/transformations/circuit-coordinate-transformations.md",
+  "docs/src/foundations/when-general-model-collapses.md",
+]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["terminal_permutation_invariance"]
+finding_codes = [
+  "E.CONTRACT.TERMINAL_ORDER_MISMATCH",
+  "E.CONTRACT.PERMUTATION_RELATION_MISMATCH",
+  "I.CONTRACT.PERMUTATION_NOT_APPLICABLE",
+  "W.CONTRACT.PERMUTATION_INDETERMINATE",
+]
+related_finding_codes = ["W.PROV.SOURCE_INCOHERENT_ROTATION"]
+fixture_ids = ["terminal-permutation-001"]

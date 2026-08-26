@@ -512,3 +512,33 @@ required_claim_ids = ["TR-XFMR-001", "TR-XFMR-004"]
 required_concept_ids = ["object-node-interface", "phase-conductor-sequence-coordinate", "equivalence-exactness-preservation", "transformation-family"]
 required_answer_elements = ["require a complete typed reversal of winding roles, coil incidence, bases, transfer, and end-specific relations", "state that the initial package contract rejects the bare swap but does not certify subtype-changing reversal"]
 forbidden_simplifications = ["the transformer direction is merely a drawing arrow"]
+
+[[case]]
+case_id = "EVAL-TERMINAL-PERMUTATION-STUDENT"
+audience = "student"
+question = "If I permute the phase terminals of a line, is the terminal order cosmetic?"
+misconception_id = "terminal-permutation-is-cosmetic"
+required_claim_ids = ["TR-KRON-001", "PRESERVE-001"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "equivalence-exactness-preservation", "transformation-family"]
+required_answer_elements = ["declare a bijective permutation and transform both endpoint maps", "compare the target matrix with the corresponding row and column permutation", "state that this primitive check does not prove complete-network or decision equivalence"]
+forbidden_simplifications = ["matching conductor count or labels makes any relabelling exact"]
+
+[[case]]
+case_id = "EVAL-TERMINAL-PERMUTATION-SOFTWARE"
+audience = "software_engineer"
+question = "When an importer permutes conductor order, what must it check before exporting the line primitive?"
+misconception_id = "terminal-permutation-is-cosmetic"
+required_claim_ids = ["TR-KRON-001", "PRESERVE-001"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "equivalence-exactness-preservation", "transformation-family"]
+required_answer_elements = ["run the terminal_permutation_invariance contract with an explicit one-based bijection", "verify both endpoint maps and matrix conjugation and retain provenance", "keep limits, nonlinear state, and downstream decisions as separate checks"]
+forbidden_simplifications = ["sorting terminal names without permuting matrix rows and columns"]
+
+[[case]]
+case_id = "EVAL-TERMINAL-PERMUTATION-POWER"
+audience = "power_engineer"
+question = "A relabelled three-phase line has the same conductor count and nameplate. Is that enough to claim the same model?"
+misconception_id = "terminal-permutation-is-cosmetic"
+required_claim_ids = ["TR-KRON-001", "PRESERVE-001"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "equivalence-exactness-preservation", "transformation-family"]
+required_answer_elements = ["require endpoint-map alignment and the exact row-column permutation relation", "distinguish a primitive-level pass from complete feasible-set, objective, protection, and solver equivalence"]
+forbidden_simplifications = ["same nameplate and conductor count imply coordinate invariance"]

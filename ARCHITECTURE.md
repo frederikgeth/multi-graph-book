@@ -502,6 +502,28 @@ loses its reference and one rank. Its exact companion passes the narrow bundle.
 This complements existing connectivity, reference, Ybus, and solver
 diagnostics rather than replacing them.
 
+## Twelfth vertical slice: terminal/conductor ordering and permutation
+
+The twelfth slice makes typed coordinate-action evidence executable at the
+fixed-linear primitive boundary. Book object `PSK-000012` links the terminal
+map and coordinate-transformation claims to the misconception that conductor
+order is cosmetic. The book owns the general theorem: a relabelling must act
+on every typed terminal, phase/sequence coordinate, factor, observation,
+constraint, decision, and recovery map that depends on that coordinate.
+
+BMOPFTools owns `terminal_permutation_invariance`. It checks a declared
+nonempty one-based bijection, both endpoint terminal maps, and the exact
+source row/column permutation of a square series primitive. It reports a
+terminal-order mismatch separately from a matrix-relation mismatch. The pass
+is deliberately primitive-level evidence only; assets, nonlinear state,
+limits, complete feasible sets, objectives, decisions, and solver guarantees
+remain unassessed.
+
+The minimized fixture keeps endpoint maps aligned but perturbs one matrix
+entry, while its exact companion passes. This is a metamorphic complement to
+the book's typed coordinate-action and sequence/coupling material, not a
+replacement for a complete network transformation proof.
+
 ## Federated discovery and context assembly
 
 The existing book service remains the federation point for retrieval. Its

@@ -62,20 +62,20 @@ and a minimized negative witness.
 | 9 | Positive-sequence collapse applicability | `COLLAPSE-001..002`; sequence misconception | symmetry, grounding, terminal, and decision-domain guards | Implemented as `PSK-000009` |
 | 10 | Fixed versus state-dependent equivalents | formulation split, Ward/Kron, and load-dependence claims | detect frozen parameters and missing state/update provenance | Implemented as `PSK-000010` |
 | 11 | Floating references and singularity | grounding/reference and numerical-consequence claims | existing reference, connectivity, and singularity diagnostics | Implemented as `PSK-000011` |
-| 12 | Terminal/conductor ordering and permutation | typed terminal-map and coordinate-action claims | metamorphic relabelling/permutation invariance | Candidate; representation invariance |
+| 12 | Terminal/conductor ordering and permutation | typed terminal-map and coordinate-action claims | metamorphic relabelling/permutation invariance | Implemented as `PSK-000012` |
 | 13 | Complete solved-network feasibility | numerical validation boundary | equation, KCL, power-balance, device-limit, and recovery residuals | Candidate expansion of `PSK-000003`; not one status heuristic |
 | 14 | Unit/base and serialization invariance | normalization, coordinate, and provenance claims | round-trip and unit/base metamorphic tests | Candidate; importer/exporter preservation |
 
-The first scale-out milestone is now complete and extended: eleven stable PSK paths cover a
+The first scale-out milestone is now complete and extended: twelve stable PSK paths cover a
 transformation constraint, model semantics, numerical inference, connection
 coordinates, an adjustable decision domain, typed transformer-winding
 conventions, the terminal-to-decision evidence boundary, and Kron boundary/recovery
-conditions, positive-sequence domain closure, state/update provenance, and
-reference/rank validation. The next milestone is complete for the first eleven
-paths; remaining promotion is
-evidence-gated rather than quota-driven. The immediate eleventh slice is
-terminal/conductor ordering and permutation, which should promote existing
-typed coordinate-action evidence into metamorphic relabelling checks.
+conditions, positive-sequence domain closure, state/update provenance,
+reference/rank validation, and terminal/conductor permutation invariance. The
+next milestone is complete for the first twelve paths; remaining promotion is
+evidence-gated rather than quota-driven. The immediate thirteenth slice is
+complete solved-network feasibility: equation, KCL, power-balance, device-limit,
+and recovery residuals, kept separate from solver termination status.
 
 ### Product identity and editorial stance
 

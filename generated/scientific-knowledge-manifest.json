@@ -1,5 +1,5 @@
 {
-  "corpus_sha256": "88e17c4ebcd8e9045add7bc439d650d2abe958c71f3813aa2079594e0534d0c6",
+  "corpus_sha256": "0da12f7376a7da1b4cc268188f74f193fa64218974bcd27871c6d9d93262ec11",
   "knowledge_ids": [
     "PSK-000001",
     "PSK-000002",
@@ -11,10 +11,11 @@
     "PSK-000008",
     "PSK-000009",
     "PSK-000010",
-    "PSK-000011"
+    "PSK-000011",
+    "PSK-000012"
   ],
   "manifest_id": "multi-graph-book-scientific-knowledge-0.1.0",
-  "record_count": 11,
+  "record_count": 12,
   "release": {
     "external_reviewed_claims": 0,
     "independent_human_double_coding": false,
@@ -59,6 +60,10 @@
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
       "sha256": "7f5e4204c13a3113a44c599dce3161dbda3067a5b70867ade46f433903eee72e"
+    },
+    {
+      "path": "docs/src/transformations/circuit-coordinate-transformations.md",
+      "sha256": "0cf35ecf2e215c26a93bc17d4cac32f54dc3dde2ec156134c3657f7954d08da9"
     },
     {
       "path": "docs/src/transformations/fixed-linear-transformer-factor-completion.md",
@@ -134,11 +139,11 @@
     },
     {
       "path": "knowledge/psk.toml",
-      "sha256": "c6a6d79c03bea1e78c86977175116828039d01894a4044cc6168938191923b0a"
+      "sha256": "48370ef411cba46a0b9023ff5802da3246b93276694b125990bcd1f2dad80fc2"
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "071aecb0b2647ad1a6bf2bf7a20713358fcca4699c1285df47005db05bbb65e0"
+      "sha256": "d7021a4586a1dd50263c152b42e8629903f3797189233a4f3facbfeb0bd10447"
     },
     {
       "path": "review/release-candidate-manifest.json",

@@ -4,8 +4,8 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `30d83a1dc84dad3eb21a4340ec040d8bca346226df8bc089599b3aed0f3bd934`<br>
-**Cases:** 51
+**Corpus hash:** `8b41a126a293de14396b565cdb212cb27097d2009f8085e7174e026481d89e1f`<br>
+**Cases:** 54
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
 The latter is permitted to add mandatory claims and concepts only after the query router identifies
@@ -16,18 +16,18 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Measure | Result | Release gate? |
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
-| Open-corpus lexical evidence recall@5 | 23.4% | diagnostic |
-| Open-corpus lexical evidence recall@10 | 33.7% | diagnostic |
+| Open-corpus lexical evidence recall@5 | 22.5% | diagnostic |
+| Open-corpus lexical evidence recall@10 | 32.5% | diagnostic |
 | Open-corpus complete evidence@10 | 0.0% | diagnostic |
-| Evidence-only lexical recall@5 | 35.8% | diagnostic |
-| Evidence-only lexical recall@10 | 45.4% | diagnostic |
-| Evidence-only complete evidence@10 | 2.0% | diagnostic |
+| Evidence-only lexical recall@5 | 34.6% | diagnostic |
+| Evidence-only lexical recall@10 | 43.7% | diagnostic |
+| Evidence-only complete evidence@10 | 1.9% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
 | Packets with qualification, failure, shorthand, and scope | 100.0% | yes |
 | Corpus-release identity agreement | 100.0% | yes |
 | Held-out contract-router firing | 25/33 (75.8%) | yes |
-| Held-out expected-contract top-1 | 19/33 (57.6%) | diagnostic |
+| Held-out expected-contract top-1 | 17/33 (51.5%) | diagnostic |
 | Held-out hybrid zero-recall@10 cases | 5/33 | diagnostic |
 
 The diagnostic lexical scores are intentionally not release thresholds. A perfect contract score
@@ -44,12 +44,12 @@ evidence sets, so the effective target count is nine rather than 27 independent 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `lexical` | 34.0% | 44.9% | 0.0% | 0/33 | 5/33 | 0.201 |
-| `char_tfidf` | 36.2% | 44.1% | 0.0% | 0/33 | 6/33 | 0.223 |
-| `hybrid` | 37.4% | 46.6% | 0.0% | 0/33 | 5/33 | 0.218 |
-| `graph` | 40.5% | 57.2% | 24.2% | 8/33 | 4/33 | 0.257 |
+| `char_tfidf` | 36.2% | 44.7% | 0.0% | 0/33 | 6/33 | 0.223 |
+| `hybrid` | 37.9% | 46.6% | 0.0% | 0/33 | 5/33 | 0.219 |
+| `graph` | 40.2% | 57.8% | 24.2% | 8/33 | 4/33 | 0.253 |
 
 Held-out contract-router firing: **25/33 (75.8%)**; release floor: **66.7%**.
-Expected-contract top-1 agreement: **19/33 (57.6%)**; this remains diagnostic because the set is synthetic and clustered.
+Expected-contract top-1 agreement: **17/33 (51.5%)**; this remains diagnostic because the set is synthetic and clustered.
 Target clusters: **11**, with cluster sizes `[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]`; percentage differences are therefore not independent observations.
 Hybrid versus lexical complete@10: **0/33** versus **0/33**; hybrid zero-recall@10: **5/33**.
 Graph versus hybrid complete@10: **8/33** versus **0/33**.
@@ -78,7 +78,7 @@ Graph versus hybrid complete@10: **8/33** versus **0/33**.
 | `HOLDOUT-SEQUENCE-SOFTWARE` | `software_engineer` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | yes |
 | `HOLDOUT-SEQUENCE-POWER` | `power_engineer` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | yes |
 | `HOLDOUT-GROUND-STUDENT` | `student` | `ground-neutral-reference-are-one-node` | `mutual-coupling-is-an-ordinary-parallel-network` | yes | no | no | no | no |
-| `HOLDOUT-GROUND-SOFTWARE` | `software_engineer` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | no |
+| `HOLDOUT-GROUND-SOFTWARE` | `software_engineer` | `ground-neutral-reference-are-one-node` | `terminal-permutation-is-cosmetic` | yes | no | no | no | no |
 | `HOLDOUT-GROUND-POWER` | `power_engineer` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | yes |
 | `HOLDOUT-DECISION-STUDENT` | `student` | `terminal-equivalence-implies-opf-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
 | `HOLDOUT-COUPLING-STUDENT` | `student` | `mutual-coupling-is-an-ordinary-parallel-network` | `mutual-coupling-is-an-ordinary-parallel-network` | yes | no | no | no | no |
@@ -88,15 +88,15 @@ Graph versus hybrid complete@10: **8/33** versus **0/33**.
 | `HOLDOUT-SELF-LOOP-SOFTWARE` | `software_engineer` | `self-loop-is-a-shunt-or-circuit-loop` | `self-loop-is-a-shunt-or-circuit-loop` | yes | no | no | no | yes |
 | `HOLDOUT-SELF-LOOP-POWER` | `power_engineer` | `self-loop-is-a-shunt-or-circuit-loop` | `self-loop-is-a-shunt-or-circuit-loop` | yes | no | no | no | no |
 | `HOLDOUT-DECISION-SOFTWARE` | `software_engineer` | `terminal-equivalence-implies-opf-equivalence` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
-| `HOLDOUT-DECISION-POWER` | `power_engineer` | `terminal-equivalence-implies-opf-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
+| `HOLDOUT-DECISION-POWER` | `power_engineer` | `terminal-equivalence-implies-opf-equivalence` | `terminal-permutation-is-cosmetic` | yes | no | no | no | no |
 
 ## Audience consistency
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 17 | 100.0% | 47.7% | 100.0% |
-| `software_engineer` | 17 | 100.0% | 38.1% | 100.0% |
-| `student` | 17 | 100.0% | 50.4% | 100.0% |
+| `power_engineer` | 18 | 100.0% | 45.1% | 100.0% |
+| `software_engineer` | 18 | 100.0% | 37.1% | 100.0% |
+| `student` | 18 | 100.0% | 48.7% | 100.0% |
 
 ## Case results
 
@@ -153,6 +153,9 @@ Graph versus hybrid complete@10: **8/33** versus **0/33**.
 | `EVAL-TRANSFORMER-WINDING-REVERSAL-STUDENT` | `student` | `transformer-end-swap-is-ordinary-edge-reversal` | 16.7% | yes |
 | `EVAL-TRANSFORMER-WINDING-REVERSAL-SOFTWARE` | `software_engineer` | `transformer-end-swap-is-ordinary-edge-reversal` | 33.3% | yes |
 | `EVAL-TRANSFORMER-WINDING-REVERSAL-POWER` | `power_engineer` | `transformer-end-swap-is-ordinary-edge-reversal` | 16.7% | yes |
+| `EVAL-TERMINAL-PERMUTATION-STUDENT` | `student` | `terminal-permutation-is-cosmetic` | 20.0% | yes |
+| `EVAL-TERMINAL-PERMUTATION-SOFTWARE` | `software_engineer` | `terminal-permutation-is-cosmetic` | 20.0% | yes |
+| `EVAL-TERMINAL-PERMUTATION-POWER` | `power_engineer` | `terminal-permutation-is-cosmetic` | 0.0% | yes |
 
 ## Interpretation and next boundary
 

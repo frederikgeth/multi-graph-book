@@ -172,6 +172,19 @@ def main() -> int:
                 validation_errors.append("reference/singularity route omits the linked floating-island fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("reference/singularity executable contract is not marked implemented")
+        if case["misconception_id"] == "terminal-permutation-is-cosmetic":
+            packet = response["packet"]
+            if "knowledge:PSK-000012" not in observed:
+                validation_errors.append("terminal-permutation route omits mandatory PSK-000012")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000012"]:
+                validation_errors.append("terminal-permutation route scientific basis differs from PSK-000012")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["terminal_permutation_invariance"]:
+                validation_errors.append("terminal-permutation route omits the permutation contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["terminal-permutation-001"]:
+                validation_errors.append("terminal-permutation route omits the linked fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("terminal-permutation executable contract is not marked implemented")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:

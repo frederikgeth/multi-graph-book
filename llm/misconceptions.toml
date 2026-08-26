@@ -220,3 +220,16 @@ operational_consequence = "A partial reversal can attach WYE and DELTA coils, vo
 mandatory_claim_ids = ["TR-XFMR-001", "TR-XFMR-004"]
 mandatory_concept_ids = ["object-node-interface", "phase-conductor-sequence-coordinate", "equivalence-exactness-preservation", "transformation-family"]
 source_paths = ["docs/src/transformations/transformer-winding-coordinate-normalization.md", "docs/src/transformations/fixed-linear-transformer-factor-completion.md"]
+
+[[misconception]]
+id = "terminal-permutation-is-cosmetic"
+title = "Terminal or conductor order is cosmetic"
+severity = "critical"
+query_patterns = ["permute phases", "swap conductor order", "terminal permutation", "reorder phase terminals", "conductor relabelling", "terminal order cosmetic", "permutation of line matrix", "relabel line conductors", "swap phase coordinates", "importer permutes conductors"]
+tempting_answer = "Reordering terminal or conductor labels is cosmetic because the same physical line and number of conductors remain."
+required_qualification = "A relabelling is an exact primitive-level transformation only with an explicit bijection, both endpoint terminal maps transformed by it, and the target matrix equal to the corresponding row/column permutation. Matching counts or labels alone do not establish coordinate consistency, and the primitive check does not prove complete-network or decision equivalence."
+safe_shorthand = "Terminal order is safe to change only under a declared coordinate action with matrix, endpoint-map, provenance, and downstream-study checks."
+operational_consequence = "A partial permutation can attach impedance entries to the wrong phases, corrupt sequence and coupling relations, and silently change limits, controls, feasible decisions, or recovered quantities."
+mandatory_claim_ids = ["TR-KRON-001", "PRESERVE-001"]
+mandatory_concept_ids = ["phase-conductor-sequence-coordinate", "equivalence-exactness-preservation", "transformation-family"]
+source_paths = ["docs/src/transformations/circuit-coordinate-transformations.md", "docs/src/foundations/when-general-model-collapses.md"]
