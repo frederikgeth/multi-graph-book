@@ -1,0 +1,332 @@
+# Federated scientific knowledge and executable guardrails
+
+## Status and authority
+
+This document is the architectural authority for the integration between
+`frederikgeth/multi-graph-book` and `frederikgeth/BMOPFTools.jl`. It defines
+what belongs in each repository, the allowed dependency directions, and the
+contracts between their generated artifacts. Implementation plans, tranche
+lists, and session handovers may change more frequently; they must remain
+consistent with this document.
+
+The architecture is deliberately federated. The repositories cooperate, but
+neither becomes authoritative for the other's subject matter:
+
+- `multi-graph-book` owns scientific and epistemic knowledge: what a claim
+  means, its evidence and scope, which inference is unsafe, and which
+  preservation question must be asked.
+- `BMOPFTools.jl` owns executable evidence about a concrete model, result, or
+  declared transformation: what was checked, which preconditions held, what
+  passed or failed, and what remains indeterminate.
+
+The central rule is:
+
+> The book states what must be preserved, what can fail, under which
+> assumptions, and why. BMOPFTools checks as much of that contract as can be
+> established computationally for an actual case.
+
+This is not an architecture for making prose merely easier for a language
+model to read. It is an architecture for preserving scientific qualification,
+retrieving contradicting evidence, executing applicable checks, and refusing
+claims that exceed the available evidence.
+
+## Non-negotiable invariants
+
+The following invariants take precedence over convenience.
+
+1. **Preserve the existing book access machinery.** The book already has a
+   deterministic, source-hash-bound corpus; misconception routing;
+   qualification-aware context packets; `qualified`, `under_retrieved`, and
+   `unsupported` semantics; retrieval and adversarial evaluation; HTTP/JSON,
+   Markdown, CLI, and MCP access; and release-bound reproducibility checks.
+   Federation extends these components. Replacing them with a generic
+   embeddings or vector-database RAG stack would be a regression.
+2. **Do not promote evidence.** A fixture observation is not a theorem, solver
+   termination is not solution verification, BMOPFTools behavior is not a
+   general scientific result, and generated prose is not evidence.
+3. **Do not use unindexed equivalence.** Every equivalence or preservation
+   statement names the source and target models, domain, state, observations,
+   constraints, decisions, objective, and recovery obligations that matter.
+4. **Do not infer forgotten information.** A reduced target model normally
+   cannot reveal member identities, constraints, or internal quantities that
+   were discarded. Checks that need those facts must accept the source model
+   and an explicit mapping or transformation record.
+5. **Do not create a runtime dependency between repositories.** Ordinary book
+   reading and book-only retrieval do not require BMOPFTools. Ordinary
+   BMOPFTools parsing, analysis, optimization, and verification do not require
+   the book or network access.
+6. **Keep transports thin.** Domain logic belongs in clean Julia or retrieval
+   APIs. CLI, HTTP, MCP, and future ecosystem adapters expose those APIs; they
+   do not become a second implementation of the science.
+7. **Keep generated artifacts generated.** Source hashes, indexes, manifests,
+   source anchors, finding exports, API inventories, and federated packets are
+   derived from canonical sources and are checked for staleness.
+
+## Repository responsibilities
+
+### `multi-graph-book`: scientific authority
+
+The book is the canonical home for:
+
+- claims and definitions, including evidence class, verification status,
+  assumptions, model scope, exactness object, and unresolved boundary;
+- controlled vocabulary and translations between power engineering, circuit,
+  mathematical, graph, software, and machine-learning language;
+- misconceptions, invalid inferences, scope boundaries, scientific
+  counterexamples, negative results, and open questions;
+- preservation-contract definitions and transformation classifications;
+- literature evidence, review status, independent reproduction status, and
+  explicit limits of the evidence;
+- stable cross-repository Power-System Knowledge (`PSK`) objects;
+- retrieval evaluation, qualification routing, abstention policy, federated
+  context assembly, and audience-aware answer contracts.
+
+The current Markdown, claims ledger, vocabulary registry, misconception
+registry, evidence artifacts, certificate schema, and release manifest remain
+canonical. The generated LLM corpus and context packets are access artifacts,
+not an alternative scientific database.
+
+The book may refer to a BMOPFTools executable contract by stable identifier and
+may report the evidence produced by a pinned run. It must not describe one
+implementation's behavior as a general theorem unless that proposition has
+independent scientific support and is registered with the appropriate evidence
+status.
+
+### `BMOPFTools.jl`: executable authority
+
+BMOPFTools is the canonical home for:
+
+- static validation of network structure, terminals, conductors, grounding,
+  dimensions, units, references, bounds, and component semantics;
+- case analysis and structured `Finding` results with stable finding codes;
+- executable scientific contracts and their applicability checks;
+- independent solution verification, including residuals, limits, equations,
+  balance, and result-dictionary consistency;
+- transformation manifests, recovery checks, invariants, metamorphic tests,
+  property-based tests, and minimized runnable counterexamples;
+- small CI-tested recipes and stable Julia APIs for parsing, analysis, solving,
+  verification, and contract checking;
+- a generated executable-knowledge export describing available checks without
+  duplicating the book's scientific explanations.
+
+BMOPFTools findings must remain useful offline. A finding therefore carries a
+concise local explanation and actionable evidence, even when its broader
+scientific treatment is linked to the book. Optional metadata may include PSK
+IDs, failure class, invalid inferences, possible causes, recommended checks,
+counterexample IDs, and documentation references. Existing finding codes and
+the `Finding` programmatic contract remain stable.
+
+BMOPFTools must not contain a second claims ledger, general literature review,
+misconception retriever, audience answer renderer, or copy of the book corpus.
+
+## Canonical and generated objects
+
+Cross-repository links use a small stable namespace such as `PSK-000001`. PSK
+IDs do not replace book claim IDs, misconception IDs, certificate IDs,
+counterexample IDs, BMOPFTools finding codes, or Julia API names. They connect
+those existing identifier systems.
+
+A canonical PSK object belongs in the book and contains only semantic links and
+the minimum fields needed to identify the knowledge object: ID, kind, title,
+scientific statement, scope, evidence status, related book identifiers,
+executable-contract identifiers, counterexample identifiers, and unresolved
+boundaries. Long scientific explanations stay in canonical book prose.
+
+BMOPFTools maintains a small executable registry, not a scientific knowledge
+database. It records executable contract IDs, entry points, applicable object
+types, finding codes, fixture IDs, output shape, and related PSK IDs. Runtime
+evidence remains in findings and contract results. Documentation, API records,
+and executable JSONL records are generated or checked against this registry.
+
+The principal generated exports are:
+
+```text
+multi-graph-book/generated/scientific_knowledge.jsonl
+BMOPFTools.jl/generated/executable_knowledge.jsonl
+```
+
+The exact paths may be introduced incrementally, but their semantics are
+fixed: the first contains scientific objects and evidence qualifications; the
+second contains executable capabilities, applicability domains, and local
+source identity. Both carry schema version, repository identity, source path,
+source anchor where applicable, source hash, and related PSK IDs.
+
+A federated release or experiment creates a separate pair manifest containing
+the immutable revision and export hash of both repositories. Individual source
+records do not embed mutually dependent current commit hashes; doing so would
+create a circular, permanently stale commit dependency.
+
+## Scientific-contract lifecycle
+
+A scientific contract begins with a proposition broader than a function call.
+The book defines its source and target objects, preservation dimensions,
+preconditions, domain, observations, decisions, objectives, forgotten
+information, recovery map, evidence, and unresolved boundary. BMOPFTools then
+implements only the decidable portion.
+
+An executable check reports one of at least four semantic outcomes:
+
+- `passed`: the implemented obligations hold for the supplied instance within
+  the declared domain and tolerance;
+- `failed`: an implemented obligation is violated, with a reproducible witness;
+- `inapplicable`: a declared precondition does not hold, so the check makes no
+  preservation claim;
+- `indeterminate`: the available model, result, mapping, or numerical evidence
+  is insufficient to decide the obligation.
+
+Execution errors and solver termination states are recorded separately from
+these contract outcomes. `passed` never means that unimplemented preservation
+dimensions hold. `inapplicable` and `indeterminate` are successful refusal
+behaviors, not inconvenient failures to hide.
+
+For a transformation check, the normal inputs are the source model, target
+model, declared object mapping, contract ID, and requested preservation
+dimensions. A target-only heuristic may identify a risk or recommend a
+follow-up check, but it cannot certify preservation of information that is no
+longer represented.
+
+## First vertical slice: parallel member limits
+
+The first vertical slice is the parallel-branch aggregation/member-rating
+case because the book already contains the necessary scientific foundation:
+the `parallel-admittance-implies-decision-equivalence` misconception, claims
+`TR-PAR-001`, `TR-PAR-002`, and `TR-PAR-003`, executable parallel-branch
+certificates, and source/naive/exact-lifted decision comparisons.
+
+The slice introduces one PSK object linking that existing material to a
+BMOPFTools executable contract. The BMOPFTools check accepts the source member
+lines, target aggregate, and declared mapping. Within its stated fixed-linear
+domain it checks terminal-coordinate alignment, reconstruction of member
+currents, member and target ratings, and whether the target constraint is an
+outer relaxation of the source member-constrained feasible set.
+
+The existing `I.RED.PARALLEL_LINES` finding remains a discovery signal; merely
+having parallel lines is neither an error nor evidence that aggregation was
+attempted. A distinct contract finding reports loss of member-limit
+preservation. Its detail contains the PSK ID, contract ID, affected members,
+precondition results, numerical or analytical witness, invalid inference, and
+recommended next check.
+
+The primary two-branch witness is checked algebraically so that the scientific
+result does not depend on a nonlinear solver. A solved source/naive/exact-lifted
+comparison may provide additional numerical evidence, with solver and
+optimality status reported honestly. Tests cover failure of the naive summed
+rating, preservation with exact lifted member constraints, relabelling
+invariance, and refusal outside the supported domain.
+
+Only after this trace is clean should the infrastructure be generalized. The
+next two slices are neutral/ground/reference conflation and solver termination
+versus independently validated solution quality. Together the three slices
+exercise transformation preservation, model semantics, and numerical/scientific
+inference.
+
+## Federated discovery and context assembly
+
+The existing book service remains the federation point for retrieval. Its
+book-only behavior remains valid when no executable export is supplied. With a
+pinned BMOPFTools export, corpus generation or index construction adds
+executable records while retaining repository and evidence provenance.
+
+The context packet evolves compatibly toward explicit sections such as:
+
+```json
+{
+  "scientific_basis": [],
+  "known_misconceptions": [],
+  "counterexamples": [],
+  "executable_checks": [],
+  "implementation_examples": [],
+  "unresolved_boundaries": []
+}
+```
+
+The existing misconception router continues to trigger mandatory scientific
+qualifications. PSK links may then add the corresponding executable contract
+records. Contract expansion remains reported separately from ordinary ranker
+recall, just as it is today. Retrieval evaluation adds executable-check recall,
+counterexample recall, source-repository attribution, and abstention when no
+applicable check exists. A vector database or neural reranker is optional and
+must outperform the deterministic baseline under the same evidence-preserving
+evaluation before it can replace any production path.
+
+Scientific support and runtime evidence remain separate in every packet. A
+book claim can be supported while a case-specific check is inapplicable; a
+BMOPFTools check can pass while the broader scientific question remains open.
+Neither status silently overwrites the other.
+
+## Interfaces and dependency direction
+
+Implementation proceeds from domain interfaces outward:
+
+1. stable Julia validation and contract APIs;
+2. structured finding and contract-result serialization;
+3. generated executable manifest and small tested recipes;
+4. optional JSON CLI operations;
+5. thin MCP or PowerMCP-compatible execution adapters.
+
+The book MCP remains the knowledge interface. A future BMOPFTools adapter is an
+execution interface and exposes a curated operation set such as case parsing,
+analysis, solution verification, contract checking, counterexample execution,
+and finding explanation. It must not expose every Julia function or contain
+scientific retrieval logic.
+
+## Integrity, CI, and release pairing
+
+Each repository validates its own canonical and generated content without a
+live dependency on the other's `main` branch. Local gates include identifier
+uniqueness, schema validity, source hashes, generated-file freshness, fixture
+existence, documented finding codes, executable contract registration, and
+expected counterexample outcomes.
+
+Cross-repository integration uses an explicitly pinned revision or release of
+each repository. Its checks verify that referenced claim, misconception, PSK,
+finding, contract, and fixture IDs resolve; that source anchors and hashes are
+current; and that the federated context packet identifies the exact pair. A
+change in either export requires regeneration and re-evaluation of the paired
+federated artifact, not a dynamic query against the other repository's latest
+branch.
+
+## Agent and contributor workflow
+
+Root `AGENTS.md` files in both repositories will translate this architecture
+into local editing rules. Before changing graph representations, network
+reductions, conductor maps, grounding, transformer compilation, equivalent
+models, bounds, or optimization semantics, an agent identifies the relevant
+scientific contract and searches misconceptions, counterexamples, negative
+results, and scope boundaries. It then makes the smallest change, runs
+ordinary software tests, runs applicable scientific guardrails and minimized
+counterexamples, and reports assumptions and unresolved boundaries.
+
+Architectural decisions and rejected approaches belong in a lightweight
+development research log. Scientific claims remain in the claims ledger;
+ordinary software design choices do not. Failed methods are retained when the
+question, setup, failure criterion, evidence, scope, and conditions for
+reconsideration are sufficiently specified.
+
+## Change control and anti-goals
+
+Changes to repository ownership, dependency direction, PSK identity, context
+status semantics, or the distinction between scientific and runtime evidence
+require an explicit update to this document and review in both repositories.
+Schema versions may evolve, but consumers must not silently reinterpret old
+records.
+
+The integration must not:
+
+- replace the book's deterministic retrieval and evaluation baseline with
+  generic RAG infrastructure;
+- duplicate claims, misconceptions, or literature prose in BMOPFTools;
+- treat a BMOPFTools fixture or successful solve as a theorem;
+- make either repository depend on the other's live checkout for ordinary use;
+- infer preservation from a target model that cannot represent forgotten
+  source information;
+- conflate scientific support with executable applicability or pass status;
+- begin with a large MCP surface, vector database, benchmark, or generalized
+  schema before the three vertical slices establish that the architecture
+  works.
+
+Success means an agent proposing a scientifically dangerous modelling change
+can retrieve the relevant qualification and contradicting evidence, identify
+the precise preservation contract, execute the applicable check on the actual
+case, distinguish preserved from lost information, abstain beyond the evidence,
+and leave a reproducible trace tied to both repository versions.
