@@ -181,3 +181,16 @@ operational_consequence = "The shortcut can remove feasible voltage-control acti
 mandatory_claim_ids = ["TR-XFMR-005", "TR-XFMR-006"]
 mandatory_concept_ids = ["state", "rating-limit-constraint", "equivalence-exactness-preservation", "transformation-family"]
 source_paths = ["docs/src/transformations/parameterized-transformer-tap-decisions.md", "docs/src/cases/transformer-tap-ac-decision.md"]
+
+[[misconception]]
+id = "transformer-end-swap-is-ordinary-edge-reversal"
+title = "Swapping transformer endpoints is an ordinary branch-arrow reversal"
+severity = "critical"
+query_patterns = ["swap transformer ends", "reverse transformer bus_from bus_to", "transformer orientation arbitrary", "swap transformer primary secondary", "reverse wye delta transformer", "transformer endpoint reversal", "flip transformer direction", "exchange transformer from and to buses", "transformer winding role swap", "treat transformer as undirected branch"]
+tempting_answer = "Swap bus_from and bus_to as for an undirected ordinary branch; the transformer still connects the same two buses."
+required_qualification = "Transformer endpoints carry typed winding roles. An exact reversal or relabelling must transform the subtype or connection roles, ordered terminal-to-coil incidence, winding reference voltages, fixed transfer convention, and every end-specific leakage, excitation, grounding, limit, and control relation. A bare endpoint swap preserves none of that by implication."
+safe_shorthand = "Transformer orientation is arbitrary only relative to a complete typed coordinate transformation, never as a bare endpoint-field swap."
+operational_consequence = "A partial reversal can attach WYE and DELTA coils, voltage bases, ratios, shunts, grounding, or limits to the wrong mapped bus and silently change the terminal factor."
+mandatory_claim_ids = ["TR-XFMR-001", "TR-XFMR-004"]
+mandatory_concept_ids = ["object-node-interface", "phase-conductor-sequence-coordinate", "equivalence-exactness-preservation", "transformation-family"]
+source_paths = ["docs/src/transformations/transformer-winding-coordinate-normalization.md", "docs/src/transformations/fixed-linear-transformer-factor-completion.md"]

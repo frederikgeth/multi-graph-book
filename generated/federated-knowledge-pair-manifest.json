@@ -5,18 +5,20 @@
       "load_voltage_base_consistency",
       "neutral_ground_reference_preservation",
       "parallel_member_limit_preservation",
-      "transformer_tap_domain_preservation"
+      "transformer_tap_domain_preservation",
+      "transformer_winding_convention_preservation"
     ],
-    "corpus_sha256": "80592a591d5d362ffc3c00fc8f78f62e825df7b16cbb701419b9d7186b1a4b95",
+    "corpus_sha256": "aeed2551c64b15711b414845287674445b809aedfd4e650b3b5036af242e06dd",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
       "PSK-000003",
       "PSK-000004",
-      "PSK-000005"
+      "PSK-000005",
+      "PSK-000006"
     ],
     "manifest_id": "bmopftools-executable-knowledge-0.1.0",
-    "manifest_sha256": "26b7266be995d23a1f9216f87530471eb69e04ddfb8686636245d1f4e2adb2a8",
+    "manifest_sha256": "af1abc293e84afde7e15f2f38ce824843f4b22cc1915d9a749460e26e147565a",
     "package": {
       "name": "BMOPFTools",
       "version": "0.1.0"
@@ -25,15 +27,16 @@
     "schema_version": "0.1.0"
   },
   "book": {
-    "corpus_sha256": "9f6084ec6538a5da60995aac84ef72d122ffd28e873a71d27ba7e3007b926139",
+    "corpus_sha256": "2ee30f4ba0acf412d203b7df62fb4a8215746e2c32a7ab8548b6e3918a5c56ae",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
       "PSK-000003",
       "PSK-000004",
-      "PSK-000005"
+      "PSK-000005",
+      "PSK-000006"
     ],
-    "manifest_sha256": "c74cb1119646909c1cc29acb19561586c034f6cb4c26d75ef95ccd1d9509d6a1",
+    "manifest_sha256": "30b9512ae2b5531cc4832f0e165ef31a2e04ba9182523e42209e41a12b5a2666",
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -59,7 +62,7 @@
           "fixture_ids": [
             "parallel-rating-outer-relaxation-001"
           ],
-          "source_sha256": "d46bf8104cc044b537291f89aed5a1ef18ec72186f4e239d01f7909c8e7a983b"
+          "source_sha256": "139b49169c603155ee22aea20ce0e1e6ee8b6c715e16199b6318e70d09f62683"
         }
       ],
       "implementation_status": "implemented",
@@ -80,7 +83,7 @@
           "fixture_ids": [
             "neutral-ground-reference-conflation-001"
           ],
-          "source_sha256": "d46bf8104cc044b537291f89aed5a1ef18ec72186f4e239d01f7909c8e7a983b"
+          "source_sha256": "139b49169c603155ee22aea20ce0e1e6ee8b6c715e16199b6318e70d09f62683"
         }
       ],
       "implementation_status": "implemented",
@@ -99,7 +102,7 @@
           "fixture_ids": [
             "claimed-feasible-invalid-solution-001"
           ],
-          "source_sha256": "e60a75717e7ef956f3362c78bde7dbbe576ea545efd6b5eff2092a7d27b48072"
+          "source_sha256": "f6852fce1981b54ad1da1fa0846ba3e9ca582703d19d76a0fa40e4bfc0f648a6"
         }
       ],
       "implementation_status": "implemented",
@@ -118,7 +121,7 @@
           "fixture_ids": [
             "load-voltage-base-mismatch-001"
           ],
-          "source_sha256": "391487b77ebc4353874b395b576de466dbdb0a3d3aa107cf8a43ab5a58358989"
+          "source_sha256": "3ab2d78a8ca263aa6f325314b0751fda6be25b641cb1bd048bbe0f08e68dfc3f"
         }
       ],
       "implementation_status": "implemented",
@@ -137,7 +140,27 @@
           "fixture_ids": [
             "transformer-tap-domain-loss-001"
           ],
-          "source_sha256": "d46bf8104cc044b537291f89aed5a1ef18ec72186f4e239d01f7909c8e7a983b"
+          "source_sha256": "139b49169c603155ee22aea20ce0e1e6ee8b6c715e16199b6318e70d09f62683"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000006": {
+      "contracts": [
+        {
+          "contract_id": "transformer_winding_convention_preservation",
+          "entrypoint": "check_transformer_winding_convention_preservation",
+          "finding_codes": [
+            "E.CONTRACT.TRANSFORMER_WINDING_INCIDENCE_MISMATCH",
+            "E.CONTRACT.TRANSFORMER_WINDING_BASE_RATIO_MISMATCH",
+            "I.CONTRACT.TRANSFORMER_WINDING_NOT_APPLICABLE",
+            "W.CONTRACT.TRANSFORMER_WINDING_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "transformer-winding-role-swap-001"
+          ],
+          "source_sha256": "ebcd9864d7a7473bdaab76e3d8d84589f989aa3313283f8d1c3616e9f8676329"
         }
       ],
       "implementation_status": "implemented",
@@ -145,6 +168,6 @@
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "16ae15d92693a81465b2e4ae5dadb84918df0a7166436c89df34f89c388952e4",
+  "pair_sha256": "c191854d521eb830cfc425017646ebb21ead169c6ed3f7ac8675489e2d8aea17",
   "schema_version": "0.1.0"
 }

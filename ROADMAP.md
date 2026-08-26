@@ -56,7 +56,7 @@ and a minimized negative witness.
 | 3 | Solver status versus validated result | `NUMERICAL-001`, `NUMERICAL-004` | independent result profiling | Implemented as `PSK-000003` |
 | 4 | WYE/DELTA load nominal-voltage coordinate | `LOAD-BASE-001`, `LOAD-CONNECTION-001` | propagated-base declaration check | Implemented as `PSK-000004` |
 | 5 | Adjustable transformer tap domain | `TR-XFMR-005..006`; tap-decision certificates | mapped continuous interval comparison | Implemented as `PSK-000005` |
-| 6 | Transformer winding coil bases, ratio, and orientation | `TR-XFMR-001..004`; winding-normalization evidence | existing ratio/base/orientation diagnostics plus a mapped convention contract | Next vertical slice; declaration/convention preservation |
+| 6 | Transformer winding coil bases, ratio, and orientation | `TR-XFMR-001..004`; winding-normalization evidence | existing ratio/base/orientation diagnostics plus a mapped convention contract | Implemented as `PSK-000006` |
 | 7 | Terminal equivalence versus decision equivalence | preservation-contract definitions and multiple transformation witnesses | transformation manifest with constraints, objective, and recovery obligations | Next discovery; umbrella routing plus narrow executable checks |
 | 8 | Kron boundary exactness and internal recovery | `PRESERVE-001`, `TR-KRON-*`; Kron misconception | source/target boundary and recovery-map checks | Candidate; reduction preservation |
 | 9 | Positive-sequence collapse applicability | `COLLAPSE-001..002`; sequence misconception | symmetry, grounding, terminal, and decision-domain guards | Candidate; applicability/refusal contract |
@@ -66,13 +66,15 @@ and a minimized negative witness.
 | 13 | Complete solved-network feasibility | numerical validation boundary | equation, KCL, power-balance, device-limit, and recovery residuals | Candidate expansion of `PSK-000003`; not one status heuristic |
 | 14 | Unit/base and serialization invariance | normalization, coordinate, and provenance claims | round-trip and unit/base metamorphic tests | Candidate; importer/exporter preservation |
 
-The first scale-out milestone is now complete: five stable PSK paths cover a
+The first scale-out milestone is now complete and extended: six stable PSK paths cover a
 transformation constraint, model semantics, numerical inference, connection
-coordinates, and an adjustable decision domain. The next milestone is ten
+coordinates, an adjustable decision domain, and typed transformer-winding
+conventions. The next milestone is ten
 stable paths, but promotion is evidence-gated rather than quota-driven. The
-immediate sixth slice is transformer winding normalization and orientation;
-terminal/decision equivalence remains the organizing scientific question, not
-a generic contract that silently claims every downstream dimension.
+immediate seventh slice is terminal equivalence versus decision equivalence.
+It remains the organizing scientific question, but its executable delivery
+must be an umbrella route plus narrow checks rather than a generic contract
+that silently claims every downstream dimension.
 
 ### Product identity and editorial stance
 

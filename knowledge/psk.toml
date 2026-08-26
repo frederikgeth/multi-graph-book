@@ -194,3 +194,48 @@ related_finding_codes = [
   "W.DOM.XFMR_STEP_UP",
 ]
 fixture_ids = ["transformer-tap-domain-loss-001"]
+
+[[knowledge]]
+id = "PSK-000006"
+kind = "modelling-antipattern"
+title = "Transformer endpoint reversal must preserve typed winding conventions"
+scientific_statement = "A transformer record's from/to order is not merely an arbitrary branch arrow: reversing or relabelling it preserves the fixed transformer factor only when winding roles, ordered terminal-to-coil incidence, winding reference voltages, fixed transfer ratio, and every end-specific relation are mapped consistently."
+scope = "Fixed-frequency fixed-linear transformer factors with labelled winding terminals, declared connection roles, positive reference voltages, fixed scalar transfer coefficients, and an explicit source-to-target bus and terminal mapping."
+evidence_status = "established_result"
+does_not_establish = [
+  "Every transformer must be stored with the high-voltage winding first.",
+  "A complete typed transformer reversal cannot be exact.",
+  "The initial BMOPFTools contract covers centre-tap, n-winding, subtype-changing, or adjustable reversal, or establishes leakage, excitation, grounding, limits, complete-factor, network, decision, or solver equivalence.",
+]
+
+[knowledge.book]
+claim_ids = ["TR-XFMR-001", "TR-XFMR-004"]
+misconception_ids = ["transformer-end-swap-is-ordinary-edge-reversal"]
+certificate_ids = ["TR-XFMR-001", "TR-XFMR-004"]
+counterexample_ids = ["transformer-winding-role-swap-001"]
+artifact_paths = [
+  "experiments/generated/transformer-winding-normalization-certificate.json",
+  "experiments/generated/transformer-factor-completion-certificate.json",
+]
+source_paths = [
+  "docs/src/transformations/transformer-winding-coordinate-normalization.md",
+  "docs/src/transformations/fixed-linear-transformer-factor-completion.md",
+]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["transformer_winding_convention_preservation"]
+finding_codes = [
+  "E.CONTRACT.TRANSFORMER_WINDING_INCIDENCE_MISMATCH",
+  "E.CONTRACT.TRANSFORMER_WINDING_BASE_RATIO_MISMATCH",
+  "I.CONTRACT.TRANSFORMER_WINDING_NOT_APPLICABLE",
+  "W.CONTRACT.TRANSFORMER_WINDING_INDETERMINATE",
+]
+related_finding_codes = [
+  "W.DOM.XFMR_REVERSED",
+  "W.DOM.XFMR_STEP_UP",
+  "W.DOM.XFMR_RATIO_OOB",
+  "E.DOM.XFMR_VREF_INVALID",
+]
+fixture_ids = ["transformer-winding-role-swap-001"]

@@ -422,3 +422,33 @@ required_claim_ids = ["TR-XFMR-005", "TR-XFMR-006"]
 required_concept_ids = ["state", "rating-limit-constraint", "equivalence-exactness-preservation", "transformation-family"]
 required_answer_elements = ["classify the fixed target as an inner restriction of the source tap choices", "state that preserving the domain still does not by itself prove network feasible-set, objective, control, or optimal-tap equivalence"]
 forbidden_simplifications = ["unchanged nameplate and initial ratio imply exact OPF decision equivalence"]
+
+[[case]]
+case_id = "EVAL-TRANSFORMER-WINDING-REVERSAL-STUDENT"
+audience = "student"
+question = "A transformer connects the same two buses after I swap its from and to fields. Why is that not automatically the same model?"
+misconception_id = "transformer-end-swap-is-ordinary-edge-reversal"
+required_claim_ids = ["TR-XFMR-001", "TR-XFMR-004"]
+required_concept_ids = ["object-node-interface", "phase-conductor-sequence-coordinate", "equivalence-exactness-preservation", "transformation-family"]
+required_answer_elements = ["explain that transformer ends are typed winding roles with ordered terminal-to-coil incidence", "distinguish a bare field swap from a complete typed coordinate transformation"]
+forbidden_simplifications = ["same unordered bus pair implies the same transformer factor"]
+
+[[case]]
+case_id = "EVAL-TRANSFORMER-WINDING-REVERSAL-SOFTWARE"
+audience = "software_engineer"
+question = "May a network normalizer canonicalize a transformer by sorting its bus IDs and swapping only bus_from and bus_to?"
+misconception_id = "transformer-end-swap-is-ordinary-edge-reversal"
+required_claim_ids = ["TR-XFMR-001", "TR-XFMR-004"]
+required_concept_ids = ["object-node-interface", "phase-conductor-sequence-coordinate", "equivalence-exactness-preservation", "transformation-family"]
+required_answer_elements = ["map connection roles, terminal incidence, reference voltages, ratio convention, and every end-specific field", "run the executable winding-convention check while keeping complete-factor equivalence separate"]
+forbidden_simplifications = ["sorting the endpoint strings is a semantics-preserving canonicalization"]
+
+[[case]]
+case_id = "EVAL-TRANSFORMER-WINDING-REVERSAL-POWER"
+audience = "power_engineer"
+question = "Can I reverse a WYE-DELTA transformer record to DELTA-WYE by exchanging the two bus fields and leave the rest of the data unchanged?"
+misconception_id = "transformer-end-swap-is-ordinary-edge-reversal"
+required_claim_ids = ["TR-XFMR-001", "TR-XFMR-004"]
+required_concept_ids = ["object-node-interface", "phase-conductor-sequence-coordinate", "equivalence-exactness-preservation", "transformation-family"]
+required_answer_elements = ["require a complete typed reversal of winding roles, coil incidence, bases, transfer, and end-specific relations", "state that the initial package contract rejects the bare swap but does not certify subtype-changing reversal"]
+forbidden_simplifications = ["the transformer direction is merely a drawing arrow"]

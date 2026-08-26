@@ -316,6 +316,37 @@ objectives, optimal taps, and solver guarantees remain separate obligations.
 This separation is intentional: the package contract complements the existing
 book certificates instead of reimplementing or weakening them.
 
+## Sixth vertical slice: transformer winding conventions
+
+The sixth slice links book object `PSK-000006`, claims `TR-XFMR-001` and
+`TR-XFMR-004`, and the
+`transformer-end-swap-is-ordinary-edge-reversal` misconception to BMOPFTools
+contract `transformer_winding_convention_preservation`.
+
+The book owns the general science. A transformer winding is a typed port with
+an ordered terminal-to-coil incidence, and an exact coordinate action must
+transform the incidence and its power-dual current map. The completed fixed
+linear factor additionally declares the transfer convention and placement of
+leakage, excitation, and internal grounding. Consequently, transformer
+orientation is arbitrary only relative to a complete typed transformation; a
+bare exchange of endpoint fields is not an equivalence argument.
+
+The initial executable contract is intentionally narrower. It compares one
+explicitly mapped, fixed-tap `single_phase`, `wye_delta`, or `delta_wye`
+BMOPFTools record with the same subtype. It checks mapped winding-side
+identity, ordered terminal-to-coil incidence, positive nominal winding
+references, and the fixed effective coil ratio. The minimized fixture swaps
+only `bus_from` and `bus_to`, leaving the WYE/DELTA roles and terminal maps
+attached to the wrong mapped buses, so the contract reports an incidence
+mismatch.
+
+A pass is not a complete transformer-factor certificate. Leakage, excitation,
+grounding, limits, adjustable tap domains, controls, network feasible sets,
+objectives, and solver evidence remain unassessed. Centre-tap, n-winding,
+subtype-changing, and fully typed reversal are outside this first compact
+serialization contract. Those boundaries preserve the richer book machinery
+instead of replacing it with a field-level heuristic.
+
 ## Federated discovery and context assembly
 
 The existing book service remains the federation point for retrieval. Its

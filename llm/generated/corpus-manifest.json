@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "e27beb89dff4926e056b2f21af61cedb0223cdb96e455ca81128fa417d2356c5",
+  "corpus_sha256": "9493f1e67b665b16772158ca0129850d1b24eb8603b7b0b665bfd2a872057073",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -12,15 +12,15 @@
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
     "included_doc_count": 68
   },
-  "evaluation_case_count": 42,
+  "evaluation_case_count": 45,
   "heldout_case_count": 33,
-  "misconception_count": 14,
-  "record_count": 754,
+  "misconception_count": 15,
+  "record_count": 757,
   "record_counts": {
     "claim_bundle": 107,
     "concept_bundle": 18,
-    "scientific_knowledge": 5,
-    "section": 624
+    "scientific_knowledge": 6,
+    "section": 626
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -209,7 +209,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "a0a23ee6da45799eb3a8262313c056e2de4cc8972271626a6569a6a703fdde74"
+      "sha256": "21d61bdd968f7385394ccd5dec1333081e766b26eb24b82bab5cac0898d1e32f"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -305,19 +305,19 @@
     },
     {
       "path": "docs/src/transformations/transformer-winding-coordinate-normalization.md",
-      "sha256": "239f18d5fe712edb73ffb140ce349110b0a2d5859955d547b8f374562303934f"
+      "sha256": "3f17032ace7c044bc436b7fb68ad78fa37ad9403567ee4d1e10a45a51b713774"
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "c74cb1119646909c1cc29acb19561586c034f6cb4c26d75ef95ccd1d9509d6a1"
+      "sha256": "30b9512ae2b5531cc4832f0e165ef31a2e04ba9182523e42209e41a12b5a2666"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",
-      "sha256": "9f6084ec6538a5da60995aac84ef72d122ffd28e873a71d27ba7e3007b926139"
+      "sha256": "2ee30f4ba0acf412d203b7df62fb4a8215746e2c32a7ab8548b6e3918a5c56ae"
     },
     {
       "path": "llm/evaluation-cases.toml",
-      "sha256": "eb6b592404498b8bf3565da49c4bfdc1e28cd00cc7940d3ee41b453d789d2ecb"
+      "sha256": "0326f3e49228c7a8968f69b6c69ede1c2d485a1b785ca60710282b151a68b34f"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -325,7 +325,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "c391c8965e897acc3ae8c0b96af9698739fe9ece6ad28b6c632db2349e0ddcb6"
+      "sha256": "83fda0906b5666889a0b71b924ea9991879c99d89da39d807d09bffd50c376fc"
     },
     {
       "path": "vocabulary/vocabulary.toml",

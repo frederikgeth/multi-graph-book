@@ -211,6 +211,44 @@ mandatory and expose the book certificates, executable interval check,
 counterexample, and unresolved boundaries through the existing deterministic
 retrieval path.
 
+## Sixth trace: transformer winding conventions
+
+The sixth slice prevents an ordinary-edge shortcut from silently changing a
+typed transformer factor:
+
+| Layer | Stable identity | Owner | Purpose |
+|---|---|---|---|
+| Scientific knowledge | `PSK-000006` | this book | States why transformer endpoint reversal requires a complete typed map |
+| Claims | `TR-XFMR-001`, `TR-XFMR-004` | this book | Establish winding-coordinate action and completed fixed-linear factor anatomy |
+| Misconception | `transformer-end-swap-is-ordinary-edge-reversal` | this book | Routes bare endpoint swaps to the winding-role qualification |
+| Executable contract | `transformer_winding_convention_preservation` | BMOPFTools | Compares supported fixed compact winding conventions |
+| API operation | `check_transformer_winding_convention_preservation` | BMOPFTools | Exposes four-status mapped convention evidence |
+| Counterexample fixture | `transformer-winding-role-swap-001` | BMOPFTools | Swaps only the two bus fields on a WYE/DELTA record |
+| Findings | `E.CONTRACT.TRANSFORMER_WINDING_INCIDENCE_MISMATCH`, `E.CONTRACT.TRANSFORMER_WINDING_BASE_RATIO_MISMATCH` | BMOPFTools | Separate incidence failures from reference/ratio failures |
+
+`PSK-000006` states the broad preservation obligation. The winding-normalization
+certificate records the exact terminal-coordinate action and dual current map;
+the fixed-factor certificate records the connection incidence, voltage
+transfer, leakage, excitation, grounding, and recovery anatomy. Those book
+artifacts remain authoritative for the general scientific claim.
+
+The package check covers only fixed-tap `single_phase`, `wye_delta`, and
+`delta_wye` records with the same subtype, explicit one-to-one bus mapping,
+and stable or explicitly mapped terminal labels. It compares winding-side
+identity, ordered coil incidence, winding reference voltages, and fixed
+effective coil ratio. Adjustable taps route to `PSK-000005`; subtype-changing
+or fully reversed encodings require a complete typed transformation outside
+this initial contract.
+
+The negative fixture retains the unordered bus pair but swaps its endpoint
+fields while leaving the WYE/DELTA subtype and terminal maps untouched. It
+therefore fails on mapped coil incidence. The companion target retains the
+convention and passes narrowly. Neither result establishes equality of
+leakage, excitation, grounding, limits, complete terminal factors, controls,
+network feasible sets, objectives, or solver behavior. All three audience
+routes make `knowledge:PSK-000006` mandatory and retain those limits through
+the deterministic, source-hash-bound context packet.
+
 ## What generalizes
 
 The federation pattern generalizes to other scientific guardrails:
@@ -221,7 +259,7 @@ The federation pattern generalizes to other scientific guardrails:
 - implementations can report `passed`, `failed`, `inapplicable`, or `indeterminate` without turning absence of evidence into a pass; and
 - source hashes make context packets and cross-repository links auditable.
 
-The numerical formula used by the first contract does **not** generalize automatically. The scalar voltage-drop reduction, lack of shunts, fixed linear admittances, common coordinates, and explicit current ratings are case-specific. The second contract likewise does not turn relation matching into electrical equivalence: its explicit-neutral and scalar neutral-only grounding domain is case-specific. The third contract establishes that the contract/result/refusal machinery generalizes to post-solve evidence, but its initial bus-result coverage is not a universal feasibility or optimality validator. The fourth shows that an existing package diagnostic can be promoted into an auditable contract without duplicating its inference machinery, but declaration consistency is not importer fidelity or solved-model validation. The fifth separates preservation of an adjustable domain from equality at one initialized snapshot, while keeping broader transformer physics and decision equivalence outside the initial package check. Multiconductor coupling, nonlinear devices, explicit-earth networks, protection quantities, full equation residuals, device constraints, recovery, and global optimality require separate PSK objects or broader contracts with their own evidence and fixtures.
+The numerical formula used by the first contract does **not** generalize automatically. The scalar voltage-drop reduction, lack of shunts, fixed linear admittances, common coordinates, and explicit current ratings are case-specific. The second contract likewise does not turn relation matching into electrical equivalence: its explicit-neutral and scalar neutral-only grounding domain is case-specific. The third contract establishes that the contract/result/refusal machinery generalizes to post-solve evidence, but its initial bus-result coverage is not a universal feasibility or optimality validator. The fourth shows that an existing package diagnostic can be promoted into an auditable contract without duplicating its inference machinery, but declaration consistency is not importer fidelity or solved-model validation. The fifth separates preservation of an adjustable domain from equality at one initialized snapshot, while keeping broader transformer physics and decision equivalence outside the initial package check. The sixth shows how a typed coordinate convention can be checked without pretending that a compact declaration check proves the completed factor or a subtype-changing reversal. Multiconductor coupling, nonlinear devices, explicit-earth networks, protection quantities, full equation residuals, device constraints, recovery, and global optimality require separate PSK objects or broader contracts with their own evidence and fixtures.
 
 ## Reproduction and release pairing
 

@@ -89,6 +89,25 @@ claim that the normalized factor can be written back into every transformer's
 compact BMOPFTools fields; that serialization question is a separate guarded
 compilation problem.
 
+## Compact BMOPFTools convention check
+
+The cross-repository object `PSK-000006` connects this general coordinate
+result to BMOPFTools' deliberately smaller
+`transformer_winding_convention_preservation` contract. The package check
+accepts fixed-tap `single_phase`, `wye_delta`, and `delta_wye` records with the
+same subtype and an explicit bus and terminal mapping. It verifies mapped
+winding-side identity, ordered terminal-to-coil incidence, nominal winding
+reference voltages, and fixed effective coil ratio.
+
+Its negative fixture swaps only `bus_from` and `bus_to`. That is not an exact
+coordinate action: it leaves the connection roles and terminal incidences
+attached to different mapped buses. A retained convention passes; an
+adjustable tap is routed to the separate tap-domain contract. A fully typed
+reversal may be exact, but subtype-changing reversal, complete leakage and
+excitation placement, grounding, limits, controls, and network decision
+equivalence are outside this initial compact check and remain governed by the
+book's factor and preservation contracts.
+
 ## Executable rule
 
 The reusable coordinate action, winding factor, and tests are package
