@@ -453,6 +453,31 @@ an incomplete declaration, and a target mismatch. This keeps the pedagogical
 counterexample executable without replacing the book's richer sequence and
 four-wire ladder evidence.
 
+## Tenth vertical slice: fixed versus state-dependent equivalents
+
+The tenth slice promotes the book's Ward/Kron and nonlinear-grounding
+distinction into an update-provenance guard. Book object `PSK-000010` links the
+observation-indexed preservation vocabulary to the recorded state-dependent
+grounding probes and the existing misconception that a base-state equivalent
+is globally exact. The book owns the scientific boundary: a map calibrated at
+one state is local unless the state domain, update law, and relevant recovery or
+error obligations are retained.
+
+BMOPFTools owns the declaration contract
+`state_dependent_equivalent_provenance`. It requires source and target state
+parameter identity, a finite non-singleton domain, aligned base state, and an
+explicit target update-rule identifier. A frozen target fails with
+`E.CONTRACT.STATE_UPDATE_PROVENANCE_LOSS`; domain or base-state drift are
+separate failures, and missing declarations are indeterminate. A pass means
+only that the reusable-state declaration is structurally complete. It does not
+authenticate the nonlinear update, prove feasible-set or objective equality,
+or establish protection or solver equivalence.
+
+The minimized fixture pairs a source varying over `load_scale ∈ [0.8, 1.2]`
+with a target frozen at `1.0`; its updating companion passes narrowly. This is
+complementary to the book's finite continuation and nonlinear grounding
+witnesses, and preserves the deterministic retrieval and refusal machinery.
+
 ## Federated discovery and context assembly
 
 The existing book service remains the federation point for retrieval. Its

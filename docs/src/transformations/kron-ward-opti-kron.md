@@ -524,6 +524,18 @@ substitution of the voltage recovery map gives an exact affine boundary map
 for ``\mathbf I_\ell``. Keeping that map permits source limits to be checked;
 discarding it does not make limits on artificial reduced branches equivalent.
 
+## Fixed versus state-dependent equivalents
+
+The finite continuation and nonlinear grounding witnesses make a second
+boundary explicit: a Ward or Kron map calibrated at one operating point is not
+automatically reusable when load, grounding, or another state parameter moves.
+Cross-repository object `PSK-000010` links this distinction to BMOPFTools
+contract `state_dependent_equivalent_provenance`. The compact package check
+requires a shared parameter, non-singleton domain, aligned base state, and an
+update-rule identifier; a frozen target is reported as provenance loss rather
+than promoted to a global equivalent. This declaration gate does not validate
+the update law or prove decision, protection, or solver equivalence.
+
 ## Ward equivalents
 
 The affine term

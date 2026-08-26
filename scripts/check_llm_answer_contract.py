@@ -146,6 +146,19 @@ def main() -> int:
                 validation_errors.append("positive-sequence route omits the linked collapse counterexample fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("positive-sequence executable contract is not marked implemented")
+        if case["misconception_id"] == "base-state-equivalent-is-globally-exact":
+            packet = response["packet"]
+            if "knowledge:PSK-000010" not in observed:
+                validation_errors.append("state-equivalent route omits mandatory PSK-000010")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000010"]:
+                validation_errors.append("state-equivalent route scientific basis differs from PSK-000010")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["state_dependent_equivalent_provenance"]:
+                validation_errors.append("state-equivalent route omits the update-provenance contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["state-dependent-equivalent-001"]:
+                validation_errors.append("state-equivalent route omits the linked frozen-map fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("state-equivalent executable contract is not marked implemented")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:

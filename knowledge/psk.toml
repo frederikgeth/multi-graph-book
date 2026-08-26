@@ -372,3 +372,47 @@ related_finding_codes = [
   "W.PROV.SOURCE_NEGATIVE_SEQUENCE",
   "W.PROV.SOURCE_INCOHERENT_ROTATION",
 ]
+
+[[knowledge]]
+id = "PSK-000010"
+kind = "invalid-inference"
+title = "A base-state equivalent is not globally exact over a state domain"
+scientific_statement = "An equivalent calibrated at one operating point is exact only for its declared calibration state unless its state parameter domain and update rule are preserved; freezing a state-dependent map can change boundary injections, constraints, feasible decisions, and protection margins away from calibration."
+scope = "State-dependent linearized, Ward-style, grounding, or load equivalents with a declared parameter domain, calibration state, and update/recomputation provenance."
+evidence_status = "established_result"
+does_not_establish = [
+  "Every operating-point equivalent is invalid.",
+  "A state-update identifier authenticates nonlinear map correctness or decision equivalence.",
+  "A passing declaration gate proves source and target feasible sets, objectives, protection results, or solver equivalence.",
+]
+
+[knowledge.book]
+claim_ids = ["PRESERVE-001", "TR-KRON-NEUTRAL-005", "TR-KRON-NEUTRAL-007"]
+misconception_ids = ["base-state-equivalent-is-globally-exact"]
+certificate_ids = []
+counterexample_ids = ["state-dependent-equivalent-001"]
+artifact_paths = [
+  "experiments/generated/nonlinear-grounding-probe-witness.json",
+  "experiments/generated/nonlinear-two-point-grounding-continuation.json",
+]
+source_paths = [
+  "docs/src/transformations/kron-ward-opti-kron.md",
+  "docs/src/foundations/preservation-contracts.md",
+]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["state_dependent_equivalent_provenance"]
+finding_codes = [
+  "E.CONTRACT.STATE_UPDATE_PROVENANCE_LOSS",
+  "E.CONTRACT.STATE_DOMAIN_MISMATCH",
+  "E.CONTRACT.STATE_BASE_ALIGNMENT_MISMATCH",
+  "I.CONTRACT.STATE_EQUIVALENT_NOT_APPLICABLE",
+  "W.CONTRACT.STATE_EQUIVALENT_INDETERMINATE",
+]
+fixture_ids = ["state-dependent-equivalent-001"]
+related_finding_codes = [
+  "W.PROV.FLOATING_NEUTRAL",
+  "W.CONTRACT.KRON_RECOVERY_INDETERMINATE",
+]

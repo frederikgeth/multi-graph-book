@@ -105,6 +105,19 @@ mandatory_concept_ids = ["phase-conductor-sequence-coordinate", "equivalence-exa
 source_paths = ["docs/src/foundations/when-general-model-collapses.md"]
 
 [[misconception]]
+id = "base-state-equivalent-is-globally-exact"
+title = "A base-state equivalent is exact over the whole state domain"
+severity = "critical"
+query_patterns = ["operating point equivalent exact", "freeze equivalent", "state dependent equivalent", "Ward equivalent off nominal", "reuse base-state map", "equivalent across load levels", "frozen parameter model"]
+tempting_answer = "If an equivalent matches at the calibration operating point, it can be reused unchanged across the study domain."
+required_qualification = "A fixed operating-point map is exact only at its declared calibration state; a state-dependent equivalent must preserve the parameter domain and recompute or bound its update map with explicit provenance."
+safe_shorthand = "Operating-point exactness is local unless the state domain, update rule, and error or preservation contract are explicit."
+operational_consequence = "Freezing a state-dependent map can change boundary injections, constraints, feasible decisions, and protection margins away from calibration."
+mandatory_claim_ids = ["PRESERVE-001", "TR-KRON-NEUTRAL-005", "TR-KRON-NEUTRAL-007"]
+mandatory_concept_ids = ["equivalence-exactness-preservation", "transformation-family", "state"]
+source_paths = ["docs/src/transformations/kron-ward-opti-kron.md", "docs/src/foundations/preservation-contracts.md"]
+
+[[misconception]]
 id = "ground-neutral-reference-are-one-node"
 title = "Ground, neutral, earth, and voltage reference are the same node"
 severity = "critical"

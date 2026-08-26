@@ -329,6 +329,26 @@ objectives, and solver behavior unassessed. Existing sequence witnesses remain
 the scientific evidence; the package check is the refusal boundary that keeps
 those claims from being silently promoted.
 
+## Tenth trace: fixed versus state-dependent equivalents
+
+The tenth slice guards the promotion of an operating-point map into a reusable
+state-domain equivalent:
+
+| Layer | Stable identity | Owner | Purpose |
+|---|---|---|---|
+| Scientific knowledge | `PSK-000010` | this book | Requires state-domain, calibration, and update provenance for reusable equivalents |
+| Claims | `PRESERVE-001`, `TR-KRON-NEUTRAL-005`, `TR-KRON-NEUTRAL-007` | this book | Show that state shifts change nonlinear maps and recovered margins away from calibration |
+| Misconception | `base-state-equivalent-is-globally-exact` | this book | Routes frozen operating-point maps to explicit state/update obligations |
+| Executable contract | `state_dependent_equivalent_provenance` | BMOPFTools | Checks parameter, domain, base-state, and update-rule declarations |
+| API operation | `check_state_dependent_equivalent` | BMOPFTools | Reports frozen-map loss, domain/base mismatches, or qualified declaration pass |
+| Counterexample fixture | `state-dependent-equivalent-001` | BMOPFTools | Freezes a source map over a non-singleton load-state domain |
+| Findings | `E.CONTRACT.STATE_UPDATE_PROVENANCE_LOSS`, `E.CONTRACT.STATE_DOMAIN_MISMATCH`, `E.CONTRACT.STATE_BASE_ALIGNMENT_MISMATCH` | BMOPFTools | Separate frozen-map, domain, and calibration-state failures |
+
+The package pass is declaration evidence only: it does not validate a
+nonlinear update law or establish feasible-set, objective, protection, or
+solver equivalence. The book's state-dependent grounding and continuation
+witnesses remain the scientific evidence.
+
 ## What generalizes
 
 The federation pattern generalizes to other scientific guardrails:

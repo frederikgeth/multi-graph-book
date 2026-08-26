@@ -214,6 +214,36 @@ required_answer_elements = ["require balanced boundary data and compatible groun
 forbidden_simplifications = ["line transposition is the only condition"]
 
 [[case]]
+case_id = "EVAL-STATE-EQUIVALENT-STUDENT"
+audience = "student"
+question = "If a Ward or Kron equivalent is exact at one operating point, can I reuse it unchanged at every load level?"
+misconception_id = "base-state-equivalent-is-globally-exact"
+required_claim_ids = ["PRESERVE-001", "TR-KRON-NEUTRAL-005", "TR-KRON-NEUTRAL-007"]
+required_concept_ids = ["equivalence-exactness-preservation", "transformation-family", "state"]
+required_answer_elements = ["distinguish calibration-point exactness from state-domain preservation", "require recomputation or a declared error bound away from base state"]
+forbidden_simplifications = ["one exact operating point proves a globally exact equivalent"]
+
+[[case]]
+case_id = "EVAL-STATE-EQUIVALENT-SOFTWARE"
+audience = "software_engineer"
+question = "What provenance must an importer retain before treating a state dependent equivalent as reusable instead of a freeze equivalent?"
+misconception_id = "base-state-equivalent-is-globally-exact"
+required_claim_ids = ["PRESERVE-001", "TR-KRON-NEUTRAL-005", "TR-KRON-NEUTRAL-007"]
+required_concept_ids = ["equivalence-exactness-preservation", "transformation-family", "state"]
+required_answer_elements = ["retain the parameter domain and base state", "retain an update-rule identifier and refuse frozen maps without provenance"]
+forbidden_simplifications = ["a cached base-state matrix is a provenance-complete replacement"]
+
+[[case]]
+case_id = "EVAL-STATE-EQUIVALENT-POWER"
+audience = "power_engineer"
+question = "When is an operating point equivalent exact for a study with changing grounding or load state?"
+misconception_id = "base-state-equivalent-is-globally-exact"
+required_claim_ids = ["PRESERVE-001", "TR-KRON-NEUTRAL-005", "TR-KRON-NEUTRAL-007"]
+required_concept_ids = ["equivalence-exactness-preservation", "transformation-family", "state"]
+required_answer_elements = ["name the state domain and recomputation or bound requirement", "retain source limits and observations that change with state"]
+forbidden_simplifications = ["a state-dependent map may be frozen without changing feasibility or protection margins"]
+
+[[case]]
 case_id = "EVAL-GROUND-STUDENT"
 audience = "student"
 question = "Why aren’t ground, earth, neutral, and the zero-voltage reference all the same node?"

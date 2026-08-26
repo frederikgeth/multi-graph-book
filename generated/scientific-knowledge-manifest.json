@@ -1,5 +1,5 @@
 {
-  "corpus_sha256": "7ea6436f522d0b084f2bba3fe65dab79a3ddb580605aa3666ce43096b785ef54",
+  "corpus_sha256": "33889d28ccbe36f43ba43e91d1f6639fc6ca36ba4b901adb620350ced8da9304",
   "knowledge_ids": [
     "PSK-000001",
     "PSK-000002",
@@ -9,10 +9,11 @@
     "PSK-000006",
     "PSK-000007",
     "PSK-000008",
-    "PSK-000009"
+    "PSK-000009",
+    "PSK-000010"
   ],
   "manifest_id": "multi-graph-book-scientific-knowledge-0.1.0",
-  "record_count": 9,
+  "record_count": 10,
   "release": {
     "external_reviewed_claims": 0,
     "independent_human_double_coding": false,
@@ -64,7 +65,7 @@
     },
     {
       "path": "docs/src/transformations/kron-ward-opti-kron.md",
-      "sha256": "38db6bfb26875284a668affd0803276c00c3ecced2747c52070bd560e1dbbbd7"
+      "sha256": "f4b08610fdbfdb13384f3111e4d70bc8f0b8da1e5992e625b8439811c3ae0bb4"
     },
     {
       "path": "docs/src/transformations/parameterized-transformer-tap-decisions.md",
@@ -85,6 +86,14 @@
     {
       "path": "experiments/generated/load-grounding-witnesses.json",
       "sha256": "3395b71763571ab57897207bf7e1da6b07485d3544481e00e486725951f933ae"
+    },
+    {
+      "path": "experiments/generated/nonlinear-grounding-probe-witness.json",
+      "sha256": "f40c16dae548bae9fb4cc56e006aa4a9cb1a199ab66fe9adafd7bf2f90f9e355"
+    },
+    {
+      "path": "experiments/generated/nonlinear-two-point-grounding-continuation.json",
+      "sha256": "3f53f79e83b37b280b91ef0d68f62235134b7918ffd09d92a78e6f330eddf41b"
     },
     {
       "path": "experiments/generated/parallel-branch-certificate.json",
@@ -124,11 +133,11 @@
     },
     {
       "path": "knowledge/psk.toml",
-      "sha256": "7eba21b2af76e7261f25ddf2198d9e66434030a75ea8a630325b84859e2013f1"
+      "sha256": "667cbcbdc829033a8662b31ec5b7c6869e6fb22735d76eb406d51c3f0d2d63fb"
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "83fda0906b5666889a0b71b924ea9991879c99d89da39d807d09bffd50c376fc"
+      "sha256": "1caa53ee74a8e82041d1a54f5940e0a3dbe2a63c00ebdc9d716e0dd0b3e77188"
     },
     {
       "path": "review/release-candidate-manifest.json",

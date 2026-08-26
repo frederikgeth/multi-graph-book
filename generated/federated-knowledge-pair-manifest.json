@@ -8,10 +8,11 @@
       "neutral_ground_reference_preservation",
       "parallel_member_limit_preservation",
       "positive_sequence_collapse_applicability",
+      "state_dependent_equivalent_provenance",
       "transformer_tap_domain_preservation",
       "transformer_winding_convention_preservation"
     ],
-    "corpus_sha256": "814786b7c66eb0b1ada18041c0d62b594c6729984cf46451e6f337ef79842178",
+    "corpus_sha256": "6b4e25f55a637c5965d31a5a0a32ca5dd162aaaa9a173e711cf85a40355c9e4d",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -21,10 +22,11 @@
       "PSK-000006",
       "PSK-000007",
       "PSK-000008",
-      "PSK-000009"
+      "PSK-000009",
+      "PSK-000010"
     ],
     "manifest_id": "bmopftools-executable-knowledge-0.1.0",
-    "manifest_sha256": "08fd379bc936f60035353a3d44dff038726066128282cf506fa146cff8e1995a",
+    "manifest_sha256": "54c52e344fa7677ea97031a44a2e726d5b8682546451697ee553e2e139543e27",
     "package": {
       "name": "BMOPFTools",
       "version": "0.1.0"
@@ -33,7 +35,7 @@
     "schema_version": "0.1.0"
   },
   "book": {
-    "corpus_sha256": "7ea6436f522d0b084f2bba3fe65dab79a3ddb580605aa3666ce43096b785ef54",
+    "corpus_sha256": "33889d28ccbe36f43ba43e91d1f6639fc6ca36ba4b901adb620350ced8da9304",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -43,9 +45,10 @@
       "PSK-000006",
       "PSK-000007",
       "PSK-000008",
-      "PSK-000009"
+      "PSK-000009",
+      "PSK-000010"
     ],
-    "manifest_sha256": "c975e790ee9c493c630e3947fd22e80109709af5b6c1d55150ba55a338e8bab6",
+    "manifest_sha256": "e3bb49e66715bd901f5f056facd47540cd50240eb97143b93134be4072f1b7c4",
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -71,7 +74,7 @@
           "fixture_ids": [
             "parallel-rating-outer-relaxation-001"
           ],
-          "source_sha256": "47aa6769149cbdf6f5894aec90e1f1f05e6a0b18ca784be813bb8a5e35129e14"
+          "source_sha256": "6397a374354d8fdd1e1be422fd0f02a3ca80a7033e78c2da49e853e396f0a9d6"
         }
       ],
       "implementation_status": "implemented",
@@ -92,7 +95,7 @@
           "fixture_ids": [
             "neutral-ground-reference-conflation-001"
           ],
-          "source_sha256": "47aa6769149cbdf6f5894aec90e1f1f05e6a0b18ca784be813bb8a5e35129e14"
+          "source_sha256": "6397a374354d8fdd1e1be422fd0f02a3ca80a7033e78c2da49e853e396f0a9d6"
         }
       ],
       "implementation_status": "implemented",
@@ -111,7 +114,7 @@
           "fixture_ids": [
             "claimed-feasible-invalid-solution-001"
           ],
-          "source_sha256": "46019d284f47bc7f7f3088f69f0f570afd42681fc44f23e470e6cc73df9fd42f"
+          "source_sha256": "b9741e90edc24cfe0eda0fcfb3232f34ca71a44c276068cdc7cac6eda4c5789f"
         }
       ],
       "implementation_status": "implemented",
@@ -130,7 +133,7 @@
           "fixture_ids": [
             "load-voltage-base-mismatch-001"
           ],
-          "source_sha256": "f5544436785f2971e2c5d47e3fdda29fbeaa7748da0306ff6aeea9ea9eb32902"
+          "source_sha256": "68ed3402be7214e6bdf1b70d6b2cd7f957ca86a8daf496ba25129174a16e77c9"
         }
       ],
       "implementation_status": "implemented",
@@ -149,7 +152,7 @@
           "fixture_ids": [
             "transformer-tap-domain-loss-001"
           ],
-          "source_sha256": "47aa6769149cbdf6f5894aec90e1f1f05e6a0b18ca784be813bb8a5e35129e14"
+          "source_sha256": "6397a374354d8fdd1e1be422fd0f02a3ca80a7033e78c2da49e853e396f0a9d6"
         }
       ],
       "implementation_status": "implemented",
@@ -169,7 +172,7 @@
           "fixture_ids": [
             "transformer-winding-role-swap-001"
           ],
-          "source_sha256": "922ee740303a1bbbad0873c5bfed6b792a62a277806dfca88cd9acc82c57c229"
+          "source_sha256": "d1463e49f9b526f9d34e56d95fc388ef7b1cfc5f4ff382b58a7b510a9ea5a243"
         }
       ],
       "implementation_status": "implemented",
@@ -189,7 +192,7 @@
           "fixture_ids": [
             "decision-manifest-terminal-only-001"
           ],
-          "source_sha256": "47aa6769149cbdf6f5894aec90e1f1f05e6a0b18ca784be813bb8a5e35129e14"
+          "source_sha256": "6397a374354d8fdd1e1be422fd0f02a3ca80a7033e78c2da49e853e396f0a9d6"
         }
       ],
       "implementation_status": "implemented",
@@ -210,7 +213,7 @@
           "fixture_ids": [
             "kron-boundary-grounding-001"
           ],
-          "source_sha256": "8c87e310dac795ac819a6fe66fdc9b6cf2bd83e542cf9d8b659076852d77f7f7"
+          "source_sha256": "f534c59747b3297616fb22a50543951d20e0ca9d9951d159c1998de2111de93b"
         }
       ],
       "implementation_status": "implemented",
@@ -231,7 +234,28 @@
           "fixture_ids": [
             "positive-sequence-collapse-001"
           ],
-          "source_sha256": "47aa6769149cbdf6f5894aec90e1f1f05e6a0b18ca784be813bb8a5e35129e14"
+          "source_sha256": "6397a374354d8fdd1e1be422fd0f02a3ca80a7033e78c2da49e853e396f0a9d6"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000010": {
+      "contracts": [
+        {
+          "contract_id": "state_dependent_equivalent_provenance",
+          "entrypoint": "check_state_dependent_equivalent",
+          "finding_codes": [
+            "E.CONTRACT.STATE_UPDATE_PROVENANCE_LOSS",
+            "E.CONTRACT.STATE_DOMAIN_MISMATCH",
+            "E.CONTRACT.STATE_BASE_ALIGNMENT_MISMATCH",
+            "I.CONTRACT.STATE_EQUIVALENT_NOT_APPLICABLE",
+            "W.CONTRACT.STATE_EQUIVALENT_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "state-dependent-equivalent-001"
+          ],
+          "source_sha256": "6397a374354d8fdd1e1be422fd0f02a3ca80a7033e78c2da49e853e396f0a9d6"
         }
       ],
       "implementation_status": "implemented",
@@ -239,6 +263,6 @@
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "17a4aba0d618e11f270e57c49929bc3ae2bdc2fb5541960b876b89cf3326865a",
+  "pair_sha256": "b8ff2c352983582c89fddae646e7ec7ff18f3554ffa99da20b8b8c8083e29c49",
   "schema_version": "0.1.0"
 }
