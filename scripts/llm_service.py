@@ -81,9 +81,18 @@ def validate_answer_response(index: CorpusIndex, response: dict) -> list[str]:
         for record in packet.get("mandatory_records", [])
         if record.get("record_type") == "claim_bundle"
     }
+    mandatory_scientific_statements = {
+        record.get("knowledge", {}).get("scientific_statement")
+        for record in packet.get("mandatory_records", [])
+        if record.get("record_type") == "scientific_knowledge"
+    }
     direct_basis = contract.get("direct_answer_basis", [])
-    if set(direct_basis) != {value for value in mandatory_claims.values() if value}:
-        errors.append("answer basis does not exactly cover the mandatory claim bundles")
+    expected_basis = {
+        *{value for value in mandatory_claims.values() if value},
+        *{value for value in mandatory_scientific_statements if value},
+    }
+    if set(direct_basis) != expected_basis:
+        errors.append("answer basis does not exactly cover mandatory claim and scientific records")
     scoped_claims = {
         item.get("claim_id") for item in contract.get("scope_and_assumptions", [])
     }
@@ -152,6 +161,27 @@ def render_markdown(packet: dict) -> str:
     if contract["required_qualifications"]:
         lines += ["## Required qualifications", ""]
         lines.extend(f"- {item}" for item in contract["required_qualifications"])
+        lines.append("")
+    if packet["known_misconceptions"]:
+        lines += ["## Known misconceptions", ""]
+        for item in packet["known_misconceptions"]:
+            lines.append(f"- **{item['misconception_id']}** ({item['severity']}): {item['required_qualification']}")
+        lines.append("")
+    if packet["counterexamples"]:
+        lines += ["## Counterexamples", ""]
+        for item in packet["counterexamples"]:
+            lines.append(
+                f"- **{item['knowledge_id']}** — fixtures: {', '.join(item['counterexample_ids'])}; "
+                f"book artifacts: {', '.join(item['artifact_paths'])}"
+            )
+        lines.append("")
+    if packet["executable_checks"]:
+        lines += ["## Executable checks", ""]
+        for item in packet["executable_checks"]:
+            lines.append(
+                f"- **{item['knowledge_id']}** — `{item['repository']}` contracts: "
+                f"{', '.join(item['contract_ids'])}; status: `{item['implementation_status']}`"
+            )
         lines.append("")
     if contract["failure_consequences"]:
         lines += ["## Failure consequences", ""]

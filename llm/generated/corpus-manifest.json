@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "e28cede8c35c66d2732ffabeecda4b6e52842a3a31c978cdd5c2dd27ce29e522",
+  "corpus_sha256": "59e5d4b2b92b4437aef254e3847b07f209bf0926be5de58aa3d09c6c3091b5ac",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -15,10 +15,11 @@
   "evaluation_case_count": 33,
   "heldout_case_count": 33,
   "misconception_count": 11,
-  "record_count": 734,
+  "record_count": 735,
   "record_counts": {
     "claim_bundle": 105,
     "concept_bundle": 18,
+    "scientific_knowledge": 1,
     "section": 611
   },
   "release": {
@@ -301,6 +302,14 @@
     {
       "path": "docs/src/transformations/transformer-winding-coordinate-normalization.md",
       "sha256": "239f18d5fe712edb73ffb140ce349110b0a2d5859955d547b8f374562303934f"
+    },
+    {
+      "path": "generated/scientific-knowledge-manifest.json",
+      "sha256": "6c5fe5d4de2ef66eacb09af0e13975a1959b43212d505edb4c9b4b6f190874cd"
+    },
+    {
+      "path": "generated/scientific_knowledge.jsonl",
+      "sha256": "095806eddeb06ccd86a8d748d2664ca48cc45989620f191263aef9ed6e3b44ff"
     },
     {
       "path": "llm/evaluation-cases.toml",

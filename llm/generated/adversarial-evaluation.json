@@ -44,12 +44,12 @@
           "claim:FORMULATION-Y-SPLIT-001",
           "concept:nodal-operator-alias",
           "claim:NUMERICAL-002",
-          "claim:FORMULATION-NODAL-002",
           "claim:FORMULATION-NODAL-003",
+          "claim:FORMULATION-NODAL-002",
           "claim:GRAPH-PI-COLLAPSE-001",
-          "claim:TR-XFMR-004",
           "claim:GRAPH-SELF-LOOP-001",
-          "claim:FORMULATION-NODAL-001"
+          "claim:FORMULATION-NODAL-001",
+          "claim:TR-XFMR-004"
         ]
       },
       "lexical": {
@@ -193,8 +193,8 @@
           "claim:FORMULATION-NODAL-002",
           "claim:TR-PAR-003",
           "claim:TR-XFMR-007",
-          "claim:TR-XFMR-009",
           "claim:ARCH-LOWER-001",
+          "claim:TR-XFMR-009",
           "claim:GRAPH-SELF-LOOP-001"
         ]
       },
@@ -266,8 +266,8 @@
           "claim:ARCH-LOWER-001",
           "claim:TR-XFMR-003",
           "claim:FORMULATION-NODAL-001",
-          "claim:TR-PAR-002",
-          "claim:NUMERICAL-001"
+          "claim:NUMERICAL-001",
+          "claim:TR-PAR-002"
         ]
       },
       "lexical": {
@@ -553,7 +553,7 @@
           "concept:phase-conductor-sequence-coordinate",
           "claim:ARCH-SURGERY-002",
           "claim:TR-SER-003",
-          "claim:TRANSFORM-SEM-001"
+          "claim:ARCH-LENS-001"
         ]
       },
       "lexical": {
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "e28cede8c35c66d2732ffabeecda4b6e52842a3a31c978cdd5c2dd27ce29e522"
+    "corpus_sha256": "59e5d4b2b92b4437aef254e3847b07f209bf0926be5de58aa3d09c6c3091b5ac"
   },
   "inputs": {
     "adversarial_cases": {

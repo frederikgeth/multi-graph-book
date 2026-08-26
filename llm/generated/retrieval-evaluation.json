@@ -5,7 +5,7 @@
       "contract_complete_rate": 1.0,
       "contract_record_recall": 1.0,
       "evidence_only_complete_at_10": 0.0,
-      "evidence_only_mean_reciprocal_rank_at_20": 0.262862,
+      "evidence_only_mean_reciprocal_rank_at_20": 0.263771,
       "evidence_only_recall_at_10": 0.557576,
       "evidence_only_recall_at_5": 0.410101,
       "open_corpus_complete_at_10": 0.0,
@@ -37,12 +37,12 @@
       "contract_complete_rate": 1.0,
       "contract_record_recall": 1.0,
       "evidence_only_complete_at_10": 0.0,
-      "evidence_only_mean_reciprocal_rank_at_20": 0.300766,
+      "evidence_only_mean_reciprocal_rank_at_20": 0.300703,
       "evidence_only_recall_at_10": 0.621717,
       "evidence_only_recall_at_5": 0.508586,
       "open_corpus_complete_at_10": 0.0,
       "open_corpus_recall_at_10": 0.508586,
-      "open_corpus_recall_at_5": 0.390909,
+      "open_corpus_recall_at_5": 0.375758,
       "packet_shape_valid_rate": 1.0,
       "qualification_complete_rate": 1.0,
       "release_match_rate": 1.0,
@@ -151,12 +151,12 @@
       "contract_complete_rate": 1.0,
       "contract_record_recall": 1.0,
       "evidence_only_complete_at_10": 0.0,
-      "evidence_only_mean_reciprocal_rank_at_20": 0.23605,
+      "evidence_only_mean_reciprocal_rank_at_20": 0.235819,
       "evidence_only_recall_at_10": 0.444445,
       "evidence_only_recall_at_5": 0.388889,
       "open_corpus_complete_at_10": 0.0,
       "open_corpus_recall_at_10": 0.388889,
-      "open_corpus_recall_at_5": 0.333333,
+      "open_corpus_recall_at_5": 0.277778,
       "packet_shape_valid_rate": 1.0,
       "qualification_complete_rate": 1.0,
       "release_match_rate": 1.0,
@@ -199,7 +199,7 @@
       "contract_complete_rate": 1.0,
       "contract_record_recall": 1.0,
       "evidence_only_complete_at_10": 0.0,
-      "evidence_only_mean_reciprocal_rank_at_20": 0.119477,
+      "evidence_only_mean_reciprocal_rank_at_20": 0.12281,
       "evidence_only_recall_at_10": 0.266667,
       "evidence_only_recall_at_5": 0.266667,
       "open_corpus_complete_at_10": 0.0,
@@ -844,11 +844,12 @@
         "claim:TR-PAR-003",
         "concept:parallel",
         "concept:rating-limit-constraint",
-        "concept:equivalence-exactness-preservation"
+        "concept:equivalence-exactness-preservation",
+        "knowledge:PSK-000001"
       ],
       "contract_record_recall": 1.0,
       "evidence_only_complete_at_10": false,
-      "evidence_only_mean_reciprocal_rank_at_20": 0.336111,
+      "evidence_only_mean_reciprocal_rank_at_20": 0.335417,
       "evidence_only_recall_at_10": 0.666667,
       "evidence_only_recall_at_5": 0.666667,
       "evidence_only_top_10": [
@@ -877,18 +878,18 @@
       "misconception_id": "parallel-admittance-implies-decision-equivalence",
       "open_corpus_complete_at_10": false,
       "open_corpus_recall_at_10": 0.666667,
-      "open_corpus_recall_at_5": 0.5,
+      "open_corpus_recall_at_5": 0.333333,
       "open_corpus_top_10": [
         "concept:parallel",
         "concept:rating-limit-constraint",
         "claim:RATING-001",
         "section:docs/src/foundations/cycles-parallelism-radiality.md#parallelism-has-levels",
+        "knowledge:PSK-000001",
         "claim:TR-PAR-002",
         "claim:TR-PAR-001",
         "claim:LIT-PAR-001",
         "section:docs/src/foundations/rating-semantics.md#common-distinctions",
-        "section:docs/src/foundations/cycles-parallelism-radiality.md#consequences-for-decisions-and-reductions",
-        "section:docs/src/foundations/multigraphs-for-modelers.md#worked-parallel-fibre-four-queries-four-rules"
+        "section:docs/src/foundations/cycles-parallelism-radiality.md#consequences-for-decisions-and-reductions"
       ],
       "packet_shape_errors": [],
       "packet_shape_valid": true,
@@ -910,7 +911,8 @@
         "claim:TR-PAR-003",
         "concept:parallel",
         "concept:rating-limit-constraint",
-        "concept:equivalence-exactness-preservation"
+        "concept:equivalence-exactness-preservation",
+        "knowledge:PSK-000001"
       ],
       "contract_record_recall": 1.0,
       "evidence_only_complete_at_10": false,
@@ -952,9 +954,9 @@
         "section:docs/src/foundations/two-level-topology-and-nodal-projection.md#the-missing-middle-between-a-one-line-diagram-and-mathbf-y-mathrm-n",
         "claim:TR-GRAPH-SIMPLIFY-001",
         "section:docs/src/foundations/multigraphs-for-modelers.md#what-the-projection-preserves",
+        "knowledge:PSK-000001",
         "section:docs/src/foundations/circuit-formulations-and-lowering.md#a-nodal-matrix-is-not-a-complete-power-network-graph",
-        "section:docs/src/foundations/notation-and-conventions.md#element-intrinsic-quantities",
-        "section:docs/src/start/reading-guide-graph-and-transmission.md#if-you-come-from-simple-graph-theory"
+        "section:docs/src/foundations/notation-and-conventions.md#element-intrinsic-quantities"
       ],
       "packet_shape_errors": [],
       "packet_shape_valid": true,
@@ -976,7 +978,8 @@
         "claim:TR-PAR-003",
         "concept:parallel",
         "concept:rating-limit-constraint",
-        "concept:equivalence-exactness-preservation"
+        "concept:equivalence-exactness-preservation",
+        "knowledge:PSK-000001"
       ],
       "contract_record_recall": 1.0,
       "evidence_only_complete_at_10": false,
@@ -1015,12 +1018,12 @@
         "claim:TR-PAR-002",
         "concept:rating-limit-constraint",
         "concept:transformation-family",
+        "knowledge:PSK-000001",
         "section:docs/src/literature/research-agenda.md#high-value-applications",
         "section:docs/src/start/first-failure-parallel-branches.md#preservation-contract",
         "section:docs/src/transformations/projection-compilation-reduction.md#why-these-transformations-do-not-form-one-chain",
         "claim:RATING-001",
-        "section:docs/src/start/one-network-five-languages.md#transformations-and-evidence",
-        "claim:TRANSFORM-CATALOG-001"
+        "section:docs/src/start/one-network-five-languages.md#transformations-and-evidence"
       ],
       "packet_shape_errors": [],
       "packet_shape_valid": true,
@@ -1562,10 +1565,10 @@
         "claim:COLLAPSE-001",
         "claim:PRESERVE-001",
         "claim:COLLAPSE-002",
-        "claim:DATA-XWALK-001",
         "claim:TR-SER-002",
-        "claim:FORMULATION-NODAL-003",
-        "claim:TR-XFMR-001"
+        "claim:DATA-XWALK-001",
+        "claim:TR-XFMR-001",
+        "claim:FORMULATION-NODAL-003"
       ],
       "expected_record_ids": [
         "claim:COLLAPSE-001",
@@ -1929,15 +1932,15 @@
       ],
       "contract_record_recall": 1.0,
       "evidence_only_complete_at_10": false,
-      "evidence_only_mean_reciprocal_rank_at_20": 0.318431,
+      "evidence_only_mean_reciprocal_rank_at_20": 0.328431,
       "evidence_only_recall_at_10": 0.6,
       "evidence_only_recall_at_5": 0.6,
       "evidence_only_top_10": [
         "concept:equivalence-exactness-preservation",
         "claim:TRANSFORM-CATALOG-001",
         "claim:PRESERVE-001",
-        "claim:FORMULATION-NODAL-003",
         "claim:TR-PAR-002",
+        "claim:FORMULATION-NODAL-003",
         "claim:FORMULATION-NODAL-001",
         "claim:TR-KRON-002",
         "claim:TR-SER-002",
@@ -2166,7 +2169,7 @@
         "claim:GRAPH-MULTI-001",
         "section:docs/src/start/one-network-five-languages.md#quantities-and-computation",
         "claim:ARCH-PORT-002",
-        "claim:ARCH-NODAL-001"
+        "section:docs/src/foundations/translation-traps.md#an-arrow-is-not-an-operating-direction"
       ],
       "packet_shape_errors": [],
       "packet_shape_valid": true,
@@ -2373,8 +2376,8 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "e28cede8c35c66d2732ffabeecda4b6e52842a3a31c978cdd5c2dd27ce29e522",
-    "record_count": 734,
+    "corpus_sha256": "59e5d4b2b92b4437aef254e3847b07f209bf0926be5de58aa3d09c6c3091b5ac",
+    "record_count": 735,
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -2784,7 +2787,7 @@
           "claim:TR-KRON-003",
           "claim:TR-KRON-NEUTRAL-007",
           "claim:TR-KRON-NEUTRAL-005",
-          "claim:FORMULATION-NODAL-002"
+          "claim:TR-KRON-NEUTRAL-004"
         ],
         "hybrid_complete_at_10": false,
         "hybrid_hits_at_10": 2,
@@ -3170,21 +3173,21 @@
         "audience": "student",
         "case_id": "HOLDOUT-PARALLEL-STUDENT",
         "char_tfidf_complete_at_10": false,
-        "char_tfidf_hits_at_10": 0,
-        "char_tfidf_mean_reciprocal_rank_at_20": 0.015152,
-        "char_tfidf_recall_at_10": 0.0,
+        "char_tfidf_hits_at_10": 1,
+        "char_tfidf_mean_reciprocal_rank_at_20": 0.016667,
+        "char_tfidf_recall_at_10": 0.166667,
         "char_tfidf_recall_at_5": 0.0,
         "char_tfidf_top_10": [
           "claim:TR-XFMR-008",
           "claim:ARCH-PORT-001",
           "claim:ARCH-SURGERY-002",
-          "claim:FORMULATION-NODAL-002",
           "claim:ARCH-BLOCK-001",
+          "claim:FORMULATION-NODAL-002",
           "claim:TR-XFMR-001",
           "claim:TR-NEG-001",
           "claim:TR-XFMR-010",
           "claim:COUPLED-CORRIDOR-001",
-          "claim:COUPLED-CORRIDOR-002"
+          "claim:TR-PAR-001"
         ],
         "expected_misconception_id": "parallel-admittance-implies-decision-equivalence",
         "expected_record_count": 6,
@@ -3215,18 +3218,18 @@
         ],
         "hybrid_complete_at_10": false,
         "hybrid_hits_at_10": 1,
-        "hybrid_mean_reciprocal_rank_at_20": 0.044071,
+        "hybrid_mean_reciprocal_rank_at_20": 0.047047,
         "hybrid_recall_at_10": 0.166667,
         "hybrid_recall_at_5": 0.0,
         "hybrid_top_10": [
           "claim:TR-XFMR-008",
           "claim:TR-XFMR-010",
           "claim:COUPLED-CORRIDOR-001",
-          "claim:COUPLED-CORRIDOR-002",
           "claim:TR-XFMR-009",
+          "claim:COUPLED-CORRIDOR-002",
           "claim:TR-NEG-001",
-          "claim:GRAPH-CYCLE-001",
           "claim:TR-PAR-001",
+          "claim:GRAPH-CYCLE-001",
           "claim:TR-XFMR-001",
           "claim:ARCH-PORT-001"
         ],
@@ -3354,8 +3357,8 @@
           "concept:cycle-radial-tree",
           "concept:factor",
           "concept:element-edge-relation",
-          "concept:parallel",
           "concept:equivalence-exactness-preservation",
+          "concept:parallel",
           "concept:rating-limit-constraint"
         ],
         "expected_misconception_id": "parallel-admittance-implies-decision-equivalence",
@@ -3839,8 +3842,8 @@
           "claim:NUMERICAL-001",
           "claim:ARCH-VIEW-001",
           "claim:TR-KRON-FIVE-002",
-          "claim:GRAPH-CYCLE-001",
           "claim:ARCH-CHORDAL-001",
+          "claim:GRAPH-CYCLE-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
           "claim:TR-XFMR-001"
         ],
@@ -4451,8 +4454,8 @@
           "claim:ARCH-LENS-001",
           "claim:GRAPH-LOOPY-001",
           "claim:PRESERVE-001",
-          "claim:TR-KRON-001",
           "concept:loss",
+          "claim:TR-KRON-001",
           "claim:GRAPH-MULTI-001",
           "claim:FORMULATION-NODAL-003",
           "concept:factor",
@@ -4494,8 +4497,8 @@
           "claim:GRAPH-LOOPY-001",
           "claim:PRESERVE-001",
           "claim:FORMULATION-NODAL-003",
-          "claim:TR-XFMR-006",
           "concept:loss",
+          "claim:TR-XFMR-006",
           "claim:GROUND-SCOPE-001",
           "claim:TR-PAR-006",
           "claim:ARCH-LOWER-001",
@@ -5052,8 +5055,8 @@
           "claim:TR-KRON-NEUTRAL-001",
           "claim:ARCH-LENS-001",
           "claim:TR-KRON-NEUTRAL-003",
-          "claim:TR-KRON-NEUTRAL-007",
           "claim:TR-KRON-NEUTRAL-002",
+          "claim:TR-KRON-NEUTRAL-007",
           "claim:TR-KRON-NEUTRAL-005"
         ],
         "expected_misconception_id": "terminal-equivalence-implies-opf-equivalence",
@@ -5097,7 +5100,7 @@
           "claim:TR-KRON-NEUTRAL-002",
           "claim:TR-KRON-NEUTRAL-001",
           "claim:FIXTURE-001",
-          "claim:TR-KRON-NEUTRAL-007"
+          "claim:TR-KRON-NEUTRAL-005"
         ],
         "lexical_complete_at_10": false,
         "lexical_hits_at_10": 0,
@@ -5213,12 +5216,12 @@
       "char_tfidf": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.222903,
-        "recall_at_10": 0.444444,
+        "mean_reciprocal_rank_at_20": 0.222949,
+        "recall_at_10": 0.449495,
         "recall_at_5": 0.367677,
         "recall_expected_records_at_10": 180,
-        "recall_hits_at_10": 75,
-        "zero_recall_at_10_count": 6
+        "recall_hits_at_10": 76,
+        "zero_recall_at_10_count": 5
       },
       "graph": {
         "complete_at_10": 0.272727,
@@ -5233,7 +5236,7 @@
       "hybrid": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.219095,
+        "mean_reciprocal_rank_at_20": 0.219185,
         "recall_at_10": 0.469192,
         "recall_at_5": 0.37862,
         "recall_expected_records_at_10": 180,
@@ -5275,7 +5278,7 @@
   "inputs": {
     "context_packet_schema": {
       "path": "schemas/llm-context-packet.schema.json",
-      "sha256": "8015b397b812b0275b4bebea557490d102e39e5c015ebef276d6222b2d849b93"
+      "sha256": "0a76c75aecb92e3b6a725637988309d21bdaf0447b9151f3252e92d60197b7aa"
     },
     "evaluation_cases": {
       "path": "llm/evaluation-cases.toml",
@@ -5309,12 +5312,12 @@
     "contract_complete_rate": 1.0,
     "contract_record_recall": 1.0,
     "evidence_only_complete_at_10": 0.030303,
-    "evidence_only_mean_reciprocal_rank_at_20": 0.257619,
+    "evidence_only_mean_reciprocal_rank_at_20": 0.257901,
     "evidence_only_recall_at_10": 0.549663,
     "evidence_only_recall_at_5": 0.423064,
     "open_corpus_complete_at_10": 0.0,
     "open_corpus_recall_at_10": 0.420202,
-    "open_corpus_recall_at_5": 0.31431,
+    "open_corpus_recall_at_5": 0.309259,
     "packet_shape_valid_rate": 1.0,
     "qualification_complete_rate": 1.0,
     "release_match_rate": 1.0,

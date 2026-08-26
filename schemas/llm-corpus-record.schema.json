@@ -15,7 +15,7 @@
   "properties": {
     "schema_version": {"const": "0.1.0"},
     "record_id": {"type": "string", "minLength": 1},
-    "record_type": {"enum": ["section", "claim_bundle", "concept_bundle"]},
+    "record_type": {"enum": ["section", "claim_bundle", "concept_bundle", "scientific_knowledge"]},
     "title": {"type": "string", "minLength": 1},
     "text": {"type": "string", "minLength": 1},
     "source": {
@@ -42,7 +42,15 @@
     "claim": {"type": "object"},
     "concept": {"type": "object"},
     "supporting_passage": {"type": "object"},
-    "misconception_ids": {"type": "array", "items": {"type": "string"}}
+    "misconception_ids": {"type": "array", "items": {"type": "string"}},
+    "knowledge_id": {"type": "string", "pattern": "^PSK-[0-9]{6}$"},
+    "kind": {"type": "string"},
+    "scientific_statement": {"type": "string"},
+    "scope": {"type": "string"},
+    "evidence_status": {"type": "string"},
+    "does_not_establish": {"type": "array", "items": {"type": "string"}},
+    "book": {"type": "object"},
+    "executable": {"type": "object"}
   },
   "allOf": [
     {
@@ -52,6 +60,10 @@
     {
       "if": {"properties": {"record_type": {"const": "concept_bundle"}}},
       "then": {"required": ["concept", "misconception_ids"]}
+    },
+    {
+      "if": {"properties": {"record_type": {"const": "scientific_knowledge"}}},
+      "then": {"required": ["knowledge_id", "kind", "scientific_statement", "scope", "evidence_status", "does_not_establish", "book", "executable", "misconception_ids"]}
     }
   ],
   "additionalProperties": true

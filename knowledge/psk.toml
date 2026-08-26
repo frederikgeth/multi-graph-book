@@ -26,8 +26,13 @@ source_paths = ["docs/src/start/first-failure-parallel-branches.md"]
 
 [knowledge.executable]
 repository = "frederikgeth/BMOPFTools.jl"
-implementation_status = "planned"
+implementation_status = "implemented"
 contract_ids = ["parallel_member_limit_preservation"]
-finding_codes = ["W.CONTRACT.PARALLEL_MEMBER_LIMIT_LOSS"]
+finding_codes = [
+  "E.CONTRACT.PARALLEL_TERMINAL_RELATION_MISMATCH",
+  "W.CONTRACT.PARALLEL_MEMBER_LIMIT_LOSS",
+  "I.CONTRACT.NOT_APPLICABLE",
+  "W.CONTRACT.INDETERMINATE",
+]
 related_finding_codes = ["I.RED.PARALLEL_LINES", "E.SOL.THERMAL_VIOLATION"]
 fixture_ids = ["parallel-rating-outer-relaxation-001"]

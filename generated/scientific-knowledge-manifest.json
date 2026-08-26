@@ -1,5 +1,5 @@
 {
-  "corpus_sha256": "599c2ed14ea19dc718cd0503c91f9c22510162b7d8d9e4db3622cefba6219034",
+  "corpus_sha256": "095806eddeb06ccd86a8d748d2664ca48cc45989620f191263aef9ed6e3b44ff",
   "knowledge_ids": [
     "PSK-000001"
   ],
@@ -32,7 +32,7 @@
     },
     {
       "path": "knowledge/psk.toml",
-      "sha256": "9a1f5c08915afaba09de39cc3e3a6b0036bd2945b42beef73721aba810fb2277"
+      "sha256": "020635073ca9fc096780e3101f7b958218c527326f0011218e7c6960c3c01edb"
     },
     {
       "path": "llm/misconceptions.toml",

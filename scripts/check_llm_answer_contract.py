@@ -29,6 +29,19 @@ def main() -> int:
             validation_errors.append(f"missing mandatory records: {sorted(expected - observed)}")
         if response["packet"]["status"] != "qualified":
             validation_errors.append(f"expected qualified packet, got {response['packet']['status']}")
+        if case["misconception_id"] == "parallel-admittance-implies-decision-equivalence":
+            packet = response["packet"]
+            if "knowledge:PSK-000001" not in observed:
+                validation_errors.append("parallel route omits mandatory PSK-000001")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000001"]:
+                validation_errors.append("parallel route scientific basis differs from PSK-000001")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["parallel_member_limit_preservation"]:
+                validation_errors.append("parallel route omits the executable preservation contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["parallel-rating-outer-relaxation-001"]:
+                validation_errors.append("parallel route omits the linked counterexample fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("parallel executable contract is not marked implemented")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:

@@ -1,0 +1,60 @@
+{
+  "bmopftools": {
+    "contract_ids": [
+      "parallel_member_limit_preservation"
+    ],
+    "corpus_sha256": "7151774070dc6cc4f0cd2d0c19c9b258ca9fc9cd6bad687f88634753b9292bf9",
+    "knowledge_ids": [
+      "PSK-000001"
+    ],
+    "manifest_id": "bmopftools-executable-knowledge-0.1.0",
+    "manifest_sha256": "be0dbd96b42741957e1d43845ddbf0f4ec3fc2d1983b051e842ff39924e128c0",
+    "package": {
+      "name": "BMOPFTools",
+      "version": "0.1.0"
+    },
+    "repository": "frederikgeth/BMOPFTools.jl",
+    "schema_version": "0.1.0"
+  },
+  "book": {
+    "corpus_sha256": "095806eddeb06ccd86a8d748d2664ca48cc45989620f191263aef9ed6e3b44ff",
+    "knowledge_ids": [
+      "PSK-000001"
+    ],
+    "manifest_sha256": "6c5fe5d4de2ef66eacb09af0e13975a1959b43212d505edb4c9b4b6f190874cd",
+    "release": {
+      "external_reviewed_claims": 0,
+      "independent_human_double_coding": false,
+      "release_candidate_id": "mgb-2026-08-17-internal-rc",
+      "release_identity_sha256": "7b959c50016fc1130c0184e965c8c8d986bbef327a014614fba31db9c11a6a8f",
+      "status": "internally_validated_not_externally_reviewed"
+    },
+    "repository": "frederikgeth/multi-graph-book",
+    "schema_version": "0.1.0"
+  },
+  "links": {
+    "PSK-000001": {
+      "contracts": [
+        {
+          "contract_id": "parallel_member_limit_preservation",
+          "entrypoint": "check_parallel_member_limit_preservation",
+          "finding_codes": [
+            "E.CONTRACT.PARALLEL_TERMINAL_RELATION_MISMATCH",
+            "W.CONTRACT.PARALLEL_MEMBER_LIMIT_LOSS",
+            "I.CONTRACT.NOT_APPLICABLE",
+            "W.CONTRACT.INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "parallel-rating-outer-relaxation-001"
+          ],
+          "source_sha256": "0b1a96f631d913bcf644870d56026bfd85456b07437d8c719c72b5e716b69dc7"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    }
+  },
+  "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
+  "pair_sha256": "8c3b42f0ed1662e3b31d3844c96b5db0f33562c5914b0722a30749e99e28d5c0",
+  "schema_version": "0.1.0"
+}

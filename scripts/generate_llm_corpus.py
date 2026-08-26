@@ -21,6 +21,8 @@ MISCONCEPTIONS = ROOT / "llm/misconceptions.toml"
 EVALUATIONS = ROOT / "llm/evaluation-cases.toml"
 HELDOUT = ROOT / "llm/heldout-paraphrases.toml"
 RELEASE_MANIFEST = ROOT / "review/release-candidate-manifest.json"
+SCIENTIFIC_KNOWLEDGE = ROOT / "generated/scientific_knowledge.jsonl"
+SCIENTIFIC_MANIFEST = ROOT / "generated/scientific-knowledge-manifest.json"
 OUTPUT = ROOT / "llm/generated/corpus.jsonl"
 CORPUS_MANIFEST = ROOT / "llm/generated/corpus-manifest.json"
 SCHEMA_VERSION = "0.1.0"
@@ -327,13 +329,33 @@ def build_records() -> tuple[list[dict], list[Path], dict]:
             }
         )
 
+    scientific_records = [
+        json.loads(line)
+        for line in SCIENTIFIC_KNOWLEDGE.read_text().splitlines()
+        if line.strip()
+    ]
+    for scientific in scientific_records:
+        if scientific.get("release") != release:
+            raise ValueError(
+                f"{scientific.get('record_id', '<missing>')}: scientific release identity differs from LLM corpus"
+            )
+        scientific = dict(scientific)
+        scientific["misconception_ids"] = sorted(
+            set(scientific.get("book", {}).get("misconception_ids", []))
+        )
+        records.append(scientific)
+
     records.sort(key=lambda item: item["record_id"])
-    source_paths = [CLAIMS, VOCABULARY, MISCONCEPTIONS, EVALUATIONS, HELDOUT, *doc_paths]
+    source_paths = [
+        CLAIMS, VOCABULARY, MISCONCEPTIONS, EVALUATIONS, HELDOUT,
+        SCIENTIFIC_KNOWLEDGE, SCIENTIFIC_MANIFEST, *doc_paths,
+    ]
     metadata = {
         "claims": len(claims),
         "concepts": len(concepts),
         "misconceptions": len(misconceptions),
         "sections": len(all_sections),
+        "scientific_knowledge": len(scientific_records),
         "heldout_cases": len(tomllib.loads(HELDOUT.read_text()).get("case", [])),
         "release": release,
     }

@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PYTHON = sys.executable
 CHECKS = [
     [PYTHON, "scripts/generate_scientific_knowledge.py", "--check"],
+    [PYTHON, "scripts/check_federated_knowledge.py", "--check"],
     [PYTHON, "scripts/generate_llm_corpus.py", "--check"],
     [PYTHON, "scripts/check_llm_accessibility.py"],
     [PYTHON, "scripts/evaluate_llm_retrieval.py", "--check"],
