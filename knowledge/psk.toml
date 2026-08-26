@@ -36,3 +36,43 @@ finding_codes = [
 ]
 related_finding_codes = ["I.RED.PARALLEL_LINES", "E.SOL.THERMAL_VIOLATION"]
 fixture_ids = ["parallel-rating-outer-relaxation-001"]
+
+[[knowledge]]
+id = "PSK-000002"
+kind = "modelling-antipattern"
+title = "Neutral, ground, earth return, and voltage reference are distinct model relations"
+scientific_statement = "An explicit neutral conductor, a finite grounding relation, a physical earth-return model, and a mathematical voltage reference are distinct model objects; replacing neutral continuity or finite grounding with a local zero-voltage reference does not preserve those representation relations."
+scope = "Steady-state networks with explicit neutral terminals, declared neutral-carrying connections, perfect grounding declarations, finite neutral-only grounding shunts, and voltage-source reference incidence."
+evidence_status = "definition"
+does_not_establish = [
+  "A perfectly grounded neutral is always an invalid representation.",
+  "Every model without an explicit neutral has performed an invalid reduction.",
+  "Representation-relation preservation alone establishes terminal, explicit-earth, fault, touch-voltage, protection, or grounding-asset equivalence.",
+]
+
+[knowledge.book]
+claim_ids = ["GROUND-SCOPE-001", "GROUND-SCOPE-002"]
+misconception_ids = ["ground-neutral-reference-are-one-node"]
+certificate_ids = []
+counterexample_ids = ["neutral-ground-reference-conflation-001"]
+artifact_paths = ["experiments/generated/load-grounding-witnesses.json"]
+source_paths = ["docs/src/foundations/earth-ground-models.md"]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["neutral_ground_reference_preservation"]
+finding_codes = [
+  "E.CONTRACT.NEUTRAL_IDENTITY_LOSS",
+  "E.CONTRACT.NEUTRAL_CONTINUITY_MISMATCH",
+  "E.CONTRACT.GROUND_REFERENCE_RELATION_MISMATCH",
+  "I.CONTRACT.NEUTRAL_GROUND_NOT_APPLICABLE",
+  "W.CONTRACT.NEUTRAL_GROUND_INDETERMINATE",
+]
+related_finding_codes = [
+  "W.PROV.IMPLICIT_GROUNDING",
+  "E.PROV.FLOATING_NEUTRAL",
+  "W.PROV.FLOATING_NEUTRAL",
+  "E.INT.NO_VOLTAGE_REFERENCE",
+]
+fixture_ids = ["neutral-ground-reference-conflation-001"]

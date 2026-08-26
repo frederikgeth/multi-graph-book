@@ -42,6 +42,19 @@ def main() -> int:
                 validation_errors.append("parallel route omits the linked counterexample fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("parallel executable contract is not marked implemented")
+        if case["misconception_id"] == "ground-neutral-reference-are-one-node":
+            packet = response["packet"]
+            if "knowledge:PSK-000002" not in observed:
+                validation_errors.append("neutral/ground route omits mandatory PSK-000002")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000002"]:
+                validation_errors.append("neutral/ground route scientific basis differs from PSK-000002")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["neutral_ground_reference_preservation"]:
+                validation_errors.append("neutral/ground route omits the executable preservation contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["neutral-ground-reference-conflation-001"]:
+                validation_errors.append("neutral/ground route omits the linked counterexample fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("neutral/ground executable contract is not marked implemented")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:

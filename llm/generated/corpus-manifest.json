@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "c34349cbf94a5d055c432c4a04acdfe8dca944018839617fb62b476740655203",
+  "corpus_sha256": "21b30d61e1f96439993edaf138f66785a40ee4b03addd900eb4016a86fc6f90f",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -15,12 +15,12 @@
   "evaluation_case_count": 33,
   "heldout_case_count": 33,
   "misconception_count": 11,
-  "record_count": 742,
+  "record_count": 745,
   "record_counts": {
     "claim_bundle": 105,
     "concept_bundle": 18,
-    "scientific_knowledge": 1,
-    "section": 618
+    "scientific_knowledge": 2,
+    "section": 620
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -209,7 +209,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "7bba335c0197f75b3981d4d5db8ea63652953a69324158f618d109216a83ee83"
+      "sha256": "b2da0c375426df9b6ceb2552d68b7f48b56927baf72a185960e38bf244b74374"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -309,11 +309,11 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "6c5fe5d4de2ef66eacb09af0e13975a1959b43212d505edb4c9b4b6f190874cd"
+      "sha256": "d03e1c282b1dddc34d14b8852eb0428446ce2d5b9d4e56a746e3ae497f2cc55d"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",
-      "sha256": "095806eddeb06ccd86a8d748d2664ca48cc45989620f191263aef9ed6e3b44ff"
+      "sha256": "c23b4936129ef636f232e07429727b7f4f77d6ee44a40fd04ba7c95ace78543c"
     },
     {
       "path": "llm/evaluation-cases.toml",

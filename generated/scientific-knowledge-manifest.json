@@ -1,10 +1,11 @@
 {
-  "corpus_sha256": "095806eddeb06ccd86a8d748d2664ca48cc45989620f191263aef9ed6e3b44ff",
+  "corpus_sha256": "c23b4936129ef636f232e07429727b7f4f77d6ee44a40fd04ba7c95ace78543c",
   "knowledge_ids": [
-    "PSK-000001"
+    "PSK-000001",
+    "PSK-000002"
   ],
   "manifest_id": "multi-graph-book-scientific-knowledge-0.1.0",
-  "record_count": 1,
+  "record_count": 2,
   "release": {
     "external_reviewed_claims": 0,
     "independent_human_double_coding": false,
@@ -19,8 +20,16 @@
       "sha256": "7665586ed6a8a607a3d601f703193adb55a49ad64ed8a50cfa5557d5cbd92aeb"
     },
     {
+      "path": "docs/src/foundations/earth-ground-models.md",
+      "sha256": "64f86cb284b55a08ffe03ad4ab6e6617f74838a3be283a61671da39294cffae4"
+    },
+    {
       "path": "docs/src/start/first-failure-parallel-branches.md",
       "sha256": "7f5e4204c13a3113a44c599dce3161dbda3067a5b70867ade46f433903eee72e"
+    },
+    {
+      "path": "experiments/generated/load-grounding-witnesses.json",
+      "sha256": "3395b71763571ab57897207bf7e1da6b07485d3544481e00e486725951f933ae"
     },
     {
       "path": "experiments/generated/parallel-branch-certificate.json",
@@ -32,7 +41,7 @@
     },
     {
       "path": "knowledge/psk.toml",
-      "sha256": "020635073ca9fc096780e3101f7b958218c527326f0011218e7c6960c3c01edb"
+      "sha256": "158fdd51b8ff0a3732c6635a8b65e297a29394fabf9d93cbcd672c90157a9c89"
     },
     {
       "path": "llm/misconceptions.toml",
@@ -44,7 +53,7 @@
     },
     {
       "path": "schemas/power-system-knowledge.schema.json",
-      "sha256": "5130c89f31043a957fc36f2373ed7c2f6d9385a69ee0e7d16bbae698ea5bcae0"
+      "sha256": "818bc8974084b473d6bd808145f3aadc5062c1411f919bc6736d63862e2077c7"
     }
   ]
 }

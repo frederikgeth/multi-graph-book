@@ -2,9 +2,11 @@
 
 **Page status:** maintained cross-repository implementation trace and scope boundary.
 
-This page traces one scientific statement from book evidence to an executable BMOPFTools guardrail and back into the book's existing LLM context packet. The stable ownership rules are defined in the repository-root `ARCHITECTURE.md`; this page is the worked implementation trace.
+This page traces two scientific statements from book evidence to executable BMOPFTools guardrails and back into the book's existing LLM context packets. The stable ownership rules are defined in the repository-root `ARCHITECTURE.md`; this page is the worked implementation trace.
 
-## The linked objects
+## First trace: parallel member limits
+
+### The linked objects
 
 | Layer | Stable identity | Owner | Purpose |
 |---|---|---|---|
@@ -18,13 +20,13 @@ This page traces one scientific statement from book evidence to an executable BM
 
 The same identifiers appear in two exports, but their contents do not have two owners. `generated/scientific_knowledge.jsonl` describes the scientific object. BMOPFTools' `generated/executable_knowledge.jsonl` describes code, Findings, and fixtures. `generated/federated-knowledge-pair-manifest.json` pins the matching export hashes and checks that both sides agree on their shared IDs.
 
-## Scientific statement and evidence
+### Scientific statement and evidence
 
 `PSK-000001` states that summing fixed linear parallel admittances preserves the unconstrained aggregate terminal relation, while giving the aggregate the sum of member ratings can relax the member-constrained feasible set. Its declared scope is fixed-linear members with common endpoints and voltage coordinates, retained admittances, and explicit current limits.
 
 The record deliberately does **not** establish that all parallel aggregation is invalid, that every aggregate rating is an outer relaxation, or that a scalar witness proves the multiconductor or state-dependent case. The claims and generated book artifacts remain the evidence authority; the package does not independently rewrite that conclusion.
 
-## Executable decision
+### Executable decision
 
 BMOPFTools receives an explicit mapping from source members to a target aggregate. In its current supported domain it requires scalar, finite, nonzero, series-only impedances, common terminal coordinates, and scalar ratings. It then performs two distinct checks:
 
@@ -35,7 +37,7 @@ Missing mapped data produces `W.CONTRACT.INDETERMINATE`. Multiconductor, shunted
 
 For the minimized fixture, the two source lines have resistances 0.1 Ω and 1 Ω and ratings of 100 A each. Their summed admittance is 11 S, so the target resistance is 1/11 Ω. A naïve 200 A aggregate rating permits a voltage drop of about 18.18 V, while the source members permit only 10 V. At the committed 15 V witness, aggregate current is 165 A, but member currents are 150 A and 15 A. The target accepts the point while the first source member is overloaded. The exact scalar target rating is 110 A, not 200 A.
 
-## Retrieval and answer contract
+### Retrieval and answer contract
 
 A query such as “Can a preprocessing pass merge parallel branches by summing admittance and capacity?” follows the existing misconception router. The context packet makes the three claims, three vocabulary concepts, and `knowledge:PSK-000001` mandatory. It retains the existing `qualified`, `under_retrieved`, and `unsupported` statuses and source-hash checks.
 
@@ -50,6 +52,51 @@ The packet now also exposes explicit sections:
 
 These are structured views over mandatory records, not a second retrieval index. The deterministic corpus, release identity, source hashes, retrieval evaluation, MCP route, HTTP route, and CLI route remain the book's established machinery.
 
+## Second trace: neutral, ground, and reference
+
+The second slice reuses the same cross-repository mechanism for a model-semantics
+failure. Its stable chain is:
+
+| Layer | Stable identity | Owner | Purpose |
+|---|---|---|---|
+| Scientific knowledge | `PSK-000002` | this book | States which neutral, grounding, earth-return, and reference relations are distinct |
+| Claims | `GROUND-SCOPE-001`, `GROUND-SCOPE-002` | this book | Bind the definition and scoped grounding witness to canonical prose |
+| Misconception | `ground-neutral-reference-are-one-node` | this book | Routes the tempting node-0 normalization to mandatory qualification |
+| Executable contract | `neutral_ground_reference_preservation` | BMOPFTools | Compares supported representation relations across an explicit bus mapping |
+| API operation | `check_neutral_ground_reference_preservation` | BMOPFTools | Returns a structured four-status contract result |
+| Counterexample fixture | `neutral-ground-reference-conflation-001` | BMOPFTools | Reproduces continuity and grounding-relation loss on two buses |
+| Findings | `E.CONTRACT.NEUTRAL_CONTINUITY_MISMATCH`, `E.CONTRACT.GROUND_REFERENCE_RELATION_MISMATCH` | BMOPFTools | Separately report the two invalid identifications in the fixture |
+
+`PSK-000002` states that an explicit neutral conductor, a finite grounding
+relation, a physical earth-return model, and a mathematical voltage reference
+are distinct objects. The book owns that definition and the recorded comparison
+between floating, finite-impedance, and ideal customer-end grounding. The
+package fixture is executable evidence for one concrete transformation, not a
+promotion of that fixture into a theorem.
+
+In the fixture source, a phase/neutral feeder connects the source and load
+buses. The source neutral is perfectly grounded, while the load neutral has a
+finite 0.1 S grounding shunt. The unsafe target retains both simple bus records
+and their `n` labels, but removes neutral continuity from the feeder and marks
+the load neutral as perfectly grounded. The contract therefore emits two
+findings: one for the changed neutral-continuity graph and one for replacing the
+finite grounding relation with a perfect local ground. An exact target may
+rename the feeder and shunt while preserving all three checked representation
+dimensions.
+
+The contract explicitly does not establish electrical terminal equivalence,
+explicit-earth-conductor behavior, soil or electrode behavior, grounding-asset
+identity or state, fault current, touch voltage, or protection operation. It
+returns `inapplicable` for unsupported coupled grounding models and
+`indeterminate` when mapped evidence is unavailable.
+
+Queries from all three audience routes for
+`ground-neutral-reference-are-one-node` now make `knowledge:PSK-000002`
+mandatory. Their context packets expose the scoped scientific basis, linked
+counterexample, implemented BMOPFTools contract, dedicated Finding codes, and
+the unresolved dimensions without changing the deterministic router or its
+`qualified`, `under_retrieved`, and `unsupported` semantics.
+
 ## What generalizes
 
 The federation pattern generalizes to other scientific guardrails:
@@ -60,7 +107,7 @@ The federation pattern generalizes to other scientific guardrails:
 - implementations can report `passed`, `failed`, `inapplicable`, or `indeterminate` without turning absence of evidence into a pass; and
 - source hashes make context packets and cross-repository links auditable.
 
-The numerical formula used by this first contract does **not** generalize automatically. The scalar voltage-drop reduction, lack of shunts, fixed linear admittances, common coordinates, and explicit current ratings are case-specific. Multiconductor coupling, nonlinear devices, operating-state dependence, protection quantities, switching choices, member provenance, and general feasible-set projection require separate PSK objects or broader contracts with their own evidence and fixtures.
+The numerical formula used by the first contract does **not** generalize automatically. The scalar voltage-drop reduction, lack of shunts, fixed linear admittances, common coordinates, and explicit current ratings are case-specific. The second contract likewise does not turn relation matching into electrical equivalence: its explicit-neutral and scalar neutral-only grounding domain is case-specific. Multiconductor coupling, nonlinear devices, operating-state dependence, explicit-earth networks, protection quantities, switching choices, member provenance, and general feasible-set projection require separate PSK objects or broader contracts with their own evidence and fixtures.
 
 ## Reproduction and release pairing
 

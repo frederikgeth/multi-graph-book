@@ -1,14 +1,16 @@
 {
   "bmopftools": {
     "contract_ids": [
+      "neutral_ground_reference_preservation",
       "parallel_member_limit_preservation"
     ],
-    "corpus_sha256": "eee3a41cd349502afe1855762f27664f6183dd45b5f8279c583eb9e53565d6f7",
+    "corpus_sha256": "c5a64e80a23965a32ed0e08cd51f6b0f20d19ba8d8a4a1e30ff5aa1aab47a950",
     "knowledge_ids": [
-      "PSK-000001"
+      "PSK-000001",
+      "PSK-000002"
     ],
     "manifest_id": "bmopftools-executable-knowledge-0.1.0",
-    "manifest_sha256": "b6ea7b84d41cf220f81d3f7b476b8c748d085aa16e06952021a7f2d0b82b7b8c",
+    "manifest_sha256": "18e18c7ba50f689959cab1e8287228cbcd23b260679fd572947f35d52b0a509a",
     "package": {
       "name": "BMOPFTools",
       "version": "0.1.0"
@@ -17,11 +19,12 @@
     "schema_version": "0.1.0"
   },
   "book": {
-    "corpus_sha256": "095806eddeb06ccd86a8d748d2664ca48cc45989620f191263aef9ed6e3b44ff",
+    "corpus_sha256": "c23b4936129ef636f232e07429727b7f4f77d6ee44a40fd04ba7c95ace78543c",
     "knowledge_ids": [
-      "PSK-000001"
+      "PSK-000001",
+      "PSK-000002"
     ],
-    "manifest_sha256": "6c5fe5d4de2ef66eacb09af0e13975a1959b43212d505edb4c9b4b6f190874cd",
+    "manifest_sha256": "d03e1c282b1dddc34d14b8852eb0428446ce2d5b9d4e56a746e3ae497f2cc55d",
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -47,7 +50,28 @@
           "fixture_ids": [
             "parallel-rating-outer-relaxation-001"
           ],
-          "source_sha256": "2eaa001410cf603c3e2029a75fab4d26acb99d5714f21c81edc11de816d6609e"
+          "source_sha256": "a5f304ff6d1c3bfb2422b6ca06b2a07e5992b1e666ad9ab76f0f2c9a6e253a7a"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000002": {
+      "contracts": [
+        {
+          "contract_id": "neutral_ground_reference_preservation",
+          "entrypoint": "check_neutral_ground_reference_preservation",
+          "finding_codes": [
+            "E.CONTRACT.NEUTRAL_IDENTITY_LOSS",
+            "E.CONTRACT.NEUTRAL_CONTINUITY_MISMATCH",
+            "E.CONTRACT.GROUND_REFERENCE_RELATION_MISMATCH",
+            "I.CONTRACT.NEUTRAL_GROUND_NOT_APPLICABLE",
+            "W.CONTRACT.NEUTRAL_GROUND_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "neutral-ground-reference-conflation-001"
+          ],
+          "source_sha256": "a5f304ff6d1c3bfb2422b6ca06b2a07e5992b1e666ad9ab76f0f2c9a6e253a7a"
         }
       ],
       "implementation_status": "implemented",
@@ -55,6 +79,6 @@
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "3d75a446acd8fa187b49fde8d5fd01674a8710c9a3dfd13fe4ffe4c7f6b42175",
+  "pair_sha256": "9e3001dea964ab191d5ee7d58f28c1a457bb21c91f0df6518c0b709e0f0a7fa3",
   "schema_version": "0.1.0"
 }

@@ -190,12 +190,12 @@
           "claim:TR-PAR-002",
           "claim:TR-XFMR-006",
           "concept:rating-limit-constraint",
-          "claim:FORMULATION-NODAL-002",
           "claim:TR-PAR-003",
+          "claim:FORMULATION-NODAL-002",
           "claim:TR-XFMR-007",
-          "claim:TR-XFMR-009",
           "claim:ARCH-LOWER-001",
-          "claim:GRAPH-SELF-LOOP-001"
+          "claim:TR-XFMR-009",
+          "claim:FORMULATION-NODAL-001"
         ]
       },
       "lexical": {
@@ -205,8 +205,8 @@
           "concept:parallel",
           "claim:TR-PAR-002",
           "claim:FIXTURE-002",
-          "claim:FORMULATION-NODAL-002",
           "claim:FORMULATION-NODAL-001",
+          "claim:FORMULATION-NODAL-002",
           "claim:TR-XFMR-006",
           "claim:TR-PAR-003",
           "claim:PRACTICE-IMPEDANCE-001",
@@ -263,11 +263,11 @@
           "claim:TR-SER-002",
           "claim:FORMULATION-Y-SPLIT-001",
           "claim:FORMULATION-NODAL-003",
-          "claim:ARCH-LOWER-001",
           "claim:TR-XFMR-003",
+          "claim:ARCH-LOWER-001",
           "claim:FORMULATION-NODAL-001",
-          "claim:TR-PAR-002",
-          "claim:NUMERICAL-001"
+          "claim:NUMERICAL-001",
+          "claim:TR-PAR-002"
         ]
       },
       "lexical": {
@@ -352,8 +352,8 @@
           "claim:ARCH-LOWER-001",
           "claim:GRAPH-CYCLE-001",
           "claim:GRAPH-MATRIX-001",
-          "claim:PRACTICE-ARCH-001",
           "claim:TR-GRAPH-ACTIVE-001",
+          "claim:PRACTICE-ARCH-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
           "claim:GRAPH-MULTI-001"
         ]
@@ -590,8 +590,8 @@
         "top_10": [
           "claim:TR-KRON-NEUTRAL-007",
           "claim:TR-KRON-FIVE-001",
-          "claim:TR-KRON-002",
           "claim:TR-KRON-NEUTRAL-004",
+          "claim:TR-KRON-002",
           "claim:TR-KRON-NEUTRAL-001",
           "claim:TR-KRON-NEUTRAL-003",
           "claim:TR-KRON-NEUTRAL-002",
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "c34349cbf94a5d055c432c4a04acdfe8dca944018839617fb62b476740655203"
+    "corpus_sha256": "21b30d61e1f96439993edaf138f66785a40ee4b03addd900eb4016a86fc6f90f"
   },
   "inputs": {
     "adversarial_cases": {

@@ -71,9 +71,21 @@ def release_identity() -> dict:
     return identity
 
 
-def require_unique_strings(record_id: str, field: str, values: object, errors: list[str]) -> list[str]:
-    if not isinstance(values, list) or not values or not all(isinstance(item, str) and item.strip() for item in values):
-        errors.append(f"{record_id}: {field} must be a nonempty string array")
+def require_unique_strings(
+    record_id: str,
+    field: str,
+    values: object,
+    errors: list[str],
+    *,
+    allow_empty: bool = False,
+) -> list[str]:
+    if (
+        not isinstance(values, list)
+        or (not values and not allow_empty)
+        or not all(isinstance(item, str) and item.strip() for item in values)
+    ):
+        qualifier = "a string array" if allow_empty else "a nonempty string array"
+        errors.append(f"{record_id}: {field} must be {qualifier}")
         return []
     if len(values) != len(set(values)):
         errors.append(f"{record_id}: {field} contains duplicates")
@@ -139,7 +151,13 @@ def validate_and_build() -> tuple[list[dict], dict, list[str]]:
         referenced_misconceptions = set(
             require_unique_strings(record_id, "book.misconception_ids", book.get("misconception_ids"), errors)
         )
-        certificate_ids = require_unique_strings(record_id, "book.certificate_ids", book.get("certificate_ids"), errors)
+        certificate_ids = require_unique_strings(
+            record_id,
+            "book.certificate_ids",
+            book.get("certificate_ids"),
+            errors,
+            allow_empty=True,
+        )
         require_unique_strings(record_id, "book.counterexample_ids", book.get("counterexample_ids"), errors)
         artifact_paths = require_unique_strings(record_id, "book.artifact_paths", book.get("artifact_paths"), errors)
         source_paths = require_unique_strings(record_id, "book.source_paths", book.get("source_paths"), errors)

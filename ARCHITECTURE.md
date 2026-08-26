@@ -214,11 +214,32 @@ optimality status reported honestly. Tests cover failure of the naive summed
 rating, preservation with exact lifted member constraints, relabelling
 invariance, and refusal outside the supported domain.
 
-Only after this trace is clean should the infrastructure be generalized. The
-next two slices are neutral/ground/reference conflation and solver termination
-versus independently validated solution quality. Together the three slices
-exercise transformation preservation, model semantics, and numerical/scientific
-inference.
+## Second vertical slice: neutral, ground, and reference
+
+The second slice tests whether the same federation remains useful for a model-
+semantics failure rather than an optimization-preservation failure. Book object
+`PSK-000002` links claims `GROUND-SCOPE-001` and `GROUND-SCOPE-002` and the
+`ground-neutral-reference-are-one-node` misconception to BMOPFTools contract
+`neutral_ground_reference_preservation`.
+
+The initial executable domain compares an explicit one-to-one bus mapping. It
+checks identifiable neutral terminals, pairwise neutral continuity, and each
+mapped neutral's declared perfect-ground, scalar finite-grounding-shunt, and
+voltage-source-reference relations. The minimized counterexample retains the
+same simple two-bus graph and neutral labels while removing the neutral-carrying
+feeder path and replacing a finite customer grounding relation with a perfect
+local ground.
+
+This is intentionally a representation-level contract. A pass does not certify
+equal terminal equations, an explicit earth conductor, soil or electrode
+models, grounding-asset state, fault current, touch voltage, or protection
+operation. Coupled grounding models and missing evidence are refused explicitly
+rather than collapsed to scalar assumptions.
+
+With transformation and model-semantics slices now traced end to end, the next
+validation slice is solver termination versus independently validated solution
+quality. Only after that third category is clean should shared infrastructure be
+generalized beyond the needs demonstrated by these slices.
 
 ## Federated discovery and context assembly
 
