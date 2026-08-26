@@ -25,14 +25,14 @@
         "recall_at_10": 0.833333,
         "top_10": [
           "claim:ARCH-NODAL-001",
-          "claim:ARCH-SUPPORT-001",
           "concept:graph-topology-adjacency",
+          "claim:ARCH-SUPPORT-001",
           "concept:nodal-operator-alias",
-          "claim:FORMULATION-NODAL-002",
           "claim:FORMULATION-Y-SPLIT-001",
+          "claim:FORMULATION-NODAL-002",
           "concept:equivalence-exactness-preservation",
-          "concept:parallel",
           "concept:factor",
+          "concept:parallel",
           "claim:TR-KRON-FIVE-002"
         ]
       },
@@ -48,8 +48,8 @@
           "claim:FORMULATION-NODAL-002",
           "claim:GRAPH-PI-COLLAPSE-001",
           "claim:GRAPH-SELF-LOOP-001",
-          "claim:FORMULATION-NODAL-001",
-          "claim:TR-XFMR-004"
+          "claim:TR-XFMR-004",
+          "claim:FORMULATION-NODAL-001"
         ]
       },
       "lexical": {
@@ -193,8 +193,8 @@
           "claim:FORMULATION-NODAL-002",
           "claim:TR-PAR-003",
           "claim:TR-XFMR-007",
-          "claim:ARCH-LOWER-001",
           "claim:TR-XFMR-009",
+          "claim:ARCH-LOWER-001",
           "claim:GRAPH-SELF-LOOP-001"
         ]
       },
@@ -266,8 +266,8 @@
           "claim:ARCH-LOWER-001",
           "claim:TR-XFMR-003",
           "claim:FORMULATION-NODAL-001",
-          "claim:NUMERICAL-001",
-          "claim:TR-PAR-002"
+          "claim:TR-PAR-002",
+          "claim:NUMERICAL-001"
         ]
       },
       "lexical": {
@@ -335,9 +335,9 @@
           "claim:GRAPH-MATRIX-001",
           "claim:ARCH-LENS-001",
           "claim:GRAPH-MULTI-001",
-          "claim:PRACTICE-ARCH-001",
           "claim:GRAPH-CYCLE-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
+          "claim:PRACTICE-ARCH-001",
           "claim:ARCH-LOWER-001",
           "claim:TR-GRAPH-001"
         ]
@@ -481,7 +481,7 @@
           "claim:ARCH-LOWER-002",
           "claim:TOPOLOGY-001",
           "claim:LIT-PAR-001",
-          "claim:TR-XFMR-003"
+          "claim:PRACTICE-ADAPTER-001"
         ]
       },
       "lexical": {
@@ -552,8 +552,8 @@
           "concept:object-node-interface",
           "concept:phase-conductor-sequence-coordinate",
           "claim:ARCH-SURGERY-002",
-          "claim:TR-SER-003",
-          "claim:ARCH-LENS-001"
+          "claim:ARCH-LENS-001",
+          "claim:TR-SER-003"
         ]
       },
       "lexical": {
@@ -568,8 +568,8 @@
           "claim:ARCH-CONDUCTOR-002",
           "concept:phase-conductor-sequence-coordinate",
           "claim:TR-GRAPH-001",
-          "claim:ARCH-NODAL-001",
-          "claim:ARCH-LENS-001"
+          "claim:ARCH-LENS-001",
+          "claim:ARCH-NODAL-001"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -604,15 +604,15 @@
         "complete_at_10": true,
         "recall_at_10": 1.0,
         "top_10": [
-          "claim:TR-KRON-NEUTRAL-007",
           "claim:NUMERICAL-001",
+          "claim:TR-KRON-NEUTRAL-007",
           "claim:AU-CARSON-001",
           "claim:TR-KRON-FIVE-001",
           "claim:TR-KRON-NEUTRAL-004",
           "claim:TR-KRON-NEUTRAL-001",
           "claim:TR-KRON-NEUTRAL-003",
-          "claim:TR-KRON-NEUTRAL-002",
           "claim:TR-SER-003",
+          "claim:TR-KRON-NEUTRAL-002",
           "claim:TR-KRON-NEUTRAL-005"
         ]
       },
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "59e5d4b2b92b4437aef254e3847b07f209bf0926be5de58aa3d09c6c3091b5ac"
+    "corpus_sha256": "c34349cbf94a5d055c432c4a04acdfe8dca944018839617fb62b476740655203"
   },
   "inputs": {
     "adversarial_cases": {

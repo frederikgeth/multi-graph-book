@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `59e5d4b2b92b4437aef254e3847b07f209bf0926be5de58aa3d09c6c3091b5ac`<br>
+**Corpus hash:** `c34349cbf94a5d055c432c4a04acdfe8dca944018839617fb62b476740655203`<br>
 **Cases:** 33
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -44,7 +44,7 @@ evidence sets, so the effective target count is nine rather than 27 independent 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `lexical` | 33.4% | 44.9% | 0.0% | 0/33 | 5/33 | 0.202 |
-| `char_tfidf` | 36.8% | 44.9% | 0.0% | 0/33 | 5/33 | 0.223 |
+| `char_tfidf` | 36.8% | 45.3% | 0.0% | 0/33 | 5/33 | 0.223 |
 | `hybrid` | 37.9% | 46.9% | 0.0% | 0/33 | 5/33 | 0.219 |
 | `graph` | 42.2% | 54.5% | 27.3% | 9/33 | 5/33 | 0.260 |
 

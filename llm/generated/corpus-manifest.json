@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "59e5d4b2b92b4437aef254e3847b07f209bf0926be5de58aa3d09c6c3091b5ac",
+  "corpus_sha256": "c34349cbf94a5d055c432c4a04acdfe8dca944018839617fb62b476740655203",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -10,17 +10,17 @@
       "docs/src/reference/vocabulary-indexes.md"
     ],
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
-    "included_doc_count": 67
+    "included_doc_count": 68
   },
   "evaluation_case_count": 33,
   "heldout_case_count": 33,
   "misconception_count": 11,
-  "record_count": 735,
+  "record_count": 742,
   "record_counts": {
     "claim_bundle": 105,
     "concept_bundle": 18,
     "scientific_knowledge": 1,
-    "section": 611
+    "section": 618
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -206,6 +206,10 @@
     {
       "path": "docs/src/literature/search-runs/2026-08-25-coupled-multivoltage-corridors.md",
       "sha256": "84860eb10fd04db2fe8ede9152d348ae3f6d545aeabc16396f558433c810438c"
+    },
+    {
+      "path": "docs/src/reference/federated-knowledge-trace.md",
+      "sha256": "7bba335c0197f75b3981d4d5db8ea63652953a69324158f618d109216a83ee83"
     },
     {
       "path": "docs/src/reference/references.md",

@@ -3,12 +3,12 @@
     "contract_ids": [
       "parallel_member_limit_preservation"
     ],
-    "corpus_sha256": "7151774070dc6cc4f0cd2d0c19c9b258ca9fc9cd6bad687f88634753b9292bf9",
+    "corpus_sha256": "eee3a41cd349502afe1855762f27664f6183dd45b5f8279c583eb9e53565d6f7",
     "knowledge_ids": [
       "PSK-000001"
     ],
     "manifest_id": "bmopftools-executable-knowledge-0.1.0",
-    "manifest_sha256": "be0dbd96b42741957e1d43845ddbf0f4ec3fc2d1983b051e842ff39924e128c0",
+    "manifest_sha256": "b6ea7b84d41cf220f81d3f7b476b8c748d085aa16e06952021a7f2d0b82b7b8c",
     "package": {
       "name": "BMOPFTools",
       "version": "0.1.0"
@@ -47,7 +47,7 @@
           "fixture_ids": [
             "parallel-rating-outer-relaxation-001"
           ],
-          "source_sha256": "0b1a96f631d913bcf644870d56026bfd85456b07437d8c719c72b5e716b69dc7"
+          "source_sha256": "2eaa001410cf603c3e2029a75fab4d26acb99d5714f21c81edc11de816d6609e"
         }
       ],
       "implementation_status": "implemented",
@@ -55,6 +55,6 @@
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "8c3b42f0ed1662e3b31d3844c96b5db0f33562c5914b0722a30749e99e28d5c0",
+  "pair_sha256": "3d75a446acd8fa187b49fde8d5fd01674a8710c9a3dfd13fe4ffe4c7f6b42175",
   "schema_version": "0.1.0"
 }

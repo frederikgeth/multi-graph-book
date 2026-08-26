@@ -52,6 +52,7 @@ verified empirical result.
 | [Search run: multiphase formulations and practical reductions](../literature/search-runs/2026-08-16-multiphase-and-practical-reductions.md) | generated search-run record. | 0 | — | `untracked` | — |
 | [Search run: coupled multi-voltage corridors](../literature/search-runs/2026-08-25-coupled-multivoltage-corridors.md) | generated search-run record. | 0 | — | `untracked` | — |
 | [Evidence map and verification summary](../reference/evidence-map.md) | generated reference navigation and evidence-gap summary. | 0 | — | `untracked` | — |
+| [Federated scientific knowledge: end-to-end trace](../reference/federated-knowledge-trace.md) | maintained cross-repository implementation trace and scope boundary. | 0 | — | `untracked` | — |
 | [References](../reference/references.md) | bibliography and source register. | 0 | — | `untracked` | — |
 | [Terminology](../reference/terminology.md) | maintained glossary and translation aid. | 0 | — | `untracked` | — |
 | [Cross-community vocabulary indexes](../reference/vocabulary-indexes.md) | generated bidirectional vocabulary index; not a standards crosswalk. | 0 | — | `untracked` | — |
