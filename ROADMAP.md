@@ -39,6 +39,41 @@ shortening programme. The full long-form material remains in scope. The active
 question is how to make the book, knowledge base, evidence record, and external
 review packet tell the same story.
 
+### Federated executable-knowledge scale-out inventory (2026-08-26)
+
+`ARCHITECTURE.md` remains the authority for what belongs in this repository and
+what belongs in BMOPFTools. This inventory is the prioritized promotion queue:
+it identifies topics where the book already has a scientific basis and where a
+package check, fixture, or existing diagnostic can provide complementary
+case-specific evidence. A row is not a promise that every topic needs one large
+contract; promotion still requires a scoped PSK, explicit refusal semantics,
+and a minimized negative witness.
+
+| Priority | Topic | Book-owned basis | BMOPFTools complement | Status / intended class |
+|---:|---|---|---|---|
+| 1 | Parallel member limits | `TR-PAR-001..003`; parallel-rating misconception | source/aggregate interval witness | Implemented as `PSK-000001` |
+| 2 | Neutral, ground, and reference identity | `GROUND-SCOPE-001..002`; grounding misconception | mapped representation relations | Implemented as `PSK-000002` |
+| 3 | Solver status versus validated result | `NUMERICAL-001`, `NUMERICAL-004` | independent result profiling | Implemented as `PSK-000003` |
+| 4 | WYE/DELTA load nominal-voltage coordinate | `LOAD-BASE-001`, `LOAD-CONNECTION-001` | propagated-base declaration check | Implemented as `PSK-000004` |
+| 5 | Adjustable transformer tap domain | `TR-XFMR-005..006`; tap-decision certificates | mapped continuous interval comparison | Implemented as `PSK-000005` |
+| 6 | Transformer winding coil bases, ratio, and orientation | `TR-XFMR-001..004`; winding-normalization evidence | existing ratio/base/orientation diagnostics plus a mapped convention contract | Next vertical slice; declaration/convention preservation |
+| 7 | Terminal equivalence versus decision equivalence | preservation-contract definitions and multiple transformation witnesses | transformation manifest with constraints, objective, and recovery obligations | Next discovery; umbrella routing plus narrow executable checks |
+| 8 | Kron boundary exactness and internal recovery | `PRESERVE-001`, `TR-KRON-*`; Kron misconception | source/target boundary and recovery-map checks | Candidate; reduction preservation |
+| 9 | Positive-sequence collapse applicability | `COLLAPSE-001..002`; sequence misconception | symmetry, grounding, terminal, and decision-domain guards | Candidate; applicability/refusal contract |
+| 10 | Fixed versus state-dependent equivalents | formulation split, Ward/Kron, and load-dependence claims | detect frozen parameters and missing state/update provenance | Candidate; state/domain preservation |
+| 11 | Floating references and singularity | grounding/reference and numerical-consequence claims | existing reference, connectivity, and singularity diagnostics | Candidate; validation bundle before a cross-model contract |
+| 12 | Terminal/conductor ordering and permutation | typed terminal-map and coordinate-action claims | metamorphic relabelling/permutation invariance | Candidate; representation invariance |
+| 13 | Complete solved-network feasibility | numerical validation boundary | equation, KCL, power-balance, device-limit, and recovery residuals | Candidate expansion of `PSK-000003`; not one status heuristic |
+| 14 | Unit/base and serialization invariance | normalization, coordinate, and provenance claims | round-trip and unit/base metamorphic tests | Candidate; importer/exporter preservation |
+
+The first scale-out milestone is now complete: five stable PSK paths cover a
+transformation constraint, model semantics, numerical inference, connection
+coordinates, and an adjustable decision domain. The next milestone is ten
+stable paths, but promotion is evidence-gated rather than quota-driven. The
+immediate sixth slice is transformer winding normalization and orientation;
+terminal/decision equivalence remains the organizing scientific question, not
+a generic contract that silently claims every downstream dimension.
+
 ### Product identity and editorial stance
 
 The project has two deliberate products:

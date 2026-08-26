@@ -1,13 +1,14 @@
 {
-  "corpus_sha256": "fc2d81ca65521b8a01659be5af46a654ba977bda633b262b9de97f4cb585001f",
+  "corpus_sha256": "9f6084ec6538a5da60995aac84ef72d122ffd28e873a71d27ba7e3007b926139",
   "knowledge_ids": [
     "PSK-000001",
     "PSK-000002",
     "PSK-000003",
-    "PSK-000004"
+    "PSK-000004",
+    "PSK-000005"
   ],
   "manifest_id": "multi-graph-book-scientific-knowledge-0.1.0",
-  "record_count": 4,
+  "record_count": 5,
   "release": {
     "external_reviewed_claims": 0,
     "independent_human_double_coding": false,
@@ -20,6 +21,10 @@
     {
       "path": "claims/claims.toml",
       "sha256": "7d5475031842a08eaa8d77c78d92b5df0b8cfc7e41ac17d8fa34d3530ef8ef16"
+    },
+    {
+      "path": "docs/src/cases/transformer-tap-ac-decision.md",
+      "sha256": "8993431d2ed95645efaab622b7caba9833900fb891445b0116379b1927b15448"
     },
     {
       "path": "docs/src/foundations/earth-ground-models.md",
@@ -38,6 +43,10 @@
       "sha256": "7f5e4204c13a3113a44c599dce3161dbda3067a5b70867ade46f433903eee72e"
     },
     {
+      "path": "docs/src/transformations/parameterized-transformer-tap-decisions.md",
+      "sha256": "12d0c3b95438fcd844c1ef4552d755765d177e32eabc03b99e87d16fe3b6cc19"
+    },
+    {
       "path": "experiments/generated/load-grounding-witnesses.json",
       "sha256": "3395b71763571ab57897207bf7e1da6b07485d3544481e00e486725951f933ae"
     },
@@ -54,12 +63,20 @@
       "sha256": "d2061049cbf8aaeba0f4c107b2ae22ce91668359dea557a4ca3f91a9458a606d"
     },
     {
+      "path": "experiments/generated/transformer-tap-ac-decision-certificate.json",
+      "sha256": "94f736df2af80561cf4ab63845b9f21340ed98dcdc7d4446c2684818d0c3e656"
+    },
+    {
+      "path": "experiments/generated/transformer-tap-decision-certificate.json",
+      "sha256": "4281e31665c10e04682e21cfad879cb477e800b1c5b26139e7302defa8f6add6"
+    },
+    {
       "path": "knowledge/psk.toml",
-      "sha256": "0960ce9e629eaf4025bbfb2d3839b995679b197a11aec6d135472711c5909ab4"
+      "sha256": "ccb8762464b2bd4d861d713c848d1074ed64c5ccd8d76756ecb4620c7ef69ca8"
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "17d80b8f04462e90a38d72f9f7b8e8a260cbaa9e5c761268fcd53014b258cf8f"
+      "sha256": "c391c8965e897acc3ae8c0b96af9698739fe9ece6ad28b6c632db2349e0ddcb6"
     },
     {
       "path": "review/release-candidate-manifest.json",

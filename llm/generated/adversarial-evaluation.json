@@ -32,7 +32,7 @@
           "claim:FORMULATION-Y-SPLIT-001",
           "concept:equivalence-exactness-preservation",
           "concept:factor",
-          "claim:TR-KRON-FIVE-002",
+          "concept:parallel",
           "claim:ARCH-RECOVERY-001"
         ]
       },
@@ -44,12 +44,12 @@
           "claim:FORMULATION-Y-SPLIT-001",
           "concept:nodal-operator-alias",
           "claim:NUMERICAL-002",
-          "claim:FORMULATION-NODAL-003",
           "claim:FORMULATION-NODAL-002",
+          "claim:FORMULATION-NODAL-003",
           "claim:GRAPH-PI-COLLAPSE-001",
+          "claim:TR-XFMR-004",
           "claim:GRAPH-SELF-LOOP-001",
-          "claim:FORMULATION-NODAL-001",
-          "claim:TR-XFMR-004"
+          "claim:FORMULATION-NODAL-001"
         ]
       },
       "lexical": {
@@ -170,16 +170,16 @@
         "complete_at_10": true,
         "recall_at_10": 1.0,
         "top_10": [
-          "concept:parallel",
           "concept:equivalence-exactness-preservation",
-          "claim:TR-PAR-002",
+          "concept:parallel",
           "concept:rating-limit-constraint",
+          "claim:TR-XFMR-006",
+          "claim:TR-PAR-002",
           "claim:TR-PAR-003",
           "concept:phase-conductor-sequence-coordinate",
           "concept:mutual-coupling-relation",
           "claim:TR-PAR-001",
-          "concept:element-edge-relation",
-          "concept:graph-topology-adjacency"
+          "concept:element-edge-relation"
         ]
       },
       "hybrid": {
@@ -242,8 +242,8 @@
         "complete_at_10": false,
         "recall_at_10": 0.6,
         "top_10": [
-          "claim:TR-KRON-FIVE-002",
           "concept:equivalence-exactness-preservation",
+          "claim:TR-KRON-FIVE-002",
           "claim:TR-KRON-002",
           "concept:rating-limit-constraint",
           "claim:TR-KRON-NEUTRAL-005",
@@ -266,8 +266,8 @@
           "claim:TR-XFMR-003",
           "claim:ARCH-LOWER-001",
           "claim:FORMULATION-NODAL-001",
-          "claim:TR-PAR-002",
-          "claim:NUMERICAL-001"
+          "claim:NUMERICAL-001",
+          "claim:TR-PAR-002"
         ]
       },
       "lexical": {
@@ -283,7 +283,7 @@
           "claim:TR-XFMR-003",
           "claim:ARCH-LOWER-001",
           "claim:RATING-001",
-          "claim:FORMULATION-NODAL-003"
+          "concept:rating-limit-constraint"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -410,7 +410,7 @@
           "claim:TR-KRON-NEUTRAL-003",
           "claim:FORMULATION-Y-SPLIT-001",
           "claim:TR-KRON-NEUTRAL-004",
-          "claim:TR-KRON-FIVE-001"
+          "claim:TR-KRON-NEUTRAL-006"
         ]
       },
       "lexical": {
@@ -528,8 +528,8 @@
         "complete_at_10": false,
         "recall_at_10": 0.2,
         "top_10": [
-          "concept:element-edge-relation",
           "concept:equivalence-exactness-preservation",
+          "concept:element-edge-relation",
           "concept:parallel",
           "claim:ARCH-VIEW-001",
           "concept:phase-conductor-sequence-coordinate",
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "774da6d5d2df4aaf9f32d70b2c649a4395c319d7759bab15b372252972d67e8b"
+    "corpus_sha256": "e27beb89dff4926e056b2f21af61cedb0223cdb96e455ca81128fa417d2356c5"
   },
   "inputs": {
     "adversarial_cases": {

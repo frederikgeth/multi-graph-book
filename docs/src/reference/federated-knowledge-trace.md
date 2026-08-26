@@ -2,7 +2,7 @@
 
 **Page status:** maintained cross-repository implementation trace and scope boundary.
 
-This page traces four scientific statements from book evidence to executable BMOPFTools guardrails and back into the book's existing LLM context packets. The stable ownership rules are defined in the repository-root `ARCHITECTURE.md`; this page is the worked implementation trace.
+This page traces five scientific statements from book evidence to executable BMOPFTools guardrails and back into the book's existing LLM context packets. The stable ownership rules are defined in the repository-root `ARCHITECTURE.md`; this page is the worked implementation trace.
 
 ## First trace: parallel member limits
 
@@ -171,6 +171,46 @@ equipment limits are unassessed. All three audience routes make
 `knowledge:PSK-000004` mandatory and expose those boundaries through the same
 deterministic context-packet machinery.
 
+## Fifth trace: adjustable transformer tap domains
+
+The fifth slice preserves a decision domain rather than one transformer
+snapshot:
+
+| Layer | Stable identity | Owner | Purpose |
+|---|---|---|---|
+| Scientific knowledge | `PSK-000005` | this book | States why a start tap is not the adjustable decision domain |
+| Claims | `TR-XFMR-005`, `TR-XFMR-006` | this book | Establish parameterized tap preservation and its recorded AC-network consequence |
+| Misconception | `fixed-tap-snapshot-preserves-adjustable-transformer` | this book | Routes fixed-start shortcuts to the decision-domain qualification |
+| Executable contract | `transformer_tap_domain_preservation` | BMOPFTools | Compares supported mapped continuous tap intervals |
+| API operation | `check_transformer_tap_domain_preservation` | BMOPFTools | Exposes the four-status comparison and interval witness |
+| Counterexample fixture | `transformer-tap-domain-loss-001` | BMOPFTools | Replaces `[0.95,1.05]` by the fixed singleton `1.0` |
+| Finding | `E.CONTRACT.TRANSFORMER_TAP_DOMAIN_LOSS` | BMOPFTools | Reports an inner restriction, outer extension, overlap, or disjoint domain |
+
+`PSK-000005` states that exact parameterized preservation retains the mapped
+tap identity and complete admissible domain. A tap start is one admissible
+initial point, not a substitute for that set. The existing `TR-XFMR-005`
+certificate establishes the pointwise parameterized factor and a discrete
+decision witness; `TR-XFMR-006` embeds the retained finite tap factor in its
+declared AC network and records the consequence of freezing the 1.00 start.
+Those book artifacts remain the scientific authority.
+
+The package's initial check is deliberately smaller. It accepts one mapped
+two-winding isolating transformer, requires a finite positive continuous source
+interval and unchanged subtype/non-tap declarations, and compares the source
+and target intervals. Omitting target bounds has its documented package meaning:
+a fixed singleton at `tap`. The fixture therefore fails as an
+`inner_restriction` and carries a source-admissible, target-inadmissible tap
+witness. Retaining `[0.95,1.05]` passes even if the target's admissible start
+differs, proving that the implementation does not confuse domain identity with
+initialization identity.
+
+That pass does not establish transformer-equation, loss, discrete-position,
+coupling, automatic-control, network-feasible-set, objective, optimal-tap, or
+solver equivalence. All three audience routes make `knowledge:PSK-000005`
+mandatory and expose the book certificates, executable interval check,
+counterexample, and unresolved boundaries through the existing deterministic
+retrieval path.
+
 ## What generalizes
 
 The federation pattern generalizes to other scientific guardrails:
@@ -181,7 +221,7 @@ The federation pattern generalizes to other scientific guardrails:
 - implementations can report `passed`, `failed`, `inapplicable`, or `indeterminate` without turning absence of evidence into a pass; and
 - source hashes make context packets and cross-repository links auditable.
 
-The numerical formula used by the first contract does **not** generalize automatically. The scalar voltage-drop reduction, lack of shunts, fixed linear admittances, common coordinates, and explicit current ratings are case-specific. The second contract likewise does not turn relation matching into electrical equivalence: its explicit-neutral and scalar neutral-only grounding domain is case-specific. The third contract establishes that the contract/result/refusal machinery generalizes to post-solve evidence, but its initial bus-result coverage is not a universal feasibility or optimality validator. The fourth shows that an existing package diagnostic can be promoted into an auditable contract without duplicating its inference machinery, but declaration consistency is not importer fidelity or solved-model validation. Multiconductor coupling, nonlinear devices, explicit-earth networks, protection quantities, full equation residuals, device constraints, recovery, and global optimality require separate PSK objects or broader contracts with their own evidence and fixtures.
+The numerical formula used by the first contract does **not** generalize automatically. The scalar voltage-drop reduction, lack of shunts, fixed linear admittances, common coordinates, and explicit current ratings are case-specific. The second contract likewise does not turn relation matching into electrical equivalence: its explicit-neutral and scalar neutral-only grounding domain is case-specific. The third contract establishes that the contract/result/refusal machinery generalizes to post-solve evidence, but its initial bus-result coverage is not a universal feasibility or optimality validator. The fourth shows that an existing package diagnostic can be promoted into an auditable contract without duplicating its inference machinery, but declaration consistency is not importer fidelity or solved-model validation. The fifth separates preservation of an adjustable domain from equality at one initialized snapshot, while keeping broader transformer physics and decision equivalence outside the initial package check. Multiconductor coupling, nonlinear devices, explicit-earth networks, protection quantities, full equation residuals, device constraints, recovery, and global optimality require separate PSK objects or broader contracts with their own evidence and fixtures.
 
 ## Reproduction and release pairing
 

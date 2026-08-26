@@ -285,6 +285,37 @@ network equations, or equipment limits are correct. Missing source-reachable
 bases or nominal anchors are indeterminate; constant-power and unsupported
 connection cases are explicitly inapplicable.
 
+## Fifth vertical slice: adjustable transformer tap domains
+
+The fifth slice applies the federation to a decision variable already supported
+by both repositories. Book object `PSK-000005` links `TR-XFMR-005`,
+`TR-XFMR-006`, and the
+`fixed-tap-snapshot-preserves-adjustable-transformer` misconception to
+BMOPFTools contract `transformer_tap_domain_preservation`.
+
+The scientific result is broader than the initial package check. The book
+establishes that a scalar ganged tap is preserved by retaining its parameterized
+factor, decision identity, and complete continuous or finite domain; replacing
+that domain by the start-value singleton is generally an inner restriction. The
+recorded transformer-factor and AC-network witnesses show that the restriction
+can change the selected tap and objective, without claiming that it always does.
+
+The initial executable domain compares one explicitly mapped two-winding
+isolating transformer with a positive continuous `tap_min < tap_max` interval.
+Source and target must use the same supported subtype and identical non-tap
+declarations. Target bounds that are absent mean a fixed singleton at `tap`, as
+defined by the BMOPFTools data model. The check classifies inner restrictions,
+outer extensions, shifted overlaps, and disjoint domains and returns a tap
+witness admitted by only one side.
+
+A pass establishes only the mapped base-factor declaration, admissibility of
+the recorded starts, and equality of the continuous tap interval. Pointwise
+transformer equations, tap-dependent leakage or excitation, discrete positions,
+per-phase or mechanical coupling, automatic controls, network feasible sets,
+objectives, optimal taps, and solver guarantees remain separate obligations.
+This separation is intentional: the package contract complements the existing
+book certificates instead of reimplementing or weakening them.
+
 ## Federated discovery and context assembly
 
 The existing book service remains the federation point for retrieval. Its

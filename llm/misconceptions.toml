@@ -168,3 +168,16 @@ operational_consequence = "A wrong anchor changes constant-current, constant-imp
 mandatory_claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
 mandatory_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "factor"]
 source_paths = ["docs/src/foundations/load-models-and-decision-dependence.md"]
+
+[[misconception]]
+id = "fixed-tap-snapshot-preserves-adjustable-transformer"
+title = "A transformer fixed at its start tap preserves an adjustable-tap model"
+severity = "critical"
+query_patterns = ["freeze transformer tap", "fixed tap equivalent to adjustable tap", "use transformer start tap", "remove tap variable", "drop tap bounds", "tap_min tap_max", "fixed tap snapshot", "transformer tap decision domain", "replace adjustable transformer", "tap optimization preprocessing"]
+tempting_answer = "Replace the adjustable transformer by a fixed transformer at its starting tap; it has the same parameters at the initial operating point."
+required_qualification = "A start value is an initial point, not the admissible decision domain. Freezing it replaces the source interval or finite position set by a singleton and is generally an inner restriction unless the original domain is already a singleton or the removed choices are proved irrelevant for the declared study."
+safe_shorthand = "A fixed tap is safe only as a pointwise snapshot; decision preservation requires the mapped tap identity and complete domain, followed by separate equation, constraint, objective, recovery, and control checks."
+operational_consequence = "The shortcut can remove feasible voltage-control actions, change load service or loss objectives, conceal the source optimum, and present a restricted problem as an equivalent transformer model."
+mandatory_claim_ids = ["TR-XFMR-005", "TR-XFMR-006"]
+mandatory_concept_ids = ["state", "rating-limit-constraint", "equivalence-exactness-preservation", "transformation-family"]
+source_paths = ["docs/src/transformations/parameterized-transformer-tap-decisions.md", "docs/src/cases/transformer-tap-ac-decision.md"]

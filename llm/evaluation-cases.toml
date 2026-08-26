@@ -392,3 +392,33 @@ required_claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
 required_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "factor"]
 required_answer_elements = ["use about 230 V phase-to-neutral for WYE and 400 V line-to-line for DELTA", "state that anchor consistency does not validate the rest of the network or load law"]
 forbidden_simplifications = ["the same numeric nameplate base applies to both connections"]
+
+[[case]]
+case_id = "EVAL-TRANSFORMER-TAP-DOMAIN-STUDENT"
+audience = "student"
+question = "If a transformer starts at tap 1.0, why can’t I replace its adjustable tap by a fixed 1.0 transformer?"
+misconception_id = "fixed-tap-snapshot-preserves-adjustable-transformer"
+required_claim_ids = ["TR-XFMR-005", "TR-XFMR-006"]
+required_concept_ids = ["state", "rating-limit-constraint", "equivalence-exactness-preservation", "transformation-family"]
+required_answer_elements = ["distinguish the start value from the admissible tap domain", "explain that freezing creates a singleton inner restriction"]
+forbidden_simplifications = ["matching the initial transformer snapshot preserves the adjustable decision problem"]
+
+[[case]]
+case_id = "EVAL-TRANSFORMER-TAP-DOMAIN-SOFTWARE"
+audience = "software_engineer"
+question = "May a converter drop tap_min and tap_max and serialize only the transformer’s current tap value?"
+misconception_id = "fixed-tap-snapshot-preserves-adjustable-transformer"
+required_claim_ids = ["TR-XFMR-005", "TR-XFMR-006"]
+required_concept_ids = ["state", "rating-limit-constraint", "equivalence-exactness-preservation", "transformation-family"]
+required_answer_elements = ["retain tap decision identity and the complete domain", "run the executable domain-preservation check and keep equation and control equivalence separate"]
+forbidden_simplifications = ["one serialized start value is an equivalent representation of adjustable bounds"]
+
+[[case]]
+case_id = "EVAL-TRANSFORMER-TAP-DOMAIN-POWER"
+audience = "power_engineer"
+question = "For an OPF study, is fixing an on-load tap changer at its starting ratio an exact equivalent if all other transformer data are unchanged?"
+misconception_id = "fixed-tap-snapshot-preserves-adjustable-transformer"
+required_claim_ids = ["TR-XFMR-005", "TR-XFMR-006"]
+required_concept_ids = ["state", "rating-limit-constraint", "equivalence-exactness-preservation", "transformation-family"]
+required_answer_elements = ["classify the fixed target as an inner restriction of the source tap choices", "state that preserving the domain still does not by itself prove network feasible-set, objective, control, or optimal-tap equivalence"]
+forbidden_simplifications = ["unchanged nameplate and initial ratio imply exact OPF decision equivalence"]

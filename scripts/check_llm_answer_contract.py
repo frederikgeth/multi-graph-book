@@ -81,6 +81,19 @@ def main() -> int:
                 validation_errors.append("load-voltage-base route omits the linked counterexample fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("load-voltage-base executable contract is not marked implemented")
+        if case["misconception_id"] == "fixed-tap-snapshot-preserves-adjustable-transformer":
+            packet = response["packet"]
+            if "knowledge:PSK-000005" not in observed:
+                validation_errors.append("transformer-tap route omits mandatory PSK-000005")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000005"]:
+                validation_errors.append("transformer-tap route scientific basis differs from PSK-000005")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["transformer_tap_domain_preservation"]:
+                validation_errors.append("transformer-tap route omits the executable domain-preservation contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["transformer-tap-domain-loss-001"]:
+                validation_errors.append("transformer-tap route omits the linked counterexample fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("transformer-tap executable contract is not marked implemented")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:

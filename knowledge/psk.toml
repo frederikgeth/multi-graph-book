@@ -150,3 +150,47 @@ related_finding_codes = [
   "E.LOAD.VNOM_NONPOSITIVE",
 ]
 fixture_ids = ["load-voltage-base-mismatch-001"]
+
+[[knowledge]]
+id = "PSK-000005"
+kind = "modelling-antipattern"
+title = "Freezing an adjustable transformer tap does not preserve its decision domain"
+scientific_statement = "Replacing an adjustable transformer tap by its fixed start value replaces the source tap domain by a singleton and is generally an inner restriction, not an equivalent decision model; exact parameterized preservation retains the mapped tap identity and complete admissible domain."
+scope = "Fixed-frequency transformer factors with a positive scalar ganged winding tap over a declared continuous interval or finite position set, fixed base transfer coefficients, and an explicit source-to-target decision mapping."
+evidence_status = "established_result"
+does_not_establish = [
+  "Freezing an adjustable tap always changes the feasible optimum or operating point.",
+  "Matching tap domains alone establishes pointwise transformer equations, tap-dependent losses, controls, network feasible-set equality, objective equality, or solver guarantees.",
+  "The initial BMOPFTools continuous-interval contract covers discrete positions, independent per-phase controls, mechanical coupling, or tap-dependent parameters.",
+]
+
+[knowledge.book]
+claim_ids = ["TR-XFMR-005", "TR-XFMR-006"]
+misconception_ids = ["fixed-tap-snapshot-preserves-adjustable-transformer"]
+certificate_ids = ["TR-XFMR-005", "TR-XFMR-006"]
+counterexample_ids = ["transformer-tap-domain-loss-001"]
+artifact_paths = [
+  "experiments/generated/transformer-tap-decision-certificate.json",
+  "experiments/generated/transformer-tap-ac-decision-certificate.json",
+]
+source_paths = [
+  "docs/src/transformations/parameterized-transformer-tap-decisions.md",
+  "docs/src/cases/transformer-tap-ac-decision.md",
+]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["transformer_tap_domain_preservation"]
+finding_codes = [
+  "E.CONTRACT.TRANSFORMER_TAP_DOMAIN_LOSS",
+  "I.CONTRACT.TRANSFORMER_TAP_NOT_APPLICABLE",
+  "W.CONTRACT.TRANSFORMER_TAP_INDETERMINATE",
+]
+related_finding_codes = [
+  "E.DOM.XFMR_VREF_INVALID",
+  "W.DOM.XFMR_RATIO_OOB",
+  "W.DOM.XFMR_REVERSED",
+  "W.DOM.XFMR_STEP_UP",
+]
+fixture_ids = ["transformer-tap-domain-loss-001"]

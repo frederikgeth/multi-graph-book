@@ -4,8 +4,8 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `774da6d5d2df4aaf9f32d70b2c649a4395c319d7759bab15b372252972d67e8b`<br>
-**Cases:** 39
+**Corpus hash:** `e27beb89dff4926e056b2f21af61cedb0223cdb96e455ca81128fa417d2356c5`<br>
+**Cases:** 42
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
 The latter is permitted to add mandatory claims and concepts only after the query router identifies
@@ -16,12 +16,12 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Measure | Result | Release gate? |
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
-| Open-corpus lexical evidence recall@5 | 28.9% | diagnostic |
-| Open-corpus lexical evidence recall@10 | 39.4% | diagnostic |
+| Open-corpus lexical evidence recall@5 | 27.6% | diagnostic |
+| Open-corpus lexical evidence recall@10 | 38.6% | diagnostic |
 | Open-corpus complete evidence@10 | 0.0% | diagnostic |
-| Evidence-only lexical recall@5 | 41.4% | diagnostic |
-| Evidence-only lexical recall@10 | 51.7% | diagnostic |
-| Evidence-only complete evidence@10 | 2.6% | diagnostic |
+| Evidence-only lexical recall@5 | 40.5% | diagnostic |
+| Evidence-only lexical recall@10 | 50.8% | diagnostic |
+| Evidence-only complete evidence@10 | 2.4% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
 | Packets with qualification, failure, shorthand, and scope | 100.0% | yes |
@@ -44,9 +44,9 @@ evidence sets, so the effective target count is nine rather than 27 independent 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `lexical` | 32.7% | 44.9% | 0.0% | 0/33 | 5/33 | 0.201 |
-| `char_tfidf` | 36.2% | 44.8% | 0.0% | 0/33 | 6/33 | 0.225 |
+| `char_tfidf` | 36.2% | 44.8% | 0.0% | 0/33 | 6/33 | 0.224 |
 | `hybrid` | 37.4% | 46.6% | 0.0% | 0/33 | 5/33 | 0.218 |
-| `graph` | 41.6% | 56.4% | 27.3% | 9/33 | 5/33 | 0.260 |
+| `graph` | 41.2% | 57.0% | 27.3% | 9/33 | 4/33 | 0.262 |
 
 Held-out contract-router firing: **25/33 (75.8%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **19/33 (57.6%)**; this remains diagnostic because the set is synthetic and clustered.
@@ -94,9 +94,9 @@ Graph versus hybrid complete@10: **9/33** versus **0/33**.
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 13 | 100.0% | 52.2% | 100.0% |
-| `software_engineer` | 13 | 100.0% | 44.7% | 100.0% |
-| `student` | 13 | 100.0% | 58.2% | 100.0% |
+| `power_engineer` | 14 | 100.0% | 52.0% | 100.0% |
+| `software_engineer` | 14 | 100.0% | 43.9% | 100.0% |
+| `student` | 14 | 100.0% | 56.5% | 100.0% |
 
 ## Case results
 
@@ -141,6 +141,9 @@ Graph versus hybrid complete@10: **9/33** versus **0/33**.
 | `EVAL-LOAD-BASE-STUDENT` | `student` | `wye-delta-share-nominal-voltage-base` | 40.0% | yes |
 | `EVAL-LOAD-BASE-SOFTWARE` | `software_engineer` | `wye-delta-share-nominal-voltage-base` | 40.0% | yes |
 | `EVAL-LOAD-BASE-POWER` | `power_engineer` | `wye-delta-share-nominal-voltage-base` | 40.0% | yes |
+| `EVAL-TRANSFORMER-TAP-DOMAIN-STUDENT` | `student` | `fixed-tap-snapshot-preserves-adjustable-transformer` | 33.3% | yes |
+| `EVAL-TRANSFORMER-TAP-DOMAIN-SOFTWARE` | `software_engineer` | `fixed-tap-snapshot-preserves-adjustable-transformer` | 33.3% | yes |
+| `EVAL-TRANSFORMER-TAP-DOMAIN-POWER` | `power_engineer` | `fixed-tap-snapshot-preserves-adjustable-transformer` | 50.0% | yes |
 
 ## Interpretation and next boundary
 
