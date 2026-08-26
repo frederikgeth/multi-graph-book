@@ -282,3 +282,48 @@ related_finding_codes = [
   "E.CONTRACT.TRANSFORMER_WINDING_INCIDENCE_MISMATCH",
 ]
 fixture_ids = ["decision-manifest-terminal-only-001"]
+
+[[knowledge]]
+id = "PSK-000008"
+kind = "modelling-antipattern"
+title = "A Kron boundary relation requires its grounding precondition and recovery map"
+scientific_statement = "Eliminating an internal neutral by a Schur complement can preserve a fixed linear boundary relation only under its declared elimination conditions; for a four-wire to three-wire line, perfect grounding of the eliminated neutral at every connection point is required, and internal quantities require an explicit recovery map."
+scope = "Fixed series-only four-conductor linear lines reduced to an ordered three-conductor phase boundary by neutral elimination, with an invertible neutral block, explicit endpoint grounding declarations, and a declared recovery map."
+evidence_status = "established_result"
+does_not_establish = [
+  "Kron reduction is always invalid.",
+  "A Schur complement by itself preserves floating or finite-grounded neutral behavior.",
+  "A passing grounded boundary check preserves internal equipment identity, limits, protection quantities, state-dependent factors, complete feasible sets, objectives, or solver results.",
+]
+
+[knowledge.book]
+claim_ids = ["PRESERVE-001", "TR-KRON-002", "TR-KRON-FIVE-002"]
+misconception_ids = ["kron-reduction-preserves-everything"]
+certificate_ids = ["TR-KRON-001"]
+counterexample_ids = ["kron-boundary-grounding-001"]
+artifact_paths = [
+  "experiments/generated/typed-kron-certificate.json",
+  "experiments/generated/kron-ward-scenario-comparison.json",
+]
+source_paths = [
+  "docs/src/foundations/preservation-contracts.md",
+  "docs/src/transformations/kron-ward-opti-kron.md",
+]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["kron_boundary_recovery_preservation"]
+finding_codes = [
+  "E.CONTRACT.KRON_BOUNDARY_RELATION_MISMATCH",
+  "E.CONTRACT.KRON_GROUNDING_PRECONDITION",
+  "I.CONTRACT.KRON_NOT_APPLICABLE",
+  "W.CONTRACT.KRON_INDETERMINATE",
+  "W.CONTRACT.KRON_RECOVERY_INDETERMINATE",
+]
+related_finding_codes = [
+  "I.PROV.KRON_LIKELY",
+  "I.PROV.KRON_REDUCIBLE",
+  "W.PROV.FLOATING_NEUTRAL",
+]
+fixture_ids = ["kron-boundary-grounding-001"]

@@ -29,6 +29,22 @@ observation contract. None is inherently an asset-preserving transformation.
 
 ## Linear Kron reduction
 
+### Executable boundary guardrail
+
+The BMOPFTools tutorial `docs/src/tutorial_grounding.md` makes
+the key pedagogical point explicit: eliminating a neutral is conditional, not
+an automatically lossless simplification. The federated object `PSK-000008`
+links that warning to BMOPFTools contract
+`kron_boundary_recovery_preservation`. The compact check accepts a series-only
+four-wire source and three-wire target, requires perfect neutral grounding at
+both connection points, compares the ordered neutral Schur complement, and
+requires a declared recovery map. A floating or finite-grounded neutral is a
+grounding-precondition failure even if the matrices match; a passing check
+does not establish internal limits, protection, complete decision equivalence,
+or solver results. The companion fixture and its grounded target are intended
+as an executable teaching counterexample, alongside the richer Kron witnesses
+below.
+
 Partition a linear nodal relation into retained boundary variables ``B`` and
 eliminated internal variables ``I``:
 

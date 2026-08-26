@@ -123,6 +123,17 @@ not authenticated the references, checked the constraint or recovery maps,
 compared feasible sets or objectives, or established optimizer or solver
 equivalence. Those remain case-specific scientific and executable obligations.
 
+The same boundary applies to the compact Kron guardrail. Cross-repository
+object `PSK-000008` connects the tutorial warning that Kron reduction is an
+assumption—not a free simplification—to BMOPFTools contract
+`kron_boundary_recovery_preservation`. Its four-wire-to-three-wire check
+requires perfect grounding of the eliminated neutral at both endpoints,
+ordered phase coordinates, the neutral Schur complement, and an explicit
+recovery declaration. A floating or finite-grounded neutral fails the
+precondition even when the target matrix matches numerically; a pass says
+nothing about internal limits, protection, full feasible sets, objectives, or
+solver results.
+
 ## Exact, conservative, and approximate maps
 
 Operational constraints deserve a classification independent of the equations:

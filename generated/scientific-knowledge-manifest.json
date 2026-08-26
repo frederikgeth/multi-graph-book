@@ -1,5 +1,5 @@
 {
-  "corpus_sha256": "1125e120d599a6b775a2cd727daa18df5c9d53679aadf1e9907712840ab91850",
+  "corpus_sha256": "cfbe17b195bee2d5de2997354c44b7b41681ca36de08039955c23dfe32df3d30",
   "knowledge_ids": [
     "PSK-000001",
     "PSK-000002",
@@ -7,10 +7,11 @@
     "PSK-000004",
     "PSK-000005",
     "PSK-000006",
-    "PSK-000007"
+    "PSK-000007",
+    "PSK-000008"
   ],
   "manifest_id": "multi-graph-book-scientific-knowledge-0.1.0",
-  "record_count": 7,
+  "record_count": 8,
   "release": {
     "external_reviewed_claims": 0,
     "independent_human_double_coding": false,
@@ -42,7 +43,7 @@
     },
     {
       "path": "docs/src/foundations/preservation-contracts.md",
-      "sha256": "77e8ecfbf301180f159551e0dd327efef068a49d66f768d482e0f559f0f54036"
+      "sha256": "3c7c4ff28cef5b67ac30d7e29e6abf443eeb63159b832f11552d5f11e8e2e90a"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
@@ -53,12 +54,20 @@
       "sha256": "b30e6c5efec1878d4d9ac71e79feffdcabf7fbc5862f4656e9fdf9e17d3d5fb5"
     },
     {
+      "path": "docs/src/transformations/kron-ward-opti-kron.md",
+      "sha256": "dd304e0a1182e481b2b2110a3aba40ba37bfe6493d427d899f18bcc7fa655d9e"
+    },
+    {
       "path": "docs/src/transformations/parameterized-transformer-tap-decisions.md",
       "sha256": "12d0c3b95438fcd844c1ef4552d755765d177e32eabc03b99e87d16fe3b6cc19"
     },
     {
       "path": "docs/src/transformations/transformer-winding-coordinate-normalization.md",
       "sha256": "3f17032ace7c044bc436b7fb68ad78fa37ad9403567ee4d1e10a45a51b713774"
+    },
+    {
+      "path": "experiments/generated/kron-ward-scenario-comparison.json",
+      "sha256": "753cec18f5147205f1c93879e79fc4de94ce18b3211cb0f3bcec6142892410b5"
     },
     {
       "path": "experiments/generated/load-grounding-witnesses.json",
@@ -93,8 +102,12 @@
       "sha256": "90fc870e1e74d41731fd374ce7753f6adfa033dc256329a3fdbcfffefe40d04f"
     },
     {
+      "path": "experiments/generated/typed-kron-certificate.json",
+      "sha256": "c8df96b929e8a425e7986ee5620aa2f273c2b6a2bba86d7bd6c3d15eeeeb2c35"
+    },
+    {
       "path": "knowledge/psk.toml",
-      "sha256": "3c85ca2002093ea985017725ca2fe0df4d51101d2cccc02b650c09ee2e79bfb3"
+      "sha256": "d2986caadad9cf61658a25265db3dd2b11ea29ff238b9bca1371202ea671f8eb"
     },
     {
       "path": "llm/misconceptions.toml",

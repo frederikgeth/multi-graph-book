@@ -120,6 +120,19 @@ def main() -> int:
                 validation_errors.append("decision-equivalence route omits the terminal-only manifest fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("decision-equivalence executable contract is not marked implemented")
+        if case["misconception_id"] == "kron-reduction-preserves-everything":
+            packet = response["packet"]
+            if "knowledge:PSK-000008" not in observed:
+                validation_errors.append("Kron route omits mandatory PSK-000008")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000008"]:
+                validation_errors.append("Kron route scientific basis differs from PSK-000008")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["kron_boundary_recovery_preservation"]:
+                validation_errors.append("Kron route omits the boundary/recovery contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["kron-boundary-grounding-001"]:
+                validation_errors.append("Kron route omits the linked grounding counterexample fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("Kron executable contract is not marked implemented")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:

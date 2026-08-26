@@ -283,6 +283,30 @@ and expose the completeness contract and terminal-only counterexample through
 the same deterministic context packet. The existing unsupported,
 under-retrieved, qualification, and source-hash semantics are unchanged.
 
+## Eighth trace: Kron boundary exactness and internal recovery
+
+The eighth slice carries the tutorial's grounding warning into a deliberately
+narrow boundary contract:
+
+| Layer | Stable identity | Owner | Purpose |
+|---|---|---|---|
+| Scientific knowledge | `PSK-000008` | this book | Requires the grounding precondition and recovery map for a four-wire-to-three-wire Kron boundary claim |
+| Claims | `PRESERVE-001`, `TR-KRON-002`, `TR-KRON-FIVE-002` | this book | Distinguish Schur-complement boundary exactness from internal and decision preservation |
+| Misconception | `kron-reduction-preserves-everything` | this book | Routes unqualified Kron-equivalence claims to explicit conditions and unassessed dimensions |
+| Executable contract | `kron_boundary_recovery_preservation` | BMOPFTools | Checks endpoint grounding, ordered phase relation, Schur complement, and recovery declaration |
+| API operation | `check_kron_boundary_recovery` | BMOPFTools | Reports qualified pass/fail/inapplicable/indeterminate results |
+| Counterexample fixture | `kron-boundary-grounding-001` | BMOPFTools | Matches the Schur target while leaving the load neutral floating, so the boundary precondition fails |
+| Findings | `E.CONTRACT.KRON_GROUNDING_PRECONDITION`, `E.CONTRACT.KRON_BOUNDARY_RELATION_MISMATCH`, `W.CONTRACT.KRON_RECOVERY_INDETERMINATE` | BMOPFTools | Separate physical precondition failure, relation mismatch, and missing recovery evidence |
+
+The book's existing running-network, explicit-earth, multiple-grounding-point,
+and nonlinear witnesses remain the richer scientific evidence. The package
+fixture is a pedagogical guardrail and does not replace those witnesses or
+claim that a passing boundary check preserves internal limits, protection,
+complete feasible sets, objectives, or solver results. All three audience
+routes make `knowledge:PSK-000008` mandatory when the existing Kron
+misconception is triggered; the deterministic packet and source-hash checks
+remain unchanged.
+
 ## What generalizes
 
 The federation pattern generalizes to other scientific guardrails:

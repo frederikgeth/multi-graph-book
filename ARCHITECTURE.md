@@ -379,6 +379,50 @@ dimension evidence comes from case-specific contracts and certificates. This
 keeps the seventh slice an umbrella route plus narrow executable checks rather
 than a generic Boolean `equivalent` flag.
 
+## Eighth vertical slice: Kron boundary exactness and internal recovery
+
+The eighth slice promotes the book's existing Kron and grounding pedagogy into
+an executable boundary guardrail. Book object `PSK-000008` links the
+observation-indexed preservation definition, the typed and scenario Kron
+claims, the existing `kron-reduction-preserves-everything` misconception, and
+the tutorial warning that Kron reduction is an assumption rather than a free
+simplification. This preserves the book's deterministic context packets,
+source-hash binding, unsupported/under-retrieved semantics, and existing
+retrieval evaluation; it adds one package check through the same federation
+path.
+
+The book owns the mathematical distinction. A Schur complement can reproduce
+a declared linear boundary relation, but only under the stated elimination
+conditions. For the compact four-wire-to-three-wire case, the eliminated
+neutral must be perfectly grounded at every connection point, the target must
+match the neutral Schur complement in the declared phase order, and any
+internal quantity that matters later must have a recovery map. Finite or
+floating grounding is therefore a boundary-condition mismatch even when the
+numeric Schur complement happens to match. The tutorial's four-wire example is
+the pedagogical counterexample: the reduced model can hide a several-volt
+neutral error and cannot recover the internal constraint without retaining the
+neutral model.
+
+BMOPFTools owns the narrow contract
+`kron_boundary_recovery_preservation` and API
+`check_kron_boundary_recovery`. It accepts one mapped, series-only four-
+conductor line and a three-conductor target, checks perfect endpoint grounding,
+ordered phase alignment, the complex neutral Schur complement, and an explicit
+recovery declaration. It reports a grounding-precondition failure separately
+from a boundary-relation mismatch, and refuses unsupported shunts, dimensions,
+maps, or missing recovery data. A pass is deliberately qualified: it establishes
+only the checked boundary relation and recovery obligation. Internal asset
+identity, equipment limits, protection quantities, nonlinear/state-dependent
+behavior, complete feasible sets, objectives, and solver results remain outside
+the contract.
+
+The minimized package fixture is a floating-load-neutral source paired with an
+exact Schur target. It must fail on the grounding precondition, while its
+grounded companion passes narrowly. This fixture is complementary to the
+book's richer running-network, explicit-earth, multi-point, and nonlinear
+recovery witnesses; it is not a replacement for them or for the book's
+deterministic LLM machinery.
+
 ## Federated discovery and context assembly
 
 The existing book service remains the federation point for retrieval. Its
