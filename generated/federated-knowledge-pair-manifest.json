@@ -8,11 +8,12 @@
       "neutral_ground_reference_preservation",
       "parallel_member_limit_preservation",
       "positive_sequence_collapse_applicability",
+      "reference_singularity_validation",
       "state_dependent_equivalent_provenance",
       "transformer_tap_domain_preservation",
       "transformer_winding_convention_preservation"
     ],
-    "corpus_sha256": "6b4e25f55a637c5965d31a5a0a32ca5dd162aaaa9a173e711cf85a40355c9e4d",
+    "corpus_sha256": "6be32f9e5442d11975c8f02edd2291c24404c8eab5e683fd7589aa10adb0d614",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -23,10 +24,11 @@
       "PSK-000007",
       "PSK-000008",
       "PSK-000009",
-      "PSK-000010"
+      "PSK-000010",
+      "PSK-000011"
     ],
     "manifest_id": "bmopftools-executable-knowledge-0.1.0",
-    "manifest_sha256": "54c52e344fa7677ea97031a44a2e726d5b8682546451697ee553e2e139543e27",
+    "manifest_sha256": "7bec6e031e9c2f5d1f5346bbb3221bd3bbbc03937f299dda37d88372d5ee3357",
     "package": {
       "name": "BMOPFTools",
       "version": "0.1.0"
@@ -35,7 +37,7 @@
     "schema_version": "0.1.0"
   },
   "book": {
-    "corpus_sha256": "33889d28ccbe36f43ba43e91d1f6639fc6ca36ba4b901adb620350ced8da9304",
+    "corpus_sha256": "88e17c4ebcd8e9045add7bc439d650d2abe958c71f3813aa2079594e0534d0c6",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -46,9 +48,10 @@
       "PSK-000007",
       "PSK-000008",
       "PSK-000009",
-      "PSK-000010"
+      "PSK-000010",
+      "PSK-000011"
     ],
-    "manifest_sha256": "e3bb49e66715bd901f5f056facd47540cd50240eb97143b93134be4072f1b7c4",
+    "manifest_sha256": "44fc871d68d827abad4b262a17d87d5501d449ab954537eb1bf3a7f2410b0bdf",
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -74,7 +77,7 @@
           "fixture_ids": [
             "parallel-rating-outer-relaxation-001"
           ],
-          "source_sha256": "6397a374354d8fdd1e1be422fd0f02a3ca80a7033e78c2da49e853e396f0a9d6"
+          "source_sha256": "4a2161c420d4958812b23ff6f2908187d9c5373cb0af4a84d454c2d6fff63ac0"
         }
       ],
       "implementation_status": "implemented",
@@ -95,7 +98,7 @@
           "fixture_ids": [
             "neutral-ground-reference-conflation-001"
           ],
-          "source_sha256": "6397a374354d8fdd1e1be422fd0f02a3ca80a7033e78c2da49e853e396f0a9d6"
+          "source_sha256": "4a2161c420d4958812b23ff6f2908187d9c5373cb0af4a84d454c2d6fff63ac0"
         }
       ],
       "implementation_status": "implemented",
@@ -114,7 +117,7 @@
           "fixture_ids": [
             "claimed-feasible-invalid-solution-001"
           ],
-          "source_sha256": "b9741e90edc24cfe0eda0fcfb3232f34ca71a44c276068cdc7cac6eda4c5789f"
+          "source_sha256": "02a496c2552f8f8a161921b1ec4f29498edcc26dafbc24158b3cc91cc35041eb"
         }
       ],
       "implementation_status": "implemented",
@@ -133,7 +136,7 @@
           "fixture_ids": [
             "load-voltage-base-mismatch-001"
           ],
-          "source_sha256": "68ed3402be7214e6bdf1b70d6b2cd7f957ca86a8daf496ba25129174a16e77c9"
+          "source_sha256": "111c160ed90c3dd816848031291c182ed6790abd37b64be0f7c3ee47fe2eff0f"
         }
       ],
       "implementation_status": "implemented",
@@ -152,7 +155,7 @@
           "fixture_ids": [
             "transformer-tap-domain-loss-001"
           ],
-          "source_sha256": "6397a374354d8fdd1e1be422fd0f02a3ca80a7033e78c2da49e853e396f0a9d6"
+          "source_sha256": "4a2161c420d4958812b23ff6f2908187d9c5373cb0af4a84d454c2d6fff63ac0"
         }
       ],
       "implementation_status": "implemented",
@@ -172,7 +175,7 @@
           "fixture_ids": [
             "transformer-winding-role-swap-001"
           ],
-          "source_sha256": "d1463e49f9b526f9d34e56d95fc388ef7b1cfc5f4ff382b58a7b510a9ea5a243"
+          "source_sha256": "d88807cee0dc7ec8b1a1992bf25a129e1f742341ad448db2c898ae05fde767ee"
         }
       ],
       "implementation_status": "implemented",
@@ -192,7 +195,7 @@
           "fixture_ids": [
             "decision-manifest-terminal-only-001"
           ],
-          "source_sha256": "6397a374354d8fdd1e1be422fd0f02a3ca80a7033e78c2da49e853e396f0a9d6"
+          "source_sha256": "4a2161c420d4958812b23ff6f2908187d9c5373cb0af4a84d454c2d6fff63ac0"
         }
       ],
       "implementation_status": "implemented",
@@ -213,7 +216,7 @@
           "fixture_ids": [
             "kron-boundary-grounding-001"
           ],
-          "source_sha256": "f534c59747b3297616fb22a50543951d20e0ca9d9951d159c1998de2111de93b"
+          "source_sha256": "b3725d53e9a11326deb881d3aacfd987b70007593cb7ce913c261f130b99473f"
         }
       ],
       "implementation_status": "implemented",
@@ -234,7 +237,7 @@
           "fixture_ids": [
             "positive-sequence-collapse-001"
           ],
-          "source_sha256": "6397a374354d8fdd1e1be422fd0f02a3ca80a7033e78c2da49e853e396f0a9d6"
+          "source_sha256": "4a2161c420d4958812b23ff6f2908187d9c5373cb0af4a84d454c2d6fff63ac0"
         }
       ],
       "implementation_status": "implemented",
@@ -255,7 +258,27 @@
           "fixture_ids": [
             "state-dependent-equivalent-001"
           ],
-          "source_sha256": "6397a374354d8fdd1e1be422fd0f02a3ca80a7033e78c2da49e853e396f0a9d6"
+          "source_sha256": "4a2161c420d4958812b23ff6f2908187d9c5373cb0af4a84d454c2d6fff63ac0"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000011": {
+      "contracts": [
+        {
+          "contract_id": "reference_singularity_validation",
+          "entrypoint": "check_reference_singularity",
+          "finding_codes": [
+            "E.CONTRACT.REFERENCE_LOSS",
+            "E.CONTRACT.SINGULARITY_CHANGE",
+            "I.CONTRACT.REFERENCE_SINGULARITY_NOT_APPLICABLE",
+            "W.CONTRACT.REFERENCE_SINGULARITY_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "reference-singularity-001"
+          ],
+          "source_sha256": "4a2161c420d4958812b23ff6f2908187d9c5373cb0af4a84d454c2d6fff63ac0"
         }
       ],
       "implementation_status": "implemented",
@@ -263,6 +286,6 @@
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "b8ff2c352983582c89fddae646e7ec7ff18f3554ffa99da20b8b8c8083e29c49",
+  "pair_sha256": "1eff4e8e8fc976356b100d7f3b2e58b30d003c14998653c0bb8ddbbc981d4717",
   "schema_version": "0.1.0"
 }

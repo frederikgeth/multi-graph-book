@@ -61,20 +61,21 @@ and a minimized negative witness.
 | 8 | Kron boundary exactness and internal recovery | `PRESERVE-001`, `TR-KRON-*`; Kron misconception | source/target boundary and recovery-map checks | Implemented as `PSK-000008` |
 | 9 | Positive-sequence collapse applicability | `COLLAPSE-001..002`; sequence misconception | symmetry, grounding, terminal, and decision-domain guards | Implemented as `PSK-000009` |
 | 10 | Fixed versus state-dependent equivalents | formulation split, Ward/Kron, and load-dependence claims | detect frozen parameters and missing state/update provenance | Implemented as `PSK-000010` |
-| 11 | Floating references and singularity | grounding/reference and numerical-consequence claims | existing reference, connectivity, and singularity diagnostics | Candidate; validation bundle before a cross-model contract |
+| 11 | Floating references and singularity | grounding/reference and numerical-consequence claims | existing reference, connectivity, and singularity diagnostics | Implemented as `PSK-000011` |
 | 12 | Terminal/conductor ordering and permutation | typed terminal-map and coordinate-action claims | metamorphic relabelling/permutation invariance | Candidate; representation invariance |
 | 13 | Complete solved-network feasibility | numerical validation boundary | equation, KCL, power-balance, device-limit, and recovery residuals | Candidate expansion of `PSK-000003`; not one status heuristic |
 | 14 | Unit/base and serialization invariance | normalization, coordinate, and provenance claims | round-trip and unit/base metamorphic tests | Candidate; importer/exporter preservation |
 
-The first scale-out milestone is now complete and extended: ten stable PSK paths cover a
+The first scale-out milestone is now complete and extended: eleven stable PSK paths cover a
 transformation constraint, model semantics, numerical inference, connection
 coordinates, an adjustable decision domain, typed transformer-winding
 conventions, the terminal-to-decision evidence boundary, and Kron boundary/recovery
-conditions, positive-sequence domain closure, and state/update provenance. The
-next milestone is complete for the first ten paths; remaining promotion is
+conditions, positive-sequence domain closure, state/update provenance, and
+reference/rank validation. The next milestone is complete for the first eleven
+paths; remaining promotion is
 evidence-gated rather than quota-driven. The immediate eleventh slice is
-floating references and singularity, which should bundle existing diagnostics
-before attempting a cross-model contract.
+terminal/conductor ordering and permutation, which should promote existing
+typed coordinate-action evidence into metamorphic relabelling checks.
 
 ### Product identity and editorial stance
 

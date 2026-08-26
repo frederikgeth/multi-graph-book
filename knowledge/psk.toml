@@ -416,3 +416,45 @@ related_finding_codes = [
   "W.PROV.FLOATING_NEUTRAL",
   "W.CONTRACT.KRON_RECOVERY_INDETERMINATE",
 ]
+
+[[knowledge]]
+id = "PSK-000011"
+kind = "invalid-inference"
+title = "Import or solver success does not prove reference completeness or nonsingularity"
+scientific_statement = "Voltage-reference incidence and rank are separate validation obligations: a transformed target can lose a source reference or become rank-deficient even when parsing succeeds, and solver termination is not an independent singularity certificate."
+scope = "Mapped connected-island reference declarations and rank evidence for source and transformed steady-state network formulations."
+evidence_status = "definition"
+does_not_establish = [
+  "Every rank deficiency is an error; intentional gauge freedoms require their own declared convention.",
+  "A reference/rank declaration gate replaces equation-level Ybus, Jacobian, conditioning, or solver validation.",
+  "A full-rank source guarantees every reduction or imported target is full rank.",
+]
+
+[knowledge.book]
+claim_ids = ["NUMERICAL-001", "NUMERICAL-004", "GROUND-SCOPE-001"]
+misconception_ids = ["reference-or-rank-success-proves-nonsingularity"]
+certificate_ids = []
+counterexample_ids = ["reference-singularity-001"]
+artifact_paths = [
+  "experiments/generated/solver-diagnostics-crosswalk.json",
+]
+source_paths = [
+  "docs/src/foundations/numerical-consequences.md",
+  "docs/src/foundations/earth-ground-models.md",
+]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["reference_singularity_validation"]
+finding_codes = [
+  "E.CONTRACT.REFERENCE_LOSS",
+  "E.CONTRACT.SINGULARITY_CHANGE",
+  "I.CONTRACT.REFERENCE_SINGULARITY_NOT_APPLICABLE",
+  "W.CONTRACT.REFERENCE_SINGULARITY_INDETERMINATE",
+]
+related_finding_codes = [
+  "E.INT.NO_VOLTAGE_REFERENCE",
+  "E.INT.SINGULAR_YBUS",
+]
+fixture_ids = ["reference-singularity-001"]

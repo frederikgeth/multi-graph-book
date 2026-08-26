@@ -478,6 +478,30 @@ with a target frozen at `1.0`; its updating companion passes narrowly. This is
 complementary to the book's finite continuation and nonlinear grounding
 witnesses, and preserves the deterministic retrieval and refusal machinery.
 
+## Eleventh vertical slice: floating references and singularity
+
+The eleventh slice bundles the book's grounding/reference and numerical-
+consequence warnings into a cross-model validation boundary. Book object
+`PSK-000011` links the reference and rank claims to the misconception that
+successful import or solver termination proves every island is referenced and
+nonsingular. The book owns the scientific distinction between a physical or
+mathematical voltage reference, connected-island rank, conditioning, and
+solver status.
+
+BMOPFTools owns `reference_singularity_validation`. It compares explicitly
+mapped `reference_analysis.islands` records, preserving reference incidence and
+full-rank status from source to target. A newly unreferenced island and a new
+rank deficiency are separate findings; missing or empty evidence is
+indeterminate or inapplicable. A pass is only a declaration-level validation
+bundle: physical reference-asset identity, equation/Jacobian rank details,
+conditioning, complete feasible sets, objectives, and solver guarantees remain
+unassessed.
+
+The minimized fixture maps one full-rank referenced island to a target that
+loses its reference and one rank. Its exact companion passes the narrow bundle.
+This complements existing connectivity, reference, Ybus, and solver
+diagnostics rather than replacing them.
+
 ## Federated discovery and context assembly
 
 The existing book service remains the federation point for retrieval. Its

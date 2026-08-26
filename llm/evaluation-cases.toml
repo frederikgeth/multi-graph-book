@@ -244,6 +244,36 @@ required_answer_elements = ["name the state domain and recomputation or bound re
 forbidden_simplifications = ["a state-dependent map may be frozen without changing feasibility or protection margins"]
 
 [[case]]
+case_id = "EVAL-REFERENCE-STUDENT"
+audience = "student"
+question = "If a network imports successfully, why should I still check for a floating island or singular Ybus?"
+misconception_id = "reference-or-rank-success-proves-nonsingularity"
+required_claim_ids = ["NUMERICAL-001", "NUMERICAL-004", "GROUND-SCOPE-001"]
+required_concept_ids = ["ground-neutral-reference", "equivalence-exactness-preservation", "state"]
+required_answer_elements = ["separate reference incidence from solver/import status", "explain arbitrary voltages or rank deficiency on an unreferenced island"]
+forbidden_simplifications = ["successful parsing proves nonsingularity"]
+
+[[case]]
+case_id = "EVAL-REFERENCE-SOFTWARE"
+audience = "software_engineer"
+question = "What should a model-reduction pipeline record to prevent a transformed Ybus from introducing a floating island?"
+misconception_id = "reference-or-rank-success-proves-nonsingularity"
+required_claim_ids = ["NUMERICAL-001", "NUMERICAL-004", "GROUND-SCOPE-001"]
+required_concept_ids = ["ground-neutral-reference", "equivalence-exactness-preservation", "state"]
+required_answer_elements = ["map connected islands and voltage references", "compare rank deficiency after transformation and refuse newly singular targets"]
+forbidden_simplifications = ["a full-rank source makes every reduced target full rank"]
+
+[[case]]
+case_id = "EVAL-REFERENCE-POWER"
+audience = "power_engineer"
+question = "Can solver success be used as proof that every connected island has a valid voltage reference?"
+misconception_id = "reference-or-rank-success-proves-nonsingularity"
+required_claim_ids = ["NUMERICAL-001", "NUMERICAL-004", "GROUND-SCOPE-001"]
+required_concept_ids = ["ground-neutral-reference", "equivalence-exactness-preservation", "state"]
+required_answer_elements = ["check physical or mathematical reference per island", "report rank and conditioning separately from termination status"]
+forbidden_simplifications = ["solver termination is an independent singularity certificate"]
+
+[[case]]
 case_id = "EVAL-GROUND-STUDENT"
 audience = "student"
 question = "Why aren’t ground, earth, neutral, and the zero-voltage reference all the same node?"

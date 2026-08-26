@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "eed990b0e5b59a1d9b94d63e2263f4b342e0188ab4028f3b7787afe0124c6fd5",
+  "corpus_sha256": "30d83a1dc84dad3eb21a4340ec040d8bca346226df8bc089599b3aed0f3bd934",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -12,15 +12,15 @@
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
     "included_doc_count": 68
   },
-  "evaluation_case_count": 48,
+  "evaluation_case_count": 51,
   "heldout_case_count": 33,
-  "misconception_count": 16,
-  "record_count": 768,
+  "misconception_count": 17,
+  "record_count": 770,
   "record_counts": {
     "claim_bundle": 107,
     "concept_bundle": 18,
-    "scientific_knowledge": 10,
-    "section": 633
+    "scientific_knowledge": 11,
+    "section": 634
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -121,7 +121,7 @@
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
-      "sha256": "164e9431de5cefb814bf05ea11934a8f29d897679f5d2a216cec8700a669fb32"
+      "sha256": "5a4f6522e443ca2dc07eb5f76e3a555b3f5cb1432efa0bba1e4fd9a87993aa68"
     },
     {
       "path": "docs/src/foundations/orientation-terminal-power.md",
@@ -209,7 +209,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "c76fff3076a194b1f121e112b18270d26630042fa19cb5669dd958f8b2b20e00"
+      "sha256": "f803eea6fe7bfb3ba61b1ad7b2bc0b428f2957f04376f792eb5631a219738580"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -309,15 +309,15 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "e3bb49e66715bd901f5f056facd47540cd50240eb97143b93134be4072f1b7c4"
+      "sha256": "44fc871d68d827abad4b262a17d87d5501d449ab954537eb1bf3a7f2410b0bdf"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",
-      "sha256": "33889d28ccbe36f43ba43e91d1f6639fc6ca36ba4b901adb620350ced8da9304"
+      "sha256": "88e17c4ebcd8e9045add7bc439d650d2abe958c71f3813aa2079594e0534d0c6"
     },
     {
       "path": "llm/evaluation-cases.toml",
-      "sha256": "09d73a3793f330e23945b997d48c89730c317cb7ad2366a10295d0a8875016e8"
+      "sha256": "339b24730a1264430a6557a1d5d10b08f028106ff5efc740ad52d5102e363e38"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -325,7 +325,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "1caa53ee74a8e82041d1a54f5940e0a3dbe2a63c00ebdc9d716e0dd0b3e77188"
+      "sha256": "071aecb0b2647ad1a6bf2bf7a20713358fcca4699c1285df47005db05bbb65e0"
     },
     {
       "path": "vocabulary/vocabulary.toml",

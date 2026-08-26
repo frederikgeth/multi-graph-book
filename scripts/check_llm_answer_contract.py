@@ -159,6 +159,19 @@ def main() -> int:
                 validation_errors.append("state-equivalent route omits the linked frozen-map fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("state-equivalent executable contract is not marked implemented")
+        if case["misconception_id"] == "reference-or-rank-success-proves-nonsingularity":
+            packet = response["packet"]
+            if "knowledge:PSK-000011" not in observed:
+                validation_errors.append("reference/singularity route omits mandatory PSK-000011")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000011"]:
+                validation_errors.append("reference/singularity route scientific basis differs from PSK-000011")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["reference_singularity_validation"]:
+                validation_errors.append("reference/singularity route omits the validation bundle")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["reference-singularity-001"]:
+                validation_errors.append("reference/singularity route omits the linked floating-island fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("reference/singularity executable contract is not marked implemented")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:

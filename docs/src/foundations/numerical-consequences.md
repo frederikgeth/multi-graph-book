@@ -29,6 +29,13 @@ The statements below concern a declared operating point, coordinate system,
 and solver tolerance. They do not claim that one representation is uniformly
 better.
 
+The federated `PSK-000011` guard makes one practical boundary executable:
+`reference_singularity_validation` compares mapped connected-island reference
+incidence and rank declarations before accepting a transformed model. A
+successful import or solver termination is not an independent certificate of
+full rank. The package pass remains declaration-level evidence; equation,
+Jacobian, conditioning, and solver-specific checks still belong to the study.
+
 !!! note "Vocabulary bridge"
     Electrical loss is power absorbed by a device model. Information loss is
     a failure of recovery under a representation map. An optimization or ML

@@ -1,5 +1,5 @@
 {
-  "corpus_sha256": "33889d28ccbe36f43ba43e91d1f6639fc6ca36ba4b901adb620350ced8da9304",
+  "corpus_sha256": "88e17c4ebcd8e9045add7bc439d650d2abe958c71f3813aa2079594e0534d0c6",
   "knowledge_ids": [
     "PSK-000001",
     "PSK-000002",
@@ -10,10 +10,11 @@
     "PSK-000007",
     "PSK-000008",
     "PSK-000009",
-    "PSK-000010"
+    "PSK-000010",
+    "PSK-000011"
   ],
   "manifest_id": "multi-graph-book-scientific-knowledge-0.1.0",
-  "record_count": 10,
+  "record_count": 11,
   "release": {
     "external_reviewed_claims": 0,
     "independent_human_double_coding": false,
@@ -45,7 +46,7 @@
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
-      "sha256": "164e9431de5cefb814bf05ea11934a8f29d897679f5d2a216cec8700a669fb32"
+      "sha256": "5a4f6522e443ca2dc07eb5f76e3a555b3f5cb1432efa0bba1e4fd9a87993aa68"
     },
     {
       "path": "docs/src/foundations/preservation-contracts.md",
@@ -133,11 +134,11 @@
     },
     {
       "path": "knowledge/psk.toml",
-      "sha256": "667cbcbdc829033a8662b31ec5b7c6869e6fb22735d76eb406d51c3f0d2d63fb"
+      "sha256": "c6a6d79c03bea1e78c86977175116828039d01894a4044cc6168938191923b0a"
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "1caa53ee74a8e82041d1a54f5940e0a3dbe2a63c00ebdc9d716e0dd0b3e77188"
+      "sha256": "071aecb0b2647ad1a6bf2bf7a20713358fcca4699c1285df47005db05bbb65e0"
     },
     {
       "path": "review/release-candidate-manifest.json",

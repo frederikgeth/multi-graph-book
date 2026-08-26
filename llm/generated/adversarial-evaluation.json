@@ -25,9 +25,9 @@
         "recall_at_10": 0.833333,
         "top_10": [
           "claim:ARCH-NODAL-001",
+          "concept:equivalence-exactness-preservation",
           "claim:ARCH-SUPPORT-001",
           "concept:graph-topology-adjacency",
-          "concept:equivalence-exactness-preservation",
           "concept:nodal-operator-alias",
           "claim:FORMULATION-NODAL-002",
           "claim:FORMULATION-Y-SPLIT-001",
@@ -47,9 +47,9 @@
           "claim:FORMULATION-NODAL-003",
           "claim:FORMULATION-NODAL-002",
           "claim:GRAPH-PI-COLLAPSE-001",
-          "claim:TR-XFMR-004",
           "claim:GRAPH-SELF-LOOP-001",
-          "claim:FORMULATION-NODAL-001"
+          "claim:FORMULATION-NODAL-001",
+          "claim:TR-XFMR-004"
         ]
       },
       "lexical": {
@@ -105,8 +105,8 @@
           "claim:FORMULATION-Y-SPLIT-001",
           "claim:ARCH-RECOVERY-003",
           "claim:ARCH-RECOVERY-001",
-          "claim:ARCH-RECOVERY-002",
-          "claim:ARCH-CHORDAL-001"
+          "concept:equivalence-exactness-preservation",
+          "claim:ARCH-RECOVERY-002"
         ]
       },
       "hybrid": {
@@ -339,7 +339,7 @@
           "claim:ARCH-LENS-001",
           "claim:PRACTICE-ARCH-001",
           "claim:ARCH-LOWER-001",
-          "claim:GRAPH-NPORT-001"
+          "claim:TR-GRAPH-001"
         ]
       },
       "lexical": {
@@ -394,7 +394,7 @@
           "claim:TR-KRON-NEUTRAL-006",
           "claim:TR-KRON-NEUTRAL-008",
           "claim:TR-KRON-NEUTRAL-007",
-          "claim:TR-KRON-001"
+          "concept:equivalence-exactness-preservation"
         ]
       },
       "hybrid": {
@@ -534,10 +534,10 @@
           "concept:object-node-interface",
           "concept:parallel",
           "claim:ARCH-VIEW-001",
+          "concept:ground-neutral-reference",
           "concept:factor",
           "concept:graph-topology-adjacency",
-          "concept:direction-orientation-hierarchy",
-          "concept:ground-neutral-reference"
+          "concept:direction-orientation-hierarchy"
         ]
       },
       "hybrid": {
@@ -552,8 +552,8 @@
           "concept:object-node-interface",
           "concept:phase-conductor-sequence-coordinate",
           "claim:TR-SER-003",
-          "claim:ARCH-SURGERY-002",
-          "claim:ARCH-LENS-001"
+          "claim:TRANSFORM-SEM-001",
+          "claim:ARCH-SURGERY-002"
         ]
       },
       "lexical": {
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "eed990b0e5b59a1d9b94d63e2263f4b342e0188ab4028f3b7787afe0124c6fd5"
+    "corpus_sha256": "30d83a1dc84dad3eb21a4340ec040d8bca346226df8bc089599b3aed0f3bd934"
   },
   "inputs": {
     "adversarial_cases": {

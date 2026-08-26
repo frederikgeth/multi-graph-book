@@ -4,8 +4,8 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `eed990b0e5b59a1d9b94d63e2263f4b342e0188ab4028f3b7787afe0124c6fd5`<br>
-**Cases:** 48
+**Corpus hash:** `30d83a1dc84dad3eb21a4340ec040d8bca346226df8bc089599b3aed0f3bd934`<br>
+**Cases:** 51
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
 The latter is permitted to add mandatory claims and concepts only after the query router identifies
@@ -16,12 +16,12 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Measure | Result | Release gate? |
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
-| Open-corpus lexical evidence recall@5 | 24.5% | diagnostic |
-| Open-corpus lexical evidence recall@10 | 35.1% | diagnostic |
+| Open-corpus lexical evidence recall@5 | 23.4% | diagnostic |
+| Open-corpus lexical evidence recall@10 | 33.7% | diagnostic |
 | Open-corpus complete evidence@10 | 0.0% | diagnostic |
-| Evidence-only lexical recall@5 | 37.4% | diagnostic |
-| Evidence-only lexical recall@10 | 47.6% | diagnostic |
-| Evidence-only complete evidence@10 | 2.1% | diagnostic |
+| Evidence-only lexical recall@5 | 35.8% | diagnostic |
+| Evidence-only lexical recall@10 | 45.4% | diagnostic |
+| Evidence-only complete evidence@10 | 2.0% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
 | Packets with qualification, failure, shorthand, and scope | 100.0% | yes |
@@ -44,9 +44,9 @@ evidence sets, so the effective target count is nine rather than 27 independent 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `lexical` | 34.0% | 44.9% | 0.0% | 0/33 | 5/33 | 0.201 |
-| `char_tfidf` | 36.2% | 44.8% | 0.0% | 0/33 | 6/33 | 0.224 |
-| `hybrid` | 37.4% | 46.6% | 0.0% | 0/33 | 5/33 | 0.219 |
-| `graph` | 40.4% | 57.2% | 24.2% | 8/33 | 4/33 | 0.248 |
+| `char_tfidf` | 36.2% | 44.1% | 0.0% | 0/33 | 6/33 | 0.223 |
+| `hybrid` | 37.4% | 46.6% | 0.0% | 0/33 | 5/33 | 0.218 |
+| `graph` | 40.5% | 57.2% | 24.2% | 8/33 | 4/33 | 0.257 |
 
 Held-out contract-router firing: **25/33 (75.8%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **19/33 (57.6%)**; this remains diagnostic because the set is synthetic and clustered.
@@ -94,9 +94,9 @@ Graph versus hybrid complete@10: **8/33** versus **0/33**.
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 16 | 100.0% | 48.6% | 100.0% |
-| `software_engineer` | 16 | 100.0% | 40.5% | 100.0% |
-| `student` | 16 | 100.0% | 53.6% | 100.0% |
+| `power_engineer` | 17 | 100.0% | 47.7% | 100.0% |
+| `software_engineer` | 17 | 100.0% | 38.1% | 100.0% |
+| `student` | 17 | 100.0% | 50.4% | 100.0% |
 
 ## Case results
 
@@ -126,6 +126,9 @@ Graph versus hybrid complete@10: **8/33** versus **0/33**.
 | `EVAL-STATE-EQUIVALENT-STUDENT` | `student` | `base-state-equivalent-is-globally-exact` | 33.3% | yes |
 | `EVAL-STATE-EQUIVALENT-SOFTWARE` | `software_engineer` | `base-state-equivalent-is-globally-exact` | 0.0% | yes |
 | `EVAL-STATE-EQUIVALENT-POWER` | `power_engineer` | `base-state-equivalent-is-globally-exact` | 33.3% | yes |
+| `EVAL-REFERENCE-STUDENT` | `student` | `reference-or-rank-success-proves-nonsingularity` | 0.0% | yes |
+| `EVAL-REFERENCE-SOFTWARE` | `software_engineer` | `reference-or-rank-success-proves-nonsingularity` | 0.0% | yes |
+| `EVAL-REFERENCE-POWER` | `power_engineer` | `reference-or-rank-success-proves-nonsingularity` | 33.3% | yes |
 | `EVAL-GROUND-STUDENT` | `student` | `ground-neutral-reference-are-one-node` | 75.0% | yes |
 | `EVAL-GROUND-SOFTWARE` | `software_engineer` | `ground-neutral-reference-are-one-node` | 100.0% | yes |
 | `EVAL-GROUND-POWER` | `power_engineer` | `ground-neutral-reference-are-one-node` | 75.0% | yes |

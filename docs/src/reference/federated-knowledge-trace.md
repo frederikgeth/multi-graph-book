@@ -349,6 +349,25 @@ nonlinear update law or establish feasible-set, objective, protection, or
 solver equivalence. The book's state-dependent grounding and continuation
 witnesses remain the scientific evidence.
 
+## Eleventh trace: floating references and singularity
+
+The eleventh slice makes reference/rank preservation explicit before a
+transformed model is accepted:
+
+| Layer | Stable identity | Owner | Purpose |
+|---|---|---|---|
+| Scientific knowledge | `PSK-000011` | this book | Separates voltage-reference incidence and rank from import or solver success |
+| Claims | `NUMERICAL-001`, `NUMERICAL-004`, `GROUND-SCOPE-001` | this book | Define numerical/reference obligations and distinguish physical and mathematical grounding |
+| Misconception | `reference-or-rank-success-proves-nonsingularity` | this book | Routes successful-import/solver claims to island and rank checks |
+| Executable contract | `reference_singularity_validation` | BMOPFTools | Compares mapped island references and rank evidence |
+| API operation | `check_reference_singularity` | BMOPFTools | Reports reference loss, singularity change, or qualified pass |
+| Counterexample fixture | `reference-singularity-001` | BMOPFTools | Removes a source reference and one rank in the target island |
+| Findings | `E.CONTRACT.REFERENCE_LOSS`, `E.CONTRACT.SINGULARITY_CHANGE` | BMOPFTools | Separate reference-incidence and rank-deficiency changes |
+
+The pass does not replace equation-level Ybus/Jacobian or solver validation;
+the package checks declaration consistency only. Existing numerical and
+grounding evidence remains the scientific basis.
+
 ## What generalizes
 
 The federation pattern generalizes to other scientific guardrails:

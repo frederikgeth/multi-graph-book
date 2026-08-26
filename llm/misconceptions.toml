@@ -118,6 +118,19 @@ mandatory_concept_ids = ["equivalence-exactness-preservation", "transformation-f
 source_paths = ["docs/src/transformations/kron-ward-opti-kron.md", "docs/src/foundations/preservation-contracts.md"]
 
 [[misconception]]
+id = "reference-or-rank-success-proves-nonsingularity"
+title = "A successful import or solver status proves every island is referenced and nonsingular"
+severity = "critical"
+query_patterns = ["floating island", "singular ybus", "rank deficient network", "missing voltage reference", "solver singularity", "reference bus check", "rank success proves"]
+tempting_answer = "If the model imports or the solver reports success, the network must have a valid voltage reference and full rank."
+required_qualification = "Reference incidence and rank are separate validation obligations; a transformed target can lose a source reference or become rank-deficient even when parsing succeeds, and solver termination is not an independent singularity certificate."
+safe_shorthand = "Every connected island needs an explicit reference/rank check for the declared formulation."
+operational_consequence = "Unreported floating islands produce arbitrary voltages, ill-conditioned equations, failed recovery, and misleading optimization or protection results."
+mandatory_claim_ids = ["NUMERICAL-001", "NUMERICAL-004", "GROUND-SCOPE-001"]
+mandatory_concept_ids = ["ground-neutral-reference", "equivalence-exactness-preservation", "state"]
+source_paths = ["docs/src/foundations/numerical-consequences.md", "docs/src/foundations/earth-ground-models.md"]
+
+[[misconception]]
 id = "ground-neutral-reference-are-one-node"
 title = "Ground, neutral, earth, and voltage reference are the same node"
 severity = "critical"
