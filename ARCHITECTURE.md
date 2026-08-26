@@ -423,6 +423,36 @@ book's richer running-network, explicit-earth, multi-point, and nonlinear
 recovery witnesses; it is not a replacement for them or for the book's
 deterministic LLM machinery.
 
+## Ninth vertical slice: positive-sequence collapse applicability
+
+The ninth slice promotes the book's controlled-collapse chapter and its
+Fortescue/non-circulant witnesses into a domain guard. Book object
+`PSK-000009` links `COLLAPSE-001` and `COLLAPSE-002` to the existing misconception
+that transposition alone makes a positive-sequence model exact. The book owns
+the invariant-subspace statement: cyclic factors and compatible grounding are
+necessary structural conditions, while balanced boundary data, two-terminal
+device closure, phase-symmetric decisions, and positive-sequence observations
+close the restricted study domain.
+
+BMOPFTools owns the narrow contract
+`positive_sequence_collapse_applicability`. It checks a three-conductor source
+factor for circulant series and shunt matrices, aligns the declared phase order,
+and compares a scalar target with the source positive-sequence eigenvalue. The
+caller must explicitly declare the balanced boundary, grounding, device,
+decision, and observation guards. Non-circulant factors, failed domain guards,
+target relation mismatches, unsupported shapes, and missing declarations are
+reported separately. A pass certifies only the restricted positive-sequence
+relation; phase-specific, neutral/earth, negative/zero-sequence, protection,
+internal-device, complete decision, objective, and solver claims remain
+unassessed.
+
+The minimized fixture uses a circulant three-phase line and scalar target, then
+deliberately fails one balanced-domain guard in its reproducer. The scientific
+contract tests also exercise the positive companion, a non-circulant failure,
+an incomplete declaration, and a target mismatch. This keeps the pedagogical
+counterexample executable without replacing the book's richer sequence and
+four-wire ladder evidence.
+
 ## Federated discovery and context assembly
 
 The existing book service remains the federation point for retrieval. Its

@@ -307,6 +307,28 @@ routes make `knowledge:PSK-000008` mandatory when the existing Kron
 misconception is triggered; the deterministic packet and source-hash checks
 remain unchanged.
 
+## Ninth trace: positive-sequence collapse applicability
+
+The ninth slice guards a controlled specialization onto the positive-sequence
+invariant subspace:
+
+| Layer | Stable identity | Owner | Purpose |
+|---|---|---|---|
+| Scientific knowledge | `PSK-000009` | this book | Requires cyclic factors and a fully declared balanced study domain for positive-sequence restriction |
+| Claims | `COLLAPSE-001`, `COLLAPSE-002` | this book | Establish the exact restricted relation and show sequence mixing under a non-circulant perturbation |
+| Misconception | `transposition-implies-positive-sequence-exactness` | this book | Routes transposition-only claims to symmetry, grounding, terminal, decision, and observation guards |
+| Executable contract | `positive_sequence_collapse_applicability` | BMOPFTools | Checks circulant series/shunt factors, phase order, scalar positive-sequence relation, and explicit domain declarations |
+| API operation | `check_positive_sequence_collapse` | BMOPFTools | Reports qualified applicability, failure, and indeterminate results |
+| Counterexample fixture | `positive-sequence-collapse-001` | BMOPFTools | Uses a circulant factor but deliberately fails the balanced-domain guard |
+| Findings | `E.CONTRACT.SEQUENCE_SYMMETRY_MISMATCH`, `E.CONTRACT.SEQUENCE_DOMAIN_MISMATCH`, `E.CONTRACT.SEQUENCE_RELATION_MISMATCH` | BMOPFTools | Separate operator mixing, study-domain leakage, and target-relation errors |
+
+The passing companion in the contract tests is intentionally narrower than a
+balanced-model claim: it leaves phase-specific limits, neutral/earth,
+negative/zero-sequence, protection, internal devices, complete feasible sets,
+objectives, and solver behavior unassessed. Existing sequence witnesses remain
+the scientific evidence; the package check is the refusal boundary that keeps
+those claims from being silently promoted.
+
 ## What generalizes
 
 The federation pattern generalizes to other scientific guardrails:

@@ -133,6 +133,19 @@ def main() -> int:
                 validation_errors.append("Kron route omits the linked grounding counterexample fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("Kron executable contract is not marked implemented")
+        if case["misconception_id"] == "transposition-implies-positive-sequence-exactness":
+            packet = response["packet"]
+            if "knowledge:PSK-000009" not in observed:
+                validation_errors.append("positive-sequence route omits mandatory PSK-000009")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000009"]:
+                validation_errors.append("positive-sequence route scientific basis differs from PSK-000009")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["positive_sequence_collapse_applicability"]:
+                validation_errors.append("positive-sequence route omits the collapse-applicability contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["positive-sequence-collapse-001"]:
+                validation_errors.append("positive-sequence route omits the linked collapse counterexample fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("positive-sequence executable contract is not marked implemented")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:

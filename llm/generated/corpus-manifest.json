@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "d6b1216a6b151ad89da05b44800e281c8ed33460903cdf7a1c10ddfb90c8547e",
+  "corpus_sha256": "712c5e5d2fc64892f7bb610cbb2682cc867528ba9e04e0d8d3d9fb2aa0fe9a08",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -15,12 +15,12 @@
   "evaluation_case_count": 45,
   "heldout_case_count": 33,
   "misconception_count": 15,
-  "record_count": 763,
+  "record_count": 765,
   "record_counts": {
     "claim_bundle": 107,
     "concept_bundle": 18,
-    "scientific_knowledge": 8,
-    "section": 630
+    "scientific_knowledge": 9,
+    "section": 631
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -165,7 +165,7 @@
     },
     {
       "path": "docs/src/foundations/when-general-model-collapses.md",
-      "sha256": "61920e2755223a7b16c2a43b9604e494ad72dd3eed1d274a3178dc568a4b2d5b"
+      "sha256": "b20850c7f9193fb3963ee3112a34758c54bc56924259a2884d50043dc7a79750"
     },
     {
       "path": "docs/src/index.md",
@@ -209,7 +209,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "691ad147edb696de8bf19b1b41901dfb1a6c7b27ce6ed11af50f334361377340"
+      "sha256": "c4b5e4f640333712c2e6dd706115fcdf89cf9a974d115e602168e7c66a3124f1"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -285,7 +285,7 @@
     },
     {
       "path": "docs/src/transformations/kron-ward-opti-kron.md",
-      "sha256": "dd304e0a1182e481b2b2110a3aba40ba37bfe6493d427d899f18bcc7fa655d9e"
+      "sha256": "38db6bfb26875284a668affd0803276c00c3ecced2747c52070bd560e1dbbbd7"
     },
     {
       "path": "docs/src/transformations/multiwinding-leakage-reference-compilation.md",
@@ -309,11 +309,11 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "b0ef23cd0c1cd961be7ae9cf34cd09ddf2396976114dbb6635bced4327dbee0e"
+      "sha256": "c975e790ee9c493c630e3947fd22e80109709af5b6c1d55150ba55a338e8bab6"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",
-      "sha256": "cfbe17b195bee2d5de2997354c44b7b41681ca36de08039955c23dfe32df3d30"
+      "sha256": "7ea6436f522d0b084f2bba3fe65dab79a3ddb580605aa3666ce43096b785ef54"
     },
     {
       "path": "llm/evaluation-cases.toml",

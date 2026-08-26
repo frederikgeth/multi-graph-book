@@ -327,3 +327,48 @@ related_finding_codes = [
   "W.PROV.FLOATING_NEUTRAL",
 ]
 fixture_ids = ["kron-boundary-grounding-001"]
+
+[[knowledge]]
+id = "PSK-000009"
+kind = "modelling-antipattern"
+title = "Transposition alone does not make a positive-sequence model exact"
+scientific_statement = "An exact positive-sequence restriction requires compatible three-phase terminals, cyclic series and shunt factors, balanced boundary data, sequence-compatible grounding, two-terminal device closure, phase-symmetric decisions, and positive-sequence observations; transposition or a balanced-looking factor alone does not close that domain."
+scope = "Fixed three-phase linear factors and scalar positive-sequence targets under an explicitly declared balanced invariant subspace and restricted observation/decision domain."
+evidence_status = "established_result"
+does_not_establish = [
+  "Positive-sequence modelling is always invalid.",
+  "A circulant factor makes unbalanced, phase-specific, neutral, protection, or zero-sequence studies exact.",
+  "A passing applicability check establishes global decision, objective, or solver equivalence.",
+]
+
+[knowledge.book]
+claim_ids = ["COLLAPSE-001", "COLLAPSE-002"]
+misconception_ids = ["transposition-implies-positive-sequence-exactness"]
+certificate_ids = []
+counterexample_ids = ["positive-sequence-collapse-001"]
+artifact_paths = [
+  "experiments/generated/balanced-transmission-witness.json",
+  "experiments/generated/positive-sequence-collapse-witness.json",
+]
+source_paths = [
+  "docs/src/foundations/when-general-model-collapses.md",
+  "docs/src/cases/four-wire-impedance-model-ladder.md",
+]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["positive_sequence_collapse_applicability"]
+finding_codes = [
+  "E.CONTRACT.SEQUENCE_SYMMETRY_MISMATCH",
+  "E.CONTRACT.SEQUENCE_DOMAIN_MISMATCH",
+  "E.CONTRACT.SEQUENCE_RELATION_MISMATCH",
+  "I.CONTRACT.SEQUENCE_NOT_APPLICABLE",
+  "W.CONTRACT.SEQUENCE_INDETERMINATE",
+]
+fixture_ids = ["positive-sequence-collapse-001"]
+related_finding_codes = [
+  "W.PROV.SOURCE_ZERO_SEQUENCE",
+  "W.PROV.SOURCE_NEGATIVE_SEQUENCE",
+  "W.PROV.SOURCE_INCOHERENT_ROTATION",
+]
