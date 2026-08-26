@@ -1,12 +1,13 @@
 {
-  "corpus_sha256": "e4996df211e0fe2bb798b8c6efef4bc2c22a7e17185e6b5c5e6176b10927b1b7",
+  "corpus_sha256": "fc2d81ca65521b8a01659be5af46a654ba977bda633b262b9de97f4cb585001f",
   "knowledge_ids": [
     "PSK-000001",
     "PSK-000002",
-    "PSK-000003"
+    "PSK-000003",
+    "PSK-000004"
   ],
   "manifest_id": "multi-graph-book-scientific-knowledge-0.1.0",
-  "record_count": 3,
+  "record_count": 4,
   "release": {
     "external_reviewed_claims": 0,
     "independent_human_double_coding": false,
@@ -18,11 +19,15 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "a7d325acb7696ec088ac731e4b8ae3f02ebfab2515f35efc22f06c9521710991"
+      "sha256": "7d5475031842a08eaa8d77c78d92b5df0b8cfc7e41ac17d8fa34d3530ef8ef16"
     },
     {
       "path": "docs/src/foundations/earth-ground-models.md",
       "sha256": "64f86cb284b55a08ffe03ad4ab6e6617f74838a3be283a61671da39294cffae4"
+    },
+    {
+      "path": "docs/src/foundations/load-models-and-decision-dependence.md",
+      "sha256": "8b9e2062ae025d2ea36b398b55f4a92474a594eba898e830b672c0165f85acd6"
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
@@ -50,11 +55,11 @@
     },
     {
       "path": "knowledge/psk.toml",
-      "sha256": "b363285bbdfdf5c81ef0505035806532bb6c4a9039b17b60b0b597d78e8c3d50"
+      "sha256": "0960ce9e629eaf4025bbfb2d3839b995679b197a11aec6d135472711c5909ab4"
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "2d6bf0635eedab213b75133f38097a8aa45c617a8dbe71080becbcccfccfadb4"
+      "sha256": "17d80b8f04462e90a38d72f9f7b8e8a260cbaa9e5c761268fcd53014b258cf8f"
     },
     {
       "path": "review/release-candidate-manifest.json",

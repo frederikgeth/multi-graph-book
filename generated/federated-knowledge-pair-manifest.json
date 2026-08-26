@@ -2,17 +2,19 @@
   "bmopftools": {
     "contract_ids": [
       "claimed_solution_validity",
+      "load_voltage_base_consistency",
       "neutral_ground_reference_preservation",
       "parallel_member_limit_preservation"
     ],
-    "corpus_sha256": "a2bf99fc2230a00851e68be85a83197539aa1b740c35b838575ded947db4949a",
+    "corpus_sha256": "b9086eaa2c1ca855c0430d12fa36dfdeb997e294bc42f0e8e788dc9f571630d9",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
-      "PSK-000003"
+      "PSK-000003",
+      "PSK-000004"
     ],
     "manifest_id": "bmopftools-executable-knowledge-0.1.0",
-    "manifest_sha256": "ad571152cd344b37adac599c262384748416a794cf67557650702afce8552ba3",
+    "manifest_sha256": "312414c080db54494c1d0612bb328729e8913c88e17e0f2dec063bda80724a9d",
     "package": {
       "name": "BMOPFTools",
       "version": "0.1.0"
@@ -21,13 +23,14 @@
     "schema_version": "0.1.0"
   },
   "book": {
-    "corpus_sha256": "e4996df211e0fe2bb798b8c6efef4bc2c22a7e17185e6b5c5e6176b10927b1b7",
+    "corpus_sha256": "fc2d81ca65521b8a01659be5af46a654ba977bda633b262b9de97f4cb585001f",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
-      "PSK-000003"
+      "PSK-000003",
+      "PSK-000004"
     ],
-    "manifest_sha256": "9999d493df3d57f258630adf3ce21060f8e871062c5341dda91fc036c2ae78dc",
+    "manifest_sha256": "1d6157233fb88d28b07507f3f3e6d67e893966ad4618f90b94b7751592024b99",
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -53,7 +56,7 @@
           "fixture_ids": [
             "parallel-rating-outer-relaxation-001"
           ],
-          "source_sha256": "3b9e9406068451e93454acc00106943692db803da47c5bd407f29b24aaba89a3"
+          "source_sha256": "79aa25aec864c24bbce93320b050b0191ffae567dc6107083d52b9170a4fb001"
         }
       ],
       "implementation_status": "implemented",
@@ -74,7 +77,7 @@
           "fixture_ids": [
             "neutral-ground-reference-conflation-001"
           ],
-          "source_sha256": "3b9e9406068451e93454acc00106943692db803da47c5bd407f29b24aaba89a3"
+          "source_sha256": "79aa25aec864c24bbce93320b050b0191ffae567dc6107083d52b9170a4fb001"
         }
       ],
       "implementation_status": "implemented",
@@ -93,7 +96,26 @@
           "fixture_ids": [
             "claimed-feasible-invalid-solution-001"
           ],
-          "source_sha256": "d3884d9d6cb5a93cb17dbfefc8f6b9dffad013055b21f850b120c9573cf3f621"
+          "source_sha256": "b7cc411a4d2b3b5e2c2072dd2f051b9c727accfee782b65d3a16232d4ca53cae"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000004": {
+      "contracts": [
+        {
+          "contract_id": "load_voltage_base_consistency",
+          "entrypoint": "check_load_voltage_base_consistency",
+          "finding_codes": [
+            "E.CONTRACT.LOAD_VOLTAGE_BASE_MISMATCH",
+            "I.CONTRACT.LOAD_VOLTAGE_BASE_NOT_APPLICABLE",
+            "W.CONTRACT.LOAD_VOLTAGE_BASE_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "load-voltage-base-mismatch-001"
+          ],
+          "source_sha256": "58c589baf1edb1edd018601268ef9c9ec312773053f9649a217828a8963061c1"
         }
       ],
       "implementation_status": "implemented",
@@ -101,6 +123,6 @@
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "54f53f2679ce6b4e12f691ae77393ef05c6c732d228b49d9d00ea34d04929b1f",
+  "pair_sha256": "7190586406ddfffc77470d7d797f999fbc507163bcac24a9b0c75cc549f80be0",
   "schema_version": "0.1.0"
 }

@@ -155,3 +155,16 @@ operational_consequence = "The shortcut can accept non-finite values, violated v
 mandatory_claim_ids = ["NUMERICAL-001", "NUMERICAL-004"]
 mandatory_concept_ids = ["state", "rating-limit-constraint"]
 source_paths = ["docs/src/foundations/numerical-consequences.md"]
+
+[[misconception]]
+id = "wye-delta-share-nominal-voltage-base"
+title = "WYE and DELTA voltage-dependent loads can reuse the same numeric nominal voltage"
+severity = "critical"
+query_patterns = ["wye and delta same nominal voltage", "delta load v_nom", "load kv line to line or line to neutral", "copy bus voltage into load v_nom", "230 v delta zip load", "400 v delta load on 230 v bus", "sqrt3 load voltage base", "line-to-line load nominal anchor", "phase-to-neutral load base", "wrong load voltage base"]
+tempting_answer = "Use the bus nominal voltage as v_nom for both WYE and DELTA loads because they are connected to the same bus."
+required_qualification = "The load anchor belongs to its terminal coordinate: WYE uses phase-to-neutral voltage and DELTA uses line-to-line voltage. On a nominal three-phase system those bases differ by sqrt(3), and reusing one numeric value changes the normalized voltage-dependent load law."
+safe_shorthand = "Bus voltage is a safe load anchor only after the connection coordinate and line-to-line or phase-to-neutral basis are named."
+operational_consequence = "A wrong anchor changes constant-current, constant-impedance, ZIP, or exponential demand away from the nominal point and can alter voltage, loading, feasibility, and decisions."
+mandatory_claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
+mandatory_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "factor"]
+source_paths = ["docs/src/foundations/load-models-and-decision-dependence.md"]

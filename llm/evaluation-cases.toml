@@ -362,3 +362,33 @@ required_claim_ids = ["NUMERICAL-001", "NUMERICAL-004"]
 required_concept_ids = ["state", "rating-limit-constraint"]
 required_answer_elements = ["independently check study equations, voltages, equipment limits, and balance", "state whether optimality is local, global, or unverified"]
 forbidden_simplifications = ["convergence alone establishes a physically valid globally optimal dispatch"]
+
+[[case]]
+case_id = "EVAL-LOAD-BASE-STUDENT"
+audience = "student"
+question = "Can I use 230 V as the nominal voltage for both a WYE load and a DELTA load on the same three-phase bus?"
+misconception_id = "wye-delta-share-nominal-voltage-base"
+required_claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
+required_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "factor"]
+required_answer_elements = ["identify phase-to-neutral for WYE and line-to-line for DELTA", "explain the sqrt(3) nominal-base conversion"]
+forbidden_simplifications = ["one bus label implies one numeric load-voltage coordinate"]
+
+[[case]]
+case_id = "EVAL-LOAD-BASE-SOFTWARE"
+audience = "software_engineer"
+question = "An importer has a 230 V phase-to-neutral bus base. Should it copy 230 into v_nom for a DELTA ZIP load?"
+misconception_id = "wye-delta-share-nominal-voltage-base"
+required_claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
+required_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "factor"]
+required_answer_elements = ["convert the DELTA anchor to the line-to-line base", "retain explicit connection and unit provenance and run the executable consistency check"]
+forbidden_simplifications = ["copy the source scalar without inspecting the load terminal coordinate"]
+
+[[case]]
+case_id = "EVAL-LOAD-BASE-POWER"
+audience = "power_engineer"
+question = "On a 230/400 V system, which nominal voltage should anchor WYE and DELTA voltage-dependent load models?"
+misconception_id = "wye-delta-share-nominal-voltage-base"
+required_claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
+required_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "factor"]
+required_answer_elements = ["use about 230 V phase-to-neutral for WYE and 400 V line-to-line for DELTA", "state that anchor consistency does not validate the rest of the network or load law"]
+forbidden_simplifications = ["the same numeric nameplate base applies to both connections"]

@@ -2,7 +2,7 @@
 
 **Page status:** maintained cross-repository implementation trace and scope boundary.
 
-This page traces three scientific statements from book evidence to executable BMOPFTools guardrails and back into the book's existing LLM context packets. The stable ownership rules are defined in the repository-root `ARCHITECTURE.md`; this page is the worked implementation trace.
+This page traces four scientific statements from book evidence to executable BMOPFTools guardrails and back into the book's existing LLM context packets. The stable ownership rules are defined in the repository-root `ARCHITECTURE.md`; this page is the worked implementation trace.
 
 ## First trace: parallel member limits
 
@@ -135,6 +135,42 @@ All three audience routes make `knowledge:PSK-000003` mandatory and expose the
 counterexample, executable contract, dedicated Findings, and unresolved checks
 through the same deterministic, source-hash-bound context machinery.
 
+## Fourth trace: load connection voltage bases
+
+The fourth slice turns an existing package plausibility diagnostic into an
+explicit scientific contract:
+
+| Layer | Stable identity | Owner | Purpose |
+|---|---|---|---|
+| Scientific knowledge | `PSK-000004` | this book | States that a voltage-dependent load anchor belongs to its terminal coordinate |
+| Claims | `LOAD-BASE-001`, `LOAD-CONNECTION-001` | this book | Define the anchor rule and retain the generated WYE/DELTA connection-map witness |
+| Misconception | `wye-delta-share-nominal-voltage-base` | this book | Routes same-numeric-base shortcuts to mandatory qualification |
+| Executable contract | `load_voltage_base_consistency` | BMOPFTools | Checks the supported connection-coordinate declaration against a propagated bus base |
+| API operation | `check_load_voltage_base_consistency` | BMOPFTools | Exposes pass, fail, inapplicable, and indeterminate outcomes |
+| Counterexample fixture | `load-voltage-base-mismatch-001` | BMOPFTools | Assigns a phase-to-neutral anchor to a DELTA ZIP load |
+| Finding | `E.CONTRACT.LOAD_VOLTAGE_BASE_MISMATCH` | BMOPFTools | Reports the connection-inconsistent nominal anchor |
+
+`PSK-000004` states that nominal voltage is part of a voltage-dependent load's
+constitutive coordinate. WYE uses phase-to-neutral voltage; DELTA uses
+line-to-line voltage. On the declared nominal three-phase system those bases
+differ by `sqrt(3)`. Copying one numeric value into both declarations therefore
+changes normalized constant-current, constant-impedance, ZIP, or exponential
+behavior rather than merely changing metadata.
+
+The fixture uses a balanced source with a 230 V phase-to-neutral base. Its
+DELTA ZIP load incorrectly declares `v_nom=230` V, while the corresponding
+line-to-line base is about 398.37 V. The executable contract reuses the same
+source/transformer voltage propagation, connection-coordinate conversion, and
+default 0.8--1.25 plausibility band as the existing
+`W.LOAD.VNOM_MISMATCH` diagnostic. The negative case produces the dedicated
+contract failure; the companion 398.37 V declaration passes.
+
+That pass remains declaration-relative. Source and transformer nominal values,
+terminal maps, coefficients, units, operating voltage, network equations, and
+equipment limits are unassessed. All three audience routes make
+`knowledge:PSK-000004` mandatory and expose those boundaries through the same
+deterministic context-packet machinery.
+
 ## What generalizes
 
 The federation pattern generalizes to other scientific guardrails:
@@ -145,7 +181,7 @@ The federation pattern generalizes to other scientific guardrails:
 - implementations can report `passed`, `failed`, `inapplicable`, or `indeterminate` without turning absence of evidence into a pass; and
 - source hashes make context packets and cross-repository links auditable.
 
-The numerical formula used by the first contract does **not** generalize automatically. The scalar voltage-drop reduction, lack of shunts, fixed linear admittances, common coordinates, and explicit current ratings are case-specific. The second contract likewise does not turn relation matching into electrical equivalence: its explicit-neutral and scalar neutral-only grounding domain is case-specific. The third contract establishes that the contract/result/refusal machinery generalizes to post-solve evidence, but its initial bus-result coverage is not a universal feasibility or optimality validator. Multiconductor coupling, nonlinear devices, explicit-earth networks, protection quantities, full equation residuals, device constraints, recovery, and global optimality require separate PSK objects or broader contracts with their own evidence and fixtures.
+The numerical formula used by the first contract does **not** generalize automatically. The scalar voltage-drop reduction, lack of shunts, fixed linear admittances, common coordinates, and explicit current ratings are case-specific. The second contract likewise does not turn relation matching into electrical equivalence: its explicit-neutral and scalar neutral-only grounding domain is case-specific. The third contract establishes that the contract/result/refusal machinery generalizes to post-solve evidence, but its initial bus-result coverage is not a universal feasibility or optimality validator. The fourth shows that an existing package diagnostic can be promoted into an auditable contract without duplicating its inference machinery, but declaration consistency is not importer fidelity or solved-model validation. Multiconductor coupling, nonlinear devices, explicit-earth networks, protection quantities, full equation residuals, device constraints, recovery, and global optimality require separate PSK objects or broader contracts with their own evidence and fixtures.
 
 ## Reproduction and release pairing
 

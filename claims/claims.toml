@@ -1480,6 +1480,23 @@ review_date = ""
 unresolved_issue = "Add multiconductor connection maps and continuation to collapse points; the declared scalar CP/CI/CZ/ZIP fixture now has separately varying reactive coefficients and an independent reproduction."
 
 [[claim]]
+claim_id = "LOAD-BASE-001"
+exactness_object = "representation_definition"
+preservation_dimensions = ['terminal_behavior', 'phase_neutral', 'decision']
+chapter = "docs/src/foundations/load-models-and-decision-dependence.md"
+claim_text = "A voltage-dependent load's nominal voltage is an anchor in the load factor's declared terminal coordinate: WYE uses phase-to-neutral voltage and DELTA uses line-to-line voltage; copying one numeric bus voltage into both coordinates without an explicit base conversion changes the normalized load law."
+status = "definition"
+claim_type = "definition"
+verification = "self-checked"
+evidence_type = "book_connection_coordinate_definition_and_generated_terminal_map_witness"
+citation_keys = []
+model_scope = "three-phase voltage-dependent WYE and DELTA load models with explicit terminal maps and nominal voltage anchors"
+assumptions = "the nominal three-phase system defines its line-to-line base as sqrt(3) times its phase-to-neutral base; the load connection and terminal coordinate are declared"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Extend the definition and executable guardrail to arbitrary unbalanced terminal maps, nonstandard connection families, explicit unit provenance, and independently reviewed importer crosswalks."
+
+[[claim]]
 claim_id = "LOAD-CONNECTION-001"
 exactness_object = "observation_sample"
 preservation_dimensions = ['terminal_behavior', 'phase_neutral', 'decision']

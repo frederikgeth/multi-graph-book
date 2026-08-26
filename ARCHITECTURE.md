@@ -255,11 +255,35 @@ Network equations, device limits, load-model residuals, power balance, recovery,
 objective guarantees, and solver derivatives remain explicit future contract
 dimensions.
 
-The three vertical slices now cover transformation preservation, model
+The initial three vertical slices cover transformation preservation, model
 semantics, and numerical/scientific inference. Shared infrastructure may now be
 generalized incrementally, starting with registry-scale inventory and additional
 high-consequence PSK links, while each new executable check retains its own
 applicability, evidence, counterexample, and refusal semantics.
+
+## Fourth vertical slice: load connection voltage bases
+
+The fourth slice begins that generalization by wrapping an existing package
+diagnostic rather than inventing a parallel heuristic. Book object
+`PSK-000004` links `LOAD-BASE-001`, `LOAD-CONNECTION-001`, and the
+`wye-delta-share-nominal-voltage-base` misconception to BMOPFTools contract
+`load_voltage_base_consistency`.
+
+The initial executable domain covers voltage-dependent WYE and DELTA loads
+with finite positive nominal anchors and a phase-to-neutral bus base reachable
+through BMOPFTools' existing source/transformer voltage-level propagation. It
+uses the same connection-coordinate convention and default plausibility band
+as `W.LOAD.VNOM_MISMATCH`: WYE is compared with phase-to-neutral voltage;
+DELTA is compared with the corresponding line-to-line base. The minimized
+counterexample assigns a 230 V phase-to-neutral anchor to a DELTA ZIP load on a
+230/398.37 V nominal system.
+
+This is a declaration-consistency contract, not a solved-load or importer
+fidelity certificate. A pass does not establish that source or transformer
+nominals, terminal maps, load-law coefficients, units, operating voltages,
+network equations, or equipment limits are correct. Missing source-reachable
+bases or nominal anchors are indeterminate; constant-power and unsupported
+connection cases are explicitly inapplicable.
 
 ## Federated discovery and context assembly
 

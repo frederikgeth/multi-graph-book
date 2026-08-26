@@ -1,18 +1,18 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:a7d325acb7696ec088ac731e4b8ae3f02ebfab2515f35efc22f06c9521710991 -->
+<!-- generated-from claims/claims.toml sha256:7d5475031842a08eaa8d77c78d92b5df0b8cfc7e41ac17d8fa34d3530ef8ef16 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 106
+**Indexed claims:** 107
 **Indexed chapters:** 44
 
 ## Claims by type
 
-### `definition` (13)
+### `definition` (14)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -22,6 +22,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `GRAPH-NPORT-001` — Allowing a relation to own an arbitrary finite flag fibre generalizes the two-uniform multigraph to an incidence structure, while an expert mathematical model additionally needs typed flag spaces, relation roles or ordering, and a constitutive relation to represent an n-port factor rather than merely its hypergraph incidence. | [Multigraphs for expert modelers](../foundations/multigraphs-for-modelers.md) | `self-checked` |
 | `GRAPH-SELF-LOOP-001` — In the book's loopless bus--branch circuit specialization, ordinary edges connect distinct retained circuit nodes; a graph self-loop may remain in the source multigraph or arise from a topology quotient, but it is not interchangeable with an electrical circuit loop or mesh, a grounded shunt, or a diagonal self-admittance term. | [Multigraphs for expert modelers](../foundations/multigraphs-for-modelers.md) | `self-checked` |
 | `GROUND-SCOPE-001` — Reference, neutral, earth-return, and grounding-asset semantics are distinct model objects; reductions involving them must declare an earth-return class, grounding points, retained observations, and recovery data. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `self-checked` |
+| `LOAD-BASE-001` — A voltage-dependent load's nominal voltage is an anchor in the load factor's declared terminal coordinate: WYE uses phase-to-neutral voltage and DELTA uses line-to-line voltage; copying one numeric bus voltage into both coordinates without an explicit base conversion changes the normalized load law. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `self-checked` |
 | `NUMERICAL-001` — Representation and reduction choices have numerical consequences that must be reported separately from electrical preservation: coordinate scaling changes conditioning without changing an invertible solution set, Jacobian dependency graphs need not equal physical graphs, Schur elimination can create fill-in, and decision certificates require residual/error estimates and margins. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
 | `NUMERICAL-004` — A solver termination status is an algorithm report, not an independent solution-validity certificate; any scientific claim based on returned primal values must separately check the relevant numeric finiteness, equations, bounds, residuals, recovery obligations, and optimality level. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
 | `PRESERVE-001` — Equivalence of two power-network models is indexed by a declared observation family and admissible input set; equality of an unconstrained terminal relation alone does not establish equality of constrained feasible observable sets. | [Preservation contracts](../foundations/preservation-contracts.md) | `self-checked` |
@@ -147,7 +148,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 
 | Verification | Claims |
 | --- | ---: |
-| `self-checked` | 101 |
+| `self-checked` | 102 |
 | `independently-implemented` | 5 |
 | `externally-reviewed` | 0 |
 
@@ -200,6 +201,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `GROUND-SCOPE-004` | Replace the illustrative functions with standards-aligned relay/CT models and quantify uncertainty and coordination margins. |
 | `IMPEDANCE-LADDER-001` | Reproduce authored overhead-line and underground-cable cases with geometry or linecode provenance, balanced and unbalanced load rows, grounding variants, and an external solver cross-check. |
 | `LIT-PAR-001` | Establish necessary and sufficient redundancy tests for arbitrary multiconductor limits and for state- or decision-dependent line models. |
+| `LOAD-BASE-001` | Extend the definition and executable guardrail to arbitrary unbalanced terminal maps, nonstandard connection families, explicit unit provenance, and independently reviewed importer crosswalks. |
 | `LOAD-CONNECTION-001` | Extend connection-map evidence to unbalanced multiconductor loads, explicit grounding, phase-specific ratings, and network-level decision solves. |
 | `LOAD-CONTINUATION-001` | Replace the iteration-failure boundary with a mathematically continued nose curve, add independent solver continuation, and extend to multiconductor/network-level decisions. |
 | `LOAD-DECISION-001` | Add multiconductor connection maps and continuation to collapse points; the declared scalar CP/CI/CZ/ZIP fixture now has separately varying reactive coefficients and an independent reproduction. |
@@ -267,7 +269,7 @@ These retrieval facets are provisional and path-derived. They are navigation aid
 additional verification labels; explicit facet fields can replace them when the claims
 schema is normalised.
 
-### `decision-cases` (30)
+### `decision-cases` (31)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -277,6 +279,7 @@ schema is normalised.
 | `FIXTURE-001` — Running-network fixture v0.1.0 passes the current BMOPFTools JSON schema and conformance checks without errors or warnings. | [Executable running network](@ref executable-running-network) | `empirical` |
 | `FIXTURE-002` — The v0.1.0 continuous PF and OPF instances terminate locally solved in the recorded environment. | [Executable running network](@ref executable-running-network) | `empirical` |
 | `IMPEDANCE-LADDER-001` — In the deterministic four-wire impedance ladder fixture, phase-to-neutral current and voltage recovery are exact under the declared zero-ground-current map, while the deliberately non-circulant reduced matrix has visible sequence mixing; shunt deletion and positive-sequence use therefore require explicit decision-domain guards. | [Four-wire impedance-model ladder](../cases/four-wire-impedance-model-ladder.md) | `empirical` |
+| `LOAD-BASE-001` — A voltage-dependent load's nominal voltage is an anchor in the load factor's declared terminal coordinate: WYE uses phase-to-neutral voltage and DELTA uses line-to-line voltage; copying one numeric bus voltage into both coordinates without an explicit base conversion changes the normalized load law. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `definition` |
 | `LOAD-CONNECTION-001` — On the recorded balanced three-phase terminal fixture, explicit wye phase-to-neutral and delta phase-to-phase connection maps share the same bus and graph but produce different load-voltage observations: unit-magnitude wye voltages and sqrt(3)-magnitude delta voltages. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
 | `LOAD-CONTINUATION-001` — On the recorded scalar two-bus continuation probe, the damped CP branch first fails to converge at demand scale 1.8 after a converged scale 1.7, while CI, CZ, and the declared ZIP branch remain converged through scale 3.0; this is an iteration-scoped branch diagnostic, not a global collapse theorem. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
 | `LOAD-DECISION-001` — On the recorded two-bus fixture, CP, CI, CZ, and a normalized ZIP load law share the same bus--branch graph but produce distinct high-voltage solutions and decision margins: CP violates both the declared voltage and current limits, while CI, CZ, and ZIP satisfy both. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
@@ -361,7 +364,7 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `representation` (56)
+### `representation` (57)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -402,6 +405,7 @@ schema is normalised.
 | `GROUND-SCOPE-002` — On the recorded two-conductor fixture, floating, finite-impedance, and ideal customer-end grounding relations share the same simple bus--branch graph but change neutral voltage, ground-current allocation, and the associated observations. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `empirical` |
 | `GROUND-SCOPE-003` — In the scoped E₂ witness, an explicit earth conductor with a finite neutral-to-earth bond has distinct in-service, earth-conductor-outage, and phase-to-earth-fault states; the outage changes earth-current availability and the fault crosses the declared protection-current threshold while the simple bus graph remains fixed. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `empirical` |
 | `GROUND-SCOPE-004` — In the explicit-earth witness, a declared inverse-time relay curve maps the CT-scaled phase-earth fault current to a 0.2466 s operation, while the neutral-earth fault remains below pickup; a separate declared CT-saturation cap changes the phase-fault trip decision. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `empirical` |
+| `LOAD-BASE-001` — A voltage-dependent load's nominal voltage is an anchor in the load factor's declared terminal coordinate: WYE uses phase-to-neutral voltage and DELTA uses line-to-line voltage; copying one numeric bus voltage into both coordinates without an explicit base conversion changes the normalized load law. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `definition` |
 | `LOAD-CONNECTION-001` — On the recorded balanced three-phase terminal fixture, explicit wye phase-to-neutral and delta phase-to-phase connection maps share the same bus and graph but produce different load-voltage observations: unit-magnitude wye voltages and sqrt(3)-magnitude delta voltages. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
 | `LOAD-CONTINUATION-001` — On the recorded scalar two-bus continuation probe, the damped CP branch first fails to converge at demand scale 1.8 after a converged scale 1.7, while CI, CZ, and the declared ZIP branch remain converged through scale 3.0; this is an iteration-scoped branch diagnostic, not a global collapse theorem. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
 | `LOAD-DECISION-001` — On the recorded two-bus fixture, CP, CI, CZ, and a normalized ZIP load law share the same bus--branch graph but produce distinct high-voltage solutions and decision margins: CP violates both the declared voltage and current limits, while CI, CZ, and ZIP satisfy both. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |

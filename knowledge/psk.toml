@@ -113,3 +113,40 @@ related_finding_codes = [
   "E.SOL.ANGLE_VIOLATION",
 ]
 fixture_ids = ["claimed-feasible-invalid-solution-001"]
+
+[[knowledge]]
+id = "PSK-000004"
+kind = "modelling-antipattern"
+title = "Load nominal voltage must match its connection coordinate"
+scientific_statement = "A voltage-dependent load's nominal anchor must use the same terminal-voltage coordinate as its constitutive law: phase-to-neutral for WYE and line-to-line for DELTA; reusing one numeric value across those coordinates without conversion changes the normalized load model."
+scope = "Three-phase voltage-dependent WYE and DELTA load declarations with explicit configurations, finite positive nominal anchors, and a declared nominal phase-to-neutral system base."
+evidence_status = "definition"
+does_not_establish = [
+  "Every nominal-voltage mismatch is exactly a square-root-of-three error.",
+  "A connection-consistent anchor proves source voltages, transformer ratios, terminal maps, load coefficients, units, or solved operating points are correct.",
+  "The initial WYE/DELTA executable contract covers arbitrary unbalanced terminal maps or other connection families.",
+]
+
+[knowledge.book]
+claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
+misconception_ids = ["wye-delta-share-nominal-voltage-base"]
+certificate_ids = []
+counterexample_ids = ["load-voltage-base-mismatch-001"]
+artifact_paths = ["experiments/generated/load-grounding-witnesses.json"]
+source_paths = ["docs/src/foundations/load-models-and-decision-dependence.md"]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["load_voltage_base_consistency"]
+finding_codes = [
+  "E.CONTRACT.LOAD_VOLTAGE_BASE_MISMATCH",
+  "I.CONTRACT.LOAD_VOLTAGE_BASE_NOT_APPLICABLE",
+  "W.CONTRACT.LOAD_VOLTAGE_BASE_INDETERMINATE",
+]
+related_finding_codes = [
+  "W.LOAD.VNOM_MISMATCH",
+  "E.LOAD.VNOM_MISSING",
+  "E.LOAD.VNOM_NONPOSITIVE",
+]
+fixture_ids = ["load-voltage-base-mismatch-001"]

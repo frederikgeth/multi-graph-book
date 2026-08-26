@@ -68,6 +68,19 @@ def main() -> int:
                 validation_errors.append("solver-validity route omits the linked counterexample fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("solver-validity executable contract is not marked implemented")
+        if case["misconception_id"] == "wye-delta-share-nominal-voltage-base":
+            packet = response["packet"]
+            if "knowledge:PSK-000004" not in observed:
+                validation_errors.append("load-voltage-base route omits mandatory PSK-000004")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000004"]:
+                validation_errors.append("load-voltage-base route scientific basis differs from PSK-000004")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["load_voltage_base_consistency"]:
+                validation_errors.append("load-voltage-base route omits the executable consistency contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["load-voltage-base-mismatch-001"]:
+                validation_errors.append("load-voltage-base route omits the linked counterexample fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("load-voltage-base executable contract is not marked implemented")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:
