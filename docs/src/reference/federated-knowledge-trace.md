@@ -249,6 +249,40 @@ network feasible sets, objectives, or solver behavior. All three audience
 routes make `knowledge:PSK-000006` mandatory and retain those limits through
 the deterministic, source-hash-bound context packet.
 
+## Seventh trace: terminal versus decision equivalence
+
+The seventh slice makes the federation's umbrella preservation question
+executable at the declaration boundary:
+
+| Layer | Stable identity | Owner | Purpose |
+|---|---|---|---|
+| Scientific knowledge | `PSK-000007` | this book | Separates terminal equality from observation-indexed decision equivalence |
+| Claims | `PRESERVE-001`, `TR-PAR-001`, `TR-PAR-002` | this book | Define the exactness object and exhibit equal terminal behavior with unequal constrained feasible sets |
+| Misconception | `terminal-equivalence-implies-opf-equivalence` | this book | Routes unqualified optimization-equivalence claims to the complete preservation obligations |
+| Executable contract | `decision_preservation_manifest_completeness` | BMOPFTools | Checks completeness and internal consistency of an exact decision-equivalence declaration |
+| API operation | `check_decision_preservation_manifest` | BMOPFTools | Exposes four-status manifest evidence without authenticating it |
+| Counterexample fixture | `decision-manifest-terminal-only-001` | BMOPFTools | Claims exact decision equivalence with only a terminal-relation evidence reference |
+| Findings | `E.CONTRACT.DECISION_MANIFEST_EVIDENCE_GAP`, `E.CONTRACT.DECISION_MANIFEST_UNRESOLVED_OBLIGATION` | BMOPFTools | Separate omitted support from an explicitly unclosed obligation |
+
+The book's observation-indexed definition and parallel feasible-set witness
+remain the scientific basis. The package fixture does not dispute its terminal
+certificate; it shows that this one reference cannot close the admissible
+domain, observations, constraints, decision variables, objective, and recovery
+obligations of an exact decision-equivalence claim.
+
+The evidence-complete companion manifest declares every required dimension and
+passes narrowly. That pass means the manifest contains supported dispositions,
+not that BMOPFTools has resolved or authenticated the evidence IDs. It does not
+compare equations, feasible sets, objectives, optimizers, or recovery maps.
+Case-specific contracts such as parallel member-limit preservation and
+transformer tap-domain preservation remain the sources of actual evidence for
+individual dimensions.
+
+All three existing audience routes now make `knowledge:PSK-000007` mandatory
+and expose the completeness contract and terminal-only counterexample through
+the same deterministic context packet. The existing unsupported,
+under-retrieved, qualification, and source-hash semantics are unchanged.
+
 ## What generalizes
 
 The federation pattern generalizes to other scientific guardrails:
@@ -259,7 +293,7 @@ The federation pattern generalizes to other scientific guardrails:
 - implementations can report `passed`, `failed`, `inapplicable`, or `indeterminate` without turning absence of evidence into a pass; and
 - source hashes make context packets and cross-repository links auditable.
 
-The numerical formula used by the first contract does **not** generalize automatically. The scalar voltage-drop reduction, lack of shunts, fixed linear admittances, common coordinates, and explicit current ratings are case-specific. The second contract likewise does not turn relation matching into electrical equivalence: its explicit-neutral and scalar neutral-only grounding domain is case-specific. The third contract establishes that the contract/result/refusal machinery generalizes to post-solve evidence, but its initial bus-result coverage is not a universal feasibility or optimality validator. The fourth shows that an existing package diagnostic can be promoted into an auditable contract without duplicating its inference machinery, but declaration consistency is not importer fidelity or solved-model validation. The fifth separates preservation of an adjustable domain from equality at one initialized snapshot, while keeping broader transformer physics and decision equivalence outside the initial package check. The sixth shows how a typed coordinate convention can be checked without pretending that a compact declaration check proves the completed factor or a subtype-changing reversal. Multiconductor coupling, nonlinear devices, explicit-earth networks, protection quantities, full equation residuals, device constraints, recovery, and global optimality require separate PSK objects or broader contracts with their own evidence and fixtures.
+The numerical formula used by the first contract does **not** generalize automatically. The scalar voltage-drop reduction, lack of shunts, fixed linear admittances, common coordinates, and explicit current ratings are case-specific. The second contract likewise does not turn relation matching into electrical equivalence: its explicit-neutral and scalar neutral-only grounding domain is case-specific. The third contract establishes that the contract/result/refusal machinery generalizes to post-solve evidence, but its initial bus-result coverage is not a universal feasibility or optimality validator. The fourth shows that an existing package diagnostic can be promoted into an auditable contract without duplicating its inference machinery, but declaration consistency is not importer fidelity or solved-model validation. The fifth separates preservation of an adjustable domain from equality at one initialized snapshot, while keeping broader transformer physics and decision equivalence outside the initial package check. The sixth shows how a typed coordinate convention can be checked without pretending that a compact declaration check proves the completed factor or a subtype-changing reversal. The seventh generalizes the routing and refusal pattern to an umbrella evidence manifest while deliberately leaving the truth of every cited dimension to narrower checks. Multiconductor coupling, nonlinear devices, explicit-earth networks, protection quantities, full equation residuals, device constraints, recovery, and global optimality require separate PSK objects or broader contracts with their own evidence and fixtures.
 
 ## Reproduction and release pairing
 

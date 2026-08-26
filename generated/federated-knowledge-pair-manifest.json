@@ -2,23 +2,25 @@
   "bmopftools": {
     "contract_ids": [
       "claimed_solution_validity",
+      "decision_preservation_manifest_completeness",
       "load_voltage_base_consistency",
       "neutral_ground_reference_preservation",
       "parallel_member_limit_preservation",
       "transformer_tap_domain_preservation",
       "transformer_winding_convention_preservation"
     ],
-    "corpus_sha256": "aeed2551c64b15711b414845287674445b809aedfd4e650b3b5036af242e06dd",
+    "corpus_sha256": "e89f8b7d6d3ba3cb98d291e6fdef31d121f9a72f908ed48912fb2f91c9c2af41",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
       "PSK-000003",
       "PSK-000004",
       "PSK-000005",
-      "PSK-000006"
+      "PSK-000006",
+      "PSK-000007"
     ],
     "manifest_id": "bmopftools-executable-knowledge-0.1.0",
-    "manifest_sha256": "af1abc293e84afde7e15f2f38ce824843f4b22cc1915d9a749460e26e147565a",
+    "manifest_sha256": "d64119e661b7c22be145c6d7cc142a982c2f94127833044b5b6557296260cfd8",
     "package": {
       "name": "BMOPFTools",
       "version": "0.1.0"
@@ -27,16 +29,17 @@
     "schema_version": "0.1.0"
   },
   "book": {
-    "corpus_sha256": "2ee30f4ba0acf412d203b7df62fb4a8215746e2c32a7ab8548b6e3918a5c56ae",
+    "corpus_sha256": "1125e120d599a6b775a2cd727daa18df5c9d53679aadf1e9907712840ab91850",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
       "PSK-000003",
       "PSK-000004",
       "PSK-000005",
-      "PSK-000006"
+      "PSK-000006",
+      "PSK-000007"
     ],
-    "manifest_sha256": "30b9512ae2b5531cc4832f0e165ef31a2e04ba9182523e42209e41a12b5a2666",
+    "manifest_sha256": "c45103d3660a4fa4a2ea5321939b3fc0b2457587171c4075b37c045c52ccea18",
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -62,7 +65,7 @@
           "fixture_ids": [
             "parallel-rating-outer-relaxation-001"
           ],
-          "source_sha256": "139b49169c603155ee22aea20ce0e1e6ee8b6c715e16199b6318e70d09f62683"
+          "source_sha256": "128240ee1f5ea4dbf279adbc3340a9bc44c7881cf3fae9efc174b727c6e82c10"
         }
       ],
       "implementation_status": "implemented",
@@ -83,7 +86,7 @@
           "fixture_ids": [
             "neutral-ground-reference-conflation-001"
           ],
-          "source_sha256": "139b49169c603155ee22aea20ce0e1e6ee8b6c715e16199b6318e70d09f62683"
+          "source_sha256": "128240ee1f5ea4dbf279adbc3340a9bc44c7881cf3fae9efc174b727c6e82c10"
         }
       ],
       "implementation_status": "implemented",
@@ -102,7 +105,7 @@
           "fixture_ids": [
             "claimed-feasible-invalid-solution-001"
           ],
-          "source_sha256": "f6852fce1981b54ad1da1fa0846ba3e9ca582703d19d76a0fa40e4bfc0f648a6"
+          "source_sha256": "c8968d6937cfe77a262c6dd8364973ac29acc190f2d0a4fa4e79edcac5380dc0"
         }
       ],
       "implementation_status": "implemented",
@@ -121,7 +124,7 @@
           "fixture_ids": [
             "load-voltage-base-mismatch-001"
           ],
-          "source_sha256": "3ab2d78a8ca263aa6f325314b0751fda6be25b641cb1bd048bbe0f08e68dfc3f"
+          "source_sha256": "1dbe93a6fbba074334a6c8a65039bd9e66a6131d848605a8b0030bd983327ce7"
         }
       ],
       "implementation_status": "implemented",
@@ -140,7 +143,7 @@
           "fixture_ids": [
             "transformer-tap-domain-loss-001"
           ],
-          "source_sha256": "139b49169c603155ee22aea20ce0e1e6ee8b6c715e16199b6318e70d09f62683"
+          "source_sha256": "128240ee1f5ea4dbf279adbc3340a9bc44c7881cf3fae9efc174b727c6e82c10"
         }
       ],
       "implementation_status": "implemented",
@@ -160,7 +163,27 @@
           "fixture_ids": [
             "transformer-winding-role-swap-001"
           ],
-          "source_sha256": "ebcd9864d7a7473bdaab76e3d8d84589f989aa3313283f8d1c3616e9f8676329"
+          "source_sha256": "081edbb2265c66e50a906b4ed40db299289273ba5795602f83e8996d81f5865a"
+        }
+      ],
+      "implementation_status": "implemented",
+      "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000007": {
+      "contracts": [
+        {
+          "contract_id": "decision_preservation_manifest_completeness",
+          "entrypoint": "check_decision_preservation_manifest",
+          "finding_codes": [
+            "E.CONTRACT.DECISION_MANIFEST_EVIDENCE_GAP",
+            "E.CONTRACT.DECISION_MANIFEST_UNRESOLVED_OBLIGATION",
+            "I.CONTRACT.DECISION_MANIFEST_NOT_APPLICABLE",
+            "W.CONTRACT.DECISION_MANIFEST_INDETERMINATE"
+          ],
+          "fixture_ids": [
+            "decision-manifest-terminal-only-001"
+          ],
+          "source_sha256": "128240ee1f5ea4dbf279adbc3340a9bc44c7881cf3fae9efc174b727c6e82c10"
         }
       ],
       "implementation_status": "implemented",
@@ -168,6 +191,6 @@
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "c191854d521eb830cfc425017646ebb21ead169c6ed3f7ac8675489e2d8aea17",
+  "pair_sha256": "0b7910709676f3363084052bb3e272e109c83c0598b340a88e23dc24b5a712c8",
   "schema_version": "0.1.0"
 }

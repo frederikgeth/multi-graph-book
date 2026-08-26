@@ -98,6 +98,31 @@ Every transformation record should contain:
 | `error_bound` **(v1.2 proposal)** | norm, domain and bound for approximate transformations |
 | `evidence` | theorem, derivation, test suite, or external reference |
 
+## Compact BMOPFTools decision-manifest gate
+
+Cross-repository object `PSK-000007` connects the observation-indexed
+definition above to BMOPFTools contract
+`decision_preservation_manifest_completeness`. The package does not attempt to
+re-prove the general equivalence definition. It checks a narrower declaration
+boundary for version `0.1.0` manifests that explicitly claim exact
+`decision_equivalence`.
+
+Such a manifest must name the transformation, source model, and target model,
+then give admissible domain, terminal behavior, observations, constraints,
+decision variables, objective, and recovery an explicit disposition. A
+`verified` disposition needs an evidence reference; `not_required` needs a
+justification. An omitted dimension creates an evidence gap, while
+`not_preserved` or `unassessed` contradicts the exact decision-equivalence
+claim. A terminal-only or conservative claim lies outside the gate and is not
+treated as a failure.
+
+The minimized package fixture claims exact decision equivalence after citing
+only a terminal-relation certificate. The gate rejects that overclaim. Its
+evidence-complete companion passes only at the manifest layer: the package has
+not authenticated the references, checked the constraint or recovery maps,
+compared feasible sets or objectives, or established optimizer or solver
+equivalence. Those remain case-specific scientific and executable obligations.
+
 ## Exact, conservative, and approximate maps
 
 Operational constraints deserve a classification independent of the equations:

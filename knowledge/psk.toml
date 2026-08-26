@@ -239,3 +239,46 @@ related_finding_codes = [
   "E.DOM.XFMR_VREF_INVALID",
 ]
 fixture_ids = ["transformer-winding-role-swap-001"]
+
+[[knowledge]]
+id = "PSK-000007"
+kind = "modelling-antipattern"
+title = "Terminal equivalence does not establish decision equivalence"
+scientific_statement = "Equality of an unconstrained terminal relation does not by itself establish exact decision equivalence, which is indexed by the admissible domain, observations, constraints, decision variables and discrete choices, objective, and recovery obligations; an exact claim must close each relevant dimension with independently checkable evidence."
+scope = "Observation-indexed transformations of declared steady-state model and study classes with explicit source and target identities, exactness object, admissible inputs, constraints, decisions, objective semantics, and recovery requirements."
+evidence_status = "established_result"
+does_not_establish = [
+  "Every useful transformation must preserve exact decision equivalence.",
+  "A complete manifest proves that its evidence references are authentic, independent, or correct.",
+  "The initial BMOPFTools completeness gate compares source and target equations, feasible sets, objectives, optimizer sets, recovery maps, or solver guarantees.",
+]
+
+[knowledge.book]
+claim_ids = ["PRESERVE-001", "TR-PAR-001", "TR-PAR-002"]
+misconception_ids = ["terminal-equivalence-implies-opf-equivalence"]
+certificate_ids = ["TR-PAR-001"]
+counterexample_ids = ["decision-manifest-terminal-only-001"]
+artifact_paths = [
+  "experiments/generated/parallel-branch-certificate.json",
+]
+source_paths = [
+  "docs/src/foundations/preservation-contracts.md",
+  "docs/src/start/first-failure-parallel-branches.md",
+]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["decision_preservation_manifest_completeness"]
+finding_codes = [
+  "E.CONTRACT.DECISION_MANIFEST_EVIDENCE_GAP",
+  "E.CONTRACT.DECISION_MANIFEST_UNRESOLVED_OBLIGATION",
+  "I.CONTRACT.DECISION_MANIFEST_NOT_APPLICABLE",
+  "W.CONTRACT.DECISION_MANIFEST_INDETERMINATE",
+]
+related_finding_codes = [
+  "W.CONTRACT.PARALLEL_MEMBER_LIMIT_LOSS",
+  "E.CONTRACT.TRANSFORMER_TAP_DOMAIN_LOSS",
+  "E.CONTRACT.TRANSFORMER_WINDING_INCIDENCE_MISMATCH",
+]
+fixture_ids = ["decision-manifest-terminal-only-001"]

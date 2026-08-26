@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "9493f1e67b665b16772158ca0129850d1b24eb8603b7b0b665bfd2a872057073",
+  "corpus_sha256": "c5d9146eae7cf667508ad159d993fef524b0e0291755b5d9ea5bf2e4f80a92c6",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -15,12 +15,12 @@
   "evaluation_case_count": 45,
   "heldout_case_count": 33,
   "misconception_count": 15,
-  "record_count": 757,
+  "record_count": 760,
   "record_counts": {
     "claim_bundle": 107,
     "concept_bundle": 18,
-    "scientific_knowledge": 6,
-    "section": 626
+    "scientific_knowledge": 7,
+    "section": 628
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -129,7 +129,7 @@
     },
     {
       "path": "docs/src/foundations/preservation-contracts.md",
-      "sha256": "8c2cdf0fac18fc8c5457964d175abe730101cf2d7f5c6728ef2c32759ce95696"
+      "sha256": "77e8ecfbf301180f159551e0dd327efef068a49d66f768d482e0f559f0f54036"
     },
     {
       "path": "docs/src/foundations/rating-semantics.md",
@@ -209,7 +209,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "21d61bdd968f7385394ccd5dec1333081e766b26eb24b82bab5cac0898d1e32f"
+      "sha256": "63dd064ddc0064060d29a60ff2f4b18a8fadd6cf0e8805f396f2bfad35a538bc"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -309,11 +309,11 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "30b9512ae2b5531cc4832f0e165ef31a2e04ba9182523e42209e41a12b5a2666"
+      "sha256": "c45103d3660a4fa4a2ea5321939b3fc0b2457587171c4075b37c045c52ccea18"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",
-      "sha256": "2ee30f4ba0acf412d203b7df62fb4a8215746e2c32a7ab8548b6e3918a5c56ae"
+      "sha256": "1125e120d599a6b775a2cd727daa18df5c9d53679aadf1e9907712840ab91850"
     },
     {
       "path": "llm/evaluation-cases.toml",

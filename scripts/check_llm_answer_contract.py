@@ -107,6 +107,19 @@ def main() -> int:
                 validation_errors.append("transformer-winding route omits the linked counterexample fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("transformer-winding executable contract is not marked implemented")
+        if case["misconception_id"] == "terminal-equivalence-implies-opf-equivalence":
+            packet = response["packet"]
+            if "knowledge:PSK-000007" not in observed:
+                validation_errors.append("decision-equivalence route omits mandatory PSK-000007")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000007"]:
+                validation_errors.append("decision-equivalence route scientific basis differs from PSK-000007")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["decision_preservation_manifest_completeness"]:
+                validation_errors.append("decision-equivalence route omits the manifest-completeness contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["decision-manifest-terminal-only-001"]:
+                validation_errors.append("decision-equivalence route omits the terminal-only manifest fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("decision-equivalence executable contract is not marked implemented")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:

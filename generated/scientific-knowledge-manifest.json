@@ -1,15 +1,16 @@
 {
-  "corpus_sha256": "2ee30f4ba0acf412d203b7df62fb4a8215746e2c32a7ab8548b6e3918a5c56ae",
+  "corpus_sha256": "1125e120d599a6b775a2cd727daa18df5c9d53679aadf1e9907712840ab91850",
   "knowledge_ids": [
     "PSK-000001",
     "PSK-000002",
     "PSK-000003",
     "PSK-000004",
     "PSK-000005",
-    "PSK-000006"
+    "PSK-000006",
+    "PSK-000007"
   ],
   "manifest_id": "multi-graph-book-scientific-knowledge-0.1.0",
-  "record_count": 6,
+  "record_count": 7,
   "release": {
     "external_reviewed_claims": 0,
     "independent_human_double_coding": false,
@@ -38,6 +39,10 @@
     {
       "path": "docs/src/foundations/numerical-consequences.md",
       "sha256": "164e9431de5cefb814bf05ea11934a8f29d897679f5d2a216cec8700a669fb32"
+    },
+    {
+      "path": "docs/src/foundations/preservation-contracts.md",
+      "sha256": "77e8ecfbf301180f159551e0dd327efef068a49d66f768d482e0f559f0f54036"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
@@ -89,7 +94,7 @@
     },
     {
       "path": "knowledge/psk.toml",
-      "sha256": "e15f09ca285397781323ef54c558799ed4a43f053776f2b0ca239da3dabd1caa"
+      "sha256": "3c85ca2002093ea985017725ca2fe0df4d51101d2cccc02b650c09ee2e79bfb3"
     },
     {
       "path": "llm/misconceptions.toml",

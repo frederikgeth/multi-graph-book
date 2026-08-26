@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `9493f1e67b665b16772158ca0129850d1b24eb8603b7b0b665bfd2a872057073`<br>
+**Corpus hash:** `c5d9146eae7cf667508ad159d993fef524b0e0291755b5d9ea5bf2e4f80a92c6`<br>
 **Cases:** 45
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -20,7 +20,7 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Open-corpus lexical evidence recall@10 | 36.7% | diagnostic |
 | Open-corpus complete evidence@10 | 0.0% | diagnostic |
 | Evidence-only lexical recall@5 | 39.1% | diagnostic |
-| Evidence-only lexical recall@10 | 48.9% | diagnostic |
+| Evidence-only lexical recall@10 | 49.3% | diagnostic |
 | Evidence-only complete evidence@10 | 2.2% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
@@ -46,7 +46,7 @@ evidence sets, so the effective target count is nine rather than 27 independent 
 | `lexical` | 32.7% | 44.9% | 0.0% | 0/33 | 5/33 | 0.201 |
 | `char_tfidf` | 36.8% | 44.8% | 0.0% | 0/33 | 6/33 | 0.223 |
 | `hybrid` | 37.9% | 46.6% | 0.0% | 0/33 | 5/33 | 0.218 |
-| `graph` | 40.6% | 57.6% | 27.3% | 9/33 | 4/33 | 0.258 |
+| `graph` | 40.6% | 57.0% | 27.3% | 9/33 | 4/33 | 0.258 |
 
 Held-out contract-router firing: **25/33 (75.8%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **19/33 (57.6%)**; this remains diagnostic because the set is synthetic and clustered.
@@ -96,7 +96,7 @@ Graph versus hybrid complete@10: **9/33** versus **0/33**.
 | --- | ---: | ---: | ---: | ---: |
 | `power_engineer` | 15 | 100.0% | 49.7% | 100.0% |
 | `software_engineer` | 15 | 100.0% | 43.2% | 100.0% |
-| `student` | 15 | 100.0% | 53.8% | 100.0% |
+| `student` | 15 | 100.0% | 54.9% | 100.0% |
 
 ## Case results
 
@@ -105,7 +105,7 @@ Graph versus hybrid complete@10: **9/33** versus **0/33**.
 | `EVAL-GRAPH-STUDENT` | `student` | `one-universal-network-graph` | 22.2% | yes |
 | `EVAL-GRAPH-SOFTWARE` | `software_engineer` | `one-universal-network-graph` | 33.3% | yes |
 | `EVAL-GRAPH-POWER` | `power_engineer` | `one-universal-network-graph` | 33.3% | yes |
-| `EVAL-YSPLIT-STUDENT` | `student` | `loads-generators-fixed-graph-membership` | 50.0% | yes |
+| `EVAL-YSPLIT-STUDENT` | `student` | `loads-generators-fixed-graph-membership` | 66.7% | yes |
 | `EVAL-YSPLIT-SOFTWARE` | `software_engineer` | `loads-generators-fixed-graph-membership` | 66.7% | yes |
 | `EVAL-YSPLIT-POWER` | `power_engineer` | `loads-generators-fixed-graph-membership` | 50.0% | yes |
 | `EVAL-YBUS-STUDENT` | `student` | `nodal-operator-is-source-network` | 80.0% | yes |

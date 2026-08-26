@@ -28,11 +28,11 @@
           "claim:ARCH-SUPPORT-001",
           "concept:graph-topology-adjacency",
           "concept:nodal-operator-alias",
-          "concept:equivalence-exactness-preservation",
           "claim:FORMULATION-NODAL-002",
           "claim:FORMULATION-Y-SPLIT-001",
+          "concept:equivalence-exactness-preservation",
           "concept:factor",
-          "concept:parallel",
+          "claim:TR-KRON-FIVE-002",
           "claim:ARCH-RECOVERY-001"
         ]
       },
@@ -246,8 +246,8 @@
           "claim:TR-KRON-FIVE-002",
           "claim:TR-KRON-002",
           "concept:rating-limit-constraint",
-          "claim:TR-KRON-NEUTRAL-005",
           "concept:transformation-family",
+          "claim:TR-KRON-NEUTRAL-005",
           "claim:TR-KRON-NEUTRAL-007",
           "claim:TR-KRON-001",
           "claim:TR-KRON-NEUTRAL-001",
@@ -283,7 +283,7 @@
           "claim:TR-XFMR-003",
           "claim:ARCH-LOWER-001",
           "claim:RATING-001",
-          "claim:FORMULATION-NODAL-003"
+          "concept:rating-limit-constraint"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -333,13 +333,13 @@
           "concept:graph-topology-adjacency",
           "claim:ARCH-SUPPORT-001",
           "claim:GRAPH-MATRIX-001",
-          "claim:ARCH-LENS-001",
-          "claim:GRAPH-MULTI-001",
           "claim:GRAPH-CYCLE-001",
+          "claim:GRAPH-MULTI-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
+          "claim:ARCH-LENS-001",
           "claim:PRACTICE-ARCH-001",
           "claim:ARCH-LOWER-001",
-          "concept:cycle-radial-tree"
+          "claim:TR-GRAPH-001"
         ]
       },
       "lexical": {
@@ -348,14 +348,14 @@
         "top_10": [
           "concept:graph-topology-adjacency",
           "claim:ARCH-SUPPORT-001",
-          "claim:ARCH-LENS-001",
-          "claim:ARCH-LOWER-001",
           "claim:GRAPH-CYCLE-001",
+          "claim:ARCH-LOWER-001",
+          "claim:ARCH-LENS-001",
           "claim:GRAPH-MATRIX-001",
           "claim:TR-GRAPH-ACTIVE-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
-          "claim:PRACTICE-ARCH-001",
-          "claim:GRAPH-MULTI-001"
+          "claim:GRAPH-MULTI-001",
+          "claim:PRACTICE-ARCH-001"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -408,9 +408,9 @@
           "claim:GROUND-SCOPE-002",
           "claim:TR-KRON-NEUTRAL-002",
           "claim:TR-KRON-NEUTRAL-003",
-          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:TR-KRON-NEUTRAL-006",
           "claim:TR-KRON-NEUTRAL-004",
-          "claim:TR-KRON-NEUTRAL-006"
+          "claim:TR-KRON-NEUTRAL-005"
         ]
       },
       "lexical": {
@@ -481,7 +481,7 @@
           "claim:FORMULATION-NODAL-003",
           "claim:TOPOLOGY-001",
           "claim:LIT-PAR-001",
-          "claim:TR-XFMR-003"
+          "claim:PRACTICE-ADAPTER-001"
         ]
       },
       "lexical": {
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "9493f1e67b665b16772158ca0129850d1b24eb8603b7b0b665bfd2a872057073"
+    "corpus_sha256": "c5d9146eae7cf667508ad159d993fef524b0e0291755b5d9ea5bf2e4f80a92c6"
   },
   "inputs": {
     "adversarial_cases": {

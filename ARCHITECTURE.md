@@ -347,6 +347,38 @@ subtype-changing, and fully typed reversal are outside this first compact
 serialization contract. Those boundaries preserve the richer book machinery
 instead of replacing it with a field-level heuristic.
 
+## Seventh vertical slice: terminal and decision equivalence
+
+The seventh slice promotes an existing book route rather than inventing a new
+retrieval layer. Book object `PSK-000007` links `PRESERVE-001`, the parallel
+terminal/feasible-set claims `TR-PAR-001` and `TR-PAR-002`, and misconception
+`terminal-equivalence-implies-opf-equivalence` to BMOPFTools contract
+`decision_preservation_manifest_completeness`.
+
+The book owns the quantified statement: equivalence is indexed by an
+observation family and admissible input set, and equality of an unconstrained
+terminal relation does not imply equality of constrained feasible observable
+sets. It also owns the broader transformation-certificate vocabulary and the
+parallel-member witness showing how a terminal-exact aggregate can be an outer
+decision relaxation.
+
+The package complement is a manifest gate, not an equivalence solver. It
+applies only when a versioned manifest explicitly claims exact decision
+equivalence. The declaration must name source and target identities and close
+admissible-domain, terminal, observation, constraint, decision-variable,
+objective, and recovery dimensions with either evidence references or a
+justified `not_required` disposition. Missing support fails as an evidence gap;
+an explicit `unassessed` or `not_preserved` obligation contradicts exactness.
+A narrower terminal, inner, outer, or approximate claim is inapplicable rather
+than failed.
+
+Even a pass establishes declaration completeness only. Evidence authenticity,
+map correctness, equation and feasible-set equality, objective and optimizer
+equality, recovery correctness, and solver guarantees remain unassessed. Actual
+dimension evidence comes from case-specific contracts and certificates. This
+keeps the seventh slice an umbrella route plus narrow executable checks rather
+than a generic Boolean `equivalent` flag.
+
 ## Federated discovery and context assembly
 
 The existing book service remains the federation point for retrieval. Its
