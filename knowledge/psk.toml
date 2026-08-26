@@ -1,0 +1,33 @@
+schema_version = "0.1.0"
+
+[[knowledge]]
+id = "PSK-000001"
+kind = "modelling-antipattern"
+title = "Parallel terminal equivalence does not imply member-limit equivalence"
+scientific_statement = "Summing the admittances of fixed linear parallel members preserves their unconstrained aggregate terminal relation, but assigning the aggregate the sum of member ratings can relax the member-constrained feasible set."
+scope = "Fixed linear parallel branches with common endpoints and voltage coordinates, retained member admittances, and explicit member current limits."
+evidence_status = "established_result"
+does_not_establish = [
+  "Parallel aggregation is always invalid.",
+  "Every aggregate rating is an outer relaxation.",
+  "The scalar witness proves the general multiconductor or state-dependent case.",
+]
+
+[knowledge.book]
+claim_ids = ["TR-PAR-001", "TR-PAR-002", "TR-PAR-003"]
+misconception_ids = ["parallel-admittance-implies-decision-equivalence"]
+certificate_ids = ["TR-PAR-001", "TR-PAR-003"]
+counterexample_ids = ["parallel-rating-outer-relaxation-001"]
+artifact_paths = [
+  "experiments/generated/parallel-branch-certificate.json",
+  "experiments/generated/parallel-opf-comparison.json",
+]
+source_paths = ["docs/src/start/first-failure-parallel-branches.md"]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "planned"
+contract_ids = ["parallel_member_limit_preservation"]
+finding_codes = ["W.CONTRACT.PARALLEL_MEMBER_LIMIT_LOSS"]
+related_finding_codes = ["I.RED.PARALLEL_LINES", "E.SOL.THERMAL_VIOLATION"]
+fixture_ids = ["parallel-rating-outer-relaxation-001"]

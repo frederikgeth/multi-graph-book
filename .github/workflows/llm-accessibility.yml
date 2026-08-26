@@ -4,10 +4,14 @@ on:
   push:
     paths:
       - 'llm/**'
+      - 'knowledge/**'
+      - 'generated/scientific*'
       - 'claims/claims.toml'
       - 'vocabulary/vocabulary.toml'
       - 'docs/src/**'
       - 'schemas/llm-*.json'
+      - 'schemas/power-system-knowledge.schema.json'
+      - 'scripts/generate_scientific_knowledge.py'
       - 'scripts/*llm*.py'
       - 'scripts/check_neural_benchmark.py'
       - 'scripts/check_release_candidate.py'
@@ -17,10 +21,14 @@ on:
   pull_request:
     paths:
       - 'llm/**'
+      - 'knowledge/**'
+      - 'generated/scientific*'
       - 'claims/claims.toml'
       - 'vocabulary/vocabulary.toml'
       - 'docs/src/**'
       - 'schemas/llm-*.json'
+      - 'schemas/power-system-knowledge.schema.json'
+      - 'scripts/generate_scientific_knowledge.py'
       - 'scripts/*llm*.py'
       - 'scripts/check_neural_benchmark.py'
       - 'scripts/check_release_candidate.py'
