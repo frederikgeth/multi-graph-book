@@ -572,3 +572,33 @@ required_claim_ids = ["NUMERICAL-005"]
 required_concept_ids = ["factor", "rating-limit-constraint", "equivalence-exactness-preservation"]
 required_answer_elements = ["require an independent residual witness for equations, KCL, power balance, device limits, and recovery", "state that this evidence gate still does not prove global optimality or complete study equivalence"]
 forbidden_simplifications = ["a successful solver label is a complete feasibility certificate"]
+
+[[case]]
+case_id = "EVAL-UNIT-BASE-STUDENT"
+audience = "student"
+question = "If a serialized network keeps the same unit system and base values, is it automatically the same model?"
+misconception_id = "unit-base-metadata-is-equivalence"
+required_claim_ids = ["PRACTICE-ADAPTER-001"]
+required_concept_ids = ["normalization", "factor", "equivalence-exactness-preservation"]
+required_answer_elements = ["check the canonical semantic payload hash as well as explicit units and bases", "explain that these checks do not prove complete physical or decision equivalence"]
+forbidden_simplifications = ["matching numeric bases alone proves round-trip identity"]
+
+[[case]]
+case_id = "EVAL-UNIT-BASE-SOFTWARE"
+audience = "software_engineer"
+question = "Can an importer infer units from magnitudes and rely on a serialization hash for lossless round trips?"
+misconception_id = "unit-base-metadata-is-equivalence"
+required_claim_ids = ["PRACTICE-ADAPTER-001"]
+required_concept_ids = ["normalization", "factor", "equivalence-exactness-preservation"]
+required_answer_elements = ["require explicit unit-system, base-map, and canonical semantic-hash metadata", "run the unit_base_serialization_invariance contract and retain source provenance"]
+forbidden_simplifications = ["a hash or plausible magnitude supplies missing unit declarations"]
+
+[[case]]
+case_id = "EVAL-UNIT-BASE-POWER"
+audience = "power_engineer"
+question = "Does a matching per-unit base mean the same network when a round-trip hash is also present?"
+misconception_id = "unit-base-metadata-is-equivalence"
+required_claim_ids = ["PRACTICE-ADAPTER-001"]
+required_concept_ids = ["normalization", "factor", "equivalence-exactness-preservation"]
+required_answer_elements = ["distinguish serialization identity evidence from equation, limits, feasible-set, and objective validation", "verify unit/base alignment and semantic payload binding explicitly"]
+forbidden_simplifications = ["same base and hash imply identical physical and decision semantics"]

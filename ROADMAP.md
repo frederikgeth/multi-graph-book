@@ -64,7 +64,7 @@ and a minimized negative witness.
 | 11 | Floating references and singularity | grounding/reference and numerical-consequence claims | existing reference, connectivity, and singularity diagnostics | Implemented as `PSK-000011` |
 | 12 | Terminal/conductor ordering and permutation | typed terminal-map and coordinate-action claims | metamorphic relabelling/permutation invariance | Implemented as `PSK-000012` |
 | 13 | Complete solved-network feasibility | numerical validation boundary | equation, KCL, power-balance, device-limit, and recovery residuals | Implemented as `PSK-000013`; residual-witness gate |
-| 14 | Unit/base and serialization invariance | normalization, coordinate, and provenance claims | round-trip and unit/base metamorphic tests | Candidate; importer/exporter preservation |
+| 14 | Unit/base and serialization invariance | normalization, coordinate, and provenance claims | round-trip and unit/base metamorphic tests | Implemented as `PSK-000014`; metadata/payload binding |
 
 The first scale-out milestone is now complete and extended: twelve stable PSK paths cover a
 transformation constraint, model semantics, numerical inference, connection

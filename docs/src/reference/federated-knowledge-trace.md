@@ -406,6 +406,24 @@ feasibility witness:
 The package validates the supplied witness; it does not calculate residuals or
 prove its completeness, global optimality, or full decision equivalence.
 
+## Fourteenth trace: unit/base and serialization invariance
+
+The fourteenth slice binds declared conversion metadata to a canonical payload:
+
+| Layer | Stable identity | Owner | Purpose |
+|---|---|---|---|
+| Scientific knowledge | `PSK-000014` | this book | Requires explicit unit/base declarations and semantic payload binding |
+| Claims | `PRACTICE-ADAPTER-001` | this book | Defines adapter provenance, units, bases, and coordinate retention |
+| Misconception | `unit-base-metadata-is-equivalence` | this book | Routes metadata-only or hash-only round-trip claims to explicit checks |
+| Executable contract | `unit_base_serialization_invariance` | BMOPFTools | Compares unit system, base map, and canonical semantic hash |
+| API operation | `check_unit_base_serialization_invariance` | BMOPFTools | Reports unit, base, payload, or metadata failures |
+| Counterexample fixture | `unit-base-serialization-001` | BMOPFTools | Preserves SI metadata while changing the canonical payload hash |
+| Findings | `E.CONTRACT.UNIT_SYSTEM_MISMATCH`, `E.CONTRACT.BASE_MAP_MISMATCH`, `E.CONTRACT.SERIALIZED_PAYLOAD_MISMATCH` | BMOPFTools | Separates metadata drift from semantic payload mutation |
+
+The package pass binds declared serialization evidence only; parser/writer
+round-trip behavior, hash computation, complete equations, limits, and study
+decisions remain separate validation dimensions.
+
 ## What generalizes
 
 The federation pattern generalizes to other scientific guardrails:

@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "c2e9bb821baec7c17f550dcb0872dab64325be8c3ce20f892e37643ea52a8172",
+  "corpus_sha256": "b06d0f591cad9a56524b7a4bbf0875465823e6432bf18b28f01ebfac5a71ec5e",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -12,15 +12,15 @@
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
     "included_doc_count": 68
   },
-  "evaluation_case_count": 57,
+  "evaluation_case_count": 60,
   "heldout_case_count": 33,
-  "misconception_count": 19,
-  "record_count": 775,
+  "misconception_count": 20,
+  "record_count": 777,
   "record_counts": {
     "claim_bundle": 108,
     "concept_bundle": 18,
-    "scientific_knowledge": 13,
-    "section": 636
+    "scientific_knowledge": 14,
+    "section": 637
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -209,7 +209,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "a4076d1cfd3029641e55c1da6b38c9a8b9d519f9ed982062a8ab4b861721be61"
+      "sha256": "612d188b730b2382fa099bf4da5eb27723ba3adf6346c290c73763c9e784c64a"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -309,15 +309,15 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "46d2d1b702dd23ab0ae25a9ff8a2fc6b7895a8900946fa1e6f71c0016799e6b3"
+      "sha256": "592bac59d3260c0c18913b41d8da0a0af1ad0fd8431835f5febe35030ebb4d4a"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",
-      "sha256": "3436d933c0515050116f9319d242325e45540b11a50ccdeac820e6058d4b6b4d"
+      "sha256": "09a2e5372a2a1ec5dcc68d57418d85e6629211909f3dbb08b0f59f70975584b1"
     },
     {
       "path": "llm/evaluation-cases.toml",
-      "sha256": "a0d134244e84039ad8a572dda9f05631fb0b027c6bc4c60cef3bbcbe56078aff"
+      "sha256": "bedef3d898eed02c8a204556ee2fde35350f481e132475ec4bcdc1a510fbcdc1"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -325,7 +325,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "f304784d5277661c47d3a5ed2871a8c7048de5e8b445749ce82ac2ab47c1a543"
+      "sha256": "1bd6ab3823ce995bb01e33cb6b382c3f721ad06ed5a51800e65f8a629c270948"
     },
     {
       "path": "vocabulary/vocabulary.toml",

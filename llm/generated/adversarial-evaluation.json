@@ -24,8 +24,8 @@
         "complete_at_10": false,
         "recall_at_10": 0.833333,
         "top_10": [
-          "claim:ARCH-NODAL-001",
           "concept:equivalence-exactness-preservation",
+          "claim:ARCH-NODAL-001",
           "claim:ARCH-SUPPORT-001",
           "concept:graph-topology-adjacency",
           "concept:nodal-operator-alias",
@@ -47,9 +47,9 @@
           "claim:FORMULATION-NODAL-003",
           "claim:FORMULATION-NODAL-002",
           "claim:GRAPH-PI-COLLAPSE-001",
+          "claim:TR-XFMR-004",
           "claim:GRAPH-SELF-LOOP-001",
-          "claim:FORMULATION-NODAL-001",
-          "claim:TR-XFMR-004"
+          "claim:FORMULATION-NODAL-001"
         ]
       },
       "lexical": {
@@ -189,8 +189,8 @@
           "concept:parallel",
           "claim:TR-PAR-002",
           "claim:TR-XFMR-006",
-          "concept:rating-limit-constraint",
           "claim:FORMULATION-NODAL-002",
+          "concept:rating-limit-constraint",
           "claim:TR-PAR-003",
           "claim:TR-XFMR-007",
           "claim:ARCH-LOWER-001",
@@ -323,7 +323,7 @@
           "claim:GRAPH-NPORT-001",
           "claim:VOCAB-BRIDGE-001",
           "concept:element-edge-relation",
-          "claim:ARCH-NODAL-001"
+          "concept:factor"
         ]
       },
       "hybrid": {
@@ -337,8 +337,8 @@
           "claim:GRAPH-MULTI-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
           "claim:ARCH-LENS-001",
-          "claim:PRACTICE-ARCH-001",
           "claim:ARCH-LOWER-001",
+          "claim:PRACTICE-ARCH-001",
           "claim:GRAPH-NPORT-001"
         ]
       },
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "c2e9bb821baec7c17f550dcb0872dab64325be8c3ce20f892e37643ea52a8172"
+    "corpus_sha256": "b06d0f591cad9a56524b7a4bbf0875465823e6432bf18b28f01ebfac5a71ec5e"
   },
   "inputs": {
     "adversarial_cases": {

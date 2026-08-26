@@ -544,6 +544,25 @@ The minimized fixture retains `OPTIMAL` but fails one power-balance residual;
 its exact companion passes. This complements the existing result profiler and
 PSK3 status gate rather than replacing solver or equation code.
 
+## Fourteenth vertical slice: unit/base and serialization invariance
+
+The fourteenth slice makes the book's normalization and adapter guardrails
+executable at the serialization boundary. Book object `PSK-000014` links
+unit/base and provenance claims to the misconception that matching metadata or
+a serialized hash proves equivalence. The book owns the scientific semantics
+of units, bases, conversion coordinates, and downstream study preservation.
+
+BMOPFTools owns `unit_base_serialization_invariance`. It compares explicit unit
+system metadata, a declared base map, and a canonical semantic payload hash,
+reporting unit drift, base drift, payload mutation, or missing metadata
+separately. A pass binds declared serialization evidence only; it does not
+infer units, authenticate hash computation, or prove complete physical or
+decision equivalence.
+
+The minimized fixture preserves SI metadata and bases but mutates the semantic
+hash; the reordered exact companion passes. This complements `parse_bmopf`,
+`write_bmopf`, and source-hash binding without duplicating their I/O logic.
+
 ## Federated discovery and context assembly
 
 The existing book service remains the federation point for retrieval. Its

@@ -4,8 +4,8 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `c2e9bb821baec7c17f550dcb0872dab64325be8c3ce20f892e37643ea52a8172`<br>
-**Cases:** 57
+**Corpus hash:** `b06d0f591cad9a56524b7a4bbf0875465823e6432bf18b28f01ebfac5a71ec5e`<br>
+**Cases:** 60
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
 The latter is permitted to add mandatory claims and concepts only after the query router identifies
@@ -17,11 +17,11 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
 | Open-corpus lexical evidence recall@5 | 22.6% | diagnostic |
-| Open-corpus lexical evidence recall@10 | 32.1% | diagnostic |
+| Open-corpus lexical evidence recall@10 | 31.8% | diagnostic |
 | Open-corpus complete evidence@10 | 0.0% | diagnostic |
-| Evidence-only lexical recall@5 | 33.7% | diagnostic |
-| Evidence-only lexical recall@10 | 43.5% | diagnostic |
-| Evidence-only complete evidence@10 | 1.8% | diagnostic |
+| Evidence-only lexical recall@5 | 33.3% | diagnostic |
+| Evidence-only lexical recall@10 | 43.0% | diagnostic |
+| Evidence-only complete evidence@10 | 1.7% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
 | Packets with qualification, failure, shorthand, and scope | 100.0% | yes |
@@ -44,15 +44,15 @@ evidence sets, so the effective target count is nine rather than 27 independent 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `lexical` | 33.4% | 44.9% | 0.0% | 0/33 | 5/33 | 0.201 |
-| `char_tfidf` | 36.2% | 44.2% | 0.0% | 0/33 | 6/33 | 0.225 |
+| `char_tfidf` | 36.2% | 44.2% | 0.0% | 0/33 | 6/33 | 0.224 |
 | `hybrid` | 38.0% | 46.6% | 0.0% | 0/33 | 5/33 | 0.219 |
-| `graph` | 39.5% | 58.4% | 24.2% | 8/33 | 4/33 | 0.250 |
+| `graph` | 38.9% | 57.7% | 21.2% | 7/33 | 4/33 | 0.252 |
 
 Held-out contract-router firing: **25/33 (75.8%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **17/33 (51.5%)**; this remains diagnostic because the set is synthetic and clustered.
 Target clusters: **11**, with cluster sizes `[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]`; percentage differences are therefore not independent observations.
 Hybrid versus lexical complete@10: **0/33** versus **0/33**; hybrid zero-recall@10: **5/33**.
-Graph versus hybrid complete@10: **8/33** versus **0/33**.
+Graph versus hybrid complete@10: **7/33** versus **0/33**.
 
 | Held-out case | Audience | Expected route | Observed top-1 | Router fired | Lexical complete@10 | TF-IDF complete@10 | Hybrid complete@10 | Graph complete@10 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -76,7 +76,7 @@ Graph versus hybrid complete@10: **8/33** versus **0/33**.
 | `HOLDOUT-KRON-POWER` | `power_engineer` | `kron-reduction-preserves-everything` | `kron-reduction-preserves-everything` | yes | no | no | no | no |
 | `HOLDOUT-SEQUENCE-STUDENT` | `student` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | no |
 | `HOLDOUT-SEQUENCE-SOFTWARE` | `software_engineer` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | yes |
-| `HOLDOUT-SEQUENCE-POWER` | `power_engineer` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | yes |
+| `HOLDOUT-SEQUENCE-POWER` | `power_engineer` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | no |
 | `HOLDOUT-GROUND-STUDENT` | `student` | `ground-neutral-reference-are-one-node` | `mutual-coupling-is-an-ordinary-parallel-network` | yes | no | no | no | no |
 | `HOLDOUT-GROUND-SOFTWARE` | `software_engineer` | `ground-neutral-reference-are-one-node` | `terminal-permutation-is-cosmetic` | yes | no | no | no | no |
 | `HOLDOUT-GROUND-POWER` | `power_engineer` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | yes |
@@ -94,9 +94,9 @@ Graph versus hybrid complete@10: **8/33** versus **0/33**.
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 19 | 100.0% | 45.4% | 100.0% |
-| `software_engineer` | 19 | 100.0% | 37.8% | 100.0% |
-| `student` | 19 | 100.0% | 47.5% | 100.0% |
+| `power_engineer` | 20 | 100.0% | 45.6% | 100.0% |
+| `software_engineer` | 20 | 100.0% | 37.2% | 100.0% |
+| `student` | 20 | 100.0% | 46.4% | 100.0% |
 
 ## Case results
 
@@ -159,6 +159,9 @@ Graph versus hybrid complete@10: **8/33** versus **0/33**.
 | `EVAL-FEASIBILITY-WITNESS-STUDENT` | `student` | `complete-feasibility-status-is-enough` | 25.0% | yes |
 | `EVAL-FEASIBILITY-WITNESS-SOFTWARE` | `software_engineer` | `complete-feasibility-status-is-enough` | 50.0% | yes |
 | `EVAL-FEASIBILITY-WITNESS-POWER` | `power_engineer` | `complete-feasibility-status-is-enough` | 50.0% | yes |
+| `EVAL-UNIT-BASE-STUDENT` | `student` | `unit-base-metadata-is-equivalence` | 25.0% | yes |
+| `EVAL-UNIT-BASE-SOFTWARE` | `software_engineer` | `unit-base-metadata-is-equivalence` | 25.0% | yes |
+| `EVAL-UNIT-BASE-POWER` | `power_engineer` | `unit-base-metadata-is-equivalence` | 50.0% | yes |
 
 ## Interpretation and next boundary
 

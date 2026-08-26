@@ -529,3 +529,37 @@ finding_codes = [
 ]
 related_finding_codes = ["E.SOL.VOLT_VIOLATION", "E.SOL.THERMAL_VIOLATION"]
 fixture_ids = ["solved-network-feasibility-001"]
+
+[[knowledge]]
+id = "PSK-000014"
+kind = "invalid-inference"
+title = "Unit/base metadata and serialization hashes must bind the semantic payload"
+scientific_statement = "A serialization round trip is trustworthy only when explicit unit-system and base metadata remain aligned and the canonical semantic payload is hash-bound; matching metadata or a hash alone does not prove physical or decision equivalence."
+scope = "Canonical BMOPF serialization pairs with explicit unit/base declarations and semantic payload provenance."
+evidence_status = "definition"
+does_not_establish = [
+  "Units can be inferred safely from numeric magnitudes.",
+  "Matching unit/base metadata proves the payload was serialized or hashed correctly.",
+  "A matching canonical hash proves complete physical, feasible-set, or objective equivalence.",
+]
+
+[knowledge.book]
+claim_ids = ["PRACTICE-ADAPTER-001"]
+misconception_ids = ["unit-base-metadata-is-equivalence"]
+certificate_ids = []
+counterexample_ids = ["unit-base-serialization-001"]
+artifact_paths = ["experiments/generated/solver-diagnostics-crosswalk.json"]
+source_paths = ["docs/src/foundations/data-model-crosswalk.md"]
+
+[knowledge.executable]
+repository = "frederikgeth/BMOPFTools.jl"
+implementation_status = "implemented"
+contract_ids = ["unit_base_serialization_invariance"]
+finding_codes = [
+  "E.CONTRACT.UNIT_SYSTEM_MISMATCH",
+  "E.CONTRACT.BASE_MAP_MISMATCH",
+  "E.CONTRACT.SERIALIZED_PAYLOAD_MISMATCH",
+  "W.CONTRACT.UNIT_BASE_SERIALIZATION_INDETERMINATE",
+]
+related_finding_codes = ["W.PROV.UNIT_ASSUMED", "W.PROV.SOURCE_HASH_MISSING"]
+fixture_ids = ["unit-base-serialization-001"]

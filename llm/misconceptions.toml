@@ -183,6 +183,19 @@ mandatory_concept_ids = ["state", "rating-limit-constraint"]
 source_paths = ["docs/src/foundations/numerical-consequences.md"]
 
 [[misconception]]
+id = "unit-base-metadata-is-equivalence"
+title = "Matching unit/base metadata or a serialized hash proves equivalence"
+severity = "critical"
+query_patterns = ["unit base metadata proves equivalence", "serialization hash is enough", "round trip hash proves model", "infer units from magnitudes", "same per unit base means same network", "serialization is lossless by hash", "unit conversion equivalence", "base map round trip"]
+tempting_answer = "If the unit system, base values, or serialized hash match, the imported network is the same model."
+required_qualification = "Require explicit unit-system and base-map alignment plus a canonical semantic payload hash, while recognizing that metadata and hash equality do not authenticate their computation or prove complete physical and decision equivalence."
+safe_shorthand = "Unit/base and hash checks bind declared serialization evidence; they do not replace semantic, equation, or study-level validation."
+operational_consequence = "A wrong base or mutated payload can survive a metadata-only check, changing impedances, load laws, limits, or decisions after round trip."
+mandatory_claim_ids = ["PRACTICE-ADAPTER-001"]
+mandatory_concept_ids = ["normalization", "factor", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/foundations/data-model-crosswalk.md"]
+
+[[misconception]]
 id = "wye-delta-share-nominal-voltage-base"
 title = "WYE and DELTA voltage-dependent loads can reuse the same numeric nominal voltage"
 severity = "critical"

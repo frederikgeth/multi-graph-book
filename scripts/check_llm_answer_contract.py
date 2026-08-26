@@ -198,6 +198,19 @@ def main() -> int:
                 validation_errors.append("feasibility-witness route omits the linked fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("feasibility-witness executable contract is not marked implemented")
+        if case["misconception_id"] == "unit-base-metadata-is-equivalence":
+            packet = response["packet"]
+            if "knowledge:PSK-000014" not in observed:
+                validation_errors.append("unit/base route omits mandatory PSK-000014")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000014"]:
+                validation_errors.append("unit/base route scientific basis differs from PSK-000014")
+            checks = packet["executable_checks"]
+            if len(checks) != 1 or checks[0].get("contract_ids") != ["unit_base_serialization_invariance"]:
+                validation_errors.append("unit/base route omits the serialization contract")
+            if len(packet["counterexamples"]) != 1 or packet["counterexamples"][0].get("counterexample_ids") != ["unit-base-serialization-001"]:
+                validation_errors.append("unit/base route omits the linked fixture")
+            if checks and checks[0].get("implementation_status") != "implemented":
+                validation_errors.append("unit/base executable contract is not marked implemented")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:
