@@ -2,7 +2,10 @@
 
 **Page status:** maintained cross-repository implementation trace and scope boundary.
 
-This page traces five scientific statements from book evidence to executable BMOPFTools guardrails and back into the book's existing LLM context packets. The stable ownership rules are defined in the repository-root `ARCHITECTURE.md`; this page is the worked implementation trace.
+This page traces fifteen scientific and negative-knowledge objects through book
+evidence, applicable BMOPFTools guardrails, and the book's existing LLM context
+packets. The stable ownership rules are defined in the repository-root
+`ARCHITECTURE.md`; this page is the worked implementation trace.
 
 ## First trace: parallel member limits
 
@@ -447,6 +450,34 @@ The fourteenth slice binds declared conversion metadata to a canonical payload:
 The package pass binds declared serialization evidence only; parser/writer
 round-trip behavior, hash computation, complete equations, limits, and study
 decisions remain separate validation dimensions.
+
+## Fifteenth trace: a negative retrieval result without an executable package contract
+
+`LLM-RETRIEVAL-001` and `PSK-000015` record a different kind of knowledge
+object. The pinned compact
+neural retriever and generic cross-encoder reranker each failed at least one of
+the benchmark's predeclared not-worse-than-hybrid retrieval gates. Neither was
+promoted, and the failed experiment remains available as a source-bound
+negative result rather than disappearing behind the retained deterministic
+hybrid route. The scientific record hashes an immutable generated snapshot of
+the benchmark evidence; the separate mutable compatibility marker can then
+track later corpus revisions without creating a corpus-hash cycle.
+
+The record contains the question, hypothesis, motivation, setup, cases,
+software and model provenance, attempted methods, observed result, failure
+criterion, interpretation, limited conclusions, possible changed conditions,
+reproduction commands, and review status required by the negative-result
+quality standard. Its scope is deliberately the archived prior corpus named by
+the benchmark artifact. It does not claim that neural retrieval is generally
+inferior or that the recorded rankings describe the current corpus.
+
+This trace has no BMOPFTools contract, Finding, or fixture. Its executable
+relationship is explicitly `not_applicable`, and the federated pair records an
+empty execution link instead of inventing package ownership. The book's
+misconception router still makes the claim and `PSK-000015` mandatory for
+questions that assume embeddings or a generic reranker must improve retrieval.
+Context packets expose the structured record under `negative_results` while
+leaving `executable_checks` empty.
 
 ## What generalizes
 

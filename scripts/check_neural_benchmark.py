@@ -16,6 +16,7 @@ from benchmark_llm_embeddings import markdown_report
 
 REPORT = ROOT / "llm/generated/neural-retrieval-evaluation.json"
 MARKDOWN = ROOT / "llm/generated/neural-retrieval-evaluation.md"
+NEGATIVE_RESULT = ROOT / "llm/generated/neural-retrieval-negative-result.json"
 CONFIG = ROOT / "llm/neural-models.toml"
 CORPUS_MANIFEST = ROOT / "llm/generated/corpus-manifest.json"
 HELDOUT = ROOT / "llm/heldout-paraphrases.toml"
@@ -31,12 +32,42 @@ def fail(errors: list[str], condition: bool, message: str) -> None:
         errors.append(message)
 
 
+def negative_result_snapshot(report: dict) -> dict:
+    """Freeze benchmark evidence without its mutable current-corpus marker."""
+    return {
+        "schema_version": "0.1.0",
+        "negative_result_id": "neural-retrieval-pinned-candidates-001",
+        "knowledge_id": "PSK-000015",
+        "source_report": "llm/generated/neural-retrieval-evaluation.json",
+        "benchmark": {
+            key: value
+            for key, value in report.items()
+            if key != "compatibility"
+        },
+    }
+
+
+def negative_result_text(report: dict) -> str:
+    return json.dumps(
+        negative_result_snapshot(report),
+        indent=2,
+        ensure_ascii=False,
+        sort_keys=True,
+    ) + "\n"
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument(
         "--archive-current-drift",
         action="store_true",
         help="record that the pinned experiment belongs to its prior corpus and that the current corpus requires a rerun",
+    )
+    mode.add_argument(
+        "--write-negative-result",
+        action="store_true",
+        help="write the immutable negative-result evidence snapshot",
     )
     args = parser.parse_args()
     errors: list[str] = []
@@ -48,6 +79,11 @@ def main() -> int:
     except (OSError, ValueError, KeyError, json.JSONDecodeError, tomllib.TOMLDecodeError) as error:
         print(f"LLM neural benchmark check failed to load inputs: {error}")
         return 1
+
+    if args.write_negative_result:
+        NEGATIVE_RESULT.write_text(negative_result_text(report))
+        print("wrote immutable neural retrieval negative-result evidence")
+        return 0
 
     if args.archive_current_drift:
         if report.get("corpus", {}).get("corpus_sha256") == manifest.get("corpus_sha256"):
@@ -115,6 +151,11 @@ def main() -> int:
         fail(errors, MARKDOWN.read_text() != markdown_report(report), "neural benchmark Markdown report is stale")
     else:
         errors.append("neural benchmark Markdown report is missing")
+    fail(
+        errors,
+        not NEGATIVE_RESULT.is_file() or NEGATIVE_RESULT.read_text() != negative_result_text(report),
+        "immutable neural negative-result evidence is missing or stale",
+    )
 
     if errors:
         print("LLM neural benchmark check failed:")

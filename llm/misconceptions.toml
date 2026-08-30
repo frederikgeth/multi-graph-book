@@ -259,3 +259,16 @@ operational_consequence = "Skipping independent checks can accept violated equat
 mandatory_claim_ids = ["NUMERICAL-005"]
 mandatory_concept_ids = ["factor", "rating-limit-constraint", "equivalence-exactness-preservation"]
 source_paths = ["docs/src/foundations/numerical-consequences.md"]
+
+[[misconception]]
+id = "generic-neural-retrieval-is-automatically-better"
+title = "Adding a generic neural retriever or reranker automatically improves evidence retrieval"
+severity = "high"
+query_patterns = ["neural retrieval is better", "replace bm25 with embeddings", "generic reranker improves rag", "vector search automatically better", "embedding retrieval upgrade", "use neural rag instead", "cross encoder must improve retrieval"]
+tempting_answer = "Replace the deterministic retrieval route with embeddings and a generic reranker because neural retrieval is inherently more capable."
+required_qualification = "Promotion requires a pinned, source-bound comparison on the resource's own held-out evidence tasks. In the recorded experiment, both compact neural candidates failed at least one not-worse-than-hybrid gate, and the result now belongs to an archived prior corpus rather than the current corpus."
+safe_shorthand = "A neural route is an opt-in candidate until it beats the deterministic baseline under the same evidence-preserving evaluation and complete provenance."
+operational_consequence = "Premature promotion can reduce mandatory-claim or counterexample recall, obscure a reproducible negative result, and detach retrieval behavior from the corpus revision on which it was measured."
+mandatory_claim_ids = ["LLM-RETRIEVAL-001"]
+mandatory_concept_ids = ["equivalence-exactness-preservation"]
+source_paths = ["docs/src/reference/federated-knowledge-trace.md", "llm/README.md"]

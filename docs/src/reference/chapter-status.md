@@ -1,6 +1,6 @@
 # [Chapter status](@id chapter-status)
 
-<!-- generated-from claims/claims.toml sha256:0405340b6d64e4ad0d273637d207892ba7ba3c1438a7c2fbcc7cedfe09b7420d -->
+<!-- generated-from claims/claims.toml sha256:83c6ce56209ac1381acbdbfbd0f968198476cad5921d19877a537e017728cfb6 -->
 This page is generated from the claims ledger. It makes the evidence state visible without
 requiring readers to inspect TOML or generated JSON files. Claim absence means the page is
 tracked as explanatory, definitional, or proposed material rather than silently treated as a
@@ -52,7 +52,7 @@ verified empirical result.
 | [Search run: multiphase formulations and practical reductions](../literature/search-runs/2026-08-16-multiphase-and-practical-reductions.md) | generated search-run record. | 0 | — | `untracked` | — |
 | [Search run: coupled multi-voltage corridors](../literature/search-runs/2026-08-25-coupled-multivoltage-corridors.md) | generated search-run record. | 0 | — | `untracked` | — |
 | [Evidence map and verification summary](../reference/evidence-map.md) | generated reference navigation and evidence-gap summary. | 0 | — | `untracked` | — |
-| [Federated scientific knowledge: end-to-end trace](../reference/federated-knowledge-trace.md) | maintained cross-repository implementation trace and scope boundary. | 0 | — | `untracked` | — |
+| [Federated scientific knowledge: end-to-end trace](../reference/federated-knowledge-trace.md) | maintained cross-repository implementation trace and scope boundary. | 1 | empirical | `self-checked` | Rerun both pinned candidates on the current corpus and evaluate domain-adapted alternatives before making a current or general neural-retrieval comparison. |
 | [References](../reference/references.md) | bibliography and source register. | 0 | — | `untracked` | — |
 | [Terminology](../reference/terminology.md) | maintained glossary and translation aid. | 0 | — | `untracked` | — |
 | [Cross-community vocabulary indexes](../reference/vocabulary-indexes.md) | generated bidirectional vocabulary index; not a standards crosswalk. | 0 | — | `untracked` | — |

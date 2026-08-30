@@ -132,6 +132,12 @@ scientific statement, scope, evidence status, related book identifiers,
 executable-contract identifiers, counterexample identifiers, and unresolved
 boundaries. Long scientific explanations stay in canonical book prose.
 
+Not every scientific or negative-knowledge record has a meaningful package
+counterpart. A book-owned record may declare its executable relationship
+`not_applicable` with no repository, contract, Finding, or fixture links. The
+federated pair preserves that explicit empty relationship. It must not invent a
+BMOPFTools contract merely to make the record look symmetric.
+
 BMOPFTools maintains a small executable registry, not a scientific knowledge
 database. It records executable contract IDs, entry points, applicable object
 types, finding codes, fixture IDs, output shape, and related PSK IDs. Runtime

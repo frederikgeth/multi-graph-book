@@ -162,6 +162,14 @@ def main() -> int:
                 f"{knowledge_id}: unstable corpus record ID", errors)
         fail_if(not record.get("misconception_ids"),
                 f"{knowledge_id}: scientific record has no misconception route", errors)
+        if record.get("kind") == "negative-result":
+            fail_if(not record.get("negative_result"),
+                    f"{knowledge_id}: negative-result record lacks its quality-standard fields", errors)
+            fail_if(record.get("executable", {}).get("implementation_status") not in {"implemented", "not_applicable"},
+                    f"{knowledge_id}: negative-result executable relationship is ambiguous", errors)
+        else:
+            fail_if("negative_result" in record,
+                    f"{knowledge_id}: non-negative record carries negative-result fields", errors)
     for claim_id, record in claim_records.items():
         passage = record.get("supporting_passage", {})
         fail_if(not str(passage.get("text", "")).strip(), f"{claim_id}: empty supporting passage", errors)

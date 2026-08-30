@@ -175,6 +175,13 @@ def render_markdown(packet: dict) -> str:
                 f"book artifacts: {', '.join(item['artifact_paths'])}"
             )
         lines.append("")
+    if packet["negative_results"]:
+        lines += ["## Negative results", ""]
+        for item in packet["negative_results"]:
+            lines.append(f"- **{item['knowledge_id']}** — {item['observed_result']}")
+            lines.append(f"  - Failure criterion: {item['failure_criterion']}")
+            lines.append(f"  - Interpretation: {item['interpretation']}")
+        lines.append("")
     if packet["executable_checks"]:
         lines += ["## Executable checks", ""]
         for item in packet["executable_checks"]:

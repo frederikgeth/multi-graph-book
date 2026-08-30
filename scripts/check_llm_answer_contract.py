@@ -227,6 +227,19 @@ def main() -> int:
                 validation_errors.append("unit/base route omits the linked fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("unit/base executable contract is not marked implemented")
+        if case["misconception_id"] == "generic-neural-retrieval-is-automatically-better":
+            packet = response["packet"]
+            if "knowledge:PSK-000015" not in observed:
+                validation_errors.append("neural negative-result route omits mandatory PSK-000015")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000015"]:
+                validation_errors.append("neural negative-result scientific basis differs from PSK-000015")
+            results = packet["negative_results"]
+            if len(results) != 1 or results[0].get("failure_criterion") is None:
+                validation_errors.append("neural route omits the structured negative result")
+            if packet["counterexamples"]:
+                validation_errors.append("neural negative result is incorrectly presented as a counterexample")
+            if packet["executable_checks"] or packet["implementation_examples"]:
+                validation_errors.append("book-only neural negative result invents a BMOPFTools execution link")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:

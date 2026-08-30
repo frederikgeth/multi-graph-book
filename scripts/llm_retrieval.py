@@ -546,6 +546,8 @@ class CorpusIndex:
             }
             summary["book"] = record["book"]
             summary["executable"] = record["executable"]
+            if record.get("negative_result"):
+                summary["negative_result"] = record["negative_result"]
         else:
             summary["excerpt"] = record["text"][:1200]
         return summary
@@ -638,10 +640,22 @@ class CorpusIndex:
                 "artifact_paths": item["book"]["artifact_paths"],
             }
             for item in knowledge
+            if item["book"]["counterexample_ids"]
+        ]
+        negative_results = [
+            {
+                "knowledge_id": item["knowledge"]["knowledge_id"],
+                **item["negative_result"],
+                "artifact_paths": item["book"]["artifact_paths"],
+            }
+            for item in knowledge
+            if item.get("negative_result")
         ]
         executable_checks = []
         implementation_examples = []
         for item in knowledge:
+            if item["executable"]["implementation_status"] == "not_applicable":
+                continue
             knowledge_id = item["knowledge"]["knowledge_id"]
             pair_link = self.federated_links.get(knowledge_id, {})
             contracts = pair_link.get("contracts", [])
@@ -712,6 +726,7 @@ class CorpusIndex:
             "scientific_basis": scientific_basis,
             "known_misconceptions": known_misconceptions,
             "counterexamples": counterexamples,
+            "negative_results": negative_results,
             "executable_checks": executable_checks,
             "implementation_examples": implementation_examples,
             "unresolved_boundaries": scientific_boundaries,

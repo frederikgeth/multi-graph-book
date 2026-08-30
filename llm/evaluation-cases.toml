@@ -602,3 +602,33 @@ required_claim_ids = ["PRACTICE-ADAPTER-001"]
 required_concept_ids = ["normalization", "factor", "equivalence-exactness-preservation"]
 required_answer_elements = ["distinguish serialization identity evidence from equation, limits, feasible-set, and objective validation", "verify unit/base alignment and semantic payload binding explicitly"]
 forbidden_simplifications = ["same base and hash imply identical physical and decision semantics"]
+
+[[case]]
+case_id = "EVAL-NEURAL-NEGATIVE-STUDENT"
+audience = "student"
+question = "Are embeddings automatically a better way to search this book than its deterministic hybrid search?"
+misconception_id = "generic-neural-retrieval-is-automatically-better"
+required_claim_ids = ["LLM-RETRIEVAL-001"]
+required_concept_ids = ["equivalence-exactness-preservation"]
+required_answer_elements = ["report that the pinned compact neural candidates failed at least one promotion gate", "limit the result to the archived benchmark corpus and tested configurations"]
+forbidden_simplifications = ["neural retrieval is always better or always worse"]
+
+[[case]]
+case_id = "EVAL-NEURAL-NEGATIVE-SOFTWARE"
+audience = "software_engineer"
+question = "Should I replace the source-bound hybrid retriever with a generic embedding model and cross-encoder without rerunning the repository evaluation?"
+misconception_id = "generic-neural-retrieval-is-automatically-better"
+required_claim_ids = ["LLM-RETRIEVAL-001"]
+required_concept_ids = ["equivalence-exactness-preservation"]
+required_answer_elements = ["require immutable model and corpus provenance plus the same held-out gates", "retain the current hybrid route because the recorded candidates failed and now belong to a prior corpus"]
+forbidden_simplifications = ["architecture fashion is sufficient evidence for promotion"]
+
+[[case]]
+case_id = "EVAL-NEURAL-NEGATIVE-POWER"
+audience = "power_engineer"
+question = "Would adding a generic neural RAG layer necessarily improve retrieval of the book’s scientific qualifications and counterexamples?"
+misconception_id = "generic-neural-retrieval-is-automatically-better"
+required_claim_ids = ["LLM-RETRIEVAL-001"]
+required_concept_ids = ["equivalence-exactness-preservation"]
+required_answer_elements = ["state that the recorded neural and reranked candidates did not clear the hybrid promotion gates", "distinguish retrieval recall from scientific answer validity and require a current-corpus rerun"]
+forbidden_simplifications = ["an embedding index guarantees better scientific evidence coverage"]

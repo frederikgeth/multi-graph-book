@@ -99,8 +99,8 @@
         "top_10": [
           "claim:ARCH-SUPPORT-001",
           "claim:ARCH-NODAL-001",
-          "concept:graph-topology-adjacency",
           "concept:equivalence-exactness-preservation",
+          "concept:graph-topology-adjacency",
           "claim:FORMULATION-NODAL-002",
           "concept:nodal-operator-alias",
           "concept:factor",
@@ -111,7 +111,7 @@
       },
       "hybrid": {
         "complete_at_10": false,
-        "recall_at_10": 0.5,
+        "recall_at_10": 0.333333,
         "top_10": [
           "concept:nodal-operator-alias",
           "claim:FORMULATION-NODAL-002",
@@ -122,7 +122,7 @@
           "claim:ARCH-RECOVERY-003",
           "claim:ARCH-NODAL-001",
           "concept:mutual-coupling-relation",
-          "claim:FORMULATION-Y-SPLIT-001"
+          "claim:TR-KRON-001"
         ]
       },
       "lexical": {
@@ -189,8 +189,8 @@
           "concept:parallel",
           "claim:TR-PAR-002",
           "claim:TR-XFMR-006",
-          "claim:FORMULATION-NODAL-002",
           "concept:rating-limit-constraint",
+          "claim:FORMULATION-NODAL-002",
           "claim:TR-PAR-003",
           "claim:TR-XFMR-007",
           "claim:ARCH-LOWER-001",
@@ -481,7 +481,7 @@
           "claim:FORMULATION-NODAL-003",
           "claim:TOPOLOGY-001",
           "claim:LIT-PAR-001",
-          "claim:TR-XFMR-003"
+          "claim:TR-GRAPH-002"
         ]
       },
       "lexical": {
@@ -548,8 +548,8 @@
           "claim:ARCH-PORT-002",
           "claim:ARCH-PORT-001",
           "claim:ARCH-CONDUCTOR-002",
-          "concept:object-node-interface",
           "claim:TR-SER-001",
+          "concept:object-node-interface",
           "concept:phase-conductor-sequence-coordinate",
           "claim:NUMERICAL-005",
           "claim:TRANSFORM-SEM-001",
@@ -562,8 +562,8 @@
         "top_10": [
           "concept:direction-orientation-hierarchy",
           "claim:ARCH-PORT-002",
-          "concept:object-node-interface",
           "claim:ARCH-PORT-001",
+          "concept:object-node-interface",
           "claim:ARCH-CONDUCTOR-002",
           "claim:ARCH-SURGERY-002",
           "concept:phase-conductor-sequence-coordinate",
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "d812dfd7c494a9b05cc6a787f2ca1ecdbe1735fb26dc203cbce8e8570ac3fbb4"
+    "corpus_sha256": "7076909bcff9ba2424f502136a5ed5a0172b2ee3723582ad28b3039ba90aa125"
   },
   "inputs": {
     "adversarial_cases": {
@@ -643,7 +643,7 @@
   "summary": {
     "cases": 9,
     "graph_recall_at_10": 0.661111,
-    "hybrid_recall_at_10": 0.483333,
+    "hybrid_recall_at_10": 0.464815,
     "qualified_contract_complete": 1.0,
     "status_accuracy": 1.0,
     "unsupported_abstention_accuracy": 1.0

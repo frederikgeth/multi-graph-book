@@ -127,6 +127,22 @@ the package export and federated pin. Remaining work in this tranche is only
 evidence-gated contract promotion. Solver invocation remains outside the
 current transport slice.
 
+### Negative-knowledge taxonomy tranche (in progress, 2026-08-30)
+
+The first non-modelling record is now `PSK-000015`, a book-owned
+`negative-result` for the pinned compact neural retriever and generic
+cross-encoder reranker that failed the declared hybrid-baseline promotion
+gates. The record implements the full negative-result quality standard and is
+covered by three audience-specific retrieval cases. It remains scoped to its
+archived prior corpus and does not generalize the result to neural retrieval as
+a class.
+
+The schema and federated pair now support an explicit `not_applicable`
+execution relationship. This prevents the taxonomy from inventing a package
+contract when evidence belongs entirely to the book while preserving a stable,
+source-hash-bound PSK route. The next subtype to exercise should be a scientific
+`numerical-pathology` or `scope-boundary` record.
+
 ### Product identity and editorial stance
 
 The project has two deliberate products:

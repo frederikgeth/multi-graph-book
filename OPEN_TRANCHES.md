@@ -16,7 +16,7 @@ The authority for repository ownership and dependency direction is
 |---|---|---|---|
 | 1. Execution interface | Core complete | Two curated contract adapters plus parse/intake, case analysis, supplied-result verification, offline Finding explanation, and a six-tool read-only MCP adapter over the same envelopes | Promote another contract only when its transport mapping and evidence justify it |
 | 2. Documentation and recipes | Core complete | Assistant guide, `llms.txt`, two scientific-contract recipes, and tutorial-derived parse, analysis, verification, and Finding-explanation recipes | Keep examples synchronized; solving remains outside this transport slice |
-| 3. Negative-knowledge taxonomy | Queued | Initial PSK taxonomy and fourteen executable links | Select and scope the first new non-modelling record |
+| 3. Negative-knowledge taxonomy | In progress | Fourteen executable links plus a quality-standard, book-only negative result for the archived neural retrieval experiment | Add the first scientific numerical-pathology or scope-boundary record |
 | 4. Property-based testing | Queued | Deterministic metamorphic tests and minimized fixtures | Define the generator domain and seed record |
 | 5. Research/decision log | Queued | Decisions currently recorded in architecture and handover prose | Add the lightweight decision-log format |
 | 6. Agent benchmark | Deferred | Deterministic retrieval evaluation exists | Start after the execution surface stabilizes |
@@ -107,6 +107,15 @@ The PSK schema supports `misconception`, `antipattern`, `counterexample`,
 `negative-result`, `failure-mode`, `invalid-inference`, `numerical-pathology`,
 `software-antipattern`, `scope-boundary`, and `open-question`. The initial
 records currently emphasize modelling antipatterns and invalid inferences.
+
+**Current status (2026-08-30):** in progress. `PSK-000015` now records the
+archived compact-neural-retrieval and generic-reranking experiment as a
+reproducible `negative-result`. The subtype requires the full negative-result
+quality fields, is routed through a three-audience misconception contract, and
+is exposed explicitly in context packets. Its execution relationship is
+`not_applicable`: the result belongs to the book's retrieval evaluation and no
+BMOPFTools contract, Finding, or fixture is invented. The next record should
+exercise a scientific `numerical-pathology` or `scope-boundary` class.
 
 Scope:
 
@@ -202,8 +211,9 @@ These items are release-quality follow-ups rather than implementation blockers:
 
 ## Suggested order
 
-1. Broader negative-knowledge records; continue promoting executable contracts
-   only when their transport mappings and evidence are unambiguous.
+1. Add a scientific numerical-pathology or scope-boundary record; continue
+   promoting executable contracts only when their mappings and evidence are
+   unambiguous.
 2. Property-based testing and minimized counterexamples.
 3. Research/decision log.
 4. Agent benchmark.

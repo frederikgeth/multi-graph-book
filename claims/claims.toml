@@ -1835,3 +1835,20 @@ assumptions = "the joint 2-by-2 impedance matrix is nonsingular; the target weig
 reviewer = ""
 review_date = ""
 unresolved_issue = "Independently review the sign/orientation convention; extend the result to block-valued full-pi and singular tableau targets; and separately test limit, state, protection, and optimization-decision preservation."
+
+[[claim]]
+claim_id = "LLM-RETRIEVAL-001"
+exactness_object = "observation_sample"
+preservation_dimensions = ['provenance']
+chapter = "docs/src/reference/federated-knowledge-trace.md"
+claim_text = "On its recorded prior corpus and held-out paraphrase set, the pinned compact neural retriever and generic cross-encoder reranker each failed at least one predeclared not-worse-than-hybrid retrieval gate, so neither candidate was promoted into the production route."
+status = "empirical_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "pinned_neural_retrieval_and_reranking_negative_result"
+citation_keys = []
+model_scope = "the exact corpus, held-out cases, model revisions, artifact hashes, runtime, metrics, and thresholds recorded in llm/generated/neural-retrieval-evaluation.json"
+assumptions = "the benchmark artifact and its pinned provenance are the evidence; the compatibility marker correctly identifies it as a prior-corpus result after later corpus changes"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Rerun both pinned candidates on the current corpus and evaluate domain-adapted alternatives before making a current or general neural-retrieval comparison."

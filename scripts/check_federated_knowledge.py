@@ -77,6 +77,13 @@ def bmopf_identity(root: Path) -> tuple[dict, dict[str, dict]]:
         knowledge_id = scientific["knowledge_id"]
         declared = scientific["executable"]
         contract_links = []
+        if declared["implementation_status"] == "not_applicable":
+            links[knowledge_id] = {
+                "repository": None,
+                "implementation_status": "not_applicable",
+                "contracts": [],
+            }
+            continue
         for contract_id in declared["contract_ids"]:
             record = by_id.get(f"contract:{contract_id}")
             if record is None:
@@ -172,11 +179,12 @@ def validate_committed(pair: dict) -> list[str]:
         link = links.get(knowledge_id, {})
         executable = scientific["executable"]
         contracts = link.get("contracts", [])
-        if executable["implementation_status"] != "implemented":
-            errors.append(f"{knowledge_id}: executable status is not implemented")
+        if executable["implementation_status"] not in {"implemented", "not_applicable"}:
+            errors.append(f"{knowledge_id}: executable status is neither implemented nor not_applicable")
         if link.get("implementation_status") != executable["implementation_status"]:
             errors.append(f"{knowledge_id}: implementation status differs across the pair")
-        if link.get("repository") != executable["repository"]:
+        expected_repository = executable.get("repository")
+        if link.get("repository") != expected_repository:
             errors.append(f"{knowledge_id}: executable repository differs across the pair")
         if [item.get("contract_id") for item in contracts] != executable["contract_ids"]:
             errors.append(f"{knowledge_id}: contract IDs differ across the pair")
@@ -186,6 +194,11 @@ def validate_committed(pair: dict) -> list[str]:
         observed_fixtures = sorted({value for item in contracts for value in item.get("fixture_ids", [])})
         if observed_fixtures != sorted(executable["fixture_ids"]):
             errors.append(f"{knowledge_id}: fixture IDs differ across the pair")
+        if executable["implementation_status"] == "not_applicable" and (
+            contracts or executable["contract_ids"] or executable["finding_codes"]
+            or executable["related_finding_codes"] or executable["fixture_ids"]
+        ):
+            errors.append(f"{knowledge_id}: book-only knowledge has executable links")
         for contract in contracts:
             for recipe in contract.get("recipes", []):
                 if recipe.get("operation") != "check_contract":

@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "d812dfd7c494a9b05cc6a787f2ca1ecdbe1735fb26dc203cbce8e8570ac3fbb4",
+  "corpus_sha256": "7076909bcff9ba2424f502136a5ed5a0172b2ee3723582ad28b3039ba90aa125",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -12,15 +12,15 @@
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
     "included_doc_count": 68
   },
-  "evaluation_case_count": 60,
+  "evaluation_case_count": 63,
   "heldout_case_count": 33,
-  "misconception_count": 20,
-  "record_count": 777,
+  "misconception_count": 21,
+  "record_count": 780,
   "record_counts": {
-    "claim_bundle": 108,
+    "claim_bundle": 109,
     "concept_bundle": 18,
-    "scientific_knowledge": 14,
-    "section": 637
+    "scientific_knowledge": 15,
+    "section": 638
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -33,7 +33,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "0405340b6d64e4ad0d273637d207892ba7ba3c1438a7c2fbcc7cedfe09b7420d"
+      "sha256": "83c6ce56209ac1381acbdbfbd0f968198476cad5921d19877a537e017728cfb6"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -209,7 +209,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "52a8071d37260e09d8ad0328567a79fbcd1bdff7f26ebeaf722cef6177896229"
+      "sha256": "052ef1261b6cfd027a1229ac2e84b2faf8ad11cc9577e4c3d66462657964eab9"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -309,15 +309,15 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "1f9db45be77f3d381955da143eaa99da5bb2369fb215e08aba5385a961b81bc5"
+      "sha256": "688c604661969c6ea40422aab63d44b569a86437c2fff7f43f498b804272a04e"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",
-      "sha256": "09a2e5372a2a1ec5dcc68d57418d85e6629211909f3dbb08b0f59f70975584b1"
+      "sha256": "37eb3fd058901c760ba3602f5ac7defbb6e7e551ad1aeb45cf8fff824eed3a4e"
     },
     {
       "path": "llm/evaluation-cases.toml",
-      "sha256": "bedef3d898eed02c8a204556ee2fde35350f481e132475ec4bcdc1a510fbcdc1"
+      "sha256": "9e4e305fb26df580685f4cf87046297054c298b79eec7326c9b1ae91c6e60db3"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -325,7 +325,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "1bd6ab3823ce995bb01e33cb6b382c3f721ad06ed5a51800e65f8a629c270948"
+      "sha256": "cae315558c3571ccdc8770cf1d0a30f3db418e8003dac60f5bcfa21092fe0a50"
     },
     {
       "path": "vocabulary/vocabulary.toml",

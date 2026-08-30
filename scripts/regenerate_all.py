@@ -21,6 +21,7 @@ def main() -> int:
     )
     args = parser.parse_args()
     commands = [
+        [sys.executable, "scripts/check_neural_benchmark.py", "--write-negative-result"],
         [sys.executable, "scripts/generate_scientific_knowledge.py", "--write"],
         [sys.executable, "scripts/check_federated_knowledge.py", "--write", "--bmopf-root", str(args.bmopf_root)],
         [sys.executable, "scripts/generate_llm_corpus.py", "--write"],

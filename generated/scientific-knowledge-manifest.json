@@ -1,5 +1,5 @@
 {
-  "corpus_sha256": "09a2e5372a2a1ec5dcc68d57418d85e6629211909f3dbb08b0f59f70975584b1",
+  "corpus_sha256": "37eb3fd058901c760ba3602f5ac7defbb6e7e551ad1aeb45cf8fff824eed3a4e",
   "knowledge_ids": [
     "PSK-000001",
     "PSK-000002",
@@ -14,10 +14,11 @@
     "PSK-000011",
     "PSK-000012",
     "PSK-000013",
-    "PSK-000014"
+    "PSK-000014",
+    "PSK-000015"
   ],
   "manifest_id": "multi-graph-book-scientific-knowledge-0.1.0",
-  "record_count": 14,
+  "record_count": 15,
   "release": {
     "external_reviewed_claims": 0,
     "independent_human_double_coding": false,
@@ -29,7 +30,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "0405340b6d64e4ad0d273637d207892ba7ba3c1438a7c2fbcc7cedfe09b7420d"
+      "sha256": "83c6ce56209ac1381acbdbfbd0f968198476cad5921d19877a537e017728cfb6"
     },
     {
       "path": "docs/src/cases/four-wire-impedance-model-ladder.md",
@@ -62,6 +63,10 @@
     {
       "path": "docs/src/foundations/when-general-model-collapses.md",
       "sha256": "b20850c7f9193fb3963ee3112a34758c54bc56924259a2884d50043dc7a79750"
+    },
+    {
+      "path": "docs/src/reference/federated-knowledge-trace.md",
+      "sha256": "052ef1261b6cfd027a1229ac2e84b2faf8ad11cc9577e4c3d66462657964eab9"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
@@ -145,15 +150,27 @@
     },
     {
       "path": "knowledge/psk.toml",
-      "sha256": "3a867b411bb581908ec88da2235011d29f21ca9834f57e661cb75927e1372d0a"
+      "sha256": "897c72f55809d5e776dfb4a887d4c6b70735488caeac70fdc3115869f3c087a8"
+    },
+    {
+      "path": "llm/README.md",
+      "sha256": "cc1030fb4fc8a74782686fa331ee8f222d41efe94a86bc8ab758c860e84ac43a"
+    },
+    {
+      "path": "llm/generated/neural-retrieval-negative-result.json",
+      "sha256": "2b444e8c99648879d55ac283ac1a18c47af8dc07fa23a15e4ae8b6379e4f81b0"
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "1bd6ab3823ce995bb01e33cb6b382c3f721ad06ed5a51800e65f8a629c270948"
+      "sha256": "cae315558c3571ccdc8770cf1d0a30f3db418e8003dac60f5bcfa21092fe0a50"
     },
     {
       "path": "schemas/power-system-knowledge.schema.json",
-      "sha256": "818bc8974084b473d6bd808145f3aadc5062c1411f919bc6736d63862e2077c7"
+      "sha256": "3251702f736b19ab9510e9e4f5b9ddbcda04e642a0a886ac6100a626cb480be4"
+    },
+    {
+      "path": "scripts/check_neural_benchmark.py",
+      "sha256": "a71a3e3a7b82250466a685d2e0d164b97d95ea43eba1b50387ad8d592d546138"
     }
   ]
 }

@@ -563,3 +563,65 @@ finding_codes = [
 ]
 related_finding_codes = ["W.PROV.UNIT_ASSUMED", "W.PROV.SOURCE_HASH_MISSING"]
 fixture_ids = ["unit-base-serialization-001"]
+
+[[knowledge]]
+id = "PSK-000015"
+kind = "negative-result"
+title = "Generic compact neural retrieval did not improve the pinned evidence-retrieval baseline"
+scientific_statement = "On the benchmark's pinned prior corpus and held-out paraphrase set, the tested compact sentence-transformer retriever and generic cross-encoder reranker failed the predeclared requirement of being no worse than the deterministic hybrid baseline on recall and complete evidence-record retrieval."
+scope = "The exact corpus, held-out cases, model revisions, artifact hashes, runtime provenance, candidate-set construction, and retrieval metrics recorded in the archived neural benchmark artifact."
+evidence_status = "empirical_result"
+does_not_establish = [
+  "Neural retrieval or reranking is generally inferior to deterministic retrieval.",
+  "The archived rankings describe the current corpus after later scientific records were added.",
+  "Retrieval metrics alone establish answer faithfulness, citation correctness, audience calibration, or production reliability.",
+]
+
+[knowledge.negative_result]
+question = "Do the pinned compact neural retriever and generic cross-encoder reranker improve evidence-record retrieval over the deterministic hybrid baseline?"
+hypothesis = "Each neural candidate should be at least no worse than the hybrid baseline on held-out recall and complete retrieval at the declared cutoff before promotion."
+motivation = "A neural component should replace or augment the deterministic production route only when a reproducible comparison shows that it preserves or improves retrieval of mandatory evidence."
+experimental_setup = "Run the pinned embedder and reranker against the source-hash-bound corpus and held-out paraphrase set, compare lexical, character-TF-IDF, hybrid, neural, and hybrid-reranked rankings, and evaluate the predeclared thresholds."
+cases = ["The held-out paraphrase cases and expected evidence records embedded in the pinned benchmark artifact."]
+software_environment = "The Python, sentence-transformers, transformers, torch, NumPy, device, normalization, model revision, and artifact hashes recorded in the benchmark provenance."
+attempted_methods = [
+  "Cosine retrieval using sentence-transformers/all-MiniLM-L6-v2 at the pinned revision.",
+  "Cross-encoder reranking using cross-encoder/ms-marco-MiniLM-L6-v2 at the pinned revision over the bounded hybrid candidate set.",
+]
+observed_result = "Both candidates failed at least one predeclared not-worse-than-hybrid recall or complete-retrieval threshold, so neither was promoted and the deterministic hybrid route remained the production candidate."
+failure_criterion = "A candidate fails promotion when held-out recall or complete evidence-record retrieval at the declared cutoff is worse than the hybrid baseline, or when provenance is incomplete."
+interpretation = "The tested off-the-shelf compact models did not justify replacing the deterministic hybrid route for that pinned corpus; the failed experiment is retained as evidence rather than hidden."
+establishes = [
+  "The recorded candidate configurations failed their declared promotion gates on the pinned benchmark.",
+  "The decision to retain the hybrid production route is evidence-bound to that comparison.",
+]
+conditions_might_work = [
+  "A domain-adapted retriever or reranker may perform differently.",
+  "Different training data, candidate construction, model scale, or retrieval objectives may change the result.",
+  "The candidates require a genuine rerun before comparison with the current corpus.",
+]
+literature_keys = []
+reproducer_commands = [
+  "python3 scripts/benchmark_llm_embeddings.py --model-id MODEL --revision IMMUTABLE_REVISION --artifact-sha256 SHA256 --output OUTPUT.json",
+  "python3 scripts/check_neural_benchmark.py",
+]
+review_status = "Self-checked benchmark with pinned model and runtime provenance; not independently reproduced or externally reviewed."
+
+[knowledge.book]
+claim_ids = ["LLM-RETRIEVAL-001"]
+misconception_ids = ["generic-neural-retrieval-is-automatically-better"]
+certificate_ids = []
+counterexample_ids = []
+artifact_paths = ["llm/generated/neural-retrieval-negative-result.json"]
+source_paths = [
+  "docs/src/reference/federated-knowledge-trace.md",
+  "llm/README.md",
+  "scripts/check_neural_benchmark.py",
+]
+
+[knowledge.executable]
+implementation_status = "not_applicable"
+contract_ids = []
+finding_codes = []
+related_finding_codes = []
+fixture_ids = []
