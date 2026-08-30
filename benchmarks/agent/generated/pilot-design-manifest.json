@@ -1,6 +1,6 @@
 {
   "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
-  "benchmark_manifest_sha256": "e1fe6e80fe1992b25dc981680b2218d69fdce8d3290ef9e69c5e3f71de30bc8c",
+  "benchmark_manifest_sha256": "afbd1ec0fc7866e312aa82f6e75d522cb8010a75c08d112480055f86c864542b",
   "dry_run_status": "synthetic_dry_run_harness_only_not_agent_results",
   "human_review_gate": "mandatory_before_preregistration_or_execution",
   "local_sources": [
@@ -26,7 +26,7 @@
     },
     {
       "path": "benchmarks/agent/pilot/dry-runs/conforming-c6-run.json",
-      "sha256": "8ca39d26e13a40b98f546e12f6599fc1b9af0b54ef10baa91e00d9922d373e2a"
+      "sha256": "50480e3a64bb16a7defea4ccace1bc4e0fd0ac8d27914971492026191f9b020b"
     },
     {
       "path": "benchmarks/agent/pilot/dry-runs/unsafe-c0-run.json",
@@ -40,11 +40,11 @@
   "pilot_id": "APILOT-PARALLEL-LIMITS-001",
   "pilot_schema_sha256": "f403447ddd080f98ae99d76d61bfbc5f94f5565cdfb9387a5c8070940e66c9c8",
   "provenance": {
-    "bmopftools_executable_corpus_sha256": "87aa50c554fb451d82e2e9744fd822165b957332e4c7139686e6dc85e787fcee",
-    "bmopftools_manifest_sha256": "b11612a2d3969c6506324a633b54d3eb91c7240607c200aabd463ab2c6cd7adc",
-    "book_llm_corpus_sha256": "0e3eb0f4737c96c647c7190cdd05cdfc7c3b01ba0426cf348b9c5d83eb9f3d5e",
+    "bmopftools_executable_corpus_sha256": "df23fd1025de2d09691de5bbfd19549383392658ccb73df51443fd8b8f77aba2",
+    "bmopftools_manifest_sha256": "f20116fd078d043c4d7fa0ff1cdbdf02a2b9ac32a61e808c197bafebed526a04",
+    "book_llm_corpus_sha256": "ee4cb7e8c0338f95a5c686aa1476ea7998e0806c2bf3626e04d140036e822a53",
     "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-    "federated_pair_sha256": "0b0b77dbf4605a9c5c0b43cb5124ae7020394707c8eb75988fcf7751b8eb844b"
+    "federated_pair_sha256": "e4209fbf0c1f8293eac23086f3e66a814e472c45412d2f3e3a6c67c4d299a97d"
   },
   "resource_sources": {
     "BMOPFTools.jl": [
@@ -62,7 +62,7 @@
       },
       {
         "path": "generated/executable_knowledge.jsonl",
-        "sha256": "87aa50c554fb451d82e2e9744fd822165b957332e4c7139686e6dc85e787fcee"
+        "sha256": "df23fd1025de2d09691de5bbfd19549383392658ccb73df51443fd8b8f77aba2"
       },
       {
         "path": "AGENTS.md",
@@ -70,7 +70,7 @@
       },
       {
         "path": "recipes/parallel_member_limits/metadata.toml",
-        "sha256": "496d9b8b6407dfe8487572e20b9ed2707b1f4c4b2133429e99976772013175a0"
+        "sha256": "13fd52da92d1f98a458a6cc5f71821de1fc175a8ac44186cd14f8bf935a64072"
       },
       {
         "path": "recipes/parallel_member_limits/README.md",
@@ -94,7 +94,7 @@
       },
       {
         "path": "scripts/bmopf_mcp.jl",
-        "sha256": "96035734415ca7df584eba7d0b63cd7041a3bcd71dba5ec26b29b9b3e5fe3ef7"
+        "sha256": "3ece803eb21284ac56a378edd20992efa709b9091157c34f3470f27024530923"
       }
     ],
     "multi-graph-book": [

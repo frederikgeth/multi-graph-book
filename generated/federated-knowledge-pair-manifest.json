@@ -16,7 +16,7 @@
       "transformer_winding_convention_preservation",
       "unit_base_serialization_invariance"
     ],
-    "corpus_sha256": "87aa50c554fb451d82e2e9744fd822165b957332e4c7139686e6dc85e787fcee",
+    "corpus_sha256": "df23fd1025de2d09691de5bbfd19549383392658ccb73df51443fd8b8f77aba2",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -34,7 +34,7 @@
       "PSK-000014"
     ],
     "manifest_id": "bmopftools-executable-knowledge-0.1.0",
-    "manifest_sha256": "b11612a2d3969c6506324a633b54d3eb91c7240607c200aabd463ab2c6cd7adc",
+    "manifest_sha256": "f20116fd078d043c4d7fa0ff1cdbdf02a2b9ac32a61e808c197bafebed526a04",
     "operation_recipes": [
       {
         "command": "julia --startup-file=no --project=. recipes/analyze_case/recipe.jl",
@@ -47,7 +47,7 @@
         "knowledge_ids": [],
         "operation": "analyze_case",
         "recipe_id": "analyze_case",
-        "source_sha256": "10e264864fabd4b5a783cb13acb1d9c68de014a950e0489d4cddd650872dcdb8"
+        "source_sha256": "20e177fd7fd77d9ac42d62d69ec69029eee007a1be4eeb0a817fb0d823d67174"
       },
       {
         "command": "julia --startup-file=no --project=. recipes/explain_finding/recipe.jl",
@@ -58,7 +58,7 @@
         "knowledge_ids": [],
         "operation": "explain_finding",
         "recipe_id": "explain_finding",
-        "source_sha256": "6e1aa6ba463658140e69d528861e557932f0e63e61327a76e81dcc5b018fe1cd"
+        "source_sha256": "b9e1a29f1e39d92bfcc8191fee3b513a2edd5298486d96f08d9bb96735776623"
       },
       {
         "command": "julia --startup-file=no --project=. recipes/parse_case/recipe.jl",
@@ -69,7 +69,7 @@
         "knowledge_ids": [],
         "operation": "parse_case",
         "recipe_id": "parse_case",
-        "source_sha256": "bb6cdb163a4ff2fd167e184cd599d4811fbe3ea2e57fd75ff46d67032168ac5a"
+        "source_sha256": "752e70236461802ee0eab03ae730df8c92365ba0900f9f48615aea6f515db1d0"
       },
       {
         "command": "julia --startup-file=no --project=. recipes/verify_solution/recipe.jl",
@@ -80,7 +80,7 @@
         "knowledge_ids": [],
         "operation": "verify_solution",
         "recipe_id": "verify_solution",
-        "source_sha256": "3d194ed0ae41cadb55437cc387babbb7cb55a19dbd33ba1b74676ef83e87fd51"
+        "source_sha256": "e586c9d29b93e4eeefe9f233a39fef69da7f07142135506f900f204269eeb9c5"
       }
     ],
     "package": {
@@ -108,7 +108,7 @@
       "recipe": 6
     },
     "repository": "frederikgeth/BMOPFTools.jl",
-    "schema_version": "0.5.0"
+    "schema_version": "0.6.0"
   },
   "book": {
     "corpus_sha256": "28e8b46324866f2dcbef6ba5c40e211952ddecf4ec21154fcb907a84af520465",
@@ -168,10 +168,10 @@
               "expected_status": "failed",
               "operation": "check_contract",
               "recipe_id": "parallel_member_limits",
-              "source_sha256": "0cf9e88046b2fcee78ba42b5bf8a1042a71b862a42d77affc187591e2227404d"
+              "source_sha256": "f574bbd2f34ffe129475cc715828cc526c16e9dc999d7b33e60ef78937d0558d"
             }
           ],
-          "source_sha256": "d5918983a8441730b3f381c11a9bf028c85a118d15d03189376e7bf44594011b"
+          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
         }
       ],
       "implementation_status": "implemented",
@@ -203,10 +203,10 @@
               "expected_status": "failed",
               "operation": "check_contract",
               "recipe_id": "neutral_ground_reference",
-              "source_sha256": "2770312ca3d9f4ac322432ec84319b49eed41b69bb5483bce061b7c39e2b0180"
+              "source_sha256": "691eafc1317d003dd63c78b982554f7f2e97b08a05ef4220a3352d4d997a5fd6"
             }
           ],
-          "source_sha256": "d5918983a8441730b3f381c11a9bf028c85a118d15d03189376e7bf44594011b"
+          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
         }
       ],
       "implementation_status": "implemented",
@@ -227,7 +227,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "0968f9cdbbf22dfec975f4f0fb3f7ba47901452eea0ac6671604ad3f591aab1e"
+          "source_sha256": "c8db26ef94db07473441a400c9d4890f30f3d81508dd78508feb8bc9cd7918a2"
         }
       ],
       "implementation_status": "implemented",
@@ -248,7 +248,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "4011a1828448278a2b7415991545671824d23dc1bc2692bc7d2e2c27540044b1"
+          "source_sha256": "d84b428b259d0e21b633b187c3144ea98d914cda7da006d9899a63f5f4616de0"
         }
       ],
       "implementation_status": "implemented",
@@ -269,7 +269,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "d5918983a8441730b3f381c11a9bf028c85a118d15d03189376e7bf44594011b"
+          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
         }
       ],
       "implementation_status": "implemented",
@@ -291,7 +291,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "8c90d99f78a3b1f9f52dcfa5fd0731a9d9efdb72a671106bcde35585eac97ab9"
+          "source_sha256": "46758e586ff05db4830bba9553cfa243d52a020385cc1a937fad3e45ee876a85"
         }
       ],
       "implementation_status": "implemented",
@@ -313,7 +313,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "d5918983a8441730b3f381c11a9bf028c85a118d15d03189376e7bf44594011b"
+          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
         }
       ],
       "implementation_status": "implemented",
@@ -336,7 +336,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "290a482de7b30a3b9183be6460bfc35759ba1feaff8c6fb8b965d4d6053e6efb"
+          "source_sha256": "cda76def28e24ea998aa79df36fd81652cd8f3a8b67e8ac3fe7f40562687d3da"
         }
       ],
       "implementation_status": "implemented",
@@ -359,7 +359,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "d5918983a8441730b3f381c11a9bf028c85a118d15d03189376e7bf44594011b"
+          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
         }
       ],
       "implementation_status": "implemented",
@@ -382,7 +382,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "d5918983a8441730b3f381c11a9bf028c85a118d15d03189376e7bf44594011b"
+          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
         }
       ],
       "implementation_status": "implemented",
@@ -404,7 +404,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "d5918983a8441730b3f381c11a9bf028c85a118d15d03189376e7bf44594011b"
+          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
         }
       ],
       "implementation_status": "implemented",
@@ -443,21 +443,21 @@
                 "Endpoint terminal labels are distinct and the exact target applies one explicit bijection to maps and matrix coordinates.",
                 "The negative property injects a 0.01 ohm real perturbation at target coordinate (1,1) after exact permutation."
               ],
-              "minimization_strategy": "Retain target coordinate 1 and its mapped source coordinate, discard all other coordinates, and replay the same injected perturbation.",
+              "minimization_strategy": "retain target coordinate 1 and its mapped source coordinate, then discard all other coordinates",
               "properties_checked": [
-                "Exact permutations return passed for every generated case.",
-                "The injected one-entry corruption returns E.CONTRACT.PERMUTATION_RELATION_MISMATCH for every generated case.",
-                "Every injected failure minimizes to one conductor while preserving its Finding code.",
-                "Replaying the recorded algorithm and seed reproduces the case summaries."
+                "Every exactly permuted endpoint map and series matrix returns passed.",
+                "Every injected one-entry matrix corruption returns failed with E.CONTRACT.PERMUTATION_RELATION_MISMATCH.",
+                "Every injected failure shrinks to a one-conductor witness with the same Finding code.",
+                "Replaying the recorded algorithm and seed produces the same case summaries."
               ],
               "property_suite_id": "terminal_permutation_seeded_properties",
               "seed": "0x6d5a56da4b9c2f17",
               "seed_algorithm": "splitmix64-v1",
-              "source_sha256": "46998866a5fcd0843966bb9c7353c016fdf728bbe3f76edc0ae939980180a81c"
+              "source_sha256": "840b333bd7af48dd2de21b91d4bcd98ebce295f69043c27b0c3edff32cfda8e0"
             }
           ],
           "recipes": [],
-          "source_sha256": "879434bccc5f2490cf9f444e131058bb31a8e0754a5ec4fca3947d8e2be9ade3"
+          "source_sha256": "4f898da23f1f400d76cdb9f5f53c4c33f9cda45c33db5f241d342be31bc9e12c"
         }
       ],
       "implementation_status": "implemented",
@@ -479,7 +479,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "d5918983a8441730b3f381c11a9bf028c85a118d15d03189376e7bf44594011b"
+          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
         }
       ],
       "implementation_status": "implemented",
@@ -521,23 +521,23 @@
                 "The exact target is produced by JSON3 encoding and decoding and reverses base-map key insertion order.",
                 "Independent negative properties change only the unit-system string, one voltage-base value, or the final semantic-hash digit."
               ],
-              "minimization_strategy": "Retain unit_system, semantic_hash, and only voltage_V in each base map, then replay exactly one mutation.",
+              "minimization_strategy": "retain unit_system, semantic_hash, and only voltage_V in each base map, then replay exactly one mutation",
               "properties_checked": [
-                "Exact JSON round trips return passed despite base-map insertion-order changes.",
-                "Unit-system mutations return E.CONTRACT.UNIT_SYSTEM_MISMATCH.",
-                "One-value base-map mutations return E.CONTRACT.BASE_MAP_MISMATCH.",
-                "Semantic-hash mutations return E.CONTRACT.SERIALIZED_PAYLOAD_MISMATCH.",
+                "Every exact JSON round trip passes despite base-map insertion-order changes.",
+                "Every unit-system mutation fails with E.CONTRACT.UNIT_SYSTEM_MISMATCH.",
+                "Every one-value base-map mutation fails with E.CONTRACT.BASE_MAP_MISMATCH.",
+                "Every semantic-hash mutation fails with E.CONTRACT.SERIALIZED_PAYLOAD_MISMATCH.",
                 "Every injected failure minimizes to one positive finite base value while preserving its Finding code.",
-                "Replaying the recorded algorithm and seed reproduces the case summaries."
+                "Replaying the recorded algorithm and seed produces the same case summaries."
               ],
               "property_suite_id": "unit_base_serialization_seeded_properties",
               "seed": "0x4f1bbcdc6762c7a9",
               "seed_algorithm": "splitmix64-v1",
-              "source_sha256": "a988594d1ef936c046b9ac1b07368991a1097fb0e6b6870bacff95c3ed83ea0c"
+              "source_sha256": "061755a49d5a847b045db9f6063ea58a45708344d49b0746fc38f5722e903540"
             }
           ],
           "recipes": [],
-          "source_sha256": "bfc1be336aaabaacbbdd8a9b64a1947feac72779fa171fd1b9e288b5898b46f5"
+          "source_sha256": "b5bb78a923202528771c98248c3c1ee00c88bbaa2dd429d965148c8a7db91b92"
         }
       ],
       "implementation_status": "implemented",
@@ -565,6 +565,6 @@
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "0b0b77dbf4605a9c5c0b43cb5124ae7020394707c8eb75988fcf7751b8eb844b",
+  "pair_sha256": "e4209fbf0c1f8293eac23086f3e66a814e472c45412d2f3e3a6c67c4d299a97d",
   "schema_version": "0.1.0"
 }

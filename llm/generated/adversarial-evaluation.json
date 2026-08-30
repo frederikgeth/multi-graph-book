@@ -117,8 +117,8 @@
           "claim:FORMULATION-NODAL-002",
           "claim:ARCH-BLOCK-001",
           "claim:FORMULATION-NODAL-003",
-          "claim:ARCH-RECOVERY-001",
           "claim:ARCH-SUPPORT-001",
+          "claim:ARCH-RECOVERY-001",
           "claim:ARCH-RECOVERY-003",
           "claim:ARCH-NODAL-001",
           "concept:mutual-coupling-relation",
@@ -179,7 +179,7 @@
           "claim:TR-PAR-003",
           "concept:ground-neutral-reference",
           "concept:mutual-coupling-relation",
-          "concept:object-node-interface"
+          "concept:factor"
         ]
       },
       "hybrid": {
@@ -188,8 +188,8 @@
         "top_10": [
           "concept:parallel",
           "claim:TR-PAR-002",
-          "claim:TR-XFMR-006",
           "claim:FORMULATION-NODAL-002",
+          "claim:TR-XFMR-006",
           "concept:rating-limit-constraint",
           "claim:TR-PAR-003",
           "claim:TR-XFMR-007",
@@ -282,8 +282,8 @@
           "claim:FORMULATION-NODAL-001",
           "claim:TR-XFMR-003",
           "claim:ARCH-LOWER-001",
-          "claim:RATING-001",
-          "concept:rating-limit-constraint"
+          "concept:rating-limit-constraint",
+          "claim:RATING-001"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -409,8 +409,8 @@
           "claim:TR-KRON-NEUTRAL-002",
           "claim:TR-KRON-NEUTRAL-003",
           "claim:TR-KRON-NEUTRAL-006",
-          "claim:TR-KRON-NEUTRAL-004",
-          "claim:TR-KRON-NEUTRAL-005"
+          "claim:TR-KRON-NEUTRAL-005",
+          "claim:TR-KRON-NEUTRAL-004"
         ]
       },
       "lexical": {
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "0e3eb0f4737c96c647c7190cdd05cdfc7c3b01ba0426cf348b9c5d83eb9f3d5e"
+    "corpus_sha256": "ee4cb7e8c0338f95a5c686aa1476ea7998e0806c2bf3626e04d140036e822a53"
   },
   "inputs": {
     "adversarial_cases": {

@@ -17,8 +17,8 @@
     "source_objects": 22,
     "view_maps": 7,
     "local_links": 626,
-    "llm_corpus_records": 862,
-    "llm_section_records": 717,
+    "llm_corpus_records": 870,
+    "llm_section_records": 725,
     "llm_claim_bundles": 109,
     "llm_concept_bundles": 18,
     "llm_misconception_contracts": 23,
@@ -263,7 +263,7 @@
     },
     {
       "path": "OPEN_TRANCHES.md",
-      "sha256": "4a502d126b014389fcfe90683c08f4f87bc1da33ffb8596859dd61b4d092b0ae"
+      "sha256": "2e748d9e631d9fd2d4d6d7eed58082b7416cffa595efce4da881cfb9144f0ff1"
     },
     {
       "path": "QUALITY_CONTROL.md",
@@ -275,7 +275,7 @@
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "b7fbc230305550422a3be49229af4fcb619f4cac3e41a362b694f29c87bf9d05"
+      "sha256": "c04f0946987869e72126380b2151594f663257917b549e729720de26e40d53d4"
     },
     {
       "path": "benchmarks/agent/README.md",
@@ -283,15 +283,15 @@
     },
     {
       "path": "benchmarks/agent/generated/benchmark-manifest.json",
-      "sha256": "e1fe6e80fe1992b25dc981680b2218d69fdce8d3290ef9e69c5e3f71de30bc8c"
+      "sha256": "afbd1ec0fc7866e312aa82f6e75d522cb8010a75c08d112480055f86c864542b"
     },
     {
       "path": "benchmarks/agent/generated/conformance-evaluation.json",
-      "sha256": "58a552078b4458ce3c0c1ad83e52a003d5f8931d52be6aaee98e089f4015ea1b"
+      "sha256": "8f2b2c2523c94c28d184771453b7f55689a4743f9e612a3454632c7ebc2ec0f6"
     },
     {
       "path": "benchmarks/agent/generated/pilot-design-manifest.json",
-      "sha256": "6bd41272f9c3cac3fe8755b5b03f6748f82624d4270f42582801ecb80303d53a"
+      "sha256": "0ccf6f6efd84d7b1141929eb043fe38ce6e7ccda5bd92091e24da39ff22db13d"
     },
     {
       "path": "benchmarks/agent/generated/pilot-dry-run-evaluation.json",
@@ -303,7 +303,7 @@
     },
     {
       "path": "benchmarks/agent/pilot/dry-runs/conforming-c6-run.json",
-      "sha256": "8ca39d26e13a40b98f546e12f6599fc1b9af0b54ef10baa91e00d9922d373e2a"
+      "sha256": "50480e3a64bb16a7defea4ccace1bc4e0fd0ac8d27914971492026191f9b020b"
     },
     {
       "path": "benchmarks/agent/pilot/dry-runs/excluded-provider-failure.json",
@@ -323,7 +323,7 @@
     },
     {
       "path": "benchmarks/agent/submissions/conforming-c6.json",
-      "sha256": "53b7d4160d236227ad49289ef5cc21054cb73fbe986daafbc7cc339c2a557f66"
+      "sha256": "0623f75a1a7c20f894427512657bccfe119d2354ed17bf58ade436c90fe6750c"
     },
     {
       "path": "benchmarks/agent/submissions/unsafe-c0.json",
@@ -1987,7 +1987,7 @@
     },
     {
       "path": "docs/src/literature/development-decision-log.md",
-      "sha256": "f851e6e83ec1096b927371b8261cbcc626d903991e03cfc5d8e0aef2d2005af1"
+      "sha256": "c016d5c9ba868d1f125e48631bc9cb87ba52df8cf8ab0cc0ca6cccabc2c15573"
     },
     {
       "path": "docs/src/literature/literature-map.md",
@@ -3459,11 +3459,11 @@
     },
     {
       "path": "llm/generated/access-fixtures.jsonl",
-      "sha256": "01402f355e9ed73b6a1f6d96d8ce28fc9497ac88288bca9fc841fe3eca960763"
+      "sha256": "8caa33b06ecdd4083d5de7d9f152c7d1a6841c85fc3f2cdb50ab706d59091b23"
     },
     {
       "path": "llm/generated/adversarial-evaluation.json",
-      "sha256": "10adeb06aab19e3a46c1f35e4bb85d16219b0eaccc58e225487255ee0cee804d"
+      "sha256": "087d549537cdcbd95d2b047b8f1cedbf155f094b149706bcf388f0fce94be896"
     },
     {
       "path": "llm/generated/adversarial-evaluation.md",
@@ -3471,19 +3471,19 @@
     },
     {
       "path": "llm/generated/corpus-manifest.json",
-      "sha256": "4acb22c580f71eb0f56a257b9ce314d408137e25a26e5acbb38793d369e04bf6"
+      "sha256": "037a1487624d1186663fbb8cba9fae6d65f8c29a5e5df1a1d0489a741d8b94a5"
     },
     {
       "path": "llm/generated/corpus.jsonl",
-      "sha256": "0e3eb0f4737c96c647c7190cdd05cdfc7c3b01ba0426cf348b9c5d83eb9f3d5e"
+      "sha256": "ee4cb7e8c0338f95a5c686aa1476ea7998e0806c2bf3626e04d140036e822a53"
     },
     {
       "path": "llm/generated/neural-retrieval-evaluation.json",
-      "sha256": "700b03b52a400183102351a0126975a5bdb8b2fd939c11de987b01d89ec8a79c"
+      "sha256": "f7709d979f1a29b013c4c3a74cdc0db3c11ba1ec9d3140df4d84064cfd4e46f6"
     },
     {
       "path": "llm/generated/neural-retrieval-evaluation.md",
-      "sha256": "93f9f1db63b5758605affcef800dbc59118678ff7eaef593b3649573a3d19c81"
+      "sha256": "6580cb0bd7874a8c4d26f5cddb50ddc6c59e8014b8d13a6152898969b1d1e282"
     },
     {
       "path": "llm/generated/neural-retrieval-negative-result.json",
@@ -3491,11 +3491,11 @@
     },
     {
       "path": "llm/generated/retrieval-evaluation.json",
-      "sha256": "088cc86de8f399ee599766468eac4fb4b0ea1e98c0140baad037fb080cabfe82"
+      "sha256": "37eb01be8276e59acb90a89aa0aff79139f584030528d0195ac6f0c047dde685"
     },
     {
       "path": "llm/generated/retrieval-evaluation.md",
-      "sha256": "e4e86b6ae69d1ce43a3c9f5da4cfcc49066c894e4ca89bbe199efc512711e60a"
+      "sha256": "e2daa6e43cc22b2b4a45e7888473da4cad028b2a2bc3e124ee9b0bfd6c2f040a"
     },
     {
       "path": "llm/heldout-paraphrases.toml",

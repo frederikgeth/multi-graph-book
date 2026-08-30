@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "0e3eb0f4737c96c647c7190cdd05cdfc7c3b01ba0426cf348b9c5d83eb9f3d5e",
+  "corpus_sha256": "ee4cb7e8c0338f95a5c686aa1476ea7998e0806c2bf3626e04d140036e822a53",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -15,12 +15,12 @@
   "evaluation_case_count": 69,
   "heldout_case_count": 33,
   "misconception_count": 23,
-  "record_count": 862,
+  "record_count": 870,
   "record_counts": {
     "claim_bundle": 109,
     "concept_bundle": 18,
     "scientific_knowledge": 18,
-    "section": 717
+    "section": 725
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -177,7 +177,7 @@
     },
     {
       "path": "docs/src/literature/development-decision-log.md",
-      "sha256": "f851e6e83ec1096b927371b8261cbcc626d903991e03cfc5d8e0aef2d2005af1"
+      "sha256": "c016d5c9ba868d1f125e48631bc9cb87ba52df8cf8ab0cc0ca6cccabc2c15573"
     },
     {
       "path": "docs/src/literature/literature-map.md",

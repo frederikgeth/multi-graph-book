@@ -101,7 +101,7 @@ collapsing them into one success flag. The pair manifest pins this operation
 recipe without injecting it into a PSK context packet.
 
 A fifth, package-only `explain-finding` route now performs deterministic offline
-lookup over a generated registry of all 341 Finding codes documented by
+lookup over a generated registry of all 353 Finding codes documented by
 BMOPFTools. Its `explain_finding` recipe distinguishes a canonical code meaning
 from one case-specific observation and refuses to infer causes, repairs, or PSK
 links. External PowerIO diagnostic namespaces remain outside the package
@@ -127,7 +127,7 @@ the package export and federated pin. Remaining work in this tranche is only
 evidence-gated contract promotion. Solver invocation remains outside the
 current transport slice.
 
-### Negative-knowledge taxonomy tranche (core complete, 2026-08-30)
+### Negative-knowledge taxonomy tranche (foundation delivered; migration open, 2026-08-30)
 
 The first non-modelling record is now `PSK-000015`, a book-owned
 `negative-result` for the pinned compact neural retriever and generic
@@ -163,9 +163,15 @@ The schema and federated pair support an explicit `not_applicable` execution
 relationship. This prevents the taxonomy from inventing a package contract
 when evidence belongs entirely to the book while preserving a stable,
 source-hash-bound PSK route. The four targeted structured classes are now
-exercised end to end.
+exercised end to end. The migration is not complete: 18 of 23 stable
+misconception IDs are linked from PSK records. The five remaining IDs are
+`one-universal-network-graph`, `self-loop-is-a-shunt-or-circuit-loop`,
+`loads-generators-fixed-graph-membership`, `nodal-operator-is-source-network`,
+and `radial-is-representation-independent`. Each still needs an evidence-backed
+PSK link or an explicit exclusion rationale; its existing misconception ID
+must remain stable either way.
 
-### Property-based testing tranche (core complete, 2026-08-30)
+### Property-based testing tranche (seeded regression foundation delivered; discovery open, 2026-08-30)
 
 The first controlled property suite is implemented for `PSK-000012` and the
 package-owned `terminal_permutation_invariance` contract. BMOPFTools records a
@@ -191,15 +197,20 @@ retain their distinct stable Finding codes, and every one is minimized to a
 one-base witness. Replay, export, federation, and grounded-answer checks pin the
 second seed and classification just as they do for `PSK-000012`.
 
-These two suites complete the initial controlled property mechanism without
+These two suites complete the initial seeded regression mechanism without
 claiming exhaustive sampling, physical conversion validation, or new scientific
-counterexamples. Further properties are promoted only when an existing scoped
-contract supplies a clear in-domain generator, oracle, and minimizer.
+counterexamples. They deliberately inject known violations, so the broader
+counterexample-factory milestone remains open. That milestone requires a
+generator capable of exposing an unanticipated contract or invariant failure,
+an outcome-preserving shrinker that is not specialized to one injected fault,
+and the existing reproduce, classify, and human-review boundary. Further
+properties are promoted only when an existing scoped contract supplies a clear
+in-domain generator and oracle.
 
 The lightweight research/decision-log milestone is now delivered. The
 reader-facing log uses stable `DLOG-*` entries, retains rejected approaches,
 states its boundary from the scientific claims ledger, and is checked in both
-documentation CI and the release-candidate gate. Its first eight entries
+documentation CI and the release-candidate gate. Its first nine entries
 capture the cross-repository decisions already exercised by the implementation,
 including the benchmark substrate and its human-gated pilot design, rather
 than manufacturing new scientific claims.

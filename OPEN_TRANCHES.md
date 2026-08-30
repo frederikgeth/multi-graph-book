@@ -16,9 +16,9 @@ The authority for repository ownership and dependency direction is
 |---|---|---|---|
 | 1. Execution interface | Core complete | Two curated contract adapters plus parse/intake, case analysis, supplied-result verification, offline Finding explanation, and a six-tool read-only MCP adapter over the same envelopes | Promote another contract only when its transport mapping and evidence justify it |
 | 2. Documentation and recipes | Core complete | Assistant guide, `llms.txt`, two scientific-contract recipes, and tutorial-derived parse, analysis, verification, and Finding-explanation recipes | Keep examples synchronized; solving remains outside this transport slice |
-| 3. Negative-knowledge taxonomy | Core complete | Fourteen executable links plus book-only structured negative-result, numerical-pathology, scope-boundary, and open-question records | Add further records only for evidence-backed high-risk questions |
-| 4. Property-based testing | Core complete | Seeded terminal-permutation and unit/base serialization suites with deterministic replay, minimization, classification, and federated pins | Add further properties only where an existing contract has a clear generator and oracle |
-| 5. Research/decision log | Core complete | Stable `DLOG-*` format, eight seeded decisions, contributor guidance, CI/release validation, and reader/LLM access | Add or supersede entries when consequential choices are made |
+| 3. Negative-knowledge taxonomy | Foundation delivered; migration open | Four structured new classes plus PSK links for 18 of 23 stable misconception IDs | Classify and link, or explicitly exclude with reasons, the five remaining misconception IDs |
+| 4. Property-based testing | Seeded regression foundation delivered; discovery open | Two deterministic expected-rejection suites with replay, scoped minimization, classification, and federated pins | Add a genuine failure-discovery generator and outcome-preserving shrinker before calling this a counterexample factory |
+| 5. Research/decision log | Core complete | Stable `DLOG-*` format, nine seeded decisions, contributor guidance, CI/release validation, and reader/LLM access | Add or supersede entries when consequential choices are made |
 | 6. Agent benchmark | Human gate reached | Substrate plus a four-condition, balanced, source-bound pilot design; run schema, exclusions, aggregation, and synthetic dry runs are tested | Human review, exact system/settings freeze, and execution authorization are mandatory before preregistration or real runs |
 | 7. Review maturation | Ongoing external dependency | Internal gates and review packet exist | Independent review and claim reclassification |
 
@@ -38,7 +38,7 @@ case and returns the complete standard analysis/validation report with status
 A separate `verify-solution` route profiles a supplied result without invoking a
 solver. Its execution status remains distinct from solver termination and the
 independent report's Finding severity. A deterministic `explain-finding` route
-looks up all 341 documented package codes in a generated offline registry,
+looks up all 353 documented package codes in a generated offline registry,
 preserving declared links while refusing inferred causes, repairs, PSK links,
 and external PowerIO namespaces. A distinct `parse-case` route now reports
 decode/migration/normalization evidence and a compact inventory without running
@@ -108,7 +108,8 @@ The PSK schema supports `misconception`, `antipattern`, `counterexample`,
 `software-antipattern`, `scope-boundary`, and `open-question`. The initial
 records currently emphasize modelling antipatterns and invalid inferences.
 
-**Current status (2026-08-30):** core complete. `PSK-000015` records the
+**Current status (2026-08-30):** foundation delivered; legacy migration remains
+open. `PSK-000015` records the
 archived compact-neural-retrieval and generic-reranking experiment as a
 reproducible `negative-result`. The subtype requires the full negative-result
 quality fields, is routed through a three-audience misconception contract, and
@@ -126,8 +127,15 @@ mutual-coupling audience cases. `PSK-000018` adds the first structured
 reference matrix remains unresolved after the recorded frequency discriminator,
 and three new audience routes preserve the known evidence, missing provenance,
 and resolution criteria without relabelling the separate UGHV fixture. The four
-targeted structured classes are now exercised end to end; further taxonomy
-growth is evidence-driven rather than quota-driven.
+targeted structured classes are now exercised end to end. Eighteen of the 23
+stable records in `llm/misconceptions.toml` are linked from the PSK registry.
+The remaining stable IDs are `one-universal-network-graph`,
+`self-loop-is-a-shunt-or-circuit-loop`,
+`loads-generators-fixed-graph-membership`, `nodal-operator-is-source-network`,
+and `radial-is-representation-independent`. They must be linked to an
+evidence-backed PSK object or explicitly excluded with a recorded reason; PSK
+IDs do not replace their stable misconception identities. Further taxonomy
+growth remains evidence-driven rather than quota-driven.
 
 Scope:
 
@@ -152,7 +160,8 @@ Acceptance criteria:
 Generalize the current deterministic metamorphic tests into a controlled
 property-based mechanism.
 
-**Current status (2026-08-30):** core complete. The first controlled suite is
+**Current status (2026-08-30):** seeded regression foundation delivered;
+failure discovery remains open. The first controlled suite is
 implemented for `PSK-000012` and BMOPFTools'
 `terminal_permutation_invariance` contract. A committed SplitMix64 seed record
 defines 64 reciprocal, strictly diagonally dominant complex series matrices
@@ -172,10 +181,13 @@ All 192 injected failures must produce their distinct stable Finding codes and
 all minimize to one-base witnesses; a second execution must reproduce the same
 summary. Its metadata explicitly refuses the inference that a declaration-only
 pass computes physical SI-to-per-unit equivalence or authenticates the hash.
-Together the two suites establish the initial generator, replay, oracle,
-minimization, classification, export, and federation mechanism. Additional
-properties are evidence-driven extensions rather than prerequisites for this
-core tranche.
+Together the two suites establish the initial seeded generator, replay, oracle,
+scoped minimization, classification, export, and federation mechanism. Because
+both negative cases are deliberately injected and expected, they do not yet
+constitute a counterexample factory. The open milestone is a generator that can
+encounter an unanticipated contract or invariant failure, plus a general
+outcome-preserving shrinker and the existing reproduce → classify → review
+boundary. Additional properties remain evidence-driven extensions.
 
 Candidate properties include consistent bus/conductor relabelling, unit/base
 conversion, serialization round-trips, valid fixed-linear equivalence, and
@@ -200,11 +212,9 @@ Acceptance criteria:
 Core mechanism complete. The reader-facing
 [`development-decision-log.md`](docs/src/literature/development-decision-log.md)
 defines stable `DLOG-*` entries and is indexed by the existing documentation
-and deterministic LLM corpus. Six seed entries preserve the principal choices
-and rejected approaches already exercised by this initiative: repository
-authority, deterministic retrieval, curated execution adapters, property-suite
-evidence classification, the archived neural candidate, and asymmetric
-book-only negative knowledge.
+and deterministic LLM corpus. Nine entries preserve the principal choices and
+rejected approaches already exercised by this initiative, including the
+separate identities used for misconceptions and federated PSK links.
 
 Each entry should record:
 

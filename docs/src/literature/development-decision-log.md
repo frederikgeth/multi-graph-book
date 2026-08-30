@@ -394,3 +394,56 @@ The gate may be recorded as passed when a reviewer approves resource exposure
 and leakage risk, exact systems and settings, execution and data-handling
 authority, and the held-out-task decision. It does not disappear merely because
 a model endpoint becomes technically available.
+
+## DLOG-0009 — Preserve misconception identities while linking them through PSK
+
+- **Date:** 2026-08-30
+- **Status:** accepted
+- **Scope:** negative-knowledge identifiers and taxonomy migration
+
+### Question
+
+Should stable misconception IDs be replaced by `PSK-*` identifiers as the
+negative-knowledge taxonomy broadens?
+
+### Options considered
+
+- replace each misconception ID with a PSK ID;
+- duplicate the same misconception under independent identifiers with no
+  declared relationship;
+- preserve misconception IDs and link them from evidence-scoped PSK objects.
+
+### Decision
+
+Keep the stable IDs in `llm/misconceptions.toml`. A PSK object may link one or
+more of them to claims, evidence qualifications, source anchors, and executable
+relationships, but does not replace their routing identity. Migration is
+complete only when every in-scope misconception is linked or explicitly
+excluded with a recorded reason.
+
+### Reason
+
+Misconception IDs are already public routing keys in the deterministic LLM
+machinery, while PSK IDs federate scientific and executable authorities.
+Conflating those roles would break stable retrieval references and encourage a
+PSK record to become a duplicate misconception catalogue.
+
+### Evidence
+
+`ARCHITECTURE.md` states that PSK IDs connect rather than replace existing
+identifier systems. `knowledge/psk.toml`, `llm/misconceptions.toml`, and the
+misconception router implement the two roles. The maintained open-tranche
+inventory records the linked and outstanding sets.
+
+### Known downside
+
+Contributors must maintain an explicit relationship between two identifier
+systems, and completion cannot be inferred merely from the number of PSK
+records.
+
+### Conditions for revisiting
+
+Revisit only if a versioned migration can preserve old routing keys, source
+hashes, context-packet behavior, and external references while proving that a
+single identifier system expresses both routing identity and federated evidence
+scope without duplication.
