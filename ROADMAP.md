@@ -127,7 +127,7 @@ the package export and federated pin. Remaining work in this tranche is only
 evidence-gated contract promotion. Solver invocation remains outside the
 current transport slice.
 
-### Negative-knowledge taxonomy tranche (in progress, 2026-08-30)
+### Negative-knowledge taxonomy tranche (core complete, 2026-08-30)
 
 The first non-modelling record is now `PSK-000015`, a book-owned
 `negative-result` for the pinned compact neural retriever and generic
@@ -152,11 +152,19 @@ limit, state, protection, and decision extensions explicitly unestablished.
 The existing three-audience mutual-coupling route now retrieves that boundary
 without adding a duplicate misconception or an artificial package contract.
 
+`PSK-000018` now exercises `open-question` on the unresolved Australian
+`CS1035` construction mapping. It separates the independent reference matrix,
+the separately lifted UGHV fixture, the failed 50/60 Hz discriminator, the
+missing construction and provenance fields, and the criteria for a faithful
+forward reproduction. Three audience-specific routes prevent a numerical
+comparison from being presented as recovered source identity.
+
 The schema and federated pair support an explicit `not_applicable` execution
 relationship. This prevents the taxonomy from inventing a package contract
 when evidence belongs entirely to the book while preserving a stable,
-source-hash-bound PSK route. The next subtype to exercise should be a structured
-`open-question` record.
+source-hash-bound PSK route. The four targeted structured classes are now
+exercised end to end. The next implementation milestone is the property-based
+generator domain and first reproducible seed record.
 
 ### Product identity and editorial stance
 

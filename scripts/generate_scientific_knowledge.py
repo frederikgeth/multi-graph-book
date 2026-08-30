@@ -135,6 +135,16 @@ def knowledge_text(item: dict) -> str:
             "Unsafe extensions: " + " ".join(scope_boundary["unsafe_extensions"]),
             "Evidence required to extend: " + " ".join(scope_boundary["required_evidence"]),
         ])
+    open_question = item.get("open_question")
+    if open_question:
+        lines.extend([
+            "Open question: " + open_question["question"],
+            "Known evidence: " + " ".join(open_question["known_evidence"]),
+            "Unresolved information: " + " ".join(open_question["unresolved_information"]),
+            "Attempted discriminators: " + " ".join(open_question["attempted_discriminators"]),
+            "Resolution criteria: " + " ".join(open_question["resolution_criteria"]),
+            "Next actions: " + " ".join(open_question["next_actions"]),
+        ])
     return "\n".join(lines)
 
 
@@ -348,6 +358,27 @@ def validate_and_build() -> tuple[list[dict], dict, list[str]]:
         elif scope_boundary is not None:
             errors.append(f"{record_id}: scope_boundary table is only valid for scope-boundary kind")
 
+        open_question = item.get("open_question")
+        if item.get("kind") == "open-question":
+            if not isinstance(open_question, dict):
+                errors.append(f"{record_id}: open-question kind requires an open_question table")
+            else:
+                for field in ("question", "review_status"):
+                    if not isinstance(open_question.get(field), str) or not open_question[field].strip():
+                        errors.append(f"{record_id}: missing or empty open_question.{field}")
+                for field in (
+                    "known_evidence", "unresolved_information", "attempted_discriminators",
+                    "resolution_criteria", "next_actions", "reproducer_commands",
+                ):
+                    require_unique_strings(
+                        record_id,
+                        f"open_question.{field}",
+                        open_question.get(field),
+                        errors,
+                    )
+        elif open_question is not None:
+            errors.append(f"{record_id}: open_question table is only valid for open-question kind")
+
         record = {
             "schema_version": SCHEMA_VERSION,
             "record_id": f"knowledge:{record_id}",
@@ -376,6 +407,8 @@ def validate_and_build() -> tuple[list[dict], dict, list[str]]:
             record["numerical_pathology"] = numerical_pathology
         if scope_boundary is not None:
             record["scope_boundary"] = scope_boundary
+        if open_question is not None:
+            record["open_question"] = open_question
         records.append(record)
 
     records.sort(key=lambda item: item["knowledge_id"])

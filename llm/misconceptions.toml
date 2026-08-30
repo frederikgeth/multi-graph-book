@@ -209,6 +209,19 @@ mandatory_concept_ids = ["normalization", "phase-conductor-sequence-coordinate",
 source_paths = ["docs/src/foundations/load-models-and-decision-dependence.md"]
 
 [[misconception]]
+id = "reference-matrix-match-proves-source-provenance"
+title = "An available or closely matched impedance matrix proves its source construction"
+severity = "high"
+query_patterns = ["CS1035 construction", "CS1035 cable geometry", "Australian underground linecode", "reference matrix proves geometry", "impedance matrix source provenance", "match line matrix to cable", "infer cable construction from impedance", "frequency explains matrix mismatch", "reproduce CS1035", "UGHV is CS1035"]
+tempting_answer = "Treat the available UGHV fixture as the CS1035 source construction, or infer its provenance from the reference matrix and the closest numerical match."
+required_qualification = "The reference matrix is an independent output, not a construction record. The available UGHV fixture has no source mapping to CS1035, the frequency probe does not resolve the mismatch, and conductor, screen, earth-return, ordering, and provenance fields must be recovered before claiming a faithful reproduction."
+safe_shorthand = "A matrix match is a diagnostic observation; source reconstruction requires independently sourced construction metadata and a forward regeneration test."
+operational_consequence = "Guessing the construction can silently assign the wrong cable geometry, screen treatment, earth-return model, frequency, or ordering and then present a fitted or unrelated fixture as source validation."
+mandatory_claim_ids = ["AU-CARSON-001"]
+mandatory_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "ground-neutral-reference"]
+source_paths = ["docs/src/cases/australian-carson-reproduction.md", "experiments/data/australian_source_audit.toml"]
+
+[[misconception]]
 id = "fixed-tap-snapshot-preserves-adjustable-transformer"
 title = "A transformer fixed at its start tap preserves an adjustable-tap model"
 severity = "critical"

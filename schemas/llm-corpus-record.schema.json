@@ -53,7 +53,8 @@
     "executable": {"type": "object"},
     "negative_result": {"type": "object"},
     "numerical_pathology": {"type": "object"},
-    "scope_boundary": {"type": "object"}
+    "scope_boundary": {"type": "object"},
+    "open_question": {"type": "object"}
   },
   "allOf": [
     {

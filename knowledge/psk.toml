@@ -749,3 +749,72 @@ contract_ids = []
 finding_codes = []
 related_finding_codes = []
 fixture_ids = []
+
+[[knowledge]]
+id = "PSK-000018"
+kind = "open-question"
+title = "The source construction behind the Australian CS1035 reference remains unresolved"
+scientific_statement = "The available Australian CS1035 four-conductor reference matrix and the separately lifted UGHV construction fixture do not establish a source-construction mapping between them; a faithful CS1035 reproduction remains open until the conductor and screen construction, earth-return convention, frequency, and conductor ordering are recovered and independently regenerate the reference without using that matrix as an input."
+scope = "The underground case in the source-audited Australian Carson/OpenDSSDirect reproduction, including the independent CS1035 reference matrix, the separately identified UGHV fixture, and the recorded 50 Hz and 60 Hz diagnostic probes."
+evidence_status = "open_question"
+does_not_establish = [
+  "The lifted UGHV construction is the construction that generated the CS1035 reference matrix.",
+  "The CS1035 reference frequency, conductor ordering, screen representation, or earth-return convention can be inferred uniquely from the matrix alone.",
+  "Agreement of the UGHV OpenDSSDirect and independent linear-algebra solves validates the missing CS1035 construction mapping.",
+  "A frequency change is sufficient to reconcile the underground reference.",
+]
+
+[knowledge.open_question]
+question = "Which source conductor and screen construction, earth-return convention, frequency, and conductor ordering generated the Australian CS1035 reference matrix?"
+known_evidence = [
+  "The active CS1035 4-by-4 series matrix is retained as an independent comparison output and is not used to construct the tested primitive.",
+  "The repository contains a separately identified UGHV 185 Al PILC construction fixture, but no source record maps that fixture to CS1035.",
+  "The UGHV fixture produces converged OpenDSSDirect and independent linear-algebra cases under the declared conventions.",
+  "Changing the diagnostic Carson probe from 50 Hz to 60 Hz increases rather than resolves the recorded underground matrix mismatch.",
+]
+unresolved_information = [
+  "The raw CS1035 phase, neutral, and screen construction and geometric arrangement.",
+  "The reference matrix's earth-return and screen-reduction conventions.",
+  "The source frequency, conductor ordering, units, and any post-processing applied to the reference matrix.",
+  "A provenance record linking those inputs to the published CS1035 output.",
+]
+attempted_discriminators = [
+  "A 50 Hz versus 60 Hz frequency probe did not reconcile the underground mismatch.",
+  "The available UGHV construction was regenerated and compared while keeping the CS1035 matrix out of the model inputs.",
+  "OpenDSSDirect results were cross-checked against an independent LinearAlgebra-only solve for the UGHV fixture, which validates that fixture's computation but not its identity with CS1035.",
+]
+resolution_criteria = [
+  "Recover a source-backed CS1035 construction and provenance record with conductor, screen, geometry, earth-return, frequency, ordering, and unit conventions.",
+  "Regenerate the reference from those inputs without fitting to or using the CS1035 matrix as a model input.",
+  "Explain the residual under a declared tolerance and independently review the construction-to-reference mapping.",
+]
+next_actions = [
+  "Search the originating line-library history and upstream source material for the missing CS1035 construction record.",
+  "If recovered, add the construction as a distinct source input and update the provenance audit rather than relabelling the existing UGHV fixture.",
+  "Rerun the deterministic Carson/OpenDSSDirect reproduction and its independent cross-check before changing the question's status.",
+]
+reproducer_commands = [
+  "julia --startup-file=no --project=experiments experiments/run_australian_carson_reproduction.jl",
+  "julia --startup-file=no --project=experiments experiments/test/australian_carson_reproduction.jl",
+]
+review_status = "The unresolved mapping and failed frequency discriminator are independently executable; the missing construction provenance has not been recovered or independently reviewed."
+
+[knowledge.book]
+claim_ids = ["AU-CARSON-001"]
+misconception_ids = ["reference-matrix-match-proves-source-provenance"]
+certificate_ids = []
+counterexample_ids = []
+artifact_paths = ["experiments/generated/australian-carson-reproduction.json"]
+source_paths = [
+  "docs/src/cases/australian-carson-reproduction.md",
+  "experiments/data/australian_source_audit.toml",
+  "experiments/transformations/AustralianCarsonReproduction.jl",
+  "experiments/test/australian_carson_reproduction.jl",
+]
+
+[knowledge.executable]
+implementation_status = "not_applicable"
+contract_ids = []
+finding_codes = []
+related_finding_codes = []
+fixture_ids = []

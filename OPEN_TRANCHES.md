@@ -16,7 +16,7 @@ The authority for repository ownership and dependency direction is
 |---|---|---|---|
 | 1. Execution interface | Core complete | Two curated contract adapters plus parse/intake, case analysis, supplied-result verification, offline Finding explanation, and a six-tool read-only MCP adapter over the same envelopes | Promote another contract only when its transport mapping and evidence justify it |
 | 2. Documentation and recipes | Core complete | Assistant guide, `llms.txt`, two scientific-contract recipes, and tutorial-derived parse, analysis, verification, and Finding-explanation recipes | Keep examples synchronized; solving remains outside this transport slice |
-| 3. Negative-knowledge taxonomy | In progress | Fourteen executable links plus book-only structured negative-result, numerical-pathology, and scope-boundary records | Add the first structured open-question record |
+| 3. Negative-knowledge taxonomy | Core complete | Fourteen executable links plus book-only structured negative-result, numerical-pathology, scope-boundary, and open-question records | Add further records only for evidence-backed high-risk questions |
 | 4. Property-based testing | Queued | Deterministic metamorphic tests and minimized fixtures | Define the generator domain and seed record |
 | 5. Research/decision log | Queued | Decisions currently recorded in architecture and handover prose | Add the lightweight decision-log format |
 | 6. Agent benchmark | Deferred | Deterministic retrieval evaluation exists | Start after the execution surface stabilizes |
@@ -108,7 +108,7 @@ The PSK schema supports `misconception`, `antipattern`, `counterexample`,
 `software-antipattern`, `scope-boundary`, and `open-question`. The initial
 records currently emphasize modelling antipatterns and invalid inferences.
 
-**Current status (2026-08-30):** in progress. `PSK-000015` records the
+**Current status (2026-08-30):** core complete. `PSK-000015` records the
 archived compact-neural-retrieval and generic-reranking experiment as a
 reproducible `negative-result`. The subtype requires the full negative-result
 quality fields, is routed through a three-audience misconception contract, and
@@ -121,8 +121,13 @@ load-model-ranking conclusions. It is likewise book-owned and routed through
 three audience contracts. `PSK-000017` adds the first `scope-boundary`, making
 the exact scalar coupled-corridor lattice domain and its unestablished physical
 and decision extensions separately retrievable through the existing
-mutual-coupling audience cases. The next record should exercise an explicit
-`open-question` class.
+mutual-coupling audience cases. `PSK-000018` adds the first structured
+`open-question`: the source construction behind the Australian `CS1035`
+reference matrix remains unresolved after the recorded frequency discriminator,
+and three new audience routes preserve the known evidence, missing provenance,
+and resolution criteria without relabelling the separate UGHV fixture. The four
+targeted structured classes are now exercised end to end; further taxonomy
+growth is evidence-driven rather than quota-driven.
 
 Scope:
 
@@ -218,13 +223,12 @@ These items are release-quality follow-ups rather than implementation blockers:
 
 ## Suggested order
 
-1. Add a structured open-question record; continue
-   promoting executable contracts only when their mappings and evidence are
-   unambiguous.
-2. Property-based testing and minimized counterexamples.
-3. Research/decision log.
-4. Agent benchmark.
-5. External review and evidence maturation in parallel as reviewers become
+1. Define the property-based generator domain and first reproducible seed
+   record; continue promoting executable contracts only when their mappings
+   and evidence are unambiguous.
+2. Add the lightweight research/decision log.
+3. Agent benchmark.
+4. External review and evidence maturation in parallel as reviewers become
    available.
 
 Each tranche should add tests, generated artifacts, and explicit scope rather

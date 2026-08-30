@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "19039725fc0807448d6ff451c5bd0191b01e78e7ddecb1c2c84a36f56f5398d9",
+  "corpus_sha256": "1416a46ceda8a809226749f73e58d8abe7978b4ee5090beb31edff58c08441c9",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -12,15 +12,15 @@
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
     "included_doc_count": 68
   },
-  "evaluation_case_count": 66,
+  "evaluation_case_count": 69,
   "heldout_case_count": 33,
-  "misconception_count": 22,
-  "record_count": 784,
+  "misconception_count": 23,
+  "record_count": 786,
   "record_counts": {
     "claim_bundle": 109,
     "concept_bundle": 18,
-    "scientific_knowledge": 17,
-    "section": 640
+    "scientific_knowledge": 18,
+    "section": 641
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -209,7 +209,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "124558916ca3601355e5985c515d3d2b97a9d2af1c48d58667aeb9b709b30465"
+      "sha256": "a939a5cf107a9dbea4e182f30d06aa0898fd90cfaf5a2992b9069ca61dfb04d3"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -221,11 +221,11 @@
     },
     {
       "path": "docs/src/start/chatgpt-access.md",
-      "sha256": "821c02eec38691a174f9f1a3542d0a006f69a3240e8bd3721514750b1caabc8c"
+      "sha256": "21682605e9cc034550898fbae9efe3de7ed58b7e3b02cccbdea17f8b2db8272f"
     },
     {
       "path": "docs/src/start/claude-access.md",
-      "sha256": "d0206f1b38b7d19b534c47e79bd10a249cf23c83c6cfb03710ce35f553dfa1c2"
+      "sha256": "c91d5489166c96ae46073cada207c514f3b6d660c8502c810a3cdd9b4bc0c88a"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
@@ -309,15 +309,15 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "4d80f11677b9d6ff1ed68e4610c5ebe7461157b5330327737afb3a7b6281c360"
+      "sha256": "497db4f5cd1ce37901d4355a8c0df597ee1992cc7babb035483991b9b904e675"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",
-      "sha256": "18a9c307b7b4ac9bbd69d76c805c98e75c1e7f89aca46a3dd37ca692f36db933"
+      "sha256": "28e8b46324866f2dcbef6ba5c40e211952ddecf4ec21154fcb907a84af520465"
     },
     {
       "path": "llm/evaluation-cases.toml",
-      "sha256": "066f57fe9db85efdb4f6c4e14ec9600178e69a1e443a269ddabf808ee85726d5"
+      "sha256": "aa4e7d3c93fbb1c833b55557f67b669ad66822bf9b108a1b6382cb6b86931bda"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -325,7 +325,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "a934c9aa642d4145b05f6eca2a78c94c58548e2b1b3fb1d05266055b18dd0f66"
+      "sha256": "1061d2f13d88c68feb338b07820703398b6e07ede6a0edd32fdc4f255ce3dd64"
     },
     {
       "path": "vocabulary/vocabulary.toml",

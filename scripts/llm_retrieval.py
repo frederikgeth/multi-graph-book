@@ -552,6 +552,8 @@ class CorpusIndex:
                 summary["numerical_pathology"] = record["numerical_pathology"]
             if record.get("scope_boundary"):
                 summary["scope_boundary"] = record["scope_boundary"]
+            if record.get("open_question"):
+                summary["open_question"] = record["open_question"]
         else:
             summary["excerpt"] = record["text"][:1200]
         return summary
@@ -673,6 +675,15 @@ class CorpusIndex:
             for item in knowledge
             if item.get("scope_boundary")
         ]
+        open_questions = [
+            {
+                "knowledge_id": item["knowledge"]["knowledge_id"],
+                **item["open_question"],
+                "artifact_paths": item["book"]["artifact_paths"],
+            }
+            for item in knowledge
+            if item.get("open_question")
+        ]
         executable_checks = []
         implementation_examples = []
         for item in knowledge:
@@ -751,6 +762,7 @@ class CorpusIndex:
             "negative_results": negative_results,
             "numerical_pathologies": numerical_pathologies,
             "scope_boundaries": scope_boundaries,
+            "open_questions": open_questions,
             "executable_checks": executable_checks,
             "implementation_examples": implementation_examples,
             "unresolved_boundaries": scientific_boundaries,

@@ -152,6 +152,13 @@ it must not silently promote generated equation objects into physical assets
 or extend one preservation dimension to limits, states, protection, decisions,
 or objectives without separate evidence.
 
+Structured open-question records distinguish a documented unknown from an
+unsupported topic. They state the question, preserve what is already known,
+record unsuccessful discriminators, identify the missing information, and set
+criteria that would resolve the question. A numerical fit, available reference
+output, or plausible nearby fixture must not be relabelled as recovered source
+provenance.
+
 BMOPFTools maintains a small executable registry, not a scientific knowledge
 database. It records executable contract IDs, entry points, applicable object
 types, finding codes, fixture IDs, output shape, and related PSK IDs. Runtime

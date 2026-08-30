@@ -206,6 +206,30 @@
       },
       "additionalProperties": false
     },
+    "open_question": {
+      "type": "object",
+      "required": [
+        "question",
+        "known_evidence",
+        "unresolved_information",
+        "attempted_discriminators",
+        "resolution_criteria",
+        "next_actions",
+        "reproducer_commands",
+        "review_status"
+      ],
+      "properties": {
+        "question": {"type": "string", "minLength": 1},
+        "known_evidence": {"$ref": "#/$defs/uniqueStrings"},
+        "unresolved_information": {"$ref": "#/$defs/uniqueStrings"},
+        "attempted_discriminators": {"$ref": "#/$defs/uniqueStrings"},
+        "resolution_criteria": {"$ref": "#/$defs/uniqueStrings"},
+        "next_actions": {"$ref": "#/$defs/uniqueStrings"},
+        "reproducer_commands": {"$ref": "#/$defs/uniqueStrings"},
+        "review_status": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
     "source": {
       "type": "object",
       "required": ["repository", "path", "anchor", "sha256"],
@@ -235,6 +259,11 @@
       "if": {"properties": {"kind": {"const": "scope-boundary"}}},
       "then": {"required": ["scope_boundary"]},
       "else": {"not": {"required": ["scope_boundary"]}}
+    },
+    {
+      "if": {"properties": {"kind": {"const": "open-question"}}},
+      "then": {"required": ["open_question"]},
+      "else": {"not": {"required": ["open_question"]}}
     }
   ],
   "$defs": {

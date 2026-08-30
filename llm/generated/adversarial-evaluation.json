@@ -177,9 +177,9 @@
           "concept:phase-conductor-sequence-coordinate",
           "claim:TR-PAR-002",
           "claim:TR-PAR-003",
+          "concept:ground-neutral-reference",
           "concept:mutual-coupling-relation",
-          "concept:object-node-interface",
-          "concept:factor"
+          "concept:object-node-interface"
         ]
       },
       "hybrid": {
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "19039725fc0807448d6ff451c5bd0191b01e78e7ddecb1c2c84a36f56f5398d9"
+    "corpus_sha256": "1416a46ceda8a809226749f73e58d8abe7978b4ee5090beb31edff58c08441c9"
   },
   "inputs": {
     "adversarial_cases": {

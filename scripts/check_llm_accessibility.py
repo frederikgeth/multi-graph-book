@@ -186,6 +186,16 @@ def main() -> int:
         else:
             fail_if("scope_boundary" in record,
                     f"{knowledge_id}: non-boundary record carries scope-boundary fields", errors)
+        if record.get("kind") == "open-question":
+            fail_if(not record.get("open_question"),
+                    f"{knowledge_id}: open-question record lacks its question fields", errors)
+            fail_if(record.get("evidence_status") != "open_question",
+                    f"{knowledge_id}: open-question record lacks open_question evidence status", errors)
+            fail_if(record.get("executable", {}).get("implementation_status") not in {"implemented", "not_applicable"},
+                    f"{knowledge_id}: open-question executable relationship is ambiguous", errors)
+        else:
+            fail_if("open_question" in record,
+                    f"{knowledge_id}: non-open-question record carries open-question fields", errors)
     for claim_id, record in claim_records.items():
         passage = record.get("supporting_passage", {})
         fail_if(not str(passage.get("text", "")).strip(), f"{claim_id}: empty supporting passage", errors)

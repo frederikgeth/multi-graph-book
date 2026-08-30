@@ -2,7 +2,7 @@
 
 **Page status:** maintained cross-repository implementation trace and scope boundary.
 
-This page traces seventeen scientific and negative-knowledge objects through book
+This page traces eighteen scientific and negative-knowledge objects through book
 evidence, applicable BMOPFTools guardrails, and the book's existing LLM context
 packets. The stable ownership rules are defined in the repository-root
 `ARCHITECTURE.md`; this page is the worked implementation trace.
@@ -58,6 +58,8 @@ The packet now also exposes explicit sections:
 - `scientific_basis` for the scoped PSK statement and evidence status;
 - `known_misconceptions` for the tempting shortcut and required qualification;
 - `counterexamples` for book artifacts and stable fixture identities;
+- `negative_results`, `numerical_pathologies`, `scope_boundaries`, and
+  `open_questions` for distinct qualified negative-knowledge classes;
 - `executable_checks` for the BMOPFTools repository, contract IDs, Finding codes, fixtures, and implementation status;
 - `implementation_examples` for concrete executable fixtures and pinned recipes; and
 - `unresolved_boundaries` for every claim the scientific object says it does not establish.
@@ -529,6 +531,30 @@ mutual-coupling misconception makes `PSK-000017` mandatory for all three
 audiences. Context packets expose the structured record under
 `scope_boundaries`; they do not present the result as a counterexample or
 invent an executable package link.
+
+## Eighteenth trace: the CS1035 source construction remains an open question
+
+`AU-CARSON-001` and `PSK-000018` expose the first structured `open-question`.
+The repository has an independent Australian `CS1035` four-conductor reference
+matrix and a separately identified UGHV cable fixture, but the available source
+history does not map that fixture to the reference. The generated reproduction
+therefore keeps the matrix out of its model inputs and retains the mapping as
+unresolved.
+
+The record distinguishes the evidence already in hand from the information
+still missing. OpenDSSDirect and an independent linear-algebra solve agree for
+the declared UGHV fixture, while changing the Carson diagnostic probe from
+50 Hz to 60 Hz increases rather than resolves the underground matrix mismatch.
+Those checks validate the fixture computation and reject one possible
+explanation; they do not recover the CS1035 conductor, screen, geometry,
+earth-return, ordering, or provenance fields.
+
+The new provenance-shortcut misconception makes the record mandatory for
+student, software-engineer, and power-engineer questions. Context packets
+expose it under `open_questions`, including the attempted discriminators and
+resolution criteria. The record is book-owned and has execution status
+`not_applicable`: the book experiment is evidence for the open question, not a
+BMOPFTools contract or a license to relabel the UGHV fixture.
 
 ## What generalizes
 

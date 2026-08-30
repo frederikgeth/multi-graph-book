@@ -270,6 +270,21 @@ def main() -> int:
                 validation_errors.append("scope boundary is incorrectly presented as another negative-knowledge class")
             if packet["executable_checks"] or packet["implementation_examples"]:
                 validation_errors.append("book-only coupled-corridor boundary invents a BMOPFTools execution link")
+        if case["misconception_id"] == "reference-matrix-match-proves-source-provenance":
+            packet = response["packet"]
+            if "knowledge:PSK-000018" not in observed:
+                validation_errors.append("CS1035 route omits mandatory PSK-000018")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000018"]:
+                validation_errors.append("CS1035 scientific basis differs from PSK-000018")
+            questions = packet["open_questions"]
+            if len(questions) != 1 or not questions[0].get("resolution_criteria"):
+                validation_errors.append("CS1035 route omits the structured open question")
+            if "## Open questions" not in response["markdown"]:
+                validation_errors.append("CS1035 Markdown omits the open-question section")
+            if packet["counterexamples"] or packet["negative_results"] or packet["numerical_pathologies"] or packet["scope_boundaries"]:
+                validation_errors.append("open question is incorrectly presented as another negative-knowledge class")
+            if packet["executable_checks"] or packet["implementation_examples"]:
+                validation_errors.append("book-only CS1035 question invents a BMOPFTools execution link")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:

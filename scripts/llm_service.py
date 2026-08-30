@@ -196,6 +196,14 @@ def render_markdown(packet: dict) -> str:
             lines.append(f"  - Outside scope: {' '.join(item['outside_scope'])}")
             lines.append(f"  - Evidence required to extend: {' '.join(item['required_evidence'])}")
         lines.append("")
+    if packet["open_questions"]:
+        lines += ["## Open questions", ""]
+        for item in packet["open_questions"]:
+            lines.append(f"- **{item['knowledge_id']}** — {item['question']}")
+            lines.append(f"  - Known evidence: {' '.join(item['known_evidence'])}")
+            lines.append(f"  - Unresolved information: {' '.join(item['unresolved_information'])}")
+            lines.append(f"  - Resolution criteria: {' '.join(item['resolution_criteria'])}")
+        lines.append("")
     if packet["executable_checks"]:
         lines += ["## Executable checks", ""]
         for item in packet["executable_checks"]:
