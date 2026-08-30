@@ -610,13 +610,16 @@ Implementation proceeds from domain interfaces outward:
 The first two scientific execution-interface slices implement steps 3 and 4 for
 `PSK-000001` and `PSK-000002`. BMOPFTools provides source-hash-bound
 `parallel_member_limits` and `neutral_ground_reference` recipes and a versioned
-`check-contract` JSON CLI/API response. The next package-only slice adds
-`analyze-case` and a tutorial-derived analysis recipe. A completed analysis
-operation may contain ERROR or WARNING Findings: operation status and case
-diagnostic severity remain different axes. Because this ordinary package
-operation does not itself express a scientific preservation claim, its recipe
-does not invent a PSK link and is pinned separately from PSK-linked context
-examples in the pair manifest. A package-owned adapter registry gives
+`check-contract` JSON CLI/API response. Package-only slices add `analyze-case`
+and `verify-solution` routes plus tutorial-derived analysis and verification
+recipes. A completed operation may contain ERROR or WARNING Findings, and a
+solver status such as `LOCALLY_SOLVED` does not certify feasibility: operation
+status, solver termination, Finding severity, and scientific-contract status
+remain separate axes. The verification route profiles a supplied result; it
+does not invoke a solver. Because these ordinary package operations do not
+themselves express scientific preservation claims, their recipes do not invent
+PSK links and are pinned separately from PSK-linked context examples in the
+pair manifest. A package-owned adapter registry gives
 each contract an explicit parameter allowlist, including the neutral contract's
 declared source-to-target bus mapping; it does not expose arbitrary Julia
 evaluation. The pinned pair manifest carries each recipe identity, command,

@@ -91,12 +91,21 @@ with-Findings outcomes. The federated pair manifest pins both PSK-linked recipes
 and the package-only analysis recipe; book context packets surface the linked
 scientific examples while keeping ordinary package operations separate.
 
+A fourth, package-only `verify-solution` route now profiles a supplied result
+without invoking a solver. Its tutorial-derived `verify_solution` recipe uses a
+minimized claimed-feasible counterexample: solver termination is
+`LOCALLY_SOLVED`, execution is `completed`, and the independent report still
+contains `E.SOL.VOLT_VIOLATION`. This makes solver termination, execution
+status, Finding severity, and scientific-contract status explicit rather than
+collapsing them into one success flag. The pair manifest pins this operation
+recipe without injecting it into a PSK context packet.
+
 Remaining work in this tranche is evidence-gated scale-out rather than a bulk
-wrapper exercise: add solution verification next, then Finding explanation and
-any justified parse-only route, while promoting further contracts one at a
-time. A thin MCP or PowerMCP adapter remains last because it should expose the
-settled operations rather than define a competing execution model. Solver
-invocation remains outside the current transport slice.
+wrapper exercise: add Finding explanation next, followed by any justified
+parse-only route, while promoting further contracts one at a time. A thin MCP
+or PowerMCP adapter remains last because it should expose the settled operations
+rather than define a competing execution model. Solver invocation remains
+outside the current transport slice.
 
 ### Product identity and editorial stance
 

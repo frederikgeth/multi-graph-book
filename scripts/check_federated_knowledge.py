@@ -204,11 +204,12 @@ def validate_committed(pair: dict) -> list[str]:
     })
     if observed_recipe_ids != pair.get("bmopftools", {}).get("recipe_ids", []):
         errors.append("pair manifest recipe coverage differs from the BMOPFTools identity")
+    package_operations = {"analyze_case", "verify_solution"}
     for recipe in pair.get("bmopftools", {}).get("operation_recipes", []):
-        if recipe.get("operation") != "analyze_case":
+        if recipe.get("operation") not in package_operations:
             errors.append(f"{recipe.get('recipe_id')}: unsupported package operation recipe")
         if recipe.get("expected_status") != "completed":
-            errors.append(f"{recipe.get('recipe_id')}: analysis recipe status is not completed")
+            errors.append(f"{recipe.get('recipe_id')}: package operation recipe status is not completed")
         if recipe.get("knowledge_ids"):
             errors.append(f"{recipe.get('recipe_id')}: unlinked operation recipe claims PSK ownership")
     return errors

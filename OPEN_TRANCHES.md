@@ -14,8 +14,8 @@ The authority for repository ownership and dependency direction is
 
 | Tranche | State | Delivered boundary | Next open item |
 |---|---|---|---|
-| 1. Execution interface | In progress | Two curated contract adapters plus single-case parse/analysis, one versioned envelope, input hashes, and distinct contract/operation statuses | Solution verification, then Finding explanation |
-| 2. Documentation and recipes | In progress | Assistant guide, `llms.txt`, two scientific-contract recipes, and one tutorial-derived analysis/triage recipe | Solution-verification recipe |
+| 1. Execution interface | In progress | Two curated contract adapters plus case analysis and independent supplied-result verification, one versioned envelope, input hashes, and distinct execution/solver/Finding/contract statuses | Finding explanation, then assess parse-only |
+| 2. Documentation and recipes | In progress | Assistant guide, `llms.txt`, two scientific-contract recipes, and tutorial-derived analysis and solution-verification recipes | Finding-explanation recipe |
 | 3. Negative-knowledge taxonomy | Queued | Initial PSK taxonomy and fourteen executable links | Select and scope the first new non-modelling record |
 | 4. Property-based testing | Queued | Deterministic metamorphic tests and minimized fixtures | Define the generator domain and seed record |
 | 5. Research/decision log | Queued | Decisions currently recorded in architecture and handover prose | Add the lightweight decision-log format |
@@ -35,8 +35,11 @@ and request-error separation are implemented for `PSK-000001` and
 `PSK-000002`. A separate `analyze-case` API/CLI route now parses one BMOPF JSON
 case and returns the complete standard analysis/validation report with status
 `completed`; ERROR and WARNING Findings do not masquerade as transport errors.
-A standalone parse-only route, solution verification, Finding explanation, and
-an optional thin MCP/PowerMCP adapter remain open.
+A separate `verify-solution` route profiles a supplied result without invoking a
+solver. Its execution status remains distinct from solver termination and the
+independent report's Finding severity. Finding explanation, a justified
+standalone parse-only route, and an optional thin MCP/PowerMCP adapter remain
+open.
 
 Scope:
 
@@ -63,8 +66,11 @@ and CI-tested `parallel_member_limits`, `neutral_ground_reference`, and
 `analyze_case` recipes are implemented. The grounding recipe complements the
 pedagogical grounding tutorial; the analysis recipe reuses the small tutorial
 network and makes the triage misconception explicit: completed analysis is not
-a clean or solver-ready case. A parse-only recipe, solving, solution
-verification, and Finding-explanation recipes remain open.
+a clean or solver-ready case. The `verify_solution` recipe reuses the
+trust-but-verify tutorial's independent profiling pattern and a minimized
+claimed-feasible counterexample: `LOCALLY_SOLVED` is not evidence that voltage
+limits hold. A Finding-explanation recipe, a justified parse-only recipe, and
+solving remain open.
 
 Scope:
 
@@ -183,8 +189,8 @@ These items are release-quality follow-ups rather than implementation blockers:
 
 ## Suggested order
 
-1. Execution interface and recipe library (current: solution verification is
-   the next vertical slice).
+1. Execution interface and recipe library (current: Finding explanation is the
+   next vertical slice; assess parse-only after that).
 2. Broader negative-knowledge records.
 3. Property-based testing and minimized counterexamples.
 4. Research/decision log.

@@ -244,7 +244,7 @@
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "aa3960643dc32bfbb21ea28b84151a7227de74275be1b1a191d80cf3e91ef509"
+      "sha256": "d88093a605317616e27a34123cd642264f821e977c2131300feaba5b85221e2a"
     },
     {
       "path": "claims/claims.toml",
@@ -3360,7 +3360,7 @@
     },
     {
       "path": "llm/generated/access-fixtures.jsonl",
-      "sha256": "a8666534da30e12a3ecdd94aa78ac2680366651ba50b0a2d071fa9b2727a788b"
+      "sha256": "3e5671ca44adaa3c4bca8cf20e67db4e4489da2da4f58ac46f384facb5a532a8"
     },
     {
       "path": "llm/generated/adversarial-evaluation.json",
@@ -3644,7 +3644,7 @@
     },
     {
       "path": "scripts/check_federated_knowledge.py",
-      "sha256": "e5076d970814d51359db74a23eb52ae90539808b6fc6f8daaaa5e581f90298c4"
+      "sha256": "09a52294e3a044cb42d8291c26fa6a4819f450ce39644fe54d55a0be148a7f12"
     },
     {
       "path": "scripts/check_figures.py",
