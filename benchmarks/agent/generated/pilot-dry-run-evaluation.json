@@ -1,0 +1,134 @@
+{
+  "does_not_establish": [
+    "Any model or hosted agent was executed.",
+    "Any condition changes agent performance.",
+    "The pending system and provider settings are suitable for a real pilot."
+  ],
+  "exclusions": [
+    {
+      "condition_id": "C1_REPOSITORY_DOCS",
+      "reason_code": "PROVIDER_FAILURE_BEFORE_RESPONSE",
+      "run_id": "PILOT-DRY-EXCLUDED-001"
+    }
+  ],
+  "pilot_id": "APILOT-PARALLEL-LIMITS-001",
+  "schema_version": "0.1.0",
+  "status": "synthetic_dry_run_harness_only_not_agent_results",
+  "summary": {
+    "conditions": {
+      "C0_MODEL_ONLY": {
+        "dimension_counts": {
+          "abstention": {
+            "failed": 1,
+            "passed": 0,
+            "scored": 1
+          },
+          "invalid_assumption_detection": {
+            "failed": 1,
+            "passed": 0,
+            "scored": 1
+          },
+          "model_semantic_correctness": {
+            "failed": 2,
+            "passed": 0,
+            "scored": 2
+          },
+          "numerical_validity": {
+            "failed": 1,
+            "passed": 0,
+            "scored": 1
+          },
+          "physical_correctness": {
+            "failed": 2,
+            "passed": 0,
+            "scored": 2
+          },
+          "reproducibility": {
+            "failed": 2,
+            "passed": 0,
+            "scored": 2
+          },
+          "schema_validity": {
+            "failed": 0,
+            "passed": 2,
+            "scored": 2
+          },
+          "scientific_inference_correctness": {
+            "failed": 2,
+            "passed": 0,
+            "scored": 2
+          }
+        },
+        "eligible_runs": 1,
+        "excluded_runs": 0,
+        "overall_passed": 0,
+        "records": 1
+      },
+      "C1_REPOSITORY_DOCS": {
+        "dimension_counts": {},
+        "eligible_runs": 0,
+        "excluded_runs": 1,
+        "overall_passed": 0,
+        "records": 1
+      },
+      "C5_EXECUTABLE_CONTRACTS": {
+        "dimension_counts": {},
+        "eligible_runs": 0,
+        "excluded_runs": 0,
+        "overall_passed": 0,
+        "records": 0
+      },
+      "C6_NEGATIVE_KNOWLEDGE": {
+        "dimension_counts": {
+          "abstention": {
+            "failed": 0,
+            "passed": 1,
+            "scored": 1
+          },
+          "invalid_assumption_detection": {
+            "failed": 0,
+            "passed": 1,
+            "scored": 1
+          },
+          "model_semantic_correctness": {
+            "failed": 0,
+            "passed": 2,
+            "scored": 2
+          },
+          "numerical_validity": {
+            "failed": 0,
+            "passed": 1,
+            "scored": 1
+          },
+          "physical_correctness": {
+            "failed": 0,
+            "passed": 2,
+            "scored": 2
+          },
+          "reproducibility": {
+            "failed": 0,
+            "passed": 2,
+            "scored": 2
+          },
+          "schema_validity": {
+            "failed": 0,
+            "passed": 2,
+            "scored": 2
+          },
+          "scientific_inference_correctness": {
+            "failed": 0,
+            "passed": 2,
+            "scored": 2
+          }
+        },
+        "eligible_runs": 1,
+        "excluded_runs": 0,
+        "overall_passed": 1,
+        "records": 1
+      }
+    },
+    "eligible_runs": 2,
+    "excluded_runs": 1,
+    "records": 3
+  }
+}

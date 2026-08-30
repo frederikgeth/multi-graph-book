@@ -1,0 +1,55 @@
+{
+  "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
+  "budgets": {
+    "max_output_tokens": 4000,
+    "tool_calls": 0,
+    "wall_time_seconds": 600
+  },
+  "case_order": [
+    "ABENCH-PAR-001-UNSAFE",
+    "ABENCH-PAR-002-BOUNDARY"
+  ],
+  "condition_id": "C0_MODEL_ONLY",
+  "condition_sequence_index": 0,
+  "exclusion": {
+    "detail": null,
+    "included": true,
+    "reason_code": null
+  },
+  "execution_status": "completed",
+  "exposure": {
+    "bundle_id": "BUNDLE-C0",
+    "enforcement": "synthetic fixture; no live resource exposure occurred"
+  },
+  "pilot_id": "APILOT-PARALLEL-LIMITS-001",
+  "provenance": {
+    "bmopftools_revision": "synthetic-dry-run",
+    "book_revision": "synthetic-dry-run",
+    "tool_transcript_path": null
+  },
+  "record_kind": "synthetic_dry_run",
+  "repetition_index": 1,
+  "run_id": "PILOT-DRY-UNSAFE-C0-001",
+  "schema_version": "0.1.0",
+  "settings": {
+    "max_output_tokens": 4000,
+    "reasoning_effort": "not_applicable_fixture",
+    "seed": 1,
+    "temperature": 0,
+    "top_p": 1,
+    "unavailable_settings": []
+  },
+  "submission": {
+    "path": "benchmarks/agent/submissions/unsafe-c0.json",
+    "sha256": "b63314b08c9d8452a1e5734a4f62a3683d6b63895646b8e1a3481ce2f69546c2"
+  },
+  "system": {
+    "model_id": "benchmark-harness",
+    "model_revision": "0.1.0",
+    "provider": "deterministic-fixture"
+  },
+  "timing": {
+    "ended_at": "2026-08-30T00:00:00Z",
+    "started_at": "2026-08-30T00:00:00Z"
+  }
+}

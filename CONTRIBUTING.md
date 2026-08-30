@@ -143,6 +143,7 @@ For the first slice, run both the repository-local and live sibling checks:
 ```sh
 python3 scripts/check_agent_benchmark.py --check
 python3 scripts/check_agent_benchmark.py --check --bmopf-root ../BMOPFTools.jl
+python3 scripts/check_agent_benchmark_pilot.py --check --bmopf-root ../BMOPFTools.jl
 ```
 
 BMOPFTools owns executable oracle behavior. Benchmark code may invoke and pin
@@ -173,9 +174,9 @@ python3 scripts/regenerate_all.py
 
 The command assumes sibling checkouts at `../BMOPFTools.jl`; pass
 `--bmopf-root /path/to/BMOPFTools.jl` when using another layout. It runs the
-scientific export, federated pair check, and LLM corpus generation in their
-dependency order. Follow it with the retrieval, access, answer-contract, and
-release checks above.
+scientific export, federated pair check, LLM corpus and derived retrieval/access
+evaluations, neural compatibility marker, and agent-benchmark artifacts in
+dependency order. Follow it with the answer-contract and release checks above.
 
 The first command records the candidate's observed counts and hashes; the
 second fails if any release input or generated output has drifted. This gate is

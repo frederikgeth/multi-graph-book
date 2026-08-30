@@ -25,11 +25,17 @@ def main() -> int:
         [sys.executable, "scripts/generate_scientific_knowledge.py", "--write"],
         [sys.executable, "scripts/check_federated_knowledge.py", "--write", "--bmopf-root", str(args.bmopf_root)],
         [sys.executable, "scripts/generate_llm_corpus.py", "--write"],
+        [sys.executable, "scripts/evaluate_llm_retrieval.py", "--write"],
+        [sys.executable, "scripts/generate_llm_access_fixtures.py", "--write"],
+        [sys.executable, "scripts/evaluate_llm_adversarial.py", "--write"],
+        [sys.executable, "scripts/check_neural_benchmark.py", "--archive-current-drift"],
+        [sys.executable, "scripts/check_agent_benchmark.py", "--write", "--bmopf-root", str(args.bmopf_root)],
+        [sys.executable, "scripts/check_agent_benchmark_pilot.py", "--write", "--bmopf-root", str(args.bmopf_root)],
     ]
     for command in commands:
         print("[regenerate]", " ".join(map(str, command)))
         subprocess.run(command, cwd=ROOT, check=True)
-    print("regenerated scientific, federated, and LLM corpus artifacts")
+    print("regenerated scientific, federated, LLM, and agent-benchmark artifacts")
     return 0
 
 

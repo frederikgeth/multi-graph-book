@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "d1f1a1d8e076b28616ba90561f35bdcccd05ba738d09d376f708a378c7a53797",
+  "corpus_sha256": "0e3eb0f4737c96c647c7190cdd05cdfc7c3b01ba0426cf348b9c5d83eb9f3d5e",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -15,12 +15,12 @@
   "evaluation_case_count": 69,
   "heldout_case_count": 33,
   "misconception_count": 23,
-  "record_count": 853,
+  "record_count": 862,
   "record_counts": {
     "claim_bundle": 109,
     "concept_bundle": 18,
     "scientific_knowledge": 18,
-    "section": 708
+    "section": 717
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -173,11 +173,11 @@
     },
     {
       "path": "docs/src/literature/agent-benchmark.md",
-      "sha256": "026943c6b9c9cce7546419bf8c5658292d435f50e8778c29ab87ac3f48919b99"
+      "sha256": "fca6844c9f43ed324485cad893639e3471ed262e5a4f507856ea09b14af1693e"
     },
     {
       "path": "docs/src/literature/development-decision-log.md",
-      "sha256": "a3d2e809db5d8d1635e36518b021e61253e839784074b35c53e41f44d22138b1"
+      "sha256": "f851e6e83ec1096b927371b8261cbcc626d903991e03cfc5d8e0aef2d2005af1"
     },
     {
       "path": "docs/src/literature/literature-map.md",

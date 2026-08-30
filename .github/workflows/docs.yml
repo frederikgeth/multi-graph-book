@@ -76,6 +76,9 @@ jobs:
       - name: Check scientifically constrained agent benchmark
         run: python3 scripts/check_agent_benchmark.py --check
 
+      - name: Check agent benchmark pilot design
+        run: python3 scripts/check_agent_benchmark_pilot.py --check
+
       - name: Check generated artifacts and local links
         run: python3 scripts/check_artifacts.py
 

@@ -424,6 +424,24 @@ def dump(payload: dict) -> str:
     return json.dumps(payload, indent=2, sort_keys=True) + "\n"
 
 
+def refresh_passing_conformance_provenance(spec: dict, provenance: dict) -> None:
+    """Repin deterministic passing fixtures when generated corpus identity moves."""
+    expected = {
+        "federated_pair_id": provenance["federated_pair_id"],
+        "book_llm_corpus_sha256": provenance["book_llm_corpus_sha256"],
+        "bmopftools_executable_corpus_sha256": provenance["bmopftools_executable_corpus_sha256"],
+    }
+    for fixture in spec.get("conformance_fixtures", []):
+        if fixture.get("expected_pass") is not True:
+            continue
+        path = ROOT / fixture.get("path", "")
+        submission = load_json(path)
+        if submission.get("system", {}).get("provider") != "deterministic-fixture":
+            raise ValueError(f"refusing to rewrite non-deterministic submission: {path.relative_to(ROOT)}")
+        submission["provenance"] = expected
+        path.write_text(dump(submission))
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group()
@@ -450,6 +468,13 @@ def main() -> int:
            "benchmark JSON schema version drift", errors)
     add_if(submission_schema.get("properties", {}).get("schema_version", {}).get("const") != SCHEMA_VERSION,
            "submission JSON schema version drift", errors)
+
+    if args.write:
+        try:
+            refresh_passing_conformance_provenance(spec, current_provenance(pair, corpus))
+        except (OSError, ValueError, json.JSONDecodeError) as error:
+            print(f"agent benchmark check failed to repin deterministic conformance fixture: {error}")
+            return 1
 
     bmopf_root = args.bmopf_root.resolve() if args.bmopf_root else None
     expected_manifest, expected_conformance = expected_outputs(

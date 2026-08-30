@@ -199,8 +199,9 @@ contract supplies a clear in-domain generator, oracle, and minimizer.
 The lightweight research/decision-log milestone is now delivered. The
 reader-facing log uses stable `DLOG-*` entries, retains rejected approaches,
 states its boundary from the scientific claims ledger, and is checked in both
-documentation CI and the release-candidate gate. Its first six entries capture
-the cross-repository decisions already exercised by the implementation rather
+documentation CI and the release-candidate gate. Its first eight entries
+capture the cross-repository decisions already exercised by the implementation,
+including the benchmark substrate and its human-gated pilot design, rather
 than manufacturing new scientific claims.
 
 The first scientifically constrained agent-benchmark substrate is now
@@ -214,10 +215,21 @@ fixture. Synthetic conformance responses prove the scorer accepts the intended
 qualified response and rejects two unsafe classes; they are labelled as harness
 tests, not agent observations.
 
-The next implementation milestone is a pre-registered controlled pilot over at
-least the model-only, repository-documentation, executable-contract, and
-negative-knowledge conditions. No comparative agent result or condition effect
-exists until those source-bound run artifacts are collected.
+The controlled-pilot design is now implemented for the model-only,
+repository-documentation, executable-contract, and negative-knowledge
+conditions. It freezes four balanced repetitions, task and condition order,
+exact source-hash-bound resource bundles, read-only tool access, budgets,
+capture requirements, exclusion rules, run-record schemas, and dimension-level
+aggregation. Synthetic dry-run records exercise passing, unsafe, and excluded
+paths without executing an agent.
+
+The next milestone crosses a mandatory human gate: review the transparent task
+and resource exposure for leakage and scientific fairness, select the provider
+and exact model revision, freeze provider-specific settings, authorize cost and
+data handling, and decide whether a held-out task is required. Only then may
+the design be called pre-registered or real runs begin. No comparative agent
+result or condition effect exists until source-bound measured run artifacts are
+collected.
 
 ### Product identity and editorial stance
 

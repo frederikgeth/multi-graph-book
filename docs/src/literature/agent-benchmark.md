@@ -1,7 +1,7 @@
 # [Scientifically constrained agent benchmark](@id agent-benchmark)
 
-**Page status:** first transparent benchmark substrate; no agent runs or
-condition effects are claimed.
+**Page status:** transparent benchmark substrate and controlled-pilot design;
+no agent runs or condition effects are claimed.
 
 The first benchmark slice asks a narrow question: can an agent reject a naïve
 parallel-line aggregation when terminal behavior is preserved but member
@@ -121,11 +121,44 @@ response classes. It does not establish model reliability, an advantage for
 MCP, an effect of negative-knowledge retrieval, or generalization beyond the
 two transparent cases.
 
-## Next experimental step
+## Controlled-pilot design
 
-A controlled pilot should pre-register model revisions, sampling settings,
-resource exposure, task ordering, time/tool budgets, repetitions, and exclusion
-rules. It should run at least the model-only, documentation, executable-contract,
-and negative-knowledge conditions before expanding to all seven. Report every
-dimension and abstention outcome by condition; do not collapse the study to one
-top-line accuracy score.
+The first pilot design is committed as
+`benchmarks/agent/pilot/parallel-member-limits-pilot-v1.json`. It selects
+`C0_MODEL_ONLY`, `C1_REPOSITORY_DOCS`, `C5_EXECUTABLE_CONTRACTS`, and
+`C6_NEGATIVE_KNOWLEDGE`, with four balanced repetitions per condition and
+system. Every run starts in a fresh conversation. Case order alternates by
+repetition, while four rotated condition sequences balance each condition
+across ordinal positions.
+
+The resource bundles are explicit rather than inferred from whatever happens
+to be visible in a checkout. C0 receives no repository source or tool. C1
+receives a curated documentation set. C5 cumulatively adds machine records,
+workflow instructions, the one read-only contract tool, recipe, and minimized
+fixture. C6 adds the deterministic misconception route and qualification-aware
+context operation. The generated design manifest hashes every exposed book and
+BMOPFTools source.
+
+Run records retain the exact system revision, provider settings, budgets,
+bundle, case order, timestamps, source identity, submission hash, and exclusion
+decision. Scientific errors, invalid structured responses, failure to use a
+tool, tool misuse, refusal, and abstention are scored rather than excluded.
+Only a declared pre-response provider, harness, resource, or capture failure
+may be excluded, and the excluded record remains visible. Aggregation retains
+condition-level and dimension-level counts with no imputation or top-line
+accuracy number.
+
+Three synthetic run records prove that completed responses and a pre-response
+exclusion can be validated and aggregated. Their generated status is
+`synthetic_dry_run_harness_only_not_agent_results`; the values are harness
+fixtures and support no model comparison.
+
+## Mandatory human gate before execution
+
+The design is complete but is **not yet pre-registered**. Before any real run,
+a human reviewer must approve the task and resource bundles for leakage and
+scientific fairness, select each provider and exact model revision, freeze the
+available sampling and reasoning settings, authorize cost and data handling,
+and decide whether the transparent tasks need a held-out counterpart. Until
+that gate is recorded, the checker prohibits changing the design to
+`preregistered`, adding measured run records, or implying a condition effect.

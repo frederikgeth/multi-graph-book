@@ -341,3 +341,56 @@ Advance to `pilot` only after pre-registering model revisions, sampling and
 tool settings, condition exposure, repetitions, exclusions, and resource
 budgets. Advance to `measured` only when actual run artifacts and aggregation
 rules are source-bound and independently auditable.
+
+## DLOG-0008 — Separate pilot design completion from execution authorization
+
+- **Date:** 2026-08-30
+- **Status:** accepted
+- **Scope:** controlled agent-benchmark pilot governance
+
+### Question
+
+May a source-bound pilot design advance directly to hosted model execution, or
+does freezing the experimental system require a separate human decision?
+
+### Options considered
+
+- select a convenient available model and settings in the implementation;
+- leave the pilot informal until someone is ready to run it;
+- complete and test the provider-independent design, then require human review
+  before model selection, pre-registration, cost authorization, or execution.
+
+### Decision
+
+Freeze the provider-independent protocol and harness now, with status
+`design_complete_execution_not_authorized`. A human gate is mandatory before
+the exact provider, model revision, execution interface, available sampling
+settings, and transparent-versus-held-out policy are frozen. The checker rejects
+measured run records while that gate remains open.
+
+### Reason
+
+Model choice, data handling, provider terms, cost, and task leakage are not
+mechanical implementation details. Treating implementation availability as
+experimental authorization would make the comparison difficult to audit and
+could consume external resources without an approved design.
+
+### Evidence
+
+`benchmarks/agent/pilot/parallel-member-limits-pilot-v1.json`, the pilot and
+run-record schemas, `scripts/check_agent_benchmark_pilot.py`, and the generated
+synthetic dry-run report implement the boundary. The roadmap and open-tranche
+table state the same gate.
+
+### Known downside
+
+The repository now contains a complete dry-run harness but still cannot answer
+the benchmark research question. Human availability can delay the measured
+pilot even when all implementation gates are green.
+
+### Conditions for revisiting
+
+The gate may be recorded as passed when a reviewer approves resource exposure
+and leakage risk, exact systems and settings, execution and data-handling
+authority, and the held-out-task decision. It does not disappear merely because
+a model endpoint becomes technically available.

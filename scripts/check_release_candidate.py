@@ -26,6 +26,7 @@ CHECKS: list[tuple[str, list[str]]] = [
     ("evidence matrix", [PYTHON, "scripts/check_evidence_matrix.py"]),
     ("development log", [PYTHON, "scripts/check_development_log.py"]),
     ("agent benchmark", [PYTHON, "scripts/check_agent_benchmark.py", "--check"]),
+    ("agent benchmark pilot", [PYTHON, "scripts/check_agent_benchmark_pilot.py", "--check"]),
     ("figures", [PYTHON, "scripts/check_figures.py"]),
     ("vocabulary", [PYTHON, "scripts/check_vocabulary.py"]),
     ("LLM accessibility", [PYTHON, "scripts/check_llm_accessibility.py"]),

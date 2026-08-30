@@ -18,8 +18,8 @@ The authority for repository ownership and dependency direction is
 | 2. Documentation and recipes | Core complete | Assistant guide, `llms.txt`, two scientific-contract recipes, and tutorial-derived parse, analysis, verification, and Finding-explanation recipes | Keep examples synchronized; solving remains outside this transport slice |
 | 3. Negative-knowledge taxonomy | Core complete | Fourteen executable links plus book-only structured negative-result, numerical-pathology, scope-boundary, and open-question records | Add further records only for evidence-backed high-risk questions |
 | 4. Property-based testing | Core complete | Seeded terminal-permutation and unit/base serialization suites with deterministic replay, minimization, classification, and federated pins | Add further properties only where an existing contract has a clear generator and oracle |
-| 5. Research/decision log | Core complete | Stable `DLOG-*` format, six seeded decisions, contributor guidance, CI/release validation, and reader/LLM access | Add or supersede entries when consequential choices are made |
-| 6. Agent benchmark | Active; substrate complete | Source-bound parallel-member slice with seven cumulative conditions, invalid-assumption and abstention cases, structured scoring, and tested conformance fixtures | Pre-register and run a controlled pilot; no agent effect is claimed yet |
+| 5. Research/decision log | Core complete | Stable `DLOG-*` format, eight seeded decisions, contributor guidance, CI/release validation, and reader/LLM access | Add or supersede entries when consequential choices are made |
+| 6. Agent benchmark | Human gate reached | Substrate plus a four-condition, balanced, source-bound pilot design; run schema, exclusions, aggregation, and synthetic dry runs are tested | Human review, exact system/settings freeze, and execution authorization are mandatory before preregistration or real runs |
 | 7. Review maturation | Ongoing external dependency | Internal gates and review packet exist | Independent review and claim reclassification |
 
 Update this table and the two detailed status paragraphs below whenever a
@@ -261,12 +261,23 @@ conditions.
 The benchmark must preserve the deterministic retrieval baseline and report
 qualification/counterexample recall, not only top-k retrieval scores.
 
-The next open item is a controlled pilot. Before any run, pre-register model
-revisions, sampling and tool settings, exact condition exposure, repetitions,
-task order, time/tool budgets, exclusions, and aggregation. Start with at least
+The controlled-pilot design is now committed. It freezes
 `C0_MODEL_ONLY`, `C1_REPOSITORY_DOCS`, `C5_EXECUTABLE_CONTRACTS`, and
-`C6_NEGATIVE_KNOWLEDGE`; retain per-dimension and abstention results rather than
-publishing one accuracy number.
+`C6_NEGATIVE_KNOWLEDGE`; four balanced repetitions per selected system; case
+and condition order; exact source-hash-bound resource bundles; read-only tool,
+time, and output budgets; capture requirements; pre-score exclusions; and
+dimension-level aggregation without imputation or a top-line accuracy number.
+The run-record schema and three synthetic dry runs exercise an eligible pass,
+an eligible unsafe response, and a retained pre-response exclusion. They are
+harness tests, not agent observations.
+
+The tranche has reached its mandatory human gate. A reviewer must now approve
+the task and resource exposure, select each provider and exact model revision,
+freeze provider-specific sampling and reasoning settings, authorize cost and
+data handling, and decide whether the transparent tasks require a held-out
+counterpart. Until then, the design remains
+`design_complete_execution_not_authorized`: it is not pre-registered, no real
+model may be run, and no condition effect may be claimed.
 
 ## 7. Review and evidence maturation
 
@@ -281,9 +292,10 @@ These items are release-quality follow-ups rather than implementation blockers:
 
 ## Suggested order
 
-1. Pre-register and run the controlled agent-benchmark pilot; continue
-   promoting executable contracts or properties only when their mappings and
-   evidence are unambiguous.
+1. Complete the mandatory human review gate, then freeze and pre-register the
+   controlled agent-benchmark pilot before running it; continue promoting
+   executable contracts or properties only when their mappings and evidence
+   are unambiguous.
 2. External review and evidence maturation in parallel as reviewers become
    available.
 

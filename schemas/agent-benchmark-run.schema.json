@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multi-graph-book.example/schemas/agent-benchmark-run.schema.json",
+  "title": "Scientifically constrained agent benchmark run record",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "record_kind",
+    "pilot_id",
+    "benchmark_id",
+    "run_id",
+    "execution_status",
+    "condition_id",
+    "repetition_index",
+    "condition_sequence_index",
+    "case_order",
+    "system",
+    "settings",
+    "budgets",
+    "exposure",
+    "timing",
+    "provenance",
+    "submission",
+    "exclusion"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "record_kind": {"enum": ["synthetic_dry_run", "measured_run"]},
+    "pilot_id": {"pattern": "^APILOT-[A-Z0-9-]+$"},
+    "benchmark_id": {"pattern": "^ABENCH-[A-Z0-9-]+$"},
+    "run_id": {"type": "string", "minLength": 1},
+    "execution_status": {"enum": ["completed", "failed", "interrupted"]},
+    "condition_id": {"pattern": "^C[0-9]+_[A-Z0-9_]+$"},
+    "repetition_index": {"type": "integer", "minimum": 1},
+    "condition_sequence_index": {"type": "integer", "minimum": 0},
+    "case_order": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+    "system": {
+      "type": "object",
+      "required": ["provider", "model_id", "model_revision"]
+    },
+    "settings": {"type": "object"},
+    "budgets": {"type": "object"},
+    "exposure": {"type": "object"},
+    "timing": {"type": "object"},
+    "provenance": {"type": "object"},
+    "submission": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "required": ["path", "sha256"],
+          "properties": {
+            "path": {"type": "string", "minLength": 1},
+            "sha256": {"pattern": "^[0-9a-f]{64}$"}
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "exclusion": {
+      "type": "object",
+      "required": ["included", "reason_code", "detail"],
+      "properties": {
+        "included": {"type": "boolean"},
+        "reason_code": {"type": ["string", "null"]},
+        "detail": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
