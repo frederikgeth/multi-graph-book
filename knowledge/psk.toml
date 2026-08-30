@@ -625,3 +625,65 @@ contract_ids = []
 finding_codes = []
 related_finding_codes = []
 fixture_ids = []
+
+[[knowledge]]
+id = "PSK-000016"
+kind = "numerical-pathology"
+title = "Fixed-point continuation failure is not an infeasibility or collapse certificate"
+scientific_statement = "On the recorded scalar two-bus load probe, the damped constant-power fixed-point branch meets the declared convergence test through demand scale 1.7 and fails it at 1.8, while the constant-current, constant-impedance, and declared ZIP branches remain converged through 3.0; this locates an algorithm- and grid-specific iteration boundary, not a physical infeasibility or voltage-collapse boundary."
+scope = "The exact scalar fixture, CP/CI/CZ/ZIP laws, 0.2:0.1:3.0 demand grid, previous-point initialization, damping 0.5, 2000-iteration cap, residual criterion, and independent standard-library Python reproduction recorded by LOAD-CONTINUATION-001."
+evidence_status = "empirical_result"
+does_not_establish = [
+  "The scalar constant-power equations are infeasible at demand scale 1.8.",
+  "Demand scale 1.8 is a saddle-node or voltage-collapse point.",
+  "Constant-power load models are generally less solvable or less appropriate than CI, CZ, or ZIP models.",
+  "A different solver, parameterization, damping rule, step grid, or initialization would fail at the same point.",
+]
+
+[knowledge.numerical_pathology]
+phenomenon = "A damped fixed-point branch tracker reaches its iteration cap with a non-small residual at one sampled constant-power demand scale after converging at the preceding scale."
+experimental_setup = "Continue each declared scalar load law over demand scales 0.2:0.1:3.0, initialize each point from the previous converged voltage, use damping 0.5, stop after at most 2000 iterations, and classify convergence by the recorded iterate and residual criteria."
+observed_behavior = "The CP branch converges through scale 1.7 and first fails the declared test at 1.8; CI, CZ, and ZIP remain converged through scale 3.0. A separate pure-Python implementation reproduces every convergence flag, converged voltage/residual row, and the CP failure scale."
+algorithmic_boundary = "The first failed grid point bounds only this fixed-point iteration and branch-tracking procedure. It does not locate the equation-feasibility boundary or a bifurcation."
+invalid_inferences = [
+  "Iteration failure proves that no solution exists.",
+  "The first failed demand-grid point is the exact voltage-collapse point.",
+  "Relative convergence of these four rows ranks the physical adequacy of their load models.",
+]
+discriminating_checks = [
+  "Use a mathematically appropriate continuation method to trace the solution branch and locate any nose point.",
+  "Vary step size, damping, initialization, parameterization, and nonlinear solver before attributing failure to the equations.",
+  "Separate solver termination from independently checked residual, limit, and feasibility evidence.",
+]
+conditions_might_change = [
+  "A smaller continuation step or different initialization may retain the same branch past the failed grid point.",
+  "Newton, pseudo-arclength, homotopy, or other continuation methods may have a different convergence boundary.",
+  "Different network parameters, load coefficients, stopping tolerances, or arithmetic may change the observed boundary.",
+]
+reproducer_commands = [
+  "julia --startup-file=no --project=experiments experiments/test/runtests.jl",
+  "python3 scripts/reproduce_load_continuation.py",
+]
+review_status = "Independently implemented in Julia and standard-library Python within the repository; not externally reviewed and not reproduced with an independent power-system continuation tool."
+
+[knowledge.book]
+claim_ids = ["LOAD-CONTINUATION-001"]
+misconception_ids = ["iteration-failure-proves-infeasibility"]
+certificate_ids = []
+counterexample_ids = []
+artifact_paths = [
+  "experiments/generated/load-grounding-witnesses.json",
+  "experiments/generated/load-continuation-independent-reproduction.json",
+]
+source_paths = [
+  "docs/src/foundations/load-models-and-decision-dependence.md",
+  "experiments/transformations/LoadGroundingWitness.jl",
+  "scripts/reproduce_load_continuation.py",
+]
+
+[knowledge.executable]
+implementation_status = "not_applicable"
+contract_ids = []
+finding_codes = []
+related_finding_codes = []
+fixture_ids = []

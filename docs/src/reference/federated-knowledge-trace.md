@@ -2,7 +2,7 @@
 
 **Page status:** maintained cross-repository implementation trace and scope boundary.
 
-This page traces fifteen scientific and negative-knowledge objects through book
+This page traces sixteen scientific and negative-knowledge objects through book
 evidence, applicable BMOPFTools guardrails, and the book's existing LLM context
 packets. The stable ownership rules are defined in the repository-root
 `ARCHITECTURE.md`; this page is the worked implementation trace.
@@ -478,6 +478,32 @@ misconception router still makes the claim and `PSK-000015` mandatory for
 questions that assume embeddings or a generic reranker must improve retrieval.
 Context packets expose the structured record under `negative_results` while
 leaving `executable_checks` empty.
+
+## Sixteenth trace: iteration failure is not an infeasibility certificate
+
+`LOAD-CONTINUATION-001` and `PSK-000016` expose the first structured
+`numerical-pathology`. On the recorded scalar two-bus fixture, a damped
+fixed-point continuation of the constant-power branch converges through demand
+scale 1.7 and fails the declared iteration and residual test at 1.8. The other
+three declared load-law branches remain converged through 3.0. A separate
+standard-library Python implementation reproduces the sampled convergence
+flags, converged rows, and CP failure scale.
+
+That reproduction establishes the behavior of the declared algorithm on the
+declared grid. It does not show that the equations are infeasible at 1.8, that
+1.8 is a saddle-node, or that constant-power loads are generally less
+appropriate. The pathology record therefore keeps `observed_behavior` and
+`algorithmic_boundary` separate, lists the tempting invalid inferences, and
+requires discriminating checks such as step/initialization variation and a
+mathematically appropriate continuation method.
+
+The experiment lives in the book repository rather than BMOPFTools, so its
+execution relationship is `not_applicable`. This does not contradict the
+package's separate solved-network feasibility guardrail: that guardrail
+deliberately refuses a residual-witness conclusion when no solved status is
+available. The federation does not pretend that this generic refusal behavior
+reproduces or certifies the continuation experiment. Context packets expose
+the record under `numerical_pathologies` with no package execution link.
 
 ## What generalizes
 

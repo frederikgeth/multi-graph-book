@@ -548,6 +548,8 @@ class CorpusIndex:
             summary["executable"] = record["executable"]
             if record.get("negative_result"):
                 summary["negative_result"] = record["negative_result"]
+            if record.get("numerical_pathology"):
+                summary["numerical_pathology"] = record["numerical_pathology"]
         else:
             summary["excerpt"] = record["text"][:1200]
         return summary
@@ -651,6 +653,15 @@ class CorpusIndex:
             for item in knowledge
             if item.get("negative_result")
         ]
+        numerical_pathologies = [
+            {
+                "knowledge_id": item["knowledge"]["knowledge_id"],
+                **item["numerical_pathology"],
+                "artifact_paths": item["book"]["artifact_paths"],
+            }
+            for item in knowledge
+            if item.get("numerical_pathology")
+        ]
         executable_checks = []
         implementation_examples = []
         for item in knowledge:
@@ -727,6 +738,7 @@ class CorpusIndex:
             "known_misconceptions": known_misconceptions,
             "counterexamples": counterexamples,
             "negative_results": negative_results,
+            "numerical_pathologies": numerical_pathologies,
             "executable_checks": executable_checks,
             "implementation_examples": implementation_examples,
             "unresolved_boundaries": scientific_boundaries,

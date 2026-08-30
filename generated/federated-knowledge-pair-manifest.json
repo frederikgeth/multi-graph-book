@@ -106,7 +106,7 @@
     "schema_version": "0.5.0"
   },
   "book": {
-    "corpus_sha256": "37eb3fd058901c760ba3602f5ac7defbb6e7e551ad1aeb45cf8fff824eed3a4e",
+    "corpus_sha256": "fbe78995d633122247dc53514ccf44211392a8e320dc6eed1b26343be46c188b",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -122,9 +122,10 @@
       "PSK-000012",
       "PSK-000013",
       "PSK-000014",
-      "PSK-000015"
+      "PSK-000015",
+      "PSK-000016"
     ],
-    "manifest_sha256": "688c604661969c6ea40422aab63d44b569a86437c2fff7f43f498b804272a04e",
+    "manifest_sha256": "335cd8761be06b5c3fec7518bc052669a32406344dcf5937d6675e293d0d8bae",
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -458,9 +459,14 @@
       "contracts": [],
       "implementation_status": "not_applicable",
       "repository": null
+    },
+    "PSK-000016": {
+      "contracts": [],
+      "implementation_status": "not_applicable",
+      "repository": null
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "8c6461cff7763fb67a35ac10d8405e9e98f49460dc16186958f28dac4831eda3",
+  "pair_sha256": "305e3e3c49a7f1d658c283c67c82d7e4b7f60fac09d2182df759c4bcb6495673",
   "schema_version": "0.1.0"
 }

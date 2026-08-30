@@ -1,6 +1,6 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:83c6ce56209ac1381acbdbfbd0f968198476cad5921d19877a537e017728cfb6 -->
+<!-- generated-from claims/claims.toml sha256:69136cf591fab5a596c6ec884d53210bdc6a016f94ff5b1bde70121b4305082b -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
@@ -51,7 +51,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `IMPEDANCE-LADDER-001` — In the deterministic four-wire impedance ladder fixture, phase-to-neutral current and voltage recovery are exact under the declared zero-ground-current map, while the deliberately non-circulant reduced matrix has visible sequence mixing; shunt deletion and positive-sequence use therefore require explicit decision-domain guards. | [Four-wire impedance-model ladder](../cases/four-wire-impedance-model-ladder.md) | `self-checked` |
 | `LLM-RETRIEVAL-001` — On its recorded prior corpus and held-out paraphrase set, the pinned compact neural retriever and generic cross-encoder reranker each failed at least one predeclared not-worse-than-hybrid retrieval gate, so neither candidate was promoted into the production route. | [Federated scientific knowledge: end-to-end trace](../reference/federated-knowledge-trace.md) | `self-checked` |
 | `LOAD-CONNECTION-001` — On the recorded balanced three-phase terminal fixture, explicit wye phase-to-neutral and delta phase-to-phase connection maps share the same bus and graph but produce different load-voltage observations: unit-magnitude wye voltages and sqrt(3)-magnitude delta voltages. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `self-checked` |
-| `LOAD-CONTINUATION-001` — On the recorded scalar two-bus continuation probe, the damped CP branch first fails to converge at demand scale 1.8 after a converged scale 1.7, while CI, CZ, and the declared ZIP branch remain converged through scale 3.0; this is an iteration-scoped branch diagnostic, not a global collapse theorem. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `self-checked` |
+| `LOAD-CONTINUATION-001` — On the recorded scalar two-bus continuation probe, the damped CP branch first fails to converge at demand scale 1.8 after a converged scale 1.7, while CI, CZ, and the declared ZIP branch remain converged through scale 3.0; this is an iteration-scoped branch diagnostic, not a global collapse theorem. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `independently-implemented` |
 | `LOAD-DECISION-001` — On the recorded two-bus fixture, CP, CI, CZ, and a normalized ZIP load law share the same bus--branch graph but produce distinct high-voltage solutions and decision margins: CP violates both the declared voltage and current limits, while CI, CZ, and ZIP satisfy both. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `self-checked` |
 | `NUMERICAL-002` — For the pinned running-network fixture, BMOPFTools exports a 20-by-20 passive Ybus with 166 nonzeros; the constant-Z linearized Ybus agrees with it, and realification produces a 40-by-40 current-voltage matrix with 664 nonzeros. The complex matrices have numerical rank 18 at the declared tolerance, with rank-aware effective 2-norm condition about 6.50e8 (1.13e7 after equilibration); the realified embedding preserves support and dimension but is not complex-transpose-symmetric. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
 | `NUMERICAL-003` — In the pinned nonlinear two-bus parallel-member witness, retaining two explicit member-current laws produces a 6-by-7 residual Jacobian and 13-by-13 KKT pattern, while the summed-current aggregate produces a 4-by-5 Jacobian and 9-by-9 KKT pattern; symbolic fill changes with elimination order in both formulations. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
@@ -150,8 +150,8 @@ verification state, see the [evidence map and verification summary](evidence-map
 
 | Verification | Claims |
 | --- | ---: |
-| `self-checked` | 104 |
-| `independently-implemented` | 5 |
+| `self-checked` | 103 |
+| `independently-implemented` | 6 |
 | `externally-reviewed` | 0 |
 
 ## Unresolved issues

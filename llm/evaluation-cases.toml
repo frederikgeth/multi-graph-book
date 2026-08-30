@@ -632,3 +632,33 @@ required_claim_ids = ["LLM-RETRIEVAL-001"]
 required_concept_ids = ["equivalence-exactness-preservation"]
 required_answer_elements = ["state that the recorded neural and reranked candidates did not clear the hybrid promotion gates", "distinguish retrieval recall from scientific answer validity and require a current-corpus rerun"]
 forbidden_simplifications = ["an embedding index guarantees better scientific evidence coverage"]
+
+[[case]]
+case_id = "EVAL-ITERATION-PATHOLOGY-STUDENT"
+audience = "student"
+question = "The load-flow iteration stopped converging at demand scale 1.8. Does that prove the system becomes infeasible or collapses there?"
+misconception_id = "iteration-failure-proves-infeasibility"
+required_claim_ids = ["LOAD-CONTINUATION-001"]
+required_concept_ids = ["state", "equivalence-exactness-preservation"]
+required_answer_elements = ["identify 1.8 as the first failed point for the recorded damped fixed-point procedure only", "require separate continuation or feasibility evidence before claiming collapse or no solution"]
+forbidden_simplifications = ["nonconvergence proves physical infeasibility"]
+
+[[case]]
+case_id = "EVAL-ITERATION-PATHOLOGY-SOFTWARE"
+audience = "software_engineer"
+question = "Can I treat a damped fixed-point continuation failure as a certified no-solution result in the execution API?"
+misconception_id = "iteration-failure-proves-infeasibility"
+required_claim_ids = ["LOAD-CONTINUATION-001"]
+required_concept_ids = ["state", "equivalence-exactness-preservation"]
+required_answer_elements = ["keep algorithm termination separate from independently established equation feasibility", "record solver, initialization, step, tolerance, residual, and continuation provenance before interpreting the boundary"]
+forbidden_simplifications = ["a status label is a global infeasibility certificate"]
+
+[[case]]
+case_id = "EVAL-ITERATION-PATHOLOGY-POWER"
+audience = "power_engineer"
+question = "May I use the first failed fixed-point continuation step as the feeder voltage-collapse limit for planning?"
+misconception_id = "iteration-failure-proves-infeasibility"
+required_claim_ids = ["LOAD-CONTINUATION-001"]
+required_concept_ids = ["state", "equivalence-exactness-preservation"]
+required_answer_elements = ["state that the recorded boundary is method- and grid-specific", "require a mathematically continued branch, a bracketed feasibility boundary, and study-appropriate physical models before using a planning limit"]
+forbidden_simplifications = ["the first failed iterate is the exact saddle-node point"]

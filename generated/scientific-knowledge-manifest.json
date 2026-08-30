@@ -1,5 +1,5 @@
 {
-  "corpus_sha256": "37eb3fd058901c760ba3602f5ac7defbb6e7e551ad1aeb45cf8fff824eed3a4e",
+  "corpus_sha256": "fbe78995d633122247dc53514ccf44211392a8e320dc6eed1b26343be46c188b",
   "knowledge_ids": [
     "PSK-000001",
     "PSK-000002",
@@ -15,10 +15,11 @@
     "PSK-000012",
     "PSK-000013",
     "PSK-000014",
-    "PSK-000015"
+    "PSK-000015",
+    "PSK-000016"
   ],
   "manifest_id": "multi-graph-book-scientific-knowledge-0.1.0",
-  "record_count": 15,
+  "record_count": 16,
   "release": {
     "external_reviewed_claims": 0,
     "independent_human_double_coding": false,
@@ -30,7 +31,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "83c6ce56209ac1381acbdbfbd0f968198476cad5921d19877a537e017728cfb6"
+      "sha256": "69136cf591fab5a596c6ec884d53210bdc6a016f94ff5b1bde70121b4305082b"
     },
     {
       "path": "docs/src/cases/four-wire-impedance-model-ladder.md",
@@ -50,7 +51,7 @@
     },
     {
       "path": "docs/src/foundations/load-models-and-decision-dependence.md",
-      "sha256": "8b9e2062ae025d2ea36b398b55f4a92474a594eba898e830b672c0165f85acd6"
+      "sha256": "f2cf62ff347112136ce260c563dcd658a1561bb4fed14d7d53c7da0855085ed4"
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
@@ -66,7 +67,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "052ef1261b6cfd027a1229ac2e84b2faf8ad11cc9577e4c3d66462657964eab9"
+      "sha256": "522ef461539344ae30d0ba6b288bed10cb48d02f06fcf5bc5e850973b542d6ae"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
@@ -99,6 +100,10 @@
     {
       "path": "experiments/generated/kron-ward-scenario-comparison.json",
       "sha256": "753cec18f5147205f1c93879e79fc4de94ce18b3211cb0f3bcec6142892410b5"
+    },
+    {
+      "path": "experiments/generated/load-continuation-independent-reproduction.json",
+      "sha256": "67bf999262703eff8126dfc886cad747498154130c58ee4a0e1ab4a66c3eba78"
     },
     {
       "path": "experiments/generated/load-grounding-witnesses.json",
@@ -149,12 +154,16 @@
       "sha256": "c8df96b929e8a425e7986ee5620aa2f273c2b6a2bba86d7bd6c3d15eeeeb2c35"
     },
     {
+      "path": "experiments/transformations/LoadGroundingWitness.jl",
+      "sha256": "f8a9ae87fb916816979b50b4edd1ecbdf6698a98ed776e73785bb898c5c41482"
+    },
+    {
       "path": "knowledge/psk.toml",
-      "sha256": "897c72f55809d5e776dfb4a887d4c6b70735488caeac70fdc3115869f3c087a8"
+      "sha256": "89197f8cfa2f3cd16507616e4f233908efe2cdd5cce0888d695d95df2412f180"
     },
     {
       "path": "llm/README.md",
-      "sha256": "cc1030fb4fc8a74782686fa331ee8f222d41efe94a86bc8ab758c860e84ac43a"
+      "sha256": "d630f6215b7e210f48d542cade0ddeffbc61d67e90603799b923c6d76ec03994"
     },
     {
       "path": "llm/generated/neural-retrieval-negative-result.json",
@@ -162,15 +171,19 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "cae315558c3571ccdc8770cf1d0a30f3db418e8003dac60f5bcfa21092fe0a50"
+      "sha256": "a934c9aa642d4145b05f6eca2a78c94c58548e2b1b3fb1d05266055b18dd0f66"
     },
     {
       "path": "schemas/power-system-knowledge.schema.json",
-      "sha256": "3251702f736b19ab9510e9e4f5b9ddbcda04e642a0a886ac6100a626cb480be4"
+      "sha256": "29a4e62aa20c20bd04dd840a4dadecfc7671469876cce10fc9bf1dea4c9b5dbe"
     },
     {
       "path": "scripts/check_neural_benchmark.py",
       "sha256": "a71a3e3a7b82250466a685d2e0d164b97d95ea43eba1b50387ad8d592d546138"
+    },
+    {
+      "path": "scripts/reproduce_load_continuation.py",
+      "sha256": "d60dc520163c16869105cffd822a09425bdfb6f07cb06dc9269fee8efc03cec4"
     }
   ]
 }

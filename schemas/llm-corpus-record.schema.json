@@ -51,7 +51,8 @@
     "does_not_establish": {"type": "array", "items": {"type": "string"}},
     "book": {"type": "object"},
     "executable": {"type": "object"},
-    "negative_result": {"type": "object"}
+    "negative_result": {"type": "object"},
+    "numerical_pathology": {"type": "object"}
   },
   "allOf": [
     {

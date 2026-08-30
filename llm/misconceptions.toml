@@ -272,3 +272,16 @@ operational_consequence = "Premature promotion can reduce mandatory-claim or cou
 mandatory_claim_ids = ["LLM-RETRIEVAL-001"]
 mandatory_concept_ids = ["equivalence-exactness-preservation"]
 source_paths = ["docs/src/reference/federated-knowledge-trace.md", "llm/README.md"]
+
+[[misconception]]
+id = "iteration-failure-proves-infeasibility"
+title = "A failed nonlinear iteration proves physical infeasibility or voltage collapse"
+severity = "critical"
+query_patterns = ["iteration failed so infeasible", "nonconvergence proves no solution", "solver failure means voltage collapse", "first failed continuation point is the nose point", "load flow did not converge infeasible", "fixed point failure proves collapse", "fixed point continuation failure", "certified no solution", "nonlinear solver failed no feasible solution"]
+tempting_answer = "The first demand point where the iteration fails is the physical feasibility boundary or voltage-collapse point."
+required_qualification = "Nonconvergence is evidence about a particular algorithm, initialization, parameterization, tolerance, and sampled path. The recorded LOAD-CONTINUATION-001 probe locates only a damped fixed-point iteration boundary; equation infeasibility or a saddle-node requires separate continuation and feasibility evidence."
+safe_shorthand = "Iteration failure is a numerical diagnostic, not a proof that no physical solution exists."
+operational_consequence = "Treating nonconvergence as infeasibility can invent collapse limits, rank load models from solver behavior, or trigger engineering decisions without an independently established solution boundary."
+mandatory_claim_ids = ["LOAD-CONTINUATION-001"]
+mandatory_concept_ids = ["state", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/foundations/load-models-and-decision-dependence.md"]

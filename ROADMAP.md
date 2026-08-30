@@ -137,11 +137,19 @@ covered by three audience-specific retrieval cases. It remains scoped to its
 archived prior corpus and does not generalize the result to neural retrieval as
 a class.
 
-The schema and federated pair now support an explicit `not_applicable`
-execution relationship. This prevents the taxonomy from inventing a package
-contract when evidence belongs entirely to the book while preserving a stable,
+`PSK-000016` now exercises `numerical-pathology` using the independently
+implemented `LOAD-CONTINUATION-001` probe. Structured packets distinguish the
+observed damped fixed-point failure boundary from equation infeasibility,
+voltage collapse, and general load-model rankings, and they carry the checks
+needed to discriminate those interpretations. The experiment remains
+book-owned rather than manufacturing a package contract from BMOPFTools'
+separate generic solver-status refusal behavior.
+
+The schema and federated pair support an explicit `not_applicable` execution
+relationship. This prevents the taxonomy from inventing a package contract
+when evidence belongs entirely to the book while preserving a stable,
 source-hash-bound PSK route. The next subtype to exercise should be a scientific
-`numerical-pathology` or `scope-boundary` record.
+`scope-boundary` record.
 
 ### Product identity and editorial stance
 

@@ -116,6 +116,16 @@ def knowledge_text(item: dict) -> str:
             "Interpretation: " + negative_result["interpretation"],
             "Conditions that may change the result: " + " ".join(negative_result["conditions_might_work"]),
         ])
+    numerical_pathology = item.get("numerical_pathology")
+    if numerical_pathology:
+        lines.extend([
+            "Numerical pathology: " + numerical_pathology["phenomenon"],
+            "Observed behavior: " + numerical_pathology["observed_behavior"],
+            "Algorithmic boundary: " + numerical_pathology["algorithmic_boundary"],
+            "Invalid inferences: " + " ".join(numerical_pathology["invalid_inferences"]),
+            "Discriminating checks: " + " ".join(numerical_pathology["discriminating_checks"]),
+            "Conditions that may change the behavior: " + " ".join(numerical_pathology["conditions_might_change"]),
+        ])
     return "\n".join(lines)
 
 
@@ -284,6 +294,30 @@ def validate_and_build() -> tuple[list[dict], dict, list[str]]:
         elif negative_result is not None:
             errors.append(f"{record_id}: negative_result table is only valid for negative-result kind")
 
+        numerical_pathology = item.get("numerical_pathology")
+        if item.get("kind") == "numerical-pathology":
+            if not isinstance(numerical_pathology, dict):
+                errors.append(f"{record_id}: numerical-pathology kind requires a numerical_pathology table")
+            else:
+                for field in (
+                    "phenomenon", "experimental_setup", "observed_behavior",
+                    "algorithmic_boundary", "review_status",
+                ):
+                    if not isinstance(numerical_pathology.get(field), str) or not numerical_pathology[field].strip():
+                        errors.append(f"{record_id}: missing or empty numerical_pathology.{field}")
+                for field in (
+                    "invalid_inferences", "discriminating_checks", "conditions_might_change",
+                    "reproducer_commands",
+                ):
+                    require_unique_strings(
+                        record_id,
+                        f"numerical_pathology.{field}",
+                        numerical_pathology.get(field),
+                        errors,
+                    )
+        elif numerical_pathology is not None:
+            errors.append(f"{record_id}: numerical_pathology table is only valid for numerical-pathology kind")
+
         record = {
             "schema_version": SCHEMA_VERSION,
             "record_id": f"knowledge:{record_id}",
@@ -308,6 +342,8 @@ def validate_and_build() -> tuple[list[dict], dict, list[str]]:
         }
         if negative_result is not None:
             record["negative_result"] = negative_result
+        if numerical_pathology is not None:
+            record["numerical_pathology"] = numerical_pathology
         records.append(record)
 
     records.sort(key=lambda item: item["knowledge_id"])

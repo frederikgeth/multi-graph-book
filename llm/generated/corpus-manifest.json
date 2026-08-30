@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "7076909bcff9ba2424f502136a5ed5a0172b2ee3723582ad28b3039ba90aa125",
+  "corpus_sha256": "bfe77d3f0abe2beb3bdcbefda9226271cf204bbdfef7dcab2da4fcaa9404b11e",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -12,15 +12,15 @@
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
     "included_doc_count": 68
   },
-  "evaluation_case_count": 63,
+  "evaluation_case_count": 66,
   "heldout_case_count": 33,
-  "misconception_count": 21,
-  "record_count": 780,
+  "misconception_count": 22,
+  "record_count": 782,
   "record_counts": {
     "claim_bundle": 109,
     "concept_bundle": 18,
-    "scientific_knowledge": 15,
-    "section": 638
+    "scientific_knowledge": 16,
+    "section": 639
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -33,7 +33,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "83c6ce56209ac1381acbdbfbd0f968198476cad5921d19877a537e017728cfb6"
+      "sha256": "69136cf591fab5a596c6ec884d53210bdc6a016f94ff5b1bde70121b4305082b"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -105,7 +105,7 @@
     },
     {
       "path": "docs/src/foundations/load-models-and-decision-dependence.md",
-      "sha256": "8b9e2062ae025d2ea36b398b55f4a92474a594eba898e830b672c0165f85acd6"
+      "sha256": "f2cf62ff347112136ce260c563dcd658a1561bb4fed14d7d53c7da0855085ed4"
     },
     {
       "path": "docs/src/foundations/multigraphs-for-modelers.md",
@@ -209,7 +209,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "052ef1261b6cfd027a1229ac2e84b2faf8ad11cc9577e4c3d66462657964eab9"
+      "sha256": "522ef461539344ae30d0ba6b288bed10cb48d02f06fcf5bc5e850973b542d6ae"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -221,11 +221,11 @@
     },
     {
       "path": "docs/src/start/chatgpt-access.md",
-      "sha256": "7b81002a34ec018b7fecc3e778842b7273036fc68ce76f5af91e23bbf2f61540"
+      "sha256": "f483582d443048b64127cd98770e43df695b0f0d9c72cac8ddf76a5075936c15"
     },
     {
       "path": "docs/src/start/claude-access.md",
-      "sha256": "52d719e8d587e18a3c93d2a2e527dbcc3feb3db38c085aed87437161c04cf2e6"
+      "sha256": "09328493dee51be944bc7a1bc16bf3f0f7a2b9b2d1a3ec3c55c214338525a6d7"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
@@ -309,15 +309,15 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "688c604661969c6ea40422aab63d44b569a86437c2fff7f43f498b804272a04e"
+      "sha256": "335cd8761be06b5c3fec7518bc052669a32406344dcf5937d6675e293d0d8bae"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",
-      "sha256": "37eb3fd058901c760ba3602f5ac7defbb6e7e551ad1aeb45cf8fff824eed3a4e"
+      "sha256": "fbe78995d633122247dc53514ccf44211392a8e320dc6eed1b26343be46c188b"
     },
     {
       "path": "llm/evaluation-cases.toml",
-      "sha256": "9e4e305fb26df580685f4cf87046297054c298b79eec7326c9b1ae91c6e60db3"
+      "sha256": "066f57fe9db85efdb4f6c4e14ec9600178e69a1e443a269ddabf808ee85726d5"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -325,7 +325,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "cae315558c3571ccdc8770cf1d0a30f3db418e8003dac60f5bcfa21092fe0a50"
+      "sha256": "a934c9aa642d4145b05f6eca2a78c94c58548e2b1b3fb1d05266055b18dd0f66"
     },
     {
       "path": "vocabulary/vocabulary.toml",

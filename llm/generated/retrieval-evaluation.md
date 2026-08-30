@@ -4,8 +4,8 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `7076909bcff9ba2424f502136a5ed5a0172b2ee3723582ad28b3039ba90aa125`<br>
-**Cases:** 63
+**Corpus hash:** `bfe77d3f0abe2beb3bdcbefda9226271cf204bbdfef7dcab2da4fcaa9404b11e`<br>
+**Cases:** 66
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
 The latter is permitted to add mandatory claims and concepts only after the query router identifies
@@ -16,12 +16,12 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Measure | Result | Release gate? |
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
-| Open-corpus lexical evidence recall@5 | 23.9% | diagnostic |
-| Open-corpus lexical evidence recall@10 | 32.6% | diagnostic |
+| Open-corpus lexical evidence recall@5 | 24.4% | diagnostic |
+| Open-corpus lexical evidence recall@10 | 32.7% | diagnostic |
 | Open-corpus complete evidence@10 | 0.0% | diagnostic |
-| Evidence-only lexical recall@5 | 34.1% | diagnostic |
-| Evidence-only lexical recall@10 | 43.4% | diagnostic |
-| Evidence-only complete evidence@10 | 1.6% | diagnostic |
+| Evidence-only lexical recall@5 | 34.0% | diagnostic |
+| Evidence-only lexical recall@10 | 43.0% | diagnostic |
+| Evidence-only complete evidence@10 | 1.5% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
 | Packets with qualification, failure, shorthand, and scope | 100.0% | yes |
@@ -43,10 +43,10 @@ evidence sets, so the effective target count is nine rather than 27 independent 
 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `lexical` | 33.4% | 44.9% | 0.0% | 0/33 | 5/33 | 0.201 |
-| `char_tfidf` | 36.2% | 44.2% | 0.0% | 0/33 | 6/33 | 0.224 |
+| `lexical` | 33.4% | 44.9% | 0.0% | 0/33 | 5/33 | 0.200 |
+| `char_tfidf` | 36.2% | 43.9% | 0.0% | 0/33 | 6/33 | 0.225 |
 | `hybrid` | 38.0% | 46.6% | 0.0% | 0/33 | 5/33 | 0.219 |
-| `graph` | 38.4% | 57.7% | 21.2% | 7/33 | 4/33 | 0.253 |
+| `graph` | 38.4% | 57.7% | 21.2% | 7/33 | 4/33 | 0.251 |
 
 Held-out contract-router firing: **25/33 (75.8%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **17/33 (51.5%)**; this remains diagnostic because the set is synthetic and clustered.
@@ -94,9 +94,9 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 21 | 100.0% | 45.8% | 100.0% |
-| `software_engineer` | 21 | 100.0% | 37.8% | 100.0% |
-| `student` | 21 | 100.0% | 46.5% | 100.0% |
+| `power_engineer` | 22 | 100.0% | 45.2% | 100.0% |
+| `software_engineer` | 22 | 100.0% | 36.4% | 100.0% |
+| `student` | 22 | 100.0% | 47.4% | 100.0% |
 
 ## Case results
 
@@ -157,7 +157,7 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 | `EVAL-TERMINAL-PERMUTATION-SOFTWARE` | `software_engineer` | `terminal-permutation-is-cosmetic` | 20.0% | yes |
 | `EVAL-TERMINAL-PERMUTATION-POWER` | `power_engineer` | `terminal-permutation-is-cosmetic` | 0.0% | yes |
 | `EVAL-FEASIBILITY-WITNESS-STUDENT` | `student` | `complete-feasibility-status-is-enough` | 25.0% | yes |
-| `EVAL-FEASIBILITY-WITNESS-SOFTWARE` | `software_engineer` | `complete-feasibility-status-is-enough` | 50.0% | yes |
+| `EVAL-FEASIBILITY-WITNESS-SOFTWARE` | `software_engineer` | `complete-feasibility-status-is-enough` | 25.0% | yes |
 | `EVAL-FEASIBILITY-WITNESS-POWER` | `power_engineer` | `complete-feasibility-status-is-enough` | 50.0% | yes |
 | `EVAL-UNIT-BASE-STUDENT` | `student` | `unit-base-metadata-is-equivalence` | 25.0% | yes |
 | `EVAL-UNIT-BASE-SOFTWARE` | `software_engineer` | `unit-base-metadata-is-equivalence` | 25.0% | yes |
@@ -165,6 +165,9 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 | `EVAL-NEURAL-NEGATIVE-STUDENT` | `student` | `generic-neural-retrieval-is-automatically-better` | 50.0% | yes |
 | `EVAL-NEURAL-NEGATIVE-SOFTWARE` | `software_engineer` | `generic-neural-retrieval-is-automatically-better` | 50.0% | yes |
 | `EVAL-NEURAL-NEGATIVE-POWER` | `power_engineer` | `generic-neural-retrieval-is-automatically-better` | 50.0% | yes |
+| `EVAL-ITERATION-PATHOLOGY-STUDENT` | `student` | `iteration-failure-proves-infeasibility` | 66.7% | yes |
+| `EVAL-ITERATION-PATHOLOGY-SOFTWARE` | `software_engineer` | `iteration-failure-proves-infeasibility` | 33.3% | yes |
+| `EVAL-ITERATION-PATHOLOGY-POWER` | `power_engineer` | `iteration-failure-proves-infeasibility` | 33.3% | yes |
 
 ## Interpretation and next boundary
 

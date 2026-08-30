@@ -17,16 +17,16 @@
     "source_objects": 22,
     "view_maps": 7,
     "local_links": 623,
-    "llm_corpus_records": 780,
-    "llm_section_records": 638,
+    "llm_corpus_records": 782,
+    "llm_section_records": 639,
     "llm_claim_bundles": 109,
     "llm_concept_bundles": 18,
-    "llm_misconception_contracts": 21,
-    "llm_evaluation_cases": 63,
-    "llm_retrieval_cases": 63,
+    "llm_misconception_contracts": 22,
+    "llm_evaluation_cases": 66,
+    "llm_retrieval_cases": 66,
     "llm_heldout_cases": 33,
     "llm_route_top1_percent": 100,
-    "llm_lexical_complete_at_10_tenths_percent": 16,
+    "llm_lexical_complete_at_10_tenths_percent": 15,
     "llm_contract_complete_percent": 100,
     "llm_heldout_hybrid_recall_at_10_tenths_percent": 466,
     "llm_heldout_router_fired_tenths_percent": 758,
@@ -244,11 +244,11 @@
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "3b81b5afb5c8c561a5679374958d627f7aaebfd0a05ded53426b82d3d3181c8b"
+      "sha256": "e9465c59252e3403194943d2a006b9c820109573e78ef391040bda1f7c8dabd1"
     },
     {
       "path": "claims/claims.toml",
-      "sha256": "83c6ce56209ac1381acbdbfbd0f968198476cad5921d19877a537e017728cfb6"
+      "sha256": "69136cf591fab5a596c6ec884d53210bdc6a016f94ff5b1bde70121b4305082b"
     },
     {
       "path": "docs/build/.DS_Store",
@@ -1552,11 +1552,11 @@
     },
     {
       "path": "docs/src/assets/reference-evidence-map.png",
-      "sha256": "1f1d5db7f6f4a247bfbd991069d0776ebd1208322e504064fa6afef19e672e45"
+      "sha256": "7232049f357d943a0c4619c285319e5df85c93e49d9d8a6477b65f5aca4e546e"
     },
     {
       "path": "docs/src/assets/reference-evidence-map.svg",
-      "sha256": "4cb03fe271a310ec504ece3fce4dbf3c6a871ab728076f0882b8ddf64fc8e808"
+      "sha256": "d2038606e5a511d00377b7023d60d3d4e984abace7b4d016c653601f7dbda95a"
     },
     {
       "path": "docs/src/assets/reference-symbol-anatomy.png",
@@ -1568,11 +1568,11 @@
     },
     {
       "path": "docs/src/assets/reference-verification-summary.png",
-      "sha256": "6b6e3912e416be9f52190697c9a1cdb04db0373e867d6570d4b70e5ef50f357a"
+      "sha256": "9e6afa86c31a5fd3e713471ebd8f87fff86c468e3619ce40a1bb29360f6019cb"
     },
     {
       "path": "docs/src/assets/reference-verification-summary.svg",
-      "sha256": "0a078aa3aa182c29d0ed2ad5bc02675aae0ff17c26aaeb7d9b569a6c01809bce"
+      "sha256": "e221697413e8090239ae3f4147ba19e57e4c5a30abed08508bc5b4e2cdcbca54"
     },
     {
       "path": "docs/src/assets/representation-principal-levels.png",
@@ -1824,7 +1824,7 @@
     },
     {
       "path": "docs/src/foundations/load-models-and-decision-dependence.md",
-      "sha256": "8b9e2062ae025d2ea36b398b55f4a92474a594eba898e830b672c0165f85acd6"
+      "sha256": "f2cf62ff347112136ce260c563dcd658a1561bb4fed14d7d53c7da0855085ed4"
     },
     {
       "path": "docs/src/foundations/multigraphs-for-modelers.md",
@@ -1928,19 +1928,19 @@
     },
     {
       "path": "docs/src/reference/chapter-status.md",
-      "sha256": "3824a34c27a0ff1ef2786b26b50523782208dbdad4ad382e74a9ecbc5f6064ee"
+      "sha256": "0e0e0f085aeedc0bfa9fd89e8546bd50b3cc4e03ed1dbe7020ae6111eec94479"
     },
     {
       "path": "docs/src/reference/evidence-map.md",
-      "sha256": "0bff0e6b8eaf5ede7834036d89fd5cedd002598a4dc724305cb85206ab5b7629"
+      "sha256": "140a08a3d35396f71f7a6e6d351db55658b268a6d684bf215a2665e17c87e62b"
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "052ef1261b6cfd027a1229ac2e84b2faf8ad11cc9577e4c3d66462657964eab9"
+      "sha256": "522ef461539344ae30d0ba6b288bed10cb48d02f06fcf5bc5e850973b542d6ae"
     },
     {
       "path": "docs/src/reference/knowledge-base-index.md",
-      "sha256": "c47c96a34dc3a70d7bfe4305561261f1ba31e43237b9351d7d54da67dcd03eb0"
+      "sha256": "6876047abf60f7193c44ca714a0b92e37a8a8c01eefd64e66ba409a1797c72e3"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -1960,11 +1960,11 @@
     },
     {
       "path": "docs/src/start/chatgpt-access.md",
-      "sha256": "7b81002a34ec018b7fecc3e778842b7273036fc68ce76f5af91e23bbf2f61540"
+      "sha256": "f483582d443048b64127cd98770e43df695b0f0d9c72cac8ddf76a5075936c15"
     },
     {
       "path": "docs/src/start/claude-access.md",
-      "sha256": "52d719e8d587e18a3c93d2a2e527dbcc3feb3db38c085aed87437161c04cf2e6"
+      "sha256": "09328493dee51be944bc7a1bc16bf3f0f7a2b9b2d1a3ec3c55c214338525a6d7"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
@@ -3344,7 +3344,7 @@
     },
     {
       "path": "llm/README.md",
-      "sha256": "cc1030fb4fc8a74782686fa331ee8f222d41efe94a86bc8ab758c860e84ac43a"
+      "sha256": "d630f6215b7e210f48d542cade0ddeffbc61d67e90603799b923c6d76ec03994"
     },
     {
       "path": "llm/access-fixtures.toml",
@@ -3356,15 +3356,15 @@
     },
     {
       "path": "llm/evaluation-cases.toml",
-      "sha256": "9e4e305fb26df580685f4cf87046297054c298b79eec7326c9b1ae91c6e60db3"
+      "sha256": "066f57fe9db85efdb4f6c4e14ec9600178e69a1e443a269ddabf808ee85726d5"
     },
     {
       "path": "llm/generated/access-fixtures.jsonl",
-      "sha256": "150b09a45b842eb1169a9bee9a79517a1d4c99e171c137c06987edcc465166df"
+      "sha256": "027c16cdf187874dcb7de289ebb1a9769e323c34cd701baa45c78f7fd0c7db34"
     },
     {
       "path": "llm/generated/adversarial-evaluation.json",
-      "sha256": "dff5a1d495a160f40391b36982ba725cf9bf2062fecf3c37138a5c58a12d158e"
+      "sha256": "f1da874180ccf8d5e54876276c3b2d93d9404f471058e0ac44ffd572a1df03fc"
     },
     {
       "path": "llm/generated/adversarial-evaluation.md",
@@ -3372,19 +3372,19 @@
     },
     {
       "path": "llm/generated/corpus-manifest.json",
-      "sha256": "9c59b9031649186712dcad667e3fac269abde38f24695969126162335651348b"
+      "sha256": "79de73c127d6cefe96ca94053f0486880cfdc46a8553514daac323ab21ef750c"
     },
     {
       "path": "llm/generated/corpus.jsonl",
-      "sha256": "7076909bcff9ba2424f502136a5ed5a0172b2ee3723582ad28b3039ba90aa125"
+      "sha256": "bfe77d3f0abe2beb3bdcbefda9226271cf204bbdfef7dcab2da4fcaa9404b11e"
     },
     {
       "path": "llm/generated/neural-retrieval-evaluation.json",
-      "sha256": "9f5fce07746125b077d0e1b1b020720473e0c5e1e413cd0d66c907445f28da00"
+      "sha256": "44f4b497be1d0b065f462b928c75c28356bfc322dc2c1a66d4670a294ccdebfd"
     },
     {
       "path": "llm/generated/neural-retrieval-evaluation.md",
-      "sha256": "a79a925368b0d9b58270114bbfa48dc512aa9f286900daf65be95266883fcfd0"
+      "sha256": "3e9b1fb1690370914cf384591f61bcaf64c3ea89a635eab9a9c9eb3261b2270f"
     },
     {
       "path": "llm/generated/neural-retrieval-negative-result.json",
@@ -3392,11 +3392,11 @@
     },
     {
       "path": "llm/generated/retrieval-evaluation.json",
-      "sha256": "28cb078d7959c2bca211f4830ac50871cc29b7f322693a9984d03a8383efa49e"
+      "sha256": "5bcdd6c6b9a7b2e445b09dab145678619f0862e652bb542c8785f6d7f836a4d7"
     },
     {
       "path": "llm/generated/retrieval-evaluation.md",
-      "sha256": "4ebc3d341cf350a339328d5d78c3ed77684fb47ffd6fa199478a8150b7f78887"
+      "sha256": "a4c5f3a86dda6b7255983128d14bb92d7e1559322ec31d98750d7caedb9d0650"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -3404,7 +3404,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "cae315558c3571ccdc8770cf1d0a30f3db418e8003dac60f5bcfa21092fe0a50"
+      "sha256": "a934c9aa642d4145b05f6eca2a78c94c58548e2b1b3fb1d05266055b18dd0f66"
     },
     {
       "path": "llm/neural-models.toml",
@@ -3588,11 +3588,11 @@
     },
     {
       "path": "schemas/llm-context-packet.schema.json",
-      "sha256": "cfd44dbb21133fea13b5e1a5b05f5bd06a68ae5095af06427babd2519a8782b8"
+      "sha256": "d7a5e5aeb1ae4a0b671359edb44c262107d4cb2e1c8a96105f5d54ca6b11cf65"
     },
     {
       "path": "schemas/llm-corpus-record.schema.json",
-      "sha256": "c636ee5adc353b0e636d74df48f9b771a3194e44a5aff97efbe49e7a1088c3e4"
+      "sha256": "0e937af2f490287b8cb9fe9ce19edd9847037d3282fb35dcf715023d20c212fc"
     },
     {
       "path": "schemas/llm-evaluation-case.schema.json",
@@ -3604,7 +3604,7 @@
     },
     {
       "path": "schemas/power-system-knowledge.schema.json",
-      "sha256": "3251702f736b19ab9510e9e4f5b9ddbcda04e642a0a886ac6100a626cb480be4"
+      "sha256": "29a4e62aa20c20bd04dd840a4dadecfc7671469876cce10fc9bf1dea4c9b5dbe"
     },
     {
       "path": "schemas/transformation-certificate.schema.json",
@@ -3656,11 +3656,11 @@
     },
     {
       "path": "scripts/check_llm_accessibility.py",
-      "sha256": "cb0bde9f0d8d6463577454d53d220e94d361f30f487560ed3ff2a265c7dda6fa"
+      "sha256": "4eb2d18bc1f3e10bda7a0548442ca7553c67ac6eb2177b7fcc9b6107b4516f58"
     },
     {
       "path": "scripts/check_llm_answer_contract.py",
-      "sha256": "591d618d4deeb10187c3a74900432023e98a77221439045c1be2563fbfc7b87e"
+      "sha256": "0966e6c0aeba9a344e1e684db0fff4fd4245949051463ea98cf921acae4197db"
     },
     {
       "path": "scripts/check_llm_reproducibility.py",
@@ -3748,7 +3748,7 @@
     },
     {
       "path": "scripts/generate_scientific_knowledge.py",
-      "sha256": "317d0b111b8e77d893841b3a4b03938693a825900136c21247688c1625020826"
+      "sha256": "f023fd30a80d0a24ad8326ae4e3802fe23b9043d7aaf69a7fcaa814d1c4bbc5a"
     },
     {
       "path": "scripts/generate_second_coding_template.py",
@@ -3768,11 +3768,11 @@
     },
     {
       "path": "scripts/llm_retrieval.py",
-      "sha256": "1614ceae930650a740a0f6634e2e9bd035e746a9e99fbd7dc60798bfbc3c5ea7"
+      "sha256": "6d28b80d5a353227165bb90ddf3fadda02b0c8a16d76e551b0224339d87c2475"
     },
     {
       "path": "scripts/llm_service.py",
-      "sha256": "ea3075074598c9329042a7d62aad4a57701d9a104285b5872c933b395015037a"
+      "sha256": "fbf69497b07a72593afbfce48004200c70d3c254d7db626f059ce0a35164ccd0"
     },
     {
       "path": "scripts/mcp_llm_server.py",

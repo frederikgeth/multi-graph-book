@@ -138,6 +138,13 @@ counterpart. A book-owned record may declare its executable relationship
 federated pair preserves that explicit empty relationship. It must not invent a
 BMOPFTools contract merely to make the record look symmetric.
 
+Structured numerical-pathology records separate an observed algorithmic
+failure boundary from physical infeasibility, bifurcation, or model-validity
+claims. They name the algorithm, initialization and stopping domain, the
+invalid inferences, and the checks needed to discriminate numerical behavior
+from a scientific conclusion. Independent reproduction of the same algorithm
+strengthens the observation but does not erase that boundary.
+
 BMOPFTools maintains a small executable registry, not a scientific knowledge
 database. It records executable contract IDs, entry points, applicable object
 types, finding codes, fixture IDs, output shape, and related PSK IDs. Runtime

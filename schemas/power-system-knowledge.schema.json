@@ -158,6 +158,32 @@
       },
       "additionalProperties": false
     },
+    "numerical_pathology": {
+      "type": "object",
+      "required": [
+        "phenomenon",
+        "experimental_setup",
+        "observed_behavior",
+        "algorithmic_boundary",
+        "invalid_inferences",
+        "discriminating_checks",
+        "conditions_might_change",
+        "reproducer_commands",
+        "review_status"
+      ],
+      "properties": {
+        "phenomenon": {"type": "string", "minLength": 1},
+        "experimental_setup": {"type": "string", "minLength": 1},
+        "observed_behavior": {"type": "string", "minLength": 1},
+        "algorithmic_boundary": {"type": "string", "minLength": 1},
+        "invalid_inferences": {"$ref": "#/$defs/uniqueStrings"},
+        "discriminating_checks": {"$ref": "#/$defs/uniqueStrings"},
+        "conditions_might_change": {"$ref": "#/$defs/uniqueStrings"},
+        "reproducer_commands": {"$ref": "#/$defs/uniqueStrings"},
+        "review_status": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
     "source": {
       "type": "object",
       "required": ["repository", "path", "anchor", "sha256"],
@@ -177,6 +203,11 @@
       "if": {"properties": {"kind": {"const": "negative-result"}}},
       "then": {"required": ["negative_result"]},
       "else": {"not": {"required": ["negative_result"]}}
+    },
+    {
+      "if": {"properties": {"kind": {"const": "numerical-pathology"}}},
+      "then": {"required": ["numerical_pathology"]},
+      "else": {"not": {"required": ["numerical_pathology"]}}
     }
   ],
   "$defs": {

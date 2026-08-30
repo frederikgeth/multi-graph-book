@@ -240,6 +240,21 @@ def main() -> int:
                 validation_errors.append("neural negative result is incorrectly presented as a counterexample")
             if packet["executable_checks"] or packet["implementation_examples"]:
                 validation_errors.append("book-only neural negative result invents a BMOPFTools execution link")
+        if case["misconception_id"] == "iteration-failure-proves-infeasibility":
+            packet = response["packet"]
+            if "knowledge:PSK-000016" not in observed:
+                validation_errors.append("iteration-failure route omits mandatory PSK-000016")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000016"]:
+                validation_errors.append("iteration-failure scientific basis differs from PSK-000016")
+            pathologies = packet["numerical_pathologies"]
+            if len(pathologies) != 1 or not pathologies[0].get("discriminating_checks"):
+                validation_errors.append("iteration-failure route omits the structured numerical pathology")
+            if "## Numerical pathologies" not in response["markdown"]:
+                validation_errors.append("iteration-failure Markdown omits the numerical-pathology section")
+            if packet["counterexamples"] or packet["negative_results"]:
+                validation_errors.append("numerical pathology is incorrectly presented as a counterexample or negative result")
+            if packet["executable_checks"] or packet["implementation_examples"]:
+                validation_errors.append("book-only numerical pathology invents a BMOPFTools execution link")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:

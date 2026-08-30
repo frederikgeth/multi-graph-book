@@ -182,6 +182,13 @@ def render_markdown(packet: dict) -> str:
             lines.append(f"  - Failure criterion: {item['failure_criterion']}")
             lines.append(f"  - Interpretation: {item['interpretation']}")
         lines.append("")
+    if packet["numerical_pathologies"]:
+        lines += ["## Numerical pathologies", ""]
+        for item in packet["numerical_pathologies"]:
+            lines.append(f"- **{item['knowledge_id']}** — {item['observed_behavior']}")
+            lines.append(f"  - Algorithmic boundary: {item['algorithmic_boundary']}")
+            lines.append(f"  - Discriminating checks: {' '.join(item['discriminating_checks'])}")
+        lines.append("")
     if packet["executable_checks"]:
         lines += ["## Executable checks", ""]
         for item in packet["executable_checks"]:

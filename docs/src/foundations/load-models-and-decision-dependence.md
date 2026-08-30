@@ -251,3 +251,11 @@ as a warning that a load-model change can move a numerical branch boundary, but
 the boundary is solver- and continuation-specific. It is not a global voltage-
 collapse theorem, and the artifact does not claim that the first failed iterate
 is the exact saddle-node point.
+
+The generated artifact
+`experiments/generated/load-continuation-independent-reproduction.json`
+repeats the complete sampled path with a separate standard-library Python
+implementation. It matches all convergence flags, every converged voltage and
+residual row, and the CP failure scale. This independently reproduces the
+algorithm-scoped observation; it still does not convert iteration failure into
+an infeasibility certificate or a mathematically continued nose curve.
