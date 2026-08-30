@@ -944,8 +944,8 @@
         "section:docs/src/start/one-network-five-languages.md#objects",
         "claim:ARCH-NODAL-001",
         "concept:nodal-operator-alias",
-        "concept:element-edge-relation",
         "section:docs/src/start/five-bus-transformer-lowering.md#a-general-cycle-count-statement",
+        "concept:element-edge-relation",
         "claim:ARCH-BLOCK-001",
         "section:docs/src/foundations/two-level-topology-and-nodal-projection.md#the-missing-middle-between-a-one-line-diagram-and-mathbf-y-mathrm-n",
         "claim:NUMERICAL-002",
@@ -4893,7 +4893,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "1416a46ceda8a809226749f73e58d8abe7978b4ee5090beb31edff58c08441c9",
+    "corpus_sha256": "e8c3e55788317a9c488669968acb357fc90de77f813e9fc33112530e866a171f",
     "record_count": 786,
     "release": {
       "external_reviewed_claims": 0,
@@ -6374,7 +6374,7 @@
         "case_id": "HOLDOUT-KRON-POWER",
         "char_tfidf_complete_at_10": false,
         "char_tfidf_hits_at_10": 0,
-        "char_tfidf_mean_reciprocal_rank_at_20": 0.01,
+        "char_tfidf_mean_reciprocal_rank_at_20": 0.010526,
         "char_tfidf_recall_at_10": 0.0,
         "char_tfidf_recall_at_5": 0.0,
         "char_tfidf_top_10": [
@@ -7733,7 +7733,7 @@
       "char_tfidf": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.223851,
+        "mean_reciprocal_rank_at_20": 0.223867,
         "recall_at_10": 0.445455,
         "recall_at_5": 0.362626,
         "recall_expected_records_at_10": 180,

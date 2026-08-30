@@ -16,7 +16,7 @@
       "transformer_winding_convention_preservation",
       "unit_base_serialization_invariance"
     ],
-    "corpus_sha256": "4af274e0c0783bb8dc512016dd8f56d8a1e1734633f8ccc271e15ecaac6f47d0",
+    "corpus_sha256": "e822d7fd54b2477ecb2ab5e22facc42a628910c6aee1a7b17548745f5801dbd0",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -34,7 +34,7 @@
       "PSK-000014"
     ],
     "manifest_id": "bmopftools-executable-knowledge-0.1.0",
-    "manifest_sha256": "a4da6c1a4e601be7e3337ac2d35d0dd273c5367a1f6011e18467a777c5c2f194",
+    "manifest_sha256": "1bf38e8a014b6467b5950f94a08cec081b90405836adcd5ad06bd2885486afd1",
     "operation_recipes": [
       {
         "command": "julia --startup-file=no --project=. recipes/analyze_case/recipe.jl",
@@ -87,6 +87,9 @@
       "name": "BMOPFTools",
       "version": "0.1.0"
     },
+    "property_suite_ids": [
+      "terminal_permutation_seeded_properties"
+    ],
     "recipe_ids": [
       "analyze_case",
       "explain_finding",
@@ -100,6 +103,7 @@
       "executable_contract": 14,
       "finding": 57,
       "fixture": 14,
+      "property_suite": 1,
       "recipe": 6
     },
     "repository": "frederikgeth/BMOPFTools.jl",
@@ -127,7 +131,7 @@
       "PSK-000017",
       "PSK-000018"
     ],
-    "manifest_sha256": "497db4f5cd1ce37901d4355a8c0df597ee1992cc7babb035483991b9b904e675",
+    "manifest_sha256": "4b381bec7f890eba2089224d57e4737edcc6f64ecd1aea0ccd57936e6cb1ace4",
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -153,6 +157,7 @@
           "fixture_ids": [
             "parallel-rating-outer-relaxation-001"
           ],
+          "property_suites": [],
           "recipes": [
             {
               "command": "julia --startup-file=no --project=. recipes/parallel_member_limits/recipe.jl",
@@ -165,7 +170,7 @@
               "source_sha256": "0cf9e88046b2fcee78ba42b5bf8a1042a71b862a42d77affc187591e2227404d"
             }
           ],
-          "source_sha256": "7a4f00d0943cdb351feb0a789e37c117e22c54c38acde3018ac74db2d2a5470a"
+          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
         }
       ],
       "implementation_status": "implemented",
@@ -186,6 +191,7 @@
           "fixture_ids": [
             "neutral-ground-reference-conflation-001"
           ],
+          "property_suites": [],
           "recipes": [
             {
               "command": "julia --startup-file=no --project=. recipes/neutral_ground_reference/recipe.jl",
@@ -199,7 +205,7 @@
               "source_sha256": "2770312ca3d9f4ac322432ec84319b49eed41b69bb5483bce061b7c39e2b0180"
             }
           ],
-          "source_sha256": "7a4f00d0943cdb351feb0a789e37c117e22c54c38acde3018ac74db2d2a5470a"
+          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
         }
       ],
       "implementation_status": "implemented",
@@ -218,8 +224,9 @@
           "fixture_ids": [
             "claimed-feasible-invalid-solution-001"
           ],
+          "property_suites": [],
           "recipes": [],
-          "source_sha256": "daa6b9b10ecd5e04eccc23a28cf86c7c2be396ab31616f4c7744691160c6dcd0"
+          "source_sha256": "0dae9f402d6ebd1e4f6b47c39d5bc858dc98212f8d56c448a62bb72a1ca92250"
         }
       ],
       "implementation_status": "implemented",
@@ -238,8 +245,9 @@
           "fixture_ids": [
             "load-voltage-base-mismatch-001"
           ],
+          "property_suites": [],
           "recipes": [],
-          "source_sha256": "f68e33437362e842d9089346e3e27a1b3d89f637dba39628fff57a8f5fb884c7"
+          "source_sha256": "47f8af07e009e17d7bc76f32b0dd3c460a4076d8623530bd0ddee5b05f23e912"
         }
       ],
       "implementation_status": "implemented",
@@ -258,8 +266,9 @@
           "fixture_ids": [
             "transformer-tap-domain-loss-001"
           ],
+          "property_suites": [],
           "recipes": [],
-          "source_sha256": "7a4f00d0943cdb351feb0a789e37c117e22c54c38acde3018ac74db2d2a5470a"
+          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
         }
       ],
       "implementation_status": "implemented",
@@ -279,8 +288,9 @@
           "fixture_ids": [
             "transformer-winding-role-swap-001"
           ],
+          "property_suites": [],
           "recipes": [],
-          "source_sha256": "e07eaaf878fba9bff252a0e1033403c9a8ecfa76db487802e4696afff5478195"
+          "source_sha256": "f913c890329ca16e6b5358b6745414891870a08ce8de3dde54a5bd158075b370"
         }
       ],
       "implementation_status": "implemented",
@@ -300,8 +310,9 @@
           "fixture_ids": [
             "decision-manifest-terminal-only-001"
           ],
+          "property_suites": [],
           "recipes": [],
-          "source_sha256": "7a4f00d0943cdb351feb0a789e37c117e22c54c38acde3018ac74db2d2a5470a"
+          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
         }
       ],
       "implementation_status": "implemented",
@@ -322,8 +333,9 @@
           "fixture_ids": [
             "kron-boundary-grounding-001"
           ],
+          "property_suites": [],
           "recipes": [],
-          "source_sha256": "15fc98851ff4e7c2f35ccedfa8e01589e65f54d1cf269038b22286447c4b3556"
+          "source_sha256": "6b7a6e82d9249e10efd7608ae8fc05330b23b16640f1c06e0fb2f316cbc91b62"
         }
       ],
       "implementation_status": "implemented",
@@ -344,8 +356,9 @@
           "fixture_ids": [
             "positive-sequence-collapse-001"
           ],
+          "property_suites": [],
           "recipes": [],
-          "source_sha256": "7a4f00d0943cdb351feb0a789e37c117e22c54c38acde3018ac74db2d2a5470a"
+          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
         }
       ],
       "implementation_status": "implemented",
@@ -366,8 +379,9 @@
           "fixture_ids": [
             "state-dependent-equivalent-001"
           ],
+          "property_suites": [],
           "recipes": [],
-          "source_sha256": "7a4f00d0943cdb351feb0a789e37c117e22c54c38acde3018ac74db2d2a5470a"
+          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
         }
       ],
       "implementation_status": "implemented",
@@ -387,8 +401,9 @@
           "fixture_ids": [
             "reference-singularity-001"
           ],
+          "property_suites": [],
           "recipes": [],
-          "source_sha256": "7a4f00d0943cdb351feb0a789e37c117e22c54c38acde3018ac74db2d2a5470a"
+          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
         }
       ],
       "implementation_status": "implemented",
@@ -408,8 +423,40 @@
           "fixture_ids": [
             "terminal-permutation-001"
           ],
+          "property_suites": [
+            {
+              "case_count": 64,
+              "does_not_establish": [
+                "Random sampling proves the complete typed coordinate-action theorem.",
+                "Generated matrices represent every physical line or cable class.",
+                "A primitive-level pass preserves assets, limits, controls, decisions, objectives, or solver behavior.",
+                "An injected failure is a newly discovered scientific counterexample."
+              ],
+              "expected_finding_codes": [
+                "E.CONTRACT.PERMUTATION_RELATION_MISMATCH"
+              ],
+              "failure_classification": "expected_contract_rejection",
+              "generator_domain": [
+                "Dimensions are integers from one through six.",
+                "Real and imaginary matrix parts are finite, reciprocal, strictly diagonally dominant, and have positive diagonal entries.",
+                "Endpoint terminal labels are distinct and the exact target applies one explicit bijection to maps and matrix coordinates.",
+                "The negative property injects a 0.01 ohm real perturbation at target coordinate (1,1) after exact permutation."
+              ],
+              "minimization_strategy": "Retain target coordinate 1 and its mapped source coordinate, discard all other coordinates, and replay the same injected perturbation.",
+              "properties_checked": [
+                "Exact permutations return passed for every generated case.",
+                "The injected one-entry corruption returns E.CONTRACT.PERMUTATION_RELATION_MISMATCH for every generated case.",
+                "Every injected failure minimizes to one conductor while preserving its Finding code.",
+                "Replaying the recorded algorithm and seed reproduces the case summaries."
+              ],
+              "property_suite_id": "terminal_permutation_seeded_properties",
+              "seed": "0x6d5a56da4b9c2f17",
+              "seed_algorithm": "splitmix64-v1",
+              "source_sha256": "a445e0a22810addb72c19f41d8806e967127e1c2b09a218b2d0ab677230930fd"
+            }
+          ],
           "recipes": [],
-          "source_sha256": "7a4f00d0943cdb351feb0a789e37c117e22c54c38acde3018ac74db2d2a5470a"
+          "source_sha256": "799b016ae45152811c7cddbc31ec53b67de692457889ef0b39a3aabc04f4b84c"
         }
       ],
       "implementation_status": "implemented",
@@ -429,8 +476,9 @@
           "fixture_ids": [
             "solved-network-feasibility-001"
           ],
+          "property_suites": [],
           "recipes": [],
-          "source_sha256": "7a4f00d0943cdb351feb0a789e37c117e22c54c38acde3018ac74db2d2a5470a"
+          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
         }
       ],
       "implementation_status": "implemented",
@@ -450,8 +498,9 @@
           "fixture_ids": [
             "unit-base-serialization-001"
           ],
+          "property_suites": [],
           "recipes": [],
-          "source_sha256": "7a4f00d0943cdb351feb0a789e37c117e22c54c38acde3018ac74db2d2a5470a"
+          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
         }
       ],
       "implementation_status": "implemented",
@@ -479,6 +528,6 @@
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "484677e067d63635740dd6e6c7cc1bfec5f3b1594394b6f3adb6dbfdc23cf2cb",
+  "pair_sha256": "5e946c566fb6563a042c1fb014aae5cfe82fa9f6d5915886060d5908dd9dc420",
   "schema_version": "0.1.0"
 }

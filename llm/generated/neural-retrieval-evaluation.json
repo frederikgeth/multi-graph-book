@@ -2758,13 +2758,13 @@
   "compatibility": {
     "archived_on": "2026-08-30",
     "current_corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "current_corpus_sha256": "1416a46ceda8a809226749f73e58d8abe7978b4ee5090beb31edff58c08441c9",
+    "current_corpus_sha256": "e8c3e55788317a9c488669968acb357fc90de77f813e9fc33112530e866a171f",
     "current_heldout_sha256": "171857dd883acf3ed9a091fac0e2e7485cbd13d5f0477a56af37d010cec16592",
     "current_lexical_summary": {
       "char_tfidf": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.223851,
+        "mean_reciprocal_rank_at_20": 0.223867,
         "recall_at_10": 0.445455,
         "recall_at_5": 0.362626,
         "recall_expected_records_at_10": 180,

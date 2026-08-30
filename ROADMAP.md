@@ -163,8 +163,26 @@ The schema and federated pair support an explicit `not_applicable` execution
 relationship. This prevents the taxonomy from inventing a package contract
 when evidence belongs entirely to the book while preserving a stable,
 source-hash-bound PSK route. The four targeted structured classes are now
-exercised end to end. The next implementation milestone is the property-based
-generator domain and first reproducible seed record.
+exercised end to end.
+
+### Property-based testing tranche (in progress, 2026-08-30)
+
+The first controlled property suite is implemented for `PSK-000012` and the
+package-owned `terminal_permutation_invariance` contract. BMOPFTools records a
+SplitMix64 seed and generates 64 in-domain reciprocal, strictly diagonally
+dominant complex series primitives with one through six conductors and explicit
+terminal bijections. Every exact coordinate action must pass; every deliberately
+corrupted target must fail with the stable matrix-relation Finding; and each
+failure is minimized to a one-conductor witness and rechecked. Replaying the
+same seed must produce the same summary.
+
+The executable export introduces a source-hash-bound `property_suite` record.
+The federated pair pins its algorithm, seed, case count, minimizer, expected
+Finding, and `expected_contract_rejection` classification, and the grounded
+Markdown renderer exposes those facts with the `PSK-000012` route. This adds
+test evidence without changing the book-owned theorem, evidence status, or
+applicability scope. The next milestone is a second controlled suite for the
+existing `PSK-000014` unit/base serialization contract.
 
 ### Product identity and editorial stance
 

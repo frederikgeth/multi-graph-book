@@ -201,6 +201,14 @@ def main() -> int:
                 validation_errors.append("terminal-permutation route omits the linked fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("terminal-permutation executable contract is not marked implemented")
+            pinned = checks[0].get("pinned_contracts", []) if checks else []
+            suites = pinned[0].get("property_suites", []) if len(pinned) == 1 else []
+            if len(suites) != 1 or suites[0].get("property_suite_id") != "terminal_permutation_seeded_properties":
+                validation_errors.append("terminal-permutation route omits its seeded property suite")
+            elif suites[0].get("case_count") != 64 or not suites[0].get("minimization_strategy"):
+                validation_errors.append("terminal-permutation property suite omits seed-count or minimization evidence")
+            if "terminal_permutation_seeded_properties" not in response["markdown"]:
+                validation_errors.append("terminal-permutation Markdown omits its seeded property suite")
         if case["misconception_id"] == "complete-feasibility-status-is-enough":
             packet = response["packet"]
             if "knowledge:PSK-000013" not in observed:

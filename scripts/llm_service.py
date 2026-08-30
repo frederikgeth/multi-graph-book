@@ -211,6 +211,17 @@ def render_markdown(packet: dict) -> str:
                 f"- **{item['knowledge_id']}** — `{item['repository']}` contracts: "
                 f"{', '.join(item['contract_ids'])}; status: `{item['implementation_status']}`"
             )
+            for pinned in item.get("pinned_contracts", []):
+                for suite in pinned.get("property_suites", []):
+                    lines.append(
+                        f"  - Seeded property suite `{suite['property_suite_id']}`: "
+                        f"{suite['case_count']} cases using `{suite['seed_algorithm']}` "
+                        f"seed `{suite['seed']}`; failure classification: "
+                        f"`{suite['failure_classification']}`"
+                    )
+                    lines.append(
+                        f"    Minimization: {suite['minimization_strategy']}"
+                    )
         lines.append("")
     runnable = [
         (item["knowledge_id"], recipe)

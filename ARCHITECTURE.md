@@ -551,6 +551,16 @@ entry, while its exact companion passes. This is a metamorphic complement to
 the book's typed coordinate-action and sequence/coupling material, not a
 replacement for a complete network transformation proof.
 
+The first controlled property suite extends that same executable boundary
+without adding a new scientific claim. BMOPFTools owns the generator, oracle,
+replay test, and minimizer; its executable export declares the finite generator
+domain, algorithm, seed, case count, expected Finding code, minimization rule,
+and failure classification. The book pins those fields and their source hash in
+the federated pair so a grounded answer can distinguish a reproducible expected
+contract rejection from a new scientific counterexample. A property suite may
+exercise only a contract and PSK link that already exist; changing scientific
+scope or evidence status still requires a book-owned knowledge change.
+
 ## Thirteenth vertical slice: complete solved-network feasibility
 
 The thirteenth slice extends the book's numerical-consequence guardrails beyond

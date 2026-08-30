@@ -410,12 +410,18 @@ metamorphic primitive check:
 | Executable contract | `terminal_permutation_invariance` | BMOPFTools | Checks bijection, endpoint maps, and row/column permutation relation |
 | API operation | `check_terminal_permutation_invariance` | BMOPFTools | Reports order mismatch, relation mismatch, or qualified pass |
 | Counterexample fixture | `terminal-permutation-001` | BMOPFTools | Keeps labels aligned while perturbing one target matrix entry |
+| Property suite | `terminal_permutation_seeded_properties` | BMOPFTools | Replays 64 source-hash-bound generated cases and minimizes injected failures |
 | Findings | `E.CONTRACT.TERMINAL_ORDER_MISMATCH`, `E.CONTRACT.PERMUTATION_RELATION_MISMATCH` | BMOPFTools | Separates coordinate-map and primitive-factor failures |
 
 The package pass is not a complete coordinate-transformation theorem. It
 leaves downstream limits, nonlinear state, network feasible sets, decisions,
 objectives, recovery, and solver behavior unassessed; the book retains those
-claims and the pedagogical permutation examples.
+claims and the pedagogical permutation examples. The seeded suite covers
+reciprocal, strictly diagonally dominant complex series matrices with one
+through six conductors. It checks exact permutations, deliberate one-entry
+corruptions, deterministic replay, and one-conductor shrinking. The injected
+failures are classified as expected contract rejections, not newly discovered
+scientific counterexamples.
 
 ## Thirteenth trace: complete solved-network feasibility
 
