@@ -610,9 +610,9 @@ Implementation proceeds from domain interfaces outward:
 The first two scientific execution-interface slices implement steps 3 and 4 for
 `PSK-000001` and `PSK-000002`. BMOPFTools provides source-hash-bound
 `parallel_member_limits` and `neutral_ground_reference` recipes and a versioned
-`check-contract` JSON CLI/API response. Package-only slices add `analyze-case`
-and `verify-solution` routes plus tutorial-derived analysis and verification
-recipes. A completed operation may contain ERROR or WARNING Findings, and a
+`check-contract` JSON CLI/API response. Package-only slices add `analyze-case`,
+`verify-solution`, and `explain-finding` routes plus tutorial-derived analysis,
+verification, and Finding-lookup recipes. A completed operation may contain ERROR or WARNING Findings, and a
 solver status such as `LOCALLY_SOLVED` does not certify feasibility: operation
 status, solver termination, Finding severity, and scientific-contract status
 remain separate axes. The verification route profiles a supplied result; it
@@ -628,6 +628,13 @@ context packet. The pair also pins package-only operation recipes without
 injecting them into a scientific context packet. These are reviewed transport mappings, not a claim that every
 contract is CLI-ready. Additional contracts are promoted only after their
 inputs and explicit source-to-target mappings have an unambiguous JSON form.
+
+Finding explanation is a deterministic offline lookup over BMOPFTools' complete
+generated Finding registry. It returns the canonical package meaning and source
+hash plus only already-declared contract/PSK links. It does not inspect a
+Finding instance, infer causes or repairs, query the book, or explain external
+PowerIO namespaces. This preserves the boundary between package diagnostics and
+the book's scientific retrieval machinery.
 
 The book MCP remains the knowledge interface. A future BMOPFTools adapter is an
 execution interface and exposes a curated operation set such as case parsing,

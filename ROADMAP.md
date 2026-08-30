@@ -100,12 +100,20 @@ status, Finding severity, and scientific-contract status explicit rather than
 collapsing them into one success flag. The pair manifest pins this operation
 recipe without injecting it into a PSK context packet.
 
+A fifth, package-only `explain-finding` route now performs deterministic offline
+lookup over a generated registry of all 341 Finding codes documented by
+BMOPFTools. Its `explain_finding` recipe distinguishes a canonical code meaning
+from one case-specific observation and refuses to infer causes, repairs, or PSK
+links. External PowerIO diagnostic namespaces remain outside the package
+registry. The pair manifest pins the recipe and registry provenance without
+turning the lookup into a book scientific claim.
+
 Remaining work in this tranche is evidence-gated scale-out rather than a bulk
-wrapper exercise: add Finding explanation next, followed by any justified
-parse-only route, while promoting further contracts one at a time. A thin MCP
-or PowerMCP adapter remains last because it should expose the settled operations
-rather than define a competing execution model. Solver invocation remains
-outside the current transport slice.
+wrapper exercise: assess whether a standalone parse-only route adds useful
+semantics beyond `analyze-case`, while promoting further contracts one at a
+time. A thin MCP or PowerMCP adapter remains last because it should expose the
+settled operations rather than define a competing execution model. Solver
+invocation remains outside the current transport slice.
 
 ### Product identity and editorial stance
 

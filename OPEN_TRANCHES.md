@@ -14,8 +14,8 @@ The authority for repository ownership and dependency direction is
 
 | Tranche | State | Delivered boundary | Next open item |
 |---|---|---|---|
-| 1. Execution interface | In progress | Two curated contract adapters plus case analysis and independent supplied-result verification, one versioned envelope, input hashes, and distinct execution/solver/Finding/contract statuses | Finding explanation, then assess parse-only |
-| 2. Documentation and recipes | In progress | Assistant guide, `llms.txt`, two scientific-contract recipes, and tutorial-derived analysis and solution-verification recipes | Finding-explanation recipe |
+| 1. Execution interface | In progress | Two curated contract adapters, case analysis, supplied-result verification, and deterministic offline Finding explanation with distinct execution/solver/Finding/contract statuses | Assess whether parse-only adds a distinct semantic boundary |
+| 2. Documentation and recipes | In progress | Assistant guide, `llms.txt`, two scientific-contract recipes, and tutorial-derived analysis, verification, and Finding-explanation recipes | Reconcile the recipe set after the parse-only decision |
 | 3. Negative-knowledge taxonomy | Queued | Initial PSK taxonomy and fourteen executable links | Select and scope the first new non-modelling record |
 | 4. Property-based testing | Queued | Deterministic metamorphic tests and minimized fixtures | Define the generator domain and seed record |
 | 5. Research/decision log | Queued | Decisions currently recorded in architecture and handover prose | Add the lightweight decision-log format |
@@ -37,9 +37,11 @@ case and returns the complete standard analysis/validation report with status
 `completed`; ERROR and WARNING Findings do not masquerade as transport errors.
 A separate `verify-solution` route profiles a supplied result without invoking a
 solver. Its execution status remains distinct from solver termination and the
-independent report's Finding severity. Finding explanation, a justified
-standalone parse-only route, and an optional thin MCP/PowerMCP adapter remain
-open.
+independent report's Finding severity. A deterministic `explain-finding` route
+looks up all 341 documented package codes in a generated offline registry,
+preserving declared links while refusing inferred causes, repairs, PSK links,
+and external PowerIO namespaces. A justified standalone parse-only route and an
+optional thin MCP/PowerMCP adapter remain open.
 
 Scope:
 
@@ -69,8 +71,9 @@ network and makes the triage misconception explicit: completed analysis is not
 a clean or solver-ready case. The `verify_solution` recipe reuses the
 trust-but-verify tutorial's independent profiling pattern and a minimized
 claimed-feasible counterexample: `LOCALLY_SOLVED` is not evidence that voltage
-limits hold. A Finding-explanation recipe, a justified parse-only recipe, and
-solving remain open.
+limits hold. The `explain_finding` recipe distinguishes a canonical code
+meaning from one observed instance and does not diagnose a root cause or invent
+a repair. A justified parse-only recipe and solving remain open.
 
 Scope:
 
@@ -189,8 +192,8 @@ These items are release-quality follow-ups rather than implementation blockers:
 
 ## Suggested order
 
-1. Execution interface and recipe library (current: Finding explanation is the
-   next vertical slice; assess parse-only after that).
+1. Execution interface and recipe library (current: assess whether parse-only
+   adds a distinct boundary; keep the thin MCP adapter last).
 2. Broader negative-knowledge records.
 3. Property-based testing and minimized counterexamples.
 4. Research/decision log.
