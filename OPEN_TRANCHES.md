@@ -14,7 +14,7 @@ The authority for repository ownership and dependency direction is
 
 | Tranche | State | Delivered boundary | Next open item |
 |---|---|---|---|
-| 1. Execution interface | In progress | Two curated contract adapters plus parse/intake, case analysis, supplied-result verification, and offline Finding explanation with distinct execution/solver/Finding/contract statuses | Add only a thin MCP/PowerMCP adapter over the settled operations |
+| 1. Execution interface | Core complete | Two curated contract adapters plus parse/intake, case analysis, supplied-result verification, offline Finding explanation, and a six-tool read-only MCP adapter over the same envelopes | Promote another contract only when its transport mapping and evidence justify it |
 | 2. Documentation and recipes | Core complete | Assistant guide, `llms.txt`, two scientific-contract recipes, and tutorial-derived parse, analysis, verification, and Finding-explanation recipes | Keep examples synchronized; solving remains outside this transport slice |
 | 3. Negative-knowledge taxonomy | Queued | Initial PSK taxonomy and fourteen executable links | Select and scope the first new non-modelling record |
 | 4. Property-based testing | Queued | Deterministic metamorphic tests and minimized fixtures | Define the generator domain and seed record |
@@ -29,7 +29,7 @@ milestone lands; completed work should not remain described as open.
 
 Build the execution-facing complement to the book's existing knowledge MCP.
 
-**Current status (2026-08-30):** in progress. The versioned JSON envelope,
+**Current status (2026-08-30):** core complete. The versioned JSON envelope,
 curated API/CLI adapter registry, input hashes, all four scientific statuses,
 and request-error separation are implemented for `PSK-000001` and
 `PSK-000002`. A separate `analyze-case` API/CLI route now parses one BMOPF JSON
@@ -43,15 +43,20 @@ preserving declared links while refusing inferred causes, repairs, PSK links,
 and external PowerIO namespaces. A distinct `parse-case` route now reports
 decode/migration/normalization evidence and a compact inventory without running
 validation. Its deliberately incomplete recipe input proves that parse
-completion can coexist with `E.SCHEMA.REQUIRED`. The optional thin
-MCP/PowerMCP adapter remains open.
+completion can coexist with `E.SCHEMA.REQUIRED`. A read-only stdio MCP adapter
+now exposes exactly these six settled operations, plus the executable manifest
+and response schema as resources. It reuses the existing execution envelopes,
+constrains local file access to declared roots, and does not add scientific
+retrieval, solver invocation, or arbitrary Julia evaluation. The recipe source
+hashes bind both CLI and MCP transport implementations.
 
 Scope:
 
 - stable JSON output for selected parse, validation, analysis, solution,
   contract, counterexample, and Finding-explanation operations;
 - a small, documented CLI surface;
-- an optional thin MCP or PowerMCP-compatible adapter;
+- a thin MCP adapter that follows the standard tool/resource protocol and can
+  run alongside PowerMCP servers;
 - no runtime dependency on the book and no exposure of every Julia function.
 
 Acceptance criteria:
@@ -197,13 +202,12 @@ These items are release-quality follow-ups rather than implementation blockers:
 
 ## Suggested order
 
-1. Thin MCP/PowerMCP adapter over the now-settled execution interface; continue
-   promoting contracts only when their transport mappings are unambiguous.
-2. Broader negative-knowledge records.
-3. Property-based testing and minimized counterexamples.
-4. Research/decision log.
-5. Agent benchmark.
-6. External review and evidence maturation in parallel as reviewers become
+1. Broader negative-knowledge records; continue promoting executable contracts
+   only when their transport mappings and evidence are unambiguous.
+2. Property-based testing and minimized counterexamples.
+3. Research/decision log.
+4. Agent benchmark.
+5. External review and evidence maturation in parallel as reviewers become
    available.
 
 Each tranche should add tests, generated artifacts, and explicit scope rather

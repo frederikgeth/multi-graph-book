@@ -244,7 +244,7 @@
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "fde6dc5bdbc94099543a22e0be1f4a0f25adab945e0439ad25c6ce79662ab158"
+      "sha256": "cf0c73619fb44f5fe01555ac141f3e305afdd92ba2fa635e96dcf50cd73bd0ea"
     },
     {
       "path": "claims/claims.toml",
@@ -1936,7 +1936,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "39ad789a2cdab48234d3ad80da3833a4cf27bfad06635212492f74d4c4218cf4"
+      "sha256": "52a8071d37260e09d8ad0328567a79fbcd1bdff7f26ebeaf722cef6177896229"
     },
     {
       "path": "docs/src/reference/knowledge-base-index.md",
@@ -3360,11 +3360,11 @@
     },
     {
       "path": "llm/generated/access-fixtures.jsonl",
-      "sha256": "83a694fd2baa37798ba8bd44ae93ba133b39e22f2bc196a847c5c2fe607012a4"
+      "sha256": "dc5edbb093a7ba0814cda7f7005a4742bafb0aa314dfaf3b8367008f94196484"
     },
     {
       "path": "llm/generated/adversarial-evaluation.json",
-      "sha256": "95f6699ba85628e3f2b1f1626956275dda4bbba65f4a0e51e7a5e0e80006c00e"
+      "sha256": "d0b5d160a44e4e213377e3b69840e52e9a65fd6d71dcc462a42b4fcbd139226c"
     },
     {
       "path": "llm/generated/adversarial-evaluation.md",
@@ -3372,27 +3372,27 @@
     },
     {
       "path": "llm/generated/corpus-manifest.json",
-      "sha256": "9354bd2828c7bae2992eb483802e092240d960ff509210707e557511b67e248e"
+      "sha256": "bd55078375c38455a6202aa7602345c7a9de004b8c1cc26e6b7a1ac0e242d9f4"
     },
     {
       "path": "llm/generated/corpus.jsonl",
-      "sha256": "f431c4f6183c2f48568355cc35ec4226a5c9946a347d7179b30912aa959bd2e4"
+      "sha256": "d812dfd7c494a9b05cc6a787f2ca1ecdbe1735fb26dc203cbce8e8570ac3fbb4"
     },
     {
       "path": "llm/generated/neural-retrieval-evaluation.json",
-      "sha256": "e63ba756c2fb754600dd7ffa933b241bda40325a463d686b7bf3480ae30e9f3d"
+      "sha256": "fa832d406dbab3d0505523fc0bbbe00ed14916ca1917983b190852c6ff492dcc"
     },
     {
       "path": "llm/generated/neural-retrieval-evaluation.md",
-      "sha256": "13b953903f842187c896fca30c50f101e8d3009f8a8410c0bf442d8ccdbad341"
+      "sha256": "e60beb7cc351081716680b00a4eeca350ac55ec375a7e5b8a91b3c2f0b07b5cb"
     },
     {
       "path": "llm/generated/retrieval-evaluation.json",
-      "sha256": "6e5e47e5950378dc20c872f54fdd9617e2898c8afce6a6a80865b90b11941e28"
+      "sha256": "c8e02170875660723fc6dd22394eb31450e765c01b4ac8a03a5532f0788c0b18"
     },
     {
       "path": "llm/generated/retrieval-evaluation.md",
-      "sha256": "597a7e9a5228fa00f7e72739407a206c52d478041c0c2125e61e72058c79c012"
+      "sha256": "1c94f7e98fcefff8df60c3ff7adcbd45b1371fded9c94e7570b3ad5073842ebb"
     },
     {
       "path": "llm/heldout-paraphrases.toml",

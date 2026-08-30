@@ -1091,8 +1091,8 @@
       "open_corpus_recall_at_10": 0.0,
       "open_corpus_recall_at_5": 0.0,
       "open_corpus_top_10": [
-        "section:docs/src/reference/federated-knowledge-trace.md#retrieval-and-answer-contract",
         "concept:element-edge-relation",
+        "section:docs/src/reference/federated-knowledge-trace.md#retrieval-and-answer-contract",
         "claim:COUPLED-CORRIDOR-001",
         "section:docs/src/cases/coupled-multivoltage-corridor.md#physical-parallelism-is-not-visible-in-the-bus-multigraph",
         "section:docs/src/foundations/two-level-topology-and-nodal-projection.md#the-missing-middle-between-a-one-line-diagram-and-mathbf-y-mathrm-n",
@@ -2982,7 +2982,7 @@
         "section:docs/src/foundations/numerical-consequences.md#a-graph-choice-is-also-a-numerical-choice",
         "section:docs/src/foundations/preservation-contracts.md#compact-bmopftools-decision-manifest-gate",
         "section:docs/src/cases/executable-running-network.md#executed-checks",
-        "section:docs/src/reference/federated-knowledge-trace.md#retrieval-and-answer-contract"
+        "claim:TR-PAR-002"
       ],
       "packet_shape_errors": [],
       "packet_shape_valid": true,
@@ -3998,8 +3998,8 @@
         "claim:PRACTICE-ADAPTER-001",
         "claim:ARCH-DEGENERACY-001",
         "claim:DATA-XWALK-001",
-        "claim:PRACTICE-IMPEDANCE-001",
         "claim:LOAD-BASE-001",
+        "claim:PRACTICE-IMPEDANCE-001",
         "claim:TR-XFMR-006",
         "concept:rating-limit-constraint"
       ],
@@ -4293,7 +4293,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "f431c4f6183c2f48568355cc35ec4226a5c9946a347d7179b30912aa959bd2e4",
+    "corpus_sha256": "d812dfd7c494a9b05cc6a787f2ca1ecdbe1735fb26dc203cbce8e8570ac3fbb4",
     "record_count": 777,
     "release": {
       "external_reviewed_claims": 0,
@@ -4708,7 +4708,7 @@
         ],
         "hybrid_complete_at_10": false,
         "hybrid_hits_at_10": 2,
-        "hybrid_mean_reciprocal_rank_at_20": 0.071296,
+        "hybrid_mean_reciprocal_rank_at_20": 0.07209,
         "hybrid_recall_at_10": 0.333333,
         "hybrid_recall_at_5": 0.166667,
         "hybrid_top_10": [
@@ -5118,7 +5118,7 @@
         ],
         "graph_complete_at_10": false,
         "graph_hits_at_10": 4,
-        "graph_mean_reciprocal_rank_at_20": 0.337374,
+        "graph_mean_reciprocal_rank_at_20": 0.334127,
         "graph_recall_at_10": 0.666667,
         "graph_recall_at_5": 0.5,
         "graph_top_10": [
@@ -5142,17 +5142,17 @@
           "claim:TR-XFMR-008",
           "claim:TR-XFMR-010",
           "claim:COUPLED-CORRIDOR-001",
-          "claim:TR-XFMR-009",
           "claim:COUPLED-CORRIDOR-002",
+          "claim:TR-XFMR-009",
           "claim:TR-NEG-001",
           "claim:TR-PAR-001",
           "claim:GRAPH-CYCLE-001",
-          "claim:LOAD-BASE-001",
-          "claim:TR-XFMR-001"
+          "claim:TR-XFMR-001",
+          "claim:LOAD-BASE-001"
         ],
         "lexical_complete_at_10": false,
         "lexical_hits_at_10": 2,
-        "lexical_mean_reciprocal_rank_at_20": 0.056548,
+        "lexical_mean_reciprocal_rank_at_20": 0.055754,
         "lexical_recall_at_10": 0.333333,
         "lexical_recall_at_5": 0.0,
         "lexical_top_10": [
@@ -5186,8 +5186,8 @@
           "claim:COLLAPSE-002",
           "claim:TR-XFMR-002",
           "claim:TR-PAR-002",
-          "claim:TR-PAR-SINGULAR-001",
           "claim:ARCH-SURGERY-002",
+          "claim:TR-PAR-SINGULAR-001",
           "claim:TR-XFMR-001",
           "concept:element-edge-relation",
           "claim:NUMERICAL-002"
@@ -6062,8 +6062,8 @@
           "concept:parallel",
           "claim:TR-KRON-001",
           "claim:PRESERVE-001",
-          "concept:factor",
           "concept:transformation-family",
+          "concept:factor",
           "claim:NUMERICAL-004",
           "claim:COLLAPSE-001"
         ],
@@ -6503,8 +6503,8 @@
           "claim:ARCH-PORT-001",
           "concept:object-node-interface",
           "concept:mutual-coupling-relation",
-          "claim:TR-GRAPH-001",
-          "claim:ARCH-SURGERY-002"
+          "claim:ARCH-SURGERY-002",
+          "claim:TR-GRAPH-001"
         ],
         "lexical_complete_at_10": false,
         "lexical_hits_at_10": 2,
@@ -7143,7 +7143,7 @@
       "graph": {
         "complete_at_10": 0.212121,
         "complete_at_10_count": 7,
-        "mean_reciprocal_rank_at_20": 0.252616,
+        "mean_reciprocal_rank_at_20": 0.252517,
         "recall_at_10": 0.576599,
         "recall_at_5": 0.388889,
         "recall_expected_records_at_10": 180,
@@ -7153,7 +7153,7 @@
       "hybrid": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.218851,
+        "mean_reciprocal_rank_at_20": 0.218875,
         "recall_at_10": 0.465825,
         "recall_at_5": 0.37963,
         "recall_expected_records_at_10": 180,
@@ -7165,7 +7165,7 @@
       "lexical": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.20084,
+        "mean_reciprocal_rank_at_20": 0.200816,
         "recall_at_10": 0.448653,
         "recall_at_5": 0.334007,
         "recall_expected_records_at_10": 180,

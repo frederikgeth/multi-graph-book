@@ -61,6 +61,13 @@ The packet now also exposes explicit sections:
 
 These are structured views over mandatory records, not a second retrieval index. The deterministic corpus, release identity, source hashes, retrieval evaluation, MCP route, HTTP route, and CLI route remain the book's established machinery.
 
+BMOPFTools also provides a separate read-only MCP stdio adapter for the six
+settled package execution operations. Connecting both servers gives an agent a
+book-owned retrieval route and a package-owned execution route; it does not
+merge their authority or allow an execution result to silently upgrade a book
+claim. The federated recipe pins include the adapter source files, so changes
+to that transport invalidate the paired source hashes.
+
 ## Second trace: neutral, ground, and reference
 
 The second slice reuses the same cross-repository mechanism for a model-semantics

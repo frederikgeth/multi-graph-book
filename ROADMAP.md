@@ -75,7 +75,7 @@ reference/rank validation, terminal/conductor permutation invariance,
 solved-network feasibility, and unit/base serialization. Remaining promotion is
 evidence-gated rather than quota-driven.
 
-### Executable interface and recipe tranche (in progress, 2026-08-30)
+### Executable interface and recipe tranche (core complete, 2026-08-30)
 
 The first two scientific transport slices are implemented for `PSK-000001` and
 `PSK-000002`. BMOPFTools owns a versioned JSON execution response, a curated
@@ -117,11 +117,15 @@ incomplete document while a separate schema assertion still requires
 successful intake into solver readiness or scientific validity. The pair
 manifest pins the hash-bound inventory recipe without inventing a PSK link.
 
-The core execution and recipe surface is now settled. Remaining work in this
-tranche is evidence-gated contract promotion plus the optional thin MCP or
-PowerMCP adapter, which must expose the existing response model rather than
-define a competing one. Solver invocation remains outside the current
-transport slice.
+The core execution and recipe surface is now settled. A read-only stdio MCP
+adapter exposes the same six reviewed operations and their existing structured
+response envelopes; it also serves the executable manifest and response schema
+as resources. The adapter constrains file reads to declared roots and does not
+add arbitrary Julia evaluation, solver invocation, or scientific retrieval.
+Its files participate in every recipe source hash, so transport drift changes
+the package export and federated pin. Remaining work in this tranche is only
+evidence-gated contract promotion. Solver invocation remains outside the
+current transport slice.
 
 ### Product identity and editorial stance
 

@@ -642,11 +642,15 @@ Finding instance, infer causes or repairs, query the book, or explain external
 PowerIO namespaces. This preserves the boundary between package diagnostics and
 the book's scientific retrieval machinery.
 
-The book MCP remains the knowledge interface. A future BMOPFTools adapter is an
-execution interface and exposes a curated operation set such as case parsing,
-analysis, solution verification, contract checking, counterexample execution,
-and finding explanation. It must not expose every Julia function or contain
-scientific retrieval logic.
+The book MCP remains the knowledge interface. BMOPFTools now supplies a
+separate read-only stdio MCP execution adapter with six tools: case parsing,
+analysis, supplied-result verification, Finding explanation, and the two
+reviewed scientific-contract mappings. It returns the existing execution
+response rather than defining new statuses, restricts local inputs to declared
+roots, and exposes the package manifest and response schema as resources. It
+does not expose every Julia function, invoke a solver, or contain scientific
+retrieval logic. The two MCP servers may be connected to the same client while
+retaining these distinct authorities.
 
 ## Integrity, CI, and release pairing
 
