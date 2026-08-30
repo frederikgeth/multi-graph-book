@@ -395,6 +395,13 @@ and leakage risk, exact systems and settings, execution and data-handling
 authority, and the held-out-task decision. It does not disappear merely because
 a model endpoint becomes technically available.
 
+The first review returned changes required because one active bundle exposed a
+package expected-output oracle, another exposed a book evaluation rubric, and
+the proposed interpretation did not sufficiently distinguish applying supplied
+resources from latent domain knowledge or acknowledge that four bundles cannot
+identify seven individual ladder effects. Those corrections are applied, but
+the gate remains open pending re-review and the other decisions above.
+
 ## DLOG-0009 — Preserve misconception identities while linking them through PSK
 
 - **Date:** 2026-08-30

@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "ee4cb7e8c0338f95a5c686aa1476ea7998e0806c2bf3626e04d140036e822a53",
+  "corpus_sha256": "de38cf25cdb50c14316a202416341ee9b634f12047c864e2807c472510885eca",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -173,11 +173,11 @@
     },
     {
       "path": "docs/src/literature/agent-benchmark.md",
-      "sha256": "fca6844c9f43ed324485cad893639e3471ed262e5a4f507856ea09b14af1693e"
+      "sha256": "deb0f31670fd52e75da14f1b031329c874e88fe597f72c8f99fde6859951c2da"
     },
     {
       "path": "docs/src/literature/development-decision-log.md",
-      "sha256": "c016d5c9ba868d1f125e48631bc9cb87ba52df8cf8ab0cc0ca6cccabc2c15573"
+      "sha256": "4383ceca5ffb613ffd2e03d319bf61c37712df5169b906509a4ee48b521786f2"
     },
     {
       "path": "docs/src/literature/literature-map.md",

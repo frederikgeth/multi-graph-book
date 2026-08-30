@@ -1,7 +1,8 @@
 # [Scientifically constrained agent benchmark](@id agent-benchmark)
 
 **Page status:** transparent benchmark substrate and controlled-pilot design;
-no agent runs or condition effects are claimed.
+the first human review required corrections, those corrections are applied and
+await re-review, and no agent runs or condition effects are claimed.
 
 The first benchmark slice asks a narrow question: can an agent reject a naïve
 parallel-line aggregation when terminal behavior is preserved but member
@@ -18,10 +19,11 @@ improves agent performance.
 
 ## Research question and first-slice boundary
 
-The longer-term question is how much explicit positive and negative domain
-knowledge can compensate for unreliable latent scientific knowledge in coding
-agents. This first slice establishes only that the repository can pose and
-score two relevant decisions reproducibly:
+The longer-term question is how supplied positive and negative domain resources
+affect scientific work by coding agents. This transparent first slice measures
+whether an agent can locate and correctly apply the resources it is explicitly
+given; it does not measure latent possession of domain knowledge. It establishes
+only that the repository can pose and score two relevant decisions reproducibly:
 
 1. detect the invalid inference from summed admittance to summed-rating
    decision equivalence; and
@@ -135,9 +137,15 @@ The resource bundles are explicit rather than inferred from whatever happens
 to be visible in a checkout. C0 receives no repository source or tool. C1
 receives a curated documentation set. C5 cumulatively adds machine records,
 workflow instructions, the one read-only contract tool, recipe, and minimized
-fixture. C6 adds the deterministic misconception route and qualification-aware
-context operation. The generated design manifest hashes every exposed book and
-BMOPFTools source.
+fixture inputs. Its package-owned expected output remains harness-private. C6
+adds the deterministic misconception route and qualification-aware context
+operation; the LLM evaluation rubric also remains harness-private. The
+generated design manifest hashes every exposed book and BMOPFTools source.
+
+The pilot activates only C0, C1, C5, and C6. C5 collapses the C2-C5 additions
+into one increment, so a four-condition result cannot identify which rung,
+file, or tool caused a difference. The seven-condition lattice remains a future
+design space, not the curve measured by this pilot.
 
 Run records retain the exact system revision, provider settings, budgets,
 bundle, case order, timestamps, source identity, submission hash, and exclusion
@@ -155,10 +163,14 @@ fixtures and support no model comparison.
 
 ## Mandatory human gate before execution
 
-The design is complete but is **not yet pre-registered**. Before any real run,
-a human reviewer must approve the task and resource bundles for leakage and
-scientific fairness, select each provider and exact model revision, freeze the
+The design is complete but is **not yet pre-registered**. The first human review
+returned `changes_required`: it identified an exposed expected-output file,
+an exposed evaluation rubric, an over-broad interpretation of the measured
+quantity, and an attribution gap caused by bundling C2-C5. The exposure and
+wording corrections are applied, but the design remains pending re-review.
+Before any real run, a human reviewer must approve the corrected task and
+resource bundles, select each provider and exact model revision, freeze the
 available sampling and reasoning settings, authorize cost and data handling,
 and decide whether the transparent tasks need a held-out counterpart. Until
-that gate is recorded, the checker prohibits changing the design to
-`preregistered`, adding measured run records, or implying a condition effect.
+that gate passes, the checker prohibits changing the design to `preregistered`,
+adding measured run records, or implying a condition effect.

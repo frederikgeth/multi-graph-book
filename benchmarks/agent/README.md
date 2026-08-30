@@ -52,8 +52,16 @@ pilot and run-record JSON schemas are checked by
 The pilot status is deliberately
 `design_complete_execution_not_authorized`. Provider, exact model revision,
 execution interface, and provider-specific sampling settings remain empty.
-Human review is mandatory before those fields are frozen, the record is called
-pre-registered, or any hosted model is run.
+The first human review returned changes required; the oracle-exposure and claim-
+scope corrections are applied and await re-review. Human approval is still
+mandatory before those fields are frozen, the record is called pre-registered,
+or any hosted model is run. Package expected outputs and book evaluation
+rubrics are harness-private and the checker rejects either in an exposed bundle.
+
+The active C0, C1, C5, and C6 bundles measure whether the agent locates and
+correctly applies explicitly supplied resources. Because C5 groups the C2-C5
+capabilities, this pilot cannot attribute a difference to individual rungs of
+the seven-condition benchmark lattice.
 
 The three records under `pilot/dry-runs/` exercise successful scoring, an
 unsafe response, and a pre-response exclusion. They reuse deterministic

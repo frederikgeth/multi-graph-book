@@ -19,7 +19,7 @@ The authority for repository ownership and dependency direction is
 | 3. Negative-knowledge taxonomy | Foundation delivered; migration open | Four structured new classes plus PSK links for 18 of 23 stable misconception IDs | Classify and link, or explicitly exclude with reasons, the five remaining misconception IDs |
 | 4. Property-based testing | Seeded regression foundation delivered; discovery open | Two deterministic expected-rejection suites with replay, scoped minimization, classification, and federated pins | Add a genuine failure-discovery generator and outcome-preserving shrinker before calling this a counterexample factory |
 | 5. Research/decision log | Core complete | Stable `DLOG-*` format, nine seeded decisions, contributor guidance, CI/release validation, and reader/LLM access | Add or supersede entries when consequential choices are made |
-| 6. Agent benchmark | Human gate reached | Substrate plus a four-condition, balanced, source-bound pilot design; run schema, exclusions, aggregation, and synthetic dry runs are tested | Human review, exact system/settings freeze, and execution authorization are mandatory before preregistration or real runs |
+| 6. Agent benchmark | Corrections applied; human re-review required | Substrate plus a four-condition, balanced, source-bound pilot design; exposed answer keys were removed and bundled-condition claims narrowed | Re-review the corrected exposure, then freeze exact systems/settings and authorize execution before preregistration or real runs |
 | 7. Review maturation | Ongoing external dependency | Internal gates and review packet exist | Independent review and claim reclassification |
 
 Update this table and the two detailed status paragraphs below whenever a
@@ -281,13 +281,16 @@ The run-record schema and three synthetic dry runs exercise an eligible pass,
 an eligible unsafe response, and a retained pre-response exclusion. They are
 harness tests, not agent observations.
 
-The tranche has reached its mandatory human gate. A reviewer must now approve
-the task and resource exposure, select each provider and exact model revision,
-freeze provider-specific sampling and reasoning settings, authorize cost and
-data handling, and decide whether the transparent tasks require a held-out
-counterpart. Until then, the design remains
-`design_complete_execution_not_authorized`: it is not pre-registered, no real
-model may be run, and no condition effect may be claimed.
+The first mandatory human review returned changes required. The package-owned
+expected output and book evaluation rubric are now harness-private, the
+research question is explicitly about locating and correctly applying supplied
+resources, and the documentation states that four active bundles cannot
+attribute effects to the seven individual ladder rungs. These corrections
+await human re-review. Provider and exact model selection, settings, cost/data
+authorization, and the held-out-task decision also remain open. Until all are
+approved, the design remains `design_complete_execution_not_authorized`: it is
+not pre-registered, no real model may be run, and no condition effect may be
+claimed.
 
 ## 7. Review and evidence maturation
 
@@ -302,7 +305,7 @@ These items are release-quality follow-ups rather than implementation blockers:
 
 ## Suggested order
 
-1. Complete the mandatory human review gate, then freeze and pre-register the
+1. Complete human re-review of the corrected pilot, then freeze and pre-register the
    controlled agent-benchmark pilot before running it; continue promoting
    executable contracts or properties only when their mappings and evidence
    are unambiguous.

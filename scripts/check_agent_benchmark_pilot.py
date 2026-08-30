@@ -31,6 +31,15 @@ ACTIVE_CONDITIONS = [
     "C5_EXECUTABLE_CONTRACTS",
     "C6_NEGATIVE_KNOWLEDGE",
 ]
+EXPECTED_RESEARCH_QUESTION = (
+    "Within one fixed agent system, how reliably does the agent locate and correctly apply "
+    "the resources supplied by four cumulative bundles when producing qualified rejection "
+    "and abstention on the transparent PSK-000001 slice?"
+)
+PRIVATE_ORACLE_SOURCES = {
+    ("BMOPFTools.jl", "test/fixtures/negative/parallel-rating-outer-relaxation/expected.json"),
+    ("multi-graph-book", "llm/evaluation-cases.toml"),
+}
 LOCAL_SOURCES = (
     Path("benchmarks/agent/README.md"),
     Path("benchmarks/agent/pilot/parallel-member-limits-pilot-v1.json"),
@@ -97,7 +106,8 @@ def validate_design(plan: dict, spec: dict, errors: list[str]) -> None:
     add_if(plan.get("benchmark_id") != spec.get("benchmark_id"), "pilot benchmark ID mismatch", errors)
     add_if(plan.get("status") != "design_complete_execution_not_authorized",
            "pilot must remain design_complete_execution_not_authorized until the human gate is passed", errors)
-    require_nonempty_string(plan.get("research_question"), "research_question", errors)
+    add_if(plan.get("research_question") != EXPECTED_RESEARCH_QUESTION,
+           "pilot research question must measure locating and applying supplied resources", errors)
     add_if(plan.get("active_conditions") != ACTIVE_CONDITIONS,
            f"initial pilot conditions must be {ACTIVE_CONDITIONS}", errors)
     add_if(not set(ACTIVE_CONDITIONS) <= set(spec.get("condition_order", [])),
@@ -203,6 +213,10 @@ def validate_design(plan: dict, spec: dict, errors: list[str]) -> None:
         for item in sources:
             if not isinstance(item, dict) or source_identity(item) is None:
                 errors.append(f"{condition}: malformed source record")
+                continue
+            add_if(source_identity(item) in PRIVATE_ORACLE_SOURCES,
+                   f"{condition}: harness-private oracle or evaluation rubric is exposed: "
+                   f"{source_identity(item)}", errors)
         for tool in tools:
             if not isinstance(tool, dict) or tool_source_identity(tool.get("source")) is None:
                 errors.append(f"{condition}: malformed tool source")
@@ -219,16 +233,33 @@ def validate_design(plan: dict, spec: dict, errors: list[str]) -> None:
            "aggregation must prohibit imputation", errors)
     add_if(not isinstance(aggregation, dict) or aggregation.get("top_line_accuracy") != "not reported",
            "pilot must not collapse results to top-line accuracy", errors)
+    effect_language = aggregation.get("condition_effect_language", "") if isinstance(aggregation, dict) else ""
+    add_if(not all(fragment in effect_language for fragment in (
+        "locating and applying supplied resources", "cannot attribute effects",
+        "seven-condition ladder")),
+        "condition-effect language must preserve the supplied-resource and bundled-ladder boundary",
+        errors)
 
     gate = plan.get("human_review_gate", {})
     add_if(not isinstance(gate, dict)
-           or gate.get("status") != "mandatory_before_preregistration_or_execution",
-           "human review must be mandatory before preregistration or execution", errors)
+           or gate.get("status") != "reviewed_changes_required_before_preregistration_or_execution",
+           "human review must record changes required before preregistration or execution", errors)
+    latest_review = gate.get("latest_review", {}) if isinstance(gate, dict) else {}
+    add_if(not isinstance(latest_review, dict)
+           or latest_review.get("outcome") != "changes_required"
+           or latest_review.get("correction_status") != "applied_pending_re_review",
+           "latest human review must remain changes-required and pending re-review", errors)
+    add_if(not isinstance(latest_review.get("findings"), list)
+           or len(latest_review.get("findings", [])) < 4,
+           "latest human review must retain its four corrective findings", errors)
     prohibited = gate.get("prohibited_before_gate", []) if isinstance(gate, dict) else []
     add_if("execute a hosted model" not in prohibited or "commit measured_run records" not in prohibited,
            "human gate must prohibit real execution and measured records", errors)
     add_if(not isinstance(plan.get("limitations"), list) or not plan.get("limitations"),
            "pilot limitations must be nonempty", errors)
+    limitations = " ".join(plan.get("limitations", []))
+    add_if("does not test or attribute effects across the complete seven-condition ladder" not in limitations,
+           "pilot limitations must state that the seven-condition ladder is not tested", errors)
 
 
 def collect_source_paths(plan: dict, errors: list[str]) -> dict[str, list[str]]:
@@ -565,7 +596,8 @@ def main() -> int:
             return 1
     print(
         "agent benchmark pilot design: 4 conditions, 16 planned runs per selected system, "
-        "synthetic dry-run harness valid; human review required before real execution"
+        "synthetic dry-run harness valid; corrections applied and human re-review required "
+        "before real execution"
     )
     return 0
 

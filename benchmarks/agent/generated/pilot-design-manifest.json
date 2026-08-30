@@ -1,20 +1,20 @@
 {
   "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
-  "benchmark_manifest_sha256": "afbd1ec0fc7866e312aa82f6e75d522cb8010a75c08d112480055f86c864542b",
+  "benchmark_manifest_sha256": "d800edd1f85c69beb5013672e1f27c0dc84904f8a8d1fe6997a2ab3e87d4ab77",
   "dry_run_status": "synthetic_dry_run_harness_only_not_agent_results",
-  "human_review_gate": "mandatory_before_preregistration_or_execution",
+  "human_review_gate": "reviewed_changes_required_before_preregistration_or_execution",
   "local_sources": [
     {
       "path": "benchmarks/agent/README.md",
-      "sha256": "357d5191e2f969bd6aaaefd6aabcba2ac06eb1b506f94ab0259e10d337ac5b9d"
+      "sha256": "0a6bbb71728158a450328e1d811ed1fc268a30174fdc1c0ac2d5d6d3e377a99a"
     },
     {
       "path": "benchmarks/agent/pilot/parallel-member-limits-pilot-v1.json",
-      "sha256": "ab83b56ee6e754e219e22e7450d09513ffbb498b6ac6757efa6b1e10dec2246f"
+      "sha256": "cf271ef36ce25ae03a92ecfd9128e5851507f840ef9887776f4cda34be34d044"
     },
     {
       "path": "schemas/agent-benchmark-pilot.schema.json",
-      "sha256": "f403447ddd080f98ae99d76d61bfbc5f94f5565cdfb9387a5c8070940e66c9c8"
+      "sha256": "840f5324b0f127a153b155545c6a1ebc1eab2b198b05a4df6a7e07f83201066e"
     },
     {
       "path": "schemas/agent-benchmark-run.schema.json",
@@ -22,11 +22,11 @@
     },
     {
       "path": "scripts/check_agent_benchmark_pilot.py",
-      "sha256": "c0ba97b9b852d8cb5dd012b7e42ee88b7eaf6356d5ae570b5f775fd691f5426d"
+      "sha256": "21d6105911a9808b383bc4181b8ac06c3b99fd594cc191b63c2b3215a7c5b31a"
     },
     {
       "path": "benchmarks/agent/pilot/dry-runs/conforming-c6-run.json",
-      "sha256": "50480e3a64bb16a7defea4ccace1bc4e0fd0ac8d27914971492026191f9b020b"
+      "sha256": "80f947c99ce91dfb920a26f175fa57c109045fd63e8e41d7c79fcf526d35364c"
     },
     {
       "path": "benchmarks/agent/pilot/dry-runs/unsafe-c0-run.json",
@@ -38,11 +38,11 @@
     }
   ],
   "pilot_id": "APILOT-PARALLEL-LIMITS-001",
-  "pilot_schema_sha256": "f403447ddd080f98ae99d76d61bfbc5f94f5565cdfb9387a5c8070940e66c9c8",
+  "pilot_schema_sha256": "840f5324b0f127a153b155545c6a1ebc1eab2b198b05a4df6a7e07f83201066e",
   "provenance": {
     "bmopftools_executable_corpus_sha256": "df23fd1025de2d09691de5bbfd19549383392658ccb73df51443fd8b8f77aba2",
     "bmopftools_manifest_sha256": "f20116fd078d043c4d7fa0ff1cdbdf02a2b9ac32a61e808c197bafebed526a04",
-    "book_llm_corpus_sha256": "ee4cb7e8c0338f95a5c686aa1476ea7998e0806c2bf3626e04d140036e822a53",
+    "book_llm_corpus_sha256": "de38cf25cdb50c14316a202416341ee9b634f12047c864e2807c472510885eca",
     "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
     "federated_pair_sha256": "e4209fbf0c1f8293eac23086f3e66a814e472c45412d2f3e3a6c67c4d299a97d"
   },
@@ -50,7 +50,7 @@
     "BMOPFTools.jl": [
       {
         "path": "README.md",
-        "sha256": "beedc0cdceddfad14d930ef3c75d756dbede8940d3d7f4cf76a4318b24b259cd"
+        "sha256": "287a8462efc0a858d7dcb0f266e6730964c9cb681c7c60dabccd2918a914aebb"
       },
       {
         "path": "ARCHITECTURE.md",
@@ -58,7 +58,7 @@
       },
       {
         "path": "docs/src/ai_assistants.md",
-        "sha256": "ecb2b9c818f995e38fc468c745e4297e964306f9df1779ec351c3ae7f45d6d37"
+        "sha256": "b024cc18025b1405f1be92db98b43f59dc831edba77f323dbc55552945b421be"
       },
       {
         "path": "generated/executable_knowledge.jsonl",
@@ -87,10 +87,6 @@
       {
         "path": "test/fixtures/negative/parallel-rating-outer-relaxation/transformed.json",
         "sha256": "b98e114846b2a1caf0e552f4f2d5dfdd2ad8fd936ba13a03951e2a9b2f70c16e"
-      },
-      {
-        "path": "test/fixtures/negative/parallel-rating-outer-relaxation/expected.json",
-        "sha256": "ae8b8ecac21ac34c5aecd82f56d246230232185567c62bb9a8afd7e7199f765c"
       },
       {
         "path": "scripts/bmopf_mcp.jl",
@@ -125,10 +121,6 @@
       {
         "path": "llm/misconceptions.toml",
         "sha256": "1061d2f13d88c68feb338b07820703398b6e07ede6a0edd32fdc4f255ce3dd64"
-      },
-      {
-        "path": "llm/evaluation-cases.toml",
-        "sha256": "aa4e7d3c93fbb1c833b55557f67b669ad66822bf9b108a1b6382cb6b86931bda"
       },
       {
         "path": "scripts/mcp_llm_server.py",

@@ -3,7 +3,7 @@
   "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
   "title": "Parallel-member preservation decision and abstention slice",
   "status": "substrate_only_no_agent_runs",
-  "research_question": "How much do progressively richer, explicit positive and negative domain resources improve an agent's ability to reject an unsafe parallel-member aggregation and abstain outside the executable contract's scope?",
+  "research_question": "How reliably does an agent locate and correctly apply progressively richer, explicitly supplied positive and negative resources when rejecting an unsafe parallel-member aggregation and abstaining outside the executable contract's scope?",
   "scope": "A transparent, deterministic first slice over PSK-000001 and BMOPFTools' scalar parallel-member-limit contract. It specifies tasks, conditions, oracles, and scoring; it contains no measured model comparison.",
   "knowledge_ids": ["PSK-000001"],
   "claim_ids": ["TR-PAR-001", "TR-PAR-002", "TR-PAR-003"],
@@ -208,6 +208,7 @@
     "No model or agent has been run, so the slice reports no condition effect.",
     "The transparent oracle is suitable for harness conformance and pilot design, not contamination-resistant leaderboard claims.",
     "The slice evaluates structured scientific review, invalid-assumption detection, and abstention; code correctness is intentionally unscored.",
-    "The scalar fixture and contract do not establish results for multiconductor, shunted, singular, or state-dependent models."
+    "The scalar fixture and contract do not establish results for multiconductor, shunted, singular, or state-dependent models.",
+    "The initial four-condition pilot bundles C2 through C5 and therefore cannot attribute an observed difference to each rung of the seven-condition ladder."
   ]
 }

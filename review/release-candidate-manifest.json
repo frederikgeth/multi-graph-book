@@ -263,7 +263,7 @@
     },
     {
       "path": "OPEN_TRANCHES.md",
-      "sha256": "2e748d9e631d9fd2d4d6d7eed58082b7416cffa595efce4da881cfb9144f0ff1"
+      "sha256": "6b6dd9865aeeac7179b2f51db59ba3df8c987e94b61735158dc7d4c31607e664"
     },
     {
       "path": "QUALITY_CONTROL.md",
@@ -275,23 +275,23 @@
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "c04f0946987869e72126380b2151594f663257917b549e729720de26e40d53d4"
+      "sha256": "4fb8cab47eabd47dd95fec2819a73188cde04795d5e398c1288514c400474be6"
     },
     {
       "path": "benchmarks/agent/README.md",
-      "sha256": "357d5191e2f969bd6aaaefd6aabcba2ac06eb1b506f94ab0259e10d337ac5b9d"
+      "sha256": "0a6bbb71728158a450328e1d811ed1fc268a30174fdc1c0ac2d5d6d3e377a99a"
     },
     {
       "path": "benchmarks/agent/generated/benchmark-manifest.json",
-      "sha256": "afbd1ec0fc7866e312aa82f6e75d522cb8010a75c08d112480055f86c864542b"
+      "sha256": "d800edd1f85c69beb5013672e1f27c0dc84904f8a8d1fe6997a2ab3e87d4ab77"
     },
     {
       "path": "benchmarks/agent/generated/conformance-evaluation.json",
-      "sha256": "8f2b2c2523c94c28d184771453b7f55689a4743f9e612a3454632c7ebc2ec0f6"
+      "sha256": "15c3863c5cb14f150a627862e54388c17732ad7aba12909d4ca57da64964cf1e"
     },
     {
       "path": "benchmarks/agent/generated/pilot-design-manifest.json",
-      "sha256": "0ccf6f6efd84d7b1141929eb043fe38ce6e7ccda5bd92091e24da39ff22db13d"
+      "sha256": "f4f0a3e47b706b6fd3b6324d001eb603c37f54a2f8788279c7e1c69f79e16084"
     },
     {
       "path": "benchmarks/agent/generated/pilot-dry-run-evaluation.json",
@@ -299,11 +299,11 @@
     },
     {
       "path": "benchmarks/agent/parallel-member-limits-v1.json",
-      "sha256": "bf85bfb289a0fb0f35bd27776ecab3b198d9d7f3ff0289e088d43ab082272cfc"
+      "sha256": "f09584beacd50dcd664ee5b9ce96ab3a4cc9db1e7cac4cf52f5969ba9491184b"
     },
     {
       "path": "benchmarks/agent/pilot/dry-runs/conforming-c6-run.json",
-      "sha256": "50480e3a64bb16a7defea4ccace1bc4e0fd0ac8d27914971492026191f9b020b"
+      "sha256": "80f947c99ce91dfb920a26f175fa57c109045fd63e8e41d7c79fcf526d35364c"
     },
     {
       "path": "benchmarks/agent/pilot/dry-runs/excluded-provider-failure.json",
@@ -315,7 +315,7 @@
     },
     {
       "path": "benchmarks/agent/pilot/parallel-member-limits-pilot-v1.json",
-      "sha256": "ab83b56ee6e754e219e22e7450d09513ffbb498b6ac6757efa6b1e10dec2246f"
+      "sha256": "cf271ef36ce25ae03a92ecfd9128e5851507f840ef9887776f4cda34be34d044"
     },
     {
       "path": "benchmarks/agent/submissions/boundary-overclaim-c1.json",
@@ -323,7 +323,7 @@
     },
     {
       "path": "benchmarks/agent/submissions/conforming-c6.json",
-      "sha256": "0623f75a1a7c20f894427512657bccfe119d2354ed17bf58ade436c90fe6750c"
+      "sha256": "715df3907d63aa0398159a4e5944c03bb28bfc6df616c08ad452e2812552bc2f"
     },
     {
       "path": "benchmarks/agent/submissions/unsafe-c0.json",
@@ -1983,11 +1983,11 @@
     },
     {
       "path": "docs/src/literature/agent-benchmark.md",
-      "sha256": "fca6844c9f43ed324485cad893639e3471ed262e5a4f507856ea09b14af1693e"
+      "sha256": "deb0f31670fd52e75da14f1b031329c874e88fe597f72c8f99fde6859951c2da"
     },
     {
       "path": "docs/src/literature/development-decision-log.md",
-      "sha256": "c016d5c9ba868d1f125e48631bc9cb87ba52df8cf8ab0cc0ca6cccabc2c15573"
+      "sha256": "4383ceca5ffb613ffd2e03d319bf61c37712df5169b906509a4ee48b521786f2"
     },
     {
       "path": "docs/src/literature/literature-map.md",
@@ -3463,7 +3463,7 @@
     },
     {
       "path": "llm/generated/adversarial-evaluation.json",
-      "sha256": "087d549537cdcbd95d2b047b8f1cedbf155f094b149706bcf388f0fce94be896"
+      "sha256": "4f2562ab3d1012c3d31632ef59c939a804e1351042a2d4461cc86136086a2f9f"
     },
     {
       "path": "llm/generated/adversarial-evaluation.md",
@@ -3471,19 +3471,19 @@
     },
     {
       "path": "llm/generated/corpus-manifest.json",
-      "sha256": "037a1487624d1186663fbb8cba9fae6d65f8c29a5e5df1a1d0489a741d8b94a5"
+      "sha256": "976fd9ddffb19c54b1ecb9b5851cdcacd9e1f94668f1de2368d6731a05e3de85"
     },
     {
       "path": "llm/generated/corpus.jsonl",
-      "sha256": "ee4cb7e8c0338f95a5c686aa1476ea7998e0806c2bf3626e04d140036e822a53"
+      "sha256": "de38cf25cdb50c14316a202416341ee9b634f12047c864e2807c472510885eca"
     },
     {
       "path": "llm/generated/neural-retrieval-evaluation.json",
-      "sha256": "f7709d979f1a29b013c4c3a74cdc0db3c11ba1ec9d3140df4d84064cfd4e46f6"
+      "sha256": "dd66130291a830bc9bc2ca6306db99a3c3a2c1e16ecd4ef24b65f2ce7ff20899"
     },
     {
       "path": "llm/generated/neural-retrieval-evaluation.md",
-      "sha256": "6580cb0bd7874a8c4d26f5cddb50ddc6c59e8014b8d13a6152898969b1d1e282"
+      "sha256": "123c6522e1b8152c22bb0dffadff69ac37ba28c4f2a1db0c7565dcfcadf962c3"
     },
     {
       "path": "llm/generated/neural-retrieval-negative-result.json",
@@ -3491,11 +3491,11 @@
     },
     {
       "path": "llm/generated/retrieval-evaluation.json",
-      "sha256": "37eb01be8276e59acb90a89aa0aff79139f584030528d0195ac6f0c047dde685"
+      "sha256": "65d6315b739aa7e69ba10c897aeaf7d422d9041a7c149f835e2f32a891686cfe"
     },
     {
       "path": "llm/generated/retrieval-evaluation.md",
-      "sha256": "e2daa6e43cc22b2b4a45e7888473da4cad028b2a2bc3e124ee9b0bfd6c2f040a"
+      "sha256": "8a8cad77c6c11ffddfdd44681a3552488c0928dc31e1d782ee4da19166cde780"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -3683,7 +3683,7 @@
     },
     {
       "path": "schemas/agent-benchmark-pilot.schema.json",
-      "sha256": "f403447ddd080f98ae99d76d61bfbc5f94f5565cdfb9387a5c8070940e66c9c8"
+      "sha256": "840f5324b0f127a153b155545c6a1ebc1eab2b198b05a4df6a7e07f83201066e"
     },
     {
       "path": "schemas/agent-benchmark-run.schema.json",
@@ -3739,7 +3739,7 @@
     },
     {
       "path": "scripts/check_agent_benchmark_pilot.py",
-      "sha256": "c0ba97b9b852d8cb5dd012b7e42ee88b7eaf6356d5ae570b5f775fd691f5426d"
+      "sha256": "21d6105911a9808b383bc4181b8ac06c3b99fd594cc191b63c2b3215a7c5b31a"
     },
     {
       "path": "scripts/check_artifacts.py",

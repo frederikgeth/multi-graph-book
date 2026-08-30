@@ -234,10 +234,13 @@ capture requirements, exclusion rules, run-record schemas, and dimension-level
 aggregation. Synthetic dry-run records exercise passing, unsafe, and excluded
 paths without executing an agent.
 
-The next milestone crosses a mandatory human gate: review the transparent task
-and resource exposure for leakage and scientific fairness, select the provider
-and exact model revision, freeze provider-specific settings, authorize cost and
-data handling, and decide whether a held-out task is required. Only then may
+The first mandatory human review returned changes required. The exposed package
+answer key and book evaluation rubric have been removed from the resource
+bundles. The pilot now states that it measures locating and correctly applying
+supplied resources, and that its four active bundles cannot attribute effects
+to individual rungs of the seven-condition lattice. Human re-review, provider
+and exact model selection, provider-specific settings, cost and data-handling
+authorization, and the held-out-task decision remain mandatory. Only then may
 the design be called pre-registered or real runs begin. No comparative agent
 result or condition effect exists until source-bound measured run artifacts are
 collected.

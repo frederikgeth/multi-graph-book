@@ -3,7 +3,7 @@
   "pilot_id": "APILOT-PARALLEL-LIMITS-001",
   "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
   "status": "design_complete_execution_not_authorized",
-  "research_question": "Within one fixed agent system, how do repository documentation, cumulative executable support, and explicit negative knowledge change qualified rejection and abstention on the transparent PSK-000001 slice?",
+  "research_question": "Within one fixed agent system, how reliably does the agent locate and correctly apply the resources supplied by four cumulative bundles when producing qualified rejection and abstention on the transparent PSK-000001 slice?",
   "active_conditions": [
     "C0_MODEL_ONLY",
     "C1_REPOSITORY_DOCS",
@@ -86,8 +86,7 @@
         {"repository": "BMOPFTools.jl", "path": "recipes/parallel_member_limits/README.md", "capability": "executable_contract_and_recipe"},
         {"repository": "BMOPFTools.jl", "path": "recipes/parallel_member_limits/recipe.jl", "capability": "executable_contract_and_recipe"},
         {"repository": "BMOPFTools.jl", "path": "test/fixtures/negative/parallel-rating-outer-relaxation/source.json", "capability": "executable_contract_and_recipe"},
-        {"repository": "BMOPFTools.jl", "path": "test/fixtures/negative/parallel-rating-outer-relaxation/transformed.json", "capability": "executable_contract_and_recipe"},
-        {"repository": "BMOPFTools.jl", "path": "test/fixtures/negative/parallel-rating-outer-relaxation/expected.json", "capability": "executable_contract_and_recipe"}
+        {"repository": "BMOPFTools.jl", "path": "test/fixtures/negative/parallel-rating-outer-relaxation/transformed.json", "capability": "executable_contract_and_recipe"}
       ],
       "allowed_tools": [
         {
@@ -97,15 +96,14 @@
           "invocation_limit_per_run": 20
         }
       ],
-      "notes": "C5 is cumulative: it inherits C1 and adds machine records, read-only execution, workflow guidance, and the reviewed contract evidence."
+      "notes": "C5 is cumulative: it inherits C1 and adds the C2-C5 capabilities as one bundle. Harness-private expected output is not exposed, and this pilot cannot attribute a difference to machine records, execution, workflow guidance, or recipes separately."
     },
     {
       "bundle_id": "BUNDLE-C6",
       "condition_id": "C6_NEGATIVE_KNOWLEDGE",
       "inherits": "BUNDLE-C5",
       "exposed_sources": [
-        {"repository": "multi-graph-book", "path": "llm/misconceptions.toml", "capability": "misconception_and_counterexample_retrieval"},
-        {"repository": "multi-graph-book", "path": "llm/evaluation-cases.toml", "capability": "misconception_and_counterexample_retrieval"}
+        {"repository": "multi-graph-book", "path": "llm/misconceptions.toml", "capability": "misconception_and_counterexample_retrieval"}
       ],
       "allowed_tools": [
         {
@@ -148,10 +146,21 @@
     ],
     "missing_data": "no imputation",
     "top_line_accuracy": "not reported",
-    "condition_effect_language": "exploratory pilot difference only; no causal or general model claim"
+    "condition_effect_language": "descriptive exploratory differences across four cumulative supplied-resource bundles only; the pilot measures locating and applying supplied resources and cannot attribute effects to individual files, capabilities, or rungs of the seven-condition ladder"
   },
   "human_review_gate": {
-    "status": "mandatory_before_preregistration_or_execution",
+    "status": "reviewed_changes_required_before_preregistration_or_execution",
+    "latest_review": {
+      "date": "2026-08-30",
+      "outcome": "changes_required",
+      "correction_status": "applied_pending_re_review",
+      "findings": [
+        "BUNDLE-C5 exposed the package-owned expected-output oracle.",
+        "BUNDLE-C6 exposed an evaluation rubric rather than only the intended negative-knowledge resource.",
+        "The research claim needed to distinguish applying supplied knowledge from possessing latent domain knowledge.",
+        "The four active bundles cannot identify effects for individual rungs of the seven-condition ladder."
+      ]
+    },
     "required_decisions": [
       "approve the task and resource exposure for leakage and scientific fairness",
       "select each provider, exact model ID and revision, and execution interface",
@@ -175,6 +184,7 @@
     "No provider or model has been selected and no real model run is authorized.",
     "The transparent tasks may be present in repository context and are unsuitable for a contamination-resistant leaderboard.",
     "Four repetitions per condition can expose harness and gross response differences but cannot support broad statistical claims.",
-    "C5 and C6 are cumulative bundles, so the pilot estimates the effect of the whole declared bundle increment rather than one isolated file or tool."
+    "C5 and C6 are cumulative bundles, so the pilot describes differences between four supplied-resource bundles rather than estimating one isolated file, tool, or capability effect.",
+    "The four-condition pilot does not test or attribute effects across the complete seven-condition ladder."
   ]
 }
