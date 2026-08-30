@@ -235,6 +235,14 @@ def main() -> int:
                 validation_errors.append("unit/base route omits the linked fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("unit/base executable contract is not marked implemented")
+            pinned = checks[0].get("pinned_contracts", []) if checks else []
+            suites = pinned[0].get("property_suites", []) if len(pinned) == 1 else []
+            if len(suites) != 1 or suites[0].get("property_suite_id") != "unit_base_serialization_seeded_properties":
+                validation_errors.append("unit/base route omits its seeded property suite")
+            elif suites[0].get("case_count") != 64 or not suites[0].get("minimization_strategy"):
+                validation_errors.append("unit/base property suite omits seed-count or minimization evidence")
+            if "unit_base_serialization_seeded_properties" not in response["markdown"]:
+                validation_errors.append("unit/base Markdown omits its seeded property suite")
         if case["misconception_id"] == "generic-neural-retrieval-is-automatically-better":
             packet = response["packet"]
             if "knowledge:PSK-000015" not in observed:

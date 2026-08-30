@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "e8c3e55788317a9c488669968acb357fc90de77f813e9fc33112530e866a171f"
+    "corpus_sha256": "b8e93bea0f24ffa18eb5ceff40c0a45b50474867b8c911564d4bb187a6a2e742"
   },
   "inputs": {
     "adversarial_cases": {

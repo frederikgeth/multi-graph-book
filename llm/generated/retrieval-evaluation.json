@@ -1506,8 +1506,8 @@
         "claim:TRANSFORM-SEM-001",
         "claim:ARCH-VIEW-001",
         "claim:FORMULATION-Y-SPLIT-001",
-        "claim:IMPEDANCE-LADDER-001",
         "concept:mutual-coupling-relation",
+        "claim:IMPEDANCE-LADDER-001",
         "claim:GROUND-SCOPE-002",
         "claim:TR-SER-002",
         "claim:TR-XFMR-005",
@@ -1537,7 +1537,7 @@
         "section:docs/src/start/reading-guide-graph-and-transmission.md#if-you-come-from-balanced-transmission-modelling",
         "claim:ARCH-VIEW-001",
         "claim:FORMULATION-Y-SPLIT-001",
-        "claim:IMPEDANCE-LADDER-001"
+        "concept:mutual-coupling-relation"
       ],
       "packet_shape_errors": [],
       "packet_shape_valid": true,
@@ -4197,11 +4197,11 @@
         "knowledge:PSK-000014",
         "claim:LOAD-BASE-001",
         "knowledge:PSK-000004",
+        "section:docs/src/reference/federated-knowledge-trace.md#fourteenth-trace-unit-base-and-serialization-invariance",
         "section:docs/src/foundations/notation-and-conventions.md#units-and-coordinate-systems",
         "section:docs/src/foundations/load-models-and-decision-dependence.md#nominal-voltage-belongs-to-the-load-coordinate-load-base-001",
         "claim:PRACTICE-IMPEDANCE-001",
         "section:docs/src/reference/federated-knowledge-trace.md#fourth-trace-load-connection-voltage-bases",
-        "section:docs/src/reference/federated-knowledge-trace.md#fourteenth-trace-unit-base-and-serialization-invariance",
         "claim:FORMULATION-Y-SPLIT-001",
         "section:docs/src/literature/representation-implementation-record.md#fixture-coverage-and-evidence-status"
       ],
@@ -4258,13 +4258,13 @@
       "open_corpus_recall_at_5": 0.25,
       "open_corpus_top_10": [
         "knowledge:PSK-000014",
+        "section:docs/src/reference/federated-knowledge-trace.md#fourteenth-trace-unit-base-and-serialization-invariance",
         "concept:equivalence-exactness-preservation",
         "section:docs/src/transformations/transformer-winding-coordinate-normalization.md#transformer-winding-normalization",
-        "section:docs/src/reference/federated-knowledge-trace.md#fourteenth-trace-unit-base-and-serialization-invariance",
         "claim:COUPLED-CORRIDOR-001",
         "claim:COUPLED-CORRIDOR-002",
-        "section:docs/src/cases/coupled-multivoltage-corridor.md#pedagogical-and-evidence-boundary",
         "claim:TR-XFMR-001",
+        "section:docs/src/cases/coupled-multivoltage-corridor.md#pedagogical-and-evidence-boundary",
         "claim:TR-COMP-001",
         "claim:GROUND-SCOPE-004"
       ],
@@ -4893,7 +4893,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "e8c3e55788317a9c488669968acb357fc90de77f813e9fc33112530e866a171f",
+    "corpus_sha256": "b8e93bea0f24ffa18eb5ceff40c0a45b50474867b8c911564d4bb187a6a2e742",
     "record_count": 786,
     "release": {
       "external_reviewed_claims": 0,
@@ -4958,7 +4958,7 @@
         ],
         "hybrid_complete_at_10": false,
         "hybrid_hits_at_10": 3,
-        "hybrid_mean_reciprocal_rank_at_20": 0.196829,
+        "hybrid_mean_reciprocal_rank_at_20": 0.196505,
         "hybrid_recall_at_10": 0.333333,
         "hybrid_recall_at_5": 0.222222,
         "hybrid_top_10": [
@@ -4988,7 +4988,7 @@
           "claim:GRAPH-NPORT-001",
           "claim:NUMERICAL-002",
           "claim:TOPOLOGY-001",
-          "claim:GRAPH-CYCLE-001"
+          "claim:ARCH-SURGERY-002"
         ],
         "question": "When someone says network graph here, which objects and operating condition have they actually chosen?",
         "route_fired": true,
@@ -6374,7 +6374,7 @@
         "case_id": "HOLDOUT-KRON-POWER",
         "char_tfidf_complete_at_10": false,
         "char_tfidf_hits_at_10": 0,
-        "char_tfidf_mean_reciprocal_rank_at_20": 0.010526,
+        "char_tfidf_mean_reciprocal_rank_at_20": 0.01,
         "char_tfidf_recall_at_10": 0.0,
         "char_tfidf_recall_at_5": 0.0,
         "char_tfidf_top_10": [
@@ -6850,7 +6850,7 @@
           "claim:ARCH-SURGERY-001",
           "claim:ARCH-PORT-002",
           "claim:TR-KRON-NEUTRAL-003",
-          "claim:TR-KRON-NEUTRAL-001"
+          "claim:ARCH-PORT-001"
         ],
         "lexical_complete_at_10": false,
         "lexical_hits_at_10": 3,
@@ -6921,7 +6921,7 @@
         ],
         "hybrid_complete_at_10": false,
         "hybrid_hits_at_10": 3,
-        "hybrid_mean_reciprocal_rank_at_20": 0.4125,
+        "hybrid_mean_reciprocal_rank_at_20": 0.411458,
         "hybrid_recall_at_10": 0.75,
         "hybrid_recall_at_5": 0.75,
         "hybrid_top_10": [
@@ -7587,7 +7587,7 @@
         ],
         "graph_complete_at_10": false,
         "graph_hits_at_10": 0,
-        "graph_mean_reciprocal_rank_at_20": 0.026667,
+        "graph_mean_reciprocal_rank_at_20": 0.029947,
         "graph_recall_at_10": 0.0,
         "graph_recall_at_5": 0.0,
         "graph_top_10": [
@@ -7733,7 +7733,7 @@
       "char_tfidf": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.223867,
+        "mean_reciprocal_rank_at_20": 0.223851,
         "recall_at_10": 0.445455,
         "recall_at_5": 0.362626,
         "recall_expected_records_at_10": 180,
@@ -7743,7 +7743,7 @@
       "graph": {
         "complete_at_10": 0.212121,
         "complete_at_10_count": 7,
-        "mean_reciprocal_rank_at_20": 0.251185,
+        "mean_reciprocal_rank_at_20": 0.251284,
         "recall_at_10": 0.576599,
         "recall_at_5": 0.383838,
         "recall_expected_records_at_10": 180,
@@ -7753,7 +7753,7 @@
       "hybrid": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.21835,
+        "mean_reciprocal_rank_at_20": 0.218308,
         "recall_at_10": 0.465825,
         "recall_at_5": 0.373569,
         "recall_expected_records_at_10": 180,

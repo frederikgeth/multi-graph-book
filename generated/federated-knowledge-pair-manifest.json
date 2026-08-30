@@ -16,7 +16,7 @@
       "transformer_winding_convention_preservation",
       "unit_base_serialization_invariance"
     ],
-    "corpus_sha256": "e822d7fd54b2477ecb2ab5e22facc42a628910c6aee1a7b17548745f5801dbd0",
+    "corpus_sha256": "87aa50c554fb451d82e2e9744fd822165b957332e4c7139686e6dc85e787fcee",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -34,7 +34,7 @@
       "PSK-000014"
     ],
     "manifest_id": "bmopftools-executable-knowledge-0.1.0",
-    "manifest_sha256": "1bf38e8a014b6467b5950f94a08cec081b90405836adcd5ad06bd2885486afd1",
+    "manifest_sha256": "b11612a2d3969c6506324a633b54d3eb91c7240607c200aabd463ab2c6cd7adc",
     "operation_recipes": [
       {
         "command": "julia --startup-file=no --project=. recipes/analyze_case/recipe.jl",
@@ -88,7 +88,8 @@
       "version": "0.1.0"
     },
     "property_suite_ids": [
-      "terminal_permutation_seeded_properties"
+      "terminal_permutation_seeded_properties",
+      "unit_base_serialization_seeded_properties"
     ],
     "recipe_ids": [
       "analyze_case",
@@ -103,7 +104,7 @@
       "executable_contract": 14,
       "finding": 57,
       "fixture": 14,
-      "property_suite": 1,
+      "property_suite": 2,
       "recipe": 6
     },
     "repository": "frederikgeth/BMOPFTools.jl",
@@ -131,7 +132,7 @@
       "PSK-000017",
       "PSK-000018"
     ],
-    "manifest_sha256": "4b381bec7f890eba2089224d57e4737edcc6f64ecd1aea0ccd57936e6cb1ace4",
+    "manifest_sha256": "aeb6400e158066d881fc5db80e309facd5674f883fb58f90f76aec82a0ffc459",
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -170,7 +171,7 @@
               "source_sha256": "0cf9e88046b2fcee78ba42b5bf8a1042a71b862a42d77affc187591e2227404d"
             }
           ],
-          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
+          "source_sha256": "d5918983a8441730b3f381c11a9bf028c85a118d15d03189376e7bf44594011b"
         }
       ],
       "implementation_status": "implemented",
@@ -205,7 +206,7 @@
               "source_sha256": "2770312ca3d9f4ac322432ec84319b49eed41b69bb5483bce061b7c39e2b0180"
             }
           ],
-          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
+          "source_sha256": "d5918983a8441730b3f381c11a9bf028c85a118d15d03189376e7bf44594011b"
         }
       ],
       "implementation_status": "implemented",
@@ -226,7 +227,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "0dae9f402d6ebd1e4f6b47c39d5bc858dc98212f8d56c448a62bb72a1ca92250"
+          "source_sha256": "0968f9cdbbf22dfec975f4f0fb3f7ba47901452eea0ac6671604ad3f591aab1e"
         }
       ],
       "implementation_status": "implemented",
@@ -247,7 +248,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "47f8af07e009e17d7bc76f32b0dd3c460a4076d8623530bd0ddee5b05f23e912"
+          "source_sha256": "4011a1828448278a2b7415991545671824d23dc1bc2692bc7d2e2c27540044b1"
         }
       ],
       "implementation_status": "implemented",
@@ -268,7 +269,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
+          "source_sha256": "d5918983a8441730b3f381c11a9bf028c85a118d15d03189376e7bf44594011b"
         }
       ],
       "implementation_status": "implemented",
@@ -290,7 +291,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "f913c890329ca16e6b5358b6745414891870a08ce8de3dde54a5bd158075b370"
+          "source_sha256": "8c90d99f78a3b1f9f52dcfa5fd0731a9d9efdb72a671106bcde35585eac97ab9"
         }
       ],
       "implementation_status": "implemented",
@@ -312,7 +313,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
+          "source_sha256": "d5918983a8441730b3f381c11a9bf028c85a118d15d03189376e7bf44594011b"
         }
       ],
       "implementation_status": "implemented",
@@ -335,7 +336,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "6b7a6e82d9249e10efd7608ae8fc05330b23b16640f1c06e0fb2f316cbc91b62"
+          "source_sha256": "290a482de7b30a3b9183be6460bfc35759ba1feaff8c6fb8b965d4d6053e6efb"
         }
       ],
       "implementation_status": "implemented",
@@ -358,7 +359,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
+          "source_sha256": "d5918983a8441730b3f381c11a9bf028c85a118d15d03189376e7bf44594011b"
         }
       ],
       "implementation_status": "implemented",
@@ -381,7 +382,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
+          "source_sha256": "d5918983a8441730b3f381c11a9bf028c85a118d15d03189376e7bf44594011b"
         }
       ],
       "implementation_status": "implemented",
@@ -403,7 +404,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
+          "source_sha256": "d5918983a8441730b3f381c11a9bf028c85a118d15d03189376e7bf44594011b"
         }
       ],
       "implementation_status": "implemented",
@@ -452,11 +453,11 @@
               "property_suite_id": "terminal_permutation_seeded_properties",
               "seed": "0x6d5a56da4b9c2f17",
               "seed_algorithm": "splitmix64-v1",
-              "source_sha256": "a445e0a22810addb72c19f41d8806e967127e1c2b09a218b2d0ab677230930fd"
+              "source_sha256": "46998866a5fcd0843966bb9c7353c016fdf728bbe3f76edc0ae939980180a81c"
             }
           ],
           "recipes": [],
-          "source_sha256": "799b016ae45152811c7cddbc31ec53b67de692457889ef0b39a3aabc04f4b84c"
+          "source_sha256": "879434bccc5f2490cf9f444e131058bb31a8e0754a5ec4fca3947d8e2be9ade3"
         }
       ],
       "implementation_status": "implemented",
@@ -478,7 +479,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
+          "source_sha256": "d5918983a8441730b3f381c11a9bf028c85a118d15d03189376e7bf44594011b"
         }
       ],
       "implementation_status": "implemented",
@@ -498,9 +499,45 @@
           "fixture_ids": [
             "unit-base-serialization-001"
           ],
-          "property_suites": [],
+          "property_suites": [
+            {
+              "case_count": 64,
+              "does_not_establish": [
+                "Matching declarations authenticate how a semantic hash was computed.",
+                "Matching metadata proves a physical SI-to-per-unit conversion or its inverse.",
+                "Generated base maps cover every package scaling policy or component-local coordinate system.",
+                "A declared serialization pass preserves equations, limits, decisions, objectives, or solver behavior.",
+                "An injected metadata fault is a newly discovered scientific counterexample."
+              ],
+              "expected_finding_codes": [
+                "E.CONTRACT.UNIT_SYSTEM_MISMATCH",
+                "E.CONTRACT.BASE_MAP_MISMATCH",
+                "E.CONTRACT.SERIALIZED_PAYLOAD_MISMATCH"
+              ],
+              "failure_classification": "expected_contract_rejection",
+              "generator_domain": [
+                "Voltage bases are integer-valued floats from 100 V through 35 kV and power bases are integer kVA values from 10 kVA through 10 MVA.",
+                "Current, impedance, and admittance bases are finite and positive and satisfy I=S/V, Z=V^2/S, and Y=1/Z before fault injection.",
+                "The exact target is produced by JSON3 encoding and decoding and reverses base-map key insertion order.",
+                "Independent negative properties change only the unit-system string, one voltage-base value, or the final semantic-hash digit."
+              ],
+              "minimization_strategy": "Retain unit_system, semantic_hash, and only voltage_V in each base map, then replay exactly one mutation.",
+              "properties_checked": [
+                "Exact JSON round trips return passed despite base-map insertion-order changes.",
+                "Unit-system mutations return E.CONTRACT.UNIT_SYSTEM_MISMATCH.",
+                "One-value base-map mutations return E.CONTRACT.BASE_MAP_MISMATCH.",
+                "Semantic-hash mutations return E.CONTRACT.SERIALIZED_PAYLOAD_MISMATCH.",
+                "Every injected failure minimizes to one positive finite base value while preserving its Finding code.",
+                "Replaying the recorded algorithm and seed reproduces the case summaries."
+              ],
+              "property_suite_id": "unit_base_serialization_seeded_properties",
+              "seed": "0x4f1bbcdc6762c7a9",
+              "seed_algorithm": "splitmix64-v1",
+              "source_sha256": "a988594d1ef936c046b9ac1b07368991a1097fb0e6b6870bacff95c3ed83ea0c"
+            }
+          ],
           "recipes": [],
-          "source_sha256": "c4403231ecdf94c08896dd092de9909d5167d108dc3d98099c0bb320e2cd1ae8"
+          "source_sha256": "bfc1be336aaabaacbbdd8a9b64a1947feac72779fa171fd1b9e288b5898b46f5"
         }
       ],
       "implementation_status": "implemented",
@@ -528,6 +565,6 @@
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "5e946c566fb6563a042c1fb014aae5cfe82fa9f6d5915886060d5908dd9dc420",
+  "pair_sha256": "0b0b77dbf4605a9c5c0b43cb5124ae7020394707c8eb75988fcf7751b8eb844b",
   "schema_version": "0.1.0"
 }

@@ -165,7 +165,7 @@ when evidence belongs entirely to the book while preserving a stable,
 source-hash-bound PSK route. The four targeted structured classes are now
 exercised end to end.
 
-### Property-based testing tranche (in progress, 2026-08-30)
+### Property-based testing tranche (core complete, 2026-08-30)
 
 The first controlled property suite is implemented for `PSK-000012` and the
 package-owned `terminal_permutation_invariance` contract. BMOPFTools records a
@@ -181,8 +181,21 @@ The federated pair pins its algorithm, seed, case count, minimizer, expected
 Finding, and `expected_contract_rejection` classification, and the grounded
 Markdown renderer exposes those facts with the `PSK-000012` route. This adds
 test evidence without changing the book-owned theorem, evidence status, or
-applicability scope. The next milestone is a second controlled suite for the
-existing `PSK-000014` unit/base serialization contract.
+applicability scope.
+
+The second controlled suite now covers the existing `PSK-000014` unit/base
+serialization contract. It generates 64 positive finite SI base maps, performs
+real JSON encode/decode round trips with reordered keys, and independently
+injects unit-system, base-value, and semantic-hash drift. The 192 failures must
+retain their distinct stable Finding codes, and every one is minimized to a
+one-base witness. Replay, export, federation, and grounded-answer checks pin the
+second seed and classification just as they do for `PSK-000012`.
+
+These two suites complete the initial controlled property mechanism without
+claiming exhaustive sampling, physical conversion validation, or new scientific
+counterexamples. Further properties are promoted only when an existing scoped
+contract supplies a clear in-domain generator, oracle, and minimizer. The next
+implementation milestone is the lightweight research/decision log.
 
 ### Product identity and editorial stance
 

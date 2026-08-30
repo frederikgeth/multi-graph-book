@@ -2758,13 +2758,13 @@
   "compatibility": {
     "archived_on": "2026-08-30",
     "current_corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "current_corpus_sha256": "e8c3e55788317a9c488669968acb357fc90de77f813e9fc33112530e866a171f",
+    "current_corpus_sha256": "b8e93bea0f24ffa18eb5ceff40c0a45b50474867b8c911564d4bb187a6a2e742",
     "current_heldout_sha256": "171857dd883acf3ed9a091fac0e2e7485cbd13d5f0477a56af37d010cec16592",
     "current_lexical_summary": {
       "char_tfidf": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.223867,
+        "mean_reciprocal_rank_at_20": 0.223851,
         "recall_at_10": 0.445455,
         "recall_at_5": 0.362626,
         "recall_expected_records_at_10": 180,
@@ -2774,7 +2774,7 @@
       "hybrid": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.21835,
+        "mean_reciprocal_rank_at_20": 0.218308,
         "recall_at_10": 0.465825,
         "recall_at_5": 0.373569,
         "recall_expected_records_at_10": 180,

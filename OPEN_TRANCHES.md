@@ -17,7 +17,7 @@ The authority for repository ownership and dependency direction is
 | 1. Execution interface | Core complete | Two curated contract adapters plus parse/intake, case analysis, supplied-result verification, offline Finding explanation, and a six-tool read-only MCP adapter over the same envelopes | Promote another contract only when its transport mapping and evidence justify it |
 | 2. Documentation and recipes | Core complete | Assistant guide, `llms.txt`, two scientific-contract recipes, and tutorial-derived parse, analysis, verification, and Finding-explanation recipes | Keep examples synchronized; solving remains outside this transport slice |
 | 3. Negative-knowledge taxonomy | Core complete | Fourteen executable links plus book-only structured negative-result, numerical-pathology, scope-boundary, and open-question records | Add further records only for evidence-backed high-risk questions |
-| 4. Property-based testing | In progress | First seeded terminal-permutation suite, deterministic replay, one-conductor minimization, and federated property-suite pin | Add a second suite for unit/base serialization round trips |
+| 4. Property-based testing | Core complete | Seeded terminal-permutation and unit/base serialization suites with deterministic replay, minimization, classification, and federated pins | Add further properties only where an existing contract has a clear generator and oracle |
 | 5. Research/decision log | Queued | Decisions currently recorded in architecture and handover prose | Add the lightweight decision-log format |
 | 6. Agent benchmark | Deferred | Deterministic retrieval evaluation exists | Start after the execution surface stabilizes |
 | 7. Review maturation | Ongoing external dependency | Internal gates and review packet exist | Independent review and claim reclassification |
@@ -152,7 +152,7 @@ Acceptance criteria:
 Generalize the current deterministic metamorphic tests into a controlled
 property-based mechanism.
 
-**Current status (2026-08-30):** in progress. The first controlled suite is
+**Current status (2026-08-30):** core complete. The first controlled suite is
 implemented for `PSK-000012` and BMOPFTools'
 `terminal_permutation_invariance` contract. A committed SplitMix64 seed record
 defines 64 reciprocal, strictly diagonally dominant complex series matrices
@@ -163,8 +163,19 @@ one-conductor witness and rechecked. Two executions must produce identical
 summaries. The executable export and federated pair pin the generator domain,
 algorithm, seed, case count, expected code, minimizer, failure classification,
 and source hash. These are classified as expected contract rejections, not new
-scientific counterexamples. The next suite should exercise the existing
-`PSK-000014` unit/base serialization boundary.
+scientific counterexamples.
+
+The second suite now exercises `PSK-000014` over 64 positive finite SI base
+maps. It performs JSON encode/decode round trips with reordered map keys, then
+independently mutates the unit system, one base value, and the semantic hash.
+All 192 injected failures must produce their distinct stable Finding codes and
+all minimize to one-base witnesses; a second execution must reproduce the same
+summary. Its metadata explicitly refuses the inference that a declaration-only
+pass computes physical SI-to-per-unit equivalence or authenticates the hash.
+Together the two suites establish the initial generator, replay, oracle,
+minimization, classification, export, and federation mechanism. Additional
+properties are evidence-driven extensions rather than prerequisites for this
+core tranche.
 
 Candidate properties include consistent bus/conductor relabelling, unit/base
 conversion, serialization round-trips, valid fixed-linear equivalence, and
@@ -237,12 +248,10 @@ These items are release-quality follow-ups rather than implementation blockers:
 
 ## Suggested order
 
-1. Add the second controlled property suite for unit/base serialization
-   round trips; continue promoting executable contracts only when their
-   mappings and evidence are unambiguous.
-2. Add the lightweight research/decision log.
-3. Agent benchmark.
-4. External review and evidence maturation in parallel as reviewers become
+1. Add the lightweight research/decision log; continue promoting executable
+   contracts or properties only when their mappings and evidence are unambiguous.
+2. Agent benchmark.
+3. External review and evidence maturation in parallel as reviewers become
    available.
 
 Each tranche should add tests, generated artifacts, and explicit scope rather

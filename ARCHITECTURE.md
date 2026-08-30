@@ -600,6 +600,15 @@ The minimized fixture preserves SI metadata and bases but mutates the semantic
 hash; the reordered exact companion passes. This complements `parse_bmopf`,
 `write_bmopf`, and source-hash binding without duplicating their I/O logic.
 
+The second controlled property suite exercises the same declared-evidence
+boundary over positive finite SI base maps and real JSON round trips. It
+changes unit system, one base value, and semantic hash independently, then
+minimizes each expected rejection to a one-base witness. This is executable
+coverage of ordering-insensitive metadata comparison, not a conversion engine:
+the units tutorial and book claims remain authoritative for physical scaling
+semantics, while the package suite neither computes SI-to-per-unit maps nor
+authenticates the hash declaration.
+
 ## Federated discovery and context assembly
 
 The existing book service remains the federation point for retrieval. Its

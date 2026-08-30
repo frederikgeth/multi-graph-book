@@ -453,11 +453,17 @@ The fourteenth slice binds declared conversion metadata to a canonical payload:
 | Executable contract | `unit_base_serialization_invariance` | BMOPFTools | Compares unit system, base map, and canonical semantic hash |
 | API operation | `check_unit_base_serialization_invariance` | BMOPFTools | Reports unit, base, payload, or metadata failures |
 | Counterexample fixture | `unit-base-serialization-001` | BMOPFTools | Preserves SI metadata while changing the canonical payload hash |
+| Property suite | `unit_base_serialization_seeded_properties` | BMOPFTools | Replays 64 JSON round trips and minimizes three independent metadata failures |
 | Findings | `E.CONTRACT.UNIT_SYSTEM_MISMATCH`, `E.CONTRACT.BASE_MAP_MISMATCH`, `E.CONTRACT.SERIALIZED_PAYLOAD_MISMATCH` | BMOPFTools | Separates metadata drift from semantic payload mutation |
 
 The package pass binds declared serialization evidence only; parser/writer
 round-trip behavior, hash computation, complete equations, limits, and study
-decisions remain separate validation dimensions.
+decisions remain separate validation dimensions. The seeded suite generates
+positive finite SI base maps, performs real JSON encode/decode round trips with
+reordered keys, and independently mutates the unit system, one base value, and
+the semantic hash. Every injected failure is reduced to a one-base witness and
+classified as an expected contract rejection, not a scientific counterexample
+or proof of physical SI-to-per-unit conversion.
 
 ## Fifteenth trace: a negative retrieval result without an executable package contract
 
