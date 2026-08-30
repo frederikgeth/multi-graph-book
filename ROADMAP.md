@@ -77,13 +77,15 @@ evidence-gated rather than quota-driven.
 
 ### Executable interface and recipe tranche (in progress, 2026-08-30)
 
-The first transport slice is implemented for `PSK-000001`. BMOPFTools now owns
-a versioned JSON execution response, a curated `check-contract` CLI/API route,
-and a CI-tested `parallel_member_limits` recipe that reuses the minimized
-parallel-rating fixture. The federated pair manifest pins the recipe command,
-expected status, expected Finding codes, and source hash; book context packets
-surface that runnable example while keeping scientific and runtime evidence
-separate.
+The first two transport slices are implemented for `PSK-000001` and
+`PSK-000002`. BMOPFTools now owns a versioned JSON execution response, a curated
+`check-contract` CLI/API adapter registry, and CI-tested
+`parallel_member_limits` and `neutral_ground_reference` recipes that reuse the
+minimized fixtures. Tests exercise successful, failing, inapplicable,
+indeterminate, and request-error outcomes. The federated pair manifest pins
+each recipe command, expected status, expected Finding codes, and source hash;
+book context packets surface those runnable examples while keeping scientific
+and runtime evidence separate.
 
 Remaining work in this tranche is evidence-gated scale-out rather than a bulk
 wrapper exercise: promote further contracts one at a time, then add parsing,

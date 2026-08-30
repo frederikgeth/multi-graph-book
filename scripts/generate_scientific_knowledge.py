@@ -234,7 +234,12 @@ def validate_and_build() -> tuple[list[dict], dict, list[str]]:
         )
 
     records.sort(key=lambda item: item["knowledge_id"])
-    source_paths = {REGISTRY, CLAIMS, MISCONCEPTIONS, SCHEMA, RELEASE_MANIFEST}
+    # The rendered records already embed `release_identity()`, so changes to
+    # its ID/status/review fields make the generated output stale. Do not also
+    # hash the complete release-candidate inventory here: that inventory hashes
+    # the derived LLM artifacts and would create a release-manifest ↔ corpus
+    # dependency cycle in which regeneration can never reach a fixed point.
+    source_paths = {REGISTRY, CLAIMS, MISCONCEPTIONS, SCHEMA}
     for item in knowledge:
         for path_string in item.get("book", {}).get("artifact_paths", []):
             source_paths.add(ROOT / path_string)

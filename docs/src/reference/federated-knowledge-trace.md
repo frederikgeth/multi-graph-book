@@ -73,6 +73,7 @@ failure. Its stable chain is:
 | Misconception | `ground-neutral-reference-are-one-node` | this book | Routes the tempting node-0 normalization to mandatory qualification |
 | Executable contract | `neutral_ground_reference_preservation` | BMOPFTools | Compares supported representation relations across an explicit bus mapping |
 | API operation | `check_neutral_ground_reference_preservation` | BMOPFTools | Returns a structured four-status contract result |
+| Executable recipe | `neutral_ground_reference` | BMOPFTools | Runs the minimized fixture through the JSON-ready execution API |
 | Counterexample fixture | `neutral-ground-reference-conflation-001` | BMOPFTools | Reproduces continuity and grounding-relation loss on two buses |
 | Findings | `E.CONTRACT.NEUTRAL_CONTINUITY_MISMATCH`, `E.CONTRACT.GROUND_REFERENCE_RELATION_MISMATCH` | BMOPFTools | Separately report the two invalid identifications in the fixture |
 
@@ -99,11 +100,18 @@ identity or state, fault current, touch voltage, or protection operation. It
 returns `inapplicable` for unsupported coupled grounding models and
 `indeterminate` when mapped evidence is unavailable.
 
+The source-hash-bound `neutral_ground_reference` recipe makes this second
+transport mapping directly runnable. Its pinned command, expected `failed`
+status, two expected Finding codes, and source hash are carried by the federated
+pair manifest. Context packets therefore expose a concrete operation without
+copying BMOPFTools behavior into the book or inferring the bus mapping from
+matching names.
+
 Queries from all three audience routes for
 `ground-neutral-reference-are-one-node` now make `knowledge:PSK-000002`
 mandatory. Their context packets expose the scoped scientific basis, linked
-counterexample, implemented BMOPFTools contract, dedicated Finding codes, and
-the unresolved dimensions without changing the deterministic router or its
+counterexample, implemented BMOPFTools contract, pinned recipe, dedicated
+Finding codes, and the unresolved dimensions without changing the deterministic router or its
 `qualified`, `under_retrieved`, and `unsupported` semantics.
 
 ## Third trace: solver termination and solution validity

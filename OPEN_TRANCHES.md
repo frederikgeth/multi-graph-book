@@ -1,7 +1,7 @@
 # Open tranches: federated scientific knowledge and executable guardrails
 
 This issue tracks the work that remains after the initial cross-repository
-federated-knowledge tranche. The current branches deliver the architecture,
+federated-knowledge tranche. The merged foundation and current execution branch deliver the architecture,
 stable PSK links, fourteen executable knowledge slices, minimized negative
 fixtures, generated manifests, deterministic federated retrieval, and release
 integrity checks. The work below is intentionally follow-up work; it is not a
@@ -13,6 +13,12 @@ The authority for repository ownership and dependency direction is
 ## 1. BMOPFTools execution interface
 
 Build the execution-facing complement to the book's existing knowledge MCP.
+
+**Current status (2026-08-30):** in progress. The versioned JSON envelope,
+curated API/CLI adapter registry, input hashes, all four scientific statuses,
+and request-error separation are implemented for `PSK-000001` and
+`PSK-000002`. Parsing, general validation, analysis, solution verification,
+Finding explanation, and an optional thin MCP/PowerMCP adapter remain open.
 
 Scope:
 
@@ -33,6 +39,12 @@ Acceptance criteria:
 ## 2. BMOPFTools agent-facing documentation and recipes
 
 Turn the existing pedagogical tutorials into a small, CI-tested recipe library.
+
+**Current status (2026-08-30):** in progress. `llms.txt`, the assistant guide,
+and CI-tested `parallel_member_limits` and `neutral_ground_reference` recipes
+are implemented. The grounding recipe explicitly complements the pedagogical
+grounding tutorial. Parsing, analysis, solving, verification, and Finding-
+explanation recipes remain open.
 
 Scope:
 

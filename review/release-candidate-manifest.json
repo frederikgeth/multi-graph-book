@@ -11,7 +11,7 @@
     "bibliography_unique_doi_fields": 42,
     "html_pages": 72,
     "image_tags": 74,
-    "pdf_pages": 397,
+    "pdf_pages": 398,
     "required_artifacts": 122,
     "certificates": 16,
     "source_objects": 22,
@@ -244,7 +244,7 @@
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "678132a3c7c77717e0115018a01acf01a939f07a1b56e1e3ab585db94a2c8f03"
+      "sha256": "90c77e85f80fdd114a7255096614ffa4843f31371396faaec2b00a0cf1af795d"
     },
     {
       "path": "claims/claims.toml",
@@ -256,11 +256,11 @@
     },
     {
       "path": "docs/build/.documenter-siteinfo.json",
-      "sha256": "20e890f81889518feb9cb3199ffa30c336cea237d311dbfc46c0255fa1f884f1"
+      "sha256": "e658f5ad005c97c9926bb9cc0a5cd95a2ed78f7752c670dcdb9dae8465958064"
     },
     {
       "path": "docs/build/GraphModelsForPowerSystems.pdf",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "sha256": "c83d6b844f935393b1a4c0ca97cf70c24f5d5395b74452875b73df63b8b35e04"
     },
     {
       "path": "docs/build/assets/active-radiality.png",
@@ -868,175 +868,175 @@
     },
     {
       "path": "docs/build/cases/australian-carson-reproduction.html",
-      "sha256": "cc04093a3855e4e6c77296e2a39af9f220a7475aff0ee05c85889ddeb2076186"
+      "sha256": "e7653c7bd6db544530fcfa24c65a8e37b027354771ba19b9a8f42cd767ea4142"
     },
     {
       "path": "docs/build/cases/bim-bfm-parallel-lines.html",
-      "sha256": "c0d045fe199142cd23a98d670b00447690b942ff479d279020d935720f722696"
+      "sha256": "51bcc42a168398b91558ea5d4279320567065dc56ace3bec141ccf79769842c5"
     },
     {
       "path": "docs/build/cases/coupled-multivoltage-corridor.html",
-      "sha256": "a98ed6f88ed285649aa34c40b668a264cab92f9261a9d13daba4babe2a7ce89d"
+      "sha256": "3abf70fd27cafa11f94453866419701d6907a780f1c89c3295a3bc11a42a44b1"
     },
     {
       "path": "docs/build/cases/executable-running-network.html",
-      "sha256": "8add9abf4f9574b26ff18c7b6706cfd8160f83ed78df1c193e6f258a95392747"
+      "sha256": "99a9b51fe83f29b5aa1b5f470700f6b96eec00ba25060425d1a1b0feff9c48ca"
     },
     {
       "path": "docs/build/cases/four-wire-impedance-model-ladder.html",
-      "sha256": "f037720a94bd90ca6d4c5cab08140726a1cd26092d2a60c5db24a4e29a315648"
+      "sha256": "599a996c721e7519ea83c5339ab5ca83f2e28e2f66f0701b126ccaa46106f0d7"
     },
     {
       "path": "docs/build/cases/four-wire-parallel-ac-decision.html",
-      "sha256": "7c27752c0f86c9de1bf94e251a8778fb872c891f7db281aae8b5e44b32d33294"
+      "sha256": "d6410c53245ed1b2e553a5f8d24ce34abbe1379ad9fdef1889930dcd1228b591"
     },
     {
       "path": "docs/build/cases/multiconductor-parallel-ac-decision.html",
-      "sha256": "8ce914800176543382a5b1de6265a9bfd15b800e00b6de55163ced4e9fc3be21"
+      "sha256": "f510321b5847cb7812bc76149d8a810a448f449ea4e2cca7af2912bfa9be269c"
     },
     {
       "path": "docs/build/cases/pi-four-wire-parallel-ac-decision.html",
-      "sha256": "d806eb983574dfc19b1bfae933040a39c646f2cdee280830f27291c63971a534"
+      "sha256": "3a4045c47f2ff112e4c802dd4a6fb1d11847c16b20f81fcc8219330414db8728"
     },
     {
       "path": "docs/build/cases/running-network.html",
-      "sha256": "466deaa0b252036b7f587d0d96784b2ba7c401e5aecf58c7e462142054697e83"
+      "sha256": "a023b9d24225f21430d058ba636018de81f8310547e02b9f2c8197bba93354b3"
     },
     {
       "path": "docs/build/cases/transformer-tap-ac-decision.html",
-      "sha256": "8edcb0983e20c344ecea8a64a92be2ace2fb4c2faf90fd05b0ae03316b4baed0"
+      "sha256": "5406904e4072028dbff03b8939ce5a152d5f03dbd235c3469e01474c0517efc1"
     },
     {
       "path": "docs/build/foundations/circuit-formulations-and-lowering.html",
-      "sha256": "57b6591776726847d45001fc0e125b8592441feb00877a06a0fc47cedccb0e51"
+      "sha256": "a4eb78e1b379bb98f40bdb79514d9ebda51a317480d2ee97938704df849ba948"
     },
     {
       "path": "docs/build/foundations/compiled-views-and-graph-surgery.html",
-      "sha256": "75060cd44cc34831e183bdbba12979de696bc3a4274399588e5277afc2011781"
+      "sha256": "ea37b0eaea7a2234e13bc88e8425e9ba9084665020b7deedbb545a76b93c8a99"
     },
     {
       "path": "docs/build/foundations/cycles-parallelism-radiality.html",
-      "sha256": "2f10ba53dcfc49bdf26d7ee79a3fc4cca5df1ed7be01771df8d76e11b730a331"
+      "sha256": "5b731d3e8155bec91ff30de37bb3db57f7af8dad180dc5abdb0c42ede6a1a239"
     },
     {
       "path": "docs/build/foundations/data-model-crosswalk.html",
-      "sha256": "c63d0d8c5327d4281ac95e684bd68cafcbc8fb70b370a857a7795e1b776c773c"
+      "sha256": "ccec41673ee54f592523a89f475e41f689b68fdbc6c3ed7a665d8d91e1d3ac57"
     },
     {
       "path": "docs/build/foundations/earth-ground-models.html",
-      "sha256": "4b30bbc1733c009d0a78dc7660040bb5b7b7469122b04ee79f5b52f24688ecaf"
+      "sha256": "65b4c06c7c9c0c6609a56821ac63b61caeaa703da81bc8e6156c80885130895e"
     },
     {
       "path": "docs/build/foundations/formal-representation-frameworks.html",
-      "sha256": "03fc725d5b4ecb7bf3bd8176a67587ef43a82370e19d8653fb9ae805b1cbb931"
+      "sha256": "4d273c22c004c79333e9fccebb1ee838e56dac37330490dc8fbe76091f5cf54f"
     },
     {
       "path": "docs/build/foundations/impedance-fidelity-ladder.html",
-      "sha256": "e2c875569f87be96607508594467e6220c825aa0c3af62c5f14b2adcedb04099"
+      "sha256": "82a3396c96b8eb967c01e6dad5539f7ac73996f0bf29f8bfec9f88629e8395bc"
     },
     {
       "path": "docs/build/foundations/load-models-and-decision-dependence.html",
-      "sha256": "c8cea3278e12a13ae431d2e9227be3dec42b67bf1966d9d34c0449431f64f5d8"
+      "sha256": "9beedb3c1c1cdb258ce8cd855ddfd6b5e3e988bb575c1d2fd93c535d89a0e881"
     },
     {
       "path": "docs/build/foundations/multigraphs-for-modelers.html",
-      "sha256": "4a6c892d7fa73897322c1911130b722db40b25b8976be67a7017db0f806764ad"
+      "sha256": "04ce57a5f2a0d438a01258bea38da1f561ac16e03ebd8ffa7d183d41544bbec9"
     },
     {
       "path": "docs/build/foundations/node-breaker-topology-processing.html",
-      "sha256": "268a0cd0c614dbb11184691191d4c0867e9991c4dfe2040c3c42fe97a42cc884"
+      "sha256": "81811cdbb13187edbcb0e4bf9065f753cd3153df633cb1e5ea806102e4b6c0a6"
     },
     {
       "path": "docs/build/foundations/notation-and-conventions.html",
-      "sha256": "2b741f690ddfbdd26cd91264150ffe7c21f4cb7bf41e2802bfa2b1a90c823f18"
+      "sha256": "8facbf255a4fa6c3d3bd057925286cab735e24d650abc6c84fd504970f730cdf"
     },
     {
       "path": "docs/build/foundations/numerical-consequences.html",
-      "sha256": "765fc8bef94e800d40bc297b4a9797810ba559b1b2cdcd448e48233dec8043b6"
+      "sha256": "bd209897ddca20814afe3f3fbd9cd635598bbd74b1573464cca197741cd1849d"
     },
     {
       "path": "docs/build/foundations/orientation-terminal-power.html",
-      "sha256": "7d3f0cc2efbb872a479e3bfaed7dcc47d434a9769f1174ec10e565fd7eafa068"
+      "sha256": "0fa565d74b1d8afcb077df45d793e15366bfdabc26544131bdb21e5e3ec82b2e"
     },
     {
       "path": "docs/build/foundations/preservation-contracts.html",
-      "sha256": "69d37f289f7c90b80c0de872cd47397284d42660bbe27ef8be6a25e8352bd18c"
+      "sha256": "39768ef9fc7ac8302a19dc8f433cb655b50362a8a7f2ef56755ea09a843ce36c"
     },
     {
       "path": "docs/build/foundations/rating-semantics.html",
-      "sha256": "b2a7b84d04c63cf9b2a775ff984b2a7cf3075b9b4b31fb38c67bd12687578be3"
+      "sha256": "712fde0a64b547c3c4f439bde77ea192a0d37e3832542b662c0ea9a6fe88d92c"
     },
     {
       "path": "docs/build/foundations/representation-maps.html",
-      "sha256": "234a087bfc857487ad4120b0625c0b412587f9bd9b2f253ac27ff05ed47ff85a"
+      "sha256": "a8bbf5c78c2d2e4ef6de89360420d8389a8fbaf443d9541bf34861e62fa6cb6f"
     },
     {
       "path": "docs/build/foundations/representation-taxonomy.html",
-      "sha256": "f57a73136385d8628ffc5e8b17dc401ecddf9b7c3259e9b8274fcbcc27b6ee78"
+      "sha256": "9c9d4f933807c9dd328b63d6613014561588b19f9b2bdb86548b18121b985b75"
     },
     {
       "path": "docs/build/foundations/scope-and-thesis.html",
-      "sha256": "e999e8051031dfa013af20f0eb4f15826f75aaa18429d351332c615e3ea161a7"
+      "sha256": "40f2404be58dc65157a6b48b79fac97938504bf2a082650afa7bd007e61e83dd"
     },
     {
       "path": "docs/build/foundations/source-to-canonical-model.html",
-      "sha256": "90e88f5390757be1837712df757062881ac9fbaec50ac1b7ebc89bd4d1a5a0df"
+      "sha256": "dd4e5ede97f248e610ef1470597a55eabcd3a7cee55b4637b6ef6f726e4c52b8"
     },
     {
       "path": "docs/build/foundations/transformation-semantics-register.html",
-      "sha256": "2c8b445afa302b9355b5b12911865393b013400c3db9555a4e5eada2a76ed967"
+      "sha256": "918e6f741514ec2cc93bc7258de6f750d532936d93c5c6931abcd245c6360ac8"
     },
     {
       "path": "docs/build/foundations/translation-traps.html",
-      "sha256": "720976254058b149cab3e99b25d83eb77062d5d98b64c68e112e87c96d2f78cf"
+      "sha256": "0bcd37e1dd23eea2dae3c8d3cc43a8d0e91eb478defc00932a5550cbdb3eb123"
     },
     {
       "path": "docs/build/foundations/two-level-topology-and-nodal-projection.html",
-      "sha256": "b0556eb3ae0e8fde75a42de4133c88653e3eff281812405204bfe83d3e2486f9"
+      "sha256": "b4214b453aeb191b7b0073526debb0727b4700955bfe3c9a4b0dc4f7be3ab3c3"
     },
     {
       "path": "docs/build/foundations/when-general-model-collapses.html",
-      "sha256": "b5d94dd4e6e773f6ccd55266805700f16e95ca0452f49ede0e2e8dcea3918adf"
+      "sha256": "6db370bfd754b021af3712831cf5a17bfe90040b41ceb59db27564196e9849e8"
     },
     {
       "path": "docs/build/index.html",
-      "sha256": "b3e23b521c8a2c0b78f495403773e774a580864a6f9e9b0fdd5500949aa34269"
+      "sha256": "831e0130d9ff0e2ea766ee29aab0506e12115838db31afb23e22b3b9e44be6e8"
     },
     {
       "path": "docs/build/literature/literature-map.html",
-      "sha256": "bc22ff877e231f31bd1831937b71963868d70a7e6de3197808ead5e6e6840220"
+      "sha256": "580d159db025cd94bdd00770bba91599f233670892f501d97dd962b3ad4fc07b"
     },
     {
       "path": "docs/build/literature/representation-implementation-record.html",
-      "sha256": "1d90152ead3779dab40b63e1ddf7b133544658698cd727fce2a3aa7459108b5a"
+      "sha256": "c25974e04d23f4f0635bd1c6a839032ac6f7e0b7357990ba8a55703d2bca5566"
     },
     {
       "path": "docs/build/literature/research-agenda.html",
-      "sha256": "d444a9f954824063f3dd89007963bffb0e6cf3b03b39bbd42ba2a12894069164"
+      "sha256": "2803250765ea3ec405838eda366d3755e8e63f5259256ae1108f6eec8a02dc3e"
     },
     {
       "path": "docs/build/literature/review-protocol-and-evidence-status.html",
-      "sha256": "30a53f9a645b4f3a2a1f57caf9db063cb4dbbccb93e99274da63896a1c649166"
+      "sha256": "bcec4aabf89e034d54016f6ef68be671245c029e2deab9ec8157fcb214b89c12"
     },
     {
       "path": "docs/build/literature/search-runs/2026-08-14-seed-batch.html",
-      "sha256": "36a86f79faafa72462970853eb970c767f5bc78353d2598f6e3a61842dee532f"
+      "sha256": "11926bef7829c87fbd825d2a69e01416f374d3b31780ea1b957258e4f6f916ab"
     },
     {
       "path": "docs/build/literature/search-runs/2026-08-15-formulation-landscape.html",
-      "sha256": "b8e60efb3c623af6712ba5d5d844aeaf7595240cc6ff5e0b97d2607e89af9ca6"
+      "sha256": "cb613dadc53b43ede8525b011decf013180419e4635ddb72bf43a2811fb987c1"
     },
     {
       "path": "docs/build/literature/search-runs/2026-08-15-information-model-citation-chase.html",
-      "sha256": "fa2daa9e26ec3ad181a748deafd16051db874924608e17f9b01edcf7c73472ae"
+      "sha256": "88ba25a41eda4ae6ca9938c62d4fb36709dc0740b8ec78d50cf8eae99d81e7ba"
     },
     {
       "path": "docs/build/literature/search-runs/2026-08-16-multiphase-and-practical-reductions.html",
-      "sha256": "09e01c80bb247c05b7b417b9f64359a3c09b235313486d9b3861cc442189bf48"
+      "sha256": "b884ee316d77960febc32e99a0c31eb600295b047b366d16ac158f6c7c284057"
     },
     {
       "path": "docs/build/literature/search-runs/2026-08-25-coupled-multivoltage-corridors.html",
-      "sha256": "a7429eb9a6bd9dbf6c507f6cc751e22153bc61b0699488303719e871867c6625"
+      "sha256": "6cfe6741b9f61be029e3c1d59b36eb9cea27f462563eb44bbbec69472c5b6699"
     },
     {
       "path": "docs/build/objects.inv",
@@ -1044,31 +1044,31 @@
     },
     {
       "path": "docs/build/reference/chapter-status.html",
-      "sha256": "2386dad0b293acc82d087417daec6e3c76927a51db234d0543ff5e74d7c46f2f"
+      "sha256": "28854bfd5843ad527ac32c0809c8421e276f3fe6e54eb1a29b7fe2272694e6d8"
     },
     {
       "path": "docs/build/reference/evidence-map.html",
-      "sha256": "7e4e2605bce216305a9bbf40ce8f6aab54ecdc191a66ed3229d64648c97a1b54"
+      "sha256": "f5df5ac9731fa6619b16ccd6ca631cb0b0ce3bdd8da85d78ddc7469416f270b1"
     },
     {
       "path": "docs/build/reference/federated-knowledge-trace.html",
-      "sha256": "639606a849e76ed146a98e68f6ae0a277b471e174b085d23ad31cd3468ee3849"
+      "sha256": "7261aee555c2778ff57fd2a027f6b47cfe60c5a344be75672ca09f3067b88cd8"
     },
     {
       "path": "docs/build/reference/knowledge-base-index.html",
-      "sha256": "4d6bc1b35ea10a22255ba70727c1f79ca7022f60a793b70bb9efc72aa3a7dde9"
+      "sha256": "cf52486f75d95990ca9b3d2a47e4617980b9464f6dc57c2a3d1d3b17b87b4210"
     },
     {
       "path": "docs/build/reference/references.html",
-      "sha256": "72d3fdc1e6a6e8bc345ba9696095639bf59f97c9edf95b655e7d10f6dece5e4a"
+      "sha256": "42458ccf4e26cdd6603888a441e82ac94bf6db258aae3e6f5fdad13aa25b7785"
     },
     {
       "path": "docs/build/reference/terminology.html",
-      "sha256": "54e623e3f87b3cf1844b7f53827c6c5b6fac75132e9ecf333b9641c2fa6d8409"
+      "sha256": "59405b596c5d439c5d003b8cdfca4edd2915ac56774ff10392764cfadf920fc4"
     },
     {
       "path": "docs/build/reference/vocabulary-indexes.html",
-      "sha256": "7f0eb7c950d15ca2abfc6f62da0045b34381630cc3565cd35e86acce7c7c1ac2"
+      "sha256": "8f4b2d14c157f61dafe5e2d039a7212b999abe44ab402e633b5f268a241246cb"
     },
     {
       "path": "docs/build/references.bib",
@@ -1076,103 +1076,103 @@
     },
     {
       "path": "docs/build/search_index.js",
-      "sha256": "af5d77b8147792d9bd0d4e986dcb6c0a49fa6aa6ecc60b53e27440f31b2e126a"
+      "sha256": "3042a5fbf1193874b0900a08f8dc582670e0532f83dfbad9d0d849000d9b059b"
     },
     {
       "path": "docs/build/start/chatgpt-access.html",
-      "sha256": "7db629f052f8ab8c5b9163113d348c70520c01f51b7f4eec757cee64db2c7c21"
+      "sha256": "007b6fd4c95400da7c96f492abc65d01e017e7a79352e72874a318808f7236e6"
     },
     {
       "path": "docs/build/start/claude-access.html",
-      "sha256": "1fd7194e3b32ad73e2d50303a4d799641d3f2fa37a48c5e7ff6efe4b036b6714"
+      "sha256": "e756aff6795a574c1425f90aceee405b93fcab907cc6cc3a6ff438aaf67bc24d"
     },
     {
       "path": "docs/build/start/first-failure-parallel-branches.html",
-      "sha256": "56e0d49e328979c85b950a2236f4153efec7466c279c301e67a33b153cd967f0"
+      "sha256": "d308485e9bc7a32b9411c3e3ba75b4111b8cc4216b627af678375edd922b4347"
     },
     {
       "path": "docs/build/start/five-bus-cycle-spaces.html",
-      "sha256": "c26822b7022613da55bd20cbf453bfd9ea4ca1f87b866ed1db594192c1d62abb"
+      "sha256": "50d3e4ee5808189fe311fd4cf906145f523b0657ff93cc31335387b33d5fc54e"
     },
     {
       "path": "docs/build/start/five-bus-transformer-lowering.html",
-      "sha256": "d21bcde4e16361d481a1d6b90ca216988b21fe90f267857493253e402ed94927"
+      "sha256": "0d8708366353a17290c10dda5c9e3cc6981f4327a1b65229ee626535764dc981"
     },
     {
       "path": "docs/build/start/how-to-read-diagrams-and-equations.html",
-      "sha256": "24d09246444f33fd39b0c42343909f6c77d6b9a90dbcf499d5edee8960a685c6"
+      "sha256": "5e463230e801e3e01bdce2a9424b387cd39fa8575677dce0e18120fa09c43246"
     },
     {
       "path": "docs/build/start/how-to-use-this-book.html",
-      "sha256": "71ab259263120bca9e82ba8708e653e9a5d34cb44dbcae5ba205673fbd920712"
+      "sha256": "2b5a6b23ce0f629812ea983560491f46edd053262e546c610d901c3634d197bf"
     },
     {
       "path": "docs/build/start/one-network-five-languages.html",
-      "sha256": "038ad44671ec20263ad47c8a5d4e895cdca5ee99ec805b39a1d2c6341a27afbb"
+      "sha256": "71b716a6c6b4ab9953323b5144defbec15c65b5957a5b852ba9c0041b200e2d4"
     },
     {
       "path": "docs/build/start/one-network-many-graphs.html",
-      "sha256": "f6bda0d0de010a50579bfaa1cd864885ad016dff4c12262773f97aa3b1cd4b8c"
+      "sha256": "a8691507cbd5150cb95e59c82f06918dcb722e96c2d6b14e86caf77175f22773"
     },
     {
       "path": "docs/build/start/reading-guide-graph-and-transmission.html",
-      "sha256": "2fd4ae39e63673e51f349ac7b225de6d8dad1f372545219e6c7320fafcd07961"
+      "sha256": "423402a2bec0b7e7f9bc2f9ae9d3ccbe86dd1e449b1f9a486af78ed8cd082b8d"
     },
     {
       "path": "docs/build/transformations/certificate-schema-and-composition.html",
-      "sha256": "f110d26b91cf3b1394d4eadb2ff28cc8c2808f3ae2b0a0d1b1be6714d9451330"
+      "sha256": "925ba44de187366578e5f14d343bf436f4d54caea8ceaf37256f791d1170a508"
     },
     {
       "path": "docs/build/transformations/circuit-coordinate-transformations.html",
-      "sha256": "3e4e5344bb7e2b7d8df7b2cb21fc4caa324be66b4be3a8cfca6e8203c7a56354"
+      "sha256": "db911150cb4aff90fc3054a8008f95f7c6667ca1b993eb5387644a348ea9222e"
     },
     {
       "path": "docs/build/transformations/conductor-coordinate-normalization.html",
-      "sha256": "d3843c2cdbef63631c5698486b9223e7054bb45f08c785a134650a0a3f36afff"
+      "sha256": "ff8ca58fa935aacc810b7936349039348460a8f8d191bb468a21162735386040"
     },
     {
       "path": "docs/build/transformations/degree-two-series-elimination.html",
-      "sha256": "13860e77a09d4d137e6d1fe7fa48eebc9e256c29be9138d09aa2cf1366b4d6ed"
+      "sha256": "0560b0d72cbb8faefc41f68860e6482a7b87877de2127942cb6c078a97408815"
     },
     {
       "path": "docs/build/transformations/fixed-linear-transformer-factor-completion.html",
-      "sha256": "5e8ac82a99d745d83e4d97d15fac88297b476d2d06f5a4f7cb07bec841623e9a"
+      "sha256": "f6bc11b7c0ea4ca349669ccb3999f1d49b6b208c3e234a13ea8a5c84ba658620"
     },
     {
       "path": "docs/build/transformations/guarded-normalization.html",
-      "sha256": "7084a0b848dbcc49a618a4278b7e4769fe20de81f6a0dab25d6702c7c837d554"
+      "sha256": "4b07877d0b8fec59f616a7cd90598cb97b8cae5ed4a98f4f189ea7373b79f4c4"
     },
     {
       "path": "docs/build/transformations/kron-ward-opti-kron.html",
-      "sha256": "2a710dab58d084d6192320895ad7d469e0549333cb9ab515cfd245d06e585b90"
+      "sha256": "c280131cb19f3acdb77699b50c19202a4027f3eacd822e621abe6f1658108915"
     },
     {
       "path": "docs/build/transformations/multiwinding-leakage-reference-compilation.html",
-      "sha256": "9cc7a08e25afdbb05b739ca9fbd02b340d4c50c018f612ccd999897133a3c0c6"
+      "sha256": "eabd207ef22cc1f37b46a8c4a8faf46c38ec77f0c5ad2fcfc7c7b6b8f3efd4a4"
     },
     {
       "path": "docs/build/transformations/multiwinding-terminal-leakage-assembly.html",
-      "sha256": "17e4ae9d8c8056d3782df8b37078ac79a845c802a92d49add44c980ed214a460"
+      "sha256": "57989a079d08ef2f9d1e8c8dbc831442b6cffd0fe4119e9803ff056fcf3ceb51"
     },
     {
       "path": "docs/build/transformations/parameterized-transformer-tap-decisions.html",
-      "sha256": "10827d6cc3d203bf237b804b0b91e8b341492a794957cdc30f5db06c9b978450"
+      "sha256": "0e1a86040ea4d77c6c78526725cbe1c81a00c9c5ad47f7a313e20467ccf5530f"
     },
     {
       "path": "docs/build/transformations/projection-compilation-reduction.html",
-      "sha256": "cd44717254d4c5ecbfd5f6c5ed3abc21a432225e385f4fe4614c79e669765ba5"
+      "sha256": "0914a675ffcea30319ce35ca8550eaab2e826bb9e2025663c97068de2656c10c"
     },
     {
       "path": "docs/build/transformations/transformer-winding-coordinate-normalization.html",
-      "sha256": "dba4331fdb91d9bacd53c56ce807838e2f5aae476a755d57ff92b9ff31b25a54"
+      "sha256": "4a84423aec9fe56a7a6d7983a7f7cde865bdd17be06853ba0edebdd45279905d"
     },
     {
       "path": "docs/latex_build/GraphModelsForPowerSystems.pdf",
-      "sha256": "28829d28daab65f7f5cdd311a585beb380209ef6ccbe91aeb9d83e11c121ca61"
+      "sha256": "c83d6b844f935393b1a4c0ca97cf70c24f5d5395b74452875b73df63b8b35e04"
     },
     {
       "path": "docs/latex_build/WhatPower-NetworkModelsPreserve.pdf",
-      "sha256": "28829d28daab65f7f5cdd311a585beb380209ef6ccbe91aeb9d83e11c121ca61"
+      "sha256": "c83d6b844f935393b1a4c0ca97cf70c24f5d5395b74452875b73df63b8b35e04"
     },
     {
       "path": "docs/make.jl",
@@ -1936,7 +1936,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "b1c2140fbd953ccf31543d11e92592e2a77b7418f35cfa8e647d1db3444dbe91"
+      "sha256": "39ad789a2cdab48234d3ad80da3833a4cf27bfad06635212492f74d4c4218cf4"
     },
     {
       "path": "docs/src/reference/knowledge-base-index.md",
@@ -3360,11 +3360,11 @@
     },
     {
       "path": "llm/generated/access-fixtures.jsonl",
-      "sha256": "b6e9720e64dedeb5c8f9afd152588563c60c8f4c5e43941e500190fbb9ea94fc"
+      "sha256": "7c942ae923fb323ed519b344f30b58f8459995873a7cd873fa9d530818b0d001"
     },
     {
       "path": "llm/generated/adversarial-evaluation.json",
-      "sha256": "e25ec1f2b9d8934f558b684b83e51f8970576ef151df37bf3e803257126726e8"
+      "sha256": "95f6699ba85628e3f2b1f1626956275dda4bbba65f4a0e51e7a5e0e80006c00e"
     },
     {
       "path": "llm/generated/adversarial-evaluation.md",
@@ -3372,27 +3372,27 @@
     },
     {
       "path": "llm/generated/corpus-manifest.json",
-      "sha256": "f9587941bfd0d81b17a8c70ceeb9ecba191c27404919a899155e72fd441a8078"
+      "sha256": "9354bd2828c7bae2992eb483802e092240d960ff509210707e557511b67e248e"
     },
     {
       "path": "llm/generated/corpus.jsonl",
-      "sha256": "fb07428d0ca83556a25f5d0eec45cd211de5601e436e4bb910e264e4e190db50"
+      "sha256": "f431c4f6183c2f48568355cc35ec4226a5c9946a347d7179b30912aa959bd2e4"
     },
     {
       "path": "llm/generated/neural-retrieval-evaluation.json",
-      "sha256": "60eba3d2cece13ac15eb07d31d7ab40db0575fd161545fdc7e46b25092ea50d8"
+      "sha256": "e63ba756c2fb754600dd7ffa933b241bda40325a463d686b7bf3480ae30e9f3d"
     },
     {
       "path": "llm/generated/neural-retrieval-evaluation.md",
-      "sha256": "c8bf8f3de4bb85ac24799282dd792c841866413909789cb75254fc01803238c3"
+      "sha256": "13b953903f842187c896fca30c50f101e8d3009f8a8410c0bf442d8ccdbad341"
     },
     {
       "path": "llm/generated/retrieval-evaluation.json",
-      "sha256": "d5cfab08c7de507e0f29ce1028c1dfaa2c35a4586f62b0dbe255e5369fd73f28"
+      "sha256": "6e5e47e5950378dc20c872f54fdd9617e2898c8afce6a6a80865b90b11941e28"
     },
     {
       "path": "llm/generated/retrieval-evaluation.md",
-      "sha256": "15964d353868c10a2222ab0cba49c54a5db90a6b0490f9faad87e0f31eb76cc0"
+      "sha256": "597a7e9a5228fa00f7e72739407a206c52d478041c0c2125e61e72058c79c012"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -3656,7 +3656,7 @@
     },
     {
       "path": "scripts/check_llm_answer_contract.py",
-      "sha256": "d6f8f1b970b8ccff7b6a51a97dcd675c5bfdeaf4454e44bcf50d6ca070293969"
+      "sha256": "ae6c0f3e1fd634b060db8ce1c0852d2617f6c7300e0a51f892485332376987ee"
     },
     {
       "path": "scripts/check_llm_reproducibility.py",
@@ -3744,7 +3744,7 @@
     },
     {
       "path": "scripts/generate_scientific_knowledge.py",
-      "sha256": "fb4d0687a018137ce06059804ddc6013229231a11c18549c959cf5e426d2270c"
+      "sha256": "ceb64e16414a33dae858c85e322967e962555142ada04fed207cdad407871096"
     },
     {
       "path": "scripts/generate_second_coding_template.py",

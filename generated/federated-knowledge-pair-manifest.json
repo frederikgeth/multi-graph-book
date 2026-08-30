@@ -16,7 +16,7 @@
       "transformer_winding_convention_preservation",
       "unit_base_serialization_invariance"
     ],
-    "corpus_sha256": "4574a626122e1c5079f7feeb21110d70537fea040a028f1ce736aee27b8be072",
+    "corpus_sha256": "e7a0ecc8315365056c6743fc7447f61d3766fe3bb8a903f3b781521f943e1890",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -34,12 +34,13 @@
       "PSK-000014"
     ],
     "manifest_id": "bmopftools-executable-knowledge-0.1.0",
-    "manifest_sha256": "eefa570244cd3b1558f79745d042865488440db51d54eca713798aed274fd259",
+    "manifest_sha256": "8f8db142436ea34893b0033df41c8a9c45ce20fa242ac6d3c1937df5ab938ee2",
     "package": {
       "name": "BMOPFTools",
       "version": "0.1.0"
     },
     "recipe_ids": [
+      "neutral_ground_reference",
       "parallel_member_limits"
     ],
     "record_counts": {
@@ -47,7 +48,7 @@
       "executable_contract": 14,
       "finding": 57,
       "fixture": 14,
-      "recipe": 1
+      "recipe": 2
     },
     "repository": "frederikgeth/BMOPFTools.jl",
     "schema_version": "0.1.0"
@@ -70,7 +71,7 @@
       "PSK-000013",
       "PSK-000014"
     ],
-    "manifest_sha256": "2b516d868bbdde9d29acac8f82b766d3e6b900f0664738325a5c44e1d189f40e",
+    "manifest_sha256": "1f9db45be77f3d381955da143eaa99da5bb2369fb215e08aba5385a961b81bc5",
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -105,7 +106,7 @@
               "expected_status": "failed",
               "operation": "check_contract",
               "recipe_id": "parallel_member_limits",
-              "source_sha256": "22367d786608228b458669f9e1da66ca36c294562b40eb912dd6fe02c1a01382"
+              "source_sha256": "7790af277ae2c89bfae2ba1cccdb2976a5c661966589874b3bc20b6331bb6018"
             }
           ],
           "source_sha256": "315bf983e9d789cdc33d943c307c7b5d58f3700146081751c19be35297db1531"
@@ -129,7 +130,19 @@
           "fixture_ids": [
             "neutral-ground-reference-conflation-001"
           ],
-          "recipes": [],
+          "recipes": [
+            {
+              "command": "julia --startup-file=no --project=. recipes/neutral_ground_reference/recipe.jl",
+              "expected_finding_codes": [
+                "E.CONTRACT.NEUTRAL_CONTINUITY_MISMATCH",
+                "E.CONTRACT.GROUND_REFERENCE_RELATION_MISMATCH"
+              ],
+              "expected_status": "failed",
+              "operation": "check_contract",
+              "recipe_id": "neutral_ground_reference",
+              "source_sha256": "e8b852e848084b2354b0a21fcb496c8ef50167548b80e75a8b1dc7021f47bd7d"
+            }
+          ],
           "source_sha256": "315bf983e9d789cdc33d943c307c7b5d58f3700146081751c19be35297db1531"
         }
       ],
@@ -390,6 +403,6 @@
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "cf06abeeb5aa2d3964ee59d78d5cf5e14d5a924e7dc21581c5ba54185e01b212",
+  "pair_sha256": "81e3623a783a12a23c3205b56c3eabdd4da71a1de8354e2168cb9162a6df0890",
   "schema_version": "0.1.0"
 }

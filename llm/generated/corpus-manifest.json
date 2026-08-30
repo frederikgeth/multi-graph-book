@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "fb07428d0ca83556a25f5d0eec45cd211de5601e436e4bb910e264e4e190db50",
+  "corpus_sha256": "f431c4f6183c2f48568355cc35ec4226a5c9946a347d7179b30912aa959bd2e4",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -209,7 +209,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "b1c2140fbd953ccf31543d11e92592e2a77b7418f35cfa8e647d1db3444dbe91"
+      "sha256": "39ad789a2cdab48234d3ad80da3833a4cf27bfad06635212492f74d4c4218cf4"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -309,7 +309,7 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "2b516d868bbdde9d29acac8f82b766d3e6b900f0664738325a5c44e1d189f40e"
+      "sha256": "1f9db45be77f3d381955da143eaa99da5bb2369fb215e08aba5385a961b81bc5"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",

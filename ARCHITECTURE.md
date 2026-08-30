@@ -607,12 +607,15 @@ Implementation proceeds from domain interfaces outward:
 4. optional JSON CLI operations;
 5. thin MCP or PowerMCP-compatible execution adapters.
 
-The first execution-interface slice implements steps 3 and 4 for
-`PSK-000001`: BMOPFTools provides a source-hash-bound
-`parallel_member_limits` recipe and a versioned `check-contract` JSON CLI/API
-response. The pinned pair manifest carries the recipe identity, command,
+The first two execution-interface slices implement steps 3 and 4 for
+`PSK-000001` and `PSK-000002`. BMOPFTools provides source-hash-bound
+`parallel_member_limits` and `neutral_ground_reference` recipes and a versioned
+`check-contract` JSON CLI/API response. A package-owned adapter registry gives
+each contract an explicit parameter allowlist, including the neutral contract's
+declared source-to-target bus mapping; it does not expose arbitrary Julia
+evaluation. The pinned pair manifest carries each recipe identity, command,
 expected status, expected Finding codes, and recipe source hash into the book's
-context packet. This is one reviewed transport mapping, not a claim that every
+context packet. These are reviewed transport mappings, not a claim that every
 contract is CLI-ready. Additional contracts are promoted only after their
 inputs and explicit source-to-target mappings have an unambiguous JSON form.
 

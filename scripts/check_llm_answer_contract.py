@@ -63,6 +63,14 @@ def main() -> int:
                 validation_errors.append("neutral/ground route omits the linked counterexample fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("neutral/ground executable contract is not marked implemented")
+            examples = packet["implementation_examples"]
+            recipes = examples[0].get("recipes", []) if len(examples) == 1 else []
+            if len(recipes) != 1 or recipes[0].get("recipe_id") != "neutral_ground_reference":
+                validation_errors.append("neutral/ground route omits the pinned executable recipe")
+            elif recipes[0].get("expected_status") != "failed":
+                validation_errors.append("neutral/ground recipe expected status differs from the fixture")
+            if checks and not checks[0].get("pair_sha256"):
+                validation_errors.append("neutral/ground executable contract omits the pair identity")
         if case["misconception_id"] == "solver-termination-implies-validated-solution":
             packet = response["packet"]
             if "knowledge:PSK-000003" not in observed:

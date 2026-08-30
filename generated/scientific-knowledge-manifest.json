@@ -152,10 +152,6 @@
       "sha256": "1bd6ab3823ce995bb01e33cb6b382c3f721ad06ed5a51800e65f8a629c270948"
     },
     {
-      "path": "review/release-candidate-manifest.json",
-      "sha256": "c29f3c353dc871c65667a7ae6011e4dbda2ad37b6a7075af0d15fc9c039973dc"
-    },
-    {
       "path": "schemas/power-system-knowledge.schema.json",
       "sha256": "818bc8974084b473d6bd808145f3aadc5062c1411f919bc6736d63862e2077c7"
     }
