@@ -18,8 +18,8 @@ The authority for repository ownership and dependency direction is
 | 2. Documentation and recipes | Core complete | Assistant guide, `llms.txt`, two scientific-contract recipes, and tutorial-derived parse, analysis, verification, and Finding-explanation recipes | Keep examples synchronized; solving remains outside this transport slice |
 | 3. Negative-knowledge taxonomy | Core complete | Fourteen executable links plus book-only structured negative-result, numerical-pathology, scope-boundary, and open-question records | Add further records only for evidence-backed high-risk questions |
 | 4. Property-based testing | Core complete | Seeded terminal-permutation and unit/base serialization suites with deterministic replay, minimization, classification, and federated pins | Add further properties only where an existing contract has a clear generator and oracle |
-| 5. Research/decision log | Queued | Decisions currently recorded in architecture and handover prose | Add the lightweight decision-log format |
-| 6. Agent benchmark | Deferred | Deterministic retrieval evaluation exists | Start after the execution surface stabilizes |
+| 5. Research/decision log | Core complete | Stable `DLOG-*` format, six seeded decisions, contributor guidance, CI/release validation, and reader/LLM access | Add or supersede entries when consequential choices are made |
+| 6. Agent benchmark | Queued | Deterministic retrieval evaluation and stable execution surface exist | Specify the first scientifically constrained benchmark slice |
 | 7. Review maturation | Ongoing external dependency | Internal gates and review packet exist | Independent review and claim reclassification |
 
 Update this table and the two detailed status paragraphs below whenever a
@@ -197,20 +197,31 @@ Acceptance criteria:
 
 ## 5. Research and decision log
 
-Create a lightweight development research log for architectural choices and
-rejected approaches.
+Core mechanism complete. The reader-facing
+[`development-decision-log.md`](docs/src/literature/development-decision-log.md)
+defines stable `DLOG-*` entries and is indexed by the existing documentation
+and deterministic LLM corpus. Six seed entries preserve the principal choices
+and rejected approaches already exercised by this initiative: repository
+authority, deterministic retrieval, curated execution adapters, property-suite
+evidence classification, the archived neural candidate, and asymmetric
+book-only negative knowledge.
 
 Each entry should record:
 
 - question;
 - options considered;
 - decision;
+- reason;
 - evidence;
 - known downside;
 - conditions for revisiting the decision.
 
-This log is for software and architecture decisions. Scientific claims remain
-in the book's claims ledger.
+`scripts/check_development_log.py` checks stable ordering, metadata, required
+sections, and the boundary from the claims ledger in documentation CI and the
+release-candidate gate. Contributor guidance requires rejected entries to be
+retained and superseded decisions to link their replacement. This log is for
+software and architecture decisions. Scientific claims remain in the book's
+claims ledger.
 
 ## 6. Scientifically constrained agent benchmark
 
@@ -248,10 +259,10 @@ These items are release-quality follow-ups rather than implementation blockers:
 
 ## Suggested order
 
-1. Add the lightweight research/decision log; continue promoting executable
-   contracts or properties only when their mappings and evidence are unambiguous.
-2. Agent benchmark.
-3. External review and evidence maturation in parallel as reviewers become
+1. Specify and deliver the first scientifically constrained agent-benchmark
+   slice; continue promoting executable contracts or properties only when
+   their mappings and evidence are unambiguous.
+2. External review and evidence maturation in parallel as reviewers become
    available.
 
 Each tranche should add tests, generated artifacts, and explicit scope rather

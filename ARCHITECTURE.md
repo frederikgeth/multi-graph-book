@@ -726,7 +726,11 @@ ordinary software tests, runs applicable scientific guardrails and minimized
 counterexamples, and reports assumptions and unresolved boundaries.
 
 Architectural decisions and rejected approaches belong in a lightweight
-development research log. Scientific claims remain in the claims ledger;
+development research log, maintained as
+[`docs/src/literature/development-decision-log.md`](docs/src/literature/development-decision-log.md).
+Its stable entries record the question, options, decision, reason, evidence,
+known downside, and conditions for revisiting, and a release gate checks the
+format. Scientific claims remain in the claims ledger;
 ordinary software design choices do not. Failed methods are retained when the
 question, setup, failure criterion, evidence, scope, and conditions for
 reconsideration are sufficiently specified.

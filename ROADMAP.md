@@ -194,8 +194,15 @@ second seed and classification just as they do for `PSK-000012`.
 These two suites complete the initial controlled property mechanism without
 claiming exhaustive sampling, physical conversion validation, or new scientific
 counterexamples. Further properties are promoted only when an existing scoped
-contract supplies a clear in-domain generator, oracle, and minimizer. The next
-implementation milestone is the lightweight research/decision log.
+contract supplies a clear in-domain generator, oracle, and minimizer.
+
+The lightweight research/decision-log milestone is now delivered. The
+reader-facing log uses stable `DLOG-*` entries, retains rejected approaches,
+states its boundary from the scientific claims ledger, and is checked in both
+documentation CI and the release-candidate gate. Its first six entries capture
+the cross-repository decisions already exercised by the implementation rather
+than manufacturing new scientific claims. The next implementation milestone is
+the first scientifically constrained agent-benchmark slice.
 
 ### Product identity and editorial stance
 

@@ -113,6 +113,22 @@ julia scripts/check_claims.jl
 before submitting a change. The checker rejects duplicate identifiers, unknown
 statuses, missing chapter paths, and missing BibTeX keys.
 
+## Development decisions
+
+Consequential software and cross-repository architecture choices belong in the
+[development research and decision log](docs/src/literature/development-decision-log.md),
+not the scientific claims ledger. Add the next stable `DLOG-NNNN` entry with
+the question, options, decision, reason, evidence, known downside, and
+conditions for revisiting. Retain rejected approaches and supersede old entries
+instead of rewriting their rationale. Run
+
+```sh
+python3 scripts/check_development_log.py
+```
+
+before submitting a log change. Scientific statements still follow the claims,
+PSK, citation, and evidence-review process; a DLOG entry cannot reclassify them.
+
 Generated fixtures, certificates, view source maps, and local Markdown links
 are checked with:
 

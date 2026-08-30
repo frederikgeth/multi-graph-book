@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "b8e93bea0f24ffa18eb5ceff40c0a45b50474867b8c911564d4bb187a6a2e742",
+  "corpus_sha256": "f343effcc9cb7e65dfc4748d47ed90bea8deb569556596511bd27025cd468e6a",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -10,17 +10,17 @@
       "docs/src/reference/vocabulary-indexes.md"
     ],
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
-    "included_doc_count": 68
+    "included_doc_count": 69
   },
   "evaluation_case_count": 69,
   "heldout_case_count": 33,
   "misconception_count": 23,
-  "record_count": 786,
+  "record_count": 836,
   "record_counts": {
     "claim_bundle": 109,
     "concept_bundle": 18,
     "scientific_knowledge": 18,
-    "section": 641
+    "section": 691
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -170,6 +170,10 @@
     {
       "path": "docs/src/index.md",
       "sha256": "b82e235721c3e4a19600bb4a31d8c0634c637d2beebbb7e75074c06c47755369"
+    },
+    {
+      "path": "docs/src/literature/development-decision-log.md",
+      "sha256": "fc5e57d48dfb45f7ab1bc7a95aa71404fa25fa8b3aa03691d454ee8a0f1e89c8"
     },
     {
       "path": "docs/src/literature/literature-map.md",
