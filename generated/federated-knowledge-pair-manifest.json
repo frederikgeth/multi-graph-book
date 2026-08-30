@@ -16,7 +16,7 @@
       "transformer_winding_convention_preservation",
       "unit_base_serialization_invariance"
     ],
-    "corpus_sha256": "e7a0ecc8315365056c6743fc7447f61d3766fe3bb8a903f3b781521f943e1890",
+    "corpus_sha256": "9ab5ce6804c9b012f33dbe60524aba98623a8420dfe6ce4d8b894d14ead1fbf7",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -34,12 +34,28 @@
       "PSK-000014"
     ],
     "manifest_id": "bmopftools-executable-knowledge-0.1.0",
-    "manifest_sha256": "8f8db142436ea34893b0033df41c8a9c45ce20fa242ac6d3c1937df5ab938ee2",
+    "manifest_sha256": "bc5a77d1c91c5eb9b91cc644c88322cb41179c7578dfae7c412e379f6e94786a",
+    "operation_recipes": [
+      {
+        "command": "julia --startup-file=no --project=. recipes/analyze_case/recipe.jl",
+        "expected_finding_codes": [
+          "W.CONN.DANGLING",
+          "I.PRE.NO_VOLT_BOUNDS",
+          "W.CONV.TERMINAL_ROLES_INFERRED"
+        ],
+        "expected_status": "completed",
+        "knowledge_ids": [],
+        "operation": "analyze_case",
+        "recipe_id": "analyze_case",
+        "source_sha256": "7c315b9629e34ecdbc0b8d75e47f423894f5c86c2a63f52eb7c139d9eef24624"
+      }
+    ],
     "package": {
       "name": "BMOPFTools",
       "version": "0.1.0"
     },
     "recipe_ids": [
+      "analyze_case",
       "neutral_ground_reference",
       "parallel_member_limits"
     ],
@@ -48,10 +64,10 @@
       "executable_contract": 14,
       "finding": 57,
       "fixture": 14,
-      "recipe": 2
+      "recipe": 3
     },
     "repository": "frederikgeth/BMOPFTools.jl",
-    "schema_version": "0.1.0"
+    "schema_version": "0.2.0"
   },
   "book": {
     "corpus_sha256": "09a2e5372a2a1ec5dcc68d57418d85e6629211909f3dbb08b0f59f70975584b1",
@@ -106,10 +122,10 @@
               "expected_status": "failed",
               "operation": "check_contract",
               "recipe_id": "parallel_member_limits",
-              "source_sha256": "7790af277ae2c89bfae2ba1cccdb2976a5c661966589874b3bc20b6331bb6018"
+              "source_sha256": "3339453231b072e34063a08b5519dd8898c9b3701a26520b909ebed668bb69f5"
             }
           ],
-          "source_sha256": "315bf983e9d789cdc33d943c307c7b5d58f3700146081751c19be35297db1531"
+          "source_sha256": "8fd4d09bd7a163f9f5d00b9f70cdc056e6bfaf68815ad8c785063d28371f98b7"
         }
       ],
       "implementation_status": "implemented",
@@ -140,10 +156,10 @@
               "expected_status": "failed",
               "operation": "check_contract",
               "recipe_id": "neutral_ground_reference",
-              "source_sha256": "e8b852e848084b2354b0a21fcb496c8ef50167548b80e75a8b1dc7021f47bd7d"
+              "source_sha256": "944961063fa93b89d10af7371994f406cf792d39eae3b59674578f20eb3c316d"
             }
           ],
-          "source_sha256": "315bf983e9d789cdc33d943c307c7b5d58f3700146081751c19be35297db1531"
+          "source_sha256": "8fd4d09bd7a163f9f5d00b9f70cdc056e6bfaf68815ad8c785063d28371f98b7"
         }
       ],
       "implementation_status": "implemented",
@@ -163,7 +179,7 @@
             "claimed-feasible-invalid-solution-001"
           ],
           "recipes": [],
-          "source_sha256": "8fe08e5120c369398476d0c53feedd22419a37e6f6fa8e4722a1eecfd3887c73"
+          "source_sha256": "5e98375f9cc2dd09a754ff44a20a4053a61354517ad2e986e368099857a4d5ec"
         }
       ],
       "implementation_status": "implemented",
@@ -183,7 +199,7 @@
             "load-voltage-base-mismatch-001"
           ],
           "recipes": [],
-          "source_sha256": "7e502af74610b096d004ac62e114617e0d8c68930268cb6b5254000e10a2b0a9"
+          "source_sha256": "2af2011754825502dcf8799b238c29270aea058cf20ddc4141e580a748a80d7f"
         }
       ],
       "implementation_status": "implemented",
@@ -203,7 +219,7 @@
             "transformer-tap-domain-loss-001"
           ],
           "recipes": [],
-          "source_sha256": "315bf983e9d789cdc33d943c307c7b5d58f3700146081751c19be35297db1531"
+          "source_sha256": "8fd4d09bd7a163f9f5d00b9f70cdc056e6bfaf68815ad8c785063d28371f98b7"
         }
       ],
       "implementation_status": "implemented",
@@ -224,7 +240,7 @@
             "transformer-winding-role-swap-001"
           ],
           "recipes": [],
-          "source_sha256": "c0c8a46f2a68f5388f39a5e35ea3b3576518544f3c1de176c229afe6413257ce"
+          "source_sha256": "6260c4952519d2e0bfcebd1c307319342f199df476ba9b31878ebf9dd05b7186"
         }
       ],
       "implementation_status": "implemented",
@@ -245,7 +261,7 @@
             "decision-manifest-terminal-only-001"
           ],
           "recipes": [],
-          "source_sha256": "315bf983e9d789cdc33d943c307c7b5d58f3700146081751c19be35297db1531"
+          "source_sha256": "8fd4d09bd7a163f9f5d00b9f70cdc056e6bfaf68815ad8c785063d28371f98b7"
         }
       ],
       "implementation_status": "implemented",
@@ -267,7 +283,7 @@
             "kron-boundary-grounding-001"
           ],
           "recipes": [],
-          "source_sha256": "9a2c50a77b3b224d1a890624069e6ed727f7cd39466fdf61485e0a37d6a3e0be"
+          "source_sha256": "16a031ceab5ae6a74f4689bdfd6ad2573c51f090c96df1cd96ebdd054eec613e"
         }
       ],
       "implementation_status": "implemented",
@@ -289,7 +305,7 @@
             "positive-sequence-collapse-001"
           ],
           "recipes": [],
-          "source_sha256": "315bf983e9d789cdc33d943c307c7b5d58f3700146081751c19be35297db1531"
+          "source_sha256": "8fd4d09bd7a163f9f5d00b9f70cdc056e6bfaf68815ad8c785063d28371f98b7"
         }
       ],
       "implementation_status": "implemented",
@@ -311,7 +327,7 @@
             "state-dependent-equivalent-001"
           ],
           "recipes": [],
-          "source_sha256": "315bf983e9d789cdc33d943c307c7b5d58f3700146081751c19be35297db1531"
+          "source_sha256": "8fd4d09bd7a163f9f5d00b9f70cdc056e6bfaf68815ad8c785063d28371f98b7"
         }
       ],
       "implementation_status": "implemented",
@@ -332,7 +348,7 @@
             "reference-singularity-001"
           ],
           "recipes": [],
-          "source_sha256": "315bf983e9d789cdc33d943c307c7b5d58f3700146081751c19be35297db1531"
+          "source_sha256": "8fd4d09bd7a163f9f5d00b9f70cdc056e6bfaf68815ad8c785063d28371f98b7"
         }
       ],
       "implementation_status": "implemented",
@@ -353,7 +369,7 @@
             "terminal-permutation-001"
           ],
           "recipes": [],
-          "source_sha256": "315bf983e9d789cdc33d943c307c7b5d58f3700146081751c19be35297db1531"
+          "source_sha256": "8fd4d09bd7a163f9f5d00b9f70cdc056e6bfaf68815ad8c785063d28371f98b7"
         }
       ],
       "implementation_status": "implemented",
@@ -374,7 +390,7 @@
             "solved-network-feasibility-001"
           ],
           "recipes": [],
-          "source_sha256": "315bf983e9d789cdc33d943c307c7b5d58f3700146081751c19be35297db1531"
+          "source_sha256": "8fd4d09bd7a163f9f5d00b9f70cdc056e6bfaf68815ad8c785063d28371f98b7"
         }
       ],
       "implementation_status": "implemented",
@@ -395,7 +411,7 @@
             "unit-base-serialization-001"
           ],
           "recipes": [],
-          "source_sha256": "315bf983e9d789cdc33d943c307c7b5d58f3700146081751c19be35297db1531"
+          "source_sha256": "8fd4d09bd7a163f9f5d00b9f70cdc056e6bfaf68815ad8c785063d28371f98b7"
         }
       ],
       "implementation_status": "implemented",
@@ -403,6 +419,6 @@
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "81e3623a783a12a23c3205b56c3eabdd4da71a1de8354e2168cb9162a6df0890",
+  "pair_sha256": "0bff2e6bbfa14c7b09e7f2f932fa5c3231603dbae66ee736e878a279d373b000",
   "schema_version": "0.1.0"
 }

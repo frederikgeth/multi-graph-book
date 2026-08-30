@@ -77,20 +77,26 @@ evidence-gated rather than quota-driven.
 
 ### Executable interface and recipe tranche (in progress, 2026-08-30)
 
-The first two transport slices are implemented for `PSK-000001` and
-`PSK-000002`. BMOPFTools now owns a versioned JSON execution response, a curated
+The first two scientific transport slices are implemented for `PSK-000001` and
+`PSK-000002`. BMOPFTools owns a versioned JSON execution response, a curated
 `check-contract` CLI/API adapter registry, and CI-tested
 `parallel_member_limits` and `neutral_ground_reference` recipes that reuse the
-minimized fixtures. Tests exercise successful, failing, inapplicable,
-indeterminate, and request-error outcomes. The federated pair manifest pins
-each recipe command, expected status, expected Finding codes, and source hash;
-book context packets surface those runnable examples while keeping scientific
-and runtime evidence separate.
+minimized fixtures. A third, non-contract `analyze-case` route now parses one
+BMOPF JSON case and returns the package's complete standard analysis/validation
+report. Its `completed` operation status remains separate from Finding severity,
+and its tutorial-derived `analyze_case` recipe explicitly rejects the shortcut
+that a completed report means a clean or solver-ready case. Tests exercise
+successful, failing, inapplicable, indeterminate, request-error, and completed-
+with-Findings outcomes. The federated pair manifest pins both PSK-linked recipes
+and the package-only analysis recipe; book context packets surface the linked
+scientific examples while keeping ordinary package operations separate.
 
 Remaining work in this tranche is evidence-gated scale-out rather than a bulk
-wrapper exercise: promote further contracts one at a time, then add parsing,
-analysis, and solution-verification operations before considering a thin MCP or
-PowerMCP adapter. Solver invocation remains outside the first transport slice.
+wrapper exercise: add solution verification next, then Finding explanation and
+any justified parse-only route, while promoting further contracts one at a
+time. A thin MCP or PowerMCP adapter remains last because it should expose the
+settled operations rather than define a competing execution model. Solver
+invocation remains outside the current transport slice.
 
 ### Product identity and editorial stance
 

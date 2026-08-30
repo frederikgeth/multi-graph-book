@@ -607,15 +607,22 @@ Implementation proceeds from domain interfaces outward:
 4. optional JSON CLI operations;
 5. thin MCP or PowerMCP-compatible execution adapters.
 
-The first two execution-interface slices implement steps 3 and 4 for
+The first two scientific execution-interface slices implement steps 3 and 4 for
 `PSK-000001` and `PSK-000002`. BMOPFTools provides source-hash-bound
 `parallel_member_limits` and `neutral_ground_reference` recipes and a versioned
-`check-contract` JSON CLI/API response. A package-owned adapter registry gives
+`check-contract` JSON CLI/API response. The next package-only slice adds
+`analyze-case` and a tutorial-derived analysis recipe. A completed analysis
+operation may contain ERROR or WARNING Findings: operation status and case
+diagnostic severity remain different axes. Because this ordinary package
+operation does not itself express a scientific preservation claim, its recipe
+does not invent a PSK link and is pinned separately from PSK-linked context
+examples in the pair manifest. A package-owned adapter registry gives
 each contract an explicit parameter allowlist, including the neutral contract's
 declared source-to-target bus mapping; it does not expose arbitrary Julia
 evaluation. The pinned pair manifest carries each recipe identity, command,
 expected status, expected Finding codes, and recipe source hash into the book's
-context packet. These are reviewed transport mappings, not a claim that every
+context packet. The pair also pins package-only operation recipes without
+injecting them into a scientific context packet. These are reviewed transport mappings, not a claim that every
 contract is CLI-ready. Additional contracts are promoted only after their
 inputs and explicit source-to-target mappings have an unambiguous JSON form.
 

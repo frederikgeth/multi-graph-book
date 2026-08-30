@@ -55,10 +55,23 @@ def bmopf_identity(root: Path) -> tuple[dict, dict[str, dict]]:
         raise ValueError("BMOPFTools executable corpus hash differs from its manifest")
     by_id = {item["record_id"]: item for item in executable}
     recipes_by_contract: dict[str, list[dict]] = {}
+    operation_recipes: list[dict] = []
     for item in executable:
         if item.get("record_type") != "recipe":
             continue
-        recipes_by_contract.setdefault(item["contract_id"], []).append(item)
+        contract_id = item.get("contract_id")
+        if contract_id is None:
+            operation_recipes.append({
+                "recipe_id": item["recipe_id"],
+                "operation": item["operation"],
+                "command": item["command"],
+                "expected_status": item["expected_status"],
+                "expected_finding_codes": item["expected_finding_codes"],
+                "knowledge_ids": item["knowledge_ids"],
+                "source_sha256": item["source"]["sha256"],
+            })
+        else:
+            recipes_by_contract.setdefault(contract_id, []).append(item)
     links: dict[str, dict] = {}
     for scientific in records(SCIENTIFIC):
         knowledge_id = scientific["knowledge_id"]
@@ -109,8 +122,9 @@ def bmopf_identity(root: Path) -> tuple[dict, dict[str, dict]]:
         for contract in link["contracts"]
         for recipe in contract.get("recipes", [])
     })
-    if linked_recipe_ids != exported_recipe_ids:
-        raise ValueError("BMOPFTools recipe records are not completely linked to book PSK objects")
+    operation_recipe_ids = sorted(item["recipe_id"] for item in operation_recipes)
+    if sorted([*linked_recipe_ids, *operation_recipe_ids]) != exported_recipe_ids:
+        raise ValueError("BMOPFTools recipe records are not completely pinned by the pair manifest")
     identity = {
         "repository": "frederikgeth/BMOPFTools.jl",
         "schema_version": manifest["schema_version"],
@@ -121,6 +135,7 @@ def bmopf_identity(root: Path) -> tuple[dict, dict[str, dict]]:
         "knowledge_ids": manifest["knowledge_ids"],
         "contract_ids": manifest["contract_ids"],
         "recipe_ids": exported_recipe_ids,
+        "operation_recipes": sorted(operation_recipes, key=lambda value: value["recipe_id"]),
         "record_counts": manifest["record_counts"],
     }
     return identity, links
@@ -183,9 +198,19 @@ def validate_committed(pair: dict) -> list[str]:
         for link in links.values()
         for contract in link.get("contracts", [])
         for recipe in contract.get("recipes", [])
+    } | {
+        recipe.get("recipe_id")
+        for recipe in pair.get("bmopftools", {}).get("operation_recipes", [])
     })
     if observed_recipe_ids != pair.get("bmopftools", {}).get("recipe_ids", []):
         errors.append("pair manifest recipe coverage differs from the BMOPFTools identity")
+    for recipe in pair.get("bmopftools", {}).get("operation_recipes", []):
+        if recipe.get("operation") != "analyze_case":
+            errors.append(f"{recipe.get('recipe_id')}: unsupported package operation recipe")
+        if recipe.get("expected_status") != "completed":
+            errors.append(f"{recipe.get('recipe_id')}: analysis recipe status is not completed")
+        if recipe.get("knowledge_ids"):
+            errors.append(f"{recipe.get('recipe_id')}: unlinked operation recipe claims PSK ownership")
     return errors
 
 
