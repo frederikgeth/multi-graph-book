@@ -15,6 +15,8 @@ This page traces five scientific statements from book evidence to executable BMO
 | Misconception | `parallel-admittance-implies-decision-equivalence` | this book | Routes the dangerous shortcut to mandatory evidence |
 | Executable contract | `parallel_member_limit_preservation` | BMOPFTools | Decides the supported scalar case or explicitly refuses it |
 | API operation | `check_parallel_member_limit_preservation` | BMOPFTools | Exposes the contract as a structured result |
+| JSON execution operation | `check-contract` | BMOPFTools | Returns a versioned response with input hashes and the four-status contract result |
+| Executable recipe | `parallel_member_limits` | BMOPFTools | Runs the minimized fixture through the JSON-ready execution API |
 | Counterexample fixture | `parallel-rating-outer-relaxation-001` | BMOPFTools | Reproduces a minimized negative witness |
 | Finding | `W.CONTRACT.PARALLEL_MEMBER_LIMIT_LOSS` | BMOPFTools | Reports loss of the member-constrained feasible region |
 
@@ -35,6 +37,13 @@ BMOPFTools receives an explicit mapping from source members to a target aggregat
 
 Missing mapped data produces `W.CONTRACT.INDETERMINATE`. Multiconductor, shunted, singular, or otherwise out-of-domain cases produce `I.CONTRACT.NOT_APPLICABLE`. Those statuses are part of the scientific behavior: the implementation refuses to silently generalize beyond its declared domain.
 
+The same check is available as the source-hash-bound BMOPFTools recipe
+`parallel_member_limits`. The pinned pair manifest carries its command,
+expected status, expected Finding codes, and recipe source hash. Context packets
+therefore expose a directly runnable implementation example without making the
+book execute a sibling checkout or copying the package implementation into the
+scientific corpus.
+
 For the minimized fixture, the two source lines have resistances 0.1 Ω and 1 Ω and ratings of 100 A each. Their summed admittance is 11 S, so the target resistance is 1/11 Ω. A naïve 200 A aggregate rating permits a voltage drop of about 18.18 V, while the source members permit only 10 V. At the committed 15 V witness, aggregate current is 165 A, but member currents are 150 A and 15 A. The target accepts the point while the first source member is overloaded. The exact scalar target rating is 110 A, not 200 A.
 
 ### Retrieval and answer contract
@@ -47,7 +56,7 @@ The packet now also exposes explicit sections:
 - `known_misconceptions` for the tempting shortcut and required qualification;
 - `counterexamples` for book artifacts and stable fixture identities;
 - `executable_checks` for the BMOPFTools repository, contract IDs, Finding codes, fixtures, and implementation status;
-- `implementation_examples` for concrete executable fixtures; and
+- `implementation_examples` for concrete executable fixtures and pinned recipes; and
 - `unresolved_boundaries` for every claim the scientific object says it does not establish.
 
 These are structured views over mandatory records, not a second retrieval index. The deterministic corpus, release identity, source hashes, retrieval evaluation, MCP route, HTTP route, and CLI route remain the book's established machinery.

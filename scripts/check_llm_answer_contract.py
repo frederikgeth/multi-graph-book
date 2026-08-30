@@ -42,6 +42,14 @@ def main() -> int:
                 validation_errors.append("parallel route omits the linked counterexample fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("parallel executable contract is not marked implemented")
+            examples = packet["implementation_examples"]
+            recipes = examples[0].get("recipes", []) if len(examples) == 1 else []
+            if len(recipes) != 1 or recipes[0].get("recipe_id") != "parallel_member_limits":
+                validation_errors.append("parallel route omits the pinned executable recipe")
+            elif recipes[0].get("expected_status") != "failed":
+                validation_errors.append("parallel recipe expected status differs from the fixture")
+            if checks and not checks[0].get("pair_sha256"):
+                validation_errors.append("parallel executable contract omits the pair identity")
         if case["misconception_id"] == "ground-neutral-reference-are-one-node":
             packet = response["packet"]
             if "knowledge:PSK-000002" not in observed:

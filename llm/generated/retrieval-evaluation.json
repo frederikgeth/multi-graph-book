@@ -1032,8 +1032,8 @@
         "claim:TR-PAR-002",
         "claim:TR-PAR-001",
         "claim:LIT-PAR-001",
-        "section:docs/src/reference/federated-knowledge-trace.md#executable-decision",
-        "section:docs/src/foundations/rating-semantics.md#common-distinctions"
+        "section:docs/src/foundations/rating-semantics.md#common-distinctions",
+        "section:docs/src/reference/federated-knowledge-trace.md#executable-decision"
       ],
       "packet_shape_errors": [],
       "packet_shape_valid": true,
@@ -1397,8 +1397,8 @@
         "claim:TR-SER-002",
         "claim:TR-KRON-002",
         "claim:TR-KRON-FIVE-001",
-        "claim:TR-PAR-002",
-        "claim:ARCH-CHORDAL-001"
+        "claim:ARCH-CHORDAL-001",
+        "claim:TR-PAR-002"
       ],
       "expected_record_ids": [
         "claim:PRESERVE-001",
@@ -4208,8 +4208,8 @@
       "open_corpus_top_10": [
         "knowledge:PSK-000014",
         "concept:equivalence-exactness-preservation",
-        "section:docs/src/reference/federated-knowledge-trace.md#fourteenth-trace-unit-base-and-serialization-invariance",
         "section:docs/src/transformations/transformer-winding-coordinate-normalization.md#transformer-winding-normalization",
+        "section:docs/src/reference/federated-knowledge-trace.md#fourteenth-trace-unit-base-and-serialization-invariance",
         "claim:COUPLED-CORRIDOR-001",
         "claim:COUPLED-CORRIDOR-002",
         "section:docs/src/cases/coupled-multivoltage-corridor.md#pedagogical-and-evidence-boundary",
@@ -4250,9 +4250,9 @@
         "claim:TR-KRON-002",
         "claim:LOAD-BASE-001",
         "claim:DATA-XWALK-001",
-        "claim:FIXTURE-001",
         "claim:TR-XFMR-010",
         "claim:TR-KRON-003",
+        "claim:FIXTURE-001",
         "claim:TR-KRON-FIVE-002"
       ],
       "expected_record_ids": [
@@ -4293,7 +4293,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "1e7fd8ab1edc5b4be58eb6d8064d5af7cb2e661289817e9e441191323225773c",
+    "corpus_sha256": "fb07428d0ca83556a25f5d0eec45cd211de5601e436e4bb910e264e4e190db50",
     "record_count": 777,
     "release": {
       "external_reviewed_claims": 0,
@@ -4622,7 +4622,7 @@
         ],
         "hybrid_complete_at_10": false,
         "hybrid_hits_at_10": 3,
-        "hybrid_mean_reciprocal_rank_at_20": 0.112698,
+        "hybrid_mean_reciprocal_rank_at_20": 0.116667,
         "hybrid_recall_at_10": 0.5,
         "hybrid_recall_at_5": 0.333333,
         "hybrid_top_10": [
@@ -4631,9 +4631,9 @@
           "concept:factor",
           "claim:ARCH-PORT-001",
           "claim:FORMULATION-Y-SPLIT-001",
-          "claim:ARCH-SUPPORT-001",
           "claim:ARCH-NODAL-001",
           "claim:ARCH-PORT-002",
+          "claim:ARCH-SUPPORT-001",
           "claim:NUMERICAL-001",
           "claim:TR-XFMR-001"
         ],
@@ -5118,7 +5118,7 @@
         ],
         "graph_complete_at_10": false,
         "graph_hits_at_10": 4,
-        "graph_mean_reciprocal_rank_at_20": 0.332639,
+        "graph_mean_reciprocal_rank_at_20": 0.336111,
         "graph_recall_at_10": 0.666667,
         "graph_recall_at_5": 0.5,
         "graph_top_10": [
@@ -5152,7 +5152,7 @@
         ],
         "lexical_complete_at_10": false,
         "lexical_hits_at_10": 2,
-        "lexical_mean_reciprocal_rank_at_20": 0.05506,
+        "lexical_mean_reciprocal_rank_at_20": 0.056548,
         "lexical_recall_at_10": 0.333333,
         "lexical_recall_at_5": 0.0,
         "lexical_top_10": [
@@ -5349,13 +5349,13 @@
         "case_id": "HOLDOUT-RADIAL-STUDENT",
         "char_tfidf_complete_at_10": false,
         "char_tfidf_hits_at_10": 3,
-        "char_tfidf_mean_reciprocal_rank_at_20": 0.115238,
+        "char_tfidf_mean_reciprocal_rank_at_20": 0.148571,
         "char_tfidf_recall_at_10": 0.6,
         "char_tfidf_recall_at_5": 0.2,
         "char_tfidf_top_10": [
           "claim:GRAPH-PI-COLLAPSE-001",
-          "claim:GRAPH-SELF-LOOP-001",
           "concept:parallel",
+          "claim:GRAPH-SELF-LOOP-001",
           "claim:TR-KRON-NEUTRAL-003",
           "concept:element-edge-relation",
           "claim:GRAPH-LOOPY-001",
@@ -7133,7 +7133,7 @@
       "char_tfidf": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.224076,
+        "mean_reciprocal_rank_at_20": 0.225086,
         "recall_at_10": 0.442088,
         "recall_at_5": 0.361616,
         "recall_expected_records_at_10": 180,
@@ -7143,7 +7143,7 @@
       "graph": {
         "complete_at_10": 0.212121,
         "complete_at_10_count": 7,
-        "mean_reciprocal_rank_at_20": 0.252472,
+        "mean_reciprocal_rank_at_20": 0.252578,
         "recall_at_10": 0.576599,
         "recall_at_5": 0.388889,
         "recall_expected_records_at_10": 180,
@@ -7153,7 +7153,7 @@
       "hybrid": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.218755,
+        "mean_reciprocal_rank_at_20": 0.218875,
         "recall_at_10": 0.465825,
         "recall_at_5": 0.37963,
         "recall_expected_records_at_10": 180,
@@ -7165,7 +7165,7 @@
       "lexical": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.200795,
+        "mean_reciprocal_rank_at_20": 0.20084,
         "recall_at_10": 0.448653,
         "recall_at_5": 0.334007,
         "recall_expected_records_at_10": 180,

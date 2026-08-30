@@ -607,6 +607,15 @@ Implementation proceeds from domain interfaces outward:
 4. optional JSON CLI operations;
 5. thin MCP or PowerMCP-compatible execution adapters.
 
+The first execution-interface slice implements steps 3 and 4 for
+`PSK-000001`: BMOPFTools provides a source-hash-bound
+`parallel_member_limits` recipe and a versioned `check-contract` JSON CLI/API
+response. The pinned pair manifest carries the recipe identity, command,
+expected status, expected Finding codes, and recipe source hash into the book's
+context packet. This is one reviewed transport mapping, not a claim that every
+contract is CLI-ready. Additional contracts are promoted only after their
+inputs and explicit source-to-target mappings have an unambiguous JSON form.
+
 The book MCP remains the knowledge interface. A future BMOPFTools adapter is an
 execution interface and exposes a curated operation set such as case parsing,
 analysis, solution verification, contract checking, counterexample execution,
@@ -623,7 +632,7 @@ expected counterexample outcomes.
 
 Cross-repository integration uses an explicitly pinned revision or release of
 each repository. Its checks verify that referenced claim, misconception, PSK,
-finding, contract, and fixture IDs resolve; that source anchors and hashes are
+finding, contract, fixture, and recipe IDs resolve; that source anchors and hashes are
 current; and that the federated context packet identifies the exact pair. A
 change in either export requires regeneration and re-evaluation of the paired
 federated artifact, not a dynamic query against the other repository's latest

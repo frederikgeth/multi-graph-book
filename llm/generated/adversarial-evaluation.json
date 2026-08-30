@@ -337,8 +337,8 @@
           "claim:GRAPH-MULTI-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
           "claim:ARCH-LENS-001",
-          "claim:ARCH-LOWER-001",
           "claim:PRACTICE-ARCH-001",
+          "claim:ARCH-LOWER-001",
           "claim:GRAPH-NPORT-001"
         ]
       },
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "1e7fd8ab1edc5b4be58eb6d8064d5af7cb2e661289817e9e441191323225773c"
+    "corpus_sha256": "fb07428d0ca83556a25f5d0eec45cd211de5601e436e4bb910e264e4e190db50"
   },
   "inputs": {
     "adversarial_cases": {

@@ -183,6 +183,20 @@ def render_markdown(packet: dict) -> str:
                 f"{', '.join(item['contract_ids'])}; status: `{item['implementation_status']}`"
             )
         lines.append("")
+    runnable = [
+        (item["knowledge_id"], recipe)
+        for item in packet["implementation_examples"]
+        for recipe in item.get("recipes", [])
+    ]
+    if runnable:
+        lines += ["## Implementation examples", ""]
+        for knowledge_id, recipe in runnable:
+            lines.append(
+                f"- **{knowledge_id} / {recipe['recipe_id']}** — "
+                f"`{recipe['command']}` (expected contract status: "
+                f"`{recipe['expected_status']}`)"
+            )
+        lines.append("")
     if contract["failure_consequences"]:
         lines += ["## Failure consequences", ""]
         lines.extend(f"- {item}" for item in contract["failure_consequences"])

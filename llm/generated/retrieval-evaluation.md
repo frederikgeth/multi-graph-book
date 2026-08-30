@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `1e7fd8ab1edc5b4be58eb6d8064d5af7cb2e661289817e9e441191323225773c`<br>
+**Corpus hash:** `fb07428d0ca83556a25f5d0eec45cd211de5601e436e4bb910e264e4e190db50`<br>
 **Cases:** 60
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -44,9 +44,9 @@ evidence sets, so the effective target count is nine rather than 27 independent 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `lexical` | 33.4% | 44.9% | 0.0% | 0/33 | 5/33 | 0.201 |
-| `char_tfidf` | 36.2% | 44.2% | 0.0% | 0/33 | 6/33 | 0.224 |
+| `char_tfidf` | 36.2% | 44.2% | 0.0% | 0/33 | 6/33 | 0.225 |
 | `hybrid` | 38.0% | 46.6% | 0.0% | 0/33 | 5/33 | 0.219 |
-| `graph` | 38.9% | 57.7% | 21.2% | 7/33 | 4/33 | 0.252 |
+| `graph` | 38.9% | 57.7% | 21.2% | 7/33 | 4/33 | 0.253 |
 
 Held-out contract-router firing: **25/33 (75.8%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **17/33 (51.5%)**; this remains diagnostic because the set is synthetic and clustered.

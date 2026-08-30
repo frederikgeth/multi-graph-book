@@ -54,6 +54,11 @@ def bmopf_identity(root: Path) -> tuple[dict, dict[str, dict]]:
     if sha256_file(corpus_path) != manifest["corpus_sha256"]:
         raise ValueError("BMOPFTools executable corpus hash differs from its manifest")
     by_id = {item["record_id"]: item for item in executable}
+    recipes_by_contract: dict[str, list[dict]] = {}
+    for item in executable:
+        if item.get("record_type") != "recipe":
+            continue
+        recipes_by_contract.setdefault(item["contract_id"], []).append(item)
     links: dict[str, dict] = {}
     for scientific in records(SCIENTIFIC):
         knowledge_id = scientific["knowledge_id"]
@@ -72,6 +77,21 @@ def bmopf_identity(root: Path) -> tuple[dict, dict[str, dict]]:
                     "finding_codes": record["finding_codes"],
                     "fixture_ids": record["fixture_ids"],
                     "source_sha256": record["source"]["sha256"],
+                    "recipes": [
+                        {
+                            "recipe_id": recipe["recipe_id"],
+                            "operation": recipe["operation"],
+                            "command": recipe["command"],
+                            "expected_status": recipe["expected_status"],
+                            "expected_finding_codes": recipe["expected_finding_codes"],
+                            "source_sha256": recipe["source"]["sha256"],
+                        }
+                        for recipe in sorted(
+                            recipes_by_contract.get(contract_id, []),
+                            key=lambda value: value["recipe_id"],
+                        )
+                        if knowledge_id in recipe["knowledge_ids"]
+                    ],
                 }
             )
         links[knowledge_id] = {
@@ -79,6 +99,18 @@ def bmopf_identity(root: Path) -> tuple[dict, dict[str, dict]]:
             "implementation_status": declared["implementation_status"],
             "contracts": contract_links,
         }
+    exported_recipe_ids = sorted(
+        item["recipe_id"] for item in executable
+        if item.get("record_type") == "recipe"
+    )
+    linked_recipe_ids = sorted({
+        recipe["recipe_id"]
+        for link in links.values()
+        for contract in link["contracts"]
+        for recipe in contract.get("recipes", [])
+    })
+    if linked_recipe_ids != exported_recipe_ids:
+        raise ValueError("BMOPFTools recipe records are not completely linked to book PSK objects")
     identity = {
         "repository": "frederikgeth/BMOPFTools.jl",
         "schema_version": manifest["schema_version"],
@@ -88,6 +120,8 @@ def bmopf_identity(root: Path) -> tuple[dict, dict[str, dict]]:
         "package": manifest["package"],
         "knowledge_ids": manifest["knowledge_ids"],
         "contract_ids": manifest["contract_ids"],
+        "recipe_ids": exported_recipe_ids,
+        "record_counts": manifest["record_counts"],
     }
     return identity, links
 
@@ -137,6 +171,21 @@ def validate_committed(pair: dict) -> list[str]:
         observed_fixtures = sorted({value for item in contracts for value in item.get("fixture_ids", [])})
         if observed_fixtures != sorted(executable["fixture_ids"]):
             errors.append(f"{knowledge_id}: fixture IDs differ across the pair")
+        for contract in contracts:
+            for recipe in contract.get("recipes", []):
+                if recipe.get("operation") != "check_contract":
+                    errors.append(f"{knowledge_id}: recipe operation is not check_contract")
+                expected = set(recipe.get("expected_finding_codes", []))
+                if not expected.issubset(set(contract.get("finding_codes", []))):
+                    errors.append(f"{knowledge_id}: recipe Findings differ from its contract")
+    observed_recipe_ids = sorted({
+        recipe.get("recipe_id")
+        for link in links.values()
+        for contract in link.get("contracts", [])
+        for recipe in contract.get("recipes", [])
+    })
+    if observed_recipe_ids != pair.get("bmopftools", {}).get("recipe_ids", []):
+        errors.append("pair manifest recipe coverage differs from the BMOPFTools identity")
     return errors
 
 

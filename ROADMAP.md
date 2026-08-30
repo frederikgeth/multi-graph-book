@@ -66,16 +66,29 @@ and a minimized negative witness.
 | 13 | Complete solved-network feasibility | numerical validation boundary | equation, KCL, power-balance, device-limit, and recovery residuals | Implemented as `PSK-000013`; residual-witness gate |
 | 14 | Unit/base and serialization invariance | normalization, coordinate, and provenance claims | round-trip and unit/base metamorphic tests | Implemented as `PSK-000014`; metadata/payload binding |
 
-The first scale-out milestone is now complete and extended: twelve stable PSK paths cover a
+The first scale-out milestone is now complete and extended: fourteen stable PSK paths cover a
 transformation constraint, model semantics, numerical inference, connection
 coordinates, an adjustable decision domain, typed transformer-winding
 conventions, the terminal-to-decision evidence boundary, and Kron boundary/recovery
 conditions, positive-sequence domain closure, state/update provenance,
-reference/rank validation, and terminal/conductor permutation invariance. The
-next milestone is complete for the first thirteen paths; remaining promotion is
-evidence-gated rather than quota-driven. The immediate fourteenth slice is
-unit/base and serialization invariance: round-trip and unit/base metamorphic
-tests with explicit provenance.
+reference/rank validation, terminal/conductor permutation invariance,
+solved-network feasibility, and unit/base serialization. Remaining promotion is
+evidence-gated rather than quota-driven.
+
+### Executable interface and recipe tranche (in progress, 2026-08-30)
+
+The first transport slice is implemented for `PSK-000001`. BMOPFTools now owns
+a versioned JSON execution response, a curated `check-contract` CLI/API route,
+and a CI-tested `parallel_member_limits` recipe that reuses the minimized
+parallel-rating fixture. The federated pair manifest pins the recipe command,
+expected status, expected Finding codes, and source hash; book context packets
+surface that runnable example while keeping scientific and runtime evidence
+separate.
+
+Remaining work in this tranche is evidence-gated scale-out rather than a bulk
+wrapper exercise: promote further contracts one at a time, then add parsing,
+analysis, and solution-verification operations before considering a thin MCP or
+PowerMCP adapter. Solver invocation remains outside the first transport slice.
 
 ### Product identity and editorial stance
 

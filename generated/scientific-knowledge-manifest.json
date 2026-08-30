@@ -153,7 +153,7 @@
     },
     {
       "path": "review/release-candidate-manifest.json",
-      "sha256": "1909645d35246e3b8fa4ea804986cfbaf1a9b8baae859085d5bc1c42ed54dd4d"
+      "sha256": "c29f3c353dc871c65667a7ae6011e4dbda2ad37b6a7075af0d15fc9c039973dc"
     },
     {
       "path": "schemas/power-system-knowledge.schema.json",
