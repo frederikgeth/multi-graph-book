@@ -71,8 +71,9 @@ python3 scripts/search_llm_corpus.py \
 
 The packet keeps evidence classes separate. `counterexamples` names concrete
 delimiting cases, `negative_results` preserves failed experiments with their
-criteria and scope, and `numerical_pathologies` records observed algorithmic
-behavior plus the checks needed before drawing a physical conclusion.
+criteria and scope, `numerical_pathologies` records observed algorithmic
+behavior plus the checks needed before drawing a physical conclusion, and
+`scope_boundaries` separates established domains from unproven extensions.
 Book-only records leave `executable_checks` empty rather than inventing a
 BMOPFTools counterpart.
 

@@ -1,5 +1,5 @@
 {
-  "corpus_sha256": "fbe78995d633122247dc53514ccf44211392a8e320dc6eed1b26343be46c188b",
+  "corpus_sha256": "18a9c307b7b4ac9bbd69d76c805c98e75c1e7f89aca46a3dd37ca692f36db933",
   "knowledge_ids": [
     "PSK-000001",
     "PSK-000002",
@@ -16,10 +16,11 @@
     "PSK-000013",
     "PSK-000014",
     "PSK-000015",
-    "PSK-000016"
+    "PSK-000016",
+    "PSK-000017"
   ],
   "manifest_id": "multi-graph-book-scientific-knowledge-0.1.0",
-  "record_count": 16,
+  "record_count": 17,
   "release": {
     "external_reviewed_claims": 0,
     "independent_human_double_coding": false,
@@ -32,6 +33,10 @@
     {
       "path": "claims/claims.toml",
       "sha256": "69136cf591fab5a596c6ec884d53210bdc6a016f94ff5b1bde70121b4305082b"
+    },
+    {
+      "path": "docs/src/cases/coupled-multivoltage-corridor.md",
+      "sha256": "d288be8fa076d8e1cffcb7fecce71e94b3beaa9e37070e21457f1616048b924f"
     },
     {
       "path": "docs/src/cases/four-wire-impedance-model-ladder.md",
@@ -67,7 +72,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "522ef461539344ae30d0ba6b288bed10cb48d02f06fcf5bc5e850973b542d6ae"
+      "sha256": "124558916ca3601355e5985c515d3d2b97a9d2af1c48d58667aeb9b709b30465"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
@@ -96,6 +101,10 @@
     {
       "path": "experiments/generated/balanced-transmission-witness.json",
       "sha256": "2ffa917cf2d8765a3a3817f4f7d2fd2c5861d0ae2f60c1ee4a202bbca7872740"
+    },
+    {
+      "path": "experiments/generated/coupled-corridor-lattice-witness.json",
+      "sha256": "b39718cd997ad302b8f528bd8ac35e8d39d368c0d2b31faadf40b61c0e53da03"
     },
     {
       "path": "experiments/generated/kron-ward-scenario-comparison.json",
@@ -154,16 +163,24 @@
       "sha256": "c8df96b929e8a425e7986ee5620aa2f273c2b6a2bba86d7bd6c3d15eeeeb2c35"
     },
     {
+      "path": "experiments/test/coupled_corridor_lattice.jl",
+      "sha256": "797da9e074f4a3ae2ec69f2dfc792d11850e403e2d753b5acc1b03d2c66443b3"
+    },
+    {
+      "path": "experiments/transformations/CoupledCorridorLatticeWitness.jl",
+      "sha256": "f29d89a505b4c1acb030178cbfe227581a74ec5db3dbbf190070ed937db8496e"
+    },
+    {
       "path": "experiments/transformations/LoadGroundingWitness.jl",
       "sha256": "f8a9ae87fb916816979b50b4edd1ecbdf6698a98ed776e73785bb898c5c41482"
     },
     {
       "path": "knowledge/psk.toml",
-      "sha256": "89197f8cfa2f3cd16507616e4f233908efe2cdd5cce0888d695d95df2412f180"
+      "sha256": "0c7efc648b461b83c7203184ea185247bba3a559f67893d06193e88b5e49e12c"
     },
     {
       "path": "llm/README.md",
-      "sha256": "d630f6215b7e210f48d542cade0ddeffbc61d67e90603799b923c6d76ec03994"
+      "sha256": "f616afe9d8c48bf062e0e5a3a96963a54a32b6ca5427e09012da11ce4dac04a2"
     },
     {
       "path": "llm/generated/neural-retrieval-negative-result.json",
@@ -175,7 +192,7 @@
     },
     {
       "path": "schemas/power-system-knowledge.schema.json",
-      "sha256": "29a4e62aa20c20bd04dd840a4dadecfc7671469876cce10fc9bf1dea4c9b5dbe"
+      "sha256": "834da1187a30df66d92e86f41496e2e54695d6ab71ed50a2a839915b050a4cd5"
     },
     {
       "path": "scripts/check_neural_benchmark.py",

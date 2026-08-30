@@ -178,6 +178,14 @@ def main() -> int:
         else:
             fail_if("numerical_pathology" in record,
                     f"{knowledge_id}: non-pathology record carries numerical-pathology fields", errors)
+        if record.get("kind") == "scope-boundary":
+            fail_if(not record.get("scope_boundary"),
+                    f"{knowledge_id}: scope-boundary record lacks its boundary fields", errors)
+            fail_if(record.get("executable", {}).get("implementation_status") not in {"implemented", "not_applicable"},
+                    f"{knowledge_id}: scope-boundary executable relationship is ambiguous", errors)
+        else:
+            fail_if("scope_boundary" in record,
+                    f"{knowledge_id}: non-boundary record carries scope-boundary fields", errors)
     for claim_id, record in claim_records.items():
         passage = record.get("supporting_passage", {})
         fail_if(not str(passage.get("text", "")).strip(), f"{claim_id}: empty supporting passage", errors)

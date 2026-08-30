@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "bfe77d3f0abe2beb3bdcbefda9226271cf204bbdfef7dcab2da4fcaa9404b11e",
+  "corpus_sha256": "19039725fc0807448d6ff451c5bd0191b01e78e7ddecb1c2c84a36f56f5398d9",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -15,12 +15,12 @@
   "evaluation_case_count": 66,
   "heldout_case_count": 33,
   "misconception_count": 22,
-  "record_count": 782,
+  "record_count": 784,
   "record_counts": {
     "claim_bundle": 109,
     "concept_bundle": 18,
-    "scientific_knowledge": 16,
-    "section": 639
+    "scientific_knowledge": 17,
+    "section": 640
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -209,7 +209,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "522ef461539344ae30d0ba6b288bed10cb48d02f06fcf5bc5e850973b542d6ae"
+      "sha256": "124558916ca3601355e5985c515d3d2b97a9d2af1c48d58667aeb9b709b30465"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -221,11 +221,11 @@
     },
     {
       "path": "docs/src/start/chatgpt-access.md",
-      "sha256": "f483582d443048b64127cd98770e43df695b0f0d9c72cac8ddf76a5075936c15"
+      "sha256": "821c02eec38691a174f9f1a3542d0a006f69a3240e8bd3721514750b1caabc8c"
     },
     {
       "path": "docs/src/start/claude-access.md",
-      "sha256": "09328493dee51be944bc7a1bc16bf3f0f7a2b9b2d1a3ec3c55c214338525a6d7"
+      "sha256": "d0206f1b38b7d19b534c47e79bd10a249cf23c83c6cfb03710ce35f553dfa1c2"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
@@ -309,11 +309,11 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "335cd8761be06b5c3fec7518bc052669a32406344dcf5937d6675e293d0d8bae"
+      "sha256": "4d80f11677b9d6ff1ed68e4610c5ebe7461157b5330327737afb3a7b6281c360"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",
-      "sha256": "fbe78995d633122247dc53514ccf44211392a8e320dc6eed1b26343be46c188b"
+      "sha256": "18a9c307b7b4ac9bbd69d76c805c98e75c1e7f89aca46a3dd37ca692f36db933"
     },
     {
       "path": "llm/evaluation-cases.toml",

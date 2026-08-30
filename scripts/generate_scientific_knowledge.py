@@ -126,6 +126,15 @@ def knowledge_text(item: dict) -> str:
             "Discriminating checks: " + " ".join(numerical_pathology["discriminating_checks"]),
             "Conditions that may change the behavior: " + " ".join(numerical_pathology["conditions_might_change"]),
         ])
+    scope_boundary = item.get("scope_boundary")
+    if scope_boundary:
+        lines.extend([
+            "Established within: " + scope_boundary["established_within"],
+            "Boundary conditions: " + " ".join(scope_boundary["boundary_conditions"]),
+            "Outside scope: " + " ".join(scope_boundary["outside_scope"]),
+            "Unsafe extensions: " + " ".join(scope_boundary["unsafe_extensions"]),
+            "Evidence required to extend: " + " ".join(scope_boundary["required_evidence"]),
+        ])
     return "\n".join(lines)
 
 
@@ -318,6 +327,27 @@ def validate_and_build() -> tuple[list[dict], dict, list[str]]:
         elif numerical_pathology is not None:
             errors.append(f"{record_id}: numerical_pathology table is only valid for numerical-pathology kind")
 
+        scope_boundary = item.get("scope_boundary")
+        if item.get("kind") == "scope-boundary":
+            if not isinstance(scope_boundary, dict):
+                errors.append(f"{record_id}: scope-boundary kind requires a scope_boundary table")
+            else:
+                for field in ("established_within", "review_status"):
+                    if not isinstance(scope_boundary.get(field), str) or not scope_boundary[field].strip():
+                        errors.append(f"{record_id}: missing or empty scope_boundary.{field}")
+                for field in (
+                    "boundary_conditions", "outside_scope", "unsafe_extensions",
+                    "required_evidence", "reproducer_commands",
+                ):
+                    require_unique_strings(
+                        record_id,
+                        f"scope_boundary.{field}",
+                        scope_boundary.get(field),
+                        errors,
+                    )
+        elif scope_boundary is not None:
+            errors.append(f"{record_id}: scope_boundary table is only valid for scope-boundary kind")
+
         record = {
             "schema_version": SCHEMA_VERSION,
             "record_id": f"knowledge:{record_id}",
@@ -344,6 +374,8 @@ def validate_and_build() -> tuple[list[dict], dict, list[str]]:
             record["negative_result"] = negative_result
         if numerical_pathology is not None:
             record["numerical_pathology"] = numerical_pathology
+        if scope_boundary is not None:
+            record["scope_boundary"] = scope_boundary
         records.append(record)
 
     records.sort(key=lambda item: item["knowledge_id"])

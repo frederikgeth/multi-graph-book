@@ -189,6 +189,13 @@ def render_markdown(packet: dict) -> str:
             lines.append(f"  - Algorithmic boundary: {item['algorithmic_boundary']}")
             lines.append(f"  - Discriminating checks: {' '.join(item['discriminating_checks'])}")
         lines.append("")
+    if packet["scope_boundaries"]:
+        lines += ["## Scope boundaries", ""]
+        for item in packet["scope_boundaries"]:
+            lines.append(f"- **{item['knowledge_id']}** — {item['established_within']}")
+            lines.append(f"  - Outside scope: {' '.join(item['outside_scope'])}")
+            lines.append(f"  - Evidence required to extend: {' '.join(item['required_evidence'])}")
+        lines.append("")
     if packet["executable_checks"]:
         lines += ["## Executable checks", ""]
         for item in packet["executable_checks"]:

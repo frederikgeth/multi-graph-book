@@ -2,7 +2,7 @@
 
 **Page status:** maintained cross-repository implementation trace and scope boundary.
 
-This page traces sixteen scientific and negative-knowledge objects through book
+This page traces seventeen scientific and negative-knowledge objects through book
 evidence, applicable BMOPFTools guardrails, and the book's existing LLM context
 packets. The stable ownership rules are defined in the repository-root
 `ARCHITECTURE.md`; this page is the worked implementation trace.
@@ -504,6 +504,31 @@ deliberately refuses a residual-witness conclusion when no solved status is
 available. The federation does not pretend that this generic refusal behavior
 reproduces or certifies the continuation experiment. Context packets expose
 the record under `numerical_pathologies` with no package execution link.
+
+## Seventeenth trace: exact coupled-corridor lowering has a declared boundary
+
+`COUPLED-CORRIDOR-001`, `COUPLED-CORRIDOR-002`, and `PSK-000017` expose the
+first structured `scope-boundary`. The established result is deliberately
+narrow: two reciprocal fixed-linear scalar series sections with a nonsingular
+joint impedance admit an exact six-edge weighted-lattice realization of the
+four-terminal equation, with recovery of the two source currents. The
+executable witness also checks orientation covariance, signed generated
+weights, per-unit round trips, and refusal of inverse-based lowering for a
+singular joint primitive.
+
+The boundary record makes the adjacent non-results machine-readable. The
+generated cross edges are equation objects rather than conductors or galvanic
+connections, and the scalar proof does not automatically cover block-valued or
+full-pi factors, physical limits, states, protection, measurements, feasible
+decisions, or objectives. Extending the result requires an appropriate block
+or tableau derivation plus separate recovery and study-preservation evidence.
+
+The witness is a book experiment and has no BMOPFTools counterpart. Its
+federated execution status is therefore `not_applicable`, while the existing
+mutual-coupling misconception makes `PSK-000017` mandatory for all three
+audiences. Context packets expose the structured record under
+`scope_boundaries`; they do not present the result as a counterexample or
+invent an executable package link.
 
 ## What generalizes
 

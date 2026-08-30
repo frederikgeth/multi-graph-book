@@ -184,6 +184,28 @@
       },
       "additionalProperties": false
     },
+    "scope_boundary": {
+      "type": "object",
+      "required": [
+        "established_within",
+        "boundary_conditions",
+        "outside_scope",
+        "unsafe_extensions",
+        "required_evidence",
+        "reproducer_commands",
+        "review_status"
+      ],
+      "properties": {
+        "established_within": {"type": "string", "minLength": 1},
+        "boundary_conditions": {"$ref": "#/$defs/uniqueStrings"},
+        "outside_scope": {"$ref": "#/$defs/uniqueStrings"},
+        "unsafe_extensions": {"$ref": "#/$defs/uniqueStrings"},
+        "required_evidence": {"$ref": "#/$defs/uniqueStrings"},
+        "reproducer_commands": {"$ref": "#/$defs/uniqueStrings"},
+        "review_status": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
     "source": {
       "type": "object",
       "required": ["repository", "path", "anchor", "sha256"],
@@ -208,6 +230,11 @@
       "if": {"properties": {"kind": {"const": "numerical-pathology"}}},
       "then": {"required": ["numerical_pathology"]},
       "else": {"not": {"required": ["numerical_pathology"]}}
+    },
+    {
+      "if": {"properties": {"kind": {"const": "scope-boundary"}}},
+      "then": {"required": ["scope_boundary"]},
+      "else": {"not": {"required": ["scope_boundary"]}}
     }
   ],
   "$defs": {

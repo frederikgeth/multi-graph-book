@@ -687,3 +687,65 @@ contract_ids = []
 finding_codes = []
 related_finding_codes = []
 fixture_ids = []
+
+[[knowledge]]
+id = "PSK-000017"
+kind = "scope-boundary"
+title = "The coupled-corridor lattice is exact only within its declared scalar series domain"
+scientific_statement = "The six-edge weighted-lattice realization of a two-section coupled corridor is exact for the declared fixed-linear reciprocal scalar series terminal equation and source-current recovery when the joint impedance is nonsingular; that exactness does not extend by itself to physical asset identity, galvanic topology, shunts, block-valued conductors, singular primitives, limits, states, protection, or optimization decisions."
+scope = "Two identified scalar series sections on four retained terminal-voltage coordinates, a fixed reciprocal nonsingular 2-by-2 joint impedance, declared orientation, a target library admitting signed complex weights, no shunts or dynamics, and the equation/recovery queries checked by COUPLED-CORRIDOR-002."
+evidence_status = "established_result"
+does_not_establish = [
+  "The six generated lattice edges are physical line assets or galvanic connections.",
+  "The scalar derivation applies unchanged to multiconductor block, full-pi, singular, dynamic, or state-dependent coupled factors.",
+  "The lowering preserves line limits, outages, protection quantities, measurements, feasible decisions, or objectives.",
+  "The witness reproduces the cited Australian multi-voltage corridor measurements or numerical study results.",
+]
+
+[knowledge.scope_boundary]
+established_within = "Exact equality of the declared four-terminal fixed-linear scalar nodal stamp, together with recovery of the two source section currents and covariance under the tested orientation reversal."
+boundary_conditions = [
+  "The joint 2-by-2 impedance is reciprocal and nonsingular.",
+  "Both source sections are scalar, fixed-linear, series-only relations with fixed terminal orientations.",
+  "All four terminal-voltage coordinates are retained and the target admits signed complex edge weights.",
+  "Exactness is requested only for the terminal equation and declared source-current recovery map.",
+]
+outside_scope = [
+  "Multiconductor block primitives, full-pi shunts, singular tableau formulations, nonlinearities, controls, and dynamics.",
+  "Physical asset, galvanic-connectivity, outage-state, limit, measurement, protection, feasible-set, and objective interpretations of generated edges.",
+  "Partial-overlap import round trips and reproduction of the cited field-study numerical results.",
+]
+unsafe_extensions = [
+  "Storing generated cross edges as canonical line inventory or attaching equipment limits to them.",
+  "Using equation identity as evidence of OPF, protection, topology, or state equivalence.",
+  "Applying inverse-based lowering when the joint primitive is singular or when required shunt/block structure has not been represented.",
+]
+required_evidence = [
+  "Derive and test the appropriate block or tableau relation for any expanded factor class.",
+  "Declare source-to-target recovery, provenance, state, limit, protection, decision, and objective obligations separately.",
+  "Use a source-backed physical fixture and independent review before interpreting generated relations as a field-model replacement.",
+]
+reproducer_commands = [
+  "julia --startup-file=no --project=experiments experiments/run_coupled_corridor_lattice.jl",
+  "julia --startup-file=no --project=experiments experiments/test/coupled_corridor_lattice.jl",
+]
+review_status = "Symbolically derived and executable in the repository with literature precedent; self-checked, not independently proof-reviewed, and not a reproduction of the cited field studies."
+
+[knowledge.book]
+claim_ids = ["COUPLED-CORRIDOR-001", "COUPLED-CORRIDOR-002"]
+misconception_ids = ["mutual-coupling-is-an-ordinary-parallel-network"]
+certificate_ids = []
+counterexample_ids = []
+artifact_paths = ["experiments/generated/coupled-corridor-lattice-witness.json"]
+source_paths = [
+  "docs/src/cases/coupled-multivoltage-corridor.md",
+  "experiments/transformations/CoupledCorridorLatticeWitness.jl",
+  "experiments/test/coupled_corridor_lattice.jl",
+]
+
+[knowledge.executable]
+implementation_status = "not_applicable"
+contract_ids = []
+finding_codes = []
+related_finding_codes = []
+fixture_ids = []

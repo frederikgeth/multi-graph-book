@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `bfe77d3f0abe2beb3bdcbefda9226271cf204bbdfef7dcab2da4fcaa9404b11e`<br>
+**Corpus hash:** `19039725fc0807448d6ff451c5bd0191b01e78e7ddecb1c2c84a36f56f5398d9`<br>
 **Cases:** 66
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -17,7 +17,7 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
 | Open-corpus lexical evidence recall@5 | 24.4% | diagnostic |
-| Open-corpus lexical evidence recall@10 | 32.7% | diagnostic |
+| Open-corpus lexical evidence recall@10 | 32.4% | diagnostic |
 | Open-corpus complete evidence@10 | 0.0% | diagnostic |
 | Evidence-only lexical recall@5 | 34.0% | diagnostic |
 | Evidence-only lexical recall@10 | 43.0% | diagnostic |
@@ -44,8 +44,8 @@ evidence sets, so the effective target count is nine rather than 27 independent 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `lexical` | 33.4% | 44.9% | 0.0% | 0/33 | 5/33 | 0.200 |
-| `char_tfidf` | 36.2% | 43.9% | 0.0% | 0/33 | 6/33 | 0.225 |
-| `hybrid` | 38.0% | 46.6% | 0.0% | 0/33 | 5/33 | 0.219 |
+| `char_tfidf` | 36.2% | 43.9% | 0.0% | 0/33 | 6/33 | 0.224 |
+| `hybrid` | 37.4% | 46.6% | 0.0% | 0/33 | 5/33 | 0.218 |
 | `graph` | 38.4% | 57.7% | 21.2% | 7/33 | 4/33 | 0.251 |
 
 Held-out contract-router firing: **25/33 (75.8%)**; release floor: **66.7%**.

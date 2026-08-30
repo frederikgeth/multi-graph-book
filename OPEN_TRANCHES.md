@@ -16,7 +16,7 @@ The authority for repository ownership and dependency direction is
 |---|---|---|---|
 | 1. Execution interface | Core complete | Two curated contract adapters plus parse/intake, case analysis, supplied-result verification, offline Finding explanation, and a six-tool read-only MCP adapter over the same envelopes | Promote another contract only when its transport mapping and evidence justify it |
 | 2. Documentation and recipes | Core complete | Assistant guide, `llms.txt`, two scientific-contract recipes, and tutorial-derived parse, analysis, verification, and Finding-explanation recipes | Keep examples synchronized; solving remains outside this transport slice |
-| 3. Negative-knowledge taxonomy | In progress | Fourteen executable links plus book-only structured negative-result and numerical-pathology records | Add the first explicit scope-boundary record |
+| 3. Negative-knowledge taxonomy | In progress | Fourteen executable links plus book-only structured negative-result, numerical-pathology, and scope-boundary records | Add the first structured open-question record |
 | 4. Property-based testing | Queued | Deterministic metamorphic tests and minimized fixtures | Define the generator domain and seed record |
 | 5. Research/decision log | Queued | Decisions currently recorded in architecture and handover prose | Add the lightweight decision-log format |
 | 6. Agent benchmark | Deferred | Deterministic retrieval evaluation exists | Start after the execution surface stabilizes |
@@ -118,8 +118,11 @@ BMOPFTools contract, Finding, or fixture is invented. `PSK-000016` adds the
 first `numerical-pathology`: the independently reproduced load-continuation
 iteration boundary is separated from unproven infeasibility, saddle-node, and
 load-model-ranking conclusions. It is likewise book-owned and routed through
-three audience contracts. The next record should exercise an explicit
-`scope-boundary` class.
+three audience contracts. `PSK-000017` adds the first `scope-boundary`, making
+the exact scalar coupled-corridor lattice domain and its unestablished physical
+and decision extensions separately retrievable through the existing
+mutual-coupling audience cases. The next record should exercise an explicit
+`open-question` class.
 
 Scope:
 
@@ -215,7 +218,7 @@ These items are release-quality follow-ups rather than implementation blockers:
 
 ## Suggested order
 
-1. Add a scientific scope-boundary record; continue
+1. Add a structured open-question record; continue
    promoting executable contracts only when their mappings and evidence are
    unambiguous.
 2. Property-based testing and minimized counterexamples.

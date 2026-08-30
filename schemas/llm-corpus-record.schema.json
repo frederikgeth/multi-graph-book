@@ -52,7 +52,8 @@
     "book": {"type": "object"},
     "executable": {"type": "object"},
     "negative_result": {"type": "object"},
-    "numerical_pathology": {"type": "object"}
+    "numerical_pathology": {"type": "object"},
+    "scope_boundary": {"type": "object"}
   },
   "allOf": [
     {

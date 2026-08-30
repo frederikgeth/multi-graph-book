@@ -17,8 +17,8 @@
     "source_objects": 22,
     "view_maps": 7,
     "local_links": 623,
-    "llm_corpus_records": 782,
-    "llm_section_records": 639,
+    "llm_corpus_records": 784,
+    "llm_section_records": 640,
     "llm_claim_bundles": 109,
     "llm_concept_bundles": 18,
     "llm_misconception_contracts": 22,
@@ -244,7 +244,7 @@
     },
     {
       "path": "ROADMAP.md",
-      "sha256": "e9465c59252e3403194943d2a006b9c820109573e78ef391040bda1f7c8dabd1"
+      "sha256": "2472b944804e2d1eaf9dd39470ce196c054b721e529388de36ff7f4eb233f1c3"
     },
     {
       "path": "claims/claims.toml",
@@ -1936,7 +1936,7 @@
     },
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
-      "sha256": "522ef461539344ae30d0ba6b288bed10cb48d02f06fcf5bc5e850973b542d6ae"
+      "sha256": "124558916ca3601355e5985c515d3d2b97a9d2af1c48d58667aeb9b709b30465"
     },
     {
       "path": "docs/src/reference/knowledge-base-index.md",
@@ -1960,11 +1960,11 @@
     },
     {
       "path": "docs/src/start/chatgpt-access.md",
-      "sha256": "f483582d443048b64127cd98770e43df695b0f0d9c72cac8ddf76a5075936c15"
+      "sha256": "821c02eec38691a174f9f1a3542d0a006f69a3240e8bd3721514750b1caabc8c"
     },
     {
       "path": "docs/src/start/claude-access.md",
-      "sha256": "09328493dee51be944bc7a1bc16bf3f0f7a2b9b2d1a3ec3c55c214338525a6d7"
+      "sha256": "d0206f1b38b7d19b534c47e79bd10a249cf23c83c6cfb03710ce35f553dfa1c2"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
@@ -3344,7 +3344,7 @@
     },
     {
       "path": "llm/README.md",
-      "sha256": "d630f6215b7e210f48d542cade0ddeffbc61d67e90603799b923c6d76ec03994"
+      "sha256": "f616afe9d8c48bf062e0e5a3a96963a54a32b6ca5427e09012da11ce4dac04a2"
     },
     {
       "path": "llm/access-fixtures.toml",
@@ -3360,11 +3360,11 @@
     },
     {
       "path": "llm/generated/access-fixtures.jsonl",
-      "sha256": "027c16cdf187874dcb7de289ebb1a9769e323c34cd701baa45c78f7fd0c7db34"
+      "sha256": "49b42d7ed79fc366ed30027df77268d87a4cd5576d9ce063e5137df18f960eed"
     },
     {
       "path": "llm/generated/adversarial-evaluation.json",
-      "sha256": "f1da874180ccf8d5e54876276c3b2d93d9404f471058e0ac44ffd572a1df03fc"
+      "sha256": "acee5ee5dfacb6ebf9683274aed8449d140c3e6cb4623e1f2baca3aed58251c9"
     },
     {
       "path": "llm/generated/adversarial-evaluation.md",
@@ -3372,19 +3372,19 @@
     },
     {
       "path": "llm/generated/corpus-manifest.json",
-      "sha256": "79de73c127d6cefe96ca94053f0486880cfdc46a8553514daac323ab21ef750c"
+      "sha256": "28a1f314ff6cce9778760d62794d0947bd76b969ac3a87d836ec204a6dc7d629"
     },
     {
       "path": "llm/generated/corpus.jsonl",
-      "sha256": "bfe77d3f0abe2beb3bdcbefda9226271cf204bbdfef7dcab2da4fcaa9404b11e"
+      "sha256": "19039725fc0807448d6ff451c5bd0191b01e78e7ddecb1c2c84a36f56f5398d9"
     },
     {
       "path": "llm/generated/neural-retrieval-evaluation.json",
-      "sha256": "44f4b497be1d0b065f462b928c75c28356bfc322dc2c1a66d4670a294ccdebfd"
+      "sha256": "6a74dc6374a2fe60bcbef23c941daa8f80bbfeb82579c915236fba6acdeb7257"
     },
     {
       "path": "llm/generated/neural-retrieval-evaluation.md",
-      "sha256": "3e9b1fb1690370914cf384591f61bcaf64c3ea89a635eab9a9c9eb3261b2270f"
+      "sha256": "f7426c56be1c6e95b2ded4cc71d569983ec7192f2e757b6fa9a9d8b5a92deaae"
     },
     {
       "path": "llm/generated/neural-retrieval-negative-result.json",
@@ -3392,11 +3392,11 @@
     },
     {
       "path": "llm/generated/retrieval-evaluation.json",
-      "sha256": "5bcdd6c6b9a7b2e445b09dab145678619f0862e652bb542c8785f6d7f836a4d7"
+      "sha256": "c83b2765830996d2e707c24f4ab00d1707e276aecd42e7bc7dae66ac41bb0630"
     },
     {
       "path": "llm/generated/retrieval-evaluation.md",
-      "sha256": "a4c5f3a86dda6b7255983128d14bb92d7e1559322ec31d98750d7caedb9d0650"
+      "sha256": "8614835c4ead2f676d046c948b76572099943094acd4b40d12f86c77e424bbe9"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -3588,11 +3588,11 @@
     },
     {
       "path": "schemas/llm-context-packet.schema.json",
-      "sha256": "d7a5e5aeb1ae4a0b671359edb44c262107d4cb2e1c8a96105f5d54ca6b11cf65"
+      "sha256": "e185bc07dcf7cb1003d47a7abbc7383fb16bae25d3ca95d82fac50ed61633736"
     },
     {
       "path": "schemas/llm-corpus-record.schema.json",
-      "sha256": "0e937af2f490287b8cb9fe9ce19edd9847037d3282fb35dcf715023d20c212fc"
+      "sha256": "b89d0dec71d708577d6ce4ca1a8ac285e63bffdb8c2d9a5c66d8a46997086e5d"
     },
     {
       "path": "schemas/llm-evaluation-case.schema.json",
@@ -3604,7 +3604,7 @@
     },
     {
       "path": "schemas/power-system-knowledge.schema.json",
-      "sha256": "29a4e62aa20c20bd04dd840a4dadecfc7671469876cce10fc9bf1dea4c9b5dbe"
+      "sha256": "834da1187a30df66d92e86f41496e2e54695d6ab71ed50a2a839915b050a4cd5"
     },
     {
       "path": "schemas/transformation-certificate.schema.json",
@@ -3656,11 +3656,11 @@
     },
     {
       "path": "scripts/check_llm_accessibility.py",
-      "sha256": "4eb2d18bc1f3e10bda7a0548442ca7553c67ac6eb2177b7fcc9b6107b4516f58"
+      "sha256": "e577b2cc4f26de248d8c85269e4a6bb977aa7b6e500372104d88c0f4a1b40a8c"
     },
     {
       "path": "scripts/check_llm_answer_contract.py",
-      "sha256": "0966e6c0aeba9a344e1e684db0fff4fd4245949051463ea98cf921acae4197db"
+      "sha256": "79d7076aa89640cd727a3943c4f6a0e15708409a993da3449a186b84eca59c8f"
     },
     {
       "path": "scripts/check_llm_reproducibility.py",
@@ -3748,7 +3748,7 @@
     },
     {
       "path": "scripts/generate_scientific_knowledge.py",
-      "sha256": "f023fd30a80d0a24ad8326ae4e3802fe23b9043d7aaf69a7fcaa814d1c4bbc5a"
+      "sha256": "e35d0893d3c102469a92d11f1b46031122b591809b76c78a96fd78299a58b978"
     },
     {
       "path": "scripts/generate_second_coding_template.py",
@@ -3768,11 +3768,11 @@
     },
     {
       "path": "scripts/llm_retrieval.py",
-      "sha256": "6d28b80d5a353227165bb90ddf3fadda02b0c8a16d76e551b0224339d87c2475"
+      "sha256": "534511d2b74a27dd3b131e80e46b892f92c2a8430fbe2c92f3077a6d6f398af4"
     },
     {
       "path": "scripts/llm_service.py",
-      "sha256": "fbf69497b07a72593afbfce48004200c70d3c254d7db626f059ce0a35164ccd0"
+      "sha256": "2afda7a2f0d91f9c7792272fa336819e7f8420f03bf531755a4313478489609e"
     },
     {
       "path": "scripts/mcp_llm_server.py",

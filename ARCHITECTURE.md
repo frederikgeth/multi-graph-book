@@ -145,6 +145,13 @@ invalid inferences, and the checks needed to discriminate numerical behavior
 from a scientific conclusion. Independent reproduction of the same algorithm
 strengthens the observation but does not erase that boundary.
 
+Structured scope-boundary records state both sides of a valid result: the
+domain and query for which evidence exists, and the nearby extensions for
+which it does not. A boundary record may package an established theorem, but
+it must not silently promote generated equation objects into physical assets
+or extend one preservation dimension to limits, states, protection, decisions,
+or objectives without separate evidence.
+
 BMOPFTools maintains a small executable registry, not a scientific knowledge
 database. It records executable contract IDs, entry points, applicable object
 types, finding codes, fixture IDs, output shape, and related PSK IDs. Runtime

@@ -145,11 +145,18 @@ needed to discriminate those interpretations. The experiment remains
 book-owned rather than manufacturing a package contract from BMOPFTools'
 separate generic solver-status refusal behavior.
 
+`PSK-000017` now exercises `scope-boundary` around the coupled-corridor lattice
+result. It preserves the established reciprocal, nonsingular, fixed-linear
+scalar series theorem while making block/full-pi, singular, asset, galvanic,
+limit, state, protection, and decision extensions explicitly unestablished.
+The existing three-audience mutual-coupling route now retrieves that boundary
+without adding a duplicate misconception or an artificial package contract.
+
 The schema and federated pair support an explicit `not_applicable` execution
 relationship. This prevents the taxonomy from inventing a package contract
 when evidence belongs entirely to the book while preserving a stable,
-source-hash-bound PSK route. The next subtype to exercise should be a scientific
-`scope-boundary` record.
+source-hash-bound PSK route. The next subtype to exercise should be a structured
+`open-question` record.
 
 ### Product identity and editorial stance
 

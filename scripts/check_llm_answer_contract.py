@@ -255,6 +255,21 @@ def main() -> int:
                 validation_errors.append("numerical pathology is incorrectly presented as a counterexample or negative result")
             if packet["executable_checks"] or packet["implementation_examples"]:
                 validation_errors.append("book-only numerical pathology invents a BMOPFTools execution link")
+        if case["misconception_id"] == "mutual-coupling-is-an-ordinary-parallel-network":
+            packet = response["packet"]
+            if "knowledge:PSK-000017" not in observed:
+                validation_errors.append("coupled-corridor route omits mandatory PSK-000017")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000017"]:
+                validation_errors.append("coupled-corridor scientific basis differs from PSK-000017")
+            boundaries = packet["scope_boundaries"]
+            if len(boundaries) != 1 or not boundaries[0].get("required_evidence"):
+                validation_errors.append("coupled-corridor route omits the structured scope boundary")
+            if "## Scope boundaries" not in response["markdown"]:
+                validation_errors.append("coupled-corridor Markdown omits the scope-boundary section")
+            if packet["counterexamples"] or packet["negative_results"] or packet["numerical_pathologies"]:
+                validation_errors.append("scope boundary is incorrectly presented as another negative-knowledge class")
+            if packet["executable_checks"] or packet["implementation_examples"]:
+                validation_errors.append("book-only coupled-corridor boundary invents a BMOPFTools execution link")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:
