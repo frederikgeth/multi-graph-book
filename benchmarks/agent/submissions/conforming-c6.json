@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1.0",
+  "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
+  "run_id": "CONFORMANCE-CORRECT-001",
+  "condition_id": "C6_NEGATIVE_KNOWLEDGE",
+  "system": {
+    "provider": "deterministic-fixture",
+    "model_id": "benchmark-harness",
+    "model_revision": "0.1.0"
+  },
+  "provenance": {
+    "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
+    "book_llm_corpus_sha256": "d1f1a1d8e076b28616ba90561f35bdcccd05ba738d09d376f708a378c7a53797",
+    "bmopftools_executable_corpus_sha256": "87aa50c554fb451d82e2e9744fd822165b957332e4c7139686e6dc85e787fcee"
+  },
+  "cases": [
+    {
+      "case_id": "ABENCH-PAR-001-UNSAFE",
+      "action": "reject",
+      "contract_status": "failed",
+      "classification": "outer_relaxation",
+      "knowledge_ids": ["PSK-000001"],
+      "finding_codes": ["W.CONTRACT.PARALLEL_MEMBER_LIMIT_LOSS"],
+      "qualification_codes": [
+        "TERMINAL_RELATION_IS_NOT_DECISION_EQUIVALENCE",
+        "SCALAR_SERIES_ONLY_SCOPE",
+        "MEMBER_IDENTITY_REMAINS_UNASSESSED"
+      ],
+      "witness": {
+        "voltage_drop_V": 15.0,
+        "aggregate_current_A": 165.0,
+        "source_feasible": false,
+        "target_feasible": true
+      }
+    },
+    {
+      "case_id": "ABENCH-PAR-002-BOUNDARY",
+      "action": "abstain",
+      "contract_status": "inapplicable",
+      "classification": "outside_declared_domain",
+      "knowledge_ids": ["PSK-000001"],
+      "finding_codes": ["I.CONTRACT.NOT_APPLICABLE"],
+      "qualification_codes": [
+        "OUTSIDE_SCALAR_SERIES_ONLY_SCOPE",
+        "NO_PRESERVATION_CONCLUSION"
+      ]
+    }
+  ]
+}

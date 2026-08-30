@@ -19,7 +19,7 @@ The authority for repository ownership and dependency direction is
 | 3. Negative-knowledge taxonomy | Core complete | Fourteen executable links plus book-only structured negative-result, numerical-pathology, scope-boundary, and open-question records | Add further records only for evidence-backed high-risk questions |
 | 4. Property-based testing | Core complete | Seeded terminal-permutation and unit/base serialization suites with deterministic replay, minimization, classification, and federated pins | Add further properties only where an existing contract has a clear generator and oracle |
 | 5. Research/decision log | Core complete | Stable `DLOG-*` format, six seeded decisions, contributor guidance, CI/release validation, and reader/LLM access | Add or supersede entries when consequential choices are made |
-| 6. Agent benchmark | Queued | Deterministic retrieval evaluation and stable execution surface exist | Specify the first scientifically constrained benchmark slice |
+| 6. Agent benchmark | Active; substrate complete | Source-bound parallel-member slice with seven cumulative conditions, invalid-assumption and abstention cases, structured scoring, and tested conformance fixtures | Pre-register and run a controlled pilot; no agent effect is claimed yet |
 | 7. Review maturation | Ongoing external dependency | Internal gates and review packet exist | Independent review and claim reclassification |
 
 Update this table and the two detailed status paragraphs below whenever a
@@ -225,8 +225,15 @@ claims ledger.
 
 ## 6. Scientifically constrained agent benchmark
 
-After the execution and retrieval surfaces stabilize, evaluate whether explicit
-positive and negative domain knowledge improves coding-agent reliability.
+First transparent substrate delivered. `ABENCH-PARALLEL-LIMITS-001` uses the
+settled `PSK-000001` vertical slice to test two distinct outcomes: rejecting a
+summed-rating outer relaxation and abstaining when the scalar contract is
+generalized to an unspecified multiconductor, shunted model. The canonical
+specification, task and submission schemas, scorer, source-bound manifest, and
+reader-facing protocol are committed under `benchmarks/agent/`, `schemas/`,
+and [`agent-benchmark.md`](docs/src/literature/agent-benchmark.md).
+
+Seven cumulative conditions preserve the planned comparison ladder:
 
 Compare progressively richer conditions, such as:
 
@@ -243,8 +250,23 @@ LLM alone
 Measure code, schema, model-semantic, physical, numerical, scientific-inference,
 reproducibility, invalid-assumption detection, and abstention performance.
 
+The first slice scores eight of these dimensions and explicitly marks
+`code_correctness` unscored because it is a structured review task rather than
+an isolated patch task. Three synthetic submissions test the scorer: one
+conforming response passes, while an unsafe approval and an out-of-domain
+overclaim fail. Their generated report is labelled
+`harness_conformance_only_not_agent_results`; it does not compare models or
+conditions.
+
 The benchmark must preserve the deterministic retrieval baseline and report
 qualification/counterexample recall, not only top-k retrieval scores.
+
+The next open item is a controlled pilot. Before any run, pre-register model
+revisions, sampling and tool settings, exact condition exposure, repetitions,
+task order, time/tool budgets, exclusions, and aggregation. Start with at least
+`C0_MODEL_ONLY`, `C1_REPOSITORY_DOCS`, `C5_EXECUTABLE_CONTRACTS`, and
+`C6_NEGATIVE_KNOWLEDGE`; retain per-dimension and abstention results rather than
+publishing one accuracy number.
 
 ## 7. Review and evidence maturation
 
@@ -259,9 +281,9 @@ These items are release-quality follow-ups rather than implementation blockers:
 
 ## Suggested order
 
-1. Specify and deliver the first scientifically constrained agent-benchmark
-   slice; continue promoting executable contracts or properties only when
-   their mappings and evidence are unambiguous.
+1. Pre-register and run the controlled agent-benchmark pilot; continue
+   promoting executable contracts or properties only when their mappings and
+   evidence are unambiguous.
 2. External review and evidence maturation in parallel as reviewers become
    available.
 

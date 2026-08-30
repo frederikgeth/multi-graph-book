@@ -201,8 +201,23 @@ reader-facing log uses stable `DLOG-*` entries, retains rejected approaches,
 states its boundary from the scientific claims ledger, and is checked in both
 documentation CI and the release-candidate gate. Its first six entries capture
 the cross-repository decisions already exercised by the implementation rather
-than manufacturing new scientific claims. The next implementation milestone is
-the first scientifically constrained agent-benchmark slice.
+than manufacturing new scientific claims.
+
+The first scientifically constrained agent-benchmark substrate is now
+delivered. `ABENCH-PARALLEL-LIMITS-001` freezes seven cumulative resource
+conditions and two transparent `PSK-000001` cases: invalid-assumption detection
+for the summed-rating outer relaxation, and abstention outside the scalar
+series-only contract. Its schemas and scorer distinguish eight scored
+dimensions, preserve code correctness as explicitly unscored, and bind the
+book corpus, federated pair, BMOPFTools executable export, recipe, and minimized
+fixture. Synthetic conformance responses prove the scorer accepts the intended
+qualified response and rejects two unsafe classes; they are labelled as harness
+tests, not agent observations.
+
+The next implementation milestone is a pre-registered controlled pilot over at
+least the model-only, repository-documentation, executable-contract, and
+negative-knowledge conditions. No comparative agent result or condition effect
+exists until those source-bound run artifacts are collected.
 
 ### Product identity and editorial stance
 

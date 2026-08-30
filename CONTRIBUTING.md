@@ -129,6 +129,26 @@ python3 scripts/check_development_log.py
 before submitting a log change. Scientific statements still follow the claims,
 PSK, citation, and evidence-review process; a DLOG entry cannot reclassify them.
 
+## Agent benchmark records
+
+Benchmark specifications and measured agent runs are different evidence
+objects. A task or synthetic scorer fixture must not be described as an agent
+observation. Keep the benchmark status at `substrate_only_no_agent_runs` until
+controlled run artifacts exist, and preserve the exact condition, model
+revision, corpus, federated pair, package export, tool settings, and scoring
+version for every run.
+
+For the first slice, run both the repository-local and live sibling checks:
+
+```sh
+python3 scripts/check_agent_benchmark.py --check
+python3 scripts/check_agent_benchmark.py --check --bmopf-root ../BMOPFTools.jl
+```
+
+BMOPFTools owns executable oracle behavior. Benchmark code may invoke and pin
+its contracts, recipes, fixtures, and Findings, but must not duplicate or
+silently reinterpret their runtime semantics.
+
 Generated fixtures, certificates, view source maps, and local Markdown links
 are checked with:
 

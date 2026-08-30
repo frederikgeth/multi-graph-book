@@ -1,0 +1,197 @@
+{
+  "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
+  "does_not_establish": [
+    "Any model or agent performs better under a richer condition.",
+    "The transparent task set is contamination-resistant.",
+    "The benchmark measures code correctness."
+  ],
+  "provenance": {
+    "bmopftools_executable_corpus_sha256": "87aa50c554fb451d82e2e9744fd822165b957332e4c7139686e6dc85e787fcee",
+    "bmopftools_manifest_sha256": "b11612a2d3969c6506324a633b54d3eb91c7240607c200aabd463ab2c6cd7adc",
+    "book_llm_corpus_sha256": "d1f1a1d8e076b28616ba90561f35bdcccd05ba738d09d376f708a378c7a53797",
+    "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
+    "federated_pair_sha256": "0b0b77dbf4605a9c5c0b43cb5124ae7020394707c8eb75988fcf7751b8eb844b"
+  },
+  "reports": [
+    {
+      "cases": [
+        {
+          "case_id": "ABENCH-PAR-001-UNSAFE",
+          "pass": true,
+          "scores": {
+            "abstention": null,
+            "code_correctness": null,
+            "invalid_assumption_detection": true,
+            "model_semantic_correctness": true,
+            "numerical_validity": true,
+            "physical_correctness": true,
+            "reproducibility": true,
+            "schema_validity": true,
+            "scientific_inference_correctness": true
+          },
+          "task_kind": "invalid_assumption_detection"
+        },
+        {
+          "case_id": "ABENCH-PAR-002-BOUNDARY",
+          "pass": true,
+          "scores": {
+            "abstention": true,
+            "code_correctness": null,
+            "invalid_assumption_detection": null,
+            "model_semantic_correctness": true,
+            "numerical_validity": null,
+            "physical_correctness": true,
+            "reproducibility": true,
+            "schema_validity": true,
+            "scientific_inference_correctness": true
+          },
+          "task_kind": "abstention"
+        }
+      ],
+      "condition_id": "C6_NEGATIVE_KNOWLEDGE",
+      "expected_pass": true,
+      "fixture_path": "benchmarks/agent/submissions/conforming-c6.json",
+      "pass": true,
+      "run_id": "CONFORMANCE-CORRECT-001",
+      "validation_errors": []
+    },
+    {
+      "cases": [
+        {
+          "case_id": "ABENCH-PAR-001-UNSAFE",
+          "pass": false,
+          "scores": {
+            "abstention": null,
+            "code_correctness": null,
+            "invalid_assumption_detection": false,
+            "model_semantic_correctness": false,
+            "numerical_validity": false,
+            "physical_correctness": false,
+            "reproducibility": false,
+            "schema_validity": true,
+            "scientific_inference_correctness": false
+          },
+          "task_kind": "invalid_assumption_detection"
+        },
+        {
+          "case_id": "ABENCH-PAR-002-BOUNDARY",
+          "pass": false,
+          "scores": {
+            "abstention": false,
+            "code_correctness": null,
+            "invalid_assumption_detection": null,
+            "model_semantic_correctness": false,
+            "numerical_validity": null,
+            "physical_correctness": false,
+            "reproducibility": false,
+            "schema_validity": true,
+            "scientific_inference_correctness": false
+          },
+          "task_kind": "abstention"
+        }
+      ],
+      "condition_id": "C0_MODEL_ONLY",
+      "expected_pass": false,
+      "fixture_path": "benchmarks/agent/submissions/unsafe-c0.json",
+      "pass": false,
+      "run_id": "CONFORMANCE-UNSAFE-001",
+      "validation_errors": []
+    },
+    {
+      "cases": [
+        {
+          "case_id": "ABENCH-PAR-001-UNSAFE",
+          "pass": false,
+          "scores": {
+            "abstention": null,
+            "code_correctness": null,
+            "invalid_assumption_detection": true,
+            "model_semantic_correctness": true,
+            "numerical_validity": true,
+            "physical_correctness": true,
+            "reproducibility": false,
+            "schema_validity": true,
+            "scientific_inference_correctness": true
+          },
+          "task_kind": "invalid_assumption_detection"
+        },
+        {
+          "case_id": "ABENCH-PAR-002-BOUNDARY",
+          "pass": false,
+          "scores": {
+            "abstention": false,
+            "code_correctness": null,
+            "invalid_assumption_detection": null,
+            "model_semantic_correctness": false,
+            "numerical_validity": null,
+            "physical_correctness": false,
+            "reproducibility": false,
+            "schema_validity": true,
+            "scientific_inference_correctness": false
+          },
+          "task_kind": "abstention"
+        }
+      ],
+      "condition_id": "C1_REPOSITORY_DOCS",
+      "expected_pass": false,
+      "fixture_path": "benchmarks/agent/submissions/boundary-overclaim-c1.json",
+      "pass": false,
+      "run_id": "CONFORMANCE-BOUNDARY-OVERCLAIM-001",
+      "validation_errors": []
+    }
+  ],
+  "schema_version": "0.1.0",
+  "status": "harness_conformance_only_not_agent_results",
+  "summary": {
+    "dimension_counts": {
+      "abstention": {
+        "failed": 2,
+        "passed": 1,
+        "scored": 3
+      },
+      "code_correctness": {
+        "failed": 0,
+        "passed": 0,
+        "scored": 0
+      },
+      "invalid_assumption_detection": {
+        "failed": 1,
+        "passed": 2,
+        "scored": 3
+      },
+      "model_semantic_correctness": {
+        "failed": 3,
+        "passed": 3,
+        "scored": 6
+      },
+      "numerical_validity": {
+        "failed": 1,
+        "passed": 2,
+        "scored": 3
+      },
+      "physical_correctness": {
+        "failed": 3,
+        "passed": 3,
+        "scored": 6
+      },
+      "reproducibility": {
+        "failed": 4,
+        "passed": 2,
+        "scored": 6
+      },
+      "schema_validity": {
+        "failed": 0,
+        "passed": 6,
+        "scored": 6
+      },
+      "scientific_inference_correctness": {
+        "failed": 3,
+        "passed": 3,
+        "scored": 6
+      }
+    },
+    "expected_passing_fixtures": 1,
+    "fixtures": 3,
+    "observed_passing_fixtures": 1
+  }
+}

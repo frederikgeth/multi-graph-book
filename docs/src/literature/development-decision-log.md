@@ -290,3 +290,54 @@ an executable check.
 
 Add a BMOPFTools link only when concrete package behavior, an applicability
 boundary, stable diagnostics, and testable evidence genuinely exist.
+
+## DLOG-0007 — Establish the benchmark substrate before claiming agent effects
+
+- **Date:** 2026-08-30
+- **Status:** accepted
+- **Scope:** first scientifically constrained agent-benchmark slice
+
+### Question
+
+Should the first benchmark milestone immediately report model comparisons, or
+first freeze tasks, conditions, scoring, oracles, and provenance?
+
+### Options considered
+
+- run whichever hosted model is convenient and report an exploratory score;
+- defer all benchmark work until a full multi-model study is funded;
+- establish a transparent deterministic substrate and distinguish its
+  conformance fixtures from later controlled agent runs.
+
+### Decision
+
+Deliver the substrate first. The initial parallel-member slice records seven
+cumulative conditions, an invalid-assumption case, an abstention case,
+structured scoring, and live book/package source binding. Its status remains
+`substrate_only_no_agent_runs` until controlled runs are added.
+
+### Reason
+
+Without a frozen protocol, a model score cannot be separated from prompt,
+resource, tool, corpus, or scorer drift. Synthetic scorer fixtures are useful
+software evidence, but presenting them as agent observations would manufacture
+a research result.
+
+### Evidence
+
+`benchmarks/agent/parallel-member-limits-v1.json`, the two agent-benchmark JSON
+schemas, `scripts/check_agent_benchmark.py`, and its generated conformance
+report implement the chosen boundary against the pinned federated pair.
+
+### Known downside
+
+This milestone produces no answer to the comparative research question. The
+transparent oracle is also unsuitable for a contamination-resistant public
+leaderboard without additional held-out task governance.
+
+### Conditions for revisiting
+
+Advance to `pilot` only after pre-registering model revisions, sampling and
+tool settings, condition exposure, repetitions, exclusions, and resource
+budgets. Advance to `measured` only when actual run artifacts and aggregation
+rules are source-bound and independently auditable.

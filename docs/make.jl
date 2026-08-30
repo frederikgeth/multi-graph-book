@@ -210,6 +210,7 @@ const PAGES_HTML = [
     ],
     "Research record" => [
         "Development research and decision log" => "literature/development-decision-log.md",
+        "Scientifically constrained agent benchmark" => "literature/agent-benchmark.md",
         "Literature map" => "literature/literature-map.md",
         "Representation implementation record" => "literature/representation-implementation-record.md",
         "Review protocol and evidence status" => "literature/review-protocol-and-evidence-status.md",
@@ -304,6 +305,7 @@ const PAGES_PDF = [
     ],
     "Research record" => [
         "Development research and decision log" => "literature/development-decision-log.md",
+        "Scientifically constrained agent benchmark" => "literature/agent-benchmark.md",
         "Literature map" => "literature/literature-map.md",
         "Representation implementation record" => "literature/representation-implementation-record.md",
         "Review protocol and evidence status" => "literature/review-protocol-and-evidence-status.md",

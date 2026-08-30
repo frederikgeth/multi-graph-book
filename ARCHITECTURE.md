@@ -735,6 +735,15 @@ ordinary software design choices do not. Failed methods are retained when the
 question, setup, failure criterion, evidence, scope, and conditions for
 reconsideration are sufficiently specified.
 
+The book also owns scientifically constrained agent-benchmark specifications,
+condition definitions, run provenance, scoring rubrics, and measured results.
+BMOPFTools supplies package-owned executable oracles through its existing
+contracts, recipes, fixtures, and Findings; benchmark code must not copy or
+reinterpret those runtime semantics. A benchmark substrate, synthetic scorer
+fixture, pilot, and measured agent run are distinct evidence states. Only the
+latter two may contain observations from an actual agent, and no condition
+effect is claimed until controlled run artifacts exist.
+
 ## Change control and anti-goals
 
 Changes to repository ownership, dependency direction, PSK identity, context

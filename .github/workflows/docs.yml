@@ -73,6 +73,9 @@ jobs:
       - name: Check development research and decision log
         run: python3 scripts/check_development_log.py
 
+      - name: Check scientifically constrained agent benchmark
+        run: python3 scripts/check_agent_benchmark.py --check
+
       - name: Check generated artifacts and local links
         run: python3 scripts/check_artifacts.py
 

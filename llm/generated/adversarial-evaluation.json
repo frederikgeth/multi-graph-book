@@ -315,8 +315,8 @@
         "recall_at_10": 1.0,
         "top_10": [
           "claim:ARCH-SUPPORT-001",
-          "concept:graph-topology-adjacency",
           "claim:ARCH-VIEW-001",
+          "concept:graph-topology-adjacency",
           "claim:GRAPH-MATRIX-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
           "claim:GRAPH-MULTI-001",
@@ -333,13 +333,13 @@
           "concept:graph-topology-adjacency",
           "claim:ARCH-SUPPORT-001",
           "claim:GRAPH-MATRIX-001",
-          "claim:GRAPH-CYCLE-001",
           "claim:GRAPH-MULTI-001",
+          "claim:GRAPH-CYCLE-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
           "claim:ARCH-LENS-001",
           "claim:ARCH-LOWER-001",
-          "claim:PRACTICE-ARCH-001",
-          "claim:GRAPH-NPORT-001"
+          "claim:GRAPH-NPORT-001",
+          "claim:PRACTICE-ARCH-001"
         ]
       },
       "lexical": {
@@ -348,8 +348,8 @@
         "top_10": [
           "concept:graph-topology-adjacency",
           "claim:ARCH-SUPPORT-001",
-          "claim:GRAPH-CYCLE-001",
           "claim:ARCH-LOWER-001",
+          "claim:GRAPH-CYCLE-001",
           "claim:GRAPH-MATRIX-001",
           "claim:TR-GRAPH-ACTIVE-001",
           "claim:ARCH-LENS-001",
@@ -409,8 +409,8 @@
           "claim:TR-KRON-NEUTRAL-002",
           "claim:TR-KRON-NEUTRAL-003",
           "claim:TR-KRON-NEUTRAL-006",
-          "claim:TR-KRON-NEUTRAL-004",
-          "claim:TR-KRON-NEUTRAL-005"
+          "claim:TR-KRON-NEUTRAL-005",
+          "claim:TR-KRON-NEUTRAL-004"
         ]
       },
       "lexical": {
@@ -591,9 +591,9 @@
           "claim:TR-KRON-NEUTRAL-007",
           "claim:TR-KRON-NEUTRAL-005",
           "claim:TR-KRON-FIVE-001",
-          "claim:TR-KRON-NEUTRAL-004",
-          "claim:TR-KRON-002",
           "claim:TR-KRON-NEUTRAL-001",
+          "claim:TR-KRON-002",
+          "claim:TR-KRON-NEUTRAL-004",
           "claim:TR-KRON-NEUTRAL-003",
           "claim:TR-KRON-NEUTRAL-002",
           "claim:TR-KRON-NEUTRAL-006",
@@ -608,12 +608,12 @@
           "claim:TR-KRON-NEUTRAL-007",
           "claim:AU-CARSON-001",
           "claim:TR-KRON-FIVE-001",
-          "claim:TR-KRON-NEUTRAL-004",
           "claim:TR-KRON-NEUTRAL-001",
+          "claim:TR-KRON-NEUTRAL-004",
           "claim:NUMERICAL-004",
-          "claim:TR-KRON-NEUTRAL-003",
           "claim:TR-SER-003",
-          "claim:TR-KRON-NEUTRAL-002"
+          "concept:element-edge-relation",
+          "claim:TR-KRON-NEUTRAL-003"
         ]
       },
       "lexical": {
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "f343effcc9cb7e65dfc4748d47ed90bea8deb569556596511bd27025cd468e6a"
+    "corpus_sha256": "d1f1a1d8e076b28616ba90561f35bdcccd05ba738d09d376f708a378c7a53797"
   },
   "inputs": {
     "adversarial_cases": {

@@ -1,0 +1,75 @@
+{
+  "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
+  "benchmark_schema_sha256": "8a15e120e76586ae7b1aa1c9cc0abdc567fed439e08a1de413d57ac382b3aebf",
+  "bmopftools_sources": [
+    {
+      "path": "generated/executable-knowledge-manifest.json",
+      "sha256": "b11612a2d3969c6506324a633b54d3eb91c7240607c200aabd463ab2c6cd7adc"
+    },
+    {
+      "path": "recipes/parallel_member_limits/metadata.toml",
+      "sha256": "496d9b8b6407dfe8487572e20b9ed2707b1f4c4b2133429e99976772013175a0"
+    },
+    {
+      "path": "recipes/parallel_member_limits/recipe.jl",
+      "sha256": "4e4d38aaeb91094c14ed58421ed8e3c3905e44ee646b82b4747c23d2fe8fe4f9"
+    },
+    {
+      "path": "test/fixtures/negative/parallel-rating-outer-relaxation/source.json",
+      "sha256": "28c3c74235e12a6b0f7f2692ec17e4ab11c9f450351c596f3024b22d7c887940"
+    },
+    {
+      "path": "test/fixtures/negative/parallel-rating-outer-relaxation/transformed.json",
+      "sha256": "b98e114846b2a1caf0e552f4f2d5dfdd2ad8fd936ba13a03951e2a9b2f70c16e"
+    },
+    {
+      "path": "test/fixtures/negative/parallel-rating-outer-relaxation/expected.json",
+      "sha256": "ae8b8ecac21ac34c5aecd82f56d246230232185567c62bb9a8afd7e7199f765c"
+    }
+  ],
+  "conformance_status": "harness_conformance_only_not_agent_results",
+  "local_sources": [
+    {
+      "path": "benchmarks/agent/README.md",
+      "sha256": "3488d4e7afe0db4222030c8502e97774c949a79f885df30c85a65605e7c73a70"
+    },
+    {
+      "path": "benchmarks/agent/parallel-member-limits-v1.json",
+      "sha256": "bf85bfb289a0fb0f35bd27776ecab3b198d9d7f3ff0289e088d43ab082272cfc"
+    },
+    {
+      "path": "benchmarks/agent/submissions/conforming-c6.json",
+      "sha256": "39d70e87be3250320740f4520da3ad4936770b4e8ba6b7142369f0164bb1f326"
+    },
+    {
+      "path": "benchmarks/agent/submissions/unsafe-c0.json",
+      "sha256": "b63314b08c9d8452a1e5734a4f62a3683d6b63895646b8e1a3481ce2f69546c2"
+    },
+    {
+      "path": "benchmarks/agent/submissions/boundary-overclaim-c1.json",
+      "sha256": "48696c1ef56ac264ef9e2cc4e0a8a6abbf76aafce43d24058b6b006bb4908876"
+    },
+    {
+      "path": "schemas/agent-benchmark.schema.json",
+      "sha256": "8a15e120e76586ae7b1aa1c9cc0abdc567fed439e08a1de413d57ac382b3aebf"
+    },
+    {
+      "path": "schemas/agent-benchmark-submission.schema.json",
+      "sha256": "1113c195d04dff52e1db525f3ed840ef1300670fcd8687cd535c607312cdcf30"
+    },
+    {
+      "path": "scripts/check_agent_benchmark.py",
+      "sha256": "fd8f2b0c5a78dd30b65d9ef428d08e1205f8a80b2fa061167acc411f9c0b16f4"
+    }
+  ],
+  "provenance": {
+    "bmopftools_executable_corpus_sha256": "87aa50c554fb451d82e2e9744fd822165b957332e4c7139686e6dc85e787fcee",
+    "bmopftools_manifest_sha256": "b11612a2d3969c6506324a633b54d3eb91c7240607c200aabd463ab2c6cd7adc",
+    "book_llm_corpus_sha256": "d1f1a1d8e076b28616ba90561f35bdcccd05ba738d09d376f708a378c7a53797",
+    "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
+    "federated_pair_sha256": "0b0b77dbf4605a9c5c0b43cb5124ae7020394707c8eb75988fcf7751b8eb844b"
+  },
+  "schema_version": "0.1.0",
+  "status": "substrate_only_no_agent_runs",
+  "submission_schema_sha256": "1113c195d04dff52e1db525f3ed840ef1300670fcd8687cd535c607312cdcf30"
+}

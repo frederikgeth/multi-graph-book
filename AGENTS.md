@@ -28,3 +28,9 @@ python3 scripts/check_federated_knowledge.py --write --bmopf-root ../BMOPFTools.
 ```
 
 Review the generated diff and both source repositories before committing the new pair identity.
+
+When changing `benchmarks/agent/`, keep substrate, conformance-fixture, pilot,
+and measured-run evidence states distinct. Synthetic scorer fixtures are not
+agent results. Validate the benchmark locally and, when package-owned oracles
+are referenced, against the sibling BMOPFTools checkout; do not copy package
+contract semantics into book-owned scoring code.
