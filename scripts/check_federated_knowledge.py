@@ -204,7 +204,7 @@ def validate_committed(pair: dict) -> list[str]:
     })
     if observed_recipe_ids != pair.get("bmopftools", {}).get("recipe_ids", []):
         errors.append("pair manifest recipe coverage differs from the BMOPFTools identity")
-    package_operations = {"analyze_case", "verify_solution", "explain_finding"}
+    package_operations = {"parse_case", "analyze_case", "verify_solution", "explain_finding"}
     for recipe in pair.get("bmopftools", {}).get("operation_recipes", []):
         if recipe.get("operation") not in package_operations:
             errors.append(f"{recipe.get('recipe_id')}: unsupported package operation recipe")

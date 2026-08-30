@@ -108,12 +108,20 @@ links. External PowerIO diagnostic namespaces remain outside the package
 registry. The pair manifest pins the recipe and registry provenance without
 turning the lookup into a book scientific claim.
 
-Remaining work in this tranche is evidence-gated scale-out rather than a bulk
-wrapper exercise: assess whether a standalone parse-only route adds useful
-semantics beyond `analyze-case`, while promoting further contracts one at a
-time. A thin MCP or PowerMCP adapter remains last because it should expose the
-settled operations rather than define a competing execution model. Solver
-invocation remains outside the current transport slice.
+A sixth, package-only `parse-case` route now exposes the distinct intake
+boundary already implemented by `parse_bmopf`: JSON decoding, supported
+forward migration, and terminal normalization, but no schema/domain validation
+or analysis. Its tutorial-derived recipe deliberately parses and migrates an
+incomplete document while a separate schema assertion still requires
+`E.SCHEMA.REQUIRED`. This settles the parse-only decision without collapsing
+successful intake into solver readiness or scientific validity. The pair
+manifest pins the hash-bound inventory recipe without inventing a PSK link.
+
+The core execution and recipe surface is now settled. Remaining work in this
+tranche is evidence-gated contract promotion plus the optional thin MCP or
+PowerMCP adapter, which must expose the existing response model rather than
+define a competing one. Solver invocation remains outside the current
+transport slice.
 
 ### Product identity and editorial stance
 

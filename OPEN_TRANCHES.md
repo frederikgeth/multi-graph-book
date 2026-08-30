@@ -14,8 +14,8 @@ The authority for repository ownership and dependency direction is
 
 | Tranche | State | Delivered boundary | Next open item |
 |---|---|---|---|
-| 1. Execution interface | In progress | Two curated contract adapters, case analysis, supplied-result verification, and deterministic offline Finding explanation with distinct execution/solver/Finding/contract statuses | Assess whether parse-only adds a distinct semantic boundary |
-| 2. Documentation and recipes | In progress | Assistant guide, `llms.txt`, two scientific-contract recipes, and tutorial-derived analysis, verification, and Finding-explanation recipes | Reconcile the recipe set after the parse-only decision |
+| 1. Execution interface | In progress | Two curated contract adapters plus parse/intake, case analysis, supplied-result verification, and offline Finding explanation with distinct execution/solver/Finding/contract statuses | Add only a thin MCP/PowerMCP adapter over the settled operations |
+| 2. Documentation and recipes | Core complete | Assistant guide, `llms.txt`, two scientific-contract recipes, and tutorial-derived parse, analysis, verification, and Finding-explanation recipes | Keep examples synchronized; solving remains outside this transport slice |
 | 3. Negative-knowledge taxonomy | Queued | Initial PSK taxonomy and fourteen executable links | Select and scope the first new non-modelling record |
 | 4. Property-based testing | Queued | Deterministic metamorphic tests and minimized fixtures | Define the generator domain and seed record |
 | 5. Research/decision log | Queued | Decisions currently recorded in architecture and handover prose | Add the lightweight decision-log format |
@@ -40,8 +40,11 @@ solver. Its execution status remains distinct from solver termination and the
 independent report's Finding severity. A deterministic `explain-finding` route
 looks up all 341 documented package codes in a generated offline registry,
 preserving declared links while refusing inferred causes, repairs, PSK links,
-and external PowerIO namespaces. A justified standalone parse-only route and an
-optional thin MCP/PowerMCP adapter remain open.
+and external PowerIO namespaces. A distinct `parse-case` route now reports
+decode/migration/normalization evidence and a compact inventory without running
+validation. Its deliberately incomplete recipe input proves that parse
+completion can coexist with `E.SCHEMA.REQUIRED`. The optional thin
+MCP/PowerMCP adapter remains open.
 
 Scope:
 
@@ -63,7 +66,7 @@ Acceptance criteria:
 
 Turn the existing pedagogical tutorials into a small, CI-tested recipe library.
 
-**Current status (2026-08-30):** in progress. `llms.txt`, the assistant guide,
+**Current status (2026-08-30):** core complete. `llms.txt`, the assistant guide,
 and CI-tested `parallel_member_limits`, `neutral_ground_reference`, and
 `analyze_case` recipes are implemented. The grounding recipe complements the
 pedagogical grounding tutorial; the analysis recipe reuses the small tutorial
@@ -73,7 +76,9 @@ trust-but-verify tutorial's independent profiling pattern and a minimized
 claimed-feasible counterexample: `LOCALLY_SOLVED` is not evidence that voltage
 limits hold. The `explain_finding` recipe distinguishes a canonical code
 meaning from one observed instance and does not diagnose a root cause or invent
-a repair. A justified parse-only recipe and solving remain open.
+a repair. The `parse_case` recipe makes the intake/validation boundary
+executable with no invented PSK identity. The core recipe set is complete for
+the current transport slice; solving remains explicitly outside it.
 
 Scope:
 
@@ -192,8 +197,8 @@ These items are release-quality follow-ups rather than implementation blockers:
 
 ## Suggested order
 
-1. Execution interface and recipe library (current: assess whether parse-only
-   adds a distinct boundary; keep the thin MCP adapter last).
+1. Thin MCP/PowerMCP adapter over the now-settled execution interface; continue
+   promoting contracts only when their transport mappings are unambiguous.
 2. Broader negative-knowledge records.
 3. Property-based testing and minimized counterexamples.
 4. Research/decision log.
