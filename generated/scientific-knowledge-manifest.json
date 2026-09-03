@@ -1,5 +1,5 @@
 {
-  "corpus_sha256": "09a2e5372a2a1ec5dcc68d57418d85e6629211909f3dbb08b0f59f70975584b1",
+  "corpus_sha256": "28e8b46324866f2dcbef6ba5c40e211952ddecf4ec21154fcb907a84af520465",
   "knowledge_ids": [
     "PSK-000001",
     "PSK-000002",
@@ -14,10 +14,14 @@
     "PSK-000011",
     "PSK-000012",
     "PSK-000013",
-    "PSK-000014"
+    "PSK-000014",
+    "PSK-000015",
+    "PSK-000016",
+    "PSK-000017",
+    "PSK-000018"
   ],
   "manifest_id": "multi-graph-book-scientific-knowledge-0.1.0",
-  "record_count": 14,
+  "record_count": 18,
   "release": {
     "external_reviewed_claims": 0,
     "independent_human_double_coding": false,
@@ -29,7 +33,15 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "0405340b6d64e4ad0d273637d207892ba7ba3c1438a7c2fbcc7cedfe09b7420d"
+      "sha256": "69136cf591fab5a596c6ec884d53210bdc6a016f94ff5b1bde70121b4305082b"
+    },
+    {
+      "path": "docs/src/cases/australian-carson-reproduction.md",
+      "sha256": "5752d72900ca212ff0691815b084033d0f9d0f3ba68916b2a3c688fc4ad22c61"
+    },
+    {
+      "path": "docs/src/cases/coupled-multivoltage-corridor.md",
+      "sha256": "d288be8fa076d8e1cffcb7fecce71e94b3beaa9e37070e21457f1616048b924f"
     },
     {
       "path": "docs/src/cases/four-wire-impedance-model-ladder.md",
@@ -49,7 +61,7 @@
     },
     {
       "path": "docs/src/foundations/load-models-and-decision-dependence.md",
-      "sha256": "8b9e2062ae025d2ea36b398b55f4a92474a594eba898e830b672c0165f85acd6"
+      "sha256": "f2cf62ff347112136ce260c563dcd658a1561bb4fed14d7d53c7da0855085ed4"
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
@@ -62,6 +74,10 @@
     {
       "path": "docs/src/foundations/when-general-model-collapses.md",
       "sha256": "b20850c7f9193fb3963ee3112a34758c54bc56924259a2884d50043dc7a79750"
+    },
+    {
+      "path": "docs/src/reference/federated-knowledge-trace.md",
+      "sha256": "727fc3b267a477d1b92e9dea7482d4ffcc7e5e8f5c17137a9d0705fd0548a218"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
@@ -88,12 +104,28 @@
       "sha256": "3f17032ace7c044bc436b7fb68ad78fa37ad9403567ee4d1e10a45a51b713774"
     },
     {
+      "path": "experiments/data/australian_source_audit.toml",
+      "sha256": "8cf7dba1d51303f87acba730883c3dc798760cc65b161cb5513d0bb8c052ff6b"
+    },
+    {
+      "path": "experiments/generated/australian-carson-reproduction.json",
+      "sha256": "3b7c0a5a4ac467368ee1983137aa7ae2ae2f9c374a13c4938f0dae94e5dc4c08"
+    },
+    {
       "path": "experiments/generated/balanced-transmission-witness.json",
       "sha256": "2ffa917cf2d8765a3a3817f4f7d2fd2c5861d0ae2f60c1ee4a202bbca7872740"
     },
     {
+      "path": "experiments/generated/coupled-corridor-lattice-witness.json",
+      "sha256": "b39718cd997ad302b8f528bd8ac35e8d39d368c0d2b31faadf40b61c0e53da03"
+    },
+    {
       "path": "experiments/generated/kron-ward-scenario-comparison.json",
       "sha256": "753cec18f5147205f1c93879e79fc4de94ce18b3211cb0f3bcec6142892410b5"
+    },
+    {
+      "path": "experiments/generated/load-continuation-independent-reproduction.json",
+      "sha256": "67bf999262703eff8126dfc886cad747498154130c58ee4a0e1ab4a66c3eba78"
     },
     {
       "path": "experiments/generated/load-grounding-witnesses.json",
@@ -144,20 +176,52 @@
       "sha256": "c8df96b929e8a425e7986ee5620aa2f273c2b6a2bba86d7bd6c3d15eeeeb2c35"
     },
     {
+      "path": "experiments/test/australian_carson_reproduction.jl",
+      "sha256": "0162c30693c4538acd0482b23ba463971754af2addd0e27e00fc944ec644389b"
+    },
+    {
+      "path": "experiments/test/coupled_corridor_lattice.jl",
+      "sha256": "797da9e074f4a3ae2ec69f2dfc792d11850e403e2d753b5acc1b03d2c66443b3"
+    },
+    {
+      "path": "experiments/transformations/AustralianCarsonReproduction.jl",
+      "sha256": "a7da8574b5557f666757c59e610d9912433ca580bd0941232cb12a165892ed2d"
+    },
+    {
+      "path": "experiments/transformations/CoupledCorridorLatticeWitness.jl",
+      "sha256": "f29d89a505b4c1acb030178cbfe227581a74ec5db3dbbf190070ed937db8496e"
+    },
+    {
+      "path": "experiments/transformations/LoadGroundingWitness.jl",
+      "sha256": "f8a9ae87fb916816979b50b4edd1ecbdf6698a98ed776e73785bb898c5c41482"
+    },
+    {
       "path": "knowledge/psk.toml",
-      "sha256": "3a867b411bb581908ec88da2235011d29f21ca9834f57e661cb75927e1372d0a"
+      "sha256": "aba5bf1a717a60fa7fe931bca222adf713e32eb859f19f9db78c590d815d5c21"
+    },
+    {
+      "path": "llm/README.md",
+      "sha256": "dcc4847896cf2ef19674f8f0192965a94e7b80dd8bdf47dbf6996fb1a4039a55"
+    },
+    {
+      "path": "llm/generated/neural-retrieval-negative-result.json",
+      "sha256": "2b444e8c99648879d55ac283ac1a18c47af8dc07fa23a15e4ae8b6379e4f81b0"
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "1bd6ab3823ce995bb01e33cb6b382c3f721ad06ed5a51800e65f8a629c270948"
-    },
-    {
-      "path": "review/release-candidate-manifest.json",
-      "sha256": "1909645d35246e3b8fa4ea804986cfbaf1a9b8baae859085d5bc1c42ed54dd4d"
+      "sha256": "1061d2f13d88c68feb338b07820703398b6e07ede6a0edd32fdc4f255ce3dd64"
     },
     {
       "path": "schemas/power-system-knowledge.schema.json",
-      "sha256": "818bc8974084b473d6bd808145f3aadc5062c1411f919bc6736d63862e2077c7"
+      "sha256": "655afe3994d7022cf0c31a92186c107c8653522c412cdcc7594b0a6fa220b20a"
+    },
+    {
+      "path": "scripts/check_neural_benchmark.py",
+      "sha256": "a71a3e3a7b82250466a685d2e0d164b97d95ea43eba1b50387ad8d592d546138"
+    },
+    {
+      "path": "scripts/reproduce_load_continuation.py",
+      "sha256": "d60dc520163c16869105cffd822a09425bdfb6f07cb06dc9269fee8efc03cec4"
     }
   ]
 }

@@ -24,6 +24,9 @@ CHECKS: list[tuple[str, list[str]]] = [
     ("evidence summary", [PYTHON, "scripts/check_evidence_summary.py"]),
     ("review snapshot", [PYTHON, "scripts/check_review_snapshot.py"]),
     ("evidence matrix", [PYTHON, "scripts/check_evidence_matrix.py"]),
+    ("development log", [PYTHON, "scripts/check_development_log.py"]),
+    ("agent benchmark", [PYTHON, "scripts/check_agent_benchmark.py", "--check"]),
+    ("agent benchmark pilot", [PYTHON, "scripts/check_agent_benchmark_pilot.py", "--check"]),
     ("figures", [PYTHON, "scripts/check_figures.py"]),
     ("vocabulary", [PYTHON, "scripts/check_vocabulary.py"]),
     ("LLM accessibility", [PYTHON, "scripts/check_llm_accessibility.py"]),
@@ -49,10 +52,13 @@ CHECKS: list[tuple[str, list[str]]] = [
 EXCLUDED_PARTS = {".git", "__pycache__"}
 HASH_ROOTS = (
     "README.md",
+    "ARCHITECTURE.md",
     "BOOK_PLAN.md",
     "CONTRIBUTING.md",
+    "OPEN_TRANCHES.md",
     "QUALITY_CONTROL.md",
     "ROADMAP.md",
+    "benchmarks",
     "claims",
     "docs/src",
     "docs/make.jl",

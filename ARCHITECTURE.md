@@ -132,6 +132,33 @@ scientific statement, scope, evidence status, related book identifiers,
 executable-contract identifiers, counterexample identifiers, and unresolved
 boundaries. Long scientific explanations stay in canonical book prose.
 
+Not every scientific or negative-knowledge record has a meaningful package
+counterpart. A book-owned record may declare its executable relationship
+`not_applicable` with no repository, contract, Finding, or fixture links. The
+federated pair preserves that explicit empty relationship. It must not invent a
+BMOPFTools contract merely to make the record look symmetric.
+
+Structured numerical-pathology records separate an observed algorithmic
+failure boundary from physical infeasibility, bifurcation, or model-validity
+claims. They name the algorithm, initialization and stopping domain, the
+invalid inferences, and the checks needed to discriminate numerical behavior
+from a scientific conclusion. Independent reproduction of the same algorithm
+strengthens the observation but does not erase that boundary.
+
+Structured scope-boundary records state both sides of a valid result: the
+domain and query for which evidence exists, and the nearby extensions for
+which it does not. A boundary record may package an established theorem, but
+it must not silently promote generated equation objects into physical assets
+or extend one preservation dimension to limits, states, protection, decisions,
+or objectives without separate evidence.
+
+Structured open-question records distinguish a documented unknown from an
+unsupported topic. They state the question, preserve what is already known,
+record unsuccessful discriminators, identify the missing information, and set
+criteria that would resolve the question. A numerical fit, available reference
+output, or plausible nearby fixture must not be relabelled as recovered source
+provenance.
+
 BMOPFTools maintains a small executable registry, not a scientific knowledge
 database. It records executable contract IDs, entry points, applicable object
 types, finding codes, fixture IDs, output shape, and related PSK IDs. Runtime
@@ -524,6 +551,16 @@ entry, while its exact companion passes. This is a metamorphic complement to
 the book's typed coordinate-action and sequence/coupling material, not a
 replacement for a complete network transformation proof.
 
+The first controlled property suite extends that same executable boundary
+without adding a new scientific claim. BMOPFTools owns the generator, oracle,
+replay test, and minimizer; its executable export declares the finite generator
+domain, algorithm, seed, case count, expected Finding code, minimization rule,
+and failure classification. The book pins those fields and their source hash in
+the federated pair so a grounded answer can distinguish a reproducible expected
+contract rejection from a new scientific counterexample. A property suite may
+exercise only a contract and PSK link that already exist; changing scientific
+scope or evidence status still requires a book-owned knowledge change.
+
 ## Thirteenth vertical slice: complete solved-network feasibility
 
 The thirteenth slice extends the book's numerical-consequence guardrails beyond
@@ -562,6 +599,15 @@ decision equivalence.
 The minimized fixture preserves SI metadata and bases but mutates the semantic
 hash; the reordered exact companion passes. This complements `parse_bmopf`,
 `write_bmopf`, and source-hash binding without duplicating their I/O logic.
+
+The second controlled property suite exercises the same declared-evidence
+boundary over positive finite SI base maps and real JSON round trips. It
+changes unit system, one base value, and semantic hash independently, then
+minimizes each expected rejection to a one-base witness. This is executable
+coverage of ordering-insensitive metadata comparison, not a conversion engine:
+the units tutorial and book claims remain authoritative for physical scaling
+semantics, while the package suite neither computes SI-to-per-unit maps nor
+authenticates the hash declaration.
 
 ## Federated discovery and context assembly
 
@@ -607,11 +653,50 @@ Implementation proceeds from domain interfaces outward:
 4. optional JSON CLI operations;
 5. thin MCP or PowerMCP-compatible execution adapters.
 
-The book MCP remains the knowledge interface. A future BMOPFTools adapter is an
-execution interface and exposes a curated operation set such as case parsing,
-analysis, solution verification, contract checking, counterexample execution,
-and finding explanation. It must not expose every Julia function or contain
-scientific retrieval logic.
+The first two scientific execution-interface slices implement steps 3 and 4 for
+`PSK-000001` and `PSK-000002`. BMOPFTools provides source-hash-bound
+`parallel_member_limits` and `neutral_ground_reference` recipes and a versioned
+`check-contract` JSON CLI/API response. Package-only slices add `parse-case`,
+`analyze-case`, `verify-solution`, and `explain-finding` routes plus
+tutorial-derived intake, analysis, verification, and Finding-lookup recipes.
+The parse slice reports decoding, supported migration, terminal normalization,
+and a compact inventory; it deliberately does not run schema/domain
+validation. A completed operation may contain ERROR or WARNING Findings, and a
+solver status such as `LOCALLY_SOLVED` does not certify feasibility: operation
+status, solver termination, Finding severity, and scientific-contract status
+remain separate axes. The verification route profiles a supplied result; it
+does not invoke a solver. Because these ordinary package operations do not
+themselves express scientific preservation claims, their recipes do not invent
+PSK links and are pinned separately from PSK-linked context examples in the
+pair manifest. A package-owned adapter registry gives
+each contract an explicit parameter allowlist, including the neutral contract's
+declared source-to-target bus mapping; it does not expose arbitrary Julia
+evaluation. The pinned pair manifest carries each recipe identity, command,
+expected status, expected Finding codes, and recipe source hash into the book's
+context packet. The pair also pins package-only operation recipes without
+injecting them into a scientific context packet. These are reviewed transport mappings, not a claim that every
+contract is CLI-ready. Additional contracts are promoted only after their
+inputs and explicit source-to-target mappings have an unambiguous JSON form.
+
+The parse recipe uses an incomplete document that successfully migrates while
+a separate schema assertion emits `E.SCHEMA.REQUIRED`; this demonstrates the
+boundary without turning intake into a PSK claim. Finding explanation is a
+deterministic offline lookup over BMOPFTools' complete
+generated Finding registry. It returns the canonical package meaning and source
+hash plus only already-declared contract/PSK links. It does not inspect a
+Finding instance, infer causes or repairs, query the book, or explain external
+PowerIO namespaces. This preserves the boundary between package diagnostics and
+the book's scientific retrieval machinery.
+
+The book MCP remains the knowledge interface. BMOPFTools now supplies a
+separate read-only stdio MCP execution adapter with six tools: case parsing,
+analysis, supplied-result verification, Finding explanation, and the two
+reviewed scientific-contract mappings. It returns the existing execution
+response rather than defining new statuses, restricts local inputs to declared
+roots, and exposes the package manifest and response schema as resources. It
+does not expose every Julia function, invoke a solver, or contain scientific
+retrieval logic. The two MCP servers may be connected to the same client while
+retaining these distinct authorities.
 
 ## Integrity, CI, and release pairing
 
@@ -623,7 +708,7 @@ expected counterexample outcomes.
 
 Cross-repository integration uses an explicitly pinned revision or release of
 each repository. Its checks verify that referenced claim, misconception, PSK,
-finding, contract, and fixture IDs resolve; that source anchors and hashes are
+finding, contract, fixture, and recipe IDs resolve; that source anchors and hashes are
 current; and that the federated context packet identifies the exact pair. A
 change in either export requires regeneration and re-evaluation of the paired
 federated artifact, not a dynamic query against the other repository's latest
@@ -641,10 +726,23 @@ ordinary software tests, runs applicable scientific guardrails and minimized
 counterexamples, and reports assumptions and unresolved boundaries.
 
 Architectural decisions and rejected approaches belong in a lightweight
-development research log. Scientific claims remain in the claims ledger;
+development research log, maintained as
+[`docs/src/literature/development-decision-log.md`](docs/src/literature/development-decision-log.md).
+Its stable entries record the question, options, decision, reason, evidence,
+known downside, and conditions for revisiting, and a release gate checks the
+format. Scientific claims remain in the claims ledger;
 ordinary software design choices do not. Failed methods are retained when the
 question, setup, failure criterion, evidence, scope, and conditions for
 reconsideration are sufficiently specified.
+
+The book also owns scientifically constrained agent-benchmark specifications,
+condition definitions, run provenance, scoring rubrics, and measured results.
+BMOPFTools supplies package-owned executable oracles through its existing
+contracts, recipes, fixtures, and Findings; benchmark code must not copy or
+reinterpret those runtime semantics. A benchmark substrate, synthetic scorer
+fixture, pilot, and measured agent run are distinct evidence states. Only the
+latter two may contain observations from an actual agent, and no condition
+effect is claimed until controlled run artifacts exist.
 
 ## Change control and anti-goals
 

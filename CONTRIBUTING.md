@@ -113,6 +113,43 @@ julia scripts/check_claims.jl
 before submitting a change. The checker rejects duplicate identifiers, unknown
 statuses, missing chapter paths, and missing BibTeX keys.
 
+## Development decisions
+
+Consequential software and cross-repository architecture choices belong in the
+[development research and decision log](docs/src/literature/development-decision-log.md),
+not the scientific claims ledger. Add the next stable `DLOG-NNNN` entry with
+the question, options, decision, reason, evidence, known downside, and
+conditions for revisiting. Retain rejected approaches and supersede old entries
+instead of rewriting their rationale. Run
+
+```sh
+python3 scripts/check_development_log.py
+```
+
+before submitting a log change. Scientific statements still follow the claims,
+PSK, citation, and evidence-review process; a DLOG entry cannot reclassify them.
+
+## Agent benchmark records
+
+Benchmark specifications and measured agent runs are different evidence
+objects. A task or synthetic scorer fixture must not be described as an agent
+observation. Keep the benchmark status at `substrate_only_no_agent_runs` until
+controlled run artifacts exist, and preserve the exact condition, model
+revision, corpus, federated pair, package export, tool settings, and scoring
+version for every run.
+
+For the first slice, run both the repository-local and live sibling checks:
+
+```sh
+python3 scripts/check_agent_benchmark.py --check
+python3 scripts/check_agent_benchmark.py --check --bmopf-root ../BMOPFTools.jl
+python3 scripts/check_agent_benchmark_pilot.py --check --bmopf-root ../BMOPFTools.jl
+```
+
+BMOPFTools owns executable oracle behavior. Benchmark code may invoke and pin
+its contracts, recipes, fixtures, and Findings, but must not duplicate or
+silently reinterpret their runtime semantics.
+
 Generated fixtures, certificates, view source maps, and local Markdown links
 are checked with:
 
@@ -137,9 +174,9 @@ python3 scripts/regenerate_all.py
 
 The command assumes sibling checkouts at `../BMOPFTools.jl`; pass
 `--bmopf-root /path/to/BMOPFTools.jl` when using another layout. It runs the
-scientific export, federated pair check, and LLM corpus generation in their
-dependency order. Follow it with the retrieval, access, answer-contract, and
-release checks above.
+scientific export, federated pair check, LLM corpus and derived retrieval/access
+evaluations, neural compatibility marker, and agent-benchmark artifacts in
+dependency order. Follow it with the answer-contract and release checks above.
 
 The first command records the candidate's observed counts and hashes; the
 second fails if any release input or generated output has drifted. This gate is

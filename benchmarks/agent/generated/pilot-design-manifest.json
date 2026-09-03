@@ -1,0 +1,134 @@
+{
+  "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
+  "benchmark_manifest_sha256": "d800edd1f85c69beb5013672e1f27c0dc84904f8a8d1fe6997a2ab3e87d4ab77",
+  "dry_run_status": "synthetic_dry_run_harness_only_not_agent_results",
+  "human_review_gate": "reviewed_changes_required_before_preregistration_or_execution",
+  "local_sources": [
+    {
+      "path": "benchmarks/agent/README.md",
+      "sha256": "0a6bbb71728158a450328e1d811ed1fc268a30174fdc1c0ac2d5d6d3e377a99a"
+    },
+    {
+      "path": "benchmarks/agent/pilot/parallel-member-limits-pilot-v1.json",
+      "sha256": "cf271ef36ce25ae03a92ecfd9128e5851507f840ef9887776f4cda34be34d044"
+    },
+    {
+      "path": "schemas/agent-benchmark-pilot.schema.json",
+      "sha256": "840f5324b0f127a153b155545c6a1ebc1eab2b198b05a4df6a7e07f83201066e"
+    },
+    {
+      "path": "schemas/agent-benchmark-run.schema.json",
+      "sha256": "5e74712da4c06bf893647d5e855b5cf0987f97492e5eb38204c527905e6e42a5"
+    },
+    {
+      "path": "scripts/check_agent_benchmark_pilot.py",
+      "sha256": "21d6105911a9808b383bc4181b8ac06c3b99fd594cc191b63c2b3215a7c5b31a"
+    },
+    {
+      "path": "benchmarks/agent/pilot/dry-runs/conforming-c6-run.json",
+      "sha256": "80f947c99ce91dfb920a26f175fa57c109045fd63e8e41d7c79fcf526d35364c"
+    },
+    {
+      "path": "benchmarks/agent/pilot/dry-runs/unsafe-c0-run.json",
+      "sha256": "fc33e5673f469bfc4b1b06ffb971abe0395759586764cc71f412e96c545bb14b"
+    },
+    {
+      "path": "benchmarks/agent/pilot/dry-runs/excluded-provider-failure.json",
+      "sha256": "25a059dfe19de9c46a4cb2ce98b1bd710b5de983ec0fb6b626a693f578d92490"
+    }
+  ],
+  "pilot_id": "APILOT-PARALLEL-LIMITS-001",
+  "pilot_schema_sha256": "840f5324b0f127a153b155545c6a1ebc1eab2b198b05a4df6a7e07f83201066e",
+  "provenance": {
+    "bmopftools_executable_corpus_sha256": "df23fd1025de2d09691de5bbfd19549383392658ccb73df51443fd8b8f77aba2",
+    "bmopftools_manifest_sha256": "f20116fd078d043c4d7fa0ff1cdbdf02a2b9ac32a61e808c197bafebed526a04",
+    "book_llm_corpus_sha256": "de38cf25cdb50c14316a202416341ee9b634f12047c864e2807c472510885eca",
+    "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
+    "federated_pair_sha256": "e4209fbf0c1f8293eac23086f3e66a814e472c45412d2f3e3a6c67c4d299a97d"
+  },
+  "resource_sources": {
+    "BMOPFTools.jl": [
+      {
+        "path": "README.md",
+        "sha256": "287a8462efc0a858d7dcb0f266e6730964c9cb681c7c60dabccd2918a914aebb"
+      },
+      {
+        "path": "ARCHITECTURE.md",
+        "sha256": "66d61f07b4efee587010615a26dd14b3a89315a55f5100fe216d41278e6145d1"
+      },
+      {
+        "path": "docs/src/ai_assistants.md",
+        "sha256": "b024cc18025b1405f1be92db98b43f59dc831edba77f323dbc55552945b421be"
+      },
+      {
+        "path": "generated/executable_knowledge.jsonl",
+        "sha256": "df23fd1025de2d09691de5bbfd19549383392658ccb73df51443fd8b8f77aba2"
+      },
+      {
+        "path": "AGENTS.md",
+        "sha256": "e588a0e7733dc7bdda98e2b7fb835dd711f46430da20339ebab8bed5d81b024b"
+      },
+      {
+        "path": "recipes/parallel_member_limits/metadata.toml",
+        "sha256": "13fd52da92d1f98a458a6cc5f71821de1fc175a8ac44186cd14f8bf935a64072"
+      },
+      {
+        "path": "recipes/parallel_member_limits/README.md",
+        "sha256": "6276693e312f1f4def46d8ff34214697a34079239a2774521aa6d15c9139e062"
+      },
+      {
+        "path": "recipes/parallel_member_limits/recipe.jl",
+        "sha256": "4e4d38aaeb91094c14ed58421ed8e3c3905e44ee646b82b4747c23d2fe8fe4f9"
+      },
+      {
+        "path": "test/fixtures/negative/parallel-rating-outer-relaxation/source.json",
+        "sha256": "28c3c74235e12a6b0f7f2692ec17e4ab11c9f450351c596f3024b22d7c887940"
+      },
+      {
+        "path": "test/fixtures/negative/parallel-rating-outer-relaxation/transformed.json",
+        "sha256": "b98e114846b2a1caf0e552f4f2d5dfdd2ad8fd936ba13a03951e2a9b2f70c16e"
+      },
+      {
+        "path": "scripts/bmopf_mcp.jl",
+        "sha256": "3ece803eb21284ac56a378edd20992efa709b9091157c34f3470f27024530923"
+      }
+    ],
+    "multi-graph-book": [
+      {
+        "path": "README.md",
+        "sha256": "24bceebbddb10750597fe2b3572c646c5c1aa5e1fe7450f07d687d1976d7ac03"
+      },
+      {
+        "path": "ARCHITECTURE.md",
+        "sha256": "38a6c1a1988034dc3c2f2fdce5474af4327c47b723ed727163621c1992377533"
+      },
+      {
+        "path": "docs/src/start/first-failure-parallel-branches.md",
+        "sha256": "7f5e4204c13a3113a44c599dce3161dbda3067a5b70867ade46f433903eee72e"
+      },
+      {
+        "path": "knowledge/psk.toml",
+        "sha256": "aba5bf1a717a60fa7fe931bca222adf713e32eb859f19f9db78c590d815d5c21"
+      },
+      {
+        "path": "generated/scientific_knowledge.jsonl",
+        "sha256": "28e8b46324866f2dcbef6ba5c40e211952ddecf4ec21154fcb907a84af520465"
+      },
+      {
+        "path": "AGENTS.md",
+        "sha256": "caa4f2da6c27b275206c8e06bfe4f63c2a60e17d364e0c7fa1437f6617687bbd"
+      },
+      {
+        "path": "llm/misconceptions.toml",
+        "sha256": "1061d2f13d88c68feb338b07820703398b6e07ede6a0edd32fdc4f255ce3dd64"
+      },
+      {
+        "path": "scripts/mcp_llm_server.py",
+        "sha256": "977d9188d5f4f54741cb8699ca0d7c35d6193e415d1b017318e6fbede37147a7"
+      }
+    ]
+  },
+  "run_schema_sha256": "5e74712da4c06bf893647d5e855b5cf0987f97492e5eb38204c527905e6e42a5",
+  "schema_version": "0.1.0",
+  "status": "design_complete_execution_not_authorized"
+}

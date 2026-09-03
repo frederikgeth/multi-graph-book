@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1.0",
+  "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
+  "run_id": "CONFORMANCE-BOUNDARY-OVERCLAIM-001",
+  "condition_id": "C1_REPOSITORY_DOCS",
+  "system": {
+    "provider": "deterministic-fixture",
+    "model_id": "benchmark-harness",
+    "model_revision": "0.1.0"
+  },
+  "provenance": {
+    "federated_pair_id": null,
+    "book_llm_corpus_sha256": null,
+    "bmopftools_executable_corpus_sha256": null
+  },
+  "cases": [
+    {
+      "case_id": "ABENCH-PAR-001-UNSAFE",
+      "action": "reject",
+      "contract_status": "failed",
+      "classification": "outer_relaxation",
+      "knowledge_ids": ["PSK-000001"],
+      "finding_codes": ["W.CONTRACT.PARALLEL_MEMBER_LIMIT_LOSS"],
+      "qualification_codes": [
+        "TERMINAL_RELATION_IS_NOT_DECISION_EQUIVALENCE",
+        "SCALAR_SERIES_ONLY_SCOPE",
+        "MEMBER_IDENTITY_REMAINS_UNASSESSED"
+      ],
+      "witness": {
+        "voltage_drop_V": 15.0,
+        "aggregate_current_A": 165.0,
+        "source_feasible": false,
+        "target_feasible": true
+      }
+    },
+    {
+      "case_id": "ABENCH-PAR-002-BOUNDARY",
+      "action": "accept",
+      "contract_status": "passed",
+      "classification": "generalized_from_scalar",
+      "knowledge_ids": ["PSK-000001"],
+      "finding_codes": [],
+      "qualification_codes": []
+    }
+  ]
+}

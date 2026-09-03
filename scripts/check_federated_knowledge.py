@@ -54,11 +54,40 @@ def bmopf_identity(root: Path) -> tuple[dict, dict[str, dict]]:
     if sha256_file(corpus_path) != manifest["corpus_sha256"]:
         raise ValueError("BMOPFTools executable corpus hash differs from its manifest")
     by_id = {item["record_id"]: item for item in executable}
+    recipes_by_contract: dict[str, list[dict]] = {}
+    property_suites_by_contract: dict[str, list[dict]] = {}
+    operation_recipes: list[dict] = []
+    for item in executable:
+        if item.get("record_type") == "property_suite":
+            property_suites_by_contract.setdefault(item["contract_id"], []).append(item)
+            continue
+        if item.get("record_type") != "recipe":
+            continue
+        contract_id = item.get("contract_id")
+        if contract_id is None:
+            operation_recipes.append({
+                "recipe_id": item["recipe_id"],
+                "operation": item["operation"],
+                "command": item["command"],
+                "expected_status": item["expected_status"],
+                "expected_finding_codes": item["expected_finding_codes"],
+                "knowledge_ids": item["knowledge_ids"],
+                "source_sha256": item["source"]["sha256"],
+            })
+        else:
+            recipes_by_contract.setdefault(contract_id, []).append(item)
     links: dict[str, dict] = {}
     for scientific in records(SCIENTIFIC):
         knowledge_id = scientific["knowledge_id"]
         declared = scientific["executable"]
         contract_links = []
+        if declared["implementation_status"] == "not_applicable":
+            links[knowledge_id] = {
+                "repository": None,
+                "implementation_status": "not_applicable",
+                "contracts": [],
+            }
+            continue
         for contract_id in declared["contract_ids"]:
             record = by_id.get(f"contract:{contract_id}")
             if record is None:
@@ -72,6 +101,41 @@ def bmopf_identity(root: Path) -> tuple[dict, dict[str, dict]]:
                     "finding_codes": record["finding_codes"],
                     "fixture_ids": record["fixture_ids"],
                     "source_sha256": record["source"]["sha256"],
+                    "property_suites": [
+                        {
+                            "property_suite_id": suite["property_suite_id"],
+                            "seed_algorithm": suite["seed_algorithm"],
+                            "seed": suite["seed"],
+                            "case_count": suite["case_count"],
+                            "generator_domain": suite["generator_domain"],
+                            "properties_checked": suite["properties_checked"],
+                            "failure_classification": suite["failure_classification"],
+                            "expected_finding_codes": suite["expected_finding_codes"],
+                            "minimization_strategy": suite["minimization_strategy"],
+                            "does_not_establish": suite["does_not_establish"],
+                            "source_sha256": suite["source"]["sha256"],
+                        }
+                        for suite in sorted(
+                            property_suites_by_contract.get(contract_id, []),
+                            key=lambda value: value["property_suite_id"],
+                        )
+                        if knowledge_id in suite["knowledge_ids"]
+                    ],
+                    "recipes": [
+                        {
+                            "recipe_id": recipe["recipe_id"],
+                            "operation": recipe["operation"],
+                            "command": recipe["command"],
+                            "expected_status": recipe["expected_status"],
+                            "expected_finding_codes": recipe["expected_finding_codes"],
+                            "source_sha256": recipe["source"]["sha256"],
+                        }
+                        for recipe in sorted(
+                            recipes_by_contract.get(contract_id, []),
+                            key=lambda value: value["recipe_id"],
+                        )
+                        if knowledge_id in recipe["knowledge_ids"]
+                    ],
                 }
             )
         links[knowledge_id] = {
@@ -79,6 +143,31 @@ def bmopf_identity(root: Path) -> tuple[dict, dict[str, dict]]:
             "implementation_status": declared["implementation_status"],
             "contracts": contract_links,
         }
+    exported_recipe_ids = sorted(
+        item["recipe_id"] for item in executable
+        if item.get("record_type") == "recipe"
+    )
+    linked_recipe_ids = sorted({
+        recipe["recipe_id"]
+        for link in links.values()
+        for contract in link["contracts"]
+        for recipe in contract.get("recipes", [])
+    })
+    operation_recipe_ids = sorted(item["recipe_id"] for item in operation_recipes)
+    if sorted([*linked_recipe_ids, *operation_recipe_ids]) != exported_recipe_ids:
+        raise ValueError("BMOPFTools recipe records are not completely pinned by the pair manifest")
+    exported_property_suite_ids = sorted(
+        item["property_suite_id"] for item in executable
+        if item.get("record_type") == "property_suite"
+    )
+    linked_property_suite_ids = sorted({
+        suite["property_suite_id"]
+        for link in links.values()
+        for contract in link["contracts"]
+        for suite in contract.get("property_suites", [])
+    })
+    if linked_property_suite_ids != exported_property_suite_ids:
+        raise ValueError("BMOPFTools property suites are not completely pinned by the pair manifest")
     identity = {
         "repository": "frederikgeth/BMOPFTools.jl",
         "schema_version": manifest["schema_version"],
@@ -88,6 +177,10 @@ def bmopf_identity(root: Path) -> tuple[dict, dict[str, dict]]:
         "package": manifest["package"],
         "knowledge_ids": manifest["knowledge_ids"],
         "contract_ids": manifest["contract_ids"],
+        "property_suite_ids": exported_property_suite_ids,
+        "recipe_ids": exported_recipe_ids,
+        "operation_recipes": sorted(operation_recipes, key=lambda value: value["recipe_id"]),
+        "record_counts": manifest["record_counts"],
     }
     return identity, links
 
@@ -123,11 +216,12 @@ def validate_committed(pair: dict) -> list[str]:
         link = links.get(knowledge_id, {})
         executable = scientific["executable"]
         contracts = link.get("contracts", [])
-        if executable["implementation_status"] != "implemented":
-            errors.append(f"{knowledge_id}: executable status is not implemented")
+        if executable["implementation_status"] not in {"implemented", "not_applicable"}:
+            errors.append(f"{knowledge_id}: executable status is neither implemented nor not_applicable")
         if link.get("implementation_status") != executable["implementation_status"]:
             errors.append(f"{knowledge_id}: implementation status differs across the pair")
-        if link.get("repository") != executable["repository"]:
+        expected_repository = executable.get("repository")
+        if link.get("repository") != expected_repository:
             errors.append(f"{knowledge_id}: executable repository differs across the pair")
         if [item.get("contract_id") for item in contracts] != executable["contract_ids"]:
             errors.append(f"{knowledge_id}: contract IDs differ across the pair")
@@ -137,6 +231,49 @@ def validate_committed(pair: dict) -> list[str]:
         observed_fixtures = sorted({value for item in contracts for value in item.get("fixture_ids", [])})
         if observed_fixtures != sorted(executable["fixture_ids"]):
             errors.append(f"{knowledge_id}: fixture IDs differ across the pair")
+        if executable["implementation_status"] == "not_applicable" and (
+            contracts or executable["contract_ids"] or executable["finding_codes"]
+            or executable["related_finding_codes"] or executable["fixture_ids"]
+        ):
+            errors.append(f"{knowledge_id}: book-only knowledge has executable links")
+        for contract in contracts:
+            for suite in contract.get("property_suites", []):
+                expected = set(suite.get("expected_finding_codes", []))
+                if not expected.issubset(set(contract.get("finding_codes", []))):
+                    errors.append(f"{knowledge_id}: property-suite Findings differ from its contract")
+            for recipe in contract.get("recipes", []):
+                if recipe.get("operation") != "check_contract":
+                    errors.append(f"{knowledge_id}: recipe operation is not check_contract")
+                expected = set(recipe.get("expected_finding_codes", []))
+                if not expected.issubset(set(contract.get("finding_codes", []))):
+                    errors.append(f"{knowledge_id}: recipe Findings differ from its contract")
+    observed_recipe_ids = sorted({
+        recipe.get("recipe_id")
+        for link in links.values()
+        for contract in link.get("contracts", [])
+        for recipe in contract.get("recipes", [])
+    } | {
+        recipe.get("recipe_id")
+        for recipe in pair.get("bmopftools", {}).get("operation_recipes", [])
+    })
+    if observed_recipe_ids != pair.get("bmopftools", {}).get("recipe_ids", []):
+        errors.append("pair manifest recipe coverage differs from the BMOPFTools identity")
+    observed_property_suite_ids = sorted({
+        suite.get("property_suite_id")
+        for link in links.values()
+        for contract in link.get("contracts", [])
+        for suite in contract.get("property_suites", [])
+    })
+    if observed_property_suite_ids != pair.get("bmopftools", {}).get("property_suite_ids", []):
+        errors.append("pair manifest property-suite coverage differs from the BMOPFTools identity")
+    package_operations = {"parse_case", "analyze_case", "verify_solution", "explain_finding"}
+    for recipe in pair.get("bmopftools", {}).get("operation_recipes", []):
+        if recipe.get("operation") not in package_operations:
+            errors.append(f"{recipe.get('recipe_id')}: unsupported package operation recipe")
+        if recipe.get("expected_status") != "completed":
+            errors.append(f"{recipe.get('recipe_id')}: package operation recipe status is not completed")
+        if recipe.get("knowledge_ids"):
+            errors.append(f"{recipe.get('recipe_id')}: unlinked operation recipe claims PSK ownership")
     return errors
 
 

@@ -602,3 +602,93 @@ required_claim_ids = ["PRACTICE-ADAPTER-001"]
 required_concept_ids = ["normalization", "factor", "equivalence-exactness-preservation"]
 required_answer_elements = ["distinguish serialization identity evidence from equation, limits, feasible-set, and objective validation", "verify unit/base alignment and semantic payload binding explicitly"]
 forbidden_simplifications = ["same base and hash imply identical physical and decision semantics"]
+
+[[case]]
+case_id = "EVAL-NEURAL-NEGATIVE-STUDENT"
+audience = "student"
+question = "Are embeddings automatically a better way to search this book than its deterministic hybrid search?"
+misconception_id = "generic-neural-retrieval-is-automatically-better"
+required_claim_ids = ["LLM-RETRIEVAL-001"]
+required_concept_ids = ["equivalence-exactness-preservation"]
+required_answer_elements = ["report that the pinned compact neural candidates failed at least one promotion gate", "limit the result to the archived benchmark corpus and tested configurations"]
+forbidden_simplifications = ["neural retrieval is always better or always worse"]
+
+[[case]]
+case_id = "EVAL-NEURAL-NEGATIVE-SOFTWARE"
+audience = "software_engineer"
+question = "Should I replace the source-bound hybrid retriever with a generic embedding model and cross-encoder without rerunning the repository evaluation?"
+misconception_id = "generic-neural-retrieval-is-automatically-better"
+required_claim_ids = ["LLM-RETRIEVAL-001"]
+required_concept_ids = ["equivalence-exactness-preservation"]
+required_answer_elements = ["require immutable model and corpus provenance plus the same held-out gates", "retain the current hybrid route because the recorded candidates failed and now belong to a prior corpus"]
+forbidden_simplifications = ["architecture fashion is sufficient evidence for promotion"]
+
+[[case]]
+case_id = "EVAL-NEURAL-NEGATIVE-POWER"
+audience = "power_engineer"
+question = "Would adding a generic neural RAG layer necessarily improve retrieval of the book’s scientific qualifications and counterexamples?"
+misconception_id = "generic-neural-retrieval-is-automatically-better"
+required_claim_ids = ["LLM-RETRIEVAL-001"]
+required_concept_ids = ["equivalence-exactness-preservation"]
+required_answer_elements = ["state that the recorded neural and reranked candidates did not clear the hybrid promotion gates", "distinguish retrieval recall from scientific answer validity and require a current-corpus rerun"]
+forbidden_simplifications = ["an embedding index guarantees better scientific evidence coverage"]
+
+[[case]]
+case_id = "EVAL-ITERATION-PATHOLOGY-STUDENT"
+audience = "student"
+question = "The load-flow iteration stopped converging at demand scale 1.8. Does that prove the system becomes infeasible or collapses there?"
+misconception_id = "iteration-failure-proves-infeasibility"
+required_claim_ids = ["LOAD-CONTINUATION-001"]
+required_concept_ids = ["state", "equivalence-exactness-preservation"]
+required_answer_elements = ["identify 1.8 as the first failed point for the recorded damped fixed-point procedure only", "require separate continuation or feasibility evidence before claiming collapse or no solution"]
+forbidden_simplifications = ["nonconvergence proves physical infeasibility"]
+
+[[case]]
+case_id = "EVAL-ITERATION-PATHOLOGY-SOFTWARE"
+audience = "software_engineer"
+question = "Can I treat a damped fixed-point continuation failure as a certified no-solution result in the execution API?"
+misconception_id = "iteration-failure-proves-infeasibility"
+required_claim_ids = ["LOAD-CONTINUATION-001"]
+required_concept_ids = ["state", "equivalence-exactness-preservation"]
+required_answer_elements = ["keep algorithm termination separate from independently established equation feasibility", "record solver, initialization, step, tolerance, residual, and continuation provenance before interpreting the boundary"]
+forbidden_simplifications = ["a status label is a global infeasibility certificate"]
+
+[[case]]
+case_id = "EVAL-ITERATION-PATHOLOGY-POWER"
+audience = "power_engineer"
+question = "May I use the first failed fixed-point continuation step as the feeder voltage-collapse limit for planning?"
+misconception_id = "iteration-failure-proves-infeasibility"
+required_claim_ids = ["LOAD-CONTINUATION-001"]
+required_concept_ids = ["state", "equivalence-exactness-preservation"]
+required_answer_elements = ["state that the recorded boundary is method- and grid-specific", "require a mathematically continued branch, a bracketed feasibility boundary, and study-appropriate physical models before using a planning limit"]
+forbidden_simplifications = ["the first failed iterate is the exact saddle-node point"]
+
+[[case]]
+case_id = "EVAL-CARSON-OPEN-STUDENT"
+audience = "student"
+question = "We have the CS1035 impedance matrix and another underground cable fixture. Can we work backwards and say that fixture is the source of the matrix?"
+misconception_id = "reference-matrix-match-proves-source-provenance"
+required_claim_ids = ["AU-CARSON-001"]
+required_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "ground-neutral-reference"]
+required_answer_elements = ["distinguish an independent reference output from source construction metadata", "identify the missing construction, earth-return, frequency, ordering, and provenance evidence"]
+forbidden_simplifications = ["the closest available cable fixture is a faithful CS1035 reconstruction"]
+
+[[case]]
+case_id = "EVAL-CARSON-OPEN-SOFTWARE"
+audience = "software_engineer"
+question = "May an importer label the available UGHV construction as CS1035 because its generated matrix can be compared with the stored reference?"
+misconception_id = "reference-matrix-match-proves-source-provenance"
+required_claim_ids = ["AU-CARSON-001"]
+required_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "ground-neutral-reference"]
+required_answer_elements = ["keep the UGHV fixture and CS1035 reference as distinct provenance objects", "require source-backed metadata and forward regeneration before resolving the mapping"]
+forbidden_simplifications = ["a numerical comparison authorizes relabelling the fixture"]
+
+[[case]]
+case_id = "EVAL-CARSON-OPEN-POWER"
+audience = "power_engineer"
+question = "Has the Australian CS1035 underground linecode been faithfully reproduced, or does its cable construction still need to be identified?"
+misconception_id = "reference-matrix-match-proves-source-provenance"
+required_claim_ids = ["AU-CARSON-001"]
+required_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "ground-neutral-reference"]
+required_answer_elements = ["state that the CS1035 construction mapping remains open", "report that changing the Carson probe from 50 Hz to 60 Hz did not reconcile the mismatch"]
+forbidden_simplifications = ["the underground reference is a completed source-faithful reproduction"]

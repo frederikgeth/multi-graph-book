@@ -16,7 +16,7 @@
       "transformer_winding_convention_preservation",
       "unit_base_serialization_invariance"
     ],
-    "corpus_sha256": "061ac1f7e9d4ff7929552d5573535dc44a655e563b2208415242a952fc90a133",
+    "corpus_sha256": "df23fd1025de2d09691de5bbfd19549383392658ccb73df51443fd8b8f77aba2",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -34,16 +34,84 @@
       "PSK-000014"
     ],
     "manifest_id": "bmopftools-executable-knowledge-0.1.0",
-    "manifest_sha256": "7bd2bd74706e2ff516e2bd0cb635ba26fbedcf76d01c2d6ff7ae5b951cdd4cd2",
+    "manifest_sha256": "f20116fd078d043c4d7fa0ff1cdbdf02a2b9ac32a61e808c197bafebed526a04",
+    "operation_recipes": [
+      {
+        "command": "julia --startup-file=no --project=. recipes/analyze_case/recipe.jl",
+        "expected_finding_codes": [
+          "W.CONN.DANGLING",
+          "I.PRE.NO_VOLT_BOUNDS",
+          "W.CONV.TERMINAL_ROLES_INFERRED"
+        ],
+        "expected_status": "completed",
+        "knowledge_ids": [],
+        "operation": "analyze_case",
+        "recipe_id": "analyze_case",
+        "source_sha256": "20e177fd7fd77d9ac42d62d69ec69029eee007a1be4eeb0a817fb0d823d67174"
+      },
+      {
+        "command": "julia --startup-file=no --project=. recipes/explain_finding/recipe.jl",
+        "expected_finding_codes": [
+          "E.SOL.VOLT_VIOLATION"
+        ],
+        "expected_status": "completed",
+        "knowledge_ids": [],
+        "operation": "explain_finding",
+        "recipe_id": "explain_finding",
+        "source_sha256": "b9e1a29f1e39d92bfcc8191fee3b513a2edd5298486d96f08d9bb96735776623"
+      },
+      {
+        "command": "julia --startup-file=no --project=. recipes/parse_case/recipe.jl",
+        "expected_finding_codes": [
+          "E.SCHEMA.REQUIRED"
+        ],
+        "expected_status": "completed",
+        "knowledge_ids": [],
+        "operation": "parse_case",
+        "recipe_id": "parse_case",
+        "source_sha256": "752e70236461802ee0eab03ae730df8c92365ba0900f9f48615aea6f515db1d0"
+      },
+      {
+        "command": "julia --startup-file=no --project=. recipes/verify_solution/recipe.jl",
+        "expected_finding_codes": [
+          "E.SOL.VOLT_VIOLATION"
+        ],
+        "expected_status": "completed",
+        "knowledge_ids": [],
+        "operation": "verify_solution",
+        "recipe_id": "verify_solution",
+        "source_sha256": "e586c9d29b93e4eeefe9f233a39fef69da7f07142135506f900f204269eeb9c5"
+      }
+    ],
     "package": {
       "name": "BMOPFTools",
       "version": "0.1.0"
     },
+    "property_suite_ids": [
+      "terminal_permutation_seeded_properties",
+      "unit_base_serialization_seeded_properties"
+    ],
+    "recipe_ids": [
+      "analyze_case",
+      "explain_finding",
+      "neutral_ground_reference",
+      "parallel_member_limits",
+      "parse_case",
+      "verify_solution"
+    ],
+    "record_counts": {
+      "api_operation": 14,
+      "executable_contract": 14,
+      "finding": 57,
+      "fixture": 14,
+      "property_suite": 2,
+      "recipe": 6
+    },
     "repository": "frederikgeth/BMOPFTools.jl",
-    "schema_version": "0.1.0"
+    "schema_version": "0.6.0"
   },
   "book": {
-    "corpus_sha256": "09a2e5372a2a1ec5dcc68d57418d85e6629211909f3dbb08b0f59f70975584b1",
+    "corpus_sha256": "28e8b46324866f2dcbef6ba5c40e211952ddecf4ec21154fcb907a84af520465",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -58,9 +126,13 @@
       "PSK-000011",
       "PSK-000012",
       "PSK-000013",
-      "PSK-000014"
+      "PSK-000014",
+      "PSK-000015",
+      "PSK-000016",
+      "PSK-000017",
+      "PSK-000018"
     ],
-    "manifest_sha256": "2bcb9c3cdfc544d63adb96d15706cca0d02c46ba4f1a4e1cc834af0e091617f1",
+    "manifest_sha256": "aeb6400e158066d881fc5db80e309facd5674f883fb58f90f76aec82a0ffc459",
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -86,7 +158,20 @@
           "fixture_ids": [
             "parallel-rating-outer-relaxation-001"
           ],
-          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+          "property_suites": [],
+          "recipes": [
+            {
+              "command": "julia --startup-file=no --project=. recipes/parallel_member_limits/recipe.jl",
+              "expected_finding_codes": [
+                "W.CONTRACT.PARALLEL_MEMBER_LIMIT_LOSS"
+              ],
+              "expected_status": "failed",
+              "operation": "check_contract",
+              "recipe_id": "parallel_member_limits",
+              "source_sha256": "f574bbd2f34ffe129475cc715828cc526c16e9dc999d7b33e60ef78937d0558d"
+            }
+          ],
+          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
         }
       ],
       "implementation_status": "implemented",
@@ -107,7 +192,21 @@
           "fixture_ids": [
             "neutral-ground-reference-conflation-001"
           ],
-          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+          "property_suites": [],
+          "recipes": [
+            {
+              "command": "julia --startup-file=no --project=. recipes/neutral_ground_reference/recipe.jl",
+              "expected_finding_codes": [
+                "E.CONTRACT.NEUTRAL_CONTINUITY_MISMATCH",
+                "E.CONTRACT.GROUND_REFERENCE_RELATION_MISMATCH"
+              ],
+              "expected_status": "failed",
+              "operation": "check_contract",
+              "recipe_id": "neutral_ground_reference",
+              "source_sha256": "691eafc1317d003dd63c78b982554f7f2e97b08a05ef4220a3352d4d997a5fd6"
+            }
+          ],
+          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
         }
       ],
       "implementation_status": "implemented",
@@ -126,7 +225,9 @@
           "fixture_ids": [
             "claimed-feasible-invalid-solution-001"
           ],
-          "source_sha256": "9be8d8593476ab6ba8c67bde349ed86dc80c0ef6bf23b23fc9e3527daaa3a215"
+          "property_suites": [],
+          "recipes": [],
+          "source_sha256": "c8db26ef94db07473441a400c9d4890f30f3d81508dd78508feb8bc9cd7918a2"
         }
       ],
       "implementation_status": "implemented",
@@ -145,7 +246,9 @@
           "fixture_ids": [
             "load-voltage-base-mismatch-001"
           ],
-          "source_sha256": "af5777a1b6dff85fa7c814edec66e2a3dd464f441441ddcbd570c2d0ef823c07"
+          "property_suites": [],
+          "recipes": [],
+          "source_sha256": "d84b428b259d0e21b633b187c3144ea98d914cda7da006d9899a63f5f4616de0"
         }
       ],
       "implementation_status": "implemented",
@@ -164,7 +267,9 @@
           "fixture_ids": [
             "transformer-tap-domain-loss-001"
           ],
-          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+          "property_suites": [],
+          "recipes": [],
+          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
         }
       ],
       "implementation_status": "implemented",
@@ -184,7 +289,9 @@
           "fixture_ids": [
             "transformer-winding-role-swap-001"
           ],
-          "source_sha256": "72ec95753f7688a1f243bd29e6de10668927274fb355f2343e0c79492f54d853"
+          "property_suites": [],
+          "recipes": [],
+          "source_sha256": "46758e586ff05db4830bba9553cfa243d52a020385cc1a937fad3e45ee876a85"
         }
       ],
       "implementation_status": "implemented",
@@ -204,7 +311,9 @@
           "fixture_ids": [
             "decision-manifest-terminal-only-001"
           ],
-          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+          "property_suites": [],
+          "recipes": [],
+          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
         }
       ],
       "implementation_status": "implemented",
@@ -225,7 +334,9 @@
           "fixture_ids": [
             "kron-boundary-grounding-001"
           ],
-          "source_sha256": "0e23362514caaf436f3f1c57e48d4a6ac68c3b2f734e0e3d9470e38547398272"
+          "property_suites": [],
+          "recipes": [],
+          "source_sha256": "cda76def28e24ea998aa79df36fd81652cd8f3a8b67e8ac3fe7f40562687d3da"
         }
       ],
       "implementation_status": "implemented",
@@ -246,7 +357,9 @@
           "fixture_ids": [
             "positive-sequence-collapse-001"
           ],
-          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+          "property_suites": [],
+          "recipes": [],
+          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
         }
       ],
       "implementation_status": "implemented",
@@ -267,7 +380,9 @@
           "fixture_ids": [
             "state-dependent-equivalent-001"
           ],
-          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+          "property_suites": [],
+          "recipes": [],
+          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
         }
       ],
       "implementation_status": "implemented",
@@ -287,7 +402,9 @@
           "fixture_ids": [
             "reference-singularity-001"
           ],
-          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+          "property_suites": [],
+          "recipes": [],
+          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
         }
       ],
       "implementation_status": "implemented",
@@ -307,7 +424,40 @@
           "fixture_ids": [
             "terminal-permutation-001"
           ],
-          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+          "property_suites": [
+            {
+              "case_count": 64,
+              "does_not_establish": [
+                "Random sampling proves the complete typed coordinate-action theorem.",
+                "Generated matrices represent every physical line or cable class.",
+                "A primitive-level pass preserves assets, limits, controls, decisions, objectives, or solver behavior.",
+                "An injected failure is a newly discovered scientific counterexample."
+              ],
+              "expected_finding_codes": [
+                "E.CONTRACT.PERMUTATION_RELATION_MISMATCH"
+              ],
+              "failure_classification": "expected_contract_rejection",
+              "generator_domain": [
+                "Dimensions are integers from one through six.",
+                "Real and imaginary matrix parts are finite, reciprocal, strictly diagonally dominant, and have positive diagonal entries.",
+                "Endpoint terminal labels are distinct and the exact target applies one explicit bijection to maps and matrix coordinates.",
+                "The negative property injects a 0.01 ohm real perturbation at target coordinate (1,1) after exact permutation."
+              ],
+              "minimization_strategy": "retain target coordinate 1 and its mapped source coordinate, then discard all other coordinates",
+              "properties_checked": [
+                "Every exactly permuted endpoint map and series matrix returns passed.",
+                "Every injected one-entry matrix corruption returns failed with E.CONTRACT.PERMUTATION_RELATION_MISMATCH.",
+                "Every injected failure shrinks to a one-conductor witness with the same Finding code.",
+                "Replaying the recorded algorithm and seed produces the same case summaries."
+              ],
+              "property_suite_id": "terminal_permutation_seeded_properties",
+              "seed": "0x6d5a56da4b9c2f17",
+              "seed_algorithm": "splitmix64-v1",
+              "source_sha256": "840b333bd7af48dd2de21b91d4bcd98ebce295f69043c27b0c3edff32cfda8e0"
+            }
+          ],
+          "recipes": [],
+          "source_sha256": "4f898da23f1f400d76cdb9f5f53c4c33f9cda45c33db5f241d342be31bc9e12c"
         }
       ],
       "implementation_status": "implemented",
@@ -327,7 +477,9 @@
           "fixture_ids": [
             "solved-network-feasibility-001"
           ],
-          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+          "property_suites": [],
+          "recipes": [],
+          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
         }
       ],
       "implementation_status": "implemented",
@@ -347,14 +499,72 @@
           "fixture_ids": [
             "unit-base-serialization-001"
           ],
-          "source_sha256": "012f3f9e3cd81986520bd6b7971e9867de4aaf0c923853efe2858869a783b0d4"
+          "property_suites": [
+            {
+              "case_count": 64,
+              "does_not_establish": [
+                "Matching declarations authenticate how a semantic hash was computed.",
+                "Matching metadata proves a physical SI-to-per-unit conversion or its inverse.",
+                "Generated base maps cover every package scaling policy or component-local coordinate system.",
+                "A declared serialization pass preserves equations, limits, decisions, objectives, or solver behavior.",
+                "An injected metadata fault is a newly discovered scientific counterexample."
+              ],
+              "expected_finding_codes": [
+                "E.CONTRACT.UNIT_SYSTEM_MISMATCH",
+                "E.CONTRACT.BASE_MAP_MISMATCH",
+                "E.CONTRACT.SERIALIZED_PAYLOAD_MISMATCH"
+              ],
+              "failure_classification": "expected_contract_rejection",
+              "generator_domain": [
+                "Voltage bases are integer-valued floats from 100 V through 35 kV and power bases are integer kVA values from 10 kVA through 10 MVA.",
+                "Current, impedance, and admittance bases are finite and positive and satisfy I=S/V, Z=V^2/S, and Y=1/Z before fault injection.",
+                "The exact target is produced by JSON3 encoding and decoding and reverses base-map key insertion order.",
+                "Independent negative properties change only the unit-system string, one voltage-base value, or the final semantic-hash digit."
+              ],
+              "minimization_strategy": "retain unit_system, semantic_hash, and only voltage_V in each base map, then replay exactly one mutation",
+              "properties_checked": [
+                "Every exact JSON round trip passes despite base-map insertion-order changes.",
+                "Every unit-system mutation fails with E.CONTRACT.UNIT_SYSTEM_MISMATCH.",
+                "Every one-value base-map mutation fails with E.CONTRACT.BASE_MAP_MISMATCH.",
+                "Every semantic-hash mutation fails with E.CONTRACT.SERIALIZED_PAYLOAD_MISMATCH.",
+                "Every injected failure minimizes to one positive finite base value while preserving its Finding code.",
+                "Replaying the recorded algorithm and seed produces the same case summaries."
+              ],
+              "property_suite_id": "unit_base_serialization_seeded_properties",
+              "seed": "0x4f1bbcdc6762c7a9",
+              "seed_algorithm": "splitmix64-v1",
+              "source_sha256": "061755a49d5a847b045db9f6063ea58a45708344d49b0746fc38f5722e903540"
+            }
+          ],
+          "recipes": [],
+          "source_sha256": "b5bb78a923202528771c98248c3c1ee00c88bbaa2dd429d965148c8a7db91b92"
         }
       ],
       "implementation_status": "implemented",
       "repository": "frederikgeth/BMOPFTools.jl"
+    },
+    "PSK-000015": {
+      "contracts": [],
+      "implementation_status": "not_applicable",
+      "repository": null
+    },
+    "PSK-000016": {
+      "contracts": [],
+      "implementation_status": "not_applicable",
+      "repository": null
+    },
+    "PSK-000017": {
+      "contracts": [],
+      "implementation_status": "not_applicable",
+      "repository": null
+    },
+    "PSK-000018": {
+      "contracts": [],
+      "implementation_status": "not_applicable",
+      "repository": null
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "4b6a3edb7135f7f4b4084b0866bf99d68812a9a0cc7e3fc976f0f73d7773e6b3",
+  "pair_sha256": "e4209fbf0c1f8293eac23086f3e66a814e472c45412d2f3e3a6c67c4d299a97d",
   "schema_version": "0.1.0"
 }

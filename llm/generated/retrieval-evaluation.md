@@ -4,8 +4,8 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `1e7fd8ab1edc5b4be58eb6d8064d5af7cb2e661289817e9e441191323225773c`<br>
-**Cases:** 60
+**Corpus hash:** `de38cf25cdb50c14316a202416341ee9b634f12047c864e2807c472510885eca`<br>
+**Cases:** 69
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
 The latter is permitted to add mandatory claims and concepts only after the query router identifies
@@ -16,12 +16,12 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Measure | Result | Release gate? |
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
-| Open-corpus lexical evidence recall@5 | 22.6% | diagnostic |
-| Open-corpus lexical evidence recall@10 | 31.8% | diagnostic |
+| Open-corpus lexical evidence recall@5 | 24.3% | diagnostic |
+| Open-corpus lexical evidence recall@10 | 32.1% | diagnostic |
 | Open-corpus complete evidence@10 | 0.0% | diagnostic |
-| Evidence-only lexical recall@5 | 33.3% | diagnostic |
-| Evidence-only lexical recall@10 | 43.0% | diagnostic |
-| Evidence-only complete evidence@10 | 1.7% | diagnostic |
+| Evidence-only lexical recall@5 | 33.7% | diagnostic |
+| Evidence-only lexical recall@10 | 42.1% | diagnostic |
+| Evidence-only complete evidence@10 | 1.4% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
 | Packets with qualification, failure, shorthand, and scope | 100.0% | yes |
@@ -43,25 +43,25 @@ evidence sets, so the effective target count is nine rather than 27 independent 
 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `lexical` | 33.4% | 44.9% | 0.0% | 0/33 | 5/33 | 0.201 |
-| `char_tfidf` | 36.2% | 44.2% | 0.0% | 0/33 | 6/33 | 0.224 |
-| `hybrid` | 38.0% | 46.6% | 0.0% | 0/33 | 5/33 | 0.219 |
-| `graph` | 38.9% | 57.7% | 21.2% | 7/33 | 4/33 | 0.252 |
+| `lexical` | 33.1% | 44.9% | 0.0% | 0/33 | 5/33 | 0.200 |
+| `char_tfidf` | 35.4% | 45.2% | 0.0% | 0/33 | 6/33 | 0.224 |
+| `hybrid` | 38.5% | 46.6% | 0.0% | 0/33 | 5/33 | 0.218 |
+| `graph` | 38.4% | 57.3% | 18.2% | 6/33 | 4/33 | 0.254 |
 
 Held-out contract-router firing: **25/33 (75.8%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **17/33 (51.5%)**; this remains diagnostic because the set is synthetic and clustered.
 Target clusters: **11**, with cluster sizes `[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]`; percentage differences are therefore not independent observations.
 Hybrid versus lexical complete@10: **0/33** versus **0/33**; hybrid zero-recall@10: **5/33**.
-Graph versus hybrid complete@10: **7/33** versus **0/33**.
+Graph versus hybrid complete@10: **6/33** versus **0/33**.
 
 | Held-out case | Audience | Expected route | Observed top-1 | Router fired | Lexical complete@10 | TF-IDF complete@10 | Hybrid complete@10 | Graph complete@10 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `HOLDOUT-GRAPH-STUDENT` | `student` | `one-universal-network-graph` | `one-universal-network-graph` | yes | no | no | no | yes |
-| `HOLDOUT-GRAPH-SOFTWARE` | `software_engineer` | `one-universal-network-graph` | `none` | no | no | no | no | yes |
+| `HOLDOUT-GRAPH-SOFTWARE` | `software_engineer` | `one-universal-network-graph` | `none` | no | no | no | no | no |
 | `HOLDOUT-GRAPH-POWER` | `power_engineer` | `one-universal-network-graph` | `radial-is-representation-independent` | yes | no | no | no | no |
-| `HOLDOUT-YSPLIT-STUDENT` | `student` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | yes |
+| `HOLDOUT-YSPLIT-STUDENT` | `student` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
 | `HOLDOUT-YSPLIT-SOFTWARE` | `software_engineer` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
-| `HOLDOUT-YSPLIT-POWER` | `power_engineer` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
+| `HOLDOUT-YSPLIT-POWER` | `power_engineer` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | yes |
 | `HOLDOUT-YBUS-STUDENT` | `student` | `nodal-operator-is-source-network` | `none` | no | no | no | no | yes |
 | `HOLDOUT-YBUS-SOFTWARE` | `software_engineer` | `nodal-operator-is-source-network` | `none` | no | no | no | no | no |
 | `HOLDOUT-YBUS-POWER` | `power_engineer` | `nodal-operator-is-source-network` | `none` | no | no | no | no | no |
@@ -94,9 +94,9 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 20 | 100.0% | 45.6% | 100.0% |
-| `software_engineer` | 20 | 100.0% | 37.2% | 100.0% |
-| `student` | 20 | 100.0% | 46.4% | 100.0% |
+| `power_engineer` | 23 | 100.0% | 43.9% | 100.0% |
+| `software_engineer` | 23 | 100.0% | 35.9% | 100.0% |
+| `student` | 23 | 100.0% | 46.5% | 100.0% |
 
 ## Case results
 
@@ -104,7 +104,7 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 | --- | --- | --- | ---: | --- |
 | `EVAL-GRAPH-STUDENT` | `student` | `one-universal-network-graph` | 22.2% | yes |
 | `EVAL-GRAPH-SOFTWARE` | `software_engineer` | `one-universal-network-graph` | 33.3% | yes |
-| `EVAL-GRAPH-POWER` | `power_engineer` | `one-universal-network-graph` | 33.3% | yes |
+| `EVAL-GRAPH-POWER` | `power_engineer` | `one-universal-network-graph` | 22.2% | yes |
 | `EVAL-YSPLIT-STUDENT` | `student` | `loads-generators-fixed-graph-membership` | 66.7% | yes |
 | `EVAL-YSPLIT-SOFTWARE` | `software_engineer` | `loads-generators-fixed-graph-membership` | 66.7% | yes |
 | `EVAL-YSPLIT-POWER` | `power_engineer` | `loads-generators-fixed-graph-membership` | 50.0% | yes |
@@ -157,11 +157,20 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 | `EVAL-TERMINAL-PERMUTATION-SOFTWARE` | `software_engineer` | `terminal-permutation-is-cosmetic` | 20.0% | yes |
 | `EVAL-TERMINAL-PERMUTATION-POWER` | `power_engineer` | `terminal-permutation-is-cosmetic` | 0.0% | yes |
 | `EVAL-FEASIBILITY-WITNESS-STUDENT` | `student` | `complete-feasibility-status-is-enough` | 25.0% | yes |
-| `EVAL-FEASIBILITY-WITNESS-SOFTWARE` | `software_engineer` | `complete-feasibility-status-is-enough` | 50.0% | yes |
+| `EVAL-FEASIBILITY-WITNESS-SOFTWARE` | `software_engineer` | `complete-feasibility-status-is-enough` | 25.0% | yes |
 | `EVAL-FEASIBILITY-WITNESS-POWER` | `power_engineer` | `complete-feasibility-status-is-enough` | 50.0% | yes |
 | `EVAL-UNIT-BASE-STUDENT` | `student` | `unit-base-metadata-is-equivalence` | 25.0% | yes |
 | `EVAL-UNIT-BASE-SOFTWARE` | `software_engineer` | `unit-base-metadata-is-equivalence` | 25.0% | yes |
 | `EVAL-UNIT-BASE-POWER` | `power_engineer` | `unit-base-metadata-is-equivalence` | 50.0% | yes |
+| `EVAL-NEURAL-NEGATIVE-STUDENT` | `student` | `generic-neural-retrieval-is-automatically-better` | 50.0% | yes |
+| `EVAL-NEURAL-NEGATIVE-SOFTWARE` | `software_engineer` | `generic-neural-retrieval-is-automatically-better` | 50.0% | yes |
+| `EVAL-NEURAL-NEGATIVE-POWER` | `power_engineer` | `generic-neural-retrieval-is-automatically-better` | 50.0% | yes |
+| `EVAL-ITERATION-PATHOLOGY-STUDENT` | `student` | `iteration-failure-proves-infeasibility` | 66.7% | yes |
+| `EVAL-ITERATION-PATHOLOGY-SOFTWARE` | `software_engineer` | `iteration-failure-proves-infeasibility` | 33.3% | yes |
+| `EVAL-ITERATION-PATHOLOGY-POWER` | `power_engineer` | `iteration-failure-proves-infeasibility` | 33.3% | yes |
+| `EVAL-CARSON-OPEN-STUDENT` | `student` | `reference-matrix-match-proves-source-provenance` | 25.0% | yes |
+| `EVAL-CARSON-OPEN-SOFTWARE` | `software_engineer` | `reference-matrix-match-proves-source-provenance` | 25.0% | yes |
+| `EVAL-CARSON-OPEN-POWER` | `power_engineer` | `reference-matrix-match-proves-source-provenance` | 25.0% | yes |
 
 ## Interpretation and next boundary
 

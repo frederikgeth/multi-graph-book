@@ -175,12 +175,66 @@ def render_markdown(packet: dict) -> str:
                 f"book artifacts: {', '.join(item['artifact_paths'])}"
             )
         lines.append("")
+    if packet["negative_results"]:
+        lines += ["## Negative results", ""]
+        for item in packet["negative_results"]:
+            lines.append(f"- **{item['knowledge_id']}** — {item['observed_result']}")
+            lines.append(f"  - Failure criterion: {item['failure_criterion']}")
+            lines.append(f"  - Interpretation: {item['interpretation']}")
+        lines.append("")
+    if packet["numerical_pathologies"]:
+        lines += ["## Numerical pathologies", ""]
+        for item in packet["numerical_pathologies"]:
+            lines.append(f"- **{item['knowledge_id']}** — {item['observed_behavior']}")
+            lines.append(f"  - Algorithmic boundary: {item['algorithmic_boundary']}")
+            lines.append(f"  - Discriminating checks: {' '.join(item['discriminating_checks'])}")
+        lines.append("")
+    if packet["scope_boundaries"]:
+        lines += ["## Scope boundaries", ""]
+        for item in packet["scope_boundaries"]:
+            lines.append(f"- **{item['knowledge_id']}** — {item['established_within']}")
+            lines.append(f"  - Outside scope: {' '.join(item['outside_scope'])}")
+            lines.append(f"  - Evidence required to extend: {' '.join(item['required_evidence'])}")
+        lines.append("")
+    if packet["open_questions"]:
+        lines += ["## Open questions", ""]
+        for item in packet["open_questions"]:
+            lines.append(f"- **{item['knowledge_id']}** — {item['question']}")
+            lines.append(f"  - Known evidence: {' '.join(item['known_evidence'])}")
+            lines.append(f"  - Unresolved information: {' '.join(item['unresolved_information'])}")
+            lines.append(f"  - Resolution criteria: {' '.join(item['resolution_criteria'])}")
+        lines.append("")
     if packet["executable_checks"]:
         lines += ["## Executable checks", ""]
         for item in packet["executable_checks"]:
             lines.append(
                 f"- **{item['knowledge_id']}** — `{item['repository']}` contracts: "
                 f"{', '.join(item['contract_ids'])}; status: `{item['implementation_status']}`"
+            )
+            for pinned in item.get("pinned_contracts", []):
+                for suite in pinned.get("property_suites", []):
+                    lines.append(
+                        f"  - Seeded property suite `{suite['property_suite_id']}`: "
+                        f"{suite['case_count']} cases using `{suite['seed_algorithm']}` "
+                        f"seed `{suite['seed']}`; failure classification: "
+                        f"`{suite['failure_classification']}`"
+                    )
+                    lines.append(
+                        f"    Minimization: {suite['minimization_strategy']}"
+                    )
+        lines.append("")
+    runnable = [
+        (item["knowledge_id"], recipe)
+        for item in packet["implementation_examples"]
+        for recipe in item.get("recipes", [])
+    ]
+    if runnable:
+        lines += ["## Implementation examples", ""]
+        for knowledge_id, recipe in runnable:
+            lines.append(
+                f"- **{knowledge_id} / {recipe['recipe_id']}** — "
+                f"`{recipe['command']}` (expected contract status: "
+                f"`{recipe['expected_status']}`)"
             )
         lines.append("")
     if contract["failure_consequences"]:

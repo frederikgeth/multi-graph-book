@@ -95,19 +95,57 @@ def require_unique_strings(
 def knowledge_text(item: dict) -> str:
     book = item["book"]
     executable = item["executable"]
-    return "\n".join(
-        [
-            f"Knowledge object {item['id']}: {item['title']}",
-            f"Kind: {item['kind']}; evidence status: {item['evidence_status']}.",
-            f"Scientific statement: {item['scientific_statement']}",
-            f"Scope: {item['scope']}",
-            "Does not establish: " + " ".join(item["does_not_establish"]),
-            "Book claims: " + ", ".join(book["claim_ids"]) + ".",
-            "Book misconceptions: " + ", ".join(book["misconception_ids"]) + ".",
-            "Executable contracts: " + ", ".join(executable["contract_ids"]) + ".",
-            "Executable status: " + executable["implementation_status"] + ".",
-        ]
-    )
+    lines = [
+        f"Knowledge object {item['id']}: {item['title']}",
+        f"Kind: {item['kind']}; evidence status: {item['evidence_status']}.",
+        f"Scientific statement: {item['scientific_statement']}",
+        f"Scope: {item['scope']}",
+        "Does not establish: " + " ".join(item["does_not_establish"]),
+        "Book claims: " + ", ".join(book["claim_ids"]) + ".",
+        "Book misconceptions: " + ", ".join(book["misconception_ids"]) + ".",
+        "Executable contracts: " + (", ".join(executable["contract_ids"]) or "none") + ".",
+        "Executable status: " + executable["implementation_status"] + ".",
+    ]
+    negative_result = item.get("negative_result")
+    if negative_result:
+        lines.extend([
+            "Negative-result question: " + negative_result["question"],
+            "Hypothesis tested: " + negative_result["hypothesis"],
+            "Observed result: " + negative_result["observed_result"],
+            "Failure criterion: " + negative_result["failure_criterion"],
+            "Interpretation: " + negative_result["interpretation"],
+            "Conditions that may change the result: " + " ".join(negative_result["conditions_might_work"]),
+        ])
+    numerical_pathology = item.get("numerical_pathology")
+    if numerical_pathology:
+        lines.extend([
+            "Numerical pathology: " + numerical_pathology["phenomenon"],
+            "Observed behavior: " + numerical_pathology["observed_behavior"],
+            "Algorithmic boundary: " + numerical_pathology["algorithmic_boundary"],
+            "Invalid inferences: " + " ".join(numerical_pathology["invalid_inferences"]),
+            "Discriminating checks: " + " ".join(numerical_pathology["discriminating_checks"]),
+            "Conditions that may change the behavior: " + " ".join(numerical_pathology["conditions_might_change"]),
+        ])
+    scope_boundary = item.get("scope_boundary")
+    if scope_boundary:
+        lines.extend([
+            "Established within: " + scope_boundary["established_within"],
+            "Boundary conditions: " + " ".join(scope_boundary["boundary_conditions"]),
+            "Outside scope: " + " ".join(scope_boundary["outside_scope"]),
+            "Unsafe extensions: " + " ".join(scope_boundary["unsafe_extensions"]),
+            "Evidence required to extend: " + " ".join(scope_boundary["required_evidence"]),
+        ])
+    open_question = item.get("open_question")
+    if open_question:
+        lines.extend([
+            "Open question: " + open_question["question"],
+            "Known evidence: " + " ".join(open_question["known_evidence"]),
+            "Unresolved information: " + " ".join(open_question["unresolved_information"]),
+            "Attempted discriminators: " + " ".join(open_question["attempted_discriminators"]),
+            "Resolution criteria: " + " ".join(open_question["resolution_criteria"]),
+            "Next actions: " + " ".join(open_question["next_actions"]),
+        ])
+    return "\n".join(lines)
 
 
 def validate_and_build() -> tuple[list[dict], dict, list[str]]:
@@ -158,7 +196,13 @@ def validate_and_build() -> tuple[list[dict], dict, list[str]]:
             errors,
             allow_empty=True,
         )
-        require_unique_strings(record_id, "book.counterexample_ids", book.get("counterexample_ids"), errors)
+        require_unique_strings(
+            record_id,
+            "book.counterexample_ids",
+            book.get("counterexample_ids"),
+            errors,
+            allow_empty=True,
+        )
         artifact_paths = require_unique_strings(record_id, "book.artifact_paths", book.get("artifact_paths"), errors)
         source_paths = require_unique_strings(record_id, "book.source_paths", book.get("source_paths"), errors)
         unknown_claims = sorted(referenced_claims - claim_ids)
@@ -191,16 +235,45 @@ def validate_and_build() -> tuple[list[dict], dict, list[str]]:
             if not (ROOT / path_string).is_file():
                 errors.append(f"{record_id}: missing scientific source {path_string}")
 
-        if executable.get("repository") != "frederikgeth/BMOPFTools.jl":
-            errors.append(f"{record_id}: unexpected executable repository")
-        if executable.get("implementation_status") not in {"planned", "partial", "implemented"}:
+        implementation_status = executable.get("implementation_status")
+        if implementation_status not in {"planned", "partial", "implemented", "not_applicable"}:
             errors.append(f"{record_id}: invalid implementation status")
-        contract_ids = require_unique_strings(record_id, "executable.contract_ids", executable.get("contract_ids"), errors)
-        finding_codes = require_unique_strings(record_id, "executable.finding_codes", executable.get("finding_codes"), errors)
-        related_codes = require_unique_strings(
-            record_id, "executable.related_finding_codes", executable.get("related_finding_codes"), errors
+        book_only = implementation_status == "not_applicable"
+        if book_only:
+            if "repository" in executable:
+                errors.append(f"{record_id}: book-only negative knowledge must not name an executable repository")
+        elif executable.get("repository") != "frederikgeth/BMOPFTools.jl":
+            errors.append(f"{record_id}: unexpected executable repository")
+        contract_ids = require_unique_strings(
+            record_id,
+            "executable.contract_ids",
+            executable.get("contract_ids"),
+            errors,
+            allow_empty=book_only,
         )
-        require_unique_strings(record_id, "executable.fixture_ids", executable.get("fixture_ids"), errors)
+        finding_codes = require_unique_strings(
+            record_id,
+            "executable.finding_codes",
+            executable.get("finding_codes"),
+            errors,
+            allow_empty=book_only,
+        )
+        related_codes = require_unique_strings(
+            record_id,
+            "executable.related_finding_codes",
+            executable.get("related_finding_codes"),
+            errors,
+            allow_empty=book_only,
+        )
+        fixture_ids = require_unique_strings(
+            record_id,
+            "executable.fixture_ids",
+            executable.get("fixture_ids"),
+            errors,
+            allow_empty=book_only,
+        )
+        if book_only and any((contract_ids, finding_codes, related_codes, fixture_ids)):
+            errors.append(f"{record_id}: not_applicable executable metadata must have empty link arrays")
         for contract_id in contract_ids:
             if not CONTRACT_ID.fullmatch(contract_id):
                 errors.append(f"{record_id}: invalid executable contract ID {contract_id}")
@@ -208,33 +281,143 @@ def validate_and_build() -> tuple[list[dict], dict, list[str]]:
             if not FINDING_CODE.fullmatch(code):
                 errors.append(f"{record_id}: invalid Finding code {code}")
 
-        records.append(
-            {
-                "schema_version": SCHEMA_VERSION,
-                "record_id": f"knowledge:{record_id}",
-                "record_type": "scientific_knowledge",
-                "knowledge_id": record_id,
-                "kind": item["kind"],
-                "title": item["title"],
-                "scientific_statement": item["scientific_statement"],
-                "scope": item["scope"],
-                "evidence_status": item["evidence_status"],
-                "does_not_establish": item["does_not_establish"],
-                "book": book,
-                "executable": executable,
-                "source": {
-                    "repository": "frederikgeth/multi-graph-book",
-                    "path": "knowledge/psk.toml",
-                    "anchor": record_id,
-                    "sha256": sha256_file(REGISTRY),
-                },
-                "release": release_identity(),
-                "text": knowledge_text(item),
-            }
-        )
+        negative_result = item.get("negative_result")
+        if item.get("kind") == "negative-result":
+            if not isinstance(negative_result, dict):
+                errors.append(f"{record_id}: negative-result kind requires a negative_result table")
+            else:
+                for field in (
+                    "question", "hypothesis", "motivation", "experimental_setup",
+                    "software_environment", "observed_result", "failure_criterion",
+                    "interpretation", "review_status",
+                ):
+                    if not isinstance(negative_result.get(field), str) or not negative_result[field].strip():
+                        errors.append(f"{record_id}: missing or empty negative_result.{field}")
+                for field in (
+                    "cases", "attempted_methods", "establishes", "conditions_might_work",
+                    "reproducer_commands",
+                ):
+                    require_unique_strings(
+                        record_id,
+                        f"negative_result.{field}",
+                        negative_result.get(field),
+                        errors,
+                    )
+                require_unique_strings(
+                    record_id,
+                    "negative_result.literature_keys",
+                    negative_result.get("literature_keys"),
+                    errors,
+                    allow_empty=True,
+                )
+        elif negative_result is not None:
+            errors.append(f"{record_id}: negative_result table is only valid for negative-result kind")
+
+        numerical_pathology = item.get("numerical_pathology")
+        if item.get("kind") == "numerical-pathology":
+            if not isinstance(numerical_pathology, dict):
+                errors.append(f"{record_id}: numerical-pathology kind requires a numerical_pathology table")
+            else:
+                for field in (
+                    "phenomenon", "experimental_setup", "observed_behavior",
+                    "algorithmic_boundary", "review_status",
+                ):
+                    if not isinstance(numerical_pathology.get(field), str) or not numerical_pathology[field].strip():
+                        errors.append(f"{record_id}: missing or empty numerical_pathology.{field}")
+                for field in (
+                    "invalid_inferences", "discriminating_checks", "conditions_might_change",
+                    "reproducer_commands",
+                ):
+                    require_unique_strings(
+                        record_id,
+                        f"numerical_pathology.{field}",
+                        numerical_pathology.get(field),
+                        errors,
+                    )
+        elif numerical_pathology is not None:
+            errors.append(f"{record_id}: numerical_pathology table is only valid for numerical-pathology kind")
+
+        scope_boundary = item.get("scope_boundary")
+        if item.get("kind") == "scope-boundary":
+            if not isinstance(scope_boundary, dict):
+                errors.append(f"{record_id}: scope-boundary kind requires a scope_boundary table")
+            else:
+                for field in ("established_within", "review_status"):
+                    if not isinstance(scope_boundary.get(field), str) or not scope_boundary[field].strip():
+                        errors.append(f"{record_id}: missing or empty scope_boundary.{field}")
+                for field in (
+                    "boundary_conditions", "outside_scope", "unsafe_extensions",
+                    "required_evidence", "reproducer_commands",
+                ):
+                    require_unique_strings(
+                        record_id,
+                        f"scope_boundary.{field}",
+                        scope_boundary.get(field),
+                        errors,
+                    )
+        elif scope_boundary is not None:
+            errors.append(f"{record_id}: scope_boundary table is only valid for scope-boundary kind")
+
+        open_question = item.get("open_question")
+        if item.get("kind") == "open-question":
+            if not isinstance(open_question, dict):
+                errors.append(f"{record_id}: open-question kind requires an open_question table")
+            else:
+                for field in ("question", "review_status"):
+                    if not isinstance(open_question.get(field), str) or not open_question[field].strip():
+                        errors.append(f"{record_id}: missing or empty open_question.{field}")
+                for field in (
+                    "known_evidence", "unresolved_information", "attempted_discriminators",
+                    "resolution_criteria", "next_actions", "reproducer_commands",
+                ):
+                    require_unique_strings(
+                        record_id,
+                        f"open_question.{field}",
+                        open_question.get(field),
+                        errors,
+                    )
+        elif open_question is not None:
+            errors.append(f"{record_id}: open_question table is only valid for open-question kind")
+
+        record = {
+            "schema_version": SCHEMA_VERSION,
+            "record_id": f"knowledge:{record_id}",
+            "record_type": "scientific_knowledge",
+            "knowledge_id": record_id,
+            "kind": item["kind"],
+            "title": item["title"],
+            "scientific_statement": item["scientific_statement"],
+            "scope": item["scope"],
+            "evidence_status": item["evidence_status"],
+            "does_not_establish": item["does_not_establish"],
+            "book": book,
+            "executable": executable,
+            "source": {
+                "repository": "frederikgeth/multi-graph-book",
+                "path": "knowledge/psk.toml",
+                "anchor": record_id,
+                "sha256": sha256_file(REGISTRY),
+            },
+            "release": release_identity(),
+            "text": knowledge_text(item),
+        }
+        if negative_result is not None:
+            record["negative_result"] = negative_result
+        if numerical_pathology is not None:
+            record["numerical_pathology"] = numerical_pathology
+        if scope_boundary is not None:
+            record["scope_boundary"] = scope_boundary
+        if open_question is not None:
+            record["open_question"] = open_question
+        records.append(record)
 
     records.sort(key=lambda item: item["knowledge_id"])
-    source_paths = {REGISTRY, CLAIMS, MISCONCEPTIONS, SCHEMA, RELEASE_MANIFEST}
+    # The rendered records already embed `release_identity()`, so changes to
+    # its ID/status/review fields make the generated output stale. Do not also
+    # hash the complete release-candidate inventory here: that inventory hashes
+    # the derived LLM artifacts and would create a release-manifest ↔ corpus
+    # dependency cycle in which regeneration can never reach a fixed point.
+    source_paths = {REGISTRY, CLAIMS, MISCONCEPTIONS, SCHEMA}
     for item in knowledge:
         for path_string in item.get("book", {}).get("artifact_paths", []):
             source_paths.add(ROOT / path_string)

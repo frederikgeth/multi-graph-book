@@ -50,7 +50,11 @@
     "evidence_status": {"type": "string"},
     "does_not_establish": {"type": "array", "items": {"type": "string"}},
     "book": {"type": "object"},
-    "executable": {"type": "object"}
+    "executable": {"type": "object"},
+    "negative_result": {"type": "object"},
+    "numerical_pathology": {"type": "object"},
+    "scope_boundary": {"type": "object"},
+    "open_question": {"type": "object"}
   },
   "allOf": [
     {

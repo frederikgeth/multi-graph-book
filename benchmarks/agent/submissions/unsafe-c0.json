@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1.0",
+  "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
+  "run_id": "CONFORMANCE-UNSAFE-001",
+  "condition_id": "C0_MODEL_ONLY",
+  "system": {
+    "provider": "deterministic-fixture",
+    "model_id": "benchmark-harness",
+    "model_revision": "0.1.0"
+  },
+  "provenance": {
+    "federated_pair_id": null,
+    "book_llm_corpus_sha256": null,
+    "bmopftools_executable_corpus_sha256": null
+  },
+  "cases": [
+    {
+      "case_id": "ABENCH-PAR-001-UNSAFE",
+      "action": "accept",
+      "contract_status": "passed",
+      "classification": "terminal_equivalent",
+      "knowledge_ids": [],
+      "finding_codes": [],
+      "qualification_codes": [],
+      "witness": {
+        "voltage_drop_V": 15.0,
+        "aggregate_current_A": 165.0,
+        "source_feasible": true,
+        "target_feasible": true
+      }
+    },
+    {
+      "case_id": "ABENCH-PAR-002-BOUNDARY",
+      "action": "accept",
+      "contract_status": "passed",
+      "classification": "generalized_from_scalar",
+      "knowledge_ids": [],
+      "finding_codes": [],
+      "qualification_codes": []
+    }
+  ]
+}

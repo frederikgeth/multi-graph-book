@@ -69,6 +69,17 @@ python3 scripts/search_llm_corpus.py \
   --audience power_engineer --context-packet --json
 ```
 
+The packet keeps evidence classes separate. `counterexamples` names concrete
+delimiting cases, `negative_results` preserves failed experiments with their
+criteria and scope, `numerical_pathologies` records observed algorithmic
+behavior plus the checks needed before drawing a physical conclusion, and
+`scope_boundaries` separates established domains from unproven extensions.
+`open_questions` preserves known evidence, attempted discriminators, missing
+information, and explicit resolution criteria without presenting an unknown as
+an unsupported topic or a negative result.
+Book-only records leave `executable_checks` empty rather than inventing a
+BMOPFTools counterpart.
+
 The generated `retrieval-evaluation.md` report keeps raw lexical recall
 separate from surface-semantic and contract-expanded recall. Contract expansion may add evidence
 mandated by a detected dangerous-shortcut contract; it must never be reported

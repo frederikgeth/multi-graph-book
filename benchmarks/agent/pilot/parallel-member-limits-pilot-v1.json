@@ -1,0 +1,190 @@
+{
+  "schema_version": "0.1.0",
+  "pilot_id": "APILOT-PARALLEL-LIMITS-001",
+  "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
+  "status": "design_complete_execution_not_authorized",
+  "research_question": "Within one fixed agent system, how reliably does the agent locate and correctly apply the resources supplied by four cumulative bundles when producing qualified rejection and abstention on the transparent PSK-000001 slice?",
+  "active_conditions": [
+    "C0_MODEL_ONLY",
+    "C1_REPOSITORY_DOCS",
+    "C5_EXECUTABLE_CONTRACTS",
+    "C6_NEGATIVE_KNOWLEDGE"
+  ],
+  "design": {
+    "experimental_unit": "one fresh conversation receiving both benchmark cases under one condition",
+    "repetitions_per_condition_per_system": 4,
+    "total_runs_per_system": 16,
+    "conversation_reset": "fresh process or conversation; no state shared across runs",
+    "case_order_rule": "odd repetitions use ABENCH-PAR-001-UNSAFE then ABENCH-PAR-002-BOUNDARY; even repetitions reverse that order",
+    "condition_sequences": [
+      ["C0_MODEL_ONLY", "C1_REPOSITORY_DOCS", "C5_EXECUTABLE_CONTRACTS", "C6_NEGATIVE_KNOWLEDGE"],
+      ["C1_REPOSITORY_DOCS", "C5_EXECUTABLE_CONTRACTS", "C6_NEGATIVE_KNOWLEDGE", "C0_MODEL_ONLY"],
+      ["C5_EXECUTABLE_CONTRACTS", "C6_NEGATIVE_KNOWLEDGE", "C0_MODEL_ONLY", "C1_REPOSITORY_DOCS"],
+      ["C6_NEGATIVE_KNOWLEDGE", "C0_MODEL_ONLY", "C1_REPOSITORY_DOCS", "C5_EXECUTABLE_CONTRACTS"]
+    ],
+    "prompt_policy": "case prompt text is byte-identical across conditions; only declared resource exposure differs",
+    "write_policy": "read-only; repository edits, solver execution, and network search are unavailable",
+    "capture_policy": "retain raw response, structured submission, tool transcript, timestamps, and validation errors"
+  },
+  "system_slots": [
+    {
+      "slot_id": "SYSTEM-01",
+      "selection_status": "pending_human_selection",
+      "provider": null,
+      "model_id": null,
+      "model_revision": null,
+      "execution_interface": null
+    }
+  ],
+  "sampling_settings": {
+    "status": "pending_exact_provider_settings",
+    "temperature": null,
+    "top_p": null,
+    "seed": null,
+    "reasoning_effort": null,
+    "max_output_tokens": 4000,
+    "record_unavailable_settings_explicitly": true
+  },
+  "budgets": {
+    "wall_time_seconds_per_run": 600,
+    "tool_calls_per_run": 20,
+    "max_output_tokens_per_run": 4000
+  },
+  "resource_bundles": [
+    {
+      "bundle_id": "BUNDLE-C0",
+      "condition_id": "C0_MODEL_ONLY",
+      "exposed_sources": [],
+      "allowed_tools": [],
+      "notes": "Only the task prompt, response shape, and ordinary system instructions are exposed. Benchmark oracles are harness-private."
+    },
+    {
+      "bundle_id": "BUNDLE-C1",
+      "condition_id": "C1_REPOSITORY_DOCS",
+      "exposed_sources": [
+        {"repository": "multi-graph-book", "path": "README.md", "capability": "repository_documentation"},
+        {"repository": "multi-graph-book", "path": "ARCHITECTURE.md", "capability": "repository_documentation"},
+        {"repository": "multi-graph-book", "path": "docs/src/start/first-failure-parallel-branches.md", "capability": "repository_documentation"},
+        {"repository": "BMOPFTools.jl", "path": "README.md", "capability": "repository_documentation"},
+        {"repository": "BMOPFTools.jl", "path": "ARCHITECTURE.md", "capability": "repository_documentation"},
+        {"repository": "BMOPFTools.jl", "path": "docs/src/ai_assistants.md", "capability": "repository_documentation"}
+      ],
+      "allowed_tools": [],
+      "notes": "A curated, declared documentation bundle; not unrestricted repository search."
+    },
+    {
+      "bundle_id": "BUNDLE-C5",
+      "condition_id": "C5_EXECUTABLE_CONTRACTS",
+      "inherits": "BUNDLE-C1",
+      "exposed_sources": [
+        {"repository": "multi-graph-book", "path": "knowledge/psk.toml", "capability": "scientific_knowledge_export"},
+        {"repository": "multi-graph-book", "path": "generated/scientific_knowledge.jsonl", "capability": "scientific_knowledge_export"},
+        {"repository": "multi-graph-book", "path": "AGENTS.md", "capability": "agent_workflow_guidance"},
+        {"repository": "BMOPFTools.jl", "path": "generated/executable_knowledge.jsonl", "capability": "scientific_knowledge_export"},
+        {"repository": "BMOPFTools.jl", "path": "AGENTS.md", "capability": "agent_workflow_guidance"},
+        {"repository": "BMOPFTools.jl", "path": "recipes/parallel_member_limits/metadata.toml", "capability": "executable_contract_and_recipe"},
+        {"repository": "BMOPFTools.jl", "path": "recipes/parallel_member_limits/README.md", "capability": "executable_contract_and_recipe"},
+        {"repository": "BMOPFTools.jl", "path": "recipes/parallel_member_limits/recipe.jl", "capability": "executable_contract_and_recipe"},
+        {"repository": "BMOPFTools.jl", "path": "test/fixtures/negative/parallel-rating-outer-relaxation/source.json", "capability": "executable_contract_and_recipe"},
+        {"repository": "BMOPFTools.jl", "path": "test/fixtures/negative/parallel-rating-outer-relaxation/transformed.json", "capability": "executable_contract_and_recipe"}
+      ],
+      "allowed_tools": [
+        {
+          "tool_id": "bmopf_check_parallel_member_limits",
+          "source": "BMOPFTools.jl/scripts/bmopf_mcp.jl",
+          "capability": "execution_tools",
+          "invocation_limit_per_run": 20
+        }
+      ],
+      "notes": "C5 is cumulative: it inherits C1 and adds the C2-C5 capabilities as one bundle. Harness-private expected output is not exposed, and this pilot cannot attribute a difference to machine records, execution, workflow guidance, or recipes separately."
+    },
+    {
+      "bundle_id": "BUNDLE-C6",
+      "condition_id": "C6_NEGATIVE_KNOWLEDGE",
+      "inherits": "BUNDLE-C5",
+      "exposed_sources": [
+        {"repository": "multi-graph-book", "path": "llm/misconceptions.toml", "capability": "misconception_and_counterexample_retrieval"}
+      ],
+      "allowed_tools": [
+        {
+          "tool_id": "multi_graph_book_context",
+          "source": "multi-graph-book/scripts/mcp_llm_server.py",
+          "capability": "misconception_and_counterexample_retrieval",
+          "invocation_limit_per_run": 20,
+          "required_query": "Can parallel circuits be replaced by one total rating for OPF?",
+          "required_audience": "power_engineer",
+          "required_status": "qualified"
+        }
+      ],
+      "notes": "C6 inherits C5 and adds the deterministic misconception route and its qualification-aware context packet."
+    }
+  ],
+  "exclusion_rules": {
+    "allowed_reason_codes": [
+      "PROVIDER_FAILURE_BEFORE_RESPONSE",
+      "HARNESS_FAILURE",
+      "DECLARED_RESOURCE_UNAVAILABLE",
+      "CORRUPT_CAPTURE"
+    ],
+    "never_exclude_for": [
+      "wrong scientific answer",
+      "invalid structured response",
+      "failure to use an available tool",
+      "tool misuse",
+      "refusal or abstention"
+    ],
+    "adjudication": "apply before viewing benchmark scores; retain excluded records and reasons; do not replace a run unless the same rule is applied to every condition"
+  },
+  "aggregation": {
+    "primary_unit": "case-level dimension result within condition and system",
+    "reported_outputs": [
+      "eligible and excluded run counts",
+      "per-condition overall-pass counts",
+      "per-condition and per-case dimension counts",
+      "invalid-assumption detection counts",
+      "abstention counts"
+    ],
+    "missing_data": "no imputation",
+    "top_line_accuracy": "not reported",
+    "condition_effect_language": "descriptive exploratory differences across four cumulative supplied-resource bundles only; the pilot measures locating and applying supplied resources and cannot attribute effects to individual files, capabilities, or rungs of the seven-condition ladder"
+  },
+  "human_review_gate": {
+    "status": "reviewed_changes_required_before_preregistration_or_execution",
+    "latest_review": {
+      "date": "2026-08-30",
+      "outcome": "changes_required",
+      "correction_status": "applied_pending_re_review",
+      "findings": [
+        "BUNDLE-C5 exposed the package-owned expected-output oracle.",
+        "BUNDLE-C6 exposed an evaluation rubric rather than only the intended negative-knowledge resource.",
+        "The research claim needed to distinguish applying supplied knowledge from possessing latent domain knowledge.",
+        "The four active bundles cannot identify effects for individual rungs of the seven-condition ladder."
+      ]
+    },
+    "required_decisions": [
+      "approve the task and resource exposure for leakage and scientific fairness",
+      "select each provider, exact model ID and revision, and execution interface",
+      "freeze all available sampling and reasoning settings",
+      "authorize cost, data handling, and provider terms for the real runs",
+      "decide whether transparent tasks are sufficient or a held-out variant is required"
+    ],
+    "prohibited_before_gate": [
+      "change status to preregistered",
+      "execute a hosted model",
+      "commit measured_run records",
+      "state or imply a condition effect"
+    ]
+  },
+  "dry_run_records": [
+    "benchmarks/agent/pilot/dry-runs/conforming-c6-run.json",
+    "benchmarks/agent/pilot/dry-runs/unsafe-c0-run.json",
+    "benchmarks/agent/pilot/dry-runs/excluded-provider-failure.json"
+  ],
+  "limitations": [
+    "No provider or model has been selected and no real model run is authorized.",
+    "The transparent tasks may be present in repository context and are unsuitable for a contamination-resistant leaderboard.",
+    "Four repetitions per condition can expose harness and gross response differences but cannot support broad statistical claims.",
+    "C5 and C6 are cumulative bundles, so the pilot describes differences between four supplied-resource bundles rather than estimating one isolated file, tool, or capability effect.",
+    "The four-condition pilot does not test or attribute effects across the complete seven-condition ladder."
+  ]
+}

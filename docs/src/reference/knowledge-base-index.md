@@ -1,14 +1,14 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:0405340b6d64e4ad0d273637d207892ba7ba3c1438a7c2fbcc7cedfe09b7420d -->
+<!-- generated-from claims/claims.toml sha256:69136cf591fab5a596c6ec884d53210bdc6a016f94ff5b1bde70121b4305082b -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 108
-**Indexed chapters:** 44
+**Indexed claims:** 109
+**Indexed chapters:** 45
 
 ## Claims by type
 
@@ -32,7 +32,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `TOPOLOGY-001` — For a fixed switch state, topological nodes are the connected components of the closed-switch connectivity graph; compiling them into bus--branch buses is a state-conditioned quotient that requires provenance and does not preserve switching decisions by itself. | [Node--breaker, bus--breaker, and topology processing](../foundations/node-breaker-topology-processing.md) | `self-checked` |
 | `TRANSFORM-SEM-001` — Transformation certificates should distinguish typed structure, constitutive behaviour, decision semantics, and provenance; a structure-changing rewrite may remain exact for a narrower observation family only when its forgotten information, target closure, and recovery or constraint maps are declared. | [Transformation semantics and register](../foundations/transformation-semantics-register.md) | `self-checked` |
 
-### `empirical` (41)
+### `empirical` (42)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -49,8 +49,9 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `GROUND-SCOPE-003` — In the scoped E₂ witness, an explicit earth conductor with a finite neutral-to-earth bond has distinct in-service, earth-conductor-outage, and phase-to-earth-fault states; the outage changes earth-current availability and the fault crosses the declared protection-current threshold while the simple bus graph remains fixed. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `self-checked` |
 | `GROUND-SCOPE-004` — In the explicit-earth witness, a declared inverse-time relay curve maps the CT-scaled phase-earth fault current to a 0.2466 s operation, while the neutral-earth fault remains below pickup; a separate declared CT-saturation cap changes the phase-fault trip decision. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `self-checked` |
 | `IMPEDANCE-LADDER-001` — In the deterministic four-wire impedance ladder fixture, phase-to-neutral current and voltage recovery are exact under the declared zero-ground-current map, while the deliberately non-circulant reduced matrix has visible sequence mixing; shunt deletion and positive-sequence use therefore require explicit decision-domain guards. | [Four-wire impedance-model ladder](../cases/four-wire-impedance-model-ladder.md) | `self-checked` |
+| `LLM-RETRIEVAL-001` — On its recorded prior corpus and held-out paraphrase set, the pinned compact neural retriever and generic cross-encoder reranker each failed at least one predeclared not-worse-than-hybrid retrieval gate, so neither candidate was promoted into the production route. | [Federated scientific knowledge: end-to-end trace](../reference/federated-knowledge-trace.md) | `self-checked` |
 | `LOAD-CONNECTION-001` — On the recorded balanced three-phase terminal fixture, explicit wye phase-to-neutral and delta phase-to-phase connection maps share the same bus and graph but produce different load-voltage observations: unit-magnitude wye voltages and sqrt(3)-magnitude delta voltages. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `self-checked` |
-| `LOAD-CONTINUATION-001` — On the recorded scalar two-bus continuation probe, the damped CP branch first fails to converge at demand scale 1.8 after a converged scale 1.7, while CI, CZ, and the declared ZIP branch remain converged through scale 3.0; this is an iteration-scoped branch diagnostic, not a global collapse theorem. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `self-checked` |
+| `LOAD-CONTINUATION-001` — On the recorded scalar two-bus continuation probe, the damped CP branch first fails to converge at demand scale 1.8 after a converged scale 1.7, while CI, CZ, and the declared ZIP branch remain converged through scale 3.0; this is an iteration-scoped branch diagnostic, not a global collapse theorem. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `independently-implemented` |
 | `LOAD-DECISION-001` — On the recorded two-bus fixture, CP, CI, CZ, and a normalized ZIP load law share the same bus--branch graph but produce distinct high-voltage solutions and decision margins: CP violates both the declared voltage and current limits, while CI, CZ, and ZIP satisfy both. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `self-checked` |
 | `NUMERICAL-002` — For the pinned running-network fixture, BMOPFTools exports a 20-by-20 passive Ybus with 166 nonzeros; the constant-Z linearized Ybus agrees with it, and realification produces a 40-by-40 current-voltage matrix with 664 nonzeros. The complex matrices have numerical rank 18 at the declared tolerance, with rank-aware effective 2-norm condition about 6.50e8 (1.13e7 after equilibration); the realified embedding preserves support and dimension but is not complex-transpose-symmetric. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
 | `NUMERICAL-003` — In the pinned nonlinear two-bus parallel-member witness, retaining two explicit member-current laws produces a 6-by-7 residual Jacobian and 13-by-13 KKT pattern, while the summed-current aggregate produces a 4-by-5 Jacobian and 9-by-9 KKT pattern; symbolic fill changes with elimination order in both formulations. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `self-checked` |
@@ -150,7 +151,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | Verification | Claims |
 | --- | ---: |
 | `self-checked` | 103 |
-| `independently-implemented` | 5 |
+| `independently-implemented` | 6 |
 | `externally-reviewed` | 0 |
 
 ## Unresolved issues
@@ -202,6 +203,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `GROUND-SCOPE-004` | Replace the illustrative functions with standards-aligned relay/CT models and quantify uncertainty and coordination margins. |
 | `IMPEDANCE-LADDER-001` | Reproduce authored overhead-line and underground-cable cases with geometry or linecode provenance, balanced and unbalanced load rows, grounding variants, and an external solver cross-check. |
 | `LIT-PAR-001` | Establish necessary and sufficient redundancy tests for arbitrary multiconductor limits and for state- or decision-dependent line models. |
+| `LLM-RETRIEVAL-001` | Rerun both pinned candidates on the current corpus and evaluate domain-adapted alternatives before making a current or general neural-retrieval comparison. |
 | `LOAD-BASE-001` | Extend the definition and executable guardrail to arbitrary unbalanced terminal maps, nonstandard connection families, explicit unit provenance, and independently reviewed importer crosswalks. |
 | `LOAD-CONNECTION-001` | Extend connection-map evidence to unbalanced multiconductor loads, explicit grounding, phase-specific ratings, and network-level decision solves. |
 | `LOAD-CONTINUATION-001` | Replace the iteration-failure boundary with a mathematically continued nose curve, add independent solver continuation, and extend to multiconductor/network-level decisions. |
@@ -307,10 +309,11 @@ schema is normalised.
 | `TR-XFMR-009` — For the recorded 11-terminal WYE/WYE/DELTA case, a three-scenario phase-selective tap path can be enumerated exactly over the 3^3 ordered tap triples, with consecutive tap movement charged explicitly and each scenario retaining its own phase directions. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
 | `TR-XFMR-010` — In the recorded three-scenario tap path, enumerating all 27 ordered tap triples and then applying an explicit at-most-one-movement policy leaves 15 admissible branches; the policy is a decision constraint and must not be inferred from the unconstrained best path. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
 
-### `general` (1)
+### `general` (2)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
+| `LLM-RETRIEVAL-001` — On its recorded prior corpus and held-out paraphrase set, the pinned compact neural retriever and generic cross-encoder reranker each failed at least one predeclared not-worse-than-hybrid retrieval gate, so neither candidate was promoted into the production route. | [Federated scientific knowledge: end-to-end trace](../reference/federated-knowledge-trace.md) | `empirical` |
 | `VOCAB-BRIDGE-001` — Load-bearing statements use a preferred house term or qualified shorthand that declares the relevant representation, quantity, state, and preservation object; an unqualified term is unsafe when it can change the claim. | [One network, five languages](../start/one-network-five-languages.md) | `practice` |
 
 ### `graph-and-topology` (23)

@@ -2,7 +2,10 @@
 
 **Page status:** maintained cross-repository implementation trace and scope boundary.
 
-This page traces five scientific statements from book evidence to executable BMOPFTools guardrails and back into the book's existing LLM context packets. The stable ownership rules are defined in the repository-root `ARCHITECTURE.md`; this page is the worked implementation trace.
+This page traces eighteen scientific and negative-knowledge objects through book
+evidence, applicable BMOPFTools guardrails, and the book's existing LLM context
+packets. The stable ownership rules are defined in the repository-root
+`ARCHITECTURE.md`; this page is the worked implementation trace.
 
 ## First trace: parallel member limits
 
@@ -15,6 +18,8 @@ This page traces five scientific statements from book evidence to executable BMO
 | Misconception | `parallel-admittance-implies-decision-equivalence` | this book | Routes the dangerous shortcut to mandatory evidence |
 | Executable contract | `parallel_member_limit_preservation` | BMOPFTools | Decides the supported scalar case or explicitly refuses it |
 | API operation | `check_parallel_member_limit_preservation` | BMOPFTools | Exposes the contract as a structured result |
+| JSON execution operation | `check-contract` | BMOPFTools | Returns a versioned response with input hashes and the four-status contract result |
+| Executable recipe | `parallel_member_limits` | BMOPFTools | Runs the minimized fixture through the JSON-ready execution API |
 | Counterexample fixture | `parallel-rating-outer-relaxation-001` | BMOPFTools | Reproduces a minimized negative witness |
 | Finding | `W.CONTRACT.PARALLEL_MEMBER_LIMIT_LOSS` | BMOPFTools | Reports loss of the member-constrained feasible region |
 
@@ -35,6 +40,13 @@ BMOPFTools receives an explicit mapping from source members to a target aggregat
 
 Missing mapped data produces `W.CONTRACT.INDETERMINATE`. Multiconductor, shunted, singular, or otherwise out-of-domain cases produce `I.CONTRACT.NOT_APPLICABLE`. Those statuses are part of the scientific behavior: the implementation refuses to silently generalize beyond its declared domain.
 
+The same check is available as the source-hash-bound BMOPFTools recipe
+`parallel_member_limits`. The pinned pair manifest carries its command,
+expected status, expected Finding codes, and recipe source hash. Context packets
+therefore expose a directly runnable implementation example without making the
+book execute a sibling checkout or copying the package implementation into the
+scientific corpus.
+
 For the minimized fixture, the two source lines have resistances 0.1 Ω and 1 Ω and ratings of 100 A each. Their summed admittance is 11 S, so the target resistance is 1/11 Ω. A naïve 200 A aggregate rating permits a voltage drop of about 18.18 V, while the source members permit only 10 V. At the committed 15 V witness, aggregate current is 165 A, but member currents are 150 A and 15 A. The target accepts the point while the first source member is overloaded. The exact scalar target rating is 110 A, not 200 A.
 
 ### Retrieval and answer contract
@@ -46,11 +58,20 @@ The packet now also exposes explicit sections:
 - `scientific_basis` for the scoped PSK statement and evidence status;
 - `known_misconceptions` for the tempting shortcut and required qualification;
 - `counterexamples` for book artifacts and stable fixture identities;
+- `negative_results`, `numerical_pathologies`, `scope_boundaries`, and
+  `open_questions` for distinct qualified negative-knowledge classes;
 - `executable_checks` for the BMOPFTools repository, contract IDs, Finding codes, fixtures, and implementation status;
-- `implementation_examples` for concrete executable fixtures; and
+- `implementation_examples` for concrete executable fixtures and pinned recipes; and
 - `unresolved_boundaries` for every claim the scientific object says it does not establish.
 
 These are structured views over mandatory records, not a second retrieval index. The deterministic corpus, release identity, source hashes, retrieval evaluation, MCP route, HTTP route, and CLI route remain the book's established machinery.
+
+BMOPFTools also provides a separate read-only MCP stdio adapter for the six
+settled package execution operations. Connecting both servers gives an agent a
+book-owned retrieval route and a package-owned execution route; it does not
+merge their authority or allow an execution result to silently upgrade a book
+claim. The federated recipe pins include the adapter source files, so changes
+to that transport invalidate the paired source hashes.
 
 ## Second trace: neutral, ground, and reference
 
@@ -64,6 +85,7 @@ failure. Its stable chain is:
 | Misconception | `ground-neutral-reference-are-one-node` | this book | Routes the tempting node-0 normalization to mandatory qualification |
 | Executable contract | `neutral_ground_reference_preservation` | BMOPFTools | Compares supported representation relations across an explicit bus mapping |
 | API operation | `check_neutral_ground_reference_preservation` | BMOPFTools | Returns a structured four-status contract result |
+| Executable recipe | `neutral_ground_reference` | BMOPFTools | Runs the minimized fixture through the JSON-ready execution API |
 | Counterexample fixture | `neutral-ground-reference-conflation-001` | BMOPFTools | Reproduces continuity and grounding-relation loss on two buses |
 | Findings | `E.CONTRACT.NEUTRAL_CONTINUITY_MISMATCH`, `E.CONTRACT.GROUND_REFERENCE_RELATION_MISMATCH` | BMOPFTools | Separately report the two invalid identifications in the fixture |
 
@@ -90,11 +112,18 @@ identity or state, fault current, touch voltage, or protection operation. It
 returns `inapplicable` for unsupported coupled grounding models and
 `indeterminate` when mapped evidence is unavailable.
 
+The source-hash-bound `neutral_ground_reference` recipe makes this second
+transport mapping directly runnable. Its pinned command, expected `failed`
+status, two expected Finding codes, and source hash are carried by the federated
+pair manifest. Context packets therefore expose a concrete operation without
+copying BMOPFTools behavior into the book or inferring the bus mapping from
+matching names.
+
 Queries from all three audience routes for
 `ground-neutral-reference-are-one-node` now make `knowledge:PSK-000002`
 mandatory. Their context packets expose the scoped scientific basis, linked
-counterexample, implemented BMOPFTools contract, dedicated Finding codes, and
-the unresolved dimensions without changing the deterministic router or its
+counterexample, implemented BMOPFTools contract, pinned recipe, dedicated
+Finding codes, and the unresolved dimensions without changing the deterministic router or its
 `qualified`, `under_retrieved`, and `unsupported` semantics.
 
 ## Third trace: solver termination and solution validity
@@ -381,12 +410,18 @@ metamorphic primitive check:
 | Executable contract | `terminal_permutation_invariance` | BMOPFTools | Checks bijection, endpoint maps, and row/column permutation relation |
 | API operation | `check_terminal_permutation_invariance` | BMOPFTools | Reports order mismatch, relation mismatch, or qualified pass |
 | Counterexample fixture | `terminal-permutation-001` | BMOPFTools | Keeps labels aligned while perturbing one target matrix entry |
+| Property suite | `terminal_permutation_seeded_properties` | BMOPFTools | Replays 64 source-hash-bound generated cases and minimizes injected failures |
 | Findings | `E.CONTRACT.TERMINAL_ORDER_MISMATCH`, `E.CONTRACT.PERMUTATION_RELATION_MISMATCH` | BMOPFTools | Separates coordinate-map and primitive-factor failures |
 
 The package pass is not a complete coordinate-transformation theorem. It
 leaves downstream limits, nonlinear state, network feasible sets, decisions,
 objectives, recovery, and solver behavior unassessed; the book retains those
-claims and the pedagogical permutation examples.
+claims and the pedagogical permutation examples. The seeded suite covers
+reciprocal, strictly diagonally dominant complex series matrices with one
+through six conductors. It checks exact permutations, deliberate one-entry
+corruptions, deterministic replay, and one-conductor shrinking. The injected
+failures are classified as expected contract rejections, not newly discovered
+scientific counterexamples.
 
 ## Thirteenth trace: complete solved-network feasibility
 
@@ -418,11 +453,120 @@ The fourteenth slice binds declared conversion metadata to a canonical payload:
 | Executable contract | `unit_base_serialization_invariance` | BMOPFTools | Compares unit system, base map, and canonical semantic hash |
 | API operation | `check_unit_base_serialization_invariance` | BMOPFTools | Reports unit, base, payload, or metadata failures |
 | Counterexample fixture | `unit-base-serialization-001` | BMOPFTools | Preserves SI metadata while changing the canonical payload hash |
+| Property suite | `unit_base_serialization_seeded_properties` | BMOPFTools | Replays 64 JSON round trips and minimizes three independent metadata failures |
 | Findings | `E.CONTRACT.UNIT_SYSTEM_MISMATCH`, `E.CONTRACT.BASE_MAP_MISMATCH`, `E.CONTRACT.SERIALIZED_PAYLOAD_MISMATCH` | BMOPFTools | Separates metadata drift from semantic payload mutation |
 
 The package pass binds declared serialization evidence only; parser/writer
 round-trip behavior, hash computation, complete equations, limits, and study
-decisions remain separate validation dimensions.
+decisions remain separate validation dimensions. The seeded suite generates
+positive finite SI base maps, performs real JSON encode/decode round trips with
+reordered keys, and independently mutates the unit system, one base value, and
+the semantic hash. Every injected failure is reduced to a one-base witness and
+classified as an expected contract rejection, not a scientific counterexample
+or proof of physical SI-to-per-unit conversion.
+
+## Fifteenth trace: a negative retrieval result without an executable package contract
+
+`LLM-RETRIEVAL-001` and `PSK-000015` record a different kind of knowledge
+object. The pinned compact
+neural retriever and generic cross-encoder reranker each failed at least one of
+the benchmark's predeclared not-worse-than-hybrid retrieval gates. Neither was
+promoted, and the failed experiment remains available as a source-bound
+negative result rather than disappearing behind the retained deterministic
+hybrid route. The scientific record hashes an immutable generated snapshot of
+the benchmark evidence; the separate mutable compatibility marker can then
+track later corpus revisions without creating a corpus-hash cycle.
+
+The record contains the question, hypothesis, motivation, setup, cases,
+software and model provenance, attempted methods, observed result, failure
+criterion, interpretation, limited conclusions, possible changed conditions,
+reproduction commands, and review status required by the negative-result
+quality standard. Its scope is deliberately the archived prior corpus named by
+the benchmark artifact. It does not claim that neural retrieval is generally
+inferior or that the recorded rankings describe the current corpus.
+
+This trace has no BMOPFTools contract, Finding, or fixture. Its executable
+relationship is explicitly `not_applicable`, and the federated pair records an
+empty execution link instead of inventing package ownership. The book's
+misconception router still makes the claim and `PSK-000015` mandatory for
+questions that assume embeddings or a generic reranker must improve retrieval.
+Context packets expose the structured record under `negative_results` while
+leaving `executable_checks` empty.
+
+## Sixteenth trace: iteration failure is not an infeasibility certificate
+
+`LOAD-CONTINUATION-001` and `PSK-000016` expose the first structured
+`numerical-pathology`. On the recorded scalar two-bus fixture, a damped
+fixed-point continuation of the constant-power branch converges through demand
+scale 1.7 and fails the declared iteration and residual test at 1.8. The other
+three declared load-law branches remain converged through 3.0. A separate
+standard-library Python implementation reproduces the sampled convergence
+flags, converged rows, and CP failure scale.
+
+That reproduction establishes the behavior of the declared algorithm on the
+declared grid. It does not show that the equations are infeasible at 1.8, that
+1.8 is a saddle-node, or that constant-power loads are generally less
+appropriate. The pathology record therefore keeps `observed_behavior` and
+`algorithmic_boundary` separate, lists the tempting invalid inferences, and
+requires discriminating checks such as step/initialization variation and a
+mathematically appropriate continuation method.
+
+The experiment lives in the book repository rather than BMOPFTools, so its
+execution relationship is `not_applicable`. This does not contradict the
+package's separate solved-network feasibility guardrail: that guardrail
+deliberately refuses a residual-witness conclusion when no solved status is
+available. The federation does not pretend that this generic refusal behavior
+reproduces or certifies the continuation experiment. Context packets expose
+the record under `numerical_pathologies` with no package execution link.
+
+## Seventeenth trace: exact coupled-corridor lowering has a declared boundary
+
+`COUPLED-CORRIDOR-001`, `COUPLED-CORRIDOR-002`, and `PSK-000017` expose the
+first structured `scope-boundary`. The established result is deliberately
+narrow: two reciprocal fixed-linear scalar series sections with a nonsingular
+joint impedance admit an exact six-edge weighted-lattice realization of the
+four-terminal equation, with recovery of the two source currents. The
+executable witness also checks orientation covariance, signed generated
+weights, per-unit round trips, and refusal of inverse-based lowering for a
+singular joint primitive.
+
+The boundary record makes the adjacent non-results machine-readable. The
+generated cross edges are equation objects rather than conductors or galvanic
+connections, and the scalar proof does not automatically cover block-valued or
+full-pi factors, physical limits, states, protection, measurements, feasible
+decisions, or objectives. Extending the result requires an appropriate block
+or tableau derivation plus separate recovery and study-preservation evidence.
+
+The witness is a book experiment and has no BMOPFTools counterpart. Its
+federated execution status is therefore `not_applicable`, while the existing
+mutual-coupling misconception makes `PSK-000017` mandatory for all three
+audiences. Context packets expose the structured record under
+`scope_boundaries`; they do not present the result as a counterexample or
+invent an executable package link.
+
+## Eighteenth trace: the CS1035 source construction remains an open question
+
+`AU-CARSON-001` and `PSK-000018` expose the first structured `open-question`.
+The repository has an independent Australian `CS1035` four-conductor reference
+matrix and a separately identified UGHV cable fixture, but the available source
+history does not map that fixture to the reference. The generated reproduction
+therefore keeps the matrix out of its model inputs and retains the mapping as
+unresolved.
+
+The record distinguishes the evidence already in hand from the information
+still missing. OpenDSSDirect and an independent linear-algebra solve agree for
+the declared UGHV fixture, while changing the Carson diagnostic probe from
+50 Hz to 60 Hz increases rather than resolves the underground matrix mismatch.
+Those checks validate the fixture computation and reject one possible
+explanation; they do not recover the CS1035 conductor, screen, geometry,
+earth-return, ordering, or provenance fields.
+
+The new provenance-shortcut misconception makes the record mandatory for
+student, software-engineer, and power-engineer questions. Context packets
+expose it under `open_questions`, including the attempted discriminators and
+resolution criteria. The record is book-owned and has execution status
+`not_applicable`: the book experiment is evidence for the open question, not a
+BMOPFTools contract or a license to relabel the UGHV fixture.
 
 ## What generalizes
 

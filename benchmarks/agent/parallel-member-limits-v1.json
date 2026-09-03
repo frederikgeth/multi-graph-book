@@ -1,0 +1,214 @@
+{
+  "schema_version": "0.1.0",
+  "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
+  "title": "Parallel-member preservation decision and abstention slice",
+  "status": "substrate_only_no_agent_runs",
+  "research_question": "How reliably does an agent locate and correctly apply progressively richer, explicitly supplied positive and negative resources when rejecting an unsafe parallel-member aggregation and abstaining outside the executable contract's scope?",
+  "scope": "A transparent, deterministic first slice over PSK-000001 and BMOPFTools' scalar parallel-member-limit contract. It specifies tasks, conditions, oracles, and scoring; it contains no measured model comparison.",
+  "knowledge_ids": ["PSK-000001"],
+  "claim_ids": ["TR-PAR-001", "TR-PAR-002", "TR-PAR-003"],
+  "misconception_ids": ["parallel-admittance-implies-decision-equivalence"],
+  "contract_ids": ["parallel_member_limit_preservation"],
+  "fixture_ids": ["parallel-rating-outer-relaxation-001"],
+  "recipe_ids": ["parallel_member_limits"],
+  "finding_codes": [
+    "W.CONTRACT.PARALLEL_MEMBER_LIMIT_LOSS",
+    "I.CONTRACT.NOT_APPLICABLE"
+  ],
+  "condition_order": [
+    "C0_MODEL_ONLY",
+    "C1_REPOSITORY_DOCS",
+    "C2_MACHINE_KNOWLEDGE",
+    "C3_EXECUTION_TOOLS",
+    "C4_WORKFLOW_GUIDANCE",
+    "C5_EXECUTABLE_CONTRACTS",
+    "C6_NEGATIVE_KNOWLEDGE"
+  ],
+  "conditions": [
+    {
+      "condition_id": "C0_MODEL_ONLY",
+      "label": "Model only",
+      "added_capabilities": [],
+      "cumulative_capabilities": []
+    },
+    {
+      "condition_id": "C1_REPOSITORY_DOCS",
+      "label": "Repository documentation",
+      "added_capabilities": ["repository_documentation"],
+      "cumulative_capabilities": ["repository_documentation"]
+    },
+    {
+      "condition_id": "C2_MACHINE_KNOWLEDGE",
+      "label": "Machine-readable scientific knowledge",
+      "added_capabilities": ["scientific_knowledge_export"],
+      "cumulative_capabilities": [
+        "repository_documentation",
+        "scientific_knowledge_export"
+      ]
+    },
+    {
+      "condition_id": "C3_EXECUTION_TOOLS",
+      "label": "Read-only execution tools",
+      "added_capabilities": ["execution_tools"],
+      "cumulative_capabilities": [
+        "repository_documentation",
+        "scientific_knowledge_export",
+        "execution_tools"
+      ]
+    },
+    {
+      "condition_id": "C4_WORKFLOW_GUIDANCE",
+      "label": "Workflow guidance",
+      "added_capabilities": ["agent_workflow_guidance"],
+      "cumulative_capabilities": [
+        "repository_documentation",
+        "scientific_knowledge_export",
+        "execution_tools",
+        "agent_workflow_guidance"
+      ]
+    },
+    {
+      "condition_id": "C5_EXECUTABLE_CONTRACTS",
+      "label": "Executable scientific contracts",
+      "added_capabilities": ["executable_contract_and_recipe"],
+      "cumulative_capabilities": [
+        "repository_documentation",
+        "scientific_knowledge_export",
+        "execution_tools",
+        "agent_workflow_guidance",
+        "executable_contract_and_recipe"
+      ]
+    },
+    {
+      "condition_id": "C6_NEGATIVE_KNOWLEDGE",
+      "label": "Negative-knowledge retrieval",
+      "added_capabilities": ["misconception_and_counterexample_retrieval"],
+      "cumulative_capabilities": [
+        "repository_documentation",
+        "scientific_knowledge_export",
+        "execution_tools",
+        "agent_workflow_guidance",
+        "executable_contract_and_recipe",
+        "misconception_and_counterexample_retrieval"
+      ]
+    }
+  ],
+  "scoring_dimensions": [
+    "code_correctness",
+    "schema_validity",
+    "model_semantic_correctness",
+    "physical_correctness",
+    "numerical_validity",
+    "scientific_inference_correctness",
+    "reproducibility",
+    "invalid_assumption_detection",
+    "abstention"
+  ],
+  "unscored_dimensions": {
+    "code_correctness": "This first slice is a structured review-and-decision task; it does not ask the agent to edit code."
+  },
+  "cases": [
+    {
+      "case_id": "ABENCH-PAR-001-UNSAFE",
+      "task_kind": "invalid_assumption_detection",
+      "prompt": "A preprocessing proposal replaces two scalar series-only parallel lines by one line with summed admittance and the sum of the two current ratings. Review whether the transformation may be approved as preserving the member-constrained decision model.",
+      "expected": {
+        "action": "reject",
+        "contract_status": "failed",
+        "classification": "outer_relaxation",
+        "knowledge_ids": ["PSK-000001"],
+        "finding_codes": ["W.CONTRACT.PARALLEL_MEMBER_LIMIT_LOSS"],
+        "qualification_codes": [
+          "TERMINAL_RELATION_IS_NOT_DECISION_EQUIVALENCE",
+          "SCALAR_SERIES_ONLY_SCOPE",
+          "MEMBER_IDENTITY_REMAINS_UNASSESSED"
+        ],
+        "witness": {
+          "voltage_drop_V": 15.0,
+          "aggregate_current_A": 165.0,
+          "source_feasible": false,
+          "target_feasible": true
+        }
+      },
+      "dimensions_scored": [
+        "schema_validity",
+        "model_semantic_correctness",
+        "physical_correctness",
+        "numerical_validity",
+        "scientific_inference_correctness",
+        "reproducibility",
+        "invalid_assumption_detection"
+      ],
+      "does_not_establish": [
+        "All parallel aggregation is invalid.",
+        "The scalar fixture establishes the multiconductor or shunted case.",
+        "Passing terminal behavior recovers member identity, outages, measurements, provenance, or protection quantities."
+      ]
+    },
+    {
+      "case_id": "ABENCH-PAR-002-BOUNDARY",
+      "task_kind": "abstention",
+      "prompt": "The scalar result is now asserted to approve an otherwise unspecified multiconductor, shunted parallel-line aggregation. Decide whether the available executable contract establishes preservation for that proposal.",
+      "expected": {
+        "action": "abstain",
+        "contract_status": "inapplicable",
+        "classification": "outside_declared_domain",
+        "knowledge_ids": ["PSK-000001"],
+        "finding_codes": ["I.CONTRACT.NOT_APPLICABLE"],
+        "qualification_codes": [
+          "OUTSIDE_SCALAR_SERIES_ONLY_SCOPE",
+          "NO_PRESERVATION_CONCLUSION"
+        ]
+      },
+      "dimensions_scored": [
+        "schema_validity",
+        "model_semantic_correctness",
+        "physical_correctness",
+        "scientific_inference_correctness",
+        "reproducibility",
+        "abstention"
+      ],
+      "does_not_establish": [
+        "The proposed multiconductor transformation fails.",
+        "The proposed multiconductor transformation passes.",
+        "A scalar contract can decide an unspecified out-of-domain model."
+      ]
+    }
+  ],
+  "book_sources": [
+    "knowledge/psk.toml",
+    "docs/src/start/first-failure-parallel-branches.md",
+    "docs/src/reference/federated-knowledge-trace.md",
+    "llm/misconceptions.toml",
+    "generated/federated-knowledge-pair-manifest.json"
+  ],
+  "bmopftools_sources": [
+    "generated/executable-knowledge-manifest.json",
+    "recipes/parallel_member_limits/metadata.toml",
+    "recipes/parallel_member_limits/recipe.jl",
+    "test/fixtures/negative/parallel-rating-outer-relaxation/source.json",
+    "test/fixtures/negative/parallel-rating-outer-relaxation/transformed.json",
+    "test/fixtures/negative/parallel-rating-outer-relaxation/expected.json"
+  ],
+  "conformance_fixtures": [
+    {
+      "path": "benchmarks/agent/submissions/conforming-c6.json",
+      "expected_pass": true
+    },
+    {
+      "path": "benchmarks/agent/submissions/unsafe-c0.json",
+      "expected_pass": false
+    },
+    {
+      "path": "benchmarks/agent/submissions/boundary-overclaim-c1.json",
+      "expected_pass": false
+    }
+  ],
+  "limitations": [
+    "No model or agent has been run, so the slice reports no condition effect.",
+    "The transparent oracle is suitable for harness conformance and pilot design, not contamination-resistant leaderboard claims.",
+    "The slice evaluates structured scientific review, invalid-assumption detection, and abstention; code correctness is intentionally unscored.",
+    "The scalar fixture and contract do not establish results for multiconductor, shunted, singular, or state-dependent models.",
+    "The initial four-condition pilot bundles C2 through C5 and therefore cannot attribute an observed difference to each rung of the seven-condition ladder."
+  ]
+}

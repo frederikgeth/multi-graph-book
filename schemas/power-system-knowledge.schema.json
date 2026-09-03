@@ -73,7 +73,7 @@
         "claim_ids": {"$ref": "#/$defs/uniqueStrings"},
         "misconception_ids": {"$ref": "#/$defs/uniqueStrings"},
         "certificate_ids": {"$ref": "#/$defs/possiblyEmptyUniqueStrings"},
-        "counterexample_ids": {"$ref": "#/$defs/uniqueStrings"},
+        "counterexample_ids": {"$ref": "#/$defs/possiblyEmptyUniqueStrings"},
         "artifact_paths": {"$ref": "#/$defs/uniqueStrings"},
         "source_paths": {"$ref": "#/$defs/uniqueStrings"}
       },
@@ -82,7 +82,6 @@
     "executable": {
       "type": "object",
       "required": [
-        "repository",
         "implementation_status",
         "contract_ids",
         "finding_codes",
@@ -91,11 +90,143 @@
       ],
       "properties": {
         "repository": {"const": "frederikgeth/BMOPFTools.jl"},
-        "implementation_status": {"enum": ["planned", "partial", "implemented"]},
-        "contract_ids": {"$ref": "#/$defs/uniqueStrings"},
-        "finding_codes": {"$ref": "#/$defs/uniqueStrings"},
-        "related_finding_codes": {"$ref": "#/$defs/uniqueStrings"},
-        "fixture_ids": {"$ref": "#/$defs/uniqueStrings"}
+        "implementation_status": {"enum": ["planned", "partial", "implemented", "not_applicable"]},
+        "contract_ids": {"$ref": "#/$defs/possiblyEmptyUniqueStrings"},
+        "finding_codes": {"$ref": "#/$defs/possiblyEmptyUniqueStrings"},
+        "related_finding_codes": {"$ref": "#/$defs/possiblyEmptyUniqueStrings"},
+        "fixture_ids": {"$ref": "#/$defs/possiblyEmptyUniqueStrings"}
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {"properties": {"implementation_status": {"const": "not_applicable"}}},
+          "then": {
+            "not": {"required": ["repository"]},
+            "properties": {
+              "contract_ids": {"maxItems": 0},
+              "finding_codes": {"maxItems": 0},
+              "related_finding_codes": {"maxItems": 0},
+              "fixture_ids": {"maxItems": 0}
+            }
+          },
+          "else": {
+            "required": ["repository"],
+            "properties": {
+              "contract_ids": {"minItems": 1},
+              "finding_codes": {"minItems": 1},
+              "fixture_ids": {"minItems": 1}
+            }
+          }
+        }
+      ]
+    },
+    "negative_result": {
+      "type": "object",
+      "required": [
+        "question",
+        "hypothesis",
+        "motivation",
+        "experimental_setup",
+        "cases",
+        "software_environment",
+        "attempted_methods",
+        "observed_result",
+        "failure_criterion",
+        "interpretation",
+        "establishes",
+        "conditions_might_work",
+        "literature_keys",
+        "reproducer_commands",
+        "review_status"
+      ],
+      "properties": {
+        "question": {"type": "string", "minLength": 1},
+        "hypothesis": {"type": "string", "minLength": 1},
+        "motivation": {"type": "string", "minLength": 1},
+        "experimental_setup": {"type": "string", "minLength": 1},
+        "cases": {"$ref": "#/$defs/uniqueStrings"},
+        "software_environment": {"type": "string", "minLength": 1},
+        "attempted_methods": {"$ref": "#/$defs/uniqueStrings"},
+        "observed_result": {"type": "string", "minLength": 1},
+        "failure_criterion": {"type": "string", "minLength": 1},
+        "interpretation": {"type": "string", "minLength": 1},
+        "establishes": {"$ref": "#/$defs/uniqueStrings"},
+        "conditions_might_work": {"$ref": "#/$defs/uniqueStrings"},
+        "literature_keys": {"$ref": "#/$defs/possiblyEmptyUniqueStrings"},
+        "reproducer_commands": {"$ref": "#/$defs/uniqueStrings"},
+        "review_status": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "numerical_pathology": {
+      "type": "object",
+      "required": [
+        "phenomenon",
+        "experimental_setup",
+        "observed_behavior",
+        "algorithmic_boundary",
+        "invalid_inferences",
+        "discriminating_checks",
+        "conditions_might_change",
+        "reproducer_commands",
+        "review_status"
+      ],
+      "properties": {
+        "phenomenon": {"type": "string", "minLength": 1},
+        "experimental_setup": {"type": "string", "minLength": 1},
+        "observed_behavior": {"type": "string", "minLength": 1},
+        "algorithmic_boundary": {"type": "string", "minLength": 1},
+        "invalid_inferences": {"$ref": "#/$defs/uniqueStrings"},
+        "discriminating_checks": {"$ref": "#/$defs/uniqueStrings"},
+        "conditions_might_change": {"$ref": "#/$defs/uniqueStrings"},
+        "reproducer_commands": {"$ref": "#/$defs/uniqueStrings"},
+        "review_status": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "scope_boundary": {
+      "type": "object",
+      "required": [
+        "established_within",
+        "boundary_conditions",
+        "outside_scope",
+        "unsafe_extensions",
+        "required_evidence",
+        "reproducer_commands",
+        "review_status"
+      ],
+      "properties": {
+        "established_within": {"type": "string", "minLength": 1},
+        "boundary_conditions": {"$ref": "#/$defs/uniqueStrings"},
+        "outside_scope": {"$ref": "#/$defs/uniqueStrings"},
+        "unsafe_extensions": {"$ref": "#/$defs/uniqueStrings"},
+        "required_evidence": {"$ref": "#/$defs/uniqueStrings"},
+        "reproducer_commands": {"$ref": "#/$defs/uniqueStrings"},
+        "review_status": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "open_question": {
+      "type": "object",
+      "required": [
+        "question",
+        "known_evidence",
+        "unresolved_information",
+        "attempted_discriminators",
+        "resolution_criteria",
+        "next_actions",
+        "reproducer_commands",
+        "review_status"
+      ],
+      "properties": {
+        "question": {"type": "string", "minLength": 1},
+        "known_evidence": {"$ref": "#/$defs/uniqueStrings"},
+        "unresolved_information": {"$ref": "#/$defs/uniqueStrings"},
+        "attempted_discriminators": {"$ref": "#/$defs/uniqueStrings"},
+        "resolution_criteria": {"$ref": "#/$defs/uniqueStrings"},
+        "next_actions": {"$ref": "#/$defs/uniqueStrings"},
+        "reproducer_commands": {"$ref": "#/$defs/uniqueStrings"},
+        "review_status": {"type": "string", "minLength": 1}
       },
       "additionalProperties": false
     },
@@ -113,6 +244,28 @@
     "release": {"type": "object"},
     "text": {"type": "string", "minLength": 1}
   },
+  "allOf": [
+    {
+      "if": {"properties": {"kind": {"const": "negative-result"}}},
+      "then": {"required": ["negative_result"]},
+      "else": {"not": {"required": ["negative_result"]}}
+    },
+    {
+      "if": {"properties": {"kind": {"const": "numerical-pathology"}}},
+      "then": {"required": ["numerical_pathology"]},
+      "else": {"not": {"required": ["numerical_pathology"]}}
+    },
+    {
+      "if": {"properties": {"kind": {"const": "scope-boundary"}}},
+      "then": {"required": ["scope_boundary"]},
+      "else": {"not": {"required": ["scope_boundary"]}}
+    },
+    {
+      "if": {"properties": {"kind": {"const": "open-question"}}},
+      "then": {"required": ["open_question"]},
+      "else": {"not": {"required": ["open_question"]}}
+    }
+  ],
   "$defs": {
     "uniqueStrings": {
       "type": "array",

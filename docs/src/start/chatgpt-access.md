@@ -85,7 +85,9 @@ The service provides:
 
 The context packet is the preferred interface for an application. It carries
 the supported answer basis, representation and scope, qualifications,
-counterexamples, source anchors, evidence status, and an explicit
+counterexamples, structured negative results, numerical pathologies, scope
+boundaries, and open questions,
+source anchors, evidence status, and an explicit
 `unsupported` or `under_retrieved` result when the corpus cannot support a
 qualified answer. The downstream model should render that packet into the
 user's domain language; it should not replace the packet with uncited model

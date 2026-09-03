@@ -209,6 +209,19 @@ mandatory_concept_ids = ["normalization", "phase-conductor-sequence-coordinate",
 source_paths = ["docs/src/foundations/load-models-and-decision-dependence.md"]
 
 [[misconception]]
+id = "reference-matrix-match-proves-source-provenance"
+title = "An available or closely matched impedance matrix proves its source construction"
+severity = "high"
+query_patterns = ["CS1035 construction", "CS1035 cable geometry", "Australian underground linecode", "reference matrix proves geometry", "impedance matrix source provenance", "match line matrix to cable", "infer cable construction from impedance", "frequency explains matrix mismatch", "reproduce CS1035", "UGHV is CS1035"]
+tempting_answer = "Treat the available UGHV fixture as the CS1035 source construction, or infer its provenance from the reference matrix and the closest numerical match."
+required_qualification = "The reference matrix is an independent output, not a construction record. The available UGHV fixture has no source mapping to CS1035, the frequency probe does not resolve the mismatch, and conductor, screen, earth-return, ordering, and provenance fields must be recovered before claiming a faithful reproduction."
+safe_shorthand = "A matrix match is a diagnostic observation; source reconstruction requires independently sourced construction metadata and a forward regeneration test."
+operational_consequence = "Guessing the construction can silently assign the wrong cable geometry, screen treatment, earth-return model, frequency, or ordering and then present a fitted or unrelated fixture as source validation."
+mandatory_claim_ids = ["AU-CARSON-001"]
+mandatory_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "ground-neutral-reference"]
+source_paths = ["docs/src/cases/australian-carson-reproduction.md", "experiments/data/australian_source_audit.toml"]
+
+[[misconception]]
 id = "fixed-tap-snapshot-preserves-adjustable-transformer"
 title = "A transformer fixed at its start tap preserves an adjustable-tap model"
 severity = "critical"
@@ -259,3 +272,29 @@ operational_consequence = "Skipping independent checks can accept violated equat
 mandatory_claim_ids = ["NUMERICAL-005"]
 mandatory_concept_ids = ["factor", "rating-limit-constraint", "equivalence-exactness-preservation"]
 source_paths = ["docs/src/foundations/numerical-consequences.md"]
+
+[[misconception]]
+id = "generic-neural-retrieval-is-automatically-better"
+title = "Adding a generic neural retriever or reranker automatically improves evidence retrieval"
+severity = "high"
+query_patterns = ["neural retrieval is better", "replace bm25 with embeddings", "generic reranker improves rag", "vector search automatically better", "embedding retrieval upgrade", "use neural rag instead", "cross encoder must improve retrieval"]
+tempting_answer = "Replace the deterministic retrieval route with embeddings and a generic reranker because neural retrieval is inherently more capable."
+required_qualification = "Promotion requires a pinned, source-bound comparison on the resource's own held-out evidence tasks. In the recorded experiment, both compact neural candidates failed at least one not-worse-than-hybrid gate, and the result now belongs to an archived prior corpus rather than the current corpus."
+safe_shorthand = "A neural route is an opt-in candidate until it beats the deterministic baseline under the same evidence-preserving evaluation and complete provenance."
+operational_consequence = "Premature promotion can reduce mandatory-claim or counterexample recall, obscure a reproducible negative result, and detach retrieval behavior from the corpus revision on which it was measured."
+mandatory_claim_ids = ["LLM-RETRIEVAL-001"]
+mandatory_concept_ids = ["equivalence-exactness-preservation"]
+source_paths = ["docs/src/reference/federated-knowledge-trace.md", "llm/README.md"]
+
+[[misconception]]
+id = "iteration-failure-proves-infeasibility"
+title = "A failed nonlinear iteration proves physical infeasibility or voltage collapse"
+severity = "critical"
+query_patterns = ["iteration failed so infeasible", "nonconvergence proves no solution", "solver failure means voltage collapse", "first failed continuation point is the nose point", "load flow did not converge infeasible", "fixed point failure proves collapse", "fixed point continuation failure", "certified no solution", "nonlinear solver failed no feasible solution"]
+tempting_answer = "The first demand point where the iteration fails is the physical feasibility boundary or voltage-collapse point."
+required_qualification = "Nonconvergence is evidence about a particular algorithm, initialization, parameterization, tolerance, and sampled path. The recorded LOAD-CONTINUATION-001 probe locates only a damped fixed-point iteration boundary; equation infeasibility or a saddle-node requires separate continuation and feasibility evidence."
+safe_shorthand = "Iteration failure is a numerical diagnostic, not a proof that no physical solution exists."
+operational_consequence = "Treating nonconvergence as infeasibility can invent collapse limits, rank load models from solver behavior, or trigger engineering decisions without an independently established solution boundary."
+mandatory_claim_ids = ["LOAD-CONTINUATION-001"]
+mandatory_concept_ids = ["state", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/foundations/load-models-and-decision-dependence.md"]

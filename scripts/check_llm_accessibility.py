@@ -162,6 +162,40 @@ def main() -> int:
                 f"{knowledge_id}: unstable corpus record ID", errors)
         fail_if(not record.get("misconception_ids"),
                 f"{knowledge_id}: scientific record has no misconception route", errors)
+        if record.get("kind") == "negative-result":
+            fail_if(not record.get("negative_result"),
+                    f"{knowledge_id}: negative-result record lacks its quality-standard fields", errors)
+            fail_if(record.get("executable", {}).get("implementation_status") not in {"implemented", "not_applicable"},
+                    f"{knowledge_id}: negative-result executable relationship is ambiguous", errors)
+        else:
+            fail_if("negative_result" in record,
+                    f"{knowledge_id}: non-negative record carries negative-result fields", errors)
+        if record.get("kind") == "numerical-pathology":
+            fail_if(not record.get("numerical_pathology"),
+                    f"{knowledge_id}: numerical-pathology record lacks its diagnostic fields", errors)
+            fail_if(record.get("executable", {}).get("implementation_status") not in {"implemented", "not_applicable"},
+                    f"{knowledge_id}: numerical-pathology executable relationship is ambiguous", errors)
+        else:
+            fail_if("numerical_pathology" in record,
+                    f"{knowledge_id}: non-pathology record carries numerical-pathology fields", errors)
+        if record.get("kind") == "scope-boundary":
+            fail_if(not record.get("scope_boundary"),
+                    f"{knowledge_id}: scope-boundary record lacks its boundary fields", errors)
+            fail_if(record.get("executable", {}).get("implementation_status") not in {"implemented", "not_applicable"},
+                    f"{knowledge_id}: scope-boundary executable relationship is ambiguous", errors)
+        else:
+            fail_if("scope_boundary" in record,
+                    f"{knowledge_id}: non-boundary record carries scope-boundary fields", errors)
+        if record.get("kind") == "open-question":
+            fail_if(not record.get("open_question"),
+                    f"{knowledge_id}: open-question record lacks its question fields", errors)
+            fail_if(record.get("evidence_status") != "open_question",
+                    f"{knowledge_id}: open-question record lacks open_question evidence status", errors)
+            fail_if(record.get("executable", {}).get("implementation_status") not in {"implemented", "not_applicable"},
+                    f"{knowledge_id}: open-question executable relationship is ambiguous", errors)
+        else:
+            fail_if("open_question" in record,
+                    f"{knowledge_id}: non-open-question record carries open-question fields", errors)
     for claim_id, record in claim_records.items():
         passage = record.get("supporting_passage", {})
         fail_if(not str(passage.get("text", "")).strip(), f"{claim_id}: empty supporting passage", errors)

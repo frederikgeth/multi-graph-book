@@ -1,0 +1,57 @@
+{
+  "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
+  "cases": [
+    {
+      "action": "reject",
+      "case_id": "ABENCH-PAR-001-UNSAFE",
+      "classification": "outer_relaxation",
+      "contract_status": "failed",
+      "finding_codes": [
+        "W.CONTRACT.PARALLEL_MEMBER_LIMIT_LOSS"
+      ],
+      "knowledge_ids": [
+        "PSK-000001"
+      ],
+      "qualification_codes": [
+        "TERMINAL_RELATION_IS_NOT_DECISION_EQUIVALENCE",
+        "SCALAR_SERIES_ONLY_SCOPE",
+        "MEMBER_IDENTITY_REMAINS_UNASSESSED"
+      ],
+      "witness": {
+        "aggregate_current_A": 165.0,
+        "source_feasible": false,
+        "target_feasible": true,
+        "voltage_drop_V": 15.0
+      }
+    },
+    {
+      "action": "abstain",
+      "case_id": "ABENCH-PAR-002-BOUNDARY",
+      "classification": "outside_declared_domain",
+      "contract_status": "inapplicable",
+      "finding_codes": [
+        "I.CONTRACT.NOT_APPLICABLE"
+      ],
+      "knowledge_ids": [
+        "PSK-000001"
+      ],
+      "qualification_codes": [
+        "OUTSIDE_SCALAR_SERIES_ONLY_SCOPE",
+        "NO_PRESERVATION_CONCLUSION"
+      ]
+    }
+  ],
+  "condition_id": "C6_NEGATIVE_KNOWLEDGE",
+  "provenance": {
+    "bmopftools_executable_corpus_sha256": "df23fd1025de2d09691de5bbfd19549383392658ccb73df51443fd8b8f77aba2",
+    "book_llm_corpus_sha256": "de38cf25cdb50c14316a202416341ee9b634f12047c864e2807c472510885eca",
+    "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0"
+  },
+  "run_id": "CONFORMANCE-CORRECT-001",
+  "schema_version": "0.1.0",
+  "system": {
+    "model_id": "benchmark-harness",
+    "model_revision": "0.1.0",
+    "provider": "deterministic-fixture"
+  }
+}

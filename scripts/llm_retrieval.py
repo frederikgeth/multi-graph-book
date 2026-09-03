@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CORPUS = ROOT / "llm/generated/corpus.jsonl"
 CORPUS_MANIFEST = ROOT / "llm/generated/corpus-manifest.json"
 MISCONCEPTIONS = ROOT / "llm/misconceptions.toml"
+FEDERATED_PAIR = ROOT / "generated/federated-knowledge-pair-manifest.json"
 SCHEMA_VERSION = "0.1.0"
 AUDIENCES = {"student", "software_engineer", "power_engineer"}
 TOKEN = re.compile(r"[a-zA-Z][a-zA-Z0-9_-]+")
@@ -113,6 +114,8 @@ class CorpusIndex:
         self.by_id = {record["record_id"]: record for record in self.records}
         self.manifest = json.loads(CORPUS_MANIFEST.read_text())
         self.misconceptions = tomllib.loads(MISCONCEPTIONS.read_text()).get("misconception", [])
+        self.federated_pair = json.loads(FEDERATED_PAIR.read_text())
+        self.federated_links = self.federated_pair.get("links", {})
         self.misconception_by_id = {item["id"]: item for item in self.misconceptions}
         self.knowledge_by_misconception: dict[str, list[str]] = defaultdict(list)
         for record in self.records:
@@ -543,6 +546,14 @@ class CorpusIndex:
             }
             summary["book"] = record["book"]
             summary["executable"] = record["executable"]
+            if record.get("negative_result"):
+                summary["negative_result"] = record["negative_result"]
+            if record.get("numerical_pathology"):
+                summary["numerical_pathology"] = record["numerical_pathology"]
+            if record.get("scope_boundary"):
+                summary["scope_boundary"] = record["scope_boundary"]
+            if record.get("open_question"):
+                summary["open_question"] = record["open_question"]
         else:
             summary["excerpt"] = record["text"][:1200]
         return summary
@@ -635,19 +646,70 @@ class CorpusIndex:
                 "artifact_paths": item["book"]["artifact_paths"],
             }
             for item in knowledge
+            if item["book"]["counterexample_ids"]
         ]
-        executable_checks = [
-            {"knowledge_id": item["knowledge"]["knowledge_id"], **item["executable"]}
-            for item in knowledge
-        ]
-        implementation_examples = [
+        negative_results = [
             {
                 "knowledge_id": item["knowledge"]["knowledge_id"],
-                "repository": item["executable"]["repository"],
-                "fixture_ids": item["executable"]["fixture_ids"],
+                **item["negative_result"],
+                "artifact_paths": item["book"]["artifact_paths"],
             }
             for item in knowledge
+            if item.get("negative_result")
         ]
+        numerical_pathologies = [
+            {
+                "knowledge_id": item["knowledge"]["knowledge_id"],
+                **item["numerical_pathology"],
+                "artifact_paths": item["book"]["artifact_paths"],
+            }
+            for item in knowledge
+            if item.get("numerical_pathology")
+        ]
+        scope_boundaries = [
+            {
+                "knowledge_id": item["knowledge"]["knowledge_id"],
+                **item["scope_boundary"],
+                "artifact_paths": item["book"]["artifact_paths"],
+            }
+            for item in knowledge
+            if item.get("scope_boundary")
+        ]
+        open_questions = [
+            {
+                "knowledge_id": item["knowledge"]["knowledge_id"],
+                **item["open_question"],
+                "artifact_paths": item["book"]["artifact_paths"],
+            }
+            for item in knowledge
+            if item.get("open_question")
+        ]
+        executable_checks = []
+        implementation_examples = []
+        for item in knowledge:
+            if item["executable"]["implementation_status"] == "not_applicable":
+                continue
+            knowledge_id = item["knowledge"]["knowledge_id"]
+            pair_link = self.federated_links.get(knowledge_id, {})
+            contracts = pair_link.get("contracts", [])
+            recipes = [
+                recipe
+                for contract in contracts
+                for recipe in contract.get("recipes", [])
+            ]
+            executable_checks.append({
+                "knowledge_id": knowledge_id,
+                **item["executable"],
+                "pinned_contracts": contracts,
+                "pair_id": self.federated_pair.get("pair_id"),
+                "pair_sha256": self.federated_pair.get("pair_sha256"),
+            })
+            implementation_examples.append({
+                "knowledge_id": knowledge_id,
+                "repository": item["executable"]["repository"],
+                "fixture_ids": item["executable"]["fixture_ids"],
+                "recipes": recipes,
+            })
         scientific_boundaries = [
             {"knowledge_id": item["knowledge"]["knowledge_id"], "boundary": boundary}
             for item in knowledge
@@ -697,6 +759,10 @@ class CorpusIndex:
             "scientific_basis": scientific_basis,
             "known_misconceptions": known_misconceptions,
             "counterexamples": counterexamples,
+            "negative_results": negative_results,
+            "numerical_pathologies": numerical_pathologies,
+            "scope_boundaries": scope_boundaries,
+            "open_questions": open_questions,
             "executable_checks": executable_checks,
             "implementation_examples": implementation_examples,
             "unresolved_boundaries": scientific_boundaries,

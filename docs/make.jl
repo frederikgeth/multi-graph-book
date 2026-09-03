@@ -209,6 +209,8 @@ const PAGES_HTML = [
         "Guarded normalization rules" => "transformations/guarded-normalization.md",
     ],
     "Research record" => [
+        "Development research and decision log" => "literature/development-decision-log.md",
+        "Scientifically constrained agent benchmark" => "literature/agent-benchmark.md",
         "Literature map" => "literature/literature-map.md",
         "Representation implementation record" => "literature/representation-implementation-record.md",
         "Review protocol and evidence status" => "literature/review-protocol-and-evidence-status.md",
@@ -302,6 +304,8 @@ const PAGES_PDF = [
         "Australian Carson reproduction" => "cases/australian-carson-reproduction.md",
     ],
     "Research record" => [
+        "Development research and decision log" => "literature/development-decision-log.md",
+        "Scientifically constrained agent benchmark" => "literature/agent-benchmark.md",
         "Literature map" => "literature/literature-map.md",
         "Representation implementation record" => "literature/representation-implementation-record.md",
         "Review protocol and evidence status" => "literature/review-protocol-and-evidence-status.md",

@@ -42,6 +42,14 @@ def main() -> int:
                 validation_errors.append("parallel route omits the linked counterexample fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("parallel executable contract is not marked implemented")
+            examples = packet["implementation_examples"]
+            recipes = examples[0].get("recipes", []) if len(examples) == 1 else []
+            if len(recipes) != 1 or recipes[0].get("recipe_id") != "parallel_member_limits":
+                validation_errors.append("parallel route omits the pinned executable recipe")
+            elif recipes[0].get("expected_status") != "failed":
+                validation_errors.append("parallel recipe expected status differs from the fixture")
+            if checks and not checks[0].get("pair_sha256"):
+                validation_errors.append("parallel executable contract omits the pair identity")
         if case["misconception_id"] == "ground-neutral-reference-are-one-node":
             packet = response["packet"]
             if "knowledge:PSK-000002" not in observed:
@@ -55,6 +63,14 @@ def main() -> int:
                 validation_errors.append("neutral/ground route omits the linked counterexample fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("neutral/ground executable contract is not marked implemented")
+            examples = packet["implementation_examples"]
+            recipes = examples[0].get("recipes", []) if len(examples) == 1 else []
+            if len(recipes) != 1 or recipes[0].get("recipe_id") != "neutral_ground_reference":
+                validation_errors.append("neutral/ground route omits the pinned executable recipe")
+            elif recipes[0].get("expected_status") != "failed":
+                validation_errors.append("neutral/ground recipe expected status differs from the fixture")
+            if checks and not checks[0].get("pair_sha256"):
+                validation_errors.append("neutral/ground executable contract omits the pair identity")
         if case["misconception_id"] == "solver-termination-implies-validated-solution":
             packet = response["packet"]
             if "knowledge:PSK-000003" not in observed:
@@ -185,6 +201,14 @@ def main() -> int:
                 validation_errors.append("terminal-permutation route omits the linked fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("terminal-permutation executable contract is not marked implemented")
+            pinned = checks[0].get("pinned_contracts", []) if checks else []
+            suites = pinned[0].get("property_suites", []) if len(pinned) == 1 else []
+            if len(suites) != 1 or suites[0].get("property_suite_id") != "terminal_permutation_seeded_properties":
+                validation_errors.append("terminal-permutation route omits its seeded property suite")
+            elif suites[0].get("case_count") != 64 or not suites[0].get("minimization_strategy"):
+                validation_errors.append("terminal-permutation property suite omits seed-count or minimization evidence")
+            if "terminal_permutation_seeded_properties" not in response["markdown"]:
+                validation_errors.append("terminal-permutation Markdown omits its seeded property suite")
         if case["misconception_id"] == "complete-feasibility-status-is-enough":
             packet = response["packet"]
             if "knowledge:PSK-000013" not in observed:
@@ -211,6 +235,72 @@ def main() -> int:
                 validation_errors.append("unit/base route omits the linked fixture")
             if checks and checks[0].get("implementation_status") != "implemented":
                 validation_errors.append("unit/base executable contract is not marked implemented")
+            pinned = checks[0].get("pinned_contracts", []) if checks else []
+            suites = pinned[0].get("property_suites", []) if len(pinned) == 1 else []
+            if len(suites) != 1 or suites[0].get("property_suite_id") != "unit_base_serialization_seeded_properties":
+                validation_errors.append("unit/base route omits its seeded property suite")
+            elif suites[0].get("case_count") != 64 or not suites[0].get("minimization_strategy"):
+                validation_errors.append("unit/base property suite omits seed-count or minimization evidence")
+            if "unit_base_serialization_seeded_properties" not in response["markdown"]:
+                validation_errors.append("unit/base Markdown omits its seeded property suite")
+        if case["misconception_id"] == "generic-neural-retrieval-is-automatically-better":
+            packet = response["packet"]
+            if "knowledge:PSK-000015" not in observed:
+                validation_errors.append("neural negative-result route omits mandatory PSK-000015")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000015"]:
+                validation_errors.append("neural negative-result scientific basis differs from PSK-000015")
+            results = packet["negative_results"]
+            if len(results) != 1 or results[0].get("failure_criterion") is None:
+                validation_errors.append("neural route omits the structured negative result")
+            if packet["counterexamples"]:
+                validation_errors.append("neural negative result is incorrectly presented as a counterexample")
+            if packet["executable_checks"] or packet["implementation_examples"]:
+                validation_errors.append("book-only neural negative result invents a BMOPFTools execution link")
+        if case["misconception_id"] == "iteration-failure-proves-infeasibility":
+            packet = response["packet"]
+            if "knowledge:PSK-000016" not in observed:
+                validation_errors.append("iteration-failure route omits mandatory PSK-000016")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000016"]:
+                validation_errors.append("iteration-failure scientific basis differs from PSK-000016")
+            pathologies = packet["numerical_pathologies"]
+            if len(pathologies) != 1 or not pathologies[0].get("discriminating_checks"):
+                validation_errors.append("iteration-failure route omits the structured numerical pathology")
+            if "## Numerical pathologies" not in response["markdown"]:
+                validation_errors.append("iteration-failure Markdown omits the numerical-pathology section")
+            if packet["counterexamples"] or packet["negative_results"]:
+                validation_errors.append("numerical pathology is incorrectly presented as a counterexample or negative result")
+            if packet["executable_checks"] or packet["implementation_examples"]:
+                validation_errors.append("book-only numerical pathology invents a BMOPFTools execution link")
+        if case["misconception_id"] == "mutual-coupling-is-an-ordinary-parallel-network":
+            packet = response["packet"]
+            if "knowledge:PSK-000017" not in observed:
+                validation_errors.append("coupled-corridor route omits mandatory PSK-000017")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000017"]:
+                validation_errors.append("coupled-corridor scientific basis differs from PSK-000017")
+            boundaries = packet["scope_boundaries"]
+            if len(boundaries) != 1 or not boundaries[0].get("required_evidence"):
+                validation_errors.append("coupled-corridor route omits the structured scope boundary")
+            if "## Scope boundaries" not in response["markdown"]:
+                validation_errors.append("coupled-corridor Markdown omits the scope-boundary section")
+            if packet["counterexamples"] or packet["negative_results"] or packet["numerical_pathologies"]:
+                validation_errors.append("scope boundary is incorrectly presented as another negative-knowledge class")
+            if packet["executable_checks"] or packet["implementation_examples"]:
+                validation_errors.append("book-only coupled-corridor boundary invents a BMOPFTools execution link")
+        if case["misconception_id"] == "reference-matrix-match-proves-source-provenance":
+            packet = response["packet"]
+            if "knowledge:PSK-000018" not in observed:
+                validation_errors.append("CS1035 route omits mandatory PSK-000018")
+            if [item.get("knowledge_id") for item in packet["scientific_basis"]] != ["PSK-000018"]:
+                validation_errors.append("CS1035 scientific basis differs from PSK-000018")
+            questions = packet["open_questions"]
+            if len(questions) != 1 or not questions[0].get("resolution_criteria"):
+                validation_errors.append("CS1035 route omits the structured open question")
+            if "## Open questions" not in response["markdown"]:
+                validation_errors.append("CS1035 Markdown omits the open-question section")
+            if packet["counterexamples"] or packet["negative_results"] or packet["numerical_pathologies"] or packet["scope_boundaries"]:
+                validation_errors.append("open question is incorrectly presented as another negative-knowledge class")
+            if packet["executable_checks"] or packet["implementation_examples"]:
+                validation_errors.append("book-only CS1035 question invents a BMOPFTools execution link")
         for error in validation_errors:
             errors.append(f"{case['case_id']}/{case['audience']}: {error}")
     if errors:

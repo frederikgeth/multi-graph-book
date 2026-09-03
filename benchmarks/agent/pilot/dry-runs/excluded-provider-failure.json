@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1.0",
+  "record_kind": "synthetic_dry_run",
+  "pilot_id": "APILOT-PARALLEL-LIMITS-001",
+  "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
+  "run_id": "PILOT-DRY-EXCLUDED-001",
+  "execution_status": "failed",
+  "condition_id": "C1_REPOSITORY_DOCS",
+  "repetition_index": 1,
+  "condition_sequence_index": 1,
+  "case_order": ["ABENCH-PAR-001-UNSAFE", "ABENCH-PAR-002-BOUNDARY"],
+  "system": {
+    "provider": "deterministic-fixture",
+    "model_id": "benchmark-harness",
+    "model_revision": "0.1.0"
+  },
+  "settings": {
+    "temperature": 0,
+    "top_p": 1,
+    "seed": 1,
+    "reasoning_effort": "not_applicable_fixture",
+    "max_output_tokens": 4000,
+    "unavailable_settings": []
+  },
+  "budgets": {
+    "wall_time_seconds": 600,
+    "tool_calls": 0,
+    "max_output_tokens": 4000
+  },
+  "exposure": {
+    "bundle_id": "BUNDLE-C1",
+    "enforcement": "synthetic fixture; no live resource exposure occurred"
+  },
+  "timing": {
+    "started_at": "2026-08-30T00:00:00Z",
+    "ended_at": "2026-08-30T00:00:00Z"
+  },
+  "provenance": {
+    "book_revision": "synthetic-dry-run",
+    "bmopftools_revision": "synthetic-dry-run",
+    "tool_transcript_path": null
+  },
+  "submission": null,
+  "exclusion": {
+    "included": false,
+    "reason_code": "PROVIDER_FAILURE_BEFORE_RESPONSE",
+    "detail": "Synthetic fixture proving that a pre-response provider failure is retained but excluded before scoring."
+  }
+}

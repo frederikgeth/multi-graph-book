@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multi-graph-book.example/schemas/agent-benchmark.schema.json",
+  "title": "Scientifically constrained agent benchmark specification",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "benchmark_id",
+    "status",
+    "research_question",
+    "scope",
+    "condition_order",
+    "conditions",
+    "scoring_dimensions",
+    "unscored_dimensions",
+    "cases",
+    "book_sources",
+    "bmopftools_sources",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "benchmark_id": {"pattern": "^ABENCH-[A-Z0-9-]+$"},
+    "status": {"enum": ["substrate_only_no_agent_runs", "pilot", "measured"]},
+    "condition_order": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {"pattern": "^C[0-9]+_[A-Z0-9_]+$"}
+    },
+    "conditions": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["condition_id", "label", "added_capabilities", "cumulative_capabilities"]
+      }
+    },
+    "scoring_dimensions": {"type": "array", "minItems": 1, "uniqueItems": true},
+    "unscored_dimensions": {"type": "object"},
+    "cases": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["case_id", "task_kind", "prompt", "expected", "dimensions_scored", "does_not_establish"]
+      }
+    },
+    "book_sources": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "bmopftools_sources": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "limitations": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

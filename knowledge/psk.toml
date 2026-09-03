@@ -563,3 +563,258 @@ finding_codes = [
 ]
 related_finding_codes = ["W.PROV.UNIT_ASSUMED", "W.PROV.SOURCE_HASH_MISSING"]
 fixture_ids = ["unit-base-serialization-001"]
+
+[[knowledge]]
+id = "PSK-000015"
+kind = "negative-result"
+title = "Generic compact neural retrieval did not improve the pinned evidence-retrieval baseline"
+scientific_statement = "On the benchmark's pinned prior corpus and held-out paraphrase set, the tested compact sentence-transformer retriever and generic cross-encoder reranker failed the predeclared requirement of being no worse than the deterministic hybrid baseline on recall and complete evidence-record retrieval."
+scope = "The exact corpus, held-out cases, model revisions, artifact hashes, runtime provenance, candidate-set construction, and retrieval metrics recorded in the archived neural benchmark artifact."
+evidence_status = "empirical_result"
+does_not_establish = [
+  "Neural retrieval or reranking is generally inferior to deterministic retrieval.",
+  "The archived rankings describe the current corpus after later scientific records were added.",
+  "Retrieval metrics alone establish answer faithfulness, citation correctness, audience calibration, or production reliability.",
+]
+
+[knowledge.negative_result]
+question = "Do the pinned compact neural retriever and generic cross-encoder reranker improve evidence-record retrieval over the deterministic hybrid baseline?"
+hypothesis = "Each neural candidate should be at least no worse than the hybrid baseline on held-out recall and complete retrieval at the declared cutoff before promotion."
+motivation = "A neural component should replace or augment the deterministic production route only when a reproducible comparison shows that it preserves or improves retrieval of mandatory evidence."
+experimental_setup = "Run the pinned embedder and reranker against the source-hash-bound corpus and held-out paraphrase set, compare lexical, character-TF-IDF, hybrid, neural, and hybrid-reranked rankings, and evaluate the predeclared thresholds."
+cases = ["The held-out paraphrase cases and expected evidence records embedded in the pinned benchmark artifact."]
+software_environment = "The Python, sentence-transformers, transformers, torch, NumPy, device, normalization, model revision, and artifact hashes recorded in the benchmark provenance."
+attempted_methods = [
+  "Cosine retrieval using sentence-transformers/all-MiniLM-L6-v2 at the pinned revision.",
+  "Cross-encoder reranking using cross-encoder/ms-marco-MiniLM-L6-v2 at the pinned revision over the bounded hybrid candidate set.",
+]
+observed_result = "Both candidates failed at least one predeclared not-worse-than-hybrid recall or complete-retrieval threshold, so neither was promoted and the deterministic hybrid route remained the production candidate."
+failure_criterion = "A candidate fails promotion when held-out recall or complete evidence-record retrieval at the declared cutoff is worse than the hybrid baseline, or when provenance is incomplete."
+interpretation = "The tested off-the-shelf compact models did not justify replacing the deterministic hybrid route for that pinned corpus; the failed experiment is retained as evidence rather than hidden."
+establishes = [
+  "The recorded candidate configurations failed their declared promotion gates on the pinned benchmark.",
+  "The decision to retain the hybrid production route is evidence-bound to that comparison.",
+]
+conditions_might_work = [
+  "A domain-adapted retriever or reranker may perform differently.",
+  "Different training data, candidate construction, model scale, or retrieval objectives may change the result.",
+  "The candidates require a genuine rerun before comparison with the current corpus.",
+]
+literature_keys = []
+reproducer_commands = [
+  "python3 scripts/benchmark_llm_embeddings.py --model-id MODEL --revision IMMUTABLE_REVISION --artifact-sha256 SHA256 --output OUTPUT.json",
+  "python3 scripts/check_neural_benchmark.py",
+]
+review_status = "Self-checked benchmark with pinned model and runtime provenance; not independently reproduced or externally reviewed."
+
+[knowledge.book]
+claim_ids = ["LLM-RETRIEVAL-001"]
+misconception_ids = ["generic-neural-retrieval-is-automatically-better"]
+certificate_ids = []
+counterexample_ids = []
+artifact_paths = ["llm/generated/neural-retrieval-negative-result.json"]
+source_paths = [
+  "docs/src/reference/federated-knowledge-trace.md",
+  "llm/README.md",
+  "scripts/check_neural_benchmark.py",
+]
+
+[knowledge.executable]
+implementation_status = "not_applicable"
+contract_ids = []
+finding_codes = []
+related_finding_codes = []
+fixture_ids = []
+
+[[knowledge]]
+id = "PSK-000016"
+kind = "numerical-pathology"
+title = "Fixed-point continuation failure is not an infeasibility or collapse certificate"
+scientific_statement = "On the recorded scalar two-bus load probe, the damped constant-power fixed-point branch meets the declared convergence test through demand scale 1.7 and fails it at 1.8, while the constant-current, constant-impedance, and declared ZIP branches remain converged through 3.0; this locates an algorithm- and grid-specific iteration boundary, not a physical infeasibility or voltage-collapse boundary."
+scope = "The exact scalar fixture, CP/CI/CZ/ZIP laws, 0.2:0.1:3.0 demand grid, previous-point initialization, damping 0.5, 2000-iteration cap, residual criterion, and independent standard-library Python reproduction recorded by LOAD-CONTINUATION-001."
+evidence_status = "empirical_result"
+does_not_establish = [
+  "The scalar constant-power equations are infeasible at demand scale 1.8.",
+  "Demand scale 1.8 is a saddle-node or voltage-collapse point.",
+  "Constant-power load models are generally less solvable or less appropriate than CI, CZ, or ZIP models.",
+  "A different solver, parameterization, damping rule, step grid, or initialization would fail at the same point.",
+]
+
+[knowledge.numerical_pathology]
+phenomenon = "A damped fixed-point branch tracker reaches its iteration cap with a non-small residual at one sampled constant-power demand scale after converging at the preceding scale."
+experimental_setup = "Continue each declared scalar load law over demand scales 0.2:0.1:3.0, initialize each point from the previous converged voltage, use damping 0.5, stop after at most 2000 iterations, and classify convergence by the recorded iterate and residual criteria."
+observed_behavior = "The CP branch converges through scale 1.7 and first fails the declared test at 1.8; CI, CZ, and ZIP remain converged through scale 3.0. A separate pure-Python implementation reproduces every convergence flag, converged voltage/residual row, and the CP failure scale."
+algorithmic_boundary = "The first failed grid point bounds only this fixed-point iteration and branch-tracking procedure. It does not locate the equation-feasibility boundary or a bifurcation."
+invalid_inferences = [
+  "Iteration failure proves that no solution exists.",
+  "The first failed demand-grid point is the exact voltage-collapse point.",
+  "Relative convergence of these four rows ranks the physical adequacy of their load models.",
+]
+discriminating_checks = [
+  "Use a mathematically appropriate continuation method to trace the solution branch and locate any nose point.",
+  "Vary step size, damping, initialization, parameterization, and nonlinear solver before attributing failure to the equations.",
+  "Separate solver termination from independently checked residual, limit, and feasibility evidence.",
+]
+conditions_might_change = [
+  "A smaller continuation step or different initialization may retain the same branch past the failed grid point.",
+  "Newton, pseudo-arclength, homotopy, or other continuation methods may have a different convergence boundary.",
+  "Different network parameters, load coefficients, stopping tolerances, or arithmetic may change the observed boundary.",
+]
+reproducer_commands = [
+  "julia --startup-file=no --project=experiments experiments/test/runtests.jl",
+  "python3 scripts/reproduce_load_continuation.py",
+]
+review_status = "Independently implemented in Julia and standard-library Python within the repository; not externally reviewed and not reproduced with an independent power-system continuation tool."
+
+[knowledge.book]
+claim_ids = ["LOAD-CONTINUATION-001"]
+misconception_ids = ["iteration-failure-proves-infeasibility"]
+certificate_ids = []
+counterexample_ids = []
+artifact_paths = [
+  "experiments/generated/load-grounding-witnesses.json",
+  "experiments/generated/load-continuation-independent-reproduction.json",
+]
+source_paths = [
+  "docs/src/foundations/load-models-and-decision-dependence.md",
+  "experiments/transformations/LoadGroundingWitness.jl",
+  "scripts/reproduce_load_continuation.py",
+]
+
+[knowledge.executable]
+implementation_status = "not_applicable"
+contract_ids = []
+finding_codes = []
+related_finding_codes = []
+fixture_ids = []
+
+[[knowledge]]
+id = "PSK-000017"
+kind = "scope-boundary"
+title = "The coupled-corridor lattice is exact only within its declared scalar series domain"
+scientific_statement = "The six-edge weighted-lattice realization of a two-section coupled corridor is exact for the declared fixed-linear reciprocal scalar series terminal equation and source-current recovery when the joint impedance is nonsingular; that exactness does not extend by itself to physical asset identity, galvanic topology, shunts, block-valued conductors, singular primitives, limits, states, protection, or optimization decisions."
+scope = "Two identified scalar series sections on four retained terminal-voltage coordinates, a fixed reciprocal nonsingular 2-by-2 joint impedance, declared orientation, a target library admitting signed complex weights, no shunts or dynamics, and the equation/recovery queries checked by COUPLED-CORRIDOR-002."
+evidence_status = "established_result"
+does_not_establish = [
+  "The six generated lattice edges are physical line assets or galvanic connections.",
+  "The scalar derivation applies unchanged to multiconductor block, full-pi, singular, dynamic, or state-dependent coupled factors.",
+  "The lowering preserves line limits, outages, protection quantities, measurements, feasible decisions, or objectives.",
+  "The witness reproduces the cited Australian multi-voltage corridor measurements or numerical study results.",
+]
+
+[knowledge.scope_boundary]
+established_within = "Exact equality of the declared four-terminal fixed-linear scalar nodal stamp, together with recovery of the two source section currents and covariance under the tested orientation reversal."
+boundary_conditions = [
+  "The joint 2-by-2 impedance is reciprocal and nonsingular.",
+  "Both source sections are scalar, fixed-linear, series-only relations with fixed terminal orientations.",
+  "All four terminal-voltage coordinates are retained and the target admits signed complex edge weights.",
+  "Exactness is requested only for the terminal equation and declared source-current recovery map.",
+]
+outside_scope = [
+  "Multiconductor block primitives, full-pi shunts, singular tableau formulations, nonlinearities, controls, and dynamics.",
+  "Physical asset, galvanic-connectivity, outage-state, limit, measurement, protection, feasible-set, and objective interpretations of generated edges.",
+  "Partial-overlap import round trips and reproduction of the cited field-study numerical results.",
+]
+unsafe_extensions = [
+  "Storing generated cross edges as canonical line inventory or attaching equipment limits to them.",
+  "Using equation identity as evidence of OPF, protection, topology, or state equivalence.",
+  "Applying inverse-based lowering when the joint primitive is singular or when required shunt/block structure has not been represented.",
+]
+required_evidence = [
+  "Derive and test the appropriate block or tableau relation for any expanded factor class.",
+  "Declare source-to-target recovery, provenance, state, limit, protection, decision, and objective obligations separately.",
+  "Use a source-backed physical fixture and independent review before interpreting generated relations as a field-model replacement.",
+]
+reproducer_commands = [
+  "julia --startup-file=no --project=experiments experiments/run_coupled_corridor_lattice.jl",
+  "julia --startup-file=no --project=experiments experiments/test/coupled_corridor_lattice.jl",
+]
+review_status = "Symbolically derived and executable in the repository with literature precedent; self-checked, not independently proof-reviewed, and not a reproduction of the cited field studies."
+
+[knowledge.book]
+claim_ids = ["COUPLED-CORRIDOR-001", "COUPLED-CORRIDOR-002"]
+misconception_ids = ["mutual-coupling-is-an-ordinary-parallel-network"]
+certificate_ids = []
+counterexample_ids = []
+artifact_paths = ["experiments/generated/coupled-corridor-lattice-witness.json"]
+source_paths = [
+  "docs/src/cases/coupled-multivoltage-corridor.md",
+  "experiments/transformations/CoupledCorridorLatticeWitness.jl",
+  "experiments/test/coupled_corridor_lattice.jl",
+]
+
+[knowledge.executable]
+implementation_status = "not_applicable"
+contract_ids = []
+finding_codes = []
+related_finding_codes = []
+fixture_ids = []
+
+[[knowledge]]
+id = "PSK-000018"
+kind = "open-question"
+title = "The source construction behind the Australian CS1035 reference remains unresolved"
+scientific_statement = "The available Australian CS1035 four-conductor reference matrix and the separately lifted UGHV construction fixture do not establish a source-construction mapping between them; a faithful CS1035 reproduction remains open until the conductor and screen construction, earth-return convention, frequency, and conductor ordering are recovered and independently regenerate the reference without using that matrix as an input."
+scope = "The underground case in the source-audited Australian Carson/OpenDSSDirect reproduction, including the independent CS1035 reference matrix, the separately identified UGHV fixture, and the recorded 50 Hz and 60 Hz diagnostic probes."
+evidence_status = "open_question"
+does_not_establish = [
+  "The lifted UGHV construction is the construction that generated the CS1035 reference matrix.",
+  "The CS1035 reference frequency, conductor ordering, screen representation, or earth-return convention can be inferred uniquely from the matrix alone.",
+  "Agreement of the UGHV OpenDSSDirect and independent linear-algebra solves validates the missing CS1035 construction mapping.",
+  "A frequency change is sufficient to reconcile the underground reference.",
+]
+
+[knowledge.open_question]
+question = "Which source conductor and screen construction, earth-return convention, frequency, and conductor ordering generated the Australian CS1035 reference matrix?"
+known_evidence = [
+  "The active CS1035 4-by-4 series matrix is retained as an independent comparison output and is not used to construct the tested primitive.",
+  "The repository contains a separately identified UGHV 185 Al PILC construction fixture, but no source record maps that fixture to CS1035.",
+  "The UGHV fixture produces converged OpenDSSDirect and independent linear-algebra cases under the declared conventions.",
+  "Changing the diagnostic Carson probe from 50 Hz to 60 Hz increases rather than resolves the recorded underground matrix mismatch.",
+]
+unresolved_information = [
+  "The raw CS1035 phase, neutral, and screen construction and geometric arrangement.",
+  "The reference matrix's earth-return and screen-reduction conventions.",
+  "The source frequency, conductor ordering, units, and any post-processing applied to the reference matrix.",
+  "A provenance record linking those inputs to the published CS1035 output.",
+]
+attempted_discriminators = [
+  "A 50 Hz versus 60 Hz frequency probe did not reconcile the underground mismatch.",
+  "The available UGHV construction was regenerated and compared while keeping the CS1035 matrix out of the model inputs.",
+  "OpenDSSDirect results were cross-checked against an independent LinearAlgebra-only solve for the UGHV fixture, which validates that fixture's computation but not its identity with CS1035.",
+]
+resolution_criteria = [
+  "Recover a source-backed CS1035 construction and provenance record with conductor, screen, geometry, earth-return, frequency, ordering, and unit conventions.",
+  "Regenerate the reference from those inputs without fitting to or using the CS1035 matrix as a model input.",
+  "Explain the residual under a declared tolerance and independently review the construction-to-reference mapping.",
+]
+next_actions = [
+  "Search the originating line-library history and upstream source material for the missing CS1035 construction record.",
+  "If recovered, add the construction as a distinct source input and update the provenance audit rather than relabelling the existing UGHV fixture.",
+  "Rerun the deterministic Carson/OpenDSSDirect reproduction and its independent cross-check before changing the question's status.",
+]
+reproducer_commands = [
+  "julia --startup-file=no --project=experiments experiments/run_australian_carson_reproduction.jl",
+  "julia --startup-file=no --project=experiments experiments/test/australian_carson_reproduction.jl",
+]
+review_status = "The unresolved mapping and failed frequency discriminator are independently executable; the missing construction provenance has not been recovered or independently reviewed."
+
+[knowledge.book]
+claim_ids = ["AU-CARSON-001"]
+misconception_ids = ["reference-matrix-match-proves-source-provenance"]
+certificate_ids = []
+counterexample_ids = []
+artifact_paths = ["experiments/generated/australian-carson-reproduction.json"]
+source_paths = [
+  "docs/src/cases/australian-carson-reproduction.md",
+  "experiments/data/australian_source_audit.toml",
+  "experiments/transformations/AustralianCarsonReproduction.jl",
+  "experiments/test/australian_carson_reproduction.jl",
+]
+
+[knowledge.executable]
+implementation_status = "not_applicable"
+contract_ids = []
+finding_codes = []
+related_finding_codes = []
+fixture_ids = []

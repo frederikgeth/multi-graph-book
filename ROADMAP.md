@@ -66,16 +66,184 @@ and a minimized negative witness.
 | 13 | Complete solved-network feasibility | numerical validation boundary | equation, KCL, power-balance, device-limit, and recovery residuals | Implemented as `PSK-000013`; residual-witness gate |
 | 14 | Unit/base and serialization invariance | normalization, coordinate, and provenance claims | round-trip and unit/base metamorphic tests | Implemented as `PSK-000014`; metadata/payload binding |
 
-The first scale-out milestone is now complete and extended: twelve stable PSK paths cover a
+The first scale-out milestone is now complete and extended: fourteen stable PSK paths cover a
 transformation constraint, model semantics, numerical inference, connection
 coordinates, an adjustable decision domain, typed transformer-winding
 conventions, the terminal-to-decision evidence boundary, and Kron boundary/recovery
 conditions, positive-sequence domain closure, state/update provenance,
-reference/rank validation, and terminal/conductor permutation invariance. The
-next milestone is complete for the first thirteen paths; remaining promotion is
-evidence-gated rather than quota-driven. The immediate fourteenth slice is
-unit/base and serialization invariance: round-trip and unit/base metamorphic
-tests with explicit provenance.
+reference/rank validation, terminal/conductor permutation invariance,
+solved-network feasibility, and unit/base serialization. Remaining promotion is
+evidence-gated rather than quota-driven.
+
+### Executable interface and recipe tranche (core complete, 2026-08-30)
+
+The first two scientific transport slices are implemented for `PSK-000001` and
+`PSK-000002`. BMOPFTools owns a versioned JSON execution response, a curated
+`check-contract` CLI/API adapter registry, and CI-tested
+`parallel_member_limits` and `neutral_ground_reference` recipes that reuse the
+minimized fixtures. A third, non-contract `analyze-case` route now parses one
+BMOPF JSON case and returns the package's complete standard analysis/validation
+report. Its `completed` operation status remains separate from Finding severity,
+and its tutorial-derived `analyze_case` recipe explicitly rejects the shortcut
+that a completed report means a clean or solver-ready case. Tests exercise
+successful, failing, inapplicable, indeterminate, request-error, and completed-
+with-Findings outcomes. The federated pair manifest pins both PSK-linked recipes
+and the package-only analysis recipe; book context packets surface the linked
+scientific examples while keeping ordinary package operations separate.
+
+A fourth, package-only `verify-solution` route now profiles a supplied result
+without invoking a solver. Its tutorial-derived `verify_solution` recipe uses a
+minimized claimed-feasible counterexample: solver termination is
+`LOCALLY_SOLVED`, execution is `completed`, and the independent report still
+contains `E.SOL.VOLT_VIOLATION`. This makes solver termination, execution
+status, Finding severity, and scientific-contract status explicit rather than
+collapsing them into one success flag. The pair manifest pins this operation
+recipe without injecting it into a PSK context packet.
+
+A fifth, package-only `explain-finding` route now performs deterministic offline
+lookup over a generated registry of all 353 Finding codes documented by
+BMOPFTools. Its `explain_finding` recipe distinguishes a canonical code meaning
+from one case-specific observation and refuses to infer causes, repairs, or PSK
+links. External PowerIO diagnostic namespaces remain outside the package
+registry. The pair manifest pins the recipe and registry provenance without
+turning the lookup into a book scientific claim.
+
+A sixth, package-only `parse-case` route now exposes the distinct intake
+boundary already implemented by `parse_bmopf`: JSON decoding, supported
+forward migration, and terminal normalization, but no schema/domain validation
+or analysis. Its tutorial-derived recipe deliberately parses and migrates an
+incomplete document while a separate schema assertion still requires
+`E.SCHEMA.REQUIRED`. This settles the parse-only decision without collapsing
+successful intake into solver readiness or scientific validity. The pair
+manifest pins the hash-bound inventory recipe without inventing a PSK link.
+
+The core execution and recipe surface is now settled. A read-only stdio MCP
+adapter exposes the same six reviewed operations and their existing structured
+response envelopes; it also serves the executable manifest and response schema
+as resources. The adapter constrains file reads to declared roots and does not
+add arbitrary Julia evaluation, solver invocation, or scientific retrieval.
+Its files participate in every recipe source hash, so transport drift changes
+the package export and federated pin. Remaining work in this tranche is only
+evidence-gated contract promotion. Solver invocation remains outside the
+current transport slice.
+
+### Negative-knowledge taxonomy tranche (foundation delivered; migration open, 2026-08-30)
+
+The first non-modelling record is now `PSK-000015`, a book-owned
+`negative-result` for the pinned compact neural retriever and generic
+cross-encoder reranker that failed the declared hybrid-baseline promotion
+gates. The record implements the full negative-result quality standard and is
+covered by three audience-specific retrieval cases. It remains scoped to its
+archived prior corpus and does not generalize the result to neural retrieval as
+a class.
+
+`PSK-000016` now exercises `numerical-pathology` using the independently
+implemented `LOAD-CONTINUATION-001` probe. Structured packets distinguish the
+observed damped fixed-point failure boundary from equation infeasibility,
+voltage collapse, and general load-model rankings, and they carry the checks
+needed to discriminate those interpretations. The experiment remains
+book-owned rather than manufacturing a package contract from BMOPFTools'
+separate generic solver-status refusal behavior.
+
+`PSK-000017` now exercises `scope-boundary` around the coupled-corridor lattice
+result. It preserves the established reciprocal, nonsingular, fixed-linear
+scalar series theorem while making block/full-pi, singular, asset, galvanic,
+limit, state, protection, and decision extensions explicitly unestablished.
+The existing three-audience mutual-coupling route now retrieves that boundary
+without adding a duplicate misconception or an artificial package contract.
+
+`PSK-000018` now exercises `open-question` on the unresolved Australian
+`CS1035` construction mapping. It separates the independent reference matrix,
+the separately lifted UGHV fixture, the failed 50/60 Hz discriminator, the
+missing construction and provenance fields, and the criteria for a faithful
+forward reproduction. Three audience-specific routes prevent a numerical
+comparison from being presented as recovered source identity.
+
+The schema and federated pair support an explicit `not_applicable` execution
+relationship. This prevents the taxonomy from inventing a package contract
+when evidence belongs entirely to the book while preserving a stable,
+source-hash-bound PSK route. The four targeted structured classes are now
+exercised end to end. The migration is not complete: 18 of 23 stable
+misconception IDs are linked from PSK records. The five remaining IDs are
+`one-universal-network-graph`, `self-loop-is-a-shunt-or-circuit-loop`,
+`loads-generators-fixed-graph-membership`, `nodal-operator-is-source-network`,
+and `radial-is-representation-independent`. Each still needs an evidence-backed
+PSK link or an explicit exclusion rationale; its existing misconception ID
+must remain stable either way.
+
+### Property-based testing tranche (seeded regression foundation delivered; discovery open, 2026-08-30)
+
+The first controlled property suite is implemented for `PSK-000012` and the
+package-owned `terminal_permutation_invariance` contract. BMOPFTools records a
+SplitMix64 seed and generates 64 in-domain reciprocal, strictly diagonally
+dominant complex series primitives with one through six conductors and explicit
+terminal bijections. Every exact coordinate action must pass; every deliberately
+corrupted target must fail with the stable matrix-relation Finding; and each
+failure is minimized to a one-conductor witness and rechecked. Replaying the
+same seed must produce the same summary.
+
+The executable export introduces a source-hash-bound `property_suite` record.
+The federated pair pins its algorithm, seed, case count, minimizer, expected
+Finding, and `expected_contract_rejection` classification, and the grounded
+Markdown renderer exposes those facts with the `PSK-000012` route. This adds
+test evidence without changing the book-owned theorem, evidence status, or
+applicability scope.
+
+The second controlled suite now covers the existing `PSK-000014` unit/base
+serialization contract. It generates 64 positive finite SI base maps, performs
+real JSON encode/decode round trips with reordered keys, and independently
+injects unit-system, base-value, and semantic-hash drift. The 192 failures must
+retain their distinct stable Finding codes, and every one is minimized to a
+one-base witness. Replay, export, federation, and grounded-answer checks pin the
+second seed and classification just as they do for `PSK-000012`.
+
+These two suites complete the initial seeded regression mechanism without
+claiming exhaustive sampling, physical conversion validation, or new scientific
+counterexamples. They deliberately inject known violations, so the broader
+counterexample-factory milestone remains open. That milestone requires a
+generator capable of exposing an unanticipated contract or invariant failure,
+an outcome-preserving shrinker that is not specialized to one injected fault,
+and the existing reproduce, classify, and human-review boundary. Further
+properties are promoted only when an existing scoped contract supplies a clear
+in-domain generator and oracle.
+
+The lightweight research/decision-log milestone is now delivered. The
+reader-facing log uses stable `DLOG-*` entries, retains rejected approaches,
+states its boundary from the scientific claims ledger, and is checked in both
+documentation CI and the release-candidate gate. Its first nine entries
+capture the cross-repository decisions already exercised by the implementation,
+including the benchmark substrate and its human-gated pilot design, rather
+than manufacturing new scientific claims.
+
+The first scientifically constrained agent-benchmark substrate is now
+delivered. `ABENCH-PARALLEL-LIMITS-001` freezes seven cumulative resource
+conditions and two transparent `PSK-000001` cases: invalid-assumption detection
+for the summed-rating outer relaxation, and abstention outside the scalar
+series-only contract. Its schemas and scorer distinguish eight scored
+dimensions, preserve code correctness as explicitly unscored, and bind the
+book corpus, federated pair, BMOPFTools executable export, recipe, and minimized
+fixture. Synthetic conformance responses prove the scorer accepts the intended
+qualified response and rejects two unsafe classes; they are labelled as harness
+tests, not agent observations.
+
+The controlled-pilot design is now implemented for the model-only,
+repository-documentation, executable-contract, and negative-knowledge
+conditions. It freezes four balanced repetitions, task and condition order,
+exact source-hash-bound resource bundles, read-only tool access, budgets,
+capture requirements, exclusion rules, run-record schemas, and dimension-level
+aggregation. Synthetic dry-run records exercise passing, unsafe, and excluded
+paths without executing an agent.
+
+The first mandatory human review returned changes required. The exposed package
+answer key and book evaluation rubric have been removed from the resource
+bundles. The pilot now states that it measures locating and correctly applying
+supplied resources, and that its four active bundles cannot attribute effects
+to individual rungs of the seven-condition lattice. Human re-review, provider
+and exact model selection, provider-specific settings, cost and data-handling
+authorization, and the held-out-task decision remain mandatory. Only then may
+the design be called pre-registered or real runs begin. No comparative agent
+result or condition effect exists until source-bound measured run artifacts are
+collected.
 
 ### Product identity and editorial stance
 
