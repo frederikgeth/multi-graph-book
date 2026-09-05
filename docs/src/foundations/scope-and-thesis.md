@@ -138,8 +138,14 @@ when every question in ``Q`` answerable from ``M_2`` can also be answered from `
 declared transformation. The order can change when ``Q`` changes from power flow to protection,
 asset management, fault location, optimal switching, or expansion planning.
 
-This produces a **partial order of representations relative to preservation contracts**. The
-[Representation taxonomy](@ref representation-taxonomy) makes the independent comparison axes explicit.
+Assuming identity transformations are admissible and the declared transformations
+are closed under composition, this relation is a **preorder**: it is reflexive
+and transitive. Distinct representations can answer the same queries in both
+directions, as happens under an invertible relabelling, so antisymmetry need not
+hold. Identify ``M_1\sim_Q M_2`` when both ``M_1\succeq_Q M_2`` and
+``M_2\succeq_Q M_1`` hold. The induced relation on these equivalence classes
+is a **partial order**. The [Representation taxonomy](@ref
+representation-taxonomy) makes the independent comparison axes explicit.
 
 ## Decision preservation
 

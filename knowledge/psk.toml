@@ -244,11 +244,12 @@ fixture_ids = ["transformer-winding-role-swap-001"]
 id = "PSK-000007"
 kind = "modelling-antipattern"
 title = "Terminal equivalence does not establish decision equivalence"
-scientific_statement = "Equality of an unconstrained terminal relation does not by itself establish exact decision equivalence, which is indexed by the admissible domain, observations, constraints, decision variables and discrete choices, objective, and recovery obligations; an exact claim must close each relevant dimension with independently checkable evidence."
+scientific_statement = "Equality of an unconstrained terminal relation does not by itself establish exact decision equivalence, which is indexed by the admissible domain, joint observations, constraints, decision variables and discrete choices, objective correspondence, and recovery obligations; an exact claim must close each relevant dimension with independently checkable evidence."
 scope = "Observation-indexed transformations of declared steady-state model and study classes with explicit source and target identities, exactness object, admissible inputs, constraints, decisions, objective semantics, and recovery requirements."
 evidence_status = "established_result"
 does_not_establish = [
   "Every useful transformation must preserve exact decision equivalence.",
+  "Equality of separate observation ranges proves equality of their joint feasible image.",
   "A complete manifest proves that its evidence references are authentic, independent, or correct.",
   "The initial BMOPFTools completeness gate compares source and target equations, feasible sets, objectives, optimizer sets, recovery maps, or solver guarantees.",
 ]

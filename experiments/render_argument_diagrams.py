@@ -127,71 +127,6 @@ def recovery_map() -> str:
     return "\n".join(lines) + "\n"
 
 
-def argument_spine() -> str:
-    steps = [
-        ("1", "graph is ambiguous", "scope + translation traps"),
-        ("2", "views answer different questions", "taxonomy + frameworks"),
-        ("3", "there is no universal ladder", "maps + query factorization"),
-        ("4", "a transformation needs a contract", "preservation + recovery"),
-        ("5", "exactness is observation-relative", "exact / inner / outer / scenario"),
-        ("6", "equations can survive while decisions break", "parallel-line counterexample"),
-        ("7", "guards make rules checkable", "certificates + refusals"),
-        ("8", "legitimate collapses have conditions", "positive sequence + reductions"),
-        ("9", "representation has numerical cost", "conditioning + fill + margins"),
-    ]
-    lines = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">',
-        '<title>The argument spine of the book</title>',
-        '<desc>Nine linked claims guide the reader from graph ambiguity through query-relative transformations, decision counterexamples, guarded rules, legitimate collapses, and numerical consequences.</desc>',
-        '<rect width="1400" height="760" fill="white"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.step{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.step.alt{fill:#f8e1c4;stroke:#8a4f13}.step.final{fill:#e4f4e7;stroke:#477a55}.num{font-size:18px;font-weight:bold}.head{font-size:17px;font-weight:bold}.small{font-size:14px;fill:#5f6b76}.arrow{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}</style>',
-        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
-        txt(40, 46, "The argument spine", "title"),
-        txt(40, 76, "Read 1–5 left to right, then 6–9 right to left; each step adds to one cumulative argument.", "sub"),
-    ]
-    # Five boxes on the first row and four on the second row, with a serpentine
-    # reading order so the complete spine remains legible in print.
-    positions = [(50 + 265 * i, 145) for i in range(5)] + [(1110 - 265 * i, 455) for i in range(4)]
-    heading_lines = {
-        "1": ["graph is", "ambiguous"],
-        "2": ["views answer", "different questions"],
-        "3": ["there is no", "universal ladder"],
-        "4": ["a transformation", "needs a contract"],
-        "5": ["exactness is", "observation-relative"],
-        "6": ["equations can survive", "while decisions break"],
-        "7": ["guards make rules", "checkable"],
-        "8": ["legitimate collapses", "have conditions"],
-        "9": ["representation has", "numerical cost"],
-    }
-    for index, ((number, heading, detail), (x, y)) in enumerate(zip(steps, positions)):
-        cls = "step final" if number == "9" else ("step alt" if int(number) % 2 == 0 else "step")
-        lines.append(f'<rect x="{x}" y="{y}" width="220" height="150" rx="14" class="{cls}"/>')
-        lines.append(txt(x + 18, y + 30, number, "num"))
-        for offset, heading_line in enumerate(heading_lines[number]):
-            lines.append(txt(x + 18, y + 65 + 20 * offset, heading_line, "head"))
-        # Split the reader-facing detail into two short lines where possible.
-        if " + " in detail:
-            first, second = detail.split(" + ", 1)
-            lines.append(txt(x + 18, y + 117, first + " +", "small"))
-            lines.append(txt(x + 18, y + 137, second, "small"))
-        else:
-            lines.append(txt(x + 18, y + 127, detail, "small"))
-    for i in range(4):
-        x = positions[i][0] + 220
-        lines.append(f'<path d="M{x} 220 L{x + 45} 220" class="arrow"/>')
-    # Step 5 turns directly down into step 6. Sending this connector across the
-    # empty left margin makes the layout look as if a tenth box is missing.
-    lines.append('<path d="M1220 295 L1220 455" class="arrow"/>')
-    for i in range(3):
-        x = positions[5 + i][0]
-        lines.append(f'<path d="M{x} 530 L{x - 45} 530" class="arrow"/>')
-    lines += [
-        txt(50, 685, "The spine is a navigation device, not a claim hierarchy: later chapters can refine or qualify an earlier link.", "small"),
-        '</svg>',
-    ]
-    return "\n".join(lines) + "\n"
-
-
 def query_partial_orders() -> str:
     nodes = [
         ("asset/dependency", 0),
@@ -202,8 +137,8 @@ def query_partial_orders() -> str:
     ]
     lines = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">',
-        '<title>Partial orders change with the query family</title>',
-        '<desc>The same five representation nodes are shown under two query families. Electrical boundary queries order port-factor, multigraph, and simple views, while asset and outage queries privilege the asset/dependency view; incomparable relations are marked explicitly.</desc>',
+        '<title>Query-relative comparison of representation classes</title>',
+        '<desc>Classes under mutual query-answerability are compared under two query families. Electrical boundary queries order port-factor, multigraph, and simple views, while asset and outage queries privilege the asset/dependency view; incomparable relations are marked explicitly.</desc>',
         '<rect width="1400" height="820" fill="white"/>',
         '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:20px;font-weight:bold}.node{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.asset{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.eq{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.arrow{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.dashed{stroke:#8a4f13;stroke-width:2;stroke-dasharray:8 6;fill:none}.cross{stroke:#8a3232;stroke-width:3}</style>',
         '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
@@ -244,7 +179,7 @@ def query_partial_orders() -> str:
         '<path d="M1080 580 L1190 580" class="cross"/>',
         '<path d="M1190 580 L1080 580" class="cross"/>',
         txt(1135, 635, "incomparable unless a query map is declared", "small", "middle"),
-        txt(40, 770, "The edges change when Q changes. This is why “more detailed” is not a universal claim across the four frameworks.", "small"),
+        txt(40, 770, "On representations: a preorder when identities and composition are admissible. On mutual-answerability classes: a partial order.", "small"),
         '</svg>',
     ]
     return "\n".join(lines) + "\n"
@@ -387,46 +322,6 @@ def vocabulary_bridge() -> str:
         '<rect x="40" y="905" width="1320" height="50" rx="12" class="tag"/>',
         txt(700, 930, "solid arrow: qualify through the bridge · dashed arrow: unsafe bypass if untranslated", "head", "middle"),
         txt(700, 949, "house rule: preferred term · accepted qualified shorthand · unsafe unqualified term", "small", "middle"),
-        '</svg>',
-    ]
-    return "\n".join(lines) + "\n"
-
-
-def audience_routes() -> str:
-    lines = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">',
-        '<title>Audience routes through the HTML and PDF book</title>',
-        '<desc>A central argument spine is shared by HTML and PDF. Five community routes branch to power engineering, software and data, mathematical modelling, graph theory, and graph machine learning chapters.</desc>',
-        '<rect width="1400" height="800" fill="white"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.head{font-size:17px;font-weight:bold}.node{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.aud1{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.aud2{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.aud3{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.aud4{fill:#eee8f8;stroke:#7856a8;stroke-width:2}.aud5{fill:#f7f7f7;stroke:#17212b;stroke-width:2}.small{font-size:13px;fill:#5f6b76}.body{font-size:15px}.line{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.branch{stroke:#5f6b76;stroke-width:2;fill:none;marker-end:url(#arrow)}</style>',
-        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
-        txt(40, 46, "Reading routes through one argument", "title"),
-        txt(40, 76, "HTML is the full knowledge base; the PDF is a shorter, argument-shaped serialization of the same sources.", "sub"),
-        txt(40, 130, "shared spine", "head"),
-    ]
-    spine = [(100, "scope"), (340, "representations"), (580, "contracts"), (820, "counterexamples"), (1060, "consequences")]
-    for i, (x, label) in enumerate(spine):
-        lines.append(f'<rect x="{x}" y="155" width="190" height="70" rx="12" class="node"/>')
-        lines.append(txt(x + 95, 197, label, "body", "middle"))
-        if i < len(spine) - 1:
-            lines.append(f'<path d="M{x + 190} 190 L{x + 230} 190" class="line"/>')
-    audiences = [
-        ("power engineer", "physical meaning · terminals · decisions", "aud1", 45, 420, 100),
-        ("software / data expert", "identity · topology · provenance", "aud2", 315, 490, 340),
-        ("mathematical modeller", "feasible sets · maps · certificates", "aud3", 585, 420, 580),
-        ("graph theorist", "typed incidence · cycles · quotients", "aud4", 855, 490, 820),
-        ("graph ML expert", "message graph · pooling · recovery", "aud5", 1125, 420, 1060),
-    ]
-    for title, detail, cls, x, y, anchor_x in audiences:
-        lines.append(f'<rect x="{x}" y="{y}" width="230" height="145" rx="12" class="{cls}"/>')
-        lines.append(txt(x + 115, y + 38, title, "head", "middle"))
-        parts = detail.split(" · ")
-        for j, part in enumerate(parts):
-            lines.append(txt(x + 115, y + 70 + 19 * j, part, "small", "middle"))
-        branch_start_x = anchor_x + 95
-        lines.append(f'<path d="M{branch_start_x} 225 C{branch_start_x} 330 {x + 115} {y - 50} {x + 115} {y}" class="branch"/>')
-    lines += [
-        txt(40, 700, "Each route re-enters the same contract language; audience emphasis changes, but preservation claims do not.", "small"),
         '</svg>',
     ]
     return "\n".join(lines) + "\n"
@@ -1103,11 +998,9 @@ def main() -> None:
     outputs = {
         "exactness-classes": exactness_classes(),
         "recovery-map-loop": recovery_map(),
-        "argument-spine": argument_spine(),
         "query-partial-orders": query_partial_orders(),
         "case-escalation-grid": case_escalation(),
         "vocabulary-bridge-five-languages": vocabulary_bridge(),
-        "audience-routes": audience_routes(),
         "sequence-subspace": sequence_subspace(),
         "bus-meaning-overlays": bus_overlay(),
         "certificate-composition": certificate_composition(),

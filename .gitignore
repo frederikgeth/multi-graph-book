@@ -25,3 +25,6 @@ __pycache__/
 # OS and editors
 .DS_Store
 *.swp
+
+# Recorded lesson environment (intentionally versioned)
+!experiments/reproduction/**/Manifest.toml

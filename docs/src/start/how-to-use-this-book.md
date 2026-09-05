@@ -1,78 +1,51 @@
 # [How to use this book](@id how-to-use-this-book)
 
-**Page status:** reading guide for the long-form monograph and the exhaustive HTML knowledge base.
+**Page status:** selective teaching route and reference-library guide.
 
-This project has two complementary reading surfaces. They share Markdown sources, claims,
-citations, generated artifacts, and evidence boundaries, but they answer different reader needs.
+Begin with the parallel-member lesson. Make a prediction, work through the
+algebra, and run its short Python calculation. You can then follow the eight
+parts below, or enter at the first unfamiliar modelling task.
 
-For access through ChatGPT, see [Use this resource with ChatGPT](@ref chatgpt-access). It explains
-the Project, custom GPT, and developer-service routes, and how to distinguish a book-grounded
-answer from an ordinary model response. For access through Claude, see
-[Use this resource with Claude](@ref claude-access), which adds a Model Context Protocol route
-that reads this repository's generated corpus directly.
+## Follow the teaching route
 
-## Follow the monograph argument
+| Part | Start here | What to work out |
+| --- | --- | --- |
+| 1. A plausible model gives the wrong answer | [Parallel members](@ref first-failure-parallel-branches) | Derive a valid aggregate rating and its state boundary |
+| 2. From equipment to equations | [Source to canonical model](@ref source-to-canonical-model) | Carry identities, terminals, orientations and units into equations |
+| 3. Conductors, connections, and ground | [Load connections](@ref load-models-and-decision-dependence) | Identify the voltage and return path each device uses |
+| 4. Graphs for different computations | [One network, many graphs](@ref one-network-many-graphs) | Separate physical topology from computational coupling |
+| 5. Transformations and recovery | [Preservation contracts](@ref preservation-contracts) | Declare joint observations and recover eliminated quantities |
+| 6. Constraints and decisions | [Parallel AC decision case](@ref multiconductor-parallel-ac-case) | Check the source constraints after a transformation |
+| 7. Evidence for a computation | [Numerical consequences](@ref numerical-consequences) | Distinguish residual checks, conditioning, model adequacy and reproduction |
+| 8. An end-to-end modelling study | [Study workbook](@ref study-workbook) | Record and defend a reproducible study |
 
-The long-form route is organized around a problem rather than a catalogue of graph types:
+The PDF selects material for these eight parts. Specialist derivations,
+exhaustive indexes, research logs, and language-model setup remain in HTML.
+Links to reference pages outside the PDF open the online library. The legacy
+PDF filename is retained so existing download links continue to work.
 
-1. **Problem and counterexample:** see why a plausible simplification can change the question being
-   answered, beginning with [One network, many graphs](@ref one-network-many-graphs) and [A first
-   failure: heterogeneous parallel branches](@ref first-failure-parallel-branches).
-2. **Representation obligations:** identify which physical objects, equations, observations,
-   constraints, decisions, and provenance a study requires.
-3. **Canonical model:** establish the source data and semantic projection before deriving a graph or
-   matrix view.
-4. **Collapses and failure modes:** study when balanced, nodal, radial, series, parallel, or
-   reduced views are valid and when they discard needed meaning.
-5. **Preservation contracts:** state the exact object being preserved, the guards, the recovery map,
-   and the evidence boundary.
-6. **Transformations and recovery:** read the executable rules and certificates only after the
-   contract is clear.
-7. **Cases and consequences:** compare feasible sets, active limits, objectives, decisions, and
-   recovery—not only state or terminal-equation error.
+## Work with the examples
 
-The curated PDF route follows this sequence. It remains a long-form draft and retains detailed
-reference and case material; the route is refactored, not shortened.
+Keep a short record of the source assumptions, predicted result, observed
+result, and explanation of any difference. Change one condition at a time.
+Use the [computational case guide](@ref computational-cases) to choose a
+command and understand what its output establishes.
 
-## Use the HTML knowledge base for retrieval
+Power engineers may move quickly through familiar circuit laws while checking
+the conventions. CS and OR readers should use the
+[notation reference](@ref reference-notation-conventions) for terminal and
+phasor conventions. The general multiconductor case is introduced in stages;
+it need not be the first model you implement.
 
-Use the generated [knowledge-base indexes](@ref knowledge-base-index) to find claims by type,
-chapter, verification state, unresolved issue, or generated artifact. Use the [chapter-status
-table](@ref chapter-status) to see what each page establishes and what remains open. Use the
-[evidence map](@ref reference-evidence-map) for coverage gaps, the [vocabulary indexes](@ref
-vocabulary-indexes) for cross-community terminology, and the [references](@ref reference-bibliography)
-page for the bibliography.
+## Check the evidence
 
-The knowledge base is intentionally more exhaustive than the monograph. Its presence does not
-promote a proposal into a theorem, a local numerical witness into a global result, or an
-independent numerical reimplementation into external peer review.
+A definition states the convention used here. A derivation supports a result
+under its stated assumptions. An executable witness records a declared case
+and tolerance. An independent implementation may still share input data or
+model assembly. External review requires a recorded human reviewer and scope;
+the current claims ledger has no entries in that category.
 
-## Read the evidence labels correctly
-
-- **Definition / proposal:** the book's vocabulary or architecture; not a claim that the field has
-  adopted it.
-- **Theorem / established result:** a mathematical or literature claim whose scope and assumptions
-  must be read with its citation or derivation.
-- **Empirical witness:** a result recorded for a declared fixture, solver, state, and tolerance.
-- **Independently implemented:** a separate numerical path for the declared case; it may still
-  share source fixtures, matrices, or model assembly.
-- **Externally reviewed:** human review recorded with reviewer, date, scope, and response. The
-  current ledger has no claims in this category.
-
-For every transformation, ask four questions: what is the source model, what is the target model,
-what is preserved for the declared observation or decision, and how are forgotten quantities and
-constraints recovered or bounded?
-
-## Choose a route by background
-
-- Power engineers: begin with [One network, five languages](@ref one-network-five-languages), the
-  [reading guide](@ref reading-guide-graph-and-transmission), and the parallel or grounding cases.
-- Optimization researchers: begin with [Load models and decision dependence](@ref
-  load-models-and-decision-dependence), [Preservation contracts](@ref preservation-contracts), and
-  the decision certificates.
-- Software and data practitioners: begin with [From source data to a canonical network model](@ref
-  source-to-canonical-model), [Data-model crosswalk](@ref data-model-crosswalk), and the generated
-  indexes.
-- Graph and formal-methods readers: begin with [Formal representation frameworks](@ref
-  formal-representation-frameworks), [Maps between representation frameworks](@ref
-  representation-maps), and [Transformation semantics](@ref transformation-semantics-register).
+Use the [evidence map](@ref reference-evidence-map) and
+[knowledge-base index](@ref knowledge-base-index) when a result needs closer
+inspection. A numerical value, a schema-valid certificate, and a physical
+validation answer different questions.

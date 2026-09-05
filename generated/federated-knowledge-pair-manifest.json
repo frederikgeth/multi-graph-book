@@ -16,7 +16,7 @@
       "transformer_winding_convention_preservation",
       "unit_base_serialization_invariance"
     ],
-    "corpus_sha256": "df23fd1025de2d09691de5bbfd19549383392658ccb73df51443fd8b8f77aba2",
+    "corpus_sha256": "f488c19199d84da3153c8b28f01b4edd26d040922f7b15062b8486f181134235",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -34,7 +34,7 @@
       "PSK-000014"
     ],
     "manifest_id": "bmopftools-executable-knowledge-0.1.0",
-    "manifest_sha256": "f20116fd078d043c4d7fa0ff1cdbdf02a2b9ac32a61e808c197bafebed526a04",
+    "manifest_sha256": "7ce51ed7e666f2ab2781d7ef91b46d10756515e13e42067712b23d1dee67e770",
     "operation_recipes": [
       {
         "command": "julia --startup-file=no --project=. recipes/analyze_case/recipe.jl",
@@ -111,7 +111,7 @@
     "schema_version": "0.6.0"
   },
   "book": {
-    "corpus_sha256": "28e8b46324866f2dcbef6ba5c40e211952ddecf4ec21154fcb907a84af520465",
+    "corpus_sha256": "3353637507690b95aa7612e40e0d98c44bc0d562ece0b930ab91dcd1bff5df4a",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -132,7 +132,7 @@
       "PSK-000017",
       "PSK-000018"
     ],
-    "manifest_sha256": "aeb6400e158066d881fc5db80e309facd5674f883fb58f90f76aec82a0ffc459",
+    "manifest_sha256": "82c1b233832b2796a9e3350d89b55d15d90732462b70ee9a28e66c0bdf6bad62",
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -171,7 +171,7 @@
               "source_sha256": "f574bbd2f34ffe129475cc715828cc526c16e9dc999d7b33e60ef78937d0558d"
             }
           ],
-          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
+          "source_sha256": "81d686eb2e82626864c21be7589aa41d562c4309378aabdaf12ee0421383815e"
         }
       ],
       "implementation_status": "implemented",
@@ -206,7 +206,7 @@
               "source_sha256": "691eafc1317d003dd63c78b982554f7f2e97b08a05ef4220a3352d4d997a5fd6"
             }
           ],
-          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
+          "source_sha256": "81d686eb2e82626864c21be7589aa41d562c4309378aabdaf12ee0421383815e"
         }
       ],
       "implementation_status": "implemented",
@@ -227,7 +227,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "c8db26ef94db07473441a400c9d4890f30f3d81508dd78508feb8bc9cd7918a2"
+          "source_sha256": "2b31b4b8fa8957b45bf7a0ec88d5d9a67dfd6b2b9dcc8ff6243268b343b04fca"
         }
       ],
       "implementation_status": "implemented",
@@ -248,7 +248,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "d84b428b259d0e21b633b187c3144ea98d914cda7da006d9899a63f5f4616de0"
+          "source_sha256": "1e8d075efa1e73079c541a815be8adbcc1a0bd0ad7454e6db1e4b2f2820081fa"
         }
       ],
       "implementation_status": "implemented",
@@ -269,7 +269,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
+          "source_sha256": "81d686eb2e82626864c21be7589aa41d562c4309378aabdaf12ee0421383815e"
         }
       ],
       "implementation_status": "implemented",
@@ -291,7 +291,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "46758e586ff05db4830bba9553cfa243d52a020385cc1a937fad3e45ee876a85"
+          "source_sha256": "2f97a9e92585bcd12500a447e27eeb9778f14125ce74018e564113612db11272"
         }
       ],
       "implementation_status": "implemented",
@@ -313,7 +313,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
+          "source_sha256": "81d686eb2e82626864c21be7589aa41d562c4309378aabdaf12ee0421383815e"
         }
       ],
       "implementation_status": "implemented",
@@ -336,7 +336,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "cda76def28e24ea998aa79df36fd81652cd8f3a8b67e8ac3fe7f40562687d3da"
+          "source_sha256": "d3d87a885a6eca28014ed41acb0dfedd3eb9d4b2c204bd938740267a9f3880a7"
         }
       ],
       "implementation_status": "implemented",
@@ -359,7 +359,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
+          "source_sha256": "81d686eb2e82626864c21be7589aa41d562c4309378aabdaf12ee0421383815e"
         }
       ],
       "implementation_status": "implemented",
@@ -382,7 +382,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
+          "source_sha256": "81d686eb2e82626864c21be7589aa41d562c4309378aabdaf12ee0421383815e"
         }
       ],
       "implementation_status": "implemented",
@@ -404,7 +404,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
+          "source_sha256": "81d686eb2e82626864c21be7589aa41d562c4309378aabdaf12ee0421383815e"
         }
       ],
       "implementation_status": "implemented",
@@ -453,11 +453,11 @@
               "property_suite_id": "terminal_permutation_seeded_properties",
               "seed": "0x6d5a56da4b9c2f17",
               "seed_algorithm": "splitmix64-v1",
-              "source_sha256": "840b333bd7af48dd2de21b91d4bcd98ebce295f69043c27b0c3edff32cfda8e0"
+              "source_sha256": "cb76d372994c352e42784e0ef30efa1f5149c421d70b8dbaf80fb66e11fbf6d7"
             }
           ],
           "recipes": [],
-          "source_sha256": "4f898da23f1f400d76cdb9f5f53c4c33f9cda45c33db5f241d342be31bc9e12c"
+          "source_sha256": "a6211ce0a7de128f8498af799c3072e896aad41007e336b43c624558eb20aeb6"
         }
       ],
       "implementation_status": "implemented",
@@ -479,7 +479,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
+          "source_sha256": "8fd4dfa4ede92409025af61b6d6dc3f163ec6aeb95026be00eaa03f9b5f62071"
         }
       ],
       "implementation_status": "implemented",
@@ -533,11 +533,11 @@
               "property_suite_id": "unit_base_serialization_seeded_properties",
               "seed": "0x4f1bbcdc6762c7a9",
               "seed_algorithm": "splitmix64-v1",
-              "source_sha256": "061755a49d5a847b045db9f6063ea58a45708344d49b0746fc38f5722e903540"
+              "source_sha256": "028c77b54e00112192700bb8b87b36f4ba02bb638c44f200e3d7ec21e343cc7a"
             }
           ],
           "recipes": [],
-          "source_sha256": "b5bb78a923202528771c98248c3c1ee00c88bbaa2dd429d965148c8a7db91b92"
+          "source_sha256": "44ccc67a62f0a8787a2307befd8a2d6148e73742315e770fd5796363e49d5bd0"
         }
       ],
       "implementation_status": "implemented",
@@ -565,6 +565,6 @@
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "e4209fbf0c1f8293eac23086f3e66a814e472c45412d2f3e3a6c67c4d299a97d",
+  "pair_sha256": "33d17f41749bf4a93aadf399ae08609b9b6181dd5c2a738025c288f9e11f991c",
   "schema_version": "0.1.0"
 }

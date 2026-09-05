@@ -13,14 +13,11 @@ multi-terminal behaviour, controls, limits, or decisions have already been
 discarded. Conversely, a faithful source model may require a tableau, modified
 nodal system, branch-current variables, or an unevaluated port--factor relation.
 
-This chapter supplies the formulation boundary for [From source graphs to
-views and graph surgery](@ref compiled-views-and-graph-surgery). The source
-object and its view registry remain authoritative there; this chapter owns
-equation targets, assembly identities, solvability guards, and formulation
-equivalence. [Two topology levels and the nodal projection](@ref
-two-level-topology-and-nodal-projection) owns topology, support, projection,
-and nodal-operator non-identifiability. The [representation maps](@ref
-representation-maps) chapter owns the cross-framework arrow vocabulary.
+Start with the worked assembly in [From source data to a canonical network
+model](@ref source-to-canonical-model). This chapter then asks which equation
+systems can express the devices and observations a study needs, and when
+elimination preserves them. Further graph constructions are in [From source
+graphs to views and graph surgery](@ref compiled-views-and-graph-surgery).
 
 ## Formulation families
 
@@ -206,7 +203,8 @@ one uniquely meaningful ``Y_{\mathrm{bus}}``.
 Let ``\mathbf Y^{\mathrm N}(\sigma,\gamma)`` denote the assembled operator
 after the declared active state ``\sigma`` and grounding/reference map
 ``\gamma`` have been applied, and let ``n_V`` be the retained voltage
-dimension. The nodal target passes its basic regularity guard only when
+dimension. A direct solve for all retained voltages from arbitrary retained
+current injections requires an invertible square operator:
 
 ```math
 \operatorname{rank}\!\left(\mathbf Y^{\mathrm N}(\sigma,\gamma)\right)=n_V.
@@ -221,11 +219,28 @@ state and coordinates. This is the scoped diagnostic supported by
 power-system model is nonsingular. The executable witness records both a
 disconnected network with a declared reference and a regular grounded case.
 
-Failure of these guards does not make the network invalid. It means that a
-bare ``\mathbf Y`` target is unavailable, incomplete, or semantically lossy for
-the declared study. A reduced ``\mathbf Y`` can still be useful for a narrower
-boundary-voltage query, provided that the omitted variables and limits are
-recorded.
+This condition concerns that direct solve, not the existence of an exact
+nodal relation. A floating resistor with conductance ``g>0`` has
+
+```math
+\mathbf Y=g\begin{bmatrix}1&-1\\-1&1\end{bmatrix},\qquad
+\mathbf Y\begin{bmatrix}1\\1\end{bmatrix}=0.
+```
+
+The singular matrix expresses the current relation exactly. Compatible
+injections determine a voltage difference; a voltage datum selects a unique
+representative of the common-offset family. After boundary conditions are
+imposed, check the operator for the remaining unknowns. A zero eigenvalue of
+an exported passive matrix is not automatically an error in the full model.
+The [running-network numerical export](@ref numerical-consequences) illustrates
+why this distinction matters.
+
+Keep four questions separate: can the relation be assembled, does it have
+gauge freedom, is the boundary-conditioned linear solve unique, and is the
+complete nonlinear PF/OPF problem solvable? The last question involves more
+than the passive matrix. Failure of an elimination or representation guard
+may require retained current variables or constraints; singularity alone does
+not imply lost physical information.
 
 ### A nodal matrix is not a complete power-network graph
 

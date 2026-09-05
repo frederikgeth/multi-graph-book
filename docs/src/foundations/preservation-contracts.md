@@ -10,31 +10,52 @@
 
 ## Observation precedes equivalence
 
-Two models are not simply "equivalent." They are equivalent with respect to a
-chosen observation map and admissible input set.
-
-Let model ``M`` define feasible internal and boundary variables
-``(x,z)\in\mathcal F_M`` and let ``H`` be a declared family of observation
-maps. A reduction from ``M`` to ``\widehat M`` is exact for ``H`` if, for every
-admissible input or decision ``u\in\mathcal U`` and every observation
-``h\in H``, the observable feasible sets agree:
+Let ``u\in\mathcal U`` be a fixed admissible input and let
+``\mathcal F_M(u)`` and ``\mathcal F_{\widehat M}(u)`` be the source and
+target feasible sets at that input. Their internal coordinates may differ.
+Choose **joint** observation maps into the same observation space,
 
 ```math
-\left\{h(x,z,u):(x,z,u)\in\mathcal F_M\right\}
-=\left\{\widehat h(\widehat x,u):(\widehat x,u)\in
-\mathcal F_{\widehat M}\right\},
-\qquad h\in H,\ u\in\mathcal U.
+O_M(x,z,u)=(h_1(x,z,u),\ldots,h_k(x,z,u)),\qquad
+O_{\widehat M}(\widehat x,u)=(\widehat h_1(\widehat x,u),\ldots,
+\widehat h_k(\widehat x,u)).
 ```
 
-This definition deliberately includes feasible sets, not only an unconstrained
-terminal map. It can therefore distinguish electrical equivalence from
-optimization equivalence.
+**Definition (`PRESERVE-001`).** The transformation is exact for these
+observations and this input domain when
+
+```math
+\left\{O_M(x,z,u):(x,z)\in\mathcal F_M(u)\right\}
+=
+\left\{O_{\widehat M}(\widehat x,u):
+\widehat x\in\mathcal F_{\widehat M}(u)\right\},
+\qquad u\in\mathcal U.
+```
+
+The joint map retains relationships between observed quantities. Equality of
+individual observation ranges is weaker. For example, the sets
+``\{(0,0),(1,1)\}`` and ``\{(0,1),(1,0)\}`` have identical coordinate
+ranges, yet maximizing the sum of their coordinates gives 2 and 1. A test of
+each coordinate separately would miss that difference. A declared family of
+maps may replace the single joint map only when it includes the joint
+observations needed for the claim.
+
+For a decision problem, include the decisions whose preservation is claimed
+in the joint observation, and require the same objective function of those
+observations (or include objective value as another joint coordinate).
+Equal joint feasible images then give equal attainable observed decisions
+and objective values. Equality of optimal values does not alone imply the
+same decisions; existence of an optimizer and source-state recovery remain
+separate obligations. If ``u`` is itself optimized, rather than supplied as
+input, its admissible domain and source/target correspondence must also be
+preserved. All statements concern the declared feasible models, not a solver's
+ability to find their solutions.
 
 !!! warning "Decision-model consequence"
-    Equality of a nodal admittance, a boundary voltage relation, or a sampled
-    state trajectory does not establish equality of constrained feasible sets.
-    Limits, controls, discrete states, objectives, and recovery are separate
-    observation families.
+    Matching terminal equations or separate voltage and current ranges does
+    not establish equality of joint constrained feasible observations.
+    Declare the input domain, jointly observed decisions and quantities,
+    objective correspondence, and required recovery map.
 
 ![Preservation contract card: scope, guards, classification, retained and forgotten meaning, recovery, and evidence.](../assets/preservation-contract-card.png)
 

@@ -88,33 +88,101 @@ power bounds, making the continuous decision observable. The objective has no
 economic interpretation. Both the cost and this interpretation must change
 before the case is used for an economic study.
 
-## Reproducibility boundary
+## Reproduce the recorded review case
 
-Run the complete slice from the repository root:
-
-```sh
-julia --project=experiments experiments/run_vertical_slice.jl
-julia --project=experiments experiments/test/runtests.jl
-```
-
-The generated provenance record includes Julia and package versions, the local
-BMOPFTools commit, a tracked-diff hash, and hashes of untracked files. The normal
-development run records local modifications accurately.
-
-An isolated reproduction now clones the committed BMOPFTools revision into a
-temporary directory, runs the fixture and all tests there, and verifies that the
-exported fixture is byte-identical to the canonical artifact:
+The September review adds an isolated run with a recorded Julia environment,
+case-source hashes, and an explicit BMOPFTools commit. From the repository root:
 
 ```sh
+bash scripts/reproduce_clean_fixture.sh --check
 bash scripts/reproduce_clean_fixture.sh
 ```
 
-Fixture version 0.1.0 passes at clean BMOPFTools commit
-`b7aa9a1bb48bcc8b790d3bcf5417d6a32036352a`. The clean provenance, validation,
-PF, and OPF outputs are retained under
-`experiments/generated/clean-reproduction`. This establishes a pinned local
-reproduction at that commit; it is not a tagged BMOPFTools release, a guarantee
-of bit-identical nonlinear solver iterates, or an independent-solver result.
+The first command validates recorded input hashes. The second requires the
+Julia version recorded in the profile, clones the pinned dependency into a
+fresh run directory, installs the locked environment, regenerates the fixture,
+compares selected numerical outputs with declared tolerances, and runs the
+verification lesson. The recorded export uses a different schema URI from the
+August fixture; the workflow checks equality of all engineering fields and
+records that metadata difference. Pinned replay additionally checks the exact
+recorded export hash. It prints the run directory and retains its inputs,
+resolved environment, results, and execution log. It never replaces the
+maintained evidence. Add `--offline` when the pinned Julia packages are cached.
+Use `--output /path/to/a/new/run` to choose a new directory outside the repository.
+
+The profile is in `experiments/reproduction/review-2026-09-06/`. It binds the
+specific case sources by hash because this is an author-review working-tree
+snapshot, not a newly published book commit. It is a new recorded run; it does
+not repair missing metadata in an earlier experiment. Profile validation fails
+if a bound input changes. For a fresh development check instead, use:
+
+```sh
+bash scripts/reproduce_clean_fixture.sh --mode current
+```
+
+Current mode uses the dependency repository's HEAD and resolves dependencies
+afresh. It tests the fixture and scoped verification but does not claim the
+pinned numerical comparison. Readers should use these isolated commands when
+comparing evidence; direct `run_*.jl` generators are maintainer commands that
+can replace artifacts in the working tree.
+
+### Historical August record
+
+The preserved August fixture record at BMOPFTools commit
+`b7aa9a1bb48bcc8b790d3bcf5417d6a32036352a` remains under
+`experiments/generated/clean-reproduction`. Its complete resolved environment
+was not recorded. Its original `generated_at` date was emitted as a constant
+by the old generator and must not be treated as authenticated execution time.
+The current generator separates fixture definition date from the actual UTC
+run timestamp. New run metadata is separate from deterministic fixture identity.
+
+An explicitly requested historical reconstruction can use the old dependency
+revision with freshly resolved dependencies:
+
+```sh
+bash scripts/reproduce_clean_fixture.sh --mode historical-reconstruction
+```
+
+That operation does not reconstruct the missing historical environment, does
+not run newer verification APIs unavailable at the old revision, and makes
+no full historical numerical-replay claim. It writes to a fresh directory.
+
+## Check the returned solution
+
+The current verification exercise can also run directly, without writing files:
+
+```sh
+julia --project=experiments experiments/lessons/verify_running_network.jl
+```
+
+It calls BMOPFTools `profile_solution` for supported voltage, device-limit,
+load-law, and network power-balance checks. It also calls the package's
+`line_yprim` for every line, evaluates each terminal-current map at the
+returned complex voltages, and compares the recovered currents with the
+reported currents. The comparison includes the `l4` conductor permutation.
+The declared absolute tolerances are ``10^{-5}`` A for line-current
+consistency and ``10^{-3}`` W/var for the reported network power balances.
+They are numerical acceptance tolerances for this fixture, not measurement
+accuracy or a global optimality guarantee.
+
+A second result adds 1000 V to the real part of terminal `i2.a`, updates its
+magnitude and angle consistently, and leaves the reported currents untouched.
+It must trigger a voltage-limit finding and fail line-current recovery.
+The original result remains unchanged. Active-bound and initialization findings
+are retained in the report rather than treated as execution failures.
+
+**Evidence boundary.** Post-solve evaluation is separate from the JuMP
+constraints, but the inputs and package primitive construction are shared.
+The profile's network power balance uses reported device powers/losses; the
+additional line recovery independently checks consistency with line primitives.
+This does not independently recalculate every transformer/device equation or
+nodal KCL from the original physical specification.
+
+Accordingly, calling `check_solved_network_feasibility` on this result returns
+`indeterminate`: its required full independent residual bundle is absent.
+The lesson asserts that refusal. Supplying zeros for missing residuals would
+be an invalid way to obtain a pass. Full all-device/KCL verification remains
+a package-owned extension, and physical model adequacy requires other evidence.
 
 ### Version 0.1.0 realization boundary
 

@@ -24,18 +24,6 @@
       "monochrome_safe": true,
       "distinguishing_channels": ["ordered labelled stages", "box boundaries", "explicit captions"]
     },
-    "argument-spine": {
-      "svg": "docs/src/assets/argument-spine.svg",
-      "png": "docs/src/assets/argument-spine.png",
-      "monochrome_safe": true,
-      "distinguishing_channels": ["numbered stages", "serpentine arrows", "chapter-purpose labels"]
-    },
-    "audience-routes": {
-      "svg": "docs/src/assets/audience-routes.svg",
-      "png": "docs/src/assets/audience-routes.png",
-      "monochrome_safe": true,
-      "distinguishing_channels": ["shared spine boxes", "branch arrows", "audience-labelled panels"]
-    },
     "vocabulary-bridge-five-languages": {
       "svg": "docs/src/assets/vocabulary-bridge-five-languages.svg",
       "png": "docs/src/assets/vocabulary-bridge-five-languages.png",

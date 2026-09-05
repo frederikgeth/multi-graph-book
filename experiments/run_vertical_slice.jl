@@ -3,6 +3,7 @@ using Ipopt
 using JSON3
 using JuMP
 using SHA
+using Dates
 
 include(joinpath(@__DIR__, "running_network.jl"))
 include(joinpath(@__DIR__, "transformations", "TransformationContracts.jl"))
@@ -200,7 +201,8 @@ pf_result = solve_pf(pf_net; optimizer=Ipopt.Optimizer, per_unit=true)
 opf_result = solve_opf(net; optimizer=Ipopt.Optimizer, per_unit=true)
 
 provenance = Dict{String,Any}(
-    "generated_at" => "2026-08-13",
+    "fixture_defined_on" => "2026-08-13",
+    "generated_at" => Dates.format(now(UTC), dateformat"yyyy-mm-ddTHH:MM:SS.sss") * "Z",
     "julia_version" => string(VERSION),
     "packages" => Dict(
         "BMOPFTools" => string(pkgversion(BMOPFTools)),

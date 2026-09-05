@@ -10,7 +10,7 @@ This is a deterministic robustness and abstention check, not human-calibrated an
 | Status accuracy | 100.0% | yes |
 | Qualified contract completeness | 100.0% | yes |
 | Unsupported-query abstention | 100.0% | yes |
-| Hybrid retrieval recall@10 | 48.3% | diagnostic |
+| Hybrid retrieval recall@10 | 50.6% | diagnostic |
 | Graph retrieval recall@10 | 66.1% | diagnostic |
 
 | Case | Expected status | Observed status | Hybrid recall@10 | Graph recall@10 | Contract complete |
@@ -22,5 +22,5 @@ This is a deterministic robustness and abstention check, not human-calibrated an
 | `ADV-GRAPH-API` | `qualified` | `qualified` | 40.0% | 100.0% | yes |
 | `ADV-GROUND-ABBREVIATION` | `qualified` | `qualified` | 75.0% | 0.0% | yes |
 | `ADV-SEQUENCE-ABSOLUTE` | `qualified` | `qualified` | 50.0% | 25.0% | yes |
-| `ADV-DECISION-QUALIFIER` | `qualified` | `qualified` | 0.0% | 20.0% | yes |
+| `ADV-DECISION-QUALIFIER` | `qualified` | `qualified` | 20.0% | 20.0% | yes |
 | `ADV-UNSUPPORTED-NEGATIVE` | `unsupported` | `unsupported` | 100.0% | 100.0% | yes |

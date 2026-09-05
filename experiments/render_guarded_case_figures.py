@@ -197,20 +197,20 @@ def parallel_decision() -> str:
 
 
 def bim_signature() -> str:
-    lines = shell("Variable signatures determine which BIM/BFM questions are expressible", "A shared bus-pair variable and member-indexed variables describe different relaxation spaces.", 1400, 780)
+    lines = shell("Shared voltage coordinates can retain member constraints", "Fixed scalar series members: indexed admittances and recovery maps retain the member distinction.", 1400, 780)
     rows = [
-        ("member current limit", "✗", "✓"),
-        ("independent outage/state", "✗", "✓"),
-        ("recovered branch current", "✗", "✓"),
-        ("member measurement", "✗", "✓"),
-        ("common voltage-drop consistency", "implicit", "explicit"),
+        ("member current limit", "yes: member data + bound", "yes: same physical relation"),
+        ("independent outage/state", "requires state-dependent laws", "requires state-dependent laws"),
+        ("recovered branch current", "yes: member current map", "yes: member current map"),
+        ("member measurement", "yes: observation map", "yes: observation map"),
+        ("common voltage products", "shared by construction", "equality constraints required"),
     ]
-    lines += [rect(55, 125, 1290, 520, "panel"), text(85, 170, "question", "head"), text(720, 170, "shared W_ij", "head", "middle"), text(1080, 170, "member-indexed W_lij / S_lij", "head", "middle")]
+    lines += [rect(55, 125, 1290, 520, "panel"), text(85, 170, "question", "head"), text(685, 170, "shared W + member data", "head", "middle"), text(1090, 170, "separate W + equalities", "head", "middle")]
     for i, (question, left, right) in enumerate(rows):
-        y = 220 + i * 78
-        lines += [line(80, y - 25, 1310, y - 25, "ink", 1), text(85, y, question, "body"), text(720, y, left, "head", "middle"), text(1080, y, right, "head", "middle")]
-    lines += [rect(85, 545, 1210, 62, "warn"), text(105, 582, "Missing relation: Z_l* S_lij = Z_k* S_kij. Aggregate balance can pass while no common voltage drop exists.", "body")]
-    lines += [text(65, 705, "Notation capability plate, not a new numerical certificate: the chapter's equations define the scope boundary.", "small")]
+        y = 220 + i * 65
+        lines += [line(80, y - 25, 1310, y - 25, "ink", 1), text(85, y, question, "body"), text(685, y, left, "body", "middle"), text(1090, y, right, "body", "middle")]
+    lines += [rect(85, 545, 1210, 62, "warn"), text(105, 582, "Dropping consistency equalities can change a relaxation; adding an index alone proves no equivalence.", "body")]
+    lines += [text(65, 705, "Squared member current: |Y_l|^2 (W_ii + W_jj - 2 Re W_ij). Source member data must remain available.", "small")]
     return finish(lines)
 
 

@@ -1,13 +1,13 @@
-%% What Power-Network Models Preserve PDF preamble.
+%% Power-System Modelling for Computation PDF preamble.
 \documentclass[oneside]{memoir}
 
 \usepackage{./documenter}
 \usepackage{./custom}
 
 \hypersetup{
-    pdftitle={What Power-Network Models Preserve},
+    pdftitle={Power-System Modelling for Computation},
     pdfauthor={\DocAuthors},
-    pdfsubject={Graph-based representations, analysis, optimization, and learning for power systems},
+    pdfsubject={Steady-state power-system model construction, transformations, optimization, and verification},
     pdfkeywords={power systems, graph models, network models, graph theory},
     pdflang={en-AU},
     pdfdisplaydoctitle=true,
@@ -17,15 +17,22 @@
 \title{
     {\HUGE \DocMainTitle }\\
     \vspace{0.8em}
-    {\large A book and knowledge base}\\
+    {\large From circuit equations to optimization and software}\\
     \vspace{0.8em}
     {\Large \DocVersion }
 }
 \author{\DocAuthors}
 
-% The build sets this back to section depth for generated/reference pages;
-% reader-facing pages opt into their internal subsection entries at page start.
-\settocdepth{subsection}
+% Show the reading route without reproducing every internal heading.
+\settocdepth{section}
+
+% Route labels already name Part 1 through Part 8. Suppress the additional
+% automatic Roman labels, which also counted the preface and reference group.
+% Keep the underlying counters and destinations for PDF navigation.
+\renewcommand{\printpartname}{}
+\renewcommand{\partnamenum}{}
+\renewcommand{\printpartnum}{}
+\renewcommand{\partnumberline}[1]{}
 
 \begin{document}
 

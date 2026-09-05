@@ -3,7 +3,7 @@
 
 This is intentionally a structural check, not a visual or mathematical review.
 It catches stale/empty builds, missing HTML metadata, PDF compilation remnants,
-and accidental changes to the selective subsection TOC.
+and accidental changes to the compact reading-route TOC.
 """
 
 from __future__ import annotations
@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HTML_ROOT = ROOT / "docs/build"
 PDF = ROOT / "docs/latex_build/GraphModelsForPowerSystems.pdf"
-PDF_LOG = ROOT / "docs/latex_build/Structure-PreservingGraphModelsforPowerNetworks.log"
+PDF_LOG = ROOT / "docs/latex_build/Power-SystemModellingforComputation.log"
 
 EXPECTED_HTML = [
     "index.html",
@@ -30,11 +30,10 @@ EXPECTED_HTML = [
     "reference/knowledge-base-index.html",
 ]
 
-TOC_SUBSECTIONS = [
-    "A deliberately difficult network",
-    "Labels are not coordinates",
-    "The physical-to-matrix ladder",
-    "The missing middle between a one-line diagram and Y",
+TOC_PAGES = [
+    "The parallel-member lesson",
+    "Computational case guide",
+    "Study workbook",
 ]
 
 
@@ -91,23 +90,36 @@ if shutil.which("pdfinfo") is None or shutil.which("pdftotext") is None:
     fail("pdfinfo and pdftotext are required for the rendered-output check")
 info = command_text("pdfinfo", str(PDF))
 page_match = re.search(r"^Pages:\s*(\d+)", info, re.M)
-if page_match is None or int(page_match.group(1)) < 300:
+if page_match is None or int(page_match.group(1)) < 20:
     fail("PDF page count is missing or unexpectedly small")
 
 with tempfile.TemporaryDirectory(prefix="multi-graph-book-pdf-") as temporary:
-    toc_text = command_text("pdftotext", "-f", "1", "-l", "40", "-layout", str(PDF), "-")
     body_text = command_text("pdftotext", "-layout", str(PDF), "-")
-    for heading in TOC_SUBSECTIONS:
+    # Contents end before the first main-text chapter. Restrict assertions to
+    # those pages so a body heading cannot masquerade as a contents entry.
+    pages = body_text.split("\f")
+    contents_start = next((i for i, page in enumerate(pages) if re.search(r"^Contents\s*$", page, re.M)), None)
+    main_start = next((i for i, page in enumerate(pages) if re.search(r"^Chapter 1\s*$", page, re.M)), None)
+    if contents_start is None or main_start is None or main_start <= contents_start:
+        fail("could not identify the contents and first chapter")
+    toc_text = "\n".join(pages[contents_start:main_start])
+    if main_start - contents_start > 3:
+        fail("reading-route contents exceed three pages")
+    for heading in TOC_PAGES:
         if heading not in toc_text:
-            fail(f"selected pedagogical subsection is absent from the TOC: {heading}")
-    if re.search(r"\b54\.[1-4]\b", toc_text):
-        fail("archival search-run child pages unexpectedly appear as 54.1–54.4")
-    for heading in ("Review protocol and evidence status", "Knowledge-base indexes", "References"):
+            fail(f"selected teaching page is absent from the TOC: {heading}")
+    for heading in ("Predict before calculating", "Repair the aggregate", "Run the calculation"):
+        if heading in toc_text or heading not in body_text:
+            fail(f"internal heading must appear in the text, outside the compact TOC: {heading}")
+    for heading in ("From equipment to equations", "Conductors, connections, and ground", "Graphs for different computations", "Transformations and recovery", "Constraints and decisions", "Evidence for a computation", "An end-to-end modelling study", "References"):
         if heading not in toc_text:
-            fail(f"expected chapter is absent from the PDF TOC: {heading}")
-    for heading in ("Page status: generated search-run record.", "Research agenda"):
+            fail(f"expected core part is absent from the PDF TOC: {heading}")
+    for heading in ("Page status: generated search-run record.", "Page status: generated reference navigation and evidence-gap summary.", "Page status: generated knowledge-base"):
+        if heading in body_text:
+            fail(f"reference-library content unexpectedly included in core PDF: {heading}")
+    for heading in ("Change one assumption", "Check your reasoning", "Why I wrote this book"):
         if heading not in body_text:
-            fail(f"linked research-record content is absent from the PDF text: {heading}")
+            fail(f"new teaching content is missing from the PDF: {heading}")
 
     if shutil.which("pdftoppm") is not None:
         output = Path(temporary) / "page"

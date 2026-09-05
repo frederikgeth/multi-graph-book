@@ -106,6 +106,13 @@ def validate_answer_response(index: CorpusIndex, response: dict) -> list[str]:
     markdown = response.get("markdown", "")
     if not markdown.strip():
         errors.append("answer Markdown is empty")
+    for item in contract.get("scope_and_assumptions", []):
+        assumptions = item.get("assumptions", [])
+        if isinstance(assumptions, str):
+            assumptions = [assumptions]
+        for assumption in assumptions:
+            if assumption and f"Assumption: {assumption}" not in markdown:
+                errors.append(f"answer Markdown omits a complete assumption for {item.get('claim_id')}")
     for source in packet.get("sources", []):
         if source_location(source) not in markdown:
             errors.append(f"answer Markdown omits citation location: {source_location(source)}")
@@ -155,7 +162,10 @@ def render_markdown(packet: dict) -> str:
         for item in contract["scope_and_assumptions"]:
             lines.append(f"- **{item['claim_id']}** — exactness object: `{item['exactness_object']}`")
             lines.append(f"  - Model scope: {item['model_scope']}")
-            for assumption in item["assumptions"]:
+            assumptions = item["assumptions"]
+            if isinstance(assumptions, str):
+                assumptions = [assumptions]
+            for assumption in assumptions:
                 lines.append(f"  - Assumption: {assumption}")
         lines.append("")
     if contract["required_qualifications"]:

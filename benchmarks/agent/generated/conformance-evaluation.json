@@ -6,11 +6,11 @@
     "The benchmark measures code correctness."
   ],
   "provenance": {
-    "bmopftools_executable_corpus_sha256": "df23fd1025de2d09691de5bbfd19549383392658ccb73df51443fd8b8f77aba2",
-    "bmopftools_manifest_sha256": "f20116fd078d043c4d7fa0ff1cdbdf02a2b9ac32a61e808c197bafebed526a04",
-    "book_llm_corpus_sha256": "de38cf25cdb50c14316a202416341ee9b634f12047c864e2807c472510885eca",
+    "bmopftools_executable_corpus_sha256": "f488c19199d84da3153c8b28f01b4edd26d040922f7b15062b8486f181134235",
+    "bmopftools_manifest_sha256": "7ce51ed7e666f2ab2781d7ef91b46d10756515e13e42067712b23d1dee67e770",
+    "book_llm_corpus_sha256": "76646c436830e6aa97dd7c342f4e8d817e8c78bb4c00f5621ab388c51d1f798f",
     "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-    "federated_pair_sha256": "e4209fbf0c1f8293eac23086f3e66a814e472c45412d2f3e3a6c67c4d299a97d"
+    "federated_pair_sha256": "33d17f41749bf4a93aadf399ae08609b9b6181dd5c2a738025c288f9e11f991c"
   },
   "reports": [
     {
