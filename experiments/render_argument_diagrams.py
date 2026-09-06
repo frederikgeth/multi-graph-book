@@ -21,7 +21,7 @@ def exactness_classes() -> str:
     lines = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850" viewBox="0 0 1200 850">',
         '<title>Four exactness classes as observed-set containment</title>',
-        '<desc>Four panels compare source and target observed feasible sets: exact equality, inner conservative containment, outer relaxed containment, and scenario agreement only inside a declared sample region.</desc>',
+        '<desc>Four panels compare source and target observed feasible sets: exact equality, inner conservative containment, outer relaxed containment, and scenario agreement only at declared sampled points.</desc>',
         '<rect width="1200" height="850" fill="white"/>',
         '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.source{fill:#d9eef8;fill-opacity:.9;stroke:#245b7a;stroke-width:3}.target{fill:#f8e1c4;fill-opacity:.9;stroke:#8a4f13;stroke-width:3;stroke-dasharray:9 6}.sample{fill:none;stroke:#17212b;stroke-width:2;stroke-dasharray:4 5}.witness{fill:#17212b}.arrow{stroke:#17212b;stroke-width:2;fill:none;marker-end:url(#arrow)}</style>',
         '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
@@ -57,13 +57,13 @@ def exactness_classes() -> str:
         txt(310, 684, "source ⊂ target", "body", "middle"),
         # Scenario: agreement inside sample region, divergence outside.
         txt(645, 505, "scenario approximate", "head"),
-        txt(645, 530, "agreement is certified only on the declared sample region", "small"),
+        txt(645, 530, "agreement checked only at the declared sampled points", "small"),
         '<ellipse cx="890" cy="635" rx="150" ry="82" class="source"/>',
         '<ellipse cx="930" cy="635" rx="150" ry="82" class="target"/>',
         '<rect x="760" y="575" width="190" height="120" rx="8" class="sample"/>',
         txt(855, 615, "sampled", "body", "middle"),
         txt(855, 638, "region", "body", "middle"),
-        txt(890, 690, "overlap here; divergence outside", "small", "middle"),
+        txt(890, 690, "sample agreement is not a region-wide certificate", "small", "middle"),
         txt(40, 820, "Source set: h(𝓕_M)   ·   target set: ĥ(𝓕_M̂)   ·   every panel assumes the observation map is declared first.", "small"),
         '</svg>',
     ]
@@ -71,60 +71,8 @@ def exactness_classes() -> str:
 
 
 def recovery_map() -> str:
-    lines = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">',
-        '<title>Recovery map mechanism for exact lifted decisions</title>',
-        '<desc>Two panels show a reduction from a source model to a target model. With a recovery map, source constraints can be checked and the observed feasible sets agree; without recovery, the target can become an outer relaxation.</desc>',
-        '<rect width="1200" height="720" fill="white"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.source{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.target{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.constraint{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.bad{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.solid{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.dashed{stroke:#8a3232;stroke-width:3;stroke-dasharray:9 7;fill:none;marker-end:url(#arrow)}</style>',
-        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
-        txt(40, 44, "Recovery is the positive mechanism behind exact lifted decisions", "title"),
-        txt(40, 72, "Elimination alone gives a target relation; recovery lets the source constraints be evaluated again.", "sub"),
-        '<rect x="40" y="105" width="535" height="555" rx="14" class="panel"/>',
-        '<rect x="625" y="105" width="535" height="555" rx="14" class="panel"/>',
-        txt(65, 140, "with recovery map", "head"),
-        txt(650, 140, "without recovery map", "head"),
-        # Exact panel.
-        '<rect x="75" y="200" width="165" height="95" rx="12" class="source"/>',
-        '<rect x="375" y="200" width="165" height="95" rx="12" class="target"/>',
-        txt(157, 238, "source M", "head", "middle"),
-        txt(157, 263, "member laws + limits", "small", "middle"),
-        txt(457, 238, "target M̂", "head", "middle"),
-        txt(457, 263, "reduced relation", "small", "middle"),
-        '<path d="M245 247 L365 247" class="solid"/>',
-        txt(305, 230, "reduce", "small", "middle"),
-        '<rect x="75" y="390" width="165" height="95" rx="12" class="constraint"/>',
-        '<rect x="375" y="390" width="165" height="95" rx="12" class="constraint"/>',
-        txt(157, 428, "recover z", "head", "middle"),
-        txt(157, 453, "z = R(x̂)", "small", "middle"),
-        txt(457, 428, "check source limits", "head", "middle"),
-        txt(457, 453, "g(x̂,R(x̂)) ≤ 0", "small", "middle"),
-        '<path d="M457 302 L457 380" class="solid"/>',
-        txt(480, 344, "target solution", "small"),
-        '<path d="M375 438 L250 438" class="solid"/>',
-        txt(312, 420, "recovery", "small", "middle"),
-        txt(307, 548, "observed feasible sets coincide", "body", "middle"),
-        txt(307, 575, "because every target point has a checked source lift", "small", "middle"),
-        # No recovery panel.
-        '<rect x="660" y="200" width="165" height="95" rx="12" class="source"/>',
-        '<rect x="960" y="200" width="165" height="95" rx="12" class="target"/>',
-        txt(742, 238, "source M", "head", "middle"),
-        txt(742, 263, "member limits hidden", "small", "middle"),
-        txt(1042, 238, "target M̂", "head", "middle"),
-        txt(1042, 263, "reduced relation", "small", "middle"),
-        '<path d="M830 247 L950 247" class="solid"/>',
-        txt(890, 230, "reduce", "small", "middle"),
-        '<rect x="810" y="390" width="165" height="95" rx="12" class="bad"/>',
-        txt(892, 428, "uncheckable", "head", "middle"),
-        txt(892, 453, "source limits", "small", "middle"),
-        '<path d="M1042 302 L975 380" class="dashed"/>',
-        txt(1055, 345, "no lift", "small"),
-        txt(892, 548, "target feasible set can inflate", "body", "middle"),
-        txt(892, 575, "a boundary match is not a decision certificate", "small", "middle"),
-        txt(40, 700, "Recovery may be algebraic, constructive, or solver-backed; the certificate must state its domain and the quantities it reconstructs.", "small"),
-        '</svg>',
-    ]
-    return "\n".join(lines) + "\n"
+    from render_teaching_figures import recovery
+    return recovery()
 
 
 def query_partial_orders() -> str:
@@ -508,41 +456,8 @@ def spine_band() -> str:
 
 
 def orientation_power() -> str:
-    lines = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">',
-        '<title>Stored orientation is not operating power direction</title>',
-        '<desc>Two panels distinguish an arbitrary reference orientation and terminal current signs from the operating-point complex power transfer, which may reverse without changing the stored arc.</desc>',
-        '<rect width="1400" height="760" fill="white"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:20px;font-weight:bold}.body{font-size:16px}.small{font-size:14px;fill:#5f6b76}.wire{stroke:#17212b;stroke-width:8}.ref{stroke:#245b7a;stroke-width:4;fill:none;marker-end:url(#arrow)}.power{stroke:#8a4f13;stroke-width:5;fill:none;marker-end:url(#arrow)}.reverse{stroke:#8a3232;stroke-width:5;fill:none;marker-end:url(#arrow);stroke-dasharray:10 7}.bus{fill:#d9eef8;stroke:#245b7a;stroke-width:2}</style>',
-        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
-        txt(40, 46, "An oriented arc is a coordinate choice, not a flow measurement", "title"),
-        txt(40, 76, "Keep the stored triple ℓij, terminal signs, and operating-point power transfer as separate records.", "sub"),
-        '<rect x="40" y="120" width="635" height="520" rx="14" class="panel"/>',
-        '<rect x="725" y="120" width="635" height="520" rx="14" class="panel"/>',
-        txt(70, 160, "reference orientation and terminal signs", "head"),
-        txt(755, 160, "operating-point power transfer", "head"),
-        '<rect x="95" y="330" width="120" height="78" rx="12" class="bus"/>',
-        '<rect x="500" y="330" width="120" height="78" rx="12" class="bus"/>',
-        txt(155, 375, "i", "head", "middle"), txt(560, 375, "j", "head", "middle"),
-        '<line x1="215" y1="369" x2="500" y2="369" class="wire"/>',
-        '<path d="M240 300 L455 300" class="ref"/>',
-        txt(350, 286, "stored orientation ℓij", "body", "middle"),
-        '<path d="M270 445 L470 445" class="ref"/>',
-        txt(370, 475, "Iℓij enters at i; −Iℓij enters at j", "small", "middle"),
-        txt(350, 545, "reversing the reference swaps signs and endpoint records", "small", "middle"),
-        '<rect x="780" y="330" width="120" height="78" rx="12" class="bus"/>',
-        '<rect x="1185" y="330" width="120" height="78" rx="12" class="bus"/>',
-        txt(840, 375, "i", "head", "middle"), txt(1245, 375, "j", "head", "middle"),
-        '<line x1="900" y1="369" x2="1185" y2="369" class="wire"/>',
-        '<path d="M920 300 L1135 300" class="power"/>',
-        txt(1027, 286, "Pij + 𝗂Qij > 0", "body", "middle"),
-        '<path d="M1135 445 L920 445" class="reverse"/>',
-        txt(1027, 475, "Pij + 𝗂Qij < 0 can occur", "body", "middle"),
-        txt(1027, 545, "the same stored ℓij can carry either sign at another state", "small", "middle"),
-        txt(40, 700, "A directed drawing may encode incidence, a reference sign, a causal relation, or a measured transfer. Name which one is intended before interpreting an arrow.", "small"),
-        '</svg>',
-    ]
-    return "\n".join(lines) + "\n"
+    from render_teaching_figures import orientation
+    return orientation()
 
 
 def cycles_radial() -> str:
@@ -633,13 +548,13 @@ def kron_fill_in() -> str:
         txt(70, 160, "partitioned source relation", "head"), txt(780, 160, "reduced boundary relation", "head"),
         '<circle cx="160" cy="380" r="34" class="boundary"/><circle cx="520" cy="380" r="34" class="boundary"/><circle cx="340" cy="300" r="34" class="internal"/>',
         txt(160, 386, "b₁", "head", "middle"), txt(520, 386, "b₂", "head", "middle"), txt(340, 306, "i", "head", "middle"),
-        '<line x1="190" y1="365" x2="310" y2="315" class="edge"/><line x1="370" y1="315" x2="490" y2="365" class="edge"/><line x1="160" y1="414" x2="520" y2="414" class="edge"/>',
-        txt(340, 505, "Y = [YBB  YBI; YIB  YII]", "body", "middle"), txt(340, 540, "internal block YII invertible", "small", "middle"),
+        '<line x1="190" y1="365" x2="310" y2="315" class="edge"/><line x1="370" y1="315" x2="490" y2="365" class="edge"/>',
+        txt(340, 505, "Y = [YBB  YBI; YIB  YII]", "body", "middle"), txt(340, 540, "iI = 0; internal block YII invertible", "small", "middle"),
         '<circle cx="870" cy="380" r="34" class="boundary"/><circle cx="1240" cy="380" r="34" class="boundary"/>',
         txt(870, 386, "b₁", "head", "middle"), txt(1240, 386, "b₂", "head", "middle"),
         '<line x1="905" y1="380" x2="1205" y2="380" class="fill"/>',
         txt(1055, 345, "−YBI YII⁻¹ YIB", "body", "middle"), txt(1055, 430, "Yᵏ = YBB − YBI YII⁻¹ YIB", "body", "middle"),
-        txt(1055, 505, "exact for the retained boundary relation", "small", "middle"), txt(1055, 540, "internal assets, currents, and limits require recovery", "small", "middle"),
+        txt(1055, 505, "exact for this zero-injection boundary relation", "small", "middle"), txt(1055, 540, "internal assets, currents, and limits require recovery", "small", "middle"),
         '<path d="M650 380 L735 380" class="arrow"/>', txt(692, 360, "Schur", "small", "middle"),
         txt(40, 700, "Kron is an elimination map. Realizing the reduced relation as permitted equipment is a separate compilation and certificate problem.", "small"),
         '</svg>',

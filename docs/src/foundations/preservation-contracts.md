@@ -197,14 +197,16 @@ and ``i_I=0``, the internal voltage is
 v_I=-Y_{II}^{-1}Y_{IB}v_B.
 ```
 
-![Recovery-map loop with and without source-constraint evaluation.](../assets/recovery-map-loop.png)
+![Recovery establishes target-to-source observation inclusion; exact observed-set equality also requires source coverage.](../assets/recovery-map-loop.png)
 
-The left panel is the positive mechanism behind an exact lifted decision:
-solve or reduce in the target variables, reconstruct ``z=R(\widehat x)``, and
-evaluate the source constraints on the recovered quantities. The right panel
-is the failure mode. A target boundary relation can still be correct while
-the source member limits are uncheckable, so the target feasible set may be an
-outer relaxation.
+A recovery map that sends **every** target feasible point to a source feasible
+point with the same joint observation establishes
+``\widehat h(\widehat{\mathcal F})\subseteq h(\mathcal F)``. Equality also
+requires the reverse inclusion: every source feasible observation must be
+represented in the target. A conservative target can satisfy the recovery
+obligation while excluding valid source observations. Checking one returned
+solution establishes only that point's obligations, not either set-wide
+statement. Decision and objective preservation require their declared mappings.
 
 The reduced admittance is
 

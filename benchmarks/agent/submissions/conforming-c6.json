@@ -43,8 +43,8 @@
   ],
   "condition_id": "C6_NEGATIVE_KNOWLEDGE",
   "provenance": {
-    "bmopftools_executable_corpus_sha256": "f488c19199d84da3153c8b28f01b4edd26d040922f7b15062b8486f181134235",
-    "book_llm_corpus_sha256": "142b7efac6c5b9bdc99f8d42d2f917ba5181e513d741781befe70a5eec712592",
+    "bmopftools_executable_corpus_sha256": "0f4b2d1e4b50c54a2db75013d65a52865aadf0915522749ad6c008efdafdcc31",
+    "book_llm_corpus_sha256": "636b6529f1279f897894f550b180a224d0e840658f7235ebf7d28b5c98bd8095",
     "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0"
   },
   "run_id": "CONFORMANCE-CORRECT-001",

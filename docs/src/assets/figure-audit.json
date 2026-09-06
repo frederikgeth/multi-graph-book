@@ -5,9 +5,20 @@
   "visual_grammar": {
     "background": "white",
     "ink": "#17212b",
-    "semantic_channels": ["typography", "panel boundaries", "line style", "arrows", "explicit labels", "caption prose"],
+    "semantic_channels": [
+      "typography",
+      "panel boundaries",
+      "line style",
+      "arrows",
+      "explicit labels",
+      "caption prose"
+    ],
     "colour_role": "secondary cue only",
-    "required_svg_markers": ["title", "desc", "text"],
+    "required_svg_markers": [
+      "title",
+      "desc",
+      "text"
+    ],
     "required_companion": "PNG for PDF-safe rendering",
     "audit_rule": "Every maintained SVG has an audit entry, a PNG companion, a captioned Markdown use, a non-colour distinguishing channel, and a rendered grayscale contrast sample."
   },
@@ -16,391 +27,671 @@
       "svg": "docs/src/assets/coupled-corridor-lowering.svg",
       "png": "docs/src/assets/coupled-corridor-lowering.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["three titled stages", "asset lines versus dashed coupling relation", "joint-factor boundary", "generated-edge labels and warning"]
+      "distinguishing_channels": [
+        "three titled stages",
+        "asset lines versus dashed coupling relation",
+        "joint-factor boundary",
+        "generated-edge labels and warning"
+      ]
     },
     "earth-return-ladder": {
       "svg": "docs/src/assets/earth-return-ladder.svg",
       "png": "docs/src/assets/earth-return-ladder.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["ordered labelled stages", "box boundaries", "explicit captions"]
+      "distinguishing_channels": [
+        "ordered labelled stages",
+        "box boundaries",
+        "explicit captions"
+      ]
     },
     "vocabulary-bridge-five-languages": {
       "svg": "docs/src/assets/vocabulary-bridge-five-languages.svg",
       "png": "docs/src/assets/vocabulary-bridge-five-languages.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["five community-labelled rows", "solid bridge arrows versus dashed untranslated bypasses", "bridge and unsafe-inference columns", "explicit arrow legend and house-rule banner"]
+      "distinguishing_channels": [
+        "five community-labelled rows",
+        "solid bridge arrows versus dashed untranslated bypasses",
+        "bridge and unsafe-inference columns",
+        "explicit arrow legend and house-rule banner"
+      ]
     },
     "case-escalation-grid": {
       "svg": "docs/src/assets/case-escalation-grid.svg",
       "png": "docs/src/assets/case-escalation-grid.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["row/column labels", "textual yes/partial/absent states", "two titled grids"]
+      "distinguishing_channels": [
+        "row/column labels",
+        "textual yes/partial/absent states",
+        "two titled grids"
+      ]
     },
     "exactness-classes": {
       "svg": "docs/src/assets/exactness-classes.svg",
       "png": "docs/src/assets/exactness-classes.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["four titled panels", "solid/dashed set boundaries", "witness and sample annotations"]
+      "distinguishing_channels": [
+        "four titled panels",
+        "solid/dashed set boundaries",
+        "witness and sample annotations"
+      ]
     },
     "nonlinear-kkt-witness": {
       "svg": "docs/src/assets/nonlinear-kkt-witness.svg",
       "png": "docs/src/assets/nonlinear-kkt-witness.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["source/aggregate panel labels", "matrix boundaries", "numeric captions"]
+      "distinguishing_channels": [
+        "source/aggregate panel labels",
+        "matrix boundaries",
+        "numeric captions"
+      ]
     },
     "numerical-fill-in": {
       "svg": "docs/src/assets/numerical-fill-in.svg",
       "png": "docs/src/assets/numerical-fill-in.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["solid source edges", "dashed fill edges", "eliminated-node annotation"]
+      "distinguishing_channels": [
+        "solid source edges",
+        "dashed fill edges",
+        "eliminated-node annotation"
+      ]
     },
     "numerical-jacobian-dependency": {
       "svg": "docs/src/assets/numerical-jacobian-dependency.svg",
       "png": "docs/src/assets/numerical-jacobian-dependency.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["equation/variable labels", "matrix cells", "explicit dependency legend"]
+      "distinguishing_channels": [
+        "equation/variable labels",
+        "matrix cells",
+        "explicit dependency legend"
+      ]
     },
     "parallel-feasible-set-card": {
       "svg": "docs/src/assets/parallel-feasible-set-card.svg",
       "png": "docs/src/assets/parallel-feasible-set-card.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["three labelled rows", "interval position", "witness annotation"]
+      "distinguishing_channels": [
+        "solid source and dashed target boundaries",
+        "shared axes in volts",
+        "labelled witness point"
+      ]
     },
     "query-partial-orders": {
       "svg": "docs/src/assets/query-partial-orders.svg",
       "png": "docs/src/assets/query-partial-orders.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["two titled query panels", "directed/dashed map styles", "explicit incomparability marker"]
+      "distinguishing_channels": [
+        "two titled query panels",
+        "directed/dashed map styles",
+        "explicit incomparability marker"
+      ]
     },
     "recovery-map-loop": {
       "svg": "docs/src/assets/recovery-map-loop.svg",
       "png": "docs/src/assets/recovery-map-loop.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["with/without panels", "solid/dashed recovery arrows", "explicit constraint boxes"]
+      "distinguishing_channels": [
+        "numbered recovery steps",
+        "explicit two set inclusions",
+        "universal versus pointwise scope labels"
+      ]
     },
     "preservation-contract-card": {
       "svg": "docs/src/assets/preservation-contract-card.svg",
       "png": "docs/src/assets/preservation-contract-card.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["labelled cards", "box boundaries", "explicit scope text"]
+      "distinguishing_channels": [
+        "labelled cards",
+        "box boundaries",
+        "explicit scope text"
+      ]
     },
     "transformer-anatomy": {
       "svg": "docs/src/assets/transformer-anatomy.svg",
       "png": "docs/src/assets/transformer-anatomy.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["port/factor labels", "arrows and boundaries", "typed interface text"]
+      "distinguishing_channels": [
+        "port/factor labels",
+        "arrows and boundaries",
+        "typed interface text"
+      ]
     },
     "sequence-subspace": {
       "svg": "docs/src/assets/sequence-subspace.svg",
       "png": "docs/src/assets/sequence-subspace.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["two titled panels", "axis/residual geometry", "explicit invariant-subspace labels"]
+      "distinguishing_channels": [
+        "two titled panels",
+        "axis/residual geometry",
+        "explicit invariant-subspace labels"
+      ]
     },
     "bus-meaning-overlays": {
       "svg": "docs/src/assets/bus-meaning-overlays.svg",
       "png": "docs/src/assets/bus-meaning-overlays.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["four titled overlays", "terminal/wire geometry", "state and provenance labels"]
+      "distinguishing_channels": [
+        "four titled overlays",
+        "terminal/wire geometry",
+        "state and provenance labels"
+      ]
     },
     "certificate-composition": {
       "svg": "docs/src/assets/certificate-composition.svg",
       "png": "docs/src/assets/certificate-composition.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["forward/reverse arrows", "intermediate node", "compatibility gate"]
+      "distinguishing_channels": [
+        "forward/reverse arrows",
+        "intermediate node",
+        "compatibility gate"
+      ]
     },
     "guarded-rule-gate": {
       "svg": "docs/src/assets/guarded-rule-gate.svg",
       "png": "docs/src/assets/guarded-rule-gate.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["guard sequence", "solid pass branch", "dashed structured-rejection branch"]
+      "distinguishing_channels": [
+        "guard sequence",
+        "solid pass branch",
+        "dashed structured-rejection branch"
+      ]
     },
     "winding-coordinate-actions": {
       "svg": "docs/src/assets/winding-coordinate-actions.svg",
       "png": "docs/src/assets/winding-coordinate-actions.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["two titled panels", "row-versus-column arrows", "labelled index sets", "explicit P and Q actions"]
+      "distinguishing_channels": [
+        "two titled panels",
+        "row-versus-column arrows",
+        "labelled index sets",
+        "explicit P and Q actions"
+      ]
     },
     "literature-gap-map": {
       "svg": "docs/src/assets/literature-gap-map.svg",
       "png": "docs/src/assets/literature-gap-map.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["ordered topic labels", "horizontal bar lengths", "explicit attention labels", "zero-to-high axis guides"]
+      "distinguishing_channels": [
+        "ordered topic labels",
+        "horizontal bar lengths",
+        "explicit attention labels",
+        "zero-to-high axis guides"
+      ]
     },
     "spine-band": {
       "svg": "docs/src/assets/spine-band.svg",
       "png": "docs/src/assets/spine-band.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["nine numbered stages", "highlighted current stage", "left-to-right route arrows"]
+      "distinguishing_channels": [
+        "nine numbered stages",
+        "highlighted current stage",
+        "left-to-right route arrows"
+      ]
     },
     "orientation-power-transfer": {
       "svg": "docs/src/assets/orientation-power-transfer.svg",
       "png": "docs/src/assets/orientation-power-transfer.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["two titled panels", "reference and operating arrows", "endpoint labels"]
+      "distinguishing_channels": [
+        "current-reference labels",
+        "positive and negative active-power labels",
+        "solid and dashed arrows"
+      ]
     },
     "cycles-parallelism-radial-tail": {
       "svg": "docs/src/assets/cycles-parallelism-radial-tail.svg",
       "png": "docs/src/assets/cycles-parallelism-radial-tail.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["three titled panels", "triangle and parallel fibre geometry", "leaf and tail annotation"]
+      "distinguishing_channels": [
+        "three titled panels",
+        "triangle and parallel fibre geometry",
+        "leaf and tail annotation"
+      ]
     },
     "map-of-maps": {
       "svg": "docs/src/assets/map-of-maps.svg",
       "png": "docs/src/assets/map-of-maps.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["source-to-view arrows", "query labels", "contract gate"]
+      "distinguishing_channels": [
+        "source-to-view arrows",
+        "query labels",
+        "contract gate"
+      ]
     },
     "kron-fill-in": {
       "svg": "docs/src/assets/kron-fill-in.svg",
       "png": "docs/src/assets/kron-fill-in.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["boundary/internal node labels", "solid source edges", "dashed reduced coupling"]
+      "distinguishing_channels": [
+        "boundary/internal node labels",
+        "solid source edges",
+        "dashed reduced coupling"
+      ]
     },
     "provenance-lineage": {
       "svg": "docs/src/assets/provenance-lineage.svg",
       "png": "docs/src/assets/provenance-lineage.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["typed lineage stages", "virtual-object panel", "dashed recovery path"]
+      "distinguishing_channels": [
+        "typed lineage stages",
+        "virtual-object panel",
+        "dashed recovery path"
+      ]
     },
     "active-radiality": {
       "svg": "docs/src/assets/active-radiality.svg",
       "png": "docs/src/assets/active-radiality.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["inventory/state panels", "solid/open member styles", "explicit radiality predicates"]
+      "distinguishing_channels": [
+        "inventory/state panels",
+        "solid/open member styles",
+        "explicit radiality predicates"
+      ]
     },
     "topology-projection-layers": {
       "svg": "docs/src/assets/topology-projection-layers.svg",
       "png": "docs/src/assets/topology-projection-layers.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["three numbered panels", "separate junction circles and factor-boundary port nodes", "lift/stamp arrows", "explicit j/f incidence labels", "lost-decomposition annotation"]
+      "distinguishing_channels": [
+        "three numbered panels",
+        "separate junction circles and factor-boundary port nodes",
+        "lift/stamp arrows",
+        "explicit j/f incidence labels",
+        "lost-decomposition annotation"
+      ]
     },
     "canonical-port-factor-model": {
       "svg": "docs/src/assets/canonical-port-factor-model.svg",
       "png": "docs/src/assets/canonical-port-factor-model.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["port circles", "junction bars", "separate j/f arrows", "dashed Lambda provenance links"]
+      "distinguishing_channels": [
+        "port circles",
+        "junction bars",
+        "separate j/f arrows",
+        "dashed Lambda provenance links"
+      ]
     },
     "coordinate-three-by-three-plate": {
       "svg": "docs/src/assets/coordinate-three-by-three-plate.svg",
       "png": "docs/src/assets/coordinate-three-by-three-plate.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["three numeric matrix cards", "route labels", "2x2 phase-to-phase inset"]
+      "distinguishing_channels": [
+        "three numeric matrix cards",
+        "route labels",
+        "2x2 phase-to-phase inset"
+      ]
     },
     "transformation-size-inversion": {
       "svg": "docs/src/assets/transformation-size-inversion.svg",
       "png": "docs/src/assets/transformation-size-inversion.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["four titled operation cards", "printed node/edge counts", "size-is-not-semantics panel"]
+      "distinguishing_channels": [
+        "four titled operation cards",
+        "printed node/edge counts",
+        "size-is-not-semantics panel"
+      ]
     },
     "translation-trap-card": {
       "svg": "docs/src/assets/translation-trap-card.svg",
       "png": "docs/src/assets/translation-trap-card.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["four repeated cards", "quote/testable/resolving labels", "explicit guard consequences"]
+      "distinguishing_channels": [
+        "four repeated cards",
+        "quote/testable/resolving labels",
+        "explicit guard consequences"
+      ]
     },
     "transformation-register-glyphs": {
       "svg": "docs/src/assets/transformation-register-glyphs.svg",
       "png": "docs/src/assets/transformation-register-glyphs.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["typed rule labels", "distinct operation glyphs", "preservation summaries"]
+      "distinguishing_channels": [
+        "typed rule labels",
+        "distinct operation glyphs",
+        "preservation summaries"
+      ]
     },
     "guarded-result-plate": {
       "svg": "docs/src/assets/guarded-result-plate.svg",
       "png": "docs/src/assets/guarded-result-plate.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["claim/classification band", "guard checklist", "residual/cross-check/open-item panels"]
+      "distinguishing_channels": [
+        "claim/classification band",
+        "guard checklist",
+        "residual/cross-check/open-item panels"
+      ]
     },
     "four-wire-impedance-ladder": {
       "svg": "docs/src/assets/four-wire-impedance-ladder.svg",
       "png": "docs/src/assets/four-wire-impedance-ladder.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["typed edge cards", "explicit edge checks", "endpoint flag and accumulated guards"]
+      "distinguishing_channels": [
+        "typed edge cards",
+        "explicit edge checks",
+        "endpoint flag and accumulated guards"
+      ]
     },
     "australian-carson-reconciliation": {
       "svg": "docs/src/assets/australian-carson-reconciliation.svg",
       "png": "docs/src/assets/australian-carson-reconciliation.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["three comparison panels", "frequency/order labels", "numeric residuals and credibility boundary"]
+      "distinguishing_channels": [
+        "three comparison panels",
+        "frequency/order labels",
+        "numeric residuals and credibility boundary"
+      ]
     },
     "australian-cs1035-gap": {
       "svg": "docs/src/assets/australian-cs1035-gap.svg",
       "png": "docs/src/assets/australian-cs1035-gap.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["available/probe/missing panels", "frequency residuals", "explicit open-data task"]
+      "distinguishing_channels": [
+        "available/probe/missing panels",
+        "frequency residuals",
+        "explicit open-data task"
+      ]
     },
     "transformer-tap-decision-plate": {
       "svg": "docs/src/assets/transformer-tap-decision-plate.svg",
       "png": "docs/src/assets/transformer-tap-decision-plate.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["two decision-embedding panels", "tap and served-fraction values", "freeze-loss and lesson panel"]
+      "distinguishing_channels": [
+        "two decision-embedding panels",
+        "tap and served-fraction values",
+        "freeze-loss and lesson panel"
+      ]
     },
     "parallel-member-decision-plate": {
       "svg": "docs/src/assets/parallel-member-decision-plate.svg",
       "png": "docs/src/assets/parallel-member-decision-plate.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["source/aggregate/certificate panels", "numeric objective gap", "recovery and guard text"]
+      "distinguishing_channels": [
+        "source/aggregate/certificate panels",
+        "numeric objective gap",
+        "recovery and guard text"
+      ]
     },
     "parallel-redundancy-certificate": {
       "svg": "docs/src/assets/parallel-redundancy-certificate.svg",
       "png": "docs/src/assets/parallel-redundancy-certificate.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["complex-plane axes and nested discs", "solid versus dashed certificate boundaries", "exact versus naive labelled bars"]
+      "distinguishing_channels": [
+        "complex-plane axes and nested discs",
+        "solid versus dashed certificate boundaries",
+        "exact versus naive labelled bars"
+      ]
     },
     "representation-principal-levels": {
       "svg": "docs/src/assets/representation-principal-levels.svg",
       "png": "docs/src/assets/representation-principal-levels.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["four numbered principal-level boxes", "sideways asset and computational panels", "solid versus dashed labelled arrows"]
+      "distinguishing_channels": [
+        "four numbered principal-level boxes",
+        "sideways asset and computational panels",
+        "solid versus dashed labelled arrows"
+      ]
     },
     "bim-bfm-signature-capability": {
       "svg": "docs/src/assets/bim-bfm-signature-capability.svg",
       "png": "docs/src/assets/bim-bfm-signature-capability.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["question rows", "shared/member-indexed columns", "explicit missing consistency relation"]
+      "distinguishing_channels": [
+        "question rows",
+        "shared/member-indexed columns",
+        "explicit missing consistency relation"
+      ]
     },
     "reference-symbol-anatomy": {
       "svg": "docs/src/assets/reference-symbol-anatomy.svg",
       "png": "docs/src/assets/reference-symbol-anatomy.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["slot callouts", "coordinate-slot panel", "explicit intrinsic/end-specific rule"]
+      "distinguishing_channels": [
+        "slot callouts",
+        "coordinate-slot panel",
+        "explicit intrinsic/end-specific rule"
+      ]
     },
     "reference-distinction-map": {
       "svg": "docs/src/assets/reference-distinction-map.svg",
       "png": "docs/src/assets/reference-distinction-map.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["confusable clusters", "diagnostic question cards", "named term families"]
+      "distinguishing_channels": [
+        "confusable clusters",
+        "diagnostic question cards",
+        "named term families"
+      ]
     },
     "reference-evidence-map": {
       "svg": "docs/src/assets/reference-evidence-map.svg",
       "png": "docs/src/assets/reference-evidence-map.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["facet/state axes", "numeric cell counts", "dashed empty cells"]
+      "distinguishing_channels": [
+        "facet/state axes",
+        "numeric cell counts",
+        "dashed empty cells"
+      ]
     },
     "reference-verification-summary": {
       "svg": "docs/src/assets/reference-verification-summary.svg",
       "png": "docs/src/assets/reference-verification-summary.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["claim-type rows", "verification-state columns", "explicit zero external review"]
+      "distinguishing_channels": [
+        "claim-type rows",
+        "verification-state columns",
+        "explicit zero external review"
+      ]
     },
     "radial-clique-projection": {
       "svg": "docs/src/assets/radial-clique-projection.svg",
       "png": "docs/src/assets/radial-clique-projection.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["macro and expanded panel labels", "bus/conductor coordinate labels", "separator and perfect-elimination-order annotations", "explicit nonphysical-cycle warning"]
+      "distinguishing_channels": [
+        "macro and expanded panel labels",
+        "bus/conductor coordinate labels",
+        "separator and perfect-elimination-order annotations",
+        "explicit nonphysical-cycle warning"
+      ]
     },
     "source-views-surgery": {
       "svg": "docs/src/assets/source-views-surgery.svg",
       "png": "docs/src/assets/source-views-surgery.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["source/view/surgery panel boundaries", "typed map arrows", "explicit state and reverse-map labels"]
+      "distinguishing_channels": [
+        "source/view/surgery panel boundaries",
+        "typed map arrows",
+        "explicit state and reverse-map labels"
+      ]
     },
     "ybus-jacobian-witness": {
       "svg": "docs/src/assets/ybus-jacobian-witness.svg",
       "png": "docs/src/assets/ybus-jacobian-witness.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["separate titled panels", "matrix grids", "numeric captions"]
+      "distinguishing_channels": [
+        "separate titled panels",
+        "matrix grids",
+        "numeric captions"
+      ]
     },
     "start-here-running-network": {
       "svg": "docs/src/assets/start-here-running-network.svg",
       "png": "docs/src/assets/start-here-running-network.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["stable source labels", "parallel line styles", "explicit multiwinding factor"]
+      "distinguishing_channels": [
+        "stable source labels",
+        "parallel line styles",
+        "explicit multiwinding factor"
+      ]
     },
     "start-here-radial-triangles": {
       "svg": "docs/src/assets/start-here-radial-triangles.svg",
       "png": "docs/src/assets/start-here-radial-triangles.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["tree and support panels", "solid/dashed graph distinction", "which-graph resolution card"]
+      "distinguishing_channels": [
+        "tree and support panels",
+        "solid/dashed graph distinction",
+        "which-graph resolution card"
+      ]
     },
     "start-here-same-ybus": {
       "svg": "docs/src/assets/start-here-same-ybus.svg",
       "png": "docs/src/assets/start-here-same-ybus.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["network A/B panels", "numeric equality banner", "dispatch comparison"]
+      "distinguishing_channels": [
+        "source and target circuit labels",
+        "explicit currents, ratings and PASS/FAIL labels"
+      ]
     },
     "start-here-neutral-recovery": {
       "svg": "docs/src/assets/start-here-neutral-recovery.svg",
       "png": "docs/src/assets/start-here-neutral-recovery.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["eliminated-node marker", "numeric current/limit labels", "recovery obligation cards"]
+      "distinguishing_channels": [
+        "eliminated-node marker",
+        "numeric current/limit labels",
+        "recovery obligation cards"
+      ]
     },
     "start-here-negative-star-arm": {
       "svg": "docs/src/assets/start-here-negative-star-arm.svg",
       "png": "docs/src/assets/start-here-negative-star-arm.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["positive pair-test cards", "negative-arm card", "eigenvalue guard banner"]
+      "distinguishing_channels": [
+        "positive pair-test cards",
+        "negative-arm card",
+        "eigenvalue guard banner"
+      ]
     },
     "formulation-lowering-lattice": {
       "svg": "docs/src/assets/formulation-lowering-lattice.svg",
       "png": "docs/src/assets/formulation-lowering-lattice.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["faithful compilation spine", "guarded Y branch", "blocked-shortcut warning"]
+      "distinguishing_channels": [
+        "faithful compilation spine",
+        "guarded Y branch",
+        "blocked-shortcut warning"
+      ]
     },
     "transformer-graph-views": {
       "svg": "docs/src/assets/transformer-graph-views.svg",
       "png": "docs/src/assets/transformer-graph-views.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["numbered construction panels", "solid versus generated edges", "explicit cycle-rank labels", "n-winding guard"]
+      "distinguishing_channels": [
+        "numbered construction panels",
+        "solid versus generated edges",
+        "explicit cycle-rank labels",
+        "n-winding guard"
+      ]
     },
     "five-bus-transformer-lowering": {
       "svg": "docs/src/assets/five-bus-transformer-lowering.svg",
       "png": "docs/src/assets/five-bus-transformer-lowering.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["stable five-bus small multiples", "factor, virtual-node, and clique labels", "representation-scoped cycle counts", "loss ledger"]
+      "distinguishing_channels": [
+        "stable five-bus small multiples",
+        "factor, virtual-node, and clique labels",
+        "representation-scoped cycle counts",
+        "loss ledger"
+      ]
     },
     "layer-lens-matrix": {
       "svg": "docs/src/assets/layer-lens-matrix.svg",
       "png": "docs/src/assets/layer-lens-matrix.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["construction-stage rows", "semantic-lens columns", "typed transformation arrows", "branching warning"]
+      "distinguishing_channels": [
+        "construction-stage rows",
+        "semantic-lens columns",
+        "typed transformation arrows",
+        "branching warning"
+      ]
     },
     "block-structure-bridge": {
       "svg": "docs/src/assets/block-structure-bridge.svg",
       "png": "docs/src/assets/block-structure-bridge.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["four titled panels", "explicit conductor labels", "block matrix grid", "solid support versus dashed realification rule", "reading-rule caption"]
+      "distinguishing_channels": [
+        "four titled panels",
+        "explicit conductor labels",
+        "block matrix grid",
+        "solid support versus dashed realification rule",
+        "reading-rule caption"
+      ]
     },
     "reading-routes-graph-transmission": {
       "svg": "docs/src/assets/reading-routes-graph-transmission.svg",
       "png": "docs/src/assets/reading-routes-graph-transmission.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["two labelled onboarding routes", "branch-specific arrow styles", "shared convergence boxes", "explicit preservation-contract target"]
+      "distinguishing_channels": [
+        "two labelled onboarding routes",
+        "branch-specific arrow styles",
+        "shared convergence boxes",
+        "explicit preservation-contract target"
+      ]
     },
     "load-model-divergence": {
       "svg": "docs/src/assets/load-model-divergence.svg",
       "png": "docs/src/assets/load-model-divergence.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["two labelled panels", "solid limit lines versus family curves", "recorded operating-point markers", "explicit failed continuation marker"]
+      "distinguishing_channels": [
+        "two labelled panels",
+        "solid limit lines versus family curves",
+        "recorded operating-point markers",
+        "explicit failed continuation marker"
+      ]
     },
     "source-canonical-pipeline": {
       "svg": "docs/src/assets/source-canonical-pipeline.svg",
       "png": "docs/src/assets/source-canonical-pipeline.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["ordered numbered gates", "failure cards", "canonical/findings/provenance outputs", "ordering-rule banner"]
+      "distinguishing_channels": [
+        "ordered numbered gates",
+        "failure cards",
+        "canonical/findings/provenance outputs",
+        "ordering-rule banner"
+      ]
     },
     "impedance-fidelity-ladder": {
       "svg": "docs/src/assets/impedance-fidelity-ladder.svg",
       "png": "docs/src/assets/impedance-fidelity-ladder.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["five labelled stages", "guard labels on arrows", "loss-ledger panel", "explicit restricted-scalar endpoint"]
+      "distinguishing_channels": [
+        "five labelled stages",
+        "guard labels on arrows",
+        "loss-ledger panel",
+        "explicit restricted-scalar endpoint"
+      ]
     },
     "label-coordinate-bridge": {
       "svg": "docs/src/assets/label-coordinate-bridge.svg",
       "png": "docs/src/assets/label-coordinate-bridge.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["three numbered stages", "semantic labels versus coordinate numbers", "explicit enumeration arrow", "matrix grid", "textual storage warning"]
+      "distinguishing_channels": [
+        "three numbered stages",
+        "semantic labels versus coordinate numbers",
+        "explicit enumeration arrow",
+        "matrix grid",
+        "textual storage warning"
+      ]
     },
     "visual-language-equipment-plate": {
       "svg": "docs/src/assets/visual-language-equipment-plate.svg",
       "png": "docs/src/assets/visual-language-equipment-plate.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["titled semantic-level panels", "solid conductor versus dashed map/control lines", "persistent equipment identities", "explicit omitted-semantics warning"]
+      "distinguishing_channels": [
+        "titled semantic-level panels",
+        "solid conductor versus dashed map/control lines",
+        "persistent equipment identities",
+        "explicit omitted-semantics warning"
+      ]
     },
     "visual-language-special-semantics": {
       "svg": "docs/src/assets/visual-language-special-semantics.svg",
       "png": "docs/src/assets/visual-language-special-semantics.png",
       "monochrome_safe": true,
-      "distinguishing_channels": ["four titled semantic traps", "explicit grounding and shunt factors", "per-pole state vector", "factor-edge provenance warning"]
+      "distinguishing_channels": [
+        "four titled semantic traps",
+        "explicit grounding and shunt factors",
+        "per-pole state vector",
+        "factor-edge provenance warning"
+      ]
     }
   }
 }

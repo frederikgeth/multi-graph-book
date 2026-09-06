@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850" viewBox="0 0 1200 850">
 <title>Four exactness classes as observed-set containment</title>
-<desc>Four panels compare source and target observed feasible sets: exact equality, inner conservative containment, outer relaxed containment, and scenario agreement only inside a declared sample region.</desc>
+<desc>Four panels compare source and target observed feasible sets: exact equality, inner conservative containment, outer relaxed containment, and scenario agreement only at declared sampled points.</desc>
 <rect width="1200" height="850" fill="white"/>
 <style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.source{fill:#d9eef8;fill-opacity:.9;stroke:#245b7a;stroke-width:3}.target{fill:#f8e1c4;fill-opacity:.9;stroke:#8a4f13;stroke-width:3;stroke-dasharray:9 6}.sample{fill:none;stroke:#17212b;stroke-width:2;stroke-dasharray:4 5}.witness{fill:#17212b}.arrow{stroke:#17212b;stroke-width:2;fill:none;marker-end:url(#arrow)}</style>
 <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>
@@ -31,12 +31,12 @@
 <text x="495" y="582" class="small" text-anchor="start">15 V witness</text>
 <text x="310" y="684" class="body" text-anchor="middle">source ⊂ target</text>
 <text x="645" y="505" class="head" text-anchor="start">scenario approximate</text>
-<text x="645" y="530" class="small" text-anchor="start">agreement is certified only on the declared sample region</text>
+<text x="645" y="530" class="small" text-anchor="start">agreement checked only at the declared sampled points</text>
 <ellipse cx="890" cy="635" rx="150" ry="82" class="source"/>
 <ellipse cx="930" cy="635" rx="150" ry="82" class="target"/>
 <rect x="760" y="575" width="190" height="120" rx="8" class="sample"/>
 <text x="855" y="615" class="body" text-anchor="middle">sampled</text>
 <text x="855" y="638" class="body" text-anchor="middle">region</text>
-<text x="890" y="690" class="small" text-anchor="middle">overlap here; divergence outside</text>
+<text x="890" y="690" class="small" text-anchor="middle">sample agreement is not a region-wide certificate</text>
 <text x="40" y="820" class="small" text-anchor="start">Source set: h(𝓕_M)   ·   target set: ĥ(𝓕_M̂)   ·   every panel assumes the observation map is declared first.</text>
 </svg>

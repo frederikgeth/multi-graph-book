@@ -2758,13 +2758,13 @@
   "compatibility": {
     "archived_on": "2026-09-06",
     "current_corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "current_corpus_sha256": "142b7efac6c5b9bdc99f8d42d2f917ba5181e513d741781befe70a5eec712592",
+    "current_corpus_sha256": "636b6529f1279f897894f550b180a224d0e840658f7235ebf7d28b5c98bd8095",
     "current_heldout_sha256": "171857dd883acf3ed9a091fac0e2e7485cbd13d5f0477a56af37d010cec16592",
     "current_lexical_summary": {
       "char_tfidf": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.223375,
+        "mean_reciprocal_rank_at_20": 0.223873,
         "recall_at_10": 0.452189,
         "recall_at_5": 0.348822,
         "recall_expected_records_at_10": 180,
@@ -2774,7 +2774,7 @@
       "hybrid": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.219401,
+        "mean_reciprocal_rank_at_20": 0.219416,
         "recall_at_10": 0.465825,
         "recall_at_5": 0.371886,
         "recall_expected_records_at_10": 180,
@@ -2784,7 +2784,7 @@
       "lexical": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.200796,
+        "mean_reciprocal_rank_at_20": 0.20029,
         "recall_at_10": 0.436532,
         "recall_at_5": 0.346128,
         "recall_expected_records_at_10": 180,

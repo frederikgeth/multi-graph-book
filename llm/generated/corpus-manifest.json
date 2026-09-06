@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "142b7efac6c5b9bdc99f8d42d2f917ba5181e513d741781befe70a5eec712592",
+  "corpus_sha256": "636b6529f1279f897894f550b180a224d0e840658f7235ebf7d28b5c98bd8095",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -137,7 +137,7 @@
     },
     {
       "path": "docs/src/foundations/preservation-contracts.md",
-      "sha256": "8fb6f381285598fa9bb9ac42daad2cb23975db28159af47daf26ba79d6776161"
+      "sha256": "2eb781509766bc1ecfa8bc59b43707da114296000eafd8cc07ac565aafec2100"
     },
     {
       "path": "docs/src/foundations/rating-semantics.md",
@@ -249,7 +249,7 @@
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
-      "sha256": "91f59f90607c09e003c310dc07ae26dc1e0b86b30ff732d973b6ca372bb7b31d"
+      "sha256": "934803e1dabdf0e9ff9598a41d809f50157b2665d64c068c7f6685389a13bcc5"
     },
     {
       "path": "docs/src/start/five-bus-cycle-spaces.md",
@@ -273,7 +273,7 @@
     },
     {
       "path": "docs/src/start/one-network-many-graphs.md",
-      "sha256": "3abfe8a4d467b53418623f8d961b5552476ade7d57912da400477822730e66bc"
+      "sha256": "6516207fb2d3ef1628ffed8998dd813a619b0dce0afca99adb9bd2c33d60f118"
     },
     {
       "path": "docs/src/start/preface.md",
@@ -333,7 +333,7 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "5b5d59c5d2dde3bcc12ab8950ff540ee03ba4dc1a1d3633a72c7463aefeacef9"
+      "sha256": "350db29bd931453d41536f7c635d473441b196171f6e7bf5499450f8c456e13b"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",

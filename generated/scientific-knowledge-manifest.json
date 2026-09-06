@@ -69,7 +69,7 @@
     },
     {
       "path": "docs/src/foundations/preservation-contracts.md",
-      "sha256": "8fb6f381285598fa9bb9ac42daad2cb23975db28159af47daf26ba79d6776161"
+      "sha256": "2eb781509766bc1ecfa8bc59b43707da114296000eafd8cc07ac565aafec2100"
     },
     {
       "path": "docs/src/foundations/when-general-model-collapses.md",
@@ -81,7 +81,7 @@
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
-      "sha256": "91f59f90607c09e003c310dc07ae26dc1e0b86b30ff732d973b6ca372bb7b31d"
+      "sha256": "934803e1dabdf0e9ff9598a41d809f50157b2665d64c068c7f6685389a13bcc5"
     },
     {
       "path": "docs/src/transformations/circuit-coordinate-transformations.md",

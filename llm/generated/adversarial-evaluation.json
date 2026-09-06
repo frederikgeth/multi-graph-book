@@ -32,8 +32,8 @@
           "claim:FORMULATION-NODAL-002",
           "claim:FORMULATION-Y-SPLIT-001",
           "concept:factor",
-          "concept:parallel",
-          "claim:ARCH-RECOVERY-001"
+          "claim:ARCH-RECOVERY-001",
+          "claim:ARCH-RECOVERY-002"
         ]
       },
       "hybrid": {
@@ -589,8 +589,8 @@
         "recall_at_10": 1.0,
         "top_10": [
           "claim:TR-KRON-NEUTRAL-007",
-          "claim:TR-KRON-NEUTRAL-005",
           "concept:equivalence-exactness-preservation",
+          "claim:TR-KRON-NEUTRAL-005",
           "claim:TR-KRON-002",
           "claim:TR-KRON-001",
           "claim:TR-KRON-FIVE-002",
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "142b7efac6c5b9bdc99f8d42d2f917ba5181e513d741781befe70a5eec712592"
+    "corpus_sha256": "636b6529f1279f897894f550b180a224d0e840658f7235ebf7d28b5c98bd8095"
   },
   "inputs": {
     "adversarial_cases": {

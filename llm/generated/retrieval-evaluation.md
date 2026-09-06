@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `142b7efac6c5b9bdc99f8d42d2f917ba5181e513d741781befe70a5eec712592`<br>
+**Corpus hash:** `636b6529f1279f897894f550b180a224d0e840658f7235ebf7d28b5c98bd8095`<br>
 **Cases:** 81
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -20,7 +20,7 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Open-corpus lexical evidence recall@10 | 33.9% | diagnostic |
 | Open-corpus complete evidence@10 | 1.2% | diagnostic |
 | Evidence-only lexical recall@5 | 35.0% | diagnostic |
-| Evidence-only lexical recall@10 | 43.2% | diagnostic |
+| Evidence-only lexical recall@10 | 43.0% | diagnostic |
 | Evidence-only complete evidence@10 | 2.5% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
@@ -43,10 +43,10 @@ the question count must not be treated as that many independent observations.
 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `lexical` | 34.6% | 43.7% | 0.0% | 0/33 | 6/33 | 0.201 |
-| `char_tfidf` | 34.9% | 45.2% | 0.0% | 0/33 | 5/33 | 0.223 |
+| `lexical` | 34.6% | 43.7% | 0.0% | 0/33 | 6/33 | 0.200 |
+| `char_tfidf` | 34.9% | 45.2% | 0.0% | 0/33 | 5/33 | 0.224 |
 | `hybrid` | 37.2% | 46.6% | 0.0% | 0/33 | 5/33 | 0.219 |
-| `graph` | 39.2% | 58.3% | 21.2% | 7/33 | 3/33 | 0.252 |
+| `graph` | 38.6% | 58.3% | 21.2% | 7/33 | 3/33 | 0.251 |
 
 Held-out contract-router firing: **25/33 (75.8%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **17/33 (51.5%)**; this remains diagnostic because the set is synthetic and clustered.
@@ -94,7 +94,7 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 27 | 100.0% | 45.0% | 100.0% |
+| `power_engineer` | 27 | 100.0% | 44.4% | 100.0% |
 | `software_engineer` | 27 | 100.0% | 38.5% | 100.0% |
 | `student` | 27 | 100.0% | 46.2% | 100.0% |
 
@@ -125,7 +125,7 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 | `EVAL-SEQUENCE-POWER` | `power_engineer` | `transposition-implies-positive-sequence-exactness` | 75.0% | yes |
 | `EVAL-STATE-EQUIVALENT-STUDENT` | `student` | `base-state-equivalent-is-globally-exact` | 33.3% | yes |
 | `EVAL-STATE-EQUIVALENT-SOFTWARE` | `software_engineer` | `base-state-equivalent-is-globally-exact` | 0.0% | yes |
-| `EVAL-STATE-EQUIVALENT-POWER` | `power_engineer` | `base-state-equivalent-is-globally-exact` | 50.0% | yes |
+| `EVAL-STATE-EQUIVALENT-POWER` | `power_engineer` | `base-state-equivalent-is-globally-exact` | 33.3% | yes |
 | `EVAL-REFERENCE-STUDENT` | `student` | `reference-or-rank-success-proves-nonsingularity` | 0.0% | yes |
 | `EVAL-REFERENCE-SOFTWARE` | `software_engineer` | `reference-or-rank-success-proves-nonsingularity` | 0.0% | yes |
 | `EVAL-REFERENCE-POWER` | `power_engineer` | `reference-or-rank-success-proves-nonsingularity` | 33.3% | yes |
