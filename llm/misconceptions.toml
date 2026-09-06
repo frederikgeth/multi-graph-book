@@ -298,3 +298,42 @@ operational_consequence = "Treating nonconvergence as infeasibility can invent c
 mandatory_claim_ids = ["LOAD-CONTINUATION-001"]
 mandatory_concept_ids = ["state", "equivalence-exactness-preservation"]
 source_paths = ["docs/src/foundations/load-models-and-decision-dependence.md"]
+
+[[misconception]]
+id = "numeric-round-trip-preserves-field-meaning"
+title = "A numerical round trip proves field semantics were preserved"
+severity = "high"
+query_patterns = ["decode rating sentinel", "rate_a=0", "zero rating round trip", "missing rating unlimited"]
+tempting_answer = "If the same numbers return after export, the original rating constraints were preserved."
+required_qualification = "Decode the source field convention before constructing a bound; an explicit unlimited sentinel, finite zero bound, unknown field and not-applicable check are different states. A numeric round trip can hide a shared reader/writer error."
+safe_shorthand = "A round trip supports only the semantics actually checked; this witness covers a MATPOWER version-2 rating field, not a complete importer."
+operational_consequence = "A copied zero can prohibit transfer or silently remove an unknown limit; refuse an export that cannot represent the internal state."
+mandatory_claim_ids = ["PRACTICE-IMPORT-001"]
+mandatory_concept_ids = ["rating-limit-constraint", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/cases/building-and-changing-models.md", "experiments/lessons/practical_model_checks.py"]
+
+[[misconception]]
+id = "source-outage-is-deletion-in-reduced-graph"
+title = "A source outage is deletion of the corresponding reduced edges"
+severity = "critical"
+query_patterns = ["star arm outage", "delete reduced triangle edges", "stale star reduction", "update cached reduction"]
+tempting_answer = "Opening a source star arm is equivalent to deleting its incident edges from the reduced triangle."
+required_qualification = "In the equal-conductance resistive star, opening arm c changes the remaining equivalent from 1/3 S to 1/2 S; deleting derived edges leaves a wrong 1/3 S despite symmetry and zero row sums. Rebuild or validate a source-aware update."
+safe_shorthand = "A reduction is exact for its declared source state; an editing operation needs a separate correctness argument and recovery checks."
+operational_consequence = "A stale or incorrectly updated operator can pass structural checks while predicting wrong physical currents."
+mandatory_claim_ids = ["PRACTICE-UPDATE-001"]
+mandatory_concept_ids = ["graph-topology-adjacency", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/cases/building-and-changing-models.md", "experiments/lessons/practical_model_checks.py"]
+
+[[misconception]]
+id = "primal-equivalence-preserves-raw-multipliers"
+title = "Equivalent dispatch implies identical raw multipliers and prices"
+severity = "high"
+query_patterns = ["raw multiplier", "dual scaling", "scaled constraint price", "duplicate constraint multipliers"]
+tempting_answer = "Identical dispatch and objective values imply that raw solver multipliers can be compared directly as physical prices."
+required_qualification = "In the scalar LP, positive objective scale beta and constraint scale alpha give multiplier beta*c/alpha; recover physical demand sensitivity by alpha/beta. Duplicated constraints can have nonunique multipliers whose sum represents the common demand perturbation."
+safe_shorthand = "Interpret multipliers only with the stated constraint sign, physical perturbation, scaling and uniqueness conditions; the scalar witness is not an AC-OPF price certificate."
+operational_consequence = "Ignoring multiplier mappings or duplicate-constraint nonuniqueness produces apparent price disagreements without a dispatch disagreement."
+mandatory_claim_ids = ["PRACTICE-DUAL-001"]
+mandatory_concept_ids = ["normalization", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/cases/building-and-changing-models.md", "experiments/lessons/practical_model_checks.py"]

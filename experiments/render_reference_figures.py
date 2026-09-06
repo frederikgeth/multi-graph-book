@@ -111,7 +111,7 @@ def evidence_map(claims: list[dict]) -> str:
             for col in columns:
                 if claim["verification"] == col: counts[(row, col)] += 1
     lines = shell("Evidence map: preservation coverage is visible only when the holes remain", "Counts are derived from explicit preservation dimensions in the claims ledger; an empty cell means no claim is coded there.", 1400, 800)
-    x0, y0, cw, ch = 360, 145, 290, 42
+    x0, y0, cw, ch = 430, 145, 270, 42
     for j, col in enumerate(columns):
         lines += [t(x0 + j * cw + cw / 2, y0 - 20, col, "small", "middle")]
     for i, row in enumerate(rows):
@@ -143,7 +143,7 @@ def verification_summary(claims: list[dict]) -> str:
             value = counts[(typ, state)]
             cls = "good" if value else "empty"
             lines += [rect(x0 + j * cw, y, cw - 15, ch - 10, cls), t(x0 + j * cw + (cw - 15) / 2, y + 34, value, "head" if value else "small", "middle")]
-    lines += [rect(70, 250, 175, 240, "panel"), t(157, 290, "interpretation", "head", "middle"), t(90, 335, "self-checked", "body"), t(90, 360, "repo tests / derivations", "small"), t(90, 405, "independent", "body"), t(90, 430, "separate implementation", "small"), t(90, 475, "external", "body"), t(90, 500, "peer review", "small")]
+    lines += [rect(70, 250, 190, 280, "panel"), t(165, 290, "interpretation", "head", "middle"), t(90, 335, "self-checked", "body"), t(90, 360, "repo tests / derivations", "small"), t(90, 405, "independent", "body"), t(90, 430, "separate implementation", "small"), t(90, 475, "external", "body"), t(90, 500, "peer review", "small")]
     lines += [t(75, 620, "The summary is generated, so a future independently reviewed claim will change the figure rather than the prose promise.", "small")]
     return finish(lines)
 

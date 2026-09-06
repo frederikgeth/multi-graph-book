@@ -1,6 +1,6 @@
 {
   "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
-  "benchmark_manifest_sha256": "657b85b95d7c0043bdd7e6b6e216fcdd412e7a77283fa37303a75087f8a4a271",
+  "benchmark_manifest_sha256": "ede991a5d10c581326019588e5312c3f14efca8cfc12bbfbd746530bdf1ec733",
   "dry_run_status": "synthetic_dry_run_harness_only_not_agent_results",
   "human_review_gate": "reviewed_changes_required_before_preregistration_or_execution",
   "local_sources": [
@@ -26,7 +26,7 @@
     },
     {
       "path": "benchmarks/agent/pilot/dry-runs/conforming-c6-run.json",
-      "sha256": "ff9600db423fe5b373513c3938f4f5f273ae26a0ffa7afc19849252d111867d1"
+      "sha256": "639c4e8b8ed5e35f6186186e57f713ae03a64cd6cb48ef1204907bf01bbc846a"
     },
     {
       "path": "benchmarks/agent/pilot/dry-runs/unsafe-c0-run.json",
@@ -42,9 +42,9 @@
   "provenance": {
     "bmopftools_executable_corpus_sha256": "f488c19199d84da3153c8b28f01b4edd26d040922f7b15062b8486f181134235",
     "bmopftools_manifest_sha256": "7ce51ed7e666f2ab2781d7ef91b46d10756515e13e42067712b23d1dee67e770",
-    "book_llm_corpus_sha256": "76646c436830e6aa97dd7c342f4e8d817e8c78bb4c00f5621ab388c51d1f798f",
+    "book_llm_corpus_sha256": "142b7efac6c5b9bdc99f8d42d2f917ba5181e513d741781befe70a5eec712592",
     "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-    "federated_pair_sha256": "33d17f41749bf4a93aadf399ae08609b9b6181dd5c2a738025c288f9e11f991c"
+    "federated_pair_sha256": "3dbc71f380da063651a69b934e571193fac50ecc147d9bb81094df2a51c4f09c"
   },
   "resource_sources": {
     "BMOPFTools.jl": [
@@ -120,7 +120,7 @@
       },
       {
         "path": "llm/misconceptions.toml",
-        "sha256": "e21ebd807ebc19102339a92ac3a4f32907567c6f016cb3663ac77ba9f819b19a"
+        "sha256": "c3b8de7ad39c48d55e1bcf39af39b02b2b63900a1e0c8ce783ef2a327c7f0db7"
       },
       {
         "path": "scripts/mcp_llm_server.py",

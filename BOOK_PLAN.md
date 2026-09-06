@@ -48,7 +48,7 @@ material must open the corresponding HTML page rather than a missing PDF anchor.
 | 5. Transformations and recovery | Establish scoped exactness and recover original quantities | Corrected contracts; series; conductor coordinates; Kron/Ward |
 | 6. Constraints and decisions | Retain member constraints and controls | Parallel AC; transformer taps; corrected BIM/BFM |
 | 7. Evidence for a computation | Distinguish derivation, residual, adequacy, and reproduction | Numerical consequences; Australian construction; experiment guide |
-| 8. An end-to-end modelling study | Construct, solve, transform, recover, and defend a study | Running-network specification and execution; new study workbook |
+| 8. An end-to-end modelling study | Construct, edit, interpret, and defend a study | Practical model checks; running-network specification and execution; study workbook |
 
 The initial migration groups existing chapters into these parts; it does not
 claim every inherited chapter has already received a full prose rewrite. The
@@ -112,3 +112,21 @@ chapters. Full all-device and nodal KCL verification of the multiconductor case
 remains a package-owned extension; the current lesson explicitly reports that
 missing evidence. External scientific review and reader pilots remain stages
 E–G above.
+
+## Practical chapter and priority counterexamples
+
+The accepted next addition is *Building and changing a model you can check*,
+placed before the capstone workbook. Its three completed standard-library
+witnesses cover source-field semantics, a star reduction after an outage, and
+dual scaling/nonuniqueness. Each includes a deliberately faulty operation, a
+discriminating check, a test that misses the error, and transfer exercises.
+The same chapter connects the calculations to translation validation,
+incremental computation and sensitivity analysis through primary sources.
+Repeated graph-navigation prose in the source-conversion chapter is shortened.
+See `review/practical-chapter-status-2026-09-06.md` for the completed checks,
+evidence limits and author-review scope.
+
+The tiny-impedance current-selection experiment, nondifferentiable solution-map
+exercise, and nonunique-dispatch regression example remain proposed extensions.
+They are not described as implemented results. Choose among them after author
+review of the three priority examples rather than adding more chapters now.

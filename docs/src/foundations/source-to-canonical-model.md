@@ -238,10 +238,9 @@ For every source-to-canonical map, record:
 8. validation findings and their severity; and
 9. round-trip or recovery checks for the declared observations.
 
-The result is a transformation certificate at the data boundary. It is the
-same preservation-contract language used later for Kron, aggregation, and
-positive-sequence maps, but the source and target are data models rather than
-electrical equations.
+The [practical import exercise](@ref building-and-changing-models) tests these
+obligations on a rating sentinel. A number-preserving round trip can still
+change its constraint meaning; an unknown value must remain unknown.
 
 Impedance data need one additional discipline: the canonical record should
 retain the full derivation context even when an adapter exports only a solver-
@@ -254,20 +253,10 @@ source-to-view contract.
 
 ## Consequences for the graph views
 
-The canonical model is not itself a single graph. It is the source from which
-the book derives:
-
-- an asset/dependency graph for ownership, maintenance, and failures;
-- a terminal-connectivity graph for state and grounding questions;
-- a directed/oriented multigraph for bus--branch equations;
-- a port--factor graph for coupled and multi-terminal devices; and
-- equation and sparsity graphs for a chosen formulation.
-
-If the adapter collapses two assets, loses a neutral, or silently grounds a
-terminal, every downstream view inherits that loss. Conversely, a solver may
-create virtual buses or auxiliary factors that are useful computationally but
-must map back to the canonical source objects before a decision or limit is
-interpreted.
+An adapter that collapses two assets, loses a neutral, or silently grounds a
+terminal changes the source from which every subsequent view is built. Retain
+the equipment and terminal identities needed to check the derived equations;
+the [many-graphs lesson](@ref one-network-many-graphs) develops the graph views.
 
 ## Running-network application
 
@@ -279,11 +268,6 @@ CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER descriptions. That
 crosswalk is not an import claim: it is a checklist of what an actual adapter
 would have to preserve or mark unsupported.
 
-The practical rule is therefore:
-
-> Do not draw the graph first and infer the model later. Declare the canonical
-> objects, validate them, and derive each graph as a named view with provenance.
-
-This chapter supplies the missing front door for the representation maps. The
-next chapters show how constitutive load and impedance choices can change the
-feasible decision problem even when that front-door graph is unchanged.
+The field-level example and this larger checklist serve different purposes:
+the former executes a small semantic check; the latter identifies obligations
+still required for a complete running-network adapter.

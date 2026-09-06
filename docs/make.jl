@@ -164,6 +164,7 @@ const PAGES_HTML = [
         "Computational case guide" => "start/computational-cases.md",
     ],
     "Part 8: An end-to-end modelling study" => [
+        "Building and changing a model you can check" => "cases/building-and-changing-models.md",
         "Study workbook" => "cases/study-workbook.md",
         "The running network" => "cases/running-network.md",
         "Executable running network" => "cases/executable-running-network.md",
@@ -282,6 +283,7 @@ const PAGES_PDF = [
         "Computational case guide" => "start/computational-cases.md",
     ],
     "Part 8: An end-to-end modelling study" => [
+        "Building and changing a model you can check" => "cases/building-and-changing-models.md",
         "Study workbook" => "cases/study-workbook.md",
         "The running network" => "cases/running-network.md",
         "Executable running network" => "cases/executable-running-network.md",

@@ -22,6 +22,7 @@ PDF_LOG = ROOT / "docs/latex_build/Power-SystemModellingforComputation.log"
 
 EXPECTED_HTML = [
     "index.html",
+    "cases/building-and-changing-models.html",
     "start/one-network-many-graphs.html",
     "foundations/formal-representation-frameworks.html",
     "cases/four-wire-parallel-ac-decision.html",
@@ -32,6 +33,7 @@ EXPECTED_HTML = [
 
 TOC_PAGES = [
     "The parallel-member lesson",
+    "Building and changing a model you can check",
     "Computational case guide",
     "Study workbook",
 ]

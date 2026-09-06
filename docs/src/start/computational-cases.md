@@ -36,6 +36,24 @@ exercise](@ref numerical-consequences) compares nominal exactness with an
 interval-robust current limit and measures local evaluation cost with recovery.
 These commands print results without changing the evidence collection.
 
+## Import, edit, and interpret a model
+
+The [practical modelling chapter](@ref building-and-changing-models) works
+through three failures: a rating sentinel misread as a physical zero, a star
+reduction updated by deleting the wrong derived edges, and scaled multipliers
+reported as physical prices. Derive the expected behavior, run the deliberately
+faulty alternatives, then use the source-semantic checks to distinguish them:
+
+```sh
+python3 experiments/lessons/practical_model_checks.py
+python3 experiments/lessons/practical_model_checks.py --check
+```
+
+The 15 test methods include unknown and unrepresentable fields, stale reductions,
+linear basis checks, objective/constraint scaling, and nonunique multipliers.
+The field adapter is not a complete MATPOWER importer; the dispatch example is
+an analytically solved scalar LP, not an OPF solve. No files are written.
+
 ## Five further investigations
 
 The coordinate and Kron commands run checks; the case generators update their

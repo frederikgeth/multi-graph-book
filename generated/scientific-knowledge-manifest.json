@@ -33,7 +33,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "8c209368d1164e477f9a698ef113f05b88270b11ce29945a0d40b7551c865e11"
+      "sha256": "2f0adfe4fb996bce3bf36cd6b0a20c33d8001c94bac2db5ed7bb3ea501779e68"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -209,7 +209,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "e21ebd807ebc19102339a92ac3a4f32907567c6f016cb3663ac77ba9f819b19a"
+      "sha256": "c3b8de7ad39c48d55e1bcf39af39b02b2b63900a1e0c8ce783ef2a327c7f0db7"
     },
     {
       "path": "schemas/power-system-knowledge.schema.json",
@@ -217,7 +217,7 @@
     },
     {
       "path": "scripts/check_neural_benchmark.py",
-      "sha256": "a71a3e3a7b82250466a685d2e0d164b97d95ea43eba1b50387ad8d592d546138"
+      "sha256": "2f064c92f3bd52b46256ed94fa5ee588f1e61c15f88599edd7f494409da9859d"
     },
     {
       "path": "scripts/reproduce_load_continuation.py",

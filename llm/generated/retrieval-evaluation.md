@@ -4,8 +4,8 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `76646c436830e6aa97dd7c342f4e8d817e8c78bb4c00f5621ab388c51d1f798f`<br>
-**Cases:** 72
+**Corpus hash:** `142b7efac6c5b9bdc99f8d42d2f917ba5181e513d741781befe70a5eec712592`<br>
+**Cases:** 81
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
 The latter is permitted to add mandatory claims and concepts only after the query router identifies
@@ -16,12 +16,12 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Measure | Result | Release gate? |
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
-| Open-corpus lexical evidence recall@5 | 25.3% | diagnostic |
-| Open-corpus lexical evidence recall@10 | 32.2% | diagnostic |
-| Open-corpus complete evidence@10 | 0.0% | diagnostic |
-| Evidence-only lexical recall@5 | 33.4% | diagnostic |
-| Evidence-only lexical recall@10 | 42.3% | diagnostic |
-| Evidence-only complete evidence@10 | 1.4% | diagnostic |
+| Open-corpus lexical evidence recall@5 | 27.5% | diagnostic |
+| Open-corpus lexical evidence recall@10 | 33.9% | diagnostic |
+| Open-corpus complete evidence@10 | 1.2% | diagnostic |
+| Evidence-only lexical recall@5 | 35.0% | diagnostic |
+| Evidence-only lexical recall@10 | 43.2% | diagnostic |
+| Evidence-only complete evidence@10 | 2.5% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
 | Packets with qualification, failure, shorthand, and scope | 100.0% | yes |
@@ -43,25 +43,25 @@ the question count must not be treated as that many independent observations.
 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `lexical` | 34.6% | 44.8% | 0.0% | 0/33 | 5/33 | 0.201 |
-| `char_tfidf` | 35.4% | 45.7% | 0.0% | 0/33 | 5/33 | 0.223 |
-| `hybrid` | 38.2% | 46.6% | 0.0% | 0/33 | 5/33 | 0.218 |
-| `graph` | 38.3% | 57.9% | 15.2% | 5/33 | 3/33 | 0.253 |
+| `lexical` | 34.6% | 43.7% | 0.0% | 0/33 | 6/33 | 0.201 |
+| `char_tfidf` | 34.9% | 45.2% | 0.0% | 0/33 | 5/33 | 0.223 |
+| `hybrid` | 37.2% | 46.6% | 0.0% | 0/33 | 5/33 | 0.219 |
+| `graph` | 39.2% | 58.3% | 21.2% | 7/33 | 3/33 | 0.252 |
 
 Held-out contract-router firing: **25/33 (75.8%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **17/33 (51.5%)**; this remains diagnostic because the set is synthetic and clustered.
 Target clusters: **11**, with cluster sizes `[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]`; percentage differences are therefore not independent observations.
 Hybrid versus lexical complete@10: **0/33** versus **0/33**; hybrid zero-recall@10: **5/33**.
-Graph versus hybrid complete@10: **5/33** versus **0/33**.
+Graph versus hybrid complete@10: **7/33** versus **0/33**.
 
 | Held-out case | Audience | Expected route | Observed top-1 | Router fired | Lexical complete@10 | TF-IDF complete@10 | Hybrid complete@10 | Graph complete@10 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `HOLDOUT-GRAPH-STUDENT` | `student` | `one-universal-network-graph` | `one-universal-network-graph` | yes | no | no | no | yes |
-| `HOLDOUT-GRAPH-SOFTWARE` | `software_engineer` | `one-universal-network-graph` | `none` | no | no | no | no | no |
+| `HOLDOUT-GRAPH-SOFTWARE` | `software_engineer` | `one-universal-network-graph` | `none` | no | no | no | no | yes |
 | `HOLDOUT-GRAPH-POWER` | `power_engineer` | `one-universal-network-graph` | `radial-is-representation-independent` | yes | no | no | no | no |
 | `HOLDOUT-YSPLIT-STUDENT` | `student` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
 | `HOLDOUT-YSPLIT-SOFTWARE` | `software_engineer` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
-| `HOLDOUT-YSPLIT-POWER` | `power_engineer` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
+| `HOLDOUT-YSPLIT-POWER` | `power_engineer` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | yes |
 | `HOLDOUT-YBUS-STUDENT` | `student` | `nodal-operator-is-source-network` | `none` | no | no | no | no | yes |
 | `HOLDOUT-YBUS-SOFTWARE` | `software_engineer` | `nodal-operator-is-source-network` | `none` | no | no | no | no | no |
 | `HOLDOUT-YBUS-POWER` | `power_engineer` | `nodal-operator-is-source-network` | `none` | no | no | no | no | no |
@@ -94,9 +94,9 @@ Graph versus hybrid complete@10: **5/33** versus **0/33**.
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 24 | 100.0% | 45.1% | 100.0% |
-| `software_engineer` | 24 | 100.0% | 35.3% | 100.0% |
-| `student` | 24 | 100.0% | 46.4% | 100.0% |
+| `power_engineer` | 27 | 100.0% | 45.0% | 100.0% |
+| `software_engineer` | 27 | 100.0% | 38.5% | 100.0% |
+| `student` | 27 | 100.0% | 46.2% | 100.0% |
 
 ## Case results
 
@@ -113,7 +113,7 @@ Graph versus hybrid complete@10: **5/33** versus **0/33**.
 | `EVAL-YBUS-POWER` | `power_engineer` | `nodal-operator-is-source-network` | 20.0% | yes |
 | `EVAL-PARALLEL-STUDENT` | `student` | `parallel-admittance-implies-decision-equivalence` | 66.7% | yes |
 | `EVAL-PARALLEL-SOFTWARE` | `software_engineer` | `parallel-admittance-implies-decision-equivalence` | 16.7% | yes |
-| `EVAL-PARALLEL-POWER` | `power_engineer` | `parallel-admittance-implies-decision-equivalence` | 66.7% | yes |
+| `EVAL-PARALLEL-POWER` | `power_engineer` | `parallel-admittance-implies-decision-equivalence` | 50.0% | yes |
 | `EVAL-RADIAL-STUDENT` | `student` | `radial-is-representation-independent` | 80.0% | yes |
 | `EVAL-RADIAL-SOFTWARE` | `software_engineer` | `radial-is-representation-independent` | 60.0% | yes |
 | `EVAL-RADIAL-POWER` | `power_engineer` | `radial-is-representation-independent` | 80.0% | yes |
@@ -125,7 +125,7 @@ Graph versus hybrid complete@10: **5/33** versus **0/33**.
 | `EVAL-SEQUENCE-POWER` | `power_engineer` | `transposition-implies-positive-sequence-exactness` | 75.0% | yes |
 | `EVAL-STATE-EQUIVALENT-STUDENT` | `student` | `base-state-equivalent-is-globally-exact` | 33.3% | yes |
 | `EVAL-STATE-EQUIVALENT-SOFTWARE` | `software_engineer` | `base-state-equivalent-is-globally-exact` | 0.0% | yes |
-| `EVAL-STATE-EQUIVALENT-POWER` | `power_engineer` | `base-state-equivalent-is-globally-exact` | 33.3% | yes |
+| `EVAL-STATE-EQUIVALENT-POWER` | `power_engineer` | `base-state-equivalent-is-globally-exact` | 50.0% | yes |
 | `EVAL-REFERENCE-STUDENT` | `student` | `reference-or-rank-success-proves-nonsingularity` | 0.0% | yes |
 | `EVAL-REFERENCE-SOFTWARE` | `software_engineer` | `reference-or-rank-success-proves-nonsingularity` | 0.0% | yes |
 | `EVAL-REFERENCE-POWER` | `power_engineer` | `reference-or-rank-success-proves-nonsingularity` | 33.3% | yes |
@@ -160,12 +160,12 @@ Graph versus hybrid complete@10: **5/33** versus **0/33**.
 | `EVAL-FEASIBILITY-WITNESS-SOFTWARE` | `software_engineer` | `complete-feasibility-status-is-enough` | 25.0% | yes |
 | `EVAL-FEASIBILITY-WITNESS-POWER` | `power_engineer` | `complete-feasibility-status-is-enough` | 25.0% | yes |
 | `EVAL-UNIT-BASE-STUDENT` | `student` | `unit-base-metadata-is-equivalence` | 50.0% | yes |
-| `EVAL-UNIT-BASE-SOFTWARE` | `software_engineer` | `unit-base-metadata-is-equivalence` | 25.0% | yes |
+| `EVAL-UNIT-BASE-SOFTWARE` | `software_engineer` | `unit-base-metadata-is-equivalence` | 50.0% | yes |
 | `EVAL-UNIT-BASE-POWER` | `power_engineer` | `unit-base-metadata-is-equivalence` | 50.0% | yes |
 | `EVAL-NEURAL-NEGATIVE-STUDENT` | `student` | `generic-neural-retrieval-is-automatically-better` | 50.0% | yes |
 | `EVAL-NEURAL-NEGATIVE-SOFTWARE` | `software_engineer` | `generic-neural-retrieval-is-automatically-better` | 50.0% | yes |
 | `EVAL-NEURAL-NEGATIVE-POWER` | `power_engineer` | `generic-neural-retrieval-is-automatically-better` | 50.0% | yes |
-| `EVAL-ITERATION-PATHOLOGY-STUDENT` | `student` | `iteration-failure-proves-infeasibility` | 66.7% | yes |
+| `EVAL-ITERATION-PATHOLOGY-STUDENT` | `student` | `iteration-failure-proves-infeasibility` | 33.3% | yes |
 | `EVAL-ITERATION-PATHOLOGY-SOFTWARE` | `software_engineer` | `iteration-failure-proves-infeasibility` | 33.3% | yes |
 | `EVAL-ITERATION-PATHOLOGY-POWER` | `power_engineer` | `iteration-failure-proves-infeasibility` | 33.3% | yes |
 | `EVAL-CARSON-OPEN-STUDENT` | `student` | `reference-matrix-match-proves-source-provenance` | 25.0% | yes |
@@ -174,6 +174,15 @@ Graph versus hybrid complete@10: **5/33** versus **0/33**.
 | `EVAL-JOINT-OBSERVATIONS-STUDENT` | `student` | `terminal-equivalence-implies-opf-equivalence` | 40.0% | yes |
 | `EVAL-JOINT-OBSERVATIONS-SOFTWARE` | `software_engineer` | `terminal-equivalence-implies-opf-equivalence` | 40.0% | yes |
 | `EVAL-JOINT-OBSERVATIONS-POWER` | `power_engineer` | `terminal-equivalence-implies-opf-equivalence` | 60.0% | yes |
+| `EVAL-PRACTICE-IMPORT-STUDENT` | `student` | `numeric-round-trip-preserves-field-meaning` | 100.0% | yes |
+| `EVAL-PRACTICE-IMPORT-SOFTWARE` | `software_engineer` | `numeric-round-trip-preserves-field-meaning` | 66.7% | yes |
+| `EVAL-PRACTICE-IMPORT-POWER` | `power_engineer` | `numeric-round-trip-preserves-field-meaning` | 66.7% | yes |
+| `EVAL-PRACTICE-UPDATE-STUDENT` | `student` | `source-outage-is-deletion-in-reduced-graph` | 33.3% | yes |
+| `EVAL-PRACTICE-UPDATE-SOFTWARE` | `software_engineer` | `source-outage-is-deletion-in-reduced-graph` | 33.3% | yes |
+| `EVAL-PRACTICE-UPDATE-POWER` | `power_engineer` | `source-outage-is-deletion-in-reduced-graph` | 33.3% | yes |
+| `EVAL-PRACTICE-DUAL-STUDENT` | `student` | `primal-equivalence-preserves-raw-multipliers` | 33.3% | yes |
+| `EVAL-PRACTICE-DUAL-SOFTWARE` | `software_engineer` | `primal-equivalence-preserves-raw-multipliers` | 66.7% | yes |
+| `EVAL-PRACTICE-DUAL-POWER` | `power_engineer` | `primal-equivalence-preserves-raw-multipliers` | 33.3% | yes |
 
 ## Interpretation and next boundary
 

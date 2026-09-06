@@ -8,9 +8,9 @@
   "provenance": {
     "bmopftools_executable_corpus_sha256": "f488c19199d84da3153c8b28f01b4edd26d040922f7b15062b8486f181134235",
     "bmopftools_manifest_sha256": "7ce51ed7e666f2ab2781d7ef91b46d10756515e13e42067712b23d1dee67e770",
-    "book_llm_corpus_sha256": "76646c436830e6aa97dd7c342f4e8d817e8c78bb4c00f5621ab388c51d1f798f",
+    "book_llm_corpus_sha256": "142b7efac6c5b9bdc99f8d42d2f917ba5181e513d741781befe70a5eec712592",
     "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-    "federated_pair_sha256": "33d17f41749bf4a93aadf399ae08609b9b6181dd5c2a738025c288f9e11f991c"
+    "federated_pair_sha256": "3dbc71f380da063651a69b934e571193fac50ecc147d9bb81094df2a51c4f09c"
   },
   "reports": [
     {

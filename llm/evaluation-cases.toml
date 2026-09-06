@@ -722,3 +722,93 @@ required_claim_ids = ["PRESERVE-001", "TR-PAR-001", "TR-PAR-002"]
 required_concept_ids = ["equivalence-exactness-preservation", "rating-limit-constraint"]
 required_answer_elements = ["preserve the joint feasible observation image, not only separate ranges", "state objective correspondence, decision domain, and recovery obligations"]
 forbidden_simplifications = ["matching every separate range proves joint decision equivalence"]
+
+[[case]]
+case_id = "EVAL-PRACTICE-IMPORT-STUDENT"
+audience = "student"
+question = "Does a zero rating round trip prove that my internal bound means the same as the source?"
+misconception_id = "numeric-round-trip-preserves-field-meaning"
+required_claim_ids = ["PRACTICE-IMPORT-001"]
+required_concept_ids = ["rating-limit-constraint", "equivalence-exactness-preservation"]
+required_answer_elements = ["distinguish explicit unbounded, finite zero, unknown and not-applicable rating states", "explain why numerical round trips can hide semantic errors and unsupported export states require refusal"]
+forbidden_simplifications = ["If the same numbers return after export, the original rating constraints were preserved."]
+
+[[case]]
+case_id = "EVAL-PRACTICE-IMPORT-SOFTWARE"
+audience = "software_engineer"
+question = "My rating sentinel survives decode and encode numerically. Does that establish importer correctness?"
+misconception_id = "numeric-round-trip-preserves-field-meaning"
+required_claim_ids = ["PRACTICE-IMPORT-001"]
+required_concept_ids = ["rating-limit-constraint", "equivalence-exactness-preservation"]
+required_answer_elements = ["distinguish explicit unbounded, finite zero, unknown and not-applicable rating states", "explain why numerical round trips can hide semantic errors and unsupported export states require refusal"]
+forbidden_simplifications = ["If the same numbers return after export, the original rating constraints were preserved."]
+
+[[case]]
+case_id = "EVAL-PRACTICE-IMPORT-POWER"
+audience = "power_engineer"
+question = "Can I interpret RATE_A=0 as a finite zero MVA rating, or missing rating unlimited?"
+misconception_id = "numeric-round-trip-preserves-field-meaning"
+required_claim_ids = ["PRACTICE-IMPORT-001"]
+required_concept_ids = ["rating-limit-constraint", "equivalence-exactness-preservation"]
+required_answer_elements = ["distinguish explicit unbounded, finite zero, unknown and not-applicable rating states", "explain why numerical round trips can hide semantic errors and unsupported export states require refusal"]
+forbidden_simplifications = ["If the same numbers return after export, the original rating constraints were preserved."]
+
+[[case]]
+case_id = "EVAL-PRACTICE-UPDATE-STUDENT"
+audience = "student"
+question = "Does a star arm outage just delete the reduced triangle edges?"
+misconception_id = "source-outage-is-deletion-in-reduced-graph"
+required_claim_ids = ["PRACTICE-UPDATE-001"]
+required_concept_ids = ["graph-topology-adjacency", "equivalence-exactness-preservation"]
+required_answer_elements = ["derive one-half siemens after opening the source arm instead of one-third siemens from the faulty graph edit", "require source-aware update or rebuild and distinguish structural balance checks from equipment-law verification"]
+forbidden_simplifications = ["Opening a source star arm is equivalent to deleting its incident edges from the reduced triangle."]
+
+[[case]]
+case_id = "EVAL-PRACTICE-UPDATE-SOFTWARE"
+audience = "software_engineer"
+question = "Can I update cached reduction data by deleting the triangle edges incident to the disconnected terminal?"
+misconception_id = "source-outage-is-deletion-in-reduced-graph"
+required_claim_ids = ["PRACTICE-UPDATE-001"]
+required_concept_ids = ["graph-topology-adjacency", "equivalence-exactness-preservation"]
+required_answer_elements = ["derive one-half siemens after opening the source arm instead of one-third siemens from the faulty graph edit", "require source-aware update or rebuild and distinguish structural balance checks from equipment-law verification"]
+forbidden_simplifications = ["Opening a source star arm is equivalent to deleting its incident edges from the reduced triangle."]
+
+[[case]]
+case_id = "EVAL-PRACTICE-UPDATE-POWER"
+audience = "power_engineer"
+question = "After a star arm outage, does the remaining equivalent retain its old one-third-siemens conductance?"
+misconception_id = "source-outage-is-deletion-in-reduced-graph"
+required_claim_ids = ["PRACTICE-UPDATE-001"]
+required_concept_ids = ["graph-topology-adjacency", "equivalence-exactness-preservation"]
+required_answer_elements = ["derive one-half siemens after opening the source arm instead of one-third siemens from the faulty graph edit", "require source-aware update or rebuild and distinguish structural balance checks from equipment-law verification"]
+forbidden_simplifications = ["Opening a source star arm is equivalent to deleting its incident edges from the reduced triangle."]
+
+[[case]]
+case_id = "EVAL-PRACTICE-DUAL-STUDENT"
+audience = "student"
+question = "Should a raw multiplier stay unchanged if the optimal dispatch is identical?"
+misconception_id = "primal-equivalence-preserves-raw-multipliers"
+required_claim_ids = ["PRACTICE-DUAL-001"]
+required_concept_ids = ["normalization", "equivalence-exactness-preservation"]
+required_answer_elements = ["recover physical sensitivity using alpha divided by beta times the raw multiplier under the displayed convention", "explain nonunique duplicate multipliers and keep the scalar LP scope separate from AC-OPF prices"]
+forbidden_simplifications = ["Identical dispatch and objective values imply that raw solver multipliers can be compared directly as physical prices."]
+
+[[case]]
+case_id = "EVAL-PRACTICE-DUAL-SOFTWARE"
+audience = "software_engineer"
+question = "Can I expose a raw multiplier as a price without undoing constraint and objective scaling?"
+misconception_id = "primal-equivalence-preserves-raw-multipliers"
+required_claim_ids = ["PRACTICE-DUAL-001"]
+required_concept_ids = ["normalization", "equivalence-exactness-preservation"]
+required_answer_elements = ["recover physical sensitivity using alpha divided by beta times the raw multiplier under the displayed convention", "explain nonunique duplicate multipliers and keep the scalar LP scope separate from AC-OPF prices"]
+forbidden_simplifications = ["Identical dispatch and objective values imply that raw solver multipliers can be compared directly as physical prices."]
+
+[[case]]
+case_id = "EVAL-PRACTICE-DUAL-POWER"
+audience = "power_engineer"
+question = "Can duplicate constraint multipliers be read as unique prices for the same demand requirement?"
+misconception_id = "primal-equivalence-preserves-raw-multipliers"
+required_claim_ids = ["PRACTICE-DUAL-001"]
+required_concept_ids = ["normalization", "equivalence-exactness-preservation"]
+required_answer_elements = ["recover physical sensitivity using alpha divided by beta times the raw multiplier under the displayed convention", "explain nonunique duplicate multipliers and keep the scalar LP scope separate from AC-OPF prices"]
+forbidden_simplifications = ["Identical dispatch and objective values imply that raw solver multipliers can be compared directly as physical prices."]

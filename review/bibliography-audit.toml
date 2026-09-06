@@ -1,6 +1,27 @@
 schema_version = 1
 
 [[entry]]
+key = "BoydVandenberghe2004"
+status = "verified"
+verification_source = "https://web.stanford.edu/~boyd/cvxbook/index.html"
+verified_on = "2026-09-06"
+note = "Author-hosted book page confirms authors, title, publisher and 2004 publication. Chapter 5 supplies duality and sensitivity background; the practical lesson derives its scalar scaled-constraint example explicitly."
+
+[[entry]]
+key = "HammerEtAl2015"
+status = "verified"
+verification_source = "https://arxiv.org/abs/1503.07792"
+verified_on = "2026-09-06"
+note = "Author manuscript record confirms seven authors, OOPSLA 2015, title and related ACM DOI, and states from-scratch consistency. Used as an incremental-computation precedent, not a proof of the book's updater."
+
+[[entry]]
+key = "TristanLeroy2008"
+status = "verified"
+verification_source = "https://xavierleroy.org/publi/validation-scheduling.pdf"
+verified_on = "2026-09-06"
+note = "Author-hosted paper confirms authors, title and POPL 2008 publication; its introduction distinguishes translation validation, formal verification of the validator, and the possibility of matching builder/checker bugs."
+
+[[entry]]
 key = "Fortescue1918"
 status = "verified"
 verification_source = "https://doi.org/10.1109/T-AIEE.1918.4765570"
@@ -367,9 +388,9 @@ note = "Official ENTSO-E CGMES library verified as the source for current CIM/CG
 [[entry]]
 key = "MATPOWERCaseFormat"
 status = "verified"
-verification_source = "https://matpower.org/docs/ref/matpower6.0/caseformat.html"
-verified_on = "2026-08-13"
-note = "Official MATPOWER case-format documentation verified for the version-2 mpc fields and matrix-based bus, branch, generator, and cost representation."
+verification_source = "https://matpower.org/documentation/ref-manual/legacy/functions/caseformat.html"
+verified_on = "2026-09-06"
+note = "Official MATPOWER 8.1 documentation confirms version-2 fields, RATE_A=0 as unlimited, TAP=0 as a line with effective unity ratio, and cost units. The previously cited 6.0 field documentation was also inspected; this refresh supports the field-semantics lesson without claiming a full importer."
 
 [[entry]]
 key = "MATPOWERDataModel"

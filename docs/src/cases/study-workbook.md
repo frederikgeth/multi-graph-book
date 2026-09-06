@@ -8,6 +8,11 @@ running fixture. Its difficulty is deliberate: it combines conductor
 connections, grounding, parallel equipment, and a multiwinding transformer.
 You are now using these features together after studying smaller examples.
 
+Before extending this case, complete one correction from
+[Building and changing a model you can check](@ref building-and-changing-models).
+Its import, outage-update and multiplier examples show how to choose a
+discriminating check and state what remains unverified.
+
 ## 1. Declare the study
 
 Read [The running multiconductor network](@ref running-network) and

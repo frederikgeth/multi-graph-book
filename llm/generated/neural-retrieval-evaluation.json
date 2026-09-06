@@ -2758,25 +2758,25 @@
   "compatibility": {
     "archived_on": "2026-09-06",
     "current_corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "current_corpus_sha256": "76646c436830e6aa97dd7c342f4e8d817e8c78bb4c00f5621ab388c51d1f798f",
+    "current_corpus_sha256": "142b7efac6c5b9bdc99f8d42d2f917ba5181e513d741781befe70a5eec712592",
     "current_heldout_sha256": "171857dd883acf3ed9a091fac0e2e7485cbd13d5f0477a56af37d010cec16592",
     "current_lexical_summary": {
       "char_tfidf": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.222882,
-        "recall_at_10": 0.457239,
-        "recall_at_5": 0.353872,
+        "mean_reciprocal_rank_at_20": 0.223375,
+        "recall_at_10": 0.452189,
+        "recall_at_5": 0.348822,
         "recall_expected_records_at_10": 180,
-        "recall_hits_at_10": 78,
+        "recall_hits_at_10": 77,
         "zero_recall_at_10_count": 5
       },
       "hybrid": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.217841,
+        "mean_reciprocal_rank_at_20": 0.219401,
         "recall_at_10": 0.465825,
-        "recall_at_5": 0.381987,
+        "recall_at_5": 0.371886,
         "recall_expected_records_at_10": 180,
         "recall_hits_at_10": 80,
         "zero_recall_at_10_count": 5
@@ -2784,15 +2784,15 @@
       "lexical": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.201309,
-        "recall_at_10": 0.447643,
+        "mean_reciprocal_rank_at_20": 0.200796,
+        "recall_at_10": 0.436532,
         "recall_at_5": 0.346128,
         "recall_expected_records_at_10": 180,
-        "recall_hits_at_10": 77,
-        "zero_recall_at_10_count": 5
+        "recall_hits_at_10": 75,
+        "zero_recall_at_10_count": 6
       }
     },
-    "current_record_count": 902,
+    "current_record_count": 912,
     "required_action": "rerun both pinned neural retriever and reranker before comparing them with the current corpus",
     "status": "archived_prior_corpus"
   },

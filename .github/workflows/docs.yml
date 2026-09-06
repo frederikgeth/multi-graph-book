@@ -52,8 +52,10 @@ jobs:
           python3 experiments/lessons/parallel_members.py --check
           python3 experiments/lessons/assemble_network.py --check
           python3 experiments/lessons/model_choice.py --check
+          python3 experiments/lessons/practical_model_checks.py --check
           python3 scripts/reproduce_clean_fixture.py --check
           python3 scripts/test_reproduction_workflow.py
+          python3 scripts/test_neural_snapshot.py
           python3 review/critical-review-witnesses-2026-09-05.py
 
       - name: Check controlled callout vocabulary

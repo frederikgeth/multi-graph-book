@@ -1,6 +1,57 @@
 schema_version = 1
 
 [[claim]]
+claim_id = "PRACTICE-IMPORT-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ['limits', 'provenance']
+chapter = "docs/src/cases/building-and-changing-models.md"
+claim_text = "A numerical round trip of MATPOWER RATE_A=0 can succeed while a faulty decoder replaces its explicit unlimited-rating meaning with a finite zero bound, changing the admissible transfer set."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "documented_field_convention_and_exact_executable_counterexample_in_experiments/lessons/practical_model_checks.py"
+citation_keys = ["MATPOWERCaseFormat"]
+model_scope = "the documented MATPOWER version-2 RATE_A field interpreted as an apparent-power magnitude bound"
+assumptions = "zero is the source's explicit unbounded sentinel; a finite zero bound has a distinct internal meaning; absent fields remain unknown; only this rating check is evaluated"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independent review and complete versioned importer/exporter coverage remain outside the field-level teaching witness."
+
+[[claim]]
+claim_id = "PRACTICE-UPDATE-001"
+exactness_object = "boundary_behavior"
+preservation_dimensions = ['terminal_behavior', 'state', 'provenance']
+chapter = "docs/src/cases/building-and-changing-models.md"
+claim_text = "Opening one arm of a three-arm 1 S resistive star changes the remaining two-terminal equivalent conductance to 1/2 S; deleting the two corresponding edges of the original 1/3 S reduced triangle incorrectly leaves 1/3 S, despite symmetry and zero row sums."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "Schur_derivation_and_exact_equipment_basis_checks_in_experiments/lessons/practical_model_checks.py"
+citation_keys = []
+model_scope = "three retained scalar boundary terminals and a zero-injection resistive star center without shunts"
+assumptions = "three initial arm conductances are 1 S; opening arm c sets its conductance to zero; the faulty target edit deletes only triangle edges incident to c; sum of retained arm conductances is positive"
+reviewer = ""
+review_date = ""
+unresolved_issue = "This disproves one update rule; it neither rules out source-aware incremental updates nor establishes general nonlinear, multiconductor or constrained update correctness."
+
+[[claim]]
+claim_id = "PRACTICE-DUAL-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ['decision', 'numerical_structure']
+chapter = "docs/src/cases/building-and-changing-models.md"
+claim_text = "For min beta*c*p subject to alpha*(d-p)<=0 with positive c,d,alpha,beta, dispatch remains p=d while the Lagrange multiplier is beta*c/alpha and physical marginal cost is alpha/beta times that multiplier; duplicating the unscaled constraint admits nonunique multiplier allocations summing to c."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "analytic_scalar_LP_KKT_and_perturbation_checks_in_experiments/lessons/practical_model_checks.py"
+citation_keys = ["BoydVandenberghe2004"]
+model_scope = "one real dispatch variable, linear positive cost, positive demand and no upper capacity bound"
+assumptions = "Lagrangian uses nonnegative multipliers on the displayed less-than-or-equal constraints; alpha and beta are positive numerical scales; physical cost is unscaled c*p; a physical demand perturbation changes both duplicated constraints together"
+reviewer = ""
+review_date = ""
+unresolved_issue = "No AC-OPF locational-price, generic solver dual convention, nonlinear sensitivity or uniqueness guarantee is established."
+
+[[claim]]
 claim_id = "THESIS-001"
 exactness_object = "not_applicable"
 preservation_dimensions = ['structure', 'terminal_behavior', 'decision', 'provenance']
