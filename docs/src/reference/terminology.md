@@ -120,8 +120,10 @@ limits, or dynamic equations. The unqualified phrase is too ambiguous.
 
 ### [Equivalent](@id terminology-equivalent)
 
-Always state the interface, operating/model domain, observations, constraints,
-and whether the claim is exact, conservative, relaxed, or approximate.
+State the interface, operating/model domain, joint observations, constraints,
+objective correspondence, and recovery obligations. Matching separate ranges
+does not establish their joint feasible image. State whether the claim is
+exact, conservative, relaxed, or approximate.
 
 ### [Bus](@id terminology-bus)
 

@@ -1,49 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
-<title>Recovery map mechanism for exact lifted decisions</title>
-<desc>Two panels show a reduction from a source model to a target model. With a recovery map, source constraints can be checked and the observed feasible sets agree; without recovery, the target can become an outer relaxation.</desc>
-<rect width="1200" height="720" fill="white"/>
-<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.source{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.target{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.constraint{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.bad{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.solid{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.dashed{stroke:#8a3232;stroke-width:3;stroke-dasharray:9 7;fill:none;marker-end:url(#arrow)}</style>
-<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>
-<text x="40" y="44" class="title" text-anchor="start">Recovery is the positive mechanism behind exact lifted decisions</text>
-<text x="40" y="72" class="sub" text-anchor="start">Elimination alone gives a target relation; recovery lets the source constraints be evaluated again.</text>
-<rect x="40" y="105" width="535" height="555" rx="14" class="panel"/>
-<rect x="625" y="105" width="535" height="555" rx="14" class="panel"/>
-<text x="65" y="140" class="head" text-anchor="start">with recovery map</text>
-<text x="650" y="140" class="head" text-anchor="start">without recovery map</text>
-<rect x="75" y="200" width="165" height="95" rx="12" class="source"/>
-<rect x="375" y="200" width="165" height="95" rx="12" class="target"/>
-<text x="157" y="238" class="head" text-anchor="middle">source M</text>
-<text x="157" y="263" class="small" text-anchor="middle">member laws + limits</text>
-<text x="457" y="238" class="head" text-anchor="middle">target M̂</text>
-<text x="457" y="263" class="small" text-anchor="middle">reduced relation</text>
-<path d="M245 247 L365 247" class="solid"/>
-<text x="305" y="230" class="small" text-anchor="middle">reduce</text>
-<rect x="75" y="390" width="165" height="95" rx="12" class="constraint"/>
-<rect x="375" y="390" width="165" height="95" rx="12" class="constraint"/>
-<text x="157" y="428" class="head" text-anchor="middle">recover z</text>
-<text x="157" y="453" class="small" text-anchor="middle">z = R(x̂)</text>
-<text x="457" y="428" class="head" text-anchor="middle">check source limits</text>
-<text x="457" y="453" class="small" text-anchor="middle">g(x̂,R(x̂)) ≤ 0</text>
-<path d="M457 302 L457 380" class="solid"/>
-<text x="480" y="344" class="small" text-anchor="start">target solution</text>
-<path d="M375 438 L250 438" class="solid"/>
-<text x="312" y="420" class="small" text-anchor="middle">recovery</text>
-<text x="307" y="548" class="body" text-anchor="middle">observed feasible sets coincide</text>
-<text x="307" y="575" class="small" text-anchor="middle">because every target point has a checked source lift</text>
-<rect x="660" y="200" width="165" height="95" rx="12" class="source"/>
-<rect x="960" y="200" width="165" height="95" rx="12" class="target"/>
-<text x="742" y="238" class="head" text-anchor="middle">source M</text>
-<text x="742" y="263" class="small" text-anchor="middle">member limits hidden</text>
-<text x="1042" y="238" class="head" text-anchor="middle">target M̂</text>
-<text x="1042" y="263" class="small" text-anchor="middle">reduced relation</text>
-<path d="M830 247 L950 247" class="solid"/>
-<text x="890" y="230" class="small" text-anchor="middle">reduce</text>
-<rect x="810" y="390" width="165" height="95" rx="12" class="bad"/>
-<text x="892" y="428" class="head" text-anchor="middle">uncheckable</text>
-<text x="892" y="453" class="small" text-anchor="middle">source limits</text>
-<path d="M1042 302 L975 380" class="dashed"/>
-<text x="1055" y="345" class="small" text-anchor="start">no lift</text>
-<text x="892" y="548" class="body" text-anchor="middle">target feasible set can inflate</text>
-<text x="892" y="575" class="small" text-anchor="middle">a boundary match is not a decision certificate</text>
-<text x="40" y="700" class="small" text-anchor="start">Recovery may be algebraic, constructive, or solver-backed; the certificate must state its domain and the quantities it reconstructs.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="625" viewBox="0 0 1100 625">
+<title>Recovery proves one inclusion; exactness needs both</title><desc>First obtain a target feasible point, recover source variables, and check source equations, constraints and matched observations. This gives target-observation inclusion. Exact observed-set equality also requires coverage of every source observation.</desc>
+<rect width="1100" height="625" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b;font-size:20px}.title{font-size:29px;font-weight:bold}.head{font-size:23px;font-weight:bold}.small{font-size:18px}.math{font-family:DejaVu Sans,Arial,sans-serif;font-size:22px}</style>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#17212b"/></marker></defs>
+<text x="30" y="43" class="title" text-anchor="start">Recovery proves one inclusion; exactness needs both</text>
+<text x="30" y="81" class="small" text-anchor="start">S and T are feasible sets; h and ĥ map them into the same joint observation space.</text>
+<rect x="35" y="130" width="310" height="115" rx="8" fill="#f7fafc" stroke="#17212b" stroke-width="2"/>
+<text x="190" y="167" class="head" text-anchor="middle">1. Target point</text>
+<text x="190" y="214" class="math" text-anchor="middle">x̂ ∈ T</text>
+<rect x="380" y="130" width="310" height="115" rx="8" fill="#f7fafc" stroke="#17212b" stroke-width="2"/>
+<text x="535" y="167" class="head" text-anchor="middle">2. Recover</text>
+<text x="535" y="214" class="math" text-anchor="middle">z = R(x̂)</text>
+<rect x="725" y="130" width="310" height="115" rx="8" fill="#f7fafc" stroke="#17212b" stroke-width="2"/>
+<text x="880" y="167" class="head" text-anchor="middle">3. Check source</text>
+<text x="880" y="214" class="math" text-anchor="middle">z ∈ S; h(z) = ĥ(x̂)</text>
+<line x1="349" y1="187" x2="373" y2="187" stroke="#17212b" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="694" y1="187" x2="718" y2="187" stroke="#17212b" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="35" y="300" class="head" text-anchor="start">If this succeeds for EVERY target feasible point:</text>
+<text x="70" y="344" class="math" text-anchor="start">ĥ(T) ⊆ h(S)</text>
+<text x="330" y="344" class="" text-anchor="start">A conservative target may still exclude valid source observations.</text>
+<text x="35" y="410" class="head" text-anchor="start">Also show coverage of EVERY source feasible observation:</text>
+<text x="70" y="454" class="math" text-anchor="start">h(S) ⊆ ĥ(T)</text>
+<text x="330" y="454" class="" text-anchor="start">Together, the two inclusions give ĥ(T) = h(S).</text>
+<text x="35" y="521" class="small" text-anchor="start">Checking one returned solution establishes only that point’s recovery obligations.</text>
+<text x="35" y="555" class="small" text-anchor="start">Without a retained recovery relation or other evidence, source constraints may remain unassessed.</text>
+<text x="35" y="589" class="small" text-anchor="start">Decision equivalence also requires the declared decision and objective mappings.</text>
 </svg>

@@ -4,7 +4,7 @@
   "bmopftools_sources": [
     {
       "path": "generated/executable-knowledge-manifest.json",
-      "sha256": "f20116fd078d043c4d7fa0ff1cdbdf02a2b9ac32a61e808c197bafebed526a04"
+      "sha256": "99cb274b7acf5f39a65b379deff0fd78aeabb8e3e13f4124514f509eb8adb338"
     },
     {
       "path": "recipes/parallel_member_limits/metadata.toml",
@@ -39,7 +39,7 @@
     },
     {
       "path": "benchmarks/agent/submissions/conforming-c6.json",
-      "sha256": "715df3907d63aa0398159a4e5944c03bb28bfc6df616c08ad452e2812552bc2f"
+      "sha256": "a64889ba80070b979aeb4363b8ae01afac079e84430d3d30d1c408a43ebc1880"
     },
     {
       "path": "benchmarks/agent/submissions/unsafe-c0.json",
@@ -63,11 +63,11 @@
     }
   ],
   "provenance": {
-    "bmopftools_executable_corpus_sha256": "df23fd1025de2d09691de5bbfd19549383392658ccb73df51443fd8b8f77aba2",
-    "bmopftools_manifest_sha256": "f20116fd078d043c4d7fa0ff1cdbdf02a2b9ac32a61e808c197bafebed526a04",
-    "book_llm_corpus_sha256": "de38cf25cdb50c14316a202416341ee9b634f12047c864e2807c472510885eca",
+    "bmopftools_executable_corpus_sha256": "0f4b2d1e4b50c54a2db75013d65a52865aadf0915522749ad6c008efdafdcc31",
+    "bmopftools_manifest_sha256": "99cb274b7acf5f39a65b379deff0fd78aeabb8e3e13f4124514f509eb8adb338",
+    "book_llm_corpus_sha256": "48c3cd96d84c4d23118dfd66aec868d8b5480081cff97ad650844308d7e2a959",
     "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-    "federated_pair_sha256": "e4209fbf0c1f8293eac23086f3e66a814e472c45412d2f3e3a6c67c4d299a97d"
+    "federated_pair_sha256": "592fa06f621af03f4362d71f757a720a7806b047c093fbcf3a22985fce0c99f5"
   },
   "schema_version": "0.1.0",
   "status": "substrate_only_no_agent_runs",

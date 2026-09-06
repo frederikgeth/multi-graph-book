@@ -1,0 +1,110 @@
+{
+    "profile": {
+        "n_thermal_violations": 0,
+        "n_inv_violations": 0,
+        "q_capacitor": 0,
+        "n_negative_losses": 0,
+        "n_thermal_active": 0,
+        "n_load_residuals": 0,
+        "worst_negative_loss_w": 0,
+        "p_gen": 617441.3544018879,
+        "n_init_level_mismatches": 1,
+        "n_init_neutral_nonzero": 0,
+        "max_neutral_shift_bus": "i4",
+        "q_custom_injection": 0,
+        "n_nan_fields": 0,
+        "p_shunt": 1.5900449586087935,
+        "power_balance_err": 7.855760486563668e-11,
+        "n_inv_active": 0,
+        "feasible": true,
+        "q_gen": 186420.675758877,
+        "q_load": 183999.99999999997,
+        "n_load_model_residuals": 0,
+        "n_init_large_errors": 2,
+        "termination_status": "LOCALLY_SOLVED",
+        "p_custom_injection": 0,
+        "q_loss": 2420.675758877023,
+        "p_load": 617000,
+        "q_power_balance_err": 1.864464138634503e-11,
+        "loss_fraction": 0.0007127461214413775,
+        "max_neutral_shift_v": 5.454375735839653,
+        "n_gen_violations": 0,
+        "n_gen_active": 3,
+        "n_volt_violations": 0,
+        "q_shunt": 0,
+        "n_volt_active": 0,
+        "p_loss": 439.7643569293299
+    },
+    "line_current_residual_A": {
+        "l2": 2.8324921920100773e-12,
+        "l4": 6.629107285532059e-12,
+        "l3": 6.678680349593889e-12,
+        "l1": 1.861706715611651e-12
+    },
+    "complete_feasibility_gate_status": "indeterminate",
+    "independence": "post-solve evaluation separate from JuMP constraints; shared BMOPFTools data and primitive construction",
+    "scope": "package solution profile and four line-current recovery checks on a fixed running-network OPF result",
+    "termination_status": "LOCALLY_SOLVED",
+    "not_established": [
+        "independent all-device equation and nodal KCL audit",
+        "independent transformer primitive construction",
+        "global optimality",
+        "physical model adequacy"
+    ],
+    "tolerances": {
+        "active_balance_W": 0.001,
+        "reactive_balance_var": 0.001,
+        "line_current_A": 1.0e-5
+    },
+    "findings": [
+        {
+            "severity": "WARNING",
+            "code": "W.SOL.GEN_ACTIVE"
+        },
+        {
+            "severity": "WARNING",
+            "code": "W.SOL.GEN_ACTIVE"
+        },
+        {
+            "severity": "WARNING",
+            "code": "W.SOL.GEN_ACTIVE"
+        },
+        {
+            "severity": "WARNING",
+            "code": "W.SOL.INIT_LEVEL_MISMATCH"
+        },
+        {
+            "severity": "WARNING",
+            "code": "W.SOL.INIT_LARGE_ERROR"
+        },
+        {
+            "severity": "INFO",
+            "code": "I.SOL.BINDING_SUMMARY"
+        },
+        {
+            "severity": "INFO",
+            "code": "I.SOL.NEUTRAL_SHIFT"
+        }
+    ],
+    "altered_voltage": {
+        "finding_codes": [
+            "E.SOL.VOLT_VIOLATION",
+            "W.SOL.GEN_ACTIVE",
+            "W.SOL.GEN_ACTIVE",
+            "W.SOL.GEN_ACTIVE",
+            "W.SOL.INIT_LEVEL_MISMATCH",
+            "W.SOL.INIT_LARGE_ERROR",
+            "I.SOL.BINDING_SUMMARY",
+            "I.SOL.NEUTRAL_SHIFT"
+        ],
+        "line_current_residual_A": {
+            "l2": 3373.888514307105,
+            "l4": 6.629107285532059e-12,
+            "l3": 3997.588581992323,
+            "l1": 4862.974410101509
+        },
+        "added_real_voltage_V": 1000,
+        "bus": "i2",
+        "terminal": "a"
+    }
+}

@@ -74,7 +74,13 @@ def asset(draw, x0, y0):
            ("l2","i2"),("i2","l3"),("l3","i3"),("i3","l4"),("l4","i4"),
            ("i1","x1"),("x1","i5"),("x1","i6"),("i5","d3"),("i6","g1")]
     points={**buses,**assets}
-    for a,b in pairs: edge(draw,points[a],points[b],MUTED,3)
+    for a,b in pairs:
+        if (a,b) == ('i1','x1'):
+            # Route around l2: crossing its asset box falsely suggests attachment.
+            elbow=(points[a][0], y0+405)
+            edge(draw,points[a],elbow,MUTED,3); edge(draw,elbow,points[b],MUTED,3)
+        else:
+            edge(draw,points[a],points[b],MUTED,3)
     for ident,point in buses.items(): circle(draw,point,28,ident)
     for ident,point in assets.items():
         color="#f8e1c4" if ident=="x1" else "#eadff4" if ident in ("w0","g1") else "#e7f0fa"
@@ -91,7 +97,8 @@ def physical(draw, x0, y0, compact=False):
     edge(draw,(p["i1"][0],p["i1"][1]+9),(p["i2"][0],p["i2"][1]+9))
     edge(draw,p["i2"],p["i3"]); edge(draw,p["i3"],p["i4"])
     for target in (p["i1"],p["i5"],p["i6"]): edge(draw,(x0+435,y0+435),target,XFMR)
-    box(draw,(x0+435,y0+435),(66,52),"x1",fill="#f8e1c4")
+    if not compact:
+        box(draw,(x0+435,y0+435),(66,52),"x1",fill="#f8e1c4")
     for ident, point in p.items(): circle(draw,point,30,ident)
     draw.text((x0+270,y0+225),"l1",fill=LINE,font=SMALL)
     draw.text((x0+300,y0+300),"l2",fill=LINE,font=SMALL)
@@ -132,7 +139,12 @@ def factor(draw, x0, y0):
     for name in ("Phi_l1","Phi_l2"):
         edge(draw,js["J_i1"],fs[name],MUTED,3); edge(draw,fs[name],js["J_i2"],MUTED,3)
     edge(draw,js["J_i2"],fs["Phi_l3"],MUTED,3); edge(draw,fs["Phi_l3"],js["J_i3"],MUTED,3)
-    for name in ("J_i1","J_i5","J_i6"): edge(draw,fs["Phi_x1"],js[name],XFMR,4)
+    for name in ("J_i1","J_i5","J_i6"):
+        if name == 'J_i1':
+            elbow=(js[name][0], y0+460)
+            edge(draw,fs['Phi_x1'],elbow,XFMR,4); edge(draw,elbow,js[name],XFMR,4)
+        else:
+            edge(draw,fs['Phi_x1'],js[name],XFMR,4)
     for name,point in js.items(): circle(draw,point,37,name,fill="#e4f4e7",font=TINY)
     for name,point in fs.items(): box(draw,point,(110,52),name,fill="#f8e1c4",font=TINY)
     draw.text((x0+230,y0+680),"Factor arity is not forced to two.",fill=MUTED,font=SMALL)

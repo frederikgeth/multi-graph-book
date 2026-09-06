@@ -21,9 +21,9 @@ def exactness_classes() -> str:
     lines = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="850" viewBox="0 0 1200 850">',
         '<title>Four exactness classes as observed-set containment</title>',
-        '<desc>Four panels compare source and target observed feasible sets: exact equality, inner conservative containment, outer relaxed containment, and scenario agreement only inside a declared sample region.</desc>',
+        '<desc>Four panels compare source and target observed feasible sets: exact equality, inner conservative containment, outer relaxed containment, and scenario agreement only at declared sampled points.</desc>',
         '<rect width="1200" height="850" fill="white"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.source{fill:#d9eef8;fill-opacity:.9;stroke:#245b7a;stroke-width:3}.target{fill:#f8e1c4;fill-opacity:.9;stroke:#8a4f13;stroke-width:3;stroke-dasharray:9 6}.sample{fill:none;stroke:#17212b;stroke-width:2;stroke-dasharray:4 5}.witness{fill:#17212b}.arrow{stroke:#17212b;stroke-width:2;fill:none;marker-end:url(#arrow)}</style>',
+        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.source{fill:#d9eef8;fill-opacity:.9;stroke:#245b7a;stroke-width:3}.target{fill:none;stroke:#8a4f13;stroke-width:3;stroke-dasharray:9 6}.sample{fill:none;stroke:#17212b;stroke-width:2;stroke-dasharray:4 5}.witness{fill:#17212b}.arrow{stroke:#17212b;stroke-width:2;fill:none;marker-end:url(#arrow)}</style>',
         '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
         txt(40, 44, "Exactness is a relation between observed feasible sets", "title"),
         txt(40, 72, "The same source and target models can be exact for one observation family and approximate for another.", "sub"),
@@ -45,7 +45,7 @@ def exactness_classes() -> str:
         '<ellipse cx="890" cy="270" rx="175" ry="96" class="source"/>',
         '<ellipse cx="890" cy="270" rx="108" ry="58" class="target"/>',
         txt(890, 270, "target ⊂ source", "body", "middle"),
-        txt(890, 324, "no admitted nonphysical point", "small", "middle"),
+        txt(890, 389, "every target observation has a source witness", "small", "middle"),
         # Outer: source sits inside target, with the scalar witness in the gap.
         txt(65, 505, "outer / relaxed", "head"),
         txt(65, 530, "all source points are retained; extra target points may be nonphysical", "small"),
@@ -54,16 +54,14 @@ def exactness_classes() -> str:
         '<circle cx="433" cy="620" r="6" class="witness"/>',
         '<path d="M438 616 L490 585" class="arrow"/>',
         txt(495, 582, "15 V witness", "small"),
-        txt(310, 684, "source ⊂ target", "body", "middle"),
-        # Scenario: agreement inside sample region, divergence outside.
+        txt(310, 741, "source ⊂ target", "body", "middle"),
+        # Scenario: checked sample points; no certificate for the intervening region.
         txt(645, 505, "scenario approximate", "head"),
-        txt(645, 530, "agreement is certified only on the declared sample region", "small"),
+        txt(645, 530, "agreement checked only at the declared sampled points", "small"),
         '<ellipse cx="890" cy="635" rx="150" ry="82" class="source"/>',
         '<ellipse cx="930" cy="635" rx="150" ry="82" class="target"/>',
-        '<rect x="760" y="575" width="190" height="120" rx="8" class="sample"/>',
-        txt(855, 615, "sampled", "body", "middle"),
-        txt(855, 638, "region", "body", "middle"),
-        txt(890, 690, "overlap here; divergence outside", "small", "middle"),
+        '<circle cx="825" cy="620" r="5" class="witness"/><circle cx="870" cy="645" r="5" class="witness"/><circle cx="920" cy="610" r="5" class="witness"/>',
+        txt(890, 741, "dots: checked samples; no region-wide certificate", "small", "middle"),
         txt(40, 820, "Source set: h(𝓕_M)   ·   target set: ĥ(𝓕_M̂)   ·   every panel assumes the observation map is declared first.", "small"),
         '</svg>',
     ]
@@ -71,125 +69,8 @@ def exactness_classes() -> str:
 
 
 def recovery_map() -> str:
-    lines = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">',
-        '<title>Recovery map mechanism for exact lifted decisions</title>',
-        '<desc>Two panels show a reduction from a source model to a target model. With a recovery map, source constraints can be checked and the observed feasible sets agree; without recovery, the target can become an outer relaxation.</desc>',
-        '<rect width="1200" height="720" fill="white"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.source{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.target{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.constraint{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.bad{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.solid{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.dashed{stroke:#8a3232;stroke-width:3;stroke-dasharray:9 7;fill:none;marker-end:url(#arrow)}</style>',
-        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
-        txt(40, 44, "Recovery is the positive mechanism behind exact lifted decisions", "title"),
-        txt(40, 72, "Elimination alone gives a target relation; recovery lets the source constraints be evaluated again.", "sub"),
-        '<rect x="40" y="105" width="535" height="555" rx="14" class="panel"/>',
-        '<rect x="625" y="105" width="535" height="555" rx="14" class="panel"/>',
-        txt(65, 140, "with recovery map", "head"),
-        txt(650, 140, "without recovery map", "head"),
-        # Exact panel.
-        '<rect x="75" y="200" width="165" height="95" rx="12" class="source"/>',
-        '<rect x="375" y="200" width="165" height="95" rx="12" class="target"/>',
-        txt(157, 238, "source M", "head", "middle"),
-        txt(157, 263, "member laws + limits", "small", "middle"),
-        txt(457, 238, "target M̂", "head", "middle"),
-        txt(457, 263, "reduced relation", "small", "middle"),
-        '<path d="M245 247 L365 247" class="solid"/>',
-        txt(305, 230, "reduce", "small", "middle"),
-        '<rect x="75" y="390" width="165" height="95" rx="12" class="constraint"/>',
-        '<rect x="375" y="390" width="165" height="95" rx="12" class="constraint"/>',
-        txt(157, 428, "recover z", "head", "middle"),
-        txt(157, 453, "z = R(x̂)", "small", "middle"),
-        txt(457, 428, "check source limits", "head", "middle"),
-        txt(457, 453, "g(x̂,R(x̂)) ≤ 0", "small", "middle"),
-        '<path d="M457 302 L457 380" class="solid"/>',
-        txt(480, 344, "target solution", "small"),
-        '<path d="M375 438 L250 438" class="solid"/>',
-        txt(312, 420, "recovery", "small", "middle"),
-        txt(307, 548, "observed feasible sets coincide", "body", "middle"),
-        txt(307, 575, "because every target point has a checked source lift", "small", "middle"),
-        # No recovery panel.
-        '<rect x="660" y="200" width="165" height="95" rx="12" class="source"/>',
-        '<rect x="960" y="200" width="165" height="95" rx="12" class="target"/>',
-        txt(742, 238, "source M", "head", "middle"),
-        txt(742, 263, "member limits hidden", "small", "middle"),
-        txt(1042, 238, "target M̂", "head", "middle"),
-        txt(1042, 263, "reduced relation", "small", "middle"),
-        '<path d="M830 247 L950 247" class="solid"/>',
-        txt(890, 230, "reduce", "small", "middle"),
-        '<rect x="810" y="390" width="165" height="95" rx="12" class="bad"/>',
-        txt(892, 428, "uncheckable", "head", "middle"),
-        txt(892, 453, "source limits", "small", "middle"),
-        '<path d="M1042 302 L975 380" class="dashed"/>',
-        txt(1055, 345, "no lift", "small"),
-        txt(892, 548, "target feasible set can inflate", "body", "middle"),
-        txt(892, 575, "a boundary match is not a decision certificate", "small", "middle"),
-        txt(40, 700, "Recovery may be algebraic, constructive, or solver-backed; the certificate must state its domain and the quantities it reconstructs.", "small"),
-        '</svg>',
-    ]
-    return "\n".join(lines) + "\n"
-
-
-def argument_spine() -> str:
-    steps = [
-        ("1", "graph is ambiguous", "scope + translation traps"),
-        ("2", "views answer different questions", "taxonomy + frameworks"),
-        ("3", "there is no universal ladder", "maps + query factorization"),
-        ("4", "a transformation needs a contract", "preservation + recovery"),
-        ("5", "exactness is observation-relative", "exact / inner / outer / scenario"),
-        ("6", "equations can survive while decisions break", "parallel-line counterexample"),
-        ("7", "guards make rules checkable", "certificates + refusals"),
-        ("8", "legitimate collapses have conditions", "positive sequence + reductions"),
-        ("9", "representation has numerical cost", "conditioning + fill + margins"),
-    ]
-    lines = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">',
-        '<title>The argument spine of the book</title>',
-        '<desc>Nine linked claims guide the reader from graph ambiguity through query-relative transformations, decision counterexamples, guarded rules, legitimate collapses, and numerical consequences.</desc>',
-        '<rect width="1400" height="760" fill="white"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.step{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.step.alt{fill:#f8e1c4;stroke:#8a4f13}.step.final{fill:#e4f4e7;stroke:#477a55}.num{font-size:18px;font-weight:bold}.head{font-size:17px;font-weight:bold}.small{font-size:14px;fill:#5f6b76}.arrow{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}</style>',
-        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
-        txt(40, 46, "The argument spine", "title"),
-        txt(40, 76, "Read 1–5 left to right, then 6–9 right to left; each step adds to one cumulative argument.", "sub"),
-    ]
-    # Five boxes on the first row and four on the second row, with a serpentine
-    # reading order so the complete spine remains legible in print.
-    positions = [(50 + 265 * i, 145) for i in range(5)] + [(1110 - 265 * i, 455) for i in range(4)]
-    heading_lines = {
-        "1": ["graph is", "ambiguous"],
-        "2": ["views answer", "different questions"],
-        "3": ["there is no", "universal ladder"],
-        "4": ["a transformation", "needs a contract"],
-        "5": ["exactness is", "observation-relative"],
-        "6": ["equations can survive", "while decisions break"],
-        "7": ["guards make rules", "checkable"],
-        "8": ["legitimate collapses", "have conditions"],
-        "9": ["representation has", "numerical cost"],
-    }
-    for index, ((number, heading, detail), (x, y)) in enumerate(zip(steps, positions)):
-        cls = "step final" if number == "9" else ("step alt" if int(number) % 2 == 0 else "step")
-        lines.append(f'<rect x="{x}" y="{y}" width="220" height="150" rx="14" class="{cls}"/>')
-        lines.append(txt(x + 18, y + 30, number, "num"))
-        for offset, heading_line in enumerate(heading_lines[number]):
-            lines.append(txt(x + 18, y + 65 + 20 * offset, heading_line, "head"))
-        # Split the reader-facing detail into two short lines where possible.
-        if " + " in detail:
-            first, second = detail.split(" + ", 1)
-            lines.append(txt(x + 18, y + 117, first + " +", "small"))
-            lines.append(txt(x + 18, y + 137, second, "small"))
-        else:
-            lines.append(txt(x + 18, y + 127, detail, "small"))
-    for i in range(4):
-        x = positions[i][0] + 220
-        lines.append(f'<path d="M{x} 220 L{x + 45} 220" class="arrow"/>')
-    # Step 5 turns directly down into step 6. Sending this connector across the
-    # empty left margin makes the layout look as if a tenth box is missing.
-    lines.append('<path d="M1220 295 L1220 455" class="arrow"/>')
-    for i in range(3):
-        x = positions[5 + i][0]
-        lines.append(f'<path d="M{x} 530 L{x - 45} 530" class="arrow"/>')
-    lines += [
-        txt(50, 685, "The spine is a navigation device, not a claim hierarchy: later chapters can refine or qualify an earlier link.", "small"),
-        '</svg>',
-    ]
-    return "\n".join(lines) + "\n"
+    from render_teaching_figures import recovery
+    return recovery()
 
 
 def query_partial_orders() -> str:
@@ -202,8 +83,8 @@ def query_partial_orders() -> str:
     ]
     lines = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">',
-        '<title>Partial orders change with the query family</title>',
-        '<desc>The same five representation nodes are shown under two query families. Electrical boundary queries order port-factor, multigraph, and simple views, while asset and outage queries privilege the asset/dependency view; incomparable relations are marked explicitly.</desc>',
+        '<title>Query-relative comparison of representation classes</title>',
+        '<desc>Classes under mutual query-answerability are compared under two query families. Electrical boundary queries order port-factor, multigraph, and simple views, while asset and outage queries privilege the asset/dependency view; incomparable relations are marked explicitly.</desc>',
         '<rect width="1400" height="820" fill="white"/>',
         '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:29px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:20px;font-weight:bold}.node{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.asset{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.eq{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.arrow{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.dashed{stroke:#8a4f13;stroke-width:2;stroke-dasharray:8 6;fill:none}.cross{stroke:#8a3232;stroke-width:3}</style>',
         '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
@@ -244,7 +125,7 @@ def query_partial_orders() -> str:
         '<path d="M1080 580 L1190 580" class="cross"/>',
         '<path d="M1190 580 L1080 580" class="cross"/>',
         txt(1135, 635, "incomparable unless a query map is declared", "small", "middle"),
-        txt(40, 770, "The edges change when Q changes. This is why “more detailed” is not a universal claim across the four frameworks.", "small"),
+        txt(40, 770, "On representations: a preorder when identities and composition are admissible. On mutual-answerability classes: a partial order.", "small"),
         '</svg>',
     ]
     return "\n".join(lines) + "\n"
@@ -387,46 +268,6 @@ def vocabulary_bridge() -> str:
         '<rect x="40" y="905" width="1320" height="50" rx="12" class="tag"/>',
         txt(700, 930, "solid arrow: qualify through the bridge · dashed arrow: unsafe bypass if untranslated", "head", "middle"),
         txt(700, 949, "house rule: preferred term · accepted qualified shorthand · unsafe unqualified term", "small", "middle"),
-        '</svg>',
-    ]
-    return "\n".join(lines) + "\n"
-
-
-def audience_routes() -> str:
-    lines = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">',
-        '<title>Audience routes through the HTML and PDF book</title>',
-        '<desc>A central argument spine is shared by HTML and PDF. Five community routes branch to power engineering, software and data, mathematical modelling, graph theory, and graph machine learning chapters.</desc>',
-        '<rect width="1400" height="800" fill="white"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.head{font-size:17px;font-weight:bold}.node{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.aud1{fill:#e4f4e7;stroke:#477a55;stroke-width:2}.aud2{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}.aud3{fill:#f4e5e5;stroke:#8a3232;stroke-width:2}.aud4{fill:#eee8f8;stroke:#7856a8;stroke-width:2}.aud5{fill:#f7f7f7;stroke:#17212b;stroke-width:2}.small{font-size:13px;fill:#5f6b76}.body{font-size:15px}.line{stroke:#17212b;stroke-width:3;fill:none;marker-end:url(#arrow)}.branch{stroke:#5f6b76;stroke-width:2;fill:none;marker-end:url(#arrow)}</style>',
-        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
-        txt(40, 46, "Reading routes through one argument", "title"),
-        txt(40, 76, "HTML is the full knowledge base; the PDF is a shorter, argument-shaped serialization of the same sources.", "sub"),
-        txt(40, 130, "shared spine", "head"),
-    ]
-    spine = [(100, "scope"), (340, "representations"), (580, "contracts"), (820, "counterexamples"), (1060, "consequences")]
-    for i, (x, label) in enumerate(spine):
-        lines.append(f'<rect x="{x}" y="155" width="190" height="70" rx="12" class="node"/>')
-        lines.append(txt(x + 95, 197, label, "body", "middle"))
-        if i < len(spine) - 1:
-            lines.append(f'<path d="M{x + 190} 190 L{x + 230} 190" class="line"/>')
-    audiences = [
-        ("power engineer", "physical meaning · terminals · decisions", "aud1", 45, 420, 100),
-        ("software / data expert", "identity · topology · provenance", "aud2", 315, 490, 340),
-        ("mathematical modeller", "feasible sets · maps · certificates", "aud3", 585, 420, 580),
-        ("graph theorist", "typed incidence · cycles · quotients", "aud4", 855, 490, 820),
-        ("graph ML expert", "message graph · pooling · recovery", "aud5", 1125, 420, 1060),
-    ]
-    for title, detail, cls, x, y, anchor_x in audiences:
-        lines.append(f'<rect x="{x}" y="{y}" width="230" height="145" rx="12" class="{cls}"/>')
-        lines.append(txt(x + 115, y + 38, title, "head", "middle"))
-        parts = detail.split(" · ")
-        for j, part in enumerate(parts):
-            lines.append(txt(x + 115, y + 70 + 19 * j, part, "small", "middle"))
-        branch_start_x = anchor_x + 95
-        lines.append(f'<path d="M{branch_start_x} 225 C{branch_start_x} 330 {x + 115} {y - 50} {x + 115} {y}" class="branch"/>')
-    lines += [
-        txt(40, 700, "Each route re-enters the same contract language; audience emphasis changes, but preservation claims do not.", "small"),
         '</svg>',
     ]
     return "\n".join(lines) + "\n"
@@ -613,41 +454,8 @@ def spine_band() -> str:
 
 
 def orientation_power() -> str:
-    lines = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">',
-        '<title>Stored orientation is not operating power direction</title>',
-        '<desc>Two panels distinguish an arbitrary reference orientation and terminal current signs from the operating-point complex power transfer, which may reverse without changing the stored arc.</desc>',
-        '<rect width="1400" height="760" fill="white"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:30px;font-weight:bold}.sub{font-size:17px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:20px;font-weight:bold}.body{font-size:16px}.small{font-size:14px;fill:#5f6b76}.wire{stroke:#17212b;stroke-width:8}.ref{stroke:#245b7a;stroke-width:4;fill:none;marker-end:url(#arrow)}.power{stroke:#8a4f13;stroke-width:5;fill:none;marker-end:url(#arrow)}.reverse{stroke:#8a3232;stroke-width:5;fill:none;marker-end:url(#arrow);stroke-dasharray:10 7}.bus{fill:#d9eef8;stroke:#245b7a;stroke-width:2}</style>',
-        '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
-        txt(40, 46, "An oriented arc is a coordinate choice, not a flow measurement", "title"),
-        txt(40, 76, "Keep the stored triple ℓij, terminal signs, and operating-point power transfer as separate records.", "sub"),
-        '<rect x="40" y="120" width="635" height="520" rx="14" class="panel"/>',
-        '<rect x="725" y="120" width="635" height="520" rx="14" class="panel"/>',
-        txt(70, 160, "reference orientation and terminal signs", "head"),
-        txt(755, 160, "operating-point power transfer", "head"),
-        '<rect x="95" y="330" width="120" height="78" rx="12" class="bus"/>',
-        '<rect x="500" y="330" width="120" height="78" rx="12" class="bus"/>',
-        txt(155, 375, "i", "head", "middle"), txt(560, 375, "j", "head", "middle"),
-        '<line x1="215" y1="369" x2="500" y2="369" class="wire"/>',
-        '<path d="M240 300 L455 300" class="ref"/>',
-        txt(350, 286, "stored orientation ℓij", "body", "middle"),
-        '<path d="M270 445 L470 445" class="ref"/>',
-        txt(370, 475, "Iℓij enters at i; −Iℓij enters at j", "small", "middle"),
-        txt(350, 545, "reversing the reference swaps signs and endpoint records", "small", "middle"),
-        '<rect x="780" y="330" width="120" height="78" rx="12" class="bus"/>',
-        '<rect x="1185" y="330" width="120" height="78" rx="12" class="bus"/>',
-        txt(840, 375, "i", "head", "middle"), txt(1245, 375, "j", "head", "middle"),
-        '<line x1="900" y1="369" x2="1185" y2="369" class="wire"/>',
-        '<path d="M920 300 L1135 300" class="power"/>',
-        txt(1027, 286, "Pij + 𝗂Qij > 0", "body", "middle"),
-        '<path d="M1135 445 L920 445" class="reverse"/>',
-        txt(1027, 475, "Pij + 𝗂Qij < 0 can occur", "body", "middle"),
-        txt(1027, 545, "the same stored ℓij can carry either sign at another state", "small", "middle"),
-        txt(40, 700, "A directed drawing may encode incidence, a reference sign, a causal relation, or a measured transfer. Name which one is intended before interpreting an arrow.", "small"),
-        '</svg>',
-    ]
-    return "\n".join(lines) + "\n"
+    from render_teaching_figures import orientation
+    return orientation()
 
 
 def cycles_radial() -> str:
@@ -738,13 +546,13 @@ def kron_fill_in() -> str:
         txt(70, 160, "partitioned source relation", "head"), txt(780, 160, "reduced boundary relation", "head"),
         '<circle cx="160" cy="380" r="34" class="boundary"/><circle cx="520" cy="380" r="34" class="boundary"/><circle cx="340" cy="300" r="34" class="internal"/>',
         txt(160, 386, "b₁", "head", "middle"), txt(520, 386, "b₂", "head", "middle"), txt(340, 306, "i", "head", "middle"),
-        '<line x1="190" y1="365" x2="310" y2="315" class="edge"/><line x1="370" y1="315" x2="490" y2="365" class="edge"/><line x1="160" y1="414" x2="520" y2="414" class="edge"/>',
-        txt(340, 505, "Y = [YBB  YBI; YIB  YII]", "body", "middle"), txt(340, 540, "internal block YII invertible", "small", "middle"),
+        '<line x1="190" y1="365" x2="310" y2="315" class="edge"/><line x1="370" y1="315" x2="490" y2="365" class="edge"/>',
+        txt(340, 505, "Y = [YBB  YBI; YIB  YII]", "body", "middle"), txt(340, 540, "iI = 0; internal block YII invertible", "small", "middle"),
         '<circle cx="870" cy="380" r="34" class="boundary"/><circle cx="1240" cy="380" r="34" class="boundary"/>',
         txt(870, 386, "b₁", "head", "middle"), txt(1240, 386, "b₂", "head", "middle"),
         '<line x1="905" y1="380" x2="1205" y2="380" class="fill"/>',
         txt(1055, 345, "−YBI YII⁻¹ YIB", "body", "middle"), txt(1055, 430, "Yᵏ = YBB − YBI YII⁻¹ YIB", "body", "middle"),
-        txt(1055, 505, "exact for the retained boundary relation", "small", "middle"), txt(1055, 540, "internal assets, currents, and limits require recovery", "small", "middle"),
+        txt(1055, 505, "exact for this zero-injection boundary relation", "small", "middle"), txt(1055, 540, "internal assets, currents, and limits require recovery", "small", "middle"),
         '<path d="M650 380 L735 380" class="arrow"/>', txt(692, 360, "Schur", "small", "middle"),
         txt(40, 700, "Kron is an elimination map. Realizing the reduced relation as permitted equipment is a separate compilation and certificate problem.", "small"),
         '</svg>',
@@ -1103,11 +911,9 @@ def main() -> None:
     outputs = {
         "exactness-classes": exactness_classes(),
         "recovery-map-loop": recovery_map(),
-        "argument-spine": argument_spine(),
         "query-partial-orders": query_partial_orders(),
         "case-escalation-grid": case_escalation(),
         "vocabulary-bridge-five-languages": vocabulary_bridge(),
-        "audience-routes": audience_routes(),
         "sequence-subspace": sequence_subspace(),
         "bus-meaning-overlays": bus_overlay(),
         "certificate-composition": certificate_composition(),

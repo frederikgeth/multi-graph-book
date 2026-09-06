@@ -1,32 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
-<title>Complex-plane feasible-set geometry for parallel limits</title>
-<desc>The retained member limits form a source disc in the complex voltage-drop plane, while a summed-rating aggregate admits a larger outer disc. A weighted quadratic limit is shown as an ellipse to distinguish the general geometry from the scalar witness.</desc>
-<rect width="1200" height="720" fill="white"/>
-<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:27px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.head{font-size:18px;font-weight:bold}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.axis{stroke:#17212b;stroke-width:2}.source{fill:#d9eef8;fill-opacity:.65;stroke:#245b7a;stroke-width:3}.aggregate{fill:#f8e1c4;fill-opacity:.55;stroke:#8a4f13;stroke-width:3;stroke-dasharray:9 6}.ellipse{fill:#e4f4e7;fill-opacity:.6;stroke:#477a55;stroke-width:3}.witness{stroke:#8a3232;stroke-width:3;stroke-dasharray:8 6}.dot{fill:#8a3232}</style>
-<text x="35" y="38" class="title" text-anchor="start">Complex-plane feasible-set geometry</text>
-<text x="35" y="66" class="sub" text-anchor="start">The scalar witness uses discs; weighted quadratic limits generalize the boundary to ellipses.</text>
-<rect x="35" y="95" width="540" height="470" rx="14" class="panel"/>
-<rect x="625" y="95" width="540" height="470" rx="14" class="panel"/>
-<text x="60" y="130" class="head" text-anchor="start">retained member constraints</text>
-<text x="650" y="130" class="head" text-anchor="start">aggregate and weighted limits</text>
-<line x1="100" y1="355" x2="510" y2="355" class="axis"/>
-<line x1="305" y1="170" x2="305" y2="520" class="axis"/>
-<text x="510" y="380" class="small" text-anchor="end">Re z</text>
-<text x="315" y="170" class="small" text-anchor="start">Im z</text>
-<circle cx="305" cy="355" r="125" class="source"/>
-<text x="305" y="218" class="small" text-anchor="middle">q limit: |z| ≤ 1</text>
-<text x="305" y="510" class="small" text-anchor="middle">r limit is looser here; intersection is the q disc</text>
-<line x1="690" y1="355" x2="1100" y2="355" class="axis"/>
-<line x1="895" y1="170" x2="895" y2="520" class="axis"/>
-<text x="1100" y="380" class="small" text-anchor="end">Re z</text>
-<text x="905" y="170" class="small" text-anchor="start">Im z</text>
-<circle cx="895" cy="355" r="190" class="aggregate"/>
-<ellipse cx="895" cy="355" rx="155" ry="105" class="ellipse"/>
-<text x="895" y="145" class="small" text-anchor="middle">summed rating: |z| ≤ 200/110 ≈ 1.82</text>
-<text x="895" y="510" class="small" text-anchor="middle">weighted quadratic limit: an ellipse</text>
-<line x1="1020" y1="175" x2="1020" y2="520" class="witness"/>
-<circle cx="1020" cy="355" r="7" class="dot"/>
-<text x="1032" y="341" class="body" text-anchor="start">15 V witness</text>
-<text x="35" y="610" class="small" text-anchor="start">The witness lies inside the aggregate disc but outside the retained member disc; recovery exposes the violated member limit.</text>
-<text x="35" y="640" class="small" text-anchor="start">For weighted or coupled limits, the same containment test becomes disc/ellipse or quadratic-form geometry.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="650" viewBox="0 0 1100 650">
+<title>One voltage-drop plane, two feasible regions</title><desc>Concentric discs in volts: retained member constraints give radius 10 V; the summed-rating target gives radius 200/11 V. The point (15,0) V lies outside the source and inside the target.</desc>
+<rect width="1100" height="650" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b;font-size:20px}.title{font-size:29px;font-weight:bold}.head{font-size:23px;font-weight:bold}.small{font-size:18px}.math{font-family:DejaVu Sans,Arial,sans-serif;font-size:22px}</style>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#17212b"/></marker></defs>
+<text x="30" y="43" class="title" text-anchor="start">One voltage-drop plane, two feasible regions</text>
+<text x="30" y="78" class="small" text-anchor="start">Complex ΔU; fixed scalar conductances and current-magnitude bounds.</text>
+<circle cx="320" cy="348" r="200.00000000000003" fill="#fff7ec" stroke="#8a4f13" stroke-width="3" stroke-dasharray="9 6"/>
+<circle cx="320" cy="348" r="110.0" fill="#e5f2f8" stroke="#245b7a" stroke-width="3"/>
+<line x1="78.0" y1="348" x2="562.0" y2="348" stroke="#17212b" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="320" y1="579.0" x2="320" y2="106.0" stroke="#17212b" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="100.0" y1="343" x2="100.0" y2="353" stroke="#17212b" stroke-width="1"/>
+<text x="100.0" y="375" class="small" text-anchor="middle">-20</text>
+<line x1="315" y1="568.0" x2="325" y2="568.0" stroke="#17212b" stroke-width="1"/>
+<text x="308" y="574.0" class="small" text-anchor="end">-20</text>
+<line x1="210.0" y1="343" x2="210.0" y2="353" stroke="#17212b" stroke-width="1"/>
+<text x="210.0" y="375" class="small" text-anchor="middle">-10</text>
+<line x1="315" y1="458.0" x2="325" y2="458.0" stroke="#17212b" stroke-width="1"/>
+<text x="308" y="464.0" class="small" text-anchor="end">-10</text>
+<line x1="430.0" y1="343" x2="430.0" y2="353" stroke="#17212b" stroke-width="1"/>
+<text x="430.0" y="375" class="small" text-anchor="middle">10</text>
+<line x1="315" y1="238.0" x2="325" y2="238.0" stroke="#17212b" stroke-width="1"/>
+<text x="308" y="244.0" class="small" text-anchor="end">10</text>
+<line x1="540.0" y1="343" x2="540.0" y2="353" stroke="#17212b" stroke-width="1"/>
+<text x="540.0" y="375" class="small" text-anchor="middle">20</text>
+<line x1="315" y1="128.0" x2="325" y2="128.0" stroke="#17212b" stroke-width="1"/>
+<text x="308" y="134.0" class="small" text-anchor="end">20</text>
+<text x="560" y="403" class="small" text-anchor="end">Re ΔU [V]</text>
+<text x="332" y="115" class="small" text-anchor="start">Im ΔU [V]</text>
+<circle cx="485.0" cy="348.0" r="6" fill="#8a3232" stroke="#8a3232" stroke-width="3"/>
+<line x1="485.0" y1="340" x2="580" y2="245" stroke="#8a3232" stroke-width="1.5"/>
+<text x="600" y="160" class="head" text-anchor="start">Solid boundary: source</text>
+<text x="600" y="198" class="math" text-anchor="start">|ΔU| ≤ 10 V</text>
+<text x="600" y="269" class="head" text-anchor="start">Witness: (15, 0) V</text>
+<text x="600" y="307" class="" text-anchor="start">Member 1 fails; aggregate passes.</text>
+<text x="600" y="390" class="head" text-anchor="start">Dashed boundary: naive target</text>
+<text x="600" y="428" class="math" text-anchor="start">|ΔU| ≤ 200/11 V ≈ 18.18 V</text>
+<text x="30" y="602" class="small" text-anchor="start">Both discs and the witness use the same scale. The extra annulus contains false acceptances.</text>
 </svg>

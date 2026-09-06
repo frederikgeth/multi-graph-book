@@ -50,7 +50,11 @@ mean that adequacy or uniqueness has already been established.
 
 ![The source architecture feeding typed representation maps.](../assets/map-of-maps.png)
 
-![Query-relative partial orders: different query families induce different useful views.](../assets/query-partial-orders.png)
+![Query-relative comparison of representation classes: different queries induce different useful views.](../assets/query-partial-orders.png)
+
+The order diagram compares classes under mutual query-answerability; on raw
+representations the relation is a preorder, with the identity and composition
+assumptions stated in [Scope and thesis](@ref scope-and-thesis).
 
 These two plates belong here as well as in the detailed map chapter. This is
 the PDF-facing definition of the objects; the map chapter supplies the fuller

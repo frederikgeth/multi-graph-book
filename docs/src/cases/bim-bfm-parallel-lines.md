@@ -6,18 +6,19 @@ scope boundaries and are not a new executable certificate.
 The notes by Geth and Liu provide a compact warning about expressive notation.
 They study BIM and BFM second-order-cone formulations for parallel lines and
 ``\Pi``-sections with ideal transformers and shunts [GethLiu2022](@cite). The
-case belongs in this book because it is not only about convex relaxation: it
-shows how a missing branch index changes what a proof can state.
+case illustrates how member identities and consistency relations affect what
+a formulation establishes.
 
-![A variable-signature capability matrix shows which member-level questions a
-shared BIM/BFM bus-pair variable can and cannot express.](../assets/bim-bfm-signature-capability.png)
+![A variable-signature capability matrix shows which member-level questions
+shared voltage coordinates can express when member data and constraints are retained.](../assets/bim-bfm-signature-capability.png)
 
 This is a notation-capability plate, not a new numerical certificate. It makes
 the scope boundary visible before the equations are interpreted as a theorem.
 
 ## The branch identity is part of the variable signature
 
-Consider two parallel branches ``\ell i j`` and ``k i j``. Their impedances are
+For the following displayed identities, assume fixed scalar series-only
+branches with no shunts or transformer taps. Consider two parallel branches ``\ell i j`` and ``k i j``. Their impedances are
 ``Z_\ell`` and ``Z_k`` and their series flows are ``S_{\ell i j}`` and
 ``S_{k i j}``. A BIM representation can use one bus-pair cross-product
 ``W_{ij}=U_iU_j^*`` and write
@@ -44,11 +45,30 @@ Without it, independently chosen branch flows can satisfy the balance equations
 while failing to arise from one common voltage drop. Adding the relation is a
 formulation repair, not a graph transformation.
 
+Shared voltage coordinates do not remove member-specific constraints. Writing
+``W_i=|U_i|^2`` and ``W_j=|U_j|^2`` in the exact lifted model gives
+
+```math
+|I_{\ell i j}|^2
+=|Y_\ell|^2\left(W_i+W_j-2\Re(W_{ij})\right).
+```
+
+Each retained member can therefore have its own current limit using the same
+voltage products. Member identity must remain in the parameters, constraint
+indexing, and recovery relations; it need not appear on every voltage variable.
+The same principle extends to fixed linear terminal-current maps, with the
+appropriate coefficients for taps and shunts.
+
 !!! warning "Decision-model consequence"
-    A theorem whose signature contains only ``W_{ij}`` cannot quantify over
-    member-specific current limits, outages, measurements or recovered branch
-    currents. A theorem using ``W_{\ell ij}`` can name those quantities, but it
-    has changed the relaxation and must state that change explicitly.
+    Sharing physical voltage coordinates is compatible with separate member
+    limits. Discarding member data or constraints is a different operation.
+    Introducing ``W_{\ell ij}`` with equality constraints may be a redundant
+    reformulation; allowing independent values can change a relaxation.
+    The variable index alone does not establish equivalence or its failure.
+
+For switching or outages, retain the state variables and conditional member
+laws as well. The fixed-state identity above does not establish preservation
+of those decision domains.
 
 ## Terminal power is not series power
 
@@ -79,7 +99,7 @@ there is no single conserved scalar called “the flow on the edge.”
 ## Implied current limits and relaxations
 
 If a terminal apparent-power limit is ``|S^{\mathrm{tot}}|\le S^{\max}`` and
-``|U_i|\ge U_i^{\min}``, then
+``|U_i|\ge U_i^{\min}>0``, then
 
 ```math
 |I^{\mathrm{tot}}_{\ell i j}|
@@ -121,4 +141,5 @@ The book will use the BMOPFTools-style convention consistently:
   declares the sharing relation explicitly.
 
 This is an expressive-notational rule: the symbols needed to state a constraint
-must remain visible in the theorem's variable signature.
+must be represented by its variables, indexed data, constraints, and recovery
+relations. A physical quantity may be derived rather than an independent variable.

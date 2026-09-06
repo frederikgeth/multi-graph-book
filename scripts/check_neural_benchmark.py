@@ -73,17 +73,18 @@ def main() -> int:
     errors: list[str] = []
     try:
         report = json.loads(REPORT.read_text())
+        # This historical snapshot is an input to scientific/corpus generation.
+        # Do not evaluate new cases against the old corpus before it is rebuilt.
+        if args.write_negative_result:
+            NEGATIVE_RESULT.write_text(negative_result_text(report))
+            print("wrote immutable neural retrieval negative-result evidence")
+            return 0
         config = tomllib.loads(CONFIG.read_text())
         manifest = json.loads(CORPUS_MANIFEST.read_text())
         current_retrieval = evaluate()
     except (OSError, ValueError, KeyError, json.JSONDecodeError, tomllib.TOMLDecodeError) as error:
         print(f"LLM neural benchmark check failed to load inputs: {error}")
         return 1
-
-    if args.write_negative_result:
-        NEGATIVE_RESULT.write_text(negative_result_text(report))
-        print("wrote immutable neural retrieval negative-result evidence")
-        return 0
 
     if args.archive_current_drift:
         if report.get("corpus", {}).get("corpus_sha256") == manifest.get("corpus_sha256"):

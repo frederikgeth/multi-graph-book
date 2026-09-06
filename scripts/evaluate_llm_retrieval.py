@@ -378,8 +378,9 @@ def markdown_report(result: dict) -> str:
         "",
         "These questions are not used by the contract router during corpus construction. They test ordinary",
         "retrieval and routing generalization against synthetic paraphrases across the three audiences.",
-        "They are not human-validated evidence: 27 cases are three audience phrasings for nine target",
-        "evidence sets, so the effective target count is nine rather than 27 independent questions.",
+        f"These {heldout_summary['cases']} cases are not human-validated evidence. They cover "
+        f"{heldout_summary['target_cluster_count']} target evidence sets, with multiple phrasings per target;",
+        "the question count must not be treated as that many independent observations.",
         "",
         "| Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |",
         "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",

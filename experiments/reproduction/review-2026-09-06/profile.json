@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "description": "Review-case snapshot recorded after the September corrections; not reconstruction of the August environment.",
+  "book_revision_base": "f2b5361cc7091a4816783f5e82f4df4a5cc7720e",
+  "book_identity_kind": "explicit case-source hashes from author review working tree",
+  "book_source_sha256": {
+    "experiments/run_vertical_slice.jl": "6995fb92bbd0e93a2a27e4102cab726cc22543759afcf06a209d27d3a7911b22",
+    "experiments/running_network.jl": "536dbdc27678af0a3acdd33293df4760a9208b30ddcd1a3c23fde347689d9803",
+    "experiments/transformations/TransformationContracts.jl": "0a5d604ef1e3b1de3061e14bb1bbaf5f4315ad7e33abac524bde7783a4deabdb",
+    "experiments/lessons/verify_running_network.jl": "070acd28ca7198a3ca8b6987dd09022c08c09868271deedf141a15a5e1efe36c",
+    "experiments/src/GraphModelsForPowerNetworks.jl": "8fe470f95e76c4961d5ab6022a90b20125e91f78675829b5003c577617e779a2",
+    "data/running-network/v0.1.0.json": "80aa8704cf813f4e98b9df4037c062e7016f651307855115db85df441c28a021",
+    "package/GraphModelsForPowerNetworks/src/GraphModelsForPowerNetworks.jl": "3dc0fdfb55688955e5b38a7db7fb1046feda3a74dc0dcc5d67b50149e1555736",
+    "package/GraphModelsForPowerNetworks/src/MultigraphCycleSpace.jl": "8d8656d379292f1be8555504a0600ab2f69ad5664dcfd08402e422cd1f0180d1",
+    "package/GraphModelsForPowerNetworks/src/TransformationContracts.jl": "e8d0e6730826ef839857b4df56aa4938b8610ff9d1b14a37b0bbae2daf1e1511",
+    "package/GraphModelsForPowerNetworks/src/TypedKronReduction.jl": "7f7acfcf8363e428730d6ce9fcb336c078cd02245178424607e318e8ded5469e",
+    "package/GraphModelsForPowerNetworks/src/TypedStateSpace.jl": "f3f6dbd9d08479c55366772608f244213af2853a0bf81eac0959b69daf2c68aa",
+    "scripts/reproduce_clean_fixture.py": "5f682f1426cd1df266d3696720b786e4d9bd915ebbd632266f22efcd0a2c56f5",
+    "scripts/reproduce_clean_fixture.sh": "3e70bee791d7f8a21b05c35744d0b67e4523651596e89f1caaaf22a97297d122",
+    "experiments/Project.toml": "45fc5d0ea3d36300207a4e0ea65194721b2897a9e28c602911a725a929f09799"
+  },
+  "bmopftools_commit": "5b51d2f361dab91bd7c16711019584407da79ed8",
+  "julia_version": "1.12.6",
+  "environment_sha256": {
+    "Project.toml": "45fc5d0ea3d36300207a4e0ea65194721b2897a9e28c602911a725a929f09799",
+    "Manifest.toml": "1f7a180b36de2d2f8de5f618e6ebdcb8c38b114305d5ea0f5577a61818d2a0b1"
+  },
+  "expected_summary": {
+    "power_flow.p_loss_W": {
+      "value": 554.3170285240487,
+      "absolute_tolerance": 0.001
+    },
+    "power_flow.q_loss_var": {
+      "value": 2567.247942888767,
+      "absolute_tolerance": 0.001
+    },
+    "optimal_power_flow.objective": {
+      "value": -13.200002392504468,
+      "absolute_tolerance": 1e-05
+    },
+    "power_flow.termination_status": "LOCALLY_SOLVED",
+    "optimal_power_flow.termination_status": "LOCALLY_SOLVED"
+  },
+  "exported_fixture_sha256": "09d1c4e1f58fb0d75f3972d76747bfdde542517d7166e2af925ddc8c04f261ef",
+  "fixture_metadata_note": "Compared with the August fixture, only meta.$schema differs; all engineering fields must match."
+}

@@ -90,9 +90,10 @@ records through shared canonical sources and misconception identities. On the
 current synthetic held-out set it improves recall@10 over hybrid, but it remains
 an explicit diagnostic/opt-in method rather than the default production ranker.
 
-The held-out benchmark is synthetic and not human-validated evidence. Its 27
-questions are three audience phrasings for nine target evidence sets, so the
-effective target count is nine rather than 27 independent scientific questions.
+The held-out benchmark is synthetic and not human-validated evidence. Multiple
+audience phrasings share target evidence sets. The generated report derives
+the current question and target-cluster counts directly from its input;
+question count is not a count of independent scientific observations.
 The report therefore includes counts, zero-recall cases, cluster structure, and
 contract-router firing coverage alongside percentages.
 The current router-firing release floor is 2/3: a provisional regression floor

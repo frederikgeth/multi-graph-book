@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
-<title>Lowering is a guarded lattice, not a single arrow</title>
+<title>Formulation choices have different applicability conditions</title>
 <desc>The equation/constraint operator is the faithful boundary; nodal admittance is one optional reduction.</desc>
 <rect width="100%" height="100%" fill="white"/>
 
@@ -16,7 +16,7 @@ text{font-family:Arial,sans-serif;fill:#17212b}
 .matrix{fill:#d9eef8;stroke:#245b7a;stroke-width:2}.matrix2{fill:#f8e1c4;stroke:#8a4f13;stroke-width:2}
 </style>
 
-<text x="35" y="40" class="title" text-anchor="start">Lowering is a guarded lattice, not a single arrow</text>
+<text x="35" y="40" class="title" text-anchor="start">Formulation choices have different applicability conditions</text>
 <text x="35" y="68" class="sub" text-anchor="start">The equation/constraint operator is the faithful boundary; nodal admittance is one optional reduction.</text>
 <rect x="45" y="235" width="290" height="150" rx="12" class="panel"/>
 <text x="190" y="275" class="head" text-anchor="middle">source model</text>

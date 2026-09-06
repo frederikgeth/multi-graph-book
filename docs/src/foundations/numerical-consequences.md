@@ -60,7 +60,8 @@ coefficient matrix becomes
  = \mathbf D_b^{-1}\mathbf A\mathbf D_x.
 ```
 
-The solution set is unchanged, but the numerical condition number can change:
+The coordinate map bijectively relates the two solution sets. For nonsingular
+``\mathbf A`` and an induced matrix norm, the condition number can change:
 
 ```math
 \kappa(\widetilde{\mathbf A})
@@ -89,17 +90,85 @@ For a computed solution ``\widehat x`` define the residual
  = \frac{\|r\|}{\|\mathbf A\|\,\|\widehat x\|+\|b\|}.
 ```
 
-Forward error bounds require additional assumptions. In a nonsingular linear
-problem, a standard normwise estimate has the form
+For nonsingular ``\mathbf A``, nonzero exact solution ``x``, and the same vector
+norm and its induced matrix norm throughout, put
+``\theta=\kappa(\mathbf A)\eta(\widehat x)``. If ``\theta<1``, an explicit bound is
 
 ```math
 \frac{\|\widehat x-x\|}{\|x\|}
- \lesssim \kappa(\mathbf A)\,\eta(\widehat x),
+ \le \frac{2\theta}{1-\theta}.
 ```
 
-up to higher-order terms and the chosen norm. Certificates should therefore
-store both a residual/backward-error quantity and a conditioning estimate, not
-just a solver termination flag.
+To see the factor of two, use ``\widehat x-x=-\mathbf A^{-1}r`` and
+``\|b\|\le\|\mathbf A\|\|x\|``. The relative error ``\delta`` then satisfies
+``\delta\le\theta(2+\delta)``. This bound concerns the stated linear system;
+it does not certify a nonlinear solution or the physical input data. The
+[LAPACK error-analysis discussion](https://www.netlib.org/lapack/lug/node81.html)
+also distinguishes normwise and componentwise backward error. Record both
+residual/backward-error information and conditioning, with their norms and
+scaling, rather than relying only on solver termination.
+
+## Choose a model against a constraint margin
+
+The [parallel-member lesson](@ref first-failure-parallel-branches) derives an
+exact aggregate for fixed data. Now suppose the total nonnegative current
+``J`` is prescribed, both members are rated 100 A, the second conductance is
+1 S, and the first is known only to lie in ``[8,12]`` S. The nominal first
+conductance is 10 S. These are declared interval assumptions for a resistive
+teaching case, not measured equipment uncertainty or a probability model.
+
+For conductance ``g`` expressed numerically in siemens, current division is
+
+```math
+I_1(J,g)=\frac{g}{g+1}J,\qquad I_2(J,g)=\frac{1}{g+1}J.
+```
+
+Compare three choices: solve the two nominal member relations; use their
+exact nominal aggregate cap of 110 A with recovery; or require both member
+limits for every conductance in the interval. The first two describe the
+same nominal feasible set. Neither settles the uncertain-data question.
+
+Because ``I_1`` increases with ``g`` and ``I_2`` decreases, their worst values
+occur at opposite interval endpoints. Thus the exact robust cap in this
+local model is
+
+```math
+J\le\min\{100(13/12),100(9)\}=325/3\ \mathrm A.
+```
+
+At 99 A, the nominal first-member current is 90 A; the worst member current
+is ``1188/13`` A, leaving ``112/13`` A of margin. At 109 A, the nominal
+model still accepts, but the worst member current is ``1308/13`` A and
+exceeds its rating by ``8/13`` A. The same uncertainty that was harmless for
+the first decision changes the second decision's feasibility classification.
+
+A precise nominal computation cannot remove an uncertain input. Compare the
+possible observation error with the source constraint margin. Here the nominal
+aggregate is defensible for a stated nominal question; the interval requirement
+needs the robust cap. This is a proof over the full declared interval using
+monotonicity, not a claim based only on sampled scenarios. Other coupled or
+nonlinear models need their own worst-case argument.
+
+```sh
+python3 experiments/lessons/model_choice.py
+python3 experiments/lessons/model_choice.py --check
+python3 experiments/lessons/model_choice.py --benchmark
+```
+
+The first two commands use rational arithmetic. The optional local timing
+comparison uses floating-point arithmetic for nominal explicit, nominal
+aggregate, and interval-robust evaluations. Each measured call includes its
+cap/current calculation, limit checks, and current recovery; imports and I/O
+are excluded. It reports the median of seven batches of 10,000 calls. This is
+a tiny algebraic microbenchmark with no PF solver: use it to learn to count
+recovery work, not to rank network formulations. Timings are printed for the
+actual machine and are not stored as universal performance evidence.
+
+**Transfer exercise.** Narrow the interval to ``[9,11]`` S. Derive the new
+robust cap and decide whether 109 A is admissible. The cap is ``1200/11`` A,
+so it is admissible under this interval. State which changed assumption made
+that conclusion possible. Do not report it as evidence for the original
+``[8,12]`` S interval.
 
 ## Jacobians: physical topology is not matrix sparsity
 
@@ -201,17 +270,27 @@ not be read as meaningful condition numbers: they are dominated by singular
 values below the modelling tolerance. The witness therefore also reports the
 rank-aware effective estimates ``\kappa_{\mathrm{eff}}=\sigma_1/\sigma_{18}``
 and its equilibrated counterpart. These are diagnostic, not universal
-constants: they depend on units, node ordering, norm, rank tolerance, and the
-chosen fixture. For this export the effective estimates are approximately
+constants: they depend on units, scaling, norm, rank tolerance, and the
+chosen fixture. Pure row and column permutations preserve singular values,
+so they preserve the exact 2-norm condition number and a ratio of the same
+selected singular values. Ordering can change sparse-factorization fill,
+pivoting behavior, runtime, and floating-point estimation details; these are
+algorithmic effects, not a change in the exact spectral condition number.
+For this export the effective estimates are approximately
 ``6.50\times10^8`` and ``1.13\times10^7`` after equilibration. A solver must
 account for reference and grounding structure rather than treating any of
 these numbers as a graph invariant.
 
 The complete export, including node order, nonzero entries, checks, and the
 linearization convention, is recorded in
-`experiments/generated/ybus-jacobian-witness.json`. The scripts
-`experiments/run_ybus_jacobian_witness.jl` and
-`experiments/render_ybus_jacobian_view.py` regenerate it. This is a pinned
+`experiments/generated/ybus-jacobian-witness.json`. Its generator and renderer are:
+
+```text
+experiments/run_ybus_jacobian_witness.jl
+experiments/render_ybus_jacobian_view.py
+```
+
+This is a pinned
 linear current/Jacobian witness; it is not yet a nonlinear OPF KKT Jacobian or
 an independent-solver comparison.
 

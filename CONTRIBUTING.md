@@ -2,7 +2,7 @@
 
 ## Authoring principles
 
-1. Lead with the preservation question, not the preferred graph data structure.
+1. Lead with a concrete modelling question and the capability the reader will acquire.
 2. Separate physical objects, mathematical realizations and algorithmic views.
 3. State model assumptions at the point where they are used.
 4. Give counterexamples whenever a familiar simplification has a restricted
@@ -10,6 +10,15 @@
 5. Keep citations adjacent to the claims they support.
 6. Preserve uncertainty rather than converting incomplete evidence into
    confident prose.
+
+## Teaching and reference routes
+
+Give core lessons a prediction, derivation, computational check, nearby failure,
+and transfer exercise. Keep assumptions beside their results and minimize
+repeated context-setting. The complete HTML library and selective core PDF use
+the same canonical sources; register pages in `PAGES_HTML`, and include only
+core material in `PAGES_PDF`. Stable page anchors and claim/PSK IDs survive a
+navigation change. PDF links to omitted pages use the HTML reference library.
 
 ## Chapter forms
 

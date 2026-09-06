@@ -13,8 +13,8 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight
 <text x="35" y="40" class="title" text-anchor="start">Verification state at a glance</text>
 <text x="35" y="68" class="sub" text-anchor="start">The ledger currently distinguishes self-checks and independent implementations; no claim is externally reviewed.</text>
 <rect x="55" y="105" width="1290" height="90" rx="10" class="good"/>
-<text x="80" y="140" class="head" text-anchor="start">109 claims</text>
-<text x="80" y="171" class="body" text-anchor="start">103 self-checked · 6 independently-implemented · 0 externally-reviewed</text>
+<text x="80" y="140" class="head" text-anchor="start">112 claims</text>
+<text x="80" y="171" class="body" text-anchor="start">106 self-checked · 6 independently-implemented · 0 externally-reviewed</text>
 <text x="502.5" y="225" class="small" text-anchor="middle">self-checked</text>
 <text x="802.5" y="225" class="small" text-anchor="middle">independently-implemented</text>
 <text x="1102.5" y="225" class="small" text-anchor="middle">externally-reviewed</text>
@@ -27,7 +27,7 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight
 <text x="1102.5" y="284" class="small" text-anchor="middle">0</text>
 <text x="335" y="343" class="body" text-anchor="end">theorem</text>
 <rect x="360" y="308" width="285" height="48" rx="10" class="good"/>
-<text x="502.5" y="342" class="head" text-anchor="middle">39</text>
+<text x="502.5" y="342" class="head" text-anchor="middle">42</text>
 <rect x="660" y="308" width="285" height="48" rx="10" class="empty"/>
 <text x="802.5" y="342" class="small" text-anchor="middle">0</text>
 <rect x="960" y="308" width="285" height="48" rx="10" class="empty"/>
@@ -53,8 +53,8 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight
 <text x="802.5" y="516" class="small" text-anchor="middle">0</text>
 <rect x="960" y="482" width="285" height="48" rx="10" class="empty"/>
 <text x="1102.5" y="516" class="small" text-anchor="middle">0</text>
-<rect x="70" y="250" width="175" height="240" rx="10" class="panel"/>
-<text x="157" y="290" class="head" text-anchor="middle">interpretation</text>
+<rect x="70" y="250" width="190" height="280" rx="10" class="panel"/>
+<text x="165" y="290" class="head" text-anchor="middle">interpretation</text>
 <text x="90" y="335" class="body" text-anchor="start">self-checked</text>
 <text x="90" y="360" class="small" text-anchor="start">repo tests / derivations</text>
 <text x="90" y="405" class="body" text-anchor="start">independent</text>

@@ -1,6 +1,57 @@
 schema_version = 1
 
 [[claim]]
+claim_id = "PRACTICE-IMPORT-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ['limits', 'provenance']
+chapter = "docs/src/cases/building-and-changing-models.md"
+claim_text = "A numerical round trip of MATPOWER RATE_A=0 can succeed while a faulty decoder replaces its explicit unlimited-rating meaning with a finite zero bound, changing the admissible transfer set."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "documented_field_convention_and_exact_executable_counterexample_in_experiments/lessons/practical_model_checks.py"
+citation_keys = ["MATPOWERCaseFormat"]
+model_scope = "the documented MATPOWER version-2 RATE_A field interpreted as an apparent-power magnitude bound"
+assumptions = "zero is the source's explicit unbounded sentinel; a finite zero bound has a distinct internal meaning; absent fields remain unknown; only this rating check is evaluated"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independent review and complete versioned importer/exporter coverage remain outside the field-level teaching witness."
+
+[[claim]]
+claim_id = "PRACTICE-UPDATE-001"
+exactness_object = "boundary_behavior"
+preservation_dimensions = ['terminal_behavior', 'state', 'provenance']
+chapter = "docs/src/cases/building-and-changing-models.md"
+claim_text = "Opening one arm of a three-arm 1 S resistive star changes the remaining two-terminal equivalent conductance to 1/2 S; deleting the two corresponding edges of the original 1/3 S reduced triangle incorrectly leaves 1/3 S, despite symmetry and zero row sums."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "Schur_derivation_and_exact_equipment_basis_checks_in_experiments/lessons/practical_model_checks.py"
+citation_keys = []
+model_scope = "three retained scalar boundary terminals and a zero-injection resistive star center without shunts"
+assumptions = "three initial arm conductances are 1 S; opening arm c sets its conductance to zero; the faulty target edit deletes only triangle edges incident to c; sum of retained arm conductances is positive"
+reviewer = ""
+review_date = ""
+unresolved_issue = "This disproves one update rule; it neither rules out source-aware incremental updates nor establishes general nonlinear, multiconductor or constrained update correctness."
+
+[[claim]]
+claim_id = "PRACTICE-DUAL-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ['decision', 'numerical_structure']
+chapter = "docs/src/cases/building-and-changing-models.md"
+claim_text = "For min beta*c*p subject to alpha*(d-p)<=0 with positive c,d,alpha,beta, dispatch remains p=d while the Lagrange multiplier is beta*c/alpha and physical marginal cost is alpha/beta times that multiplier; duplicating the unscaled constraint admits nonunique multiplier allocations summing to c."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "analytic_scalar_LP_KKT_and_perturbation_checks_in_experiments/lessons/practical_model_checks.py"
+citation_keys = ["BoydVandenberghe2004"]
+model_scope = "one real dispatch variable, linear positive cost, positive demand and no upper capacity bound"
+assumptions = "Lagrangian uses nonnegative multipliers on the displayed less-than-or-equal constraints; alpha and beta are positive numerical scales; physical cost is unscaled c*p; a physical demand perturbation changes both duplicated constraints together"
+reviewer = ""
+review_date = ""
+unresolved_issue = "No AC-OPF locational-price, generic solver dual convention, nonlinear sensitivity or uniqueness guarantee is established."
+
+[[claim]]
 claim_id = "THESIS-001"
 exactness_object = "not_applicable"
 preservation_dimensions = ['structure', 'terminal_behavior', 'decision', 'provenance']
@@ -22,14 +73,14 @@ claim_id = "PRESERVE-001"
 exactness_object = "feasible_set"
 preservation_dimensions = ['structure', 'terminal_behavior', 'decision', 'provenance']
 chapter = "docs/src/foundations/preservation-contracts.md"
-claim_text = "Equivalence of two power-network models is indexed by a declared observation family and admissible input set; equality of an unconstrained terminal relation alone does not establish equality of constrained feasible observable sets."
+claim_text = "Equivalence of two power-network models is indexed by a declared joint observation map and admissible input set; matching separate observation ranges or an unconstrained terminal relation alone does not establish equality of joint constrained feasible observable sets."
 status = "definition"
 claim_type = "definition"
 verification = "self-checked"
 evidence_type = "formal_observation_indexed_definition_and_reader_facing_contract"
 citation_keys = []
 model_scope = "finite power-network models with declared feasible sets and observation maps"
-assumptions = "the observation family and admissible input set are part of the equivalence statement"
+assumptions = "joint observation maps have a common codomain and the same admissible input domain; decision claims require jointly observed decisions, objective correspondence, and declared source recovery"
 reviewer = ""
 review_date = ""
 unresolved_issue = "Obtain independent review of the observation-indexed equivalence vocabulary and connect it to additional solver interfaces."
@@ -481,14 +532,14 @@ claim_id = "LIT-PAR-001"
 exactness_object = "feasible_set"
 preservation_dimensions = ['terminal_behavior', 'decision']
 chapter = "docs/src/start/first-failure-parallel-branches.md"
-claim_text = "For fixed scalar AC pi-line models on common endpoints, a parallel member's current- or apparent-power limit at one terminal is redundant when its normalized terminal-voltage quadratic feasible set contains that of another member; applying the test at both terminals certifies removal of both directional limits without aggregating the line models."
+claim_text = "For fixed scalar AC pi-line models on common endpoints, dominance of normalized squared member currents for all endpoint voltages certifies a redundant current limit; with apparent-power ratings the shared terminal-voltage magnitude cancels in the comparison, giving a sufficient redundancy test using auxiliary quadratic sets, not the original apparent-power feasible regions. Checking both terminals certifies removal of both directional limits without aggregating members."
 status = "established_result"
 claim_type = "theorem"
 verification = "self-checked"
 evidence_type = "peer_reviewed_result_and_algorithm"
 citation_keys = ["Molzahn2018"]
 model_scope = "parallel two-terminal scalar AC pi-line models with fixed complex transformer ratios, shunts, and current-magnitude or apparent-power limits"
-assumptions = "members share both endpoint voltages; normalized quadratic forms are positive semidefinite; each proposed removal is certified at both line terminals"
+assumptions = "members share both endpoint voltages; fixed linear current maps and positive ratings; quadratic comparisons concern normalized squared currents; apparent-power comparisons use the common terminal-voltage factor; each proposed removal is certified at both terminals"
 reviewer = ""
 review_date = "2026-08-13"
 unresolved_issue = "Establish necessary and sufficient redundancy tests for arbitrary multiconductor limits and for state- or decision-dependent line models."

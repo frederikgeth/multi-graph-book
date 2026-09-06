@@ -133,7 +133,7 @@ def load_model_divergence() -> str:
 def source_pipeline() -> str:
     lines = shell("A source document becomes a graph only through ordered semantic gates", "The adapter publishes a canonical model, findings, and provenance before any graph quotient or solver view is derived.", 1400, 850)
     lines += [f'<rect x="35" y="105" width="1330" height="575" rx="14" class="panel"/>', text(65, 142, "semantic projection", "head"), text(65, 177, "P : D → (C, F, Π)", "body")]
-    gates = [(80, 260, "1  schema", "fields and shapes", "malformed matrix"), (300, 260, "2  completeness", "required subtype data", "missing terminal map"), (520, 260, "3  domain", "plausible values", "negative rating"), (740, 260, "4  integrity", "references and dimensions", "missing bus"), (960, 260, "5  conformance", "study-specific rules", "bad grounding"), (1180, 260, "6  readiness", "well-posed decisions", "missing limit")]
+    gates = [(80, 260, "1  schema", "fields and shapes", "malformed matrix"), (300, 260, "2  completeness", "required subtype data", "missing terminal map"), (520, 260, "3  domain", "plausible values", "negative rating"), (740, 260, "4  integrity", "references and dimensions", "missing bus"), (960, 260, "5  conformance", "declared model rules", "unsupported connection"), (1180, 260, "6  readiness", "specified study inputs", "missing recovery map")]
     for x, y, title, detail, failure in gates:
         lines += [f'<rect x="{x}" y="{y}" width="180" height="170" rx="12" class="blue"/>', text(x + 90, y + 34, title, "head", "middle"), text(x + 90, y + 70, detail, "small", "middle"), f'<rect x="{x+18}" y="{y+102}" width="144" height="45" rx="8" class="red"/>', text(x + 90, y + 130, failure, "tiny", "middle")]
         if x < 1180:

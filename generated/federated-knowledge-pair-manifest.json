@@ -16,7 +16,7 @@
       "transformer_winding_convention_preservation",
       "unit_base_serialization_invariance"
     ],
-    "corpus_sha256": "df23fd1025de2d09691de5bbfd19549383392658ccb73df51443fd8b8f77aba2",
+    "corpus_sha256": "0f4b2d1e4b50c54a2db75013d65a52865aadf0915522749ad6c008efdafdcc31",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -34,7 +34,7 @@
       "PSK-000014"
     ],
     "manifest_id": "bmopftools-executable-knowledge-0.1.0",
-    "manifest_sha256": "f20116fd078d043c4d7fa0ff1cdbdf02a2b9ac32a61e808c197bafebed526a04",
+    "manifest_sha256": "99cb274b7acf5f39a65b379deff0fd78aeabb8e3e13f4124514f509eb8adb338",
     "operation_recipes": [
       {
         "command": "julia --startup-file=no --project=. recipes/analyze_case/recipe.jl",
@@ -58,7 +58,7 @@
         "knowledge_ids": [],
         "operation": "explain_finding",
         "recipe_id": "explain_finding",
-        "source_sha256": "b9e1a29f1e39d92bfcc8191fee3b513a2edd5298486d96f08d9bb96735776623"
+        "source_sha256": "846fdaba60984c54d8baaed60d873156739b07b65c43be5326a661ef67d22d32"
       },
       {
         "command": "julia --startup-file=no --project=. recipes/parse_case/recipe.jl",
@@ -69,7 +69,7 @@
         "knowledge_ids": [],
         "operation": "parse_case",
         "recipe_id": "parse_case",
-        "source_sha256": "752e70236461802ee0eab03ae730df8c92365ba0900f9f48615aea6f515db1d0"
+        "source_sha256": "f9a7b5ff598475997f009540cb5685f253aa833cbf81642925ad3517951f92d2"
       },
       {
         "command": "julia --startup-file=no --project=. recipes/verify_solution/recipe.jl",
@@ -111,7 +111,7 @@
     "schema_version": "0.6.0"
   },
   "book": {
-    "corpus_sha256": "28e8b46324866f2dcbef6ba5c40e211952ddecf4ec21154fcb907a84af520465",
+    "corpus_sha256": "3353637507690b95aa7612e40e0d98c44bc0d562ece0b930ab91dcd1bff5df4a",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -132,7 +132,7 @@
       "PSK-000017",
       "PSK-000018"
     ],
-    "manifest_sha256": "aeb6400e158066d881fc5db80e309facd5674f883fb58f90f76aec82a0ffc459",
+    "manifest_sha256": "350db29bd931453d41536f7c635d473441b196171f6e7bf5499450f8c456e13b",
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -171,7 +171,7 @@
               "source_sha256": "f574bbd2f34ffe129475cc715828cc526c16e9dc999d7b33e60ef78937d0558d"
             }
           ],
-          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
+          "source_sha256": "b49dff605ab1842d035c70983e2d731faa93fd25b01c8594a53a936a62525b2e"
         }
       ],
       "implementation_status": "implemented",
@@ -206,7 +206,7 @@
               "source_sha256": "691eafc1317d003dd63c78b982554f7f2e97b08a05ef4220a3352d4d997a5fd6"
             }
           ],
-          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
+          "source_sha256": "b49dff605ab1842d035c70983e2d731faa93fd25b01c8594a53a936a62525b2e"
         }
       ],
       "implementation_status": "implemented",
@@ -227,7 +227,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "c8db26ef94db07473441a400c9d4890f30f3d81508dd78508feb8bc9cd7918a2"
+          "source_sha256": "0741cc64be3390910b64899881015ef3664e6b5da6f5241af854f7d3e9485365"
         }
       ],
       "implementation_status": "implemented",
@@ -248,7 +248,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "d84b428b259d0e21b633b187c3144ea98d914cda7da006d9899a63f5f4616de0"
+          "source_sha256": "ccd1702ab388de4f3be3b57b1d5d176ed4491a0ebae5e86796b5f61b3a62c1bb"
         }
       ],
       "implementation_status": "implemented",
@@ -269,7 +269,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
+          "source_sha256": "b49dff605ab1842d035c70983e2d731faa93fd25b01c8594a53a936a62525b2e"
         }
       ],
       "implementation_status": "implemented",
@@ -291,7 +291,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "46758e586ff05db4830bba9553cfa243d52a020385cc1a937fad3e45ee876a85"
+          "source_sha256": "8b082d733fee8fe733b80567bdeeedb36aea47ebd53998c48f3100e3e820e077"
         }
       ],
       "implementation_status": "implemented",
@@ -313,7 +313,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
+          "source_sha256": "b49dff605ab1842d035c70983e2d731faa93fd25b01c8594a53a936a62525b2e"
         }
       ],
       "implementation_status": "implemented",
@@ -336,7 +336,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "cda76def28e24ea998aa79df36fd81652cd8f3a8b67e8ac3fe7f40562687d3da"
+          "source_sha256": "8c49104a44593c4ec662f533f95b81c27057af9d108ada3853ea955d0048524d"
         }
       ],
       "implementation_status": "implemented",
@@ -359,7 +359,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
+          "source_sha256": "b49dff605ab1842d035c70983e2d731faa93fd25b01c8594a53a936a62525b2e"
         }
       ],
       "implementation_status": "implemented",
@@ -382,7 +382,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
+          "source_sha256": "b49dff605ab1842d035c70983e2d731faa93fd25b01c8594a53a936a62525b2e"
         }
       ],
       "implementation_status": "implemented",
@@ -404,7 +404,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
+          "source_sha256": "b49dff605ab1842d035c70983e2d731faa93fd25b01c8594a53a936a62525b2e"
         }
       ],
       "implementation_status": "implemented",
@@ -453,11 +453,11 @@
               "property_suite_id": "terminal_permutation_seeded_properties",
               "seed": "0x6d5a56da4b9c2f17",
               "seed_algorithm": "splitmix64-v1",
-              "source_sha256": "840b333bd7af48dd2de21b91d4bcd98ebce295f69043c27b0c3edff32cfda8e0"
+              "source_sha256": "06e8289b0db8c825294100c7f64a16636f9b2c66489ccb0d142cfa2b1a3a5d5a"
             }
           ],
           "recipes": [],
-          "source_sha256": "4f898da23f1f400d76cdb9f5f53c4c33f9cda45c33db5f241d342be31bc9e12c"
+          "source_sha256": "36bf457de9a208d96e49ab927f7797f234470a314acf3245b961d874c8b9a7e9"
         }
       ],
       "implementation_status": "implemented",
@@ -479,7 +479,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "918a1c299b04848b2cc39c5073dadcfb47bf938ea683a2747315614c2f55159f"
+          "source_sha256": "226f521f5196f43124cff76bc8c108065b4ac36b521122e243191e7491222956"
         }
       ],
       "implementation_status": "implemented",
@@ -533,11 +533,11 @@
               "property_suite_id": "unit_base_serialization_seeded_properties",
               "seed": "0x4f1bbcdc6762c7a9",
               "seed_algorithm": "splitmix64-v1",
-              "source_sha256": "061755a49d5a847b045db9f6063ea58a45708344d49b0746fc38f5722e903540"
+              "source_sha256": "1bb3a8f79cc68220f654ddc791777ebd3f285c558969776c2590ab8e65bc0e14"
             }
           ],
           "recipes": [],
-          "source_sha256": "b5bb78a923202528771c98248c3c1ee00c88bbaa2dd429d965148c8a7db91b92"
+          "source_sha256": "afd24137a1edf4293a4cb12b1a642eeca2288efa7c0766928c2c9d2d127c2f28"
         }
       ],
       "implementation_status": "implemented",
@@ -565,6 +565,6 @@
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "e4209fbf0c1f8293eac23086f3e66a814e472c45412d2f3e3a6c67c4d299a97d",
+  "pair_sha256": "592fa06f621af03f4362d71f757a720a7806b047c093fbcf3a22985fce0c99f5",
   "schema_version": "0.1.0"
 }

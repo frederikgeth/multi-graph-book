@@ -1,6 +1,6 @@
 {
   "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
-  "benchmark_manifest_sha256": "d800edd1f85c69beb5013672e1f27c0dc84904f8a8d1fe6997a2ab3e87d4ab77",
+  "benchmark_manifest_sha256": "f45f4bd14214d342c4f1b889c8ab3c461ea59d86c124deafac7b29d11e63b7c9",
   "dry_run_status": "synthetic_dry_run_harness_only_not_agent_results",
   "human_review_gate": "reviewed_changes_required_before_preregistration_or_execution",
   "local_sources": [
@@ -26,7 +26,7 @@
     },
     {
       "path": "benchmarks/agent/pilot/dry-runs/conforming-c6-run.json",
-      "sha256": "80f947c99ce91dfb920a26f175fa57c109045fd63e8e41d7c79fcf526d35364c"
+      "sha256": "7d1a3bd43511e58d28ba0fa8e2062b91e16e84b3422cf5affba5d9cf413917a2"
     },
     {
       "path": "benchmarks/agent/pilot/dry-runs/unsafe-c0-run.json",
@@ -40,11 +40,11 @@
   "pilot_id": "APILOT-PARALLEL-LIMITS-001",
   "pilot_schema_sha256": "840f5324b0f127a153b155545c6a1ebc1eab2b198b05a4df6a7e07f83201066e",
   "provenance": {
-    "bmopftools_executable_corpus_sha256": "df23fd1025de2d09691de5bbfd19549383392658ccb73df51443fd8b8f77aba2",
-    "bmopftools_manifest_sha256": "f20116fd078d043c4d7fa0ff1cdbdf02a2b9ac32a61e808c197bafebed526a04",
-    "book_llm_corpus_sha256": "de38cf25cdb50c14316a202416341ee9b634f12047c864e2807c472510885eca",
+    "bmopftools_executable_corpus_sha256": "0f4b2d1e4b50c54a2db75013d65a52865aadf0915522749ad6c008efdafdcc31",
+    "bmopftools_manifest_sha256": "99cb274b7acf5f39a65b379deff0fd78aeabb8e3e13f4124514f509eb8adb338",
+    "book_llm_corpus_sha256": "48c3cd96d84c4d23118dfd66aec868d8b5480081cff97ad650844308d7e2a959",
     "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-    "federated_pair_sha256": "e4209fbf0c1f8293eac23086f3e66a814e472c45412d2f3e3a6c67c4d299a97d"
+    "federated_pair_sha256": "592fa06f621af03f4362d71f757a720a7806b047c093fbcf3a22985fce0c99f5"
   },
   "resource_sources": {
     "BMOPFTools.jl": [
@@ -62,7 +62,7 @@
       },
       {
         "path": "generated/executable_knowledge.jsonl",
-        "sha256": "df23fd1025de2d09691de5bbfd19549383392658ccb73df51443fd8b8f77aba2"
+        "sha256": "0f4b2d1e4b50c54a2db75013d65a52865aadf0915522749ad6c008efdafdcc31"
       },
       {
         "path": "AGENTS.md",
@@ -96,7 +96,7 @@
     "multi-graph-book": [
       {
         "path": "README.md",
-        "sha256": "24bceebbddb10750597fe2b3572c646c5c1aa5e1fe7450f07d687d1976d7ac03"
+        "sha256": "ebb6e21067d56a52a605f237d6cc4e3bf47e3f8311e6be6884322906903a2b70"
       },
       {
         "path": "ARCHITECTURE.md",
@@ -104,15 +104,15 @@
       },
       {
         "path": "docs/src/start/first-failure-parallel-branches.md",
-        "sha256": "7f5e4204c13a3113a44c599dce3161dbda3067a5b70867ade46f433903eee72e"
+        "sha256": "934803e1dabdf0e9ff9598a41d809f50157b2665d64c068c7f6685389a13bcc5"
       },
       {
         "path": "knowledge/psk.toml",
-        "sha256": "aba5bf1a717a60fa7fe931bca222adf713e32eb859f19f9db78c590d815d5c21"
+        "sha256": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364"
       },
       {
         "path": "generated/scientific_knowledge.jsonl",
-        "sha256": "28e8b46324866f2dcbef6ba5c40e211952ddecf4ec21154fcb907a84af520465"
+        "sha256": "3353637507690b95aa7612e40e0d98c44bc0d562ece0b930ab91dcd1bff5df4a"
       },
       {
         "path": "AGENTS.md",
@@ -120,7 +120,7 @@
       },
       {
         "path": "llm/misconceptions.toml",
-        "sha256": "1061d2f13d88c68feb338b07820703398b6e07ede6a0edd32fdc4f255ce3dd64"
+        "sha256": "c3b8de7ad39c48d55e1bcf39af39b02b2b63900a1e0c8ce783ef2a327c7f0db7"
       },
       {
         "path": "scripts/mcp_llm_server.py",

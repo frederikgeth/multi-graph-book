@@ -94,7 +94,7 @@ def running_network():
 
 def radial_triangles():
     lines = shell(
-        "Your radial feeder has triangles in it",
+        "A radial bus graph can have cyclic conductor support",
         "The answer is not a contradiction: the bus graph and the conductor-expanded support graph answer different questions.",
         1400,
         800,
@@ -107,26 +107,13 @@ def radial_triangles():
     q = {"ia": (700, 320), "ib": (700, 440), "ja": (930, 250), "jb": (930, 370), "ka": (1160, 320), "kb": (1160, 440)}
     for a, b in [("ia", "ja"), ("ia", "jb"), ("ib", "ja"), ("ib", "jb"), ("ja", "ka"), ("ja", "kb"), ("jb", "ka"), ("jb", "kb")]: lines.append(line(*q[a], *q[b], "wire2", 3))
     for ident, point in q.items(): lines.append(circle(*point, 22, ident, "bus2"))
-    lines += [t(930, 505, "dense mutual coupling induces cliques", "body", "middle"), t(930, 535, "cycle rank of the support graph is positive", "small", "middle"), rect(35, 680, 1330, 70, "card"), t(55, 708, "resolution", "head"), t(180, 708, "which graph?  Bus-level radiality is a tree; conductor-expanded matrix support is a chordal graph with clique structure.", "body")]
+    lines += [t(930, 505, "cross-conductor edges create cycles", "body", "middle"), t(930, 535, "cycle rank of the support graph is positive", "small", "middle"), rect(35, 680, 1330, 70, "card"), t(55, 708, "resolution", "head"), t(180, 708, "Bus topology is a tree. The drawn cross-bus conductor support has cycles; it omits within-bus matrix entries.", "body")]
     return finish(lines)
 
 
 def same_ybus():
-    lines = shell(
-        "Same Y-bus. Different answer.",
-        "A nodal admittance equality can preserve the linear terminal map while saying nothing about member limits or controls.",
-        1400,
-        820,
-    )
-    lines += [rect(35, 105, 610, 240), rect(755, 105, 610, 240), t(65, 145, "network A", "head"), t(785, 145, "network B", "head")]
-    for offset, labels in [(35, ("ℓ₁", "ℓ₂")), (755, ("ℓ₁", "ℓ₂"))]:
-        lines += [circle(130 + offset, 245, 28, "i"), circle(540 + offset, 245, 28, "j"), line(160 + offset, 230, 510 + offset, 230, "wire"), line(160 + offset, 260, 510 + offset, 260, "wire")]
-        lines += [t(335 + offset, 220, labels[0], "small", "middle"), t(335 + offset, 285, labels[1], "small", "middle")]
-    lines += [rect(470, 375, 460, 70, "good"), t(700, 404, "‖Y_A − Y_B‖∞ = 0", "head", "middle"), t(700, 430, "same unconstrained terminal current relation", "small", "middle")]
-    lines += [rect(35, 480, 610, 190, "panel"), rect(755, 480, 610, 190, "panel"), t(65, 520, "decision model A", "head"), t(785, 520, "decision model B", "head")]
-    lines += [t(65, 570, "member limits retained", "body"), t(65, 610, "maximum served power", "small"), t(350, 615, "110 MW", "head", "middle"), t(785, 570, "summed limit used", "body"), t(785, 610, "maximum served power", "small"), t(1070, 615, "200 MW", "head", "middle")]
-    lines += [rect(35, 705, 1330, 70, "bad"), t(55, 733, "resolution", "head"), t(180, 733, "Y-bus is assembled from linear factors; limits, states, and controls live in the decision model. Your model dispatches 200 MW. Your conductor melts at 110.", "body")]
-    return finish(lines)
+    from render_teaching_figures import parallel
+    return parallel()
 
 
 def neutral_recovery():
@@ -139,9 +126,9 @@ def neutral_recovery():
     lines += [rect(35, 105, 600, 500), rect(765, 105, 600, 500), t(65, 145, "reduced boundary model", "head"), t(795, 145, "recovery obligation", "head")]
     p = {"i": (150, 330), "j": (500, 330), "n": (325, 470)}
     lines += [line(*p["i"], *p["j"], "wire2"), line(*p["i"], *p["n"], "dashed"), line(*p["n"], *p["j"], "dashed")]
-    lines += [circle(*p["i"], 30, "i"), circle(*p["j"], 30, "j"), circle(*p["n"], 28, "n", "bad"), t(325, 535, "eliminated", "small", "middle"), t(325, 565, "from the boundary equation", "small", "middle"), t(325, 220, "phase voltages match to 10⁻¹⁵", "body", "middle")]
-    lines += [t(795, 220, "recover the hidden branch current", "body"), t(795, 275, "|Iₙ| = 43.0 A", "head"), t(795, 325, "declared limit = 42.6 A", "body"), rect(795, 365, 500, 75, "bad"), t(1045, 397, "constraint violated", "head", "middle"), t(1045, 425, "if the recovery constraint is dropped, the target admits it", "tiny", "middle"), rect(795, 475, 500, 75, "good"), t(1045, 507, "resolution: preserve the recovery map", "head", "middle"), t(1045, 535, "and evaluate the neutral limit in the reduced feasible set", "tiny", "middle")]
-    lines += [rect(35, 650, 1330, 70, "card"), t(55, 678, "which observation?", "head"), t(245, 678, "The reduced phase relation is exact; the decision problem is not, unless the eliminated neutral current and its rating are recovered.", "body")]
+    lines += [circle(*p["i"], 30, "i"), circle(*p["j"], 30, "j"), circle(*p["n"], 28, "n", "bad"), t(325, 535, "eliminated", "small", "middle"), t(325, 565, "from the boundary equation", "small", "middle"), t(325, 220, "recover under the stated elimination assumptions", "body", "middle")]
+    lines += [t(795, 220, "recover the hidden branch current", "body"), t(795, 275, "|I_n| = 43.0 A", "head"), t(795, 325, "declared limit = 42.6 A", "body"), rect(795, 365, 500, 75, "bad"), t(1045, 397, "constraint violated", "head", "middle"), t(1045, 425, "if the recovery constraint is dropped, the target admits it", "tiny", "middle"), rect(795, 475, 500, 75, "good"), t(1045, 507, "resolution: preserve the recovery map", "head", "middle"), t(1045, 535, "and evaluate the neutral limit in the reduced feasible set", "tiny", "middle")]
+    lines += [rect(35, 650, 1330, 70, "card"), t(55, 678, "which observation?", "head"), t(245, 678, "Preserving phase behavior alone does not enforce the neutral-current limit; recover the current and check its rating.", "body")]
     return finish(lines)
 
 
@@ -169,7 +156,7 @@ def negative_star_arm(witness):
 
 def formulation_lattice():
     lines = shell(
-        "Lowering is a guarded lattice, not a single arrow",
+        "Formulation choices have different applicability conditions",
         "The equation/constraint operator is the faithful boundary; nodal admittance is one optional reduction.",
         1400,
         800,

@@ -1,5 +1,5 @@
 {
-  "corpus_sha256": "28e8b46324866f2dcbef6ba5c40e211952ddecf4ec21154fcb907a84af520465",
+  "corpus_sha256": "3353637507690b95aa7612e40e0d98c44bc0d562ece0b930ab91dcd1bff5df4a",
   "knowledge_ids": [
     "PSK-000001",
     "PSK-000002",
@@ -33,7 +33,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "69136cf591fab5a596c6ec884d53210bdc6a016f94ff5b1bde70121b4305082b"
+      "sha256": "2f0adfe4fb996bce3bf36cd6b0a20c33d8001c94bac2db5ed7bb3ea501779e68"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -65,11 +65,11 @@
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
-      "sha256": "5a4f6522e443ca2dc07eb5f76e3a555b3f5cb1432efa0bba1e4fd9a87993aa68"
+      "sha256": "c71ad8f56b93f10aa1d3b590d6de5f60247fa9009c63816d16dae7ba6af56f4c"
     },
     {
       "path": "docs/src/foundations/preservation-contracts.md",
-      "sha256": "3c7c4ff28cef5b67ac30d7e29e6abf443eeb63159b832f11552d5f11e8e2e90a"
+      "sha256": "2eb781509766bc1ecfa8bc59b43707da114296000eafd8cc07ac565aafec2100"
     },
     {
       "path": "docs/src/foundations/when-general-model-collapses.md",
@@ -81,7 +81,7 @@
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
-      "sha256": "7f5e4204c13a3113a44c599dce3161dbda3067a5b70867ade46f433903eee72e"
+      "sha256": "934803e1dabdf0e9ff9598a41d809f50157b2665d64c068c7f6685389a13bcc5"
     },
     {
       "path": "docs/src/transformations/circuit-coordinate-transformations.md",
@@ -197,11 +197,11 @@
     },
     {
       "path": "knowledge/psk.toml",
-      "sha256": "aba5bf1a717a60fa7fe931bca222adf713e32eb859f19f9db78c590d815d5c21"
+      "sha256": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364"
     },
     {
       "path": "llm/README.md",
-      "sha256": "dcc4847896cf2ef19674f8f0192965a94e7b80dd8bdf47dbf6996fb1a4039a55"
+      "sha256": "164eda810dfc163fc7425347304cf0940927ce82283805732b98a59d394e6625"
     },
     {
       "path": "llm/generated/neural-retrieval-negative-result.json",
@@ -209,7 +209,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "1061d2f13d88c68feb338b07820703398b6e07ede6a0edd32fdc4f255ce3dd64"
+      "sha256": "c3b8de7ad39c48d55e1bcf39af39b02b2b63900a1e0c8ce783ef2a327c7f0db7"
     },
     {
       "path": "schemas/power-system-knowledge.schema.json",
@@ -217,7 +217,7 @@
     },
     {
       "path": "scripts/check_neural_benchmark.py",
-      "sha256": "a71a3e3a7b82250466a685d2e0d164b97d95ea43eba1b50387ad8d592d546138"
+      "sha256": "2f064c92f3bd52b46256ed94fa5ee588f1e61c15f88599edd7f494409da9859d"
     },
     {
       "path": "scripts/reproduce_load_continuation.py",

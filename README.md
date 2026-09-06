@@ -1,113 +1,67 @@
-# What Power-Network Models Preserve
+# Power-System Modelling for Computation
 
-*Graphs, reductions, and decision boundaries*
+*From circuit equations to optimization and software*
 
 [![CI](https://github.com/frederikgeth/multi-graph-book/actions/workflows/docs.yml/badge.svg)](https://github.com/frederikgeth/multi-graph-book/actions/workflows/docs.yml)
-[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://frederikgeth.github.io/multi-graph-book/)
 
-[Read the HTML book](https://frederikgeth.github.io/multi-graph-book/dev/) ·
-[Download the long-form PDF](https://frederikgeth.github.io/multi-graph-book/dev/GraphModelsForPowerSystems.pdf)
+[Read the HTML book and reference library](https://frederikgeth.github.io/multi-graph-book/dev/) ·
+[Download the core PDF](https://frederikgeth.github.io/multi-graph-book/dev/GraphModelsForPowerSystems.pdf)
 
-> [!WARNING]
-> This is a rapidly evolving, early-stage initiative. Structure, terminology, claims, and APIs
-> (including the LLM-accessibility routes below) can change without notice. Nothing here should
-> yet be treated as a stable interface or a finished reference.
+This book teaches how to carry physical assumptions, equipment identities,
+constraints, and recoverable quantities from circuit equations into a
+computational power-system model. It serves scientifically demanding power
+engineers and computer scientists or operations researchers entering the field.
 
-> [!IMPORTANT]
-> This project is developed with substantial assistance from large language models, under human
-> direction and review. Content has not yet completed full independent human review end to end.
-> See [QUALITY_CONTROL.md](QUALITY_CONTROL.md) for the evidence and review policy, and treat
-> claims accordingly until they carry a recorded review status.
+Start with [A plausible model gives the wrong answer](docs/src/start/first-failure-parallel-branches.md).
+Two parallel members preserve their summed admittance while a naive rating
+changes the feasible set. Derive the failure and repair it with a calculation
+that requires only Python 3:
 
-This repository is a problem-first scientific book and living knowledge base about what is lost
-when a power-network model is projected, compiled, normalized, or reduced.
-
-The central problem is not choosing the smallest or most familiar graph. It is deciding whether a
-representation still answers the physical, operational, and decision question that motivated the
-model. A simplified view may preserve a terminal equation while losing asset identity, grounding,
-limits, controls, feasible decisions, measurements, or provenance.
-
-The book develops the vocabulary and tests needed to expose those losses. Typed representations,
-traceable views, transformation rules, and certificates are proposed tools for responding to the
-problem; they are not presented as a completed universal transformation theory.
-
-The general baseline is a multiconductor network with arbitrary ordered terminals, explicit neutral
-and grounding semantics, full conductor coupling, multi-terminal and multiwinding devices, and
-continuous or discrete decision variables. Balanced transmission models are treated as important
-derived cases rather than the universal source representation.
-
-The current drafting foundation includes the following problem-first route:
-
-- the [reader-facing book plan](BOOK_PLAN.md), including current, reference, worked-case, and
-  future-application boundaries;
-- the problem statement, representation obligations, canonical-model contract, and preservation
-  vocabulary;
-- a BMOPFTools-aligned notation contract and a common multiconductor running case;
-- a schema-valid numerical running fixture, six illustrated representation views, a simple-topology quotient map, and PF/OPF checks;
-- executable parallel-branch, conductor-, transformer-winding-, reference-invariant multiwinding-leakage-, terminal-assembly-, fixed-linear transformer-completion-, parameterized tap-decision-, solver-backed and separately reimplemented transformer-network-, degree-two-series, and composed preservation certificates;
-- a typed version 1.1 transformation-certificate JSON schema and validated composition law;
-- solved source/naïve/exact-lifted linear and multiconductor AC parallel decision comparisons;
-- complete source maps for all generated views and a claims ledger;
-- a systematic scoping-review protocol and evidence-matrix schema;
-- projection, compilation, reduction, and guarded normalization;
-- a literature map, research agenda, terminology, and seed bibliography.
-
-The separately reimplemented transformer-network check listed above shares the certified
-transformer matrices and case assembly with the primary experiment. It is independent as a
-numerical solution path, not yet an independent nameplate or model-construction reproduction.
-
-See [ROADMAP.md](ROADMAP.md) for the proposed work plan and
-[QUALITY_CONTROL.md](QUALITY_CONTROL.md) for the evidence and review policy.
-
-## Accessibility
-
-The same source content is organized two ways, for two different reading tasks. The **long-form
-monograph** follows one argument: problem and counterexample, representation obligations,
-canonical model, valid collapses and failure modes, preservation contracts, transformations and
-recovery, then worked cases and consequences — the route for learning the thesis. The **HTML
-knowledge base** is the exhaustive retrieval surface built from the same source: generated
-[knowledge-base indexes](docs/src/reference/knowledge-base-index.md), a
-[chapter-status page](docs/src/reference/chapter-status.md), the claims ledger, literature
-records, and artifacts, for checking a term, claim, certificate, source, or unresolved boundary
-rather than reading start to end. See [How to use this book](docs/src/start/how-to-use-this-book.md)
-for the recommended routes, evidence labels, and the boundary between established literature,
-repository witnesses, and open proposals.
-
-Both are available through four access routes:
-
-**a) Raw Markdown.** The canonical source text lives under [`docs/src/`](docs/src/) as plain
-Markdown with DocumenterCitations-style citations, readable directly on GitHub and diffable
-without building anything. Works for either route.
-
-**b) HTML site (Documenter).** A generated, cross-linked HTML site with search — the primary
-surface for the knowledge base (indexes, chapter-status page, claims ledger), and also renders the
-monograph pages in argument order. Build it locally with
-[Documenter.jl](https://documenter.juliadocs.org/) as described under
-[Build locally](#build-locally) below, or read it via the deployed GitHub Pages site once CI
-publishing is set up (see the note in that section).
-
-**c) PDF (Tectonic).** A single-file serialization following the monograph's argument route; it
-does not reproduce the knowledge base's retrieval indexes. [Download the rendered
-PDF](https://frederikgeth.github.io/multi-graph-book/dev/GraphModelsForPowerSystems.pdf), or build
-it locally with the bundled Tectonic artifact as described under [Build locally](#build-locally).
-
-**d) MCP access for LLMs.** A retrieval interface over the same corpus for LLM clients, closer in
-spirit to the knowledge base than the monograph — an LLM client can query the book directly
-instead of relying on its own memory. See [`llm/README.md`](llm/README.md) for the full design
-(answer contract, retrieval methods, evaluation). In short:
-
-```bash
-python3 scripts/generate_llm_corpus.py --write   # build the retrieval corpus
-python3 scripts/mcp_llm_server.py                # serve it to an MCP client over stdio
+```sh
+python3 experiments/lessons/parallel_members.py
 ```
 
-This exposes `book_context`, `book_search`, and the corpus manifest resource over the MCP
-stdio JSON-RPC transport. A plain HTTP/JSON service (`scripts/serve_llm_access.py`) and a
-command-line search tool (`scripts/search_llm_corpus.py`) are also available for non-MCP clients.
-Every response is grounded in the book's claims and sources and returns an explicit
-`unsupported` or `under_retrieved` status rather than an uncited answer when the book does not
-support one — model memory is not treated as book evidence. This layer is as early-stage as the
-rest of the project: routes, tool names, and the retrieval method are still subject to change.
+The [author's preface](docs/src/start/preface.md) explains the experience behind
+the work. The [book plan](BOOK_PLAN.md) sets out the eight-part teaching route,
+scientific corrections, drafting stages, and review criteria.
+
+## Read, run, and inspect
+
+- **Teaching book:** the selective PDF and HTML route starts with the failure,
+  then develops equipment equations, conductors and grounding, computational
+  graphs, transformations, constraints, evidence, and an end-to-end study.
+- **Reference library:** HTML retains all specialist chapters, terminology,
+  research records, generated indexes, claims, and open boundaries. Those
+  records support lookup without becoming compulsory PDF chapters.
+- **Computational cases:** the [case guide](docs/src/start/computational-cases.md)
+  connects lessons to commands, expected evidence, and assumptions to vary.
+
+Canonical Markdown remains under `docs/src/`. The current migration reuses
+longer reference chapters in parts of the core; their shorter teaching versions
+remain drafting work. PDF links to omitted reference material open the online
+library. The existing PDF filename is retained for stable download links.
+
+> This is a developing scientific and teaching draft, produced with substantial
+> language-model assistance under human direction. Full independent human
+> review remains incomplete. Read claims with their scope and evidence status;
+> see [QUALITY_CONTROL.md](QUALITY_CONTROL.md).
+
+## Optional language-model access
+
+The deterministic corpus, qualification-aware context packets, source hashes,
+and `unsupported` / `under_retrieved` outcomes expose the same maintained
+knowledge through CLI, HTTP and MCP. See [llm/README.md](llm/README.md) and the
+[ChatGPT](docs/src/start/chatgpt-access.md) and
+[Claude](docs/src/start/claude-access.md) guides.
+
+```sh
+python3 scripts/generate_llm_corpus.py --write
+python3 scripts/mcp_llm_server.py
+```
+
+The [architecture](ARCHITECTURE.md) separates book-owned scientific statements
+from executable package behavior in BMOPFTools. Computational reproduction,
+source provenance, and independent human review remain distinct evidence.
 
 ## Build locally
 
@@ -154,7 +108,23 @@ public); until then, building locally is the reliable way to read the HTML site 
 
 ## Run the executable slice
 
-With the local `BMOPFTools.jl` repository beside this one:
+For the isolated, recorded review case (Julia 1.12.6), preserving existing evidence:
+
+```bash
+bash scripts/reproduce_clean_fixture.sh --check
+bash scripts/reproduce_clean_fixture.sh
+```
+
+The command prints a fresh run directory. It pins the case sources and dependency
+environment and runs scoped verification, including rejection of an altered
+voltage result. The full-feasibility evidence gate intentionally remains
+`indeterminate`; see the [verification lesson](docs/src/cases/executable-running-network.md).
+The historical August environment was not fully recorded and is not silently
+reconstructed by this command.
+
+For maintainer regeneration, use Julia 1.11 or later with the local
+`BMOPFTools.jl` repository beside this one. These direct generators can replace
+tracked artifacts; use an isolated checkout for exploratory runs:
 
 ```bash
 julia --project=experiments -e 'using Pkg; Pkg.instantiate()'
@@ -203,7 +173,7 @@ runs remain recorded separately.
 
 ## Write content
 
-Add Markdown pages under `docs/src/` and register them in the `PAGES` list in `docs/make.jl`.
+Add Markdown pages under `docs/src/` and register them in `PAGES_HTML` (and `PAGES_PDF` for core material) in `docs/make.jl`.
 Static assets belong under `docs/src/assets/`. Citations use DocumenterCitations syntax and the
 BibTeX database at `docs/src/references.bib`; see [CONTRIBUTING.md](CONTRIBUTING.md).
 
