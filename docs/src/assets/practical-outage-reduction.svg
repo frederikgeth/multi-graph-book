@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="830" viewBox="0 0 1100 830">
+<title>Opening this star arm changes the remaining equivalent</title><desc>An equal 1 S star reduces to a triangle with 1/3 S edges. Opening source arm c and rebuilding gives 1/2 S between a and b, with c isolated. Deleting triangle edges instead leaves the wrong 1/3 S. At boundary voltages (1,0,0) V, the correct current at a is 1/2 A, not 1/3 A.</desc>
+<rect width="1100" height="830" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b;font-size:20px}.title{font-size:29px;font-weight:bold}.head{font-size:23px;font-weight:bold}.small{font-size:18px}.math{font-family:DejaVu Sans,Arial,sans-serif;font-size:22px}</style>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#17212b"/></marker></defs>
+<text x="30" y="43" class="title" text-anchor="start">Opening this star arm changes the remaining equivalent</text>
+<text x="30" y="79" class="small" text-anchor="start">Three boundary terminals; a zero-injection center; no shunts. Conductances in siemens.</text>
+<text x="40" y="127" class="head" text-anchor="start">1. Source: all three arms are 1 S</text>
+<text x="605" y="127" class="head" text-anchor="start">2. Eliminate the center</text>
+<line x1="85" y1="180" x2="245" y2="242" stroke="#245b7a" stroke-width="3"/>
+<line x1="405" y1="180" x2="245" y2="242" stroke="#245b7a" stroke-width="3"/>
+<line x1="245" y1="242" x2="245" y2="330" stroke="#245b7a" stroke-width="3"/>
+<circle cx="245" cy="242" r="18" fill="white" stroke="#8a4f13" stroke-width="3"/>
+<text x="245" y="249" class="" text-anchor="middle">n</text>
+<circle cx="85" cy="180" r="18" fill="white" stroke="#245b7a" stroke-width="3"/>
+<text x="85" y="187" class="" text-anchor="middle">a</text>
+<circle cx="405" cy="180" r="18" fill="white" stroke="#245b7a" stroke-width="3"/>
+<text x="405" y="187" class="" text-anchor="middle">b</text>
+<circle cx="245" cy="330" r="18" fill="white" stroke="#245b7a" stroke-width="3"/>
+<text x="245" y="337" class="" text-anchor="middle">c</text>
+<line x1="675" y1="180" x2="995" y2="180" stroke="#245b7a" stroke-width="3"/>
+<line x1="675" y1="180" x2="835" y2="330" stroke="#245b7a" stroke-width="3"/>
+<line x1="995" y1="180" x2="835" y2="330" stroke="#245b7a" stroke-width="3"/>
+<text x="835" y="163" class="" text-anchor="middle">1/3 S</text>
+<text x="692" y="290" class="" text-anchor="middle">1/3 S</text>
+<text x="978" y="290" class="" text-anchor="middle">1/3 S</text>
+<circle cx="675" cy="180" r="18" fill="white" stroke="#245b7a" stroke-width="3"/>
+<text x="675" y="187" class="" text-anchor="middle">a</text>
+<circle cx="995" cy="180" r="18" fill="white" stroke="#245b7a" stroke-width="3"/>
+<text x="995" y="187" class="" text-anchor="middle">b</text>
+<circle cx="835" cy="330" r="18" fill="white" stroke="#245b7a" stroke-width="3"/>
+<text x="835" y="337" class="" text-anchor="middle">c</text>
+<line x1="466" y1="257" x2="595" y2="257" stroke="#17212b" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="40" y="395" class="head" text-anchor="start">3. Open source arm n–c</text>
+<text x="605" y="395" class="head" text-anchor="start">4. Rebuild from the edited source</text>
+<line x1="85" y1="452" x2="245" y2="514" stroke="#245b7a" stroke-width="3"/>
+<line x1="405" y1="452" x2="245" y2="514" stroke="#245b7a" stroke-width="3"/>
+<line x1="245" y1="532" x2="245" y2="549" stroke="#245b7a" stroke-width="3"/>
+<line x1="245" y1="584" x2="245" y2="557" stroke="#245b7a" stroke-width="3"/>
+<line x1="245" y1="549" x2="270" y2="564" stroke="#17212b" stroke-width="3"/>
+<text x="285" y="567" class="small" text-anchor="start">open</text>
+<circle cx="245" cy="514" r="18" fill="white" stroke="#8a4f13" stroke-width="3"/>
+<text x="245" y="521" class="" text-anchor="middle">n</text>
+<circle cx="85" cy="452" r="18" fill="white" stroke="#245b7a" stroke-width="3"/>
+<text x="85" y="459" class="" text-anchor="middle">a</text>
+<circle cx="405" cy="452" r="18" fill="white" stroke="#245b7a" stroke-width="3"/>
+<text x="405" y="459" class="" text-anchor="middle">b</text>
+<circle cx="245" cy="602" r="18" fill="white" stroke="#245b7a" stroke-width="3"/>
+<text x="245" y="609" class="" text-anchor="middle">c</text>
+<line x1="675" y1="452" x2="995" y2="452" stroke="#245b7a" stroke-width="3"/>
+<text x="835" y="435" class="" text-anchor="middle">1/2 S</text>
+<circle cx="675" cy="452" r="18" fill="white" stroke="#245b7a" stroke-width="3"/>
+<text x="675" y="459" class="" text-anchor="middle">a</text>
+<circle cx="995" cy="452" r="18" fill="white" stroke="#245b7a" stroke-width="3"/>
+<text x="995" y="459" class="" text-anchor="middle">b</text>
+<circle cx="835" cy="602" r="18" fill="white" stroke="#245b7a" stroke-width="3"/>
+<text x="835" y="609" class="" text-anchor="middle">c</text>
+<text x="870" y="609" class="small" text-anchor="start">isolated</text>
+<line x1="466" y1="524" x2="595" y2="524" stroke="#17212b" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="40" y="665" class="head" text-anchor="start">Tempting edit: delete triangle edges a–c and b–c.</text>
+<text x="40" y="703" class="" text-anchor="start">It leaves a–b at 1/3 S. Symmetry and zero row sums still hold.</text>
+<text x="40" y="754" class="math" text-anchor="start">At (U_a,U_b,U_c) = (1,0,0) V: rebuilt I_a = 1/2 A;</text>
+<text x="40" y="792" class="math" text-anchor="start">wrong deletion I_a = 1/3 A. Recover source currents to distinguish them.</text>
+</svg>

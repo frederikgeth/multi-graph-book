@@ -1,6 +1,6 @@
 {
   "figure": "docs/src/assets/running-network-views.png",
-  "figure_sha256": "044ac1c4a5948341378046e5aeed6134dbfb9e2d5a18e22d4419a401f333d8e3",
+  "figure_sha256": "3e7fb338fc3344f9cb3cd813d218022d415ff5783dc3ca28ddf556c7239a5e11",
   "fixture": "data/running-network/v0.1.0.json",
   "fixture_sha256": "80aa8704cf813f4e98b9df4037c062e7016f651307855115db85df441c28a021",
   "schema_version": 1,

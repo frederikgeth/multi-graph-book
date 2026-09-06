@@ -692,6 +692,36 @@
         "per-pole state vector",
         "factor-edge provenance warning"
       ]
+    },
+    "practical-outage-reduction": {
+      "svg": "docs/src/assets/practical-outage-reduction.svg",
+      "png": "docs/src/assets/practical-outage-reduction.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": [
+        "numbered source and target panels",
+        "open switch and isolated terminal",
+        "exact conductance and current labels"
+      ]
+    },
+    "equipment-matrix-stamp": {
+      "svg": "docs/src/assets/equipment-matrix-stamp.svg",
+      "png": "docs/src/assets/equipment-matrix-stamp.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": [
+        "named rows and columns",
+        "outlined contribution block",
+        "explicit permutation equations"
+      ]
+    },
+    "practical-multiplier-maps": {
+      "svg": "docs/src/assets/practical-multiplier-maps.svg",
+      "png": "docs/src/assets/practical-multiplier-maps.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": [
+        "solid raw and dashed mapped curves",
+        "labelled axes and sample points",
+        "labelled nonunique multiplier segment"
+      ]
     }
   }
 }

@@ -26,7 +26,7 @@ the model rather than being hidden behind a larger diagram.
 ![Parallel-member aggregation preserves a terminal relation, but exact
 decision pruning needs a recovered member-current map and a proved implication.](../assets/parallel-member-decision-plate.png)
 
-![The parallel redundancy certificate maps retained current discs to a candidate rating and contrasts the certified decision with the naive aggregate.](../assets/parallel-redundancy-certificate.png)
+![The phase-a recovered-current bound and candidate rating share one scale; artifact-derived bars compare exact-pruned and naive served fractions.](../assets/parallel-redundancy-certificate.png)
 
 ## Source model
 

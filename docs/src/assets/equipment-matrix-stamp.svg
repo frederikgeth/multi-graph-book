@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="775" viewBox="0 0 1100 775">
+<title>One branch stamp, two array orderings</title><desc>Branch e1 joins s to m with conductance 2 S and local stamp [[2,-2],[-2,2]]. With e2 of 1 S and a shunt load of 1/2 S at t, the assembled matrix is shown in orders (s,m,t) and (t,s,m). Highlighted cells receive the e1 contribution; their final values include other stamps.</desc>
+<rect width="1100" height="775" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b;font-size:20px}.title{font-size:29px;font-weight:bold}.head{font-size:23px;font-weight:bold}.small{font-size:18px}.math{font-family:DejaVu Sans,Arial,sans-serif;font-size:22px}</style>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#17212b"/></marker></defs>
+<text x="30" y="43" class="title" text-anchor="start">One branch stamp, two array orderings</text>
+<text x="30" y="80" class="small" text-anchor="start">Fixed resistive lesson. Labels identify nodes; array positions follow the declared order.</text>
+<text x="40" y="123" class="head" text-anchor="start">Equipment and terminal order</text>
+<line x1="75" y1="206" x2="415" y2="206" stroke="#245b7a" stroke-width="3"/>
+<circle cx="75" cy="206" r="18" fill="white" stroke="#245b7a" stroke-width="3"/>
+<text x="75" y="213" class="" text-anchor="middle">s</text>
+<circle cx="245" cy="206" r="18" fill="white" stroke="#245b7a" stroke-width="3"/>
+<text x="245" y="213" class="" text-anchor="middle">m</text>
+<circle cx="415" cy="206" r="18" fill="white" stroke="#245b7a" stroke-width="3"/>
+<text x="415" y="213" class="" text-anchor="middle">t</text>
+<text x="160" y="180" class="" text-anchor="middle">e1: 2 S</text>
+<text x="330" y="180" class="" text-anchor="middle">e2: 1 S</text>
+<text x="75" y="250" class="small" text-anchor="middle">U_s = 12 V</text>
+<line x1="415" y1="225" x2="415" y2="258" stroke="#245b7a" stroke-width="3"/>
+<rect x="404" y="258" width="22" height="32" rx="8" fill="white" stroke="#245b7a" stroke-width="2"/>
+<line x1="415" y1="290" x2="415" y2="316" stroke="#245b7a" stroke-width="3"/>
+<line x1="397.0" y1="316" x2="433.0" y2="316" stroke="#17212b" stroke-width="3"/>
+<line x1="403.0" y1="322" x2="427.0" y2="322" stroke="#17212b" stroke-width="3"/>
+<line x1="409.0" y1="328" x2="421.0" y2="328" stroke="#17212b" stroke-width="3"/>
+<text x="382" y="282" class="small" text-anchor="end">1/2 S</text>
+<text x="40" y="349" class="small" text-anchor="start">The load shunt attaches to t and the reference.</text>
+<text x="610" y="123" class="head" text-anchor="start">Local stamp of e1 [S]</text>
+<text x="725.0" y="156" class="" text-anchor="middle">s</text>
+<text x="779.0" y="156" class="" text-anchor="middle">m</text>
+<text x="682" y="203" class="" text-anchor="end">s</text>
+<rect x="698" y="168" width="54" height="54" rx="8" fill="white" stroke="#a5afb8" stroke-width="2"/>
+<text x="725.0" y="203" class="math" text-anchor="middle">2</text>
+<rect x="752" y="168" width="54" height="54" rx="8" fill="white" stroke="#a5afb8" stroke-width="2"/>
+<text x="779.0" y="203" class="math" text-anchor="middle">-2</text>
+<text x="682" y="257" class="" text-anchor="end">m</text>
+<rect x="698" y="222" width="54" height="54" rx="8" fill="white" stroke="#a5afb8" stroke-width="2"/>
+<text x="725.0" y="257" class="math" text-anchor="middle">-2</text>
+<rect x="752" y="222" width="54" height="54" rx="8" fill="white" stroke="#a5afb8" stroke-width="2"/>
+<text x="779.0" y="257" class="math" text-anchor="middle">2</text>
+<text x="600" y="314" class="small" text-anchor="start">+2 on its two diagonal positions;</text>
+<text x="600" y="344" class="small" text-anchor="start">−2 on its two off-diagonal positions.</text>
+<line x1="30" y1="379" x2="1060" y2="379" stroke="#17212b" stroke-width="1"/>
+<text x="40" y="423" class="head" text-anchor="start">Y [S] in order (s, m, t)</text>
+<text x="615" y="423" class="head" text-anchor="start">Y′ [S] in order (t, s, m)</text>
+<text x="184.0" y="456" class="" text-anchor="middle">s</text>
+<text x="238.0" y="456" class="" text-anchor="middle">m</text>
+<text x="292.0" y="456" class="" text-anchor="middle">t</text>
+<text x="141" y="503" class="" text-anchor="end">s</text>
+<rect x="157" y="468" width="54" height="54" rx="8" fill="#e5f2f8" stroke="#a5afb8" stroke-width="2"/>
+<text x="184.0" y="503" class="math" text-anchor="middle">2</text>
+<rect x="211" y="468" width="54" height="54" rx="8" fill="#e5f2f8" stroke="#a5afb8" stroke-width="2"/>
+<text x="238.0" y="503" class="math" text-anchor="middle">-2</text>
+<rect x="265" y="468" width="54" height="54" rx="8" fill="white" stroke="#a5afb8" stroke-width="2"/>
+<text x="292.0" y="503" class="math" text-anchor="middle">0</text>
+<text x="141" y="557" class="" text-anchor="end">m</text>
+<rect x="157" y="522" width="54" height="54" rx="8" fill="#e5f2f8" stroke="#a5afb8" stroke-width="2"/>
+<text x="184.0" y="557" class="math" text-anchor="middle">-2</text>
+<rect x="211" y="522" width="54" height="54" rx="8" fill="#e5f2f8" stroke="#a5afb8" stroke-width="2"/>
+<text x="238.0" y="557" class="math" text-anchor="middle">3</text>
+<rect x="265" y="522" width="54" height="54" rx="8" fill="white" stroke="#a5afb8" stroke-width="2"/>
+<text x="292.0" y="557" class="math" text-anchor="middle">-1</text>
+<text x="141" y="611" class="" text-anchor="end">t</text>
+<rect x="157" y="576" width="54" height="54" rx="8" fill="white" stroke="#a5afb8" stroke-width="2"/>
+<text x="184.0" y="611" class="math" text-anchor="middle">0</text>
+<rect x="211" y="576" width="54" height="54" rx="8" fill="white" stroke="#a5afb8" stroke-width="2"/>
+<text x="238.0" y="611" class="math" text-anchor="middle">-1</text>
+<rect x="265" y="576" width="54" height="54" rx="8" fill="white" stroke="#a5afb8" stroke-width="2"/>
+<text x="292.0" y="611" class="math" text-anchor="middle">3/2</text>
+<rect x="157" y="468" width="108" height="108" fill="none" stroke="#17212b" stroke-width="3"/>
+<text x="755.0" y="456" class="" text-anchor="middle">t</text>
+<text x="809.0" y="456" class="" text-anchor="middle">s</text>
+<text x="863.0" y="456" class="" text-anchor="middle">m</text>
+<text x="712" y="503" class="" text-anchor="end">t</text>
+<rect x="728" y="468" width="54" height="54" rx="8" fill="white" stroke="#a5afb8" stroke-width="2"/>
+<text x="755.0" y="503" class="math" text-anchor="middle">3/2</text>
+<rect x="782" y="468" width="54" height="54" rx="8" fill="white" stroke="#a5afb8" stroke-width="2"/>
+<text x="809.0" y="503" class="math" text-anchor="middle">0</text>
+<rect x="836" y="468" width="54" height="54" rx="8" fill="white" stroke="#a5afb8" stroke-width="2"/>
+<text x="863.0" y="503" class="math" text-anchor="middle">-1</text>
+<text x="712" y="557" class="" text-anchor="end">s</text>
+<rect x="728" y="522" width="54" height="54" rx="8" fill="white" stroke="#a5afb8" stroke-width="2"/>
+<text x="755.0" y="557" class="math" text-anchor="middle">0</text>
+<rect x="782" y="522" width="54" height="54" rx="8" fill="#e5f2f8" stroke="#a5afb8" stroke-width="2"/>
+<text x="809.0" y="557" class="math" text-anchor="middle">2</text>
+<rect x="836" y="522" width="54" height="54" rx="8" fill="#e5f2f8" stroke="#a5afb8" stroke-width="2"/>
+<text x="863.0" y="557" class="math" text-anchor="middle">-2</text>
+<text x="712" y="611" class="" text-anchor="end">m</text>
+<rect x="728" y="576" width="54" height="54" rx="8" fill="white" stroke="#a5afb8" stroke-width="2"/>
+<text x="755.0" y="611" class="math" text-anchor="middle">-1</text>
+<rect x="782" y="576" width="54" height="54" rx="8" fill="#e5f2f8" stroke="#a5afb8" stroke-width="2"/>
+<text x="809.0" y="611" class="math" text-anchor="middle">-2</text>
+<rect x="836" y="576" width="54" height="54" rx="8" fill="#e5f2f8" stroke="#a5afb8" stroke-width="2"/>
+<text x="863.0" y="611" class="math" text-anchor="middle">3</text>
+<rect x="782" y="522" width="108" height="108" fill="none" stroke="#17212b" stroke-width="3"/>
+<line x1="382" y1="550" x2="648" y2="550" stroke="#17212b" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="515" y="521" class="math" text-anchor="middle">Y′ = P Y Pᵀ</text>
+<text x="515" y="589" class="math" text-anchor="middle">U′ = P U</text>
+<text x="40" y="688" class="small" text-anchor="start">Outlined, shaded cells receive the e1 stamp. Displayed entries are the assembled totals.</text>
+<text x="40" y="727" class="small" text-anchor="start">The m diagonal is 3 S because e1 contributes 2 S and e2 contributes 1 S.</text>
+</svg>

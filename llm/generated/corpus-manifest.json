@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "636b6529f1279f897894f550b180a224d0e840658f7235ebf7d28b5c98bd8095",
+  "corpus_sha256": "48c3cd96d84c4d23118dfd66aec868d8b5480081cff97ad650844308d7e2a959",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -15,12 +15,12 @@
   "evaluation_case_count": 81,
   "heldout_case_count": 33,
   "misconception_count": 26,
-  "record_count": 912,
+  "record_count": 913,
   "record_counts": {
     "claim_bundle": 112,
     "concept_bundle": 18,
     "scientific_knowledge": 18,
-    "section": 764
+    "section": 765
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -45,7 +45,7 @@
     },
     {
       "path": "docs/src/cases/building-and-changing-models.md",
-      "sha256": "09b05c5e975efe8e34be86272b34a85a457591998b28469207af0b13c2b44475"
+      "sha256": "ae65e187e939bb75b5a04f4890f5e7dc9640996ff2a716a6c0583e2b361008f2"
     },
     {
       "path": "docs/src/cases/coupled-multivoltage-corridor.md",
@@ -65,7 +65,7 @@
     },
     {
       "path": "docs/src/cases/multiconductor-parallel-ac-decision.md",
-      "sha256": "4f09e8535f237e5c140662a5558ac13bc281c8d868b7e8763fe51f1dffc9a421"
+      "sha256": "c57f7128878015c499d83e92b6058e8716425256c3537f04ca467182f14ce84e"
     },
     {
       "path": "docs/src/cases/pi-four-wire-parallel-ac-decision.md",
@@ -85,7 +85,7 @@
     },
     {
       "path": "docs/src/foundations/circuit-formulations-and-lowering.md",
-      "sha256": "705576a34220ac03209406c6163536d4c6561cd0a3460f7a74f90b9a43513594"
+      "sha256": "2d17721b12185f8d0b3d917d5c5d48f0e4d1c34e80cff3e06b78528dc40292be"
     },
     {
       "path": "docs/src/foundations/compiled-views-and-graph-surgery.md",
@@ -157,7 +157,7 @@
     },
     {
       "path": "docs/src/foundations/source-to-canonical-model.md",
-      "sha256": "eb683a935e16b26e90be1417d47ee59499a61f4bd91031746defddf9c11e4033"
+      "sha256": "f1b8df2195e865752fd9f8ca0743f9d5e3d12fbc7c88bdbaeb5857865be00c5d"
     },
     {
       "path": "docs/src/foundations/transformation-semantics-register.md",
@@ -245,7 +245,7 @@
     },
     {
       "path": "docs/src/start/computational-cases.md",
-      "sha256": "301b00c25b451ec3935cb16ebd13d1fbc45ee20fe55875cbb11bbd973e6b8f40"
+      "sha256": "154b39b1a42ee12bb332bf677ed2c8c2c4ba88cbdaca3101f67a028ac1da9d05"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",

@@ -184,3 +184,21 @@ The Australian construction study separately records unresolved provenance of
 an external reference matrix. Inspect those boundaries before treating another
 successful run as independent support for a physical-model claim. Independent
 human review is a further evidence dimension, with no promoted claims here.
+
+## Reproduce the teaching diagrams
+
+The numerical diagrams read the standard-library lessons; the redundancy plate
+reads the maintained certificate files. From the repository root:
+
+```sh
+python3 experiments/render_teaching_figures.py
+python3 experiments/render_parallel_certificate_geometry.py
+python3 scripts/test_teaching_figures.py
+```
+
+Rendering requires `rsvg-convert`; the checks use only Python's standard library.
+Four regression tests check current SVG generation, the parallel witness and
+circle scales, the certificate circle scale, and served-fraction bar ratios.
+They do not replace scientific or visual review. The SVGs and PNG companions
+are maintained together; colour is supplemented by labels, outlines and line
+styles.

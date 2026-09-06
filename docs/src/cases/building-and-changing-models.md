@@ -109,6 +109,8 @@ with conductance ``1/2`` S, and an isolated terminal ``c``:
 \end{bmatrix}\ \mathrm S.
 ```
 
+![Opening star arm n–c changes the correct a–b equivalent to 1/2 S; deleting triangle edges instead leaves the wrong 1/3 S.](../assets/practical-outage-reduction.png)
+
 A tempting update deletes the two triangle edges incident to ``c``. That leaves
 conductance ``1/3`` S between ``a`` and ``b``. The updated graph has the expected
 isolated terminal, a symmetric operator, and zero row sums, yet it is wrong.
@@ -189,6 +191,13 @@ Duplicate the original unscaled constraint. Stationarity now requires
 optimum. Individual constraint multipliers are not unique. If demand changes in
 both copies together, its cost sensitivity is their sum. Changing only one copy
 is a different perturbation question.
+
+![Positive constraint scaling changes raw multipliers but not mapped physical sensitivity; duplicated constraints admit a line segment of multiplier allocations.](../assets/practical-multiplier-maps.png)
+
+The left panel plots the analytical multiplier against ``\alpha`` on a
+logarithmic horizontal axis with ``\beta=1``. The right panel concerns the
+duplicated, unscaled model. Its entire segment satisfies KKT at ``p=d``;
+the three marked points are examples, not three unique solver outputs.
 
 **Change the scaling.** Set ``\alpha=100`` and ``\beta=1/1000``. The raw
 multiplier becomes ``1/2000``; mapping back still gives 50 currency/MWh. Check

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
 import shutil
 import subprocess
 
@@ -33,36 +34,35 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight
 
 
 def main() -> None:
+    four = json.loads((ROOT / 'experiments/generated/four-wire-parallel-ac-certificate.json').read_text())['evidence']
+    multi = json.loads((ROOT / 'experiments/generated/multiconductor-parallel-ac-certificate.json').read_text())['evidence']
+    phase_a = next(c for c in four['redundancy']['checks'] if c['conductor'] == 'a')
+    bound, rating = phase_a['exact_worst_case_magnitude'], phase_a['candidate_limit']
     lines = [
         '<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">',
         '<title>Parallel redundancy certificate geometry and decision gap</title>',
-        '<desc>Left: a retained current-disc radius maps through a recovered row norm into a candidate rating. Right: exact and naive served fractions for two multiconductor parallel cases.</desc>',
+        '<desc>Left: the phase-a candidate-current bound and rating use one current scale, read from the four-wire certificate. Right: exact and naive served fractions for two multiconductor parallel cases.</desc>',
         '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#477a55"/></marker></defs>',
         '<rect width="100%" height="100%" fill="white"/>', STYLE,
         t(35, 40, "A certificate has geometry—and a decision consequence", "title"),
         t(35, 68, "The row-norm bound is the bridge from retained member limits to a safe deletion; the bar chart shows what goes wrong when that bridge is replaced by a summed limit.", "sub"),
         '<rect x="35" y="105" width="650" height="620" rx="14" class="panel"/>',
         '<rect x="715" y="105" width="650" height="620" rx="14" class="panel"/>',
-        t(65, 142, "A. Retained discs and candidate row", "head"),
+        t(65, 142, "A. Candidate current: certified disc", "head"),
         t(745, 142, "B. Served-fraction consequence", "head"),
     ]
-    # Complex-plane schematic. The circles are deliberately schematic: the
-    # certificate's exact data are recorded in the JSON witness and labels.
+    # One current plane and one scale; the inner disc bounds candidate current.
     cx, cy, scale = 300, 420, 250
     lines += [f'<line x1="{cx-scale}" y1="{cy}" x2="{cx+scale}" y2="{cy}" class="axis"/>',
-              f'<line x1="{cx}" y1="{cy-scale}" x2="{cx}" y2="{cy+scale}" class="axis"/>',
-              f'<circle cx="{cx}" cy="{cy}" r="{0.72*scale:.1f}" class="candidate"/>',
-              f'<circle cx="{cx}" cy="{cy}" r="{0.1773/0.72*scale:.1f}" class="retained"/>',
-              t(cx + 0.72*scale - 6, cy - 0.72*scale - 8, "candidate rating 0.72 p.u.", "small", "end"),
-              t(cx + 0.1773/0.72*scale + 8, cy + 5, "retained row-norm bound 0.1773 p.u.", "small"),
-              t(cx + 10, cy - scale - 12, "Im", "small"), t(cx + scale - 20, cy + 28, "Re", "small"),
-              f'<path d="M{cx+35} {cy-35} C{cx+95} {cy-95} {cx+170} {cy-135} {cx+220} {cy-185}" class="map"/>',
-              t(470, 230, "K = A_l2 A_l1^-1", "body"),
-              t(470, 254, "row norm certifies every candidate component", "small"),
+              f'<line x1="{cx}" y1="{cy-185}" x2="{cx}" y2="{cy+scale}" class="axis"/>',
+              f'<circle cx="{cx}" cy="{cy}" r="{rating*scale:.1f}" class="candidate"/>',
+              f'<circle cx="{cx}" cy="{cy}" r="{bound*scale:.1f}" class="retained"/>',
+              t(65, 185, f"Phase a: rating {rating:.2f} p.u. (dashed)", "body"),
+              t(65, 215, f"Recovered current bound {bound:.4f} p.u. (solid)", "body"),
+              t(cx + 10, cy - scale + 95, "Im I₂a [p.u.]", "small"), t(cx + scale - 20, cy + 28, "Re I₂a [p.u.]", "small", "end"),
               '<rect x="75" y="605" width="560" height="78" rx="10" fill="#e5f1e7" stroke="#477a55" stroke-width="2"/>',
-              t(95, 637, "Safe deletion", "head"),
-              t(215, 633, "0.1773 < 0.72, so member-2 limits are implied", "body"),
-              t(215, 658, "by the retained member-1 current discs (fixed map).", "small")]
+              t(95, 632, f"Phase-a implication: {bound:.4f} < {rating:.2f}", "head"),
+              t(95, 658, "The certificate checks every row under the fixed map.", "small")]
     # Bar chart.
     x0, y0, w, h = 815, 210, 500, 390
     maxv = 2.0
@@ -73,7 +73,7 @@ def main() -> None:
               f'<line x1="{x0}" y1="{y0+h}" x2="{x0+w}" y2="{y0+h}" class="axis"/>',
               t(x0+w/2, y0+h+42, "served fraction alpha", "small", "middle"),
               t(x0+4, y0-15, "load served", "small")]
-    rows = [("multiconductor", 0.6138908, 1.0630833), ("four-wire", 1.1274329, 1.8058181)]
+    rows = [(name, ev["exact_pruned_solution"]["objective_served_fraction"], ev["naive_aggregate_solution"]["objective_served_fraction"]) for name, ev in [("multiconductor", multi), ("four-wire", four)]]
     for idx, (label, exact, naive) in enumerate(rows):
         gx = x0 + 80 + idx*220
         for off, val, cls, name in ((-27, exact, "exact", "exact"), (27, naive, "naive", "naive sum")):
@@ -82,12 +82,9 @@ def main() -> None:
                       t(gx+off, y0+h-bh-8, f"{val:.4f}", "tiny", "middle"),
                       t(gx+off, y0+h+20, name, "tiny", "middle")]
         lines += [t(gx, y0+h+72, label, "body", "middle")]
-    lines += [f'<line x1="1160" y1="655" x2="1190" y2="655" class="exact"/>', t(1200, 660, "exact certified", "small"),
-              f'<line x1="1160" y1="680" x2="1190" y2="680" class="naive"/>', t(1200, 685, "naive aggregate", "small"),
-              '<rect x="745" y="620" width="590" height="70" rx="10" fill="#f8e1c4" stroke="#8a4f13" stroke-width="2"/>',
-              t(765, 650, "Interpretation", "head"),
-              t(885, 646, "The naive model is smaller, but it enlarges the feasible set", "small"),
-              t(885, 670, "by replacing member limits with an uncertified sum.", "small"),
+    lines += ['<rect x="745" y="738" width="590" height="70" rx="10" fill="#f8e1c4" stroke="#8a4f13" stroke-width="2"/>',
+              t(765, 767, "The naive sum enlarges the feasible set", "head"),
+              t(765, 792, "by replacing member limits with an uncertified sum.", "small"),
               '</svg>']
     svg = OUT / "parallel-redundancy-certificate.svg"
     png = OUT / "parallel-redundancy-certificate.png"

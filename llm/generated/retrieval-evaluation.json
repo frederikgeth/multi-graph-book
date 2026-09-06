@@ -5,7 +5,7 @@
       "contract_complete_rate": 1.0,
       "contract_record_recall": 1.0,
       "evidence_only_complete_at_10": 0.0,
-      "evidence_only_mean_reciprocal_rank_at_20": 0.262772,
+      "evidence_only_mean_reciprocal_rank_at_20": 0.26285,
       "evidence_only_recall_at_10": 0.444239,
       "evidence_only_recall_at_5": 0.37572,
       "open_corpus_complete_at_10": 0.0,
@@ -231,7 +231,7 @@
       "contract_complete_rate": 1.0,
       "contract_record_recall": 1.0,
       "evidence_only_complete_at_10": 0.0,
-      "evidence_only_mean_reciprocal_rank_at_20": 0.131516,
+      "evidence_only_mean_reciprocal_rank_at_20": 0.131278,
       "evidence_only_recall_at_10": 0.333333,
       "evidence_only_recall_at_5": 0.185185,
       "open_corpus_complete_at_10": 0.0,
@@ -375,7 +375,7 @@
       "contract_complete_rate": 1.0,
       "contract_record_recall": 1.0,
       "evidence_only_complete_at_10": 0.0,
-      "evidence_only_mean_reciprocal_rank_at_20": 0.206358,
+      "evidence_only_mean_reciprocal_rank_at_20": 0.206825,
       "evidence_only_recall_at_10": 0.333333,
       "evidence_only_recall_at_5": 0.3,
       "open_corpus_complete_at_10": 0.0,
@@ -629,7 +629,7 @@
       ],
       "contract_record_recall": 1.0,
       "evidence_only_complete_at_10": false,
-      "evidence_only_mean_reciprocal_rank_at_20": 0.1597,
+      "evidence_only_mean_reciprocal_rank_at_20": 0.158988,
       "evidence_only_recall_at_10": 0.444444,
       "evidence_only_recall_at_5": 0.111111,
       "evidence_only_top_10": [
@@ -1167,9 +1167,9 @@
         "claim:ARCH-SURGERY-002",
         "claim:ARCH-CHORDAL-001",
         "concept:parallel",
+        "claim:PRACTICE-DUAL-001",
         "concept:mutual-coupling-relation",
-        "claim:TRANSFORM-SEM-001",
-        "claim:TR-GRAPH-001"
+        "claim:TRANSFORM-SEM-001"
       ],
       "expected_record_ids": [
         "claim:TR-PAR-001",
@@ -1553,8 +1553,8 @@
         "concept:factor",
         "claim:TRANSFORM-SEM-001",
         "claim:PRACTICE-UPDATE-001",
-        "claim:ARCH-VIEW-001",
         "concept:mutual-coupling-relation",
+        "claim:ARCH-VIEW-001",
         "claim:FORMULATION-Y-SPLIT-001",
         "claim:IMPEDANCE-LADDER-001",
         "claim:GROUND-SCOPE-002",
@@ -1578,13 +1578,13 @@
       "open_corpus_top_10": [
         "concept:factor",
         "claim:TRANSFORM-SEM-001",
-        "claim:PRACTICE-UPDATE-001",
         "section:docs/src/foundations/impedance-fidelity-ladder.md#the-model-ladder-is-a-transformation-path",
+        "claim:PRACTICE-UPDATE-001",
         "section:docs/src/foundations/transformation-semantics-register.md#the-first-transformation-register",
         "section:docs/src/transformations/kron-ward-opti-kron.md#classification-in-the-book-s-transformation-language",
         "section:docs/src/foundations/circuit-formulations-and-lowering.md#modified-nodal-and-sparse-tableau-targets",
-        "claim:ARCH-VIEW-001",
         "concept:mutual-coupling-relation",
+        "claim:ARCH-VIEW-001",
         "section:docs/src/start/reading-guide-graph-and-transmission.md#if-you-come-from-balanced-transmission-modelling"
       ],
       "packet_shape_errors": [],
@@ -1814,7 +1814,7 @@
         "claim:TR-SER-002",
         "claim:FORMULATION-Y-SPLIT-001",
         "claim:IMPEDANCE-LADDER-001",
-        "claim:FORMULATION-NODAL-003"
+        "claim:DATA-XWALK-001"
       ],
       "expected_record_ids": [
         "claim:COLLAPSE-001",
@@ -1839,7 +1839,7 @@
         "knowledge:PSK-000010",
         "section:docs/src/transformations/kron-ward-opti-kron.md#executable-comparison-exact-operating-point-and-scenario-selected",
         "claim:COLLAPSE-002",
-        "section:docs/src/transformations/guarded-normalization.md#rewrite-system-questions"
+        "knowledge:PSK-000007"
       ],
       "packet_shape_errors": [],
       "packet_shape_valid": true,
@@ -2172,8 +2172,8 @@
         "claim:ARCH-LOWER-001",
         "section:docs/src/foundations/notation-and-conventions.md#compound-nodal-operator",
         "section:docs/src/foundations/compiled-views-and-graph-surgery.md#lowering-as-a-typed-compilation-boundary",
-        "section:docs/src/foundations/representation-taxonomy.md#algebraic-and-equation-models",
         "section:docs/src/foundations/circuit-formulations-and-lowering.md#lowering-from-a-source-model",
+        "section:docs/src/foundations/representation-taxonomy.md#algebraic-and-equation-models",
         "claim:FORMULATION-NODAL-003"
       ],
       "packet_shape_errors": [],
@@ -2556,11 +2556,11 @@
         "knowledge:PSK-000013",
         "knowledge:PSK-000003",
         "section:docs/src/cases/running-network.md#counterexample-variants",
-        "section:docs/src/foundations/transformation-semantics-register.md#treating-a-formulation-change-as-a-graph-proof",
         "claim:GROUND-SCOPE-001",
+        "section:docs/src/start/computational-cases.md#reproduce-the-teaching-diagrams",
         "section:docs/src/foundations/representation-maps.md#concrete-interface-smoke-test",
-        "claim:NUMERICAL-005",
-        "section:docs/src/cases/building-and-changing-models.md#organize-the-implementation-around-these-checks"
+        "section:docs/src/foundations/transformation-semantics-register.md#treating-a-formulation-change-as-a-graph-proof",
+        "claim:NUMERICAL-005"
       ],
       "packet_shape_errors": [],
       "packet_shape_valid": true,
@@ -2586,7 +2586,7 @@
       ],
       "contract_record_recall": 1.0,
       "evidence_only_complete_at_10": false,
-      "evidence_only_mean_reciprocal_rank_at_20": 0.297193,
+      "evidence_only_mean_reciprocal_rank_at_20": 0.3,
       "evidence_only_recall_at_10": 0.6,
       "evidence_only_recall_at_5": 0.4,
       "evidence_only_top_10": [
@@ -2598,8 +2598,8 @@
         "claim:TR-KRON-002",
         "claim:TR-XFMR-001",
         "claim:TR-SER-002",
-        "claim:ARCH-VIEW-001",
-        "claim:PRESERVE-001"
+        "claim:PRESERVE-001",
+        "claim:ARCH-VIEW-001"
       ],
       "expected_record_ids": [
         "claim:PRESERVE-001",
@@ -2859,8 +2859,8 @@
         "concept:element-edge-relation",
         "claim:TR-GRAPH-001",
         "claim:COUPLED-CORRIDOR-002",
-        "claim:TR-GRAPH-002",
         "claim:TR-SER-003",
+        "claim:TR-GRAPH-002",
         "claim:ARCH-CHORDAL-001",
         "claim:GRAPH-CYCLE-001"
       ],
@@ -2952,8 +2952,8 @@
         "section:docs/src/cases/coupled-multivoltage-corridor.md#the-generated-lattice",
         "claim:COUPLED-CORRIDOR-002",
         "concept:mutual-coupling-relation",
-        "section:docs/src/cases/coupled-multivoltage-corridor.md#physical-parallelism-is-not-visible-in-the-bus-multigraph",
-        "section:docs/src/literature/search-runs/2026-08-25-coupled-multivoltage-corridors.md#synthesis-decision"
+        "section:docs/src/literature/search-runs/2026-08-25-coupled-multivoltage-corridors.md#synthesis-decision",
+        "section:docs/src/cases/coupled-multivoltage-corridor.md#physical-parallelism-is-not-visible-in-the-bus-multigraph"
       ],
       "packet_shape_errors": [],
       "packet_shape_valid": true,
@@ -3330,8 +3330,8 @@
       "open_corpus_top_10": [
         "concept:direction-orientation-hierarchy",
         "claim:LOAD-BASE-001",
-        "section:docs/src/foundations/orientation-terminal-power.md#rooted-tree-orientation-is-a-derived-view",
         "section:docs/src/reference/federated-knowledge-trace.md#fourth-trace-load-connection-voltage-bases",
+        "section:docs/src/foundations/orientation-terminal-power.md#rooted-tree-orientation-is-a-derived-view",
         "knowledge:PSK-000004",
         "section:docs/src/start/one-network-five-languages.md#quantities-and-computation",
         "section:docs/src/foundations/orientation-terminal-power.md#a-stored-orientation-is-not-an-operating-direction",
@@ -3502,9 +3502,9 @@
       "evidence_only_top_10": [
         "claim:TR-XFMR-005",
         "claim:ARCH-RECOVERY-002",
-        "claim:TR-XFMR-010",
         "claim:TR-XFMR-008",
         "claim:TR-XFMR-007",
+        "claim:TR-XFMR-010",
         "claim:TR-XFMR-009",
         "claim:TR-XFMR-006",
         "claim:ARCH-LOWER-002",
@@ -3536,7 +3536,7 @@
         "section:docs/src/transformations/parameterized-transformer-tap-decisions.md#parameterized-transformer-tap-decisions",
         "section:docs/src/transformations/parameterized-transformer-tap-decisions.md#discrete-decision-witness",
         "section:docs/src/cases/transformer-tap-ac-decision.md#transformer-tap-ac-decision-case",
-        "section:docs/src/transformations/parameterized-transformer-tap-decisions.md#exactness-for-decision-problems"
+        "section:docs/src/foundations/two-level-topology-and-nodal-projection.md#which-guards-actually-lift-the-ambiguity"
       ],
       "packet_shape_errors": [],
       "packet_shape_valid": true,
@@ -3595,8 +3595,8 @@
       "open_corpus_recall_at_5": 0.166667,
       "open_corpus_top_10": [
         "claim:TR-XFMR-008",
-        "knowledge:PSK-000005",
         "section:docs/src/cases/study-workbook.md#1-declare-the-study",
+        "knowledge:PSK-000005",
         "claim:TR-XFMR-006",
         "section:docs/src/foundations/transformation-semantics-register.md#structure-preserving-versus-structure-changing",
         "claim:FORMULATION-Y-SPLIT-001",
@@ -3969,11 +3969,11 @@
         "claim:ARCH-BLOCK-001",
         "claim:TR-GRAPH-002",
         "claim:COLLAPSE-002",
-        "claim:ARCH-SURGERY-002",
         "claim:COLLAPSE-001",
+        "claim:ARCH-SURGERY-002",
         "claim:TR-SER-001",
         "claim:TR-PAR-006",
-        "claim:ARCH-PORT-002"
+        "claim:TR-GRAPH-SIMPLIFY-001"
       ],
       "expected_record_ids": [
         "claim:PRESERVE-001",
@@ -3997,8 +3997,8 @@
         "section:docs/src/foundations/source-to-canonical-model.md#running-network-application",
         "section:docs/src/foundations/load-models-and-decision-dependence.md#nominal-voltage-belongs-to-the-load-coordinate-load-base-001",
         "claim:COLLAPSE-002",
-        "claim:ARCH-SURGERY-002",
         "claim:COLLAPSE-001",
+        "claim:ARCH-SURGERY-002",
         "claim:TR-SER-001"
       ],
       "packet_shape_errors": [],
@@ -4467,8 +4467,8 @@
         "claim:FIXTURE-001",
         "claim:TR-XFMR-006",
         "claim:NUMERICAL-002",
-        "claim:PRACTICE-ARCH-001",
         "claim:TR-KRON-NEUTRAL-005",
+        "claim:PRACTICE-ARCH-001",
         "claim:TR-NEG-001",
         "claim:PRACTICE-IMPORT-001",
         "claim:ARCH-NODAL-001",
@@ -4614,8 +4614,8 @@
         "claim:PRACTICE-DUAL-001",
         "section:docs/src/foundations/load-models-and-decision-dependence.md#continuation-probe-load-continuation-001",
         "section:docs/src/foundations/load-models-and-decision-dependence.md#scoped-numerical-witness",
-        "section:docs/src/cases/building-and-changing-models.md#recover-the-meaning-of-a-multiplier",
-        "knowledge:PSK-000011"
+        "knowledge:PSK-000011",
+        "section:docs/src/foundations/when-general-model-collapses.md#decision-consequence"
       ],
       "packet_shape_errors": [],
       "packet_shape_valid": true,
@@ -4649,8 +4649,8 @@
         "claim:TR-PAR-004",
         "claim:LIT-PAR-001",
         "claim:LLM-RETRIEVAL-001",
-        "claim:TR-KRON-NEUTRAL-007",
         "claim:TR-KRON-003",
+        "claim:TR-KRON-NEUTRAL-007",
         "claim:ARCH-RECOVERY-004",
         "claim:ARCH-DEGENERACY-001"
       ],
@@ -5354,9 +5354,9 @@
       "open_corpus_top_10": [
         "claim:PRACTICE-UPDATE-001",
         "concept:element-edge-relation",
+        "section:docs/src/cases/building-and-changing-models.md#rebuild-after-an-edit-before-attempting-reuse",
         "section:docs/src/start/five-bus-transformer-lowering.md#a-general-cycle-count-statement",
         "claim:ARCH-CHORDAL-001",
-        "section:docs/src/cases/building-and-changing-models.md#rebuild-after-an-edit-before-attempting-reuse",
         "section:docs/src/start/five-bus-transformer-lowering.md#three-windings-do-not-define-the-general-case",
         "section:docs/src/foundations/two-level-topology-and-nodal-projection.md#why-a-radial-network-can-acquire-cycles",
         "section:docs/src/start/reading-guide-graph-and-transmission.md#if-you-come-from-simple-graph-theory",
@@ -5413,8 +5413,8 @@
       "open_corpus_recall_at_5": 0.333333,
       "open_corpus_top_10": [
         "concept:direction-orientation-hierarchy",
-        "section:docs/src/foundations/orientation-terminal-power.md#rooted-tree-orientation-is-a-derived-view",
         "claim:PRACTICE-UPDATE-001",
+        "section:docs/src/foundations/orientation-terminal-power.md#rooted-tree-orientation-is-a-derived-view",
         "section:docs/src/start/one-network-five-languages.md#objects",
         "concept:element-edge-relation",
         "section:docs/src/foundations/translation-traps.md#an-arrow-is-not-an-operating-direction",
@@ -5457,7 +5457,7 @@
         "claim:GRAPH-NPORT-001",
         "claim:TR-KRON-002",
         "claim:TRANSFORM-CATALOG-001",
-        "claim:TR-XFMR-002"
+        "claim:ARCH-SURGERY-002"
       ],
       "expected_record_ids": [
         "claim:PRACTICE-UPDATE-001",
@@ -5593,8 +5593,8 @@
       "open_corpus_recall_at_5": 0.333333,
       "open_corpus_top_10": [
         "claim:PRACTICE-DUAL-001",
-        "concept:rating-limit-constraint",
         "section:docs/src/cases/building-and-changing-models.md#recover-the-meaning-of-a-multiplier",
+        "concept:rating-limit-constraint",
         "claim:RATING-001",
         "section:docs/src/start/computational-cases.md#import-edit-and-interpret-a-model",
         "claim:LIT-PAR-001",
@@ -5676,8 +5676,8 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "636b6529f1279f897894f550b180a224d0e840658f7235ebf7d28b5c98bd8095",
-    "record_count": 912,
+    "corpus_sha256": "48c3cd96d84c4d23118dfd66aec868d8b5480081cff97ad650844308d7e2a959",
+    "record_count": 913,
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -5830,7 +5830,7 @@
         ],
         "hybrid_complete_at_10": false,
         "hybrid_hits_at_10": 5,
-        "hybrid_mean_reciprocal_rank_at_20": 0.222972,
+        "hybrid_mean_reciprocal_rank_at_20": 0.223335,
         "hybrid_recall_at_10": 0.555556,
         "hybrid_recall_at_5": 0.222222,
         "hybrid_top_10": [
@@ -5872,7 +5872,7 @@
         "case_id": "HOLDOUT-GRAPH-POWER",
         "char_tfidf_complete_at_10": false,
         "char_tfidf_hits_at_10": 0,
-        "char_tfidf_mean_reciprocal_rank_at_20": 0.006173,
+        "char_tfidf_mean_reciprocal_rank_at_20": 0.006536,
         "char_tfidf_recall_at_10": 0.0,
         "char_tfidf_recall_at_5": 0.0,
         "char_tfidf_top_10": [
@@ -5919,7 +5919,7 @@
         ],
         "hybrid_complete_at_10": false,
         "hybrid_hits_at_10": 0,
-        "hybrid_mean_reciprocal_rank_at_20": 0.012021,
+        "hybrid_mean_reciprocal_rank_at_20": 0.013255,
         "hybrid_recall_at_10": 0.0,
         "hybrid_recall_at_5": 0.0,
         "hybrid_top_10": [
@@ -5961,7 +5961,7 @@
         "case_id": "HOLDOUT-YSPLIT-STUDENT",
         "char_tfidf_complete_at_10": false,
         "char_tfidf_hits_at_10": 1,
-        "char_tfidf_mean_reciprocal_rank_at_20": 0.200776,
+        "char_tfidf_mean_reciprocal_rank_at_20": 0.201471,
         "char_tfidf_recall_at_10": 0.166667,
         "char_tfidf_recall_at_5": 0.166667,
         "char_tfidf_top_10": [
@@ -6034,8 +6034,8 @@
           "claim:COLLAPSE-002",
           "claim:ARCH-NODAL-001",
           "claim:COLLAPSE-001",
-          "claim:PRACTICE-DUAL-001",
-          "claim:ARCH-SUPPORT-001"
+          "claim:ARCH-SUPPORT-001",
+          "claim:PRACTICE-DUAL-001"
         ],
         "question": "Why can an iterative power-flow calculation put part of a device into a linear matrix without changing what the device is in the original model?",
         "route_fired": true,
@@ -6074,7 +6074,7 @@
         ],
         "graph_complete_at_10": false,
         "graph_hits_at_10": 3,
-        "graph_mean_reciprocal_rank_at_20": 0.139327,
+        "graph_mean_reciprocal_rank_at_20": 0.140359,
         "graph_recall_at_10": 0.5,
         "graph_recall_at_5": 0.5,
         "graph_top_10": [
@@ -6118,8 +6118,8 @@
           "claim:FORMULATION-Y-SPLIT-001",
           "claim:LOAD-CONTINUATION-001",
           "claim:ARCH-SUPPORT-001",
-          "claim:TR-KRON-NEUTRAL-003",
           "claim:TR-SER-001",
+          "claim:TR-KRON-NEUTRAL-003",
           "claim:GRAPH-PI-COLLAPSE-001",
           "claim:ARCH-RECOVERY-003"
         ],
@@ -6140,8 +6140,8 @@
           "claim:FORMULATION-Y-SPLIT-001",
           "claim:TR-KRON-NEUTRAL-008",
           "claim:GRAPH-SELF-LOOP-001",
-          "claim:NUMERICAL-005",
           "claim:GRAPH-MATRIX-001",
+          "claim:NUMERICAL-005",
           "claim:GRAPH-PI-COLLAPSE-001",
           "claim:TR-KRON-NEUTRAL-005",
           "claim:TR-KRON-NEUTRAL-006",
@@ -6445,7 +6445,7 @@
           "claim:ARCH-LENS-001",
           "claim:ARCH-PORT-002",
           "concept:object-node-interface",
-          "claim:ARCH-PORT-001"
+          "claim:ARCH-CONDUCTOR-002"
         ],
         "lexical_complete_at_10": false,
         "lexical_hits_at_10": 0,
@@ -6480,8 +6480,8 @@
         "char_tfidf_top_10": [
           "claim:TR-XFMR-008",
           "claim:ARCH-PORT-001",
-          "claim:LOAD-BASE-001",
           "claim:PRESERVE-001",
+          "claim:LOAD-BASE-001",
           "claim:ARCH-SURGERY-002",
           "claim:FORMULATION-NODAL-002",
           "claim:TR-PAR-001",
@@ -6529,9 +6529,9 @@
           "claim:COUPLED-CORRIDOR-001",
           "claim:COUPLED-CORRIDOR-002",
           "claim:TR-XFMR-009",
-          "claim:LOAD-BASE-001",
           "claim:TR-NEG-001",
-          "claim:GRAPH-CYCLE-001"
+          "claim:GRAPH-CYCLE-001",
+          "claim:LOAD-BASE-001"
         ],
         "lexical_complete_at_10": false,
         "lexical_hits_at_10": 2,
@@ -6604,7 +6604,7 @@
         ],
         "hybrid_complete_at_10": false,
         "hybrid_hits_at_10": 2,
-        "hybrid_mean_reciprocal_rank_at_20": 0.078704,
+        "hybrid_mean_reciprocal_rank_at_20": 0.079248,
         "hybrid_recall_at_10": 0.333333,
         "hybrid_recall_at_5": 0.166667,
         "hybrid_top_10": [
@@ -6616,8 +6616,8 @@
           "claim:TR-PAR-002",
           "claim:TR-PAR-SINGULAR-001",
           "claim:ARCH-LOWER-001",
-          "concept:element-edge-relation",
-          "claim:RATING-001"
+          "claim:RATING-001",
+          "concept:element-edge-relation"
         ],
         "lexical_complete_at_10": false,
         "lexical_hits_at_10": 2,
@@ -6765,8 +6765,8 @@
           "concept:equivalence-exactness-preservation",
           "concept:element-edge-relation",
           "claim:ARCH-VIEW-001",
-          "claim:GRAPH-MATRIX-001",
           "claim:ARCH-SUPPORT-001",
+          "claim:GRAPH-MATRIX-001",
           "concept:parallel",
           "claim:GRAPH-MULTI-001",
           "concept:graph-topology-adjacency",
@@ -6997,8 +6997,8 @@
           "claim:TR-KRON-FIVE-001",
           "claim:FORMULATION-NODAL-001",
           "claim:ARCH-RECOVERY-001",
-          "claim:TR-XFMR-004",
           "claim:FORMULATION-NODAL-003",
+          "claim:TR-XFMR-004",
           "claim:PRESERVE-001",
           "claim:TR-KRON-002"
         ],
@@ -7042,8 +7042,8 @@
           "claim:PRESERVE-001",
           "claim:TRANSFORM-SEM-001",
           "claim:TR-KRON-FIVE-002",
-          "concept:flow-current-power-message",
-          "claim:FORMULATION-NODAL-003"
+          "claim:FORMULATION-NODAL-003",
+          "concept:flow-current-power-message"
         ],
         "lexical_complete_at_10": false,
         "lexical_hits_at_10": 3,
@@ -7410,14 +7410,14 @@
         "case_id": "HOLDOUT-SEQUENCE-POWER",
         "char_tfidf_complete_at_10": false,
         "char_tfidf_hits_at_10": 3,
-        "char_tfidf_mean_reciprocal_rank_at_20": 0.4375,
+        "char_tfidf_mean_reciprocal_rank_at_20": 0.458333,
         "char_tfidf_recall_at_10": 0.75,
         "char_tfidf_recall_at_5": 0.75,
         "char_tfidf_top_10": [
           "concept:phase-conductor-sequence-coordinate",
           "claim:COLLAPSE-001",
-          "claim:IMPEDANCE-LADDER-001",
           "claim:COLLAPSE-002",
+          "claim:IMPEDANCE-LADDER-001",
           "concept:rating-limit-constraint",
           "claim:RATING-001",
           "claim:PRACTICE-IMPEDANCE-001",
@@ -7867,8 +7867,8 @@
           "concept:element-edge-relation",
           "concept:factor",
           "concept:mutual-coupling-relation",
-          "concept:object-node-interface",
           "concept:graph-topology-adjacency",
+          "concept:object-node-interface",
           "claim:ARCH-SUPPORT-001",
           "concept:ground-neutral-reference"
         ],
@@ -7916,7 +7916,7 @@
         "case_id": "HOLDOUT-COUPLING-SOFTWARE",
         "char_tfidf_complete_at_10": false,
         "char_tfidf_hits_at_10": 2,
-        "char_tfidf_mean_reciprocal_rank_at_20": 0.311111,
+        "char_tfidf_mean_reciprocal_rank_at_20": 0.310526,
         "char_tfidf_recall_at_10": 0.4,
         "char_tfidf_recall_at_5": 0.4,
         "char_tfidf_top_10": [
@@ -7942,7 +7942,7 @@
         ],
         "graph_complete_at_10": false,
         "graph_hits_at_10": 2,
-        "graph_mean_reciprocal_rank_at_20": 0.24386,
+        "graph_mean_reciprocal_rank_at_20": 0.244444,
         "graph_recall_at_10": 0.4,
         "graph_recall_at_5": 0.2,
         "graph_top_10": [
@@ -7959,7 +7959,7 @@
         ],
         "hybrid_complete_at_10": false,
         "hybrid_hits_at_10": 2,
-        "hybrid_mean_reciprocal_rank_at_20": 0.238889,
+        "hybrid_mean_reciprocal_rank_at_20": 0.237607,
         "hybrid_recall_at_10": 0.4,
         "hybrid_recall_at_5": 0.2,
         "hybrid_top_10": [
@@ -8181,8 +8181,8 @@
           "claim:ARCH-SUPPORT-001",
           "claim:GRAPH-SELF-LOOP-001",
           "claim:TRANSFORM-CATALOG-001",
-          "claim:GRAPH-LOOPY-001",
           "claim:GRAPH-PI-COLLAPSE-001",
+          "claim:GRAPH-LOOPY-001",
           "claim:ARCH-NODAL-001",
           "claim:TR-KRON-001",
           "claim:TR-SER-003"
@@ -8467,8 +8467,8 @@
           "claim:ARCH-VIEW-001",
           "concept:factor",
           "concept:transformation-family",
-          "concept:mutual-coupling-relation",
-          "concept:ground-neutral-reference"
+          "concept:ground-neutral-reference",
+          "concept:mutual-coupling-relation"
         ],
         "hybrid_complete_at_10": false,
         "hybrid_hits_at_10": 0,
@@ -8516,7 +8516,7 @@
       "char_tfidf": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.223873,
+        "mean_reciprocal_rank_at_20": 0.224518,
         "recall_at_10": 0.452189,
         "recall_at_5": 0.348822,
         "recall_expected_records_at_10": 180,
@@ -8526,7 +8526,7 @@
       "graph": {
         "complete_at_10": 0.212121,
         "complete_at_10_count": 7,
-        "mean_reciprocal_rank_at_20": 0.251117,
+        "mean_reciprocal_rank_at_20": 0.251166,
         "recall_at_10": 0.58266,
         "recall_at_5": 0.385522,
         "recall_expected_records_at_10": 180,
@@ -8536,7 +8536,7 @@
       "hybrid": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.219416,
+        "mean_reciprocal_rank_at_20": 0.219442,
         "recall_at_10": 0.465825,
         "recall_at_5": 0.371886,
         "recall_expected_records_at_10": 180,
@@ -8612,7 +8612,7 @@
     "contract_complete_rate": 1.0,
     "contract_record_recall": 1.0,
     "evidence_only_complete_at_10": 0.024691,
-    "evidence_only_mean_reciprocal_rank_at_20": 0.250643,
+    "evidence_only_mean_reciprocal_rank_at_20": 0.250669,
     "evidence_only_recall_at_10": 0.430247,
     "evidence_only_recall_at_5": 0.35048,
     "open_corpus_complete_at_10": 0.012346,

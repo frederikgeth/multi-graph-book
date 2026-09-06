@@ -55,6 +55,14 @@ The load to the fixed reference adds ``1/2`` to ``Y_{tt}``. Thus
 =\begin{bmatrix}2&-2&0\\-2&3&-1\\0&-1&3/2\end{bmatrix}\ \mathrm S.
 ```
 
+![Branch e1 contributes four entries to Y; changing array order to (t,s,m) permutes those entries without changing the node identities.](../assets/equipment-matrix-stamp.png)
+
+The outlined entries receive the `e1` stamp; their displayed values include
+all contributions. In particular, the `m` diagonal includes both branches.
+The lower panels use the same permutation for equation rows and voltage
+coordinates, so ``\mathbf Y'=\mathbf P\mathbf Y\mathbf P^{\mathsf T}`` and
+``\mathbf U'=\mathbf P\mathbf U``. The source boundary remains at node `s`.
+
 This matrix relates passive-device currents leaving the nodes to their
 voltages. The ideal source is a voltage boundary with an unknown supplied
 current, not a finite admittance stamped into this matrix.

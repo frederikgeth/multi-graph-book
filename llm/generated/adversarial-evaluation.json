@@ -464,8 +464,8 @@
           "claim:TR-KRON-001",
           "claim:TR-KRON-FIVE-001",
           "claim:TR-KRON-NEUTRAL-001",
-          "claim:TR-KRON-NEUTRAL-003",
-          "claim:TR-KRON-003"
+          "claim:TR-KRON-003",
+          "claim:TR-KRON-NEUTRAL-003"
         ]
       },
       "hybrid": {
@@ -536,8 +536,8 @@
           "concept:object-node-interface",
           "claim:ARCH-VIEW-001",
           "concept:ground-neutral-reference",
-          "concept:graph-topology-adjacency",
-          "concept:transformation-family"
+          "concept:transformation-family",
+          "concept:graph-topology-adjacency"
         ]
       },
       "hybrid": {
@@ -604,8 +604,8 @@
         "complete_at_10": true,
         "recall_at_10": 1.0,
         "top_10": [
-          "claim:NUMERICAL-001",
           "claim:TR-KRON-NEUTRAL-007",
+          "claim:NUMERICAL-001",
           "claim:AU-CARSON-001",
           "claim:TR-KRON-FIVE-001",
           "claim:TR-KRON-NEUTRAL-001",
@@ -629,7 +629,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "636b6529f1279f897894f550b180a224d0e840658f7235ebf7d28b5c98bd8095"
+    "corpus_sha256": "48c3cd96d84c4d23118dfd66aec868d8b5480081cff97ad650844308d7e2a959"
   },
   "inputs": {
     "adversarial_cases": {

@@ -415,7 +415,7 @@ Every lowering record should state:
 5. the omitted semantics and unresolved guards; and
 6. the recovery and provenance maps.
 
-![The formulation-lowering lattice: the equation/constraint operator is the faithful boundary, while MNA/tableau and nodal admittance are guarded study targets.](../assets/formulation-lowering-lattice.png)
+![Formulation choices: the equation/constraint operator retains the declared model, while MNA/tableau and nodal admittance have different applicability conditions.](../assets/formulation-lowering-lattice.png)
 
 The diagram is intentionally asymmetric. The source model first lowers to an
 equation/constraint operator that still has somewhere to attach observations,

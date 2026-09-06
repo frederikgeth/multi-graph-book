@@ -23,7 +23,7 @@ def exactness_classes() -> str:
         '<title>Four exactness classes as observed-set containment</title>',
         '<desc>Four panels compare source and target observed feasible sets: exact equality, inner conservative containment, outer relaxed containment, and scenario agreement only at declared sampled points.</desc>',
         '<rect width="1200" height="850" fill="white"/>',
-        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.source{fill:#d9eef8;fill-opacity:.9;stroke:#245b7a;stroke-width:3}.target{fill:#f8e1c4;fill-opacity:.9;stroke:#8a4f13;stroke-width:3;stroke-dasharray:9 6}.sample{fill:none;stroke:#17212b;stroke-width:2;stroke-dasharray:4 5}.witness{fill:#17212b}.arrow{stroke:#17212b;stroke-width:2;fill:none;marker-end:url(#arrow)}</style>',
+        '<style>text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight:bold}.sub{font-size:16px;fill:#5f6b76}.panel{fill:#fbfcfd;stroke:#17212b;stroke-width:2}.head{font-size:19px;font-weight:bold}.body{font-size:15px}.small{font-size:14px;fill:#5f6b76}.source{fill:#d9eef8;fill-opacity:.9;stroke:#245b7a;stroke-width:3}.target{fill:none;stroke:#8a4f13;stroke-width:3;stroke-dasharray:9 6}.sample{fill:none;stroke:#17212b;stroke-width:2;stroke-dasharray:4 5}.witness{fill:#17212b}.arrow{stroke:#17212b;stroke-width:2;fill:none;marker-end:url(#arrow)}</style>',
         '<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#17212b"/></marker></defs>',
         txt(40, 44, "Exactness is a relation between observed feasible sets", "title"),
         txt(40, 72, "The same source and target models can be exact for one observation family and approximate for another.", "sub"),
@@ -45,7 +45,7 @@ def exactness_classes() -> str:
         '<ellipse cx="890" cy="270" rx="175" ry="96" class="source"/>',
         '<ellipse cx="890" cy="270" rx="108" ry="58" class="target"/>',
         txt(890, 270, "target ⊂ source", "body", "middle"),
-        txt(890, 324, "no admitted nonphysical point", "small", "middle"),
+        txt(890, 389, "every target observation has a source witness", "small", "middle"),
         # Outer: source sits inside target, with the scalar witness in the gap.
         txt(65, 505, "outer / relaxed", "head"),
         txt(65, 530, "all source points are retained; extra target points may be nonphysical", "small"),
@@ -54,16 +54,14 @@ def exactness_classes() -> str:
         '<circle cx="433" cy="620" r="6" class="witness"/>',
         '<path d="M438 616 L490 585" class="arrow"/>',
         txt(495, 582, "15 V witness", "small"),
-        txt(310, 684, "source ⊂ target", "body", "middle"),
-        # Scenario: agreement inside sample region, divergence outside.
+        txt(310, 741, "source ⊂ target", "body", "middle"),
+        # Scenario: checked sample points; no certificate for the intervening region.
         txt(645, 505, "scenario approximate", "head"),
         txt(645, 530, "agreement checked only at the declared sampled points", "small"),
         '<ellipse cx="890" cy="635" rx="150" ry="82" class="source"/>',
         '<ellipse cx="930" cy="635" rx="150" ry="82" class="target"/>',
-        '<rect x="760" y="575" width="190" height="120" rx="8" class="sample"/>',
-        txt(855, 615, "sampled", "body", "middle"),
-        txt(855, 638, "region", "body", "middle"),
-        txt(890, 690, "sample agreement is not a region-wide certificate", "small", "middle"),
+        '<circle cx="825" cy="620" r="5" class="witness"/><circle cx="870" cy="645" r="5" class="witness"/><circle cx="920" cy="610" r="5" class="witness"/>',
+        txt(890, 741, "dots: checked samples; no region-wide certificate", "small", "middle"),
         txt(40, 820, "Source set: h(𝓕_M)   ·   target set: ĥ(𝓕_M̂)   ·   every panel assumes the observation map is declared first.", "small"),
         '</svg>',
     ]
