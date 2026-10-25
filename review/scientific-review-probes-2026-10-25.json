@@ -1,0 +1,289 @@
+{
+  "evidence_class": "targeted_diagnostic_observations_not_agent_benchmark",
+  "book_revision": "938224a3f9cc1f3b83d65ebb426f59e882561910",
+  "corpus_manifest_sha256": "399a9c502457995880f45505e67248794efb63b1209c6bbb2727a63663b46acb",
+  "pair_sha256": "592fa06f621af03f4362d71f757a720a7806b047c093fbcf3a22985fce0c99f5",
+  "retrieval": [
+    {
+      "query": "Does a zero terminal voltage make power balance equivalent to KCL?",
+      "status": "qualified",
+      "routes": [
+        {
+          "misconception_id": "terminal-permutation-is-cosmetic",
+          "score": 0.444167,
+          "exact_pattern": false
+        }
+      ],
+      "direct_answer_basis": [
+        "Typed multiconductor Kron reduction commutes with invertible coordinate actions that preserve the retained/internal partition when currents transform by the power-dual action; per-port block diagonality is an optional locality restriction, and the affine statement requires fixed internal injections.",
+        "Equivalence of two power-network models is indexed by a declared joint observation map and admissible input set; matching separate observation ranges or an unconstrained terminal relation alone does not establish equality of joint constrained feasible observable sets.",
+        "Relabelling terminal coordinates preserves a fixed linear primitive only when the declared permutation is bijective, both endpoint terminal maps follow it, and the target matrix is the corresponding row/column permutation; matching labels or conductor counts alone do not establish invariance."
+      ],
+      "required_qualifications": [
+        "A relabelling is an exact primitive-level transformation only with an explicit bijection, both endpoint terminal maps transformed by it, and the target matrix equal to the corresponding row/column permutation. Matching counts or labels alone do not establish coordinate consistency, and the primitive check does not prove complete-network or decision equivalence."
+      ],
+      "mandatory_record_ids": [
+        "claim:TR-KRON-001",
+        "claim:PRESERVE-001",
+        "concept:phase-conductor-sequence-coordinate",
+        "concept:equivalence-exactness-preservation",
+        "concept:transformation-family",
+        "knowledge:PSK-000012"
+      ],
+      "validation": {
+        "valid": true,
+        "source_hashes_checked": true,
+        "claim_coverage_checked": true,
+        "citation_presence_checked": true
+      }
+    },
+    {
+      "query": "Can a small transformer leakage be rounded to zero in ybus_augmented?",
+      "status": "under_retrieved",
+      "routes": [],
+      "direct_answer_basis": [],
+      "required_qualifications": [],
+      "mandatory_record_ids": [],
+      "validation": {
+        "valid": true,
+        "source_hashes_checked": true,
+        "claim_coverage_checked": true,
+        "citation_presence_checked": true
+      }
+    },
+    {
+      "query": "Does ybus_linearized fold all compute a Jacobian?",
+      "status": "under_retrieved",
+      "routes": [],
+      "direct_answer_basis": [],
+      "required_qualifications": [],
+      "mandatory_record_ids": [],
+      "validation": {
+        "valid": true,
+        "source_hashes_checked": true,
+        "claim_coverage_checked": true,
+        "citation_presence_checked": true
+      }
+    },
+    {
+      "query": "Can I merge two buses because their GPS coordinates coincide?",
+      "status": "under_retrieved",
+      "routes": [],
+      "direct_answer_basis": [],
+      "required_qualifications": [],
+      "mandatory_record_ids": [],
+      "validation": {
+        "valid": true,
+        "source_hashes_checked": true,
+        "claim_coverage_checked": true,
+        "citation_presence_checked": true
+      }
+    },
+    {
+      "query": "Are three delta terminals three independent load coils?",
+      "status": "qualified",
+      "routes": [
+        {
+          "misconception_id": "wye-delta-share-nominal-voltage-base",
+          "score": 0.606667,
+          "exact_pattern": false
+        }
+      ],
+      "direct_answer_basis": [
+        "A voltage-dependent load's nominal voltage is an anchor in the load factor's declared terminal coordinate: WYE uses phase-to-neutral voltage and DELTA uses line-to-line voltage; copying one numeric bus voltage into both coordinates without an explicit base conversion changes the normalized load law.",
+        "On the recorded balanced three-phase terminal fixture, explicit wye phase-to-neutral and delta phase-to-phase connection maps share the same bus and graph but produce different load-voltage observations: unit-magnitude wye voltages and sqrt(3)-magnitude delta voltages.",
+        "A voltage-dependent load's nominal anchor must use the same terminal-voltage coordinate as its constitutive law: phase-to-neutral for WYE and line-to-line for DELTA; reusing one numeric value across those coordinates without conversion changes the normalized load model."
+      ],
+      "required_qualifications": [
+        "The load anchor belongs to its terminal coordinate: WYE uses phase-to-neutral voltage and DELTA uses line-to-line voltage. On a nominal three-phase system those bases differ by sqrt(3), and reusing one numeric value changes the normalized voltage-dependent load law."
+      ],
+      "mandatory_record_ids": [
+        "claim:LOAD-BASE-001",
+        "claim:LOAD-CONNECTION-001",
+        "concept:normalization",
+        "concept:phase-conductor-sequence-coordinate",
+        "concept:factor",
+        "knowledge:PSK-000004"
+      ],
+      "validation": {
+        "valid": true,
+        "source_hashes_checked": true,
+        "claim_coverage_checked": true,
+        "citation_presence_checked": true
+      }
+    },
+    {
+      "query": "Can I reuse an OPF after updating a parameter through zero?",
+      "status": "qualified",
+      "routes": [
+        {
+          "misconception_id": "base-state-equivalent-is-globally-exact",
+          "score": 0.416,
+          "exact_pattern": false
+        }
+      ],
+      "direct_answer_basis": [
+        "Equivalence of two power-network models is indexed by a declared joint observation map and admissible input set; matching separate observation ranges or an unconstrained terminal relation alone does not establish equality of joint constrained feasible observable sets.",
+        "In the recorded local state-dependent grounding probe, shifting an endpoint state changes the nonlinear neutral-earth bond map; reusing the nominal bond map leaves a nonzero shifted-state residual, while recomputation restores the relation and preserves explicit neutral-limit evaluation.",
+        "In the recorded finite endpoint-state continuation of the two-point nonlinear grounding chain, recomputing the bond maps at five declared states preserves small nonlinear residuals and records changing neutral-limit margins, while the frozen nominal map fails away from the base state.",
+        "An equivalent calibrated at one operating point is exact only for its declared calibration state unless its state parameter domain and update rule are preserved; freezing a state-dependent map can change boundary injections, constraints, feasible decisions, and protection margins away from calibration."
+      ],
+      "required_qualifications": [
+        "A fixed operating-point map is exact only at its declared calibration state; a state-dependent equivalent must preserve the parameter domain and recompute or bound its update map with explicit provenance."
+      ],
+      "mandatory_record_ids": [
+        "claim:PRESERVE-001",
+        "claim:TR-KRON-NEUTRAL-005",
+        "claim:TR-KRON-NEUTRAL-007",
+        "concept:equivalence-exactness-preservation",
+        "concept:transformation-family",
+        "concept:state",
+        "knowledge:PSK-000010"
+      ],
+      "validation": {
+        "valid": true,
+        "source_hashes_checked": true,
+        "claim_coverage_checked": true,
+        "citation_presence_checked": true
+      }
+    },
+    {
+      "query": "Does a passed solved_network_feasibility_validation recompute every device equation?",
+      "status": "qualified",
+      "routes": [
+        {
+          "misconception_id": "complete-feasibility-status-is-enough",
+          "score": 0.4,
+          "exact_pattern": false
+        }
+      ],
+      "direct_answer_basis": [
+        "A complete solved-network feasibility claim requires an independently computed witness covering equation, KCL, power-balance, device-limit, and recovery residual obligations with declared tolerances; solver termination remains separate evidence.",
+        "A solved or optimal termination status must be accompanied by independently computed equation, KCL, power-balance, device-limit, and recovery residual evidence before a complete feasibility claim is made; solver status alone does not certify those obligations."
+      ],
+      "required_qualifications": [
+        "Termination status is algorithm evidence only. Require independently computed equation, KCL, power-balance, device-limit, and recovery residuals, each with explicit tolerances, before making a complete feasibility claim."
+      ],
+      "mandatory_record_ids": [
+        "claim:NUMERICAL-005",
+        "concept:factor",
+        "concept:rating-limit-constraint",
+        "concept:equivalence-exactness-preservation",
+        "knowledge:PSK-000013"
+      ],
+      "validation": {
+        "valid": true,
+        "source_hashes_checked": true,
+        "claim_coverage_checked": true,
+        "citation_presence_checked": true
+      }
+    },
+    {
+      "query": "Can I replace a small impedance by an ideal switch without changing current sharing?",
+      "status": "qualified",
+      "routes": [
+        {
+          "misconception_id": "reference-matrix-match-proves-source-provenance",
+          "score": 0.42,
+          "exact_pattern": false
+        }
+      ],
+      "direct_answer_basis": [
+        "The Australian Carson reproduction regenerates overhead and underground multiconductor primitives from lifted construction inputs, compares them with independent OpenDSS reference matrices, and identifies the CS1035 construction mapping as unresolved rather than presenting it as a faithful reproduction.",
+        "The available Australian CS1035 four-conductor reference matrix and the separately lifted UGHV construction fixture do not establish a source-construction mapping between them; a faithful CS1035 reproduction remains open until the conductor and screen construction, earth-return convention, frequency, and conductor ordering are recovered and independently regenerate the reference without using that matrix as an input."
+      ],
+      "required_qualifications": [
+        "The reference matrix is an independent output, not a construction record. The available UGHV fixture has no source mapping to CS1035, the frequency probe does not resolve the mismatch, and conductor, screen, earth-return, ordering, and provenance fields must be recovered before claiming a faithful reproduction."
+      ],
+      "mandatory_record_ids": [
+        "claim:AU-CARSON-001",
+        "concept:normalization",
+        "concept:phase-conductor-sequence-coordinate",
+        "concept:ground-neutral-reference",
+        "knowledge:PSK-000018"
+      ],
+      "validation": {
+        "valid": true,
+        "source_hashes_checked": true,
+        "claim_coverage_checked": true,
+        "citation_presence_checked": true
+      }
+    }
+  ],
+  "mcp": [
+    {
+      "probe": "null query",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "tools/call",
+        "params": {
+          "name": "book_search",
+          "arguments": {
+            "query": null
+          }
+        }
+      },
+      "responded": true,
+      "error": null,
+      "is_error": false,
+      "interpreted_query": "None",
+      "result_count": 8
+    },
+    {
+      "probe": "fractional limit",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "method": "tools/call",
+        "params": {
+          "name": "book_search",
+          "arguments": {
+            "query": "parallel branches",
+            "limit": 1.9
+          }
+        }
+      },
+      "responded": true,
+      "error": null,
+      "is_error": false,
+      "interpreted_query": "parallel branches",
+      "result_count": 1
+    },
+    {
+      "probe": "unknown notification",
+      "request": {
+        "jsonrpc": "2.0",
+        "method": "notifications/progress",
+        "params": {
+          "progressToken": 1,
+          "progress": 1
+        }
+      },
+      "responded": true,
+      "error": {
+        "code": -32601,
+        "message": "method not found: notifications/progress"
+      },
+      "is_error": false,
+      "interpreted_query": null,
+      "result_count": 0
+    },
+    {
+      "probe": "modern discovery",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "method": "server/discover"
+      },
+      "responded": true,
+      "error": {
+        "code": -32601,
+        "message": "method not found: server/discover"
+      },
+      "is_error": false,
+      "interpreted_query": null,
+      "result_count": 0
+    }
+  ]
+}
