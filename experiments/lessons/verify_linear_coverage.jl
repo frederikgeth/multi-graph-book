@@ -54,6 +54,16 @@ function linear_coverage_lesson()
     circulating_audit = audit_solution(cn,circulated)
     absent_ground = deepcopy(cr); delete!(absent_ground,"ground")
     missing_ground = audit_solution(cn,absent_ground)
+    switch_path = joinpath(root,"test","data","linear_audit","fixed-switch.json")
+    switch_doc = JSON3.read(read(switch_path,String),Dict{String,Any})
+    sn,sr = switch_doc["network"],switch_doc["result"]
+    switch_analytic = audit_solution(sn,sr)
+    switch_solved = solve_opf(sn;optimizer=Ipopt.Optimizer,per_unit=false)
+    switch_audit = audit_solution(sn,switch_solved)
+    overloaded = deepcopy(sn); overloaded["switch"]["w"]["i_max"][2] = 0.5
+    switch_overload = audit_solution(overloaded,sr)
+    absent_switch = deepcopy(sr); delete!(absent_switch["switch"]["w"]["a"],"cr")
+    missing_switch = audit_solution(sn,absent_switch)
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -90,13 +100,30 @@ function linear_coverage_lesson()
         @test missing_ground.evidence["status"] == "indeterminate"
         @test row(missing_ground,"network.power")["residual"] === nothing
         @test connected_coverage.evidence["status"] == "indeterminate"
-        @test connected_coverage.evidence["unassessed_checks"] == 36
+        @test connected_coverage.evidence["unassessed_checks"] == 35
         @test connected_coverage.evidence["failed_checks"] == 0
         @test count(x->startswith(x["id"],"load.") && x["dimension"]=="device_equations" &&
             x["status"]=="passed",connected_coverage.evidence["rows"]) == 11
         @test row(connected_coverage,"voltage_source.s0.voltage")["status"] == "passed"
         @test count(x->x["dimension"]=="kcl" && x["status"]=="unassessed",connected_coverage.evidence["rows"]) == 26
         @test JSON3.read(JSON3.write(connected_coverage.evidence),Dict{String,Any}) == connected_coverage.evidence
+    end
+    @testset "Fixed switch coverage and neutral-current limit" begin
+        @test switch_analytic.evidence["status"] == "passed"
+        @test switch_solved["termination_status"] in ("OPTIMAL","LOCALLY_SOLVED")
+        @test switch_audit.evidence["status"] == "passed"
+        @test row(switch_analytic,"switch.w.endpoint_currents")["status"] == "reconstructed"
+        @test row(switch_analytic,"switch.w.endpoint_currents")["terminal_map_to"] == ["x","n"]
+        @test switch_overload.evidence["status"] == "failed"
+        @test switch_overload.evidence["failed_checks"] == 1
+        @test row(switch_overload,"switch.w.2.i_max")["status"] == "failed"
+        @test row(switch_overload,"switch.w.2.s_max")["status"] == "passed"
+        @test all(x->x["status"]=="passed",filter(x->x["dimension"]=="kcl",switch_overload.evidence["rows"]))
+        @test row(switch_overload,"network.power")["status"] == "passed"
+        @test missing_switch.evidence["status"] == "indeterminate"
+        @test row(missing_switch,"network.power")["residual"] === nothing
+        @test row(connected_coverage,"switch.w0.closed_voltage")["status"] == "passed"
+        @test all(k->row(connected_coverage,"switch.w0.$k.i_max")["status"]=="passed",1:4)
     end
     active = dirname(Base.active_project())
     Dict{String,Any}(
@@ -106,7 +133,7 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path]),
         "healthy_tiny_circuit"=>healthy.evidence,
         "tiny_solver_per_unit"=>false, "solved_tiny_circuit"=>tiny_audit.evidence, "tiny_circuit_result"=>tiny_solved,
         "default_scaled_tiny_circuit"=>scaled_audit.evidence, "default_scaled_tiny_result"=>scaled_tiny,
@@ -119,6 +146,10 @@ function linear_coverage_lesson()
         "connected_circuit_result"=>connected_solved,
         "delta_circulation"=>circulating_audit.evidence,
         "missing_implicit_earth_reaction"=>missing_ground.evidence,
+        "fixed_switch_analytic"=>switch_analytic.evidence,
+        "fixed_switch_solved"=>switch_audit.evidence, "fixed_switch_result"=>switch_solved,
+        "switch_neutral_overload"=>switch_overload.evidence,
+        "missing_switch_current"=>missing_switch.evidence,
         "running_network_input"=>running, "running_network_result"=>solved,
         "not_established"=>["all-device running-network feasibility", "objective or global optimality",
             "physical adequacy", "availability in the published package pin", "MCP exposure"])

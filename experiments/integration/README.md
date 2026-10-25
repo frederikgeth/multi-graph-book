@@ -97,13 +97,16 @@ Do not substitute zero residuals to promote it into the legacy witness contract.
 Next promotion requires completing/reviewing the desired device coverage,
 publishing the package commit, deliberately updating the ordinary integration
 pin and regenerating the federated pair. The native default-role source-neutral return and constant-power loads are now
-covered by the extended API. Switches, generators, transformer equations/limits,
+covered by the extended API, together with fixed ideal switches. Generators, transformer equations/limits,
 voltage-dependent loads, bus voltage bounds and objective remain open.
 
 The companion also runs the package's `neutral-and-delta.json` analytic fixture,
 a native solve of it, a delta circulating-current corruption, and missing implicit
 earth-reaction evidence. It applies both APIs to the same running-network result:
-the original linear audit retains 42 unassessed rows; the source/load extension
-reduces this to 36, with 11 load power equations and source relations evaluated.
+the original linear audit retains 42 unassessed rows; the source/load/switch extension
+reduces this to 35, with 11 load power equations, source relations, the closed
+switch voltage relation and four switch current limits evaluated.
 Both remain indeterminate. Custom terminal conventions and unrecognized semantic
 fields are explicitly outside the current extension's supported domain.
+The `fixed-switch.json` companion verifies a native solve and a neutral-current
+overload invisible to power checks, and retains missing switch current as unknown.

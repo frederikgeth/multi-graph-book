@@ -138,7 +138,7 @@
       "PSK-000017",
       "PSK-000018"
     ],
-    "manifest_sha256": "d0e7fa6010aff7957131d44919f3f78026d0bcfce4688b2ff5ac3e51cb3b8b1c",
+    "manifest_sha256": "935fb1535a1cce32bdf764486c46983028afea1fcf11ca6e8da13229742053eb",
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -571,6 +571,6 @@
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.2.0",
-  "pair_sha256": "8b4d6e5299002a9bc5a69c182e76fa2334164cb30fe7dc3920e8b1b4cab3f012",
+  "pair_sha256": "ff3064066f3120a053dd6ce3901df950643d00e7b3ddae1b059a4ce7a4effd59",
   "schema_version": "0.2.0"
 }

@@ -543,19 +543,50 @@ are unassessed.
 
 The separate candidate `audit_solution` now adds default-role source neutral
 returns, implicit source grounding and WYE/SINGLE_PHASE/DELTA constant-power
-load equations. The same running-network result then has **36 unassessed rows**:
+load equations, and fixed ideal switches. The same running-network result has
+**35 unassessed rows** (36 before switch coverage was added):
 11 local power equations across five loads and the source voltage relation are
 now evaluated. Source-return and load-terminal currents are reconstructed from
 their connection maps; each explicit or implicit earth reaction is consumed once.
-The 42-row table above remains the coverage of `audit_linear_solution`.
+The switch now has a checked closed-voltage relation and four conductor current
+limits; its opposite endpoint currents are reconstructed from the supplied
+from-side currents. The 42-row table above remains the coverage of
+`audit_linear_solution`.
 
-The extended verdict is still **indeterminate**. The switch, generator,
+The extended verdict is still **indeterminate**. The generator,
 n-winding transformer and bus voltage bounds remain unassessed, as do all 26
 terminal KCL rows and aggregate power because required current contributions
 are still missing. The companion records both APIs on the same solved point;
 no zeros are supplied to close the remaining obligations. The
 [delta coil lesson](@ref delta-coil-current-lesson) explains why successful KCL
 would still not replace the individual load equations.
+
+### A switch needs a state law and a conductor limit
+
+A fixed closed ideal switch requires equal voltages at its ordered endpoint
+pairs; its nonzero current is determined by the surrounding circuit. A fixed
+open switch instead requires zero current, with no voltage equality. The package
+checks both domains against small native solves, including an open switch
+between separately supplied 10 V and 7 V sides. Missing reported open-switch
+current remains missing evidence; the checker does not fill in a passing zero.
+
+The companion's closed two-wire fixture uses different endpoint labels and a
+10 V, ``10+2\mathrm j`` VA load. The phase current is ``1-0.2\mathrm j`` A,
+with its opposite returning through the neutral. At zero neutral voltage,
+neutral apparent power is zero. Changing only the neutral current rating from
+1.1 A to 0.5 A therefore creates a violation of approximately 0.5198 A while all
+KCL rows, aggregate power and the neutral's zero apparent-power limit still
+pass. This is the [zero-voltage current/power distinction](@ref zero-voltage-kcl)
+applied to a conductor limit. Changing the limit does not change the supplied
+operating point; it changes whether that point is admissible.
+
+The switch result reports one current per from-side conductor. The to-side
+current is its reconstructed opposite, with the to-side terminal map retained;
+this is not a second independent current measurement. The candidate checks
+finite nonnegative rating arrays in that order. Malformed or infinite ratings,
+unknown controls and unrepresented device semantics remain unassessed. The
+scope is static supplied-state verification, not switching optimization,
+interruption physics or protection coordination.
 
 **Transfer exercise.** Keep the two equal-voltage source currents at 6 A and 4 A,
 but remove the second source's current field. Can the evaluator report zero
