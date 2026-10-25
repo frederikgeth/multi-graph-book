@@ -1,4 +1,21 @@
 [[claim]]
+claim_id = "KERNEL-OBSERVATION-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ["terminal_behavior", "limits", "decision", "numerical_structure"]
+chapter = "docs/src/cases/quotients-and-observations.md"
+claim_text = "For a nonempty affine solution set Ax=b and observation Hx, equal-observation solution differences lie exactly in ker(A) intersect ker(H), with further constraints and objectives checked separately. In the declared witnesses, common-potential translation preserves the isolated resistor's difference/current/loss observations, ideal parallel circulation changes member-rating observations, and the delta terminal-current kernel is removed by fixed resistive coil laws."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "affine_kernel_argument_and_exact_rational_observation_recovery_counterexamples"
+citation_keys = []
+model_scope = "fixed affine real circuit equations, stated observation maps and finite SI witnesses; delta power-duality identity also holds for complex phasors with real incidence"
+assumptions = "floating reference case has no fixed-earth connection or absolute-voltage constraint; parallel ideal paths retain member caps and explicit recovery; delta coil voltages and conductances are fixed; no nonlinear Jacobian-to-global-symmetry inference"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independent scientific review and reader evaluation remain pending; no automatic quotient certification, arbitrary device-current freedom, native package capability or nonlinear uniqueness guarantee is established."
+
+[[claim]]
 claim_id = "LIMIT-NEUTRAL-001"
 exactness_object = "feasible_set"
 preservation_dimensions = ["terminal_behavior", "phase_neutral", "limits", "numerical_structure"]
@@ -47,7 +64,7 @@ model_scope = "real scalar steady-state resistive series circuit with fixed sour
 assumptions = "consistent per-unit coordinates; both endpoint power magnitudes are capped; nominal-voltage conversion is distinguished from actual fixed-source-voltage conversion; current ratings represent the intended static constraint"
 reviewer = ""
 review_date = ""
-unresolved_issue = "Independent scientific review and native multiconductor examples remain pending; the witness does not establish arbitrary AC/OPF uniqueness, dynamic stability, or a complete equipment thermal model."
+unresolved_issue = "Independent scientific review and general three-phase extensions remain pending; the separate controlled neutral/shunt witness does not establish arbitrary AC/OPF uniqueness, dynamic stability, or a complete equipment thermal model."
 
 schema_version = 1
 

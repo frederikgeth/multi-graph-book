@@ -122,7 +122,9 @@ I_1+I_2=12,\qquad (I_1,I_2)=(\alpha,12-\alpha),\quad \alpha\in\mathbb R.
 Every terminal power is zero. Nonnegative apparent-power caps therefore impose
 no restriction on ``\alpha``. This mode is a current circulation, not an arbitrary
 voltage-reference shift: changing it changes the conductor currents that a rating
-or measurement would observe.
+or measurement would observe. The [quotient and observation lesson](@ref quotients-and-observations)
+compares this current family with a removable floating reference and a delta
+terminal-map kernel eliminated by the device laws.
 
 Retaining ``|I_1|\le7`` A and ``|I_2|\le10`` A restricts ``\alpha`` to ``[2,7]`` A.
 It bounds the admissible family but does not give a unique split. This extends

@@ -1,14 +1,14 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:c87597c9d1ba395c88a3ad68c069228836b7c3dd2d66140d93fe61046ad9fe5c -->
+<!-- generated-from claims/claims.toml sha256:e348709a2f265c6bc79536b0d7b59d016d8aff330204572375f9047fd97203ba -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 120
-**Indexed chapters:** 48
+**Indexed claims:** 121
+**Indexed chapters:** 49
 
 ## Claims by type
 
@@ -102,7 +102,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `COUPLED-CORRIDOR-001` — Physically parallel line sections need not be parallel in the bus multigraph; a source model can retain stable line assets plus oriented section-to-section coupling records, with each connected coupling group compiling into one joint electrical factor before inversion or nodal stamping. | [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | `self-checked` |
 | `TRANSFORM-CATALOG-001` — The guarded-normalization catalogue treats coordinate normalization, series elimination, parallel bundling, switch contraction, multiwinding compilation, and rooted-tree views as distinct rule families whose acceptance depends on declared closure, recovery, constraint, and provenance guards. | [Guarded normalization rules](../transformations/guarded-normalization.md) | `self-checked` |
 
-### `theorem` (50)
+### `theorem` (51)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -125,6 +125,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `GRAPH-CYCLE-001` — The recorded connected five-bus bus--branch multigraph has seven identified lines, incidence rank four, and cycle-space dimension three; collapsing its parallel q/r pair to a simple edge reduces the cycle-space dimension to two, whereas the spanning-tree-plus-chords representation retains all three source dimensions. | [A five-bus multigraph: identities, cycles, and tree coordinates](../start/five-bus-cycle-spaces.md) | `self-checked` |
 | `GRAPH-MATRIX-001` — Under the declared convention A_uv equals non-loop edge multiplicity off diagonal, A_vv equals twice the graph-loop count, and D contains incidence degrees, so D-A equals B B transpose; graph-loop columns vanish from signed incidence while a grounded shunt contributes a distinct diagonal constitutive term. | [Multigraphs for expert modelers](../foundations/multigraphs-for-modelers.md) | `self-checked` |
 | `GRAPH-PI-COLLAPSE-001` — For a fixed linear two-terminal pi factor with series admittance Y_s and endpoint shunts Y_a and Y_b, identifying both terminals through the common attachment map T_pi=[1,1]^T gives T_pi^T Y_pi T_pi=Y_a+Y_b, so the series contribution cancels and the exact nodal image is a one-terminal constant-admittance shunt under the declared coordinate and reference assumptions. | [Multigraphs for expert modelers](../foundations/multigraphs-for-modelers.md) | `self-checked` |
+| `KERNEL-OBSERVATION-001` — For a nonempty affine solution set Ax=b and observation Hx, equal-observation solution differences lie exactly in ker(A) intersect ker(H), with further constraints and objectives checked separately. In the declared witnesses, common-potential translation preserves the isolated resistor's difference/current/loss observations, ideal parallel circulation changes member-rating observations, and the delta terminal-current kernel is removed by fixed resistive coil laws. | [When may a null mode be removed?](../cases/quotients-and-observations.md) | `self-checked` |
 | `LIMIT-CONVEXITY-001` — Individual fixed apparent-power caps are convex in explicit port powers but generally nonconvex in joint rectangular voltage-current coordinates. Current caps are convex in explicit rectangular currents, in powers with nonnegative voltage magnitude or squared magnitude, and in rectangular voltages through a fixed affine current map; substituting port power with rectangular voltage components does not generally retain convexity. None of these constraint-level statements establishes convexity or uniqueness of the complete OPF. | [When a model admits unintended solutions](../cases/unintended-solution-multiplicity.md) | `self-checked` |
 | `LIMIT-MULTIPLICITY-001` — For the real series circuit E=4/5, R=1, VI=3/25 with 0<=V<=E, the exact roots (V,I)=(1/5,3/5) and (3/5,1/5) both satisfy endpoint apparent-power caps of 1/2 derived from Vnom=1 and Imax=1/2, whereas only the higher-voltage root satisfies the intended current cap. The inequality substitution changes admissibility, not the circuit equation roots. | [When a model admits unintended solutions](../cases/unintended-solution-multiplicity.md) | `self-checked` |
 | `LIMIT-NEUTRAL-001` — In the declared two-conductor SI circuit with R=[[1,1/2],[1/2,1]] ohm, explicit source/receiving shunts and 6/35 W phase-neutral load, both exact coil-voltage roots 1/5 and 3/5 V pass the per-conductor power caps [1,1/2] VA at both series-line ends. The lower root nevertheless violates the 1/2 A neutral current cap at both ends, despite nonzero receiving-neutral voltage; aggregate power observations also fail to certify that conductor rating. | [An explicit neutral does not make power limits current limits](../cases/neutral-shunt-multiplicity.md) | `self-checked` |
@@ -161,7 +162,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 
 | Verification | Claims |
 | --- | ---: |
-| `self-checked` | 114 |
+| `self-checked` | 115 |
 | `independently-implemented` | 6 |
 | `externally-reviewed` | 0 |
 
@@ -215,8 +216,9 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `GROUND-SCOPE-003` | Extend to relay curves, CT saturation, richer maintenance decisions, and independent reproduction. |
 | `GROUND-SCOPE-004` | Replace the illustrative functions with standards-aligned relay/CT models and quantify uncertainty and coordination margins. |
 | `IMPEDANCE-LADDER-001` | Reproduce authored overhead-line and underground-cable cases with geometry or linecode provenance, balanced and unbalanced load rows, grounding variants, and an external solver cross-check. |
+| `KERNEL-OBSERVATION-001` | Independent scientific review and reader evaluation remain pending; no automatic quotient certification, arbitrary device-current freedom, native package capability or nonlinear uniqueness guarantee is established. |
 | `LIMIT-CONVEXITY-001` | Independent review remains pending; nonlinear controls, variable taps, device capability curves and complete AC-OPF convexity require separate analysis. |
-| `LIMIT-MULTIPLICITY-001` | Independent scientific review and native multiconductor examples remain pending; the witness does not establish arbitrary AC/OPF uniqueness, dynamic stability, or a complete equipment thermal model. |
+| `LIMIT-MULTIPLICITY-001` | Independent scientific review and general three-phase extensions remain pending; the separate controlled neutral/shunt witness does not establish arbitrary AC/OPF uniqueness, dynamic stability, or a complete equipment thermal model. |
 | `LIMIT-NEUTRAL-001` | Independent scientific review, three-phase extensions and native internal pi-shunt coverage remain pending; no temperature, stability, or complete feeder-feasibility conclusion is established. |
 | `LIT-PAR-001` | Establish necessary and sufficient redundancy tests for arbitrary multiconductor limits and for state- or decision-dependent line models. |
 | `LLM-RETRIEVAL-001` | Rerun both pinned candidates on the current corpus and evaluate domain-adapted alternatives before making a current or general neural-retrieval comparison. |
@@ -295,7 +297,7 @@ These retrieval facets are provisional and path-derived. They are navigation aid
 additional verification labels; explicit facet fields can replace them when the claims
 schema is normalised.
 
-### `decision-cases` (40)
+### `decision-cases` (41)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -305,6 +307,7 @@ schema is normalised.
 | `FIXTURE-001` — Running-network fixture v0.1.0 passes the current BMOPFTools JSON schema and conformance checks without errors or warnings. | [Executable running network](@ref executable-running-network) | `empirical` |
 | `FIXTURE-002` — The v0.1.0 continuous PF and OPF instances terminate locally solved in the recorded environment. | [Executable running network](@ref executable-running-network) | `empirical` |
 | `IMPEDANCE-LADDER-001` — In the deterministic four-wire impedance ladder fixture, phase-to-neutral current and voltage recovery are exact under the declared zero-ground-current map, while the deliberately non-circulant reduced matrix has visible sequence mixing; shunt deletion and positive-sequence use therefore require explicit decision-domain guards. | [Four-wire impedance-model ladder](../cases/four-wire-impedance-model-ladder.md) | `empirical` |
+| `KERNEL-OBSERVATION-001` — For a nonempty affine solution set Ax=b and observation Hx, equal-observation solution differences lie exactly in ker(A) intersect ker(H), with further constraints and objectives checked separately. In the declared witnesses, common-potential translation preserves the isolated resistor's difference/current/loss observations, ideal parallel circulation changes member-rating observations, and the delta terminal-current kernel is removed by fixed resistive coil laws. | [When may a null mode be removed?](../cases/quotients-and-observations.md) | `theorem` |
 | `LIMIT-CONVEXITY-001` — Individual fixed apparent-power caps are convex in explicit port powers but generally nonconvex in joint rectangular voltage-current coordinates. Current caps are convex in explicit rectangular currents, in powers with nonnegative voltage magnitude or squared magnitude, and in rectangular voltages through a fixed affine current map; substituting port power with rectangular voltage components does not generally retain convexity. None of these constraint-level statements establishes convexity or uniqueness of the complete OPF. | [When a model admits unintended solutions](../cases/unintended-solution-multiplicity.md) | `theorem` |
 | `LIMIT-MULTIPLICITY-001` — For the real series circuit E=4/5, R=1, VI=3/25 with 0<=V<=E, the exact roots (V,I)=(1/5,3/5) and (3/5,1/5) both satisfy endpoint apparent-power caps of 1/2 derived from Vnom=1 and Imax=1/2, whereas only the higher-voltage root satisfies the intended current cap. The inequality substitution changes admissibility, not the circuit equation roots. | [When a model admits unintended solutions](../cases/unintended-solution-multiplicity.md) | `theorem` |
 | `LIMIT-NEUTRAL-001` — In the declared two-conductor SI circuit with R=[[1,1/2],[1/2,1]] ohm, explicit source/receiving shunts and 6/35 W phase-neutral load, both exact coil-voltage roots 1/5 and 3/5 V pass the per-conductor power caps [1,1/2] VA at both series-line ends. The lower root nevertheless violates the 1/2 A neutral current cap at both ends, despite nonzero receiving-neutral voltage; aggregate power observations also fail to certify that conductor rating. | [An explicit neutral does not make power limits current limits](../cases/neutral-shunt-multiplicity.md) | `theorem` |
@@ -619,6 +622,7 @@ schema is normalised.
 | `nonlinear-two-point-grounding-witness.json` | `TR-KRON-NEUTRAL-006` — generated evidence |
 | `nonlinear-ward-witness.json` | `nonlinear_ward_probe_v0.1.0` — scalar constant-power internal state with a base-state Ward approximation |
 | `numerical-structure-witness.json` | `NUM-STRUCT-001` — five-bus source topology; structural dependency patterns, not numerical Jacobian entries |
+| `observation-quotients.json` | generated evidence |
 | `parallel-branch-certificate.json` | `TR-PAR-001` — generated evidence |
 | `parallel-opf-comparison.json` | `TR-PAR-003` — generated evidence |
 | `pi-four-wire-parallel-ac-certificate.json` | `TR-PAR-007` — generated evidence |

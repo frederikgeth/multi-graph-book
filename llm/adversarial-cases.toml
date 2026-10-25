@@ -270,3 +270,27 @@ question = "Can an aggregate power cap certify the neutral current rating when s
 expected_status = "qualified"
 expected_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001"]
 expected_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-CURRENT-GAUGE"
+audience = "power_engineer"
+question = "Can current circulation be removed by gauge fixing when member ratings matter?"
+expected_status = "qualified"
+expected_claim_ids = ["KERNEL-OBSERVATION-001"]
+expected_concept_ids = ["ground-neutral-reference", "flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-DELTA-KERNEL-LAW"
+audience = "power_engineer"
+question = "Does a delta kernel allow a free device current even with fixed resistive coil laws?"
+expected_status = "qualified"
+expected_claim_ids = ["KERNEL-OBSERVATION-001"]
+expected_concept_ids = ["ground-neutral-reference", "flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-GAUGE-TRANSIENT-BOUNDARY"
+audience = "power_engineer"
+question = "Can the rule nullspace removable gauge predict transient inrush magnitudes?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []

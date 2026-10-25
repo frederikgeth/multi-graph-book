@@ -33,7 +33,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "c87597c9d1ba395c88a3ad68c069228836b7c3dd2d66140d93fe61046ad9fe5c"
+      "sha256": "e348709a2f265c6bc79536b0d7b59d016d8aff330204572375f9047fd97203ba"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -61,7 +61,7 @@
     },
     {
       "path": "docs/src/foundations/load-models-and-decision-dependence.md",
-      "sha256": "054b32b503904b3480205bd6abdfaeeb1c7f1ce5ecd069dd82da0577abd8848c"
+      "sha256": "8adb9e593a16e7d7197f07ac6050089f97b5a15f475c01f64e328766012813fa"
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
@@ -209,7 +209,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "0da71ff000e84c24b7eb00aa124d12bcd2c2b180a53af39b8fd69c6e02907461"
+      "sha256": "5f952a6bf57561105d92c41c434a26723b84f4cd06da4d1bd91517e1fc85c7ac"
     },
     {
       "path": "schemas/power-system-knowledge.schema.json",

@@ -6,14 +6,14 @@ These are registry counts and audit queues, not newly measured scientific result
 
 | Inventory | Count |
 |---|---:|
-| Claims | 120 |
+| Claims | 121 |
 | Claim verification: `externally-reviewed` | 0 |
 | Claim verification: `independently-implemented` | 6 |
-| Claim verification: `self-checked` | 114 |
+| Claim verification: `self-checked` | 115 |
 | PSK records | 18 |
-| Stable misconception IDs | 33 |
+| Stable misconception IDs | 34 |
 | Misconception IDs with a PSK link | 18 |
-| Misconception IDs without a PSK link | 15 |
+| Misconception IDs without a PSK link | 16 |
 | Full pinned package Finding registry | 381 |
 | Finding records in the curated executable export | 57 |
 
@@ -29,6 +29,7 @@ Self-checks and independent implementations retain their distinct ledger states.
 - `ideal-transformer-is-a-large-admittance`
 - `loads-generators-fixed-graph-membership`
 - `nodal-operator-is-source-network`
+- `nullspace-implies-removable-gauge`
 - `numeric-round-trip-preserves-field-meaning`
 - `one-universal-network-graph`
 - `power-balance-enforces-kcl-at-zero-voltage`
@@ -41,7 +42,7 @@ Self-checks and independent implementations retain their distinct ledger states.
 
 ## Established-result entries without citation keys
 
-There are 32 entries in this audit queue. Missing citation keys do not show that
+There are 33 entries in this audit queue. Missing citation keys do not show that
 a statement is false or necessarily requires an external citation. Review each entry's
 basis: cited result, explicit book derivation, or bounded numerical evidence. Do not
 promote a finite numerical test into a general theorem through a status label.
@@ -53,6 +54,7 @@ promote a finite numerical test into a general theorem through a status label.
 - `ARCH-RECOVERY-002`
 - `ARCH-RECOVERY-003`
 - `ARCH-RECOVERY-004`
+- `KERNEL-OBSERVATION-001`
 - `LIMIT-MULTIPLICITY-001`
 - `LIMIT-NEUTRAL-001`
 - `LOAD-CONNECTION-002`
@@ -83,5 +85,5 @@ promote a finite numerical test into a general theorem through a status label.
 
 - BMOPFTools revision: `97c274946091859b7d9b0e822c96f1e7f9f50c7e`
 - Finding registry SHA-256: `52db7414e7f2bef158d32988c196d6d038320e30efda64a7501ddf1872d44519`
-- Federated pair SHA-256: `a5490adb1ffc007c4664265ac6a61f01be7e28597bc21e7baa08e16bac8c3bab`
+- Federated pair SHA-256: `2b1130edf2640ec57d3e4df2e1705a6d7fd2e4ae5c13e9e9d26cd5e63116f769`
 - [Machine-readable inventory and source hashes](delivery-inventory.json)

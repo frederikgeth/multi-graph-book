@@ -37,11 +37,13 @@ ROUTER_GENERIC_TERMS = {
 # when it contains a curated coil-current phrase. This conservative refusal is
 # route-specific; it does not claim to classify every unsupported physical model.
 ROUTER_TOPIC_EXCLUSIONS = {
+    "nullspace-implies-removable-gauge": r"inrush|transient\w*|energiz\w*|energis\w*|saturat\w*",
     "apparent-power-limit-implies-current-admissibility": r"dynamic\w*|transient\w*|nameplate|manufacturer|temperature|heating",
     "delta-coil-currents-are-terminal-currents": r"inrush|transient\w*|energiz\w*|energis\w*|saturat\w*",
 }
 
 ROUTER_TOPIC_PATTERNS = {
+    "nullspace-implies-removable-gauge": (r"nullspace|kernel|null|gauge|quotient\w*|symmetr\w*",),
     "convex-rating-implies-convex-opf": (
         r"convex|nonconvex|convexity", r"limit\w*|rating\w*|cap\w*", r"power|current\w*|opf|rating\w*",
     ),

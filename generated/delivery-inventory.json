@@ -23,6 +23,7 @@
       "ARCH-RECOVERY-002",
       "ARCH-RECOVERY-003",
       "ARCH-RECOVERY-004",
+      "KERNEL-OBSERVATION-001",
       "LIMIT-MULTIPLICITY-001",
       "LIMIT-NEUTRAL-001",
       "LOAD-CONNECTION-002",
@@ -49,11 +50,11 @@
       "TR-XFMR-005",
       "TR-XFMR-006"
     ],
-    "total": 120,
+    "total": 121,
     "verification": {
       "externally-reviewed": 0,
       "independently-implemented": 6,
-      "self-checked": 114
+      "self-checked": 115
     }
   },
   "knowledge": {
@@ -96,6 +97,7 @@
         "PSK-000017"
       ],
       "nodal-operator-is-source-network": [],
+      "nullspace-implies-removable-gauge": [],
       "numeric-round-trip-preserves-field-meaning": [],
       "one-universal-network-graph": [],
       "parallel-admittance-implies-decision-equivalence": [
@@ -136,7 +138,7 @@
       ],
       "zero-parameter-means-absent-term": []
     },
-    "total": 33,
+    "total": 34,
     "unlinked_ids": [
       "apparent-power-limit-implies-current-admissibility",
       "convex-rating-implies-convex-opf",
@@ -144,6 +146,7 @@
       "ideal-transformer-is-a-large-admittance",
       "loads-generators-fixed-graph-membership",
       "nodal-operator-is-source-network",
+      "nullspace-implies-removable-gauge",
       "numeric-round-trip-preserves-field-meaning",
       "one-universal-network-graph",
       "power-balance-enforces-kcl-at-zero-voltage",
@@ -155,12 +158,12 @@
       "zero-parameter-means-absent-term"
     ]
   },
-  "pair_sha256": "a5490adb1ffc007c4664265ac6a61f01be7e28597bc21e7baa08e16bac8c3bab",
+  "pair_sha256": "2b1130edf2640ec57d3e4df2e1705a6d7fd2e4ae5c13e9e9d26cd5e63116f769",
   "schema_version": "1.0.0",
   "source_sha256": {
-    "claims/claims.toml": "c87597c9d1ba395c88a3ad68c069228836b7c3dd2d66140d93fe61046ad9fe5c",
-    "generated/federated-knowledge-pair-manifest.json": "f847fd0842007e11a1f17686d6332206f3b0a8bfdaed4e2b1c54c680338b4b4d",
+    "claims/claims.toml": "e348709a2f265c6bc79536b0d7b59d016d8aff330204572375f9047fd97203ba",
+    "generated/federated-knowledge-pair-manifest.json": "acc3f8ed35672afdd39391287aa75f7a101ccf1d858a6c93b7c3f1675ed8ca77",
     "knowledge/psk.toml": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364",
-    "llm/misconceptions.toml": "0da71ff000e84c24b7eb00aa124d12bcd2c2b180a53af39b8fd69c6e02907461"
+    "llm/misconceptions.toml": "5f952a6bf57561105d92c41c434a26723b84f4cd06da4d1bd91517e1fc85c7ac"
   }
 }

@@ -1052,3 +1052,33 @@ required_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001", "PRACTICE-S
 required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
 required_answer_elements = ["nonzero neutral voltage does not equate current and power caps", "keep source, series and coil current observations distinct", "distinguish signed complex-power sum from sum of magnitudes", "retain the separate source earth reaction in KCL"]
 forbidden_simplifications = ["aggregate power certifies every conductor current", "source current is always the series current", "zero ground power certifies its current", "postprocessed aggregate cap is a native constraint"]
+
+[[case]]
+case_id = "EVAL-QUOTIENT-STUDENT"
+audience = "student"
+question = "Does a nullspace always mean a removable gauge freedom?"
+misconception_id = "nullspace-implies-removable-gauge"
+required_claim_ids = ["KERNEL-OBSERVATION-001"]
+required_concept_ids = ["ground-neutral-reference", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["declare full equations and observation map", "distinguish reference symmetry from observable member currents", "check coil laws beyond terminal-map kernels", "retain constraints objective and admissible recovery"]
+forbidden_simplifications = ["all null modes are reference conventions", "terminal-map kernel proves free device current", "projected feasibility certifies any lifted split", "Jacobian null vector proves a finite solution family"]
+
+[[case]]
+case_id = "EVAL-QUOTIENT-SOFTWARE"
+audience = "software_engineer"
+question = "Can I use gauge fixing to remove current circulation without checking member observations?"
+misconception_id = "nullspace-implies-removable-gauge"
+required_claim_ids = ["KERNEL-OBSERVATION-001"]
+required_concept_ids = ["ground-neutral-reference", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["declare full equations and observation map", "distinguish reference symmetry from observable member currents", "check coil laws beyond terminal-map kernels", "retain constraints objective and admissible recovery"]
+forbidden_simplifications = ["all null modes are reference conventions", "terminal-map kernel proves free device current", "projected feasibility certifies any lifted split", "Jacobian null vector proves a finite solution family"]
+
+[[case]]
+case_id = "EVAL-QUOTIENT-POWER"
+audience = "power_engineer"
+question = "Does a delta kernel imply a free device current after coil laws are imposed?"
+misconception_id = "nullspace-implies-removable-gauge"
+required_claim_ids = ["KERNEL-OBSERVATION-001"]
+required_concept_ids = ["ground-neutral-reference", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["declare full equations and observation map", "distinguish reference symmetry from observable member currents", "check coil laws beyond terminal-map kernels", "retain constraints objective and admissible recovery"]
+forbidden_simplifications = ["all null modes are reference conventions", "terminal-map kernel proves free device current", "projected feasibility certifies any lifted split", "Jacobian null vector proves a finite solution family"]

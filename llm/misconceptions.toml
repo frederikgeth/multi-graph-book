@@ -428,3 +428,16 @@ operational_consequence = "A lifted power disk can move nonconvexity into coupli
 mandatory_claim_ids = ["LIMIT-CONVEXITY-001", "LIMIT-MULTIPLICITY-001"]
 mandatory_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
 source_paths = ["docs/src/cases/unintended-solution-multiplicity.md", "experiments/lessons/solution_multiplicity.py"]
+
+[[misconception]]
+id = "nullspace-implies-removable-gauge"
+title = "Every nullspace direction is a removable reference freedom"
+severity = "critical"
+query_patterns = ["nullspace removable gauge", "null mode reference symmetry", "current circulation gauge fixing", "delta kernel free device current", "nullspace dimension physical freedom", "quotient current modes observation recovery"]
+tempting_answer = "Any rank deficiency is only a reference convention, so fix a coordinate and discard its null mode."
+required_qualification = "Declare the full equations, feasible domain, observation map, constraints, objective and recovery. A floating common-potential shift can preserve difference-only observations, whereas ideal current circulation changes member currents and ratings. A delta terminal-map kernel need not survive the coil laws. An existential aggregate projection with admissible recovery does not identify the physical member split. A nonlinear Jacobian null vector alone does not prove a finite solution symmetry."
+safe_shorthand = "A matrix kernel identifies what that map cannot see; check the full model and requested observations before removing it."
+operational_consequence = "Gauge fixing can discard a rating-relevant current or accept a terminal-invisible violation of a device law; a reduced aggregate answer may require an explicit admissible lift."
+mandatory_claim_ids = ["KERNEL-OBSERVATION-001"]
+mandatory_concept_ids = ["ground-neutral-reference", "flow-current-power-message", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/cases/quotients-and-observations.md"]

@@ -362,3 +362,7 @@ implementation. It matches all convergence flags, every converged voltage and
 residual row, and the CP failure scale. This independently reproduces the
 algorithm-scoped observation; it still does not convert iteration failure into
 an infeasibility certificate or a mathematically continued nose curve.
+
+The [quotient and observation lesson](@ref quotients-and-observations) closes
+the delta terminal-map example with explicit resistive coil laws: an unchanged
+terminal current and total power can coexist with a failed coil equation.
