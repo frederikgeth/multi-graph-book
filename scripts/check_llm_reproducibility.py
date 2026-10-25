@@ -19,6 +19,7 @@ CHECKS = [
     [PYTHON, "scripts/evaluate_llm_adversarial.py", "--check"],
     [PYTHON, "scripts/check_llm_routes.py"],
     [PYTHON, "scripts/test_mcp_protocol.py"],
+    [PYTHON, "scripts/test_integration_profile.py"],
     [PYTHON, "scripts/check_llm_answer_contract.py"],
 ]
 # scripts/check_neural_benchmark.py is deliberately excluded: it pins a

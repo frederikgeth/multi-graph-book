@@ -1,0 +1,11 @@
+{
+  "environment_sha256": {
+    "Manifest.toml": "0443fd50724b84694b2c57db033a12a02c93c2255dee4a53a08d7ff6ccfa3979",
+    "Project.toml": "2462f9e2e1c3e4038a01fb66323506a9729ee0ae4bbf10cf3767e51e4a2e3a3b"
+  },
+  "git_tree_sha1": "457c799b216cd6b4010405570534faa4b9edf9a5",
+  "julia_version": "1.12.6",
+  "repository": "frederikgeth/BMOPFTools.jl",
+  "revision": "97c274946091859b7d9b0e822c96f1e7f9f50c7e",
+  "schema_version": "1.0.0"
+}

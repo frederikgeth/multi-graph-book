@@ -1178,7 +1178,7 @@
     },
     "router": {
       "path": "scripts/llm_retrieval.py",
-      "sha256": "4b47ad0abeea98d17955fa372579d118c38c44526238d0ec229183508ffc50c2"
+      "sha256": "2d425c5d2d666c0142a67a1f2922f45d79425cfd9f6ed0cc66d89716a47b4e7d"
     }
   },
   "purpose": "deterministic adversarial and metamorphic retrieval checks; not human-calibrated evidence",

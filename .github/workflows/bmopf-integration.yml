@@ -1,0 +1,55 @@
+name: pinned-bmopf-integration
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: book
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: book
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read and validate immutable integration profile
+        id: pin
+        run: |
+          python3 scripts/check_bmopf_integration.py --check-profile
+          python3 - <<'PY'
+          import json, os
+          pin = json.load(open('experiments/integration/profile.json'))
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              print('revision=' + pin['revision'], file=output)
+              print('julia=' + pin['julia_version'], file=output)
+          PY
+      - uses: actions/checkout@v4
+        with:
+          repository: frederikgeth/BMOPFTools.jl
+          ref: ${{ steps.pin.outputs.revision }}
+          path: BMOPFTools.jl
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: ${{ steps.pin.outputs.julia }}
+      - uses: julia-actions/cache@v2
+      - name: Check deterministic knowledge and integration guards
+        run: |
+          python3 scripts/check_llm_reproducibility.py
+      - name: Check pinned package exports, recipes, contracts and verification lesson
+        run: python3 scripts/check_bmopf_integration.py --bmopf-root ../BMOPFTools.jl --output "$RUNNER_TEMP/bmopf-integration"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bmopf-integration-evidence
+          path: ${{ runner.temp }}/bmopf-integration
+          if-no-files-found: ignore

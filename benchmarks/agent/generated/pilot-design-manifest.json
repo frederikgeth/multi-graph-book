@@ -1,6 +1,6 @@
 {
   "benchmark_id": "ABENCH-PARALLEL-LIMITS-001",
-  "benchmark_manifest_sha256": "eeb1da1073c1001a74b952594979d11b734d24eed5163f985b237f6fedde98cf",
+  "benchmark_manifest_sha256": "800ece1d621454582f6ead434b3ff8969ae44650dadd0f05376cde60fbf9fb72",
   "dry_run_status": "synthetic_dry_run_harness_only_not_agent_results",
   "human_review_gate": "reviewed_changes_required_before_preregistration_or_execution",
   "local_sources": [
@@ -26,7 +26,7 @@
     },
     {
       "path": "benchmarks/agent/pilot/dry-runs/conforming-c6-run.json",
-      "sha256": "f7934e7e21468fe2d12d5b0c3b25868e4224bc24762350da0be4a8bdc0c1af42"
+      "sha256": "af82358029a4314085bcc331cd48b5abb122bb52afc0f48abdae703f16d36b39"
     },
     {
       "path": "benchmarks/agent/pilot/dry-runs/unsafe-c0-run.json",
@@ -43,8 +43,8 @@
     "bmopftools_executable_corpus_sha256": "645e6b365ab1c85583746dc7c0704ed2685daab23c184f46758cf08c61f76069",
     "bmopftools_manifest_sha256": "e6bc63cd20da3505fbb251e2d48add4c58f0e6a7e199d6be5206c49e881159a2",
     "book_llm_corpus_sha256": "48c3cd96d84c4d23118dfd66aec868d8b5480081cff97ad650844308d7e2a959",
-    "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-    "federated_pair_sha256": "b8574f4b3ba035fdc5f3893687295f3fd9bb975d4b27876787ff6eba19b52f24"
+    "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.2.0",
+    "federated_pair_sha256": "ea10a25e631f34d01fe14ea0e6a379242df4f7bbb6561c72773e2ef88bc5cd42"
   },
   "resource_sources": {
     "BMOPFTools.jl": [
@@ -100,7 +100,7 @@
       },
       {
         "path": "ARCHITECTURE.md",
-        "sha256": "38a6c1a1988034dc3c2f2fdce5474af4327c47b723ed727163621c1992377533"
+        "sha256": "596ba74ec16acdee3f7b7b807a9c9f39cc2a2d69d2f28157a7f78cae31801085"
       },
       {
         "path": "docs/src/start/first-failure-parallel-branches.md",
@@ -124,7 +124,7 @@
       },
       {
         "path": "scripts/mcp_llm_server.py",
-        "sha256": "977d9188d5f4f54741cb8699ca0d7c35d6193e415d1b017318e6fbede37147a7"
+        "sha256": "779747dbc47e2f838cf9d4384fa2a027a56740ea0787935a3feb0cdb48795a70"
       }
     ]
   },

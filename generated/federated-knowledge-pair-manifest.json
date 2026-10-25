@@ -17,6 +17,7 @@
       "unit_base_serialization_invariance"
     ],
     "corpus_sha256": "645e6b365ab1c85583746dc7c0704ed2685daab23c184f46758cf08c61f76069",
+    "integration_profile_sha256": "adab825c34cc52b2d942548bf58cdb858e190ac4736cff6cca213fe90881f525",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -108,6 +109,7 @@
       "recipe": 6
     },
     "repository": "frederikgeth/BMOPFTools.jl",
+    "revision": "97c274946091859b7d9b0e822c96f1e7f9f50c7e",
     "schema_version": "0.6.0"
   },
   "book": {
@@ -564,7 +566,7 @@
       "repository": null
     }
   },
-  "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
-  "pair_sha256": "b8574f4b3ba035fdc5f3893687295f3fd9bb975d4b27876787ff6eba19b52f24",
-  "schema_version": "0.1.0"
+  "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.2.0",
+  "pair_sha256": "ea10a25e631f34d01fe14ea0e6a379242df4f7bbb6561c72773e2ef88bc5cd42",
+  "schema_version": "0.2.0"
 }
