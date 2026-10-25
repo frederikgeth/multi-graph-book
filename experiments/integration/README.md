@@ -33,6 +33,13 @@ edit requiring rebuilding, and a retained infeasible scenario followed by
 recovery. It uses the public staging and `resolve_opf!` APIs at the published
 pin. A separate unrefreshed nonlinear cache probe is diagnostic evidence for
 the recorded versions; reproducing its failure is not an acceptance criterion.
+The multiplicity companion writes `solution-multiplicity.json`, recording
+branch-isolating intervals, both-end apparent-power versus current constraints,
+all multistart attempts, a neutral minimum-norm selection, and original-law
+checks on spurious power-balance roots. Its exact Python artifact is checked
+separately; solver observations do not establish root completeness or stability.
+These scalar JuMP models use this lock but do not validate native BMOPFTools
+device implementations.
 Its log, `run.json`, and `verification.json` retain the exact package and book
 identities, environment hashes, book dirty state, commands and outcome.
 The runner sets `JULIA_LOAD_PATH` to this locked environment and `@stdlib`,

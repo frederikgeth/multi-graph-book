@@ -52,8 +52,10 @@ def main() -> int:
             "scripts/check_bmopf_integration.py", "scripts/integration_profile.py",
             "scripts/check_federated_knowledge.py", "experiments/running_network.jl",
             "experiments/lessons/verify_running_network.jl", "experiments/lessons/transformer_ports.jl",
-            "experiments/lessons/parameter_reuse.jl", "experiments/lessons/parameter_reuse.py")},
-        "scope": "package-owned export, contract, property, execution and MCP tests; scoped running-network verification; parameter reuse and failure-state lesson",
+            "experiments/lessons/parameter_reuse.jl", "experiments/lessons/parameter_reuse.py",
+            "experiments/lessons/solution_multiplicity.jl", "experiments/lessons/solution_multiplicity.py",
+            "experiments/lessons/solution_multiplicity.json", "experiments/generated/solution-multiplicity.json")},
+        "scope": "package-owned export, contract, property, execution and MCP tests; scoped running-network verification; parameter reuse, failure-state and solution-multiplicity lessons",
         "julia_load_path": runtime_env["JULIA_LOAD_PATH"],
         "not_established": ["full package test suite", "independent all-device feasibility", "global optimality", "physical model adequacy"],
         "commands": [],
@@ -92,6 +94,8 @@ def main() -> int:
         run(julia + ["experiments/lessons/verify_running_network.jl", str(output / "verification.json")])
         run(julia + ["experiments/lessons/transformer_ports.jl", str(output / "transformer-ports.json")])
         run(julia + ["experiments/lessons/parameter_reuse.jl", str(output / "parameter-reuse.json")])
+        run([sys.executable, "experiments/lessons/solution_multiplicity.py", "--check"])
+        run(julia + ["experiments/lessons/solution_multiplicity.jl", str(output / "solution-multiplicity.json")])
         load_profile()
         validate_checkout(package, profile)
         record["status"] = "passed"
