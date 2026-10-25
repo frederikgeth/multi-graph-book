@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `730474e5f41ab650eadc21bff4c8f11acc650bb04fe5bbc73a4c868f33d8b765`<br>
+**Corpus hash:** `8a39e3278cc3781a662e2d9b6f60c7a342a6cf06a09053dea820f9f1c8d40fb5`<br>
 **Cases:** 108
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -45,7 +45,7 @@ the question count must not be treated as that many independent observations.
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `lexical` | 33.6% | 42.6% | 0.0% | 0/33 | 6/33 | 0.195 |
 | `char_tfidf` | 34.1% | 43.4% | 0.0% | 0/33 | 6/33 | 0.220 |
-| `hybrid` | 35.4% | 46.0% | 0.0% | 0/33 | 6/33 | 0.211 |
+| `hybrid` | 35.0% | 46.0% | 0.0% | 0/33 | 6/33 | 0.213 |
 | `graph` | 37.5% | 58.9% | 18.2% | 6/33 | 3/33 | 0.249 |
 
 Held-out contract-router firing: **22/33 (66.7%)**; release floor: **66.7%**.
@@ -94,9 +94,9 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 36 | 100.0% | 42.4% | 100.0% |
+| `power_engineer` | 36 | 100.0% | 42.9% | 100.0% |
 | `software_engineer` | 36 | 100.0% | 38.3% | 100.0% |
-| `student` | 36 | 100.0% | 45.8% | 100.0% |
+| `student` | 36 | 100.0% | 45.4% | 100.0% |
 
 ## Case results
 
@@ -110,7 +110,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | `EVAL-YSPLIT-POWER` | `power_engineer` | `loads-generators-fixed-graph-membership` | 50.0% | yes |
 | `EVAL-YBUS-STUDENT` | `student` | `nodal-operator-is-source-network` | 80.0% | yes |
 | `EVAL-YBUS-SOFTWARE` | `software_engineer` | `nodal-operator-is-source-network` | 60.0% | yes |
-| `EVAL-YBUS-POWER` | `power_engineer` | `nodal-operator-is-source-network` | 20.0% | yes |
+| `EVAL-YBUS-POWER` | `power_engineer` | `nodal-operator-is-source-network` | 40.0% | yes |
 | `EVAL-PARALLEL-STUDENT` | `student` | `parallel-admittance-implies-decision-equivalence` | 66.7% | yes |
 | `EVAL-PARALLEL-SOFTWARE` | `software_engineer` | `parallel-admittance-implies-decision-equivalence` | 16.7% | yes |
 | `EVAL-PARALLEL-POWER` | `power_engineer` | `parallel-admittance-implies-decision-equivalence` | 50.0% | yes |
@@ -198,7 +198,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | `EVAL-PARAMETER-REUSE-STUDENT` | `student` | `zero-parameter-means-absent-term` | 25.0% | yes |
 | `EVAL-PARAMETER-REUSE-SOFTWARE` | `software_engineer` | `zero-parameter-means-absent-term` | 25.0% | yes |
 | `EVAL-PARAMETER-REUSE-POWER` | `power_engineer` | `zero-parameter-means-absent-term` | 25.0% | yes |
-| `EVAL-SOLUTION-MULTIPLICITY-STUDENT` | `student` | `apparent-power-limit-implies-current-admissibility` | 57.1% | yes |
+| `EVAL-SOLUTION-MULTIPLICITY-STUDENT` | `student` | `apparent-power-limit-implies-current-admissibility` | 42.9% | yes |
 | `EVAL-SOLUTION-MULTIPLICITY-SOFTWARE` | `software_engineer` | `apparent-power-limit-implies-current-admissibility` | 28.6% | yes |
 | `EVAL-SOLUTION-MULTIPLICITY-POWER` | `power_engineer` | `apparent-power-limit-implies-current-admissibility` | 57.1% | yes |
 | `EVAL-LIMIT-CONVEXITY-STUDENT` | `student` | `convex-rating-implies-convex-opf` | 60.0% | yes |

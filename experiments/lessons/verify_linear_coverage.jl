@@ -80,6 +80,10 @@ function linear_coverage_lesson()
     multiphase_fixture_path = joinpath(root,"test","data","linear_audit","multiphase-winding.json")
     include(multiphase_path)
     multiphase_evidence = Base.invokelatest(()->getfield(@__MODULE__,:MultiphaseWindingAuditExample).run())
+    delta_path = joinpath(root,"examples","delta_winding_audit.jl")
+    delta_fixture_path = joinpath(root,"test","data","linear_audit","delta-winding.json")
+    include(delta_path)
+    delta_evidence = Base.invokelatest(()->getfield(@__MODULE__,:DeltaWindingAuditExample).run())
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -242,6 +246,35 @@ function linear_coverage_lesson()
         @test me["candidate"]["transformer"]["t"]["loss"]["q_loss"] ≈ 1.3143973350524902 atol=1e-7
         @test JSON3.read(JSON3.write(me),Dict{String,Any}) == me
     end
+    @testset "DELTA transformer incidence and internal-current teaching route" begin
+        de=delta_evidence
+        drow(key,id)=only(filter(x->x["id"]==id,de[key]["rows"]))
+        @test de["analytic"]["status"]=="passed"
+        @test de["native"]["accepted"]
+        @test de["native"]["termination_status"] in ("LOCALLY_SOLVED","OPTIMAL")
+        @test de["native"]["audit"]["coverage_complete"]
+        @test de["rotation_corruption"]["status"]=="failed"
+        @test de["missing_coil_current"]["status"]=="indeterminate"
+        @test drow("missing_coil_current","network.power")["residual"]===nothing
+        @test de["neutral_bearing_delta"]["status"]=="indeterminate"
+        @test de["zero_circulation"]["status"]=="passed"
+        @test de["circulating_overload"]["status"]=="failed"
+        @test de["circulating_overload"]["failed_checks"]==6
+        @test de["circulating_overload"]["unassessed_checks"]==0
+        @test drow("circulating_overload","network.power")["status"]=="passed"
+        @test drow("analytic","transformer.t.w1.line_observations")["terminal_currents_out_A"]["a"]≈[.875,-.375]
+        @test drow("analytic","transformer.t.winding_observations.coil1")["coil_currents_A"][1]≈[.5,-.25]
+        for k in 1:2
+            id="transformer.t.w$k.line_observations"
+            obs=drow("circulating_overload",id)
+            @test obs["status"]=="reconstructed" && obs["residual"]===nothing
+            @test obs["terminal_currents_out_A"]==drow("zero_circulation",id)["terminal_currents_out_A"]
+            @test all(v->v==[0.,0.],values(obs["terminal_currents_out_A"]))
+        end
+        @test de["native"]["candidate"]["bus"]["w2"]["a"]["vr"]≈7.875 atol=1e-7
+        @test de["native"]["candidate"]["transformer"]["t"]["loss"]["p_loss"]≈2.759429931640625 atol=1e-7
+        @test JSON3.read(JSON3.write(de),Dict{String,Any})==de
+    end
     active = dirname(Base.active_project())
     Dict{String,Any}(
         "evidence_state"=>"local_package_candidate_not_promoted_to_published_integration_pin",
@@ -250,7 +283,8 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path]),
+        "delta_winding_example"=>delta_evidence,
         "multiphase_winding_example"=>multiphase_evidence,
         "winding_list_example"=>winding_evidence,
         "fixed_transformer_example"=>transformer_evidence,

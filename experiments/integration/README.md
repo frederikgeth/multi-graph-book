@@ -108,7 +108,7 @@ covered by the extended API, together with fixed ideal switches, bounded
 WYE/SINGLE_PHASE generator injections/limits, applicable phase-to-earth bus
 voltage bounds and fixed single-coil single_phase transformers with legacy
 secondary excitation, plus two/three-winding WYE transformers with matched one-to-three phase-neutral coils and
-explicit pairwise leakage. DELTA generators, generator costs/controllers, transformer
+explicit pairwise leakage, plus matched three-terminal DELTA winding incidence/rotation. DELTA generators, generator costs/controllers, transformer
 variants/limits outside that narrow slice, voltage-dependent loads, other voltage families and objective
 evaluation remain open. Source-fixed/grounded bus-bound declarations are
 explicitly unassessed because the native builder skips their application.
@@ -200,4 +200,19 @@ coil despite the sum of coil magnitudes being about 10.140 VA. It checks native
 and analytic results, allocated cap reports, phase-order corruption, neutral
 reconstruction and missing coil/earth-reaction observations. Multiphase evidence
 uses explicit coil-indexed rows; the original one-coil row IDs remain stable.
-The running network still has unassessed DELTA/top-level nameplate semantics.
+The running network still has unassessed top-level nameplate semantics.
+
+
+The companion also invokes `examples/delta_winding_audit.jl` and binds
+`delta-winding.json`. A finite-leakage DELTA/WYE fixture checks declared phase
+order, rotation, coil-to-line current reconstruction and native SI agreement.
+A separate ideal equal-ratio DELTA/DELTA boundary has zero terminal line currents
+but ±1 A internal circulation: all six 0.75 A coil caps fail while equations,
+KCL and power pass. The output retains both zero and nonzero internal states,
+wrong rotation, missing internal current and a neutral-bearing-map refusal.
+Native build validation rejects DELTA maps carrying a neutral; that boundary is
+covered by package tests. The audit requires internal coil observations and
+uses s_max/3 at actual line-to-line coil voltage. Top-level `s_rating`,
+two-terminal DELTA, unmatched coils, taps and internal coordinates remain
+unassessed. The running network still has 34 unassessed rows. The published
+integration pin, PSK implementation statuses and execution MCP remain unchanged.

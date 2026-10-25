@@ -861,8 +861,8 @@ the rating semantics of a winding-list model. The next local candidate checks
 two or three WYE windings with one phase-neutral coil each, fixed nominal
 ratios, explicit pairwise short-circuit reactances, and excitation on winding 2.
 It uses the native `n_winding` equations, independently evaluated in SI units.
-The running network's multiphase WYE/DELTA arrangement remains outside this
-slice; its 34 unassessed rows are not removed by this smaller witness.
+This smaller witness does not remove the running network's 34 unassessed rows;
+its top-level rating and other unsupported declarations remain separate obligations.
 
 Let ``U_k`` denote phase-minus-neutral coil voltage and ``I_k`` bare coil
 current, positive **into** the transformer at every winding. Define
@@ -1050,12 +1050,95 @@ environment in `experiments/integration/README.md`. It invokes
 unequal-phase overload, wrong cap report, phase-order corruption, missing coil
 current and missing earth reaction. Tests also cover a two-phase case with exact
 neutral cancellation and consistent phase permutations. Missing a required coil
-current leaves network KCL/power **unassessed**. DELTA windings, unmatched coil
-counts, taps, top-level `s_rating` and internal coordinate fields remain outside
-this slice; the running network remains indeterminate.
+current leaves network KCL/power **unassessed**. The next section extends the
+incidence to DELTA; unmatched coil counts, taps, top-level `s_rating` and internal
+coordinate fields remain outside this slice. The running network remains indeterminate.
 
 **Transfer exercise.** For this point, the smallest equally allocated total
 rating is ``3\max_p|S_{2p}|≈14.921637`` VA, rather than the 10.139652 VA sum.
 At that rating coil 1 is exactly on its boundary. For two coils, repeat the
 allocation using division by two, even if their currents cancel in the neutral.
 Zero neutral current does not imply zero coil power or spare phase capacity.
+
+
+### [DELTA line currents cannot reveal internal circulation](@id delta-winding-audit)
+
+The [coil-incidence lesson](@ref delta-coil-current-lesson) distinguishes a
+coil current from its terminal observation. The next local package candidate
+applies that distinction to two/three-winding transformers. A supported DELTA
+winding has exactly three distinct phase terminals and no neutral in its map;
+other devices at the same bus may still use a neutral. Its ordered phases and
+rotation define the directed coil pairs. For phase order ``(a,b,c)``, rotation
+``+1`` gives ``(a,b),(b,c),(c,a)``; rotation ``-1`` gives
+``(a,c),(b,a),(c,b)``. These are conventions relative to the declared order,
+not standalone vector-group labels.
+
+Let ``D`` have one row per coil, with +1 at its first terminal and -1 at its
+second. The voltage/current pairing is
+
+```math
+U=Dv,\qquad I_{\mathrm{port}}=I_{\mathrm{coil}}+I_{\mathrm{exc}},\qquad
+I_{\mathrm{line}}=D^{\mathsf T}I_{\mathrm{port}},\qquad
+v^{\mathsf T}\overline{I_{\mathrm{line}}}
+=U^{\mathsf T}\overline{I_{\mathrm{port}}}.
+```
+
+Excitation is present only on winding 2 in this native model. The independent
+audit enumerates the pairs directly, then evaluates the same per-coil leakage
+and ampere-turn equations as before. It reconstructs bus line currents with the
+power-dual incidence and marks them **reconstructed**, without a residual or an
+independent-measurement claim. WYE neutral-return rules do not apply to DELTA.
+
+**Predict:** if the bare coil current is ``0.5-0.25\mathrm j`` A but the line
+current at a is ``0.875-0.375\mathrm j`` A, does a native 0.6 A winding
+`i_max` pass? In this implementation it does: that limit bounds each **bare
+coil**, whose magnitude is approximately 0.559 A, rather than the approximately
+0.952 A line current. The package-owned `delta-winding.json` fixture supplies
+this finite-leakage DELTA/WYE point, with rotation -1, winding-2 excitation,
+explicit internal currents and SI voltage/current reports. A native solve
+agrees with the analytic point and passes the independent audit. The scalar
+`s_max/3` allocation uses actual line-to-line coil voltage for DELTA.
+
+Now consider the separate **ideal zero-leakage, zero-excitation** DELTA/DELTA
+boundary. Both windings have equal nominal ratio, identical terminal voltages,
+and the same rotation. A constant current on every coil lies in the kernel of
+``D^{\mathsf T}``. Compare these two supplied internal states:
+
+| Observation or check | Zero internal current | -1 A on each winding-1 coil; +1 A on each winding-2 coil |
+|:--|:--|:--|
+| Terminal voltages | Same supplied voltages | Same supplied voltages |
+| Line currents at all six phase terminals | Zero | Zero |
+| Per-coil ampere-turn and ideal voltage equations | Pass | Pass |
+| Terminal KCL and total power | Pass | Pass |
+| Six bare-coil limits of 0.75 A | Pass | Each fails by 0.25 A |
+
+The two states have identical terminal observations but different coil-loading
+verdicts. Even complete line-current measurements cannot recover this internal
+circulation without additional information. The witness uses an ideal boundary:
+adding positive winding resistance makes this particular circulating point
+violate the voltage equation. It does not establish arbitrary circulation with
+strictly passive leakage, magnetic realisability, or which state a solver selects.
+
+**Inspect:** `examples/delta_winding_audit.jl`, invoked by the source-bound
+`verify_linear_coverage.jl` companion, retains the finite analytic/native point,
+rotation corruption, missing coil current, refused neutral-bearing map, both
+ideal states and the six rating violations. Tests also construct mixed and
+all-DELTA two/three-winding points from independent star-arm laws, exercise
+excitation on DELTA winding 2, and distinguish consistent reindexing from a
+changed connection. Missing an internal current suppresses network KCL/power
+certification even when line currents could appear to close.
+
+Neutral-bearing DELTA remains explicitly **unassessed**. Inspection of the
+complete native build path found that validation rejects a DELTA map containing
+a neutral before constraints are stamped; a rejection test records that boundary.
+This audit
+accepts only the three-terminal closed incidence above. Two-terminal DELTA,
+unmatched coils, taps, internal coordinates and top-level `s_rating` also remain
+unassessed. The running network retains 34 unassessed obligations. The published
+package pin and execution MCP surface are unchanged.
+
+**Transfer exercise.** Cyclically reorder every winding's coil positions and
+its current reports together: the verdict should remain unchanged. Then change
+only `delta_roll` while keeping phase order and reports fixed: which coil voltage
+and line-current equations change? Finally, explain why neither summing terminal
+power nor setting an unavailable coil current to zero can certify its rating.
