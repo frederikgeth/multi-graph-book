@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `5cdab3c59d169b2a29347210fc35a4929c04694b93c730950d9e32066f6bff65`<br>
+**Corpus hash:** `d8075ded8be293183093f6d3d2496e1878f73f1b86cc7a651120f78a84075c2b`<br>
 **Cases:** 108
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -43,7 +43,7 @@ the question count must not be treated as that many independent observations.
 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `lexical` | 33.0% | 42.6% | 0.0% | 0/33 | 6/33 | 0.196 |
+| `lexical` | 33.0% | 42.6% | 0.0% | 0/33 | 6/33 | 0.195 |
 | `char_tfidf` | 34.1% | 43.4% | 0.0% | 0/33 | 6/33 | 0.219 |
 | `hybrid` | 35.4% | 46.0% | 0.0% | 0/33 | 6/33 | 0.211 |
 | `graph` | 37.5% | 58.2% | 18.2% | 6/33 | 3/33 | 0.249 |

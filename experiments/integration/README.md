@@ -105,9 +105,10 @@ Next promotion requires completing/reviewing the desired device coverage,
 publishing the package commit, deliberately updating the ordinary integration
 pin and regenerating the federated pair. The native default-role source-neutral return and constant-power loads are now
 covered by the extended API, together with fixed ideal switches, bounded
-WYE/SINGLE_PHASE generator injections/limits and applicable phase-to-earth bus
-voltage bounds. DELTA generators, generator costs/controllers, transformer
-equations/limits, voltage-dependent loads, other voltage families and objective
+WYE/SINGLE_PHASE generator injections/limits, applicable phase-to-earth bus
+voltage bounds and fixed single-coil single_phase transformers with legacy
+secondary excitation. DELTA generators, generator costs/controllers, transformer
+variants/limits outside that narrow slice, voltage-dependent loads, other voltage families and objective
 evaluation remain open. Source-fixed/grounded bus-bound declarations are
 explicitly unassessed because the native builder skips their application.
 
@@ -169,3 +170,12 @@ return-current overload, missing current and skipped source-voltage bound as
 separate evidence. The package fixture, example and companion are source-bound
 in the output. It uses the existing candidate environment and command above;
 no package API is reimplemented in the book.
+
+
+The companion also runs `examples/fixed_transformer_audit.jl` with
+`fixed-transformer.json`: a nonunit fixed tap, finite complex leakage and
+secondary excitation distinguish reported series currents from terminal currents.
+It checks a native solve, current/loss identities, a tighter terminal cap,
+series/terminal confusion, missing series current and unsupported adjustable tap.
+The new subtype support does not assess the running network's `n_winding`
+transformer, so that example remains indeterminate with 34 unassessed rows.

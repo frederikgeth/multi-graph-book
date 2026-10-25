@@ -68,6 +68,10 @@ function linear_coverage_lesson()
     generator_fixture_path = joinpath(root,"test","data","linear_audit","generator-voltage.json")
     include(generator_path)
     generator_evidence = Base.invokelatest(()->getfield(@__MODULE__,:GeneratorVoltageAuditExample).run())
+    transformer_path = joinpath(root,"examples","fixed_transformer_audit.jl")
+    transformer_fixture_path = joinpath(root,"test","data","linear_audit","fixed-transformer.json")
+    include(transformer_path)
+    transformer_evidence = Base.invokelatest(()->getfield(@__MODULE__,:FixedTransformerAuditExample).run())
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -153,6 +157,31 @@ function linear_coverage_lesson()
         @test occursin("cost",row(connected_coverage,"generator.g1")["reason"])
         @test JSON3.read(JSON3.write(generator_evidence),Dict{String,Any}) == generator_evidence
     end
+    @testset "Fixed transformer series, terminal and loss observations" begin
+        te=transformer_evidence
+        @test te["accepted"]
+        @test te["analytic"]["status"] == "passed"
+        @test te["native_audit"]["coverage_complete"]
+        @test te["series_terminal_confusion"]["status"] == "failed"
+        @test te["terminal_current_overload"]["status"] == "failed"
+        @test te["missing_series_current"]["status"] == "indeterminate"
+        @test te["adjustable_tap"]["status"] == "indeterminate"
+        trow(key,id)=only(filter(x->x["id"]==id,te[key]["rows"]))
+        obs=trow("analytic","transformer.t.terminal_currents")
+        @test obs["to_series_A"] ≈ [-1.,.25]
+        @test obs["excitation_A"] ≈ [.2,-.1]
+        @test obs["to_terminal_A"] ≈ [-.8,.15]
+        @test obs["constitutive_loss_VA"] ≈ [341/320,341/640]
+        @test obs["terminal_power_VA"] ≈ obs["constitutive_loss_VA"]
+        @test trow("analytic","transformer.t.i_max_to")["status"] == "passed"
+        @test trow("terminal_current_overload","network.power")["status"] == "passed"
+        @test trow("missing_series_current","network.power")["residual"] === nothing
+        @test te["candidate"]["bus"]["q"]["x"]["vr"] ≈ 4. atol=1e-7
+        @test te["candidate"]["transformer"]["t"]["to"]["1"]["cm"] > .9
+        @test te["candidate"]["transformer"]["t"]["loss"]["p_loss"] ≈ 341/320 atol=1e-7
+        @test row(connected_coverage,"transformer.n_winding")["status"] == "unassessed"
+        @test JSON3.read(JSON3.write(te),Dict{String,Any}) == te
+    end
     active = dirname(Base.active_project())
     Dict{String,Any}(
         "evidence_state"=>"local_package_candidate_not_promoted_to_published_integration_pin",
@@ -161,7 +190,8 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path]),
+        "fixed_transformer_example"=>transformer_evidence,
         "generator_voltage_example"=>generator_evidence,
         "healthy_tiny_circuit"=>healthy.evidence,
         "tiny_solver_per_unit"=>false, "solved_tiny_circuit"=>tiny_audit.evidence, "tiny_circuit_result"=>tiny_solved,

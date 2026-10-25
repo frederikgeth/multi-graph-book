@@ -544,7 +544,8 @@ are unassessed.
 The separate candidate `audit_solution` now adds default-role source neutral
 returns, implicit source grounding and WYE/SINGLE_PHASE/DELTA constant-power
 load equations, fixed ideal switches, a bounded WYE/SINGLE_PHASE generator
-domain and ordinary phase-to-earth voltage bounds. The same running-network
+domain, ordinary phase-to-earth voltage bounds and a fixed single-coil
+transformer domain. The same running-network
 result has **34 unassessed rows** (35 before this generator/voltage slice):
 11 local power equations across five loads and the source voltage relation are
 now evaluated. Source-return and load-terminal currents are reconstructed from
@@ -739,7 +740,7 @@ grounded terminals. The candidate records those bound obligations as
 For the 10 V source and 9 V upper bound, a native source equation does not enforce
 the declared bound. This slice does not silently label it passed, reinterpret the
 bound as phase-to-neutral, or remove its array index. Other bound families,
-nonfinite/malformed arrays, generator costs/controllers and transformer checks
+nonfinite/malformed arrays, generator costs/controllers and unsupported transformer checks
 retain explicit coverage limits. Known current contributions remain usable when
 only limit/report evidence is missing; missing currents cannot be filled in from
 power by dividing by voltage.
@@ -757,3 +758,98 @@ scientific review or a complete running-network feasibility certificate.
 fails by 0.5 A. Reverse the second phase current: the return then passes, but
 local KCL must be reevaluated against the surrounding circuit. A generator-only
 rating check does not establish a network solution.
+
+
+### [Transformer series currents are not all terminal currents](@id fixed-transformer-audit)
+
+The next local candidate slice covers one explicit terminal pair on each side
+of the native `single_phase` transformer, with fixed tap, finite leakage and
+secondary excitation. It complements the [transformer-port lesson](@ref ideal-transformer-port-lesson)
+by checking supplied native current observations as well as equations. It does
+not cover the running network's `n_winding` device; the running verdict and its
+34 unassessed rows remain unchanged.
+
+Let ``U_f,U_t`` be oriented coil voltages and ``I_f,I_t`` the supplied series
+currents, both positive into their winding. For this native tap convention,
+
+```math
+N_0=V_{\mathrm{nom},f}/V_{\mathrm{nom},t},\qquad
+N=N_0\tau,\qquad Z'=Z_t+Z_f/N_0^2,
+```
+
+```math
+U_f-NU_t=N^2Z'I_f,\qquad NI_f+I_t=0.
+```
+
+The fixed multiplier ``\tau`` changes the effective ratio **and** the
+from-referred leakage ``N^2Z'``. Replacing that leakage with ``Z_f+N^2Z_t``
+agrees at ``\tau=1`` but generally differs away from it. This is a declared
+parameterization of the implemented equivalent circuit, not a universal law
+for every transformer tap or leakage model. Zero leakage is handled directly
+as an ideal voltage relation; no small impedance is inserted.
+
+The excitation admittance ``Y`` lies across the secondary coil. Consequently,
+
+```math
+I_{t,\mathrm{terminal}}=I_t+YU_t,\qquad
+S_{\mathrm{terminal}}=U_f\overline{I_f}
+ +U_t\overline{I_t+YU_t}
+ =Z'|I_t|^2+\overline Y|U_t|^2.
+```
+
+The last equality follows from the voltage and current relations and is
+checked separately. The signed terminal returns enter KCL. The excitation
+current is reconstructed from ``Y,U_t``; this is not an independent excitation
+measurement. Native `fr/1`, `to/1` currents and their `cm` values refer to the
+**series** currents, while `i_max_to` bounds the secondary **terminal** current.
+The positive nameplate `s_rating` bounds from-coil apparent power.
+
+**Predict.** Does a reported secondary `cm` above `i_max_to` necessarily violate
+the implemented terminal-current limit? It does not: the two fields can describe
+different observations when excitation is present.
+
+The fixture uses SI values ``N_0=2``, ``\tau=5/4``,
+``Z_f=1/2+\mathrm j/4`` Ω, ``Z_t=1/8+\mathrm j/16`` Ω and
+``Y=1/20-\mathrm j/40`` S. It gives ``Z'=1/4+\mathrm j/8`` Ω and the exact
+operating point
+
+| Quantity | Value |
+|:--|:--|
+| Primary coil voltage | ``685/64+5\mathrm j/32`` V |
+| Secondary coil voltage | 4 V |
+| Primary series current | ``0.4-0.1\mathrm j`` A |
+| Secondary series current | ``-1+0.25\mathrm j`` A |
+| Excitation current | ``0.2-0.1\mathrm j`` A |
+| Secondary terminal current | ``-0.8+0.15\mathrm j`` A |
+| Load power | ``3.2+0.6\mathrm j`` VA |
+| Transformer loss | ``341/320+341\mathrm j/640`` VA |
+
+The secondary series magnitude is approximately 1.031 A; the terminal magnitude
+is approximately 0.814 A. A 0.9 A terminal cap passes. Tightening only that cap
+to 0.8 A fails while KCL and aggregate power remain satisfied. Replacing the
+series-current report with the terminal current instead fails current coupling
+and KCL. The distinction concerns the specific equivalent-circuit observation;
+it does not, by itself, identify all physical winding hot spots or thermal limits.
+
+The package-owned example also retains a missing series current and an
+adjustable-tap declaration as indeterminate cases. Internal grounding, larger
+winding maps, other transformer subtypes, alternate excitation encodings and
+internal per-unit coordinate fields remain outside this slice. A two-terminal
+map containing a neutral uses that neutral as the return regardless of its
+array position; a map with two phase terminals uses their declared orientation.
+Tests distinguish consistent relabelling from reversing only one physical coil.
+
+Run the same source-bound `verify_linear_coverage.jl` companion using the local
+candidate environment in `experiments/integration/README.md`. It includes
+`examples/fixed_transformer_audit.jl`, the analytic fixture (checked numerically with explicit tolerances), a native
+solve and the mutation evidence. It retains solver and primal status and gates
+acceptance on the independent audit. The successful native point is not a proof
+of uniqueness, global optimality, or general transformer coverage. The published
+package pin and execution MCP route remain unchanged.
+
+**Transfer exercise.** Set both leakage impedances and excitation to zero,
+retain ``N=2.5`` and the same 4 V load point. The primary voltage becomes 10 V,
+primary current ``0.32-0.06\mathrm j`` A, and loss zero. Omitting those zero-valued
+optional fields gives the same native default model. Now restore excitation
+without updating the reported currents: the old ideal solution must be checked
+again against the restored current and power relations.

@@ -97,8 +97,8 @@
         "complete_at_10": false,
         "recall_at_10": 0.833333,
         "top_10": [
-          "concept:equivalence-exactness-preservation",
           "claim:ARCH-SUPPORT-001",
+          "concept:equivalence-exactness-preservation",
           "claim:ARCH-NODAL-001",
           "concept:graph-topology-adjacency",
           "claim:FORMULATION-NODAL-002",
@@ -117,9 +117,9 @@
           "claim:FORMULATION-NODAL-002",
           "claim:FORMULATION-NODAL-003",
           "claim:ARCH-BLOCK-001",
+          "claim:ARCH-RECOVERY-001",
           "claim:ARCH-SUPPORT-001",
           "claim:ARCH-RECOVERY-003",
-          "claim:ARCH-RECOVERY-001",
           "claim:ARCH-NODAL-001",
           "concept:mutual-coupling-relation",
           "claim:FORMULATION-Y-SPLIT-001"
@@ -264,8 +264,8 @@
           "claim:FORMULATION-Y-SPLIT-001",
           "claim:FORMULATION-NODAL-003",
           "claim:LIMIT-CONVEXITY-001",
-          "claim:TR-PAR-002",
           "claim:TR-XFMR-003",
+          "claim:TR-PAR-002",
           "claim:NUMERICAL-001",
           "claim:FORMULATION-NODAL-001"
         ]
@@ -276,9 +276,9 @@
         "top_10": [
           "claim:TR-KRON-FIVE-002",
           "concept:state",
-          "claim:TR-PAR-002",
           "claim:TR-SER-002",
           "claim:FORMULATION-Y-SPLIT-001",
+          "claim:TR-PAR-002",
           "claim:FORMULATION-NODAL-001",
           "claim:LIMIT-CONVEXITY-001",
           "claim:TR-XFMR-003",
@@ -477,8 +477,8 @@
           "claim:TR-SER-002",
           "claim:IMPEDANCE-LADDER-001",
           "claim:TR-PAR-001",
-          "claim:FORMULATION-NODAL-003",
           "claim:ARCH-LOWER-002",
+          "claim:FORMULATION-NODAL-003",
           "claim:TOPOLOGY-001",
           "claim:TR-GRAPH-002",
           "claim:TR-XFMR-003"
@@ -685,8 +685,8 @@
           "concept:object-node-interface",
           "claim:FORMULATION-NODAL-001",
           "claim:ARCH-SURGERY-002",
-          "claim:LOAD-CONNECTION-002",
           "claim:ARCH-CONDUCTOR-002",
+          "claim:LOAD-CONNECTION-002",
           "claim:ARCH-PORT-002",
           "claim:FORMULATION-PORT-001"
         ]
@@ -809,8 +809,8 @@
           "claim:FORMULATION-PORT-001",
           "claim:LOAD-CONNECTION-002",
           "claim:LIMIT-NEUTRAL-001",
-          "claim:LIMIT-CONVEXITY-001",
           "concept:object-node-interface",
+          "claim:LIMIT-CONVEXITY-001",
           "claim:TR-GRAPH-001",
           "claim:TR-SER-001"
         ]
@@ -879,8 +879,8 @@
           "claim:TR-KRON-NEUTRAL-002",
           "claim:TR-KRON-NEUTRAL-005",
           "claim:TR-KRON-NEUTRAL-003",
-          "claim:TR-KRON-NEUTRAL-006",
           "claim:COLLAPSE-002",
+          "claim:TR-KRON-NEUTRAL-006",
           "claim:LIMIT-NEUTRAL-001",
           "claim:GROUND-SCOPE-002"
         ]
@@ -1233,10 +1233,10 @@
           "claim:TR-XFMR-010",
           "claim:TR-XFMR-009",
           "claim:TR-XFMR-008",
+          "claim:ARCH-RECOVERY-001",
           "claim:FORMULATION-ZERO-001",
           "claim:NUMERICAL-003",
-          "claim:ARCH-RECOVERY-001",
-          "claim:NUMERICAL-004"
+          "claim:LIMIT-CONVEXITY-001"
         ]
       },
       "lexical": {
@@ -1360,13 +1360,13 @@
         "top_10": [
           "claim:ARCH-LOWER-002",
           "claim:TR-XFMR-001",
-          "claim:PRACTICE-SHORT-001",
           "claim:TR-XFMR-006",
+          "claim:PRACTICE-SHORT-001",
           "claim:LOAD-CONNECTION-002",
           "claim:TR-XFMR-003",
           "claim:ARCH-RECOVERY-003",
-          "claim:FORMULATION-PORT-001",
           "claim:TR-XFMR-007",
+          "claim:FORMULATION-PORT-001",
           "claim:KERNEL-OBSERVATION-001"
         ]
       },
@@ -1423,8 +1423,8 @@
           "claim:TR-XFMR-003",
           "claim:KERNEL-OBSERVATION-001",
           "claim:FORMULATION-PORT-001",
-          "claim:TR-XFMR-004",
           "claim:ARCH-SURGERY-002",
+          "claim:TR-XFMR-004",
           "claim:ARCH-LOWER-002",
           "claim:TR-XFMR-006",
           "claim:TR-XFMR-007"
@@ -1695,8 +1695,8 @@
           "claim:TR-KRON-NEUTRAL-001",
           "claim:FORMULATION-Y-SPLIT-001",
           "claim:FORMULATION-NODAL-002",
-          "claim:LIMIT-MULTIPLICITY-001",
-          "claim:TR-PAR-AC-JOINT-001"
+          "claim:TR-PAR-AC-JOINT-001",
+          "claim:LIMIT-MULTIPLICITY-001"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -1809,8 +1809,8 @@
           "claim:ARCH-RECOVERY-001",
           "claim:GRAPH-MATRIX-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
-          "claim:KERNEL-OBSERVATION-001",
           "claim:LIMIT-CONVEXITY-001",
+          "claim:KERNEL-OBSERVATION-001",
           "claim:TR-XFMR-001",
           "concept:parallel",
           "claim:FORMULATION-NODAL-003"
@@ -2071,13 +2071,13 @@
           "claim:LIMIT-CONVEXITY-001",
           "claim:LIMIT-MULTIPLICITY-001",
           "claim:LIMIT-NEUTRAL-001",
-          "claim:ARCH-BLOCK-001",
           "claim:TR-XFMR-006",
+          "claim:ARCH-BLOCK-001",
           "claim:NUMERICAL-001",
           "claim:TR-XFMR-007",
-          "claim:TR-KRON-NEUTRAL-001",
           "claim:KERNEL-OBSERVATION-001",
-          "claim:ARCH-NODAL-001"
+          "claim:TR-PAR-002",
+          "claim:TR-KRON-NEUTRAL-001"
         ]
       },
       "lexical": {
@@ -2148,7 +2148,7 @@
           "claim:TR-KRON-NEUTRAL-005",
           "claim:GROUND-SCOPE-001",
           "claim:TR-KRON-NEUTRAL-003",
-          "claim:FORMULATION-ZERO-001",
+          "claim:FORMULATION-PORT-001",
           "claim:GROUND-SCOPE-003"
         ]
       },
@@ -2435,8 +2435,8 @@
           "concept:direction-orientation-hierarchy",
           "claim:FORMULATION-ZERO-001",
           "claim:LOAD-CONNECTION-001",
-          "claim:PRACTICE-IMPORT-001",
           "concept:ground-neutral-reference",
+          "claim:PRACTICE-IMPORT-001",
           "claim:TRANSFORM-CATALOG-001",
           "claim:TR-PAR-005",
           "claim:TR-SER-003"
@@ -2450,7 +2450,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "5cdab3c59d169b2a29347210fc35a4929c04694b93c730950d9e32066f6bff65"
+    "corpus_sha256": "d8075ded8be293183093f6d3d2496e1878f73f1b86cc7a651120f78a84075c2b"
   },
   "inputs": {
     "adversarial_cases": {
