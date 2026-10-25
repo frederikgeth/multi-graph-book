@@ -72,3 +72,78 @@ question = "What is the weather on Mars today?"
 expected_status = "unsupported"
 expected_claim_ids = []
 expected_concept_ids = []
+
+# Near-domain questions with related material but no responsive curated contract.
+# Do not qualify them through a neighbouring route merely sharing a few words.
+
+[[case]]
+case_id = "ADV-ZERO-VOLTAGE-KCL"
+audience = "power_engineer"
+question = "Does a zero terminal voltage make power balance equivalent to KCL?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-ZERO-VOLTAGE-SOLUTIONS"
+audience = "power_engineer"
+question = "Do KCL and power-balance equations have the same solutions when a terminal voltage is zero?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-ZERO-VOLTAGE-IMBALANCE"
+audience = "power_engineer"
+question = "At zero voltage, can equal terminal powers hide nonzero current imbalance?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-ZERO-NEUTRAL-RESIDUAL"
+audience = "power_engineer"
+question = "At zero neutral voltage, is a power residual sufficient?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-KCL-ALL-VOLTAGES"
+audience = "power_engineer"
+question = "Does power balance enforce KCL at every voltage?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-IDEAL-SWITCH-SHARING"
+audience = "power_engineer"
+question = "Can I replace a small impedance by an ideal switch without changing current sharing?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-TINY-RESISTANCE-SHARING"
+audience = "power_engineer"
+question = "Is replacing a tiny resistance with an ideal switch guaranteed to preserve current sharing?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-IDEAL-CURRENT-LIMIT"
+audience = "power_engineer"
+question = "Does the limit of a small impedance retain a unique split of current between ideal switches?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PARAMETER-REUSE"
+audience = "power_engineer"
+question = "Can I reuse an OPF after updating a parameter through zero?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []

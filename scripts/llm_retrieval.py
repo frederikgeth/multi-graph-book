@@ -27,6 +27,30 @@ ROUTER_GENERIC_TERMS = {
     "the", "topology", "view", "loop",
 }
 
+# Scope gates for routes whose shared engineering vocabulary can otherwise
+# qualify a different question. These are necessary topic signals, not answer
+# proofs or replacements for the curated pattern score. In particular, KCL is
+# not itself a solver-status question, and impedance is not source provenance.
+# Match normalized tokens so punctuation/plurals follow the ordinary router.
+ROUTER_TOPIC_PATTERNS = {
+    "terminal-permutation-is-cosmetic": (r"permut\w*|reorder\w*|relabel\w*|swap\w*|order\w*|cosmetic",),
+    "reference-matrix-match-proves-source-provenance": (
+        r"cs1035|ughv|carson|australian|cable|construction|geometry|provenance|linecode|frequency",
+    ),
+    "terminal-equivalence-implies-opf-equivalence": (
+        r"optimi\w*|opf|decision\w*|planning|dispatch|feasib\w*|observation|range",
+        r"\w*(?:terminal|equivalen|reduction|observation|range)\w*|circuit|model",
+    ),
+    "complete-feasibility-status-is-enough": (
+        r"solver|optimal|locallysolved|termination\w*|solved\w*|certificate|feasib\w*|validation",
+    ),
+    "mutual-coupling-is-an-ordinary-parallel-network": (r"mutual\w*|coupl\w*|lattice|crossvoltage|shared|joint",),
+    "base-state-equivalent-is-globally-exact": (r"equivalent|ward|kron|frozen|freeze|basestate",),
+    "parallel-admittance-implies-decision-equivalence": (r"parallel|twin|bundled|aggregate|aggregation|mva",),
+    "ground-neutral-reference-are-one-node": (r"ground\w*|earth|datum|reference",),
+    "wye-delta-share-nominal-voltage-base": (r"wye|delta|load|nominal|base|vnom|kv|sqrt3",),
+}
+
 STOPWORDS = {
     "a", "about", "after", "all", "also", "an", "and", "any", "are", "as", "at",
     "be", "because", "been", "before", "being", "between", "both", "but", "by",
@@ -478,6 +502,11 @@ class CorpusIndex:
         query_terms = set(tokenize(query))
         ranked = []
         for item in self.misconceptions:
+            topic_patterns = ROUTER_TOPIC_PATTERNS.get(item["id"], ())
+            topic_matches = all(
+                any(re.fullmatch(pattern, term) for term in query_terms)
+                for pattern in topic_patterns
+            )
             pattern_scores = []
             exact_match = False
             for pattern in item["query_patterns"]:
@@ -493,6 +522,10 @@ class CorpusIndex:
                 coverage = len(overlap) / max(1, len(specific_pattern_terms))
                 precision = len(overlap) / max(1, len(specific_query_terms))
                 pattern_scores.append(0.72 * coverage + 0.28 * precision)
+            # An explicitly curated complete phrase is sufficient routing
+            # evidence; partial word matches additionally need the scope gate.
+            if not exact_match and not topic_matches:
+                continue
             title_terms = set(tokenize(item["title"])) - ROUTER_GENERIC_TERMS
             title_score = len((query_terms - ROUTER_GENERIC_TERMS) & title_terms) / max(1, len(title_terms))
             score = max(pattern_scores or [0.0]) + 0.15 * title_score + (0.4 if exact_match else 0.0)

@@ -26,8 +26,8 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Complete contract packets | 100.0% | yes |
 | Packets with qualification, failure, shorthand, and scope | 100.0% | yes |
 | Corpus-release identity agreement | 100.0% | yes |
-| Held-out contract-router firing | 25/33 (75.8%) | yes |
-| Held-out expected-contract top-1 | 17/33 (51.5%) | diagnostic |
+| Held-out contract-router firing | 22/33 (66.7%) | yes |
+| Held-out expected-contract top-1 | 20/33 (60.6%) | diagnostic |
 | Held-out hybrid zero-recall@10 cases | 5/33 | diagnostic |
 
 The diagnostic lexical scores are intentionally not release thresholds. A perfect contract score
@@ -48,8 +48,8 @@ the question count must not be treated as that many independent observations.
 | `hybrid` | 37.2% | 46.6% | 0.0% | 0/33 | 5/33 | 0.219 |
 | `graph` | 38.6% | 58.3% | 21.2% | 7/33 | 3/33 | 0.251 |
 
-Held-out contract-router firing: **25/33 (75.8%)**; release floor: **66.7%**.
-Expected-contract top-1 agreement: **17/33 (51.5%)**; this remains diagnostic because the set is synthetic and clustered.
+Held-out contract-router firing: **22/33 (66.7%)**; release floor: **66.7%**.
+Expected-contract top-1 agreement: **20/33 (60.6%)**; this remains diagnostic because the set is synthetic and clustered.
 Target clusters: **11**, with cluster sizes `[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]`; percentage differences are therefore not independent observations.
 Hybrid versus lexical complete@10: **0/33** versus **0/33**; hybrid zero-recall@10: **5/33**.
 Graph versus hybrid complete@10: **7/33** versus **0/33**.
@@ -65,9 +65,9 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 | `HOLDOUT-YBUS-STUDENT` | `student` | `nodal-operator-is-source-network` | `none` | no | no | no | no | yes |
 | `HOLDOUT-YBUS-SOFTWARE` | `software_engineer` | `nodal-operator-is-source-network` | `none` | no | no | no | no | no |
 | `HOLDOUT-YBUS-POWER` | `power_engineer` | `nodal-operator-is-source-network` | `none` | no | no | no | no | no |
-| `HOLDOUT-PARALLEL-STUDENT` | `student` | `parallel-admittance-implies-decision-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
-| `HOLDOUT-PARALLEL-SOFTWARE` | `software_engineer` | `parallel-admittance-implies-decision-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
-| `HOLDOUT-PARALLEL-POWER` | `power_engineer` | `parallel-admittance-implies-decision-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
+| `HOLDOUT-PARALLEL-STUDENT` | `student` | `parallel-admittance-implies-decision-equivalence` | `none` | no | no | no | no | no |
+| `HOLDOUT-PARALLEL-SOFTWARE` | `software_engineer` | `parallel-admittance-implies-decision-equivalence` | `none` | no | no | no | no | no |
+| `HOLDOUT-PARALLEL-POWER` | `power_engineer` | `parallel-admittance-implies-decision-equivalence` | `none` | no | no | no | no | no |
 | `HOLDOUT-RADIAL-STUDENT` | `student` | `radial-is-representation-independent` | `none` | no | no | no | no | no |
 | `HOLDOUT-RADIAL-SOFTWARE` | `software_engineer` | `radial-is-representation-independent` | `radial-is-representation-independent` | yes | no | no | no | no |
 | `HOLDOUT-RADIAL-POWER` | `power_engineer` | `radial-is-representation-independent` | `radial-is-representation-independent` | yes | no | no | no | no |
@@ -77,8 +77,8 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 | `HOLDOUT-SEQUENCE-STUDENT` | `student` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | no |
 | `HOLDOUT-SEQUENCE-SOFTWARE` | `software_engineer` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | yes |
 | `HOLDOUT-SEQUENCE-POWER` | `power_engineer` | `transposition-implies-positive-sequence-exactness` | `none` | no | no | no | no | no |
-| `HOLDOUT-GROUND-STUDENT` | `student` | `ground-neutral-reference-are-one-node` | `mutual-coupling-is-an-ordinary-parallel-network` | yes | no | no | no | no |
-| `HOLDOUT-GROUND-SOFTWARE` | `software_engineer` | `ground-neutral-reference-are-one-node` | `terminal-permutation-is-cosmetic` | yes | no | no | no | no |
+| `HOLDOUT-GROUND-STUDENT` | `student` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | no |
+| `HOLDOUT-GROUND-SOFTWARE` | `software_engineer` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | no |
 | `HOLDOUT-GROUND-POWER` | `power_engineer` | `ground-neutral-reference-are-one-node` | `ground-neutral-reference-are-one-node` | yes | no | no | no | yes |
 | `HOLDOUT-DECISION-STUDENT` | `student` | `terminal-equivalence-implies-opf-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
 | `HOLDOUT-COUPLING-STUDENT` | `student` | `mutual-coupling-is-an-ordinary-parallel-network` | `mutual-coupling-is-an-ordinary-parallel-network` | yes | no | no | no | no |
@@ -88,7 +88,7 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 | `HOLDOUT-SELF-LOOP-SOFTWARE` | `software_engineer` | `self-loop-is-a-shunt-or-circuit-loop` | `self-loop-is-a-shunt-or-circuit-loop` | yes | no | no | no | yes |
 | `HOLDOUT-SELF-LOOP-POWER` | `power_engineer` | `self-loop-is-a-shunt-or-circuit-loop` | `self-loop-is-a-shunt-or-circuit-loop` | yes | no | no | no | no |
 | `HOLDOUT-DECISION-SOFTWARE` | `software_engineer` | `terminal-equivalence-implies-opf-equivalence` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
-| `HOLDOUT-DECISION-POWER` | `power_engineer` | `terminal-equivalence-implies-opf-equivalence` | `terminal-permutation-is-cosmetic` | yes | no | no | no | no |
+| `HOLDOUT-DECISION-POWER` | `power_engineer` | `terminal-equivalence-implies-opf-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
 
 ## Audience consistency
 

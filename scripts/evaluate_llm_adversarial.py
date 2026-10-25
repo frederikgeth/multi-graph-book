@@ -49,8 +49,8 @@ def evaluate() -> dict:
             ids = record_ids(results)
             methods[method] = {
                 "top_10": ids[:10],
-                "recall_at_10": recall(expected, ids[:10]),
-                "complete_at_10": expected <= set(ids[:10]),
+                "recall_at_10": recall(expected, ids[:10]) if expected else None,
+                "complete_at_10": expected <= set(ids[:10]) if expected else None,
             }
         response = service.response(case["question"], case["audience"])
         packet = response["packet"]
@@ -65,13 +65,16 @@ def evaluate() -> dict:
                 "status_correct": packet["status"] == case["expected_status"],
                 "detected_routes": packet["retrieval"]["detected_misconceptions"],
                 "expected_record_ids": sorted(expected),
-                "mandatory_record_recall": recall(expected, mandatory_ids),
-                "contract_complete": expected <= set(mandatory_ids),
+                "mandatory_record_recall": recall(expected, mandatory_ids) if expected else None,
+                "contract_complete": expected <= set(mandatory_ids) if expected else None,
                 **methods,
             }
         )
     qualified = [row for row in rows if row["expected_status"] == "qualified"]
     unsupported = [row for row in rows if row["expected_status"] == "unsupported"]
+    unqualified = [row for row in rows if row["expected_status"] != "qualified"]
+    retrieval_cases = [row for row in rows if row["expected_record_ids"]]
+    false_qualifications = sum(row["observed_status"] == "qualified" for row in unqualified)
     summary = {
         "cases": len(rows),
         "status_accuracy": round(sum(row["status_correct"] for row in rows) / len(rows), 6),
@@ -81,13 +84,25 @@ def evaluate() -> dict:
         "unsupported_abstention_accuracy": round(
             sum(row["status_correct"] for row in unsupported) / len(unsupported), 6
         ),
-        "graph_recall_at_10": round(sum(row["graph"]["recall_at_10"] for row in rows) / len(rows), 6),
-        "hybrid_recall_at_10": round(sum(row["hybrid"]["recall_at_10"] for row in rows) / len(rows), 6),
+        "unqualified_cases": len(unqualified),
+        "unqualified_abstention_accuracy": round(
+            sum(row["status_correct"] for row in unqualified) / len(unqualified), 6
+        ),
+        "false_qualification_count": false_qualifications,
+        "false_qualification_rate": round(false_qualifications / len(unqualified), 6),
+        "retrieval_cases": len(retrieval_cases),
+        "graph_recall_at_10": round(
+            sum(row["graph"]["recall_at_10"] for row in retrieval_cases) / len(retrieval_cases), 6
+        ),
+        "hybrid_recall_at_10": round(
+            sum(row["hybrid"]["recall_at_10"] for row in retrieval_cases) / len(retrieval_cases), 6
+        ),
     }
     thresholds = {
         "status_accuracy": 1.0,
         "qualified_contract_complete": 1.0,
         "unsupported_abstention_accuracy": 1.0,
+        "unqualified_abstention_accuracy": 1.0,
     }
     threshold_results = {key: summary[key] >= value for key, value in thresholds.items()}
     manifest = json.loads((ROOT / "llm/generated/corpus-manifest.json").read_text())
@@ -96,7 +111,10 @@ def evaluate() -> dict:
         "status": "pass" if all(threshold_results.values()) else "fail",
         "purpose": tomllib.loads(CASES.read_text()).get("purpose", ""),
         "corpus": {"corpus_id": manifest["corpus_id"], "corpus_sha256": manifest["corpus_sha256"]},
-        "inputs": {"adversarial_cases": {"path": "llm/adversarial-cases.toml", "sha256": sha256(CASES)}},
+        "inputs": {
+            "adversarial_cases": {"path": "llm/adversarial-cases.toml", "sha256": sha256(CASES)},
+            "router": {"path": "scripts/llm_retrieval.py", "sha256": sha256(ROOT / "scripts/llm_retrieval.py")},
+        },
         "thresholds": thresholds,
         "threshold_results": threshold_results,
         "summary": summary,
@@ -113,12 +131,19 @@ def markdown_report(result: dict) -> str:
         f"**Cases:** {summary['cases']}",
         "",
         "This is a deterministic robustness and abstention check, not human-calibrated answer-quality evidence.",
+        "Near-domain negatives require under_retrieved rather than unrelated qualified claims. "
+        "These curated cases do not estimate deployment error rates or establish complete intent coverage.",
+        f"Recall is averaged over the {summary['retrieval_cases']} cases with target evidence; "
+        "empty target sets are not perfect retrievals.",
         "",
         "| Measure | Result | Gate |",
         "| --- | ---: | --- |",
         f"| Status accuracy | {100 * summary['status_accuracy']:.1f}% | yes |",
         f"| Qualified contract completeness | {100 * summary['qualified_contract_complete']:.1f}% | yes |",
         f"| Unsupported-query abstention | {100 * summary['unsupported_abstention_accuracy']:.1f}% | yes |",
+        f"| Unqualified-query status accuracy | {100 * summary['unqualified_abstention_accuracy']:.1f}% | yes |",
+        f"| False qualification on unqualified queries | {summary['false_qualification_count']}/{summary['unqualified_cases']} "
+        f"({100 * summary['false_qualification_rate']:.1f}%) | covered by status gate |",
         f"| Hybrid retrieval recall@10 | {100 * summary['hybrid_recall_at_10']:.1f}% | diagnostic |",
         f"| Graph retrieval recall@10 | {100 * summary['graph_recall_at_10']:.1f}% | diagnostic |",
         "",
@@ -126,10 +151,12 @@ def markdown_report(result: dict) -> str:
         "| --- | --- | --- | ---: | ---: | --- |",
     ]
     for row in result["cases"]:
+        hybrid = f"{100 * row['hybrid']['recall_at_10']:.1f}%" if row["expected_record_ids"] else "—"
+        graph = f"{100 * row['graph']['recall_at_10']:.1f}%" if row["expected_record_ids"] else "—"
+        complete = ("yes" if row["contract_complete"] else "no") if row["expected_record_ids"] else "—"
         lines.append(
             f"| `{row['case_id']}` | `{row['expected_status']}` | `{row['observed_status']}` | "
-            f"{100 * row['hybrid']['recall_at_10']:.1f}% | {100 * row['graph']['recall_at_10']:.1f}% | "
-            f"{'yes' if row['contract_complete'] else 'no'} |"
+            f"{hybrid} | {graph} | {complete} |"
         )
     return "\n".join(lines) + "\n"
 

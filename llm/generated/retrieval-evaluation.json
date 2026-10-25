@@ -6551,8 +6551,8 @@
           "concept:parallel"
         ],
         "question": "How can a bundled pair give the right voltage-current equation yet still allow an impossible loading decision?",
-        "route_fired": true,
-        "route_top1": "terminal-equivalence-implies-opf-equivalence",
+        "route_fired": false,
+        "route_top1": "",
         "route_top1_correct": false
       },
       {
@@ -6637,8 +6637,8 @@
           "claim:TR-PAR-002"
         ],
         "question": "Which invariant must a branch-compression pass preserve before it discards the individual circuit records?",
-        "route_fired": true,
-        "route_top1": "terminal-equivalence-implies-opf-equivalence",
+        "route_fired": false,
+        "route_top1": "",
         "route_top1_correct": false
       },
       {
@@ -6723,8 +6723,8 @@
           "claim:GRAPH-NPORT-001"
         ],
         "question": "Why can an aggregate circuit be adequate for terminal behavior but unsafe for a constrained operating study?",
-        "route_fired": true,
-        "route_top1": "terminal-equivalence-implies-opf-equivalence",
+        "route_fired": false,
+        "route_top1": "",
         "route_top1_correct": false
       },
       {
@@ -7570,8 +7570,8 @@
         ],
         "question": "Why can the wire called neutral and the physical return through earth have different voltages and currents?",
         "route_fired": true,
-        "route_top1": "mutual-coupling-is-an-ordinary-parallel-network",
-        "route_top1_correct": false
+        "route_top1": "ground-neutral-reference-are-one-node",
+        "route_top1_correct": true
       },
       {
         "audience": "software_engineer",
@@ -7654,8 +7654,8 @@
         ],
         "question": "Which typed objects should remain distinct when a schema contains a return conductor, an earth connection, and a numerical datum?",
         "route_fired": true,
-        "route_top1": "terminal-permutation-is-cosmetic",
-        "route_top1_correct": false
+        "route_top1": "ground-neutral-reference-are-one-node",
+        "route_top1_correct": true
       },
       {
         "audience": "power_engineer",
@@ -8506,8 +8506,8 @@
         ],
         "question": "Why is an equivalent terminal response not sufficient evidence that planning or dispatch choices remain valid?",
         "route_fired": true,
-        "route_top1": "terminal-permutation-is-cosmetic",
-        "route_top1_correct": false
+        "route_top1": "terminal-equivalence-implies-opf-equivalence",
+        "route_top1_correct": true
       }
     ],
     "purpose": "synthetic held-out paraphrase benchmark; not human-validated evidence",
@@ -8555,10 +8555,10 @@
         "recall_hits_at_10": 75,
         "zero_recall_at_10_count": 6
       },
-      "router_fired_count": 25,
-      "router_fired_rate": 0.757576,
-      "router_top1_accuracy": 0.515152,
-      "router_top1_correct_count": 17,
+      "router_fired_count": 22,
+      "router_fired_rate": 0.666667,
+      "router_top1_accuracy": 0.606061,
+      "router_top1_correct_count": 20,
       "target_cluster_count": 11,
       "target_cluster_sizes": [
         3,
@@ -8591,6 +8591,10 @@
     "misconceptions": {
       "path": "llm/misconceptions.toml",
       "sha256": "c3b8de7ad39c48d55e1bcf39af39b02b2b63900a1e0c8ce783ef2a327c7f0db7"
+    },
+    "router": {
+      "path": "scripts/llm_retrieval.py",
+      "sha256": "4b47ad0abeea98d17955fa372579d118c38c44526238d0ec229183508ffc50c2"
     }
   },
   "method": {

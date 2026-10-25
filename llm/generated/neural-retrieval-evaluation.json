@@ -2756,7 +2756,7 @@
     }
   ],
   "compatibility": {
-    "archived_on": "2026-09-06",
+    "archived_on": "2026-10-25",
     "current_corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
     "current_corpus_sha256": "48c3cd96d84c4d23118dfd66aec868d8b5480081cff97ad650844308d7e2a959",
     "current_heldout_sha256": "171857dd883acf3ed9a091fac0e2e7485cbd13d5f0477a56af37d010cec16592",

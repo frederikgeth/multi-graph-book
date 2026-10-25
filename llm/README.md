@@ -69,6 +69,21 @@ python3 scripts/search_llm_corpus.py \
   --audience power_engineer --context-packet --json
 ```
 
+Fuzzy misconception matches also apply topic gates on easily confused routes.
+A shared word such as `terminal`, `impedance`, or `KCL` does not by itself
+establish that a permutation, construction-provenance, or solver-status contract
+answers the question. A complete curated query phrase can still route directly.
+These gates reduce known false qualifications; they do not prove semantic
+coverage of arbitrary or multi-intent questions. Related material without a
+responsive contract remains `under_retrieved`.
+
+The adversarial evaluation includes near-domain negative questions and reports
+false qualification separately from retrieval recall. Questions without target
+evidence are excluded from recall averages, rather than counted as perfect
+retrieval. Both evaluation reports bind the router source hash. A response's
+`validation.valid` flag checks packet structure, source identity and required
+claim/citation inclusion; it is not independent scientific answer validation.
+
 The packet keeps evidence classes separate. `counterexamples` names concrete
 delimiting cases, `negative_results` preserves failed experiments with their
 criteria and scope, `numerical_pathologies` records observed algorithmic

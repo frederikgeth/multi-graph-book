@@ -5,7 +5,7 @@
 **Model:** `sentence-transformers/all-MiniLM-L6-v2` at revision `ea78891063587eb050ed4166b20062eaf978037c`
 **Embedding artifact hash:** `507dfbc0b17cb6138f2a9f9e0894df3198cab2bebb23fc46759021e6ee458d02`
 **Current-corpus compatibility:** `archived_prior_corpus`
-**Archived on:** `2026-09-06`
+**Archived on:** `2026-10-25`
 **Current corpus hash:** `48c3cd96d84c4d23118dfd66aec868d8b5480081cff97ad650844308d7e2a959`
 **Current held-out input hash:** `171857dd883acf3ed9a091fac0e2e7485cbd13d5f0477a56af37d010cec16592`
 **Required action:** rerun both pinned neural retriever and reranker before comparing them with the current corpus
