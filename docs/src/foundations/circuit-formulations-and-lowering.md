@@ -50,6 +50,84 @@ restricted domain. They are not interchangeable source models: eliminating a
 current variable can remove the direct place to attach a thermal limit, a
 switch state, or a protection relation.
 
+## [Worked boundary: power balance at zero voltage](@id zero-voltage-kcl)
+
+**Predict before calculating.** At a terminal with voltage zero, the represented
+signed current outflows sum to 1 A. What do a current-residual check and a
+power-residual check report? Use RMS complex phasors, with every branch, device,
+source and earth-path current included under one orientation convention.
+
+Let ``r_I`` be that terminal's KCL residual in amperes. If all terminal powers
+use the same terminal voltage ``V``, their complex-power residual is
+
+```math
+r_S=V\overline{r_I},\qquad |r_S|=|V|\,|r_I|.
+```
+
+KCL implies this power balance at every voltage. The converse follows by
+division only when ``V\ne0``. At ``V=0``, the power row is zero for *every*
+current residual: the 1 A witness passes that row while failing KCL. This is
+a statement about replacing a particular current equation by its power product,
+not a claim that every formulation using power variables is invalid.
+Claim `FORMULATION-ZERO-001` records this equation-level boundary. The four-wire
+OPF study [ClaeysDeconinckGeth2022](@cite) discusses its network consequences;
+the argument here is a direct scalar derivation, not a reproduction of that study.
+
+For a fixed impedance load with admittance ``Y``, compare the native relation
+``I=YV`` with only
+
+```math
+V\overline I=\overline Y|V|^2.
+```
+
+The native relation requires ``I=0`` at ``V=0``; the power-only relation admits
+any ``I`` there. Adding a lower bound ``|V|\ge\varepsilon>0`` excludes the
+valid zero-voltage, zero-current state. It changes the model domain rather than
+proving equivalence on the original domain. In particular, a neutral need not
+have a strictly positive voltage relative to the chosen reference.
+
+At a declared perfect ground or ideal voltage source, account for its reaction
+current before calling a current sum a KCL violation. An omitted ground/source
+current is missing evidence. The witness above concerns the complete current
+row, not a sum that silently leaves out a physical return path.
+
+### Residual units and a small-voltage test
+
+Even away from zero, accepting ``|r_S|\le\tau_S`` implies only
+``|r_I|\le\tau_S/|V|``. A uniform current-error bound needs a justified positive
+voltage bound or a direct current check. For ``V=10^{-12}`` V and ``r_I=1`` A,
+the power residual is only ``10^{-12}`` VA. Reporting that small number without
+its voltage and current residual hides the failure.
+
+```sh
+python3 experiments/lessons/zero_voltage_kcl.py --check
+python3 experiments/lessons/zero_voltage_kcl.py
+python3 experiments/lessons/zero_voltage_kcl.py --voltage 3+4j --current 1-2j
+```
+
+The last command gives ``r_I=1-2j`` A and ``r_S=-5+10j`` VA. The script checks
+zero and nonzero voltages, the native impedance law, the tolerance boundary,
+and aggregate cancellation. Two nonzero-voltage terminals can have power
+residuals ``+1`` and ``-1`` VA: their *sum* is zero while neither nodal row
+passes. Total network power balance is therefore a different check again.
+
+### Transfer exercise
+
+At ``V=3+4j`` V a terminal has ``r_I=0.6+0.8j`` A. Compute both residual
+magnitudes. Then decide whether replacing KCL by power balance is exact on a
+domain containing ``V=0``, and whether a 1 mVA power tolerance alone guarantees
+a 1 mA current tolerance on a domain permitting arbitrarily small voltages.
+
+**Check your reasoning:** the magnitudes are 1 A and 5 VA. The two domain-wide
+claims fail. On a domain with ``|V|\ge1`` V, the stated power tolerance does
+bound this particular current residual by 1 mA. None of these checks establishes
+device limits, all-device feasibility or global optimality.
+
+The pinned package's [exact-substitution guide](https://github.com/frederikgeth/BMOPFTools.jl/blob/97c274946091859b7d9b0e822c96f1e7f9f50c7e/docs/src/formulation_substitutions.md)
+and [device tests](https://github.com/frederikgeth/BMOPFTools.jl/blob/97c274946091859b7d9b0e822c96f1e7f9f50c7e/test/opf_device_substitution_tests.jl)
+describe its native pure-impedance substitutions. They are package evidence,
+separate from this book-owned algebraic lesson.
+
 ## Numerical footprint of the formulation choice
 
 The choice of equation target also changes the symbolic problem seen by a

@@ -44,11 +44,11 @@
       "TR-XFMR-005",
       "TR-XFMR-006"
     ],
-    "total": 112,
+    "total": 113,
     "verification": {
       "externally-reviewed": 0,
       "independently-implemented": 6,
-      "self-checked": 106
+      "self-checked": 107
     }
   },
   "knowledge": {
@@ -92,6 +92,7 @@
       "parallel-admittance-implies-decision-equivalence": [
         "PSK-000001"
       ],
+      "power-balance-enforces-kcl-at-zero-voltage": [],
       "primal-equivalence-preserves-raw-multipliers": [],
       "radial-is-representation-independent": [],
       "reference-matrix-match-proves-source-provenance": [
@@ -124,24 +125,25 @@
         "PSK-000004"
       ]
     },
-    "total": 26,
+    "total": 27,
     "unlinked_ids": [
       "loads-generators-fixed-graph-membership",
       "nodal-operator-is-source-network",
       "numeric-round-trip-preserves-field-meaning",
       "one-universal-network-graph",
+      "power-balance-enforces-kcl-at-zero-voltage",
       "primal-equivalence-preserves-raw-multipliers",
       "radial-is-representation-independent",
       "self-loop-is-a-shunt-or-circuit-loop",
       "source-outage-is-deletion-in-reduced-graph"
     ]
   },
-  "pair_sha256": "9de658d12ff9e4a9efa6cfa3b225ae6108ff673fe0b17b81f5e23277f3c0692b",
+  "pair_sha256": "b88c35799f0668e86f8d3ce640d22a3b7cd7f305ca292be807ad2102b57980ab",
   "schema_version": "1.0.0",
   "source_sha256": {
-    "claims/claims.toml": "2f0adfe4fb996bce3bf36cd6b0a20c33d8001c94bac2db5ed7bb3ea501779e68",
-    "generated/federated-knowledge-pair-manifest.json": "6a2be285680f3f290d8bbbe8073657e0c2ad0a221afe0d1eeda957aa77519ceb",
+    "claims/claims.toml": "eabbbc4c91e7446a6f80423b4841c7a8aef4fda3dee589161d913bc4df83890a",
+    "generated/federated-knowledge-pair-manifest.json": "b1fb9bcec9383277759800a674c9a647d2071a02d374445c08f336403c342147",
     "knowledge/psk.toml": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364",
-    "llm/misconceptions.toml": "c3b8de7ad39c48d55e1bcf39af39b02b2b63900a1e0c8ce783ef2a327c7f0db7"
+    "llm/misconceptions.toml": "41b3efdd47a8912084099f9dd5d3c4645d7b00363b0cdcbe9376c7680438092c"
   }
 }

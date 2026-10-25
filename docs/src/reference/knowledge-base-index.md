@@ -1,13 +1,13 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:2f0adfe4fb996bce3bf36cd6b0a20c33d8001c94bac2db5ed7bb3ea501779e68 -->
+<!-- generated-from claims/claims.toml sha256:eabbbc4c91e7446a6f80423b4841c7a8aef4fda3dee589161d913bc4df83890a -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 112
+**Indexed claims:** 113
 **Indexed chapters:** 46
 
 ## Claims by type
@@ -102,7 +102,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `COUPLED-CORRIDOR-001` — Physically parallel line sections need not be parallel in the bus multigraph; a source model can retain stable line assets plus oriented section-to-section coupling records, with each connected coupling group compiling into one joint electrical factor before inversion or nodal stamping. | [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | `self-checked` |
 | `TRANSFORM-CATALOG-001` — The guarded-normalization catalogue treats coordinate normalization, series elimination, parallel bundling, switch contraction, multiwinding compilation, and rooted-tree views as distinct rule families whose acceptance depends on declared closure, recovery, constraint, and provenance guards. | [Guarded normalization rules](../transformations/guarded-normalization.md) | `self-checked` |
 
-### `theorem` (42)
+### `theorem` (43)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -120,6 +120,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `FORMULATION-NODAL-001` — An ideal voltage source with a queried source current is not representable by a plain nodal-admittance injection without adding an extra current variable or changing the query contract; a modified-nodal or tableau formulation preserves the voltage constraint and current observation. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `self-checked` |
 | `FORMULATION-NODAL-002` — Even when a nodal operator can be assembled, it may be singular without a declared reference or shunt, or semantically insufficient for member-level limits: aligned parallel factors can share one aggregate admittance while having different member currents and feasible limits. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `self-checked` |
 | `FORMULATION-NODAL-003` — A declared reference or grounding label does not by itself establish nonsingularity of a compound nodal operator: the rank guard must be evaluated on the assembled operator after the declared reference, grounding, and active-state maps are applied. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `self-checked` |
+| `FORMULATION-ZERO-001` — For a terminal with complete signed current residual r_I and consistent complex powers, r_S=V conjugate(r_I): KCL implies nodal power balance, but the converse requires nonzero terminal voltage; at V=0 a power row admits any current residual, and a fixed power tolerance bounds current error only after division by the voltage magnitude. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `self-checked` |
 | `GRAPH-CYCLE-001` — The recorded connected five-bus bus--branch multigraph has seven identified lines, incidence rank four, and cycle-space dimension three; collapsing its parallel q/r pair to a simple edge reduces the cycle-space dimension to two, whereas the spanning-tree-plus-chords representation retains all three source dimensions. | [A five-bus multigraph: identities, cycles, and tree coordinates](../start/five-bus-cycle-spaces.md) | `self-checked` |
 | `GRAPH-MATRIX-001` — Under the declared convention A_uv equals non-loop edge multiplicity off diagonal, A_vv equals twice the graph-loop count, and D contains incidence degrees, so D-A equals B B transpose; graph-loop columns vanish from signed incidence while a grounded shunt contributes a distinct diagonal constitutive term. | [Multigraphs for expert modelers](../foundations/multigraphs-for-modelers.md) | `self-checked` |
 | `GRAPH-PI-COLLAPSE-001` — For a fixed linear two-terminal pi factor with series admittance Y_s and endpoint shunts Y_a and Y_b, identifying both terminals through the common attachment map T_pi=[1,1]^T gives T_pi^T Y_pi T_pi=Y_a+Y_b, so the series contribution cancels and the exact nodal image is a one-terminal constant-admittance shunt under the declared coordinate and reference assumptions. | [Multigraphs for expert modelers](../foundations/multigraphs-for-modelers.md) | `self-checked` |
@@ -153,7 +154,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 
 | Verification | Claims |
 | --- | ---: |
-| `self-checked` | 106 |
+| `self-checked` | 107 |
 | `independently-implemented` | 6 |
 | `externally-reviewed` | 0 |
 
@@ -193,6 +194,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `FORMULATION-NODAL-002` | Extend the failure-family witness to multiconductor, grounded, state-dependent, and nonlinear formulations with independent review. |
 | `FORMULATION-NODAL-003` | Extend the rank guard to frequency-dependent, singular-shunt, dynamic, and state-dependent compound operators with independent review. |
 | `FORMULATION-Y-SPLIT-001` | Obtain independent review of the source-factor versus study-operator distinction and extend the witness to a generator control and a non-OpenDSS formulation. |
+| `FORMULATION-ZERO-001` | This algebraic boundary neither invalidates all power-variable formulations nor verifies a complete network, equipment limits, or global optimality. |
 | `GRAPH-CYCLE-001` | Lift the executable incidence and cycle objects to conductor-terminal graphs, state-conditioned topology decisions, and compiled multi-terminal factors. |
 | `GRAPH-LOOPY-001` | Review whether the book should add a dedicated loopy-Laplacian notation for grounded diagonal terms in future editions. |
 | `GRAPH-MATRIX-001` | Obtain expert review and extend the executable witness to complex block stamps, transformer ratios, and coupled multi-terminal factors without calling the resulting operator a universal graph Laplacian. |
@@ -379,7 +381,7 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `representation` (58)
+### `representation` (59)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -410,6 +412,7 @@ schema is normalised.
 | `FORMULATION-NODAL-002` — Even when a nodal operator can be assembled, it may be singular without a declared reference or shunt, or semantically insufficient for member-level limits: aligned parallel factors can share one aggregate admittance while having different member currents and feasible limits. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `theorem` |
 | `FORMULATION-NODAL-003` — A declared reference or grounding label does not by itself establish nonsingularity of a compound nodal operator: the rank guard must be evaluated on the assembled operator after the declared reference, grounding, and active-state maps are applied. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `theorem` |
 | `FORMULATION-Y-SPLIT-001` — A load or generator may be represented as a factor attached to a source network while a declared study formulation places a constant-admittance, Norton, or other linearized part in the nodal operator and retains the remainder as an injection, control, limit, or decision relation; the resulting nodal matrix is therefore mode-, state-, and linearization-qualified rather than a unique graph of the source system. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `definition` |
+| `FORMULATION-ZERO-001` — For a terminal with complete signed current residual r_I and consistent complex powers, r_S=V conjugate(r_I): KCL implies nodal power balance, but the converse requires nonzero terminal voltage; at V=0 a power row admits any current residual, and a fixed power tolerance bounds current error only after division by the voltage magnitude. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `theorem` |
 | `GRAPH-LOOPY-001` — Network-reduction and microgrid-stability literature uses loopy-Laplacian self-loop terms for grounded or differential-conductance diagonal effects; that matrix-level usage is distinct from the book's ordinary graph-loop convention with a zero signed-incidence column. | [Multigraphs for expert modelers](../foundations/multigraphs-for-modelers.md) | `definition` |
 | `GRAPH-MATRIX-001` — Under the declared convention A_uv equals non-loop edge multiplicity off diagonal, A_vv equals twice the graph-loop count, and D contains incidence degrees, so D-A equals B B transpose; graph-loop columns vanish from signed incidence while a grounded shunt contributes a distinct diagonal constitutive term. | [Multigraphs for expert modelers](../foundations/multigraphs-for-modelers.md) | `theorem` |
 | `GRAPH-MULTI-001` — The book's finite undirected multigraph is an identified edge-and-flag object in which every edge owns exactly two distinct flags; loops have two flags incident to one vertex, parallel members retain distinct edge identities, and attributes remain typed maps rather than being inferred from adjacency. | [Multigraphs for expert modelers](../foundations/multigraphs-for-modelers.md) | `definition` |

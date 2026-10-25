@@ -34,6 +34,9 @@ ROUTER_GENERIC_TERMS = {
 # not itself a solver-status question, and impedance is not source provenance.
 # Match normalized tokens so punctuation/plurals follow the ordinary router.
 ROUTER_TOPIC_PATTERNS = {
+    "power-balance-enforces-kcl-at-zero-voltage": (
+        r"power\w*", r"kcl|current\w*|residual\w*|impedance|neutral", r"zero|kcl|impedance|constantz|neutral",
+    ),
     "terminal-permutation-is-cosmetic": (r"permut\w*|reorder\w*|relabel\w*|swap\w*|order\w*|cosmetic",),
     "reference-matrix-match-proves-source-provenance": (
         r"cs1035|ughv|carson|australian|cable|construction|geometry|provenance|linecode|frequency",

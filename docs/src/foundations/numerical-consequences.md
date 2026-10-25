@@ -458,6 +458,14 @@ numeric values, model equations, declared bounds, device and network residuals,
 recovery obligations, and the level of optimality actually supported. Missing
 checks remain missing even when the status string sounds successful.
 
+Start with the [zero-voltage KCL lesson](@ref zero-voltage-kcl) before using a
+small power-balance residual as feasibility evidence. At each terminal,
+``r_S=V\overline{r_I}`` loses its current information at zero voltage and scales
+it by ``|V|`` elsewhere; a total-network power sum can additionally hide
+opposite nodal errors. The running-network verification script checks line
+recovery and package profile quantities, but does not thereby supply an
+independent all-device nodal KCL audit.
+
 This separation also works in the other direction. A status that does not
 claim feasibility is not evidence that a candidate primal point passed an
 independent validator, and a narrowly validated primal point does not upgrade a

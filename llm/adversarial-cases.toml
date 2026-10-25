@@ -73,48 +73,49 @@ expected_status = "unsupported"
 expected_claim_ids = []
 expected_concept_ids = []
 
-# Near-domain questions with related material but no responsive curated contract.
-# Do not qualify them through a neighbouring route merely sharing a few words.
+# Near-domain regressions: qualify only when a responsive contract now exists.
+# Zero-voltage cases acquired a scoped algebraic basis in lesson A; unrelated
+# questions must still abstain rather than borrow a neighbouring qualification.
 
 [[case]]
 case_id = "ADV-ZERO-VOLTAGE-KCL"
 audience = "power_engineer"
 question = "Does a zero terminal voltage make power balance equivalent to KCL?"
-expected_status = "under_retrieved"
-expected_claim_ids = []
-expected_concept_ids = []
+expected_status = "qualified"
+expected_claim_ids = ["FORMULATION-ZERO-001"]
+expected_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
 
 [[case]]
 case_id = "ADV-ZERO-VOLTAGE-SOLUTIONS"
 audience = "power_engineer"
 question = "Do KCL and power-balance equations have the same solutions when a terminal voltage is zero?"
-expected_status = "under_retrieved"
-expected_claim_ids = []
-expected_concept_ids = []
+expected_status = "qualified"
+expected_claim_ids = ["FORMULATION-ZERO-001"]
+expected_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
 
 [[case]]
 case_id = "ADV-ZERO-VOLTAGE-IMBALANCE"
 audience = "power_engineer"
 question = "At zero voltage, can equal terminal powers hide nonzero current imbalance?"
-expected_status = "under_retrieved"
-expected_claim_ids = []
-expected_concept_ids = []
+expected_status = "qualified"
+expected_claim_ids = ["FORMULATION-ZERO-001"]
+expected_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
 
 [[case]]
 case_id = "ADV-ZERO-NEUTRAL-RESIDUAL"
 audience = "power_engineer"
 question = "At zero neutral voltage, is a power residual sufficient?"
-expected_status = "under_retrieved"
-expected_claim_ids = []
-expected_concept_ids = []
+expected_status = "qualified"
+expected_claim_ids = ["FORMULATION-ZERO-001"]
+expected_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
 
 [[case]]
 case_id = "ADV-KCL-ALL-VOLTAGES"
 audience = "power_engineer"
 question = "Does power balance enforce KCL at every voltage?"
-expected_status = "under_retrieved"
-expected_claim_ids = []
-expected_concept_ids = []
+expected_status = "qualified"
+expected_claim_ids = ["FORMULATION-ZERO-001"]
+expected_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
 
 [[case]]
 case_id = "ADV-IDEAL-SWITCH-SHARING"

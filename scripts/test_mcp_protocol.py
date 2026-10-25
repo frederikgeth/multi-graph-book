@@ -53,7 +53,7 @@ class MCPRequestTests(unittest.TestCase):
                 self.assertEqual(result["structuredContent"], self.service.search("parallel", int(limit)))
         result = self.call({"query": "Do loads belong in Ybus?"}, "book_context")["result"]
         self.assertEqual(result["structuredContent"]["packet"]["status"], "qualified")
-        refused = self.call({"query": "Does a zero terminal voltage make power balance equivalent to KCL?"},
+        refused = self.call({"query": "Can I reuse an OPF after updating a parameter through zero?"},
                             "book_context")["result"]
         self.assertEqual(refused["structuredContent"]["packet"]["status"], "under_retrieved")
         self.assertFalse(refused.get("isError", False))
@@ -127,7 +127,8 @@ class MCPRequestTests(unittest.TestCase):
     def test_modern_calls_preserve_scientific_status(self):
         for query, status in (
             ("Do loads belong in Ybus?", "qualified"),
-            ("Does a zero terminal voltage make power balance equivalent to KCL?", "under_retrieved"),
+            ("Does a zero terminal voltage make power balance equivalent to KCL?", "qualified"),
+            ("Can I reuse an OPF after updating a parameter through zero?", "under_retrieved"),
             ("What is the weather on Mars?", "unsupported"),
         ):
             with self.subTest(status=status):

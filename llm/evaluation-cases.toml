@@ -812,3 +812,33 @@ required_claim_ids = ["PRACTICE-DUAL-001"]
 required_concept_ids = ["normalization", "equivalence-exactness-preservation"]
 required_answer_elements = ["recover physical sensitivity using alpha divided by beta times the raw multiplier under the displayed convention", "explain nonunique duplicate multipliers and keep the scalar LP scope separate from AC-OPF prices"]
 forbidden_simplifications = ["Identical dispatch and objective values imply that raw solver multipliers can be compared directly as physical prices."]
+
+[[case]]
+case_id = "EVAL-ZERO-KCL-STUDENT"
+audience = "student"
+question = "Does power balance enforce KCL even at zero voltage?"
+misconception_id = "power-balance-enforces-kcl-at-zero-voltage"
+required_claim_ids = ["FORMULATION-ZERO-001"]
+required_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["power residual equals voltage times conjugate current residual", "account for all current paths and the nonzero-voltage guard"]
+forbidden_simplifications = ["zero power residual proves KCL at zero voltage", "every power-variable formulation is invalid"]
+
+[[case]]
+case_id = "EVAL-ZERO-KCL-SOFTWARE"
+audience = "software_engineer"
+question = "Can my power balance enforce KCL when a terminal voltage is zero?"
+misconception_id = "power-balance-enforces-kcl-at-zero-voltage"
+required_claim_ids = ["FORMULATION-ZERO-001"]
+required_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["power residual equals voltage times conjugate current residual", "account for all current paths and the nonzero-voltage guard"]
+forbidden_simplifications = ["zero power residual proves KCL at zero voltage", "every power-variable formulation is invalid"]
+
+[[case]]
+case_id = "EVAL-ZERO-KCL-POWER"
+audience = "power_engineer"
+question = "Is a zero neutral power residual sufficient to establish current balance?"
+misconception_id = "power-balance-enforces-kcl-at-zero-voltage"
+required_claim_ids = ["FORMULATION-ZERO-001"]
+required_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["power residual equals voltage times conjugate current residual", "account for all current paths and the nonzero-voltage guard"]
+forbidden_simplifications = ["zero power residual proves KCL at zero voltage", "every power-variable formulation is invalid"]

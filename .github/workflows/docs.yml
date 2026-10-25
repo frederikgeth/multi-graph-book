@@ -50,6 +50,7 @@ jobs:
         run: |
           python3 scripts/check_pdf_refs.py
           python3 experiments/lessons/parallel_members.py --check
+          python3 experiments/lessons/zero_voltage_kcl.py --check
           python3 experiments/lessons/assemble_network.py --check
           python3 experiments/lessons/model_choice.py --check
           python3 experiments/lessons/practical_model_checks.py --check

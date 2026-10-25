@@ -1,6 +1,13 @@
 schema_version = 1
 
 [[entry]]
+key = "ClaeysDeconinckGeth2022"
+status = "verified"
+verification_source = "https://arxiv.org/html/2204.08126v1"
+verified_on = "2026-10-25"
+note = "Title, year and author order checked against the manuscript title block; the cited boundary is Section VI-D2 equation (30). This record cites the author manuscript rather than claiming a publisher metadata audit."
+
+[[entry]]
 key = "BoydVandenberghe2004"
 status = "verified"
 verification_source = "https://web.stanford.edu/~boyd/cvxbook/index.html"

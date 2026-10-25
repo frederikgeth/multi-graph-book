@@ -1,6 +1,19 @@
 schema_version = "0.1.0"
 
 [[misconception]]
+id = "power-balance-enforces-kcl-at-zero-voltage"
+title = "Power balance enforces KCL even at zero terminal voltage"
+severity = "critical"
+query_patterns = ["zero voltage power balance", "power balance enforce kcl", "zero neutral power residual", "zero voltage impedance current", "power balance current imbalance"]
+tempting_answer = "A small power residual proves that Kirchhoff current balance holds, even at a zero-voltage neutral."
+required_qualification = "The complete nodal residuals obey r_S=V conjugate(r_I); division requires V nonzero. At zero voltage the power row loses current information, and small-voltage tolerance amplification must be checked in amperes. Include ground and source reaction currents; total-network power balance can also hide opposite nodal errors."
+safe_shorthand = "A nodal power row implies its current row only at nonzero voltage with consistent terminal powers and all current paths accounted for."
+operational_consequence = "A zero-voltage or small-voltage terminal may hide a current violation; an arbitrary positive voltage floor changes the admissible domain."
+mandatory_claim_ids = ["FORMULATION-ZERO-001"]
+mandatory_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/foundations/circuit-formulations-and-lowering.md", "docs/src/foundations/numerical-consequences.md"]
+
+[[misconception]]
 id = "one-universal-network-graph"
 title = "There is one representation-independent network graph"
 severity = "high"

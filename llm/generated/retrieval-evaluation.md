@@ -4,8 +4,8 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `48c3cd96d84c4d23118dfd66aec868d8b5480081cff97ad650844308d7e2a959`<br>
-**Cases:** 81
+**Corpus hash:** `c323108f18924802c0f0f9986bcfced45bcac168c8f117d083c2e88f214aa7e3`<br>
+**Cases:** 84
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
 The latter is permitted to add mandatory claims and concepts only after the query router identifies
@@ -17,18 +17,18 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
 | Open-corpus lexical evidence recall@5 | 27.5% | diagnostic |
-| Open-corpus lexical evidence recall@10 | 33.9% | diagnostic |
+| Open-corpus lexical evidence recall@10 | 34.3% | diagnostic |
 | Open-corpus complete evidence@10 | 1.2% | diagnostic |
-| Evidence-only lexical recall@5 | 35.0% | diagnostic |
-| Evidence-only lexical recall@10 | 43.0% | diagnostic |
-| Evidence-only complete evidence@10 | 2.5% | diagnostic |
+| Evidence-only lexical recall@5 | 35.4% | diagnostic |
+| Evidence-only lexical recall@10 | 43.1% | diagnostic |
+| Evidence-only complete evidence@10 | 2.4% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
 | Packets with qualification, failure, shorthand, and scope | 100.0% | yes |
 | Corpus-release identity agreement | 100.0% | yes |
 | Held-out contract-router firing | 22/33 (66.7%) | yes |
 | Held-out expected-contract top-1 | 20/33 (60.6%) | diagnostic |
-| Held-out hybrid zero-recall@10 cases | 5/33 | diagnostic |
+| Held-out hybrid zero-recall@10 cases | 6/33 | diagnostic |
 
 The diagnostic lexical scores are intentionally not release thresholds. A perfect contract score
 cannot be reported as a better ranker score: it measures whether an identified high-risk question
@@ -44,14 +44,14 @@ the question count must not be treated as that many independent observations.
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `lexical` | 34.6% | 43.7% | 0.0% | 0/33 | 6/33 | 0.200 |
-| `char_tfidf` | 34.9% | 45.2% | 0.0% | 0/33 | 5/33 | 0.225 |
-| `hybrid` | 37.2% | 46.6% | 0.0% | 0/33 | 5/33 | 0.219 |
-| `graph` | 38.6% | 58.3% | 21.2% | 7/33 | 3/33 | 0.251 |
+| `char_tfidf` | 34.9% | 45.2% | 0.0% | 0/33 | 5/33 | 0.224 |
+| `hybrid` | 38.2% | 46.0% | 0.0% | 0/33 | 6/33 | 0.219 |
+| `graph` | 39.3% | 58.3% | 21.2% | 7/33 | 3/33 | 0.251 |
 
 Held-out contract-router firing: **22/33 (66.7%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **20/33 (60.6%)**; this remains diagnostic because the set is synthetic and clustered.
 Target clusters: **11**, with cluster sizes `[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]`; percentage differences are therefore not independent observations.
-Hybrid versus lexical complete@10: **0/33** versus **0/33**; hybrid zero-recall@10: **5/33**.
+Hybrid versus lexical complete@10: **0/33** versus **0/33**; hybrid zero-recall@10: **6/33**.
 Graph versus hybrid complete@10: **7/33** versus **0/33**.
 
 | Held-out case | Audience | Expected route | Observed top-1 | Router fired | Lexical complete@10 | TF-IDF complete@10 | Hybrid complete@10 | Graph complete@10 |
@@ -94,9 +94,9 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 27 | 100.0% | 44.4% | 100.0% |
-| `software_engineer` | 27 | 100.0% | 38.5% | 100.0% |
-| `student` | 27 | 100.0% | 46.2% | 100.0% |
+| `power_engineer` | 28 | 100.0% | 44.0% | 100.0% |
+| `software_engineer` | 28 | 100.0% | 39.5% | 100.0% |
+| `student` | 28 | 100.0% | 45.7% | 100.0% |
 
 ## Case results
 
@@ -183,6 +183,9 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 | `EVAL-PRACTICE-DUAL-STUDENT` | `student` | `primal-equivalence-preserves-raw-multipliers` | 33.3% | yes |
 | `EVAL-PRACTICE-DUAL-SOFTWARE` | `software_engineer` | `primal-equivalence-preserves-raw-multipliers` | 66.7% | yes |
 | `EVAL-PRACTICE-DUAL-POWER` | `power_engineer` | `primal-equivalence-preserves-raw-multipliers` | 33.3% | yes |
+| `EVAL-ZERO-KCL-STUDENT` | `student` | `power-balance-enforces-kcl-at-zero-voltage` | 33.3% | yes |
+| `EVAL-ZERO-KCL-SOFTWARE` | `software_engineer` | `power-balance-enforces-kcl-at-zero-voltage` | 66.7% | yes |
+| `EVAL-ZERO-KCL-POWER` | `power_engineer` | `power-balance-enforces-kcl-at-zero-voltage` | 33.3% | yes |
 
 ## Interpretation and next boundary
 

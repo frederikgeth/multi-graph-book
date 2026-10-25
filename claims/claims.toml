@@ -1,6 +1,23 @@
 schema_version = 1
 
 [[claim]]
+claim_id = "FORMULATION-ZERO-001"
+exactness_object = "equation_identity"
+preservation_dimensions = ["terminal_behavior", "phase_neutral", "numerical_structure"]
+chapter = "docs/src/foundations/circuit-formulations-and-lowering.md"
+claim_text = "For a terminal with complete signed current residual r_I and consistent complex powers, r_S=V conjugate(r_I): KCL implies nodal power balance, but the converse requires nonzero terminal voltage; at V=0 a power row admits any current residual, and a fixed power tolerance bounds current error only after division by the voltage magnitude."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "explicit_scalar_derivation_and_complex_residual_witness_in_experiments/lessons/zero_voltage_kcl.py"
+citation_keys = ["ClaeysDeconinckGeth2022"]
+model_scope = "one RMS complex-phasor terminal current row and its power product, including zero and arbitrarily small voltages; pure fixed-impedance law as a separate local example"
+assumptions = "all branch, device, source and earth-path currents are included with consistent signs; every power in this nodal sum uses the same terminal voltage; this is not merely a total-network power sum"
+reviewer = ""
+review_date = ""
+unresolved_issue = "This algebraic boundary neither invalidates all power-variable formulations nor verifies a complete network, equipment limits, or global optimality."
+
+[[claim]]
 claim_id = "PRACTICE-IMPORT-001"
 exactness_object = "feasible_set"
 preservation_dimensions = ['limits', 'provenance']
