@@ -67,7 +67,7 @@
     "bmopftools_manifest_sha256": "e6bc63cd20da3505fbb251e2d48add4c58f0e6a7e199d6be5206c49e881159a2",
     "book_llm_corpus_sha256": "48c3cd96d84c4d23118dfd66aec868d8b5480081cff97ad650844308d7e2a959",
     "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.2.0",
-    "federated_pair_sha256": "9c9d9800f8636cd4445f70af4d037770ee7ad4fb6f57a6485f37fe3b56f3df10"
+    "federated_pair_sha256": "9de658d12ff9e4a9efa6cfa3b225ae6108ff673fe0b17b81f5e23277f3c0692b"
   },
   "schema_version": "0.1.0",
   "status": "substrate_only_no_agent_runs",

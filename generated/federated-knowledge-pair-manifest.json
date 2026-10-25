@@ -17,6 +17,10 @@
       "unit_base_serialization_invariance"
     ],
     "corpus_sha256": "645e6b365ab1c85583746dc7c0704ed2685daab23c184f46758cf08c61f76069",
+    "finding_registry": {
+      "finding_count": 381,
+      "sha256": "52db7414e7f2bef158d32988c196d6d038320e30efda64a7501ddf1872d44519"
+    },
     "integration_profile_sha256": "adab825c34cc52b2d942548bf58cdb858e190ac4736cff6cca213fe90881f525",
     "knowledge_ids": [
       "PSK-000001",
@@ -567,6 +571,6 @@
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.2.0",
-  "pair_sha256": "9c9d9800f8636cd4445f70af4d037770ee7ad4fb6f57a6485f37fe3b56f3df10",
+  "pair_sha256": "9de658d12ff9e4a9efa6cfa3b225ae6108ff673fe0b17b81f5e23277f3c0692b",
   "schema_version": "0.2.0"
 }

@@ -1,0 +1,147 @@
+{
+  "bmopftools": {
+    "executable_export_record_counts": {
+      "api_operation": 14,
+      "executable_contract": 14,
+      "finding": 57,
+      "fixture": 14,
+      "property_suite": 2,
+      "recipe": 6
+    },
+    "finding_registry": {
+      "finding_count": 381,
+      "sha256": "52db7414e7f2bef158d32988c196d6d038320e30efda64a7501ddf1872d44519"
+    },
+    "revision": "97c274946091859b7d9b0e822c96f1e7f9f50c7e"
+  },
+  "claims": {
+    "established_without_citation_keys": [
+      "ARCH-LOWER-001",
+      "ARCH-LOWER-002",
+      "ARCH-NODAL-001",
+      "ARCH-RECOVERY-001",
+      "ARCH-RECOVERY-002",
+      "ARCH-RECOVERY-003",
+      "ARCH-RECOVERY-004",
+      "PRACTICE-UPDATE-001",
+      "TR-COMP-001",
+      "TR-COORD-001",
+      "TR-GRAPH-001",
+      "TR-GRAPH-002",
+      "TR-KRON-FIVE-001",
+      "TR-KRON-FIVE-002",
+      "TR-KRON-NEUTRAL-001",
+      "TR-PAR-001",
+      "TR-PAR-002",
+      "TR-PAR-JOINT-001",
+      "TR-SER-001",
+      "TR-SER-002",
+      "TR-SER-003",
+      "TR-XFMR-001",
+      "TR-XFMR-002",
+      "TR-XFMR-003",
+      "TR-XFMR-004",
+      "TR-XFMR-005",
+      "TR-XFMR-006"
+    ],
+    "total": 112,
+    "verification": {
+      "externally-reviewed": 0,
+      "independently-implemented": 6,
+      "self-checked": 106
+    }
+  },
+  "knowledge": {
+    "execution_status": {
+      "implemented": 14,
+      "not_applicable": 4
+    },
+    "total": 18
+  },
+  "misconceptions": {
+    "psk_linked": 18,
+    "psk_links": {
+      "base-state-equivalent-is-globally-exact": [
+        "PSK-000010"
+      ],
+      "complete-feasibility-status-is-enough": [
+        "PSK-000013"
+      ],
+      "fixed-tap-snapshot-preserves-adjustable-transformer": [
+        "PSK-000005"
+      ],
+      "generic-neural-retrieval-is-automatically-better": [
+        "PSK-000015"
+      ],
+      "ground-neutral-reference-are-one-node": [
+        "PSK-000002"
+      ],
+      "iteration-failure-proves-infeasibility": [
+        "PSK-000016"
+      ],
+      "kron-reduction-preserves-everything": [
+        "PSK-000008"
+      ],
+      "loads-generators-fixed-graph-membership": [],
+      "mutual-coupling-is-an-ordinary-parallel-network": [
+        "PSK-000017"
+      ],
+      "nodal-operator-is-source-network": [],
+      "numeric-round-trip-preserves-field-meaning": [],
+      "one-universal-network-graph": [],
+      "parallel-admittance-implies-decision-equivalence": [
+        "PSK-000001"
+      ],
+      "primal-equivalence-preserves-raw-multipliers": [],
+      "radial-is-representation-independent": [],
+      "reference-matrix-match-proves-source-provenance": [
+        "PSK-000018"
+      ],
+      "reference-or-rank-success-proves-nonsingularity": [
+        "PSK-000011"
+      ],
+      "self-loop-is-a-shunt-or-circuit-loop": [],
+      "solver-termination-implies-validated-solution": [
+        "PSK-000003"
+      ],
+      "source-outage-is-deletion-in-reduced-graph": [],
+      "terminal-equivalence-implies-opf-equivalence": [
+        "PSK-000007"
+      ],
+      "terminal-permutation-is-cosmetic": [
+        "PSK-000012"
+      ],
+      "transformer-end-swap-is-ordinary-edge-reversal": [
+        "PSK-000006"
+      ],
+      "transposition-implies-positive-sequence-exactness": [
+        "PSK-000009"
+      ],
+      "unit-base-metadata-is-equivalence": [
+        "PSK-000014"
+      ],
+      "wye-delta-share-nominal-voltage-base": [
+        "PSK-000004"
+      ]
+    },
+    "total": 26,
+    "unlinked_ids": [
+      "loads-generators-fixed-graph-membership",
+      "nodal-operator-is-source-network",
+      "numeric-round-trip-preserves-field-meaning",
+      "one-universal-network-graph",
+      "primal-equivalence-preserves-raw-multipliers",
+      "radial-is-representation-independent",
+      "self-loop-is-a-shunt-or-circuit-loop",
+      "source-outage-is-deletion-in-reduced-graph"
+    ]
+  },
+  "pair_sha256": "9de658d12ff9e4a9efa6cfa3b225ae6108ff673fe0b17b81f5e23277f3c0692b",
+  "schema_version": "1.0.0",
+  "source_sha256": {
+    "claims/claims.toml": "2f0adfe4fb996bce3bf36cd6b0a20c33d8001c94bac2db5ed7bb3ea501779e68",
+    "generated/federated-knowledge-pair-manifest.json": "6a2be285680f3f290d8bbbe8073657e0c2ad0a221afe0d1eeda957aa77519ceb",
+    "knowledge/psk.toml": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364",
+    "llm/misconceptions.toml": "c3b8de7ad39c48d55e1bcf39af39b02b2b63900a1e0c8ce783ef2a327c7f0db7"
+  }
+}
