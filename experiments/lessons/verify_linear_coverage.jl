@@ -76,6 +76,10 @@ function linear_coverage_lesson()
     winding_fixture_path = joinpath(root,"test","data","linear_audit","winding-list.json")
     include(winding_path)
     winding_evidence = Base.invokelatest(()->getfield(@__MODULE__,:WindingListAuditExample).run())
+    multiphase_path = joinpath(root,"examples","multiphase_winding_audit.jl")
+    multiphase_fixture_path = joinpath(root,"test","data","linear_audit","multiphase-winding.json")
+    include(multiphase_path)
+    multiphase_evidence = Base.invokelatest(()->getfield(@__MODULE__,:MultiphaseWindingAuditExample).run())
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -212,6 +216,32 @@ function linear_coverage_lesson()
         @test we["candidate"]["bus"]["w3"]["a"]["vi"] ≈ -.04296875 atol=1e-7
         @test JSON3.read(JSON3.write(we),Dict{String,Any}) == we
     end
+    @testset "Multiphase WYE allocation and neutral-current observations" begin
+        me=multiphase_evidence
+        @test me["accepted"]
+        @test me["analytic"]["status"] == "passed"
+        @test me["native_audit"]["coverage_complete"]
+        for key in ("unequal_phase_overload","wrong_cap_allocation","phase_order_corruption")
+            @test me[key]["status"] == "failed"
+        end
+        for key in ("missing_coil_current","missing_ground_current")
+            @test me[key]["status"] == "indeterminate"
+        end
+        mrow(key,id)=only(filter(x->x["id"]==id,me[key]["rows"]))
+        @test me["unequal_phase_overload"]["failed_checks"] == 1
+        @test mrow("unequal_phase_overload","transformer.t.w2.s_max.coil1")["residual"] ≈ 4.973879104169653-4.
+        @test mrow("unequal_phase_overload","network.power")["status"] == "passed"
+        @test mrow("missing_coil_current","network.power")["residual"] === nothing
+        obs=mrow("analytic","transformer.t.w2.neutral_observation")
+        @test obs["status"] == "reconstructed" && obs["residual"] === nothing
+        @test obs["neutral_current_out_A"] ≈ [.25164794921875,.00054931640625]
+        @test me["candidate"]["bus"]["w2"]["b"]["vr"] ≈ -2.46484375 atol=1e-7
+        @test me["candidate"]["bus"]["w2"]["c"]["vi"] ≈ 3.96484375 atol=1e-7
+        @test me["candidate"]["transformer"]["t"]["w2"]["1"]["s_max"] ≈ 10.
+        @test me["candidate"]["transformer"]["t"]["loss"]["p_loss"] ≈ 2.3387556076049805 atol=1e-7
+        @test me["candidate"]["transformer"]["t"]["loss"]["q_loss"] ≈ 1.3143973350524902 atol=1e-7
+        @test JSON3.read(JSON3.write(me),Dict{String,Any}) == me
+    end
     active = dirname(Base.active_project())
     Dict{String,Any}(
         "evidence_state"=>"local_package_candidate_not_promoted_to_published_integration_pin",
@@ -220,7 +250,8 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path]),
+        "multiphase_winding_example"=>multiphase_evidence,
         "winding_list_example"=>winding_evidence,
         "fixed_transformer_example"=>transformer_evidence,
         "generator_voltage_example"=>generator_evidence,

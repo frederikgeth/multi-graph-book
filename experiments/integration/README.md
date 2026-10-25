@@ -107,7 +107,7 @@ pin and regenerating the federated pair. The native default-role source-neutral 
 covered by the extended API, together with fixed ideal switches, bounded
 WYE/SINGLE_PHASE generator injections/limits, applicable phase-to-earth bus
 voltage bounds and fixed single-coil single_phase transformers with legacy
-secondary excitation, plus two/three-winding single-coil WYE transformers with
+secondary excitation, plus two/three-winding WYE transformers with matched one-to-three phase-neutral coils and
 explicit pairwise leakage. DELTA generators, generator costs/controllers, transformer
 variants/limits outside that narrow slice, voltage-dependent loads, other voltage families and objective
 evaluation remain open. Source-fixed/grounded bus-bound declarations are
@@ -190,4 +190,14 @@ corresponding terminal-current magnitude is below that cap. The companion checks
 analytic/native agreement, complex loss, wrong referral, coil/terminal confusion,
 missing current and missing pairwise data. It retains the original running-network
 coverage refusal, candidate-only evidence status and source/hash binding. Taps,
-DELTA/multiphase windings and internal coordinates remain outside this slice.
+DELTA windings, unmatched coil counts and internal coordinates remain outside this slice.
+
+
+The companion now also runs `examples/multiphase_winding_audit.jl` with
+`multiphase-winding.json`. Three unbalanced WYE phases distinguish total winding
+power from native equal per-coil s_max allocation: a 12 VA cap fails one 4.974 VA
+coil despite the sum of coil magnitudes being about 10.140 VA. It checks native
+and analytic results, allocated cap reports, phase-order corruption, neutral
+reconstruction and missing coil/earth-reaction observations. Multiphase evidence
+uses explicit coil-indexed rows; the original one-coil row IDs remain stable.
+The running network still has unassessed DELTA/top-level nameplate semantics.

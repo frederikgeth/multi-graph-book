@@ -968,3 +968,94 @@ circuit residuals and checking the admissibility of constitutive data are
 separate obligations. The package's input analysis provides the separate
 matrix diagnostic. Multiphase/DELTA windings, taps, internal grounding and
 internal per-unit fields remain outside this audit slice.
+
+### [An adequate winding total can hide an overloaded phase](@id multiphase-winding-audit)
+
+The next local candidate extends the [winding-list audit](@ref winding-list-audit)
+to matched one-, two-, and three-phase WYE windings. This is an extension of a
+specific executable model: each winding has an explicit neutral, and the coil
+counts agree. The native model pairs coils by position in their phase lists,
+after removing the neutral. A terminal label identifies a local terminal; it
+does not automatically define a cross-winding phase correspondence.
+
+For coil position ``p``, the same current and voltage equations hold separately:
+
+```math
+\sum_k N_k I_{kp}=0,\qquad
+U_{1p}-U_{kp}/N_k=-(Z_Bj_{2:n,p})_{k-1}.
+```
+
+The model does not add mutual leakage between different phase positions.
+Excitation acts across each winding-2 coil. Its phase terminal currents and
+neutral return, oriented out of the bus into the transformer, are
+
+```math
+T_{kp}=I_{kp}+\mathbf{1}_{k=2}YU_{2p},\qquad
+T_{k,n}=-\sum_{p=1}^{m}T_{kp}.
+```
+
+Losses sum the preceding per-coil identities over ``p``. The neutral is the
+negative **complex sum**, not the sum of magnitudes. Opposite current errors in
+two phases can leave this neutral sum unchanged while violating their individual
+ampere-turn equations and local phase KCL. Likewise, a winding neutral current
+is not an earth-reaction measurement. The computational fixture has nonzero
+neutral currents and separately supplied zero earth reactions.
+
+**Predict.** A winding has a 12 VA rating, with three coil powers whose
+magnitudes sum to less than 12 VA. Is it necessarily compliant with the native
+winding-list limit? No: this implementation allocates equal shares,
+
+```math
+|U_{kp}\overline{I_{kp}}|\le S_{k,\max}/m\quad\text{for every }p.
+```
+
+That constraint bounds each **bare coil** before excitation is added to its
+terminal current. It differs from either aggregate constraint
+``|\sum_p U_{kp}\overline{I_{kp}}|\le S_{k,\max}`` or
+``\sum_p|U_{kp}\overline{I_{kp}}|\le S_{k,\max}``.
+Satisfying every allocated share implies both aggregate bounds; the converse
+fails in general. This allocation rule describes the implemented limit, not a
+universal thermal-rating rule for all physical transformers.
+
+The package-owned `multiphase-winding.json` fixture retains the preceding
+three-winding ratios, leakage matrix and excitation. Its source voltages are
+``(10,-5-8\mathrm j,-5+8\mathrm j)`` V, and winding-2 bare currents are
+``(-1+0.25\mathrm j,0.5+0.25\mathrm j,0.25-0.5\mathrm j)`` A.
+Winding-3 currents are half these values; winding-1 currents are ``-5/8``
+times them. Each set satisfies ampere-turn balance for ``N=(1,1/2,1/4)``.
+
+| Coil position | Winding-2 voltage (V) | Apparent-power magnitude (VA) | Allocated 4 VA cap |
+|:--|:--|--:|:--|
+| 1 | ``4.82421875-0.10546875\mathrm j`` | 4.973879 | Fails |
+| 2 | ``-2.46484375-3.89453125\mathrm j`` | 2.576506 | Passes |
+| 3 | ``-2.39453125+3.96484375\mathrm j`` | 2.589267 | Passes |
+
+The sum of magnitudes is approximately 10.139652 VA. Tightening only the winding
+rating from 30 VA to 12 VA leaves equations, KCL and aggregate power balance
+satisfied, but fails coil 1's limit. The native result's per-coil `s_max` must
+also report the divided cap: 10 VA at the baseline, 4 VA in the tighter case.
+Reporting 30 VA for every coil is a separate report-consistency error.
+
+At the analytic point, the winding-2 neutral current is approximately
+``0.251648+0.000549\mathrm j`` A and total transformer loss is approximately
+``2.338756+1.314397\mathrm j`` VA. The native solve reproduces the voltages and
+losses and passes the independent audit. That is evidence for this supplied
+point, not uniqueness or global optimality. The neutral-current observation is
+marked **reconstructed**; the audit does not invent a neutral-current limit or
+an independent neutral measurement.
+
+Use the same `verify_linear_coverage.jl` companion and exact local candidate
+environment in `experiments/integration/README.md`. It invokes
+`examples/multiphase_winding_audit.jl` and retains the analytic/native points,
+unequal-phase overload, wrong cap report, phase-order corruption, missing coil
+current and missing earth reaction. Tests also cover a two-phase case with exact
+neutral cancellation and consistent phase permutations. Missing a required coil
+current leaves network KCL/power **unassessed**. DELTA windings, unmatched coil
+counts, taps, top-level `s_rating` and internal coordinate fields remain outside
+this slice; the running network remains indeterminate.
+
+**Transfer exercise.** For this point, the smallest equally allocated total
+rating is ``3\max_p|S_{2p}|≈14.921637`` VA, rather than the 10.139652 VA sum.
+At that rating coil 1 is exactly on its boundary. For two coils, repeat the
+allocation using division by two, even if their currents cancel in the neutral.
+Zero neutral current does not imply zero coil power or spare phase capacity.
