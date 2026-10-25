@@ -16,6 +16,7 @@ on:
       - 'scripts/check_neural_benchmark.py'
       - 'scripts/check_release_candidate.py'
       - 'scripts/mcp_llm_server.py'
+      - 'scripts/test_mcp_protocol.py'
       - 'scripts/serve_llm_access.py'
       - '.github/workflows/llm-accessibility.yml'
   pull_request:
@@ -33,6 +34,7 @@ on:
       - 'scripts/check_neural_benchmark.py'
       - 'scripts/check_release_candidate.py'
       - 'scripts/mcp_llm_server.py'
+      - 'scripts/test_mcp_protocol.py'
       - 'scripts/serve_llm_access.py'
       - '.github/workflows/llm-accessibility.yml'
   workflow_dispatch:

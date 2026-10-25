@@ -34,6 +34,7 @@ def tool_definitions() -> list[dict]:
             ),
             "inputSchema": {
                 "type": "object",
+                "additionalProperties": False,
                 "required": ["query"],
                 "properties": {
                     "query": {"type": "string", "minLength": 1},
@@ -48,6 +49,7 @@ def tool_definitions() -> list[dict]:
             "description": "Search the versioned book corpus and return stable source-linked records.",
             "inputSchema": {
                 "type": "object",
+                "additionalProperties": False,
                 "required": ["query"],
                 "properties": {
                     "query": {"type": "string", "minLength": 1},
@@ -68,14 +70,56 @@ def manifest_resource(service: BookLLMService) -> dict:
     }
 
 
-def handle_request(service: BookLLMService, request: dict) -> dict | None:
+def validate_tool_arguments(name: str, arguments: Any) -> None:
+    """Check this adapter's flat schemas before any lossless normalization."""
+    definitions = {tool["name"]: tool for tool in tool_definitions()}
+    if name not in definitions:
+        raise ValueError(f"unknown tool: {name}")
+    if not isinstance(arguments, dict):
+        raise ValueError("tool arguments must be an object")
+    schema = definitions[name]["inputSchema"]
+    for required in schema["required"]:
+        if required not in arguments:
+            raise ValueError(f"missing required argument: {required}")
+    for key, value in arguments.items():
+        rule = schema["properties"].get(key)
+        if rule is None:
+            raise ValueError(f"unknown argument: {key}")
+        if rule["type"] == "string" and not isinstance(value, str):
+            raise ValueError(f"{key} must be a string")
+        # bool is a subclass of int in Python but is not a JSON Schema integer.
+        if rule["type"] == "integer" and not (
+            type(value) is int or (type(value) is float and value.is_integer())
+        ):
+            raise ValueError(f"{key} must be an integer")
+        if "minLength" in rule and len(value.strip()) < rule["minLength"]:
+            raise ValueError(f"{key} must not be empty")
+        if "minimum" in rule and not rule["minimum"] <= value <= rule["maximum"]:
+            raise ValueError(f"{key} must be between {rule['minimum']} and {rule['maximum']}")
+        if "enum" in rule and value not in rule["enum"]:
+            raise ValueError(f"unsupported {key}: {value}")
+
+
+def handle_request(service: BookLLMService, request: Any) -> dict | None:
+    if not isinstance(request, dict):
+        return error_response(None, -32600, "MCP message must be a JSON object")
     method = request.get("method")
     request_id = request.get("id")
-    params = request.get("params") or {}
+    if "id" in request and type(request_id) not in (str, int):
+        return error_response(None, -32600, "request id must be a string or integer")
+    if request.get("jsonrpc") != "2.0" or not isinstance(method, str) or not method:
+        return error_response(request_id, -32600, "invalid JSON-RPC request envelope")
+    # Notifications, including unrecognized ones, have no response. Do not
+    # execute a tool sent without a request ID or emit an id:null reply.
+    if "id" not in request:
+        return None
+    params = request.get("params", {})
     if not isinstance(params, dict):
         return error_response(request_id, -32602, "params must be an object")
     if method == "initialize":
         requested = params.get("protocolVersion")
+        if not isinstance(requested, str) or not requested:
+            return error_response(request_id, -32602, "protocolVersion must be a nonempty string")
         protocol = requested if requested in SUPPORTED_PROTOCOL_VERSIONS else MCP_PROTOCOL_VERSION
         return response(
             request_id,
@@ -86,8 +130,6 @@ def handle_request(service: BookLLMService, request: dict) -> dict | None:
                 "instructions": "Use book_context for qualified answers; do not treat retrieval relevance as proof.",
             },
         )
-    if method in {"notifications/initialized", "notifications/cancelled"}:
-        return None
     if method == "ping":
         return response(request_id, {})
     if method == "tools/list":
@@ -110,16 +152,20 @@ def handle_request(service: BookLLMService, request: dict) -> dict | None:
         )
     if method == "tools/call":
         name = params.get("name")
-        arguments = params.get("arguments") or {}
-        if not isinstance(arguments, dict):
-            return error_response(request_id, -32602, "tool arguments must be an object")
+        arguments = params.get("arguments", {})
+        if not isinstance(name, str):
+            return error_response(request_id, -32602, "tool name must be a string")
+        try:
+            validate_tool_arguments(name, arguments)
+        except ValueError as error:
+            return error_response(request_id, -32602, str(error))
         try:
             if name == "book_context":
                 result = service.response(
-                    str(arguments.get("query", "")),
-                    str(arguments.get("audience", "student")),
+                    arguments["query"],
+                    arguments.get("audience", "student"),
                     int(arguments.get("limit", 6)),
-                    str(arguments.get("method", "hybrid")),
+                    arguments.get("method", "hybrid"),
                 )
                 return response(
                     request_id,
@@ -127,9 +173,9 @@ def handle_request(service: BookLLMService, request: dict) -> dict | None:
                 )
             if name == "book_search":
                 result = service.search(
-                    str(arguments.get("query", "")),
+                    arguments["query"],
                     int(arguments.get("limit", 8)),
-                    str(arguments.get("method", "hybrid")),
+                    arguments.get("method", "hybrid"),
                 )
                 return response(
                     request_id,
@@ -153,12 +199,14 @@ def main() -> int:
         if not line.strip():
             continue
         try:
-            request = json.loads(line)
-            if not isinstance(request, dict):
-                raise ValueError("MCP message must be a JSON object")
-            result = handle_request(service, request)
-        except (json.JSONDecodeError, ValueError, TypeError) as error:
+            def reject_nonfinite(value: str) -> None:
+                raise ValueError(f"invalid JSON number: {value}")
+
+            request = json.loads(line, parse_constant=reject_nonfinite)
+        except (json.JSONDecodeError, ValueError) as error:
             result = error_response(None, -32700, str(error))
+        else:
+            result = handle_request(service, request)
         if result is not None:
             sys.stdout.write(json.dumps(result, ensure_ascii=False, separators=(",", ":")) + "\n")
             sys.stdout.flush()
