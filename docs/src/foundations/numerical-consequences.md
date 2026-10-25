@@ -544,9 +544,10 @@ are unassessed.
 The separate candidate `audit_solution` now adds default-role source neutral
 returns, implicit source grounding and WYE/SINGLE_PHASE/DELTA constant-power
 load equations, fixed ideal switches, a bounded WYE/SINGLE_PHASE generator
-domain, ordinary phase-to-earth voltage bounds and a fixed single-coil
-transformer domain. The same running-network
-result has **34 unassessed rows** (35 before this generator/voltage slice):
+domain, ordinary phase-to-earth voltage bounds, fixed single-coil transformers,
+and matched WYE/DELTA winding-list equations with explicit rating-metadata
+semantics. The same running-network result now has **33 unassessed rows**
+(34 before the rating-metadata trace below):
 11 local power equations across five loads and the source voltage relation are
 now evaluated. Source-return and load-terminal currents are reconstructed from
 their connection maps; each explicit or implicit earth reaction is consumed once.
@@ -556,8 +557,10 @@ from-side currents. The 42-row table above remains the coverage of
 `audit_linear_solution`.
 
 The extended verdict is still **indeterminate**. The running-network generator
-has a cost field outside this audit slice; the n-winding transformer, neutral
-and phase-to-phase voltage limits also remain unassessed. The 28 ordinary
+has a cost field outside this audit slice; neutral and phase-to-phase voltage
+limits also remain unassessed. The winding-list transformer now has checked
+coil equations, leakage, current caps and reconstructed terminal incidence. Its
+`s_rating` is retained as metadata, not an added apparent-power limit. The 28 ordinary
 phase-to-earth voltage-bound rows are now checked. All 26
 terminal KCL rows and aggregate power remain unassessed because required current
 contributions are still missing. The companion records both APIs on the same solved point;
@@ -766,8 +769,8 @@ The next local candidate slice covers one explicit terminal pair on each side
 of the native `single_phase` transformer, with fixed tap, finite leakage and
 secondary excitation. It complements the [transformer-port lesson](@ref ideal-transformer-port-lesson)
 by checking supplied native current observations as well as equations. It does
-not cover the running network's `n_winding` device; the running verdict and its
-34 unassessed rows remain unchanged.
+not by itself cover the running network's `n_winding` device; the later
+winding-list and rating-metadata slices supply that distinct coverage.
 
 Let ``U_f,U_t`` be oriented coil voltages and ``I_f,I_t`` the supplied series
 currents, both positive into their winding. For this native tap convention,
@@ -861,8 +864,9 @@ the rating semantics of a winding-list model. The next local candidate checks
 two or three WYE windings with one phase-neutral coil each, fixed nominal
 ratios, explicit pairwise short-circuit reactances, and excitation on winding 2.
 It uses the native `n_winding` equations, independently evaluated in SI units.
-This smaller witness does not remove the running network's 34 unassessed rows;
-its top-level rating and other unsupported declarations remain separate obligations.
+This smaller witness does not by itself assess the running network's
+multiphase arrangement; the later slices address incidence and rating metadata
+separately. Other unsupported declarations remain explicit obligations.
 
 Let ``U_k`` denote phase-minus-neutral coil voltage and ``I_k`` bare coil
 current, positive **into** the transformer at every winding. Define
@@ -1051,8 +1055,9 @@ unequal-phase overload, wrong cap report, phase-order corruption, missing coil
 current and missing earth reaction. Tests also cover a two-phase case with exact
 neutral cancellation and consistent phase permutations. Missing a required coil
 current leaves network KCL/power **unassessed**. The next section extends the
-incidence to DELTA; unmatched coil counts, taps, top-level `s_rating` and internal
-coordinate fields remain outside this slice. The running network remains indeterminate.
+incidence to DELTA; the separate rating-metadata trace below addresses
+`s_rating`. Unmatched coil counts, taps and internal coordinates remain outside
+the supported domain. The running network remains indeterminate.
 
 **Transfer exercise.** For this point, the smallest equally allocated total
 rating is ``3\max_p|S_{2p}|≈14.921637`` VA, rather than the 10.139652 VA sum.
@@ -1133,12 +1138,88 @@ complete native build path found that validation rejects a DELTA map containing
 a neutral before constraints are stamped; a rejection test records that boundary.
 This audit
 accepts only the three-terminal closed incidence above. Two-terminal DELTA,
-unmatched coils, taps, internal coordinates and top-level `s_rating` also remain
-unassessed. The running network retains 34 unassessed obligations. The published
-package pin and execution MCP surface are unchanged.
+unmatched coils, taps and internal coordinates also remain unassessed. The
+rating-metadata trace below handles `s_rating` separately; the current running
+network retains 33 unassessed obligations. The published package pin and execution
+MCP surface are unchanged.
 
 **Transfer exercise.** Cyclically reorder every winding's coil positions and
 its current reports together: the verdict should remain unchanged. Then change
 only `delta_roll` while keeping phase order and reports fixed: which coil voltage
 and line-current equations change? Finally, explain why neither summing terminal
 power nor setting an unavailable coil current to zero can certify its rating.
+
+
+### [A retained rating field may declare no loading limit](@id winding-rating-metadata)
+
+The [per-coil allocation example](@ref multiphase-winding-audit) required an
+explicit loading constraint. A rating field can instead serve as an impedance
+conversion base, a retained nameplate, or a native loading cap. Its name and
+presence alone do not establish which role reaches the solved model.
+
+For the native `n_winding` path reviewed here, top-level and per-winding
+`s_rating` are **power-base/nameplate metadata**. Each winding's optional
+`s_max` separately declares the total apparent-power cap, allocated equally
+among its coils. This differs from the earlier `single_phase` recipe, whose
+`s_rating` actually creates a from-coil loading constraint. A package-wide
+"all transformer nameplates are enforced" inference is therefore unsafe.
+
+The conversion trace also matters. PowerIO 0.11.6 converts source kVA into
+winding rating metadata. Its BMOPF schema-0.1.0 emission retains the winding-list
+record under `extras`; BMOPFTools restores it during normalization and preserves
+the ratings without inventing `s_max`. Conversion uses rating bases to turn
+percentages into ohms, with a package-owned correction for the imported winding
+resistance convention. Once the supplied SI coefficients are fixed, editing
+rating metadata alone does **not** rederive their ohmic values. The direct SI
+audit evaluates those coefficients; it does not authenticate the earlier
+conversion or infer an omitted equipment limit.
+
+**Predict:** can a native solution pass while coil apparent power exceeds
+`s_rating`? The package-owned `rating-metadata.json` witness uses the preceding
+finite DELTA/WYE point with deliberately small rating metadata and separate
+60 VA winding caps:
+
+| Declaration or observation | Supplied value | Native role |
+|:--|:--|:--|
+| Top-level `s_rating` | 0.25 VA | Retained power-base metadata |
+| Winding-1 / winding-2 `s_rating` | 0.5 / 0.75 VA | Retained winding nameplates |
+| Each winding's `s_max` | 60 VA | 20 VA cap per coil |
+| Tightened winding-2 `s_max` | 12 VA | 4 VA cap per coil; two supplied coils fail |
+
+The baseline passes the native constraints and independent audit in SI,
+system-base per-unit, and unequal local-base coordinates. That result says
+nothing about the physical acceptability of exceeding the declared nameplates.
+Changing only the rating metadata leaves the independently evaluated SI
+electrical rows unchanged. In the local-base run, the native working top-level
+rating is divided by winding 1's 100 VA power base, while the two winding caps
+use their own 100 VA and 25 VA bases. This bookkeeping does not turn a retained
+field into a constraint. Internal working dictionaries are outside the SI
+audit's input domain.
+
+**Inspect:** `examples/winding_rating_metadata.jl`, invoked by the exact-candidate
+`verify_linear_coverage.jl` companion, preserves these points and the tightened
+OPF/PF attempts. The latter return local infeasibility and fail the independent
+point audit; the status alone is not a global infeasibility certificate. The
+current native PF recipe retains nested winding `i_max`/`s_max`, so it also
+retains this winding-list loading limit. A general "PF removes every operational
+limit" inference would be wrong for this path.
+
+A valid metadata observation has status **declared**, no residual, and
+`enforced_as_limit=false`. It is not a passed equipment limit or an independent
+nameplate measurement. Malformed metadata remains **unassessed**, while known
+currents and checked violations remain visible. Missing an internal coil current
+still suppresses network KCL/power; metadata cannot recover it.
+
+The running-network input is retained intact. Its transformer equations,
+incidence and declared current caps now pass; top-level `s_rating` is recorded
+as metadata. The audit has 33 unassessed obligations and remains
+**indeterminate** because other declarations, including generator cost and
+unsupported voltage families, remain open. Physical adequacy, objectives,
+external review, published integration and execution MCP exposure remain
+separate obligations.
+
+**Transfer exercise.** Identify which fields in an imported transformer were
+used to convert percentage data, which are retained declarations, and which
+actually register loading constraints. Then explain why adding `s_max` is a
+modeling decision requiring evidence about the intended rating and observation,
+rather than a repair justified merely by the existence of `s_rating`.

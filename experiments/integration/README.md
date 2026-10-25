@@ -117,9 +117,10 @@ The companion also runs the package's `neutral-and-delta.json` analytic fixture,
 a native solve of it, a delta circulating-current corruption, and missing implicit
 earth-reaction evidence. It applies both APIs to the same running-network result:
 the original linear audit retains 42 unassessed rows; the connected extension
-reduces this to 34, with 11 load power equations, source relations, the closed
+reduces this to 33, with 11 load power equations, source relations, the closed
 switch voltage relation, four switch current limits and 28 phase-to-earth
-voltage-bound rows evaluated. The running generator still contains an unsupported
+voltage-bound rows evaluated, plus the mixed WYE/DELTA transformer equations,
+incidence, current limits and declared rating metadata. The running generator still contains an unsupported
 cost field; this slice does not discard it to manufacture full KCL coverage.
 Both remain indeterminate. Custom terminal conventions and unrecognized semantic
 fields are explicitly outside the current extension's supported domain.
@@ -178,8 +179,9 @@ The companion also runs `examples/fixed_transformer_audit.jl` with
 secondary excitation distinguish reported series currents from terminal currents.
 It checks a native solve, current/loss identities, a tighter terminal cap,
 series/terminal confusion, missing series current and unsupported adjustable tap.
-The bounded transformer slices do not assess the running network's multiphase
-WYE/DELTA `n_winding` transformer, so that example remains indeterminate with 34 unassessed rows.
+The single-coil transformer example does not itself assess the running network's
+mixed WYE/DELTA device; the later winding-list and metadata slices add that
+distinct coverage. The running verdict remains indeterminate with 33 unassessed rows.
 
 
 The companion additionally runs `examples/winding_list_audit.jl` and
@@ -200,7 +202,8 @@ coil despite the sum of coil magnitudes being about 10.140 VA. It checks native
 and analytic results, allocated cap reports, phase-order corruption, neutral
 reconstruction and missing coil/earth-reaction observations. Multiphase evidence
 uses explicit coil-indexed rows; the original one-coil row IDs remain stable.
-The running network still has unassessed top-level nameplate semantics.
+The separate rating-metadata example below resolves the native top-level
+nameplate role without inferring physical nameplate compliance.
 
 
 The companion also invokes `examples/delta_winding_audit.jl` and binds
@@ -212,7 +215,27 @@ KCL and power pass. The output retains both zero and nonzero internal states,
 wrong rotation, missing internal current and a neutral-bearing-map refusal.
 Native build validation rejects DELTA maps carrying a neutral; that boundary is
 covered by package tests. The audit requires internal coil observations and
-uses s_max/3 at actual line-to-line coil voltage. Top-level `s_rating`,
-two-terminal DELTA, unmatched coils, taps and internal coordinates remain
-unassessed. The running network still has 34 unassessed rows. The published
+uses s_max/3 at actual line-to-line coil voltage. Two-terminal DELTA, unmatched
+coils, taps and internal coordinates remain unassessed. The separate metadata
+trace handles `s_rating`; the running network still has 33 unassessed rows. The published
 integration pin, PSK implementation statuses and execution MCP remain unchanged.
+
+
+The companion additionally runs `examples/winding_rating_metadata.jl` with
+`rating-metadata.json` and binds the conversion witness
+`test/data/pf_comparison/pf_3wdg_unequal_kva.dss`. Finite positive top-level and
+winding `s_rating` values are retained with status `declared`, no residual and
+`enforced_as_limit=false`. Explicit winding `s_max/nph` constraints remain
+separate. The deliberately low metadata values do not prevent the native SI,
+classic, unequal local-base or PF witness from passing; this is native-model
+evidence, not physical nameplate acceptability. Tightened OPF/PF limits, invalid
+metadata and missing internal currents remain in the output with their distinct
+statuses. Package tests trace raw PowerIO 0.11.6 emission under `extras`,
+normalization, unequal-kVA resistance repair and rating/cap serialization.
+The audit does not authenticate that upstream conversion.
+
+The current running input is retained intact: transformer equations/current
+caps are checked and its top-level rating is declared metadata. The unsupported
+generator cost still suppresses complete network KCL/power certification. There
+are 33 unassessed obligations; the verdict remains indeterminate. No published
+integration pin, PSK implementation status or execution MCP change is included.

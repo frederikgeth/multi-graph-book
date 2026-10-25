@@ -84,6 +84,11 @@ function linear_coverage_lesson()
     delta_fixture_path = joinpath(root,"test","data","linear_audit","delta-winding.json")
     include(delta_path)
     delta_evidence = Base.invokelatest(()->getfield(@__MODULE__,:DeltaWindingAuditExample).run())
+    rating_path = joinpath(root,"examples","winding_rating_metadata.jl")
+    rating_fixture_path = joinpath(root,"test","data","linear_audit","rating-metadata.json")
+    rating_conversion_path = joinpath(root,"test","data","pf_comparison","pf_3wdg_unequal_kva.dss")
+    include(rating_path)
+    rating_evidence = Base.invokelatest(()->getfield(@__MODULE__,:WindingRatingMetadataExample).run())
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -120,7 +125,7 @@ function linear_coverage_lesson()
         @test missing_ground.evidence["status"] == "indeterminate"
         @test row(missing_ground,"network.power")["residual"] === nothing
         @test connected_coverage.evidence["status"] == "indeterminate"
-        @test connected_coverage.evidence["unassessed_checks"] == 34
+        @test connected_coverage.evidence["unassessed_checks"] == 33
         @test connected_coverage.evidence["failed_checks"] == 0
         @test count(x->startswith(x["id"],"load.") && x["dimension"]=="device_equations" &&
             x["status"]=="passed",connected_coverage.evidence["rows"]) == 11
@@ -191,7 +196,7 @@ function linear_coverage_lesson()
         @test te["candidate"]["bus"]["q"]["x"]["vr"] ≈ 4. atol=1e-7
         @test te["candidate"]["transformer"]["t"]["to"]["1"]["cm"] > .9
         @test te["candidate"]["transformer"]["t"]["loss"]["p_loss"] ≈ 341/320 atol=1e-7
-        @test row(connected_coverage,"transformer.x1")["status"] == "unassessed"
+        @test row(connected_coverage,"transformer.x1.w2.leakage.coil1")["status"] == "passed"
         @test JSON3.read(JSON3.write(te),Dict{String,Any}) == te
     end
     @testset "Winding-list coupled leakage and bare-coil ratings" begin
@@ -275,6 +280,41 @@ function linear_coverage_lesson()
         @test de["native"]["candidate"]["transformer"]["t"]["loss"]["p_loss"]≈2.759429931640625 atol=1e-7
         @test JSON3.read(JSON3.write(de),Dict{String,Any})==de
     end
+    @testset "Declared winding ratings versus enforced loading limits" begin
+        re=rating_evidence
+        rrow(key,id)=only(filter(x->x["id"]==id,re[key]["rows"]))
+        @test re["analytic"]["status"]=="passed"
+        @test re["high_metadata"]["status"]=="passed"
+        @test re["explicit_coil_cap"]["status"]=="failed"
+        @test re["explicit_coil_cap"]["failed_checks"]==2
+        @test re["invalid_metadata"]["status"]=="indeterminate"
+        @test rrow("invalid_metadata","network.power")["status"]=="passed"
+        @test re["missing_coil_current"]["status"]=="indeterminate"
+        @test rrow("missing_coil_current","network.power")["residual"]===nothing
+        metadata=rrow("analytic","transformer.t.s_rating")
+        @test metadata["status"]=="declared" && metadata["value"]==.25
+        @test metadata["residual"]===nothing && !metadata["enforced_as_limit"]
+        for key in ("native_si","native_classic","native_zone","native_pf")
+            @test re[key]["accepted"]
+            @test re[key]["audit"]["coverage_complete"]
+            @test re[key]["working_winding_s_rating"]==[.5,.75]
+        end
+        @test re["native_classic"]["working_winding_s_max"]≈[.6,.6]
+        @test re["native_zone"]["working_winding_s_max"]≈[.6,2.4]
+        @test re["native_zone"]["working_top_s_rating"]≈.0025
+        for key in ("native_limited","native_pf_limited")
+            @test !re[key]["accepted"]
+            @test re[key]["termination_status"]=="LOCALLY_INFEASIBLE"
+            @test re[key]["audit"]["status"]=="failed"
+        end
+        @test row(connected_coverage,"transformer.x1.s_rating")["status"]=="declared"
+        @test !row(connected_coverage,"transformer.x1.s_rating")["enforced_as_limit"]
+        @test all(x->x["status"]=="passed",filter(x->startswith(x["id"],"transformer.x1") && x["dimension"] in ("device_equations","device_limits"),connected_coverage.evidence["rows"]))
+        @test row(connected_coverage,"transformer.x1.w3.line_observations")["status"]=="reconstructed"
+        @test haskey(running["generator"]["g1"],"cost")
+        @test haskey(running["transformer"]["n_winding"]["x1"],"s_rating")
+        @test JSON3.read(JSON3.write(re),Dict{String,Any})==re
+    end
     active = dirname(Base.active_project())
     Dict{String,Any}(
         "evidence_state"=>"local_package_candidate_not_promoted_to_published_integration_pin",
@@ -283,7 +323,8 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path]),
+        "winding_rating_metadata_example"=>rating_evidence,
         "delta_winding_example"=>delta_evidence,
         "multiphase_winding_example"=>multiphase_evidence,
         "winding_list_example"=>winding_evidence,
