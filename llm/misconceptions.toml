@@ -1,6 +1,19 @@
 schema_version = "0.1.0"
 
 [[misconception]]
+id = "zero-parameter-means-absent-term"
+title = "A parameter currently at zero can be deleted from a reused model"
+severity = "critical"
+query_patterns = ["parameter zero delete symbolic term", "reuse opf parameter through zero", "parameter update compiled model current residual", "zero parameter coefficient solver reuse"]
+tempting_answer = "A parameter term that evaluates to zero can be removed, and another successful solve certifies later updates."
+required_qualification = "A zero parameter value is not an identically absent term over a model family. Retain symbolic dependence, compare fresh and reused physical outputs, and check the requested current law. Lost symbolic terms, stale numerical evaluation and edits outside the compiled structure need different remedies. Follow the supported reset workflow, rebuild unrepresented structure, and retain failed scenarios without carrying forward an earlier valid result. The fixed conductance counterexample and pinned execution do not certify arbitrary nonlinear reuse or speed benefits."
+safe_shorthand = "Reuse only within the declared parameter family, and validate against the updated physical inputs."
+operational_consequence = "A solver can successfully solve deleted or stale equations while the requested current law fails."
+mandatory_claim_ids = ["PRACTICE-REUSE-001"]
+mandatory_concept_ids = ["state", "factor", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/cases/building-and-changing-models.md"]
+
+[[misconception]]
 id = "delta-coil-currents-are-terminal-currents"
 title = "Delta coil currents can be used directly as terminal currents"
 severity = "critical"

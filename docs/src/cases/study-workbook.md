@@ -29,6 +29,11 @@ Before using delta-load result arrays, complete the
 [coil-current lesson](@ref delta-coil-current-lesson). Recover terminal currents
 and test the individual coil laws even when KCL and total power agree.
 
+Before reusing a compiled scenario, complete the
+[parameter-update lesson](@ref parameter-reuse-lesson). Compare against a fresh
+build, check the current law at the requested inputs, and retain failed scenarios
+without carrying forward an earlier valid result.
+
 ## 1. Declare the study
 
 Read [The running multiconductor network](@ref running-network) and

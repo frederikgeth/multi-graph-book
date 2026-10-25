@@ -145,9 +145,9 @@ expected_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exac
 case_id = "ADV-PARAMETER-REUSE"
 audience = "power_engineer"
 question = "Can I reuse an OPF after updating a parameter through zero?"
-expected_status = "under_retrieved"
-expected_claim_ids = []
-expected_concept_ids = []
+expected_status = "qualified"
+expected_claim_ids = ["PRACTICE-REUSE-001"]
+expected_concept_ids = ["state", "factor", "equivalence-exactness-preservation"]
 
 [[case]]
 case_id = "ADV-DELTA-COIL-CIRCULATION"
@@ -177,6 +177,24 @@ expected_concept_ids = []
 case_id = "ADV-DELTA-EXACT-PHRASE-TRANSIENT"
 audience = "software_engineer"
 question = "Can the rule delta coil current terminal kcl calculate saturation during energisation?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PARAMETER-ESTIMATION-BOUNDARY"
+audience = "power_engineer"
+question = "Does a parameter value of zero identify the true conductance from noisy measurements?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PARAMETER-STATISTICAL-BOUNDARY"
+audience = "software_engineer"
+question = "Should zero parameters be pruned from a neural language model for faster inference?"
+# Shared parameter/model vocabulary retrieves related material, but no claim contract.
+# under_retrieved is the retrieval outcome; unsupported means no material retrieved.
 expected_status = "under_retrieved"
 expected_claim_ids = []
 expected_concept_ids = []

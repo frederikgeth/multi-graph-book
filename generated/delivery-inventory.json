@@ -24,6 +24,7 @@
       "ARCH-RECOVERY-003",
       "ARCH-RECOVERY-004",
       "LOAD-CONNECTION-002",
+      "PRACTICE-REUSE-001",
       "PRACTICE-SHORT-001",
       "PRACTICE-UPDATE-001",
       "TR-COMP-001",
@@ -46,11 +47,11 @@
       "TR-XFMR-005",
       "TR-XFMR-006"
     ],
-    "total": 116,
+    "total": 117,
     "verification": {
       "externally-reviewed": 0,
       "independently-implemented": 6,
-      "self-checked": 110
+      "self-checked": 111
     }
   },
   "knowledge": {
@@ -128,9 +129,10 @@
       "vanishing-impedance-preserves-ideal-current-sharing": [],
       "wye-delta-share-nominal-voltage-base": [
         "PSK-000004"
-      ]
+      ],
+      "zero-parameter-means-absent-term": []
     },
-    "total": 30,
+    "total": 31,
     "unlinked_ids": [
       "delta-coil-currents-are-terminal-currents",
       "ideal-transformer-is-a-large-admittance",
@@ -143,15 +145,16 @@
       "radial-is-representation-independent",
       "self-loop-is-a-shunt-or-circuit-loop",
       "source-outage-is-deletion-in-reduced-graph",
-      "vanishing-impedance-preserves-ideal-current-sharing"
+      "vanishing-impedance-preserves-ideal-current-sharing",
+      "zero-parameter-means-absent-term"
     ]
   },
-  "pair_sha256": "8f3012415558cda4bc0bf336c92a37d5cbc32db45dc1324017b6b59264e5ac3b",
+  "pair_sha256": "8b4d6e5299002a9bc5a69c182e76fa2334164cb30fe7dc3920e8b1b4cab3f012",
   "schema_version": "1.0.0",
   "source_sha256": {
-    "claims/claims.toml": "e4d6725550660fbf061190c9fc58aeb2f01d5af246e9623e923ecfeb05832207",
-    "generated/federated-knowledge-pair-manifest.json": "92b9b56cabba9a37024360f53c36675bb9525bc88f087fc17246862f36ae9c9e",
+    "claims/claims.toml": "ae59ad57e21b9cbdffaab506c210cff98db5fb639933b43cfded91bc629ae06d",
+    "generated/federated-knowledge-pair-manifest.json": "534c06c0b494a1bc9edc3dc610ce06b28418916bfcf0d147c08685fdb153f4b5",
     "knowledge/psk.toml": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364",
-    "llm/misconceptions.toml": "d460027d0501cb8bc299b2bde583d9ded4e10e93256a0f3881f998b668a70d19"
+    "llm/misconceptions.toml": "814fae079d5444f680d8c8bbff5021b777cd1bc8af7cec8f5e6eaf99ab367f9c"
   }
 }

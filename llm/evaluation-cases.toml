@@ -932,3 +932,33 @@ required_claim_ids = ["LOAD-CONNECTION-002"]
 required_concept_ids = ["phase-conductor-sequence-coordinate", "flow-current-power-message", "direction-orientation-hierarchy"]
 required_answer_elements = ["apply the transpose incidence to coil currents", "circulation can preserve terminal currents and total power", "check the individual coil equations"]
 forbidden_simplifications = ["coil currents equal terminal currents", "aggregate power validates every coil", "a two-terminal native delta has three coils"]
+
+[[case]]
+case_id = "EVAL-PARAMETER-REUSE-STUDENT"
+audience = "student"
+question = "Can I delete a symbolic term when its parameter is zero?"
+misconception_id = "zero-parameter-means-absent-term"
+required_claim_ids = ["PRACTICE-REUSE-001"]
+required_concept_ids = ["state", "factor", "equivalence-exactness-preservation"]
+required_answer_elements = ["zero now does not mean absent over the family", "compare fresh and reused outputs against the requested physical law", "distinguish lost terms, stale evaluation and unrepresented structure", "retain failed scenarios without stale successful results"]
+forbidden_simplifications = ["solver success proves updated physics", "reset restores deleted equations", "matching fingerprints prove validity", "every topology state requires rebuilding"]
+
+[[case]]
+case_id = "EVAL-PARAMETER-REUSE-SOFTWARE"
+audience = "software_engineer"
+question = "Can I reuse an OPF after updating a parameter through zero?"
+misconception_id = "zero-parameter-means-absent-term"
+required_claim_ids = ["PRACTICE-REUSE-001"]
+required_concept_ids = ["state", "factor", "equivalence-exactness-preservation"]
+required_answer_elements = ["zero now does not mean absent over the family", "compare fresh and reused outputs against the requested physical law", "distinguish lost terms, stale evaluation and unrepresented structure", "retain failed scenarios without stale successful results"]
+forbidden_simplifications = ["solver success proves updated physics", "reset restores deleted equations", "matching fingerprints prove validity", "every topology state requires rebuilding"]
+
+[[case]]
+case_id = "EVAL-PARAMETER-REUSE-POWER"
+audience = "power_engineer"
+question = "Does a successful repeated solve verify the updated parameter current law?"
+misconception_id = "zero-parameter-means-absent-term"
+required_claim_ids = ["PRACTICE-REUSE-001"]
+required_concept_ids = ["state", "factor", "equivalence-exactness-preservation"]
+required_answer_elements = ["zero now does not mean absent over the family", "compare fresh and reused outputs against the requested physical law", "distinguish lost terms, stale evaluation and unrepresented structure", "retain failed scenarios without stale successful results"]
+forbidden_simplifications = ["solver success proves updated physics", "reset restores deleted equations", "matching fingerprints prove validity", "every topology state requires rebuilding"]

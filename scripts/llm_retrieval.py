@@ -41,6 +41,10 @@ ROUTER_TOPIC_EXCLUSIONS = {
 }
 
 ROUTER_TOPIC_PATTERNS = {
+    "zero-parameter-means-absent-term": (
+        r"parameter\w*", r"zero|updat\w*|reus\w*",
+        r"opf|solv\w*|symbolic|compil\w*|coefficient\w*|term\w*|current\w*",
+    ),
     "transformer-end-swap-is-ordinary-edge-reversal": (
         r"transformer\w*|xfmr", r"swap\w*|revers\w*|exchang\w*|flip\w*|orient\w*|undirect\w*|sort\w*|canonicaliz\w*",
     ),

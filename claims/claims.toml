@@ -1,6 +1,23 @@
 schema_version = 1
 
 [[claim]]
+claim_id = "PRACTICE-REUSE-001"
+exactness_object = "equation_identity"
+preservation_dimensions = ["terminal_behavior", "state", "provenance"]
+chapter = "docs/src/cases/building-and-changing-models.md"
+claim_text = "For the fixed-voltage conductance family I(theta,V)=theta*g*V, deleting its symbolic term because theta is initially zero agrees at that state but fails at any later state with theta*g*V nonzero; refreshing a solver cannot restore a term absent from the compiled equations."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "explicit_scalar_counterexample_and_exact_rational_witness_in_experiments/lessons/parameter_reuse.py"
+citation_keys = []
+model_scope = "fixed scalar voltage and conductance, declared dimensionless parameter family, and term deletion at an initial zero"
+assumptions = "the intended current law remains theta*g*V; the faulty compiled family replaces the term by zero for all subsequent parameter values"
+reviewer = ""
+review_date = ""
+unresolved_issue = "This counterexample does not prove general solver-cache behavior, correctness of arbitrary structural updates, nonlinear reuse, speed benefits, or physical adequacy."
+
+[[claim]]
 claim_id = "LOAD-CONNECTION-002"
 exactness_object = "equation_identity"
 preservation_dimensions = ["terminal_behavior", "phase_neutral", "numerical_structure"]
