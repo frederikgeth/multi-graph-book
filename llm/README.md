@@ -181,7 +181,35 @@ python3 scripts/mcp_llm_server.py
 ```
 
 It exposes `book_context`, `book_search`, and the corpus manifest resource over
-MCP stdio. The adapter follows the MCP JSON-RPC newline transport described in
-the [official transport specification](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports).
+MCP stdio. The book adapter supports modern `2026-07-28` requests and the legacy
+`2025-11-25` / `2025-06-18` initialization flow. The ordinary HTTP/JSON routes
+above are not an MCP HTTP transport.
+
+Modern requests carry `io.modelcontextprotocol/protocolVersion` and
+`io.modelcontextprotocol/clientCapabilities` in `params._meta`, including when
+calling `server/discover`. Each request supplies its own metadata. Discovery
+returns supported versions, capabilities and server identity; ordinary results
+include `resultType: "complete"`. Discovery, tool/resource lists and resource
+reads include conservative cache hints (`ttlMs: 0`, `cacheScope: "private"`).
+Unknown modern versions return error `-32022` with the requested and supported
+versions. Legacy clients continue to use `initialize` and receive legacy result
+shapes; an initialization request does not select the modern protocol.
+
+These mappings follow the official
+[versioning rules](https://modelcontextprotocol.io/specification/2026-07-28/basic/versioning),
+[stdio binding](https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/stdio)
+and [result schemas](https://modelcontextprotocol.io/specification/2026-07-28/schema).
+Run `python3 scripts/test_mcp_protocol.py` for argument, notification, discovery,
+version-mismatch and mixed-client subprocess regressions. The server advertises
+no subscriptions, prompt service, sampling, or task extension. Both eras use the
+same deterministic service; transport success does not turn `under_retrieved`
+or `unsupported` into `qualified` scientific evidence.
+
+The manifest resource, search results and context packets carry `source_identity`:
+book corpus/manifest hashes, federated pair hash, and pinned BMOPFTools revision
+and export hashes. These describe the reviewed export, not an inspected package
+runtime. The separately pinned BMOPFTools execution MCP still implements the
+legacy protocol. Its upgrade must be tested in the package and deliberately
+repinned through the [integration environment](../experiments/integration/README.md).
 The `graph` retrieval method is available only as an explicit diagnostic option;
 the default remains hybrid.

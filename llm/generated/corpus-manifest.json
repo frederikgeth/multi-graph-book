@@ -333,7 +333,7 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "11c5d27923eee369741cf55bbecbe4b36074c6c4e153373a685ca5a0fff15c69"
+      "sha256": "66709eaaddf9b734c31ef3fd2d7c789ec1554830a13e01ac967064d02e694390"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",

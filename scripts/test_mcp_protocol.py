@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression checks for the book's legacy MCP request boundary."""
+"""Regression checks for the book's legacy and modern MCP request boundaries."""
 
 import json
 from pathlib import Path
@@ -8,7 +8,7 @@ import sys
 import unittest
 
 from llm_service import BookLLMService
-from mcp_llm_server import handle_request
+from mcp_llm_server import handle_request, MANIFEST_URI, META_PREFIX, MODERN_PROTOCOL_VERSION
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -85,6 +85,7 @@ class MCPRequestTests(unittest.TestCase):
     def test_version_negotiation_and_invalid_versions(self):
         for requested, expected in [("2025-06-18", "2025-06-18"),
                                     ("2025-11-25", "2025-11-25"),
+                                    ("2026-07-28", "2025-11-25"),  # initialize selects the legacy era
                                     ("2099-01-01", "2025-11-25")]:
             response = handle_request(self.service, {
                 "jsonrpc": "2.0", "id": 1, "method": "initialize",
@@ -97,6 +98,92 @@ class MCPRequestTests(unittest.TestCase):
                 "params": {"protocolVersion": requested},
             })
             self.assertEqual(response["error"]["code"], -32602)
+
+    def modern(self, method, params=None, version=MODERN_PROTOCOL_VERSION):
+        return {"jsonrpc": "2.0", "id": "modern-1", "method": method,
+                "params": {"_meta": {META_PREFIX + "protocolVersion": version,
+                                      META_PREFIX + "clientCapabilities": {}}, **(params or {})}}
+
+    def test_modern_discovery_and_cacheable_methods(self):
+        for method, params, key in (
+            ("server/discover", {}, "supportedVersions"),
+            ("tools/list", {}, "tools"),
+            ("resources/list", {}, "resources"),
+            ("resources/templates/list", {}, "resourceTemplates"),
+            ("resources/read", {"uri": MANIFEST_URI}, "contents"),
+        ):
+            with self.subTest(method=method):
+                result = handle_request(self.service, self.modern(method, params))["result"]
+                self.assertEqual(result["resultType"], "complete")
+                self.assertEqual(result["cacheScope"], "private")
+                self.assertEqual(result["ttlMs"], 0)
+                self.assertEqual(result["_meta"][META_PREFIX + "serverInfo"]["name"], "multi-graph-book")
+                self.assertIn(key, result)
+        discover = handle_request(self.service, self.modern("server/discover"))["result"]
+        self.assertEqual(discover["supportedVersions"], ["2026-07-28", "2025-11-25", "2025-06-18"])
+        self.assertFalse(discover["capabilities"]["tools"]["listChanged"])
+        self.assertFalse(discover["capabilities"]["resources"]["subscribe"])
+
+    def test_modern_calls_preserve_scientific_status(self):
+        for query, status in (
+            ("Do loads belong in Ybus?", "qualified"),
+            ("Does a zero terminal voltage make power balance equivalent to KCL?", "under_retrieved"),
+            ("What is the weather on Mars?", "unsupported"),
+        ):
+            with self.subTest(status=status):
+                result = handle_request(self.service, self.modern("tools/call", {
+                    "name": "book_context", "arguments": {"query": query}}))["result"]
+                self.assertEqual(result["structuredContent"], self.service.response(query))
+                self.assertEqual(result["structuredContent"]["packet"]["status"], status)
+                self.assertEqual(result["resultType"], "complete")
+                self.assertNotIn("ttlMs", result)  # tool results are not cacheable protocol lists
+                self.assertFalse(result.get("isError", False))
+
+    def test_modern_version_errors_and_request_local_metadata(self):
+        mismatch = handle_request(self.service, self.modern("tools/list", version="2099-01-01"))
+        self.assertEqual(mismatch["error"]["code"], -32022)
+        self.assertEqual(mismatch["error"]["data"]["requested"], "2099-01-01")
+        self.assertIn(MODERN_PROTOCOL_VERSION, mismatch["error"]["data"]["supported"])
+        for meta in (None, [], {}, {META_PREFIX + "protocolVersion": []},
+                     {META_PREFIX + "protocolVersion": MODERN_PROTOCOL_VERSION},
+                     {META_PREFIX + "protocolVersion": MODERN_PROTOCOL_VERSION, META_PREFIX + "clientCapabilities": []},
+                     {META_PREFIX + "protocolVersion": MODERN_PROTOCOL_VERSION, META_PREFIX + "clientCapabilities": {},
+                      META_PREFIX + "clientInfo": {"name": "missing version"}}):
+            with self.subTest(meta=meta):
+                malformed = self.modern("server/discover", {"_meta": meta})
+                self.assertEqual(handle_request(self.service, malformed)["error"]["code"], -32602)
+        # A previous valid call cannot supply missing capabilities for a later call.
+        handle_request(self.service, self.modern("tools/list"))
+        missing = self.modern("tools/list", {"_meta": {META_PREFIX + "protocolVersion": MODERN_PROTOCOL_VERSION}})
+        self.assertEqual(handle_request(self.service, missing)["error"]["code"], -32602)
+        for removed in ("initialize", "ping", "logging/setLevel", "resources/subscribe"):
+            self.assertEqual(handle_request(self.service, self.modern(removed))["error"]["code"], -32601)
+        resource = self.modern("resources/read", {"uri": "book://unknown"})
+        self.assertEqual(handle_request(self.service, resource)["error"]["code"], -32602)
+        del resource["params"]["_meta"]
+        self.assertEqual(handle_request(self.service, resource)["error"]["code"], -32002)
+
+    def test_mixed_eras_over_one_stdio_process(self):
+        messages = [
+            self.modern("server/discover"),
+            {"jsonrpc": "2.0", "id": 2, "method": "initialize", "params": {"protocolVersion": "2025-11-25"}},
+            {"jsonrpc": "2.0", "method": "notifications/initialized"},
+            {"jsonrpc": "2.0", "id": 3, "method": "tools/list"},
+            self.modern("tools/list", version="2099-01-01"),
+            self.modern("tools/list"),
+            {"jsonrpc": "2.0", "id": 6, "method": "ping"},
+        ]
+        completed = subprocess.run([sys.executable, str(ROOT / "scripts/mcp_llm_server.py")],
+                                   input="\n".join(map(json.dumps, messages)) + "\n", text=True,
+                                   capture_output=True, check=True, timeout=30)
+        replies = [json.loads(line) for line in completed.stdout.splitlines()]
+        self.assertEqual(len(replies), 6)
+        self.assertEqual(replies[0]["result"]["resultType"], "complete")
+        self.assertEqual(replies[1]["result"]["protocolVersion"], "2025-11-25")
+        self.assertNotIn("resultType", replies[2]["result"])
+        self.assertEqual(replies[3]["error"]["code"], -32022)
+        self.assertEqual(replies[4]["result"]["tools"], replies[2]["result"]["tools"])
+        self.assertEqual(replies[5]["result"], {})
 
     def test_stdio_recovers_after_bad_messages_and_ignores_notifications(self):
         messages = [
