@@ -962,3 +962,33 @@ required_claim_ids = ["PRACTICE-REUSE-001"]
 required_concept_ids = ["state", "factor", "equivalence-exactness-preservation"]
 required_answer_elements = ["zero now does not mean absent over the family", "compare fresh and reused outputs against the requested physical law", "distinguish lost terms, stale evaluation and unrepresented structure", "retain failed scenarios without stale successful results"]
 forbidden_simplifications = ["solver success proves updated physics", "reset restores deleted equations", "matching fingerprints prove validity", "every topology state requires rebuilding"]
+
+[[case]]
+case_id = "EVAL-SOLUTION-MULTIPLICITY-STUDENT"
+audience = "student"
+question = "Can apparent power limits admit multiple solutions that current limits reject?"
+misconception_id = "apparent-power-limit-implies-current-admissibility"
+required_claim_ids = ["LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["different admissibility of the same circuit roots", "current caps bound but do not select ideal current modes", "restore original KCL at zero voltage", "distinguish local minima from the global objective comparison"]
+forbidden_simplifications = ["power caps create circuit equation roots", "current limits guarantee uniqueness", "source power minimization prevents local convergence to the lower branch", "static roots determine dynamic stability"]
+
+[[case]]
+case_id = "EVAL-SOLUTION-MULTIPLICITY-SOFTWARE"
+audience = "software_engineer"
+question = "Can I replace a current limit with a nominal MVA cap and keep the same admissible roots?"
+misconception_id = "apparent-power-limit-implies-current-admissibility"
+required_claim_ids = ["LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["different admissibility of the same circuit roots", "current caps bound but do not select ideal current modes", "restore original KCL at zero voltage", "distinguish local minima from the global objective comparison"]
+forbidden_simplifications = ["power caps create circuit equation roots", "current limits guarantee uniqueness", "source power minimization prevents local convergence to the lower branch", "static roots determine dynamic stability"]
+
+[[case]]
+case_id = "EVAL-SOLUTION-MULTIPLICITY-POWER"
+audience = "power_engineer"
+question = "Can both-end power caps admit an overloaded root of the circuit equations?"
+misconception_id = "apparent-power-limit-implies-current-admissibility"
+required_claim_ids = ["LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["different admissibility of the same circuit roots", "current caps bound but do not select ideal current modes", "restore original KCL at zero voltage", "distinguish local minima from the global objective comparison"]
+forbidden_simplifications = ["power caps create circuit equation roots", "current limits guarantee uniqueness", "source power minimization prevents local convergence to the lower branch", "static roots determine dynamic stability"]

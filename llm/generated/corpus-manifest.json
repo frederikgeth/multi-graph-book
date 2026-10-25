@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "0f93698b9f34fc8105a7b242d20b298d194eaa7c85fd1964ce0e6b9b09343e5d",
+  "corpus_sha256": "fe93d5fd40a16088ca6406ac673ea1cb49dd89bf72cdbfa5c5d450e4153de461",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -10,17 +10,17 @@
       "docs/src/reference/vocabulary-indexes.md"
     ],
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
-    "included_doc_count": 74
+    "included_doc_count": 75
   },
-  "evaluation_case_count": 96,
+  "evaluation_case_count": 99,
   "heldout_case_count": 33,
-  "misconception_count": 31,
-  "record_count": 939,
+  "misconception_count": 32,
+  "record_count": 948,
   "record_counts": {
-    "claim_bundle": 117,
+    "claim_bundle": 118,
     "concept_bundle": 18,
     "scientific_knowledge": 18,
-    "section": 786
+    "section": 794
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -33,7 +33,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "ae59ad57e21b9cbdffaab506c210cff98db5fb639933b43cfded91bc629ae06d"
+      "sha256": "1484365da8749d0fee2c66047449234f2e0ca31a002ecf3523009a6e2ce1244f"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -77,11 +77,15 @@
     },
     {
       "path": "docs/src/cases/study-workbook.md",
-      "sha256": "f57795a31561242ad5c6f864c2159a6260ef8626337d9c11f13b368a131bb818"
+      "sha256": "d0ab14c6dedc2d0d02c6252bd8314aada5fe06b0d5b86d6aba2f67d83d6f99cb"
     },
     {
       "path": "docs/src/cases/transformer-tap-ac-decision.md",
       "sha256": "8993431d2ed95645efaab622b7caba9833900fb891445b0116379b1927b15448"
+    },
+    {
+      "path": "docs/src/cases/unintended-solution-multiplicity.md",
+      "sha256": "8ff06aacb94cc1d5f90ddf355c0a07f8de7c82c8d41442c8c1f7ab60af8da634"
     },
     {
       "path": "docs/src/foundations/circuit-formulations-and-lowering.md",
@@ -129,7 +133,7 @@
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
-      "sha256": "fbb8cf58c3cf3ff40f051ed74b9cfc440deccadc6e708a1310a1f6a26c67c749"
+      "sha256": "a12ffcd78741f8e42f8f5f05a3662455193f28af4bae903629042d2f84a16b42"
     },
     {
       "path": "docs/src/foundations/orientation-terminal-power.md",
@@ -333,7 +337,7 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "935fb1535a1cce32bdf764486c46983028afea1fcf11ca6e8da13229742053eb"
+      "sha256": "a5ea6799ec2adb3e3b476c381c444ff4a6c5a0ad6da37c5140ee64f24b601e2e"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",
@@ -341,7 +345,7 @@
     },
     {
       "path": "llm/evaluation-cases.toml",
-      "sha256": "f12429c1ef09c85a83f0e624b0ce6a02a213ded35cec0501bce178281c418ade"
+      "sha256": "9d8bd1ecfbf1dca6f8ccc95ceee8df1ce3b0b89d722d761ac4aa2253e8c03338"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -349,7 +353,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "814fae079d5444f680d8c8bbff5021b777cd1bc8af7cec8f5e6eaf99ab367f9c"
+      "sha256": "0cf12c0ed133964b0d876548cb543fa2da960c60eddabc56819d579060f71b16"
     },
     {
       "path": "vocabulary/vocabulary.toml",

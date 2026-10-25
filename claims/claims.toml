@@ -1,3 +1,20 @@
+[[claim]]
+claim_id = "LIMIT-MULTIPLICITY-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ["terminal_behavior", "limits", "decision"]
+chapter = "docs/src/cases/unintended-solution-multiplicity.md"
+claim_text = "For the real series circuit E=4/5, R=1, VI=3/25 with 0<=V<=E, the exact roots (V,I)=(1/5,3/5) and (3/5,1/5) both satisfy endpoint apparent-power caps of 1/2 derived from Vnom=1 and Imax=1/2, whereas only the higher-voltage root satisfies the intended current cap. The inequality substitution changes admissibility, not the circuit equation roots."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "exact_rational_root_enumeration_and_pinned_solver_comparison"
+citation_keys = []
+model_scope = "real scalar steady-state resistive series circuit with fixed source voltage, positive constant-power demand, no shunts, and the stated voltage domain"
+assumptions = "consistent per-unit coordinates; both endpoint power magnitudes are capped; nominal-voltage conversion is distinguished from actual fixed-source-voltage conversion; current ratings represent the intended static constraint"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independent scientific review and native multiconductor examples remain pending; the witness does not establish arbitrary AC/OPF uniqueness, dynamic stability, or a complete equipment thermal model."
+
 schema_version = 1
 
 [[claim]]

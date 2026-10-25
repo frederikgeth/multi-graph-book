@@ -198,3 +198,43 @@ question = "Should zero parameters be pruned from a neural language model for fa
 expected_status = "under_retrieved"
 expected_claim_ids = []
 expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-CURRENT-NOT-UNIQUE"
+audience = "power_engineer"
+question = "Do current limits guarantee uniqueness of the ideal current split?"
+expected_status = "qualified"
+expected_claim_ids = ["LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+expected_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-MULTIPLICITY-OVERLOAD"
+audience = "power_engineer"
+question = "Can both end power caps admit an overloaded root?"
+expected_status = "qualified"
+expected_claim_ids = ["LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+expected_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-MULTIPLICITY-DYNAMIC"
+audience = "power_engineer"
+question = "Can unintended solution multiplicity determine which root is dynamically stable?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-MULTIPLICITY-NAMEPLATE"
+audience = "power_engineer"
+question = "Can a nominal MVA cap determine the manufacturer nameplate capability of a converter?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-MULTIPLICITY-HEATING"
+audience = "power_engineer"
+question = "Can apparent power limits predict conductor temperature and transient heating?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []

@@ -595,6 +595,11 @@ no. A required term is unknown. The aggregate residual is null and its coverage
 is unassessed; it cannot be computed by substituting zero. Finish the supported
 model inventory before interpreting a small norm as feasibility evidence.
 
+The [solution-multiplicity lesson](@ref unintended-solution-multiplicity)
+separates additional admissible circuit roots, continuous current modes and
+spurious roots introduced by a lost equation. It also distinguishes local
+optima from the globally preferred branch.
+
 ## Solver behaviour and decision margins
 
 For a constrained decision problem, solver behaviour is part of the evidence

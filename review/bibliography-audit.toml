@@ -517,3 +517,10 @@ status = "verified"
 verification_source = "https://www.powerworld.com/WebHelp/Content/MainDocumentation_HTML/Mutual_Impedance_Records.htm"
 verified_on = "2026-08-25"
 note = "Official help documentation confirms branch-pair mutual-impedance records, dot convention, and coupled-section fractions; its zero-sequence scope is stated explicitly in the case."
+
+[[entry]]
+key = "Geth2023ZeroVoltage"
+status = "verified"
+verification_source = "https://arxiv.org/pdf/2211.03969v3"
+verified_on = "2026-10-26"
+note = "Title, author and version-3 date checked against the author manuscript. Section II-B, equations (21)-(22), identifies the zero-voltage power-balance relaxation. The book's scalar roots and rating example are independently written self-checks, not reproduced paper data or an external review."

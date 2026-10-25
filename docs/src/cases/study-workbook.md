@@ -34,6 +34,11 @@ Before reusing a compiled scenario, complete the
 build, check the current law at the requested inputs, and retain failed scenarios
 without carrying forward an earlier valid result.
 
+Before interpreting a unique solver output, work the
+[solution-multiplicity example](@ref unintended-solution-multiplicity). State
+whether a competing point violates physics, violates a limit, differs only in
+unobserved coordinates, or has a different objective value.
+
 ## 1. Declare the study
 
 Read [The running multiconductor network](@ref running-network) and

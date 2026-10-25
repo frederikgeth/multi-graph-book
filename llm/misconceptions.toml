@@ -402,3 +402,16 @@ operational_consequence = "Ignoring multiplier mappings or duplicate-constraint 
 mandatory_claim_ids = ["PRACTICE-DUAL-001"]
 mandatory_concept_ids = ["normalization", "equivalence-exactness-preservation"]
 source_paths = ["docs/src/cases/building-and-changing-models.md", "experiments/lessons/practical_model_checks.py"]
+
+[[misconception]]
+id = "apparent-power-limit-implies-current-admissibility"
+title = "A nominal apparent-power cap preserves current admissibility and removes unintended solutions"
+severity = "critical"
+query_patterns = ["apparent power limit current admissibility", "apparent power limits multiple solutions", "nominal mva cap current limit", "power caps guarantee current ratings", "current limits guarantee uniqueness", "unintended solution multiplicity", "both end power caps overloaded root"]
+tempting_answer = "Converting a current rating at nominal voltage preserves the feasible operating points, and current limits guarantee a unique physical solution."
+required_qualification = "Since |S|=|V||I|, a constant nominal-voltage power cap changes the current bound away from nominal voltage. The exact two-root witness admits an overloaded root under both-end power caps; it does not create a circuit equation root. Current caps can bound ideal current families without selecting them and cannot restore KCL lost by multiplying it by zero voltage. Isolated feasible points can each be local minima even when their objective values differ."
+safe_shorthand = "Separate circuit roots, admissible states, internal current modes and local/global optima; check the original equations and the intended limits."
+operational_consequence = "A local solver can accurately return an overloaded or KCL-violating point for the emitted model; regularization can select a current split without recovering its physical law. Legitimate device power ratings and dynamic stability require their own models."
+mandatory_claim_ids = ["LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+mandatory_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/cases/unintended-solution-multiplicity.md", "experiments/lessons/solution_multiplicity.py"]

@@ -37,10 +37,15 @@ ROUTER_GENERIC_TERMS = {
 # when it contains a curated coil-current phrase. This conservative refusal is
 # route-specific; it does not claim to classify every unsupported physical model.
 ROUTER_TOPIC_EXCLUSIONS = {
+    "apparent-power-limit-implies-current-admissibility": r"dynamic\w*|transient\w*|nameplate|manufacturer|temperature|heating",
     "delta-coil-currents-are-terminal-currents": r"inrush|transient\w*|energiz\w*|energis\w*|saturat\w*",
 }
 
 ROUTER_TOPIC_PATTERNS = {
+    "apparent-power-limit-implies-current-admissibility": (
+        r"apparent|mva|power|multiplicity|uniqueness", r"limit\w*|cap\w*|rating\w*|solution\w*",
+        r"current\w*|root\w*|solution\w*|multiplicity|uniqueness",
+    ),
     "zero-parameter-means-absent-term": (
         r"parameter\w*", r"zero|updat\w*|reus\w*",
         r"opf|solv\w*|symbolic|compil\w*|coefficient\w*|term\w*|current\w*",

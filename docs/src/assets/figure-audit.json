@@ -722,6 +722,18 @@
         "labelled axes and sample points",
         "labelled nonunique multiplier segment"
       ]
+    },
+    "solution-multiplicity": {
+      "svg": "docs/src/assets/solution-multiplicity.svg",
+      "png": "docs/src/assets/solution-multiplicity.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": [
+        "three titled panels",
+        "solid and dashed equation curves",
+        "open circles, crosses and square residual marker",
+        "hatched excluded-current strip",
+        "labelled interval endpoints and selection markers"
+      ]
     }
   }
 }
