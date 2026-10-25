@@ -205,6 +205,105 @@ this by increasing demand by ``1/10`` MW: the physical cost rate increases by
 5 currency/hour. A negative constraint scale would reverse the inequality
 unless the formulation were changed; it is outside the stated rule.
 
+## [Small resistance can select a current that an ideal switch does not](@id vanishing-impedance-current-selection)
+
+**Predict before simplifying.** Two fixed, uncoupled, series-only resistors
+connect the same two terminals. They carry a prescribed total current of 12 A.
+Let ``R_1=\varepsilon`` Ω and ``R_2=2\varepsilon`` Ω with dimensionless
+``\varepsilon>0``. The first member is limited to 7 A and the second to 10 A.
+If the voltage drop becomes arbitrarily small, may both members be replaced
+by ideal shorts without changing their current-limit behaviour?
+
+Write the member equations and KCL before taking a limit:
+
+```math
+\Delta V=R_1I_1=R_2I_2,\qquad I_1+I_2=I.
+```
+
+For ``R_1=a\varepsilon`` Ω and ``R_2=b\varepsilon`` Ω with fixed positive
+dimensionless ``a,b``, direct elimination gives
+
+```math
+I_1=\frac{b}{a+b}I,\qquad I_2=\frac{a}{a+b}I,\qquad
+\Delta V=\varepsilon\frac{ab}{a+b}I\ \Omega.
+```
+
+In the 1:2 example the member currents are 8 A and 4 A for *every* positive
+``\varepsilon``. At ``\varepsilon=10^{-3}``, the voltage drop is 0.008 V and
+the loss is 0.096 W. Decreasing ``\varepsilon`` by a factor of 1000 decreases
+both drop and loss by that factor, while the 8 A member current still violates
+its 7 A limit. Current and rating agreement cannot be inferred from a small
+voltage discrepancy.
+
+### Taking a limit and replacing the equations
+
+Set both resistances to exactly zero in the member equations instead. They now
+require only
+
+```math
+\Delta V=0,\qquad I_1+I_2=12\ \mathrm A.
+```
+
+Every pair ``(t,12-t)`` satisfies these equations. The perturbation
+``(\delta I_1,\delta I_2,\delta\Delta V)=(q,-q,0)`` is a free circulating-current
+mode. The ideal equations retain neither ``a`` nor ``b``, so they cannot select
+the finite model's limiting split. Additional control, circuit constraints or a
+stated selection rule could do so, but would be additional model information.
+
+Swap the finite resistance ratios to 2:1. The currents become 4 A and 8 A,
+which satisfy the same two ratings. Yet the voltage drop and total loss are
+identical to the 1:2 case at every positive ``\varepsilon``, and both families
+have the same zero-drop limit. Claim `PRACTICE-SHORT-001` records this directly
+derived counterexample. It disproves a general current-preservation guarantee;
+it is not a universal convergence theorem for nonlinear networks, complex
+impedances, or switching dynamics.
+
+### Check the feasible total current, not just one voltage
+
+Allow ``I\ge0`` to vary and impose only the two member current-magnitude limits
+``L_1,L_2``. The finite positive-resistance family has
+
+```math
+I_{\max}^{\mathrm{finite}}
+=\min\!\left(L_1\frac{a+b}{b},L_2\frac{a+b}{a}\right).
+```
+
+For ``a=1,b=2,L_1=7`` A and ``L_2=10`` A this is 10.5 A. The ideal-short model
+can choose its split and reaches ``L_1+L_2=17`` A with ``(I_1,I_2)=(7,10)`` A.
+No larger total is possible because
+``I=|I_1+I_2|\le |I_1|+|I_2|\le L_1+L_2`` for ``I\ge0``.
+At the original 12 A demand it can choose ``(6,6)`` A and pass both limits,
+even though the finite 1:2 family cannot. These maxima follow analytically from
+the stated constraints; no optimizer or claim of AC-OPF global optimality is
+involved.
+
+```sh
+python3 experiments/lessons/vanishing_impedance.py --check
+python3 experiments/lessons/vanishing_impedance.py --epsilon 1/1000000
+python3 experiments/lessons/vanishing_impedance.py --ratio1 2 --ratio2 1
+```
+
+The script uses exact rational arithmetic. It checks current division, loss,
+reverse flow, the ideal free-current family, the rating boundary and a transfer
+case. It rejects zero as an input to the *finite-resistance* formula instead of
+silently choosing one ideal current split.
+
+**Transfer exercise.** Use ``R_1=\varepsilon`` Ω and ``R_2=3\varepsilon`` Ω
+with the same 12 A demand and 7 A / 10 A limits. Predict the split and the
+finite-model maximum total current. Does the ideal-short maximum change?
+**Check your reasoning:** the finite split is 9 A / 3 A, with maximum total
+current ``28/3`` A; the first limit controls. The ideal equations have forgotten
+the resistance ratio and still admit 17 A. Compare the current observations
+and retained member constraints, not just bus voltages.
+
+The [transformer port lesson](@ref ideal-transformer-port-lesson) retains finite
+leakage when changing representation. Setting that leakage to zero would be a
+different transformation, just as it is here. The earlier
+[parallel-member lesson](@ref first-failure-parallel-branches) explains why the
+source member observations and their limits must remain recoverable. None of
+these examples prescribes an epsilon for real equipment or establishes a
+safe physical switching approximation.
+
 ## Organize the implementation around these checks
 
 Keep source records separate from generated equations and results. A source

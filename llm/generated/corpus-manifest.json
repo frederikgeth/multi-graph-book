@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "f0f604d511407221306ac3fe3cf43be626a69a1199ba9372c1d918edcf5504e2",
+  "corpus_sha256": "2bfb4eab97a4364f43ff71de478013e93abdd1e47f84909b9761235bf7dfafaf",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -12,15 +12,15 @@
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
     "included_doc_count": 74
   },
-  "evaluation_case_count": 87,
+  "evaluation_case_count": 90,
   "heldout_case_count": 33,
-  "misconception_count": 28,
-  "record_count": 921,
+  "misconception_count": 29,
+  "record_count": 925,
   "record_counts": {
-    "claim_bundle": 114,
+    "claim_bundle": 115,
     "concept_bundle": 18,
     "scientific_knowledge": 18,
-    "section": 771
+    "section": 774
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -33,7 +33,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "ea11382c5aab98e45cfcfc6591c2e4c9394c5aa08e06b7d325b36da7ca2a10e0"
+      "sha256": "8cdbf81ec1ccdf8f687a26d068a9e4571ccb7a246ab53fab135a3ef11ad5b48e"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -45,7 +45,7 @@
     },
     {
       "path": "docs/src/cases/building-and-changing-models.md",
-      "sha256": "ae65e187e939bb75b5a04f4890f5e7dc9640996ff2a716a6c0583e2b361008f2"
+      "sha256": "e5465195371c481edfd7356caec9782ba608f8aae628e3eae71b38bcda8ab455"
     },
     {
       "path": "docs/src/cases/coupled-multivoltage-corridor.md",
@@ -77,7 +77,7 @@
     },
     {
       "path": "docs/src/cases/study-workbook.md",
-      "sha256": "e5640444706f86853e392d8809bc23b09e2f50370869872b213e8e3e8b7a66b4"
+      "sha256": "b7b026ca5f8c523ac9fa454cef3491aca72b5a415cf88736142d10c5f864f0f4"
     },
     {
       "path": "docs/src/cases/transformer-tap-ac-decision.md",
@@ -85,7 +85,7 @@
     },
     {
       "path": "docs/src/foundations/circuit-formulations-and-lowering.md",
-      "sha256": "2d28d85a90ce1d6e71e70aa57daab4b9c27c4dff8562bda620beb89fc1064e6f"
+      "sha256": "b15e36e84002a5b20fdf1c57ea58fa968e17a6cd00f129691d0cc26c9dee4ed9"
     },
     {
       "path": "docs/src/foundations/compiled-views-and-graph-surgery.md",
@@ -333,7 +333,7 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "f64859dc83c5970c7549cb8ee1709cf4eee06f01c96ed7fba4f8b29f9366718b"
+      "sha256": "6265e48f5c9194c6083afbb57bfba1b7d9b00f3f584818194bcc9d64cdc8d411"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",
@@ -341,7 +341,7 @@
     },
     {
       "path": "llm/evaluation-cases.toml",
-      "sha256": "3b06ae04768ea0ba1ebda004cf7bc7a271887809770eb35e123f9f2893d5d6bf"
+      "sha256": "dc04693ff156a9572f1f77f059574bcfa15908635dfdcf45bf72d4c05cd1346b"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -349,7 +349,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "290d5a0429b16368c2b079247ba4f20fb33a56e0a60503844b07ec93c6d16d60"
+      "sha256": "f46006c90ed7c25fa105c943365de4bba1dee5dc6ef2d671924fcc8852303795"
     },
     {
       "path": "vocabulary/vocabulary.toml",

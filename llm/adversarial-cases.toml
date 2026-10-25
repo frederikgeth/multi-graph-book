@@ -74,7 +74,7 @@ expected_claim_ids = []
 expected_concept_ids = []
 
 # Near-domain regressions: qualify only when a responsive contract now exists.
-# Zero-voltage cases acquired a scoped algebraic basis in lesson A; unrelated
+# Zero-voltage and ideal-current cases acquired scoped bases in lessons A/C; unrelated
 # questions must still abstain rather than borrow a neighbouring qualification.
 
 [[case]]
@@ -121,25 +121,25 @@ expected_concept_ids = ["flow-current-power-message", "equivalence-exactness-pre
 case_id = "ADV-IDEAL-SWITCH-SHARING"
 audience = "power_engineer"
 question = "Can I replace a small impedance by an ideal switch without changing current sharing?"
-expected_status = "under_retrieved"
-expected_claim_ids = []
-expected_concept_ids = []
+expected_status = "qualified"
+expected_claim_ids = ["PRACTICE-SHORT-001"]
+expected_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
 
 [[case]]
 case_id = "ADV-TINY-RESISTANCE-SHARING"
 audience = "power_engineer"
 question = "Is replacing a tiny resistance with an ideal switch guaranteed to preserve current sharing?"
-expected_status = "under_retrieved"
-expected_claim_ids = []
-expected_concept_ids = []
+expected_status = "qualified"
+expected_claim_ids = ["PRACTICE-SHORT-001"]
+expected_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
 
 [[case]]
 case_id = "ADV-IDEAL-CURRENT-LIMIT"
 audience = "power_engineer"
 question = "Does the limit of a small impedance retain a unique split of current between ideal switches?"
-expected_status = "under_retrieved"
-expected_claim_ids = []
-expected_concept_ids = []
+expected_status = "qualified"
+expected_claim_ids = ["PRACTICE-SHORT-001"]
+expected_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
 
 [[case]]
 case_id = "ADV-PARAMETER-REUSE"

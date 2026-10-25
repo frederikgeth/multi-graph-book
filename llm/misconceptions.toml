@@ -1,6 +1,19 @@
 schema_version = "0.1.0"
 
 [[misconception]]
+id = "vanishing-impedance-preserves-ideal-current-sharing"
+title = "Tiny impedances and ideal switches have the same current sharing"
+severity = "critical"
+query_patterns = ["small impedance ideal switch current sharing", "tiny resistance ideal switch", "unique split current ideal switches", "vanishing resistance current selection", "ideal shorts member current limits"]
+tempting_answer = "If replacing a small impedance by an ideal switch barely changes voltage, it preserves member currents and ratings."
+required_qualification = "The positive scalar resistor family retains resistance-ratio-dependent current sharing as epsilon tends to zero. Replacing both members by ideal shorts removes that selection law: KCL fixes only the sum, so identical limiting voltages can coexist with different member-current feasibility. Keep the limits and current recovery; do not extrapolate this counterexample to a universal regularization theorem."
+safe_shorthand = "Small voltage error alone cannot justify idealization when member currents or limits matter."
+operational_consequence = "An idealized model may choose a rating-feasible split that the finite-resistance source family cannot attain."
+mandatory_claim_ids = ["PRACTICE-SHORT-001"]
+mandatory_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/cases/building-and-changing-models.md"]
+
+[[misconception]]
 id = "ideal-transformer-is-a-large-admittance"
 title = "An ideal transformer is a huge admittance or a small leakage clamped to zero"
 severity = "high"

@@ -178,7 +178,7 @@
           "claim:TR-PAR-002",
           "claim:FORMULATION-Y-SPLIT-001",
           "claim:TR-PAR-003",
-          "claim:FORMULATION-NODAL-002",
+          "claim:PRACTICE-SHORT-001",
           "concept:factor"
         ]
       },
@@ -186,6 +186,7 @@
         "complete_at_10": false,
         "recall_at_10": 0.666667,
         "top_10": [
+          "claim:PRACTICE-SHORT-001",
           "concept:parallel",
           "claim:PRACTICE-IMPORT-001",
           "claim:TR-PAR-002",
@@ -194,24 +195,23 @@
           "claim:TR-XFMR-006",
           "claim:TR-PAR-003",
           "claim:TR-XFMR-007",
-          "claim:ARCH-LOWER-001",
           "claim:TR-XFMR-009"
         ]
       },
       "lexical": {
         "complete_at_10": false,
-        "recall_at_10": 0.666667,
+        "recall_at_10": 0.5,
         "top_10": [
+          "claim:PRACTICE-SHORT-001",
           "concept:parallel",
           "claim:PRACTICE-IMPORT-001",
           "claim:TR-PAR-002",
           "claim:FORMULATION-NODAL-002",
           "claim:FORMULATION-NODAL-001",
           "claim:PRACTICE-IMPEDANCE-001",
-          "claim:TR-PAR-003",
           "claim:FIXTURE-002",
-          "claim:TR-XFMR-006",
-          "concept:rating-limit-constraint"
+          "claim:TR-PAR-003",
+          "claim:TR-XFMR-006"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -283,7 +283,7 @@
           "claim:TR-XFMR-003",
           "claim:ARCH-LOWER-001",
           "claim:RATING-001",
-          "concept:rating-limit-constraint"
+          "claim:FORMULATION-NODAL-003"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -464,8 +464,8 @@
           "claim:TR-KRON-001",
           "claim:TR-KRON-FIVE-001",
           "claim:TR-KRON-NEUTRAL-001",
-          "claim:TR-KRON-003",
-          "claim:TR-KRON-NEUTRAL-003"
+          "claim:TR-KRON-NEUTRAL-003",
+          "claim:TR-KRON-003"
         ]
       },
       "hybrid": {
@@ -478,8 +478,8 @@
           "claim:IMPEDANCE-LADDER-001",
           "claim:TR-PAR-001",
           "claim:ARCH-LOWER-002",
-          "claim:FORMULATION-NODAL-003",
           "claim:TOPOLOGY-001",
+          "claim:FORMULATION-NODAL-003",
           "claim:TR-GRAPH-002",
           "claim:TR-XFMR-003"
         ]
@@ -530,14 +530,14 @@
         "top_10": [
           "concept:equivalence-exactness-preservation",
           "concept:phase-conductor-sequence-coordinate",
-          "concept:element-edge-relation",
           "concept:parallel",
+          "concept:element-edge-relation",
           "concept:factor",
           "concept:object-node-interface",
           "claim:ARCH-VIEW-001",
           "concept:ground-neutral-reference",
           "concept:flow-current-power-message",
-          "concept:graph-topology-adjacency"
+          "concept:direction-orientation-hierarchy"
         ]
       },
       "hybrid": {
@@ -547,13 +547,13 @@
           "concept:direction-orientation-hierarchy",
           "claim:ARCH-PORT-002",
           "claim:ARCH-PORT-001",
-          "claim:PRESERVE-001",
           "claim:ARCH-CONDUCTOR-002",
           "concept:object-node-interface",
+          "claim:PRESERVE-001",
+          "claim:PRACTICE-SHORT-001",
           "claim:TR-SER-001",
           "claim:ARCH-LENS-001",
-          "concept:phase-conductor-sequence-coordinate",
-          "claim:ARCH-SURGERY-002"
+          "concept:phase-conductor-sequence-coordinate"
         ]
       },
       "lexical": {
@@ -569,7 +569,7 @@
           "concept:phase-conductor-sequence-coordinate",
           "claim:ARCH-LENS-001",
           "claim:TR-GRAPH-001",
-          "claim:ARCH-NODAL-001"
+          "claim:GRAPH-NPORT-001"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -668,9 +668,9 @@
           "concept:flow-current-power-message",
           "concept:object-node-interface",
           "claim:TR-SER-001",
-          "claim:FORMULATION-PORT-001",
           "claim:PRACTICE-UPDATE-001",
           "claim:COLLAPSE-001",
+          "claim:FORMULATION-PORT-001",
           "claim:FORMULATION-NODAL-003",
           "claim:TR-SER-003"
         ]
@@ -684,8 +684,8 @@
           "concept:flow-current-power-message",
           "concept:object-node-interface",
           "claim:FORMULATION-NODAL-001",
-          "claim:FORMULATION-PORT-001",
           "claim:ARCH-SURGERY-002",
+          "claim:FORMULATION-PORT-001",
           "claim:ARCH-CONDUCTOR-002",
           "claim:ARCH-PORT-002",
           "claim:ARCH-PORT-001"
@@ -720,12 +720,12 @@
           "concept:equivalence-exactness-preservation",
           "concept:factor",
           "concept:phase-conductor-sequence-coordinate",
-          "concept:graph-topology-adjacency",
           "concept:element-edge-relation",
-          "concept:ground-neutral-reference",
-          "concept:rating-limit-constraint",
-          "concept:object-node-interface",
+          "concept:graph-topology-adjacency",
           "concept:parallel",
+          "concept:rating-limit-constraint",
+          "concept:ground-neutral-reference",
+          "concept:object-node-interface",
           "claim:FORMULATION-ZERO-001"
         ]
       },
@@ -742,7 +742,7 @@
           "claim:ARCH-PORT-001",
           "claim:ARCH-PORT-002",
           "claim:LOAD-DECISION-001",
-          "claim:COLLAPSE-001"
+          "claim:ARCH-CONDUCTOR-002"
         ]
       },
       "lexical": {
@@ -755,8 +755,8 @@
           "claim:ARCH-PORT-002",
           "concept:object-node-interface",
           "claim:ARCH-PORT-001",
-          "claim:TR-XFMR-006",
           "claim:ARCH-CONDUCTOR-002",
+          "claim:TR-XFMR-006",
           "claim:ARCH-SURGERY-002",
           "claim:FORMULATION-PORT-001"
         ]
@@ -792,8 +792,8 @@
           "concept:element-edge-relation",
           "concept:parallel",
           "concept:factor",
-          "concept:graph-topology-adjacency",
           "concept:object-node-interface",
+          "concept:graph-topology-adjacency",
           "concept:flow-current-power-message",
           "concept:ground-neutral-reference",
           "claim:FORMULATION-ZERO-001"
@@ -929,14 +929,14 @@
         "top_10": [
           "concept:equivalence-exactness-preservation",
           "concept:phase-conductor-sequence-coordinate",
+          "concept:rating-limit-constraint",
+          "concept:parallel",
           "claim:TR-KRON-001",
           "concept:ground-neutral-reference",
-          "concept:object-node-interface",
           "concept:factor",
-          "concept:rating-limit-constraint",
+          "concept:object-node-interface",
           "claim:TR-KRON-NEUTRAL-005",
-          "claim:TR-KRON-NEUTRAL-007",
-          "claim:TR-KRON-002"
+          "claim:TR-KRON-NEUTRAL-007"
         ]
       },
       "hybrid": {
@@ -952,7 +952,7 @@
           "claim:TR-KRON-NEUTRAL-004",
           "claim:TR-KRON-NEUTRAL-003",
           "claim:TR-KRON-NEUTRAL-002",
-          "claim:LOAD-CONNECTION-001"
+          "claim:PRACTICE-SHORT-001"
         ]
       },
       "lexical": {
@@ -966,9 +966,9 @@
           "claim:NUMERICAL-005",
           "claim:FORMULATION-PORT-001",
           "concept:flow-current-power-message",
+          "claim:PRACTICE-SHORT-001",
           "claim:FORMULATION-NODAL-001",
-          "claim:ARCH-RECOVERY-003",
-          "claim:TR-KRON-NEUTRAL-003"
+          "claim:ARCH-RECOVERY-003"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -979,13 +979,24 @@
     {
       "audience": "power_engineer",
       "case_id": "ADV-IDEAL-SWITCH-SHARING",
-      "contract_complete": null,
-      "detected_routes": [],
-      "expected_record_ids": [],
-      "expected_status": "under_retrieved",
+      "contract_complete": true,
+      "detected_routes": [
+        {
+          "exact_pattern": false,
+          "misconception_id": "vanishing-impedance-preserves-ideal-current-sharing",
+          "score": 1.015714
+        }
+      ],
+      "expected_record_ids": [
+        "claim:PRACTICE-SHORT-001",
+        "concept:equivalence-exactness-preservation",
+        "concept:parallel",
+        "concept:rating-limit-constraint"
+      ],
+      "expected_status": "qualified",
       "graph": {
-        "complete_at_10": null,
-        "recall_at_10": null,
+        "complete_at_10": false,
+        "recall_at_10": 0.25,
         "top_10": [
           "concept:equivalence-exactness-preservation",
           "claim:TR-KRON-NEUTRAL-007",
@@ -1000,25 +1011,26 @@
         ]
       },
       "hybrid": {
-        "complete_at_10": null,
-        "recall_at_10": null,
+        "complete_at_10": false,
+        "recall_at_10": 0.25,
         "top_10": [
+          "claim:PRACTICE-SHORT-001",
           "claim:FORMULATION-NODAL-001",
           "claim:GROUND-SCOPE-002",
-          "claim:PRACTICE-IMPORT-001",
           "claim:TR-KRON-NEUTRAL-004",
           "claim:TR-KRON-NEUTRAL-007",
+          "claim:PRACTICE-IMPORT-001",
           "claim:TOPOLOGY-001",
           "claim:ARCH-DEGENERACY-001",
           "claim:FORMULATION-PORT-001",
-          "claim:ARCH-PORT-002",
-          "claim:GROUND-SCOPE-003"
+          "claim:ARCH-PORT-002"
         ]
       },
       "lexical": {
-        "complete_at_10": null,
-        "recall_at_10": null,
+        "complete_at_10": false,
+        "recall_at_10": 0.25,
         "top_10": [
+          "claim:PRACTICE-SHORT-001",
           "claim:FORMULATION-NODAL-001",
           "claim:GROUND-SCOPE-002",
           "claim:PRACTICE-IMPORT-001",
@@ -1027,25 +1039,35 @@
           "claim:TR-KRON-NEUTRAL-004",
           "claim:GROUND-SCOPE-004",
           "claim:TR-XFMR-002",
-          "claim:GROUND-SCOPE-003",
-          "claim:COUPLED-CORRIDOR-002"
+          "claim:GROUND-SCOPE-003"
         ]
       },
-      "mandatory_record_recall": null,
-      "observed_status": "under_retrieved",
+      "mandatory_record_recall": 1.0,
+      "observed_status": "qualified",
       "question": "Can I replace a small impedance by an ideal switch without changing current sharing?",
       "status_correct": true
     },
     {
       "audience": "power_engineer",
       "case_id": "ADV-TINY-RESISTANCE-SHARING",
-      "contract_complete": null,
-      "detected_routes": [],
-      "expected_record_ids": [],
-      "expected_status": "under_retrieved",
+      "contract_complete": true,
+      "detected_routes": [
+        {
+          "exact_pattern": false,
+          "misconception_id": "vanishing-impedance-preserves-ideal-current-sharing",
+          "score": 0.930159
+        }
+      ],
+      "expected_record_ids": [
+        "claim:PRACTICE-SHORT-001",
+        "concept:equivalence-exactness-preservation",
+        "concept:parallel",
+        "concept:rating-limit-constraint"
+      ],
+      "expected_status": "qualified",
       "graph": {
-        "complete_at_10": null,
-        "recall_at_10": null,
+        "complete_at_10": false,
+        "recall_at_10": 0.25,
         "top_10": [
           "concept:equivalence-exactness-preservation",
           "claim:TR-KRON-NEUTRAL-005",
@@ -1055,14 +1077,15 @@
           "claim:FORMULATION-ZERO-001",
           "claim:FORMULATION-NODAL-001",
           "claim:FORMULATION-PORT-001",
-          "concept:factor",
-          "claim:TR-KRON-002"
+          "claim:TR-KRON-002",
+          "concept:factor"
         ]
       },
       "hybrid": {
-        "complete_at_10": null,
-        "recall_at_10": null,
+        "complete_at_10": false,
+        "recall_at_10": 0.25,
         "top_10": [
+          "claim:PRACTICE-SHORT-001",
           "claim:ARCH-SURGERY-002",
           "claim:ARCH-PORT-002",
           "claim:TOPOLOGY-001",
@@ -1071,14 +1094,14 @@
           "claim:ARCH-DEGENERACY-001",
           "claim:GROUND-SCOPE-002",
           "claim:FORMULATION-ZERO-001",
-          "claim:TR-XFMR-002",
-          "claim:FORMULATION-NODAL-002"
+          "claim:TR-XFMR-002"
         ]
       },
       "lexical": {
-        "complete_at_10": null,
-        "recall_at_10": null,
+        "complete_at_10": false,
+        "recall_at_10": 0.25,
         "top_10": [
+          "claim:PRACTICE-SHORT-001",
           "claim:FORMULATION-NODAL-001",
           "claim:ARCH-SURGERY-002",
           "claim:TOPOLOGY-001",
@@ -1087,25 +1110,35 @@
           "claim:ARCH-DEGENERACY-001",
           "claim:GROUND-SCOPE-002",
           "claim:TR-XFMR-002",
-          "claim:FORMULATION-ZERO-001",
-          "claim:FORMULATION-NODAL-002"
+          "claim:FORMULATION-ZERO-001"
         ]
       },
-      "mandatory_record_recall": null,
-      "observed_status": "under_retrieved",
+      "mandatory_record_recall": 1.0,
+      "observed_status": "qualified",
       "question": "Is replacing a tiny resistance with an ideal switch guaranteed to preserve current sharing?",
       "status_correct": true
     },
     {
       "audience": "power_engineer",
       "case_id": "ADV-IDEAL-CURRENT-LIMIT",
-      "contract_complete": null,
-      "detected_routes": [],
-      "expected_record_ids": [],
-      "expected_status": "under_retrieved",
+      "contract_complete": true,
+      "detected_routes": [
+        {
+          "exact_pattern": false,
+          "misconception_id": "vanishing-impedance-preserves-ideal-current-sharing",
+          "score": 0.96127
+        }
+      ],
+      "expected_record_ids": [
+        "claim:PRACTICE-SHORT-001",
+        "concept:equivalence-exactness-preservation",
+        "concept:parallel",
+        "concept:rating-limit-constraint"
+      ],
+      "expected_status": "qualified",
       "graph": {
-        "complete_at_10": null,
-        "recall_at_10": null,
+        "complete_at_10": false,
+        "recall_at_10": 0.25,
         "top_10": [
           "concept:equivalence-exactness-preservation",
           "claim:TR-KRON-NEUTRAL-004",
@@ -1120,9 +1153,10 @@
         ]
       },
       "hybrid": {
-        "complete_at_10": null,
-        "recall_at_10": null,
+        "complete_at_10": false,
+        "recall_at_10": 0.25,
         "top_10": [
+          "claim:PRACTICE-SHORT-001",
           "claim:ARCH-DEGENERACY-001",
           "claim:FORMULATION-Y-SPLIT-001",
           "claim:TR-KRON-NEUTRAL-004",
@@ -1131,14 +1165,14 @@
           "claim:TR-KRON-NEUTRAL-007",
           "claim:FORMULATION-NODAL-001",
           "claim:ARCH-RECOVERY-001",
-          "claim:FORMULATION-PORT-001",
-          "claim:TR-KRON-NEUTRAL-008"
+          "claim:FORMULATION-PORT-001"
         ]
       },
       "lexical": {
-        "complete_at_10": null,
-        "recall_at_10": null,
+        "complete_at_10": false,
+        "recall_at_10": 0.25,
         "top_10": [
+          "claim:PRACTICE-SHORT-001",
           "claim:ARCH-DEGENERACY-001",
           "claim:FORMULATION-Y-SPLIT-001",
           "claim:FORMULATION-NODAL-001",
@@ -1147,12 +1181,11 @@
           "claim:TR-KRON-NEUTRAL-007",
           "claim:TR-KRON-NEUTRAL-001",
           "claim:FORMULATION-PORT-001",
-          "claim:PRACTICE-IMPEDANCE-001",
-          "claim:GROUND-SCOPE-003"
+          "claim:PRACTICE-IMPEDANCE-001"
         ]
       },
-      "mandatory_record_recall": null,
-      "observed_status": "under_retrieved",
+      "mandatory_record_recall": 1.0,
+      "observed_status": "qualified",
       "question": "Does the limit of a small impedance retain a unique split of current between ideal switches?",
       "status_correct": true
     },
@@ -1171,12 +1204,12 @@
           "concept:graph-topology-adjacency",
           "claim:TR-XFMR-010",
           "claim:TR-XFMR-009",
+          "claim:TR-XFMR-008",
           "claim:FORMULATION-ZERO-001",
           "claim:ARCH-SUPPORT-001",
-          "claim:TR-XFMR-008",
           "claim:FORMULATION-NODAL-002",
-          "concept:factor",
-          "claim:FORMULATION-Y-SPLIT-001"
+          "claim:PRACTICE-UPDATE-001",
+          "concept:factor"
         ]
       },
       "hybrid": {
@@ -1208,7 +1241,7 @@
           "claim:FORMULATION-NODAL-001",
           "claim:FIXTURE-002",
           "claim:NUMERICAL-003",
-          "claim:TR-PAR-SINGULAR-001"
+          "claim:LIT-PAR-001"
         ]
       },
       "mandatory_record_recall": null,
@@ -1219,16 +1252,16 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "f0f604d511407221306ac3fe3cf43be626a69a1199ba9372c1d918edcf5504e2"
+    "corpus_sha256": "2bfb4eab97a4364f43ff71de478013e93abdd1e47f84909b9761235bf7dfafaf"
   },
   "inputs": {
     "adversarial_cases": {
       "path": "llm/adversarial-cases.toml",
-      "sha256": "5e706955bc07b01dbed126c3c9f4e2c83ef030fa7d371286bc64da0a93f0e0c3"
+      "sha256": "2582e34cfa55f9cbe17b10501a7a5812b3704c5a8c001955c7eb182961460778"
     },
     "router": {
       "path": "scripts/llm_retrieval.py",
-      "sha256": "d41fd1b995a3b4dddaa1bf8ed1aa25877fffeb24086d2effd25e3a0947274b81"
+      "sha256": "e18be83210d71728992682fee55cfdc90030f7f5b58e374160d2d5a061667893"
     }
   },
   "purpose": "deterministic adversarial and metamorphic retrieval checks; not human-calibrated evidence",
@@ -1238,13 +1271,13 @@
     "cases": 18,
     "false_qualification_count": 0,
     "false_qualification_rate": 0.0,
-    "graph_recall_at_10": 0.637179,
-    "hybrid_recall_at_10": 0.452564,
+    "graph_recall_at_10": 0.564583,
+    "hybrid_recall_at_10": 0.414583,
     "qualified_contract_complete": 1.0,
-    "retrieval_cases": 13,
+    "retrieval_cases": 16,
     "status_accuracy": 1.0,
     "unqualified_abstention_accuracy": 1.0,
-    "unqualified_cases": 5,
+    "unqualified_cases": 2,
     "unsupported_abstention_accuracy": 1.0
   },
   "threshold_results": {

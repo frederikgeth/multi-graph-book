@@ -5,7 +5,7 @@
 
 This is a deterministic robustness and abstention check, not human-calibrated answer-quality evidence.
 Near-domain negatives require under_retrieved rather than unrelated qualified claims. These curated cases do not estimate deployment error rates or establish complete intent coverage.
-Recall is averaged over the 13 cases with target evidence; empty target sets are not perfect retrievals.
+Recall is averaged over the 16 cases with target evidence; empty target sets are not perfect retrievals.
 
 | Measure | Result | Gate |
 | --- | ---: | --- |
@@ -13,9 +13,9 @@ Recall is averaged over the 13 cases with target evidence; empty target sets are
 | Qualified contract completeness | 100.0% | yes |
 | Unsupported-query abstention | 100.0% | yes |
 | Unqualified-query status accuracy | 100.0% | yes |
-| False qualification on unqualified queries | 0/5 (0.0%) | covered by status gate |
-| Hybrid retrieval recall@10 | 45.3% | diagnostic |
-| Graph retrieval recall@10 | 63.7% | diagnostic |
+| False qualification on unqualified queries | 0/2 (0.0%) | covered by status gate |
+| Hybrid retrieval recall@10 | 41.5% | diagnostic |
+| Graph retrieval recall@10 | 56.5% | diagnostic |
 
 | Case | Expected status | Observed status | Hybrid recall@10 | Graph recall@10 | Contract complete |
 | --- | --- | --- | ---: | ---: | --- |
@@ -33,7 +33,7 @@ Recall is averaged over the 13 cases with target evidence; empty target sets are
 | `ADV-ZERO-VOLTAGE-IMBALANCE` | `qualified` | `qualified` | 66.7% | 100.0% | yes |
 | `ADV-ZERO-NEUTRAL-RESIDUAL` | `qualified` | `qualified` | 33.3% | 33.3% | yes |
 | `ADV-KCL-ALL-VOLTAGES` | `qualified` | `qualified` | 33.3% | 33.3% | yes |
-| `ADV-IDEAL-SWITCH-SHARING` | `under_retrieved` | `under_retrieved` | — | — | — |
-| `ADV-TINY-RESISTANCE-SHARING` | `under_retrieved` | `under_retrieved` | — | — | — |
-| `ADV-IDEAL-CURRENT-LIMIT` | `under_retrieved` | `under_retrieved` | — | — | — |
+| `ADV-IDEAL-SWITCH-SHARING` | `qualified` | `qualified` | 25.0% | 25.0% | yes |
+| `ADV-TINY-RESISTANCE-SHARING` | `qualified` | `qualified` | 25.0% | 25.0% | yes |
+| `ADV-IDEAL-CURRENT-LIMIT` | `qualified` | `qualified` | 25.0% | 25.0% | yes |
 | `ADV-PARAMETER-REUSE` | `under_retrieved` | `under_retrieved` | — | — | — |

@@ -495,8 +495,8 @@ In the pinned [BMOPFTools admittance policy](https://github.com/frederikgeth/BMO
 effective leakage. It retains nonzero ``z`` in ``D``. The Julia companion uses
 the *same* ``10^{-4}`` Ω leakage with thresholds ``10^{-6}`` and ``10^{-3}`` Ω
 and checks agreement across that representation change. Missing nominal
-voltages are rejected; they do not imply a unity ratio. The
-[locked integration workflow](../../../experiments/integration/README.md)
+voltages are rejected; they do not imply a unity ratio. The locked integration
+workflow documented in the repository's `experiments/integration/README.md`
 runs the companion and records its source identity and numerical evidence.
 
 ### References, free modes, and transfer

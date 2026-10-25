@@ -34,6 +34,9 @@ ROUTER_GENERIC_TERMS = {
 # not itself a solver-status question, and impedance is not source provenance.
 # Match normalized tokens so punctuation/plurals follow the ordinary router.
 ROUTER_TOPIC_PATTERNS = {
+    "vanishing-impedance-preserves-ideal-current-sharing": (
+        r"ideal|tiny|small|vanish\w*", r"impedance|resistance|resistor\w*|switch\w*|short\w*", r"current\w*|sharing|split|limit\w*",
+    ),
     "ideal-transformer-is-a-large-admittance": (r"transformer\w*|xfmr", r"ideal|leakage|border\w*"),
     "power-balance-enforces-kcl-at-zero-voltage": (
         r"power\w*", r"kcl|current\w*|residual\w*|impedance|neutral", r"zero|kcl|impedance|constantz|neutral",

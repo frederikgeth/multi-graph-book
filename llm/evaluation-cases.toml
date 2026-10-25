@@ -872,3 +872,33 @@ required_claim_ids = ["FORMULATION-PORT-001"]
 required_concept_ids = ["factor", "equivalence-exactness-preservation"]
 required_answer_elements = ["retain finite leakage in the bordered current-voltage relation", "retain shunts once and distinguish references from a neutral bond"]
 forbidden_simplifications = ["the threshold clamps finite leakage to zero", "unity ratio automatically bonds isolated neutrals"]
+
+[[case]]
+case_id = "EVAL-VANISHING-IMPEDANCE-STUDENT"
+audience = "student"
+question = "Do tiny resistances and ideal switches have the same current sharing?"
+misconception_id = "vanishing-impedance-preserves-ideal-current-sharing"
+required_claim_ids = ["PRACTICE-SHORT-001"]
+required_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
+required_answer_elements = ["finite resistance ratios select member currents", "ideal shorts retain only zero drop and a total-current equation", "check member limits separately from voltage agreement"]
+forbidden_simplifications = ["small voltage error guarantees rating feasibility", "every regularization has the same limit"]
+
+[[case]]
+case_id = "EVAL-VANISHING-IMPEDANCE-SOFTWARE"
+audience = "software_engineer"
+question = "Can replacing a small impedance by an ideal switch preserve the member current sharing?"
+misconception_id = "vanishing-impedance-preserves-ideal-current-sharing"
+required_claim_ids = ["PRACTICE-SHORT-001"]
+required_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
+required_answer_elements = ["finite resistance ratios select member currents", "ideal shorts retain only zero drop and a total-current equation", "check member limits separately from voltage agreement"]
+forbidden_simplifications = ["small voltage error guarantees rating feasibility", "every regularization has the same limit"]
+
+[[case]]
+case_id = "EVAL-VANISHING-IMPEDANCE-POWER"
+audience = "power_engineer"
+question = "Do ideal shorts retain the unique current split and member limits as resistance vanishes?"
+misconception_id = "vanishing-impedance-preserves-ideal-current-sharing"
+required_claim_ids = ["PRACTICE-SHORT-001"]
+required_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
+required_answer_elements = ["finite resistance ratios select member currents", "ideal shorts retain only zero drop and a total-current equation", "check member limits separately from voltage agreement"]
+forbidden_simplifications = ["small voltage error guarantees rating feasibility", "every regularization has the same limit"]

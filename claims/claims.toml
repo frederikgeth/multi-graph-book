@@ -1,6 +1,23 @@
 schema_version = 1
 
 [[claim]]
+claim_id = "PRACTICE-SHORT-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ["terminal_behavior", "limits", "decision", "numerical_structure"]
+chapter = "docs/src/cases/building-and-changing-models.md"
+claim_text = "Two positive parallel resistances a epsilon and b epsilon carrying total current I select member currents b I/(a+b) and a I/(a+b) for every epsilon>0; replacing both by ideal shorts retains zero voltage drop and the total-current equation but loses that ratio-dependent selection, so equal limiting voltages do not guarantee equal member-current feasibility."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "explicit_book_derivation_and_exact_rational_witness_in_experiments/lessons/vanishing_impedance.py"
+citation_keys = []
+model_scope = "fixed uncoupled scalar series-only positive resistors in parallel, real signed currents, a prescribed total current or a nonnegative total-current decision, and explicit member current-magnitude limits"
+assumptions = "a and b are fixed positive resistance ratios as epsilon decreases; no other device, controller, dynamic state, or current-selection rule constrains the ideal-short split"
+reviewer = ""
+review_date = ""
+unresolved_issue = "This direct counterexample is not a general regularization-convergence theorem, an approximation bound for real switching equipment, or a result for arbitrary nonlinear or complex-impedance networks."
+
+[[claim]]
 claim_id = "FORMULATION-PORT-001"
 exactness_object = "equation_identity"
 preservation_dimensions = ["terminal_behavior", "phase_neutral", "numerical_structure"]

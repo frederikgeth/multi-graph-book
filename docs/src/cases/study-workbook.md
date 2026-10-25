@@ -13,6 +13,13 @@ Before extending this case, complete one correction from
 Its import, outage-update and multiplier examples show how to choose a
 discriminating check and state what remains unverified.
 
+Before accepting a simplified circuit or its computed result, also work the
+[zero-voltage current/power boundary](@ref zero-voltage-kcl), the
+[finite/ideal transformer relation](@ref ideal-transformer-port-lesson), and
+[vanishing-impedance current selection](@ref vanishing-impedance-current-selection).
+For each, state the retained equation, the discriminator that detects a wrong
+model, and a boundary case in which voltage agreement alone would mislead you.
+
 ## 1. Declare the study
 
 Read [The running multiconductor network](@ref running-network) and

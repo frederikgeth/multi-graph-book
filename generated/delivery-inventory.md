@@ -6,14 +6,14 @@ These are registry counts and audit queues, not newly measured scientific result
 
 | Inventory | Count |
 |---|---:|
-| Claims | 114 |
+| Claims | 115 |
 | Claim verification: `externally-reviewed` | 0 |
 | Claim verification: `independently-implemented` | 6 |
-| Claim verification: `self-checked` | 108 |
+| Claim verification: `self-checked` | 109 |
 | PSK records | 18 |
-| Stable misconception IDs | 28 |
+| Stable misconception IDs | 29 |
 | Misconception IDs with a PSK link | 18 |
-| Misconception IDs without a PSK link | 10 |
+| Misconception IDs without a PSK link | 11 |
 | Full pinned package Finding registry | 381 |
 | Finding records in the curated executable export | 57 |
 
@@ -33,10 +33,11 @@ Self-checks and independent implementations retain their distinct ledger states.
 - `radial-is-representation-independent`
 - `self-loop-is-a-shunt-or-circuit-loop`
 - `source-outage-is-deletion-in-reduced-graph`
+- `vanishing-impedance-preserves-ideal-current-sharing`
 
 ## Established-result entries without citation keys
 
-There are 27 entries in this audit queue. Missing citation keys do not show that
+There are 28 entries in this audit queue. Missing citation keys do not show that
 a statement is false or necessarily requires an external citation. Review each entry's
 basis: cited result, explicit book derivation, or bounded numerical evidence. Do not
 promote a finite numerical test into a general theorem through a status label.
@@ -48,6 +49,7 @@ promote a finite numerical test into a general theorem through a status label.
 - `ARCH-RECOVERY-002`
 - `ARCH-RECOVERY-003`
 - `ARCH-RECOVERY-004`
+- `PRACTICE-SHORT-001`
 - `PRACTICE-UPDATE-001`
 - `TR-COMP-001`
 - `TR-COORD-001`
@@ -73,5 +75,5 @@ promote a finite numerical test into a general theorem through a status label.
 
 - BMOPFTools revision: `97c274946091859b7d9b0e822c96f1e7f9f50c7e`
 - Finding registry SHA-256: `52db7414e7f2bef158d32988c196d6d038320e30efda64a7501ddf1872d44519`
-- Federated pair SHA-256: `ba14f3c6d59068b4fd381d4805b2ebafde2efb925e7f051117c8b7e190da1932`
+- Federated pair SHA-256: `4ea07b32edfcc17b3fed161e82426e2f52bdedc4035265eed9c14d386a205dd8`
 - [Machine-readable inventory and source hashes](delivery-inventory.json)

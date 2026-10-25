@@ -1,13 +1,13 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:ea11382c5aab98e45cfcfc6591c2e4c9394c5aa08e06b7d325b36da7ca2a10e0 -->
+<!-- generated-from claims/claims.toml sha256:8cdbf81ec1ccdf8f687a26d068a9e4571ccb7a246ab53fab135a3ef11ad5b48e -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 114
+**Indexed claims:** 115
 **Indexed chapters:** 46
 
 ## Claims by type
@@ -102,7 +102,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `COUPLED-CORRIDOR-001` — Physically parallel line sections need not be parallel in the bus multigraph; a source model can retain stable line assets plus oriented section-to-section coupling records, with each connected coupling group compiling into one joint electrical factor before inversion or nodal stamping. | [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | `self-checked` |
 | `TRANSFORM-CATALOG-001` — The guarded-normalization catalogue treats coordinate normalization, series elimination, parallel bundling, switch contraction, multiwinding compilation, and rooted-tree views as distinct rule families whose acceptance depends on declared closure, recovery, constraint, and provenance guards. | [Guarded normalization rules](../transformations/guarded-normalization.md) | `self-checked` |
 
-### `theorem` (44)
+### `theorem` (45)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -128,6 +128,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `LIT-PAR-001` — For fixed scalar AC pi-line models on common endpoints, dominance of normalized squared member currents for all endpoint voltages certifies a redundant current limit; with apparent-power ratings the shared terminal-voltage magnitude cancels in the comparison, giving a sufficient redundancy test using auxiliary quadratic sets, not the original apparent-power feasible regions. Checking both terminals certifies removal of both directional limits without aggregating members. | [A plausible model gives the wrong answer](../start/first-failure-parallel-branches.md) | `self-checked` |
 | `PRACTICE-DUAL-001` — For min beta*c*p subject to alpha*(d-p)<=0 with positive c,d,alpha,beta, dispatch remains p=d while the Lagrange multiplier is beta*c/alpha and physical marginal cost is alpha/beta times that multiplier; duplicating the unscaled constraint admits nonunique multiplier allocations summing to c. | [Building and changing a model you can check](../cases/building-and-changing-models.md) | `self-checked` |
 | `PRACTICE-IMPORT-001` — A numerical round trip of MATPOWER RATE_A=0 can succeed while a faulty decoder replaces its explicit unlimited-rating meaning with a finite zero bound, changing the admissible transfer set. | [Building and changing a model you can check](../cases/building-and-changing-models.md) | `self-checked` |
+| `PRACTICE-SHORT-001` — Two positive parallel resistances a epsilon and b epsilon carrying total current I select member currents b I/(a+b) and a I/(a+b) for every epsilon>0; replacing both by ideal shorts retains zero voltage drop and the total-current equation but loses that ratio-dependent selection, so equal limiting voltages do not guarantee equal member-current feasibility. | [Building and changing a model you can check](../cases/building-and-changing-models.md) | `self-checked` |
 | `PRACTICE-UPDATE-001` — Opening one arm of a three-arm 1 S resistive star changes the remaining two-terminal equivalent conductance to 1/2 S; deleting the two corresponding edges of the original 1/3 S reduced triangle incorrectly leaves 1/3 S, despite symmetry and zero row sums. | [Building and changing a model you can check](../cases/building-and-changing-models.md) | `self-checked` |
 | `TR-COMP-001` — Two exact certified transformations compose when the first target is consumed by the second source; constraint maps apply forward and recovery maps apply in reverse order. | [Certificate schema and composition](../transformations/certificate-schema-and-composition.md) | `self-checked` |
 | `TR-COORD-001` — A simultaneous permutation of conductor coordinates, terminal pairing, element matrices, and componentwise limits is an exact normalization with an inverse permutation. | [Conductor-coordinate normalization](../transformations/conductor-coordinate-normalization.md) | `self-checked` |
@@ -155,7 +156,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 
 | Verification | Claims |
 | --- | ---: |
-| `self-checked` | 108 |
+| `self-checked` | 109 |
 | `independently-implemented` | 6 |
 | `externally-reviewed` | 0 |
 
@@ -225,6 +226,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `PRACTICE-DUAL-001` | No AC-OPF locational-price, generic solver dual convention, nonlinear sensitivity or uniqueness guarantee is established. |
 | `PRACTICE-IMPEDANCE-001` | Exercise the contract on source-backed overhead and underground construction records and obtain independent power-engineering review. |
 | `PRACTICE-IMPORT-001` | Independent review and complete versioned importer/exporter coverage remain outside the field-level teaching witness. |
+| `PRACTICE-SHORT-001` | This direct counterexample is not a general regularization-convergence theorem, an approximation bound for real switching equipment, or a result for arbitrary nonlinear or complex-impedance networks. |
 | `PRACTICE-UPDATE-001` | This disproves one update rule; it neither rules out source-aware incremental updates nor establishes general nonlinear, multiconductor or constrained update correctness. |
 | `PRESERVE-001` | Obtain independent review of the observation-indexed equivalence vocabulary and connect it to additional solver interfaces. |
 | `RATING-001` | Map selected utility and software rating fields into the typed limit record. |
@@ -283,7 +285,7 @@ These retrieval facets are provisional and path-derived. They are navigation aid
 additional verification labels; explicit facet fields can replace them when the claims
 schema is normalised.
 
-### `decision-cases` (34)
+### `decision-cases` (35)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -299,6 +301,7 @@ schema is normalised.
 | `LOAD-DECISION-001` — On the recorded two-bus fixture, CP, CI, CZ, and a normalized ZIP load law share the same bus--branch graph but produce distinct high-voltage solutions and decision margins: CP violates both the declared voltage and current limits, while CI, CZ, and ZIP satisfy both. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
 | `PRACTICE-DUAL-001` — For min beta*c*p subject to alpha*(d-p)<=0 with positive c,d,alpha,beta, dispatch remains p=d while the Lagrange multiplier is beta*c/alpha and physical marginal cost is alpha/beta times that multiplier; duplicating the unscaled constraint admits nonunique multiplier allocations summing to c. | [Building and changing a model you can check](../cases/building-and-changing-models.md) | `theorem` |
 | `PRACTICE-IMPORT-001` — A numerical round trip of MATPOWER RATE_A=0 can succeed while a faulty decoder replaces its explicit unlimited-rating meaning with a finite zero bound, changing the admissible transfer set. | [Building and changing a model you can check](../cases/building-and-changing-models.md) | `theorem` |
+| `PRACTICE-SHORT-001` — Two positive parallel resistances a epsilon and b epsilon carrying total current I select member currents b I/(a+b) and a I/(a+b) for every epsilon>0; replacing both by ideal shorts retains zero voltage drop and the total-current equation but loses that ratio-dependent selection, so equal limiting voltages do not guarantee equal member-current feasibility. | [Building and changing a model you can check](../cases/building-and-changing-models.md) | `theorem` |
 | `PRACTICE-UPDATE-001` — Opening one arm of a three-arm 1 S resistive star changes the remaining two-terminal equivalent conductance to 1/2 S; deleting the two corresponding edges of the original 1/3 S reduced triangle incorrectly leaves 1/3 S, despite symmetry and zero row sums. | [Building and changing a model you can check](../cases/building-and-changing-models.md) | `theorem` |
 | `TR-PAR-001` — Summed admittance preserves the unconstrained terminal relation of parallel linear branches. | [A plausible model gives the wrong answer](../start/first-failure-parallel-branches.md) | `theorem` |
 | `TR-PAR-002` — Using the sum of member current ratings can create an outer relaxation of the member-constrained feasible set. | [A plausible model gives the wrong answer](../start/first-failure-parallel-branches.md) | `theorem` |
