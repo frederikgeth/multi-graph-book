@@ -51,8 +51,9 @@ def main() -> int:
         "book_source_sha256": {name: digest(ROOT / name) for name in (
             "scripts/check_bmopf_integration.py", "scripts/integration_profile.py",
             "scripts/check_federated_knowledge.py", "experiments/running_network.jl",
-            "experiments/lessons/verify_running_network.jl", "experiments/lessons/transformer_ports.jl")},
-        "scope": "package-owned export, contract, property, execution and MCP tests; scoped running-network verification",
+            "experiments/lessons/verify_running_network.jl", "experiments/lessons/transformer_ports.jl",
+            "experiments/lessons/parameter_reuse.jl", "experiments/lessons/parameter_reuse.py")},
+        "scope": "package-owned export, contract, property, execution and MCP tests; scoped running-network verification; parameter reuse and failure-state lesson",
         "julia_load_path": runtime_env["JULIA_LOAD_PATH"],
         "not_established": ["full package test suite", "independent all-device feasibility", "global optimality", "physical model adequacy"],
         "commands": [],
@@ -90,6 +91,7 @@ def main() -> int:
         run(julia + ["-e", test_code, str(package), profile["git_tree_sha1"]])
         run(julia + ["experiments/lessons/verify_running_network.jl", str(output / "verification.json")])
         run(julia + ["experiments/lessons/transformer_ports.jl", str(output / "transformer-ports.json")])
+        run(julia + ["experiments/lessons/parameter_reuse.jl", str(output / "parameter-reuse.json")])
         load_profile()
         validate_checkout(package, profile)
         record["status"] = "passed"
