@@ -7,7 +7,7 @@
     "audit_solution"
   ],
   "evidence_state": "local_development_commit_not_in_published_integration_pin",
-  "git_tree_sha1": "6f9c474ca165d9e1c74ce73be6caa9bdc45cd13d",
+  "git_tree_sha1": "3330ddd7f8e7b0c9a6ec77d4c240dfadcfcaa110",
   "native_example_paths": [
     "examples/constant_power_roots.jl",
     "test/data/linear_audit/constant-power-roots.json",
@@ -16,7 +16,9 @@
     "examples/generator_voltage_audit.jl",
     "test/data/linear_audit/generator-voltage.json",
     "examples/fixed_transformer_audit.jl",
-    "test/data/linear_audit/fixed-transformer.json"
+    "test/data/linear_audit/fixed-transformer.json",
+    "examples/winding_list_audit.jl",
+    "test/data/linear_audit/winding-list.json"
   ],
   "not_established": [
     "all-device running-network feasibility",
@@ -25,9 +27,9 @@
     "availability in the published package pin",
     "MCP exposure"
   ],
-  "previous_candidate_revision": "71a9158d919c956d4f70e0e5724c6b615d4e6e86",
+  "previous_candidate_revision": "d70355da9e687170c558702352f4702880df2df1",
   "repository": "frederikgeth/BMOPFTools.jl",
-  "revision": "d70355da9e687170c558702352f4702880df2df1",
+  "revision": "1f196d19bc78c8a6651f4a5afb3afeb6ff51de15",
   "schema_version": "0.1.0",
-  "scope": "direct SI equation audit for inline series lines, earth shunts, source neutral returns, constant-power WYE/SINGLE_PHASE/DELTA loads and fixed ideal switches with finite conductor ratings; explicit missing coverage; bounded WYE/SINGLE_PHASE generator injections/limits and applicable finite phase-to-earth v_min/v_max arrays; fixed single-coil single_phase transformers with finite leakage and legacy secondary excitation"
+  "scope": "direct SI equation audit for inline series lines, earth shunts, source neutral returns, constant-power WYE/SINGLE_PHASE/DELTA loads and fixed ideal switches with finite conductor ratings; explicit missing coverage; bounded WYE/SINGLE_PHASE generator injections/limits and applicable finite phase-to-earth v_min/v_max arrays; fixed single-coil single_phase transformers with finite leakage and legacy secondary excitation; two/three-winding single-coil WYE transformers with explicit pairwise leakage and bare-coil ratings"
 }

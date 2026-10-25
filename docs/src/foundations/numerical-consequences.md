@@ -853,3 +853,118 @@ primary current ``0.32-0.06\mathrm j`` A, and loss zero. Omitting those zero-val
 optional fields gives the same native default model. Now restore excitation
 without updating the reported currents: the old ideal solution must be checked
 again against the restored current and power relations.
+
+### [Coupled winding leakage and the observation being rated](@id winding-list-audit)
+
+The [preceding two-port example](@ref fixed-transformer-audit) does not determine
+the rating semantics of a winding-list model. The next local candidate checks
+two or three WYE windings with one phase-neutral coil each, fixed nominal
+ratios, explicit pairwise short-circuit reactances, and excitation on winding 2.
+It uses the native `n_winding` equations, independently evaluated in SI units.
+The running network's multiphase WYE/DELTA arrangement remains outside this
+slice; its 34 unassessed rows are not removed by this smaller witness.
+
+Let ``U_k`` denote phase-minus-neutral coil voltage and ``I_k`` bare coil
+current, positive **into** the transformer at every winding. Define
+
+```math
+N_k=V_{\mathrm{nom},k}/V_{\mathrm{nom},1},\qquad
+j_k=N_k I_k,\qquad R_k=r_k/N_k^2.
+```
+
+Here ``r_k`` is in ohms on winding ``k``'s own voltage base; the supplied
+pairwise ``X_{ab}`` values are already referred to winding 1. With
+``Z_{ab}=R_a+R_b+\mathrm jX_{ab}``, form the coupled matrix
+
+```math
+(Z_B)_{ii}=Z_{1,i+1},\qquad
+(Z_B)_{ij}=\tfrac12(Z_{1,i+1}+Z_{1,j+1}-Z_{i+1,j+1})\quad(i\ne j).
+```
+
+The current and voltage equations are
+
+```math
+\sum_{k=1}^{n}j_k=0,\qquad
+U_1-U_k/N_k=-(Z_Bj_{2:n})_{k-1}\quad(k=2,\ldots,n).
+```
+
+The minus sign follows from using inward currents on **all** ports. For two
+windings, ``j_2=-I_1`` turns it into the familiar positive source-current
+voltage drop. For three windings, the nonreference currents are coupled through
+the off-diagonal term. Replacing this matrix by independent two-port branches
+generally changes the equations. Reordering windings requires reordering their
+pairwise data, ratios and result labels; excitation attached to winding 2 also
+makes its position part of the declared model.
+
+The package fixture chooses ``N=(1,1/2,1/4)``,
+``r=(1/4,1/16,1/64)`` Ω and
+``(X_{12},X_{13},X_{23})=(1/2,3/4,3/4)`` Ω, giving
+
+```math
+Z_B=\begin{bmatrix}
+1/2+\mathrm j/2 & 1/4+\mathrm j/4\\
+1/4+\mathrm j/4 & 1/2+3\mathrm j/4
+\end{bmatrix}\ \Omega.
+```
+
+With ``Y=1/32-\mathrm j/64`` S on winding 2, the analytic point is:
+
+| Winding | Coil voltage (V) | Bare coil current (A) |
+|:--|:--|:--|
+| 1 | 10 | ``0.625-0.15625\mathrm j`` |
+| 2 | ``4.82421875-0.10546875\mathrm j`` | ``-1+0.25\mathrm j`` |
+| 3 | ``2.439453125-0.04296875\mathrm j`` | ``-0.5+0.125\mathrm j`` |
+
+Winding 2's terminal current is
+``I_2+YU_2=-0.85089111328125+0.17132568359375\mathrm j`` A.
+Its magnitude is approximately 0.868 A, whereas ``|I_2|≈1.031`` A.
+**Predict:** would a 0.95 A limit pass? In this native winding-list model,
+per-winding scalar `i_max` bounds the **bare coil** current, so it fails.
+A terminal-current reading below 0.95 A cannot certify that coil rating.
+Similarly, per-winding scalar `s_max` bounds ``|U_k\overline{I_k}|`` for this
+single-coil slice. These are different observation contracts from the preceding
+`single_phase` secondary terminal-current cap. Neither convention alone
+identifies every physical thermal hot spot.
+
+Terminal power supplies an additional consistency check:
+
+```math
+\sum_k U_k\overline{I_{k,\mathrm{terminal}}}
+ =j_{2:n}^{\mathrm H}Z_Bj_{2:n}+\overline Y|U_2|^2,
+\qquad
+\Re(j_{2:n}^{\mathrm H}Z_Bj_{2:n})=\sum_k r_k|I_k|^2.
+```
+
+The total loss at the fixture point is approximately
+``0.901948+0.542283\mathrm j`` VA. The example checks both these identities,
+individual voltage equations, ampere-turn balance, reported magnitudes/powers,
+ratings and local KCL. A plausible aggregate loss cannot repair a wrong winding
+current, voltage referral, or local balance.
+
+Run `experiments/lessons/verify_linear_coverage.jl` with the exact clean local
+candidate described in `experiments/integration/README.md`. It invokes the
+package-owned `examples/winding_list_audit.jl`, binds its fixture and source
+hashes, and retains the native solve alongside analytic and mutation evidence.
+Wrong referral and replacing a bare-coil report by terminal current fail.
+Missing coil current or pairwise reactance stays **indeterminate**, with network
+KCL/power unassessed. Explicit zero reactances remain valid at the ideal boundary;
+omitted entries do not become measured zeros. The successful solve establishes
+neither uniqueness nor global optimality. Published integration and execution
+MCP availability remain unchanged.
+
+**Transfer exercise.** For lossless pairwise reactances
+``X_{12}=X_{13}=3`` Ω and ``X_{23}=10`` Ω, the reactance matrix is
+
+```math
+\begin{bmatrix}3&-2\\-2&3\end{bmatrix},
+```
+
+with eigenvalues 1 and 5 Ω.
+Its equivalent reference star arm is negative, yet this matrix is positive
+definite. A negative star arm is not a negative diagonal reactance. Conversely,
+positive diagonal entries alone do not establish positive semidefiniteness.
+The candidate's point audit does not certify magnetic realisability: passing
+circuit residuals and checking the admissibility of constitutive data are
+separate obligations. The package's input analysis provides the separate
+matrix diagnostic. Multiphase/DELTA windings, taps, internal grounding and
+internal per-unit fields remain outside this audit slice.

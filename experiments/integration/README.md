@@ -107,7 +107,8 @@ pin and regenerating the federated pair. The native default-role source-neutral 
 covered by the extended API, together with fixed ideal switches, bounded
 WYE/SINGLE_PHASE generator injections/limits, applicable phase-to-earth bus
 voltage bounds and fixed single-coil single_phase transformers with legacy
-secondary excitation. DELTA generators, generator costs/controllers, transformer
+secondary excitation, plus two/three-winding single-coil WYE transformers with
+explicit pairwise leakage. DELTA generators, generator costs/controllers, transformer
 variants/limits outside that narrow slice, voltage-dependent loads, other voltage families and objective
 evaluation remain open. Source-fixed/grounded bus-bound declarations are
 explicitly unassessed because the native builder skips their application.
@@ -177,5 +178,16 @@ The companion also runs `examples/fixed_transformer_audit.jl` with
 secondary excitation distinguish reported series currents from terminal currents.
 It checks a native solve, current/loss identities, a tighter terminal cap,
 series/terminal confusion, missing series current and unsupported adjustable tap.
-The new subtype support does not assess the running network's `n_winding`
-transformer, so that example remains indeterminate with 34 unassessed rows.
+The bounded transformer slices do not assess the running network's multiphase
+WYE/DELTA `n_winding` transformer, so that example remains indeterminate with 34 unassessed rows.
+
+
+The companion additionally runs `examples/winding_list_audit.jl` and
+`winding-list.json`: a three-winding, single-coil WYE case with nonunit nominal
+ratios, coupled leakage and winding-2 excitation. Its native per-winding scalar
+limits apply to bare coil currents/powers. A 0.95 A cap fails although the
+corresponding terminal-current magnitude is below that cap. The companion checks
+analytic/native agreement, complex loss, wrong referral, coil/terminal confusion,
+missing current and missing pairwise data. It retains the original running-network
+coverage refusal, candidate-only evidence status and source/hash binding. Taps,
+DELTA/multiphase windings and internal coordinates remain outside this slice.

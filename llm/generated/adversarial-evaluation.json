@@ -337,8 +337,8 @@
           "claim:GRAPH-MULTI-001",
           "claim:TR-GRAPH-SIMPLIFY-001",
           "claim:GRAPH-NPORT-001",
-          "claim:ARCH-LENS-001",
           "claim:ARCH-LOWER-001",
+          "claim:ARCH-LENS-001",
           "claim:TR-GRAPH-001"
         ]
       },
@@ -650,8 +650,8 @@
           "concept:equivalence-exactness-preservation",
           "concept:flow-current-power-message",
           "concept:phase-conductor-sequence-coordinate",
-          "claim:FORMULATION-ZERO-001",
           "concept:rating-limit-constraint",
+          "claim:FORMULATION-ZERO-001",
           "concept:factor",
           "concept:parallel",
           "concept:object-node-interface",
@@ -1074,11 +1074,11 @@
           "concept:rating-limit-constraint",
           "concept:factor",
           "claim:TR-KRON-NEUTRAL-005",
-          "claim:FORMULATION-NODAL-001",
           "claim:TR-KRON-NEUTRAL-007",
+          "claim:FORMULATION-NODAL-001",
           "concept:flow-current-power-message",
-          "claim:FORMULATION-PORT-001",
-          "claim:TR-KRON-FIVE-002"
+          "claim:TR-KRON-FIVE-002",
+          "claim:FORMULATION-PORT-001"
         ]
       },
       "hybrid": {
@@ -1230,11 +1230,11 @@
           "claim:PRACTICE-REUSE-001",
           "claim:PRACTICE-UPDATE-001",
           "claim:NUMERICAL-005",
-          "claim:TR-XFMR-010",
           "claim:TR-XFMR-009",
           "claim:TR-XFMR-008",
           "claim:ARCH-RECOVERY-001",
           "claim:FORMULATION-ZERO-001",
+          "claim:TR-XFMR-010",
           "claim:NUMERICAL-003",
           "claim:LIMIT-CONVEXITY-001"
         ]
@@ -1540,8 +1540,8 @@
         "top_10": [
           "claim:ARCH-RECOVERY-004",
           "claim:PRACTICE-REUSE-001",
-          "claim:PRACTICE-UPDATE-001",
           "claim:ARCH-RECOVERY-003",
+          "claim:PRACTICE-UPDATE-001",
           "claim:ARCH-RECOVERY-001",
           "claim:ARCH-RECOVERY-002",
           "claim:LIMIT-NEUTRAL-001",
@@ -1555,8 +1555,8 @@
         "recall_at_10": null,
         "top_10": [
           "claim:PRACTICE-REUSE-001",
-          "claim:PRACTICE-UPDATE-001",
           "claim:ARCH-RECOVERY-004",
+          "claim:PRACTICE-UPDATE-001",
           "claim:PRACTICE-IMPORT-001",
           "claim:ARCH-RECOVERY-001",
           "claim:ARCH-RECOVERY-002",
@@ -1588,8 +1588,8 @@
           "concept:phase-conductor-sequence-coordinate",
           "concept:graph-topology-adjacency",
           "concept:flow-current-power-message",
-          "claim:PRACTICE-SHORT-001",
           "concept:parallel",
+          "claim:PRACTICE-SHORT-001",
           "concept:element-edge-relation",
           "concept:ground-neutral-reference"
         ]
@@ -1616,8 +1616,8 @@
         "top_10": [
           "claim:PRACTICE-REUSE-001",
           "claim:LLM-RETRIEVAL-001",
-          "claim:PRACTICE-IMPORT-001",
           "concept:normalization",
+          "claim:PRACTICE-IMPORT-001",
           "claim:TR-PAR-004",
           "claim:VOCAB-BRIDGE-001",
           "claim:TR-PAR-STATE-001",
@@ -1872,8 +1872,8 @@
           "claim:KERNEL-OBSERVATION-001",
           "claim:LIMIT-NEUTRAL-001",
           "claim:TR-XFMR-003",
-          "claim:ARCH-RECOVERY-002",
-          "claim:TR-KRON-NEUTRAL-005"
+          "claim:TR-KRON-NEUTRAL-005",
+          "claim:ARCH-RECOVERY-002"
         ]
       },
       "lexical": {
@@ -2291,8 +2291,8 @@
           "claim:TR-PAR-005",
           "claim:FORMULATION-NODAL-002",
           "claim:PRACTICE-SHORT-001",
-          "claim:TR-XFMR-006",
-          "claim:TR-PAR-JOINT-001"
+          "claim:TR-PAR-JOINT-001",
+          "claim:TR-XFMR-006"
         ]
       },
       "lexical": {
@@ -2362,8 +2362,8 @@
           "claim:TR-XFMR-003",
           "claim:TR-PAR-002",
           "claim:PRACTICE-UPDATE-001",
-          "claim:TR-XFMR-004",
-          "claim:LIMIT-MULTIPLICITY-001"
+          "claim:LIMIT-CONVEXITY-001",
+          "claim:TR-XFMR-004"
         ]
       },
       "lexical": {
@@ -2375,8 +2375,8 @@
           "claim:LOAD-CONTINUATION-001",
           "claim:PRACTICE-SHORT-001",
           "claim:TR-XFMR-001",
-          "claim:TR-XFMR-003",
           "claim:LIMIT-CONVEXITY-001",
+          "claim:TR-XFMR-003",
           "claim:TR-PAR-002",
           "claim:PRACTICE-UPDATE-001",
           "claim:ARCH-RECOVERY-003"
@@ -2405,8 +2405,8 @@
           "concept:ground-neutral-reference",
           "claim:TR-XFMR-006",
           "claim:PRACTICE-IMPORT-001",
-          "concept:factor",
           "claim:FORMULATION-ZERO-001",
+          "concept:factor",
           "claim:LIMIT-MULTIPLICITY-001"
         ]
       },
@@ -2420,9 +2420,9 @@
           "claim:FORMULATION-ZERO-001",
           "claim:TR-PAR-005",
           "claim:PRACTICE-IMPORT-001",
-          "claim:LIT-PAR-001",
           "concept:ground-neutral-reference",
           "claim:KERNEL-OBSERVATION-001",
+          "claim:LIT-PAR-001",
           "concept:direction-orientation-hierarchy"
         ]
       },
@@ -2450,7 +2450,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "d8075ded8be293183093f6d3d2496e1878f73f1b86cc7a651120f78a84075c2b"
+    "corpus_sha256": "632770afc91b950f18032f71c9510f9742eafe32caba951858acf96c39c7f3f2"
   },
   "inputs": {
     "adversarial_cases": {
