@@ -14,14 +14,14 @@ Recall is averaged over the 16 cases with target evidence; empty target sets are
 | Unsupported-query abstention | 100.0% | yes |
 | Unqualified-query status accuracy | 100.0% | yes |
 | False qualification on unqualified queries | 0/2 (0.0%) | covered by status gate |
-| Hybrid retrieval recall@10 | 41.5% | diagnostic |
-| Graph retrieval recall@10 | 56.5% | diagnostic |
+| Hybrid retrieval recall@10 | 40.4% | diagnostic |
+| Graph retrieval recall@10 | 55.4% | diagnostic |
 
 | Case | Expected status | Observed status | Hybrid recall@10 | Graph recall@10 | Contract complete |
 | --- | --- | --- | ---: | ---: | --- |
 | `ADV-YSPLIT-TYPO` | `qualified` | `qualified` | 33.3% | 83.3% | yes |
 | `ADV-YSPLIT-SYNONYM` | `qualified` | `qualified` | 50.0% | 83.3% | yes |
-| `ADV-PARALLEL-ABBREVIATION` | `qualified` | `qualified` | 66.7% | 83.3% | yes |
+| `ADV-PARALLEL-ABBREVIATION` | `qualified` | `qualified` | 50.0% | 66.7% | yes |
 | `ADV-KRON-SYNONYM` | `qualified` | `qualified` | 20.0% | 100.0% | yes |
 | `ADV-GRAPH-API` | `qualified` | `qualified` | 40.0% | 100.0% | yes |
 | `ADV-GROUND-ABBREVIATION` | `qualified` | `qualified` | 75.0% | 0.0% | yes |

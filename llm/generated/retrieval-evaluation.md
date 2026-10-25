@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `2bfb4eab97a4364f43ff71de478013e93abdd1e47f84909b9761235bf7dfafaf`<br>
+**Corpus hash:** `c0505022573af94973eea6e67ff371d08b31a928c015220084619c8136a6763d`<br>
 **Cases:** 90
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -16,11 +16,11 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Measure | Result | Release gate? |
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
-| Open-corpus lexical evidence recall@5 | 27.6% | diagnostic |
-| Open-corpus lexical evidence recall@10 | 34.0% | diagnostic |
+| Open-corpus lexical evidence recall@5 | 27.5% | diagnostic |
+| Open-corpus lexical evidence recall@10 | 33.7% | diagnostic |
 | Open-corpus complete evidence@10 | 1.1% | diagnostic |
-| Evidence-only lexical recall@5 | 35.0% | diagnostic |
-| Evidence-only lexical recall@10 | 42.0% | diagnostic |
+| Evidence-only lexical recall@5 | 34.7% | diagnostic |
+| Evidence-only lexical recall@10 | 41.7% | diagnostic |
 | Evidence-only complete evidence@10 | 2.2% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
@@ -43,16 +43,16 @@ the question count must not be treated as that many independent observations.
 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `lexical` | 33.5% | 43.7% | 0.0% | 0/33 | 6/33 | 0.198 |
-| `char_tfidf` | 34.9% | 44.6% | 0.0% | 0/33 | 5/33 | 0.223 |
-| `hybrid` | 37.1% | 45.5% | 0.0% | 0/33 | 6/33 | 0.218 |
-| `graph` | 38.0% | 58.3% | 18.2% | 6/33 | 3/33 | 0.248 |
+| `lexical` | 33.5% | 43.1% | 0.0% | 0/33 | 6/33 | 0.197 |
+| `char_tfidf` | 34.3% | 44.6% | 0.0% | 0/33 | 5/33 | 0.222 |
+| `hybrid` | 37.6% | 46.0% | 0.0% | 0/33 | 6/33 | 0.217 |
+| `graph` | 38.0% | 57.7% | 21.2% | 7/33 | 3/33 | 0.252 |
 
 Held-out contract-router firing: **22/33 (66.7%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **20/33 (60.6%)**; this remains diagnostic because the set is synthetic and clustered.
 Target clusters: **11**, with cluster sizes `[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]`; percentage differences are therefore not independent observations.
 Hybrid versus lexical complete@10: **0/33** versus **0/33**; hybrid zero-recall@10: **6/33**.
-Graph versus hybrid complete@10: **6/33** versus **0/33**.
+Graph versus hybrid complete@10: **7/33** versus **0/33**.
 
 | Held-out case | Audience | Expected route | Observed top-1 | Router fired | Lexical complete@10 | TF-IDF complete@10 | Hybrid complete@10 | Graph complete@10 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -61,7 +61,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | `HOLDOUT-GRAPH-POWER` | `power_engineer` | `one-universal-network-graph` | `radial-is-representation-independent` | yes | no | no | no | no |
 | `HOLDOUT-YSPLIT-STUDENT` | `student` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
 | `HOLDOUT-YSPLIT-SOFTWARE` | `software_engineer` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
-| `HOLDOUT-YSPLIT-POWER` | `power_engineer` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
+| `HOLDOUT-YSPLIT-POWER` | `power_engineer` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | yes |
 | `HOLDOUT-YBUS-STUDENT` | `student` | `nodal-operator-is-source-network` | `none` | no | no | no | no | yes |
 | `HOLDOUT-YBUS-SOFTWARE` | `software_engineer` | `nodal-operator-is-source-network` | `none` | no | no | no | no | no |
 | `HOLDOUT-YBUS-POWER` | `power_engineer` | `nodal-operator-is-source-network` | `none` | no | no | no | no | no |
@@ -95,7 +95,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
 | `power_engineer` | 30 | 100.0% | 42.5% | 100.0% |
-| `software_engineer` | 30 | 100.0% | 38.8% | 100.0% |
+| `software_engineer` | 30 | 100.0% | 37.9% | 100.0% |
 | `student` | 30 | 100.0% | 44.6% | 100.0% |
 
 ## Case results
@@ -142,7 +142,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | `EVAL-COUPLING-SOFTWARE` | `software_engineer` | `mutual-coupling-is-an-ordinary-parallel-network` | 60.0% | yes |
 | `EVAL-COUPLING-POWER` | `power_engineer` | `mutual-coupling-is-an-ordinary-parallel-network` | 80.0% | yes |
 | `EVAL-SOLVER-VALIDITY-STUDENT` | `student` | `solver-termination-implies-validated-solution` | 50.0% | yes |
-| `EVAL-SOLVER-VALIDITY-SOFTWARE` | `software_engineer` | `solver-termination-implies-validated-solution` | 25.0% | yes |
+| `EVAL-SOLVER-VALIDITY-SOFTWARE` | `software_engineer` | `solver-termination-implies-validated-solution` | 0.0% | yes |
 | `EVAL-SOLVER-VALIDITY-POWER` | `power_engineer` | `solver-termination-implies-validated-solution` | 25.0% | yes |
 | `EVAL-LOAD-BASE-STUDENT` | `student` | `wye-delta-share-nominal-voltage-base` | 40.0% | yes |
 | `EVAL-LOAD-BASE-SOFTWARE` | `software_engineer` | `wye-delta-share-nominal-voltage-base` | 40.0% | yes |

@@ -20,6 +20,11 @@ Before accepting a simplified circuit or its computed result, also work the
 For each, state the retained equation, the discriminator that detects a wrong
 model, and a boundary case in which voltage agreement alone would mislead you.
 
+Before treating a solved capstone as feasible, complete the
+[verification coverage lesson](@ref verification-coverage-lesson). Report which
+rows were evaluated, reconstructed or unassessed, and keep the local package
+candidate separate from the published integration pin.
+
 ## 1. Declare the study
 
 Read [The running multiconductor network](@ref running-network) and

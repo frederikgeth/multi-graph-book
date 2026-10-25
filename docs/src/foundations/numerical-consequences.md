@@ -442,6 +442,110 @@ record at least:
 These fields are properties of a compiled numerical problem, not of a simple
 graph in isolation.
 
+## [A coverage table before a feasibility verdict](@id verification-coverage-lesson)
+
+**Predict.** Two independent feeders each have a 10 V ideal source, a 1 Ω
+series resistor and a 1 S shunt to earth at the receiving terminal. In each
+feeder, the receiving voltage is 5 V and the line current is 5 A. If the two
+reported source currents change to 6 A and 4 A, does checking total power detect
+the corruption?
+
+For either feeder, direct substitution gives
+
+```math
+10-5=1\cdot5,\qquad I_{\mathrm{shunt}}=1\cdot5=5\ \mathrm A.
+```
+
+The source supplies 50 W; the line and shunt each absorb 25 W. With two feeders,
+the original source total is 100 W. The corrupted source currents still give
+``10\cdot6+10\cdot4=100`` W, so aggregate power agrees. But the signed KCL
+residuals at the two source terminals, taking outgoing current as positive,
+are ``5-6=-1`` A and ``5-4=1`` A. Each violates a ``10^{-6}`` A acceptance
+tolerance. Updating the reported source powers to 60 W and 40 W does not repair
+those local equations.
+
+This is a concrete use of claims `NUMERICAL-004` and `NUMERICAL-005`: a supplied
+residual bundle and a solver status cannot replace recomputation with explicit
+coverage. The [zero-voltage lesson](@ref zero-voltage-kcl) gives a second
+failure mechanism: at an exactly grounded terminal a missing 1 A earth reaction
+can be invisible even to *local* power balance. A perfect ground fixes voltage;
+its reaction current must still be accounted for in a current audit.
+
+### What was evaluated, and what was reconstructed?
+
+For an inline series-line model, an evaluator can read the authored matrix
+entries and check
+
+```math
+r_V=V_f-V_t-ZI_f,\qquad r_{I,\mathrm{line}}=I_f+I_t,
+\qquad r_{I,b}=\sum_{\text{outgoing devices}}I-\sum_{\text{injections}}I.
+```
+
+These are distinct observations with distinct units and tolerances. The receiving
+terminal map determines where ``I_t`` enters KCL, even when result rows use the
+sending conductor's label. A limit check must evaluate ``|I_f|``, ``|I_t|`` and
+any declared ``|V_f\overline{I_f}|`` / ``|V_t\overline{I_t}|`` bounds at their
+respective endpoints. Equality with a bound passes within the declared tolerance;
+a negative or malformed declared rating is not a zero limit violation.
+An absent optional rating means no such constraint was declared.
+
+For a shunt with no independently supplied current, computing ``I=YV`` constructs
+a contribution to KCL. Reporting ``I-YV=0`` as an independent successful test
+would merely compare the calculation with itself. Label it **reconstructed**.
+A missing source current instead makes the affected audit **unassessed**; no
+residual has been measured. These categories should survive JSON serialization.
+
+### Package candidate and the running-network boundary
+
+The package-owned `audit_linear_solution` candidate implements this small domain
+without calling the model builder, `line_yprim`, Ybus, or the result profiler.
+It shares the native SI input schema, result labels and arithmetic libraries.
+That is independent equation evaluation, not independent parsing, a second
+physical model, or measurement validation. The candidate's exact local revision
+is recorded in `experiments/integration/linear-audit-candidate.json`; it is
+**not included in the published integration pin** and is not exposed by MCP.
+The companion is `experiments/lessons/verify_linear_coverage.jl`, with execution
+instructions in the repository's `experiments/integration/README.md`.
+
+The analytic tiny circuit and its native-coordinate solve pass; the
+cancelling-current mutation fails, and removing a required current returns an
+indeterminate result. The companion also records a solve using default per-unit
+scaling, evaluated at the **same physical tolerances**. In the local candidate
+run, that solver reported `LOCALLY_SOLVED`, but the two receiving-node KCL
+residuals were about ``4.72\times10^{-4}`` A, exceeding the ``10^{-6}`` A audit
+tolerance. The native-coordinate solve passed without relaxing the audit.
+This is a diagnostic observation for this tiny case and environment, not a claim
+that per-unit scaling is generally worse. The companion records the comparison
+without requiring every future solver run to fail the same way. On the running
+network, the candidate produces the following bounded coverage:
+
+| Running-network obligation | Candidate evidence |
+| --- | --- |
+| Four coupled series-line voltage/current relations | Eight directly evaluated equation checks |
+| Both-end line current limits | 30 conductor-end checks; not transformer or switch ratings |
+| Line loss identity | Four checks from terminal currents and voltages |
+| Two fixed earth shunts | Current contributions reconstructed directly from entries |
+| Two declared perfect grounds | Zero-voltage conditions checked; reported ground reactions consumed |
+| Loads, generator, switch and n-winding transformer | Device equations unassessed |
+| Source with neutral return; bus voltage bounds | Unassessed in this first domain |
+| 26 bus-terminal KCL rows and network power | Unassessed because current contributions are incomplete |
+| Objective, optimality and physical adequacy | Not established |
+
+The audit contains 42 unassessed rows. That number counts obligations, not 42
+missing devices or 42 independent experiments. The implementation conservatively
+suppresses every KCL verdict when any device current contribution is unassessed;
+local line checks remain available. A later implementation may propagate missing
+coverage by incidence, but must first demonstrate that its incidence inventory
+is complete. A failed evaluated check must also remain visible when other rows
+are unassessed.
+
+**Transfer exercise.** Keep the two equal-voltage source currents at 6 A and 4 A,
+but remove the second source's current field. Can the evaluator report zero
+aggregate error because the first source is present? **Check your reasoning:**
+no. A required term is unknown. The aggregate residual is null and its coverage
+is unassessed; it cannot be computed by substituting zero. Finish the supported
+model inventory before interpreting a small norm as feasibility evidence.
+
 ## Solver behaviour and decision margins
 
 For a constrained decision problem, solver behaviour is part of the evidence

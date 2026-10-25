@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "2bfb4eab97a4364f43ff71de478013e93abdd1e47f84909b9761235bf7dfafaf",
+  "corpus_sha256": "c0505022573af94973eea6e67ff371d08b31a928c015220084619c8136a6763d",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -15,12 +15,12 @@
   "evaluation_case_count": 90,
   "heldout_case_count": 33,
   "misconception_count": 29,
-  "record_count": 925,
+  "record_count": 928,
   "record_counts": {
     "claim_bundle": 115,
     "concept_bundle": 18,
     "scientific_knowledge": 18,
-    "section": 774
+    "section": 777
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -77,7 +77,7 @@
     },
     {
       "path": "docs/src/cases/study-workbook.md",
-      "sha256": "b7b026ca5f8c523ac9fa454cef3491aca72b5a415cf88736142d10c5f864f0f4"
+      "sha256": "c476ec24a31a851e06fe355664ce2108b1b70f71894d231a4407de25b7fb89b1"
     },
     {
       "path": "docs/src/cases/transformer-tap-ac-decision.md",
@@ -129,7 +129,7 @@
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
-      "sha256": "d36b8baaefef1df9670057b8443058b06865a8c35cdb7c63b575c1478963d4ff"
+      "sha256": "1d5ac87cba4a74c5e7847f18e62be5083e3f69109add9ffd7dd331ce439ab891"
     },
     {
       "path": "docs/src/foundations/orientation-terminal-power.md",
@@ -333,7 +333,7 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "6265e48f5c9194c6083afbb57bfba1b7d9b00f3f584818194bcc9d64cdc8d411"
+      "sha256": "d7cf5f7e49151c5564670f4583001c6f9dbcf16cc88737f8a12220bc0b6c9f66"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",

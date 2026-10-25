@@ -1,0 +1,18 @@
+{
+  "base_revision": "97c274946091859b7d9b0e822c96f1e7f9f50c7e",
+  "branch": "codex/coverage-aware-feasibility",
+  "entrypoint": "audit_linear_solution",
+  "evidence_state": "local_development_commit_not_in_published_integration_pin",
+  "git_tree_sha1": "cdeef61748dbcde0fdda539af539f6711c8c6ac1",
+  "not_established": [
+    "all-device running-network feasibility",
+    "objective or global optimality",
+    "physical adequacy",
+    "availability in the published package pin",
+    "MCP exposure"
+  ],
+  "repository": "frederikgeth/BMOPFTools.jl",
+  "revision": "5891d9513b14ec3d4b935b31e90585c9ace95eac",
+  "schema_version": "0.1.0",
+  "scope": "direct SI linear series-line, earth-shunt, ground-reference and source audit; explicit unassessed coverage for unsupported devices"
+}

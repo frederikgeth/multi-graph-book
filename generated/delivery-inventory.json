@@ -143,11 +143,11 @@
       "vanishing-impedance-preserves-ideal-current-sharing"
     ]
   },
-  "pair_sha256": "4ea07b32edfcc17b3fed161e82426e2f52bdedc4035265eed9c14d386a205dd8",
+  "pair_sha256": "1f6a12e0ea1509cf6c0038db44e3b263dd1ad982b719a6c3a6c7060e2e0c0bb6",
   "schema_version": "1.0.0",
   "source_sha256": {
     "claims/claims.toml": "8cdbf81ec1ccdf8f687a26d068a9e4571ccb7a246ab53fab135a3ef11ad5b48e",
-    "generated/federated-knowledge-pair-manifest.json": "e79b9ffe979e568bf3962376c5e13ab2d95f1e536eef02efeda79bc313234b9c",
+    "generated/federated-knowledge-pair-manifest.json": "4fc6afb305d0828628ff556eacc8f13453cf02203ddbe8f94b78788a326ffd76",
     "knowledge/psk.toml": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364",
     "llm/misconceptions.toml": "f46006c90ed7c25fa105c943365de4bba1dee5dc6ef2d671924fcc8852303795"
   }

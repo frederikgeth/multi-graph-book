@@ -52,3 +52,43 @@ and update the profile's revision, tree, version and environment hashes. Then ru
 `scripts/regenerate_all.py --bmopf-root <clean-reviewed-checkout>`, inspect the
 generated diff, and run both deterministic and live integration gates. Never
 refresh the historical replay files as a side effect of an integration upgrade.
+
+## Local direct-audit candidate (separate from the pin)
+
+`linear-audit-candidate.json` identifies the local package commit that implements
+`audit_linear_solution`. It is not a published package release, a change to
+`profile.json`, or an MCP capability. The package branch is
+`codex/coverage-aware-feasibility`; its worktree created for this development is
+`tmp/BMOPFTools-feasibility` under the book. The Git branch/commit belongs to the
+sibling BMOPFTools repository; the book does not vendor its implementation.
+Until that branch is published, a fresh remote clone cannot fetch the candidate.
+
+With that exact clean candidate checkout available, copy the reviewed environment
+to a temporary directory and change only its package source. From the book root:
+
+```sh
+MGB_AUDIT_ENV=$(mktemp -d)
+cp experiments/integration/Project.toml "$MGB_AUDIT_ENV/Project.toml"
+cp experiments/integration/Manifest.toml "$MGB_AUDIT_ENV/Manifest.toml"
+julia --startup-file=no --project="$MGB_AUDIT_ENV" -e \
+  'using Pkg,TOML; p=Base.active_project(); d=TOML.parsefile(p);
+   delete!(d["sources"],"BMOPFTools"); open(io->TOML.print(io,d),p,"w");
+   Pkg.develop(path=ARGS[1])' "$PWD/tmp/BMOPFTools-feasibility"
+julia --startup-file=no --project="$MGB_AUDIT_ENV" \
+  experiments/lessons/verify_linear_coverage.jl "$MGB_AUDIT_ENV/coverage.json"
+```
+
+Use a different package path if the same candidate commit has been checked out
+elsewhere. The companion checks the installed package's exact Git revision and
+clean state, runs the tiny analytic, native-coordinate solve, corrupted and missing-data
+cases, records a default per-unit solve as a diagnostic comparison at the same
+physical tolerances, then solves and audits the running network. It records the candidate identity, environment and
+source hashes, full running-network input/result, and all coverage rows. The
+running-network verdict must remain **indeterminate**. This companion is not in
+the published-pin CI job; package tests cover the evaluator on its own branch.
+Do not substitute zero residuals to promote it into the legacy witness contract.
+
+Next promotion requires completing/reviewing the desired device coverage,
+publishing the package commit, deliberately updating the ordinary integration
+pin and regenerating the federated pair. The source-neutral return, loads,
+switches, generators, transformer equations/limits and objective remain open.
