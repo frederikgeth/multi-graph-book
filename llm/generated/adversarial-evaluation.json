@@ -26,9 +26,9 @@
         "top_10": [
           "concept:equivalence-exactness-preservation",
           "claim:ARCH-NODAL-001",
-          "concept:graph-topology-adjacency",
           "claim:FORMULATION-NODAL-002",
           "claim:FORMULATION-Y-SPLIT-001",
+          "concept:graph-topology-adjacency",
           "claim:ARCH-SUPPORT-001",
           "concept:nodal-operator-alias",
           "concept:factor",
@@ -48,8 +48,8 @@
           "claim:FORMULATION-NODAL-002",
           "claim:GRAPH-PI-COLLAPSE-001",
           "claim:GRAPH-SELF-LOOP-001",
-          "claim:FORMULATION-NODAL-001",
-          "claim:TR-XFMR-004"
+          "claim:TR-XFMR-004",
+          "claim:FORMULATION-NODAL-001"
         ]
       },
       "lexical": {
@@ -65,7 +65,7 @@
           "claim:NUMERICAL-002",
           "claim:ARCH-NODAL-001",
           "claim:GRAPH-PI-COLLAPSE-001",
-          "claim:FORMULATION-NODAL-001"
+          "claim:ARCH-SUPPORT-001"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -103,8 +103,8 @@
           "concept:graph-topology-adjacency",
           "claim:FORMULATION-NODAL-002",
           "claim:FORMULATION-Y-SPLIT-001",
-          "concept:nodal-operator-alias",
           "concept:factor",
+          "concept:nodal-operator-alias",
           "claim:ARCH-RECOVERY-003",
           "claim:ARCH-RECOVERY-001"
         ]
@@ -176,10 +176,10 @@
           "claim:TR-XFMR-006",
           "concept:phase-conductor-sequence-coordinate",
           "claim:TR-PAR-002",
+          "claim:FORMULATION-Y-SPLIT-001",
           "claim:TR-PAR-003",
-          "concept:graph-topology-adjacency",
-          "concept:ground-neutral-reference",
-          "claim:FORMULATION-Y-SPLIT-001"
+          "claim:FORMULATION-NODAL-002",
+          "concept:factor"
         ]
       },
       "hybrid": {
@@ -277,8 +277,8 @@
           "claim:TR-KRON-FIVE-002",
           "concept:state",
           "claim:TR-PAR-002",
-          "claim:TR-SER-002",
           "claim:FORMULATION-Y-SPLIT-001",
+          "claim:TR-SER-002",
           "claim:FORMULATION-NODAL-001",
           "claim:TR-XFMR-003",
           "claim:ARCH-LOWER-001",
@@ -339,7 +339,7 @@
           "claim:ARCH-LENS-001",
           "claim:ARCH-LOWER-001",
           "claim:GRAPH-NPORT-001",
-          "claim:PRACTICE-ARCH-001"
+          "claim:TR-GRAPH-001"
         ]
       },
       "lexical": {
@@ -425,8 +425,8 @@
           "claim:TR-KRON-NEUTRAL-002",
           "claim:ARCH-SURGERY-002",
           "claim:TR-KRON-NEUTRAL-003",
-          "claim:COLLAPSE-001",
-          "claim:COLLAPSE-002"
+          "claim:FORMULATION-PORT-001",
+          "claim:COLLAPSE-001"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -536,8 +536,8 @@
           "concept:object-node-interface",
           "claim:ARCH-VIEW-001",
           "concept:ground-neutral-reference",
-          "concept:transformation-family",
-          "concept:flow-current-power-message"
+          "concept:flow-current-power-message",
+          "concept:graph-topology-adjacency"
         ]
       },
       "hybrid": {
@@ -569,7 +569,7 @@
           "concept:phase-conductor-sequence-coordinate",
           "claim:ARCH-LENS-001",
           "claim:TR-GRAPH-001",
-          "claim:GRAPH-NPORT-001"
+          "claim:ARCH-NODAL-001"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -604,8 +604,8 @@
         "complete_at_10": null,
         "recall_at_10": null,
         "top_10": [
-          "claim:NUMERICAL-001",
           "claim:TR-KRON-NEUTRAL-007",
+          "claim:NUMERICAL-001",
           "claim:AU-CARSON-001",
           "claim:NUMERICAL-005",
           "claim:NUMERICAL-004",
@@ -644,19 +644,19 @@
       ],
       "expected_status": "qualified",
       "graph": {
-        "complete_at_10": false,
-        "recall_at_10": 0.666667,
+        "complete_at_10": true,
+        "recall_at_10": 1.0,
         "top_10": [
           "concept:equivalence-exactness-preservation",
           "concept:phase-conductor-sequence-coordinate",
           "concept:element-edge-relation",
           "concept:parallel",
+          "concept:factor",
           "concept:object-node-interface",
           "concept:flow-current-power-message",
+          "claim:FORMULATION-ZERO-001",
           "concept:graph-topology-adjacency",
-          "concept:factor",
-          "concept:ground-neutral-reference",
-          "concept:mutual-coupling-relation"
+          "concept:ground-neutral-reference"
         ]
       },
       "hybrid": {
@@ -666,13 +666,13 @@
           "concept:direction-orientation-hierarchy",
           "claim:FORMULATION-ZERO-001",
           "concept:flow-current-power-message",
-          "claim:TR-SER-001",
           "concept:object-node-interface",
+          "claim:TR-SER-001",
+          "claim:FORMULATION-PORT-001",
           "claim:PRACTICE-UPDATE-001",
           "claim:COLLAPSE-001",
           "claim:FORMULATION-NODAL-003",
-          "claim:TR-SER-003",
-          "claim:ARCH-PORT-001"
+          "claim:TR-SER-003"
         ]
       },
       "lexical": {
@@ -684,11 +684,11 @@
           "concept:flow-current-power-message",
           "concept:object-node-interface",
           "claim:FORMULATION-NODAL-001",
+          "claim:FORMULATION-PORT-001",
           "claim:ARCH-SURGERY-002",
           "claim:ARCH-CONDUCTOR-002",
           "claim:ARCH-PORT-002",
-          "claim:ARCH-PORT-001",
-          "claim:PRACTICE-UPDATE-001"
+          "claim:ARCH-PORT-001"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -715,7 +715,7 @@
       "expected_status": "qualified",
       "graph": {
         "complete_at_10": false,
-        "recall_at_10": 0.333333,
+        "recall_at_10": 0.666667,
         "top_10": [
           "concept:equivalence-exactness-preservation",
           "concept:factor",
@@ -726,7 +726,7 @@
           "concept:rating-limit-constraint",
           "concept:object-node-interface",
           "concept:parallel",
-          "concept:transformation-family"
+          "claim:FORMULATION-ZERO-001"
         ]
       },
       "hybrid": {
@@ -736,9 +736,9 @@
           "concept:direction-orientation-hierarchy",
           "claim:FORMULATION-ZERO-001",
           "claim:NUMERICAL-005",
+          "concept:object-node-interface",
           "claim:TR-XFMR-006",
           "claim:NUMERICAL-004",
-          "concept:object-node-interface",
           "claim:ARCH-PORT-001",
           "claim:ARCH-PORT-002",
           "claim:LOAD-DECISION-001",
@@ -754,11 +754,11 @@
           "claim:NUMERICAL-005",
           "claim:ARCH-PORT-002",
           "concept:object-node-interface",
-          "claim:TR-XFMR-006",
           "claim:ARCH-PORT-001",
+          "claim:TR-XFMR-006",
           "claim:ARCH-CONDUCTOR-002",
           "claim:ARCH-SURGERY-002",
-          "claim:NUMERICAL-004"
+          "claim:FORMULATION-PORT-001"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -784,19 +784,19 @@
       ],
       "expected_status": "qualified",
       "graph": {
-        "complete_at_10": false,
-        "recall_at_10": 0.666667,
+        "complete_at_10": true,
+        "recall_at_10": 1.0,
         "top_10": [
           "concept:equivalence-exactness-preservation",
           "concept:phase-conductor-sequence-coordinate",
           "concept:element-edge-relation",
           "concept:parallel",
+          "concept:factor",
           "concept:graph-topology-adjacency",
           "concept:object-node-interface",
           "concept:flow-current-power-message",
           "concept:ground-neutral-reference",
-          "concept:factor",
-          "claim:ARCH-SUPPORT-001"
+          "claim:FORMULATION-ZERO-001"
         ]
       },
       "hybrid": {
@@ -806,13 +806,13 @@
           "concept:direction-orientation-hierarchy",
           "concept:flow-current-power-message",
           "claim:FORMULATION-ZERO-001",
+          "claim:FORMULATION-PORT-001",
           "concept:object-node-interface",
           "claim:TR-GRAPH-001",
           "claim:TR-SER-001",
           "claim:ARCH-NODAL-001",
-          "claim:TR-XFMR-004",
           "claim:GRAPH-MATRIX-001",
-          "claim:ARCH-CHORDAL-001"
+          "claim:TR-XFMR-004"
         ]
       },
       "lexical": {
@@ -823,12 +823,12 @@
           "concept:flow-current-power-message",
           "claim:FORMULATION-ZERO-001",
           "concept:object-node-interface",
+          "claim:FORMULATION-PORT-001",
           "claim:ARCH-SURGERY-002",
           "claim:FORMULATION-NODAL-001",
           "claim:TR-GRAPH-001",
           "claim:GRAPH-MATRIX-001",
-          "claim:ARCH-CONDUCTOR-002",
-          "claim:ARCH-PORT-002"
+          "claim:ARCH-CONDUCTOR-002"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -879,10 +879,10 @@
           "claim:TR-KRON-NEUTRAL-002",
           "claim:TR-KRON-NEUTRAL-005",
           "claim:TR-KRON-NEUTRAL-003",
-          "claim:TR-KRON-NEUTRAL-006",
           "claim:COLLAPSE-002",
+          "claim:TR-KRON-NEUTRAL-006",
           "claim:GROUND-SCOPE-002",
-          "claim:TR-KRON-NEUTRAL-007"
+          "claim:COLLAPSE-001"
         ]
       },
       "lexical": {
@@ -932,27 +932,27 @@
           "claim:TR-KRON-001",
           "concept:ground-neutral-reference",
           "concept:object-node-interface",
+          "concept:factor",
+          "concept:rating-limit-constraint",
           "claim:TR-KRON-NEUTRAL-005",
           "claim:TR-KRON-NEUTRAL-007",
-          "concept:rating-limit-constraint",
-          "claim:TR-KRON-002",
-          "concept:parallel"
+          "claim:TR-KRON-002"
         ]
       },
       "hybrid": {
         "complete_at_10": false,
-        "recall_at_10": 0.666667,
+        "recall_at_10": 0.333333,
         "top_10": [
           "claim:FORMULATION-ZERO-001",
           "claim:TR-XFMR-006",
-          "claim:NUMERICAL-005",
           "claim:NUMERICAL-004",
+          "claim:NUMERICAL-005",
           "claim:TR-NEG-001",
+          "claim:FORMULATION-PORT-001",
           "claim:TR-KRON-NEUTRAL-004",
           "claim:TR-KRON-NEUTRAL-003",
           "claim:TR-KRON-NEUTRAL-002",
-          "claim:LOAD-CONNECTION-001",
-          "concept:flow-current-power-message"
+          "claim:LOAD-CONNECTION-001"
         ]
       },
       "lexical": {
@@ -964,11 +964,11 @@
           "claim:NUMERICAL-004",
           "claim:TR-NEG-001",
           "claim:NUMERICAL-005",
+          "claim:FORMULATION-PORT-001",
           "concept:flow-current-power-message",
           "claim:FORMULATION-NODAL-001",
           "claim:ARCH-RECOVERY-003",
-          "claim:TR-KRON-NEUTRAL-003",
-          "claim:TR-KRON-NEUTRAL-002"
+          "claim:TR-KRON-NEUTRAL-003"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -1005,14 +1005,14 @@
         "top_10": [
           "claim:FORMULATION-NODAL-001",
           "claim:GROUND-SCOPE-002",
-          "claim:TR-KRON-NEUTRAL-004",
           "claim:PRACTICE-IMPORT-001",
+          "claim:TR-KRON-NEUTRAL-004",
           "claim:TR-KRON-NEUTRAL-007",
           "claim:TOPOLOGY-001",
           "claim:ARCH-DEGENERACY-001",
-          "claim:GROUND-SCOPE-003",
+          "claim:FORMULATION-PORT-001",
           "claim:ARCH-PORT-002",
-          "claim:TR-XFMR-002"
+          "claim:GROUND-SCOPE-003"
         ]
       },
       "lexical": {
@@ -1023,11 +1023,11 @@
           "claim:GROUND-SCOPE-002",
           "claim:PRACTICE-IMPORT-001",
           "claim:TR-KRON-NEUTRAL-007",
+          "claim:FORMULATION-PORT-001",
           "claim:TR-KRON-NEUTRAL-004",
           "claim:GROUND-SCOPE-004",
           "claim:TR-XFMR-002",
           "claim:GROUND-SCOPE-003",
-          "claim:ARCH-DEGENERACY-001",
           "claim:COUPLED-CORRIDOR-002"
         ]
       },
@@ -1052,11 +1052,11 @@
           "claim:TR-KRON-NEUTRAL-007",
           "claim:TR-KRON-FIVE-002",
           "claim:TR-KRON-001",
-          "claim:TR-KRON-002",
-          "claim:TR-KRON-NEUTRAL-001",
-          "claim:TR-KRON-NEUTRAL-003",
-          "claim:TR-KRON-NEUTRAL-002",
-          "claim:TR-KRON-NEUTRAL-004"
+          "claim:FORMULATION-ZERO-001",
+          "claim:FORMULATION-NODAL-001",
+          "claim:FORMULATION-PORT-001",
+          "concept:factor",
+          "claim:TR-KRON-002"
         ]
       },
       "hybrid": {
@@ -1066,13 +1066,13 @@
           "claim:ARCH-SURGERY-002",
           "claim:ARCH-PORT-002",
           "claim:TOPOLOGY-001",
+          "claim:FORMULATION-PORT-001",
           "claim:FORMULATION-NODAL-001",
           "claim:ARCH-DEGENERACY-001",
           "claim:GROUND-SCOPE-002",
           "claim:FORMULATION-ZERO-001",
           "claim:TR-XFMR-002",
-          "claim:FORMULATION-NODAL-002",
-          "claim:TRANSFORM-SEM-001"
+          "claim:FORMULATION-NODAL-002"
         ]
       },
       "lexical": {
@@ -1082,13 +1082,13 @@
           "claim:FORMULATION-NODAL-001",
           "claim:ARCH-SURGERY-002",
           "claim:TOPOLOGY-001",
+          "claim:FORMULATION-PORT-001",
           "claim:ARCH-PORT-002",
           "claim:ARCH-DEGENERACY-001",
           "claim:GROUND-SCOPE-002",
           "claim:TR-XFMR-002",
           "claim:FORMULATION-ZERO-001",
-          "claim:FORMULATION-NODAL-002",
-          "claim:ARCH-CONDUCTOR-002"
+          "claim:FORMULATION-NODAL-002"
         ]
       },
       "mandatory_record_recall": null,
@@ -1107,6 +1107,7 @@
         "complete_at_10": null,
         "recall_at_10": null,
         "top_10": [
+          "concept:equivalence-exactness-preservation",
           "claim:TR-KRON-NEUTRAL-004",
           "claim:TR-KRON-NEUTRAL-007",
           "claim:TR-KRON-NEUTRAL-001",
@@ -1115,8 +1116,7 @@
           "claim:TR-KRON-FIVE-001",
           "claim:TR-KRON-NEUTRAL-006",
           "claim:TR-KRON-NEUTRAL-008",
-          "claim:TR-KRON-NEUTRAL-005",
-          "concept:equivalence-exactness-preservation"
+          "claim:TR-KRON-NEUTRAL-005"
         ]
       },
       "hybrid": {
@@ -1131,7 +1131,7 @@
           "claim:TR-KRON-NEUTRAL-007",
           "claim:FORMULATION-NODAL-001",
           "claim:ARCH-RECOVERY-001",
-          "claim:TR-KRON-NEUTRAL-002",
+          "claim:FORMULATION-PORT-001",
           "claim:TR-KRON-NEUTRAL-008"
         ]
       },
@@ -1146,9 +1146,9 @@
           "claim:TR-KRON-NEUTRAL-004",
           "claim:TR-KRON-NEUTRAL-007",
           "claim:TR-KRON-NEUTRAL-001",
+          "claim:FORMULATION-PORT-001",
           "claim:PRACTICE-IMPEDANCE-001",
-          "claim:GROUND-SCOPE-003",
-          "claim:TR-KRON-NEUTRAL-002"
+          "claim:GROUND-SCOPE-003"
         ]
       },
       "mandatory_record_recall": null,
@@ -1169,14 +1169,14 @@
         "top_10": [
           "concept:equivalence-exactness-preservation",
           "concept:graph-topology-adjacency",
-          "claim:ARCH-SUPPORT-001",
           "claim:TR-XFMR-010",
           "claim:TR-XFMR-009",
+          "claim:FORMULATION-ZERO-001",
+          "claim:ARCH-SUPPORT-001",
           "claim:TR-XFMR-008",
-          "claim:ARCH-NODAL-001",
-          "claim:ARCH-RECOVERY-001",
-          "claim:TR-XFMR-007",
-          "claim:ARCH-CHORDAL-001"
+          "claim:FORMULATION-NODAL-002",
+          "concept:factor",
+          "claim:FORMULATION-Y-SPLIT-001"
         ]
       },
       "hybrid": {
@@ -1186,11 +1186,11 @@
           "claim:PRACTICE-UPDATE-001",
           "claim:FORMULATION-ZERO-001",
           "claim:NUMERICAL-003",
-          "claim:TR-PAR-SINGULAR-001",
           "claim:TR-XFMR-010",
           "claim:TR-XFMR-009",
           "claim:TR-XFMR-008",
           "claim:ARCH-RECOVERY-001",
+          "claim:TR-PAR-SINGULAR-001",
           "claim:FORMULATION-NODAL-001",
           "claim:PRACTICE-IMPORT-001"
         ]
@@ -1206,8 +1206,8 @@
           "claim:TR-XFMR-009",
           "claim:TR-XFMR-008",
           "claim:FORMULATION-NODAL-001",
-          "claim:NUMERICAL-003",
           "claim:FIXTURE-002",
+          "claim:NUMERICAL-003",
           "claim:TR-PAR-SINGULAR-001"
         ]
       },
@@ -1219,7 +1219,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "c323108f18924802c0f0f9986bcfced45bcac168c8f117d083c2e88f214aa7e3"
+    "corpus_sha256": "f0f604d511407221306ac3fe3cf43be626a69a1199ba9372c1d918edcf5504e2"
   },
   "inputs": {
     "adversarial_cases": {
@@ -1228,7 +1228,7 @@
     },
     "router": {
       "path": "scripts/llm_retrieval.py",
-      "sha256": "64f090c22f13e85a7c13aa0118eda3e3365777d0a6a65c1cfa5d152909d4dd92"
+      "sha256": "d41fd1b995a3b4dddaa1bf8ed1aa25877fffeb24086d2effd25e3a0947274b81"
     }
   },
   "purpose": "deterministic adversarial and metamorphic retrieval checks; not human-calibrated evidence",
@@ -1238,8 +1238,8 @@
     "cases": 18,
     "false_qualification_count": 0,
     "false_qualification_rate": 0.0,
-    "graph_recall_at_10": 0.560256,
-    "hybrid_recall_at_10": 0.478205,
+    "graph_recall_at_10": 0.637179,
+    "hybrid_recall_at_10": 0.452564,
     "qualified_contract_complete": 1.0,
     "retrieval_cases": 13,
     "status_accuracy": 1.0,

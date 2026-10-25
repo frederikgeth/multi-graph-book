@@ -23,6 +23,10 @@ and the live federation, instantiates this environment without changing its lock
 runs package-owned scientific contracts, controlled properties, export/recipe,
 execution and MCP tests, then solves the book's running-network verification
 lesson. The package checkout and installed package tree must match the lock.
+It also runs the scalar transformer port companion against the package, checking
+finite and zero leakage, representation-threshold changes, terminal currents,
+power, shunts, nominal-voltage rejection and free common modes. Its evidence is
+saved as `transformer-ports.json` in the run directory.
 Its log, `run.json`, and `verification.json` retain the exact package and book
 identities, environment hashes, book dirty state, commands and outcome.
 The runner sets `JULIA_LOAD_PATH` to this locked environment and `@stdlib`,

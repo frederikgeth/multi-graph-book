@@ -44,11 +44,11 @@
       "TR-XFMR-005",
       "TR-XFMR-006"
     ],
-    "total": 113,
+    "total": 114,
     "verification": {
       "externally-reviewed": 0,
       "independently-implemented": 6,
-      "self-checked": 107
+      "self-checked": 108
     }
   },
   "knowledge": {
@@ -76,6 +76,7 @@
       "ground-neutral-reference-are-one-node": [
         "PSK-000002"
       ],
+      "ideal-transformer-is-a-large-admittance": [],
       "iteration-failure-proves-infeasibility": [
         "PSK-000016"
       ],
@@ -125,8 +126,9 @@
         "PSK-000004"
       ]
     },
-    "total": 27,
+    "total": 28,
     "unlinked_ids": [
+      "ideal-transformer-is-a-large-admittance",
       "loads-generators-fixed-graph-membership",
       "nodal-operator-is-source-network",
       "numeric-round-trip-preserves-field-meaning",
@@ -138,12 +140,12 @@
       "source-outage-is-deletion-in-reduced-graph"
     ]
   },
-  "pair_sha256": "b88c35799f0668e86f8d3ce640d22a3b7cd7f305ca292be807ad2102b57980ab",
+  "pair_sha256": "ba14f3c6d59068b4fd381d4805b2ebafde2efb925e7f051117c8b7e190da1932",
   "schema_version": "1.0.0",
   "source_sha256": {
-    "claims/claims.toml": "eabbbc4c91e7446a6f80423b4841c7a8aef4fda3dee589161d913bc4df83890a",
-    "generated/federated-knowledge-pair-manifest.json": "b1fb9bcec9383277759800a674c9a647d2071a02d374445c08f336403c342147",
+    "claims/claims.toml": "ea11382c5aab98e45cfcfc6591c2e4c9394c5aa08e06b7d325b36da7ca2a10e0",
+    "generated/federated-knowledge-pair-manifest.json": "56106f9b0b985a07564a6dbdd82f6a221de2de104b1512bc3d968a0557eeb1af",
     "knowledge/psk.toml": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364",
-    "llm/misconceptions.toml": "41b3efdd47a8912084099f9dd5d3c4645d7b00363b0cdcbe9376c7680438092c"
+    "llm/misconceptions.toml": "290d5a0429b16368c2b079247ba4f20fb33a56e0a60503844b07ec93c6d16d60"
   }
 }

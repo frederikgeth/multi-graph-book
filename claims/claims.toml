@@ -1,6 +1,23 @@
 schema_version = 1
 
 [[claim]]
+claim_id = "FORMULATION-PORT-001"
+exactness_object = "equation_identity"
+preservation_dimensions = ["terminal_behavior", "phase_neutral", "numerical_structure"]
+chapter = "docs/src/foundations/circuit-formulations-and-lowering.md"
+claim_text = "For a fixed real turns ratio and scalar primary-referred leakage, retaining CV=zi with terminal core currents C^T i gives the bordered blocks A=y0 C and D=y0^2 z under i=y0 w; eliminating the port at nonzero z recovers Y_s+C^T C/z, while at z=0 the voltage constraint remains and finite magnetizing and grounding shunts must still be stamped exactly once."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "explicit_scalar_elimination_and_separate_scalar_matrix_package_witnesses_in_experiments/lessons/transformer_ports.py_and_transformer_ports.jl"
+citation_keys = ["HoRuehliBrennan1975"]
+model_scope = "fixed linear single-phase two-winding relation, real positive turns ratio, unity tap, scalar leakage, real signed terminal coefficients, explicit shunts and boundary conditions"
+assumptions = "the current scale is positive and finite; voltage-only elimination requires nonzero leakage; terminal current and power conventions are consistent; source/target retain the same shunts and external circuit"
+reviewer = ""
+review_date = ""
+unresolved_issue = "The scalar identity does not establish nonsingularity or uniform conditioning of every network, grounding adequacy, nonlinear/control equivalence, or correctness of all package transformer subtypes."
+
+[[claim]]
 claim_id = "FORMULATION-ZERO-001"
 exactness_object = "equation_identity"
 preservation_dimensions = ["terminal_behavior", "phase_neutral", "numerical_structure"]

@@ -1,6 +1,19 @@
 schema_version = "0.1.0"
 
 [[misconception]]
+id = "ideal-transformer-is-a-large-admittance"
+title = "An ideal transformer is a huge admittance or a small leakage clamped to zero"
+severity = "high"
+query_patterns = ["ideal transformer huge admittance", "transformer leakage threshold zero", "transformer bordered port finite leakage", "ideal transformer shunts retained", "unity ratio transformer bond neutrals"]
+tempting_answer = "Replace ideal or sufficiently small transformer leakage by a huge admittance, or set it to zero and omit the remaining passive branches."
+required_qualification = "For the fixed scalar relation CV=zi, the bordered formulation retains finite z through A=y0 C, D=y0^2 z and i=y0 w. Only z=0 gives the ideal constraint. Keep finite magnetizing and grounding shunts exactly once, and specify references; a unity ratio does not create a neutral bond."
+safe_shorthand = "A small-leakage representation threshold selects equations; it does not by itself approximate finite leakage as zero."
+operational_consequence = "Clamping leakage, losing a shunt, or merging isolated neutrals changes terminal currents and powers; a correct ideal ratio alone cannot detect these failures."
+mandatory_claim_ids = ["FORMULATION-PORT-001"]
+mandatory_concept_ids = ["factor", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/foundations/circuit-formulations-and-lowering.md"]
+
+[[misconception]]
 id = "power-balance-enforces-kcl-at-zero-voltage"
 title = "Power balance enforces KCL even at zero terminal voltage"
 severity = "critical"

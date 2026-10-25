@@ -14,8 +14,8 @@ Recall is averaged over the 13 cases with target evidence; empty target sets are
 | Unsupported-query abstention | 100.0% | yes |
 | Unqualified-query status accuracy | 100.0% | yes |
 | False qualification on unqualified queries | 0/5 (0.0%) | covered by status gate |
-| Hybrid retrieval recall@10 | 47.8% | diagnostic |
-| Graph retrieval recall@10 | 56.0% | diagnostic |
+| Hybrid retrieval recall@10 | 45.3% | diagnostic |
+| Graph retrieval recall@10 | 63.7% | diagnostic |
 
 | Case | Expected status | Observed status | Hybrid recall@10 | Graph recall@10 | Contract complete |
 | --- | --- | --- | ---: | ---: | --- |
@@ -28,11 +28,11 @@ Recall is averaged over the 13 cases with target evidence; empty target sets are
 | `ADV-SEQUENCE-ABSOLUTE` | `qualified` | `qualified` | 50.0% | 25.0% | yes |
 | `ADV-DECISION-QUALIFIER` | `qualified` | `qualified` | 20.0% | 20.0% | yes |
 | `ADV-UNSUPPORTED-NEGATIVE` | `unsupported` | `unsupported` | — | — | — |
-| `ADV-ZERO-VOLTAGE-KCL` | `qualified` | `qualified` | 66.7% | 66.7% | yes |
-| `ADV-ZERO-VOLTAGE-SOLUTIONS` | `qualified` | `qualified` | 33.3% | 33.3% | yes |
-| `ADV-ZERO-VOLTAGE-IMBALANCE` | `qualified` | `qualified` | 66.7% | 66.7% | yes |
+| `ADV-ZERO-VOLTAGE-KCL` | `qualified` | `qualified` | 66.7% | 100.0% | yes |
+| `ADV-ZERO-VOLTAGE-SOLUTIONS` | `qualified` | `qualified` | 33.3% | 66.7% | yes |
+| `ADV-ZERO-VOLTAGE-IMBALANCE` | `qualified` | `qualified` | 66.7% | 100.0% | yes |
 | `ADV-ZERO-NEUTRAL-RESIDUAL` | `qualified` | `qualified` | 33.3% | 33.3% | yes |
-| `ADV-KCL-ALL-VOLTAGES` | `qualified` | `qualified` | 66.7% | 33.3% | yes |
+| `ADV-KCL-ALL-VOLTAGES` | `qualified` | `qualified` | 33.3% | 33.3% | yes |
 | `ADV-IDEAL-SWITCH-SHARING` | `under_retrieved` | `under_retrieved` | — | — | — |
 | `ADV-TINY-RESISTANCE-SHARING` | `under_retrieved` | `under_retrieved` | — | — | — |
 | `ADV-IDEAL-CURRENT-LIMIT` | `under_retrieved` | `under_retrieved` | — | — | — |

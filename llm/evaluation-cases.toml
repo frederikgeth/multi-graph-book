@@ -842,3 +842,33 @@ required_claim_ids = ["FORMULATION-ZERO-001"]
 required_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
 required_answer_elements = ["power residual equals voltage times conjugate current residual", "account for all current paths and the nonzero-voltage guard"]
 forbidden_simplifications = ["zero power residual proves KCL at zero voltage", "every power-variable formulation is invalid"]
+
+[[case]]
+case_id = "EVAL-TRANSFORMER-PORT-STUDENT"
+audience = "student"
+question = "Is an ideal transformer just a huge admittance?"
+misconception_id = "ideal-transformer-is-a-large-admittance"
+required_claim_ids = ["FORMULATION-PORT-001"]
+required_concept_ids = ["factor", "equivalence-exactness-preservation"]
+required_answer_elements = ["retain finite leakage in the bordered current-voltage relation", "retain shunts once and distinguish references from a neutral bond"]
+forbidden_simplifications = ["the threshold clamps finite leakage to zero", "unity ratio automatically bonds isolated neutrals"]
+
+[[case]]
+case_id = "EVAL-TRANSFORMER-PORT-SOFTWARE"
+audience = "software_engineer"
+question = "Does the transformer leakage threshold set small nonzero impedance to zero?"
+misconception_id = "ideal-transformer-is-a-large-admittance"
+required_claim_ids = ["FORMULATION-PORT-001"]
+required_concept_ids = ["factor", "equivalence-exactness-preservation"]
+required_answer_elements = ["retain finite leakage in the bordered current-voltage relation", "retain shunts once and distinguish references from a neutral bond"]
+forbidden_simplifications = ["the threshold clamps finite leakage to zero", "unity ratio automatically bonds isolated neutrals"]
+
+[[case]]
+case_id = "EVAL-TRANSFORMER-PORT-POWER"
+audience = "power_engineer"
+question = "Does a transformer bordered port preserve finite leakage and its shunts?"
+misconception_id = "ideal-transformer-is-a-large-admittance"
+required_claim_ids = ["FORMULATION-PORT-001"]
+required_concept_ids = ["factor", "equivalence-exactness-preservation"]
+required_answer_elements = ["retain finite leakage in the bordered current-voltage relation", "retain shunts once and distinguish references from a neutral bond"]
+forbidden_simplifications = ["the threshold clamps finite leakage to zero", "unity ratio automatically bonds isolated neutrals"]

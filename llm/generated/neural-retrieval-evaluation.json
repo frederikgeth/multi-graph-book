@@ -2758,41 +2758,41 @@
   "compatibility": {
     "archived_on": "2026-10-25",
     "current_corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "current_corpus_sha256": "c323108f18924802c0f0f9986bcfced45bcac168c8f117d083c2e88f214aa7e3",
+    "current_corpus_sha256": "f0f604d511407221306ac3fe3cf43be626a69a1199ba9372c1d918edcf5504e2",
     "current_heldout_sha256": "171857dd883acf3ed9a091fac0e2e7485cbd13d5f0477a56af37d010cec16592",
     "current_lexical_summary": {
       "char_tfidf": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.22355,
-        "recall_at_10": 0.452189,
+        "mean_reciprocal_rank_at_20": 0.222672,
+        "recall_at_10": 0.446128,
         "recall_at_5": 0.348822,
         "recall_expected_records_at_10": 180,
-        "recall_hits_at_10": 77,
+        "recall_hits_at_10": 76,
         "zero_recall_at_10_count": 5
       },
       "hybrid": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.21925,
-        "recall_at_10": 0.459764,
-        "recall_at_5": 0.381987,
+        "mean_reciprocal_rank_at_20": 0.218092,
+        "recall_at_10": 0.454714,
+        "recall_at_5": 0.370875,
         "recall_expected_records_at_10": 180,
-        "recall_hits_at_10": 79,
+        "recall_hits_at_10": 78,
         "zero_recall_at_10_count": 6
       },
       "lexical": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.200312,
+        "mean_reciprocal_rank_at_20": 0.198417,
         "recall_at_10": 0.436532,
-        "recall_at_5": 0.346128,
+        "recall_at_5": 0.340067,
         "recall_expected_records_at_10": 180,
         "recall_hits_at_10": 75,
         "zero_recall_at_10_count": 6
       }
     },
-    "current_record_count": 917,
+    "current_record_count": 921,
     "required_action": "rerun both pinned neural retriever and reranker before comparing them with the current corpus",
     "status": "archived_prior_corpus"
   },

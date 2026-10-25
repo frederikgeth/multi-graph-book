@@ -4,8 +4,8 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `c323108f18924802c0f0f9986bcfced45bcac168c8f117d083c2e88f214aa7e3`<br>
-**Cases:** 84
+**Corpus hash:** `f0f604d511407221306ac3fe3cf43be626a69a1199ba9372c1d918edcf5504e2`<br>
+**Cases:** 87
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
 The latter is permitted to add mandatory claims and concepts only after the query router identifies
@@ -16,12 +16,12 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Measure | Result | Release gate? |
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
-| Open-corpus lexical evidence recall@5 | 27.5% | diagnostic |
+| Open-corpus lexical evidence recall@5 | 27.7% | diagnostic |
 | Open-corpus lexical evidence recall@10 | 34.3% | diagnostic |
-| Open-corpus complete evidence@10 | 1.2% | diagnostic |
-| Evidence-only lexical recall@5 | 35.4% | diagnostic |
-| Evidence-only lexical recall@10 | 43.1% | diagnostic |
-| Evidence-only complete evidence@10 | 2.4% | diagnostic |
+| Open-corpus complete evidence@10 | 1.1% | diagnostic |
+| Evidence-only lexical recall@5 | 35.3% | diagnostic |
+| Evidence-only lexical recall@10 | 42.5% | diagnostic |
+| Evidence-only complete evidence@10 | 2.3% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
 | Packets with qualification, failure, shorthand, and scope | 100.0% | yes |
@@ -43,10 +43,10 @@ the question count must not be treated as that many independent observations.
 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `lexical` | 34.6% | 43.7% | 0.0% | 0/33 | 6/33 | 0.200 |
-| `char_tfidf` | 34.9% | 45.2% | 0.0% | 0/33 | 5/33 | 0.224 |
-| `hybrid` | 38.2% | 46.0% | 0.0% | 0/33 | 6/33 | 0.219 |
-| `graph` | 39.3% | 58.3% | 21.2% | 7/33 | 3/33 | 0.251 |
+| `lexical` | 34.0% | 43.7% | 0.0% | 0/33 | 6/33 | 0.198 |
+| `char_tfidf` | 34.9% | 44.6% | 0.0% | 0/33 | 5/33 | 0.223 |
+| `hybrid` | 37.1% | 45.5% | 0.0% | 0/33 | 6/33 | 0.218 |
+| `graph` | 37.4% | 58.3% | 21.2% | 7/33 | 3/33 | 0.251 |
 
 Held-out contract-router firing: **22/33 (66.7%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **20/33 (60.6%)**; this remains diagnostic because the set is synthetic and clustered.
@@ -94,9 +94,9 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 28 | 100.0% | 44.0% | 100.0% |
-| `software_engineer` | 28 | 100.0% | 39.5% | 100.0% |
-| `student` | 28 | 100.0% | 45.7% | 100.0% |
+| `power_engineer` | 29 | 100.0% | 43.1% | 100.0% |
+| `software_engineer` | 29 | 100.0% | 39.3% | 100.0% |
+| `student` | 29 | 100.0% | 45.3% | 100.0% |
 
 ## Case results
 
@@ -149,7 +149,7 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 | `EVAL-LOAD-BASE-POWER` | `power_engineer` | `wye-delta-share-nominal-voltage-base` | 40.0% | yes |
 | `EVAL-TRANSFORMER-TAP-DOMAIN-STUDENT` | `student` | `fixed-tap-snapshot-preserves-adjustable-transformer` | 33.3% | yes |
 | `EVAL-TRANSFORMER-TAP-DOMAIN-SOFTWARE` | `software_engineer` | `fixed-tap-snapshot-preserves-adjustable-transformer` | 33.3% | yes |
-| `EVAL-TRANSFORMER-TAP-DOMAIN-POWER` | `power_engineer` | `fixed-tap-snapshot-preserves-adjustable-transformer` | 50.0% | yes |
+| `EVAL-TRANSFORMER-TAP-DOMAIN-POWER` | `power_engineer` | `fixed-tap-snapshot-preserves-adjustable-transformer` | 33.3% | yes |
 | `EVAL-TRANSFORMER-WINDING-REVERSAL-STUDENT` | `student` | `transformer-end-swap-is-ordinary-edge-reversal` | 16.7% | yes |
 | `EVAL-TRANSFORMER-WINDING-REVERSAL-SOFTWARE` | `software_engineer` | `transformer-end-swap-is-ordinary-edge-reversal` | 33.3% | yes |
 | `EVAL-TRANSFORMER-WINDING-REVERSAL-POWER` | `power_engineer` | `transformer-end-swap-is-ordinary-edge-reversal` | 16.7% | yes |
@@ -186,6 +186,9 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 | `EVAL-ZERO-KCL-STUDENT` | `student` | `power-balance-enforces-kcl-at-zero-voltage` | 33.3% | yes |
 | `EVAL-ZERO-KCL-SOFTWARE` | `software_engineer` | `power-balance-enforces-kcl-at-zero-voltage` | 66.7% | yes |
 | `EVAL-ZERO-KCL-POWER` | `power_engineer` | `power-balance-enforces-kcl-at-zero-voltage` | 33.3% | yes |
+| `EVAL-TRANSFORMER-PORT-STUDENT` | `student` | `ideal-transformer-is-a-large-admittance` | 33.3% | yes |
+| `EVAL-TRANSFORMER-PORT-SOFTWARE` | `software_engineer` | `ideal-transformer-is-a-large-admittance` | 33.3% | yes |
+| `EVAL-TRANSFORMER-PORT-POWER` | `power_engineer` | `ideal-transformer-is-a-large-admittance` | 33.3% | yes |
 
 ## Interpretation and next boundary
 

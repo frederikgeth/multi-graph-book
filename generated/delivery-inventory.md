@@ -6,14 +6,14 @@ These are registry counts and audit queues, not newly measured scientific result
 
 | Inventory | Count |
 |---|---:|
-| Claims | 113 |
+| Claims | 114 |
 | Claim verification: `externally-reviewed` | 0 |
 | Claim verification: `independently-implemented` | 6 |
-| Claim verification: `self-checked` | 107 |
+| Claim verification: `self-checked` | 108 |
 | PSK records | 18 |
-| Stable misconception IDs | 27 |
+| Stable misconception IDs | 28 |
 | Misconception IDs with a PSK link | 18 |
-| Misconception IDs without a PSK link | 9 |
+| Misconception IDs without a PSK link | 10 |
 | Full pinned package Finding registry | 381 |
 | Finding records in the curated executable export | 57 |
 
@@ -23,6 +23,7 @@ Self-checks and independent implementations retain their distinct ledger states.
 
 ## Misconception IDs still requiring a PSK link or explicit exclusion
 
+- `ideal-transformer-is-a-large-admittance`
 - `loads-generators-fixed-graph-membership`
 - `nodal-operator-is-source-network`
 - `numeric-round-trip-preserves-field-meaning`
@@ -72,5 +73,5 @@ promote a finite numerical test into a general theorem through a status label.
 
 - BMOPFTools revision: `97c274946091859b7d9b0e822c96f1e7f9f50c7e`
 - Finding registry SHA-256: `52db7414e7f2bef158d32988c196d6d038320e30efda64a7501ddf1872d44519`
-- Federated pair SHA-256: `b88c35799f0668e86f8d3ce640d22a3b7cd7f305ca292be807ad2102b57980ab`
+- Federated pair SHA-256: `ba14f3c6d59068b4fd381d4805b2ebafde2efb925e7f051117c8b7e190da1932`
 - [Machine-readable inventory and source hashes](delivery-inventory.json)
