@@ -104,15 +104,21 @@ Do not substitute zero residuals to promote it into the legacy witness contract.
 Next promotion requires completing/reviewing the desired device coverage,
 publishing the package commit, deliberately updating the ordinary integration
 pin and regenerating the federated pair. The native default-role source-neutral return and constant-power loads are now
-covered by the extended API, together with fixed ideal switches. Generators, transformer equations/limits,
-voltage-dependent loads, bus voltage bounds and objective remain open.
+covered by the extended API, together with fixed ideal switches, bounded
+WYE/SINGLE_PHASE generator injections/limits and applicable phase-to-earth bus
+voltage bounds. DELTA generators, generator costs/controllers, transformer
+equations/limits, voltage-dependent loads, other voltage families and objective
+evaluation remain open. Source-fixed/grounded bus-bound declarations are
+explicitly unassessed because the native builder skips their application.
 
 The companion also runs the package's `neutral-and-delta.json` analytic fixture,
 a native solve of it, a delta circulating-current corruption, and missing implicit
 earth-reaction evidence. It applies both APIs to the same running-network result:
-the original linear audit retains 42 unassessed rows; the source/load/switch extension
-reduces this to 35, with 11 load power equations, source relations, the closed
-switch voltage relation and four switch current limits evaluated.
+the original linear audit retains 42 unassessed rows; the connected extension
+reduces this to 34, with 11 load power equations, source relations, the closed
+switch voltage relation, four switch current limits and 28 phase-to-earth
+voltage-bound rows evaluated. The running generator still contains an unsupported
+cost field; this slice does not discard it to manufacture full KCL coverage.
 Both remain indeterminate. Custom terminal conventions and unrecognized semantic
 fields are explicitly outside the current extension's supported domain.
 The `fixed-switch.json` companion verifies a native solve and a neutral-current
@@ -154,3 +160,12 @@ Source, series, composite-cut and load-coil currents remain separate observation
 Aggregate-power caps are postprocessed comparisons, not new native constraints;
 shunt currents are reconstructed. Neither native internal pi-shunt coverage nor
 an MCP capability is introduced. The published pin remains separate.
+
+
+The same companion also runs `examples/generator_voltage_audit.jl` and its
+`generator-voltage.json` fixture. It compares the analytic 10 V, 4 W + 1 var
+fixed generator injection with a native solve, then retains a forged power report,
+return-current overload, missing current and skipped source-voltage bound as
+separate evidence. The package fixture, example and companion are source-bound
+in the output. It uses the existing candidate environment and command above;
+no package API is reimplemented in the book.

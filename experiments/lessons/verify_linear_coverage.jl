@@ -64,6 +64,10 @@ function linear_coverage_lesson()
     switch_overload = audit_solution(overloaded,sr)
     absent_switch = deepcopy(sr); delete!(absent_switch["switch"]["w"]["a"],"cr")
     missing_switch = audit_solution(sn,absent_switch)
+    generator_path = joinpath(root,"examples","generator_voltage_audit.jl")
+    generator_fixture_path = joinpath(root,"test","data","linear_audit","generator-voltage.json")
+    include(generator_path)
+    generator_evidence = Base.invokelatest(()->getfield(@__MODULE__,:GeneratorVoltageAuditExample).run())
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -100,7 +104,7 @@ function linear_coverage_lesson()
         @test missing_ground.evidence["status"] == "indeterminate"
         @test row(missing_ground,"network.power")["residual"] === nothing
         @test connected_coverage.evidence["status"] == "indeterminate"
-        @test connected_coverage.evidence["unassessed_checks"] == 35
+        @test connected_coverage.evidence["unassessed_checks"] == 34
         @test connected_coverage.evidence["failed_checks"] == 0
         @test count(x->startswith(x["id"],"load.") && x["dimension"]=="device_equations" &&
             x["status"]=="passed",connected_coverage.evidence["rows"]) == 11
@@ -125,6 +129,30 @@ function linear_coverage_lesson()
         @test row(connected_coverage,"switch.w0.closed_voltage")["status"] == "passed"
         @test all(k->row(connected_coverage,"switch.w0.$k.i_max")["status"]=="passed",1:4)
     end
+    @testset "Generator powers, return rating and voltage applicability" begin
+        @test generator_evidence["accepted"]
+        @test generator_evidence["analytic"]["status"] == "passed"
+        @test generator_evidence["native_audit"]["coverage_complete"]
+        @test generator_evidence["forged_in_range_power_report"]["status"] == "failed"
+        @test generator_evidence["return_current_limit"]["status"] == "failed"
+        @test generator_evidence["missing_generator_current"]["status"] == "indeterminate"
+        @test generator_evidence["skipped_source_voltage_bound"]["status"] == "indeterminate"
+        erow(key,id)=only(filter(x->x["id"]==id,generator_evidence[key]["rows"]))
+        @test erow("forged_in_range_power_report","generator.g.1.p_max")["residual"] ≈ 1.
+        @test erow("forged_in_range_power_report","generator.g.1.pg")["residual"] ≈ 1.
+        @test erow("return_current_limit","generator.g.return.i_max")["residual"] ≈ sqrt(.17)-.4
+        @test erow("return_current_limit","network.power")["status"] == "passed"
+        @test erow("missing_generator_current","network.power")["residual"] === nothing
+        @test erow("skipped_source_voltage_bound","bus.p.a.v_max")["status"] == "unassessed"
+        gr=generator_evidence["candidate"]
+        @test gr["generator"]["g"]["x"]["pg"] ≈ 4. atol=1e-7
+        @test gr["generator"]["g"]["x"]["qg"] ≈ 1. atol=1e-7
+        @test gr["voltage_source"]["s"]["a"]["ps"] ≈ 6. atol=1e-7
+        @test count(x->x["dimension"]=="voltage_limits" && x["status"]=="passed",connected_coverage.evidence["rows"]) == 28
+        @test row(connected_coverage,"generator.g1")["status"] == "unassessed"
+        @test occursin("cost",row(connected_coverage,"generator.g1")["reason"])
+        @test JSON3.read(JSON3.write(generator_evidence),Dict{String,Any}) == generator_evidence
+    end
     active = dirname(Base.active_project())
     Dict{String,Any}(
         "evidence_state"=>"local_package_candidate_not_promoted_to_published_integration_pin",
@@ -133,7 +161,8 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path]),
+        "generator_voltage_example"=>generator_evidence,
         "healthy_tiny_circuit"=>healthy.evidence,
         "tiny_solver_per_unit"=>false, "solved_tiny_circuit"=>tiny_audit.evidence, "tiny_circuit_result"=>tiny_solved,
         "default_scaled_tiny_circuit"=>scaled_audit.evidence, "default_scaled_tiny_result"=>scaled_tiny,

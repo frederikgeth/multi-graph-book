@@ -543,8 +543,9 @@ are unassessed.
 
 The separate candidate `audit_solution` now adds default-role source neutral
 returns, implicit source grounding and WYE/SINGLE_PHASE/DELTA constant-power
-load equations, and fixed ideal switches. The same running-network result has
-**35 unassessed rows** (36 before switch coverage was added):
+load equations, fixed ideal switches, a bounded WYE/SINGLE_PHASE generator
+domain and ordinary phase-to-earth voltage bounds. The same running-network
+result has **34 unassessed rows** (35 before this generator/voltage slice):
 11 local power equations across five loads and the source voltage relation are
 now evaluated. Source-return and load-terminal currents are reconstructed from
 their connection maps; each explicit or implicit earth reaction is consumed once.
@@ -553,10 +554,12 @@ limits; its opposite endpoint currents are reconstructed from the supplied
 from-side currents. The 42-row table above remains the coverage of
 `audit_linear_solution`.
 
-The extended verdict is still **indeterminate**. The generator,
-n-winding transformer and bus voltage bounds remain unassessed, as do all 26
-terminal KCL rows and aggregate power because required current contributions
-are still missing. The companion records both APIs on the same solved point;
+The extended verdict is still **indeterminate**. The running-network generator
+has a cost field outside this audit slice; the n-winding transformer, neutral
+and phase-to-phase voltage limits also remain unassessed. The 28 ordinary
+phase-to-earth voltage-bound rows are now checked. All 26
+terminal KCL rows and aggregate power remain unassessed because required current
+contributions are still missing. The companion records both APIs on the same solved point;
 no zeros are supplied to close the remaining obligations. The
 [delta coil lesson](@ref delta-coil-current-lesson) explains why successful KCL
 would still not replace the individual load equations.
@@ -683,3 +686,74 @@ solver benchmark. The next executable tranche should compare the running
 multiconductor network and its five-bus quotient under a pinned ordering and
 coordinate convention, report ``Y``/Jacobian sparsity and fill-in, and test
 whether recovered current and rating margins remain decisive after reduction.
+
+
+### [Generator dispatch and voltage-bound applicability](@id generator-voltage-audit)
+
+A reported dispatch inside a power box is not enough: recompute power using the
+correct connection voltage and supplied current. The local candidate companion
+now includes a package-owned 10 V example with a ``10+2\mathrm j`` VA load,
+``4+1\mathrm j`` VA generator injection and ``6+1\mathrm j`` VA source injection.
+The currents are respectively ``1-0.2\mathrm j``, ``0.4-0.1\mathrm j`` and
+``0.6-0.1\mathrm j`` A. Their signs and explicit neutral returns close KCL.
+Equal lower/upper generator P/Q bounds fix the native comparison point; this
+example does not claim to optimize dispatch or generation cost.
+
+**Predict.** If a result reports 3 W but voltage and current imply 4 W, can a
+3 W upper bound be certified? No. The independent evaluation detects both the
+1 W report discrepancy and the 1 W bound violation. The report is evidence to
+check, not a substitute for the defining power relation.
+
+| Changed evidence or declaration | Expected result | What remains checked |
+|:--|:--|:--|
+| Original analytic and native points | Passed within this small supported model | Powers, limits, voltages and KCL |
+| Forged 3 W report and 3 W upper bound | Failed | Recomputed power is 4 W |
+| Return-current cap tightened to 0.4 A | Failed | KCL and aggregate power still pass |
+| Generator current omitted | Indeterminate | KCL and aggregate power unassessed |
+| 9 V upper bound declared at the 10 V source terminal | Indeterminate | Native bound application is skipped; source equation still checked |
+
+The phase and return current magnitudes are ``\sqrt{0.17}≈0.4123`` A. A 0.5 A
+phase cap passes while a 0.4 A return cap fails. With multiple WYE phases the
+return magnitude is ``|\sum_k I_k|``, not ``\sum_k|I_k|`` and not any individual
+phase magnitude. For example, two in-phase 1 A injections give a 2 A return;
+opposite injections cancel. At zero coil voltage a power identity can still
+hide nonzero current, so current limits and KCL remain separate checks.
+
+For the finite native WYE/SINGLE_PHASE domain, generator power uses the explicitly
+mapped coil voltage. Omitting the neutral from a WYE generator map does not
+borrow the bus neutral. A two-terminal SINGLE_PHASE generator uses its ordered
+pair, which may also be phase-to-phase. DELTA generators remain outside this
+slice: the load's two-terminal DELTA convention must not be copied into another
+device family without checking that family's executable contract.
+
+Bus-voltage limits ask a different coordinate question. The supported
+`v_min/v_max` arrays bound phase-to-**earth** magnitude in non-neutral terminal
+declaration order. Moving the neutral changes a phase-neutral generator power
+without changing the phase's earth voltage. Tests use such a perturbed candidate
+to distinguish those observations; the separate switch-voltage check rejects
+that candidate. An unchanged bus-bound result is not a certificate for it.
+
+The native builder skips ordinary bus bounds at source-fixed and perfectly
+grounded terminals. The candidate records those bound obligations as
+**unassessed**, even if their declarations happen to agree with the source.
+For the 10 V source and 9 V upper bound, a native source equation does not enforce
+the declared bound. This slice does not silently label it passed, reinterpret the
+bound as phase-to-neutral, or remove its array index. Other bound families,
+nonfinite/malformed arrays, generator costs/controllers and transformer checks
+retain explicit coverage limits. Known current contributions remain usable when
+only limit/report evidence is missing; missing currents cannot be filled in from
+power by dividing by voltage.
+
+Reproduce the example through `experiments/lessons/verify_linear_coverage.jl`
+using the exact clean local candidate environment in
+`experiments/integration/README.md`. The output contains native inputs/results,
+all mutation verdicts, candidate revision/tree and fixture/example/environment
+hashes. The published package pin and execution MCP surface have not changed.
+This is an implementation comparison and a small teaching witness, not independent
+scientific review or a complete running-network feasibility certificate.
+
+**Transfer exercise.** With total real current 2 A and two phase currents each
+1 A, replace the return limit by 1.5 A. Both phase caps of 1 A pass; the return
+fails by 0.5 A. Reverse the second phase current: the return then passes, but
+local KCL must be reevaluated against the surrounding circuit. A generator-only
+rating check does not establish a network solution.

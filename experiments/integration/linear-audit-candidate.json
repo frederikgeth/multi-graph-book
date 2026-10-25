@@ -7,12 +7,14 @@
     "audit_solution"
   ],
   "evidence_state": "local_development_commit_not_in_published_integration_pin",
-  "git_tree_sha1": "9dd33772fa7ddf2307e1dbf577f95884be78fd45",
+  "git_tree_sha1": "ae6630375a6bfa012e5c60d663c01c72900fccb6",
   "native_example_paths": [
     "examples/constant_power_roots.jl",
     "test/data/linear_audit/constant-power-roots.json",
     "examples/neutral_shunt_roots.jl",
-    "test/data/linear_audit/neutral-shunt-roots.json"
+    "test/data/linear_audit/neutral-shunt-roots.json",
+    "examples/generator_voltage_audit.jl",
+    "test/data/linear_audit/generator-voltage.json"
   ],
   "not_established": [
     "all-device running-network feasibility",
@@ -21,9 +23,9 @@
     "availability in the published package pin",
     "MCP exposure"
   ],
-  "previous_candidate_revision": "4716370e6ca6170e0cdbd5d297a50c2dfe77c1f8",
+  "previous_candidate_revision": "9aa5e2f154df0b7cfad87c8b3484b570abbf6fb2",
   "repository": "frederikgeth/BMOPFTools.jl",
-  "revision": "9aa5e2f154df0b7cfad87c8b3484b570abbf6fb2",
+  "revision": "2f80a78cb8fd073cfd420086ce2739491c51875a",
   "schema_version": "0.1.0",
-  "scope": "direct SI equation audit for inline series lines, earth shunts, source neutral returns, constant-power WYE/SINGLE_PHASE/DELTA loads and fixed ideal switches with finite conductor ratings; explicit missing coverage"
+  "scope": "direct SI equation audit for inline series lines, earth shunts, source neutral returns, constant-power WYE/SINGLE_PHASE/DELTA loads and fixed ideal switches with finite conductor ratings; explicit missing coverage; bounded WYE/SINGLE_PHASE generator injections/limits and applicable finite phase-to-earth v_min/v_max arrays"
 }
