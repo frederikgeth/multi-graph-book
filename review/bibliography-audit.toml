@@ -12,7 +12,7 @@ key = "BoydVandenberghe2004"
 status = "verified"
 verification_source = "https://web.stanford.edu/~boyd/cvxbook/index.html"
 verified_on = "2026-09-06"
-note = "Author-hosted book page confirms authors, title, publisher and 2004 publication. Chapter 5 supplies duality and sensitivity background; the practical lesson derives its scalar scaled-constraint example explicitly."
+note = "Author-hosted book page confirms authors, title, publisher and 2004 publication. Chapter 5 supplies duality and sensitivity background; the practical lesson derives its scalar scaled-constraint example explicitly. The author-hosted PDF was additionally checked on 2026-10-26: Sections 2.3.2 and 4.4.2 supply affine-preimage and norm-cone facts for the separate port-limit derivation."
 
 [[entry]]
 key = "HammerEtAl2015"

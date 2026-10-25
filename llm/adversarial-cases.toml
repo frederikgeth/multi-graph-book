@@ -238,3 +238,19 @@ question = "Can apparent power limits predict conductor temperature and transien
 expected_status = "under_retrieved"
 expected_claim_ids = []
 expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-CONVEX-LIMIT-NOT-UNIQUE"
+audience = "power_engineer"
+question = "Does a convex power cap guarantee a unique solution?"
+expected_status = "qualified"
+expected_claim_ids = ["LIMIT-CONVEXITY-001", "LIMIT-MULTIPLICITY-001"]
+expected_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-NONCONVEX-LIMIT-NOT-MULTIPLE"
+audience = "power_engineer"
+question = "Does a nonconvex power cap necessarily create multiple solutions?"
+expected_status = "qualified"
+expected_claim_ids = ["LIMIT-CONVEXITY-001", "LIMIT-MULTIPLICITY-001"]
+expected_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]

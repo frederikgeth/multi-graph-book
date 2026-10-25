@@ -1,23 +1,73 @@
 {
   "schema_version": "0.1.0",
-  "units": "per_unit_for_scalar_branch_and_lost_kcl; A_and_ohm_for_neutral_paths",
+  "units": "per_unit_for_scalar_branch_lost_kcl_and_limit_geometry; A_and_ohm_for_neutral_paths",
   "branch": {
     "source_voltage": "4/5",
     "resistance": "1",
     "load_power": "3/25",
     "nominal_voltage": "1",
     "current_limit": "1/2",
-    "voltage_domain": ["0", "4/5"]
+    "voltage_domain": [
+      "0",
+      "4/5"
+    ]
   },
   "neutral": {
     "total_current_A": "12",
-    "current_limits_A": ["7", "10"],
-    "resistance_ratios": [["1", "2"], ["2", "1"]],
+    "current_limits_A": [
+      "7",
+      "10"
+    ],
+    "resistance_ratios": [
+      [
+        "1",
+        "2"
+      ],
+      [
+        "2",
+        "1"
+      ]
+    ],
     "epsilon_ohm": "1/1000"
   },
   "lost_kcl": {
     "conductance": "1",
     "injected_current": "1",
-    "voltage_domain": ["0", "2"]
+    "voltage_domain": [
+      "0",
+      "2"
+    ]
+  },
+  "limit_geometry": {
+    "apparent_limit": "1",
+    "current_limit": "1",
+    "iv_points": [
+      [
+        "9/10",
+        "0",
+        "10/9",
+        "0"
+      ],
+      [
+        "11/10",
+        "0",
+        "10/11",
+        "0"
+      ]
+    ],
+    "power_rectangular_voltage_points": [
+      [
+        "1",
+        "0",
+        "3/5",
+        "4/5"
+      ],
+      [
+        "1",
+        "0",
+        "3/5",
+        "-4/5"
+      ]
+    ]
   }
 }

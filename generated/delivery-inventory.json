@@ -48,11 +48,11 @@
       "TR-XFMR-005",
       "TR-XFMR-006"
     ],
-    "total": 118,
+    "total": 119,
     "verification": {
       "externally-reviewed": 0,
       "independently-implemented": 6,
-      "self-checked": 112
+      "self-checked": 113
     }
   },
   "knowledge": {
@@ -72,6 +72,7 @@
       "complete-feasibility-status-is-enough": [
         "PSK-000013"
       ],
+      "convex-rating-implies-convex-opf": [],
       "delta-coil-currents-are-terminal-currents": [],
       "fixed-tap-snapshot-preserves-adjustable-transformer": [
         "PSK-000005"
@@ -134,9 +135,10 @@
       ],
       "zero-parameter-means-absent-term": []
     },
-    "total": 32,
+    "total": 33,
     "unlinked_ids": [
       "apparent-power-limit-implies-current-admissibility",
+      "convex-rating-implies-convex-opf",
       "delta-coil-currents-are-terminal-currents",
       "ideal-transformer-is-a-large-admittance",
       "loads-generators-fixed-graph-membership",
@@ -152,12 +154,12 @@
       "zero-parameter-means-absent-term"
     ]
   },
-  "pair_sha256": "5dc67b685dfe1234bb337a290ba7ab6d78d5129d930fade33654576b01f36163",
+  "pair_sha256": "b338af5de7e75f07b9747e50d2e747397de799d96cac2d06f2a52a74fa9b2b52",
   "schema_version": "1.0.0",
   "source_sha256": {
-    "claims/claims.toml": "1484365da8749d0fee2c66047449234f2e0ca31a002ecf3523009a6e2ce1244f",
-    "generated/federated-knowledge-pair-manifest.json": "2c9974d43427e898df5173bf411ee8191e695c5ef2010aa4da87d44215cf3224",
+    "claims/claims.toml": "5ca8dd7fc255c0a4b095744e3717c21d098d324bbdec2fb60e99bb2b0b5f601f",
+    "generated/federated-knowledge-pair-manifest.json": "16b94b33f9bf49c142d8c9265e539ce4c6dc70d7af66b1573a40a952a0992609",
     "knowledge/psk.toml": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364",
-    "llm/misconceptions.toml": "0cf12c0ed133964b0d876548cb543fa2da960c60eddabc56819d579060f71b16"
+    "llm/misconceptions.toml": "3b87b79049dbc9eb541db81b9939c5de719581990a37e0b840970c64b78ca649"
   }
 }

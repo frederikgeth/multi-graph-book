@@ -66,6 +66,33 @@ def finite_split(total, a, b, epsilon):
     return i1, i2, epsilon*a*i1
 
 
+def midpoint(points):
+    a,b=points
+    return [(x+y)/2 for x,y in zip(a,b)]
+
+
+def limit_geometry(inputs):
+    """Exact nonconvexity certificates; finite samples do not prove convexity."""
+    cap=inputs['limit_geometry']
+    smax,imax=F(cap['apparent_limit']),F(cap['current_limit'])
+    iv=[list(map(F,p)) for p in cap['iv_points']]
+    pv=[list(map(F,p)) for p in cap['power_rectangular_voltage_points']]
+    def iv_row(point):
+        vr,vi,ir,ii=point
+        s2=(vr*vr+vi*vi)*(ir*ir+ii*ii)
+        return dict(coordinates=point, apparent_power_squared=s2, pass_limit=s2<=smax*smax)
+    def pv_row(point):
+        p,q,vr,vi=point
+        residual=p*p+q*q-imax*imax*(vr*vr+vi*vi)
+        return dict(coordinates=point, current_limit_squared_residual=residual, pass_limit=residual<=0)
+    return dict(
+        iv_apparent=dict(coordinate_order=['V_re','V_im','I_re','I_im'],
+            endpoints=[iv_row(p) for p in iv], midpoint=iv_row(midpoint(iv))),
+        power_rectangular_current=dict(coordinate_order=['P','Q','V_re','V_im'],
+            endpoints=[pv_row(p) for p in pv], midpoint=pv_row(midpoint(pv))),
+        scope='individual port-limit sets before circuit coupling; midpoint witnesses establish nonconvexity only')
+
+
 def rational_json(obj):
     if isinstance(obj, F):
         return str(obj)
@@ -95,6 +122,7 @@ def build():
     return rational_json(dict(schema_version='0.1.0', evidence_state='self_checked_exact_finite_witness',
         inputs=inputs, source_sha256={str(q.relative_to(ROOT)):hashlib.sha256(q.read_bytes()).hexdigest()
                                      for q in (FIXTURE,Path(__file__))},
+        limit_geometry=limit_geometry(inputs),
         branch=dict(rows=rows, distinct_equation_roots=len(rows),
             current_admissible_voltages=[x['voltage'] for x in rows if x['current_limit_pass'] and x['voltage_domain_pass']],
             apparent_admissible_voltages=[x['voltage'] for x in rows if x['apparent_limits_pass'] and x['voltage_domain_pass']],
@@ -117,6 +145,18 @@ def check():
     assert d['branch']['apparent_admissible_voltages']==['1/5','3/5']
     assert d['branch']['source_power_minimizers']==['3/5']
     assert d['branch']['constant_objective_minimizers']==['1/5','3/5']
+    geometry=d['limit_geometry']
+    for certificate in (geometry['iv_apparent'],geometry['power_rectangular_current']):
+        assert all(row['pass_limit'] for row in certificate['endpoints'])
+        assert not certificate['midpoint']['pass_limit']
+        assert list(map(F,certificate['midpoint']['coordinates']))==midpoint(
+            [list(map(F,row['coordinates'])) for row in certificate['endpoints']])
+    assert geometry['iv_apparent']['midpoint']['coordinates']==['1','0','100/99','0']
+    assert F(geometry['iv_apparent']['midpoint']['apparent_power_squared'])==F(10000,9801)
+    assert F(geometry['power_rectangular_current']['midpoint']['current_limit_squared_residual'])==F(16,25)
+    # Mapping the IV endpoints to (P,Q,|V|) before averaging yields (1,0,1),
+    # whose recovered current is 1, not the IV-coordinate midpoint 100/99.
+    assert midpoint([[F(1),F(0),F(9,10)],[F(1),F(0),F(11,10)]])==[F(1),F(0),F(1)]
     e=F(4,5)
     assert branch_roots(e,F(1),F(4,25))==[F(2,5)]  # saddle-node algebra, no stability claim
     assert branch_roots(e,F(1),F(1,5))==[]
@@ -154,7 +194,7 @@ def check():
         pass
     else:
         raise AssertionError('irrational root silently approximated')
-    print('Exact roots, both-end ratings, objective sets, circulation, finite limits and lost-KCL checks pass.')
+    print('Exact roots, both-end ratings, objective sets, circulation, finite limits, lost-KCL and limit-geometry checks pass.')
 
 
 def main():

@@ -184,6 +184,85 @@ admits the spurious zero-current point while excluding the physically required
 current equation or another demonstrably equivalent relation over the full
 required domain; a convenient positive voltage floor is not a universal repair.
 
+## D. Constraint convexity depends on the retained coordinates
+
+**Predict.** Does a physically appropriate current limit have to be harder to
+optimize over than an apparent-power cap? No. Claim `LIMIT-CONVEXITY-001`
+distinguishes the geometry of an individual rating constraint from that of the
+complete circuit problem. Let ``S=P+\mathrm jQ``,
+``V=v_r+\mathrm jv_i``, ``I=i_r+\mathrm ji_i``, with fixed nonnegative ratings.
+
+| Retained coordinates | Apparent-power limit | Current limit |
+|:--|:--|:--|
+| Explicit ``P,Q`` and magnitude ``v=\lvert V\rvert\ge0`` | ``\lVert(P,Q)\rVert_2\le S_{\max}``: convex disk | ``\lVert(P,Q)\rVert_2\le I_{\max}v``: convex second-order cone |
+| Explicit ``P,Q`` and squared magnitude ``w=\lvert V\rvert^2\ge0`` | Same convex disk | ``P^2+Q^2\le I_{\max}^2w``: convex quadratic inequality, conic-representable |
+| Rectangular ``V,I`` | ``(v_r^2+v_i^2)(i_r^2+i_i^2)\le S_{\max}^2``: generally nonconvex | ``i_r^2+i_i^2\le I_{\max}^2``: convex disk |
+
+The first two current-limit forms follow from ``|S|=|V||I|`` at nonzero
+voltage. At zero voltage they force ``P=Q=0`` but cannot validate a hidden
+physical current: retain the original current laws and KCL, as in B and C.
+
+For the convexity proofs, norm balls and second-order cones are convex; an
+affine preimage of a convex set is convex [BoydVandenberghe2004](@cite).
+In the ``w`` form,
+``P^2+Q^2-I_{\max}^2w`` is a convex function. The squared-magnitude expression
+``P^2+Q^2-I_{\max}^2v^2`` has an indefinite Hessian when ``I_{\max}>0``,
+but with ``v\ge0`` its
+nonpositive sublevel set is still the cone in the table. A Hessian test on one
+algebraic representation is not a proof that this feasible set is nonconvex.
+
+**Challenge with a midpoint.** In real positive current-voltage coordinates,
+take ``S_{\max}=1`` and the two points
+
+```math
+(V,I)=\left(\frac9{10},\frac{10}9\right),\qquad
+(V,I)=\left(\frac{11}{10},\frac{10}{11}\right).
+```
+
+Both have ``VI=1``. Their midpoint is ``(1,100/99)``, whose apparent power exceeds
+one. Thus the cap is nonconvex in current-voltage coordinates even within a
+0.9–1.1 voltage interval, without using zero voltage. In power-magnitude
+coordinates the endpoints are ``(P,Q,v)=(1,0,0.9),(1,0,1.1)``; their midpoint
+is ``(1,0,1)``, recovering current 1. The nonlinear change of coordinates does
+not preserve midpoints. It does not change the physical limit or create roots
+when the exact coupling laws and the nonzero-voltage domain are preserved.
+
+### What “power-voltage formulation” leaves unspecified
+
+A formulation label alone is insufficient. Three qualifications matter:
+
+- If branch powers are eliminated and written as nonlinear functions of bus
+  voltages, their apparent-power disk is pulled back through a nonlinear map
+  and need not remain convex. Retaining explicit powers moves the nonconvexity
+  into the coupling equations; it does not remove it.
+- For a **fixed linear branch**, current is affine in rectangular bus voltages:
+  ``\mathbf i=A\mathbf v+b``. Its limit
+  ``\|A\mathbf v+b\|_2\le I_{\max}`` is convex even with no explicit current
+  variables. This useful property also applies in a power-balance formulation
+  using those rectangular voltages. Variable admittances/taps and polar
+  substitutions require their own analysis.
+- If a current is instead eliminated using its port power, retaining
+  ``P,Q,v_r,v_i`` gives
+  ``P^2+Q^2\le I_{\max}^2(v_r^2+v_i^2)``, generally a **nonconvex** set.
+  For ``I_{\max}=1``, points ``(P,Q,v_r,v_i)=(1,0,3/5,\pm4/5)`` pass,
+  but their midpoint ``(1,0,3/5,0)`` fails. All three voltages are nonzero.
+
+Introducing ``v`` or ``w`` alongside rectangular components does not resolve
+the complete problem's nonconvexity: the exact identities
+``v^2=v_r^2+v_i^2`` or ``w=v_r^2+v_i^2`` are themselves generally nonconvex
+constraints. Dropping or relaxing such identities changes the model and needs
+a separate exactness argument.
+
+The pedagogical conclusion is that **physical suitability, constraint convexity,
+and solution multiplicity are separate questions**. Convex current limits can
+intersect nonconvex circuit equations in disconnected feasible points, as in A.
+A convex apparent-power disk can still implement the wrong intended rating.
+A nonconvex constraint alone does not imply that a particular complete model
+has multiple solutions. Even the convex current interval in B has multiple
+minimizers under a constant objective. The exact checker records the two
+nonconvex midpoint certificates above; the positive convexity statements follow from the analytic
+norm/cone arguments, not from finite sampling.
+
 ## Diagnose the mechanism before choosing a remedy
 
 | Mechanism | What changes or disappears? | Appropriate check | What the check does not establish |
@@ -208,7 +287,8 @@ The input fixture is `experiments/lessons/solution_multiplicity.json`. The exact
 Python checker uses rational arithmetic and checks the committed,
 source-hash-bound `experiments/generated/solution-multiplicity.json`. It includes
 both-end ratings, objective comparisons, discriminant controls, reversed current,
-an empty rating interval, two finite-resistance ratios and the lost-KCL residual.
+an empty rating interval, two finite-resistance ratios, the lost-KCL residual,
+and coordinate-dependent midpoint certificates.
 It deliberately refuses irrational square roots instead of silently turning
 this exact witness into an approximate general root finder.
 

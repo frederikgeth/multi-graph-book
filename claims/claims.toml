@@ -1,4 +1,21 @@
 [[claim]]
+claim_id = "LIMIT-CONVEXITY-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ["limits", "numerical_structure"]
+chapter = "docs/src/cases/unintended-solution-multiplicity.md"
+claim_text = "Individual fixed apparent-power caps are convex in explicit port powers but generally nonconvex in joint rectangular voltage-current coordinates. Current caps are convex in explicit rectangular currents, in powers with nonnegative voltage magnitude or squared magnitude, and in rectangular voltages through a fixed affine current map; substituting port power with rectangular voltage components does not generally retain convexity. None of these constraint-level statements establishes convexity or uniqueness of the complete OPF."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "analytic_norm_cone_and_affine_preimage_arguments_with_exact_nonconvex_midpoint_certificates"
+citation_keys = ["BoydVandenberghe2004"]
+model_scope = "individual scalar phasor-port magnitude limits with fixed nonnegative ratings and explicitly declared retained coordinates before circuit coupling"
+assumptions = "power-to-current identities require nonzero voltage for current recovery; at zero voltage the power cap cannot validate hidden current; affine branch-current maps have fixed coefficients; voltage-coordinate lifting identities and device laws are assessed separately"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independent review remains pending; nonlinear controls, variable taps, device capability curves and complete AC-OPF convexity require separate analysis."
+
+[[claim]]
 claim_id = "LIMIT-MULTIPLICITY-001"
 exactness_object = "feasible_set"
 preservation_dimensions = ["terminal_behavior", "limits", "decision"]

@@ -415,3 +415,16 @@ operational_consequence = "A local solver can accurately return an overloaded or
 mandatory_claim_ids = ["LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
 mandatory_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
 source_paths = ["docs/src/cases/unintended-solution-multiplicity.md", "experiments/lessons/solution_multiplicity.py"]
+
+[[misconception]]
+id = "convex-rating-implies-convex-opf"
+title = "A convex rating constraint makes the complete OPF convex or unique"
+severity = "high"
+query_patterns = ["apparent power limits convex", "current limits convex", "convex rating constraints", "convex power cap guarantees unique solution", "convex current cap convex opf", "nonconvex power cap multiple solutions"]
+tempting_answer = "Apparent-power and current limits have formulation-independent convexity, and a convex cap makes the complete OPF convex with a unique solution."
+required_qualification = "Declare retained variables and domain. Apparent-power caps are convex disks in explicit powers but generally nonconvex in joint voltage-current coordinates. Current caps are convex in explicit currents, powers with nonnegative voltage magnitude or squared magnitude, and rectangular voltages under a fixed affine current map. Eliminating current through power while keeping rectangular voltage components need not retain convexity. Circuit coupling, voltage lifting identities and complete-model uniqueness require separate arguments."
+safe_shorthand = "Convexity belongs to a constraint set in stated coordinates; physical suitability and complete-OPF geometry are separate questions."
+operational_consequence = "A lifted power disk can move nonconvexity into coupling equations without removing it, and a convex but physically inappropriate cap can still admit an overloaded root."
+mandatory_claim_ids = ["LIMIT-CONVEXITY-001", "LIMIT-MULTIPLICITY-001"]
+mandatory_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/cases/unintended-solution-multiplicity.md", "experiments/lessons/solution_multiplicity.py"]

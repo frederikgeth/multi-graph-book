@@ -2758,13 +2758,13 @@
   "compatibility": {
     "archived_on": "2026-10-26",
     "current_corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "current_corpus_sha256": "fe93d5fd40a16088ca6406ac673ea1cb49dd89bf72cdbfa5c5d450e4153de461",
+    "current_corpus_sha256": "8c1420bf140468a7a1158c744cf8bbb6365e4a7a0e5f5fbb6b38c2f377f44929",
     "current_heldout_sha256": "171857dd883acf3ed9a091fac0e2e7485cbd13d5f0477a56af37d010cec16592",
     "current_lexical_summary": {
       "char_tfidf": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.219257,
+        "mean_reciprocal_rank_at_20": 0.219398,
         "recall_at_10": 0.439394,
         "recall_at_5": 0.33771,
         "recall_expected_records_at_10": 180,
@@ -2774,9 +2774,9 @@
       "hybrid": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.214695,
+        "mean_reciprocal_rank_at_20": 0.211848,
         "recall_at_10": 0.459764,
-        "recall_at_5": 0.369865,
+        "recall_at_5": 0.363805,
         "recall_expected_records_at_10": 180,
         "recall_hits_at_10": 79,
         "zero_recall_at_10_count": 6
@@ -2784,15 +2784,15 @@
       "lexical": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.196038,
+        "mean_reciprocal_rank_at_20": 0.195934,
         "recall_at_10": 0.426431,
-        "recall_at_5": 0.329966,
+        "recall_at_5": 0.336027,
         "recall_expected_records_at_10": 180,
         "recall_hits_at_10": 73,
         "zero_recall_at_10_count": 6
       }
     },
-    "current_record_count": 948,
+    "current_record_count": 951,
     "required_action": "rerun both pinned neural retriever and reranker before comparing them with the current corpus",
     "status": "archived_prior_corpus"
   },

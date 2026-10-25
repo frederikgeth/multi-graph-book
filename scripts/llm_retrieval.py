@@ -42,6 +42,9 @@ ROUTER_TOPIC_EXCLUSIONS = {
 }
 
 ROUTER_TOPIC_PATTERNS = {
+    "convex-rating-implies-convex-opf": (
+        r"convex|nonconvex|convexity", r"limit\w*|rating\w*|cap\w*", r"power|current\w*|opf|rating\w*",
+    ),
     "apparent-power-limit-implies-current-admissibility": (
         r"apparent|mva|power|multiplicity|uniqueness", r"limit\w*|cap\w*|rating\w*|solution\w*",
         r"current\w*|root\w*|solution\w*|multiplicity|uniqueness",

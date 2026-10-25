@@ -1,11 +1,11 @@
 # Adversarial LLM retrieval evaluation
 
 **Status:** `pass`
-**Cases:** 29
+**Cases:** 31
 
 This is a deterministic robustness and abstention check, not human-calibrated answer-quality evidence.
 Near-domain negatives require under_retrieved rather than unrelated qualified claims. These curated cases do not estimate deployment error rates or establish complete intent coverage.
-Recall is averaged over the 20 cases with target evidence; empty target sets are not perfect retrievals.
+Recall is averaged over the 22 cases with target evidence; empty target sets are not perfect retrievals.
 
 | Measure | Result | Gate |
 | --- | ---: | --- |
@@ -14,8 +14,8 @@ Recall is averaged over the 20 cases with target evidence; empty target sets are
 | Unsupported-query abstention | 100.0% | yes |
 | Unqualified-query status accuracy | 100.0% | yes |
 | False qualification on unqualified queries | 0/9 (0.0%) | covered by status gate |
-| Hybrid retrieval recall@10 | 40.7% | diagnostic |
-| Graph retrieval recall@10 | 64.5% | diagnostic |
+| Hybrid retrieval recall@10 | 40.6% | diagnostic |
+| Graph retrieval recall@10 | 65.8% | diagnostic |
 
 | Case | Expected status | Observed status | Hybrid recall@10 | Graph recall@10 | Contract complete |
 | --- | --- | --- | ---: | ---: | --- |
@@ -44,7 +44,9 @@ Recall is averaged over the 20 cases with target evidence; empty target sets are
 | `ADV-PARAMETER-ESTIMATION-BOUNDARY` | `under_retrieved` | `under_retrieved` | — | — | — |
 | `ADV-PARAMETER-STATISTICAL-BOUNDARY` | `under_retrieved` | `under_retrieved` | — | — | — |
 | `ADV-CURRENT-NOT-UNIQUE` | `qualified` | `qualified` | 33.3% | 16.7% | yes |
-| `ADV-MULTIPLICITY-OVERLOAD` | `qualified` | `qualified` | 33.3% | 83.3% | yes |
+| `ADV-MULTIPLICITY-OVERLOAD` | `qualified` | `qualified` | 33.3% | 100.0% | yes |
 | `ADV-MULTIPLICITY-DYNAMIC` | `under_retrieved` | `under_retrieved` | — | — | — |
 | `ADV-MULTIPLICITY-NAMEPLATE` | `under_retrieved` | `under_retrieved` | — | — | — |
 | `ADV-MULTIPLICITY-HEATING` | `under_retrieved` | `under_retrieved` | — | — | — |
+| `ADV-CONVEX-LIMIT-NOT-UNIQUE` | `qualified` | `qualified` | 40.0% | 80.0% | yes |
+| `ADV-NONCONVEX-LIMIT-NOT-MULTIPLE` | `qualified` | `qualified` | 40.0% | 60.0% | yes |

@@ -4,8 +4,8 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `fe93d5fd40a16088ca6406ac673ea1cb49dd89bf72cdbfa5c5d450e4153de461`<br>
-**Cases:** 99
+**Corpus hash:** `8c1420bf140468a7a1158c744cf8bbb6365e4a7a0e5f5fbb6b38c2f377f44929`<br>
+**Cases:** 102
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
 The latter is permitted to add mandatory claims and concepts only after the query router identifies
@@ -17,10 +17,10 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
 | Open-corpus lexical evidence recall@5 | 27.9% | diagnostic |
-| Open-corpus lexical evidence recall@10 | 34.3% | diagnostic |
+| Open-corpus lexical evidence recall@10 | 33.9% | diagnostic |
 | Open-corpus complete evidence@10 | 1.0% | diagnostic |
-| Evidence-only lexical recall@5 | 35.4% | diagnostic |
-| Evidence-only lexical recall@10 | 42.1% | diagnostic |
+| Evidence-only lexical recall@5 | 35.2% | diagnostic |
+| Evidence-only lexical recall@10 | 42.0% | diagnostic |
 | Evidence-only complete evidence@10 | 2.0% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
@@ -43,10 +43,10 @@ the question count must not be treated as that many independent observations.
 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `lexical` | 33.0% | 42.6% | 0.0% | 0/33 | 6/33 | 0.196 |
+| `lexical` | 33.6% | 42.6% | 0.0% | 0/33 | 6/33 | 0.196 |
 | `char_tfidf` | 33.8% | 43.9% | 0.0% | 0/33 | 5/33 | 0.219 |
-| `hybrid` | 37.0% | 46.0% | 0.0% | 0/33 | 6/33 | 0.215 |
-| `graph` | 38.0% | 58.1% | 15.2% | 5/33 | 3/33 | 0.251 |
+| `hybrid` | 36.4% | 46.0% | 0.0% | 0/33 | 6/33 | 0.212 |
+| `graph` | 37.3% | 58.1% | 15.2% | 5/33 | 3/33 | 0.248 |
 
 Held-out contract-router firing: **22/33 (66.7%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **20/33 (60.6%)**; this remains diagnostic because the set is synthetic and clustered.
@@ -94,9 +94,9 @@ Graph versus hybrid complete@10: **5/33** versus **0/33**.
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 33 | 100.0% | 43.2% | 100.0% |
-| `software_engineer` | 33 | 100.0% | 38.0% | 100.0% |
-| `student` | 33 | 100.0% | 45.1% | 100.0% |
+| `power_engineer` | 34 | 100.0% | 43.1% | 100.0% |
+| `software_engineer` | 34 | 100.0% | 37.5% | 100.0% |
+| `student` | 34 | 100.0% | 45.6% | 100.0% |
 
 ## Case results
 
@@ -201,6 +201,9 @@ Graph versus hybrid complete@10: **5/33** versus **0/33**.
 | `EVAL-SOLUTION-MULTIPLICITY-STUDENT` | `student` | `apparent-power-limit-implies-current-admissibility` | 50.0% | yes |
 | `EVAL-SOLUTION-MULTIPLICITY-SOFTWARE` | `software_engineer` | `apparent-power-limit-implies-current-admissibility` | 16.7% | yes |
 | `EVAL-SOLUTION-MULTIPLICITY-POWER` | `power_engineer` | `apparent-power-limit-implies-current-admissibility` | 50.0% | yes |
+| `EVAL-LIMIT-CONVEXITY-STUDENT` | `student` | `convex-rating-implies-convex-opf` | 60.0% | yes |
+| `EVAL-LIMIT-CONVEXITY-SOFTWARE` | `software_engineer` | `convex-rating-implies-convex-opf` | 20.0% | yes |
+| `EVAL-LIMIT-CONVEXITY-POWER` | `power_engineer` | `convex-rating-implies-convex-opf` | 40.0% | yes |
 
 ## Interpretation and next boundary
 
