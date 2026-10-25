@@ -301,11 +301,76 @@ current-limited lower interval is analytically infeasible; any returned iterate
 is diagnostic, not an accepted operating point. Both roots of the faulty KCL
 model are likewise isolated and checked against the original equation.
 
-These are book-owned scalar models in JuMP, not new BMOPFTools device checks.
-The package pin, direct-audit candidate and MCP execution surface are unchanged.
+The original Julia companion above contains book-owned scalar models in JuMP.
+The native candidate companion below adds a separate package implementation
+comparison; the published integration pin and MCP execution surface stay unchanged.
 The figure can be regenerated with Matplotlib 3.10.8 using
 `experiments/lessons/render_solution_multiplicity.py`; its curves illustrate the
 exact artifact and do not establish completeness by sampling.
+
+### Native BMOPFTools comparison with original-equation auditing
+
+The local direct-audit candidate now has a package-owned fixture and executable
+example for the same circuit. This is an actual native source, series line and
+constant-power load, assembled through the public staging APIs. The book
+companion checks that its inputs agree with the exact witness above under
+explicit bases ``V_{\rm base}=1`` V and ``I_{\rm base}=1`` A: hence
+``Z_{\rm base}=1`` Ω and ``S_{\rm base}=1`` VA. The numerical values agree;
+the native fixture uses SI quantities rather than silently treating per-unit
+numbers as volts and amperes.
+
+There is no need to add a generator to represent this fixed-voltage source.
+With a real source ``E``, positive real ``R`` and native complex receiving
+voltage ``V``, the load satisfies
+``S=V\overline{(E-V)/R}``, so ``\operatorname{Im}S=E\operatorname{Im}V/R``.
+Its prescribed zero reactive power forces ``\operatorname{Im}V=0``. The exact
+quadratic proof therefore applies to this native single-conductor circuit too;
+root completeness still comes from the equations, not multistart coverage.
+
+| Native experiment | Emitted-model audit | Intended current-model audit |
+|:--|:--|:--|
+| Low branch, both-end power caps | Passes source/load/line laws, KCL, power and caps | Fails both endpoint current caps by 0.1 A |
+| High branch, both-end power caps | Passes | Passes |
+| High branch, current cap | Passes | Passes |
+| Low isolating interval, current cap | No accepted solved point | No accepted solved point |
+
+`audit_solution` evaluates the native input and supplied result independently
+of the builder's constraints. It reports complete coverage for this deliberately
+small supported circuit. This is independent equation evaluation with a shared
+schema, not independent software reproduction or validation of a whole feeder.
+The package also tests missing endpoint currents, an altered source injection,
+both-end rather than receiving-only power checks, and a current-cap boundary.
+A known overload takes precedence over missing coverage in the older linear
+API: the outcome can be **failed with incomplete coverage**, not merely
+indeterminate. Never discard a known violation because other checks are missing.
+
+The branch-isolating real-voltage intervals are additional experimental
+controls, checked separately; they do not extend the candidate audit's native
+bus-voltage-bound coverage. The failed local attempt is retained as diagnostic
+output. The exact root/current comparison establishes the infeasible interval;
+`LOCALLY_INFEASIBLE` is not used as its proof.
+
+The recorded native multistart run also changes the outcome of the 0.05 V start:
+it reaches the higher branch, whereas the standalone model above reaches the
+lower branch. A 0.2 V start reaches the lower branch in both, including with the
+source-power objective. Auxiliary variables, constraint representations and
+starts differ. Matching one voltage start does not make two optimization runs
+identical or give them the same basins of attraction.
+
+Use the candidate environment instructions in the repository
+`experiments/integration/README.md` and its exact clean commit, then run:
+
+```sh
+julia --startup-file=no --project="$MGB_AUDIT_ENV" \
+  experiments/lessons/verify_native_multiplicity.jl /tmp/native-multiplicity.json
+```
+
+The output binds the book witness, package fixture/example, candidate Git
+revision/tree and Julia environment hashes. It retains all fourteen attempted
+solves, status and coverage evidence. The candidate is local and unpublished;
+ordinary clones cannot fetch it yet, and the published MCP verification route
+does not expose this audit. General generator, transformer, bus-bound and
+multiconductor-with-shunts coverage remain separate roadmap items.
 
 **Transfer exercise.** First change only ``I_{\max}`` from 0.5 to 0.3 while
 keeping ``V_{\rm nom}=1`` and recomputing ``S_{\max}``. Do both roots still pass

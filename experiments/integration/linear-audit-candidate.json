@@ -7,7 +7,11 @@
     "audit_solution"
   ],
   "evidence_state": "local_development_commit_not_in_published_integration_pin",
-  "git_tree_sha1": "47391b6a56f497aad15e051699bdeeb63ee04f82",
+  "git_tree_sha1": "6cf18943d98c54b3a1eda38f57bb1e1ce0a3cc92",
+  "native_example_paths": [
+    "examples/constant_power_roots.jl",
+    "test/data/linear_audit/constant-power-roots.json"
+  ],
   "not_established": [
     "all-device running-network feasibility",
     "objective or global optimality",
@@ -15,9 +19,9 @@
     "availability in the published package pin",
     "MCP exposure"
   ],
-  "previous_candidate_revision": "01b25ff8be7aa8e618653071214f20c40bf69e5c",
+  "previous_candidate_revision": "79a87b5346882f97e9311c7a06d141a944e40df5",
   "repository": "frederikgeth/BMOPFTools.jl",
-  "revision": "79a87b5346882f97e9311c7a06d141a944e40df5",
+  "revision": "4716370e6ca6170e0cdbd5d297a50c2dfe77c1f8",
   "schema_version": "0.1.0",
   "scope": "direct SI equation audit for inline series lines, earth shunts, source neutral returns, constant-power WYE/SINGLE_PHASE/DELTA loads and fixed ideal switches with finite conductor ratings; explicit missing coverage"
 }

@@ -117,3 +117,24 @@ Both remain indeterminate. Custom terminal conventions and unrecognized semantic
 fields are explicitly outside the current extension's supported domain.
 The `fixed-switch.json` companion verifies a native solve and a neutral-current
 overload invisible to power checks, and retains missing switch current as unknown.
+
+
+The separate `experiments/lessons/verify_native_multiplicity.jl` companion uses
+that same exact clean candidate environment. It runs the package-owned
+`examples/constant_power_roots.jl`, checks its SI input against the book's exact
+rational witness at explicit 1 V/1 A bases, and records source/environment hashes,
+all attempted native solves and independent equation-audit evidence:
+
+```sh
+julia --startup-file=no --project="$MGB_AUDIT_ENV" \
+  experiments/lessons/verify_native_multiplicity.jl "$MGB_AUDIT_ENV/native-multiplicity.json"
+```
+
+The example isolates each known branch under native line current or both-end
+power limits. A low-voltage result passes the emitted power-limited model but
+fails the intended current-limited model. Experimental real-voltage intervals
+are checked outside the audit and do not add general bus-voltage-bound coverage.
+Multistart observations are diagnostic, including failures; different starts
+of auxiliary variables can change which branch a local solver selects.
+This does not change the published integration pin or expose candidate audits
+through MCP.

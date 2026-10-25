@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "8c1420bf140468a7a1158c744cf8bbb6365e4a7a0e5f5fbb6b38c2f377f44929",
+  "corpus_sha256": "6d8a92def99153e18ceb1a27111663edad908f576d0c2f58bc9f0feae983b124",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -15,12 +15,12 @@
   "evaluation_case_count": 102,
   "heldout_case_count": 33,
   "misconception_count": 33,
-  "record_count": 951,
+  "record_count": 952,
   "record_counts": {
     "claim_bundle": 119,
     "concept_bundle": 18,
     "scientific_knowledge": 18,
-    "section": 796
+    "section": 797
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -85,7 +85,7 @@
     },
     {
       "path": "docs/src/cases/unintended-solution-multiplicity.md",
-      "sha256": "4d99c6b1c31789371bf7516eccc3a243943a0f3d27310caeaa38f197a800d4f5"
+      "sha256": "2e2ca85e0ab1e1373eba6e692389657717d29448006b317d62f08851c47b2698"
     },
     {
       "path": "docs/src/foundations/circuit-formulations-and-lowering.md",
