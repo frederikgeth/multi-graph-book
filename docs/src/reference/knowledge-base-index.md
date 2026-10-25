@@ -1,14 +1,14 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:5ca8dd7fc255c0a4b095744e3717c21d098d324bbdec2fb60e99bb2b0b5f601f -->
+<!-- generated-from claims/claims.toml sha256:c87597c9d1ba395c88a3ad68c069228836b7c3dd2d66140d93fe61046ad9fe5c -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 119
-**Indexed chapters:** 47
+**Indexed claims:** 120
+**Indexed chapters:** 48
 
 ## Claims by type
 
@@ -102,7 +102,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `COUPLED-CORRIDOR-001` — Physically parallel line sections need not be parallel in the bus multigraph; a source model can retain stable line assets plus oriented section-to-section coupling records, with each connected coupling group compiling into one joint electrical factor before inversion or nodal stamping. | [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | `self-checked` |
 | `TRANSFORM-CATALOG-001` — The guarded-normalization catalogue treats coordinate normalization, series elimination, parallel bundling, switch contraction, multiwinding compilation, and rooted-tree views as distinct rule families whose acceptance depends on declared closure, recovery, constraint, and provenance guards. | [Guarded normalization rules](../transformations/guarded-normalization.md) | `self-checked` |
 
-### `theorem` (49)
+### `theorem` (50)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -127,6 +127,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `GRAPH-PI-COLLAPSE-001` — For a fixed linear two-terminal pi factor with series admittance Y_s and endpoint shunts Y_a and Y_b, identifying both terminals through the common attachment map T_pi=[1,1]^T gives T_pi^T Y_pi T_pi=Y_a+Y_b, so the series contribution cancels and the exact nodal image is a one-terminal constant-admittance shunt under the declared coordinate and reference assumptions. | [Multigraphs for expert modelers](../foundations/multigraphs-for-modelers.md) | `self-checked` |
 | `LIMIT-CONVEXITY-001` — Individual fixed apparent-power caps are convex in explicit port powers but generally nonconvex in joint rectangular voltage-current coordinates. Current caps are convex in explicit rectangular currents, in powers with nonnegative voltage magnitude or squared magnitude, and in rectangular voltages through a fixed affine current map; substituting port power with rectangular voltage components does not generally retain convexity. None of these constraint-level statements establishes convexity or uniqueness of the complete OPF. | [When a model admits unintended solutions](../cases/unintended-solution-multiplicity.md) | `self-checked` |
 | `LIMIT-MULTIPLICITY-001` — For the real series circuit E=4/5, R=1, VI=3/25 with 0<=V<=E, the exact roots (V,I)=(1/5,3/5) and (3/5,1/5) both satisfy endpoint apparent-power caps of 1/2 derived from Vnom=1 and Imax=1/2, whereas only the higher-voltage root satisfies the intended current cap. The inequality substitution changes admissibility, not the circuit equation roots. | [When a model admits unintended solutions](../cases/unintended-solution-multiplicity.md) | `self-checked` |
+| `LIMIT-NEUTRAL-001` — In the declared two-conductor SI circuit with R=[[1,1/2],[1/2,1]] ohm, explicit source/receiving shunts and 6/35 W phase-neutral load, both exact coil-voltage roots 1/5 and 3/5 V pass the per-conductor power caps [1,1/2] VA at both series-line ends. The lower root nevertheless violates the 1/2 A neutral current cap at both ends, despite nonzero receiving-neutral voltage; aggregate power observations also fail to certify that conductor rating. | [An explicit neutral does not make power limits current limits](../cases/neutral-shunt-multiplicity.md) | `self-checked` |
 | `LIT-PAR-001` — For fixed scalar AC pi-line models on common endpoints, dominance of normalized squared member currents for all endpoint voltages certifies a redundant current limit; with apparent-power ratings the shared terminal-voltage magnitude cancels in the comparison, giving a sufficient redundancy test using auxiliary quadratic sets, not the original apparent-power feasible regions. Checking both terminals certifies removal of both directional limits without aggregating members. | [A plausible model gives the wrong answer](../start/first-failure-parallel-branches.md) | `self-checked` |
 | `LOAD-CONNECTION-002` — For a fixed real signed coil-incidence matrix C, u=CV and i=C^T j preserve total complex power; for a three-coil cycle, adding equal circulating coil currents leaves terminal currents and total power unchanged while individual coil powers can change, so terminal KCL and aggregate power do not validate the individual coil laws. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `self-checked` |
 | `PRACTICE-DUAL-001` — For min beta*c*p subject to alpha*(d-p)<=0 with positive c,d,alpha,beta, dispatch remains p=d while the Lagrange multiplier is beta*c/alpha and physical marginal cost is alpha/beta times that multiplier; duplicating the unscaled constraint admits nonunique multiplier allocations summing to c. | [Building and changing a model you can check](../cases/building-and-changing-models.md) | `self-checked` |
@@ -160,7 +161,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 
 | Verification | Claims |
 | --- | ---: |
-| `self-checked` | 113 |
+| `self-checked` | 114 |
 | `independently-implemented` | 6 |
 | `externally-reviewed` | 0 |
 
@@ -216,6 +217,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `IMPEDANCE-LADDER-001` | Reproduce authored overhead-line and underground-cable cases with geometry or linecode provenance, balanced and unbalanced load rows, grounding variants, and an external solver cross-check. |
 | `LIMIT-CONVEXITY-001` | Independent review remains pending; nonlinear controls, variable taps, device capability curves and complete AC-OPF convexity require separate analysis. |
 | `LIMIT-MULTIPLICITY-001` | Independent scientific review and native multiconductor examples remain pending; the witness does not establish arbitrary AC/OPF uniqueness, dynamic stability, or a complete equipment thermal model. |
+| `LIMIT-NEUTRAL-001` | Independent scientific review, three-phase extensions and native internal pi-shunt coverage remain pending; no temperature, stability, or complete feeder-feasibility conclusion is established. |
 | `LIT-PAR-001` | Establish necessary and sufficient redundancy tests for arbitrary multiconductor limits and for state- or decision-dependent line models. |
 | `LLM-RETRIEVAL-001` | Rerun both pinned candidates on the current corpus and evaluate domain-adapted alternatives before making a current or general neural-retrieval comparison. |
 | `LOAD-BASE-001` | Extend the definition and executable guardrail to arbitrary unbalanced terminal maps, nonstandard connection families, explicit unit provenance, and independently reviewed importer crosswalks. |
@@ -293,7 +295,7 @@ These retrieval facets are provisional and path-derived. They are navigation aid
 additional verification labels; explicit facet fields can replace them when the claims
 schema is normalised.
 
-### `decision-cases` (39)
+### `decision-cases` (40)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -305,6 +307,7 @@ schema is normalised.
 | `IMPEDANCE-LADDER-001` — In the deterministic four-wire impedance ladder fixture, phase-to-neutral current and voltage recovery are exact under the declared zero-ground-current map, while the deliberately non-circulant reduced matrix has visible sequence mixing; shunt deletion and positive-sequence use therefore require explicit decision-domain guards. | [Four-wire impedance-model ladder](../cases/four-wire-impedance-model-ladder.md) | `empirical` |
 | `LIMIT-CONVEXITY-001` — Individual fixed apparent-power caps are convex in explicit port powers but generally nonconvex in joint rectangular voltage-current coordinates. Current caps are convex in explicit rectangular currents, in powers with nonnegative voltage magnitude or squared magnitude, and in rectangular voltages through a fixed affine current map; substituting port power with rectangular voltage components does not generally retain convexity. None of these constraint-level statements establishes convexity or uniqueness of the complete OPF. | [When a model admits unintended solutions](../cases/unintended-solution-multiplicity.md) | `theorem` |
 | `LIMIT-MULTIPLICITY-001` — For the real series circuit E=4/5, R=1, VI=3/25 with 0<=V<=E, the exact roots (V,I)=(1/5,3/5) and (3/5,1/5) both satisfy endpoint apparent-power caps of 1/2 derived from Vnom=1 and Imax=1/2, whereas only the higher-voltage root satisfies the intended current cap. The inequality substitution changes admissibility, not the circuit equation roots. | [When a model admits unintended solutions](../cases/unintended-solution-multiplicity.md) | `theorem` |
+| `LIMIT-NEUTRAL-001` — In the declared two-conductor SI circuit with R=[[1,1/2],[1/2,1]] ohm, explicit source/receiving shunts and 6/35 W phase-neutral load, both exact coil-voltage roots 1/5 and 3/5 V pass the per-conductor power caps [1,1/2] VA at both series-line ends. The lower root nevertheless violates the 1/2 A neutral current cap at both ends, despite nonzero receiving-neutral voltage; aggregate power observations also fail to certify that conductor rating. | [An explicit neutral does not make power limits current limits](../cases/neutral-shunt-multiplicity.md) | `theorem` |
 | `LOAD-BASE-001` — A voltage-dependent load's nominal voltage is an anchor in the load factor's declared terminal coordinate: WYE uses phase-to-neutral voltage and DELTA uses line-to-line voltage; copying one numeric bus voltage into both coordinates without an explicit base conversion changes the normalized load law. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `definition` |
 | `LOAD-CONNECTION-001` — On the recorded balanced three-phase terminal fixture, explicit wye phase-to-neutral and delta phase-to-phase connection maps share the same bus and graph but produce different load-voltage observations: unit-magnitude wye voltages and sqrt(3)-magnitude delta voltages. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
 | `LOAD-CONNECTION-002` — For a fixed real signed coil-incidence matrix C, u=CV and i=C^T j preserve total complex power; for a three-coil cycle, adding equal circulating coil currents leaves terminal currents and total power unchanged while individual coil powers can change, so terminal KCL and aggregate power do not validate the individual coil laws. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `theorem` |
@@ -601,6 +604,7 @@ schema is normalised.
 | `multiwinding-typed-kron-witness.json` | `TR-KRON-MULTI-001` — serialized three-winding terminal admittance with DELTA terminal block eliminated |
 | `narrow-circuit-transformations-witness.json` | generated evidence |
 | `neutral-kron-independent-reproduction.json` | `TR-KRON-NEUTRAL-001` — data/running-network/v0.1.0.json |
+| `neutral-shunt-multiplicity.json` | generated evidence |
 | `nodal-recovery-guards-witness.json` | `ARCH-RECOVERY-GUARDS-001` — finite nodal operators with declared catalog bounds, member observations, grounding metadata, and scalar state maps |
 | `nodal-source-recovery-witness.json` | `ARCH-RECOVERY-001` — finite compound nodal operators with declared support, elimination, and parameter classes |
 | `node-breaker-state-witness.json` | `TOPO-NB-001` — four-connectivity-node node-breaker fixture with two switch assets and state-conditioned bus compilation |

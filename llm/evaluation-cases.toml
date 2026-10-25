@@ -968,7 +968,7 @@ case_id = "EVAL-SOLUTION-MULTIPLICITY-STUDENT"
 audience = "student"
 question = "Can apparent power limits admit multiple solutions that current limits reject?"
 misconception_id = "apparent-power-limit-implies-current-admissibility"
-required_claim_ids = ["LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+required_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
 required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
 required_answer_elements = ["different admissibility of the same circuit roots", "current caps bound but do not select ideal current modes", "restore original KCL at zero voltage", "distinguish local minima from the global objective comparison"]
 forbidden_simplifications = ["power caps create circuit equation roots", "current limits guarantee uniqueness", "source power minimization prevents local convergence to the lower branch", "static roots determine dynamic stability"]
@@ -978,7 +978,7 @@ case_id = "EVAL-SOLUTION-MULTIPLICITY-SOFTWARE"
 audience = "software_engineer"
 question = "Can I replace a current limit with a nominal MVA cap and keep the same admissible roots?"
 misconception_id = "apparent-power-limit-implies-current-admissibility"
-required_claim_ids = ["LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+required_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
 required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
 required_answer_elements = ["different admissibility of the same circuit roots", "current caps bound but do not select ideal current modes", "restore original KCL at zero voltage", "distinguish local minima from the global objective comparison"]
 forbidden_simplifications = ["power caps create circuit equation roots", "current limits guarantee uniqueness", "source power minimization prevents local convergence to the lower branch", "static roots determine dynamic stability"]
@@ -988,7 +988,7 @@ case_id = "EVAL-SOLUTION-MULTIPLICITY-POWER"
 audience = "power_engineer"
 question = "Can both-end power caps admit an overloaded root of the circuit equations?"
 misconception_id = "apparent-power-limit-implies-current-admissibility"
-required_claim_ids = ["LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+required_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
 required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
 required_answer_elements = ["different admissibility of the same circuit roots", "current caps bound but do not select ideal current modes", "restore original KCL at zero voltage", "distinguish local minima from the global objective comparison"]
 forbidden_simplifications = ["power caps create circuit equation roots", "current limits guarantee uniqueness", "source power minimization prevents local convergence to the lower branch", "static roots determine dynamic stability"]
@@ -1022,3 +1022,33 @@ required_claim_ids = ["LIMIT-CONVEXITY-001", "LIMIT-MULTIPLICITY-001"]
 required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
 required_answer_elements = ["declare retained coordinates and voltage domain", "distinguish convex rating sets from nonconvex coupling equations", "preserve affine current-map convexity in rectangular voltages", "use analytic cone arguments and nonconvex midpoint witnesses"]
 forbidden_simplifications = ["all current limits in rectangular voltage formulations are nonconvex", "convex rating constraints make the OPF convex", "a convex feasible set guarantees a unique optimum", "nonconvex power caps necessarily create multiple roots"]
+
+[[case]]
+case_id = "EVAL-NEUTRAL-SHUNTS-STUDENT"
+audience = "student"
+question = "Can a neutral current overload pass a power cap at nonzero neutral voltage?"
+misconception_id = "apparent-power-limit-implies-current-admissibility"
+required_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["nonzero neutral voltage does not equate current and power caps", "keep source, series and coil current observations distinct", "distinguish signed complex-power sum from sum of magnitudes", "retain the separate source earth reaction in KCL"]
+forbidden_simplifications = ["aggregate power certifies every conductor current", "source current is always the series current", "zero ground power certifies its current", "postprocessed aggregate cap is a native constraint"]
+
+[[case]]
+case_id = "EVAL-NEUTRAL-SHUNTS-SOFTWARE"
+audience = "software_engineer"
+question = "Do shunts make source, series and coil currents interchangeable for an aggregate power cap?"
+misconception_id = "apparent-power-limit-implies-current-admissibility"
+required_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["nonzero neutral voltage does not equate current and power caps", "keep source, series and coil current observations distinct", "distinguish signed complex-power sum from sum of magnitudes", "retain the separate source earth reaction in KCL"]
+forbidden_simplifications = ["aggregate power certifies every conductor current", "source current is always the series current", "zero ground power certifies its current", "postprocessed aggregate cap is a native constraint"]
+
+[[case]]
+case_id = "EVAL-NEUTRAL-SHUNTS-POWER"
+audience = "power_engineer"
+question = "Does an aggregate power cap certify each neutral current rating?"
+misconception_id = "apparent-power-limit-implies-current-admissibility"
+required_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["nonzero neutral voltage does not equate current and power caps", "keep source, series and coil current observations distinct", "distinguish signed complex-power sum from sum of magnitudes", "retain the separate source earth reaction in KCL"]
+forbidden_simplifications = ["aggregate power certifies every conductor current", "source current is always the series current", "zero ground power certifies its current", "postprocessed aggregate cap is a native constraint"]

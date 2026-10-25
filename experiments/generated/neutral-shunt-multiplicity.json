@@ -1,0 +1,178 @@
+{
+  "discriminant": "1/4",
+  "effective_series_resistance_ohm": "7/8",
+  "evidence_state": "self_checked_exact_finite_witness",
+  "inputs": {
+    "coil_power_W": "6/35",
+    "current_caps_A": [
+      "1",
+      "1/2"
+    ],
+    "illustrative_aggregate_cap_VA": "11/10",
+    "power_caps_VA": [
+      "1",
+      "1/2"
+    ],
+    "receiving_neutral_earth_conductance_S": "1",
+    "receiving_phase_neutral_conductance_S": "2/7",
+    "schema_version": "0.1.0",
+    "series_mutual_resistance_ohm": "1/2",
+    "series_self_resistance_ohm": "1",
+    "source_phase_neutral_conductance_S": "1/10",
+    "source_voltage_V": "1",
+    "units": "SI: V, A, W, VA, ohm, S"
+  },
+  "neutral_voltage_per_phase_current_ohm": "1/4",
+  "not_established": [
+    "three-phase feeder generality",
+    "physical heating",
+    "dynamic stability",
+    "arbitrary native pi-line audit coverage",
+    "independent scientific review"
+  ],
+  "quadratic_leading_coefficient": "5/4",
+  "rows": [
+    {
+      "aggregate_observation_pass": true,
+      "coil_current_A": "6/7",
+      "coil_power_residual_W": "0",
+      "coil_voltage_V": "1/5",
+      "composite_from_currents_A": [
+        "71/70",
+        "-11/14"
+      ],
+      "composite_to_currents_A": [
+        "-6/7",
+        "6/7"
+      ],
+      "current_caps_pass": false,
+      "delivered_conductor_powers_W": [
+        "96/245",
+        "-192/1225"
+      ],
+      "delivered_net_power_W": "288/1225",
+      "delivered_sum_power_magnitudes_VA": "96/175",
+      "from_shunt_currents_A": [
+        "1/10",
+        "-1/10"
+      ],
+      "from_voltages_V": [
+        "1",
+        "0"
+      ],
+      "kcl_residual_A": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "network_power_residual_W": "0",
+      "power_caps_pass": true,
+      "receiving_neutral_earth_outflow_A": "8/35",
+      "sending_conductor_powers_W": [
+        "32/35",
+        "0"
+      ],
+      "sending_net_power_W": "32/35",
+      "series_from_currents_A": [
+        "32/35",
+        "-24/35"
+      ],
+      "series_loss_W": "832/1225",
+      "series_to_currents_A": [
+        "-32/35",
+        "24/35"
+      ],
+      "series_voltage_residual_V": [
+        "0",
+        "0"
+      ],
+      "shunt_loss_W": "401/2450",
+      "source_earth_injection_A": "8/35",
+      "source_phase_current_A": "71/70",
+      "source_power_W": "71/70",
+      "to_shunt_currents_A": [
+        "2/35",
+        "6/35"
+      ],
+      "to_voltages_V": [
+        "3/7",
+        "8/35"
+      ]
+    },
+    {
+      "aggregate_observation_pass": true,
+      "coil_current_A": "2/7",
+      "coil_power_residual_W": "0",
+      "coil_voltage_V": "3/5",
+      "composite_from_currents_A": [
+        "39/70",
+        "-31/70"
+      ],
+      "composite_to_currents_A": [
+        "-2/7",
+        "2/7"
+      ],
+      "current_caps_pass": true,
+      "delivered_conductor_powers_W": [
+        "16/49",
+        "-48/1225"
+      ],
+      "delivered_net_power_W": "352/1225",
+      "delivered_sum_power_magnitudes_VA": "64/175",
+      "from_shunt_currents_A": [
+        "1/10",
+        "-1/10"
+      ],
+      "from_voltages_V": [
+        "1",
+        "0"
+      ],
+      "kcl_residual_A": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "network_power_residual_W": "0",
+      "power_caps_pass": true,
+      "receiving_neutral_earth_outflow_A": "4/35",
+      "sending_conductor_powers_W": [
+        "16/35",
+        "0"
+      ],
+      "sending_net_power_W": "16/35",
+      "series_from_currents_A": [
+        "16/35",
+        "-12/35"
+      ],
+      "series_loss_W": "208/1225",
+      "series_to_currents_A": [
+        "-16/35",
+        "12/35"
+      ],
+      "series_voltage_residual_V": [
+        "0",
+        "0"
+      ],
+      "shunt_loss_W": "529/2450",
+      "source_earth_injection_A": "4/35",
+      "source_phase_current_A": "39/70",
+      "source_power_W": "39/70",
+      "to_shunt_currents_A": [
+        "6/35",
+        "-2/35"
+      ],
+      "to_voltages_V": [
+        "5/7",
+        "4/35"
+      ]
+    }
+  ],
+  "schema_version": "0.1.0",
+  "source_sha256": {
+    "experiments/lessons/neutral_shunt_multiplicity.json": "23b213442e66dfaef67c33d6536912b78a1d03049134d3509faf38e1c3bad583",
+    "experiments/lessons/neutral_shunt_multiplicity.py": "9e78faa83629b6983f212551d6399462d3a51616c108e1044add6eb626c300a3",
+    "experiments/lessons/solution_multiplicity.py": "db4718b29bfb467e07ef564aa28f46d526382feefecb8767e01fffe00feff9c4"
+  }
+}

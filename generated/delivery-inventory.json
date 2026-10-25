@@ -24,6 +24,7 @@
       "ARCH-RECOVERY-003",
       "ARCH-RECOVERY-004",
       "LIMIT-MULTIPLICITY-001",
+      "LIMIT-NEUTRAL-001",
       "LOAD-CONNECTION-002",
       "PRACTICE-REUSE-001",
       "PRACTICE-SHORT-001",
@@ -48,11 +49,11 @@
       "TR-XFMR-005",
       "TR-XFMR-006"
     ],
-    "total": 119,
+    "total": 120,
     "verification": {
       "externally-reviewed": 0,
       "independently-implemented": 6,
-      "self-checked": 113
+      "self-checked": 114
     }
   },
   "knowledge": {
@@ -154,12 +155,12 @@
       "zero-parameter-means-absent-term"
     ]
   },
-  "pair_sha256": "b338af5de7e75f07b9747e50d2e747397de799d96cac2d06f2a52a74fa9b2b52",
+  "pair_sha256": "a5490adb1ffc007c4664265ac6a61f01be7e28597bc21e7baa08e16bac8c3bab",
   "schema_version": "1.0.0",
   "source_sha256": {
-    "claims/claims.toml": "5ca8dd7fc255c0a4b095744e3717c21d098d324bbdec2fb60e99bb2b0b5f601f",
-    "generated/federated-knowledge-pair-manifest.json": "16b94b33f9bf49c142d8c9265e539ce4c6dc70d7af66b1573a40a952a0992609",
+    "claims/claims.toml": "c87597c9d1ba395c88a3ad68c069228836b7c3dd2d66140d93fe61046ad9fe5c",
+    "generated/federated-knowledge-pair-manifest.json": "f847fd0842007e11a1f17686d6332206f3b0a8bfdaed4e2b1c54c680338b4b4d",
     "knowledge/psk.toml": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364",
-    "llm/misconceptions.toml": "3b87b79049dbc9eb541db81b9939c5de719581990a37e0b840970c64b78ca649"
+    "llm/misconceptions.toml": "0da71ff000e84c24b7eb00aa124d12bcd2c2b180a53af39b8fd69c6e02907461"
   }
 }

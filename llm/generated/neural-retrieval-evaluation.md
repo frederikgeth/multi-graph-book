@@ -6,10 +6,10 @@
 **Embedding artifact hash:** `507dfbc0b17cb6138f2a9f9e0894df3198cab2bebb23fc46759021e6ee458d02`
 **Current-corpus compatibility:** `archived_prior_corpus`
 **Archived on:** `2026-10-26`
-**Current corpus hash:** `6d8a92def99153e18ceb1a27111663edad908f576d0c2f58bc9f0feae983b124`
+**Current corpus hash:** `225ffddd9861785ebd82a71611216446f138262aab36fd688aa91a16cb4db165`
 **Current held-out input hash:** `171857dd883acf3ed9a091fac0e2e7485cbd13d5f0477a56af37d010cec16592`
 **Required action:** rerun both pinned neural retriever and reranker before comparing them with the current corpus
-**Current lexical baseline:** lexical recall@10=42.6%; char_tfidf recall@10=43.9%; hybrid recall@10=45.5%
+**Current lexical baseline:** lexical recall@10=42.6%; char_tfidf recall@10=43.4%; hybrid recall@10=45.5%
 
 This report is an opt-in comparison. It does not promote neural retrieval into the release path
 or prove answer faithfulness; it measures only held-out evidence-record retrieval.

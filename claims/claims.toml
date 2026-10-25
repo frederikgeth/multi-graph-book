@@ -1,4 +1,21 @@
 [[claim]]
+claim_id = "LIMIT-NEUTRAL-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ["terminal_behavior", "phase_neutral", "limits", "numerical_structure"]
+chapter = "docs/src/cases/neutral-shunt-multiplicity.md"
+claim_text = "In the declared two-conductor SI circuit with R=[[1,1/2],[1/2,1]] ohm, explicit source/receiving shunts and 6/35 W phase-neutral load, both exact coil-voltage roots 1/5 and 3/5 V pass the per-conductor power caps [1,1/2] VA at both series-line ends. The lower root nevertheless violates the 1/2 A neutral current cap at both ends, despite nonzero receiving-neutral voltage; aggregate power observations also fail to certify that conductor rating."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "exact_rational_elimination_and_native_candidate_equation_audit"
+citation_keys = []
+model_scope = "the fixed two-conductor real passive circuit, separate dense shunt factors and explicit current/earth-reference observations specified in the lesson"
+assumptions = "source terminals fixed at 1 and 0 V; source phase-neutral conductance 1/10 S, receiving phase-neutral conductance 2/7 S and neutral-earth conductance 1 S; zero reactive load; native line caps refer to the series element; aggregate 1.1 VA cap is postprocessed only"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independent scientific review, three-phase extensions and native internal pi-shunt coverage remain pending; no temperature, stability, or complete feeder-feasibility conclusion is established."
+
+[[claim]]
 claim_id = "LIMIT-CONVEXITY-001"
 exactness_object = "feasible_set"
 preservation_dimensions = ["limits", "numerical_structure"]

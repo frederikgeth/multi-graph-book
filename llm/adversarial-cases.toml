@@ -254,3 +254,19 @@ question = "Does a nonconvex power cap necessarily create multiple solutions?"
 expected_status = "qualified"
 expected_claim_ids = ["LIMIT-CONVEXITY-001", "LIMIT-MULTIPLICITY-001"]
 expected_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-FINITE-NEUTRAL-POWER-CAP"
+audience = "power_engineer"
+question = "Does a nonzero neutral voltage make a power limit equivalent to a current limit?"
+expected_status = "qualified"
+expected_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001"]
+expected_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-AGGREGATE-NEUTRAL-CERTIFICATE"
+audience = "power_engineer"
+question = "Can an aggregate power cap certify the neutral current rating when shunts carry earth current?"
+expected_status = "qualified"
+expected_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001"]
+expected_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]

@@ -369,8 +369,10 @@ The output binds the book witness, package fixture/example, candidate Git
 revision/tree and Julia environment hashes. It retains all fourteen attempted
 solves, status and coverage evidence. The candidate is local and unpublished;
 ordinary clones cannot fetch it yet, and the published MCP verification route
-does not expose this audit. General generator, transformer, bus-bound and
-multiconductor-with-shunts coverage remain separate roadmap items.
+does not expose this audit. General generator, transformer and bus-bound coverage remain separate roadmap
+items. The next [explicit-neutral and shunt example](@ref neutral-shunt-multiplicity)
+extends this controlled experiment to two coupled conductors and separate shunt
+factors, with finite receiving-neutral voltage and distinct current observations.
 
 **Transfer exercise.** First change only ``I_{\max}`` from 0.5 to 0.3 while
 keeping ``V_{\rm nom}=1`` and recomputing ``S_{\max}``. Do both roots still pass

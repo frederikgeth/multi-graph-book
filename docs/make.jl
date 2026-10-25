@@ -161,6 +161,7 @@ const PAGES_HTML = [
     "Part 7: Evidence for a computation" => [
         "Numerical consequences" => "foundations/numerical-consequences.md",
         "Unintended solution multiplicity" => "cases/unintended-solution-multiplicity.md",
+        "Neutral and shunt multiplicity" => "cases/neutral-shunt-multiplicity.md",
         "Australian construction reproduction" => "cases/australian-carson-reproduction.md",
         "Computational case guide" => "start/computational-cases.md",
     ],
@@ -281,6 +282,7 @@ const PAGES_PDF = [
     "Part 7: Evidence for a computation" => [
         "Numerical consequences" => "foundations/numerical-consequences.md",
         "Unintended solution multiplicity" => "cases/unintended-solution-multiplicity.md",
+        "Neutral and shunt multiplicity" => "cases/neutral-shunt-multiplicity.md",
         "Australian construction reproduction" => "cases/australian-carson-reproduction.md",
         "Computational case guide" => "start/computational-cases.md",
     ],

@@ -734,6 +734,18 @@
         "hatched excluded-current strip",
         "labelled interval endpoints and selection markers"
       ]
+    },
+    "neutral-shunt-multiplicity": {
+      "svg": "docs/src/assets/neutral-shunt-multiplicity.svg",
+      "png": "docs/src/assets/neutral-shunt-multiplicity.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": [
+        "explicit source and load labels",
+        "solid conductor paths versus dashed mutual-coupling annotation",
+        "signed current arrows",
+        "separate shunt boxes and earth symbols",
+        "numeric current-limit caption"
+      ]
     }
   }
 }

@@ -138,3 +138,19 @@ Multistart observations are diagnostic, including failures; different starts
 of auxiliary variables can change which branch a local solver selects.
 This does not change the published integration pin or expose candidate audits
 through MCP.
+
+The `verify_neutral_shunt_multiplicity.jl` companion adds the package-owned
+`neutral_shunt_roots.jl` example in the same candidate environment:
+
+```sh
+python3 experiments/lessons/neutral_shunt_multiplicity.py --check
+julia --startup-file=no --project="$MGB_AUDIT_ENV" \
+  experiments/lessons/verify_neutral_shunt_multiplicity.jl "$MGB_AUDIT_ENV/neutral-shunts.json"
+```
+
+It binds the exact SI witness to native coupled series conductors and separate
+dense shunt factors, checks both roots and audits the declared endpoint ratings.
+Source, series, composite-cut and load-coil currents remain separate observations.
+Aggregate-power caps are postprocessed comparisons, not new native constraints;
+shunt currents are reconstructed. Neither native internal pi-shunt coverage nor
+an MCP capability is introduced. The published pin remains separate.

@@ -24,21 +24,21 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight
 <text x="1099.0" y="175" class="small" text-anchor="middle">0</text>
 <text x="410" y="218" class="small" text-anchor="end">terminal_behavior</text>
 <rect x="430" y="187" width="258" height="34" rx="10" class="good"/>
-<text x="559.0" y="217" class="head" text-anchor="middle">89</text>
+<text x="559.0" y="217" class="head" text-anchor="middle">90</text>
 <rect x="700" y="187" width="258" height="34" rx="10" class="good"/>
 <text x="829.0" y="217" class="head" text-anchor="middle">6</text>
 <rect x="970" y="187" width="258" height="34" rx="10" class="empty"/>
 <text x="1099.0" y="217" class="small" text-anchor="middle">0</text>
 <text x="410" y="260" class="small" text-anchor="end">phase_neutral</text>
 <rect x="430" y="229" width="258" height="34" rx="10" class="good"/>
-<text x="559.0" y="259" class="head" text-anchor="middle">36</text>
+<text x="559.0" y="259" class="head" text-anchor="middle">37</text>
 <rect x="700" y="229" width="258" height="34" rx="10" class="good"/>
 <text x="829.0" y="259" class="head" text-anchor="middle">5</text>
 <rect x="970" y="229" width="258" height="34" rx="10" class="empty"/>
 <text x="1099.0" y="259" class="small" text-anchor="middle">0</text>
 <text x="410" y="302" class="small" text-anchor="end">limits</text>
 <rect x="430" y="271" width="258" height="34" rx="10" class="good"/>
-<text x="559.0" y="301" class="head" text-anchor="middle">36</text>
+<text x="559.0" y="301" class="head" text-anchor="middle">37</text>
 <rect x="700" y="271" width="258" height="34" rx="10" class="good"/>
 <text x="829.0" y="301" class="head" text-anchor="middle">4</text>
 <rect x="970" y="271" width="258" height="34" rx="10" class="empty"/>
@@ -73,7 +73,7 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight
 <text x="1099.0" y="469" class="small" text-anchor="middle">0</text>
 <text x="410" y="512" class="small" text-anchor="end">numerical_structure</text>
 <rect x="430" y="481" width="258" height="34" rx="10" class="good"/>
-<text x="559.0" y="511" class="head" text-anchor="middle">18</text>
+<text x="559.0" y="511" class="head" text-anchor="middle">19</text>
 <rect x="700" y="481" width="258" height="34" rx="10" class="empty"/>
 <text x="829.0" y="511" class="small" text-anchor="middle">0</text>
 <rect x="970" y="481" width="258" height="34" rx="10" class="empty"/>
@@ -88,5 +88,5 @@ text{font-family:Arial,sans-serif;fill:#17212b}.title{font-size:28px;font-weight
 <rect x="70" y="570" width="1220" height="80" rx="10" class="panel"/>
 <text x="95" y="607" class="body" text-anchor="start">External review remains empty across every dimension; dimensions describe the book's claim scope, not literature completeness.</text>
 <text x="95" y="632" class="small" text-anchor="start">The map is a gap analysis, not a claim that an empty cell proves the literature is empty.</text>
-<text x="75" y="720" class="small" text-anchor="start">Generated from claims/claims.toml · 119 claims · preservation dimensions are controlled metadata.</text>
+<text x="75" y="720" class="small" text-anchor="start">Generated from claims/claims.toml · 120 claims · preservation dimensions are controlled metadata.</text>
 </svg>

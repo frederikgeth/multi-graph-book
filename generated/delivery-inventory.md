@@ -6,10 +6,10 @@ These are registry counts and audit queues, not newly measured scientific result
 
 | Inventory | Count |
 |---|---:|
-| Claims | 119 |
+| Claims | 120 |
 | Claim verification: `externally-reviewed` | 0 |
 | Claim verification: `independently-implemented` | 6 |
-| Claim verification: `self-checked` | 113 |
+| Claim verification: `self-checked` | 114 |
 | PSK records | 18 |
 | Stable misconception IDs | 33 |
 | Misconception IDs with a PSK link | 18 |
@@ -41,7 +41,7 @@ Self-checks and independent implementations retain their distinct ledger states.
 
 ## Established-result entries without citation keys
 
-There are 31 entries in this audit queue. Missing citation keys do not show that
+There are 32 entries in this audit queue. Missing citation keys do not show that
 a statement is false or necessarily requires an external citation. Review each entry's
 basis: cited result, explicit book derivation, or bounded numerical evidence. Do not
 promote a finite numerical test into a general theorem through a status label.
@@ -54,6 +54,7 @@ promote a finite numerical test into a general theorem through a status label.
 - `ARCH-RECOVERY-003`
 - `ARCH-RECOVERY-004`
 - `LIMIT-MULTIPLICITY-001`
+- `LIMIT-NEUTRAL-001`
 - `LOAD-CONNECTION-002`
 - `PRACTICE-REUSE-001`
 - `PRACTICE-SHORT-001`
@@ -82,5 +83,5 @@ promote a finite numerical test into a general theorem through a status label.
 
 - BMOPFTools revision: `97c274946091859b7d9b0e822c96f1e7f9f50c7e`
 - Finding registry SHA-256: `52db7414e7f2bef158d32988c196d6d038320e30efda64a7501ddf1872d44519`
-- Federated pair SHA-256: `b338af5de7e75f07b9747e50d2e747397de799d96cac2d06f2a52a74fa9b2b52`
+- Federated pair SHA-256: `a5490adb1ffc007c4664265ac6a61f01be7e28597bc21e7baa08e16bac8c3bab`
 - [Machine-readable inventory and source hashes](delivery-inventory.json)
