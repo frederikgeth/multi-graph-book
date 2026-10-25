@@ -148,3 +148,35 @@ question = "Can I reuse an OPF after updating a parameter through zero?"
 expected_status = "under_retrieved"
 expected_claim_ids = []
 expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-COIL-CIRCULATION"
+audience = "power_engineer"
+question = "Can delta coil currents circulate while terminal KCL and total power still agree?"
+expected_status = "qualified"
+expected_claim_ids = ["LOAD-CONNECTION-002"]
+expected_concept_ids = ["phase-conductor-sequence-coordinate", "flow-current-power-message", "direction-orientation-hierarchy"]
+
+[[case]]
+case_id = "ADV-DELTA-INRUSH-BOUNDARY"
+audience = "power_engineer"
+question = "Can delta transformer inrush current be predicted from these equations?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-COIL-TRANSIENT-BOUNDARY"
+audience = "power_engineer"
+question = "Can delta coil currents predict transient transformer inrush during energization?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-EXACT-PHRASE-TRANSIENT"
+audience = "software_engineer"
+question = "Can the rule delta coil current terminal kcl calculate saturation during energisation?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []

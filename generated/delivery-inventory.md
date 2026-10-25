@@ -6,14 +6,14 @@ These are registry counts and audit queues, not newly measured scientific result
 
 | Inventory | Count |
 |---|---:|
-| Claims | 115 |
+| Claims | 116 |
 | Claim verification: `externally-reviewed` | 0 |
 | Claim verification: `independently-implemented` | 6 |
-| Claim verification: `self-checked` | 109 |
+| Claim verification: `self-checked` | 110 |
 | PSK records | 18 |
-| Stable misconception IDs | 29 |
+| Stable misconception IDs | 30 |
 | Misconception IDs with a PSK link | 18 |
-| Misconception IDs without a PSK link | 11 |
+| Misconception IDs without a PSK link | 12 |
 | Full pinned package Finding registry | 381 |
 | Finding records in the curated executable export | 57 |
 
@@ -23,6 +23,7 @@ Self-checks and independent implementations retain their distinct ledger states.
 
 ## Misconception IDs still requiring a PSK link or explicit exclusion
 
+- `delta-coil-currents-are-terminal-currents`
 - `ideal-transformer-is-a-large-admittance`
 - `loads-generators-fixed-graph-membership`
 - `nodal-operator-is-source-network`
@@ -37,7 +38,7 @@ Self-checks and independent implementations retain their distinct ledger states.
 
 ## Established-result entries without citation keys
 
-There are 28 entries in this audit queue. Missing citation keys do not show that
+There are 29 entries in this audit queue. Missing citation keys do not show that
 a statement is false or necessarily requires an external citation. Review each entry's
 basis: cited result, explicit book derivation, or bounded numerical evidence. Do not
 promote a finite numerical test into a general theorem through a status label.
@@ -49,6 +50,7 @@ promote a finite numerical test into a general theorem through a status label.
 - `ARCH-RECOVERY-002`
 - `ARCH-RECOVERY-003`
 - `ARCH-RECOVERY-004`
+- `LOAD-CONNECTION-002`
 - `PRACTICE-SHORT-001`
 - `PRACTICE-UPDATE-001`
 - `TR-COMP-001`
@@ -75,5 +77,5 @@ promote a finite numerical test into a general theorem through a status label.
 
 - BMOPFTools revision: `97c274946091859b7d9b0e822c96f1e7f9f50c7e`
 - Finding registry SHA-256: `52db7414e7f2bef158d32988c196d6d038320e30efda64a7501ddf1872d44519`
-- Federated pair SHA-256: `1f6a12e0ea1509cf6c0038db44e3b263dd1ad982b719a6c3a6c7060e2e0c0bb6`
+- Federated pair SHA-256: `8f3012415558cda4bc0bf336c92a37d5cbc32db45dc1324017b6b59264e5ac3b`
 - [Machine-readable inventory and source hashes](delivery-inventory.json)

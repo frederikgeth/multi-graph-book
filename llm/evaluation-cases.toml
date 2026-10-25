@@ -902,3 +902,33 @@ required_claim_ids = ["PRACTICE-SHORT-001"]
 required_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
 required_answer_elements = ["finite resistance ratios select member currents", "ideal shorts retain only zero drop and a total-current equation", "check member limits separately from voltage agreement"]
 forbidden_simplifications = ["small voltage error guarantees rating feasibility", "every regularization has the same limit"]
+
+[[case]]
+case_id = "EVAL-DELTA-COIL-STUDENT"
+audience = "student"
+question = "Are delta coil currents identical to terminal currents?"
+misconception_id = "delta-coil-currents-are-terminal-currents"
+required_claim_ids = ["LOAD-CONNECTION-002"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "flow-current-power-message", "direction-orientation-hierarchy"]
+required_answer_elements = ["apply the transpose incidence to coil currents", "circulation can preserve terminal currents and total power", "check the individual coil equations"]
+forbidden_simplifications = ["coil currents equal terminal currents", "aggregate power validates every coil", "a two-terminal native delta has three coils"]
+
+[[case]]
+case_id = "EVAL-DELTA-COIL-SOFTWARE"
+audience = "software_engineer"
+question = "Can I put a delta load's coil currents directly into terminal KCL?"
+misconception_id = "delta-coil-currents-are-terminal-currents"
+required_claim_ids = ["LOAD-CONNECTION-002"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "flow-current-power-message", "direction-orientation-hierarchy"]
+required_answer_elements = ["apply the transpose incidence to coil currents", "circulation can preserve terminal currents and total power", "check the individual coil equations"]
+forbidden_simplifications = ["coil currents equal terminal currents", "aggregate power validates every coil", "a two-terminal native delta has three coils"]
+
+[[case]]
+case_id = "EVAL-DELTA-COIL-POWER"
+audience = "power_engineer"
+question = "Does terminal KCL and total power validate each delta coil current?"
+misconception_id = "delta-coil-currents-are-terminal-currents"
+required_claim_ids = ["LOAD-CONNECTION-002"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "flow-current-power-message", "direction-orientation-hierarchy"]
+required_answer_elements = ["apply the transpose incidence to coil currents", "circulation can preserve terminal currents and total power", "check the individual coil equations"]
+forbidden_simplifications = ["coil currents equal terminal currents", "aggregate power validates every coil", "a two-terminal native delta has three coils"]

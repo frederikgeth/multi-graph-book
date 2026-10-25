@@ -539,6 +539,24 @@ coverage by incidence, but must first demonstrate that its incidence inventory
 is complete. A failed evaluated check must also remain visible when other rows
 are unassessed.
 
+### Extending coverage without changing the older API
+
+The separate candidate `audit_solution` now adds default-role source neutral
+returns, implicit source grounding and WYE/SINGLE_PHASE/DELTA constant-power
+load equations. The same running-network result then has **36 unassessed rows**:
+11 local power equations across five loads and the source voltage relation are
+now evaluated. Source-return and load-terminal currents are reconstructed from
+their connection maps; each explicit or implicit earth reaction is consumed once.
+The 42-row table above remains the coverage of `audit_linear_solution`.
+
+The extended verdict is still **indeterminate**. The switch, generator,
+n-winding transformer and bus voltage bounds remain unassessed, as do all 26
+terminal KCL rows and aggregate power because required current contributions
+are still missing. The companion records both APIs on the same solved point;
+no zeros are supplied to close the remaining obligations. The
+[delta coil lesson](@ref delta-coil-current-lesson) explains why successful KCL
+would still not replace the individual load equations.
+
 **Transfer exercise.** Keep the two equal-voltage source currents at 6 A and 4 A,
 but remove the second source's current field. Can the evaluator report zero
 aggregate error because the first source is present? **Check your reasoning:**

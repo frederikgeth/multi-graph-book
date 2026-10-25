@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "c0505022573af94973eea6e67ff371d08b31a928c015220084619c8136a6763d",
+  "corpus_sha256": "d7acbfd0042a9e220a70453da6c3ac4f9a0afcb634e531325e55613e19e4fea1",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -12,15 +12,15 @@
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
     "included_doc_count": 74
   },
-  "evaluation_case_count": 90,
+  "evaluation_case_count": 93,
   "heldout_case_count": 33,
-  "misconception_count": 29,
-  "record_count": 928,
+  "misconception_count": 30,
+  "record_count": 933,
   "record_counts": {
-    "claim_bundle": 115,
+    "claim_bundle": 116,
     "concept_bundle": 18,
     "scientific_knowledge": 18,
-    "section": 777
+    "section": 781
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -33,7 +33,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "8cdbf81ec1ccdf8f687a26d068a9e4571ccb7a246ab53fab135a3ef11ad5b48e"
+      "sha256": "e4d6725550660fbf061190c9fc58aeb2f01d5af246e9623e923ecfeb05832207"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -77,7 +77,7 @@
     },
     {
       "path": "docs/src/cases/study-workbook.md",
-      "sha256": "c476ec24a31a851e06fe355664ce2108b1b70f71894d231a4407de25b7fb89b1"
+      "sha256": "5502e7f2eff62ec56c445632f72f16fe164f5435ac88aebdff41df899c177b6a"
     },
     {
       "path": "docs/src/cases/transformer-tap-ac-decision.md",
@@ -113,7 +113,7 @@
     },
     {
       "path": "docs/src/foundations/load-models-and-decision-dependence.md",
-      "sha256": "f2cf62ff347112136ce260c563dcd658a1561bb4fed14d7d53c7da0855085ed4"
+      "sha256": "054b32b503904b3480205bd6abdfaeeb1c7f1ce5ecd069dd82da0577abd8848c"
     },
     {
       "path": "docs/src/foundations/multigraphs-for-modelers.md",
@@ -129,7 +129,7 @@
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
-      "sha256": "1d5ac87cba4a74c5e7847f18e62be5083e3f69109add9ffd7dd331ce439ab891"
+      "sha256": "5f27ada03359de94d1452b216eecf170448e90ef3fffdbcb0632c85404940edb"
     },
     {
       "path": "docs/src/foundations/orientation-terminal-power.md",
@@ -333,7 +333,7 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "d7cf5f7e49151c5564670f4583001c6f9dbcf16cc88737f8a12220bc0b6c9f66"
+      "sha256": "3e42d6c8df00feb4b660b55b7a382a9812120948f11103c82bf8c9b3644a7cba"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",
@@ -341,7 +341,7 @@
     },
     {
       "path": "llm/evaluation-cases.toml",
-      "sha256": "dc04693ff156a9572f1f77f059574bcfa15908635dfdcf45bf72d4c05cd1346b"
+      "sha256": "8b0af90257375e574243b1492afc08f98fa5db87deb05bee1befb6f94dc06d76"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -349,7 +349,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "f46006c90ed7c25fa105c943365de4bba1dee5dc6ef2d671924fcc8852303795"
+      "sha256": "d460027d0501cb8bc299b2bde583d9ded4e10e93256a0f3881f998b668a70d19"
     },
     {
       "path": "vocabulary/vocabulary.toml",

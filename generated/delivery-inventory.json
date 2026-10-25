@@ -23,6 +23,7 @@
       "ARCH-RECOVERY-002",
       "ARCH-RECOVERY-003",
       "ARCH-RECOVERY-004",
+      "LOAD-CONNECTION-002",
       "PRACTICE-SHORT-001",
       "PRACTICE-UPDATE-001",
       "TR-COMP-001",
@@ -45,11 +46,11 @@
       "TR-XFMR-005",
       "TR-XFMR-006"
     ],
-    "total": 115,
+    "total": 116,
     "verification": {
       "externally-reviewed": 0,
       "independently-implemented": 6,
-      "self-checked": 109
+      "self-checked": 110
     }
   },
   "knowledge": {
@@ -68,6 +69,7 @@
       "complete-feasibility-status-is-enough": [
         "PSK-000013"
       ],
+      "delta-coil-currents-are-terminal-currents": [],
       "fixed-tap-snapshot-preserves-adjustable-transformer": [
         "PSK-000005"
       ],
@@ -128,8 +130,9 @@
         "PSK-000004"
       ]
     },
-    "total": 29,
+    "total": 30,
     "unlinked_ids": [
+      "delta-coil-currents-are-terminal-currents",
       "ideal-transformer-is-a-large-admittance",
       "loads-generators-fixed-graph-membership",
       "nodal-operator-is-source-network",
@@ -143,12 +146,12 @@
       "vanishing-impedance-preserves-ideal-current-sharing"
     ]
   },
-  "pair_sha256": "1f6a12e0ea1509cf6c0038db44e3b263dd1ad982b719a6c3a6c7060e2e0c0bb6",
+  "pair_sha256": "8f3012415558cda4bc0bf336c92a37d5cbc32db45dc1324017b6b59264e5ac3b",
   "schema_version": "1.0.0",
   "source_sha256": {
-    "claims/claims.toml": "8cdbf81ec1ccdf8f687a26d068a9e4571ccb7a246ab53fab135a3ef11ad5b48e",
-    "generated/federated-knowledge-pair-manifest.json": "4fc6afb305d0828628ff556eacc8f13453cf02203ddbe8f94b78788a326ffd76",
+    "claims/claims.toml": "e4d6725550660fbf061190c9fc58aeb2f01d5af246e9623e923ecfeb05832207",
+    "generated/federated-knowledge-pair-manifest.json": "92b9b56cabba9a37024360f53c36675bb9525bc88f087fc17246862f36ae9c9e",
     "knowledge/psk.toml": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364",
-    "llm/misconceptions.toml": "f46006c90ed7c25fa105c943365de4bba1dee5dc6ef2d671924fcc8852303795"
+    "llm/misconceptions.toml": "d460027d0501cb8bc299b2bde583d9ded4e10e93256a0f3881f998b668a70d19"
   }
 }

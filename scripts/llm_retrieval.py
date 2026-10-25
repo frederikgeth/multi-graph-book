@@ -33,7 +33,18 @@ ROUTER_GENERIC_TERMS = {
 # proofs or replacements for the curated pattern score. In particular, KCL is
 # not itself a solver-status question, and impedance is not source provenance.
 # Match normalized tokens so punctuation/plurals follow the ordinary router.
+# A phasor-incidence packet cannot answer a transient prediction request, even
+# when it contains a curated coil-current phrase. This conservative refusal is
+# route-specific; it does not claim to classify every unsupported physical model.
+ROUTER_TOPIC_EXCLUSIONS = {
+    "delta-coil-currents-are-terminal-currents": r"inrush|transient\w*|energiz\w*|energis\w*|saturat\w*",
+}
+
 ROUTER_TOPIC_PATTERNS = {
+    "transformer-end-swap-is-ordinary-edge-reversal": (
+        r"transformer\w*|xfmr", r"swap\w*|revers\w*|exchang\w*|flip\w*|orient\w*|undirect\w*|sort\w*|canonicaliz\w*",
+    ),
+    "delta-coil-currents-are-terminal-currents": (r"delta", r"coil\w*", r"current\w*|kcl"),
     "vanishing-impedance-preserves-ideal-current-sharing": (
         r"ideal|tiny|small|vanish\w*", r"impedance|resistance|resistor\w*|switch\w*|short\w*", r"current\w*|sharing|split|limit\w*",
     ),
@@ -521,6 +532,9 @@ class CorpusIndex:
         query_terms = set(tokenize(query))
         ranked = []
         for item in self.misconceptions:
+            excluded = ROUTER_TOPIC_EXCLUSIONS.get(item["id"])
+            if excluded and any(re.fullmatch(excluded, term) for term in query_terms):
+                continue
             topic_patterns = ROUTER_TOPIC_PATTERNS.get(item["id"], ())
             topic_matches = all(
                 any(re.fullmatch(pattern, term) for term in query_terms)

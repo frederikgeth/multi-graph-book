@@ -1,9 +1,13 @@
 {
   "base_revision": "97c274946091859b7d9b0e822c96f1e7f9f50c7e",
   "branch": "codex/coverage-aware-feasibility",
-  "entrypoint": "audit_linear_solution",
+  "entrypoint": "audit_solution",
+  "entrypoints": [
+    "audit_linear_solution",
+    "audit_solution"
+  ],
   "evidence_state": "local_development_commit_not_in_published_integration_pin",
-  "git_tree_sha1": "cdeef61748dbcde0fdda539af539f6711c8c6ac1",
+  "git_tree_sha1": "31a5a11420aeda70235d92a52ef7266864c2dd23",
   "not_established": [
     "all-device running-network feasibility",
     "objective or global optimality",
@@ -11,8 +15,9 @@
     "availability in the published package pin",
     "MCP exposure"
   ],
+  "previous_candidate_revision": "5891d9513b14ec3d4b935b31e90585c9ace95eac",
   "repository": "frederikgeth/BMOPFTools.jl",
-  "revision": "5891d9513b14ec3d4b935b31e90585c9ace95eac",
+  "revision": "01b25ff8be7aa8e618653071214f20c40bf69e5c",
   "schema_version": "0.1.0",
-  "scope": "direct SI linear series-line, earth-shunt, ground-reference and source audit; explicit unassessed coverage for unsupported devices"
+  "scope": "direct SI equation audit for inline series lines, earth shunts, source neutral returns and constant-power WYE/SINGLE_PHASE/DELTA loads; explicit missing coverage"
 }

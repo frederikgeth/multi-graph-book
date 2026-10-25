@@ -1,6 +1,19 @@
 schema_version = "0.1.0"
 
 [[misconception]]
+id = "delta-coil-currents-are-terminal-currents"
+title = "Delta coil currents can be used directly as terminal currents"
+severity = "critical"
+query_patterns = ["delta coil currents terminal currents", "delta coil current terminal kcl", "delta coil current circulation total power", "terminal kcl total power validate delta coil currents"]
+tempting_answer = "A delta load's coil-current array can be inserted directly into terminal KCL, and total power checks every coil."
+required_qualification = "For fixed real oriented incidence C, coil voltages are CV and terminal currents are C transpose times coil currents. A three-coil circulation lies in the transpose nullspace and leaves terminal KCL and total power unchanged while individual coil powers change. Check each declared coil law and retain ordered endpoints; two phase terminals define one native delta coil and three define a cycle. This does not validate arbitrary connection implementations or transient physics."
+safe_shorthand = "Map coil currents to terminals and verify each coil equation; aggregate agreement alone is insufficient."
+operational_consequence = "A terminal-only check can miss an incorrect internal coil operating point or a wrongly assembled current injection."
+mandatory_claim_ids = ["LOAD-CONNECTION-002"]
+mandatory_concept_ids = ["phase-conductor-sequence-coordinate", "flow-current-power-message", "direction-orientation-hierarchy"]
+source_paths = ["docs/src/foundations/load-models-and-decision-dependence.md"]
+
+[[misconception]]
 id = "vanishing-impedance-preserves-ideal-current-sharing"
 title = "Tiny impedances and ideal switches have the same current sharing"
 severity = "critical"

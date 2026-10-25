@@ -2758,41 +2758,41 @@
   "compatibility": {
     "archived_on": "2026-10-25",
     "current_corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "current_corpus_sha256": "c0505022573af94973eea6e67ff371d08b31a928c015220084619c8136a6763d",
+    "current_corpus_sha256": "d7acbfd0042a9e220a70453da6c3ac4f9a0afcb634e531325e55613e19e4fea1",
     "current_heldout_sha256": "171857dd883acf3ed9a091fac0e2e7485cbd13d5f0477a56af37d010cec16592",
     "current_lexical_summary": {
       "char_tfidf": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.222396,
-        "recall_at_10": 0.446128,
-        "recall_at_5": 0.342761,
+        "mean_reciprocal_rank_at_20": 0.220509,
+        "recall_at_10": 0.43771,
+        "recall_at_5": 0.33771,
         "recall_expected_records_at_10": 180,
-        "recall_hits_at_10": 76,
+        "recall_hits_at_10": 74,
         "zero_recall_at_10_count": 5
       },
       "hybrid": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.217151,
-        "recall_at_10": 0.459764,
-        "recall_at_5": 0.375926,
+        "mean_reciprocal_rank_at_20": 0.214713,
+        "recall_at_10": 0.454714,
+        "recall_at_5": 0.361448,
         "recall_expected_records_at_10": 180,
-        "recall_hits_at_10": 79,
+        "recall_hits_at_10": 78,
         "zero_recall_at_10_count": 6
       },
       "lexical": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.197082,
-        "recall_at_10": 0.431481,
-        "recall_at_5": 0.335017,
+        "mean_reciprocal_rank_at_20": 0.196586,
+        "recall_at_10": 0.426431,
+        "recall_at_5": 0.33165,
         "recall_expected_records_at_10": 180,
-        "recall_hits_at_10": 74,
+        "recall_hits_at_10": 73,
         "zero_recall_at_10_count": 6
       }
     },
-    "current_record_count": 928,
+    "current_record_count": 933,
     "required_action": "rerun both pinned neural retriever and reranker before comparing them with the current corpus",
     "status": "archived_prior_corpus"
   },

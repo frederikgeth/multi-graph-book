@@ -4,8 +4,8 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `c0505022573af94973eea6e67ff371d08b31a928c015220084619c8136a6763d`<br>
-**Cases:** 90
+**Corpus hash:** `d7acbfd0042a9e220a70453da6c3ac4f9a0afcb634e531325e55613e19e4fea1`<br>
+**Cases:** 93
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
 The latter is permitted to add mandatory claims and concepts only after the query router identifies
@@ -16,11 +16,11 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Measure | Result | Release gate? |
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
-| Open-corpus lexical evidence recall@5 | 27.5% | diagnostic |
-| Open-corpus lexical evidence recall@10 | 33.7% | diagnostic |
+| Open-corpus lexical evidence recall@5 | 28.6% | diagnostic |
+| Open-corpus lexical evidence recall@10 | 35.0% | diagnostic |
 | Open-corpus complete evidence@10 | 1.1% | diagnostic |
-| Evidence-only lexical recall@5 | 34.7% | diagnostic |
-| Evidence-only lexical recall@10 | 41.7% | diagnostic |
+| Evidence-only lexical recall@5 | 36.0% | diagnostic |
+| Evidence-only lexical recall@10 | 42.8% | diagnostic |
 | Evidence-only complete evidence@10 | 2.2% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
@@ -43,10 +43,10 @@ the question count must not be treated as that many independent observations.
 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `lexical` | 33.5% | 43.1% | 0.0% | 0/33 | 6/33 | 0.197 |
-| `char_tfidf` | 34.3% | 44.6% | 0.0% | 0/33 | 5/33 | 0.222 |
-| `hybrid` | 37.6% | 46.0% | 0.0% | 0/33 | 6/33 | 0.217 |
-| `graph` | 38.0% | 57.7% | 21.2% | 7/33 | 3/33 | 0.252 |
+| `lexical` | 33.2% | 42.6% | 0.0% | 0/33 | 6/33 | 0.197 |
+| `char_tfidf` | 33.8% | 43.8% | 0.0% | 0/33 | 5/33 | 0.221 |
+| `hybrid` | 36.1% | 45.5% | 0.0% | 0/33 | 6/33 | 0.215 |
+| `graph` | 38.0% | 58.2% | 21.2% | 7/33 | 3/33 | 0.252 |
 
 Held-out contract-router firing: **22/33 (66.7%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **20/33 (60.6%)**; this remains diagnostic because the set is synthetic and clustered.
@@ -94,9 +94,9 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 30 | 100.0% | 42.5% | 100.0% |
-| `software_engineer` | 30 | 100.0% | 37.9% | 100.0% |
-| `student` | 30 | 100.0% | 44.6% | 100.0% |
+| `power_engineer` | 31 | 100.0% | 43.5% | 100.0% |
+| `software_engineer` | 31 | 100.0% | 39.1% | 100.0% |
+| `student` | 31 | 100.0% | 45.6% | 100.0% |
 
 ## Case results
 
@@ -192,6 +192,9 @@ Graph versus hybrid complete@10: **7/33** versus **0/33**.
 | `EVAL-VANISHING-IMPEDANCE-STUDENT` | `student` | `vanishing-impedance-preserves-ideal-current-sharing` | 25.0% | yes |
 | `EVAL-VANISHING-IMPEDANCE-SOFTWARE` | `software_engineer` | `vanishing-impedance-preserves-ideal-current-sharing` | 25.0% | yes |
 | `EVAL-VANISHING-IMPEDANCE-POWER` | `power_engineer` | `vanishing-impedance-preserves-ideal-current-sharing` | 25.0% | yes |
+| `EVAL-DELTA-COIL-STUDENT` | `student` | `delta-coil-currents-are-terminal-currents` | 75.0% | yes |
+| `EVAL-DELTA-COIL-SOFTWARE` | `software_engineer` | `delta-coil-currents-are-terminal-currents` | 75.0% | yes |
+| `EVAL-DELTA-COIL-POWER` | `power_engineer` | `delta-coil-currents-are-terminal-currents` | 75.0% | yes |
 
 ## Interpretation and next boundary
 

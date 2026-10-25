@@ -25,6 +25,10 @@ Before treating a solved capstone as feasible, complete the
 rows were evaluated, reconstructed or unassessed, and keep the local package
 candidate separate from the published integration pin.
 
+Before using delta-load result arrays, complete the
+[coil-current lesson](@ref delta-coil-current-lesson). Recover terminal currents
+and test the individual coil laws even when KCL and total power agree.
+
 ## 1. Declare the study
 
 Read [The running multiconductor network](@ref running-network) and

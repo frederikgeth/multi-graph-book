@@ -13,7 +13,7 @@ function linear_coverage_lesson()
     revision = strip(read(`git -C $root rev-parse HEAD`,String))
     revision == profile["revision"] || error("load the exact local package candidate declared in linear-audit-candidate.json")
     isempty(strip(read(`git -C $root status --porcelain`,String))) || error("candidate checkout must be clean")
-    isdefined(BMOPFTools,:audit_linear_solution) || error("the published integration pin does not contain this candidate API")
+    isdefined(BMOPFTools,:audit_solution) || error("the published integration pin does not contain this candidate API")
     fixture_path = joinpath(root,"test","data","linear_audit","two-feeders.json")
     doc = JSON3.read(read(fixture_path,String),Dict{String,Any})
     net, result = doc["network"],doc["result"]
@@ -35,6 +35,25 @@ function linear_coverage_lesson()
     running = running_network()
     solved = solve_opf(running; optimizer=Ipopt.Optimizer,per_unit=true)
     coverage = audit_linear_solution(running,solved)
+    connected_coverage = audit_solution(running,solved)
+    connected_path = joinpath(root,"test","data","linear_audit","neutral-and-delta.json")
+    connected_doc = JSON3.read(read(connected_path,String),Dict{String,Any})
+    cn,cr = connected_doc["network"],connected_doc["result"]
+    connected_analytic = audit_solution(cn,cr)
+    connected_solved = solve_opf(cn;optimizer=Ipopt.Optimizer,per_unit=false)
+    connected_audit = audit_solution(cn,connected_solved)
+    circulated = deepcopy(cr)
+    for (pos,neg) in (("a","b"),("b","c"),("c","a"))
+        coil = circulated["load"]["d"][pos]
+        coil["crd"] += .25; coil["cid"] -= .1
+        vp,vn = cr["bus"]["b"][pos],cr["bus"]["b"][neg]
+        u = complex(vp["vr"]-vn["vr"],vp["vi"]-vn["vi"])
+        power = u*conj(complex(coil["crd"],coil["cid"]))
+        coil["pd"],coil["qd"] = real(power),imag(power)
+    end
+    circulating_audit = audit_solution(cn,circulated)
+    absent_ground = deepcopy(cr); delete!(absent_ground,"ground")
+    missing_ground = audit_solution(cn,absent_ground)
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -57,6 +76,28 @@ function linear_coverage_lesson()
         @test check_solved_network_feasibility(solved).status == :indeterminate
         @test JSON3.read(JSON3.write(coverage.evidence),Dict{String,Any}) == coverage.evidence
     end
+    @testset "Connected source/load candidate teaching route" begin
+        @test connected_analytic.evidence["status"] == "passed"
+        @test connected_solved["termination_status"] in ("OPTIMAL","LOCALLY_SOLVED")
+        @test connected_audit.evidence["status"] == "passed"
+        @test connected_solved["ground"]["b"]["n"]["cg_r"] ≈ .3 atol=1e-6
+        @test connected_solved["ground"]["b"]["n"]["cg_i"] ≈ -.05 atol=1e-6
+        @test circulating_audit.evidence["status"] == "failed"
+        @test circulating_audit.evidence["failed_checks"] == 3
+        @test all(k->row(circulating_audit,"load.d.$k.power")["status"]=="failed",1:3)
+        @test all(t->row(circulating_audit,"bus.b.$t.kcl")["status"]=="passed",("a","b","c","n"))
+        @test row(circulating_audit,"network.power")["status"] == "passed"
+        @test missing_ground.evidence["status"] == "indeterminate"
+        @test row(missing_ground,"network.power")["residual"] === nothing
+        @test connected_coverage.evidence["status"] == "indeterminate"
+        @test connected_coverage.evidence["unassessed_checks"] == 36
+        @test connected_coverage.evidence["failed_checks"] == 0
+        @test count(x->startswith(x["id"],"load.") && x["dimension"]=="device_equations" &&
+            x["status"]=="passed",connected_coverage.evidence["rows"]) == 11
+        @test row(connected_coverage,"voltage_source.s0.voltage")["status"] == "passed"
+        @test count(x->x["dimension"]=="kcl" && x["status"]=="unassessed",connected_coverage.evidence["rows"]) == 26
+        @test JSON3.read(JSON3.write(connected_coverage.evidence),Dict{String,Any}) == connected_coverage.evidence
+    end
     active = dirname(Base.active_project())
     Dict{String,Any}(
         "evidence_state"=>"local_package_candidate_not_promoted_to_published_integration_pin",
@@ -65,13 +106,19 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path]),
         "healthy_tiny_circuit"=>healthy.evidence,
         "tiny_solver_per_unit"=>false, "solved_tiny_circuit"=>tiny_audit.evidence, "tiny_circuit_result"=>tiny_solved,
         "default_scaled_tiny_circuit"=>scaled_audit.evidence, "default_scaled_tiny_result"=>scaled_tiny,
         "cancelling_local_errors"=>rejected.evidence,
         "missing_source_current"=>incomplete.evidence,
         "running_network"=>coverage.evidence,
+        "connected_running_network"=>connected_coverage.evidence,
+        "connected_analytic_circuit"=>connected_analytic.evidence,
+        "connected_solved_circuit"=>connected_audit.evidence,
+        "connected_circuit_result"=>connected_solved,
+        "delta_circulation"=>circulating_audit.evidence,
+        "missing_implicit_earth_reaction"=>missing_ground.evidence,
         "running_network_input"=>running, "running_network_result"=>solved,
         "not_established"=>["all-device running-network feasibility", "objective or global optimality",
             "physical adequacy", "availability in the published package pin", "MCP exposure"])

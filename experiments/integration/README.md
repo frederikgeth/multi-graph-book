@@ -56,7 +56,7 @@ refresh the historical replay files as a side effect of an integration upgrade.
 ## Local direct-audit candidate (separate from the pin)
 
 `linear-audit-candidate.json` identifies the local package commit that implements
-`audit_linear_solution`. It is not a published package release, a change to
+`audit_linear_solution` and the separate `audit_solution` extension. It is not a published package release, a change to
 `profile.json`, or an MCP capability. The package branch is
 `codex/coverage-aware-feasibility`; its worktree created for this development is
 `tmp/BMOPFTools-feasibility` under the book. The Git branch/commit belongs to the
@@ -90,5 +90,14 @@ Do not substitute zero residuals to promote it into the legacy witness contract.
 
 Next promotion requires completing/reviewing the desired device coverage,
 publishing the package commit, deliberately updating the ordinary integration
-pin and regenerating the federated pair. The source-neutral return, loads,
-switches, generators, transformer equations/limits and objective remain open.
+pin and regenerating the federated pair. The native default-role source-neutral return and constant-power loads are now
+covered by the extended API. Switches, generators, transformer equations/limits,
+voltage-dependent loads, bus voltage bounds and objective remain open.
+
+The companion also runs the package's `neutral-and-delta.json` analytic fixture,
+a native solve of it, a delta circulating-current corruption, and missing implicit
+earth-reaction evidence. It applies both APIs to the same running-network result:
+the original linear audit retains 42 unassessed rows; the source/load extension
+reduces this to 36, with 11 load power equations and source relations evaluated.
+Both remain indeterminate. Custom terminal conventions and unrecognized semantic
+fields are explicitly outside the current extension's supported domain.

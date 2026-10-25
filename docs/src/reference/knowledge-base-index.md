@@ -1,13 +1,13 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:8cdbf81ec1ccdf8f687a26d068a9e4571ccb7a246ab53fab135a3ef11ad5b48e -->
+<!-- generated-from claims/claims.toml sha256:e4d6725550660fbf061190c9fc58aeb2f01d5af246e9623e923ecfeb05832207 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 115
+**Indexed claims:** 116
 **Indexed chapters:** 46
 
 ## Claims by type
@@ -102,7 +102,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `COUPLED-CORRIDOR-001` — Physically parallel line sections need not be parallel in the bus multigraph; a source model can retain stable line assets plus oriented section-to-section coupling records, with each connected coupling group compiling into one joint electrical factor before inversion or nodal stamping. | [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | `self-checked` |
 | `TRANSFORM-CATALOG-001` — The guarded-normalization catalogue treats coordinate normalization, series elimination, parallel bundling, switch contraction, multiwinding compilation, and rooted-tree views as distinct rule families whose acceptance depends on declared closure, recovery, constraint, and provenance guards. | [Guarded normalization rules](../transformations/guarded-normalization.md) | `self-checked` |
 
-### `theorem` (45)
+### `theorem` (46)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -126,6 +126,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `GRAPH-MATRIX-001` — Under the declared convention A_uv equals non-loop edge multiplicity off diagonal, A_vv equals twice the graph-loop count, and D contains incidence degrees, so D-A equals B B transpose; graph-loop columns vanish from signed incidence while a grounded shunt contributes a distinct diagonal constitutive term. | [Multigraphs for expert modelers](../foundations/multigraphs-for-modelers.md) | `self-checked` |
 | `GRAPH-PI-COLLAPSE-001` — For a fixed linear two-terminal pi factor with series admittance Y_s and endpoint shunts Y_a and Y_b, identifying both terminals through the common attachment map T_pi=[1,1]^T gives T_pi^T Y_pi T_pi=Y_a+Y_b, so the series contribution cancels and the exact nodal image is a one-terminal constant-admittance shunt under the declared coordinate and reference assumptions. | [Multigraphs for expert modelers](../foundations/multigraphs-for-modelers.md) | `self-checked` |
 | `LIT-PAR-001` — For fixed scalar AC pi-line models on common endpoints, dominance of normalized squared member currents for all endpoint voltages certifies a redundant current limit; with apparent-power ratings the shared terminal-voltage magnitude cancels in the comparison, giving a sufficient redundancy test using auxiliary quadratic sets, not the original apparent-power feasible regions. Checking both terminals certifies removal of both directional limits without aggregating members. | [A plausible model gives the wrong answer](../start/first-failure-parallel-branches.md) | `self-checked` |
+| `LOAD-CONNECTION-002` — For a fixed real signed coil-incidence matrix C, u=CV and i=C^T j preserve total complex power; for a three-coil cycle, adding equal circulating coil currents leaves terminal currents and total power unchanged while individual coil powers can change, so terminal KCL and aggregate power do not validate the individual coil laws. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `self-checked` |
 | `PRACTICE-DUAL-001` — For min beta*c*p subject to alpha*(d-p)<=0 with positive c,d,alpha,beta, dispatch remains p=d while the Lagrange multiplier is beta*c/alpha and physical marginal cost is alpha/beta times that multiplier; duplicating the unscaled constraint admits nonunique multiplier allocations summing to c. | [Building and changing a model you can check](../cases/building-and-changing-models.md) | `self-checked` |
 | `PRACTICE-IMPORT-001` — A numerical round trip of MATPOWER RATE_A=0 can succeed while a faulty decoder replaces its explicit unlimited-rating meaning with a finite zero bound, changing the admissible transfer set. | [Building and changing a model you can check](../cases/building-and-changing-models.md) | `self-checked` |
 | `PRACTICE-SHORT-001` — Two positive parallel resistances a epsilon and b epsilon carrying total current I select member currents b I/(a+b) and a I/(a+b) for every epsilon>0; replacing both by ideal shorts retains zero voltage drop and the total-current equation but loses that ratio-dependent selection, so equal limiting voltages do not guarantee equal member-current feasibility. | [Building and changing a model you can check](../cases/building-and-changing-models.md) | `self-checked` |
@@ -156,7 +157,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 
 | Verification | Claims |
 | --- | ---: |
-| `self-checked` | 109 |
+| `self-checked` | 110 |
 | `independently-implemented` | 6 |
 | `externally-reviewed` | 0 |
 
@@ -214,6 +215,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `LLM-RETRIEVAL-001` | Rerun both pinned candidates on the current corpus and evaluate domain-adapted alternatives before making a current or general neural-retrieval comparison. |
 | `LOAD-BASE-001` | Extend the definition and executable guardrail to arbitrary unbalanced terminal maps, nonstandard connection families, explicit unit provenance, and independently reviewed importer crosswalks. |
 | `LOAD-CONNECTION-001` | Extend connection-map evidence to unbalanced multiconductor loads, explicit grounding, phase-specific ratings, and network-level decision solves. |
+| `LOAD-CONNECTION-002` | This algebra does not certify arbitrary transformer/connection implementations, nonlinear operating-point feasibility, physical load adequacy, or source data provenance. |
 | `LOAD-CONTINUATION-001` | Replace the iteration-failure boundary with a mathematically continued nose curve, add independent solver continuation, and extend to multiconductor/network-level decisions. |
 | `LOAD-DECISION-001` | Add multiconductor connection maps and continuation to collapse points; the declared scalar CP/CI/CZ/ZIP fixture now has separately varying reactive coefficients and an independent reproduction. |
 | `NUMERICAL-001` | Extend the current five-bus structural witness to a pinned running-network benchmark with solver-exported Ybus/Jacobian sparsity, ordering-dependent fill, and recovered decision-margin checks. |
@@ -285,7 +287,7 @@ These retrieval facets are provisional and path-derived. They are navigation aid
 additional verification labels; explicit facet fields can replace them when the claims
 schema is normalised.
 
-### `decision-cases` (35)
+### `decision-cases` (36)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -297,6 +299,7 @@ schema is normalised.
 | `IMPEDANCE-LADDER-001` — In the deterministic four-wire impedance ladder fixture, phase-to-neutral current and voltage recovery are exact under the declared zero-ground-current map, while the deliberately non-circulant reduced matrix has visible sequence mixing; shunt deletion and positive-sequence use therefore require explicit decision-domain guards. | [Four-wire impedance-model ladder](../cases/four-wire-impedance-model-ladder.md) | `empirical` |
 | `LOAD-BASE-001` — A voltage-dependent load's nominal voltage is an anchor in the load factor's declared terminal coordinate: WYE uses phase-to-neutral voltage and DELTA uses line-to-line voltage; copying one numeric bus voltage into both coordinates without an explicit base conversion changes the normalized load law. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `definition` |
 | `LOAD-CONNECTION-001` — On the recorded balanced three-phase terminal fixture, explicit wye phase-to-neutral and delta phase-to-phase connection maps share the same bus and graph but produce different load-voltage observations: unit-magnitude wye voltages and sqrt(3)-magnitude delta voltages. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
+| `LOAD-CONNECTION-002` — For a fixed real signed coil-incidence matrix C, u=CV and i=C^T j preserve total complex power; for a three-coil cycle, adding equal circulating coil currents leaves terminal currents and total power unchanged while individual coil powers can change, so terminal KCL and aggregate power do not validate the individual coil laws. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `theorem` |
 | `LOAD-CONTINUATION-001` — On the recorded scalar two-bus continuation probe, the damped CP branch first fails to converge at demand scale 1.8 after a converged scale 1.7, while CI, CZ, and the declared ZIP branch remain converged through scale 3.0; this is an iteration-scoped branch diagnostic, not a global collapse theorem. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
 | `LOAD-DECISION-001` — On the recorded two-bus fixture, CP, CI, CZ, and a normalized ZIP load law share the same bus--branch graph but produce distinct high-voltage solutions and decision margins: CP violates both the declared voltage and current limits, while CI, CZ, and ZIP satisfy both. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
 | `PRACTICE-DUAL-001` — For min beta*c*p subject to alpha*(d-p)<=0 with positive c,d,alpha,beta, dispatch remains p=d while the Lagrange multiplier is beta*c/alpha and physical marginal cost is alpha/beta times that multiplier; duplicating the unscaled constraint admits nonunique multiplier allocations summing to c. | [Building and changing a model you can check](../cases/building-and-changing-models.md) | `theorem` |
@@ -386,7 +389,7 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `representation` (60)
+### `representation` (61)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -431,6 +434,7 @@ schema is normalised.
 | `GROUND-SCOPE-004` — In the explicit-earth witness, a declared inverse-time relay curve maps the CT-scaled phase-earth fault current to a 0.2466 s operation, while the neutral-earth fault remains below pickup; a separate declared CT-saturation cap changes the phase-fault trip decision. | [Earth, neutral, and reference model classes](../foundations/earth-ground-models.md) | `empirical` |
 | `LOAD-BASE-001` — A voltage-dependent load's nominal voltage is an anchor in the load factor's declared terminal coordinate: WYE uses phase-to-neutral voltage and DELTA uses line-to-line voltage; copying one numeric bus voltage into both coordinates without an explicit base conversion changes the normalized load law. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `definition` |
 | `LOAD-CONNECTION-001` — On the recorded balanced three-phase terminal fixture, explicit wye phase-to-neutral and delta phase-to-phase connection maps share the same bus and graph but produce different load-voltage observations: unit-magnitude wye voltages and sqrt(3)-magnitude delta voltages. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
+| `LOAD-CONNECTION-002` — For a fixed real signed coil-incidence matrix C, u=CV and i=C^T j preserve total complex power; for a three-coil cycle, adding equal circulating coil currents leaves terminal currents and total power unchanged while individual coil powers can change, so terminal KCL and aggregate power do not validate the individual coil laws. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `theorem` |
 | `LOAD-CONTINUATION-001` — On the recorded scalar two-bus continuation probe, the damped CP branch first fails to converge at demand scale 1.8 after a converged scale 1.7, while CI, CZ, and the declared ZIP branch remain converged through scale 3.0; this is an iteration-scoped branch diagnostic, not a global collapse theorem. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
 | `LOAD-DECISION-001` — On the recorded two-bus fixture, CP, CI, CZ, and a normalized ZIP load law share the same bus--branch graph but produce distinct high-voltage solutions and decision margins: CP violates both the declared voltage and current limits, while CI, CZ, and ZIP satisfy both. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `empirical` |
 | `NUMERICAL-001` — Representation and reduction choices have numerical consequences that must be reported separately from electrical preservation: coordinate scaling changes conditioning without changing an invertible solution set, Jacobian dependency graphs need not equal physical graphs, Schur elimination can create fill-in, and decision certificates require residual/error estimates and margins. | [Numerical consequences of representation and reduction](../foundations/numerical-consequences.md) | `definition` |

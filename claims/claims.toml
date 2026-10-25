@@ -1,6 +1,23 @@
 schema_version = 1
 
 [[claim]]
+claim_id = "LOAD-CONNECTION-002"
+exactness_object = "equation_identity"
+preservation_dimensions = ["terminal_behavior", "phase_neutral", "numerical_structure"]
+chapter = "docs/src/foundations/load-models-and-decision-dependence.md"
+claim_text = "For a fixed real signed coil-incidence matrix C, u=CV and i=C^T j preserve total complex power; for a three-coil cycle, adding equal circulating coil currents leaves terminal currents and total power unchanged while individual coil powers can change, so terminal KCL and aggregate power do not validate the individual coil laws."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "explicit_incidence_derivation_and_complex_phasor_witness_in_experiments/lessons/delta_connection_maps.py"
+citation_keys = []
+model_scope = "fixed real oriented two-terminal coil incidence, static complex phasors, and the three-coil cycle or one-coil transfer example"
+assumptions = "coil and terminal coordinates are ordered consistently; currents enter each coil's first endpoint; all powers use the same conjugation convention"
+reviewer = ""
+review_date = ""
+unresolved_issue = "This algebra does not certify arbitrary transformer/connection implementations, nonlinear operating-point feasibility, physical load adequacy, or source data provenance."
+
+[[claim]]
 claim_id = "PRACTICE-SHORT-001"
 exactness_object = "feasible_set"
 preservation_dimensions = ["terminal_behavior", "limits", "decision", "numerical_structure"]
