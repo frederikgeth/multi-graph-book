@@ -1367,7 +1367,7 @@
           "claim:TR-XFMR-003",
           "claim:TR-XFMR-007",
           "claim:FORMULATION-PORT-001",
-          "claim:TR-XFMR-004"
+          "claim:KERNEL-OBSERVATION-001"
         ]
       },
       "lexical": {
@@ -1930,8 +1930,8 @@
           "claim:NUMERICAL-005",
           "claim:NUMERICAL-004",
           "claim:FORMULATION-ZERO-001",
-          "claim:LIMIT-MULTIPLICITY-001",
           "claim:LOAD-CONNECTION-002",
+          "claim:LIMIT-MULTIPLICITY-001",
           "claim:AU-CARSON-001",
           "claim:PRACTICE-IMPORT-001"
         ]
@@ -1946,8 +1946,8 @@
           "claim:FORMULATION-ZERO-001",
           "claim:NUMERICAL-005",
           "claim:TR-PAR-003",
-          "claim:LIT-PAR-001",
           "claim:LOAD-CONNECTION-002",
+          "claim:LIT-PAR-001",
           "concept:direction-orientation-hierarchy",
           "claim:PRACTICE-IMPEDANCE-001"
         ]
@@ -2021,7 +2021,7 @@
           "claim:ARCH-RECOVERY-001",
           "claim:TR-XFMR-005",
           "claim:TR-XFMR-007",
-          "claim:FORMULATION-Y-SPLIT-001"
+          "claim:LOAD-CONNECTION-002"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -3086,7 +3086,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "0227263c8456b4b785a423e0a68f81e4124573b3c3c2fb40cc100b99234369d2"
+    "corpus_sha256": "c6f9134b8cbe5ad4d19fc016d937f812c3bd9c4527a784c32048a0aa05145732"
   },
   "inputs": {
     "adversarial_cases": {

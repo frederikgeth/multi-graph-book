@@ -1141,11 +1141,12 @@ function linear_coverage_lesson()
             end
             for (refs,entry) in de[key*"_references"]
                 r1,r2=split(refs,"__");q1=first(split(r1,"_"));q2=first(split(r2,"_"))
-                collision=key=="four_leg" && q1==q2 && (endswith(r1,"AVERAGED")!=endswith(r2,"AVERAGED"))
                 a=entry["audit"];n=entry["native"]
-                @test a["status"]==(collision ? "indeterminate" : "passed")
-                @test n["built"]==!collision
-                @test collision ? occursin("already registered",n["error"]) : n["inspection"]["violated_native_primal_rows"]==0
+                @test a["status"]=="passed" && a["coverage_complete"]
+                @test n["built"]
+                @test n["inspection"]["violated_native_primal_rows"]==0
+                expected_alias=key=="single_phase" ? ((q1=="PG")== (q2=="PG")) : q1==q2
+                @test all(==(expected_alias),n["inspection"]["same_monitor_objects"]["i"])
                 @test only(filter(r->r["id"]=="ibr.i.1.volt_var",a["rows"]))["status"]=="passed"
                 @test only(filter(r->r["id"]=="ibr.i.1.volt_watt",a["rows"]))["status"]=="passed"
             end
@@ -1186,7 +1187,7 @@ function linear_coverage_lesson()
         @test de["shared_cap_failure"]["failed_checks"]==1 && de["shared_cap_failure"]["unassessed_checks"]==0
         @test drow("shared_cap_failure","ibr.j.1.volt_watt")["status"]=="failed"
         @test de["native_shared_cap_point"]["inspection"]["violated_native_primal_rows"]==1
-        @test de["collision_known_failure"]["status"]=="failed" && !de["collision_known_failure"]["coverage_complete"]
+        @test de["collision_known_failure"]["status"]=="failed" && de["collision_known_failure"]["coverage_complete"]
         @test drow("collision_known_failure","ibr.i.3.p_max")["residual"]≈.05
         @test drow("collision_known_failure","network.power")["status"]=="passed"
         @test isempty(get(running,"ibr",Dict()))

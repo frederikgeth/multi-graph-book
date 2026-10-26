@@ -129,7 +129,8 @@ with tempfile.TemporaryDirectory(prefix="multi-graph-book-pdf-") as temporary:
     # A valid older PDF can pass generic structural checks while omitting the
     # current manuscript's control chapter. Check body content, not timestamps.
     compact_text = re.sub(r"[^a-z0-9]", "", body_text.lower())
-    for heading in ("IBR control applicability", "Volt-var", "Volt-watt", "Combined droop"):
+    for heading in ("IBR control applicability", "Volt-var", "Volt-watt", "Combined droop",
+                    "Native monitor sharing retains controller-specific inputs"):
         if re.sub(r"[^a-z0-9]", "", heading.lower()) not in compact_text:
             fail(f"current control teaching content is missing from the PDF: {heading}")
 

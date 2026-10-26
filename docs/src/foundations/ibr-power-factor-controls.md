@@ -593,7 +593,7 @@ failures and electrical contributions survive. A mixture containing
 `power_factor` or extra profile fields remains unassessed. Native PF priority or
 a warning that skips a requested curve is not a compliance argument.
 
-### Native monitor keys are an applicability boundary
+### Native monitor sharing retains controller-specific inputs
 
 Each family independently selects PN, PG or PP, and per-phase or averaged
 monitoring. Equal references can share native magnitude variables; different
@@ -601,32 +601,29 @@ quantities need distinct observations. Sharing a static profile ID does not make
 two devices share voltage state, rating, availability, terminal order or local
 coordinate bases.
 
-The controlled reference matrix exposes a narrower constructor failure:
-`FOUR_LEG` with the same quantity but different effective averaging tries to
-register duplicate magnitude-definition keys. For example, Volt-var
-`PN_PER_PHASE` with Volt-watt `PN_AVERAGED` raises an `ArgumentError` during
-native model construction. Both independently evaluated declared laws can pass
-at a supplied point while the overall audit remains indeterminate through
-`droop_native_applicability`. That outcome is a build-path refusal, not an
-electrical violation or proof that the intended equations are infeasible.
+The earlier candidate's duplicate-key failure came from caching physical
+magnitudes by aggregation (review R2). The repaired candidate shares magnitude
+definitions while registering each controller's input: Volt-var `PN_PER_PHASE`
+can use individual magnitudes while Volt-watt `PN_AVERAGED` uses their mean.
+Sharing an observation does not identify the laws.
 
 | Reference combination | Candidate native observation | Independent audit scope |
 |:--|:--|:--|
 | Same quantity, same effective averaging | Shared monitor objects in the controlled build | Both declared-law residuals remain separate. |
 | Different quantities | Distinct monitor objects | Each law uses its own physical observation. |
-| Four-leg, same quantity, different effective averaging | Duplicate-key constructor error | Unknown build applicability; known equations, caps and KCL survive. |
+| Four-leg, same quantity, different effective averaging | Shared magnitude variables, separate controller inputs | Each law retains its own aggregation; hard limits and KCL remain independent. |
 | A valid legacy override unifies averaging | Shared monitors build in the controlled case | Both laws use the common overridden averaging. |
 | Single pair with differing averaging requests | Aggregation is moot | PG uses the first endpoint; PN/PP use the pair difference. |
 
-The package-owned route `examples/ibr_droop_composition_audit.jl` and
-`test/data/linear_audit/ibr-droop-composition.json` compares all 36 reference pairs
-for each bounded topology. It also compares all three P bases in SI/per-unit,
-legacy overrides, missing recipes, hard-limit/minimum-PF conflicts and a shared
-static profile on devices with different voltage/power bases and a reversed
-pair. Native object identity is comparison evidence; the independent evaluator
-uses no native cache, builder, role, curve or profiler helper as an oracle.
+The package route `examples/ibr_droop_composition_audit.jl` with fixture
+`test/data/linear_audit/ibr-droop-composition.json` builds all 36 reference pairs
+per bounded topology. It also compares all three P bases in SI/per-unit, legacy
+overrides, missing recipes, capability/PF conflicts and device-specific bases.
+Unbalanced floating-neutral tests check individual and mean inputs and unique
+magnitude definitions in both coordinate systems. These repair the recorded
+constructor boundary; residuals still do not authenticate a build or recipe.
+Native objects are comparison evidence, never the independent evaluator's oracle.
 
-Monitor-key repair is a separate task; the native builder is unchanged.
 Parameterized/live providers and profile caches, physical controller/filter/DC
 adequacy, `THREE_LEG` droop, selected objectives and optimality remain outside
 this audit. Published pin, PSK statuses and execution MCP are unchanged.

@@ -693,13 +693,17 @@ Both static family assumptions remain independently required, with one global
 relative width but potentially different physical epsilon from mean SI knots.
 No recipe, actual-build or live-coefficient provenance is inferred.
 
-The reference matrix has36 combinations per topology. All single-pair cases
-build in the controlled comparison. Six four-leg same-quantity/different-
-averaging combinations raise duplicate magnitude-definition-key ArgumentErrors;
-the audit marks native applicability unknown while retaining declared-law,
-known-cap and KCL evidence. Valid legacy overrides unify averaging and allow
-controlled construction. Different quantities use distinct monitors; equal
-quantity/aggregation shares live objects. The native builder is unchanged.
+The reference matrix has 36 combinations per topology. The original candidate
+failed to build six four-leg same-quantity/different-averaging combinations,
+recorded in review finding R2. The repaired candidate caches physical magnitude
+definitions independently of aggregation and registers controller-specific
+inputs. All 72 topology/reference combinations now build in the controlled
+comparison. Additional unbalanced floating-neutral tests check individual and
+mean inputs and unique magnitude definitions in SI and per-unit coordinates.
+The obsolete native-applicability refusal is removed only for this repaired
+boundary; residual checks do not authenticate a build. Valid legacy overrides
+still apply to both controllers, and different quantities retain distinct
+monitors.
 Shared static profile comparisons retain device-specific rating/availability,
 reversed pair and different voltage/power bases, including a known single-device
 cap failure that the native primal inspection also rejects. Parameterized/live

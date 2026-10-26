@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "0227263c8456b4b785a423e0a68f81e4124573b3c3c2fb40cc100b99234369d2",
+  "corpus_sha256": "c6f9134b8cbe5ad4d19fc016d937f812c3bd9c4527a784c32048a0aa05145732",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -121,7 +121,7 @@
     },
     {
       "path": "docs/src/foundations/ibr-power-factor-controls.md",
-      "sha256": "d4e13db162831bdc3a1be7e6fe4c9a0d0855acc2c8d5f4b8d0ac9d16257e33bc"
+      "sha256": "b69c9828763c6803c3d3614242cbd30cd62c73efe1315b2b1a137dd989e97f0b"
     },
     {
       "path": "docs/src/foundations/impedance-fidelity-ladder.md",
