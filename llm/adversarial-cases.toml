@@ -294,3 +294,86 @@ question = "Can the rule nullspace removable gauge predict transient inrush magn
 expected_status = "under_retrieved"
 expected_claim_ids = []
 expected_concept_ids = []
+
+# R1 review regressions and adjacent intents. These are now known development
+# cases, not blind questions or an estimate of semantic error prevalence.
+
+[[case]]
+case_id = "ADV-DELTA-COIL-INDEPENDENCE"
+audience = "power_engineer"
+question = "Are three delta terminals three independent load coils?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-TWO-TERMINAL-ARITY"
+audience = "power_engineer"
+question = "Does a two-terminal DELTA load have two independent coils?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-COIL-COUNT"
+audience = "power_engineer"
+question = "How many independent coils does a three-terminal delta load have?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-VOLTAGE-MAP"
+audience = "power_engineer"
+question = "Can I use delta coil voltages as terminal voltages?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-INJECTION-AMBIGUOUS"
+audience = "power_engineer"
+question = "How do delta load currents enter terminal KCL?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-VOLTAGE-AMBIGUOUS"
+audience = "power_engineer"
+question = "What does the load voltage mean for a delta coil?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-NOMINAL-OPERATING-POINT"
+audience = "power_engineer"
+question = "Do three delta coil voltages equal three terminal voltages at the nominal operating point?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-VOLTAGE-BASE"
+audience = "power_engineer"
+question = "Which voltage base should normalize a delta load?"
+expected_status = "qualified"
+expected_claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
+expected_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "factor"]
+
+[[case]]
+case_id = "ADV-DELTA-VNOM"
+audience = "power_engineer"
+question = "Which v_nom should I use for a DELTA ZIP load?"
+expected_status = "qualified"
+expected_claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
+expected_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "factor"]
+
+[[case]]
+case_id = "ADV-DELTA-BASE-WITH-INCIDENCE"
+audience = "power_engineer"
+question = "Do WYE and DELTA loads use equal nominal voltage anchors even when coil currents map differently?"
+expected_status = "qualified"
+expected_claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
+expected_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "factor"]

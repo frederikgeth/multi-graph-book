@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `a051cac71f6fff8b45d3406722350ad63cc1b7cb13da18e3a75c13ff6f22b3ac`<br>
+**Corpus hash:** `0227263c8456b4b785a423e0a68f81e4124573b3c3c2fb40cc100b99234369d2`<br>
 **Cases:** 108
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -45,8 +45,8 @@ the question count must not be treated as that many independent observations.
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `lexical` | 33.0% | 42.6% | 0.0% | 0/33 | 6/33 | 0.196 |
 | `char_tfidf` | 34.6% | 43.3% | 0.0% | 0/33 | 7/33 | 0.221 |
-| `hybrid` | 36.1% | 47.1% | 0.0% | 0/33 | 5/33 | 0.213 |
-| `graph` | 37.5% | 58.4% | 18.2% | 6/33 | 3/33 | 0.249 |
+| `hybrid` | 36.5% | 47.1% | 0.0% | 0/33 | 5/33 | 0.214 |
+| `graph` | 37.5% | 57.8% | 18.2% | 6/33 | 3/33 | 0.249 |
 
 Held-out contract-router firing: **22/33 (66.7%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **20/33 (60.6%)**; this remains diagnostic because the set is synthetic and clustered.
@@ -87,7 +87,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | `HOLDOUT-SELF-LOOP-STUDENT` | `student` | `self-loop-is-a-shunt-or-circuit-loop` | `self-loop-is-a-shunt-or-circuit-loop` | yes | no | no | no | no |
 | `HOLDOUT-SELF-LOOP-SOFTWARE` | `software_engineer` | `self-loop-is-a-shunt-or-circuit-loop` | `self-loop-is-a-shunt-or-circuit-loop` | yes | no | no | no | yes |
 | `HOLDOUT-SELF-LOOP-POWER` | `power_engineer` | `self-loop-is-a-shunt-or-circuit-loop` | `self-loop-is-a-shunt-or-circuit-loop` | yes | no | no | no | no |
-| `HOLDOUT-DECISION-SOFTWARE` | `software_engineer` | `terminal-equivalence-implies-opf-equivalence` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |
+| `HOLDOUT-DECISION-SOFTWARE` | `software_engineer` | `terminal-equivalence-implies-opf-equivalence` | `reference-matrix-match-proves-source-provenance` | yes | no | no | no | no |
 | `HOLDOUT-DECISION-POWER` | `power_engineer` | `terminal-equivalence-implies-opf-equivalence` | `terminal-equivalence-implies-opf-equivalence` | yes | no | no | no | no |
 
 ## Audience consistency

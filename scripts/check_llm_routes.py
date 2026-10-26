@@ -115,6 +115,35 @@ def main() -> int:
         parsed = [json.loads(line) for line in output_lines]
         check(parsed[2]["result"]["structuredContent"]["type"] == "book_search_results", "MCP stdio search failed", errors)
 
+    # R1: a structurally valid packet must not acquire an unrelated qualification
+    # when the same ambiguous connection question travels through an adapter.
+    query = "Are three delta terminals three independent load coils?"
+    direct = service.response(query, "power_engineer")
+    status, http = exercise_http("POST", "/v1/context", json.dumps({
+        "query": query, "audience": "power_engineer",
+    }).encode())
+    check(status == 200, "R1 HTTP request failed", errors)
+    mcp = handle_request(service, {
+        "jsonrpc": "2.0", "id": "r1", "method": "tools/call",
+        "params": {"name": "book_context", "arguments": {
+            "query": query, "audience": "power_engineer",
+        }},
+    })["result"]["structuredContent"]
+    cli = subprocess.run([
+        sys.executable, str(ROOT / "scripts/search_llm_corpus.py"), query,
+        "--audience", "power_engineer", "--context-packet", "--json",
+    ], capture_output=True, text=True, cwd=ROOT)
+    check(cli.returncode == 0, f"R1 CLI request failed: {cli.stderr}", errors)
+    packets = [direct["packet"], http["packet"], mcp["packet"]]
+    if cli.returncode == 0:
+        packets.append(json.loads(cli.stdout))
+    for position, item in enumerate(packets):
+        check(item["status"] == "under_retrieved", f"R1 route {position} falsely qualified", errors)
+        check(not item["mandatory_records"], f"R1 route {position} injected unrelated evidence", errors)
+        check(bool(item["supporting_records"]), f"R1 route {position} lost related material", errors)
+    check(direct["validation"]["valid"], "R1 packet source validation failed", errors)
+    check("retrieval warning" in direct["markdown"].lower(), "R1 warning missing", errors)
+
     if errors:
         print("LLM access-route check failed:")
         for error in errors:

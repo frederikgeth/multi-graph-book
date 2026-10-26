@@ -534,8 +534,8 @@
           "concept:parallel",
           "concept:factor",
           "concept:flow-current-power-message",
-          "claim:ARCH-VIEW-001",
           "concept:object-node-interface",
+          "claim:ARCH-VIEW-001",
           "concept:ground-neutral-reference",
           "concept:direction-orientation-hierarchy"
         ]
@@ -546,8 +546,8 @@
         "top_10": [
           "concept:direction-orientation-hierarchy",
           "claim:ARCH-PORT-002",
-          "claim:ARCH-PORT-001",
           "concept:object-node-interface",
+          "claim:ARCH-PORT-001",
           "claim:PRESERVE-001",
           "claim:ARCH-CONDUCTOR-002",
           "claim:TR-SER-001",
@@ -561,8 +561,8 @@
         "recall_at_10": 0.0,
         "top_10": [
           "concept:direction-orientation-hierarchy",
-          "claim:ARCH-PORT-002",
           "concept:object-node-interface",
+          "claim:ARCH-PORT-002",
           "claim:ARCH-PORT-001",
           "claim:ARCH-CONDUCTOR-002",
           "claim:ARCH-SURGERY-002",
@@ -724,9 +724,9 @@
           "concept:rating-limit-constraint",
           "claim:FORMULATION-ZERO-001",
           "concept:element-edge-relation",
-          "concept:graph-topology-adjacency",
           "concept:parallel",
-          "concept:ground-neutral-reference"
+          "concept:graph-topology-adjacency",
+          "concept:object-node-interface"
         ]
       },
       "hybrid": {
@@ -738,8 +738,8 @@
           "concept:object-node-interface",
           "claim:NUMERICAL-005",
           "claim:LOAD-CONNECTION-002",
-          "claim:ARCH-PORT-002",
           "claim:ARCH-PORT-001",
+          "claim:ARCH-PORT-002",
           "claim:TR-XFMR-006",
           "claim:ARCH-CONDUCTOR-002",
           "claim:COLLAPSE-001"
@@ -751,8 +751,8 @@
         "top_10": [
           "concept:direction-orientation-hierarchy",
           "claim:FORMULATION-ZERO-001",
-          "claim:ARCH-PORT-002",
           "concept:object-node-interface",
+          "claim:ARCH-PORT-002",
           "claim:ARCH-PORT-001",
           "claim:ARCH-CONDUCTOR-002",
           "claim:ARCH-SURGERY-002",
@@ -827,7 +827,7 @@
           "claim:ARCH-SURGERY-002",
           "claim:FORMULATION-NODAL-001",
           "claim:LIMIT-NEUTRAL-001",
-          "claim:TR-GRAPH-001",
+          "claim:LOAD-CONNECTION-002",
           "claim:LIMIT-CONVEXITY-001"
         ]
       },
@@ -934,8 +934,8 @@
           "claim:FORMULATION-ZERO-001",
           "concept:factor",
           "claim:LIMIT-MULTIPLICITY-001",
-          "claim:PRACTICE-SHORT-001",
           "concept:parallel",
+          "claim:PRACTICE-SHORT-001",
           "concept:ground-neutral-reference"
         ]
       },
@@ -1022,8 +1022,8 @@
           "claim:TOPOLOGY-001",
           "claim:PRACTICE-IMPORT-001",
           "claim:ARCH-DEGENERACY-001",
-          "claim:ARCH-PORT-002",
-          "claim:FORMULATION-PORT-001"
+          "claim:FORMULATION-PORT-001",
+          "claim:ARCH-PORT-002"
         ]
       },
       "lexical": {
@@ -1074,8 +1074,8 @@
           "concept:rating-limit-constraint",
           "concept:factor",
           "claim:TR-KRON-NEUTRAL-005",
-          "claim:FORMULATION-NODAL-001",
           "claim:TR-KRON-NEUTRAL-007",
+          "claim:FORMULATION-NODAL-001",
           "concept:flow-current-power-message",
           "claim:FORMULATION-PORT-001",
           "claim:TR-KRON-FIVE-002"
@@ -1235,8 +1235,8 @@
           "claim:NUMERICAL-005",
           "claim:NUMERICAL-003",
           "claim:ARCH-RECOVERY-001",
-          "claim:NUMERICAL-004",
-          "claim:LIMIT-CONVEXITY-001"
+          "claim:LIMIT-CONVEXITY-001",
+          "claim:NUMERICAL-004"
         ]
       },
       "lexical": {
@@ -1307,7 +1307,7 @@
           "concept:object-node-interface",
           "claim:NUMERICAL-004",
           "claim:FORMULATION-ZERO-001",
-          "claim:TR-XFMR-006"
+          "claim:FORMULATION-PORT-001"
         ]
       },
       "lexical": {
@@ -1361,13 +1361,13 @@
           "claim:ARCH-LOWER-002",
           "claim:TR-XFMR-001",
           "claim:TR-XFMR-006",
-          "claim:LOAD-CONNECTION-002",
           "claim:PRACTICE-SHORT-001",
+          "claim:LOAD-CONNECTION-002",
           "claim:ARCH-RECOVERY-003",
           "claim:TR-XFMR-003",
           "claim:TR-XFMR-007",
           "claim:FORMULATION-PORT-001",
-          "claim:KERNEL-OBSERVATION-001"
+          "claim:TR-XFMR-004"
         ]
       },
       "lexical": {
@@ -1483,11 +1483,11 @@
           "concept:flow-current-power-message",
           "claim:ARCH-SURGERY-002",
           "claim:TR-XFMR-001",
-          "claim:TR-XFMR-003",
           "claim:TRANSFORM-SEM-001",
           "claim:TRANSFORM-CATALOG-001",
           "claim:ARCH-PORT-001",
-          "claim:ARCH-PORT-002"
+          "claim:ARCH-PORT-002",
+          "claim:TR-XFMR-003"
         ]
       },
       "lexical": {
@@ -1547,7 +1547,7 @@
           "claim:LIMIT-NEUTRAL-001",
           "claim:PRACTICE-IMPORT-001",
           "claim:GRAPH-LOOPY-001",
-          "claim:TR-KRON-NEUTRAL-008"
+          "claim:RATING-001"
         ]
       },
       "lexical": {
@@ -1696,7 +1696,7 @@
           "claim:FORMULATION-Y-SPLIT-001",
           "claim:FORMULATION-NODAL-002",
           "claim:TR-KRON-NEUTRAL-002",
-          "claim:TR-PAR-AC-JOINT-001"
+          "claim:TR-KRON-NEUTRAL-004"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -2076,8 +2076,8 @@
           "claim:TR-XFMR-007",
           "claim:NUMERICAL-001",
           "claim:TR-KRON-NEUTRAL-001",
-          "claim:ARCH-NODAL-001",
-          "claim:TOPOLOGY-001"
+          "claim:TOPOLOGY-001",
+          "claim:KERNEL-OBSERVATION-001"
         ]
       },
       "lexical": {
@@ -2446,36 +2446,672 @@
       "observed_status": "under_retrieved",
       "question": "Can the rule nullspace removable gauge predict transient inrush magnitudes?",
       "status_correct": true
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "ADV-DELTA-COIL-INDEPENDENCE",
+      "contract_complete": null,
+      "detected_routes": [],
+      "expected_record_ids": [],
+      "expected_status": "under_retrieved",
+      "graph": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "concept:equivalence-exactness-preservation",
+          "concept:phase-conductor-sequence-coordinate",
+          "concept:parallel",
+          "concept:flow-current-power-message",
+          "concept:object-node-interface",
+          "claim:LOAD-CONNECTION-002",
+          "concept:factor",
+          "concept:element-edge-relation",
+          "concept:direction-orientation-hierarchy",
+          "concept:ground-neutral-reference"
+        ]
+      },
+      "hybrid": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "claim:LOAD-CONNECTION-002",
+          "concept:direction-orientation-hierarchy",
+          "claim:TR-XFMR-001",
+          "concept:object-node-interface",
+          "claim:TR-XFMR-003",
+          "claim:LOAD-BASE-001",
+          "claim:ARCH-PORT-001",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-SURGERY-002"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "concept:direction-orientation-hierarchy",
+          "claim:LOAD-CONNECTION-002",
+          "concept:object-node-interface",
+          "claim:ARCH-SURGERY-002",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-PORT-001",
+          "claim:TR-XFMR-001",
+          "claim:TR-XFMR-003",
+          "claim:GRAPH-NPORT-001"
+        ]
+      },
+      "mandatory_record_recall": null,
+      "observed_status": "under_retrieved",
+      "question": "Are three delta terminals three independent load coils?",
+      "status_correct": true
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "ADV-DELTA-TWO-TERMINAL-ARITY",
+      "contract_complete": null,
+      "detected_routes": [],
+      "expected_record_ids": [],
+      "expected_status": "under_retrieved",
+      "graph": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "concept:equivalence-exactness-preservation",
+          "claim:LOAD-DECISION-001",
+          "concept:rating-limit-constraint",
+          "concept:phase-conductor-sequence-coordinate",
+          "claim:LOAD-CONNECTION-002",
+          "claim:LOAD-CONNECTION-001",
+          "claim:LOAD-BASE-001",
+          "claim:LOAD-CONTINUATION-001",
+          "concept:factor",
+          "claim:TR-KRON-NEUTRAL-005"
+        ]
+      },
+      "hybrid": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "claim:LOAD-CONNECTION-002",
+          "claim:TR-XFMR-001",
+          "claim:LOAD-CONNECTION-001",
+          "claim:TR-XFMR-003",
+          "claim:KERNEL-OBSERVATION-001",
+          "claim:LOAD-BASE-001",
+          "claim:LOAD-CONTINUATION-001",
+          "claim:TR-PAR-003",
+          "claim:TR-XFMR-007",
+          "claim:TR-PAR-002"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "claim:LOAD-CONNECTION-002",
+          "claim:TR-XFMR-001",
+          "claim:KERNEL-OBSERVATION-001",
+          "claim:TR-XFMR-003",
+          "claim:LOAD-CONNECTION-001",
+          "claim:LOAD-BASE-001",
+          "claim:LOAD-CONTINUATION-001",
+          "claim:TR-PAR-003",
+          "claim:TR-PAR-002",
+          "claim:TR-XFMR-007"
+        ]
+      },
+      "mandatory_record_recall": null,
+      "observed_status": "under_retrieved",
+      "question": "Does a two-terminal DELTA load have two independent coils?",
+      "status_correct": true
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "ADV-DELTA-COIL-COUNT",
+      "contract_complete": null,
+      "detected_routes": [],
+      "expected_record_ids": [],
+      "expected_status": "under_retrieved",
+      "graph": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "concept:equivalence-exactness-preservation",
+          "claim:LOAD-DECISION-001",
+          "concept:rating-limit-constraint",
+          "claim:LOAD-CONNECTION-002",
+          "concept:phase-conductor-sequence-coordinate",
+          "claim:LOAD-BASE-001",
+          "claim:LOAD-CONNECTION-001",
+          "claim:LOAD-CONTINUATION-001",
+          "claim:TR-KRON-003",
+          "claim:TR-KRON-NEUTRAL-001"
+        ]
+      },
+      "hybrid": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "claim:LOAD-CONNECTION-002",
+          "claim:TR-XFMR-003",
+          "claim:TR-XFMR-001",
+          "claim:LOAD-CONNECTION-001",
+          "claim:LOAD-BASE-001",
+          "claim:KERNEL-OBSERVATION-001",
+          "claim:LOAD-CONTINUATION-001",
+          "claim:TR-XFMR-007",
+          "claim:TR-PAR-003",
+          "claim:TR-XFMR-006"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "claim:TR-XFMR-003",
+          "claim:LOAD-CONNECTION-002",
+          "claim:TR-XFMR-001",
+          "claim:KERNEL-OBSERVATION-001",
+          "claim:LOAD-BASE-001",
+          "claim:LOAD-CONNECTION-001",
+          "claim:LOAD-CONTINUATION-001",
+          "claim:TR-XFMR-007",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:TR-PAR-003"
+        ]
+      },
+      "mandatory_record_recall": null,
+      "observed_status": "under_retrieved",
+      "question": "How many independent coils does a three-terminal delta load have?",
+      "status_correct": true
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "ADV-DELTA-VOLTAGE-MAP",
+      "contract_complete": null,
+      "detected_routes": [],
+      "expected_record_ids": [],
+      "expected_status": "under_retrieved",
+      "graph": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "concept:equivalence-exactness-preservation",
+          "concept:phase-conductor-sequence-coordinate",
+          "concept:parallel",
+          "concept:flow-current-power-message",
+          "concept:object-node-interface",
+          "concept:factor",
+          "concept:element-edge-relation",
+          "concept:direction-orientation-hierarchy",
+          "concept:ground-neutral-reference",
+          "claim:LOAD-CONNECTION-002"
+        ]
+      },
+      "hybrid": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "concept:direction-orientation-hierarchy",
+          "claim:TR-XFMR-001",
+          "claim:LOAD-CONNECTION-002",
+          "concept:object-node-interface",
+          "claim:TR-XFMR-003",
+          "claim:TR-XFMR-004",
+          "claim:TRANSFORM-SEM-001",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-PORT-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "concept:direction-orientation-hierarchy",
+          "concept:object-node-interface",
+          "claim:TR-XFMR-001",
+          "claim:ARCH-SURGERY-002",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:LOAD-CONNECTION-002",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-PORT-001",
+          "claim:TR-XFMR-003",
+          "claim:TR-XFMR-004"
+        ]
+      },
+      "mandatory_record_recall": null,
+      "observed_status": "under_retrieved",
+      "question": "Can I use delta coil voltages as terminal voltages?",
+      "status_correct": true
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "ADV-DELTA-INJECTION-AMBIGUOUS",
+      "contract_complete": null,
+      "detected_routes": [],
+      "expected_record_ids": [],
+      "expected_status": "under_retrieved",
+      "graph": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "concept:equivalence-exactness-preservation",
+          "concept:phase-conductor-sequence-coordinate",
+          "concept:flow-current-power-message",
+          "concept:factor",
+          "concept:parallel",
+          "concept:element-edge-relation",
+          "claim:LOAD-CONNECTION-002",
+          "concept:rating-limit-constraint",
+          "concept:object-node-interface",
+          "concept:direction-orientation-hierarchy"
+        ]
+      },
+      "hybrid": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "concept:direction-orientation-hierarchy",
+          "concept:flow-current-power-message",
+          "claim:LOAD-CONNECTION-002",
+          "concept:object-node-interface",
+          "claim:TRANSFORM-SEM-001",
+          "claim:FORMULATION-ZERO-001",
+          "claim:ARCH-PORT-001",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:LOAD-BASE-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "concept:direction-orientation-hierarchy",
+          "concept:flow-current-power-message",
+          "claim:LOAD-CONNECTION-002",
+          "concept:object-node-interface",
+          "claim:ARCH-SURGERY-002",
+          "claim:FORMULATION-ZERO-001",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-PORT-001",
+          "claim:TRANSFORM-SEM-001"
+        ]
+      },
+      "mandatory_record_recall": null,
+      "observed_status": "under_retrieved",
+      "question": "How do delta load currents enter terminal KCL?",
+      "status_correct": true
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "ADV-DELTA-VOLTAGE-AMBIGUOUS",
+      "contract_complete": null,
+      "detected_routes": [],
+      "expected_record_ids": [],
+      "expected_status": "under_retrieved",
+      "graph": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "concept:equivalence-exactness-preservation",
+          "claim:LOAD-DECISION-001",
+          "concept:factor",
+          "concept:rating-limit-constraint",
+          "claim:LOAD-BASE-001",
+          "claim:LOAD-CONNECTION-001",
+          "concept:phase-conductor-sequence-coordinate",
+          "claim:LOAD-CONNECTION-002",
+          "claim:LOAD-CONTINUATION-001",
+          "claim:FORMULATION-Y-SPLIT-001"
+        ]
+      },
+      "hybrid": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "claim:LOAD-CONNECTION-002",
+          "claim:TR-XFMR-001",
+          "claim:LOAD-BASE-001",
+          "claim:LOAD-CONNECTION-001",
+          "claim:KERNEL-OBSERVATION-001",
+          "claim:TR-XFMR-003",
+          "claim:LOAD-CONTINUATION-001",
+          "claim:TR-XFMR-006",
+          "claim:TR-XFMR-004",
+          "claim:LOAD-DECISION-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "claim:LOAD-CONNECTION-002",
+          "claim:LOAD-BASE-001",
+          "claim:TR-XFMR-001",
+          "claim:LOAD-CONNECTION-001",
+          "claim:KERNEL-OBSERVATION-001",
+          "claim:TR-XFMR-003",
+          "claim:LOAD-CONTINUATION-001",
+          "claim:TR-XFMR-006",
+          "claim:LOAD-DECISION-001",
+          "claim:PRACTICE-SHORT-001"
+        ]
+      },
+      "mandatory_record_recall": null,
+      "observed_status": "under_retrieved",
+      "question": "What does the load voltage mean for a delta coil?",
+      "status_correct": true
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "ADV-DELTA-NOMINAL-OPERATING-POINT",
+      "contract_complete": null,
+      "detected_routes": [],
+      "expected_record_ids": [],
+      "expected_status": "under_retrieved",
+      "graph": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "concept:equivalence-exactness-preservation",
+          "concept:phase-conductor-sequence-coordinate",
+          "concept:parallel",
+          "concept:flow-current-power-message",
+          "concept:object-node-interface",
+          "claim:LOAD-CONNECTION-002",
+          "concept:factor",
+          "concept:transformation-family",
+          "concept:element-edge-relation",
+          "concept:direction-orientation-hierarchy"
+        ]
+      },
+      "hybrid": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "claim:LOAD-CONNECTION-002",
+          "concept:direction-orientation-hierarchy",
+          "claim:TR-XFMR-001",
+          "claim:TR-XFMR-003",
+          "claim:LOAD-BASE-001",
+          "concept:object-node-interface",
+          "claim:ARCH-PORT-001",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:TR-XFMR-004"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": null,
+        "recall_at_10": null,
+        "top_10": [
+          "concept:direction-orientation-hierarchy",
+          "claim:LOAD-CONNECTION-002",
+          "claim:TR-XFMR-001",
+          "concept:object-node-interface",
+          "claim:TR-XFMR-003",
+          "claim:ARCH-CONDUCTOR-002",
+          "claim:ARCH-PORT-002",
+          "claim:ARCH-PORT-001",
+          "claim:ARCH-SURGERY-002",
+          "claim:LOAD-BASE-001"
+        ]
+      },
+      "mandatory_record_recall": null,
+      "observed_status": "under_retrieved",
+      "question": "Do three delta coil voltages equal three terminal voltages at the nominal operating point?",
+      "status_correct": true
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "ADV-DELTA-VOLTAGE-BASE",
+      "contract_complete": true,
+      "detected_routes": [
+        {
+          "exact_pattern": false,
+          "misconception_id": "wye-delta-share-nominal-voltage-base",
+          "score": 0.758
+        }
+      ],
+      "expected_record_ids": [
+        "claim:LOAD-BASE-001",
+        "claim:LOAD-CONNECTION-001",
+        "concept:factor",
+        "concept:normalization",
+        "concept:phase-conductor-sequence-coordinate"
+      ],
+      "expected_status": "qualified",
+      "graph": {
+        "complete_at_10": false,
+        "recall_at_10": 0.2,
+        "top_10": [
+          "concept:equivalence-exactness-preservation",
+          "claim:TR-KRON-002",
+          "claim:TR-KRON-003",
+          "claim:LOAD-DECISION-001",
+          "claim:TR-KRON-NEUTRAL-008",
+          "claim:TR-KRON-NEUTRAL-007",
+          "concept:rating-limit-constraint",
+          "claim:TR-KRON-FIVE-001",
+          "claim:TR-KRON-NEUTRAL-001",
+          "claim:LOAD-BASE-001"
+        ]
+      },
+      "hybrid": {
+        "complete_at_10": false,
+        "recall_at_10": 0.4,
+        "top_10": [
+          "claim:LOAD-BASE-001",
+          "claim:LOAD-CONNECTION-001",
+          "claim:TR-KRON-002",
+          "claim:LOAD-DECISION-001",
+          "claim:LOAD-CONNECTION-002",
+          "claim:TR-XFMR-001",
+          "claim:TR-KRON-003",
+          "claim:TR-XFMR-006",
+          "claim:TR-COMP-001",
+          "claim:PRACTICE-SHORT-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "recall_at_10": 0.4,
+        "top_10": [
+          "claim:LOAD-BASE-001",
+          "claim:LOAD-CONNECTION-001",
+          "claim:TR-KRON-002",
+          "claim:TR-XFMR-006",
+          "claim:TR-KRON-003",
+          "claim:LOAD-CONNECTION-002",
+          "claim:TR-XFMR-008",
+          "claim:LOAD-DECISION-001",
+          "claim:PRACTICE-SHORT-001",
+          "claim:FORMULATION-Y-SPLIT-001"
+        ]
+      },
+      "mandatory_record_recall": 1.0,
+      "observed_status": "qualified",
+      "question": "Which voltage base should normalize a delta load?",
+      "status_correct": true
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "ADV-DELTA-VNOM",
+      "contract_complete": true,
+      "detected_routes": [
+        {
+          "exact_pattern": true,
+          "misconception_id": "wye-delta-share-nominal-voltage-base",
+          "score": 1.363333
+        }
+      ],
+      "expected_record_ids": [
+        "claim:LOAD-BASE-001",
+        "claim:LOAD-CONNECTION-001",
+        "concept:factor",
+        "concept:normalization",
+        "concept:phase-conductor-sequence-coordinate"
+      ],
+      "expected_status": "qualified",
+      "graph": {
+        "complete_at_10": false,
+        "recall_at_10": 0.4,
+        "top_10": [
+          "concept:equivalence-exactness-preservation",
+          "claim:LOAD-DECISION-001",
+          "claim:LOAD-BASE-001",
+          "claim:LOAD-CONTINUATION-001",
+          "claim:LOAD-CONNECTION-001",
+          "claim:LOAD-CONNECTION-002",
+          "claim:TR-KRON-003",
+          "claim:TR-KRON-NEUTRAL-001",
+          "concept:rating-limit-constraint",
+          "claim:TR-KRON-FIVE-001"
+        ]
+      },
+      "hybrid": {
+        "complete_at_10": false,
+        "recall_at_10": 0.4,
+        "top_10": [
+          "claim:LOAD-BASE-001",
+          "claim:LOAD-DECISION-001",
+          "claim:LOAD-CONTINUATION-001",
+          "claim:LOAD-CONNECTION-001",
+          "claim:LIMIT-MULTIPLICITY-001",
+          "claim:LOAD-CONNECTION-002",
+          "claim:TR-PAR-003",
+          "claim:TR-XFMR-001",
+          "claim:TR-XFMR-006",
+          "claim:FORMULATION-Y-SPLIT-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "recall_at_10": 0.4,
+        "top_10": [
+          "claim:LOAD-DECISION-001",
+          "claim:LOAD-BASE-001",
+          "claim:LOAD-CONTINUATION-001",
+          "claim:LOAD-CONNECTION-001",
+          "claim:LIMIT-MULTIPLICITY-001",
+          "claim:FORMULATION-Y-SPLIT-001",
+          "claim:LOAD-CONNECTION-002",
+          "claim:TR-XFMR-006",
+          "claim:TR-PAR-003",
+          "claim:TR-XFMR-009"
+        ]
+      },
+      "mandatory_record_recall": 1.0,
+      "observed_status": "qualified",
+      "question": "Which v_nom should I use for a DELTA ZIP load?",
+      "status_correct": true
+    },
+    {
+      "audience": "power_engineer",
+      "case_id": "ADV-DELTA-BASE-WITH-INCIDENCE",
+      "contract_complete": true,
+      "detected_routes": [
+        {
+          "exact_pattern": false,
+          "misconception_id": "wye-delta-share-nominal-voltage-base",
+          "score": 0.752667
+        }
+      ],
+      "expected_record_ids": [
+        "claim:LOAD-BASE-001",
+        "claim:LOAD-CONNECTION-001",
+        "concept:factor",
+        "concept:normalization",
+        "concept:phase-conductor-sequence-coordinate"
+      ],
+      "expected_status": "qualified",
+      "graph": {
+        "complete_at_10": false,
+        "recall_at_10": 0.0,
+        "top_10": [
+          "concept:equivalence-exactness-preservation",
+          "claim:TR-KRON-NEUTRAL-005",
+          "claim:TR-KRON-NEUTRAL-007",
+          "claim:TR-KRON-002",
+          "claim:TR-KRON-001",
+          "claim:LOAD-DECISION-001",
+          "concept:rating-limit-constraint",
+          "claim:TR-KRON-FIVE-002",
+          "claim:TR-KRON-NEUTRAL-004",
+          "claim:TR-KRON-NEUTRAL-001"
+        ]
+      },
+      "hybrid": {
+        "complete_at_10": false,
+        "recall_at_10": 0.4,
+        "top_10": [
+          "claim:LOAD-BASE-001",
+          "claim:LOAD-CONNECTION-001",
+          "claim:LOAD-CONNECTION-002",
+          "claim:TR-XFMR-001",
+          "claim:TR-XFMR-003",
+          "claim:TR-XFMR-006",
+          "claim:TR-XFMR-004",
+          "claim:LOAD-DECISION-001",
+          "claim:ARCH-LOWER-002",
+          "claim:KERNEL-OBSERVATION-001"
+        ]
+      },
+      "lexical": {
+        "complete_at_10": false,
+        "recall_at_10": 0.4,
+        "top_10": [
+          "claim:LOAD-BASE-001",
+          "claim:LOAD-CONNECTION-002",
+          "claim:LOAD-CONNECTION-001",
+          "claim:TR-XFMR-003",
+          "claim:TR-XFMR-006",
+          "claim:TR-XFMR-001",
+          "claim:LOAD-DECISION-001",
+          "claim:PRACTICE-SHORT-001",
+          "claim:TR-XFMR-004",
+          "claim:ARCH-RECOVERY-003"
+        ]
+      },
+      "mandatory_record_recall": 1.0,
+      "observed_status": "qualified",
+      "question": "Do WYE and DELTA loads use equal nominal voltage anchors even when coil currents map differently?",
+      "status_correct": true
     }
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "a051cac71f6fff8b45d3406722350ad63cc1b7cb13da18e3a75c13ff6f22b3ac"
+    "corpus_sha256": "0227263c8456b4b785a423e0a68f81e4124573b3c3c2fb40cc100b99234369d2"
   },
   "inputs": {
     "adversarial_cases": {
       "path": "llm/adversarial-cases.toml",
-      "sha256": "80370e649814824a12052b2587911c72f85360d0f3cf6e2acf647881de9ffc84"
+      "sha256": "0d27a113257fb6be8b9d082b418685110271b5fac8355357f7aa7171f0c05b73"
     },
     "router": {
       "path": "scripts/llm_retrieval.py",
-      "sha256": "be169d54458ffd188cb9d0d0fb499cda8f6ceef1ac73a8f4b19ac1862018ce07"
+      "sha256": "da53850cfe935a7b5fac31eae916d946ac75da5c5c20eced915fe945d9970406"
     }
   },
   "purpose": "deterministic adversarial and metamorphic retrieval checks; not human-calibrated evidence",
   "schema_version": "0.1.0",
   "status": "pass",
   "summary": {
-    "cases": 36,
+    "cases": 46,
     "false_qualification_count": 0,
     "false_qualification_rate": 0.0,
-    "graph_recall_at_10": 0.651282,
-    "hybrid_recall_at_10": 0.385897,
+    "graph_recall_at_10": 0.604598,
+    "hybrid_recall_at_10": 0.387356,
     "qualified_contract_complete": 1.0,
-    "retrieval_cases": 26,
+    "retrieval_cases": 29,
     "status_accuracy": 1.0,
     "unqualified_abstention_accuracy": 1.0,
-    "unqualified_cases": 10,
+    "unqualified_cases": 17,
     "unsupported_abstention_accuracy": 1.0
   },
   "threshold_results": {

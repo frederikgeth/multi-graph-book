@@ -1,11 +1,11 @@
 # Adversarial LLM retrieval evaluation
 
 **Status:** `pass`
-**Cases:** 36
+**Cases:** 46
 
 This is a deterministic robustness and abstention check, not human-calibrated answer-quality evidence.
 Near-domain negatives require under_retrieved rather than unrelated qualified claims. These curated cases do not estimate deployment error rates or establish complete intent coverage.
-Recall is averaged over the 26 cases with target evidence; empty target sets are not perfect retrievals.
+Recall is averaged over the 29 cases with target evidence; empty target sets are not perfect retrievals.
 
 | Measure | Result | Gate |
 | --- | ---: | --- |
@@ -13,9 +13,9 @@ Recall is averaged over the 26 cases with target evidence; empty target sets are
 | Qualified contract completeness | 100.0% | yes |
 | Unsupported-query abstention | 100.0% | yes |
 | Unqualified-query status accuracy | 100.0% | yes |
-| False qualification on unqualified queries | 0/10 (0.0%) | covered by status gate |
-| Hybrid retrieval recall@10 | 38.6% | diagnostic |
-| Graph retrieval recall@10 | 65.1% | diagnostic |
+| False qualification on unqualified queries | 0/17 (0.0%) | covered by status gate |
+| Hybrid retrieval recall@10 | 38.7% | diagnostic |
+| Graph retrieval recall@10 | 60.5% | diagnostic |
 
 | Case | Expected status | Observed status | Hybrid recall@10 | Graph recall@10 | Contract complete |
 | --- | --- | --- | ---: | ---: | --- |
@@ -55,3 +55,13 @@ Recall is averaged over the 26 cases with target evidence; empty target sets are
 | `ADV-CURRENT-GAUGE` | `qualified` | `qualified` | 25.0% | 50.0% | yes |
 | `ADV-DELTA-KERNEL-LAW` | `qualified` | `qualified` | 25.0% | 50.0% | yes |
 | `ADV-GAUGE-TRANSIENT-BOUNDARY` | `under_retrieved` | `under_retrieved` | — | — | — |
+| `ADV-DELTA-COIL-INDEPENDENCE` | `under_retrieved` | `under_retrieved` | — | — | — |
+| `ADV-DELTA-TWO-TERMINAL-ARITY` | `under_retrieved` | `under_retrieved` | — | — | — |
+| `ADV-DELTA-COIL-COUNT` | `under_retrieved` | `under_retrieved` | — | — | — |
+| `ADV-DELTA-VOLTAGE-MAP` | `under_retrieved` | `under_retrieved` | — | — | — |
+| `ADV-DELTA-INJECTION-AMBIGUOUS` | `under_retrieved` | `under_retrieved` | — | — | — |
+| `ADV-DELTA-VOLTAGE-AMBIGUOUS` | `under_retrieved` | `under_retrieved` | — | — | — |
+| `ADV-DELTA-NOMINAL-OPERATING-POINT` | `under_retrieved` | `under_retrieved` | — | — | — |
+| `ADV-DELTA-VOLTAGE-BASE` | `qualified` | `qualified` | 40.0% | 20.0% | yes |
+| `ADV-DELTA-VNOM` | `qualified` | `qualified` | 40.0% | 40.0% | yes |
+| `ADV-DELTA-BASE-WITH-INCIDENCE` | `qualified` | `qualified` | 40.0% | 0.0% | yes |

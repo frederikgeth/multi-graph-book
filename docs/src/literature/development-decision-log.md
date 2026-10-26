@@ -454,3 +454,54 @@ Revisit only if a versioned migration can preserve old routing keys, source
 hashes, context-packet behavior, and external references while proving that a
 single identifier system expresses both routing identity and federated evidence
 scope without duplication.
+
+## DLOG-0010 — Require topic evidence before qualifying a neighboring question
+
+- **Date:** 2026-10-26
+- **Status:** accepted
+- **Scope:** deterministic misconception routing; review finding R1
+
+### Question
+
+How should the router handle a DELTA coil question whose shared vocabulary
+matches nominal-voltage, graph-membership or iteration-failure patterns?
+
+### Options considered
+
+- raise a global score threshold;
+- broaden the coil-current route to every DELTA coil question;
+- require the matched route's topic evidence and retain related material without
+  qualification when no responsive route is established.
+
+### Decision
+
+Use route-specific topic guards. Nominal-base routing requires normalization
+intent, including phrase-level evidence for "nominal voltage". Graph membership
+and iteration failure require their respective topics. Preserve the existing
+curated complete-phrase behavior, scores, source validation and abstention states.
+
+### Reason
+
+Suppressing only the first wrong route exposed unrelated lower-ranked routes.
+Coil count, independence and voltage incidence cannot be answered by substituting
+a nominal-base or formulation-placement qualification.
+
+### Evidence
+
+The October 26 checkpoint retains the original false qualification. Ten adjacent
+cases in `llm/adversarial-cases.toml` now exercise ambiguity and positive base
+intent; the existing coil-current and formulation cases remain regressions.
+`scripts/check_llm_routes.py` carries the original question through direct,
+Markdown, HTTP, CLI and MCP access.
+
+### Known downside
+
+Topic guards can miss valid paraphrases. This repair deliberately abstains on
+ambiguous coil questions and does not establish general semantic correctness,
+multi-intent completeness or a deployment error rate.
+
+### Conditions for revisiting
+
+Revisit with separately collected questions and responsive source evidence.
+Preserve known routes and negative cases; do not tune thresholds or relabel
+expected outcomes merely to improve reported metrics.

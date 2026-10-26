@@ -43,6 +43,12 @@ ROUTER_TOPIC_EXCLUSIONS = {
 }
 
 ROUTER_TOPIC_PATTERNS = {
+    "iteration-failure-proves-infeasibility": (
+        r"fail\w*|nonconverg\w*|infeasib\w*|collapse|nose",
+    ),
+    "loads-generators-fixed-graph-membership": (
+        r"graph|ybus|nodal|admittance|norton|assembl\w*|lineariz\w*|linearis\w*|matrix",
+    ),
     "nullspace-implies-removable-gauge": (r"nullspace|kernel|null|gauge|quotient\w*|symmetr\w*",),
     "convex-rating-implies-convex-opf": (
         r"convex|nonconvex|convexity", r"limit\w*|rating\w*|cap\w*", r"power|current\w*|opf|rating\w*",
@@ -81,7 +87,21 @@ ROUTER_TOPIC_PATTERNS = {
     "base-state-equivalent-is-globally-exact": (r"equivalent|ward|kron|frozen|freeze|basestate",),
     "parallel-admittance-implies-decision-equivalence": (r"parallel|twin|bundled|aggregate|aggregation|mva",),
     "ground-neutral-reference-are-one-node": (r"ground\w*|earth|datum|reference",),
-    "wye-delta-share-nominal-voltage-base": (r"wye|delta|load|nominal|base|vnom|kv|sqrt3",),
+    # Connection vocabulary alone does not ask about normalization: coil arity,
+    # incidence and operating voltages require different evidence. In particular,
+    # a bare "voltage" signal would still admit coil-to-terminal map questions.
+    "wye-delta-share-nominal-voltage-base": (
+        r"wye|delta|load\w*",
+    ),
+}
+
+# Phrase-level evidence distinguishes "nominal voltage" from an unrelated
+# connection question evaluated "at the nominal operating point". Other base
+# markers can stand alone once the connection/load topic gate also matches.
+ROUTER_TOPIC_QUERY_PATTERNS = {
+    "wye-delta-share-nominal-voltage-base": (
+        r"\b(?:nominal (?:load )?voltage|base|vnom|kv|sqrt3|anchor\w*|normaliz\w*|normalis\w*)\b"
+    ),
 }
 
 STOPWORDS = {
@@ -554,6 +574,9 @@ class CorpusIndex:
                 any(re.fullmatch(pattern, term) for term in query_terms)
                 for pattern in topic_patterns
             )
+            query_pattern = ROUTER_TOPIC_QUERY_PATTERNS.get(item["id"])
+            if query_pattern:
+                topic_matches = topic_matches and bool(re.search(query_pattern, query_normalized))
             pattern_scores = []
             exact_match = False
             for pattern in item["query_patterns"]:

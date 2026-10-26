@@ -77,6 +77,14 @@ These gates reduce known false qualifications; they do not prove semantic
 coverage of arbitrary or multi-intent questions. Related material without a
 responsive contract remains `under_retrieved`.
 
+For example, DELTA coil-count or voltage-map questions do not establish nominal
+voltage-base intent. That route requires a base/anchor/normalization marker or
+the phrase "nominal voltage"; "at the nominal operating point" is insufficient.
+The neighboring graph-membership and iteration-failure routes also require
+their own topic evidence, so suppressing one false match cannot simply expose
+those unrelated fallbacks. The October 26 R1 question and adjacent cases are
+now known regressions, not blind evaluation evidence.
+
 The adversarial evaluation includes near-domain negative questions and reports
 false qualification separately from retrieval recall. Questions without target
 evidence are excluded from recall averages, rather than counted as perfect
