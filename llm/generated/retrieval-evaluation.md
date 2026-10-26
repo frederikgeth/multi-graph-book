@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `ad23918d6e687a66017496f15e372e4b966ee2786bd3a518092d6538c3d5d508`<br>
+**Corpus hash:** `ec590c1116ae2add7ac688cc48ce9c12c238185376fbf2e84e1fb636798298b9`<br>
 **Cases:** 108
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -46,7 +46,7 @@ the question count must not be treated as that many independent observations.
 | `lexical` | 33.0% | 42.6% | 0.0% | 0/33 | 6/33 | 0.196 |
 | `char_tfidf` | 34.1% | 43.3% | 0.0% | 0/33 | 7/33 | 0.219 |
 | `hybrid` | 35.5% | 47.1% | 0.0% | 0/33 | 5/33 | 0.212 |
-| `graph` | 37.5% | 58.9% | 18.2% | 6/33 | 3/33 | 0.249 |
+| `graph` | 37.5% | 58.4% | 18.2% | 6/33 | 3/33 | 0.249 |
 
 Held-out contract-router firing: **22/33 (66.7%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **20/33 (60.6%)**; this remains diagnostic because the set is synthetic and clustered.

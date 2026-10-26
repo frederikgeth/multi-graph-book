@@ -569,10 +569,35 @@ attempts retain failure evidence. Native construction also accepts maps/extra
 entries refused by the bounded audit. Filter fields leave native model shape
 unchanged but remain audit refusals. The current native THREE_LEG cyclic model
 is not a resolution of physical review #95. Filters/internal/grid-forming
-voltages, controllers, availability, prices, custom roles, DC coupling/dynamics
+voltages, controllers, availability, custom roles, DC coupling/dynamics
 and objective/optimality remain outside this slice. A false dc_link_coupled is
 the uncoupled default; recognized prime_mover values are metadata only. Native
 power-flow construction omits s_max circles; declared-cap compliance does not
 certify which problem was built. The running input has no IBR; its default
 three generator-bound failures/zero unknowns and separate tighter pass persist.
 Published pin, PSK statuses, historical replay and execution MCP are unchanged.
+
+
+The bounded IBR price extension recognizes full finite signed branch prices
+as declaration metadata, retaining ordered pairs/map positions and false
+selected/reported-objective, objective-value and optimality flags. Absent cost
+authors no declaration; empty/scalar/null/prefix/extra/Boolean/nonfinite/range-
+invalid data remains unknown without erasing known electrical evidence.
+`examples/ibr_price_scope.jl` and `test/data/linear_audit/ibr-price.json` add
+native expression/recipe comparisons to the source-bound companion. Single,
+four-leg and cyclic three-leg rate values .001/-.00045/-.0005 currency/hour
+agree in SI/per-unit; price scaling uses the local AC power base. Expression
+construction adds no variables/constraints and does not select an objective.
+Consistent reordering moves prices; unmoved four-leg prices yield -.00095.
+Cyclic circulation changes nonuniform rate to -.0044 with unchanged terminal
+power and six retained coil failures; uniform .1 prices yield .00035 before/after.
+Default/feasibility/custom-123/two-hour recipes remain separate observations,
+without selected-objective or optimality certification. Malformed native
+construction boundaries, physical THREE_LEG review #95 and filter/control/DC
+refusals remain explicit. Running-network/default/tighter evidence and published
+integration, PSK statuses, historical replay and execution MCP remain unchanged.
+
+The fully seeded single-pair SI positive/negative/two-hour attempts retain
+OTHER_ERROR/Restoration_Failed and INFEASIBLE_POINT statuses with passing
+returned electrical audits; they remain unaccepted solver attempts. Separate
+per-unit counterparts solve and pass. No initialization-robustness claim.

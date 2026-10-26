@@ -15,7 +15,7 @@ Recall is averaged over the 26 cases with target evidence; empty target sets are
 | Unqualified-query status accuracy | 100.0% | yes |
 | False qualification on unqualified queries | 0/10 (0.0%) | covered by status gate |
 | Hybrid retrieval recall@10 | 38.6% | diagnostic |
-| Graph retrieval recall@10 | 66.1% | diagnostic |
+| Graph retrieval recall@10 | 65.1% | diagnostic |
 
 | Case | Expected status | Observed status | Hybrid recall@10 | Graph recall@10 | Contract complete |
 | --- | --- | --- | ---: | ---: | --- |
@@ -33,7 +33,7 @@ Recall is averaged over the 26 cases with target evidence; empty target sets are
 | `ADV-ZERO-VOLTAGE-IMBALANCE` | `qualified` | `qualified` | 66.7% | 100.0% | yes |
 | `ADV-ZERO-NEUTRAL-RESIDUAL` | `qualified` | `qualified` | 33.3% | 33.3% | yes |
 | `ADV-KCL-ALL-VOLTAGES` | `qualified` | `qualified` | 33.3% | 100.0% | yes |
-| `ADV-IDEAL-SWITCH-SHARING` | `qualified` | `qualified` | 25.0% | 75.0% | yes |
+| `ADV-IDEAL-SWITCH-SHARING` | `qualified` | `qualified` | 25.0% | 50.0% | yes |
 | `ADV-TINY-RESISTANCE-SHARING` | `qualified` | `qualified` | 25.0% | 50.0% | yes |
 | `ADV-IDEAL-CURRENT-LIMIT` | `qualified` | `qualified` | 25.0% | 25.0% | yes |
 | `ADV-PARAMETER-REUSE` | `qualified` | `qualified` | 25.0% | 75.0% | yes |

@@ -2355,7 +2355,7 @@ physical topology review in package issue #95 remains unresolved. Agreement
 with these equations cannot settle that physical model question.
 
 Authored filters (`r_filter`, `x_filter`, `b_filter_shunt`), internal/grid-forming
-voltage fields, controller profiles, `p_avail`, prices, custom roles and DC
+voltage fields, controller profiles, `p_avail`, custom roles and DC
 coupling remain unassessed, including explicit zero/false filter declarations.
 The native filter-boundary comparison has unchanged variable/constraint counts
 with these fields present. Ignoring them is not evidence that a filter is ideal
@@ -2376,3 +2376,109 @@ integration, PSK implementation statuses and execution MCP remain separate.
 `cri/cii`, write its ordered power voltage and reconstruct the terminal
 injections. Then decide which extra evidence is needed for a physical
 terminal-current rating, a filter model or a DC-coupled energy guarantee.
+
+
+### [IBR price declarations do not select an objective](@id ibr-price-scope-audit)
+
+The bounded IBR injection audit now recognizes full finite signed `cost`
+vectors as **declarations**. Their entries follow the admitted power branches:
+one ordered pair for `SINGLE_PHASE`, phase order after removing the mapped
+neutral for `FOUR_LEG`, and cyclic coil order for `THREE_LEG`. The declaration
+records these terminal pairs and original map positions, with status `declared`,
+null residual/tolerance and false physical-limit, selected/reported-objective,
+objective-value and optimality flags. A recognized price does not establish
+that a supplied result minimized it, or that it is an adequate tariff.
+
+The native default expression is a signed snapshot cost rate:
+
+```math
+R=\frac{1}{1000}\sum_k c_k P_k,\qquad
+P_k=\Re\!\left(U_k\overline{I_k}\right).
+```
+
+Prices ``c_k`` use currency/kWh, powers use W, and ``R`` uses currency/hour.
+Positive prices prefer less injection and negative prices prefer more within
+the chosen feasible set. A zero coefficient removes that term's price incentive;
+it does not prove a feasible flat direction or a unique dispatch. An explicit
+snapshot duration ``\Delta t`` in hours yields ``E=R\Delta t`` in currency.
+Duration is not inferred from a static network or a supplied objective value.
+
+The source-bound companion separately evaluates native `generation_cost(ctx)`
+at analytic voltage/current points and runs controlled native objective recipes.
+The independent audit reads none of those native helpers as its oracle.
+
+| Analytic point | Ordered prices (currency/kWh) | Native default rate (currency/hour) |
+|:--|:--|:--|
+| Single pair, ``P=4`` W | `[0.25]` | 0.001 |
+| Four-leg map `[n,z,x,y]`, branch powers ``(-1,4,1.5)`` W | `[0.1,-0.2,0.3]` | -0.00045 |
+| Three cyclic coils, powers ``(4,1.5,-2)`` W | `[0.1,-0.2,0.3]` | -0.0005 |
+
+These expression values agree in SI and per-unit coordinates. Native conversion
+multiplies prices by the local AC power base, while the power coordinates divide
+by that base. The factors cancel. Building the expression adds no variables or
+constraints and leaves a feasibility model's selected objective unchanged. It
+uses voltage/current directly, without relying on P/Q auxiliary values.
+
+Consistent permutations/reversals transform prices with their branch
+observations and preserve the table's rates. If four-leg prices are left in
+the old order after reordering the phases, the rate becomes -0.00095. Both
+electrical points pass: price assignment is a separate semantic choice.
+
+**Predict:** add the same circulating current ``h`` to every cyclic coil.
+Terminal injections and total power remain unchanged. Must the weighted rate
+also remain unchanged?
+
+For the current native cyclic equations,
+
+```math
+\Delta R=\frac{1}{1000}\Re\!\left(
+\overline{h}\sum_k c_k U_k\right).
+```
+
+Uniform prices factor out of ``\sum U_k=0``. Nonuniform prices generally do
+not. With ``h=0.5+0.2\mathrm j`` A, the three-leg fixture's rate changes from
+-0.0005 to -0.0044, despite unchanged terminal injections/KCL/total power. Its
+three current and three apparent-power coil failures remain visible. Uniform
+0.1 prices instead give 0.00035 before and after circulation. Terminal total
+power cannot recover arbitrary weighted coil prices. This is a statement about
+the **current native cyclic model**, without resolving physical `THREE_LEG`
+review #95 or establishing an economically meaningful internal circulation.
+
+Absent `cost` authors no declaration. Empty, scalar, null, partial, extra,
+Boolean, nonfinite and Float64-range-invalid prices remain unassessed. A
+malformed price preserves known electrical checks and current contributions;
+known failures take precedence. Missing current preserves valid price metadata
+but suppresses complete KCL/power. Optional `pg/qg`, a forged `objective` and a
+successful solver label do not replace those observations or select a recipe.
+Filter/controller/availability/DC/custom-role/topology boundaries are unchanged.
+
+Native default construction rejects scalar/empty/prefix prices, ignores an
+extra suffix and skips a null term. Construction with `add_objective=false`
+accepts all of these cases, without validating a price expression. The strict
+bounded audit retains every explicit malformed declaration as unknown, including
+null and ignored extras; it neither pads nor discards prices to pass.
+
+Separate controlled recipes retain default, feasibility and constant-123
+objectives with the same valid price declaration. An explicit two-hour wrapper
+changes the single-pair rate 0.001 currency/hour to 0.002 currency. Signed and
+zero cases and bounded free-dispatch comparisons preserve solver/primal/raw
+status and independent returned-point audits. In this locked run, the fully
+seeded single-pair SI positive, negative and two-hour attempts report
+`OTHER_ERROR` / `Restoration_Failed` and `INFEASIBLE_POINT`. Their returned
+electrical points pass the independent audit and have the analytic recipe
+values, but the solver attempts remain unaccepted. Separate per-unit positive,
+negative and two-hour comparisons solve and pass. None establishes initialization
+robustness or turns the general supplied-point audit into a selected-objective
+checker. Reported
+objective consistency, custom constraints, tariff adequacy, duration/energy
+assumptions, stationarity and local/global optimality require separate evidence.
+
+The running input has no IBR; its default three generator-bound failures with
+zero unknowns, all 26 passing KCL rows and aggregate power, and separate tighter
+electrical pass remain unchanged. Published integration, PSK implementation
+statuses and execution MCP remain separate.
+
+**Transfer exercise.** Reorder the four-leg map while preserving physical phase
+prices, then compare uniform and nonuniform cyclic prices under circulation.
+State the additional evidence needed to certify a reported two-hour objective
+or a physical/economic interpretation of the internal coil dispatch.
