@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `e0253a53526002bf42af2b8bd5a0ebbe5235933188253bfc2e7884e9f94b2beb`<br>
+**Corpus hash:** `63499b13877ed92fac0c9e5ddcfa8dbef149b8a81df8c1dfe63e741fa4fdb16f`<br>
 **Cases:** 108
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -20,7 +20,7 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Open-corpus lexical evidence recall@10 | 33.4% | diagnostic |
 | Open-corpus complete evidence@10 | 0.9% | diagnostic |
 | Evidence-only lexical recall@5 | 35.1% | diagnostic |
-| Evidence-only lexical recall@10 | 42.0% | diagnostic |
+| Evidence-only lexical recall@10 | 41.9% | diagnostic |
 | Evidence-only complete evidence@10 | 1.9% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
@@ -46,7 +46,7 @@ the question count must not be treated as that many independent observations.
 | `lexical` | 33.6% | 42.6% | 0.0% | 0/33 | 6/33 | 0.195 |
 | `char_tfidf` | 34.1% | 42.8% | 0.0% | 0/33 | 7/33 | 0.219 |
 | `hybrid` | 35.5% | 46.0% | 0.0% | 0/33 | 6/33 | 0.213 |
-| `graph` | 37.5% | 58.4% | 18.2% | 6/33 | 3/33 | 0.249 |
+| `graph` | 37.5% | 58.9% | 18.2% | 6/33 | 3/33 | 0.249 |
 
 Held-out contract-router firing: **22/33 (66.7%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **20/33 (60.6%)**; this remains diagnostic because the set is synthetic and clustered.
@@ -95,7 +95,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
 | `power_engineer` | 36 | 100.0% | 42.4% | 100.0% |
-| `software_engineer` | 36 | 100.0% | 38.3% | 100.0% |
+| `software_engineer` | 36 | 100.0% | 37.9% | 100.0% |
 | `student` | 36 | 100.0% | 45.4% | 100.0% |
 
 ## Case results
@@ -151,7 +151,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | `EVAL-TRANSFORMER-TAP-DOMAIN-SOFTWARE` | `software_engineer` | `fixed-tap-snapshot-preserves-adjustable-transformer` | 33.3% | yes |
 | `EVAL-TRANSFORMER-TAP-DOMAIN-POWER` | `power_engineer` | `fixed-tap-snapshot-preserves-adjustable-transformer` | 33.3% | yes |
 | `EVAL-TRANSFORMER-WINDING-REVERSAL-STUDENT` | `student` | `transformer-end-swap-is-ordinary-edge-reversal` | 16.7% | yes |
-| `EVAL-TRANSFORMER-WINDING-REVERSAL-SOFTWARE` | `software_engineer` | `transformer-end-swap-is-ordinary-edge-reversal` | 33.3% | yes |
+| `EVAL-TRANSFORMER-WINDING-REVERSAL-SOFTWARE` | `software_engineer` | `transformer-end-swap-is-ordinary-edge-reversal` | 16.7% | yes |
 | `EVAL-TRANSFORMER-WINDING-REVERSAL-POWER` | `power_engineer` | `transformer-end-swap-is-ordinary-edge-reversal` | 16.7% | yes |
 | `EVAL-TERMINAL-PERMUTATION-STUDENT` | `student` | `terminal-permutation-is-cosmetic` | 20.0% | yes |
 | `EVAL-TERMINAL-PERMUTATION-SOFTWARE` | `software_engineer` | `terminal-permutation-is-cosmetic` | 20.0% | yes |

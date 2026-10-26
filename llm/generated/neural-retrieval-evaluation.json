@@ -2758,13 +2758,13 @@
   "compatibility": {
     "archived_on": "2026-10-26",
     "current_corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "current_corpus_sha256": "e0253a53526002bf42af2b8bd5a0ebbe5235933188253bfc2e7884e9f94b2beb",
+    "current_corpus_sha256": "63499b13877ed92fac0c9e5ddcfa8dbef149b8a81df8c1dfe63e741fa4fdb16f",
     "current_heldout_sha256": "171857dd883acf3ed9a091fac0e2e7485cbd13d5f0477a56af37d010cec16592",
     "current_lexical_summary": {
       "char_tfidf": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.218793,
+        "mean_reciprocal_rank_at_20": 0.21881,
         "recall_at_10": 0.428283,
         "recall_at_5": 0.341077,
         "recall_expected_records_at_10": 180,
@@ -2792,7 +2792,7 @@
         "zero_recall_at_10_count": 6
       }
     },
-    "current_record_count": 976,
+    "current_record_count": 977,
     "required_action": "rerun both pinned neural retriever and reranker before comparing them with the current corpus",
     "status": "archived_prior_corpus"
   },

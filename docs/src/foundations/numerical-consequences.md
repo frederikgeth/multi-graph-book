@@ -545,10 +545,11 @@ The separate candidate `audit_solution` now adds default-role source neutral
 returns, implicit source grounding and WYE/SINGLE_PHASE/DELTA constant-power
 load equations, fixed ideal switches, a bounded WYE/SINGLE_PHASE generator
 domain, ordinary phase-to-earth and explicit-neutral phase-to-neutral voltage
-bounds, applicable scalar neutral-to-earth caps, fixed single-coil transformers,
+bounds, applicable scalar neutral-to-earth caps and phase-pair bounds, fixed
+single-coil transformers,
 and matched WYE/DELTA winding-list equations with explicit rating-metadata
-semantics. The same running-network result now has **29 unassessed rows**
-(33 before the neutral-to-earth audit below):
+semantics. The same running-network result now has **28 unassessed rows**
+(29 before the phase-to-phase audit below):
 11 local power equations across five loads and the source voltage relation are
 now evaluated. Source-return and load-terminal currents are reconstructed from
 their connection maps; each explicit or implicit earth reaction is consumed once.
@@ -558,12 +559,12 @@ from-side currents. The 42-row table above remains the coverage of
 `audit_linear_solution`.
 
 The extended verdict is still **indeterminate**. The running-network generator
-has a cost field outside this audit slice; phase-to-phase voltage
-limits also remain unassessed. The winding-list transformer now has checked
+has a cost field outside this audit slice. The winding-list transformer now has
+checked
 coil equations, leakage, current caps and reconstructed terminal incidence. Its
 `s_rating` is retained as metadata, not an added apparent-power limit. The 28 ordinary
-phase-to-earth voltage-bound rows and four neutral-to-earth caps are now checked. All 26
-terminal KCL rows and aggregate power remain unassessed because required current
+phase-to-earth voltage-bound rows, four neutral-to-earth caps and six phase-pair
+limits are now checked. All 26 terminal KCL rows and aggregate power remain unassessed because required current
 contributions are still missing. The companion records both APIs on the same solved point;
 no zeros are supplied to close the remaining obligations. The
 [delta coil lesson](@ref delta-coil-current-lesson) explains why successful KCL
@@ -1141,7 +1142,7 @@ This audit
 accepts only the three-terminal closed incidence above. Two-terminal DELTA,
 unmatched coils, taps and internal coordinates also remain unassessed. The
 rating-metadata trace below handles `s_rating` separately; the current running
-network retains 29 unassessed obligations. The published package pin and execution
+network retains 28 unassessed obligations. The published package pin and execution
 MCP surface are unchanged.
 
 **Transfer exercise.** Cyclically reorder every winding's coil positions and
@@ -1213,9 +1214,9 @@ still suppresses network KCL/power; metadata cannot recover it.
 
 The running-network input is retained intact. Its transformer equations,
 incidence and declared current caps now pass; top-level `s_rating` is recorded
-as metadata. The audit has 29 unassessed obligations and remains
-**indeterminate** because other declarations, including generator cost and
-unsupported voltage families, remain open. Physical adequacy, objectives,
+as metadata. The audit has 28 unassessed obligations and remains
+**indeterminate** because generator cost remains unsupported and the current
+inventory is incomplete. Physical adequacy, objectives,
 external review, published integration and execution MCP exposure remain
 separate obligations.
 
@@ -1313,8 +1314,8 @@ Malformed or nonfinite bounds, conversion overflow/underflow and unknown
 applicability remain **unassessed**, while otherwise known current contributions
 and checked violations stay visible. Missing required neutral voltage suppresses
 network KCL/power certification. Neutral-to-earth limits are covered below;
-phase-to-phase, angle and sequence limits remain separate audit work. The existing running network has no
-PN-bound declarations, so its 29 unassessed obligations remain unchanged. The
+phase-to-phase limits follow below, while angle and sequence remain separate
+audit work. The existing running network has no PN-bound declarations, so its 28 unassessed obligations remain unchanged. The
 published integration pin and execution MCP surface are unchanged.
 
 **Transfer exercise.** For ``V_p=4+6\mathrm j`` V and ``V_n=1+2\mathrm j`` V,
@@ -1400,8 +1401,9 @@ uppercase neutrals and native constraint incidence. Native builders are the
 test subjects, not the independent audit's oracle.
 
 Four running-network neutral caps now pass, reducing unassessed obligations
-from 33 to 29 without deleting input fields. Generator cost, phase-to-phase
-limits and incomplete KCL/power coverage still make the result **indeterminate**.
+from 33 to 29 at this stage without deleting input fields. Phase-to-phase limits
+follow below; generator cost and incomplete KCL/power still make the result
+**indeterminate**.
 The published integration pin, PSK implementation statuses, physical adequacy
 and execution MCP exposure remain separate.
 
@@ -1410,3 +1412,82 @@ magnitudes for both return circuits above. Explain which additional model and
 state data distinguish them, why a finite shunt does not skip `vn_max`, and why
 a successful source-grounded solve does not turn its skipped cap into a passed
 limit.
+
+
+### [Phase-to-phase bounds preserve the full pair index](@id phase-phase-voltage-audit)
+
+A phase-to-phase magnitude is the norm of a complex voltage difference. It
+requires both phase phasors; neither a neutral report nor a balanced-system
+conversion factor can replace them. The candidate audit now evaluates applicable
+finite nonnegative `vpp_min`/`vpp_max` arrays:
+
+```math
+m_{ij}=|V_i-V_j|,\qquad
+e_{ij,\min}=\max(0,\underline v_{pp,ij}-m_{ij}),\qquad
+e_{ij,\max}=\max(0,m_{ij}-\overline v_{pp,ij}).
+```
+
+**Predict:** take source phases 10 V and ``10\mathrm j`` V connected through
+two 1 Ω conductors to a two-terminal DELTA load. A supplied load-coil current
+of 1 A from x to y gives load phases ``V_x=9`` V and ``V_y=1+10\mathrm j`` V.
+The source supplies ``10-10\mathrm j`` VA; the load consumes ``8-10\mathrm j`` VA
+and the conductors dissipate 2 W. Would subtracting the phase magnitudes recover
+the voltage seen by this load?
+
+| Quantity or obligation | Supplied value or bounds | Independent result |
+|:--|:--|:--|
+| Complex phase difference | ``8-10\mathrm j`` V | Magnitude ``\sqrt{164}\approx12.806248`` V |
+| Difference of phase magnitudes | ``9-\sqrt{101}`` V | Different observation |
+| Phase-pair bounds | [12,13] V | Pass |
+| Tightened lower bound | 13 V | Fail by about 0.193752 V |
+| Tightened upper bound | 12.5 V | Fail by about 0.306248 V |
+| Phase-earth bounds, local KCL and total power at either bound mutation | Same supplied point | Pass |
+
+Residuals and tolerances are **V**. At the 12.5 V upper bound, the native
+squared-constraint excess is 7.75 V², while the independent magnitude excess is
+about 0.306248 V. A tolerance must name its quantity and units. This synthetic
+unbalanced two-phase circuit also supplies no ``\sqrt{3}`` conversion rule.
+Native SI and per-unit points pass their scoped audits. The tightened native
+attempt has local infeasibility and a failed point audit; the termination alone
+is not a global infeasibility certificate.
+
+Array position is part of the declaration. For phases `[a,b,c]`, pair entries
+1, 2 and 3 mean `(a,b)`, `(a,c)` and `(b,c)`. The list excludes a supported n/N
+neutral when present, and otherwise retains all phases in declaration order.
+A pair touching a perfectly grounded or source-fixed phase is skipped by the
+native builder but still consumes its index. The independent audit leaves its
+bound **unassessed**, with no zero residual invented. If phase a is skipped,
+`(b,c)` still uses entry 3. Reordering phases therefore requires the corresponding
+pair-array permutation, not just a permutation of phase entries. A grounded
+neutral does not skip phase pairs; neither does a finite grounding shunt.
+
+**Inspect:** `examples/phase_phase_voltage_audit.jl` and its
+`phase-phase-voltage.json` fixture, invoked by the exact clean candidate
+`verify_linear_coverage.jl` companion, retain the analytic/native points,
+bound violations, skipped first phases, malformed arrays and missing endpoint
+state. Consistent native grounded/source-fixed cases solve while retaining
+incomplete audit coverage. Tests inspect native constraint identities and cross
+terms as subjects, without using builder expressions as the evaluator's oracle.
+They also cover three-phase pair permutations, consistent relabeling, common
+phasor shifts, exact zero/equality and V-unit tolerance, forged magnitudes and
+Float64 range. A common shift preserves this pair observation; separate absolute
+source, grounding or earth-connected equations may forbid it.
+
+Fewer than two phases, custom or ambiguous roles, malformed arrays and missing
+endpoint state remain unknown. A neutral is not required for this observation;
+a missing declared neutral state nevertheless prevents complete network
+KCL/power certification. Bad limit data preserves otherwise known currents
+and checked violations. Each checked row names its terminal pair, phase indices,
+full pair index, observed magnitude and bound.
+
+The running network now has six checked phase-pair bounds at bus i6. Unknown
+rows fall from 29 to 28: the two unsupported fields previously shared one
+field-coverage row. The intact generator cost and incomplete KCL/power coverage
+keep its verdict **indeterminate**. Angle/sequence limits, objectives, physical
+adequacy, PSK implementation statuses, published integration and execution MCP
+remain separate obligations.
+
+**Transfer exercise.** Reorder `[a,b,c]` to `[c,a,b]` and map each old pair entry
+to its new position. Then ground c: identify the surviving pair and its full
+array index. Explain why a solver status, a neutral voltage or one phase
+magnitude cannot fill in a missing endpoint phasor.
