@@ -1,0 +1,324 @@
+{
+  "atan_exact_bracket": {
+    "lower": "188829778541403092227756612458046632640997266931385474034885446017416360212937220407773259738197196516027610530701920630901454807059301/1894575413850882531644940460198703901000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "upper": "1888297785414030922277566124580466326409972669313854740348854460174163602129372204077732597381971965351647359231350775162038836979553/18945754138508825316449404601987039010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "width": "1/99000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "evidence_state": "self_checked_book_calculations_not_external_review",
+  "precision_decimal_digits": 90,
+  "price_point_convention_reference": {
+    "fixture_path": "test/data/linear_audit/ibr-price.json",
+    "fixture_sha256": "fcb3ebd7955b727c6e6d27013d33f41434598d3b116ca2ea29f54622d5021961",
+    "package_revision": "6c6515153a6c9d3ed8f59605033c05a5022fa392",
+    "scope": "Authored computational point only; not physical THREE_LEG adequacy."
+  },
+  "schema_version": "1.0.0",
+  "scope": "Only the authored synthetic points and observations; not native API applicability, physical adequacy, objective selection or optimality.",
+  "source_sha256": {
+    "docs/src/cases/building-and-changing-models.md": "8f23238e4ac07dbc1ef4994851ec3a989952202a118a123f31605296d3d970b6",
+    "docs/src/foundations/circuit-formulations-and-lowering.md": "b15e36e84002a5b20fdf1c57ea58fa968e17a6cd00f129691d0cc26c9dee4ed9",
+    "docs/src/foundations/numerical-consequences.md": "5ede1d3885cc5befd0c12cfbb7c63b97d62fe1cd8fa2238c6085ae176c234c20",
+    "docs/src/reference/numerical-audit-reference.md": "fa09c85eae4c88ed37336a34e087d290257902adf01f75e4c6aa7d2a712f53b9",
+    "experiments/lessons/prose_number_witnesses.py": "6f9be74459644a058050198496d68453b84382a8b10c5df187870d01702e0c93"
+  },
+  "values": {
+    "branch_upper_angle_excess": {
+      "derivation": "atan(0.1)-0.08.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "rad",
+      "value": "0.0196686524911620273784461198780205902432783225043146480155087768100277474475506544206126244"
+    },
+    "bus_lower_angle_excess": {
+      "derivation": "-0.05-(-atan(0.1)).",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "rad",
+      "value": "0.0496686524911620273784461198780205902432783225043146480155087768100277474475506544206126244"
+    },
+    "bus_upper_angle_excess": {
+      "derivation": "-atan(0.1)-(-0.12).",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "rad",
+      "value": "0.0203313475088379726215538801219794097567216774956853519844912231899722525524493455793873756"
+    },
+    "cache_residual_coefficient": {
+      "derivation": "Magnitude of the displayed residual -2*exp(1), not a new solver observation.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "dimensionless",
+      "value": "5.43656365691809047072057494270532499551449418739991914993393525544815326070709518914276436"
+    },
+    "four_price_rate": {
+      "derivation": "Dot((-1,4,1.5),(.1,-.2,.3))/1000 in declared four-leg coil order.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "-9/20000",
+      "unit": "currency/hour",
+      "value": "-0.00045"
+    },
+    "four_unmoved_price_rate": {
+      "derivation": "Powers reordered from (z,x,y) to (y,x,z), with old prices deliberately unmoved.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "-19/20000",
+      "unit": "currency/hour",
+      "value": "-0.00095"
+    },
+    "generator_current": {
+      "derivation": "sqrt((2/5)^2+(1/10)^2).",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "A",
+      "value": "0.412310562561766054982140985597407702514719922537362043439863357309495434633762159358786365"
+    },
+    "ideal_primary_current_real": {
+      "derivation": "Re((1/23 + 1/1000-j/500)*115/2); ideal winding powers agree.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "1023/400",
+      "unit": "A",
+      "value": "2.5575"
+    },
+    "multi_apparent_1": {
+      "derivation": "abs(U2_phase*conj(I2_phase)), before excitation.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "VA",
+      "value": "4.97387910416965279625654708401235143126203927090749268387428089668728514618116818981741070"
+    },
+    "multi_apparent_2": {
+      "derivation": "abs(U2_phase*conj(I2_phase)), before excitation.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "VA",
+      "value": "2.57650613532288048236992616245110625373882675754881995932316656956783714938963844442143898"
+    },
+    "multi_apparent_3": {
+      "derivation": "abs(U2_phase*conj(I2_phase)), before excitation.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "VA",
+      "value": "2.58926665952088552213282839649626267765022789514286142354002567020468522802998969573602133"
+    },
+    "multi_equal_total_rating": {
+      "derivation": "Three times the largest per-coil apparent magnitude for equal allocation.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "VA",
+      "value": "14.9216373125089583887696412520370542937861178127224780516228426900618554385435045694522321"
+    },
+    "multi_loss_imag": {
+      "derivation": "Sum of three phase terminal-power imaginary parts.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "2756491/2097152",
+      "unit": "var",
+      "value": "1.314397335052490234375"
+    },
+    "multi_loss_real": {
+      "derivation": "Sum of three phase terminal-power real parts.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "2452363/1048576",
+      "unit": "W",
+      "value": "2.33875560760498046875"
+    },
+    "multi_neutral_real": {
+      "derivation": "Real part of minus the sum of winding-2 terminal currents, including excitation once.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "4123/16384",
+      "unit": "A",
+      "value": "0.25164794921875"
+    },
+    "multi_sum_apparent": {
+      "derivation": "Sum of three bare-coil apparent-power magnitudes, not magnitude of total power.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "VA",
+      "value": "10.1396518990134188007593016429597203626510939235991740667374731364598075236007963299748710"
+    },
+    "multi_voltage_1_imag": {
+      "derivation": "Winding-2 component from the same referred leakage relation, applied to the authored phase source/current; negative imaginary terms bind their positive subtraction coefficient.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "27/256",
+      "unit": "V",
+      "value": "0.10546875"
+    },
+    "multi_voltage_1_real": {
+      "derivation": "Winding-2 component from the same referred leakage relation, applied to the authored phase source/current; negative imaginary terms bind their positive subtraction coefficient.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "1235/256",
+      "unit": "V",
+      "value": "4.82421875"
+    },
+    "multi_voltage_2_imag": {
+      "derivation": "Winding-2 component from the same referred leakage relation, applied to the authored phase source/current; negative imaginary terms bind their positive subtraction coefficient.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "997/256",
+      "unit": "V",
+      "value": "3.89453125"
+    },
+    "multi_voltage_2_real": {
+      "derivation": "Winding-2 component from the same referred leakage relation, applied to the authored phase source/current; negative imaginary terms bind their positive subtraction coefficient.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "-631/256",
+      "unit": "V",
+      "value": "-2.46484375"
+    },
+    "multi_voltage_3_imag": {
+      "derivation": "Winding-2 component from the same referred leakage relation, applied to the authored phase source/current; negative imaginary terms bind their positive subtraction coefficient.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "1015/256",
+      "unit": "V",
+      "value": "3.96484375"
+    },
+    "multi_voltage_3_real": {
+      "derivation": "Winding-2 component from the same referred leakage relation, applied to the authored phase source/current; negative imaginary terms bind their positive subtraction coefficient.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "-613/256",
+      "unit": "V",
+      "value": "-2.39453125"
+    },
+    "neutral_case_conductor_loss": {
+      "derivation": "(1+2) ohm times abs(0.5-j*0.25)^2.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "15/16",
+      "unit": "W",
+      "value": "0.9375"
+    },
+    "neutral_case_load_real": {
+      "derivation": "Re((8.5+j*0.75)*conj(0.5-j*0.25)).",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "65/16",
+      "unit": "W",
+      "value": "4.0625"
+    },
+    "neutral_voltage_excess": {
+      "derivation": "abs(1-j*0.5)-1 V.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "V",
+      "value": "0.11803398874989484820458683436563811772030917980576286213544862270526046281890244970720720"
+    },
+    "pn_squared_lower_excess": {
+      "derivation": "(8.25 V)^2-(8 V)^2; this is not a magnitude residual.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "65/16",
+      "unit": "V^2",
+      "value": "4.0625"
+    },
+    "pp_lower_excess": {
+      "derivation": "13-abs(8-j*10).",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "V",
+      "value": "0.1937515251343026270235646507563734709591597347579622289414547466636344836062478514212914"
+    },
+    "pp_upper_excess": {
+      "derivation": "abs(8-j*10)-12.5.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "V",
+      "value": "0.3062484748656973729764353492436265290408402652420377710585452533363655163937521485787086"
+    },
+    "sequence_earth_zero_magnitude": {
+      "derivation": "abs(V0_phase_neutral+V_neutral)=abs(1.5-j*0.25).",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "V",
+      "value": "1.52069063257455492224992106130051676552124252369660279660478826162158318132972755995076661"
+    },
+    "sequence_zero_excess": {
+      "derivation": "abs(0.5+j*0.25)-0.4.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "V",
+      "value": "0.159016994374947424102293417182819058860154589902881431067724311352630231409451224853603602"
+    },
+    "shunted_neutral_current_squared": {
+      "derivation": "abs((1-j*0.5)/4 ohm)^2; remaining return uses the authored shunt.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "5/64",
+      "unit": "A^2",
+      "value": "0.078125"
+    },
+    "small_angle_coefficient": {
+      "derivation": "atan(1/10); a negative centered deviation displays the positive subtraction coefficient.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "rad",
+      "value": "0.0996686524911620273784461198780205902432783225043146480155087768100277474475506544206126244"
+    },
+    "source_price_rate": {
+      "derivation": "Authored source phase: -3 W*0.4 currency/kWh /1000.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "-3/2500",
+      "unit": "currency/hour",
+      "value": "-0.0012"
+    },
+    "switch_neutral_excess": {
+      "derivation": "sqrt(1^2+(1/5)^2)-0.5 for the unchanged supplied switch current.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "unit": "A",
+      "value": "0.51980390271855696600564482180455639791275418921991928151699416088518672641244483911766977"
+    },
+    "three_circulation_price_rate": {
+      "derivation": "Baseline rate + Re(conj(0.5+j*0.2)*sum(c_k*U_k))/1000; U=(10-j10,6+j18,-16-j8). Computational cyclic model only.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "-11/2500",
+      "unit": "currency/hour",
+      "value": "-0.0044"
+    },
+    "three_price_rate": {
+      "derivation": "Dot((4,1.5,-2),(.1,-.2,.3))/1000 in declared cyclic-coil order.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "-1/2000",
+      "unit": "currency/hour",
+      "value": "-0.0005"
+    },
+    "winding1_current_imag_coefficient": {
+      "derivation": "Exact component from inward-current ampere-turn balance, U_k=N_k*(U_1+(Z_B*j)_k), and I2_terminal=I2+Y*U2; subtraction coefficients are positive literal magnitudes.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "5/32",
+      "unit": "A",
+      "value": "0.15625"
+    },
+    "winding2_terminal_imag": {
+      "derivation": "Exact component from inward-current ampere-turn balance, U_k=N_k*(U_1+(Z_B*j)_k), and I2_terminal=I2+Y*U2; subtraction coefficients are positive literal magnitudes.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "2807/16384",
+      "unit": "A",
+      "value": "0.17132568359375"
+    },
+    "winding2_terminal_real": {
+      "derivation": "Exact component from inward-current ampere-turn balance, U_k=N_k*(U_1+(Z_B*j)_k), and I2_terminal=I2+Y*U2; subtraction coefficients are positive literal magnitudes.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "-13941/16384",
+      "unit": "A",
+      "value": "-0.85089111328125"
+    },
+    "winding2_voltage_imag_coefficient": {
+      "derivation": "Exact component from inward-current ampere-turn balance, U_k=N_k*(U_1+(Z_B*j)_k), and I2_terminal=I2+Y*U2; subtraction coefficients are positive literal magnitudes.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "27/256",
+      "unit": "V",
+      "value": "0.10546875"
+    },
+    "winding2_voltage_real": {
+      "derivation": "Exact component from inward-current ampere-turn balance, U_k=N_k*(U_1+(Z_B*j)_k), and I2_terminal=I2+Y*U2; subtraction coefficients are positive literal magnitudes.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "1235/256",
+      "unit": "V",
+      "value": "4.82421875"
+    },
+    "winding3_voltage_imag_coefficient": {
+      "derivation": "Exact component from inward-current ampere-turn balance, U_k=N_k*(U_1+(Z_B*j)_k), and I2_terminal=I2+Y*U2; subtraction coefficients are positive literal magnitudes.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "11/256",
+      "unit": "V",
+      "value": "0.04296875"
+    },
+    "winding3_voltage_real": {
+      "derivation": "Exact component from inward-current ampere-turn balance, U_k=N_k*(U_1+(Z_B*j)_k), and I2_terminal=I2+Y*U2; subtraction coefficients are positive literal magnitudes.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "1249/512",
+      "unit": "V",
+      "value": "2.439453125"
+    },
+    "winding_loss_imag": {
+      "derivation": "Im(sum(U_k*conj(I_k_terminal))) including winding-2 excitation once.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "1137249/2097152",
+      "unit": "var",
+      "value": "0.542282581329345703125"
+    },
+    "winding_loss_real": {
+      "derivation": "Re(sum(U_k*conj(I_k_terminal))) including winding-2 excitation once.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "945761/1048576",
+      "unit": "W",
+      "value": "0.90194797515869140625"
+    }
+  }
+}

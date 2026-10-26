@@ -1,5 +1,5 @@
 {
-  "artifact_count": 97,
+  "artifact_count": 98,
   "artifacts": [
     {
       "path": "experiments/generated/active-radiality-witness.json",
@@ -360,6 +360,11 @@
       "path": "experiments/generated/positive-sequence-collapse-witness.json",
       "sha256": "404613c6573bdeed055b0abc06ead8decbf78fba9e1cf1d506c344a8fb8f3113",
       "size_bytes": 4094
+    },
+    {
+      "path": "experiments/generated/prose-number-witnesses.json",
+      "sha256": "db9ad3bd2beeadcdae61e73110ec9c92b22caabd6097dcaeb32674cfc2a279fc",
+      "size_bytes": 16665
     },
     {
       "path": "experiments/generated/provenance.json",

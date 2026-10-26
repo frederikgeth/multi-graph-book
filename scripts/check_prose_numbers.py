@@ -131,6 +131,36 @@ def artifact_values() -> list[Decimal]:
     return values
 
 
+def pointer_values(binding: dict, artifact: Path) -> list[Decimal] | None:
+    """Resolve explicitly selected JSON values; None retains legacy derivations."""
+    if "source_pointer" not in binding and "source_pointers" not in binding:
+        return None
+    if "source_pointer" in binding and "source_pointers" in binding:
+        raise ValueError("choose source_pointer or source_pointers, not both")
+    pointers = binding.get("source_pointers", [binding.get("source_pointer")])
+    if not isinstance(pointers, list) or not pointers or not all(isinstance(p, str) and p.startswith("/") for p in pointers):
+        raise ValueError("source pointers must be a nonempty list of JSON pointers")
+    source = json.loads(artifact.read_text(), parse_float=Decimal, parse_int=Decimal)
+    values = []
+    for pointer in pointers:
+        item = source
+        for token in pointer.split("/")[1:]:
+            token = token.replace("~1", "/").replace("~0", "~")
+            if isinstance(item, list):
+                if not re.fullmatch(r"0|[1-9][0-9]*", token):
+                    raise ValueError("invalid source array index")
+                item = item[int(token)]
+            else:
+                item = item[token]
+        if isinstance(item, bool) or not isinstance(item, (str, int, float, Decimal)):
+            raise ValueError("source pointer must select a numeric scalar")
+        number = Decimal(str(item))
+        if not number.is_finite():
+            raise ValueError("source pointer must select a finite value")
+        values.append(number)
+    return values
+
+
 def main() -> int:
     errors: list[str] = []
     try:
@@ -142,6 +172,7 @@ def main() -> int:
         errors.append("prose-number binding schema version drift")
     bindings = document.get("binding", [])
     binding_keys = set()
+    selected_values = {}
     for binding in bindings:
         key = (binding.get("path"), binding.get("line"), binding.get("literal"))
         if key in binding_keys:
@@ -154,6 +185,11 @@ def main() -> int:
             errors.append(f"binding source artifact hash is stale: {binding.get('source_artifact')}")
         if not str(binding.get("derivation", "")).strip():
             errors.append(f"binding has no derivation explanation: {key}")
+        if artifact.is_file():
+            try:
+                selected_values[key] = pointer_values(binding, artifact)
+            except (OSError, ValueError, KeyError, IndexError, TypeError, InvalidOperation) as error:
+                errors.append(f"invalid source pointer for {key}: {error}")
 
     values = prose_numbers()
     current_keys = {(value["path"], value["line"], value["literal"]) for value in values}
@@ -161,9 +197,16 @@ def main() -> int:
     direct_matches = 0
     unmatched = []
     for value in values:
-        if any(matches_displayed_number(candidate, value["literal"]) for candidate in artifacts):
+        key = (value["path"], value["line"], value["literal"])
+        # An explicit binding cannot fall back to an unrelated number elsewhere
+        # in the corpus when its selected observation disagrees or is missing.
+        if key in binding_keys:
+            selected = selected_values.get(key)
+            if selected is not None and not all(matches_displayed_number(n, value["literal"]) for n in selected):
+                errors.append(f"selected source value does not match displayed precision: {key}")
+        elif any(matches_displayed_number(candidate, value["literal"]) for candidate in artifacts):
             direct_matches += 1
-        elif (value["path"], value["line"], value["literal"]) not in binding_keys:
+        else:
             unmatched.append((value["path"], value["line"], value["literal"]))
     for key in binding_keys - current_keys:
         errors.append(f"prose-number binding does not match a current literal: {key}")
