@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "8fc49f96d879b8a800078b240263b3fefb68491e8c8cd05741e52c6c76db1027",
+  "corpus_sha256": "76a987ed2a9c9892352260081b0af24058c9c0c9644ed1f3230ed54ef915638b",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -15,12 +15,12 @@
   "evaluation_case_count": 108,
   "heldout_case_count": 33,
   "misconception_count": 34,
-  "record_count": 991,
+  "record_count": 997,
   "record_counts": {
     "claim_bundle": 121,
     "concept_bundle": 18,
     "scientific_knowledge": 18,
-    "section": 834
+    "section": 840
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -121,7 +121,7 @@
     },
     {
       "path": "docs/src/foundations/ibr-power-factor-controls.md",
-      "sha256": "7c9c808519925539ee502b211c68887c0d21d9c2310168e597bd069e352568ff"
+      "sha256": "d01365782d4b58724b668bab1c545591c87e8b7357cbb5bf2da919f3978c3cb2"
     },
     {
       "path": "docs/src/foundations/impedance-fidelity-ladder.md",
@@ -145,7 +145,7 @@
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
-      "sha256": "332e3261b8af6c3f4707fb6ea1b57bee27ec616144bfcb71c537324f8001128c"
+      "sha256": "ab0e1753599226472fe5e3857189ceddfebf2c0d8a95167b9f3cc25dbb9b8162"
     },
     {
       "path": "docs/src/foundations/orientation-terminal-power.md",
@@ -349,7 +349,7 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "504d4fb83eb781eed0b86263b8194e302f28f2fd4b89ed162941db7265d6b7c6"
+      "sha256": "9365c98bd097fed287a2d78c703a08dfa4435e5aa9719bab1dbdb2a6774ff486"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",

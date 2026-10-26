@@ -145,6 +145,10 @@ function linear_coverage_lesson()
     pf_fixture_path=joinpath(root,"test","data","linear_audit","ibr-pf.json")
     include(pf_path)
     pf_evidence=Base.invokelatest(()->getfield(@__MODULE__,:IbrPFAuditExample).run())
+    vv_path=joinpath(root,"examples","ibr_volt_var_audit.jl")
+    vv_fixture_path=joinpath(root,"test","data","linear_audit","ibr-volt-var.json")
+    include(vv_path)
+    vv_evidence=Base.invokelatest(()->getfield(@__MODULE__,:IbrVoltVarAuditExample).run())
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -993,6 +997,63 @@ function linear_coverage_lesson()
         @test tight_coverage.evidence["status"]=="passed"
         @test JSON3.read(JSON3.write(pe),Dict{String,Any})==pe
     end
+    @testset "Volt-var smoothing assumptions, references and capability composition" begin
+        ve=vv_evidence
+        vrow(key,id)=only(filter(r->r["id"]==id,ve[key]["rows"]))
+        for key in ("single_phase","four_leg")
+            @test ve[key]["status"]=="passed" && ve[key]["coverage_complete"]
+            @test vrow(key,"volt_var_model")["status"]=="declared"
+            @test !vrow(key,"volt_var_model")["build_recipe_authenticated"]
+            for unit in ("si","per_unit")
+                native=ve["native_$(key)_$unit"]
+                @test native["accepted"] && native["audit"]["unassessed_checks"]==0
+                @test native["inspection"]["violated_native_primal_rows"]==0
+                @test !native["audit"]["objective_scope"]["objective_value_evaluated"]
+            end
+            for ref in ("PN_PER_PHASE","PG_PER_PHASE","PP_PER_PHASE","PN_AVERAGED","PG_AVERAGED","PP_AVERAGED")
+                @test ve[key*"_"*ref]["audit"]["status"]=="passed"
+                @test ve[key*"_"*ref]["native_point"]["violated_native_primal_rows"]==0
+            end
+        end
+        row=vrow("single_phase","ibr.i.1.volt_var")
+        @test row["unit"]=="var" && row["monitor_V"]==9. && row["base_VA"]==20.
+        @test row["requested_pwl_target_var"]==0. && row["assumed_model_target_var"]≈1.2080118012519925
+        @test row["smoothing_width_V"]==.2 && !row["live_coefficient_updates_checked"]
+        @test ve["missing_model"]["status"]=="indeterminate"
+        @test vrow("missing_model","ibr.i.1.volt_var")["residual"]===nothing
+        @test vrow("missing_model","network.power")["status"]=="passed"
+        @test ve["requested_pwl_point"]["status"]=="failed"
+        @test ve["native_requested_pwl_point"]["violated_native_primal_rows"]>0
+        @test vrow("requested_pwl_point","network.power")["status"]=="passed"
+        @test vrow("q_cap_conflict","ibr.i.1.volt_var")["status"]=="passed"
+        @test vrow("q_cap_conflict","ibr.i.1.q_max")["status"]=="failed"
+        @test ve["native_point_q_cap_conflict"]["violated_native_primal_rows"]==1
+        @test vrow("minimum_conflict","ibr.i.1.volt_var")["status"]=="passed"
+        @test vrow("minimum_conflict","ibr.i.1.minimum_pf.upper")["status"]=="failed"
+        for key in ("native_q_cap_conflict","native_minimum_conflict")
+            @test !ve[key]["accepted"] && !isempty(ve[key]["raw_status"])
+            @test ve[key]["audit"]["status"]=="failed" && ve[key]["audit"]["unassessed_checks"]==0
+        end
+        for key in ("legacy_average","legacy_per_phase")
+            @test ve[key]["status"]=="passed"
+            @test ve["native_"*key]["accepted"]
+        end
+        @test vrow("legacy_average","ibr.i.1.volt_var")["monitor_V"]≈10.
+        @test vrow("legacy_average","ibr.i.1.volt_var")["base_VA"]==20.
+        @test vrow("legacy_average","ibr.i.2.volt_var")["base_VA"]==12.
+        @test vrow("missing_phase_per_phase","ibr.i.1.volt_var")["status"]=="passed"
+        @test vrow("missing_phase_per_phase","ibr.i.2.volt_var")["residual"]===nothing
+        @test vrow("missing_phase_per_phase","ibr.i.3.volt_var")["status"]=="passed"
+        @test vrow("missing_phase_per_phase","network.power")["residual"]===nothing
+        @test all(r->r["status"]=="unassessed",filter(r->endswith(r["id"],".volt_var"),ve["missing_phase_average"]["rows"]))
+        @test vrow("forged_q_report","ibr.i.1.volt_var")["status"]=="passed"
+        @test vrow("forged_q_report","ibr.i.1.qg")["status"]=="failed"
+        @test ve["unsupported_model"]["status"]=="indeterminate"
+        @test isempty(get(running,"ibr",Dict()))
+        @test connected_coverage.evidence["failed_checks"]==3 && connected_coverage.evidence["unassessed_checks"]==0
+        @test tight_coverage.evidence["status"]=="passed"
+        @test JSON3.read(JSON3.write(ve),Dict{String,Any})==ve
+    end
     active = dirname(Base.active_project())
     Dict{String,Any}(
         "evidence_state"=>"local_package_candidate_not_promoted_to_published_integration_pin",
@@ -1001,7 +1062,8 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path,dg_path,dg_fixture_path,sp_path,sp_fixture_path,pq_path,pq_fixture_path,ibr_path,ibr_fixture_path,ip_path,ip_fixture_path,pf_path,pf_fixture_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path,dg_path,dg_fixture_path,sp_path,sp_fixture_path,pq_path,pq_fixture_path,ibr_path,ibr_fixture_path,ip_path,ip_fixture_path,pf_path,pf_fixture_path,vv_path,vv_fixture_path]),
+        "ibr_volt_var_example"=>vv_evidence,
         "ibr_pf_control_example"=>pf_evidence,
         "ibr_price_scope_example"=>ip_evidence,
         "ibr_injection_example"=>ibr_evidence,

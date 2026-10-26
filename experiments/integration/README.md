@@ -626,3 +626,27 @@ zero/unity/signed targets, map changes and tiny coefficients retain scope.
 Droop, filters/internal voltages, availability/DC dynamics, physical THREE_LEG
 realization, selected objectives and optimality remain outside. Running-network,
 published pin/PSK statuses, historical replay and execution MCP remain unchanged.
+
+
+The Volt-var extension adds `examples/ibr_volt_var_audit.jl` and
+`test/data/linear_audit/ibr-volt-var.json` to the source-bound companion. It
+admits pure SINGLE_PHASE/explicit-neutral FOUR_LEG profiles with positive ordered
+SI breakpoints, VA_FRACTION/VAR_MAX (each branch s_max), six PN/PG/PP monitors,
+mean magnitudes and strict legacy aggregation overrides. The Julia
+volt_var_model keyword requires an explicit static user_defined-softplus recipe
+and relative volt_var_watt_eps for equality assessment. This is an assumption,
+not authenticated build metadata; missing recipes preserve known current/limit
+evidence and report requested PWL targets separately. Builtin/Swish/live updates,
+PWL build recipes, mixed controls and native fallback/THREE_LEG skip stay outside.
+
+The breakpoint point U9V, knots[8,9,11,12]V, q_limits[-.6,.44], s_max20VA,
+relative width.02 has requested Q0 but smoothed Q1.2080118var. Source-bound SI/PU,
+floating-reference primal and aggregation comparisons preserve that distinction.
+Hard q_max=.2var and curtailed-P=.2W/minimum-PF=.8 conflicts remain independent;
+native attempts are locally infeasible with returned audits failed2/failed1,
+without a global claim. Missing terminal decoding now continues to later known
+phase observations/failures, while complete network certification stays
+suppressed. No native curve/index/role/smoothing or profiler helper is the
+independent oracle. Mathematical target evaluation does not certify backend
+range/convergence or physical/controller adequacy. Running-network default/tighter,
+published pin/PSK statuses, historical replay and execution MCP remain unchanged.

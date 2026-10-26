@@ -2489,3 +2489,8 @@ The next bounded extension is developed on the focused
 equalities, generation-only minimum-PF envelopes, hard capability intersections
 and the limits of weighted residual tolerances. Existing injection/price anchors
 remain on this page.
+
+
+The focused [Volt-var extension](ibr-power-factor-controls.md#ibr-volt-var-audit)
+separates voltage monitors, the requested piecewise-linear response, an explicitly
+assumed smooth model and hard Q/minimum-PF obligations.

@@ -1,4 +1,4 @@
-# [IBR power-factor controls and applicability](@id ibr-pf-control-audit)
+# [IBR power-factor and Volt-var controls](@id ibr-pf-control-audit)
 
 **Page status:** self-checked local candidate control-equation and applicability witnesses; no general controller, physical-model, PF-ratio accuracy or optimality certificate.
 
@@ -182,7 +182,7 @@ four native constraints per branch and no variables. Native helpers, role/index
 resolvers, control decoders and reported-power profilers are not used as the
 independent audit's oracle.
 
-Filters, internal/grid-forming voltages, droop/availability/DC dynamics, physical
+Filters, internal/grid-forming voltages, other droop/availability/DC dynamics, physical
 model adequacy, arbitrary custom constraints and selected-objective/optimality
 verification remain separate. The running input has no IBR: its retained default
 three generator-bound failures with zero unknowns, all 26 passing KCL rows and
@@ -194,3 +194,173 @@ unchanged by this local candidate.
 minimum envelope and an authored Q cap. Construct a per-phase violation hidden
 by an aggregate check, then explain what a weighted residual pass at tiny m can
 and cannot establish about an actual PF ratio.
+
+
+## [Volt-var: requested graph and assumed smooth model](@id ibr-volt-var-audit)
+
+The next local candidate slice admits a pure `volt_var` profile on the existing
+`SINGLE_PHASE` or explicit-neutral `FOUR_LEG` topology. It independently checks
+the voltage monitor, static curve, hard Q capability and applicable minimum-PF
+envelope. It does not infer the solver's smoothing recipe from a supplied result.
+
+### State the graph and normalization first
+
+A bounded profile has four positive, finite, strictly increasing breakpoints
+``x_1<x_2<x_3<x_4`` in **SI volts**, and
+`q_limits=[q_absorb,q_inject]` with ``q_{\rm absorb}\le0\le q_{\rm inject}``.
+Only `q_unit=VA_FRACTION` and `q_ref=VAR_MAX` are admitted. Despite that reference
+label, native normalization uses **each branch's `s_max`**, not `q_max`, total
+three-phase power, available P or a measured reactive capability. Fractions
+alone do not establish a rating guarantee; P/Q/I/S caps remain separate.
+
+The requested graph is constant at ``q_{\rm inject}`` below ``x_1``, falls
+linearly to zero at ``x_2``, stays zero through ``x_3``, falls linearly to
+``q_{\rm absorb}`` at ``x_4`` and stays there above ``x_4``. Multiplication by
+the branch's ``S_{\max,k}`` produces its requested PWL target in var.
+
+**Predict:** at U = 9 V, breakpoints [8,9,11,12] V, fractions [−0.6,0.44] and
+`S_max=20` VA, the requested target is Q = 0. Does that establish the reactive
+equality imposed by a smoothed native model?
+
+The first supported model assumption is the native `user_defined` softplus
+encoding with an explicit positive relative width ``\rho``. In physical volts,
+
+```math
+\epsilon=\rho\frac{x_1+x_2+x_3+x_4}{4},\qquad
+s_\epsilon(z)=\epsilon\log(1+\exp(z/\epsilon)).
+```
+
+The declared static smooth target is
+
+```math
+Q_k^{\rm model}=S_{\max,k}q_{\rm inject}
+-\frac{S_{\max,k}q_{\rm inject}}{x_2-x_1}
+ [s_\epsilon(U-x_1)-s_\epsilon(U-x_2)]
++\frac{S_{\max,k}q_{\rm absorb}}{x_4-x_3}
+ [s_\epsilon(U-x_3)-s_\epsilon(U-x_4)].
+```
+
+For the prediction's point and ``\rho=0.02``, ``\epsilon=0.2`` V and the
+smoothed target is approximately **1.208 var**. A supplied point on the requested
+Q = 0 graph fails that smooth equality, despite valid voltage/current balance.
+The requested graph and the smooth model are different obligations. Smoothing
+can change the response on either side of the zero band; no conservative-Q-cap
+or one-sided target guarantee is inferred.
+
+### Make the model assumption explicit
+
+The network and supplied result do not establish the native build's global
+`volt_var_watt_eps`, softplus mode or later coefficient updates. The Julia audit
+therefore requires a separate declaration before assessing smooth equality:
+
+```julia
+audit_solution(net, result; volt_var_model=Dict(
+    "schema" => "bmopftools.audit.volt_var_model/v1",
+    "softplus" => "user_defined",
+    "volt_var_watt_eps" => 0.02))
+```
+
+This is an **unauthenticated assumption**, not a recovered build certificate.
+A profile alone does not silently select the default native width. Omitting or
+malforming the declaration leaves the smooth equality unassessed while retaining
+known capability checks, current incidence and the requested PWL diagnostic.
+A recipe placed in the supplied result or a successful solver label is not used
+as authority. The fixed-linear API does not certify these controller assumptions.
+
+Each numerical row exposes monitored V, the requested PWL target, assumed smooth
+target, smoothing width in V, target difference, base VA, VI-derived Q and an
+absolute var residual under `power_tol`. `build_recipe_authenticated` and
+`live_coefficient_updates_checked` remain false. Selected/reported objective and
+optimality flags retain the earlier boundary.
+
+The independent evaluator derives these equations without the native curve,
+smoothing, role/index or profiler helpers. High-precision scalar arithmetic
+reduces cancellation in the declared static formula; finite coefficient and
+operator-argument checks refuse unsupported representation ranges. This is not
+a general floating-point/backend, derivative-range or convergence certificate.
+Builtin and Swish modes, exact-PWL build recipes and live coefficient providers
+remain outside this first slice. A native mode name is not interchangeable with
+another mathematical surrogate.
+
+### Voltage references and averaging have their own incidence
+
+| Topology/reference | Monitored physical voltage |
+|:--|:--|
+| `SINGLE_PHASE`, PN or PP | Magnitude of its ordered endpoint difference |
+| `SINGLE_PHASE`, PG | Magnitude of its first endpoint's earth/frame phasor |
+| `FOUR_LEG`, PN | Each phase minus its explicitly mapped neutral |
+| `FOUR_LEG`, PG | Each phase's earth/frame phasor |
+| `FOUR_LEG`, PP | Each phase minus the next phase cyclically, after removing the neutral from map order |
+
+The six admitted reference values combine PN/PG/PP with `PER_PHASE` or
+`AVERAGED`. An omitted profile reference has the documented `PN_PER_PHASE`
+default, recorded as a default. Invalid references stay unassessed; native
+warning-and-fallback paths are not accepted as the authored control.
+
+For averaged control, the monitor is **the mean of the magnitudes**, not the
+magnitude of the mean phasor. Each branch still uses its own `s_max`; the ratings
+are not averaged. An explicit IBR `voltage_aggregation=AVERAGE` or `PER_PHASE`
+overrides the profile's aggregation. A single pair has only one magnitude, so
+averaging does not create a new voltage reference. The four-leg one-phase PP
+fallback to PG is refused, and native `THREE_LEG` droop skipping is not a checked
+Volt-var law. Physical `THREE_LEG` review #95 remains unresolved.
+
+The floating-neutral witness makes the distinction visible: a single pair has
+PN magnitude 9 V but first-endpoint PG magnitude ``\sqrt{12^2+4^2}`` V.
+They legitimately demand different Q. Four-leg cases test all six references,
+non-last neutral position, arithmetic magnitude averaging and both legacy
+overrides. Native supplied-primal inspections agree for those constructed
+floating-neutral cases. Missing one monitored phase leaves an averaged monitor
+unknown; no partial mean is substituted. In per-phase mode, known other phase
+observations and failures survive.
+
+### Hard limits and minimum PF remain intersected
+
+The healthy single-pair point has P = 4 W and Q approximately 1.208 var under
+the declared smooth law. Setting `q_max=0.2` var rejects the point even though
+its droop equality passes. Lowering actual P to 0.2 W also makes that Q violate
+the generation-only minimum-PF 0.8 envelope. Available power, `p_max` or nominal
+rating cannot replace that curtailed P in the minimum-PF check.
+
+The model does not clip Q to either bound. The source-bound recipe retains
+native fixed-voltage Q-cap and minimum-PF conflict attempts, with termination,
+primal/raw status, returned points and independent audits. In the locked run,
+both conflict attempts report `LOCALLY_INFEASIBLE`; their returned audits fail
+two and one checks respectively with zero unknowns. Those local outcomes
+are not global infeasibility or unrestricted controller-feasibility certificates.
+
+Changing a reported `qg` does not repair or break a control equality computed
+from supplied V/I; the report gets its separate consistency check. Missing
+current can leave the monitor and requested graph known while the Q residual
+stays unknown. Missing voltage/current contributions still suppress complete
+network KCL/power. Malformed control declarations preserve known hard-limit
+violations rather than dropping fields or returning zero residuals.
+
+At zero voltage, a finite nonzero supplied current gives Q = 0. This low-voltage
+curve still requests approximately 8.8 var, so its equality fails. No current is
+recovered by dividing that target by zero voltage, and no clipping or zero-Q
+fallback is invented.
+
+### Computational scope
+
+`examples/ibr_volt_var_audit.jl` and `test/data/linear_audit/ibr-volt-var.json`
+provide the package-owned route included by the book's source-bound companion.
+It compares analytic points, native SI/per-unit solves under the declared
+smoothing recipe, requested-PWL versus smooth points, floating-reference primal
+inspections, aggregation overrides and retained capability/minimum-PF conflicts.
+Scaling voltage and breakpoints together also checks the physical smoothing
+width transformation; it is not an all-asset network-equivalence claim.
+
+Only pure Volt-var profiles are newly admitted. Mixed PF/Volt-var or Volt-watt
+profiles, unsupported references/units/bases/arities, ignored native controls,
+filters/internal voltages, availability/DC dynamics and physical control adequacy
+remain outside. In particular, a native warning that skips a declaration does
+not establish compliance with it. The running input has no IBR; its retained
+three default generator-bound failures/zero unknowns, all 26 passing KCL rows and
+aggregate power, and separate tighter electrical pass remain unchanged. Published
+integration, PSK implementation statuses and execution MCP remain separate.
+
+**Transfer exercise.** Distinguish requested PWL response, assumed smoothed
+response, reported Q and actual VI-derived Q. Then change averaging or curtail P
+without relaxing a Q cap or minimum-PF policy, and identify which observations,
+model assumptions and failure evidence must be retained.
