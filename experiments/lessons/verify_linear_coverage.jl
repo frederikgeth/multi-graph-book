@@ -36,6 +36,10 @@ function linear_coverage_lesson()
     solved = solve_opf(running; optimizer=Ipopt.Optimizer,per_unit=true)
     coverage = audit_linear_solution(running,solved)
     connected_coverage = audit_solution(running,solved)
+    tight_solver_options=Dict{String,Any}("tol"=>1e-10,"constr_viol_tol"=>1e-12,"acceptable_iter"=>0,"bound_relax_factor"=>0.0)
+    tightly_solved=solve_opf(running;optimizer=Ipopt.Optimizer,per_unit=true,solver_options=tight_solver_options)
+    tight_coverage=audit_solution(running,tightly_solved)
+
     connected_path = joinpath(root,"test","data","linear_audit","neutral-and-delta.json")
     connected_doc = JSON3.read(read(connected_path,String),Dict{String,Any})
     cn,cr = connected_doc["network"],connected_doc["result"]
@@ -113,6 +117,10 @@ function linear_coverage_lesson()
     be_fixture_path = joinpath(root,"test","data","linear_audit","branch-angle-voltage.json")
     include(be_path)
     be_evidence = Base.invokelatest(()->getfield(@__MODULE__,:BranchAngleVoltageAuditExample).run())
+    gc_path=joinpath(root,"examples","generator_cost_scope.jl")
+    gc_fixture_path=joinpath(root,"test","data","linear_audit","generator-cost.json")
+    include(gc_path)
+    gc_evidence=Base.invokelatest(()->getfield(@__MODULE__,:GeneratorCostScopeExample).run())
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -148,13 +156,13 @@ function linear_coverage_lesson()
         @test row(circulating_audit,"network.power")["status"] == "passed"
         @test missing_ground.evidence["status"] == "indeterminate"
         @test row(missing_ground,"network.power")["residual"] === nothing
-        @test connected_coverage.evidence["status"] == "indeterminate"
-        @test connected_coverage.evidence["unassessed_checks"] == 28
-        @test connected_coverage.evidence["failed_checks"] == 0
+        @test connected_coverage.evidence["status"] in ("passed","failed")
+        @test connected_coverage.evidence["unassessed_checks"] == 0
+        @test connected_coverage.evidence["coverage_complete"]
         @test count(x->startswith(x["id"],"load.") && x["dimension"]=="device_equations" &&
             x["status"]=="passed",connected_coverage.evidence["rows"]) == 11
         @test row(connected_coverage,"voltage_source.s0.voltage")["status"] == "passed"
-        @test count(x->x["dimension"]=="kcl" && x["status"]=="unassessed",connected_coverage.evidence["rows"]) == 26
+        @test count(x->x["dimension"]=="kcl" && x["status"]=="passed",connected_coverage.evidence["rows"]) == 26
         @test JSON3.read(JSON3.write(connected_coverage.evidence),Dict{String,Any}) == connected_coverage.evidence
     end
     @testset "Fixed switch coverage and neutral-current limit" begin
@@ -194,8 +202,8 @@ function linear_coverage_lesson()
         @test gr["generator"]["g"]["x"]["qg"] ≈ 1. atol=1e-7
         @test gr["voltage_source"]["s"]["a"]["ps"] ≈ 6. atol=1e-7
         @test count(x->x["dimension"]=="voltage_limits" && x["status"]=="passed",connected_coverage.evidence["rows"]) == 38
-        @test row(connected_coverage,"generator.g1")["status"] == "unassessed"
-        @test occursin("cost",row(connected_coverage,"generator.g1")["reason"])
+        @test row(connected_coverage,"generator.g1.cost")["status"] == "declared"
+        @test !row(connected_coverage,"generator.g1.cost")["enforced_as_physical_limit"]
         @test JSON3.read(JSON3.write(generator_evidence),Dict{String,Any}) == generator_evidence
     end
     @testset "Fixed transformer series, terminal and loss observations" begin
@@ -514,7 +522,7 @@ function linear_coverage_lesson()
         @test be["native_limited"]["termination_status"]=="LOCALLY_INFEASIBLE"
         @test !be["native_limited"]["accepted"] && be["native_limited"]["audit"]["status"]=="failed"
         @test all(b->!haskey(b,"va_diff_min")&&!haskey(b,"va_diff_max")&&!haskey(b,"va_nom"),values(running["bus"]))
-        @test connected_coverage.evidence["unassessed_checks"]==28
+        @test connected_coverage.evidence["unassessed_checks"]==0
         @test JSON3.read(JSON3.write(be),Dict{String,Any})==be
     end
     @testset "Sequence voltage magnitudes and dimensionless VUF evidence" begin
@@ -555,7 +563,7 @@ function linear_coverage_lesson()
         @test se["native_limited"]["termination_status"]=="LOCALLY_INFEASIBLE"
         @test !se["native_limited"]["accepted"] && se["native_limited"]["audit"]["status"]=="failed"
         @test all(b->all(f->!haskey(b,f),("vpos_min","vpos_max","vneg_max","vzero_max","vuf_max")),values(running["bus"]))
-        @test connected_coverage.evidence["unassessed_checks"]==28
+        @test connected_coverage.evidence["unassessed_checks"]==0
         @test JSON3.read(JSON3.write(se),Dict{String,Any})==se
     end
     @testset "Mapped branch-end angles and undefined neutral endpoints" begin
@@ -602,8 +610,53 @@ function linear_coverage_lesson()
         @test be["native_limited"]["termination_status"]=="LOCALLY_INFEASIBLE"
         @test !be["native_limited"]["accepted"] && be["native_limited"]["audit"]["status"]=="failed"
         @test all(l->!haskey(l,"va_diff_min")&&!haskey(l,"va_diff_max"),values(running["line"]))
-        @test connected_coverage.evidence["unassessed_checks"]==28
+        @test connected_coverage.evidence["unassessed_checks"]==0
         @test JSON3.read(JSON3.write(be),Dict{String,Any})==be
+    end
+    @testset "Generator price applicability and selected objective scope" begin
+        ge=gc_evidence
+        grow(key,id)=only(filter(x->x["id"]==id,ge[key]["rows"]))
+        @test ge["analytic"]["status"]=="passed"
+        obs=grow("analytic","generator.g.cost")
+        @test obs["status"]=="declared" && obs["residual"]===nothing
+        @test obs["coefficients"]==[.25] && obs["unit"]=="currency/kWh"
+        @test !obs["enforced_as_physical_limit"] && !obs["reported_objective_checked"]
+        @test ge["malformed_price"]["status"]=="indeterminate"
+        @test grow("malformed_price","network.power")["status"]=="passed"
+        @test ge["malformed_price_known_violation"]["status"]=="failed"
+        @test grow("malformed_price_known_violation","generator.g.1.p_max")["status"]=="failed"
+        @test ge["missing_current"]["status"]=="indeterminate"
+        @test grow("missing_current","network.power")["residual"]===nothing
+        @test ge["forged_objective"]["status"]=="passed"
+        @test !ge["forged_objective"]["objective_scope"]["reported_objective_checked"]
+        for key in ("native_positive","native_negative","native_zero","native_free_positive","native_free_negative","native_feasibility","native_custom_constant","native_two_hour_energy")
+            @test ge[key]["solver_success"] && ge[key]["accepted_electrical_point"]
+            @test !ge[key]["audit"]["objective_scope"]["selected_objective_known"]
+        end
+        @test ge["native_positive"]["candidate"]["objective"]≈.001 atol=1e-10
+        @test ge["native_negative"]["candidate"]["objective"]≈-.001 atol=1e-10
+        @test ge["native_zero"]["candidate"]["objective"]==0.
+        @test ge["native_custom_constant"]["candidate"]["objective"]==123.
+        @test ge["native_two_hour_energy"]["candidate"]["objective"]≈.002 atol=1e-10
+        @test ge["native_free_positive"]["candidate"]["generator"]["g"]["x"]["pg"]≈3. atol=1e-5
+        @test ge["native_free_negative"]["candidate"]["generator"]["g"]["x"]["pg"]≈5. atol=1e-5
+        @test ge["native_si_seeded_attempt"]["audit"]["status"]=="passed"
+        @test !isempty(ge["native_si_seeded_attempt"]["raw_status"])
+        @test !ge["native_si_voltage_only_attempt"]["audit"]["objective_scope"]["reported_objective_checked"]
+        @test connected_coverage.evidence["coverage_complete"]
+        @test connected_coverage.evidence["unassessed_checks"]==0
+        @test row(connected_coverage,"generator.g1.cost")["coefficients"]==[-.08,-.08,-.08]
+        @test row(connected_coverage,"network.power")["status"]=="passed"
+        @test count(x->x["dimension"]=="kcl" && x["status"]=="passed",connected_coverage.evidence["rows"])==26
+        # Default solver behavior is retained as a diagnostic, not a required
+        # failure on every future backend. Check the separate tight recipe.
+        @test tightly_solved["termination_status"] in ("LOCALLY_SOLVED","OPTIMAL")
+        @test tight_coverage.evidence["status"]=="passed" && tight_coverage.evidence["coverage_complete"]
+        @test tight_coverage.evidence["failed_checks"]==0 && tight_coverage.evidence["unassessed_checks"]==0
+        @test !tight_coverage.evidence["objective_scope"]["reported_objective_checked"]
+        @test !tight_coverage.evidence["objective_scope"]["global_optimality_checked"]
+        @test haskey(running["generator"]["g1"],"cost")
+        @test JSON3.read(JSON3.write(ge),Dict{String,Any})==ge
     end
     active = dirname(Base.active_project())
     Dict{String,Any}(
@@ -613,7 +666,8 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path]),
+        "generator_cost_scope_example"=>gc_evidence,
         "branch_angle_voltage_example"=>be_evidence,
         "sequence_voltage_example"=>sq_evidence,
         "bus_angle_voltage_example"=>ba_evidence,
@@ -633,6 +687,8 @@ function linear_coverage_lesson()
         "missing_source_current"=>incomplete.evidence,
         "running_network"=>coverage.evidence,
         "connected_running_network"=>connected_coverage.evidence,
+        "tight_running_network_result"=>tightly_solved,"tight_running_network_audit"=>tight_coverage.evidence,
+        "tight_running_network_solver_options"=>tight_solver_options,
         "connected_analytic_circuit"=>connected_analytic.evidence,
         "connected_solved_circuit"=>connected_audit.evidence,
         "connected_circuit_result"=>connected_solved,
@@ -643,7 +699,7 @@ function linear_coverage_lesson()
         "switch_neutral_overload"=>switch_overload.evidence,
         "missing_switch_current"=>missing_switch.evidence,
         "running_network_input"=>running, "running_network_result"=>solved,
-        "not_established"=>["all-device running-network feasibility", "objective or global optimality",
+        "not_established"=>["unrestricted native/custom model feasibility", "selected objective or local/global optimality",
             "physical adequacy", "availability in the published package pin", "MCP exposure"])
 end
 

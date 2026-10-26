@@ -39,7 +39,7 @@
     },
     {
       "path": "benchmarks/agent/submissions/conforming-c6.json",
-      "sha256": "3e9cb4e66e22d8ff0fa2cde981c2b2730655764e365cc33d584600f9045a2596"
+      "sha256": "c43dba575df65765ef8a3a3c3df827d036256439e741b440bdea49d3765139a8"
     },
     {
       "path": "benchmarks/agent/submissions/unsafe-c0.json",
@@ -65,9 +65,9 @@
   "provenance": {
     "bmopftools_executable_corpus_sha256": "645e6b365ab1c85583746dc7c0704ed2685daab23c184f46758cf08c61f76069",
     "bmopftools_manifest_sha256": "e6bc63cd20da3505fbb251e2d48add4c58f0e6a7e199d6be5206c49e881159a2",
-    "book_llm_corpus_sha256": "2cba6e10b479b786d3cefaf0a47d1e3ea933e17891c928d1215b790dcc42f912",
+    "book_llm_corpus_sha256": "f9f1fbeb88ecb893641d2d473b3e8ff0a50b59ff1d737f41d93776567a1f2247",
     "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.2.0",
-    "federated_pair_sha256": "3971f2445e87bc6acbe142f9a469125640d1616e1353ed81199775acbdb7b99a"
+    "federated_pair_sha256": "9fdcf4df710ca041b0029f204ce09afe47156561e85e25c53b95ee1d0e8254aa"
   },
   "schema_version": "0.1.0",
   "status": "substrate_only_no_agent_runs",

@@ -541,35 +541,34 @@ are unassessed.
 
 ### Extending coverage without changing the older API
 
-The separate candidate `audit_solution` now adds default-role source neutral
-returns, implicit source grounding and WYE/SINGLE_PHASE/DELTA constant-power
-load equations, fixed ideal switches, a bounded WYE/SINGLE_PHASE generator
-domain, ordinary phase-to-earth and explicit-neutral phase-to-neutral voltage
-bounds, applicable scalar neutral-to-earth caps, phase-pair bounds and centered
-intra-bus and mapped branch-end angle windows and three-phase sequence/VUF bounds, fixed
-single-coil transformers,
-and matched WYE/DELTA winding-list equations with explicit rating-metadata
-semantics. The same running-network result now has **28 unassessed rows**
-(29 before the phase-to-phase audit below):
-11 local power equations across five loads and the source voltage relation are
-now evaluated. Source-return and load-terminal currents are reconstructed from
-their connection maps; each explicit or implicit earth reaction is consumed once.
-The switch now has a checked closed-voltage relation and four conductor current
-limits; its opposite endpoint currents are reconstructed from the supplied
-from-side currents. The 42-row table above remains the coverage of
-`audit_linear_solution`.
+The separate candidate `audit_solution` adds default-role source neutral returns,
+implicit source grounding, WYE/SINGLE_PHASE/DELTA constant-power load equations,
+fixed ideal switches, bounded WYE/SINGLE_PHASE generator injections/limits,
+bus and branch angle/magnitude bounds, three-phase sequence/VUF limits and
+bounded transformer equations. It retains recognized generator prices and
+transformer `s_rating` as declarations, without turning them into physical limits
+or objective certificates. The component sections below describe how that
+coverage was added; their intermediate counts precede the final cost-scope trace.
 
-The extended verdict is still **indeterminate**. The running-network generator
-has a cost field outside this audit slice. The winding-list transformer now has
-checked
-coil equations, leakage, current caps and reconstructed terminal incidence. Its
-`s_rating` is retained as metadata, not an added apparent-power limit. The 28 ordinary
-phase-to-earth voltage-bound rows, four neutral-to-earth caps and six phase-pair
-limits are now checked. All 26 terminal KCL rows and aggregate power remain unassessed because required current
-contributions are still missing. The companion records both APIs on the same solved point;
-no zeros are supplied to close the remaining obligations. The
+The same default running-network result now has **zero unassessed rows** but
+**three failed generator active-power upper bounds**. Their excess is about
+0.00997 W each, above the unchanged 1e-6 W audit tolerance. All 26 terminal KCL
+rows and aggregate power pass. A separate tighter native solve of the unchanged
+input passes the scoped electrical audit. Both results and solver settings are
+retained by the companion. The [cost-scope lesson](@ref generator-cost-scope-audit)
+explains why the recognized price declaration opens these checks without
+certifying the selected objective, objective value, optimality or custom model.
+The 42-row table above remains the older `audit_linear_solution` coverage.
+
+Source-return and device-terminal currents are reconstructed from explicit
+connection maps; each earth reaction is consumed once. The switch has a checked
+closed-voltage relation and four conductor current caps. The winding-list
+transformer has checked coil equations, leakage and current caps; `s_rating`
+remains metadata. The running voltage declarations have 28 phase-earth rows,
+four neutral-earth caps and six phase-pair bounds. No input fields or nonzero
+residuals are removed to obtain coverage. The
 [delta coil lesson](@ref delta-coil-current-lesson) explains why successful KCL
-would still not replace the individual load equations.
+still does not replace individual device equations.
 
 ### A switch needs a state law and a conductor limit
 
@@ -746,7 +745,7 @@ grounded terminals. The candidate records those bound obligations as
 For the 10 V source and 9 V upper bound, a native source equation does not enforce
 the declared bound. This slice does not silently label it passed, reinterpret the
 bound as phase-to-neutral, or remove its array index. Other bound families,
-nonfinite/malformed arrays, generator costs/controllers and unsupported transformer checks
+nonfinite/malformed arrays, malformed generator prices/controllers and unsupported transformer checks
 retain explicit coverage limits. Known current contributions remain usable when
 only limit/report evidence is missing; missing currents cannot be filled in from
 power by dividing by voltage.
@@ -1060,7 +1059,8 @@ neutral cancellation and consistent phase permutations. Missing a required coil
 current leaves network KCL/power **unassessed**. The next section extends the
 incidence to DELTA; the separate rating-metadata trace below addresses
 `s_rating`. Unmatched coil counts, taps and internal coordinates remain outside
-the supported domain. The running network remains indeterminate.
+the supported domain. This intermediate slice alone left the running network
+indeterminate; the final price-scope trace below records its current verdicts.
 
 **Transfer exercise.** For this point, the smallest equally allocated total
 rating is ``3\max_p|S_{2p}|≈14.921637`` VA, rather than the 10.139652 VA sum.
@@ -1142,8 +1142,8 @@ a neutral before constraints are stamped; a rejection test records that boundary
 This audit
 accepts only the three-terminal closed incidence above. Two-terminal DELTA,
 unmatched coils, taps and internal coordinates also remain unassessed. The
-rating-metadata trace below handles `s_rating` separately; the current running
-network retains 28 unassessed obligations. The published package pin and execution
+rating-metadata trace below handles `s_rating` separately. Before the final
+price-scope trace, the running network retained 28 unassessed obligations. The published package pin and execution
 MCP surface are unchanged.
 
 **Transfer exercise.** Cyclically reorder every winding's coil positions and
@@ -1215,9 +1215,9 @@ still suppresses network KCL/power; metadata cannot recover it.
 
 The running-network input is retained intact. Its transformer equations,
 incidence and declared current caps now pass; top-level `s_rating` is recorded
-as metadata. The audit has 28 unassessed obligations and remains
-**indeterminate** because generator cost remains unsupported and the current
-inventory is incomplete. Physical adequacy, objectives,
+as metadata. Before the price-scope extension below, the audit retained 28
+unassessed obligations: generator cost was outside scope and prevented a complete
+current inventory. Physical adequacy, objectives,
 external review, published integration and execution MCP exposure remain
 separate obligations.
 
@@ -1316,8 +1316,8 @@ applicability remain **unassessed**, while otherwise known current contributions
 and checked violations stay visible. Missing required neutral voltage suppresses
 network KCL/power certification. Neutral-to-earth limits are covered below;
 phase-to-phase, bus-angle, sequence and branch-end angle limits also follow. The
-existing running network has no PN-bound declarations, so its 28 unassessed
-obligations remain unchanged. The published integration pin and execution MCP
+existing running network has no PN-bound declarations, so this family adds no
+checks there. The cost-scope section gives its latest coverage and verdict. The published integration pin and execution MCP
 surface are unchanged.
 
 **Transfer exercise.** For ``V_p=4+6\mathrm j`` V and ``V_n=1+2\mathrm j`` V,
@@ -1404,8 +1404,8 @@ test subjects, not the independent audit's oracle.
 
 Four running-network neutral caps now pass, reducing unassessed obligations
 from 33 to 29 at this stage without deleting input fields. Phase-to-phase limits
-follow below; generator cost and incomplete KCL/power still make the result
-**indeterminate**.
+follow below. At that stage generator cost was still outside scope, preventing
+complete KCL/power checks; the final cost-scope section revisits them.
 The published integration pin, PSK implementation statuses, physical adequacy
 and execution MCP exposure remain separate.
 
@@ -1484,8 +1484,8 @@ full pair index, observed magnitude and bound.
 
 The running network now has six checked phase-pair bounds at bus i6. Unknown
 rows fall from 29 to 28: the two unsupported fields previously shared one
-field-coverage row. The intact generator cost and incomplete KCL/power coverage
-keep its verdict **indeterminate**. Bus-angle, sequence and branch-end angle
+field-coverage row. Generator cost was still outside scope at that stage, so
+KCL/power remained incomplete until the price-scope trace. Bus-angle, sequence and branch-end angle
 limits follow below; objectives, physical adequacy, PSK implementation statuses,
 published integration and execution MCP remain separate obligations.
 
@@ -1574,8 +1574,8 @@ nominal arrays and unrepresentable data stay unknown. Known currents and checked
 violations remain visible; missing required state suppresses complete KCL/power
 certification. Standalone `va_nom` and custom roles remain outside this bus-angle slice;
 sequence and branch-end angle limits follow below. The running network declares no bus-angle
-window, so its **28 unassessed obligations** and **indeterminate** verdict are
-unchanged. Published integration, PSK statuses, execution MCP, objective and
+window, so this family did not change the 28 then-unassessed obligations. The
+final cost-scope section gives its latest verdict. Published integration, PSK statuses, execution MCP, objective and
 physical adequacy remain separate.
 
 **Transfer exercise.** Reverse the two phases in the asymmetric centered window
@@ -1671,8 +1671,9 @@ Tests cover exactly three full phases, source/ground applicability, cyclic and
 reversing permutations, neutral reference/fallback, scalar zero/equality and
 unit-specific tolerances, denominator-floor refusal/configuration, malformed
 limits and missing state. Known currents and checked violations survive bad
-limit data. The running input declares no sequence or VUF bound; its **28
-unassessed obligations** and **indeterminate** verdict are unchanged. Branch-end
+limit data. The running input declares no sequence or VUF bound; adding this
+family did not change the 28 then-unassessed obligations. The cost-scope section
+gives the latest verdict. Branch-end
 angle limits follow below. Objectives, physical phase-order measurement and
 adequacy, published integration, PSK statuses and execution MCP remain separate.
 
@@ -1765,8 +1766,9 @@ line-angle declarations. Tests cover positional mapping, asymmetric reversal,
 principal cuts, normalization, equality/zero/tolerance, neutral/ground incidence,
 malformed windows/maps and partial state.
 
-The running network declares no branch-angle bounds, so its **28 unassessed
-obligations** and **indeterminate** verdict are unchanged. Physical adequacy,
+The running network declares no branch-angle bounds, so adding this family
+did not change the 28 then-unassessed obligations. The final price-scope trace
+below gives its latest verdict. Physical adequacy,
 objectives, broader device/role coverage, published integration, PSK statuses
 and execution MCP remain separate obligations.
 
@@ -1774,3 +1776,115 @@ and execution MCP remain separate obligations.
 Give its new window and the sign of each conductor observation. Then delete
 only the second receiving voltage: identify which angular observation remains
 available and why complete line/KCL certification is still unavailable.
+
+
+### [A generator price is not an objective certificate](@id generator-cost-scope-audit)
+
+A generator price declaration has a different role from an electrical limit.
+In the bounded native WYE/SINGLE_PHASE form it is a full finite signed vector,
+one coefficient per declared coil. A two-terminal SINGLE_PHASE device has one
+coil price, including when its terminal order is reversed. A WYE neutral has
+no separate price. Scalars, polynomial-shaped objects, wrong or extra lengths,
+nulls, Booleans and unrepresentable values remain unassessed rather than being
+reinterpreted as another cost model.
+
+The native default generator contribution is
+
+```math
+C_g=\sum_k c_{g,k}\frac{P^{\mathrm{inj}}_{g,k}}{1000},\qquad
+P^{\mathrm{inj}}_{g,k}=\Re\left(U_{g,k}\overline{I_{g,k}}\right).
+```
+
+With power in W and price in currency/kWh, ``C_g`` is a **rate in currency/hour**.
+It is linear in active power, although bilinear in IVR voltage/current variables.
+A positive coefficient penalizes its injection contribution; a negative one
+rewards it within the selected minimization objective. Other terms and network
+constraints can alter actual dispatch. Zero direct cost alone establishes
+neither a feasible flat direction nor dispatch non-uniqueness.
+
+The native cost-expression constructor adds no variables or constraints.
+Generator apparent-power limits already create auxiliaries independently of
+price. Per-unit working prices are multiplied by the local power base to cancel
+power scaling; this is coordinate bookkeeping, not a changed tariff. A staged
+caller can omit the objective, replace it, combine snapshots or apply explicit
+duration weights. A network/result pair alone does not identify that choice.
+
+The independent audit therefore retains valid prices with status **declared**,
+null residual and `enforced_as_physical_limit=false`. This is not a passed
+objective or an economic-validity finding. Signed/zero prices are recognized;
+malformed prices remain unknown while otherwise known currents, KCL and limit
+violations remain available. Missing required current or state still prevents
+complete electrical checks. Generator active/reactive/apparent-power rows name
+**W**, **var** and **VA** respectively, with unchanged numerical tolerances.
+
+The output `objective_scope` explicitly leaves objective selection, reported
+objective consistency, objective evaluation, custom constraints and local/global
+optimality unchecked. Finite price metadata also does not certify numerical
+objective applicability under arbitrary scaling or coefficient providers. The
+candidate result-field description now says **reported objective value**; an
+objective field alone is not an optimality or feasibility certificate.
+
+**Predict:** a 10 V ideal-switch circuit supplies a ``10+2\mathrm j`` VA load
+with a generator fixed at ``4+1\mathrm j`` VA. What can an electrical audit tell
+from the same physical point under these known recipe choices?
+
+| Explicit recipe | Recorded objective | Electrical point evidence |
+|:--|:--|:--|
+| Default price +0.25 currency/kWh | +0.001 currency/hour | Pass |
+| Default price −0.25 currency/kWh | −0.001 currency/hour | Pass |
+| Zero price at fixed dispatch | 0 | Pass; no feasible-flat-direction claim |
+| Caller-selected constant objective | 123 in caller-defined units | Same fixed point passes |
+| Explicitly hold the snapshot for two hours | 0.002 currency | Same fixed point passes; duration is an extra assumption |
+| Supplied result with an invented `objective=999` | Unverified | Electrical pass does not validate this field |
+
+In this particular circuit, with an unpriced source, Q fixed at 1 var and P
+allowed in [3,5] W, the per-unit positive/negative-price solves select the
+respective P limits. These native observations do not establish global optimality
+for a general network. Only the known recipe supplies the values and units in
+the table; the standalone feasibility audit does not infer it.
+
+**Inspect:** `examples/generator_cost_scope.jl` and `generator-cost.json`, invoked
+by the exact clean candidate companion, retain these price, recipe, malformed-
+data and missing-current witnesses. Tests inspect native expression values,
+indexing and unchanged variable/constraint counts as subjects; the declaration
+audit does not call the native cost builder as its oracle. The public native
+objective construction stage precedes KCL finalization.
+
+The native SI attempts are preserved honestly. From the voltage-only start,
+Ipopt reports a restoration failure and the returned point fails the electrical
+audit. With a full supplied-primal start it still reports a restoration failure,
+but its returned point passes electrical checks and has the expected rate.
+Per-unit, no-objective, zero-price and custom-constant recipes solve and pass.
+Solver success, a valid supplied point and selected-objective assessment are
+three separate observations; neither failure nor success can substitute for
+the other checks.
+
+The running example makes the distinction consequential. Its retained generator
+prices ``[-0.08,-0.08,-0.08]`` are now recognized without deleting any field.
+Previously that declaration prevented a complete current inventory. It now
+opens all 26 KCL checks and aggregate power, which pass, and exposes three
+active-power upper-bound violations in the original default solver result.
+
+| Running result, same input and audit tolerances | Unknown rows | Failed electrical checks |
+|:--|--:|:--|
+| Retained default solve | 0 | Three p_max excesses, about 0.00997 W each |
+| Separate tighter solve | 0 | None; scoped electrical point audit passes |
+
+The absolute audit tolerance remains 1e-6 W. The separate solve uses
+`tol=1e-10`, `constr_viol_tol=1e-12`, `acceptable_iter=0` and
+`bound_relax_factor=0`; both results and solver options are retained. No audit
+tolerance is loosened and no input constraint or price is removed. Default
+solver behavior is a recorded diagnostic, not a requirement that every future
+backend reproduce the same violation.
+
+A **passed** result here means the explicitly supported electrical supplied-point
+obligations hold at the stated tolerances. It does not establish unrestricted
+native/custom-model feasibility, a selected objective, stationarity, local/global
+optimality, physical adequacy, economic correctness or external review. DELTA
+and other device/controller scopes, source/IBR price applicability, published
+integration, PSK statuses and execution MCP remain separate.
+
+**Transfer exercise.** Give the rate and explicit two-hour cost for 4 W injection
+at price +0.25 currency/kWh. Then explain why `objective=123`, solver success,
+a zero price or a tiny active-power excess cannot independently settle the
+selected objective, uniqueness, or electrical compliance.

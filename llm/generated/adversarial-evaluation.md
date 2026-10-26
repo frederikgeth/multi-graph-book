@@ -15,7 +15,7 @@ Recall is averaged over the 26 cases with target evidence; empty target sets are
 | Unqualified-query status accuracy | 100.0% | yes |
 | False qualification on unqualified queries | 0/10 (0.0%) | covered by status gate |
 | Hybrid retrieval recall@10 | 39.2% | diagnostic |
-| Graph retrieval recall@10 | 65.9% | diagnostic |
+| Graph retrieval recall@10 | 66.9% | diagnostic |
 
 | Case | Expected status | Observed status | Hybrid recall@10 | Graph recall@10 | Contract complete |
 | --- | --- | --- | ---: | ---: | --- |
@@ -37,7 +37,7 @@ Recall is averaged over the 26 cases with target evidence; empty target sets are
 | `ADV-TINY-RESISTANCE-SHARING` | `qualified` | `qualified` | 25.0% | 50.0% | yes |
 | `ADV-IDEAL-CURRENT-LIMIT` | `qualified` | `qualified` | 25.0% | 25.0% | yes |
 | `ADV-PARAMETER-REUSE` | `qualified` | `qualified` | 25.0% | 75.0% | yes |
-| `ADV-DELTA-COIL-CIRCULATION` | `qualified` | `qualified` | 75.0% | 75.0% | yes |
+| `ADV-DELTA-COIL-CIRCULATION` | `qualified` | `qualified` | 75.0% | 100.0% | yes |
 | `ADV-DELTA-INRUSH-BOUNDARY` | `under_retrieved` | `under_retrieved` | — | — | — |
 | `ADV-DELTA-COIL-TRANSIENT-BOUNDARY` | `under_retrieved` | `under_retrieved` | — | — | — |
 | `ADV-DELTA-EXACT-PHRASE-TRANSIENT` | `under_retrieved` | `under_retrieved` | — | — | — |

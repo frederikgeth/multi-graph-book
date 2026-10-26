@@ -96,9 +96,15 @@ elsewhere. The companion checks the installed package's exact Git revision and
 clean state, runs the tiny analytic, native-coordinate solve, corrupted and missing-data
 cases, records a default per-unit solve as a diagnostic comparison at the same
 physical tolerances, then solves and audits the running network. It records the candidate identity, environment and
-source hashes, full running-network input/result, and all coverage rows. The
-running-network verdict must remain **indeterminate**. This companion is not in
-the published-pin CI job; package tests cover the evaluator on its own branch.
+source hashes, full running-network input/result, and all coverage rows. It now
+retains both the default running solve and a separate tighter solve at unchanged
+audit tolerances. In this recorded run the default point has zero unknown rows
+and three generator p_max violations, approximately 0.00997 W each against a
+1e-6 W tolerance. The tighter point passes its supported electrical obligations.
+Default solver behavior is diagnostic; future backends need not reproduce those
+violations. Neither point establishes selected-objective correctness, custom
+constraints or optimality. This companion is not in the published-pin CI job;
+package tests cover the evaluator on its own branch.
 Do not substitute zero residuals to promote it into the legacy witness contract.
 
 Next promotion requires completing/reviewing the desired device coverage,
@@ -108,21 +114,26 @@ covered by the extended API, together with fixed ideal switches, bounded
 WYE/SINGLE_PHASE generator injections/limits, applicable phase-to-earth bus
 voltage bounds, explicit-neutral phase-to-neutral vpn_min/vpn_max arrays, applicable scalar neutral-to-earth vn_max, phase-to-phase vpp_min/vpp_max arrays, centered intra-bus and mapped branch-end angle windows and three-phase sequence/VUF bounds, and fixed single-coil single_phase transformers with legacy
 secondary excitation, plus two/three-winding WYE transformers with matched one-to-three phase-neutral coils and
-explicit pairwise leakage, plus matched three-terminal DELTA winding incidence/rotation. DELTA generators, generator costs/controllers, transformer
-variants/limits outside that narrow slice, voltage-dependent loads, other voltage families and objective
+explicit pairwise leakage, plus matched three-terminal DELTA winding incidence/rotation.
+Full finite signed generator price vectors are recognized as declarations, with
+no physical-limit residual or objective certificate. DELTA generators,
+controllers, other cost forms, transformer variants/limits outside that narrow
+slice, voltage-dependent loads, other voltage families and selected-objective
 evaluation remain open. Source-fixed/grounded bus-bound declarations are
 explicitly unassessed because the native builder skips their application.
 
 The companion also runs the package's `neutral-and-delta.json` analytic fixture,
 a native solve of it, a delta circulating-current corruption, and missing implicit
 earth-reaction evidence. It applies both APIs to the same running-network result:
-the original linear audit retains 42 unassessed rows; the connected extension
-reduces this to 28, with 11 load power equations, source relations, the closed
-switch voltage relation, four switch current limits and 28 phase-to-earth
-voltage-bound rows, four neutral-to-earth caps and six phase-pair limits evaluated, plus the mixed WYE/DELTA transformer equations,
-incidence, current limits and declared rating metadata. The running generator still contains an unsupported
-cost field; this slice does not discard it to manufacture full KCL coverage.
-Both remain indeterminate. Custom terminal conventions and unrecognized semantic
+the original linear audit retains 42 unassessed rows. The connected extension
+now recognizes the generator's intact signed price declaration and has zero
+unknown rows, with 11 load power equations, source relations, the closed switch
+voltage relation, four switch current limits, 28 phase-to-earth voltage-bound
+rows, four neutral-to-earth caps, six phase-pair limits and the mixed WYE/DELTA
+transformer equations, incidence, current limits and declared rating metadata.
+All 26 KCL rows and aggregate power pass. The default point fails the three
+p_max checks described above; the separate tighter point passes. The original
+linear API remains indeterminate. Custom terminal conventions and unrecognized semantic
 fields are explicitly outside the current extension's supported domain.
 The `fixed-switch.json` companion verifies a native solve and a neutral-current
 overload invisible to power checks, and retains missing switch current as unknown.
@@ -181,7 +192,8 @@ It checks a native solve, current/loss identities, a tighter terminal cap,
 series/terminal confusion, missing series current and unsupported adjustable tap.
 The single-coil transformer example does not itself assess the running network's
 mixed WYE/DELTA device; the later winding-list and metadata slices add that
-distinct coverage. The running verdict remains indeterminate with 28 unassessed rows.
+distinct coverage. The final generator-price trace below completes the supported
+running current inventory; earlier transformer slices alone left 28 unknown rows.
 
 
 The companion additionally runs `examples/winding_list_audit.jl` and
@@ -217,7 +229,8 @@ Native build validation rejects DELTA maps carrying a neutral; that boundary is
 covered by package tests. The audit requires internal coil observations and
 uses s_max/3 at actual line-to-line coil voltage. Two-terminal DELTA, unmatched
 coils, taps and internal coordinates remain unassessed. The separate metadata
-trace handles `s_rating`; the running network still has 28 unassessed rows. The published
+trace handles `s_rating`; before the generator-price trace, the running network
+still had 28 unknown rows. The published
 integration pin, PSK implementation statuses and execution MCP remain unchanged.
 
 
@@ -235,9 +248,10 @@ normalization, unequal-kVA resistance repair and rating/cap serialization.
 The audit does not authenticate that upstream conversion.
 
 The current running input is retained intact: transformer equations/current
-caps are checked and its top-level rating is declared metadata. The unsupported
-generator cost still suppresses complete network KCL/power certification. There
-are 28 unassessed obligations; the verdict remains indeterminate. No published
+caps are checked and its top-level rating is declared metadata. At this stage,
+generator cost still suppressed complete network KCL/power certification. The
+later generator-price trace recognizes that declaration and records the default
+failed and tighter passed electrical points without dropping fields. No published
 integration pin, PSK implementation status or execution MCP change is included.
 
 
@@ -255,7 +269,8 @@ full-length arrays in the original non-neutral bus order.
 Package tests cover skipped grounded/source phases, three-phase reorderings,
 complex phasor subtraction and Float64 representability boundaries. Other
 voltage families remain open. The running input has no vpn_min/vpn_max fields,
-so its 28 unassessed obligations and indeterminate verdict are unchanged.
+so this PN slice adds no running obligations. The generator-price trace below
+records the current default and tighter running verdicts.
 Published integration, PSK implementation statuses and execution MCP stay separate.
 
 
@@ -277,8 +292,8 @@ solve successfully but do not have complete audit acceptance. Finite shunts do
 not trigger this skip. A zero voltage cap does not add a free earth-reaction
 current path. Malformed scalar data and missing neutral state remain unknown;
 missing state suppresses KCL/power certification. Four intact running-network
-caps reduced unassessed obligations from 33 to 29 at that stage. Its verdict stays
-indeterminate. The published pin, PSK statuses and execution MCP remain unchanged.
+caps reduced unknown obligations from 33 to 29 at that stage, before the final
+generator-price trace. The published pin, PSK statuses and execution MCP remain unchanged.
 
 
 The companion additionally binds `examples/phase_phase_voltage_audit.jl` and
@@ -296,9 +311,9 @@ points pass; skipped-phase solves retain incomplete audit acceptance. Missing
 endpoint state and malformed arrays stay unknown. Grounded neutrals and finite
 shunts do not skip these phase pairs. Tests cover complex norms, array
 permutations, relabeling, exact boundary/tolerance and native constraint incidence.
-Six running limits now pass; unknown rows fall 29 -> 28 because both declared
-fields formerly shared one field-coverage row. The intact generator cost still
-prevents complete KCL/power certification. Objective/adequacy,
+Six running limits pass; at that stage unknown rows fell 29 -> 28 because both
+declared fields formerly shared one field-coverage row. Generator price was
+still outside the audit until the later trace below. Objective/adequacy,
 published integration, PSK status and execution MCP promotion remain separate.
 
 
@@ -320,8 +335,8 @@ first phases retain nominal indices (2,3); native skipped cases solve with
 incomplete audit acceptance. Tests cover direction reversal, cyclic symmetry,
 noncyclic reorderings, equal windows/antipodal exclusion, malformed data and
 Float64 range. The running input declares no bus-angle windows or va_nom, so
-28 unknown obligations and its indeterminate verdict remain unchanged. The
-published pin, PSK statuses and execution MCP are unchanged.
+this angle slice adds no running obligations. The later generator-price trace
+records the current verdicts. The published pin, PSK statuses and execution MCP are unchanged.
 
 
 The companion additionally binds `examples/sequence_voltage_audit.jl` and
@@ -347,8 +362,8 @@ low-positive points pass; the tightened native VUF attempt and failed point
 audit are retained with local infeasibility, not a global certificate. Tests
 cover full source/ground phase incidence, phase-order reversal/cyclic symmetry,
 zero/floor refusal, scalar/unit boundaries and malformed/missing data. The
-running input declares no sequence/VUF bound; 28 unknowns and its indeterminate
-verdict remain unchanged. The published pin, PSK statuses and execution MCP
+running input declares no sequence/VUF bound, so this slice adds no running
+obligations. The generator-price trace below records the current verdicts. The published pin, PSK statuses and execution MCP
 stay separate.
 
 
@@ -375,5 +390,45 @@ violations take precedence over angle uncertainty. Missing endpoint state
 suppresses full KCL/power but can leave other conductor angles checked. Endpoint
 angle observations do not certify an unsupported line equation model. The older
 linear-only API still refuses line-angle declarations. The running lines have
-none; 28 unknowns and indeterminate remain unchanged. Published pin, PSK status
+none, so this slice adds no running obligations. The generator-price trace below
+records the current verdicts. Published pin, PSK status
 and execution MCP stay separate.
+
+
+The companion now binds `examples/generator_cost_scope.jl` and
+`generator-cost.json`. A full finite signed linear price vector has one entry
+per WYE/SINGLE_PHASE coil, excluding a WYE neutral. Its declaration is recorded
+with `status="declared"`, null residual and
+`enforced_as_physical_limit=false`. Malformed prices remain unknown while
+otherwise known generator currents, electrical limits and KCL remain assessed.
+Generator active/reactive/apparent-power rows use W/var/VA respectively, without
+changing numeric tolerances. Source/IBR price applicability remains separate.
+
+Native tests trace default cost `sum(cost[k]*P_injected_W[k]/1000)`, in
+currency/hour for currency/kWh prices, with no variables or constraints added
+by the expression constructor. Per-unit coefficients compensate power scaling.
+An explicit two-hour weight changes the rate to an energy cost; a caller can
+omit or replace the objective. The independent audit neither invokes that
+constructor nor evaluates or validates a supplied objective. Its explicit
+`objective_scope` leaves selection, reported value, custom constraints and
+local/global optimality unchecked.
+
+At fixed 4 W + 1 var dispatch, known positive/negative price recipes produce
++0.001/-0.001 currency/hour; zero, constant-123 and explicit two-hour recipes
+retain their distinct scope. With P in [3,5] W and an unpriced source, native
+per-unit positive/negative prices select the respective endpoints. A forged
+reported objective remains unverified. The two unsuccessful native SI attempts
+are retained: the voltage-only start returns a failed electrical point, while
+the full supplied-primal start returns a passing point despite a restoration
+failure. Successful per-unit, zero-price, no-objective and custom-constant
+recipes are recorded separately from these attempts.
+
+The running generator's intact `[-0.08,-0.08,-0.08]` prices now permit all 26
+KCL rows and aggregate power to be checked; these pass. The default result's
+three p_max violations remain failed at 1e-6 W tolerance. A separate solve uses
+`tol=1e-10`, `constr_viol_tol=1e-12`, `acceptable_iter=0` and
+`bound_relax_factor=0` with identical input and audit tolerances, and passes.
+Both solver recipes/results and their audits are retained in the source-bound
+output. This is supported electrical supplied-point evidence, not unrestricted
+native/custom-model feasibility, economic adequacy or an objective certificate.
+The published pin, PSK implementation statuses and execution MCP remain unchanged.
