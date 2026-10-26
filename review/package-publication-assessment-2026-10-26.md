@@ -62,7 +62,10 @@ learning.
    record. The gate passes all 200 high-precision literals; 99 JSON artifacts
    are inventoried. This closes that specific blocker, without claiming that
    the comprehensive release gate passes. The earlier frozen handoff retains
-   its original open queue and requires this separate resolution addendum.
+   its original open queue. The new `checkpoint-handoff-resolved-2026-10-26.md`
+   describes a separately frozen archive that includes the resolution and the
+   restored historical seed input. Its broader component validation is recorded
+   separately from the still-rejected historical release manifest.
 4. Decide how to publish the package proposal. A concrete draft description is
    prepared in `package-candidate-draft-pr-2026-10-26.md`; publication and package
    CI have not occurred. The local Git handoff makes exact sources available

@@ -1,0 +1,303 @@
+{
+  "archive": {
+    "actual_zip_checksum_verified_and_unpacked": true,
+    "bytes": 56258472,
+    "path": "output/review/checkpoint-review-resolved-2026-10-26.zip",
+    "sha256": "ebb06b6cd48b311bea7425465c6b838fb35f6a38dcd2e41e7b6f725e4bb30059"
+  },
+  "book": {
+    "revision": "e1748ca582950e2cdb3151e058f822e70c48d447",
+    "tree": "0a9acaa3bf4f70fcac6fe5e54d9ca8a0c1607fcc"
+  },
+  "broader_release_diagnostic": {
+    "components": [
+      {
+        "command": "julia --startup-file=no scripts/check_bibliography.jl",
+        "exit_status": 0,
+        "name": "bibliography",
+        "recorded_summary": "bibliography audit: 75 records covered; 43 unique DOI fields"
+      },
+      {
+        "command": "julia --startup-file=no scripts/check_claims.jl",
+        "exit_status": 0,
+        "name": "claims",
+        "recorded_summary": "claims ledger: 121 unique claims; all paths, statuses, and citation keys valid"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_claim_mentions.py",
+        "exit_status": 0,
+        "name": "claim mentions",
+        "recorded_summary": "claim mention audit: 121 claims have reader-facing chapter coverage"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_evidence_summary.py",
+        "exit_status": 0,
+        "name": "evidence summary",
+        "recorded_summary": "evidence summary: 121 claims; self-checked=115, independently-implemented=6, externally-reviewed=0"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_review_snapshot.py",
+        "exit_status": 0,
+        "name": "review snapshot",
+        "recorded_summary": "review snapshot: 37 records joined to deduplication register; seed remains single-coded"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_evidence_matrix.py",
+        "exit_status": 0,
+        "name": "evidence matrix",
+        "recorded_summary": "evidence matrix: 37 rows valid; coding statuses {'single_coded': 37}; release double-coding requirement=False"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_development_log.py",
+        "exit_status": 0,
+        "name": "development log",
+        "recorded_summary": "development log: 11 ordered entries pass (accepted=10, rejected=1)"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_agent_benchmark.py --check",
+        "exit_status": 0,
+        "name": "agent benchmark",
+        "recorded_summary": "agent benchmark substrate: 7 cumulative conditions, 2 cases, 3 conformance fixtures pass expected outcomes; no agent runs claimed"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_agent_benchmark_pilot.py --check",
+        "exit_status": 0,
+        "name": "agent benchmark pilot",
+        "recorded_summary": "agent benchmark pilot design: 4 conditions, 16 planned runs per selected system, synthetic dry-run harness valid; corrections applied and human re-review required before real execution"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_figures.py",
+        "exit_status": 0,
+        "name": "figures",
+        "recorded_summary": "figures: 70 SVG/PNG pairs pass the rendered grayscale and accessibility audit"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_vocabulary.py",
+        "exit_status": 0,
+        "name": "vocabulary",
+        "recorded_summary": "vocabulary registry: 18 concepts, 5 target communities, and 1 shared technical vocabulary pass"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_llm_accessibility.py",
+        "exit_status": 0,
+        "name": "LLM accessibility",
+        "recorded_summary": "LLM accessibility: 1029 records: 872 sections, 121 claim bundles, 18 concept bundles, 18 scientific records, 34 misconception contracts, and 108 evaluation cases pass"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/evaluate_llm_retrieval.py --check",
+        "exit_status": 0,
+        "name": "LLM retrieval",
+        "recorded_summary": "LLM retrieval: 108 cases; heldout=33; route_top1=100.0%; lexical_complete_at_10=1.9%; contract_complete=100.0%; heldout_hybrid_recall_at_10=46.6%; heldout_router_fired=66.7%; heldout_hybrid_zero_recall_at_10=5/33; pass"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_neural_benchmark.py",
+        "exit_status": 0,
+        "name": "LLM neural benchmark",
+        "recorded_summary": "LLM neural benchmark (archived prior corpus; current rerun required): recorded pinned models; neural_recall_at_10=43.4%; hybrid_recall_at_10=45.4%; reranked_recall_at_10=44.1%; candidate_status=fail (negative results retained)"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_llm_routes.py",
+        "exit_status": 0,
+        "name": "LLM access routes",
+        "recorded_summary": "LLM access routes: direct packet, Markdown, HTTP JSON, and MCP stdio pass"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_llm_answer_contract.py",
+        "exit_status": 0,
+        "name": "LLM answer contract",
+        "recorded_summary": "LLM answer contract: 108 audience-specific packets have claim, citation, and source validation"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/generate_llm_access_fixtures.py --check",
+        "exit_status": 0,
+        "name": "LLM access fixtures",
+        "recorded_summary": "LLM access fixtures: 6 deterministic records pass"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/evaluate_llm_adversarial.py --check",
+        "exit_status": 0,
+        "name": "LLM adversarial evaluation",
+        "recorded_summary": "LLM adversarial evaluation: 46 cases; status=100.0%; abstention=100.0%; graph_recall_at_10=59.6%; pass"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 experiments/lessons/prose_number_witnesses.py --check",
+        "exit_status": 0,
+        "name": "prose-number arithmetic witnesses",
+        "recorded_summary": "prose arithmetic witnesses: 45 observations; 51 explicit occurrence bindings"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 experiments/lessons/recorded_generator_bound.py --check",
+        "exit_status": 0,
+        "name": "prose-number recorded observation",
+        "recorded_summary": "Recorded generator-bound reconstruction: 3 phases, 3 prose occurrences verified"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/test_prose_numbers.py",
+        "exit_status": 0,
+        "name": "prose-number binding regressions",
+        "recorded_summary": "OK"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/test_prose_number_witnesses.py",
+        "exit_status": 0,
+        "name": "prose-number witness regressions",
+        "recorded_summary": "OK"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_prose_numbers.py",
+        "exit_status": 0,
+        "name": "prose numbers",
+        "recorded_summary": "prose numbers: 200 high-precision literals checked; 144 direct artifact matches and 56 explicit derived bindings pass"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_math_hygiene.py",
+        "exit_status": 0,
+        "name": "math hygiene",
+        "recorded_summary": "math hygiene: no bare or legacy TeX commands, orphan \\mathbf commands, or unbalanced inline delimiters"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_callouts.py",
+        "exit_status": 0,
+        "name": "callouts",
+        "recorded_summary": "callouts: 49 admonitions use the controlled vocabulary (Circuit-theory trap=8, Decision-model consequence=10, Evidence boundary=5, Graph-theory trap=8, Power-system shorthand=13, Vocabulary bridge=5)"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_page_ids.py",
+        "exit_status": 0,
+        "name": "page anchors",
+        "recorded_summary": "page anchors: 83 HTML-routed pages have unique stable H1 @id anchors"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_paper_tracks.py",
+        "exit_status": 0,
+        "name": "paper tracks",
+        "recorded_summary": "paper tracks: three tracks, live claim IDs, and local links validated"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/generate_artifact_manifest.py --check",
+        "exit_status": 0,
+        "name": "generated artifact manifest",
+        "recorded_summary": "generated artifact manifest: 99 JSON artifacts are inventoried"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_artifacts.py",
+        "exit_status": 0,
+        "name": "artifacts",
+        "recorded_summary": "artifacts: 122 required files, 16 certificates, 2 transformer contracts, 22 source objects, 7 view maps, and 696 local links valid"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_rendered_outputs.py",
+        "exit_status": 0,
+        "name": "rendered outputs",
+        "recorded_summary": "rendered outputs: 83 HTML pages, 77 image tags, 208 PDF pages; selective TOC and raster smoke tests pass"
+      },
+      {
+        "command": "/opt/homebrew/opt/python@3.14/bin/python3.14 scripts/check_pdf_refs.py",
+        "exit_status": 0,
+        "name": "PDF references",
+        "recorded_summary": "PDF reference audit: 31 selected pages; all targets resolve within the PDF or full HTML library"
+      },
+      {
+        "command": "julia --startup-file=no --project=experiments experiments/test/runtests.jl",
+        "exit_status": 0,
+        "name": "experiment suite",
+        "recorded_summary": "Australian Carson reproduction artifact |   39     39  0.3s"
+      },
+      {
+        "command": "git diff --check",
+        "exit_status": 0,
+        "name": "git diff",
+        "recorded_summary": "passed"
+      }
+    ],
+    "comprehensive_release_pass_claimed": false,
+    "default_findings": [
+      "historical seed bibliography input drift; repaired by exact archived bytes",
+      "mutable sibling experiment dependency failed to compile with PowerIOError undefined; sibling untouched"
+    ],
+    "default_invocation_exit_status": 1,
+    "isolated_invocation_exit_status": 1,
+    "isolated_result": "all_33_then_existing_components_passed_but_historical_manifest_comparison_failed",
+    "loaded_package_tree": "457c799b216cd6b4010405570534faa4b9edf9a5",
+    "loaded_powerio_version": "0.11.6",
+    "neural_benchmark": "archived_negative_result_validation_only_no_new_run",
+    "new_index_check_added_afterwards": "passed_at_e1748ca582950e2cdb3151e058f822e70c48d447",
+    "release_manifest_refreshed": false,
+    "run_dirty_state": "untracked review-wrapper preparation; no lesson/scientific changes",
+    "run_source_revision": "09ee83b9235d60e85dda6e4fb7de1b122233c9f5",
+    "runtime_environment": "temporary expansion of published integration lock, not committed integration/candidate environment",
+    "runtime_julia_load_path": "/tmp/mgb-release-isolated-2026-10-26:@stdlib",
+    "runtime_manifest_sha256": "25f69a9d24c8520b436d513ccbee3e7f27cd3a16df08a2560f61d63ab6a36c0f",
+    "runtime_project_sha256": "3641001b19e41ab0fc572571e2e4d283cf070c816b086975381eda3fbdb1ce71"
+  },
+  "candidate": {
+    "revision": "6c6515153a6c9d3ed8f59605033c05a5022fa392",
+    "tree": "26c5162bcc5bf24fa502bdc979063ef659694242"
+  },
+  "fresh_unpacked_checks": {
+    "candidate_companion_rerun": false,
+    "deterministic_number_witnesses": "passed",
+    "full_candidate_suite_rerun": false,
+    "high_precision_literals": 200,
+    "knowledge_base_index_freshness": "passed",
+    "literature_seed_check": "passed",
+    "literature_seed_records": 37,
+    "llm_reproducibility": "passed",
+    "portable_environment_hashes_revalidated": 2,
+    "prior_candidate_source_hashes_revalidated": 50,
+    "prose_number_gate": "passed",
+    "recorded_number_witness": "passed",
+    "relative_path_resolves_to_unpacked_candidate": true,
+    "repositories_clean_at_exact_revision_tree": true
+  },
+  "kind": "author_review_handoff_validation_not_release",
+  "local_log_sha256": {
+    "mgb-release-isolated-check-2026-10-26.log": "7aa77d3df57ec95be3c3fffd2a59d6edeafda8efadfb1725b20418afee3a999d",
+    "mgb-release-isolated-identity.log": "2747c868e2c515535416bb499cb9af6771ae5e218e59ba9e708fe08cc7675e35",
+    "mgb-release-isolated-setup.log": "e73f3aaac633aeb2ee8e5bdef45044a58d2622e9aeab650e25db79346feae146",
+    "mgb-release-readiness-2026-10-26.log": "928d455d8ff0984bc204cd48de93058b1b5b1a49b294a8cecc55cd32e20fcecd",
+    "mgb-resolved-handoff-tests.log": "c48495757e59a1a69602bec41ff3c1fef0c7089bc949a1c1226e261deec9f864",
+    "mgb-resolved-hosted-docs-failure.log": "2c1541a47f63d0c555af34c302cf23689fb030cfc8901977a1a19a10c8eaceaf",
+    "mgb-resolved-index-html-build.log": "7814a9ed9d5879a1298281c54679012bb48b19e1629dc44130e4ac0e748f1dac",
+    "mgb-resolved-index-repro.log": "38e05526d68fc23bc9c1e8197176a48e0acea31893cae163017eff42fc79f5b7",
+    "mgb-resolved-ready-clone-repro.log": "0cc97cddec852dfd7d27f4e733fca4ae4e236c2cdb1285205956fbe979f7b5ae",
+    "mgb-resolved-ready-handoff-build.log": "e0582a67aac43ee0b6a812de973515bf5b5f784643ae9cea99b50adcd3ae4dfe"
+  },
+  "payload_manifest_sha256": "4668115bbde6259652389cc1291a051dbd44bab7f686ff399b141017c793853e",
+  "preparation_source_sha256": {
+    ".github/workflows/docs.yml": "9ff00157975b82be619682b2cfd27e44b23572e76c6578fd0ca87dc097b14dfe",
+    "docs/src/reference/knowledge-base-index.md": "243881762ddac76fca19cf916e68698957679652714263e69e1d6113df547e0b",
+    "review/bibliography-audit.toml": "9a64f533651e7ab6a6eb111acde60dc923bef9fea63e2e3897dd796048b44f5b",
+    "review/checkpoint-handoff-resolved-2026-10-26.md": "e9e0db73b0998d1af64cbfe1d7bb5662e658469b43b453804632d296dee85d1b",
+    "review/checkpoint-review-request-resolved-2026-10-26.md": "a25574f0b4791af68ba37468f30b6b8b3f2b28cab718299d84691b1fc4bf2269",
+    "review/external-review-response-ledger.csv": "f62b51ca61380e7ddec49bbfaa3da1cc04348163ec11f2b159a36b9b8f10f238",
+    "review/snapshot-manifest.json": "2f99e3be3eec6f12ca97af05395cf66956bb806f0954ac329a5b5d7e1958e9b7",
+    "review/snapshots/bibliography-audit-2026-08-25.toml": "2c8f4b63ca26b60accafcb31e23e3f6048c26f4b22fe12d97da168ee20c3adb7",
+    "scripts/check_release_candidate.py": "51f462cbcaf518b47b9a9434c683d4cfce424d0df3ae4cfe85a4e17ec3562fe8",
+    "scripts/generate_knowledge_base_indexes.py": "19248bd3e2184a0866c1c440273b406a543ba51979aa34fa1be920b54351f7e8",
+    "scripts/review_handoff.py": "9e7dab52b80e8049b6432cecb3b45204496985e4ec947bfaebf3b2ac3200c193"
+  },
+  "previous_archive": {
+    "path": "output/review/checkpoint-review-2026-10-26.zip",
+    "sha256": "7c1277e6117adcf32a69219c90d92f90e670333dd5707a4385c37f438fe7be58",
+    "unchanged": true
+  },
+  "published_package_revision_unchanged": "97c274946091859b7d9b0e822c96f1e7f9f50c7e",
+  "render": {
+    "html_index_additions": [
+      "prose-number-witnesses.json",
+      "recorded-generator-bound.json"
+    ],
+    "html_pages": 83,
+    "pdf_pages": 208,
+    "pdf_sha256": "95a6367c8fef7b571c2990a6f386274e90b53a2c785892829be1280536cd6d4b",
+    "pdf_unchanged": true,
+    "rendered_output_check": "passed"
+  },
+  "reviewer_contact_package_publication_pin_change_or_evidence_promotion": false,
+  "schema_version": "1.0.0",
+  "synthetic_handoff_software_tests": {
+    "not_agent_or_reader_results": true,
+    "passed": 6
+  }
+}
