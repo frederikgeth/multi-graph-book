@@ -41,6 +41,54 @@ unobserved coordinates, or has a different objective value.
 
 ## 1. Declare the study
 
+### [Choose the evidence generation](@id running-case-evidence-generations)
+
+**Learning question.** Which program evaluated which returned point? The same
+running input appears in three evidence generations. Their verdicts describe
+different checks and runs, not successive labels for one result. Revision
+prefixes below identify the full revisions in the named profiles.
+
+| Evidence generation | Package revision and check | Recorded verdict and boundary |
+| --- | --- | --- |
+| September review replay | `5b51d2f361da`; profile and four line-current recoveries | Scoped checks pass; the complete-feasibility witness gate is `indeterminate` because the full independent residual bundle is absent. |
+| Published integration | `97c274946091`; the same scoped verification lesson in the current locked integration | The lesson still requires that `indeterminate` refusal. Passing integration is not an all-device/KCL audit. |
+| Local independent-audit candidate | `6c6515153a6c`; separate `audit_linear_solution` and `audit_solution` APIs | The linear audit retains 42 unassessed obligations. The broader audit finds three generator P-bound failures and zero unknowns at the default-solve point; a separate tighter-solve point passes its bounded electrical checks. |
+
+From the repository root, choose the matching route:
+
+```sh
+# September replay: its recorded environment and source hashes
+bash scripts/reproduce_clean_fixture.sh --check
+bash scripts/reproduce_clean_fixture.sh
+
+# Published integration: requires the exact clean checkout selected by its profile
+python3 scripts/check_bmopf_integration.py --bmopf-root ../BMOPFTools.jl
+
+# Local candidate: only after preparing its exact clean revision and locked environment
+julia --startup-file=no --project="$MGB_AUDIT_ENV" \
+  experiments/lessons/verify_linear_coverage.jl "$MGB_AUDIT_ENV/coverage.json"
+```
+
+The immutable locators are, respectively,
+`experiments/reproduction/review-2026-09-06/profile.json`,
+`experiments/integration/profile.json` and
+`experiments/integration/linear-audit-candidate.json`.
+The candidate is **local and unpublished**; it cannot be substituted into the
+published command. Its environment setup and fresh-output requirements are in
+`experiments/integration/README.md`. A historical reconstruction or an unlocked
+current-mode run is a different operation from the September replay.
+
+The candidate's three violations exceed their unchanged power tolerance by
+about 0.00997 W each; all 26 KCL rows and aggregate power pass. The tighter run
+uses different solver settings, not different authored limits. The running case
+has no IBR, so its result does not exercise the control catalogue. None of these
+checks authenticates arbitrary hidden constraints, a selected objective, global
+optimality, input provenance or physical adequacy.
+
+**Transfer task.** Attach a verdict to its revision, API, returned-point identity
+and tolerances. Explain why a passing tighter point neither repairs the default
+point's violations nor supplies the September lesson's missing residual bundle.
+
 Read [The running multiconductor network](@ref running-network) and
 [Executable running network](@ref executable-running-network). State the
 operating state, the quantities the study observes, and the decision domain
@@ -86,9 +134,12 @@ Run the [returned-solution verification exercise](@ref executable-running-networ
 Record the four line-current residuals, the package profile's findings, and the
 reaction to the altered `i2.a` voltage. Explain which source quantities were
 recomputed and which data or primitive construction were shared. The full
-feasibility-evidence gate should return `indeterminate`; explain the missing
+feasibility-evidence gate in the September/published scoped lesson should return
+`indeterminate`; explain the missing
 all-device equation and nodal KCL evidence instead of converting that refusal
 into a passing result.
+If you also run the local candidate, submit its separate default and tighter
+point records using the [evidence-generation table](@ref running-case-evidence-generations).
 
 If the case is locally solved, describe it as a local numerical comparison.
 Use a derivation or a separate bound for any stronger feasible-set or
@@ -123,9 +174,13 @@ A defensible account reports that the unaltered case satisfies the lesson's
 line-current and power-balance tolerances, while the altered voltage violates
 a voltage bound and disagrees with currents recovered from the line primitives.
 It distinguishes initialization and active-bound warnings from violated
-constraints. It does not infer global optimality from `LOCALLY_SOLVED` or call
+constraints. This is the September/published scoped lesson's assessment in the
+[evidence-generation table](@ref running-case-evidence-generations). It does not
+infer global optimality from `LOCALLY_SOLVED` or call
 the whole model independently verified. The missing full residual bundle is
-an explicit conclusion, not a failed exercise.
+an explicit conclusion for that gate, not a failed exercise. A local candidate
+account additionally distinguishes the default point's three violations from
+the tighter point's scoped pass and retains both records.
 
 For a smaller complete decision argument, reproduce the [interval model-choice
 exercise](@ref numerical-consequences): explain why a 109 A nominally accepted

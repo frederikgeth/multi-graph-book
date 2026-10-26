@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `c6f9134b8cbe5ad4d19fc016d937f812c3bd9c4527a784c32048a0aa05145732`<br>
+**Corpus hash:** `cf82f131e612548532884fa2d2d4e68c263c397b87ba219089ad79184aec6ef5`<br>
 **Cases:** 108
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -16,11 +16,11 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Measure | Result | Release gate? |
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
-| Open-corpus lexical evidence recall@5 | 27.8% | diagnostic |
+| Open-corpus lexical evidence recall@5 | 27.5% | diagnostic |
 | Open-corpus lexical evidence recall@10 | 33.4% | diagnostic |
 | Open-corpus complete evidence@10 | 0.9% | diagnostic |
 | Evidence-only lexical recall@5 | 35.0% | diagnostic |
-| Evidence-only lexical recall@10 | 42.1% | diagnostic |
+| Evidence-only lexical recall@10 | 41.7% | diagnostic |
 | Evidence-only complete evidence@10 | 1.9% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
@@ -43,9 +43,9 @@ the question count must not be treated as that many independent observations.
 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `lexical` | 33.0% | 42.6% | 0.0% | 0/33 | 6/33 | 0.196 |
-| `char_tfidf` | 34.6% | 43.3% | 0.0% | 0/33 | 7/33 | 0.221 |
-| `hybrid` | 36.5% | 47.1% | 0.0% | 0/33 | 5/33 | 0.214 |
+| `lexical` | 33.0% | 42.6% | 0.0% | 0/33 | 6/33 | 0.195 |
+| `char_tfidf` | 33.9% | 43.3% | 0.0% | 0/33 | 7/33 | 0.220 |
+| `hybrid` | 36.0% | 47.1% | 0.0% | 0/33 | 5/33 | 0.216 |
 | `graph` | 37.5% | 57.8% | 18.2% | 6/33 | 3/33 | 0.249 |
 
 Held-out contract-router firing: **22/33 (66.7%)**; release floor: **66.7%**.
@@ -94,9 +94,9 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 36 | 100.0% | 42.9% | 100.0% |
+| `power_engineer` | 36 | 100.0% | 42.4% | 100.0% |
 | `software_engineer` | 36 | 100.0% | 37.9% | 100.0% |
-| `student` | 36 | 100.0% | 45.4% | 100.0% |
+| `student` | 36 | 100.0% | 44.9% | 100.0% |
 
 ## Case results
 
@@ -110,7 +110,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | `EVAL-YSPLIT-POWER` | `power_engineer` | `loads-generators-fixed-graph-membership` | 50.0% | yes |
 | `EVAL-YBUS-STUDENT` | `student` | `nodal-operator-is-source-network` | 80.0% | yes |
 | `EVAL-YBUS-SOFTWARE` | `software_engineer` | `nodal-operator-is-source-network` | 60.0% | yes |
-| `EVAL-YBUS-POWER` | `power_engineer` | `nodal-operator-is-source-network` | 40.0% | yes |
+| `EVAL-YBUS-POWER` | `power_engineer` | `nodal-operator-is-source-network` | 20.0% | yes |
 | `EVAL-PARALLEL-STUDENT` | `student` | `parallel-admittance-implies-decision-equivalence` | 66.7% | yes |
 | `EVAL-PARALLEL-SOFTWARE` | `software_engineer` | `parallel-admittance-implies-decision-equivalence` | 16.7% | yes |
 | `EVAL-PARALLEL-POWER` | `power_engineer` | `parallel-admittance-implies-decision-equivalence` | 50.0% | yes |
@@ -201,7 +201,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | `EVAL-SOLUTION-MULTIPLICITY-STUDENT` | `student` | `apparent-power-limit-implies-current-admissibility` | 42.9% | yes |
 | `EVAL-SOLUTION-MULTIPLICITY-SOFTWARE` | `software_engineer` | `apparent-power-limit-implies-current-admissibility` | 28.6% | yes |
 | `EVAL-SOLUTION-MULTIPLICITY-POWER` | `power_engineer` | `apparent-power-limit-implies-current-admissibility` | 57.1% | yes |
-| `EVAL-LIMIT-CONVEXITY-STUDENT` | `student` | `convex-rating-implies-convex-opf` | 60.0% | yes |
+| `EVAL-LIMIT-CONVEXITY-STUDENT` | `student` | `convex-rating-implies-convex-opf` | 40.0% | yes |
 | `EVAL-LIMIT-CONVEXITY-SOFTWARE` | `software_engineer` | `convex-rating-implies-convex-opf` | 20.0% | yes |
 | `EVAL-LIMIT-CONVEXITY-POWER` | `power_engineer` | `convex-rating-implies-convex-opf` | 40.0% | yes |
 | `EVAL-NEUTRAL-SHUNTS-STUDENT` | `student` | `apparent-power-limit-implies-current-admissibility` | 42.9% | yes |

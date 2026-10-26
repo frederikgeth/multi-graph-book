@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "c6f9134b8cbe5ad4d19fc016d937f812c3bd9c4527a784c32048a0aa05145732",
+  "corpus_sha256": "cf82f131e612548532884fa2d2d4e68c263c397b87ba219089ad79184aec6ef5",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -15,12 +15,12 @@
   "evaluation_case_count": 108,
   "heldout_case_count": 33,
   "misconception_count": 34,
-  "record_count": 1011,
+  "record_count": 1015,
   "record_counts": {
     "claim_bundle": 121,
     "concept_bundle": 18,
     "scientific_knowledge": 18,
-    "section": 854
+    "section": 858
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -53,7 +53,7 @@
     },
     {
       "path": "docs/src/cases/executable-running-network.md",
-      "sha256": "6dd28988debaba98e457ce95c6d7efd60c030ecaad6ed23852db19b5d8d39a0e"
+      "sha256": "0b9c808e7d290b97ebfa0daee169b600b3af1b7ae2444e10a3f77331474632be"
     },
     {
       "path": "docs/src/cases/four-wire-impedance-model-ladder.md",
@@ -85,7 +85,7 @@
     },
     {
       "path": "docs/src/cases/study-workbook.md",
-      "sha256": "d0ab14c6dedc2d0d02c6252bd8314aada5fe06b0d5b86d6aba2f67d83d6f99cb"
+      "sha256": "a0eb0fac3c9f7141bc47485984d28c0470389a76f8381fcbdb670aedf6223562"
     },
     {
       "path": "docs/src/cases/transformer-tap-ac-decision.md",
@@ -261,7 +261,7 @@
     },
     {
       "path": "docs/src/start/computational-cases.md",
-      "sha256": "154b39b1a42ee12bb332bf677ed2c8c2c4ba88cbdaca3101f67a028ac1da9d05"
+      "sha256": "c7674a5f3a9130c759237ab4ee9b68eaf742363089865aa119a7b2ec2c690ba1"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",

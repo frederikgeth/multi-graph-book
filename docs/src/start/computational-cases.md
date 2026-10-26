@@ -178,8 +178,12 @@ Gaussian-elimination implementation on the declared common fixture. Each
 check challenges a different possible error; none authenticates the inputs
 merely by agreeing numerically.
 
-The running-case verification adds post-solve line-current recovery through
-package-owned primitives. Its complete-feasibility gate remains indeterminate.
+The September replay and published integration's running-case lesson add
+post-solve line-current recovery through package-owned primitives. That lesson's
+complete-feasibility witness gate remains indeterminate. The separate local
+candidate has broader equation coverage and different returned-point verdicts;
+use the workbook's [evidence-generation table](@ref running-case-evidence-generations)
+to distinguish its default and tighter solves from the scoped lesson.
 The Australian construction study separately records unresolved provenance of
 an external reference matrix. Inspect those boundaries before treating another
 successful run as independent support for a physical-model claim. Independent
