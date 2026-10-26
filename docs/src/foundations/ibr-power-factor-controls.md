@@ -207,15 +207,15 @@ envelope. It does not infer the solver's smoothing recipe from a supplied result
 
 A bounded profile has four positive, finite, strictly increasing breakpoints
 ``x_1<x_2<x_3<x_4`` in **SI volts**, and
-`q_limits=[q_absorb,q_inject]` with ``q_{\rm absorb}\le0\le q_{\rm inject}``.
+`q_limits=[q_absorb,q_inject]` with ``q_{\mathrm{absorb}}\le0\le q_{\mathrm{inject}}``.
 Only `q_unit=VA_FRACTION` and `q_ref=VAR_MAX` are admitted. Despite that reference
 label, native normalization uses **each branch's `s_max`**, not `q_max`, total
 three-phase power, available P or a measured reactive capability. Fractions
 alone do not establish a rating guarantee; P/Q/I/S caps remain separate.
 
-The requested graph is constant at ``q_{\rm inject}`` below ``x_1``, falls
+The requested graph is constant at ``q_{\mathrm{inject}}`` below ``x_1``, falls
 linearly to zero at ``x_2``, stays zero through ``x_3``, falls linearly to
-``q_{\rm absorb}`` at ``x_4`` and stays there above ``x_4``. Multiplication by
+``q_{\mathrm{absorb}}`` at ``x_4`` and stays there above ``x_4``. Multiplication by
 the branch's ``S_{\max,k}`` produces its requested PWL target in var.
 
 **Predict:** at U = 9 V, breakpoints [8,9,11,12] V, fractions [−0.6,0.44] and
@@ -233,11 +233,13 @@ s_\epsilon(z)=\epsilon\log(1+\exp(z/\epsilon)).
 The declared static smooth target is
 
 ```math
-Q_k^{\rm model}=S_{\max,k}q_{\rm inject}
--\frac{S_{\max,k}q_{\rm inject}}{x_2-x_1}
- [s_\epsilon(U-x_1)-s_\epsilon(U-x_2)]
-+\frac{S_{\max,k}q_{\rm absorb}}{x_4-x_3}
+\begin{aligned}
+Q_k^{\mathrm{model}}&=S_{\max,k}q_{\mathrm{inject}}\\
+&\quad-\frac{S_{\max,k}q_{\mathrm{inject}}}{x_2-x_1}
+ [s_\epsilon(U-x_1)-s_\epsilon(U-x_2)]\\
+&\quad+\frac{S_{\max,k}q_{\mathrm{absorb}}}{x_4-x_3}
  [s_\epsilon(U-x_3)-s_\epsilon(U-x_4)].
+\end{aligned}
 ```
 
 For the prediction's point and ``\rho=0.02``, ``\epsilon=0.2`` V and the
@@ -434,10 +436,12 @@ Let the relative width be rho, epsilon = rho times the mean of the two SI knots,
 and let s be the softplus hinge defined above. The assumed cap and residual are
 
 ```math
-C_{\epsilon,k}(U)=B_kp_{\mathrm{high}}+
-\frac{B_k(p_{\mathrm{low}}-p_{\mathrm{high}})}{u_2-u_1}
-\bigl[s_\epsilon(U-u_1)-s_\epsilon(U-u_2)\bigr],
-\qquad r_k=\max(0,P_k-C_{\epsilon,k}(U_k)).
+\begin{aligned}
+C_{\epsilon,k}(U)&=B_kp_{\mathrm{high}}\\
+&\quad+\frac{B_k(p_{\mathrm{low}}-p_{\mathrm{high}})}{u_2-u_1}
+\bigl[s_\epsilon(U-u_1)-s_\epsilon(U-u_2)\bigr],\\
+r_k&=\max(0,P_k-C_{\epsilon,k}(U_k)).
+\end{aligned}
 ```
 
 The residual has units W under absolute `power_tol`. The independent P comes
@@ -622,15 +626,12 @@ static profile on devices with different voltage/power bases and a reversed
 pair. Native object identity is comparison evidence; the independent evaluator
 uses no native cache, builder, role, curve or profiler helper as an oracle.
 
-The native builder remains unchanged in this tranche. Repairing its duplicate
-monitor keys needs a separate implementation change and regression suite.
-Parameterized/live-profile cache behavior, arbitrary coefficient providers,
-physical controller/filter/DC adequacy, `THREE_LEG` droop, selected objectives and
-optimality remain separate. Published package pin, PSK implementation states and
-execution MCP are unchanged.
+Monitor-key repair is a separate task; the native builder is unchanged.
+Parameterized/live providers and profile caches, physical controller/filter/DC
+adequacy, `THREE_LEG` droop, selected objectives and optimality remain outside
+this audit. Published pin, PSK statuses and execution MCP are unchanged.
 
-**Transfer exercise.** Hold both curves fixed, alter only one family's voltage
-reference, then apply a legacy aggregation override. Identify which physical
-observation and residual changes, which native build path remains applicable,
-and why a passing pair of control rows does not by itself establish capability,
-network feasibility or an authenticated build.
+**Transfer exercise.** Change one curve's voltage reference, then override
+averaging. Identify the changed observation, residual and build applicability.
+Explain why passing controls alone certify neither capability, network
+feasibility nor an authenticated build.

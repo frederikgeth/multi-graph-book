@@ -8,6 +8,7 @@ and accidental changes to the compact reading-route TOC.
 
 from __future__ import annotations
 
+import argparse
 import html
 import re
 import shutil
@@ -17,7 +18,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 HTML_ROOT = ROOT / "docs/build"
-PDF = ROOT / "docs/latex_build/GraphModelsForPowerSystems.pdf"
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--pdf", type=Path, default=ROOT / "docs/latex_build/GraphModelsForPowerSystems.pdf")
+PDF = parser.parse_args().pdf.resolve()
 PDF_LOG = ROOT / "docs/latex_build/Power-SystemModellingforComputation.log"
 
 EXPECTED_HTML = [
@@ -123,6 +126,13 @@ with tempfile.TemporaryDirectory(prefix="multi-graph-book-pdf-") as temporary:
         if heading not in body_text:
             fail(f"new teaching content is missing from the PDF: {heading}")
 
+    # A valid older PDF can pass generic structural checks while omitting the
+    # current manuscript's control chapter. Check body content, not timestamps.
+    compact_text = re.sub(r"[^a-z0-9]", "", body_text.lower())
+    for heading in ("IBR control applicability", "Volt-var", "Volt-watt", "Combined droop"):
+        if re.sub(r"[^a-z0-9]", "", heading.lower()) not in compact_text:
+            fail(f"current control teaching content is missing from the PDF: {heading}")
+
     if shutil.which("pdftoppm") is not None:
         output = Path(temporary) / "page"
         subprocess.run(
@@ -138,7 +148,7 @@ with tempfile.TemporaryDirectory(prefix="multi-graph-book-pdf-") as temporary:
 
 if PDF_LOG.is_file():
     log = PDF_LOG.read_text(errors="replace")
-    for marker in ("Emergency stop", "Runaway argument", "Undefined control sequence"):
+    for marker in ("Emergency stop", "Runaway argument", "Undefined control sequence", "Missing character:"):
         if marker in log:
             fail(f"PDF compiler log contains {marker!r}")
 

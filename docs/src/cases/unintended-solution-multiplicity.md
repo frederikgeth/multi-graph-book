@@ -27,7 +27,7 @@ For an RMS phasor port, ``S=V\overline I``. At nonzero voltage,
 |I|\le \frac{S_{\max}}{|V|}.
 ```
 
-Setting ``S_{\max}=V_{\rm nom}I_{\max}`` matches a current limit only at the
+Setting ``S_{\max}=V_{\mathrm{nom}}I_{\max}`` matches a current limit only at the
 specified nominal voltage. Below nominal it allows more current; above nominal
 it can be stricter. Neither constraint is universally a relaxation of the
 other over an arbitrary voltage domain. Apparent-power ratings can be legitimate
@@ -63,7 +63,7 @@ V^2-\frac45V+\frac3{25}
 
 The factorisation exhausts the roots for this scalar model. It is not a
 conclusion inferred from two solver runs. Choose ``I_{\max}=1/2`` and
-``V_{\rm nom}=1``, hence the proposed constant power cap is ``S_{\max}=1/2``.
+``V_{\mathrm{nom}}=1``, hence the proposed constant power cap is ``S_{\max}=1/2``.
 Sending power is ``EI``; receiving power magnitude is ``VI``. Their difference
 is the physical resistive loss ``RI^2``.
 
@@ -84,7 +84,7 @@ These deliberately depressed voltages expose the distinction; they are not a
 proposal for normal service-voltage limits or a realistic feeder benchmark.
 
 Two controls matter. Converting at the actual fixed sending voltage gives
-``S_{\max}^{\rm from}=0.8\times0.5=0.4`` and excludes the lower root in this
+``S_{\max}^{\mathrm{from}}=0.8\times0.5=0.4`` and excludes the lower root in this
 series-only circuit. A justified receiving-voltage lower bound of 0.5 also
 excludes it. Neither observation makes nominal conversion safe in general,
 or justifies imposing a positive lower bound at every neutral or return.
@@ -316,8 +316,8 @@ The local direct-audit candidate now has a package-owned fixture and executable
 example for the same circuit. This is an actual native source, series line and
 constant-power load, assembled through the public staging APIs. The book
 companion checks that its inputs agree with the exact witness above under
-explicit bases ``V_{\rm base}=1`` V and ``I_{\rm base}=1`` A: hence
-``Z_{\rm base}=1`` Ω and ``S_{\rm base}=1`` VA. The numerical values agree;
+explicit bases ``V_{\mathrm{base}}=1`` V and ``I_{\mathrm{base}}=1`` A: hence
+``Z_{\mathrm{base}}=1`` Ω and ``S_{\mathrm{base}}=1`` VA. The numerical values agree;
 the native fixture uses SI quantities rather than silently treating per-unit
 numbers as volts and amperes.
 
@@ -377,7 +377,7 @@ extends this controlled experiment to two coupled conductors and separate shunt
 factors, with finite receiving-neutral voltage and distinct current observations.
 
 **Transfer exercise.** First change only ``I_{\max}`` from 0.5 to 0.3 while
-keeping ``V_{\rm nom}=1`` and recomputing ``S_{\max}``. Do both roots still pass
+keeping ``V_{\mathrm{nom}}=1`` and recomputing ``S_{\max}``. Do both roots still pass
 the power caps? Then change only the load to ``P=4/25`` in the original branch
 case. How many distinct roots remain? **Check your reasoning:** the sending-end
 0.3 power cap rejects the lower branch (0.48), while the higher branch passes

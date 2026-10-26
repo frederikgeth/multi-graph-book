@@ -309,7 +309,7 @@ safe physical switching approximation.
 **Predict.** A 10 V source supplies a conductance with current law
 
 ```math
-I(\theta,V)=\theta gV,\qquad g=0.1\ {\rm S},\quad 0\le\theta\le2.
+I(\theta,V)=\theta gV,\qquad g=0.1\ {\mathrm{S}},\quad 0\le\theta\le2.
 ```
 
 At ``\theta=0`` its current is zero. A compiler deletes the term and keeps the

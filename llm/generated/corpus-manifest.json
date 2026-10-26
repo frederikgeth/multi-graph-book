@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "cf5e19abd56392e160cebf6ac44bb108eaba97bea2c6d25606d7a778c2b80e7f",
+  "corpus_sha256": "a051cac71f6fff8b45d3406722350ad63cc1b7cb13da18e3a75c13ff6f22b3ac",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -45,7 +45,7 @@
     },
     {
       "path": "docs/src/cases/building-and-changing-models.md",
-      "sha256": "1d0181984ff0231ee3c04e233361b00920d0002badee254545097e100531ad6a"
+      "sha256": "8f23238e4ac07dbc1ef4994851ec3a989952202a118a123f31605296d3d970b6"
     },
     {
       "path": "docs/src/cases/coupled-multivoltage-corridor.md",
@@ -69,7 +69,7 @@
     },
     {
       "path": "docs/src/cases/neutral-shunt-multiplicity.md",
-      "sha256": "1d522a8938d26131de79c5409475cae4fe165a7c6dfe63a9a268c3cfb2468344"
+      "sha256": "42973da4fc4f6adf75a4868263fa8ee1103e8d849fbf020f30093202da29c98b"
     },
     {
       "path": "docs/src/cases/pi-four-wire-parallel-ac-decision.md",
@@ -93,7 +93,7 @@
     },
     {
       "path": "docs/src/cases/unintended-solution-multiplicity.md",
-      "sha256": "de34d4067594e79e14c2943f5186f51b223d21cb0f531771d3367ff4df597643"
+      "sha256": "4d319199c87fb45506e055c9deda1b371aa9189190319339eff77f73ab2f13c7"
     },
     {
       "path": "docs/src/foundations/circuit-formulations-and-lowering.md",
@@ -121,7 +121,7 @@
     },
     {
       "path": "docs/src/foundations/ibr-power-factor-controls.md",
-      "sha256": "2fde3b7788d7eba66d7abf065da3f521ca86534247f460d1b79989346976d655"
+      "sha256": "d4e13db162831bdc3a1be7e6fe4c9a0d0855acc2c8d5f4b8d0ac9d16257e33bc"
     },
     {
       "path": "docs/src/foundations/impedance-fidelity-ladder.md",
@@ -145,7 +145,7 @@
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
-      "sha256": "281a38a086f4e478028197737fc9109bc3ee7dd75da108549000d457091d5a80"
+      "sha256": "66ee1e18f50f3590f117e5e96db4a7e057e7920c08fff8e340897ca7d7bda80f"
     },
     {
       "path": "docs/src/foundations/orientation-terminal-power.md",
@@ -325,7 +325,7 @@
     },
     {
       "path": "docs/src/transformations/kron-ward-opti-kron.md",
-      "sha256": "f4b08610fdbfdb13384f3111e4d70bc8f0b8da1e5992e625b8439811c3ae0bb4"
+      "sha256": "dee0dc22877f720a2842ab8cabe59dd3955f7cb1edbe5e4f60cb35a5745cfea3"
     },
     {
       "path": "docs/src/transformations/multiwinding-leakage-reference-compilation.md",
@@ -349,7 +349,7 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "d9ea344fad167a452a9ea6b0a1aaec383041b8326be98513de7b27e88e67d501"
+      "sha256": "5f2c902b9ffe773225901daf9f223ecf2257f2d44988c8013c367ae39234be70"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",

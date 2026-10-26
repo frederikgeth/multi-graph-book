@@ -2363,7 +2363,7 @@
           "claim:TR-PAR-002",
           "claim:PRACTICE-UPDATE-001",
           "claim:LIMIT-MULTIPLICITY-001",
-          "claim:TR-XFMR-004"
+          "claim:LIMIT-CONVEXITY-001"
         ]
       },
       "lexical": {
@@ -2450,7 +2450,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "cf5e19abd56392e160cebf6ac44bb108eaba97bea2c6d25606d7a778c2b80e7f"
+    "corpus_sha256": "a051cac71f6fff8b45d3406722350ad63cc1b7cb13da18e3a75c13ff6f22b3ac"
   },
   "inputs": {
     "adversarial_cases": {

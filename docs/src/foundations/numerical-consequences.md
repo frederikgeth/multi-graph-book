@@ -719,7 +719,7 @@ check, not a substitute for the defining power relation.
 | Generator current omitted | Indeterminate | KCL and aggregate power unassessed |
 | 9 V upper bound declared at the 10 V source terminal | Indeterminate | Native bound application is skipped; source equation still checked |
 
-The phase and return current magnitudes are ``\sqrt{0.17}≈0.4123`` A. A 0.5 A
+The phase and return current magnitudes are ``\sqrt{0.17}\approx 0.4123`` A. A 0.5 A
 phase cap passes while a 0.4 A return cap fails. With multiple WYE phases the
 return magnitude is ``|\sum_k I_k|``, not ``\sum_k|I_k|`` and not any individual
 phase magnitude. For example, two in-phase 1 A injections give a 2 A return;
@@ -924,7 +924,7 @@ With ``Y=1/32-\mathrm j/64`` S on winding 2, the analytic point is:
 
 Winding 2's terminal current is
 ``I_2+YU_2=-0.85089111328125+0.17132568359375\mathrm j`` A.
-Its magnitude is approximately 0.868 A, whereas ``|I_2|≈1.031`` A.
+Its magnitude is approximately 0.868 A, whereas ``|I_2|\approx 1.031`` A.
 **Predict:** would a 0.95 A limit pass? In this native winding-list model,
 per-winding scalar `i_max` bounds the **bare coil** current, so it fails.
 A terminal-current reading below 0.95 A cannot certify that coil rating.
@@ -1064,7 +1064,7 @@ the supported domain. This intermediate slice alone left the running network
 indeterminate; the final price-scope trace below records its current verdicts.
 
 **Transfer exercise.** For this point, the smallest equally allocated total
-rating is ``3\max_p|S_{2p}|≈14.921637`` VA, rather than the 10.139652 VA sum.
+rating is ``3\max_p|S_{2p}|\approx 14.921637`` VA, rather than the 10.139652 VA sum.
 At that rating coil 1 is exactly on its boundary. For two coils, repeat the
 allocation using division by two, even if their currents cancel in the neutral.
 Zero neutral current does not imply zero coil power or spare phase capacity.

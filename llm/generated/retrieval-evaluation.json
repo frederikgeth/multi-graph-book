@@ -2685,8 +2685,8 @@
         "knowledge:PSK-000003",
         "section:docs/src/cases/running-network.md#counterexample-variants",
         "claim:GROUND-SCOPE-001",
-        "section:docs/src/foundations/representation-maps.md#concrete-interface-smoke-test",
         "section:docs/src/start/computational-cases.md#reproduce-the-teaching-diagrams",
+        "section:docs/src/foundations/representation-maps.md#concrete-interface-smoke-test",
         "section:docs/src/foundations/transformation-semantics-register.md#treating-a-formulation-change-as-a-graph-proof",
         "section:docs/src/cases/building-and-changing-models.md#compare-from-scratch-then-test-the-requested-law"
       ],
@@ -7568,7 +7568,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "cf5e19abd56392e160cebf6ac44bb108eaba97bea2c6d25606d7a778c2b80e7f",
+    "corpus_sha256": "a051cac71f6fff8b45d3406722350ad63cc1b7cb13da18e3a75c13ff6f22b3ac",
     "record_count": 1003,
     "release": {
       "external_reviewed_claims": 0,
@@ -10321,7 +10321,7 @@
         "case_id": "HOLDOUT-DECISION-POWER",
         "char_tfidf_complete_at_10": false,
         "char_tfidf_hits_at_10": 0,
-        "char_tfidf_mean_reciprocal_rank_at_20": 0.026786,
+        "char_tfidf_mean_reciprocal_rank_at_20": 0.025833,
         "char_tfidf_recall_at_10": 0.0,
         "char_tfidf_recall_at_5": 0.0,
         "char_tfidf_top_10": [
@@ -10408,7 +10408,7 @@
       "char_tfidf": {
         "complete_at_10": 0.0,
         "complete_at_10_count": 0,
-        "mean_reciprocal_rank_at_20": 0.220898,
+        "mean_reciprocal_rank_at_20": 0.220869,
         "recall_at_10": 0.433333,
         "recall_at_5": 0.346128,
         "recall_expected_records_at_10": 180,

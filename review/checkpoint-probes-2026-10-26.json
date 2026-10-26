@@ -1,0 +1,343 @@
+{
+  "evidence_class": "targeted_diagnostic_observations_not_agent_benchmark",
+  "book_revision": "debc18a12242d6b4a2cb31b8060a85c7dbd4c62f",
+  "corpus_manifest_sha256": "54dbf60cc0a23f593c31d46bd139ea1b1e4a66d87e2fac1c1f62ccd92e35fb53",
+  "pair_sha256": "4dfb04c88f1a8656e878c0dc1ed6b8d856a2ca9af6b505ff5062ed5b9e71f75e",
+  "retrieval": [
+    {
+      "query": "Does a zero terminal voltage make power balance equivalent to KCL?",
+      "status": "qualified",
+      "routes": [
+        {
+          "misconception_id": "power-balance-enforces-kcl-at-zero-voltage",
+          "score": 0.967143,
+          "exact_pattern": false
+        }
+      ],
+      "direct_answer_basis": [
+        "For a terminal with complete signed current residual r_I and consistent complex powers, r_S=V conjugate(r_I): KCL implies nodal power balance, but the converse requires nonzero terminal voltage; at V=0 a power row admits any current residual, and a fixed power tolerance bounds current error only after division by the voltage magnitude."
+      ],
+      "required_qualifications": [
+        "The complete nodal residuals obey r_S=V conjugate(r_I); division requires V nonzero. At zero voltage the power row loses current information, and small-voltage tolerance amplification must be checked in amperes. Include ground and source reaction currents; total-network power balance can also hide opposite nodal errors."
+      ],
+      "mandatory_record_ids": [
+        "claim:FORMULATION-ZERO-001",
+        "concept:flow-current-power-message",
+        "concept:equivalence-exactness-preservation"
+      ],
+      "validation": {
+        "valid": true,
+        "source_hashes_checked": true,
+        "claim_coverage_checked": true,
+        "citation_presence_checked": true
+      }
+    },
+    {
+      "query": "Can a small transformer leakage be rounded to zero in ybus_augmented?",
+      "status": "qualified",
+      "routes": [
+        {
+          "misconception_id": "ideal-transformer-is-a-large-admittance",
+          "score": 0.755,
+          "exact_pattern": false
+        }
+      ],
+      "direct_answer_basis": [
+        "For a fixed real turns ratio and scalar primary-referred leakage, retaining CV=zi with terminal core currents C^T i gives the bordered blocks A=y0 C and D=y0^2 z under i=y0 w; eliminating the port at nonzero z recovers Y_s+C^T C/z, while at z=0 the voltage constraint remains and finite magnetizing and grounding shunts must still be stamped exactly once."
+      ],
+      "required_qualifications": [
+        "For the fixed scalar relation CV=zi, the bordered formulation retains finite z through A=y0 C, D=y0^2 z and i=y0 w. Only z=0 gives the ideal constraint. Keep finite magnetizing and grounding shunts exactly once, and specify references; a unity ratio does not create a neutral bond."
+      ],
+      "mandatory_record_ids": [
+        "claim:FORMULATION-PORT-001",
+        "concept:factor",
+        "concept:equivalence-exactness-preservation"
+      ],
+      "validation": {
+        "valid": true,
+        "source_hashes_checked": true,
+        "claim_coverage_checked": true,
+        "citation_presence_checked": true
+      }
+    },
+    {
+      "query": "Does ybus_linearized fold all compute a Jacobian?",
+      "status": "under_retrieved",
+      "routes": [],
+      "direct_answer_basis": [],
+      "required_qualifications": [],
+      "mandatory_record_ids": [],
+      "validation": {
+        "valid": true,
+        "source_hashes_checked": true,
+        "claim_coverage_checked": true,
+        "citation_presence_checked": true
+      }
+    },
+    {
+      "query": "Can I merge two buses because their GPS coordinates coincide?",
+      "status": "under_retrieved",
+      "routes": [],
+      "direct_answer_basis": [],
+      "required_qualifications": [],
+      "mandatory_record_ids": [],
+      "validation": {
+        "valid": true,
+        "source_hashes_checked": true,
+        "claim_coverage_checked": true,
+        "citation_presence_checked": true
+      }
+    },
+    {
+      "query": "Are three delta terminals three independent load coils?",
+      "status": "qualified",
+      "routes": [
+        {
+          "misconception_id": "wye-delta-share-nominal-voltage-base",
+          "score": 0.606667,
+          "exact_pattern": false
+        }
+      ],
+      "direct_answer_basis": [
+        "A voltage-dependent load's nominal voltage is an anchor in the load factor's declared terminal coordinate: WYE uses phase-to-neutral voltage and DELTA uses line-to-line voltage; copying one numeric bus voltage into both coordinates without an explicit base conversion changes the normalized load law.",
+        "On the recorded balanced three-phase terminal fixture, explicit wye phase-to-neutral and delta phase-to-phase connection maps share the same bus and graph but produce different load-voltage observations: unit-magnitude wye voltages and sqrt(3)-magnitude delta voltages.",
+        "A voltage-dependent load's nominal anchor must use the same terminal-voltage coordinate as its constitutive law: phase-to-neutral for WYE and line-to-line for DELTA; reusing one numeric value across those coordinates without conversion changes the normalized load model."
+      ],
+      "required_qualifications": [
+        "The load anchor belongs to its terminal coordinate: WYE uses phase-to-neutral voltage and DELTA uses line-to-line voltage. On a nominal three-phase system those bases differ by sqrt(3), and reusing one numeric value changes the normalized voltage-dependent load law."
+      ],
+      "mandatory_record_ids": [
+        "claim:LOAD-BASE-001",
+        "claim:LOAD-CONNECTION-001",
+        "concept:normalization",
+        "concept:phase-conductor-sequence-coordinate",
+        "concept:factor",
+        "knowledge:PSK-000004"
+      ],
+      "validation": {
+        "valid": true,
+        "source_hashes_checked": true,
+        "claim_coverage_checked": true,
+        "citation_presence_checked": true
+      }
+    },
+    {
+      "query": "Can I reuse an OPF after updating a parameter through zero?",
+      "status": "qualified",
+      "routes": [
+        {
+          "misconception_id": "zero-parameter-means-absent-term",
+          "score": 1.004,
+          "exact_pattern": false
+        }
+      ],
+      "direct_answer_basis": [
+        "For the fixed-voltage conductance family I(theta,V)=theta*g*V, deleting its symbolic term because theta is initially zero agrees at that state but fails at any later state with theta*g*V nonzero; refreshing a solver cannot restore a term absent from the compiled equations."
+      ],
+      "required_qualifications": [
+        "A zero parameter value is not an identically absent term over a model family. Retain symbolic dependence, compare fresh and reused physical outputs, and check the requested current law. Lost symbolic terms, stale numerical evaluation and edits outside the compiled structure need different remedies. Follow the supported reset workflow, rebuild unrepresented structure, and retain failed scenarios without carrying forward an earlier valid result. The fixed conductance counterexample and pinned execution do not certify arbitrary nonlinear reuse or speed benefits."
+      ],
+      "mandatory_record_ids": [
+        "claim:PRACTICE-REUSE-001",
+        "concept:state",
+        "concept:factor",
+        "concept:equivalence-exactness-preservation"
+      ],
+      "validation": {
+        "valid": true,
+        "source_hashes_checked": true,
+        "claim_coverage_checked": true,
+        "citation_presence_checked": true
+      }
+    },
+    {
+      "query": "Does a passed solved_network_feasibility_validation recompute every device equation?",
+      "status": "qualified",
+      "routes": [
+        {
+          "misconception_id": "complete-feasibility-status-is-enough",
+          "score": 0.4,
+          "exact_pattern": false
+        }
+      ],
+      "direct_answer_basis": [
+        "A complete solved-network feasibility claim requires an independently computed witness covering equation, KCL, power-balance, device-limit, and recovery residual obligations with declared tolerances; solver termination remains separate evidence.",
+        "A solved or optimal termination status must be accompanied by independently computed equation, KCL, power-balance, device-limit, and recovery residual evidence before a complete feasibility claim is made; solver status alone does not certify those obligations."
+      ],
+      "required_qualifications": [
+        "Termination status is algorithm evidence only. Require independently computed equation, KCL, power-balance, device-limit, and recovery residuals, each with explicit tolerances, before making a complete feasibility claim."
+      ],
+      "mandatory_record_ids": [
+        "claim:NUMERICAL-005",
+        "concept:factor",
+        "concept:rating-limit-constraint",
+        "concept:equivalence-exactness-preservation",
+        "knowledge:PSK-000013"
+      ],
+      "validation": {
+        "valid": true,
+        "source_hashes_checked": true,
+        "claim_coverage_checked": true,
+        "citation_presence_checked": true
+      }
+    },
+    {
+      "query": "Can I replace a small impedance by an ideal switch without changing current sharing?",
+      "status": "qualified",
+      "routes": [
+        {
+          "misconception_id": "vanishing-impedance-preserves-ideal-current-sharing",
+          "score": 1.015714,
+          "exact_pattern": false
+        }
+      ],
+      "direct_answer_basis": [
+        "Two positive parallel resistances a epsilon and b epsilon carrying total current I select member currents b I/(a+b) and a I/(a+b) for every epsilon>0; replacing both by ideal shorts retains zero voltage drop and the total-current equation but loses that ratio-dependent selection, so equal limiting voltages do not guarantee equal member-current feasibility."
+      ],
+      "required_qualifications": [
+        "The positive scalar resistor family retains resistance-ratio-dependent current sharing as epsilon tends to zero. Replacing both members by ideal shorts removes that selection law: KCL fixes only the sum, so identical limiting voltages can coexist with different member-current feasibility. Keep the limits and current recovery; do not extrapolate this counterexample to a universal regularization theorem."
+      ],
+      "mandatory_record_ids": [
+        "claim:PRACTICE-SHORT-001",
+        "concept:parallel",
+        "concept:rating-limit-constraint",
+        "concept:equivalence-exactness-preservation"
+      ],
+      "validation": {
+        "valid": true,
+        "source_hashes_checked": true,
+        "claim_coverage_checked": true,
+        "citation_presence_checked": true
+      }
+    }
+  ],
+  "mcp": [
+    {
+      "probe": "null query",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "tools/call",
+        "params": {
+          "name": "book_search",
+          "arguments": {
+            "query": null
+          }
+        }
+      },
+      "responded": true,
+      "error": {
+        "code": -32602,
+        "message": "query must be a string"
+      },
+      "is_error": false,
+      "interpreted_query": null,
+      "result_count": 0
+    },
+    {
+      "probe": "fractional limit",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "method": "tools/call",
+        "params": {
+          "name": "book_search",
+          "arguments": {
+            "query": "parallel branches",
+            "limit": 1.9
+          }
+        }
+      },
+      "responded": true,
+      "error": {
+        "code": -32602,
+        "message": "limit must be an integer"
+      },
+      "is_error": false,
+      "interpreted_query": null,
+      "result_count": 0
+    },
+    {
+      "probe": "unknown notification",
+      "request": {
+        "jsonrpc": "2.0",
+        "method": "notifications/progress",
+        "params": {
+          "progressToken": 1,
+          "progress": 1
+        }
+      },
+      "responded": false
+    },
+    {
+      "probe": "modern discovery",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "method": "server/discover"
+      },
+      "responded": true,
+      "error": {
+        "code": -32602,
+        "message": "modern requests require protocolVersion metadata"
+      },
+      "is_error": false,
+      "interpreted_query": null,
+      "result_count": 0
+    },
+    {
+      "probe": "valid modern discovery with required metadata",
+      "request": {
+        "jsonrpc": "2.0",
+        "id": "review-modern",
+        "method": "server/discover",
+        "params": {
+          "_meta": {
+            "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+            "io.modelcontextprotocol/clientCapabilities": {}
+          }
+        }
+      },
+      "response": {
+        "jsonrpc": "2.0",
+        "id": "review-modern",
+        "result": {
+          "supportedVersions": [
+            "2026-07-28",
+            "2025-11-25",
+            "2025-06-18"
+          ],
+          "capabilities": {
+            "tools": {
+              "listChanged": false
+            },
+            "resources": {
+              "subscribe": false,
+              "listChanged": false
+            }
+          },
+          "instructions": "Use book_context for qualified answers; the manifest identifies pinned exports, not a live executable runtime.",
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "multi-graph-book",
+              "version": "0.2.0"
+            }
+          },
+          "ttlMs": 0,
+          "cacheScope": "private"
+        }
+      }
+    }
+  ],
+  "assessment": {
+    "kind": "author_assisted_targeted_review_not_external_or_agent_evaluation",
+    "unrelated_qualification": {
+      "query": "Are three delta terminals three independent load coils?",
+      "returned_route": "wye-delta-share-nominal-voltage-base",
+      "reason": "The returned mandatory basis concerns nominal voltage anchors, not coil arity or independence; ambiguity does not justify this qualification.",
+      "required_behavior": "A relevant coil/connection basis or an under_retrieved refusal; do not qualify the voltage-base contract."
+    },
+    "modern_discovery_note": "The earlier diagnostic request omits now-required metadata; its -32602 is expected. The appended valid request succeeds."
+  }
+}

@@ -90,8 +90,8 @@ Apply series-current caps ``[1,1/2]`` A to phase and neutral. Compare them with
 native per-conductor power caps ``[1,1/2]`` VA at **both** ends. These power caps
 use each terminal's earth-referenced voltage, not the load-coil voltage.
 
-The lower root has neutral-current magnitude ``24/35≈0.686`` A and violates
-the 0.5 A cap by ``13/70≈0.186`` A at both ends. Its source neutral power is
+The lower root has neutral-current magnitude ``24/35\approx 0.686`` A and violates
+the 0.5 A cap by ``13/70\approx 0.186`` A at both ends. Its source neutral power is
 zero, but the receiving neutral power magnitude is **nonzero**:
 
 ```math
@@ -114,7 +114,7 @@ S_{a,t}=\frac{96}{245},\qquad S_{n,t}=-\frac{192}{1225},\qquad
 \left|S_{a,t}+S_{n,t}\right|=\frac{288}{1225}\approx0.235\;\mathrm{VA}.
 ```
 
-The sum of magnitudes is instead ``96/175≈0.549`` VA. Neither value is the
+The sum of magnitudes is instead ``96/175\approx 0.549`` VA. Neither value is the
 neutral current. Negative signed neutral power is not negative dissipation:
 total series dissipation is ``\mathbf I^T R\mathbf I>0``. Do not infer conductor
 temperatures from either this static resistance model or the declared ratings.
@@ -134,8 +134,8 @@ to the source current would test a different conductor. A separately rated
 source lead could legitimately fail; this fixture does not declare that rating.
 
 For a cut that includes the separately declared shunt factors, the source-side
-current vector is ``\mathbf I_{\rm series,from}+Y_f\mathbf V_f``; the receiving
-cut is ``\mathbf I_{\rm series,to}+Y_t\mathbf V_t``. Those composite currents
+current vector is ``\mathbf I_{\mathrm{series,from}}+Y_f\mathbf V_f``; the receiving
+cut is ``\mathbf I_{\mathrm{series,to}}+Y_t\mathbf V_t``. Those composite currents
 need not be negatives of one another. The **series** endpoint currents are
 opposites and use their mapped conductor labels. This example does not extend
 the candidate audit to arbitrary native line-internal pi-shunt encodings.

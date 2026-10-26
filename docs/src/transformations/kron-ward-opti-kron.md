@@ -409,7 +409,13 @@ The companion standard-library reproduction checks the midpoint values and
 residuals.
 
 `TR-KRON-NEUTRAL-007` records a finite endpoint-state continuation of that
-two-point chain at ``\lambda\in\{0,0.25,0.5,0.75,1\}``. Each state is solved
+two-point chain at five endpoint states:
+
+```math
+\lambda\in\{0,0.25,0.5,0.75,1\}.
+```
+
+Each state is solved
 with both nonlinear bond maps recomputed; the five nonlinear residuals remain
 small and the fixed ``0.05`` p.u. neutral limit changes classification along the
 path. Reusing the nominal map fails away from ``\lambda=0``. The independent

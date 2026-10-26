@@ -1,0 +1,400 @@
+{
+  "delivery": {
+    "deployment_performed": false,
+    "html_only_source_pages": 51,
+    "html_source_pages": 82,
+    "pdf": {
+      "contact_sheets": 8,
+      "high_resolution_render_pages": [
+        1,
+        2,
+        3,
+        6,
+        33,
+        99,
+        121,
+        132,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        187,
+        189,
+        209,
+        211
+      ],
+      "off_page_characters": [],
+      "pages": 233,
+      "pdf_path": "output/pdf/review-checkpoint-2026-10-26.pdf",
+      "pdf_sha256": "0b025eead15beb029f9e0eaccb2dad1c09c6f5756cae7cca3b2166651410c0b0",
+      "section_physical_pages": {
+        "combined": [
+          172
+        ],
+        "controls": [
+          3,
+          164,
+          165,
+          166,
+          167,
+          168,
+          169,
+          170,
+          171,
+          172,
+          173
+        ],
+        "coverage": [
+          132
+        ],
+        "monitor": [
+          173
+        ],
+        "volt_var": [
+          167
+        ],
+        "volt_watt": [
+          169
+        ],
+        "workbook": [
+          209
+        ]
+      }
+    },
+    "pdf_excluded_from_git": true,
+    "pdf_source_pages": 31
+  },
+  "evidence_class": "AI-assisted author technical and pedagogical review; no external review or learning outcomes",
+  "fresh_native_probes": {
+    "collision": {
+      "audit_status": "indeterminate",
+      "error": "ArgumentError: OPF model object key already registered: OpfModelKey(:constraint, :ibr_voltage_magnitude_definition, (\"i\", :pn, 1))",
+      "error_type": "ArgumentError",
+      "failed_checks": 0,
+      "native_built": false,
+      "unassessed_checks": 1
+    },
+    "equal": {
+      "audit_status": "passed",
+      "failed_checks": 0,
+      "native_built": true,
+      "unassessed_checks": 0,
+      "violated_native_primal_rows": 0
+    },
+    "override": {
+      "audit_status": "passed",
+      "failed_checks": 0,
+      "native_built": true,
+      "unassessed_checks": 0,
+      "violated_native_primal_rows": 0
+    }
+  },
+  "negative_checks": {
+    "old_168_page_pdf_rejected_for_missing_current_control_content": true,
+    "old_ibr_markdown_rejected_by_legacy_math_font_gate": true
+  },
+  "pdf_checks": {
+    "contact_sheet_pages_scanned": 233,
+    "detailed_visual_pages": [
+      3,
+      99,
+      132,
+      164,
+      167,
+      170,
+      172,
+      173,
+      174,
+      209
+    ],
+    "inspection_scope": "Layout, legibility and equation/table rendering; not a proof audit of every page.",
+    "max_remaining_overfull_width_pt": 12.26936,
+    "missing_character_warnings": false,
+    "off_page_character_pages": [],
+    "remaining_overfull_hbox_warnings": 27,
+    "text_bounds_tolerance_pt": 1
+  },
+  "recorded_executable_evidence": {
+    "candidate_revision": "3bfef78de0ff6f63fe201450136b97e0accac7a4",
+    "companion_assertions": 1615,
+    "companion_sha256": "e017654a4509f9b940e911d14646a3ed67e94b5d4c98982bd9354cec029741fb",
+    "fresh_full_suite_rerun": false,
+    "package_suite_broken": 37,
+    "package_suite_passed": 53262,
+    "source_hashes_revalidated": 50
+  },
+  "release_disposition": "hold_for_R1_semantic_qualification_and_R2_native_monitor_repair",
+  "render_environment": {
+    "Documenter_version": "1.17.0",
+    "font_sha256": {
+      "DejaVuSans-Bold.ttf": "e6476c1b80502924294eed40894c5b18e06c181444ca953e5334262df9c27724",
+      "DejaVuSans-BoldOblique.ttf": "eb436dca0c2594b73d8b603b892e374fdfd8d885d25ffb4f18df4c4c0b49e50f",
+      "DejaVuSans-Oblique.ttf": "4af75fa16ee6d3ad43e1ecec41862c24954af26a55c6bb1ebb27bd486a50f5f4",
+      "DejaVuSans.ttf": "7da195a74c55bef988d0d48f9508bd5d849425c1770dba5d7bfc6ce9ed848954",
+      "DejaVuSansMono-Bold.ttf": "bce60f1b4421acd9ea51ba6623d7024ecbe6817a953e3654df62a5e6bdf8f769",
+      "DejaVuSansMono-BoldOblique.ttf": "91713a71d550bba22c2a6b2bb2a9ad8f9a159e12e4e9f0a5b2677998ba21213e",
+      "DejaVuSansMono-Oblique.ttf": "742097840c541870e8d6dc5c9b37bb1ceeea6c0dedd1d475faf903ef9df734b0",
+      "DejaVuSansMono.ttf": "b4a6c3e4faab8773f4ff761d56451646409f29abedd68f05d38c2df667d3c582"
+    },
+    "julia_version": "1.12.6",
+    "tectonic": "system /opt/homebrew/bin/tectonic through repository font wrapper"
+  },
+  "render_inputs": {
+    "compiled_image_sha256": {
+      "assets/australian-carson-reconciliation.png": "d47041b9a29b1fee1117cdb61af9fc2d91dbf4780490231600b50120bcd5de59",
+      "assets/australian-cs1035-gap.png": "ecea3da51aa7e4e7f5eccf8f5c6df18ed1189972194a62275e86f1b0be5156ab",
+      "assets/bim-bfm-signature-capability.png": "49114b8104eb528b947bc7ca90e11cd4e6f298d4d027f32af4ef9e0edae7ce01",
+      "assets/case-escalation-grid.png": "abaea33a1b816f4a87a603ff366fd1a2c6bdfe6e4ee09cbfbe8dd2915655ce61",
+      "assets/earth-return-ladder.png": "151afb9ae8e5865975adbf5bbc1bba03c7b8100b329be1f78189d7266cfe993c",
+      "assets/equipment-matrix-stamp.png": "53b21c877e651d0bcc16f89d745195c7def90439841e369543a12284bb35f7c0",
+      "assets/exactness-classes.png": "93019cb045ac4e2f9e97cf4d3bcb24111b98e5b800007a1ac0f4403800b378b5",
+      "assets/five-bus-cycle-basis.png": "9281635f037970f495ebc652869d5f3941f92901297c6608b667e1fd08e23dfc",
+      "assets/five-bus-transformation-map.png": "5331ff21e17ebedb420f692f5fa6418dc26507571427d776a5af1b9316933ad4",
+      "assets/formulation-lowering-lattice.png": "07d34a5d3024f607541f64f76c43373aadb33302ff1e3be2de9dcbfc148ee3f5",
+      "assets/guarded-result-plate.png": "932e42bffd88d25d15f1dae5a9bc9c006ff518fb7c6f0787e7506557deff38ef",
+      "assets/guarded-rule-gate.png": "fcf253a3b758dcdedde4606caeeeee1c08ae449070d8e131d8cb3611c3e60ee3",
+      "assets/kron-fill-in.png": "c81c629def34373d7afc8554423514717dc0c05470edc903156ddfdb37495f50",
+      "assets/load-model-divergence.png": "3c1ef1421032e7ea7a1aa187e2097341d8b759eaa2d698253e50772dfd096b8a",
+      "assets/neutral-shunt-multiplicity.png": "e622cd31a6cfee9a6531c655f3b28be6fdc11c2e92b63867313da43274b2a672",
+      "assets/nonlinear-kkt-witness.png": "677bf136a5ed836edd8c1fce1c50c9e9f63bda2ed71afccfa6cd3138b8d72eeb",
+      "assets/numerical-fill-in.png": "167b3287aa66531c282b4b8060190bfc9deaa62b5b35ae46e7bd13f14002dd1c",
+      "assets/numerical-jacobian-dependency.png": "5fe465e69cfb337944703d4b08f63bf4e28d0dac2cf6a12ccfde6f873d0b3915",
+      "assets/orientation-power-transfer.png": "53b6544744fe65e22b16a992b14e25dc76ce5ae35111b4cc12aba5a915b65161",
+      "assets/parallel-feasible-set-card.png": "7445087b71023fd2a1dc68c97f349342b20abd73b907af08f7ba71b0e4722064",
+      "assets/parallel-member-decision-plate.png": "a25f78f8eefd0c9a5efcac52684474bca5e6c2592851b3799c4023fe32cf398e",
+      "assets/parallel-redundancy-certificate.png": "2c4f8859ed5c15ed7f80250efc15ca2dad5019e19e83475fb8af75259e349077",
+      "assets/practical-multiplier-maps.png": "be6c9b635c549062fb0a6c15eba194a4b76cd0549ed43111a6111cd1a7acf935",
+      "assets/practical-outage-reduction.png": "f7ef94c4351481734bf7a4be0502325d18756886f2cd6ad76b050be178432a28",
+      "assets/preservation-contract-card.png": "a6e015aae1464016d4aa758eb94ca2e6b4ccb3bfd0c1f51bfda4960f3b32a356",
+      "assets/provenance-lineage.png": "4f8618b11a0dd4a7e5d354bd8bc9c3ce01f40adfbb47aa042e392f1cc66df74f",
+      "assets/radial-clique-projection.png": "9d4dfb7ed1935217d36c8da4f3ffee8cde813704186886cc78adeaa6ced0be13",
+      "assets/recovery-map-loop.png": "2066d969102f5898c86fff578efab65464c8b6c71b90837d596af03890cdb3a3",
+      "assets/running-network-views.png": "3e7fb338fc3344f9cb3cd813d218022d415ff5783dc3ca28ddf556c7239a5e11",
+      "assets/sequence-subspace.png": "b6bd05a8cc2c3269c943bc41dd65519d2ce5a82c417894fa0ea0ca8bbc754c15",
+      "assets/solution-multiplicity.png": "0e2487b42299849cf2058d5ee4e66748504e9b0c78f0c03a5e3e8253ee4b0555",
+      "assets/source-canonical-pipeline.png": "fc38d810ca91489bb103edefc225779d0515e9486307fba788253c1494fc4c4b",
+      "assets/start-here-radial-triangles.png": "08fc28c10aa455d72c96ed4aea4c35dd376c5a5bb7272c76b96c2a7e0dd57fd0",
+      "assets/start-here-running-network.png": "c82d5b7c9e0db3d9ddba7d7d28ad5f9cf7d369d0f3a98b2249f1c2e3ad3f4bee",
+      "assets/start-here-same-ybus.png": "4039308b9a91921e72f8932cd1fe1303ab451b2e923804a1e3f7d726b4e61a61",
+      "assets/topology-projection-layers.png": "53a693f3797b06b049f2883bc4f3aa1d65fda62045489535dafdf7ab0965a95b",
+      "assets/transformer-tap-decision-plate.png": "44380aaa168feafd5e626763823a01e4884f071900910848a68b3b36e038963f",
+      "assets/ybus-jacobian-witness.png": "2b34541e24a2084bce655d153bd3e3b73af6b7183e08359c2912339fc75e588b"
+    },
+    "custom_style_sha256": "15c4dcc4c2c11457816bdb20cc359c895aa9aad754f8c19f32290d054c41d0d0",
+    "documenter_style_sha256": "a4ecbcf40bd04ee4c02e35e52e140d0e1fd475afd3216ada599f419f03c50fd9",
+    "note": "The build regenerates raster assets; compiled image hashes bind the actual PDF inputs. Two machine-dependent source PNG diffs were restored.",
+    "tex_sha256": "54a600956eea6c876cf3752530f427a94f0f28938f9c7d4ab071c86836186d14"
+  },
+  "render_patch_scope": {
+    "changed_pdf_chapter_sources": [
+      "docs/src/cases/building-and-changing-models.md",
+      "docs/src/cases/neutral-shunt-multiplicity.md",
+      "docs/src/cases/unintended-solution-multiplicity.md",
+      "docs/src/foundations/ibr-power-factor-controls.md",
+      "docs/src/foundations/numerical-consequences.md",
+      "docs/src/transformations/kron-ward-opti-kron.md"
+    ],
+    "numeric_tokens_unchanged": true,
+    "package_implementation_changed": false,
+    "psk_statuses_changed": false,
+    "published_pin_changed": false
+  },
+  "rendered_source_sha256": {
+    "AGENTS.md": "e6f8083a494e8b8ea72d444cbd10f91915aa1bea28842955282566757b9a3248",
+    "ARCHITECTURE.md": "596ba74ec16acdee3f7b7b807a9c9f39cc2a2d69d2f28157a7f78cae31801085",
+    "claims/claims.toml": "e348709a2f265c6bc79536b0d7b59d016d8aff330204572375f9047fd97203ba",
+    "docs/Manifest.toml": "0a53169b6abcddae84ea3b5fb9a219cb092743a07ea32cd1bf866d216e813195",
+    "docs/Project.toml": "560a9712404159752bc71f22176585afee0c345d9a6ee3e2dc66bccb2b903048",
+    "docs/make.jl": "5e600c68e7432e2803ae990cddabff5d065aeceb298a06c3fa71001edfc51fe3",
+    "docs/src/assets/custom.sty": "15c4dcc4c2c11457816bdb20cc359c895aa9aad754f8c19f32290d054c41d0d0",
+    "docs/src/cases/australian-carson-reproduction.md": "5752d72900ca212ff0691815b084033d0f9d0f3ba68916b2a3c688fc4ad22c61",
+    "docs/src/cases/bim-bfm-parallel-lines.md": "b51ae5537093f6a7ab0af6faea1d8b59568574f24af2dda7256b9aa89895bd5a",
+    "docs/src/cases/building-and-changing-models.md": "8f23238e4ac07dbc1ef4994851ec3a989952202a118a123f31605296d3d970b6",
+    "docs/src/cases/executable-running-network.md": "6dd28988debaba98e457ce95c6d7efd60c030ecaad6ed23852db19b5d8d39a0e",
+    "docs/src/cases/multiconductor-parallel-ac-decision.md": "c57f7128878015c499d83e92b6058e8716425256c3537f04ca467182f14ce84e",
+    "docs/src/cases/neutral-shunt-multiplicity.md": "42973da4fc4f6adf75a4868263fa8ee1103e8d849fbf020f30093202da29c98b",
+    "docs/src/cases/quotients-and-observations.md": "d2ca2df5a3801d3368d1c262ae5f3be3738fa4b0679384329842d30aedc48eb0",
+    "docs/src/cases/running-network.md": "eb2b65edec6f02397628e5d758fa324057ec6dbeb82b2bd03d697485b2cde9ef",
+    "docs/src/cases/study-workbook.md": "d0ab14c6dedc2d0d02c6252bd8314aada5fe06b0d5b86d6aba2f67d83d6f99cb",
+    "docs/src/cases/transformer-tap-ac-decision.md": "8993431d2ed95645efaab622b7caba9833900fb891445b0116379b1927b15448",
+    "docs/src/cases/unintended-solution-multiplicity.md": "4d319199c87fb45506e055c9deda1b371aa9189190319339eff77f73ab2f13c7",
+    "docs/src/foundations/circuit-formulations-and-lowering.md": "b15e36e84002a5b20fdf1c57ea58fa968e17a6cd00f129691d0cc26c9dee4ed9",
+    "docs/src/foundations/earth-ground-models.md": "64f86cb284b55a08ffe03ad4ab6e6617f74838a3be283a61671da39294cffae4",
+    "docs/src/foundations/ibr-power-factor-controls.md": "d4e13db162831bdc3a1be7e6fe4c9a0d0855acc2c8d5f4b8d0ac9d16257e33bc",
+    "docs/src/foundations/load-models-and-decision-dependence.md": "8adb9e593a16e7d7197f07ac6050089f97b5a15f475c01f64e328766012813fa",
+    "docs/src/foundations/notation-and-conventions.md": "f6a4fdb2a7e984b27cde6007e82be2d25426f5374c5a1d1bff11aa13439f5c9b",
+    "docs/src/foundations/numerical-consequences.md": "66ee1e18f50f3590f117e5e96db4a7e057e7920c08fff8e340897ca7d7bda80f",
+    "docs/src/foundations/orientation-terminal-power.md": "1f0851b76b2bcf7d45b8debe6e5867708492d64a52c010e8a26fa7ab5ada13fc",
+    "docs/src/foundations/preservation-contracts.md": "2eb781509766bc1ecfa8bc59b43707da114296000eafd8cc07ac565aafec2100",
+    "docs/src/foundations/source-to-canonical-model.md": "f1b8df2195e865752fd9f8ca0743f9d5e3d12fbc7c88bdbaeb5857865be00c5d",
+    "docs/src/foundations/two-level-topology-and-nodal-projection.md": "20736c859598495e8baba40fbdc0a7b4471e2a74a1af2eb7bdfcd6c56ef41701",
+    "docs/src/foundations/when-general-model-collapses.md": "b20850c7f9193fb3963ee3112a34758c54bc56924259a2884d50043dc7a79750",
+    "docs/src/reference/references.md": "7b1bfef4d0cc0f2250e026fd87e61bada6e07fe9c83cc8f65e4c8966e3ee15b9",
+    "docs/src/start/computational-cases.md": "154b39b1a42ee12bb332bf677ed2c8c2c4ba88cbdaca3101f67a028ac1da9d05",
+    "docs/src/start/first-failure-parallel-branches.md": "934803e1dabdf0e9ff9598a41d809f50157b2665d64c068c7f6685389a13bcc5",
+    "docs/src/start/five-bus-cycle-spaces.md": "0dbaece215c9c9fc73a14e765281469cbd7322a29ca9ea7ee83dbcd8263d601a",
+    "docs/src/start/one-network-many-graphs.md": "6516207fb2d3ef1628ffed8998dd813a619b0dce0afca99adb9bd2c33d60f118",
+    "docs/src/start/preface.md": "a681707bb92bffce3ae732328ddc09fd27d942a6ee0db1ce22754bc2828a3fa4",
+    "docs/src/transformations/conductor-coordinate-normalization.md": "19e1b05e8b412aeb1ac289fb946129fa769172e341806017d03b79200eb247e9",
+    "docs/src/transformations/degree-two-series-elimination.md": "987daac57b095e1a343d19ecb5d6648fd0e65cc60f34ac8be5ab9c1cc163485c",
+    "docs/src/transformations/kron-ward-opti-kron.md": "dee0dc22877f720a2842ab8cabe59dd3955f7cb1edbe5e4f60cb35a5745cfea3",
+    "experiments/integration/linear-audit-candidate.json": "a92ec06db8820a8bfe284df59bf361678882c3b7ce1a81c21ad9c5bbb3e081b3",
+    "generated/federated-knowledge-pair-manifest.json": "a0af8c7cb383c755488c0b5f9c5e8785b17f67cfb95f670539c53c7a42da8975",
+    "knowledge/psk.toml": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364",
+    "llm/generated/corpus-manifest.json": "54dbf60cc0a23f593c31d46bd139ea1b1e4a66d87e2fac1c1f62ccd92e35fb53",
+    "llm/misconceptions.toml": "5f952a6bf57561105d92c41c434a26723b84f4cd06da4d1bd91517e1fc85c7ac",
+    "scripts/check_math_hygiene.py": "a2c49cdf7c824669230fa40669e67309eb15eedad8c2b6b60e9308d40290adca",
+    "scripts/check_rendered_outputs.py": "4ca189baf772dac5c9b739b54b0f5a9706589abbb048e8d60ff7717a60db23f6",
+    "scripts/tectonic-font-wrapper.sh": "722a085a2c74658d99e3db5767b279c07a16a0515858870f14cbf7860fb06b71"
+  },
+  "review_baseline": {
+    "book": {
+      "git_tree_sha1": "b7beb0ad31a30f675328c3095ef1a344b4285f1c",
+      "revision": "debc18a12242d6b4a2cb31b8060a85c7dbd4c62f"
+    },
+    "candidate": {
+      "git_tree_sha1": "2225c053604766c58e5f1fbc1a6f1e57beb35328",
+      "revision": "3bfef78de0ff6f63fe201450136b97e0accac7a4"
+    },
+    "pdf_source_paths": [
+      "docs/src/start/preface.md",
+      "docs/src/start/first-failure-parallel-branches.md",
+      "docs/src/foundations/source-to-canonical-model.md",
+      "docs/src/foundations/orientation-terminal-power.md",
+      "docs/src/foundations/circuit-formulations-and-lowering.md",
+      "docs/src/foundations/load-models-and-decision-dependence.md",
+      "docs/src/foundations/earth-ground-models.md",
+      "docs/src/foundations/when-general-model-collapses.md",
+      "docs/src/start/one-network-many-graphs.md",
+      "docs/src/start/five-bus-cycle-spaces.md",
+      "docs/src/foundations/two-level-topology-and-nodal-projection.md",
+      "docs/src/foundations/preservation-contracts.md",
+      "docs/src/transformations/degree-two-series-elimination.md",
+      "docs/src/transformations/conductor-coordinate-normalization.md",
+      "docs/src/transformations/kron-ward-opti-kron.md",
+      "docs/src/cases/multiconductor-parallel-ac-decision.md",
+      "docs/src/cases/transformer-tap-ac-decision.md",
+      "docs/src/cases/bim-bfm-parallel-lines.md",
+      "docs/src/foundations/numerical-consequences.md",
+      "docs/src/foundations/ibr-power-factor-controls.md",
+      "docs/src/cases/unintended-solution-multiplicity.md",
+      "docs/src/cases/neutral-shunt-multiplicity.md",
+      "docs/src/cases/quotients-and-observations.md",
+      "docs/src/cases/australian-carson-reproduction.md",
+      "docs/src/start/computational-cases.md",
+      "docs/src/cases/building-and-changing-models.md",
+      "docs/src/cases/study-workbook.md",
+      "docs/src/cases/running-network.md",
+      "docs/src/cases/executable-running-network.md",
+      "docs/src/foundations/notation-and-conventions.md",
+      "docs/src/reference/references.md"
+    ],
+    "previous_pdf_sha256": "2feec781a5f804bc7b32b91377fe69e23250f4303ed7b3cb35aa0d40f9147c25",
+    "published_pin": {
+      "git_tree_sha1": "457c799b216cd6b4010405570534faa4b9edf9a5",
+      "revision": "97c274946091859b7d9b0e822c96f1e7f9f50c7e"
+    },
+    "source_sha256": {
+      "AGENTS.md": "e6f8083a494e8b8ea72d444cbd10f91915aa1bea28842955282566757b9a3248",
+      "ARCHITECTURE.md": "596ba74ec16acdee3f7b7b807a9c9f39cc2a2d69d2f28157a7f78cae31801085",
+      "claims/claims.toml": "e348709a2f265c6bc79536b0d7b59d016d8aff330204572375f9047fd97203ba",
+      "docs/make.jl": "05474cf74765088c6c1ec582429340f3a28ea6c4ede12a41b38c5291ad6942dc",
+      "docs/src/cases/australian-carson-reproduction.md": "5752d72900ca212ff0691815b084033d0f9d0f3ba68916b2a3c688fc4ad22c61",
+      "docs/src/cases/bim-bfm-parallel-lines.md": "b51ae5537093f6a7ab0af6faea1d8b59568574f24af2dda7256b9aa89895bd5a",
+      "docs/src/cases/building-and-changing-models.md": "1d0181984ff0231ee3c04e233361b00920d0002badee254545097e100531ad6a",
+      "docs/src/cases/executable-running-network.md": "6dd28988debaba98e457ce95c6d7efd60c030ecaad6ed23852db19b5d8d39a0e",
+      "docs/src/cases/multiconductor-parallel-ac-decision.md": "c57f7128878015c499d83e92b6058e8716425256c3537f04ca467182f14ce84e",
+      "docs/src/cases/neutral-shunt-multiplicity.md": "1d522a8938d26131de79c5409475cae4fe165a7c6dfe63a9a268c3cfb2468344",
+      "docs/src/cases/quotients-and-observations.md": "d2ca2df5a3801d3368d1c262ae5f3be3738fa4b0679384329842d30aedc48eb0",
+      "docs/src/cases/running-network.md": "eb2b65edec6f02397628e5d758fa324057ec6dbeb82b2bd03d697485b2cde9ef",
+      "docs/src/cases/study-workbook.md": "d0ab14c6dedc2d0d02c6252bd8314aada5fe06b0d5b86d6aba2f67d83d6f99cb",
+      "docs/src/cases/transformer-tap-ac-decision.md": "8993431d2ed95645efaab622b7caba9833900fb891445b0116379b1927b15448",
+      "docs/src/cases/unintended-solution-multiplicity.md": "de34d4067594e79e14c2943f5186f51b223d21cb0f531771d3367ff4df597643",
+      "docs/src/foundations/circuit-formulations-and-lowering.md": "b15e36e84002a5b20fdf1c57ea58fa968e17a6cd00f129691d0cc26c9dee4ed9",
+      "docs/src/foundations/earth-ground-models.md": "64f86cb284b55a08ffe03ad4ab6e6617f74838a3be283a61671da39294cffae4",
+      "docs/src/foundations/ibr-power-factor-controls.md": "2fde3b7788d7eba66d7abf065da3f521ca86534247f460d1b79989346976d655",
+      "docs/src/foundations/load-models-and-decision-dependence.md": "8adb9e593a16e7d7197f07ac6050089f97b5a15f475c01f64e328766012813fa",
+      "docs/src/foundations/notation-and-conventions.md": "f6a4fdb2a7e984b27cde6007e82be2d25426f5374c5a1d1bff11aa13439f5c9b",
+      "docs/src/foundations/numerical-consequences.md": "281a38a086f4e478028197737fc9109bc3ee7dd75da108549000d457091d5a80",
+      "docs/src/foundations/orientation-terminal-power.md": "1f0851b76b2bcf7d45b8debe6e5867708492d64a52c010e8a26fa7ab5ada13fc",
+      "docs/src/foundations/preservation-contracts.md": "2eb781509766bc1ecfa8bc59b43707da114296000eafd8cc07ac565aafec2100",
+      "docs/src/foundations/source-to-canonical-model.md": "f1b8df2195e865752fd9f8ca0743f9d5e3d12fbc7c88bdbaeb5857865be00c5d",
+      "docs/src/foundations/two-level-topology-and-nodal-projection.md": "20736c859598495e8baba40fbdc0a7b4471e2a74a1af2eb7bdfcd6c56ef41701",
+      "docs/src/foundations/when-general-model-collapses.md": "b20850c7f9193fb3963ee3112a34758c54bc56924259a2884d50043dc7a79750",
+      "docs/src/reference/references.md": "7b1bfef4d0cc0f2250e026fd87e61bada6e07fe9c83cc8f65e4c8966e3ee15b9",
+      "docs/src/start/computational-cases.md": "154b39b1a42ee12bb332bf677ed2c8c2c4ba88cbdaca3101f67a028ac1da9d05",
+      "docs/src/start/first-failure-parallel-branches.md": "934803e1dabdf0e9ff9598a41d809f50157b2665d64c068c7f6685389a13bcc5",
+      "docs/src/start/five-bus-cycle-spaces.md": "0dbaece215c9c9fc73a14e765281469cbd7322a29ca9ea7ee83dbcd8263d601a",
+      "docs/src/start/one-network-many-graphs.md": "6516207fb2d3ef1628ffed8998dd813a619b0dce0afca99adb9bd2c33d60f118",
+      "docs/src/start/preface.md": "a681707bb92bffce3ae732328ddc09fd27d942a6ee0db1ce22754bc2828a3fa4",
+      "docs/src/transformations/conductor-coordinate-normalization.md": "19e1b05e8b412aeb1ac289fb946129fa769172e341806017d03b79200eb247e9",
+      "docs/src/transformations/degree-two-series-elimination.md": "987daac57b095e1a343d19ecb5d6648fd0e65cc60f34ac8be5ab9c1cc163485c",
+      "docs/src/transformations/kron-ward-opti-kron.md": "f4b08610fdbfdb13384f3111e4d70bc8f0b8da1e5992e625b8439811c3ae0bb4",
+      "experiments/integration/linear-audit-candidate.json": "a92ec06db8820a8bfe284df59bf361678882c3b7ce1a81c21ad9c5bbb3e081b3",
+      "generated/federated-knowledge-pair-manifest.json": "d6fa92b09a9e3872568cf0300676409c78937153575f6b2eebb2de841fbc10a2",
+      "knowledge/psk.toml": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364",
+      "llm/generated/corpus-manifest.json": "8b265f0e41492ea5c5c91fba0e3b75fb93c667197b074724ba433253ae9cce39",
+      "llm/misconceptions.toml": "5f952a6bf57561105d92c41c434a26723b84f4cd06da4d1bd91517e1fc85c7ac"
+    }
+  },
+  "review_id": "REVIEW-CHECKPOINT-2026-10-26",
+  "review_report": {
+    "path": "review/scientific-pedagogical-checkpoint-2026-10-26.md",
+    "sha256": "e76c1e73e78e8f817485a540aa6ae85346a1750a2277c43ef1d746b5e4e4fd3a"
+  },
+  "schema_version": "0.1.0",
+  "semantic_probe_artifact": {
+    "known_unrelated_qualification_query": "Are three delta terminals three independent load coils?",
+    "no_prevalence_estimate": true,
+    "path": "review/checkpoint-probes-2026-10-26.json",
+    "proper_modern_discovery_succeeds": true,
+    "queries": 8,
+    "sha256": "77052a105088239cd8d49e45e8d38a1ae8dddbe77d56e7f5e337ce54ab112f45"
+  },
+  "separate_scalar_substitution": {
+    "assumptions": {
+      "Smax_VA": 20,
+      "U_V": 9,
+      "VV_fractions": [
+        -0.6,
+        0.44
+      ],
+      "VV_knots_V": [
+        8,
+        9,
+        11,
+        12
+      ],
+      "VW_fractions": [
+        0.2,
+        1
+      ],
+      "VW_knots_V": [
+        9,
+        13
+      ],
+      "available_base_W": 1,
+      "minimum_pf": 0.8,
+      "relative_width": 0.02
+    },
+    "fixed_state_interval_empty": true,
+    "method": "80-digit Decimal substitution of the displayed static equations; no native curve helpers",
+    "minimum_required_p_W": "1.6106824016693231754484727272168388359601480392908196141804159412669842804668781",
+    "q_var": "1.2080118012519923815863545454126291269701110294681147106353119559502382103501586",
+    "vw_cap_W": "0.96950152461407616523107903024942128907634394067971129164750027404438002456210979"
+  },
+  "validation": {
+    "artifact_math_claim_figure_pdf_reference_rendered_checks": "passed",
+    "benchmark_state": "synthetic conformance/pilot checks only; no measured agent run",
+    "known_semantic_defect_outside_current_curated_gate": "R1 remains unresolved despite passing structural/curated checks",
+    "scientific_federation_reproducibility": "passed"
+  }
+}

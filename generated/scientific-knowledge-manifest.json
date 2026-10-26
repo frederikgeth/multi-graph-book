@@ -65,7 +65,7 @@
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
-      "sha256": "281a38a086f4e478028197737fc9109bc3ee7dd75da108549000d457091d5a80"
+      "sha256": "66ee1e18f50f3590f117e5e96db4a7e057e7920c08fff8e340897ca7d7bda80f"
     },
     {
       "path": "docs/src/foundations/preservation-contracts.md",
@@ -93,7 +93,7 @@
     },
     {
       "path": "docs/src/transformations/kron-ward-opti-kron.md",
-      "sha256": "f4b08610fdbfdb13384f3111e4d70bc8f0b8da1e5992e625b8439811c3ae0bb4"
+      "sha256": "dee0dc22877f720a2842ab8cabe59dd3955f7cb1edbe5e4f60cb35a5745cfea3"
     },
     {
       "path": "docs/src/transformations/parameterized-transformer-tap-decisions.md",

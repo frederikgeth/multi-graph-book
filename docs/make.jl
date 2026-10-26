@@ -74,6 +74,23 @@ function Documenter.LaTeXWriter.latex(
     return
 end
 
+# Long identifiers and source paths need legal line breaks in PDF prose/tables.
+# The displayed characters and HTML rendering stay unchanged.
+function Documenter.LaTeXWriter.latex(
+    io::Documenter.LaTeXWriter.Context,
+    node::Documenter.MarkdownAST.Node,
+    code::Documenter.MarkdownAST.Code,
+)
+    writer = Documenter.LaTeXWriter
+    writer._print(io, "\\texttt{")
+    for ch in code.code
+        ch === '⊻' ? writer._print(io, "\\unicodeveebar{}") : writer.latexesc(io, ch)
+        ch in ('/', '_', '.', '-', '=', ',', ':') && writer._print(io, "\\allowbreak{}")
+    end
+    writer._print(io, "}")
+    return
+end
+
 # This is a documentation-only project: all reader-facing source lives under docs/src.
 # HTML is the primary knowledge-base product. The PDF has a deliberately shorter
 # argument-shaped route while reusing the same Markdown sources.

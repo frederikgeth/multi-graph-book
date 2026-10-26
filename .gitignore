@@ -28,3 +28,6 @@ __pycache__/
 
 # Recorded lesson environment (intentionally versioned)
 !experiments/reproduction/**/Manifest.toml
+
+# Generated PDF review deliverables
+/output/pdf/
