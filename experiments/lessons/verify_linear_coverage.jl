@@ -141,6 +141,10 @@ function linear_coverage_lesson()
     ip_fixture_path=joinpath(root,"test","data","linear_audit","ibr-price.json")
     include(ip_path)
     ip_evidence=Base.invokelatest(()->getfield(@__MODULE__,:IbrPriceScopeExample).run())
+    pf_path=joinpath(root,"examples","ibr_pf_audit.jl")
+    pf_fixture_path=joinpath(root,"test","data","linear_audit","ibr-pf.json")
+    include(pf_path)
+    pf_evidence=Base.invokelatest(()->getfield(@__MODULE__,:IbrPFAuditExample).run())
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -938,6 +942,57 @@ function linear_coverage_lesson()
         @test tight_coverage.evidence["status"]=="passed"
         @test JSON3.read(JSON3.write(ie),Dict{String,Any})==ie
     end
+    @testset "IBR constant-PF and generation minimum-PF applicability" begin
+        pe=pf_evidence
+        prow(key,id)=only(filter(r->r["id"]==id,pe[key]["rows"]))
+        for (key,n) in (("single_phase",1),("four_leg",3),("three_leg",3))
+            @test pe[key]["status"]=="passed" && pe[key]["coverage_complete"]
+            @test prow(key,"ibr.i.minimum_pf.applicability")["status"]=="declared"
+            @test pe["shape_"*key]["variables"]==pe["shape_base_"*key]["variables"]
+            @test pe["shape_"*key]["constraints"]-pe["shape_base_"*key]["constraints"]==4*n
+            @test pe["shape_"*key]["violated_native_primal_rows"]==0
+            for field in ("constant_pf","minimum_pf.generation","minimum_pf.upper","minimum_pf.lower")
+                @test prow(key,"ibr.i.1.$field")["status"]=="passed"
+                @test prow(key,"ibr.i.1.$field")["unit"]==(field=="minimum_pf.generation" ? "W" : "VA")
+            end
+            for unit in ("si","per_unit")
+                native=pe["native_$(key)_$unit"]
+                @test native["accepted"] && native["audit"]["unassessed_checks"]==0
+                @test !native["audit"]["objective_scope"]["objective_value_evaluated"]
+            end
+        end
+        @test prow("constant_sign_violation","ibr.i.1.constant_pf")["residual"]≈4.8
+        @test prow("minimum_only_violation","ibr.i.1.minimum_pf.upper")["residual"]≈.8
+        @test pe["zero"]["status"]=="passed"
+        @test prow("zero_p_nonzero_q","ibr.i.1.minimum_pf.upper")["residual"]≈.8
+        @test prow("per_coil_violation","ibr.i.1.minimum_pf.upper")["residual"]≈1.8
+        @test prow("per_coil_violation","network.power")["status"]=="passed"
+        @test pe["q_capability_conflict"]["failed_checks"]==1
+        @test prow("q_capability_conflict","ibr.i.1.q_min")["residual"]≈1.
+        @test prow("q_capability_conflict","ibr.i.1.constant_pf")["status"]=="passed"
+        @test pe["native_point_q_conflict"]["violated_native_primal_rows"]==1
+        @test pe["native_q_limited"]["accepted"]
+        @test pe["native_q_limited"]["candidate"]["ibr"]["i"]["a"]["pg"]≈8/3 atol=1e-6
+        @test pe["native_q_limited"]["candidate"]["ibr"]["i"]["a"]["qg"]≈-2. atol=1e-6
+        @test !pe["native_fixed_q_conflict"]["accepted"] && !isempty(pe["native_fixed_q_conflict"]["raw_status"])
+        for pf in (-.8,1.,-1.)
+            @test pe["signed_"*string(pf)]["status"]=="passed"
+            @test pe["native_signed_"*string(pf)]["accepted"]
+        end
+        @test pe["mixed_profile"]["status"]=="indeterminate"
+        @test prow("mixed_profile","network.power")["status"]=="passed"
+        @test pe["missing_current_known_q_failure"]["status"]=="failed" && !pe["missing_current_known_q_failure"]["coverage_complete"]
+        @test prow("missing_current_known_q_failure","ibr.i.1.q_min")["residual"]≈1.
+        @test prow("missing_current_known_q_failure","network.power")["residual"]===nothing
+        @test prow("forged_q_report","ibr.i.1.constant_pf")["residual"]≈4.8
+        @test pe["tiny_zero_p_default_tolerance"]["status"]=="passed"
+        @test pe["tiny_zero_p_strict_tolerance"]["status"]=="failed"
+        @test prow("tiny_zero_p_default_tolerance","ibr.i.1.minimum_pf.upper")["residual"]≈1e-20 rtol=1e-14
+        @test isempty(get(running,"ibr",Dict()))
+        @test connected_coverage.evidence["failed_checks"]==3 && connected_coverage.evidence["unassessed_checks"]==0
+        @test tight_coverage.evidence["status"]=="passed"
+        @test JSON3.read(JSON3.write(pe),Dict{String,Any})==pe
+    end
     active = dirname(Base.active_project())
     Dict{String,Any}(
         "evidence_state"=>"local_package_candidate_not_promoted_to_published_integration_pin",
@@ -946,7 +1001,8 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path,dg_path,dg_fixture_path,sp_path,sp_fixture_path,pq_path,pq_fixture_path,ibr_path,ibr_fixture_path,ip_path,ip_fixture_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path,dg_path,dg_fixture_path,sp_path,sp_fixture_path,pq_path,pq_fixture_path,ibr_path,ibr_fixture_path,ip_path,ip_fixture_path,pf_path,pf_fixture_path]),
+        "ibr_pf_control_example"=>pf_evidence,
         "ibr_price_scope_example"=>ip_evidence,
         "ibr_injection_example"=>ibr_evidence,
         "voltage_source_pq_example"=>pq_evidence,

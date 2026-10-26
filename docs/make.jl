@@ -160,6 +160,7 @@ const PAGES_HTML = [
     ],
     "Part 7: Evidence for a computation" => [
         "Numerical consequences" => "foundations/numerical-consequences.md",
+        "IBR power-factor controls" => "foundations/ibr-power-factor-controls.md",
         "Unintended solution multiplicity" => "cases/unintended-solution-multiplicity.md",
         "Neutral and shunt multiplicity" => "cases/neutral-shunt-multiplicity.md",
         "Quotients and observations" => "cases/quotients-and-observations.md",
@@ -282,6 +283,7 @@ const PAGES_PDF = [
     ],
     "Part 7: Evidence for a computation" => [
         "Numerical consequences" => "foundations/numerical-consequences.md",
+        "IBR power-factor controls" => "foundations/ibr-power-factor-controls.md",
         "Unintended solution multiplicity" => "cases/unintended-solution-multiplicity.md",
         "Neutral and shunt multiplicity" => "cases/neutral-shunt-multiplicity.md",
         "Quotients and observations" => "cases/quotients-and-observations.md",

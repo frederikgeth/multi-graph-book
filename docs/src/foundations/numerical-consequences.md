@@ -2355,7 +2355,7 @@ physical topology review in package issue #95 remains unresolved. Agreement
 with these equations cannot settle that physical model question.
 
 Authored filters (`r_filter`, `x_filter`, `b_filter_shunt`), internal/grid-forming
-voltage fields, controller profiles, `p_avail`, custom roles and DC
+voltage fields, droop/other controller profiles, `p_avail`, custom roles and DC
 coupling remain unassessed, including explicit zero/false filter declarations.
 The native filter-boundary comparison has unchanged variable/constraint counts
 with these fields present. Ignoring them is not evidence that a filter is ideal
@@ -2450,7 +2450,7 @@ malformed price preserves known electrical checks and current contributions;
 known failures take precedence. Missing current preserves valid price metadata
 but suppresses complete KCL/power. Optional `pg/qg`, a forged `objective` and a
 successful solver label do not replace those observations or select a recipe.
-Filter/controller/availability/DC/custom-role/topology boundaries are unchanged.
+Filter/droop/availability/DC/custom-role/topology boundaries are unchanged.
 
 Native default construction rejects scalar/empty/prefix prices, ignores an
 extra suffix and skips a null term. Construction with `add_objective=false`
@@ -2482,3 +2482,10 @@ statuses and execution MCP remain separate.
 prices, then compare uniform and nonuniform cyclic prices under circulation.
 State the additional evidence needed to certify a reported two-hour objective
 or a physical/economic interpretation of the internal coil dispatch.
+
+
+The next bounded extension is developed on the focused
+[IBR power-factor control page](ibr-power-factor-controls.md): constant-PF
+equalities, generation-only minimum-PF envelopes, hard capability intersections
+and the limits of weighted residual tolerances. Existing injection/price anchors
+remain on this page.

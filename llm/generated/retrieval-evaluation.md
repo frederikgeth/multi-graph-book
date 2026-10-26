@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `ec590c1116ae2add7ac688cc48ce9c12c238185376fbf2e84e1fb636798298b9`<br>
+**Corpus hash:** `8fc49f96d879b8a800078b240263b3fefb68491e8c8cd05741e52c6c76db1027`<br>
 **Cases:** 108
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -16,11 +16,11 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Measure | Result | Release gate? |
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
-| Open-corpus lexical evidence recall@5 | 27.6% | diagnostic |
+| Open-corpus lexical evidence recall@5 | 27.7% | diagnostic |
 | Open-corpus lexical evidence recall@10 | 33.4% | diagnostic |
 | Open-corpus complete evidence@10 | 0.9% | diagnostic |
-| Evidence-only lexical recall@5 | 35.1% | diagnostic |
-| Evidence-only lexical recall@10 | 41.9% | diagnostic |
+| Evidence-only lexical recall@5 | 35.0% | diagnostic |
+| Evidence-only lexical recall@10 | 42.1% | diagnostic |
 | Evidence-only complete evidence@10 | 1.9% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
@@ -94,7 +94,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 36 | 100.0% | 42.4% | 100.0% |
+| `power_engineer` | 36 | 100.0% | 42.9% | 100.0% |
 | `software_engineer` | 36 | 100.0% | 37.9% | 100.0% |
 | `student` | 36 | 100.0% | 45.4% | 100.0% |
 
@@ -110,7 +110,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | `EVAL-YSPLIT-POWER` | `power_engineer` | `loads-generators-fixed-graph-membership` | 50.0% | yes |
 | `EVAL-YBUS-STUDENT` | `student` | `nodal-operator-is-source-network` | 80.0% | yes |
 | `EVAL-YBUS-SOFTWARE` | `software_engineer` | `nodal-operator-is-source-network` | 60.0% | yes |
-| `EVAL-YBUS-POWER` | `power_engineer` | `nodal-operator-is-source-network` | 20.0% | yes |
+| `EVAL-YBUS-POWER` | `power_engineer` | `nodal-operator-is-source-network` | 40.0% | yes |
 | `EVAL-PARALLEL-STUDENT` | `student` | `parallel-admittance-implies-decision-equivalence` | 66.7% | yes |
 | `EVAL-PARALLEL-SOFTWARE` | `software_engineer` | `parallel-admittance-implies-decision-equivalence` | 16.7% | yes |
 | `EVAL-PARALLEL-POWER` | `power_engineer` | `parallel-admittance-implies-decision-equivalence` | 50.0% | yes |

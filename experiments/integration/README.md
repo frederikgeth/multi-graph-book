@@ -601,3 +601,28 @@ The fully seeded single-pair SI positive/negative/two-hour attempts retain
 OTHER_ERROR/Restoration_Failed and INFEASIBLE_POINT statuses with passing
 returned electrical audits; they remain unaccepted solver attempts. Separate
 per-unit counterparts solve and pass. No initialization-robustness claim.
+
+
+The constant/minimum-PF extension adds `examples/ibr_pf_audit.jl` and
+`test/data/linear_audit/ibr-pf.json` to the source-bound companion, with a focused
+lesson at `docs/src/foundations/ibr-power-factor-controls.md`. The new audit
+independently decodes pure signed constant-PF profiles and the exact package v1
+generation/per_coil minimum policy; it does not call native policy/role/index
+helpers or use reported P/Q. Constant equality, generation direction and both
+weighted reactive inequalities are separate per-branch obligations, composed
+with hard P/Q/I/S caps. Minimum applicability requires full nonnegative p_min,
+p_max if present, and compatible constant target. Malformed controls preserve
+known electrical evidence; unrelated extras remain unsupported and suppress KCL.
+No PF quotient is formed at zero; tiny coefficients expose fixed absolute
+weighted-tolerance limits. Native profiling has a separate reported-P/Q/zero-P
+policy. Adding both controls adds four constraints per branch, no variables.
+
+Analytic and controlled native SI/PU cases pass in this locked run. With f=m=.8,
+P4/Q-3 passes controls but q_min=-2 fails by1var. Separate native maximum-P with
+that cap yields P8/3/Q-2; the fixed-P conflict attempt reports local infeasibility
+and its returned-point audit fails, without a global claim. Aggregate PF hides
+a first-coil 1.8VA violation at P=[1,10,10],Q=[3,0,0]. Missing state, forged Q,
+zero/unity/signed targets, map changes and tiny coefficients retain scope.
+Droop, filters/internal voltages, availability/DC dynamics, physical THREE_LEG
+realization, selected objectives and optimality remain outside. Running-network,
+published pin/PSK statuses, historical replay and execution MCP remain unchanged.
