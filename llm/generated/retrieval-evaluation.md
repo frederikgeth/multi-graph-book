@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `ce7b5b2c0554d45a561e1bc4fe78d8bb3f25bef14a4b2acb3ac93e867832eefb`<br>
+**Corpus hash:** `2a834b0a01bd2bb10002771def29788c635dba1b9706cb2fbef445a8c5cf8d15`<br>
 **Cases:** 117
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -46,17 +46,17 @@ the question count must not be treated as that many independent observations.
 | `lexical` | 33.0% | 43.2% | 0.0% | 0/33 | 6/33 | 0.195 |
 | `char_tfidf` | 34.6% | 43.3% | 0.0% | 0/33 | 7/33 | 0.218 |
 | `hybrid` | 35.6% | 46.6% | 0.0% | 0/33 | 5/33 | 0.213 |
-| `graph` | 36.9% | 58.5% | 15.2% | 5/33 | 3/33 | 0.248 |
+| `graph` | 36.9% | 58.9% | 18.2% | 6/33 | 3/33 | 0.248 |
 
 Held-out contract-router firing: **22/33 (66.7%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **20/33 (60.6%)**; this remains diagnostic because the set is synthetic and clustered.
 Target clusters: **11**, with cluster sizes `[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]`; percentage differences are therefore not independent observations.
 Hybrid versus lexical complete@10: **0/33** versus **0/33**; hybrid zero-recall@10: **5/33**.
-Graph versus hybrid complete@10: **5/33** versus **0/33**.
+Graph versus hybrid complete@10: **6/33** versus **0/33**.
 
 | Held-out case | Audience | Expected route | Observed top-1 | Router fired | Lexical complete@10 | TF-IDF complete@10 | Hybrid complete@10 | Graph complete@10 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `HOLDOUT-GRAPH-STUDENT` | `student` | `one-universal-network-graph` | `one-universal-network-graph` | yes | no | no | no | no |
+| `HOLDOUT-GRAPH-STUDENT` | `student` | `one-universal-network-graph` | `one-universal-network-graph` | yes | no | no | no | yes |
 | `HOLDOUT-GRAPH-SOFTWARE` | `software_engineer` | `one-universal-network-graph` | `none` | no | no | no | no | no |
 | `HOLDOUT-GRAPH-POWER` | `power_engineer` | `one-universal-network-graph` | `radial-is-representation-independent` | yes | no | no | no | no |
 | `HOLDOUT-YSPLIT-STUDENT` | `student` | `loads-generators-fixed-graph-membership` | `loads-generators-fixed-graph-membership` | yes | no | no | no | no |

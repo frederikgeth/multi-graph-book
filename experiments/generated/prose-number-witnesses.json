@@ -17,9 +17,9 @@
   "source_sha256": {
     "docs/src/cases/building-and-changing-models.md": "8f23238e4ac07dbc1ef4994851ec3a989952202a118a123f31605296d3d970b6",
     "docs/src/foundations/circuit-formulations-and-lowering.md": "b15e36e84002a5b20fdf1c57ea58fa968e17a6cd00f129691d0cc26c9dee4ed9",
-    "docs/src/foundations/numerical-consequences.md": "5ede1d3885cc5befd0c12cfbb7c63b97d62fe1cd8fa2238c6085ae176c234c20",
+    "docs/src/foundations/numerical-consequences.md": "d47d7ee1602a28321e413f19a7c8a94f7ece2e0465b1b608b853d9b7b649efdd",
     "docs/src/reference/numerical-audit-reference.md": "fa09c85eae4c88ed37336a34e087d290257902adf01f75e4c6aa7d2a712f53b9",
-    "experiments/lessons/prose_number_witnesses.py": "6f9be74459644a058050198496d68453b84382a8b10c5df187870d01702e0c93"
+    "experiments/lessons/prose_number_witnesses.py": "178eddc1fdd4354e7fb6eca1804f006eb8c31615929ac6857bc3120452057230"
   },
   "values": {
     "branch_upper_angle_excess": {
@@ -111,6 +111,13 @@
       "unit": "W",
       "value": "2.33875560760498046875"
     },
+    "multi_neutral_imag": {
+      "derivation": "Imaginary part of minus the sum of winding-2 terminal currents, including excitation once.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "9/16384",
+      "unit": "A",
+      "value": "0.00054931640625"
+    },
     "multi_neutral_real": {
       "derivation": "Real part of minus the sum of winding-2 terminal currents, including excitation once.",
       "evidence_kind": "book_arithmetic_on_declared_computational_point",
@@ -180,6 +187,13 @@
       "unit": "W",
       "value": "4.0625"
     },
+    "neutral_return_current_squared": {
+      "derivation": "abs(0.5-j*0.25 A)^2 before changing the neutral resistance and adding its earth shunt.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "5/16",
+      "unit": "A^2",
+      "value": "0.3125"
+    },
     "neutral_voltage_excess": {
       "derivation": "abs(1-j*0.5)-1 V.",
       "evidence_kind": "book_arithmetic_on_declared_computational_point",
@@ -217,6 +231,13 @@
       "unit": "V",
       "value": "0.159016994374947424102293417182819058860154589902881431067724311352630231409451224853603602"
     },
+    "sequence_zero_squared": {
+      "derivation": "Squared magnitude of the declared phase-neutral zero-sequence phasor 0.5+j*0.25 V.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "5/16",
+      "unit": "V^2",
+      "value": "0.3125"
+    },
     "shunted_neutral_current_squared": {
       "derivation": "abs((1-j*0.5)/4 ohm)^2; remaining return uses the authored shunt.",
       "evidence_kind": "book_arithmetic_on_declared_computational_point",
@@ -230,12 +251,33 @@
       "unit": "rad",
       "value": "0.0996686524911620273784461198780205902432783225043146480155087768100277474475506544206126244"
     },
+    "source_price_positive_rate": {
+      "derivation": "Earth-referenced source phase a: Re(10*conj(0.6-j*0.1))*0.1/1000.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "3/5000",
+      "unit": "currency/hour",
+      "value": "0.0006"
+    },
     "source_price_rate": {
-      "derivation": "Authored source phase: -3 W*0.4 currency/kWh /1000.",
+      "derivation": "Earth-referenced source phase b: Re((j*10)*conj(0.2-j*0.3))*0.4/1000.",
       "evidence_kind": "book_arithmetic_on_declared_computational_point",
       "exact_fraction": "-3/2500",
       "unit": "currency/hour",
       "value": "-0.0012"
+    },
+    "source_total_price_rate": {
+      "derivation": "Sum of the two phase rates under prices (0.4,0.1) in source map order (b,a).",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "-3/5000",
+      "unit": "currency/hour",
+      "value": "-0.0006"
+    },
+    "source_unmoved_price_rate": {
+      "derivation": "Reorder source phases to (a,b) but deliberately retain the old price vector (0.4,0.1).",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "21/10000",
+      "unit": "currency/hour",
+      "value": "0.0021"
     },
     "switch_neutral_excess": {
       "derivation": "sqrt(1^2+(1/5)^2)-0.5 for the unchanged supplied switch current.",
@@ -256,6 +298,20 @@
       "exact_fraction": "-1/2000",
       "unit": "currency/hour",
       "value": "-0.0005"
+    },
+    "three_uniform_price_rate": {
+      "derivation": "Uniform 0.1 prices times sum((4,1.5,-2) W)/1000; equal circulation leaves this sum unchanged in the authored cyclic model.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "7/20000",
+      "unit": "currency/hour",
+      "value": "0.00035"
+    },
+    "two_phase_source_price_rate": {
+      "derivation": "Two earth-referenced source phase powers from (10,j*10) V and (0.3-j*0.1,-0.3+j*0.1) A, weighted by (0.1,0.2)/1000; not a one-coil generator convention.",
+      "evidence_kind": "book_arithmetic_on_declared_computational_point",
+      "exact_fraction": "1/2000",
+      "unit": "currency/hour",
+      "value": "0.0005"
     },
     "winding1_current_imag_coefficient": {
       "derivation": "Exact component from inward-current ampere-turn balance, U_k=N_k*(U_1+(Z_B*j)_k), and I2_terminal=I2+Y*U2; subtraction coefficients are positive literal magnitudes.",

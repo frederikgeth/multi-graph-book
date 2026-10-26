@@ -1,14 +1,19 @@
 # [IBR power-factor, Volt-var and Volt-watt controls](@id ibr-pf-control-audit)
 
-**Page status:** self-checked local candidate control-equation and applicability witnesses; no general controller, physical-model, PF-ratio accuracy or optimality certificate.
+**Page status:** self-checked control equations and examples for a local development candidate; physical controller validation remains open.
 
-This lesson extends the local candidate's [IBR injection audit](numerical-consequences.md#ibr-injection-audit).
-Its evidence is a supplied-point equation check under the `PSK-000013`
-verification boundary. Native construction, reported powers and solver status
-are comparison subjects. They are not the independent evaluator's oracle.
-The [IBR price declaration boundary](numerical-consequences.md#ibr-price-scope-audit)
-also remains in force: electrical control checks do not select or verify an
-objective.
+An inverter-based resource (IBR) may have both a control law and capability
+limits. Can a supplied point satisfy them together? Work from the declared
+equations and check each obligation. A solver label or reported power cannot
+settle that intersection.
+
+The code examples require the local candidate identified in
+`experiments/integration/linear-audit-candidate.json`. The published integration
+does not provide these audit APIs. The [workbook environment
+table](@ref running-case-evidence-generations) gives the separate execution routes.
+The evaluator checks equations under the `PSK-000013` boundary; it does not
+validate physical controller behavior or the selected objective. Its calculations
+do not use the native model builder or reported powers as their oracle.
 
 ## Two declarations, two mathematical objects
 
@@ -20,21 +25,23 @@ capability limits.
 and `q_min=-2` var. Can its controller satisfy the case simply by clipping Q
 to −2 var?
 
-For the ordered voltage/current pair admitted by the topology, the independent
-audit recomputes
+Use RMS phasors. Positive P and Q denote injection into the network. For each
+admitted ordered voltage/current pair, the audit recomputes
 
 ```math
 S_k=U_k\overline{I_k}=P_k+\mathrm jQ_k.
 ```
 
-It does not recover current by dividing reported power by voltage. The bounded
-slice admits the existing two-endpoint `SINGLE_PHASE`, explicit-neutral
-`FOUR_LEG`, and exactly three cyclic-coil `THREE_LEG` domains. Every control
-below applies to each ordered branch. A coil current and reconstructed terminal
-current remain different observations in the cyclic model; physical
-`THREE_LEG` review #95 is unresolved.
+It does not recover current by dividing reported power by voltage. The PF audit
+covers two-endpoint `SINGLE_PHASE`, explicit-neutral `FOUR_LEG`,
+and exactly three cyclic-coil `THREE_LEG` connections. Constant and minimum PF
+are checked per branch. Volt-var and Volt-watt, separately or together, apply
+only to the single-pair and explicit-neutral four-leg models. In a cyclic model,
+coil current differs from reconstructed terminal current; the physical adequacy
+of the `THREE_LEG` convention remains unresolved.
 
-A pure constant-PF declaration has exactly this structure:
+The following JSON blocks are network-field excerpts; the runnable fixture
+supplies the complete bus and device data. A pure constant-PF declaration is:
 
 ```json
 "control_profile": {
@@ -57,26 +64,12 @@ r_k^{\mathrm{constant}}=
 \left|\operatorname{sign}(f)aQ_k+bP_k\right|.
 ```
 
-At positive P, positive f absorbs reactive power (negative Q), while negative f
-reverses that sign. Both signed unity targets require Q = 0. The equality alone
+This signed target convention belongs to the declared controller, not to every
+data format. At positive P, positive f absorbs reactive power (negative Q),
+while negative f reverses that sign. Both signed unity targets require Q = 0. The equality alone
 also admits the signed absorption extension with negative P; it does not impose
 generation direction. No tangent or `acos` evaluation is needed, including near
 zero targets.
-
-Minimum PF is a separate package-owned policy in the schema's extras namespace:
-
-```json
-"extras": {
-  "bmopftools": {
-    "minimum_power_factor": {
-      "schema": "bmopftools.minimum_power_factor/v1",
-      "ibr": {
-        "i": {"pf_min": 0.8, "direction": "generation", "scope": "per_coil"}
-      }
-    }
-  }
-}
-```
 
 For ``0<m\le1`` and ``c=\sqrt{(1-m)(1+m)}``, the native constraints are
 
@@ -145,6 +138,21 @@ numerical checks with explicit obligations, not interchangeable PF certificates.
 
 ## Applicability and missing evidence
 
+Minimum PF is a separate package-owned policy in the schema's extras namespace:
+
+```json
+"extras": {
+  "bmopftools": {
+    "minimum_power_factor": {
+      "schema": "bmopftools.minimum_power_factor/v1",
+      "ibr": {
+        "i": {"pf_min": 0.8, "direction": "generation", "scope": "per_coil"}
+      }
+    }
+  }
+}
+```
+
 The admitted profile contains only `power_factor`, whose object contains only
 `pf`. The minimum-policy wrapper and per-IBR requests have exactly the fields
 shown above. Targets must be finite, nonzero and representable in Float64;
@@ -153,7 +161,10 @@ Minimum-policy applicability additionally requires full finite nonnegative
 `p_min`, and `p_max` if present, plus a compatible constant target
 ``|f|\ge m``. A constant target below the requested minimum is rejected by native
 construction; its bounded audit reports unknown policy applicability rather than
-inventing a constructed constraint or a numerical feasibility failure.
+inventing a constructed constraint or a numerical feasibility failure. The point P = Q = 0
+still satisfies both weighted laws even for such targets.
+The construction policy is therefore stricter than algebraic intersection;
+additional bounds would be needed to exclude that point.
 
 Unresolved/null references, empty/extra profiles, PF/droop mixtures, malformed policies,
 unknown targets and unused invalid profiles remain visible as unassessed control
@@ -182,13 +193,9 @@ four native constraints per branch and no variables. Native helpers, role/index
 resolvers, control decoders and reported-power profilers are not used as the
 independent audit's oracle.
 
-Filters, internal/grid-forming voltages, other droop/availability/DC dynamics, physical
-model adequacy, arbitrary custom constraints and selected-objective/optimality
-verification remain separate. The running input has no IBR: its retained default
-three generator-bound failures with zero unknowns, all 26 passing KCL rows and
-aggregate power, and its separate tighter electrical pass are unchanged. The
-published integration pin, PSK implementation statuses and execution MCP are
-unchanged by this local candidate.
+Filters, internal/grid-forming voltages and DC dynamics need other models.
+The running network contains no IBR, so its audit does not exercise these
+controllers; use the dedicated fixtures above.
 
 **Transfer exercise.** Distinguish a constant-PF equality, a generation-only
 minimum envelope and an authored Q cap. Construct a per-phase violation hidden
@@ -198,10 +205,10 @@ and cannot establish about an actual PF ratio.
 
 ## [Volt-var: requested graph and assumed smooth model](@id ibr-volt-var-audit)
 
-The next local candidate slice admits a pure `volt_var` profile on the existing
-`SINGLE_PHASE` or explicit-neutral `FOUR_LEG` topology. It independently checks
-the voltage monitor, static curve, hard Q capability and applicable minimum-PF
-envelope. It does not infer the solver's smoothing recipe from a supplied result.
+A Volt-var law links reactive injection to a measured voltage. Here it uses a
+pure `volt_var` profile on `SINGLE_PHASE` or explicit-neutral `FOUR_LEG`. Check
+the voltage monitor, static curve, Q capability and minimum-PF envelope
+separately. The supplied result does not reveal the solver's smoothing recipe.
 
 ### State the graph and normalization first
 
@@ -305,7 +312,7 @@ are not averaged. An explicit IBR `voltage_aggregation=AVERAGE` or `PER_PHASE`
 overrides the profile's aggregation. A single pair has only one magnitude, so
 averaging does not create a new voltage reference. The four-leg one-phase PP
 fallback to PG is refused, and native `THREE_LEG` droop skipping is not a checked
-Volt-var law. Physical `THREE_LEG` review #95 remains unresolved.
+Volt-var law. The physical adequacy of the cyclic `THREE_LEG` model remains unresolved.
 
 The floating-neutral witness makes the distinction visible: a single pair has
 PN magnitude 9 V but first-endpoint PG magnitude ``\sqrt{12^2+4^2}`` V.
@@ -353,13 +360,10 @@ inspections, aggregation overrides and retained capability/minimum-PF conflicts.
 Scaling voltage and breakpoints together also checks the physical smoothing
 width transformation; it is not an all-asset network-equivalence claim.
 
-The Volt-var family check also participates in the [combined audit](@ref ibr-droop-composition-audit). PF/droop mixtures, unsupported references/units/bases/arities, ignored native controls,
-filters/internal voltages, physical availability/DC dynamics and physical control adequacy
-remain outside. In particular, a native warning that skips a declaration does
-not establish compliance with it. The running input has no IBR; its retained
-three default generator-bound failures/zero unknowns, all 26 passing KCL rows and
-aggregate power, and separate tighter electrical pass remain unchanged. Published
-integration, PSK implementation statuses and execution MCP remain separate.
+The [combined audit](@ref ibr-droop-composition-audit) adds Volt-watt without
+replacing these obligations. PF/droop mixtures, unsupported references, units
+and topologies, filters and DC dynamics remain outside this model. A native
+warning that skips a declaration does not establish compliance with it.
 
 **Transfer exercise.** Distinguish requested PWL response, assumed smoothed
 response, reported Q and actual VI-derived Q. Then change averaging or curtail P
@@ -511,7 +515,7 @@ curves/bases, forged coefficient rows and partial observations preserve known
 failure evidence. PF/droop mixtures,
 `THREE_LEG` droop, unsupported native warning/fallback paths, builtin/Swish/live
 updates, filters/internal voltages and physical availability/DC dynamics remain
-outside. Published pin, PSK implementation states and execution MCP are unchanged.
+outside this model.
 
 **Transfer exercise.** Change a scalar availability declaration without changing
 an authored P box, then change the curve from `S_MAX` to `P_AVAILABLE`. Explain
@@ -626,7 +630,7 @@ Native objects are comparison evidence, never the independent evaluator's oracle
 
 Parameterized/live providers and profile caches, physical controller/filter/DC
 adequacy, `THREE_LEG` droop, selected objectives and optimality remain outside
-this audit. Published pin, PSK statuses and execution MCP are unchanged.
+this audit.
 
 **Transfer exercise.** Change one curve's voltage reference, then override
 averaging. Identify the changed observation, residual and build applicability.

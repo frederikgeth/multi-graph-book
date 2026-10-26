@@ -363,8 +363,8 @@
     },
     {
       "path": "experiments/generated/prose-number-witnesses.json",
-      "sha256": "db9ad3bd2beeadcdae61e73110ec9c92b22caabd6097dcaeb32674cfc2a279fc",
-      "size_bytes": 16665
+      "sha256": "aa8ce840c364f2f88d364f964e39947bfe183327bb310554fefa9b169fbd963a",
+      "size_bytes": 19249
     },
     {
       "path": "experiments/generated/provenance.json",

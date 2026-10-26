@@ -115,12 +115,14 @@ def calculations():
         put('multi_equal_total_rating',3*max(powers),'VA','Three times the largest per-coil apparent magnitude for equal allocation.')
         neutral = scale(total(point[2][1] for point in points),-1)
         put('multi_neutral_real',neutral[0],'A','Real part of minus the sum of winding-2 terminal currents, including excitation once.')
+        put('multi_neutral_imag',neutral[1],'A','Imaginary part of minus the sum of winding-2 terminal currents, including excitation once.')
         losses = total(point[3] for point in points)
         put('multi_loss_real',losses[0],'W','Sum of three phase terminal-power real parts.')
         put('multi_loss_imag',losses[1],'var','Sum of three phase terminal-power imaginary parts.')
 
         put('pn_squared_lower_excess',F(33,4)**2-8**2,'V^2','(8.25 V)^2-(8 V)^2; this is not a magnitude residual.')
         current = z(F(1,2),-F(1,4));neutral = z(1,-F(1,2));coil = z(F(17,2),F(3,4))
+        put('neutral_return_current_squared',norm2(current),'A^2','abs(0.5-j*0.25 A)^2 before changing the neutral resistance and adding its earth shunt.')
         put('neutral_case_load_real',power(coil,current)[0],'W','Re((8.5+j*0.75)*conj(0.5-j*0.25)).')
         put('neutral_case_conductor_loss',3*norm2(current),'W','(1+2) ohm times abs(0.5-j*0.25)^2.')
         put('neutral_voltage_excess',magnitude(neutral)-1,'V','abs(1-j*0.5)-1 V.')
@@ -135,11 +137,23 @@ def calculations():
         put('bus_upper_angle_excess',Decimal('.12')-theta,'rad','-atan(0.1)-(-0.12).')
         put('branch_upper_angle_excess',theta-Decimal('.08'),'rad','atan(0.1)-0.08.')
         put('sequence_zero_excess',magnitude(z(F(1,2),F(1,4)))-Decimal('.4'),'V','abs(0.5+j*0.25)-0.4.')
+        put('sequence_zero_squared',norm2(z(F(1,2),F(1,4))),'V^2','Squared magnitude of the declared phase-neutral zero-sequence phasor 0.5+j*0.25 V.')
         put('sequence_earth_zero_magnitude',magnitude(z(F(3,2),-F(1,4))),'V','abs(V0_phase_neutral+V_neutral)=abs(1.5-j*0.25).')
 
         costs=[F(1,10),-F(1,5),F(3,10)]
         rate=lambda ps:sum(p*c for p,c in zip(ps,costs))/1000
-        put('source_price_rate',-3*F(2,5)/1000,'currency/hour','Authored source phase: -3 W*0.4 currency/kWh /1000.')
+        source_powers = [power(z(0,10),z(F(1,5),-F(3,10)))[0],
+                         power(z(10),z(F(3,5),-F(1,10)))[0]]
+        source_rates = [p*c/1000 for p,c in zip(source_powers,[F(2,5),F(1,10)])]
+        put('source_price_rate',source_rates[0],'currency/hour','Earth-referenced source phase b: Re((j*10)*conj(0.2-j*0.3))*0.4/1000.')
+        put('source_price_positive_rate',source_rates[1],'currency/hour','Earth-referenced source phase a: Re(10*conj(0.6-j*0.1))*0.1/1000.')
+        put('source_total_price_rate',sum(source_rates),'currency/hour','Sum of the two phase rates under prices (0.4,0.1) in source map order (b,a).')
+        put('source_unmoved_price_rate',sum(p*c for p,c in zip(reversed(source_powers),[F(2,5),F(1,10)]))/1000,
+            'currency/hour','Reorder source phases to (a,b) but deliberately retain the old price vector (0.4,0.1).')
+        two_phase_powers = [power(z(10),z(F(3,10),-F(1,10)))[0],
+                            power(z(0,10),z(-F(3,10),F(1,10)))[0]]
+        put('two_phase_source_price_rate',sum(p*c for p,c in zip(two_phase_powers,[F(1,10),F(1,5)]))/1000,
+            'currency/hour','Two earth-referenced source phase powers from (10,j*10) V and (0.3-j*0.1,-0.3+j*0.1) A, weighted by (0.1,0.2)/1000; not a one-coil generator convention.')
         four=[F(-1),F(4),F(3,2)];three=[F(4),F(3,2),F(-2)]
         put('four_price_rate',rate(four),'currency/hour','Dot((-1,4,1.5),(.1,-.2,.3))/1000 in declared four-leg coil order.')
         put('three_price_rate',rate(three),'currency/hour','Dot((4,1.5,-2),(.1,-.2,.3))/1000 in declared cyclic-coil order.')
@@ -149,6 +163,10 @@ def calculations():
         weighted=total(scale(u,c) for u,c in zip(coils,costs))
         change=mul(conj(z(F(1,2),F(1,5))),weighted)[0]/1000
         assert total(coils)==z()
+        uniform_rate = sum(three)*F(1,10)/1000
+        circulated_powers = [p+power(u,z(F(1,2),F(1,5)))[0] for p,u in zip(three,coils)]
+        assert uniform_rate == sum(circulated_powers)*F(1,10)/1000
+        put('three_uniform_price_rate',uniform_rate,'currency/hour','Uniform 0.1 prices times sum((4,1.5,-2) W)/1000; equal circulation leaves this sum unchanged in the authored cyclic model.')
         put('three_circulation_price_rate',rate(three)+change,'currency/hour',
             'Baseline rate + Re(conj(0.5+j*0.2)*sum(c_k*U_k))/1000; U=(10-j10,6+j18,-16-j8). Computational cyclic model only.')
         return {'schema_version':'1.0.0','evidence_state':'self_checked_book_calculations_not_external_review',
@@ -179,19 +197,22 @@ REFERENCE_BINDINGS = {
  361:[('4.82421875','multi_voltage_1_real'),('0.10546875','multi_voltage_1_imag'),('4.973879','multi_apparent_1')],
  362:[('-2.46484375','multi_voltage_2_real'),('3.89453125','multi_voltage_2_imag'),('2.576506','multi_apparent_2')],
  363:[('-2.39453125','multi_voltage_3_real'),('3.96484375','multi_voltage_3_imag'),('2.589267','multi_apparent_3')],
- 365:[('10.139652','multi_sum_apparent')],372:[('0.251648','multi_neutral_real')],
+ 365:[('10.139652','multi_sum_apparent')],372:[('0.251648','multi_neutral_real'),('0.000549','multi_neutral_imag')],
  373:[('2.338756','multi_loss_real'),('1.314397','multi_loss_imag')],
  392:[('14.921637','multi_equal_total_rating'),('10.139652','multi_sum_apparent')],
  608:[('4.0625','pn_squared_lower_excess')],683:[('4.0625','neutral_case_load_real')],
  684:[('0.9375','neutral_case_conductor_loss')],691:[('0.118034','neutral_voltage_excess')],
- 697:[('0.118034','neutral_voltage_excess')],707:[('0.078125','shunted_neutral_current_squared')],
+ 697:[('0.118034','neutral_voltage_excess')],706:[('0.3125','neutral_return_current_squared')],707:[('0.078125','shunted_neutral_current_squared')],
  772:[('0.193752','pp_lower_excess')],773:[('0.306248','pp_upper_excess')],778:[('0.306248','pp_upper_excess')],
  848:[('0.09966865','small_angle_coefficient')],853:[('0.09966865','small_angle_coefficient')],
  855:[('0.04966865','bus_lower_angle_excess')],856:[('0.02033135','bus_upper_angle_excess')],
- 950:[('0.159017','sequence_zero_excess')],981:[('1.520691','sequence_earth_zero_magnitude')],
+ 947:[('0.3125','sequence_zero_squared')],950:[('0.159017','sequence_zero_excess')],981:[('1.520691','sequence_earth_zero_magnitude')],
  1040:[('+0.09966865','small_angle_coefficient')],1043:[('0.01966865','branch_upper_angle_excess')],
- 1387:[('-0.0012','source_price_rate')],1742:[('-0.00045','four_price_rate')],1743:[('-0.0005','three_price_rate')],
+ 1387:[('-0.0012','source_price_rate')],1388:[('+0.0006','source_price_positive_rate')],
+ 1390:[('-0.0006','source_total_price_rate')],1395:[('+0.0021','source_unmoved_price_rate')],
+ 1415:[('0.0005','two_phase_source_price_rate')],1742:[('-0.00045','four_price_rate')],1743:[('-0.0005','three_price_rate')],
  1753:[('-0.00095','four_unmoved_price_rate')],1769:[('-0.0005','three_price_rate'),('-0.0044','three_circulation_price_rate')],
+ 1771:[('0.00035','three_uniform_price_rate')],
 }
 
 

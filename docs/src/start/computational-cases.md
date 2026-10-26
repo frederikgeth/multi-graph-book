@@ -3,9 +3,14 @@
 **Page status:** teaching guide to existing evidence and the scalar opening lesson.
 
 Choose a case by the question you want to answer. Commands below run from the
-repository root. Start with the scalar lesson; it needs only Python 3 and
-prints its result without creating files. The Julia studies use the pinned
-`experiments` environment and may regenerate their recorded artifacts.
+repository root. Use Python 3.11 or later for the Python commands. Start with
+the scalar lesson; it prints its result without creating files.
+
+The Julia commands using `--project=experiments` are maintainer studies. That
+environment uses a mutable sibling package checkout and is not a pinned replay.
+For a recorded run, use the isolated replay below; for the current published
+package, follow the [workbook's environment table](@ref running-case-evidence-generations).
+Some maintainer commands regenerate tracked artifacts.
 
 ## First calculation: parallel members
 

@@ -412,7 +412,7 @@ general AC or multiconductor reduction certificate.
 
 #### Numerical evidence boundary
 
-The three numerical artifacts answer different questions and should not be
+These diagnostic artifacts answer different questions and should not be
 collapsed into one solver claim:
 
 | Artifact | What is measured | What it does not establish |

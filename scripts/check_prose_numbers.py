@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Check that high-precision prose numbers are artifact-bound or explicitly derived."""
+"""Check displayed-number consistency and explicit derivation bindings.
+
+Legacy matches against the artifact pool establish numerical agreement only;
+they do not establish that the matching artifact supports the passage.
+"""
 
 from __future__ import annotations
 
@@ -218,7 +222,7 @@ def main() -> int:
         return 1
     print(
         f"prose numbers: {len(values)} high-precision literals checked; "
-        f"{direct_matches} direct artifact matches and {len(bindings)} explicit derived bindings pass"
+        f"{direct_matches} unscoped numeric matches and {len(bindings)} explicit derived bindings pass"
     )
     return 0
 

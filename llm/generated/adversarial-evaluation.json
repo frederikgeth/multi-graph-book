@@ -29,9 +29,9 @@
           "claim:FORMULATION-NODAL-002",
           "claim:FORMULATION-Y-SPLIT-001",
           "concept:graph-topology-adjacency",
+          "concept:factor",
           "claim:ARCH-SUPPORT-001",
           "concept:nodal-operator-alias",
-          "concept:factor",
           "claim:FORMULATION-ZERO-001",
           "concept:flow-current-power-message"
         ]
@@ -43,9 +43,9 @@
           "concept:flow-current-power-message",
           "claim:FORMULATION-Y-SPLIT-001",
           "concept:nodal-operator-alias",
+          "claim:NUMERICAL-002",
           "claim:FORMULATION-NODAL-002",
           "claim:FORMULATION-NODAL-003",
-          "claim:NUMERICAL-002",
           "claim:GRAPH-PI-COLLAPSE-001",
           "claim:GRAPH-SELF-LOOP-001",
           "claim:FORMULATION-NODAL-001",
@@ -63,8 +63,8 @@
           "claim:FORMULATION-NODAL-002",
           "concept:direction-orientation-hierarchy",
           "claim:ARCH-NODAL-001",
-          "claim:GRAPH-PI-COLLAPSE-001",
           "claim:NUMERICAL-002",
+          "claim:GRAPH-PI-COLLAPSE-001",
           "claim:ARCH-SUPPORT-001"
         ]
       },
@@ -280,8 +280,8 @@
           "claim:TR-SER-002",
           "claim:TR-PAR-002",
           "claim:FORMULATION-NODAL-001",
-          "claim:LIMIT-CONVEXITY-001",
           "claim:NUMERICAL-001",
+          "claim:LIMIT-CONVEXITY-001",
           "claim:TR-XFMR-003",
           "claim:ARCH-LOWER-001"
         ]
@@ -671,8 +671,8 @@
           "claim:NUMERICAL-005",
           "claim:LOAD-CONNECTION-002",
           "claim:LIMIT-NEUTRAL-001",
-          "claim:ARCH-PORT-002",
-          "claim:COLLAPSE-001"
+          "claim:COLLAPSE-001",
+          "claim:FORMULATION-PORT-001"
         ]
       },
       "lexical": {
@@ -1165,7 +1165,7 @@
           "claim:TR-KRON-NEUTRAL-007",
           "claim:FORMULATION-NODAL-001",
           "claim:ARCH-SURGERY-001",
-          "claim:PRACTICE-IMPEDANCE-001"
+          "claim:ARCH-RECOVERY-001"
         ]
       },
       "lexical": {
@@ -1443,7 +1443,7 @@
           "claim:ARCH-SURGERY-002",
           "claim:TR-XFMR-007",
           "claim:TR-XFMR-006",
-          "claim:ARCH-RECOVERY-003"
+          "claim:ARCH-LOWER-002"
         ]
       },
       "mandatory_record_recall": null,
@@ -1657,8 +1657,8 @@
         "top_10": [
           "concept:equivalence-exactness-preservation",
           "claim:TR-KRON-NEUTRAL-001",
-          "claim:FORMULATION-ZERO-001",
           "claim:TR-KRON-NEUTRAL-002",
+          "claim:FORMULATION-ZERO-001",
           "claim:TR-KRON-NEUTRAL-004",
           "concept:rating-limit-constraint",
           "claim:TR-KRON-FIVE-001",
@@ -1765,9 +1765,9 @@
           "claim:LIMIT-CONVEXITY-001",
           "claim:FORMULATION-ZERO-001",
           "concept:normalization",
-          "claim:CONTROL-PF-001",
           "claim:PRACTICE-DUAL-001",
           "claim:LOAD-CONNECTION-002",
+          "claim:CONTROL-PF-001",
           "claim:FORMULATION-PORT-001",
           "claim:TR-KRON-NEUTRAL-001"
         ]
@@ -1933,7 +1933,7 @@
           "claim:LOAD-CONNECTION-002",
           "claim:LIMIT-MULTIPLICITY-001",
           "claim:AU-CARSON-001",
-          "claim:CONTROL-PF-001"
+          "claim:PRACTICE-IMPORT-001"
         ]
       },
       "lexical": {
@@ -2077,7 +2077,7 @@
           "claim:NUMERICAL-001",
           "claim:TR-XFMR-007",
           "claim:FIXTURE-002",
-          "claim:ARCH-NODAL-001"
+          "claim:TOPOLOGY-001"
         ]
       },
       "lexical": {
@@ -2476,9 +2476,9 @@
         "top_10": [
           "claim:LOAD-CONNECTION-002",
           "concept:direction-orientation-hierarchy",
-          "claim:TR-XFMR-001",
           "concept:object-node-interface",
           "claim:TR-XFMR-003",
+          "claim:TR-XFMR-001",
           "claim:LOAD-BASE-001",
           "claim:ARCH-PORT-001",
           "claim:ARCH-CONDUCTOR-002",
@@ -3041,8 +3041,8 @@
           "claim:TR-KRON-002",
           "claim:TR-KRON-001",
           "claim:LOAD-DECISION-001",
-          "concept:phase-conductor-sequence-coordinate",
           "claim:TR-KRON-FIVE-002",
+          "concept:phase-conductor-sequence-coordinate",
           "claim:TR-KRON-NEUTRAL-004"
         ]
       },
@@ -3124,8 +3124,8 @@
           "claim:LIMIT-MULTIPLICITY-001",
           "claim:CONTROL-PF-001",
           "claim:LOAD-DECISION-001",
-          "claim:PRACTICE-SHORT-001",
           "claim:IMPEDANCE-LADDER-001",
+          "claim:PRACTICE-SHORT-001",
           "claim:PRACTICE-DUAL-001",
           "claim:COLLAPSE-001",
           "claim:COLLAPSE-002",
@@ -3195,12 +3195,12 @@
           "concept:flow-current-power-message",
           "claim:TR-XFMR-003",
           "claim:TRANSFORM-SEM-001",
-          "claim:ARCH-NODAL-001",
           "claim:LOAD-CONNECTION-002",
+          "claim:ARCH-NODAL-001",
           "concept:object-node-interface",
           "claim:FORMULATION-Y-SPLIT-001",
-          "claim:TR-SER-003",
-          "claim:TR-XFMR-001"
+          "claim:CONTROL-PF-001",
+          "claim:TR-SER-003"
         ]
       },
       "lexical": {
@@ -3308,8 +3308,8 @@
         "top_10": [
           "concept:equivalence-exactness-preservation",
           "concept:rating-limit-constraint",
-          "claim:TR-SER-002",
           "concept:factor",
+          "claim:TR-SER-002",
           "claim:TR-SER-001",
           "claim:TR-XFMR-008",
           "claim:TR-SER-003",
@@ -3331,7 +3331,7 @@
           "claim:ARCH-BLOCK-001",
           "claim:LLM-RETRIEVAL-001",
           "claim:TR-KRON-002",
-          "claim:TR-SER-001"
+          "claim:CONTROL-PF-001"
         ]
       },
       "lexical": {
@@ -3453,8 +3453,8 @@
           "concept:rating-limit-constraint",
           "concept:graph-topology-adjacency",
           "concept:ground-neutral-reference",
-          "claim:FORMULATION-Y-SPLIT-001",
           "concept:parallel",
+          "claim:FORMULATION-Y-SPLIT-001",
           "concept:object-node-interface"
         ]
       },
@@ -3524,14 +3524,14 @@
         "top_10": [
           "claim:LIMIT-VUF-001",
           "claim:COLLAPSE-001",
-          "claim:COLLAPSE-002",
           "claim:IMPEDANCE-LADDER-001",
+          "claim:COLLAPSE-002",
           "claim:ARCH-LOWER-001",
-          "claim:CONTROL-PF-001",
           "claim:ARCH-VIEW-001",
+          "claim:CONTROL-PF-001",
           "claim:LIMIT-NEUTRAL-001",
           "claim:TR-PAR-005",
-          "claim:NUMERICAL-004"
+          "claim:TR-PAR-007"
         ]
       },
       "lexical": {
@@ -3988,7 +3988,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "ce7b5b2c0554d45a561e1bc4fe78d8bb3f25bef14a4b2acb3ac93e867832eefb"
+    "corpus_sha256": "2a834b0a01bd2bb10002771def29788c635dba1b9706cb2fbef445a8c5cf8d15"
   },
   "inputs": {
     "adversarial_cases": {

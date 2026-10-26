@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "ce7b5b2c0554d45a561e1bc4fe78d8bb3f25bef14a4b2acb3ac93e867832eefb",
+  "corpus_sha256": "2a834b0a01bd2bb10002771def29788c635dba1b9706cb2fbef445a8c5cf8d15",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -93,7 +93,7 @@
     },
     {
       "path": "docs/src/cases/unintended-solution-multiplicity.md",
-      "sha256": "4d319199c87fb45506e055c9deda1b371aa9189190319339eff77f73ab2f13c7"
+      "sha256": "2e8522df0e4273452b81a0772d9d9870dd4d8028a5194fe48e947609fc3528a0"
     },
     {
       "path": "docs/src/foundations/circuit-formulations-and-lowering.md",
@@ -121,7 +121,7 @@
     },
     {
       "path": "docs/src/foundations/ibr-power-factor-controls.md",
-      "sha256": "b69c9828763c6803c3d3614242cbd30cd62c73efe1315b2b1a137dd989e97f0b"
+      "sha256": "664f6f3242f0c6969e1e78614c5f74cc91344463496b1c273a128fca7fa2dd5e"
     },
     {
       "path": "docs/src/foundations/impedance-fidelity-ladder.md",
@@ -145,7 +145,7 @@
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
-      "sha256": "5ede1d3885cc5befd0c12cfbb7c63b97d62fe1cd8fa2238c6085ae176c234c20"
+      "sha256": "d47d7ee1602a28321e413f19a7c8a94f7ece2e0465b1b608b853d9b7b649efdd"
     },
     {
       "path": "docs/src/foundations/orientation-terminal-power.md",
@@ -265,7 +265,7 @@
     },
     {
       "path": "docs/src/start/computational-cases.md",
-      "sha256": "c7674a5f3a9130c759237ab4ee9b68eaf742363089865aa119a7b2ec2c690ba1"
+      "sha256": "816f3c5194401ee00d9825790e0f435a4f9a0596a958af54a1116662605c7e18"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
@@ -353,7 +353,7 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "c9b798fb04f71e3242c3111361a6fb26d683211d940e5dcffcc74b6ba104cf3c"
+      "sha256": "840545023967744bda3edf9b1dea813f58a8ed3251ab1d0ad4f02186bd10209c"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",

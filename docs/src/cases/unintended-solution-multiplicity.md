@@ -2,9 +2,10 @@
 
 **Page status:** self-checked exact scalar witnesses and pinned local-solver comparisons; no general AC uniqueness or dynamic-stability result.
 
-A successful solve answers the equations and constraints that were supplied.
-It does not establish that they describe the intended set of operating points,
-or that the returned point is unique. This lesson separates three mechanisms:
+A solver returns a candidate for the equations and constraints that were
+supplied. Check that point before accepting it. Even a feasible point does not
+establish that the model describes the intended operating states, or that
+the point is unique. This lesson separates three mechanisms:
 changed admissibility, undetermined internal currents, and a lost physical
 balance equation. Keep *equation roots*, *feasible operating points*, *local
 optima* and *global optima* distinct throughout.
