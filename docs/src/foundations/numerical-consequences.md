@@ -544,7 +544,8 @@ are unassessed.
 The separate candidate `audit_solution` now adds default-role source neutral
 returns, implicit source grounding and WYE/SINGLE_PHASE/DELTA constant-power
 load equations, fixed ideal switches, a bounded WYE/SINGLE_PHASE generator
-domain, ordinary phase-to-earth voltage bounds, fixed single-coil transformers,
+domain, ordinary phase-to-earth and explicit-neutral phase-to-neutral voltage
+bounds, fixed single-coil transformers,
 and matched WYE/DELTA winding-list equations with explicit rating-metadata
 semantics. The same running-network result now has **33 unassessed rows**
 (34 before the rating-metadata trace below):
@@ -1223,3 +1224,101 @@ used to convert percentage data, which are retained declarations, and which
 actually register loading constraints. Then explain why adding `s_max` is a
 modeling decision requiring evidence about the intended rating and observation,
 rather than a repair justified merely by the existence of `s_rating`.
+
+
+### [Phase-to-neutral bounds require the neutral phasor](@id phase-neutral-voltage-audit)
+
+The preceding examples distinguish phase-to-earth voltage from device-current
+observations. The next independent audit adds
+finite `vpn_min`/`vpn_max` arrays for the actual phase-minus-neutral voltage.
+These arrays have one entry per phase in the full bus declaration order,
+excluding its default-role n/N neutral. They do not bound phase-to-earth voltage,
+and a missing neutral role is not permission to substitute earth.
+
+Consider a 10 V source with a 1 Ω phase conductor and a 1 Ω neutral conductor.
+At the supplied 8 W load point, phase current is 1 A toward the load and neutral
+current is -1 A in the same source-to-load orientation. Direct conductor drops
+therefore give
+
+```math
+V_{q,x}=10-1\times1=9\ \mathrm V,\qquad
+V_{q,n}=0-1\times(-1)=1\ \mathrm V,\qquad
+U_{q,xn}=V_{q,x}-V_{q,n}=8\ \mathrm V.
+```
+
+**Predict:** would a 9 V phase-to-earth result establish compliance with a
+phase-neutral lower bound of 8.25 V? It would not. The package-owned
+`phase-neutral-voltage.json` fixture separates the observations:
+
+| Quantity or obligation | Supplied value or bounds | Independent result |
+|:--|:--|:--|
+| Phase-to-earth voltage | 9 V, bounds 8.5–9.5 V | Pass |
+| Neutral-to-earth voltage | 1 V | Required supplied state; no neutral limit inferred |
+| Phase-to-neutral voltage | 8 V, bounds 7.5–8.5 V | Pass |
+| Tightened PN lower bound | 8.25 V | Fail by 0.25 V |
+| Tightened PN upper bound | 7.75 V | Fail by 0.25 V |
+| Local KCL and total power at either bound mutation | Same supplied currents/voltages | Pass |
+
+Source power is 10 W, the load consumes 8 W and the two conductor losses sum to
+2 W. Closing that power balance does not erase either voltage-limit violation.
+The native SI and system-base per-unit solves reproduce the supplied voltages
+and pass the independent audit. A limited native attempt is retained with its
+local termination and failed point audit; local infeasibility alone is not a
+global infeasibility certificate, and a successful solve does not prove uniqueness.
+
+For supplied complex voltages, the checked quantity is
+
+```math
+m_p=|V_p-V_n|,\qquad
+e_{p,\min}=\max(0,\underline v_{pn,p}-m_p),\qquad
+e_{p,\max}=\max(0,m_p-\overline v_{pn,p}).
+```
+
+Violations and tolerances are in **V**, not V². At the 8.25 V lower bound, the
+squared-constraint violation is 4.0625 V² while the magnitude violation is
+0.25 V; those numbers cannot share an unqualified tolerance. Subtract the
+phasors before taking a magnitude: ``|V_p-V_n|`` generally differs from
+``|V_p|-|V_n|``. A common shift of both phasors preserves this voltage
+observation; separate source, grounding or earth-connected equations may forbid
+that shift in the surrounding network.
+
+A grounded neutral has its own obligation. A separately consistent fixture
+changes the load to 9 W at 9 V, sets neutral-conductor current to zero and
+supplies the corresponding earth reactions. It passes the native solve and
+independent audit. The native builder may substitute zero for an ideal grounded
+neutral in its bound expression. The audit instead uses the supplied neutral
+phasor in the original voltage difference and checks grounding separately.
+An inconsistent ground report is therefore a failed grounding obligation;
+a missing neutral report stays unknown even when the neutral was declared
+grounded. It is never filled in as zero.
+
+**Inspect:** `examples/phase_neutral_voltage_audit.jl`, invoked by the exact
+candidate `verify_linear_coverage.jl` companion, retains the analytic/native
+points, both bound violations, grounded case, missing neutral, malformed array
+and a source-fixed bound. Each checked PN row identifies its neutral reference,
+full phase index, observed magnitude and bound. Tests also cover an unbalanced
+three-phase circuit, consistent declaration reordering, upper-case neutral
+labels, exact zero/equality boundaries and complex common shifts.
+
+The native builder skips a grounded or source-fixed **phase** without shifting
+later array indices. The audit leaves that phase's declared bound **unassessed**;
+it does not report compliance merely because a source supplied its voltage.
+A grounded **neutral** does not itself skip an applicable phase bound. When the
+first phase is skipped, the next phase still uses bound entry 2. Tests inspect
+native constraint identities as the object under test, while the independent
+evaluator constructs neither observations nor residuals from those constraints.
+
+Full finite nonnegative arrays and a supported neutral role are required.
+Malformed or nonfinite bounds, conversion overflow/underflow and unknown
+applicability remain **unassessed**, while otherwise known current contributions
+and checked violations stay visible. Missing required neutral voltage suppresses
+network KCL/power certification. Neutral-to-earth, phase-to-phase, angle and
+sequence limits remain separate audit work. The existing running network has no
+PN-bound declarations, so its 33 unassessed obligations remain unchanged. The
+published integration pin and execution MCP surface are unchanged.
+
+**Transfer exercise.** For ``V_p=4+6\mathrm j`` V and ``V_n=1+2\mathrm j`` V,
+compute the phase-neutral magnitude and compare it with subtracting their
+magnitudes. Then place a skipped grounded phase before this phase in
+`terminal_names`: explain why its bound uses entry 2, and why deleting the
+neutral result cannot be repaired by a grounding label or solver status.

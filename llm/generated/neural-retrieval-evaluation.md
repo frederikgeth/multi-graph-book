@@ -6,7 +6,7 @@
 **Embedding artifact hash:** `507dfbc0b17cb6138f2a9f9e0894df3198cab2bebb23fc46759021e6ee458d02`
 **Current-corpus compatibility:** `archived_prior_corpus`
 **Archived on:** `2026-10-26`
-**Current corpus hash:** `077d2481fb79a50f97ff8e04d90dad479f12109faca50de76fee92ec0e7e4110`
+**Current corpus hash:** `27cae15700d375882111a440931bf041eb07c7b6426728008db66bce636a2ea9`
 **Current held-out input hash:** `171857dd883acf3ed9a091fac0e2e7485cbd13d5f0477a56af37d010cec16592`
 **Required action:** rerun both pinned neural retriever and reranker before comparing them with the current corpus
 **Current lexical baseline:** lexical recall@10=42.6%; char_tfidf recall@10=43.4%; hybrid recall@10=46.0%

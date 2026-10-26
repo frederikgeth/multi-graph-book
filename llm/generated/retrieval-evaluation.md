@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `077d2481fb79a50f97ff8e04d90dad479f12109faca50de76fee92ec0e7e4110`<br>
+**Corpus hash:** `27cae15700d375882111a440931bf041eb07c7b6426728008db66bce636a2ea9`<br>
 **Cases:** 108
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -20,7 +20,7 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Open-corpus lexical evidence recall@10 | 33.5% | diagnostic |
 | Open-corpus complete evidence@10 | 0.9% | diagnostic |
 | Evidence-only lexical recall@5 | 35.1% | diagnostic |
-| Evidence-only lexical recall@10 | 42.2% | diagnostic |
+| Evidence-only lexical recall@10 | 42.0% | diagnostic |
 | Evidence-only complete evidence@10 | 1.9% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
@@ -45,7 +45,7 @@ the question count must not be treated as that many independent observations.
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `lexical` | 33.6% | 42.6% | 0.0% | 0/33 | 6/33 | 0.195 |
 | `char_tfidf` | 34.1% | 43.4% | 0.0% | 0/33 | 6/33 | 0.219 |
-| `hybrid` | 35.0% | 46.0% | 0.0% | 0/33 | 6/33 | 0.212 |
+| `hybrid` | 35.5% | 46.0% | 0.0% | 0/33 | 6/33 | 0.214 |
 | `graph` | 37.5% | 58.9% | 18.2% | 6/33 | 3/33 | 0.249 |
 
 Held-out contract-router firing: **22/33 (66.7%)**; release floor: **66.7%**.
@@ -96,7 +96,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | --- | ---: | ---: | ---: | ---: |
 | `power_engineer` | 36 | 100.0% | 42.4% | 100.0% |
 | `software_engineer` | 36 | 100.0% | 38.3% | 100.0% |
-| `student` | 36 | 100.0% | 45.8% | 100.0% |
+| `student` | 36 | 100.0% | 45.4% | 100.0% |
 
 ## Case results
 
@@ -198,7 +198,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | `EVAL-PARAMETER-REUSE-STUDENT` | `student` | `zero-parameter-means-absent-term` | 25.0% | yes |
 | `EVAL-PARAMETER-REUSE-SOFTWARE` | `software_engineer` | `zero-parameter-means-absent-term` | 25.0% | yes |
 | `EVAL-PARAMETER-REUSE-POWER` | `power_engineer` | `zero-parameter-means-absent-term` | 25.0% | yes |
-| `EVAL-SOLUTION-MULTIPLICITY-STUDENT` | `student` | `apparent-power-limit-implies-current-admissibility` | 57.1% | yes |
+| `EVAL-SOLUTION-MULTIPLICITY-STUDENT` | `student` | `apparent-power-limit-implies-current-admissibility` | 42.9% | yes |
 | `EVAL-SOLUTION-MULTIPLICITY-SOFTWARE` | `software_engineer` | `apparent-power-limit-implies-current-admissibility` | 28.6% | yes |
 | `EVAL-SOLUTION-MULTIPLICITY-POWER` | `power_engineer` | `apparent-power-limit-implies-current-admissibility` | 57.1% | yes |
 | `EVAL-LIMIT-CONVEXITY-STUDENT` | `student` | `convex-rating-implies-convex-opf` | 60.0% | yes |

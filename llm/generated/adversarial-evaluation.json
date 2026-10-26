@@ -210,8 +210,8 @@
           "claim:LOAD-CONNECTION-002",
           "claim:TR-PAR-002",
           "claim:LIMIT-NEUTRAL-001",
-          "claim:FORMULATION-NODAL-002",
-          "claim:NUMERICAL-004"
+          "claim:FORMULATION-NODAL-001",
+          "claim:FORMULATION-NODAL-002"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -1002,12 +1002,12 @@
           "claim:TR-KRON-NEUTRAL-007",
           "claim:TR-KRON-NEUTRAL-004",
           "claim:TR-KRON-NEUTRAL-005",
-          "claim:TR-KRON-002",
           "claim:PRACTICE-SHORT-001",
+          "claim:TR-KRON-002",
           "claim:FORMULATION-ZERO-001",
           "claim:TR-KRON-FIVE-002",
-          "claim:TR-KRON-NEUTRAL-003",
-          "concept:rating-limit-constraint"
+          "concept:rating-limit-constraint",
+          "claim:TR-KRON-NEUTRAL-003"
         ]
       },
       "hybrid": {
@@ -1074,8 +1074,8 @@
           "concept:rating-limit-constraint",
           "concept:factor",
           "claim:TR-KRON-NEUTRAL-005",
-          "claim:TR-KRON-NEUTRAL-007",
           "claim:FORMULATION-NODAL-001",
+          "claim:TR-KRON-NEUTRAL-007",
           "concept:flow-current-power-message",
           "claim:FORMULATION-PORT-001",
           "claim:TR-KRON-FIVE-002"
@@ -1090,11 +1090,11 @@
           "claim:KERNEL-OBSERVATION-001",
           "claim:TOPOLOGY-001",
           "claim:ARCH-PORT-002",
-          "claim:FORMULATION-PORT-001",
           "claim:FORMULATION-NODAL-001",
           "claim:ARCH-DEGENERACY-001",
-          "claim:GROUND-SCOPE-002",
-          "claim:FORMULATION-ZERO-001"
+          "claim:FORMULATION-PORT-001",
+          "claim:FORMULATION-ZERO-001",
+          "claim:GROUND-SCOPE-002"
         ]
       },
       "lexical": {
@@ -1656,8 +1656,8 @@
         "recall_at_10": 0.333333,
         "top_10": [
           "concept:equivalence-exactness-preservation",
-          "claim:FORMULATION-ZERO-001",
           "claim:TR-KRON-NEUTRAL-001",
+          "claim:FORMULATION-ZERO-001",
           "claim:TR-KRON-NEUTRAL-002",
           "claim:TR-KRON-NEUTRAL-004",
           "claim:TR-KRON-FIVE-001",
@@ -1679,13 +1679,13 @@
           "claim:TR-KRON-NEUTRAL-001",
           "claim:PRACTICE-DUAL-001",
           "claim:GROUND-SCOPE-002",
-          "claim:LIMIT-MULTIPLICITY-001",
-          "claim:FORMULATION-NODAL-001"
+          "claim:FORMULATION-NODAL-001",
+          "claim:LIMIT-MULTIPLICITY-001"
         ]
       },
       "lexical": {
         "complete_at_10": false,
-        "recall_at_10": 0.333333,
+        "recall_at_10": 0.166667,
         "top_10": [
           "claim:PRACTICE-SHORT-001",
           "claim:KERNEL-OBSERVATION-001",
@@ -1696,7 +1696,7 @@
           "claim:FORMULATION-Y-SPLIT-001",
           "claim:FORMULATION-NODAL-002",
           "claim:TR-PAR-AC-JOINT-001",
-          "claim:LIMIT-MULTIPLICITY-001"
+          "claim:TR-KRON-NEUTRAL-002"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -1753,7 +1753,7 @@
           "concept:normalization",
           "claim:TR-KRON-NEUTRAL-001",
           "claim:KERNEL-OBSERVATION-001",
-          "claim:PRACTICE-DUAL-001"
+          "claim:FORMULATION-NODAL-001"
         ]
       },
       "lexical": {
@@ -2019,8 +2019,8 @@
           "claim:PRACTICE-DUAL-001",
           "claim:PRACTICE-SHORT-001",
           "claim:GROUND-SCOPE-004",
-          "claim:LOAD-CONNECTION-002",
           "claim:ARCH-RECOVERY-001",
+          "claim:LOAD-CONNECTION-002",
           "claim:TR-XFMR-007"
         ]
       },
@@ -2075,9 +2075,9 @@
           "claim:ARCH-BLOCK-001",
           "claim:NUMERICAL-001",
           "claim:TR-XFMR-007",
+          "claim:TR-KRON-NEUTRAL-001",
           "claim:KERNEL-OBSERVATION-001",
-          "claim:TR-PAR-002",
-          "claim:TR-KRON-NEUTRAL-001"
+          "claim:TR-PAR-002"
         ]
       },
       "lexical": {
@@ -2343,8 +2343,8 @@
           "claim:FORMULATION-ZERO-001",
           "concept:flow-current-power-message",
           "claim:LOAD-DECISION-001",
-          "concept:factor",
           "claim:PRACTICE-SHORT-001",
+          "concept:factor",
           "claim:LOAD-CONNECTION-002",
           "concept:phase-conductor-sequence-coordinate",
           "claim:LIMIT-MULTIPLICITY-001"
@@ -2450,7 +2450,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "077d2481fb79a50f97ff8e04d90dad479f12109faca50de76fee92ec0e7e4110"
+    "corpus_sha256": "27cae15700d375882111a440931bf041eb07c7b6426728008db66bce636a2ea9"
   },
   "inputs": {
     "adversarial_cases": {

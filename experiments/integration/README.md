@@ -106,7 +106,7 @@ publishing the package commit, deliberately updating the ordinary integration
 pin and regenerating the federated pair. The native default-role source-neutral return and constant-power loads are now
 covered by the extended API, together with fixed ideal switches, bounded
 WYE/SINGLE_PHASE generator injections/limits, applicable phase-to-earth bus
-voltage bounds and fixed single-coil single_phase transformers with legacy
+voltage bounds, explicit-neutral phase-to-neutral vpn_min/vpn_max arrays, and fixed single-coil single_phase transformers with legacy
 secondary excitation, plus two/three-winding WYE transformers with matched one-to-three phase-neutral coils and
 explicit pairwise leakage, plus matched three-terminal DELTA winding incidence/rotation. DELTA generators, generator costs/controllers, transformer
 variants/limits outside that narrow slice, voltage-dependent loads, other voltage families and objective
@@ -239,3 +239,21 @@ caps are checked and its top-level rating is declared metadata. The unsupported
 generator cost still suppresses complete network KCL/power certification. There
 are 33 unassessed obligations; the verdict remains indeterminate. No published
 integration pin, PSK implementation status or execution MCP change is included.
+
+
+The same companion runs `examples/phase_neutral_voltage_audit.jl` and binds
+`phase-neutral-voltage.json`. Its 10 V, two-conductor SI witness has a 9 V load
+phase and 1 V neutral: phase-neutral voltage is 8 V. Tightened PN lower/upper
+bounds fail by 0.25 V while KCL and power pass. The example retains native SI,
+per-unit, grounded-neutral and limited attempts, plus missing-neutral,
+source-fixed and malformed-bound evidence. Grounding is checked separately;
+missing neutral voltage is never reconstructed as zero. PN rows retain their
+full phase-array index and reference terminal, including when an earlier phase
+is skipped by native applicability. Required bounds are finite nonnegative
+full-length arrays in the original non-neutral bus order.
+
+Package tests cover skipped grounded/source phases, three-phase reorderings,
+complex phasor subtraction and Float64 representability boundaries. Other
+voltage families remain open. The running input has no vpn_min/vpn_max fields,
+so its 33 unassessed obligations and indeterminate verdict are unchanged.
+Published integration, PSK implementation statuses and execution MCP stay separate.

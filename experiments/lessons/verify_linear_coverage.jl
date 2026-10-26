@@ -89,6 +89,10 @@ function linear_coverage_lesson()
     rating_conversion_path = joinpath(root,"test","data","pf_comparison","pf_3wdg_unequal_kva.dss")
     include(rating_path)
     rating_evidence = Base.invokelatest(()->getfield(@__MODULE__,:WindingRatingMetadataExample).run())
+    pn_path = joinpath(root,"examples","phase_neutral_voltage_audit.jl")
+    pn_fixture_path = joinpath(root,"test","data","linear_audit","phase-neutral-voltage.json")
+    include(pn_path)
+    pn_evidence = Base.invokelatest(()->getfield(@__MODULE__,:PhaseNeutralVoltageAuditExample).run())
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -315,6 +319,44 @@ function linear_coverage_lesson()
         @test haskey(running["transformer"]["n_winding"]["x1"],"s_rating")
         @test JSON3.read(JSON3.write(re),Dict{String,Any})==re
     end
+    @testset "Phase-to-neutral limits require the neutral phasor" begin
+        pe=pn_evidence
+        prow(key,id)=only(filter(x->x["id"]==id,pe[key]["rows"]))
+        @test pe["analytic"]["status"]=="passed"
+        obs=prow("analytic","bus.q.x.vpn_max")
+        @test obs["observed_magnitude_V"]==8. && obs["bound_V"]==8.5
+        @test obs["reference_terminal"]=="n" && obs["phase_index"]==1
+        @test obs["unit"]=="V"
+        @test prow("analytic","bus.q.x.v_min")["status"]=="passed"
+        for key in ("lower_violation","upper_violation")
+            @test pe[key]["status"]=="failed" && pe[key]["failed_checks"]==1
+            field=key=="lower_violation" ? "vpn_min" : "vpn_max"
+            @test prow(key,"bus.q.x.$field")["residual"]==.25
+            @test prow(key,"network.power")["status"]=="passed"
+            @test all(x->x["status"]=="passed",filter(x->x["dimension"]=="kcl",pe[key]["rows"]))
+        end
+        @test pe["missing_neutral_voltage"]["status"]=="indeterminate"
+        @test prow("missing_neutral_voltage","bus.q.x.vpn_max")["status"]=="unassessed"
+        @test prow("missing_neutral_voltage","network.power")["residual"]===nothing
+        @test pe["source_fixed_bound"]["status"]=="indeterminate"
+        @test prow("source_fixed_bound","bus.p.a.vpn_max")["status"]=="unassessed"
+        @test pe["malformed_bound"]["status"]=="indeterminate"
+        @test prow("malformed_bound","network.power")["status"]=="passed"
+        @test pe["grounded_neutral"]["status"]=="passed"
+        @test prow("grounded_neutral","bus.q.x.vpn_max")["observed_magnitude_V"]==9.
+        for key in ("native_si","native_per_unit","native_grounded")
+            @test pe[key]["accepted"] && pe[key]["audit"]["coverage_complete"]
+        end
+        @test pe["native_si"]["candidate"]["bus"]["q"]["x"]["vr"]≈9. atol=1e-7
+        @test pe["native_si"]["candidate"]["bus"]["q"]["n"]["vr"]≈1. atol=1e-7
+        @test pe["native_per_unit"]["candidate"]["bus"]["q"]["n"]["vr"]≈1. atol=1e-7
+        @test pe["native_grounded"]["candidate"]["ground"]["q"]["n"]["cg_r"]≈-1. atol=1e-7
+        @test !pe["native_limited"]["accepted"]
+        @test pe["native_limited"]["termination_status"]=="LOCALLY_INFEASIBLE"
+        @test pe["native_limited"]["audit"]["status"]=="failed"
+        @test all(b->!haskey(b,"vpn_min")&&!haskey(b,"vpn_max"),values(running["bus"]))
+        @test JSON3.read(JSON3.write(pe),Dict{String,Any})==pe
+    end
     active = dirname(Base.active_project())
     Dict{String,Any}(
         "evidence_state"=>"local_package_candidate_not_promoted_to_published_integration_pin",
@@ -323,7 +365,8 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path]),
+        "phase_neutral_voltage_example"=>pn_evidence,
         "winding_rating_metadata_example"=>rating_evidence,
         "delta_winding_example"=>delta_evidence,
         "multiphase_winding_example"=>multiphase_evidence,
