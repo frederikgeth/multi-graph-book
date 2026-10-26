@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "6f2c58fd787a6ca92c6fccda8867ba671c6558c4b4adf218abceece59086e88e",
+  "corpus_sha256": "ce7b5b2c0554d45a561e1bc4fe78d8bb3f25bef14a4b2acb3ac93e867832eefb",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -12,12 +12,12 @@
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
     "included_doc_count": 79
   },
-  "evaluation_case_count": 108,
+  "evaluation_case_count": 117,
   "heldout_case_count": 33,
-  "misconception_count": 34,
-  "record_count": 1029,
+  "misconception_count": 37,
+  "record_count": 1031,
   "record_counts": {
-    "claim_bundle": 121,
+    "claim_bundle": 123,
     "concept_bundle": 18,
     "scientific_knowledge": 18,
     "section": 872
@@ -33,7 +33,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "e348709a2f265c6bc79536b0d7b59d016d8aff330204572375f9047fd97203ba"
+      "sha256": "fb8fb27eab406a81a7acd282fbc4ffb12dc02914c0e5a6349ad387ccf13469e0"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -353,7 +353,7 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "34d42c6cef727391e8b8cea6f878c1329809526e3a3093efec0758d362d03a54"
+      "sha256": "c9b798fb04f71e3242c3111361a6fb26d683211d940e5dcffcc74b6ba104cf3c"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",
@@ -361,7 +361,7 @@
     },
     {
       "path": "llm/evaluation-cases.toml",
-      "sha256": "00c20e70454c72c289473fb6f649906fefd5c5cc9d2e93366fa1b662ca8f0b71"
+      "sha256": "b02c890e2cf6d74ea2bc7d03e9496a26d287f9384e2e6047a80368dc36063e22"
     },
     {
       "path": "llm/heldout-paraphrases.toml",
@@ -369,7 +369,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "5f952a6bf57561105d92c41c434a26723b84f4cd06da4d1bd91517e1fc85c7ac"
+      "sha256": "f0724471dfd472cbb39d74011d006c1419ede3cee8087807bdeeb3f1c99e60e8"
     },
     {
       "path": "vocabulary/vocabulary.toml",

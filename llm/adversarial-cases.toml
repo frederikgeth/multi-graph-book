@@ -379,16 +379,16 @@ expected_claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
 expected_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "factor"]
 
 # Bounded author-review probes, now exposed development regressions.
-# The unqualified questions have related passages but no current complete
-# answer contract; do not replace refusal with a merely related qualified route.
+# Mathematical questions now require scoped contracts. The unpublished native
+# monitor question still has no current complete executable answer contract.
 
 [[case]]
 case_id = "ADV-VUF-ZERO-RATIO-DOMAIN"
 audience = "power_engineer"
 question = "Does zero positive-sequence voltage satisfy a VUF limit because the cross-multiplied inequality passes?"
-expected_status = "under_retrieved"
-expected_claim_ids = []
-expected_concept_ids = []
+expected_status = "qualified"
+expected_claim_ids = ["LIMIT-VUF-001"]
+expected_concept_ids = ["phase-conductor-sequence-coordinate", "rating-limit-constraint"]
 
 [[case]]
 case_id = "ADV-DELTA-GENERATOR-COIL-LIMITS"
@@ -402,9 +402,9 @@ expected_concept_ids = ["phase-conductor-sequence-coordinate", "flow-current-pow
 case_id = "ADV-SOLVER-LABEL-PHYSICAL-TOLERANCE"
 audience = "power_engineer"
 question = "Does LOCALLY_SOLVED prove all generator bounds pass a 1e-6 W tolerance?"
-expected_status = "under_retrieved"
-expected_claim_ids = []
-expected_concept_ids = []
+expected_status = "qualified"
+expected_claim_ids = ["NUMERICAL-001", "NUMERICAL-004"]
+expected_concept_ids = ["state", "rating-limit-constraint"]
 
 [[case]]
 case_id = "ADV-REPAIRED-FOUR-LEG-MONITORS"
@@ -418,14 +418,78 @@ expected_concept_ids = []
 case_id = "ADV-TINY-MINIMUM-PF-RATIO"
 audience = "power_engineer"
 question = "Does a weighted minimum-PF residual pass certify the PF ratio when the minimum coefficient is tiny?"
-expected_status = "under_retrieved"
-expected_claim_ids = []
-expected_concept_ids = []
+expected_status = "qualified"
+expected_claim_ids = ["CONTROL-PF-001"]
+expected_concept_ids = ["rating-limit-constraint", "flow-current-power-message"]
 
 [[case]]
 case_id = "ADV-CONSTANT-PF-Q-CAP-CLIPPING"
 audience = "power_engineer"
 question = "Does q_max clip the reactive injection required by a constant power factor?"
+expected_status = "qualified"
+expected_claim_ids = ["CONTROL-PF-001"]
+expected_concept_ids = ["rating-limit-constraint", "factor"]
+
+[[case]]
+case_id = "ADV-VUF-TRANSIENT-COMPLIANCE"
+audience = "power_engineer"
+question = "Does a zero positive-sequence VUF polynomial pass certify a manufacturer transient voltage-compliance algorithm?"
 expected_status = "under_retrieved"
 expected_claim_ids = []
 expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PF-FILTER-DYNAMICS"
+audience = "power_engineer"
+question = "Does a weighted minimum-PF residual certify my filter dynamics?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PF-MANUFACTURER-CLIPPING"
+audience = "power_engineer"
+question = "Does a constant PF Q cap conflict guarantee manufacturer dynamic clipping behavior?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PF-VUF-MULTI-INTENT"
+audience = "power_engineer"
+question = "Does a weighted minimum-PF residual pass also certify VUF at its zero denominator?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PF-THERMAL-SAFETY"
+audience = "power_engineer"
+question = "Does a weighted minimum-PF residual pass prove all branch temperatures are safe?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PF-CAP-SIGN-INTENT"
+audience = "power_engineer"
+question = "Is the sign of constant PF enough to choose q_max?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PF-VUF-SPELLED-OUT"
+audience = "power_engineer"
+question = "Does a weighted power factor residual pass also certify VUF at its zero denominator?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-CONSTANT-PF-HYPHENATED"
+audience = "power_engineer"
+question = "Does a Q cap allow constant-PF clipping without violating the equality?"
+expected_status = "qualified"
+expected_claim_ids = ["CONTROL-PF-001"]
+expected_concept_ids = ["rating-limit-constraint", "factor"]

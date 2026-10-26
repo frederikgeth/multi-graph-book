@@ -238,7 +238,7 @@ source_paths = ["docs/src/cases/coupled-multivoltage-corridor.md", "docs/src/fou
 id = "solver-termination-implies-validated-solution"
 title = "Successful solver termination proves the returned solution is scientifically valid"
 severity = "critical"
-query_patterns = ["solver says optimal", "locally solved means feasible", "solver success validates solution", "termination status proof", "trust optimal solution", "successful opf result", "opf converged successfully", "solver converged so correct", "accept solved result"]
+query_patterns = ["solver says optimal", "locally solved means feasible", "solver success validates solution", "termination status proof", "trust optimal solution", "successful opf result", "opf converged successfully", "solver converged so correct", "accept solved result", "LOCALLY_SOLVED generator bounds tolerance"]
 tempting_answer = "The solver returned a successful or optimal status, so the result satisfies the model and is valid for the study."
 required_qualification = "Termination status is algorithm evidence only; independently validate the returned numeric values, relevant equations, bounds, residuals, recovery obligations, and the actual local or global optimality guarantee before making a scientific conclusion."
 safe_shorthand = "Solved is safe shorthand only when the required independent validation dimensions and optimality level are stated."
@@ -441,3 +441,42 @@ operational_consequence = "Gauge fixing can discard a rating-relevant current or
 mandatory_claim_ids = ["KERNEL-OBSERVATION-001"]
 mandatory_concept_ids = ["ground-neutral-reference", "flow-current-power-message", "equivalence-exactness-preservation"]
 source_paths = ["docs/src/cases/quotients-and-observations.md"]
+
+[[misconception]]
+id = "vuf-polynomial-pass-defines-zero-ratio"
+title = "A VUF polynomial pass defines the ratio at zero positive sequence"
+query_patterns = ["VUF zero denominator", "VUF cross multiplied inequality", "zero positive-sequence voltage", "VUF absolute negative-sequence cap"]
+required_qualification = "VUF is abs(V2)/abs(V1), assessed only above a declared positive-sequence voltage floor with its own dimensionless tolerance. The all-zero point can satisfy the cross-multiplied polynomial while the ratio is undefined; a negative-sequence magnitude cap alone cannot settle a changing denominator."
+safe_shorthand = "A VUF pass is a ratio-domain observation, not just a voltage-magnitude or cross-multiplied inequality pass."
+operational_consequence = "Reporting zero or compliance at an undefined denominator can hide missing ratio evidence; the voltage floor is a declared numerical domain, not a physical quality standard."
+mandatory_claim_ids = ["LIMIT-VUF-001"]
+mandatory_concept_ids = ["phase-conductor-sequence-coordinate", "rating-limit-constraint"]
+source_paths = ["docs/src/reference/numerical-audit-reference.md"]
+tempting_answer = "A satisfied squared unbalance inequality or absolute negative-sequence cap proves VUF compliance even at zero positive sequence."
+severity = "critical"
+
+[[misconception]]
+id = "weighted-pf-residual-certifies-ratio"
+title = "A small weighted PF residual certifies the actual power-factor ratio"
+query_patterns = ["weighted minimum-PF residual", "tiny minimum-PF coefficient", "PF ratio tolerance", "weighted power factor residual"]
+required_qualification = "A weighted residual pass uses an absolute declared VA tolerance and does not establish the scale-free PF quotient. At minimum m=10^-20, P=0 W and Q=1 var, the m VA excess passes 10^-6 VA although PF is zero and the exact positive-minimum envelope fails. At P=Q=0 no PF quotient is assigned."
+safe_shorthand = "Retain weighted residual units, coefficients and tolerance separately from ratio accuracy and zero-power domain."
+operational_consequence = "Tiny weights or powers can hide large ratio errors behind small absolute residuals; improving numerical representability does not supply a relative accuracy guarantee."
+mandatory_claim_ids = ["CONTROL-PF-001"]
+mandatory_concept_ids = ["rating-limit-constraint", "flow-current-power-message"]
+source_paths = ["docs/src/foundations/ibr-power-factor-controls.md"]
+tempting_answer = "Passing the native weighted PF row at an absolute tolerance proves the requested PF ratio."
+severity = "critical"
+
+[[misconception]]
+id = "constant-pf-capability-is-clipping"
+title = "A capability cap clips constant-PF reactive demand automatically"
+query_patterns = ["constant power factor clipping", "q_max clip reactive", "constant PF Q cap conflict", "constant PF capability intersection", "constant-PF clipping", "constant-PF capability intersection"]
+required_qualification = "A declared constant-PF equality and capability limits are simultaneous obligations. For P=4 W and f=0.8 the equality requires Q=-3 var; q_min=-2 var rejects that point, while clipping Q to -2 var creates a 0.8 VA equality residual. No controller priority or clipping behavior is inferred."
+safe_shorthand = "Intersect the declared control law with capability; do not silently replace the equality by a clipped target."
+operational_consequence = "A point can satisfy a capability cap while violating its controller, or satisfy the controller while violating the cap; solver status alone settles neither."
+mandatory_claim_ids = ["CONTROL-PF-001"]
+mandatory_concept_ids = ["rating-limit-constraint", "factor"]
+source_paths = ["docs/src/foundations/ibr-power-factor-controls.md"]
+tempting_answer = "A Q bound automatically clips the reactive power demanded by constant PF, preserving control compliance."
+severity = "critical"

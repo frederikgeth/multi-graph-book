@@ -144,6 +144,50 @@ def main() -> int:
     check(direct["validation"]["valid"], "R1 packet source validation failed", errors)
     check("retrieval warning" in direct["markdown"].lower(), "R1 warning missing", errors)
 
+    # The audit follow-up adds mathematical contracts, not runtime authority for
+    # the unpublished implementation. Verify the distinction across adapters.
+    audit_cases = [
+        ("Does zero positive-sequence voltage satisfy a VUF limit because the cross-multiplied inequality passes?", "LIMIT-VUF-001"),
+        ("Does LOCALLY_SOLVED prove all generator bounds pass a 1e-6 W tolerance?", "NUMERICAL-004"),
+        ("Does a weighted minimum-PF residual pass certify the PF ratio when the minimum coefficient is tiny?", "CONTROL-PF-001"),
+        ("Does q_max clip the reactive injection required by a constant power factor?", "CONTROL-PF-001"),
+        ("Are mixed per-phase and averaged FOUR_LEG monitors still unsupported in the repaired candidate?", None),
+        ("Does a weighted minimum-PF residual pass also certify VUF at its zero denominator?", None),
+    ]
+    for number, (query, claim_id) in enumerate(audit_cases):
+        direct = service.response(query, "power_engineer")
+        status, http = exercise_http("POST", "/v1/context", json.dumps({
+            "query": query, "audience": "power_engineer",
+        }).encode())
+        check(status == 200, f"audit {number}: HTTP failed", errors)
+        mcp = handle_request(service, {
+            "jsonrpc": "2.0", "id": f"audit-{number}", "method": "tools/call",
+            "params": {"name": "book_context", "arguments": {"query": query, "audience": "power_engineer"}},
+        })["result"]["structuredContent"]
+        cli = subprocess.run([
+            sys.executable, str(ROOT / "scripts/search_llm_corpus.py"), query,
+            "--audience", "power_engineer", "--context-packet", "--json",
+        ], capture_output=True, text=True, cwd=ROOT)
+        check(cli.returncode == 0, f"audit {number}: CLI failed: {cli.stderr}", errors)
+        packets = [direct["packet"], http["packet"], mcp["packet"]]
+        if cli.returncode == 0:
+            packets.append(json.loads(cli.stdout))
+        for item in packets:
+            expected = "qualified" if claim_id else "under_retrieved"
+            check(item["status"] == expected, f"audit {number}: status changed across adapters", errors)
+            if claim_id:
+                ids = {record["record_id"] for record in item["mandatory_records"]}
+                check(f"claim:{claim_id}" in ids, f"audit {number}: missing scoped claim", errors)
+            else:
+                check(not item["mandatory_records"], f"audit {number}: invented mandatory evidence", errors)
+            if claim_id in {"CONTROL-PF-001", "LIMIT-VUF-001"}:
+                check(not item["executable_checks"], f"audit {number}: mathematical contract acquired package authority", errors)
+        check(direct["validation"]["valid"], f"audit {number}: source validation failed", errors)
+        if claim_id:
+            check("required qualifications" in direct["markdown"].lower(), f"audit {number}: Markdown lost qualifications", errors)
+        else:
+            check("retrieval warning" in direct["markdown"].lower(), f"audit {number}: Markdown lost refusal", errors)
+
     if errors:
         print("LLM access-route check failed:")
         for error in errors:

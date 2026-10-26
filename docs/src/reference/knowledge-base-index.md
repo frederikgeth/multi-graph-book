@@ -1,14 +1,14 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:e348709a2f265c6bc79536b0d7b59d016d8aff330204572375f9047fd97203ba -->
+<!-- generated-from claims/claims.toml sha256:fb8fb27eab406a81a7acd282fbc4ffb12dc02914c0e5a6349ad387ccf13469e0 -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 121
-**Indexed chapters:** 49
+**Indexed claims:** 123
+**Indexed chapters:** 51
 
 ## Claims by type
 
@@ -102,7 +102,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `COUPLED-CORRIDOR-001` — Physically parallel line sections need not be parallel in the bus multigraph; a source model can retain stable line assets plus oriented section-to-section coupling records, with each connected coupling group compiling into one joint electrical factor before inversion or nodal stamping. | [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | `self-checked` |
 | `TRANSFORM-CATALOG-001` — The guarded-normalization catalogue treats coordinate normalization, series elimination, parallel bundling, switch contraction, multiwinding compilation, and rooted-tree views as distinct rule families whose acceptance depends on declared closure, recovery, constraint, and provenance guards. | [Guarded normalization rules](../transformations/guarded-normalization.md) | `self-checked` |
 
-### `theorem` (51)
+### `theorem` (53)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -116,6 +116,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `ARCH-RECOVERY-004` — For noisy full-rank multiconductor voltage/current snapshots, the pseudoinverse source estimate has a deterministic Frobenius error bound proportional to the noise radius and the voltage-snapshot pseudoinverse norm; nearly dependent excitation therefore enlarges the certified uncertainty set even when the observation map is full rank. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `self-checked` |
 | `ARCH-SUPPORT-001` — Block and scalar nonzero-support graphs of a declared compound nodal operator are simple graphs by construction, while the identified factor-stamp decomposition is separate data and may be a multigraph. | [Two topology levels and the nodal projection](../foundations/two-level-topology-and-nodal-projection.md) | `self-checked` |
 | `COLLAPSE-001` — Under compatible three-phase terminals, cyclic (circulant) series and shunt matrices, balanced boundary data, sequence-compatible grounding, two-terminal factor closure, phase-symmetric decisions, and positive-sequence observations, the general phase-domain relation restricts exactly to the positive-sequence scalar network. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `self-checked` |
+| `CONTROL-PF-001` — A declared constant-PF equality and generation-only minimum-PF envelope must intersect authored capability limits; clipping reactive power is not an automatic replacement for the equality. At P=4 W and f=0.8, Q=-3 var satisfies the weighted equality but violates q_min=-2 var; clipping Q to -2 var leaves a 0.8 VA equality residual. A fixed absolute weighted residual tolerance also does not certify a PF ratio: for minimum m=10^-20, P=0 W and Q=1 var the excess is m VA and passes 10^-6 VA, while the actual PF ratio is zero and violates the exact minimum envelope. | [IBR power-factor, Volt-var and Volt-watt controls](../foundations/ibr-power-factor-controls.md) | `self-checked` |
 | `COUPLED-CORRIDOR-002` — For two fixed linear reciprocal scalar series sections with a nonsingular joint impedance matrix, A_Gamma^T Z_Gamma^{-1} A_Gamma has an exact six-edge weighted-lattice realization on the four source terminals; source section currents are recovered by Z_Gamma^{-1} A_Gamma u, while the generated cross edges carry no asset or galvanic interpretation. | [A coupled multi-voltage corridor](../cases/coupled-multivoltage-corridor.md) | `self-checked` |
 | `FORMULATION-NODAL-001` — An ideal voltage source with a queried source current is not representable by a plain nodal-admittance injection without adding an extra current variable or changing the query contract; a modified-nodal or tableau formulation preserves the voltage constraint and current observation. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `self-checked` |
 | `FORMULATION-NODAL-002` — Even when a nodal operator can be assembled, it may be singular without a declared reference or shunt, or semantically insufficient for member-level limits: aligned parallel factors can share one aggregate admittance while having different member currents and feasible limits. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `self-checked` |
@@ -129,6 +130,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `LIMIT-CONVEXITY-001` — Individual fixed apparent-power caps are convex in explicit port powers but generally nonconvex in joint rectangular voltage-current coordinates. Current caps are convex in explicit rectangular currents, in powers with nonnegative voltage magnitude or squared magnitude, and in rectangular voltages through a fixed affine current map; substituting port power with rectangular voltage components does not generally retain convexity. None of these constraint-level statements establishes convexity or uniqueness of the complete OPF. | [When a model admits unintended solutions](../cases/unintended-solution-multiplicity.md) | `self-checked` |
 | `LIMIT-MULTIPLICITY-001` — For the real series circuit E=4/5, R=1, VI=3/25 with 0<=V<=E, the exact roots (V,I)=(1/5,3/5) and (3/5,1/5) both satisfy endpoint apparent-power caps of 1/2 derived from Vnom=1 and Imax=1/2, whereas only the higher-voltage root satisfies the intended current cap. The inequality substitution changes admissibility, not the circuit equation roots. | [When a model admits unintended solutions](../cases/unintended-solution-multiplicity.md) | `self-checked` |
 | `LIMIT-NEUTRAL-001` — In the declared two-conductor SI circuit with R=[[1,1/2],[1/2,1]] ohm, explicit source/receiving shunts and 6/35 W phase-neutral load, both exact coil-voltage roots 1/5 and 3/5 V pass the per-conductor power caps [1,1/2] VA at both series-line ends. The lower root nevertheless violates the 1/2 A neutral current cap at both ends, despite nonzero receiving-neutral voltage; aggregate power observations also fail to certify that conductor rating. | [An explicit neutral does not make power limits current limits](../cases/neutral-shunt-multiplicity.md) | `self-checked` |
+| `LIMIT-VUF-001` — For the defined steady-state VUF ratio abs(V2)/abs(V1), an absolute negative-sequence cap alone need not certify a ratio cap when the positive-sequence denominator varies. Cross-multiplied squared feasibility at V1=V2=0 does not define that ratio; the mathematical ratio requires a nonzero denominator, while a numerical audit additionally declares its denominator floor and dimensionless tolerance separately from voltage-magnitude tolerances. | [Device and bound audit reference](../reference/numerical-audit-reference.md) | `self-checked` |
 | `LIT-PAR-001` — For fixed scalar AC pi-line models on common endpoints, dominance of normalized squared member currents for all endpoint voltages certifies a redundant current limit; with apparent-power ratings the shared terminal-voltage magnitude cancels in the comparison, giving a sufficient redundancy test using auxiliary quadratic sets, not the original apparent-power feasible regions. Checking both terminals certifies removal of both directional limits without aggregating members. | [A plausible model gives the wrong answer](../start/first-failure-parallel-branches.md) | `self-checked` |
 | `LOAD-CONNECTION-002` — For a fixed real signed coil-incidence matrix C, u=CV and i=C^T j preserve total complex power; for a three-coil cycle, adding equal circulating coil currents leaves terminal currents and total power unchanged while individual coil powers can change, so terminal KCL and aggregate power do not validate the individual coil laws. | [Load models and decision dependence](../foundations/load-models-and-decision-dependence.md) | `self-checked` |
 | `PRACTICE-DUAL-001` — For min beta*c*p subject to alpha*(d-p)<=0 with positive c,d,alpha,beta, dispatch remains p=d while the Lagrange multiplier is beta*c/alpha and physical marginal cost is alpha/beta times that multiplier; duplicating the unscaled constraint admits nonunique multiplier allocations summing to c. | [Building and changing a model you can check](../cases/building-and-changing-models.md) | `self-checked` |
@@ -162,7 +164,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 
 | Verification | Claims |
 | --- | ---: |
-| `self-checked` | 115 |
+| `self-checked` | 117 |
 | `independently-implemented` | 6 |
 | `externally-reviewed` | 0 |
 
@@ -193,6 +195,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `AU-CARSON-001` | Recover the raw CS1035 conductor, screen, earth-return, frequency, and ordering provenance before claiming a faithful reconstruction. |
 | `COLLAPSE-001` | Extend the network witness to controls, phase-specific limits, contingencies, and an independent mathematical review before making a global decision-equivalence claim. |
 | `COLLAPSE-002` | Extend the witness to controls, phase-specific limits, contingencies, and independent mathematical review. |
+| `CONTROL-PF-001` | Independent review remains pending; no dynamic controller compliance, authenticated native construction, scale-free PF-ratio accuracy or complete-network feasibility is certified. |
 | `COUPLED-CORRIDOR-001` | Obtain information-model and protection review; define a machine-readable coupling-group schema and test partial-overlap import round trips. |
 | `COUPLED-CORRIDOR-002` | Independently review the sign/orientation convention; extend the result to block-valued full-pi and singular tableau targets; and separately test limit, state, protection, and optimization-decision preservation. |
 | `DATA-XWALK-001` | The running-fixture contract is checked against pinned documentation profiles; external package imports and file-level round-trip provenance/rating checks remain open. |
@@ -220,6 +223,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `LIMIT-CONVEXITY-001` | Independent review remains pending; nonlinear controls, variable taps, device capability curves and complete AC-OPF convexity require separate analysis. |
 | `LIMIT-MULTIPLICITY-001` | Independent scientific review and general three-phase extensions remain pending; the separate controlled neutral/shunt witness does not establish arbitrary AC/OPF uniqueness, dynamic stability, or a complete equipment thermal model. |
 | `LIMIT-NEUTRAL-001` | Independent scientific review, three-phase extensions and native internal pi-shunt coverage remain pending; no temperature, stability, or complete feeder-feasibility conclusion is established. |
+| `LIMIT-VUF-001` | Independent review remains pending; a numerical floor does not establish physical voltage quality, authenticated phase order or native package polynomial feasibility outside the ratio domain. |
 | `LIT-PAR-001` | Establish necessary and sufficient redundancy tests for arbitrary multiconductor limits and for state- or decision-dependent line models. |
 | `LLM-RETRIEVAL-001` | Rerun both pinned candidates on the current corpus and evaluate domain-adapted alternatives before making a current or general neural-retrieval comparison. |
 | `LOAD-BASE-001` | Extend the definition and executable guardrail to arbitrary unbalanced terminal maps, nonstandard connection families, explicit unit provenance, and independently reviewed importer crosswalks. |
@@ -343,10 +347,11 @@ schema is normalised.
 | `TR-XFMR-009` — For the recorded 11-terminal WYE/WYE/DELTA case, a three-scenario phase-selective tap path can be enumerated exactly over the 3^3 ordered tap triples, with consecutive tap movement charged explicitly and each scenario retaining its own phase directions. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
 | `TR-XFMR-010` — In the recorded three-scenario tap path, enumerating all 27 ordered tap triples and then applying an explicit at-most-one-movement policy leaves 15 admissible branches; the policy is a decision constraint and must not be inferred from the unconstrained best path. | [Transformer tap AC decision case](../cases/transformer-tap-ac-decision.md) | `empirical` |
 
-### `general` (2)
+### `general` (3)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
+| `LIMIT-VUF-001` — For the defined steady-state VUF ratio abs(V2)/abs(V1), an absolute negative-sequence cap alone need not certify a ratio cap when the positive-sequence denominator varies. Cross-multiplied squared feasibility at V1=V2=0 does not define that ratio; the mathematical ratio requires a nonzero denominator, while a numerical audit additionally declares its denominator floor and dimensionless tolerance separately from voltage-magnitude tolerances. | [Device and bound audit reference](../reference/numerical-audit-reference.md) | `theorem` |
 | `LLM-RETRIEVAL-001` — On its recorded prior corpus and held-out paraphrase set, the pinned compact neural retriever and generic cross-encoder reranker each failed at least one predeclared not-worse-than-hybrid retrieval gate, so neither candidate was promoted into the production route. | [Federated scientific knowledge: end-to-end trace](../reference/federated-knowledge-trace.md) | `empirical` |
 | `VOCAB-BRIDGE-001` — Load-bearing statements use a preferred house term or qualified shorthand that declares the relevant representation, quantity, state, and preservation object; an unqualified term is unsafe when it can change the claim. | [One network, five languages](../start/one-network-five-languages.md) | `practice` |
 
@@ -404,7 +409,7 @@ schema is normalised.
 | `TR-GRAPH-ACTIVE-001` — For the five-bus fixture, the inventory has identified-member cycle rank 3 and simple-projection cycle rank 2, while the declared spanning tree is radial at both levels; active radiality is therefore a state-specific property, not an inventory-only label. | [Cycles, parallelism, and radial structure](../foundations/cycles-parallelism-radiality.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
 
-### `representation` (61)
+### `representation` (62)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -430,6 +435,7 @@ schema is normalised.
 | `ARCH-VIEW-001` — The book proposes that a power-network visualisation declare its object level, preserved and forgotten semantics, identity fibres, and reverse-map status; single-line, multi-line, port-factor, node-breaker, nodal-support, and reduced views are distinct typed projections. | [From source graphs to views and graph surgery](../foundations/compiled-views-and-graph-surgery.md) | `proposal` |
 | `COLLAPSE-001` — Under compatible three-phase terminals, cyclic (circulant) series and shunt matrices, balanced boundary data, sequence-compatible grounding, two-terminal factor closure, phase-symmetric decisions, and positive-sequence observations, the general phase-domain relation restricts exactly to the positive-sequence scalar network. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `theorem` |
 | `COLLAPSE-002` — The generated Fortescue witness diagonalizes a circulant three-phase impedance matrix and preserves the positive-sequence subspace, while a non-circulant perturbation produces sequence mixing and a positive-subspace residual. | [When the general model collapses](../foundations/when-general-model-collapses.md) | `empirical` |
+| `CONTROL-PF-001` — A declared constant-PF equality and generation-only minimum-PF envelope must intersect authored capability limits; clipping reactive power is not an automatic replacement for the equality. At P=4 W and f=0.8, Q=-3 var satisfies the weighted equality but violates q_min=-2 var; clipping Q to -2 var leaves a 0.8 VA equality residual. A fixed absolute weighted residual tolerance also does not certify a PF ratio: for minimum m=10^-20, P=0 W and Q=1 var the excess is m VA and passes 10^-6 VA, while the actual PF ratio is zero and violates the exact minimum envelope. | [IBR power-factor, Volt-var and Volt-watt controls](../foundations/ibr-power-factor-controls.md) | `theorem` |
 | `DATA-XWALK-001` — CIM/CGMES, PowerModelsDistribution, OpenDSS, and MATPOWER provide distinct partial correspondences to the book's asset, terminal, topology, factor, state, and rating objects; successful import is not by itself semantic or decision equivalence. | [Data-model crosswalk](../foundations/data-model-crosswalk.md) | `practice` |
 | `FORMULATION-NODAL-001` — An ideal voltage source with a queried source current is not representable by a plain nodal-admittance injection without adding an extra current variable or changing the query contract; a modified-nodal or tableau formulation preserves the voltage constraint and current observation. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `theorem` |
 | `FORMULATION-NODAL-002` — Even when a nodal operator can be assembled, it may be singular without a declared reference or shunt, or semantically insufficient for member-level limits: aligned parallel factors can share one aggregate admittance while having different member currents and feasible limits. | [Circuit formulations and the lowering boundary](../foundations/circuit-formulations-and-lowering.md) | `theorem` |

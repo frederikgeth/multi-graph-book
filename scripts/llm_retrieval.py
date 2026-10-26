@@ -37,12 +37,26 @@ ROUTER_GENERIC_TERMS = {
 # when it contains a curated coil-current phrase. This conservative refusal is
 # route-specific; it does not claim to classify every unsupported physical model.
 ROUTER_TOPIC_EXCLUSIONS = {
+    "power-balance-enforces-kcl-at-zero-voltage": r"vuf",
+    "vuf-polynomial-pass-defines-zero-ratio": r"inrush|transient\w*|manufacturer\w*|dynamic\w*|pf|minimumpf|constantpf|filter\w*",
+    "weighted-pf-residual-certifies-ratio": r"transient\w*|manufacturer\w*|dynamic\w*|filter\w*|vuf|thermal|temperature\w*",
+    "constant-pf-capability-is-clipping": r"transient\w*|manufacturer\w*|dynamic\w*|filter\w*|vuf|thermal|temperature\w*",
     "nullspace-implies-removable-gauge": r"inrush|transient\w*|energiz\w*|energis\w*|saturat\w*",
     "apparent-power-limit-implies-current-admissibility": r"dynamic\w*|transient\w*|nameplate|manufacturer|temperature|heating",
     "delta-coil-currents-are-terminal-currents": r"inrush|transient\w*|energiz\w*|energis\w*|saturat\w*",
 }
 
 ROUTER_TOPIC_PATTERNS = {
+    "vuf-polynomial-pass-defines-zero-ratio": (
+        r"vuf|unbalance\w*|positivesequence|negativesequence",
+        r"zero|denominator\w*|ratio\w*|floor|crossmultiplied|cap\w*",
+    ),
+    "weighted-pf-residual-certifies-ratio": (
+        r"weighted|residual\w*|tolerance\w*|coefficient\w*|tiny|small",
+    ),
+    "constant-pf-capability-is-clipping": (
+        r"constant|fixed|constantpf", r"clip\w*|qmax|qmin|capability|intersection|cap\w*",
+    ),
     "iteration-failure-proves-infeasibility": (
         r"fail\w*|nonconverg\w*|infeasib\w*|collapse|nose",
     ),
@@ -99,9 +113,23 @@ ROUTER_TOPIC_PATTERNS = {
 # connection question evaluated "at the nominal operating point". Other base
 # markers can stand alone once the connection/load topic gate also matches.
 ROUTER_TOPIC_QUERY_PATTERNS = {
+    "vuf-polynomial-pass-defines-zero-ratio": r"^(?!.*\bpower factor\b)",
+    "weighted-pf-residual-certifies-ratio": r"\b(?:pf|minimumpf|power factor)\b",
+    "constant-pf-capability-is-clipping": (
+        r"(?=.*\b(?:pf|constantpf|power factor)\b)"
+        r"(?=.*\b(?:clip\w*|intersect\w*|simultaneous|replac\w*|overrid\w*|conflict\w*|satisf\w*|violat\w*)\b)"
+    ),
     "wye-delta-share-nominal-voltage-base": (
         r"\b(?:nominal (?:load )?voltage|base|vnom|kv|sqrt3|anchor\w*|normaliz\w*|normalis\w*)\b"
     ),
+}
+
+# For these narrow mathematical contracts, quoting a curated phrase cannot
+# bypass the necessary topic/intent gate. Existing routes keep their behavior.
+ROUTER_REQUIRED_TOPIC_ROUTES = {
+    "vuf-polynomial-pass-defines-zero-ratio",
+    "weighted-pf-residual-certifies-ratio",
+    "constant-pf-capability-is-clipping",
 }
 
 STOPWORDS = {
@@ -594,7 +622,7 @@ class CorpusIndex:
                 pattern_scores.append(0.72 * coverage + 0.28 * precision)
             # An explicitly curated complete phrase is sufficient routing
             # evidence; partial word matches additionally need the scope gate.
-            if not exact_match and not topic_matches:
+            if not topic_matches and (not exact_match or item["id"] in ROUTER_REQUIRED_TOPIC_ROUTES):
                 continue
             title_terms = set(tokenize(item["title"])) - ROUTER_GENERIC_TERMS
             title_score = len((query_terms - ROUTER_GENERIC_TERMS) & title_terms) / max(1, len(title_terms))

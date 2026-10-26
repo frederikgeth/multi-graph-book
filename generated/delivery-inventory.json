@@ -23,9 +23,11 @@
       "ARCH-RECOVERY-002",
       "ARCH-RECOVERY-003",
       "ARCH-RECOVERY-004",
+      "CONTROL-PF-001",
       "KERNEL-OBSERVATION-001",
       "LIMIT-MULTIPLICITY-001",
       "LIMIT-NEUTRAL-001",
+      "LIMIT-VUF-001",
       "LOAD-CONNECTION-002",
       "PRACTICE-REUSE-001",
       "PRACTICE-SHORT-001",
@@ -50,11 +52,11 @@
       "TR-XFMR-005",
       "TR-XFMR-006"
     ],
-    "total": 121,
+    "total": 123,
     "verification": {
       "externally-reviewed": 0,
       "independently-implemented": 6,
-      "self-checked": 115
+      "self-checked": 117
     }
   },
   "knowledge": {
@@ -74,6 +76,7 @@
       "complete-feasibility-status-is-enough": [
         "PSK-000013"
       ],
+      "constant-pf-capability-is-clipping": [],
       "convex-rating-implies-convex-opf": [],
       "delta-coil-currents-are-terminal-currents": [],
       "fixed-tap-snapshot-preserves-adjustable-transformer": [
@@ -133,14 +136,17 @@
         "PSK-000014"
       ],
       "vanishing-impedance-preserves-ideal-current-sharing": [],
+      "vuf-polynomial-pass-defines-zero-ratio": [],
+      "weighted-pf-residual-certifies-ratio": [],
       "wye-delta-share-nominal-voltage-base": [
         "PSK-000004"
       ],
       "zero-parameter-means-absent-term": []
     },
-    "total": 34,
+    "total": 37,
     "unlinked_ids": [
       "apparent-power-limit-implies-current-admissibility",
+      "constant-pf-capability-is-clipping",
       "convex-rating-implies-convex-opf",
       "delta-coil-currents-are-terminal-currents",
       "ideal-transformer-is-a-large-admittance",
@@ -155,15 +161,17 @@
       "self-loop-is-a-shunt-or-circuit-loop",
       "source-outage-is-deletion-in-reduced-graph",
       "vanishing-impedance-preserves-ideal-current-sharing",
+      "vuf-polynomial-pass-defines-zero-ratio",
+      "weighted-pf-residual-certifies-ratio",
       "zero-parameter-means-absent-term"
     ]
   },
-  "pair_sha256": "b6dd711e3a305a54f372df40f461952f0edaa4740c1d574fff3d103b6d828d39",
+  "pair_sha256": "b491f760d2b80c87a76207c35898e816ba3bdbe6f17fec13421841e3ec1f5d5d",
   "schema_version": "1.0.0",
   "source_sha256": {
-    "claims/claims.toml": "e348709a2f265c6bc79536b0d7b59d016d8aff330204572375f9047fd97203ba",
-    "generated/federated-knowledge-pair-manifest.json": "5d3a4d185809667395007ecb0d41a5cc29835c9eb703178488845c4a8118082c",
+    "claims/claims.toml": "fb8fb27eab406a81a7acd282fbc4ffb12dc02914c0e5a6349ad387ccf13469e0",
+    "generated/federated-knowledge-pair-manifest.json": "4902bb5da8dd0a0027fb6e65e1bff972e266cede7cf936549a7c8c1f27c1649e",
     "knowledge/psk.toml": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364",
-    "llm/misconceptions.toml": "5f952a6bf57561105d92c41c434a26723b84f4cd06da4d1bd91517e1fc85c7ac"
+    "llm/misconceptions.toml": "f0724471dfd472cbb39d74011d006c1419ede3cee8087807bdeeb3f1c99e60e8"
   }
 }

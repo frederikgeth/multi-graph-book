@@ -2056,3 +2056,37 @@ assumptions = "the benchmark artifact and its pinned provenance are the evidence
 reviewer = ""
 review_date = ""
 unresolved_issue = "Rerun both pinned candidates on the current corpus and evaluate domain-adapted alternatives before making a current or general neural-retrieval comparison."
+
+[[claim]]
+claim_id = "LIMIT-VUF-001"
+chapter = "docs/src/reference/numerical-audit-reference.md"
+claim_text = "For the defined steady-state VUF ratio abs(V2)/abs(V1), an absolute negative-sequence cap alone need not certify a ratio cap when the positive-sequence denominator varies. Cross-multiplied squared feasibility at V1=V2=0 does not define that ratio; the mathematical ratio requires a nonzero denominator, while a numerical audit additionally declares its denominator floor and dimensionless tolerance separately from voltage-magnitude tolerances."
+model_scope = "three ordered static complex phase phasors with the declared Fortescue convention and phase-neutral or earth reference; VUF is the dimensionless negative-to-positive magnitude ratio"
+assumptions = "the transform and reference are declared; the positive-sequence denominator is above the explicit chosen floor before division; no physical unbalance standard, device behavior or measurement authenticity is inferred"
+evidence_type = "ratio_domain_argument_and_exact_rational_denominator_counterexamples"
+unresolved_issue = "Independent review remains pending; a numerical floor does not establish physical voltage quality, authenticated phase order or native package polynomial feasibility outside the ratio domain."
+exactness_object = "feasible_set"
+preservation_dimensions = ["limits", "numerical_structure"]
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+citation_keys = []
+reviewer = ""
+review_date = ""
+
+[[claim]]
+claim_id = "CONTROL-PF-001"
+chapter = "docs/src/foundations/ibr-power-factor-controls.md"
+claim_text = "A declared constant-PF equality and generation-only minimum-PF envelope must intersect authored capability limits; clipping reactive power is not an automatic replacement for the equality. At P=4 W and f=0.8, Q=-3 var satisfies the weighted equality but violates q_min=-2 var; clipping Q to -2 var leaves a 0.8 VA equality residual. A fixed absolute weighted residual tolerance also does not certify a PF ratio: for minimum m=10^-20, P=0 W and Q=1 var the excess is m VA and passes 10^-6 VA, while the actual PF ratio is zero and violates the exact minimum envelope."
+model_scope = "stated static per-branch complex-power variables and explicitly declared signed constant-PF equality, generation-only weighted minimum-PF inequalities, capability boxes and absolute residual tolerances"
+assumptions = "all controls and capability bounds remain simultaneous obligations; actual P and Q use one declared injection convention; PF is undefined at P=Q=0; no physical controller priority, clipping implementation or published API capability is inferred"
+evidence_type = "weighted_constraint_algebra_and_exact_rational_clipping_and_tiny_coefficient_counterexamples"
+unresolved_issue = "Independent review remains pending; no dynamic controller compliance, authenticated native construction, scale-free PF-ratio accuracy or complete-network feasibility is certified."
+exactness_object = "feasible_set"
+preservation_dimensions = ["limits", "numerical_structure"]
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+citation_keys = []
+reviewer = ""
+review_date = ""

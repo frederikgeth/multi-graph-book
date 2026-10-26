@@ -1082,3 +1082,93 @@ required_claim_ids = ["KERNEL-OBSERVATION-001"]
 required_concept_ids = ["ground-neutral-reference", "flow-current-power-message", "equivalence-exactness-preservation"]
 required_answer_elements = ["declare full equations and observation map", "distinguish reference symmetry from observable member currents", "check coil laws beyond terminal-map kernels", "retain constraints objective and admissible recovery"]
 forbidden_simplifications = ["all null modes are reference conventions", "terminal-map kernel proves free device current", "projected feasibility certifies any lifted split", "Jacobian null vector proves a finite solution family"]
+
+[[case]]
+case_id = "EVAL-VUF-ZERO-STUDENT"
+audience = "student"
+question = "Why does a zero positive-sequence voltage leave VUF undefined even if its squared inequality passes?"
+misconception_id = "vuf-polynomial-pass-defines-zero-ratio"
+required_claim_ids = ["LIMIT-VUF-001"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "rating-limit-constraint"]
+required_answer_elements = ["retain the nonzero denominator/floor domain and dimensionless ratio tolerance", "distinguish the polynomial constraint from a defined ratio"]
+forbidden_simplifications = ["assign a VUF value at the all-zero origin"]
+
+[[case]]
+case_id = "EVAL-VUF-ZERO-SOFTWARE"
+audience = "software_engineer"
+question = "Can I report VUF zero when the positive-sequence denominator is zero and the polynomial constraint passes?"
+misconception_id = "vuf-polynomial-pass-defines-zero-ratio"
+required_claim_ids = ["LIMIT-VUF-001"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "rating-limit-constraint"]
+required_answer_elements = ["retain the nonzero denominator/floor domain and dimensionless ratio tolerance", "distinguish the polynomial constraint from a defined ratio"]
+forbidden_simplifications = ["assign a VUF value at the all-zero origin"]
+
+[[case]]
+case_id = "EVAL-VUF-ZERO-POWER"
+audience = "power_engineer"
+question = "Does an absolute negative-sequence voltage cap establish VUF when the positive sequence changes?"
+misconception_id = "vuf-polynomial-pass-defines-zero-ratio"
+required_claim_ids = ["LIMIT-VUF-001"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "rating-limit-constraint"]
+required_answer_elements = ["retain the nonzero denominator/floor domain and dimensionless ratio tolerance", "distinguish the polynomial constraint from a defined ratio"]
+forbidden_simplifications = ["assign a VUF value at the all-zero origin"]
+
+[[case]]
+case_id = "EVAL-PF-WEIGHT-STUDENT"
+audience = "student"
+question = "Does a tiny weighted minimum-PF residual guarantee the actual PF ratio?"
+misconception_id = "weighted-pf-residual-certifies-ratio"
+required_claim_ids = ["CONTROL-PF-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message"]
+required_answer_elements = ["state the absolute VA tolerance and coefficient dependence", "separate the exact envelope and PF quotient domain from a residual pass"]
+forbidden_simplifications = ["a small weighted residual proves scale-free PF accuracy"]
+
+[[case]]
+case_id = "EVAL-PF-WEIGHT-SOFTWARE"
+audience = "software_engineer"
+question = "Can my weighted power factor residual pass certify relative ratio accuracy at tiny coefficients?"
+misconception_id = "weighted-pf-residual-certifies-ratio"
+required_claim_ids = ["CONTROL-PF-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message"]
+required_answer_elements = ["state the absolute VA tolerance and coefficient dependence", "separate the exact envelope and PF quotient domain from a residual pass"]
+forbidden_simplifications = ["a small weighted residual proves scale-free PF accuracy"]
+
+[[case]]
+case_id = "EVAL-PF-WEIGHT-POWER"
+audience = "power_engineer"
+question = "Does a minimum-PF coefficient of 1e-20 allow a weighted residual pass while P is zero and Q is nonzero?"
+misconception_id = "weighted-pf-residual-certifies-ratio"
+required_claim_ids = ["CONTROL-PF-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message"]
+required_answer_elements = ["state the absolute VA tolerance and coefficient dependence", "separate the exact envelope and PF quotient domain from a residual pass"]
+forbidden_simplifications = ["a small weighted residual proves scale-free PF accuracy"]
+
+[[case]]
+case_id = "EVAL-PF-CLIP-STUDENT"
+audience = "student"
+question = "Can I satisfy constant PF simply by clipping Q at its capability cap?"
+misconception_id = "constant-pf-capability-is-clipping"
+required_claim_ids = ["CONTROL-PF-001"]
+required_concept_ids = ["rating-limit-constraint", "factor"]
+required_answer_elements = ["retain simultaneous control and capability obligations", "show that clipping can repair a cap while violating the equality"]
+forbidden_simplifications = ["a Q bound silently replaces the constant-PF equality"]
+
+[[case]]
+case_id = "EVAL-PF-CLIP-SOFTWARE"
+audience = "software_engineer"
+question = "Does q_max clip reactive demand from a constant power factor equality automatically?"
+misconception_id = "constant-pf-capability-is-clipping"
+required_claim_ids = ["CONTROL-PF-001"]
+required_concept_ids = ["rating-limit-constraint", "factor"]
+required_answer_elements = ["retain simultaneous control and capability obligations", "show that clipping can repair a cap while violating the equality"]
+forbidden_simplifications = ["a Q bound silently replaces the constant-PF equality"]
+
+[[case]]
+case_id = "EVAL-PF-CLIP-POWER"
+audience = "power_engineer"
+question = "How do a constant PF equality and Q capability cap intersect at fixed active power?"
+misconception_id = "constant-pf-capability-is-clipping"
+required_claim_ids = ["CONTROL-PF-001"]
+required_concept_ids = ["rating-limit-constraint", "factor"]
+required_answer_elements = ["retain simultaneous control and capability obligations", "show that clipping can repair a cap while violating the equality"]
+forbidden_simplifications = ["a Q bound silently replaces the constant-PF equality"]

@@ -6,14 +6,14 @@ These are registry counts and audit queues, not newly measured scientific result
 
 | Inventory | Count |
 |---|---:|
-| Claims | 121 |
+| Claims | 123 |
 | Claim verification: `externally-reviewed` | 0 |
 | Claim verification: `independently-implemented` | 6 |
-| Claim verification: `self-checked` | 115 |
+| Claim verification: `self-checked` | 117 |
 | PSK records | 18 |
-| Stable misconception IDs | 34 |
+| Stable misconception IDs | 37 |
 | Misconception IDs with a PSK link | 18 |
-| Misconception IDs without a PSK link | 16 |
+| Misconception IDs without a PSK link | 19 |
 | Full pinned package Finding registry | 381 |
 | Finding records in the curated executable export | 57 |
 
@@ -24,6 +24,7 @@ Self-checks and independent implementations retain their distinct ledger states.
 ## Misconception IDs still requiring a PSK link or explicit exclusion
 
 - `apparent-power-limit-implies-current-admissibility`
+- `constant-pf-capability-is-clipping`
 - `convex-rating-implies-convex-opf`
 - `delta-coil-currents-are-terminal-currents`
 - `ideal-transformer-is-a-large-admittance`
@@ -38,11 +39,13 @@ Self-checks and independent implementations retain their distinct ledger states.
 - `self-loop-is-a-shunt-or-circuit-loop`
 - `source-outage-is-deletion-in-reduced-graph`
 - `vanishing-impedance-preserves-ideal-current-sharing`
+- `vuf-polynomial-pass-defines-zero-ratio`
+- `weighted-pf-residual-certifies-ratio`
 - `zero-parameter-means-absent-term`
 
 ## Established-result entries without citation keys
 
-There are 33 entries in this audit queue. Missing citation keys do not show that
+There are 35 entries in this audit queue. Missing citation keys do not show that
 a statement is false or necessarily requires an external citation. Review each entry's
 basis: cited result, explicit book derivation, or bounded numerical evidence. Do not
 promote a finite numerical test into a general theorem through a status label.
@@ -54,9 +57,11 @@ promote a finite numerical test into a general theorem through a status label.
 - `ARCH-RECOVERY-002`
 - `ARCH-RECOVERY-003`
 - `ARCH-RECOVERY-004`
+- `CONTROL-PF-001`
 - `KERNEL-OBSERVATION-001`
 - `LIMIT-MULTIPLICITY-001`
 - `LIMIT-NEUTRAL-001`
+- `LIMIT-VUF-001`
 - `LOAD-CONNECTION-002`
 - `PRACTICE-REUSE-001`
 - `PRACTICE-SHORT-001`
@@ -85,5 +90,5 @@ promote a finite numerical test into a general theorem through a status label.
 
 - BMOPFTools revision: `97c274946091859b7d9b0e822c96f1e7f9f50c7e`
 - Finding registry SHA-256: `52db7414e7f2bef158d32988c196d6d038320e30efda64a7501ddf1872d44519`
-- Federated pair SHA-256: `b6dd711e3a305a54f372df40f461952f0edaa4740c1d574fff3d103b6d828d39`
+- Federated pair SHA-256: `b491f760d2b80c87a76207c35898e816ba3bdbe6f17fec13421841e3ec1f5d5d`
 - [Machine-readable inventory and source hashes](delivery-inventory.json)
