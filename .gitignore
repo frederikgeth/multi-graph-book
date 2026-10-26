@@ -31,3 +31,6 @@ __pycache__/
 
 # Generated PDF review deliverables
 /output/pdf/
+
+# Portable local review handoffs (Git bundles and copied render outputs)
+/output/review/

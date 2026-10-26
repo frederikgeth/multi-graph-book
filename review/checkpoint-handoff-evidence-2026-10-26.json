@@ -1,0 +1,74 @@
+{
+  "archive": {
+    "archived_payload_verified": true,
+    "bytes": 56167704,
+    "path": "output/review/checkpoint-review-2026-10-26.zip",
+    "sha256": "7c1277e6117adcf32a69219c90d92f90e670333dd5707a4385c37f438fe7be58"
+  },
+  "candidate": {
+    "revision": "6c6515153a6c9d3ed8f59605033c05a5022fa392",
+    "tree": "26c5162bcc5bf24fa502bdc979063ef659694242"
+  },
+  "fresh_portable_run": {
+    "assertions_passed": 1687,
+    "environment_sha256": {
+      "Manifest.toml": "dbd6539b051f32886aed02bd239263cbd4bf7ae5a7b586ac2cd173cc767af177",
+      "Project.toml": "7eaf5e0a684b789b45e8fa9a4169f3d10bc25d6069d7112f9f87af5b861a8eda"
+    },
+    "environment_unchanged_by_offline_cached_instantiation": true,
+    "input_package_revision": "6c6515153a6c9d3ed8f59605033c05a5022fa392",
+    "input_package_tree": "26c5162bcc5bf24fa502bdc979063ef659694242",
+    "julia_version": "1.12.6",
+    "output_sha256": "10f3f26c3c830358938bcb69cf8ebe55b4b6ec9f6e14bf72d127808c5ee6181c",
+    "running_default_failed_checks": 3,
+    "running_default_unknown_checks": 0,
+    "running_tighter_status": "passed",
+    "source_bindings_matched_under_new_root": 50,
+    "test_sets": 25
+  },
+  "frozen_book": {
+    "revision": "c5416242116e5ba1df9dc03676367d04a3d82da0",
+    "tree": "c879605c2eeacc0cecd5723ec8fc6a48faa22479"
+  },
+  "kind": "author_review_handoff_validation_not_release",
+  "local_log_sha256": {
+    "mgb-handoff-book-repro.log": "75db305b319d27202ea69dd9355a84f09e83eedfe7967fc4c1c624eb388c3fd8",
+    "mgb-handoff-build-final.log": "cb51011215d9e9855f30d4611e327ae5f706fc40606401184a26b03ef765ca77",
+    "mgb-handoff-companion.log": "28f1b0f7059838174963b83e58093edbb29676ac4d39f79351de7dea1d85d021",
+    "mgb-handoff-instantiate.log": "64f8d4dfe56eb34c807c26de16a02f28bf550fd0da75d32c074cab75d52275f6",
+    "mgb-handoff-working-book-repro.log": "eb52f01515fc61f09c232fba22cacb8358d36bea39afdf2130108274040c9e35"
+  },
+  "payload_manifest_sha256": "d15972d859603091d76d818bae7b9804bc187e4fdddaaa52a7ce5187f14bca7b",
+  "preparation_sources_sha256": {
+    ".github/workflows/docs.yml": "0e1974a5af1e4c06194130422c5d12e4c465a47b77c18710210a0974c6a014c3",
+    "review/checkpoint-handoff-2026-10-26.md": "cea6c39416388cc558afdd7c9f76b8f74a6884efcdf0ae7d867257058844ea54",
+    "review/checkpoint-review-request-2026-10-26.md": "c8a527e39aa6faf0029a7010dbd7b8ad4519317c1157d3f9a0a06f4f311b7123",
+    "review/package-candidate-draft-pr-2026-10-26.md": "b3146a5b4f626d86dd185d273ac776eab5541e61c0a02d9285f81cf2923a21e6",
+    "review/package-publication-assessment-2026-10-26.md": "ecddcbfd7eb952f3e5a8fd2ad34ff2e3be2afbd43c40dac88712c2c8396d51af",
+    "review/prose-number-audit-2026-10-26.json": "78c72bd792f635060e40a1f858a943cf8bcfe7c2cd96dca6dc75e82ca515d7bf",
+    "scripts/check_prose_numbers.py": "c400b7f7797e85fb917d501d3a1413e225bef54b59bb11a86bfc8630448b0ef8",
+    "scripts/review_handoff.py": "9e7dab52b80e8049b6432cecb3b45204496985e4ec947bfaebf3b2ac3200c193",
+    "scripts/test_prose_numbers.py": "9f3f767d69c023379e3f6a844988a3de1eb076a7cc8e2e1f55de5be3df8c4d97",
+    "scripts/test_review_handoff.py": "6baaebc9d5bc7cdbdfb8a10078a90ae3ebcecf467f7a8e6ab638f279a5e46857"
+  },
+  "previous_hosted_checks": {
+    "all_success": true,
+    "head": "bda2772a434f0c5f34692b1c48457df3dbd942d4",
+    "new_head_requires_new_checks": true
+  },
+  "published_package_revision_unchanged": "97c274946091859b7d9b0e822c96f1e7f9f50c7e",
+  "readiness": {
+    "artifact_manifest_count": 97,
+    "comprehensive_release_gate_pass_claimed": false,
+    "full_package_suite_rerun": false,
+    "prose_number_gate": "failed",
+    "unbound_occurrences": 54
+  },
+  "reviewer_contact_publication_pin_or_evidence_promotion": false,
+  "schema_version": "1.0.0",
+  "synthetic_software_unit_tests": {
+    "handoff": 6,
+    "not_agent_or_reader_results": true,
+    "prose_number_guard": 5
+  }
+}

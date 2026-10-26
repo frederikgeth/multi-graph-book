@@ -65,6 +65,8 @@ jobs:
           python3 scripts/test_reproduction_workflow.py
           python3 scripts/test_neural_snapshot.py
           python3 scripts/test_teaching_figures.py
+          python3 scripts/test_review_handoff.py
+          python3 scripts/test_prose_numbers.py
           python3 review/critical-review-witnesses-2026-09-05.py
 
       - name: Check controlled callout vocabulary
