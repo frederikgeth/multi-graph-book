@@ -79,6 +79,11 @@ Before treating a solved capstone as feasible, complete the
 rows were evaluated, reconstructed or unassessed, and keep the local package
 candidate separate from the published integration pin.
 
+Before adding an inverter controller, work the
+[converter operating-point tutorial](@ref checking-ibr-operating-point).
+Use its P–Q intersection and voltage-monitor diagrams to distinguish the
+control law, measured voltage and capability limits before choosing an API.
+
 Before using delta-load result arrays, complete the
 [coil-current lesson](@ref delta-coil-current-lesson). Recover terminal currents
 and test the individual coil laws even when KCL and total power agree.

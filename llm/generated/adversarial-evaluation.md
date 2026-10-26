@@ -33,11 +33,11 @@ Recall is averaged over the 35 cases with target evidence; empty target sets are
 | `ADV-ZERO-VOLTAGE-IMBALANCE` | `qualified` | `qualified` | 66.7% | 100.0% | yes |
 | `ADV-ZERO-NEUTRAL-RESIDUAL` | `qualified` | `qualified` | 33.3% | 33.3% | yes |
 | `ADV-KCL-ALL-VOLTAGES` | `qualified` | `qualified` | 33.3% | 100.0% | yes |
-| `ADV-IDEAL-SWITCH-SHARING` | `qualified` | `qualified` | 25.0% | 50.0% | yes |
+| `ADV-IDEAL-SWITCH-SHARING` | `qualified` | `qualified` | 25.0% | 75.0% | yes |
 | `ADV-TINY-RESISTANCE-SHARING` | `qualified` | `qualified` | 25.0% | 50.0% | yes |
 | `ADV-IDEAL-CURRENT-LIMIT` | `qualified` | `qualified` | 25.0% | 25.0% | yes |
 | `ADV-PARAMETER-REUSE` | `qualified` | `qualified` | 25.0% | 75.0% | yes |
-| `ADV-DELTA-COIL-CIRCULATION` | `qualified` | `qualified` | 75.0% | 100.0% | yes |
+| `ADV-DELTA-COIL-CIRCULATION` | `qualified` | `qualified` | 75.0% | 75.0% | yes |
 | `ADV-DELTA-INRUSH-BOUNDARY` | `under_retrieved` | `under_retrieved` | — | — | — |
 | `ADV-DELTA-COIL-TRANSIENT-BOUNDARY` | `under_retrieved` | `under_retrieved` | — | — | — |
 | `ADV-DELTA-EXACT-PHRASE-TRANSIENT` | `under_retrieved` | `under_retrieved` | — | — | — |

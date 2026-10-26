@@ -59,6 +59,21 @@ linear basis checks, objective/constraint scaling, and nonunique multipliers.
 The field adapter is not a complete MATPOWER importer; the dispatch example is
 an analytically solved scalar LP, not an OPF solve. No files are written.
 
+## Check a converter point without a solver
+
+```sh
+python3 experiments/lessons/ibr_operating_point.py
+python3 experiments/lessons/ibr_operating_point.py --check
+python3 experiments/lessons/ibr_operating_point.py --q-min=-1
+```
+
+The [converter tutorial](@ref checking-ibr-operating-point) starts from supplied
+voltage and current, then draws the intersection of constant PF, minimum PF
+and a Q cap. Predict the effect of tightening that cap before running the last
+command. A second diagram compares PN and PG voltage monitors for a displaced
+neutral. This is book-owned exact arithmetic; it does not require the local
+package candidate used by the control-audit examples.
+
 ## Five further investigations
 
 The coordinate and Kron commands run checks; the case generators update their

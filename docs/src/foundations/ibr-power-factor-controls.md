@@ -7,6 +7,10 @@ limits. Can a supplied point satisfy them together? Work from the declared
 equations and check each obligation. A solver label or reported power cannot
 settle that intersection.
 
+For a first calculation, work through [Check a converter operating point by
+hand](@ref checking-ibr-operating-point). Its P–Q diagram and voltage phasors
+show the distinctions used below without requiring a package checkout.
+
 The code examples require the local candidate identified in
 `experiments/integration/linear-audit-candidate.json`. The published integration
 does not provide these audit APIs. The [workbook environment

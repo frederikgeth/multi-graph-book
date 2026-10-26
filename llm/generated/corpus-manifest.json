@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "2a834b0a01bd2bb10002771def29788c635dba1b9706cb2fbef445a8c5cf8d15",
+  "corpus_sha256": "d9ae1977134edb06b16fb45de4d1ae6fed3becfa399cdd7017645d003bb52440",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -10,17 +10,17 @@
       "docs/src/reference/vocabulary-indexes.md"
     ],
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
-    "included_doc_count": 79
+    "included_doc_count": 80
   },
   "evaluation_case_count": 117,
   "heldout_case_count": 33,
   "misconception_count": 37,
-  "record_count": 1031,
+  "record_count": 1037,
   "record_counts": {
     "claim_bundle": 123,
     "concept_bundle": 18,
     "scientific_knowledge": 18,
-    "section": 872
+    "section": 878
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -46,6 +46,10 @@
     {
       "path": "docs/src/cases/building-and-changing-models.md",
       "sha256": "8f23238e4ac07dbc1ef4994851ec3a989952202a118a123f31605296d3d970b6"
+    },
+    {
+      "path": "docs/src/cases/checking-ibr-operating-point.md",
+      "sha256": "227b3c277d9e6988a89b639ebc5c00a2660c207d4c2f2507e047b4a72fb470fb"
     },
     {
       "path": "docs/src/cases/coupled-multivoltage-corridor.md",
@@ -85,7 +89,7 @@
     },
     {
       "path": "docs/src/cases/study-workbook.md",
-      "sha256": "d39d046380348c6bdcfddeb0d568b1c96d7101688f777a6d02b67b2a4356f0c7"
+      "sha256": "1158c275df0ac84dea58cf646ee3a40d552d98d585d349806c1cede914a79b39"
     },
     {
       "path": "docs/src/cases/transformer-tap-ac-decision.md",
@@ -121,7 +125,7 @@
     },
     {
       "path": "docs/src/foundations/ibr-power-factor-controls.md",
-      "sha256": "664f6f3242f0c6969e1e78614c5f74cc91344463496b1c273a128fca7fa2dd5e"
+      "sha256": "396816552cf6c266029d180c0306eb8e0a3be7a139a02e8de4c085c1e6e67af7"
     },
     {
       "path": "docs/src/foundations/impedance-fidelity-ladder.md",
@@ -265,7 +269,7 @@
     },
     {
       "path": "docs/src/start/computational-cases.md",
-      "sha256": "816f3c5194401ee00d9825790e0f435a4f9a0596a958af54a1116662605c7e18"
+      "sha256": "9325e36427f23f4ecaf62a34887ba4d861d8c7db86d7611a7980e9e12a3ed401"
     },
     {
       "path": "docs/src/start/first-failure-parallel-branches.md",
