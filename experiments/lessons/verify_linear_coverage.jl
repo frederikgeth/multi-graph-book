@@ -125,6 +125,10 @@ function linear_coverage_lesson()
     dg_fixture_path=joinpath(root,"test","data","linear_audit","delta-generator.json")
     include(dg_path)
     dg_evidence=Base.invokelatest(()->getfield(@__MODULE__,:DeltaGeneratorAuditExample).run())
+    sp_path=joinpath(root,"examples","source_price_audit.jl")
+    sp_fixture_path=joinpath(root,"test","data","linear_audit","source-price.json")
+    include(sp_path)
+    sp_evidence=Base.invokelatest(()->getfield(@__MODULE__,:VoltageSourcePriceAuditExample).run())
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -709,6 +713,67 @@ function linear_coverage_lesson()
         @test tight_coverage.evidence["status"]=="passed"
         @test JSON3.read(JSON3.write(de),Dict{String,Any})==de
     end
+    @testset "Voltage-source price order and absolute reference conventions" begin
+        se=sp_evidence
+        srow(key,id)=only(filter(x->x["id"]==id,se[key]["rows"]))
+        @test se["analytic"]["status"]=="passed"
+        price=srow("analytic","voltage_source.s.cost")
+        @test price["status"]=="declared" && price["residual"]===nothing
+        @test price["coefficients"]==[.4,.1] && price["phase_order"]==["b","a"]
+        @test price["phase_map_positions"]==[1,3] && price["terminal_pairs"]==[["b","n"],["a","n"]]
+        @test !price["enforced_as_physical_limit"] && !price["reported_objective_checked"]
+        ref=srow("analytic","voltage_source.s.voltage")
+        @test ref["voltage_reference"]=="earth" && ref["reference_array_length"]==3
+        @test srow("analytic","voltage_source.s.a.ps")["unit"]=="W"
+        @test srow("analytic","voltage_source.s.b.qs")["unit"]=="var"
+        for key in ("unmapped_neutral","trailing_zero_reference","neutral_first","earth_reference","single_phase_two_phase","grounded_phase_suffix","all_zero_reference_suffix")
+            @test se[key]["status"]=="passed"
+        end
+        @test !srow("unmapped_neutral","voltage_source.s.cost")["neutral_in_source_map"]
+        @test srow("unmapped_neutral","voltage_source.s.cost")["power_reference"]=="bus_neutral"
+        @test srow("trailing_zero_reference","voltage_source.s.voltage")["omitted_zero_terminals"]==["n"]
+        @test srow("earth_reference","voltage_source.s.cost")["power_reference"]=="earth"
+        @test srow("single_phase_two_phase","voltage_source.s.cost")["terminal_pairs"]==[["a",nothing],["b",nothing]]
+        @test srow("grounded_phase_suffix","voltage_source.s.voltage")["reference_array_length"]==1
+        @test length(srow("grounded_phase_suffix","voltage_source.s.cost")["coefficients"])==2
+        @test srow("all_zero_reference_suffix","voltage_source.s.voltage")["reference_array_length"]==0
+        @test se["malformed_price"]["status"]=="indeterminate"
+        @test srow("malformed_price","voltage_source.s.voltage")["status"]=="passed"
+        @test srow("malformed_price","network.power")["status"]=="passed"
+        @test se["malformed_price_known_reference_violation"]["status"]=="failed"
+        @test srow("malformed_price_known_reference_violation","voltage_source.s.voltage")["residual"]≈1.
+        @test se["missing_source_current"]["status"]=="indeterminate"
+        @test srow("missing_source_current","network.power")["residual"]===nothing
+        @test srow("missing_earth_reaction","network.power")["residual"]===nothing
+        @test se["forged_objective"]["status"]=="passed"
+        @test !se["forged_objective"]["objective_scope"]["reported_objective_checked"]
+        @test se["displaced_neutral"]["status"]=="failed" && se["displaced_neutral"]["failed_checks"]==1
+        @test srow("displaced_neutral","voltage_source.s.voltage")["status"]=="passed"
+        @test srow("displaced_neutral","ground.b.n.voltage")["residual"]≈1.
+        @test srow("displaced_neutral","network.power")["status"]=="passed"
+        @test se["native_displaced_neutral_build"]["rejected"]
+        @test se["missing_free_reference"]["status"]=="indeterminate"
+        @test srow("missing_free_reference","network.power")["status"]=="passed"
+        @test se["native_missing_free_reference_build"]["rejected"]
+        for key in ("shared_sources","shared_sources_transferred")
+            @test se[key]["status"]=="passed"
+            @test count(x->x["id"]=="ground.b.n.voltage",se[key]["rows"])==1
+        end
+        for key in ("native_si","native_per_unit","native_unmapped_neutral","native_trailing_neutral","native_neutral_first","native_unmoved_prices","native_earth","native_single_phase_two_phase","native_negative_prices","native_no_objective","native_custom_constant")
+            @test se[key]["accepted"]
+            @test !se[key]["audit"]["objective_scope"]["objective_value_evaluated"]
+        end
+        @test se["native_si"]["candidate"]["objective"]≈-.0006 atol=1e-12
+        @test se["native_per_unit"]["candidate"]["objective"]≈-.0006 atol=1e-12
+        @test se["native_unmoved_prices"]["candidate"]["objective"]≈.0021 atol=1e-12
+        @test se["native_single_phase_two_phase"]["candidate"]["objective"]≈.0005 atol=1e-12
+        @test se["native_no_objective"]["candidate"]["objective"]==0.
+        @test se["native_custom_constant"]["candidate"]["objective"]==123.
+        @test all(v->!haskey(v,"cost"),values(running["voltage_source"]))
+        @test connected_coverage.evidence["unassessed_checks"]==0
+        @test tight_coverage.evidence["status"]=="passed"
+        @test JSON3.read(JSON3.write(se),Dict{String,Any})==se
+    end
     active = dirname(Base.active_project())
     Dict{String,Any}(
         "evidence_state"=>"local_package_candidate_not_promoted_to_published_integration_pin",
@@ -717,7 +782,8 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path,dg_path,dg_fixture_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path,dg_path,dg_fixture_path,sp_path,sp_fixture_path]),
+        "voltage_source_price_example"=>sp_evidence,
         "delta_generator_example"=>dg_evidence,
         "generator_cost_scope_example"=>gc_evidence,
         "branch_angle_voltage_example"=>be_evidence,

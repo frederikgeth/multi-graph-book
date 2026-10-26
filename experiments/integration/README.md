@@ -115,7 +115,7 @@ WYE/SINGLE_PHASE and bounded cyclic DELTA generator injections/coil limits, appl
 voltage bounds, explicit-neutral phase-to-neutral vpn_min/vpn_max arrays, applicable scalar neutral-to-earth vn_max, phase-to-phase vpp_min/vpp_max arrays, centered intra-bus and mapped branch-end angle windows and three-phase sequence/VUF bounds, and fixed single-coil single_phase transformers with legacy
 secondary excitation, plus two/three-winding WYE transformers with matched one-to-three phase-neutral coils and
 explicit pairwise leakage, plus matched three-terminal DELTA winding incidence/rotation.
-Full finite signed generator price vectors are recognized as declarations, with
+Full finite signed generator and voltage-source price vectors are recognized as declarations, with
 no physical-limit residual or objective certificate. Other generator topologies,
 controllers, other cost forms, transformer variants/limits outside that narrow
 slice, voltage-dependent loads, other voltage families and selected-objective
@@ -402,7 +402,8 @@ with `status="declared"`, null residual and
 `enforced_as_physical_limit=false`. Malformed prices remain unknown while
 otherwise known generator currents, electrical limits and KCL remain assessed.
 Generator active/reactive/apparent-power rows use W/var/VA respectively, without
-changing numeric tolerances. Source/IBR price applicability remains separate.
+changing numeric tolerances. Source price applicability is added below; IBR price
+applicability remains separate.
 
 Native tests trace default cost `sum(cost[k]*P_injected_W[k]/1000)`, in
 currency/hour for currency/kWh prices, with no variables or constraints added
@@ -464,3 +465,46 @@ Generator prices remain declarations and selected objective/optimality remains
 unchecked. The running generator is WYE, so its default three-p_max failure,
 zero unknowns and separate tighter electrical pass are unchanged. Published
 integration, PSK implementation statuses and execution MCP remain unchanged.
+
+
+The companion additionally binds `examples/source_price_audit.jl` and
+`source-price.json`. WYE/SINGLE_PHASE source prices are full finite signed
+vectors in NON-NEUTRAL source-map order. Voltage references instead follow
+full terminal-map order and specify absolute earth phasors. A matching prefix
+may omit only a suffix of explicitly grounded terminals or the implicitly
+zero-grounded source-bus neutral. Omitted grounded phases retain their price
+and current slots. Source P/Q/current bounds, controllers, custom roles and
+DELTA sources remain outside this bounded extension.
+
+An unmapped bus neutral still supplies the source return and power reference;
+without one, power uses earth. The source-neutral return and separate earth
+reaction remain distinct, with shared source-ground evidence consumed once.
+A two-phase SINGLE_PHASE source has TWO reference/current/price terms, unlike
+the one-coil SINGLE_PHASE generator. Source ps/qs report residuals now name
+W/var, with unchanged tolerances. Optional reports are checked when present.
+
+The analytic/native witness has bus order [n,a,b], source map [b,n,a], three
+voltage entries and only two prices [.4,.1] currency/kWh. Phase b exports 3 W,
+phase a imports 6 W, and the known default rate is -.0006 currency/hour. The
+same electrical point passes after consistently reordering references and
+prices. Reordering the map but leaving the old price order gives +.0021 instead;
+the standalone point audit does not infer intended tariff mapping or validate
+that reported objective. SI/per-unit, absent/mapped/trailing-neutral, earth,
+two-phase SINGLE_PHASE, negative-price, omitted-objective and constant123
+native recipes are retained with separate electrical acceptance.
+
+Bad price shape/type/range leaves the declaration unknown without hiding known
+reference, report, current, KCL or power evidence. Malformed voltage-reference
+arrays likewise leave known current incidence checked while their equation
+remains unassessed. Required missing current/state/earth reaction suppresses
+complete KCL/power certification. Grounded-phase and all-zero reference suffixes
+have explicit analytic/native-construction evidence; omitted free phase
+references remain unknown and native construction rejects them. An authored
+nonzero neutral reference can match the supplied source equation and P/Q but
+fails the separate ground boundary; native construction rejects that input.
+Two overlapping-source current splits pass electrically while their known
+expression values differ. No allocation, economic adequacy, objective selection,
+reported-value consistency, well-posedness or optimality is inferred.
+The running input has no source price, so its default three generator p_max
+violations/zero unknowns and separate tighter electrical pass are unchanged.
+The published pin, PSK statuses and execution MCP remain unchanged.

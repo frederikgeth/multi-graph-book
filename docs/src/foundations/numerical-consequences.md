@@ -545,7 +545,7 @@ The separate candidate `audit_solution` adds default-role source neutral returns
 implicit source grounding, WYE/SINGLE_PHASE/DELTA constant-power load equations,
 fixed ideal switches, bounded WYE/SINGLE_PHASE and cyclic DELTA generator injections/coil limits,
 bus and branch angle/magnitude bounds, three-phase sequence/VUF limits and
-bounded transformer equations. It retains recognized generator prices and
+bounded transformer equations. It retains recognized generator/source prices and
 transformer `s_rating` as declarations, without turning them into physical limits
 or objective certificates. The component sections below describe how that
 coverage was added; their intermediate counts precede the final cost-scope trace.
@@ -1881,7 +1881,8 @@ A **passed** result here means the explicitly supported electrical supplied-poin
 obligations hold at the stated tolerances. It does not establish unrestricted
 native/custom-model feasibility, a selected objective, stationarity, local/global
 optimality, physical adequacy, economic correctness or external review. The
-DELTA generator scope follows below; other device/controller scopes, source/IBR price applicability, published
+DELTA generator and voltage-source price scopes follow below; other device/controller
+scopes, IBR price applicability, published
 integration, PSK statuses and execution MCP remain separate.
 
 **Transfer exercise.** Give the rate and explicit two-hour cost for 4 W injection
@@ -2005,3 +2006,133 @@ remain separate.
 coil currents. Then add a common complex increment and identify which
 observations stay unchanged, which ratings must be rechecked, and why terminal
 measurements cannot supply a missing internal coil current.
+
+
+### [A source price does not change its voltage reference](@id source-price-reference-audit)
+
+A native voltage source uses two indexing and reference conventions at once.
+Its `v_magnitude/v_angle` entries specify **absolute terminal-to-earth phasors**
+in full source-map order. Its current, P/Q and price entries follow only the
+**non-neutral source-map order**. Neither order is inherited from the bus list.
+Recognizing the price vector must not discard or reinterpret the source's
+reference and grounding obligations.
+
+**Predict:** a bus lists ``(n,a,b)``, while its source map is ``(b,n,a)``.
+The reference magnitudes are ``(10,0,10)`` V at ``(\pi/2,0,0)`` rad. There are
+two prices ``(0.4,0.1)`` currency/kWh. Which price belongs to phase a, and what
+voltage reference enters its priced power?
+
+Independently decoding that source gives phase order ``(b,a)`` and map positions
+``(1,3)``. The neutral has no price/current slot. For these supported native
+WYE/SINGLE_PHASE sources,
+
+```math
+S_k=(V_{t_k}-V_n)\overline{I_k},\qquad
+C_s=\sum_k c_k\frac{\Re(S_k)}{1000}.
+```
+
+If the bus has no neutral, use earth in place of ``V_n``. If a declared bus
+neutral exists but is **omitted from the source map**, the native source still
+uses it for power and current return, and grounds it at zero. This differs
+from an unmapped-neutral WYE load/generator's earth-reference rule. The price
+metadata retains the phase order, original map positions, phase/reference
+pairs and whether the neutral was mapped. The audit uses supplied neutral
+state in P/Q evaluation; grounding is checked separately, so missing state
+is not replaced by a passing zero.
+
+Positive source active power is injection into the network, interpreted here
+as import; negative power is export. The same signed coefficient multiplies
+either sign. A positive coefficient therefore credits negative injection in
+that expression. This is not a separate buy/sell tariff. With P in W and price
+in currency/kWh, the snapshot expression is a **rate in currency/hour**. Energy
+cost needs an explicit duration assumption. Valid fixed source references make
+these source-power terms linear in the source currents; they do not make the
+whole network model linear.
+
+**Inspect:** `source_price_audit.jl` and `source-price.json`, invoked by the
+exact clean candidate companion, retain this unbalanced computational point:
+
+| Source phase order | Earth voltage (V) | Injected current (A) | Injected power (VA) | Price (currency/kWh) | Known rate contribution (currency/hour) |
+|:--|:--|:--|:--|--:|--:|
+| b, map position 1 | ``10\mathrm j`` | ``0.2-0.3\mathrm j`` | ``-3+2\mathrm j`` | 0.4 | -0.0012 |
+| a, map position 3 | ``10`` | ``0.6-0.1\mathrm j`` | ``6+1\mathrm j`` | 0.1 | +0.0006 |
+
+The net import is 3 W, but the known default rate is **-0.0006 currency/hour**
+under these declared phase prices. This is a signed numerical witness with
+negative active demand on one load phase, not an inference about asset identity
+or economically adequate pricing. A neutral-first map ``(n,a,b)`` needs prices
+``(0.1,0.4)`` to keep the same phase-price assignment. Leaving the old prices
+in that reordered map gives **+0.0021 currency/hour**, while the same electrical
+point still passes. An electrical audit cannot recover which tariff mapping
+the caller intended.
+
+Several reference cases must remain distinct:
+
+| Source declaration | Reference obligation | Price/current obligation |
+|:--|:--|:--|
+| Full ``(b,n,a)`` map | Three absolute phasors, including neutral | Two entries, ordered b then a |
+| Map ``(b,a)`` with bus neutral n | Two absolute phase phasors; separate implicit neutral ground | Two entries, each using bus n for power/return |
+| Map ``(b,a,n)`` with two reference entries | Omitted trailing n is known grounded zero | Two phase entries; no neutral price |
+| Prefix omitting an explicitly grounded phase | Omitted suffix must already be known zero | Grounded phase still keeps its price/current slot |
+| Explicit empty reference prefix | Allowed only when every mapped terminal is known grounded zero | Phase slots remain; missing arrays are not an empty prefix |
+| Prefix omitting a free phase | Reference remains unassessed; native construction rejects it | No phase phasor is inferred |
+| Two-phase SINGLE_PHASE source without neutral | Two absolute phase references | Two earth-referenced currents/prices |
+
+The final case does **not** use the one-coil convention of a two-terminal
+SINGLE_PHASE generator. Its source currents ``(0.3-0.1\mathrm j,
+-0.3+0.1\mathrm j)`` A at ``(10,10\mathrm j)`` V have powers
+``(3+\mathrm j,1-3\mathrm j)`` VA. Prices ``(0.1,0.2)`` give a known rate of
+0.0005 currency/hour. A one-entry price vector remains unknown to the audit
+and the native default expression cannot consume its missing second entry.
+
+Absolute source references and phase-neutral powers are also different tests.
+A common voltage translation can preserve all supplied phase-neutral powers
+and KCL while violating the source's absolute phasors and neutral ground. In
+a separate displaced-neutral witness, the authored source reference itself
+sets ``V_n=1`` V: its supplied absolute reference equation, honest P/Q reports,
+KCL and aggregate power pass, but the independent neutral-ground boundary
+fails. Native construction rejects that conflicting reference. Neither price
+metadata nor balanced power legitimizes the nonzero source neutral.
+
+Source neutral return injection is ``-\sum_k I_k``. The separately supplied
+earth-reaction current is another term, even when the neutral voltage is zero.
+The audit reconstructs the return, consumes a shared source-bus ground reaction
+once, and leaves a missing earth reaction unknown. Two overlapping ideal
+sources can satisfy the same references and external current balance while
+redistributing their currents. Two recorded splits both pass electrically,
+but their known default expression values differ. The fixture does not optimize
+that allocation; electrical acceptance establishes neither intended allocation
+nor objective well-posedness.
+
+Native SI/per-unit, neutral-omitted, trailing-prefix, neutral-first, earth and
+two-phase SINGLE_PHASE comparisons solve and pass. Reversing the price signs,
+omitting the objective, or selecting a caller-constant123 objective retains
+separate recipe and electrical evidence. Per-unit working prices multiply the
+local power base and cancel power scaling; they are not revised tariffs.
+Native expression tests confirm that `generation_cost` adds no variables or
+constraints and does not select the objective. They inspect the implementation
+as a subject; the independent audit does not call it as an oracle.
+
+Recognized full finite signed price vectors have status **declared**, null
+residual/tolerance and `enforced_as_physical_limit=false`. Scalar, partial,
+extra/neutral-priced, Boolean, nonfinite and unrepresentable declarations remain
+unknown while known source equations, currents, reports and KCL remain checked.
+Malformed reference arrays likewise leave known current incidence available;
+the reference equation stays unassessed. A missing required phase current,
+neutral state or earth reaction suppresses complete network KCL/power checks.
+Known other-phase report failures survive. Optional supplied `ps/qs` reports
+are checked in W/var with unchanged tolerances.
+
+The source price extension does not admit unsupported source P/Q/current-bound
+or controller fields, custom terminal roles or DELTA sources. It certifies no
+tariff, selected objective, reported objective consistency, local/global
+optimality, physical grounding adequacy or unrestricted native/custom-model
+feasibility. The running input has no source price, so its recorded default
+three generator `p_max` violations/zero unknowns and separate tighter electrical
+pass are unchanged. Published integration, PSK statuses and execution MCP
+remain separate.
+
+**Transfer exercise.** Reorder ``(b,n,a)`` to ``(n,a,b)`` while preserving the
+physical phase tariffs. Write the new reference and price arrays, then explain
+why a correct cost rate cannot establish the omitted phase reference, neutral
+earth-reaction current, source allocation or selected-objective guarantee.
