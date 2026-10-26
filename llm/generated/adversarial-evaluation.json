@@ -193,8 +193,8 @@
           "claim:LIMIT-MULTIPLICITY-001",
           "claim:TR-PAR-002",
           "claim:LIMIT-CONVEXITY-001",
-          "claim:TR-XFMR-006",
           "concept:rating-limit-constraint",
+          "claim:TR-XFMR-006",
           "claim:FORMULATION-NODAL-002"
         ]
       },
@@ -339,7 +339,7 @@
           "claim:ARCH-LENS-001",
           "claim:ARCH-LOWER-001",
           "claim:GRAPH-NPORT-001",
-          "claim:TR-GRAPH-001"
+          "claim:TR-GRAPH-ACTIVE-001"
         ]
       },
       "lexical": {
@@ -611,8 +611,8 @@
           "claim:TR-KRON-NEUTRAL-001",
           "claim:TR-KRON-NEUTRAL-004",
           "claim:TR-KRON-NEUTRAL-003",
-          "concept:element-edge-relation",
           "claim:TR-KRON-NEUTRAL-002",
+          "concept:element-edge-relation",
           "claim:TR-KRON-NEUTRAL-005"
         ]
       },
@@ -791,9 +791,9 @@
           "concept:flow-current-power-message",
           "concept:phase-conductor-sequence-coordinate",
           "concept:element-edge-relation",
+          "claim:FORMULATION-ZERO-001",
           "concept:parallel",
           "concept:rating-limit-constraint",
-          "claim:FORMULATION-ZERO-001",
           "concept:factor",
           "claim:PRACTICE-SHORT-001",
           "concept:object-node-interface"
@@ -809,8 +809,8 @@
           "claim:FORMULATION-PORT-001",
           "claim:LIMIT-NEUTRAL-001",
           "concept:object-node-interface",
-          "claim:LOAD-CONNECTION-002",
           "claim:LIMIT-CONVEXITY-001",
+          "claim:LOAD-CONNECTION-002",
           "claim:TR-GRAPH-001",
           "claim:TR-SER-001"
         ]
@@ -826,9 +826,9 @@
           "claim:FORMULATION-PORT-001",
           "claim:ARCH-SURGERY-002",
           "claim:LIMIT-CONVEXITY-001",
-          "claim:LOAD-CONNECTION-002",
+          "claim:FORMULATION-NODAL-001",
           "claim:LIMIT-NEUTRAL-001",
-          "claim:FORMULATION-NODAL-001"
+          "claim:LOAD-CONNECTION-002"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -1233,10 +1233,10 @@
           "claim:TR-XFMR-010",
           "claim:TR-XFMR-009",
           "claim:TR-XFMR-008",
-          "claim:ARCH-RECOVERY-001",
           "claim:NUMERICAL-003",
+          "claim:ARCH-RECOVERY-001",
           "claim:FORMULATION-ZERO-001",
-          "claim:LIMIT-CONVEXITY-001"
+          "claim:NUMERICAL-004"
         ]
       },
       "lexical": {
@@ -1927,8 +1927,8 @@
           "claim:LIMIT-NEUTRAL-001",
           "claim:LIMIT-CONVEXITY-001",
           "claim:LIT-PAR-001",
-          "claim:NUMERICAL-004",
           "claim:NUMERICAL-005",
+          "claim:NUMERICAL-004",
           "claim:FORMULATION-ZERO-001",
           "claim:LOAD-CONNECTION-002",
           "claim:LIMIT-MULTIPLICITY-001",
@@ -1947,8 +1947,8 @@
           "claim:NUMERICAL-005",
           "claim:LOAD-CONNECTION-002",
           "concept:direction-orientation-hierarchy",
-          "claim:TR-PAR-003",
           "claim:LIT-PAR-001",
+          "claim:TR-PAR-003",
           "claim:PRACTICE-IMPEDANCE-001"
         ]
       },
@@ -2019,8 +2019,8 @@
           "claim:PRACTICE-DUAL-001",
           "claim:PRACTICE-SHORT-001",
           "claim:GROUND-SCOPE-004",
-          "claim:ARCH-RECOVERY-001",
           "claim:TR-XFMR-007",
+          "claim:ARCH-RECOVERY-001",
           "claim:TR-XFMR-005"
         ]
       },
@@ -2057,8 +2057,8 @@
           "concept:flow-current-power-message",
           "claim:TR-KRON-NEUTRAL-005",
           "concept:state",
-          "claim:TR-KRON-FIVE-002",
           "claim:TR-KRON-NEUTRAL-007",
+          "claim:TR-KRON-FIVE-002",
           "claim:TR-KRON-001",
           "claim:LIMIT-MULTIPLICITY-001",
           "concept:factor"
@@ -2221,7 +2221,7 @@
           "claim:TR-KRON-NEUTRAL-002",
           "claim:TR-KRON-NEUTRAL-003",
           "claim:GROUND-SCOPE-002",
-          "claim:GROUND-SCOPE-004"
+          "claim:RATING-001"
         ]
       },
       "lexical": {
@@ -2450,7 +2450,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "24b3271aec0864cdb2dd175b388bce41df1974958904ec122e42c048bf7f4d08"
+    "corpus_sha256": "2cba6e10b479b786d3cefaf0a47d1e3ea933e17891c928d1215b790dcc42f912"
   },
   "inputs": {
     "adversarial_cases": {

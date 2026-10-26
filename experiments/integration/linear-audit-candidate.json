@@ -7,7 +7,7 @@
     "audit_solution"
   ],
   "evidence_state": "local_development_commit_not_in_published_integration_pin",
-  "git_tree_sha1": "c1243c38ce1fc631dd7d1a5fa044335279c3d92b",
+  "git_tree_sha1": "9b5ebcd5ae93b798fde16544d6b259d79361c1ab",
   "native_example_paths": [
     "examples/constant_power_roots.jl",
     "test/data/linear_audit/constant-power-roots.json",
@@ -35,7 +35,9 @@
     "examples/bus_angle_voltage_audit.jl",
     "test/data/linear_audit/bus-angle-voltage.json",
     "examples/sequence_voltage_audit.jl",
-    "test/data/linear_audit/sequence-voltage.json"
+    "test/data/linear_audit/sequence-voltage.json",
+    "examples/branch_angle_voltage_audit.jl",
+    "test/data/linear_audit/branch-angle-voltage.json"
   ],
   "not_established": [
     "all-device running-network feasibility",
@@ -44,9 +46,9 @@
     "availability in the published package pin",
     "MCP exposure"
   ],
-  "previous_candidate_revision": "3a99d2f7963ee27ed6ebdae41dba97d1c8d9073d",
+  "previous_candidate_revision": "492fae0b0de3cfc2770cf5976e304ce53a70ca56",
   "repository": "frederikgeth/BMOPFTools.jl",
-  "revision": "492fae0b0de3cfc2770cf5976e304ce53a70ca56",
+  "revision": "fc4def32cdd2ca08b8617a6e62f00fdb96aebdb3",
   "schema_version": "0.1.0",
-  "scope": "direct SI equation audit for inline series lines, earth shunts, source neutral returns, constant-power WYE/SINGLE_PHASE/DELTA loads and fixed ideal switches with finite conductor ratings; explicit missing coverage; bounded WYE/SINGLE_PHASE generator injections/limits and applicable finite phase-to-earth v_min/v_max and explicit-neutral phase-to-neutral vpn_min/vpn_max arrays and applicable scalar neutral-to-earth vn_max and full declaration-order phase-pair vpp_min/vpp_max arrays; grounded/source-fixed pairs remain unassessed without shifting indices; centered intra-bus va_diff_min/va_diff_max with optional full-phase va_nom, principal nonzero earth-phasor deviations and radian angle_tol; zero-voltage angles stay unassessed; exactly three full declared phases for Fortescue scalar magnitude limits and dimensionless VUF above an explicit positive-sequence voltage floor; floating neutral uses supplied phase-neutral input, absent/perfect/source neutral uses earth; explicit perfect/source-neutral skipped caps remain unassessed; fixed single-coil single_phase transformers with finite leakage and legacy secondary excitation; two/three-winding WYE transformers with matched one-to-three phase-neutral coils, explicit pairwise leakage, per-coil current caps and equal s_max allocation; matched three-phase DELTA windings with explicit ordered incidence/rotation, internal coil observations and reconstructed line currents; finite positive top-level/per-winding s_rating recorded as declared metadata rather than loading constraints"
+  "scope": "direct SI equation audit for inline series lines, earth shunts, source neutral returns, constant-power WYE/SINGLE_PHASE/DELTA loads and fixed ideal switches with finite conductor ratings; explicit missing coverage; bounded WYE/SINGLE_PHASE generator injections/limits and applicable finite phase-to-earth v_min/v_max and explicit-neutral phase-to-neutral vpn_min/vpn_max arrays and applicable scalar neutral-to-earth vn_max and full declaration-order phase-pair vpp_min/vpp_max arrays; grounded/source-fixed pairs remain unassessed without shifting indices; centered intra-bus va_diff_min/va_diff_max with optional full-phase va_nom, principal nonzero earth-phasor deviations and radian angle_tol; zero-voltage angles stay unassessed; mapped branch-end theta_from-theta_to windows on every conductor, with no nominal offset or source/ground/neutral skip; zero/missing endpoints remain unassessed while malformed angle data preserves known inline-series currents; exactly three full declared phases for Fortescue scalar magnitude limits and dimensionless VUF above an explicit positive-sequence voltage floor; floating neutral uses supplied phase-neutral input, absent/perfect/source neutral uses earth; explicit perfect/source-neutral skipped caps remain unassessed; fixed single-coil single_phase transformers with finite leakage and legacy secondary excitation; two/three-winding WYE transformers with matched one-to-three phase-neutral coils, explicit pairwise leakage, per-coil current caps and equal s_max allocation; matched three-phase DELTA windings with explicit ordered incidence/rotation, internal coil observations and reconstructed line currents; finite positive top-level/per-winding s_rating recorded as declared metadata rather than loading constraints"
 }

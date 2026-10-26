@@ -546,7 +546,7 @@ returns, implicit source grounding and WYE/SINGLE_PHASE/DELTA constant-power
 load equations, fixed ideal switches, a bounded WYE/SINGLE_PHASE generator
 domain, ordinary phase-to-earth and explicit-neutral phase-to-neutral voltage
 bounds, applicable scalar neutral-to-earth caps, phase-pair bounds and centered
-intra-bus angle windows and three-phase sequence/VUF bounds, fixed
+intra-bus and mapped branch-end angle windows and three-phase sequence/VUF bounds, fixed
 single-coil transformers,
 and matched WYE/DELTA winding-list equations with explicit rating-metadata
 semantics. The same running-network result now has **28 unassessed rows**
@@ -1315,9 +1315,10 @@ Malformed or nonfinite bounds, conversion overflow/underflow and unknown
 applicability remain **unassessed**, while otherwise known current contributions
 and checked violations stay visible. Missing required neutral voltage suppresses
 network KCL/power certification. Neutral-to-earth limits are covered below;
-phase-to-phase, bus-angle and sequence limits follow below; branch-end angles remain separate
-audit work. The existing running network has no PN-bound declarations, so its 28 unassessed obligations remain unchanged. The
-published integration pin and execution MCP surface are unchanged.
+phase-to-phase, bus-angle, sequence and branch-end angle limits also follow. The
+existing running network has no PN-bound declarations, so its 28 unassessed
+obligations remain unchanged. The published integration pin and execution MCP
+surface are unchanged.
 
 **Transfer exercise.** For ``V_p=4+6\mathrm j`` V and ``V_n=1+2\mathrm j`` V,
 compute the phase-neutral magnitude and compare it with subtracting their
@@ -1484,10 +1485,9 @@ full pair index, observed magnitude and bound.
 The running network now has six checked phase-pair bounds at bus i6. Unknown
 rows fall from 29 to 28: the two unsupported fields previously shared one
 field-coverage row. The intact generator cost and incomplete KCL/power coverage
-keep its verdict **indeterminate**. Bus-angle and sequence limits follow below;
-branch-angle limits, objectives, physical
-adequacy, PSK implementation statuses, published integration and execution MCP
-remain separate obligations.
+keep its verdict **indeterminate**. Bus-angle, sequence and branch-end angle
+limits follow below; objectives, physical adequacy, PSK implementation statuses,
+published integration and execution MCP remain separate obligations.
 
 **Transfer exercise.** Reorder `[a,b,c]` to `[c,a,b]` and map each old pair entry
 to its new position. Then ground c: identify the surviving pair and its full
@@ -1572,8 +1572,8 @@ principal-angle check rejects directly.
 Missing required endpoints, one-sided/reversed/singular windows, malformed
 nominal arrays and unrepresentable data stay unknown. Known currents and checked
 violations remain visible; missing required state suppresses complete KCL/power
-certification. Standalone `va_nom`, custom roles and branch-end angle bounds remain
-outside this slice; sequence limits follow below. The running network declares no bus-angle
+certification. Standalone `va_nom` and custom roles remain outside this bus-angle slice;
+sequence and branch-end angle limits follow below. The running network declares no bus-angle
 window, so its **28 unassessed obligations** and **indeterminate** verdict are
 unchanged. Published integration, PSK statuses, execution MCP, objective and
 physical adequacy remain separate.
@@ -1672,11 +1672,105 @@ reversing permutations, neutral reference/fallback, scalar zero/equality and
 unit-specific tolerances, denominator-floor refusal/configuration, malformed
 limits and missing state. Known currents and checked violations survive bad
 limit data. The running input declares no sequence or VUF bound; its **28
-unassessed obligations** and **indeterminate** verdict are unchanged. Objectives,
-branch-end angle coverage, physical phase-order measurement and adequacy,
-published integration, PSK statuses and execution MCP remain separate.
+unassessed obligations** and **indeterminate** verdict are unchanged. Branch-end
+angle limits follow below. Objectives, physical phase-order measurement and
+adequacy, published integration, PSK statuses and execution MCP remain separate.
 
 **Transfer exercise.** Keep negative sequence at 1 V and change positive sequence
 from 10 V to 5 V. Give the two VUF fractions and identify which obligations a
 1.25 V negative cap establishes. Then set both sequence magnitudes to zero:
 explain why a successful cross-multiplied inequality cannot supply the ratio.
+
+
+### [Branch-end angles follow the mapped conductor direction](@id branch-angle-voltage-audit)
+
+A branch angle compares two ends of the **same mapped conductor**. It is not
+the centered second-minus-first intra-bus angle above. For conductor index ``k``,
+the independent audit observes
+
+```math
+d_k=\arg\left(\frac{V_{\mathrm{from},k}}{|V_{\mathrm{from},k}|}
+             \overline{\left(\frac{V_{\mathrm{to},k}}{|V_{\mathrm{to},k}|}\right)}\right)
+\in(-\pi,\pi].
+```
+
+The direction is ``\theta_{\mathrm{from},k}-\theta_{\mathrm{to},k}``, with no
+nominal-angle offset. Each line's scalar `va_diff_min`/`va_diff_max` window
+applies to every positional pair in its explicit from/to terminal maps. Those
+maps must be nonempty, unique and equally long. Neither sorted labels nor
+prefix truncation can recover an undeclared conductor correspondence.
+
+**Predict:** the two-conductor DELTA circuit already used above has source
+phases 10 V and ``10\mathrm j`` V, receiving phases 9 V and
+``1+10\mathrm j`` V, and 1 Ω per conductor. What is the second conductor's
+signed branch angle?
+
+| Observation or obligation | Supplied value or window | Independent result |
+|:--|:--|:--|
+| First mapped conductor | ``0-0`` rad | Zero |
+| Second mapped conductor | ``\pi/2-\arctan(10)=\arctan(0.1)`` rad | About +0.09966865 rad |
+| Branch window | [−0.02,0.12] rad | Both pass |
+| Tightened lower bound | 0.02 rad | First conductor fails by 0.02 rad |
+| Tightened upper bound | 0.08 rad | Second conductor fails by about 0.01966865 rad |
+| Line equations/current ratings, bus magnitude bounds, KCL and power at either mutation | Same supplied circuit | Pass |
+
+The positive sign differs from the earlier centered bus deviation for this
+circuit. Angular violations use **rad** and the separate `angle_tol`; the native
+sine/cosine-scaled SI rows have V² units, while per-unit rows use working
+coordinates. Their residuals cannot supply an angular tolerance. Both scalar
+endpoints must be finite, ordered and strictly inside ``(-\pi/2,\pi/2)``.
+Equal endpoints are supported: the native equality plus half-plane guard
+excludes the nonzero antipodal ray, which the independent principal angle
+rejects directly.
+
+Direction is part of a branch declaration. Reverse the branch and its endpoint
+maps, reverse the supplied endpoint currents/result labels, and replace
+``[\underline d,\overline d]`` by ``[-\overline d,-\underline d]``. The same
+circuit then passes with the opposite signed deviation. Keeping the old
+asymmetric window can change the result. A consistent conductor permutation
+also permutes both maps and their data; it does not sort phases by name.
+
+A 1.62 rad common rotation of voltages and currents crosses the individual-angle
+branch cut while preserving the circuit and branch observations. The evaluator
+normalizes each nonzero endpoint before multiplication and takes the principal
+argument. This avoids raw voltage-product under/overflow and unwrapped
+subtraction errors. It uses supplied earth-referenced voltages; neither a bus
+nominal reference nor a phase-neutral substitution defines this branch quantity.
+
+Zero endpoints remain a distinct boundary. Native rows are registered for
+**all conductors**, including neutrals and source/ground endpoints. A separate
+explicit-neutral circuit has zero source-neutral voltage and a floating
+receiving neutral. Native solving succeeds, but that conductor's angle remains
+**unassessed**, with no invented residual. Its other conductor angle, line
+equations, currents, KCL and power still pass. At an all-zero branch point,
+native primal constraints also pass without defining either endpoint direction.
+A grounding label or successful homogeneous inequality cannot supply an angle.
+
+**Inspect:** `examples/branch_angle_voltage_audit.jl` and
+`branch-angle-voltage.json`, invoked by the exact clean candidate companion,
+retain both violations, common rotation, complete reversal, missing state,
+one-sided data, neutral and zero endpoints. Native SI/per-unit/rotated/reversed
+points pass their scoped audits. The tightened native attempt has local
+infeasibility and a failed point audit; termination alone is not a global
+infeasibility certificate. Native semantic keys, domain guard and zero-origin
+primal inspection are test subjects, never the independent oracle.
+
+Bad angular data does not erase known inline-series current contributions or
+checked current-rating violations. Missing required endpoint state suppresses
+complete KCL/power certification but need not erase a different conductor's
+angle observation. Supplied endpoint angles can also be checked while a separate
+line equation model is unsupported; those observations cannot certify its
+currents or equations. The older linear-only API retains its refusal of
+line-angle declarations. Tests cover positional mapping, asymmetric reversal,
+principal cuts, normalization, equality/zero/tolerance, neutral/ground incidence,
+malformed windows/maps and partial state.
+
+The running network declares no branch-angle bounds, so its **28 unassessed
+obligations** and **indeterminate** verdict are unchanged. Physical adequacy,
+objectives, broader device/role coverage, published integration, PSK statuses
+and execution MCP remain separate obligations.
+
+**Transfer exercise.** Reverse a branch whose window is [−0.02,0.12] rad.
+Give its new window and the sign of each conductor observation. Then delete
+only the second receiving voltage: identify which angular observation remains
+available and why complete line/KCL certification is still unavailable.
