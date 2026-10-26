@@ -56,6 +56,12 @@ contract gaps among six exposed review probes. Use this addendum alongside the
 frozen resolved handoff; its profile hash and 52-case adversarial result are newer
 than the archive. Candidate source identity and publication scope are unchanged.
 
+The subsequent `audit-answer-contracts-2026-10-26.md` supplies scoped
+mathematical contracts for four of those five questions. The implementation-
+specific mixed-monitor query still abstains because the published export does
+not establish the local candidate's behavior. This is a book knowledge/access
+change, not package publication or a new implementation-status claim.
+
 ## Current blockers and decisions
 
 1. Obtain scoped implementation/domain feedback and disposition findings through
