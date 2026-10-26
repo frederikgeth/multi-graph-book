@@ -121,6 +121,10 @@ function linear_coverage_lesson()
     gc_fixture_path=joinpath(root,"test","data","linear_audit","generator-cost.json")
     include(gc_path)
     gc_evidence=Base.invokelatest(()->getfield(@__MODULE__,:GeneratorCostScopeExample).run())
+    dg_path=joinpath(root,"examples","delta_generator_audit.jl")
+    dg_fixture_path=joinpath(root,"test","data","linear_audit","delta-generator.json")
+    include(dg_path)
+    dg_evidence=Base.invokelatest(()->getfield(@__MODULE__,:DeltaGeneratorAuditExample).run())
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -658,6 +662,53 @@ function linear_coverage_lesson()
         @test haskey(running["generator"]["g1"],"cost")
         @test JSON3.read(JSON3.write(ge),Dict{String,Any})==ge
     end
+    @testset "DELTA generator coil injections, circulation and rating scope" begin
+        de=dg_evidence
+        drow(key,id)=only(filter(x->x["id"]==id,de[key]["rows"]))
+        @test de["analytic"]["status"]=="passed" && de["analytic"]["coverage_complete"]
+        obs=drow("analytic","generator.g.terminal_currents")
+        @test obs["status"]=="reconstructed" && obs["residual"]===nothing
+        @test obs["terminal_pairs"]==[["x","y"],["y","z"],["z","x"]]
+        @test obs["terminal_currents_injected_A"]["y"]≈[-.5,.25]
+        @test hypot(obs["terminal_currents_injected_A"]["y"]...)>.3
+        @test drow("analytic","generator.g.2.i_max")["status"]=="passed"
+        @test drow("analytic","generator.g.2.i_max")["quantity_scope"]=="cyclic_coil"
+        @test de["circulating"]["status"]=="failed" && de["circulating"]["failed_checks"]==6
+        @test drow("circulating","network.power")["status"]=="passed"
+        @test all(x->x["status"]=="passed",filter(x->x["dimension"]=="kcl",de["circulating"]["rows"]))
+        for k in 1:3
+            @test drow("circulating","generator.g.$k.i_max")["status"]=="failed"
+            @test drow("circulating","generator.g.$k.s_max")["status"]=="failed"
+            @test drow("circulating","generator.g.$k.pg")["status"]=="passed"
+        end
+        for t in ("x","y","z")
+            @test drow("circulating","generator.g.terminal_currents")["terminal_currents_injected_A"][t]≈obs["terminal_currents_injected_A"][t]
+        end
+        @test de["missing_coil"]["status"]=="indeterminate"
+        @test drow("missing_coil","network.power")["residual"]===nothing
+        @test de["missing_coil_known_violation"]["status"]=="failed"
+        @test drow("missing_coil_known_violation","generator.g.1.i_max")["status"]=="failed"
+        @test drow("missing_coil_known_violation","generator.g.3.i_max")["status"]=="passed"
+        @test de["extra_current_rating_known_s_violation"]["status"]=="failed"
+        @test drow("extra_current_rating_known_s_violation","generator.g.i_max")["residual"]===nothing
+        @test de["forged_power_limit"]["failed_checks"]==2
+        @test de["two_terminal"]["status"]=="passed"
+        @test drow("two_terminal","generator.g.terminal_currents")["terminal_pairs"]==[["x","y"],["y","x"]]
+        @test de["cyclic_reordering"]["status"]=="passed" && de["reversed_coils"]["status"]=="passed"
+        for key in ("native_si","native_per_unit","native_reversed","native_two_terminal")
+            @test de[key]["accepted"] && de[key]["audit"]["coverage_complete"]
+            @test !de[key]["audit"]["objective_scope"]["objective_value_evaluated"]
+        end
+        @test !de["native_coil_limited"]["accepted"]
+        @test !isempty(de["native_coil_limited"]["raw_status"])
+        @test de["neutral_boundary"]["native_build_succeeded"]
+        @test "E.SPEC.DELTA_HAS_NEUTRAL" in de["neutral_boundary"]["finding_codes"]
+        @test only(filter(x->x["id"]=="generator.g",de["neutral_boundary"]["audit"]["rows"]))["status"]=="unassessed"
+        @test running["generator"]["g1"]["configuration"]=="WYE"
+        @test connected_coverage.evidence["unassessed_checks"]==0
+        @test tight_coverage.evidence["status"]=="passed"
+        @test JSON3.read(JSON3.write(de),Dict{String,Any})==de
+    end
     active = dirname(Base.active_project())
     Dict{String,Any}(
         "evidence_state"=>"local_package_candidate_not_promoted_to_published_integration_pin",
@@ -666,7 +717,8 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path,dg_path,dg_fixture_path]),
+        "delta_generator_example"=>dg_evidence,
         "generator_cost_scope_example"=>gc_evidence,
         "branch_angle_voltage_example"=>be_evidence,
         "sequence_voltage_example"=>sq_evidence,

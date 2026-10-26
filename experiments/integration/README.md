@@ -111,12 +111,12 @@ Next promotion requires completing/reviewing the desired device coverage,
 publishing the package commit, deliberately updating the ordinary integration
 pin and regenerating the federated pair. The native default-role source-neutral return and constant-power loads are now
 covered by the extended API, together with fixed ideal switches, bounded
-WYE/SINGLE_PHASE generator injections/limits, applicable phase-to-earth bus
+WYE/SINGLE_PHASE and bounded cyclic DELTA generator injections/coil limits, applicable phase-to-earth bus
 voltage bounds, explicit-neutral phase-to-neutral vpn_min/vpn_max arrays, applicable scalar neutral-to-earth vn_max, phase-to-phase vpp_min/vpp_max arrays, centered intra-bus and mapped branch-end angle windows and three-phase sequence/VUF bounds, and fixed single-coil single_phase transformers with legacy
 secondary excitation, plus two/three-winding WYE transformers with matched one-to-three phase-neutral coils and
 explicit pairwise leakage, plus matched three-terminal DELTA winding incidence/rotation.
 Full finite signed generator price vectors are recognized as declarations, with
-no physical-limit residual or objective certificate. DELTA generators,
+no physical-limit residual or objective certificate. Other generator topologies,
 controllers, other cost forms, transformer variants/limits outside that narrow
 slice, voltage-dependent loads, other voltage families and selected-objective
 evaluation remain open. Source-fixed/grounded bus-bound declarations are
@@ -432,3 +432,35 @@ Both solver recipes/results and their audits are retained in the source-bound
 output. This is supported electrical supplied-point evidence, not unrestricted
 native/custom-model feasibility, economic adequacy or an objective certificate.
 The published pin, PSK implementation statuses and execution MCP remain unchanged.
+
+
+The companion also binds `examples/delta_generator_audit.jl` and
+`delta-generator.json`. Two/three distinct non-neutral terminals form cyclic
+injection coils. Result `crg/cig` at terminal-map key k is coil current I[k];
+terminal injection is J[k]=I[k]-I[k-1], and the outgoing KCL contribution is
+-J[k]. Explicit reconstruction metadata is not an independent terminal-current
+measurement. Native `i_max` and `s_max` entries bound individual coils, with no
+terminal-line, neutral-return or equal-allocation inference. P/Q/S rows use
+W/var/VA; coil current limits use A. Two-terminal DELTA generators have two
+opposed coils, unlike the single coil of a two-terminal DELTA load. This native
+indexing does not remove the separate data-model three-terminal arity warning.
+
+At the unbalanced analytic point, the second terminal injection has magnitude
+about .559 A despite a .3 A second-coil cap; the actual second coil carries
+.25 A and passes. Adding .5+.2im A to every coil leaves terminal currents, KCL
+and aggregate generator power unchanged, but fails all three original current
+and all three apparent-power coil limits. Honest updated power reports still
+pass. Missing internal current cannot be recovered from terminal observations;
+other known coil checks survive while KCL/power remain unassessed. A separate
+known violation takes precedence over a malformed extra current-rating entry.
+
+Native SI, per-unit, reversed-coil and two-terminal comparisons fix the recorded
+coil dispatch and pass. The tighter-coil-cap native attempt is retained with
+`LOCALLY_INFEASIBLE` and a failed returned-point audit; it is not a global
+infeasibility certificate. Neutral-bearing DELTA maps remain unassessed: the
+native generator builder currently constructs them, while spec conformance emits
+`E.SPEC.DELTA_HAS_NEUTRAL`. No native construction behavior changes here.
+Generator prices remain declarations and selected objective/optimality remains
+unchecked. The running generator is WYE, so its default three-p_max failure,
+zero unknowns and separate tighter electrical pass are unchanged. Published
+integration, PSK implementation statuses and execution MCP remain unchanged.

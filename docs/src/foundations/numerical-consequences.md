@@ -543,7 +543,7 @@ are unassessed.
 
 The separate candidate `audit_solution` adds default-role source neutral returns,
 implicit source grounding, WYE/SINGLE_PHASE/DELTA constant-power load equations,
-fixed ideal switches, bounded WYE/SINGLE_PHASE generator injections/limits,
+fixed ideal switches, bounded WYE/SINGLE_PHASE and cyclic DELTA generator injections/coil limits,
 bus and branch angle/magnitude bounds, three-phase sequence/VUF limits and
 bounded transformer equations. It retains recognized generator prices and
 transformer `s_rating` as declarations, without turning them into physical limits
@@ -728,9 +728,9 @@ hide nonzero current, so current limits and KCL remain separate checks.
 For the finite native WYE/SINGLE_PHASE domain, generator power uses the explicitly
 mapped coil voltage. Omitting the neutral from a WYE generator map does not
 borrow the bus neutral. A two-terminal SINGLE_PHASE generator uses its ordered
-pair, which may also be phase-to-phase. DELTA generators remain outside this
-slice: the load's two-terminal DELTA convention must not be copied into another
-device family without checking that family's executable contract.
+pair, which may also be phase-to-phase. The later DELTA-generator section
+extends this scope: the load's two-terminal DELTA convention must not be copied
+into another device family without checking that family's executable contract.
 
 Bus-voltage limits ask a different coordinate question. The supported
 `v_min/v_max` arrays bound phase-to-**earth** magnitude in non-neutral terminal
@@ -1781,7 +1781,7 @@ available and why complete line/KCL certification is still unavailable.
 ### [A generator price is not an objective certificate](@id generator-cost-scope-audit)
 
 A generator price declaration has a different role from an electrical limit.
-In the bounded native WYE/SINGLE_PHASE form it is a full finite signed vector,
+In the bounded native generator form it is a full finite signed vector,
 one coefficient per declared coil. A two-terminal SINGLE_PHASE device has one
 coil price, including when its terminal order is reversed. A WYE neutral has
 no separate price. Scalars, polynomial-shaped objects, wrong or extra lengths,
@@ -1880,11 +1880,128 @@ backend reproduce the same violation.
 A **passed** result here means the explicitly supported electrical supplied-point
 obligations hold at the stated tolerances. It does not establish unrestricted
 native/custom-model feasibility, a selected objective, stationarity, local/global
-optimality, physical adequacy, economic correctness or external review. DELTA
-and other device/controller scopes, source/IBR price applicability, published
+optimality, physical adequacy, economic correctness or external review. The
+DELTA generator scope follows below; other device/controller scopes, source/IBR price applicability, published
 integration, PSK statuses and execution MCP remain separate.
 
 **Transfer exercise.** Give the rate and explicit two-hour cost for 4 W injection
 at price +0.25 currency/kWh. Then explain why `objective=123`, solver success,
 a zero price or a tiny active-power excess cannot independently settle the
 selected objective, uniqueness, or electrical compliance.
+
+
+### [DELTA generator limits live on coils](@id delta-generator-injection-audit)
+
+The [DELTA circulation lesson](@ref delta-coil-current-lesson) applies to
+injections as well as consumption. The local candidate now audits bounded
+DELTA generators using their own native indexing: two or three distinct
+non-neutral terminals in declared cyclic order. A reported current at a
+terminal key need not be the current injected into that terminal.
+
+**Predict:** for coil currents ``I=(0.3-0.1\mathrm j,-0.2+0.15\mathrm j,
+0.1+0.05\mathrm j)`` A, does a second entry `i_max=0.3` bound the current in
+the second coil or the current injected at the second terminal?
+
+For ordered terminals ``(x,y,z)``, the pairs are ``x\to y``, ``y\to z`` and
+``z\to x``. In the native result, `generator.g.x.crg/cig` stores ``I_1``,
+the injection coil current paired with ``U_1=V_x-V_y``. Independently evaluate
+
+```math
+S_k=U_k\overline{I_k},\qquad
+J_k=I_k-I_{k-1},\qquad
+\sum_k S_k=\sum_k V_k\overline{J_k},
+```
+
+with cyclic indices. Here ``J_k`` is terminal injection; outgoing-current KCL
+uses ``-J_k``. The final identity follows from incidence, so it does not replace
+individual coil observations or limits. The audit labels terminal currents
+**reconstructed**, retaining explicit pairs and both injection/outgoing signs.
+It does not invent an independent line-current measurement.
+
+The native generator's `i_max[k]` bounds ``|I_k|``. Its `s_max[k]` bounds
+``|S_k|`` directly; no total rating is divided among coils. This array rule is
+separate from the earlier winding-list transformer's equal allocation of a
+single winding `s_max`. Generator P/Q bounds and required `pg/qg` reports also
+refer to each coil. Signed injections and absorption are allowed by the
+corresponding declared bounds. Residuals use A, W, var and VA with the existing
+absolute current/power tolerances.
+
+**Inspect:** the source/switch/load fixture uses
+``V=(10,10\mathrm j,-6-8\mathrm j)`` V, giving:
+
+| Coil | Voltage difference (V) | Injection current (A) | Injection power (VA) | Current cap (A) | Apparent-power cap (VA) |
+|:--|:--|:--|:--|--:|--:|
+| ``x\to y`` | ``10-10\mathrm j`` | ``0.3-0.1\mathrm j`` | ``4-2\mathrm j`` | 0.35 | 6 |
+| ``y\to z`` | ``6+18\mathrm j`` | ``-0.2+0.15\mathrm j`` | ``1.5-4.5\mathrm j`` | 0.30 | 6 |
+| ``z\to x`` | ``-16-8\mathrm j`` | ``0.1+0.05\mathrm j`` | ``-2`` | 0.20 | 3 |
+
+All coil limits pass. The reconstructed terminal injections are
+``(0.2-0.15\mathrm j,-0.5+0.25\mathrm j,0.3-0.1\mathrm j)`` A. At terminal y,
+``|J_y|\approx0.559`` A exceeds the numerical second-coil cap, while the
+second coil carries only 0.25 A. Applying the declared coil cap to that terminal
+current would falsely reject this native operating point. No terminal-line
+rating is inferred from the coil array.
+
+Now add the same ``0.5+0.2\mathrm j`` A to every coil. Incidence removes the
+common increment, so terminal injections, KCL and aggregate generator power
+``3.5-6.5\mathrm j`` VA are unchanged. Individual coil powers become
+``(7-9\mathrm j,8.1+3.3\mathrm j,-11.6-0.8\mathrm j)`` VA. All three original
+current caps and all three apparent-power caps fail, while honest updated
+`pg/qg` reports, KCL and aggregate power pass. This is a six-limit violation,
+not missing evidence. Internal circulation cannot be reconstructed from those
+terminal observations alone.
+
+At a separate zero-voltage point, equal nonzero coil currents give zero terminal
+injection and zero coil power. Zero apparent-power caps therefore pass even
+though the current caps fail. Inspection of the native primal constraints also
+rejects those currents. A zero power report is neither a zero-current observation
+nor spare current capacity.
+
+The package's `delta_generator_audit.jl` and `delta-generator.json`, invoked by
+the source-bound book companion, retain analytic/native points, circulation,
+forged reports, missing internal observations and malformed ratings. Native SI,
+per-unit, consistently reversed-coil and two-terminal comparisons fix the
+recorded coil dispatch and pass. A separate tighter-current-cap attempt reports
+`LOCALLY_INFEASIBLE` and returns a point that fails the independent audit. Both
+statuses are retained; this solver observation is not a global infeasibility
+certificate or a robustness claim.
+
+Cyclic reordering must move coil-indexed bounds, prices and reports with the
+coils. Reversing the cycle reverses each matched coil's voltage and current;
+its complex power keeps the same sign. Changing terminal order alone does not
+perform that transformation. Per-unit evaluation returns to original SI coil
+voltages and currents; an earth-voltage magnitude or a generic square-root-of-
+three factor cannot replace an actual ordered voltage difference.
+
+There are two applicability distinctions to keep visible:
+
+- The native **two-terminal DELTA generator has two opposed coils**, one at
+  each cyclic position. A two-terminal DELTA load and a two-terminal
+  SINGLE_PHASE generator each have one coil. The separate three-terminal
+  data-model arity checker still warns on the native two-terminal generator
+  form. Matching native equations does not establish specification conformance
+  or a physical three-phase winding interpretation.
+- A neutral-bearing DELTA generator map remains **unassessed**. The current
+  native generator builder constructs it, while its conformance checker emits
+  `E.SPEC.DELTA_HAS_NEUTRAL`. The audit records that disagreement and refuses
+  the map. It neither changes native construction nor applies WYE neutral-return
+  rules to make coverage pass. One/four-terminal cycles, custom roles and
+  controllers remain outside this bounded audit.
+
+Missing a required coil current or voltage suppresses complete network KCL/power
+certification. Known observations and violations on other coils remain visible;
+a missing `pg/qg` report does not erase otherwise known current or limit checks.
+Malformed extra/prefix rating entries remain unknown without hiding a separate
+known violation. Finite signed coil prices remain **declared** metadata;
+objective selection/value, local/global optimality, physical realizability and
+unrestricted native/custom-model feasibility are separate obligations.
+
+The running network's generator is WYE, so this extension leaves its recorded
+default three-`p_max` failure, zero unknowns and separate tighter electrical pass
+unchanged. Published integration, PSK implementation statuses and execution MCP
+remain separate.
+
+**Transfer exercise.** Derive the three terminal injections from the baseline
+coil currents. Then add a common complex increment and identify which
+observations stay unchanged, which ratings must be rechecked, and why terminal
+measurements cannot supply a missing internal coil current.
