@@ -194,7 +194,7 @@ The book should teach a complete tiny example first, then present the running
 network's coverage table. Do not fill the witness bundle with zeros to obtain a
 pass, rename the declaration gate as a verifier, or infer global optimality from
 small residuals. Sources:
-[package verification tutorial](../../BMOPFTools.jl/docs/src/tutorial_trust_but_verify.md),
+[package verification tutorial](https://github.com/frederikgeth/BMOPFTools.jl/blob/97c274946091859b7d9b0e822c96f1e7f9f50c7e/docs/src/tutorial_trust_but_verify.md),
 [book verification code](../experiments/lessons/verify_running_network.jl).
 
 ### 5. Delivery inventories need reconciliation
@@ -266,7 +266,7 @@ Acceptance: separate current/power residuals; a nonzero-voltage positive case;
 the zero-voltage counterexample; no inference that every power formulation is
 invalid. Connect to the package's native impedance substitution tests and the
 four-wire formulation literature cited in
-[exact substitutions](../../BMOPFTools.jl/docs/src/formulation_substitutions.md).
+[exact substitutions](https://github.com/frederikgeth/BMOPFTools.jl/blob/97c274946091859b7d9b0e822c96f1e7f9f50c7e/docs/src/formulation_substitutions.md).
 
 ### B. An ideal transformer is a relation, not a huge admittance
 
