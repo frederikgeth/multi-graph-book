@@ -82,6 +82,9 @@ jobs:
       - name: Check generated vocabulary indexes are current
         run: python3 scripts/generate_vocabulary_indexes.py --check
 
+      - name: Check generated knowledge-base indexes are current
+        run: python3 scripts/generate_knowledge_base_indexes.py --check
+
       - name: Generate fixture coverage matrix
         run: python3 scripts/generate_fixture_coverage_matrix.py
 

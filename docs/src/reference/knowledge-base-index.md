@@ -628,8 +628,10 @@ schema is normalised.
 | `pi-four-wire-parallel-ac-certificate.json` | `TR-PAR-007` — generated evidence |
 | `port-factor-architecture.json` | `ARCH-PORT-001` — data/running-network/v0.1.0.json |
 | `positive-sequence-collapse-witness.json` | `COLLAPSE-002` — generated evidence |
+| `prose-number-witnesses.json` | generated evidence |
 | `provenance.json` | generated evidence |
 | `public-api-manifest.json` | generated evidence |
+| `recorded-generator-bound.json` | generated evidence |
 | `running-network-cycle-space-witness.json` | `GRAPH-CYCLE-RUNNING-001` — identified scalar line projection of the running multiconductor fixture |
 | `running-network-radiality-witness.json` | `TOPO-RUNNING-001` — running-network v0.1.0 bus/member graph with switch and line-outage variants plus conductor-terminal provenance |
 | `running-network-typed-kron-witness.json` | `TR-KRON-001` — data/running-network/v0.1.0.json |
