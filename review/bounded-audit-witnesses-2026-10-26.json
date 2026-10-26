@@ -1,0 +1,47 @@
+{
+  "checks": {
+    "constant_pf_clipping": {
+      "clipped_weighted_residual_VA": "4/5",
+      "original_weighted_residual_VA": "0"
+    },
+    "delta_generator": {
+      "circulated_coil_caps_fail": 6,
+      "original_coil_caps_pass": 6,
+      "terminal_injections_unchanged": true,
+      "total_power_VA": [
+        "7/2",
+        "-13/2"
+      ]
+    },
+    "phase_neutral": {
+      "difference_squared_V2": "25",
+      "magnitude_V": "5",
+      "subtracting_magnitudes_is_different": true
+    },
+    "sequence_ratio": {
+      "cap": "1/8",
+      "first_ratio": "1/10",
+      "second_ratio": "1/5",
+      "zero_origin_polynomial_passes": true,
+      "zero_origin_ratio": null
+    },
+    "tiny_minimum_pf": {
+      "PF_ratio": "0",
+      "P_W": "0",
+      "Q_var": "1",
+      "exact_envelope_passes": false,
+      "minimum": "1/100000000000000000000",
+      "tolerance_VA": "1/1000000",
+      "weighted_check_passes": true,
+      "weighted_excess_VA": "1/100000000000000000000"
+    }
+  },
+  "evidence_state": "bounded_author_algebra_checks_not_external_review",
+  "schema_version": "1.0.0",
+  "scope": "Only the stated phasor/current points and algebraic counterexamples; no native build, network feasibility, physical adequacy or deployment-rate certificate.",
+  "source_sha256": {
+    "docs/src/foundations/ibr-power-factor-controls.md": "b69c9828763c6803c3d3614242cbd30cd62c73efe1315b2b1a137dd989e97f0b",
+    "docs/src/reference/numerical-audit-reference.md": "fa09c85eae4c88ed37336a34e087d290257902adf01f75e4c6aa7d2a712f53b9",
+    "review/bounded-audit-witnesses-2026-10-26.py": "42b5c8794b70495d25b4097d61fc82dfd0c11d4ab7f273950f61d028ceebc037"
+  }
+}

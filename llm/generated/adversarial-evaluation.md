@@ -1,11 +1,11 @@
 # Adversarial LLM retrieval evaluation
 
 **Status:** `pass`
-**Cases:** 46
+**Cases:** 52
 
 This is a deterministic robustness and abstention check, not human-calibrated answer-quality evidence.
 Near-domain negatives require under_retrieved rather than unrelated qualified claims. These curated cases do not estimate deployment error rates or establish complete intent coverage.
-Recall is averaged over the 29 cases with target evidence; empty target sets are not perfect retrievals.
+Recall is averaged over the 30 cases with target evidence; empty target sets are not perfect retrievals.
 
 | Measure | Result | Gate |
 | --- | ---: | --- |
@@ -13,9 +13,9 @@ Recall is averaged over the 29 cases with target evidence; empty target sets are
 | Qualified contract completeness | 100.0% | yes |
 | Unsupported-query abstention | 100.0% | yes |
 | Unqualified-query status accuracy | 100.0% | yes |
-| False qualification on unqualified queries | 0/17 (0.0%) | covered by status gate |
-| Hybrid retrieval recall@10 | 38.7% | diagnostic |
-| Graph retrieval recall@10 | 59.6% | diagnostic |
+| False qualification on unqualified queries | 0/22 (0.0%) | covered by status gate |
+| Hybrid retrieval recall@10 | 39.9% | diagnostic |
+| Graph retrieval recall@10 | 60.1% | diagnostic |
 
 | Case | Expected status | Observed status | Hybrid recall@10 | Graph recall@10 | Contract complete |
 | --- | --- | --- | ---: | ---: | --- |
@@ -65,3 +65,9 @@ Recall is averaged over the 29 cases with target evidence; empty target sets are
 | `ADV-DELTA-VOLTAGE-BASE` | `qualified` | `qualified` | 40.0% | 20.0% | yes |
 | `ADV-DELTA-VNOM` | `qualified` | `qualified` | 40.0% | 40.0% | yes |
 | `ADV-DELTA-BASE-WITH-INCIDENCE` | `qualified` | `qualified` | 40.0% | 0.0% | yes |
+| `ADV-VUF-ZERO-RATIO-DOMAIN` | `under_retrieved` | `under_retrieved` | — | — | — |
+| `ADV-DELTA-GENERATOR-COIL-LIMITS` | `qualified` | `qualified` | 75.0% | 75.0% | yes |
+| `ADV-SOLVER-LABEL-PHYSICAL-TOLERANCE` | `under_retrieved` | `under_retrieved` | — | — | — |
+| `ADV-REPAIRED-FOUR-LEG-MONITORS` | `under_retrieved` | `under_retrieved` | — | — | — |
+| `ADV-TINY-MINIMUM-PF-RATIO` | `under_retrieved` | `under_retrieved` | — | — | — |
+| `ADV-CONSTANT-PF-Q-CAP-CLIPPING` | `under_retrieved` | `under_retrieved` | — | — | — |

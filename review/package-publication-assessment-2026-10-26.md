@@ -49,6 +49,13 @@ continues to test its immutable published pin. Synthetic handoff tests establish
 portability behavior, not scientific validation, agent performance or reader
 learning.
 
+The later `bounded-author-review-2026-10-26.md` corrects an obsolete mixed-monitor
+limitation in the candidate profile and records a fresh 1,687-assertion companion
+run against that corrected metadata. It also retains five under-retrieved answer
+contract gaps among six exposed review probes. Use this addendum alongside the
+frozen resolved handoff; its profile hash and 52-case adversarial result are newer
+than the archive. Candidate source identity and publication scope are unchanged.
+
 ## Current blockers and decisions
 
 1. Obtain scoped implementation/domain feedback and disposition findings through

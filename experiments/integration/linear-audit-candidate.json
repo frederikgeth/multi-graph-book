@@ -72,7 +72,6 @@
     "general floating-point/backend numerical equivalence",
     "authenticated physical power availability, energy/time guarantees or implicit augmentation provenance",
     "equality to a Volt-watt upper cap or requested PWL cap",
-    "native FOUR_LEG same-quantity/different-effective-aggregation monitor construction",
     "parameterized/live shared-profile coefficient/cache behavior"
   ],
   "previous_candidate_revision": "ba6e80ec37c5bb8939c143f305805e933a0d070b",

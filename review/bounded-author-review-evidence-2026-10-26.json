@@ -1,0 +1,731 @@
+{
+  "adversarial_summary": {
+    "cases": 52,
+    "false_qualification_count": 0,
+    "false_qualification_rate": 0.0,
+    "graph_recall_at_10": 0.601111,
+    "hybrid_recall_at_10": 0.399444,
+    "qualified_contract_complete": 1.0,
+    "retrieval_cases": 30,
+    "status_accuracy": 1.0,
+    "unqualified_abstention_accuracy": 1.0,
+    "unqualified_cases": 22,
+    "unsupported_abstention_accuracy": 1.0
+  },
+  "algebra_witnesses": "review/bounded-audit-witnesses-2026-10-26.json",
+  "book_parent_revision": "1420986065ec42a300c4e08221fb64b43f702ed1",
+  "evidence_state": "bounded_ai_assisted_author_review_not_external_review",
+  "finding": {
+    "classification": "stale_applicability_metadata",
+    "id": "A1",
+    "profile_change": "Removed obsolete mixed-aggregation FOUR_LEG native-construction limitation; package source identity and remaining limitations unchanged.",
+    "status": "corrected_and_rechecked"
+  },
+  "fresh_companion": {
+    "assertions_passed": 1687,
+    "candidate_profile_sha256": "bdfbc89478dd9f7b9a7ed084b0810cafbcd90e6c8b5fa6142ff0800eccde9037",
+    "environment_sha256": {
+      "Manifest.toml": "fb0d82acbe52124a32126058f12e355193230a456ecbedc6717d2cbe518b23cc",
+      "Project.toml": "7eaf5e0a684b789b45e8fa9a4169f3d10bc25d6069d7112f9f87af5b861a8eda"
+    },
+    "full_package_suite_rerun": false,
+    "julia_version": "1.12.6",
+    "log_sha256": "58d413a646546dec4e2a5767ce48bffbcca62a85e118be3f2c9470bbc62d8508",
+    "native_monitor_matrix": {
+      "four_leg": {
+        "PG_AVERAGED__PG_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_AVERAGED__PG_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_AVERAGED__PN_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_AVERAGED__PN_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_AVERAGED__PP_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_AVERAGED__PP_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_PER_PHASE__PG_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_PER_PHASE__PG_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_PER_PHASE__PN_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_PER_PHASE__PN_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_PER_PHASE__PP_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_PER_PHASE__PP_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_AVERAGED__PG_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_AVERAGED__PG_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_AVERAGED__PN_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_AVERAGED__PN_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_AVERAGED__PP_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_AVERAGED__PP_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_PER_PHASE__PG_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_PER_PHASE__PG_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_PER_PHASE__PN_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_PER_PHASE__PN_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_PER_PHASE__PP_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_PER_PHASE__PP_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_AVERAGED__PG_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_AVERAGED__PG_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_AVERAGED__PN_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_AVERAGED__PN_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_AVERAGED__PP_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_AVERAGED__PP_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_PER_PHASE__PG_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_PER_PHASE__PG_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_PER_PHASE__PN_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_PER_PHASE__PN_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_PER_PHASE__PP_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_PER_PHASE__PP_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        }
+      },
+      "single_phase": {
+        "PG_AVERAGED__PG_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_AVERAGED__PG_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_AVERAGED__PN_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_AVERAGED__PN_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_AVERAGED__PP_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_AVERAGED__PP_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_PER_PHASE__PG_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_PER_PHASE__PG_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_PER_PHASE__PN_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_PER_PHASE__PN_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_PER_PHASE__PP_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PG_PER_PHASE__PP_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_AVERAGED__PG_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_AVERAGED__PG_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_AVERAGED__PN_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_AVERAGED__PN_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_AVERAGED__PP_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_AVERAGED__PP_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_PER_PHASE__PG_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_PER_PHASE__PG_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_PER_PHASE__PN_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_PER_PHASE__PN_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_PER_PHASE__PP_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PN_PER_PHASE__PP_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_AVERAGED__PG_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_AVERAGED__PG_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_AVERAGED__PN_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_AVERAGED__PN_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_AVERAGED__PP_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_AVERAGED__PP_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_PER_PHASE__PG_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_PER_PHASE__PG_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_PER_PHASE__PN_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_PER_PHASE__PN_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_PER_PHASE__PP_AVERAGED": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        },
+        "PP_PER_PHASE__PP_PER_PHASE": {
+          "audit_status": "passed",
+          "built": true,
+          "violated_native_primal_rows": 0
+        }
+      }
+    },
+    "output_path": "output/review/bounded-author-review-2026-10-26/coverage.json",
+    "output_sha256": "9efb58fa41979213bf9a4ebf9e8d19e6fc66cee690b1cf7a0ed8ab809413f9ac",
+    "package_revision": "6c6515153a6c9d3ed8f59605033c05a5022fa392",
+    "package_tree": "26c5162bcc5bf24fa502bdc979063ef659694242",
+    "running_default": {
+      "failed_checks": 3,
+      "status": "failed",
+      "unassessed_checks": 0
+    },
+    "running_tighter": {
+      "failed_checks": 0,
+      "status": "passed",
+      "unassessed_checks": 0
+    },
+    "source_sha256": {
+      "BMOPFTools.jl/examples/branch_angle_voltage_audit.jl": "1c44c15fe63a5723fab795d1cd76df58a82e5d4f2aa67a2cfe6ac35f24d2ef3d",
+      "BMOPFTools.jl/examples/bus_angle_voltage_audit.jl": "d90ccaa6ebe4a5063223aa22aadc47b4e72990c0a3a2084fb5bc4027d251b57c",
+      "BMOPFTools.jl/examples/delta_generator_audit.jl": "65b5eb9e3cbfff244036f0a0e5cea8e501d9572c4eeb82f3857c858c7ea7aa0b",
+      "BMOPFTools.jl/examples/delta_winding_audit.jl": "0af5e6ac6dbf267fef7c826fdb2c70817d1951a31cbc2d33f94f62379de3006a",
+      "BMOPFTools.jl/examples/fixed_transformer_audit.jl": "c318ba6228981da2f99d60db519c3a43ba0deda620b502f0c46d176a7fffd237",
+      "BMOPFTools.jl/examples/generator_cost_scope.jl": "6cc314d208248bca92bebf30e5a3a587b2ebd4d2f051614f585ae059ee97fe82",
+      "BMOPFTools.jl/examples/generator_voltage_audit.jl": "59fbb0881e73841c7f8f43bf05bda0831a07528b8d6ddeedbadfdfd8e10aa0e9",
+      "BMOPFTools.jl/examples/ibr_droop_composition_audit.jl": "86978bc79aa710fd42aa7bbdb03bcb4ea21a1da386143492ce5d41b1819cc58d",
+      "BMOPFTools.jl/examples/ibr_injection_audit.jl": "ed0de676b54deee72683dc58510d631f95207589f1e540019756610b8672a299",
+      "BMOPFTools.jl/examples/ibr_pf_audit.jl": "97127072085ed9bea0cc71d9460d226e5597dde5d73cd2cbca64a10f9aaf68cc",
+      "BMOPFTools.jl/examples/ibr_price_scope.jl": "c33e4ab6ea00daad0a42def80947d9d4ee873be01b15f7cb7b112ff50613cf4a",
+      "BMOPFTools.jl/examples/ibr_volt_var_audit.jl": "055116f469d5b9721ebbd0a4583665e7517efb0461c195392400d13110409ffe",
+      "BMOPFTools.jl/examples/ibr_volt_watt_audit.jl": "2abca45f98a88e09272db7f03dedd3e14825ed99fbe5efa26acd73abeb582a80",
+      "BMOPFTools.jl/examples/multiphase_winding_audit.jl": "14608f6979d68916679b2c387ea153ae4bd2298dc815e2ca7d2f496eccddfdb2",
+      "BMOPFTools.jl/examples/neutral_earth_voltage_audit.jl": "5d08654edff8914a231bae3fbd0495daea4830d774b9c2ae7892ba5ee3a76cb0",
+      "BMOPFTools.jl/examples/phase_neutral_voltage_audit.jl": "60f572e1919fb36fefab7a608b69e41dc8143613a42b2456714936393a551f8f",
+      "BMOPFTools.jl/examples/phase_phase_voltage_audit.jl": "41ee9142d5e81d9aa973ecded37a32d85769862b5c8de8ee52bb978eebc77500",
+      "BMOPFTools.jl/examples/sequence_voltage_audit.jl": "64c4c3a9627f73ccdde677a2abf089a7ff8b914f1bedb88c78c4cb615f345fa2",
+      "BMOPFTools.jl/examples/source_pq_audit.jl": "67d99b8f9c5f36f4c2ac1ebc4d7acddc5b4700f52cb86bd554a7d5d63d2d378d",
+      "BMOPFTools.jl/examples/source_price_audit.jl": "eb68a79259edb163f1066b3beeb84945e75fe9ab11082d162cf8059ecd5e1b50",
+      "BMOPFTools.jl/examples/winding_list_audit.jl": "f39fcedfb61d0f46b8351ebb42ac00ba003de34e31be3b7548ef72119e545f48",
+      "BMOPFTools.jl/examples/winding_rating_metadata.jl": "b71c888fc49fe440aa8bad217229a5ce0374fe2b5cf14240b45e941f648502fb",
+      "BMOPFTools.jl/test/data/linear_audit/branch-angle-voltage.json": "762e93b85e64e34240148bc6ae0bd3ccc2b1e2d48fffed9fdd0b73883aa17e64",
+      "BMOPFTools.jl/test/data/linear_audit/bus-angle-voltage.json": "0e04bd1cd36b8078ca06c961363f9cab474465d600e6d730c876d302e34f22e2",
+      "BMOPFTools.jl/test/data/linear_audit/delta-generator.json": "a5dda1ac7839e5c11337eb1e7f8868236ea19450d6ca12996a69512c37e4217e",
+      "BMOPFTools.jl/test/data/linear_audit/delta-winding.json": "bf214457e9c3e7980c041d7277bc1b741c7dde5752c80b51f40deca53b6f29d4",
+      "BMOPFTools.jl/test/data/linear_audit/fixed-switch.json": "a7f526daecf7dd9b9b193666ab52359f530d064bb645c8e6a7e43f43da1a423a",
+      "BMOPFTools.jl/test/data/linear_audit/fixed-transformer.json": "77f1b7a4b9590883d38d609b0b7159db9ba03434206d86680595808c266c6f3c",
+      "BMOPFTools.jl/test/data/linear_audit/generator-cost.json": "d543a21465f543c1b73a512b80ef5d187d3887ca36a2b6428c2a4249814be9da",
+      "BMOPFTools.jl/test/data/linear_audit/generator-voltage.json": "e596e56e96d8282fdb013dcd9927268bf41dcf0f489dac0fd30dff3dafae16f3",
+      "BMOPFTools.jl/test/data/linear_audit/ibr-droop-composition.json": "1346c11ab2f606f1505f7ad37e90c9db74a3f6a1a5ca2938f8033df6f5cc7ac2",
+      "BMOPFTools.jl/test/data/linear_audit/ibr-injection.json": "076a3d3521735676677442def24d9a9451f95fbf5ebdd06e9432e18d99b39ca4",
+      "BMOPFTools.jl/test/data/linear_audit/ibr-pf.json": "80aeb4678d71b69cc5e10f6faba9be5e0cd2319d679623c107ec4599d2ce15d2",
+      "BMOPFTools.jl/test/data/linear_audit/ibr-price.json": "fcb3ebd7955b727c6e6d27013d33f41434598d3b116ca2ea29f54622d5021961",
+      "BMOPFTools.jl/test/data/linear_audit/ibr-volt-var.json": "acac47fd81b1656fd2825d44ad62e25c857490118172ae2f51beac64a98039b7",
+      "BMOPFTools.jl/test/data/linear_audit/ibr-volt-watt.json": "999387ad7d489ceb4db4918b1966580607bb3849a8ad7727684ba8a8c4540daa",
+      "BMOPFTools.jl/test/data/linear_audit/multiphase-winding.json": "4340954014d001e937af3a26b413324d53bfc1d5ff4456d4d3e88c58211771f8",
+      "BMOPFTools.jl/test/data/linear_audit/neutral-and-delta.json": "88445612f965e0426eeeae4d0388c7ba09de971e51d152f8aefdfe13f0c869c5",
+      "BMOPFTools.jl/test/data/linear_audit/neutral-earth-voltage.json": "deb6214c196dd44763a01279dd24b7fa92f028a7679d5a8b87e7df391c64c9c4",
+      "BMOPFTools.jl/test/data/linear_audit/phase-neutral-voltage.json": "4d5f2a19c3d5c09c2b3c062b4a139b93ae5cf11bede06bd14477249b6c081fab",
+      "BMOPFTools.jl/test/data/linear_audit/phase-phase-voltage.json": "38a2ac85cdcd1629dc2f156173bc6235661a19857f669d442ace60f64a49c003",
+      "BMOPFTools.jl/test/data/linear_audit/rating-metadata.json": "8b97f90d18c1c790da44839d6fbbf99f84a0301e131e87f9cb4368313d873468",
+      "BMOPFTools.jl/test/data/linear_audit/sequence-voltage.json": "62ca1f171b4ca9128eca4fcabb282a38969036e57fd7d0b263a56b5de7507902",
+      "BMOPFTools.jl/test/data/linear_audit/source-pq.json": "15aace101823f011b83dd5bffb2282a7cfaf3d12c5dfbd53c6380aee8868c04b",
+      "BMOPFTools.jl/test/data/linear_audit/source-price.json": "262e843e4080ea2511e65e9d52f0cf8ba95403288eb6452509334d7649bf1073",
+      "BMOPFTools.jl/test/data/linear_audit/two-feeders.json": "fe0d27838e104184236d04ef6037c88d31c918d7d77cfd1e4f045e694a46fab2",
+      "BMOPFTools.jl/test/data/linear_audit/winding-list.json": "3454240f3b03a104e952c25de50b276e2057488263ca79e10e8c28df0ccc3432",
+      "BMOPFTools.jl/test/data/pf_comparison/pf_3wdg_unequal_kva.dss": "576fcc7e0dd6a42093403da2c5bdd9a38c9a7ac8b8283384d999ac980431f484",
+      "book/experiments/lessons/verify_linear_coverage.jl": "fb9bc275e8f65fb3034791c1ac2a12f8c07971982d9612f31441dd139d4aea4c",
+      "book/experiments/running_network.jl": "536dbdc27678af0a3acdd33293df4760a9208b30ddcd1a3c23fde347689d9803"
+    },
+    "testsets": 25
+  },
+  "frozen_review_archive_rewritten": false,
+  "llm_reproducibility_log_sha256": "7183a9249f555c4e07b7534c5814f905563dc94788f4f3bdd68017fdac651a74",
+  "retrieval_limits": "Six exposed development probes; five under_retrieved gaps remain. No new route, claim, blind assessment or deployment-rate estimate.",
+  "retrieval_probe_raw_sha256": "b10e4082476a6d66b5331e63857bc2826165437424f3d5694774d037cf9ad915",
+  "retrieval_probes": [
+    {
+      "mandatory_records": [],
+      "packet_validation": {
+        "citation_presence_checked": true,
+        "claim_coverage_checked": true,
+        "source_hashes_checked": true,
+        "valid": true
+      },
+      "question": "Does zero positive-sequence voltage satisfy a VUF limit because the cross-multiplied inequality passes?",
+      "related_sources": [
+        {
+          "anchor": "a-same-circuit-roots-different-admissibility",
+          "path": "docs/src/cases/unintended-solution-multiplicity.md"
+        },
+        {
+          "anchor": "sequence-voltage-audit",
+          "path": "docs/src/reference/numerical-audit-reference.md"
+        },
+        {
+          "anchor": "taking-a-limit-and-replacing-the-equations",
+          "path": "docs/src/cases/building-and-changing-models.md"
+        },
+        {
+          "anchor": "scoped-numerical-witness",
+          "path": "docs/src/foundations/load-models-and-decision-dependence.md"
+        },
+        {
+          "anchor": "four-wire-impedance-model-ladder",
+          "path": "docs/src/cases/four-wire-impedance-model-ladder.md"
+        },
+        {
+          "anchor": "recover-the-meaning-of-a-multiplier",
+          "path": "docs/src/cases/building-and-changing-models.md"
+        }
+      ],
+      "status": "under_retrieved"
+    },
+    {
+      "mandatory_records": [
+        "claim:LOAD-CONNECTION-002",
+        "concept:phase-conductor-sequence-coordinate",
+        "concept:flow-current-power-message",
+        "concept:direction-orientation-hierarchy"
+      ],
+      "packet_validation": {
+        "citation_presence_checked": true,
+        "claim_coverage_checked": true,
+        "source_hashes_checked": true,
+        "valid": true
+      },
+      "question": "Can terminal injection currents alone establish DELTA generator coil-current limits?",
+      "related_sources": [
+        {
+          "anchor": "delta-coil-current-lesson",
+          "path": "docs/src/foundations/load-models-and-decision-dependence.md"
+        },
+        {
+          "anchor": "terminology-phase-conductor-coordinate",
+          "path": "docs/src/reference/terminology.md"
+        },
+        {
+          "anchor": "terminology-flow",
+          "path": "docs/src/reference/terminology.md"
+        },
+        {
+          "anchor": "terminology-directed",
+          "path": "docs/src/reference/terminology.md"
+        },
+        {
+          "anchor": "quantities-and-computation",
+          "path": "docs/src/start/one-network-five-languages.md"
+        },
+        {
+          "anchor": "rooted-tree-orientation-is-a-derived-view",
+          "path": "docs/src/foundations/orientation-terminal-power.md"
+        },
+        {
+          "anchor": "delta-generator-injection-audit",
+          "path": "docs/src/reference/numerical-audit-reference.md"
+        },
+        {
+          "anchor": "a-stored-orientation-is-not-an-operating-direction",
+          "path": "docs/src/foundations/orientation-terminal-power.md"
+        },
+        {
+          "anchor": "running-transformer",
+          "path": "docs/src/transformations/multiwinding-terminal-leakage-assembly.md"
+        },
+        {
+          "anchor": "generator-voltage-audit",
+          "path": "docs/src/reference/numerical-audit-reference.md"
+        }
+      ],
+      "status": "qualified"
+    },
+    {
+      "mandatory_records": [],
+      "packet_validation": {
+        "citation_presence_checked": true,
+        "claim_coverage_checked": true,
+        "source_hashes_checked": true,
+        "valid": true
+      },
+      "question": "Does LOCALLY_SOLVED prove all generator bounds pass a 1e-6 W tolerance?",
+      "related_sources": [
+        {
+          "anchor": "PSK-000003",
+          "path": "knowledge/psk.toml"
+        },
+        {
+          "anchor": "generator-cost-scope-audit",
+          "path": "docs/src/reference/numerical-audit-reference.md"
+        },
+        {
+          "anchor": "extending-coverage-without-changing-the-older-api",
+          "path": "docs/src/foundations/numerical-consequences.md"
+        },
+        {
+          "anchor": "package-candidate-and-the-running-network-boundary",
+          "path": "docs/src/foundations/numerical-consequences.md"
+        },
+        {
+          "anchor": "solver-behaviour-and-decision-margins",
+          "path": "docs/src/foundations/numerical-consequences.md"
+        },
+        {
+          "anchor": "delta-generator-injection-audit",
+          "path": "docs/src/reference/numerical-audit-reference.md"
+        }
+      ],
+      "status": "under_retrieved"
+    },
+    {
+      "mandatory_records": [],
+      "packet_validation": {
+        "citation_presence_checked": true,
+        "claim_coverage_checked": true,
+        "source_hashes_checked": true,
+        "valid": true
+      },
+      "question": "Are mixed per-phase and averaged FOUR_LEG monitors still unsupported in the repaired candidate?",
+      "related_sources": [
+        {
+          "anchor": "native-monitor-sharing-retains-controller-specific-inputs",
+          "path": "docs/src/foundations/ibr-power-factor-controls.md"
+        },
+        {
+          "anchor": "voltage-references-and-averaging-have-their-own-incidence",
+          "path": "docs/src/foundations/ibr-power-factor-controls.md"
+        },
+        {
+          "anchor": "ibr-volt-var-audit",
+          "path": "docs/src/foundations/ibr-power-factor-controls.md"
+        },
+        {
+          "anchor": "requested-graph-assumed-smooth-cap-and-hard-box",
+          "path": "docs/src/foundations/ibr-power-factor-controls.md"
+        },
+        {
+          "anchor": "ibr-droop-composition-audit",
+          "path": "docs/src/foundations/ibr-power-factor-controls.md"
+        },
+        {
+          "anchor": "separate-model-assumptions-and-partial-evidence",
+          "path": "docs/src/foundations/ibr-power-factor-controls.md"
+        }
+      ],
+      "status": "under_retrieved"
+    },
+    {
+      "mandatory_records": [],
+      "packet_validation": {
+        "citation_presence_checked": true,
+        "claim_coverage_checked": true,
+        "source_hashes_checked": true,
+        "valid": true
+      },
+      "question": "Does a weighted minimum-PF residual pass certify the PF ratio when the minimum coefficient is tiny?",
+      "related_sources": [
+        {
+          "anchor": "zero-power-and-small-coefficients",
+          "path": "docs/src/foundations/ibr-power-factor-controls.md"
+        },
+        {
+          "anchor": "capability-is-an-intersection",
+          "path": "docs/src/foundations/ibr-power-factor-controls.md"
+        },
+        {
+          "anchor": "ibr-droop-composition-audit",
+          "path": "docs/src/foundations/ibr-power-factor-controls.md"
+        },
+        {
+          "anchor": "applicability-and-missing-evidence",
+          "path": "docs/src/foundations/ibr-power-factor-controls.md"
+        },
+        {
+          "anchor": "two-declarations-two-mathematical-objects",
+          "path": "docs/src/foundations/ibr-power-factor-controls.md"
+        },
+        {
+          "anchor": "hard-limits-and-minimum-pf-remain-intersected",
+          "path": "docs/src/foundations/ibr-power-factor-controls.md"
+        }
+      ],
+      "status": "under_retrieved"
+    },
+    {
+      "mandatory_records": [],
+      "packet_validation": {
+        "citation_presence_checked": true,
+        "claim_coverage_checked": true,
+        "source_hashes_checked": true,
+        "valid": true
+      },
+      "question": "Does q_max clip the reactive injection required by a constant power factor?",
+      "related_sources": [
+        {
+          "anchor": "terminology-flow",
+          "path": "docs/src/reference/terminology.md"
+        },
+        {
+          "anchor": "",
+          "path": "docs/src/foundations/formal-representation-frameworks.md"
+        },
+        {
+          "anchor": "two-declarations-two-mathematical-objects",
+          "path": "docs/src/foundations/ibr-power-factor-controls.md"
+        },
+        {
+          "anchor": "quantities-and-computation",
+          "path": "docs/src/start/one-network-five-languages.md"
+        },
+        {
+          "anchor": "representation-taxonomy",
+          "path": "docs/src/foundations/representation-taxonomy.md"
+        },
+        {
+          "anchor": "terminology-directed",
+          "path": "docs/src/reference/terminology.md"
+        }
+      ],
+      "status": "under_retrieved"
+    }
+  ],
+  "reviewer_contact_package_publication_pin_change_or_review_status_promotion": false,
+  "schema_version": "1.0.0",
+  "source_sha256": {
+    "docs/src/foundations/ibr-power-factor-controls.md": "b69c9828763c6803c3d3614242cbd30cd62c73efe1315b2b1a137dd989e97f0b",
+    "docs/src/reference/numerical-audit-reference.md": "fa09c85eae4c88ed37336a34e087d290257902adf01f75e4c6aa7d2a712f53b9",
+    "experiments/integration/linear-audit-candidate.json": "bdfbc89478dd9f7b9a7ed084b0810cafbcd90e6c8b5fa6142ff0800eccde9037",
+    "experiments/lessons/verify_linear_coverage.jl": "fb9bc275e8f65fb3034791c1ac2a12f8c07971982d9612f31441dd139d4aea4c",
+    "llm/adversarial-cases.toml": "11eeccacf74fd9f04f089b1b5f27fdbac8918dfac2c0667a00545550f445fc5b",
+    "llm/generated/adversarial-evaluation.json": "937d1e90b64c508c69774e5fb085a6b240f8d27258cbe0290f616136c6126729",
+    "review/bounded-audit-witnesses-2026-10-26.json": "c324f57a96c0e5be0e100c84752c92688bfaf6b6e0b4c907aa9c1aa8f32802e1",
+    "review/bounded-audit-witnesses-2026-10-26.py": "42b5c8794b70495d25b4097d61fc82dfd0c11d4ab7f273950f61d028ceebc037",
+    "review/bounded-author-review-2026-10-26.md": "18ce5b1a4ff311d291dc2283b05aa63761942e114c96569811b485472d4370bd",
+    "review/external-review-response-ledger.csv": "f62b51ca61380e7ddec49bbfaa3da1cc04348163ec11f2b159a36b9b8f10f238"
+  }
+}

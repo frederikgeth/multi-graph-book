@@ -377,3 +377,55 @@ question = "Do WYE and DELTA loads use equal nominal voltage anchors even when c
 expected_status = "qualified"
 expected_claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
 expected_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "factor"]
+
+# Bounded author-review probes, now exposed development regressions.
+# The unqualified questions have related passages but no current complete
+# answer contract; do not replace refusal with a merely related qualified route.
+
+[[case]]
+case_id = "ADV-VUF-ZERO-RATIO-DOMAIN"
+audience = "power_engineer"
+question = "Does zero positive-sequence voltage satisfy a VUF limit because the cross-multiplied inequality passes?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-GENERATOR-COIL-LIMITS"
+audience = "power_engineer"
+question = "Can terminal injection currents alone establish DELTA generator coil-current limits?"
+expected_status = "qualified"
+expected_claim_ids = ["LOAD-CONNECTION-002"]
+expected_concept_ids = ["phase-conductor-sequence-coordinate", "flow-current-power-message", "direction-orientation-hierarchy"]
+
+[[case]]
+case_id = "ADV-SOLVER-LABEL-PHYSICAL-TOLERANCE"
+audience = "power_engineer"
+question = "Does LOCALLY_SOLVED prove all generator bounds pass a 1e-6 W tolerance?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-REPAIRED-FOUR-LEG-MONITORS"
+audience = "power_engineer"
+question = "Are mixed per-phase and averaged FOUR_LEG monitors still unsupported in the repaired candidate?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-TINY-MINIMUM-PF-RATIO"
+audience = "power_engineer"
+question = "Does a weighted minimum-PF residual pass certify the PF ratio when the minimum coefficient is tiny?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-CONSTANT-PF-Q-CAP-CLIPPING"
+audience = "power_engineer"
+question = "Does q_max clip the reactive injection required by a constant power factor?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
