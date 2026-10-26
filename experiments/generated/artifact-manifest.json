@@ -1,5 +1,5 @@
 {
-  "artifact_count": 94,
+  "artifact_count": 97,
   "artifacts": [
     {
       "path": "experiments/generated/active-radiality-witness.json",
@@ -257,6 +257,11 @@
       "size_bytes": 1161
     },
     {
+      "path": "experiments/generated/neutral-shunt-multiplicity.json",
+      "sha256": "a49553d8d29c109c72ce4446b297a27b2fd7f5b6ec08af46deb5c3ed540e84c5",
+      "size_bytes": 4435
+    },
+    {
       "path": "experiments/generated/nodal-recovery-guards-witness.json",
       "sha256": "ae8c679496d94d802fffd515559603032fd894b64718e2ea0954dccb7d6dd9de",
       "size_bytes": 5528
@@ -327,6 +332,11 @@
       "size_bytes": 3165
     },
     {
+      "path": "experiments/generated/observation-quotients.json",
+      "sha256": "4932f556a0a7cc76fd49931ec53b950c3a8f687d058e19b0e9b063fd9275238f",
+      "size_bytes": 5647
+    },
+    {
       "path": "experiments/generated/parallel-branch-certificate.json",
       "sha256": "f90cda3dd5d4556777f842617d46a98ea37bd60c0e48a52b900382bd7e05a242",
       "size_bytes": 4243
@@ -380,6 +390,11 @@
       "path": "experiments/generated/semantic-evaluator-matrix.json",
       "sha256": "f3dfbbb92dc7e56612308fb2035fa633f5cef5a8a8efa332b32757d61b27df92",
       "size_bytes": 12814
+    },
+    {
+      "path": "experiments/generated/solution-multiplicity.json",
+      "sha256": "8bac02a9f348bcb2ad9a1f0b2e5f604d47e1e790c123320671204b94788f605d",
+      "size_bytes": 5932
     },
     {
       "path": "experiments/generated/solver-diagnostics-crosswalk.json",
@@ -463,7 +478,7 @@
     },
     {
       "path": "experiments/generated/view-source-maps.json",
-      "sha256": "dea566cc39bed5e7a23c1dc2521c4b52418116679aa85c5a59afabd66b1a3705",
+      "sha256": "474aa71fa8ea2d56388b8cc7618a374fc0d082f72940d485a0ec9a5b8419eb41",
       "size_bytes": 26025
     },
     {

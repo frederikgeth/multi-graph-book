@@ -8,7 +8,7 @@ import json
 import re
 import sys
 import tomllib
-from decimal import Decimal, InvalidOperation
+from decimal import Decimal, InvalidOperation, localcontext
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,8 +35,22 @@ def decimal_places(literal: str) -> int:
 
 
 def quantized(literal: str) -> Decimal:
-    places = decimal_places(literal)
-    return Decimal(literal).quantize(Decimal(1).scaleb(-places))
+    # The exponent is part of the displayed precision: 1.2345e-6 must not
+    # round to four places after the decimal point and falsely match zero.
+    return Decimal(literal)
+
+
+def matches_displayed_number(candidate: Decimal, literal: str) -> bool:
+    if not candidate.is_finite():
+        return False
+    target = quantized(literal)
+    quantum = Decimal((0, (1,), target.as_tuple().exponent))
+    # New exact-arithmetic artifacts can contain integers wider than the
+    # default 28-digit context. Such unrelated values must not crash the gate.
+    with localcontext() as context:
+        context.prec = max(context.prec, len(candidate.as_tuple().digits),
+                           candidate.adjusted() - quantum.as_tuple().exponent + 2)
+        return candidate.quantize(quantum) == target
 
 
 def strip_non_prose(text: str) -> str:
@@ -147,9 +161,7 @@ def main() -> int:
     direct_matches = 0
     unmatched = []
     for value in values:
-        places = decimal_places(value["literal"])
-        target = quantized(value["literal"])
-        if any(candidate.quantize(Decimal(1).scaleb(-places)) == target for candidate in artifacts):
+        if any(matches_displayed_number(candidate, value["literal"]) for candidate in artifacts):
             direct_matches += 1
         elif (value["path"], value["line"], value["literal"]) not in binding_keys:
             unmatched.append((value["path"], value["line"], value["literal"]))
