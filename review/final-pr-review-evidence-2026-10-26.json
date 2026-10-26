@@ -1,0 +1,119 @@
+{
+  "algebra": {
+    "five_previous_point_checks_unchanged": true,
+    "snapshot_path": "output/review/final-pr-review-2026-10-26/algebra-check.json",
+    "snapshot_sha256": "4ea2d66ee13fb9dda1c0efc49bc4414a1f02d7d942de664f996a6eeb3161510a",
+    "zero_point_with_constant_target_below_minimum_satisfies_weighted_laws": true
+  },
+  "claim_verification": {
+    "externally-reviewed": 0,
+    "independently-implemented": 6,
+    "self-checked": 117
+  },
+  "completed_local_date": "2026-10-27",
+  "findings_fixed": [
+    "P1: THREE_LEG applicability overstatement",
+    "P2: mutable experiments environment called pinned",
+    "P2: solver-success opening implied equation validity",
+    "P2: PF sign and construction-policy scope",
+    "P2: eight unscoped added-line literals and numeric-pool evidence wording",
+    "P3: repeated status/history and implementation encoding before the math"
+  ],
+  "fix_commit": "45910ce93078f8d9c9129d4b78ae8d086daa83f1",
+  "historical_archives_overwritten": false,
+  "kind": "final_author_pr_review_not_external_validation",
+  "new_commits_require_own_hosted_checks": true,
+  "pr_base": "938224a3f9cc1f3b83d65ebb426f59e882561910",
+  "pr_url": "https://github.com/frederikgeth/multi-graph-book/pull/10",
+  "primary_sources_rechecked": [
+    "https://arxiv.org/html/2204.08126v1",
+    "https://arxiv.org/html/2211.03969v3",
+    "https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf"
+  ],
+  "psk_implementation_states_changed": false,
+  "published_pin_unchanged": "97c274946091859b7d9b0e822c96f1e7f9f50c7e",
+  "release_manifest_refreshed": false,
+  "render": {
+    "all_changed_pages_rendered_and_inspected": true,
+    "bytes": 5400271,
+    "changed_pages": [
+      131,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      145,
+      146,
+      147,
+      148,
+      167,
+      168,
+      169,
+      170
+    ],
+    "closer_page_inspection": [
+      139,
+      140,
+      147,
+      148
+    ],
+    "html_image_tags": 77,
+    "html_pages": 83,
+    "missing_glyphs_reported": false,
+    "outside_page_characters_at_1pt_tolerance": [],
+    "page_count": 208,
+    "path": "output/pdf/final-pr-review-2026-10-26.pdf",
+    "pdf_sha256": "a3b7b41cc814f145580886bf21eb5565953497fd108aa2e1c93b4b58707b8161",
+    "render_log_sha256": "e54626a97299e1cb0cb02c0485a378796df0d43730f7dcf933a0ac5da5274f85",
+    "successful_compiler": "system Tectonic 0.17.0 via existing DOCUMENTER_TECTONIC override"
+  },
+  "reviewed_head": "106d03a478a93490a2c9d2af62743a777de55ec4",
+  "reviewer_contact_package_publication_or_status_promotion": false,
+  "schema_version": "1.0.0",
+  "source_sha256": {
+    "docs/src/cases/unintended-solution-multiplicity.md": "2e8522df0e4273452b81a0772d9d9870dd4d8028a5194fe48e947609fc3528a0",
+    "docs/src/foundations/ibr-power-factor-controls.md": "664f6f3242f0c6969e1e78614c5f74cc91344463496b1c273a128fca7fa2dd5e",
+    "docs/src/foundations/numerical-consequences.md": "d47d7ee1602a28321e413f19a7c8a94f7ece2e0465b1b608b853d9b7b649efdd",
+    "docs/src/start/computational-cases.md": "816f3c5194401ee00d9825790e0f435a4f9a0596a958af54a1116662605c7e18",
+    "experiments/generated/artifact-manifest.json": "0ed5012f5a8ecb295d6cf4d025be59eec015a150d0d30a281817c3695b876a04",
+    "experiments/generated/prose-number-witnesses.json": "aa8ce840c364f2f88d364f964e39947bfe183327bb310554fefa9b169fbd963a",
+    "experiments/lessons/prose_number_witnesses.py": "178eddc1fdd4354e7fb6eca1804f006eb8c31615929ac6857bc3120452057230",
+    "generated/federated-knowledge-pair-manifest.json": "139128184a6cf1cc0541989ec6f6e1442a8829c84ec37bd6433f27ec50311ec9",
+    "llm/generated/adversarial-evaluation.json": "00007c8bfdc1a1d09034879d87d0a442715fd30ef28ff1e598f847d52181043a",
+    "llm/generated/corpus-manifest.json": "776032032e6800bb22119d34bd0071f649cdc8e6e4bbed60094d6c89b78f79f1",
+    "review/final-pr-review-2026-10-26.md": "9f47e1bd758935eb346f21f62458440407be690c356c51aaa77ef358b66c18e2",
+    "review/prose-number-bindings.toml": "f83ddff9c40942266c6ac5a0119e0d3d22d6b10f8594fc3186a73da36262f788",
+    "scripts/check_prose_numbers.py": "49fa41e056df6780c50fd660aeb61dfb5da664166a6c77dc05ea441bbd60d64f"
+  },
+  "timezone": "Australia/Brisbane",
+  "validation": {
+    "adversarial_cases": 60,
+    "arithmetic_witness_tests": 4,
+    "artifact_json_count": 99,
+    "audience_cases": 117,
+    "book_julia_log_sha256": "3694343f0d3430b36ee4f0c8f6af59f26e8d3604f782787777aa56faa3cb3948",
+    "book_julia_suite": "passed_in_isolated_expansion_of_published_pin",
+    "candidate_companion_rerun": false,
+    "corpus_records": 1031,
+    "deterministic_observations": 53,
+    "exact_published_pair": "passed",
+    "explicit_bindings": 64,
+    "figures": "70_pairs_pass",
+    "full_package_suite_rerun": false,
+    "julia_load_path": "/tmp/mgb-release-isolated-2026-10-26:@stdlib",
+    "loaded_package_tree_assertion": "457c799b216cd6b4010405570534faa4b9edf9a5",
+    "main_validation_log_sha256": "68515864776d3f489dda8cd27eeb9a3138e3745b3de9bc20631a49c38efba1ea",
+    "primary_reproducibility": "passed",
+    "prose_literals_checked": 200,
+    "prose_number_tests": 7,
+    "runtime_environment_sha256": {
+      "Manifest.toml": "25f69a9d24c8520b436d513ccbee3e7f27cd3a16df08a2560f61d63ab6a36c0f",
+      "Project.toml": "3641001b19e41ab0fc572571e2e4d283cf070c816b086975381eda3fbdb1ce71"
+    },
+    "synthetic_benchmark_and_pilot": "passed_locally_and_against_published_oracles_no_measured_runs",
+    "unscoped_added_pr_literals": 0,
+    "unscoped_inherited_matches": 136
+  }
+}
