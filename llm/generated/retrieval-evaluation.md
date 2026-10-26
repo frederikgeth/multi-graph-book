@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `504cc28ddab0a2881d74be6ea17bc34d378e72d858776155ea842ab27c4a7160`<br>
+**Corpus hash:** `24b3271aec0864cdb2dd175b388bce41df1974958904ec122e42c048bf7f4d08`<br>
 **Cases:** 108
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -28,7 +28,7 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Corpus-release identity agreement | 100.0% | yes |
 | Held-out contract-router firing | 22/33 (66.7%) | yes |
 | Held-out expected-contract top-1 | 20/33 (60.6%) | diagnostic |
-| Held-out hybrid zero-recall@10 cases | 6/33 | diagnostic |
+| Held-out hybrid zero-recall@10 cases | 5/33 | diagnostic |
 
 The diagnostic lexical scores are intentionally not release thresholds. A perfect contract score
 cannot be reported as a better ranker score: it measures whether an identified high-risk question
@@ -43,15 +43,15 @@ the question count must not be treated as that many independent observations.
 
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `lexical` | 33.6% | 42.6% | 0.0% | 0/33 | 6/33 | 0.195 |
+| `lexical` | 33.6% | 42.6% | 0.0% | 0/33 | 6/33 | 0.196 |
 | `char_tfidf` | 34.1% | 42.8% | 0.0% | 0/33 | 7/33 | 0.219 |
-| `hybrid` | 35.0% | 46.5% | 0.0% | 0/33 | 6/33 | 0.213 |
-| `graph` | 37.5% | 58.9% | 18.2% | 6/33 | 3/33 | 0.249 |
+| `hybrid` | 35.0% | 47.1% | 0.0% | 0/33 | 5/33 | 0.214 |
+| `graph` | 37.5% | 58.9% | 18.2% | 6/33 | 3/33 | 0.248 |
 
 Held-out contract-router firing: **22/33 (66.7%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **20/33 (60.6%)**; this remains diagnostic because the set is synthetic and clustered.
 Target clusters: **11**, with cluster sizes `[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]`; percentage differences are therefore not independent observations.
-Hybrid versus lexical complete@10: **0/33** versus **0/33**; hybrid zero-recall@10: **6/33**.
+Hybrid versus lexical complete@10: **0/33** versus **0/33**; hybrid zero-recall@10: **5/33**.
 Graph versus hybrid complete@10: **6/33** versus **0/33**.
 
 | Held-out case | Audience | Expected route | Observed top-1 | Router fired | Lexical complete@10 | TF-IDF complete@10 | Hybrid complete@10 | Graph complete@10 |

@@ -106,7 +106,7 @@ publishing the package commit, deliberately updating the ordinary integration
 pin and regenerating the federated pair. The native default-role source-neutral return and constant-power loads are now
 covered by the extended API, together with fixed ideal switches, bounded
 WYE/SINGLE_PHASE generator injections/limits, applicable phase-to-earth bus
-voltage bounds, explicit-neutral phase-to-neutral vpn_min/vpn_max arrays, applicable scalar neutral-to-earth vn_max, phase-to-phase vpp_min/vpp_max arrays and centered intra-bus angle windows, and fixed single-coil single_phase transformers with legacy
+voltage bounds, explicit-neutral phase-to-neutral vpn_min/vpn_max arrays, applicable scalar neutral-to-earth vn_max, phase-to-phase vpp_min/vpp_max arrays, centered intra-bus angle windows and three-phase sequence/VUF bounds, and fixed single-coil single_phase transformers with legacy
 secondary excitation, plus two/three-winding WYE transformers with matched one-to-three phase-neutral coils and
 explicit pairwise leakage, plus matched three-terminal DELTA winding incidence/rotation. DELTA generators, generator costs/controllers, transformer
 variants/limits outside that narrow slice, voltage-dependent loads, other voltage families and objective
@@ -298,7 +298,7 @@ shunts do not skip these phase pairs. Tests cover complex norms, array
 permutations, relabeling, exact boundary/tolerance and native constraint incidence.
 Six running limits now pass; unknown rows fall 29 -> 28 because both declared
 fields formerly shared one field-coverage row. The intact generator cost still
-prevents complete KCL/power certification. Sequence and branch-angle bounds, objective/adequacy,
+prevents complete KCL/power certification. Branch-angle bounds, objective/adequacy,
 published integration, PSK status and execution MCP promotion remain separate.
 
 
@@ -308,7 +308,7 @@ and strictly within (-pi/2,pi/2). Optional full-phase va_nom centers second-minu
 first earth-phasor angles; absence means zero offset. Principal centered
 violations and the separate angle_tol are rad. Zero endpoints stay unassessed
 even though native bilinear rows can vanish there. Standalone nominal metadata,
-custom roles, branch-end angle bounds and sequence limits remain outside this
+custom roles and branch-end angle bounds remain outside this
 slice. Missing endpoint state suppresses KCL/power certification.
 
 The same load phases 9 and 1+10im V have raw difference atan(10), centered on
@@ -323,3 +323,31 @@ noncyclic reorderings, equal windows/antipodal exclusion, malformed data and
 Float64 range. The running input declares no bus-angle windows or va_nom, so
 28 unknown obligations and its indeterminate verdict remain unchanged. The
 published pin, PSK statuses and execution MCP are unchanged.
+
+
+The companion additionally binds `examples/sequence_voltage_audit.jl` and
+`sequence-voltage.json`. All three phases in declaration order enter the
+independently evaluated Fortescue transform, including grounded/source-fixed
+phases. Floating neutral selects supplied phase-neutral input; absent or perfect
+neutral (including implicit source grounding) selects earth input. No missing
+neutral state is invented. Missing required state still suppresses KCL/power.
+
+Magnitude limits vpos_min/max, vneg_max and vzero_max use V; vuf_max bounds the
+fraction |Vnegative|/|Vpositive| with separate dimensionless vuf_tol. Both vuf_tol
+and the separate denominator floor vuf_voltage_floor default to 1e-6, with the
+latter in V. At/below the floor, observed ratio/residual are null; magnitude
+limits remain independently checked. Native cross-multiplied feasibility at the
+all-zero point does not define a ratio. This audit makes no polynomial-feasibility
+claim outside its ratio domain.
+
+The four-wire 1 ohm circuit has load sequence phasors 10 V, 1 V and 0.5+0.25im V,
+floating neutral 1-0.5im V and VUF 0.1. Tightened bounds each fail with KCL/power
+still passing. A consistent 5 V positive/1 V negative point passes the same
+negative cap but has VUF 0.2. Native SI/per-unit, grounded-neutral and permitted
+low-positive points pass; the tightened native VUF attempt and failed point
+audit are retained with local infeasibility, not a global certificate. Tests
+cover full source/ground phase incidence, phase-order reversal/cyclic symmetry,
+zero/floor refusal, scalar/unit boundaries and malformed/missing data. The
+running input declares no sequence/VUF bound; 28 unknowns and its indeterminate
+verdict remain unchanged. The published pin, PSK statuses and execution MCP
+stay separate.

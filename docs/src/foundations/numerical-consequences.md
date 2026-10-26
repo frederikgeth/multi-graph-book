@@ -546,7 +546,7 @@ returns, implicit source grounding and WYE/SINGLE_PHASE/DELTA constant-power
 load equations, fixed ideal switches, a bounded WYE/SINGLE_PHASE generator
 domain, ordinary phase-to-earth and explicit-neutral phase-to-neutral voltage
 bounds, applicable scalar neutral-to-earth caps, phase-pair bounds and centered
-intra-bus angle windows, fixed
+intra-bus angle windows and three-phase sequence/VUF bounds, fixed
 single-coil transformers,
 and matched WYE/DELTA winding-list equations with explicit rating-metadata
 semantics. The same running-network result now has **28 unassessed rows**
@@ -1315,7 +1315,7 @@ Malformed or nonfinite bounds, conversion overflow/underflow and unknown
 applicability remain **unassessed**, while otherwise known current contributions
 and checked violations stay visible. Missing required neutral voltage suppresses
 network KCL/power certification. Neutral-to-earth limits are covered below;
-phase-to-phase and bus-angle limits follow below, while sequence remains separate
+phase-to-phase, bus-angle and sequence limits follow below; branch-end angles remain separate
 audit work. The existing running network has no PN-bound declarations, so its 28 unassessed obligations remain unchanged. The
 published integration pin and execution MCP surface are unchanged.
 
@@ -1484,7 +1484,7 @@ full pair index, observed magnitude and bound.
 The running network now has six checked phase-pair bounds at bus i6. Unknown
 rows fall from 29 to 28: the two unsupported fields previously shared one
 field-coverage row. The intact generator cost and incomplete KCL/power coverage
-keep its verdict **indeterminate**. Bus-angle limits follow below; sequence and
+keep its verdict **indeterminate**. Bus-angle and sequence limits follow below;
 branch-angle limits, objectives, physical
 adequacy, PSK implementation statuses, published integration and execution MCP
 remain separate obligations.
@@ -1572,8 +1572,8 @@ principal-angle check rejects directly.
 Missing required endpoints, one-sided/reversed/singular windows, malformed
 nominal arrays and unrepresentable data stay unknown. Known currents and checked
 violations remain visible; missing required state suppresses complete KCL/power
-certification. Standalone `va_nom`, custom roles, branch-end angle and sequence
-bounds remain outside this slice. The running network declares no bus-angle
+certification. Standalone `va_nom`, custom roles and branch-end angle bounds remain
+outside this slice; sequence limits follow below. The running network declares no bus-angle
 window, so its **28 unassessed obligations** and **indeterminate** verdict are
 unchanged. Published integration, PSK statuses, execution MCP, objective and
 physical adequacy remain separate.
@@ -1582,3 +1582,101 @@ physical adequacy remain separate.
 above. Give the new nominal order, deviation and bound endpoints. Then set one
 endpoint voltage to zero and explain why successful bilinear rows or `atan(0,0)`
 cannot supply its missing direction.
+
+
+### [Sequence-voltage magnitudes are not a VUF ratio](@id sequence-voltage-audit)
+
+Sequence bounds observe a linear combination of three phase phasors, followed
+by a magnitude. In full declaration order, let ``\alpha=e^{2\pi\mathrm j/3}``:
+
+```math
+V_0=\frac{u_1+u_2+u_3}{3},\qquad
+V_1=\frac{u_1+\alpha u_2+\alpha^2u_3}{3},\qquad
+V_2=\frac{u_1+\alpha^2u_2+\alpha u_3}{3}.
+```
+
+Here ``u`` is phase-minus-neutral voltage when the declared default-role n/N
+neutral floats, and phase-to-earth voltage when the neutral is absent or
+perfectly grounded, including implicit source-bus grounding. The native
+transform includes **all three phases**, even grounded or source-fixed ones.
+These limits therefore have different applicability from the individual-phase
+bounds above. Phase labels do not authenticate a physical phase arrangement;
+this transform follows the full declared order. A cyclic permutation preserves
+magnitudes, while exchanging two phases swaps positive and negative sequences
+in this convention.
+
+**Predict:** does an absolute negative-sequence cap establish a voltage-unbalance
+ratio? The package-owned four-wire `sequence-voltage.json` circuit has 1 Ω per
+phase and neutral conductor. At its supplied load point, the neutral is
+``1-0.5\mathrm j`` V and the phase-neutral sequence phasors are
+``V_1=10`` V, ``V_2=1`` V and ``V_0=0.5+0.25\mathrm j`` V. The independent
+forward transform checks these observations from rectangular terminal states.
+
+| Observation or obligation | Supplied value or bound | Independent result |
+|:--|:--|:--|
+| Positive magnitude | 10 V, interval [9.5,10.5] V | Pass |
+| Negative magnitude | 1 V, cap 1.25 V | Pass |
+| Zero magnitude | ``\sqrt{0.3125}\approx0.559017`` V, cap 0.75 V | Pass |
+| VUF fraction | 0.1, cap 0.125 | Pass |
+| Tightened positive lower/upper bound | 10.25 V / 9.75 V | Each fails by 0.25 V |
+| Tightened negative / zero cap | 0.75 V / 0.4 V | Fail by 0.25 V / about 0.159017 V |
+| Tightened VUF cap | 0.08 | Fail by 0.02, dimensionless |
+| KCL and total power at each bound mutation | Same supplied circuit | Pass |
+
+A consistent second circuit point reduces only the positive-sequence phasor to
+5 V and updates the source references and specified powers. Negative sequence
+stays 1 V, satisfying the same absolute cap, but VUF rises to 0.2. Its positive
+bounds are adjusted to [4.5,5.5] V so this distinct ratio failure remains visible.
+An absolute cap and a ratio limit cannot substitute for each other when the
+positive-sequence magnitude varies.
+
+The independent magnitude violations use **V** and `voltage_tol`. VUF is the
+fraction ``|V_2|/|V_1|``, not a percent-valued field, and uses a separate
+**dimensionless** `vuf_tol`. The ratio is assessed only for
+``|V_1|>\texttt{vuf\_voltage\_floor}``; that configurable floor defaults to
+``10^{-6}`` V, independently of `voltage_tol`. Below or at the floor, the row
+reports the sequence magnitudes and floor but leaves observed ratio and residual
+null. Other magnitude limits still receive their own results. A known positive
+lower-bound violation remains failed even when the ratio is unknown.
+
+This is a necessary boundary of the observation. The native constraint
+``|V_2|^2\leq u^2|V_1|^2`` can pass at the all-zero origin, where the ratio is
+undefined. The independent audit refuses to report ratio compliance there.
+It does not assess native polynomial feasibility outside its stated ratio
+domain. Native SI squared residuals are V² and per-unit rows use working
+coordinates; neither supplies a dimensionless ratio excess or its tolerance.
+The floor is a declared numerical domain, not a physical unbalance standard or
+an uncertainty bound.
+
+Reference choice also matters. At the floating-neutral point, the mean of the
+**earth-referenced** phases is ``1.5-0.25\mathrm j`` V, with magnitude about
+1.520691 V. Using it would fold neutral displacement into the zero component
+instead of checking the specified phase-neutral observation. A separate
+consistent grounded-neutral circuit uses earth input and passes. A bad grounded
+neutral report fails grounding separately; its earth-referenced sequence
+observation is not silently changed to subtract that bad report. Missing a
+floating neutral prevents the transform. Known earth-reference phase data can
+still support that observation while missing other declared state prevents
+complete KCL/power certification. No missing neutral report is filled in as zero.
+
+**Inspect:** `examples/sequence_voltage_audit.jl`, invoked by the exact clean
+candidate companion, retains all bound mutations, the low-positive point,
+malformed data, missing neutral and native SI/per-unit/grounded witnesses. The
+permitted low-positive native point has a separate relaxed ratio cap. A tightened
+native VUF attempt has local infeasibility and a failed point audit; termination
+alone is not a global infeasibility certificate. Native expression/incidence
+and zero-origin primal inspections are subjects, never the independent oracle.
+
+Tests cover exactly three full phases, source/ground applicability, cyclic and
+reversing permutations, neutral reference/fallback, scalar zero/equality and
+unit-specific tolerances, denominator-floor refusal/configuration, malformed
+limits and missing state. Known currents and checked violations survive bad
+limit data. The running input declares no sequence or VUF bound; its **28
+unassessed obligations** and **indeterminate** verdict are unchanged. Objectives,
+branch-end angle coverage, physical phase-order measurement and adequacy,
+published integration, PSK statuses and execution MCP remain separate.
+
+**Transfer exercise.** Keep negative sequence at 1 V and change positive sequence
+from 10 V to 5 V. Give the two VUF fractions and identify which obligations a
+1.25 V negative cap establishes. Then set both sequence magnitudes to zero:
+explain why a successful cross-multiplied inequality cannot supply the ratio.

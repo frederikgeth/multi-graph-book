@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "504cc28ddab0a2881d74be6ea17bc34d378e72d858776155ea842ab27c4a7160",
+  "corpus_sha256": "24b3271aec0864cdb2dd175b388bce41df1974958904ec122e42c048bf7f4d08",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -15,12 +15,12 @@
   "evaluation_case_count": 108,
   "heldout_case_count": 33,
   "misconception_count": 34,
-  "record_count": 978,
+  "record_count": 979,
   "record_counts": {
     "claim_bundle": 121,
     "concept_bundle": 18,
     "scientific_knowledge": 18,
-    "section": 821
+    "section": 822
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -141,7 +141,7 @@
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
-      "sha256": "8e4cf30fd9997ffab5935fd6f5a4202d4a5cb553d661e94b822ca2bbf00c05c1"
+      "sha256": "98a742c763fd09e0fa5b305abf4ce9d5659def8e5f1e5628d815be9206125057"
     },
     {
       "path": "docs/src/foundations/orientation-terminal-power.md",
@@ -345,7 +345,7 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "0f0bb1af1b82b974c2efb1ea0e9c0c5af11054124c563d10cfed2afa8a65ca4e"
+      "sha256": "dda754c5f6162ce021542276ee22ba0199b878c4f43e9ceb641704c9967de481"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",
