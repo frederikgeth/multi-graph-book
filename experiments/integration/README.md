@@ -473,8 +473,8 @@ vectors in NON-NEUTRAL source-map order. Voltage references instead follow
 full terminal-map order and specify absolute earth phasors. A matching prefix
 may omit only a suffix of explicitly grounded terminals or the implicitly
 zero-grounded source-bus neutral. Omitted grounded phases retain their price
-and current slots. Source P/Q/current bounds, controllers, custom roles and
-DELTA sources remain outside this bounded extension.
+and current slots. Source current/apparent-power ratings, controllers, custom roles and
+DELTA sources remain outside this bounded extension; source P/Q limits follow below.
 
 An unmapped bus neutral still supplies the source return and power reference;
 without one, power uses earth. The source-neutral return and separate earth
@@ -508,3 +508,43 @@ reported-value consistency, well-posedness or optimality is inferred.
 The running input has no source price, so its default three generator p_max
 violations/zero unknowns and separate tighter electrical pass are unchanged.
 The published pin, PSK statuses and execution MCP remain unchanged.
+
+
+The companion also binds `examples/source_pq_audit.jl` and `source-pq.json`.
+Signed p_min/p_max and q_min/q_max bound independently recomputed phase
+injections in W/var, in non-neutral source-map order. Bus-neutral fallback,
+earth reference, grounded phase entries and two-phase SINGLE_PHASE indexing
+retain the source conventions above. Optional ps/qs reports do not supply the
+limit value. New rows retain original phase/map indices, reference pairs,
+observed injection, bound and sense at unchanged absolute power tolerances.
+
+Absent fields author no bound. Explicit empty vectors are recorded as declared
+empty-limit metadata, null residual/tolerance and enforced_as_limit=false;
+they add no zero or aggregate constraint. Nonempty vectors must be full finite
+signed phase arrays. Scalar, partial, extra/neutral-slot, invalid type and range
+failures remain unknown without erasing known other-field/phase failures or
+current incidence. Missing required current/state still suppresses KCL/power.
+The native builder accepts prefixes and ignores extra entries while static
+indexing diagnoses them. Successful native prefix/extra solves are retained
+with indeterminate point audits; no data is padded or discarded to pass.
+
+The unbalanced source-price point has phase powers [-3+2im,6+1im] VA in map
+[b,n,a]. Tightening phase a's p_max to 5.5 W fails by .5 W although net P=3 W
+fits the summed cap 3.5 W. Tightening phase b's q_max to 1.5 var fails by .5 var
+although total Q=3 var fits the summed cap. Signed lower/export and reactive
+absorption cases, in-range forged reports, malformed prices and missing other-
+phase observations remain separate evidence. At zero phase-to-reference
+voltage, nonzero current passes zero P/Q boxes; a positive lower bound fails.
+Native primal inspection confirms these points without a current-rating claim.
+
+Native SI/per-unit, reordered, unmapped/trailing neutral, earth, two-phase
+SINGLE_PHASE and empty-limit solves pass. Two tighter P/Q attempts report local
+infeasibility and their returned points fail the audit; no global certificate
+is claimed. Four full two-phase vectors add eight native constraints and no
+variables; empty and absent vectors add none. Native row inspection and the
+reused controlled source-price solve recipe are subjects, not audit oracles.
+Source current/apparent-power ratings, physical grid/grounding adequacy,
+controllers/custom roles, selected objectives and optimality remain separate.
+The running input has no source P/Q bounds, so its default three generator
+p_max failures/zero unknowns and separate tighter electrical pass are unchanged.
+Published integration, PSK statuses and execution MCP remain unchanged.

@@ -191,8 +191,8 @@
           "claim:LOAD-CONNECTION-002",
           "claim:PRACTICE-IMPORT-001",
           "claim:LIMIT-MULTIPLICITY-001",
-          "claim:TR-PAR-002",
           "claim:LIMIT-CONVEXITY-001",
+          "claim:TR-PAR-002",
           "concept:rating-limit-constraint",
           "claim:TR-XFMR-006",
           "claim:FORMULATION-NODAL-002"
@@ -283,7 +283,7 @@
           "claim:LIMIT-CONVEXITY-001",
           "claim:TR-XFMR-003",
           "claim:ARCH-LOWER-001",
-          "claim:RATING-001"
+          "claim:FORMULATION-NODAL-003"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -422,8 +422,8 @@
           "claim:GROUND-SCOPE-004",
           "claim:GROUND-SCOPE-002",
           "claim:GROUND-SCOPE-001",
-          "claim:TR-KRON-NEUTRAL-002",
           "claim:ARCH-SURGERY-002",
+          "claim:TR-KRON-NEUTRAL-002",
           "claim:TR-KRON-NEUTRAL-003",
           "claim:COLLAPSE-001",
           "claim:COLLAPSE-002"
@@ -881,8 +881,8 @@
           "claim:TR-KRON-NEUTRAL-003",
           "claim:TR-KRON-NEUTRAL-006",
           "claim:COLLAPSE-002",
-          "claim:LIMIT-NEUTRAL-001",
-          "claim:GROUND-SCOPE-002"
+          "claim:GROUND-SCOPE-002",
+          "claim:LIMIT-NEUTRAL-001"
         ]
       },
       "lexical": {
@@ -1038,8 +1038,8 @@
           "claim:FORMULATION-PORT-001",
           "claim:TR-KRON-NEUTRAL-004",
           "claim:TR-XFMR-002",
-          "claim:GROUND-SCOPE-004",
-          "claim:COUPLED-CORRIDOR-002"
+          "claim:COUPLED-CORRIDOR-002",
+          "claim:GROUND-SCOPE-003"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -1074,8 +1074,8 @@
           "concept:rating-limit-constraint",
           "concept:factor",
           "claim:TR-KRON-NEUTRAL-005",
-          "claim:TR-KRON-NEUTRAL-007",
           "claim:FORMULATION-NODAL-001",
+          "claim:TR-KRON-NEUTRAL-007",
           "concept:flow-current-power-message",
           "claim:FORMULATION-PORT-001",
           "claim:TR-KRON-FIVE-002"
@@ -1229,14 +1229,14 @@
         "top_10": [
           "claim:PRACTICE-REUSE-001",
           "claim:PRACTICE-UPDATE-001",
+          "claim:TR-XFMR-009",
           "claim:NUMERICAL-005",
           "claim:TR-XFMR-008",
           "claim:TR-XFMR-010",
-          "claim:TR-XFMR-009",
           "claim:NUMERICAL-003",
           "claim:ARCH-RECOVERY-001",
-          "claim:FORMULATION-ZERO-001",
-          "claim:NUMERICAL-004"
+          "claim:NUMERICAL-004",
+          "claim:LIMIT-CONVEXITY-001"
         ]
       },
       "lexical": {
@@ -1247,8 +1247,8 @@
           "claim:PRACTICE-UPDATE-001",
           "claim:LIMIT-CONVEXITY-001",
           "claim:TR-XFMR-010",
-          "claim:FORMULATION-ZERO-001",
           "claim:TR-XFMR-009",
+          "claim:FORMULATION-ZERO-001",
           "claim:TR-XFMR-008",
           "claim:FORMULATION-NODAL-001",
           "claim:PRACTICE-IMPORT-001",
@@ -1753,7 +1753,7 @@
           "claim:TR-KRON-NEUTRAL-001",
           "concept:normalization",
           "claim:KERNEL-OBSERVATION-001",
-          "claim:FORMULATION-NODAL-001"
+          "claim:PRACTICE-DUAL-001"
         ]
       },
       "lexical": {
@@ -1946,8 +1946,8 @@
           "claim:FORMULATION-ZERO-001",
           "claim:NUMERICAL-005",
           "claim:LOAD-CONNECTION-002",
-          "claim:LIT-PAR-001",
           "claim:TR-PAR-003",
+          "claim:LIT-PAR-001",
           "concept:direction-orientation-hierarchy",
           "claim:PRACTICE-IMPEDANCE-001"
         ]
@@ -2149,7 +2149,7 @@
           "claim:GROUND-SCOPE-001",
           "claim:TR-KRON-NEUTRAL-003",
           "claim:FORMULATION-ZERO-001",
-          "claim:GROUND-SCOPE-003"
+          "claim:FORMULATION-PORT-001"
         ]
       },
       "lexical": {
@@ -2450,7 +2450,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "2dd2ec05a24885d292bd8ad28ffc9f5201aa9ee5d38c110d10e55b232bfd1a1c"
+    "corpus_sha256": "980ca12d9d6ab7fb9d04277ca34b6705385df79c9dc5876c9242818926dc236f"
   },
   "inputs": {
     "adversarial_cases": {

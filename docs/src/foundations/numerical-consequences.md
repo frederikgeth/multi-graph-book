@@ -541,9 +541,10 @@ are unassessed.
 
 ### Extending coverage without changing the older API
 
-The separate candidate `audit_solution` adds default-role source neutral returns,
-implicit source grounding, WYE/SINGLE_PHASE/DELTA constant-power load equations,
-fixed ideal switches, bounded WYE/SINGLE_PHASE and cyclic DELTA generator injections/coil limits,
+The separate candidate `audit_solution` adds default-role source neutral returns
+and signed per-phase source P/Q limits,
+implicit source grounding, WYE/`SINGLE_PHASE`/DELTA constant-power load equations,
+fixed ideal switches, bounded WYE/`SINGLE_PHASE` and cyclic DELTA generator injections/coil limits,
 bus and branch angle/magnitude bounds, three-phase sequence/VUF limits and
 bounded transformer equations. It retains recognized generator/source prices and
 transformer `s_rating` as declarations, without turning them into physical limits
@@ -725,9 +726,9 @@ phase magnitude. For example, two in-phase 1 A injections give a 2 A return;
 opposite injections cancel. At zero coil voltage a power identity can still
 hide nonzero current, so current limits and KCL remain separate checks.
 
-For the finite native WYE/SINGLE_PHASE domain, generator power uses the explicitly
+For the finite native WYE/`SINGLE_PHASE` domain, generator power uses the explicitly
 mapped coil voltage. Omitting the neutral from a WYE generator map does not
-borrow the bus neutral. A two-terminal SINGLE_PHASE generator uses its ordered
+borrow the bus neutral. A two-terminal `SINGLE_PHASE` generator uses its ordered
 pair, which may also be phase-to-phase. The later DELTA-generator section
 extends this scope: the load's two-terminal DELTA convention must not be copied
 into another device family without checking that family's executable contract.
@@ -1782,7 +1783,7 @@ available and why complete line/KCL certification is still unavailable.
 
 A generator price declaration has a different role from an electrical limit.
 In the bounded native generator form it is a full finite signed vector,
-one coefficient per declared coil. A two-terminal SINGLE_PHASE device has one
+one coefficient per declared coil. A two-terminal `SINGLE_PHASE` device has one
 coil price, including when its terminal order is reversed. A WYE neutral has
 no separate price. Scalars, polynomial-shaped objects, wrong or extra lengths,
 nulls, Booleans and unrepresentable values remain unassessed rather than being
@@ -1978,7 +1979,7 @@ There are two applicability distinctions to keep visible:
 
 - The native **two-terminal DELTA generator has two opposed coils**, one at
   each cyclic position. A two-terminal DELTA load and a two-terminal
-  SINGLE_PHASE generator each have one coil. The separate three-terminal
+  `SINGLE_PHASE` generator each have one coil. The separate three-terminal
   data-model arity checker still warns on the native two-terminal generator
   form. Matching native equations does not establish specification conformance
   or a physical three-phase winding interpretation.
@@ -2024,7 +2025,7 @@ voltage reference enters its priced power?
 
 Independently decoding that source gives phase order ``(b,a)`` and map positions
 ``(1,3)``. The neutral has no price/current slot. For these supported native
-WYE/SINGLE_PHASE sources,
+WYE/`SINGLE_PHASE` sources,
 
 ```math
 S_k=(V_{t_k}-V_n)\overline{I_k},\qquad
@@ -2076,10 +2077,10 @@ Several reference cases must remain distinct:
 | Prefix omitting an explicitly grounded phase | Omitted suffix must already be known zero | Grounded phase still keeps its price/current slot |
 | Explicit empty reference prefix | Allowed only when every mapped terminal is known grounded zero | Phase slots remain; missing arrays are not an empty prefix |
 | Prefix omitting a free phase | Reference remains unassessed; native construction rejects it | No phase phasor is inferred |
-| Two-phase SINGLE_PHASE source without neutral | Two absolute phase references | Two earth-referenced currents/prices |
+| Two-phase `SINGLE_PHASE` source without neutral | Two absolute phase references | Two earth-referenced currents/prices |
 
 The final case does **not** use the one-coil convention of a two-terminal
-SINGLE_PHASE generator. Its source currents ``(0.3-0.1\mathrm j,
+`SINGLE_PHASE` generator. Its source currents ``(0.3-0.1\mathrm j,
 -0.3+0.1\mathrm j)`` A at ``(10,10\mathrm j)`` V have powers
 ``(3+\mathrm j,1-3\mathrm j)`` VA. Prices ``(0.1,0.2)`` give a known rate of
 0.0005 currency/hour. A one-entry price vector remains unknown to the audit
@@ -2105,7 +2106,7 @@ that allocation; electrical acceptance establishes neither intended allocation
 nor objective well-posedness.
 
 Native SI/per-unit, neutral-omitted, trailing-prefix, neutral-first, earth and
-two-phase SINGLE_PHASE comparisons solve and pass. Reversing the price signs,
+two-phase `SINGLE_PHASE` comparisons solve and pass. Reversing the price signs,
 omitting the objective, or selecting a caller-constant123 objective retains
 separate recipe and electrical evidence. Per-unit working prices multiply the
 local power base and cancel power scaling; they are not revised tariffs.
@@ -2123,8 +2124,9 @@ neutral state or earth reaction suppresses complete network KCL/power checks.
 Known other-phase report failures survive. Optional supplied `ps/qs` reports
 are checked in W/var with unchanged tolerances.
 
-The source price extension does not admit unsupported source P/Q/current-bound
-or controller fields, custom terminal roles or DELTA sources. It certifies no
+The next section adds source P/Q limits. Unsupported source current/apparent-
+power ratings or controller fields, custom terminal roles and DELTA sources
+remain outside this bounded extension. It certifies no
 tariff, selected objective, reported objective consistency, local/global
 optimality, physical grounding adequacy or unrestricted native/custom-model
 feasibility. The running input has no source price, so its recorded default
@@ -2136,3 +2138,127 @@ remain separate.
 physical phase tariffs. Write the new reference and price arrays, then explain
 why a correct cost rate cannot establish the omitted phase reference, neutral
 earth-reaction current, source allocation or selected-objective guarantee.
+
+
+### [Source P/Q limits apply to signed phase injections](@id source-pq-limit-audit)
+
+A voltage source can fix its voltage reference while having a constrained
+power exchange. The local candidate now independently checks authored
+`p_min/p_max/q_min/q_max` for its bounded `WYE`/`SINGLE_PHASE` source domain.
+It recomputes power from the supplied voltage/current state:
+
+```math
+S_k=(V_{t_k}-V_n)\overline{I_k},\qquad
+P_k=\Re(S_k),\quad Q_k=\Im(S_k),
+```
+
+with earth in place of ``V_n`` when no bus neutral exists. An unmapped bus
+neutral still supplies the source's power reference and return. The limits
+follow non-neutral **source-map order**, even if the neutral appears between
+phases in the full reference array. Source-fixed and grounded phases keep
+their P/Q slots. The earlier voltage-bound skip rules do not apply to this
+source-power family.
+
+**Predict:** phase powers in source order ``(b,a)`` are ``(-3+2\mathrm j,
+6+\mathrm j)`` VA. Upper P bounds ``(-2,5.5)`` W sum to 3.5 W, while net P is
+3 W. Does that establish source-bound compliance?
+
+The actual constraints are independent signed boxes:
+
+```math
+p_k^{\min}\le P_k\le p_k^{\max},\qquad
+q_k^{\min}\le Q_k\le q_k^{\max}.
+```
+
+For example, upper-P excess is ``\max(0,P_k-p_k^{\max})`` and lower-P
+excess is ``\max(0,p_k^{\min}-P_k)``. P residuals and `power_tol` use W;
+Q residuals use var with the same numeric tolerance setting. These are
+absolute violations in original SI coordinates, not relative percentages,
+per-unit residuals or price-weighted penalties.
+
+Positive P is injection into the network (import), and negative P is export.
+A lower bound ``p^{\min}=-2.5`` W therefore rejects ``P=-3`` W by 0.5 W:
+there is too much export for that lower bound. An upper bound ``p^{\max}=-3.5``
+W would require more export than ``P=-3`` provides and also fails by 0.5 W.
+There is no absolute-value or import/export sign flip. Positive Q is reactive
+injection; negative Q is absorption under the declared complex-power convention.
+
+**Inspect:** `source_pq_audit.jl` and `source-pq.json` extend the source-price
+point with these full phase bounds. The bus order remains ``(n,a,b)`` and the
+source map remains ``(b,n,a)``:
+
+| Phase | Full map position | P (W) | Q (var) | P interval (W) | Q interval (var) |
+|:--|--:|--:|--:|:--|:--|
+| b | 1 | -3 | 2 | [-4,-2] | [1,3] |
+| a | 3 | 6 | 1 | [5,7] | [0.5,1.5] |
+
+All baseline rows pass. Tightening only phase a's upper P bound to 5.5 W
+creates one 0.5 W violation, despite the passing summed comparison in the
+prediction. Tightening phase b's upper Q bound to 1.5 var creates one 0.5 var
+violation even though total Q equals the summed upper bound of 3 var. Lower
+P/export and lower Q examples retain the same distinction. No aggregate
+comparison or neutral-current observation replaces an individual phase bound.
+A separate two-phase `SINGLE_PHASE` source without a neutral checks negative
+Q absorption with two independently indexed source terms.
+
+Optional `ps/qs` reports are a separate consistency check. A forged in-range
+`ps=5.5` cannot hide a recomputed 6 W injection: the report and limit each
+fail by 0.5 W. Missing optional reports leave known current-derived limits
+available. Missing a required phase current instead leaves that phase's
+power/limits unknown, preserves known other-phase failures, and suppresses
+complete network KCL/power certification. The checker never inverts a reported
+power to replace the missing current.
+
+Declaration applicability is also explicit:
+
+| Limit declaration | Bounded audit meaning |
+|:--|:--|
+| Field absent | No authored bound for that field; no limit row invented |
+| Explicit empty array | Declared empty-limit metadata; no numeric residual or zero constraint |
+| Full finite signed phase vector | Each phase checked at its original non-neutral index |
+| Nonempty prefix, extra/neutral entry, scalar, bad type or unrepresentable value | Field unassessed; other known fields and current incidence remain checked |
+
+An empty row has null residual/tolerance and `enforced_as_limit=false`. It does
+not claim that any phase satisfies a zero bound. This source empty-vector rule
+is distinct from the generator audit's stricter full-array declaration domain.
+No field is deleted, padded or trimmed to obtain complete coverage.
+
+The native builder is permissive about nonempty lengths: a prefix stamps only
+its available first phase entries, and extra entries are ignored. Static
+indexing diagnoses both with `W.INT.DIM_MISMATCH`. The source-bound companion
+retains successful native prefix/extra solves whose bounded point audits stay
+**indeterminate**, rather than silently assigning missing entries or accepting
+an unexplained extra declaration. Native semantic-row inspection shows one
+upper-P row for a one-entry prefix and two rows for a full vector with an
+ignored extra entry. Four full vectors on two phases add eight native
+constraints and no variables; empty and absent vectors add none.
+
+Native SI/per-unit, consistently reordered, neutral-omitted, trailing-neutral,
+earth-reference, two-phase `SINGLE_PHASE` and empty-limit comparisons solve and
+pass their scoped audits. Consistent reordering moves P/Q arrays together
+with the source reference, price and current indexing. Leaving the old bound
+order can invalidate the same electrical point. Separate tighter P and Q
+attempts report `LOCALLY_INFEASIBLE` and return points failing the independent
+audit. Both outcomes are retained; this is no global infeasibility,
+optimality or initialization-robustness certificate. Native constraints and
+per-unit recovery are test subjects, not the independent evaluator's oracle.
+
+At a separate point with every phase-to-reference voltage zero, nonzero
+source currents pass zero P/Q boxes. A positive lower P bound then fails.
+Native primal inspection confirms both supplied-point observations. Thus even
+complete P/Q-box compliance is not a conductor-current or apparent-power
+rating certificate. No physical grid/ground adequacy, selected objective,
+controller/custom-role domain or unrestricted native/custom-model feasibility
+is inferred. Unsupported source current/apparent-power declarations remain
+unassessed.
+
+The running input has no source P/Q bounds. Its retained default three
+generator `p_max` violations/zero unknowns and separate tighter electrical pass
+therefore remain unchanged. Published integration, PSK implementation statuses
+and execution MCP remain separate.
+
+**Transfer exercise.** For the table's operating point, choose a bound that
+rejects excess export on b while leaving import on a admissible. Then preserve
+those physical phase limits under source-map reordering, and explain why a
+passing total-P comparison, an in-range report, an empty array or a zero-power
+observation cannot replace the phase and current evidence.

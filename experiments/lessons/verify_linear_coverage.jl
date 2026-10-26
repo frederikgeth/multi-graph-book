@@ -129,6 +129,10 @@ function linear_coverage_lesson()
     sp_fixture_path=joinpath(root,"test","data","linear_audit","source-price.json")
     include(sp_path)
     sp_evidence=Base.invokelatest(()->getfield(@__MODULE__,:VoltageSourcePriceAuditExample).run())
+    pq_path=joinpath(root,"examples","source_pq_audit.jl")
+    pq_fixture_path=joinpath(root,"test","data","linear_audit","source-pq.json")
+    include(pq_path)
+    pq_evidence=Base.invokelatest(()->getfield(@__MODULE__,:VoltageSourcePQLimitAuditExample).run())
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -774,6 +778,60 @@ function linear_coverage_lesson()
         @test tight_coverage.evidence["status"]=="passed"
         @test JSON3.read(JSON3.write(se),Dict{String,Any})==se
     end
+    @testset "Signed voltage-source P/Q limit applicability" begin
+        pe=pq_evidence
+        prow(key,id)=only(filter(x->x["id"]==id,pe[key]["rows"]))
+        @test pe["analytic"]["status"]=="passed"
+        obs=prow("analytic","voltage_source.s.a.p_max")
+        @test obs["unit"]=="W" && obs["observed_injection"]≈6.
+        @test obs["bound"]==7. && obs["phase_index"]==2 && obs["phase_map_position"]==3
+        @test obs["terminal_pair"]==["a","n"]
+        @test prow("analytic","voltage_source.s.b.q_min")["unit"]=="var"
+        for (key,id) in (("lower_export_violation","voltage_source.s.b.p_min"),("upper_import_violation","voltage_source.s.a.p_max"),
+                ("reactive_lower_violation","voltage_source.s.b.q_min"),("reactive_upper_violation","voltage_source.s.b.q_max"))
+            @test pe[key]["status"]=="failed" && pe[key]["failed_checks"]==1
+            @test prow(key,id)["residual"]≈.5
+            @test prow(key,"network.power")["status"]=="passed"
+        end
+        @test pe["forged_in_range_report"]["failed_checks"]==2
+        @test prow("forged_in_range_report","voltage_source.s.a.p_max")["residual"]≈.5
+        @test pe["malformed_price_known_limit_violation"]["status"]=="failed"
+        @test pe["missing_phase_known_limit_violation"]["status"]=="failed"
+        @test prow("missing_phase_known_limit_violation","voltage_source.s.a.p_max")["status"]=="failed"
+        @test prow("missing_phase_known_limit_violation","voltage_source.s.b.p_min")["residual"]===nothing
+        @test prow("missing_phase_known_limit_violation","network.power")["residual"]===nothing
+        for key in ("reordered","unmapped_neutral","trailing_neutral","earth_reference","single_phase_two_phase","explicit_empty","absent")
+            @test pe[key]["status"]=="passed"
+        end
+        @test pe["unmoved_limits"]["status"]=="failed"
+        for f in ("p_min","p_max","q_min","q_max")
+            row=prow("explicit_empty","voltage_source.s.$f")
+            @test row["status"]=="declared" && row["residual"]===nothing && !row["enforced_as_limit"]
+        end
+        @test pe["native_full_shape"]["variables"]==pe["native_empty_shape"]["variables"]
+        @test pe["native_full_shape"]["constraints"]-pe["native_empty_shape"]["constraints"]==8
+        @test pe["native_empty_shape"]["constraints"]==pe["native_absent_shape"]["constraints"]
+        @test pe["native_prefix_shape"]["source_bound_indices"]["source_p_upper"]==[1]
+        @test pe["native_extra_shape"]["source_bound_indices"]["source_p_upper"]==[1,2]
+        for key in ("native_prefix","native_extra")
+            @test pe[key]["solver_success"] && pe[key]["audit"]["status"]=="indeterminate"
+            @test pe[key]["audit"]["unassessed_checks"]==1 && !pe[key]["accepted"]
+        end
+        for key in ("native_si","native_per_unit","native_reordered","native_unmapped_neutral","native_trailing_neutral","native_earth","native_single_phase_two_phase","native_empty")
+            @test pe[key]["accepted"] && !pe[key]["audit"]["objective_scope"]["reported_objective_checked"]
+        end
+        for key in ("native_import_limited","native_reactive_limited")
+            @test !pe[key]["accepted"] && !isempty(pe[key]["raw_status"])
+        end
+        @test pe["zero_voltage_nonzero_current"]["status"]=="passed"
+        @test pe["zero_voltage_positive_lower"]["status"]=="failed"
+        @test pe["native_zero_point"]["violated_native_primal_rows"]==0
+        @test pe["native_zero_positive_lower"]["violated_native_primal_rows"]>0
+        @test all(v->all(f->!haskey(v,f),("p_min","p_max","q_min","q_max")),values(running["voltage_source"]))
+        @test connected_coverage.evidence["unassessed_checks"]==0
+        @test tight_coverage.evidence["status"]=="passed"
+        @test JSON3.read(JSON3.write(pe),Dict{String,Any})==pe
+    end
     active = dirname(Base.active_project())
     Dict{String,Any}(
         "evidence_state"=>"local_package_candidate_not_promoted_to_published_integration_pin",
@@ -782,7 +840,8 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path,dg_path,dg_fixture_path,sp_path,sp_fixture_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path,dg_path,dg_fixture_path,sp_path,sp_fixture_path,pq_path,pq_fixture_path]),
+        "voltage_source_pq_example"=>pq_evidence,
         "voltage_source_price_example"=>sp_evidence,
         "delta_generator_example"=>dg_evidence,
         "generator_cost_scope_example"=>gc_evidence,
