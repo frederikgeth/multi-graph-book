@@ -2497,3 +2497,7 @@ assumed smooth model and hard Q/minimum-PF obligations. The
 [Volt-watt and availability extension](ibr-power-factor-controls.md#ibr-volt-watt-audit)
 distinguishes a one-sided smooth cap, authored P boxes, normalization bases and
 scalar availability metadata with separate augmentation provenance.
+
+The [combined-droop audit](ibr-power-factor-controls.md#ibr-droop-composition-audit)
+intersects both laws with capability and minimum PF, retaining an explicit native
+monitor-key construction boundary alongside independently known residuals.

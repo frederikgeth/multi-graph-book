@@ -44,7 +44,7 @@
   "condition_id": "C6_NEGATIVE_KNOWLEDGE",
   "provenance": {
     "bmopftools_executable_corpus_sha256": "645e6b365ab1c85583746dc7c0704ed2685daab23c184f46758cf08c61f76069",
-    "book_llm_corpus_sha256": "cf20edbe63bda6c986faebb33754cad76dd2be1e4fb96bb9b5a83036c771334f",
+    "book_llm_corpus_sha256": "cf5e19abd56392e160cebf6ac44bb108eaba97bea2c6d25606d7a778c2b80e7f",
     "federated_pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.2.0"
   },
   "run_id": "CONFORMANCE-CORRECT-001",

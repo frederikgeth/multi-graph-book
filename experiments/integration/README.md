@@ -681,3 +681,33 @@ Mixed controllers, THREE_LEG droop, builtin/Swish/live updates, physical
 availability, filters/DC, selected objectives and optimality remain outside.
 Running-network/default/tighter, published pin/PSK states, historical replay and
 execution MCP remain unchanged.
+
+
+The combined-droop extension adds `examples/ibr_droop_composition_audit.jl` and
+`test/data/linear_audit/ibr-droop-composition.json`. Exactly both droop subobjects
+compose Q equality and P upper cap on the bounded single/four-leg domain, with
+hard capability and actual-P minimum PF still independent. Each family/context
+is decoded separately, retaining known other-family equations/current/limits
+under malformed data; incomplete combined/minimum applicability stays unknown.
+Both static family assumptions remain independently required, with one global
+relative width but potentially different physical epsilon from mean SI knots.
+No recipe, actual-build or live-coefficient provenance is inferred.
+
+The reference matrix has36 combinations per topology. All single-pair cases
+build in the controlled comparison. Six four-leg same-quantity/different-
+averaging combinations raise duplicate magnitude-definition-key ArgumentErrors;
+the audit marks native applicability unknown while retaining declared-law,
+known-cap and KCL evidence. Valid legacy overrides unify averaging and allow
+controlled construction. Different quantities use distinct monitors; equal
+quantity/aggregation shares live objects. The native builder is unchanged.
+Shared static profile comparisons retain device-specific rating/availability,
+reversed pair and different voltage/power bases, including a known single-device
+cap failure that the native primal inspection also rejects. Parameterized/live
+profile providers/cache behavior remain separate.
+
+Native all-base SI/PU, hard Q/S and curtailed-P/minimum-PF conflicts, retained
+unsuccessful solver attempts and independent returned-point audits preserve the
+same objective/physical-adequacy boundary. The book companion source-binds these
+comparisons without using native helpers as the independent oracle. Published
+pin/PSK statuses, historical replay, execution MCP and running-network default/
+tighter results are unchanged.

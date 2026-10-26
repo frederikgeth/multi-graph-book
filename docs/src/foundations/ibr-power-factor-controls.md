@@ -155,7 +155,7 @@ Minimum-policy applicability additionally requires full finite nonnegative
 construction; its bounded audit reports unknown policy applicability rather than
 inventing a constructed constraint or a numerical feasibility failure.
 
-Unresolved/null references, empty/extra/mixed profiles, droop, malformed policies,
+Unresolved/null references, empty/extra profiles, PF/droop mixtures, malformed policies,
 unknown targets and unused invalid profiles remain visible as unassessed control
 declarations. Known V/I powers, capability checks and current incidence survive
 those control-only unknowns. A valid constant equality can still be evaluated
@@ -351,8 +351,7 @@ inspections, aggregation overrides and retained capability/minimum-PF conflicts.
 Scaling voltage and breakpoints together also checks the physical smoothing
 width transformation; it is not an all-asset network-equivalence claim.
 
-This Volt-var slice admits pure profiles. Mixed PF/Volt-var or combined droop
-profiles, unsupported references/units/bases/arities, ignored native controls,
+The Volt-var family check also participates in the [combined audit](@ref ibr-droop-composition-audit). PF/droop mixtures, unsupported references/units/bases/arities, ignored native controls,
 filters/internal voltages, physical availability/DC dynamics and physical control adequacy
 remain outside. In particular, a native warning that skips a declaration does
 not establish compliance with it. The running input has no IBR; its retained
@@ -505,7 +504,7 @@ are included by the source-bound companion. They compare all three bases in
 SI/per-unit, floating-reference primal points, both smooth corners, hard-box
 intersection, metadata-only availability and the phase-pair divisor. Malformed
 curves/bases, forged coefficient rows and partial observations preserve known
-failure evidence. Mixed PF/droop or combined Volt-var/Volt-watt profiles,
+failure evidence. PF/droop mixtures,
 `THREE_LEG` droop, unsupported native warning/fallback paths, builtin/Swish/live
 updates, filters/internal voltages and physical availability/DC dynamics remain
 outside. Published pin, PSK implementation states and execution MCP are unchanged.
@@ -514,3 +513,124 @@ outside. Published pin, PSK implementation states and execution MCP are unchange
 an authored P box, then change the curve from `S_MAX` to `P_AVAILABLE`. Explain
 which cap changes. Repeat with a phase-to-phase pair and with an explicitly
 augmented network, retaining the distinct base, divisor and provenance.
+
+
+## [Combined droop: intersected obligations and monitor applicability](@id ibr-droop-composition-audit)
+
+A profile containing exactly both `volt_var` and `volt_watt` now composes the
+bounded single-pair and explicit-neutral four-leg audits. The two subobjects
+retain their own knots, fractions, reference and normalization. Volt-var imposes
+its assumed Q equality; Volt-watt adds its assumed P upper cap. Neither law
+replaces a hard capability limit or applicable minimum-PF envelope.
+
+**Predict:** at fixed U = 9 V, the earlier Volt-var law requests approximately
+Q = 1.208 var. A `P_AVAILABLE`-based Volt-watt cap permits approximately
+0.970 W. Can a generation-only minimum PF of 0.8 be met by curtailing P further?
+
+For a fixed monitored state, write the assumed family responses as Q = q(U) and
+P <= c(U). With minimum PF m strictly between zero and one, its weighted
+inequalities require
+
+```math
+P\ge\frac{m|q(U)|}{\sqrt{1-m^2}},\qquad P\ge0.
+```
+
+If an apparent-power cap is present and ``|q(U)|\le S_{\max}``, it additionally
+requires
+
+```math
+P\le\sqrt{S_{\max}^2-q(U)^2}.
+```
+
+The available P interval must also intersect the authored P box and c(U).
+If ``|q(U)|>S_{\max}``, that circle cannot admit the requested Q. At m = 1,
+minimum PF instead requires Q = 0 and P >= 0; the divided expression above is
+inapplicable. These are fixed-state branch implications, not a sufficient
+network-feasibility test. Individual and shared-return current caps, other
+branches, KCL and the rest of the network still apply. The implementation checks
+the original weighted residuals and supplied V/I; it does not use this divided
+formula as its oracle or assign a PF quotient at zero power.
+
+**Resolve the prediction:** Q approximately 1.208 var requires P at least
+approximately 1.611 W under that minimum PF. A 0.970 W upper cap cannot meet it
+at this voltage under the declared models. A supplied P = 0.5 W point passes
+both droop rows and fails the minimum-PF upper inequality. Further curtailment
+does not fix the reactive demand. The native fixed-P conflict attempt retains
+its local solver status and returned-point audit; it is not a global solver
+infeasibility certificate.
+
+The companion also retains a Q-box conflict and an apparent-power-circle
+conflict. In the latter, `s_max=4` VA reduces the Volt-var normalization target
+to approximately 0.242 var, while a `P_MAX`-normalized Volt-watt cap still admits
+P = 4 W. The apparent power exceeds 4 VA even though both control rows pass.
+The controller is not clipped to the circle. Actual P, Q and ordered current
+observations remain separate from reported `pg`/`qg` fields.
+
+### Separate model assumptions and partial evidence
+
+Both earlier Julia keywords are required independently for their respective
+smooth-law residuals. The native build has one relative `volt_var_watt_eps`, so
+those declared relative widths must agree. The physical widths need not agree:
+Volt-var knots [8,9,11,12] V have mean 10 V, while Volt-watt knots [9,13] V have
+mean 11 V. A shared relative width 0.02 gives epsilon values 0.2 V and 0.22 V.
+Using one physical epsilon for both would describe a different pair of laws.
+
+A missing or unsupported family recipe leaves that law unknown while retaining
+the other known law, requested-graph diagnostic, hard limits and current
+incidence. An unequal pair of declared relative widths adds an unknown global
+compatibility obligation; it does not erase the individually evaluated assumed
+responses. The declarations still do not authenticate an actual build or live
+coefficient updates.
+
+The combined profile decoder likewise retains a known family when the other
+family's curve or selected normalization base is malformed. The incomplete
+combination and its minimum-PF applicability stay unknown; known other-family
+failures and electrical contributions survive. A mixture containing
+`power_factor` or extra profile fields remains unassessed. Native PF priority or
+a warning that skips a requested curve is not a compliance argument.
+
+### Native monitor keys are an applicability boundary
+
+Each family independently selects PN, PG or PP, and per-phase or averaged
+monitoring. Equal references can share native magnitude variables; different
+quantities need distinct observations. Sharing a static profile ID does not make
+two devices share voltage state, rating, availability, terminal order or local
+coordinate bases.
+
+The controlled reference matrix exposes a narrower constructor failure:
+`FOUR_LEG` with the same quantity but different effective averaging tries to
+register duplicate magnitude-definition keys. For example, Volt-var
+`PN_PER_PHASE` with Volt-watt `PN_AVERAGED` raises an `ArgumentError` during
+native model construction. Both independently evaluated declared laws can pass
+at a supplied point while the overall audit remains indeterminate through
+`droop_native_applicability`. That outcome is a build-path refusal, not an
+electrical violation or proof that the intended equations are infeasible.
+
+| Reference combination | Candidate native observation | Independent audit scope |
+|:--|:--|:--|
+| Same quantity, same effective averaging | Shared monitor objects in the controlled build | Both declared-law residuals remain separate. |
+| Different quantities | Distinct monitor objects | Each law uses its own physical observation. |
+| Four-leg, same quantity, different effective averaging | Duplicate-key constructor error | Unknown build applicability; known equations, caps and KCL survive. |
+| A valid legacy override unifies averaging | Shared monitors build in the controlled case | Both laws use the common overridden averaging. |
+| Single pair with differing averaging requests | Aggregation is moot | PG uses the first endpoint; PN/PP use the pair difference. |
+
+The package-owned route `examples/ibr_droop_composition_audit.jl` and
+`test/data/linear_audit/ibr-droop-composition.json` compares all 36 reference pairs
+for each bounded topology. It also compares all three P bases in SI/per-unit,
+legacy overrides, missing recipes, hard-limit/minimum-PF conflicts and a shared
+static profile on devices with different voltage/power bases and a reversed
+pair. Native object identity is comparison evidence; the independent evaluator
+uses no native cache, builder, role, curve or profiler helper as an oracle.
+
+The native builder remains unchanged in this tranche. Repairing its duplicate
+monitor keys needs a separate implementation change and regression suite.
+Parameterized/live-profile cache behavior, arbitrary coefficient providers,
+physical controller/filter/DC adequacy, `THREE_LEG` droop, selected objectives and
+optimality remain separate. Published package pin, PSK implementation states and
+execution MCP are unchanged.
+
+**Transfer exercise.** Hold both curves fixed, alter only one family's voltage
+reference, then apply a legacy aggregation override. Identify which physical
+observation and residual changes, which native build path remains applicable,
+and why a passing pair of control rows does not by itself establish capability,
+network feasibility or an authenticated build.

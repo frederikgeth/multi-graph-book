@@ -153,6 +153,10 @@ function linear_coverage_lesson()
     vw_fixture_path=joinpath(root,"test","data","linear_audit","ibr-volt-watt.json")
     include(vw_path)
     vw_evidence=Base.invokelatest(()->getfield(@__MODULE__,:IbrVoltWattAuditExample).run())
+    dc_path=joinpath(root,"examples","ibr_droop_composition_audit.jl")
+    dc_fixture_path=joinpath(root,"test","data","linear_audit","ibr-droop-composition.json")
+    include(dc_path)
+    dc_evidence=Base.invokelatest(()->getfield(@__MODULE__,:IbrDroopCompositionAuditExample).run())
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -1120,6 +1124,76 @@ function linear_coverage_lesson()
         @test only(filter(r->r["id"]=="ibr.i.1.volt_watt",ag["transformed_audit"]["rows"]))["normalization_base"]==4.
         @test JSON3.read(JSON3.write(we),Dict{String,Any})==we
     end
+    @testset "Combined droop, native monitor applicability and capability intersections" begin
+        de=dc_evidence
+        drow(key,id)=only(filter(r->r["id"]==id,de[key]["rows"]))
+        for key in ("single_phase","four_leg")
+            @test de[key]["status"]=="passed" && de[key]["coverage_complete"]
+            vv=drow(key,"ibr.i.1.volt_var");vw=drow(key,"ibr.i.1.volt_watt")
+            @test vv["status"]=="passed" && vw["status"]=="passed"
+            @test vv["smoothing_width_V"]≈.2 && vw["smoothing_width_V"]≈.22
+            @test !vv["build_recipe_authenticated"] && !vw["build_recipe_authenticated"]
+            for basis in ("S_MAX","P_MAX","P_AVAILABLE"),unit in ("si","per_unit")
+                n=de["native_$(key)_$(basis)_$unit"]
+                @test n["accepted"] && n["audit"]["unassessed_checks"]==0
+                @test n["inspection"]["violated_native_primal_rows"]==0
+                @test all(n["inspection"]["same_monitor_objects"]["i"])
+            end
+            for (refs,entry) in de[key*"_references"]
+                r1,r2=split(refs,"__");q1=first(split(r1,"_"));q2=first(split(r2,"_"))
+                collision=key=="four_leg" && q1==q2 && (endswith(r1,"AVERAGED")!=endswith(r2,"AVERAGED"))
+                a=entry["audit"];n=entry["native"]
+                @test a["status"]==(collision ? "indeterminate" : "passed")
+                @test n["built"]==!collision
+                @test collision ? occursin("already registered",n["error"]) : n["inspection"]["violated_native_primal_rows"]==0
+                @test only(filter(r->r["id"]=="ibr.i.1.volt_var",a["rows"]))["status"]=="passed"
+                @test only(filter(r->r["id"]=="ibr.i.1.volt_watt",a["rows"]))["status"]=="passed"
+            end
+        end
+        for (missing,unknown,known) in (("missing_vv_model","volt_var","volt_watt"),("missing_vw_model","volt_watt","volt_var"))
+            @test de[missing]["status"]=="indeterminate"
+            @test drow(missing,"ibr.i.1.$unknown")["residual"]===nothing
+            @test drow(missing,"ibr.i.1.$known")["status"]=="passed"
+        end
+        @test de["inconsistent_models"]["status"]=="indeterminate"
+        @test drow("inconsistent_models","controller_models.compatibility")["status"]=="unassessed"
+        for key in ("legacy_average","legacy_per_phase")
+            @test de[key]["audit"]["status"]=="passed" && de[key]["native"]["accepted"]
+        end
+        for key in ("minimum_conflict","q_cap_conflict","s_cap_conflict")
+            @test de[key]["status"]=="failed" && de[key]["failed_checks"]==1
+            @test drow(key,"ibr.i.1.volt_var")["status"]=="passed"
+            @test drow(key,"ibr.i.1.volt_watt")["status"]=="passed"
+        end
+        @test drow("minimum_conflict","ibr.i.1.minimum_pf.upper")["status"]=="failed"
+        for key in ("native_minimum_conflict","native_q_cap_conflict")
+            @test !de[key]["accepted"] && !isempty(de[key]["raw_status"])
+            @test de[key]["audit"]["status"]=="failed" && de[key]["audit"]["unassessed_checks"]==0
+        end
+        @test de["native_q_cap_point"]["inspection"]["violated_native_primal_rows"]==1
+        @test de["native_s_cap_point"]["inspection"]["violated_native_primal_rows"]==1
+        n=de["native_maximum"]
+        @test n["accepted"]
+        @test n["candidate"]["ibr"]["i"]["a"]["pg"]≈only(filter(r->r["id"]=="ibr.i.1.volt_watt",n["audit"]["rows"]))["assumed_model_cap_W"] atol=1e-6
+        n=de["native_shared_profile"]
+        @test n["accepted"] && n["inspection"]["violated_native_primal_rows"]==0
+        @test n["inspection"]["coordinate_bases"]["b"]==Dict("voltage"=>10.,"power"=>100.)
+        @test n["inspection"]["coordinate_bases"]["c"]==Dict("voltage"=>100.,"power"=>250.)
+        @test drow("shared_profile","ibr.i.1.volt_watt")["normalization_base"]==60.
+        @test drow("shared_profile","ibr.j.1.volt_watt")["normalization_base"]==3.
+        @test drow("shared_profile","ibr.j.1.volt_var")["base_VA"]==10.
+        @test drow("shared_profile","ibr.j.1.volt_var")["terminal_pair"]==["n","a"]
+        @test de["shared_cap_failure"]["failed_checks"]==1 && de["shared_cap_failure"]["unassessed_checks"]==0
+        @test drow("shared_cap_failure","ibr.j.1.volt_watt")["status"]=="failed"
+        @test de["native_shared_cap_point"]["inspection"]["violated_native_primal_rows"]==1
+        @test de["collision_known_failure"]["status"]=="failed" && !de["collision_known_failure"]["coverage_complete"]
+        @test drow("collision_known_failure","ibr.i.3.p_max")["residual"]≈.05
+        @test drow("collision_known_failure","network.power")["status"]=="passed"
+        @test isempty(get(running,"ibr",Dict()))
+        @test connected_coverage.evidence["failed_checks"]==3 && connected_coverage.evidence["unassessed_checks"]==0
+        @test tight_coverage.evidence["status"]=="passed"
+        @test JSON3.read(JSON3.write(de),Dict{String,Any})==de
+    end
     active = dirname(Base.active_project())
     Dict{String,Any}(
         "evidence_state"=>"local_package_candidate_not_promoted_to_published_integration_pin",
@@ -1128,7 +1202,8 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path,dg_path,dg_fixture_path,sp_path,sp_fixture_path,pq_path,pq_fixture_path,ibr_path,ibr_fixture_path,ip_path,ip_fixture_path,pf_path,pf_fixture_path,vv_path,vv_fixture_path,vw_path,vw_fixture_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path,dg_path,dg_fixture_path,sp_path,sp_fixture_path,pq_path,pq_fixture_path,ibr_path,ibr_fixture_path,ip_path,ip_fixture_path,pf_path,pf_fixture_path,vv_path,vv_fixture_path,vw_path,vw_fixture_path,dc_path,dc_fixture_path]),
+        "ibr_droop_composition_example"=>dc_evidence,
         "ibr_volt_watt_example"=>vw_evidence,
         "ibr_volt_var_example"=>vv_evidence,
         "ibr_pf_control_example"=>pf_evidence,
