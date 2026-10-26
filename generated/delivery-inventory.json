@@ -158,11 +158,11 @@
       "zero-parameter-means-absent-term"
     ]
   },
-  "pair_sha256": "0ba154938c42fc09b2a4cfccd7788d2c9febe27f7987112926edbd3db94e54d0",
+  "pair_sha256": "397dcecd1ee22c8a8b4a52926a6af92273e91f78bcc53250a6fe710d4112fc75",
   "schema_version": "1.0.0",
   "source_sha256": {
     "claims/claims.toml": "e348709a2f265c6bc79536b0d7b59d016d8aff330204572375f9047fd97203ba",
-    "generated/federated-knowledge-pair-manifest.json": "1ea11ad3dfc5508036a2c281fb1a35d38f50dbf81ceab7236c916f9e221ed43b",
+    "generated/federated-knowledge-pair-manifest.json": "cf1c510aae38b16701cbf9106fec46888b25669f0a4e4f74681723703dc3b645",
     "knowledge/psk.toml": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364",
     "llm/misconceptions.toml": "5f952a6bf57561105d92c41c434a26723b84f4cd06da4d1bd91517e1fc85c7ac"
   }

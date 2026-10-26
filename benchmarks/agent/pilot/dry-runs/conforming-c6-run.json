@@ -41,7 +41,7 @@
   },
   "submission": {
     "path": "benchmarks/agent/submissions/conforming-c6.json",
-    "sha256": "11370f5538486ed081ea3c87910abc79e2f18ff18e3600597d37763d7658c68d"
+    "sha256": "27f38f2ab4a29ba81a716efef6315af7d13f6a276fb20d8a226342ab728ba717"
   },
   "system": {
     "model_id": "benchmark-harness",

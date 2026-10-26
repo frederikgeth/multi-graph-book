@@ -545,10 +545,10 @@ The separate candidate `audit_solution` now adds default-role source neutral
 returns, implicit source grounding and WYE/SINGLE_PHASE/DELTA constant-power
 load equations, fixed ideal switches, a bounded WYE/SINGLE_PHASE generator
 domain, ordinary phase-to-earth and explicit-neutral phase-to-neutral voltage
-bounds, fixed single-coil transformers,
+bounds, applicable scalar neutral-to-earth caps, fixed single-coil transformers,
 and matched WYE/DELTA winding-list equations with explicit rating-metadata
-semantics. The same running-network result now has **33 unassessed rows**
-(34 before the rating-metadata trace below):
+semantics. The same running-network result now has **29 unassessed rows**
+(33 before the neutral-to-earth audit below):
 11 local power equations across five loads and the source voltage relation are
 now evaluated. Source-return and load-terminal currents are reconstructed from
 their connection maps; each explicit or implicit earth reaction is consumed once.
@@ -558,11 +558,11 @@ from-side currents. The 42-row table above remains the coverage of
 `audit_linear_solution`.
 
 The extended verdict is still **indeterminate**. The running-network generator
-has a cost field outside this audit slice; neutral and phase-to-phase voltage
+has a cost field outside this audit slice; phase-to-phase voltage
 limits also remain unassessed. The winding-list transformer now has checked
 coil equations, leakage, current caps and reconstructed terminal incidence. Its
 `s_rating` is retained as metadata, not an added apparent-power limit. The 28 ordinary
-phase-to-earth voltage-bound rows are now checked. All 26
+phase-to-earth voltage-bound rows and four neutral-to-earth caps are now checked. All 26
 terminal KCL rows and aggregate power remain unassessed because required current
 contributions are still missing. The companion records both APIs on the same solved point;
 no zeros are supplied to close the remaining obligations. The
@@ -1141,7 +1141,7 @@ This audit
 accepts only the three-terminal closed incidence above. Two-terminal DELTA,
 unmatched coils, taps and internal coordinates also remain unassessed. The
 rating-metadata trace below handles `s_rating` separately; the current running
-network retains 33 unassessed obligations. The published package pin and execution
+network retains 29 unassessed obligations. The published package pin and execution
 MCP surface are unchanged.
 
 **Transfer exercise.** Cyclically reorder every winding's coil positions and
@@ -1213,7 +1213,7 @@ still suppresses network KCL/power; metadata cannot recover it.
 
 The running-network input is retained intact. Its transformer equations,
 incidence and declared current caps now pass; top-level `s_rating` is recorded
-as metadata. The audit has 33 unassessed obligations and remains
+as metadata. The audit has 29 unassessed obligations and remains
 **indeterminate** because other declarations, including generator cost and
 unsupported voltage families, remain open. Physical adequacy, objectives,
 external review, published integration and execution MCP exposure remain
@@ -1312,9 +1312,9 @@ Full finite nonnegative arrays and a supported neutral role are required.
 Malformed or nonfinite bounds, conversion overflow/underflow and unknown
 applicability remain **unassessed**, while otherwise known current contributions
 and checked violations stay visible. Missing required neutral voltage suppresses
-network KCL/power certification. Neutral-to-earth, phase-to-phase, angle and
-sequence limits remain separate audit work. The existing running network has no
-PN-bound declarations, so its 33 unassessed obligations remain unchanged. The
+network KCL/power certification. Neutral-to-earth limits are covered below;
+phase-to-phase, angle and sequence limits remain separate audit work. The existing running network has no
+PN-bound declarations, so its 29 unassessed obligations remain unchanged. The
 published integration pin and execution MCP surface are unchanged.
 
 **Transfer exercise.** For ``V_p=4+6\mathrm j`` V and ``V_n=1+2\mathrm j`` V,
@@ -1322,3 +1322,91 @@ compute the phase-neutral magnitude and compare it with subtracting their
 magnitudes. Then place a skipped grounded phase before this phase in
 `terminal_names`: explain why its bound uses entry 2, and why deleting the
 neutral result cannot be repaired by a grounding label or solver status.
+
+
+### [Neutral-to-earth voltage does not determine neutral current](@id neutral-earth-voltage-audit)
+
+A neutral-to-earth magnitude cap observes a different quantity from the
+phase-to-neutral bounds above. The next candidate audit accepts an applicable
+finite nonnegative scalar `vn_max` and evaluates
+
+```math
+m_n=|V_n|,\qquad e_n=\max(0,m_n-\overline v_n).
+```
+
+The reference is the model's earth coordinate. This voltage alone does not
+establish a neutral-conductor current, earth-return path, electrode state,
+touch voltage or protection adequacy.
+
+**Predict:** does a neutral phasor whose real and imaginary components are both
+within ±1 V comply with a 1 V magnitude cap? Consider a 10 V source, 1 Ω phase
+and 2 Ω neutral conductors, with phase current ``0.5-0.25\mathrm j`` A toward
+the load and the opposite current in the neutral. Direct conductor drops give
+
+```math
+V_{q,x}=9.5+0.25\mathrm j\ \mathrm V,\qquad
+V_{q,n}=1-0.5\mathrm j\ \mathrm V,\qquad
+U_{q,xn}=8.5+0.75\mathrm j\ \mathrm V.
+```
+
+The load consumes ``4.0625+2.5\mathrm j`` VA, the source supplies
+``5+2.5\mathrm j`` VA and the two conductors dissipate 0.9375 W.
+The package-owned `neutral-earth-voltage.json` witness separates the checks:
+
+| Observation or obligation | Supplied value or bound | Independent result |
+|:--|:--|:--|
+| Neutral magnitude | ``\sqrt{1.25}\approx1.118034`` V | From complex neutral state |
+| Scalar neutral cap | 1.5 V | Pass |
+| Tightened neutral cap | 1 V | Fail by about 0.118034 V |
+| Componentwise box | Real 1 V, imaginary −0.5 V | Both within ±1 V; insufficient for the cap |
+| Phase/PN bounds, KCL and power at the bound mutation | Same supplied point | Pass |
+
+Violations and tolerances are in **V**. The positive native cap is represented
+by a normalized quadratic inequality; at a 1 V cap its excess is 0.25,
+dimensionless. That solver expression and the 0.118034 V physical magnitude
+excess require different tolerances. The independent evaluator uses the supplied
+rectangular state and its own phasor norm, rather than a native residual or a
+reported magnitude. Native SI and per-unit solves reproduce the scoped point.
+A tightened native attempt is retained with local infeasibility and a failed
+point audit; the termination alone is not a global infeasibility certificate.
+
+Now replace the neutral conductor by 4 Ω and add a 0.25 S neutral-earth shunt.
+At the same neutral voltage, load power and source power, the neutral-conductor
+current magnitude falls from ``\sqrt{0.3125}\approx0.559017`` A to
+``\sqrt{0.078125}\approx0.279508`` A. The shunt carries the remaining return
+current. Its current is reconstructed from the declared admittance and supplied
+voltage, not independently measured. Both analytic and native finite-grounding
+points pass their scoped audits. A neutral-voltage observation therefore cannot
+stand in for a conductor-current rating or recover an omitted return path.
+
+**Inspect:** `examples/neutral_earth_voltage_audit.jl`, invoked by the exact clean
+candidate `verify_linear_coverage.jl` companion, retains these points, both
+cap violations, malformed data, missing state and explicit/source-ground cases.
+The native builder omits this bound at an explicitly perfectly grounded neutral
+or an implicitly grounded source-bus neutral. The latter rule also applies when
+the source terminal map omits that bus neutral. Such declared caps remain
+**unassessed**, with no invented zero residual; their separate grounding voltage
+checks still apply. Consistent native grounded cases solve successfully while
+retaining incomplete audit coverage. A finite grounding shunt does not trigger
+that skip. Even a zero voltage cap does not allocate the free earth-reaction
+current of a perfect-ground declaration: a voltage constraint is not a new
+current path.
+
+Missing/ambiguous/custom neutral roles, malformed scalars and missing neutral
+state remain unknown. Missing required state suppresses KCL/power certification;
+bad limit data preserves otherwise known currents and checked violations.
+Tests cover complex norms, zero/equality and V-unit tolerance, Float64 range,
+uppercase neutrals and native constraint incidence. Native builders are the
+test subjects, not the independent audit's oracle.
+
+Four running-network neutral caps now pass, reducing unassessed obligations
+from 33 to 29 without deleting input fields. Generator cost, phase-to-phase
+limits and incomplete KCL/power coverage still make the result **indeterminate**.
+The published integration pin, PSK implementation statuses, physical adequacy
+and execution MCP exposure remain separate.
+
+**Transfer exercise.** Give the neutral-voltage and neutral-conductor-current
+magnitudes for both return circuits above. Explain which additional model and
+state data distinguish them, why a finite shunt does not skip `vn_max`, and why
+a successful source-grounded solve does not turn its skipped cap into a passed
+limit.

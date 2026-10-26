@@ -93,6 +93,10 @@ function linear_coverage_lesson()
     pn_fixture_path = joinpath(root,"test","data","linear_audit","phase-neutral-voltage.json")
     include(pn_path)
     pn_evidence = Base.invokelatest(()->getfield(@__MODULE__,:PhaseNeutralVoltageAuditExample).run())
+    vn_path = joinpath(root,"examples","neutral_earth_voltage_audit.jl")
+    vn_fixture_path = joinpath(root,"test","data","linear_audit","neutral-earth-voltage.json")
+    include(vn_path)
+    vn_evidence = Base.invokelatest(()->getfield(@__MODULE__,:NeutralEarthVoltageAuditExample).run())
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -129,7 +133,7 @@ function linear_coverage_lesson()
         @test missing_ground.evidence["status"] == "indeterminate"
         @test row(missing_ground,"network.power")["residual"] === nothing
         @test connected_coverage.evidence["status"] == "indeterminate"
-        @test connected_coverage.evidence["unassessed_checks"] == 33
+        @test connected_coverage.evidence["unassessed_checks"] == 29
         @test connected_coverage.evidence["failed_checks"] == 0
         @test count(x->startswith(x["id"],"load.") && x["dimension"]=="device_equations" &&
             x["status"]=="passed",connected_coverage.evidence["rows"]) == 11
@@ -173,7 +177,7 @@ function linear_coverage_lesson()
         @test gr["generator"]["g"]["x"]["pg"] ≈ 4. atol=1e-7
         @test gr["generator"]["g"]["x"]["qg"] ≈ 1. atol=1e-7
         @test gr["voltage_source"]["s"]["a"]["ps"] ≈ 6. atol=1e-7
-        @test count(x->x["dimension"]=="voltage_limits" && x["status"]=="passed",connected_coverage.evidence["rows"]) == 28
+        @test count(x->x["dimension"]=="voltage_limits" && x["status"]=="passed",connected_coverage.evidence["rows"]) == 32
         @test row(connected_coverage,"generator.g1")["status"] == "unassessed"
         @test occursin("cost",row(connected_coverage,"generator.g1")["reason"])
         @test JSON3.read(JSON3.write(generator_evidence),Dict{String,Any}) == generator_evidence
@@ -357,6 +361,55 @@ function linear_coverage_lesson()
         @test all(b->!haskey(b,"vpn_min")&&!haskey(b,"vpn_max"),values(running["bus"]))
         @test JSON3.read(JSON3.write(pe),Dict{String,Any})==pe
     end
+    @testset "Neutral-to-earth voltage does not determine current or ground paths" begin
+        ve=vn_evidence
+        vrow(key,id)=only(filter(x->x["id"]==id,ve[key]["rows"]))
+        @test ve["analytic"]["status"]=="passed"
+        obs=vrow("analytic","bus.q.n.vn_max")
+        @test obs["observed_magnitude_V"]≈sqrt(1.25)
+        @test obs["bound_V"]==1.5 && obs["unit"]=="V"
+        @test obs["neutral_terminal"]=="n" && obs["voltage_reference"]=="earth"
+        for key in ("neutral_limit_violation","finite_ground_limit")
+            @test ve[key]["status"]=="failed" && ve[key]["failed_checks"]==1
+            @test vrow(key,"bus.q.n.vn_max")["residual"]≈sqrt(1.25)-1
+            @test vrow(key,"bus.q.x.vpn_max")["status"]=="passed"
+            @test vrow(key,"bus.q.x.v_max")["status"]=="passed"
+            @test vrow(key,"network.power")["status"]=="passed"
+            @test all(x->x["status"]=="passed",filter(x->x["dimension"]=="kcl",ve[key]["rows"]))
+        end
+        @test ve["finite_grounding"]["status"]=="passed"
+        @test vrow("finite_grounding","shunt.g")["status"]=="reconstructed"
+        for (key,b) in (("perfect_ground_bound","q"),("source_neutral_bound","p"))
+            @test ve[key]["status"]=="indeterminate" && ve[key]["failed_checks"]==0
+            @test vrow(key,"bus.$b.n.vn_max")["status"]=="unassessed"
+            @test vrow(key,"bus.$b.n.vn_max")["residual"]===nothing
+            @test vrow(key,"ground.$b.n.voltage")["status"]=="passed"
+        end
+        @test ve["missing_neutral_voltage"]["status"]=="indeterminate"
+        @test vrow("missing_neutral_voltage","network.power")["residual"]===nothing
+        @test ve["malformed_bound"]["status"]=="indeterminate"
+        @test vrow("malformed_bound","network.power")["status"]=="passed"
+        for key in ("native_si","native_per_unit","native_finite_grounding")
+            @test ve[key]["solver_success"] && ve[key]["accepted"]
+        end
+        for key in ("native_perfect_grounding","native_source_neutral")
+            @test ve[key]["solver_success"] && !ve[key]["accepted"]
+            @test ve[key]["audit"]["status"]=="indeterminate"
+        end
+        @test ve["native_source_neutral"]["input"]["voltage_source"]["s"]["terminal_map"]==["a"]
+        base=ve["native_si"]["candidate"];finite=ve["native_finite_grounding"]["candidate"]
+        current(r)=abs(complex(r["line"]["l"]["n"]["cr_fr"],r["line"]["l"]["n"]["ci_fr"]))
+        @test current(base)≈2current(finite) atol=1e-7
+        @test finite["bus"]["q"]["n"]["vr"]≈1. atol=1e-7
+        @test finite["bus"]["q"]["n"]["vi"]≈-.5 atol=1e-7
+        @test !ve["native_limited"]["solver_success"] && !ve["native_limited"]["accepted"]
+        @test ve["native_limited"]["audit"]["status"]=="failed"
+        for b in ("i1","i2","i3","i4")
+            @test row(connected_coverage,"bus.$b.n.vn_max")["status"]=="passed"
+            @test row(connected_coverage,"bus.$b.n.vn_max")["bound_V"]==180.
+        end
+        @test JSON3.read(JSON3.write(ve),Dict{String,Any})==ve
+    end
     active = dirname(Base.active_project())
     Dict{String,Any}(
         "evidence_state"=>"local_package_candidate_not_promoted_to_published_integration_pin",
@@ -365,7 +418,8 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path]),
+        "neutral_earth_voltage_example"=>vn_evidence,
         "phase_neutral_voltage_example"=>pn_evidence,
         "winding_rating_metadata_example"=>rating_evidence,
         "delta_winding_example"=>delta_evidence,

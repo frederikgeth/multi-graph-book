@@ -106,7 +106,7 @@ publishing the package commit, deliberately updating the ordinary integration
 pin and regenerating the federated pair. The native default-role source-neutral return and constant-power loads are now
 covered by the extended API, together with fixed ideal switches, bounded
 WYE/SINGLE_PHASE generator injections/limits, applicable phase-to-earth bus
-voltage bounds, explicit-neutral phase-to-neutral vpn_min/vpn_max arrays, and fixed single-coil single_phase transformers with legacy
+voltage bounds, explicit-neutral phase-to-neutral vpn_min/vpn_max arrays, applicable scalar neutral-to-earth vn_max, and fixed single-coil single_phase transformers with legacy
 secondary excitation, plus two/three-winding WYE transformers with matched one-to-three phase-neutral coils and
 explicit pairwise leakage, plus matched three-terminal DELTA winding incidence/rotation. DELTA generators, generator costs/controllers, transformer
 variants/limits outside that narrow slice, voltage-dependent loads, other voltage families and objective
@@ -117,9 +117,9 @@ The companion also runs the package's `neutral-and-delta.json` analytic fixture,
 a native solve of it, a delta circulating-current corruption, and missing implicit
 earth-reaction evidence. It applies both APIs to the same running-network result:
 the original linear audit retains 42 unassessed rows; the connected extension
-reduces this to 33, with 11 load power equations, source relations, the closed
+reduces this to 29, with 11 load power equations, source relations, the closed
 switch voltage relation, four switch current limits and 28 phase-to-earth
-voltage-bound rows evaluated, plus the mixed WYE/DELTA transformer equations,
+voltage-bound rows and four neutral-to-earth caps evaluated, plus the mixed WYE/DELTA transformer equations,
 incidence, current limits and declared rating metadata. The running generator still contains an unsupported
 cost field; this slice does not discard it to manufacture full KCL coverage.
 Both remain indeterminate. Custom terminal conventions and unrecognized semantic
@@ -181,7 +181,7 @@ It checks a native solve, current/loss identities, a tighter terminal cap,
 series/terminal confusion, missing series current and unsupported adjustable tap.
 The single-coil transformer example does not itself assess the running network's
 mixed WYE/DELTA device; the later winding-list and metadata slices add that
-distinct coverage. The running verdict remains indeterminate with 33 unassessed rows.
+distinct coverage. The running verdict remains indeterminate with 29 unassessed rows.
 
 
 The companion additionally runs `examples/winding_list_audit.jl` and
@@ -217,7 +217,7 @@ Native build validation rejects DELTA maps carrying a neutral; that boundary is
 covered by package tests. The audit requires internal coil observations and
 uses s_max/3 at actual line-to-line coil voltage. Two-terminal DELTA, unmatched
 coils, taps and internal coordinates remain unassessed. The separate metadata
-trace handles `s_rating`; the running network still has 33 unassessed rows. The published
+trace handles `s_rating`; the running network still has 29 unassessed rows. The published
 integration pin, PSK implementation statuses and execution MCP remain unchanged.
 
 
@@ -237,7 +237,7 @@ The audit does not authenticate that upstream conversion.
 The current running input is retained intact: transformer equations/current
 caps are checked and its top-level rating is declared metadata. The unsupported
 generator cost still suppresses complete network KCL/power certification. There
-are 33 unassessed obligations; the verdict remains indeterminate. No published
+are 29 unassessed obligations; the verdict remains indeterminate. No published
 integration pin, PSK implementation status or execution MCP change is included.
 
 
@@ -255,5 +255,27 @@ full-length arrays in the original non-neutral bus order.
 Package tests cover skipped grounded/source phases, three-phase reorderings,
 complex phasor subtraction and Float64 representability boundaries. Other
 voltage families remain open. The running input has no vpn_min/vpn_max fields,
-so its 33 unassessed obligations and indeterminate verdict are unchanged.
+so its 29 unassessed obligations and indeterminate verdict are unchanged.
 Published integration, PSK implementation statuses and execution MCP stay separate.
+
+
+The companion also runs `examples/neutral_earth_voltage_audit.jl` and binds
+`neutral-earth-voltage.json`. A complex neutral voltage of `1-0.5im` V has
+magnitude about 1.118034 V; a 1 V scalar `vn_max` therefore fails even though
+both rectangular components fit a ±1 V box. Independent phase/PN, KCL and
+power checks still pass at that supplied point. A finite 0.25 S grounding
+shunt with a 4 ohm neutral preserves that voltage and the source/load powers
+while halving the neutral-conductor current compared with the 2 ohm case.
+The shunt current is reconstructed; voltage is not a conductor-current rating.
+Native SI/per-unit and finite-grounding solves pass their scoped audits.
+
+The native builder omits `vn_max` at explicit perfect neutral grounds and
+implicit source-bus neutral grounds, including when the source map omits that
+neutral. Those declarations remain unassessed with null residuals; separate
+grounding checks still apply. Consistent native perfect/source-ground cases
+solve successfully but do not have complete audit acceptance. Finite shunts do
+not trigger this skip. A zero voltage cap does not add a free earth-reaction
+current path. Malformed scalar data and missing neutral state remain unknown;
+missing state suppresses KCL/power certification. Four intact running-network
+caps now pass, reducing unassessed obligations from 33 to 29. Its verdict stays
+indeterminate. The published pin, PSK statuses and execution MCP remain unchanged.
