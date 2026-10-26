@@ -2493,4 +2493,7 @@ remain on this page.
 
 The focused [Volt-var extension](ibr-power-factor-controls.md#ibr-volt-var-audit)
 separates voltage monitors, the requested piecewise-linear response, an explicitly
-assumed smooth model and hard Q/minimum-PF obligations.
+assumed smooth model and hard Q/minimum-PF obligations. The
+[Volt-watt and availability extension](ibr-power-factor-controls.md#ibr-volt-watt-audit)
+distinguishes a one-sided smooth cap, authored P boxes, normalization bases and
+scalar availability metadata with separate augmentation provenance.

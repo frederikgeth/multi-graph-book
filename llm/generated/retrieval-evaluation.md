@@ -4,7 +4,7 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `76a987ed2a9c9892352260081b0af24058c9c0c9644ed1f3230ed54ef915638b`<br>
+**Corpus hash:** `cf20edbe63bda6c986faebb33754cad76dd2be1e4fb96bb9b5a83036c771334f`<br>
 **Cases:** 108
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
@@ -20,7 +20,7 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Open-corpus lexical evidence recall@10 | 33.4% | diagnostic |
 | Open-corpus complete evidence@10 | 0.9% | diagnostic |
 | Evidence-only lexical recall@5 | 35.0% | diagnostic |
-| Evidence-only lexical recall@10 | 42.1% | diagnostic |
+| Evidence-only lexical recall@10 | 41.9% | diagnostic |
 | Evidence-only complete evidence@10 | 1.9% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
 | Complete contract packets | 100.0% | yes |
@@ -44,8 +44,8 @@ the question count must not be treated as that many independent observations.
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `lexical` | 33.0% | 42.6% | 0.0% | 0/33 | 6/33 | 0.196 |
-| `char_tfidf` | 34.1% | 43.3% | 0.0% | 0/33 | 7/33 | 0.219 |
-| `hybrid` | 35.5% | 47.1% | 0.0% | 0/33 | 5/33 | 0.211 |
+| `char_tfidf` | 34.6% | 43.3% | 0.0% | 0/33 | 7/33 | 0.220 |
+| `hybrid` | 36.1% | 47.1% | 0.0% | 0/33 | 5/33 | 0.212 |
 | `graph` | 37.5% | 58.4% | 18.2% | 6/33 | 3/33 | 0.249 |
 
 Held-out contract-router firing: **22/33 (66.7%)**; release floor: **66.7%**.
@@ -96,7 +96,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | --- | ---: | ---: | ---: | ---: |
 | `power_engineer` | 36 | 100.0% | 42.9% | 100.0% |
 | `software_engineer` | 36 | 100.0% | 37.9% | 100.0% |
-| `student` | 36 | 100.0% | 45.4% | 100.0% |
+| `student` | 36 | 100.0% | 44.9% | 100.0% |
 
 ## Case results
 
@@ -201,7 +201,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | `EVAL-SOLUTION-MULTIPLICITY-STUDENT` | `student` | `apparent-power-limit-implies-current-admissibility` | 42.9% | yes |
 | `EVAL-SOLUTION-MULTIPLICITY-SOFTWARE` | `software_engineer` | `apparent-power-limit-implies-current-admissibility` | 28.6% | yes |
 | `EVAL-SOLUTION-MULTIPLICITY-POWER` | `power_engineer` | `apparent-power-limit-implies-current-admissibility` | 57.1% | yes |
-| `EVAL-LIMIT-CONVEXITY-STUDENT` | `student` | `convex-rating-implies-convex-opf` | 60.0% | yes |
+| `EVAL-LIMIT-CONVEXITY-STUDENT` | `student` | `convex-rating-implies-convex-opf` | 40.0% | yes |
 | `EVAL-LIMIT-CONVEXITY-SOFTWARE` | `software_engineer` | `convex-rating-implies-convex-opf` | 20.0% | yes |
 | `EVAL-LIMIT-CONVEXITY-POWER` | `power_engineer` | `convex-rating-implies-convex-opf` | 40.0% | yes |
 | `EVAL-NEUTRAL-SHUNTS-STUDENT` | `student` | `apparent-power-limit-implies-current-admissibility` | 42.9% | yes |

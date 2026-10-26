@@ -149,6 +149,10 @@ function linear_coverage_lesson()
     vv_fixture_path=joinpath(root,"test","data","linear_audit","ibr-volt-var.json")
     include(vv_path)
     vv_evidence=Base.invokelatest(()->getfield(@__MODULE__,:IbrVoltVarAuditExample).run())
+    vw_path=joinpath(root,"examples","ibr_volt_watt_audit.jl")
+    vw_fixture_path=joinpath(root,"test","data","linear_audit","ibr-volt-watt.json")
+    include(vw_path)
+    vw_evidence=Base.invokelatest(()->getfield(@__MODULE__,:IbrVoltWattAuditExample).run())
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -1054,6 +1058,68 @@ function linear_coverage_lesson()
         @test tight_coverage.evidence["status"]=="passed"
         @test JSON3.read(JSON3.write(ve),Dict{String,Any})==ve
     end
+    @testset "Volt-watt cap, availability normalization and hard-box intersection" begin
+        we=vw_evidence
+        wrow(key,id)=only(filter(r->r["id"]==id,we[key]["rows"]))
+        for key in ("single_phase","four_leg"),basis in ("S_MAX","P_MAX","P_AVAILABLE")
+            @test we[key*"_"*basis]["status"]=="passed"
+            for unit in ("si","per_unit")
+                n=we["native_$(key)_$(basis)_$unit"]
+                @test n["accepted"] && n["audit"]["unassessed_checks"]==0
+                @test n["inspection"]["violated_native_primal_rows"]==0
+                @test n["input"]["ibr"]["i"]["p_max"]==(key=="single_phase" ? [10.] : [10.,8.,6.])
+                @test n["input"]["ibr"]["i"]["p_avail"]==12.
+            end
+        end
+        for key in ("single_phase","four_leg"),ref in ("PN_PER_PHASE","PG_PER_PHASE","PP_PER_PHASE","PN_AVERAGED","PG_AVERAGED","PP_AVERAGED")
+            @test we[key*"_"*ref]["audit"]["status"]=="passed"
+            @test we[key*"_"*ref]["native_point"]["violated_native_primal_rows"]==0
+        end
+        row=wrow("single_phase","ibr.i.1.volt_watt")
+        @test row["unit"]=="W" && row["observed_p_W"]==4. && row["residual"]==0.
+        @test row["observed_p_W"]<row["assumed_model_cap_W"] && row["effective_upper_cap_W"]==10.
+        @test !row["build_recipe_authenticated"] && !row["result_modeled_curve_used_as_oracle"]
+        @test we["missing_model"]["status"]=="indeterminate"
+        @test wrow("missing_model","ibr.i.1.volt_watt")["residual"]===nothing
+        @test wrow("missing_model","network.power")["status"]=="passed"
+        lo=wrow("lower_kink","ibr.i.1.volt_watt");hi=wrow("upper_kink","ibr.i.1.volt_watt")
+        @test lo["requested_pwl_cap_W"]==20. && lo["assumed_model_cap_W"]≈18.89103714806725
+        @test lo["status"]=="failed" && we["native_lower_kink"]["violated_native_primal_rows"]==1
+        @test hi["requested_pwl_cap_W"]==4. && hi["assumed_model_cap_W"]≈5.108962851932746
+        @test hi["status"]=="passed" && we["native_upper_kink"]["accepted"]
+        @test wrow("box_conflict","ibr.i.1.volt_watt")["status"]=="passed"
+        @test wrow("box_conflict","ibr.i.1.p_max")["status"]=="failed"
+        @test wrow("box_conflict","ibr.i.1.volt_watt")["effective_upper_cap_W"]==3.
+        @test we["native_box_point"]["violated_native_primal_rows"]==1
+        @test we["native_box_maximum"]["accepted"]
+        @test we["native_box_maximum"]["candidate"]["ibr"]["i"]["a"]["pg"]≈3. atol=1e-6
+        pm=we["native_pmax_maximum"]
+        @test pm["accepted"] && pm["input"]["ibr"]["i"]["p_max"]==[10.]
+        @test pm["candidate"]["ibr"]["i"]["a"]["pg"]≈only(filter(r->r["id"]=="ibr.i.1.volt_watt",pm["audit"]["rows"]))["assumed_model_cap_W"] atol=1e-6
+        @test wrow("phase_pair","ibr.i.1.volt_watt")["availability_divisor"]==2
+        @test wrow("phase_pair","ibr.i.1.volt_watt")["normalization_base"]==6.
+        @test we["phase_pair"]["failed_checks"]==1 && we["native_phase_pair_point"]["violated_native_primal_rows"]==1
+        @test wrow("availability_pn","ibr.i.1.volt_watt")["availability_divisor"]==1
+        @test wrow("availability_pn","ibr.i.1.volt_watt")["normalization_base"]==12.
+        @test we["native_availability_pn"]["accepted"]
+        @test we["metadata_only"]["status"]=="passed" && we["native_metadata_only"]["accepted"]
+        @test wrow("metadata_only","ibr.i.p_avail")["declared_available_power_W"]==1.
+        @test !wrow("metadata_only","ibr.i.p_avail")["enforced_as_active_power_cap"]
+        for key in ("legacy_average","legacy_per_phase")
+            @test we[key]["status"]=="passed" && we["native_"*key]["accepted"]
+        end
+        @test wrow("forged_coefficients","ibr.i.1.volt_watt")["assumed_model_cap_W"]==row["assumed_model_cap_W"]
+        @test isempty(get(running,"ibr",Dict()))
+        @test connected_coverage.evidence["failed_checks"]==3 && connected_coverage.evidence["unassessed_checks"]==0
+        @test tight_coverage.evidence["status"]=="passed"
+        ag=we["augmentation_comparison"]
+        @test ag["input_unchanged"] && !haskey(ag["before"]["ibr"]["i"],"p_max")
+        @test ag["after"]["ibr"]["i"]["p_max"]≈12 .* [20.,12.,10.] ./ 42
+        @test ag["raw_audit"]["status"]=="passed" && ag["transformed_audit"]["status"]=="passed"
+        @test !isempty(ag["manifest"]["entries"])
+        @test only(filter(r->r["id"]=="ibr.i.1.volt_watt",ag["transformed_audit"]["rows"]))["normalization_base"]==4.
+        @test JSON3.read(JSON3.write(we),Dict{String,Any})==we
+    end
     active = dirname(Base.active_project())
     Dict{String,Any}(
         "evidence_state"=>"local_package_candidate_not_promoted_to_published_integration_pin",
@@ -1062,7 +1128,8 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path,dg_path,dg_fixture_path,sp_path,sp_fixture_path,pq_path,pq_fixture_path,ibr_path,ibr_fixture_path,ip_path,ip_fixture_path,pf_path,pf_fixture_path,vv_path,vv_fixture_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path,dg_path,dg_fixture_path,sp_path,sp_fixture_path,pq_path,pq_fixture_path,ibr_path,ibr_fixture_path,ip_path,ip_fixture_path,pf_path,pf_fixture_path,vv_path,vv_fixture_path,vw_path,vw_fixture_path]),
+        "ibr_volt_watt_example"=>vw_evidence,
         "ibr_volt_var_example"=>vv_evidence,
         "ibr_pf_control_example"=>pf_evidence,
         "ibr_price_scope_example"=>ip_evidence,

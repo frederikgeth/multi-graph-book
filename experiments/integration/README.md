@@ -650,3 +650,34 @@ suppressed. No native curve/index/role/smoothing or profiler helper is the
 independent oracle. Mathematical target evaluation does not certify backend
 range/convergence or physical/controller adequacy. Running-network default/tighter,
 published pin/PSK statuses, historical replay and execution MCP remain unchanged.
+
+
+The Volt-watt/availability extension adds `examples/ibr_volt_watt_audit.jl` and
+`test/data/linear_audit/ibr-volt-watt.json`. Pure SINGLE_PHASE/explicit-neutral
+FOUR_LEG curves use two positive increasing SI knots, nonnegative ordered
+p_limits=[low,high], VA_FRACTION and S_MAX/P_MAX/P_AVAILABLE bases. Six references,
+mean magnitudes and legacy overrides share the independently decoded geometry.
+An explicit volt_watt_model/v1 static user_defined-softplus assumption is needed
+for a one-sided W excess over the cap. Requested PWL, assumed smooth and the
+intersection with a known authored p_max remain distinct. Supplied modeled
+coefficient rows are not the independent oracle; missing recipes preserve known
+current/box evidence. Native comparisons fix dispatch after build without
+rewriting p_max, preserving P_MAX normalization. Both curve corners, hard-box
+intersection, native SI/PU and floating-reference points retain these boundaries.
+
+Finite nonnegative scalar p_avail is metadata, not a direct cap, authenticated
+resource/weather fact or time/energy guarantee. P_AVAILABLE divides it by
+non-neutral mapped terminal count: a phase-neutral pair uses one, a single
+phase-to-phase coil two, a three-phase four-leg device three. Explicit
+augmentation may instead derive missing p_max proportionally to s_max. The
+companion retains that transformation and manifest separately; the audit never
+invokes augmentation or writes inferred P limits. A metadata-only p_avail1W /
+actualP4W comparison passes with p_max10W. Original scalar W availability stays
+unscaled during SI-to-PU input conversion and is normalized once by the native
+constructor. Separate used VV/VW family assumptions with unequal global widths
+produce an unknown compatibility obligation while known assumed equations remain
+assessed. Malformed legacy aggregation retains known current/P-box failures.
+Mixed controllers, THREE_LEG droop, builtin/Swish/live updates, physical
+availability, filters/DC, selected objectives and optimality remain outside.
+Running-network/default/tighter, published pin/PSK states, historical replay and
+execution MCP remain unchanged.

@@ -1,4 +1,4 @@
-# [IBR power-factor and Volt-var controls](@id ibr-pf-control-audit)
+# [IBR power-factor, Volt-var and Volt-watt controls](@id ibr-pf-control-audit)
 
 **Page status:** self-checked local candidate control-equation and applicability witnesses; no general controller, physical-model, PF-ratio accuracy or optimality certificate.
 
@@ -351,9 +351,9 @@ inspections, aggregation overrides and retained capability/minimum-PF conflicts.
 Scaling voltage and breakpoints together also checks the physical smoothing
 width transformation; it is not an all-asset network-equivalence claim.
 
-Only pure Volt-var profiles are newly admitted. Mixed PF/Volt-var or Volt-watt
+This Volt-var slice admits pure profiles. Mixed PF/Volt-var or combined droop
 profiles, unsupported references/units/bases/arities, ignored native controls,
-filters/internal voltages, availability/DC dynamics and physical control adequacy
+filters/internal voltages, physical availability/DC dynamics and physical control adequacy
 remain outside. In particular, a native warning that skips a declaration does
 not establish compliance with it. The running input has no IBR; its retained
 three default generator-bound failures/zero unknowns, all 26 passing KCL rows and
@@ -364,3 +364,153 @@ integration, PSK implementation statuses and execution MCP remain separate.
 response, reported Q and actual VI-derived Q. Then change averaging or curtail P
 without relaxing a Q cap or minimum-PF policy, and identify which observations,
 model assumptions and failure evidence must be retained.
+
+
+## [Volt-watt: a cap with a declared normalization base](@id ibr-volt-watt-audit)
+
+Volt-var fixes Q under an assumed model; Volt-watt limits P from above. A point
+below the cap may comply. It need not sit on the curve, and curtailment is not
+an equality to available power.
+
+**Predict:** a single-pair converter has Smax = 20 VA, authored `p_max=10` W,
+scalar `p_avail=1` W and actual P = 4 W. With no availability-based controller,
+does that scalar alone reject P = 4 W?
+
+The candidate admits pure `volt_watt` profiles on the same `SINGLE_PHASE` and
+explicit-neutral `FOUR_LEG` domains as Volt-var. The declaration is:
+
+```json
+"control_profile": {
+  "vw": {"volt_watt": {
+    "breakpoints": [9.0, 11.0], "p_limits": [0.2, 1.0],
+    "p_unit": "VA_FRACTION", "p_ref": "S_MAX",
+    "voltage_reference": "PN_PER_PHASE"
+  }}
+}
+```
+
+The IBR references `"control_profile":"vw"`. Two finite positive strictly
+increasing knots are SI volts. Fractions are finite, nonnegative and ordered
+`[low,high]`; the audit does not invent an upper limit of one. The requested
+clamped graph is
+
+```math
+C_{\mathrm{PWL},k}(U)=B_k\begin{cases}
+p_{\mathrm{high}},&U\le u_1,\\
+p_{\mathrm{high}}+(p_{\mathrm{low}}-p_{\mathrm{high}})
+\dfrac{U-u_1}{u_2-u_1},&u_1<U<u_2,\\
+p_{\mathrm{low}},&U\ge u_2.
+\end{cases}
+```
+
+The default `p_unit="VA_FRACTION"` is the admitted unit convention. The base
+must be explicit and complete for its selected reference:
+
+| `p_ref` | Normalization base for branch k | Separate obligation |
+|:--|:--|:--|
+| `S_MAX` (default) | `s_max[k]`, in VA | Branch apparent-power cap remains hard. |
+| `P_MAX` | `p_max[k]`, in W | Authored active-power box still applies. |
+| `P_AVAILABLE` | Scalar `p_avail` divided by non-neutral mapped-terminal count, in W | This normalization does not author a direct availability cap. |
+
+Missing, prefix, extra, negative or nonfinite bases remain unassessed. Native
+zero fallbacks for missing normalization data do not establish compliance with
+the intended declaration. Empty or absent `p_max` still means no authored P box
+in the injection audit; it cannot supply a `P_MAX` normalization base.
+
+### Requested graph, assumed smooth cap and hard box
+
+The six PN/PG/PP per-phase/averaged monitors and legacy aggregation precedence
+are the same as in [Volt-var](@ref ibr-volt-var-audit). There is no partial
+average on missing observations and no inferred one-phase PP fallback or
+`THREE_LEG` droop. An independent static softplus cap requires:
+
+```julia
+audit_solution(net, result; volt_watt_model=Dict(
+    "schema" => "bmopftools.audit.volt_watt_model/v1",
+    "softplus" => "user_defined",
+    "volt_var_watt_eps" => 0.02))
+```
+
+Let the relative width be rho, epsilon = rho times the mean of the two SI knots,
+and let s be the softplus hinge defined above. The assumed cap and residual are
+
+```math
+C_{\epsilon,k}(U)=B_kp_{\mathrm{high}}+
+\frac{B_k(p_{\mathrm{low}}-p_{\mathrm{high}})}{u_2-u_1}
+\bigl[s_\epsilon(U-u_1)-s_\epsilon(U-u_2)\bigr],
+\qquad r_k=\max(0,P_k-C_{\epsilon,k}(U_k)).
+```
+
+The residual has units W under absolute `power_tol`. The independent P comes
+from supplied ordered V/I. Each row retains the requested PWL cap, assumed
+smooth cap, physical smoothing width, selected base, observed P and effective
+upper cap. With a known authored `p_max`, that last cap is the minimum of the
+box and smooth curve. A malformed box leaves the intersection unknown while
+the independently known curve can still pass or fail. Hard lower P, Q/I/S and
+actual-P minimum-PF checks remain separate.
+
+For the declaration above with base 20 VA and epsilon = 0.2 V:
+
+| Monitor U | Requested PWL cap | Assumed smooth cap | Controlled point |
+|:--|--:|--:|:--|
+| 9 V | 20 W | approximately 18.891 W | P = 20 W passes the PWL cap but fails the smooth cap. |
+| 11 V | 4 W | approximately 5.109 W | P = 5 W passes the smooth cap but exceeds the PWL cap. |
+
+At U = 9 V, P = 4 W passes below the cap. Tightening `p_max` to 3 W rejects
+that point despite a passing curve row. A separate native maximum-P comparison
+returns approximately 3 W under that hard box. With `P_MAX` and the original
+10 W box, the corresponding native comparison reaches approximately 9.446 W.
+The comparison fixes P through an added constraint on the public power
+expression, preserving the original `p_max`; changing the box to fix dispatch
+would change a `P_MAX`-normalized model.
+
+The recipe is an unauthenticated assumption. A result's `modeled_volt_watt`
+coefficient rows and reported cap are comparison data, not the independent
+oracle. Omitting or rejecting the recipe leaves smooth-cap compliance unknown
+while preserving requested PWL diagnostics, known boxes and current incidence.
+Mathematical high-precision hinge evaluation and finite-range guards do not
+certify backend arithmetic, derivatives or convergence. The native constructor
+has one global smoothing width; differing declared widths for separately used
+Volt-var and Volt-watt families create an unknown compatibility obligation,
+while preserving their individually assessed assumed equations.
+
+### Availability is an input declaration with provenance
+
+**Resolve the prediction:** scalar `p_avail=1` W alone does not enforce P <= 1 W.
+The metadata-only P = 4 W case passes both the independent audit and a controlled
+native solve with the 10 W box. The audit records the scalar but does not
+authenticate a resource fact, PV model or energy guarantee over time.
+Its presence also does not establish a particular augmentation recipe.
+
+The native `P_AVAILABLE` divisor counts non-neutral mapped terminals. One
+phase-neutral pair has divisor one; one phase-to-phase `SINGLE_PHASE` coil has
+divisor two. The same scalar 12 W therefore produces bases 12 W and 6 W in
+those cases. At U = 9 V with the example fractions and width, P = 8 W passes
+the phase-neutral cap and fails the phase-to-phase cap. This is an indexing
+applicability observation about the candidate implementation, not a physical
+allocation rule inferred from coil count.
+
+Three-phase `FOUR_LEG` uses divisor three even with its neutral first in the
+map. The scalar 12 W produces [4,4,4] W bases. An explicit augmentation can
+instead derive a missing `p_max` proportionally to `s_max`: ratings [20,12,10]
+VA give approximately [5.714,3.429,2.857] W. Scenario operations can scale
+availability and write new boxes subject to equipment/authored ceilings. Those
+are distinct transformations; this audit does not call them or invent missing
+P limits. Audit the resulting network and retain its transformation provenance
+separately. Native SI/per-unit comparisons preserve the scalar in W and divide
+by the local power base once.
+
+`examples/ibr_volt_watt_audit.jl` and `test/data/linear_audit/ibr-volt-watt.json`
+are included by the source-bound companion. They compare all three bases in
+SI/per-unit, floating-reference primal points, both smooth corners, hard-box
+intersection, metadata-only availability and the phase-pair divisor. Malformed
+curves/bases, forged coefficient rows and partial observations preserve known
+failure evidence. Mixed PF/droop or combined Volt-var/Volt-watt profiles,
+`THREE_LEG` droop, unsupported native warning/fallback paths, builtin/Swish/live
+updates, filters/internal voltages and physical availability/DC dynamics remain
+outside. Published pin, PSK implementation states and execution MCP are unchanged.
+
+**Transfer exercise.** Change a scalar availability declaration without changing
+an authored P box, then change the curve from `S_MAX` to `P_AVAILABLE`. Explain
+which cap changes. Repeat with a phase-to-phase pair and with an explicitly
+augmented network, retaining the distinct base, divisor and provenance.

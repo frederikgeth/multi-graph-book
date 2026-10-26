@@ -85,5 +85,5 @@ promote a finite numerical test into a general theorem through a status label.
 
 - BMOPFTools revision: `97c274946091859b7d9b0e822c96f1e7f9f50c7e`
 - Finding registry SHA-256: `52db7414e7f2bef158d32988c196d6d038320e30efda64a7501ddf1872d44519`
-- Federated pair SHA-256: `09fbccee706cbf5d570ded9eb1be2b8f6d898b0537488eaf434880c2799e1332`
+- Federated pair SHA-256: `f3a249f9f31f01f21106f12c65d4499cdcaccd6fd76c0faa094c354ae386429d`
 - [Machine-readable inventory and source hashes](delivery-inventory.json)
