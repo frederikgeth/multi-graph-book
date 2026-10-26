@@ -133,6 +133,10 @@ function linear_coverage_lesson()
     pq_fixture_path=joinpath(root,"test","data","linear_audit","source-pq.json")
     include(pq_path)
     pq_evidence=Base.invokelatest(()->getfield(@__MODULE__,:VoltageSourcePQLimitAuditExample).run())
+    ibr_path=joinpath(root,"examples","ibr_injection_audit.jl")
+    ibr_fixture_path=joinpath(root,"test","data","linear_audit","ibr-injection.json")
+    include(ibr_path)
+    ibr_evidence=Base.invokelatest(()->getfield(@__MODULE__,:IbrInjectionAuditExample).run())
     row(a,id) = only(filter(x -> x["id"] == id,a.evidence["rows"]))
     @testset "Linear audit candidate teaching route" begin
         @test healthy.evidence["status"] == "passed"
@@ -832,6 +836,48 @@ function linear_coverage_lesson()
         @test tight_coverage.evidence["status"]=="passed"
         @test JSON3.read(JSON3.write(pe),Dict{String,Any})==pe
     end
+    @testset "IBR injection, current incidence and topology applicability" begin
+        ie=ibr_evidence
+        irow(key,id)=only(filter(x->x["id"]==id,ie[key]["rows"]))
+        for key in ("single_phase","four_leg","three_leg")
+            @test ie[key]["status"]=="passed" && ie[key]["coverage_complete"]
+            @test irow(key,"ibr.i.terminal_currents")["status"]=="reconstructed"
+            @test irow(key,"ibr.i.terminal_currents")["residual"]===nothing
+            for units in ("si","per_unit")
+                native=ie["native_$(key)_$units"]
+                @test native["accepted"] && native["audit"]["unassessed_checks"]==0
+                @test !native["audit"]["objective_scope"]["objective_value_evaluated"]
+            end
+        end
+        @test irow("single_phase","ibr.i.1.i_max")["bound_A"]==.45
+        @test irow("single_phase","ibr.i.1.i_max")["observed_magnitude_A"]≈sqrt(.17)
+        @test irow("four_leg","ibr.i.terminal_currents")["terminal_pairs"]==[["z","n"],["x","n"],["y","n"]]
+        @test irow("four_leg","ibr.i.terminal_currents")["terminal_currents_injected_A"]["n"]≈[-.3,-.1]
+        @test irow("four_leg","ibr.i.1.p_max")["positive_map_position"]==2
+        @test irow("four_leg","ibr.i.1.p_max")["reference_map_position"]==1
+        @test ie["circulating"]["status"]=="failed" && ie["circulating"]["failed_checks"]==6
+        @test ie["circulating"]["coverage_complete"]
+        @test irow("circulating","network.power")["status"]=="passed"
+        for t in ("x","y","z")
+            @test irow("circulating","ibr.i.terminal_currents")["terminal_currents_injected_A"][t]≈irow("three_leg","ibr.i.terminal_currents")["terminal_currents_injected_A"][t]
+        end
+        @test ie["reversed_single"]["status"]=="passed" && ie["native_reversed_single"]["accepted"]
+        @test irow("reversed_single","ibr.i.terminal_currents")["terminal_pairs"]==[["n","x"]]
+        for key in ("native_shared_current_limited","native_neutral_limited")
+            @test !ie[key]["accepted"] && !isempty(ie[key]["raw_status"])
+        end
+        for key in ("single_ignored_suffix","single_extra_current_entries","four_missing_neutral","three_two_terminals")
+            @test ie[key]["native_build_succeeded"]
+            @test ie[key]["audit"]["status"]=="indeterminate"
+        end
+        @test ie["filter_boundary"]["unfiltered_shape"]==ie["filter_boundary"]["authored_filter_shape"]
+        @test ie["filter_boundary"]["audit"]["status"]=="indeterminate"
+        @test isempty(get(running,"ibr",Dict()))
+        @test connected_coverage.evidence["unassessed_checks"]==0
+        @test connected_coverage.evidence["failed_checks"]==3
+        @test tight_coverage.evidence["status"]=="passed"
+        @test JSON3.read(JSON3.write(ie),Dict{String,Any})==ie
+    end
     active = dirname(Base.active_project())
     Dict{String,Any}(
         "evidence_state"=>"local_package_candidate_not_promoted_to_published_integration_pin",
@@ -840,7 +886,8 @@ function linear_coverage_lesson()
         "julia_version"=>string(VERSION),
         "environment_sha256"=>Dict(name=>bytes2hex(sha256(read(joinpath(active,name)))) for name in ("Project.toml","Manifest.toml")),
         "source_sha256"=>Dict(path=>bytes2hex(sha256(read(path))) for path in
-            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path,dg_path,dg_fixture_path,sp_path,sp_fixture_path,pq_path,pq_fixture_path]),
+            [@__FILE__,joinpath(@__DIR__,"..","running_network.jl"),fixture_path,connected_path,switch_path,generator_path,generator_fixture_path,transformer_path,transformer_fixture_path,winding_path,winding_fixture_path,multiphase_path,multiphase_fixture_path,delta_path,delta_fixture_path,rating_path,rating_fixture_path,rating_conversion_path,pn_path,pn_fixture_path,vn_path,vn_fixture_path,pp_path,pp_fixture_path,ba_path,ba_fixture_path,sq_path,sq_fixture_path,be_path,be_fixture_path,gc_path,gc_fixture_path,dg_path,dg_fixture_path,sp_path,sp_fixture_path,pq_path,pq_fixture_path,ibr_path,ibr_fixture_path]),
+        "ibr_injection_example"=>ibr_evidence,
         "voltage_source_pq_example"=>pq_evidence,
         "voltage_source_price_example"=>sp_evidence,
         "delta_generator_example"=>dg_evidence,

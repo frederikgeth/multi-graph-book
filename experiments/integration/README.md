@@ -548,3 +548,31 @@ controllers/custom roles, selected objectives and optimality remain separate.
 The running input has no source P/Q bounds, so its default three generator
 p_max failures/zero unknowns and separate tighter electrical pass are unchanged.
 Published integration, PSK statuses and execution MCP remain unchanged.
+
+
+The candidate also adds the bounded AC-only IBR injection/current-incidence
+example `examples/ibr_injection_audit.jl` and analytic fixture
+`test/data/linear_audit/ibr-injection.json`, run by `verify_linear_coverage.jl`.
+Its explicit topology domain is: two-endpoint SINGLE_PHASE; one-to-three-phase
+FOUR_LEG with a mapped default-role neutral; exactly three cyclic non-neutral
+THREE_LEG coils. It independently computes ordered U*conj(I), signed P/Q boxes,
+branch I/S caps, shared single-pair minimum current cap and optional four-leg
+neutral-return cap. Cyclic coil currents and terminal differences remain
+separate observations. Internal circulation can violate all three I/S coil
+caps without changing terminal KCL or total power. Reported P/Q is optional
+consistency evidence. Missing observations suppress complete KCL/power while
+known other violations survive; malformed full arrays do not erase currents.
+
+Controlled native SI/per-unit and reversed single-pair comparisons fix the
+analytic dispatch and seed its full primal state. Tighter shared/neutral-cap
+attempts retain failure evidence. Native construction also accepts maps/extra
+entries refused by the bounded audit. Filter fields leave native model shape
+unchanged but remain audit refusals. The current native THREE_LEG cyclic model
+is not a resolution of physical review #95. Filters/internal/grid-forming
+voltages, controllers, availability, prices, custom roles, DC coupling/dynamics
+and objective/optimality remain outside this slice. A false dc_link_coupled is
+the uncoupled default; recognized prime_mover values are metadata only. Native
+power-flow construction omits s_max circles; declared-cap compliance does not
+certify which problem was built. The running input has no IBR; its default
+three generator-bound failures/zero unknowns and separate tighter pass persist.
+Published pin, PSK statuses, historical replay and execution MCP are unchanged.

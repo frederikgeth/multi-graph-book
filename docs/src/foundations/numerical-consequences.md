@@ -2262,3 +2262,117 @@ rejects excess export on b while leaving import on a admissible. Then preserve
 those physical phase limits under source-map reordering, and explain why a
 passing total-P comparison, an in-range report, an empty array or a zero-power
 observation cannot replace the phase and current evidence.
+
+
+### [IBR currents depend on the admitted topology](@id ibr-injection-audit)
+
+An inverter label alone does not identify the voltage/current pairing or its
+terminal-current incidence. The local candidate adds independent supplied-point
+checks for a bounded AC-only slice. Its three admitted topologies have distinct
+observations and current caps:
+
+| Admitted topology | Power voltage and supplied current | Reconstructed injections and current cap |
+|:--|:--|:--|
+| `SINGLE_PHASE`: exactly two distinct endpoints | One ordered pair, ``U=V_{t_1}-V_{t_2}``, one `cri/cii` current ``I`` | ``(+I,-I)``; one shared current capped by the minimum of one/two `i_max` entries |
+| `FOUR_LEG`: one to three phases plus an explicitly mapped default-role neutral | One ``V_\phi-V_n`` and current per phase, in map order after removing n | Phase injections ``I_\phi``, neutral ``-\sum I_\phi``; phase caps and optional final neutral cap |
+| `THREE_LEG`: exactly three distinct non-neutral endpoints | One supplied current per cyclic coil, ``U_k=V_{t_k}-V_{t_{k+1}}`` | Terminal injection ``J_k=I_k-I_{k-1}``; `i_max` caps coils, without an inferred terminal-current rating |
+
+The default-role neutral may occur anywhere in a four-leg map. Reversing the
+single-phase pair negates its current while preserving its physical terminal
+injections and power. A cyclic reordering or reversal must transform every coil
+observation and parameter slot consistently. Reconstructed returns and terminal
+currents are derived quantities, not independent measurements.
+
+**Predict:** a three-leg point passes terminal KCL. Add the same complex
+``h`` to every supplied cyclic coil current. Which observations change, and
+which ratings must be checked again?
+
+The independently evaluated powers are
+
+```math
+S_k=U_k\overline{I_k},\qquad P_k=\Re(S_k),\quad Q_k=\Im(S_k).
+```
+
+For the cyclic model,
+
+```math
+(I_k+h)-(I_{k-1}+h)=J_k,\qquad
+\sum_k U_k=0,\qquad
+\sum_k U_k\overline{(I_k+h)}=\sum_k S_k.
+```
+
+Thus terminal KCL and total injected complex power cannot reveal this internal
+circulation. Individual coil powers and current magnitudes can change. In the
+minimized three-leg fixture, adding ``h=0.5+0.2\mathrm j`` A preserves all
+reconstructed terminal injections, terminal KCL and aggregate power while
+violating three coil current and three coil apparent-power caps. The base
+point also has a terminal current larger than the corresponding coil cap;
+that cap is attached to the coil quantity, so it is satisfied. A terminal-current
+rating would be a different obligation.
+
+Two other fixture observations separate the current-cap rules:
+
+| Point | Authored cap change | Independent supplied-point outcome |
+|:--|:--|:--|
+| Single pair current ``0.4-0.1\mathrm j`` A | `i_max=[0.5,0.3]` A | Shared magnitude ``\sqrt{0.17}`` A exceeds 0.3 A; no separate return-current constraint is inferred |
+| Four-leg map `[n,z,x,y]`, phase-current sum ``0.3+0.1\mathrm j`` A | Final neutral cap 0.2 A | Neutral-return magnitude ``\sqrt{0.1}`` A exceeds the cap while all phase caps pass |
+
+The audit checks full finite signed `p_min/p_max/q_min/q_max` in W/var and
+nonnegative `s_max/i_max` in VA/A. Residuals are absolute SI excesses under
+`power_tol` or `current_tol`, not squared or per-unit magnitudes. Absent or
+explicit empty arrays author no native bound; empty arrays yield declared
+no-bound rows. Nonempty arrays must match the admitted branch/current domain.
+Optional reported `pg/qg` are separate consistency checks, never the limit
+oracle. A malformed array preserves independently known other limits and
+current contributions. A missing required current or voltage preserves known
+other branch failures but suppresses complete network KCL/power certification.
+No division by voltage or reconstruction from reported power is used. At zero
+voltage, nonzero cyclic current can pass zero P/Q/S caps while violating I caps.
+
+The package example `examples/ibr_injection_audit.jl` and fixture
+`test/data/linear_audit/ibr-injection.json` are included by the source-bound book
+companion. Analytic points pass for all three admitted topologies. Separate
+controlled native comparisons fix their dispatch, seed the full primal state
+and pass their scoped audits in SI and per-unit coordinates; the reversed
+single pair also passes. Attempts with the tighter shared/neutral caps retain
+their solver statuses, returned points and independent audits. In this locked
+run both report `LOCALLY_INFEASIBLE`; their returned-point audits fail one and
+four checks respectively. These are local outcomes, without a global
+infeasibility, unique-dispatch or initialization certificate.
+Floating-neutral, map-permutation, missing-observation, zero-voltage and
+malformed-declaration tests exercise the package's bounded evaluator. Native
+construction, extraction, auxiliary variables and coordinate recovery are test
+subjects; the audit uses none as its equation oracle.
+
+Topology applicability remains a separate question. Native construction accepts
+a single-phase ignored terminal suffix, a four-leg map omitting its neutral
+(with earth reference), other cyclic three-leg arities, and extra single-phase
+current entries. The bounded audit refuses those declarations. Static conformance
+and native construction remain distinct: a reduced-phase four-leg case may
+receive an arity warning even within the stated native audit slice. This work
+checks the **current native cyclic equations** for `THREE_LEG`; the broader
+physical topology review in package issue #95 remains unresolved. Agreement
+with these equations cannot settle that physical model question.
+
+Authored filters (`r_filter`, `x_filter`, `b_filter_shunt`), internal/grid-forming
+voltage fields, controller profiles, `p_avail`, prices, custom roles and DC
+coupling remain unassessed, including explicit zero/false filter declarations.
+The native filter-boundary comparison has unchanged variable/constraint counts
+with these fields present. Ignoring them is not evidence that a filter is ideal
+or adequate, so the audit refuses the declaration. False `dc_link_coupled` is
+admitted as the uncoupled default. Recognized `prime_mover` enum values are
+metadata without PV, battery-dynamics or STATCOM physical guarantees. Native
+power-flow construction omits `s_max` capability circles; supplied-point cap
+compliance does not establish that a chosen native problem enforced them.
+Selected objectives, custom constraints and local/global optimality remain
+outside the electrical point audit.
+
+The running input contains no IBR. Its retained default three generator
+`p_max` failures with zero unknowns, all 26 passing KCL rows and passing aggregate
+power, and its separate tighter electrical pass remain unchanged. Published
+integration, PSK implementation statuses and execution MCP remain separate.
+
+**Transfer exercise.** For each topology, state the meaning of a supplied
+`cri/cii`, write its ordered power voltage and reconstruct the terminal
+injections. Then decide which extra evidence is needed for a physical
+terminal-current rating, a filter model or a DC-coupled energy guarantee.
