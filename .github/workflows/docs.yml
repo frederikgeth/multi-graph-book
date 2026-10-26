@@ -67,6 +67,10 @@ jobs:
           python3 scripts/test_teaching_figures.py
           python3 scripts/test_review_handoff.py
           python3 scripts/test_prose_numbers.py
+          python3 scripts/test_prose_number_witnesses.py
+          python3 experiments/lessons/prose_number_witnesses.py --check
+          python3 experiments/lessons/recorded_generator_bound.py --check
+          python3 scripts/check_prose_numbers.py
           python3 review/critical-review-witnesses-2026-09-05.py
 
       - name: Check controlled callout vocabulary

@@ -1,5 +1,5 @@
 {
-  "artifact_count": 98,
+  "artifact_count": 99,
   "artifacts": [
     {
       "path": "experiments/generated/active-radiality-witness.json",
@@ -375,6 +375,11 @@
       "path": "experiments/generated/public-api-manifest.json",
       "sha256": "3c5049d672ff1e17de40d065db14f27cc3030edefe5b55951d2d5c4144832382",
       "size_bytes": 1590
+    },
+    {
+      "path": "experiments/generated/recorded-generator-bound.json",
+      "sha256": "e629a066814e796874a66d10a6e12a0b727445d2675151c212e8d7c0868c2d8d",
+      "size_bytes": 8938
     },
     {
       "path": "experiments/generated/running-network-cycle-space-witness.json",

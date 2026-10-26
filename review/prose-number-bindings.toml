@@ -477,3 +477,31 @@ source_sha256 = "db9ad3bd2beeadcdae61e73110ec9c92b22caabd6097dcaeb32674cfc2a279f
 source_pointer = "/values/switch_neutral_excess/value"
 derivation = "sqrt(1^2+(1/5)^2)-0.5 for the unchanged supplied switch current. Unit: A."
 # END GENERATED VERIFIED PROSE NUMBERS
+# BEGIN RECORDED GENERATOR BOUND NUMBERS
+
+[[binding]]
+path = "docs/src/cases/study-workbook.md"
+line = 52
+literal = "0.00997"
+source_artifact = "experiments/generated/recorded-generator-bound.json"
+source_sha256 = "e629a066814e796874a66d10a6e12a0b727445d2675151c212e8d7c0868c2d8d"
+source_pointers = ["/values/a/excess_W", "/values/b/excess_W", "/values/c/excess_W"]
+derivation = "Each of the three phase excesses is independently reconstructed from saved voltages, injection currents and p_max at the recorded candidate solver point; all must round to the displayed W value. Not a universal solver result."
+
+[[binding]]
+path = "docs/src/foundations/numerical-consequences.md"
+line = 605
+literal = "0.00997"
+source_artifact = "experiments/generated/recorded-generator-bound.json"
+source_sha256 = "e629a066814e796874a66d10a6e12a0b727445d2675151c212e8d7c0868c2d8d"
+source_pointers = ["/values/a/excess_W", "/values/b/excess_W", "/values/c/excess_W"]
+derivation = "Each of the three phase excesses is independently reconstructed from saved voltages, injection currents and p_max at the recorded candidate solver point; all must round to the displayed W value. Not a universal solver result."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+line = 1200
+literal = "0.00997"
+source_artifact = "experiments/generated/recorded-generator-bound.json"
+source_sha256 = "e629a066814e796874a66d10a6e12a0b727445d2675151c212e8d7c0868c2d8d"
+source_pointers = ["/values/a/excess_W", "/values/b/excess_W", "/values/c/excess_W"]
+derivation = "Each of the three phase excesses is independently reconstructed from saved voltages, injection currents and p_max at the recorded candidate solver point; all must round to the displayed W value. Not a universal solver result."

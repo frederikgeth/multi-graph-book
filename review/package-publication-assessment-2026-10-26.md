@@ -56,10 +56,13 @@ learning.
 2. Review the candidate's unsupported topologies, live-provider/filter/DC and
    physical-control boundaries. Do not treat a complete supported coverage row
    as a certificate for a larger problem.
-3. Resolve the book readiness queue: the repaired prose-number gate fails on 54
-   unbound occurrences. The queue is explicit; no numbers were rounded away or
-   given unrelated bindings. The comprehensive release gate is not claimed to
-   pass. The artifact inventory has been refreshed to 97 JSON files.
+3. The 54-occurrence book readiness queue is now resolved by 51 deterministic
+   arithmetic bindings and three bindings to a reconstructed recorded solver
+   observation. See `prose-number-resolution-2026-10-26.md` and its machine
+   record. The gate passes all 200 high-precision literals; 99 JSON artifacts
+   are inventoried. This closes that specific blocker, without claiming that
+   the comprehensive release gate passes. The earlier frozen handoff retains
+   its original open queue and requires this separate resolution addendum.
 4. Decide how to publish the package proposal. A concrete draft description is
    prepared in `package-candidate-draft-pr-2026-10-26.md`; publication and package
    CI have not occurred. The local Git handoff makes exact sources available
