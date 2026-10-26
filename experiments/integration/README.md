@@ -106,7 +106,7 @@ publishing the package commit, deliberately updating the ordinary integration
 pin and regenerating the federated pair. The native default-role source-neutral return and constant-power loads are now
 covered by the extended API, together with fixed ideal switches, bounded
 WYE/SINGLE_PHASE generator injections/limits, applicable phase-to-earth bus
-voltage bounds, explicit-neutral phase-to-neutral vpn_min/vpn_max arrays, applicable scalar neutral-to-earth vn_max and phase-to-phase vpp_min/vpp_max arrays, and fixed single-coil single_phase transformers with legacy
+voltage bounds, explicit-neutral phase-to-neutral vpn_min/vpn_max arrays, applicable scalar neutral-to-earth vn_max, phase-to-phase vpp_min/vpp_max arrays and centered intra-bus angle windows, and fixed single-coil single_phase transformers with legacy
 secondary excitation, plus two/three-winding WYE transformers with matched one-to-three phase-neutral coils and
 explicit pairwise leakage, plus matched three-terminal DELTA winding incidence/rotation. DELTA generators, generator costs/controllers, transformer
 variants/limits outside that narrow slice, voltage-dependent loads, other voltage families and objective
@@ -298,5 +298,28 @@ shunts do not skip these phase pairs. Tests cover complex norms, array
 permutations, relabeling, exact boundary/tolerance and native constraint incidence.
 Six running limits now pass; unknown rows fall 29 -> 28 because both declared
 fields formerly shared one field-coverage row. The intact generator cost still
-prevents complete KCL/power certification. Angle/sequence, objective/adequacy,
+prevents complete KCL/power certification. Sequence and branch-angle bounds, objective/adequacy,
 published integration, PSK status and execution MCP promotion remain separate.
+
+
+The companion additionally binds `examples/bus_angle_voltage_audit.jl` and
+`bus-angle-voltage.json`. Both scalar va_diff endpoints must be finite, ordered
+and strictly within (-pi/2,pi/2). Optional full-phase va_nom centers second-minus-
+first earth-phasor angles; absence means zero offset. Principal centered
+violations and the separate angle_tol are rad. Zero endpoints stay unassessed
+even though native bilinear rows can vanish there. Standalone nominal metadata,
+custom roles, branch-end angle bounds and sequence limits remain outside this
+slice. Missing endpoint state suppresses KCL/power certification.
+
+The same load phases 9 and 1+10im V have raw difference atan(10), centered on
+[0,pi/2] to -atan(0.1) ≈ -0.09966865 rad. Window [-0.15,0.05] passes; lower
+-0.05 or upper -0.12 fails while magnitude, KCL and power pass. Native SI,
+per-unit and common-rotation/branch-cut witnesses pass. The zero-endpoint point
+retains valid KCL/power but no angle compliance. Native primal inspection checks
+that distinction without providing the independent evaluator's oracle. Skipped
+first phases retain nominal indices (2,3); native skipped cases solve with
+incomplete audit acceptance. Tests cover direction reversal, cyclic symmetry,
+noncyclic reorderings, equal windows/antipodal exclusion, malformed data and
+Float64 range. The running input declares no bus-angle windows or va_nom, so
+28 unknown obligations and its indeterminate verdict remain unchanged. The
+published pin, PSK statuses and execution MCP are unchanged.

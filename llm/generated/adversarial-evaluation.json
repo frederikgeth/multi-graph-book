@@ -1019,8 +1019,8 @@
           "claim:FORMULATION-NODAL-001",
           "claim:TR-KRON-NEUTRAL-007",
           "claim:TR-KRON-NEUTRAL-004",
-          "claim:PRACTICE-IMPORT-001",
           "claim:TOPOLOGY-001",
+          "claim:PRACTICE-IMPORT-001",
           "claim:ARCH-DEGENERACY-001",
           "claim:FORMULATION-PORT-001",
           "claim:ARCH-PORT-002"
@@ -1236,7 +1236,7 @@
           "claim:FORMULATION-ZERO-001",
           "claim:TR-XFMR-010",
           "claim:NUMERICAL-003",
-          "claim:NUMERICAL-004"
+          "claim:LIMIT-CONVEXITY-001"
         ]
       },
       "lexical": {
@@ -2021,7 +2021,7 @@
           "claim:GROUND-SCOPE-004",
           "claim:ARCH-RECOVERY-001",
           "claim:TR-XFMR-007",
-          "claim:LOAD-CONNECTION-002"
+          "claim:TR-XFMR-005"
         ]
       },
       "mandatory_record_recall": 1.0,
@@ -2071,13 +2071,13 @@
           "claim:LIMIT-CONVEXITY-001",
           "claim:LIMIT-MULTIPLICITY-001",
           "claim:LIMIT-NEUTRAL-001",
-          "claim:TR-XFMR-006",
           "claim:ARCH-BLOCK-001",
+          "claim:TR-XFMR-006",
           "claim:NUMERICAL-001",
           "claim:TR-XFMR-007",
+          "claim:TR-KRON-NEUTRAL-001",
           "claim:KERNEL-OBSERVATION-001",
-          "claim:TR-PAR-002",
-          "claim:TR-KRON-NEUTRAL-001"
+          "claim:TR-PAR-002"
         ]
       },
       "lexical": {
@@ -2086,8 +2086,8 @@
         "top_10": [
           "claim:LIMIT-CONVEXITY-001",
           "claim:LIMIT-MULTIPLICITY-001",
-          "claim:LIMIT-NEUTRAL-001",
           "claim:ARCH-BLOCK-001",
+          "claim:LIMIT-NEUTRAL-001",
           "claim:NUMERICAL-001",
           "claim:TR-XFMR-006",
           "claim:TR-XFMR-007",
@@ -2233,8 +2233,8 @@
           "concept:rating-limit-constraint",
           "concept:ground-neutral-reference",
           "claim:GROUND-SCOPE-004",
-          "claim:GROUND-SCOPE-002",
           "claim:FORMULATION-NODAL-002",
+          "claim:GROUND-SCOPE-002",
           "claim:TR-KRON-NEUTRAL-001",
           "claim:ARCH-SURGERY-002",
           "claim:TR-KRON-NEUTRAL-002"
@@ -2450,7 +2450,7 @@
   ],
   "corpus": {
     "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-    "corpus_sha256": "63499b13877ed92fac0c9e5ddcfa8dbef149b8a81df8c1dfe63e741fa4fdb16f"
+    "corpus_sha256": "504cc28ddab0a2881d74be6ea17bc34d378e72d858776155ea842ab27c4a7160"
   },
   "inputs": {
     "adversarial_cases": {

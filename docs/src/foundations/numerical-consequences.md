@@ -545,7 +545,8 @@ The separate candidate `audit_solution` now adds default-role source neutral
 returns, implicit source grounding and WYE/SINGLE_PHASE/DELTA constant-power
 load equations, fixed ideal switches, a bounded WYE/SINGLE_PHASE generator
 domain, ordinary phase-to-earth and explicit-neutral phase-to-neutral voltage
-bounds, applicable scalar neutral-to-earth caps and phase-pair bounds, fixed
+bounds, applicable scalar neutral-to-earth caps, phase-pair bounds and centered
+intra-bus angle windows, fixed
 single-coil transformers,
 and matched WYE/DELTA winding-list equations with explicit rating-metadata
 semantics. The same running-network result now has **28 unassessed rows**
@@ -1314,7 +1315,7 @@ Malformed or nonfinite bounds, conversion overflow/underflow and unknown
 applicability remain **unassessed**, while otherwise known current contributions
 and checked violations stay visible. Missing required neutral voltage suppresses
 network KCL/power certification. Neutral-to-earth limits are covered below;
-phase-to-phase limits follow below, while angle and sequence remain separate
+phase-to-phase and bus-angle limits follow below, while sequence remains separate
 audit work. The existing running network has no PN-bound declarations, so its 28 unassessed obligations remain unchanged. The
 published integration pin and execution MCP surface are unchanged.
 
@@ -1483,7 +1484,8 @@ full pair index, observed magnitude and bound.
 The running network now has six checked phase-pair bounds at bus i6. Unknown
 rows fall from 29 to 28: the two unsupported fields previously shared one
 field-coverage row. The intact generator cost and incomplete KCL/power coverage
-keep its verdict **indeterminate**. Angle/sequence limits, objectives, physical
+keep its verdict **indeterminate**. Bus-angle limits follow below; sequence and
+branch-angle limits, objectives, physical
 adequacy, PSK implementation statuses, published integration and execution MCP
 remain separate obligations.
 
@@ -1491,3 +1493,92 @@ remain separate obligations.
 to its new position. Then ground c: identify the surviving pair and its full
 array index. Explain why a solver status, a neutral voltage or one phase
 magnitude cannot fill in a missing endpoint phasor.
+
+
+### [Centered bus angles need two nonzero phasors](@id bus-angle-voltage-audit)
+
+An intra-bus angle bound observes a direction, not a voltage magnitude. For
+phase indices ``i<j`` in the full declaration order, the candidate audit uses
+
+```math
+\Delta_{ij}=\phi_j-\phi_i,\qquad
+d_{ij}=\arg\left(\frac{V_j}{|V_j|}\overline{\left(\frac{V_i}{|V_i|}\right)}
+                  e^{-\mathrm j\Delta_{ij}}\right)\in(-\pi,\pi].
+```
+
+The optional `va_nom` array supplies ``\phi`` for all phases, excluding a
+supported n/N neutral when present. Without it the offset is zero; a nominal
+balanced arrangement is not inferred. Both `va_diff_min` and `va_diff_max`
+are scalar bounds in **rad**, shared by applicable pairs. The native formulation
+requires an ordered window strictly inside ``(-\pi/2,\pi/2)``. The independent
+checks report ``\max(0,\underline d-d_{ij})`` and
+``\max(0,d_{ij}-\overline d)`` with a separate `angle_tol` in rad.
+
+**Predict:** reuse the load phases 9 V and ``1+10\mathrm j`` V above. Their raw
+second-minus-first angle is ``\arctan(10)\approx1.47112767`` rad. With nominal
+angles ``[0,\pi/2]``, the centered deviation is instead
+``-\arctan(0.1)\approx-0.09966865`` rad. Which quantity does a declared centered
+window constrain?
+
+| Observation or obligation | Supplied value or window | Independent result |
+|:--|:--|:--|
+| Centered deviation | About −0.09966865 rad | From both complex phase states |
+| Centered window | [−0.15,0.05] rad | Pass |
+| Tightened lower bound | −0.05 rad | Fail by about 0.04966865 rad |
+| Tightened upper bound | −0.12 rad | Fail by about 0.02033135 rad |
+| Magnitude bounds, KCL and power at either mutation | Same supplied circuit | Pass |
+| Explicit raw window with no nominal array | [1.4,1.5] rad | Pass, for a different declared observation |
+
+A 2.8 rad common rotation of all voltages and currents preserves this circuit,
+its powers and the centered deviation. Individual phase angles cross the branch
+cut: subtracting their principal reports without circular reduction can introduce
+a full turn. The evaluator normalizes each endpoint separately and takes the
+principal argument of the centered product. This also avoids overflowing or
+underflowing the raw product of two available nonzero voltage phasors. It uses
+phase-to-earth directions, not phase-minus-neutral directions. A common voltage
+translation generally changes the angle observation, even though it preserves
+a phase-pair voltage difference.
+
+Zero is a distinct boundary. A separate no-load point has one receiving phase
+at 10 V and the other at zero. Its line/source currents are zero and KCL/power
+pass. Native bilinear angle rows also vanish, satisfying their closure; the
+angle of the zero endpoint is nevertheless undefined. The audit records the
+pair **unassessed**, with no invented zero deviation. Small nonzero supplied
+phasors have defined numerical directions; this check does not establish their
+robustness to measurement or numerical perturbations. Native SI bilinear
+residuals have V² units; per-unit rows use working coordinates. Neither is an
+angular excess in rad, so they cannot share an unqualified angular tolerance.
+
+**Inspect:** `examples/bus_angle_voltage_audit.jl` and
+`bus-angle-voltage.json`, invoked by the exact clean candidate companion, retain
+these points, both violations, absent nominal data, common rotation, malformed
+windows and missing state. Native SI, per-unit and rotated points pass their
+scoped audits. A tightened native attempt returns local infeasibility and fails
+the point audit; termination alone is not a global infeasibility certificate.
+Native primal-point and constraint-identity inspections are test subjects,
+not observations reused by the independent evaluator.
+
+Grounded/source-fixed phase pairs remain **unassessed**. Skipping a first phase
+preserves full nominal indices: the remaining pair uses entries 2 and 3.
+Finite grounding does not skip a phase; a grounded neutral is excluded from
+phase enumeration. Consistent native skipped-phase cases solve while retaining
+incomplete audit acceptance. Reversing pair direction negates the centered
+angle and reverses an asymmetric window. Noncyclic phase swaps require matching
+nominal-array permutations; cyclic symmetry can preserve nominal offsets modulo
+full turns. Equal window endpoints are supported: native equality plus a
+half-plane guard excludes the nonzero antipodal ray, which the independent
+principal-angle check rejects directly.
+
+Missing required endpoints, one-sided/reversed/singular windows, malformed
+nominal arrays and unrepresentable data stay unknown. Known currents and checked
+violations remain visible; missing required state suppresses complete KCL/power
+certification. Standalone `va_nom`, custom roles, branch-end angle and sequence
+bounds remain outside this slice. The running network declares no bus-angle
+window, so its **28 unassessed obligations** and **indeterminate** verdict are
+unchanged. Published integration, PSK statuses, execution MCP, objective and
+physical adequacy remain separate.
+
+**Transfer exercise.** Reverse the two phases in the asymmetric centered window
+above. Give the new nominal order, deviation and bound endpoints. Then set one
+endpoint voltage to zero and explain why successful bilinear rows or `atan(0,0)`
+cannot supply its missing direction.
