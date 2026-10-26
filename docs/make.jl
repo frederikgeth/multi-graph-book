@@ -217,6 +217,7 @@ const PAGES_HTML = [
         "Maps between representation frameworks (reference card)" => "foundations/representation-maps.md",
     ],
     "Physical and computational reference" => [
+        "Device and bound audit reference" => "reference/numerical-audit-reference.md",
         "Translation traps: graphs, circuits, and power-system language" => "foundations/translation-traps.md",
         "Cycles, parallelism, and radial structure" => "foundations/cycles-parallelism-radiality.md",
         "Node--breaker, bus--breaker, and topology processing" => "foundations/node-breaker-topology-processing.md",

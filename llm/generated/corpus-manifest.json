@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "cf82f131e612548532884fa2d2d4e68c263c397b87ba219089ad79184aec6ef5",
+  "corpus_sha256": "6f2c58fd787a6ca92c6fccda8867ba671c6558c4b4adf218abceece59086e88e",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -10,17 +10,17 @@
       "docs/src/reference/vocabulary-indexes.md"
     ],
     "excluded_reason": "Generated navigation pages duplicate source ledgers and are excluded from retrieval; their upstream canonical sources remain included.",
-    "included_doc_count": 78
+    "included_doc_count": 79
   },
   "evaluation_case_count": 108,
   "heldout_case_count": 33,
   "misconception_count": 34,
-  "record_count": 1015,
+  "record_count": 1029,
   "record_counts": {
     "claim_bundle": 121,
     "concept_bundle": 18,
     "scientific_knowledge": 18,
-    "section": 858
+    "section": 872
   },
   "release": {
     "external_reviewed_claims": 0,
@@ -85,7 +85,7 @@
     },
     {
       "path": "docs/src/cases/study-workbook.md",
-      "sha256": "a0eb0fac3c9f7141bc47485984d28c0470389a76f8381fcbdb670aedf6223562"
+      "sha256": "d39d046380348c6bdcfddeb0d568b1c96d7101688f777a6d02b67b2a4356f0c7"
     },
     {
       "path": "docs/src/cases/transformer-tap-ac-decision.md",
@@ -145,7 +145,7 @@
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
-      "sha256": "66ee1e18f50f3590f117e5e96db4a7e057e7920c08fff8e340897ca7d7bda80f"
+      "sha256": "5ede1d3885cc5befd0c12cfbb7c63b97d62fe1cd8fa2238c6085ae176c234c20"
     },
     {
       "path": "docs/src/foundations/orientation-terminal-power.md",
@@ -201,7 +201,7 @@
     },
     {
       "path": "docs/src/literature/development-decision-log.md",
-      "sha256": "119a6c8ddf4e8fac1036c23a712375e950d02b59e455a99eb4fd1aed18e501a4"
+      "sha256": "92f96dbc156ef6c06f95ea1da912a8964a43aaf683fec303f39ba37007f0d68c"
     },
     {
       "path": "docs/src/literature/literature-map.md",
@@ -242,6 +242,10 @@
     {
       "path": "docs/src/reference/federated-knowledge-trace.md",
       "sha256": "727fc3b267a477d1b92e9dea7482d4ffcc7e5e8f5c17137a9d0705fd0548a218"
+    },
+    {
+      "path": "docs/src/reference/numerical-audit-reference.md",
+      "sha256": "fa09c85eae4c88ed37336a34e087d290257902adf01f75e4c6aa7d2a712f53b9"
     },
     {
       "path": "docs/src/reference/references.md",
@@ -349,7 +353,7 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "53577649c6172a76baaf4e32c9390a3b74d0ff96ae8c44adf0f951bcc1a36233"
+      "sha256": "34d42c6cef727391e8b8cea6f878c1329809526e3a3093efec0758d362d03a54"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",

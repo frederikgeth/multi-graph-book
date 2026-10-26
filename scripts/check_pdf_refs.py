@@ -10,6 +10,19 @@ REF = re.compile(r"@ref\s+([A-Za-z][A-Za-z0-9_-]*)")
 ANCHOR = re.compile(r"@id\s+([A-Za-z][A-Za-z0-9_-]*)")
 PAGE = re.compile(r'=>\s*"([^"]+\.md)"')
 
+# Public section ids moved out of the selective PDF in review repair R3.
+# Keep canonical reference destinations and old browser-fragment entry points.
+AUDIT_REFERENCE = "reference/numerical-audit-reference.md"
+AUDIT_LEGACY = "foundations/numerical-consequences.md"
+AUDIT_ANCHORS = (
+    "generator-voltage-audit", "fixed-transformer-audit", "winding-list-audit",
+    "multiphase-winding-audit", "delta-winding-audit", "winding-rating-metadata",
+    "phase-neutral-voltage-audit", "neutral-earth-voltage-audit", "phase-phase-voltage-audit",
+    "bus-angle-voltage-audit", "sequence-voltage-audit", "branch-angle-voltage-audit",
+    "generator-cost-scope-audit", "delta-generator-injection-audit", "source-price-reference-audit",
+    "source-pq-limit-audit", "ibr-injection-audit", "ibr-price-scope-audit",
+)
+
 
 def route(kind):
     source = MAKE.read_text()
@@ -35,6 +48,16 @@ def find_pdf_reference_errors():
     for page in sorted(omitted_from_html):
         errors.append(f"canonical page lost from HTML route: {page.relative_to(ROOT)}")
     anchors = {anchor: page for page in html if page.is_file() for anchor in ANCHOR.findall(page.read_text())}
+    audit_reference = ROOT / "docs/src" / AUDIT_REFERENCE
+    legacy_text = (ROOT / "docs/src" / AUDIT_LEGACY).read_text()
+    if audit_reference in pages:
+        errors.append("exhaustive audit reference must remain in HTML, outside the core PDF")
+    for anchor in AUDIT_ANCHORS:
+        if anchors.get(anchor) != audit_reference:
+            errors.append(f"audit section lost its canonical reference destination: {anchor}")
+        marker = f'<a id="{anchor}" data-reference-page="{AUDIT_REFERENCE}"></a>'
+        if marker not in legacy_text or f"@ref {anchor})" not in legacy_text:
+            errors.append(f"audit section lost its legacy fragment/continuation link: {anchor}")
     source = MAKE.read_text()
     if "PDF_REFERENCE_FALLBACK" not in source or "link::Documenter.PageLink" not in source:
         errors.append("PDF-to-HTML reference rendering is missing")

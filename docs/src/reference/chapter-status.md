@@ -61,6 +61,7 @@ verified empirical result.
 | [Search run: coupled multi-voltage corridors](../literature/search-runs/2026-08-25-coupled-multivoltage-corridors.md) | generated search-run record. | 0 | — | `untracked` | — |
 | [Evidence map and verification summary](../reference/evidence-map.md) | generated reference navigation and evidence-gap summary. | 0 | — | `untracked` | — |
 | [Federated scientific knowledge: end-to-end trace](../reference/federated-knowledge-trace.md) | maintained cross-repository implementation trace and scope boundary. | 1 | empirical | `self-checked` | Rerun both pinned candidates on the current corpus and evaluate domain-adapted alternatives before making a current or general neural-retrieval comparison. |
+| [Device and bound audit reference](../reference/numerical-audit-reference.md) | scoped local-candidate applicability reference; implementation comparisons, not external scientific review or a published-package API promise. | 0 | — | `untracked` | — |
 | [References](../reference/references.md) | bibliography and source register. | 0 | — | `untracked` | — |
 | [Terminology](../reference/terminology.md) | maintained glossary and translation aid. | 0 | — | `untracked` | — |
 | [Cross-community vocabulary indexes](../reference/vocabulary-indexes.md) | generated bidirectional vocabulary index; not a standards crosswalk. | 0 | — | `untracked` | — |

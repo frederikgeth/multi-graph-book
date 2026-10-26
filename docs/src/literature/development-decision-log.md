@@ -505,3 +505,55 @@ multi-intent completeness or a deployment error rate.
 Revisit with separately collected questions and responsive source evidence.
 Preserve known routes and negative cases; do not tune thresholds or relabel
 expected outcomes merely to improve reported metrics.
+
+## DLOG-0011 — Give exhaustive audit traces an explicit reference role
+
+- **Date:** 2026-10-26
+- **Status:** accepted
+- **Scope:** teaching hierarchy, PDF selection and retrieval continuity; review R3/R4
+
+### Question
+
+How can the numerical chapter teach verification without turning its closing
+scope into a long device-by-device development catalogue?
+
+### Options considered
+
+- leave every applicability trace in the core PDF;
+- remove the traces when shortening the chapter;
+- retain the reasoning and representative failures in the core, with a named
+  HTML reference containing every detailed trace.
+
+### Decision
+
+Move the 18 complete device/bound sections to the HTML audit reference. Keep
+their canonical section IDs, browser compatibility anchors and continuation
+links in the original chapter, and source-bound corpus access. State the PDF
+selection explicitly. Label the workbook's replay, published integration and
+local candidate by revision, API, returned point and bounded verdict.
+
+### Reason
+
+A coverage argument needs observations, tolerances, reconstruction boundaries
+and discriminating failures before exhaustive field conventions. Readers also
+need to distinguish different runs rather than interpret their verdicts as
+contradictory judgments of one returned point.
+
+### Evidence
+
+The October 26 review records R3/R4. Route, rendered-anchor and corpus checks
+protect all 18 moved sections. The original detailed bodies are retained with
+only relative-link relocation; profile revisions and historical evidence remain
+unchanged. Reader-facing questions and transfer tasks connect the core examples.
+
+### Known downside
+
+The standalone PDF requires the complete HTML library for exhaustive audit
+details. Structural and rendering checks do not measure reader learning or
+replace domain review; the candidate remains local and unpublished.
+
+### Conditions for revisiting
+
+Use reader/domain feedback to choose a different teaching/reference split.
+Preserve evidence scope, old entry points and corpus coverage, and make any
+future PDF selection change explicit.

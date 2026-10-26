@@ -16,6 +16,8 @@ import subprocess
 import tempfile
 from pathlib import Path
 
+from check_pdf_refs import AUDIT_ANCHORS, AUDIT_LEGACY, AUDIT_REFERENCE
+
 ROOT = Path(__file__).resolve().parents[1]
 HTML_ROOT = ROOT / "docs/build"
 parser = argparse.ArgumentParser(description=__doc__)
@@ -32,6 +34,7 @@ EXPECTED_HTML = [
     "literature/review-protocol-and-evidence-status.html",
     "literature/search-runs/2026-08-14-seed-batch.html",
     "reference/knowledge-base-index.html",
+    "reference/numerical-audit-reference.html",
 ]
 
 TOC_PAGES = [
@@ -76,6 +79,18 @@ for relative in EXPECTED_HTML:
 html_files = list(HTML_ROOT.rglob("*.html"))
 if len(html_files) < 60:
     fail(f"HTML build contains only {len(html_files)} pages")
+
+legacy_html = resolve_html(AUDIT_LEGACY.replace(".md", ".html")).read_text()
+reference_html = resolve_html(AUDIT_REFERENCE.replace(".md", ".html")).read_text()
+legacy_hrefs = [html.unescape(target) for _, target in
+                re.findall(r'\bhref\s*=\s*([\"\'])(.*?)\1', legacy_html, re.S)]
+for anchor in AUDIT_ANCHORS:
+    for source in (legacy_html, reference_html):
+        if f'id="{anchor}"' not in source:
+            fail(f"rendered audit section lost a legacy or canonical anchor: {anchor}")
+    if not any("numerical-audit-reference" in target and target.endswith("#" + anchor)
+               for target in legacy_hrefs):
+        fail(f"rendered audit section lost its continuation link: {anchor}")
 
 image_count = 0
 for path in html_files:
@@ -130,9 +145,12 @@ with tempfile.TemporaryDirectory(prefix="multi-graph-book-pdf-") as temporary:
     # current manuscript's control chapter. Check body content, not timestamps.
     compact_text = re.sub(r"[^a-z0-9]", "", body_text.lower())
     for heading in ("IBR control applicability", "Volt-var", "Volt-watt", "Combined droop",
-                    "Native monitor sharing retains controller-specific inputs"):
+                    "Native monitor sharing retains controller-specific inputs",
+                    "Choose the evidence generation", "Declare the observations before calculating them"):
         if re.sub(r"[^a-z0-9]", "", heading.lower()) not in compact_text:
-            fail(f"current control teaching content is missing from the PDF: {heading}")
+            fail(f"current teaching content is missing from the PDF: {heading}")
+    if "Neutral-to-earth voltage does not determine neutral current" in body_text:
+        fail("exhaustive audit reference was copied back into the selective PDF")
 
     if shutil.which("pdftoppm") is not None:
         output = Path(temporary) / "page"

@@ -112,6 +112,18 @@ def main() -> int:
         errors.append("generated corpus manifest is missing")
 
     records = load_records(errors)
+    # Moving exhaustive traces out of the PDF must preserve their source-bound
+    # corpus access; browser compatibility anchors are not substitute evidence.
+    from check_pdf_refs import AUDIT_ANCHORS, AUDIT_REFERENCE
+    reference_path = "docs/src/" + AUDIT_REFERENCE
+    reference_anchors = {
+        record.get("source", {}).get("anchor") for record in records
+        if record.get("record_type") == "section"
+        and record.get("source", {}).get("path") == reference_path
+    }
+    for anchor in AUDIT_ANCHORS:
+        fail_if(anchor not in reference_anchors,
+                f"relocated audit section missing from corpus: {anchor}", errors)
     record_ids = [record.get("record_id") for record in records]
     duplicates = sorted(record_id for record_id, count in Counter(record_ids).items() if count > 1)
     fail_if(bool(duplicates), f"duplicate corpus record IDs: {duplicates}", errors)
