@@ -1,6 +1,6 @@
 {
   "corpus_id": "multi-graph-book-mgb-2026-08-17-internal-rc",
-  "corpus_sha256": "d9ae1977134edb06b16fb45de4d1ae6fed3becfa399cdd7017645d003bb52440",
+  "corpus_sha256": "369a58a85a88c4120ee1e90a343a81f9ab9d6af2a8ff72958e7edaaf6d40b28e",
   "document_selection": {
     "excluded_doc_count": 4,
     "excluded_docs": [
@@ -49,7 +49,7 @@
     },
     {
       "path": "docs/src/cases/checking-ibr-operating-point.md",
-      "sha256": "227b3c277d9e6988a89b639ebc5c00a2660c207d4c2f2507e047b4a72fb470fb"
+      "sha256": "17614b8414689e75a8c0dd97fd3de699dc52806a9796c73cefc1793936778573"
     },
     {
       "path": "docs/src/cases/coupled-multivoltage-corridor.md",
@@ -125,7 +125,7 @@
     },
     {
       "path": "docs/src/foundations/ibr-power-factor-controls.md",
-      "sha256": "396816552cf6c266029d180c0306eb8e0a3be7a139a02e8de4c085c1e6e67af7"
+      "sha256": "15faf5cc0a648c257a41e03de56c55c0f27ce343a67db5ea76c37eafb56a26d9"
     },
     {
       "path": "docs/src/foundations/impedance-fidelity-ladder.md",
@@ -357,7 +357,7 @@
     },
     {
       "path": "generated/scientific-knowledge-manifest.json",
-      "sha256": "840545023967744bda3edf9b1dea813f58a8ed3251ab1d0ad4f02186bd10209c"
+      "sha256": "62414d5c3da54a97b1aa47ce1b7f5f645bd0101e90f620a574db305b1ac2cb9e"
     },
     {
       "path": "generated/scientific_knowledge.jsonl",
@@ -373,7 +373,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "f0724471dfd472cbb39d74011d006c1419ede3cee8087807bdeeb3f1c99e60e8"
+      "sha256": "d5cb84ec073330ed8f1f086f0ae7c1c9d3ed97371cca186bd4f6a93941f169dd"
     },
     {
       "path": "vocabulary/vocabulary.toml",

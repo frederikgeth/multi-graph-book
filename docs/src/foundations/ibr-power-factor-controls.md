@@ -100,6 +100,12 @@ For P = 4 W and f = 0.8, the constant-PF equality gives Q = −3 var. That point
 also lies on the m = 0.8 minimum-PF boundary. It violates `q_min=-2` by 1 var.
 Clipping Q to −2 at P = 4 would violate the constant-PF equality instead.
 
+Because f = m here, the whole constant-PF ray is that boundary. In floating
+point, the minimum-PF verdict at any point on the ray therefore rests on
+`power_tol`, not on a margin. The [converter
+tutorial](@ref checking-ibr-operating-point) uses f = 12/13 > m so that the
+ray lies strictly inside the envelope.
+
 | Supplied point or native comparison | Observation |
 |:--|:--|
 | P = 4 W, Q = −3 var, f = m = 0.8 | Both controls pass; `q_min=-2` fails by 1 var |

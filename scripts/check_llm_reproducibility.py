@@ -18,6 +18,7 @@ CHECKS = [
     [PYTHON, "scripts/evaluate_llm_retrieval.py", "--check"],
     [PYTHON, "scripts/generate_llm_access_fixtures.py", "--check"],
     [PYTHON, "scripts/evaluate_llm_adversarial.py", "--check"],
+    [PYTHON, "scripts/evaluate_router_scope.py", "--check"],
     [PYTHON, "scripts/check_llm_routes.py"],
     [PYTHON, "scripts/test_mcp_protocol.py"],
     [PYTHON, "scripts/test_integration_profile.py"],

@@ -48,7 +48,7 @@ class ProseNumberTests(unittest.TestCase):
             registry=root/'bindings.toml'
             def check(pointer):
                 extra= 'source_pointer = '+json.dumps(pointer) if isinstance(pointer,str) else 'source_pointers = '+json.dumps(pointer)
-                registry.write_text('schema_version = "0.1.0"\n[[binding]]\npath = "docs/lesson.md"\nline = 1\nliteral = "0.1234"\nsource_artifact = "artifacts/evidence.json"\nsource_sha256 = '+json.dumps(checker.sha256(artifact))+'\nderivation = "selected observation"\n'+extra+'\n')
+                registry.write_text('schema_version = "0.2.0"\n[[binding]]\npath = "docs/lesson.md"\nsection = "_preamble"\nliteral = "0.1234"\nsource_artifact = "artifacts/evidence.json"\nsource_sha256 = '+json.dumps(checker.sha256(artifact))+'\nderivation = "selected observation"\n'+extra+'\n')
                 with patch.multiple(checker,ROOT=root,DOCS=docs,ARTIFACTS=artifacts,BINDINGS=registry),redirect_stdout(io.StringIO()):
                     return checker.main()
             self.assertEqual(check('/selected'),1)
@@ -64,6 +64,39 @@ class ProseNumberTests(unittest.TestCase):
             for k in range(4):
                 with self.assertRaises((ValueError,checker.InvalidOperation)):
                     checker.pointer_values({'source_pointer':f'/bad/{k}'},artifact)
+
+    def run_registry(self, lesson, bindings):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);docs=root/'docs';docs.mkdir();artifacts=root/'artifacts';artifacts.mkdir()
+            (docs/'lesson.md').write_text(lesson)
+            artifact=artifacts/'evidence.json';artifact.write_text(json.dumps({'value':'0.1234'}))
+            registry=root/'bindings.toml'
+            entries=''.join('[[binding]]\npath = "docs/lesson.md"\nliteral = "0.1234"\n'+extra
+                            +'source_artifact = "artifacts/evidence.json"\nsource_sha256 = '+json.dumps(checker.sha256(artifact))
+                            +'\nsource_pointer = "/value"\nderivation = "selected observation"\n' for extra in bindings)
+            registry.write_text('schema_version = "0.2.0"\n'+entries)
+            with patch.multiple(checker,ROOT=root,DOCS=docs,ARTIFACTS=artifacts,BINDINGS=registry),redirect_stdout(io.StringIO()):
+                return checker.main()
+
+    def test_binding_survives_edits_above_its_line(self):
+        binding=['section = "result"\n']
+        self.assertEqual(self.run_registry('# Intro\n\n## Result\nValue 0.1234.\n',binding),0)
+        self.assertEqual(self.run_registry('# Intro\nNew paragraph.\n\nMore text.\n\n## Result\nValue 0.1234.\n',binding),0)
+        self.assertEqual(self.run_registry('# Intro\n\n## [Result](@id result)\nValue 0.1234.\n',binding),0)
+        # Moving the literal to another section is a meaningful change and must fail.
+        self.assertEqual(self.run_registry('# Intro\nValue 0.1234.\n\n## Result\nNone.\n',binding),1)
+
+    def test_repeated_literal_requires_explicit_occurrence(self):
+        text='## Result\nFirst 0.1234, then 0.1234 again.\n'
+        self.assertEqual(self.run_registry(text,['section = "result"\n','section = "result"\noccurrence = 2\n']),1)
+        self.assertEqual(self.run_registry(text,['section = "result"\noccurrence = 1\n','section = "result"\noccurrence = 2\n']),0)
+
+    def test_line_keys_are_rejected(self):
+        self.assertEqual(self.run_registry('## Result\nValue 0.1234.\n',['section = "result"\nline = 2\n']),1)
+
+    def test_fenced_code_headings_do_not_change_sections(self):
+        text='## Result\n```sh\n# not a heading\n```\nValue 0.1234.\n'
+        self.assertEqual(self.run_registry(text,['section = "result"\n']),0)
 
 
 if __name__ == "__main__":

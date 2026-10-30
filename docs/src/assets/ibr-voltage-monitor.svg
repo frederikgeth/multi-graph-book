@@ -35,6 +35,6 @@
 <text x="575" y="347" class="" text-anchor="start">PN requests 0 var.</text>
 <text x="575" y="389" class="" text-anchor="start">PG requests −12 var.</text>
 <text x="545" y="452" class="" text-anchor="start">Same supplied voltages; different monitors.</text>
-<text x="30" y="550" class="small" text-anchor="start">Breakpoints: [8, 9, 11, 12] V; fractions: [−0.6, 0.44]; branch Smax = 20 VA.</text>
+<text x="30" y="550" class="small" text-anchor="start">Breakpoints: [8, 9, 11, 12] V; q_limits = [q_absorb, q_inject] = [−0.6, 0.44]; Smax = 20 VA.</text>
 <text x="30" y="590" class="small" text-anchor="start">These are requested PWL targets. Smoothing, capability and VI-derived Q are separate checks.</text>
 </svg>

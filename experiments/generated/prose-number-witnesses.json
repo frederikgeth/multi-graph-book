@@ -19,7 +19,7 @@
     "docs/src/foundations/circuit-formulations-and-lowering.md": "b15e36e84002a5b20fdf1c57ea58fa968e17a6cd00f129691d0cc26c9dee4ed9",
     "docs/src/foundations/numerical-consequences.md": "d47d7ee1602a28321e413f19a7c8a94f7ece2e0465b1b608b853d9b7b649efdd",
     "docs/src/reference/numerical-audit-reference.md": "fa09c85eae4c88ed37336a34e087d290257902adf01f75e4c6aa7d2a712f53b9",
-    "experiments/lessons/prose_number_witnesses.py": "178eddc1fdd4354e7fb6eca1804f006eb8c31615929ac6857bc3120452057230"
+    "experiments/lessons/prose_number_witnesses.py": "7ad75762ea86c445d0b674e67b4fe8ea98b34e8086ab6a1bce1b400b46e4ac2f"
   },
   "values": {
     "branch_upper_angle_excess": {

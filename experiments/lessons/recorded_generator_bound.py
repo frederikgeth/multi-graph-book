@@ -74,10 +74,14 @@ def main():
     output = json.dumps(artifact(), indent=2, sort_keys=True)+'\n'
     digest = hashlib.sha256(output.encode()).hexdigest()
     bindings = MARKER
-    for path, line in [('docs/src/cases/study-workbook.md', 52),
-                       ('docs/src/foundations/numerical-consequences.md', 605),
-                       ('docs/src/reference/numerical-audit-reference.md', 1200)]:
-        bindings += ('\n[[binding]]\n'+f'path = "{path}"\nline = {line}\nliteral = "0.00997"\n'
+    # (path, section anchor, occurrence if the literal repeats in that section)
+    for path, section, occurrence in [
+            ('docs/src/cases/study-workbook.md', 'running-case-evidence-generations', None),
+            ('docs/src/foundations/numerical-consequences.md', 'extending-coverage-without-changing-the-older-api', None),
+            ('docs/src/reference/numerical-audit-reference.md', 'generator-cost-scope-audit', None),
+    ]:
+        location = f'section = "{section}"\n' + (f'occurrence = {occurrence}\n' if occurrence else '')
+        bindings += ('\n[[binding]]\n'+f'path = "{path}"\nliteral = "0.00997"\n' + location +
                      'source_artifact = "experiments/generated/recorded-generator-bound.json"\n'
                      f'source_sha256 = "{digest}"\n'
                      'source_pointers = ["/values/a/excess_W", "/values/b/excess_W", "/values/c/excess_W"]\n'

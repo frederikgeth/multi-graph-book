@@ -79,6 +79,39 @@ def validate_common_record(record: dict, release: dict, errors: list[str]) -> No
         fail_if(file_hash(source_path) != source_hash, f"{record_id}: stale source hash", errors)
 
 
+ROUTER_SCOPE_FIELDS = {"rationale", "require_token_groups", "exclude_tokens",
+                       "require_query", "curated_phrase_bypass"}
+
+
+def validate_router_scope(item_id: str, scope, errors: list[str]) -> None:
+    """Router gates are scientific scope data; keep them typed and compilable."""
+    if scope is None:
+        return
+    if not isinstance(scope, dict):
+        errors.append(f"{item_id}: router_scope must be a table")
+        return
+    unknown = set(scope) - ROUTER_SCOPE_FIELDS
+    fail_if(bool(unknown), f"{item_id}: unknown router_scope fields {sorted(unknown)}", errors)
+    fail_if(not isinstance(scope.get("rationale"), str) or len(scope.get("rationale", "")) < 20,
+            f"{item_id}: router_scope needs a rationale", errors)
+    groups = scope.get("require_token_groups", [])
+    fail_if(not isinstance(groups, list), f"{item_id}: require_token_groups must be a list", errors)
+    patterns = [*(groups if isinstance(groups, list) else []),
+                *(scope[key] for key in ("exclude_tokens", "require_query") if key in scope)]
+    for pattern in patterns:
+        if not isinstance(pattern, str) or not pattern:
+            errors.append(f"{item_id}: router_scope patterns must be nonempty strings")
+            continue
+        try:
+            re.compile(pattern)
+        except re.error as error:
+            errors.append(f"{item_id}: invalid router_scope regex {pattern!r}: {error}")
+    bypass = scope.get("curated_phrase_bypass", True)
+    fail_if(not isinstance(bypass, bool), f"{item_id}: curated_phrase_bypass must be boolean", errors)
+    fail_if(not groups and "require_query" not in scope and "exclude_tokens" not in scope,
+            f"{item_id}: router_scope declares no gate", errors)
+
+
 def main() -> int:
     errors: list[str] = []
     try:
@@ -235,6 +268,7 @@ def main() -> int:
         fail_if(bool(unknown_concepts), f"{item_id}: unknown mandatory concepts {sorted(unknown_concepts)}", errors)
         for path in item.get("source_paths", []):
             fail_if(not (ROOT / path).is_file(), f"{item_id}: missing source path {path}", errors)
+        validate_router_scope(item_id, item.get("router_scope"), errors)
         for claim_id in item.get("mandatory_claim_ids", []):
             fail_if(item_id not in claim_records.get(claim_id, {}).get("misconception_ids", []),
                     f"{item_id}: not linked from mandatory claim {claim_id}", errors)

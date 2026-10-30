@@ -201,7 +201,7 @@
     },
     {
       "path": "llm/README.md",
-      "sha256": "3c160568512e6b58be6f91bdcf7e1b203ccb490d2f46722637a2f383883a3d48"
+      "sha256": "918d22207120550a8ebc0ba7763aca89aad8e6b700e2a6e5cf7206c290cb1197"
     },
     {
       "path": "llm/generated/neural-retrieval-negative-result.json",
@@ -209,7 +209,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "f0724471dfd472cbb39d74011d006c1419ede3cee8087807bdeeb3f1c99e60e8"
+      "sha256": "d5cb84ec073330ed8f1f086f0ae7c1c9d3ed97371cca186bd4f6a93941f169dd"
     },
     {
       "path": "schemas/power-system-knowledge.schema.json",

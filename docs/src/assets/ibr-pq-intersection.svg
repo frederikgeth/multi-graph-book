@@ -1,57 +1,60 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="710" viewBox="0 0 1100 710">
-<title>Constant PF, minimum PF and a Q cap</title><desc>Single-pair injection plane. Minimum PF 4/5 gives P &gt;= 0 and |Q| &lt;= 3P/4. Constant PF +4/5 selects Q = -3P/4. The Q &gt;= -2 var cap restricts this ray to 0 &lt;= P &lt;= 8/3 W. A=(4,-3) fails the cap; B=(4,-2) fails constant PF; C=(8/3,-2) satisfies all three.</desc>
+<title>Constant PF, minimum PF and a Q cap</title><desc>Single-pair injection plane on equal P and Q scales. Minimum PF 4/5 gives P &gt;= 0 and |Q| &lt;= 3P/4. Constant PF +12/13 selects Q = -5P/12, strictly inside that wedge. The Q &gt;= -2 var cap restricts this ray to 0 &lt;= P &lt;= 24/5 W. A=(12,-5) fails the cap; B=(12,-2) fails constant PF; C=(24/5,-2) satisfies all three.</desc>
 <rect width="1100" height="710" fill="white"/>
 <style>text{font-family:Arial,sans-serif;fill:#17212b;font-size:20px}.title{font-size:29px;font-weight:bold}.head{font-size:23px;font-weight:bold}.small{font-size:18px}.math{font-family:DejaVu Sans,Arial,sans-serif;font-size:22px}</style>
 <defs><marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#17212b"/></marker></defs>
 <text x="30" y="43" class="title" text-anchor="start">Constant PF, minimum PF and a Q cap</text>
 <text x="30" y="80" class="small" text-anchor="start">One branch; RMS power; positive P and Q inject into the network.</text>
-<polygon points="90.0,345.0 390.0,120.0 390.0,570.0" fill="#e5f2f8"/>
-<line x1="90.0" y1="345.0" x2="390.0" y2="120.0" stroke="#245b7a" stroke-width="2"/>
-<line x1="90.0" y1="345.0" x2="390.0" y2="570.0" stroke="#8a4f13" stroke-width="3" stroke-dasharray="9 6"/>
-<line x1="90.0" y1="465.0" x2="408.0" y2="465.0" stroke="#8a3232" stroke-width="2" stroke-dasharray="9 6"/>
-<line x1="90.0" y1="585.0" x2="90.0" y2="105.0" stroke="#17212b" stroke-width="1.5" marker-end="url(#arrow)"/>
-<line x1="72.0" y1="345.0" x2="414.0" y2="345.0" stroke="#17212b" stroke-width="1.5" marker-end="url(#arrow)"/>
+<polygon points="90.0,345.0 350.0,150.0 480.0,150.0 480.0,540.0 350.0,540.0" fill="#e5f2f8"/>
+<line x1="90.0" y1="345.0" x2="350.0" y2="150.0" stroke="#245b7a" stroke-width="2"/>
+<line x1="90.0" y1="345.0" x2="350.0" y2="540.0" stroke="#245b7a" stroke-width="2"/>
+<line x1="90.0" y1="345.0" x2="480.0" y2="507.5" stroke="#8a4f13" stroke-width="3" stroke-dasharray="9 6"/>
+<line x1="90.0" y1="405.0" x2="489.0" y2="405.0" stroke="#8a3232" stroke-width="2" stroke-dasharray="9 6"/>
+<line x1="90.0" y1="555.0" x2="90.0" y2="135.0" stroke="#17212b" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="81.0" y1="345.0" x2="498.0" y2="345.0" stroke="#17212b" stroke-width="1.5" marker-end="url(#arrow)"/>
 <line x1="150.0" y1="341.0" x2="150.0" y2="349.0" stroke="#17212b" stroke-width="1"/>
-<text x="150.0" y="370.0" class="small" text-anchor="middle">1</text>
+<text x="150.0" y="333.0" class="small" text-anchor="middle">2</text>
 <line x1="210.0" y1="341.0" x2="210.0" y2="349.0" stroke="#17212b" stroke-width="1"/>
-<text x="210.0" y="370.0" class="small" text-anchor="middle">2</text>
+<text x="210.0" y="333.0" class="small" text-anchor="middle">4</text>
 <line x1="270.0" y1="341.0" x2="270.0" y2="349.0" stroke="#17212b" stroke-width="1"/>
-<text x="270.0" y="370.0" class="small" text-anchor="middle">3</text>
+<text x="270.0" y="333.0" class="small" text-anchor="middle">6</text>
 <line x1="330.0" y1="341.0" x2="330.0" y2="349.0" stroke="#17212b" stroke-width="1"/>
-<text x="330.0" y="370.0" class="small" text-anchor="middle">4</text>
+<text x="330.0" y="333.0" class="small" text-anchor="middle">8</text>
 <line x1="390.0" y1="341.0" x2="390.0" y2="349.0" stroke="#17212b" stroke-width="1"/>
-<text x="390.0" y="370.0" class="small" text-anchor="middle">5</text>
+<text x="390.0" y="333.0" class="small" text-anchor="middle">10</text>
+<line x1="450.0" y1="341.0" x2="450.0" y2="349.0" stroke="#17212b" stroke-width="1"/>
+<text x="450.0" y="333.0" class="small" text-anchor="middle">12</text>
 <line x1="86.0" y1="525.0" x2="94.0" y2="525.0" stroke="#17212b" stroke-width="1"/>
-<text x="78.0" y="531.0" class="small" text-anchor="end">-3</text>
+<text x="78.0" y="531.0" class="small" text-anchor="end">-6</text>
 <line x1="86.0" y1="465.0" x2="94.0" y2="465.0" stroke="#17212b" stroke-width="1"/>
-<text x="78.0" y="471.0" class="small" text-anchor="end">-2</text>
+<text x="78.0" y="471.0" class="small" text-anchor="end">-4</text>
 <line x1="86.0" y1="405.0" x2="94.0" y2="405.0" stroke="#17212b" stroke-width="1"/>
-<text x="78.0" y="411.0" class="small" text-anchor="end">-1</text>
+<text x="78.0" y="411.0" class="small" text-anchor="end">-2</text>
 <line x1="86.0" y1="285.0" x2="94.0" y2="285.0" stroke="#17212b" stroke-width="1"/>
-<text x="78.0" y="291.0" class="small" text-anchor="end">1</text>
+<text x="78.0" y="291.0" class="small" text-anchor="end">2</text>
 <line x1="86.0" y1="225.0" x2="94.0" y2="225.0" stroke="#17212b" stroke-width="1"/>
-<text x="78.0" y="231.0" class="small" text-anchor="end">2</text>
+<text x="78.0" y="231.0" class="small" text-anchor="end">4</text>
 <line x1="86.0" y1="165.0" x2="94.0" y2="165.0" stroke="#17212b" stroke-width="1"/>
-<text x="78.0" y="171.0" class="small" text-anchor="end">3</text>
-<text x="33" y="100" class="small" text-anchor="start">Q [var]</text>
-<text x="430" y="350" class="small" text-anchor="start">P [W]</text>
-<line x1="90.0" y1="345.0" x2="250.0" y2="465.0" stroke="#17212b" stroke-width="7"/>
-<circle cx="330.0" cy="525.0" r="7" fill="white" stroke="#17212b" stroke-width="3"/>
-<text x="347.0" y="547.0" class="head" text-anchor="start">A</text>
-<circle cx="330.0" cy="465.0" r="7" fill="white" stroke="#17212b" stroke-width="3"/>
-<text x="347.0" y="450.0" class="head" text-anchor="start">B</text>
-<circle cx="250.0" cy="465.0" r="7" fill="white" stroke="#17212b" stroke-width="3"/>
-<text x="230.0" y="499.0" class="head" text-anchor="start">C</text>
+<text x="78.0" y="171.0" class="small" text-anchor="end">6</text>
+<text x="33" y="118" class="small" text-anchor="start">Q [var]</text>
+<text x="498.0" y="307.0" class="small" text-anchor="end">P [W]</text>
+<line x1="90.0" y1="345.0" x2="234.0" y2="405.0" stroke="#17212b" stroke-width="7"/>
+<circle cx="450.0" cy="495.0" r="7" fill="white" stroke="#17212b" stroke-width="3"/>
+<text x="444.0" y="531.0" class="head" text-anchor="start">A</text>
+<circle cx="450.0" cy="405.0" r="7" fill="white" stroke="#17212b" stroke-width="3"/>
+<text x="467.0" y="390.0" class="head" text-anchor="start">B</text>
+<circle cx="234.0" cy="405.0" r="7" fill="white" stroke="#17212b" stroke-width="3"/>
+<text x="214.0" y="439.0" class="head" text-anchor="start">C</text>
 <text x="545" y="133" class="head" text-anchor="start">Read the constraints in order</text>
 <text x="545" y="177" class="" text-anchor="start">1. Shaded wedge: minimum PF 4/5</text>
 <text x="575" y="210" class="math" text-anchor="start">P ≥ 0; −3P/4 ≤ Q ≤ 3P/4</text>
-<text x="545" y="261" class="" text-anchor="start">2. Dashed ray: constant PF +4/5</text>
-<text x="575" y="294" class="math" text-anchor="start">Q = −3P/4</text>
+<text x="545" y="261" class="" text-anchor="start">2. Dashed ray: constant PF +12/13</text>
+<text x="575" y="294" class="math" text-anchor="start">Q = −5P/12, inside the wedge</text>
 <text x="545" y="345" class="" text-anchor="start">3. Horizontal cap: Q ≥ −2 var</text>
 <text x="575" y="378" class="" text-anchor="start">Keep points on or above the cap.</text>
-<text x="545" y="445" class="" text-anchor="start">A  (4, −3): cap fails</text>
-<text x="545" y="487" class="" text-anchor="start">B  (4, −2): equality fails</text>
-<text x="545" y="529" class="" text-anchor="start">C  (8/3, −2): both controls and cap pass</text>
+<text x="545" y="445" class="" text-anchor="start">A  (12, −5): cap fails</text>
+<text x="545" y="487" class="" text-anchor="start">B  (12, −2): equality fails</text>
+<text x="545" y="529" class="" text-anchor="start">C  (24/5, −2): both controls and cap pass</text>
 <text x="30" y="630" class="head" text-anchor="start">Bold segment: the full intersection of these three constraints, including the origin.</text>
 <text x="30" y="672" class="small" text-anchor="start">Other P/Q/I/S limits and network equations are not shown. C is not a complete-network optimum.</text>
 </svg>

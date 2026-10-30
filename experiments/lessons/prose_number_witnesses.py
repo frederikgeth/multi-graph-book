@@ -187,49 +187,87 @@ def calculations():
 
 # Explicit occurrence-to-observation mapping. Literals are expectations only:
 # none are used as inputs to the calculations above.
-REFERENCE_BINDINGS = {
- 47:[('0.4123','generator_current')],
- 246:[('0.15625','winding1_current_imag_coefficient')],
- 247:[('4.82421875','winding2_voltage_real'),('0.10546875','winding2_voltage_imag_coefficient')],
- 248:[('2.439453125','winding3_voltage_real'),('0.04296875','winding3_voltage_imag_coefficient')],
- 251:[('-0.85089111328125','winding2_terminal_real'),('0.17132568359375','winding2_terminal_imag')],
- 271:[('0.901948','winding_loss_real'),('0.542283','winding_loss_imag')],
- 361:[('4.82421875','multi_voltage_1_real'),('0.10546875','multi_voltage_1_imag'),('4.973879','multi_apparent_1')],
- 362:[('-2.46484375','multi_voltage_2_real'),('3.89453125','multi_voltage_2_imag'),('2.576506','multi_apparent_2')],
- 363:[('-2.39453125','multi_voltage_3_real'),('3.96484375','multi_voltage_3_imag'),('2.589267','multi_apparent_3')],
- 365:[('10.139652','multi_sum_apparent')],372:[('0.251648','multi_neutral_real'),('0.000549','multi_neutral_imag')],
- 373:[('2.338756','multi_loss_real'),('1.314397','multi_loss_imag')],
- 392:[('14.921637','multi_equal_total_rating'),('10.139652','multi_sum_apparent')],
- 608:[('4.0625','pn_squared_lower_excess')],683:[('4.0625','neutral_case_load_real')],
- 684:[('0.9375','neutral_case_conductor_loss')],691:[('0.118034','neutral_voltage_excess')],
- 697:[('0.118034','neutral_voltage_excess')],706:[('0.3125','neutral_return_current_squared')],707:[('0.078125','shunted_neutral_current_squared')],
- 772:[('0.193752','pp_lower_excess')],773:[('0.306248','pp_upper_excess')],778:[('0.306248','pp_upper_excess')],
- 848:[('0.09966865','small_angle_coefficient')],853:[('0.09966865','small_angle_coefficient')],
- 855:[('0.04966865','bus_lower_angle_excess')],856:[('0.02033135','bus_upper_angle_excess')],
- 947:[('0.3125','sequence_zero_squared')],950:[('0.159017','sequence_zero_excess')],981:[('1.520691','sequence_earth_zero_magnitude')],
- 1040:[('+0.09966865','small_angle_coefficient')],1043:[('0.01966865','branch_upper_angle_excess')],
- 1387:[('-0.0012','source_price_rate')],1388:[('+0.0006','source_price_positive_rate')],
- 1390:[('-0.0006','source_total_price_rate')],1395:[('+0.0021','source_unmoved_price_rate')],
- 1415:[('0.0005','two_phase_source_price_rate')],1742:[('-0.00045','four_price_rate')],1743:[('-0.0005','three_price_rate')],
- 1753:[('-0.00095','four_unmoved_price_rate')],1769:[('-0.0005','three_price_rate'),('-0.0044','three_circulation_price_rate')],
- 1771:[('0.00035','three_uniform_price_rate')],
-}
+# Explicit occurrence-to-observation mapping: (section anchor, literal,
+# occurrence within that section or None if it is unique there, observation key).
+REFERENCE_BINDINGS = [
+ ('generator-voltage-audit', '0.4123', None, 'generator_current'),
+ ('winding-list-audit', '0.15625', None, 'winding1_current_imag_coefficient'),
+ ('winding-list-audit', '4.82421875', None, 'winding2_voltage_real'),
+ ('winding-list-audit', '0.10546875', None, 'winding2_voltage_imag_coefficient'),
+ ('winding-list-audit', '2.439453125', None, 'winding3_voltage_real'),
+ ('winding-list-audit', '0.04296875', None, 'winding3_voltage_imag_coefficient'),
+ ('winding-list-audit', '-0.85089111328125', None, 'winding2_terminal_real'),
+ ('winding-list-audit', '0.17132568359375', None, 'winding2_terminal_imag'),
+ ('winding-list-audit', '0.901948', None, 'winding_loss_real'),
+ ('winding-list-audit', '0.542283', None, 'winding_loss_imag'),
+ ('multiphase-winding-audit', '4.82421875', None, 'multi_voltage_1_real'),
+ ('multiphase-winding-audit', '0.10546875', None, 'multi_voltage_1_imag'),
+ ('multiphase-winding-audit', '4.973879', None, 'multi_apparent_1'),
+ ('multiphase-winding-audit', '-2.46484375', None, 'multi_voltage_2_real'),
+ ('multiphase-winding-audit', '3.89453125', None, 'multi_voltage_2_imag'),
+ ('multiphase-winding-audit', '2.576506', None, 'multi_apparent_2'),
+ ('multiphase-winding-audit', '-2.39453125', None, 'multi_voltage_3_real'),
+ ('multiphase-winding-audit', '3.96484375', None, 'multi_voltage_3_imag'),
+ ('multiphase-winding-audit', '2.589267', None, 'multi_apparent_3'),
+ ('multiphase-winding-audit', '10.139652', 1, 'multi_sum_apparent'),
+ ('multiphase-winding-audit', '0.251648', None, 'multi_neutral_real'),
+ ('multiphase-winding-audit', '0.000549', None, 'multi_neutral_imag'),
+ ('multiphase-winding-audit', '2.338756', None, 'multi_loss_real'),
+ ('multiphase-winding-audit', '1.314397', None, 'multi_loss_imag'),
+ ('multiphase-winding-audit', '14.921637', None, 'multi_equal_total_rating'),
+ ('multiphase-winding-audit', '10.139652', 2, 'multi_sum_apparent'),
+ ('phase-neutral-voltage-audit', '4.0625', None, 'pn_squared_lower_excess'),
+ ('neutral-earth-voltage-audit', '4.0625', None, 'neutral_case_load_real'),
+ ('neutral-earth-voltage-audit', '0.9375', None, 'neutral_case_conductor_loss'),
+ ('neutral-earth-voltage-audit', '0.118034', 1, 'neutral_voltage_excess'),
+ ('neutral-earth-voltage-audit', '0.118034', 2, 'neutral_voltage_excess'),
+ ('neutral-earth-voltage-audit', '0.3125', None, 'neutral_return_current_squared'),
+ ('neutral-earth-voltage-audit', '0.078125', None, 'shunted_neutral_current_squared'),
+ ('phase-phase-voltage-audit', '0.193752', None, 'pp_lower_excess'),
+ ('phase-phase-voltage-audit', '0.306248', 1, 'pp_upper_excess'),
+ ('phase-phase-voltage-audit', '0.306248', 2, 'pp_upper_excess'),
+ ('bus-angle-voltage-audit', '0.09966865', 1, 'small_angle_coefficient'),
+ ('bus-angle-voltage-audit', '0.09966865', 2, 'small_angle_coefficient'),
+ ('bus-angle-voltage-audit', '0.04966865', None, 'bus_lower_angle_excess'),
+ ('bus-angle-voltage-audit', '0.02033135', None, 'bus_upper_angle_excess'),
+ ('sequence-voltage-audit', '0.3125', None, 'sequence_zero_squared'),
+ ('sequence-voltage-audit', '0.159017', None, 'sequence_zero_excess'),
+ ('sequence-voltage-audit', '1.520691', None, 'sequence_earth_zero_magnitude'),
+ ('branch-angle-voltage-audit', '+0.09966865', None, 'small_angle_coefficient'),
+ ('branch-angle-voltage-audit', '0.01966865', None, 'branch_upper_angle_excess'),
+ ('source-price-reference-audit', '-0.0012', None, 'source_price_rate'),
+ ('source-price-reference-audit', '+0.0006', None, 'source_price_positive_rate'),
+ ('source-price-reference-audit', '-0.0006', None, 'source_total_price_rate'),
+ ('source-price-reference-audit', '+0.0021', None, 'source_unmoved_price_rate'),
+ ('source-price-reference-audit', '0.0005', None, 'two_phase_source_price_rate'),
+ ('ibr-price-scope-audit', '-0.00045', None, 'four_price_rate'),
+ ('ibr-price-scope-audit', '-0.0005', 1, 'three_price_rate'),
+ ('ibr-price-scope-audit', '-0.00095', None, 'four_unmoved_price_rate'),
+ ('ibr-price-scope-audit', '-0.0005', 2, 'three_price_rate'),
+ ('ibr-price-scope-audit', '-0.0044', None, 'three_circulation_price_rate'),
+ ('ibr-price-scope-audit', '0.00035', None, 'three_uniform_price_rate'),
+]
 
 
 def occurrence_map():
-    rows=[(REFERENCE,line,literal,key) for line,items in REFERENCE_BINDINGS.items() for literal,key in items]
-    rows += [('docs/src/cases/building-and-changing-models.md',386,'5.4366','cache_residual_coefficient'),
-             ('docs/src/foundations/circuit-formulations-and-lowering.md',463,'2.5575','ideal_primary_current_real'),
-             ('docs/src/foundations/numerical-consequences.md',636,'0.5198','switch_neutral_excess')]
+    rows=[(REFERENCE,section,literal,occurrence,key) for section,literal,occurrence,key in REFERENCE_BINDINGS]
+    rows += [
+        ('docs/src/cases/building-and-changing-models.md', 'compare-from-scratch-then-test-the-requested-law', '5.4366', None, 'cache_residual_coefficient'),
+        ('docs/src/foundations/circuit-formulations-and-lowering.md', 'a-loaded-230-115-v-calculation', '2.5575', None, 'ideal_primary_current_real'),
+        ('docs/src/foundations/numerical-consequences.md', 'a-switch-needs-a-state-law-and-a-conductor-limit', '0.5198', None, 'switch_neutral_excess'),
+    ]
     return rows
 
 
 def binding_text(result, artifact_hash):
     rows=[]
-    for path,line,literal,key in occurrence_map():
+    for path,section,literal,occurrence,key in occurrence_map():
         entry=result['values'][key]
+        location=[('path',path),('literal',literal),('section',section)]
+        if occurrence is not None:
+            location.append(('occurrence',occurrence))
         rows.append('\n[[binding]]\n'+''.join(f'{name} = {json.dumps(value)}\n' for name,value in [
-            ('path',path),('line',line),('literal',literal),
+            *location,
             ('source_artifact',OUTPUT.relative_to(ROOT).as_posix()),('source_sha256',artifact_hash),
             ('source_pointer',f'/values/{key}/value'),('derivation',entry['derivation']+' Unit: '+entry['unit']+'.')]))
     return MARKER+''.join(rows)+END_MARKER

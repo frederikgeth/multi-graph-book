@@ -28,109 +28,30 @@ ROUTER_GENERIC_TERMS = {
     "the", "topology", "view", "loop",
 }
 
-# Scope gates for routes whose shared engineering vocabulary can otherwise
-# qualify a different question. These are necessary topic signals, not answer
-# proofs or replacements for the curated pattern score. In particular, KCL is
-# not itself a solver-status question, and impedance is not source provenance.
-# Match normalized tokens so punctuation/plurals follow the ordinary router.
-# A phasor-incidence packet cannot answer a transient prediction request, even
-# when it contains a curated coil-current phrase. This conservative refusal is
-# route-specific; it does not claim to classify every unsupported physical model.
-ROUTER_TOPIC_EXCLUSIONS = {
-    "power-balance-enforces-kcl-at-zero-voltage": r"vuf",
-    "vuf-polynomial-pass-defines-zero-ratio": r"inrush|transient\w*|manufacturer\w*|dynamic\w*|pf|minimumpf|constantpf|filter\w*",
-    "weighted-pf-residual-certifies-ratio": r"transient\w*|manufacturer\w*|dynamic\w*|filter\w*|vuf|thermal|temperature\w*",
-    "constant-pf-capability-is-clipping": r"transient\w*|manufacturer\w*|dynamic\w*|filter\w*|vuf|thermal|temperature\w*",
-    "nullspace-implies-removable-gauge": r"inrush|transient\w*|energiz\w*|energis\w*|saturat\w*",
-    "apparent-power-limit-implies-current-admissibility": r"dynamic\w*|transient\w*|nameplate|manufacturer|temperature|heating",
-    "delta-coil-currents-are-terminal-currents": r"inrush|transient\w*|energiz\w*|energis\w*|saturat\w*",
-}
+# Route scope gates live with each contract in llm/misconceptions.toml under
+# `router_scope`; see `router_scope_admits` and the rationale stored there.
 
-ROUTER_TOPIC_PATTERNS = {
-    "vuf-polynomial-pass-defines-zero-ratio": (
-        r"vuf|unbalance\w*|positivesequence|negativesequence",
-        r"zero|denominator\w*|ratio\w*|floor|crossmultiplied|cap\w*",
-    ),
-    "weighted-pf-residual-certifies-ratio": (
-        r"weighted|residual\w*|tolerance\w*|coefficient\w*|tiny|small",
-    ),
-    "constant-pf-capability-is-clipping": (
-        r"constant|fixed|constantpf", r"clip\w*|qmax|qmin|capability|intersection|cap\w*",
-    ),
-    "iteration-failure-proves-infeasibility": (
-        r"fail\w*|nonconverg\w*|infeasib\w*|collapse|nose",
-    ),
-    "loads-generators-fixed-graph-membership": (
-        r"graph|ybus|nodal|admittance|norton|assembl\w*|lineariz\w*|linearis\w*|matrix",
-    ),
-    "nullspace-implies-removable-gauge": (r"nullspace|kernel|null|gauge|quotient\w*|symmetr\w*",),
-    "convex-rating-implies-convex-opf": (
-        r"convex|nonconvex|convexity", r"limit\w*|rating\w*|cap\w*", r"power|current\w*|opf|rating\w*",
-    ),
-    "apparent-power-limit-implies-current-admissibility": (
-        r"apparent|mva|power|multiplicity|uniqueness", r"limit\w*|cap\w*|rating\w*|solution\w*",
-        r"current\w*|root\w*|solution\w*|multiplicity|uniqueness",
-    ),
-    "zero-parameter-means-absent-term": (
-        r"parameter\w*", r"zero|updat\w*|reus\w*",
-        r"opf|solv\w*|symbolic|compil\w*|coefficient\w*|term\w*|current\w*",
-    ),
-    "transformer-end-swap-is-ordinary-edge-reversal": (
-        r"transformer\w*|xfmr", r"swap\w*|revers\w*|exchang\w*|flip\w*|orient\w*|undirect\w*|sort\w*|canonicaliz\w*",
-    ),
-    "delta-coil-currents-are-terminal-currents": (r"delta", r"coil\w*", r"current\w*|kcl"),
-    "vanishing-impedance-preserves-ideal-current-sharing": (
-        r"ideal|tiny|small|vanish\w*", r"impedance|resistance|resistor\w*|switch\w*|short\w*", r"current\w*|sharing|split|limit\w*",
-    ),
-    "ideal-transformer-is-a-large-admittance": (r"transformer\w*|xfmr", r"ideal|leakage|border\w*"),
-    "power-balance-enforces-kcl-at-zero-voltage": (
-        r"power\w*", r"kcl|current\w*|residual\w*|impedance|neutral", r"zero|kcl|impedance|constantz|neutral",
-    ),
-    "terminal-permutation-is-cosmetic": (r"permut\w*|reorder\w*|relabel\w*|swap\w*|order\w*|cosmetic",),
-    "reference-matrix-match-proves-source-provenance": (
-        r"cs1035|ughv|carson|australian|cable|construction|geometry|provenance|linecode|frequency",
-    ),
-    "terminal-equivalence-implies-opf-equivalence": (
-        r"optimi\w*|opf|decision\w*|planning|dispatch|feasib\w*|observation|range",
-        r"\w*(?:terminal|equivalen|reduction|observation|range)\w*|circuit|model",
-    ),
-    "complete-feasibility-status-is-enough": (
-        r"solver|optimal|locallysolved|termination\w*|solved\w*|certificate|feasib\w*|validation",
-    ),
-    "mutual-coupling-is-an-ordinary-parallel-network": (r"mutual\w*|coupl\w*|lattice|crossvoltage|shared|joint",),
-    "base-state-equivalent-is-globally-exact": (r"equivalent|ward|kron|frozen|freeze|basestate",),
-    "parallel-admittance-implies-decision-equivalence": (r"parallel|twin|bundled|aggregate|aggregation|mva",),
-    "ground-neutral-reference-are-one-node": (r"ground\w*|earth|datum|reference",),
-    # Connection vocabulary alone does not ask about normalization: coil arity,
-    # incidence and operating voltages require different evidence. In particular,
-    # a bare "voltage" signal would still admit coil-to-terminal map questions.
-    "wye-delta-share-nominal-voltage-base": (
-        r"wye|delta|load\w*",
-    ),
-}
 
-# Phrase-level evidence distinguishes "nominal voltage" from an unrelated
-# connection question evaluated "at the nominal operating point". Other base
-# markers can stand alone once the connection/load topic gate also matches.
-ROUTER_TOPIC_QUERY_PATTERNS = {
-    "vuf-polynomial-pass-defines-zero-ratio": r"^(?!.*\bpower factor\b)",
-    "weighted-pf-residual-certifies-ratio": r"\b(?:pf|minimumpf|power factor)\b",
-    "constant-pf-capability-is-clipping": (
-        r"(?=.*\b(?:pf|constantpf|power factor)\b)"
-        r"(?=.*\b(?:clip\w*|intersect\w*|simultaneous|replac\w*|overrid\w*|conflict\w*|satisf\w*|violat\w*)\b)"
-    ),
-    "wye-delta-share-nominal-voltage-base": (
-        r"\b(?:nominal (?:load )?voltage|base|vnom|kv|sqrt3|anchor\w*|normaliz\w*|normalis\w*)\b"
-    ),
-}
+def router_scope_admits(scope: dict, query_terms: set[str], query_normalized: str,
+                        exact_match: bool) -> bool:
+    """Apply one contract's necessary topic signals; they are not answer proofs.
 
-# For these narrow mathematical contracts, quoting a curated phrase cannot
-# bypass the necessary topic/intent gate. Existing routes keep their behavior.
-ROUTER_REQUIRED_TOPIC_ROUTES = {
-    "vuf-polynomial-pass-defines-zero-ratio",
-    "weighted-pf-residual-certifies-ratio",
-    "constant-pf-capability-is-clipping",
-}
+    Token regexes match whole normalized tokens. A curated complete phrase can
+    bypass the topic groups unless `curated_phrase_bypass = false`; an
+    exclusion always applies.
+    """
+    excluded = scope.get("exclude_tokens")
+    if excluded and any(re.fullmatch(excluded, term) for term in query_terms):
+        return False
+    topic_matches = all(
+        any(re.fullmatch(pattern, term) for term in query_terms)
+        for pattern in scope.get("require_token_groups", ())
+    )
+    query_pattern = scope.get("require_query")
+    if query_pattern:
+        topic_matches = topic_matches and bool(re.search(query_pattern, query_normalized))
+    return topic_matches or (exact_match and scope.get("curated_phrase_bypass", True))
+
 
 STOPWORDS = {
     "a", "about", "after", "all", "also", "an", "and", "any", "are", "as", "at",
@@ -594,17 +515,6 @@ class CorpusIndex:
         query_terms = set(tokenize(query))
         ranked = []
         for item in self.misconceptions:
-            excluded = ROUTER_TOPIC_EXCLUSIONS.get(item["id"])
-            if excluded and any(re.fullmatch(excluded, term) for term in query_terms):
-                continue
-            topic_patterns = ROUTER_TOPIC_PATTERNS.get(item["id"], ())
-            topic_matches = all(
-                any(re.fullmatch(pattern, term) for term in query_terms)
-                for pattern in topic_patterns
-            )
-            query_pattern = ROUTER_TOPIC_QUERY_PATTERNS.get(item["id"])
-            if query_pattern:
-                topic_matches = topic_matches and bool(re.search(query_pattern, query_normalized))
             pattern_scores = []
             exact_match = False
             for pattern in item["query_patterns"]:
@@ -620,9 +530,8 @@ class CorpusIndex:
                 coverage = len(overlap) / max(1, len(specific_pattern_terms))
                 precision = len(overlap) / max(1, len(specific_query_terms))
                 pattern_scores.append(0.72 * coverage + 0.28 * precision)
-            # An explicitly curated complete phrase is sufficient routing
-            # evidence; partial word matches additionally need the scope gate.
-            if not topic_matches and (not exact_match or item["id"] in ROUTER_REQUIRED_TOPIC_ROUTES):
+            if not router_scope_admits(item.get("router_scope", {}), query_terms,
+                                       query_normalized, exact_match):
                 continue
             title_terms = set(tokenize(item["title"])) - ROUTER_GENERIC_TERMS
             title_score = len((query_terms - ROUTER_GENERIC_TERMS) & title_terms) / max(1, len(title_terms))

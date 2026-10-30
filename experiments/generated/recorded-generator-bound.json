@@ -69,7 +69,7 @@
   "schema_version": "1.0.0",
   "scope": "Saved default solver point only. Not a universal solver defect, full-network certificate or optimality assessment. Voltages are rectangular phase-to-earth; WYE powers use phase minus neutral and supplied injection current.",
   "source_sha256": {
-    "experiments/lessons/recorded_generator_bound.py": "64cf7de010efe955e5a66bc4035a06636bc014ee78915e5b6fb82fbe9b60c081",
+    "experiments/lessons/recorded_generator_bound.py": "8975202c617f2439e59eed964ea666cbe724577bcfcb52dcd77352460cc2567f",
     "experiments/lessons/recorded_generator_bound_input.json": "e0f95f3c08c51f029b832c3fe73e266bc92df4e2b2a0e798b8333db12953dc4f"
   },
   "values": {

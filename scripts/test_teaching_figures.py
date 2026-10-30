@@ -51,8 +51,8 @@ class FigureChecks(unittest.TestCase):
         segment = next(line for line in root.findall('s:line', NS) if line.get('stroke-width') == '7')
         dx = float(segment.get('x2')) - float(segment.get('x1'))
         dy = float(segment.get('y2')) - float(segment.get('y1'))
-        self.assertAlmostEqual(dy / dx, 3 / 4)  # SVG y points down.
-        self.assertAlmostEqual((float(a.get('cx')) - float(segment.get('x1'))) / dx, 4 / (8/3))
+        self.assertAlmostEqual(dy / dx, 5 / 12)  # SVG y points down.
+        self.assertAlmostEqual((float(a.get('cx')) - float(segment.get('x1'))) / dx, 12 / (24/5))
         self.assertEqual((segment.get('x2'), segment.get('y2')), (c.get('cx'), c.get('cy')))
 
     def test_ibr_monitor_phasors_share_the_same_scale(self):

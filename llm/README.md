@@ -8,7 +8,17 @@ claims ledger, vocabulary registry, evidence artifacts, or release manifest.
 The design separates three concerns:
 
 1. `misconceptions.toml` records questions for which a tempting short answer
-   omits a load-bearing qualification.
+   omits a load-bearing qualification. An optional `router_scope` table per
+   contract holds its routing gates: required token groups, excluded tokens,
+   an optional whole-query pattern, whether a curated phrase may bypass the
+   groups, and a rationale. These are necessary topic signals, not answer
+   proofs. `router-scope-paraphrases.toml` measures them; run
+   `scripts/evaluate_router_scope.py --write` after changing a gate and review
+   the diff. It holds two sets. The regression set (`RSCOPE-*`) gates: any
+   forbidden routing fails the check. The independent set (`RBLIND-*`) was
+   written without the gate patterns. It is measurement only: report its
+   correct, abstained and misrouted counts, and do not tune gates to it. Add
+   new independent cases instead of editing existing ones.
 2. `evaluation-cases.toml` records audience-specific regression questions and
    the evidence that a grounded answer must retrieve.
 3. `generated/corpus.jsonl` contains deterministic section, claim, and concept

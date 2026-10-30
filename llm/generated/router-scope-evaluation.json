@@ -1,0 +1,913 @@
+{
+  "cases": [
+    {
+      "case_id": "RSCOPE-CPF-01",
+      "case_set": "regression",
+      "expected_route": "constant-pf-capability-is-clipping",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "Under a fixed power factor setpoint, can I just cap reactive power at its limit?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RSCOPE-CPF-02",
+      "case_set": "regression",
+      "expected_route": "constant-pf-capability-is-clipping",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "If an inverter runs at constant PF and hits qmin, is it fine to saturate Q there and keep P?",
+      "route_top1": "constant-pf-capability-is-clipping"
+    },
+    {
+      "case_id": "RSCOPE-CPF-03",
+      "case_set": "regression",
+      "expected_route": "constant-pf-capability-is-clipping",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "Is limiting Q to the capability bound compatible with a constant power factor law at the same P?",
+      "route_top1": "constant-pf-capability-is-clipping"
+    },
+    {
+      "case_id": "RSCOPE-CPF-04",
+      "case_set": "regression",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "constant-pf-capability-is-clipping",
+        "weighted-pf-residual-certifies-ratio"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "With a constant power factor control, what happens if I clip Q to the capability limit during a fault transient?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RSCOPE-WPF-01",
+      "case_set": "regression",
+      "expected_route": "weighted-pf-residual-certifies-ratio",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "Does a small weighted power factor residual mean the PF ratio is within tolerance?",
+      "route_top1": "weighted-pf-residual-certifies-ratio"
+    },
+    {
+      "case_id": "RSCOPE-WPF-02",
+      "case_set": "regression",
+      "expected_route": "weighted-pf-residual-certifies-ratio",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "If the minimum PF constraint residual is tiny, does that certify the actual power factor?",
+      "route_top1": "weighted-pf-residual-certifies-ratio"
+    },
+    {
+      "case_id": "RSCOPE-WPF-03",
+      "case_set": "regression",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "weighted-pf-residual-certifies-ratio",
+        "constant-pf-capability-is-clipping"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "Does a tiny power factor residual mean the inverter filter will not overheat?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RSCOPE-VUF-01",
+      "case_set": "regression",
+      "expected_route": "vuf-polynomial-pass-defines-zero-ratio",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "If the cross-multiplied VUF constraint passes when positive-sequence voltage is zero, what is the unbalance ratio?",
+      "route_top1": "vuf-polynomial-pass-defines-zero-ratio"
+    },
+    {
+      "case_id": "RSCOPE-VUF-02",
+      "case_set": "regression",
+      "expected_route": "vuf-polynomial-pass-defines-zero-ratio",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "Does satisfying the polynomial voltage unbalance limit define the ratio when the denominator vanishes?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RSCOPE-VUF-03",
+      "case_set": "regression",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "vuf-polynomial-pass-defines-zero-ratio"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "Does the VUF ratio limit tell me the transient unbalance during transformer inrush?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RSCOPE-VUF-04",
+      "case_set": "regression",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "vuf-polynomial-pass-defines-zero-ratio"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "Is the power factor ratio defined when the VUF denominator is zero?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RSCOPE-SLIM-01",
+      "case_set": "regression",
+      "expected_route": "apparent-power-limit-implies-current-admissibility",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "Does an apparent power limit at nominal voltage guarantee the conductor current limit?",
+      "route_top1": "apparent-power-limit-implies-current-admissibility"
+    },
+    {
+      "case_id": "RSCOPE-SLIM-02",
+      "case_set": "regression",
+      "expected_route": "apparent-power-limit-implies-current-admissibility",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "Does an apparent power limit at nominal voltage guarantee the conductor current limit, given heating?",
+      "route_top1": "apparent-power-limit-implies-current-admissibility"
+    },
+    {
+      "case_id": "RSCOPE-SLIM-03",
+      "case_set": "regression",
+      "expected_route": "apparent-power-limit-implies-current-admissibility",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "Can replacing a current rating with an MVA cap admit an extra low-voltage solution?",
+      "route_top1": "apparent-power-limit-implies-current-admissibility"
+    },
+    {
+      "case_id": "RSCOPE-SLIM-04",
+      "case_set": "regression",
+      "expected_route": "apparent-power-limit-implies-current-admissibility",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "Is a static MVA limit the same as a current limit when voltage is depressed?",
+      "route_top1": "apparent-power-limit-implies-current-admissibility"
+    },
+    {
+      "case_id": "RSCOPE-SLIM-05",
+      "case_set": "regression",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "apparent-power-limit-implies-current-admissibility"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "How does a dynamic line rating change the current limit during a heat wave?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RSCOPE-DELTA-01",
+      "case_set": "regression",
+      "expected_route": "delta-coil-currents-are-terminal-currents",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "Can I insert delta coil currents straight into terminal KCL?",
+      "route_top1": "delta-coil-currents-are-terminal-currents"
+    },
+    {
+      "case_id": "RSCOPE-DELTA-02",
+      "case_set": "regression",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "delta-coil-currents-are-terminal-currents",
+        "nullspace-implies-removable-gauge"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "What are the delta coil currents during transformer inrush energisation?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RSCOPE-NULL-01",
+      "case_set": "regression",
+      "expected_route": "nullspace-implies-removable-gauge",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "Does a nullspace in the incidence matrix always mean a removable gauge symmetry?",
+      "route_top1": "nullspace-implies-removable-gauge"
+    },
+    {
+      "case_id": "RSCOPE-NULL-02",
+      "case_set": "regression",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "nullspace-implies-removable-gauge"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "Does core saturation create a nullspace in the transformer magnetising branch?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RSCOPE-KCL-01",
+      "case_set": "regression",
+      "expected_route": "power-balance-enforces-kcl-at-zero-voltage",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "Does enforcing power balance still enforce KCL when the node voltage is zero?",
+      "route_top1": "power-balance-enforces-kcl-at-zero-voltage"
+    },
+    {
+      "case_id": "RSCOPE-KCL-02",
+      "case_set": "regression",
+      "expected_route": "power-balance-enforces-kcl-at-zero-voltage",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "At a zero-voltage neutral, can the power residual be zero while the current residual is not?",
+      "route_top1": "power-balance-enforces-kcl-at-zero-voltage"
+    },
+    {
+      "case_id": "RSCOPE-KCL-03",
+      "case_set": "regression",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "power-balance-enforces-kcl-at-zero-voltage"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "Does VUF at zero voltage enforce KCL?",
+      "route_top1": "vuf-polynomial-pass-defines-zero-ratio"
+    },
+    {
+      "case_id": "RSCOPE-WYED-01",
+      "case_set": "regression",
+      "expected_route": "wye-delta-share-nominal-voltage-base",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "Do wye and delta loads share the same nominal voltage base?",
+      "route_top1": "wye-delta-share-nominal-voltage-base"
+    },
+    {
+      "case_id": "RSCOPE-WYED-02",
+      "case_set": "regression",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "wye-delta-share-nominal-voltage-base"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "How do I map delta coil currents to terminal currents at the nominal operating point?",
+      "route_top1": "delta-coil-currents-are-terminal-currents"
+    },
+    {
+      "case_id": "RSCOPE-PROV-01",
+      "case_set": "regression",
+      "expected_route": "reference-matrix-match-proves-source-provenance",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "If my line impedance matrix matches the reference, does that prove the cable construction provenance?",
+      "route_top1": "reference-matrix-match-proves-source-provenance"
+    },
+    {
+      "case_id": "RSCOPE-PROV-02",
+      "case_set": "regression",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "reference-matrix-match-proves-source-provenance"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "What series impedance should a 1 km overhead line have?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-IN-01",
+      "case_set": "independent",
+      "expected_route": "zero-parameter-means-absent-term",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "My line model currently has the shunt susceptance set to 0, so can I just strip that term out of the compiled equations and reuse the model for other cases later?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-IN-02",
+      "case_set": "independent",
+      "expected_route": "delta-coil-currents-are-terminal-currents",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "For a delta-connected load, can I take the branch currents flowing inside each winding and report them as the line currents at the terminals?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-IN-03",
+      "case_set": "independent",
+      "expected_route": "vanishing-impedance-preserves-ideal-current-sharing",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": true,
+      "question": "If I model a closed breaker as a 1e-6 ohm resistor instead of a perfect short, will the split of current between parallel paths come out the same?",
+      "route_top1": "parallel-admittance-implies-decision-equivalence"
+    },
+    {
+      "case_id": "RBLIND-IN-04",
+      "case_set": "independent",
+      "expected_route": "ideal-transformer-is-a-large-admittance",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "Is it fine to represent a lossless transformer by putting a very large series admittance between its windings, or by setting the leakage reactance to zero in the regular branch model?",
+      "route_top1": "ideal-transformer-is-a-large-admittance"
+    },
+    {
+      "case_id": "RBLIND-IN-05",
+      "case_set": "independent",
+      "expected_route": "power-balance-enforces-kcl-at-zero-voltage",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "If my P and Q mismatch equations are satisfied at a bus whose voltage has dropped to zero, does that guarantee the currents there still sum to zero?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-IN-06",
+      "case_set": "independent",
+      "expected_route": "loads-generators-fixed-graph-membership",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "When building the bus admittance matrix, should a constant-impedance load always be folded into Y or always be kept outside as a separate injection device?",
+      "route_top1": "loads-generators-fixed-graph-membership"
+    },
+    {
+      "case_id": "RBLIND-IN-07",
+      "case_set": "independent",
+      "expected_route": "parallel-admittance-implies-decision-equivalence",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "If I merge two parallel circuits into one equivalent line, can I just add their thermal limits together and use that as the combined branch limit in my OPF?",
+      "route_top1": "parallel-admittance-implies-decision-equivalence"
+    },
+    {
+      "case_id": "RBLIND-IN-08",
+      "case_set": "independent",
+      "expected_route": "base-state-equivalent-is-globally-exact",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "Once I reduce the external system to a Ward equivalent at today's operating point, will that reduced model stay accurate for any loading level I study?",
+      "route_top1": "base-state-equivalent-is-globally-exact"
+    },
+    {
+      "case_id": "RBLIND-IN-09",
+      "case_set": "independent",
+      "expected_route": "ground-neutral-reference-are-one-node",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "In a four-wire distribution model, can I just treat the neutral wire, the earth and the zero-voltage reference as one and the same bus?",
+      "route_top1": "ground-neutral-reference-are-one-node"
+    },
+    {
+      "case_id": "RBLIND-IN-10",
+      "case_set": "independent",
+      "expected_route": "terminal-equivalence-implies-opf-equivalence",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": true,
+      "question": "If two network models produce identical port voltage-current relations, will an optimal power flow give the same dispatch on either of them?",
+      "route_top1": "complete-feasibility-status-is-enough"
+    },
+    {
+      "case_id": "RBLIND-IN-11",
+      "case_set": "independent",
+      "expected_route": "mutual-coupling-is-an-ordinary-parallel-network",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": true,
+      "question": "When cables sharing a trench are magnetically coupled, can I treat the edges of the resulting coupling graph as real parallel conductors carrying current?",
+      "route_top1": "parallel-admittance-implies-decision-equivalence"
+    },
+    {
+      "case_id": "RBLIND-IN-12",
+      "case_set": "independent",
+      "expected_route": "wye-delta-share-nominal-voltage-base",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": true,
+      "question": "For ZIP loads connected phase-to-neutral and phase-to-phase on a 400 V feeder, can both use the same rated voltage value in their voltage-dependence exponent formula?",
+      "route_top1": "radial-is-representation-independent"
+    },
+    {
+      "case_id": "RBLIND-IN-13",
+      "case_set": "independent",
+      "expected_route": "reference-matrix-match-proves-source-provenance",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": true,
+      "question": "My computed series impedance matrix matches the one in the utility dataset almost exactly, so does that confirm I used the same conductor geometry and earth model they did?",
+      "route_top1": "ground-neutral-reference-are-one-node"
+    },
+    {
+      "case_id": "RBLIND-IN-14",
+      "case_set": "independent",
+      "expected_route": "transformer-end-swap-is-ordinary-edge-reversal",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "If I flip the from and to buses of a delta-wye transformer in my case file, is that equivalent to just reversing the direction of a line?",
+      "route_top1": "transformer-end-swap-is-ordinary-edge-reversal"
+    },
+    {
+      "case_id": "RBLIND-IN-15",
+      "case_set": "independent",
+      "expected_route": "terminal-permutation-is-cosmetic",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "Does it matter if I list the phase wires as c-b-a instead of a-b-c when entering a line's impedance matrix, since it is just a naming convention?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-IN-16",
+      "case_set": "independent",
+      "expected_route": "complete-feasibility-status-is-enough",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "Ipopt returned LOCALLY_SOLVED for my unbalanced power flow, so can I report the operating point as physically feasible without further checks?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-IN-17",
+      "case_set": "independent",
+      "expected_route": "iteration-failure-proves-infeasibility",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "My Newton-Raphson load flow diverged at this loading level, so does that mean the system has hit its voltage stability limit?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-IN-18",
+      "case_set": "independent",
+      "expected_route": "apparent-power-limit-implies-current-admissibility",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "If I limit a line's MVA flow at its nameplate value, does that guarantee the current stays within the ampacity even when the voltage sags well below 1 pu?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-IN-19",
+      "case_set": "independent",
+      "expected_route": "convex-rating-implies-convex-opf",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "Since a thermal limit written as a second-order cone is convex, does adding it make my whole AC optimal power flow a convex problem with a single optimum?",
+      "route_top1": "convex-rating-implies-convex-opf"
+    },
+    {
+      "case_id": "RBLIND-IN-20",
+      "case_set": "independent",
+      "expected_route": "nullspace-implies-removable-gauge",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": true,
+      "question": "My Jacobian is singular, so can I fix every null direction by grounding an extra bus angle the way I fix the slack reference?",
+      "route_top1": "reference-or-rank-success-proves-nonsingularity"
+    },
+    {
+      "case_id": "RBLIND-IN-21",
+      "case_set": "independent",
+      "expected_route": "vuf-polynomial-pass-defines-zero-ratio",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": true,
+      "misrouted": false,
+      "question": "If I enforce the unbalance limit as negative-sequence magnitude squared below k squared times positive-sequence magnitude squared, does a point where all phase voltages are zero have a meaningful unbalance factor?",
+      "route_top1": "vuf-polynomial-pass-defines-zero-ratio"
+    },
+    {
+      "case_id": "RBLIND-IN-22",
+      "case_set": "independent",
+      "expected_route": "weighted-pf-residual-certifies-ratio",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "If the scaled residual Q minus tan(phi) times P is under 1e-6 at an inverter, can I conclude its actual cos phi equals the setpoint?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-IN-23",
+      "case_set": "independent",
+      "expected_route": "constant-pf-capability-is-clipping",
+      "forbidden_hit": false,
+      "forbidden_routes": [],
+      "in_scope_hit": false,
+      "misrouted": true,
+      "question": "When an inverter in fixed power factor mode would need more vars than its kVA capability allows, does the solver just cap Q at the limit and carry on?",
+      "route_top1": "complete-feasibility-status-is-enough"
+    },
+    {
+      "case_id": "RBLIND-OUT-01",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "zero-parameter-means-absent-term"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "What value should I choose for the shunt susceptance of a 20 km overhead line from manufacturer data?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-OUT-02",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "delta-coil-currents-are-terminal-currents"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "How do triplen harmonic currents circulating in a delta winding affect transformer heating over time?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-OUT-03",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "vanishing-impedance-preserves-ideal-current-sharing"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "How long does it take a vacuum circuit breaker to interrupt fault current and what arcing transients occur?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-OUT-04",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "ideal-transformer-is-a-large-admittance"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "What causes inrush current when a distribution transformer is energized, and how long does it decay?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-OUT-05",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "power-balance-enforces-kcl-at-zero-voltage",
+        "iteration-failure-proves-infeasibility"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "How should I set undervoltage relay pickup and time delay for a bus that collapses during a fault?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-OUT-06",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "loads-generators-fixed-graph-membership"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "What is the typical inertia constant of a synchronous generator used in rotor angle stability studies?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-OUT-07",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "parallel-admittance-implies-decision-equivalence",
+        "mutual-coupling-is-an-ordinary-parallel-network"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "How do I compute the positive-sequence impedance of a double-circuit tower line from conductor spacing?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-OUT-08",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "base-state-equivalent-is-globally-exact"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "Which software tools can export a Ward reduced network in PSS/E raw format?",
+      "route_top1": "primal-equivalence-preserves-raw-multipliers"
+    },
+    {
+      "case_id": "RBLIND-OUT-09",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "ground-neutral-reference-are-one-node"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "What touch and step voltage limits does IEEE 80 specify for substation earthing grids?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-OUT-10",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "terminal-equivalence-implies-opf-equivalence",
+        "complete-feasibility-status-is-enough"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "Which interior point solver is fastest for large AC optimal power flow problems?",
+      "route_top1": "solver-termination-implies-validated-solution"
+    },
+    {
+      "case_id": "RBLIND-OUT-11",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "mutual-coupling-is-an-ordinary-parallel-network"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "How much induced voltage appears on a parallel pipeline during a single-line-to-ground fault on a nearby transmission line?",
+      "route_top1": "parallel-admittance-implies-decision-equivalence"
+    },
+    {
+      "case_id": "RBLIND-OUT-12",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "wye-delta-share-nominal-voltage-base"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "What are the standard nominal voltages for low-voltage distribution networks in Europe and North America?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-OUT-13",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": true,
+      "forbidden_routes": [
+        "reference-matrix-match-proves-source-provenance"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "How does the frequency dependence of earth return impedance affect cable models in electromagnetic transient simulation?",
+      "route_top1": "reference-matrix-match-proves-source-provenance"
+    },
+    {
+      "case_id": "RBLIND-OUT-14",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "transformer-end-swap-is-ordinary-edge-reversal"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "How does an on-load tap changer controller decide when to step its tap position?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-OUT-15",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "terminal-permutation-is-cosmetic"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "What is the recommended phase color coding for conductors in a residential switchboard?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-OUT-16",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "complete-feasibility-status-is-enough",
+        "iteration-failure-proves-infeasibility"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "How do I tune Ipopt's barrier parameter update strategy to speed up convergence?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-OUT-17",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": true,
+      "forbidden_routes": [
+        "iteration-failure-proves-infeasibility"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "How do I trace a PV curve with continuation power flow to find the nose point of a transmission corridor?",
+      "route_top1": "iteration-failure-proves-infeasibility"
+    },
+    {
+      "case_id": "RBLIND-OUT-18",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "apparent-power-limit-implies-current-admissibility"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "What is the thermal time constant of an underground cable when computing its emergency short-term rating?",
+      "route_top1": "reference-matrix-match-proves-source-provenance"
+    },
+    {
+      "case_id": "RBLIND-OUT-19",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "convex-rating-implies-convex-opf"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "Can a semidefinite relaxation of AC OPF be tight, and how do I recover a rank-one solution from it?",
+      "route_top1": "nodal-operator-is-source-network"
+    },
+    {
+      "case_id": "RBLIND-OUT-20",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "nullspace-implies-removable-gauge"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "How do I choose a slack bus that best distributes losses among generators in a transmission study?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-OUT-21",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "vuf-polynomial-pass-defines-zero-ratio"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "What limits on voltage unbalance does EN 50160 allow, and over what averaging window are they measured?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-OUT-22",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "weighted-pf-residual-certifies-ratio",
+        "constant-pf-capability-is-clipping"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "What power factor does a utility tariff typically require large industrial customers to maintain to avoid penalties?",
+      "route_top1": ""
+    },
+    {
+      "case_id": "RBLIND-OUT-23",
+      "case_set": "independent",
+      "expected_route": "",
+      "forbidden_hit": false,
+      "forbidden_routes": [
+        "constant-pf-capability-is-clipping"
+      ],
+      "in_scope_hit": false,
+      "misrouted": false,
+      "question": "How fast must a grid-forming inverter respond to a voltage step under its reactive power droop control?",
+      "route_top1": ""
+    }
+  ],
+  "inputs": {
+    "cases": {
+      "path": "llm/router-scope-paraphrases.toml",
+      "sha256": "4a104e68abc0b981495213dced8ad00bec91852e73acb936695a20ddee5d70f8"
+    },
+    "misconceptions": {
+      "path": "llm/misconceptions.toml",
+      "sha256": "d5cb84ec073330ed8f1f086f0ae7c1c9d3ed97371cca186bd4f6a93941f169dd"
+    }
+  },
+  "purpose": "Router scope-gate measurement on synthetic paraphrases; not a deployment error-rate estimate.",
+  "schema_version": "0.2.0",
+  "summary": {
+    "independent": {
+      "cases": 46,
+      "forbidden_hits": 2,
+      "guarded_cases": 23,
+      "in_scope_abstained": 8,
+      "in_scope_cases": 23,
+      "in_scope_correct": 8,
+      "in_scope_misrouted": 7
+    },
+    "regression": {
+      "cases": 27,
+      "forbidden_hits": 0,
+      "guarded_cases": 10,
+      "in_scope_abstained": 2,
+      "in_scope_cases": 17,
+      "in_scope_correct": 15,
+      "in_scope_misrouted": 0
+    }
+  }
+}
