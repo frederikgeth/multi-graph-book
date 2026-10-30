@@ -1,0 +1,299 @@
+{
+  "delta": [
+    {
+      "coil_current_A": [
+        "2",
+        "4",
+        "-12"
+      ],
+      "coil_law_residual_A": [
+        "0",
+        "0",
+        "0"
+      ],
+      "coil_power_W": [
+        "4",
+        "8",
+        "48"
+      ],
+      "coil_total_power_W": "60",
+      "terminal_current_A": [
+        "14",
+        "2",
+        "-16"
+      ],
+      "terminal_total_power_W": "60"
+    },
+    {
+      "coil_current_A": [
+        "3",
+        "5",
+        "-11"
+      ],
+      "coil_law_residual_A": [
+        "1",
+        "1",
+        "1"
+      ],
+      "coil_power_W": [
+        "6",
+        "10",
+        "44"
+      ],
+      "coil_total_power_W": "60",
+      "terminal_current_A": [
+        "14",
+        "2",
+        "-16"
+      ],
+      "terminal_total_power_W": "60"
+    }
+  ],
+  "delta_coil_voltages_V": [
+    "2",
+    "2",
+    "-4"
+  ],
+  "delta_incidence": [
+    [
+      1,
+      -1,
+      0
+    ],
+    [
+      0,
+      1,
+      -1
+    ],
+    [
+      -1,
+      0,
+      1
+    ]
+  ],
+  "evidence_state": "self_checked_exact_finite_witness",
+  "floating": [
+    {
+      "absolute_bounds_pass": true,
+      "augmented_kcl_residual_A": [
+        "0",
+        "0"
+      ],
+      "current_A": "6",
+      "difference_V": "3",
+      "fixed_earth_shunt_current_A": "0",
+      "kcl_residual_A": [
+        "0",
+        "0"
+      ],
+      "loss_W": "18",
+      "recovered_reference_V": [
+        "3",
+        "0"
+      ],
+      "reference_dependent_objective_V2": "0",
+      "voltage_V": [
+        "3",
+        "0"
+      ]
+    },
+    {
+      "absolute_bounds_pass": false,
+      "augmented_kcl_residual_A": [
+        "0",
+        "5"
+      ],
+      "current_A": "6",
+      "difference_V": "3",
+      "fixed_earth_shunt_current_A": "5",
+      "kcl_residual_A": [
+        "0",
+        "0"
+      ],
+      "loss_W": "18",
+      "recovered_reference_V": [
+        "3",
+        "0"
+      ],
+      "reference_dependent_objective_V2": "25",
+      "voltage_V": [
+        "8",
+        "5"
+      ]
+    }
+  ],
+  "inputs": {
+    "delta": {
+      "circulation_A": "1",
+      "coil_conductances_S": [
+        "1",
+        "2",
+        "3"
+      ],
+      "coil_endpoints": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "b",
+          "c"
+        ],
+        [
+          "c",
+          "a"
+        ]
+      ],
+      "terminal_voltages_V": [
+        "3",
+        "1",
+        "-1"
+      ],
+      "terminals": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "floating": {
+      "absolute_upper_bound_V": "4",
+      "base_voltages_V": [
+        "3",
+        "0"
+      ],
+      "conductance_S": "2",
+      "fixed_earth_shunt_S": "1",
+      "injection_A": "6",
+      "offset_V": "5"
+    },
+    "parallel": {
+      "first_currents_A": [
+        "2",
+        "6",
+        "7",
+        "8"
+      ],
+      "member_caps_A": [
+        "7",
+        "10"
+      ],
+      "total_current_A": "12"
+    }
+  },
+  "not_established": [
+    "automatic nonlinear symmetry detection",
+    "generic feasible-set quotient certification",
+    "native package coverage",
+    "independent scientific review"
+  ],
+  "parallel": [
+    {
+      "kcl_residual_A": "0",
+      "member_caps_pass": true,
+      "member_currents_A": [
+        "2",
+        "10"
+      ],
+      "squared_current_objective_A2": "104",
+      "terminal_power_W": "0",
+      "total_A": "12"
+    },
+    {
+      "kcl_residual_A": "0",
+      "member_caps_pass": true,
+      "member_currents_A": [
+        "6",
+        "6"
+      ],
+      "squared_current_objective_A2": "72",
+      "terminal_power_W": "0",
+      "total_A": "12"
+    },
+    {
+      "kcl_residual_A": "0",
+      "member_caps_pass": true,
+      "member_currents_A": [
+        "7",
+        "5"
+      ],
+      "squared_current_objective_A2": "74",
+      "terminal_power_W": "0",
+      "total_A": "12"
+    },
+    {
+      "kcl_residual_A": "0",
+      "member_caps_pass": false,
+      "member_currents_A": [
+        "8",
+        "4"
+      ],
+      "squared_current_objective_A2": "80",
+      "terminal_power_W": "0",
+      "total_A": "12"
+    }
+  ],
+  "parallel_admissible_interval_A": [
+    "2",
+    "7"
+  ],
+  "projected_totals": [
+    {
+      "feasible": false,
+      "recovered_currents_A": null,
+      "total_A": "-18"
+    },
+    {
+      "feasible": true,
+      "recovered_currents_A": [
+        "-7",
+        "-10"
+      ],
+      "total_A": "-17"
+    },
+    {
+      "feasible": true,
+      "recovered_currents_A": [
+        "0",
+        "0"
+      ],
+      "total_A": "0"
+    },
+    {
+      "feasible": true,
+      "recovered_currents_A": [
+        "9/2",
+        "15/2"
+      ],
+      "total_A": "12"
+    },
+    {
+      "feasible": true,
+      "recovered_currents_A": [
+        "7",
+        "10"
+      ],
+      "total_A": "17"
+    },
+    {
+      "feasible": false,
+      "recovered_currents_A": null,
+      "total_A": "18"
+    }
+  ],
+  "ranks": {
+    "delta_terminal_map": 2,
+    "delta_with_coil_laws": 3,
+    "delta_with_one_coil_observation": 3,
+    "floating_equations": 1,
+    "floating_with_reference": 2,
+    "parallel_kcl": 1,
+    "parallel_with_member_observation": 2
+  },
+  "schema_version": "0.1.0",
+  "source_sha256": {
+    "experiments/lessons/delta_connection_maps.py": "ac3580f897037c64d46261695968f2f1561a967e659e7ca974dd03c900568453",
+    "experiments/lessons/observation_quotients.json": "bb7b6e706aaa422a6f681b492bd062b4025496d2c79b05ede3d441bca00ba3f5",
+    "experiments/lessons/observation_quotients.py": "8360210e070dff6a9baa19aa7485e29c2e8e0d82c5c638475a6ff284344c4143",
+    "experiments/lessons/solution_multiplicity.py": "db4718b29bfb467e07ef564aa28f46d526382feefecb8767e01fffe00feff9c4"
+  }
+}

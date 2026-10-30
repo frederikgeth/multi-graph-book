@@ -10,12 +10,14 @@ import re
 import sys
 from pathlib import Path
 
+from integration_profile import PROFILE, load_profile, validate_checkout
+
 ROOT = Path(__file__).resolve().parents[1]
 SCIENTIFIC = ROOT / "generated/scientific_knowledge.jsonl"
 SCIENTIFIC_MANIFEST = ROOT / "generated/scientific-knowledge-manifest.json"
 PAIR_MANIFEST = ROOT / "generated/federated-knowledge-pair-manifest.json"
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
-SCHEMA_VERSION = "0.1.0"
+SCHEMA_VERSION = "0.2.0"
 
 
 def canonical_json(value: object) -> str:
@@ -47,9 +49,16 @@ def book_identity() -> dict:
 
 
 def bmopf_identity(root: Path) -> tuple[dict, dict[str, dict]]:
+    profile = load_profile()
+    validate_checkout(root, profile)
     manifest_path = root / "generated/executable-knowledge-manifest.json"
     corpus_path = root / "generated/executable_knowledge.jsonl"
     manifest = json.loads(manifest_path.read_text())
+    finding_path = root / "generated/finding-registry.json"
+    findings = json.loads(finding_path.read_text())
+    finding_codes = [item["code"] for item in findings["findings"]]
+    if len(set(finding_codes)) != len(finding_codes) or len(finding_codes) != findings["finding_count"]:
+        raise ValueError("BMOPFTools Finding registry count or code uniqueness is invalid")
     executable = records(corpus_path)
     if sha256_file(corpus_path) != manifest["corpus_sha256"]:
         raise ValueError("BMOPFTools executable corpus hash differs from its manifest")
@@ -170,6 +179,9 @@ def bmopf_identity(root: Path) -> tuple[dict, dict[str, dict]]:
         raise ValueError("BMOPFTools property suites are not completely pinned by the pair manifest")
     identity = {
         "repository": "frederikgeth/BMOPFTools.jl",
+        "revision": profile["revision"],
+        "integration_profile_sha256": sha256_file(PROFILE),
+        "finding_registry": {"sha256": sha256_file(finding_path), "finding_count": findings["finding_count"]},
         "schema_version": manifest["schema_version"],
         "manifest_id": manifest["manifest_id"],
         "manifest_sha256": sha256_file(manifest_path),
@@ -189,7 +201,7 @@ def assemble(bmopf_root: Path) -> dict:
     bmopf, links = bmopf_identity(bmopf_root)
     pair = {
         "schema_version": SCHEMA_VERSION,
-        "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.1.0",
+        "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.2.0",
         "book": book_identity(),
         "bmopftools": bmopf,
         "links": links,
@@ -200,6 +212,17 @@ def assemble(bmopf_root: Path) -> dict:
 
 def validate_committed(pair: dict) -> list[str]:
     errors: list[str] = []
+    profile = load_profile()
+    if pair.get("bmopftools", {}).get("revision") != profile["revision"]:
+        errors.append("pair manifest package revision differs from the integration pin")
+    if pair.get("bmopftools", {}).get("integration_profile_sha256") != sha256_file(PROFILE):
+        errors.append("pair manifest integration profile hash is stale")
+    finding_registry = pair.get("bmopftools", {}).get("finding_registry", {})
+    if not SHA256.fullmatch(finding_registry.get("sha256", "")):
+        errors.append("pair manifest lacks the full Finding registry hash")
+    count = finding_registry.get("finding_count")
+    if type(count) is not int or count < 0:
+        errors.append("pair manifest Finding count is invalid")
     if pair.get("schema_version") != SCHEMA_VERSION:
         errors.append("pair manifest schema version drift")
     identity = dict(pair)

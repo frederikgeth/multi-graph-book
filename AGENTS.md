@@ -23,11 +23,19 @@ python3 scripts/check_llm_reproducibility.py
 
 To repin a deliberately changed executable export:
 
+First update the immutable revision and locked environment in
+`experiments/integration/` following its README. The supplied package checkout
+must be clean and match that revision and tree. Do not change historical replay
+profiles as part of this upgrade.
+
 ```bash
 python3 scripts/check_federated_knowledge.py --write --bmopf-root ../BMOPFTools.jl
 ```
 
 Review the generated diff and both source repositories before committing the new pair identity.
+Run `python3 scripts/check_bmopf_integration.py --bmopf-root ../BMOPFTools.jl`
+for the separate pinned Julia integration gate; ordinary book-only checks do
+not install or execute the package.
 
 When changing `benchmarks/agent/`, keep substrate, conformance-fixture, pilot,
 and measured-run evidence states distinct. Synthetic scorer fixtures are not

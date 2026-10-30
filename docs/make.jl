@@ -47,7 +47,7 @@ function Documenter.LaTeXWriter.latex(
     return
 end
 
-# The worked five-bus figures and the opening vocabulary bridge carry the local
+# The worked five-bus and converter figures and the opening vocabulary bridge carry the local
 # argument and must not float past the text that introduces them. Keep other
 # book images on Documenter's default float policy, but pin these generated
 # figure families to their source position in the PDF. HTML remains unchanged.
@@ -58,7 +58,8 @@ function Documenter.LaTeXWriter.latex(
 )
     writer = Documenter.LaTeXWriter
     fixed_position = startswith(basename(image.path), "five-bus-") ||
-                     startswith(basename(image.path), "vocabulary-bridge-")
+                     startswith(basename(image.path), "vocabulary-bridge-") ||
+                     basename(image.path) in ("ibr-pq-intersection.png", "ibr-voltage-monitor.png")
     writer._println(io, fixed_position ? "\\begin{figure}[H]" : "\\begin{figure}")
     writer._println(io, "\\centering")
     writer._println(
@@ -71,6 +72,23 @@ function Documenter.LaTeXWriter.latex(
     writer.latex(io, node.children)
     writer._println(io, "}")
     writer._println(io, "\\end{figure}")
+    return
+end
+
+# Long identifiers and source paths need legal line breaks in PDF prose/tables.
+# The displayed characters and HTML rendering stay unchanged.
+function Documenter.LaTeXWriter.latex(
+    io::Documenter.LaTeXWriter.Context,
+    node::Documenter.MarkdownAST.Node,
+    code::Documenter.MarkdownAST.Code,
+)
+    writer = Documenter.LaTeXWriter
+    writer._print(io, "\\texttt{")
+    for ch in code.code
+        ch === '⊻' ? writer._print(io, "\\unicodeveebar{}") : writer.latexesc(io, ch)
+        ch in ('/', '_', '.', '-', '=', ',', ':') && writer._print(io, "\\allowbreak{}")
+    end
+    writer._print(io, "}")
     return
 end
 
@@ -160,6 +178,11 @@ const PAGES_HTML = [
     ],
     "Part 7: Evidence for a computation" => [
         "Numerical consequences" => "foundations/numerical-consequences.md",
+        "Check a converter operating point" => "cases/checking-ibr-operating-point.md",
+        "IBR control applicability" => "foundations/ibr-power-factor-controls.md",
+        "Unintended solution multiplicity" => "cases/unintended-solution-multiplicity.md",
+        "Neutral and shunt multiplicity" => "cases/neutral-shunt-multiplicity.md",
+        "Quotients and observations" => "cases/quotients-and-observations.md",
         "Australian construction reproduction" => "cases/australian-carson-reproduction.md",
         "Computational case guide" => "start/computational-cases.md",
     ],
@@ -196,6 +219,7 @@ const PAGES_HTML = [
         "Maps between representation frameworks (reference card)" => "foundations/representation-maps.md",
     ],
     "Physical and computational reference" => [
+        "Device and bound audit reference" => "reference/numerical-audit-reference.md",
         "Translation traps: graphs, circuits, and power-system language" => "foundations/translation-traps.md",
         "Cycles, parallelism, and radial structure" => "foundations/cycles-parallelism-radiality.md",
         "Node--breaker, bus--breaker, and topology processing" => "foundations/node-breaker-topology-processing.md",
@@ -279,6 +303,11 @@ const PAGES_PDF = [
     ],
     "Part 7: Evidence for a computation" => [
         "Numerical consequences" => "foundations/numerical-consequences.md",
+        "Check a converter operating point" => "cases/checking-ibr-operating-point.md",
+        "IBR control applicability" => "foundations/ibr-power-factor-controls.md",
+        "Unintended solution multiplicity" => "cases/unintended-solution-multiplicity.md",
+        "Neutral and shunt multiplicity" => "cases/neutral-shunt-multiplicity.md",
+        "Quotients and observations" => "cases/quotients-and-observations.md",
         "Australian construction reproduction" => "cases/australian-carson-reproduction.md",
         "Computational case guide" => "start/computational-cases.md",
     ],
@@ -434,6 +463,7 @@ function make_latex()
     build()
 end
 
+run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_teaching_figures.py")) ibr-pq-intersection ibr-voltage-monitor`)
 run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_winding_coordinate_actions.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "experiments", "render_literature_gap_map.py"))`)
 run(`python3 $(joinpath(@__DIR__, "..", "scripts", "generate_research_record.py"))`)

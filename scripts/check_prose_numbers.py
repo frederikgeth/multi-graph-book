@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
-"""Check that high-precision prose numbers are artifact-bound or explicitly derived."""
+"""Check displayed-number consistency and explicit derivation bindings.
+
+Legacy matches against the artifact pool establish numerical agreement only;
+they do not establish that the matching artifact supports the passage.
+
+Bindings locate a literal by file, section anchor and literal text, plus an
+`occurrence` index when the literal repeats within that section. Line numbers
+are not used, so edits elsewhere in a page do not invalidate a binding.
+"""
 
 from __future__ import annotations
 
@@ -8,7 +16,8 @@ import json
 import re
 import sys
 import tomllib
-from decimal import Decimal, InvalidOperation
+from collections import Counter
+from decimal import Decimal, InvalidOperation, localcontext
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,7 +31,12 @@ EXCLUDED_DOCS = {
     "docs/src/reference/vocabulary-indexes.md",
 }
 NUMBER = re.compile(r"(?<![A-Za-z0-9_.])[-+]?(?:\d+\.\d+|\.\d+)(?:[eE][-+]?\d+)?")
-SCHEMA_VERSION = "0.1.0"
+HEADING = re.compile(r"^#{1,6}\s+(?P<heading>.+?)\s*$")
+EXPLICIT_ANCHOR = re.compile(r"^\[(?P<title>.+?)\]\(@id\s+(?P<anchor>[^)]+)\)$")
+PREAMBLE = "_preamble"
+SCHEMA_VERSION = "0.2.0"
+BINDING_FIELDS = {"path", "section", "literal", "occurrence", "source_artifact",
+                  "source_sha256", "source_pointer", "source_pointers", "derivation"}
 
 
 def sha256(path: Path) -> str:
@@ -35,8 +49,32 @@ def decimal_places(literal: str) -> int:
 
 
 def quantized(literal: str) -> Decimal:
-    places = decimal_places(literal)
-    return Decimal(literal).quantize(Decimal(1).scaleb(-places))
+    # The exponent is part of the displayed precision: 1.2345e-6 must not
+    # round to four places after the decimal point and falsely match zero.
+    return Decimal(literal)
+
+
+def matches_displayed_number(candidate: Decimal, literal: str) -> bool:
+    if not candidate.is_finite():
+        return False
+    target = quantized(literal)
+    quantum = Decimal((0, (1,), target.as_tuple().exponent))
+    # New exact-arithmetic artifacts can contain integers wider than the
+    # default 28-digit context. Such unrelated values must not crash the gate.
+    with localcontext() as context:
+        context.prec = max(context.prec, len(candidate.as_tuple().digits),
+                           candidate.adjusted() - quantum.as_tuple().exponent + 2)
+        return candidate.quantize(quantum) == target
+
+
+def heading_anchor(raw: str) -> str:
+    """Documenter anchor: explicit `@id`, else the corpus slug of the title."""
+    match = EXPLICIT_ANCHOR.match(raw)
+    if match:
+        return match.group("anchor")
+    title = re.sub(r"\[([^]]+)\]\([^)]+\)", r"\1", raw)
+    value = re.sub(r"[`*_]", "", title.strip().lower())
+    return re.sub(r"[^a-z0-9]+", "-", value).strip("-") or "section"
 
 
 def strip_non_prose(text: str) -> str:
@@ -71,13 +109,28 @@ def prose_numbers() -> list[dict]:
         if relative in EXCLUDED_DOCS:
             continue
         text = strip_non_prose(path.read_text())
+        section, seen_anchors, occurrences = PREAMBLE, Counter(), Counter()
         for line_number, line in enumerate(text.splitlines(), start=1):
+            heading = HEADING.match(line)
+            if heading:
+                base = heading_anchor(heading.group("heading"))
+                seen_anchors[base] += 1
+                section = base if seen_anchors[base] == 1 else f"{base}-{seen_anchors[base]}"
             for match in NUMBER.finditer(line):
                 literal = match.group(0)
                 if decimal_places(literal) < 4:
                     continue
-                values.append({"path": relative, "line": line_number, "literal": literal})
+                occurrences[(section, literal)] += 1
+                values.append({"path": relative, "line": line_number, "section": section,
+                               "literal": literal, "occurrence": occurrences[(section, literal)]})
+    totals = Counter((v["path"], v["section"], v["literal"]) for v in values)
+    for value in values:
+        value["repeats"] = totals[(value["path"], value["section"], value["literal"])]
     return values
+
+
+def literal_key(item: dict) -> tuple:
+    return (item.get("path"), item.get("section"), item.get("literal"), item.get("occurrence", 1))
 
 
 def numeric_values(value: object) -> list[Decimal]:
@@ -117,6 +170,36 @@ def artifact_values() -> list[Decimal]:
     return values
 
 
+def pointer_values(binding: dict, artifact: Path) -> list[Decimal] | None:
+    """Resolve explicitly selected JSON values; None retains legacy derivations."""
+    if "source_pointer" not in binding and "source_pointers" not in binding:
+        return None
+    if "source_pointer" in binding and "source_pointers" in binding:
+        raise ValueError("choose source_pointer or source_pointers, not both")
+    pointers = binding.get("source_pointers", [binding.get("source_pointer")])
+    if not isinstance(pointers, list) or not pointers or not all(isinstance(p, str) and p.startswith("/") for p in pointers):
+        raise ValueError("source pointers must be a nonempty list of JSON pointers")
+    source = json.loads(artifact.read_text(), parse_float=Decimal, parse_int=Decimal)
+    values = []
+    for pointer in pointers:
+        item = source
+        for token in pointer.split("/")[1:]:
+            token = token.replace("~1", "/").replace("~0", "~")
+            if isinstance(item, list):
+                if not re.fullmatch(r"0|[1-9][0-9]*", token):
+                    raise ValueError("invalid source array index")
+                item = item[int(token)]
+            else:
+                item = item[token]
+        if isinstance(item, bool) or not isinstance(item, (str, int, float, Decimal)):
+            raise ValueError("source pointer must select a numeric scalar")
+        number = Decimal(str(item))
+        if not number.is_finite():
+            raise ValueError("source pointer must select a finite value")
+        values.append(number)
+    return values
+
+
 def main() -> int:
     errors: list[str] = []
     try:
@@ -128,8 +211,15 @@ def main() -> int:
         errors.append("prose-number binding schema version drift")
     bindings = document.get("binding", [])
     binding_keys = set()
+    selected_values = {}
     for binding in bindings:
-        key = (binding.get("path"), binding.get("line"), binding.get("literal"))
+        key = literal_key(binding)
+        unknown = set(binding) - BINDING_FIELDS
+        if unknown:
+            errors.append(f"prose-number binding has unknown fields {sorted(unknown)}: {key}")
+        occurrence = binding.get("occurrence", 1)
+        if not isinstance(occurrence, int) or isinstance(occurrence, bool) or occurrence < 1:
+            errors.append(f"prose-number binding occurrence must be a positive integer: {key}")
         if key in binding_keys:
             errors.append(f"duplicate prose-number binding: {key}")
         binding_keys.add(key)
@@ -140,19 +230,34 @@ def main() -> int:
             errors.append(f"binding source artifact hash is stale: {binding.get('source_artifact')}")
         if not str(binding.get("derivation", "")).strip():
             errors.append(f"binding has no derivation explanation: {key}")
+        if artifact.is_file():
+            try:
+                selected_values[key] = pointer_values(binding, artifact)
+            except (OSError, ValueError, KeyError, IndexError, TypeError, InvalidOperation) as error:
+                errors.append(f"invalid source pointer for {key}: {error}")
 
     values = prose_numbers()
-    current_keys = {(value["path"], value["line"], value["literal"]) for value in values}
+    current_keys = {literal_key(value) for value in values}
+    repeats = {literal_key(value): value["repeats"] for value in values}
+    explicit_occurrence = {literal_key(b) for b in bindings if "occurrence" in b}
     artifacts = artifact_values()
     direct_matches = 0
     unmatched = []
     for value in values:
-        places = decimal_places(value["literal"])
-        target = quantized(value["literal"])
-        if any(candidate.quantize(Decimal(1).scaleb(-places)) == target for candidate in artifacts):
+        key = literal_key(value)
+        # An explicit binding cannot fall back to an unrelated number elsewhere
+        # in the corpus when its selected observation disagrees or is missing.
+        if key in binding_keys:
+            if repeats[key] > 1 and key not in explicit_occurrence:
+                errors.append(f"literal repeats {repeats[key]} times in its section; "
+                              f"set occurrence explicitly: {key}")
+            selected = selected_values.get(key)
+            if selected is not None and not all(matches_displayed_number(n, value["literal"]) for n in selected):
+                errors.append(f"selected source value does not match displayed precision: {key}")
+        elif any(matches_displayed_number(candidate, value["literal"]) for candidate in artifacts):
             direct_matches += 1
-        elif (value["path"], value["line"], value["literal"]) not in binding_keys:
-            unmatched.append((value["path"], value["line"], value["literal"]))
+        else:
+            unmatched.append((*key, f"line {value['line']}"))
     for key in binding_keys - current_keys:
         errors.append(f"prose-number binding does not match a current literal: {key}")
     errors.extend(f"unbound high-precision prose number: {key}" for key in unmatched)
@@ -163,7 +268,7 @@ def main() -> int:
         return 1
     print(
         f"prose numbers: {len(values)} high-precision literals checked; "
-        f"{direct_matches} direct artifact matches and {len(bindings)} explicit derived bindings pass"
+        f"{direct_matches} unscoped numeric matches and {len(bindings)} explicit derived bindings pass"
     )
     return 0
 

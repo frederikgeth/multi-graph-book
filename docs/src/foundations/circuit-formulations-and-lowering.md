@@ -50,6 +50,84 @@ restricted domain. They are not interchangeable source models: eliminating a
 current variable can remove the direct place to attach a thermal limit, a
 switch state, or a protection relation.
 
+## [Worked boundary: power balance at zero voltage](@id zero-voltage-kcl)
+
+**Predict before calculating.** At a terminal with voltage zero, the represented
+signed current outflows sum to 1 A. What do a current-residual check and a
+power-residual check report? Use RMS complex phasors, with every branch, device,
+source and earth-path current included under one orientation convention.
+
+Let ``r_I`` be that terminal's KCL residual in amperes. If all terminal powers
+use the same terminal voltage ``V``, their complex-power residual is
+
+```math
+r_S=V\overline{r_I},\qquad |r_S|=|V|\,|r_I|.
+```
+
+KCL implies this power balance at every voltage. The converse follows by
+division only when ``V\ne0``. At ``V=0``, the power row is zero for *every*
+current residual: the 1 A witness passes that row while failing KCL. This is
+a statement about replacing a particular current equation by its power product,
+not a claim that every formulation using power variables is invalid.
+Claim `FORMULATION-ZERO-001` records this equation-level boundary. The four-wire
+OPF study [ClaeysDeconinckGeth2022](@cite) discusses its network consequences;
+the argument here is a direct scalar derivation, not a reproduction of that study.
+
+For a fixed impedance load with admittance ``Y``, compare the native relation
+``I=YV`` with only
+
+```math
+V\overline I=\overline Y|V|^2.
+```
+
+The native relation requires ``I=0`` at ``V=0``; the power-only relation admits
+any ``I`` there. Adding a lower bound ``|V|\ge\varepsilon>0`` excludes the
+valid zero-voltage, zero-current state. It changes the model domain rather than
+proving equivalence on the original domain. In particular, a neutral need not
+have a strictly positive voltage relative to the chosen reference.
+
+At a declared perfect ground or ideal voltage source, account for its reaction
+current before calling a current sum a KCL violation. An omitted ground/source
+current is missing evidence. The witness above concerns the complete current
+row, not a sum that silently leaves out a physical return path.
+
+### Residual units and a small-voltage test
+
+Even away from zero, accepting ``|r_S|\le\tau_S`` implies only
+``|r_I|\le\tau_S/|V|``. A uniform current-error bound needs a justified positive
+voltage bound or a direct current check. For ``V=10^{-12}`` V and ``r_I=1`` A,
+the power residual is only ``10^{-12}`` VA. Reporting that small number without
+its voltage and current residual hides the failure.
+
+```sh
+python3 experiments/lessons/zero_voltage_kcl.py --check
+python3 experiments/lessons/zero_voltage_kcl.py
+python3 experiments/lessons/zero_voltage_kcl.py --voltage 3+4j --current 1-2j
+```
+
+The last command gives ``r_I=1-2j`` A and ``r_S=-5+10j`` VA. The script checks
+zero and nonzero voltages, the native impedance law, the tolerance boundary,
+and aggregate cancellation. Two nonzero-voltage terminals can have power
+residuals ``+1`` and ``-1`` VA: their *sum* is zero while neither nodal row
+passes. Total network power balance is therefore a different check again.
+
+### Transfer exercise
+
+At ``V=3+4j`` V a terminal has ``r_I=0.6+0.8j`` A. Compute both residual
+magnitudes. Then decide whether replacing KCL by power balance is exact on a
+domain containing ``V=0``, and whether a 1 mVA power tolerance alone guarantees
+a 1 mA current tolerance on a domain permitting arbitrarily small voltages.
+
+**Check your reasoning:** the magnitudes are 1 A and 5 VA. The two domain-wide
+claims fail. On a domain with ``|V|\ge1`` V, the stated power tolerance does
+bound this particular current residual by 1 mA. None of these checks establishes
+device limits, all-device feasibility or global optimality.
+
+The pinned package's [exact-substitution guide](https://github.com/frederikgeth/BMOPFTools.jl/blob/97c274946091859b7d9b0e822c96f1e7f9f50c7e/docs/src/formulation_substitutions.md)
+and [device tests](https://github.com/frederikgeth/BMOPFTools.jl/blob/97c274946091859b7d9b0e822c96f1e7f9f50c7e/test/opf_device_substitution_tests.jl)
+describe its native pure-impedance substitutions. They are package evidence,
+separate from this book-owned algebraic lesson.
+
 ## Numerical footprint of the formulation choice
 
 The choice of equation target also changes the symbolic problem seen by a
@@ -322,6 +400,124 @@ better target only for the declared questions. If the study asks only for a
 fixed linear boundary voltage relation, eliminating tableau variables may be
 appropriate; if it asks for switching, protection, or member ratings, the
 uneliminated variables are part of the preservation contract.
+
+### [Worked boundary: an ideal transformer is a relation](@id ideal-transformer-port-lesson)
+
+**Predict before eliminating a variable.** A 230:115 V single-phase transformer
+has exactly zero leakage. Its secondary neutral reaches earth through 10 Ω.
+Does the zero leakage require an infinite matrix entry? Would a 1:1 ratio bond
+the two neutrals? Neither conclusion follows from the transformer relation.
+
+Take unity tap, a real turns ratio ``a=2``, RMS phasors, and terminal order
+``V=[V_{p+},V_{p-},V_{s+},V_{s-}]^{\mathsf T}``. Refer leakage ``z`` to the
+primary. Define ``u_1=V_{p+}-V_{p-}``, ``u_2=V_{s+}-V_{s-}`` and
+
+```math
+C=[1,-1,-a,a],\qquad CV=zi,\qquad I_{\mathrm{core}}=C^{\mathsf T}i.
+```
+
+Here ``i`` is the primary coil current; terminal currents point from the buses
+into the transformer. At ``z=0``, the voltage relation is ``u_1=a u_2`` and
+KCL determines the current under the external circuit conditions. No finite
+voltage-only admittance can encode this ideal constraint for arbitrary voltages.
+For ``z\ne0``, eliminating ``i`` gives the core stamp ``C^{\mathsf T}C/z``.
+The inverse becomes unavailable at exactly zero; that is a reason to retain the
+current variable, not to replace zero by an arbitrary small resistance.
+
+Let ``Y_s`` contain a secondary magnetizing shunt
+``Y_m=0.001-0.002j`` S across the secondary coil and one grounding conductance
+``g_g=0.1`` S from its neutral to earth. Both stay present exactly once, even
+when the core is ideal. With any positive finite scale ``y_0`` in siemens, put
+``i=y_0w``, ``A=y_0C`` and ``D=y_0^2z``. The bordered equations are
+
+```math
+\begin{bmatrix}Y_s&A^{\mathsf T}\\A&-D\end{bmatrix}
+\begin{bmatrix}V\\w\end{bmatrix}
+=\begin{bmatrix}J\\0\end{bmatrix}.
+```
+
+The lower row is precisely ``CV=zi`` after dividing by ``y_0``. At nonzero
+``z``, eliminating ``w`` recovers ``Y_s+C^{\mathsf T}C/z``; at zero, retain
+the bordered row. This is the scalar reformulation in claim
+`FORMULATION-PORT-001`, following the MNA principle
+[HoRuehliBrennan1975](@cite). It does not promise uniform conditioning, a
+nonsingular complete network, or preservation of arbitrary nonlinear controls.
+
+### A loaded 230:115 V calculation
+
+Impose ``V_{p+}=230`` V and ``V_{p-}=0`` V. Connect a 23 Ω load across the
+secondary, with ``Y_L=1/23`` S, and inject a diagnostic ``J_g=0.2`` A into the
+secondary neutral from earth. This extra source makes the earth branch
+observable; a purely differential excitation would leave its current zero.
+The load is external to the transformer and is added separately to KCL.
+
+The independent scalar solution is
+
+```math
+u_2=\frac{a\,230}{a^2+z(Y_L+Y_m)},\qquad
+i=\frac{(Y_L+Y_m)u_2}{a},\qquad
+V_{s-}=J_g/g_g=2\ \mathrm V.
+```
+
+For ``z=0``, ``u_2=115`` V, ``V_{s+}=117`` V, and
+``i=2.5575-0.115j`` A. The load current is 5 A; the separate magnetizing
+current is ``0.115-0.23j`` A. The transformer's four terminal currents are
+``[i,-i,-5,5.2]`` A. Sum terminal complex powers as an additional check:
+
+```math
+\sum_k V_k\overline{I_k}
+=z|i|^2+\overline{Y_m}|u_2|^2+g_g|V_{s-}|^2.
+```
+
+This is power absorbed by the transformer model, including its shunts and
+earth branch; it excludes the external load. At zero leakage it is
+``13.625+26.45j`` VA. Omitting or doubling either shunt changes terminal
+currents at this same state. A test that compares only the ideal voltage ratio
+would miss those mutations.
+
+```sh
+python3 experiments/lessons/transformer_ports.py --check
+python3 experiments/lessons/transformer_ports.py --leakage 0
+julia --startup-file=no --project=experiments/integration experiments/lessons/transformer_ports.jl
+```
+
+The Python calculation compares an independently reduced scalar solution with
+finite stamps and bordered solves. It checks complex power, three current
+scales, missing/doubled shunts and reversed excitation. The optional Julia
+companion checks the pinned package at ratios 1 and 2, finite complex leakage,
+small nonzero leakage and zero leakage. It compares terminal currents and
+voltages, rejects missing nominal voltages, and checks the explicit passive
+shunt block. These are finite self-checks; they are not independent external
+review or a general verification of every transformer subtype.
+
+In the pinned [BMOPFTools admittance policy](https://github.com/frederikgeth/BMOPFTools.jl/blob/97c274946091859b7d9b0e822c96f1e7f9f50c7e/docs/src/spec/nodal-admittance.md),
+`xfmr_z_min_ohm` selects the bordered representation for sufficiently small
+effective leakage. It retains nonzero ``z`` in ``D``. The Julia companion uses
+the *same* ``10^{-4}`` Ω leakage with thresholds ``10^{-6}`` and ``10^{-3}`` Ω
+and checks agreement across that representation change. Missing nominal
+voltages are rejected; they do not imply a unity ratio. The locked integration
+workflow documented in the repository's `experiments/integration/README.md`
+runs the companion and records its source identity and numerical evidence.
+
+### References, free modes, and transfer
+
+Before applying earth and boundary conditions, both common shifts
+``[1,1,0,0]`` and ``[0,0,1,1]`` lie in the nullspace of ``C`` and of the
+coil shunt. The finite earth branch removes the secondary common-shift freedom;
+the primary reference still comes from the imposed boundary. Setting ``a=1``
+does not identify the two neutrals: under the same diagnostic injection their
+voltages remain 0 V and 2 V. If the only secondary earth path is removed while
+``J_g\ne0``, summing secondary KCL gives an inconsistency. With ``J_g=0``
+instead, the ungrounded secondary has a free common mode. These are different
+failure diagnoses.
+
+**Transfer exercise.** Reverse the primary differential excitation to -230 V
+while keeping ``J_g=0.2`` A, then set the ratio to one in a separate case.
+Predict what reverses, what stays fixed, and whether the neutrals become bonded.
+**Check your reasoning:** the coil differential voltage and coil current reverse;
+the 2 V secondary-neutral offset stays fixed. At unity ratio the ideal coil
+voltages agree, but there is still no neutral bond. Grounding adequacy, fault
+behaviour and protection require additional physical models.
 
 ### Branch-current, branch-flow, and chain formulations
 

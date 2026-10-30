@@ -315,6 +315,7 @@ def evaluate() -> dict:
             "heldout_paraphrases": {"path": "llm/heldout-paraphrases.toml", "sha256": sha256(HELDOUT)},
             "misconceptions": {"path": "llm/misconceptions.toml", "sha256": sha256(MISCONCEPTIONS)},
             "context_packet_schema": {"path": "schemas/llm-context-packet.schema.json", "sha256": sha256(CONTEXT_SCHEMA)},
+            "router": {"path": "scripts/llm_retrieval.py", "sha256": sha256(ROOT / "scripts/llm_retrieval.py")},
         },
         "thresholds": thresholds,
         "threshold_results": threshold_results,

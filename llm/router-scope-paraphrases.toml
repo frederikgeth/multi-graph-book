@@ -1,0 +1,387 @@
+schema_version = "0.1.0"
+purpose = """Synthetic paraphrases that probe contract-router scope gates: in-scope wording the gates should admit, and \
+out-of-scope wording they must not route to a scoped contract. Written by the author/agent, not human-validated. \
+The first measurement was recorded before any gate was changed against it; later gate edits must not edit these \
+cases to fit, and new cases should be added rather than rewritten. Not a deployment error-rate estimate."""
+
+# expected_route: the contract that should be top-1. Omit for out-of-scope cases.
+# forbidden_routes: contracts that must not be top-1, because their packets
+# cannot answer the question. A forbidden hit fails the check.
+
+# Constant PF versus capability clipping.
+[[case]]
+case_id = "RSCOPE-CPF-01"
+question = "Under a fixed power factor setpoint, can I just cap reactive power at its limit?"
+expected_route = "constant-pf-capability-is-clipping"
+
+[[case]]
+case_id = "RSCOPE-CPF-02"
+question = "If an inverter runs at constant PF and hits qmin, is it fine to saturate Q there and keep P?"
+expected_route = "constant-pf-capability-is-clipping"
+
+[[case]]
+case_id = "RSCOPE-CPF-03"
+question = "Is limiting Q to the capability bound compatible with a constant power factor law at the same P?"
+expected_route = "constant-pf-capability-is-clipping"
+
+[[case]]
+case_id = "RSCOPE-CPF-04"
+question = "With a constant power factor control, what happens if I clip Q to the capability limit during a fault transient?"
+forbidden_routes = ["constant-pf-capability-is-clipping", "weighted-pf-residual-certifies-ratio"]
+
+# Weighted PF residual versus ratio.
+[[case]]
+case_id = "RSCOPE-WPF-01"
+question = "Does a small weighted power factor residual mean the PF ratio is within tolerance?"
+expected_route = "weighted-pf-residual-certifies-ratio"
+
+[[case]]
+case_id = "RSCOPE-WPF-02"
+question = "If the minimum PF constraint residual is tiny, does that certify the actual power factor?"
+expected_route = "weighted-pf-residual-certifies-ratio"
+
+[[case]]
+case_id = "RSCOPE-WPF-03"
+question = "Does a tiny power factor residual mean the inverter filter will not overheat?"
+forbidden_routes = ["weighted-pf-residual-certifies-ratio", "constant-pf-capability-is-clipping"]
+
+# VUF polynomial form.
+[[case]]
+case_id = "RSCOPE-VUF-01"
+question = "If the cross-multiplied VUF constraint passes when positive-sequence voltage is zero, what is the unbalance ratio?"
+expected_route = "vuf-polynomial-pass-defines-zero-ratio"
+
+[[case]]
+case_id = "RSCOPE-VUF-02"
+question = "Does satisfying the polynomial voltage unbalance limit define the ratio when the denominator vanishes?"
+expected_route = "vuf-polynomial-pass-defines-zero-ratio"
+
+[[case]]
+case_id = "RSCOPE-VUF-03"
+question = "Does the VUF ratio limit tell me the transient unbalance during transformer inrush?"
+forbidden_routes = ["vuf-polynomial-pass-defines-zero-ratio"]
+
+[[case]]
+case_id = "RSCOPE-VUF-04"
+question = "Is the power factor ratio defined when the VUF denominator is zero?"
+forbidden_routes = ["vuf-polynomial-pass-defines-zero-ratio"]
+
+# Apparent-power limit versus current admissibility.
+[[case]]
+case_id = "RSCOPE-SLIM-01"
+question = "Does an apparent power limit at nominal voltage guarantee the conductor current limit?"
+expected_route = "apparent-power-limit-implies-current-admissibility"
+
+[[case]]
+case_id = "RSCOPE-SLIM-02"
+question = "Does an apparent power limit at nominal voltage guarantee the conductor current limit, given heating?"
+expected_route = "apparent-power-limit-implies-current-admissibility"
+
+[[case]]
+case_id = "RSCOPE-SLIM-03"
+question = "Can replacing a current rating with an MVA cap admit an extra low-voltage solution?"
+expected_route = "apparent-power-limit-implies-current-admissibility"
+
+[[case]]
+case_id = "RSCOPE-SLIM-04"
+question = "Is a static MVA limit the same as a current limit when voltage is depressed?"
+expected_route = "apparent-power-limit-implies-current-admissibility"
+
+[[case]]
+case_id = "RSCOPE-SLIM-05"
+question = "How does a dynamic line rating change the current limit during a heat wave?"
+forbidden_routes = ["apparent-power-limit-implies-current-admissibility"]
+
+# Delta coil and nullspace contracts versus transient physics.
+[[case]]
+case_id = "RSCOPE-DELTA-01"
+question = "Can I insert delta coil currents straight into terminal KCL?"
+expected_route = "delta-coil-currents-are-terminal-currents"
+
+[[case]]
+case_id = "RSCOPE-DELTA-02"
+question = "What are the delta coil currents during transformer inrush energisation?"
+forbidden_routes = ["delta-coil-currents-are-terminal-currents", "nullspace-implies-removable-gauge"]
+
+[[case]]
+case_id = "RSCOPE-NULL-01"
+question = "Does a nullspace in the incidence matrix always mean a removable gauge symmetry?"
+expected_route = "nullspace-implies-removable-gauge"
+
+[[case]]
+case_id = "RSCOPE-NULL-02"
+question = "Does core saturation create a nullspace in the transformer magnetising branch?"
+forbidden_routes = ["nullspace-implies-removable-gauge"]
+
+# KCL at zero voltage.
+[[case]]
+case_id = "RSCOPE-KCL-01"
+question = "Does enforcing power balance still enforce KCL when the node voltage is zero?"
+expected_route = "power-balance-enforces-kcl-at-zero-voltage"
+
+[[case]]
+case_id = "RSCOPE-KCL-02"
+question = "At a zero-voltage neutral, can the power residual be zero while the current residual is not?"
+expected_route = "power-balance-enforces-kcl-at-zero-voltage"
+
+[[case]]
+case_id = "RSCOPE-KCL-03"
+question = "Does VUF at zero voltage enforce KCL?"
+forbidden_routes = ["power-balance-enforces-kcl-at-zero-voltage"]
+
+# Wye/delta base normalization.
+[[case]]
+case_id = "RSCOPE-WYED-01"
+question = "Do wye and delta loads share the same nominal voltage base?"
+expected_route = "wye-delta-share-nominal-voltage-base"
+
+[[case]]
+case_id = "RSCOPE-WYED-02"
+question = "How do I map delta coil currents to terminal currents at the nominal operating point?"
+forbidden_routes = ["wye-delta-share-nominal-voltage-base"]
+
+# Provenance versus impedance.
+[[case]]
+case_id = "RSCOPE-PROV-01"
+question = "If my line impedance matrix matches the reference, does that prove the cable construction provenance?"
+expected_route = "reference-matrix-match-proves-source-provenance"
+
+[[case]]
+case_id = "RSCOPE-PROV-02"
+question = "What series impedance should a 1 km overhead line have?"
+forbidden_routes = ["reference-matrix-match-proves-source-provenance"]
+
+# Independent set (RBLIND-*). Written by a separate agent instance that saw only
+# each contract title and qualification text, with no repository access and no
+# gate patterns. Recorded verbatim; measured before any gate change. Not human
+# authored, so independence from the gate author is partial.
+
+[[case]]
+case_id = "RBLIND-IN-01"
+question = "My line model currently has the shunt susceptance set to 0, so can I just strip that term out of the compiled equations and reuse the model for other cases later?"
+expected_route = "zero-parameter-means-absent-term"
+
+[[case]]
+case_id = "RBLIND-IN-02"
+question = "For a delta-connected load, can I take the branch currents flowing inside each winding and report them as the line currents at the terminals?"
+expected_route = "delta-coil-currents-are-terminal-currents"
+
+[[case]]
+case_id = "RBLIND-IN-03"
+question = "If I model a closed breaker as a 1e-6 ohm resistor instead of a perfect short, will the split of current between parallel paths come out the same?"
+expected_route = "vanishing-impedance-preserves-ideal-current-sharing"
+
+[[case]]
+case_id = "RBLIND-IN-04"
+question = "Is it fine to represent a lossless transformer by putting a very large series admittance between its windings, or by setting the leakage reactance to zero in the regular branch model?"
+expected_route = "ideal-transformer-is-a-large-admittance"
+
+[[case]]
+case_id = "RBLIND-IN-05"
+question = "If my P and Q mismatch equations are satisfied at a bus whose voltage has dropped to zero, does that guarantee the currents there still sum to zero?"
+expected_route = "power-balance-enforces-kcl-at-zero-voltage"
+
+[[case]]
+case_id = "RBLIND-IN-06"
+question = "When building the bus admittance matrix, should a constant-impedance load always be folded into Y or always be kept outside as a separate injection device?"
+expected_route = "loads-generators-fixed-graph-membership"
+
+[[case]]
+case_id = "RBLIND-IN-07"
+question = "If I merge two parallel circuits into one equivalent line, can I just add their thermal limits together and use that as the combined branch limit in my OPF?"
+expected_route = "parallel-admittance-implies-decision-equivalence"
+
+[[case]]
+case_id = "RBLIND-IN-08"
+question = "Once I reduce the external system to a Ward equivalent at today's operating point, will that reduced model stay accurate for any loading level I study?"
+expected_route = "base-state-equivalent-is-globally-exact"
+
+[[case]]
+case_id = "RBLIND-IN-09"
+question = "In a four-wire distribution model, can I just treat the neutral wire, the earth and the zero-voltage reference as one and the same bus?"
+expected_route = "ground-neutral-reference-are-one-node"
+
+[[case]]
+case_id = "RBLIND-IN-10"
+question = "If two network models produce identical port voltage-current relations, will an optimal power flow give the same dispatch on either of them?"
+expected_route = "terminal-equivalence-implies-opf-equivalence"
+
+[[case]]
+case_id = "RBLIND-IN-11"
+question = "When cables sharing a trench are magnetically coupled, can I treat the edges of the resulting coupling graph as real parallel conductors carrying current?"
+expected_route = "mutual-coupling-is-an-ordinary-parallel-network"
+
+[[case]]
+case_id = "RBLIND-IN-12"
+question = "For ZIP loads connected phase-to-neutral and phase-to-phase on a 400 V feeder, can both use the same rated voltage value in their voltage-dependence exponent formula?"
+expected_route = "wye-delta-share-nominal-voltage-base"
+
+[[case]]
+case_id = "RBLIND-IN-13"
+question = "My computed series impedance matrix matches the one in the utility dataset almost exactly, so does that confirm I used the same conductor geometry and earth model they did?"
+expected_route = "reference-matrix-match-proves-source-provenance"
+
+[[case]]
+case_id = "RBLIND-IN-14"
+question = "If I flip the from and to buses of a delta-wye transformer in my case file, is that equivalent to just reversing the direction of a line?"
+expected_route = "transformer-end-swap-is-ordinary-edge-reversal"
+
+[[case]]
+case_id = "RBLIND-IN-15"
+question = "Does it matter if I list the phase wires as c-b-a instead of a-b-c when entering a line's impedance matrix, since it is just a naming convention?"
+expected_route = "terminal-permutation-is-cosmetic"
+
+[[case]]
+case_id = "RBLIND-IN-16"
+question = "Ipopt returned LOCALLY_SOLVED for my unbalanced power flow, so can I report the operating point as physically feasible without further checks?"
+expected_route = "complete-feasibility-status-is-enough"
+
+[[case]]
+case_id = "RBLIND-IN-17"
+question = "My Newton-Raphson load flow diverged at this loading level, so does that mean the system has hit its voltage stability limit?"
+expected_route = "iteration-failure-proves-infeasibility"
+
+[[case]]
+case_id = "RBLIND-IN-18"
+question = "If I limit a line's MVA flow at its nameplate value, does that guarantee the current stays within the ampacity even when the voltage sags well below 1 pu?"
+expected_route = "apparent-power-limit-implies-current-admissibility"
+
+[[case]]
+case_id = "RBLIND-IN-19"
+question = "Since a thermal limit written as a second-order cone is convex, does adding it make my whole AC optimal power flow a convex problem with a single optimum?"
+expected_route = "convex-rating-implies-convex-opf"
+
+[[case]]
+case_id = "RBLIND-IN-20"
+question = "My Jacobian is singular, so can I fix every null direction by grounding an extra bus angle the way I fix the slack reference?"
+expected_route = "nullspace-implies-removable-gauge"
+
+[[case]]
+case_id = "RBLIND-IN-21"
+question = "If I enforce the unbalance limit as negative-sequence magnitude squared below k squared times positive-sequence magnitude squared, does a point where all phase voltages are zero have a meaningful unbalance factor?"
+expected_route = "vuf-polynomial-pass-defines-zero-ratio"
+
+[[case]]
+case_id = "RBLIND-IN-22"
+question = "If the scaled residual Q minus tan(phi) times P is under 1e-6 at an inverter, can I conclude its actual cos phi equals the setpoint?"
+expected_route = "weighted-pf-residual-certifies-ratio"
+
+[[case]]
+case_id = "RBLIND-IN-23"
+question = "When an inverter in fixed power factor mode would need more vars than its kVA capability allows, does the solver just cap Q at the limit and carry on?"
+expected_route = "constant-pf-capability-is-clipping"
+
+[[case]]
+case_id = "RBLIND-OUT-01"
+question = "What value should I choose for the shunt susceptance of a 20 km overhead line from manufacturer data?"
+forbidden_routes = ["zero-parameter-means-absent-term"]
+
+[[case]]
+case_id = "RBLIND-OUT-02"
+question = "How do triplen harmonic currents circulating in a delta winding affect transformer heating over time?"
+forbidden_routes = ["delta-coil-currents-are-terminal-currents"]
+
+[[case]]
+case_id = "RBLIND-OUT-03"
+question = "How long does it take a vacuum circuit breaker to interrupt fault current and what arcing transients occur?"
+forbidden_routes = ["vanishing-impedance-preserves-ideal-current-sharing"]
+
+[[case]]
+case_id = "RBLIND-OUT-04"
+question = "What causes inrush current when a distribution transformer is energized, and how long does it decay?"
+forbidden_routes = ["ideal-transformer-is-a-large-admittance"]
+
+[[case]]
+case_id = "RBLIND-OUT-05"
+question = "How should I set undervoltage relay pickup and time delay for a bus that collapses during a fault?"
+forbidden_routes = ["power-balance-enforces-kcl-at-zero-voltage", "iteration-failure-proves-infeasibility"]
+
+[[case]]
+case_id = "RBLIND-OUT-06"
+question = "What is the typical inertia constant of a synchronous generator used in rotor angle stability studies?"
+forbidden_routes = ["loads-generators-fixed-graph-membership"]
+
+[[case]]
+case_id = "RBLIND-OUT-07"
+question = "How do I compute the positive-sequence impedance of a double-circuit tower line from conductor spacing?"
+forbidden_routes = ["parallel-admittance-implies-decision-equivalence", "mutual-coupling-is-an-ordinary-parallel-network"]
+
+[[case]]
+case_id = "RBLIND-OUT-08"
+question = "Which software tools can export a Ward reduced network in PSS/E raw format?"
+forbidden_routes = ["base-state-equivalent-is-globally-exact"]
+
+[[case]]
+case_id = "RBLIND-OUT-09"
+question = "What touch and step voltage limits does IEEE 80 specify for substation earthing grids?"
+forbidden_routes = ["ground-neutral-reference-are-one-node"]
+
+[[case]]
+case_id = "RBLIND-OUT-10"
+question = "Which interior point solver is fastest for large AC optimal power flow problems?"
+forbidden_routes = ["terminal-equivalence-implies-opf-equivalence", "complete-feasibility-status-is-enough"]
+
+[[case]]
+case_id = "RBLIND-OUT-11"
+question = "How much induced voltage appears on a parallel pipeline during a single-line-to-ground fault on a nearby transmission line?"
+forbidden_routes = ["mutual-coupling-is-an-ordinary-parallel-network"]
+
+[[case]]
+case_id = "RBLIND-OUT-12"
+question = "What are the standard nominal voltages for low-voltage distribution networks in Europe and North America?"
+forbidden_routes = ["wye-delta-share-nominal-voltage-base"]
+
+[[case]]
+case_id = "RBLIND-OUT-13"
+question = "How does the frequency dependence of earth return impedance affect cable models in electromagnetic transient simulation?"
+forbidden_routes = ["reference-matrix-match-proves-source-provenance"]
+
+[[case]]
+case_id = "RBLIND-OUT-14"
+question = "How does an on-load tap changer controller decide when to step its tap position?"
+forbidden_routes = ["transformer-end-swap-is-ordinary-edge-reversal"]
+
+[[case]]
+case_id = "RBLIND-OUT-15"
+question = "What is the recommended phase color coding for conductors in a residential switchboard?"
+forbidden_routes = ["terminal-permutation-is-cosmetic"]
+
+[[case]]
+case_id = "RBLIND-OUT-16"
+question = "How do I tune Ipopt's barrier parameter update strategy to speed up convergence?"
+forbidden_routes = ["complete-feasibility-status-is-enough", "iteration-failure-proves-infeasibility"]
+
+[[case]]
+case_id = "RBLIND-OUT-17"
+question = "How do I trace a PV curve with continuation power flow to find the nose point of a transmission corridor?"
+forbidden_routes = ["iteration-failure-proves-infeasibility"]
+
+[[case]]
+case_id = "RBLIND-OUT-18"
+question = "What is the thermal time constant of an underground cable when computing its emergency short-term rating?"
+forbidden_routes = ["apparent-power-limit-implies-current-admissibility"]
+
+[[case]]
+case_id = "RBLIND-OUT-19"
+question = "Can a semidefinite relaxation of AC OPF be tight, and how do I recover a rank-one solution from it?"
+forbidden_routes = ["convex-rating-implies-convex-opf"]
+
+[[case]]
+case_id = "RBLIND-OUT-20"
+question = "How do I choose a slack bus that best distributes losses among generators in a transmission study?"
+forbidden_routes = ["nullspace-implies-removable-gauge"]
+
+[[case]]
+case_id = "RBLIND-OUT-21"
+question = "What limits on voltage unbalance does EN 50160 allow, and over what averaging window are they measured?"
+forbidden_routes = ["vuf-polynomial-pass-defines-zero-ratio"]
+
+[[case]]
+case_id = "RBLIND-OUT-22"
+question = "What power factor does a utility tariff typically require large industrial customers to maintain to avoid penalties?"
+forbidden_routes = ["weighted-pf-residual-certifies-ratio", "constant-pf-capability-is-clipping"]
+
+[[case]]
+case_id = "RBLIND-OUT-23"
+question = "How fast must a grid-forming inverter respond to a voltage step under its reactive power droop control?"
+forbidden_routes = ["constant-pf-capability-is-clipping"]

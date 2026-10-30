@@ -1,4 +1,157 @@
+[[claim]]
+claim_id = "KERNEL-OBSERVATION-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ["terminal_behavior", "limits", "decision", "numerical_structure"]
+chapter = "docs/src/cases/quotients-and-observations.md"
+claim_text = "For a nonempty affine solution set Ax=b and observation Hx, equal-observation solution differences lie exactly in ker(A) intersect ker(H), with further constraints and objectives checked separately. In the declared witnesses, common-potential translation preserves the isolated resistor's difference/current/loss observations, ideal parallel circulation changes member-rating observations, and the delta terminal-current kernel is removed by fixed resistive coil laws."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "affine_kernel_argument_and_exact_rational_observation_recovery_counterexamples"
+citation_keys = []
+model_scope = "fixed affine real circuit equations, stated observation maps and finite SI witnesses; delta power-duality identity also holds for complex phasors with real incidence"
+assumptions = "floating reference case has no fixed-earth connection or absolute-voltage constraint; parallel ideal paths retain member caps and explicit recovery; delta coil voltages and conductances are fixed; no nonlinear Jacobian-to-global-symmetry inference"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independent scientific review and reader evaluation remain pending; no automatic quotient certification, arbitrary device-current freedom, native package capability or nonlinear uniqueness guarantee is established."
+
+[[claim]]
+claim_id = "LIMIT-NEUTRAL-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ["terminal_behavior", "phase_neutral", "limits", "numerical_structure"]
+chapter = "docs/src/cases/neutral-shunt-multiplicity.md"
+claim_text = "In the declared two-conductor SI circuit with R=[[1,1/2],[1/2,1]] ohm, explicit source/receiving shunts and 6/35 W phase-neutral load, both exact coil-voltage roots 1/5 and 3/5 V pass the per-conductor power caps [1,1/2] VA at both series-line ends. The lower root nevertheless violates the 1/2 A neutral current cap at both ends, despite nonzero receiving-neutral voltage; aggregate power observations also fail to certify that conductor rating."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "exact_rational_elimination_and_native_candidate_equation_audit"
+citation_keys = []
+model_scope = "the fixed two-conductor real passive circuit, separate dense shunt factors and explicit current/earth-reference observations specified in the lesson"
+assumptions = "source terminals fixed at 1 and 0 V; source phase-neutral conductance 1/10 S, receiving phase-neutral conductance 2/7 S and neutral-earth conductance 1 S; zero reactive load; native line caps refer to the series element; aggregate 1.1 VA cap is postprocessed only"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independent scientific review, three-phase extensions and native internal pi-shunt coverage remain pending; no temperature, stability, or complete feeder-feasibility conclusion is established."
+
+[[claim]]
+claim_id = "LIMIT-CONVEXITY-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ["limits", "numerical_structure"]
+chapter = "docs/src/cases/unintended-solution-multiplicity.md"
+claim_text = "Individual fixed apparent-power caps are convex in explicit port powers but generally nonconvex in joint rectangular voltage-current coordinates. Current caps are convex in explicit rectangular currents, in powers with nonnegative voltage magnitude or squared magnitude, and in rectangular voltages through a fixed affine current map; substituting port power with rectangular voltage components does not generally retain convexity. None of these constraint-level statements establishes convexity or uniqueness of the complete OPF."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "analytic_norm_cone_and_affine_preimage_arguments_with_exact_nonconvex_midpoint_certificates"
+citation_keys = ["BoydVandenberghe2004"]
+model_scope = "individual scalar phasor-port magnitude limits with fixed nonnegative ratings and explicitly declared retained coordinates before circuit coupling"
+assumptions = "power-to-current identities require nonzero voltage for current recovery; at zero voltage the power cap cannot validate hidden current; affine branch-current maps have fixed coefficients; voltage-coordinate lifting identities and device laws are assessed separately"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independent review remains pending; nonlinear controls, variable taps, device capability curves and complete AC-OPF convexity require separate analysis."
+
+[[claim]]
+claim_id = "LIMIT-MULTIPLICITY-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ["terminal_behavior", "limits", "decision"]
+chapter = "docs/src/cases/unintended-solution-multiplicity.md"
+claim_text = "For the real series circuit E=4/5, R=1, VI=3/25 with 0<=V<=E, the exact roots (V,I)=(1/5,3/5) and (3/5,1/5) both satisfy endpoint apparent-power caps of 1/2 derived from Vnom=1 and Imax=1/2, whereas only the higher-voltage root satisfies the intended current cap. The inequality substitution changes admissibility, not the circuit equation roots."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "exact_rational_root_enumeration_and_pinned_solver_comparison"
+citation_keys = []
+model_scope = "real scalar steady-state resistive series circuit with fixed source voltage, positive constant-power demand, no shunts, and the stated voltage domain"
+assumptions = "consistent per-unit coordinates; both endpoint power magnitudes are capped; nominal-voltage conversion is distinguished from actual fixed-source-voltage conversion; current ratings represent the intended static constraint"
+reviewer = ""
+review_date = ""
+unresolved_issue = "Independent scientific review and general three-phase extensions remain pending; the separate controlled neutral/shunt witness does not establish arbitrary AC/OPF uniqueness, dynamic stability, or a complete equipment thermal model."
+
 schema_version = 1
+
+[[claim]]
+claim_id = "PRACTICE-REUSE-001"
+exactness_object = "equation_identity"
+preservation_dimensions = ["terminal_behavior", "state", "provenance"]
+chapter = "docs/src/cases/building-and-changing-models.md"
+claim_text = "For the fixed-voltage conductance family I(theta,V)=theta*g*V, deleting its symbolic term because theta is initially zero agrees at that state but fails at any later state with theta*g*V nonzero; refreshing a solver cannot restore a term absent from the compiled equations."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "explicit_scalar_counterexample_and_exact_rational_witness_in_experiments/lessons/parameter_reuse.py"
+citation_keys = []
+model_scope = "fixed scalar voltage and conductance, declared dimensionless parameter family, and term deletion at an initial zero"
+assumptions = "the intended current law remains theta*g*V; the faulty compiled family replaces the term by zero for all subsequent parameter values"
+reviewer = ""
+review_date = ""
+unresolved_issue = "This counterexample does not prove general solver-cache behavior, correctness of arbitrary structural updates, nonlinear reuse, speed benefits, or physical adequacy."
+
+[[claim]]
+claim_id = "LOAD-CONNECTION-002"
+exactness_object = "equation_identity"
+preservation_dimensions = ["terminal_behavior", "phase_neutral", "numerical_structure"]
+chapter = "docs/src/foundations/load-models-and-decision-dependence.md"
+claim_text = "For a fixed real signed coil-incidence matrix C, u=CV and i=C^T j preserve total complex power; for a three-coil cycle, adding equal circulating coil currents leaves terminal currents and total power unchanged while individual coil powers can change, so terminal KCL and aggregate power do not validate the individual coil laws."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "explicit_incidence_derivation_and_complex_phasor_witness_in_experiments/lessons/delta_connection_maps.py"
+citation_keys = []
+model_scope = "fixed real oriented two-terminal coil incidence, static complex phasors, and the three-coil cycle or one-coil transfer example"
+assumptions = "coil and terminal coordinates are ordered consistently; currents enter each coil's first endpoint; all powers use the same conjugation convention"
+reviewer = ""
+review_date = ""
+unresolved_issue = "This algebra does not certify arbitrary transformer/connection implementations, nonlinear operating-point feasibility, physical load adequacy, or source data provenance."
+
+[[claim]]
+claim_id = "PRACTICE-SHORT-001"
+exactness_object = "feasible_set"
+preservation_dimensions = ["terminal_behavior", "limits", "decision", "numerical_structure"]
+chapter = "docs/src/cases/building-and-changing-models.md"
+claim_text = "Two positive parallel resistances a epsilon and b epsilon carrying total current I select member currents b I/(a+b) and a I/(a+b) for every epsilon>0; replacing both by ideal shorts retains zero voltage drop and the total-current equation but loses that ratio-dependent selection, so equal limiting voltages do not guarantee equal member-current feasibility."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "explicit_book_derivation_and_exact_rational_witness_in_experiments/lessons/vanishing_impedance.py"
+citation_keys = []
+model_scope = "fixed uncoupled scalar series-only positive resistors in parallel, real signed currents, a prescribed total current or a nonnegative total-current decision, and explicit member current-magnitude limits"
+assumptions = "a and b are fixed positive resistance ratios as epsilon decreases; no other device, controller, dynamic state, or current-selection rule constrains the ideal-short split"
+reviewer = ""
+review_date = ""
+unresolved_issue = "This direct counterexample is not a general regularization-convergence theorem, an approximation bound for real switching equipment, or a result for arbitrary nonlinear or complex-impedance networks."
+
+[[claim]]
+claim_id = "FORMULATION-PORT-001"
+exactness_object = "equation_identity"
+preservation_dimensions = ["terminal_behavior", "phase_neutral", "numerical_structure"]
+chapter = "docs/src/foundations/circuit-formulations-and-lowering.md"
+claim_text = "For a fixed real turns ratio and scalar primary-referred leakage, retaining CV=zi with terminal core currents C^T i gives the bordered blocks A=y0 C and D=y0^2 z under i=y0 w; eliminating the port at nonzero z recovers Y_s+C^T C/z, while at z=0 the voltage constraint remains and finite magnetizing and grounding shunts must still be stamped exactly once."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "explicit_scalar_elimination_and_separate_scalar_matrix_package_witnesses_in_experiments/lessons/transformer_ports.py_and_transformer_ports.jl"
+citation_keys = ["HoRuehliBrennan1975"]
+model_scope = "fixed linear single-phase two-winding relation, real positive turns ratio, unity tap, scalar leakage, real signed terminal coefficients, explicit shunts and boundary conditions"
+assumptions = "the current scale is positive and finite; voltage-only elimination requires nonzero leakage; terminal current and power conventions are consistent; source/target retain the same shunts and external circuit"
+reviewer = ""
+review_date = ""
+unresolved_issue = "The scalar identity does not establish nonsingularity or uniform conditioning of every network, grounding adequacy, nonlinear/control equivalence, or correctness of all package transformer subtypes."
+
+[[claim]]
+claim_id = "FORMULATION-ZERO-001"
+exactness_object = "equation_identity"
+preservation_dimensions = ["terminal_behavior", "phase_neutral", "numerical_structure"]
+chapter = "docs/src/foundations/circuit-formulations-and-lowering.md"
+claim_text = "For a terminal with complete signed current residual r_I and consistent complex powers, r_S=V conjugate(r_I): KCL implies nodal power balance, but the converse requires nonzero terminal voltage; at V=0 a power row admits any current residual, and a fixed power tolerance bounds current error only after division by the voltage magnitude."
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+evidence_type = "explicit_scalar_derivation_and_complex_residual_witness_in_experiments/lessons/zero_voltage_kcl.py"
+citation_keys = ["ClaeysDeconinckGeth2022"]
+model_scope = "one RMS complex-phasor terminal current row and its power product, including zero and arbitrarily small voltages; pure fixed-impedance law as a separate local example"
+assumptions = "all branch, device, source and earth-path currents are included with consistent signs; every power in this nodal sum uses the same terminal voltage; this is not merely a total-network power sum"
+reviewer = ""
+review_date = ""
+unresolved_issue = "This algebraic boundary neither invalidates all power-variable formulations nor verifies a complete network, equipment limits, or global optimality."
 
 [[claim]]
 claim_id = "PRACTICE-IMPORT-001"
@@ -1903,3 +2056,37 @@ assumptions = "the benchmark artifact and its pinned provenance are the evidence
 reviewer = ""
 review_date = ""
 unresolved_issue = "Rerun both pinned candidates on the current corpus and evaluate domain-adapted alternatives before making a current or general neural-retrieval comparison."
+
+[[claim]]
+claim_id = "LIMIT-VUF-001"
+chapter = "docs/src/reference/numerical-audit-reference.md"
+claim_text = "For the defined steady-state VUF ratio abs(V2)/abs(V1), an absolute negative-sequence cap alone need not certify a ratio cap when the positive-sequence denominator varies. Cross-multiplied squared feasibility at V1=V2=0 does not define that ratio; the mathematical ratio requires a nonzero denominator, while a numerical audit additionally declares its denominator floor and dimensionless tolerance separately from voltage-magnitude tolerances."
+model_scope = "three ordered static complex phase phasors with the declared Fortescue convention and phase-neutral or earth reference; VUF is the dimensionless negative-to-positive magnitude ratio"
+assumptions = "the transform and reference are declared; the positive-sequence denominator is above the explicit chosen floor before division; no physical unbalance standard, device behavior or measurement authenticity is inferred"
+evidence_type = "ratio_domain_argument_and_exact_rational_denominator_counterexamples"
+unresolved_issue = "Independent review remains pending; a numerical floor does not establish physical voltage quality, authenticated phase order or native package polynomial feasibility outside the ratio domain."
+exactness_object = "feasible_set"
+preservation_dimensions = ["limits", "numerical_structure"]
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+citation_keys = []
+reviewer = ""
+review_date = ""
+
+[[claim]]
+claim_id = "CONTROL-PF-001"
+chapter = "docs/src/foundations/ibr-power-factor-controls.md"
+claim_text = "A declared constant-PF equality and generation-only minimum-PF envelope must intersect authored capability limits; clipping reactive power is not an automatic replacement for the equality. At P=4 W and f=0.8, Q=-3 var satisfies the weighted equality but violates q_min=-2 var; clipping Q to -2 var leaves a 0.8 VA equality residual. A fixed absolute weighted residual tolerance also does not certify a PF ratio: for minimum m=10^-20, P=0 W and Q=1 var the excess is m VA and passes 10^-6 VA, while the actual PF ratio is zero and violates the exact minimum envelope."
+model_scope = "stated static per-branch complex-power variables and explicitly declared signed constant-PF equality, generation-only weighted minimum-PF inequalities, capability boxes and absolute residual tolerances"
+assumptions = "all controls and capability bounds remain simultaneous obligations; actual P and Q use one declared injection convention; PF is undefined at P=Q=0; no physical controller priority, clipping implementation or published API capability is inferred"
+evidence_type = "weighted_constraint_algebra_and_exact_rational_clipping_and_tiny_coefficient_counterexamples"
+unresolved_issue = "Independent review remains pending; no dynamic controller compliance, authenticated native construction, scale-free PF-ratio accuracy or complete-network feasibility is certified."
+exactness_object = "feasible_set"
+preservation_dimensions = ["limits", "numerical_structure"]
+status = "established_result"
+claim_type = "theorem"
+verification = "self-checked"
+citation_keys = []
+reviewer = ""
+review_date = ""

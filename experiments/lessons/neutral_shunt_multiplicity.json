@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1.0",
+  "units": "SI: V, A, W, VA, ohm, S",
+  "source_voltage_V": "1",
+  "series_self_resistance_ohm": "1",
+  "series_mutual_resistance_ohm": "1/2",
+  "source_phase_neutral_conductance_S": "1/10",
+  "receiving_phase_neutral_conductance_S": "2/7",
+  "receiving_neutral_earth_conductance_S": "1",
+  "coil_power_W": "6/35",
+  "current_caps_A": ["1", "1/2"],
+  "power_caps_VA": ["1", "1/2"],
+  "illustrative_aggregate_cap_VA": "11/10"
+}

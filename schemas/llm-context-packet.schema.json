@@ -31,6 +31,21 @@
     "audience": {"enum": ["student", "software_engineer", "power_engineer"]},
     "status": {"enum": ["qualified", "under_retrieved", "unsupported"]},
     "release": {"type": "object"},
+    "source_identity": {
+      "type": "object",
+      "required": ["book_corpus_sha256", "book_corpus_manifest_sha256", "pair_sha256", "bmopftools_repository", "bmopftools_revision", "bmopftools_corpus_sha256", "bmopftools_manifest_sha256", "executable_evidence"],
+      "properties": {
+        "book_corpus_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "book_corpus_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "pair_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "bmopftools_repository": {"const": "frederikgeth/BMOPFTools.jl"},
+        "bmopftools_revision": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "bmopftools_corpus_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "bmopftools_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "executable_evidence": {"const": "pinned_export_only_no_runtime_inspected"}
+      },
+      "additionalProperties": false
+    },
     "retrieval": {
       "type": "object",
       "required": ["method", "expanded_query_terms", "detected_misconceptions"],

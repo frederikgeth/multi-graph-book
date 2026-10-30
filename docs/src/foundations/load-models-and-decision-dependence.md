@@ -185,6 +185,109 @@ magnitude ``\sqrt{3}`` for the recorded positive-sequence voltage. The bus and
 graph are unchanged; only the factor's terminal map changes. This is a small
 structural witness, not a complete unbalanced load-flow or rating model.
 
+## [Delta coil currents are not terminal currents](@id delta-coil-current-lesson)
+
+**Predict.** Three oriented coils connect ``a\to b``, ``b\to c`` and ``c\to a``.
+At terminal phasors ``V=(3,1,-1)`` V, their currents are ``j=(1,2,-1)`` A,
+positive from each coil's first endpoint to its second. Are the terminal currents
+also ``(1,2,-1)`` A? Would checking total power identify the wrong individual
+coil operating points?
+
+Write the ordered signed incidence before any current array:
+
+```math
+C=\begin{bmatrix}1&-1&0\\0&1&-1\\-1&0&1\end{bmatrix},\qquad
+u=CV,\qquad i=C^{\mathsf T}j.
+```
+
+Here ``u`` contains coil voltages and ``i`` contains currents entering the load
+from the three terminals. Thus ``u=(2,2,-4)`` V and ``i=(2,1,-3)`` A. A negative
+entry is a signed phasor, not a missing terminal. Coil complex powers are
+``s_k=u_k\overline{j_k}``; in this real-valued example they are ``(2,4,4)`` W.
+Terminal powers are ``(6,1,3)`` W. Their sums agree, although the individual
+coordinates describe different observations.
+
+For any fixed **real** signed incidence, the identity follows by rearranging
+finite sums:
+
+```math
+\sum_t V_t\overline{(C^{\mathsf T}j)_t}
+=\sum_k (CV)_k\overline{j_k}.
+```
+
+This is the power-dual current action in claim `LOAD-CONNECTION-002`. Do not
+replace the transpose by an inverse: this three-coil matrix has rank two. It has
+two related consequences:
+
+- ``C\mathbf1=0``: a common-mode terminal-voltage shift changes no coil voltage,
+  and the three coil voltages satisfy ``u_{ab}+u_{bc}+u_{ca}=0``.
+- ``C^{\mathsf T}\mathbf1=0``: adding the same circulating current to all three
+  coils changes no terminal current.
+
+Add 1 A to each coil current. The new currents ``(2,3,0)`` A give coil powers
+``(4,6,0)`` W but the same terminal currents and the same 10 W total. If the
+three declared constant-power demands were ``(2,4,4)`` W, all three local load
+equations now fail. Terminal KCL and aggregate power cannot detect this change.
+The circulation is not an alternative valid solution of those fixed load laws;
+it is a deliberately corrupted result that the local equations reject.
+
+### Change coordinates without changing the device
+
+A terminal permutation acts on the columns of ``C`` and the entries of ``V``;
+coil ordering stays separate. Reversing one coil orientation negates both its
+row of ``C`` and its current. Its power then stays unchanged. Reversing only
+the voltage row changes the represented state and can reverse that coil's power.
+The companion exercises these actions with non-real phasors as well, so an
+incorrect conjugation is not hidden by the real-valued worked example.
+
+```sh
+python3 experiments/lessons/delta_connection_maps.py --check
+python3 experiments/lessons/delta_connection_maps.py
+```
+
+The script is a fixed-incidence algebraic witness, not a BMOPF parser. Native
+package connection restrictions are tested separately by the local
+`audit_solution` candidate: a two-phase-terminal DELTA load has one coil;
+a three-phase-terminal DELTA load has three cyclic coils in map order. A
+neutral-containing, repeated or incompatible map, or a power array with the
+wrong length, remains unassessed rather than having a terminal silently dropped.
+These are the package's supported representation boundaries, not a theorem
+that every circuit called delta must use that data structure.
+
+### Source and load returns have different declarations
+
+In the candidate's supported native domain, a source uses the bus neutral as
+its return even if the source map lists only phases. The source also grounds
+that neutral. Its return current and the reported earth reaction are distinct
+contributions, and the reaction must be counted only once when multiple sources
+share the same grounded terminal. Omitting or double-counting it can violate
+KCL at zero voltage while power balance still passes.
+
+A WYE load uses a neutral only if that neutral is present in its **own** map;
+otherwise its reference is earth. A two-terminal SINGLE_PHASE load uses exactly
+its two listed endpoints, including a phase-to-phase pair. Neither rule can be
+replaced by assuming that every load on a bus with a neutral is phase-to-neutral.
+The first audit domain uses default ``n``/``N`` roles, with consistent explicit
+bus-neutral declarations; custom terminal conventions are still unassessed.
+
+The package companion audits an analytic circuit containing all these supported
+connections and compares its coil currents with a native-coordinate solve. It
+also applies the circulating-current corruption while keeping terminal KCL and
+total power satisfied. The exact local candidate is recorded in
+`experiments/integration/linear-audit-candidate.json`; it remains outside the
+published integration pin and MCP. See the
+[coverage lesson](@ref verification-coverage-lesson) for what remains unchecked
+on the running network. The older nominal-base and terminal-permutation PSK
+contracts do not, by themselves, certify these new load equations.
+
+**Transfer exercise.** Keep only a single coil ``a\to c`` with terminal voltages
+``(3,-1)`` V and coil current 2 A. Predict its incidence matrix, terminal currents,
+and absorbed power. Is adding 1 A invisible at the terminals? **Check your
+reasoning:** ``C=[1\ -1]``, terminal currents ``(2,-2)`` A, and power 8 W.
+Adding 1 A changes both terminal currents; this one-coil current map has no
+circulation null mode. Distinguish a voltage reference freedom from an
+unobservable circulating current.
+
 ## Modelling checklist
 
 Before comparing two graph views or deleting a factor, record:
@@ -259,3 +362,7 @@ implementation. It matches all convergence flags, every converged voltage and
 residual row, and the CP failure scale. This independently reproduces the
 algorithm-scoped observation; it still does not convert iteration failure into
 an infeasibility certificate or a mathematically continued nose curve.
+
+The [quotient and observation lesson](@ref quotients-and-observations) closes
+the delta terminal-map example with explicit resistive coil laws: an unchanged
+terminal current and total power can coexist with a failed coil equation.

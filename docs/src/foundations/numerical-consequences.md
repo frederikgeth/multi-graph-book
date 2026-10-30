@@ -6,6 +6,10 @@ nonlinear exports remain future work.
 
 ## A graph choice is also a numerical choice
 
+**Learning question.** What can change numerically when the declared electrical
+relation is preserved? Follow three comparisons: physical residuals after
+scaling, dependency/fill after compilation, and coverage before a verdict.
+
 Two representations can describe the same declared electrical behaviour while
 producing very different numerical problems. A quotient may reduce the number
 of variables but worsen scaling; a Kron reduction may preserve a boundary
@@ -43,7 +47,12 @@ Jacobian, conditioning, and solver-specific checks still belong to the study.
     quantities comparable, and reducing one need not reduce either of the
     others.
 
+**Transfer task.** Choose one proposed reduction. Name the electrical relation
+it preserves and one numerical quantity that still requires a separate check.
+
 ## Scaling and conditioning
+
+**Learning question.** Which error does a small scaled residual actually bound?
 
 Let a linearized or linear subproblem be
 
@@ -108,7 +117,15 @@ also distinguishes normwise and componentwise backward error. Record both
 residual/backward-error information and conditioning, with their norms and
 scaling, rather than relying only on solver termination.
 
+**Transfer task.** Rescale one state coordinate by ten. State the inverse map,
+the norm and the physical residual tolerance you would retain before comparing
+the two numerical residuals. Explain why equal coordinate solution sets do not
+imply equal condition numbers.
+
 ## Choose a model against a constraint margin
+
+**Learning question.** Is the modelling error small relative to the decision
+margin, rather than merely small relative to the reported voltage?
 
 The [parallel-member lesson](@ref first-failure-parallel-branches) derives an
 exact aggregate for fixed data. Now suppose the total nonnegative current
@@ -172,6 +189,9 @@ that conclusion possible. Do not report it as evidence for the original
 
 ## Jacobians: physical topology is not matrix sparsity
 
+**Learning question.** Does a new matrix edge denote new equipment, a shared
+equation dependency, or elimination fill?
+
 For a nonlinear decision model ``F(y,u)=0``, Newton or interior-point methods
 use a Jacobian such as
 
@@ -233,7 +253,7 @@ the non-pendant ``\ell`` elimination, whose fill edges are ``j-m`` and
 numerical-structure discussion without conflating fill edges with physical
 assets or solver-private factorization output.
 
-## A pinned numerical export
+### A pinned numerical export
 
 The running fixture provides a second, numerical witness through BMOPFTools'
 passive and constant-``Z`` linearized ``Y``-bus exporters. In the exporter's
@@ -294,7 +314,7 @@ This is a pinned
 linear current/Jacobian witness; it is not yet a nonlinear OPF KKT Jacobian or
 an independent-solver comparison.
 
-## Nonlinear decision Jacobian and KKT fill
+### Nonlinear decision Jacobian and KKT fill
 
 The next witness adds the nonlinear term that makes the parallel-line warning
 decision relevant. For a fixed complex endpoint voltage ``U`` and member
@@ -339,7 +359,7 @@ nonlinear decision witness rather than a solver-internal Ipopt KKT export. A
 package-level crosswalk now binds it to the BMOPFTools Ybus witness, while
 actual solver-internal factorization diagnostics remain a separate boundary.
 
-### Package-level diagnostics crosswalk
+#### Package-level diagnostics crosswalk
 
 The generated `solver-diagnostics-crosswalk.json` composes the two witnesses
 without pretending that either is a production solver export. It retains the
@@ -390,9 +410,9 @@ visible before any solver-private factorization. This is evidence that an exact
 electrical scalar equivalent can still change solver structure; it is not a
 general AC or multiconductor reduction certificate.
 
-### Numerical evidence boundary
+#### Numerical evidence boundary
 
-The three numerical artifacts answer different questions and should not be
+These diagnostic artifacts answer different questions and should not be
 collapsed into one solver claim:
 
 | Artifact | What is measured | What it does not establish |
@@ -408,7 +428,15 @@ identify the linear solver and ordering, and retain the factorization or
 inertia report. Until that export exists, the chapter's KKT language is a
 symbolic comparison, not an implementation claim about a production solver.
 
+**Transfer task.** Label one physical edge, one Jacobian dependency and one
+fill edge in the five-bus witness. For each, name its generating map. Identify
+which reported KKT quantity is symbolic and which comes from an actual callback;
+do not assign unlabelled solver rows a physical identity.
+
 ## Elimination and fill-in
+
+**Learning question.** Which costs can change when an internal variable is
+eliminated exactly?
 
 Partition a sparse matrix by retained variables ``B`` and eliminated variables
 ``I``. The Schur complement is
@@ -442,7 +470,216 @@ record at least:
 These fields are properties of a compiled numerical problem, not of a simple
 graph in isolation.
 
+**Transfer task.** Eliminate a leaf first and an internal junction first in the
+same declared support graph. Identify the added symbolic edges and the recovery
+work retained in each case. State which runtime or conditioning conclusions
+still require a measured numerical experiment.
+
+## [A coverage table before a feasibility verdict](@id verification-coverage-lesson)
+
+**Learning question.** What must be supplied and independently evaluated before
+a small residual can support the requested feasibility conclusion?
+
+Declare the observations before calculating them. Keep a coverage row for each
+obligation, its required inputs, unit, tolerance and evidence class:
+
+| Evidence class and calculation | Evidence consequence |
+|:--|:--|
+| **Evaluated.** Substitute supplied quantities into an equation or limit. | Test against a declared physical tolerance. |
+| **Reconstructed.** Derive a contribution from authored data. | Keep its defining identity out of independent test counts. |
+| **Unassessed.** A required input or admitted relation is missing. | Keep the residual null and the coverage gap explicit. |
+
+**Predict.** Two independent feeders each have a 10 V ideal source, a 1 Ω
+series resistor and a 1 S shunt to earth at the receiving terminal. In each
+feeder, the receiving voltage is 5 V and the line current is 5 A. If the two
+reported source currents change to 6 A and 4 A, does checking total power detect
+the corruption?
+
+For either feeder, direct substitution gives
+
+```math
+10-5=1\cdot5,\qquad I_{\mathrm{shunt}}=1\cdot5=5\ \mathrm A.
+```
+
+The source supplies 50 W; the line and shunt each absorb 25 W. With two feeders,
+the original source total is 100 W. The corrupted source currents still give
+``10\cdot6+10\cdot4=100`` W, so aggregate power agrees. But the signed KCL
+residuals at the two source terminals, taking outgoing current as positive,
+are ``5-6=-1`` A and ``5-4=1`` A. Each violates a ``10^{-6}`` A acceptance
+tolerance. Updating the reported source powers to 60 W and 40 W does not repair
+those local equations.
+
+This is a concrete use of claims `NUMERICAL-004` and `NUMERICAL-005`: a supplied
+residual bundle and a solver status cannot replace recomputation with explicit
+coverage. The [zero-voltage lesson](@ref zero-voltage-kcl) gives a second
+failure mechanism: at an exactly grounded terminal a missing 1 A earth reaction
+can be invisible even to *local* power balance. A perfect ground fixes voltage;
+its reaction current must still be accounted for in a current audit.
+
+### What was evaluated, and what was reconstructed?
+
+For an inline series-line model, an evaluator can read the authored matrix
+entries and check
+
+```math
+r_V=V_f-V_t-ZI_f,\qquad r_{I,\mathrm{line}}=I_f+I_t,
+\qquad r_{I,b}=\sum_{\text{outgoing devices}}I-\sum_{\text{injections}}I.
+```
+
+These are distinct observations with distinct units and tolerances. The receiving
+terminal map determines where ``I_t`` enters KCL, even when result rows use the
+sending conductor's label. A limit check must evaluate ``|I_f|``, ``|I_t|`` and
+any declared ``|V_f\overline{I_f}|`` / ``|V_t\overline{I_t}|`` bounds at their
+respective endpoints. Equality with a bound passes within the declared tolerance;
+a negative or malformed declared rating is not a zero limit violation.
+An absent optional rating means no such constraint was declared.
+
+For a shunt with no independently supplied current, computing ``I=YV`` constructs
+a contribution to KCL. Reporting ``I-YV=0`` as an independent successful test
+would merely compare the calculation with itself. Label it **reconstructed**.
+A missing source current instead makes the affected audit **unassessed**; no
+residual has been measured. These categories should survive JSON serialization.
+
+### Package candidate and the running-network boundary
+
+The package-owned `audit_linear_solution` candidate implements this small domain
+without calling the model builder, `line_yprim`, Ybus, or the result profiler.
+It shares the native SI input schema, result labels and arithmetic libraries.
+That is independent equation evaluation, not independent parsing, a second
+physical model, or measurement validation. The candidate's exact local revision
+is recorded in `experiments/integration/linear-audit-candidate.json`; it is
+**not included in the published integration pin** and is not exposed by MCP.
+The companion is `experiments/lessons/verify_linear_coverage.jl`, with execution
+instructions in the repository's `experiments/integration/README.md`.
+
+The analytic tiny circuit and its native-coordinate solve pass; the
+cancelling-current mutation fails, and removing a required current returns an
+indeterminate result. The companion also records a solve using default per-unit
+scaling, evaluated at the **same physical tolerances**. In the local candidate
+run, that solver reported `LOCALLY_SOLVED`, but the two receiving-node KCL
+residuals were about ``4.72\times10^{-4}`` A, exceeding the ``10^{-6}`` A audit
+tolerance. The native-coordinate solve passed without relaxing the audit.
+This is a diagnostic observation for this tiny case and environment, not a claim
+that per-unit scaling is generally worse. The companion records the comparison
+without requiring every future solver run to fail the same way. On the running
+network, the older `audit_linear_solution` API produces the following bounded
+coverage. It is one view of the local candidate, not the published integration
+lesson or the broader `audit_solution` verdict. The workbook's
+[evidence-generation table](@ref running-case-evidence-generations) identifies
+all three environments and commands.
+
+| Running-network obligation | Initial linear-audit evidence |
+|:--|:--|
+| Four coupled series-line voltage/current relations | Eight directly evaluated equation checks |
+| Both-end line current limits | 30 conductor-end checks; not transformer or switch ratings |
+| Line loss identity | Four checks from terminal currents and voltages |
+| Two fixed earth shunts | Current contributions reconstructed directly from entries |
+| Two declared perfect grounds | Zero-voltage conditions checked; reported ground reactions consumed |
+| Loads, generator, switch and n-winding transformer | Device equations unassessed |
+| Source with neutral return; bus voltage bounds | Unassessed in this first domain |
+| 26 bus-terminal KCL rows and network power | Unassessed because current contributions are incomplete |
+| Objective, optimality and physical adequacy | Not established |
+
+This linear audit contains 42 unassessed rows. That number counts obligations, not 42
+missing devices or 42 independent experiments. The implementation conservatively
+suppresses every KCL verdict when any device current contribution is unassessed;
+local line checks remain available. A later implementation may propagate missing
+coverage by incidence, but must first demonstrate that its incidence inventory
+is complete. A failed evaluated check must also remain visible when other rows
+are unassessed.
+
+### Extending coverage without changing the older API
+
+The separate candidate `audit_solution` adds default-role source neutral returns
+and signed per-phase source P/Q limits,
+implicit source grounding, WYE/`SINGLE_PHASE`/DELTA constant-power load equations,
+fixed ideal switches, bounded WYE/`SINGLE_PHASE` and cyclic DELTA generator injections/coil limits,
+bus and branch angle/magnitude bounds, three-phase sequence/VUF limits and
+bounded transformer equations. It retains recognized generator/source prices and
+transformer `s_rating` as declarations, without turning them into physical limits
+or objective certificates. The [device/bound reference](@ref numerical-audit-reference)
+retains the complete applicability traces and their intermediate coverage counts.
+
+The same default running-network result now has **zero unassessed rows** but
+**three failed generator active-power upper bounds**. Their excess is about
+0.00997 W each, above the unchanged 1e-6 W audit tolerance. All 26 terminal KCL
+rows and aggregate power pass. A separate tighter native solve of the unchanged
+input passes the scoped electrical audit. Both results and solver settings are
+retained by the companion. The [cost-scope lesson](@ref generator-cost-scope-audit)
+explains why the recognized price declaration opens these checks without
+certifying the selected objective, objective value, optimality or custom model.
+The 42-row table above remains the older `audit_linear_solution` coverage.
+
+Source-return and device-terminal currents are reconstructed from explicit
+connection maps; each earth reaction is consumed once. The switch has a checked
+closed-voltage relation and four conductor current caps. The winding-list
+transformer has checked coil equations, leakage and current caps; `s_rating`
+remains metadata. The running voltage declarations have 28 phase-earth rows,
+four neutral-earth caps and six phase-pair bounds. No input fields or nonzero
+residuals are removed to obtain coverage. The
+[delta coil lesson](@ref delta-coil-current-lesson) explains why successful KCL
+still does not replace individual device equations.
+
+### A switch needs a state law and a conductor limit
+
+A fixed closed ideal switch requires equal voltages at its ordered endpoint
+pairs; its nonzero current is determined by the surrounding circuit. A fixed
+open switch instead requires zero current, with no voltage equality. The package
+checks both domains against small native solves, including an open switch
+between separately supplied 10 V and 7 V sides. Missing reported open-switch
+current remains missing evidence; the checker does not fill in a passing zero.
+
+The companion's closed two-wire fixture uses different endpoint labels and a
+10 V, ``10+2\mathrm j`` VA load. The phase current is ``1-0.2\mathrm j`` A,
+with its opposite returning through the neutral. At zero neutral voltage,
+neutral apparent power is zero. Changing only the neutral current rating from
+1.1 A to 0.5 A therefore creates a violation of approximately 0.5198 A while all
+KCL rows, aggregate power and the neutral's zero apparent-power limit still
+pass. This is the [zero-voltage current/power distinction](@ref zero-voltage-kcl)
+applied to a conductor limit. Changing the limit does not change the supplied
+operating point; it changes whether that point is admissible.
+
+The switch result reports one current per from-side conductor. The to-side
+current is its reconstructed opposite, with the to-side terminal map retained;
+this is not a second independent current measurement. The candidate checks
+finite nonnegative rating arrays in that order. Malformed or infinite ratings,
+unknown controls and unrepresented device semantics remain unassessed. The
+scope is static supplied-state verification, not switching optimization,
+interruption physics or protection coordination.
+
+**Transfer exercise.** Keep the two equal-voltage source currents at 6 A and 4 A,
+but remove the second source's current field. Can the evaluator report zero
+aggregate error because the first source is present? **Check your reasoning:**
+no. A required term is unknown. The aggregate residual is null and its coverage
+is unassessed; it cannot be computed by substituting zero. Finish the supported
+model inventory before interpreting a small norm as feasibility evidence.
+
+The [solution-multiplicity lesson](@ref unintended-solution-multiplicity)
+separates additional admissible circuit roots, continuous current modes and
+spurious roots introduced by a lost equation. It also distinguishes local
+optima from the globally preferred branch.
+
+### Rate the observation that the constraint names
+
+The [transformer reference](@ref fixed-transformer-audit) provides a second
+representative failure. Its 4 V secondary coil has a reconstructed excitation
+current ``0.2-0.1\mathrm j`` A and supplied series current ``-1+0.25\mathrm j`` A.
+The terminal current is their sum, ``-0.8+0.15\mathrm j`` A. The series magnitude
+is about 1.031 A, but the 0.9 A limit applies to the terminal magnitude, about
+0.814 A, and passes. Comparing the series report directly with that terminal
+limit would reject the wrong observation. Neither current is a universal
+transformer thermal model.
+
+**Transfer task.** Tighten only the terminal limit to 0.8 A. Explain why the
+limit now fails without changing KCL or the operating point. Then remove the
+series-current observation: distinguish the missing equation evidence from the
+reconstructed excitation contribution. Use the detailed reference when checking
+other winding types or declared rating fields.
+
 ## Solver behaviour and decision margins
+
+**Learning question.** Does the returned point satisfy the relevant constraints,
+and is its decision margin larger than the supported error bound?
 
 For a constrained decision problem, solver behaviour is part of the evidence
 but not the preservation theorem. A reduced model may converge faster because
@@ -457,6 +694,14 @@ that result must separately name and check the relevant evidence: finite
 numeric values, model equations, declared bounds, device and network residuals,
 recovery obligations, and the level of optimality actually supported. Missing
 checks remain missing even when the status string sounds successful.
+
+Start with the [zero-voltage KCL lesson](@ref zero-voltage-kcl) before using a
+small power-balance residual as feasibility evidence. At each terminal,
+``r_S=V\overline{r_I}`` loses its current information at zero voltage and scales
+it by ``|V|`` elsewhere; a total-network power sum can additionally hide
+opposite nodal errors. The running-network verification script checks line
+recovery and package profile quantities, but does not thereby supply an
+independent all-device nodal KCL audit.
 
 This separation also works in the other direction. A status that does not
 claim feasibility is not evidence that a candidate primal point passed an
@@ -492,7 +737,14 @@ the certificate should not claim a unique optimum.
     decision. Record the decision margin and the recovery error for every
     claimed decision-preservation result.
 
+**Transfer task.** Give a residual, tolerance and propagated error bound for one
+constraint. If the margin lies inside that error bound, report an ambiguous
+decision even if the printed solver status claims success.
+
 ## What a transformation certificate should expose
+
+**Learning question.** Can another reader reconstruct both the electrical
+comparison and its numerical acceptance criteria?
 
 The numerical fields extend the general [preservation contract](@ref preservation-contracts):
 
@@ -509,6 +761,51 @@ The running network's six generated views should eventually carry this record
 alongside their source maps; the current fixture records the source maps and
 solver outcomes but does not yet claim a complete cross-solver conditioning
 study.
+
+**Transfer task.** Complete this record for the scalar interval example and one
+running-case generation. Mark each unavailable field unknown. State which
+additional observation or bound would change your conclusion.
+
+## [Find a detailed device or bound check](@id numerical-audit-reference-route)
+
+The [audit reference](@ref numerical-audit-reference) retains every detailed
+applicability trace in HTML and retrieval. Choose a check by its observation,
+not by a shared field name. The PDF includes the workflow above; exhaustive
+array orders, native comparison paths and partial-coverage cases live in that
+reference. Existing links into this chapter land here and continue to the
+corresponding reference section.
+
+```@raw html
+<a id="generator-voltage-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="fixed-transformer-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="winding-list-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="multiphase-winding-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="delta-winding-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="winding-rating-metadata" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="phase-neutral-voltage-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="neutral-earth-voltage-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="phase-phase-voltage-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="bus-angle-voltage-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="sequence-voltage-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="branch-angle-voltage-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="generator-cost-scope-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="delta-generator-injection-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="source-price-reference-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="source-pq-limit-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="ibr-injection-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+<a id="ibr-price-scope-audit" data-reference-page="reference/numerical-audit-reference.md"></a>
+```
+
+| Question to resolve | Detailed checks by family |
+|:--|:--|
+| Which current or rating is observed? | [Generator dispatch](@ref generator-voltage-audit); [transformer series/terminal currents](@ref fixed-transformer-audit); [winding leakage](@ref winding-list-audit); [phase overloads](@ref multiphase-winding-audit); [DELTA circulation](@ref delta-winding-audit); [rating metadata](@ref winding-rating-metadata) |
+| Which voltage or angle does an array entry bound? | [Phase-neutral](@ref phase-neutral-voltage-audit); [neutral-earth](@ref neutral-earth-voltage-audit); [phase-pair](@ref phase-phase-voltage-audit); [bus angles](@ref bus-angle-voltage-audit); [sequence/VUF](@ref sequence-voltage-audit); [branch angles](@ref branch-angle-voltage-audit) |
+| Do declarations certify injections or an objective? | [Generator prices](@ref generator-cost-scope-audit); [DELTA generators](@ref delta-generator-injection-audit); [source prices](@ref source-price-reference-audit); [source P/Q limits](@ref source-pq-limit-audit); [IBR topology](@ref ibr-injection-audit); [IBR prices](@ref ibr-price-scope-audit) |
+
+**Transfer task.** Pick one reference case, name the supplied observation and
+its unit, then remove a required input. Identify which known residuals survive
+and which coverage becomes unassessed. Explain why neither outcome changes the
+meaning of an absent rating or certifies the selected objective.
 
 ## Scope and open work
 

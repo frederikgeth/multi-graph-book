@@ -5,8 +5,14 @@
     "sha256": "75143b8c286bbba4bd674c11fb205d594a1b7385783d634de0d11dcf79477b86"
   },
   "independent_double_coding": false,
+  "input_origins": {
+    "review/snapshots/bibliography-audit-2026-08-25.toml": {
+      "original_path": "review/bibliography-audit.toml",
+      "scope": "Exact August seed input; the current bibliography audit is checked separately, not rolled back.",
+      "source_revision": "7af9ac017d16a250bb1b7e3cfcbcc7b43255cbfd"
+    }
+  },
   "inputs": {
-    "review/bibliography-audit.toml": "2c8f4b63ca26b60accafcb31e23e3f6048c26f4b22fe12d97da168ee20c3adb7",
     "review/coding-guide.md": "8a282e7ecb302403f8897a165eb700084f3cffd2cbfff0a37df7a6eee18ddbb3",
     "review/protocol.md": "3ce30aeea9161ddf5a3a866258c4126754f3bc05d082164e37762ca6d733ce2c",
     "review/search-runs/2026-08-14-seed-batch.md": "489107a577914770d35bd9c52bd2f3f08ab6bce56a6921b0c8b8052353961c72",
@@ -14,7 +20,8 @@
     "review/search-runs/2026-08-15-information-model-citation-chase.md": "84aa8c0e24aab663af4a491433bdd666a75d8e8fbab52d5b299b879773db09df",
     "review/search-runs/2026-08-16-multiphase-and-practical-reductions.md": "e791723bf30c0da0e3e8376cb570465f8dbcb495c3821eefce22fae3b3b6ab85",
     "review/search-runs/2026-08-25-coupled-multivoltage-corridors.md": "ab72e63ae3f56a4ec1d1bc01e6153e4950adcc54e600ae8fca0db46e00b0abfa",
-    "review/search-strings.md": "2e1dc82eecbce8072a7707e53e018e00a53afb7141a4d70bce4e9971f189d073"
+    "review/search-strings.md": "2e1dc82eecbce8072a7707e53e018e00a53afb7141a4d70bce4e9971f189d073",
+    "review/snapshots/bibliography-audit-2026-08-25.toml": "2c8f4b63ca26b60accafcb31e23e3f6048c26f4b22fe12d97da168ee20c3adb7"
   },
   "matrix": {
     "coding_status_counts": {

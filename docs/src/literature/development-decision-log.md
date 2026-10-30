@@ -454,3 +454,106 @@ Revisit only if a versioned migration can preserve old routing keys, source
 hashes, context-packet behavior, and external references while proving that a
 single identifier system expresses both routing identity and federated evidence
 scope without duplication.
+
+## DLOG-0010 — Require topic evidence before qualifying a neighboring question
+
+- **Date:** 2026-10-26
+- **Status:** accepted
+- **Scope:** deterministic misconception routing; review finding R1
+
+### Question
+
+How should the router handle a DELTA coil question whose shared vocabulary
+matches nominal-voltage, graph-membership or iteration-failure patterns?
+
+### Options considered
+
+- raise a global score threshold;
+- broaden the coil-current route to every DELTA coil question;
+- require the matched route's topic evidence and retain related material without
+  qualification when no responsive route is established.
+
+### Decision
+
+Use route-specific topic guards. Nominal-base routing requires normalization
+intent, including phrase-level evidence for "nominal voltage". Graph membership
+and iteration failure require their respective topics. Preserve the existing
+curated complete-phrase behavior, scores, source validation and abstention states.
+
+### Reason
+
+Suppressing only the first wrong route exposed unrelated lower-ranked routes.
+Coil count, independence and voltage incidence cannot be answered by substituting
+a nominal-base or formulation-placement qualification.
+
+### Evidence
+
+The October 26 checkpoint retains the original false qualification. Ten adjacent
+cases in `llm/adversarial-cases.toml` now exercise ambiguity and positive base
+intent; the existing coil-current and formulation cases remain regressions.
+`scripts/check_llm_routes.py` carries the original question through direct,
+Markdown, HTTP, CLI and MCP access.
+
+### Known downside
+
+Topic guards can miss valid paraphrases. This repair deliberately abstains on
+ambiguous coil questions and does not establish general semantic correctness,
+multi-intent completeness or a deployment error rate.
+
+### Conditions for revisiting
+
+Revisit with separately collected questions and responsive source evidence.
+Preserve known routes and negative cases; do not tune thresholds or relabel
+expected outcomes merely to improve reported metrics.
+
+## DLOG-0011 — Give exhaustive audit traces an explicit reference role
+
+- **Date:** 2026-10-26
+- **Status:** accepted
+- **Scope:** teaching hierarchy, PDF selection and retrieval continuity; review R3/R4
+
+### Question
+
+How can the numerical chapter teach verification without turning its closing
+scope into a long device-by-device development catalogue?
+
+### Options considered
+
+- leave every applicability trace in the core PDF;
+- remove the traces when shortening the chapter;
+- retain the reasoning and representative failures in the core, with a named
+  HTML reference containing every detailed trace.
+
+### Decision
+
+Move the 18 complete device/bound sections to the HTML audit reference. Keep
+their canonical section IDs, browser compatibility anchors and continuation
+links in the original chapter, and source-bound corpus access. State the PDF
+selection explicitly. Label the workbook's replay, published integration and
+local candidate by revision, API, returned point and bounded verdict.
+
+### Reason
+
+A coverage argument needs observations, tolerances, reconstruction boundaries
+and discriminating failures before exhaustive field conventions. Readers also
+need to distinguish different runs rather than interpret their verdicts as
+contradictory judgments of one returned point.
+
+### Evidence
+
+The October 26 review records R3/R4. Route, rendered-anchor and corpus checks
+protect all 18 moved sections. The original detailed bodies are retained with
+only relative-link relocation; profile revisions and historical evidence remain
+unchanged. Reader-facing questions and transfer tasks connect the core examples.
+
+### Known downside
+
+The standalone PDF requires the complete HTML library for exhaustive audit
+details. Structural and rendering checks do not measure reader learning or
+replace domain review; the candidate remains local and unpublished.
+
+### Conditions for revisiting
+
+Use reader/domain feedback to choose a different teaching/reference split.
+Preserve evidence scope, old entry points and corpus coverage, and make any
+future PDF selection change explicit.

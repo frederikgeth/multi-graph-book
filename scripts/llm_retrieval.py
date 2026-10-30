@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import math
 import re
 import tomllib
@@ -26,6 +27,31 @@ ROUTER_GENERIC_TERMS = {
     "matrix", "model", "network", "node", "power", "source", "state", "study", "system",
     "the", "topology", "view", "loop",
 }
+
+# Route scope gates live with each contract in llm/misconceptions.toml under
+# `router_scope`; see `router_scope_admits` and the rationale stored there.
+
+
+def router_scope_admits(scope: dict, query_terms: set[str], query_normalized: str,
+                        exact_match: bool) -> bool:
+    """Apply one contract's necessary topic signals; they are not answer proofs.
+
+    Token regexes match whole normalized tokens. A curated complete phrase can
+    bypass the topic groups unless `curated_phrase_bypass = false`; an
+    exclusion always applies.
+    """
+    excluded = scope.get("exclude_tokens")
+    if excluded and any(re.fullmatch(excluded, term) for term in query_terms):
+        return False
+    topic_matches = all(
+        any(re.fullmatch(pattern, term) for term in query_terms)
+        for pattern in scope.get("require_token_groups", ())
+    )
+    query_pattern = scope.get("require_query")
+    if query_pattern:
+        topic_matches = topic_matches and bool(re.search(query_pattern, query_normalized))
+    return topic_matches or (exact_match and scope.get("curated_phrase_bypass", True))
+
 
 STOPWORDS = {
     "a", "about", "after", "all", "also", "an", "and", "any", "are", "as", "at",
@@ -115,6 +141,17 @@ class CorpusIndex:
         self.manifest = json.loads(CORPUS_MANIFEST.read_text())
         self.misconceptions = tomllib.loads(MISCONCEPTIONS.read_text()).get("misconception", [])
         self.federated_pair = json.loads(FEDERATED_PAIR.read_text())
+        package = self.federated_pair["bmopftools"]
+        self.source_identity = {
+            "book_corpus_sha256": hashlib.sha256(CORPUS.read_bytes()).hexdigest(),
+            "book_corpus_manifest_sha256": hashlib.sha256(CORPUS_MANIFEST.read_bytes()).hexdigest(),
+            "pair_sha256": self.federated_pair["pair_sha256"],
+            "bmopftools_repository": package["repository"],
+            "bmopftools_revision": package["revision"],
+            "bmopftools_corpus_sha256": package["corpus_sha256"],
+            "bmopftools_manifest_sha256": package["manifest_sha256"],
+            "executable_evidence": "pinned_export_only_no_runtime_inspected",
+        }
         self.federated_links = self.federated_pair.get("links", {})
         self.misconception_by_id = {item["id"]: item for item in self.misconceptions}
         self.knowledge_by_misconception: dict[str, list[str]] = defaultdict(list)
@@ -493,6 +530,9 @@ class CorpusIndex:
                 coverage = len(overlap) / max(1, len(specific_pattern_terms))
                 precision = len(overlap) / max(1, len(specific_query_terms))
                 pattern_scores.append(0.72 * coverage + 0.28 * precision)
+            if not router_scope_admits(item.get("router_scope", {}), query_terms,
+                                       query_normalized, exact_match):
+                continue
             title_terms = set(tokenize(item["title"])) - ROUTER_GENERIC_TERMS
             title_score = len((query_terms - ROUTER_GENERIC_TERMS) & title_terms) / max(1, len(title_terms))
             score = max(pattern_scores or [0.0]) + 0.15 * title_score + (0.4 if exact_match else 0.0)
@@ -749,6 +789,7 @@ class CorpusIndex:
             "audience": audience,
             "status": status,
             "release": self.manifest["release"],
+            "source_identity": dict(self.source_identity),
             "retrieval": {
                 "method": f"{method}_with_contract_expansion",
                 "expanded_query_terms": self.expand_query(query),

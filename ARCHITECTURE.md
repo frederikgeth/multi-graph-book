@@ -714,6 +714,16 @@ change in either export requires regeneration and re-evaluation of the paired
 federated artifact, not a dynamic query against the other repository's latest
 branch.
 
+The maintained integration locator and locked Julia environment live in
+`experiments/integration/`. Pair schema 0.2.0 binds the package's full Git revision
+and the integration profile hash as well as the existing export hashes. A live
+pair check requires that exact clean checkout and its locked Git tree. The book's
+own content identity remains hash-based in generated files to avoid a circular
+commit dependency; integration run provenance records the tested book commit and
+dirty state. Historical replay environments remain separate. Service discovery,
+search and context packets expose source/pair identity as pinned-export metadata,
+without claiming that an installed executable runtime was inspected.
+
 ## Agent and contributor workflow
 
 Root `AGENTS.md` files in both repositories will translate this architecture

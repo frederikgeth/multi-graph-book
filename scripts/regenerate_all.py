@@ -24,6 +24,7 @@ def main() -> int:
         [sys.executable, "scripts/check_neural_benchmark.py", "--write-negative-result"],
         [sys.executable, "scripts/generate_scientific_knowledge.py", "--write"],
         [sys.executable, "scripts/check_federated_knowledge.py", "--write", "--bmopf-root", str(args.bmopf_root)],
+        [sys.executable, "scripts/generate_delivery_inventory.py", "--write"],
         [sys.executable, "scripts/generate_llm_corpus.py", "--write"],
         [sys.executable, "scripts/evaluate_llm_retrieval.py", "--write"],
         [sys.executable, "scripts/generate_llm_access_fixtures.py", "--write"],

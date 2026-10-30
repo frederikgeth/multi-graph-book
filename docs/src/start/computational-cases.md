@@ -3,9 +3,14 @@
 **Page status:** teaching guide to existing evidence and the scalar opening lesson.
 
 Choose a case by the question you want to answer. Commands below run from the
-repository root. Start with the scalar lesson; it needs only Python 3 and
-prints its result without creating files. The Julia studies use the pinned
-`experiments` environment and may regenerate their recorded artifacts.
+repository root. Use Python 3.11 or later for the Python commands. Start with
+the scalar lesson; it prints its result without creating files.
+
+The Julia commands using `--project=experiments` are maintainer studies. That
+environment uses a mutable sibling package checkout and is not a pinned replay.
+For a recorded run, use the isolated replay below; for the current published
+package, follow the [workbook's environment table](@ref running-case-evidence-generations).
+Some maintainer commands regenerate tracked artifacts.
 
 ## First calculation: parallel members
 
@@ -53,6 +58,21 @@ The 15 test methods include unknown and unrepresentable fields, stale reductions
 linear basis checks, objective/constraint scaling, and nonunique multipliers.
 The field adapter is not a complete MATPOWER importer; the dispatch example is
 an analytically solved scalar LP, not an OPF solve. No files are written.
+
+## Check a converter point without a solver
+
+```sh
+python3 experiments/lessons/ibr_operating_point.py
+python3 experiments/lessons/ibr_operating_point.py --check
+python3 experiments/lessons/ibr_operating_point.py --q-min=-1
+```
+
+The [converter tutorial](@ref checking-ibr-operating-point) starts from supplied
+voltage and current, then draws the intersection of constant PF, minimum PF
+and a Q cap. Predict the effect of tightening that cap before running the last
+command. A second diagram compares PN and PG voltage monitors for a displaced
+neutral. This is book-owned exact arithmetic; it does not require the local
+package candidate used by the control-audit examples.
 
 ## Five further investigations
 
@@ -178,8 +198,12 @@ Gaussian-elimination implementation on the declared common fixture. Each
 check challenges a different possible error; none authenticates the inputs
 merely by agreeing numerically.
 
-The running-case verification adds post-solve line-current recovery through
-package-owned primitives. Its complete-feasibility gate remains indeterminate.
+The September replay and published integration's running-case lesson add
+post-solve line-current recovery through package-owned primitives. That lesson's
+complete-feasibility witness gate remains indeterminate. The separate local
+candidate has broader equation coverage and different returned-point verdicts;
+use the workbook's [evidence-generation table](@ref running-case-evidence-generations)
+to distinguish its default and tighter solves from the scoped lesson.
 The Australian construction study separately records unresolved provenance of
 an external reference matrix. Inspect those boundaries before treating another
 successful run as independent support for a physical-model claim. Independent

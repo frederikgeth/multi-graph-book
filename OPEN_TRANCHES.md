@@ -10,13 +10,17 @@ blocker for merging the initial PRs once CI is green.
 The authority for repository ownership and dependency direction is
 [`ARCHITECTURE.md`](ARCHITECTURE.md).
 
-## Maintained delivery status (2026-08-30)
+## Maintained delivery status
+
+Current counts, evidence states and exact unlinked IDs are derived in the
+[generated delivery inventory](generated/delivery-inventory.md). Dated reviews
+remain historical snapshots; this maintained plan points to the current registry.
 
 | Tranche | State | Delivered boundary | Next open item |
 |---|---|---|---|
 | 1. Execution interface | Core complete | Two curated contract adapters plus parse/intake, case analysis, supplied-result verification, offline Finding explanation, and a six-tool read-only MCP adapter over the same envelopes | Promote another contract only when its transport mapping and evidence justify it |
 | 2. Documentation and recipes | Core complete | Assistant guide, `llms.txt`, two scientific-contract recipes, and tutorial-derived parse, analysis, verification, and Finding-explanation recipes | Keep examples synchronized; solving remains outside this transport slice |
-| 3. Negative-knowledge taxonomy | Foundation delivered; migration open | Four structured new classes plus PSK links for 18 of 23 stable misconception IDs | Classify and link, or explicitly exclude with reasons, the five remaining misconception IDs |
+| 3. Negative-knowledge taxonomy | Foundation delivered; migration open | Four structured new classes plus PSK links counted in the generated inventory | Classify and link, or explicitly exclude with reasons, the unlinked misconception IDs in that inventory |
 | 4. Property-based testing | Seeded regression foundation delivered; discovery open | Two deterministic expected-rejection suites with replay, scoped minimization, classification, and federated pins | Add a genuine failure-discovery generator and outcome-preserving shrinker before calling this a counterexample factory |
 | 5. Research/decision log | Core complete | Stable `DLOG-*` format, nine seeded decisions, contributor guidance, CI/release validation, and reader/LLM access | Add or supersede entries when consequential choices are made |
 | 6. Agent benchmark | Corrections applied; human re-review required | Substrate plus a four-condition, balanced, source-bound pilot design; exposed answer keys were removed and bundled-condition claims narrowed | Re-review the corrected exposure, then freeze exact systems/settings and authorize execution before preregistration or real runs |
@@ -38,7 +42,8 @@ case and returns the complete standard analysis/validation report with status
 A separate `verify-solution` route profiles a supplied result without invoking a
 solver. Its execution status remains distinct from solver termination and the
 independent report's Finding severity. A deterministic `explain-finding` route
-looks up all 353 documented package codes in a generated offline registry,
+looks up the full pinned package Finding catalogue in a generated offline registry
+(current count and source hash in the delivery inventory),
 preserving declared links while refusing inferred causes, repairs, PSK links,
 and external PowerIO namespaces. A distinct `parse-case` route now reports
 decode/migration/normalization evidence and a compact inventory without running
@@ -127,13 +132,10 @@ mutual-coupling audience cases. `PSK-000018` adds the first structured
 reference matrix remains unresolved after the recorded frequency discriminator,
 and three new audience routes preserve the known evidence, missing provenance,
 and resolution criteria without relabelling the separate UGHV fixture. The four
-targeted structured classes are now exercised end to end. Eighteen of the 23
-stable records in `llm/misconceptions.toml` are linked from the PSK registry.
-The remaining stable IDs are `one-universal-network-graph`,
-`self-loop-is-a-shunt-or-circuit-loop`,
-`loads-generators-fixed-graph-membership`, `nodal-operator-is-source-network`,
-and `radial-is-representation-independent`. They must be linked to an
-evidence-backed PSK object or explicitly excluded with a recorded reason; PSK
+targeted structured classes are now exercised end to end. PSK coverage of
+`llm/misconceptions.toml` and the remaining stable IDs are enumerated in the
+[generated inventory](generated/delivery-inventory.md). Each unlinked ID needs an
+evidence-backed PSK link or an explicit exclusion with a recorded reason; PSK
 IDs do not replace their stable misconception identities. Further taxonomy
 growth remains evidence-driven rather than quota-driven.
 

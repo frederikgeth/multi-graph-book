@@ -101,8 +101,9 @@ collapsing them into one success flag. The pair manifest pins this operation
 recipe without injecting it into a PSK context packet.
 
 A fifth, package-only `explain-finding` route now performs deterministic offline
-lookup over a generated registry of all 353 Finding codes documented by
-BMOPFTools. Its `explain_finding` recipe distinguishes a canonical code meaning
+lookup over the full generated Finding registry documented by BMOPFTools
+(current count and pin in the [delivery inventory](generated/delivery-inventory.md)).
+Its `explain_finding` recipe distinguishes a canonical code meaning
 from one case-specific observation and refuses to infer causes, repairs, or PSK
 links. External PowerIO diagnostic namespaces remain outside the package
 registry. The pair manifest pins the recipe and registry provenance without
@@ -163,11 +164,10 @@ The schema and federated pair support an explicit `not_applicable` execution
 relationship. This prevents the taxonomy from inventing a package contract
 when evidence belongs entirely to the book while preserving a stable,
 source-hash-bound PSK route. The four targeted structured classes are now
-exercised end to end. The migration is not complete: 18 of 23 stable
-misconception IDs are linked from PSK records. The five remaining IDs are
-`one-universal-network-graph`, `self-loop-is-a-shunt-or-circuit-loop`,
-`loads-generators-fixed-graph-membership`, `nodal-operator-is-source-network`,
-and `radial-is-representation-independent`. Each still needs an evidence-backed
+exercised end to end. The migration is not complete: the
+[generated delivery inventory](generated/delivery-inventory.md) derives linked
+and unlinked misconception IDs, claim verification states, and the citation audit
+queue from the current canonical registries. Each unlinked ID needs an evidence-backed
 PSK link or an explicit exclusion rationale; its existing misconception ID
 must remain stable either way.
 

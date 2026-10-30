@@ -8,7 +8,17 @@ claims ledger, vocabulary registry, evidence artifacts, or release manifest.
 The design separates three concerns:
 
 1. `misconceptions.toml` records questions for which a tempting short answer
-   omits a load-bearing qualification.
+   omits a load-bearing qualification. An optional `router_scope` table per
+   contract holds its routing gates: required token groups, excluded tokens,
+   an optional whole-query pattern, whether a curated phrase may bypass the
+   groups, and a rationale. These are necessary topic signals, not answer
+   proofs. `router-scope-paraphrases.toml` measures them; run
+   `scripts/evaluate_router_scope.py --write` after changing a gate and review
+   the diff. It holds two sets. The regression set (`RSCOPE-*`) gates: any
+   forbidden routing fails the check. The independent set (`RBLIND-*`) was
+   written without the gate patterns. It is measurement only: report its
+   correct, abstained and misrouted counts, and do not tune gates to it. Add
+   new independent cases instead of editing existing ones.
 2. `evaluation-cases.toml` records audience-specific regression questions and
    the evidence that a grounded answer must retrieve.
 3. `generated/corpus.jsonl` contains deterministic section, claim, and concept
@@ -68,6 +78,29 @@ python3 scripts/search_llm_corpus.py \
   "Can parallel circuits use one total MVA rating?" \
   --audience power_engineer --context-packet --json
 ```
+
+Fuzzy misconception matches also apply topic gates on easily confused routes.
+A shared word such as `terminal`, `impedance`, or `KCL` does not by itself
+establish that a permutation, construction-provenance, or solver-status contract
+answers the question. A complete curated query phrase can still route directly.
+These gates reduce known false qualifications; they do not prove semantic
+coverage of arbitrary or multi-intent questions. Related material without a
+responsive contract remains `under_retrieved`.
+
+For example, DELTA coil-count or voltage-map questions do not establish nominal
+voltage-base intent. That route requires a base/anchor/normalization marker or
+the phrase "nominal voltage"; "at the nominal operating point" is insufficient.
+The neighboring graph-membership and iteration-failure routes also require
+their own topic evidence, so suppressing one false match cannot simply expose
+those unrelated fallbacks. The October 26 R1 question and adjacent cases are
+now known regressions, not blind evaluation evidence.
+
+The adversarial evaluation includes near-domain negative questions and reports
+false qualification separately from retrieval recall. Questions without target
+evidence are excluded from recall averages, rather than counted as perfect
+retrieval. Both evaluation reports bind the router source hash. A response's
+`validation.valid` flag checks packet structure, source identity and required
+claim/citation inclusion; it is not independent scientific answer validation.
 
 The packet keeps evidence classes separate. `counterexamples` names concrete
 delimiting cases, `negative_results` preserves failed experiments with their
@@ -166,7 +199,35 @@ python3 scripts/mcp_llm_server.py
 ```
 
 It exposes `book_context`, `book_search`, and the corpus manifest resource over
-MCP stdio. The adapter follows the MCP JSON-RPC newline transport described in
-the [official transport specification](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports).
+MCP stdio. The book adapter supports modern `2026-07-28` requests and the legacy
+`2025-11-25` / `2025-06-18` initialization flow. The ordinary HTTP/JSON routes
+above are not an MCP HTTP transport.
+
+Modern requests carry `io.modelcontextprotocol/protocolVersion` and
+`io.modelcontextprotocol/clientCapabilities` in `params._meta`, including when
+calling `server/discover`. Each request supplies its own metadata. Discovery
+returns supported versions, capabilities and server identity; ordinary results
+include `resultType: "complete"`. Discovery, tool/resource lists and resource
+reads include conservative cache hints (`ttlMs: 0`, `cacheScope: "private"`).
+Unknown modern versions return error `-32022` with the requested and supported
+versions. Legacy clients continue to use `initialize` and receive legacy result
+shapes; an initialization request does not select the modern protocol.
+
+These mappings follow the official
+[versioning rules](https://modelcontextprotocol.io/specification/2026-07-28/basic/versioning),
+[stdio binding](https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/stdio)
+and [result schemas](https://modelcontextprotocol.io/specification/2026-07-28/schema).
+Run `python3 scripts/test_mcp_protocol.py` for argument, notification, discovery,
+version-mismatch and mixed-client subprocess regressions. The server advertises
+no subscriptions, prompt service, sampling, or task extension. Both eras use the
+same deterministic service; transport success does not turn `under_retrieved`
+or `unsupported` into `qualified` scientific evidence.
+
+The manifest resource, search results and context packets carry `source_identity`:
+book corpus/manifest hashes, federated pair hash, and pinned BMOPFTools revision
+and export hashes. These describe the reviewed export, not an inspected package
+runtime. The separately pinned BMOPFTools execution MCP still implements the
+legacy protocol. Its upgrade must be tested in the package and deliberately
+repinned through the [integration environment](../experiments/integration/README.md).
 The `graph` retrieval method is available only as an explicit diagnostic option;
 the default remains hybrid.

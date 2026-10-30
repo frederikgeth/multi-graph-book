@@ -33,7 +33,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "2f0adfe4fb996bce3bf36cd6b0a20c33d8001c94bac2db5ed7bb3ea501779e68"
+      "sha256": "fb8fb27eab406a81a7acd282fbc4ffb12dc02914c0e5a6349ad387ccf13469e0"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -61,11 +61,11 @@
     },
     {
       "path": "docs/src/foundations/load-models-and-decision-dependence.md",
-      "sha256": "f2cf62ff347112136ce260c563dcd658a1561bb4fed14d7d53c7da0855085ed4"
+      "sha256": "8adb9e593a16e7d7197f07ac6050089f97b5a15f475c01f64e328766012813fa"
     },
     {
       "path": "docs/src/foundations/numerical-consequences.md",
-      "sha256": "c71ad8f56b93f10aa1d3b590d6de5f60247fa9009c63816d16dae7ba6af56f4c"
+      "sha256": "d47d7ee1602a28321e413f19a7c8a94f7ece2e0465b1b608b853d9b7b649efdd"
     },
     {
       "path": "docs/src/foundations/preservation-contracts.md",
@@ -93,7 +93,7 @@
     },
     {
       "path": "docs/src/transformations/kron-ward-opti-kron.md",
-      "sha256": "f4b08610fdbfdb13384f3111e4d70bc8f0b8da1e5992e625b8439811c3ae0bb4"
+      "sha256": "dee0dc22877f720a2842ab8cabe59dd3955f7cb1edbe5e4f60cb35a5745cfea3"
     },
     {
       "path": "docs/src/transformations/parameterized-transformer-tap-decisions.md",
@@ -201,7 +201,7 @@
     },
     {
       "path": "llm/README.md",
-      "sha256": "164eda810dfc163fc7425347304cf0940927ce82283805732b98a59d394e6625"
+      "sha256": "918d22207120550a8ebc0ba7763aca89aad8e6b700e2a6e5cf7206c290cb1197"
     },
     {
       "path": "llm/generated/neural-retrieval-negative-result.json",
@@ -209,7 +209,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "c3b8de7ad39c48d55e1bcf39af39b02b2b63900a1e0c8ce783ef2a327c7f0db7"
+      "sha256": "d5cb84ec073330ed8f1f086f0ae7c1c9d3ed97371cca186bd4f6a93941f169dd"
     },
     {
       "path": "schemas/power-system-knowledge.schema.json",

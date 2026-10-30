@@ -18,12 +18,14 @@ INK, BLUE, ORANGE, RED = '#17212b', '#245b7a', '#8a4f13', '#8a3232'
 
 
 class Drawing:
-    def __init__(self, title, desc, height=650, width=1100):
+    def __init__(self, title, desc, height=650, width=1100, fixed_arrows=False):
+        marker = ('<marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#17212b"/></marker>'
+                  if fixed_arrows else '<marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#17212b"/></marker>')
         self.parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
                       f'<title>{escape(title)}</title><desc>{escape(desc)}</desc>',
                       f'<rect width="{width}" height="{height}" fill="white"/>',
                       '<style>text{font-family:Arial,sans-serif;fill:#17212b;font-size:20px}.title{font-size:29px;font-weight:bold}.head{font-size:23px;font-weight:bold}.small{font-size:18px}.math{font-family:DejaVu Sans,Arial,sans-serif;font-size:22px}</style>',
-                      '<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#17212b"/></marker></defs>']
+                      f'<defs>{marker}</defs>']
         self.text(30, 43, title, 'title')
 
     def text(self, x, y, value, cls='', anchor='start'):
@@ -312,10 +314,94 @@ def multipliers():
     return d.finish()
 
 
+def ibr_intersection():
+    from lessons.ibr_operating_point import lesson
+    result = lesson()
+    d = Drawing('Constant PF, minimum PF and a Q cap',
+                'Single-pair injection plane on equal P and Q scales. Minimum PF 4/5 gives P >= 0 and |Q| <= 3P/4. Constant PF +12/13 selects Q = -5P/12, strictly inside that wedge. The Q >= -2 var cap restricts this ray to 0 <= P <= 24/5 W. A=(12,-5) fails the cap; B=(12,-2) fails constant PF; C=(24/5,-2) satisfies all three.', 710, fixed_arrows=True)
+    d.text(30, 80, 'One branch; RMS power; positive P and Q inject into the network.', 'small')
+    x, y = lambda p: 90 + 30*float(p), lambda q: 345 - 30*float(q)
+    edge = F(26, 3)  # the wedge reaches |Q| = 6.5 at P = 26/3; truncated at the plot edge
+    vertices = ' '.join(f'{x(p)},{y(q)}' for p,q in
+                        [(0,0),(edge,F(13,2)),(13,F(13,2)),(13,F(-13,2)),(edge,F(-13,2))])
+    d.parts.append(f'<polygon points="{vertices}" fill="#e5f2f8"/>')
+    d.line(x(0),y(0),x(edge),y(F(13,2)),BLUE,width=2)
+    d.line(x(0),y(0),x(edge),y(F(-13,2)),BLUE,width=2)
+    d.line(x(0),y(0),x(13),y(F(-65,12)),ORANGE,dash=True,width=3)
+    d.line(x(0),y(-2),x(13.3),y(-2),RED,dash=True,width=2)
+    d.line(x(0),y(-7),x(0),y(7),arrow=True,width=1.5)
+    d.line(x(-0.3),y(0),x(13.6),y(0),arrow=True,width=1.5)
+    for p in range(2,14,2):
+        d.line(x(p),y(0)-4,x(p),y(0)+4,width=1)
+        d.text(x(p),y(0)-12,p,'small','middle')
+    for q in (-6,-4,-2,2,4,6):
+        d.line(x(0)-4,y(q),x(0)+4,y(q),width=1)
+        d.text(x(0)-12,y(q)+6,q,'small','end')
+    d.text(33,118,'Q [var]','small')
+    d.text(x(13.6),y(0)-38,'P [W]','small','end')
+    cp,cq = result['points']['C']
+    d.line(x(0),y(0),x(cp),y(cq),INK,width=7)
+    for name, point in result['points'].items():
+        p,q=point
+        d.circle(x(p),y(q),7,INK,'white')
+        dx,dy={'A':(-6,36),'B':(17,-15),'C':(-20,34)}[name]
+        d.text(x(p)+dx,y(q)+dy,name,'head')
+    d.text(545,133,'Read the constraints in order', 'head')
+    d.text(545,177,'1. Shaded wedge: minimum PF 4/5')
+    d.text(575,210,'P ≥ 0; −3P/4 ≤ Q ≤ 3P/4', 'math')
+    d.text(545,261,'2. Dashed ray: constant PF +12/13')
+    d.text(575,294,'Q = −5P/12, inside the wedge', 'math')
+    d.text(545,345,'3. Horizontal cap: Q ≥ −2 var')
+    d.text(575,378,'Keep points on or above the cap.')
+    for yy,name,explanation in [(445,'A','(12, −5): cap fails'),(487,'B','(12, −2): equality fails'),(529,'C','(24/5, −2): both controls and cap pass')]:
+        d.text(545,yy,f'{name}  {explanation}')
+    d.text(30,630,'Bold segment: the full intersection of these three constraints, including the origin.', 'head')
+    d.text(30,672,'Other P/Q/I/S limits and network equations are not shown. C is not a complete-network optimum.', 'small')
+    return d.finish()
+
+
+def ibr_monitor():
+    from lessons.ibr_operating_point import PHASE, NEUTRAL, lesson
+    result = lesson()
+    d = Drawing('A displaced neutral changes the monitored voltage',
+                'RMS voltage phasors on equal real and imaginary scales in volts. Phase voltage is 12+j4 V and neutral voltage is 3+j4 V relative to the same earth/frame origin. Their difference is 9 V. Phase-to-ground magnitude squared is 160 V squared; phase-to-neutral magnitude squared is 81 V squared.', 620, fixed_arrows=True)
+    d.text(30,80,'A phasor diagram, not a wiring diagram. Both terminal voltages use the same origin.', 'small')
+    x, y = lambda r: 90+29*float(r), lambda i: 450-29*float(i)
+    d.line(x(-0.5),y(0),x(14),y(0),arrow=True,width=1.5)
+    d.line(x(0),y(-1),x(0),y(9),arrow=True,width=1.5)
+    for v in (3,6,9,12):
+        d.line(x(v),y(0)-4,x(v),y(0)+4,width=1)
+        d.text(x(v),y(0)+26,v,'small','middle')
+    for v in (4,8):
+        d.line(x(0)-4,y(v),x(0)+4,y(v),width=1)
+        d.text(x(0)-12,y(v)+6,v,'small','end')
+    d.text(34,155,'Im [V]','small')
+    d.text(500,493,'Re [V]','small','end')
+    d.text(x(0)-10,y(0)+26,'0','small','end')
+    d.line(x(0),y(0),x(PHASE[0]),y(PHASE[1]),BLUE,arrow=True,width=3)
+    d.line(x(0),y(0),x(NEUTRAL[0]),y(NEUTRAL[1]),ORANGE,dash=True,arrow=True,width=3)
+    d.line(x(NEUTRAL[0]),y(NEUTRAL[1]),x(PHASE[0]),y(PHASE[1]),INK,arrow=True,width=5)
+    d.text(x(NEUTRAL[0])-15,y(4)-22,'n: 3 + j4','small','middle')
+    d.text(x(PHASE[0]),y(4)-22,'p: 12 + j4','small','middle')
+    d.text(325,y(4)-60,'U = Vp − Vn = 9 V','math','middle')
+    d.text(545,150,'Subtract first, then take magnitude', 'head')
+    d.text(545,198,'PN: |Vp − Vn| = 9 V','math')
+    d.text(545,242,'PG: |Vp| = √160 V > 12 V','math')
+    d.text(545,304,'For the stated requested Volt-var graph:')
+    d.text(575,347,'PN requests 0 var.')
+    d.text(575,389,'PG requests −12 var.')
+    d.text(545,452,'Same supplied voltages; different monitors.')
+    assert (result['pn_squared_V2'], result['pg_squared_V2']) == (81,160)
+    d.text(30,550,'Breakpoints: [8, 9, 11, 12] V; q_limits = [q_absorb, q_inject] = [−0.6, 0.44]; Smax = 20 VA.', 'small')
+    d.text(30,590,'These are requested PWL targets. Smoothing, capability and VI-derived Q are separate checks.', 'small')
+    return d.finish()
+
+
 FIGURES = {'start-here-same-ybus': parallel, 'parallel-feasible-set-card': geometry,
            'recovery-map-loop': recovery, 'orientation-power-transfer': orientation,
            'practical-outage-reduction': outage, 'equipment-matrix-stamp': stamping,
-           'practical-multiplier-maps': multipliers}
+           'practical-multiplier-maps': multipliers,
+           'ibr-pq-intersection': ibr_intersection, 'ibr-voltage-monitor': ibr_monitor}
 
 
 def main():

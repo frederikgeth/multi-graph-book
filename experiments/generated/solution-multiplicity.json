@@ -1,0 +1,277 @@
+{
+  "branch": {
+    "apparent_admissible_voltages": [
+      "1/5",
+      "3/5"
+    ],
+    "constant_objective_minimizers": [
+      "1/5",
+      "3/5"
+    ],
+    "current_admissible_voltages": [
+      "3/5"
+    ],
+    "distinct_equation_roots": 2,
+    "rows": [
+      {
+        "apparent_limits_pass": true,
+        "current": "3/5",
+        "current_limit_pass": false,
+        "load_residual": "0",
+        "loss": "9/25",
+        "ohm_residual": "0",
+        "receiving_power": "3/25",
+        "reduced_equation_derivative": "2/5",
+        "sending_power": "12/25",
+        "voltage": "1/5",
+        "voltage_domain_pass": true
+      },
+      {
+        "apparent_limits_pass": true,
+        "current": "1/5",
+        "current_limit_pass": true,
+        "load_residual": "0",
+        "loss": "1/25",
+        "ohm_residual": "0",
+        "receiving_power": "3/25",
+        "reduced_equation_derivative": "-2/5",
+        "sending_power": "4/25",
+        "voltage": "3/5",
+        "voltage_domain_pass": true
+      }
+    ],
+    "source_power_minimizers": [
+      "3/5"
+    ]
+  },
+  "evidence_state": "self_checked_exact_finite_witness",
+  "inputs": {
+    "branch": {
+      "current_limit": "1/2",
+      "load_power": "3/25",
+      "nominal_voltage": "1",
+      "resistance": "1",
+      "source_voltage": "4/5",
+      "voltage_domain": [
+        "0",
+        "4/5"
+      ]
+    },
+    "limit_geometry": {
+      "apparent_limit": "1",
+      "current_limit": "1",
+      "iv_points": [
+        [
+          "9/10",
+          "0",
+          "10/9",
+          "0"
+        ],
+        [
+          "11/10",
+          "0",
+          "10/11",
+          "0"
+        ]
+      ],
+      "power_rectangular_voltage_points": [
+        [
+          "1",
+          "0",
+          "3/5",
+          "4/5"
+        ],
+        [
+          "1",
+          "0",
+          "3/5",
+          "-4/5"
+        ]
+      ]
+    },
+    "lost_kcl": {
+      "conductance": "1",
+      "injected_current": "1",
+      "voltage_domain": [
+        "0",
+        "2"
+      ]
+    },
+    "neutral": {
+      "current_limits_A": [
+        "7",
+        "10"
+      ],
+      "epsilon_ohm": "1/1000",
+      "resistance_ratios": [
+        [
+          "1",
+          "2"
+        ],
+        [
+          "2",
+          "1"
+        ]
+      ],
+      "total_current_A": "12"
+    },
+    "schema_version": "0.1.0",
+    "units": "per_unit_for_scalar_branch_lost_kcl_and_limit_geometry; A_and_ohm_for_neutral_paths"
+  },
+  "limit_geometry": {
+    "iv_apparent": {
+      "coordinate_order": [
+        "V_re",
+        "V_im",
+        "I_re",
+        "I_im"
+      ],
+      "endpoints": [
+        {
+          "apparent_power_squared": "1",
+          "coordinates": [
+            "9/10",
+            "0",
+            "10/9",
+            "0"
+          ],
+          "pass_limit": true
+        },
+        {
+          "apparent_power_squared": "1",
+          "coordinates": [
+            "11/10",
+            "0",
+            "10/11",
+            "0"
+          ],
+          "pass_limit": true
+        }
+      ],
+      "midpoint": {
+        "apparent_power_squared": "10000/9801",
+        "coordinates": [
+          "1",
+          "0",
+          "100/99",
+          "0"
+        ],
+        "pass_limit": false
+      }
+    },
+    "power_rectangular_current": {
+      "coordinate_order": [
+        "P",
+        "Q",
+        "V_re",
+        "V_im"
+      ],
+      "endpoints": [
+        {
+          "coordinates": [
+            "1",
+            "0",
+            "3/5",
+            "4/5"
+          ],
+          "current_limit_squared_residual": "0",
+          "pass_limit": true
+        },
+        {
+          "coordinates": [
+            "1",
+            "0",
+            "3/5",
+            "-4/5"
+          ],
+          "current_limit_squared_residual": "0",
+          "pass_limit": true
+        }
+      ],
+      "midpoint": {
+        "coordinates": [
+          "1",
+          "0",
+          "3/5",
+          "0"
+        ],
+        "current_limit_squared_residual": "16/25",
+        "pass_limit": false
+      }
+    },
+    "scope": "individual port-limit sets before circuit coupling; midpoint witnesses establish nonconvexity only"
+  },
+  "lost_kcl": {
+    "faulty_roots": [
+      "0",
+      "1"
+    ],
+    "original_roots": [
+      "1"
+    ],
+    "rows": [
+      {
+        "current_residual": "-1",
+        "faulty_equation_derivative": "-1",
+        "power_residual": "0",
+        "resistor_current": "0",
+        "supplied_power": "0",
+        "voltage": "0"
+      },
+      {
+        "current_residual": "0",
+        "faulty_equation_derivative": "1",
+        "power_residual": "0",
+        "resistor_current": "1",
+        "supplied_power": "1",
+        "voltage": "1"
+      }
+    ]
+  },
+  "neutral": {
+    "current_admissible_alpha_A": [
+      "2",
+      "7"
+    ],
+    "finite_comparisons": [
+      {
+        "current_limits_pass": false,
+        "currents_A": [
+          "8",
+          "4"
+        ],
+        "resistance_ratio": [
+          "1",
+          "2"
+        ],
+        "voltage_drop_V": "1/125"
+      },
+      {
+        "current_limits_pass": true,
+        "currents_A": [
+          "4",
+          "8"
+        ],
+        "resistance_ratio": [
+          "2",
+          "1"
+        ],
+        "voltage_drop_V": "1/125"
+      }
+    ],
+    "ideal_current_family": "(alpha, total-alpha), alpha any real; zero terminal powers",
+    "minimum_squared_current_norm_alpha_A": "6"
+  },
+  "not_established": [
+    "arbitrary AC/OPF uniqueness",
+    "dynamic stability",
+    "complete thermal equipment model",
+    "physical justification of idealization or regularization",
+    "independent scientific review"
+  ],
+  "schema_version": "0.1.0",
+  "source_sha256": {
+    "experiments/lessons/solution_multiplicity.json": "309a6e5249a1c70e0b58481f39a3a75b1eb59d4dd2be696334d2a8bec438bba7",
+    "experiments/lessons/solution_multiplicity.py": "db4718b29bfb467e07ef564aa28f46d526382feefecb8767e01fffe00feff9c4"
+  }
+}

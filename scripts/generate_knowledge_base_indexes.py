@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import json
 import hashlib
 import re
@@ -126,7 +127,7 @@ def artifact_summary(path: Path) -> str:
     return f"`{identifier}` — {scope}" if identifier else str(scope)
 
 
-def generate_index(claims: list[dict]) -> None:
+def generate_index(claims: list[dict]) -> str:
     by_type: dict[str, list[dict]] = defaultdict(list)
     by_verification: dict[str, list[dict]] = defaultdict(list)
     by_facet: dict[str, list[dict]] = defaultdict(list)
@@ -185,10 +186,10 @@ def generate_index(claims: list[dict]) -> None:
     for path in sorted(GENERATED.glob("*.json")):
         lines.append(f"| `{path.name}` | {artifact_summary(path)} |")
     lines += ["", "_This file is regenerated during the documentation build._", ""]
-    INDEX.write_text("\n".join(lines))
+    return "\n".join(lines)
 
 
-def generate_status(claims: list[dict]) -> None:
+def generate_status(claims: list[dict]) -> str:
     grouped: dict[str, list[dict]] = defaultdict(list)
     for claim in claims:
         grouped[claim["chapter"]].append(claim)
@@ -222,14 +223,25 @@ def generate_status(claims: list[dict]) -> None:
             f"{page_status_for(path)} | {len(records)} | {types} | `{verification}` | {issue} |"
         )
     lines += ["", "_This file is regenerated during the documentation build._", ""]
-    STATUS.write_text("\n".join(lines))
+    return "\n".join(lines)
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--check', action='store_true', help='check freshness without rewriting either index')
+    args = parser.parse_args()
     claims = load_claims()
-    generate_index(claims)
-    generate_status(claims)
-    print(f"generated {INDEX.relative_to(ROOT)} and {STATUS.relative_to(ROOT)}")
+    outputs = {INDEX: generate_index(claims), STATUS: generate_status(claims)}
+    if args.check:
+        stale = [str(path.relative_to(ROOT)) for path, content in outputs.items()
+                 if not path.is_file() or path.read_text() != content]
+        if stale:
+            raise SystemExit('knowledge-base indexes are stale: ' + ', '.join(stale))
+        print('knowledge-base indexes: claims, artifacts and chapter status are current')
+    else:
+        for path, content in outputs.items():
+            path.write_text(content)
+        print(f"generated {INDEX.relative_to(ROOT)} and {STATUS.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

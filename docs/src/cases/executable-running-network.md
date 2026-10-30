@@ -149,7 +149,8 @@ no full historical numerical-replay claim. It writes to a fresh directory.
 
 ## Check the returned solution
 
-The current verification exercise can also run directly, without writing files:
+The scoped profile/recovery lesson used by the September replay and published
+integration can also run directly in a prepared environment, without writing files:
 
 ```sh
 julia --project=experiments experiments/lessons/verify_running_network.jl
@@ -181,8 +182,11 @@ nodal KCL from the original physical specification.
 Accordingly, calling `check_solved_network_feasibility` on this result returns
 `indeterminate`: its required full independent residual bundle is absent.
 The lesson asserts that refusal. Supplying zeros for missing residuals would
-be an invalid way to obtain a pass. Full all-device/KCL verification remains
-a package-owned extension, and physical model adequacy requires other evidence.
+be an invalid way to obtain a pass. The separate local candidate extends
+all-device/KCL coverage; it does not replace this lesson's gate or historical
+result. Compare the revisions, APIs and returned-point verdicts in the
+[workbook evidence table](@ref running-case-evidence-generations).
+Physical model adequacy requires other evidence.
 
 ### Version 0.1.0 realization boundary
 

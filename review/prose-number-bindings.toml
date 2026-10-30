@@ -1,18 +1,589 @@
-schema_version = "0.1.0"
+schema_version = "0.2.0"
 purpose = "Explicit derived-number bindings for machine-checkable prose; direct artifact matches require no entry."
 
 [[binding]]
 path = "docs/src/cases/four-wire-parallel-ac-decision.md"
-line = 34
 literal = "0.1219"
+section = "reciprocal-non-proportional-members"
 source_artifact = "experiments/generated/four-wire-parallel-ac-certificate.json"
 source_sha256 = "aad4e1b3684a20ea7289638fd36cee4a9ff2a05e36b90d32105056027c411bbe"
 derivation = "Displayed relative residual derived from the certificate's stored numerator and infinity norm; the ratio is not itself serialized."
 
 [[binding]]
 path = "docs/src/cases/transformer-tap-ac-decision.md"
-line = 110
 literal = "0.090169"
+section = "exact-discrete-enumeration"
 source_artifact = "experiments/generated/transformer-tap-ac-decision-certificate.json"
 source_sha256 = "94f736df2af80561cf4ab63845b9f21340ed98dcdc7d4446c2684818d0c3e656"
 derivation = "Displayed MW loss derived by converting the stored served-fraction gap using the three 0.50 MW phase directions."
+# BEGIN GENERATED VERIFIED PROSE NUMBERS
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.4123"
+section = "generator-voltage-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/generator_current/value"
+derivation = "sqrt((2/5)^2+(1/10)^2). Unit: A."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.15625"
+section = "winding-list-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/winding1_current_imag_coefficient/value"
+derivation = "Exact component from inward-current ampere-turn balance, U_k=N_k*(U_1+(Z_B*j)_k), and I2_terminal=I2+Y*U2; subtraction coefficients are positive literal magnitudes. Unit: A."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "4.82421875"
+section = "winding-list-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/winding2_voltage_real/value"
+derivation = "Exact component from inward-current ampere-turn balance, U_k=N_k*(U_1+(Z_B*j)_k), and I2_terminal=I2+Y*U2; subtraction coefficients are positive literal magnitudes. Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.10546875"
+section = "winding-list-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/winding2_voltage_imag_coefficient/value"
+derivation = "Exact component from inward-current ampere-turn balance, U_k=N_k*(U_1+(Z_B*j)_k), and I2_terminal=I2+Y*U2; subtraction coefficients are positive literal magnitudes. Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "2.439453125"
+section = "winding-list-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/winding3_voltage_real/value"
+derivation = "Exact component from inward-current ampere-turn balance, U_k=N_k*(U_1+(Z_B*j)_k), and I2_terminal=I2+Y*U2; subtraction coefficients are positive literal magnitudes. Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.04296875"
+section = "winding-list-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/winding3_voltage_imag_coefficient/value"
+derivation = "Exact component from inward-current ampere-turn balance, U_k=N_k*(U_1+(Z_B*j)_k), and I2_terminal=I2+Y*U2; subtraction coefficients are positive literal magnitudes. Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "-0.85089111328125"
+section = "winding-list-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/winding2_terminal_real/value"
+derivation = "Exact component from inward-current ampere-turn balance, U_k=N_k*(U_1+(Z_B*j)_k), and I2_terminal=I2+Y*U2; subtraction coefficients are positive literal magnitudes. Unit: A."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.17132568359375"
+section = "winding-list-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/winding2_terminal_imag/value"
+derivation = "Exact component from inward-current ampere-turn balance, U_k=N_k*(U_1+(Z_B*j)_k), and I2_terminal=I2+Y*U2; subtraction coefficients are positive literal magnitudes. Unit: A."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.901948"
+section = "winding-list-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/winding_loss_real/value"
+derivation = "Re(sum(U_k*conj(I_k_terminal))) including winding-2 excitation once. Unit: W."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.542283"
+section = "winding-list-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/winding_loss_imag/value"
+derivation = "Im(sum(U_k*conj(I_k_terminal))) including winding-2 excitation once. Unit: var."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "4.82421875"
+section = "multiphase-winding-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/multi_voltage_1_real/value"
+derivation = "Winding-2 component from the same referred leakage relation, applied to the authored phase source/current; negative imaginary terms bind their positive subtraction coefficient. Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.10546875"
+section = "multiphase-winding-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/multi_voltage_1_imag/value"
+derivation = "Winding-2 component from the same referred leakage relation, applied to the authored phase source/current; negative imaginary terms bind their positive subtraction coefficient. Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "4.973879"
+section = "multiphase-winding-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/multi_apparent_1/value"
+derivation = "abs(U2_phase*conj(I2_phase)), before excitation. Unit: VA."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "-2.46484375"
+section = "multiphase-winding-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/multi_voltage_2_real/value"
+derivation = "Winding-2 component from the same referred leakage relation, applied to the authored phase source/current; negative imaginary terms bind their positive subtraction coefficient. Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "3.89453125"
+section = "multiphase-winding-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/multi_voltage_2_imag/value"
+derivation = "Winding-2 component from the same referred leakage relation, applied to the authored phase source/current; negative imaginary terms bind their positive subtraction coefficient. Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "2.576506"
+section = "multiphase-winding-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/multi_apparent_2/value"
+derivation = "abs(U2_phase*conj(I2_phase)), before excitation. Unit: VA."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "-2.39453125"
+section = "multiphase-winding-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/multi_voltage_3_real/value"
+derivation = "Winding-2 component from the same referred leakage relation, applied to the authored phase source/current; negative imaginary terms bind their positive subtraction coefficient. Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "3.96484375"
+section = "multiphase-winding-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/multi_voltage_3_imag/value"
+derivation = "Winding-2 component from the same referred leakage relation, applied to the authored phase source/current; negative imaginary terms bind their positive subtraction coefficient. Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "2.589267"
+section = "multiphase-winding-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/multi_apparent_3/value"
+derivation = "abs(U2_phase*conj(I2_phase)), before excitation. Unit: VA."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "10.139652"
+section = "multiphase-winding-audit"
+occurrence = 1
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/multi_sum_apparent/value"
+derivation = "Sum of three bare-coil apparent-power magnitudes, not magnitude of total power. Unit: VA."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.251648"
+section = "multiphase-winding-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/multi_neutral_real/value"
+derivation = "Real part of minus the sum of winding-2 terminal currents, including excitation once. Unit: A."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.000549"
+section = "multiphase-winding-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/multi_neutral_imag/value"
+derivation = "Imaginary part of minus the sum of winding-2 terminal currents, including excitation once. Unit: A."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "2.338756"
+section = "multiphase-winding-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/multi_loss_real/value"
+derivation = "Sum of three phase terminal-power real parts. Unit: W."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "1.314397"
+section = "multiphase-winding-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/multi_loss_imag/value"
+derivation = "Sum of three phase terminal-power imaginary parts. Unit: var."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "14.921637"
+section = "multiphase-winding-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/multi_equal_total_rating/value"
+derivation = "Three times the largest per-coil apparent magnitude for equal allocation. Unit: VA."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "10.139652"
+section = "multiphase-winding-audit"
+occurrence = 2
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/multi_sum_apparent/value"
+derivation = "Sum of three bare-coil apparent-power magnitudes, not magnitude of total power. Unit: VA."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "4.0625"
+section = "phase-neutral-voltage-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/pn_squared_lower_excess/value"
+derivation = "(8.25 V)^2-(8 V)^2; this is not a magnitude residual. Unit: V^2."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "4.0625"
+section = "neutral-earth-voltage-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/neutral_case_load_real/value"
+derivation = "Re((8.5+j*0.75)*conj(0.5-j*0.25)). Unit: W."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.9375"
+section = "neutral-earth-voltage-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/neutral_case_conductor_loss/value"
+derivation = "(1+2) ohm times abs(0.5-j*0.25)^2. Unit: W."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.118034"
+section = "neutral-earth-voltage-audit"
+occurrence = 1
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/neutral_voltage_excess/value"
+derivation = "abs(1-j*0.5)-1 V. Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.118034"
+section = "neutral-earth-voltage-audit"
+occurrence = 2
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/neutral_voltage_excess/value"
+derivation = "abs(1-j*0.5)-1 V. Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.3125"
+section = "neutral-earth-voltage-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/neutral_return_current_squared/value"
+derivation = "abs(0.5-j*0.25 A)^2 before changing the neutral resistance and adding its earth shunt. Unit: A^2."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.078125"
+section = "neutral-earth-voltage-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/shunted_neutral_current_squared/value"
+derivation = "abs((1-j*0.5)/4 ohm)^2; remaining return uses the authored shunt. Unit: A^2."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.193752"
+section = "phase-phase-voltage-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/pp_lower_excess/value"
+derivation = "13-abs(8-j*10). Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.306248"
+section = "phase-phase-voltage-audit"
+occurrence = 1
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/pp_upper_excess/value"
+derivation = "abs(8-j*10)-12.5. Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.306248"
+section = "phase-phase-voltage-audit"
+occurrence = 2
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/pp_upper_excess/value"
+derivation = "abs(8-j*10)-12.5. Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.09966865"
+section = "bus-angle-voltage-audit"
+occurrence = 1
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/small_angle_coefficient/value"
+derivation = "atan(1/10); a negative centered deviation displays the positive subtraction coefficient. Unit: rad."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.09966865"
+section = "bus-angle-voltage-audit"
+occurrence = 2
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/small_angle_coefficient/value"
+derivation = "atan(1/10); a negative centered deviation displays the positive subtraction coefficient. Unit: rad."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.04966865"
+section = "bus-angle-voltage-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/bus_lower_angle_excess/value"
+derivation = "-0.05-(-atan(0.1)). Unit: rad."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.02033135"
+section = "bus-angle-voltage-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/bus_upper_angle_excess/value"
+derivation = "-atan(0.1)-(-0.12). Unit: rad."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.3125"
+section = "sequence-voltage-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/sequence_zero_squared/value"
+derivation = "Squared magnitude of the declared phase-neutral zero-sequence phasor 0.5+j*0.25 V. Unit: V^2."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.159017"
+section = "sequence-voltage-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/sequence_zero_excess/value"
+derivation = "abs(0.5+j*0.25)-0.4. Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "1.520691"
+section = "sequence-voltage-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/sequence_earth_zero_magnitude/value"
+derivation = "abs(V0_phase_neutral+V_neutral)=abs(1.5-j*0.25). Unit: V."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "+0.09966865"
+section = "branch-angle-voltage-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/small_angle_coefficient/value"
+derivation = "atan(1/10); a negative centered deviation displays the positive subtraction coefficient. Unit: rad."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.01966865"
+section = "branch-angle-voltage-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/branch_upper_angle_excess/value"
+derivation = "atan(0.1)-0.08. Unit: rad."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "-0.0012"
+section = "source-price-reference-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/source_price_rate/value"
+derivation = "Earth-referenced source phase b: Re((j*10)*conj(0.2-j*0.3))*0.4/1000. Unit: currency/hour."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "+0.0006"
+section = "source-price-reference-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/source_price_positive_rate/value"
+derivation = "Earth-referenced source phase a: Re(10*conj(0.6-j*0.1))*0.1/1000. Unit: currency/hour."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "-0.0006"
+section = "source-price-reference-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/source_total_price_rate/value"
+derivation = "Sum of the two phase rates under prices (0.4,0.1) in source map order (b,a). Unit: currency/hour."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "+0.0021"
+section = "source-price-reference-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/source_unmoved_price_rate/value"
+derivation = "Reorder source phases to (a,b) but deliberately retain the old price vector (0.4,0.1). Unit: currency/hour."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.0005"
+section = "source-price-reference-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/two_phase_source_price_rate/value"
+derivation = "Two earth-referenced source phase powers from (10,j*10) V and (0.3-j*0.1,-0.3+j*0.1) A, weighted by (0.1,0.2)/1000; not a one-coil generator convention. Unit: currency/hour."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "-0.00045"
+section = "ibr-price-scope-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/four_price_rate/value"
+derivation = "Dot((-1,4,1.5),(.1,-.2,.3))/1000 in declared four-leg coil order. Unit: currency/hour."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "-0.0005"
+section = "ibr-price-scope-audit"
+occurrence = 1
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/three_price_rate/value"
+derivation = "Dot((4,1.5,-2),(.1,-.2,.3))/1000 in declared cyclic-coil order. Unit: currency/hour."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "-0.00095"
+section = "ibr-price-scope-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/four_unmoved_price_rate/value"
+derivation = "Powers reordered from (z,x,y) to (y,x,z), with old prices deliberately unmoved. Unit: currency/hour."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "-0.0005"
+section = "ibr-price-scope-audit"
+occurrence = 2
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/three_price_rate/value"
+derivation = "Dot((4,1.5,-2),(.1,-.2,.3))/1000 in declared cyclic-coil order. Unit: currency/hour."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "-0.0044"
+section = "ibr-price-scope-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/three_circulation_price_rate/value"
+derivation = "Baseline rate + Re(conj(0.5+j*0.2)*sum(c_k*U_k))/1000; U=(10-j10,6+j18,-16-j8). Computational cyclic model only. Unit: currency/hour."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.00035"
+section = "ibr-price-scope-audit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/three_uniform_price_rate/value"
+derivation = "Uniform 0.1 prices times sum((4,1.5,-2) W)/1000; equal circulation leaves this sum unchanged in the authored cyclic model. Unit: currency/hour."
+
+[[binding]]
+path = "docs/src/cases/building-and-changing-models.md"
+literal = "5.4366"
+section = "compare-from-scratch-then-test-the-requested-law"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/cache_residual_coefficient/value"
+derivation = "Magnitude of the displayed residual -2*exp(1), not a new solver observation. Unit: dimensionless."
+
+[[binding]]
+path = "docs/src/foundations/circuit-formulations-and-lowering.md"
+literal = "2.5575"
+section = "a-loaded-230-115-v-calculation"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/ideal_primary_current_real/value"
+derivation = "Re((1/23 + 1/1000-j/500)*115/2); ideal winding powers agree. Unit: A."
+
+[[binding]]
+path = "docs/src/foundations/numerical-consequences.md"
+literal = "0.5198"
+section = "a-switch-needs-a-state-law-and-a-conductor-limit"
+source_artifact = "experiments/generated/prose-number-witnesses.json"
+source_sha256 = "5ccf5c13dc91845b1ac32f9c31ebda74fbab135cbf78c131c4bdb2ef9434cd2c"
+source_pointer = "/values/switch_neutral_excess/value"
+derivation = "sqrt(1^2+(1/5)^2)-0.5 for the unchanged supplied switch current. Unit: A."
+# END GENERATED VERIFIED PROSE NUMBERS
+# BEGIN RECORDED GENERATOR BOUND NUMBERS
+
+[[binding]]
+path = "docs/src/cases/study-workbook.md"
+literal = "0.00997"
+section = "running-case-evidence-generations"
+source_artifact = "experiments/generated/recorded-generator-bound.json"
+source_sha256 = "e4ec3b0d44985dafdecb8f59c3f06fb6f9ab109e6947cc980e547b3ddb9648c4"
+source_pointers = ["/values/a/excess_W", "/values/b/excess_W", "/values/c/excess_W"]
+derivation = "Each of the three phase excesses is independently reconstructed from saved voltages, injection currents and p_max at the recorded candidate solver point; all must round to the displayed W value. Not a universal solver result."
+
+[[binding]]
+path = "docs/src/foundations/numerical-consequences.md"
+literal = "0.00997"
+section = "extending-coverage-without-changing-the-older-api"
+source_artifact = "experiments/generated/recorded-generator-bound.json"
+source_sha256 = "e4ec3b0d44985dafdecb8f59c3f06fb6f9ab109e6947cc980e547b3ddb9648c4"
+source_pointers = ["/values/a/excess_W", "/values/b/excess_W", "/values/c/excess_W"]
+derivation = "Each of the three phase excesses is independently reconstructed from saved voltages, injection currents and p_max at the recorded candidate solver point; all must round to the displayed W value. Not a universal solver result."
+
+[[binding]]
+path = "docs/src/reference/numerical-audit-reference.md"
+literal = "0.00997"
+section = "generator-cost-scope-audit"
+source_artifact = "experiments/generated/recorded-generator-bound.json"
+source_sha256 = "e4ec3b0d44985dafdecb8f59c3f06fb6f9ab109e6947cc980e547b3ddb9648c4"
+source_pointers = ["/values/a/excess_W", "/values/b/excess_W", "/values/c/excess_W"]
+derivation = "Each of the three phase excesses is independently reconstructed from saved voltages, injection currents and p_max at the recorded candidate solver point; all must round to the displayed W value. Not a universal solver result."

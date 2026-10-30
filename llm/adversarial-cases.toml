@@ -72,3 +72,424 @@ question = "What is the weather on Mars today?"
 expected_status = "unsupported"
 expected_claim_ids = []
 expected_concept_ids = []
+
+# Near-domain regressions: qualify only when a responsive contract now exists.
+# Zero-voltage and ideal-current cases acquired scoped bases in lessons A/C; unrelated
+# questions must still abstain rather than borrow a neighbouring qualification.
+
+[[case]]
+case_id = "ADV-ZERO-VOLTAGE-KCL"
+audience = "power_engineer"
+question = "Does a zero terminal voltage make power balance equivalent to KCL?"
+expected_status = "qualified"
+expected_claim_ids = ["FORMULATION-ZERO-001"]
+expected_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-ZERO-VOLTAGE-SOLUTIONS"
+audience = "power_engineer"
+question = "Do KCL and power-balance equations have the same solutions when a terminal voltage is zero?"
+expected_status = "qualified"
+expected_claim_ids = ["FORMULATION-ZERO-001"]
+expected_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-ZERO-VOLTAGE-IMBALANCE"
+audience = "power_engineer"
+question = "At zero voltage, can equal terminal powers hide nonzero current imbalance?"
+expected_status = "qualified"
+expected_claim_ids = ["FORMULATION-ZERO-001"]
+expected_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-ZERO-NEUTRAL-RESIDUAL"
+audience = "power_engineer"
+question = "At zero neutral voltage, is a power residual sufficient?"
+expected_status = "qualified"
+expected_claim_ids = ["FORMULATION-ZERO-001"]
+expected_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-KCL-ALL-VOLTAGES"
+audience = "power_engineer"
+question = "Does power balance enforce KCL at every voltage?"
+expected_status = "qualified"
+expected_claim_ids = ["FORMULATION-ZERO-001"]
+expected_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-IDEAL-SWITCH-SHARING"
+audience = "power_engineer"
+question = "Can I replace a small impedance by an ideal switch without changing current sharing?"
+expected_status = "qualified"
+expected_claim_ids = ["PRACTICE-SHORT-001"]
+expected_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-TINY-RESISTANCE-SHARING"
+audience = "power_engineer"
+question = "Is replacing a tiny resistance with an ideal switch guaranteed to preserve current sharing?"
+expected_status = "qualified"
+expected_claim_ids = ["PRACTICE-SHORT-001"]
+expected_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-IDEAL-CURRENT-LIMIT"
+audience = "power_engineer"
+question = "Does the limit of a small impedance retain a unique split of current between ideal switches?"
+expected_status = "qualified"
+expected_claim_ids = ["PRACTICE-SHORT-001"]
+expected_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-PARAMETER-REUSE"
+audience = "power_engineer"
+question = "Can I reuse an OPF after updating a parameter through zero?"
+expected_status = "qualified"
+expected_claim_ids = ["PRACTICE-REUSE-001"]
+expected_concept_ids = ["state", "factor", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-DELTA-COIL-CIRCULATION"
+audience = "power_engineer"
+question = "Can delta coil currents circulate while terminal KCL and total power still agree?"
+expected_status = "qualified"
+expected_claim_ids = ["LOAD-CONNECTION-002"]
+expected_concept_ids = ["phase-conductor-sequence-coordinate", "flow-current-power-message", "direction-orientation-hierarchy"]
+
+[[case]]
+case_id = "ADV-DELTA-INRUSH-BOUNDARY"
+audience = "power_engineer"
+question = "Can delta transformer inrush current be predicted from these equations?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-COIL-TRANSIENT-BOUNDARY"
+audience = "power_engineer"
+question = "Can delta coil currents predict transient transformer inrush during energization?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-EXACT-PHRASE-TRANSIENT"
+audience = "software_engineer"
+question = "Can the rule delta coil current terminal kcl calculate saturation during energisation?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PARAMETER-ESTIMATION-BOUNDARY"
+audience = "power_engineer"
+question = "Does a parameter value of zero identify the true conductance from noisy measurements?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PARAMETER-STATISTICAL-BOUNDARY"
+audience = "software_engineer"
+question = "Should zero parameters be pruned from a neural language model for faster inference?"
+# Shared parameter/model vocabulary retrieves related material, but no claim contract.
+# under_retrieved is the retrieval outcome; unsupported means no material retrieved.
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-CURRENT-NOT-UNIQUE"
+audience = "power_engineer"
+question = "Do current limits guarantee uniqueness of the ideal current split?"
+expected_status = "qualified"
+expected_claim_ids = ["LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+expected_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-MULTIPLICITY-OVERLOAD"
+audience = "power_engineer"
+question = "Can both end power caps admit an overloaded root?"
+expected_status = "qualified"
+expected_claim_ids = ["LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+expected_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-MULTIPLICITY-DYNAMIC"
+audience = "power_engineer"
+question = "Can unintended solution multiplicity determine which root is dynamically stable?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-MULTIPLICITY-NAMEPLATE"
+audience = "power_engineer"
+question = "Can a nominal MVA cap determine the manufacturer nameplate capability of a converter?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-MULTIPLICITY-HEATING"
+audience = "power_engineer"
+question = "Can apparent power limits predict conductor temperature and transient heating?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-CONVEX-LIMIT-NOT-UNIQUE"
+audience = "power_engineer"
+question = "Does a convex power cap guarantee a unique solution?"
+expected_status = "qualified"
+expected_claim_ids = ["LIMIT-CONVEXITY-001", "LIMIT-MULTIPLICITY-001"]
+expected_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-NONCONVEX-LIMIT-NOT-MULTIPLE"
+audience = "power_engineer"
+question = "Does a nonconvex power cap necessarily create multiple solutions?"
+expected_status = "qualified"
+expected_claim_ids = ["LIMIT-CONVEXITY-001", "LIMIT-MULTIPLICITY-001"]
+expected_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-FINITE-NEUTRAL-POWER-CAP"
+audience = "power_engineer"
+question = "Does a nonzero neutral voltage make a power limit equivalent to a current limit?"
+expected_status = "qualified"
+expected_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001"]
+expected_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-AGGREGATE-NEUTRAL-CERTIFICATE"
+audience = "power_engineer"
+question = "Can an aggregate power cap certify the neutral current rating when shunts carry earth current?"
+expected_status = "qualified"
+expected_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001"]
+expected_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-CURRENT-GAUGE"
+audience = "power_engineer"
+question = "Can current circulation be removed by gauge fixing when member ratings matter?"
+expected_status = "qualified"
+expected_claim_ids = ["KERNEL-OBSERVATION-001"]
+expected_concept_ids = ["ground-neutral-reference", "flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-DELTA-KERNEL-LAW"
+audience = "power_engineer"
+question = "Does a delta kernel allow a free device current even with fixed resistive coil laws?"
+expected_status = "qualified"
+expected_claim_ids = ["KERNEL-OBSERVATION-001"]
+expected_concept_ids = ["ground-neutral-reference", "flow-current-power-message", "equivalence-exactness-preservation"]
+
+[[case]]
+case_id = "ADV-GAUGE-TRANSIENT-BOUNDARY"
+audience = "power_engineer"
+question = "Can the rule nullspace removable gauge predict transient inrush magnitudes?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+# R1 review regressions and adjacent intents. These are now known development
+# cases, not blind questions or an estimate of semantic error prevalence.
+
+[[case]]
+case_id = "ADV-DELTA-COIL-INDEPENDENCE"
+audience = "power_engineer"
+question = "Are three delta terminals three independent load coils?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-TWO-TERMINAL-ARITY"
+audience = "power_engineer"
+question = "Does a two-terminal DELTA load have two independent coils?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-COIL-COUNT"
+audience = "power_engineer"
+question = "How many independent coils does a three-terminal delta load have?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-VOLTAGE-MAP"
+audience = "power_engineer"
+question = "Can I use delta coil voltages as terminal voltages?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-INJECTION-AMBIGUOUS"
+audience = "power_engineer"
+question = "How do delta load currents enter terminal KCL?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-VOLTAGE-AMBIGUOUS"
+audience = "power_engineer"
+question = "What does the load voltage mean for a delta coil?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-NOMINAL-OPERATING-POINT"
+audience = "power_engineer"
+question = "Do three delta coil voltages equal three terminal voltages at the nominal operating point?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-DELTA-VOLTAGE-BASE"
+audience = "power_engineer"
+question = "Which voltage base should normalize a delta load?"
+expected_status = "qualified"
+expected_claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
+expected_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "factor"]
+
+[[case]]
+case_id = "ADV-DELTA-VNOM"
+audience = "power_engineer"
+question = "Which v_nom should I use for a DELTA ZIP load?"
+expected_status = "qualified"
+expected_claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
+expected_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "factor"]
+
+[[case]]
+case_id = "ADV-DELTA-BASE-WITH-INCIDENCE"
+audience = "power_engineer"
+question = "Do WYE and DELTA loads use equal nominal voltage anchors even when coil currents map differently?"
+expected_status = "qualified"
+expected_claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
+expected_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "factor"]
+
+# Bounded author-review probes, now exposed development regressions.
+# Mathematical questions now require scoped contracts. The unpublished native
+# monitor question still has no current complete executable answer contract.
+
+[[case]]
+case_id = "ADV-VUF-ZERO-RATIO-DOMAIN"
+audience = "power_engineer"
+question = "Does zero positive-sequence voltage satisfy a VUF limit because the cross-multiplied inequality passes?"
+expected_status = "qualified"
+expected_claim_ids = ["LIMIT-VUF-001"]
+expected_concept_ids = ["phase-conductor-sequence-coordinate", "rating-limit-constraint"]
+
+[[case]]
+case_id = "ADV-DELTA-GENERATOR-COIL-LIMITS"
+audience = "power_engineer"
+question = "Can terminal injection currents alone establish DELTA generator coil-current limits?"
+expected_status = "qualified"
+expected_claim_ids = ["LOAD-CONNECTION-002"]
+expected_concept_ids = ["phase-conductor-sequence-coordinate", "flow-current-power-message", "direction-orientation-hierarchy"]
+
+[[case]]
+case_id = "ADV-SOLVER-LABEL-PHYSICAL-TOLERANCE"
+audience = "power_engineer"
+question = "Does LOCALLY_SOLVED prove all generator bounds pass a 1e-6 W tolerance?"
+expected_status = "qualified"
+expected_claim_ids = ["NUMERICAL-001", "NUMERICAL-004"]
+expected_concept_ids = ["state", "rating-limit-constraint"]
+
+[[case]]
+case_id = "ADV-REPAIRED-FOUR-LEG-MONITORS"
+audience = "power_engineer"
+question = "Are mixed per-phase and averaged FOUR_LEG monitors still unsupported in the repaired candidate?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-TINY-MINIMUM-PF-RATIO"
+audience = "power_engineer"
+question = "Does a weighted minimum-PF residual pass certify the PF ratio when the minimum coefficient is tiny?"
+expected_status = "qualified"
+expected_claim_ids = ["CONTROL-PF-001"]
+expected_concept_ids = ["rating-limit-constraint", "flow-current-power-message"]
+
+[[case]]
+case_id = "ADV-CONSTANT-PF-Q-CAP-CLIPPING"
+audience = "power_engineer"
+question = "Does q_max clip the reactive injection required by a constant power factor?"
+expected_status = "qualified"
+expected_claim_ids = ["CONTROL-PF-001"]
+expected_concept_ids = ["rating-limit-constraint", "factor"]
+
+[[case]]
+case_id = "ADV-VUF-TRANSIENT-COMPLIANCE"
+audience = "power_engineer"
+question = "Does a zero positive-sequence VUF polynomial pass certify a manufacturer transient voltage-compliance algorithm?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PF-FILTER-DYNAMICS"
+audience = "power_engineer"
+question = "Does a weighted minimum-PF residual certify my filter dynamics?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PF-MANUFACTURER-CLIPPING"
+audience = "power_engineer"
+question = "Does a constant PF Q cap conflict guarantee manufacturer dynamic clipping behavior?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PF-VUF-MULTI-INTENT"
+audience = "power_engineer"
+question = "Does a weighted minimum-PF residual pass also certify VUF at its zero denominator?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PF-THERMAL-SAFETY"
+audience = "power_engineer"
+question = "Does a weighted minimum-PF residual pass prove all branch temperatures are safe?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PF-CAP-SIGN-INTENT"
+audience = "power_engineer"
+question = "Is the sign of constant PF enough to choose q_max?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-PF-VUF-SPELLED-OUT"
+audience = "power_engineer"
+question = "Does a weighted power factor residual pass also certify VUF at its zero denominator?"
+expected_status = "under_retrieved"
+expected_claim_ids = []
+expected_concept_ids = []
+
+[[case]]
+case_id = "ADV-CONSTANT-PF-HYPHENATED"
+audience = "power_engineer"
+question = "Does a Q cap allow constant-PF clipping without violating the equality?"
+expected_status = "qualified"
+expected_claim_ids = ["CONTROL-PF-001"]
+expected_concept_ids = ["rating-limit-constraint", "factor"]

@@ -1,6 +1,93 @@
 schema_version = "0.1.0"
 
 [[misconception]]
+id = "zero-parameter-means-absent-term"
+title = "A parameter currently at zero can be deleted from a reused model"
+severity = "critical"
+query_patterns = ["parameter zero delete symbolic term", "reuse opf parameter through zero", "parameter update compiled model current residual", "zero parameter coefficient solver reuse"]
+tempting_answer = "A parameter term that evaluates to zero can be removed, and another successful solve certifies later updates."
+required_qualification = "A zero parameter value is not an identically absent term over a model family. Retain symbolic dependence, compare fresh and reused physical outputs, and check the requested current law. Lost symbolic terms, stale numerical evaluation and edits outside the compiled structure need different remedies. Follow the supported reset workflow, rebuild unrepresented structure, and retain failed scenarios without carrying forward an earlier valid result. The fixed conductance counterexample and pinned execution do not certify arbitrary nonlinear reuse or speed benefits."
+safe_shorthand = "Reuse only within the declared parameter family, and validate against the updated physical inputs."
+operational_consequence = "A solver can successfully solve deleted or stale equations while the requested current law fails."
+mandatory_claim_ids = ["PRACTICE-REUSE-001"]
+mandatory_concept_ids = ["state", "factor", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/cases/building-and-changing-models.md"]
+
+[misconception.router_scope]
+rationale = "Needs parameter, zero/update/reuse and an OPF/solver/term signal."
+require_token_groups = ['parameter\w*', 'zero|updat\w*|reus\w*', 'opf|solv\w*|symbolic|compil\w*|coefficient\w*|term\w*|current\w*']
+
+[[misconception]]
+id = "delta-coil-currents-are-terminal-currents"
+title = "Delta coil currents can be used directly as terminal currents"
+severity = "critical"
+query_patterns = ["delta coil currents terminal currents", "delta coil current terminal kcl", "delta coil current circulation total power", "terminal kcl total power validate delta coil currents"]
+tempting_answer = "A delta load's coil-current array can be inserted directly into terminal KCL, and total power checks every coil."
+required_qualification = "For fixed real oriented incidence C, coil voltages are CV and terminal currents are C transpose times coil currents. A three-coil circulation lies in the transpose nullspace and leaves terminal KCL and total power unchanged while individual coil powers change. Check each declared coil law and retain ordered endpoints; two phase terminals define one native delta coil and three define a cycle. This does not validate arbitrary connection implementations or transient physics."
+safe_shorthand = "Map coil currents to terminals and verify each coil equation; aggregate agreement alone is insufficient."
+operational_consequence = "A terminal-only check can miss an incorrect internal coil operating point or a wrongly assembled current injection."
+mandatory_claim_ids = ["LOAD-CONNECTION-002"]
+mandatory_concept_ids = ["phase-conductor-sequence-coordinate", "flow-current-power-message", "direction-orientation-hierarchy"]
+source_paths = ["docs/src/foundations/load-models-and-decision-dependence.md"]
+
+[misconception.router_scope]
+rationale = "Needs delta, coil and current/KCL terms. A phasor-incidence packet cannot answer inrush, energisation or saturation questions."
+require_token_groups = ['delta', 'coil\w*', 'current\w*|kcl']
+exclude_tokens = 'inrush|transient\w*|energiz\w*|energis\w*|saturat\w*'
+
+[[misconception]]
+id = "vanishing-impedance-preserves-ideal-current-sharing"
+title = "Tiny impedances and ideal switches have the same current sharing"
+severity = "critical"
+query_patterns = ["small impedance ideal switch current sharing", "tiny resistance ideal switch", "unique split current ideal switches", "vanishing resistance current selection", "ideal shorts member current limits"]
+tempting_answer = "If replacing a small impedance by an ideal switch barely changes voltage, it preserves member currents and ratings."
+required_qualification = "The positive scalar resistor family retains resistance-ratio-dependent current sharing as epsilon tends to zero. Replacing both members by ideal shorts removes that selection law: KCL fixes only the sum, so identical limiting voltages can coexist with different member-current feasibility. Keep the limits and current recovery; do not extrapolate this counterexample to a universal regularization theorem."
+safe_shorthand = "Small voltage error alone cannot justify idealization when member currents or limits matter."
+operational_consequence = "An idealized model may choose a rating-feasible split that the finite-resistance source family cannot attain."
+mandatory_claim_ids = ["PRACTICE-SHORT-001"]
+mandatory_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/cases/building-and-changing-models.md"]
+
+[misconception.router_scope]
+rationale = "Needs an ideal/small qualifier, an impedance/switch term and a current-sharing term."
+require_token_groups = ['ideal|tiny|small|vanish\w*', 'impedance|resistance|resistor\w*|switch\w*|short\w*', 'current\w*|sharing|split|limit\w*']
+
+[[misconception]]
+id = "ideal-transformer-is-a-large-admittance"
+title = "An ideal transformer is a huge admittance or a small leakage clamped to zero"
+severity = "high"
+query_patterns = ["ideal transformer huge admittance", "transformer leakage threshold zero", "transformer bordered port finite leakage", "ideal transformer shunts retained", "unity ratio transformer bond neutrals"]
+tempting_answer = "Replace ideal or sufficiently small transformer leakage by a huge admittance, or set it to zero and omit the remaining passive branches."
+required_qualification = "For the fixed scalar relation CV=zi, the bordered formulation retains finite z through A=y0 C, D=y0^2 z and i=y0 w. Only z=0 gives the ideal constraint. Keep finite magnetizing and grounding shunts exactly once, and specify references; a unity ratio does not create a neutral bond."
+safe_shorthand = "A small-leakage representation threshold selects equations; it does not by itself approximate finite leakage as zero."
+operational_consequence = "Clamping leakage, losing a shunt, or merging isolated neutrals changes terminal currents and powers; a correct ideal ratio alone cannot detect these failures."
+mandatory_claim_ids = ["FORMULATION-PORT-001"]
+mandatory_concept_ids = ["factor", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/foundations/circuit-formulations-and-lowering.md"]
+
+[misconception.router_scope]
+rationale = "Needs a transformer term and an ideal/leakage/bordering term."
+require_token_groups = ['transformer\w*|xfmr', 'ideal|leakage|border\w*']
+
+[[misconception]]
+id = "power-balance-enforces-kcl-at-zero-voltage"
+title = "Power balance enforces KCL even at zero terminal voltage"
+severity = "critical"
+query_patterns = ["zero voltage power balance", "power balance enforce kcl", "zero neutral power residual", "zero voltage impedance current", "power balance current imbalance"]
+tempting_answer = "A small power residual proves that Kirchhoff current balance holds, even at a zero-voltage neutral."
+required_qualification = "The complete nodal residuals obey r_S=V conjugate(r_I); division requires V nonzero. At zero voltage the power row loses current information, and small-voltage tolerance amplification must be checked in amperes. Include ground and source reaction currents; total-network power balance can also hide opposite nodal errors."
+safe_shorthand = "A nodal power row implies its current row only at nonzero voltage with consistent terminal powers and all current paths accounted for."
+operational_consequence = "A zero-voltage or small-voltage terminal may hide a current violation; an arbitrary positive voltage floor changes the admissible domain."
+mandatory_claim_ids = ["FORMULATION-ZERO-001"]
+mandatory_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/foundations/circuit-formulations-and-lowering.md", "docs/src/foundations/numerical-consequences.md"]
+
+[misconception.router_scope]
+rationale = "KCL at zero voltage needs a power term plus a current/KCL/impedance signal. KCL is not itself a solver-status or VUF question."
+require_token_groups = ['power\w*', 'kcl|current\w*|residual\w*|impedance|neutral', 'zero|kcl|impedance|constantz|neutral']
+exclude_tokens = 'vuf'
+
+[[misconception]]
 id = "one-universal-network-graph"
 title = "There is one representation-independent network graph"
 severity = "high"
@@ -39,6 +126,10 @@ mandatory_claim_ids = ["FORMULATION-Y-SPLIT-001", "ARCH-NODAL-001", "LOAD-DECISI
 mandatory_concept_ids = ["graph-topology-adjacency", "factor", "nodal-operator-alias"]
 source_paths = ["docs/src/foundations/multigraphs-for-modelers.md", "docs/src/foundations/circuit-formulations-and-lowering.md", "docs/src/foundations/load-models-and-decision-dependence.md"]
 
+[misconception.router_scope]
+rationale = "Needs a graph, nodal-matrix or assembly signal."
+require_token_groups = ['graph|ybus|nodal|admittance|norton|assembl\w*|lineariz\w*|linearis\w*|matrix']
+
 [[misconception]]
 id = "nodal-operator-is-source-network"
 title = "The nodal admittance matrix uniquely is the network"
@@ -64,6 +155,10 @@ operational_consequence = "The aggregate can admit dispatch or loading decisions
 mandatory_claim_ids = ["TR-PAR-001", "TR-PAR-002", "TR-PAR-003"]
 mandatory_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
 source_paths = ["docs/src/start/first-failure-parallel-branches.md"]
+
+[misconception.router_scope]
+rationale = "Needs a parallel, twin or aggregation signal."
+require_token_groups = ['parallel|twin|bundled|aggregate|aggregation|mva']
 
 [[misconception]]
 id = "radial-is-representation-independent"
@@ -117,6 +212,10 @@ mandatory_claim_ids = ["PRESERVE-001", "TR-KRON-NEUTRAL-005", "TR-KRON-NEUTRAL-0
 mandatory_concept_ids = ["equivalence-exactness-preservation", "transformation-family", "state"]
 source_paths = ["docs/src/transformations/kron-ward-opti-kron.md", "docs/src/foundations/preservation-contracts.md"]
 
+[misconception.router_scope]
+rationale = "Needs an equivalent, Ward/Kron or frozen-state signal."
+require_token_groups = ['equivalent|ward|kron|frozen|freeze|basestate']
+
 [[misconception]]
 id = "reference-or-rank-success-proves-nonsingularity"
 title = "A successful import or solver status proves every island is referenced and nonsingular"
@@ -143,6 +242,10 @@ mandatory_claim_ids = ["GROUND-SCOPE-001", "GROUND-SCOPE-002"]
 mandatory_concept_ids = ["ground-neutral-reference", "object-node-interface"]
 source_paths = ["docs/src/foundations/earth-ground-models.md", "docs/src/start/one-network-five-languages.md"]
 
+[misconception.router_scope]
+rationale = "Needs a ground, earth or reference signal."
+require_token_groups = ['ground\w*|earth|datum|reference']
+
 [[misconception]]
 id = "terminal-equivalence-implies-opf-equivalence"
 title = "Equal terminal equations imply equal optimization decisions"
@@ -155,6 +258,10 @@ operational_consequence = "An apparently exact equivalent can admit infeasible s
 mandatory_claim_ids = ["PRESERVE-001", "TR-PAR-001", "TR-PAR-002"]
 mandatory_concept_ids = ["equivalence-exactness-preservation", "rating-limit-constraint"]
 source_paths = ["docs/src/foundations/preservation-contracts.md", "docs/src/start/first-failure-parallel-branches.md"]
+
+[misconception.router_scope]
+rationale = "Needs an optimization/decision signal and a terminal-equivalence or model signal."
+require_token_groups = ['optimi\w*|opf|decision\w*|planning|dispatch|feasib\w*|observation|range', '\w*(?:terminal|equivalen|reduction|observation|range)\w*|circuit|model']
 
 [[misconception]]
 id = "mutual-coupling-is-an-ordinary-parallel-network"
@@ -169,11 +276,15 @@ mandatory_claim_ids = ["COUPLED-CORRIDOR-001", "COUPLED-CORRIDOR-002"]
 mandatory_concept_ids = ["mutual-coupling-relation", "parallel", "equivalence-exactness-preservation"]
 source_paths = ["docs/src/cases/coupled-multivoltage-corridor.md", "docs/src/foundations/cycles-parallelism-radiality.md", "docs/src/foundations/preservation-contracts.md"]
 
+[misconception.router_scope]
+rationale = "Needs a mutual-coupling or shared-corridor signal."
+require_token_groups = ['mutual\w*|coupl\w*|lattice|crossvoltage|shared|joint']
+
 [[misconception]]
 id = "solver-termination-implies-validated-solution"
 title = "Successful solver termination proves the returned solution is scientifically valid"
 severity = "critical"
-query_patterns = ["solver says optimal", "locally solved means feasible", "solver success validates solution", "termination status proof", "trust optimal solution", "successful opf result", "opf converged successfully", "solver converged so correct", "accept solved result"]
+query_patterns = ["solver says optimal", "locally solved means feasible", "solver success validates solution", "termination status proof", "trust optimal solution", "successful opf result", "opf converged successfully", "solver converged so correct", "accept solved result", "LOCALLY_SOLVED generator bounds tolerance"]
 tempting_answer = "The solver returned a successful or optimal status, so the result satisfies the model and is valid for the study."
 required_qualification = "Termination status is algorithm evidence only; independently validate the returned numeric values, relevant equations, bounds, residuals, recovery obligations, and the actual local or global optimality guarantee before making a scientific conclusion."
 safe_shorthand = "Solved is safe shorthand only when the required independent validation dimensions and optimality level are stated."
@@ -208,6 +319,11 @@ mandatory_claim_ids = ["LOAD-BASE-001", "LOAD-CONNECTION-001"]
 mandatory_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "factor"]
 source_paths = ["docs/src/foundations/load-models-and-decision-dependence.md"]
 
+[misconception.router_scope]
+rationale = "Connection vocabulary alone does not ask about normalization; coil arity, incidence and operating voltages need different evidence. The phrase test separates 'nominal voltage' from a question evaluated 'at the nominal operating point'."
+require_token_groups = ['wye|delta|load\w*']
+require_query = '\b(?:nominal (?:load )?voltage|base|vnom|kv|sqrt3|anchor\w*|normaliz\w*|normalis\w*)\b'
+
 [[misconception]]
 id = "reference-matrix-match-proves-source-provenance"
 title = "An available or closely matched impedance matrix proves its source construction"
@@ -220,6 +336,10 @@ operational_consequence = "Guessing the construction can silently assign the wro
 mandatory_claim_ids = ["AU-CARSON-001"]
 mandatory_concept_ids = ["normalization", "phase-conductor-sequence-coordinate", "ground-neutral-reference"]
 source_paths = ["docs/src/cases/australian-carson-reproduction.md", "experiments/data/australian_source_audit.toml"]
+
+[misconception.router_scope]
+rationale = "Needs a cable-construction or provenance signal. Impedance alone is not source provenance."
+require_token_groups = ['cs1035|ughv|carson|australian|cable|construction|geometry|provenance|linecode|frequency']
 
 [[misconception]]
 id = "fixed-tap-snapshot-preserves-adjustable-transformer"
@@ -247,6 +367,10 @@ mandatory_claim_ids = ["TR-XFMR-001", "TR-XFMR-004"]
 mandatory_concept_ids = ["object-node-interface", "phase-conductor-sequence-coordinate", "equivalence-exactness-preservation", "transformation-family"]
 source_paths = ["docs/src/transformations/transformer-winding-coordinate-normalization.md", "docs/src/transformations/fixed-linear-transformer-factor-completion.md"]
 
+[misconception.router_scope]
+rationale = "Needs a transformer term and a swap/reversal/orientation term."
+require_token_groups = ['transformer\w*|xfmr', 'swap\w*|revers\w*|exchang\w*|flip\w*|orient\w*|undirect\w*|sort\w*|canonicaliz\w*']
+
 [[misconception]]
 id = "terminal-permutation-is-cosmetic"
 title = "Terminal or conductor order is cosmetic"
@@ -260,6 +384,10 @@ mandatory_claim_ids = ["TR-KRON-001", "PRESERVE-001"]
 mandatory_concept_ids = ["phase-conductor-sequence-coordinate", "equivalence-exactness-preservation", "transformation-family"]
 source_paths = ["docs/src/transformations/circuit-coordinate-transformations.md", "docs/src/foundations/when-general-model-collapses.md"]
 
+[misconception.router_scope]
+rationale = "Needs a permutation, reordering or relabelling signal."
+require_token_groups = ['permut\w*|reorder\w*|relabel\w*|swap\w*|order\w*|cosmetic']
+
 [[misconception]]
 id = "complete-feasibility-status-is-enough"
 title = "Solver status alone is a complete solved-network feasibility certificate"
@@ -272,6 +400,10 @@ operational_consequence = "Skipping independent checks can accept violated equat
 mandatory_claim_ids = ["NUMERICAL-005"]
 mandatory_concept_ids = ["factor", "rating-limit-constraint", "equivalence-exactness-preservation"]
 source_paths = ["docs/src/foundations/numerical-consequences.md"]
+
+[misconception.router_scope]
+rationale = "Needs a solver-status, certificate or feasibility signal."
+require_token_groups = ['solver|optimal|locallysolved|termination\w*|solved\w*|certificate|feasib\w*|validation']
 
 [[misconception]]
 id = "generic-neural-retrieval-is-automatically-better"
@@ -298,6 +430,10 @@ operational_consequence = "Treating nonconvergence as infeasibility can invent c
 mandatory_claim_ids = ["LOAD-CONTINUATION-001"]
 mandatory_concept_ids = ["state", "equivalence-exactness-preservation"]
 source_paths = ["docs/src/foundations/load-models-and-decision-dependence.md"]
+
+[misconception.router_scope]
+rationale = "Needs a failure, nonconvergence or infeasibility signal."
+require_token_groups = ['fail\w*|nonconverg\w*|infeasib\w*|collapse|nose']
 
 [[misconception]]
 id = "numeric-round-trip-preserves-field-meaning"
@@ -337,3 +473,116 @@ operational_consequence = "Ignoring multiplier mappings or duplicate-constraint 
 mandatory_claim_ids = ["PRACTICE-DUAL-001"]
 mandatory_concept_ids = ["normalization", "equivalence-exactness-preservation"]
 source_paths = ["docs/src/cases/building-and-changing-models.md", "experiments/lessons/practical_model_checks.py"]
+
+[[misconception]]
+id = "apparent-power-limit-implies-current-admissibility"
+title = "A nominal apparent-power cap preserves current admissibility and removes unintended solutions"
+severity = "critical"
+query_patterns = ["apparent power limit current admissibility", "apparent power limits multiple solutions", "nominal mva cap current limit", "power caps guarantee current ratings", "current limits guarantee uniqueness", "unintended solution multiplicity", "both end power caps overloaded root", "aggregate power cap neutral current", "nonzero neutral voltage power limit"]
+tempting_answer = "Converting a current rating at nominal voltage preserves the feasible operating points, and current limits guarantee a unique physical solution."
+required_qualification = "Since |S|=|V||I|, a constant nominal-voltage power cap changes the current bound away from nominal voltage. The exact two-root witness admits an overloaded root under both-end power caps; it does not create a circuit equation root. The explicit-neutral/shunt witness retains a nonzero receiving-neutral voltage; aggregate powers and source, series and coil currents remain distinct observations. Current caps can bound ideal current families without selecting them and cannot restore KCL lost by multiplying it by zero voltage. Isolated feasible points can each be local minima even when their objective values differ."
+safe_shorthand = "Separate circuit roots, admissible states, internal current modes and local/global optima; check the original equations and the intended limits."
+operational_consequence = "A local solver can accurately return an overloaded or KCL-violating point for the emitted model; regularization can select a current split without recovering its physical law. Legitimate device power ratings and dynamic stability require their own models."
+mandatory_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+mandatory_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/cases/neutral-shunt-multiplicity.md", "docs/src/cases/unintended-solution-multiplicity.md", "experiments/lessons/solution_multiplicity.py"]
+
+[misconception.router_scope]
+rationale = "Needs apparent power or multiplicity, a limit term and a current or solution term. Dynamic and manufacturer ratings need different evidence. Heating and temperature stay in scope: the qualification states that neither static cap is a complete conductor-temperature model."
+require_token_groups = ['apparent|mva|power|multiplicity|uniqueness', 'limit\w*|cap\w*|rating\w*|solution\w*', 'current\w*|root\w*|solution\w*|multiplicity|uniqueness']
+exclude_tokens = 'dynamic\w*|transient\w*|nameplate|manufacturer'
+
+[[misconception]]
+id = "convex-rating-implies-convex-opf"
+title = "A convex rating constraint makes the complete OPF convex or unique"
+severity = "high"
+query_patterns = ["apparent power limits convex", "current limits convex", "convex rating constraints", "convex power cap guarantees unique solution", "convex current cap convex opf", "nonconvex power cap multiple solutions"]
+tempting_answer = "Apparent-power and current limits have formulation-independent convexity, and a convex cap makes the complete OPF convex with a unique solution."
+required_qualification = "Declare retained variables and domain. Apparent-power caps are convex disks in explicit powers but generally nonconvex in joint voltage-current coordinates. Current caps are convex in explicit currents, powers with nonnegative voltage magnitude or squared magnitude, and rectangular voltages under a fixed affine current map. Eliminating current through power while keeping rectangular voltage components need not retain convexity. Circuit coupling, voltage lifting identities and complete-model uniqueness require separate arguments."
+safe_shorthand = "Convexity belongs to a constraint set in stated coordinates; physical suitability and complete-OPF geometry are separate questions."
+operational_consequence = "A lifted power disk can move nonconvexity into coupling equations without removing it, and a convex but physically inappropriate cap can still admit an overloaded root."
+mandatory_claim_ids = ["LIMIT-CONVEXITY-001", "LIMIT-MULTIPLICITY-001"]
+mandatory_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/cases/unintended-solution-multiplicity.md", "experiments/lessons/solution_multiplicity.py"]
+
+[misconception.router_scope]
+rationale = "Needs convexity, a limit term and a power/current/OPF term."
+require_token_groups = ['convex|nonconvex|convexity', 'limit\w*|rating\w*|cap\w*', 'power|current\w*|opf|rating\w*']
+
+[[misconception]]
+id = "nullspace-implies-removable-gauge"
+title = "Every nullspace direction is a removable reference freedom"
+severity = "critical"
+query_patterns = ["nullspace removable gauge", "null mode reference symmetry", "current circulation gauge fixing", "delta kernel free device current", "nullspace dimension physical freedom", "quotient current modes observation recovery"]
+tempting_answer = "Any rank deficiency is only a reference convention, so fix a coordinate and discard its null mode."
+required_qualification = "Declare the full equations, feasible domain, observation map, constraints, objective and recovery. A floating common-potential shift can preserve difference-only observations, whereas ideal current circulation changes member currents and ratings. A delta terminal-map kernel need not survive the coil laws. An existential aggregate projection with admissible recovery does not identify the physical member split. A nonlinear Jacobian null vector alone does not prove a finite solution symmetry."
+safe_shorthand = "A matrix kernel identifies what that map cannot see; check the full model and requested observations before removing it."
+operational_consequence = "Gauge fixing can discard a rating-relevant current or accept a terminal-invisible violation of a device law; a reduced aggregate answer may require an explicit admissible lift."
+mandatory_claim_ids = ["KERNEL-OBSERVATION-001"]
+mandatory_concept_ids = ["ground-neutral-reference", "flow-current-power-message", "equivalence-exactness-preservation"]
+source_paths = ["docs/src/cases/quotients-and-observations.md"]
+
+[misconception.router_scope]
+rationale = "Needs a nullspace or gauge signal. A phasor-incidence packet cannot answer inrush, energisation or saturation questions."
+require_token_groups = ['nullspace|kernel|null|gauge|quotient\w*|symmetr\w*']
+exclude_tokens = 'inrush|transient\w*|energiz\w*|energis\w*|saturat\w*'
+
+[[misconception]]
+id = "vuf-polynomial-pass-defines-zero-ratio"
+title = "A VUF polynomial pass defines the ratio at zero positive sequence"
+query_patterns = ["VUF zero denominator", "VUF cross multiplied inequality", "zero positive-sequence voltage", "VUF absolute negative-sequence cap"]
+required_qualification = "VUF is abs(V2)/abs(V1), assessed only above a declared positive-sequence voltage floor with its own dimensionless tolerance. The all-zero point can satisfy the cross-multiplied polynomial while the ratio is undefined; a negative-sequence magnitude cap alone cannot settle a changing denominator."
+safe_shorthand = "A VUF pass is a ratio-domain observation, not just a voltage-magnitude or cross-multiplied inequality pass."
+operational_consequence = "Reporting zero or compliance at an undefined denominator can hide missing ratio evidence; the voltage floor is a declared numerical domain, not a physical quality standard."
+mandatory_claim_ids = ["LIMIT-VUF-001"]
+mandatory_concept_ids = ["phase-conductor-sequence-coordinate", "rating-limit-constraint"]
+source_paths = ["docs/src/reference/numerical-audit-reference.md"]
+tempting_answer = "A satisfied squared unbalance inequality or absolute negative-sequence cap proves VUF compliance even at zero positive sequence."
+severity = "critical"
+
+[misconception.router_scope]
+rationale = "The VUF ratio contract needs a sequence/unbalance term and a ratio or denominator term. Power-factor, transient, filter and manufacturer questions need different evidence."
+require_token_groups = ['vuf|unbalance\w*|positivesequence|negativesequence', 'zero|denominator\w*|ratio\w*|floor|crossmultiplied|cap\w*']
+exclude_tokens = 'inrush|transient\w*|manufacturer\w*|dynamic\w*|pf|minimumpf|constantpf|filter\w*'
+require_query = '^(?!.*\bpower factor\b)'
+curated_phrase_bypass = false
+
+[[misconception]]
+id = "weighted-pf-residual-certifies-ratio"
+title = "A small weighted PF residual certifies the actual power-factor ratio"
+query_patterns = ["weighted minimum-PF residual", "tiny minimum-PF coefficient", "PF ratio tolerance", "weighted power factor residual"]
+required_qualification = "A weighted residual pass uses an absolute declared VA tolerance and does not establish the scale-free PF quotient. At minimum m=10^-20, P=0 W and Q=1 var, the m VA excess passes 10^-6 VA although PF is zero and the exact positive-minimum envelope fails. At P=Q=0 no PF quotient is assigned."
+safe_shorthand = "Retain weighted residual units, coefficients and tolerance separately from ratio accuracy and zero-power domain."
+operational_consequence = "Tiny weights or powers can hide large ratio errors behind small absolute residuals; improving numerical representability does not supply a relative accuracy guarantee."
+mandatory_claim_ids = ["CONTROL-PF-001"]
+mandatory_concept_ids = ["rating-limit-constraint", "flow-current-power-message"]
+source_paths = ["docs/src/foundations/ibr-power-factor-controls.md"]
+tempting_answer = "Passing the native weighted PF row at an absolute tolerance proves the requested PF ratio."
+severity = "critical"
+
+[misconception.router_scope]
+rationale = "The weighted-residual contract needs an explicit power-factor reference. Transient, thermal, filter and VUF questions need different evidence."
+require_token_groups = ['weighted|residual\w*|tolerance\w*|coefficient\w*|tiny|small']
+exclude_tokens = 'transient\w*|manufacturer\w*|dynamic\w*|filter\w*|vuf|thermal|temperature\w*'
+require_query = '\b(?:pf|minimumpf|power factor)\b'
+curated_phrase_bypass = false
+
+[[misconception]]
+id = "constant-pf-capability-is-clipping"
+title = "A capability cap clips constant-PF reactive demand automatically"
+query_patterns = ["constant power factor clipping", "q_max clip reactive", "constant PF Q cap conflict", "constant PF capability intersection", "constant-PF clipping", "constant-PF capability intersection"]
+required_qualification = "A declared constant-PF equality and capability limits are simultaneous obligations. For P=4 W and f=0.8 the equality requires Q=-3 var; q_min=-2 var rejects that point, while clipping Q to -2 var creates a 0.8 VA equality residual. No controller priority or clipping behavior is inferred."
+safe_shorthand = "Intersect the declared control law with capability; do not silently replace the equality by a clipped target."
+operational_consequence = "A point can satisfy a capability cap while violating its controller, or satisfy the controller while violating the cap; solver status alone settles neither."
+mandatory_claim_ids = ["CONTROL-PF-001"]
+mandatory_concept_ids = ["rating-limit-constraint", "factor"]
+source_paths = ["docs/src/foundations/ibr-power-factor-controls.md"]
+tempting_answer = "A Q bound automatically clips the reactive power demanded by constant PF, preserving control compliance."
+severity = "critical"
+
+[misconception.router_scope]
+rationale = "The constant-PF clipping contract needs a power-factor reference and an intent to clip, cap or intersect. Transient, thermal, filter and VUF questions need different evidence."
+require_token_groups = ['constant|fixed|constantpf', 'clip\w*|qmax|qmin|capability|intersection|cap\w*']
+exclude_tokens = 'transient\w*|manufacturer\w*|dynamic\w*|filter\w*|vuf|thermal|temperature\w*'
+require_query = '(?=.*\b(?:pf|constantpf|power factor)\b)(?=.*\b(?:clip\w*|intersect\w*|simultaneous|replac\w*|overrid\w*|conflict\w*|satisf\w*|violat\w*|cap\w*|limit\w*|saturat\w*|bound\w*|compatib\w*)\b)'
+curated_phrase_bypass = false

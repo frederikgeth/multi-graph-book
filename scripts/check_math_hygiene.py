@@ -22,6 +22,7 @@ BARE_COMMAND = re.compile(r"(?<!\\)\b(?:" + "|".join(sorted(BARE_COMMANDS, key=l
 # A bold command must be followed by an argument.  This deliberately checks
 # only unmistakable omissions, leaving TeX package-specific syntax alone.
 ORPHAN_BOLD = re.compile(r"\\mathbf\s*(?:$|[,.;:)\]])")
+LEGACY_ROMAN = re.compile(r"\\rm\b")
 DOUBLE_BACKSLASH = re.compile(r"\\\\")
 
 
@@ -75,6 +76,8 @@ def _check_segment(findings: list[str], document: Path, line_number: int, segmen
     if bare:
         command = bare.group(0)
         findings.append(f"{location}: use \\{command} rather than bare {command} in math")
+    if LEGACY_ROMAN.search(segment):
+        findings.append(f"{location}: replace legacy \\rm with \\mathrm{{...}} for the PDF class")
     if ORPHAN_BOLD.search(segment):
         findings.append(f"{location}: \\mathbf has no visible argument")
     if check_double and DOUBLE_BACKSLASH.search(segment):
@@ -89,7 +92,7 @@ def main() -> int:
         for finding in findings:
             print(f"- {finding}", file=sys.stderr)
         return 1
-    print("math hygiene: no bare TeX command names, orphan \\mathbf commands, or unbalanced inline delimiters")
+    print("math hygiene: no bare or legacy TeX commands, orphan \\mathbf commands, or unbalanced inline delimiters")
     return 0
 
 

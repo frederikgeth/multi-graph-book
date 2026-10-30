@@ -38,6 +38,8 @@ def validate_context_packet(index: CorpusIndex, packet: dict) -> list[str]:
     errors: list[str] = []
     if packet.get("release") != index.manifest.get("release"):
         errors.append("context packet release identity differs from the corpus manifest")
+    if packet.get("source_identity") != index.source_identity:
+        errors.append("context packet source/pair identity differs from the loaded index")
     if packet.get("status") == "qualified" and not packet.get("mandatory_records"):
         errors.append("qualified packet has no mandatory records")
     seen_records: set[str] = set()
@@ -269,6 +271,15 @@ def render_markdown(packet: dict) -> str:
         routes = ", ".join(item["misconception_id"] for item in packet["retrieval"]["detected_misconceptions"])
         lines.append(f"- Qualification routes: `{routes}`")
     lines.append("")
+    identity = packet["source_identity"]
+    lines += [
+        "## Source identity", "",
+        f"- Book corpus SHA-256: `{identity['book_corpus_sha256']}`",
+        f"- Federated pair SHA-256: `{identity['pair_sha256']}`",
+        f"- BMOPFTools revision: `{identity['bmopftools_revision']}`",
+        "- Executable identity describes the pinned export; no installed package runtime was inspected.",
+        "",
+    ]
     return "\n".join(lines)
 
 
@@ -344,6 +355,7 @@ class BookLLMService:
         return {
             "api_schema_version": API_SCHEMA_VERSION,
             "type": "book_search_results",
+            "source_identity": dict(self.index.source_identity),
             "corpus_id": self.index.manifest["corpus_id"],
             "release": self.index.manifest["release"],
             "method": method,
@@ -355,6 +367,7 @@ class BookLLMService:
         return {
             "api_schema_version": API_SCHEMA_VERSION,
             "status": "ok",
+            "source_identity": dict(self.index.source_identity),
             "corpus_id": self.index.manifest["corpus_id"],
             "release": self.index.manifest["release"],
             "record_count": self.index.manifest["record_count"],

@@ -205,6 +205,214 @@ this by increasing demand by ``1/10`` MW: the physical cost rate increases by
 5 currency/hour. A negative constraint scale would reverse the inequality
 unless the formulation were changed; it is outside the stated rule.
 
+## [Small resistance can select a current that an ideal switch does not](@id vanishing-impedance-current-selection)
+
+**Predict before simplifying.** Two fixed, uncoupled, series-only resistors
+connect the same two terminals. They carry a prescribed total current of 12 A.
+Let ``R_1=\varepsilon`` Ω and ``R_2=2\varepsilon`` Ω with dimensionless
+``\varepsilon>0``. The first member is limited to 7 A and the second to 10 A.
+If the voltage drop becomes arbitrarily small, may both members be replaced
+by ideal shorts without changing their current-limit behaviour?
+
+Write the member equations and KCL before taking a limit:
+
+```math
+\Delta V=R_1I_1=R_2I_2,\qquad I_1+I_2=I.
+```
+
+For ``R_1=a\varepsilon`` Ω and ``R_2=b\varepsilon`` Ω with fixed positive
+dimensionless ``a,b``, direct elimination gives
+
+```math
+I_1=\frac{b}{a+b}I,\qquad I_2=\frac{a}{a+b}I,\qquad
+\Delta V=\varepsilon\frac{ab}{a+b}I\ \Omega.
+```
+
+In the 1:2 example the member currents are 8 A and 4 A for *every* positive
+``\varepsilon``. At ``\varepsilon=10^{-3}``, the voltage drop is 0.008 V and
+the loss is 0.096 W. Decreasing ``\varepsilon`` by a factor of 1000 decreases
+both drop and loss by that factor, while the 8 A member current still violates
+its 7 A limit. Current and rating agreement cannot be inferred from a small
+voltage discrepancy.
+
+### Taking a limit and replacing the equations
+
+Set both resistances to exactly zero in the member equations instead. They now
+require only
+
+```math
+\Delta V=0,\qquad I_1+I_2=12\ \mathrm A.
+```
+
+Every pair ``(t,12-t)`` satisfies these equations. The perturbation
+``(\delta I_1,\delta I_2,\delta\Delta V)=(q,-q,0)`` is a free circulating-current
+mode. The ideal equations retain neither ``a`` nor ``b``, so they cannot select
+the finite model's limiting split. Additional control, circuit constraints or a
+stated selection rule could do so, but would be additional model information.
+
+Swap the finite resistance ratios to 2:1. The currents become 4 A and 8 A,
+which satisfy the same two ratings. Yet the voltage drop and total loss are
+identical to the 1:2 case at every positive ``\varepsilon``, and both families
+have the same zero-drop limit. Claim `PRACTICE-SHORT-001` records this directly
+derived counterexample. It disproves a general current-preservation guarantee;
+it is not a universal convergence theorem for nonlinear networks, complex
+impedances, or switching dynamics.
+
+### Check the feasible total current, not just one voltage
+
+Allow ``I\ge0`` to vary and impose only the two member current-magnitude limits
+``L_1,L_2``. The finite positive-resistance family has
+
+```math
+I_{\max}^{\mathrm{finite}}
+=\min\!\left(L_1\frac{a+b}{b},L_2\frac{a+b}{a}\right).
+```
+
+For ``a=1,b=2,L_1=7`` A and ``L_2=10`` A this is 10.5 A. The ideal-short model
+can choose its split and reaches ``L_1+L_2=17`` A with ``(I_1,I_2)=(7,10)`` A.
+No larger total is possible because
+``I=|I_1+I_2|\le |I_1|+|I_2|\le L_1+L_2`` for ``I\ge0``.
+At the original 12 A demand it can choose ``(6,6)`` A and pass both limits,
+even though the finite 1:2 family cannot. These maxima follow analytically from
+the stated constraints; no optimizer or claim of AC-OPF global optimality is
+involved.
+
+```sh
+python3 experiments/lessons/vanishing_impedance.py --check
+python3 experiments/lessons/vanishing_impedance.py --epsilon 1/1000000
+python3 experiments/lessons/vanishing_impedance.py --ratio1 2 --ratio2 1
+```
+
+The script uses exact rational arithmetic. It checks current division, loss,
+reverse flow, the ideal free-current family, the rating boundary and a transfer
+case. It rejects zero as an input to the *finite-resistance* formula instead of
+silently choosing one ideal current split.
+
+**Transfer exercise.** Use ``R_1=\varepsilon`` Ω and ``R_2=3\varepsilon`` Ω
+with the same 12 A demand and 7 A / 10 A limits. Predict the split and the
+finite-model maximum total current. Does the ideal-short maximum change?
+**Check your reasoning:** the finite split is 9 A / 3 A, with maximum total
+current ``28/3`` A; the first limit controls. The ideal equations have forgotten
+the resistance ratio and still admit 17 A. Compare the current observations
+and retained member constraints, not just bus voltages.
+
+The [transformer port lesson](@ref ideal-transformer-port-lesson) retains finite
+leakage when changing representation. Setting that leakage to zero would be a
+different transformation, just as it is here. The earlier
+[parallel-member lesson](@ref first-failure-parallel-branches) explains why the
+source member observations and their limits must remain recoverable. None of
+these examples prescribes an epsilon for real equipment or establishes a
+safe physical switching approximation.
+
+## [A parameter at zero is still part of a model family](@id parameter-reuse-lesson)
+
+**Predict.** A 10 V source supplies a conductance with current law
+
+```math
+I(\theta,V)=\theta gV,\qquad g=0.1\ {\mathrm{S}},\quad 0\le\theta\le2.
+```
+
+At ``\theta=0`` its current is zero. A compiler deletes the term and keeps the
+compiled model for later values of ``\theta``. Will a successful solve at
+``\theta=2`` recover the intended 2 A current?
+
+No. Deleting the term agrees with the family at the initial state but replaces
+it by ``\widetilde I(\theta,V)=0`` at every later state. At fixed 10 V, the
+residual against the **requested** law is
+``r_I=\widetilde I-\theta gV=-\theta`` A. The model that was actually emitted can
+be solved perfectly and still answer the wrong question. This is the finite
+counterexample in claim `PRACTICE-REUSE-001`.
+
+| Parameter ``\theta`` | Fresh or correctly reused current | Deleted-term current | Deleted-term residual |
+|:--|--:|--:|--:|
+| 0 | 0 A | 0 A | 0 A |
+| 1 | 1 A | 0 A | −1 A |
+| 0, revisited | 0 A | 0 A | 0 A |
+| 2 | 2 A | 0 A | −2 A |
+| 0.5 | 0.5 A | 0 A | −0.5 A |
+
+The order matters to the experiment: it exercises entry into zero and return
+from zero, rather than testing isolated positive values only. A literal
+coefficient known to be identically zero over the declared family can be
+removed; a symbolic parameter whose **current value** is zero cannot be removed
+on that evidence alone. Nor does a zero current at ``V=0`` establish that the
+coefficient is absent. Retain the dependency that the next state will need.
+
+### Three failures with different remedies
+
+1. **Lost symbolic dependence.** The intended term never survives construction.
+   Refreshing the optimizer cannot restore it. Repair the builder and rebuild.
+2. **Stale numerical evaluation.** The expression still contains the parameter,
+   but an optimizer/evaluator reuses values from an earlier state. Follow the
+   package's supported reset/re-solve workflow and check the updated equations.
+3. **An unrepresented structural edit.** Adding a second physical branch with
+   conductance 0.05 S changes the intended current at ``\theta=2`` to 3 A. The
+   old one-branch model still gives 2 A. Rebuild this example with both branches;
+   changing the source list does not add its equations to an existing model.
+
+A topology state **already represented** by a supported parameter is a different
+case from adding a branch outside the compiled structure. A numerical zero may
+change the active matrix support without requiring a different symbolic model.
+Name the intended family and the update API before deciding whether an edit is
+structural. Do not infer reuse safety from a visually unchanged graph.
+
+### Compare from scratch, then test the requested law
+
+The package companion constructs a custom conductance through the public staged
+injection API in native SI units. It compares fresh builds with a reused context
+updated through `resolve_opf!`, at every value in the table. It evaluates source
+current minus ``\theta\sum_k g_kV`` independently from the emitted constraints,
+with a ``10^{-7}`` A current tolerance and ``10^{-8}`` V source-voltage tolerance.
+The deliberately deleted branch and the unrepresented second branch are rejected
+by this same check. Agreement between fresh and reused builders alone would not
+exclude a mistake shared by both builders.
+
+```sh
+python3 experiments/lessons/parameter_reuse.py --check
+python3 scripts/check_bmopf_integration.py --bmopf-root ../BMOPFTools.jl
+```
+
+The integration runner writes `parameter-reuse.json` alongside the other lesson
+results, tied to the unchanged published package pin and environment. Each row
+records requested inputs, their fingerprint, parameter and construction hashes,
+solver/primal status and physical residuals when an accepted-status candidate
+exists. Equal hashes identify encoded inputs or construction; they do not prove
+that a cache is fresh or that the scientific model is adequate. The Python
+companion uses exact rational arithmetic and needs no solver.
+
+A separate dimensionless cache probe uses ``x=p\exp(y)``, ``y=1``, and the
+sequence ``p=1,0,2``. In the recorded Julia 1.12.6 / JuMP 1.32.1 / MOI 1.54.0 /
+Ipopt.jl 1.16.0 run, the last unrefreshed solve reports `LOCALLY_SOLVED` but
+returns ``x=0``: its independently evaluated residual is ``-2e\approx-5.4366``.
+This is an observation for that stack and initialization. The regression gate
+requires the supported reuse path to pass; it does not require future optimizer
+versions to reproduce the stale-cache failure. The package owns the
+[reset workflow and its supported domain](https://github.com/frederikgeth/BMOPFTools.jl/blob/97c274946091859b7d9b0e822c96f1e7f9f50c7e/docs/src/differentiable_extensions.md#L515).
+Reloading does not promise retained factorizations, automatic warm starts or a
+speed improvement. This custom linear circuit does not certify every native
+nonlinear load provider or arbitrary parameterized OPF.
+
+### Keep failed scenarios in the study
+
+Add an upper bound of 1.5 A to the source current. At 10 V, the sequence
+``\theta=1,2,0.5`` requires 1 A, 2 A and 0.5 A. The middle case is infeasible by
+the two incompatible requirements ``I=2`` A and ``I\le1.5`` A. That conclusion
+comes from the scalar equations, not from a general interpretation of a local
+solver's infeasibility status.
+
+The companion records the failed solve with no accepted current and a null
+residual, then checks successful recovery at 0.5. It does not copy the previous
+1 A result into the failed row, nor replace missing evidence by zero. A solver
+may expose an infeasible iterate; that is diagnostic data rather than a valid
+operating point. Status gating must precede extraction and physical validation.
+
+**Transfer exercise.** Use ``g=0.2`` S, ``V=-5`` V and ``\theta=2``. What is the
+current, and what would the deleted-term residual be? **Check your reasoning:**
+``I=-2`` A and ``r_I=+2`` A. Reversing the voltage does not remove parameter
+dependence. If the thermal limit is ``|I|\le1.5`` A, the state violates it even
+though a signed upper bound ``I\le1.5`` A would pass. Preserve the meaning of the
+limit as well as its numeric value.
+
 ## Organize the implementation around these checks
 
 Keep source records separate from generated equations and results. A source

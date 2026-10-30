@@ -812,3 +812,363 @@ required_claim_ids = ["PRACTICE-DUAL-001"]
 required_concept_ids = ["normalization", "equivalence-exactness-preservation"]
 required_answer_elements = ["recover physical sensitivity using alpha divided by beta times the raw multiplier under the displayed convention", "explain nonunique duplicate multipliers and keep the scalar LP scope separate from AC-OPF prices"]
 forbidden_simplifications = ["Identical dispatch and objective values imply that raw solver multipliers can be compared directly as physical prices."]
+
+[[case]]
+case_id = "EVAL-ZERO-KCL-STUDENT"
+audience = "student"
+question = "Does power balance enforce KCL even at zero voltage?"
+misconception_id = "power-balance-enforces-kcl-at-zero-voltage"
+required_claim_ids = ["FORMULATION-ZERO-001"]
+required_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["power residual equals voltage times conjugate current residual", "account for all current paths and the nonzero-voltage guard"]
+forbidden_simplifications = ["zero power residual proves KCL at zero voltage", "every power-variable formulation is invalid"]
+
+[[case]]
+case_id = "EVAL-ZERO-KCL-SOFTWARE"
+audience = "software_engineer"
+question = "Can my power balance enforce KCL when a terminal voltage is zero?"
+misconception_id = "power-balance-enforces-kcl-at-zero-voltage"
+required_claim_ids = ["FORMULATION-ZERO-001"]
+required_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["power residual equals voltage times conjugate current residual", "account for all current paths and the nonzero-voltage guard"]
+forbidden_simplifications = ["zero power residual proves KCL at zero voltage", "every power-variable formulation is invalid"]
+
+[[case]]
+case_id = "EVAL-ZERO-KCL-POWER"
+audience = "power_engineer"
+question = "Is a zero neutral power residual sufficient to establish current balance?"
+misconception_id = "power-balance-enforces-kcl-at-zero-voltage"
+required_claim_ids = ["FORMULATION-ZERO-001"]
+required_concept_ids = ["flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["power residual equals voltage times conjugate current residual", "account for all current paths and the nonzero-voltage guard"]
+forbidden_simplifications = ["zero power residual proves KCL at zero voltage", "every power-variable formulation is invalid"]
+
+[[case]]
+case_id = "EVAL-TRANSFORMER-PORT-STUDENT"
+audience = "student"
+question = "Is an ideal transformer just a huge admittance?"
+misconception_id = "ideal-transformer-is-a-large-admittance"
+required_claim_ids = ["FORMULATION-PORT-001"]
+required_concept_ids = ["factor", "equivalence-exactness-preservation"]
+required_answer_elements = ["retain finite leakage in the bordered current-voltage relation", "retain shunts once and distinguish references from a neutral bond"]
+forbidden_simplifications = ["the threshold clamps finite leakage to zero", "unity ratio automatically bonds isolated neutrals"]
+
+[[case]]
+case_id = "EVAL-TRANSFORMER-PORT-SOFTWARE"
+audience = "software_engineer"
+question = "Does the transformer leakage threshold set small nonzero impedance to zero?"
+misconception_id = "ideal-transformer-is-a-large-admittance"
+required_claim_ids = ["FORMULATION-PORT-001"]
+required_concept_ids = ["factor", "equivalence-exactness-preservation"]
+required_answer_elements = ["retain finite leakage in the bordered current-voltage relation", "retain shunts once and distinguish references from a neutral bond"]
+forbidden_simplifications = ["the threshold clamps finite leakage to zero", "unity ratio automatically bonds isolated neutrals"]
+
+[[case]]
+case_id = "EVAL-TRANSFORMER-PORT-POWER"
+audience = "power_engineer"
+question = "Does a transformer bordered port preserve finite leakage and its shunts?"
+misconception_id = "ideal-transformer-is-a-large-admittance"
+required_claim_ids = ["FORMULATION-PORT-001"]
+required_concept_ids = ["factor", "equivalence-exactness-preservation"]
+required_answer_elements = ["retain finite leakage in the bordered current-voltage relation", "retain shunts once and distinguish references from a neutral bond"]
+forbidden_simplifications = ["the threshold clamps finite leakage to zero", "unity ratio automatically bonds isolated neutrals"]
+
+[[case]]
+case_id = "EVAL-VANISHING-IMPEDANCE-STUDENT"
+audience = "student"
+question = "Do tiny resistances and ideal switches have the same current sharing?"
+misconception_id = "vanishing-impedance-preserves-ideal-current-sharing"
+required_claim_ids = ["PRACTICE-SHORT-001"]
+required_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
+required_answer_elements = ["finite resistance ratios select member currents", "ideal shorts retain only zero drop and a total-current equation", "check member limits separately from voltage agreement"]
+forbidden_simplifications = ["small voltage error guarantees rating feasibility", "every regularization has the same limit"]
+
+[[case]]
+case_id = "EVAL-VANISHING-IMPEDANCE-SOFTWARE"
+audience = "software_engineer"
+question = "Can replacing a small impedance by an ideal switch preserve the member current sharing?"
+misconception_id = "vanishing-impedance-preserves-ideal-current-sharing"
+required_claim_ids = ["PRACTICE-SHORT-001"]
+required_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
+required_answer_elements = ["finite resistance ratios select member currents", "ideal shorts retain only zero drop and a total-current equation", "check member limits separately from voltage agreement"]
+forbidden_simplifications = ["small voltage error guarantees rating feasibility", "every regularization has the same limit"]
+
+[[case]]
+case_id = "EVAL-VANISHING-IMPEDANCE-POWER"
+audience = "power_engineer"
+question = "Do ideal shorts retain the unique current split and member limits as resistance vanishes?"
+misconception_id = "vanishing-impedance-preserves-ideal-current-sharing"
+required_claim_ids = ["PRACTICE-SHORT-001"]
+required_concept_ids = ["parallel", "rating-limit-constraint", "equivalence-exactness-preservation"]
+required_answer_elements = ["finite resistance ratios select member currents", "ideal shorts retain only zero drop and a total-current equation", "check member limits separately from voltage agreement"]
+forbidden_simplifications = ["small voltage error guarantees rating feasibility", "every regularization has the same limit"]
+
+[[case]]
+case_id = "EVAL-DELTA-COIL-STUDENT"
+audience = "student"
+question = "Are delta coil currents identical to terminal currents?"
+misconception_id = "delta-coil-currents-are-terminal-currents"
+required_claim_ids = ["LOAD-CONNECTION-002"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "flow-current-power-message", "direction-orientation-hierarchy"]
+required_answer_elements = ["apply the transpose incidence to coil currents", "circulation can preserve terminal currents and total power", "check the individual coil equations"]
+forbidden_simplifications = ["coil currents equal terminal currents", "aggregate power validates every coil", "a two-terminal native delta has three coils"]
+
+[[case]]
+case_id = "EVAL-DELTA-COIL-SOFTWARE"
+audience = "software_engineer"
+question = "Can I put a delta load's coil currents directly into terminal KCL?"
+misconception_id = "delta-coil-currents-are-terminal-currents"
+required_claim_ids = ["LOAD-CONNECTION-002"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "flow-current-power-message", "direction-orientation-hierarchy"]
+required_answer_elements = ["apply the transpose incidence to coil currents", "circulation can preserve terminal currents and total power", "check the individual coil equations"]
+forbidden_simplifications = ["coil currents equal terminal currents", "aggregate power validates every coil", "a two-terminal native delta has three coils"]
+
+[[case]]
+case_id = "EVAL-DELTA-COIL-POWER"
+audience = "power_engineer"
+question = "Does terminal KCL and total power validate each delta coil current?"
+misconception_id = "delta-coil-currents-are-terminal-currents"
+required_claim_ids = ["LOAD-CONNECTION-002"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "flow-current-power-message", "direction-orientation-hierarchy"]
+required_answer_elements = ["apply the transpose incidence to coil currents", "circulation can preserve terminal currents and total power", "check the individual coil equations"]
+forbidden_simplifications = ["coil currents equal terminal currents", "aggregate power validates every coil", "a two-terminal native delta has three coils"]
+
+[[case]]
+case_id = "EVAL-PARAMETER-REUSE-STUDENT"
+audience = "student"
+question = "Can I delete a symbolic term when its parameter is zero?"
+misconception_id = "zero-parameter-means-absent-term"
+required_claim_ids = ["PRACTICE-REUSE-001"]
+required_concept_ids = ["state", "factor", "equivalence-exactness-preservation"]
+required_answer_elements = ["zero now does not mean absent over the family", "compare fresh and reused outputs against the requested physical law", "distinguish lost terms, stale evaluation and unrepresented structure", "retain failed scenarios without stale successful results"]
+forbidden_simplifications = ["solver success proves updated physics", "reset restores deleted equations", "matching fingerprints prove validity", "every topology state requires rebuilding"]
+
+[[case]]
+case_id = "EVAL-PARAMETER-REUSE-SOFTWARE"
+audience = "software_engineer"
+question = "Can I reuse an OPF after updating a parameter through zero?"
+misconception_id = "zero-parameter-means-absent-term"
+required_claim_ids = ["PRACTICE-REUSE-001"]
+required_concept_ids = ["state", "factor", "equivalence-exactness-preservation"]
+required_answer_elements = ["zero now does not mean absent over the family", "compare fresh and reused outputs against the requested physical law", "distinguish lost terms, stale evaluation and unrepresented structure", "retain failed scenarios without stale successful results"]
+forbidden_simplifications = ["solver success proves updated physics", "reset restores deleted equations", "matching fingerprints prove validity", "every topology state requires rebuilding"]
+
+[[case]]
+case_id = "EVAL-PARAMETER-REUSE-POWER"
+audience = "power_engineer"
+question = "Does a successful repeated solve verify the updated parameter current law?"
+misconception_id = "zero-parameter-means-absent-term"
+required_claim_ids = ["PRACTICE-REUSE-001"]
+required_concept_ids = ["state", "factor", "equivalence-exactness-preservation"]
+required_answer_elements = ["zero now does not mean absent over the family", "compare fresh and reused outputs against the requested physical law", "distinguish lost terms, stale evaluation and unrepresented structure", "retain failed scenarios without stale successful results"]
+forbidden_simplifications = ["solver success proves updated physics", "reset restores deleted equations", "matching fingerprints prove validity", "every topology state requires rebuilding"]
+
+[[case]]
+case_id = "EVAL-SOLUTION-MULTIPLICITY-STUDENT"
+audience = "student"
+question = "Can apparent power limits admit multiple solutions that current limits reject?"
+misconception_id = "apparent-power-limit-implies-current-admissibility"
+required_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["different admissibility of the same circuit roots", "current caps bound but do not select ideal current modes", "restore original KCL at zero voltage", "distinguish local minima from the global objective comparison"]
+forbidden_simplifications = ["power caps create circuit equation roots", "current limits guarantee uniqueness", "source power minimization prevents local convergence to the lower branch", "static roots determine dynamic stability"]
+
+[[case]]
+case_id = "EVAL-SOLUTION-MULTIPLICITY-SOFTWARE"
+audience = "software_engineer"
+question = "Can I replace a current limit with a nominal MVA cap and keep the same admissible roots?"
+misconception_id = "apparent-power-limit-implies-current-admissibility"
+required_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["different admissibility of the same circuit roots", "current caps bound but do not select ideal current modes", "restore original KCL at zero voltage", "distinguish local minima from the global objective comparison"]
+forbidden_simplifications = ["power caps create circuit equation roots", "current limits guarantee uniqueness", "source power minimization prevents local convergence to the lower branch", "static roots determine dynamic stability"]
+
+[[case]]
+case_id = "EVAL-SOLUTION-MULTIPLICITY-POWER"
+audience = "power_engineer"
+question = "Can both-end power caps admit an overloaded root of the circuit equations?"
+misconception_id = "apparent-power-limit-implies-current-admissibility"
+required_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["different admissibility of the same circuit roots", "current caps bound but do not select ideal current modes", "restore original KCL at zero voltage", "distinguish local minima from the global objective comparison"]
+forbidden_simplifications = ["power caps create circuit equation roots", "current limits guarantee uniqueness", "source power minimization prevents local convergence to the lower branch", "static roots determine dynamic stability"]
+
+[[case]]
+case_id = "EVAL-LIMIT-CONVEXITY-STUDENT"
+audience = "student"
+question = "Are apparent power limits convex in power variables and nonconvex in current voltage variables?"
+misconception_id = "convex-rating-implies-convex-opf"
+required_claim_ids = ["LIMIT-CONVEXITY-001", "LIMIT-MULTIPLICITY-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["declare retained coordinates and voltage domain", "distinguish convex rating sets from nonconvex coupling equations", "preserve affine current-map convexity in rectangular voltages", "use analytic cone arguments and nonconvex midpoint witnesses"]
+forbidden_simplifications = ["all current limits in rectangular voltage formulations are nonconvex", "convex rating constraints make the OPF convex", "a convex feasible set guarantees a unique optimum", "nonconvex power caps necessarily create multiple roots"]
+
+[[case]]
+case_id = "EVAL-LIMIT-CONVEXITY-SOFTWARE"
+audience = "software_engineer"
+question = "Are current limits convex after eliminating current through a fixed affine rectangular-voltage map?"
+misconception_id = "convex-rating-implies-convex-opf"
+required_claim_ids = ["LIMIT-CONVEXITY-001", "LIMIT-MULTIPLICITY-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["declare retained coordinates and voltage domain", "distinguish convex rating sets from nonconvex coupling equations", "preserve affine current-map convexity in rectangular voltages", "use analytic cone arguments and nonconvex midpoint witnesses"]
+forbidden_simplifications = ["all current limits in rectangular voltage formulations are nonconvex", "convex rating constraints make the OPF convex", "a convex feasible set guarantees a unique optimum", "nonconvex power caps necessarily create multiple roots"]
+
+[[case]]
+case_id = "EVAL-LIMIT-CONVEXITY-POWER"
+audience = "power_engineer"
+question = "Do convex rating constraints guarantee a convex OPF with a unique solution?"
+misconception_id = "convex-rating-implies-convex-opf"
+required_claim_ids = ["LIMIT-CONVEXITY-001", "LIMIT-MULTIPLICITY-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["declare retained coordinates and voltage domain", "distinguish convex rating sets from nonconvex coupling equations", "preserve affine current-map convexity in rectangular voltages", "use analytic cone arguments and nonconvex midpoint witnesses"]
+forbidden_simplifications = ["all current limits in rectangular voltage formulations are nonconvex", "convex rating constraints make the OPF convex", "a convex feasible set guarantees a unique optimum", "nonconvex power caps necessarily create multiple roots"]
+
+[[case]]
+case_id = "EVAL-NEUTRAL-SHUNTS-STUDENT"
+audience = "student"
+question = "Can a neutral current overload pass a power cap at nonzero neutral voltage?"
+misconception_id = "apparent-power-limit-implies-current-admissibility"
+required_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["nonzero neutral voltage does not equate current and power caps", "keep source, series and coil current observations distinct", "distinguish signed complex-power sum from sum of magnitudes", "retain the separate source earth reaction in KCL"]
+forbidden_simplifications = ["aggregate power certifies every conductor current", "source current is always the series current", "zero ground power certifies its current", "postprocessed aggregate cap is a native constraint"]
+
+[[case]]
+case_id = "EVAL-NEUTRAL-SHUNTS-SOFTWARE"
+audience = "software_engineer"
+question = "Do shunts make source, series and coil currents interchangeable for an aggregate power cap?"
+misconception_id = "apparent-power-limit-implies-current-admissibility"
+required_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["nonzero neutral voltage does not equate current and power caps", "keep source, series and coil current observations distinct", "distinguish signed complex-power sum from sum of magnitudes", "retain the separate source earth reaction in KCL"]
+forbidden_simplifications = ["aggregate power certifies every conductor current", "source current is always the series current", "zero ground power certifies its current", "postprocessed aggregate cap is a native constraint"]
+
+[[case]]
+case_id = "EVAL-NEUTRAL-SHUNTS-POWER"
+audience = "power_engineer"
+question = "Does an aggregate power cap certify each neutral current rating?"
+misconception_id = "apparent-power-limit-implies-current-admissibility"
+required_claim_ids = ["LIMIT-NEUTRAL-001", "LIMIT-MULTIPLICITY-001", "PRACTICE-SHORT-001", "FORMULATION-ZERO-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["nonzero neutral voltage does not equate current and power caps", "keep source, series and coil current observations distinct", "distinguish signed complex-power sum from sum of magnitudes", "retain the separate source earth reaction in KCL"]
+forbidden_simplifications = ["aggregate power certifies every conductor current", "source current is always the series current", "zero ground power certifies its current", "postprocessed aggregate cap is a native constraint"]
+
+[[case]]
+case_id = "EVAL-QUOTIENT-STUDENT"
+audience = "student"
+question = "Does a nullspace always mean a removable gauge freedom?"
+misconception_id = "nullspace-implies-removable-gauge"
+required_claim_ids = ["KERNEL-OBSERVATION-001"]
+required_concept_ids = ["ground-neutral-reference", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["declare full equations and observation map", "distinguish reference symmetry from observable member currents", "check coil laws beyond terminal-map kernels", "retain constraints objective and admissible recovery"]
+forbidden_simplifications = ["all null modes are reference conventions", "terminal-map kernel proves free device current", "projected feasibility certifies any lifted split", "Jacobian null vector proves a finite solution family"]
+
+[[case]]
+case_id = "EVAL-QUOTIENT-SOFTWARE"
+audience = "software_engineer"
+question = "Can I use gauge fixing to remove current circulation without checking member observations?"
+misconception_id = "nullspace-implies-removable-gauge"
+required_claim_ids = ["KERNEL-OBSERVATION-001"]
+required_concept_ids = ["ground-neutral-reference", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["declare full equations and observation map", "distinguish reference symmetry from observable member currents", "check coil laws beyond terminal-map kernels", "retain constraints objective and admissible recovery"]
+forbidden_simplifications = ["all null modes are reference conventions", "terminal-map kernel proves free device current", "projected feasibility certifies any lifted split", "Jacobian null vector proves a finite solution family"]
+
+[[case]]
+case_id = "EVAL-QUOTIENT-POWER"
+audience = "power_engineer"
+question = "Does a delta kernel imply a free device current after coil laws are imposed?"
+misconception_id = "nullspace-implies-removable-gauge"
+required_claim_ids = ["KERNEL-OBSERVATION-001"]
+required_concept_ids = ["ground-neutral-reference", "flow-current-power-message", "equivalence-exactness-preservation"]
+required_answer_elements = ["declare full equations and observation map", "distinguish reference symmetry from observable member currents", "check coil laws beyond terminal-map kernels", "retain constraints objective and admissible recovery"]
+forbidden_simplifications = ["all null modes are reference conventions", "terminal-map kernel proves free device current", "projected feasibility certifies any lifted split", "Jacobian null vector proves a finite solution family"]
+
+[[case]]
+case_id = "EVAL-VUF-ZERO-STUDENT"
+audience = "student"
+question = "Why does a zero positive-sequence voltage leave VUF undefined even if its squared inequality passes?"
+misconception_id = "vuf-polynomial-pass-defines-zero-ratio"
+required_claim_ids = ["LIMIT-VUF-001"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "rating-limit-constraint"]
+required_answer_elements = ["retain the nonzero denominator/floor domain and dimensionless ratio tolerance", "distinguish the polynomial constraint from a defined ratio"]
+forbidden_simplifications = ["assign a VUF value at the all-zero origin"]
+
+[[case]]
+case_id = "EVAL-VUF-ZERO-SOFTWARE"
+audience = "software_engineer"
+question = "Can I report VUF zero when the positive-sequence denominator is zero and the polynomial constraint passes?"
+misconception_id = "vuf-polynomial-pass-defines-zero-ratio"
+required_claim_ids = ["LIMIT-VUF-001"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "rating-limit-constraint"]
+required_answer_elements = ["retain the nonzero denominator/floor domain and dimensionless ratio tolerance", "distinguish the polynomial constraint from a defined ratio"]
+forbidden_simplifications = ["assign a VUF value at the all-zero origin"]
+
+[[case]]
+case_id = "EVAL-VUF-ZERO-POWER"
+audience = "power_engineer"
+question = "Does an absolute negative-sequence voltage cap establish VUF when the positive sequence changes?"
+misconception_id = "vuf-polynomial-pass-defines-zero-ratio"
+required_claim_ids = ["LIMIT-VUF-001"]
+required_concept_ids = ["phase-conductor-sequence-coordinate", "rating-limit-constraint"]
+required_answer_elements = ["retain the nonzero denominator/floor domain and dimensionless ratio tolerance", "distinguish the polynomial constraint from a defined ratio"]
+forbidden_simplifications = ["assign a VUF value at the all-zero origin"]
+
+[[case]]
+case_id = "EVAL-PF-WEIGHT-STUDENT"
+audience = "student"
+question = "Does a tiny weighted minimum-PF residual guarantee the actual PF ratio?"
+misconception_id = "weighted-pf-residual-certifies-ratio"
+required_claim_ids = ["CONTROL-PF-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message"]
+required_answer_elements = ["state the absolute VA tolerance and coefficient dependence", "separate the exact envelope and PF quotient domain from a residual pass"]
+forbidden_simplifications = ["a small weighted residual proves scale-free PF accuracy"]
+
+[[case]]
+case_id = "EVAL-PF-WEIGHT-SOFTWARE"
+audience = "software_engineer"
+question = "Can my weighted power factor residual pass certify relative ratio accuracy at tiny coefficients?"
+misconception_id = "weighted-pf-residual-certifies-ratio"
+required_claim_ids = ["CONTROL-PF-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message"]
+required_answer_elements = ["state the absolute VA tolerance and coefficient dependence", "separate the exact envelope and PF quotient domain from a residual pass"]
+forbidden_simplifications = ["a small weighted residual proves scale-free PF accuracy"]
+
+[[case]]
+case_id = "EVAL-PF-WEIGHT-POWER"
+audience = "power_engineer"
+question = "Does a minimum-PF coefficient of 1e-20 allow a weighted residual pass while P is zero and Q is nonzero?"
+misconception_id = "weighted-pf-residual-certifies-ratio"
+required_claim_ids = ["CONTROL-PF-001"]
+required_concept_ids = ["rating-limit-constraint", "flow-current-power-message"]
+required_answer_elements = ["state the absolute VA tolerance and coefficient dependence", "separate the exact envelope and PF quotient domain from a residual pass"]
+forbidden_simplifications = ["a small weighted residual proves scale-free PF accuracy"]
+
+[[case]]
+case_id = "EVAL-PF-CLIP-STUDENT"
+audience = "student"
+question = "Can I satisfy constant PF simply by clipping Q at its capability cap?"
+misconception_id = "constant-pf-capability-is-clipping"
+required_claim_ids = ["CONTROL-PF-001"]
+required_concept_ids = ["rating-limit-constraint", "factor"]
+required_answer_elements = ["retain simultaneous control and capability obligations", "show that clipping can repair a cap while violating the equality"]
+forbidden_simplifications = ["a Q bound silently replaces the constant-PF equality"]
+
+[[case]]
+case_id = "EVAL-PF-CLIP-SOFTWARE"
+audience = "software_engineer"
+question = "Does q_max clip reactive demand from a constant power factor equality automatically?"
+misconception_id = "constant-pf-capability-is-clipping"
+required_claim_ids = ["CONTROL-PF-001"]
+required_concept_ids = ["rating-limit-constraint", "factor"]
+required_answer_elements = ["retain simultaneous control and capability obligations", "show that clipping can repair a cap while violating the equality"]
+forbidden_simplifications = ["a Q bound silently replaces the constant-PF equality"]
+
+[[case]]
+case_id = "EVAL-PF-CLIP-POWER"
+audience = "power_engineer"
+question = "How do a constant PF equality and Q capability cap intersect at fixed active power?"
+misconception_id = "constant-pf-capability-is-clipping"
+required_claim_ids = ["CONTROL-PF-001"]
+required_concept_ids = ["rating-limit-constraint", "factor"]
+required_answer_elements = ["retain simultaneous control and capability obligations", "show that clipping can repair a cap while violating the equality"]
+forbidden_simplifications = ["a Q bound silently replaces the constant-PF equality"]
