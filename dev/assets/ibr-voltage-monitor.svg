@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620">
+<title>A displaced neutral changes the monitored voltage</title><desc>RMS voltage phasors on equal real and imaginary scales in volts. Phase voltage is 12+j4 V and neutral voltage is 3+j4 V relative to the same earth/frame origin. Their difference is 9 V. Phase-to-ground magnitude squared is 160 V squared; phase-to-neutral magnitude squared is 81 V squared.</desc>
+<rect width="1100" height="620" fill="white"/>
+<style>text{font-family:Arial,sans-serif;fill:#17212b;font-size:20px}.title{font-size:29px;font-weight:bold}.head{font-size:23px;font-weight:bold}.small{font-size:18px}.math{font-family:DejaVu Sans,Arial,sans-serif;font-size:22px}</style>
+<defs><marker id="arrow" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#17212b"/></marker></defs>
+<text x="30" y="43" class="title" text-anchor="start">A displaced neutral changes the monitored voltage</text>
+<text x="30" y="80" class="small" text-anchor="start">A phasor diagram, not a wiring diagram. Both terminal voltages use the same origin.</text>
+<line x1="75.5" y1="450.0" x2="496.0" y2="450.0" stroke="#17212b" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="90.0" y1="479.0" x2="90.0" y2="189.0" stroke="#17212b" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="177.0" y1="446.0" x2="177.0" y2="454.0" stroke="#17212b" stroke-width="1"/>
+<text x="177.0" y="476.0" class="small" text-anchor="middle">3</text>
+<line x1="264.0" y1="446.0" x2="264.0" y2="454.0" stroke="#17212b" stroke-width="1"/>
+<text x="264.0" y="476.0" class="small" text-anchor="middle">6</text>
+<line x1="351.0" y1="446.0" x2="351.0" y2="454.0" stroke="#17212b" stroke-width="1"/>
+<text x="351.0" y="476.0" class="small" text-anchor="middle">9</text>
+<line x1="438.0" y1="446.0" x2="438.0" y2="454.0" stroke="#17212b" stroke-width="1"/>
+<text x="438.0" y="476.0" class="small" text-anchor="middle">12</text>
+<line x1="86.0" y1="334.0" x2="94.0" y2="334.0" stroke="#17212b" stroke-width="1"/>
+<text x="78.0" y="340.0" class="small" text-anchor="end">4</text>
+<line x1="86.0" y1="218.0" x2="94.0" y2="218.0" stroke="#17212b" stroke-width="1"/>
+<text x="78.0" y="224.0" class="small" text-anchor="end">8</text>
+<text x="34" y="155" class="small" text-anchor="start">Im [V]</text>
+<text x="500" y="493" class="small" text-anchor="end">Re [V]</text>
+<text x="80.0" y="476.0" class="small" text-anchor="end">0</text>
+<line x1="90.0" y1="450.0" x2="438.0" y2="334.0" stroke="#245b7a" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="90.0" y1="450.0" x2="177.0" y2="334.0" stroke="#8a4f13" stroke-width="3" stroke-dasharray="9 6" marker-end="url(#arrow)"/>
+<line x1="177.0" y1="334.0" x2="438.0" y2="334.0" stroke="#17212b" stroke-width="5" marker-end="url(#arrow)"/>
+<text x="162.0" y="312.0" class="small" text-anchor="middle">n: 3 + j4</text>
+<text x="438.0" y="312.0" class="small" text-anchor="middle">p: 12 + j4</text>
+<text x="325" y="274.0" class="math" text-anchor="middle">U = Vp − Vn = 9 V</text>
+<text x="545" y="150" class="head" text-anchor="start">Subtract first, then take magnitude</text>
+<text x="545" y="198" class="math" text-anchor="start">PN: |Vp − Vn| = 9 V</text>
+<text x="545" y="242" class="math" text-anchor="start">PG: |Vp| = √160 V &gt; 12 V</text>
+<text x="545" y="304" class="" text-anchor="start">For the stated requested Volt-var graph:</text>
+<text x="575" y="347" class="" text-anchor="start">PN requests 0 var.</text>
+<text x="575" y="389" class="" text-anchor="start">PG requests −12 var.</text>
+<text x="545" y="452" class="" text-anchor="start">Same supplied voltages; different monitors.</text>
+<text x="30" y="550" class="small" text-anchor="start">Breakpoints: [8, 9, 11, 12] V; q_limits = [q_absorb, q_inject] = [−0.6, 0.44]; Smax = 20 VA.</text>
+<text x="30" y="590" class="small" text-anchor="start">These are requested PWL targets. Smoothing, capability and VI-derived Q are separate checks.</text>
+</svg>

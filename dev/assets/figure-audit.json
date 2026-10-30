@@ -722,6 +722,50 @@
         "labelled axes and sample points",
         "labelled nonunique multiplier segment"
       ]
+    },
+    "solution-multiplicity": {
+      "svg": "docs/src/assets/solution-multiplicity.svg",
+      "png": "docs/src/assets/solution-multiplicity.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": [
+        "three titled panels",
+        "solid and dashed equation curves",
+        "open circles, crosses and square residual marker",
+        "hatched excluded-current strip",
+        "labelled interval endpoints and selection markers"
+      ]
+    },
+    "neutral-shunt-multiplicity": {
+      "svg": "docs/src/assets/neutral-shunt-multiplicity.svg",
+      "png": "docs/src/assets/neutral-shunt-multiplicity.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": [
+        "explicit source and load labels",
+        "solid conductor paths versus dashed mutual-coupling annotation",
+        "signed current arrows",
+        "separate shunt boxes and earth symbols",
+        "numeric current-limit caption"
+      ]
+    },
+    "ibr-pq-intersection": {
+      "svg": "docs/src/assets/ibr-pq-intersection.svg",
+      "png": "docs/src/assets/ibr-pq-intersection.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": [
+        "labelled common-scale axes",
+        "shaded wedge versus dashed ray and bold feasible segment",
+        "lettered witnesses and explicit constraint legend"
+      ]
+    },
+    "ibr-voltage-monitor": {
+      "svg": "docs/src/assets/ibr-voltage-monitor.svg",
+      "png": "docs/src/assets/ibr-voltage-monitor.png",
+      "monochrome_safe": true,
+      "distinguishing_channels": [
+        "equal-scale labelled phasor axes",
+        "solid phase and difference arrows versus dashed neutral arrow",
+        "PN and PG equations and explicit target labels"
+      ]
     }
   }
 }
