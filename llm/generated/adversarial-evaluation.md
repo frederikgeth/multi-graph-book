@@ -15,7 +15,7 @@ Recall is averaged over the 35 cases with target evidence; empty target sets are
 | Unqualified-query status accuracy | 100.0% | yes |
 | False qualification on unqualified queries | 0/25 (0.0%) | covered by status gate |
 | Hybrid retrieval recall@10 | 39.7% | diagnostic |
-| Graph retrieval recall@10 | 60.7% | diagnostic |
+| Graph retrieval recall@10 | 59.5% | diagnostic |
 
 | Case | Expected status | Observed status | Hybrid recall@10 | Graph recall@10 | Contract complete |
 | --- | --- | --- | ---: | ---: | --- |
@@ -62,9 +62,9 @@ Recall is averaged over the 35 cases with target evidence; empty target sets are
 | `ADV-DELTA-INJECTION-AMBIGUOUS` | `under_retrieved` | `under_retrieved` | — | — | — |
 | `ADV-DELTA-VOLTAGE-AMBIGUOUS` | `under_retrieved` | `under_retrieved` | — | — | — |
 | `ADV-DELTA-NOMINAL-OPERATING-POINT` | `under_retrieved` | `under_retrieved` | — | — | — |
-| `ADV-DELTA-VOLTAGE-BASE` | `qualified` | `qualified` | 40.0% | 20.0% | yes |
+| `ADV-DELTA-VOLTAGE-BASE` | `qualified` | `qualified` | 40.0% | 0.0% | yes |
 | `ADV-DELTA-VNOM` | `qualified` | `qualified` | 40.0% | 40.0% | yes |
-| `ADV-DELTA-BASE-WITH-INCIDENCE` | `qualified` | `qualified` | 40.0% | 20.0% | yes |
+| `ADV-DELTA-BASE-WITH-INCIDENCE` | `qualified` | `qualified` | 40.0% | 0.0% | yes |
 | `ADV-VUF-ZERO-RATIO-DOMAIN` | `qualified` | `qualified` | 33.3% | 66.7% | yes |
 | `ADV-DELTA-GENERATOR-COIL-LIMITS` | `qualified` | `qualified` | 75.0% | 75.0% | yes |
 | `ADV-SOLVER-LABEL-PHYSICAL-TOLERANCE` | `qualified` | `qualified` | 25.0% | 25.0% | yes |

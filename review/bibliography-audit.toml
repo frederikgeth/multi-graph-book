@@ -232,6 +232,13 @@ verified_on = "2026-08-13"
 note = "Added the distinct radiality-preservation preprint so its result is not attributed to the three-phase Opti-KRON article."
 
 [[entry]]
+key = "MokhtariRobust2026"
+status = "verified"
+verification_source = "https://arxiv.org/abs/2611.21313"
+verified_on = "2026-11-24"
+note = "Title, author list, year, and arXiv identifier checked against the first page of the arXiv v1 manuscript (2611.21313v1); distinct from the three-phase Opti-KRON article and the radiality-preservation preprint."
+
+[[entry]]
 key = "Jang2013"
 status = "verified"
 verification_source = "https://api.crossref.org/works/10.1109%2FPECI.2013.6506059"

@@ -34,6 +34,7 @@ FOUR_WIRE_IMPEDANCE_LADDER = GENERATED / "four-wire-impedance-model-ladder.json"
 BALANCED_TRANSMISSION_WITNESS = GENERATED / "balanced-transmission-witness.json"
 BALANCED_TRANSMISSION_REPRODUCTION = GENERATED / "balanced-transmission-independent-reproduction.json"
 KRON_WARD_SCENARIO = GENERATED / "kron-ward-scenario-comparison.json"
+ROBUST_OPTI_KRON = GENERATED / "robust-opti-kron-witness.json"
 CERTIFIED_APPROXIMATION = GENERATED / "certified-approximation-witness.json"
 NONLINEAR_WARD_WITNESS = GENERATED / "nonlinear-ward-witness.json"
 SOLVER_DIAGNOSTICS_CROSSWALK = GENERATED / "solver-diagnostics-crosswalk.json"
@@ -1019,6 +1020,19 @@ def main() -> int:
         errors.append("Ward comparison no longer exposes off-base error")
     if not all(row.get("current_error_norm", 1.0) <= 1e-12 for row in kron_ward.get("extended_ward_rows", [])):
         errors.append("extended Ward support rows are no longer exact for the declared fixture")
+
+    robust_ok = load_json(ROBUST_OPTI_KRON)
+    if robust_ok.get("claim_id") not in claim_ids or robust_ok.get("witness_id") != "TR-OPTIKRON-ROBUST-001":
+        errors.append("robust Opti-KRON witness uses an invalid claim or witness ID")
+    for name in (
+        "scenario_admits_fewer_supernodes_than_hull",
+        "every_scenario_optimum_violates_a_training_loading",
+        "robust_optima_hold_on_all_training_loadings",
+        "box_contains_hull_so_needs_at_least_as_many",
+        "relocated_zero_injection_kron_is_exact",
+    ):
+        if robust_ok.get("checks", {}).get(name) is not True:
+            errors.append(f"robust Opti-KRON witness check failed: {name}")
 
     approximation = load_json(CERTIFIED_APPROXIMATION)
     if approximation.get("claim_id") not in claim_ids or approximation.get("witness_id") != "TR-KRON-003":

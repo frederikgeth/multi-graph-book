@@ -639,6 +639,42 @@ are additional observation families requiring their own evidence.
     surrogate theorem for feasibility, active-limit, objective, or discrete
     decision accuracy.
 
+### Robust Opti-KRON: what a voltage certificate covers
+
+Under a linear voltage-magnitude model ``v = \mathbf{1} + K u``, moving the
+injections of an eliminated bus ``j`` to its supernode ``i`` gives the error
+
+```math
+e_{ij}(A, u) = \tilde v_i - v_j = c_{ij}(A)^\top u,
+\qquad c_{ij}(A)_k = K_{i,\,b(k)} - K_{jk},
+```
+
+where ``b(k)`` is the supernode of ``k``. Because the error is linear in
+``u`` and affine in the assignment ``A``, a bound ``|e_{ij}| \le \bar E`` can
+be enforced exactly for every injection in a declared set (box, convex hull,
+ellipsoid, or a Wasserstein ambiguity set), which turns scenario-based
+Opti-KRON into a robust mixed-integer program [MokhtariRobust2026](@cite).
+
+Two facts fix the scope of such a certificate. First, after relocation the
+eliminated buses carry no injection, so the following Kron step is exact for
+the retained boundary relation; the only approximation is the relocation.
+Second, the certificate is a statement about the voltage model, the
+injection set, and the voltage observation, and nothing else.
+
+The package-independent witness `robust-opti-kron-witness.json` makes the
+first trap concrete. On a five-bus radial feeder with ``\bar E = 0.04`` p.u.
+and a hop limit of two, two supernodes suffice for the two training loadings
+with the largest and smallest total injection, but every such assignment
+exceeds the bound by a factor of 1.55 at the two loadings that concentrate
+load on one lateral. The convex hull of all four training loadings needs four
+supernodes, and the box needs five. Extreme totals do not bracket the error,
+because the error depends on how load is distributed.
+
+!!! warning "Evidence boundary"
+    A robust voltage certificate holds for the declared injection set and
+    the linear voltage model. AC deviation, loadings outside the set, current
+    limits of eliminated lines, and decisions require separate evidence.
+
 ## Classification in the book's transformation language
 
 The classification depends on the complete construction, not on whether its

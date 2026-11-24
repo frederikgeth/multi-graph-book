@@ -819,3 +819,41 @@ contract_ids = []
 finding_codes = []
 related_finding_codes = []
 fixture_ids = []
+
+[[knowledge]]
+id = "PSK-000019"
+kind = "invalid-inference"
+title = "An optimized network reduction's voltage bound holds only for its certified injection set and voltage model"
+scientific_statement = "In Opti-KRON-style reduction, the voltage error of an eliminated bus represented by its supernode is linear in the injections under a linear voltage model, so a bound can be certified exactly for every injection in a declared set; a bound certified only at chosen scenarios, including the extreme-total loadings, need not hold at other loadings, and the zero-injection Kron step that follows relocation is exact, so the certificate's scope is the voltage model, the injection set, and the voltage observation."
+scope = "Supernode assignment reductions of radial or meshed distribution networks with a linear voltage-magnitude model, device injections relocated to supernodes, and an exact Schur-complement elimination of buses left without injection."
+evidence_status = "established_result"
+does_not_establish = [
+  "A bound certified at representative or extreme scenarios holds at other loadings.",
+  "A bound certified for the linear voltage model holds for AC power flow; observed AC deviations must be checked and margined separately.",
+  "A bound certified for an injection set holds for loadings outside that set.",
+  "A voltage bound preserves current limits of eliminated lines, protection quantities, feasible sets, decisions, or objectives.",
+  "The relocation of devices to supernodes is itself exact.",
+]
+
+[knowledge.book]
+claim_ids = ["TR-OPTIKRON-ROBUST-001", "TR-KRON-002"]
+misconception_ids = ["scenario-opti-kron-error-generalizes"]
+certificate_ids = []
+counterexample_ids = []
+artifact_paths = [
+  "experiments/generated/robust-opti-kron-witness.json",
+  "experiments/generated/kron-ward-scenario-comparison.json",
+]
+source_paths = [
+  "docs/src/transformations/kron-ward-opti-kron.md",
+  "experiments/transformations/RobustOptiKronWitness.jl",
+  "experiments/test/robust_opti_kron_witness.jl",
+]
+
+[knowledge.executable]
+implementation_status = "not_applicable"
+contract_ids = []
+finding_codes = []
+related_finding_codes = []
+fixture_ids = []
+

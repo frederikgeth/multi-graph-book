@@ -184,6 +184,36 @@ required_answer_elements = ["boundary equality does not automatically preserve i
 forbidden_simplifications = ["exact Kron implies exact protection and operational decisions"]
 
 [[case]]
+case_id = "EVAL-OPTIKRON-STUDENT"
+audience = "student"
+question = "If an Opti-KRON reduction keeps voltage errors within the bound for the heaviest and lightest loading, does it also do so for the loadings in between?"
+misconception_id = "scenario-opti-kron-error-generalizes"
+required_claim_ids = ["TR-OPTIKRON-ROBUST-001", "TR-KRON-002"]
+required_concept_ids = ["equivalence-exactness-preservation", "transformation-family"]
+required_answer_elements = ["explain that the error depends on how load is distributed, not only on its total", "contrast a scenario certificate with a certificate over a declared injection set"]
+forbidden_simplifications = ["extreme-total scenarios bracket the voltage error of every intermediate loading"]
+
+[[case]]
+case_id = "EVAL-OPTIKRON-SOFTWARE"
+audience = "software_engineer"
+question = "Can I ship a reduced feeder model with one stated voltage-error bound once the reduction passes on a few representative loading scenarios?"
+misconception_id = "scenario-opti-kron-error-generalizes"
+required_claim_ids = ["TR-OPTIKRON-ROBUST-001", "TR-KRON-002"]
+required_concept_ids = ["equivalence-exactness-preservation", "transformation-family"]
+required_answer_elements = ["record the voltage model, injection set, and observation with the bound", "keep the assignment and relocation provenance so the original can be checked"]
+forbidden_simplifications = ["a scenario-validated reduction carries an unconditional error bound"]
+
+[[case]]
+case_id = "EVAL-OPTIKRON-POWER"
+audience = "power_engineer"
+question = "Does a robust Opti-KRON voltage certificate guarantee AC voltages, line limits, and OPF decisions of the reduced feeder?"
+misconception_id = "scenario-opti-kron-error-generalizes"
+required_claim_ids = ["TR-OPTIKRON-ROBUST-001", "TR-KRON-002"]
+required_concept_ids = ["equivalence-exactness-preservation", "transformation-family"]
+required_answer_elements = ["state that the certificate concerns the linear voltage model and the declared injection set", "require separate evidence for AC deviation, eliminated-line limits, and decisions"]
+forbidden_simplifications = ["a robust voltage certificate is an AC, limit, and decision equivalence"]
+
+[[case]]
 case_id = "EVAL-SEQUENCE-STUDENT"
 audience = "student"
 question = "Does transposing a three-phase line make a positive-sequence model exact?"

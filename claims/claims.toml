@@ -2090,3 +2090,21 @@ verification = "self-checked"
 citation_keys = []
 reviewer = ""
 review_date = ""
+
+[[claim]]
+claim_id = "TR-OPTIKRON-ROBUST-001"
+exactness_object = "boundary_behavior"
+preservation_dimensions = ['structure', 'terminal_behavior', 'decision', 'provenance']
+chapter = "docs/src/transformations/kron-ward-opti-kron.md"
+claim_text = "In the declared five-bus linear feeder with error bound 0.04 p.u. and hop limit 2, the fewest supernodes that keep the voltage error within the bound at the two extreme-total training loadings (two) is strictly fewer than the fewest that keep it at all four training loadings (four, the convex-hull certificate), so every scenario-optimal assignment exceeds the bound at a non-extreme training loading (1.55 times the bound); the box certificate needs five. With injections relocated to supernodes, the zero-injection Kron step reproduces every supernode voltage exactly."
+status = "established_result"
+claim_type = "empirical"
+verification = "self-checked"
+evidence_type = "exhaustive_assignment_enumeration_and_exact_kron_recovery"
+citation_keys = ["MokhtariRobust2026", "Mokhtari2027"]
+model_scope = "single-phase radial resistive feeder s-a-b-{c,d} in per unit with a linear voltage model v = 1 + Kp (shared path resistance), four declared training loadings, and exhaustive enumeration of connected, hop-limited supernode assignments"
+assumptions = "zero reactive power; slack voltage fixed; scenario set = the training loadings of largest and smallest total injection; the convex-hull worst case of a linear error is attained at a training loading; the box is the per-coordinate range of the training loadings"
+reviewer = ""
+review_date = ""
+unresolved_issue = "The witness concerns the linear voltage model; AC error, injections outside the declared set, Wasserstein and ellipsoidal sets, three-phase coupling, and source-faithful reproduction of the published feeder studies are not covered here. Independent scientific review remains pending."
+

@@ -56,6 +56,8 @@ julia --project=experiments experiments/run_state_space_units.jl
 julia --project=experiments experiments/test/certificate_api_matrix.jl
 julia --project=experiments experiments/test/kron_ward_scenario.jl
 julia --project=experiments experiments/run_kron_ward_scenario.jl
+julia --project=experiments experiments/test/robust_opti_kron_witness.jl
+julia --project=experiments experiments/run_robust_opti_kron_witness.jl
 julia --project=experiments experiments/test/certified_approximation.jl
 julia --project=experiments experiments/run_certified_approximation.jl
 python3 experiments/generate_five_bus_cycle_figure.py
