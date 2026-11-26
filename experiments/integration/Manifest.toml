@@ -26,8 +26,8 @@ version = "1.11.0"
 
 [[deps.BMOPFTools]]
 deps = ["Dates", "Graphs", "JSON3", "JSONSchema", "LinearAlgebra", "Logging", "PowerIO", "SHA", "SparseArrays", "Statistics", "StatsFuns", "TOML"]
-git-tree-sha1 = "457c799b216cd6b4010405570534faa4b9edf9a5"
-repo-rev = "97c274946091859b7d9b0e822c96f1e7f9f50c7e"
+git-tree-sha1 = "4b21d6bd6a555cb73bb383f231a91218b54d47a9"
+repo-rev = "dfb8937e0c343e3fa5e6c2b8901401d29c4cbefe"
 repo-url = "https://github.com/frederikgeth/BMOPFTools.jl.git"
 uuid = "5f9a3b62-8f63-4a39-b67b-af9b51e6a7c3"
 version = "0.1.0"
@@ -411,9 +411,9 @@ version = "1.12.1"
 
 [[deps.PowerIO]]
 deps = ["JSON3", "LazyArtifacts", "Libdl", "Preferences", "SparseArrays"]
-git-tree-sha1 = "fd9f5725586e24bb7bce5a48b0c611fd8a81a17b"
+git-tree-sha1 = "350e541147a54de996b3c7bd841411be4dba236f"
 uuid = "05ed8b54-f668-4096-9d0d-e8c3dd9dc169"
-version = "0.11.6"
+version = "0.11.11"
 
 [[deps.PrecompileTools]]
 deps = ["Preferences"]

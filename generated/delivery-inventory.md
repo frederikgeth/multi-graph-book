@@ -6,15 +6,15 @@ These are registry counts and audit queues, not newly measured scientific result
 
 | Inventory | Count |
 |---|---:|
-| Claims | 123 |
+| Claims | 124 |
 | Claim verification: `externally-reviewed` | 0 |
 | Claim verification: `independently-implemented` | 6 |
-| Claim verification: `self-checked` | 117 |
-| PSK records | 18 |
-| Stable misconception IDs | 37 |
-| Misconception IDs with a PSK link | 18 |
+| Claim verification: `self-checked` | 118 |
+| PSK records | 19 |
+| Stable misconception IDs | 38 |
+| Misconception IDs with a PSK link | 19 |
 | Misconception IDs without a PSK link | 19 |
-| Full pinned package Finding registry | 381 |
+| Full pinned package Finding registry | 383 |
 | Finding records in the curated executable export | 57 |
 
 The full Finding catalogue and the curated executable export have different scopes.
@@ -88,7 +88,7 @@ promote a finite numerical test into a general theorem through a status label.
 
 ## Pinned source identity
 
-- BMOPFTools revision: `97c274946091859b7d9b0e822c96f1e7f9f50c7e`
-- Finding registry SHA-256: `52db7414e7f2bef158d32988c196d6d038320e30efda64a7501ddf1872d44519`
-- Federated pair SHA-256: `f0a01ec6c2588528122074758f9c00dc4044ba06b11d15a4289c90927a6e9232`
+- BMOPFTools revision: `dfb8937e0c343e3fa5e6c2b8901401d29c4cbefe`
+- Finding registry SHA-256: `e8d4a76ee90d8210df3c871fb48732086a5c4182a98cd6c0218cf19c579f48ee`
+- Federated pair SHA-256: `e4841896a7a1f8f6d3d81899cd0a62b0e9f36427b37c2f73c22072d5d7509753`
 - [Machine-readable inventory and source hashes](delivery-inventory.json)

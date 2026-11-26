@@ -7,7 +7,7 @@ JuMP = "4076af6c-e467-56ae-b986-b466b2749572"
 PowerIO = "05ed8b54-f668-4096-9d0d-e8c3dd9dc169"
 
 [sources]
-BMOPFTools = {url = "https://github.com/frederikgeth/BMOPFTools.jl.git", rev = "97c274946091859b7d9b0e822c96f1e7f9f50c7e"}
+BMOPFTools = {url = "https://github.com/frederikgeth/BMOPFTools.jl.git", rev = "dfb8937e0c343e3fa5e6c2b8901401d29c4cbefe"}
 
 [compat]
 BMOPFTools = "0.1"

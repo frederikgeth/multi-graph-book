@@ -16,12 +16,12 @@
       "transformer_winding_convention_preservation",
       "unit_base_serialization_invariance"
     ],
-    "corpus_sha256": "645e6b365ab1c85583746dc7c0704ed2685daab23c184f46758cf08c61f76069",
+    "corpus_sha256": "99eaca7aed18f194925611e2c9827a1b02ee3a5a0bfbea9245f0b17b8d3895db",
     "finding_registry": {
-      "finding_count": 381,
-      "sha256": "52db7414e7f2bef158d32988c196d6d038320e30efda64a7501ddf1872d44519"
+      "finding_count": 383,
+      "sha256": "e8d4a76ee90d8210df3c871fb48732086a5c4182a98cd6c0218cf19c579f48ee"
     },
-    "integration_profile_sha256": "adab825c34cc52b2d942548bf58cdb858e190ac4736cff6cca213fe90881f525",
+    "integration_profile_sha256": "df134496081ce41d71f84214f3577e3b0f972bb3158d64cbc2b51ccea7164604",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -39,7 +39,7 @@
       "PSK-000014"
     ],
     "manifest_id": "bmopftools-executable-knowledge-0.1.0",
-    "manifest_sha256": "e6bc63cd20da3505fbb251e2d48add4c58f0e6a7e199d6be5206c49e881159a2",
+    "manifest_sha256": "9c9ef6387ae6ec77fb21a8bab6d473d1162eeb5a5c5409b30f27125f30f8dfc5",
     "operation_recipes": [
       {
         "command": "julia --startup-file=no --project=. recipes/analyze_case/recipe.jl",
@@ -52,7 +52,7 @@
         "knowledge_ids": [],
         "operation": "analyze_case",
         "recipe_id": "analyze_case",
-        "source_sha256": "0edf1771e6f177c54f0b56a9ea569a4bbaa7fe85ae638967cc77ace470ee70f8"
+        "source_sha256": "608306677db7ed59c2d50c92ccb9f50a846d6d1dbb1bb09a9007110858cf66f0"
       },
       {
         "command": "julia --startup-file=no --project=. recipes/explain_finding/recipe.jl",
@@ -63,7 +63,7 @@
         "knowledge_ids": [],
         "operation": "explain_finding",
         "recipe_id": "explain_finding",
-        "source_sha256": "2d9cd8606137f520db7ed703ce73bda6ceb9e64158aafdd673350a1815108203"
+        "source_sha256": "07f5f11f3d9998e72d3d7e3d452310ff9bcf528bb8c4eba2c8c92e44202de771"
       },
       {
         "command": "julia --startup-file=no --project=. recipes/parse_case/recipe.jl",
@@ -74,7 +74,7 @@
         "knowledge_ids": [],
         "operation": "parse_case",
         "recipe_id": "parse_case",
-        "source_sha256": "f40f804d64ce0191d7fca068f3a6daad74c896638d96df412ae31cbcaab23fc3"
+        "source_sha256": "0b6d6f8084c107381971e5138a3c8e85800249d48603d9354c74ce27189a90df"
       },
       {
         "command": "julia --startup-file=no --project=. recipes/verify_solution/recipe.jl",
@@ -85,7 +85,7 @@
         "knowledge_ids": [],
         "operation": "verify_solution",
         "recipe_id": "verify_solution",
-        "source_sha256": "b662f3ccadf3b343719bf7c67124f97bc5f1e0aa63213c4f3e402de239e989f4"
+        "source_sha256": "3b353a291ef8fe5baa74142beeca817f57878f09437d947eb87c084819b119cd"
       }
     ],
     "package": {
@@ -113,11 +113,11 @@
       "recipe": 6
     },
     "repository": "frederikgeth/BMOPFTools.jl",
-    "revision": "97c274946091859b7d9b0e822c96f1e7f9f50c7e",
+    "revision": "dfb8937e0c343e3fa5e6c2b8901401d29c4cbefe",
     "schema_version": "0.6.0"
   },
   "book": {
-    "corpus_sha256": "3353637507690b95aa7612e40e0d98c44bc0d562ece0b930ab91dcd1bff5df4a",
+    "corpus_sha256": "6e70f6d8b87239d71b6db0ca11f1463a4c627a16a55d96fa4ab0cdcebae443fd",
     "knowledge_ids": [
       "PSK-000001",
       "PSK-000002",
@@ -136,9 +136,10 @@
       "PSK-000015",
       "PSK-000016",
       "PSK-000017",
-      "PSK-000018"
+      "PSK-000018",
+      "PSK-000019"
     ],
-    "manifest_sha256": "62414d5c3da54a97b1aa47ce1b7f5f645bd0101e90f620a574db305b1ac2cb9e",
+    "manifest_sha256": "d27948f30e4eab606f959c5aeb8b3c293e2281c9287de515bc334f698ad9c674",
     "release": {
       "external_reviewed_claims": 0,
       "independent_human_double_coding": false,
@@ -174,10 +175,10 @@
               "expected_status": "failed",
               "operation": "check_contract",
               "recipe_id": "parallel_member_limits",
-              "source_sha256": "5c6b32f9fab6e727b0ee51271ddcf0cd05ab384430da1bc74a1e0394b633d458"
+              "source_sha256": "5fe979caf83dbf8895f1c4d3fff1bdf42815b02b67dcc99b5ba80d27836ddd6e"
             }
           ],
-          "source_sha256": "0d5d4cf0298b797f5c36efb6801f4517910e9098b83af56d91ba83a5a9290026"
+          "source_sha256": "b7671a8abda8f6a3d56bb598bd9cd2e1404b05cdec320ff6ce3e68edd3277215"
         }
       ],
       "implementation_status": "implemented",
@@ -209,10 +210,10 @@
               "expected_status": "failed",
               "operation": "check_contract",
               "recipe_id": "neutral_ground_reference",
-              "source_sha256": "ae015f7385203e6ba9b285c5b8d860b78ade4285fd65a619dda5ce8a38c147fe"
+              "source_sha256": "ffbcd99f6dca37e4471da1ff96412be792886dd5c151735e8e20ff2f1bbe2fd9"
             }
           ],
-          "source_sha256": "16bb7be09c2fd48aff888ef8b850215d83f53448a26402c09bfa911fd33a6804"
+          "source_sha256": "74609e12e44640b7efaaccee569cd855cb0878787fe189e3115420a4dba8e141"
         }
       ],
       "implementation_status": "implemented",
@@ -233,7 +234,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "1d19d3b5fef6473d29c5f7770f598bf1d43f22caf8946e7a0f0bd723ff511319"
+          "source_sha256": "b615531e4a3e51ee652aaa5933a6caab943259688966c6b1c3df56c939dca1bb"
         }
       ],
       "implementation_status": "implemented",
@@ -254,7 +255,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "f9a2afa14f56cb8a1445456552d473577843fe45ef096dcd770a2c2e5ab8e3ce"
+          "source_sha256": "3d338bb49036238b5daef65dd78653ab77bdda1a37f8659d6487d18df96846a7"
         }
       ],
       "implementation_status": "implemented",
@@ -275,7 +276,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "0d5d4cf0298b797f5c36efb6801f4517910e9098b83af56d91ba83a5a9290026"
+          "source_sha256": "b7671a8abda8f6a3d56bb598bd9cd2e1404b05cdec320ff6ce3e68edd3277215"
         }
       ],
       "implementation_status": "implemented",
@@ -297,7 +298,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "0e75cce9eb41ceb12fa632cb215261bf4537689215b189af5a06b1982abcd96e"
+          "source_sha256": "0ce74f05f14c2f6624faad370947311af9233100916161f86495138d9832b115"
         }
       ],
       "implementation_status": "implemented",
@@ -319,7 +320,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "0d5d4cf0298b797f5c36efb6801f4517910e9098b83af56d91ba83a5a9290026"
+          "source_sha256": "e8ddae8afb9afc66bdc8ef4916869bd46804f3713e22f74129fe1efa2d844b4c"
         }
       ],
       "implementation_status": "implemented",
@@ -342,7 +343,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "aea988cc0e438a8b48a13cc4498f00a59628477e41b16862e0e777997a754994"
+          "source_sha256": "b230c4f49d91b782f757a448d47bcfacc95c27591428ae89174b817b1573876b"
         }
       ],
       "implementation_status": "implemented",
@@ -365,7 +366,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "96bac1c26f1f0dde223fd21a4dee8796b44e2f635ed8b67c32c167e9cc670364"
+          "source_sha256": "5332127f661d92aefba77723cc52988d14132bc66f0c755066a904e98237150e"
         }
       ],
       "implementation_status": "implemented",
@@ -388,7 +389,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "0d5d4cf0298b797f5c36efb6801f4517910e9098b83af56d91ba83a5a9290026"
+          "source_sha256": "b7671a8abda8f6a3d56bb598bd9cd2e1404b05cdec320ff6ce3e68edd3277215"
         }
       ],
       "implementation_status": "implemented",
@@ -410,7 +411,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "0d5d4cf0298b797f5c36efb6801f4517910e9098b83af56d91ba83a5a9290026"
+          "source_sha256": "b7671a8abda8f6a3d56bb598bd9cd2e1404b05cdec320ff6ce3e68edd3277215"
         }
       ],
       "implementation_status": "implemented",
@@ -459,11 +460,11 @@
               "property_suite_id": "terminal_permutation_seeded_properties",
               "seed": "0x6d5a56da4b9c2f17",
               "seed_algorithm": "splitmix64-v1",
-              "source_sha256": "57be5dc52ca3786e7a03ecc701389344922d2d4e4badae65863b8fecbf0e18d4"
+              "source_sha256": "ff71509825ba1a28d5980b7c2d80ef1442bc8bdf3005426d12690777a9452b4f"
             }
           ],
           "recipes": [],
-          "source_sha256": "59fb14978b75a874a43efc37abbc0639dc2df21d3afd74accb0bc1f4e14f4217"
+          "source_sha256": "397abb95e08f652ad47311598216233264f22d00c1b354e264ad922abb582881"
         }
       ],
       "implementation_status": "implemented",
@@ -485,7 +486,7 @@
           ],
           "property_suites": [],
           "recipes": [],
-          "source_sha256": "e2f1bce5454a016ef56ace1be58fcdeadee8129e61dc95887dc9bb4bf006aaa9"
+          "source_sha256": "6f2dc0911a0a49715e221cf45e65617a3713fd7e6420dbe67632bc5a5f3e26cb"
         }
       ],
       "implementation_status": "implemented",
@@ -539,11 +540,11 @@
               "property_suite_id": "unit_base_serialization_seeded_properties",
               "seed": "0x4f1bbcdc6762c7a9",
               "seed_algorithm": "splitmix64-v1",
-              "source_sha256": "f932a7e5bf40d3239113a38d9751404384d7176fd3b30873bccb4fae98d3bfa8"
+              "source_sha256": "33a07ad38116acb243c3789b5bea8b3d8f384a1a1d2f13c7440cca9cbefd2842"
             }
           ],
           "recipes": [],
-          "source_sha256": "fdc56ea562e66db4e9e2b39f2b6c9ef600628ccb08d12985f84130f58594ce94"
+          "source_sha256": "1fc4f456d50fab4571af247bb5a44d9b2ddbb3fb56f1a811ef03e8fb8d4db09e"
         }
       ],
       "implementation_status": "implemented",
@@ -568,9 +569,14 @@
       "contracts": [],
       "implementation_status": "not_applicable",
       "repository": null
+    },
+    "PSK-000019": {
+      "contracts": [],
+      "implementation_status": "not_applicable",
+      "repository": null
     }
   },
   "pair_id": "multi-graph-book--bmopftools-executable-knowledge-0.2.0",
-  "pair_sha256": "f0a01ec6c2588528122074758f9c00dc4044ba06b11d15a4289c90927a6e9232",
+  "pair_sha256": "e4841896a7a1f8f6d3d81899cd0a62b0e9f36427b37c2f73c22072d5d7509753",
   "schema_version": "0.2.0"
 }
