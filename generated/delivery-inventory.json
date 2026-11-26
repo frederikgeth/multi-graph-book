@@ -9,10 +9,10 @@
       "recipe": 6
     },
     "finding_registry": {
-      "finding_count": 381,
-      "sha256": "52db7414e7f2bef158d32988c196d6d038320e30efda64a7501ddf1872d44519"
+      "finding_count": 383,
+      "sha256": "e8d4a76ee90d8210df3c871fb48732086a5c4182a98cd6c0218cf19c579f48ee"
     },
-    "revision": "97c274946091859b7d9b0e822c96f1e7f9f50c7e"
+    "revision": "dfb8937e0c343e3fa5e6c2b8901401d29c4cbefe"
   },
   "claims": {
     "established_without_citation_keys": [
@@ -52,22 +52,22 @@
       "TR-XFMR-005",
       "TR-XFMR-006"
     ],
-    "total": 123,
+    "total": 124,
     "verification": {
       "externally-reviewed": 0,
       "independently-implemented": 6,
-      "self-checked": 117
+      "self-checked": 118
     }
   },
   "knowledge": {
     "execution_status": {
       "implemented": 14,
-      "not_applicable": 4
+      "not_applicable": 5
     },
-    "total": 18
+    "total": 19
   },
   "misconceptions": {
-    "psk_linked": 18,
+    "psk_linked": 19,
     "psk_links": {
       "apparent-power-limit-implies-current-admissibility": [],
       "base-state-equivalent-is-globally-exact": [
@@ -115,6 +115,9 @@
       "reference-or-rank-success-proves-nonsingularity": [
         "PSK-000011"
       ],
+      "scenario-opti-kron-error-generalizes": [
+        "PSK-000019"
+      ],
       "self-loop-is-a-shunt-or-circuit-loop": [],
       "solver-termination-implies-validated-solution": [
         "PSK-000003"
@@ -143,7 +146,7 @@
       ],
       "zero-parameter-means-absent-term": []
     },
-    "total": 37,
+    "total": 38,
     "unlinked_ids": [
       "apparent-power-limit-implies-current-admissibility",
       "constant-pf-capability-is-clipping",
@@ -166,12 +169,12 @@
       "zero-parameter-means-absent-term"
     ]
   },
-  "pair_sha256": "f0a01ec6c2588528122074758f9c00dc4044ba06b11d15a4289c90927a6e9232",
+  "pair_sha256": "e4841896a7a1f8f6d3d81899cd0a62b0e9f36427b37c2f73c22072d5d7509753",
   "schema_version": "1.0.0",
   "source_sha256": {
-    "claims/claims.toml": "fb8fb27eab406a81a7acd282fbc4ffb12dc02914c0e5a6349ad387ccf13469e0",
-    "generated/federated-knowledge-pair-manifest.json": "b7db76f4409213b7634e813a74333f45f0fc09e6b6d72bed725cd5397ab144fd",
-    "knowledge/psk.toml": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364",
-    "llm/misconceptions.toml": "d5cb84ec073330ed8f1f086f0ae7c1c9d3ed97371cca186bd4f6a93941f169dd"
+    "claims/claims.toml": "505e916e16cb14b101a7aa328cfb4e439ec0b888c26c0e15e995da9467854fdb",
+    "generated/federated-knowledge-pair-manifest.json": "48ecf35cf7e59cc9f120c2f1e6a94ab982f635b91dc217482b416b5df3e48eca",
+    "knowledge/psk.toml": "73e48d683f0eaf2c476fb8f9464a2920a19172a39b090639b4766d2f1c162398",
+    "llm/misconceptions.toml": "8d484a32a356c99fda0a64b99b300a7851261676743a081757f91ad104e0082b"
   }
 }

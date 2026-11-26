@@ -5,8 +5,8 @@
 **Model:** `sentence-transformers/all-MiniLM-L6-v2` at revision `ea78891063587eb050ed4166b20062eaf978037c`
 **Embedding artifact hash:** `507dfbc0b17cb6138f2a9f9e0894df3198cab2bebb23fc46759021e6ee458d02`
 **Current-corpus compatibility:** `archived_prior_corpus`
-**Archived on:** `2026-10-27`
-**Current corpus hash:** `d9ae1977134edb06b16fb45de4d1ae6fed3becfa399cdd7017645d003bb52440`
+**Archived on:** `2026-11-26`
+**Current corpus hash:** `faff389a9699189f74a53969d5f61a753a7697218e3da613ac478672a1d6a716`
 **Current held-out input hash:** `171857dd883acf3ed9a091fac0e2e7485cbd13d5f0477a56af37d010cec16592`
 **Required action:** rerun both pinned neural retriever and reranker before comparing them with the current corpus
 **Current lexical baseline:** lexical recall@10=43.2%; char_tfidf recall@10=43.3%; hybrid recall@10=46.6%

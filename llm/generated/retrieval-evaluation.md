@@ -4,8 +4,8 @@
 
 **Status:** `pass`<br>
 **Corpus:** `multi-graph-book-mgb-2026-08-17-internal-rc`<br>
-**Corpus hash:** `369a58a85a88c4120ee1e90a343a81f9ab9d6af2a8ff72958e7edaaf6d40b28e`<br>
-**Cases:** 117
+**Corpus hash:** `faff389a9699189f74a53969d5f61a753a7697218e3da613ac478672a1d6a716`<br>
+**Cases:** 120
 
 This report separates ordinary lexical ranking from qualification-aware contract expansion.
 The latter is permitted to add mandatory claims and concepts only after the query router identifies
@@ -16,10 +16,10 @@ a curated dangerous-shortcut contract. The character n-gram path is a reproducib
 | Measure | Result | Release gate? |
 | --- | ---: | --- |
 | Misconception top-1 routing accuracy | 100.0% | yes |
-| Open-corpus lexical evidence recall@5 | 28.4% | diagnostic |
+| Open-corpus lexical evidence recall@5 | 28.3% | diagnostic |
 | Open-corpus lexical evidence recall@10 | 34.2% | diagnostic |
-| Open-corpus complete evidence@10 | 0.9% | diagnostic |
-| Evidence-only lexical recall@5 | 35.7% | diagnostic |
+| Open-corpus complete evidence@10 | 0.8% | diagnostic |
+| Evidence-only lexical recall@5 | 36.1% | diagnostic |
 | Evidence-only lexical recall@10 | 41.6% | diagnostic |
 | Evidence-only complete evidence@10 | 1.7% | diagnostic |
 | Contract-expanded mandatory-record recall | 100.0% | yes |
@@ -44,9 +44,9 @@ the question count must not be treated as that many independent observations.
 | Method | Recall@5 | Recall@10 | Complete@10 | Complete cases | Zero-recall cases | MRR@20 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | `lexical` | 33.0% | 43.2% | 0.0% | 0/33 | 6/33 | 0.192 |
-| `char_tfidf` | 34.6% | 43.3% | 0.0% | 0/33 | 7/33 | 0.218 |
-| `hybrid` | 35.6% | 46.6% | 0.0% | 0/33 | 5/33 | 0.213 |
-| `graph` | 36.9% | 58.9% | 18.2% | 6/33 | 3/33 | 0.249 |
+| `char_tfidf` | 34.6% | 43.3% | 0.0% | 0/33 | 7/33 | 0.217 |
+| `hybrid` | 35.6% | 46.6% | 0.0% | 0/33 | 5/33 | 0.212 |
+| `graph` | 36.6% | 58.4% | 18.2% | 6/33 | 3/33 | 0.247 |
 
 Held-out contract-router firing: **22/33 (66.7%)**; release floor: **66.7%**.
 Expected-contract top-1 agreement: **20/33 (60.6%)**; this remains diagnostic because the set is synthetic and clustered.
@@ -94,9 +94,9 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 
 | Audience | Cases | Route top-1 | Lexical recall@10 | Contract recall |
 | --- | ---: | ---: | ---: | ---: |
-| `power_engineer` | 39 | 100.0% | 42.8% | 100.0% |
-| `software_engineer` | 39 | 100.0% | 39.2% | 100.0% |
-| `student` | 39 | 100.0% | 43.0% | 100.0% |
+| `power_engineer` | 40 | 100.0% | 42.7% | 100.0% |
+| `software_engineer` | 40 | 100.0% | 39.5% | 100.0% |
+| `student` | 40 | 100.0% | 42.7% | 100.0% |
 
 ## Case results
 
@@ -104,7 +104,7 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | --- | --- | --- | ---: | --- |
 | `EVAL-GRAPH-STUDENT` | `student` | `one-universal-network-graph` | 22.2% | yes |
 | `EVAL-GRAPH-SOFTWARE` | `software_engineer` | `one-universal-network-graph` | 33.3% | yes |
-| `EVAL-GRAPH-POWER` | `power_engineer` | `one-universal-network-graph` | 33.3% | yes |
+| `EVAL-GRAPH-POWER` | `power_engineer` | `one-universal-network-graph` | 22.2% | yes |
 | `EVAL-YSPLIT-STUDENT` | `student` | `loads-generators-fixed-graph-membership` | 66.7% | yes |
 | `EVAL-YSPLIT-SOFTWARE` | `software_engineer` | `loads-generators-fixed-graph-membership` | 66.7% | yes |
 | `EVAL-YSPLIT-POWER` | `power_engineer` | `loads-generators-fixed-graph-membership` | 50.0% | yes |
@@ -120,10 +120,13 @@ Graph versus hybrid complete@10: **6/33** versus **0/33**.
 | `EVAL-KRON-STUDENT` | `student` | `kron-reduction-preserves-everything` | 60.0% | yes |
 | `EVAL-KRON-SOFTWARE` | `software_engineer` | `kron-reduction-preserves-everything` | 0.0% | yes |
 | `EVAL-KRON-POWER` | `power_engineer` | `kron-reduction-preserves-everything` | 40.0% | yes |
+| `EVAL-OPTIKRON-STUDENT` | `student` | `scenario-opti-kron-error-generalizes` | 50.0% | yes |
+| `EVAL-OPTIKRON-SOFTWARE` | `software_engineer` | `scenario-opti-kron-error-generalizes` | 50.0% | yes |
+| `EVAL-OPTIKRON-POWER` | `power_engineer` | `scenario-opti-kron-error-generalizes` | 50.0% | yes |
 | `EVAL-SEQUENCE-STUDENT` | `student` | `transposition-implies-positive-sequence-exactness` | 50.0% | yes |
 | `EVAL-SEQUENCE-SOFTWARE` | `software_engineer` | `transposition-implies-positive-sequence-exactness` | 50.0% | yes |
 | `EVAL-SEQUENCE-POWER` | `power_engineer` | `transposition-implies-positive-sequence-exactness` | 75.0% | yes |
-| `EVAL-STATE-EQUIVALENT-STUDENT` | `student` | `base-state-equivalent-is-globally-exact` | 33.3% | yes |
+| `EVAL-STATE-EQUIVALENT-STUDENT` | `student` | `base-state-equivalent-is-globally-exact` | 16.7% | yes |
 | `EVAL-STATE-EQUIVALENT-SOFTWARE` | `software_engineer` | `base-state-equivalent-is-globally-exact` | 0.0% | yes |
 | `EVAL-STATE-EQUIVALENT-POWER` | `power_engineer` | `base-state-equivalent-is-globally-exact` | 33.3% | yes |
 | `EVAL-REFERENCE-STUDENT` | `student` | `reference-or-rank-success-proves-nonsingularity` | 0.0% | yes |

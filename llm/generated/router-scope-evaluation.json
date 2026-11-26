@@ -885,7 +885,7 @@
     },
     "misconceptions": {
       "path": "llm/misconceptions.toml",
-      "sha256": "d5cb84ec073330ed8f1f086f0ae7c1c9d3ed97371cca186bd4f6a93941f169dd"
+      "sha256": "8d484a32a356c99fda0a64b99b300a7851261676743a081757f91ad104e0082b"
     }
   },
   "purpose": "Router scope-gate measurement on synthetic paraphrases; not a deployment error-rate estimate.",

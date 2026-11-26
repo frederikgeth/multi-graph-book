@@ -1,5 +1,5 @@
 {
-  "corpus_sha256": "3353637507690b95aa7612e40e0d98c44bc0d562ece0b930ab91dcd1bff5df4a",
+  "corpus_sha256": "6e70f6d8b87239d71b6db0ca11f1463a4c627a16a55d96fa4ab0cdcebae443fd",
   "knowledge_ids": [
     "PSK-000001",
     "PSK-000002",
@@ -18,10 +18,11 @@
     "PSK-000015",
     "PSK-000016",
     "PSK-000017",
-    "PSK-000018"
+    "PSK-000018",
+    "PSK-000019"
   ],
   "manifest_id": "multi-graph-book-scientific-knowledge-0.1.0",
-  "record_count": 18,
+  "record_count": 19,
   "release": {
     "external_reviewed_claims": 0,
     "independent_human_double_coding": false,
@@ -33,7 +34,7 @@
   "source_files": [
     {
       "path": "claims/claims.toml",
-      "sha256": "fb8fb27eab406a81a7acd282fbc4ffb12dc02914c0e5a6349ad387ccf13469e0"
+      "sha256": "505e916e16cb14b101a7aa328cfb4e439ec0b888c26c0e15e995da9467854fdb"
     },
     {
       "path": "docs/src/cases/australian-carson-reproduction.md",
@@ -93,7 +94,7 @@
     },
     {
       "path": "docs/src/transformations/kron-ward-opti-kron.md",
-      "sha256": "dee0dc22877f720a2842ab8cabe59dd3955f7cb1edbe5e4f60cb35a5745cfea3"
+      "sha256": "11c9b1574683596f639713aa8a8aa04b6fa9e8ab63529d6922ebbbe30ca80a47"
     },
     {
       "path": "docs/src/transformations/parameterized-transformer-tap-decisions.md",
@@ -152,6 +153,10 @@
       "sha256": "404613c6573bdeed055b0abc06ead8decbf78fba9e1cf1d506c344a8fb8f3113"
     },
     {
+      "path": "experiments/generated/robust-opti-kron-witness.json",
+      "sha256": "e572ca6295035b4f7c66f9248141da1a71141051417f00f29b5e2fb2d710b984"
+    },
+    {
       "path": "experiments/generated/solver-diagnostics-crosswalk.json",
       "sha256": "d2061049cbf8aaeba0f4c107b2ae22ce91668359dea557a4ca3f91a9458a606d"
     },
@@ -184,6 +189,10 @@
       "sha256": "797da9e074f4a3ae2ec69f2dfc792d11850e403e2d753b5acc1b03d2c66443b3"
     },
     {
+      "path": "experiments/test/robust_opti_kron_witness.jl",
+      "sha256": "e535a64f04479eafa2469497dbc151587eca870140baa750a40807c51c8abf7f"
+    },
+    {
       "path": "experiments/transformations/AustralianCarsonReproduction.jl",
       "sha256": "a7da8574b5557f666757c59e610d9912433ca580bd0941232cb12a165892ed2d"
     },
@@ -196,8 +205,12 @@
       "sha256": "f8a9ae87fb916816979b50b4edd1ecbdf6698a98ed776e73785bb898c5c41482"
     },
     {
+      "path": "experiments/transformations/RobustOptiKronWitness.jl",
+      "sha256": "2580beccc262f4fecb74ed96705b04558fde058b0ef717fc614050f283709b3b"
+    },
+    {
       "path": "knowledge/psk.toml",
-      "sha256": "962a17e1298d00c760a39327e610be7628c51bccbc0157ee52c02baf80b5f364"
+      "sha256": "73e48d683f0eaf2c476fb8f9464a2920a19172a39b090639b4766d2f1c162398"
     },
     {
       "path": "llm/README.md",
@@ -209,7 +222,7 @@
     },
     {
       "path": "llm/misconceptions.toml",
-      "sha256": "d5cb84ec073330ed8f1f086f0ae7c1c9d3ed97371cca186bd4f6a93941f169dd"
+      "sha256": "8d484a32a356c99fda0a64b99b300a7851261676743a081757f91ad104e0082b"
     },
     {
       "path": "schemas/power-system-knowledge.schema.json",

@@ -1,13 +1,13 @@
 # [Knowledge-base indexes](@id knowledge-base-index)
 
-<!-- generated-from claims/claims.toml sha256:fb8fb27eab406a81a7acd282fbc4ffb12dc02914c0e5a6349ad387ccf13469e0 -->
+<!-- generated-from claims/claims.toml sha256:505e916e16cb14b101a7aa328cfb4e439ec0b888c26c0e15e995da9467854fdb -->
 This page is generated from `claims/claims.toml` and the JSON artifacts under
 `experiments/generated/`. It is the HTML knowledge base's retrieval layer; the curated
 PDF route does not attempt to reproduce these indexes as a linear chapter sequence.
 For a compact visual summary of notation, terminology distinctions, coverage gaps, and
 verification state, see the [evidence map and verification summary](evidence-map.md).
 
-**Indexed claims:** 123
+**Indexed claims:** 124
 **Indexed chapters:** 51
 
 ## Claims by type
@@ -32,7 +32,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `TOPOLOGY-001` — For a fixed switch state, topological nodes are the connected components of the closed-switch connectivity graph; compiling them into bus--branch buses is a state-conditioned quotient that requires provenance and does not preserve switching decisions by itself. | [Node--breaker, bus--breaker, and topology processing](../foundations/node-breaker-topology-processing.md) | `self-checked` |
 | `TRANSFORM-SEM-001` — Transformation certificates should distinguish typed structure, constitutive behaviour, decision semantics, and provenance; a structure-changing rewrite may remain exact for a narrower observation family only when its forgotten information, target closure, and recovery or constraint maps are declared. | [Transformation semantics and register](../foundations/transformation-semantics-register.md) | `self-checked` |
 
-### `empirical` (42)
+### `empirical` (43)
 
 | Claim | Chapter | Verification |
 | --- | --- | --- |
@@ -69,6 +69,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `TR-KRON-NEUTRAL-007` — In the recorded finite endpoint-state continuation of the two-point nonlinear grounding chain, recomputing the bond maps at five declared states preserves small nonlinear residuals and records changing neutral-limit margins, while the frozen nominal map fails away from the base state. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
 | `TR-KRON-NEUTRAL-008` — In the recorded local nonlinear grounding derivative probe, the analytic real Jacobian at the base state gives a smaller shifted-state linearisation error than the frozen nominal bond coefficient, and the Jacobian error decreases over the declared smaller step scales. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `self-checked` |
+| `TR-OPTIKRON-ROBUST-001` — In the declared five-bus linear feeder with error bound 0.04 p.u. and hop limit 2, the fewest supernodes that keep the voltage error within the bound at the two extreme-total training loadings (two) is strictly fewer than the fewest that keep it at all four training loadings (four, the convex-hull certificate), so every scenario-optimal assignment exceeds the bound at a non-extreme training loading (1.55 times the bound); the box certificate needs five. With injections relocated to supernodes, the zero-injection Kron step reproduces every supernode voltage exactly. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `self-checked` |
 | `TR-PAR-003` — In the recorded two-bus maximum-served-load problem, the naive summed-rating aggregate serves 200 MW while the source and exact lifted formulations each serve 110 MW. | [A plausible model gives the wrong answer](../start/first-failure-parallel-branches.md) | `self-checked` |
 | `TR-PAR-004` — In the recorded two-conductor AC maximum-served-load case, the source, exact lifted, and certified exact-pruned formulations have objective 0.6138908, while a summed-limit aggregate has objective 1.0630833 and violates a 0.6 p.u. member limit. | [Multiconductor parallel AC decision case](../cases/multiconductor-parallel-ac-decision.md) | `self-checked` |
 | `TR-PAR-AC-JOINT-001` — In the recorded three-member four-wire AC case, member 3 has the fixed recovery I_l3=0.10 I_l1+0.10 I_l2 and a 0.15 p.u. component limit; the joint support bound is 0.144 p.u., so deleting member-3 limits preserves the locally solved source objective 1.2401762 to 7e-14. An independent damped-Newton continuation and bisection reproduces the source boundary within 1.3e-8 served-fraction units. | [Four-wire nominal-pi parallel case](../cases/pi-four-wire-parallel-ac-decision.md) | `self-checked` |
@@ -164,7 +165,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 
 | Verification | Claims |
 | --- | ---: |
-| `self-checked` | 117 |
+| `self-checked` | 118 |
 | `independently-implemented` | 6 |
 | `externally-reviewed` | 0 |
 
@@ -267,6 +268,7 @@ verification state, see the [evidence map and verification summary](evidence-map
 | `TR-KRON-NEUTRAL-007` | Extend to adaptive continuation, global branch tracking, uncertainty sets, protection observations, and physical-model review. |
 | `TR-KRON-NEUTRAL-008` | Extend local derivative bounds to adaptive/global continuation, nonlinear multi-point grounding, noisy observations, and physical-model review. |
 | `TR-NEG-001` | Extend the negative cases to nominal-pi cascades, protection boundaries, nonlinear formulations, and independent reproduction. |
+| `TR-OPTIKRON-ROBUST-001` | The witness concerns the linear voltage model; AC error, injections outside the declared set, Wasserstein and ellipsoidal sets, three-phase coupling, and source-faithful reproduction of the published feeder studies are not covered here. Independent scientific review remains pending. |
 | `TR-PAR-001` | Add an independent mathematical reviewer. |
 | `TR-PAR-002` | Molzahn2018 gives an exact scalar AC constraint-pruning test without asset aggregation; a general multiconductor classification remains open. |
 | `TR-PAR-003` | The multiconductor mechanism is exercised in TR-PAR-004; add an independent reviewer for this linear case. |
@@ -511,7 +513,7 @@ schema is normalised.
 | `LIT-PAR-001` — For fixed scalar AC pi-line models on common endpoints, dominance of normalized squared member currents for all endpoint voltages certifies a redundant current limit; with apparent-power ratings the shared terminal-voltage magnitude cancels in the comparison, giving a sufficient redundancy test using auxiliary quadratic sets, not the original apparent-power feasible regions. Checking both terminals certifies removal of both directional limits without aggregating members. | [A plausible model gives the wrong answer](../start/first-failure-parallel-branches.md) | `theorem` |
 | `PRACTICE-ARCH-001` — The representation implementation record keeps public API maturity, fixture coverage, direct-versus-related evidence, and not-yet-tested rows separate from the normative mathematical representation definitions. | [Representation implementation record](../literature/representation-implementation-record.md) | `practice` |
 
-### `transformations` (45)
+### `transformations` (46)
 
 | Claim | Chapter | Type |
 | --- | --- | --- |
@@ -535,6 +537,7 @@ schema is normalised.
 | `TR-KRON-NEUTRAL-007` — In the recorded finite endpoint-state continuation of the two-point nonlinear grounding chain, recomputing the bond maps at five declared states preserves small nonlinear residuals and records changing neutral-limit margins, while the frozen nominal map fails away from the base state. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
 | `TR-KRON-NEUTRAL-008` — In the recorded local nonlinear grounding derivative probe, the analytic real Jacobian at the base state gives a smaller shifted-state linearisation error than the frozen nominal bond coefficient, and the Jacobian error decreases over the declared smaller step scales. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
 | `TR-NEG-001` — The executable anti-pattern witness rejects or classifies four tempting compositions: a heterogeneous series composite is not a homogeneous physical line, external grounding is not absorbed into a transformer, a three-port transformer is not a two-terminal line, and aggregate BIM/BFM branch balance does not imply member voltage compatibility. | [Translation traps: graphs, circuits, and power-system language](../foundations/translation-traps.md) | `empirical` |
+| `TR-OPTIKRON-ROBUST-001` — In the declared five-bus linear feeder with error bound 0.04 p.u. and hop limit 2, the fewest supernodes that keep the voltage error within the bound at the two extreme-total training loadings (two) is strictly fewer than the fewest that keep it at all four training loadings (four, the convex-hull certificate), so every scenario-optimal assignment exceeds the bound at a non-extreme training loading (1.55 times the bound); the box certificate needs five. With injections relocated to supernodes, the zero-injection Kron step reproduces every supernode voltage exactly. | [Kron, Ward, and optimized network equivalents](../transformations/kron-ward-opti-kron.md) | `empirical` |
 | `TR-PAR-001` — Summed admittance preserves the unconstrained terminal relation of parallel linear branches. | [A plausible model gives the wrong answer](../start/first-failure-parallel-branches.md) | `theorem` |
 | `TR-PAR-002` — Using the sum of member current ratings can create an outer relaxation of the member-constrained feasible set. | [A plausible model gives the wrong answer](../start/first-failure-parallel-branches.md) | `theorem` |
 | `TR-PAR-003` — In the recorded two-bus maximum-served-load problem, the naive summed-rating aggregate serves 200 MW while the source and exact lifted formulations each serve 110 MW. | [A plausible model gives the wrong answer](../start/first-failure-parallel-branches.md) | `empirical` |
@@ -638,6 +641,7 @@ schema is normalised.
 | `provenance.json` | generated evidence |
 | `public-api-manifest.json` | generated evidence |
 | `recorded-generator-bound.json` | generated evidence |
+| `robust-opti-kron-witness.json` | `TR-OPTIKRON-ROBUST-001` — robust_opti_kron_witness_v0.1.0 |
 | `running-network-cycle-space-witness.json` | `GRAPH-CYCLE-RUNNING-001` — identified scalar line projection of the running multiconductor fixture |
 | `running-network-radiality-witness.json` | `TOPO-RUNNING-001` — running-network v0.1.0 bus/member graph with switch and line-outage variants plus conductor-terminal provenance |
 | `running-network-typed-kron-witness.json` | `TR-KRON-001` — data/running-network/v0.1.0.json |

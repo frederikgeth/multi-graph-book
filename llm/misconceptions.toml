@@ -586,3 +586,23 @@ require_token_groups = ['constant|fixed|constantpf', 'clip\w*|qmax|qmin|capabili
 exclude_tokens = 'transient\w*|manufacturer\w*|dynamic\w*|filter\w*|vuf|thermal|temperature\w*'
 require_query = '(?=.*\b(?:pf|constantpf|power factor)\b)(?=.*\b(?:clip\w*|intersect\w*|simultaneous|replac\w*|overrid\w*|conflict\w*|satisf\w*|violat\w*|cap\w*|limit\w*|saturat\w*|bound\w*|compatib\w*)\b)'
 curated_phrase_bypass = false
+
+[[misconception]]
+id = "scenario-opti-kron-error-generalizes"
+title = "An Opti-KRON reduction validated on representative scenarios keeps its voltage error bound at other loadings"
+severity = "critical"
+query_patterns = ["opti-kron scenarios", "opti-kron robust", "network reduction voltage error bound", "scenario based network reduction", "reduction certified on scenarios", "uncertainty set network reduction", "robust network reduction distribution", "supernode voltage error unseen loading"]
+tempting_answer = "If the reduced network reproduces voltages within the bound for the extreme loading scenarios, it does so for all loadings in between."
+required_qualification = "A supernode voltage-error bound holds only for the loadings it was certified on; extreme-total scenarios do not bracket the error, which depends on how load is distributed. A bound over an uncertainty set holds for that set and that voltage model, not for AC power flow, loadings outside the set, limits, or decisions."
+safe_shorthand = "Name the voltage model, the injection set, and the observation before quoting a reduction's error bound."
+operational_consequence = "A scenario-validated reduction can misplace voltages beyond its stated bound at ordinary, non-extreme loadings, and a robust one is still silent on AC deviation, out-of-set loadings, branch limits, and decisions."
+mandatory_claim_ids = ["TR-OPTIKRON-ROBUST-001", "TR-KRON-002"]
+mandatory_concept_ids = ["equivalence-exactness-preservation", "transformation-family"]
+source_paths = ["docs/src/transformations/kron-ward-opti-kron.md"]
+
+[misconception.router_scope]
+rationale = "The contract concerns error bounds of supernode network reductions certified on scenarios or uncertainty sets. Power-flow convergence, stability, and generic loading questions need different evidence."
+require_token_groups = ['opti\w*|kron|reduc\w*|supernode\w*|cluster\w*', 'scenario\w*|robust\w*|uncertain\w*|certif\w*|bound\w*|loading\w*']
+exclude_tokens = 'newton\w*|raphson|diverg\w*|converg\w*|stability|iteration\w*'
+curated_phrase_bypass = false
+
